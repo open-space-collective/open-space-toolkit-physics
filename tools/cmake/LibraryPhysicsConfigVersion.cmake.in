@@ -1,7 +1,7 @@
 ################################################################################################################################################################
 
 # @project        Library/Physics
-# @file           tools/cmake/LibraryMathematicsConfigVersion.cmake.in
+# @file           tools/cmake/LibraryPhysicsConfigVersion.cmake.in
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        TBD
 
