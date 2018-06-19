@@ -9,8 +9,8 @@
 
 SET (LibraryPhysics_ROOT_DIR ${LibraryPhysics_ROOT_DIR} @CMAKE_INSTALL_PREFIX@)
 
-FIND_PATH (LibraryPhysics_INCLUDE_DIR "Library/Physics/Utilities/Version.hpp" PATHS ${LibraryPhysics_ROOT_DIR} PATH_SUFFIXES "include" NO_DEFAULT_PATH)
-FIND_LIBRARY (LibraryPhysics_LIBRARY NAMES "liblibrary-math.so" PATHS ${LibraryPhysics_ROOT_DIR} PATH_SUFFIXES "lib" NO_DEFAULT_PATH)
+FIND_PATH (LibraryPhysics_INCLUDE_DIR "Library/Physics/Units.hpp" PATHS ${LibraryPhysics_ROOT_DIR} PATH_SUFFIXES "include" NO_DEFAULT_PATH)
+FIND_LIBRARY (LibraryPhysics_LIBRARY NAMES "liblibrary-physics.so" PATHS ${LibraryPhysics_ROOT_DIR} PATH_SUFFIXES "lib" NO_DEFAULT_PATH)
 
 # MESSAGE (STATUS "LibraryPhysics_ROOT_DIR = ${LibraryPhysics_ROOT_DIR}")
 # MESSAGE (STATUS "LibraryPhysics_INCLUDE_DIR = ${LibraryPhysics_INCLUDE_DIR}")
