@@ -47,6 +47,15 @@ class Length : public Unit
         
         } ;
 
+        /// @brief              Constructor
+        ///
+        /// @code
+        ///                     Length length(1.0, Length::Unit::Meter) ;
+        /// @endcode
+        ///
+        /// @param              [in] aValue A value
+        /// @param              [in] aUnit A length unit
+
                                 Length                                      (   const   Real&                       aValue,
                                                                                 const   Length::Unit&               aUnit                                       ) ;
 
