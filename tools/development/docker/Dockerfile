@@ -7,7 +7,7 @@
 
 ################################################################################################################################################################
 
-FROM openspacecollective/library-mathematics:0.1.0-4-ged65678
+FROM openspacecollective/library-mathematics:0.1.0-6-g864b734
 
 LABEL maintainer="lucas@loftorbital.com"
 
