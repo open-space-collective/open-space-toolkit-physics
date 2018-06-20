@@ -653,6 +653,41 @@ TEST (Library_Physics_Units_Length, InKilometers)
 
 }
 
+TEST (Library_Physics_Units_Length, GetString)
+{
+
+    using library::physics::units::Length ; 
+
+    {
+
+        EXPECT_EQ("1.0 [m]", Length(1.0, Length::Unit::Meter).getString()) ;
+        EXPECT_EQ("1.0 [ft]", Length(1.0, Length::Unit::Foot).getString()) ;
+        EXPECT_EQ("1.0 [mi]", Length(1.0, Length::Unit::TerrestrialMile).getString()) ;
+        EXPECT_EQ("1.0 [nmi]", Length(1.0, Length::Unit::NauticalMile).getString()) ;
+        EXPECT_EQ("1.0 [AU]", Length(1.0, Length::Unit::AstronomicalUnit).getString()) ;
+
+        EXPECT_EQ("-1.0 [m]", Length(-1.0, Length::Unit::Meter).getString()) ;
+        EXPECT_EQ("-1.0 [ft]", Length(-1.0, Length::Unit::Foot).getString()) ;
+        EXPECT_EQ("-1.0 [mi]", Length(-1.0, Length::Unit::TerrestrialMile).getString()) ;
+        EXPECT_EQ("-1.0 [nmi]", Length(-1.0, Length::Unit::NauticalMile).getString()) ;
+        EXPECT_EQ("-1.0 [AU]", Length(-1.0, Length::Unit::AstronomicalUnit).getString()) ;
+
+        EXPECT_EQ("123.456 [m]", Length(123.456, Length::Unit::Meter).getString()) ;
+        EXPECT_EQ("123.456 [ft]", Length(123.456, Length::Unit::Foot).getString()) ;
+        EXPECT_EQ("123.456 [mi]", Length(123.456, Length::Unit::TerrestrialMile).getString()) ;
+        EXPECT_EQ("123.456 [nmi]", Length(123.456, Length::Unit::NauticalMile).getString()) ;
+        EXPECT_EQ("123.456 [AU]", Length(123.456, Length::Unit::AstronomicalUnit).getString()) ;
+
+    }
+
+    {
+
+        EXPECT_EQ("Undef", Length::Undefined().getString()) ;
+        
+    }
+
+}
+
 TEST (Library_Physics_Units_Length, Undefined)
 {
 
@@ -727,6 +762,23 @@ TEST (Library_Physics_Units_Length, StringFromUnit)
         EXPECT_EQ("Terrestrial Mile", Length::StringFromUnit(Length::Unit::TerrestrialMile)) ;
         EXPECT_EQ("Nautical Mile", Length::StringFromUnit(Length::Unit::NauticalMile)) ;
         EXPECT_EQ("Astronomical Unit", Length::StringFromUnit(Length::Unit::AstronomicalUnit)) ;
+
+    }
+
+}
+
+TEST (Library_Physics_Units_Length, SymbolFromUnit)
+{
+
+    using library::physics::units::Length ;
+
+    {
+
+        EXPECT_EQ("m", Length::SymbolFromUnit(Length::Unit::Meter)) ;
+        EXPECT_EQ("ft", Length::SymbolFromUnit(Length::Unit::Foot)) ;
+        EXPECT_EQ("mi", Length::SymbolFromUnit(Length::Unit::TerrestrialMile)) ;
+        EXPECT_EQ("nmi", Length::SymbolFromUnit(Length::Unit::NauticalMile)) ;
+        EXPECT_EQ("AU", Length::SymbolFromUnit(Length::Unit::AstronomicalUnit)) ;
 
     }
 

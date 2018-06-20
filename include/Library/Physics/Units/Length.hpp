@@ -43,7 +43,7 @@ class Length : public Unit
         {
 
             Undefined,          ///< Undefined
-            Meter,              ///< Meter
+            Meter,              ///< Meter (SI)
             Foot,               ///< Foot
             TerrestrialMile,    ///< Terrestrial mile
             NauticalMile,       ///< Nautical mile
@@ -107,6 +107,8 @@ class Length : public Unit
 
         Real                    inKilometers                                ( ) const ;
 
+        virtual String          getString                                   ( ) const override ;
+
         static Length           Undefined                                   ( ) ;
 
         static Length           Meters                                      (   const   Real&                       aValue                                      ) ;
@@ -116,6 +118,8 @@ class Length : public Unit
         static Length           Parse                                       (   const   String&                     aString                                     ) ;
 
         static String           StringFromUnit                              (   const   Length::Unit&               aUnit                                       ) ;
+
+        static String           SymbolFromUnit                              (   const   Length::Unit&               aUnit                                       ) ;
 
     private:
 

@@ -301,6 +301,18 @@ Real                            Length::inKilometers                        ( ) 
     return this->in(Length::Unit::Meter) / 1e3 ;
 }
 
+String                          Length::getString                           ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        return "Undef" ;
+    }
+
+    return this->accessValue().getString() + " [" + Length::SymbolFromUnit(unit_) + "]" ;
+
+}
+
 Length                          Length::Undefined                           ( )
 {
     return Length(Real::Undefined(), Length::Unit::Undefined) ;
@@ -344,6 +356,38 @@ String                          Length::StringFromUnit                      (   
             
         case Length::Unit::AstronomicalUnit:
             return "Astronomical Unit" ;
+            
+        default:
+            break ;
+
+    }
+
+    throw library::core::error::runtime::Wrong("Unit") ;
+
+    return String::Empty() ;
+
+}
+
+String                          Length::SymbolFromUnit                      (   const   Length::Unit&               aUnit                                       )
+{
+
+    switch (aUnit)
+    {
+
+        case Length::Unit::Meter:
+            return "m" ;
+            
+        case Length::Unit::Foot:
+            return "ft" ;
+            
+        case Length::Unit::TerrestrialMile:
+            return "mi" ;
+            
+        case Length::Unit::NauticalMile:
+            return "nmi" ;
+            
+        case Length::Unit::AstronomicalUnit:
+            return "AU" ;
             
         default:
             break ;
