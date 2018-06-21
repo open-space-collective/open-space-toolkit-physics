@@ -339,9 +339,7 @@ Integer                         Duration::getNanoseconds                    ( ) 
         throw library::core::error::runtime::Undefined("Duration") ;
     }
 
-    // [TBM] This can be refactored and optimized
-
-    return Integer::Int64((std::abs(count_) - ((static_cast<Int64>(this->getDays()) * 24 * 60 * 60 * 1000000) + (static_cast<Int64>(this->getHours()) * 60 * 60 * 1000000) + (static_cast<Int64>(this->getMinutes()) * 60 * 1000000) + (static_cast<Int64>(this->getSeconds() * 1000000)) + (static_cast<Int64>(this->getMilliseconds()) * 1000) + (static_cast<Int64>(this->getMicroseconds()))) * 1000)) ;
+    return Integer::Int64(std::abs(count_) % 1000) ;
 
 }
 
@@ -353,7 +351,7 @@ Integer                         Duration::getMicroseconds                   ( ) 
         throw library::core::error::runtime::Undefined("Duration") ;
     }
 
-    return Integer::Int64((std::abs(count_) - ((static_cast<Int64>(this->getDays()) * 24 * 60 * 60 * 1000) + (static_cast<Int64>(this->getHours()) * 60 * 60 * 1000) + (static_cast<Int64>(this->getMinutes()) * 60 * 1000) + (static_cast<Int64>(this->getSeconds() * 1000)) + (static_cast<Int64>(this->getMilliseconds()))) * 1000000) / 1000) ;
+    return Integer::Int64((std::abs(count_) / 1000) % 1000) ;
 
 }
 
@@ -365,7 +363,7 @@ Integer                         Duration::getMilliseconds                   ( ) 
         throw library::core::error::runtime::Undefined("Duration") ;
     }
 
-    return Integer::Int64((std::abs(count_) - ((static_cast<Int64>(this->getDays()) * 24 * 60 * 60) + (static_cast<Int64>(this->getHours()) * 60 * 60) + (static_cast<Int64>(this->getMinutes()) * 60) + (static_cast<Int64>(this->getSeconds()))) * 1000000000) / 1000000) ;
+    return Integer::Int64((std::abs(count_) / 1000000) % 1000) ;
 
 }
 
@@ -377,7 +375,7 @@ Integer                         Duration::getSeconds                        ( ) 
         throw library::core::error::runtime::Undefined("Duration") ;
     }
 
-    return Integer::Int64((std::abs(count_) - ((static_cast<Int64>(this->getDays() * 24 * 60)) + (static_cast<Int64>(this->getHours() * 60)) + (static_cast<Int64>(this->getMinutes()))) * 60 * 1000000000) / 1000000000) ;
+    return Integer::Int64((std::abs(count_) / 1000000000) % 60) ;
 
 }
 
@@ -389,7 +387,7 @@ Integer                         Duration::getMinutes                        ( ) 
         throw library::core::error::runtime::Undefined("Duration") ;
     }
 
-    return Integer::Int64((std::abs(count_) - ((static_cast<Int64>(this->getDays()) * 24) + (static_cast<Int64>(this->getHours()))) * 60 * 60 * 1000000000) / (Int64(60) * 1000000000)) ;
+    return Integer::Int64((std::abs(count_) / 60000000000) % 60) ;
 
 }
 
@@ -401,7 +399,7 @@ Integer                         Duration::getHours                          ( ) 
         throw library::core::error::runtime::Undefined("Duration") ;
     }
 
-    return Integer::Int64((std::abs(count_) - static_cast<Int64>(this->getDays()) * 24 * 60 * 60 * 1000000000) / (Int64(60) * 60 * 1000000000)) ;
+    return Integer::Int64((std::abs(count_) / 3600000000000) % 24) ;
 
 }
 
@@ -413,7 +411,7 @@ Integer                         Duration::getDays                           ( ) 
         throw library::core::error::runtime::Undefined("Duration") ;
     }
 
-    return Integer::Int64(static_cast<Int64>(std::floor(std::abs(count_) / 86400000000000.0))) ;
+    return Integer::Int64(std::abs(count_) / 86400000000000) ;
 
 }
 
@@ -425,7 +423,7 @@ Integer                         Duration::getWeeks                          ( ) 
         throw library::core::error::runtime::Undefined("Duration") ;
     }
 
-    return Integer::Int64(static_cast<Int64>(std::floor(std::abs(count_) / 604800000000000.0))) ;
+    return Integer::Int64(std::abs(count_) / 604800000000000) ;
 
 }
 

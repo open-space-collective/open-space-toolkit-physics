@@ -755,6 +755,21 @@ TEST (Library_Physics_Time_Duration, GetNanoseconds)
 
     {
 
+        const Duration duration = Duration::Weeks(12)
+                                + Duration::Days(15)
+                                + Duration::Hours(12)
+                                + Duration::Minutes(34)
+                                + Duration::Seconds(56)
+                                + Duration::Milliseconds(567)
+                                + Duration::Microseconds(890)
+                                + Duration::Nanoseconds(123) ;
+
+        EXPECT_EQ(123, duration.getNanoseconds()) ;
+
+    }
+
+    {
+
         for (auto idx = 0; idx < 100000; ++idx)
         {
 
@@ -818,6 +833,21 @@ TEST (Library_Physics_Time_Duration, GetMicroseconds)
         EXPECT_EQ(0, Duration(-1000000).getMicroseconds()) ;
         EXPECT_EQ(1, Duration(-1001000).getMicroseconds()) ;
         EXPECT_EQ(2, Duration(-1002000).getMicroseconds()) ;
+
+    }
+
+    {
+
+        const Duration duration = Duration::Weeks(12)
+                                + Duration::Days(15)
+                                + Duration::Hours(12)
+                                + Duration::Minutes(34)
+                                + Duration::Seconds(56)
+                                + Duration::Milliseconds(567)
+                                + Duration::Microseconds(890)
+                                + Duration::Nanoseconds(123) ;
+
+        EXPECT_EQ(890, duration.getMicroseconds()) ;
 
     }
 
@@ -894,6 +924,21 @@ TEST (Library_Physics_Time_Duration, GetMilliseconds)
         EXPECT_EQ(2, Duration(-2000000).getMilliseconds()) ;
         EXPECT_EQ(2, Duration(-2001000).getMilliseconds()) ;
         EXPECT_EQ(2, Duration(-2002000).getMilliseconds()) ;
+
+    }
+
+    {
+
+        const Duration duration = Duration::Weeks(12)
+                                + Duration::Days(15)
+                                + Duration::Hours(12)
+                                + Duration::Minutes(34)
+                                + Duration::Seconds(56)
+                                + Duration::Milliseconds(567)
+                                + Duration::Microseconds(890)
+                                + Duration::Nanoseconds(123) ;
+
+        EXPECT_EQ(567, duration.getMilliseconds()) ;
 
     }
 
@@ -991,6 +1036,21 @@ TEST (Library_Physics_Time_Duration, GetSeconds)
 
     {
 
+        const Duration duration = Duration::Weeks(12)
+                                + Duration::Days(15)
+                                + Duration::Hours(12)
+                                + Duration::Minutes(34)
+                                + Duration::Seconds(56)
+                                + Duration::Milliseconds(567)
+                                + Duration::Microseconds(890)
+                                + Duration::Nanoseconds(123) ;
+
+        EXPECT_EQ(56, duration.getSeconds()) ;
+
+    }
+
+    {
+
         for (auto idx = 0; idx < 100000; ++idx)
         {
 
@@ -1044,6 +1104,21 @@ TEST (Library_Physics_Time_Duration, GetMinutes)
 
         EXPECT_EQ(1, (-(Duration::Minutes(1.0) + Duration::Hours(1.0))).getMinutes()) ;
         EXPECT_EQ(1, (-(Duration::Minutes(1.0) + Duration::Hours(2.0))).getMinutes()) ;
+
+    }
+
+    {
+
+        const Duration duration = Duration::Weeks(12)
+                                + Duration::Days(15)
+                                + Duration::Hours(12)
+                                + Duration::Minutes(34)
+                                + Duration::Seconds(56)
+                                + Duration::Milliseconds(567)
+                                + Duration::Microseconds(890)
+                                + Duration::Nanoseconds(123) ;
+
+        EXPECT_EQ(34, duration.getMinutes()) ;
 
     }
 
@@ -1107,6 +1182,21 @@ TEST (Library_Physics_Time_Duration, GetHours)
 
     {
 
+        const Duration duration = Duration::Weeks(12)
+                                + Duration::Days(15)
+                                + Duration::Hours(12)
+                                + Duration::Minutes(34)
+                                + Duration::Seconds(56)
+                                + Duration::Milliseconds(567)
+                                + Duration::Microseconds(890)
+                                + Duration::Nanoseconds(123) ;
+
+        EXPECT_EQ(12, duration.getHours()) ;
+
+    }
+
+    {
+
         for (auto idx = 0; idx < 100000; ++idx)
         {
 
@@ -1165,6 +1255,21 @@ TEST (Library_Physics_Time_Duration, GetDays)
 
     {
 
+        const Duration duration = Duration::Weeks(12)
+                                + Duration::Days(15)
+                                + Duration::Hours(12)
+                                + Duration::Minutes(34)
+                                + Duration::Seconds(56)
+                                + Duration::Milliseconds(567)
+                                + Duration::Microseconds(890)
+                                + Duration::Nanoseconds(123) ;
+
+        EXPECT_EQ((12 * 7 + 15), duration.getDays()) ;
+
+    }
+
+    {
+
         for (auto idx = 0; idx < 100000; ++idx)
         {
 
@@ -1217,6 +1322,21 @@ TEST (Library_Physics_Time_Duration, GetWeeks)
 
         EXPECT_EQ(2, (-(Duration::Weeks(1.0) + Duration::Weeks(1.0))).getWeeks()) ;
         EXPECT_EQ(3, (-(Duration::Weeks(1.0) + Duration::Weeks(2.0))).getWeeks()) ;
+
+    }
+
+    {
+
+        const Duration duration = Duration::Weeks(12)
+                                + Duration::Days(15)
+                                + Duration::Hours(12)
+                                + Duration::Minutes(34)
+                                + Duration::Seconds(56)
+                                + Duration::Milliseconds(567)
+                                + Duration::Microseconds(890)
+                                + Duration::Nanoseconds(123) ;
+
+        EXPECT_EQ(14, duration.getWeeks()) ;
 
     }
 
