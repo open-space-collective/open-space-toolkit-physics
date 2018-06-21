@@ -43,6 +43,9 @@ class Time : public Unit
         {
 
             Undefined,          ///< Undefined
+            Nanosecond,         ///< Nanosecond
+            Microsecond,        ///< Microsecond
+            Millisecond,        ///< Millisecond
             Second,             ///< Second (SI)
             Minute,             ///< Minute
             Hour,               ///< Hour

@@ -50,6 +50,9 @@ TEST (Library_Physics_Units_Time, IsDefined)
 
         EXPECT_TRUE(Time(0.0, Time::Unit::Second).isDefined()) ;
         
+        EXPECT_TRUE(Time(1.0, Time::Unit::Nanosecond).isDefined()) ;
+        EXPECT_TRUE(Time(1.0, Time::Unit::Microsecond).isDefined()) ;
+        EXPECT_TRUE(Time(1.0, Time::Unit::Millisecond).isDefined()) ;
         EXPECT_TRUE(Time(1.0, Time::Unit::Second).isDefined()) ;
         EXPECT_TRUE(Time(1.0, Time::Unit::Minute).isDefined()) ;
         EXPECT_TRUE(Time(1.0, Time::Unit::Hour).isDefined()) ;
@@ -75,18 +78,27 @@ TEST (Library_Physics_Units_Time, GetString)
 
     {
 
+        EXPECT_EQ("1.0 [ns]", Time(1.0, Time::Unit::Nanosecond).getString()) ;
+        EXPECT_EQ("1.0 [us]", Time(1.0, Time::Unit::Microsecond).getString()) ;
+        EXPECT_EQ("1.0 [ms]", Time(1.0, Time::Unit::Millisecond).getString()) ;
         EXPECT_EQ("1.0 [s]", Time(1.0, Time::Unit::Second).getString()) ;
         EXPECT_EQ("1.0 [min]", Time(1.0, Time::Unit::Minute).getString()) ;
         EXPECT_EQ("1.0 [hr]", Time(1.0, Time::Unit::Hour).getString()) ;
         EXPECT_EQ("1.0 [day]", Time(1.0, Time::Unit::Day).getString()) ;
         EXPECT_EQ("1.0 [week]", Time(1.0, Time::Unit::Week).getString()) ;
 
+        EXPECT_EQ("-1.0 [ns]", Time(-1.0, Time::Unit::Nanosecond).getString()) ;
+        EXPECT_EQ("-1.0 [us]", Time(-1.0, Time::Unit::Microsecond).getString()) ;
+        EXPECT_EQ("-1.0 [ms]", Time(-1.0, Time::Unit::Millisecond).getString()) ;
         EXPECT_EQ("-1.0 [s]", Time(-1.0, Time::Unit::Second).getString()) ;
         EXPECT_EQ("-1.0 [min]", Time(-1.0, Time::Unit::Minute).getString()) ;
         EXPECT_EQ("-1.0 [hr]", Time(-1.0, Time::Unit::Hour).getString()) ;
         EXPECT_EQ("-1.0 [day]", Time(-1.0, Time::Unit::Day).getString()) ;
         EXPECT_EQ("-1.0 [week]", Time(-1.0, Time::Unit::Week).getString()) ;
 
+        EXPECT_EQ("123.456 [ns]", Time(123.456, Time::Unit::Nanosecond).getString()) ;
+        EXPECT_EQ("123.456 [us]", Time(123.456, Time::Unit::Microsecond).getString()) ;
+        EXPECT_EQ("123.456 [ms]", Time(123.456, Time::Unit::Millisecond).getString()) ;
         EXPECT_EQ("123.456 [s]", Time(123.456, Time::Unit::Second).getString()) ;
         EXPECT_EQ("123.456 [min]", Time(123.456, Time::Unit::Minute).getString()) ;
         EXPECT_EQ("123.456 [hr]", Time(123.456, Time::Unit::Hour).getString()) ;
@@ -127,6 +139,9 @@ TEST (Library_Physics_Units_Time, StringFromUnit)
     {
 
         EXPECT_EQ("Undefined", Time::StringFromUnit(Time::Unit::Undefined)) ;
+        EXPECT_EQ("Nanosecond", Time::StringFromUnit(Time::Unit::Nanosecond)) ;
+        EXPECT_EQ("Microsecond", Time::StringFromUnit(Time::Unit::Microsecond)) ;
+        EXPECT_EQ("Millisecond", Time::StringFromUnit(Time::Unit::Millisecond)) ;
         EXPECT_EQ("Second", Time::StringFromUnit(Time::Unit::Second)) ;
         EXPECT_EQ("Minute", Time::StringFromUnit(Time::Unit::Minute)) ;
         EXPECT_EQ("Hour", Time::StringFromUnit(Time::Unit::Hour)) ;
@@ -144,6 +159,9 @@ TEST (Library_Physics_Units_Time, SymbolFromUnit)
 
     {
 
+        EXPECT_EQ("ns", Time::SymbolFromUnit(Time::Unit::Nanosecond)) ;
+        EXPECT_EQ("us", Time::SymbolFromUnit(Time::Unit::Microsecond)) ;
+        EXPECT_EQ("ms", Time::SymbolFromUnit(Time::Unit::Millisecond)) ;
         EXPECT_EQ("s", Time::SymbolFromUnit(Time::Unit::Second)) ;
         EXPECT_EQ("min", Time::SymbolFromUnit(Time::Unit::Minute)) ;
         EXPECT_EQ("hr", Time::SymbolFromUnit(Time::Unit::Hour)) ;

@@ -63,6 +63,15 @@ String                          Time::StringFromUnit                        (   
         case Time::Unit::Undefined:
             return "Undefined" ;
             
+        case Time::Unit::Nanosecond:
+            return "Nanosecond" ;
+            
+        case Time::Unit::Microsecond:
+            return "Microsecond" ;
+            
+        case Time::Unit::Millisecond:
+            return "Millisecond" ;
+
         case Time::Unit::Second:
             return "Second" ;
             
@@ -94,6 +103,15 @@ String                          Time::SymbolFromUnit                        (   
 
     switch (aUnit)
     {
+
+        case Time::Unit::Nanosecond:
+            return "ns" ;
+
+        case Time::Unit::Microsecond:
+            return "us" ;
+
+        case Time::Unit::Millisecond:
+            return "ms" ;
 
         case Time::Unit::Second:
             return "s" ;

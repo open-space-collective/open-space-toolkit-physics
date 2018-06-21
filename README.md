@@ -40,7 +40,7 @@ The **Physics** library exhibits the following structure:
 │       ├── Volume
 │       └── Information
 ├── Time
-│   ├── Scale (UTC, TT, TAI, GPS, UT1, TCG, TDB, TCB, GMST, GST, GLONASS, QZSS, BDT, IRNSS)
+│   ├── Scale (UTC, TT, TAI, UT1, TCG, TCB, TDB, GMST, GPST, GST, GLST, BDT, QZSST, IRNSST)
 │   ├── Instant
 │   ├── Duration
 │   ├── Interval
