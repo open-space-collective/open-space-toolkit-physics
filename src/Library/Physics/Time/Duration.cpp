@@ -588,28 +588,128 @@ String                          Duration::getString                         (   
         throw library::core::error::runtime::Undefined("Duration") ;
     }
 
+    const Integer nanoseconds = this->getNanoseconds() ;
+    const Integer microseconds = this->getMicroseconds() ;
+    const Integer milliseconds = this->getMilliseconds() ;
+    const Integer seconds = this->getSeconds() ;
+    const Integer minutes = this->getMinutes() ;
+    const Integer hours = this->getHours() ;
+    const Integer days = this->getDays() ;
+
     switch (aFormat)
     {
 
-        case Duration::Format::Undefined:
+        case Duration::Format::Standard:
         {
 
-            break ;
+            if (days > 0)
+            {
+                return String::Format("{0}{1:d} {2:02d}:{3:02d}:{4:02d}.{5:03d}.{6:03d}.{7:03d}", ((count_ < 0) ? "-" : ""), days, hours, minutes, seconds, milliseconds, microseconds, nanoseconds) ;
+            }
+
+            if (hours > 0)
+            {
+                return String::Format("{0}{1:02d}:{2:02d}:{3:02d}.{4:03d}.{5:03d}.{6:03d}", ((count_ < 0) ? "-" : ""), hours, minutes, seconds, milliseconds, microseconds, nanoseconds) ;
+            }
+
+            if (minutes > 0)
+            {
+                return String::Format("{0}{1:02d}:{2:02d}.{3:03d}.{4:03d}.{5:03d}", ((count_ < 0) ? "-" : ""), minutes, seconds, milliseconds, microseconds, nanoseconds) ;
+            }
+
+            return String::Format("{0}{1:02d}.{2:03d}.{3:03d}.{4:03d}", ((count_ < 0) ? "-" : ""), seconds, milliseconds, microseconds, nanoseconds) ;
 
         }
 
-        case Duration::Format::Humanized:
-            break ;
-
         case Duration::Format::ISO8601:
-            break ;
+        {
+
+            if (this->isZero())
+            {
+                return "PT0H0M0S" ;
+            }
+
+            String dayString = String::Empty() ;
+
+            if (days > 0)
+            {
+                dayString = String::Format("{:d}D", days) ;
+            }
+
+            String timeString = String::Empty() ;
+
+            if ((milliseconds > 0) || (microseconds > 0) || (nanoseconds > 0)) // Floating seconds
+            {
+
+                const Real floatingSeconds = Real::Integer(seconds)
+                                           + (Real::Integer(milliseconds) / 1000.0)
+                                           + (Real::Integer(microseconds) / 1000000.0)
+                                           + (Real::Integer(nanoseconds) / 1000000000.0) ;
+
+                // Pretty ugly implementation, couldn't quickly find a better way... feel free to improve!
+
+                if (nanoseconds == 100)
+                {
+                    timeString = String::Format("{:.7f}S", floatingSeconds) ;
+                }
+                else if (nanoseconds == 10)
+                {
+                    timeString = String::Format("{:.8f}S", floatingSeconds) ;
+                }
+                else if (nanoseconds > 0)
+                {
+                    timeString = String::Format("{:.9f}S", floatingSeconds) ;
+                }
+                else if (microseconds == 100)
+                {
+                    timeString = String::Format("{:.4f}S", floatingSeconds) ;
+                }
+                else if (microseconds == 10)
+                {
+                    timeString = String::Format("{:.5f}S", floatingSeconds) ;
+                }
+                else if (microseconds > 0)
+                {
+                    timeString = String::Format("{:.6f}S", floatingSeconds) ;
+                }
+                else if (milliseconds == 100)
+                {
+                    timeString = String::Format("{:.1f}S", floatingSeconds) ;
+                }
+                else if (milliseconds == 10)
+                {
+                    timeString = String::Format("{:.2f}S", floatingSeconds) ;
+                }
+                else
+                {
+                    timeString = String::Format("{:.3f}S", floatingSeconds) ;
+                }
+
+            }
+            else if (seconds > 0)
+            {
+                timeString = String::Format("{:d}S", seconds) ;
+            }
+
+            if (minutes > 0)
+            {
+                timeString = String::Format("{:d}M", minutes) + timeString ;
+            }
+
+            if (hours > 0)
+            {
+                timeString = String::Format("{:d}H", hours) + timeString ;
+            }
+
+            return ((count_ < 0) ? "-P" : "P") + dayString + ((!timeString.isEmpty()) ? ("T" + timeString) : "") ;
+
+        }
 
         default:
+            throw library::core::error::runtime::Wrong("Format") ;
             break ;
 
     }
-
-    // throw library::core::error::runtime::ToBeImplemented("Duration::getString") ;
 
     return String::Empty() ;
 

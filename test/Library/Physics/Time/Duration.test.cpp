@@ -1663,9 +1663,159 @@ TEST (Library_Physics_Time_Duration, GetString)
     
     using library::physics::time::Duration ;
 
+    // Standard
+
     {
 
-        FAIL() ;
+        EXPECT_EQ("00.000.000.000", Duration::Zero().getString(Duration::Format::Standard)) ;
+
+        EXPECT_EQ("00.000.000.001", Duration::Nanoseconds(+1.0).getString(Duration::Format::Standard)) ;
+        EXPECT_EQ("00.000.000.012", Duration::Nanoseconds(+12.0).getString(Duration::Format::Standard)) ;
+        EXPECT_EQ("00.000.000.123", Duration::Nanoseconds(+123.0).getString(Duration::Format::Standard)) ;
+
+        EXPECT_EQ("00.000.001.000", Duration::Microseconds(+1.0).getString(Duration::Format::Standard)) ;
+        EXPECT_EQ("00.000.012.000", Duration::Microseconds(+12.0).getString(Duration::Format::Standard)) ;
+        EXPECT_EQ("00.000.123.000", Duration::Microseconds(+123.0).getString(Duration::Format::Standard)) ;
+
+        EXPECT_EQ("00.001.000.000", Duration::Milliseconds(+1.0).getString(Duration::Format::Standard)) ;
+        EXPECT_EQ("00.012.000.000", Duration::Milliseconds(+12.0).getString(Duration::Format::Standard)) ;
+        EXPECT_EQ("00.123.000.000", Duration::Milliseconds(+123.0).getString(Duration::Format::Standard)) ;
+
+        EXPECT_EQ("01.000.000.000", Duration::Seconds(+1.0).getString(Duration::Format::Standard)) ;
+        EXPECT_EQ("12.000.000.000", Duration::Seconds(+12.0).getString(Duration::Format::Standard)) ;
+
+        EXPECT_EQ("01:02.000.000.000", (Duration::Minutes(+1.0) + Duration::Seconds(+2.0)).getString(Duration::Format::Standard)) ;
+        EXPECT_EQ("12:34.000.000.000", (Duration::Minutes(+12.0) + Duration::Seconds(+34.0)).getString(Duration::Format::Standard)) ;
+
+        EXPECT_EQ("01:02:03.000.000.000", (Duration::Hours(+1.0) + Duration::Minutes(+2.0) + Duration::Seconds(+3.0)).getString(Duration::Format::Standard)) ;
+        EXPECT_EQ("12:34:56.000.000.000", (Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0)).getString(Duration::Format::Standard)) ;
+
+        EXPECT_EQ("1 01:02:03.000.000.000", (Duration::Days(+1.0) + Duration::Hours(+1.0) + Duration::Minutes(+2.0) + Duration::Seconds(+3.0)).getString(Duration::Format::Standard)) ;
+        EXPECT_EQ("3 12:34:56.000.000.000", (Duration::Days(+3.0) + Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0)).getString(Duration::Format::Standard)) ;
+        EXPECT_EQ("7 12:34:56.000.000.000", (Duration::Days(+7.0) + Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0)).getString(Duration::Format::Standard)) ;
+        EXPECT_EQ("14 12:34:56.000.000.000", (Duration::Days(+14.0) + Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0)).getString(Duration::Format::Standard)) ;
+        EXPECT_EQ("99 12:34:56.000.000.000", (Duration::Days(+99.0) + Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0)).getString(Duration::Format::Standard)) ;
+
+        EXPECT_EQ("1 01:02:03.123.456.789", (Duration::Days(+1.0) + Duration::Hours(+1.0) + Duration::Minutes(+2.0) + Duration::Seconds(+3.0) + Duration::Milliseconds(+123.0) + Duration::Microseconds(+456.0) + Duration::Nanoseconds(+789.0)).getString(Duration::Format::Standard)) ;
+
+        EXPECT_EQ("-00.000.000.001", Duration::Nanoseconds(-1.0).getString(Duration::Format::Standard)) ;
+        EXPECT_EQ("-00.000.000.012", Duration::Nanoseconds(-12.0).getString(Duration::Format::Standard)) ;
+        EXPECT_EQ("-00.000.000.123", Duration::Nanoseconds(-123.0).getString(Duration::Format::Standard)) ;
+
+        EXPECT_EQ("-00.000.001.000", Duration::Microseconds(-1.0).getString(Duration::Format::Standard)) ;
+        EXPECT_EQ("-00.000.012.000", Duration::Microseconds(-12.0).getString(Duration::Format::Standard)) ;
+        EXPECT_EQ("-00.000.123.000", Duration::Microseconds(-123.0).getString(Duration::Format::Standard)) ;
+
+        EXPECT_EQ("-00.001.000.000", Duration::Milliseconds(-1.0).getString(Duration::Format::Standard)) ;
+        EXPECT_EQ("-00.012.000.000", Duration::Milliseconds(-12.0).getString(Duration::Format::Standard)) ;
+        EXPECT_EQ("-00.123.000.000", Duration::Milliseconds(-123.0).getString(Duration::Format::Standard)) ;
+
+        EXPECT_EQ("-01.000.000.000", (-Duration::Seconds(+1.0)).getString(Duration::Format::Standard)) ;
+        EXPECT_EQ("-12.000.000.000", (-Duration::Seconds(+12.0)).getString(Duration::Format::Standard)) ;
+
+        EXPECT_EQ("-01:02.000.000.000", (-(Duration::Minutes(+1.0) + Duration::Seconds(+2.0))).getString(Duration::Format::Standard)) ;
+        EXPECT_EQ("-12:34.000.000.000", (-(Duration::Minutes(+12.0) + Duration::Seconds(+34.0))).getString(Duration::Format::Standard)) ;
+
+        EXPECT_EQ("-01:02:03.000.000.000", (-(Duration::Hours(+1.0) + Duration::Minutes(+2.0) + Duration::Seconds(+3.0))).getString(Duration::Format::Standard)) ;
+        EXPECT_EQ("-12:34:56.000.000.000", (-(Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0))).getString(Duration::Format::Standard)) ;
+
+        EXPECT_EQ("-1 01:02:03.000.000.000", (-(Duration::Days(+1.0) + Duration::Hours(+1.0) + Duration::Minutes(+2.0) + Duration::Seconds(+3.0))).getString(Duration::Format::Standard)) ;
+        EXPECT_EQ("-3 12:34:56.000.000.000", (-(Duration::Days(+3.0) + Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0))).getString(Duration::Format::Standard)) ;
+        EXPECT_EQ("-7 12:34:56.000.000.000", (-(Duration::Days(+7.0) + Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0))).getString(Duration::Format::Standard)) ;
+        EXPECT_EQ("-14 12:34:56.000.000.000", (-(Duration::Days(+14.0) + Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0))).getString(Duration::Format::Standard)) ;
+        EXPECT_EQ("-99 12:34:56.000.000.000", (-(Duration::Days(+99.0) + Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0))).getString(Duration::Format::Standard)) ;
+
+        EXPECT_EQ("-1 01:02:03.123.456.789", (-(Duration::Days(+1.0) + Duration::Hours(+1.0) + Duration::Minutes(+2.0) + Duration::Seconds(+3.0) + Duration::Milliseconds(+123.0) + Duration::Microseconds(+456.0) + Duration::Nanoseconds(+789.0))).getString(Duration::Format::Standard)) ;
+
+    }
+
+    // ISO 8601
+
+    {
+
+        EXPECT_EQ("PT0H0M0S", Duration::Zero().getString(Duration::Format::ISO8601)) ;
+
+        EXPECT_EQ("PT0.000000001S", Duration::Nanoseconds(+1.0).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("PT0.00000001S", Duration::Nanoseconds(+10.0).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("PT0.0000001S", Duration::Nanoseconds(+100.0).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("PT0.000000012S", Duration::Nanoseconds(+12.0).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("PT0.000000123S", Duration::Nanoseconds(+123.0).getString(Duration::Format::ISO8601)) ;
+
+        EXPECT_EQ("PT0.000001S", Duration::Microseconds(+1.0).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("PT0.00001S", Duration::Microseconds(+10.0).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("PT0.0001S", Duration::Microseconds(+100.0).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("PT0.000012S", Duration::Microseconds(+12.0).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("PT0.000123S", Duration::Microseconds(+123.0).getString(Duration::Format::ISO8601)) ;
+
+        EXPECT_EQ("PT0.001S", Duration::Milliseconds(+1.0).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("PT0.01S", Duration::Milliseconds(+10.0).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("PT0.1S", Duration::Milliseconds(+100.0).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("PT0.012S", Duration::Milliseconds(+12.0).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("PT0.123S", Duration::Milliseconds(+123.0).getString(Duration::Format::ISO8601)) ;
+
+        EXPECT_EQ("PT1S", Duration::Seconds(+1.0).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("PT12S", Duration::Seconds(+12.0).getString(Duration::Format::ISO8601)) ;
+
+        EXPECT_EQ("PT1M2S", (Duration::Minutes(+1.0) + Duration::Seconds(+2.0)).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("PT12M34S", (Duration::Minutes(+12.0) + Duration::Seconds(+34.0)).getString(Duration::Format::ISO8601)) ;
+
+        EXPECT_EQ("PT1H2M3S", (Duration::Hours(+1.0) + Duration::Minutes(+2.0) + Duration::Seconds(+3.0)).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("PT12H34M56S", (Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0)).getString(Duration::Format::ISO8601)) ;
+
+        EXPECT_EQ("P1D", (Duration::Days(+1.0)).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("P1DT1H", (Duration::Days(+1.0) + Duration::Hours(+1.0)).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("P1DT1H2M", (Duration::Days(+1.0) + Duration::Hours(+1.0) + Duration::Minutes(+2.0)).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("P1DT1H2M3S", (Duration::Days(+1.0) + Duration::Hours(+1.0) + Duration::Minutes(+2.0) + Duration::Seconds(+3.0)).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("P3DT12H34M56S", (Duration::Days(+3.0) + Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0)).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("P7DT12H34M56S", (Duration::Days(+7.0) + Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0)).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("P14DT12H34M56S", (Duration::Days(+14.0) + Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0)).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("P99DT12H34M56S", (Duration::Days(+99.0) + Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0)).getString(Duration::Format::ISO8601)) ;
+
+        EXPECT_EQ("P1DT1H2M3.123456789S", (Duration::Days(+1.0) + Duration::Hours(+1.0) + Duration::Minutes(+2.0) + Duration::Seconds(+3.0) + Duration::Milliseconds(+123.0) + Duration::Microseconds(+456.0) + Duration::Nanoseconds(+789.0)).getString(Duration::Format::ISO8601)) ;
+
+        EXPECT_EQ("-PT0.000000001S", Duration::Nanoseconds(-1.0).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("-PT0.00000001S", Duration::Nanoseconds(-10.0).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("-PT0.0000001S", Duration::Nanoseconds(-100.0).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("-PT0.000000012S", Duration::Nanoseconds(-12.0).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("-PT0.000000123S", Duration::Nanoseconds(-123.0).getString(Duration::Format::ISO8601)) ;
+
+        EXPECT_EQ("-PT0.000001S", Duration::Microseconds(-1.0).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("-PT0.00001S", Duration::Microseconds(-10.0).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("-PT0.0001S", Duration::Microseconds(-100.0).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("-PT0.000012S", Duration::Microseconds(-12.0).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("-PT0.000123S", Duration::Microseconds(-123.0).getString(Duration::Format::ISO8601)) ;
+
+        EXPECT_EQ("-PT0.001S", Duration::Milliseconds(-1.0).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("-PT0.01S", Duration::Milliseconds(-10.0).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("-PT0.1S", Duration::Milliseconds(-100.0).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("-PT0.012S", Duration::Milliseconds(-12.0).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("-PT0.123S", Duration::Milliseconds(-123.0).getString(Duration::Format::ISO8601)) ;
+
+        EXPECT_EQ("-PT1S", Duration::Seconds(-1.0).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("-PT12S", Duration::Seconds(-12.0).getString(Duration::Format::ISO8601)) ;
+
+        EXPECT_EQ("-PT1M2S", (-(Duration::Minutes(+1.0) + Duration::Seconds(+2.0))).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("-PT12M34S", (-(Duration::Minutes(+12.0) + Duration::Seconds(+34.0))).getString(Duration::Format::ISO8601)) ;
+
+        EXPECT_EQ("-PT1H2M3S", (-(Duration::Hours(+1.0) + Duration::Minutes(+2.0) + Duration::Seconds(+3.0))).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("-PT12H34M56S", (-(Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0))).getString(Duration::Format::ISO8601)) ;
+
+        EXPECT_EQ("-P1D", (-(Duration::Days(+1.0))).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("-P1DT1H", (-(Duration::Days(+1.0) + Duration::Hours(+1.0))).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("-P1DT1H2M", (-(Duration::Days(+1.0) + Duration::Hours(+1.0) + Duration::Minutes(+2.0))).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("-P1DT1H2M3S", (-(Duration::Days(+1.0) + Duration::Hours(+1.0) + Duration::Minutes(+2.0) + Duration::Seconds(+3.0))).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("-P3DT12H34M56S", (-(Duration::Days(+3.0) + Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0))).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("-P7DT12H34M56S", (-(Duration::Days(+7.0) + Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0))).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("-P14DT12H34M56S", (-(Duration::Days(+14.0) + Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0))).getString(Duration::Format::ISO8601)) ;
+        EXPECT_EQ("-P99DT12H34M56S", (-(Duration::Days(+99.0) + Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0))).getString(Duration::Format::ISO8601)) ;
+
+        EXPECT_EQ("-P1DT1H2M3.123456789S", (-(Duration::Days(+1.0) + Duration::Hours(+1.0) + Duration::Minutes(+2.0) + Duration::Seconds(+3.0) + Duration::Milliseconds(+123.0) + Duration::Microseconds(+456.0) + Duration::Nanoseconds(+789.0))).getString(Duration::Format::ISO8601)) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Duration::Undefined().getString(Duration::Format::Standard)) ;
 
     }
 

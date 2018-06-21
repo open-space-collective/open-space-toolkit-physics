@@ -50,8 +50,7 @@ class Duration
         enum class Format
         {
 
-            Undefined,
-            Humanized,
+            Standard,
             ISO8601
             
         } ;
@@ -204,7 +203,7 @@ class Duration
 
         Duration                getAbsolute                                 ( ) const ;
 
-        String                  getString                                   (   const   Duration::Format&           aFormat                                     =   Duration::Format::Undefined ) const ;
+        String                  getString                                   (   const   Duration::Format&           aFormat                                     =   Duration::Format::Standard ) const ;
 
         static Duration         Undefined                                   ( ) ;
 
