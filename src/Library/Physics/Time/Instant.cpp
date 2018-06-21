@@ -36,12 +36,26 @@ namespace time
 
 bool                            Instant::operator ==                        (   const   Instant&                    anInstant                                   ) const
 {
+
+    if ((!this->isDefined()) || (!anInstant.isDefined()))
+    {
+        return false ;
+    }
+    
     return count_ == ((scale_ == anInstant.scale_) ? anInstant.count_ : anInstant.inScale(scale_).count_) ;
+
 }
 
 bool                            Instant::operator !=                        (   const   Instant&                    anInstant                                   ) const
 {
+
+    if ((!this->isDefined()) || (!anInstant.isDefined()))
+    {
+        return true ;
+    }
+    
     return count_ != ((scale_ == anInstant.scale_) ? anInstant.count_ : anInstant.inScale(scale_).count_) ;
+
 }
 
 bool                            Instant::operator <                         (   const   Instant&                    anInstant                                   ) const
@@ -200,7 +214,8 @@ std::ostream&                   operator <<                                 (   
 
     library::core::utils::Print::Header(anOutputStream, "Instant") ;
 
-    library::core::utils::Print::Line(anOutputStream) << (anInstant.isDefined() ? anInstant.getString() : "Undefined") ;
+    library::core::utils::Print::Line(anOutputStream) << "Count:" << (anInstant.isDefined() ? anInstant.count_.getString() : "Undefined") ;
+    library::core::utils::Print::Line(anOutputStream) << "Scale:" << StringFromScale(anInstant.scale_) ;
 
     library::core::utils::Print::Footer(anOutputStream) ;
 
@@ -213,10 +228,36 @@ bool                            Instant::isDefined                          ( ) 
     return scale_ != Scale::Undefined ;
 }
 
+bool                            Instant::isPostEpoch                        ( ) const
+{
+    return (*this) >= Instant::Epoch() ;
+}
+
 Scale                           Instant::getScale                           ( ) const
 {
     return scale_ ;
 }
+
+// Real                            Instant::getJulianDate                      ( ) const
+// {
+
+// }
+
+// Real                            Instant::getModifiedJulianDate              ( ) const
+// {
+
+// }
+
+// time::DateTime                  Instant::getDateTime                        ( ) const
+// {
+
+// }
+
+// Uint64                          Instant::getCountSinceEpoch                 (   const   units::Time&                aTimeUnit,
+//                                                                                 const   Instant&                    anEpoch                                     )
+// {
+
+// }
 
 String                          Instant::getString                          ( ) const
 {
@@ -229,9 +270,7 @@ String                          Instant::getString                          ( ) 
 
 Instant                         Instant::inScale                            (   const   Scale&                      aTimeScale                                  ) const
 {
-    
     return Instant(Instant::ConvertCountScale(count_, scale_, aTimeScale), aTimeScale) ;
-    
 }
 
 Instant                         Instant::Undefined                          ( )
@@ -239,7 +278,34 @@ Instant                         Instant::Undefined                          ( )
     return Instant(0, true, Scale::Undefined) ;
 }
 
+// Instant                         Instant::Now                                ( )
+// {
+
+// }
+
+Instant                         Instant::Epoch                              ( )
+{
+    return Instant::J2000() ;
+}
+
+Instant                         Instant::J2000                              ( )
+{
+    return Instant(0, true, Scale::TT) ;
+}
+
 // Instant                         Instant::DateTime                           (   const   time::DateTime&             aDateTime                                   )
+// {
+
+// }
+
+// Instant                         Instant::JulianDate                         (   const   Real&                       aJulianDate,
+//                                                                                 const   Scale&                      aTimeScale                                  )
+// {
+
+// }
+
+// Instant                         Instant::ModifiedJulianDate                 (   const   Real&                       aJulianDate,
+//                                                                                 const   Scale&                      aTimeScale                                  )
 // {
 
 // }
@@ -620,7 +686,7 @@ Int64                           Instant::DUT1_UT1                           (   
                                 Instant::Count::Count                       (           Uint64                      aNanosecondCountFromEpoch,
                                                                                         bool                        isPostEpoch                                 )
                                 :   countFromEpoch_(aNanosecondCountFromEpoch),
-                                    postEpoch_(isPostEpoch)
+                                    postEpoch_((aNanosecondCountFromEpoch != 0) ? isPostEpoch : true)
 {
 
 }
@@ -667,7 +733,7 @@ bool                            Instant::Count::operator >                  (   
         return postEpoch_ ? (countFromEpoch_ > aCount.countFromEpoch_) : (aCount.countFromEpoch_ > countFromEpoch_) ;
     }
 
-    return (!postEpoch_) && aCount.postEpoch_ ;
+    return postEpoch_ && (!aCount.postEpoch_) ;
 
 }
 
@@ -679,7 +745,7 @@ bool                            Instant::Count::operator >=                 (   
         return postEpoch_ ? (countFromEpoch_ >= aCount.countFromEpoch_) : (aCount.countFromEpoch_ >= countFromEpoch_) ;
     }
 
-    return (!postEpoch_) && aCount.postEpoch_ ;
+    return postEpoch_ && (!aCount.postEpoch_) ;
 
 }
 
@@ -744,6 +810,15 @@ Instant::Count                  Instant::Count::operator +                  (   
 Instant::Count                  Instant::Count::operator -                  (           Int64                       aNanosecondDisplacement                     ) const
 {
     return (*this) + (-aNanosecondDisplacement) ;
+}
+
+String                          Instant::Count::getString                   ( ) const
+{
+
+    using library::core::types::Integer ;
+    
+    return postEpoch_ ? ("+" + std::to_string(countFromEpoch_)) : ("-" + std::to_string(countFromEpoch_)) ;
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

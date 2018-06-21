@@ -28,6 +28,7 @@ namespace time
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using library::core::types::Int64 ;
+using library::core::types::Integer ;
 using library::core::types::Real ;
 using library::core::types::String ;
 
@@ -50,6 +51,7 @@ class Duration
         {
 
             Undefined,
+            Humanized,
             ISO8601
             
         } ;
@@ -88,6 +90,9 @@ class Duration
 
         Duration&               operator /=                                 (   const   Real&                       aDivider                                    ) ;
 
+        friend Duration         operator *                                  (           double                      aMultiplier,
+                                                                                const   Duration&                   aDuration                                   ) ;
+
         friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
                                                                                 const   Duration&                   aDuration                                   ) ;
 
@@ -98,6 +103,86 @@ class Duration
         bool                    isPositive                                  ( ) const ;
         
         bool                    isStrictlyPositive                          ( ) const ;
+
+        /// @brief              Get the number of nanoseconds in duration
+        ///
+        /// @code
+        ///                     Duration::Seconds(15).nanoseconds() ; // 0
+        /// @endcode
+        ///
+        /// @return             Number of nanoseconds in duration
+
+        Integer                 getNanoseconds                              ( ) const ;
+
+        /// @brief              Get the number of microseconds in duration
+        ///
+        /// @code
+        ///                     Duration::Seconds(15).microseconds() ; // 0
+        /// @endcode
+        ///
+        /// @return             Number of microseconds in duration
+
+        Integer                 getMicroseconds                             ( ) const ;
+
+        /// @brief              Get the number of milliseconds in duration
+        ///
+        /// @code
+        ///                     Duration::Seconds(15).milliseconds() ; // 0
+        /// @endcode
+        ///
+        /// @return             Number of milliseconds in duration
+
+        Integer                 getMilliseconds                             ( ) const ;
+
+        /// @brief              Get the number of seconds in duration
+        ///
+        /// @code
+        ///                     Duration::Seconds(15).seconds() ; // 15
+        /// @endcode
+        ///
+        /// @return             Number of seconds in duration
+
+        Integer                 getSeconds                                  ( ) const ;
+
+        /// @brief              Get the number of minutes in duration
+        ///
+        /// @code
+        ///                     Duration::Seconds(15).minutes() ; // 0
+        /// @endcode
+        ///
+        /// @return             Number of minutes in duration
+
+        Integer                 getMinutes                                  ( ) const ;
+
+        /// @brief              Get the number of hours in duration
+        ///
+        /// @code
+        ///                     Duration::Seconds(15).hours() ; // 0
+        /// @endcode
+        ///
+        /// @return             Number of hours in duration
+
+        Integer                 getHours                                    ( ) const ;
+
+        /// @brief              Get the number of days in duration
+        ///
+        /// @code
+        ///                     Duration::Seconds(15).days() ; // 0
+        /// @endcode
+        ///
+        /// @return             Number of days in duration
+
+        Integer                 getDays                                     ( ) const ;
+
+        /// @brief              Get the number of weeks in duration
+        ///
+        /// @code
+        ///                     Duration::Seconds(15).weeks() ; // 0
+        /// @endcode
+        ///
+        /// @return             Number of weeks in duration
+
+        Integer                 getWeeks                                    ( ) const ;
 
         Real                    inNanoseconds                               ( ) const ;
 

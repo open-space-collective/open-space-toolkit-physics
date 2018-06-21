@@ -13,6 +13,9 @@
 #include <Library/Core/Error.hpp>
 #include <Library/Core/Utilities.hpp>
 
+#include <iostream>
+#include <cmath>
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 namespace library
@@ -168,12 +171,26 @@ Duration                        Duration::operator /                        (   
 
 Duration                        Duration::operator +                        ( ) const
 {
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Duration") ;
+    }
+    
     return (*this) ;
+
 }
 
 Duration                        Duration::operator -                        ( ) const
 {
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Duration") ;
+    }
+    
     return Duration(-count_) ;
+
 }
 
 Duration&                       Duration::operator +=                       (   const   Duration&                   aDuration                                   )
@@ -247,6 +264,19 @@ Duration&                       Duration::operator /=                       (   
 
 }
 
+Duration                        operator *                                  (           double                      aMultiplier,
+                                                                                const   Duration&                   aDuration                                   )
+{
+
+    if (!aDuration.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Duration") ;
+    }
+    
+    return Duration(aMultiplier * aDuration.count_) ;
+
+}
+
 std::ostream&                   operator <<                                 (           std::ostream&               anOutputStream,
                                                                                 const   Duration&                   aDuration                                   )
 {
@@ -268,17 +298,135 @@ bool                            Duration::isDefined                         ( ) 
 
 bool                            Duration::isZero                            ( ) const
 {
-    return this->isDefined() && (count_ == 0) ;
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Duration") ;
+    }
+
+    return count_ == 0 ;
 }
 
 bool                            Duration::isPositive                        ( ) const
 {
-    return this->isDefined() && (count_ >= 0) ;
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Duration") ;
+    }
+    
+    return count_ >= 0 ;
+
 }
 
 bool                            Duration::isStrictlyPositive                ( ) const
 {
-    return this->isDefined() && (count_ > 0) ;
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Duration") ;
+    }
+    
+    return count_ > 0 ;
+
+}
+
+Integer                         Duration::getNanoseconds                    ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Duration") ;
+    }
+
+    // [TBM] This can be refactored and optimized
+
+    return Integer::Int64((std::abs(count_) - ((static_cast<Int64>(this->getDays()) * 24 * 60 * 60 * 1000000) + (static_cast<Int64>(this->getHours()) * 60 * 60 * 1000000) + (static_cast<Int64>(this->getMinutes()) * 60 * 1000000) + (static_cast<Int64>(this->getSeconds() * 1000000)) + (static_cast<Int64>(this->getMilliseconds()) * 1000) + (static_cast<Int64>(this->getMicroseconds()))) * 1000)) ;
+
+}
+
+Integer                         Duration::getMicroseconds                   ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Duration") ;
+    }
+
+    return Integer::Int64((std::abs(count_) - ((static_cast<Int64>(this->getDays()) * 24 * 60 * 60 * 1000) + (static_cast<Int64>(this->getHours()) * 60 * 60 * 1000) + (static_cast<Int64>(this->getMinutes()) * 60 * 1000) + (static_cast<Int64>(this->getSeconds() * 1000)) + (static_cast<Int64>(this->getMilliseconds()))) * 1000000) / 1000) ;
+
+}
+
+Integer                         Duration::getMilliseconds                   ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Duration") ;
+    }
+
+    return Integer::Int64((std::abs(count_) - ((static_cast<Int64>(this->getDays()) * 24 * 60 * 60) + (static_cast<Int64>(this->getHours()) * 60 * 60) + (static_cast<Int64>(this->getMinutes()) * 60) + (static_cast<Int64>(this->getSeconds()))) * 1000000000) / 1000000) ;
+
+}
+
+Integer                         Duration::getSeconds                        ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Duration") ;
+    }
+
+    return Integer::Int64((std::abs(count_) - ((static_cast<Int64>(this->getDays() * 24 * 60)) + (static_cast<Int64>(this->getHours() * 60)) + (static_cast<Int64>(this->getMinutes()))) * 60 * 1000000000) / 1000000000) ;
+
+}
+
+Integer                         Duration::getMinutes                        ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Duration") ;
+    }
+
+    return Integer::Int64((std::abs(count_) - ((static_cast<Int64>(this->getDays()) * 24) + (static_cast<Int64>(this->getHours()))) * 60 * 60 * 1000000000) / (Int64(60) * 1000000000)) ;
+
+}
+
+Integer                         Duration::getHours                          ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Duration") ;
+    }
+
+    return Integer::Int64((std::abs(count_) - static_cast<Int64>(this->getDays()) * 24 * 60 * 60 * 1000000000) / (Int64(60) * 60 * 1000000000)) ;
+
+}
+
+Integer                         Duration::getDays                           ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Duration") ;
+    }
+
+    return Integer::Int64(static_cast<Int64>(std::floor(std::abs(count_) / 86400000000000.0))) ;
+
+}
+
+Integer                         Duration::getWeeks                          ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Duration") ;
+    }
+
+    return Integer::Int64(static_cast<Int64>(std::floor(std::abs(count_) / 604800000000000.0))) ;
+
 }
 
 Real                            Duration::inNanoseconds                     ( ) const
@@ -437,10 +585,22 @@ Duration                        Duration::getAbsolute                       ( ) 
 String                          Duration::getString                         (   const   Duration::Format&           aFormat                                     ) const
 {
 
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Duration") ;
+    }
+
     switch (aFormat)
     {
 
         case Duration::Format::Undefined:
+        {
+
+            break ;
+
+        }
+
+        case Duration::Format::Humanized:
             break ;
 
         case Duration::Format::ISO8601:
@@ -451,7 +611,7 @@ String                          Duration::getString                         (   
 
     }
 
-    throw library::core::error::runtime::ToBeImplemented("Duration::getString") ;
+    // throw library::core::error::runtime::ToBeImplemented("Duration::getString") ;
 
     return String::Empty() ;
 

@@ -41,7 +41,7 @@ enum class Scale
     Undefined,                  ///< Undefined time
 
     UTC,                        ///< Coordinated Universal Time
-    TT,                         ///< Terrestial Time (also known as TDT)
+    TT,                         ///< Terrestial Time (a.k.a. TDT)
     TAI,                        ///< International Atomic Time
     
     UT1,                        ///< Universal Time

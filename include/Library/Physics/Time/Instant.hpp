@@ -141,6 +141,8 @@ class Instant
 
                 Count           operator -                                  (           Int64                       aNanosecondDisplacement                     ) const ;
 
+                String          getString                                   ( ) const ;
+
         } ;
 
         Instant::Count          count_ ;
