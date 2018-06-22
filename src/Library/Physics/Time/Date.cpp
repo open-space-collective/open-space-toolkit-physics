@@ -12,6 +12,9 @@
 #include <Library/Core/Error.hpp>
 #include <Library/Core/Utilities.hpp>
 
+#include <boost/regex.hpp>
+#include <boost/lexical_cast.hpp>
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 namespace library
@@ -31,6 +34,18 @@ namespace time
                                     month_(aMonth),
                                     day_(aDay)
 {
+
+    if ((month_ == 0) || (month_ > 12))
+    {
+        throw library::core::error::RuntimeError(String::Format("Month {} out of range [1 - 12].", month_)) ;
+    }
+
+    if ((day_ == 0) || (day_ > 31))
+    {
+        throw library::core::error::RuntimeError(String::Format("Day {} out of range [1 - 31].", day_)) ;
+    }
+
+    // VALIDATE DATE
 
 }
 
@@ -81,17 +96,38 @@ bool                            Date::isDefined                             ( ) 
 
 Int16                           Date::getYear                               ( ) const
 {
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Date") ;
+    }
+    
     return year_ ;
+
 }
 
 Uint8                           Date::getMonth                              ( ) const
 {
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Date") ;
+    }
+    
     return month_ ;
+
 }
 
 Uint8                           Date::getDay                                ( ) const
 {
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Date") ;
+    }
+    
     return day_ ;
+
 }
 
 String                          Date::getString                             ( ) const
@@ -108,17 +144,48 @@ String                          Date::getString                             ( ) 
 
 void                            Date::setYear                               (           Int16                       aYear                                       )
 {
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Date") ;
+    }
+    
     year_ = aYear ;
+
 }
 
 void                            Date::setMonth                              (           Uint8                       aMonth                                      )
 {
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Date") ;
+    }
+
+    if ((aMonth == 0) || (aMonth > 12))
+    {
+        throw library::core::error::RuntimeError(String::Format("Month {} out of range [1 - 12].", aMonth)) ;
+    }
+    
     month_ = aMonth ;
+
 }
 
 void                            Date::setDay                                (           Uint8                       aDay                                        )
 {
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Date") ;
+    }
+
+    if ((aDay == 0) || (aDay > 31))
+    {
+        throw library::core::error::RuntimeError(String::Format("Day {} out of range [1 - 31].", aDay)) ;
+    }
+    
     day_ = aDay ;
+
 }
 
 Date                            Date::Undefined                             ( )
@@ -149,6 +216,44 @@ Date                            Date::JulianDate                            ( )
 Date                            Date::ModifiedJulianDate                    ( )
 {
     return Date(1858, 11, 17) ;
+}
+
+Date                            Date::Parse                                 (   const   String&                     aString                                     )
+{
+
+    if (aString.isEmpty())
+    {
+        throw library::core::error::runtime::Undefined("String") ;
+    }
+
+    boost::smatch match ;
+
+    if (boost::regex_match(aString, match, boost::regex("^([-]?[0-9]+)-([0-9]{2})-([0-9]{2})$")))
+    {
+
+        try
+        {
+
+            const Int16 year = boost::lexical_cast<Int16>(match[1]) ;
+            const Uint8 month = boost::lexical_cast<Int16>(match[2]) ;
+            const Uint8 day = boost::lexical_cast<Int16>(match[3]) ;
+
+            return Date(year, month, day) ;
+
+        }
+        catch (const boost::bad_lexical_cast& e)
+        {
+            throw library::core::error::RuntimeError("Cannot parse date string [" + aString + "] (parsing error).") ;
+        }
+
+    }
+    else
+    {
+        throw library::core::error::RuntimeError("Cannot parse date string [" + aString + "].") ;
+    }
+
+    return Date::Undefined() ;
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

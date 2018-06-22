@@ -193,6 +193,17 @@ class Date
 
         static Date             ModifiedJulianDate                          ( ) ;
 
+        /// @brief              Constructs a date from a string representation
+        ///
+        /// @code
+        ///                     Date date = Date::Parse("2018-01-02") ; // 2018-01-02
+        /// @endcode
+        ///
+        /// @param              [in] aString A string
+        /// @return             Date
+
+        static Date             Parse                                       (   const   String&                     aString                                     ) ;
+
     private:
 
         bool                    defined_ ;
