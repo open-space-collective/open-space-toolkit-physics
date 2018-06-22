@@ -2035,17 +2035,202 @@ TEST (Library_Physics_Time_Duration, Between)
 
 }
 
-// TEST (Library_Physics_Time_Duration, Parse)
-// {
+TEST (Library_Physics_Time_Duration, Parse)
+{
     
-//     using library::physics::time::Duration ;
+    using library::physics::time::Duration ;
 
-//     {
+    // Undefined (automatic format detection)
+    
+    {
 
-//         FAIL() ;
+        EXPECT_EQ(Duration::Zero(), Duration::Parse("00.000.000.000")) ;
+        EXPECT_EQ(Duration::Zero(), Duration::Parse("PT0H0M0S")) ;
 
-//     }
+    }
 
-// }
+    // Standard
+
+    {
+
+        EXPECT_EQ(Duration::Zero(), Duration::Parse("00.000.000.000", Duration::Format::Standard)) ;
+
+        EXPECT_EQ(Duration::Nanoseconds(+1.0), Duration::Parse("00.000.000.001", Duration::Format::Standard)) ;
+        EXPECT_EQ(Duration::Nanoseconds(+12.0), Duration::Parse("00.000.000.012", Duration::Format::Standard)) ;
+        EXPECT_EQ(Duration::Nanoseconds(+123.0), Duration::Parse("00.000.000.123", Duration::Format::Standard)) ;
+
+        EXPECT_EQ(Duration::Microseconds(+1.0), Duration::Parse("00.000.001.000", Duration::Format::Standard)) ;
+        EXPECT_EQ(Duration::Microseconds(+12.0), Duration::Parse("00.000.012.000", Duration::Format::Standard)) ;
+        EXPECT_EQ(Duration::Microseconds(+123.0), Duration::Parse("00.000.123.000", Duration::Format::Standard)) ;
+
+        EXPECT_EQ(Duration::Milliseconds(+1.0), Duration::Parse("00.001.000.000", Duration::Format::Standard)) ;
+        EXPECT_EQ(Duration::Milliseconds(+12.0), Duration::Parse("00.012.000.000", Duration::Format::Standard)) ;
+        EXPECT_EQ(Duration::Milliseconds(+123.0), Duration::Parse("00.123.000.000", Duration::Format::Standard)) ;
+
+        EXPECT_EQ(Duration::Seconds(+1.0), Duration::Parse("01.000.000.000", Duration::Format::Standard)) ;
+        EXPECT_EQ(Duration::Seconds(+12.0), Duration::Parse("12.000.000.000", Duration::Format::Standard)) ;
+
+        EXPECT_EQ((Duration::Minutes(+1.0) + Duration::Seconds(+2.0)), Duration::Parse("01:02.000.000.000", Duration::Format::Standard)) ;
+        EXPECT_EQ((Duration::Minutes(+12.0) + Duration::Seconds(+34.0)), Duration::Parse("12:34.000.000.000", Duration::Format::Standard)) ;
+
+        EXPECT_EQ((Duration::Hours(+1.0) + Duration::Minutes(+2.0) + Duration::Seconds(+3.0)), Duration::Parse("01:02:03.000.000.000", Duration::Format::Standard)) ;
+        EXPECT_EQ((Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0)), Duration::Parse("12:34:56.000.000.000", Duration::Format::Standard)) ;
+
+        EXPECT_EQ((Duration::Days(+1.0) + Duration::Hours(+1.0) + Duration::Minutes(+2.0) + Duration::Seconds(+3.0)), Duration::Parse("1 01:02:03.000.000.000", Duration::Format::Standard)) ;
+        EXPECT_EQ((Duration::Days(+3.0) + Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0)), Duration::Parse("3 12:34:56.000.000.000", Duration::Format::Standard)) ;
+        EXPECT_EQ((Duration::Days(+7.0) + Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0)), Duration::Parse("7 12:34:56.000.000.000", Duration::Format::Standard)) ;
+        EXPECT_EQ((Duration::Days(+14.0) + Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0)), Duration::Parse("14 12:34:56.000.000.000", Duration::Format::Standard)) ;
+        EXPECT_EQ((Duration::Days(+99.0) + Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0)), Duration::Parse("99 12:34:56.000.000.000", Duration::Format::Standard)) ;
+
+        EXPECT_EQ((Duration::Days(+1.0) + Duration::Hours(+1.0) + Duration::Minutes(+2.0) + Duration::Seconds(+3.0) + Duration::Milliseconds(+123.0) + Duration::Microseconds(+456.0) + Duration::Nanoseconds(+789.0)), Duration::Parse("1 01:02:03.123.456.789", Duration::Format::Standard)) ;
+
+        EXPECT_EQ(Duration::Nanoseconds(-1.0), Duration::Parse("-00.000.000.001", Duration::Format::Standard)) ;
+        EXPECT_EQ(Duration::Nanoseconds(-12.0), Duration::Parse("-00.000.000.012", Duration::Format::Standard)) ;
+        EXPECT_EQ(Duration::Nanoseconds(-123.0), Duration::Parse("-00.000.000.123", Duration::Format::Standard)) ;
+
+        EXPECT_EQ(Duration::Microseconds(-1.0), Duration::Parse("-00.000.001.000", Duration::Format::Standard)) ;
+        EXPECT_EQ(Duration::Microseconds(-12.0), Duration::Parse("-00.000.012.000", Duration::Format::Standard)) ;
+        EXPECT_EQ(Duration::Microseconds(-123.0), Duration::Parse("-00.000.123.000", Duration::Format::Standard)) ;
+
+        EXPECT_EQ(Duration::Milliseconds(-1.0), Duration::Parse("-00.001.000.000", Duration::Format::Standard)) ;
+        EXPECT_EQ(Duration::Milliseconds(-12.0), Duration::Parse("-00.012.000.000", Duration::Format::Standard)) ;
+        EXPECT_EQ(Duration::Milliseconds(-123.0), Duration::Parse("-00.123.000.000", Duration::Format::Standard)) ;
+
+        EXPECT_EQ((-Duration::Seconds(+1.0)), Duration::Parse("-01.000.000.000", Duration::Format::Standard)) ;
+        EXPECT_EQ((-Duration::Seconds(+12.0)), Duration::Parse("-12.000.000.000", Duration::Format::Standard)) ;
+
+        EXPECT_EQ((-(Duration::Minutes(+1.0) + Duration::Seconds(+2.0))), Duration::Parse("-01:02.000.000.000", Duration::Format::Standard)) ;
+        EXPECT_EQ((-(Duration::Minutes(+12.0) + Duration::Seconds(+34.0))), Duration::Parse("-12:34.000.000.000", Duration::Format::Standard)) ;
+
+        EXPECT_EQ((-(Duration::Hours(+1.0) + Duration::Minutes(+2.0) + Duration::Seconds(+3.0))), Duration::Parse("-01:02:03.000.000.000", Duration::Format::Standard)) ;
+        EXPECT_EQ((-(Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0))), Duration::Parse("-12:34:56.000.000.000", Duration::Format::Standard)) ;
+
+        EXPECT_EQ((-(Duration::Days(+1.0) + Duration::Hours(+1.0) + Duration::Minutes(+2.0) + Duration::Seconds(+3.0))), Duration::Parse("-1 01:02:03.000.000.000", Duration::Format::Standard)) ;
+        EXPECT_EQ((-(Duration::Days(+3.0) + Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0))), Duration::Parse("-3 12:34:56.000.000.000", Duration::Format::Standard)) ;
+        EXPECT_EQ((-(Duration::Days(+7.0) + Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0))), Duration::Parse("-7 12:34:56.000.000.000", Duration::Format::Standard)) ;
+        EXPECT_EQ((-(Duration::Days(+14.0) + Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0))), Duration::Parse("-14 12:34:56.000.000.000", Duration::Format::Standard)) ;
+        EXPECT_EQ((-(Duration::Days(+99.0) + Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0))), Duration::Parse("-99 12:34:56.000.000.000", Duration::Format::Standard)) ;
+
+        EXPECT_EQ((-(Duration::Days(+1.0) + Duration::Hours(+1.0) + Duration::Minutes(+2.0) + Duration::Seconds(+3.0) + Duration::Milliseconds(+123.0) + Duration::Microseconds(+456.0) + Duration::Nanoseconds(+789.0))), Duration::Parse("-1 01:02:03.123.456.789", Duration::Format::Standard)) ;
+
+        for (auto idx = 0; idx < 100000; idx += 10)
+        {
+            
+            const Duration duration = Duration::Days(idx)
+                                    + Duration::Hours(idx)
+                                    + Duration::Minutes(idx)
+                                    + Duration::Seconds(idx)
+                                    + Duration::Milliseconds(idx)
+                                    + Duration::Microseconds(idx)
+                                    + Duration::Nanoseconds(idx) ;
+                                    
+            EXPECT_EQ(duration, Duration::Parse(duration.getString(Duration::Format::Standard), Duration::Format::Standard)) ;
+            EXPECT_EQ((-duration), Duration::Parse((-duration).getString(Duration::Format::Standard), Duration::Format::Standard)) ;
+
+        }
+
+    }
+
+    // ISO 8601
+
+    {
+
+        EXPECT_EQ(Duration::Zero(), Duration::Parse("PT0H0M0S", Duration::Format::ISO8601)) ;
+
+        EXPECT_EQ(Duration::Nanoseconds(+1.0), Duration::Parse("PT0.000000001S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ(Duration::Nanoseconds(+10.0), Duration::Parse("PT0.00000001S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ(Duration::Nanoseconds(+100.0), Duration::Parse("PT0.0000001S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ(Duration::Nanoseconds(+12.0), Duration::Parse("PT0.000000012S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ(Duration::Nanoseconds(+123.0), Duration::Parse("PT0.000000123S", Duration::Format::ISO8601)) ;
+
+        EXPECT_EQ(Duration::Microseconds(+1.0), Duration::Parse("PT0.000001S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ(Duration::Microseconds(+10.0), Duration::Parse("PT0.00001S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ(Duration::Microseconds(+100.0), Duration::Parse("PT0.0001S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ(Duration::Microseconds(+12.0), Duration::Parse("PT0.000012S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ(Duration::Microseconds(+123.0), Duration::Parse("PT0.000123S", Duration::Format::ISO8601)) ;
+
+        EXPECT_EQ(Duration::Milliseconds(+1.0), Duration::Parse("PT0.001S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ(Duration::Milliseconds(+10.0), Duration::Parse("PT0.01S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ(Duration::Milliseconds(+100.0), Duration::Parse("PT0.1S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ(Duration::Milliseconds(+12.0), Duration::Parse("PT0.012S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ(Duration::Milliseconds(+123.0), Duration::Parse("PT0.123S", Duration::Format::ISO8601)) ;
+
+        EXPECT_EQ(Duration::Seconds(+1.0), Duration::Parse("PT1S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ(Duration::Seconds(+12.0), Duration::Parse("PT12S", Duration::Format::ISO8601)) ;
+
+        EXPECT_EQ((Duration::Minutes(+1.0) + Duration::Seconds(+2.0)), Duration::Parse("PT1M2S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ((Duration::Minutes(+12.0) + Duration::Seconds(+34.0)), Duration::Parse("PT12M34S", Duration::Format::ISO8601)) ;
+
+        EXPECT_EQ((Duration::Hours(+1.0) + Duration::Minutes(+2.0) + Duration::Seconds(+3.0)), Duration::Parse("PT1H2M3S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ((Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0)), Duration::Parse("PT12H34M56S", Duration::Format::ISO8601)) ;
+
+        EXPECT_EQ((Duration::Days(+1.0)), Duration::Parse("P1D", Duration::Format::ISO8601)) ;
+        EXPECT_EQ((Duration::Days(+1.0) + Duration::Hours(+1.0)), Duration::Parse("P1DT1H", Duration::Format::ISO8601)) ;
+        EXPECT_EQ((Duration::Days(+1.0) + Duration::Hours(+1.0) + Duration::Minutes(+2.0)), Duration::Parse("P1DT1H2M", Duration::Format::ISO8601)) ;
+        EXPECT_EQ((Duration::Days(+1.0) + Duration::Hours(+1.0) + Duration::Minutes(+2.0) + Duration::Seconds(+3.0)), Duration::Parse("P1DT1H2M3S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ((Duration::Days(+3.0) + Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0)), Duration::Parse("P3DT12H34M56S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ((Duration::Days(+7.0) + Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0)), Duration::Parse("P7DT12H34M56S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ((Duration::Days(+14.0) + Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0)), Duration::Parse("P14DT12H34M56S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ((Duration::Days(+99.0) + Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0)), Duration::Parse("P99DT12H34M56S", Duration::Format::ISO8601)) ;
+
+        EXPECT_EQ((Duration::Days(+1.0) + Duration::Hours(+1.0) + Duration::Minutes(+2.0) + Duration::Seconds(+3.0) + Duration::Milliseconds(+123.0) + Duration::Microseconds(+456.0) + Duration::Nanoseconds(+789.0)), Duration::Parse("P1DT1H2M3.123456789S", Duration::Format::ISO8601)) ;
+
+        EXPECT_EQ(Duration::Nanoseconds(-1.0), Duration::Parse("-PT0.000000001S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ(Duration::Nanoseconds(-10.0), Duration::Parse("-PT0.00000001S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ(Duration::Nanoseconds(-100.0), Duration::Parse("-PT0.0000001S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ(Duration::Nanoseconds(-12.0), Duration::Parse("-PT0.000000012S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ(Duration::Nanoseconds(-123.0), Duration::Parse("-PT0.000000123S", Duration::Format::ISO8601)) ;
+
+        EXPECT_EQ(Duration::Microseconds(-1.0), Duration::Parse("-PT0.000001S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ(Duration::Microseconds(-10.0), Duration::Parse("-PT0.00001S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ(Duration::Microseconds(-100.0), Duration::Parse("-PT0.0001S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ(Duration::Microseconds(-12.0), Duration::Parse("-PT0.000012S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ(Duration::Microseconds(-123.0), Duration::Parse("-PT0.000123S", Duration::Format::ISO8601)) ;
+
+        EXPECT_EQ(Duration::Milliseconds(-1.0), Duration::Parse("-PT0.001S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ(Duration::Milliseconds(-10.0), Duration::Parse("-PT0.01S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ(Duration::Milliseconds(-100.0), Duration::Parse("-PT0.1S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ(Duration::Milliseconds(-12.0), Duration::Parse("-PT0.012S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ(Duration::Milliseconds(-123.0), Duration::Parse("-PT0.123S", Duration::Format::ISO8601)) ;
+
+        EXPECT_EQ(Duration::Seconds(-1.0), Duration::Parse("-PT1S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ(Duration::Seconds(-12.0), Duration::Parse("-PT12S", Duration::Format::ISO8601)) ;
+
+        EXPECT_EQ((-(Duration::Minutes(+1.0) + Duration::Seconds(+2.0))), Duration::Parse("-PT1M2S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ((-(Duration::Minutes(+12.0) + Duration::Seconds(+34.0))), Duration::Parse("-PT12M34S", Duration::Format::ISO8601)) ;
+
+        EXPECT_EQ((-(Duration::Hours(+1.0) + Duration::Minutes(+2.0) + Duration::Seconds(+3.0))), Duration::Parse("-PT1H2M3S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ((-(Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0))), Duration::Parse("-PT12H34M56S", Duration::Format::ISO8601)) ;
+
+        EXPECT_EQ((-(Duration::Days(+1.0))), Duration::Parse("-P1D", Duration::Format::ISO8601)) ;
+        EXPECT_EQ((-(Duration::Days(+1.0) + Duration::Hours(+1.0))), Duration::Parse("-P1DT1H", Duration::Format::ISO8601)) ;
+        EXPECT_EQ((-(Duration::Days(+1.0) + Duration::Hours(+1.0) + Duration::Minutes(+2.0))), Duration::Parse("-P1DT1H2M", Duration::Format::ISO8601)) ;
+        EXPECT_EQ((-(Duration::Days(+1.0) + Duration::Hours(+1.0) + Duration::Minutes(+2.0) + Duration::Seconds(+3.0))), Duration::Parse("-P1DT1H2M3S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ((-(Duration::Days(+3.0) + Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0))), Duration::Parse("-P3DT12H34M56S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ((-(Duration::Days(+7.0) + Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0))), Duration::Parse("-P7DT12H34M56S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ((-(Duration::Days(+14.0) + Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0))), Duration::Parse("-P14DT12H34M56S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ((-(Duration::Days(+99.0) + Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0))), Duration::Parse("-P99DT12H34M56S", Duration::Format::ISO8601)) ;
+
+        EXPECT_EQ((-(Duration::Days(+1.0) + Duration::Hours(+1.0) + Duration::Minutes(+2.0) + Duration::Seconds(+3.0) + Duration::Milliseconds(+123.0) + Duration::Microseconds(+456.0) + Duration::Nanoseconds(+789.0))), Duration::Parse("-P1DT1H2M3.123456789S", Duration::Format::ISO8601)) ;
+
+        for (auto idx = 0; idx < 100000; idx += 10)
+        {
+            
+            const Duration duration = Duration::Days(idx)
+                                    + Duration::Hours(idx)
+                                    + Duration::Minutes(idx)
+                                    + Duration::Seconds(idx)
+                                    + Duration::Milliseconds(idx)
+                                    + Duration::Microseconds(idx)
+                                    + Duration::Nanoseconds(idx) ;
+                                    
+            EXPECT_EQ(duration, Duration::Parse(duration.getString(Duration::Format::ISO8601), Duration::Format::ISO8601)) ;
+            EXPECT_EQ((-duration), Duration::Parse((-duration).getString(Duration::Format::ISO8601), Duration::Format::ISO8601)) ;
+
+        }
+
+    }
+
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

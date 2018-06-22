@@ -50,6 +50,7 @@ class Duration
         enum class Format
         {
 
+            Undefined,
             Standard,
             ISO8601
             
@@ -228,7 +229,8 @@ class Duration
         static Duration         Between                                     (   const   Instant&                    aFirstInstant,
                                                                                 const   Instant&                    aSecondInstant                              ) ;
 
-        static Duration         Parse                                       (   const   String&                     aString                                     ) ;
+        static Duration         Parse                                       (   const   String&                     aString,
+                                                                                const   Duration::Format&           aFormat                                     =   Duration::Format::Undefined ) ;
 
     private:
 

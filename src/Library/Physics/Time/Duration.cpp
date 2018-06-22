@@ -13,6 +13,9 @@
 #include <Library/Core/Error.hpp>
 #include <Library/Core/Utilities.hpp>
 
+#include <boost/regex.hpp>
+#include <boost/lexical_cast.hpp>
+
 #include <iostream>
 #include <cmath>
 
@@ -771,10 +774,195 @@ Duration                        Duration::Between                           (   
     return aSecondInstant - aFirstInstant ;
 }
 
-// Duration                        Duration::Parse                             (   const   String&                     aString                                     )
-// {
+Duration                        Duration::Parse                             (   const   String&                     aString,
+                                                                                const   Duration::Format&           aFormat                                     )
+{
 
-// }
+    if (aString.isEmpty())
+    {
+        throw library::core::error::runtime::Undefined("String") ;
+    }
+
+    switch (aFormat)
+    {
+
+        case Duration::Format::Undefined: // Automatic format determination
+        {
+
+            if ((aString.getLength() > 1) && ((aString[0] == 'P') || (aString[1] == 'P')))
+            {
+                return Duration::Parse(aString, Duration::Format::ISO8601) ;
+            }
+            
+            return Duration::Parse(aString, Duration::Format::Standard) ;
+
+        }
+
+        case Duration::Format::Standard:
+        {
+
+            boost::smatch match ;
+
+            if (boost::regex_match(aString, match, boost::regex("^([-])?(?:([0-9]+) )?(?:([0-9]{2}):)?(?:([0-9]{2}):)?([0-9]{2})(?:\\.([0-9]{3}))?(?:\\.([0-9]{3}))?(?:\\.([0-9]{3}))?$")))
+            {
+
+                try
+                {
+
+                    const bool isNegative = (match[1] == "-") ;
+
+                    const Int64 days = (match[2] != "") ? boost::lexical_cast<Int64>(match[2]) : 0 ;
+                    const Int64 hours = ((match[3] != "") && (match[4] != "")) ? boost::lexical_cast<Int64>(match[3]) : 0 ;
+                    const Int64 minutes = (match[4] != "") ? boost::lexical_cast<Int64>(match[4]) : ((match[3] != "") ? boost::lexical_cast<Int64>(match[3]) : 0) ;
+                    const Int64 seconds = (match[5] != "") ? boost::lexical_cast<Int64>(match[5]) : 0 ;
+                    const Int64 milliseconds = (match[6] != "") ? boost::lexical_cast<Int64>(match[6]) : 0 ;
+                    const Int64 microseconds = (match[7] != "") ? boost::lexical_cast<Int64>(match[7]) : 0 ;
+                    const Int64 nanoseconds = (match[8] != "") ? boost::lexical_cast<Int64>(match[8]) : 0 ;
+
+                    const Duration duration = Duration::Days(days) 
+                                            + Duration::Hours(hours) 
+                                            + Duration::Minutes(minutes) 
+                                            + Duration::Seconds(seconds) 
+                                            + Duration::Milliseconds(milliseconds)
+                                            + Duration::Microseconds(microseconds)
+                                            + Duration::Nanoseconds(nanoseconds) ;
+
+                    return (!isNegative) ? duration : -duration ;
+
+                }
+                catch (const boost::bad_lexical_cast& e)
+                {
+                    throw library::core::error::RuntimeError("Cannot parse [Standard] duration string [" + aString + "] (parsing error).") ;
+                }
+
+            }
+            else
+            {
+                throw library::core::error::RuntimeError("Cannot parse [Standard] duration string [" + aString + "].") ;
+            }
+
+            break ;
+
+        }
+
+        case Duration::Format::ISO8601:
+        {
+
+            boost::smatch match ;
+
+            // if (boost::regex_match(aString, match, boost::regex("^([-])?P(?:([0-9]+)Y)?(?:([0-9]+)M)?(?:([0-9]+)D)?(?:T(?:([0-9]{1,2})H)?(?:([0-9]{1,2})M)?(?:(?:([0-9]{1,2})(?:\\.([0-9]{1,9}))?)S)?)?$")))
+            if (boost::regex_match(aString, match, boost::regex("^([-])?P(?:([0-9]+)D)?(?:T(?:([0-9]{1,2})H)?(?:([0-9]{1,2})M)?(?:(?:([0-9]{1,2})(?:\\.([0-9]{1,9}))?)S)?)?$"))) // Does not support [M]onth and [Y]ear groups
+            {
+
+                try
+                {
+
+                    const bool isNegative = (match[1] == "-") ;
+                    
+                    const Int64 days = (match[2] != "") ? boost::lexical_cast<Int64>(match[2]) : 0 ;
+                    const Int64 hours = (match[3] != "") ? boost::lexical_cast<Int64>(match[3]) : 0 ;
+                    const Int64 minutes = (match[4] != "") ? boost::lexical_cast<Int64>(match[4]) : 0 ;
+                    const Int64 seconds = (match[5] != "") ? boost::lexical_cast<Int64>(match[5]) : 0 ;
+
+                    Int64 milliseconds = 0 ;
+                    Int64 microseconds = 0 ;
+                    Int64 nanoseconds = 0 ;
+
+                    if (match[6] != "")
+                    {
+
+                        const String floatingPartString(match[6]) ;
+
+                        switch (floatingPartString.getLength())
+                        {
+
+                            case 1:
+                                milliseconds = boost::lexical_cast<Int64>(floatingPartString) * 100 ;
+                                break ;
+
+                            case 2:
+                                milliseconds = boost::lexical_cast<Int64>(floatingPartString) * 10 ;
+                                break ;
+
+                            case 3:
+                                milliseconds = boost::lexical_cast<Int64>(floatingPartString) ;
+                                break ;
+
+                            case 4:
+                                milliseconds = boost::lexical_cast<Int64>(floatingPartString.getSubstring(0, 3)) ;
+                                microseconds = boost::lexical_cast<Int64>(floatingPartString.getSubstring(3, 1)) * 100 ;
+                                break ;
+
+                            case 5:
+                                milliseconds = boost::lexical_cast<Int64>(floatingPartString.getSubstring(0, 3)) ;
+                                microseconds = boost::lexical_cast<Int64>(floatingPartString.getSubstring(3, 2)) * 10 ;
+                                break ;
+
+                            case 6:
+                                milliseconds = boost::lexical_cast<Int64>(floatingPartString.getSubstring(0, 3)) ;
+                                microseconds = boost::lexical_cast<Int64>(floatingPartString.getSubstring(3, 3)) ;
+                                break ;
+
+                            case 7:
+                                milliseconds = boost::lexical_cast<Int64>(floatingPartString.getSubstring(0, 3)) ;
+                                microseconds = boost::lexical_cast<Int64>(floatingPartString.getSubstring(3, 3)) ;
+                                nanoseconds = boost::lexical_cast<Int64>(floatingPartString.getSubstring(6, 1)) * 100 ;
+                                break ;
+
+                            case 8:
+                                milliseconds = boost::lexical_cast<Int64>(floatingPartString.getSubstring(0, 3)) ;
+                                microseconds = boost::lexical_cast<Int64>(floatingPartString.getSubstring(3, 3)) ;
+                                nanoseconds = boost::lexical_cast<Int64>(floatingPartString.getSubstring(6, 2)) * 10 ;
+                                break ;
+
+                            case 9:
+                                milliseconds = boost::lexical_cast<Int64>(floatingPartString.getSubstring(0, 3)) ;
+                                microseconds = boost::lexical_cast<Int64>(floatingPartString.getSubstring(3, 3)) ;
+                                nanoseconds = boost::lexical_cast<Int64>(floatingPartString.getSubstring(6, 3)) ;
+                                break ;
+
+                            default:
+                                break ;
+
+                        }
+
+                    }
+
+                    const Duration duration = Duration::Days(days)
+                                            + Duration::Hours(hours)
+                                            + Duration::Minutes(minutes)
+                                            + Duration::Seconds(seconds) 
+                                            + Duration::Milliseconds(milliseconds)
+                                            + Duration::Microseconds(microseconds)
+                                            + Duration::Nanoseconds(nanoseconds) ;
+
+                    return (!isNegative) ? duration : -duration ;
+
+                }
+                catch (const boost::bad_lexical_cast& e)
+                {
+                    throw library::core::error::RuntimeError("Cannot parse [ISO 8601] duration string [" + aString + "] (parsing error).") ;
+                }
+
+            }
+            else
+            {
+                throw library::core::error::RuntimeError("Cannot parse [ISO 8601] duration string [" + aString + "].") ;
+            }
+
+            break ;
+
+        }
+
+        default:
+            throw library::core::error::runtime::Wrong("Format") ;
+            break ;
+
+    }
+
+    return Duration::Undefined() ;
+
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
