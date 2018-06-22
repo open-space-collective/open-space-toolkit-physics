@@ -39,18 +39,20 @@ using library::physics::time::Duration ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @brief                      Infinitesimal moment in time
+/// @brief                      Point in time
 ///
 /// @ref                        https://en.wikipedia.org/wiki/Instant
+/// @ref                        https://www.boost.org/doc/libs/1_67_0/doc/html/date_time/details.html#date_time.calculations
+/// @ref                        http://rhodesmill.org/skyfield/time.html
+/// @ref                        http://www.madore.org/~david/computers/unix-leap-seconds.html
+/// @ref                        http://help.agi.com/AGIComponentsJava/html/TimeAndTimeStandards.htm
 
 class Instant
 {
 
     public:
 
-                                Instant                                     (           Uint64                      aNanosecondCountFromEpoch,
-                                                                                        bool                        isPostEpoch,
-                                                                                const   Scale&                      aTimeScale                                  ) ;
+                                Instant                                     ( ) = delete ;
 
         bool                    operator ==                                 (   const   Instant&                    anInstant                                   ) const ;
         
@@ -100,7 +102,17 @@ class Instant
 
         static Instant          Now                                         ( ) ;
 
-        static Instant          Epoch                                       ( ) ;
+        /// @brief              J2000 epoch
+        ///
+        ///                     The currently-used standard epoch "J2000" is defined by international agreement to be equivalent to:
+        ///                     - The Gregorian date January 1, 2000 at 12:00 TT (Terrestrial Time).
+        ///                     - The Julian date 2451545.0 TT (Terrestrial Time).
+        ///                     - January 1, 2000, 11:59:27.816 TAI (International Atomic Time).
+        ///                     - January 1, 2000, 11:58:55.816 UTC (Coordinated Universal Time).
+        ///
+        /// @ref                https://en.wikipedia.org/wiki/Epoch_(astronomy)#Julian_years_and_J2000
+        ///
+        /// @return             Instant at J2000 epoch
 
         static Instant          J2000                                       ( ) ;
 
@@ -109,7 +121,7 @@ class Instant
         static Instant          JulianDate                                  (   const   Real&                       aJulianDate,
                                                                                 const   Scale&                      aTimeScale                                  ) ;
 
-        static Instant          ModifiedJulianDate                          (   const   Real&                       aJulianDate,
+        static Instant          ModifiedJulianDate                          (   const   Real&                       aModifiedJulianDate,
                                                                                 const   Scale&                      aTimeScale                                  ) ;
 
     private:

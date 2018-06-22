@@ -14,6 +14,11 @@
 #include <Library/Core/Error.hpp>
 #include <Library/Core/Utilities.hpp>
 
+#include <chrono>
+#include <iomanip>
+#include <iostream>
+#include <stdlib.h>
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 namespace library
@@ -25,14 +30,14 @@ namespace time
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                                Instant::Instant                            (           Uint64                      aNanosecondCountFromEpoch,
-                                                                                        bool                        isPostEpoch,
-                                                                                const   Scale&                      aTimeScale                                  )
-                                :   count_({aNanosecondCountFromEpoch, isPostEpoch}),
-                                    scale_(aTimeScale)
-{
+//                                 Instant::Instant                            (           Uint64                      aNanosecondCountFromEpoch,
+//                                                                                         bool                        isPostEpoch,
+//                                                                                 const   Scale&                      aTimeScale                                  )
+//                                 :   count_({aNanosecondCountFromEpoch, isPostEpoch}),
+//                                     scale_(aTimeScale)
+// {
 
-}
+// }
 
 bool                            Instant::operator ==                        (   const   Instant&                    anInstant                                   ) const
 {
@@ -230,7 +235,14 @@ bool                            Instant::isDefined                          ( ) 
 
 bool                            Instant::isPostEpoch                        ( ) const
 {
-    return (*this) >= Instant::Epoch() ;
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Instant") ;
+    }
+    
+    return (*this) >= Instant::J2000() ;
+
 }
 
 Scale                           Instant::getScale                           ( ) const
@@ -248,10 +260,137 @@ Scale                           Instant::getScale                           ( ) 
 
 // }
 
-// time::DateTime                  Instant::getDateTime                        ( ) const
-// {
+time::DateTime                  Instant::getDateTime                        ( ) const
+{
 
-// }
+    using library::core::types::Uint8 ;
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Instant") ;
+    }
+
+    auto parseDateTimeString =
+    [ ] (const String& aDateTimeString) -> std::chrono::time_point<std::chrono::system_clock>
+    {
+
+        std::istringstream stringStream(aDateTimeString) ;
+
+        std::tm dateTime = {} ;
+        
+        stringStream >> std::get_time(&dateTime, "%Y-%m-%d %H:%M:%S") ;
+
+        if (stringStream.fail())
+        {
+            throw library::core::error::RuntimeError("Cannot parse date time string [" + aDateTimeString + "].") ;
+        }
+
+        return std::chrono::system_clock::from_time_t(std::mktime(&dateTime)) ;
+
+    } ;
+
+    auto getTimePointString =
+    [ ] (const std::chrono::time_point<std::chrono::system_clock>& aTimePoint) -> String
+    {
+
+        std::time_t time = std::chrono::system_clock::to_time_t(aTimePoint) ;
+
+        std::stringstream stringStream ;
+
+        stringStream << std::put_time(std::gmtime(&time), "%F %T %z") ;
+
+        return stringStream.str() ;
+
+    } ;
+
+    // Epoch
+
+    std::chrono::time_point<std::chrono::system_clock> epochTimePoint = parseDateTimeString("2000-01-01 12:00:00") ; // J2000 [TT]
+
+    std::chrono::time_point<std::chrono::system_clock> timePoint = epochTimePoint + std::chrono::nanoseconds(this->inScale(Scale::TT).count_.countFromEpoch_) ; // [TBM] + or -
+
+    std::cout << "AAA = " << getTimePointString(timePoint) << std::endl ;
+
+    std::time_t time = std::chrono::system_clock::to_time_t(timePoint) ;
+
+    std::tm tm = *std::gmtime(&time) ;
+
+    int year = 1900 + tm.tm_year ;
+    Uint8 month = tm.tm_mon + 1 ;
+    Uint8 day = tm.tm_mday ;
+
+    Uint8 hours = tm.tm_hour ;
+    Uint8 minutes = tm.tm_min ;
+    Uint8 seconds = tm.tm_sec ;
+
+    auto fraction = timePoint - std::chrono::time_point_cast<std::chrono::seconds>(timePoint) ;
+
+    Uint8 milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(fraction).count() ;
+    Uint8 microseconds = std::chrono::duration_cast<std::chrono::microseconds>(fraction).count() ;
+    Uint8 nanoseconds = std::chrono::duration_cast<std::chrono::nanoseconds>(fraction).count() ;
+
+    std::cout << "year: " << year << std::endl ;
+    std::cout << "month: " << month << std::endl ;
+    std::cout << "day: " << day << std::endl ;
+    std::cout << "hours: " << hours << std::endl ;
+    std::cout << "minutes: " << minutes << std::endl ;
+    std::cout << "seconds: " << seconds << std::endl ;
+    std::cout << "milliseconds: " << milliseconds << std::endl ;
+    std::cout << "microseconds: " << microseconds << std::endl ;
+    std::cout << "nanoseconds: " << nanoseconds << std::endl ;
+
+    // return DateTime::Undefined() ;
+
+    // using boost::posix_time::ptime ;
+	// using boost::posix_time::microsec_clock ;
+	// using boost::gregorian::day_clock ;
+	// using boost::gregorian::date ;
+	// using boost::posix_time::time_duration ;
+	// using boost::posix_time::time_period ;
+
+	// using namespace boost::posix_time ;
+
+	// CountFromEpoch 				nanosecondsSinceJ2000_timeScale 				=		convertTimeScale(nanosecondsCountSinceJ2000_TT_, Time::Scale::TT, aTimeScale) ;
+	
+	// date 						tmp_dateJ2000(2000, 1, 1) ;
+	// time_duration 				tmp_durationJ2000 								=		hours(12) ;
+	// ptime 						tmp_timeJ2000(tmp_dateJ2000, tmp_durationJ2000) ;
+	// ptime 						tmp_timeJ2000Day(tmp_dateJ2000, hours(0)) ;
+	
+	// time_duration 				tmp_durationSinceJ2000 							=		microseconds(signOfCount(nanosecondsSinceJ2000_timeScale) * std::floor(nanosecondsSinceJ2000_timeScale.count_ / 1000.0)) ;
+
+	// ptime 						tmp_time 										=		tmp_timeJ2000 + tmp_durationSinceJ2000 ;
+
+	// uint 						tmp_year 										=		uint(tmp_time.date().year()) ;
+	// uint 						tmp_month 										=		uint(tmp_time.date().month()) ;
+	// uint 						tmp_day 										=		uint(tmp_time.date().day()) ;
+
+	// date 						tmp_dayDate(tmp_year, tmp_month, tmp_day) ;
+	// ptime 						tmp_timeDay(tmp_dayDate, seconds(0)) ;
+	
+	// int64_t 					tmp_daysCountFromJ2000Day 						=		std::floor(time_period(tmp_timeJ2000Day, tmp_timeDay).length().hours() / 24.0) ;
+	
+	// uint64_t 					tmp_nanosecondsCountOfDay 						=		0 ;
+	
+	// if (nanosecondsSinceJ2000_timeScale.positiveCount_)
+	// {
+	// 	tmp_nanosecondsCountOfDay 												=		uint64_t(nanosecondsSinceJ2000_timeScale.count_) - uint64_t(std::abs(tmp_daysCountFromJ2000Day) * 24.0 * 3600.0 * 1e9) + uint64_t(12.0 * 3600.0 * 1e9) ;
+	// }
+	// else
+	// {
+	// 	tmp_nanosecondsCountOfDay 												=		uint64_t(std::abs(tmp_daysCountFromJ2000Day) * 24.0 * 3600.0 * 1e9) - uint64_t(nanosecondsSinceJ2000_timeScale.count_) + uint64_t(12.0 * 3600.0 * 1e9) ;
+	// }
+
+	// uint 						tmp_hours 										=		std::floor(tmp_nanosecondsCountOfDay / (3600.0 * 1e9)) ;
+	// uint 						tmp_minutes										=		std::floor((tmp_nanosecondsCountOfDay - tmp_hours * 3600.0 * 1e9) / (60.0 * 1e9)) ;
+	// uint 						tmp_seconds 									=		std::floor((tmp_nanosecondsCountOfDay - tmp_hours * 3600.0 * 1e9 - tmp_minutes * 60.0 * 1e9) / (1e9)) ;
+	// uint 						tmp_milliseconds 								=		std::floor((tmp_nanosecondsCountOfDay - tmp_hours * 3600.0 * 1e9 - tmp_minutes * 60.0 * 1e9 - tmp_seconds * 1e9) / (1e6)) ;
+	// uint 						tmp_microseconds 								=		std::floor((tmp_nanosecondsCountOfDay - tmp_hours * 3600.0 * 1e9 - tmp_minutes * 60.0 * 1e9 - tmp_seconds * 1e9 - tmp_milliseconds * 1e6) / (1e3)) ;
+	// uint 						tmp_nanoseconds 								=		std::floor(tmp_nanosecondsCountOfDay - tmp_hours * 3600.0 * 1e9 - tmp_minutes * 60.0 * 1e9 - tmp_seconds * 1e9 - tmp_milliseconds * 1e6  - tmp_microseconds * 1e3) ;
+
+	// return AxelTools::time::CalendarDate(aTimeScale, tmp_year, tmp_month, tmp_day, tmp_hours, tmp_minutes, tmp_seconds, tmp_milliseconds, tmp_microseconds, tmp_nanoseconds) ;
+
+}
 
 // Uint64                          Instant::getCountSinceEpoch                 (   const   units::Time&                aTimeUnit,
 //                                                                                 const   Instant&                    anEpoch                                     )
@@ -262,9 +401,12 @@ Scale                           Instant::getScale                           ( ) 
 String                          Instant::getString                          ( ) const
 {
 
-    throw library::core::error::runtime::ToBeImplemented("Instant::getString") ;
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Instant") ;
+    }
 
-    return String::Empty() ;
+    return this->getDateTime().getString() ;
 
 }
 
@@ -275,22 +417,84 @@ Instant                         Instant::inScale                            (   
 
 Instant                         Instant::Undefined                          ( )
 {
-    return Instant(0, true, Scale::Undefined) ;
+    return Instant({ 0, true }, Scale::Undefined) ;
 }
 
-// Instant                         Instant::Now                                ( )
-// {
-
-// }
-
-Instant                         Instant::Epoch                              ( )
+Instant                         Instant::Now                                ( )
 {
-    return Instant::J2000() ;
+
+    auto parseDateTimeString =
+    [ ] (const String& aDateTimeString) -> std::chrono::time_point<std::chrono::system_clock>
+    {
+
+        std::istringstream stringStream(aDateTimeString) ;
+
+        std::tm dateTime = {} ;
+        
+        stringStream >> std::get_time(&dateTime, "%Y-%m-%d %H:%M:%S") ;
+
+        if (stringStream.fail())
+        {
+            throw library::core::error::RuntimeError("Cannot parse date time string [" + aDateTimeString + "].") ;
+        }
+
+        return std::chrono::system_clock::from_time_t(std::mktime(&dateTime)) ;
+
+    } ;
+
+    auto getTimePointString =
+    [ ] (const std::chrono::time_point<std::chrono::system_clock>& aTimePoint) -> String
+    {
+
+        std::time_t time = std::chrono::system_clock::to_time_t(aTimePoint) ;
+
+        std::stringstream stringStream ;
+
+        stringStream << std::put_time(std::gmtime(&time), "%F %T %z") ;
+
+        return stringStream.str() ;
+
+    } ;
+
+    // Epoch
+
+    std::chrono::time_point<std::chrono::system_clock> epochTimePoint = parseDateTimeString("2000-01-01 12:00:00") ; // J2000
+    // std::chrono::time_point<std::chrono::system_clock> epochTimePoint = parseDateTimeString("2005-12-31 23:59:59") ;
+
+    // std::cout << "Epoch: " << getTimePointString(epochTimePoint) << std::endl ;
+
+    // Now
+
+    std::chrono::time_point<std::chrono::system_clock> nowTimePoint = std::chrono::system_clock::now() ;
+    // std::chrono::time_point<std::chrono::system_clock> nowTimePoint = parseDateTimeString("2006-01-01 00:00:01") ;
+
+    // std::cout << "Now: " << getTimePointString(nowTimePoint) << std::endl ;
+
+    // Difference
+
+    auto nanoseconds = std::chrono::duration_cast<std::chrono::nanoseconds>(nowTimePoint - epochTimePoint) ;
+
+    // std::cout << "Delta: " << nanoseconds.count() << " [ns]" << std::endl ;
+
+    // Output
+
+    Instant::Count count_UTC = {nanoseconds.count(), (nanoseconds.count() >= 0)} ;
+
+    // std::cout << "count_UTC = " << count_UTC.countFromEpoch_ << std::endl ;
+
+    // return Instant(count_UTC, Scale::UTC) ;
+
+    Instant::Count count_TT = Instant::TT_TAI(Instant::TAI_UTC(count_UTC)) ;
+
+    // std::cout << "count_TT   = " << count_TT.countFromEpoch_ << std::endl ;
+
+    return Instant(count_TT, Scale::TT) ;
+
 }
 
 Instant                         Instant::J2000                              ( )
 {
-    return Instant(0, true, Scale::TT) ;
+    return Instant({ 0, true }, Scale::TT) ;
 }
 
 // Instant                         Instant::DateTime                           (   const   time::DateTime&             aDateTime                                   )
@@ -304,7 +508,7 @@ Instant                         Instant::J2000                              ( )
 
 // }
 
-// Instant                         Instant::ModifiedJulianDate                 (   const   Real&                       aJulianDate,
+// Instant                         Instant::ModifiedJulianDate                 (   const   Real&                       aModifiedJulianDate,
 //                                                                                 const   Scale&                      aTimeScale                                  )
 // {
 

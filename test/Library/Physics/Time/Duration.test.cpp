@@ -1996,42 +1996,48 @@ TEST (Library_Physics_Time_Duration, Between)
 
     {
 
-        EXPECT_EQ(Duration(0), Duration::Between(Instant(0, true, Scale::UTC), Instant(0, true, Scale::UTC))) ;
-
-        EXPECT_EQ(Duration(0), Duration::Between(Instant(1, true, Scale::UTC), Instant(1, true, Scale::UTC))) ;
-        EXPECT_EQ(Duration(0), Duration::Between(Instant(1, false, Scale::UTC), Instant(1, false, Scale::UTC))) ;
-
-        EXPECT_EQ(Duration(0), Duration::Between(Instant(1, true, Scale::TT), Instant(1, true, Scale::TT))) ;
-
-    }
-
-    {
-
-        EXPECT_EQ(Duration(+1), Duration::Between(Instant(1, true, Scale::UTC), Instant(2, true, Scale::UTC))) ;
-        EXPECT_EQ(Duration(+1), Duration::Between(Instant(2, true, Scale::UTC), Instant(3, true, Scale::UTC))) ;
-        EXPECT_EQ(Duration(+2), Duration::Between(Instant(1, false, Scale::UTC), Instant(1, true, Scale::UTC))) ;
-
-        EXPECT_EQ(Duration(-1), Duration::Between(Instant(2, true, Scale::UTC), Instant(1, true, Scale::UTC))) ;
-        EXPECT_EQ(Duration(-1), Duration::Between(Instant(3, true, Scale::UTC), Instant(2, true, Scale::UTC))) ;
-        EXPECT_EQ(Duration(-2), Duration::Between(Instant(1, true, Scale::UTC), Instant(1, false, Scale::UTC))) ;
-
-    }
-    
-    {
-
-        EXPECT_NE(Duration(0), Duration::Between(Instant(0, true, Scale::UTC), Instant(0, true, Scale::TAI))) ;
-        EXPECT_NE(Duration(0), Duration::Between(Instant(0, true, Scale::UTC), Instant(0, true, Scale::TT))) ;
-        EXPECT_NE(Duration(0), Duration::Between(Instant(0, true, Scale::TAI), Instant(0, true, Scale::TT))) ;
-
-    }
-
-    {
+        FAIL() ;
         
-        EXPECT_ANY_THROW(Duration::Between(Instant::Undefined(), Instant::Undefined())) ;
-        EXPECT_ANY_THROW(Duration::Between(Instant(0, true, Scale::UTC), Instant::Undefined())) ;
-        EXPECT_ANY_THROW(Duration::Between(Instant::Undefined(), Instant(0, true, Scale::UTC))) ;
-
     }
+
+    // {
+
+    //     EXPECT_EQ(Duration(0), Duration::Between(Instant(0, true, Scale::UTC), Instant(0, true, Scale::UTC))) ;
+
+    //     EXPECT_EQ(Duration(0), Duration::Between(Instant(1, true, Scale::UTC), Instant(1, true, Scale::UTC))) ;
+    //     EXPECT_EQ(Duration(0), Duration::Between(Instant(1, false, Scale::UTC), Instant(1, false, Scale::UTC))) ;
+
+    //     EXPECT_EQ(Duration(0), Duration::Between(Instant(1, true, Scale::TT), Instant(1, true, Scale::TT))) ;
+
+    // }
+
+    // {
+
+    //     EXPECT_EQ(Duration(+1), Duration::Between(Instant(1, true, Scale::UTC), Instant(2, true, Scale::UTC))) ;
+    //     EXPECT_EQ(Duration(+1), Duration::Between(Instant(2, true, Scale::UTC), Instant(3, true, Scale::UTC))) ;
+    //     EXPECT_EQ(Duration(+2), Duration::Between(Instant(1, false, Scale::UTC), Instant(1, true, Scale::UTC))) ;
+
+    //     EXPECT_EQ(Duration(-1), Duration::Between(Instant(2, true, Scale::UTC), Instant(1, true, Scale::UTC))) ;
+    //     EXPECT_EQ(Duration(-1), Duration::Between(Instant(3, true, Scale::UTC), Instant(2, true, Scale::UTC))) ;
+    //     EXPECT_EQ(Duration(-2), Duration::Between(Instant(1, true, Scale::UTC), Instant(1, false, Scale::UTC))) ;
+
+    // }
+    
+    // {
+
+    //     EXPECT_NE(Duration(0), Duration::Between(Instant(0, true, Scale::UTC), Instant(0, true, Scale::TAI))) ;
+    //     EXPECT_NE(Duration(0), Duration::Between(Instant(0, true, Scale::UTC), Instant(0, true, Scale::TT))) ;
+    //     EXPECT_NE(Duration(0), Duration::Between(Instant(0, true, Scale::TAI), Instant(0, true, Scale::TT))) ;
+
+    // }
+
+    // {
+        
+    //     EXPECT_ANY_THROW(Duration::Between(Instant::Undefined(), Instant::Undefined())) ;
+    //     EXPECT_ANY_THROW(Duration::Between(Instant(0, true, Scale::UTC), Instant::Undefined())) ;
+    //     EXPECT_ANY_THROW(Duration::Between(Instant::Undefined(), Instant(0, true, Scale::UTC))) ;
+
+    // }
 
 }
 

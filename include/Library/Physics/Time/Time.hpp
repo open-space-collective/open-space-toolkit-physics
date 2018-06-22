@@ -11,7 +11,6 @@
 #define __Library_Physics_Time_Time__
 
 #include <Library/Core/Types/String.hpp>
-#include <Library/Core/Types/Real.hpp>
 #include <Library/Core/Types/Integer.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -25,36 +24,221 @@ namespace time
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using library::core::types::Real ;
+using library::core::types::Uint8 ;
 using library::core::types::String ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @brief                      Time
+/// @brief                      Time as hour, minute, second, millisecond, microsecond and nanosecond
 
 class Time
 {
 
     public:
 
-                                Time                                        ( ) = delete ;
+        /// @brief              Time format
+
+        enum class Format
+        {
+
+            Undefined,          ///< Undefined format
+            Standard,           ///< Standard format (hh:mm:ss.sss.sss.sss)
+            ISO8601             ///< ISO 8601 format (hh:mm:ss.sssssssss)
+
+        } ;
+
+        /// @brief              Constructor
+        ///
+        /// @code
+        ///                     Time time(12, 34, 56) ; // 12:34:56.000.000.000
+        ///                     Time time(12, 34, 56, 123, 456, 789) ; // 12:34:56.123.456.789
+        /// @endcode
+        ///
+        /// @param              [in] anHour An hour (0 - 23)
+        /// @param              [in] aMinute A minute (0 - 59)
+        /// @param              [in] aSecond A second (0 - 60)
+        /// @param              [in] (optional) aMillisecond A millisecond (0 - 999)
+        /// @param              [in] (optional) aMicrosecond A microsecond (0 - 999)
+        /// @param              [in] (optional) aNanosecond A nanosecond (0 - 999)
+
+                                Time                                        (           Uint8                       anHour,
+                                                                                        Uint8                       aMinute,
+                                                                                        Uint8                       aSecond,
+                                                                                        Uint8                       aMillisecond                                =   0,
+                                                                                        Uint8                       aMicrosecond                                =   0,
+                                                                                        Uint8                       aNanosecond                                 =   0 ) ;
+
+        /// @brief              Equal to operator
+        ///
+        /// @code
+        ///                     Time(12, 34, 56) == Time(12, 34, 56) ; // True
+        /// @endcode
+        ///
+        /// @param              [in] aTime A time
+        /// @return             True if times are equal
 
         bool                    operator ==                                 (   const   Time&                       aTime                                       ) const ;
+
+        /// @brief              Not equal to operator
+        ///
+        /// @code
+        ///                     Time(12, 34, 56) != Time(12, 34, 57) ; // True
+        /// @endcode
+        ///
+        /// @param              [in] aTime A time
+        /// @return             True if times are not equal
         
         bool                    operator !=                                 (   const   Time&                       aTime                                       ) const ;
+
+        /// @brief              Output stream operator
+        ///
+        /// @code
+        ///                     std::cout << Time(12, 34, 56) ;
+        /// @endcode
+        ///
+        /// @param              [in] anOutputStream An output stream
+        /// @param              [in] aTime A time
+        /// @return             An output stream
 
         friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
                                                                                 const   Time&                       aTime                                       ) ;
 
+        /// @brief              Check if time is defined
+        ///
+        /// @code
+        ///                     Time(12, 34, 56).isDefined() ; // True
+        /// @endcode
+        ///
+        /// @return             True if time is defined
+
         bool                    isDefined                                   ( ) const ;
 
-        String                  getString                                   ( ) const ;
+        /// @brief              Get hour (0 - 23)
+        ///
+        /// @return             Hour
+        
+        Uint8                   getHour                                     ( ) const ;
 
+        /// @brief              Get minute (0 - 59)
+        ///
+        /// @return             Minute
+        
+        Uint8                   getMinute                                   ( ) const ;
+
+        /// @brief              Get second (0 - 60)
+        ///
+        /// @return             Second
+        
+        Uint8                   getSecond                                   ( ) const ;
+
+        /// @brief              Get millisecond (0 - 999)
+        ///
+        /// @return             Millisecond
+        
+        Uint8                   getMillisecond                              ( ) const ;
+
+        /// @brief              Get microsecond (0 - 999)
+        ///
+        /// @return             Microsecond
+        
+        Uint8                   getMicrosecond                              ( ) const ;
+
+        /// @brief              Get nanosecond (0 - 999)
+        ///
+        /// @return             Nanosecond
+        
+        Uint8                   getNanosecond                               ( ) const ;
+
+        /// @brief              Get string representation of time
+        ///
+        /// @code
+        ///                     Time(12, 34, 56).getString() ; // 12:34:56.000.000.000
+        /// @endcode
+        ///
+        /// @param              [in] (optional) aFormat A time format
+        /// @return             Serialized time
+
+        String                  getString                                   (   const   Time::Format&               aFormat                                     =   Time::Format::Standard ) const ;
+
+        /// @brief              Set hour
+        ///
+        /// @param              [in] anHour An hour (0 - 23)
+        
+        void                    setHour                                     (           Uint8                       anHour                                      ) ;
+
+        /// @brief              Set minute
+        ///
+        /// @param              [in] aMinute A minute (0 - 59)
+        
+        void                    setMinute                                   (           Uint8                       aMinute                                     ) ;
+
+        /// @brief              Set second
+        ///
+        /// @param              [in] aSecond A second (0 - 60)
+        
+        void                    setSecond                                   (           Uint8                       aSecond                                     ) ;
+
+        /// @brief              Set millisecond
+        ///
+        /// @param              [in] aMillisecond A millisecond (0 - 999)
+        
+        void                    setMillisecond                              (           Uint8                       aMillisecond                                ) ;
+
+        /// @brief              Set microsecond
+        ///
+        /// @param              [in] aMicrosecond A microsecond (0 - 999)
+        
+        void                    setMicrosecond                              (           Uint8                       aMicrosecond                                ) ;
+
+        /// @brief              Set nanosecond
+        ///
+        /// @param              [in] aNanosecond A nanosecond (0 - 999)
+        
+        void                    setNanosecond                               (           Uint8                       aNanosecond                                 ) ;
+
+        /// @brief              Constructs an undefined time
+        ///
+        /// @code
+        ///                     Time time = Time::Undefined() ;
+        ///                     time.isDefined() ; // False
+        /// @endcode
+        ///
+        /// @return             Undefined time
+        
         static Time             Undefined                                   ( ) ;
+
+        /// @brief              Constructs a time at midnight
+        ///
+        /// @code
+        ///                     Time time = Time::Midnight() ; // 00:00:00.000.000.000
+        /// @endcode
+        ///
+        /// @return             Midnight time
+
+        static Time             Midnight                                    ( ) ;
+
+        /// @brief              Constructs a time at noon
+        ///
+        /// @code
+        ///                     Time time = Time::Noon() ; // 12:00:00.000.000.000
+        /// @endcode
+        ///
+        /// @return             Noon time
+
+        static Time             Noon                                        ( ) ;
 
     private:
 
-        
+        bool                    defined_ ;
+
+        Uint8                   hour_ ;
+        Uint8                   minute_ ;
+        Uint8                   second_ ;
+        Uint8                   millisecond_ ;
+        Uint8                   microsecond_ ;
+        Uint8                   nanosecond_ ;
+
+                                Time                                        ( ) ;
 
 } ;
 
