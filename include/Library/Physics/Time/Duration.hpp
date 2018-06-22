@@ -248,7 +248,7 @@ class Duration
         /// @brief              Multiplication operator
         ///
         /// @code
-        ///
+        ///                     2.0 * Duration::Seconds(1.0) ; // 2.0 [s]
         /// @endcode
         ///
         /// @param              [in] aMultiplier A multiplier
