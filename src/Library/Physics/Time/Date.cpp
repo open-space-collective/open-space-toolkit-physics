@@ -35,17 +35,7 @@ namespace time
                                     day_(aDay)
 {
 
-    if ((month_ == 0) || (month_ > 12))
-    {
-        throw library::core::error::RuntimeError(String::Format("Month {} out of range [1 - 12].", month_)) ;
-    }
-
-    if ((day_ == 0) || (day_ > 31))
-    {
-        throw library::core::error::RuntimeError(String::Format("Day {} out of range [1 - 31].", day_)) ;
-    }
-
-    // VALIDATE DATE
+    Date::ValidateDate(year_, month_, day_) ;
 
 }
 
@@ -149,6 +139,8 @@ void                            Date::setYear                               (   
     {
         throw library::core::error::runtime::Undefined("Date") ;
     }
+
+    Date::ValidateDate(aYear, month_, day_) ;
     
     year_ = aYear ;
 
@@ -162,10 +154,7 @@ void                            Date::setMonth                              (   
         throw library::core::error::runtime::Undefined("Date") ;
     }
 
-    if ((aMonth == 0) || (aMonth > 12))
-    {
-        throw library::core::error::RuntimeError(String::Format("Month {} out of range [1 - 12].", aMonth)) ;
-    }
+    Date::ValidateDate(year_, aMonth, day_) ;
     
     month_ = aMonth ;
 
@@ -179,10 +168,7 @@ void                            Date::setDay                                (   
         throw library::core::error::runtime::Undefined("Date") ;
     }
 
-    if ((aDay == 0) || (aDay > 31))
-    {
-        throw library::core::error::RuntimeError(String::Format("Day {} out of range [1 - 31].", aDay)) ;
-    }
+    Date::ValidateDate(year_, month_, aDay) ;
     
     day_ = aDay ;
 
@@ -264,6 +250,27 @@ Date                            Date::Parse                                 (   
                                     month_(0),
                                     day_(0)
 {
+
+}
+
+void                            Date::ValidateDate                          (           Int16                       aYear,
+                                                                                        Uint8                       aMonth,
+                                                                                        Uint8                       aDay                                        )
+{
+
+    (void) aYear ; // No validation required
+
+    if ((aMonth == 0) || (aMonth > 12))
+    {
+        throw library::core::error::RuntimeError(String::Format("Month {} out of range [1 - 12].", aMonth)) ;
+    }
+
+    if ((aDay == 0) || (aDay > 31))
+    {
+        throw library::core::error::RuntimeError(String::Format("Day {} out of range [1 - 31].", aDay)) ;
+    }
+
+    // [TBI] Validate date
 
 }
 

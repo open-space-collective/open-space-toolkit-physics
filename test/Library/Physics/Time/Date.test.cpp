@@ -32,6 +32,8 @@ TEST (Library_Physics_Time_Date, Constructor)
 
     {
 
+        EXPECT_ANY_THROW(Date(2018, 2, 29)) ;
+
         EXPECT_ANY_THROW(Date(2018, 0, 1)) ;
         EXPECT_ANY_THROW(Date(2018, 13, 1)) ;
 

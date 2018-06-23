@@ -25,6 +25,7 @@ namespace time
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using library::core::types::Uint8 ;
+using library::core::types::Uint16 ;
 using library::core::types::String ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -64,9 +65,9 @@ class Time
                                 Time                                        (           Uint8                       anHour,
                                                                                         Uint8                       aMinute,
                                                                                         Uint8                       aSecond,
-                                                                                        Uint8                       aMillisecond                                =   0,
-                                                                                        Uint8                       aMicrosecond                                =   0,
-                                                                                        Uint8                       aNanosecond                                 =   0 ) ;
+                                                                                        Uint16                      aMillisecond                                =   0,
+                                                                                        Uint16                      aMicrosecond                                =   0,
+                                                                                        Uint16                      aNanosecond                                 =   0 ) ;
 
         /// @brief              Equal to operator
         ///
@@ -135,19 +136,19 @@ class Time
         ///
         /// @return             Millisecond
         
-        Uint8                   getMillisecond                              ( ) const ;
+        Uint16                  getMillisecond                              ( ) const ;
 
         /// @brief              Get microsecond (0 - 999)
         ///
         /// @return             Microsecond
         
-        Uint8                   getMicrosecond                              ( ) const ;
+        Uint16                  getMicrosecond                              ( ) const ;
 
         /// @brief              Get nanosecond (0 - 999)
         ///
         /// @return             Nanosecond
         
-        Uint8                   getNanosecond                               ( ) const ;
+        Uint16                  getNanosecond                               ( ) const ;
 
         /// @brief              Get string representation of time
         ///
@@ -182,19 +183,19 @@ class Time
         ///
         /// @param              [in] aMillisecond A millisecond (0 - 999)
         
-        void                    setMillisecond                              (           Uint8                       aMillisecond                                ) ;
+        void                    setMillisecond                              (           Uint16                      aMillisecond                                ) ;
 
         /// @brief              Set microsecond
         ///
         /// @param              [in] aMicrosecond A microsecond (0 - 999)
         
-        void                    setMicrosecond                              (           Uint8                       aMicrosecond                                ) ;
+        void                    setMicrosecond                              (           Uint16                      aMicrosecond                                ) ;
 
         /// @brief              Set nanosecond
         ///
         /// @param              [in] aNanosecond A nanosecond (0 - 999)
         
-        void                    setNanosecond                               (           Uint8                       aNanosecond                                 ) ;
+        void                    setNanosecond                               (           Uint16                      aNanosecond                                 ) ;
 
         /// @brief              Constructs an undefined time
         ///
@@ -227,6 +228,20 @@ class Time
 
         static Time             Noon                                        ( ) ;
 
+        /// @brief              Constructs a time from a string representation
+        ///
+        /// @code
+        ///                     Time time = Time::Parse("12:34:56") ; // 12:34:56
+        ///                     Time time = Time::Parse("12:34:56.123") ; // 12:34:56.123
+        ///                     Time time = Time::Parse("12:34:56.123.456") ; // 12:34:56.123.456
+        ///                     Time time = Time::Parse("12:34:56.123.456.789") ; // 12:34:56.123.456.789
+        /// @endcode
+        ///
+        /// @param              [in] aString A string
+        /// @return             Time
+
+        static Time             Parse                                       (   const   String&                     aString                                     ) ;
+
     private:
 
         bool                    defined_ ;
@@ -234,11 +249,18 @@ class Time
         Uint8                   hour_ ;
         Uint8                   minute_ ;
         Uint8                   second_ ;
-        Uint8                   millisecond_ ;
-        Uint8                   microsecond_ ;
-        Uint8                   nanosecond_ ;
+        Uint16                  millisecond_ ;
+        Uint16                  microsecond_ ;
+        Uint16                  nanosecond_ ;
 
                                 Time                                        ( ) ;
+
+        static void             ValidateHour                                (           Uint8                       anHour                                      ) ;
+        static void             ValidateMinute                              (           Uint8                       aMinute                                     ) ;
+        static void             ValidateSecond                              (           Uint8                       aSecond                                     ) ;
+        static void             ValidateMillisecond                         (           Uint16                      aMillisecond                                ) ;
+        static void             ValidateMicrosecond                         (           Uint16                      aMicrosecond                                ) ;
+        static void             ValidateNanosecond                          (           Uint16                      aNanosecond                                 ) ;
 
 } ;
 

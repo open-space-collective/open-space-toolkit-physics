@@ -12,6 +12,11 @@
 #include <Library/Core/Error.hpp>
 #include <Library/Core/Utilities.hpp>
 
+#include <boost/regex.hpp>
+#include <boost/lexical_cast.hpp>
+
+#include <iostream>
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 namespace library
@@ -26,9 +31,9 @@ namespace time
                                 Time::Time                                  (           Uint8                       anHour,
                                                                                         Uint8                       aMinute,
                                                                                         Uint8                       aSecond,
-                                                                                        Uint8                       aMillisecond,
-                                                                                        Uint8                       aMicrosecond,
-                                                                                        Uint8                       aNanosecond                                 )
+                                                                                        Uint16                      aMillisecond,
+                                                                                        Uint16                      aMicrosecond,
+                                                                                        Uint16                      aNanosecond                                 )
                                 :   defined_(true),
                                     hour_(anHour),
                                     minute_(aMinute),
@@ -37,6 +42,13 @@ namespace time
                                     microsecond_(aMicrosecond),
                                     nanosecond_(aNanosecond)
 {
+
+    Time::ValidateHour(hour_) ;
+    Time::ValidateMinute(minute_) ;
+    Time::ValidateSecond(second_) ;
+    Time::ValidateMillisecond(millisecond_) ;
+    Time::ValidateMicrosecond(microsecond_) ;
+    Time::ValidateNanosecond(nanosecond_) ;
 
 }
 
@@ -100,32 +112,74 @@ bool                            Time::isDefined                             ( ) 
 
 Uint8                           Time::getHour                               ( ) const
 {
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Time") ;
+    }
+    
     return hour_ ;
+
 }
 
 Uint8                           Time::getMinute                             ( ) const
 {
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Time") ;
+    }
+    
     return minute_ ;
+
 }
 
 Uint8                           Time::getSecond                             ( ) const
 {
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Time") ;
+    }
+    
     return second_ ;
+
 }
 
-Uint8                           Time::getMillisecond                        ( ) const
+Uint16                          Time::getMillisecond                        ( ) const
 {
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Time") ;
+    }
+    
     return millisecond_ ;
+
 }
 
-Uint8                           Time::getMicrosecond                        ( ) const
+Uint16                          Time::getMicrosecond                        ( ) const
 {
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Time") ;
+    }
+    
     return microsecond_ ;
+
 }
 
-Uint8                           Time::getNanosecond                         ( ) const
+Uint16                          Time::getNanosecond                         ( ) const
 {
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Time") ;
+    }
+    
     return nanosecond_ ;
+
 }
 
 String                          Time::getString                             (   const   Time::Format&               aFormat                                     ) const
@@ -140,10 +194,10 @@ String                          Time::getString                             (   
     {
 
         case Time::Format::Standard:
-            return String::Format("{0:d}:{1:02d}:{2:02d}.{3:03d}.{4:03d}.{5:03d}", hour_, minute_, second_, millisecond_, microsecond_, nanosecond_) ;
+            return String::Format("{0:02d}:{1:02d}:{2:02d}.{3:03d}.{4:03d}.{5:03d}", hour_, minute_, second_, millisecond_, microsecond_, nanosecond_) ;
 
         case Time::Format::ISO8601:
-            return String::Format("{0:d}:{1:02d}:{2:02d}{3:03d}{4:03d}{5:03d}", hour_, minute_, second_, millisecond_, microsecond_, nanosecond_) ;
+            return String::Format("{0:02d}:{1:02d}:{2:02d}{3:03d}{4:03d}{5:03d}", hour_, minute_, second_, millisecond_, microsecond_, nanosecond_) ;
 
         default:
             throw library::core::error::runtime::Wrong("Format") ;
@@ -157,32 +211,86 @@ String                          Time::getString                             (   
 
 void                            Time::setHour                               (           Uint8                       anHour                                      )
 {
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Time") ;
+    }
+
+    Time::ValidateHour(anHour) ;
+
     hour_ = anHour ;
+
 }
 
 void                            Time::setMinute                             (           Uint8                       aMinute                                     )
 {
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Time") ;
+    }
+
+    Time::ValidateMinute(aMinute) ;
+
     minute_ = aMinute ;
+
 }
 
 void                            Time::setSecond                             (           Uint8                       aSecond                                     )
 {
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Time") ;
+    }
+
+    Time::ValidateSecond(aSecond) ;
+
     second_ = aSecond ;
+
 }
 
-void                            Time::setMillisecond                        (           Uint8                       aMillisecond                                )
+void                            Time::setMillisecond                        (           Uint16                      aMillisecond                                )
 {
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Time") ;
+    }
+
+    Time::ValidateMillisecond(aMillisecond) ;
+
     millisecond_ = aMillisecond ;
+
 }
 
-void                            Time::setMicrosecond                        (           Uint8                       aMicrosecond                                )
+void                            Time::setMicrosecond                        (           Uint16                      aMicrosecond                                )
 {
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Time") ;
+    }
+
+    Time::ValidateMicrosecond(aMicrosecond) ;
+
     microsecond_ = aMicrosecond ;
+
 }
 
-void                            Time::setNanosecond                         (           Uint8                       aNanosecond                                 )
+void                            Time::setNanosecond                         (           Uint16                      aNanosecond                                 )
 {
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Time") ;
+    }
+
+    Time::ValidateNanosecond(aNanosecond) ;
+
     nanosecond_ = aNanosecond ;
+
 }
 
 Time                            Time::Undefined                             ( )
@@ -200,6 +308,78 @@ Time                            Time::Noon                                  ( )
     return Time(12, 0, 0, 0, 0, 0) ;
 }
 
+Time                            Time::Parse                                 (   const   String&                     aString                                     )
+{
+
+    if (aString.isEmpty())
+    {
+        throw library::core::error::runtime::Undefined("String") ;
+    }
+
+    boost::smatch match ;
+
+    if (boost::regex_match(aString, match, boost::regex("^([0-9]{2}).([0-9]{2}).([0-9]{2})(?:.([0-9]{1,3}))?(?:.([0-9]{1,3}))?(?:.([0-9]{1,3}))?$")))
+    {
+
+        try
+        {
+
+            // https://stackoverflow.com/questions/9601919/converting-from-stdstring-to-uint8
+
+            const Uint8 hour = static_cast<Uint8>(boost::lexical_cast<int>(match[1])) ;
+            const Uint8 minute = static_cast<Uint8>(boost::lexical_cast<int>(match[2])) ;
+            const Uint8 second = static_cast<Uint8>(boost::lexical_cast<int>(match[3])) ;
+
+            auto parseFractionalString =
+            [ ] (const String& aFractionalString) -> Uint16
+            {
+
+                switch (aFractionalString.getLength())
+                {
+
+                    case 1:
+                        return boost::lexical_cast<Uint16>(aFractionalString) * 100 ;
+
+                    case 2:
+                        return boost::lexical_cast<Uint16>(aFractionalString) * 10 ;
+
+                    case 3:
+                        return boost::lexical_cast<Uint16>(aFractionalString) ;
+
+                    default:
+                        throw library::core::error::RuntimeError("Cannot parse fractional string [" + aFractionalString + "].") ;
+                        break ;
+
+                }
+
+                return 0 ;
+
+            } ;
+
+            const Uint16 millisecond = (match[4] != "") ? parseFractionalString(String(match[4])) : 0 ;
+            const Uint16 microsecond = (match[5] != "") ? parseFractionalString(String(match[5])) : 0 ;
+            const Uint16 nanosecond = (match[6] != "") ? parseFractionalString(String(match[6])) : 0 ;
+
+            return Time(hour, minute, second, millisecond, microsecond, nanosecond) ;
+
+        }
+        catch (const boost::bad_lexical_cast& e)
+        {
+
+            throw library::core::error::RuntimeError(String::Format("Cannot parse time string [{0}] ({1}).", aString, e.what())) ;
+
+        }
+
+    }
+    else
+    {
+        throw library::core::error::RuntimeError("Cannot parse time string [" + aString + "].") ;
+    }
+
+    return Time::Undefined() ;
+
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
                                 Time::Time                                  ( )
@@ -211,6 +391,72 @@ Time                            Time::Noon                                  ( )
                                     microsecond_(0),
                                     nanosecond_(0)
 {
+
+}
+
+void                            Time::ValidateHour                          (           Uint8                       anHour                                      )
+{
+
+    if (anHour > 23)
+    {
+        throw library::core::error::RuntimeError(String::Format("Hour {} out of range [0 - 23].", anHour)) ;
+    }
+
+}
+
+void                            Time::ValidateMinute                        (           Uint8                       aMinute                                     )
+{
+
+    if (aMinute > 59)
+    {
+        throw library::core::error::RuntimeError(String::Format("Minute {} out of range [0 - 59].", aMinute)) ;
+    }
+
+}
+
+void                            Time::ValidateSecond                        (           Uint8                       aSecond                                     )
+{
+
+    
+
+    if (aSecond > 60)
+    {
+        throw library::core::error::RuntimeError(String::Format("Second {} out of range [0 - 60].", aSecond)) ;
+    }
+
+}
+
+void                            Time::ValidateMillisecond                   (           Uint16                      aMillisecond                                )
+{
+
+    
+
+    if (aMillisecond > 999)
+    {
+        throw library::core::error::RuntimeError(String::Format("Millisecond {} out of range [0 - 999].", aMillisecond)) ;
+    }
+
+}
+
+void                            Time::ValidateMicrosecond                   (           Uint16                      aMicrosecond                                )
+{
+
+    
+
+    if (aMicrosecond > 999)
+    {
+        throw library::core::error::RuntimeError(String::Format("Microsecond {} out of range [0 - 999].", aMicrosecond)) ;
+    }
+
+}
+
+void                            Time::ValidateNanosecond                    (           Uint16                      aNanosecond                                 )
+{
+
+    if (aNanosecond > 999)
+    {
+        throw library::core::error::RuntimeError(String::Format("Nanosecond {} out of range [0 - 999].", aNanosecond)) ;
+    }
 
 }
 
