@@ -131,16 +131,7 @@ String                          Date::getString                             ( ) 
 
     if (std::abs(year_) < 1000)
     {
-
-        if (year_ < 0)
-        {
-            return String::Format("{0:05d}-{1:02d}-{2:02d}", year_, month_, day_) ;
-        }
-        else
-        {
-            return String::Format("{0:04d}-{1:02d}-{2:02d}", year_, month_, day_) ;
-        }
-
+        return String::Format("{0:04d}-{1:02d}-{2:02d}", year_, month_, day_) ;
     }
     
     return String::Format("{0:d}-{1:02d}-{2:02d}", year_, month_, day_) ;

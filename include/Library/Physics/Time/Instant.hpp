@@ -85,16 +85,16 @@ class Instant
 
         Scale                   getScale                                    ( ) const ;
 
-        Real                    getJulianDate                               ( ) const ;
+        time::DateTime          getDateTime                                 (   const   Scale&                      aTimeScale                                  ) const ;
 
-        Real                    getModifiedJulianDate                       ( ) const ;
+        Real                    getJulianDate                               (   const   Scale&                      aTimeScale                                  ) const ;
 
-        time::DateTime          getDateTime                                 ( ) const ;
+        Real                    getModifiedJulianDate                       (   const   Scale&                      aTimeScale                                  ) const ;
 
         Uint64                  getCountSinceEpoch                          (   const   units::Time&                aTimeUnit,
                                                                                 const   Instant&                    anEpoch                                     ) ;
 
-        String                  getString                                   ( ) const ;
+        String                  getString                                   (   const   Scale&                      aTimeScale                                  ) const ;
 
         Instant                 inScale                                     (   const   Scale&                      aTimeScale                                  ) const ;
 
@@ -116,7 +116,8 @@ class Instant
 
         static Instant          J2000                                       ( ) ;
 
-        static Instant          DateTime                                    (   const   time::DateTime&             aDateTime                                   ) ;
+        static Instant          DateTime                                    (   const   time::DateTime&             aDateTime,
+                                                                                const   Scale&                      aTimeScale                                  ) ;
 
         static Instant          JulianDate                                  (   const   Real&                       aJulianDate,
                                                                                 const   Scale&                      aTimeScale                                  ) ;

@@ -126,6 +126,14 @@ class DateTime
         friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
                                                                                 const   DateTime&                   aDateTime                                   ) ;
 
+        /// @brief              Check if date-time is defined
+        ///
+        /// @code
+        ///                     DateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456, 789)).isDefined() ; // True
+        /// @endcode
+        ///
+        /// @return             True if date-time is defined
+
         bool                    isDefined                                   ( ) const ;
 
         /// @brief              Get reference to date
