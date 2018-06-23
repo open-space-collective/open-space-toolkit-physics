@@ -634,11 +634,13 @@ class Duration
         /// @brief              Constructs a duration from a string representation
         ///
         /// @code
-        ///                     Duration duration = Duration::Parse("00:00:00.000") ;
+        ///                     Duration duration = Duration::Parse("12:34:56.123.456.789") ; 
+        ///                     Duration duration = Duration::Parse("12:34:56.123.456.789", Duration::Format::Standard) ;
+        ///                     Duration duration = Duration::Parse("12:34:56.123456789", Duration::Format::ISO8601) ;
         /// @endcode
         ///
         /// @param              [in] aString A string
-        /// @param              [in] aFormat A representation format
+        /// @param              [in] (optional) aFormat A duration format (automatic detection if Undefined)
         /// @return             Duration
 
         static Duration         Parse                                       (   const   String&                     aString,

@@ -786,7 +786,7 @@ Duration                        Duration::Parse                             (   
     switch (aFormat)
     {
 
-        case Duration::Format::Undefined: // Automatic format determination
+        case Duration::Format::Undefined: // Automatic format detection
         {
 
             if ((aString.getLength() > 1) && ((aString[0] == 'P') || (aString[1] == 'P')))
@@ -832,13 +832,13 @@ Duration                        Duration::Parse                             (   
                 }
                 catch (const boost::bad_lexical_cast& e)
                 {
-                    throw library::core::error::RuntimeError("Cannot parse [Standard] duration string [" + aString + "] (parsing error).") ;
+                    throw library::core::error::RuntimeError("Cannot parse [Standard] duration string [{}] ({}).", aString, e.what()) ;
                 }
 
             }
             else
             {
-                throw library::core::error::RuntimeError("Cannot parse [Standard] duration string [" + aString + "].") ;
+                throw library::core::error::RuntimeError("Cannot parse [Standard] duration string [{}].", aString) ;
             }
 
             break ;
@@ -941,13 +941,13 @@ Duration                        Duration::Parse                             (   
                 }
                 catch (const boost::bad_lexical_cast& e)
                 {
-                    throw library::core::error::RuntimeError("Cannot parse [ISO 8601] duration string [" + aString + "] (parsing error).") ;
+                    throw library::core::error::RuntimeError("Cannot parse [ISO 8601] duration string [{}] ({}).", aString, e.what()) ;
                 }
 
             }
             else
             {
-                throw library::core::error::RuntimeError("Cannot parse [ISO 8601] duration string [" + aString + "].") ;
+                throw library::core::error::RuntimeError("Cannot parse [ISO 8601] duration string [{}].", aString) ;
             }
 
             break ;

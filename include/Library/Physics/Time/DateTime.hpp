@@ -64,18 +64,90 @@ class DateTime
                                 DateTime                                    (   const   Date&                       aDate,
                                                                                 const   Time&                       aTime                                       ) ;
 
+        /// @brief              Constructor
+        ///
+        /// @code
+        ///                     DateTime dateTime(2018, 1, 2, 12, 34, 56) ; // 2018-01-02 12:34:56.000.000.000
+        ///                     DateTime dateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789) ; // 2018-01-02 12:34:56.123.456.789
+        /// @endcode
+        ///
+        /// @param              [in] aYear aYear A year
+        /// @param              [in] aMonth aMonth A month (1 - 12)
+        /// @param              [in] aDay aDay A day (1 - 31)
+        /// @param              [in] anHour An hour (0 - 23)
+        /// @param              [in] aMinute A minute (0 - 59)
+        /// @param              [in] aSecond A second (0 - 60)
+        /// @param              [in] (optional) aMillisecond A millisecond (0 - 999)
+        /// @param              [in] (optional) aMicrosecond A microsecond (0 - 999)
+        /// @param              [in] (optional) aNanosecond A nanosecond (0 - 999)
+
+                                DateTime                                    (           Uint16                      aYear,
+                                                                                        Uint8                       aMonth,
+                                                                                        Uint8                       aDay,
+                                                                                        Uint8                       anHour,
+                                                                                        Uint8                       aMinute,
+                                                                                        Uint8                       aSecond,
+                                                                                        Uint16                      aMillisecond                                =   0,
+                                                                                        Uint16                      aMicrosecond                                =   0,
+                                                                                        Uint16                      aNanosecond                                 =   0 ) ;
+
+        /// @brief              Equal to operator
+        ///
+        /// @code
+        ///                     DateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456, 789)) == DateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456, 789)) ; // True
+        /// @endcode
+        ///
+        /// @param              [in] aDateTime A date-time
+        /// @return             True if date-times are equal
+
         bool                    operator ==                                 (   const   DateTime&                   aDateTime                                   ) const ;
+
+        /// @brief              Not equal to operator
+        ///
+        /// @code
+        ///                     DateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456, 789)) != DateTime(Date(2018, 1, 3), Time(12, 34, 56, 123, 456, 789)) ; // True
+        /// @endcode
+        ///
+        /// @param              [in] aDateTime A date-time
+        /// @return             True if date-times are not equal
         
         bool                    operator !=                                 (   const   DateTime&                   aDateTime                                   ) const ;
+
+        /// @brief              Output stream operator
+        ///
+        /// @code
+        ///                     std::cout << DateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456, 789)) ;
+        /// @endcode
+        ///
+        /// @param              [in] anOutputStream An output stream
+        /// @param              [in] aDateTime A date-time
+        /// @return             An output stream
 
         friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
                                                                                 const   DateTime&                   aDateTime                                   ) ;
 
         bool                    isDefined                                   ( ) const ;
 
+        /// @brief              Get reference to date
+        ///
+        /// @return             Reference to date
+
         const Date&             accessDate                                  ( ) const ;
 
+        /// @brief              Get reference to time
+        ///
+        /// @return             Reference to time
+
         const Time&             accessTime                                  ( ) const ;
+
+        /// @brief              Get string representation of date-time
+        ///
+        /// @code
+        ///                     DateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456, 789)).getString(DateTime::Format::Standard) ; // 2018-01-02 12:34:56.123.456.789
+        ///                     DateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456, 789)).getString(DateTime::Format::ISO8601) ; // 2018-01-02T12:34:56.123.456.789
+        /// @endcode
+        ///
+        /// @return             Serialized date-time
 
         String                  getString                                   (   const   DateTime::Format&           aFormat                                     =   DateTime::Format::Standard ) const ;
 
@@ -114,14 +186,6 @@ class DateTime
 
         static DateTime         Unix                                        ( ) ;
 
-        /// @brief              Julian dates epoch (-4712-01-01 12:00:00.000.000.00)
-        ///
-        /// @ref                https://en.wikipedia.org/wiki/Julian_day
-        ///
-        /// @return             DateTime at Julian dates epoch
-
-        static DateTime         JulianDate                                  ( ) ;
-
         /// @brief              Modified julian dates epoch (1858-11-17 00:00:00.000.000.000)
         ///
         /// @ref                https://en.wikipedia.org/wiki/Julian_day
@@ -129,6 +193,19 @@ class DateTime
         /// @return             DateTime at Modified Julian epoch
 
         static DateTime         ModifiedJulianDate                          ( ) ;
+
+        /// @brief              Constructs a date-time from a string representation
+        ///
+        /// @code
+        ///                     DateTime dateTime = DateTime::Parse("2018-01-02 12:34:56.123.456.789") ; // 2018-01-02
+        /// @endcode
+        ///
+        /// @param              [in] aString A string
+        /// @param              [in] (optional) aFormat A date-time format (automatic detection if Undefined)
+        /// @return             DateTime
+
+        static DateTime         Parse                                       (   const   String&                     aString,
+                                                                                const   DateTime::Format&           aFormat                                     =   DateTime::Format::Undefined ) ;
 
     private:
 

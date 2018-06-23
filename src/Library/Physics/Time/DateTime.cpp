@@ -12,6 +12,8 @@
 #include <Library/Core/Error.hpp>
 #include <Library/Core/Utilities.hpp>
 
+#include <boost/regex.hpp>
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 namespace library
@@ -27,6 +29,21 @@ namespace time
                                                                                 const   Time&                       aTime                                       )
                                 :   date_(aDate),
                                     time_(aTime)
+{
+
+}
+
+                                DateTime::DateTime                          (           Uint16                      aYear,
+                                                                                        Uint8                       aMonth,
+                                                                                        Uint8                       aDay,
+                                                                                        Uint8                       anHour,
+                                                                                        Uint8                       aMinute,
+                                                                                        Uint8                       aSecond,
+                                                                                        Uint16                      aMillisecond,
+                                                                                        Uint16                      aMicrosecond,
+                                                                                        Uint16                      aNanosecond                                 )
+                                :   date_({aYear, aMonth, aDay}),
+                                    time_({anHour, aMinute, aSecond, aMillisecond, aMicrosecond, aNanosecond})
 {
 
 }
@@ -83,6 +100,30 @@ bool                            DateTime::isDefined                         ( ) 
     return date_.isDefined() && time_.isDefined() ;
 }
 
+const Date&                     DateTime::accessDate                        ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("DateTime") ;
+    }
+
+    return date_ ;
+
+}
+
+const Time&                     DateTime::accessTime                        ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("DateTime") ;
+    }
+
+    return time_ ;
+
+}
+
 String                          DateTime::getString                         (   const   DateTime::Format&           aFormat                                     ) const
 {
     
@@ -130,14 +171,75 @@ DateTime                        DateTime::Unix                              ( )
     return DateTime(Date::Unix(), Time::Midnight()) ;
 }
 
-DateTime                        DateTime::JulianDate                        ( )
-{
-    return DateTime(Date::JulianDate(), Time::Noon()) ;
-}
-
 DateTime                        DateTime::ModifiedJulianDate                ( )
 {
     return DateTime(Date::ModifiedJulianDate(), Time::Midnight()) ;
+}
+
+DateTime                        DateTime::Parse                             (   const   String&                     aString,
+                                                                                const   DateTime::Format&           aFormat                                     )
+{
+
+    if (aString.isEmpty())
+    {
+        throw library::core::error::runtime::Undefined("String") ;
+    }
+
+    switch (aFormat)
+    {
+
+        case DateTime::Format::Undefined: // Automatic format detection
+        {
+
+            if (aString.match(std::regex("^([-]?[0-9]+-[0-9]{2}-[0-9]{2})T([0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?)$")))
+            {
+                return DateTime::Parse(aString, DateTime::Format::ISO8601) ;
+            }
+            
+            return DateTime::Parse(aString, DateTime::Format::Standard) ;
+
+        }
+
+        case DateTime::Format::Standard:
+        {
+
+            boost::smatch match ;
+
+            if (boost::regex_match(aString, match, boost::regex("^([-]?[0-9]+-[0-9]{2}-[0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,3})?(?:\\.[0-9]{1,3})?(?:\\.[0-9]{1,3})?)$")))
+            {
+                return DateTime(Date::Parse(String(match[1])), Time::Parse(String(match[2]), Time::Format::Standard)) ;
+            }
+            else
+            {
+                throw library::core::error::RuntimeError("Cannot parse [Standard] date-time string [{}].", aString) ;
+            }
+
+        }
+
+        case DateTime::Format::ISO8601:
+        {
+
+            boost::smatch match ;
+
+            if (boost::regex_match(aString, match, boost::regex("^([-]?[0-9]+-[0-9]{2}-[0-9]{2})T([0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?)$")))
+            {
+                return DateTime(Date::Parse(String(match[1])), Time::Parse(String(match[2]), Time::Format::ISO8601)) ;
+            }
+            else
+            {
+                throw library::core::error::RuntimeError("Cannot parse [ISO 8601] date-time string [{}].", aString) ;
+            }
+
+        }
+
+        default:
+            throw library::core::error::runtime::Wrong("Format") ;
+            break ;
+
+    }
+
+    return DateTime::Undefined() ;
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

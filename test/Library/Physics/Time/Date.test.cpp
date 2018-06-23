@@ -22,16 +22,18 @@ TEST (Library_Physics_Time_Date, Constructor)
 
         EXPECT_NO_THROW(Date(2018, 1, 1)) ;
         
-        EXPECT_NO_THROW(Date(0, 1, 1)) ;
-        EXPECT_NO_THROW(Date(+2000, 1, 1)) ;
-        EXPECT_NO_THROW(Date(-2000, 1, 1)) ;
-
-        EXPECT_NO_THROW(Date(2000, 12, 31)) ;
+        EXPECT_NO_THROW(Date(1400, 1, 1)) ;
+        EXPECT_NO_THROW(Date(2000, 1, 1)) ;
+        EXPECT_NO_THROW(Date(9999, 12, 31)) ;
 
     }
 
     {
 
+        EXPECT_ANY_THROW(Date(0, 1, 1)) ;
+        EXPECT_ANY_THROW(Date(1399, 12, 31)) ;
+        EXPECT_ANY_THROW(Date(10000, 1, 1)) ;
+        
         EXPECT_ANY_THROW(Date(2018, 2, 29)) ;
 
         EXPECT_ANY_THROW(Date(2018, 0, 1)) ;
@@ -52,7 +54,7 @@ TEST (Library_Physics_Time_Date, EqualToOperator)
     {
 
         EXPECT_TRUE(Date(2018, 1, 1) == Date(2018, 1, 1)) ;
-        EXPECT_TRUE(Date(-2000, 1, 1) == Date(-2000, 1, 1)) ;
+        EXPECT_TRUE(Date(1400, 1, 1) == Date(1400, 1, 1)) ;
         EXPECT_TRUE(Date(2018, 2, 3) == Date(2018, 2, 3)) ;
 
     }
@@ -89,7 +91,7 @@ TEST (Library_Physics_Time_Date, NotEqualToOperator)
     {
 
         EXPECT_FALSE(Date(2018, 1, 1) != Date(2018, 1, 1)) ;
-        EXPECT_FALSE(Date(-2000, 1, 1) != Date(-2000, 1, 1)) ;
+        EXPECT_FALSE(Date(1400, 1, 1) != Date(1400, 1, 1)) ;
         EXPECT_FALSE(Date(2018, 2, 3) != Date(2018, 2, 3)) ;
 
     }
@@ -128,9 +130,8 @@ TEST (Library_Physics_Time_Date, IsDefined)
 
         EXPECT_TRUE(Date(2018, 2, 3).isDefined()) ;
         
-        EXPECT_TRUE(Date(0, 1, 1).isDefined()) ;
-        EXPECT_TRUE(Date(+2000, 1, 1).isDefined()) ;
-        EXPECT_TRUE(Date(-2000, 1, 1).isDefined()) ;
+        EXPECT_TRUE(Date(1400, 1, 1).isDefined()) ;
+        EXPECT_TRUE(Date(9999, 1, 1).isDefined()) ;
 
     }
 
@@ -151,9 +152,8 @@ TEST (Library_Physics_Time_Date, GetYear)
 
         EXPECT_EQ(2018, Date(2018, 2, 3).getYear()) ;
         
-        EXPECT_EQ(0, Date(0, 1, 1).getYear()) ;
-        EXPECT_EQ(+2000, Date(+2000, 1, 1).getYear()) ;
-        EXPECT_EQ(-2000, Date(-2000, 1, 1).getYear()) ;
+        EXPECT_EQ(1400, Date(1400, 1, 1).getYear()) ;
+        EXPECT_EQ(9999, Date(9999, 1, 1).getYear()) ;
 
     }
 
@@ -215,7 +215,8 @@ TEST (Library_Physics_Time_Date, GetString)
         EXPECT_EQ("2000-01-01", Date(2000, 1, 1).getString()) ;
         EXPECT_EQ("2018-12-31", Date(2018, 12, 31).getString()) ;
 
-        EXPECT_EQ("-2000-01-01", Date(-2000, 1, 1).getString()) ;
+        EXPECT_EQ("1400-01-01", Date(1400, 1, 1).getString()) ;
+        EXPECT_EQ("9999-12-31", Date(9999, 12, 31).getString()) ;
 
     }
 
@@ -362,19 +363,6 @@ TEST (Library_Physics_Time_Date, Unix)
 
 }
 
-TEST (Library_Physics_Time_Date, JulianDate)
-{
-
-    using library::physics::time::Date ;
-
-    {
-
-        EXPECT_EQ(Date(-4712, 1, 1), Date::JulianDate()) ;
-
-    }
-
-}
-
 TEST (Library_Physics_Time_Date, ModifiedJulianDate)
 {
 
@@ -395,15 +383,13 @@ TEST (Library_Physics_Time_Date, Parse)
 
     {
 
-        EXPECT_EQ(Date(18, 1, 1), Date::Parse("18-01-01")) ;
         EXPECT_EQ(Date(2000, 1, 1), Date::Parse("2000-01-01")) ;
         EXPECT_EQ(Date(1980, 1, 6), Date::Parse("1980-01-06")) ;
         EXPECT_EQ(Date(1970, 1, 1), Date::Parse("1970-01-01")) ;
-        EXPECT_EQ(Date(-4712, 1, 1), Date::Parse("-4712-01-01")) ;
         EXPECT_EQ(Date(1858, 11, 17), Date::Parse("1858-11-17")) ;
-
-        EXPECT_EQ(Date(32767, 1, 1), Date::Parse("32767-01-01")) ;
-        EXPECT_EQ(Date(-32768, 1, 1), Date::Parse("-32768-01-01")) ;
+        
+        EXPECT_EQ(Date(1400, 1, 1), Date::Parse("1400-01-01")) ;
+        EXPECT_EQ(Date(9999, 12, 31), Date::Parse("9999-12-31")) ;
 
     }
 
@@ -418,6 +404,7 @@ TEST (Library_Physics_Time_Date, Parse)
         EXPECT_ANY_THROW(Date::Parse("2018-1-1")) ;
         EXPECT_ANY_THROW(Date::Parse("+2018-01-01")) ;
         EXPECT_ANY_THROW(Date::Parse("2018 01 01")) ;
+        EXPECT_ANY_THROW(Date::Parse("-2000-01-01")) ;
         EXPECT_ANY_THROW(Date::Parse("-32769-01-01")) ;
         EXPECT_ANY_THROW(Date::Parse("32768-01-01")) ;
 

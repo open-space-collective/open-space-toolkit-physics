@@ -25,7 +25,7 @@ namespace time
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using library::core::types::Uint8 ;
-using library::core::types::Int16 ;
+using library::core::types::Uint16 ;
 using library::core::types::String ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -43,11 +43,11 @@ class Date
         ///                     Date date(2018, 1, 2) ; // 2018-01-02
         /// @endcode
         ///
-        /// @param              [in] aYear A year
+        /// @param              [in] aYear A year (1400 - 9999)
         /// @param              [in] aMonth A month (1 - 12)
         /// @param              [in] aDay A day (1 - 31)
 
-                                Date                                        (           Int16                       aYear,
+                                Date                                        (           Uint16                      aYear,
                                                                                         Uint8                       aMonth,
                                                                                         Uint8                       aDay                                        ) ;
 
@@ -96,11 +96,11 @@ class Date
 
         bool                    isDefined                                   ( ) const ;
 
-        /// @brief              Get year
+        /// @brief              Get year (1400 - 9999)
         ///
         /// @return             Year
         
-        Int16                   getYear                                     ( ) const ;
+        Uint16                  getYear                                     ( ) const ;
 
         /// @brief              Get month (1 - 12)
         ///
@@ -126,13 +126,13 @@ class Date
 
         /// @brief              Set year
         ///
-        /// @param              [in] aYear A year
+        /// @param              [in] aYear A year (1400 - 9999)
         
-        void                    setYear                                     (           Int16                       aYear                                       ) ;
+        void                    setYear                                     (           Uint16                      aYear                                       ) ;
 
         /// @brief              Set month
         ///
-        /// @param              [in] aMonth A year (1 - 12)
+        /// @param              [in] aMonth A month (1 - 12)
         
         void                    setMonth                                    (           Uint8                       aMonth                                      ) ;
 
@@ -177,14 +177,6 @@ class Date
 
         static Date             Unix                                        ( ) ;
 
-        /// @brief              Julian dates epoch (-4712-01-01)
-        ///
-        /// @ref                https://en.wikipedia.org/wiki/Julian_day
-        ///
-        /// @return             Date at Julian dates epoch
-
-        static Date             JulianDate                                  ( ) ;
-
         /// @brief              Modified julian dates epoch (1858-11-17)
         ///
         /// @ref                https://en.wikipedia.org/wiki/Julian_day
@@ -208,13 +200,13 @@ class Date
 
         bool                    defined_ ;
 
-        Int16                   year_ ;
+        Uint16                  year_ ;
         Uint8                   month_ ;
         Uint8                   day_ ;
 
                                 Date                                        ( ) ;
 
-        static void             ValidateDate                                (           Int16                       aYear,
+        static void             ValidateDate                                (           Uint16                      aYear,
                                                                                         Uint8                       aMonth,
                                                                                         Uint8                       aDay                                        ) ;
 

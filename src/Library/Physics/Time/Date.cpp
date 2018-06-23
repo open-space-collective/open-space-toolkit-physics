@@ -12,6 +12,7 @@
 #include <Library/Core/Error.hpp>
 #include <Library/Core/Utilities.hpp>
 
+#include <boost/date_time/gregorian/gregorian.hpp>
 #include <boost/regex.hpp>
 #include <boost/lexical_cast.hpp>
 
@@ -26,7 +27,7 @@ namespace time
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                                Date::Date                                  (           Int16                       aYear,
+                                Date::Date                                  (           Uint16                      aYear,
                                                                                         Uint8                       aMonth,
                                                                                         Uint8                       aDay                                        )
                                 :   defined_(true),
@@ -84,7 +85,7 @@ bool                            Date::isDefined                             ( ) 
     return defined_ ;
 }
 
-Int16                           Date::getYear                               ( ) const
+Uint16                          Date::getYear                               ( ) const
 {
 
     if (!this->isDefined())
@@ -127,12 +128,26 @@ String                          Date::getString                             ( ) 
     {
         throw library::core::error::runtime::Undefined("Date") ;
     }
+
+    if (std::abs(year_) < 1000)
+    {
+
+        if (year_ < 0)
+        {
+            return String::Format("{0:05d}-{1:02d}-{2:02d}", year_, month_, day_) ;
+        }
+        else
+        {
+            return String::Format("{0:04d}-{1:02d}-{2:02d}", year_, month_, day_) ;
+        }
+
+    }
     
     return String::Format("{0:d}-{1:02d}-{2:02d}", year_, month_, day_) ;
 
 }
 
-void                            Date::setYear                               (           Int16                       aYear                                       )
+void                            Date::setYear                               (           Uint16                      aYear                                       )
 {
 
     if (!this->isDefined())
@@ -194,11 +209,6 @@ Date                            Date::Unix                                  ( )
     return Date(1970, 1, 1) ;
 }
 
-Date                            Date::JulianDate                            ( )
-{
-    return Date(-4712, 1, 1) ;
-}
-
 Date                            Date::ModifiedJulianDate                    ( )
 {
     return Date(1858, 11, 17) ;
@@ -220,9 +230,9 @@ Date                            Date::Parse                                 (   
         try
         {
 
-            const Int16 year = boost::lexical_cast<Int16>(match[1]) ;
-            const Uint8 month = boost::lexical_cast<Int16>(match[2]) ;
-            const Uint8 day = boost::lexical_cast<Int16>(match[3]) ;
+            const Uint16 year = boost::lexical_cast<Uint16>(match[1]) ;
+            const Uint8 month = static_cast<Uint8>(boost::lexical_cast<Uint16>(match[2])) ;
+            const Uint8 day = static_cast<Uint8>(boost::lexical_cast<Uint16>(match[3])) ;
 
             return Date(year, month, day) ;
 
@@ -253,24 +263,36 @@ Date                            Date::Parse                                 (   
 
 }
 
-void                            Date::ValidateDate                          (           Int16                       aYear,
+void                            Date::ValidateDate                          (           Uint16                      aYear,
                                                                                         Uint8                       aMonth,
                                                                                         Uint8                       aDay                                        )
 {
 
-    (void) aYear ; // No validation required
+    if ((aYear < 1400) || (aYear > 9999))
+    {
+        throw library::core::error::RuntimeError(String::Format("Year [{}] out of range [1400 - 9999].", aYear)) ;
+    }
 
     if ((aMonth == 0) || (aMonth > 12))
     {
-        throw library::core::error::RuntimeError(String::Format("Month {} out of range [1 - 12].", aMonth)) ;
+        throw library::core::error::RuntimeError(String::Format("Month [{}] out of range [1 - 12].", aMonth)) ;
     }
 
     if ((aDay == 0) || (aDay > 31))
     {
-        throw library::core::error::RuntimeError(String::Format("Day {} out of range [1 - 31].", aDay)) ;
+        throw library::core::error::RuntimeError(String::Format("Day [{}] out of range [1 - 31].", aDay)) ;
     }
 
-    // [TBI] Validate date
+    // [TBM] This is a quick and dirty implementation using boost::gregorian::date, it should be replaced by something more efficient
+
+    try
+    {
+        boost::gregorian::date date(aYear, aMonth, aDay) ;
+    }
+    catch (const std::out_of_range& e)
+    {
+        throw library::core::error::RuntimeError(String::Format("Date [{:d}-{:02d}-{:02d}] out of range.", aYear, aMonth, aDay)) ;
+    }
 
 }
 

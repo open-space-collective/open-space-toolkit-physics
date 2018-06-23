@@ -234,13 +234,16 @@ class Time
         ///                     Time time = Time::Parse("12:34:56") ; // 12:34:56
         ///                     Time time = Time::Parse("12:34:56.123") ; // 12:34:56.123
         ///                     Time time = Time::Parse("12:34:56.123.456") ; // 12:34:56.123.456
-        ///                     Time time = Time::Parse("12:34:56.123.456.789") ; // 12:34:56.123.456.789
+        ///                     Time time = Time::Parse("12:34:56.123.456.789", Time::Format::Standard) ; // 12:34:56.123.456.789
+        ///                     Time time = Time::Parse("12:34:56.123456789", Time::Format::ISO8601) ; // 12:34:56.123.456.789
         /// @endcode
         ///
         /// @param              [in] aString A string
+        /// @param              [in] (optional) aFormat A time format (automatic detection if Undefined)
         /// @return             Time
 
-        static Time             Parse                                       (   const   String&                     aString                                     ) ;
+        static Time             Parse                                       (   const   String&                     aString,
+                                                                                const   Time::Format&               aFormat                                     =   Time::Format::Undefined ) ;
 
     private:
 
