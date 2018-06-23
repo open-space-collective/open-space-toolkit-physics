@@ -245,6 +245,48 @@ TEST (Library_Physics_Time_DateTime, AccessTime)
 
 }
 
+TEST (Library_Physics_Time_DateTime, GetJulianDate)
+{
+
+    using library::physics::time::DateTime ;
+
+    {
+        
+        EXPECT_EQ(2451545.0, DateTime(2000, 1, 1, 12, 0, 0).getJulianDate()) ;
+        EXPECT_EQ(2451545.25, DateTime(2000, 1, 1, 18, 0, 0).getJulianDate()) ;
+        EXPECT_EQ(2451545.50, DateTime(2000, 1, 2, 0, 0, 0).getJulianDate()) ;
+        EXPECT_EQ(2451545.75, DateTime(2000, 1, 2, 6, 0, 0).getJulianDate()) ;
+        EXPECT_EQ(2451546.0, DateTime(2000, 1, 2, 12, 0, 0).getJulianDate()) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(DateTime::Undefined().getJulianDate()) ;
+
+    }
+
+}
+
+TEST (Library_Physics_Time_DateTime, GetModifiedJulianDate)
+{
+
+    using library::physics::time::DateTime ;
+
+    {
+
+        FAIL() ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(DateTime::Undefined().getModifiedJulianDate()) ;
+
+    }
+
+}
+
 TEST (Library_Physics_Time_DateTime, GetString)
 {
     
@@ -319,27 +361,65 @@ TEST (Library_Physics_Time_DateTime, J2000)
 
 }
 
-TEST (Library_Physics_Time_DateTime, GPS)
+TEST (Library_Physics_Time_DateTime, GPSEpoch)
 {
 
     using library::physics::time::DateTime ;
 
     {
 
-        EXPECT_EQ(DateTime(1980, 1, 6, 0, 0, 0), DateTime::GPS()) ;
+        EXPECT_EQ(DateTime(1980, 1, 6, 0, 0, 0), DateTime::GPSEpoch()) ;
 
     }
 
 }
 
-TEST (Library_Physics_Time_DateTime, Unix)
+TEST (Library_Physics_Time_DateTime, UnixEpoch)
 {
 
     using library::physics::time::DateTime ;
 
     {
 
-        EXPECT_EQ(DateTime(1970, 1, 1, 0, 0, 0), DateTime::Unix()) ;
+        EXPECT_EQ(DateTime(1970, 1, 1, 0, 0, 0), DateTime::UnixEpoch()) ;
+
+    }
+
+}
+
+TEST (Library_Physics_Time_DateTime, ModifiedJulianDateEpoch)
+{
+
+    using library::physics::time::DateTime ;
+
+    {
+
+        EXPECT_EQ(DateTime(1858, 11, 17, 0, 0, 0), DateTime::ModifiedJulianDateEpoch()) ;
+
+    }
+
+}
+
+TEST (Library_Physics_Time_DateTime, JulianDate)
+{
+
+    using library::core::types::Real ;
+    using library::physics::time::DateTime ;
+
+    {
+
+        EXPECT_EQ(DateTime(2000, 1, 1, 12, 0, 0), DateTime::JulianDate(2451545.0)) ;
+        EXPECT_EQ(DateTime(2000, 1, 1, 18, 0, 0), DateTime::JulianDate(2451545.25)) ;
+        EXPECT_EQ(DateTime(2000, 1, 2, 0, 0, 0), DateTime::JulianDate(2451545.50)) ;
+        EXPECT_EQ(DateTime(2000, 1, 2, 6, 0, 0), DateTime::JulianDate(2451545.75)) ;
+        EXPECT_EQ(DateTime(2000, 1, 2, 12, 0, 0), DateTime::JulianDate(2451546.0)) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(DateTime::JulianDate(Real::Undefined())) ;
+        EXPECT_ANY_THROW(DateTime::JulianDate(0.0)) ;
 
     }
 
@@ -348,11 +428,20 @@ TEST (Library_Physics_Time_DateTime, Unix)
 TEST (Library_Physics_Time_DateTime, ModifiedJulianDate)
 {
 
+    using library::core::types::Real ;
     using library::physics::time::DateTime ;
 
     {
 
-        EXPECT_EQ(DateTime(1858, 11, 17, 0, 0, 0), DateTime::ModifiedJulianDate()) ;
+        EXPECT_EQ(DateTime(1858, 11, 17, 0, 0, 0), DateTime::ModifiedJulianDate(0.0)) ;
+
+        FAIL() ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(DateTime::ModifiedJulianDate(Real::Undefined())) ;
 
     }
 

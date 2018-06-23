@@ -190,17 +190,17 @@ Date                            Date::J2000                                 ( )
     return Date(2000, 1, 1) ;
 }
 
-Date                            Date::GPS                                   ( )
+Date                            Date::GPSEpoch                              ( )
 {
     return Date(1980, 1, 6) ;
 }
 
-Date                            Date::Unix                                  ( )
+Date                            Date::UnixEpoch                             ( )
 {
     return Date(1970, 1, 1) ;
 }
 
-Date                            Date::ModifiedJulianDate                    ( )
+Date                            Date::ModifiedJulianDateEpoch               ( )
 {
     return Date(1858, 11, 17) ;
 }

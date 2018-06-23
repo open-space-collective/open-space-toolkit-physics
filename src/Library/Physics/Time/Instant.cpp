@@ -30,15 +30,6 @@ namespace time
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//                                 Instant::Instant                            (           Uint64                      aNanosecondCountFromEpoch,
-//                                                                                         bool                        isPostEpoch,
-//                                                                                 const   Scale&                      aTimeScale                                  )
-//                                 :   count_({aNanosecondCountFromEpoch, isPostEpoch}),
-//                                     scale_(aTimeScale)
-// {
-
-// }
-
 bool                            Instant::operator ==                        (   const   Instant&                    anInstant                                   ) const
 {
 
@@ -245,11 +236,6 @@ bool                            Instant::isPostEpoch                        ( ) 
 
 }
 
-Scale                           Instant::getScale                           ( ) const
-{
-    return scale_ ;
-}
-
 time::DateTime                  Instant::getDateTime                        (   const   Scale&                      aTimeScale                                  ) const
 {
 
@@ -340,21 +326,64 @@ time::DateTime                  Instant::getDateTime                        (   
 
 }
 
-// Real                            Instant::getJulianDate                      (   const   Scale&                      aTimeScale                                  ) const
-// {
+Real                            Instant::getJulianDate                      (   const   Scale&                      aTimeScale                                  ) const
+{
 
-// }
+    if (aTimeScale == Scale::Undefined)
+    {
+        throw library::core::error::runtime::Undefined("Scale") ;
+    }
 
-// Real                            Instant::getModifiedJulianDate              (   const   Scale&                      aTimeScale                                  ) const
-// {
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Instant") ;
+    }
 
-// }
+    return this->getDateTime(aTimeScale).getJulianDate() ;
 
-// Uint64                          Instant::getCountSinceEpoch                 (   const   units::Time&                aTimeUnit,
-//                                                                                 const   Instant&                    anEpoch                                     )
-// {
+}
 
-// }
+Real                            Instant::getModifiedJulianDate              (   const   Scale&                      aTimeScale                                  ) const
+{
+
+    if (aTimeScale == Scale::Undefined)
+    {
+        throw library::core::error::runtime::Undefined("Scale") ;
+    }
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Instant") ;
+    }
+
+    return this->getDateTime(aTimeScale).getModifiedJulianDate() ;
+
+}
+
+Uint64                          Instant::getCountSinceEpoch                 (   const   units::Time::Unit&          aTimeUnit,
+                                                                                const   Instant&                    anEpoch                                     )
+{
+
+    if (aTimeUnit == units::Time::Unit::Undefined)
+    {
+        throw library::core::error::runtime::Undefined("Time unit") ;
+    }
+
+    if (!anEpoch.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Epoch") ;
+    }
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Instant") ;
+    }
+
+    // [TBI]
+
+    return 0 ;
+
+}
 
 String                          Instant::getString                          (   const   Scale&                      aTimeScale                                  ) const
 {
@@ -366,11 +395,6 @@ String                          Instant::getString                          (   
 
     return this->getDateTime(aTimeScale).getString() + " [" + StringFromScale(aTimeScale) + "]" ;
 
-}
-
-Instant                         Instant::inScale                            (   const   Scale&                      aTimeScale                                  ) const
-{
-    return Instant(Instant::ConvertCountScale(count_, scale_, aTimeScale), aTimeScale) ;
 }
 
 Instant                         Instant::Undefined                          ( )
@@ -458,6 +482,11 @@ Instant                         Instant::DateTime                           (   
     if (!aDateTime.isDefined())
     {
         throw library::core::error::runtime::Wrong("DateTime") ;
+    }
+
+    if (aTimeScale == Scale::Undefined)
+    {
+        throw library::core::error::runtime::Wrong("Scale") ;
     }
 
     if ((aDateTime.accessDate().getYear() < 1970) || (aDateTime.accessDate().getYear() > 2030))
@@ -595,17 +624,41 @@ Instant                         Instant::DateTime                           (   
 
 }
 
-// Instant                         Instant::JulianDate                         (   const   Real&                       aJulianDate,
-//                                                                                 const   Scale&                      aTimeScale                                  )
-// {
+Instant                         Instant::JulianDate                         (   const   Real&                       aJulianDate,
+                                                                                const   Scale&                      aTimeScale                                  )
+{
 
-// }
+    if (!aJulianDate.isDefined())
+    {
+        throw library::core::error::runtime::Wrong("Julian Date") ;
+    }
 
-// Instant                         Instant::ModifiedJulianDate                 (   const   Real&                       aModifiedJulianDate,
-//                                                                                 const   Scale&                      aTimeScale                                  )
-// {
+    if (aTimeScale == Scale::Undefined)
+    {
+        throw library::core::error::runtime::Wrong("Scale") ;
+    }
 
-// }
+    return Instant::DateTime(DateTime::JulianDate(aJulianDate), aTimeScale) ;
+
+}
+
+Instant                         Instant::ModifiedJulianDate                 (   const   Real&                       aModifiedJulianDate,
+                                                                                const   Scale&                      aTimeScale                                  )
+{
+
+    if (!aModifiedJulianDate.isDefined())
+    {
+        throw library::core::error::runtime::Wrong("Modified Julian Date") ;
+    }
+
+    if (aTimeScale == Scale::Undefined)
+    {
+        throw library::core::error::runtime::Wrong("Scale") ;
+    }
+
+    return Instant::DateTime(DateTime::ModifiedJulianDate(aModifiedJulianDate), aTimeScale) ;
+
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -615,6 +668,11 @@ Instant                         Instant::DateTime                           (   
                                     scale_(aTimeScale)    
 {
 
+}
+
+Instant                         Instant::inScale                            (   const   Scale&                      aTimeScale                                  ) const
+{
+    return Instant(Instant::ConvertCountScale(count_, scale_, aTimeScale), aTimeScale) ;
 }
 
 Instant::Count                  Instant::ConvertCountScale                  (   const   Instant::Count&             aCount,
@@ -751,16 +809,6 @@ Instant::Count                  Instant::ConvertCountScale                  (   
 
     return Instant::Count(0, true) ;
 
-}
-
-Real                            Instant::ModifiedJulianDateFromJulianDate   (   const   Real&                       aJulianDate                                 )
-{
-    return aJulianDate - 2400000.5 ; // MJD = JD - 2400000.5 [day]
-}
-
-Real                            Instant::JulianDateFromModifiedJulianDate   (   const   Real&                       aModifiedJulianDate                         )
-{
-    return aModifiedJulianDate + 2400000.5 ; // JD = MJD + 2400000.5 [day]
 }
 
 Instant::Count                  Instant::UTC_TAI                            (   const   Instant::Count&             aCount_TAI                                  )

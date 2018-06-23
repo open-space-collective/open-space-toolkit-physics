@@ -83,20 +83,16 @@ class Instant
 
         bool                    isPostEpoch                                 ( ) const ;
 
-        Scale                   getScale                                    ( ) const ;
-
         time::DateTime          getDateTime                                 (   const   Scale&                      aTimeScale                                  ) const ;
 
         Real                    getJulianDate                               (   const   Scale&                      aTimeScale                                  ) const ;
 
         Real                    getModifiedJulianDate                       (   const   Scale&                      aTimeScale                                  ) const ;
 
-        Uint64                  getCountSinceEpoch                          (   const   units::Time&                aTimeUnit,
+        Uint64                  getCountSinceEpoch                          (   const   units::Time::Unit&          aTimeUnit,
                                                                                 const   Instant&                    anEpoch                                     ) ;
 
         String                  getString                                   (   const   Scale&                      aTimeScale                                  ) const ;
-
-        Instant                 inScale                                     (   const   Scale&                      aTimeScale                                  ) const ;
 
         static Instant          Undefined                                   ( ) ;
 
@@ -166,13 +162,11 @@ class Instant
                                 Instant                                     (   const   Instant::Count&             aCount,
                                                                                 const   Scale&                      aTimeScale                                  ) ;
 
+        Instant                 inScale                                     (   const   Scale&                      aTimeScale                                  ) const ;
+
         static Instant::Count   ConvertCountScale                           (   const   Instant::Count&             aCount,
                                                                                 const   Scale&                      anInputTimeScale,
                                                                                 const   Scale&                      anOutputTimeScale                           ) ;
-
-        static Real             ModifiedJulianDateFromJulianDate            (   const   Real&                       aJulianDate                                 ) ;
-
-        static Real             JulianDateFromModifiedJulianDate            (   const   Real&                       aModifiedJulianDate                         ) ;
 
         static Instant::Count   UTC_TAI                                     (   const   Instant::Count&             aCount_TAI                                  ) ;
 

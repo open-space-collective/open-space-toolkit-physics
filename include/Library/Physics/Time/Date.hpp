@@ -167,7 +167,7 @@ class Date
         ///
         /// @return             Date at GPS epoch
         
-        static Date             GPS                                         ( ) ;
+        static Date             GPSEpoch                                    ( ) ;
 
         /// @brief              Unix epoch (1970-01-01)
         ///
@@ -175,7 +175,7 @@ class Date
         ///
         /// @return             Date at Unix epoch
 
-        static Date             Unix                                        ( ) ;
+        static Date             UnixEpoch                                   ( ) ;
 
         /// @brief              Modified julian dates epoch (1858-11-17)
         ///
@@ -183,7 +183,7 @@ class Date
         ///
         /// @return             Date at Modified Julian epoch
 
-        static Date             ModifiedJulianDate                          ( ) ;
+        static Date             ModifiedJulianDateEpoch                     ( ) ;
 
         /// @brief              Constructs a date from a string representation
         ///

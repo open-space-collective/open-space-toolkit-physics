@@ -28,20 +28,21 @@ namespace time
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using library::core::types::Real ;
 using library::core::types::String ;
 using library::physics::time::Date ;
 using library::physics::time::Time ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @brief                      Date-Time
+/// @brief                      Date-time
 
 class DateTime
 {
 
     public:
 
-        /// @brief              Date-Time format
+        /// @brief              Date-time format
 
         enum class Format
         {
@@ -148,6 +149,26 @@ class DateTime
 
         const Time&             accessTime                                  ( ) const ;
 
+        /// @brief              Get Julian Date
+        ///
+        /// @code
+        ///                     DateTime(AAA).getJulianDate() ; // XXX.X
+        /// @endcode
+        ///
+        /// @return             Julian Date
+
+        Real                    getJulianDate                               ( ) const ;
+
+        /// @brief              Get Modified Julian Date
+        ///
+        /// @code
+        ///                     DateTime(AAA).getModifiedJulianDate() ; // XXX.X
+        /// @endcode
+        ///
+        /// @return             Modified Julian Date
+
+        Real                    getModifiedJulianDate                       ( ) const ;
+
         /// @brief              Get string representation of date-time
         ///
         /// @code
@@ -184,7 +205,7 @@ class DateTime
         ///
         /// @return             DateTime at GPS epoch
         
-        static DateTime         GPS                                         ( ) ;
+        static DateTime         GPSEpoch                                    ( ) ;
 
         /// @brief              Unix epoch (1970-01-01 00:00:00.000.000.000)
         ///
@@ -192,15 +213,33 @@ class DateTime
         ///
         /// @return             DateTime at Unix epoch
 
-        static DateTime         Unix                                        ( ) ;
+        static DateTime         UnixEpoch                                   ( ) ;
 
-        /// @brief              Modified julian dates epoch (1858-11-17 00:00:00.000.000.000)
+        /// @brief              Modified Julian Date epoch (1858-11-17 00:00:00.000.000.000)
         ///
         /// @ref                https://en.wikipedia.org/wiki/Julian_day
         ///
-        /// @return             DateTime at Modified Julian epoch
+        /// @return             Date-time
 
-        static DateTime         ModifiedJulianDate                          ( ) ;
+        static DateTime         ModifiedJulianDateEpoch                     ( ) ;
+
+        /// @brief              Date-time from Julian Date
+        ///
+        /// @ref                https://en.wikipedia.org/wiki/Julian_day
+        ///
+        /// @input              [in] aJulianDate A Julian Date
+        /// @return             Date-time
+
+        static DateTime         JulianDate                                  (   const   Real&                       aJulianDate                                 ) ;
+
+        /// @brief              Date-time from Modified Julian Date
+        ///
+        /// @ref                https://en.wikipedia.org/wiki/Julian_day
+        ///
+        /// @input              [in] aModifiedJulianDate A Modified Julian Date
+        /// @return             Date-time
+
+        static DateTime         ModifiedJulianDate                          (   const   Real&                       aModifiedJulianDate                         ) ;
 
         /// @brief              Constructs a date-time from a string representation
         ///
@@ -210,7 +249,7 @@ class DateTime
         ///
         /// @param              [in] aString A string
         /// @param              [in] (optional) aFormat A date-time format (automatic detection if Undefined)
-        /// @return             DateTime
+        /// @return             Date-time
 
         static DateTime         Parse                                       (   const   String&                     aString,
                                                                                 const   DateTime::Format&           aFormat                                     =   DateTime::Format::Undefined ) ;
@@ -219,6 +258,10 @@ class DateTime
 
         Date                    date_ ;
         Time                    time_ ;
+
+        static Real             ModifiedJulianDateFromJulianDate            (   const   Real&                       aJulianDate                                 ) ;
+
+        static Real             JulianDateFromModifiedJulianDate            (   const   Real&                       aModifiedJulianDate                         ) ;
 
 } ;
 

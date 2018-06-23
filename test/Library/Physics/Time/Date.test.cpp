@@ -337,40 +337,40 @@ TEST (Library_Physics_Time_Date, J2000)
 
 }
 
-TEST (Library_Physics_Time_Date, GPS)
+TEST (Library_Physics_Time_Date, GPSEpoch)
 {
 
     using library::physics::time::Date ;
 
     {
 
-        EXPECT_EQ(Date(1980, 1, 6), Date::GPS()) ;
+        EXPECT_EQ(Date(1980, 1, 6), Date::GPSEpoch()) ;
 
     }
 
 }
 
-TEST (Library_Physics_Time_Date, Unix)
+TEST (Library_Physics_Time_Date, UnixEpoch)
 {
 
     using library::physics::time::Date ;
 
     {
 
-        EXPECT_EQ(Date(1970, 1, 1), Date::Unix()) ;
+        EXPECT_EQ(Date(1970, 1, 1), Date::UnixEpoch()) ;
 
     }
 
 }
 
-TEST (Library_Physics_Time_Date, ModifiedJulianDate)
+TEST (Library_Physics_Time_Date, ModifiedJulianDateEpoch)
 {
 
     using library::physics::time::Date ;
 
     {
 
-        EXPECT_EQ(Date(1858, 11, 17), Date::ModifiedJulianDate()) ;
+        EXPECT_EQ(Date(1858, 11, 17), Date::ModifiedJulianDateEpoch()) ;
 
     }
 

@@ -13,6 +13,16 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+static const auto scales =
+{   
+    library::physics::time::Scale::TT,
+    library::physics::time::Scale::TAI,
+    library::physics::time::Scale::UTC,
+    library::physics::time::Scale::GPST
+} ;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // TEST (Library_Physics_Time_Instant, EqualToOperator)
 // {
     
@@ -317,117 +327,150 @@
 
 // }
 
-// TEST (Library_Physics_Time_Instant, StreamOperator)
-// {
+TEST (Library_Physics_Time_Instant, StreamOperator)
+{
     
-//     using library::physics::time::Scale ;
-//     using library::physics::time::Instant ;
+    using library::physics::time::Scale ;
+    using library::physics::time::Instant ;
 
-//     {
+    {
 
-//         testing::internal::CaptureStdout() ;
+        testing::internal::CaptureStdout() ;
 
-//         EXPECT_NO_THROW(std::cout << Instant(123, true, Scale::UTC) << std::endl) ;
+        EXPECT_NO_THROW(std::cout << Instant::J2000() << std::endl) ;
 
-//         EXPECT_FALSE(testing::internal::GetCapturedStdout().empty()) ;
+        EXPECT_FALSE(testing::internal::GetCapturedStdout().empty()) ;
 
-//     }
+    }
 
-// }
+}
 
-// TEST (Library_Physics_Time_Instant, IsDefined)
-// {
+TEST (Library_Physics_Time_Instant, IsDefined)
+{
     
-//     using library::physics::time::Scale ;
-//     using library::physics::time::Instant ;
+    using library::physics::time::Scale ;
+    using library::physics::time::DateTime ;
+    using library::physics::time::Instant ;
 
-//     {
+    {
 
-//         EXPECT_TRUE(Instant(0, true, Scale::UTC).isDefined()) ;
-//         EXPECT_TRUE(Instant(1, true, Scale::UTC).isDefined()) ;
+        for (auto const& scale : scales)
+        {
+            
+            EXPECT_TRUE(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0), scale).isDefined()) ;
+            EXPECT_TRUE(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0, 0, 0, 1), scale).isDefined()) ;
+            EXPECT_TRUE(Instant::DateTime(DateTime(2000, 1, 1, 11, 59, 59, 999, 999, 999), scale).isDefined()) ;
 
-//         EXPECT_TRUE(Instant(0, false, Scale::UTC).isDefined()) ;
-//         EXPECT_TRUE(Instant(1, false, Scale::UTC).isDefined()) ;
+        }
 
-//         EXPECT_TRUE(Instant(0, true, Scale::TAI).isDefined()) ;
-//         EXPECT_TRUE(Instant(0, true, Scale::TT).isDefined()) ;
-
-//     }
-
-//     {
-
-//         EXPECT_FALSE(Instant(0, true, Scale::Undefined).isDefined()) ;
-
-//     }
+    }
     
-//     {
+    {
 
-//         EXPECT_FALSE(Instant::Undefined().isDefined()) ;
+        EXPECT_FALSE(Instant::Undefined().isDefined()) ;
 
-//     }
+    }
 
-// }
+}
 
-// TEST (Library_Physics_Time_Instant, IsPostEpoch)
-// {
+TEST (Library_Physics_Time_Instant, IsPostEpoch)
+{
     
-//     using library::physics::time::Scale ;
-//     using library::physics::time::Instant ;
+    using library::physics::time::Scale ;
+    using library::physics::time::DateTime ;
+    using library::physics::time::Instant ;
 
-//     {
-
-//         EXPECT_TRUE(Instant(0, true, Scale::TT).isPostEpoch()) ;
-//         EXPECT_TRUE(Instant(1, true, Scale::TT).isPostEpoch()) ;
-//         EXPECT_TRUE(Instant(0, false, Scale::TT).isPostEpoch()) ;
+    {
         
-//         EXPECT_TRUE(Instant(0, true, Scale::TAI).isPostEpoch()) ;
-//         EXPECT_TRUE(Instant(0, true, Scale::GPST).isPostEpoch()) ;
+        EXPECT_TRUE(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0), Scale::TT).isPostEpoch()) ;
+        
+        EXPECT_TRUE(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0, 0, 0, 1), Scale::TT).isPostEpoch()) ;
 
-//         EXPECT_FALSE(Instant(1, false, Scale::TT).isPostEpoch()) ;
+        EXPECT_FALSE(Instant::DateTime(DateTime(2000, 1, 1, 11, 59, 59, 999, 999, 999), Scale::TT).isPostEpoch()) ;
 
-//     }
+    }
 
-//     {
+    {
 
-//         EXPECT_TRUE(Instant::Epoch().isPostEpoch()) ;
+        EXPECT_TRUE(Instant::J2000().isPostEpoch()) ;
 
-//     }
+    }
 
-//     {
+    {
 
-//         EXPECT_ANY_THROW(Instant::Undefined().isPostEpoch()) ;
+        EXPECT_ANY_THROW(Instant::Undefined().isPostEpoch()) ;
 
-//     }
+    }
 
-// }
+}
 
-// TEST (Library_Physics_Time_Instant, GetScale)
-// {
+TEST (Library_Physics_Time_Instant, GetDateTime)
+{
     
-//     using library::physics::time::Scale ;
-//     using library::physics::time::Instant ;
+    using library::physics::time::Scale ;
+    using library::physics::time::DateTime ;
+    using library::physics::time::Instant ;
 
-//     {
+    {
 
-//         EXPECT_EQ(Scale::Undefined, Instant(0, true, Scale::Undefined).getScale()) ;
-//         EXPECT_EQ(Scale::UTC, Instant(0, true, Scale::UTC).getScale()) ;
-//         EXPECT_EQ(Scale::TT, Instant(0, true, Scale::TT).getScale()) ;
-//         EXPECT_EQ(Scale::TAI, Instant(0, true, Scale::TAI).getScale()) ;
-//         EXPECT_EQ(Scale::UT1, Instant(0, true, Scale::UT1).getScale()) ;
-//         EXPECT_EQ(Scale::TCG, Instant(0, true, Scale::TCG).getScale()) ;
-//         EXPECT_EQ(Scale::TCB, Instant(0, true, Scale::TCB).getScale()) ;
-//         EXPECT_EQ(Scale::TDB, Instant(0, true, Scale::TDB).getScale()) ;
-//         EXPECT_EQ(Scale::GMST, Instant(0, true, Scale::GMST).getScale()) ;
-//         EXPECT_EQ(Scale::GPST, Instant(0, true, Scale::GPST).getScale()) ;
-//         EXPECT_EQ(Scale::GST, Instant(0, true, Scale::GST).getScale()) ;
-//         EXPECT_EQ(Scale::GLST, Instant(0, true, Scale::GLST).getScale()) ;
-//         EXPECT_EQ(Scale::BDT, Instant(0, true, Scale::BDT).getScale()) ;
-//         EXPECT_EQ(Scale::QZSST, Instant(0, true, Scale::QZSST).getScale()) ;
-//         EXPECT_EQ(Scale::IRNSST, Instant(0, true, Scale::IRNSST).getScale()) ;
+        for (auto year = 1970; year <= 2030; year += 1)
+        {
 
-//     }
+            for (auto month = 1; month <= 12; month += 3)
+            {
 
-// }
+                for (auto day = 1; day <= 28; day += 5)
+                {
+
+                    for (auto hour = 0; hour <= 23; hour += 4)
+                    {
+
+                        for (auto minute = 0; minute <= 59; minute += 20)
+                        {
+
+                            for (auto second = 0; second <= 59; second += 20)
+                            {
+
+                                for (auto const& scale : scales)
+                                {
+
+                                    if ((year < 1981) && (scale == Scale::UTC))
+                                    {
+                                        continue ; // Because dAT not implemented there
+                                    }
+                                    
+                                    Instant intant = Instant::DateTime(DateTime(year, month, day, hour, minute, second, 6, 7, 8), scale) ;
+
+                                    EXPECT_EQ(DateTime(year, month, day, hour, minute, second, 6, 7, 8), intant.getDateTime(scale)) ;
+
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+    {
+
+        for (auto const& scale : scales)
+        {
+            EXPECT_ANY_THROW(Instant::Undefined().getDateTime(scale)) ;
+        }
+
+        EXPECT_ANY_THROW(Instant::J2000().getDateTime(Scale::Undefined)) ;
+
+    }
+
+}
 
 TEST (Library_Physics_Time_Instant, GetJulianDate)
 {
@@ -438,6 +481,17 @@ TEST (Library_Physics_Time_Instant, GetJulianDate)
     {
 
         FAIL() ;
+
+    }
+
+    {
+
+        for (auto const& scale : scales)
+        {
+            EXPECT_ANY_THROW(Instant::Undefined().getJulianDate(scale)) ;
+        }
+
+        EXPECT_ANY_THROW(Instant::J2000().getJulianDate(Scale::Undefined)) ;
 
     }
 
@@ -455,11 +509,23 @@ TEST (Library_Physics_Time_Instant, GetModifiedJulianDate)
 
     }
 
+    {
+
+        for (auto const& scale : scales)
+        {
+            EXPECT_ANY_THROW(Instant::Undefined().getModifiedJulianDate(scale)) ;
+        }
+
+        EXPECT_ANY_THROW(Instant::J2000().getModifiedJulianDate(Scale::Undefined)) ;
+
+    }
+
 }
 
-TEST (Library_Physics_Time_Instant, GetDateTime)
+TEST (Library_Physics_Time_Instant, GetCountSinceEpoch)
 {
     
+    using library::physics::units::Time ;
     using library::physics::time::Scale ;
     using library::physics::time::Instant ;
 
@@ -469,17 +535,10 @@ TEST (Library_Physics_Time_Instant, GetDateTime)
 
     }
 
-}
-
-TEST (Library_Physics_Time_Instant, GetCountSinceEpoch)
-{
-    
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-
     {
 
-        FAIL() ;
+        EXPECT_ANY_THROW(Instant::J2000().getCountSinceEpoch(Time::Unit::Undefined, Instant::J2000())) ;
+        EXPECT_ANY_THROW(Instant::J2000().getCountSinceEpoch(Time::Unit::Second, Instant::Undefined())) ;
 
     }
 
@@ -517,63 +576,16 @@ TEST (Library_Physics_Time_Instant, GetString)
 
     {
 
-        for (auto year = 1970; year <= 2030; year += 1)
+        for (auto const& scale : scales)
         {
-
-            for (auto month = 1; month <= 12; month += 3)
-            {
-
-                for (auto day = 1; day <= 28; day += 5)
-                {
-
-                    for (auto hour = 0; hour <= 23; hour += 4)
-                    {
-
-                        for (auto minute = 0; minute <= 59; minute += 20)
-                        {
-
-                            for (auto second = 0; second <= 59; second += 20)
-                            {
-
-                                for (auto const& scale : { Scale::TT, Scale::TAI, Scale::UTC, Scale::GPST })
-                                {
-
-                                    if ((year < 1981) && (scale == Scale::UTC))
-                                    {
-                                        continue ; // Because dAT not implemented there
-                                    }
-                                    
-                                    Instant intant = Instant::DateTime(DateTime(year, month, day, hour, minute, second, 6, 7, 8), scale) ;
-
-                                    EXPECT_EQ(DateTime(year, month, day, hour, minute, second, 6, 7, 8), intant.getDateTime(scale)) ;
-
-                                }
-
-                            }
-
-                        }
-
-                    }
-
-                }
-
-            }
-
+            EXPECT_ANY_THROW(Instant::Undefined().getString(scale)) ;
         }
 
     }
 
-}
-
-TEST (Library_Physics_Time_Instant, InScale)
-{
-    
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-
     {
 
-        FAIL() ;
+        EXPECT_ANY_THROW(Instant::J2000().getString(Scale::Undefined)) ;
 
     }
 
@@ -624,16 +636,17 @@ TEST (Library_Physics_Time_Instant, J2000)
 {
     
     using library::physics::time::Scale ;
+    using library::physics::time::DateTime ;
     using library::physics::time::Instant ;
 
     {
 
-        FAIL() ;
+        EXPECT_NO_THROW(Instant::J2000()) ;
+        EXPECT_TRUE(Instant::J2000().isDefined()) ;
 
-        // EXPECT_NO_THROW(Instant::J2000()) ;
-        // EXPECT_TRUE(Instant::J2000().isDefined()) ;
-
-        // EXPECT_EQ(Instant(0, true, Scale::TT), Instant::J2000()) ;
+        EXPECT_EQ(DateTime(2000, 1, 1, 12, 0, 0), Instant::J2000().getDateTime(Scale::TT)) ;
+        EXPECT_EQ(DateTime(2000, 1, 1, 11, 59, 27, 816), Instant::J2000().getDateTime(Scale::TAI)) ;
+        EXPECT_EQ(DateTime(2000, 1, 1, 11, 58, 55, 816), Instant::J2000().getDateTime(Scale::UTC)) ;
 
     }
 
@@ -643,11 +656,39 @@ TEST (Library_Physics_Time_Instant, DateTime)
 {
     
     using library::physics::time::Scale ;
+    using library::physics::time::DateTime ;
     using library::physics::time::Instant ;
 
     {
 
-        FAIL() ;
+        for (auto const& scale : scales)
+        {
+
+            EXPECT_NO_THROW(Instant::DateTime(DateTime(1971, 1, 1, 0, 0, 0), scale)) ;
+            EXPECT_NO_THROW(Instant::DateTime(DateTime(2000, 1, 1, 0, 0, 0), scale)) ;
+            EXPECT_NO_THROW(Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), scale)) ;
+            EXPECT_NO_THROW(Instant::DateTime(DateTime(2030, 12, 31, 23, 59, 59), scale)) ;
+
+        }
+
+        for (auto const& scale : scales)
+        {
+
+            EXPECT_TRUE(Instant::DateTime(DateTime(1971, 1, 1, 0, 0, 0), scale).isDefined()) ;
+            EXPECT_TRUE(Instant::DateTime(DateTime(2000, 1, 1, 0, 0, 0), scale).isDefined()) ;
+            EXPECT_TRUE(Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), scale).isDefined()) ;
+            EXPECT_TRUE(Instant::DateTime(DateTime(2030, 12, 31, 23, 59, 59), scale).isDefined()) ;
+
+        }
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::Undefined)) ;
+
+        EXPECT_ANY_THROW(Instant::DateTime(DateTime(1969, 1, 1, 0, 0, 0), Scale::TT)) ;
+        EXPECT_ANY_THROW(Instant::DateTime(DateTime(2031, 1, 1, 0, 0, 0), Scale::TT)) ;
 
     }
 

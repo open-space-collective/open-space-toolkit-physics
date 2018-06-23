@@ -14,6 +14,8 @@
 
 #include <boost/regex.hpp>
 
+#include <iostream>
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 namespace library
@@ -124,6 +126,52 @@ const Time&                     DateTime::accessTime                        ( ) 
 
 }
 
+Real                            DateTime::getJulianDate                     ( ) const
+{
+
+    using library::core::types::Int16 ;
+    using library::core::types::Int32 ;
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("DateTime") ;
+    }
+
+    const Uint16 year = date_.getYear() ;
+    const Uint8 month = date_.getMonth() ;
+    const Uint8 day = date_.getDay() ;
+
+    const Int32 julianDate = day
+                           + 1461 * (year + 4800 + (month - 14) / 12) / 4
+                           + 367 * (month - 2 - (month - 14) / 12 * 12) / 12
+                           - 3 * ((year + 4900 + (month - 14) / 12) / 100) / 4
+                           - 32075 ;
+
+    const Int16 hour = time_.getHour() ;
+    const Int16 minute = time_.getMinute() ;
+    const Int16 second = time_.getSecond() ;
+    const Uint16 millisecond = time_.getMillisecond() ;
+    const Uint16 microsecond = time_.getMicrosecond() ;
+    const Uint16 nanosecond = time_.getNanosecond() ;
+
+    const Real fractionalDay = ((hour - 12.0) + (minute / 60.0) + (second / 3600.0) + ((millisecond / 1e3) + (microsecond / 1e6) + (nanosecond / 1e9)) / 3600.0) / 24.0 ;
+
+    return Real(julianDate) + fractionalDay ;
+
+}
+
+Real                            DateTime::getModifiedJulianDate             ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("DateTime") ;
+    }
+
+    return DateTime::ModifiedJulianDateFromJulianDate(this->getJulianDate()) ;
+
+}
+
 String                          DateTime::getString                         (   const   DateTime::Format&           aFormat                                     ) const
 {
     
@@ -161,19 +209,156 @@ DateTime                        DateTime::J2000                             ( )
     return DateTime(Date::J2000(), Time::Noon()) ;
 }
 
-DateTime                        DateTime::GPS                               ( )
+DateTime                        DateTime::GPSEpoch                          ( )
 {
-    return DateTime(Date::GPS(), Time::Midnight()) ;
+    return DateTime(Date::GPSEpoch(), Time::Midnight()) ;
 }
 
-DateTime                        DateTime::Unix                              ( )
+DateTime                        DateTime::UnixEpoch                         ( )
 {
-    return DateTime(Date::Unix(), Time::Midnight()) ;
+    return DateTime(Date::UnixEpoch(), Time::Midnight()) ;
 }
 
-DateTime                        DateTime::ModifiedJulianDate                ( )
+DateTime                        DateTime::ModifiedJulianDateEpoch           ( )
 {
-    return DateTime(Date::ModifiedJulianDate(), Time::Midnight()) ;
+    return DateTime(Date::ModifiedJulianDateEpoch(), Time::Midnight()) ;
+}
+
+DateTime                        DateTime::JulianDate                        (   const   Real&                       aJulianDate                                 )
+{
+
+    using library::core::types::Int32 ;
+    using library::core::types::Int64 ;
+    using library::core::types::Uint32 ;
+    using library::core::types::Uint64 ;
+
+    if (!aJulianDate.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Julian Date") ;
+    }
+
+    if (aJulianDate < 0.0)
+    {
+        throw library::core::error::RuntimeError("Julian Date [{}] is negative.", aJulianDate) ;
+    }
+
+    // const Int32 J = std::floor(aJulianDate) ;
+
+    // const Int32 y = 4716 ;
+    // const Int32 v = 3 ;
+    // const Int32 j = 1401 ;
+    // const Int32 u = 5 ;
+    // const Int32 m = 2 ;
+    // const Int32 s = 153 ;
+    // const Int32 n = 12 ;
+    // const Int32 w = 2 ;
+    // const Int32 r = 4 ;
+    // const Int32 B = 274277 ;
+    // const Int32 p = 1461 ;
+    // const Int32 C = -38 ;
+
+    // const Int32 f = J + j + (((4 * J + B) / 146097) * 3) / 4 + C ;
+    // const Int32 e = r * f + v ;
+    // const Int32 g = (e % p) / r ;
+    // const Int32 h = u * g + w ;
+    
+    // const Int32 D = (h % s) / u + 1 ;
+    // const Int32 M = ((h / s + m) % n) + 1 ;
+    // const Int32 Y = (e / p) - y + (n + m - M) / n ;
+
+    // Uint32 year = static_cast<Uint32>(Y) ;
+    // Uint32 month = static_cast<Uint32>(M) ;
+    // Uint32 day = static_cast<Uint32>(D) ;
+
+    const Int64 integerJulianDate = std::floor(aJulianDate + 0.5) ;
+    const double fractionalJulianDate = static_cast<double>(aJulianDate) - integerJulianDate + 0.5 ;
+
+    const Int32 a = integerJulianDate + 32044 ;
+    const Int32 b = std::floor((4 * a + 3) / 146097) ;
+    const Int32 c = a - std::floor((b * 146097) / 4) ;
+
+    const Int32 d = std::floor((4 * c + 3) / 1461) ;
+    const Int32 e = c - std::floor((1461 * d) / 4) ;
+    const Int32 m = std::floor((5 * e + 2) / 153) ;
+
+    Uint32 year = static_cast<Uint32>(b * 100 + d - 4800 + std::floor(m / 10)) ;
+    Uint32 month = static_cast<Uint32>(m + 3 - 12 * std::floor(m / 10)) ;
+    Uint32 day = static_cast<Uint32>(e - std::floor((153 * m + 2) / 5) + 1) ;
+
+    Uint64 nanosecondCountOfDay = Uint64(fractionalJulianDate * 86400.0 * 1e9) ;
+    
+    Uint32 hours = static_cast<Uint32>(std::floor(nanosecondCountOfDay / (3600.0 * 1e9))) ;
+
+    nanosecondCountOfDay -= Uint64(hours * 3600 * 1e9) ;
+    
+    Uint32 minute = static_cast<Uint32>(std::floor(nanosecondCountOfDay / (60.0 * 1e9))) ;
+
+    nanosecondCountOfDay -= Uint64(minute * 60 * 1e9) ;
+    
+    Uint32 second = static_cast<Uint32>(std::floor(nanosecondCountOfDay / 1e9)) ;
+
+    nanosecondCountOfDay -= Uint64(second * 1e9) ;
+    
+    Uint32 millisecond = static_cast<Uint32>(std::round(nanosecondCountOfDay / 1e6)) ;
+
+    nanosecondCountOfDay -= Uint64(millisecond * 1e6) ;
+    
+    Uint32 microsecond = static_cast<Uint32>(std::round(nanosecondCountOfDay / 1e3)) ;
+
+    nanosecondCountOfDay -= Uint64(microsecond * 1e3) ;
+    
+    Uint32 nanosecond = nanosecondCountOfDay ;
+
+    if (millisecond == 1000)
+    {
+        second++ ;
+        millisecond = 0 ;
+    }
+
+    if (second == 60)
+    {
+        minute++ ;
+        second = 0 ;
+    }
+
+    if (minute == 60)
+    {
+        hours++ ;
+        minute = 0 ;
+    }
+
+    if (hours == 24)
+    {
+
+        day++ ;
+        hours = 0 ;
+
+        if (day > 28)
+        {
+            throw library::core::error::RuntimeError("Implementation error.") ;
+        }
+
+    }
+
+    return DateTime(year, month, day, hours, minute, second, millisecond, microsecond, nanosecond) ;
+
+}
+
+DateTime                        DateTime::ModifiedJulianDate                (   const   Real&                       aModifiedJulianDate                         )
+{
+
+    if (!aModifiedJulianDate.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Modified Julian Date") ;
+    }
+
+    if (aModifiedJulianDate < 0.0)
+    {
+        throw library::core::error::RuntimeError("Modified Julian Date [{}] is negative.", aModifiedJulianDate) ;
+    }
+    
+    return DateTime::JulianDate(DateTime::JulianDateFromModifiedJulianDate(aModifiedJulianDate)) ;
+
 }
 
 DateTime                        DateTime::Parse                             (   const   String&                     aString,
@@ -240,6 +425,16 @@ DateTime                        DateTime::Parse                             (   
 
     return DateTime::Undefined() ;
 
+}
+
+Real                            DateTime::ModifiedJulianDateFromJulianDate  (   const   Real&                       aJulianDate                                 )
+{
+    return aJulianDate - 2400000.5 ; // MJD = JD - 2400000.5 [day]
+}
+
+Real                            DateTime::JulianDateFromModifiedJulianDate  (   const   Real&                       aModifiedJulianDate                         )
+{
+    return aModifiedJulianDate + 2400000.5 ; // JD = MJD + 2400000.5 [day]
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
