@@ -533,7 +533,7 @@ Time                            Time::Parse                                 (   
             }
             else
             {
-                throw library::core::error::RuntimeError("Cannot parse time string [" + aString + "].") ;
+                throw library::core::error::RuntimeError("Cannot parse time string [{}].", aString) ;
             }
 
         }

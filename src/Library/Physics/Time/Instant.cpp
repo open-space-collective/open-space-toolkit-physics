@@ -210,7 +210,7 @@ std::ostream&                   operator <<                                 (   
 
     library::core::utils::Print::Header(anOutputStream, "Instant") ;
 
-    library::core::utils::Print::Line(anOutputStream) << "Count:" << (anInstant.isDefined() ? anInstant.count_.getString() : "Undefined") ;
+    library::core::utils::Print::Line(anOutputStream) << "Date-Time:" << (anInstant.isDefined() ? anInstant.getDateTime(anInstant.scale_).getString() : "Undefined") ;
     library::core::utils::Print::Line(anOutputStream) << "Scale:" << StringFromScale(anInstant.scale_) ;
 
     library::core::utils::Print::Footer(anOutputStream) ;

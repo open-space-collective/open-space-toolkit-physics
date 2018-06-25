@@ -230,13 +230,13 @@ Date                            Date::Parse                                 (   
         }
         catch (const boost::bad_lexical_cast& e)
         {
-            throw library::core::error::RuntimeError("Cannot parse date string [" + aString + "] (parsing error).") ;
+            throw library::core::error::RuntimeError("Cannot parse date string [{}] ({}).", aString, e.what()) ;
         }
 
     }
     else
     {
-        throw library::core::error::RuntimeError("Cannot parse date string [" + aString + "].") ;
+        throw library::core::error::RuntimeError("Cannot parse date string [{}].", aString) ;
     }
 
     return Date::Undefined() ;
