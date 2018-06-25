@@ -52,6 +52,8 @@ class Instant
 
     public:
 
+        /// @brief              Default constructor (deleted)
+
                                 Instant                                     ( ) = delete ;
 
         bool                    operator ==                                 (   const   Instant&                    anInstant                                   ) const ;
@@ -88,9 +90,6 @@ class Instant
         Real                    getJulianDate                               (   const   Scale&                      aTimeScale                                  ) const ;
 
         Real                    getModifiedJulianDate                       (   const   Scale&                      aTimeScale                                  ) const ;
-
-        Uint64                  getCountSinceEpoch                          (   const   units::Time::Unit&          aTimeUnit,
-                                                                                const   Instant&                    anEpoch                                     ) ;
 
         String                  getString                                   (   const   Scale&                      aTimeScale                                  ) const ;
 

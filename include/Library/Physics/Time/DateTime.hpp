@@ -195,7 +195,7 @@ class DateTime
         ///
         /// @ref                https://en.wikipedia.org/wiki/Epoch_(astronomy)#Julian_years_and_J2000
         ///
-        /// @return             DateTime at J2000 epoch
+        /// @return             Date-time at J2000 epoch
 
         static DateTime         J2000                                       ( ) ;
 
@@ -203,7 +203,7 @@ class DateTime
         ///
         /// @ref                http://tycho.usno.navy.mil/gpstt.html
         ///
-        /// @return             DateTime at GPS epoch
+        /// @return             Date-time at GPS epoch
         
         static DateTime         GPSEpoch                                    ( ) ;
 
@@ -211,7 +211,7 @@ class DateTime
         ///
         /// @ref                https://en.wikipedia.org/wiki/Unix_time
         ///
-        /// @return             DateTime at Unix epoch
+        /// @return             Date-time at Unix epoch
 
         static DateTime         UnixEpoch                                   ( ) ;
 

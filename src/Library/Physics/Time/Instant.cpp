@@ -251,19 +251,19 @@ time::DateTime                  Instant::getDateTime                        (   
         throw library::core::error::runtime::Undefined("Instant") ;
     }
 
-    auto getTimePointString =
-    [ ] (const std::chrono::time_point<std::chrono::system_clock>& aTimePoint) -> String
-    {
+    // auto getTimePointString =
+    // [ ] (const std::chrono::time_point<std::chrono::system_clock>& aTimePoint) -> String
+    // {
 
-        std::time_t time = std::chrono::system_clock::to_time_t(aTimePoint) ;
+    //     std::time_t time = std::chrono::system_clock::to_time_t(aTimePoint) ;
 
-        std::stringstream stringStream ;
+    //     std::stringstream stringStream ;
 
-        stringStream << std::put_time(std::gmtime(&time), "%F %T %z") ;
+    //     stringStream << std::put_time(std::gmtime(&time), "%F %T %z") ;
 
-        return stringStream.str() ;
+    //     return stringStream.str() ;
 
-    } ;
+    // } ;
 
     // Epoch
 
@@ -360,31 +360,6 @@ Real                            Instant::getModifiedJulianDate              (   
 
 }
 
-Uint64                          Instant::getCountSinceEpoch                 (   const   units::Time::Unit&          aTimeUnit,
-                                                                                const   Instant&                    anEpoch                                     )
-{
-
-    if (aTimeUnit == units::Time::Unit::Undefined)
-    {
-        throw library::core::error::runtime::Undefined("Time unit") ;
-    }
-
-    if (!anEpoch.isDefined())
-    {
-        throw library::core::error::runtime::Undefined("Epoch") ;
-    }
-
-    if (!this->isDefined())
-    {
-        throw library::core::error::runtime::Undefined("Instant") ;
-    }
-
-    // [TBI]
-
-    return 0 ;
-
-}
-
 String                          Instant::getString                          (   const   Scale&                      aTimeScale                                  ) const
 {
 
@@ -405,19 +380,19 @@ Instant                         Instant::Undefined                          ( )
 Instant                         Instant::Now                                ( )
 {
 
-    auto getTimePointString =
-    [ ] (const std::chrono::time_point<std::chrono::system_clock>& aTimePoint) -> String
-    {
+    // auto getTimePointString =
+    // [ ] (const std::chrono::time_point<std::chrono::system_clock>& aTimePoint) -> String
+    // {
 
-        const std::time_t time = std::chrono::system_clock::to_time_t(aTimePoint) ;
+    //     const std::time_t time = std::chrono::system_clock::to_time_t(aTimePoint) ;
 
-        std::stringstream stringStream ;
+    //     std::stringstream stringStream ;
 
-        stringStream << std::put_time(std::gmtime(&time), "%F %T %z") ;
+    //     stringStream << std::put_time(std::gmtime(&time), "%F %T %z") ;
 
-        return stringStream.str() ;
+    //     return stringStream.str() ;
 
-    } ;
+    // } ;
 
     // Epoch
 
@@ -432,7 +407,7 @@ Instant                         Instant::Now                                ( )
 
     const std::chrono::time_point<std::chrono::system_clock> epochTimePoint = std::chrono::system_clock::from_time_t(std::mktime(&epochTime)) ;
     
-    std::cout << "Instant::DateTime >> Epoch: " << getTimePointString(epochTimePoint) << std::endl ;
+    // std::cout << "Instant::DateTime >> Epoch: " << getTimePointString(epochTimePoint) << std::endl ;
 
     // Now
 
@@ -491,22 +466,22 @@ Instant                         Instant::DateTime                           (   
 
     if ((aDateTime.accessDate().getYear() < 1970) || (aDateTime.accessDate().getYear() > 2030))
     {
-        throw library::core::error::RuntimeError("DateTime year {} out of supported ranged [{} - {}]", aDateTime.accessDate().getYear(), 1970, 2030) ;
+        throw library::core::error::RuntimeError("DateTime year {} out of supported range [{} - {}]", aDateTime.accessDate().getYear(), 1970, 2030) ;
     }
 
-    auto getTimePointString =
-    [ ] (const std::chrono::time_point<std::chrono::system_clock>& aTimePoint) -> String
-    {
+    // auto getTimePointString =
+    // [ ] (const std::chrono::time_point<std::chrono::system_clock>& aTimePoint) -> String
+    // {
 
-        const std::time_t time = std::chrono::system_clock::to_time_t(aTimePoint) ;
+    //     const std::time_t time = std::chrono::system_clock::to_time_t(aTimePoint) ;
 
-        std::stringstream stringStream ;
+    //     std::stringstream stringStream ;
 
-        stringStream << std::put_time(std::gmtime(&time), "%F %T %z") ;
+    //     stringStream << std::put_time(std::gmtime(&time), "%F %T %z") ;
 
-        return stringStream.str() ;
+    //     return stringStream.str() ;
 
-    } ;
+    // } ;
 
     // Epoch
 
@@ -680,7 +655,7 @@ Instant::Count                  Instant::ConvertCountScale                  (   
                                                                                 const   Scale&                      anOutputTimeScale                           )
 {
 
-    Instant::Count count_TT = {0, true} ;
+    Instant::Count count_TT = { 0, true } ;
 
     switch (anInputTimeScale)
     {
@@ -746,7 +721,7 @@ Instant::Count                  Instant::ConvertCountScale                  (   
             break ;
 
     }
-    
+
     switch (anOutputTimeScale)
     {
 

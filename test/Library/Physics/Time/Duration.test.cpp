@@ -1991,53 +1991,79 @@ TEST (Library_Physics_Time_Duration, Between)
 {
     
     using library::physics::time::Scale ;
+    using library::physics::time::DateTime ;
     using library::physics::time::Instant ;
     using library::physics::time::Duration ;
 
     {
 
-        FAIL() ;
-        
+        for (const auto year : { 1981, 2000, 2030 })
+        {
+
+            for (const auto month : { 1, 6, 12 })
+            {
+
+                for (const auto day : { 1, 20, 28 })
+                {
+
+                    for (const auto scale : { Scale::TT, Scale::TAI, Scale::UTC, Scale::GPST })
+                    {
+
+                        EXPECT_EQ(Duration::Zero(), Duration::Between(Instant::DateTime(DateTime(year, month, day, 12, 0, 0), scale), Instant::DateTime(DateTime(year, month, day, 12, 0, 0), scale))) ;
+
+                        EXPECT_EQ(Duration::Nanoseconds(-1), Duration::Between(Instant::DateTime(DateTime(year, month, day, 12, 0, 0, 0, 0, 1), scale), Instant::DateTime(DateTime(year, month, day, 12, 0, 0), scale))) ;
+                        EXPECT_EQ(Duration::Nanoseconds(+1), Duration::Between(Instant::DateTime(DateTime(year, month, day, 11, 59, 59, 999, 999, 999), scale), Instant::DateTime(DateTime(year, month, day, 12, 0, 0), scale))) ;
+
+                        EXPECT_EQ(Duration::Microseconds(-1), Duration::Between(Instant::DateTime(DateTime(year, month, day, 12, 0, 0, 0, 1), scale), Instant::DateTime(DateTime(year, month, day, 12, 0, 0), scale))) ;
+                        EXPECT_EQ(Duration::Microseconds(+1), Duration::Between(Instant::DateTime(DateTime(year, month, day, 11, 59, 59, 999, 999), scale), Instant::DateTime(DateTime(year, month, day, 12, 0, 0), scale))) ;
+
+                        EXPECT_EQ(Duration::Milliseconds(-1), Duration::Between(Instant::DateTime(DateTime(year, month, day, 12, 0, 0, 1), scale), Instant::DateTime(DateTime(year, month, day, 12, 0, 0), scale))) ;
+                        EXPECT_EQ(Duration::Milliseconds(+1), Duration::Between(Instant::DateTime(DateTime(year, month, day, 11, 59, 59, 999), scale), Instant::DateTime(DateTime(year, month, day, 12, 0, 0), scale))) ;
+
+                        EXPECT_EQ(Duration::Seconds(-1), Duration::Between(Instant::DateTime(DateTime(year, month, day, 12, 0, 1), scale), Instant::DateTime(DateTime(year, month, day, 12, 0, 0), scale))) ;
+                        EXPECT_EQ(Duration::Seconds(+1), Duration::Between(Instant::DateTime(DateTime(year, month, day, 11, 59, 59), scale), Instant::DateTime(DateTime(year, month, day, 12, 0, 0), scale))) ;
+
+                        EXPECT_EQ(Duration::Minutes(-1), Duration::Between(Instant::DateTime(DateTime(year, month, day, 12, 1, 0), scale), Instant::DateTime(DateTime(year, month, day, 12, 0, 0), scale))) ;
+                        EXPECT_EQ(Duration::Minutes(+1), Duration::Between(Instant::DateTime(DateTime(year, month, day, 11, 59, 0), scale), Instant::DateTime(DateTime(year, month, day, 12, 0, 0), scale))) ;
+
+                        EXPECT_EQ(Duration::Hours(-1), Duration::Between(Instant::DateTime(DateTime(year, month, day, 13, 0, 0), scale), Instant::DateTime(DateTime(year, month, day, 12, 0, 0), scale))) ;
+                        EXPECT_EQ(Duration::Hours(+1), Duration::Between(Instant::DateTime(DateTime(year, month, day, 11, 0, 0), scale), Instant::DateTime(DateTime(year, month, day, 12, 0, 0), scale))) ;
+
+                        EXPECT_EQ(Duration::Nanoseconds(+1), Duration::Between(Instant::DateTime(DateTime(year, month, day, 12, 0, 0), scale), Instant::DateTime(DateTime(year, month, day, 12, 0, 0, 0, 0, 1), scale))) ;
+                        EXPECT_EQ(Duration::Nanoseconds(-1), Duration::Between(Instant::DateTime(DateTime(year, month, day, 12, 0, 0), scale), Instant::DateTime(DateTime(year, month, day, 11, 59, 59, 999, 999, 999), scale))) ;
+
+                        EXPECT_EQ(Duration::Microseconds(+1), Duration::Between(Instant::DateTime(DateTime(year, month, day, 12, 0, 0), scale), Instant::DateTime(DateTime(year, month, day, 12, 0, 0, 0, 1), scale))) ;
+                        EXPECT_EQ(Duration::Microseconds(-1), Duration::Between(Instant::DateTime(DateTime(year, month, day, 12, 0, 0), scale), Instant::DateTime(DateTime(year, month, day, 11, 59, 59, 999, 999), scale))) ;
+
+                        EXPECT_EQ(Duration::Milliseconds(+1), Duration::Between(Instant::DateTime(DateTime(year, month, day, 12, 0, 0), scale), Instant::DateTime(DateTime(year, month, day, 12, 0, 0, 1), scale))) ;
+                        EXPECT_EQ(Duration::Milliseconds(-1), Duration::Between(Instant::DateTime(DateTime(year, month, day, 12, 0, 0), scale), Instant::DateTime(DateTime(year, month, day, 11, 59, 59, 999), scale))) ;
+
+                        EXPECT_EQ(Duration::Seconds(+1), Duration::Between(Instant::DateTime(DateTime(year, month, day, 12, 0, 0), scale), Instant::DateTime(DateTime(year, month, day, 12, 0, 1), scale))) ;
+                        EXPECT_EQ(Duration::Seconds(-1), Duration::Between(Instant::DateTime(DateTime(year, month, day, 12, 0, 0), scale), Instant::DateTime(DateTime(year, month, day, 11, 59, 59), scale))) ;
+
+                        EXPECT_EQ(Duration::Minutes(+1), Duration::Between(Instant::DateTime(DateTime(year, month, day, 12, 0, 0), scale), Instant::DateTime(DateTime(year, month, day, 12, 1, 0), scale))) ;
+                        EXPECT_EQ(Duration::Minutes(-1), Duration::Between(Instant::DateTime(DateTime(year, month, day, 12, 0, 0), scale), Instant::DateTime(DateTime(year, month, day, 11, 59, 0), scale))) ;
+
+                        EXPECT_EQ(Duration::Hours(+1), Duration::Between(Instant::DateTime(DateTime(year, month, day, 12, 0, 0), scale), Instant::DateTime(DateTime(year, month, day, 13, 0, 0), scale))) ;
+                        EXPECT_EQ(Duration::Hours(-1), Duration::Between(Instant::DateTime(DateTime(year, month, day, 12, 0, 0), scale), Instant::DateTime(DateTime(year, month, day, 11, 0, 0), scale))) ;
+                        
+                    }
+
+                }
+
+            }
+
+        }
+
     }
 
-    // {
-
-    //     EXPECT_EQ(Duration(0), Duration::Between(Instant(0, true, Scale::UTC), Instant(0, true, Scale::UTC))) ;
-
-    //     EXPECT_EQ(Duration(0), Duration::Between(Instant(1, true, Scale::UTC), Instant(1, true, Scale::UTC))) ;
-    //     EXPECT_EQ(Duration(0), Duration::Between(Instant(1, false, Scale::UTC), Instant(1, false, Scale::UTC))) ;
-
-    //     EXPECT_EQ(Duration(0), Duration::Between(Instant(1, true, Scale::TT), Instant(1, true, Scale::TT))) ;
-
-    // }
-
-    // {
-
-    //     EXPECT_EQ(Duration(+1), Duration::Between(Instant(1, true, Scale::UTC), Instant(2, true, Scale::UTC))) ;
-    //     EXPECT_EQ(Duration(+1), Duration::Between(Instant(2, true, Scale::UTC), Instant(3, true, Scale::UTC))) ;
-    //     EXPECT_EQ(Duration(+2), Duration::Between(Instant(1, false, Scale::UTC), Instant(1, true, Scale::UTC))) ;
-
-    //     EXPECT_EQ(Duration(-1), Duration::Between(Instant(2, true, Scale::UTC), Instant(1, true, Scale::UTC))) ;
-    //     EXPECT_EQ(Duration(-1), Duration::Between(Instant(3, true, Scale::UTC), Instant(2, true, Scale::UTC))) ;
-    //     EXPECT_EQ(Duration(-2), Duration::Between(Instant(1, true, Scale::UTC), Instant(1, false, Scale::UTC))) ;
-
-    // }
-    
-    // {
-
-    //     EXPECT_NE(Duration(0), Duration::Between(Instant(0, true, Scale::UTC), Instant(0, true, Scale::TAI))) ;
-    //     EXPECT_NE(Duration(0), Duration::Between(Instant(0, true, Scale::UTC), Instant(0, true, Scale::TT))) ;
-    //     EXPECT_NE(Duration(0), Duration::Between(Instant(0, true, Scale::TAI), Instant(0, true, Scale::TT))) ;
-
-    // }
-
-    // {
+    {
         
-    //     EXPECT_ANY_THROW(Duration::Between(Instant::Undefined(), Instant::Undefined())) ;
-    //     EXPECT_ANY_THROW(Duration::Between(Instant(0, true, Scale::UTC), Instant::Undefined())) ;
-    //     EXPECT_ANY_THROW(Duration::Between(Instant::Undefined(), Instant(0, true, Scale::UTC))) ;
+        EXPECT_ANY_THROW(Duration::Between(Instant::Undefined(), Instant::Undefined())) ;
+        EXPECT_ANY_THROW(Duration::Between(Instant::DateTime(DateTime(2000, 1, 1, 0, 0, 0), Scale::UTC), Instant::Undefined())) ;
+        EXPECT_ANY_THROW(Duration::Between(Instant::Undefined(), Instant::DateTime(DateTime(2000, 1, 1, 0, 0, 0), Scale::UTC))) ;
 
-    // }
+    }
 
 }
 

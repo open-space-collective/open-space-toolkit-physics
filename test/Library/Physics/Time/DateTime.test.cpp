@@ -275,7 +275,9 @@ TEST (Library_Physics_Time_DateTime, GetModifiedJulianDate)
 
     {
 
-        FAIL() ;
+        EXPECT_EQ(0.0, DateTime(1858, 11, 17, 0, 0, 0).getModifiedJulianDate()) ;
+        EXPECT_EQ(54000.0, DateTime(2006, 9, 22, 0, 0, 0).getModifiedJulianDate()) ;
+        EXPECT_EQ(88069.0, DateTime(2100, 1, 1, 0, 0, 0).getModifiedJulianDate()) ;
 
     }
 
@@ -434,8 +436,10 @@ TEST (Library_Physics_Time_DateTime, ModifiedJulianDate)
     {
 
         EXPECT_EQ(DateTime(1858, 11, 17, 0, 0, 0), DateTime::ModifiedJulianDate(0.0)) ;
-
-        FAIL() ;
+        
+        EXPECT_EQ(DateTime(2006, 9, 22, 0, 0, 0), DateTime::ModifiedJulianDate(54000.0)) ;
+        
+        EXPECT_EQ(DateTime(2100, 1, 1, 0, 0, 0), DateTime::ModifiedJulianDate(88069.0)) ;
 
     }
 
