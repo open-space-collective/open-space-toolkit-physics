@@ -773,6 +773,41 @@ TEST (Library_Physics_Units_Derived_Angle, InRevolutions)
 
 }
 
+TEST (Library_Physics_Units_Derived_Angle, GetString)
+{
+
+    using library::physics::units::Angle ; 
+
+    {
+
+        EXPECT_EQ("1.0 [rad]", Angle(1.0, Angle::Unit::Radian).getString()) ;
+        EXPECT_EQ("1.0 [deg]", Angle(1.0, Angle::Unit::Degree).getString()) ;
+        EXPECT_EQ("1.0 [amin]", Angle(1.0, Angle::Unit::Arcminute).getString()) ;
+        EXPECT_EQ("1.0 [asec]", Angle(1.0, Angle::Unit::Arcsecond).getString()) ;
+        EXPECT_EQ("1.0 [rev]", Angle(1.0, Angle::Unit::Revolution).getString()) ;
+
+        EXPECT_EQ("-1.0 [rad]", Angle(-1.0, Angle::Unit::Radian).getString()) ;
+        EXPECT_EQ("-1.0 [deg]", Angle(-1.0, Angle::Unit::Degree).getString()) ;
+        EXPECT_EQ("-1.0 [amin]", Angle(-1.0, Angle::Unit::Arcminute).getString()) ;
+        EXPECT_EQ("-1.0 [asec]", Angle(-1.0, Angle::Unit::Arcsecond).getString()) ;
+        EXPECT_EQ("-1.0 [rev]", Angle(-1.0, Angle::Unit::Revolution).getString()) ;
+
+        EXPECT_EQ("123.456 [rad]", Angle(123.456, Angle::Unit::Radian).getString()) ;
+        EXPECT_EQ("123.456 [deg]", Angle(123.456, Angle::Unit::Degree).getString()) ;
+        EXPECT_EQ("123.456 [amin]", Angle(123.456, Angle::Unit::Arcminute).getString()) ;
+        EXPECT_EQ("123.456 [asec]", Angle(123.456, Angle::Unit::Arcsecond).getString()) ;
+        EXPECT_EQ("123.456 [rev]", Angle(123.456, Angle::Unit::Revolution).getString()) ;
+
+    }
+
+    {
+
+        EXPECT_EQ("Undef", Angle::Undefined().getString()) ;
+        
+    }
+
+}
+
 TEST (Library_Physics_Units_Derived_Angle, Undefined)
 {
 

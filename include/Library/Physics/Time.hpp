@@ -1,20 +1,22 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Library/Physics
-/// @file           Library/Physics/Units.hpp
+/// @file           Library/Physics/Time.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        TBD
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Mathematics_Units__
-#define __Library_Mathematics_Units__
+#ifndef __Library_Mathematics_Time__
+#define __Library_Mathematics_Time__
 
-#include <Library/Physics/Units/Length.hpp>
-#include <Library/Physics/Units/Mass.hpp>
-#include <Library/Physics/Units/Angle.hpp>
-#include <Library/Physics/Units/Derived.hpp>
-#include <Library/Physics/Units/Derived/Angle.hpp>
+#include <Library/Physics/Time/Instant.hpp>
+#include <Library/Physics/Time/Duration.hpp>
+#include <Library/Physics/Time/Interval.hpp>
+#include <Library/Physics/Time/DateTime.hpp>
+#include <Library/Physics/Time/Date.hpp>
+#include <Library/Physics/Time/Time.hpp>
+#include <Library/Physics/Time/Scale.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

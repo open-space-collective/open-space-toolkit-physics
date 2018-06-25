@@ -119,6 +119,8 @@ class Angle : public Unit
                                                                                 const    Real&                      anUpperBound                                ) const ;
 
         Real                    inRevolutions                               ( ) const ;
+
+        virtual String          getString                                   ( ) const override ;
                                                                                 
         static Angle            Undefined                                   ( ) ;
 
@@ -135,6 +137,8 @@ class Angle : public Unit
         static Angle            Parse                                       (   const   String&                     aString                                     ) ;
 
         static String           StringFromUnit                              (   const   Angle::Unit&                aUnit                                       ) ;
+
+        static String           SymbolFromUnit                              (   const   Angle::Unit&                aUnit                                       ) ;
 
     private:
 

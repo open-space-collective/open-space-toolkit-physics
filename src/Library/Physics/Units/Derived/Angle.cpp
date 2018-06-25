@@ -314,6 +314,18 @@ Real                            Angle::inRevolutions                        ( ) 
     return this->in(Angle::Unit::Revolution) ;
 }
 
+String                          Angle::getString                            ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        return "Undef" ;
+    }
+
+    return this->accessValue().getString() + " [" + Angle::SymbolFromUnit(unit_) + "]" ;
+
+}
+
 Angle                           Angle::Undefined                            ( )
 {
     return Angle(Real::Undefined(), Angle::Unit::Undefined) ;
@@ -384,6 +396,38 @@ String                          Angle::StringFromUnit                       (   
 
 }
 
+String                          Angle::SymbolFromUnit                       (   const   Angle::Unit&               aUnit                                       )
+{
+
+    switch (aUnit)
+    {
+
+        case Angle::Unit::Radian:
+            return "rad" ;
+            
+        case Angle::Unit::Degree:
+            return "deg" ;
+            
+        case Angle::Unit::Arcminute:
+            return "amin" ;
+            
+        case Angle::Unit::Arcsecond:
+            return "asec" ;
+            
+        case Angle::Unit::Revolution:
+            return "rev" ;
+            
+        default:
+            break ;
+
+    }
+
+    throw library::core::error::runtime::Wrong("Unit") ;
+
+    return String::Empty() ;
+
+}
+
 Real                            Angle::SIRatio                              (   const   Angle::Unit&                aUnit                                       )
 {
 
@@ -430,12 +474,12 @@ Real                            Angle::ReduceRange                          (   
 
     const Real range = aRangeUpperBound - aRangeLowerBound ;
 
-    while (value < aRangeLowerBound) // This is a STUPID implementation: just used as a logic placeholder... should be improved ASAP
+    while (value < aRangeLowerBound) // [TBM] This is a STUPID implementation: just used as a logic placeholder... should be improved ASAP
     {
         value += range ;
     }
     
-    while (value >= aRangeUpperBound) // This is a STUPID implementation: just used as a logic placeholder... should be improved ASAP
+    while (value >= aRangeUpperBound) // [TBM] This is a STUPID implementation: just used as a logic placeholder... should be improved ASAP
     {
         value -= range ;
     }

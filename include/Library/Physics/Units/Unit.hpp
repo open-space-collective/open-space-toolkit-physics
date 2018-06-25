@@ -29,6 +29,15 @@ using library::core::types::String ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/// @brief                      Unit
+///
+/// @ref                        https://en.wikipedia.org/wiki/SI_base_unit
+///
+/// @note                       Could be (greatly) improved using templating...
+/// @note                       https://benjaminjurke.com/content/articles/2015/compile-time-numerical-unit-dimension-checking/
+/// @note                       https://github.com/nholthaus/units
+/// @note                       https://www.boost.org/doc/libs/1_67_0/doc/html/boost_units.html
+
 class Unit
 {
 
@@ -66,6 +75,8 @@ class Unit
         Unit::Type              getType                                     ( ) const ;
 
         Real                    getValue                                    ( ) const ;
+
+        virtual String          getString                                   ( ) const = 0 ;
 
         Real&                   accessValue                                 ( ) ;
 
