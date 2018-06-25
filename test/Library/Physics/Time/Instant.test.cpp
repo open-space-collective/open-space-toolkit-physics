@@ -1039,6 +1039,7 @@ TEST (Library_Physics_Time_Instant, GetModifiedJulianDate)
         for (auto const& scale : scales)
         {
 
+            EXPECT_EQ(51544.0, Instant::DateTime(DateTime(2000, 1, 1, 0, 0, 0), scale).getModifiedJulianDate(scale)) ;
             EXPECT_EQ(54000.0, Instant::DateTime(DateTime(2006, 9, 22, 0, 0, 0), scale).getModifiedJulianDate(scale)) ;
 
         }
@@ -1306,6 +1307,7 @@ TEST (Library_Physics_Time_Instant, ModifiedJulianDate)
         for (auto const& scale : scales)
         {
 
+            EXPECT_EQ(DateTime(2000, 1, 1, 0, 0, 0), Instant::ModifiedJulianDate(51544.0, scale).getDateTime(scale)) ;
             EXPECT_EQ(DateTime(2006, 9, 22, 0, 0, 0), Instant::ModifiedJulianDate(54000.0, scale).getDateTime(scale)) ;
 
         }
