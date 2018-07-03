@@ -499,14 +499,14 @@ class Duration
         /// @brief              Get string representation of duration
         ///
         /// @code
-        ///                     Duration::Seconds(123.456).getString(Duration::Format::Standard) ; // 02:03.456
-        ///                     Duration::Seconds(123.456).getString(Duration::Format::ISO8601) ; // PT2M3.456S
+        ///                     Duration::Seconds(123.456).toString(Duration::Format::Standard) ; // 02:03.456
+        ///                     Duration::Seconds(123.456).toString(Duration::Format::ISO8601) ; // PT2M3.456S
         /// @endcode
         ///
         /// @param              [in] aFormat A representation format
         /// @return             Serialized duration
 
-        String                  getString                                   (   const   Duration::Format&           aFormat                                     =   Duration::Format::Standard ) const ;
+        String                  toString                                    (   const   Duration::Format&           aFormat                                     =   Duration::Format::Standard ) const ;
 
         /// @brief              Constructs an undefined duration
         ///

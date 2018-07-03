@@ -301,7 +301,7 @@ Real                            Length::inKilometers                        ( ) 
     return this->in(Length::Unit::Meter) / 1e3 ;
 }
 
-String                          Length::getString                           ( ) const
+String                          Length::toString                           ( ) const
 {
 
     if (!this->isDefined())
@@ -309,7 +309,7 @@ String                          Length::getString                           ( ) 
         return "Undef" ;
     }
 
-    return this->accessValue().getString() + " [" + Length::SymbolFromUnit(unit_) + "]" ;
+    return this->accessValue().toString() + " [" + Length::SymbolFromUnit(unit_) + "]" ;
 
 }
 

@@ -153,13 +153,13 @@ class Time
         /// @brief              Get string representation of time
         ///
         /// @code
-        ///                     Time(12, 34, 56).getString() ; // 12:34:56.000.000.000
+        ///                     Time(12, 34, 56).toString() ; // 12:34:56.000.000.000
         /// @endcode
         ///
         /// @param              [in] (optional) aFormat A time format
         /// @return             Serialized time
 
-        String                  getString                                   (   const   Time::Format&               aFormat                                     =   Time::Format::Standard ) const ;
+        String                  toString                                    (   const   Time::Format&               aFormat                                     =   Time::Format::Standard ) const ;
 
         /// @brief              Set hour
         ///

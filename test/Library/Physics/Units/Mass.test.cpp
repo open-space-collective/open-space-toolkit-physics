@@ -66,30 +66,30 @@ TEST (Library_Physics_Units_Mass, IsDefined)
 
 }
 
-TEST (Library_Physics_Units_Mass, GetString)
+TEST (Library_Physics_Units_Mass, ToString)
 {
 
     using library::physics::units::Mass ; 
 
     {
 
-        EXPECT_EQ("1.0 [kg]", Mass(1.0, Mass::Unit::Kilogram).getString()) ;
-        EXPECT_EQ("1.0 [t]", Mass(1.0, Mass::Unit::Tonne).getString()) ;
-        EXPECT_EQ("1.0 [lb]", Mass(1.0, Mass::Unit::Pound).getString()) ;
+        EXPECT_EQ("1.0 [kg]", Mass(1.0, Mass::Unit::Kilogram).toString()) ;
+        EXPECT_EQ("1.0 [t]", Mass(1.0, Mass::Unit::Tonne).toString()) ;
+        EXPECT_EQ("1.0 [lb]", Mass(1.0, Mass::Unit::Pound).toString()) ;
 
-        EXPECT_EQ("-1.0 [kg]", Mass(-1.0, Mass::Unit::Kilogram).getString()) ;
-        EXPECT_EQ("-1.0 [t]", Mass(-1.0, Mass::Unit::Tonne).getString()) ;
-        EXPECT_EQ("-1.0 [lb]", Mass(-1.0, Mass::Unit::Pound).getString()) ;
+        EXPECT_EQ("-1.0 [kg]", Mass(-1.0, Mass::Unit::Kilogram).toString()) ;
+        EXPECT_EQ("-1.0 [t]", Mass(-1.0, Mass::Unit::Tonne).toString()) ;
+        EXPECT_EQ("-1.0 [lb]", Mass(-1.0, Mass::Unit::Pound).toString()) ;
 
-        EXPECT_EQ("123.456 [kg]", Mass(123.456, Mass::Unit::Kilogram).getString()) ;
-        EXPECT_EQ("123.456 [t]", Mass(123.456, Mass::Unit::Tonne).getString()) ;
-        EXPECT_EQ("123.456 [lb]", Mass(123.456, Mass::Unit::Pound).getString()) ;
+        EXPECT_EQ("123.456 [kg]", Mass(123.456, Mass::Unit::Kilogram).toString()) ;
+        EXPECT_EQ("123.456 [t]", Mass(123.456, Mass::Unit::Tonne).toString()) ;
+        EXPECT_EQ("123.456 [lb]", Mass(123.456, Mass::Unit::Pound).toString()) ;
 
     }
 
     {
 
-        EXPECT_EQ("Undef", Mass::Undefined().getString()) ;
+        EXPECT_EQ("Undef", Mass::Undefined().toString()) ;
         
     }
 

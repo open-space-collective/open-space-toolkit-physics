@@ -8,6 +8,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <Library/Physics/Units/Derived/Angle.hpp>
+#include <Library/Mathematics/Geometry/Angle.hpp>
 #include <Library/Core/Types/Real.hpp>
 
 #include <Global.test.hpp>
@@ -588,6 +589,25 @@ TEST (Library_Physics_Units_Derived_Angle, DivisionAssignmentOperator)
 
 }
 
+TEST (Library_Physics_Units_Derived_Angle, AngleConversionOperator)
+{
+
+    using library::physics::units::Angle ;
+
+    {
+
+        EXPECT_EQ(library::math::geom::Angle(+1.0, library::math::geom::Angle::Unit::Radian), Angle(+1.0, Angle::Unit::Radian)) ;
+
+    }
+
+    {
+
+        EXPECT_NO_THROW(library::math::geom::Angle angle = Angle::Undefined() ; (void) angle ;) ;
+
+    }
+
+}
+
 TEST (Library_Physics_Units_Derived_Angle, StreamOperator)
 {
 
@@ -773,36 +793,36 @@ TEST (Library_Physics_Units_Derived_Angle, InRevolutions)
 
 }
 
-TEST (Library_Physics_Units_Derived_Angle, GetString)
+TEST (Library_Physics_Units_Derived_Angle, ToString)
 {
 
     using library::physics::units::Angle ; 
 
     {
 
-        EXPECT_EQ("1.0 [rad]", Angle(1.0, Angle::Unit::Radian).getString()) ;
-        EXPECT_EQ("1.0 [deg]", Angle(1.0, Angle::Unit::Degree).getString()) ;
-        EXPECT_EQ("1.0 [amin]", Angle(1.0, Angle::Unit::Arcminute).getString()) ;
-        EXPECT_EQ("1.0 [asec]", Angle(1.0, Angle::Unit::Arcsecond).getString()) ;
-        EXPECT_EQ("1.0 [rev]", Angle(1.0, Angle::Unit::Revolution).getString()) ;
+        EXPECT_EQ("1.0 [rad]", Angle(1.0, Angle::Unit::Radian).toString()) ;
+        EXPECT_EQ("1.0 [deg]", Angle(1.0, Angle::Unit::Degree).toString()) ;
+        EXPECT_EQ("1.0 [amin]", Angle(1.0, Angle::Unit::Arcminute).toString()) ;
+        EXPECT_EQ("1.0 [asec]", Angle(1.0, Angle::Unit::Arcsecond).toString()) ;
+        EXPECT_EQ("1.0 [rev]", Angle(1.0, Angle::Unit::Revolution).toString()) ;
 
-        EXPECT_EQ("-1.0 [rad]", Angle(-1.0, Angle::Unit::Radian).getString()) ;
-        EXPECT_EQ("-1.0 [deg]", Angle(-1.0, Angle::Unit::Degree).getString()) ;
-        EXPECT_EQ("-1.0 [amin]", Angle(-1.0, Angle::Unit::Arcminute).getString()) ;
-        EXPECT_EQ("-1.0 [asec]", Angle(-1.0, Angle::Unit::Arcsecond).getString()) ;
-        EXPECT_EQ("-1.0 [rev]", Angle(-1.0, Angle::Unit::Revolution).getString()) ;
+        EXPECT_EQ("-1.0 [rad]", Angle(-1.0, Angle::Unit::Radian).toString()) ;
+        EXPECT_EQ("-1.0 [deg]", Angle(-1.0, Angle::Unit::Degree).toString()) ;
+        EXPECT_EQ("-1.0 [amin]", Angle(-1.0, Angle::Unit::Arcminute).toString()) ;
+        EXPECT_EQ("-1.0 [asec]", Angle(-1.0, Angle::Unit::Arcsecond).toString()) ;
+        EXPECT_EQ("-1.0 [rev]", Angle(-1.0, Angle::Unit::Revolution).toString()) ;
 
-        EXPECT_EQ("123.456 [rad]", Angle(123.456, Angle::Unit::Radian).getString()) ;
-        EXPECT_EQ("123.456 [deg]", Angle(123.456, Angle::Unit::Degree).getString()) ;
-        EXPECT_EQ("123.456 [amin]", Angle(123.456, Angle::Unit::Arcminute).getString()) ;
-        EXPECT_EQ("123.456 [asec]", Angle(123.456, Angle::Unit::Arcsecond).getString()) ;
-        EXPECT_EQ("123.456 [rev]", Angle(123.456, Angle::Unit::Revolution).getString()) ;
+        EXPECT_EQ("123.456 [rad]", Angle(123.456, Angle::Unit::Radian).toString()) ;
+        EXPECT_EQ("123.456 [deg]", Angle(123.456, Angle::Unit::Degree).toString()) ;
+        EXPECT_EQ("123.456 [amin]", Angle(123.456, Angle::Unit::Arcminute).toString()) ;
+        EXPECT_EQ("123.456 [asec]", Angle(123.456, Angle::Unit::Arcsecond).toString()) ;
+        EXPECT_EQ("123.456 [rev]", Angle(123.456, Angle::Unit::Revolution).toString()) ;
 
     }
 
     {
 
-        EXPECT_EQ("Undef", Angle::Undefined().getString()) ;
+        EXPECT_EQ("Undef", Angle::Undefined().toString()) ;
         
     }
 

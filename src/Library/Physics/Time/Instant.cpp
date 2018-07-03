@@ -210,7 +210,7 @@ std::ostream&                   operator <<                                 (   
 
     library::core::utils::Print::Header(anOutputStream, "Instant") ;
 
-    library::core::utils::Print::Line(anOutputStream) << "Date-Time:" << (anInstant.isDefined() ? anInstant.getDateTime(anInstant.scale_).getString() : "Undefined") ;
+    library::core::utils::Print::Line(anOutputStream) << "Date-Time:" << (anInstant.isDefined() ? anInstant.getDateTime(anInstant.scale_).toString() : "Undefined") ;
     library::core::utils::Print::Line(anOutputStream) << "Scale:" << StringFromScale(anInstant.scale_) ;
 
     library::core::utils::Print::Footer(anOutputStream) ;
@@ -360,7 +360,7 @@ Real                            Instant::getModifiedJulianDate              (   
 
 }
 
-String                          Instant::getString                          (   const   Scale&                      aTimeScale                                  ) const
+String                          Instant::toString                          (   const   Scale&                      aTimeScale                                  ) const
 {
 
     if (!this->isDefined())
@@ -368,7 +368,7 @@ String                          Instant::getString                          (   
         throw library::core::error::runtime::Undefined("Instant") ;
     }
 
-    return this->getDateTime(aTimeScale).getString() + " [" + StringFromScale(aTimeScale) + "]" ;
+    return this->getDateTime(aTimeScale).toString() + " [" + StringFromScale(aTimeScale) + "]" ;
 
 }
 
@@ -1132,7 +1132,7 @@ Instant::Count                  Instant::Count::operator -                  (   
     return (*this) + (-aNanosecondDisplacement) ;
 }
 
-String                          Instant::Count::getString                   ( ) const
+String                          Instant::Count::toString                   ( ) const
 {
 
     using library::core::types::Integer ;

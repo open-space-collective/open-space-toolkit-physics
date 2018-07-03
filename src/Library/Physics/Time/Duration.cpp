@@ -286,7 +286,7 @@ std::ostream&                   operator <<                                 (   
 
     library::core::utils::Print::Header(anOutputStream, "Duration") ;
 
-    library::core::utils::Print::Line(anOutputStream) << (aDuration.isDefined() ? aDuration.getString() : "Undefined") ;
+    library::core::utils::Print::Line(anOutputStream) << (aDuration.isDefined() ? aDuration.toString() : "Undefined") ;
 
     library::core::utils::Print::Footer(anOutputStream) ;
 
@@ -583,7 +583,7 @@ Duration                        Duration::getAbsolute                       ( ) 
 
 }
 
-String                          Duration::getString                         (   const   Duration::Format&           aFormat                                     ) const
+String                          Duration::toString                         (   const   Duration::Format&           aFormat                                     ) const
 {
 
     if (!this->isDefined())

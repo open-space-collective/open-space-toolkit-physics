@@ -77,7 +77,7 @@ class Interval : public math::obj::Interval<Instant>
 
         Instant                 getCenter                                   ( ) const ;
 
-        String                  getString                                   (   const   Scale&                      aTimeScale                                  ) const ;
+        String                  toString                                    (   const   Scale&                      aTimeScale                                  ) const ;
 
         Array<Instant>          generateGrid                                (   const   Duration&                   aTimeStep                                   ) const ;
 

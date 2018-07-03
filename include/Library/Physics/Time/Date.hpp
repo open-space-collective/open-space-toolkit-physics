@@ -117,12 +117,12 @@ class Date
         /// @brief              Get string representation of date
         ///
         /// @code
-        ///                     Date(2018, 1, 2).getString() ; // 2018-01-02
+        ///                     Date(2018, 1, 2).toString() ; // 2018-01-02
         /// @endcode
         ///
         /// @return             Serialized date
 
-        String                  getString                                   ( ) const ;
+        String                  toString                                    ( ) const ;
 
         /// @brief              Set year
         ///

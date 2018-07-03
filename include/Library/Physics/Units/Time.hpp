@@ -68,7 +68,7 @@ class Time : public Unit
 
         virtual bool            isDefined                                   ( ) const override ;
         
-        virtual String          getString                                   ( ) const override ;
+        virtual String          toString                                    ( ) const override ;
 
         static Time             Undefined                                   ( ) ;
 

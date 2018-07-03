@@ -71,7 +71,7 @@ class Derived : public Unit
 
                 Real            getValue                                    ( ) const ;
 
-                String          getString                                   ( ) const ;
+                String          toString                                    ( ) const ;
 
                 static Order    Zero                                        ( ) ;
                 
@@ -127,7 +127,7 @@ class Derived : public Unit
 
                 const Derived::Order& accessAngleOrder                      ( ) const ;
 
-                String          getString                                   ( ) const ;
+                String          toString                                    ( ) const ;
 
                 String          getSymbol                                   ( ) const ;
 
@@ -200,7 +200,7 @@ class Derived : public Unit
 
         Real                    in                                          (   const   Derived::Unit&              aUnit                                       ) const ;
 
-        virtual String          getString                                   ( ) const override ;
+        virtual String          toString                                    ( ) const override ;
 
         static Derived          Undefined                                   ( ) ;
 

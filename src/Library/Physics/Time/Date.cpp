@@ -121,7 +121,7 @@ Uint8                           Date::getDay                                ( ) 
 
 }
 
-String                          Date::getString                             ( ) const
+String                          Date::toString                             ( ) const
 {
 
     if (!this->isDefined())

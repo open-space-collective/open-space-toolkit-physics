@@ -269,7 +269,7 @@ TEST (Library_Physics_Time_Interval, GetCenter)
 
 }
 
-TEST (Library_Physics_Time_Interval, GetString)
+TEST (Library_Physics_Time_Interval, ToString)
 {
 
     using library::physics::time::Scale ;
@@ -282,16 +282,16 @@ TEST (Library_Physics_Time_Interval, GetString)
         const Instant startInstant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT) ;
         const Instant endInstant = Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::TT) ;
 
-        EXPECT_EQ("[2018-01-01 00:00:00 - 2018-01-02 00:00:00] [TT]", Interval(startInstant, endInstant, Interval::Type::Closed).getString(Scale::TT)) ;
-        EXPECT_EQ("]2018-01-01 00:00:00 - 2018-01-02 00:00:00[ [TT]", Interval(startInstant, endInstant, Interval::Type::Open).getString(Scale::TT)) ;
-        EXPECT_EQ("]2018-01-01 00:00:00 - 2018-01-02 00:00:00] [TT]", Interval(startInstant, endInstant, Interval::Type::HalfOpenLeft).getString(Scale::TT)) ;
-        EXPECT_EQ("[2018-01-01 00:00:00 - 2018-01-02 00:00:00[ [TT]", Interval(startInstant, endInstant, Interval::Type::HalfOpenRight).getString(Scale::TT)) ;
+        EXPECT_EQ("[2018-01-01 00:00:00 - 2018-01-02 00:00:00] [TT]", Interval(startInstant, endInstant, Interval::Type::Closed).toString(Scale::TT)) ;
+        EXPECT_EQ("]2018-01-01 00:00:00 - 2018-01-02 00:00:00[ [TT]", Interval(startInstant, endInstant, Interval::Type::Open).toString(Scale::TT)) ;
+        EXPECT_EQ("]2018-01-01 00:00:00 - 2018-01-02 00:00:00] [TT]", Interval(startInstant, endInstant, Interval::Type::HalfOpenLeft).toString(Scale::TT)) ;
+        EXPECT_EQ("[2018-01-01 00:00:00 - 2018-01-02 00:00:00[ [TT]", Interval(startInstant, endInstant, Interval::Type::HalfOpenRight).toString(Scale::TT)) ;
 
     }
 
     {
         
-        EXPECT_ANY_THROW(Interval::Undefined().getString(Scale::TT)) ;
+        EXPECT_ANY_THROW(Interval::Undefined().toString(Scale::TT)) ;
 
     }
 

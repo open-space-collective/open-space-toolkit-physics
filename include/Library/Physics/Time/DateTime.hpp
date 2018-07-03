@@ -172,13 +172,13 @@ class DateTime
         /// @brief              Get string representation of date-time
         ///
         /// @code
-        ///                     DateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456, 789)).getString(DateTime::Format::Standard) ; // 2018-01-02 12:34:56.123.456.789
-        ///                     DateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456, 789)).getString(DateTime::Format::ISO8601) ; // 2018-01-02T12:34:56.123.456.789
+        ///                     DateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456, 789)).toString(DateTime::Format::Standard) ; // 2018-01-02 12:34:56.123.456.789
+        ///                     DateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456, 789)).toString(DateTime::Format::ISO8601) ; // 2018-01-02T12:34:56.123.456.789
         /// @endcode
         ///
         /// @return             Serialized date-time
 
-        String                  getString                                   (   const   DateTime::Format&           aFormat                                     =   DateTime::Format::Standard ) const ;
+        String                  toString                                    (   const   DateTime::Format&           aFormat                                     =   DateTime::Format::Standard ) const ;
 
         /// @brief              Constructs an undefined date-time
         ///

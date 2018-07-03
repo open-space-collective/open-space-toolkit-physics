@@ -289,47 +289,47 @@ TEST (Library_Physics_Time_DateTime, GetModifiedJulianDate)
 
 }
 
-TEST (Library_Physics_Time_DateTime, GetString)
+TEST (Library_Physics_Time_DateTime, ToString)
 {
     
     using library::physics::time::DateTime ;
 
     {
 
-        EXPECT_EQ("2018-01-02 12:34:56.123.456.789", DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789).getString()) ;
+        EXPECT_EQ("2018-01-02 12:34:56.123.456.789", DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789).toString()) ;
 
-        EXPECT_EQ("1400-01-02 12:34:56.123.456.789", DateTime(1400, 1, 2, 12, 34, 56, 123, 456, 789).getString()) ;
-        EXPECT_EQ("9999-12-31 12:34:56.123.456.789", DateTime(9999, 12, 31, 12, 34, 56, 123, 456, 789).getString()) ;
-
-    }
-
-    {
-
-        EXPECT_EQ("2018-01-02 12:34:56", DateTime(2018, 1, 2, 12, 34, 56, 0, 0, 0).getString(DateTime::Format::Standard)) ;
-        EXPECT_EQ("2018-01-02 12:34:56.123", DateTime(2018, 1, 2, 12, 34, 56, 123, 0, 0).getString(DateTime::Format::Standard)) ;
-        EXPECT_EQ("2018-01-02 12:34:56.123.456", DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 0).getString(DateTime::Format::Standard)) ;
-        EXPECT_EQ("2018-01-02 12:34:56.123.456.789", DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789).getString(DateTime::Format::Standard)) ;
-
-        EXPECT_EQ("1400-01-02 12:34:56.123.456.789", DateTime(1400, 1, 2, 12, 34, 56, 123, 456, 789).getString(DateTime::Format::Standard)) ;
-        EXPECT_EQ("9999-12-31 12:34:56.123.456.789", DateTime(9999, 12, 31, 12, 34, 56, 123, 456, 789).getString(DateTime::Format::Standard)) ;
+        EXPECT_EQ("1400-01-02 12:34:56.123.456.789", DateTime(1400, 1, 2, 12, 34, 56, 123, 456, 789).toString()) ;
+        EXPECT_EQ("9999-12-31 12:34:56.123.456.789", DateTime(9999, 12, 31, 12, 34, 56, 123, 456, 789).toString()) ;
 
     }
 
     {
 
-        EXPECT_EQ("2018-01-02T12:34:56", DateTime(2018, 1, 2, 12, 34, 56, 0, 0, 0).getString(DateTime::Format::ISO8601)) ;
-        EXPECT_EQ("2018-01-02T12:34:56.123", DateTime(2018, 1, 2, 12, 34, 56, 123, 0, 0).getString(DateTime::Format::ISO8601)) ;
-        EXPECT_EQ("2018-01-02T12:34:56.123456", DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 0).getString(DateTime::Format::ISO8601)) ;
-        EXPECT_EQ("2018-01-02T12:34:56.123456789", DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789).getString(DateTime::Format::ISO8601)) ;
+        EXPECT_EQ("2018-01-02 12:34:56", DateTime(2018, 1, 2, 12, 34, 56, 0, 0, 0).toString(DateTime::Format::Standard)) ;
+        EXPECT_EQ("2018-01-02 12:34:56.123", DateTime(2018, 1, 2, 12, 34, 56, 123, 0, 0).toString(DateTime::Format::Standard)) ;
+        EXPECT_EQ("2018-01-02 12:34:56.123.456", DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 0).toString(DateTime::Format::Standard)) ;
+        EXPECT_EQ("2018-01-02 12:34:56.123.456.789", DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789).toString(DateTime::Format::Standard)) ;
 
-        EXPECT_EQ("1400-01-02T12:34:56.123456789", DateTime(1400, 1, 2, 12, 34, 56, 123, 456, 789).getString(DateTime::Format::ISO8601)) ;
-        EXPECT_EQ("9999-12-31T12:34:56.123456789", DateTime(9999, 12, 31, 12, 34, 56, 123, 456, 789).getString(DateTime::Format::ISO8601)) ;
+        EXPECT_EQ("1400-01-02 12:34:56.123.456.789", DateTime(1400, 1, 2, 12, 34, 56, 123, 456, 789).toString(DateTime::Format::Standard)) ;
+        EXPECT_EQ("9999-12-31 12:34:56.123.456.789", DateTime(9999, 12, 31, 12, 34, 56, 123, 456, 789).toString(DateTime::Format::Standard)) ;
+
+    }
+
+    {
+
+        EXPECT_EQ("2018-01-02T12:34:56", DateTime(2018, 1, 2, 12, 34, 56, 0, 0, 0).toString(DateTime::Format::ISO8601)) ;
+        EXPECT_EQ("2018-01-02T12:34:56.123", DateTime(2018, 1, 2, 12, 34, 56, 123, 0, 0).toString(DateTime::Format::ISO8601)) ;
+        EXPECT_EQ("2018-01-02T12:34:56.123456", DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 0).toString(DateTime::Format::ISO8601)) ;
+        EXPECT_EQ("2018-01-02T12:34:56.123456789", DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789).toString(DateTime::Format::ISO8601)) ;
+
+        EXPECT_EQ("1400-01-02T12:34:56.123456789", DateTime(1400, 1, 2, 12, 34, 56, 123, 456, 789).toString(DateTime::Format::ISO8601)) ;
+        EXPECT_EQ("9999-12-31T12:34:56.123456789", DateTime(9999, 12, 31, 12, 34, 56, 123, 456, 789).toString(DateTime::Format::ISO8601)) ;
 
     }
 
     {
         
-        EXPECT_ANY_THROW(DateTime::Undefined().getString()) ;
+        EXPECT_ANY_THROW(DateTime::Undefined().toString()) ;
 
     }
 

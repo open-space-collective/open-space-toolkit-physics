@@ -11,6 +11,7 @@
 #define __Library_Physics_Units_Derived_Angle__
 
 #include <Library/Physics/Units/Unit.hpp>
+#include <Library/Mathematics/Geometry/Angle.hpp>
 #include <Library/Core/Types/String.hpp>
 #include <Library/Core/Types/Real.hpp>
 
@@ -89,6 +90,8 @@ class Angle : public Unit
         friend Angle            operator *                                  (   const   Real&                       aReal,
                                                                                 const   Angle&                      anAngle                                     ) ;
 
+                                operator library::math::geom::Angle         ( ) const ;
+
         friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
                                                                                 const   Angle&                      anAngle                                     ) ;
 
@@ -120,7 +123,7 @@ class Angle : public Unit
 
         Real                    inRevolutions                               ( ) const ;
 
-        virtual String          getString                                   ( ) const override ;
+        virtual String          toString                                    ( ) const override ;
                                                                                 
         static Angle            Undefined                                   ( ) ;
 

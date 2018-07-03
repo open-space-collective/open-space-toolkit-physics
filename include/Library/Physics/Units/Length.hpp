@@ -107,7 +107,7 @@ class Length : public Unit
 
         Real                    inKilometers                                ( ) const ;
 
-        virtual String          getString                                   ( ) const override ;
+        virtual String          toString                                    ( ) const override ;
 
         static Length           Undefined                                   ( ) ;
 

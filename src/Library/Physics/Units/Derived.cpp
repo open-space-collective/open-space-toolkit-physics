@@ -84,22 +84,22 @@ Real                            Derived::Order::getValue                    ( ) 
 
 }
 
-String                          Derived::Order::getString                   ( ) const
+String                          Derived::Order::toString                   ( ) const
 {
 
     using library::core::types::Integer ;
 
     if (denominator_ == 1)
     {
-        return Integer::Int16(numerator_).getString() ;
+        return Integer::Int16(numerator_).toString() ;
     }
 
     if (numerator_ == 1)
     {
-        return "-" + Integer::Int16(denominator_).getString() ;
+        return "-" + Integer::Int16(denominator_).toString() ;
     }
     
-    return Integer::Int16(numerator_).getString() + "/" + Integer::Int16(denominator_).getString() ;
+    return Integer::Int16(numerator_).toString() + "/" + Integer::Int16(denominator_).toString() ;
 
 }
 
@@ -223,7 +223,7 @@ const Derived::Order&           Derived::Unit::accessAngleOrder             ( ) 
     return angleOrder_ ;
 }
 
-String                          Derived::Unit::getString                    ( ) const
+String                          Derived::Unit::toString                    ( ) const
 {
 
     if (!this->isDefined())
@@ -235,22 +235,22 @@ String                          Derived::Unit::getString                    ( ) 
 
     if (lengthUnit_ != Length::Unit::Undefined)
     {
-        symbol += ((!symbol.isEmpty()) ? "." : "") + Length::StringFromUnit(lengthUnit_) + ((!lengthOrder_.isUnity()) ? ("^" + lengthOrder_.getString()) : "") ;
+        symbol += ((!symbol.isEmpty()) ? "." : "") + Length::StringFromUnit(lengthUnit_) + ((!lengthOrder_.isUnity()) ? ("^" + lengthOrder_.toString()) : "") ;
     }
 
     if (massUnit_ != Mass::Unit::Undefined)
     {
-        symbol += ((!symbol.isEmpty()) ? "." : "") + Mass::StringFromUnit(massUnit_) + ((!massOrder_.isUnity()) ? ("^" + massOrder_.getString()) : "") ;
+        symbol += ((!symbol.isEmpty()) ? "." : "") + Mass::StringFromUnit(massUnit_) + ((!massOrder_.isUnity()) ? ("^" + massOrder_.toString()) : "") ;
     }
 
     if (angleUnit_ != Angle::Unit::Undefined)
     {
-        symbol += ((!symbol.isEmpty()) ? "." : "") + Angle::StringFromUnit(angleUnit_) + ((!angleOrder_.isUnity()) ? ("^" + angleOrder_.getString()) : "") ;
+        symbol += ((!symbol.isEmpty()) ? "." : "") + Angle::StringFromUnit(angleUnit_) + ((!angleOrder_.isUnity()) ? ("^" + angleOrder_.toString()) : "") ;
     }
 
     if (timeUnit_ != Time::Unit::Undefined)
     {
-        symbol += ((!symbol.isEmpty()) ? "." : "") + Time::StringFromUnit(timeUnit_) + ((!timeOrder_.isUnity()) ? ("^" + timeOrder_.getString()) : "") ;
+        symbol += ((!symbol.isEmpty()) ? "." : "") + Time::StringFromUnit(timeUnit_) + ((!timeOrder_.isUnity()) ? ("^" + timeOrder_.toString()) : "") ;
     }
 
     return symbol ;
@@ -269,17 +269,17 @@ String                          Derived::Unit::getSymbol                    ( ) 
 
     if (lengthUnit_ != Length::Unit::Undefined)
     {
-        symbol += ((!symbol.isEmpty()) ? "." : "") + Length::SymbolFromUnit(lengthUnit_) + ((!lengthOrder_.isUnity()) ? ("^" + lengthOrder_.getString()) : "") ;
+        symbol += ((!symbol.isEmpty()) ? "." : "") + Length::SymbolFromUnit(lengthUnit_) + ((!lengthOrder_.isUnity()) ? ("^" + lengthOrder_.toString()) : "") ;
     }
 
     if (massUnit_ != Mass::Unit::Undefined)
     {
-        symbol += ((!symbol.isEmpty()) ? "." : "") + Mass::SymbolFromUnit(massUnit_) + ((!massOrder_.isUnity()) ? ("^" + massOrder_.getString()) : "") ;
+        symbol += ((!symbol.isEmpty()) ? "." : "") + Mass::SymbolFromUnit(massUnit_) + ((!massOrder_.isUnity()) ? ("^" + massOrder_.toString()) : "") ;
     }
 
     if (angleUnit_ != Angle::Unit::Undefined)
     {
-        symbol += ((!symbol.isEmpty()) ? "." : "") + Angle::SymbolFromUnit(angleUnit_) + ((!angleOrder_.isUnity()) ? ("^" + angleOrder_.getString()) : "") ;
+        symbol += ((!symbol.isEmpty()) ? "." : "") + Angle::SymbolFromUnit(angleUnit_) + ((!angleOrder_.isUnity()) ? ("^" + angleOrder_.toString()) : "") ;
     }
 
     if (timeUnit_ != Time::Unit::Undefined)
@@ -291,7 +291,7 @@ String                          Derived::Unit::getSymbol                    ( ) 
         }
         else
         {
-            symbol += ((!symbol.isEmpty()) ? "." : "") + Time::SymbolFromUnit(timeUnit_) + ((!timeOrder_.isUnity()) ? ("^" + timeOrder_.getString()) : "") ;
+            symbol += ((!symbol.isEmpty()) ? "." : "") + Time::SymbolFromUnit(timeUnit_) + ((!timeOrder_.isUnity()) ? ("^" + timeOrder_.toString()) : "") ;
         }
         
     }
@@ -370,7 +370,7 @@ std::ostream&                   operator <<                                 (   
     library::core::utils::Print::Header(anOutputStream, "Derived") ;
 
     library::core::utils::Print::Line(anOutputStream) << "Value:" << aDerivedUnit.accessValue() ;
-    library::core::utils::Print::Line(anOutputStream) << "Unit:" << aDerivedUnit.unit_.getString() ;
+    library::core::utils::Print::Line(anOutputStream) << "Unit:" << aDerivedUnit.unit_.toString() ;
 
     library::core::utils::Print::Footer(anOutputStream) ;
 
@@ -403,14 +403,14 @@ Real                            Derived::in                                 (   
 
     if (!unit_.isCompatibleWith(aUnit))
     {
-        throw library::core::error::RuntimeError("Cannot convert unit [" + unit_.getString() + "] to [" + aUnit.getString() + "].") ;
+        throw library::core::error::RuntimeError("Cannot convert unit [" + unit_.toString() + "] to [" + aUnit.toString() + "].") ;
     }
 
     return this->accessValue() * Derived::SIRatio(unit_) / Derived::SIRatio(aUnit) ;
 
 }
 
-String                          Derived::getString                          ( ) const
+String                          Derived::toString                          ( ) const
 {
 
     if (!this->isDefined())
@@ -418,7 +418,7 @@ String                          Derived::getString                          ( ) 
         return "Undef" ;
     }
 
-    return this->accessValue().getString() + " [" + unit_.getSymbol() + "]" ;
+    return this->accessValue().toString() + " [" + unit_.getSymbol() + "]" ;
 
 }
 
@@ -434,7 +434,7 @@ Derived                         Derived::Undefined                          ( )
 
 String                          Derived::StringFromUnit                     (   const   Derived::Unit&              aUnit                                       )
 {
-    return aUnit.getString() ;
+    return aUnit.toString() ;
 }
 
 String                          Derived::SymbolFromUnit                     (   const   Derived::Unit&              aUnit                                       )

@@ -172,7 +172,7 @@ Real                            DateTime::getModifiedJulianDate             ( ) 
 
 }
 
-String                          DateTime::getString                         (   const   DateTime::Format&           aFormat                                     ) const
+String                          DateTime::toString                         (   const   DateTime::Format&           aFormat                                     ) const
 {
     
     if (!this->isDefined())
@@ -184,10 +184,10 @@ String                          DateTime::getString                         (   
     {
 
         case DateTime::Format::Standard:
-            return date_.getString() + " " + time_.getString(Time::Format::Standard) ;
+            return date_.toString() + " " + time_.toString(Time::Format::Standard) ;
 
         case DateTime::Format::ISO8601:
-            return date_.getString() + "T" + time_.getString(Time::Format::ISO8601) ;
+            return date_.toString() + "T" + time_.toString(Time::Format::ISO8601) ;
 
         default:
             throw library::core::error::runtime::Wrong("Format") ;

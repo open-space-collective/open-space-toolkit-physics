@@ -41,8 +41,8 @@ std::ostream&                   operator <<                                 (   
 
     library::core::utils::Print::Header(anOutputStream, "Interval") ;
 
-    library::core::utils::Print::Line(anOutputStream) << "Start:" << (anInterval.isDefined() ? anInterval.accessStart().getString(Scale::UTC) : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "End:" << (anInterval.isDefined() ? anInterval.accessEnd().getString(Scale::UTC) : "Undefined") ;
+    library::core::utils::Print::Line(anOutputStream) << "Start:" << (anInterval.isDefined() ? anInterval.accessStart().toString(Scale::UTC) : "Undefined") ;
+    library::core::utils::Print::Line(anOutputStream) << "End:" << (anInterval.isDefined() ? anInterval.accessEnd().toString(Scale::UTC) : "Undefined") ;
 
     library::core::utils::Print::Footer(anOutputStream) ;
 
@@ -127,7 +127,7 @@ Instant                         Interval::getCenter                         ( ) 
 
 }
 
-String                          Interval::getString                         (   const   Scale&                      aTimeScale                                  ) const
+String                          Interval::toString                         (   const   Scale&                      aTimeScale                                  ) const
 {
 
     using library::physics::time::DateTime ;
@@ -141,16 +141,16 @@ String                          Interval::getString                         (   
     {
 
         case Interval::Type::Closed:
-            return String::Format("[{0} - {1}] [{2}]", this->accessLowerBound().getDateTime(aTimeScale).getString(DateTime::Format::Standard), this->accessUpperBound().getDateTime(aTimeScale).getString(DateTime::Format::Standard), StringFromScale(aTimeScale)) ;
+            return String::Format("[{0} - {1}] [{2}]", this->accessLowerBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard), this->accessUpperBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard), StringFromScale(aTimeScale)) ;
 
         case Interval::Type::Open:
-            return String::Format("]{0} - {1}[ [{2}]", this->accessLowerBound().getDateTime(aTimeScale).getString(DateTime::Format::Standard), this->accessUpperBound().getDateTime(aTimeScale).getString(DateTime::Format::Standard), StringFromScale(aTimeScale)) ;
+            return String::Format("]{0} - {1}[ [{2}]", this->accessLowerBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard), this->accessUpperBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard), StringFromScale(aTimeScale)) ;
 
         case Interval::Type::HalfOpenLeft:
-            return String::Format("]{0} - {1}] [{2}]", this->accessLowerBound().getDateTime(aTimeScale).getString(DateTime::Format::Standard), this->accessUpperBound().getDateTime(aTimeScale).getString(DateTime::Format::Standard), StringFromScale(aTimeScale)) ;
+            return String::Format("]{0} - {1}] [{2}]", this->accessLowerBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard), this->accessUpperBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard), StringFromScale(aTimeScale)) ;
 
         case Interval::Type::HalfOpenRight:
-            return String::Format("[{0} - {1}[ [{2}]", this->accessLowerBound().getDateTime(aTimeScale).getString(DateTime::Format::Standard), this->accessUpperBound().getDateTime(aTimeScale).getString(DateTime::Format::Standard), StringFromScale(aTimeScale)) ;
+            return String::Format("[{0} - {1}[ [{2}]", this->accessLowerBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard), this->accessUpperBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard), StringFromScale(aTimeScale)) ;
 
         default:
             break ;

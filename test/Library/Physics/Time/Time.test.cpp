@@ -262,43 +262,43 @@ TEST (Library_Physics_Time_Time, GetNanosecond)
 
 }
 
-TEST (Library_Physics_Time_Time, GetString)
+TEST (Library_Physics_Time_Time, ToString)
 {
 
     using library::physics::time::Time ;
 
     {
 
-        EXPECT_EQ("01:02:03.004.005.006", Time(1, 2, 3, 4, 5, 6).getString()) ;
-        EXPECT_EQ("23:59:60.999.999.999", Time(23, 59, 60, 999, 999, 999).getString()) ;
+        EXPECT_EQ("01:02:03.004.005.006", Time(1, 2, 3, 4, 5, 6).toString()) ;
+        EXPECT_EQ("23:59:60.999.999.999", Time(23, 59, 60, 999, 999, 999).toString()) ;
 
     }
 
     {
 
-        EXPECT_EQ("00:00:00", Time(0, 0, 0, 0, 0, 0).getString(Time::Format::Standard)) ;
-        EXPECT_EQ("01:02:03", Time(1, 2, 3).getString(Time::Format::Standard)) ;
-        EXPECT_EQ("01:02:03.004", Time(1, 2, 3, 4).getString(Time::Format::Standard)) ;
-        EXPECT_EQ("01:02:03.004.005", Time(1, 2, 3, 4, 5).getString(Time::Format::Standard)) ;
-        EXPECT_EQ("01:02:03.004.005.006", Time(1, 2, 3, 4, 5, 6).getString(Time::Format::Standard)) ;
-        EXPECT_EQ("23:59:60.999.999.999", Time(23, 59, 60, 999, 999, 999).getString(Time::Format::Standard)) ;
+        EXPECT_EQ("00:00:00", Time(0, 0, 0, 0, 0, 0).toString(Time::Format::Standard)) ;
+        EXPECT_EQ("01:02:03", Time(1, 2, 3).toString(Time::Format::Standard)) ;
+        EXPECT_EQ("01:02:03.004", Time(1, 2, 3, 4).toString(Time::Format::Standard)) ;
+        EXPECT_EQ("01:02:03.004.005", Time(1, 2, 3, 4, 5).toString(Time::Format::Standard)) ;
+        EXPECT_EQ("01:02:03.004.005.006", Time(1, 2, 3, 4, 5, 6).toString(Time::Format::Standard)) ;
+        EXPECT_EQ("23:59:60.999.999.999", Time(23, 59, 60, 999, 999, 999).toString(Time::Format::Standard)) ;
 
     }
 
     {
 
-        EXPECT_EQ("00:00:00", Time(0, 0, 0, 0, 0, 0).getString(Time::Format::ISO8601)) ;
-        EXPECT_EQ("01:02:03", Time(1, 2, 3).getString(Time::Format::ISO8601)) ;
-        EXPECT_EQ("01:02:03.004", Time(1, 2, 3, 4).getString(Time::Format::ISO8601)) ;
-        EXPECT_EQ("01:02:03.004005", Time(1, 2, 3, 4, 5).getString(Time::Format::ISO8601)) ;
-        EXPECT_EQ("01:02:03.004005006", Time(1, 2, 3, 4, 5, 6).getString(Time::Format::ISO8601)) ;
-        EXPECT_EQ("23:59:60.999999999", Time(23, 59, 60, 999, 999, 999).getString(Time::Format::ISO8601)) ;
+        EXPECT_EQ("00:00:00", Time(0, 0, 0, 0, 0, 0).toString(Time::Format::ISO8601)) ;
+        EXPECT_EQ("01:02:03", Time(1, 2, 3).toString(Time::Format::ISO8601)) ;
+        EXPECT_EQ("01:02:03.004", Time(1, 2, 3, 4).toString(Time::Format::ISO8601)) ;
+        EXPECT_EQ("01:02:03.004005", Time(1, 2, 3, 4, 5).toString(Time::Format::ISO8601)) ;
+        EXPECT_EQ("01:02:03.004005006", Time(1, 2, 3, 4, 5, 6).toString(Time::Format::ISO8601)) ;
+        EXPECT_EQ("23:59:60.999999999", Time(23, 59, 60, 999, 999, 999).toString(Time::Format::ISO8601)) ;
 
     }
 
     {
         
-        EXPECT_ANY_THROW(Time::Undefined().getString()) ;
+        EXPECT_ANY_THROW(Time::Undefined().toString()) ;
 
     }
 

@@ -37,7 +37,7 @@ bool                            Time::isDefined                             ( ) 
     return units::Unit::isDefined() && (unit_ != Time::Unit::Undefined) ;
 }
 
-String                          Time::getString                             ( ) const
+String                          Time::toString                             ( ) const
 {
 
     if (!this->isDefined())
@@ -45,7 +45,7 @@ String                          Time::getString                             ( ) 
         return "Undef" ;
     }
 
-    return this->accessValue().getString() + " [" + Time::SymbolFromUnit(unit_) + "]" ;
+    return this->accessValue().toString() + " [" + Time::SymbolFromUnit(unit_) + "]" ;
 
 }
 

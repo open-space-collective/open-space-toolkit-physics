@@ -182,7 +182,7 @@ Uint16                          Time::getNanosecond                         ( ) 
 
 }
 
-String                          Time::getString                             (   const   Time::Format&               aFormat                                     ) const
+String                          Time::toString                             (   const   Time::Format&               aFormat                                     ) const
 {
 
     if (!this->isDefined())

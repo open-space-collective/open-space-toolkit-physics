@@ -76,7 +76,7 @@ class Unit
 
         Real                    getValue                                    ( ) const ;
 
-        virtual String          getString                                   ( ) const = 0 ;
+        virtual String          toString                                    ( ) const = 0 ;
 
         Real&                   accessValue                                 ( ) ;
 

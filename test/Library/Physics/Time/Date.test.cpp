@@ -205,24 +205,24 @@ TEST (Library_Physics_Time_Date, GetDay)
 
 }
 
-TEST (Library_Physics_Time_Date, GetString)
+TEST (Library_Physics_Time_Date, ToString)
 {
 
     using library::physics::time::Date ;
 
     {
 
-        EXPECT_EQ("2000-01-01", Date(2000, 1, 1).getString()) ;
-        EXPECT_EQ("2018-12-31", Date(2018, 12, 31).getString()) ;
+        EXPECT_EQ("2000-01-01", Date(2000, 1, 1).toString()) ;
+        EXPECT_EQ("2018-12-31", Date(2018, 12, 31).toString()) ;
 
-        EXPECT_EQ("1400-01-01", Date(1400, 1, 1).getString()) ;
-        EXPECT_EQ("9999-12-31", Date(9999, 12, 31).getString()) ;
+        EXPECT_EQ("1400-01-01", Date(1400, 1, 1).toString()) ;
+        EXPECT_EQ("9999-12-31", Date(9999, 12, 31).toString()) ;
 
     }
 
     {
         
-        EXPECT_ANY_THROW(Date::Undefined().getString()) ;
+        EXPECT_ANY_THROW(Date::Undefined().toString()) ;
 
     }
 

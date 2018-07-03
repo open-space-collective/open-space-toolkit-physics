@@ -223,6 +223,42 @@ Angle                           operator *                                  (   
 
 }
 
+                                Angle::operator library::math::geom::Angle  ( ) const
+{
+    
+    if (!this->isDefined())
+    {
+        return library::math::geom::Angle::Undefined() ;
+    }
+
+    switch (unit_)
+    {
+
+        case Angle::Unit::Radian:
+            return library::math::geom::Angle(this->accessValue(), library::math::geom::Angle::Unit::Radian) ;
+        
+        case Angle::Unit::Degree:
+            return library::math::geom::Angle(this->accessValue(), library::math::geom::Angle::Unit::Degree) ;
+        
+        case Angle::Unit::Arcminute:
+            return library::math::geom::Angle(this->accessValue(), library::math::geom::Angle::Unit::Arcminute) ;
+        
+        case Angle::Unit::Arcsecond:
+            return library::math::geom::Angle(this->accessValue(), library::math::geom::Angle::Unit::Arcsecond) ;
+        
+        case Angle::Unit::Revolution:
+            return library::math::geom::Angle(this->accessValue(), library::math::geom::Angle::Unit::Revolution) ;
+
+        default:
+            throw library::core::error::runtime::Wrong("Unit") ;
+            break ;
+
+    }
+
+    return library::math::geom::Angle::Undefined() ;
+
+}
+
 std::ostream&                   operator <<                                 (           std::ostream&               anOutputStream,
                                                                                 const   Angle&                      anAngle                                     )
 {
@@ -314,7 +350,7 @@ Real                            Angle::inRevolutions                        ( ) 
     return this->in(Angle::Unit::Revolution) ;
 }
 
-String                          Angle::getString                            ( ) const
+String                          Angle::toString                            ( ) const
 {
 
     if (!this->isDefined())
@@ -322,7 +358,7 @@ String                          Angle::getString                            ( ) 
         return "Undef" ;
     }
 
-    return this->accessValue().getString() + " [" + Angle::SymbolFromUnit(unit_) + "]" ;
+    return this->accessValue().toString() + " [" + Angle::SymbolFromUnit(unit_) + "]" ;
 
 }
 

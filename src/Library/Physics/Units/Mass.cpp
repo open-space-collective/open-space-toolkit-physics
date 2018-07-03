@@ -37,7 +37,7 @@ bool                            Mass::isDefined                             ( ) 
     return units::Unit::isDefined() && (unit_ != Mass::Unit::Undefined) ;
 }
 
-String                          Mass::getString                             ( ) const
+String                          Mass::toString                             ( ) const
 {
 
     if (!this->isDefined())
@@ -45,7 +45,7 @@ String                          Mass::getString                             ( ) 
         return "Undef" ;
     }
 
-    return this->accessValue().getString() + " [" + Mass::SymbolFromUnit(unit_) + "]" ;
+    return this->accessValue().toString() + " [" + Mass::SymbolFromUnit(unit_) + "]" ;
 
 }
 

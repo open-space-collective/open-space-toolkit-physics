@@ -71,45 +71,45 @@ TEST (Library_Physics_Units_Time, IsDefined)
 
 }
 
-TEST (Library_Physics_Units_Time, GetString)
+TEST (Library_Physics_Units_Time, ToString)
 {
 
     using library::physics::units::Time ; 
 
     {
 
-        EXPECT_EQ("1.0 [ns]", Time(1.0, Time::Unit::Nanosecond).getString()) ;
-        EXPECT_EQ("1.0 [us]", Time(1.0, Time::Unit::Microsecond).getString()) ;
-        EXPECT_EQ("1.0 [ms]", Time(1.0, Time::Unit::Millisecond).getString()) ;
-        EXPECT_EQ("1.0 [s]", Time(1.0, Time::Unit::Second).getString()) ;
-        EXPECT_EQ("1.0 [min]", Time(1.0, Time::Unit::Minute).getString()) ;
-        EXPECT_EQ("1.0 [hr]", Time(1.0, Time::Unit::Hour).getString()) ;
-        EXPECT_EQ("1.0 [day]", Time(1.0, Time::Unit::Day).getString()) ;
-        EXPECT_EQ("1.0 [week]", Time(1.0, Time::Unit::Week).getString()) ;
+        EXPECT_EQ("1.0 [ns]", Time(1.0, Time::Unit::Nanosecond).toString()) ;
+        EXPECT_EQ("1.0 [us]", Time(1.0, Time::Unit::Microsecond).toString()) ;
+        EXPECT_EQ("1.0 [ms]", Time(1.0, Time::Unit::Millisecond).toString()) ;
+        EXPECT_EQ("1.0 [s]", Time(1.0, Time::Unit::Second).toString()) ;
+        EXPECT_EQ("1.0 [min]", Time(1.0, Time::Unit::Minute).toString()) ;
+        EXPECT_EQ("1.0 [hr]", Time(1.0, Time::Unit::Hour).toString()) ;
+        EXPECT_EQ("1.0 [day]", Time(1.0, Time::Unit::Day).toString()) ;
+        EXPECT_EQ("1.0 [week]", Time(1.0, Time::Unit::Week).toString()) ;
 
-        EXPECT_EQ("-1.0 [ns]", Time(-1.0, Time::Unit::Nanosecond).getString()) ;
-        EXPECT_EQ("-1.0 [us]", Time(-1.0, Time::Unit::Microsecond).getString()) ;
-        EXPECT_EQ("-1.0 [ms]", Time(-1.0, Time::Unit::Millisecond).getString()) ;
-        EXPECT_EQ("-1.0 [s]", Time(-1.0, Time::Unit::Second).getString()) ;
-        EXPECT_EQ("-1.0 [min]", Time(-1.0, Time::Unit::Minute).getString()) ;
-        EXPECT_EQ("-1.0 [hr]", Time(-1.0, Time::Unit::Hour).getString()) ;
-        EXPECT_EQ("-1.0 [day]", Time(-1.0, Time::Unit::Day).getString()) ;
-        EXPECT_EQ("-1.0 [week]", Time(-1.0, Time::Unit::Week).getString()) ;
+        EXPECT_EQ("-1.0 [ns]", Time(-1.0, Time::Unit::Nanosecond).toString()) ;
+        EXPECT_EQ("-1.0 [us]", Time(-1.0, Time::Unit::Microsecond).toString()) ;
+        EXPECT_EQ("-1.0 [ms]", Time(-1.0, Time::Unit::Millisecond).toString()) ;
+        EXPECT_EQ("-1.0 [s]", Time(-1.0, Time::Unit::Second).toString()) ;
+        EXPECT_EQ("-1.0 [min]", Time(-1.0, Time::Unit::Minute).toString()) ;
+        EXPECT_EQ("-1.0 [hr]", Time(-1.0, Time::Unit::Hour).toString()) ;
+        EXPECT_EQ("-1.0 [day]", Time(-1.0, Time::Unit::Day).toString()) ;
+        EXPECT_EQ("-1.0 [week]", Time(-1.0, Time::Unit::Week).toString()) ;
 
-        EXPECT_EQ("123.456 [ns]", Time(123.456, Time::Unit::Nanosecond).getString()) ;
-        EXPECT_EQ("123.456 [us]", Time(123.456, Time::Unit::Microsecond).getString()) ;
-        EXPECT_EQ("123.456 [ms]", Time(123.456, Time::Unit::Millisecond).getString()) ;
-        EXPECT_EQ("123.456 [s]", Time(123.456, Time::Unit::Second).getString()) ;
-        EXPECT_EQ("123.456 [min]", Time(123.456, Time::Unit::Minute).getString()) ;
-        EXPECT_EQ("123.456 [hr]", Time(123.456, Time::Unit::Hour).getString()) ;
-        EXPECT_EQ("123.456 [day]", Time(123.456, Time::Unit::Day).getString()) ;
-        EXPECT_EQ("123.456 [week]", Time(123.456, Time::Unit::Week).getString()) ;
+        EXPECT_EQ("123.456 [ns]", Time(123.456, Time::Unit::Nanosecond).toString()) ;
+        EXPECT_EQ("123.456 [us]", Time(123.456, Time::Unit::Microsecond).toString()) ;
+        EXPECT_EQ("123.456 [ms]", Time(123.456, Time::Unit::Millisecond).toString()) ;
+        EXPECT_EQ("123.456 [s]", Time(123.456, Time::Unit::Second).toString()) ;
+        EXPECT_EQ("123.456 [min]", Time(123.456, Time::Unit::Minute).toString()) ;
+        EXPECT_EQ("123.456 [hr]", Time(123.456, Time::Unit::Hour).toString()) ;
+        EXPECT_EQ("123.456 [day]", Time(123.456, Time::Unit::Day).toString()) ;
+        EXPECT_EQ("123.456 [week]", Time(123.456, Time::Unit::Week).toString()) ;
 
     }
 
     {
 
-        EXPECT_EQ("Undef", Time::Undefined().getString()) ;
+        EXPECT_EQ("Undef", Time::Undefined().toString()) ;
         
     }
 
