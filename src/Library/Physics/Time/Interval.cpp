@@ -236,6 +236,24 @@ Interval                        Interval::Undefined                         ( )
     return Interval(Instant::Undefined(), Instant::Undefined(), Interval::Type::Undefined) ;
 }
 
+Interval                        Interval::Closed                            (   const   Instant&                    aLowerBound,
+                                                                                const   Instant&                    anUpperBound                                )
+{
+    
+    if (!aLowerBound.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Lower bound") ;
+    }
+
+    if (!anUpperBound.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Upper bound") ;
+    }
+
+    return Interval(aLowerBound, anUpperBound, Interval::Type::Closed) ;
+
+}
+
 Interval                        Interval::Centered                          (   const   Instant&                    aCentralInstant,
                                                                                 const   Duration&                   aDuration,
                                                                                 const   Interval::Type&             anIntervalType                              )

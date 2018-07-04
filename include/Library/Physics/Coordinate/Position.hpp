@@ -1,14 +1,14 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Library/Physics
-/// @file           Library/Physics/Coordinate/Axes.hpp
+/// @file           Library/Physics/Coordinate/Position.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        TBD
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Coordinate_Axes__
-#define __Library_Physics_Coordinate_Axes__
+#ifndef __Library_Physics_Coordinate_Position__
+#define __Library_Physics_Coordinate_Position__
 
 #include <Library/Mathematics/Objects/Vector.hpp>
 #include <Library/Core/Types/Shared.hpp>
@@ -33,40 +33,30 @@ class Frame ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @brief                      Axes
+/// @brief                      Position
 
-class Axes
+class Position
 {
 
     public:
 
-                                Axes                                        (   const   Vector3d&                   aXAxis,
-                                                                                const   Vector3d&                   aYAxis,
-                                                                                const   Vector3d&                   aZAxis,
+                                Position                                    (   const   Vector3d&                   aCoordinateSet,
                                                                                 const   Shared<const Frame>&        aFrame                                      ) ;
 
-        bool                    operator ==                                 (   const   Axes&                       anAxes                                      ) const ;
+        bool                    operator ==                                 (   const   Position&                   aPosition                                   ) const ;
         
-        bool                    operator !=                                 (   const   Axes&                       anAxes                                      ) const ;
+        bool                    operator !=                                 (   const   Position&                   aPosition                                   ) const ;
 
         friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
-                                                                                const   Axes&                       anAxes                                      ) ;
+                                                                                const   Position&                   aPosition                                   ) ;
 
         bool                    isDefined                                   ( ) const ;
 
-        const Vector3d&         x                                           ( ) const ;
-
-        const Vector3d&         y                                           ( ) const ;
-
-        const Vector3d&         z                                           ( ) const ;
-
-        static Axes             Undefined                                   ( ) ;
+        static Position         Undefined                                   ( ) ;
 
     private:
 
-        Vector3d                x_ ;
-        Vector3d                y_ ;
-        Vector3d                z_ ;
+        Vector3d                coordinates_ ;
 
         Shared<const Frame>     frameSPtr_ ;
 

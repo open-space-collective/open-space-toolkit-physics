@@ -189,6 +189,48 @@ String                          Frame::getName                              ( ) 
 
 }
 
+Position                        Frame::getOriginIn                          (   const   Frame&                      aFrame,
+                                                                                const   Instant&                    anInstant                                   ) const
+{
+
+    if (!anInstant.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Instant") ;
+    }
+
+    if ((!this->isDefined()) || (!aFrame.isDefined()))
+    {
+        throw library::core::error::runtime::Undefined("Frame") ;
+    }
+
+    return Position(this->getTransformTo(aFrame, anInstant).applyToPosition(Vector3d::Zero()), std::make_shared<Frame>(aFrame)) ; // [TBM] Why sharing?
+
+}
+
+Axes                            Frame::getAxesIn                            (   const   Frame&                      aFrame,
+                                                                                const   Instant&                    anInstant                                   ) const
+{
+
+    if (!anInstant.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Instant") ;
+    }
+
+    if ((!this->isDefined()) || (!aFrame.isDefined()))
+    {
+        throw library::core::error::runtime::Undefined("Frame") ;
+    }
+
+    const Transform transform = this->getTransformTo(aFrame, anInstant) ;
+
+    const Vector3d xAxis = transform.applyToVector(Vector3d::X()) ;
+    const Vector3d yAxis = transform.applyToVector(Vector3d::Y()) ;
+    const Vector3d zAxis = transform.applyToVector(Vector3d::Z()) ;
+
+    return Axes(xAxis, yAxis, zAxis, std::make_shared<Frame>(aFrame)) ; // [TBM] Why sharing?
+
+}
+
 Transform                       Frame::getTransformTo                       (   const   Frame&                      aFrame,
                                                                                 const   Instant&                    anInstant                                   ) const
 {
@@ -198,21 +240,13 @@ Transform                       Frame::getTransformTo                       (   
         throw library::core::error::runtime::Undefined("Frame") ;
     }
 
-    if (!anInstant.isDefined())
-    {
-        throw library::core::error::runtime::Undefined("Instant") ;
-    }
-
     if ((*this) == aFrame)
     {
         return Transform::Identity() ;
     }
 
-    std::cout << "(*this) = " << (*this) << std::endl ;
-    // std::cout << "this = " << this << std::endl ;
-
-    std::cout << "aFrame = " << aFrame << std::endl ;
-    // std::cout << "&aFrame = " << &aFrame << std::endl ;
+    // std::cout << "(*this) = " << (*this) << std::endl ;
+    // std::cout << "aFrame = " << aFrame << std::endl ;
 
     // Find common ancestor
 
@@ -223,7 +257,7 @@ Transform                       Frame::getTransformTo                       (   
         throw library::core::error::RuntimeError("No common ancestor between [{}] and [{}].", this->getName(), aFrame.getName()) ;
     }
 
-    std::cout << "commonAncestor = " << std::endl << commonAncestor << std::endl ;
+    // std::cout << "commonAncestor = " << std::endl << commonAncestor << std::endl ;
     // std::cout << "&commonAncestor = " << &commonAncestor << std::endl ;
 
     // Compute transform from common ancestor to origin
@@ -232,12 +266,12 @@ Transform                       Frame::getTransformTo                       (   
 
     for (auto framePtr = this; (*framePtr) != commonAncestor; framePtr = &framePtr->accessParent())
     {
-        std::cout << "A framePtr = " << (*framePtr) << std::endl ;
+        // std::cout << "A framePtr = " << (*framePtr) << std::endl ;
         commonToOriginTransform *= framePtr->accessProvider()->getTransformAt(anInstant) ;
         // commonToOriginTransform = Transform(anInstant, frame.transformProvider.getTransform(anInstant), commonToOriginTransform) ;
     }
 
-    std::cout << "commonToOriginTransform = " << std::endl << commonToOriginTransform << std::endl ;
+    // std::cout << "commonToOriginTransform = " << std::endl << commonToOriginTransform << std::endl ;
 
     // Compute transform from destination to common ancestor
     
@@ -245,18 +279,18 @@ Transform                       Frame::getTransformTo                       (   
 
     for (auto framePtr = &aFrame; (*framePtr) != commonAncestor; framePtr = &framePtr->accessParent())
     {
-        std::cout << "B framePtr = " << (*framePtr) << std::endl ;
+        // std::cout << "B framePtr = " << (*framePtr) << std::endl ;
         commonToDestinationTransform *= framePtr->accessProvider()->getTransformAt(anInstant) ;
         // commonToDestinationTransform = new Transform(date, frame.transformProvider.getTransform(date), commonToDestinationTransform);
     }
 
-    std::cout << "commonToDestinationTransform = " << std::endl << commonToDestinationTransform << std::endl ;
+    // std::cout << "commonToDestinationTransform = " << std::endl << commonToDestinationTransform << std::endl ;
 
     // Compute transform from origin to destination
 
     const Transform originToDestinationTransform = commonToOriginTransform.getInverse() * commonToDestinationTransform ;
 
-    std::cout << "originToDestinationTransform = " << std::endl << originToDestinationTransform << std::endl ;
+    // std::cout << "originToDestinationTransform = " << std::endl << originToDestinationTransform << std::endl ;
     
     return originToDestinationTransform ;
     

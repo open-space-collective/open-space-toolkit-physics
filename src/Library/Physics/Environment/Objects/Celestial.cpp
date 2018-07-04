@@ -1,0 +1,175 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/// @project        Library/Physics
+/// @file           Library/Physics/Environment/Objects/Celestial.cpp
+/// @author         Lucas Brémond <lucas@loftorbital.com>
+/// @license        TBD
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#include <Library/Physics/Environment/Objects/Celestial.hpp>
+
+#include <Library/Core/Error.hpp>
+#include <Library/Core/Utilities.hpp>
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+namespace library
+{
+namespace physics
+{
+namespace env
+{
+namespace obj
+{
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                                Celestial::Celestial                        (   const   String&                     aName,
+                                                                                const   Celestial::Type&            aType,
+                                                                                const   Shared<Ephemeris>&          anEphemeris,
+                                                                                const   Instant&                    anInstant                                   )
+                                :   Object(aName, anInstant),
+                                    type_(aType),
+                                    ephemeris_(anEphemeris)
+{
+
+}
+
+                                Celestial::~Celestial                       ( )
+{
+
+}
+
+Celestial*                      Celestial::clone                            ( ) const
+{
+    return new Celestial(*this) ;
+}
+
+bool                            Celestial::isDefined                        ( ) const
+{
+    return Object::isDefined() && (ephemeris_ != nullptr) && ephemeris_->isDefined() ;
+}
+
+Shared<const Ephemeris>         Celestial::accessEphemeris                  ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Celestial") ;
+    }
+
+    return ephemeris_ ;
+
+}
+
+Celestial::Type                 Celestial::getType                          ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Celestial") ;
+    }
+
+    return type_ ;
+
+}
+
+Weak<const Frame>               Celestial::accessFrame                      ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Celestial") ;
+    }
+
+    return ephemeris_->accessFrame() ;
+
+}
+
+Position                        Celestial::getPositionIn                    (   const   Frame&                      aFrame                                      ) const
+{
+
+    if (!aFrame.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Frame") ;
+    }
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Celestial") ;
+    }
+
+    if (auto frameSPtr = ephemeris_->accessFrame().lock())
+    {
+        return frameSPtr->getOriginIn(aFrame, this->accessInstant()) ;
+    }
+    else
+    {
+        throw library::core::error::RuntimeError("Cannot access frame.") ;
+    }
+
+    return Position::Undefined() ;
+
+}
+
+Axes                            Celestial::getAxesIn                        (   const   Frame&                      aFrame                                      ) const
+{
+
+    if (!aFrame.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Frame") ;
+    }
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Celestial") ;
+    }
+
+    if (auto frameSPtr = ephemeris_->accessFrame().lock())
+    {
+        return frameSPtr->getAxesIn(aFrame, this->accessInstant()) ;
+    }
+    else
+    {
+        throw library::core::error::RuntimeError("Cannot access frame.") ;
+    }
+
+    return Axes::Undefined() ;
+
+}
+
+Vector3d                        Celestial::getGravitationalFieldAt          (   const   Position&                   aPosition                                   ) const
+{
+
+    if (!aPosition.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Position") ;
+    }
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Celestial") ;
+    }
+
+    (void) aPosition ;
+
+    // [TBI]
+
+    return Vector3d::Undefined() ;
+
+}
+
+Celestial                       Celestial::Undefined                        ( )
+{
+    return Celestial(String::Empty(), Celestial::Type::Undefined, nullptr, Instant::Undefined()) ;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+}
+}
+}
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

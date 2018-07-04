@@ -38,7 +38,35 @@ TEST (Library_Physics_Coordinate_Transform, Constructor)
         const Quaternion q_B_A = Quaternion::RotationVector(RotationVector({ +0.0, +0.0, +1.0 }, Angle::Degrees(+0.0))) ;
         const Vector3d w_B_A_in_B = { +0.0, +0.0, +0.0 } ;
 
-        EXPECT_NO_THROW(Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B)) ;
+        EXPECT_NO_THROW(Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active)) ;
+
+    }
+
+    {
+
+        const Instant instant = Instant::J2000() ;
+
+        const Vector3d t_B_A = { +0.0, +0.0, +0.0 } ;
+        const Vector3d v_B_A = { +0.0, +0.0, +0.0 } ;
+        
+        const Quaternion q_B_A = Quaternion::RotationVector(RotationVector({ +0.0, +0.0, +1.0 }, Angle::Degrees(+0.0))) ;
+        const Vector3d w_B_A_in_B = { +0.0, +0.0, +0.0 } ;
+
+        EXPECT_NO_THROW(Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Passive)) ;
+
+    }
+
+    {
+
+        const Instant instant = Instant::J2000() ;
+
+        const Vector3d t_B_A = { +0.0, +0.0, +0.0 } ;
+        const Vector3d v_B_A = { +0.0, +0.0, +0.0 } ;
+        
+        const Quaternion q_B_A = Quaternion::RotationVector(RotationVector({ +0.0, +0.0, +1.0 }, Angle::Degrees(+0.0))) ;
+        const Vector3d w_B_A_in_B = { +0.0, +0.0, +0.0 } ;
+
+        EXPECT_ANY_THROW(Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Undefined)) ;
 
     }
 

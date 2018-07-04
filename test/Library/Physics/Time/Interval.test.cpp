@@ -456,6 +456,32 @@ TEST (Library_Physics_Time_Interval, Undefined)
 
 }
 
+TEST (Library_Physics_Time_Interval, Closed)
+{
+
+    using library::physics::time::Scale ;
+    using library::physics::time::DateTime ;
+    using library::physics::time::Instant ;
+    using library::physics::time::Duration ;
+    using library::physics::time::Interval ;
+
+    {
+
+        EXPECT_NO_THROW(Interval::Closed(Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT), Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 1), Scale::TT))) ;
+        EXPECT_EQ(Interval(Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT), Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 1), Scale::TT), Interval::Type::Closed), Interval::Closed(Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT), Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 1), Scale::TT))) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Interval::Closed(Instant::Undefined(), Instant::Undefined())) ;
+        EXPECT_ANY_THROW(Interval::Closed(Instant::J2000(), Instant::Undefined())) ;
+        EXPECT_ANY_THROW(Interval::Closed(Instant::Undefined(), Instant::J2000())) ;
+
+    }
+
+}
+
 TEST (Library_Physics_Time_Interval, Centered)
 {
 
@@ -482,8 +508,8 @@ TEST (Library_Physics_Time_Interval, Centered)
     {
 
         EXPECT_ANY_THROW(Interval::Centered(Instant::Undefined(), Duration::Minutes(1.0), Interval::Type::Closed)) ;
-        EXPECT_ANY_THROW(Interval::Centered(Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT), Duration::Undefined(), Interval::Type::Closed)) ;
-        EXPECT_ANY_THROW(Interval::Centered(Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT), Duration::Minutes(1.0), Interval::Type::Undefined)) ;
+        EXPECT_ANY_THROW(Interval::Centered(Instant::J2000(), Duration::Undefined(), Interval::Type::Closed)) ;
+        EXPECT_ANY_THROW(Interval::Centered(Instant::J2000(), Duration::Minutes(1.0), Interval::Type::Undefined)) ;
 
     }
 

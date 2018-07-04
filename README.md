@@ -59,7 +59,7 @@ The **Physics** library exhibits the following structure:
 └── Environment
     ├── Constants
     ├── Object
-    │   └── Celestial Body
+    │   └── Celestial
     ├── Ephemerides
     │   ├── Analytical
     │   ├── Tabulated

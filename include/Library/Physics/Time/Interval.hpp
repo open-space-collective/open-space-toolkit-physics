@@ -83,6 +83,17 @@ class Interval : public math::obj::Interval<Instant>
 
         static Interval         Undefined                                   ( ) ;
 
+        /// @brief              Constructs a closed interval
+        ///
+        /// @code
+        ///                     Interval interval = Interval::Closed(Instant::J2000(), Instant::Now()) ; // [J2000, Now]
+        /// @endcode
+        ///
+        /// @return             Closed interval
+
+        static Interval         Closed                                      (   const   Instant&                    aLowerBound,
+                                                                                const   Instant&                    anUpperBound                                ) ;
+
         static Interval         Centered                                    (   const   Instant&                    aCentralInstant,
                                                                                 const   Duration&                   aDuration,
                                                                                 const   Interval::Type&             anIntervalType                              ) ;

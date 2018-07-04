@@ -47,11 +47,21 @@ class Transform
 
     public:
 
+        enum class Type
+        {
+
+            Undefined,
+            Active,
+            Passive
+
+        } ;
+
                                 Transform                                   (   const   Instant&                    anInstant,
                                                                                 const   Vector3d&                   aTranslation,
                                                                                 const   Vector3d&                   aVelocity,
                                                                                 const   Quaternion&                 anOrientation,
-                                                                                const   Vector3d&                   anAngularVelocity                           ) ;
+                                                                                const   Vector3d&                   anAngularVelocity,
+                                                                                const   Transform::Type&            aType                                       ) ;
 
         bool                    operator ==                                 (   const   Transform&                  aTransform                                  ) const ;
         

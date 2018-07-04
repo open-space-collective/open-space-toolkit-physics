@@ -30,13 +30,29 @@ namespace coord
                                                                                 const   Vector3d&                   aTranslation,
                                                                                 const   Vector3d&                   aVelocity,
                                                                                 const   Quaternion&                 anOrientation,
-                                                                                const   Vector3d&                   anAngularVelocity                           )
+                                                                                const   Vector3d&                   anAngularVelocity,
+                                                                                const   Transform::Type&            aType                                       )
                                 :   instant_(anInstant),
                                     translation_(aTranslation),
                                     velocity_(aVelocity),
                                     orientation_(anOrientation),
                                     angularVelocity_(anAngularVelocity)
 {
+
+    switch (aType)
+    {
+
+        case Transform::Type::Active:
+            (*this) = this->getInverse() ;
+
+        case Transform::Type::Passive:
+            break ;
+
+        default:
+            throw library::core::error::runtime::Wrong("Type") ;
+            break ;
+
+    }
 
 }
 
@@ -286,7 +302,7 @@ Transform                       Transform::getInverse                       ( ) 
     const Quaternion orientation = orientation_.toConjugate() ;
     const Vector3d angularVelocity = - (orientation_ * angularVelocity_) ;
 
-    return Transform(instant_, translation, velocity, orientation, angularVelocity) ;
+    return Transform(instant_, translation, velocity, orientation, angularVelocity, Transform::Type::Passive) ;
 
 }
 
@@ -302,14 +318,6 @@ Vector3d                        Transform::applyToPosition                  (   
     {
         throw library::core::error::runtime::Undefined("Transform") ;
     }
-
-    // using library::math::geom::trf::rot::RotationVector ;
-
-    // std::cout << "translation_ = " << translation_.toString() << std::endl ;
-    // std::cout << "orientation_ QT = " << std::endl << orientation_ << std::endl ;
-    // std::cout << "orientation_ RV = " << std::endl << RotationVector::Quaternion(orientation_) << std::endl ;
-
-    // std::cout << "orientation_ * (aPosition + translation_) = " << (orientation_ * (aPosition + translation_)).toString() << std::endl ;
 
     return orientation_ * (aPosition + translation_) ;
 
@@ -357,12 +365,12 @@ Vector3d                        Transform::applyToVector                    (   
 
 Transform                       Transform::Undefined                        ( )
 {
-    return Transform(Instant::Undefined(), Vector3d::Undefined(), Vector3d::Undefined(), Quaternion::Undefined(), Vector3d::Undefined()) ;
+    return Transform(Instant::Undefined(), Vector3d::Undefined(), Vector3d::Undefined(), Quaternion::Undefined(), Vector3d::Undefined(), Transform::Type::Undefined) ;
 }
 
 Transform                       Transform::Identity                         (   const   Instant&                    anInstant                                   )
 {
-    return Transform(anInstant, Vector3d::Zero(), Vector3d::Zero(), Quaternion::Unit(), Vector3d::Zero()) ;
+    return Transform(anInstant, Vector3d::Zero(), Vector3d::Zero(), Quaternion::Unit(), Vector3d::Zero(), Transform::Type::Passive) ;
 }
 
 Transform                       Transform::Active                           (   const   Instant&                    anInstant,
@@ -371,7 +379,7 @@ Transform                       Transform::Active                           (   
                                                                                 const   Quaternion&                 anOrientation,
                                                                                 const   Vector3d&                   anAngularVelocity                           )
 {
-    return Transform(anInstant, aTranslation, aVelocity, anOrientation, anAngularVelocity).getInverse() ;
+    return Transform(anInstant, aTranslation, aVelocity, anOrientation, anAngularVelocity, Transform::Type::Active) ;
 }
 
 Transform                       Transform::Passive                          (   const   Instant&                    anInstant,
@@ -380,7 +388,7 @@ Transform                       Transform::Passive                          (   
                                                                                 const   Quaternion&                 anOrientation,
                                                                                 const   Vector3d&                   anAngularVelocity                           )
 {
-    return Transform(anInstant, aTranslation, aVelocity, anOrientation, anAngularVelocity) ;
+    return Transform(anInstant, aTranslation, aVelocity, anOrientation, anAngularVelocity, Transform::Type::Passive) ;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
