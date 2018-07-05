@@ -52,7 +52,7 @@ std::ostream&                   operator <<                                 (   
 
 bool                            Interval::isDefined                         ( ) const
 {
-    return this->accessLowerBound().isDefined() && this->accessUpperBound().isDefined() && (this->getType() != Interval::Type::Undefined) ;
+    return math::obj::Interval<Instant>::isDefined() && (this->getType() != Interval::Type::Undefined) ;
 }
 
 const Instant&                  Interval::accessStart                       ( ) const

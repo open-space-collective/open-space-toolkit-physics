@@ -35,38 +35,37 @@ TEST (Library_Physics_Environment, Default)
     using library::physics::Environment ;
     using library::physics::env::Object ;
 
-    EXPECT_NO_THROW
-    (
+    {
+
+        Environment environment = Environment::Default() ;
+
+        EXPECT_TRUE(environment.isDefined()) ;
+
+        const Instant startInstant = Instant::DateTime(DateTime::Parse("2018-01-01 00:00:00"), Scale::UTC) ;
+        const Instant endInstant = Instant::DateTime(DateTime::Parse("2018-01-02 00:00:00"), Scale::UTC) ;
+        const Duration stepDuration = Duration::Hours(1.0) ;
+
+        Weak<const Object> earthWPtr = environment.accessObjectWithName("Earth") ;
+
+        EXPECT_FALSE(earthWPtr.expired()) ;
+
+        if (auto earthSPtr = earthWPtr.lock())
         {
 
-            Environment environment = Environment::Default() ;
-
-            EXPECT_TRUE(environment.isDefined()) ;
-
-            const Instant startInstant = Instant::DateTime(DateTime::Parse("2018-01-01 00:00:00"), Scale::UTC) ;
-            const Instant endInstant = Instant::DateTime(DateTime::Parse("2018-01-02 00:00:00"), Scale::UTC) ;
-            const Duration stepDuration = Duration::Hours(1.0) ;
-
-            Weak<const Object> earthWPtr = environment.accessObjectWithName("Earth") ;
-
-            EXPECT_FALSE(earthWPtr.expired()) ;
-
-            if (auto earthSPtr = earthWPtr.lock())
+            for (const auto& instant : Interval::Closed(startInstant, endInstant).generateGrid(stepDuration))
             {
 
-                for (const auto& instant : Interval::Closed(startInstant, endInstant).generateGrid(stepDuration))
-                {
+                environment.setInstant(instant) ;
 
-                    environment.setInstant(instant) ;
+                std::cout << "axes B = " << std::endl << earthSPtr->getAxesIn(Frame::GCRF()) << std::endl ;
 
-                    std::cout << "axes B = " << std::endl << earthSPtr->getAxesIn(Frame::GCRF()) << std::endl ;
-
-                }
+                // FAIL() ;
 
             }
 
         }
-    ) ;
+
+    }
 
 }
 

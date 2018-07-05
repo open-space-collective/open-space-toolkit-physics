@@ -37,6 +37,8 @@ using library::physics::coord::Transform ;
 
 /// @brief                      Celestial Intermediate Reference Frame (CIRF) provider
 ///
+///                             Bias, precession-nutation
+///
 /// @ref                        https://www.iers.org/SharedDocs/Publikationen/EN/IERS/Publications/tn/TechnNote36/tn36_174.pdf?__blob=publicationFile&v=1
 
 class CIRF : public Provider

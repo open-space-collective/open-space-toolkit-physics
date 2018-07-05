@@ -18,6 +18,29 @@ ARG cpu_count=1
 
 # Dependencies
 
+## NumPy
+
+RUN pip install --upgrade pip \
+    && pip install numpy
+
+## IAU SOFA [2018-01-30]
+
+RUN pushd /tmp > /dev/null \
+    && mkdir sofa \
+    && cd sofa \
+    && wget --quiet http://www.iausofa.org/2018_0130_C/sofa_c-20180130.tar.gz \
+    && tar -zxf sofa_c-20180130.tar.gz \
+    && cd sofa/20180130/c/src/ \
+    && pattern="CFLAGF = -c -pedantic -Wall -W -O" \
+    && target="CFLAGF = -c -pedantic -Wall -W -O -fpic" \
+    && sed -i -e 's,'"$pattern"','"$target"',g' makefile \
+    && make -j ${cpu_count} \
+    && mkdir /usr/local/include/sofa \
+    && cp -r *.h /usr/local/include/sofa \
+    && cp -r *.a /usr/local/lib \
+    && rm -rf /tmp/sofa \
+    && popd > /dev/null
+
 ## Library :: Mathematics [master]
 
 RUN pushd /tmp > /dev/null \
@@ -30,11 +53,6 @@ RUN pushd /tmp > /dev/null \
     && make install \
     && rm -rf /tmp/library-mathematics \
     && popd > /dev/null
-
-## NumPy
-
-RUN pip install --upgrade pip \
-    && pip install numpy
 
 # Labels
 

@@ -182,7 +182,19 @@ Uint16                          Time::getNanosecond                         ( ) 
 
 }
 
-String                          Time::toString                             (   const   Time::Format&               aFormat                                     ) const
+Real                            Time::getFloatingSeconds                    ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Time") ;
+    }
+
+    return static_cast<double>(second_) + (static_cast<double>(millisecond_) / 1e3) + (static_cast<double>(microsecond_) / 1e6) + (static_cast<double>(nanosecond_) / 1e9) ;
+
+}
+
+String                          Time::toString                              (   const   Time::Format&               aFormat                                     ) const
 {
 
     if (!this->isDefined())

@@ -262,6 +262,30 @@ TEST (Library_Physics_Time_Time, GetNanosecond)
 
 }
 
+TEST (Library_Physics_Time_Time, GetFloatingSeconds)
+{
+
+    using library::physics::time::Time ;
+
+    {
+
+        EXPECT_NEAR(6.0, Time(0, 0, 6, 0, 0, 0).getFloatingSeconds(), 1e-15) ;
+        EXPECT_NEAR(6.0, Time(4, 5, 6, 0, 0, 0).getFloatingSeconds(), 1e-15) ;
+
+        EXPECT_NEAR(6.001002003, Time(4, 5, 6, 1, 2, 3).getFloatingSeconds(), 1e-15) ;
+        EXPECT_NEAR(6.100200300, Time(4, 5, 6, 100, 200, 300).getFloatingSeconds(), 1e-15) ;
+        EXPECT_NEAR(6.999999999, Time(4, 5, 6, 999, 999, 999).getFloatingSeconds(), 1e-15) ;
+
+    }
+
+    {
+        
+        EXPECT_ANY_THROW(Time::Undefined().getFloatingSeconds()) ;
+
+    }
+
+}
+
 TEST (Library_Physics_Time_Time, ToString)
 {
 
