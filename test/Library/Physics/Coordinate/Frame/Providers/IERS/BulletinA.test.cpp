@@ -63,6 +63,51 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, IsDefined)
 
 }
 
+TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessReleaseDate)
+{
+
+    using library::physics::coord::frame::provider::iers::BulletinA ;
+
+    SUCCEED() ; // See: GetReleaseDate
+
+}
+
+TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessTAIMinusUTC)
+{
+
+    using library::physics::coord::frame::provider::iers::BulletinA ;
+
+    SUCCEED() ; // See: GetTAIMinusUTC
+
+}
+
+TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessTAIMinusUTCEpoch)
+{
+
+    using library::physics::coord::frame::provider::iers::BulletinA ;
+
+    SUCCEED() ; // See: GetTAIMinusUTCEpoch
+
+}
+
+TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessObservationInterval)
+{
+
+    using library::physics::coord::frame::provider::iers::BulletinA ;
+
+    SUCCEED() ; // See: GetObservationInterval
+
+}
+
+TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessPredictionInterval)
+{
+
+    using library::physics::coord::frame::provider::iers::BulletinA ;
+
+    SUCCEED() ; // See: GetPredictionInterval
+
+}
+
 TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetReleaseDate)
 {
 

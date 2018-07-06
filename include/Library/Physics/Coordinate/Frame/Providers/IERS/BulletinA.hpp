@@ -112,6 +112,16 @@ class BulletinA
 
         bool                    isDefined                                   ( ) const ;
 
+        const Date&             accessReleaseDate                           ( ) const ;
+
+        const Duration&         accessTAIMinusUTC                           ( ) const ;
+
+        const Instant&          accessTAIMinusUTCEpoch                      ( ) const ;
+
+        const Interval&         accessObservationInterval                   ( ) const ;
+
+        const Interval&         accessPredictionInterval                    ( ) const ;
+        
         Date                    getReleaseDate                              ( ) const ;
 
         Duration                getTAIMinusUTC                              ( ) const ;

@@ -7,6 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <Library/Physics/Coordinate/Frame/Providers/IERS/BulletinA.hpp>
+#include <Library/Physics/Coordinate/Frame/Providers/IERS/Manager.hpp>
 #include <Library/Physics/Coordinate/Frame/Providers/ITRF.hpp>
 #include <Library/Physics/Time/DateTime.hpp>
 #include <Library/Physics/Time/Scale.hpp>
@@ -19,9 +21,20 @@
 
 #include <sofa/sofa.h>
 
+#include <iostream>
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #define DAS2R (4.848136811095359935899141e-6)
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+using library::physics::coord::frame::provider::iers::Manager ;
+using library::physics::coord::frame::provider::iers::BulletinA ;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+static const Manager IersBulletinManager ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -105,10 +118,38 @@ Transform                       ITRF::getTransformAt                        (   
     // 2018-06-08 00:00:00
     // 18 6 8 58277.00 I  0.123539 0.000027  0.447183 0.000011  I 0.0737816 0.0000097  0.7420 0.0067  I    -0.131    0.137    -0.119    0.132
 
-    static const double xp = 0.123539 * DAS2R ;
-    static const double yp = 0.447183 * DAS2R ;
+    // static const double xp = 0.123539 * DAS2R ;
+    // static const double yp = 0.447183 * DAS2R ;
 
-    // [TBI] Load { xp, yp } dynamically
+    double xp ;
+    double yp ;
+
+    const BulletinA& bulletinA = IersBulletinManager.accessBulletinAAt(anInstant) ;
+
+    if (bulletinA.accessObservationInterval().contains(anInstant))
+    {
+
+        const BulletinA::Observation& observation = bulletinA.getObservationAt(anInstant) ;
+
+        xp = observation.x * DAS2R ;
+        yp = observation.y * DAS2R ;
+
+    }
+    else if (bulletinA.accessPredictionInterval().contains(anInstant))
+    {
+
+        const BulletinA::Prediction& prediction = bulletinA.getPredictionAt(anInstant) ;
+
+        xp = prediction.x * DAS2R ;
+        yp = prediction.y * DAS2R ;
+
+    }
+    else
+    {
+        throw library::core::error::RuntimeError("Cannot obtain Bulletin A at [{}].", anInstant.toString()) ;
+    }
+
+    // [TBI] Add Bulletin B support
 
     // TIO locator s', in radians, which positions the Terrestrial Intermediate Origin on the equator. 
     // It is obtained from polar motion observations by numerical integration, and so is in essence unpredictable.

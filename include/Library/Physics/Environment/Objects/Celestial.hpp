@@ -12,6 +12,7 @@
 
 #include <Library/Physics/Environment/Ephemeris.hpp>
 #include <Library/Physics/Environment/Object.hpp>
+#include <Library/Physics/Coordinate/Transform.hpp>
 #include <Library/Physics/Coordinate/Frame.hpp>
 #include <Library/Physics/Coordinate/Axes.hpp>
 #include <Library/Physics/Coordinate/Position.hpp>
@@ -44,6 +45,7 @@ using library::physics::time::Instant ;
 using library::physics::coord::Position ;
 using library::physics::coord::Axes ;
 using library::physics::coord::Frame ;
+using library::physics::coord::Transform ;
 using library::physics::env::Object ;
 using library::physics::env::Ephemeris ;
 
@@ -85,6 +87,8 @@ class Celestial : public Object
         virtual Weak<const Frame> accessFrame                               ( ) const override ;
 
         virtual Position        getPositionIn                               (   const   Frame&                      aFrame                                      ) const override ;
+
+        virtual Transform       getTransformTo                              (   const   Frame&                      aFrame                                      ) const override ;
 
         virtual Axes            getAxesIn                                   (   const   Frame&                      aFrame                                      ) const override ;
 

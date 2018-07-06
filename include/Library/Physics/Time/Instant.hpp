@@ -254,7 +254,7 @@ class Instant
         /// @param              [in] aTimeScale A time scale
         /// @return             Serialized instant
 
-        String                  toString                                    (   const   Scale&                      aTimeScale                                  ) const ;
+        String                  toString                                    (   const   Scale&                      aTimeScale                                  =   Scale::UTC ) const ;
 
         /// @brief              Constructs an undefined instant
         ///

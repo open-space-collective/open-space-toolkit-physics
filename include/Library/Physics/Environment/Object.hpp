@@ -10,6 +10,7 @@
 #ifndef __Library_Physics_Environment_Object__
 #define __Library_Physics_Environment_Object__
 
+#include <Library/Physics/Coordinate/Transform.hpp>
 #include <Library/Physics/Coordinate/Frame.hpp>
 #include <Library/Physics/Coordinate/Axes.hpp>
 #include <Library/Physics/Coordinate/Position.hpp>
@@ -36,6 +37,7 @@ using library::physics::time::Instant ;
 using library::physics::coord::Position ;
 using library::physics::coord::Axes ;
 using library::physics::coord::Frame ;
+using library::physics::coord::Transform ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -60,6 +62,8 @@ class Object
         virtual Weak<const Frame> accessFrame                               ( ) const = 0 ;
 
         virtual Position        getPositionIn                               (   const   Frame&                      aFrame                                      ) const = 0 ;
+
+        virtual Transform       getTransformTo                              (   const   Frame&                      aFrame                                      ) const = 0 ;
 
         virtual Axes            getAxesIn                                   (   const   Frame&                      aFrame                                      ) const = 0 ;
 

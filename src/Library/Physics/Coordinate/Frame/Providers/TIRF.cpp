@@ -7,6 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <Library/Physics/Coordinate/Frame/Providers/IERS/BulletinA.hpp>
+#include <Library/Physics/Coordinate/Frame/Providers/IERS/Manager.hpp>
 #include <Library/Physics/Coordinate/Frame/Providers/TIRF.hpp>
 #include <Library/Physics/Time/DateTime.hpp>
 #include <Library/Physics/Time/Scale.hpp>
@@ -18,9 +20,20 @@
 
 #include <sofa/sofa.h>
 
+#include <iostream>
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #define DAYSEC (86400.0)
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+using library::physics::coord::frame::provider::iers::Manager ;
+using library::physics::coord::frame::provider::iers::BulletinA ;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+static const Manager IersBulletinManager ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -91,7 +104,32 @@ Transform                       TIRF::getTransformAt                        (   
 
     // 18 6 8 58277.00 I  0.123539 0.000027  0.447183 0.000011  I 0.0737816 0.0000097  0.7420 0.0067  I    -0.131    0.137    -0.119    0.132
 
-    const double dut1 = +0.0737816 ; // 2018-06-08 00:00:00
+    // const double dut1 = +0.0737816 ; // 2018-06-08 00:00:00
+
+    double dut1 ;
+
+    const BulletinA& bulletinA = IersBulletinManager.accessBulletinAAt(anInstant) ;
+
+    if (bulletinA.accessObservationInterval().contains(anInstant))
+    {
+
+        const BulletinA::Observation& observation = bulletinA.getObservationAt(anInstant) ;
+
+        dut1 = observation.ut1MinusUtc ;
+
+    }
+    else if (bulletinA.accessPredictionInterval().contains(anInstant))
+    {
+
+        const BulletinA::Prediction& prediction = bulletinA.getPredictionAt(anInstant) ;
+
+        dut1 = prediction.ut1MinusUtc ;
+
+    }
+    else
+    {
+        throw library::core::error::RuntimeError("Cannot obtain Bulletin A at [{}].", anInstant.toString()) ;
+    }
 
     const double tut = time + dut1 / DAYSEC ;
 

@@ -113,6 +113,32 @@ Position                        Celestial::getPositionIn                    (   
 
 }
 
+Transform                       Celestial::getTransformTo                   (   const   Frame&                      aFrame                                      ) const
+{
+
+    if (!aFrame.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Frame") ;
+    }
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Celestial") ;
+    }
+
+    if (auto frameSPtr = ephemeris_->accessFrame().lock())
+    {
+        return frameSPtr->getTransformTo(aFrame, this->accessInstant()) ;
+    }
+    else
+    {
+        throw library::core::error::RuntimeError("Cannot access frame.") ;
+    }
+
+    return Transform::Undefined() ;
+
+}
+
 Axes                            Celestial::getAxesIn                        (   const   Frame&                      aFrame                                      ) const
 {
 

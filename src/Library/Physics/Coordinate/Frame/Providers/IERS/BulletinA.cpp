@@ -109,7 +109,7 @@ bool                            BulletinA::isDefined                        ( ) 
 
 }
 
-Date                            BulletinA::getReleaseDate                   ( ) const
+const Date&                     BulletinA::accessReleaseDate                ( ) const
 {
 
     if (!this->isDefined())
@@ -121,7 +121,7 @@ Date                            BulletinA::getReleaseDate                   ( ) 
 
 }
 
-Duration                        BulletinA::getTAIMinusUTC                   ( ) const
+const Duration&                 BulletinA::accessTAIMinusUTC                ( ) const
 {
 
     if (!this->isDefined())
@@ -133,7 +133,7 @@ Duration                        BulletinA::getTAIMinusUTC                   ( ) 
 
 }
 
-Instant                         BulletinA::getTAIMinusUTCEpoch              ( ) const
+const Instant&                  BulletinA::accessTAIMinusUTCEpoch           ( ) const
 {
 
     if (!this->isDefined())
@@ -145,7 +145,7 @@ Instant                         BulletinA::getTAIMinusUTCEpoch              ( ) 
 
 }
 
-Interval                        BulletinA::getObservationInterval           ( ) const
+const Interval&                 BulletinA::accessObservationInterval        ( ) const
 {
 
     if (!this->isDefined())
@@ -157,9 +157,41 @@ Interval                        BulletinA::getObservationInterval           ( ) 
 
 }
 
-BulletinA::Observation          BulletinA::getObservationAt                 (   const   Instant&                    anInstant                                   ) const
+const Interval&                 BulletinA::accessPredictionInterval         ( ) const
 {
 
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Bulletin A") ;
+    }
+    
+    return predictionInterval_ ;
+
+}
+
+Date                            BulletinA::getReleaseDate                   ( ) const
+{
+    return this->accessReleaseDate() ;
+}
+
+Duration                        BulletinA::getTAIMinusUTC                   ( ) const
+{
+    return this->accessTAIMinusUTC() ;
+}
+
+Instant                         BulletinA::getTAIMinusUTCEpoch              ( ) const
+{
+    return this->accessTAIMinusUTCEpoch() ;
+}
+
+Interval                        BulletinA::getObservationInterval           ( ) const
+{
+    return this->accessObservationInterval() ;
+}
+
+BulletinA::Observation          BulletinA::getObservationAt                 (   const   Instant&                    anInstant                                   ) const
+{
+    
     using library::physics::time::Scale ;
 
     if (!anInstant.isDefined())
@@ -248,19 +280,12 @@ BulletinA::Observation          BulletinA::getObservationAt                 (   
 
 Interval                        BulletinA::getPredictionInterval            ( ) const
 {
-
-    if (!this->isDefined())
-    {
-        throw library::core::error::runtime::Undefined("Bulletin A") ;
-    }
-    
-    return predictionInterval_ ;
-
+    return this->accessPredictionInterval() ;
 }
 
 BulletinA::Prediction           BulletinA::getPredictionAt                  (   const   Instant&                    anInstant                                   ) const
 {
-
+    
     using library::core::types::Real ;
 
     using library::physics::time::Scale ;
