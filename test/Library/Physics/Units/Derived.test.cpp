@@ -702,7 +702,7 @@ TEST (Library_Physics_Units_Derived, Constructor)
 
 //     {
 
-//         EXPECT_EQ("Undef", Derived::Undefined().toString()) ;
+//         EXPECT_ANY_THROW(Derived::Undefined().toString()) ;
         
 //     }
 

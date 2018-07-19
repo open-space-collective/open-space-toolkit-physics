@@ -84,7 +84,7 @@ Real                            Derived::Order::getValue                    ( ) 
 
 }
 
-String                          Derived::Order::toString                   ( ) const
+String                          Derived::Order::toString                    ( ) const
 {
 
     using library::core::types::Integer ;
@@ -223,7 +223,7 @@ const Derived::Order&           Derived::Unit::accessAngleOrder             ( ) 
     return angleOrder_ ;
 }
 
-String                          Derived::Unit::toString                    ( ) const
+String                          Derived::Unit::toString                     ( ) const
 {
 
     if (!this->isDefined())
@@ -410,15 +410,15 @@ Real                            Derived::in                                 (   
 
 }
 
-String                          Derived::toString                          ( ) const
+String                          Derived::toString                           (   const   Integer&                    aPrecision                                  ) const
 {
 
     if (!this->isDefined())
     {
-        return "Undef" ;
+        throw library::core::error::runtime::Undefined("Derived") ;
     }
 
-    return this->accessValue().toString() + " [" + unit_.getSymbol() + "]" ;
+    return this->accessValue().toString(aPrecision) + " [" + unit_.getSymbol() + "]" ;
 
 }
 

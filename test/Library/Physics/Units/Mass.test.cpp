@@ -89,7 +89,23 @@ TEST (Library_Physics_Units_Mass, ToString)
 
     {
 
-        EXPECT_EQ("Undef", Mass::Undefined().toString()) ;
+        EXPECT_EQ("1.000 [kg]", Mass(1.0, Mass::Unit::Kilogram).toString(3)) ;
+        EXPECT_EQ("1.000 [t]", Mass(1.0, Mass::Unit::Tonne).toString(3)) ;
+        EXPECT_EQ("1.000 [lb]", Mass(1.0, Mass::Unit::Pound).toString(3)) ;
+
+        EXPECT_EQ("-1.000 [kg]", Mass(-1.0, Mass::Unit::Kilogram).toString(3)) ;
+        EXPECT_EQ("-1.000 [t]", Mass(-1.0, Mass::Unit::Tonne).toString(3)) ;
+        EXPECT_EQ("-1.000 [lb]", Mass(-1.0, Mass::Unit::Pound).toString(3)) ;
+
+        EXPECT_EQ("123.456 [kg]", Mass(123.456123, Mass::Unit::Kilogram).toString(3)) ;
+        EXPECT_EQ("123.456 [t]", Mass(123.456123, Mass::Unit::Tonne).toString(3)) ;
+        EXPECT_EQ("123.456 [lb]", Mass(123.456123, Mass::Unit::Pound).toString(3)) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Mass::Undefined().toString()) ;
         
     }
 

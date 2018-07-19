@@ -350,15 +350,15 @@ Real                            Angle::inRevolutions                        ( ) 
     return this->in(Angle::Unit::Revolution) ;
 }
 
-String                          Angle::toString                            ( ) const
+String                          Angle::toString                             (   const   Integer&                    aPrecision                                  ) const
 {
 
     if (!this->isDefined())
     {
-        return "Undef" ;
+        throw library::core::error::runtime::Undefined("Angle") ;
     }
 
-    return this->accessValue().toString() + " [" + Angle::SymbolFromUnit(unit_) + "]" ;
+    return this->accessValue().toString(aPrecision) + " [" + Angle::SymbolFromUnit(unit_) + "]" ;
 
 }
 

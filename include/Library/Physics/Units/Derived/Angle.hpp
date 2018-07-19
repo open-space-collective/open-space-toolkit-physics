@@ -14,6 +14,7 @@
 #include <Library/Mathematics/Geometry/Angle.hpp>
 #include <Library/Core/Types/String.hpp>
 #include <Library/Core/Types/Real.hpp>
+#include <Library/Core/Types/Integer.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -26,6 +27,7 @@ namespace units
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using library::core::types::Integer ;
 using library::core::types::Real ;
 using library::core::types::String ;
 
@@ -123,7 +125,7 @@ class Angle : public Unit
 
         Real                    inRevolutions                               ( ) const ;
 
-        virtual String          toString                                    ( ) const override ;
+        virtual String          toString                                    (   const   Integer&                    aPrecision                                  =   Integer::Undefined() ) const override ;
                                                                                 
         static Angle            Undefined                                   ( ) ;
 

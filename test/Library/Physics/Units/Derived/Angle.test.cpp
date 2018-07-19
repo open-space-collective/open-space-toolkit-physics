@@ -822,7 +822,29 @@ TEST (Library_Physics_Units_Derived_Angle, ToString)
 
     {
 
-        EXPECT_EQ("Undef", Angle::Undefined().toString()) ;
+        EXPECT_EQ("1.000 [rad]", Angle(1.0, Angle::Unit::Radian).toString(3)) ;
+        EXPECT_EQ("1.000 [deg]", Angle(1.0, Angle::Unit::Degree).toString(3)) ;
+        EXPECT_EQ("1.000 [amin]", Angle(1.0, Angle::Unit::Arcminute).toString(3)) ;
+        EXPECT_EQ("1.000 [asec]", Angle(1.0, Angle::Unit::Arcsecond).toString(3)) ;
+        EXPECT_EQ("1.000 [rev]", Angle(1.0, Angle::Unit::Revolution).toString(3)) ;
+
+        EXPECT_EQ("-1.000 [rad]", Angle(-1.0, Angle::Unit::Radian).toString(3)) ;
+        EXPECT_EQ("-1.000 [deg]", Angle(-1.0, Angle::Unit::Degree).toString(3)) ;
+        EXPECT_EQ("-1.000 [amin]", Angle(-1.0, Angle::Unit::Arcminute).toString(3)) ;
+        EXPECT_EQ("-1.000 [asec]", Angle(-1.0, Angle::Unit::Arcsecond).toString(3)) ;
+        EXPECT_EQ("-1.000 [rev]", Angle(-1.0, Angle::Unit::Revolution).toString(3)) ;
+
+        EXPECT_EQ("123.456 [rad]", Angle(123.456123, Angle::Unit::Radian).toString(3)) ;
+        EXPECT_EQ("123.456 [deg]", Angle(123.456123, Angle::Unit::Degree).toString(3)) ;
+        EXPECT_EQ("123.456 [amin]", Angle(123.456123, Angle::Unit::Arcminute).toString(3)) ;
+        EXPECT_EQ("123.456 [asec]", Angle(123.456123, Angle::Unit::Arcsecond).toString(3)) ;
+        EXPECT_EQ("123.456 [rev]", Angle(123.456123, Angle::Unit::Revolution).toString(3)) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Angle::Undefined().toString()) ;
         
     }
 

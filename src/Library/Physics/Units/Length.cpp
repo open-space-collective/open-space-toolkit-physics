@@ -301,15 +301,15 @@ Real                            Length::inKilometers                        ( ) 
     return this->in(Length::Unit::Meter) / 1e3 ;
 }
 
-String                          Length::toString                           ( ) const
+String                          Length::toString                            (   const   Integer&                    aPrecision                                  ) const
 {
 
     if (!this->isDefined())
     {
-        return "Undef" ;
+        throw library::core::error::runtime::Undefined("Length") ;
     }
 
-    return this->accessValue().toString() + " [" + Length::SymbolFromUnit(unit_) + "]" ;
+    return this->accessValue().toString(aPrecision) + " [" + Length::SymbolFromUnit(unit_) + "]" ;
 
 }
 

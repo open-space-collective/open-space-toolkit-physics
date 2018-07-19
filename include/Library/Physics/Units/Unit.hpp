@@ -12,6 +12,7 @@
 
 #include <Library/Core/Types/String.hpp>
 #include <Library/Core/Types/Real.hpp>
+#include <Library/Core/Types/Integer.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -24,6 +25,7 @@ namespace units
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using library::core::types::Integer ;
 using library::core::types::Real ;
 using library::core::types::String ;
 
@@ -76,7 +78,7 @@ class Unit
 
         Real                    getValue                                    ( ) const ;
 
-        virtual String          toString                                    ( ) const = 0 ;
+        virtual String          toString                                    (   const   Integer&                    aPrecision                                  ) const = 0 ;
 
         Real&                   accessValue                                 ( ) ;
 

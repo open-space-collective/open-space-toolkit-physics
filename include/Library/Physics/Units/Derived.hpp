@@ -31,6 +31,7 @@ namespace units
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using library::core::types::Int16 ;
+using library::core::types::Integer ;
 using library::core::types::Real ;
 using library::core::types::String ;
 
@@ -200,7 +201,7 @@ class Derived : public Unit
 
         Real                    in                                          (   const   Derived::Unit&              aUnit                                       ) const ;
 
-        virtual String          toString                                    ( ) const override ;
+        virtual String          toString                                    (   const   Integer&                    aPrecision                                  =   Integer::Undefined() ) const override ;
 
         static Derived          Undefined                                   ( ) ;
 

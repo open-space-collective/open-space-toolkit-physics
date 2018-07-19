@@ -109,7 +109,38 @@ TEST (Library_Physics_Units_Time, ToString)
 
     {
 
-        EXPECT_EQ("Undef", Time::Undefined().toString()) ;
+        EXPECT_EQ("1.000 [ns]", Time(1.0, Time::Unit::Nanosecond).toString(3)) ;
+        EXPECT_EQ("1.000 [us]", Time(1.0, Time::Unit::Microsecond).toString(3)) ;
+        EXPECT_EQ("1.000 [ms]", Time(1.0, Time::Unit::Millisecond).toString(3)) ;
+        EXPECT_EQ("1.000 [s]", Time(1.0, Time::Unit::Second).toString(3)) ;
+        EXPECT_EQ("1.000 [min]", Time(1.0, Time::Unit::Minute).toString(3)) ;
+        EXPECT_EQ("1.000 [hr]", Time(1.0, Time::Unit::Hour).toString(3)) ;
+        EXPECT_EQ("1.000 [day]", Time(1.0, Time::Unit::Day).toString(3)) ;
+        EXPECT_EQ("1.000 [week]", Time(1.0, Time::Unit::Week).toString(3)) ;
+
+        EXPECT_EQ("-1.000 [ns]", Time(-1.0, Time::Unit::Nanosecond).toString(3)) ;
+        EXPECT_EQ("-1.000 [us]", Time(-1.0, Time::Unit::Microsecond).toString(3)) ;
+        EXPECT_EQ("-1.000 [ms]", Time(-1.0, Time::Unit::Millisecond).toString(3)) ;
+        EXPECT_EQ("-1.000 [s]", Time(-1.0, Time::Unit::Second).toString(3)) ;
+        EXPECT_EQ("-1.000 [min]", Time(-1.0, Time::Unit::Minute).toString(3)) ;
+        EXPECT_EQ("-1.000 [hr]", Time(-1.0, Time::Unit::Hour).toString(3)) ;
+        EXPECT_EQ("-1.000 [day]", Time(-1.0, Time::Unit::Day).toString(3)) ;
+        EXPECT_EQ("-1.000 [week]", Time(-1.0, Time::Unit::Week).toString(3)) ;
+
+        EXPECT_EQ("123.456 [ns]", Time(123.456123, Time::Unit::Nanosecond).toString(3)) ;
+        EXPECT_EQ("123.456 [us]", Time(123.456123, Time::Unit::Microsecond).toString(3)) ;
+        EXPECT_EQ("123.456 [ms]", Time(123.456123, Time::Unit::Millisecond).toString(3)) ;
+        EXPECT_EQ("123.456 [s]", Time(123.456123, Time::Unit::Second).toString(3)) ;
+        EXPECT_EQ("123.456 [min]", Time(123.456123, Time::Unit::Minute).toString(3)) ;
+        EXPECT_EQ("123.456 [hr]", Time(123.456123, Time::Unit::Hour).toString(3)) ;
+        EXPECT_EQ("123.456 [day]", Time(123.456123, Time::Unit::Day).toString(3)) ;
+        EXPECT_EQ("123.456 [week]", Time(123.456123, Time::Unit::Week).toString(3)) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Time::Undefined().toString()) ;
         
     }
 
