@@ -11,6 +11,8 @@
 #define __Library_Physics_Coordinate_Position__
 
 #include <Library/Mathematics/Objects/Vector.hpp>
+
+#include <Library/Core/Types/String.hpp>
 #include <Library/Core/Types/Shared.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -25,6 +27,8 @@ namespace coord
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using library::core::types::Shared ;
+using library::core::types::String ;
+
 using library::math::obj::Vector3d ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -40,7 +44,7 @@ class Position
 
     public:
 
-                                Position                                    (   const   Vector3d&                   aCoordinateSet,
+                                Position                                    (   const   Vector3d&                   aCoordinateSet, // add unit?
                                                                                 const   Shared<const Frame>&        aFrame                                      ) ;
 
         bool                    operator ==                                 (   const   Position&                   aPosition                                   ) const ;
@@ -52,11 +56,13 @@ class Position
 
         bool                    isDefined                                   ( ) const ;
 
+        String                  toString                                    ( ) const ;
+
         static Position         Undefined                                   ( ) ;
 
     private:
 
-        Vector3d                coordinates_ ;
+        Vector3d                coordinates_ ; // [m]
 
         Shared<const Frame>     frameSPtr_ ;
 

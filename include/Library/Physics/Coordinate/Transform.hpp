@@ -11,8 +11,10 @@
 #define __Library_Physics_Coordinate_Transform__
 
 #include <Library/Physics/Time/Instant.hpp>
+
 #include <Library/Mathematics/Geometry/Transformations/Rotations/Quaternion.hpp>
 #include <Library/Mathematics/Objects/Vector.hpp>
+
 #include <Library/Core/Types/String.hpp>
 #include <Library/Core/Types/Real.hpp>
 
@@ -29,8 +31,10 @@ namespace coord
 
 using library::core::types::Real ;
 using library::core::types::String ;
+
 using library::math::obj::Vector3d ;
 using library::math::geom::trf::rot::Quaternion ;
+
 using library::physics::time::Instant ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

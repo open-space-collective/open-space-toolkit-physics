@@ -74,6 +74,12 @@ class Celestial : public Object
                                                                                 const   Shared<Ephemeris>&          anEphemeris,
                                                                                 const   Instant&                    anInstant                                   ) ;
 
+                                Celestial                                   (   const   String&                     aName,
+                                                                                const   Celestial::Type&            aType,
+                                                                                const   Shared<Ephemeris>&          anEphemeris,
+                                                                                const   Instant&                    anInstant,
+                                                                                const   Object::Geometry&           aGeometry                                   ) ;
+
         virtual                 ~Celestial                                  ( ) override ;
 
         virtual Celestial*      clone                                       ( ) const override ;

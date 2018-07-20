@@ -10,9 +10,13 @@
 #ifndef __Library_Physics_Environment_Objects_CelestialBodies_Earth__
 #define __Library_Physics_Environment_Objects_CelestialBodies_Earth__
 
-
 #include <Library/Physics/Environment/Objects/Celestial.hpp>
 #include <Library/Physics/Environment/Ephemeris.hpp>
+#include <Library/Physics/Units/Length.hpp>
+
+#include <Library/Mathematics/Geometry/3D/Objects/Ellipsoid.hpp>
+
+#include <Library/Core/Types/Real.hpp>
 #include <Library/Core/Types/Shared.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -31,7 +35,11 @@ namespace celest
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using library::core::types::Shared ;
+using library::core::types::Real ;
 
+using library::math::geom::d3::objects::Ellipsoid ;
+
+using library::physics::units::Length ;
 using library::physics::env::Ephemeris ;
 using library::physics::env::obj::Celestial ;
 
@@ -42,6 +50,10 @@ class Earth : public Celestial
 
     public:
 
+        static Length           EquatorialRadius ;
+        static Real             Flattening ;
+        static Real             J2 ;
+
                                 Earth                                       (   const   Shared<Ephemeris>&          anEphemeris,
                                                                                 const   Instant&                    anInstant                                   ) ;
 
@@ -49,7 +61,17 @@ class Earth : public Celestial
 
         virtual Earth*          clone                                       ( ) const override ;
 
+        Length                  getEquatorialRadius                         ( ) const ;
+
+        Real                    getFlattening                               ( ) const ;
+
+        virtual const Ellipsoid& accessGeometry                             ( ) const override ;
+
         static Earth            Analytical                                  (   const   Instant&                    anInstant                                   ) ; // [TBI] Analytical options
+
+    private:
+
+        static Ellipsoid        Geometry                                   ( ) ;
 
 } ;
 

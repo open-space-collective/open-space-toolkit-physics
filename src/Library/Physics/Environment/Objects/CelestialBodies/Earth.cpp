@@ -29,9 +29,15 @@ namespace celest
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+Length                          Earth::EquatorialRadius                         =       Length::Meters(6378137.0) ;
+Real                            Earth::Flattening                               =       0.003352810664747 ;
+Real                            Earth::J2                                       =       0.0010826266835531513 ;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
                                 Earth::Earth                                (   const   Shared<Ephemeris>&          anEphemeris,
                                                                                 const   Instant&                    anInstant                                   )
-                                :   Celestial("Earth", Celestial::Type::Earth, anEphemeris, anInstant)
+                                :   Celestial("Earth", Celestial::Type::Earth, anEphemeris, anInstant, Earth::Geometry())
 {
 
 }
@@ -46,6 +52,21 @@ Earth*                          Earth::clone                                ( ) 
     return new Earth(*this) ;
 }
 
+Length                          Earth::getEquatorialRadius                  ( ) const
+{
+    return Earth::EquatorialRadius ;
+}
+
+Real                            Earth::getFlattening                        ( ) const
+{
+    return Earth::Flattening ;
+}
+
+const Ellipsoid&                Earth::accessGeometry                       ( ) const
+{
+    return dynamic_cast<const Ellipsoid&>(Celestial::accessGeometry()) ;
+}
+
 Earth                           Earth::Analytical                           (   const   Instant&                    anInstant                                   )
 {
 
@@ -55,6 +76,19 @@ Earth                           Earth::Analytical                           (   
     const Shared<Frame> earthFrame = std::make_shared<Frame>(Frame::ITRF()) ; // [TBM]
 
     return Earth(std::make_shared<Analytical>(earthFrame), anInstant) ;
+
+}
+
+Ellipsoid                       Earth::Geometry                             ( )
+{
+
+    using library::math::geom::d3::objects::Point ;
+    using library::math::geom::trf::rot::Quaternion ;
+
+    const Real equatorialRadius_m = Earth::EquatorialRadius.inMeters() ;
+    const Real polarRadius = equatorialRadius_m * (1.0 - Earth::Flattening) ;
+    
+    return Ellipsoid(Point::Origin(), equatorialRadius_m, equatorialRadius_m, polarRadius, Quaternion::Unit()) ;
 
 }
 

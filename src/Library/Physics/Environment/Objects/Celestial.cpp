@@ -36,6 +36,18 @@ namespace obj
 
 }
 
+                                Celestial::Celestial                        (   const   String&                     aName,
+                                                                                const   Celestial::Type&            aType,
+                                                                                const   Shared<Ephemeris>&          anEphemeris,
+                                                                                const   Instant&                    anInstant,
+                                                                                const   Object::Geometry&           aGeometry                                   )
+                                :   Object(aName, anInstant, aGeometry),
+                                    type_(aType),
+                                    ephemeris_(anEphemeris)
+{
+
+}
+
                                 Celestial::~Celestial                       ( )
 {
 

@@ -12,6 +12,7 @@
 
 #include <Library/Physics/Coordinate/Frame.hpp>
 #include <Library/Physics/Time/Instant.hpp>
+
 #include <Library/Core/Containers/Map.hpp>
 #include <Library/Core/Types/String.hpp>
 
@@ -32,6 +33,7 @@ namespace frame
 
 using library::core::types::String ;
 using library::core::ctnr::Map ;
+
 using library::physics::time::Instant ;
 using library::physics::coord::Frame ;
 

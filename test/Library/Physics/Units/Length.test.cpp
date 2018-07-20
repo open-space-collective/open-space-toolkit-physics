@@ -726,6 +726,22 @@ TEST (Library_Physics_Units_Length, Undefined)
 
 }
 
+TEST (Library_Physics_Units_Length, Millimeters)
+{
+
+    using library::physics::units::Length ;
+
+    {
+
+        EXPECT_NO_THROW(Length::Millimeters(123.456)) ;
+        EXPECT_TRUE(Length::Millimeters(123.456).isDefined()) ;
+
+        EXPECT_EQ(0.123456, Length::Millimeters(123.456).in(Length::Unit::Meter)) ;
+
+    }
+
+}
+
 TEST (Library_Physics_Units_Length, Meters)
 {
 

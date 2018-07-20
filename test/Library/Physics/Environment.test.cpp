@@ -7,12 +7,14 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <Library/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
 #include <Library/Physics/Environment.hpp>
 #include <Library/Physics/Time/Interval.hpp>
 #include <Library/Physics/Time/Duration.hpp>
 #include <Library/Physics/Time/Instant.hpp>
 #include <Library/Physics/Time/DateTime.hpp>
 #include <Library/Physics/Time/Scale.hpp>
+#include <Library/Physics/Units/Length.hpp>
 
 #include <Library/Mathematics/Geometry/Transformations/Rotations/RotationVector.hpp>
 #include <Library/Mathematics/Geometry/Transformations/Rotations/Quaternion.hpp>
@@ -26,6 +28,84 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+TEST (Library_Physics_Environment, Constructor)
+{
+
+    using library::physics::Environment ;
+
+    {
+
+        FAIL() ;
+
+    }
+
+}
+
+TEST (Library_Physics_Environment, isDefined)
+{
+
+    using library::physics::Environment ;
+
+    {
+
+        FAIL() ;
+
+    }
+
+}
+
+TEST (Library_Physics_Environment, accessObjectWithName)
+{
+
+    using library::physics::Environment ;
+
+    {
+
+        FAIL() ;
+
+    }
+
+}
+
+TEST (Library_Physics_Environment, getInstant)
+{
+
+    using library::physics::Environment ;
+
+    {
+
+        FAIL() ;
+
+    }
+
+}
+
+TEST (Library_Physics_Environment, setInstant)
+{
+
+    using library::physics::Environment ;
+
+    {
+
+        FAIL() ;
+
+    }
+
+}
+
+TEST (Library_Physics_Environment, Undefined)
+{
+
+    using library::physics::Environment ;
+
+    {
+
+        FAIL() ;
+
+    }
+
+}
+
 TEST (Library_Physics_Environment, Default)
 {
 
@@ -37,6 +117,7 @@ TEST (Library_Physics_Environment, Default)
     using library::math::geom::trf::rot::Quaternion ;
     using library::math::geom::trf::rot::RotationVector ;
 
+    using library::physics::units::Length ;
     using library::physics::time::Scale ;
     using library::physics::time::DateTime ;
     using library::physics::time::Instant ;
@@ -45,6 +126,7 @@ TEST (Library_Physics_Environment, Default)
     using library::physics::coord::Frame ;
     using library::physics::Environment ;
     using library::physics::env::Object ;
+    using library::physics::env::obj::celest::Earth ;
 
     {
 
@@ -75,7 +157,6 @@ TEST (Library_Physics_Environment, Default)
             { Instant::DateTime(DateTime::Parse("2018-06-25 22:00:00.000"), Scale::UTC), Quaternion::XYZS(-0.000743087043, 0.000482126193, -0.849181037073, 0.528101109307).normalize() },
             { Instant::DateTime(DateTime::Parse("2018-06-25 23:00:00.000"), Scale::UTC), Quaternion::XYZS(-0.000673781895, 0.000575014693, -0.772757734708, 0.634700479616).normalize() },
             { Instant::DateTime(DateTime::Parse("2018-06-26 00:00:00.000"), Scale::UTC), Quaternion::XYZS(-0.000592883226, 0.000658012030, -0.683039938936, 0.730380488053).normalize() }
-
         } ;
 
         Environment environment = Environment::Default() ;
@@ -86,40 +167,37 @@ TEST (Library_Physics_Environment, Default)
         const Instant endInstant = Instant::DateTime(DateTime::Parse("2018-06-26 00:00:00"), Scale::UTC) ;
         const Duration stepDuration = Duration::Hours(1.0) ;
 
-        Weak<const Object> earthWPtr = environment.accessObjectWithName("Earth") ;
+        const Weak<const Object> earthWPtr = environment.accessObjectWithName("Earth") ;
 
         EXPECT_FALSE(earthWPtr.expired()) ;
 
         if (auto earthSPtr = earthWPtr.lock())
         {
 
+            const Earth& earth = dynamic_cast<const Earth&>(*earthSPtr) ;
+
+            const Length earthEquatorialRadius = earth.getEquatorialRadius() ;
+
             for (const auto& instant : Interval::Closed(startInstant, endInstant).generateGrid(stepDuration))
             {
 
                 environment.setInstant(instant) ;
 
-                // std::cout << "axes B = " << std::endl << earthSPtr->getAxesIn(Frame::GCRF()) << std::endl ;
+                const Quaternion orientation = earth.getTransformTo(Frame::GCRF()).getOrientation() ;
 
-                // FAIL() ;
+                const Quaternion referenceOrientation = referenceData.at(instant).toConjugate() ; // [TBR] REMOVE CONJUGATE !!!!
 
-                const Quaternion orientation = earthSPtr->getTransformTo(Frame::GCRF()).getOrientation() ;
+                const Length errorAtSurface = earthEquatorialRadius * RotationVector::Quaternion((orientation * referenceOrientation.toConjugate())).getAngle().inRadians() ;
 
-                const Quaternion referenceOrientation = referenceData.at(instant).toConjugate() ; // [TBR] REMOVE CONJUGATE
-
-                std::cout << "---" << std::endl ;
-                std::cout << RotationVector::Quaternion((orientation * referenceOrientation.toConjugate())).getAngle().inDegrees().toString() << std::endl ;
-
-                // std::cout << String::Format("{} = {} / {} -> {} [deg]", instant.toString(), earthSPtr->getTransformTo(Frame::GCRF()).getOrientation().toString(), referenceOrientation.toString(), RotationVector::Quaternion((orientation * referenceOrientation.toConjugate())).getAngle().inDegrees().toString()) << std::endl ;
-                // std::cout << String::Format("{} = {} -> {} [deg]", instant.toString(), earthSPtr->getTransformTo(Frame::GCRF()).getOrientation().toString(), RotationVector::Quaternion((orientation * referenceOrientation.toConjugate()).normalize()).getAngle().inDegrees().toString()) << std::endl ;
-                // std::cout << String::Format("{} = {} -> {} [deg]", instant.toString(), earthSPtr->getTransformTo(Frame::GCRF()).getOrientation().toString(), RotationVector::Quaternion((orientation / referenceOrientation).normalize()).getAngle().inDegrees().toString()) << std::endl ;
-
-                FAIL() ;
+                EXPECT_GT(Length::Millimeters(1.0), errorAtSurface) ;
 
             }
 
         }
-
-        
+        else
+        {
+            FAIL() ;
+        }
 
     }
 

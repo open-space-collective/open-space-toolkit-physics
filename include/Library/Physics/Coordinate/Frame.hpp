@@ -14,7 +14,9 @@
 #include <Library/Physics/Coordinate/Transform.hpp>
 #include <Library/Physics/Coordinate/Axes.hpp>
 #include <Library/Physics/Coordinate/Position.hpp>
+
 #include <Library/Mathematics/Objects/Vector.hpp>
+
 #include <Library/Core/Types/String.hpp>
 #include <Library/Core/Types/Real.hpp>
 #include <Library/Core/Types/Integer.hpp>
@@ -35,7 +37,9 @@ using library::core::types::Uint8 ;
 using library::core::types::Shared ;
 using library::core::types::Real ;
 using library::core::types::String ;
+
 using library::math::obj::Vector3d ;
+
 using library::physics::coord::Position ;
 using library::physics::coord::Axes ;
 using library::physics::coord::Transform ;

@@ -26,13 +26,65 @@ namespace env
                                 Object::Object                              (   const   String&                     aName,
                                                                                 const   Instant&                    anInstant                                   )
                                 :   name_(aName),
-                                    instant_(anInstant)
+                                    instant_(anInstant),
+                                    geometryUPtr_(nullptr)
 {
 
 }
 
+                                Object::Object                              (   const   String&                     aName,
+                                                                                const   Instant&                    anInstant,
+                                                                                const   Object::Geometry&           aGeometry                                   )
+                                :   name_(aName),
+                                    instant_(anInstant),
+                                    geometryUPtr_(aGeometry.clone())
+{
+
+}
+
+                                Object::Object                              (   const   Object&                     anObject                                    )
+                                :   name_(anObject.name_),
+                                    instant_(anObject.instant_),
+                                    geometryUPtr_((anObject.geometryUPtr_ != nullptr) ? anObject.geometryUPtr_->clone() : nullptr)
+{
+
+}
+
+
                                 Object::~Object                             ( )
 {
+
+}
+
+Object&                         Object::operator =                          (   const   Object&                     anObject                                    )
+{
+
+    if (this != &anObject)
+    {
+
+        name_ = anObject.name_ ;
+        instant_ = anObject.instant_ ;
+
+        geometryUPtr_.reset((anObject.geometryUPtr_ != nullptr) ? anObject.geometryUPtr_->clone() : nullptr) ;
+
+    }
+
+    return *this ;
+
+}
+
+std::ostream&                   operator <<                                 (           std::ostream&               anOutputStream,
+                                                                                const   Object&                     anObject                                    )
+{
+
+    library::core::utils::Print::Header(anOutputStream, "Object") ;
+
+    library::core::utils::Print::Line(anOutputStream) << "Name:" << (!anObject.name_.isEmpty() ? anObject.name_ : "Undefined") ;
+    library::core::utils::Print::Line(anOutputStream) << "Instant:" << (anObject.instant_.isDefined() ? anObject.instant_.toString() : "Undefined") ;
+
+    library::core::utils::Print::Footer(anOutputStream) ;
+
+    return anOutputStream ;
 
 }
 
@@ -62,6 +114,23 @@ const Instant&                  Object::accessInstant                       ( ) 
     }
     
     return instant_ ;
+
+}
+
+const Object::Geometry&         Object::accessGeometry                      ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Object") ;
+    }
+
+    if (geometryUPtr_ == nullptr)
+    {
+        throw library::core::error::runtime::Undefined("Geometry") ;
+    }
+    
+    return *geometryUPtr_ ;
 
 }
 

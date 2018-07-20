@@ -41,9 +41,14 @@ namespace iers
 
     File file = File::Path(Path::Parse("/app/share/data/ser7.dat")) ;
 
-    BulletinA bulletinA = BulletinA::Load(file) ;
+    if (file.exists())
+    {
 
-    this->addBulletinA(bulletinA) ;
+        BulletinA bulletinA = BulletinA::Load(file) ;
+
+        this->addBulletinA(bulletinA) ;
+
+    }
 
 }
 

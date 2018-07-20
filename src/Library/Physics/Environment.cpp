@@ -145,7 +145,7 @@ Environment                     Environment::Default                        ( )
 
     const Array<Shared<Object>> objects =
     {
-        std::make_shared<Celestial>(Earth::Analytical(instant))
+        std::make_shared<Earth>(Earth::Analytical(instant))
     } ;
 
     return Environment(instant, objects) ;

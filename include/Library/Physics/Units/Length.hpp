@@ -11,6 +11,7 @@
 #define __Library_Physics_Units_Length__
 
 #include <Library/Physics/Units/Unit.hpp>
+
 #include <Library/Core/Types/String.hpp>
 #include <Library/Core/Types/Real.hpp>
 #include <Library/Core/Types/Integer.hpp>
@@ -113,6 +114,8 @@ class Length : public Unit
 
         static Length           Undefined                                   ( ) ;
 
+        static Length           Millimeters                                 (   const   Real&                       aValue                                      ) ;
+        
         static Length           Meters                                      (   const   Real&                       aValue                                      ) ;
         
         static Length           Kilometers                                  (   const   Real&                       aValue                                      ) ;

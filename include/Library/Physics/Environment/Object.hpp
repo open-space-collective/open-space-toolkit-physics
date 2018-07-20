@@ -16,8 +16,11 @@
 #include <Library/Physics/Coordinate/Position.hpp>
 #include <Library/Physics/Time/Instant.hpp>
 
+#include <Library/Mathematics/Geometry/3D/Object.hpp>
+
 #include <Library/Core/Types/String.hpp>
 #include <Library/Core/Types/Weak.hpp>
+#include <Library/Core/Types/Unique.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -30,6 +33,7 @@ namespace env
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using library::core::types::Unique ;
 using library::core::types::Weak ;
 using library::core::types::String ;
 
@@ -45,13 +49,26 @@ class Object
 {
 
     public:
+    
+        typedef library::math::geom::d3::Object Geometry ;
 
                                 Object                                      (   const   String&                     aName,
                                                                                 const   Instant&                    anInstant                                   ) ;
 
+                                Object                                      (   const   String&                     aName,
+                                                                                const   Instant&                    anInstant,
+                                                                                const   Object::Geometry&           aGeometry                                   ) ;
+
+                                Object                                      (   const   Object&                     anObject                                    ) ;
+
         virtual                 ~Object                                     ( ) = 0 ;
 
         virtual Object*         clone                                       ( ) const = 0 ;
+
+        Object&                 operator =                                  (   const   Object&                     anObject                                    ) ;
+
+        friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
+                                                                                const   Object&                     anObject                                    ) ;
 
         virtual bool            isDefined                                   ( ) const ;
 
@@ -60,6 +77,8 @@ class Object
         const Instant&          accessInstant                               ( ) const ;
 
         virtual Weak<const Frame> accessFrame                               ( ) const = 0 ;
+
+        virtual const Object::Geometry& accessGeometry                      ( ) const ;
 
         virtual Position        getPositionIn                               (   const   Frame&                      aFrame                                      ) const = 0 ;
 
@@ -73,6 +92,8 @@ class Object
 
         String                  name_ ;
         Instant                 instant_ ;
+
+        Unique<Object::Geometry> geometryUPtr_ ;
 
 } ;
 

@@ -318,6 +318,11 @@ Length                          Length::Undefined                           ( )
     return Length(Real::Undefined(), Length::Unit::Undefined) ;
 }
 
+Length                          Length::Millimeters                         (   const   Real&                       aValue                                      )
+{
+    return Length(aValue / 1e3, Length::Unit::Meter) ;
+}
+
 Length                          Length::Meters                              (   const   Real&                       aValue                                      )
 {
     return Length(aValue, Length::Unit::Meter) ;

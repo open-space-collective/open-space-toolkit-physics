@@ -1,17 +1,18 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Library/Physics
-/// @file           Library/Physics/Coordinate/Axes.hpp
+/// @file           Library/Physics/Coordinate/Velocity.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        TBD
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Coordinate_Axes__
-#define __Library_Physics_Coordinate_Axes__
+#ifndef __Library_Physics_Coordinate_Velocity__
+#define __Library_Physics_Coordinate_Velocity__
 
 #include <Library/Mathematics/Objects/Vector.hpp>
 
+#include <Library/Core/Types/String.hpp>
 #include <Library/Core/Types/Shared.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -26,6 +27,7 @@ namespace coord
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using library::core::types::Shared ;
+using library::core::types::String ;
 
 using library::math::obj::Vector3d ;
 
@@ -35,40 +37,32 @@ class Frame ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @brief                      Axes
+/// @brief                      Velocity
 
-class Axes
+class Velocity
 {
 
     public:
 
-                                Axes                                        (   const   Vector3d&                   aXAxis,
-                                                                                const   Vector3d&                   aYAxis,
-                                                                                const   Vector3d&                   aZAxis,
+                                Velocity                                    (   const   Vector3d&                   aCoordinateSet, // add unit?
                                                                                 const   Shared<const Frame>&        aFrame                                      ) ;
 
-        bool                    operator ==                                 (   const   Axes&                       anAxes                                      ) const ;
+        bool                    operator ==                                 (   const   Velocity&                   aVelocity                                   ) const ;
         
-        bool                    operator !=                                 (   const   Axes&                       anAxes                                      ) const ;
+        bool                    operator !=                                 (   const   Velocity&                   aVelocity                                   ) const ;
 
         friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
-                                                                                const   Axes&                       anAxes                                      ) ;
+                                                                                const   Velocity&                   aVelocity                                   ) ;
 
         bool                    isDefined                                   ( ) const ;
 
-        const Vector3d&         x                                           ( ) const ;
+        String                  toString                                    ( ) const ;
 
-        const Vector3d&         y                                           ( ) const ;
-
-        const Vector3d&         z                                           ( ) const ;
-
-        static Axes             Undefined                                   ( ) ;
+        static Velocity         Undefined                                   ( ) ;
 
     private:
 
-        Vector3d                x_ ;
-        Vector3d                y_ ;
-        Vector3d                z_ ;
+        Vector3d                coordinates_ ; // [m]
 
         Shared<const Frame>     frameSPtr_ ;
 

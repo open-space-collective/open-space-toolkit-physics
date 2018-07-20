@@ -77,17 +77,38 @@ bool                            Axes::isDefined                             ( ) 
 
 const Vector3d&                 Axes::x                                     ( ) const
 {
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Axes") ;
+    }
+
     return x_ ;
+
 }
 
 const Vector3d&                 Axes::y                                     ( ) const
 {
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Axes") ;
+    }
+
     return y_ ;
+
 }
 
 const Vector3d&                 Axes::z                                     ( ) const
 {
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Axes") ;
+    }
+
     return z_ ;
+
 }
 
 Axes                            Axes::Undefined                             ( )
