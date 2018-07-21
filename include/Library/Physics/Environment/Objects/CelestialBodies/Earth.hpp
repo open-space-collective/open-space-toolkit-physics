@@ -12,6 +12,7 @@
 
 #include <Library/Physics/Environment/Objects/Celestial.hpp>
 #include <Library/Physics/Environment/Ephemeris.hpp>
+#include <Library/Physics/Units/Derived.hpp>
 #include <Library/Physics/Units/Length.hpp>
 
 #include <Library/Mathematics/Geometry/3D/Objects/Ellipsoid.hpp>
@@ -39,6 +40,7 @@ using library::core::types::Real ;
 
 using library::math::geom::d3::objects::Ellipsoid ;
 
+using library::physics::units::Derived ;
 using library::physics::units::Length ;
 using library::physics::env::Ephemeris ;
 using library::physics::env::obj::Celestial ;
@@ -50,6 +52,7 @@ class Earth : public Celestial
 
     public:
 
+        static Derived          GravitationalConstant ;
         static Length           EquatorialRadius ;
         static Real             Flattening ;
         static Real             J2 ;
@@ -61,6 +64,8 @@ class Earth : public Celestial
 
         virtual Earth*          clone                                       ( ) const override ;
 
+        Derived                 getGravitationalConstant                    ( ) const ;
+        
         Length                  getEquatorialRadius                         ( ) const ;
 
         Real                    getFlattening                               ( ) const ;
