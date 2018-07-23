@@ -620,6 +620,8 @@ class Duration
 
         /// @brief              Constructs a duration between two instants
         ///
+        ///                     Duration is positive is firstInstant < secondInstant.
+        ///
         /// @code
         ///                     Duration duration = Duration::Between(firstInstant, secondInstant) ;
         /// @endcode

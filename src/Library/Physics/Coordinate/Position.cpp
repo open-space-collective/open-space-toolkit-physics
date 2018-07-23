@@ -69,6 +69,30 @@ bool                            Position::isDefined                         ( ) 
     return coordinates_.isDefined() && (frameSPtr_ != nullptr) && frameSPtr_->isDefined() ;
 }
 
+const Vector3d&                 Position::accessCoordinates                 ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Position") ;
+    }
+
+    return coordinates_ ;
+
+}
+
+const Frame&                    Position::accessFrame                       ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Position") ;
+    }
+
+    return *frameSPtr_ ;
+
+}
+
 String                          Position::toString                          ( ) const
 {
 

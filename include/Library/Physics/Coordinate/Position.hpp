@@ -56,6 +56,10 @@ class Position
 
         bool                    isDefined                                   ( ) const ;
 
+        const Vector3d&         accessCoordinates                           ( ) const ;
+
+        const Frame&            accessFrame                                 ( ) const ;
+
         String                  toString                                    ( ) const ;
 
         static Position         Undefined                                   ( ) ;
