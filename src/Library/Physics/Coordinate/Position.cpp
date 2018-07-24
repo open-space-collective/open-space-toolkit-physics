@@ -25,9 +25,11 @@ namespace coord
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
                                 Position::Position                          (   const   Vector3d&                   aCoordinateSet,
+                                                                                const   Position::Unit&             aUnit,
                                                                                 const   Shared<const Frame>&        aFrame                                      )
                                 :   coordinates_(aCoordinateSet),
-                                    frameSPtr_(aFrame)
+                                    unit_(aUnit),
+                                    frameWPtr_(aFrame)
 {
 
 }
@@ -40,7 +42,17 @@ bool                            Position::operator ==                       (   
         return false ;
     }
 
-    return (coordinates_ == aPosition.coordinates_) && ((*frameSPtr_) == (*aPosition.frameSPtr_)) ;
+    if (auto leftFrameSPtr = frameWPtr_.lock())
+    {
+
+        if (auto rightFrameSPtr = aPosition.frameWPtr_.lock())
+        {
+            return (coordinates_ == aPosition.coordinates_) && (unit_ == aPosition.unit_) && ((*leftFrameSPtr) == (*rightFrameSPtr)) ;
+        }
+
+    }
+    
+    return false ;
 
 }
 
@@ -55,8 +67,17 @@ std::ostream&                   operator <<                                 (   
 
     library::core::utils::Print::Header(anOutputStream, "Position") ;
 
-    library::core::utils::Print::Line(anOutputStream) << "Coordinates:" << (aPosition.isDefined() ? aPosition.coordinates_.toString() : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Frame:" << (aPosition.isDefined() ? aPosition.frameSPtr_->getName() : "Undefined") ;
+    library::core::utils::Print::Line(anOutputStream) << "Coordinates:"         << (aPosition.isDefined() ? aPosition.coordinates_.toString() : "Undefined") ;
+    library::core::utils::Print::Line(anOutputStream) << "Unit:"                << (aPosition.isDefined() ? Length::StringFromUnit(aPosition.unit_) : "Undefined") ;
+
+    if (auto frameSPtr = aPosition.frameWPtr_.lock())
+    {
+        library::core::utils::Print::Line(anOutputStream) << "Frame:"           << frameSPtr->getName() ;
+    }
+    else
+    {
+        library::core::utils::Print::Line(anOutputStream) << "Frame:"           << "Undefined" ;
+    }
 
     library::core::utils::Print::Footer(anOutputStream) ;
 
@@ -66,7 +87,14 @@ std::ostream&                   operator <<                                 (   
 
 bool                            Position::isDefined                         ( ) const
 {
-    return coordinates_.isDefined() && (frameSPtr_ != nullptr) && frameSPtr_->isDefined() ;
+
+    if (auto frameSPtr = frameWPtr_.lock())
+    {
+        return coordinates_.isDefined() && (unit_ != Position::Unit::Undefined) && frameSPtr->isDefined() ;
+    }
+    
+    return false ;
+
 }
 
 const Vector3d&                 Position::accessCoordinates                 ( ) const
@@ -89,7 +117,73 @@ const Frame&                    Position::accessFrame                       ( ) 
         throw library::core::error::runtime::Undefined("Position") ;
     }
 
-    return *frameSPtr_ ;
+    if (auto frameSPtr = frameWPtr_.lock())
+    {
+        return *frameSPtr ;
+    }
+
+    throw library::core::error::RuntimeError("Cannot access frame.") ;
+
+}
+
+Position::Unit                  Position::getUnit                           ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Position") ;
+    }
+
+    return unit_ ;
+
+}
+
+Position                        Position::inUnit                            (   const   Position::Unit&             aUnit                                       ) const
+{
+
+    if (aUnit == Position::Unit::Undefined)
+    {
+        throw library::core::error::runtime::Undefined("Unit") ;
+    }
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Position") ;
+    }
+
+    if (auto frameSPtr = frameWPtr_.lock())
+    {
+        return Position(coordinates_ * Length(1.0, unit_).in(aUnit), aUnit, frameSPtr) ;
+    }
+
+    throw library::core::error::RuntimeError("Cannot access frame.") ;
+
+    return Position::Undefined() ;
+
+}
+
+Position                        Position::inFrame                           (   const   Shared<const Frame>&        aFrame,
+                                                                                const   Instant&                    anInstant                                   ) const
+{
+
+    if ((aFrame == nullptr) || (!aFrame->isDefined()))
+    {
+        throw library::core::error::runtime::Undefined("Frame") ;
+    }
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Position") ;
+    }
+
+    if (auto frameSPtr = frameWPtr_.lock())
+    {
+        return Position(frameSPtr->getTransformTo(*aFrame, anInstant).applyToPosition(coordinates_), unit_, aFrame) ;
+    }
+
+    throw library::core::error::RuntimeError("Cannot access frame.") ;
+
+    return Position::Undefined() ;
 
 }
 
@@ -101,13 +195,20 @@ String                          Position::toString                          ( ) 
         throw library::core::error::runtime::Undefined("Position") ;
     }
 
-    return String::Format("{} [{}]", coordinates_.toString(), frameSPtr_->getName()) ;
+    if (auto frameSPtr = frameWPtr_.lock())
+    {
+        return String::Format("{} [{}] @ {}", coordinates_.toString(), Length::StringFromUnit(unit_), frameSPtr->getName()) ;
+    }
+
+    throw library::core::error::RuntimeError("Cannot access frame.") ;
+
+    return String::Empty() ;
 
 }
 
 Position                        Position::Undefined                         ( )
 {
-    return Position(Vector3d::Undefined(), nullptr) ;
+    return Position(Vector3d::Undefined(), Position::Unit::Undefined, nullptr) ;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -203,7 +203,7 @@ Position                        Frame::getOriginIn                          (   
         throw library::core::error::runtime::Undefined("Frame") ;
     }
 
-    return Position(this->getTransformTo(aFrame, anInstant).applyToPosition(Vector3d::Zero()), std::make_shared<Frame>(aFrame)) ; // [TBM] Why sharing?
+    return Position(this->getTransformTo(aFrame, anInstant).applyToPosition(Vector3d::Zero()), Position::Unit::Meter, std::make_shared<Frame>(aFrame)) ; // [TBM] Why sharing?
 
 }
 
