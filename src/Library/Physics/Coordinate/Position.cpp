@@ -178,7 +178,14 @@ Position                        Position::inFrame                           (   
 
     if (auto frameSPtr = frameWPtr_.lock())
     {
+
+        // if ((*frameSPtr) == (*aFrame))
+        // {
+        //     return ??? ; // Frame is a function of time... to be improved
+        // }
+        
         return Position(frameSPtr->getTransformTo(*aFrame, anInstant).applyToPosition(coordinates_), unit_, aFrame) ;
+
     }
 
     throw library::core::error::RuntimeError("Cannot access frame.") ;

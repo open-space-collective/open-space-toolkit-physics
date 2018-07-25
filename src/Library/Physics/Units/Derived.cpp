@@ -325,6 +325,12 @@ Derived::Unit                   Derived::Unit::Watt                         ( )
     return Derived::Unit(Length::Unit::Meter, { 2 }, Mass::Unit::Kilogram, { 1 }, Time::Unit::Second, { -3 }, Angle::Unit::Undefined, { 0 }) ;
 }
 
+Derived::Unit                   Derived::Unit::Velocity                     (   const   Length::Unit&               aLengthUnit,
+                                                                                const   Time::Unit&                 aTimeUnit                                   )
+{
+    return Derived::Unit(aLengthUnit, { 1 }, Mass::Unit::Undefined, { 0 }, aTimeUnit, { -1 }, Angle::Unit::Undefined, { 0 }) ;
+}
+
 Derived::Unit                   Derived::Unit::AngularVelocity              (   const   Angle::Unit&                anAngleUnit,
                                                                                 const   Time::Unit&                 aTimeUnit                                   )
 {

@@ -143,6 +143,9 @@ class Derived : public Unit
                 
                 static Unit     Watt                                        ( ) ;
 
+                static Unit     Velocity                                    (   const   Length::Unit&               aLengthUnit,
+                                                                                const   Time::Unit&                 aTimeUnit                                   ) ;
+
                 static Unit     AngularVelocity                             (   const   Angle::Unit&                anAngleUnit,
                                                                                 const   Time::Unit&                 aTimeUnit                                   ) ;
 

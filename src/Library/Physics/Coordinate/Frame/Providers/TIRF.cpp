@@ -33,7 +33,7 @@ using library::physics::coord::frame::provider::iers::BulletinA ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-static const Manager IersBulletinManager ;
+static const Manager IersManager ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -98,38 +98,12 @@ Transform                       TIRF::getTransformAt                        (   
     const double date = std::floor(utc) ;
     const double time = utc - date ;
 
-    // UT1 - UTC (s) [TBI] Load data from Bulletin A
+    // UT1 - UTC (s)
     
     // const double dut1 = -0.072073685 ; // 2007-04-05 12:00:00
-
-    // 18 6 8 58277.00 I  0.123539 0.000027  0.447183 0.000011  I 0.0737816 0.0000097  0.7420 0.0067  I    -0.131    0.137    -0.119    0.132
-
     // const double dut1 = +0.0737816 ; // 2018-06-08 00:00:00
 
-    double dut1 ;
-
-    const BulletinA& bulletinA = IersBulletinManager.accessBulletinAAt(anInstant) ;
-
-    if (bulletinA.accessObservationInterval().contains(anInstant))
-    {
-
-        const BulletinA::Observation& observation = bulletinA.getObservationAt(anInstant) ;
-
-        dut1 = observation.ut1MinusUtc ;
-
-    }
-    else if (bulletinA.accessPredictionInterval().contains(anInstant))
-    {
-
-        const BulletinA::Prediction& prediction = bulletinA.getPredictionAt(anInstant) ;
-
-        dut1 = prediction.ut1MinusUtc ;
-
-    }
-    else
-    {
-        throw library::core::error::RuntimeError("Cannot obtain Bulletin A at [{}].", anInstant.toString()) ;
-    }
+    double dut1 = IersManager.getUt1MinusUtc(anInstant) ; // [s]
 
     const double tut = time + dut1 / DAYSEC ;
 
@@ -152,7 +126,7 @@ Transform                       TIRF::getTransformAt                        (   
     const Vector3d v_TIRF_CIRF = { 0.0, 0.0, 0.0 } ;
 
     const Quaternion q_TIRF_CIRF = Quaternion::RotationMatrix(dcm_TIRF_CIRS) ;
-    const Vector3d w_TIRF_CIRF_in_TIRF = { 0.0, 0.0, 0.0 } ; // [TBI]
+    const Vector3d w_TIRF_CIRF_in_TIRF = { 0.00000000002094, -0.00000000008755, 0.00007292115077 } ; // [TBI]
     
     return Transform::Passive(anInstant, x_TIRF_CIRF, v_TIRF_CIRF, q_TIRF_CIRF, w_TIRF_CIRF_in_TIRF) ;
 

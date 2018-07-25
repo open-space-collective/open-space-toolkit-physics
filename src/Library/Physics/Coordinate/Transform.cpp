@@ -342,6 +342,14 @@ Vector3d                        Transform::applyToVelocity                  (   
         throw library::core::error::runtime::Undefined("Transform") ;
     }
 
+    // std::cout << "aPosition = " << aPosition.toString() << std::endl ;
+    // std::cout << "aVelocity = " << aVelocity.toString() << std::endl ;
+    
+    // std::cout << "translation_ = " << translation_.toString() << std::endl ;
+    // std::cout << "velocity_ = " << velocity_.toString() << std::endl ;
+    // std::cout << "orientation_ = " << orientation_.toString() << std::endl ;
+    // std::cout << "angularVelocity_ = " << angularVelocity_.toString() << std::endl ;
+
     return orientation_ * (aVelocity + velocity_) - angularVelocity_.cross(orientation_ * (aPosition + translation_)) ;
 
 }

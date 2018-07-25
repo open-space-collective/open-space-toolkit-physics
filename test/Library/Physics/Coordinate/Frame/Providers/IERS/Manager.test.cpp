@@ -13,7 +13,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, AccessBulletinAAt)
+TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, GetBulletinAAt)
 {
 
     using library::core::fs::Path ;
@@ -24,19 +24,58 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, AccessBulletinAAt
 
     {
 
-        File file = File::Path(Path::Parse("/app/share/data/ser7.dat")) ;
+        const File file = File::Path(Path::Parse("/app/share/data/ser7.dat")) ;
 
-        BulletinA bulletinA = BulletinA::Load(file) ;
+        const BulletinA bulletinA = BulletinA::Load(file) ;
 
         Manager manager ;
 
         manager.addBulletinA(bulletinA) ;
 
-        EXPECT_NO_THROW(manager.accessBulletinAAt(bulletinA.getObservationInterval().accessStart())) ;
-        EXPECT_NO_THROW(manager.accessBulletinAAt(bulletinA.getObservationInterval().accessEnd())) ;
+        EXPECT_NO_THROW(manager.getBulletinAAt(bulletinA.getObservationInterval().accessStart())) ;
+        EXPECT_NO_THROW(manager.getBulletinAAt(bulletinA.getObservationInterval().accessEnd())) ;
 
-        EXPECT_NO_THROW(manager.accessBulletinAAt(bulletinA.getPredictionInterval().accessStart())) ;
-        EXPECT_NO_THROW(manager.accessBulletinAAt(bulletinA.getPredictionInterval().accessEnd())) ;
+        EXPECT_NO_THROW(manager.getBulletinAAt(bulletinA.getPredictionInterval().accessStart())) ;
+        EXPECT_NO_THROW(manager.getBulletinAAt(bulletinA.getPredictionInterval().accessEnd())) ;
+
+    }
+
+}
+
+TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, GetFinals2000AAt)
+{
+
+    using library::physics::coord::frame::provider::iers::Manager ;
+
+    {
+
+        FAIL() ;
+
+    }
+
+}
+
+TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, GetPolarMotionAt)
+{
+
+    using library::physics::coord::frame::provider::iers::Manager ;
+
+    {
+
+        FAIL() ;
+
+    }
+
+}
+
+TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, GetUt1MinusUtc)
+{
+
+    using library::physics::coord::frame::provider::iers::Manager ;
+
+    {
+
+        FAIL() ;
 
     }
 
@@ -53,9 +92,9 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, AddBulletinA)
 
     {
 
-        File file = File::Path(Path::Parse("/app/share/data/ser7.dat")) ;
+        const File file = File::Path(Path::Parse("/app/share/data/ser7.dat")) ;
 
-        BulletinA bulletinA = BulletinA::Load(file) ;
+        const BulletinA bulletinA = BulletinA::Load(file) ;
 
         Manager manager ;
 
@@ -63,6 +102,19 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, AddBulletinA)
 
         EXPECT_ANY_THROW(manager.addBulletinA(bulletinA)) ;
         EXPECT_ANY_THROW(manager.addBulletinA(BulletinA::Undefined())) ;
+
+    }
+
+}
+
+TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, AddFinals2000A)
+{
+
+    using library::physics::coord::frame::provider::iers::Manager ;
+
+    {
+
+        FAIL() ;
 
     }
 

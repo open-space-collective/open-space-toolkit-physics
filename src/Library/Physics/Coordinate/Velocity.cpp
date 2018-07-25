@@ -29,7 +29,7 @@ namespace coord
                                                                                 const   Shared<const Frame>&        aFrame                                      )
                                 :   coordinates_(aCoordinateSet),
                                     unit_(aUnit),
-                                    frameSPtr_(aFrame)
+                                    frameWPtr_(aFrame)
 {
 
 }
@@ -42,7 +42,17 @@ bool                            Velocity::operator ==                       (   
         return false ;
     }
 
-    return (coordinates_ == aVelocity.coordinates_) && (unit_ == aVelocity.unit_) && ((*frameSPtr_) == (*aVelocity.frameSPtr_)) ;
+    if (auto leftFrameSPtr = frameWPtr_.lock())
+    {
+
+        if (auto rightFrameSPtr = aVelocity.frameWPtr_.lock())
+        {
+            return (coordinates_ == aVelocity.coordinates_) && (unit_ == aVelocity.unit_) && ((*leftFrameSPtr) == (*rightFrameSPtr)) ;
+        }
+
+    }
+    
+    return false ;
 
 }
 
@@ -59,7 +69,15 @@ std::ostream&                   operator <<                                 (   
 
     library::core::utils::Print::Line(anOutputStream) << "Coordinates:"         << (aVelocity.isDefined() ? aVelocity.coordinates_.toString() : "Undefined") ;
     library::core::utils::Print::Line(anOutputStream) << "Unit:"                << (aVelocity.isDefined() ? Velocity::StringFromUnit(aVelocity.unit_) : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Frame:"               << (aVelocity.isDefined() ? aVelocity.frameSPtr_->getName() : "Undefined") ;
+    
+    if (auto frameSPtr = aVelocity.frameWPtr_.lock())
+    {
+        library::core::utils::Print::Line(anOutputStream) << "Frame:"           << frameSPtr->getName() ;
+    }
+    else
+    {
+        library::core::utils::Print::Line(anOutputStream) << "Frame:"           << "Undefined" ;
+    }
 
     library::core::utils::Print::Footer(anOutputStream) ;
 
@@ -69,7 +87,14 @@ std::ostream&                   operator <<                                 (   
 
 bool                            Velocity::isDefined                         ( ) const
 {
-    return coordinates_.isDefined() && (unit_ != Velocity::Unit::Undefined) && (frameSPtr_ != nullptr) && frameSPtr_->isDefined() ;
+    
+    if (auto frameSPtr = frameWPtr_.lock())
+    {
+        return coordinates_.isDefined() && (unit_ != Velocity::Unit::Undefined) && frameSPtr->isDefined() ;
+    }
+    
+    return false ;
+
 }
 
 
@@ -93,7 +118,12 @@ const Frame&                    Velocity::accessFrame                       ( ) 
         throw library::core::error::runtime::Undefined("Velocity") ;
     }
 
-    return *frameSPtr_ ;
+    if (auto frameSPtr = frameWPtr_.lock())
+    {
+        return *frameSPtr ;
+    }
+
+    throw library::core::error::RuntimeError("Cannot access frame.") ;
 
 }
 
@@ -109,6 +139,60 @@ Velocity::Unit                  Velocity::getUnit                           ( ) 
 
 }
 
+Velocity                        Velocity::inUnit                            (   const   Velocity::Unit&             aUnit                                       ) const
+{
+
+    if (aUnit == Velocity::Unit::Undefined)
+    {
+        throw library::core::error::runtime::Undefined("Unit") ;
+    }
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Velocity") ;
+    }
+
+    if (auto frameSPtr = frameWPtr_.lock())
+    {
+
+        const Real conversionFactor = Derived(1.0, Velocity::DerivedUnitFromVelocityUnit(unit_)).in(Velocity::DerivedUnitFromVelocityUnit(aUnit)) ;
+        
+        return Velocity(coordinates_ * conversionFactor, aUnit, frameSPtr) ;
+        
+    }
+
+    throw library::core::error::RuntimeError("Cannot access frame.") ;
+
+    return Velocity::Undefined() ;
+
+}
+
+Velocity                        Velocity::inFrame                           (   const   Position&                   aPosition,
+                                                                                const   Shared<const Frame>&        aFrame,
+                                                                                const   Instant&                    anInstant                                   ) const
+{
+
+    if ((aFrame == nullptr) || (!aFrame->isDefined()))
+    {
+        throw library::core::error::runtime::Undefined("Frame") ;
+    }
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Velocity") ;
+    }
+
+    if (auto frameSPtr = frameWPtr_.lock())
+    {
+        return Velocity(frameSPtr->getTransformTo(*aFrame, anInstant).applyToVelocity(aPosition.inFrame(frameSPtr, anInstant).accessCoordinates(), coordinates_), unit_, aFrame) ;
+    }
+
+    throw library::core::error::RuntimeError("Cannot access frame.") ;
+
+    return Velocity::Undefined() ;
+
+}
+
 String                          Velocity::toString                          ( ) const
 {
 
@@ -117,7 +201,14 @@ String                          Velocity::toString                          ( ) 
         throw library::core::error::runtime::Undefined("Velocity") ;
     }
 
-    return String::Format("{} [{}] @ {}", coordinates_.toString(), Velocity::StringFromUnit(unit_), frameSPtr_->getName()) ;
+    if (auto frameSPtr = frameWPtr_.lock())
+    {
+        return String::Format("{} [{}] @ {}", coordinates_.toString(), Velocity::StringFromUnit(unit_), frameSPtr->getName()) ;
+    }
+
+    throw library::core::error::RuntimeError("Cannot access frame.") ;
+
+    return String::Empty() ;
 
 }
 
@@ -145,6 +236,33 @@ String                          Velocity::StringFromUnit                    (   
     }
 
     return String::Empty() ;
+
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Derived::Unit                   Velocity::DerivedUnitFromVelocityUnit       (   const   Velocity::Unit&             aUnit                                       )
+{
+
+    using library::physics::units::Length ;
+    using library::physics::units::Time ;
+
+    switch (aUnit)
+    {
+
+        case Velocity::Unit::Undefined:
+            return Derived::Unit::Undefined() ;
+
+        case Velocity::Unit::MeterPerSecond:
+            return Derived::Unit::Velocity(Length::Unit::Meter, Time::Unit::Second) ;
+
+        default:
+            throw library::core::error::runtime::Wrong("Unit") ;
+            break ;
+
+    }
+
+    return Derived::Unit::Undefined() ;
 
 }
 

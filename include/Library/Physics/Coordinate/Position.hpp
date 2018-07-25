@@ -16,8 +16,8 @@
 #include <Library/Mathematics/Objects/Vector.hpp>
 
 #include <Library/Core/Types/String.hpp>
-#include <Library/Core/Types/Shared.hpp>
 #include <Library/Core/Types/Weak.hpp>
+#include <Library/Core/Types/Shared.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -86,7 +86,7 @@ class Position
 
         Vector3d                coordinates_ ;
         Position::Unit          unit_ ;
-        Weak<const Frame>       frameWPtr_ ;
+        Weak<const Frame>       frameWPtr_ ; // [TBR] With Transform instead, as Frame is a function of time...
 
 } ;
 

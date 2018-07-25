@@ -81,29 +81,35 @@ class BulletinA
         struct Observation
         {
 
-            Integer             year ;
-            Integer             month ;
-            Integer             day ;
-            Real                mjd ;
-            Real                x ;
-            Real                xError ;
-            Real                y ;
-            Real                yError ;
-            Real                ut1MinusUtc ;
-            Real                ut1MinusUtcError ;
+            Integer             year ;                                          ///< Year (to get true calendar year, add 1900 for MJD <= 51543 or add 2000 for MJD >= 51544)
+            Integer             month ;                                         ///< Month number
+            Integer             day ;                                           ///< Day of month
+
+            Real                mjd ;                                           ///< Modified Julian Day
+
+            Real                x ;                                             ///< [asec] PM-x
+            Real                xError ;                                        ///< [asec] Error in PM-x
+            Real                y ;                                             ///< [asec] PM-y
+            Real                yError ;                                        ///< [asec] Error in PM-y
+
+            Real                ut1MinusUtc ;                                   ///< [s] UT1-UTC
+            Real                ut1MinusUtcError ;                              ///< [s] Error in UT1-UTC
 
         } ;
 
         struct Prediction
         {
 
-            Integer             year ;
-            Integer             month ;
-            Integer             day ;
-            Real                mjd ;
-            Real                x ;
-            Real                y ;
-            Real                ut1MinusUtc ;
+            Integer             year ;                                          ///< Year (to get true calendar year, add 1900 for MJD <= 51543 or add 2000 for MJD >= 51544)
+            Integer             month ;                                         ///< Month number
+            Integer             day ;                                           ///< Day of month
+
+            Real                mjd ;                                           ///< Modified Julian Day
+
+            Real                x ;                                             ///< [asec] PM-x
+            Real                y ;                                             ///< [asec] PM-y
+
+            Real                ut1MinusUtc ;                                   ///< [s] UT1-UTC
 
         } ;
 

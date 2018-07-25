@@ -228,6 +228,8 @@ BulletinA::Observation          BulletinA::getObservationAt                 (   
             if (nextObservationIt != observations_.end())
             {
 
+                // [TBI] http://maia.usno.navy.mil/iers-gaz13
+
                 const BulletinA::Observation& previousObservation = observationIt->second ;
                 const BulletinA::Observation& nextObservation = nextObservationIt->second ;
 
@@ -246,7 +248,7 @@ BulletinA::Observation          BulletinA::getObservationAt                 (   
                 const Real ut1MinusUtc = previousObservation.ut1MinusUtc + ratio * (nextObservation.ut1MinusUtc - previousObservation.ut1MinusUtc) ;
                 const Real ut1MinusUtcError = previousObservation.ut1MinusUtcError + ratio * (nextObservation.ut1MinusUtcError - previousObservation.ut1MinusUtcError) ;
 
-                BulletinA::Observation observation =
+                const BulletinA::Observation observation =
                 {
                     year,
                     month,
@@ -324,6 +326,8 @@ BulletinA::Prediction           BulletinA::getPredictionAt                  (   
             if (nextPredictionIt != predictions_.end())
             {
 
+                // [TBI] http://maia.usno.navy.mil/iers-gaz13
+
                 const BulletinA::Prediction& previousPrediction = predictionIt->second ;
                 const BulletinA::Prediction& nextPrediction = nextPredictionIt->second ;
 
@@ -339,7 +343,7 @@ BulletinA::Prediction           BulletinA::getPredictionAt                  (   
                 const Real y = previousPrediction.y + ratio * (nextPrediction.y - previousPrediction.y) ;
                 const Real ut1MinusUtc = previousPrediction.ut1MinusUtc + ratio * (nextPrediction.ut1MinusUtc - previousPrediction.ut1MinusUtc) ;
 
-                BulletinA::Prediction prediction =
+                const BulletinA::Prediction prediction =
                 {
                     year,
                     month,
@@ -550,7 +554,7 @@ BulletinA                       BulletinA::Load                             (   
                 ut1MinusUtcError
             } ;
 
-            bulletin.observations_.insert({mjd, observation}) ;
+            bulletin.observations_.insert({ mjd, observation }) ;
 
         }
 
@@ -578,7 +582,7 @@ BulletinA                       BulletinA::Load                             (   
                 ut1MinusUtc,
             } ;
 
-            bulletin.predictions_.insert({mjd, prediction}) ;
+            bulletin.predictions_.insert({ mjd, prediction }) ;
 
         }
 

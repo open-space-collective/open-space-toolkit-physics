@@ -34,7 +34,7 @@ using library::physics::coord::frame::provider::iers::BulletinA ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-static const Manager IersBulletinManager ;
+static const Manager IersManager ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -74,6 +74,7 @@ bool                            ITRF::isDefined                             ( ) 
 Transform                       ITRF::getTransformAt                        (   const   Instant&                    anInstant                                   ) const
 {
 
+    using library::math::obj::Vector2d ;
     using library::math::geom::trf::rot::RotationMatrix ;
 
     using library::physics::time::Scale ;
@@ -121,35 +122,10 @@ Transform                       ITRF::getTransformAt                        (   
     // static const double xp = 0.123539 * DAS2R ;
     // static const double yp = 0.447183 * DAS2R ;
 
-    double xp ;
-    double yp ;
+    const Vector2d polarMotion = IersManager.getPolarMotionAt(anInstant) ; // [asec]
 
-    const BulletinA& bulletinA = IersBulletinManager.accessBulletinAAt(anInstant) ;
-
-    if (bulletinA.accessObservationInterval().contains(anInstant))
-    {
-
-        const BulletinA::Observation& observation = bulletinA.getObservationAt(anInstant) ;
-
-        xp = observation.x * DAS2R ;
-        yp = observation.y * DAS2R ;
-
-    }
-    else if (bulletinA.accessPredictionInterval().contains(anInstant))
-    {
-
-        const BulletinA::Prediction& prediction = bulletinA.getPredictionAt(anInstant) ;
-
-        xp = prediction.x * DAS2R ;
-        yp = prediction.y * DAS2R ;
-
-    }
-    else
-    {
-        throw library::core::error::RuntimeError("Cannot obtain Bulletin A at [{}].", anInstant.toString()) ;
-    }
-
-    // [TBI] Add Bulletin B support
+    double xp = polarMotion.x() * DAS2R ; // [rad]
+    double yp = polarMotion.y() * DAS2R ; // [rad]
 
     // TIO locator s', in radians, which positions the Terrestrial Intermediate Origin on the equator. 
     // It is obtained from polar motion observations by numerical integration, and so is in essence unpredictable.

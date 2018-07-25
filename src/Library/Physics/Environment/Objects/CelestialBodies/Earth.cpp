@@ -35,7 +35,7 @@ using library::physics::units::Angle ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-Derived                         Earth::GravitationalConstant                    =       Derived(398600441800000.0, { Length::Unit::Meter, Derived::Order(3), Mass::Unit::Undefined, Derived::Order::Zero(), Time::Unit::Second, Derived::Order(-2), Angle::Unit::Undefined, Derived::Order::Zero() }) ;
+Derived                         Earth::GravitationalConstant                    =       Derived(398600441500000.0, { Length::Unit::Meter, Derived::Order(3), Mass::Unit::Undefined, Derived::Order::Zero(), Time::Unit::Second, Derived::Order(-2), Angle::Unit::Undefined, Derived::Order::Zero() }) ; // @ref: STK Classical.GM
 Length                          Earth::EquatorialRadius                         =       Length::Meters(6378137.0) ;
 Real                            Earth::Flattening                               =       0.003352810664747 ;
 Real                            Earth::J2                                       =       0.0010826266835531513 ;
