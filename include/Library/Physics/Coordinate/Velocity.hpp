@@ -77,7 +77,7 @@ class Velocity
 
         const Vector3d&         accessCoordinates                           ( ) const ;
 
-        const Frame&            accessFrame                                 ( ) const ;
+        Shared<const Frame>     accessFrame                                 ( ) const ;
 
         Velocity::Unit          getUnit                                     ( ) const ;
 

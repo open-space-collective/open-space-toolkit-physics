@@ -69,7 +69,7 @@ class Position
 
         const Vector3d&         accessCoordinates                           ( ) const ;
 
-        const Frame&            accessFrame                                 ( ) const ;
+        Shared<const Frame>     accessFrame                                 ( ) const ;
 
         Position::Unit          getUnit                                     ( ) const ;
 

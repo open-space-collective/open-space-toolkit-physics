@@ -110,7 +110,7 @@ const Vector3d&                 Velocity::accessCoordinates                 ( ) 
 
 }
 
-const Frame&                    Velocity::accessFrame                       ( ) const
+Shared<const Frame>             Velocity::accessFrame                       ( ) const
 {
 
     if (!this->isDefined())
@@ -120,7 +120,7 @@ const Frame&                    Velocity::accessFrame                       ( ) 
 
     if (auto frameSPtr = frameWPtr_.lock())
     {
-        return *frameSPtr ;
+        return frameSPtr ;
     }
 
     throw library::core::error::RuntimeError("Cannot access frame.") ;
