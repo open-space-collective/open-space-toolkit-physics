@@ -35,16 +35,46 @@ using library::physics::units::Angle ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-Derived                         Earth::GravitationalConstant                    =       Derived(398600441500000.0, { Length::Unit::Meter, Derived::Order(3), Mass::Unit::Undefined, Derived::Order::Zero(), Time::Unit::Second, Derived::Order(-2), Angle::Unit::Undefined, Derived::Order::Zero() }) ; // @ref: STK Classical.GM
-Length                          Earth::EquatorialRadius                         =       Length::Meters(6378137.0) ;
+// EGM96
+
+Derived                         Earth::GravitationalConstant                    =       Derived(398600441500000.0, { Length::Unit::Meter, Derived::Order(3), Mass::Unit::Undefined, Derived::Order::Zero(), Time::Unit::Second, Derived::Order(-2), Angle::Unit::Undefined, Derived::Order::Zero() }) ;
+Length                          Earth::EquatorialRadius                         =       Length::Meters(6378136.3) ;
 Real                            Earth::Flattening                               =       0.003352810664747 ;
-Real                            Earth::J2                                       =       0.0010826266835531513 ;
+Real                            Earth::C20                                      =       -4.841653717360e-04 ;
+Real                            Earth::J2                                       =       -Earth::C20 * std::sqrt(5.0) ;
+
+// WGS84
+
+// Derived                         Earth::GravitationalConstant                    =       Derived(398600441800000.0, { Length::Unit::Meter, Derived::Order(3), Mass::Unit::Undefined, Derived::Order::Zero(), Time::Unit::Second, Derived::Order(-2), Angle::Unit::Undefined, Derived::Order::Zero() }) ;
+// Length                          Earth::EquatorialRadius                         =       Length::Meters(6378137.0) ;
+// Real                            Earth::Flattening                               =       0.003352810664747 ;
+// Real                            Earth::C20                                      =       -4.841668500000e-04 ;
+// Real                            Earth::J2                                       =       -Earth::C20 * std::sqrt(5.0) ;
+
+// EGM96 + WGS84
+
+// Derived                         Earth::GravitationalConstant                    =       Derived(398600441800000.0, { Length::Unit::Meter, Derived::Order(3), Mass::Unit::Undefined, Derived::Order::Zero(), Time::Unit::Second, Derived::Order(-2), Angle::Unit::Undefined, Derived::Order::Zero() }) ;
+// Length                          Earth::EquatorialRadius                         =       Length::Meters(6378137.0) ;
+// Real                            Earth::Flattening                               =       0.003352810664747 ;
+// Real                            Earth::C20                                      =       -4.841653717360e-04 ;
+// Real                            Earth::J2                                       =       -Earth::C20 * std::sqrt(5.0) ; // 0.0010826266835531513
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
                                 Earth::Earth                                (   const   Shared<Ephemeris>&          anEphemeris,
                                                                                 const   Instant&                    anInstant                                   )
-                                :   Celestial("Earth", Celestial::Type::Earth, anEphemeris, anInstant, Earth::Geometry())
+                                :   Celestial
+                                    (
+                                        "Earth",
+                                        Celestial::Type::Earth,
+                                        Earth::GravitationalConstant,
+                                        Earth::EquatorialRadius,
+                                        Earth::Flattening,
+                                        Earth::J2,
+                                        anEphemeris,
+                                        anInstant,
+                                        Earth::Geometry()
+                                    )
 {
 
 }
@@ -57,21 +87,6 @@ Real                            Earth::J2                                       
 Earth*                          Earth::clone                                ( ) const
 {
     return new Earth(*this) ;
-}
-
-Derived                         Earth::getGravitationalConstant             ( ) const
-{
-    return Earth::GravitationalConstant ;
-}
-
-Length                          Earth::getEquatorialRadius                  ( ) const
-{
-    return Earth::EquatorialRadius ;
-}
-
-Real                            Earth::getFlattening                        ( ) const
-{
-    return Earth::Flattening ;
 }
 
 const Ellipsoid&                Earth::accessGeometry                       ( ) const

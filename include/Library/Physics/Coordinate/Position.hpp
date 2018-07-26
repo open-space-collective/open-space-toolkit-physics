@@ -82,6 +82,9 @@ class Position
 
         static Position         Undefined                                   ( ) ;
 
+        static Position         Meters                                      (   const   Vector3d&                   aCoordinateSet,
+                                                                                const   Shared<const Frame>&        aFrame                                      ) ;
+
     private:
 
         Vector3d                coordinates_ ;

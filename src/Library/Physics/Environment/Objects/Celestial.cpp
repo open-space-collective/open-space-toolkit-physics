@@ -27,10 +27,18 @@ namespace obj
 
                                 Celestial::Celestial                        (   const   String&                     aName,
                                                                                 const   Celestial::Type&            aType,
+                                                                                const   Derived&                    aGravitationalConstant,
+                                                                                const   Length&                     anEquatorialRadius,
+                                                                                const   Real&                       aFlattening,
+                                                                                const   Real&                       aJ2,
                                                                                 const   Shared<Ephemeris>&          anEphemeris,
                                                                                 const   Instant&                    anInstant                                   )
                                 :   Object(aName, anInstant),
                                     type_(aType),
+                                    gravitationalConstant_(aGravitationalConstant),
+                                    equatorialRadius_(anEquatorialRadius),
+                                    flattening_(aFlattening),
+                                    j2_(aJ2),
                                     ephemeris_(anEphemeris)
 {
 
@@ -38,11 +46,19 @@ namespace obj
 
                                 Celestial::Celestial                        (   const   String&                     aName,
                                                                                 const   Celestial::Type&            aType,
+                                                                                const   Derived&                    aGravitationalConstant,
+                                                                                const   Length&                     anEquatorialRadius,
+                                                                                const   Real&                       aFlattening,
+                                                                                const   Real&                       aJ2,
                                                                                 const   Shared<Ephemeris>&          anEphemeris,
                                                                                 const   Instant&                    anInstant,
                                                                                 const   Object::Geometry&           aGeometry                                   )
                                 :   Object(aName, anInstant, aGeometry),
                                     type_(aType),
+                                    gravitationalConstant_(aGravitationalConstant),
+                                    equatorialRadius_(anEquatorialRadius),
+                                    flattening_(aFlattening),
+                                    j2_(aJ2),
                                     ephemeris_(anEphemeris)
 {
 
@@ -84,6 +100,54 @@ Celestial::Type                 Celestial::getType                          ( ) 
     }
 
     return type_ ;
+
+}
+
+Derived                         Celestial::getGravitationalConstant         ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Celestial") ;
+    }
+
+    return gravitationalConstant_ ;
+
+}
+        
+Length                          Celestial::getEquatorialRadius              ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Celestial") ;
+    }
+
+    return equatorialRadius_ ;
+
+}
+
+Real                            Celestial::getFlattening                    ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Celestial") ;
+    }
+
+    return flattening_ ;
+
+}
+
+Real                            Celestial::getJ2                            ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Celestial") ;
+    }
+
+    return j2_ ;
 
 }
 
@@ -200,7 +264,7 @@ Vector3d                        Celestial::getGravitationalFieldAt          (   
 
 Celestial                       Celestial::Undefined                        ( )
 {
-    return Celestial(String::Empty(), Celestial::Type::Undefined, nullptr, Instant::Undefined()) ;
+    return Celestial(String::Empty(), Celestial::Type::Undefined, Derived::Undefined(), Length::Undefined(), Real::Undefined(), Real::Undefined(), nullptr, Instant::Undefined()) ;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

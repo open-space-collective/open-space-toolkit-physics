@@ -16,10 +16,13 @@
 #include <Library/Physics/Coordinate/Frame.hpp>
 #include <Library/Physics/Coordinate/Axes.hpp>
 #include <Library/Physics/Coordinate/Position.hpp>
+#include <Library/Physics/Units/Derived.hpp>
+#include <Library/Physics/Units/Length.hpp>
 #include <Library/Physics/Time/Instant.hpp>
 
 #include <Library/Mathematics/Objects/Vector.hpp>
 
+#include <Library/Core/Types/Real.hpp>
 #include <Library/Core/Types/Weak.hpp>
 #include <Library/Core/Types/Shared.hpp>
 
@@ -38,10 +41,13 @@ namespace obj
 
 using library::core::types::Shared ;
 using library::core::types::Weak ;
+using library::core::types::Real ;
 
 using library::math::obj::Vector3d ;
 
 using library::physics::time::Instant ;
+using library::physics::units::Length ;
+using library::physics::units::Derived ;
 using library::physics::coord::Position ;
 using library::physics::coord::Axes ;
 using library::physics::coord::Frame ;
@@ -71,11 +77,19 @@ class Celestial : public Object
 
                                 Celestial                                   (   const   String&                     aName,
                                                                                 const   Celestial::Type&            aType,
+                                                                                const   Derived&                    aGravitationalConstant,
+                                                                                const   Length&                     anEquatorialRadius,
+                                                                                const   Real&                       aFlattening,
+                                                                                const   Real&                       aJ2,
                                                                                 const   Shared<Ephemeris>&          anEphemeris,
                                                                                 const   Instant&                    anInstant                                   ) ;
 
                                 Celestial                                   (   const   String&                     aName,
                                                                                 const   Celestial::Type&            aType,
+                                                                                const   Derived&                    aGravitationalConstant,
+                                                                                const   Length&                     anEquatorialRadius,
+                                                                                const   Real&                       aFlattening,
+                                                                                const   Real&                       aJ2,
                                                                                 const   Shared<Ephemeris>&          anEphemeris,
                                                                                 const   Instant&                    anInstant,
                                                                                 const   Object::Geometry&           aGeometry                                   ) ;
@@ -89,6 +103,14 @@ class Celestial : public Object
         Shared<const Ephemeris> accessEphemeris                             ( ) const ;
 
         Celestial::Type         getType                                     ( ) const ;
+
+        Derived                 getGravitationalConstant                    ( ) const ;
+        
+        Length                  getEquatorialRadius                         ( ) const ;
+
+        Real                    getFlattening                               ( ) const ;
+
+        Real                    getJ2                                       ( ) const ;
 
         virtual Weak<const Frame> accessFrame                               ( ) const override ;
 
@@ -105,6 +127,10 @@ class Celestial : public Object
     private:
 
         Celestial::Type         type_ ;
+        Derived                 gravitationalConstant_ ;
+        Length                  equatorialRadius_ ;
+        Real                    flattening_ ;
+        Real                    j2_ ;
         Shared<Ephemeris>       ephemeris_ ;
 
 } ;

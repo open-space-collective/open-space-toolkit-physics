@@ -40,8 +40,8 @@ using library::core::types::Real ;
 
 using library::math::geom::d3::objects::Ellipsoid ;
 
-using library::physics::units::Derived ;
 using library::physics::units::Length ;
+using library::physics::units::Derived ;
 using library::physics::env::Ephemeris ;
 using library::physics::env::obj::Celestial ;
 
@@ -55,6 +55,7 @@ class Earth : public Celestial
         static Derived          GravitationalConstant ;
         static Length           EquatorialRadius ;
         static Real             Flattening ;
+        static Real             C20 ;
         static Real             J2 ;
 
                                 Earth                                       (   const   Shared<Ephemeris>&          anEphemeris,
@@ -63,12 +64,6 @@ class Earth : public Celestial
         virtual                 ~Earth                                      ( ) override ;
 
         virtual Earth*          clone                                       ( ) const override ;
-
-        Derived                 getGravitationalConstant                    ( ) const ;
-        
-        Length                  getEquatorialRadius                         ( ) const ;
-
-        Real                    getFlattening                               ( ) const ;
 
         virtual const Ellipsoid& accessGeometry                             ( ) const override ;
 

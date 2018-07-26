@@ -91,6 +91,9 @@ class Velocity
 
         static Velocity         Undefined                                   ( ) ;
 
+        static Velocity         MetersPerSecond                             (   const   Vector3d&                   aCoordinateSet,
+                                                                                const   Shared<const Frame>&        aFrame                                      ) ;
+
         static String           StringFromUnit                              (   const   Velocity::Unit&             aUnit                                       ) ;
 
     private:

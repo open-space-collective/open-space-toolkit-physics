@@ -214,7 +214,13 @@ String                          Velocity::toString                          ( ) 
 
 Velocity                        Velocity::Undefined                         ( )
 {
-    return Velocity(Vector3d::Undefined(), Velocity::Unit::MeterPerSecond, nullptr) ;
+    return Velocity(Vector3d::Undefined(), Velocity::Unit::Undefined, nullptr) ;
+}
+
+Velocity                        Velocity::MetersPerSecond                   (   const   Vector3d&                   aCoordinateSet,
+                                                                                const   Shared<const Frame>&        aFrame                                      )
+{
+    return Velocity(aCoordinateSet, Velocity::Unit::MeterPerSecond, aFrame) ;
 }
 
 String                          Velocity::StringFromUnit                    (   const   Velocity::Unit&             aUnit                                       )

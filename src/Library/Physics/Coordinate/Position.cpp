@@ -218,6 +218,12 @@ Position                        Position::Undefined                         ( )
     return Position(Vector3d::Undefined(), Position::Unit::Undefined, nullptr) ;
 }
 
+Position                        Position::Meters                            (   const   Vector3d&                   aCoordinateSet,
+                                                                                const   Shared<const Frame>&        aFrame                                      )
+{
+    return Position(aCoordinateSet, Position::Unit::Meter, aFrame) ;
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }
