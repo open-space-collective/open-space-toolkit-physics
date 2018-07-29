@@ -42,16 +42,12 @@ Fixed*                          Fixed::clone                                ( ) 
 
 bool                            Fixed::isDefined                            ( ) const
 {
-    return true ;
+    return transform_.isDefined() ;
 }
 
 Transform                       Fixed::getTransformAt                       (   const   Instant&                    anInstant                                   ) const
 {
-
-    (void) anInstant ;
-    
-    return transform_ ;
-
+    return Transform(anInstant, transform_.accessTranslation(), transform_.accessVelocity(), transform_.accessOrientation(), transform_.accessAngularVelocity(), Transform::Type::Passive) ;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -164,7 +164,7 @@ Vector2d                        Manager::getPolarMotionAt                   (   
 
 }
 
-Real                            Manager::getUt1MinusUtc                     (   const   Instant&                    anInstant                                   ) const
+Real                            Manager::getUt1MinusUtcAt                   (   const   Instant&                    anInstant                                   ) const
 {
 
     if (!anInstant.isDefined())
@@ -206,7 +206,28 @@ Real                            Manager::getUt1MinusUtc                     (   
 
     if (finals2000aPtr != nullptr)
     {
-        return finals2000aPtr->getUt1MinusUtc(anInstant) ;
+        return finals2000aPtr->getUt1MinusUtcAt(anInstant) ;
+    }
+
+    return Real::Undefined() ;
+
+}
+
+Real                            Manager::getLodAt                           (   const   Instant&                    anInstant                                   ) const
+{
+
+    if (!anInstant.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Instant") ;
+    }
+
+    std::lock_guard<std::mutex> lock(mutex_) ;
+
+    const Finals2000A* finals2000aPtr = this->accessFinals2000AAt(anInstant) ;
+
+    if (finals2000aPtr != nullptr)
+    {
+        return finals2000aPtr->getLodAt(anInstant) ;
     }
 
     return Real::Undefined() ;

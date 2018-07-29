@@ -111,7 +111,7 @@ class Transform
 
         static Transform        Undefined                                   ( ) ;
 
-        static Transform        Identity                                    (   const   Instant&                    anInstant                                   =   Instant::J2000() ) ;
+        static Transform        Identity                                    (   const   Instant&                    anInstant                                   ) ;
 
         // static Transform        Translation                                 (   const   Vector3d&                   aTranslation                                ) ;
 

@@ -80,6 +80,8 @@ class Object
 
         virtual const Object::Geometry& accessGeometry                      ( ) const ;
 
+        Frame                   getFrame                                    ( ) const ;
+
         virtual Position        getPositionIn                               (   const   Frame&                      aFrame                                      ) const = 0 ;
 
         virtual Transform       getTransformTo                              (   const   Frame&                      aFrame                                      ) const = 0 ;

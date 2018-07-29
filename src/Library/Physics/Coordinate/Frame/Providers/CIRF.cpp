@@ -10,6 +10,7 @@
 #include <Library/Physics/Coordinate/Frame/Providers/CIRF.hpp>
 #include <Library/Physics/Time/DateTime.hpp>
 #include <Library/Physics/Time/Scale.hpp>
+#include <Library/Physics/Units/Derived/Angle.hpp>
 
 #include <Library/Mathematics/Geometry/Transformations/Rotations/RotationMatrix.hpp>
 
@@ -107,17 +108,19 @@ Transform                       CIRF::getTransformAt                        (   
 
     iauC2ixys(x, y, s, rc2i) ;
 
-    const Vector3d x_GCRF_in_CIRF = Vector3d(rc2i[0][0], rc2i[1][0], rc2i[2][0]).normalized() ;
-    const Vector3d y_GCRF_in_CIRF = Vector3d(rc2i[0][1], rc2i[1][1], rc2i[2][1]).normalized() ;
-    const Vector3d z_GCRF_in_CIRF = Vector3d(rc2i[0][2], rc2i[1][2], rc2i[2][2]).normalized() ;
+    const Vector3d GCRF_x_CIRF = Vector3d(rc2i[0][0], rc2i[1][0], rc2i[2][0]).normalized() ;
+    const Vector3d GCRF_y_CIRF = Vector3d(rc2i[0][1], rc2i[1][1], rc2i[2][1]).normalized() ;
+    const Vector3d GCRF_z_CIRF = Vector3d(rc2i[0][2], rc2i[1][2], rc2i[2][2]).normalized() ;
 
+    const RotationMatrix dcm_CIRF_GCRF = RotationMatrix::Columns(GCRF_x_CIRF, GCRF_y_CIRF, GCRF_z_CIRF) ;
+    
     // Output
 
     const Vector3d x_CIRF_GCRF = { 0.0, 0.0, 0.0 } ;
     const Vector3d v_CIRF_GCRF = { 0.0, 0.0, 0.0 } ;
 
-    const Quaternion q_CIRF_GCRF = Quaternion::RotationMatrix(RotationMatrix::Columns(x_GCRF_in_CIRF, y_GCRF_in_CIRF, z_GCRF_in_CIRF)) ;
-    const Vector3d w_CIRF_GCRF_in_CIRF = { 0.0, 0.0, 0.0 } ; // [TBI]
+    const Quaternion q_CIRF_GCRF = Quaternion::RotationMatrix(dcm_CIRF_GCRF).rectify() ;
+    const Vector3d w_CIRF_GCRF_in_CIRF = { 0.0, 0.0, 0.0 } ;
     
     return Transform::Passive(anInstant, x_CIRF_GCRF, v_CIRF_GCRF, q_CIRF_GCRF, w_CIRF_GCRF_in_CIRF) ;
 

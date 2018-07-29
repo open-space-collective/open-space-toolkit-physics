@@ -102,6 +102,10 @@ class Frame
 
         static Frame            EME2000                                     ( ) ;
 
+        static Frame            TEME                                        ( ) ;
+
+        static Frame            TEMEOfEpoch                                 (   const   Instant&                    anEpoch                                     ) ;
+
         static Frame            CIRF                                        ( ) ;
 
         static Frame            TIRF                                        ( ) ;

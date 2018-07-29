@@ -111,25 +111,28 @@ Transform&                      Transform::operator *=                      (   
         throw library::core::error::RuntimeError("Instants are different.") ;
     }
 
-    // (*this) = t_C_B
-    // aTransform = t_B_A
+    // C_A = C_B * B_A
 
     // t_C_A_in_A = t_B_A_in_A + q_A_B * t_C_B_in_B
 
-    translation_ = aTransform.translation_ + aTransform.orientation_.toConjugate() * translation_ ;
-
+    const Vector3d translation = aTransform.translation_ + aTransform.orientation_.toConjugate() * translation_ ; 
+    
     // v_C_A_in_A = v_B_A_in_A + q_A_B * v_C_B_in_B + Ω_B_C_in_A x t_B_A_in_A
     
-    velocity_ = aTransform.velocity_ + aTransform.orientation_.toConjugate() * velocity_ + angularVelocity_.cross(aTransform.translation_) ;
+    const Vector3d velocity = aTransform.velocity_ + aTransform.orientation_.toConjugate() * velocity_ + angularVelocity_.cross(aTransform.translation_) ;
 
     // q_C_A = q_C_B * q_B_A
 
-    orientation_ = orientation_ * aTransform.orientation_ ;
+    const Quaternion orientation = orientation_ * aTransform.orientation_ ;
 
-    // Ω_C_A_in_C = Ω_C_B_in_C + Ω_B_A_in_C
-    //            = Ω_C_B_in_C + q_B_C * Ω_B_A_in_B
+    // Ω_C_A_in_C = Ω_C_B_in_C + q_C_B * Ω_B_A_in_B
 
-    angularVelocity_ = angularVelocity_ + orientation_ * aTransform.angularVelocity_ ;
+    const Vector3d angularVelocity = angularVelocity_ + orientation_ * aTransform.angularVelocity_ ;
+
+    translation_ = translation ;
+    velocity_ = velocity ;
+    orientation_ = orientation ;
+    angularVelocity_ = angularVelocity ;
 
     return (*this) ;
 
@@ -296,11 +299,23 @@ Transform                       Transform::getInverse                       ( ) 
         throw library::core::error::runtime::Undefined("Transform") ;
     }
 
+    // t_A_B_in_B = - q_B_A * t_B_A_in_A
+
     const Vector3d translation = - (orientation_ * translation_) ;
-    const Vector3d velocity = orientation_ * (angularVelocity_.cross(translation_) - velocity_) ;
+
+    // v_A_B_in_B = q_B_A * (Ω_B_A_in_B x t_B_A_in_A - v_B_A_in_A) --> WRONG
+
+    const Vector3d velocity = orientation_ * (angularVelocity_.cross(translation_) - velocity_) ; // --> WRONG
+    std::cout << "WRONG?" << std::endl ;
+    // const Vector3d velocity = orientation_ * velocity_ - angularVelocity_.cross(orientation_ * translation_) ;
+
+    // q_A_B = q_B_A'
 
     const Quaternion orientation = orientation_.toConjugate() ;
-    const Vector3d angularVelocity = - (orientation_ * angularVelocity_) ;
+
+    // Ω_A_B_in_A = - q_A_B * Ω_B_A_in_B
+
+    const Vector3d angularVelocity = - (orientation * angularVelocity_) ;
 
     return Transform(instant_, translation, velocity, orientation, angularVelocity, Transform::Type::Passive) ;
 
@@ -318,6 +333,11 @@ Vector3d                        Transform::applyToPosition                  (   
     {
         throw library::core::error::runtime::Undefined("Transform") ;
     }
+
+    std::cout << "orientation_ = " << orientation_.toString() << std::endl ;
+    std::cout << "translation_ = " << translation_.toString() << std::endl ;
+
+    // x_B = q_B_A * (x_A + t_B_A_in_A)
 
     return orientation_ * (aPosition + translation_) ;
 
@@ -349,6 +369,8 @@ Vector3d                        Transform::applyToVelocity                  (   
     // std::cout << "velocity_ = " << velocity_.toString() << std::endl ;
     // std::cout << "orientation_ = " << orientation_.toString() << std::endl ;
     // std::cout << "angularVelocity_ = " << angularVelocity_.toString() << std::endl ;
+
+    // v_B_in_B = q_B_A * (v_A_in_A + v_B_A_in_A) - Ω_B_A_in_B x (q_B_A * (x_A + t_B_A_in_A))
 
     return orientation_ * (aVelocity + velocity_) - angularVelocity_.cross(orientation_ * (aPosition + translation_)) ;
 

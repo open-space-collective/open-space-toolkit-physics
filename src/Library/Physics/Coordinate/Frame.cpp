@@ -10,6 +10,7 @@
 #include <Library/Physics/Coordinate/Frame/Providers/ITRF.hpp>
 #include <Library/Physics/Coordinate/Frame/Providers/TIRF.hpp>
 #include <Library/Physics/Coordinate/Frame/Providers/CIRF.hpp>
+#include <Library/Physics/Coordinate/Frame/Providers/TEME.hpp>
 #include <Library/Physics/Coordinate/Frame/Providers/GCRF.hpp>
 #include <Library/Physics/Coordinate/Frame/Providers/Fixed.hpp>
 #include <Library/Physics/Coordinate/Frame/Manager.hpp>
@@ -242,7 +243,7 @@ Transform                       Frame::getTransformTo                       (   
 
     if ((*this) == aFrame)
     {
-        return Transform::Identity() ;
+        return Transform::Identity(anInstant) ;
     }
 
     // std::cout << "(*this) = " << (*this) << std::endl ;
@@ -328,6 +329,58 @@ Frame                           Frame::GCRF                                 ( )
 // {
 
 // }
+
+Frame                           Frame::TEME                                 ( )
+{
+
+    using TEMEProvider = library::physics::coord::frame::provider::TEME ;
+
+    if (FrameManager.hasFrameWithName("TEME"))
+    {
+        return *FrameManager.accessFrameWithName("TEME") ;
+    }
+
+    if (!FrameManager.hasFrameWithName("ITRF"))
+    {
+        FrameManager.addFrame(Frame::ITRF()) ;
+    }
+
+    const Shared<const Frame> itrfSPtr = FrameManager.accessFrameWithName("ITRF") ;
+
+    const Frame temeFrame = { "TEME", true, itrfSPtr, std::make_shared<TEMEProvider>() } ;
+
+    FrameManager.addFrame(temeFrame) ;
+
+    return temeFrame ;
+
+}
+
+Frame                           Frame::TEMEOfEpoch                          (   const   Instant&                    anEpoch                                     )
+{
+
+    using FixedProvider = library::physics::coord::frame::provider::Fixed ;
+
+    const String temeOfEpochFrameName = String::Format("TEMEOfEpoch @ {}", anEpoch.toString()) ;
+    
+    if (FrameManager.hasFrameWithName(temeOfEpochFrameName))
+    {
+        return *FrameManager.accessFrameWithName(temeOfEpochFrameName) ;
+    }
+
+    if (!FrameManager.hasFrameWithName("GCRF"))
+    {
+        FrameManager.addFrame(Frame::GCRF()) ;
+    }
+
+    const Shared<const Frame> gcrfSPtr = FrameManager.accessFrameWithName("GCRF") ;
+
+    const Frame temeOfEpochFrame = { temeOfEpochFrameName, true, gcrfSPtr, std::make_shared<FixedProvider>(Frame::TEME().getTransformTo(Frame::GCRF(), anEpoch)) } ;
+
+    FrameManager.addFrame(temeOfEpochFrame) ;
+
+    return temeOfEpochFrame ;
+
+}
 
 Frame                           Frame::CIRF                                 ( )
 {

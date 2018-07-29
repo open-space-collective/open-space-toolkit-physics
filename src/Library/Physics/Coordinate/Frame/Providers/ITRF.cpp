@@ -108,24 +108,12 @@ Transform                       ITRF::getTransformAt                        (   
     // Data: http://maia.usno.navy.mil/ser7/finals2000A.data
     // Format: http://maia.usno.navy.mil/ser7/readme.finals2000A
 
-    // Polar motion (arcsec->radians)
-
-    // 2007-04-05
-    // 7 4 5 54195.00 I  0.033178 0.000040  0.483095 0.000043  I-0.0714227 0.0000027  1.4020 0.0018  I     0.142    0.294    -0.259    0.121   .033290   .482880  -.0714270     0.201    -0.316
-
-    // static const double xp = 0.0349282 * DAS2R ; // 2007-04-05 12:00:00
-    // static const double yp = 0.4833163 * DAS2R ; // 2007-04-05 12:00:00
-
-    // 2018-06-08 00:00:00
-    // 18 6 8 58277.00 I  0.123539 0.000027  0.447183 0.000011  I 0.0737816 0.0000097  0.7420 0.0067  I    -0.131    0.137    -0.119    0.132
-
-    // static const double xp = 0.123539 * DAS2R ;
-    // static const double yp = 0.447183 * DAS2R ;
+    // Polar motion
 
     const Vector2d polarMotion = IersManager.getPolarMotionAt(anInstant) ; // [asec]
 
-    double xp = polarMotion.x() * DAS2R ; // [rad]
-    double yp = polarMotion.y() * DAS2R ; // [rad]
+    const double xp = polarMotion.x() * DAS2R ; // [rad]
+    const double yp = polarMotion.y() * DAS2R ; // [rad]
 
     // TIO locator s', in radians, which positions the Terrestrial Intermediate Origin on the equator. 
     // It is obtained from polar motion observations by numerical integration, and so is in essence unpredictable.
@@ -135,22 +123,27 @@ Transform                       ITRF::getTransformAt                        (   
     const double sp = iauSp00(djmjd0, tt) ;
 
     // Polar motion matrix (TIRS -> ITRS, IERS 2003)
+    // The matrix operates in the sense V(TRS) = rpom * V(CIP), meaning
+    // that it is the final rotation when computing the pointing direction to a celestial source.
 	
 	double rpom[3][3] ;
 	
     iauPom00(xp, yp, sp, rpom) ;
 
-    const Vector3d x_ITRF_in_TIRF = Vector3d(rpom[0][0], rpom[1][0], rpom[2][0]).normalized() ;
-    const Vector3d y_ITRF_in_TIRF = Vector3d(rpom[0][1], rpom[1][1], rpom[2][1]).normalized() ;
-    const Vector3d z_ITRF_in_TIRF = Vector3d(rpom[0][2], rpom[1][2], rpom[2][2]).normalized() ;
+    const Vector3d TIRF_x_ITRF = Vector3d(rpom[0][0], rpom[1][0], rpom[2][0]).normalized() ;
+    const Vector3d TIRF_y_ITRF = Vector3d(rpom[0][1], rpom[1][1], rpom[2][1]).normalized() ;
+    const Vector3d TIRF_z_ITRF = Vector3d(rpom[0][2], rpom[1][2], rpom[2][2]).normalized() ;
+
+    const RotationMatrix dcm_ITRF_TIRF = RotationMatrix::Columns(TIRF_x_ITRF, TIRF_y_ITRF, TIRF_z_ITRF) ;
 
     // Output
 
     const Vector3d x_ITRF_TIRF = { 0.0, 0.0, 0.0 } ;
     const Vector3d v_ITRF_TIRF = { 0.0, 0.0, 0.0 } ;
 
-    const Quaternion q_ITRF_TIRF = Quaternion::RotationMatrix(RotationMatrix::Columns(x_ITRF_in_TIRF, y_ITRF_in_TIRF, z_ITRF_in_TIRF)) ;
-    const Vector3d w_ITRF_TIRF_in_ITRF = { 0.0, 0.0, 0.0 } ; // [TBI]
+    const Quaternion q_ITRF_TIRF = Quaternion::RotationMatrix(dcm_ITRF_TIRF).rectify() ;
+    // const Quaternion q_ITRF_TIRF = Quaternion::RotationMatrix(dcm_ITRF_TIRF).conjugate().rectify() ; // ANGULAR VELOCITY WORKS IF CONJUGATED
+    const Vector3d w_ITRF_TIRF_in_ITRF = { 0.0, 0.0, 0.0 } ;
     
     return Transform::Passive(anInstant, x_ITRF_TIRF, v_ITRF_TIRF, q_ITRF_TIRF, w_ITRF_TIRF_in_ITRF) ;
 

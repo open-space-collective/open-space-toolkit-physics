@@ -116,7 +116,9 @@ class Finals2000A
 
         Vector2d                getPolarMotionAt                            (   const   Instant&                    anInstant                                   ) const ;
 
-        Real                    getUt1MinusUtc                              (   const   Instant&                    anInstant                                   ) const ;
+        Real                    getUt1MinusUtcAt                            (   const   Instant&                    anInstant                                   ) const ;
+
+        Real                    getLodAt                                    (   const   Instant&                    anInstant                                   ) const ;
 
         Finals2000A::Data       getDataAt                                   (   const   Instant&                    anInstant                                   ) const ;
 

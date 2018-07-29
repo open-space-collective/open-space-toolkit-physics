@@ -78,7 +78,14 @@ class Manager
         /// @param              [in] anInstant An instant
         /// @return             [sec] UT1 - UTC
 
-        Real                    getUt1MinusUtc                              (   const   Instant&                    anInstant                                   ) const ;
+        Real                    getUt1MinusUtcAt                            (   const   Instant&                    anInstant                                   ) const ;
+
+        /// @brief              Get length of day at instant
+        ///
+        /// @param              [in] anInstant An instant
+        /// @return             [ms] Length of day
+
+        Real                    getLodAt                                    (   const   Instant&                    anInstant                                   ) const ;
 
         void                    addBulletinA                                (   const   BulletinA&                  aBulletinA                                  ) ;
 

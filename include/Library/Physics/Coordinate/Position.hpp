@@ -17,6 +17,7 @@
 
 #include <Library/Core/Types/String.hpp>
 #include <Library/Core/Types/Weak.hpp>
+#include <Library/Core/Types/Integer.hpp>
 #include <Library/Core/Types/Shared.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -32,6 +33,7 @@ namespace coord
 
 using library::core::types::Shared ;
 using library::core::types::Weak ;
+using library::core::types::Integer ;
 using library::core::types::String ;
 
 using library::math::obj::Vector3d ;
@@ -78,7 +80,7 @@ class Position
         Position                inFrame                                     (   const   Shared<const Frame>&        aFrame,
                                                                                 const   Instant&                    anInstant                                   ) const ;
 
-        String                  toString                                    ( ) const ;
+        String                  toString                                    (   const   Integer&                    aPrecision                                  =   Integer::Undefined() ) const ;
 
         static Position         Undefined                                   ( ) ;
 

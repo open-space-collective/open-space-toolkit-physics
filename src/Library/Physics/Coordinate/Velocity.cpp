@@ -193,7 +193,7 @@ Velocity                        Velocity::inFrame                           (   
 
 }
 
-String                          Velocity::toString                          ( ) const
+String                          Velocity::toString                          (   const   Integer&                    aPrecision                                  ) const
 {
 
     if (!this->isDefined())
@@ -203,7 +203,7 @@ String                          Velocity::toString                          ( ) 
 
     if (auto frameSPtr = frameWPtr_.lock())
     {
-        return String::Format("{} [{}] @ {}", coordinates_.toString(), Velocity::StringFromUnit(unit_), frameSPtr->getName()) ;
+        return String::Format("{} [{}] @ {}", coordinates_.toString(aPrecision), Velocity::StringFromUnit(unit_), frameSPtr->getName()) ;
     }
 
     throw library::core::error::RuntimeError("Cannot access frame.") ;

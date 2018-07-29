@@ -7,7 +7,6 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <Library/Physics/Coordinate/Frame/Providers/IERS/BulletinA.hpp>
 #include <Library/Physics/Coordinate/Frame/Providers/IERS/Manager.hpp>
 #include <Library/Physics/Coordinate/Frame/Providers/TIRF.hpp>
 #include <Library/Physics/Time/DateTime.hpp>
@@ -29,7 +28,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using library::physics::coord::frame::provider::iers::Manager ;
-using library::physics::coord::frame::provider::iers::BulletinA ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -99,15 +97,12 @@ Transform                       TIRF::getTransformAt                        (   
     const double time = utc - date ;
 
     // UT1 - UTC (s)
-    
-    // const double dut1 = -0.072073685 ; // 2007-04-05 12:00:00
-    // const double dut1 = +0.0737816 ; // 2018-06-08 00:00:00
 
-    double dut1 = IersManager.getUt1MinusUtc(anInstant) ; // [s]
+    const double dut1 = IersManager.getUt1MinusUtcAt(anInstant) ; // [s]
 
     const double tut = time + dut1 / DAYSEC ;
 
-    // Earth rotation angle [rad]
+    // Earth rotation angle, IAU 2000 [rad]
 
     const double era = iauEra00(djmjd0 + date, tut) ;
 
@@ -116,17 +111,23 @@ Transform                       TIRF::getTransformAt                        (   
     const double cosEra = std::cos(era) ;
     const double sinEra = std::sin(era) ;
 
-    const RotationMatrix dcm_TIRF_CIRS = RotationMatrix::Rows(  { +cosEra, +sinEra, 0.0 },
+    const RotationMatrix dcm_TIRF_CIRF = RotationMatrix::Rows(  { +cosEra, +sinEra, 0.0 },
                                                                 { -sinEra, +cosEra, 0.0 },
                                                                 { 0.0,     0.0,     1.0 }) ;
+
+    // Angular velocity
+
+    const double lod_ms = IersManager.getLodAt(anInstant) ; // [ms]
+
+    const double w_TIRF_CIRF = (72921151.467064 - 0.843994809 * lod_ms) * 1e-12 ; // [rad/s] https://www.iers.org/IERS/EN/Science/EarthRotation/UT1LOD.html
 
     // Output
 
     const Vector3d x_TIRF_CIRF = { 0.0, 0.0, 0.0 } ;
     const Vector3d v_TIRF_CIRF = { 0.0, 0.0, 0.0 } ;
 
-    const Quaternion q_TIRF_CIRF = Quaternion::RotationMatrix(dcm_TIRF_CIRS) ;
-    const Vector3d w_TIRF_CIRF_in_TIRF = { 0.00000000002094, -0.00000000008755, 0.00007292115077 } ; // [TBI]
+    const Quaternion q_TIRF_CIRF = Quaternion::RotationMatrix(dcm_TIRF_CIRF).rectify() ;
+    const Vector3d w_TIRF_CIRF_in_TIRF = Vector3d::Z() * w_TIRF_CIRF ;
     
     return Transform::Passive(anInstant, x_TIRF_CIRF, v_TIRF_CIRF, q_TIRF_CIRF, w_TIRF_CIRF_in_TIRF) ;
 

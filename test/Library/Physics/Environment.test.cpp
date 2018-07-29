@@ -183,13 +183,15 @@ TEST (Library_Physics_Environment, Default)
 
                 environment.setInstant(instant) ;
 
-                const Quaternion orientation = earth.getTransformTo(Frame::GCRF()).getOrientation() ;
+                // const Quaternion orientation = earth.getFrame().getTransformTo(Frame::GCRF()).getOrientation() ;
 
-                const Quaternion referenceOrientation = referenceData.at(instant).toConjugate() ; // [TBR] REMOVE CONJUGATE !!!!
+                // const Quaternion referenceOrientation = referenceData.at(instant).toConjugate() ; // [TBR] REMOVE CONJUGATE !!!!
 
-                const Length errorAtSurface = earthEquatorialRadius * RotationVector::Quaternion((orientation * referenceOrientation.toConjugate())).getAngle().inRadians() ;
+                // const Length errorAtSurface = earthEquatorialRadius * RotationVector::Quaternion((orientation * referenceOrientation.toConjugate())).getAngle().inRadians() ;
 
-                EXPECT_GT(Length::Millimeters(1.0), errorAtSurface) ;
+                // EXPECT_GT(Length::Millimeters(1.0), errorAtSurface) ;
+
+                FAIL() ;
 
             }
 

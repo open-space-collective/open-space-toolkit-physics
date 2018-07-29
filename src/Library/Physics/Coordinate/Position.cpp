@@ -183,6 +183,8 @@ Position                        Position::inFrame                           (   
         // {
         //     return ??? ; // Frame is a function of time... to be improved
         // }
+
+        std::cout << String::Format("Transform {} > {} @ {}:", frameSPtr->getName(), aFrame->getName(), anInstant.toString()) << std::endl << frameSPtr->getTransformTo(*aFrame, anInstant) << std::endl ;
         
         return Position(frameSPtr->getTransformTo(*aFrame, anInstant).applyToPosition(coordinates_), unit_, aFrame) ;
 
@@ -194,7 +196,7 @@ Position                        Position::inFrame                           (   
 
 }
 
-String                          Position::toString                          ( ) const
+String                          Position::toString                          (   const   Integer&                    aPrecision                                  ) const
 {
 
     if (!this->isDefined())
@@ -204,7 +206,7 @@ String                          Position::toString                          ( ) 
 
     if (auto frameSPtr = frameWPtr_.lock())
     {
-        return String::Format("{} [{}] @ {}", coordinates_.toString(), Length::StringFromUnit(unit_), frameSPtr->getName()) ;
+        return String::Format("{} [{}] @ {}", coordinates_.toString(aPrecision), Length::SymbolFromUnit(unit_), frameSPtr->getName()) ;
     }
 
     throw library::core::error::RuntimeError("Cannot access frame.") ;

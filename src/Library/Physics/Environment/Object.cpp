@@ -134,6 +134,27 @@ const Object::Geometry&         Object::accessGeometry                      ( ) 
 
 }
 
+Frame                           Object::getFrame                            ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Object") ;
+    }
+
+    if (auto frameSPtr = this->accessFrame().lock())
+    {
+        return *frameSPtr ;
+    }
+    else
+    {
+        throw library::core::error::RuntimeError("Cannot access frame.") ;
+    }
+
+    return Frame::Undefined() ;
+
+}
+
 void                            Object::setInstant                          (   const   Instant&                    anInstant                                   )
 {
 

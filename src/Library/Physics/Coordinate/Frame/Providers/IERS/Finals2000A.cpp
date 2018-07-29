@@ -110,7 +110,7 @@ Vector2d                        Finals2000A::getPolarMotionAt               (   
 
 }
 
-Real                            Finals2000A::getUt1MinusUtc                 (   const   Instant&                    anInstant                                   ) const
+Real                            Finals2000A::getUt1MinusUtcAt               (   const   Instant&                    anInstant                                   ) const
 {
 
     using library::physics::time::Scale ;
@@ -145,6 +145,43 @@ Real                            Finals2000A::getUt1MinusUtc                 (   
     }
 
     throw library::core::error::RuntimeError("Cannot get UT1 - UTC at [{}].", anInstant.toString(Scale::UTC)) ;
+
+}
+
+Real                            Finals2000A::getLodAt                       (   const   Instant&                    anInstant                                   ) const
+{
+
+    using library::physics::time::Scale ;
+
+    if (!anInstant.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Instant") ;
+    }
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Finals 2000A") ;
+    }
+
+    const Pair<const Finals2000A::Data*, const Finals2000A::Data*> dataRange = this->accessDataRange(anInstant) ;
+
+    if ((dataRange.first != nullptr) && (dataRange.second != nullptr))
+    {
+
+        const Finals2000A::Data& previousData = *(dataRange.first) ;
+        const Finals2000A::Data& nextData = *(dataRange.second) ;
+
+        const Real instantMjd = anInstant.getModifiedJulianDate(Scale::UTC) ;
+
+        const Real ratio = (instantMjd - previousData.mjd) / (nextData.mjd - previousData.mjd) ;
+        
+        const Real lod_A = previousData.lod_A + ratio * (nextData.lod_A - previousData.lod_A) ;
+
+        return lod_A ;
+
+    }
+
+    throw library::core::error::RuntimeError("Cannot get length of day at [{}].", anInstant.toString(Scale::UTC)) ;
 
 }
 
