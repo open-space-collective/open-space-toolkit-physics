@@ -148,11 +148,11 @@ std::ostream&                   operator <<                                 (   
 
     library::core::utils::Print::Line(anOutputStream) << "Instant:" << (aTransform.isDefined() ? aTransform.accessInstant().toString(Scale::UTC) : "Undefined") ;
     
-    library::core::utils::Print::Line(anOutputStream) << "Translation:" << (aTransform.isDefined() ? aTransform.accessTranslation().toString() : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Velocity:" << (aTransform.isDefined() ? aTransform.accessVelocity().toString() : "Undefined") ;
+    library::core::utils::Print::Line(anOutputStream) << "Translation:" << (aTransform.isDefined() ? (aTransform.accessTranslation().toString() + " [m]") : "Undefined") ;
+    library::core::utils::Print::Line(anOutputStream) << "Velocity:" << (aTransform.isDefined() ? (aTransform.accessVelocity().toString() + " [m/s]") : "Undefined") ;
 
-    library::core::utils::Print::Line(anOutputStream) << "Orientation:" << (aTransform.isDefined() ? aTransform.accessOrientation().toString() : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Angular Velocity:" << (aTransform.isDefined() ? aTransform.accessAngularVelocity().toString() : "Undefined") ;
+    library::core::utils::Print::Line(anOutputStream) << "Orientation:" << (aTransform.isDefined() ? (aTransform.accessOrientation().toString()) : "Undefined") ;
+    library::core::utils::Print::Line(anOutputStream) << "Angular Velocity:" << (aTransform.isDefined() ? (aTransform.accessAngularVelocity().toString() + " [rad/s]") : "Undefined") ;
 
     library::core::utils::Print::Footer(anOutputStream) ;
 
@@ -303,11 +303,9 @@ Transform                       Transform::getInverse                       ( ) 
 
     const Vector3d translation = - (orientation_ * translation_) ;
 
-    // v_A_B_in_B = q_B_A * (Ω_B_A_in_B x t_B_A_in_A - v_B_A_in_A) --> WRONG
+    // v_A_B_in_B = - q_B_A * v_B_A_in_A + Ω_B_A_in_B x (q_B_A * t_B_A_in_A)
 
-    const Vector3d velocity = orientation_ * (angularVelocity_.cross(translation_) - velocity_) ; // --> WRONG
-    std::cout << "WRONG?" << std::endl ;
-    // const Vector3d velocity = orientation_ * velocity_ - angularVelocity_.cross(orientation_ * translation_) ;
+    const Vector3d velocity = - (orientation_ * velocity_) + angularVelocity_.cross(orientation_ * translation_) ;
 
     // q_A_B = q_B_A'
 
@@ -333,9 +331,6 @@ Vector3d                        Transform::applyToPosition                  (   
     {
         throw library::core::error::runtime::Undefined("Transform") ;
     }
-
-    std::cout << "orientation_ = " << orientation_.toString() << std::endl ;
-    std::cout << "translation_ = " << translation_.toString() << std::endl ;
 
     // x_B = q_B_A * (x_A + t_B_A_in_A)
 

@@ -72,6 +72,32 @@ TEST (Library_Physics_Coordinate_Transform, Constructor)
 
 }
 
+TEST (Library_Physics_Coordinate_Transform, EqualToOperator)
+{
+
+    using library::physics::coord::Transform ;
+
+    {
+
+        FAIL() ;
+
+    }
+
+}
+
+TEST (Library_Physics_Coordinate_Transform, NotEqualToOperator)
+{
+
+    using library::physics::coord::Transform ;
+
+    {
+
+        FAIL() ;
+
+    }
+
+}
+
 TEST (Library_Physics_Coordinate_Transform, MultiplicationOperator)
 {
 
@@ -129,6 +155,162 @@ TEST (Library_Physics_Coordinate_Transform, MultiplicationOperator)
 
     }
 
+}
+
+TEST (Library_Physics_Coordinate_Transform, StreamOperator)
+{
+
+    using library::physics::coord::Transform ;
+
+    {
+
+        FAIL() ;
+
+    }
+
+}
+
+TEST (Library_Physics_Coordinate_Transform, IsDefined)
+{
+
+    using library::physics::coord::Transform ;
+
+    {
+
+        FAIL() ;
+
+    }
+    
+}
+
+TEST (Library_Physics_Coordinate_Transform, AccessInstant)
+{
+
+    using library::physics::coord::Transform ;
+
+    {
+
+        FAIL() ;
+
+    }
+    
+}
+
+TEST (Library_Physics_Coordinate_Transform, AccessTranslation)
+{
+
+    using library::physics::coord::Transform ;
+
+    {
+
+        FAIL() ;
+
+    }
+    
+}
+
+TEST (Library_Physics_Coordinate_Transform, AccessVelocity)
+{
+
+    using library::physics::coord::Transform ;
+
+    {
+
+        FAIL() ;
+
+    }
+    
+}
+
+TEST (Library_Physics_Coordinate_Transform, AccessOrientation)
+{
+
+    using library::physics::coord::Transform ;
+
+    {
+
+        FAIL() ;
+
+    }
+    
+}
+
+TEST (Library_Physics_Coordinate_Transform, AccessAngularVelocity)
+{
+
+    using library::physics::coord::Transform ;
+
+    {
+
+        FAIL() ;
+
+    }
+    
+}
+
+TEST (Library_Physics_Coordinate_Transform, GetInstant)
+{
+
+    using library::physics::coord::Transform ;
+
+    {
+
+        FAIL() ;
+
+    }
+    
+}
+
+TEST (Library_Physics_Coordinate_Transform, GetTranslation)
+{
+
+    using library::physics::coord::Transform ;
+
+    {
+
+        FAIL() ;
+
+    }
+    
+}
+
+TEST (Library_Physics_Coordinate_Transform, GetVelocity)
+{
+
+    using library::physics::coord::Transform ;
+
+    {
+
+        FAIL() ;
+
+    }
+    
+}
+
+TEST (Library_Physics_Coordinate_Transform, GetOrientation)
+{
+
+    using library::physics::coord::Transform ;
+
+    {
+
+        FAIL() ;
+
+    }
+    
+}
+
+TEST (Library_Physics_Coordinate_Transform, GetAngularVelocity)
+{
+
+    using library::physics::coord::Transform ;
+
+    {
+
+        FAIL() ;
+
+    }
+    
 }
 
 TEST (Library_Physics_Coordinate_Transform, GetInverse)
@@ -502,6 +684,84 @@ TEST (Library_Physics_Coordinate_Transform, ApplyToVelocity)
 
     }
 
+}
+
+TEST (Library_Physics_Coordinate_Transform, ApplyToVector)
+{
+
+    using library::physics::coord::Transform ;
+
+    {
+
+        FAIL() ;
+
+    }
+    
+}
+
+TEST (Library_Physics_Coordinate_Transform, Undefined)
+{
+
+    using library::physics::coord::Transform ;
+
+    {
+
+        FAIL() ;
+
+    }
+    
+}
+
+TEST (Library_Physics_Coordinate_Transform, Identity)
+{
+
+    using library::physics::coord::Transform ;
+
+    {
+
+        FAIL() ;
+
+    }
+    
+}
+
+TEST (Library_Physics_Coordinate_Transform, Translation)
+{
+
+    using library::physics::coord::Transform ;
+
+    {
+
+        FAIL() ;
+
+    }
+    
+}
+
+TEST (Library_Physics_Coordinate_Transform, Active)
+{
+
+    using library::physics::coord::Transform ;
+
+    {
+
+        FAIL() ;
+
+    }
+    
+}
+
+TEST (Library_Physics_Coordinate_Transform, Passive)
+{
+
+    using library::physics::coord::Transform ;
+
+    {
+
+        FAIL() ;
+
+    }
+    
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

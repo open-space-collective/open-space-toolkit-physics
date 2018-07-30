@@ -184,8 +184,6 @@ Position                        Position::inFrame                           (   
         //     return ??? ; // Frame is a function of time... to be improved
         // }
 
-        std::cout << String::Format("Transform {} > {} @ {}:", frameSPtr->getName(), aFrame->getName(), anInstant.toString()) << std::endl << frameSPtr->getTransformTo(*aFrame, anInstant) << std::endl ;
-        
         return Position(frameSPtr->getTransformTo(*aFrame, anInstant).applyToPosition(coordinates_), unit_, aFrame) ;
 
     }

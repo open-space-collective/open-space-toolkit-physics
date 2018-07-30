@@ -374,7 +374,7 @@ Frame                           Frame::TEMEOfEpoch                          (   
 
     const Shared<const Frame> gcrfSPtr = FrameManager.accessFrameWithName("GCRF") ;
 
-    const Frame temeOfEpochFrame = { temeOfEpochFrameName, true, gcrfSPtr, std::make_shared<FixedProvider>(Frame::TEME().getTransformTo(Frame::GCRF(), anEpoch)) } ;
+    const Frame temeOfEpochFrame = { temeOfEpochFrameName, true, gcrfSPtr, std::make_shared<FixedProvider>(Frame::GCRF().getTransformTo(Frame::TEME(), anEpoch)) } ;
 
     FrameManager.addFrame(temeOfEpochFrame) ;
 

@@ -117,7 +117,14 @@ Transform                       TIRF::getTransformAt                        (   
 
     // Angular velocity
 
-    const double lod_ms = IersManager.getLodAt(anInstant) ; // [ms]
+    Real lod_ms = IersManager.getLodAt(anInstant) ; // [ms]
+
+    if (!lod_ms.isDefined())
+    {
+        // throw library::core::error::runtime::Undefined("LOD") ;
+        std::cout << "LOD :: LOW RES" << std::endl ;
+        lod_ms = 0.0 ;
+    }
 
     const double w_TIRF_CIRF = (72921151.467064 - 0.843994809 * lod_ms) * 1e-12 ; // [rad/s] https://www.iers.org/IERS/EN/Science/EarthRotation/UT1LOD.html
 
