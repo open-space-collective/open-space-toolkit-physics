@@ -8,9 +8,12 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <Library/Physics/Coordinate/Transform.hpp>
+#include <Library/Physics/Time/DateTime.hpp>
+#include <Library/Physics/Time/Instant.hpp>
+#include <Library/Physics/Units/Derived/Angle.hpp>
+
 #include <Library/Mathematics/Geometry/Transformations/Rotations/RotationMatrix.hpp>
 #include <Library/Mathematics/Geometry/Transformations/Rotations/RotationVector.hpp>
-#include <Library/Physics/Units/Derived/Angle.hpp>
 
 #include <Global.test.hpp>
 
@@ -19,12 +22,9 @@
 TEST (Library_Physics_Coordinate_Transform, Constructor)
 {
 
-    using library::core::types::Real ;
     using library::math::obj::Vector3d ;
-    using library::physics::units::Angle ;
     using library::math::geom::trf::rot::Quaternion ;
-    using library::math::geom::trf::rot::RotationVector ;
-    using library::math::geom::trf::rot::RotationMatrix ;
+    
     using library::physics::time::Instant ;
     using library::physics::coord::Transform ;
 
@@ -35,7 +35,7 @@ TEST (Library_Physics_Coordinate_Transform, Constructor)
         const Vector3d t_B_A = { +0.0, +0.0, +0.0 } ;
         const Vector3d v_B_A = { +0.0, +0.0, +0.0 } ;
         
-        const Quaternion q_B_A = Quaternion::RotationVector(RotationVector({ +0.0, +0.0, +1.0 }, Angle::Degrees(+0.0))) ;
+        const Quaternion q_B_A = Quaternion::Unit() ;
         const Vector3d w_B_A_in_B = { +0.0, +0.0, +0.0 } ;
 
         EXPECT_NO_THROW(Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active)) ;
@@ -49,7 +49,7 @@ TEST (Library_Physics_Coordinate_Transform, Constructor)
         const Vector3d t_B_A = { +0.0, +0.0, +0.0 } ;
         const Vector3d v_B_A = { +0.0, +0.0, +0.0 } ;
         
-        const Quaternion q_B_A = Quaternion::RotationVector(RotationVector({ +0.0, +0.0, +1.0 }, Angle::Degrees(+0.0))) ;
+        const Quaternion q_B_A = Quaternion::Unit() ;
         const Vector3d w_B_A_in_B = { +0.0, +0.0, +0.0 } ;
 
         EXPECT_NO_THROW(Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Passive)) ;
@@ -63,10 +63,10 @@ TEST (Library_Physics_Coordinate_Transform, Constructor)
         const Vector3d t_B_A = { +0.0, +0.0, +0.0 } ;
         const Vector3d v_B_A = { +0.0, +0.0, +0.0 } ;
         
-        const Quaternion q_B_A = Quaternion::RotationVector(RotationVector({ +0.0, +0.0, +1.0 }, Angle::Degrees(+0.0))) ;
+        const Quaternion q_B_A = Quaternion::Unit() ;
         const Vector3d w_B_A_in_B = { +0.0, +0.0, +0.0 } ;
 
-        EXPECT_ANY_THROW(Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Undefined)) ;
+        EXPECT_NO_THROW(Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Undefined)) ;
 
     }
 
@@ -75,11 +75,43 @@ TEST (Library_Physics_Coordinate_Transform, Constructor)
 TEST (Library_Physics_Coordinate_Transform, EqualToOperator)
 {
 
+    using library::math::obj::Vector3d ;
+    using library::math::geom::trf::rot::Quaternion ;
+    using library::math::geom::trf::rot::RotationVector ;
+    
+    using library::physics::units::Angle ;
+    using library::physics::time::Scale ;
+    using library::physics::time::Instant ;
+    using library::physics::time::DateTime ;
     using library::physics::coord::Transform ;
 
     {
 
-        FAIL() ;
+        const Instant instant = Instant::J2000() ;
+
+        const Vector3d t_B_A = { +0.0, +0.0, +0.0 } ;
+        const Vector3d v_B_A = { +0.0, +0.0, +0.0 } ;
+        
+        const Quaternion q_B_A = Quaternion::Unit() ;
+        const Vector3d w_B_A_in_B = { +0.0, +0.0, +0.0 } ;
+
+        EXPECT_TRUE(Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active) == Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active)) ;
+
+        EXPECT_FALSE(Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active) == Transform(Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC), t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active)) ;
+        EXPECT_FALSE(Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active) == Transform(instant, { +0.0, +0.0, +1.0 }, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active)) ;
+        EXPECT_FALSE(Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active) == Transform(instant, t_B_A, { +0.0, +0.0, +1.0 }, q_B_A, w_B_A_in_B, Transform::Type::Active)) ;
+        EXPECT_FALSE(Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active) == Transform(instant, t_B_A, v_B_A, Quaternion::RotationVector(RotationVector({ +0.0, +0.0, +1.0 }, Angle::Degrees(+1.0))), w_B_A_in_B, Transform::Type::Active)) ;
+        EXPECT_FALSE(Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active) == Transform(instant, t_B_A, v_B_A, q_B_A, { +0.0, +0.0, +1.0 }, Transform::Type::Active)) ;
+        EXPECT_FALSE(Transform(instant, { +0.0, +0.0, +1.0 }, { +0.0, +0.0, +1.0 }, Quaternion::RotationVector(RotationVector({ +0.0, +0.0, +1.0 }, Angle::Degrees(+1.0))), { +0.0, +0.0, +1.0 }, Transform::Type::Active) == Transform(instant, { +0.0, +0.0, +1.0 }, { +0.0, +0.0, +1.0 }, Quaternion::RotationVector(RotationVector({ +0.0, +0.0, +1.0 }, Angle::Degrees(+1.0))), { +0.0, +0.0, +1.0 }, Transform::Type::Passive)) ;
+        
+        EXPECT_FALSE(Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active) == Transform::Undefined()) ;
+        EXPECT_FALSE(Transform::Undefined() == Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active)) ;
+
+    }
+
+    {
+
+        EXPECT_FALSE(Transform::Undefined() == Transform::Undefined()) ;
 
     }
 
@@ -88,11 +120,43 @@ TEST (Library_Physics_Coordinate_Transform, EqualToOperator)
 TEST (Library_Physics_Coordinate_Transform, NotEqualToOperator)
 {
 
+    using library::math::obj::Vector3d ;
+    using library::math::geom::trf::rot::Quaternion ;
+    using library::math::geom::trf::rot::RotationVector ;
+    
+    using library::physics::units::Angle ;
+    using library::physics::time::Scale ;
+    using library::physics::time::Instant ;
+    using library::physics::time::DateTime ;
     using library::physics::coord::Transform ;
 
     {
 
-        FAIL() ;
+        const Instant instant = Instant::J2000() ;
+
+        const Vector3d t_B_A = { +0.0, +0.0, +0.0 } ;
+        const Vector3d v_B_A = { +0.0, +0.0, +0.0 } ;
+        
+        const Quaternion q_B_A = Quaternion::Unit() ;
+        const Vector3d w_B_A_in_B = { +0.0, +0.0, +0.0 } ;
+
+        EXPECT_FALSE(Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active) != Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active)) ;
+
+        EXPECT_TRUE(Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active) != Transform(Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC), t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active)) ;
+        EXPECT_TRUE(Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active) != Transform(instant, { +0.0, +0.0, +1.0 }, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active)) ;
+        EXPECT_TRUE(Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active) != Transform(instant, t_B_A, { +0.0, +0.0, +1.0 }, q_B_A, w_B_A_in_B, Transform::Type::Active)) ;
+        EXPECT_TRUE(Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active) != Transform(instant, t_B_A, v_B_A, Quaternion::RotationVector(RotationVector({ +0.0, +0.0, +1.0 }, Angle::Degrees(+1.0))), w_B_A_in_B, Transform::Type::Active)) ;
+        EXPECT_TRUE(Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active) != Transform(instant, t_B_A, v_B_A, q_B_A, { +0.0, +0.0, +1.0 }, Transform::Type::Active)) ;
+        EXPECT_TRUE(Transform(instant, { +0.0, +0.0, +1.0 }, { +0.0, +0.0, +1.0 }, Quaternion::RotationVector(RotationVector({ +0.0, +0.0, +1.0 }, Angle::Degrees(+1.0))), { +0.0, +0.0, +1.0 }, Transform::Type::Active) != Transform(instant, { +0.0, +0.0, +1.0 }, { +0.0, +0.0, +1.0 }, Quaternion::RotationVector(RotationVector({ +0.0, +0.0, +1.0 }, Angle::Degrees(+1.0))), { +0.0, +0.0, +1.0 }, Transform::Type::Passive)) ;
+        
+        EXPECT_TRUE(Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active) != Transform::Undefined()) ;
+        EXPECT_TRUE(Transform::Undefined() != Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active)) ;
+
+    }
+
+    {
+
+        EXPECT_TRUE(Transform::Undefined() != Transform::Undefined()) ;
 
     }
 
@@ -102,11 +166,12 @@ TEST (Library_Physics_Coordinate_Transform, MultiplicationOperator)
 {
 
     using library::core::types::Real ;
+    
     using library::math::obj::Vector3d ;
-    using library::physics::units::Angle ;
     using library::math::geom::trf::rot::Quaternion ;
     using library::math::geom::trf::rot::RotationVector ;
-    using library::math::geom::trf::rot::RotationMatrix ;
+    
+    using library::physics::units::Angle ;
     using library::physics::time::Instant ;
     using library::physics::coord::Transform ;
 
@@ -160,11 +225,29 @@ TEST (Library_Physics_Coordinate_Transform, MultiplicationOperator)
 TEST (Library_Physics_Coordinate_Transform, StreamOperator)
 {
 
+    using library::math::obj::Vector3d ;
+    using library::math::geom::trf::rot::Quaternion ;
+    using library::math::geom::trf::rot::RotationVector ;
+    
+    using library::physics::units::Angle ;
+    using library::physics::time::Instant ;
     using library::physics::coord::Transform ;
 
     {
 
-        FAIL() ;
+        const Instant instant = Instant::J2000() ;
+
+        const Vector3d t_B_A = { +0.0, +0.0, +0.0 } ;
+        const Vector3d v_B_A = { +0.0, +0.0, +0.0 } ;
+        
+        const Quaternion q_B_A = Quaternion::Unit() ;
+        const Vector3d w_B_A_in_B = { +0.0, +0.0, +0.0 } ;
+
+        testing::internal::CaptureStdout() ;
+
+        EXPECT_NO_THROW(std::cout << Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active) << std::endl) ;
+
+        EXPECT_FALSE(testing::internal::GetCapturedStdout().empty()) ;
 
     }
 
@@ -173,11 +256,31 @@ TEST (Library_Physics_Coordinate_Transform, StreamOperator)
 TEST (Library_Physics_Coordinate_Transform, IsDefined)
 {
 
+    using library::math::obj::Vector3d ;
+    using library::math::geom::trf::rot::Quaternion ;
+    using library::math::geom::trf::rot::RotationVector ;
+    
+    using library::physics::units::Angle ;
+    using library::physics::time::Instant ;
     using library::physics::coord::Transform ;
 
     {
 
-        FAIL() ;
+        const Instant instant = Instant::J2000() ;
+
+        const Vector3d t_B_A = { +0.0, +0.0, +0.0 } ;
+        const Vector3d v_B_A = { +0.0, +0.0, +0.0 } ;
+        
+        const Quaternion q_B_A = Quaternion::Unit() ;
+        const Vector3d w_B_A_in_B = { +0.0, +0.0, +0.0 } ;
+
+        EXPECT_TRUE(Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active).isDefined()) ;
+
+    }
+
+    {
+
+        EXPECT_FALSE(Transform::Undefined().isDefined()) ;
 
     }
     
@@ -186,11 +289,31 @@ TEST (Library_Physics_Coordinate_Transform, IsDefined)
 TEST (Library_Physics_Coordinate_Transform, AccessInstant)
 {
 
+    using library::math::obj::Vector3d ;
+    using library::math::geom::trf::rot::Quaternion ;
+    using library::math::geom::trf::rot::RotationVector ;
+    
+    using library::physics::units::Angle ;
+    using library::physics::time::Instant ;
     using library::physics::coord::Transform ;
 
     {
 
-        FAIL() ;
+        const Instant instant = Instant::J2000() ;
+
+        const Vector3d t_B_A = { +1.0, +2.0, +3.0 } ;
+        const Vector3d v_B_A = { +4.0, +5.0, +6.0 } ;
+        
+        const Quaternion q_B_A = Quaternion::Unit() ;
+        const Vector3d w_B_A_in_B = { +7.0, +8.0, +9.0 } ;
+
+        EXPECT_EQ(instant, Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Passive).accessInstant()) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Transform::Undefined().accessInstant()) ;
 
     }
     
@@ -199,11 +322,31 @@ TEST (Library_Physics_Coordinate_Transform, AccessInstant)
 TEST (Library_Physics_Coordinate_Transform, AccessTranslation)
 {
 
+    using library::math::obj::Vector3d ;
+    using library::math::geom::trf::rot::Quaternion ;
+    using library::math::geom::trf::rot::RotationVector ;
+    
+    using library::physics::units::Angle ;
+    using library::physics::time::Instant ;
     using library::physics::coord::Transform ;
 
     {
 
-        FAIL() ;
+        const Instant instant = Instant::J2000() ;
+
+        const Vector3d t_B_A = { +1.0, +2.0, +3.0 } ;
+        const Vector3d v_B_A = { +4.0, +5.0, +6.0 } ;
+        
+        const Quaternion q_B_A = Quaternion::Unit() ;
+        const Vector3d w_B_A_in_B = { +7.0, +8.0, +9.0 } ;
+
+        EXPECT_EQ(t_B_A, Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Passive).accessTranslation()) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Transform::Undefined().accessTranslation()) ;
 
     }
     
@@ -212,11 +355,31 @@ TEST (Library_Physics_Coordinate_Transform, AccessTranslation)
 TEST (Library_Physics_Coordinate_Transform, AccessVelocity)
 {
 
+    using library::math::obj::Vector3d ;
+    using library::math::geom::trf::rot::Quaternion ;
+    using library::math::geom::trf::rot::RotationVector ;
+    
+    using library::physics::units::Angle ;
+    using library::physics::time::Instant ;
     using library::physics::coord::Transform ;
 
     {
 
-        FAIL() ;
+        const Instant instant = Instant::J2000() ;
+
+        const Vector3d t_B_A = { +1.0, +2.0, +3.0 } ;
+        const Vector3d v_B_A = { +4.0, +5.0, +6.0 } ;
+        
+        const Quaternion q_B_A = Quaternion::Unit() ;
+        const Vector3d w_B_A_in_B = { +7.0, +8.0, +9.0 } ;
+
+        EXPECT_EQ(v_B_A, Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Passive).accessVelocity()) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Transform::Undefined().accessVelocity()) ;
 
     }
     
@@ -225,11 +388,31 @@ TEST (Library_Physics_Coordinate_Transform, AccessVelocity)
 TEST (Library_Physics_Coordinate_Transform, AccessOrientation)
 {
 
+    using library::math::obj::Vector3d ;
+    using library::math::geom::trf::rot::Quaternion ;
+    using library::math::geom::trf::rot::RotationVector ;
+    
+    using library::physics::units::Angle ;
+    using library::physics::time::Instant ;
     using library::physics::coord::Transform ;
 
     {
 
-        FAIL() ;
+        const Instant instant = Instant::J2000() ;
+
+        const Vector3d t_B_A = { +1.0, +2.0, +3.0 } ;
+        const Vector3d v_B_A = { +4.0, +5.0, +6.0 } ;
+        
+        const Quaternion q_B_A = Quaternion::Unit() ;
+        const Vector3d w_B_A_in_B = { +7.0, +8.0, +9.0 } ;
+
+        EXPECT_EQ(q_B_A, Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Passive).accessOrientation()) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Transform::Undefined().accessOrientation()) ;
 
     }
     
@@ -238,11 +421,31 @@ TEST (Library_Physics_Coordinate_Transform, AccessOrientation)
 TEST (Library_Physics_Coordinate_Transform, AccessAngularVelocity)
 {
 
+    using library::math::obj::Vector3d ;
+    using library::math::geom::trf::rot::Quaternion ;
+    using library::math::geom::trf::rot::RotationVector ;
+    
+    using library::physics::units::Angle ;
+    using library::physics::time::Instant ;
     using library::physics::coord::Transform ;
 
     {
 
-        FAIL() ;
+        const Instant instant = Instant::J2000() ;
+
+        const Vector3d t_B_A = { +1.0, +2.0, +3.0 } ;
+        const Vector3d v_B_A = { +4.0, +5.0, +6.0 } ;
+        
+        const Quaternion q_B_A = Quaternion::Unit() ;
+        const Vector3d w_B_A_in_B = { +7.0, +8.0, +9.0 } ;
+
+        EXPECT_EQ(w_B_A_in_B, Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Passive).accessAngularVelocity()) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Transform::Undefined().accessAngularVelocity()) ;
 
     }
     
@@ -251,11 +454,31 @@ TEST (Library_Physics_Coordinate_Transform, AccessAngularVelocity)
 TEST (Library_Physics_Coordinate_Transform, GetInstant)
 {
 
+    using library::math::obj::Vector3d ;
+    using library::math::geom::trf::rot::Quaternion ;
+    using library::math::geom::trf::rot::RotationVector ;
+    
+    using library::physics::units::Angle ;
+    using library::physics::time::Instant ;
     using library::physics::coord::Transform ;
 
     {
 
-        FAIL() ;
+        const Instant instant = Instant::J2000() ;
+
+        const Vector3d t_B_A = { +1.0, +2.0, +3.0 } ;
+        const Vector3d v_B_A = { +4.0, +5.0, +6.0 } ;
+        
+        const Quaternion q_B_A = Quaternion::Unit() ;
+        const Vector3d w_B_A_in_B = { +7.0, +8.0, +9.0 } ;
+
+        EXPECT_EQ(instant, Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Passive).getInstant()) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Transform::Undefined().getInstant()) ;
 
     }
     
@@ -264,11 +487,31 @@ TEST (Library_Physics_Coordinate_Transform, GetInstant)
 TEST (Library_Physics_Coordinate_Transform, GetTranslation)
 {
 
+    using library::math::obj::Vector3d ;
+    using library::math::geom::trf::rot::Quaternion ;
+    using library::math::geom::trf::rot::RotationVector ;
+    
+    using library::physics::units::Angle ;
+    using library::physics::time::Instant ;
     using library::physics::coord::Transform ;
 
     {
 
-        FAIL() ;
+        const Instant instant = Instant::J2000() ;
+
+        const Vector3d t_B_A = { +1.0, +2.0, +3.0 } ;
+        const Vector3d v_B_A = { +4.0, +5.0, +6.0 } ;
+        
+        const Quaternion q_B_A = Quaternion::Unit() ;
+        const Vector3d w_B_A_in_B = { +7.0, +8.0, +9.0 } ;
+
+        EXPECT_EQ(t_B_A, Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Passive).getTranslation()) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Transform::Undefined().getTranslation()) ;
 
     }
     
@@ -277,11 +520,31 @@ TEST (Library_Physics_Coordinate_Transform, GetTranslation)
 TEST (Library_Physics_Coordinate_Transform, GetVelocity)
 {
 
+    using library::math::obj::Vector3d ;
+    using library::math::geom::trf::rot::Quaternion ;
+    using library::math::geom::trf::rot::RotationVector ;
+    
+    using library::physics::units::Angle ;
+    using library::physics::time::Instant ;
     using library::physics::coord::Transform ;
 
     {
 
-        FAIL() ;
+        const Instant instant = Instant::J2000() ;
+
+        const Vector3d t_B_A = { +1.0, +2.0, +3.0 } ;
+        const Vector3d v_B_A = { +4.0, +5.0, +6.0 } ;
+        
+        const Quaternion q_B_A = Quaternion::Unit() ;
+        const Vector3d w_B_A_in_B = { +7.0, +8.0, +9.0 } ;
+
+        EXPECT_EQ(v_B_A, Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Passive).getVelocity()) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Transform::Undefined().getVelocity()) ;
 
     }
     
@@ -290,11 +553,31 @@ TEST (Library_Physics_Coordinate_Transform, GetVelocity)
 TEST (Library_Physics_Coordinate_Transform, GetOrientation)
 {
 
+    using library::math::obj::Vector3d ;
+    using library::math::geom::trf::rot::Quaternion ;
+    using library::math::geom::trf::rot::RotationVector ;
+    
+    using library::physics::units::Angle ;
+    using library::physics::time::Instant ;
     using library::physics::coord::Transform ;
 
     {
 
-        FAIL() ;
+        const Instant instant = Instant::J2000() ;
+
+        const Vector3d t_B_A = { +1.0, +2.0, +3.0 } ;
+        const Vector3d v_B_A = { +4.0, +5.0, +6.0 } ;
+        
+        const Quaternion q_B_A = Quaternion::Unit() ;
+        const Vector3d w_B_A_in_B = { +7.0, +8.0, +9.0 } ;
+
+        EXPECT_EQ(q_B_A, Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Passive).getOrientation()) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Transform::Undefined().getOrientation()) ;
 
     }
     
@@ -303,11 +586,31 @@ TEST (Library_Physics_Coordinate_Transform, GetOrientation)
 TEST (Library_Physics_Coordinate_Transform, GetAngularVelocity)
 {
 
+    using library::math::obj::Vector3d ;
+    using library::math::geom::trf::rot::Quaternion ;
+    using library::math::geom::trf::rot::RotationVector ;
+    
+    using library::physics::units::Angle ;
+    using library::physics::time::Instant ;
     using library::physics::coord::Transform ;
 
     {
 
-        FAIL() ;
+        const Instant instant = Instant::J2000() ;
+
+        const Vector3d t_B_A = { +1.0, +2.0, +3.0 } ;
+        const Vector3d v_B_A = { +4.0, +5.0, +6.0 } ;
+        
+        const Quaternion q_B_A = Quaternion::Unit() ;
+        const Vector3d w_B_A_in_B = { +7.0, +8.0, +9.0 } ;
+
+        EXPECT_EQ(w_B_A_in_B, Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Passive).getAngularVelocity()) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Transform::Undefined().getAngularVelocity()) ;
 
     }
     
@@ -317,11 +620,12 @@ TEST (Library_Physics_Coordinate_Transform, GetInverse)
 {
 
     using library::core::types::Real ;
+
     using library::math::obj::Vector3d ;
-    using library::physics::units::Angle ;
     using library::math::geom::trf::rot::Quaternion ;
     using library::math::geom::trf::rot::RotationVector ;
-    using library::math::geom::trf::rot::RotationMatrix ;
+    
+    using library::physics::units::Angle ;
     using library::physics::time::Instant ;
     using library::physics::coord::Transform ;
 
@@ -359,11 +663,12 @@ TEST (Library_Physics_Coordinate_Transform, ApplyToPosition)
 {
 
     using library::core::types::Real ;
+
     using library::math::obj::Vector3d ;
-    using library::physics::units::Angle ;
     using library::math::geom::trf::rot::Quaternion ;
     using library::math::geom::trf::rot::RotationVector ;
-    using library::math::geom::trf::rot::RotationMatrix ;
+    
+    using library::physics::units::Angle ;
     using library::physics::time::Instant ;
     using library::physics::coord::Transform ;
 
@@ -521,11 +826,12 @@ TEST (Library_Physics_Coordinate_Transform, ApplyToVelocity)
 {
 
     using library::core::types::Real ;
+    
     using library::math::obj::Vector3d ;
-    using library::physics::units::Angle ;
     using library::math::geom::trf::rot::Quaternion ;
     using library::math::geom::trf::rot::RotationVector ;
-    using library::math::geom::trf::rot::RotationMatrix ;
+    
+    using library::physics::units::Angle ;
     using library::physics::time::Instant ;
     using library::physics::coord::Transform ;
 
@@ -689,11 +995,161 @@ TEST (Library_Physics_Coordinate_Transform, ApplyToVelocity)
 TEST (Library_Physics_Coordinate_Transform, ApplyToVector)
 {
 
+    using library::core::types::Real ;
+    
+    using library::math::obj::Vector3d ;
+    using library::math::geom::trf::rot::Quaternion ;
+    using library::math::geom::trf::rot::RotationVector ;
+    
+    using library::physics::units::Angle ;
+    using library::physics::time::Instant ;
     using library::physics::coord::Transform ;
+
+    // Identity
 
     {
 
-        FAIL() ;
+        const Instant instant = Instant::J2000() ;
+
+        const Transform transform_B_A = Transform::Identity(instant) ;
+
+        const Vector3d v_A = { +0.0, +0.0, +0.0 } ;
+
+        const Vector3d v_B = transform_B_A.applyToVector(v_A) ;
+
+        EXPECT_TRUE(v_B.isApprox(v_A, 1e-14)) ;
+
+    }
+
+    // Translation
+
+    {
+
+        const Instant instant = Instant::J2000() ;
+
+        const Vector3d t_B_A = { +0.0, -1.0, +0.0 } ;
+        const Vector3d v_B_A = Vector3d::Zero() ;
+        
+        const Quaternion q_B_A = Quaternion::Unit() ;
+        const Vector3d w_B_A_in_B = Vector3d::Zero() ;
+
+        const Transform transform_B_A = Transform::Passive(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B) ;
+
+        const Vector3d v_A = { +0.0, +1.0, +0.0 } ;
+
+        const Vector3d v_B = transform_B_A.applyToVector(v_A) ;
+
+        EXPECT_TRUE(v_B.isApprox(v_A, 1e-14)) ;
+
+    }
+
+    // Rotation
+
+    {
+
+        const Instant instant = Instant::J2000() ;
+
+        const Vector3d t_B_A = Vector3d::Zero() ;
+        const Vector3d v_B_A = Vector3d::Zero() ;
+        
+        const Quaternion q_B_A = Quaternion::RotationVector(RotationVector({ +0.0, +0.0, +1.0 }, Angle::Degrees(+90.0))) ;
+        const Vector3d w_B_A_in_B = Vector3d::Zero() ;
+
+        const Transform transform_B_A = Transform::Passive(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B) ;
+
+        const Vector3d v_A = { +0.0, +1.0, +0.0 } ;
+
+        const Vector3d v_B = transform_B_A.applyToVector(v_A) ;
+
+        EXPECT_TRUE(v_B.isApprox(Vector3d(+1.0, +0.0, +0.0), 1e-14)) ;
+
+    }
+
+    // Translation + Rotation
+
+    {
+
+        const Instant instant = Instant::J2000() ;
+
+        const Vector3d t_B_A = { +0.0, -1.0, +0.0 } ;
+        const Vector3d v_B_A = Vector3d::Zero() ;
+        
+        const Quaternion q_B_A = Quaternion::RotationVector(RotationVector({ +0.0, +0.0, +1.0 }, Angle::Degrees(+90.0))) ;
+        const Vector3d w_B_A_in_B = Vector3d::Zero() ;
+
+        const Transform transform_B_A = Transform::Passive(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B) ;
+
+        const Vector3d v_A = { +0.0, +1.0, +0.0 } ;
+
+        const Vector3d v_B = transform_B_A.applyToVector(v_A) ;
+
+        EXPECT_TRUE(v_B.isApprox(Vector3d(+1.0, +0.0, +0.0), 1e-14)) ;
+
+    }
+
+    // Translation + Velocity
+
+    {
+
+        const Instant instant = Instant::J2000() ;
+
+        const Vector3d t_B_A = { +0.0, -1.0, +0.0 } ;
+        const Vector3d v_B_A = { +0.0, -1.0, +0.0 } ;
+        
+        const Quaternion q_B_A = Quaternion::Unit() ;
+        const Vector3d w_B_A_in_B = Vector3d::Zero() ;
+
+        const Transform transform_B_A = Transform::Passive(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B) ;
+
+        const Vector3d v_A = { +0.0, +2.0, +0.0 } ;
+
+        const Vector3d v_B = transform_B_A.applyToVector(v_A) ;
+
+        EXPECT_TRUE(v_B.isApprox(Vector3d(+0.0, +2.0, +0.0), 1e-14)) ;
+
+    }
+
+    // Translation + Velocity + Rotation
+
+    {
+
+        const Instant instant = Instant::J2000() ;
+
+        const Vector3d t_B_A = { +0.0, -1.0, +0.0 } ;
+        const Vector3d v_B_A = { +0.0, -1.0, +0.0 } ;
+        
+        const Quaternion q_B_A = Quaternion::RotationVector(RotationVector({ +0.0, +0.0, +1.0 }, Angle::Degrees(+90.0))) ;
+        const Vector3d w_B_A_in_B = Vector3d::Zero() ;
+
+        const Transform transform_B_A = Transform::Passive(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B) ;
+
+        const Vector3d v_A = { +0.0, +2.0, +0.0 } ;
+
+        const Vector3d v_B = transform_B_A.applyToVector(v_A) ;
+
+        EXPECT_TRUE(v_B.isApprox(Vector3d(+2.0, +0.0, +0.0), 1e-14)) ;
+
+    }
+
+    // Translation + Velocity + Rotation + Angular Velocity
+
+    {
+
+        const Instant instant = Instant::J2000() ;
+
+        const Vector3d t_B_A = { +0.0, -1.0, +0.0 } ;
+        const Vector3d v_B_A = { +0.0, -1.0, +0.0 } ;
+        
+        const Quaternion q_B_A = Quaternion::RotationVector(RotationVector({ +0.0, +0.0, +1.0 }, Angle::Degrees(+90.0))) ;
+        const Vector3d w_B_A_in_B = { +0.0, +0.0, +1.0 } ;
+
+        const Transform transform_B_A = Transform::Passive(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B) ;
+
+        const Vector3d v_A = { +0.0, +2.0, +0.0 } ;
+
+        const Vector3d v_B = transform_B_A.applyToVector(v_A) ;
+
+        EXPECT_TRUE(v_B.isApprox(Vector3d(+2.0, +0.0, +0.0), 1e-14)) ;
 
     }
     
@@ -706,7 +1162,9 @@ TEST (Library_Physics_Coordinate_Transform, Undefined)
 
     {
 
-        FAIL() ;
+        EXPECT_NO_THROW(Transform::Undefined()) ;
+        
+        EXPECT_FALSE(Transform::Undefined().isDefined()) ;
 
     }
     
@@ -715,37 +1173,54 @@ TEST (Library_Physics_Coordinate_Transform, Undefined)
 TEST (Library_Physics_Coordinate_Transform, Identity)
 {
 
+    using library::physics::time::Instant ;
     using library::physics::coord::Transform ;
 
     {
 
-        FAIL() ;
+        const Instant instant = Instant::J2000() ;
+
+        EXPECT_NO_THROW(Transform::Identity(instant)) ;
+
+        EXPECT_EQ(Transform::Identity(instant), Transform::Identity(instant).getInverse()) ;
 
     }
     
 }
 
-TEST (Library_Physics_Coordinate_Transform, Translation)
-{
+// TEST (Library_Physics_Coordinate_Transform, Translation)
+// {
 
-    using library::physics::coord::Transform ;
+//     using library::physics::coord::Transform ;
 
-    {
+//     {
 
-        FAIL() ;
+//         FAIL() ;
 
-    }
+//     }
     
-}
+// }
 
 TEST (Library_Physics_Coordinate_Transform, Active)
 {
 
+    using library::math::obj::Vector3d ;
+    using library::math::geom::trf::rot::Quaternion ;
+    
+    using library::physics::time::Instant ;
     using library::physics::coord::Transform ;
 
     {
 
-        FAIL() ;
+        const Instant instant = Instant::J2000() ;
+
+        const Vector3d t_B_A = { +0.0, +0.0, +0.0 } ;
+        const Vector3d v_B_A = { +0.0, +0.0, +0.0 } ;
+        
+        const Quaternion q_B_A = Quaternion::Unit() ;
+        const Vector3d w_B_A_in_B = { +0.0, +0.0, +0.0 } ;
+
+        EXPECT_EQ(Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active), Transform::Active(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B)) ;
 
     }
     
@@ -754,11 +1229,23 @@ TEST (Library_Physics_Coordinate_Transform, Active)
 TEST (Library_Physics_Coordinate_Transform, Passive)
 {
 
+    using library::math::obj::Vector3d ;
+    using library::math::geom::trf::rot::Quaternion ;
+    
+    using library::physics::time::Instant ;
     using library::physics::coord::Transform ;
 
     {
 
-        FAIL() ;
+        const Instant instant = Instant::J2000() ;
+
+        const Vector3d t_B_A = { +0.0, +0.0, +0.0 } ;
+        const Vector3d v_B_A = { +0.0, +0.0, +0.0 } ;
+        
+        const Quaternion q_B_A = Quaternion::Unit() ;
+        const Vector3d w_B_A_in_B = { +0.0, +0.0, +0.0 } ;
+
+        EXPECT_EQ(Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Passive), Transform::Passive(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B)) ;
 
     }
     

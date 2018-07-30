@@ -44,7 +44,9 @@ namespace coord
 
         case Transform::Type::Active:
             (*this) = this->getInverse() ;
+            break ;
 
+        case Transform::Type::Undefined:
         case Transform::Type::Passive:
             break ;
 
