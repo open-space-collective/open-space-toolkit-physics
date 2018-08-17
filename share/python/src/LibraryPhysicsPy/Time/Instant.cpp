@@ -35,6 +35,9 @@ inline void                     LibraryPhysicsPy_Time_Instant               ( )
 		.def(self += other<Duration>())
 		.def(self -= other<Duration>())
 
+        .def("__str__", +[] (const Instant& anInstant) -> std::string { return anInstant.toString() ; })
+        .def("__repr__", +[] (const Instant& anInstant) -> std::string { return anInstant.toString() ; })
+
         .def(self_ns::str(self_ns::self))
 
         .def("isDefined", &Instant::isDefined)
