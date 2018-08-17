@@ -328,8 +328,21 @@ TEST (Library_Physics_Time_DateTime, ToString)
     }
 
     {
+
+        EXPECT_EQ("2 Jan 2018 12:34:56", DateTime(2018, 1, 2, 12, 34, 56, 0, 0, 0).toString(DateTime::Format::STK)) ;
+        EXPECT_EQ("2 Jan 2018 12:34:56.123", DateTime(2018, 1, 2, 12, 34, 56, 123, 0, 0).toString(DateTime::Format::STK)) ;
+        EXPECT_EQ("2 Jan 2018 12:34:56.123456", DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 0).toString(DateTime::Format::STK)) ;
+        EXPECT_EQ("2 Jan 2018 12:34:56.123456789", DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789).toString(DateTime::Format::STK)) ;
+
+        EXPECT_EQ("2 Jan 1400 12:34:56.123456789", DateTime(1400, 1, 2, 12, 34, 56, 123, 456, 789).toString(DateTime::Format::STK)) ;
+        EXPECT_EQ("31 Dec 9999 12:34:56.123456789", DateTime(9999, 12, 31, 12, 34, 56, 123, 456, 789).toString(DateTime::Format::STK)) ;
+
+    }
+
+    {
         
         EXPECT_ANY_THROW(DateTime::Undefined().toString()) ;
+        EXPECT_ANY_THROW(DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789).toString(DateTime::Format::Undefined)) ;
 
     }
 
@@ -462,6 +475,7 @@ TEST (Library_Physics_Time_DateTime, Parse)
 
         EXPECT_EQ(DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789), DateTime::Parse("2018-01-02 12:34:56.123.456.789")) ;
         EXPECT_EQ(DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789), DateTime::Parse("2018-01-02T12:34:56.123456789")) ;
+        EXPECT_EQ(DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789), DateTime::Parse("2 Jan 2018 12:34:56.123456789")) ;
 
     }
 
@@ -537,31 +551,54 @@ TEST (Library_Physics_Time_DateTime, Parse)
 
     }
 
+    // STK
+
     {
 
-        EXPECT_ANY_THROW(DateTime::Parse("", DateTime::Format::ISO8601)) ;
-        EXPECT_ANY_THROW(DateTime::Parse("abc", DateTime::Format::ISO8601)) ;
-        EXPECT_ANY_THROW(DateTime::Parse("2018", DateTime::Format::ISO8601)) ;
-        EXPECT_ANY_THROW(DateTime::Parse("2018-01", DateTime::Format::ISO8601)) ;
-        EXPECT_ANY_THROW(DateTime::Parse("2018-01-02", DateTime::Format::ISO8601)) ;
-        EXPECT_ANY_THROW(DateTime::Parse("2018-01-02T01", DateTime::Format::ISO8601)) ;
-        EXPECT_ANY_THROW(DateTime::Parse("2018-01-02T1:34", DateTime::Format::ISO8601)) ;
-        EXPECT_ANY_THROW(DateTime::Parse("2018-01-02T1:34:56", DateTime::Format::ISO8601)) ;
-        EXPECT_ANY_THROW(DateTime::Parse("2018-01-02T12:3:56", DateTime::Format::ISO8601)) ;
-        EXPECT_ANY_THROW(DateTime::Parse("2018-01-02T12:34:5", DateTime::Format::ISO8601)) ;
-        EXPECT_ANY_THROW(DateTime::Parse("2018-00-01T24:34:56", DateTime::Format::ISO8601)) ;
-        EXPECT_ANY_THROW(DateTime::Parse("2018-13-01T24:34:56", DateTime::Format::ISO8601)) ;
-        EXPECT_ANY_THROW(DateTime::Parse("2018-01-00T24:34:56", DateTime::Format::ISO8601)) ;
-        EXPECT_ANY_THROW(DateTime::Parse("2018-01-32T24:34:56", DateTime::Format::ISO8601)) ;
-        EXPECT_ANY_THROW(DateTime::Parse("2018-01-02T24:34:56", DateTime::Format::ISO8601)) ;
-        EXPECT_ANY_THROW(DateTime::Parse("2018-01-02T12:60:56", DateTime::Format::ISO8601)) ;
-        EXPECT_ANY_THROW(DateTime::Parse("2018-01-02T12:34:61", DateTime::Format::ISO8601)) ;
-        EXPECT_ANY_THROW(DateTime::Parse("2018-01-02T12:34:61.", DateTime::Format::ISO8601)) ;
-        EXPECT_ANY_THROW(DateTime::Parse("2018-01-02T-12:34:56", DateTime::Format::ISO8601)) ;
-        EXPECT_ANY_THROW(DateTime::Parse("1399-12-31T23:59:59", DateTime::Format::ISO8601)) ;
-        EXPECT_ANY_THROW(DateTime::Parse("10000-01-01T00:00:00", DateTime::Format::ISO8601)) ;
-        EXPECT_ANY_THROW(DateTime::Parse("2018-01-02T12:34:56.123.456", DateTime::Format::ISO8601)) ;
-        EXPECT_ANY_THROW(DateTime::Parse("2018-01-02T12:34:56.123.456.789", DateTime::Format::ISO8601)) ;
+        EXPECT_EQ(DateTime(2018, 1, 2, 12, 34, 56), DateTime::Parse("2 Jan 2018 12:34:56", DateTime::Format::STK)) ;
+
+        EXPECT_EQ(DateTime(2018, 1, 2, 12, 34, 56, 100), DateTime::Parse("2 Jan 2018 12:34:56.1", DateTime::Format::STK)) ;
+        EXPECT_EQ(DateTime(2018, 1, 2, 12, 34, 56, 120), DateTime::Parse("2 Jan 2018 12:34:56.12", DateTime::Format::STK)) ;
+        EXPECT_EQ(DateTime(2018, 1, 2, 12, 34, 56, 123), DateTime::Parse("2 Jan 2018 12:34:56.123", DateTime::Format::STK)) ;
+
+        EXPECT_EQ(DateTime(2018, 1, 2, 12, 34, 56, 123, 400), DateTime::Parse("2 Jan 2018 12:34:56.1234", DateTime::Format::STK)) ;
+        EXPECT_EQ(DateTime(2018, 1, 2, 12, 34, 56, 123, 450), DateTime::Parse("2 Jan 2018 12:34:56.12345", DateTime::Format::STK)) ;
+        EXPECT_EQ(DateTime(2018, 1, 2, 12, 34, 56, 123, 456), DateTime::Parse("2 Jan 2018 12:34:56.123456", DateTime::Format::STK)) ;
+
+        EXPECT_EQ(DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 700), DateTime::Parse("2 Jan 2018 12:34:56.1234567", DateTime::Format::STK)) ;
+        EXPECT_EQ(DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 780), DateTime::Parse("2 Jan 2018 12:34:56.12345678", DateTime::Format::STK)) ;
+        EXPECT_EQ(DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789), DateTime::Parse("2 Jan 2018 12:34:56.123456789", DateTime::Format::STK)) ;
+
+        EXPECT_EQ(DateTime(1400, 1, 1, 0, 0, 0), DateTime::Parse("1 Jan 1400 00:00:00", DateTime::Format::STK)) ;
+        EXPECT_EQ(DateTime(9999, 12, 31, 23, 59, 59), DateTime::Parse("31 Dec 9999 23:59:59", DateTime::Format::STK)) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(DateTime::Parse("")) ;
+        EXPECT_ANY_THROW(DateTime::Parse("abc")) ;
+        EXPECT_ANY_THROW(DateTime::Parse("2018")) ;
+        EXPECT_ANY_THROW(DateTime::Parse("2018-01")) ;
+        EXPECT_ANY_THROW(DateTime::Parse("2018-01-02")) ;
+        EXPECT_ANY_THROW(DateTime::Parse("2018-01-02T01")) ;
+        EXPECT_ANY_THROW(DateTime::Parse("2018-01-02T1:34")) ;
+        EXPECT_ANY_THROW(DateTime::Parse("2018-01-02T1:34:56")) ;
+        EXPECT_ANY_THROW(DateTime::Parse("2018-01-02T12:3:56")) ;
+        EXPECT_ANY_THROW(DateTime::Parse("2018-01-02T12:34:5")) ;
+        EXPECT_ANY_THROW(DateTime::Parse("2018-00-01T24:34:56")) ;
+        EXPECT_ANY_THROW(DateTime::Parse("2018-13-01T24:34:56")) ;
+        EXPECT_ANY_THROW(DateTime::Parse("2018-01-00T24:34:56")) ;
+        EXPECT_ANY_THROW(DateTime::Parse("2018-01-32T24:34:56")) ;
+        EXPECT_ANY_THROW(DateTime::Parse("2018-01-02T24:34:56")) ;
+        EXPECT_ANY_THROW(DateTime::Parse("2018-01-02T12:60:56")) ;
+        EXPECT_ANY_THROW(DateTime::Parse("2018-01-02T12:34:61")) ;
+        EXPECT_ANY_THROW(DateTime::Parse("2018-01-02T12:34:61.")) ;
+        EXPECT_ANY_THROW(DateTime::Parse("2018-01-02T-12:34:56")) ;
+        EXPECT_ANY_THROW(DateTime::Parse("1399-12-31T23:59:59")) ;
+        EXPECT_ANY_THROW(DateTime::Parse("10000-01-01T00:00:00")) ;
+        EXPECT_ANY_THROW(DateTime::Parse("2018-01-02T12:34:56.123.456")) ;
+        EXPECT_ANY_THROW(DateTime::Parse("2018-01-02T12:34:56.123.456.789")) ;
 
     }
 

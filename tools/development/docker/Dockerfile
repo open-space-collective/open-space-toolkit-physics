@@ -7,54 +7,48 @@
 
 ################################################################################################################################################################
 
-FROM openspacecollective/library-mathematics:0.1.1
+FROM openspacecollective/library-mathematics:0.1.3
 
 LABEL maintainer="lucas@loftorbital.com"
 
 # Arguments
 
-ARG version
 ARG cpu_count=1
 
 # Dependencies
 
-## NumPy
-
-RUN pip install --upgrade pip \
-    && pip install numpy
-
 ## IAU SOFA [2018-01-30]
 
 RUN pushd /tmp > /dev/null \
-    && mkdir sofa \
-    && cd sofa \
-    && wget --quiet http://www.iausofa.org/2018_0130_C/sofa_c-20180130.tar.gz \
-    && tar -zxf sofa_c-20180130.tar.gz \
-    && cd sofa/20180130/c/src/ \
-    && pattern="CFLAGF = -c -pedantic -Wall -W -O" \
-    && target="CFLAGF = -c -pedantic -Wall -W -O -fpic" \
-    && sed -i -e 's,'"$pattern"','"$target"',g' makefile \
-    && make -j ${cpu_count} \
-    && mkdir /usr/local/include/sofa \
-    && cp -r *.h /usr/local/include/sofa \
-    && cp -r *.a /usr/local/lib \
-    && rm -rf /tmp/sofa \
-    && popd > /dev/null
+ && mkdir sofa \
+ && cd sofa \
+ && wget --quiet http://www.iausofa.org/2018_0130_C/sofa_c-20180130.tar.gz \
+ && tar -zxf sofa_c-20180130.tar.gz \
+ && cd sofa/20180130/c/src/ \
+ && pattern="CFLAGF = -c -pedantic -Wall -W -O" \
+ && target="CFLAGF = -c -pedantic -Wall -W -O -fpic" \
+ && sed -i -e 's,'"$pattern"','"$target"',g' makefile \
+ && make -j ${cpu_count} \
+ && mkdir /usr/local/include/sofa \
+ && cp -r *.h /usr/local/include/sofa \
+ && cp -r *.a /usr/local/lib \
+ && rm -rf /tmp/sofa \
+ && popd > /dev/null
 
-## Library :: Mathematics [master]
+## Library :: Mathematics [0.1.3]
 
-RUN pushd /tmp > /dev/null \
-    && git clone https://github.com/open-space-collective/library-mathematics.git \
-    && cd library-mathematics \
-    && mkdir build \
-    && cd build \
-    && cmake -DBUILD_UNIT_TESTS=OFF .. \
-    && make -j ${cpu_count} \
-    && make install \
-    && rm -rf /tmp/library-mathematics \
-    && popd > /dev/null
+RUN mkdir -p /tmp/library-mathematics \
+ && pushd /tmp/library-mathematics > /dev/null \
+ && wget --quiet https://github.com/open-space-collective/library-mathematics/releases/download/0.1.3/library-mathematics-0.1.3-1.x86_64-runtime.rpm \
+ && wget --quiet https://github.com/open-space-collective/library-mathematics/releases/download/0.1.3/library-mathematics-0.1.3-1.x86_64-devel.rpm \
+ && wget --quiet https://github.com/open-space-collective/library-mathematics/releases/download/0.1.3/library-mathematics-0.1.3-1.x86_64-python.rpm \
+ && dnf install -y ./*.rpm \
+ && rm -rf /tmp/library-mathematics \
+ && popd > /dev/null
 
 # Labels
+
+ARG version
 
 ENV version ${version}
 

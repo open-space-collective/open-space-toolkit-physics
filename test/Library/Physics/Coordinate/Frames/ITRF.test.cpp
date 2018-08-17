@@ -55,7 +55,8 @@ TEST (Library_Physics_Coordinate_Frames_ITRF, Test)
 
         const Array<Tuple<File, Angle, Length, Length, Real>> referenceScenarios =
         {
-            { File::Path(Path::Parse("../test/Library/Physics/Coordinate/Frames/ITRF/Test_1/Test_1 ITRF_GCRF.csv")), Angle::Arcseconds(1.0), Length::Meters(0.1), Length::Meters(0.1), 1e-12 }
+            // { File::Path(Path::Parse("../test/Library/Physics/Coordinate/Frames/ITRF/Test_1/Test_1 ITRF_GCRF.csv")), Angle::Arcseconds(1.0), Length::Meters(0.1), Length::Meters(0.1), 1e-12 },
+            { File::Path(Path::Parse("../test/Library/Physics/Coordinate/Frames/ITRF/Test_2/Scenario ITRF_GCRF.csv")), Angle::Arcseconds(1.0), Length::Meters(1000.0), Length::Meters(1000.0), 1e-1 }
         } ;
 
         for (const auto& referenceScenario : referenceScenarios)
@@ -75,8 +76,8 @@ TEST (Library_Physics_Coordinate_Frames_ITRF, Test)
             for (const auto& referenceRow : referenceData)
             {
 
-                const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].accessString()), Scale::UTC) ;
-
+                const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].accessString()), Scale::TAI) ;
+std::cout << "instant = " << instant.toString() << std::endl ;
                 const Quaternion reference_q_ITRF_GCRF = Quaternion::XYZS(referenceRow[1].accessReal(), referenceRow[2].accessReal(), referenceRow[3].accessReal(), referenceRow[4].accessReal()).normalize() ;
                 const Vector3d reference_w_ITRF_GCRF_in_ITRF = { referenceRow[5].accessReal(), referenceRow[6].accessReal(), referenceRow[7].accessReal() } ;
                 

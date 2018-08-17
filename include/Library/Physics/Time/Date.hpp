@@ -37,6 +37,17 @@ class Date
 
     public:
 
+        /// @brief              Date format
+
+        enum class Format
+        {
+
+            Undefined,          ///< Undefined format
+            Standard,           ///< Standard format (YYYY:MM:DD)
+            STK                 ///< STK format (d Mon YYYY)
+
+        } ;
+
         /// @brief              Constructor
         ///
         /// @code
@@ -120,9 +131,10 @@ class Date
         ///                     Date(2018, 1, 2).toString() ; // 2018-01-02
         /// @endcode
         ///
+        /// @param              [in] (optional) aFormat A date format
         /// @return             Serialized date
 
-        String                  toString                                    ( ) const ;
+        String                  toString                                    (   const   Date::Format&               aFormat                                     =   Date::Format::Standard ) const ;
 
         /// @brief              Set year
         ///
@@ -192,9 +204,11 @@ class Date
         /// @endcode
         ///
         /// @param              [in] aString A string
+        /// @param              [in] (optional) aFormat A date format
         /// @return             Date
 
-        static Date             Parse                                       (   const   String&                     aString                                     ) ;
+        static Date             Parse                                       (   const   String&                     aString,
+                                                                                const   Date::Format&               aFormat                                     =   Date::Format::Undefined ) ;
 
     private:
 

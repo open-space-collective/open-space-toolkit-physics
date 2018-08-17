@@ -121,7 +121,7 @@ Uint8                           Date::getDay                                ( ) 
 
 }
 
-String                          Date::toString                             ( ) const
+String                          Date::toString                              (   const   Date::Format&               aFormat                                     ) const
 {
 
     if (!this->isDefined())
@@ -129,12 +129,85 @@ String                          Date::toString                             ( ) c
         throw library::core::error::runtime::Undefined("Date") ;
     }
 
-    if (std::abs(year_) < 1000)
+    switch (aFormat)
     {
-        return String::Format("{0:04d}-{1:02d}-{2:02d}", year_, month_, day_) ;
+
+        case Date::Format::Standard:
+        {
+
+            if (std::abs(year_) < 1000)
+            {
+                return String::Format("{0:04d}-{1:02d}-{2:02d}", year_, month_, day_) ;
+            }
+            
+            return String::Format("{0:d}-{1:02d}-{2:02d}", year_, month_, day_) ;
+
+        }
+
+        case Date::Format::STK:
+        {
+
+            auto formatMonth = [] (Uint8 aMonth) -> String
+            {
+
+                switch (aMonth)
+                {
+
+                    case 1:
+                        return "Jan" ;
+
+                    case 2:
+                        return "Feb" ;
+
+                    case 3:
+                        return "Mar" ;
+
+                    case 4:
+                        return "Apr" ;
+
+                    case 5:
+                        return "May" ;
+
+                    case 6:
+                        return "Jun" ;
+
+                    case 7:
+                        return "Jul" ;
+
+                    case 8:
+                        return "Aug" ;
+
+                    case 9:
+                        return "Sep" ;
+
+                    case 10:
+                        return "Oct" ;
+
+                    case 11:
+                        return "Nov" ;
+
+                    case 12:
+                        return "Dec" ;
+
+                    default:
+                        throw library::core::error::runtime::Wrong("Month", aMonth) ;
+                        break ;
+
+                }
+
+            } ;
+
+            return String::Format("{0:d} {1:s} {2:d}", day_, formatMonth(month_), year_) ;
+
+        }
+
+        default:
+            throw library::core::error::runtime::Wrong("Format") ;
+            break ;
+
     }
-    
-    return String::Format("{0:d}-{1:02d}-{2:02d}", year_, month_, day_) ;
+
+    return String::Empty() ;
 
 }
 
@@ -205,7 +278,8 @@ Date                            Date::ModifiedJulianDateEpoch               ( )
     return Date(1858, 11, 17) ;
 }
 
-Date                            Date::Parse                                 (   const   String&                     aString                                     )
+Date                            Date::Parse                                 (   const   String&                     aString,
+                                                                                const   Date::Format&               aFormat                                     )
 {
 
     if (aString.isEmpty())
@@ -213,30 +287,154 @@ Date                            Date::Parse                                 (   
         throw library::core::error::runtime::Undefined("String") ;
     }
 
-    boost::smatch match ;
-
-    if (boost::regex_match(aString, match, boost::regex("^([-]?[0-9]+)-([0-9]{2})-([0-9]{2})$")))
+    switch (aFormat)
     {
 
-        try
+        case Date::Format::Undefined: // Automatic format detection
         {
 
-            const Uint16 year = boost::lexical_cast<Uint16>(match[1]) ;
-            const Uint8 month = static_cast<Uint8>(boost::lexical_cast<Uint16>(match[2])) ;
-            const Uint8 day = static_cast<Uint8>(boost::lexical_cast<Uint16>(match[3])) ;
-
-            return Date(year, month, day) ;
+            if (aString.match(std::regex("^([\\d]{1,2}) ([\\w]{3}) ([\\d]{4})$")))
+            {
+                return Date::Parse(aString, Date::Format::STK) ;
+            }
+            
+            return Date::Parse(aString, Date::Format::Standard) ;
 
         }
-        catch (const boost::bad_lexical_cast& e)
+
+        case Date::Format::Standard:
         {
-            throw library::core::error::RuntimeError("Cannot parse date string [{}] ({}).", aString, e.what()) ;
+
+            boost::smatch match ;
+
+            if (boost::regex_match(aString, match, boost::regex("^([-]?[0-9]+)-([0-9]{2})-([0-9]{2})$")))
+            {
+
+                try
+                {
+
+                    const Uint16 year = boost::lexical_cast<Uint16>(match[1]) ;
+                    const Uint8 month = static_cast<Uint8>(boost::lexical_cast<Uint16>(match[2])) ;
+                    const Uint8 day = static_cast<Uint8>(boost::lexical_cast<Uint16>(match[3])) ;
+
+                    return Date(year, month, day) ;
+
+                }
+                catch (const boost::bad_lexical_cast& e)
+                {
+                    throw library::core::error::RuntimeError("Cannot parse date string [{}] ({}).", aString, e.what()) ;
+                }
+
+            }
+            else
+            {
+                throw library::core::error::RuntimeError("Cannot parse date string [{}].", aString) ;
+            }
+
         }
 
-    }
-    else
-    {
-        throw library::core::error::RuntimeError("Cannot parse date string [{}].", aString) ;
+        case Date::Format::STK:
+        {
+
+            boost::smatch match ;
+
+            if (boost::regex_match(aString, match, boost::regex("^([\\d]{1,2}) ([\\w]{3}) ([\\d]{4})$")))
+            {
+
+                try
+                {
+
+                    auto parseMonth = [] (const String& aMonthString) -> Uint8
+                    {
+
+                        if (aMonthString == "Jan")
+                        {
+                            return 1 ;
+                        }
+
+                        if (aMonthString == "Feb")
+                        {
+                            return 2 ;
+                        }
+
+                        if (aMonthString == "Mar")
+                        {
+                            return 3 ;
+                        }
+
+                        if (aMonthString == "Apr")
+                        {
+                            return 4 ;
+                        }
+
+                        if (aMonthString == "May")
+                        {
+                            return 5 ;
+                        }
+
+                        if (aMonthString == "Jun")
+                        {
+                            return 6 ;
+                        }
+
+                        if (aMonthString == "Jul")
+                        {
+                            return 7 ;
+                        }
+
+                        if (aMonthString == "Aug")
+                        {
+                            return 8 ;
+                        }
+
+                        if (aMonthString == "Sep")
+                        {
+                            return 9 ;
+                        }
+
+                        if (aMonthString == "Oct")
+                        {
+                            return 10 ;
+                        }
+
+                        if (aMonthString == "Nov")
+                        {
+                            return 11 ;
+                        }
+
+                        if (aMonthString == "Dec")
+                        {
+                            return 12 ;
+                        }
+
+                        return 0 ;
+
+                    } ;
+
+                    const Uint8 day = static_cast<Uint8>(boost::lexical_cast<Uint16>(match[1])) ;
+                    const Uint8 month = parseMonth(std::string(match[2])) ;
+                    const Uint16 year = boost::lexical_cast<Uint16>(match[3]) ;
+
+                    return Date(year, month, day) ;
+
+                }
+                catch (const boost::bad_lexical_cast& e)
+                {
+                    throw library::core::error::RuntimeError("Cannot parse date string [{}] ({}).", aString, e.what()) ;
+                }
+
+            }
+            else
+            {
+                throw library::core::error::RuntimeError("Cannot parse date string [{}].", aString) ;
+            }
+
+        }
+
+        default:
+            throw library::core::error::runtime::Wrong("Format") ;
+            break ;
+
     }
 
     return Date::Undefined() ;
