@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Library/Physics
-/// @file           Library/Physics/LibraryMathematicsPy.hpp
+/// @file           LibraryPhysicsPy.cxx
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        TBD
 
@@ -9,28 +9,18 @@
 
 #include <boost/python.hpp>
 
-// #include <boost/numpy.hpp>
-
-// #include <eigen_numpy.h>
-
-#include <LibraryMathematicsPy/Types.cpp>
+#include <LibraryPhysicsPy/Time.cpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-BOOST_PYTHON_MODULE (LibraryMathematicsPy)
+BOOST_PYTHON_MODULE (LibraryPhysicsPy)
 {
-
-	// boost::numpy::initialize() ;
-
-	// boost::python::numeric::array::set_module_and_type("numpy", "ndarray") ;
-
-	// SetupEigenConverters() ;
 
 	boost::python::object package = boost::python::scope() ;
 	
 	package.attr("__path__") = "Library" ;
 
-	LibraryMathematicsPy_Types() ;
+	LibraryPhysicsPy_Time() ;
 
 }
 

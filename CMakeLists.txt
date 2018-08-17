@@ -265,13 +265,13 @@ ELSE ()
     MESSAGE (SEND_ERROR "[IAU SOFA] not found.")
 ENDIF ()
 
-### Library :: Core [master]
+### Library :: Core [0.1]
 
-FIND_PACKAGE ("LibraryCore" "2018.6.14" REQUIRED)
+FIND_PACKAGE ("LibraryCore" "0.1" REQUIRED)
 
-### Library :: Mathematics [master]
+### Library :: Mathematics [0.1]
 
-FIND_PACKAGE ("LibraryMathematics" "2018.6.14" REQUIRED)
+FIND_PACKAGE ("LibraryMathematics" "0.1" REQUIRED)
 
 #####################################################################################3###########################################################################
 

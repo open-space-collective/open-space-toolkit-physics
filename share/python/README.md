@@ -1,0 +1,2 @@
+Library :: Physics :: Python Bindings
+=====================================
