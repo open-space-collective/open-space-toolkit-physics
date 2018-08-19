@@ -1,30 +1,30 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Library/Physics
-/// @file           LibraryPhysicsPy.cxx
+/// @file           LibraryPhysicsPy/Units.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        TBD
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <boost/python.hpp>
-
-#include <LibraryPhysicsPy/Coordinate.cpp>
-#include <LibraryPhysicsPy/Time.cpp>
-#include <LibraryPhysicsPy/Units.cpp>
+#include <LibraryPhysicsPy/Units/Derived/Angle.cpp>
+#include <LibraryPhysicsPy/Units/Time.cpp>
+#include <LibraryPhysicsPy/Units/Length.cpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-BOOST_PYTHON_MODULE (LibraryPhysicsPy)
+inline void                     LibraryPhysicsPy_Units                      ( )
 {
-
-	boost::python::object package = boost::python::scope() ;
-	
-	package.attr("__path__") = "Library" ;
-
-	LibraryPhysicsPy_Units() ;
-	LibraryPhysicsPy_Time() ;
-	LibraryPhysicsPy_Coordinate() ;
+    
+    boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("Library.Physics.Units")))) ;
+    
+    boost::python::scope().attr("Units") = module ;
+    
+    boost::python::scope scope = module ;
+    
+    LibraryPhysicsPy_Units_Length() ;
+    LibraryPhysicsPy_Units_Time() ;
+    LibraryPhysicsPy_Units_Derived_Angle() ;
 
 }
 

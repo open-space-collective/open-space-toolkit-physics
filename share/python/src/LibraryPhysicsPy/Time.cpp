@@ -7,6 +7,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <LibraryPhysicsPy/Time/Interval.cpp>
 #include <LibraryPhysicsPy/Time/Time.cpp>
 #include <LibraryPhysicsPy/Time/Date.cpp>
 #include <LibraryPhysicsPy/Time/DateTime.cpp>
@@ -16,7 +17,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     LibraryPhysicsPy_Time               ( )
+inline void                     LibraryPhysicsPy_Time                       ( )
 {
     
     boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("Library.Physics.Time")))) ;
@@ -31,6 +32,7 @@ inline void                     LibraryPhysicsPy_Time               ( )
     LibraryPhysicsPy_Time_DateTime() ;
     LibraryPhysicsPy_Time_Date() ;
     LibraryPhysicsPy_Time_Time() ;
+    LibraryPhysicsPy_Time_Interval() ;
 
 }
 
