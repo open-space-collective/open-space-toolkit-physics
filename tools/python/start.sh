@@ -20,13 +20,19 @@ docker run \
 -it \
 --rm \
 --publish="8888:8888" \
+--user="" \
 --env="JUPYTER_LAB_ENABLE=yes" \
 --env="LD_LIBRARY_PATH=/opt/conda/lib/python3.6/site-packages:/home/jovyan/lib" \
 --env="PYTHONPATH=/opt/conda/lib/python3.6/site-packages:/home/jovyan/lib" \
---volume=$(pwd)/../../lib:/home/jovyan/lib:ro \
---volume=$(pwd)/notebooks:/home/jovyan/notebooks \
+--volume=$(pwd)/../../lib:/opt/lib:ro \
+--volume=$(pwd)/../../share/python/notebooks:/home/jovyan/notebooks \
 jupyter/scipy-notebook \
-start-notebook.sh --NotebookApp.token=''
+bash -c "mkdir -p /opt/conda/lib/python3.6/site-packages/Library/Physics \
+&& ln -s /opt/lib/liblibrary-physics.so.0 /opt/conda/lib/python3.6/site-packages/Library/Physics/liblibrary-physics.so.0 \
+&& ln -s /opt/lib/LibraryPhysicsPy.so /opt/conda/lib/python3.6/site-packages/Library/Physics/LibraryPhysicsPy.so \
+&& echo 'from .LibraryPhysicsPy import *' > /opt/conda/lib/python3.6/site-packages/Library/Physics/__init__.py \
+&& start-notebook.sh --NotebookApp.token=''"
+# start-notebook.sh --NotebookApp.token=''
 
 popd
 
