@@ -27,7 +27,7 @@ OPTION (BUILD_SHARED_LIBRARY "Build shared library." ON)
 OPTION (BUILD_STATIC_LIBRARY "Build static library." OFF)
 OPTION (BUILD_UTILITY "Build utility." OFF)
 OPTION (BUILD_UNIT_TESTS "Build tests" ON)
-OPTION (BUILD_PYTHON_BINDINGS "Build Python bindings." OFF)
+OPTION (BUILD_PYTHON_BINDINGS "Build Python bindings." ON)
 OPTION (BUILD_CODE_COVERAGE "Build code coverage" OFF)
 OPTION (BUILD_DOCUMENTATION "Build documentation" OFF)
 OPTION (INSTALL_DATA "Install data" ON)
@@ -54,7 +54,7 @@ CMAKE_POLICY (SET "CMP0048" NEW)
 
 INCLUDE ("GetGitRevisionDescription" OPTIONAL)
 
-IF (EXISTS "${PROJECT_SOURCE_DIR}/.git/packed-refs" AND COMMAND "GET_GIT_HEAD_REVISION" AND COMMAND "GIT_DESCRIBE")
+IF (COMMAND "GET_GIT_HEAD_REVISION" AND COMMAND "GIT_DESCRIBE")
 
     # Versioning using current git branch tag
 
@@ -242,13 +242,36 @@ FIND_PACKAGE ("Boost" "1.66" COMPONENTS "regex" "log" REQUIRED)
 INCLUDE_DIRECTORIES (${Boost_INCLUDE_DIRS})
 LINK_DIRECTORIES (${Boost_LIBRARY_DIRS})
 
-### Library :: Core [master]
+### Eigen [3]
 
-FIND_PACKAGE ("LibraryCore" "2018.6.14" REQUIRED)
+FIND_PACKAGE ("Eigen3" REQUIRED)
 
-### Library :: Mathematics [master]
+IF (EIGEN3_FOUND)
+    INCLUDE_DIRECTORIES (${EIGEN3_INCLUDE_DIR})
+ELSE ()
+    MESSAGE (SEND_ERROR "[Eigen 3] not found.")
+ENDIF ()
 
-FIND_PACKAGE ("LibraryMathematics" "2018.6.14" REQUIRED)
+### IAU SOFA
+
+FIND_PACKAGE ("SOFA" REQUIRED)
+
+IF (SOFA_FOUND)
+
+    INCLUDE_DIRECTORIES (${SOFA_INCLUDE_DIRS})
+    LINK_DIRECTORIES (${SOFA_LIBRARY_DIRS})
+
+ELSE ()
+    MESSAGE (SEND_ERROR "[IAU SOFA] not found.")
+ENDIF ()
+
+### Library :: Core [0.1]
+
+FIND_PACKAGE ("LibraryCore" "0.1" REQUIRED)
+
+### Library :: Mathematics [0.1]
+
+FIND_PACKAGE ("LibraryMathematics" "0.1" REQUIRED)
 
 #####################################################################################3###########################################################################
 
@@ -285,6 +308,7 @@ IF (BUILD_SHARED_LIBRARY)
 
     TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} "pthread")
     TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} ${Boost_LIBRARIES})
+    TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} ${SOFA_LIBRARIES})
     TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} ${LibraryCore_LIBRARIES})
     TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} ${LibraryMathematics_LIBRARIES})
     
@@ -312,6 +336,7 @@ IF (BUILD_STATIC_LIBRARY)
 
     TARGET_LINK_LIBRARIES (${STATIC_LIBRARY_TARGET} "pthread")
     TARGET_LINK_LIBRARIES (${STATIC_LIBRARY_TARGET} ${Boost_LIBRARIES})
+    TARGET_LINK_LIBRARIES (${STATIC_LIBRARY_TARGET} ${SOFA_LIBRARIES})
     TARGET_LINK_LIBRARIES (${STATIC_LIBRARY_TARGET} ${LibraryCore_LIBRARIES})
     TARGET_LINK_LIBRARIES (${STATIC_LIBRARY_TARGET} ${LibraryMathematics_LIBRARIES})
     
@@ -491,7 +516,7 @@ SET (CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}-${C
 SET (CPACK_RESOURCE_FILE_LICENSE "${PROJECT_SOURCE_DIR}/LICENSE")
 SET (CPACK_RESOURCE_FILE_README "${PROJECT_SOURCE_DIR}/README.md")
 
-SET (CPACK_COMPONENTS_ALL "applications" "headers" "libraries" "documentation" "tests" "data")
+SET (CPACK_COMPONENTS_ALL "applications" "headers" "libraries" "documentation" "tests" "data" "python")
 
 SET (CPACK_COMPONENT_APPLICATIONS_DISPLAY_NAME "Applications")
 SET (CPACK_COMPONENT_HEADERS_DISPLAY_NAME "Headers")

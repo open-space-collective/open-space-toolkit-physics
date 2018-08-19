@@ -248,13 +248,13 @@ class Instant
         /// @brief              Get string representation of instant
         ///
         /// @code
-        ///                     Instant::J2000().getString(Scale::TT) ; // 2000-01-01 12:00:00 [TT]
+        ///                     Instant::J2000().toString(Scale::TT) ; // 2000-01-01 12:00:00 [TT]
         /// @endcode
         ///
         /// @param              [in] aTimeScale A time scale
         /// @return             Serialized instant
 
-        String                  getString                                   (   const   Scale&                      aTimeScale                                  ) const ;
+        String                  toString                                    (   const   Scale&                      aTimeScale                                  =   Scale::UTC ) const ;
 
         /// @brief              Constructs an undefined instant
         ///
@@ -365,7 +365,7 @@ class Instant
 
                 Count           operator -                                  (           Int64                       aNanosecondDisplacement                     ) const ;
 
-                String          getString                                   ( ) const ;
+                String          toString                                    ( ) const ;
 
         } ;
 

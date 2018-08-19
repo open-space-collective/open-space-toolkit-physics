@@ -8,6 +8,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <Library/Physics/Units/Derived/Angle.hpp>
+#include <Library/Mathematics/Geometry/Angle.hpp>
 #include <Library/Core/Types/Real.hpp>
 
 #include <Global.test.hpp>
@@ -588,6 +589,25 @@ TEST (Library_Physics_Units_Derived_Angle, DivisionAssignmentOperator)
 
 }
 
+TEST (Library_Physics_Units_Derived_Angle, AngleConversionOperator)
+{
+
+    using library::physics::units::Angle ;
+
+    {
+
+        EXPECT_EQ(library::math::geom::Angle(+1.0, library::math::geom::Angle::Unit::Radian), Angle(+1.0, Angle::Unit::Radian)) ;
+
+    }
+
+    {
+
+        EXPECT_NO_THROW(library::math::geom::Angle angle = Angle::Undefined() ; (void) angle ;) ;
+
+    }
+
+}
+
 TEST (Library_Physics_Units_Derived_Angle, StreamOperator)
 {
 
@@ -640,12 +660,17 @@ TEST (Library_Physics_Units_Derived_Angle, GetUnit)
 
     {
 
-        EXPECT_EQ(Angle::Unit::Undefined, Angle(1.0, Angle::Unit::Undefined).getUnit()) ;
         EXPECT_EQ(Angle::Unit::Radian, Angle(1.0, Angle::Unit::Radian).getUnit()) ;
         EXPECT_EQ(Angle::Unit::Degree, Angle(1.0, Angle::Unit::Degree).getUnit()) ;
         EXPECT_EQ(Angle::Unit::Arcminute, Angle(1.0, Angle::Unit::Arcminute).getUnit()) ;
         EXPECT_EQ(Angle::Unit::Arcsecond, Angle(1.0, Angle::Unit::Arcsecond).getUnit()) ;
         EXPECT_EQ(Angle::Unit::Revolution, Angle(1.0, Angle::Unit::Revolution).getUnit()) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Angle::Undefined().getUnit()) ;
 
     }
 
@@ -668,7 +693,7 @@ TEST (Library_Physics_Units_Derived_Angle, In)
 
     {
 
-        EXPECT_FALSE(Angle::Undefined().in(Angle::Unit::Radian).isDefined()) ;
+        EXPECT_ANY_THROW(Angle::Undefined().in(Angle::Unit::Radian)) ;
 
     }
 
@@ -676,6 +701,8 @@ TEST (Library_Physics_Units_Derived_Angle, In)
 
 TEST (Library_Physics_Units_Derived_Angle, InRadians)
 {
+
+    using library::core::types::Real ;
 
     using library::physics::units::Angle ;
 
@@ -687,8 +714,48 @@ TEST (Library_Physics_Units_Derived_Angle, InRadians)
 
     {
 
-        EXPECT_FALSE(Angle::Undefined().inRadians().isDefined()) ;
+        EXPECT_EQ(0.0, Angle(0.0, Angle::Unit::Radian).inRadians(0.0, Real::TwoPi())) ;
 
+        EXPECT_EQ(Real::Pi(), Angle(Real::Pi(), Angle::Unit::Radian).inRadians(0.0, Real::TwoPi())) ;
+        EXPECT_EQ(0.0, Angle(Real::TwoPi(), Angle::Unit::Radian).inRadians(0.0, Real::TwoPi())) ;
+        EXPECT_EQ(Real::Pi(), Angle(3.0 * Real::Pi(), Angle::Unit::Radian).inRadians(0.0, Real::TwoPi())) ;
+        EXPECT_EQ(0.0, Angle(4.0 * Real::Pi(), Angle::Unit::Radian).inRadians(0.0, Real::TwoPi())) ;
+
+        EXPECT_EQ(Real::Pi(), Angle(-Real::Pi(), Angle::Unit::Radian).inRadians(0.0, Real::TwoPi())) ;
+        EXPECT_EQ(0.0, Angle(-Real::TwoPi(), Angle::Unit::Radian).inRadians(0.0, Real::TwoPi())) ;
+        EXPECT_EQ(Real::Pi(), Angle(-3.0 * Real::Pi(), Angle::Unit::Radian).inRadians(0.0, Real::TwoPi())) ;
+        EXPECT_EQ(0.0, Angle(-4.0 * Real::Pi(), Angle::Unit::Radian).inRadians(0.0, Real::TwoPi())) ;
+
+    }
+
+    {
+
+        EXPECT_EQ(0.0, Angle(0.0, Angle::Unit::Radian).inRadians(-Real::Pi(), Real::Pi())) ;
+
+        EXPECT_EQ(-Real::Pi(), Angle(Real::Pi(), Angle::Unit::Radian).inRadians(-Real::Pi(), Real::Pi())) ;
+        EXPECT_EQ(0.0, Angle(Real::TwoPi(), Angle::Unit::Radian).inRadians(-Real::Pi(), Real::Pi())) ;
+        EXPECT_EQ(-Real::Pi(), Angle(3.0 * Real::Pi(), Angle::Unit::Radian).inRadians(-Real::Pi(), Real::Pi())) ;
+        EXPECT_EQ(0.0, Angle(4.0 * Real::Pi(), Angle::Unit::Radian).inRadians(-Real::Pi(), Real::Pi())) ;
+
+        EXPECT_EQ(-Real::Pi(), Angle(-Real::Pi(), Angle::Unit::Radian).inRadians(-Real::Pi(), Real::Pi())) ;
+        EXPECT_EQ(0.0, Angle(-Real::TwoPi(), Angle::Unit::Radian).inRadians(-Real::Pi(), Real::Pi())) ;
+        EXPECT_EQ(-Real::Pi(), Angle(-3.0 * Real::Pi(), Angle::Unit::Radian).inRadians(-Real::Pi(), Real::Pi())) ;
+        EXPECT_EQ(0.0, Angle(-4.0 * Real::Pi(), Angle::Unit::Radian).inRadians(-Real::Pi(), Real::Pi())) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Angle::Undefined().inRadians()) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Angle(0.0, Angle::Unit::Radian).inRadians(0.0, 0.0)) ;
+        EXPECT_ANY_THROW(Angle(0.0, Angle::Unit::Radian).inRadians(0.0, Real::Pi())) ;
+        EXPECT_ANY_THROW(Angle(0.0, Angle::Unit::Radian).inRadians(+Real::Pi(), -Real::Pi())) ;
+        
     }
 
 }
@@ -707,8 +774,48 @@ TEST (Library_Physics_Units_Derived_Angle, InDegrees)
 
     {
 
-        EXPECT_FALSE(Angle::Undefined().inDegrees().isDefined()) ;
+        EXPECT_EQ(0.0, Angle(0.0, Angle::Unit::Radian).inDegrees(0.0, 360.0)) ;
 
+        EXPECT_EQ(180.0, Angle(Real::Pi(), Angle::Unit::Radian).inDegrees(0.0, 360.0)) ;
+        EXPECT_EQ(0.0, Angle(Real::TwoPi(), Angle::Unit::Radian).inDegrees(0.0, 360.0)) ;
+        EXPECT_EQ(180.0, Angle(3.0 * Real::Pi(), Angle::Unit::Radian).inDegrees(0.0, 360.0)) ;
+        EXPECT_EQ(0.0, Angle(4.0 * Real::Pi(), Angle::Unit::Radian).inDegrees(0.0, 360.0)) ;
+
+        EXPECT_EQ(180.0, Angle(-Real::Pi(), Angle::Unit::Radian).inDegrees(0.0, 360.0)) ;
+        EXPECT_EQ(0.0, Angle(-Real::TwoPi(), Angle::Unit::Radian).inDegrees(0.0, 360.0)) ;
+        EXPECT_EQ(180.0, Angle(-3.0 * Real::Pi(), Angle::Unit::Radian).inDegrees(0.0, 360.0)) ;
+        EXPECT_EQ(0.0, Angle(-4.0 * Real::Pi(), Angle::Unit::Radian).inDegrees(0.0, 360.0)) ;
+
+    }
+
+    {
+
+        EXPECT_EQ(0.0, Angle(0.0, Angle::Unit::Radian).inDegrees(-180.0, +180.0)) ;
+
+        EXPECT_EQ(-180.0, Angle(Real::Pi(), Angle::Unit::Radian).inDegrees(-180.0, +180.0)) ;
+        EXPECT_EQ(0.0, Angle(Real::TwoPi(), Angle::Unit::Radian).inDegrees(-180.0, +180.0)) ;
+        EXPECT_EQ(-180.0, Angle(3.0 * Real::Pi(), Angle::Unit::Radian).inDegrees(-180.0, +180.0)) ;
+        EXPECT_EQ(0.0, Angle(4.0 * Real::Pi(), Angle::Unit::Radian).inDegrees(-180.0, +180.0)) ;
+
+        EXPECT_EQ(-180.0, Angle(-Real::Pi(), Angle::Unit::Radian).inDegrees(-180.0, +180.0)) ;
+        EXPECT_EQ(0.0, Angle(-Real::TwoPi(), Angle::Unit::Radian).inDegrees(-180.0, +180.0)) ;
+        EXPECT_EQ(-180.0, Angle(-3.0 * Real::Pi(), Angle::Unit::Radian).inDegrees(-180.0, +180.0)) ;
+        EXPECT_EQ(0.0, Angle(-4.0 * Real::Pi(), Angle::Unit::Radian).inDegrees(-180.0, +180.0)) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Angle::Undefined().inDegrees()) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Angle(0.0, Angle::Unit::Radian).inDegrees(0.0, 0.0)) ;
+        EXPECT_ANY_THROW(Angle(0.0, Angle::Unit::Radian).inDegrees(0.0, 180.0)) ;
+        EXPECT_ANY_THROW(Angle(0.0, Angle::Unit::Radian).inDegrees(+180.0, -180.0)) ;
+        
     }
 
 }
@@ -727,8 +834,48 @@ TEST (Library_Physics_Units_Derived_Angle, InArcminutes)
 
     {
 
-        EXPECT_FALSE(Angle::Undefined().inArcminutes().isDefined()) ;
+        EXPECT_EQ(0.0, Angle(0.0, Angle::Unit::Radian).inArcminutes(0.0, 360.0 * 60.0)) ;
 
+        EXPECT_EQ(180.0 * 60.0, Angle(Real::Pi(), Angle::Unit::Radian).inArcminutes(0.0, 360.0 * 60.0)) ;
+        EXPECT_EQ(0.0, Angle(Real::TwoPi(), Angle::Unit::Radian).inArcminutes(0.0, 360.0 * 60.0)) ;
+        EXPECT_EQ(180.0 * 60.0, Angle(3.0 * Real::Pi(), Angle::Unit::Radian).inArcminutes(0.0, 360.0 * 60.0)) ;
+        EXPECT_EQ(0.0, Angle(4.0 * Real::Pi(), Angle::Unit::Radian).inArcminutes(0.0, 360.0 * 60.0)) ;
+
+        EXPECT_EQ(180.0 * 60.0, Angle(-Real::Pi(), Angle::Unit::Radian).inArcminutes(0.0, 360.0 * 60.0)) ;
+        EXPECT_EQ(0.0, Angle(-Real::TwoPi(), Angle::Unit::Radian).inArcminutes(0.0, 360.0 * 60.0)) ;
+        EXPECT_EQ(180.0 * 60.0, Angle(-3.0 * Real::Pi(), Angle::Unit::Radian).inArcminutes(0.0, 360.0 * 60.0)) ;
+        EXPECT_EQ(0.0, Angle(-4.0 * Real::Pi(), Angle::Unit::Radian).inArcminutes(0.0, 360.0 * 60.0)) ;
+
+    }
+
+    {
+
+        EXPECT_EQ(0.0, Angle(0.0, Angle::Unit::Radian).inArcminutes(-180.0 * 60.0, +180.0 * 60.0)) ;
+
+        EXPECT_EQ(-180.0 * 60.0, Angle(Real::Pi(), Angle::Unit::Radian).inArcminutes(-180.0 * 60.0, +180.0 * 60.0)) ;
+        EXPECT_EQ(0.0, Angle(Real::TwoPi(), Angle::Unit::Radian).inArcminutes(-180.0 * 60.0, +180.0 * 60.0)) ;
+        EXPECT_EQ(-180.0 * 60.0, Angle(3.0 * Real::Pi(), Angle::Unit::Radian).inArcminutes(-180.0 * 60.0, +180.0 * 60.0)) ;
+        EXPECT_EQ(0.0, Angle(4.0 * Real::Pi(), Angle::Unit::Radian).inArcminutes(-180.0 * 60.0, +180.0 * 60.0)) ;
+
+        EXPECT_EQ(-180.0 * 60.0, Angle(-Real::Pi(), Angle::Unit::Radian).inArcminutes(-180.0 * 60.0, +180.0 * 60.0)) ;
+        EXPECT_EQ(0.0, Angle(-Real::TwoPi(), Angle::Unit::Radian).inArcminutes(-180.0 * 60.0, +180.0 * 60.0)) ;
+        EXPECT_EQ(-180.0 * 60.0, Angle(-3.0 * Real::Pi(), Angle::Unit::Radian).inArcminutes(-180.0 * 60.0, +180.0 * 60.0)) ;
+        EXPECT_EQ(0.0, Angle(-4.0 * Real::Pi(), Angle::Unit::Radian).inArcminutes(-180.0 * 60.0, +180.0 * 60.0)) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Angle::Undefined().inArcminutes()) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Angle(0.0, Angle::Unit::Radian).inDegrees(0.0, 0.0)) ;
+        EXPECT_ANY_THROW(Angle(0.0, Angle::Unit::Radian).inDegrees(0.0, 180.0 * 60.0)) ;
+        EXPECT_ANY_THROW(Angle(0.0, Angle::Unit::Radian).inDegrees(+180.0 * 60.0, -180.0 * 60.0)) ;
+        
     }
 
 }
@@ -747,8 +894,48 @@ TEST (Library_Physics_Units_Derived_Angle, InArcseconds)
 
     {
 
-        EXPECT_FALSE(Angle::Undefined().inArcseconds().isDefined()) ;
+        EXPECT_EQ(0.0, Angle(0.0, Angle::Unit::Radian).inArcseconds(0.0, 360.0 * 3600.0)) ;
 
+        EXPECT_EQ(180.0 * 3600.0, Angle(Real::Pi(), Angle::Unit::Radian).inArcseconds(0.0, 360.0 * 3600.0)) ;
+        EXPECT_EQ(0.0, Angle(Real::TwoPi(), Angle::Unit::Radian).inArcseconds(0.0, 360.0 * 3600.0)) ;
+        EXPECT_EQ(180.0 * 3600.0, Angle(3.0 * Real::Pi(), Angle::Unit::Radian).inArcseconds(0.0, 360.0 * 3600.0)) ;
+        EXPECT_EQ(0.0, Angle(4.0 * Real::Pi(), Angle::Unit::Radian).inArcseconds(0.0, 360.0 * 3600.0)) ;
+
+        EXPECT_EQ(180.0 * 3600.0, Angle(-Real::Pi(), Angle::Unit::Radian).inArcseconds(0.0, 360.0 * 3600.0)) ;
+        EXPECT_EQ(0.0, Angle(-Real::TwoPi(), Angle::Unit::Radian).inArcseconds(0.0, 360.0 * 3600.0)) ;
+        EXPECT_EQ(180.0 * 3600.0, Angle(-3.0 * Real::Pi(), Angle::Unit::Radian).inArcseconds(0.0, 360.0 * 3600.0)) ;
+        EXPECT_EQ(0.0, Angle(-4.0 * Real::Pi(), Angle::Unit::Radian).inArcseconds(0.0, 360.0 * 3600.0)) ;
+
+    }
+
+    {
+
+        EXPECT_EQ(0.0, Angle(0.0, Angle::Unit::Radian).inArcseconds(-180.0 * 3600.0, +180.0 * 3600.0)) ;
+
+        EXPECT_EQ(-180.0 * 3600.0, Angle(Real::Pi(), Angle::Unit::Radian).inArcseconds(-180.0 * 3600.0, +180.0 * 3600.0)) ;
+        EXPECT_EQ(0.0, Angle(Real::TwoPi(), Angle::Unit::Radian).inArcseconds(-180.0 * 3600.0, +180.0 * 3600.0)) ;
+        EXPECT_EQ(-180.0 * 3600.0, Angle(3.0 * Real::Pi(), Angle::Unit::Radian).inArcseconds(-180.0 * 3600.0, +180.0 * 3600.0)) ;
+        EXPECT_EQ(0.0, Angle(4.0 * Real::Pi(), Angle::Unit::Radian).inArcseconds(-180.0 * 3600.0, +180.0 * 3600.0)) ;
+
+        EXPECT_EQ(-180.0 * 3600.0, Angle(-Real::Pi(), Angle::Unit::Radian).inArcseconds(-180.0 * 3600.0, +180.0 * 3600.0)) ;
+        EXPECT_EQ(0.0, Angle(-Real::TwoPi(), Angle::Unit::Radian).inArcseconds(-180.0 * 3600.0, +180.0 * 3600.0)) ;
+        EXPECT_EQ(-180.0 * 3600.0, Angle(-3.0 * Real::Pi(), Angle::Unit::Radian).inArcseconds(-180.0 * 3600.0, +180.0 * 3600.0)) ;
+        EXPECT_EQ(0.0, Angle(-4.0 * Real::Pi(), Angle::Unit::Radian).inArcseconds(-180.0 * 3600.0, +180.0 * 3600.0)) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Angle::Undefined().inArcseconds()) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Angle(0.0, Angle::Unit::Radian).inDegrees(0.0, 0.0)) ;
+        EXPECT_ANY_THROW(Angle(0.0, Angle::Unit::Radian).inDegrees(0.0, 180.0 * 3600.0)) ;
+        EXPECT_ANY_THROW(Angle(0.0, Angle::Unit::Radian).inDegrees(+180.0 * 3600.0, -180.0 * 3600.0)) ;
+        
     }
 
 }
@@ -767,42 +954,64 @@ TEST (Library_Physics_Units_Derived_Angle, InRevolutions)
 
     {
 
-        EXPECT_FALSE(Angle::Undefined().inRevolutions().isDefined()) ;
+        EXPECT_ANY_THROW(Angle::Undefined().inRevolutions()) ;
 
     }
 
 }
 
-TEST (Library_Physics_Units_Derived_Angle, GetString)
+TEST (Library_Physics_Units_Derived_Angle, ToString)
 {
 
     using library::physics::units::Angle ; 
 
     {
 
-        EXPECT_EQ("1.0 [rad]", Angle(1.0, Angle::Unit::Radian).getString()) ;
-        EXPECT_EQ("1.0 [deg]", Angle(1.0, Angle::Unit::Degree).getString()) ;
-        EXPECT_EQ("1.0 [amin]", Angle(1.0, Angle::Unit::Arcminute).getString()) ;
-        EXPECT_EQ("1.0 [asec]", Angle(1.0, Angle::Unit::Arcsecond).getString()) ;
-        EXPECT_EQ("1.0 [rev]", Angle(1.0, Angle::Unit::Revolution).getString()) ;
+        EXPECT_EQ("1.0 [rad]", Angle(1.0, Angle::Unit::Radian).toString()) ;
+        EXPECT_EQ("1.0 [deg]", Angle(1.0, Angle::Unit::Degree).toString()) ;
+        EXPECT_EQ("1.0 [amin]", Angle(1.0, Angle::Unit::Arcminute).toString()) ;
+        EXPECT_EQ("1.0 [asec]", Angle(1.0, Angle::Unit::Arcsecond).toString()) ;
+        EXPECT_EQ("1.0 [rev]", Angle(1.0, Angle::Unit::Revolution).toString()) ;
 
-        EXPECT_EQ("-1.0 [rad]", Angle(-1.0, Angle::Unit::Radian).getString()) ;
-        EXPECT_EQ("-1.0 [deg]", Angle(-1.0, Angle::Unit::Degree).getString()) ;
-        EXPECT_EQ("-1.0 [amin]", Angle(-1.0, Angle::Unit::Arcminute).getString()) ;
-        EXPECT_EQ("-1.0 [asec]", Angle(-1.0, Angle::Unit::Arcsecond).getString()) ;
-        EXPECT_EQ("-1.0 [rev]", Angle(-1.0, Angle::Unit::Revolution).getString()) ;
+        EXPECT_EQ("-1.0 [rad]", Angle(-1.0, Angle::Unit::Radian).toString()) ;
+        EXPECT_EQ("-1.0 [deg]", Angle(-1.0, Angle::Unit::Degree).toString()) ;
+        EXPECT_EQ("-1.0 [amin]", Angle(-1.0, Angle::Unit::Arcminute).toString()) ;
+        EXPECT_EQ("-1.0 [asec]", Angle(-1.0, Angle::Unit::Arcsecond).toString()) ;
+        EXPECT_EQ("-1.0 [rev]", Angle(-1.0, Angle::Unit::Revolution).toString()) ;
 
-        EXPECT_EQ("123.456 [rad]", Angle(123.456, Angle::Unit::Radian).getString()) ;
-        EXPECT_EQ("123.456 [deg]", Angle(123.456, Angle::Unit::Degree).getString()) ;
-        EXPECT_EQ("123.456 [amin]", Angle(123.456, Angle::Unit::Arcminute).getString()) ;
-        EXPECT_EQ("123.456 [asec]", Angle(123.456, Angle::Unit::Arcsecond).getString()) ;
-        EXPECT_EQ("123.456 [rev]", Angle(123.456, Angle::Unit::Revolution).getString()) ;
+        EXPECT_EQ("123.456 [rad]", Angle(123.456, Angle::Unit::Radian).toString()) ;
+        EXPECT_EQ("123.456 [deg]", Angle(123.456, Angle::Unit::Degree).toString()) ;
+        EXPECT_EQ("123.456 [amin]", Angle(123.456, Angle::Unit::Arcminute).toString()) ;
+        EXPECT_EQ("123.456 [asec]", Angle(123.456, Angle::Unit::Arcsecond).toString()) ;
+        EXPECT_EQ("123.456 [rev]", Angle(123.456, Angle::Unit::Revolution).toString()) ;
 
     }
 
     {
 
-        EXPECT_EQ("Undef", Angle::Undefined().getString()) ;
+        EXPECT_EQ("1.000 [rad]", Angle(1.0, Angle::Unit::Radian).toString(3)) ;
+        EXPECT_EQ("1.000 [deg]", Angle(1.0, Angle::Unit::Degree).toString(3)) ;
+        EXPECT_EQ("1.000 [amin]", Angle(1.0, Angle::Unit::Arcminute).toString(3)) ;
+        EXPECT_EQ("1.000 [asec]", Angle(1.0, Angle::Unit::Arcsecond).toString(3)) ;
+        EXPECT_EQ("1.000 [rev]", Angle(1.0, Angle::Unit::Revolution).toString(3)) ;
+
+        EXPECT_EQ("-1.000 [rad]", Angle(-1.0, Angle::Unit::Radian).toString(3)) ;
+        EXPECT_EQ("-1.000 [deg]", Angle(-1.0, Angle::Unit::Degree).toString(3)) ;
+        EXPECT_EQ("-1.000 [amin]", Angle(-1.0, Angle::Unit::Arcminute).toString(3)) ;
+        EXPECT_EQ("-1.000 [asec]", Angle(-1.0, Angle::Unit::Arcsecond).toString(3)) ;
+        EXPECT_EQ("-1.000 [rev]", Angle(-1.0, Angle::Unit::Revolution).toString(3)) ;
+
+        EXPECT_EQ("123.456 [rad]", Angle(123.456123, Angle::Unit::Radian).toString(3)) ;
+        EXPECT_EQ("123.456 [deg]", Angle(123.456123, Angle::Unit::Degree).toString(3)) ;
+        EXPECT_EQ("123.456 [amin]", Angle(123.456123, Angle::Unit::Arcminute).toString(3)) ;
+        EXPECT_EQ("123.456 [asec]", Angle(123.456123, Angle::Unit::Arcsecond).toString(3)) ;
+        EXPECT_EQ("123.456 [rev]", Angle(123.456123, Angle::Unit::Revolution).toString(3)) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Angle::Undefined().toString()) ;
         
     }
 
@@ -817,8 +1026,6 @@ TEST (Library_Physics_Units_Derived_Angle, Undefined)
 
         EXPECT_NO_THROW(Angle::Undefined()) ;
         EXPECT_FALSE(Angle::Undefined().isDefined()) ;
-
-        EXPECT_NO_THROW(Angle::Undefined().in(Angle::Unit::Radian)) ;
 
     }
 

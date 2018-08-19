@@ -172,7 +172,7 @@ Real                            DateTime::getModifiedJulianDate             ( ) 
 
 }
 
-String                          DateTime::getString                         (   const   DateTime::Format&           aFormat                                     ) const
+String                          DateTime::toString                         (   const   DateTime::Format&           aFormat                                     ) const
 {
     
     if (!this->isDefined())
@@ -184,10 +184,13 @@ String                          DateTime::getString                         (   
     {
 
         case DateTime::Format::Standard:
-            return date_.getString() + " " + time_.getString(Time::Format::Standard) ;
+            return date_.toString(Date::Format::Standard) + " " + time_.toString(Time::Format::Standard) ;
 
         case DateTime::Format::ISO8601:
-            return date_.getString() + "T" + time_.getString(Time::Format::ISO8601) ;
+            return date_.toString(Date::Format::Standard) + "T" + time_.toString(Time::Format::ISO8601) ;
+
+        case DateTime::Format::STK:
+            return date_.toString(Date::Format::STK) + " " + time_.toString(Time::Format::ISO8601) ;
 
         default:
             throw library::core::error::runtime::Wrong("Format") ;
@@ -380,6 +383,11 @@ DateTime                        DateTime::Parse                             (   
             {
                 return DateTime::Parse(aString, DateTime::Format::ISO8601) ;
             }
+
+            if (aString.match(std::regex("^([\\d]{1,2} [\\w]{3} [\\d]{4}) ([0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?)$")))
+            {
+                return DateTime::Parse(aString, DateTime::Format::STK) ;
+            }
             
             return DateTime::Parse(aString, DateTime::Format::Standard) ;
 
@@ -392,7 +400,7 @@ DateTime                        DateTime::Parse                             (   
 
             if (boost::regex_match(aString, match, boost::regex("^([-]?[0-9]+-[0-9]{2}-[0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,3})?(?:\\.[0-9]{1,3})?(?:\\.[0-9]{1,3})?)$")))
             {
-                return DateTime(Date::Parse(String(match[1])), Time::Parse(String(match[2]), Time::Format::Standard)) ;
+                return DateTime(Date::Parse(String(match[1]), Date::Format::Standard), Time::Parse(String(match[2]), Time::Format::Standard)) ;
             }
             else
             {
@@ -408,11 +416,27 @@ DateTime                        DateTime::Parse                             (   
 
             if (boost::regex_match(aString, match, boost::regex("^([-]?[0-9]+-[0-9]{2}-[0-9]{2})T([0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?)$")))
             {
-                return DateTime(Date::Parse(String(match[1])), Time::Parse(String(match[2]), Time::Format::ISO8601)) ;
+                return DateTime(Date::Parse(String(match[1]), Date::Format::Standard), Time::Parse(String(match[2]), Time::Format::ISO8601)) ;
             }
             else
             {
                 throw library::core::error::RuntimeError("Cannot parse [ISO 8601] date-time string [{}].", aString) ;
+            }
+
+        }
+
+        case DateTime::Format::STK:
+        {
+
+            boost::smatch match ;
+
+            if (boost::regex_match(aString, match, boost::regex("^([\\d]{1,2} [\\w]{3} [\\d]{4}) ([0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?)$")))
+            {
+                return DateTime(Date::Parse(String(match[1]), Date::Format::STK), Time::Parse(String(match[2]), Time::Format::ISO8601)) ;
+            }
+            else
+            {
+                throw library::core::error::RuntimeError("Cannot parse [STK] date-time string [{}].", aString) ;
             }
 
         }

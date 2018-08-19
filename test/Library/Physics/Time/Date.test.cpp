@@ -205,24 +205,45 @@ TEST (Library_Physics_Time_Date, GetDay)
 
 }
 
-TEST (Library_Physics_Time_Date, GetString)
+TEST (Library_Physics_Time_Date, ToString)
 {
 
     using library::physics::time::Date ;
 
     {
 
-        EXPECT_EQ("2000-01-01", Date(2000, 1, 1).getString()) ;
-        EXPECT_EQ("2018-12-31", Date(2018, 12, 31).getString()) ;
+        EXPECT_EQ("2000-01-01", Date(2000, 1, 1).toString()) ;
+        EXPECT_EQ("2018-12-31", Date(2018, 12, 31).toString()) ;
 
-        EXPECT_EQ("1400-01-01", Date(1400, 1, 1).getString()) ;
-        EXPECT_EQ("9999-12-31", Date(9999, 12, 31).getString()) ;
+        EXPECT_EQ("1400-01-01", Date(1400, 1, 1).toString()) ;
+        EXPECT_EQ("9999-12-31", Date(9999, 12, 31).toString()) ;
+
+    }
+
+    {
+
+        EXPECT_EQ("2000-01-01", Date(2000, 1, 1).toString(Date::Format::Standard)) ;
+        EXPECT_EQ("2018-12-31", Date(2018, 12, 31).toString(Date::Format::Standard)) ;
+
+        EXPECT_EQ("1400-01-01", Date(1400, 1, 1).toString(Date::Format::Standard)) ;
+        EXPECT_EQ("9999-12-31", Date(9999, 12, 31).toString(Date::Format::Standard)) ;
+
+    }
+
+    {
+
+        EXPECT_EQ("1 Jan 2000", Date(2000, 1, 1).toString(Date::Format::STK)) ;
+        EXPECT_EQ("31 Dec 2018", Date(2018, 12, 31).toString(Date::Format::STK)) ;
+
+        EXPECT_EQ("1 Jan 1400", Date(1400, 1, 1).toString(Date::Format::STK)) ;
+        EXPECT_EQ("31 Dec 9999", Date(9999, 12, 31).toString(Date::Format::STK)) ;
 
     }
 
     {
         
-        EXPECT_ANY_THROW(Date::Undefined().getString()) ;
+        EXPECT_ANY_THROW(Date::Undefined().toString()) ;
+        EXPECT_ANY_THROW(Date(2000, 1, 1).toString(Date::Format::Undefined)) ;
 
     }
 
@@ -390,6 +411,38 @@ TEST (Library_Physics_Time_Date, Parse)
         
         EXPECT_EQ(Date(1400, 1, 1), Date::Parse("1400-01-01")) ;
         EXPECT_EQ(Date(9999, 12, 31), Date::Parse("9999-12-31")) ;
+
+        EXPECT_EQ(Date(2000, 1, 1), Date::Parse("1 Jan 2000")) ;
+        EXPECT_EQ(Date(1980, 1, 6), Date::Parse("6 Jan 1980")) ;
+        EXPECT_EQ(Date(1970, 1, 1), Date::Parse("1 Jan 1970")) ;
+        EXPECT_EQ(Date(1858, 11, 17), Date::Parse("17 Nov 1858")) ;
+        
+        EXPECT_EQ(Date(1400, 1, 1), Date::Parse("1 Jan 1400")) ;
+        EXPECT_EQ(Date(9999, 12, 31), Date::Parse("31 Dec 9999")) ;
+
+    }
+
+    {
+
+        EXPECT_EQ(Date(2000, 1, 1), Date::Parse("2000-01-01", Date::Format::Standard)) ;
+        EXPECT_EQ(Date(1980, 1, 6), Date::Parse("1980-01-06", Date::Format::Standard)) ;
+        EXPECT_EQ(Date(1970, 1, 1), Date::Parse("1970-01-01", Date::Format::Standard)) ;
+        EXPECT_EQ(Date(1858, 11, 17), Date::Parse("1858-11-17", Date::Format::Standard)) ;
+        
+        EXPECT_EQ(Date(1400, 1, 1), Date::Parse("1400-01-01", Date::Format::Standard)) ;
+        EXPECT_EQ(Date(9999, 12, 31), Date::Parse("9999-12-31", Date::Format::Standard)) ;
+
+    }
+
+    {
+
+        EXPECT_EQ(Date(2000, 1, 1), Date::Parse("1 Jan 2000", Date::Format::STK)) ;
+        EXPECT_EQ(Date(1980, 1, 6), Date::Parse("6 Jan 1980", Date::Format::STK)) ;
+        EXPECT_EQ(Date(1970, 1, 1), Date::Parse("1 Jan 1970", Date::Format::STK)) ;
+        EXPECT_EQ(Date(1858, 11, 17), Date::Parse("17 Nov 1858", Date::Format::STK)) ;
+        
+        EXPECT_EQ(Date(1400, 1, 1), Date::Parse("1 Jan 1400", Date::Format::STK)) ;
+        EXPECT_EQ(Date(9999, 12, 31), Date::Parse("31 Dec 9999", Date::Format::STK)) ;
 
     }
 

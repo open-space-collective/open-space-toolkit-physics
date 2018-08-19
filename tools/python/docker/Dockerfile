@@ -1,30 +1,18 @@
-# coding=utf-8
-
 ################################################################################################################################################################
 
 # @project        Library/Physics
-# @file           Library/Physics/LibraryMathematicsPy/Types.test.py
+# @file           tools/python/docker/Dockerfile
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        TBD
 
 ################################################################################################################################################################
 
-# Types
+FROM jupyter/scipy-notebook:latest
 
-from LibraryMathematicsPy import Types
+LABEL maintainer="lucas@loftorbital.com"
 
-## Integer
+RUN pip install --index-url https://test.pypi.org/simple/ LibraryCorePy==0.1.7
 
-assert Types.Integer(0) == 0
-assert Types.Integer(123) == 123
-assert Types.Integer(+123) == +123
-assert Types.Integer(-123) == -123
-
-assert Types.Integer(0).getString() == "0"
-assert Types.Integer(123).getString() == "123"
-assert Types.Integer(+123).getString() == "123"
-assert Types.Integer(-123).getString() == "-123"
-
-## Real
+RUN pip install --index-url https://test.pypi.org/simple/ LibraryMathematicsPy==0.1.1.17
 
 ################################################################################################################################################################

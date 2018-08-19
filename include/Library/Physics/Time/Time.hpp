@@ -11,6 +11,7 @@
 #define __Library_Physics_Time_Time__
 
 #include <Library/Core/Types/String.hpp>
+#include <Library/Core/Types/Real.hpp>
 #include <Library/Core/Types/Integer.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -26,6 +27,7 @@ namespace time
 
 using library::core::types::Uint8 ;
 using library::core::types::Uint16 ;
+using library::core::types::Real ;
 using library::core::types::String ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -150,16 +152,22 @@ class Time
         
         Uint16                  getNanosecond                               ( ) const ;
 
+        /// @brief              Get floating seconds (0.0 - 59.999999999)
+        ///
+        /// @return             Floating second
+
+        Real                    getFloatingSeconds                          ( ) const ;
+
         /// @brief              Get string representation of time
         ///
         /// @code
-        ///                     Time(12, 34, 56).getString() ; // 12:34:56.000.000.000
+        ///                     Time(12, 34, 56).toString() ; // 12:34:56.000.000.000
         /// @endcode
         ///
         /// @param              [in] (optional) aFormat A time format
         /// @return             Serialized time
 
-        String                  getString                                   (   const   Time::Format&               aFormat                                     =   Time::Format::Standard ) const ;
+        String                  toString                                    (   const   Time::Format&               aFormat                                     =   Time::Format::Standard ) const ;
 
         /// @brief              Set hour
         ///

@@ -673,36 +673,36 @@ TEST (Library_Physics_Units_Derived, Constructor)
 
 // }
 
-// TEST (Library_Physics_Units_Derived, GetString)
+// TEST (Library_Physics_Units_Derived, ToString)
 // {
 
 //     using library::physics::units::Derived ; 
 
 //     {
 
-//         EXPECT_EQ("1.0 [m]", Derived(1.0, Derived::Unit::Meter).getString()) ;
-//         EXPECT_EQ("1.0 [ft]", Derived(1.0, Derived::Unit::Foot).getString()) ;
-//         EXPECT_EQ("1.0 [mi]", Derived(1.0, Derived::Unit::TerrestrialMile).getString()) ;
-//         EXPECT_EQ("1.0 [nmi]", Derived(1.0, Derived::Unit::NauticalMile).getString()) ;
-//         EXPECT_EQ("1.0 [AU]", Derived(1.0, Derived::Unit::AstronomicalUnit).getString()) ;
+//         EXPECT_EQ("1.0 [m]", Derived(1.0, Derived::Unit::Meter).toString()) ;
+//         EXPECT_EQ("1.0 [ft]", Derived(1.0, Derived::Unit::Foot).toString()) ;
+//         EXPECT_EQ("1.0 [mi]", Derived(1.0, Derived::Unit::TerrestrialMile).toString()) ;
+//         EXPECT_EQ("1.0 [nmi]", Derived(1.0, Derived::Unit::NauticalMile).toString()) ;
+//         EXPECT_EQ("1.0 [AU]", Derived(1.0, Derived::Unit::AstronomicalUnit).toString()) ;
 
-//         EXPECT_EQ("-1.0 [m]", Derived(-1.0, Derived::Unit::Meter).getString()) ;
-//         EXPECT_EQ("-1.0 [ft]", Derived(-1.0, Derived::Unit::Foot).getString()) ;
-//         EXPECT_EQ("-1.0 [mi]", Derived(-1.0, Derived::Unit::TerrestrialMile).getString()) ;
-//         EXPECT_EQ("-1.0 [nmi]", Derived(-1.0, Derived::Unit::NauticalMile).getString()) ;
-//         EXPECT_EQ("-1.0 [AU]", Derived(-1.0, Derived::Unit::AstronomicalUnit).getString()) ;
+//         EXPECT_EQ("-1.0 [m]", Derived(-1.0, Derived::Unit::Meter).toString()) ;
+//         EXPECT_EQ("-1.0 [ft]", Derived(-1.0, Derived::Unit::Foot).toString()) ;
+//         EXPECT_EQ("-1.0 [mi]", Derived(-1.0, Derived::Unit::TerrestrialMile).toString()) ;
+//         EXPECT_EQ("-1.0 [nmi]", Derived(-1.0, Derived::Unit::NauticalMile).toString()) ;
+//         EXPECT_EQ("-1.0 [AU]", Derived(-1.0, Derived::Unit::AstronomicalUnit).toString()) ;
 
-//         EXPECT_EQ("123.456 [m]", Derived(123.456, Derived::Unit::Meter).getString()) ;
-//         EXPECT_EQ("123.456 [ft]", Derived(123.456, Derived::Unit::Foot).getString()) ;
-//         EXPECT_EQ("123.456 [mi]", Derived(123.456, Derived::Unit::TerrestrialMile).getString()) ;
-//         EXPECT_EQ("123.456 [nmi]", Derived(123.456, Derived::Unit::NauticalMile).getString()) ;
-//         EXPECT_EQ("123.456 [AU]", Derived(123.456, Derived::Unit::AstronomicalUnit).getString()) ;
+//         EXPECT_EQ("123.456 [m]", Derived(123.456, Derived::Unit::Meter).toString()) ;
+//         EXPECT_EQ("123.456 [ft]", Derived(123.456, Derived::Unit::Foot).toString()) ;
+//         EXPECT_EQ("123.456 [mi]", Derived(123.456, Derived::Unit::TerrestrialMile).toString()) ;
+//         EXPECT_EQ("123.456 [nmi]", Derived(123.456, Derived::Unit::NauticalMile).toString()) ;
+//         EXPECT_EQ("123.456 [AU]", Derived(123.456, Derived::Unit::AstronomicalUnit).toString()) ;
 
 //     }
 
 //     {
 
-//         EXPECT_EQ("Undef", Derived::Undefined().getString()) ;
+//         EXPECT_ANY_THROW(Derived::Undefined().toString()) ;
         
 //     }
 

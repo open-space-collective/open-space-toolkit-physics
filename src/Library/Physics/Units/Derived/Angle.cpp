@@ -223,6 +223,42 @@ Angle                           operator *                                  (   
 
 }
 
+                                Angle::operator library::math::geom::Angle  ( ) const
+{
+    
+    if (!this->isDefined())
+    {
+        return library::math::geom::Angle::Undefined() ;
+    }
+
+    switch (unit_)
+    {
+
+        case Angle::Unit::Radian:
+            return library::math::geom::Angle(this->accessValue(), library::math::geom::Angle::Unit::Radian) ;
+        
+        case Angle::Unit::Degree:
+            return library::math::geom::Angle(this->accessValue(), library::math::geom::Angle::Unit::Degree) ;
+        
+        case Angle::Unit::Arcminute:
+            return library::math::geom::Angle(this->accessValue(), library::math::geom::Angle::Unit::Arcminute) ;
+        
+        case Angle::Unit::Arcsecond:
+            return library::math::geom::Angle(this->accessValue(), library::math::geom::Angle::Unit::Arcsecond) ;
+        
+        case Angle::Unit::Revolution:
+            return library::math::geom::Angle(this->accessValue(), library::math::geom::Angle::Unit::Revolution) ;
+
+        default:
+            throw library::core::error::runtime::Wrong("Unit") ;
+            break ;
+
+    }
+
+    return library::math::geom::Angle::Undefined() ;
+
+}
+
 std::ostream&                   operator <<                                 (           std::ostream&               anOutputStream,
                                                                                 const   Angle&                      anAngle                                     )
 {
@@ -245,7 +281,14 @@ bool                            Angle::isDefined                            ( ) 
 
 Angle::Unit                     Angle::getUnit                              ( ) const
 {
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Angle") ;
+    }
+    
     return unit_ ;
+
 }
 
 Real                            Angle::in                                   (   const   Angle::Unit&                aUnit                                       ) const
@@ -253,7 +296,7 @@ Real                            Angle::in                                   (   
 
     if (!this->isDefined())
     {
-        return Real::Undefined() ;
+        throw library::core::error::runtime::Undefined("Angle") ;
     }
 
     if (unit_ == aUnit)
@@ -270,59 +313,127 @@ Real                            Angle::inRadians                            ( ) 
     return this->in(Angle::Unit::Radian) ;
 }
 
-// Real                            Angle::inRadians                            (   const    Real&                      aLowerBound,
-//                                                                                 const    Real&                      anUpperBound                                ) const
-// {
+Real                            Angle::inRadians                            (   const    Real&                      aLowerBound,
+                                                                                const    Real&                      anUpperBound                                ) const
+{
 
-// }
+    if (!aLowerBound.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Lower bound") ;
+    }
+
+    if (!anUpperBound.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Upper bound") ;
+    }
+
+    if ((anUpperBound - aLowerBound) != Real::TwoPi())
+    {
+        throw library::core::error::runtime::Undefined("Range span is not [2π].") ;
+    }
+    
+    return Angle::ReduceRange(this->in(Angle::Unit::Radian), aLowerBound, anUpperBound) ;
+
+}
 
 Real                            Angle::inDegrees                            ( ) const
 {
     return this->in(Angle::Unit::Degree) ;
 }
 
-// Real                            Angle::inDegrees                            (   const    Real&                      aLowerBound,
-//                                                                                 const    Real&                      anUpperBound                                ) const
-// {
+Real                            Angle::inDegrees                            (   const    Real&                      aLowerBound,
+                                                                                const    Real&                      anUpperBound                                ) const
+{
 
-// }
+    if (!aLowerBound.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Lower bound") ;
+    }
+
+    if (!anUpperBound.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Upper bound") ;
+    }
+
+    if ((anUpperBound - aLowerBound) != 360.0)
+    {
+        throw library::core::error::runtime::Undefined("Range span is not [360].") ;
+    }
+    
+    return Angle::ReduceRange(this->in(Angle::Unit::Degree), aLowerBound, anUpperBound) ;
+
+}
 
 Real                            Angle::inArcminutes                         ( ) const
 {
     return this->in(Angle::Unit::Arcminute) ;
 }
 
-// Real                            Angle::inArcminutes                         (   const    Real&                      aLowerBound,
-//                                                                                 const    Real&                      anUpperBound                                ) const
-// {
+Real                            Angle::inArcminutes                         (   const    Real&                      aLowerBound,
+                                                                                const    Real&                      anUpperBound                                ) const
+{
 
-// }
+    if (!aLowerBound.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Lower bound") ;
+    }
+
+    if (!anUpperBound.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Upper bound") ;
+    }
+
+    if ((anUpperBound - aLowerBound) != 21600.0)
+    {
+        throw library::core::error::runtime::Undefined("Range span is not [21600].") ;
+    }
+    
+    return Angle::ReduceRange(this->in(Angle::Unit::Arcminute), aLowerBound, anUpperBound) ;
+
+}
 
 Real                            Angle::inArcseconds                         ( ) const
 {
     return this->in(Angle::Unit::Arcsecond) ;
 }
 
-// Real                            Angle::inArcseconds                         (   const    Real&                      aLowerBound,
-//                                                                                 const    Real&                      anUpperBound                                ) const
-// {
+Real                            Angle::inArcseconds                         (   const    Real&                      aLowerBound,
+                                                                                const    Real&                      anUpperBound                                ) const
+{
 
-// }
+    if (!aLowerBound.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Lower bound") ;
+    }
+
+    if (!anUpperBound.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Upper bound") ;
+    }
+
+    if ((anUpperBound - aLowerBound) != 1296000.0)
+    {
+        throw library::core::error::runtime::Undefined("Range span is not [1296000].") ;
+    }
+    
+    return Angle::ReduceRange(this->in(Angle::Unit::Arcsecond), aLowerBound, anUpperBound) ;
+
+}
 
 Real                            Angle::inRevolutions                        ( ) const
 {
     return this->in(Angle::Unit::Revolution) ;
 }
 
-String                          Angle::getString                            ( ) const
+String                          Angle::toString                             (   const   Integer&                    aPrecision                                  ) const
 {
 
     if (!this->isDefined())
     {
-        return "Undef" ;
+        throw library::core::error::runtime::Undefined("Angle") ;
     }
 
-    return this->accessValue().getString() + " [" + Angle::SymbolFromUnit(unit_) + "]" ;
+    return this->accessValue().toString(aPrecision) + " [" + Angle::SymbolFromUnit(unit_) + "]" ;
 
 }
 
@@ -468,6 +579,11 @@ Real                            Angle::ReduceRange                          (   
     if ((aValue >= aRangeLowerBound) && (aValue < aRangeUpperBound)) // Value already in range
     {
         return aValue ;
+    }
+
+    if (aRangeLowerBound >= aRangeUpperBound)
+    {
+        throw library::core::error::RuntimeError("Lower bound [{}] greater than or equal to upper bound [{}].", aRangeLowerBound, aRangeUpperBound) ;
     }
 
     Real value = aValue ;

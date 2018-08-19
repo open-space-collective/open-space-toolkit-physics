@@ -12,7 +12,9 @@
 
 #include <Library/Physics/Time/Instant.hpp>
 #include <Library/Physics/Time/Scale.hpp>
+
 #include <Library/Mathematics/Objects/Interval.hpp>
+
 #include <Library/Core/Containers/Array.hpp>
 #include <Library/Core/Types/String.hpp>
 #include <Library/Core/Types/Real.hpp>
@@ -32,6 +34,7 @@ namespace time
 using library::core::types::Real ;
 using library::core::types::String ;
 using library::core::ctnr::Array ;
+
 using library::physics::time::Scale ;
 using library::physics::time::Instant ;
 
@@ -77,11 +80,22 @@ class Interval : public math::obj::Interval<Instant>
 
         Instant                 getCenter                                   ( ) const ;
 
-        String                  getString                                   (   const   Scale&                      aTimeScale                                  ) const ;
+        String                  toString                                    (   const   Scale&                      aTimeScale                                  =   Scale::UTC ) const ;
 
         Array<Instant>          generateGrid                                (   const   Duration&                   aTimeStep                                   ) const ;
 
         static Interval         Undefined                                   ( ) ;
+
+        /// @brief              Constructs a closed interval
+        ///
+        /// @code
+        ///                     Interval interval = Interval::Closed(Instant::J2000(), Instant::Now()) ; // [J2000, Now]
+        /// @endcode
+        ///
+        /// @return             Closed interval
+
+        static Interval         Closed                                      (   const   Instant&                    aLowerBound,
+                                                                                const   Instant&                    anUpperBound                                ) ;
 
         static Interval         Centered                                    (   const   Instant&                    aCentralInstant,
                                                                                 const   Duration&                   aDuration,

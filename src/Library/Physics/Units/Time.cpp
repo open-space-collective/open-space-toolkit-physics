@@ -37,15 +37,15 @@ bool                            Time::isDefined                             ( ) 
     return units::Unit::isDefined() && (unit_ != Time::Unit::Undefined) ;
 }
 
-String                          Time::getString                             ( ) const
+String                          Time::toString                              (   const   Integer&                    aPrecision                                  ) const
 {
 
     if (!this->isDefined())
     {
-        return "Undef" ;
+        throw library::core::error::runtime::Undefined("Time") ;
     }
 
-    return this->accessValue().getString() + " [" + Time::SymbolFromUnit(unit_) + "]" ;
+    return this->accessValue().toString(aPrecision) + " [" + Time::SymbolFromUnit(unit_) + "]" ;
 
 }
 

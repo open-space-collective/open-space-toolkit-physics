@@ -1,5 +1,5 @@
 #!/bin/bash
 
-export PYTHONPATH="${PYTHONPATH}:/library-math/lib"
+export PYTHONPATH="${PYTHONPATH}:/app/lib"
 
-python /library-math/share/python/test/Library/Physics/Types.test.py
+python3 /app/share/python/test/Library/Physics/Time.py

@@ -37,15 +37,15 @@ bool                            Mass::isDefined                             ( ) 
     return units::Unit::isDefined() && (unit_ != Mass::Unit::Undefined) ;
 }
 
-String                          Mass::getString                             ( ) const
+String                          Mass::toString                              (   const   Integer&                    aPrecision                                  ) const
 {
 
     if (!this->isDefined())
     {
-        return "Undef" ;
+        throw library::core::error::runtime::Undefined("Mass") ;
     }
 
-    return this->accessValue().getString() + " [" + Mass::SymbolFromUnit(unit_) + "]" ;
+    return this->accessValue().toString(aPrecision) + " [" + Mass::SymbolFromUnit(unit_) + "]" ;
 
 }
 

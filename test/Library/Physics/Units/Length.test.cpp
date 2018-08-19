@@ -653,36 +653,58 @@ TEST (Library_Physics_Units_Length, InKilometers)
 
 }
 
-TEST (Library_Physics_Units_Length, GetString)
+TEST (Library_Physics_Units_Length, ToString)
 {
 
     using library::physics::units::Length ; 
 
     {
 
-        EXPECT_EQ("1.0 [m]", Length(1.0, Length::Unit::Meter).getString()) ;
-        EXPECT_EQ("1.0 [ft]", Length(1.0, Length::Unit::Foot).getString()) ;
-        EXPECT_EQ("1.0 [mi]", Length(1.0, Length::Unit::TerrestrialMile).getString()) ;
-        EXPECT_EQ("1.0 [nmi]", Length(1.0, Length::Unit::NauticalMile).getString()) ;
-        EXPECT_EQ("1.0 [AU]", Length(1.0, Length::Unit::AstronomicalUnit).getString()) ;
+        EXPECT_EQ("1.0 [m]", Length(1.0, Length::Unit::Meter).toString()) ;
+        EXPECT_EQ("1.0 [ft]", Length(1.0, Length::Unit::Foot).toString()) ;
+        EXPECT_EQ("1.0 [mi]", Length(1.0, Length::Unit::TerrestrialMile).toString()) ;
+        EXPECT_EQ("1.0 [nmi]", Length(1.0, Length::Unit::NauticalMile).toString()) ;
+        EXPECT_EQ("1.0 [AU]", Length(1.0, Length::Unit::AstronomicalUnit).toString()) ;
 
-        EXPECT_EQ("-1.0 [m]", Length(-1.0, Length::Unit::Meter).getString()) ;
-        EXPECT_EQ("-1.0 [ft]", Length(-1.0, Length::Unit::Foot).getString()) ;
-        EXPECT_EQ("-1.0 [mi]", Length(-1.0, Length::Unit::TerrestrialMile).getString()) ;
-        EXPECT_EQ("-1.0 [nmi]", Length(-1.0, Length::Unit::NauticalMile).getString()) ;
-        EXPECT_EQ("-1.0 [AU]", Length(-1.0, Length::Unit::AstronomicalUnit).getString()) ;
+        EXPECT_EQ("-1.0 [m]", Length(-1.0, Length::Unit::Meter).toString()) ;
+        EXPECT_EQ("-1.0 [ft]", Length(-1.0, Length::Unit::Foot).toString()) ;
+        EXPECT_EQ("-1.0 [mi]", Length(-1.0, Length::Unit::TerrestrialMile).toString()) ;
+        EXPECT_EQ("-1.0 [nmi]", Length(-1.0, Length::Unit::NauticalMile).toString()) ;
+        EXPECT_EQ("-1.0 [AU]", Length(-1.0, Length::Unit::AstronomicalUnit).toString()) ;
 
-        EXPECT_EQ("123.456 [m]", Length(123.456, Length::Unit::Meter).getString()) ;
-        EXPECT_EQ("123.456 [ft]", Length(123.456, Length::Unit::Foot).getString()) ;
-        EXPECT_EQ("123.456 [mi]", Length(123.456, Length::Unit::TerrestrialMile).getString()) ;
-        EXPECT_EQ("123.456 [nmi]", Length(123.456, Length::Unit::NauticalMile).getString()) ;
-        EXPECT_EQ("123.456 [AU]", Length(123.456, Length::Unit::AstronomicalUnit).getString()) ;
+        EXPECT_EQ("123.456 [m]", Length(123.456, Length::Unit::Meter).toString()) ;
+        EXPECT_EQ("123.456 [ft]", Length(123.456, Length::Unit::Foot).toString()) ;
+        EXPECT_EQ("123.456 [mi]", Length(123.456, Length::Unit::TerrestrialMile).toString()) ;
+        EXPECT_EQ("123.456 [nmi]", Length(123.456, Length::Unit::NauticalMile).toString()) ;
+        EXPECT_EQ("123.456 [AU]", Length(123.456, Length::Unit::AstronomicalUnit).toString()) ;
 
     }
 
     {
 
-        EXPECT_EQ("Undef", Length::Undefined().getString()) ;
+        EXPECT_EQ("1.000 [m]", Length(1.0, Length::Unit::Meter).toString(3)) ;
+        EXPECT_EQ("1.000 [ft]", Length(1.0, Length::Unit::Foot).toString(3)) ;
+        EXPECT_EQ("1.000 [mi]", Length(1.0, Length::Unit::TerrestrialMile).toString(3)) ;
+        EXPECT_EQ("1.000 [nmi]", Length(1.0, Length::Unit::NauticalMile).toString(3)) ;
+        EXPECT_EQ("1.000 [AU]", Length(1.0, Length::Unit::AstronomicalUnit).toString(3)) ;
+
+        EXPECT_EQ("-1.000 [m]", Length(-1.0, Length::Unit::Meter).toString(3)) ;
+        EXPECT_EQ("-1.000 [ft]", Length(-1.0, Length::Unit::Foot).toString(3)) ;
+        EXPECT_EQ("-1.000 [mi]", Length(-1.0, Length::Unit::TerrestrialMile).toString(3)) ;
+        EXPECT_EQ("-1.000 [nmi]", Length(-1.0, Length::Unit::NauticalMile).toString(3)) ;
+        EXPECT_EQ("-1.000 [AU]", Length(-1.0, Length::Unit::AstronomicalUnit).toString(3)) ;
+
+        EXPECT_EQ("123.456 [m]", Length(123.456123, Length::Unit::Meter).toString(3)) ;
+        EXPECT_EQ("123.456 [ft]", Length(123.456123, Length::Unit::Foot).toString(3)) ;
+        EXPECT_EQ("123.456 [mi]", Length(123.456123, Length::Unit::TerrestrialMile).toString(3)) ;
+        EXPECT_EQ("123.456 [nmi]", Length(123.456123, Length::Unit::NauticalMile).toString(3)) ;
+        EXPECT_EQ("123.456 [AU]", Length(123.456123, Length::Unit::AstronomicalUnit).toString(3)) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Length::Undefined().toString()) ;
         
     }
 
@@ -699,6 +721,22 @@ TEST (Library_Physics_Units_Length, Undefined)
         EXPECT_FALSE(Length::Undefined().isDefined()) ;
 
         EXPECT_NO_THROW(Length::Undefined().in(Length::Unit::Meter)) ;
+
+    }
+
+}
+
+TEST (Library_Physics_Units_Length, Millimeters)
+{
+
+    using library::physics::units::Length ;
+
+    {
+
+        EXPECT_NO_THROW(Length::Millimeters(123.456)) ;
+        EXPECT_TRUE(Length::Millimeters(123.456).isDefined()) ;
+
+        EXPECT_EQ(0.123456, Length::Millimeters(123.456).in(Length::Unit::Meter)) ;
 
     }
 

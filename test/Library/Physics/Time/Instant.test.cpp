@@ -1059,7 +1059,7 @@ TEST (Library_Physics_Time_Instant, GetModifiedJulianDate)
 
 }
 
-TEST (Library_Physics_Time_Instant, GetString)
+TEST (Library_Physics_Time_Instant, ToString)
 {
     
     using library::core::types::String ;
@@ -1069,7 +1069,7 @@ TEST (Library_Physics_Time_Instant, GetString)
 
     {
 
-        EXPECT_EQ("2000-01-01 12:00:00 [TT]", Instant::J2000().getString(Scale::TT)) ;
+        EXPECT_EQ("2000-01-01 12:00:00 [TT]", Instant::J2000().toString(Scale::TT)) ;
 
     }
 
@@ -1078,18 +1078,18 @@ TEST (Library_Physics_Time_Instant, GetString)
         for (auto const& scale : scales)
         {
 
-            EXPECT_EQ(String::Format("2000-01-01 12:00:00 [{}]", StringFromScale(scale)), Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0, 0, 0, 0), scale).getString(scale)) ;
-            EXPECT_EQ(String::Format("2000-01-01 11:59:59.999.999.999 [{}]", StringFromScale(scale)), Instant::DateTime(DateTime(2000, 1, 1, 11, 59, 59, 999, 999, 999), scale).getString(scale)) ;
-            EXPECT_EQ(String::Format("2000-01-01 12:00:00.000.000.001 [{}]", StringFromScale(scale)), Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0, 0, 0, 1), scale).getString(scale)) ;
+            EXPECT_EQ(String::Format("2000-01-01 12:00:00 [{}]", StringFromScale(scale)), Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0, 0, 0, 0), scale).toString(scale)) ;
+            EXPECT_EQ(String::Format("2000-01-01 11:59:59.999.999.999 [{}]", StringFromScale(scale)), Instant::DateTime(DateTime(2000, 1, 1, 11, 59, 59, 999, 999, 999), scale).toString(scale)) ;
+            EXPECT_EQ(String::Format("2000-01-01 12:00:00.000.000.001 [{}]", StringFromScale(scale)), Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0, 0, 0, 1), scale).toString(scale)) ;
 
-            EXPECT_EQ(String::Format("1999-01-01 00:00:00 [{}]", StringFromScale(scale)), Instant::DateTime(DateTime(1999, 1, 1, 0, 0, 0, 0, 0, 0), scale).getString(scale)) ;        
-            EXPECT_EQ(String::Format("2000-01-01 00:00:00 [{}]", StringFromScale(scale)), Instant::DateTime(DateTime(2000, 1, 1, 0, 0, 0, 0, 0, 0), scale).getString(scale)) ;
-            EXPECT_EQ(String::Format("2001-01-01 00:00:00 [{}]", StringFromScale(scale)), Instant::DateTime(DateTime(2001, 1, 1, 0, 0, 0, 0, 0, 0), scale).getString(scale)) ;
+            EXPECT_EQ(String::Format("1999-01-01 00:00:00 [{}]", StringFromScale(scale)), Instant::DateTime(DateTime(1999, 1, 1, 0, 0, 0, 0, 0, 0), scale).toString(scale)) ;        
+            EXPECT_EQ(String::Format("2000-01-01 00:00:00 [{}]", StringFromScale(scale)), Instant::DateTime(DateTime(2000, 1, 1, 0, 0, 0, 0, 0, 0), scale).toString(scale)) ;
+            EXPECT_EQ(String::Format("2001-01-01 00:00:00 [{}]", StringFromScale(scale)), Instant::DateTime(DateTime(2001, 1, 1, 0, 0, 0, 0, 0, 0), scale).toString(scale)) ;
 
-            EXPECT_EQ(String::Format("2018-01-02 03:04:05.006.007.008 [{}]", StringFromScale(scale)), Instant::DateTime(DateTime(2018, 1, 2, 3, 4, 5, 6, 7, 8), scale).getString(scale)) ;
+            EXPECT_EQ(String::Format("2018-01-02 03:04:05.006.007.008 [{}]", StringFromScale(scale)), Instant::DateTime(DateTime(2018, 1, 2, 3, 4, 5, 6, 7, 8), scale).toString(scale)) ;
 
-            EXPECT_EQ(String::Format("1981-01-01 00:00:00 [{}]", StringFromScale(scale)), Instant::DateTime(DateTime(1981, 1, 1, 0, 0, 0, 0, 0, 0), scale).getString(scale)) ;
-            EXPECT_EQ(String::Format("2030-12-31 23:59:59.999.999.999 [{}]", StringFromScale(scale)), Instant::DateTime(DateTime(2030, 12, 31, 23, 59, 59, 999, 999, 999), scale).getString(scale)) ;
+            EXPECT_EQ(String::Format("1981-01-01 00:00:00 [{}]", StringFromScale(scale)), Instant::DateTime(DateTime(1981, 1, 1, 0, 0, 0, 0, 0, 0), scale).toString(scale)) ;
+            EXPECT_EQ(String::Format("2030-12-31 23:59:59.999.999.999 [{}]", StringFromScale(scale)), Instant::DateTime(DateTime(2030, 12, 31, 23, 59, 59, 999, 999, 999), scale).toString(scale)) ;
 
         }
 
@@ -1099,14 +1099,14 @@ TEST (Library_Physics_Time_Instant, GetString)
 
         for (auto const& scale : scales)
         {
-            EXPECT_ANY_THROW(Instant::Undefined().getString(scale)) ;
+            EXPECT_ANY_THROW(Instant::Undefined().toString(scale)) ;
         }
 
     }
 
     {
 
-        EXPECT_ANY_THROW(Instant::J2000().getString(Scale::Undefined)) ;
+        EXPECT_ANY_THROW(Instant::J2000().toString(Scale::Undefined)) ;
 
     }
 
@@ -1342,9 +1342,9 @@ TEST (Library_Physics_Time_Instant, ModifiedJulianDate)
 
 //         Instant instant = Instant::DateTime(DateTime::Parse("2000-01-01 12:00:00"), Scale::TT) ;
 
-//         std::cout << instant.getString(Scale::TT) << std::endl  ;
-//         std::cout << instant.getString(Scale::TAI) << std::endl  ;
-//         std::cout << instant.getString(Scale::UTC) << std::endl  ;
+//         std::cout << instant.toString(Scale::TT) << std::endl  ;
+//         std::cout << instant.toString(Scale::TAI) << std::endl  ;
+//         std::cout << instant.toString(Scale::UTC) << std::endl  ;
 
 //     }
 
@@ -1352,9 +1352,9 @@ TEST (Library_Physics_Time_Instant, ModifiedJulianDate)
 
 //         Instant instant = Instant::DateTime(DateTime::Parse("2000-01-01 12:00:00"), Scale::TAI) ;
 
-//         std::cout << instant.getString(Scale::TT) << std::endl  ;
-//         std::cout << instant.getString(Scale::TAI) << std::endl  ;
-//         std::cout << instant.getString(Scale::UTC) << std::endl  ;
+//         std::cout << instant.toString(Scale::TT) << std::endl  ;
+//         std::cout << instant.toString(Scale::TAI) << std::endl  ;
+//         std::cout << instant.toString(Scale::UTC) << std::endl  ;
 
 //     }
 
@@ -1362,9 +1362,9 @@ TEST (Library_Physics_Time_Instant, ModifiedJulianDate)
 
 //         Instant instant = Instant::DateTime(DateTime::Parse("2000-01-01 12:00:00"), Scale::UTC) ;
 
-//         std::cout << instant.getString(Scale::TT) << std::endl  ;
-//         std::cout << instant.getString(Scale::TAI) << std::endl  ;
-//         std::cout << instant.getString(Scale::UTC) << std::endl  ;
+//         std::cout << instant.toString(Scale::TT) << std::endl  ;
+//         std::cout << instant.toString(Scale::TAI) << std::endl  ;
+//         std::cout << instant.toString(Scale::UTC) << std::endl  ;
 
 //     }
 

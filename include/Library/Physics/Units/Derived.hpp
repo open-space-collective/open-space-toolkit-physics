@@ -15,6 +15,7 @@
 #include <Library/Physics/Units/Mass.hpp>
 #include <Library/Physics/Units/Length.hpp>
 #include <Library/Physics/Units/Unit.hpp>
+
 #include <Library/Core/Types/String.hpp>
 #include <Library/Core/Types/Real.hpp>
 #include <Library/Core/Types/Integer.hpp>
@@ -31,6 +32,7 @@ namespace units
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using library::core::types::Int16 ;
+using library::core::types::Integer ;
 using library::core::types::Real ;
 using library::core::types::String ;
 
@@ -71,7 +73,7 @@ class Derived : public Unit
 
                 Real            getValue                                    ( ) const ;
 
-                String          getString                                   ( ) const ;
+                String          toString                                    ( ) const ;
 
                 static Order    Zero                                        ( ) ;
                 
@@ -127,7 +129,7 @@ class Derived : public Unit
 
                 const Derived::Order& accessAngleOrder                      ( ) const ;
 
-                String          getString                                   ( ) const ;
+                String          toString                                    ( ) const ;
 
                 String          getSymbol                                   ( ) const ;
 
@@ -140,6 +142,9 @@ class Derived : public Unit
                 static Unit     Hertz                                       ( ) ;
                 
                 static Unit     Watt                                        ( ) ;
+
+                static Unit     Velocity                                    (   const   Length::Unit&               aLengthUnit,
+                                                                                const   Time::Unit&                 aTimeUnit                                   ) ;
 
                 static Unit     AngularVelocity                             (   const   Angle::Unit&                anAngleUnit,
                                                                                 const   Time::Unit&                 aTimeUnit                                   ) ;
@@ -200,7 +205,7 @@ class Derived : public Unit
 
         Real                    in                                          (   const   Derived::Unit&              aUnit                                       ) const ;
 
-        virtual String          getString                                   ( ) const override ;
+        virtual String          toString                                    (   const   Integer&                    aPrecision                                  =   Integer::Undefined() ) const override ;
 
         static Derived          Undefined                                   ( ) ;
 
