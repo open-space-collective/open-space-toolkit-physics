@@ -1,0 +1,38 @@
+var classlibrary_1_1physics_1_1units_1_1_angle =
+[
+    [ "Unit", "classlibrary_1_1physics_1_1units_1_1_angle.html#a3c329d415a61783b16ce481874cc5956", [
+      [ "Undefined", "classlibrary_1_1physics_1_1units_1_1_angle.html#a3c329d415a61783b16ce481874cc5956aec0fc0100c4fc1ce4eea230c3dc10360", null ],
+      [ "Radian", "classlibrary_1_1physics_1_1units_1_1_angle.html#a3c329d415a61783b16ce481874cc5956a50c62e3ca8d8ec8732a7f968a3bf2c7c", null ],
+      [ "Degree", "classlibrary_1_1physics_1_1units_1_1_angle.html#a3c329d415a61783b16ce481874cc5956a6669c4dc00cb161446821b3529ca07d8", null ],
+      [ "Arcminute", "classlibrary_1_1physics_1_1units_1_1_angle.html#a3c329d415a61783b16ce481874cc5956a6d59f6ca1b5de72cbdc10a6792bcf090", null ],
+      [ "Arcsecond", "classlibrary_1_1physics_1_1units_1_1_angle.html#a3c329d415a61783b16ce481874cc5956a7839ceecae19481f2e21e0ce3e11d3aa", null ],
+      [ "Revolution", "classlibrary_1_1physics_1_1units_1_1_angle.html#a3c329d415a61783b16ce481874cc5956aad09b2d48b2811c68e5a2bf421f7f2f2", null ]
+    ] ],
+    [ "Angle", "classlibrary_1_1physics_1_1units_1_1_angle.html#a6cd94e306cdc3a15fe13135729299d99", null ],
+    [ "getUnit", "classlibrary_1_1physics_1_1units_1_1_angle.html#a44ca98d9a05643948f5d3bee79bcba63", null ],
+    [ "in", "classlibrary_1_1physics_1_1units_1_1_angle.html#aa641b9b6dabfe5fa0b546a2d6492e5be", null ],
+    [ "inArcminutes", "classlibrary_1_1physics_1_1units_1_1_angle.html#a10195e20b7540e0813c3b2a13c8bf453", null ],
+    [ "inArcminutes", "classlibrary_1_1physics_1_1units_1_1_angle.html#a2d16e08281a9745f0da118b56999f313", null ],
+    [ "inArcseconds", "classlibrary_1_1physics_1_1units_1_1_angle.html#af4f0f122d7136c92505a9ec65835815b", null ],
+    [ "inArcseconds", "classlibrary_1_1physics_1_1units_1_1_angle.html#acc904a64f693fa07bac55f28c39ba8b4", null ],
+    [ "inDegrees", "classlibrary_1_1physics_1_1units_1_1_angle.html#a58528bdfdbd6976ee88055809c835e68", null ],
+    [ "inDegrees", "classlibrary_1_1physics_1_1units_1_1_angle.html#a21fa4d9aa81f1e27d9869e0c8a9cb46b", null ],
+    [ "inRadians", "classlibrary_1_1physics_1_1units_1_1_angle.html#ab6157462a9d4afe64f4dd11d1b684af9", null ],
+    [ "inRadians", "classlibrary_1_1physics_1_1units_1_1_angle.html#a6dfbf2ff95818818cecfd60e121dfb75", null ],
+    [ "inRevolutions", "classlibrary_1_1physics_1_1units_1_1_angle.html#a19611fa8ef42050c6ff9724034544d4f", null ],
+    [ "isDefined", "classlibrary_1_1physics_1_1units_1_1_angle.html#a77c7849734ce02b55e070fb88fd87f71", null ],
+    [ "operator library::math::geom::Angle", "classlibrary_1_1physics_1_1units_1_1_angle.html#a1745d0762e2791835c835e79219b005b", null ],
+    [ "operator!=", "classlibrary_1_1physics_1_1units_1_1_angle.html#ad25b468efa92e37f8d45d624a9ed6497", null ],
+    [ "operator*", "classlibrary_1_1physics_1_1units_1_1_angle.html#a958b708b331ded088189882187a4de89", null ],
+    [ "operator*=", "classlibrary_1_1physics_1_1units_1_1_angle.html#af14d361f18244d859a3829c40aba6a14", null ],
+    [ "operator+", "classlibrary_1_1physics_1_1units_1_1_angle.html#aebf6869b414e02af92a924d561822824", null ],
+    [ "operator+=", "classlibrary_1_1physics_1_1units_1_1_angle.html#a5f20b012cb332e631a6271144a0817a2", null ],
+    [ "operator-", "classlibrary_1_1physics_1_1units_1_1_angle.html#a034a88587139bb8642e80f353ead5ce2", null ],
+    [ "operator-=", "classlibrary_1_1physics_1_1units_1_1_angle.html#a2278161c893f91578913951c62f29c39", null ],
+    [ "operator/", "classlibrary_1_1physics_1_1units_1_1_angle.html#a4807751951c97b1de78e7b98b51abaed", null ],
+    [ "operator/=", "classlibrary_1_1physics_1_1units_1_1_angle.html#a55f228924439a814b8727ae62585df95", null ],
+    [ "operator==", "classlibrary_1_1physics_1_1units_1_1_angle.html#a7438eef61dd54f58c4270fae0d2ccb20", null ],
+    [ "toString", "classlibrary_1_1physics_1_1units_1_1_angle.html#aae6b7bd4e028ea7719f5a712ca19a86c", null ],
+    [ "operator*", "classlibrary_1_1physics_1_1units_1_1_angle.html#af699984b24759466957ecddaa7e61fc9", null ],
+    [ "operator<<", "classlibrary_1_1physics_1_1units_1_1_angle.html#a0846b77ee3281e8a559197c3c3208eed", null ]
+];

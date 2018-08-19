@@ -5,7 +5,7 @@ Physical units, time, reference frames, environment modeling.
 
 [![Build Status](https://travis-ci.com/open-space-collective/library-physics.svg?branch=master)](https://travis-ci.com/open-space-collective/library-physics)
 [![Code Coverage](https://codecov.io/gh/open-space-collective/library-physics/branch/master/graph/badge.svg)](https://codecov.io/gh/open-space-collective/library-physics)
-[![Documentation](https://readthedocs.org/projects/docs/badge/?version=latest)](https://open-space-collective.github.io/library-physics)
+[![Documentation](https://media.readthedocs.org/static/projects/badges/passing-flat.svg)](https://open-space-collective.github.io/library-physics)
 
 ## Warning
 
@@ -40,7 +40,7 @@ The **Physics** library exhibits the following structure:
 │       ├── Volume
 │       └── Information
 ├── Time
-│   ├── Scale (UTC, TT, TAI, GPS, UT1, TCG, TDB, TCB, GMST, GST, GLONASS, QZSS, BDT, IRNSS)
+│   ├── Scale (UTC, TT, TAI, UT1, TCG, TCB, TDB, GMST, GPST, GST, GLST, BDT, QZSST, IRNSST)
 │   ├── Instant
 │   ├── Duration
 │   ├── Interval
@@ -59,7 +59,7 @@ The **Physics** library exhibits the following structure:
 └── Environment
     ├── Constants
     ├── Object
-    │   └── Celestial Body
+    │   └── Celestial
     ├── Ephemerides
     │   ├── Analytical
     │   ├── Tabulated

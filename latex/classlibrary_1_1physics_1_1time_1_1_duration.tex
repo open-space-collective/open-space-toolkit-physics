@@ -1,0 +1,1388 @@
+\hypertarget{classlibrary_1_1physics_1_1time_1_1_duration}{}\section{library\+:\+:physics\+:\+:time\+:\+:Duration Class Reference}
+\label{classlibrary_1_1physics_1_1time_1_1_duration}\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+
+
+Amount of time.  
+
+
+
+
+{\ttfamily \#include $<$Duration.\+hpp$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ace85659cafe97df992c0e4273bdc88d1}{Format} \{ \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ace85659cafe97df992c0e4273bdc88d1aec0fc0100c4fc1ce4eea230c3dc10360}{Format\+::\+Undefined}, 
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ace85659cafe97df992c0e4273bdc88d1aeb6d8ae6f20283755b339c0dc273988b}{Format\+::\+Standard}, 
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ace85659cafe97df992c0e4273bdc88d1a35b6786739efcdc5a74ab1dca29d3b6b}{Format\+::\+I\+S\+O8601}
+ \}\begin{DoxyCompactList}\small\item\em \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} format. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration} (Int64 a\+Nanosecond\+Count)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+bool \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ac368d2fe8d2a04248dac2b53bdfbfb21}{operator==} (const \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \&a\+Duration) const
+\begin{DoxyCompactList}\small\item\em Equal to operator. \end{DoxyCompactList}\item 
+bool \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a620feff807a95ea439fdfdd5cf5490b2}{operator!=} (const \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \&a\+Duration) const
+\begin{DoxyCompactList}\small\item\em Not equal to operator. \end{DoxyCompactList}\item 
+bool \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a90fbdc66d103d7ce07122224db6fc1d9}{operator$<$} (const \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \&a\+Duration) const
+\begin{DoxyCompactList}\small\item\em Less than operator. \end{DoxyCompactList}\item 
+bool \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a95d806324b7235b0dec175bde4996e7c}{operator$<$=} (const \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \&a\+Duration) const
+\begin{DoxyCompactList}\small\item\em Less than or equal to operator. \end{DoxyCompactList}\item 
+bool \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ac7fa93e402efc7c23f1acb8df9b54c79}{operator$>$} (const \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \&a\+Duration) const
+\begin{DoxyCompactList}\small\item\em Greater than operator. \end{DoxyCompactList}\item 
+bool \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a4338d704712640124d44a6e7a52909ea}{operator$>$=} (const \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \&a\+Duration) const
+\begin{DoxyCompactList}\small\item\em Greater than operator. \end{DoxyCompactList}\item 
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ae130ab9904fc08b9cf19b32510913350}{operator+} (const \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \&a\+Duration) const
+\begin{DoxyCompactList}\small\item\em Addition operator. \end{DoxyCompactList}\item 
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a9d45bbc3db56c0163bb5d33c41888879}{operator-\/} (const \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \&a\+Duration) const
+\begin{DoxyCompactList}\small\item\em Subtraction operator. \end{DoxyCompactList}\item 
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a6aea6dbe11b3199e63ee29a851c3fc16}{operator$\ast$} (const Real \&a\+Multiplier) const
+\begin{DoxyCompactList}\small\item\em Multiplication operator. \end{DoxyCompactList}\item 
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_aa1488a4b12024ff181631951758676be}{operator/} (const Real \&a\+Divider) const
+\begin{DoxyCompactList}\small\item\em Division operator. \end{DoxyCompactList}\item 
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a315c20670e53373e2d9f47ff07c6c09c}{operator+} () const
+\begin{DoxyCompactList}\small\item\em Unary plus operator. \end{DoxyCompactList}\item 
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a9f2fa54832b4ef58c48167c80285bad2}{operator-\/} () const
+\begin{DoxyCompactList}\small\item\em Unary minus operator. \end{DoxyCompactList}\item 
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \& \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a2d2848688c326591ea1a406e5a0275d0}{operator+=} (const \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \&a\+Duration)
+\begin{DoxyCompactList}\small\item\em Addition assignement operator. \end{DoxyCompactList}\item 
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \& \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a49e7a4be10cf8cade127314a80b4180e}{operator-\/=} (const \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \&a\+Duration)
+\begin{DoxyCompactList}\small\item\em Subtraction assignement operator. \end{DoxyCompactList}\item 
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \& \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a510b18495d52c34ebd34e3bb9bf723e6}{operator$\ast$=} (const Real \&a\+Multiplier)
+\begin{DoxyCompactList}\small\item\em Multiplication assignement operator. \end{DoxyCompactList}\item 
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \& \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0f57d9d0934d6851e3956744f2e85b48}{operator/=} (const Real \&a\+Divider)
+\begin{DoxyCompactList}\small\item\em Division assignement operator. \end{DoxyCompactList}\item 
+bool \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_af6ee4c1644a1cafc96d670e576dc6749}{is\+Defined} () const
+\begin{DoxyCompactList}\small\item\em Check if duration is defined. \end{DoxyCompactList}\item 
+bool \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a7f14980ea22f7e9cad122f7a37ba50be}{is\+Zero} () const
+\begin{DoxyCompactList}\small\item\em Check if duration is zero. \end{DoxyCompactList}\item 
+bool \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a443d719fb2acf922cc80a8f2be441fa1}{is\+Positive} () const
+\begin{DoxyCompactList}\small\item\em Check if duration is positive. \end{DoxyCompactList}\item 
+bool \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a2d4f7691e997232d4d9b88e7d4ab49d7}{is\+Strictly\+Positive} () const
+\begin{DoxyCompactList}\small\item\em Check if duration is strictly positive. \end{DoxyCompactList}\item 
+Integer \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a5dad1e24c78cd7ef13a4220eb4e73dd0}{get\+Nanoseconds} () const
+\begin{DoxyCompactList}\small\item\em Get the number of nanoseconds in duration. \end{DoxyCompactList}\item 
+Integer \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a65db73a28d87e3f06d307cbd688739a3}{get\+Microseconds} () const
+\begin{DoxyCompactList}\small\item\em Get the number of microseconds in duration. \end{DoxyCompactList}\item 
+Integer \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_aac5063bb791db96348e23784106a4eba}{get\+Milliseconds} () const
+\begin{DoxyCompactList}\small\item\em Get the number of milliseconds in duration. \end{DoxyCompactList}\item 
+Integer \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a98388bab81d1d5550532fdedaa08635c}{get\+Seconds} () const
+\begin{DoxyCompactList}\small\item\em Get the number of seconds in duration. \end{DoxyCompactList}\item 
+Integer \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a2c8a5767f1a0add4999c649001cdb838}{get\+Minutes} () const
+\begin{DoxyCompactList}\small\item\em Get the number of minutes in duration. \end{DoxyCompactList}\item 
+Integer \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a05ef46de76556cd571fd8a218dc3b24f}{get\+Hours} () const
+\begin{DoxyCompactList}\small\item\em Get the number of hours in duration. \end{DoxyCompactList}\item 
+Integer \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a06ffb87b3c946a64a69000784488ab5c}{get\+Days} () const
+\begin{DoxyCompactList}\small\item\em Get the number of days in duration. \end{DoxyCompactList}\item 
+Integer \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a11cf17341b43110b443ffd150571f43c}{get\+Weeks} () const
+\begin{DoxyCompactList}\small\item\em Get the number of weeks in duration. \end{DoxyCompactList}\item 
+Real \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a45aa358d61481356dd591290d6ab3691}{in\+Nanoseconds} () const
+\begin{DoxyCompactList}\small\item\em Get nanosecond count. \end{DoxyCompactList}\item 
+Real \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a69c9501a4432aac49cecd9d47da7c4f6}{in\+Microseconds} () const
+\begin{DoxyCompactList}\small\item\em Get microsecond count. \end{DoxyCompactList}\item 
+Real \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ac7c1fce0e8488954fe9e2abe1767548b}{in\+Milliseconds} () const
+\begin{DoxyCompactList}\small\item\em Get millisecond count. \end{DoxyCompactList}\item 
+Real \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a9272debd96e7f86df9b0852c6663a0bb}{in\+Seconds} () const
+\begin{DoxyCompactList}\small\item\em Get second count. \end{DoxyCompactList}\item 
+Real \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_aef580516014096d1e5ae5bb6ae8e6f29}{in\+Minutes} () const
+\begin{DoxyCompactList}\small\item\em Get minute count. \end{DoxyCompactList}\item 
+Real \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a1f5e207d7c6f7b62d3cfee13e75dfa48}{in\+Hours} () const
+\begin{DoxyCompactList}\small\item\em Get hour count. \end{DoxyCompactList}\item 
+Real \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a73ebd929416f360ff5c4c840fbcae67b}{in\+Days} () const
+\begin{DoxyCompactList}\small\item\em Get day count. \end{DoxyCompactList}\item 
+Real \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ae49243cf87ccf07693b65e7170642b65}{in\+Weeks} () const
+\begin{DoxyCompactList}\small\item\em Get week count. \end{DoxyCompactList}\item 
+Real \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ace9b1e589d3dc6e76002d389e2a480df}{in} (const \hyperlink{classlibrary_1_1physics_1_1units_1_1_time_ab876a6a05c9a2f28905f2753bfd64109}{units\+::\+Time\+::\+Unit} \&a\+Time\+Unit) const
+\begin{DoxyCompactList}\small\item\em Get count in given time unit. \end{DoxyCompactList}\item 
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_afbe401469b6b6356439d6f7c5b21e67e}{get\+Absolute} () const
+\begin{DoxyCompactList}\small\item\em Get absolute duration. \end{DoxyCompactList}\item 
+String \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a06f24e6cc8cb867abbae969c5f199513}{to\+String} (const \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ace85659cafe97df992c0e4273bdc88d1}{Duration\+::\+Format} \&a\+Format=\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ace85659cafe97df992c0e4273bdc88d1aeb6d8ae6f20283755b339c0dc273988b}{Duration\+::\+Format\+::\+Standard}) const
+\begin{DoxyCompactList}\small\item\em Get string representation of duration. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a67012781d9b7491e26bdc3da9f513130}{Undefined} ()
+\begin{DoxyCompactList}\small\item\em Constructs an undefined duration. \end{DoxyCompactList}\item 
+static \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_aa68c3998cd4cf9068fb239dd66102c2c}{Zero} ()
+\begin{DoxyCompactList}\small\item\em Constructs a zero duration. \end{DoxyCompactList}\item 
+static \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a6a629b2275337fbadac912cc9364a9f1}{Nanoseconds} (const Real \&a\+Nanosecond\+Count)
+\begin{DoxyCompactList}\small\item\em Constructs a duration from a nanosecond count. \end{DoxyCompactList}\item 
+static \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a9082d43579a99fd667b0080de8adf8ed}{Microseconds} (const Real \&a\+Microsecond\+Count)
+\begin{DoxyCompactList}\small\item\em Constructs a duration from a microsecond count. \end{DoxyCompactList}\item 
+static \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ab6eab798898a96019a8c944cd565e161}{Milliseconds} (const Real \&a\+Millisecond\+Count)
+\begin{DoxyCompactList}\small\item\em Constructs a duration from a millisecond count. \end{DoxyCompactList}\item 
+static \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ae10891c94a1b2278c444cb44b37132f1}{Seconds} (const Real \&a\+Second\+Count)
+\begin{DoxyCompactList}\small\item\em Constructs a duration from a second count. \end{DoxyCompactList}\item 
+static \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ad7171befa3075e796bfb02a7542dacdd}{Minutes} (const Real \&a\+Minute\+Count)
+\begin{DoxyCompactList}\small\item\em Constructs a duration from a minute count. \end{DoxyCompactList}\item 
+static \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_aadef86b1b803b8764380ef623f99ce95}{Hours} (const Real \&an\+Hour\+Count)
+\begin{DoxyCompactList}\small\item\em Constructs a duration from a hour count. \end{DoxyCompactList}\item 
+static \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_abf1323fa113b5203747ce9aec5c969fc}{Days} (const Real \&a\+Day\+Count)
+\begin{DoxyCompactList}\small\item\em Constructs a duration from a day count. \end{DoxyCompactList}\item 
+static \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ae9d507f6cbb36902529b28d3721507c1}{Weeks} (const Real \&a\+Week\+Count)
+\begin{DoxyCompactList}\small\item\em Constructs a duration from a week count. \end{DoxyCompactList}\item 
+static \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a7d2654965a46c6eff9d331ad8b0d9b1f}{Between} (const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&a\+First\+Instant, const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&a\+Second\+Instant)
+\begin{DoxyCompactList}\small\item\em Constructs a duration between two instants. \end{DoxyCompactList}\item 
+static \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a52ba6dd2958d1e193b81d8f659bb6bf3}{Parse} (const String \&a\+String, const \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ace85659cafe97df992c0e4273bdc88d1}{Duration\+::\+Format} \&a\+Format=\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ace85659cafe97df992c0e4273bdc88d1aec0fc0100c4fc1ce4eea230c3dc10360}{Duration\+::\+Format\+::\+Undefined})
+\begin{DoxyCompactList}\small\item\em Constructs a duration from a string representation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+friend \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ac98d9996643dde64fe1ffe67c12cc945}{Instant}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a30be5772f32cb400f8d8a8e2975abf6d}{operator$\ast$} (double a\+Multiplier, const \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \&a\+Duration)
+\begin{DoxyCompactList}\small\item\em Multiplication operator. \end{DoxyCompactList}\item 
+std\+::ostream \& \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a82573aea35c8642b571f78c85ca70fbc}{operator$<$$<$} (std\+::ostream \&an\+Output\+Stream, const \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \&a\+Duration)
+\begin{DoxyCompactList}\small\item\em Output stream operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Amount of time. 
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_ace85659cafe97df992c0e4273bdc88d1}\label{classlibrary_1_1physics_1_1time_1_1_duration_ace85659cafe97df992c0e4273bdc88d1}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!Format@{Format}}
+\index{Format@{Format}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{Format}{Format}}
+{\footnotesize\ttfamily enum \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ace85659cafe97df992c0e4273bdc88d1}{library\+::physics\+::time\+::\+Duration\+::\+Format}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} format. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Undefined@{Undefined}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!Undefined@{Undefined}}}\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_ace85659cafe97df992c0e4273bdc88d1aec0fc0100c4fc1ce4eea230c3dc10360}\label{classlibrary_1_1physics_1_1time_1_1_duration_ace85659cafe97df992c0e4273bdc88d1aec0fc0100c4fc1ce4eea230c3dc10360}} 
+Undefined&Undefined format. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Standard@{Standard}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!Standard@{Standard}}}\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_ace85659cafe97df992c0e4273bdc88d1aeb6d8ae6f20283755b339c0dc273988b}\label{classlibrary_1_1physics_1_1time_1_1_duration_ace85659cafe97df992c0e4273bdc88d1aeb6d8ae6f20283755b339c0dc273988b}} 
+Standard&Standard format (d hh\+:mm\+:ss.\+mmm.\+uuu.\+nnn) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{I\+S\+O8601@{I\+S\+O8601}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!I\+S\+O8601@{I\+S\+O8601}}}\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_ace85659cafe97df992c0e4273bdc88d1a35b6786739efcdc5a74ab1dca29d3b6b}\label{classlibrary_1_1physics_1_1time_1_1_duration_ace85659cafe97df992c0e4273bdc88d1a35b6786739efcdc5a74ab1dca29d3b6b}} 
+I\+S\+O8601&I\+SO 8601 format (Pn\+D\+Tn\+Hn\+MnS) \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}\label{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!Duration@{Duration}}
+\index{Duration@{Duration}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{Duration()}{Duration()}}
+{\footnotesize\ttfamily library\+::physics\+::time\+::\+Duration\+::\+Duration (\begin{DoxyParamCaption}\item[{Int64}]{a\+Nanosecond\+Count }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration} duration(123) ; \textcolor{comment}{// 123 [ns]}
+\end{DoxyCode}
+ 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Nanosecond\+Count} & A nanosecond count \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_a7d2654965a46c6eff9d331ad8b0d9b1f}\label{classlibrary_1_1physics_1_1time_1_1_duration_a7d2654965a46c6eff9d331ad8b0d9b1f}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!Between@{Between}}
+\index{Between@{Between}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{Between()}{Between()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} library\+::physics\+::time\+::\+Duration\+::\+Between (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&}]{a\+First\+Instant,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&}]{a\+Second\+Instant }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Constructs a duration between two instants. 
+
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} is positive is first\+Instant $<$ second\+Instant.
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration} duration = \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a7d2654965a46c6eff9d331ad8b0d9b1f}{Duration::Between}(firstInstant, secondInstant) ;
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+First\+Instant} & A first instant \\
+\hline
+\mbox{\tt in}  & {\em a\+Second\+Instant} & A second instant \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_abf1323fa113b5203747ce9aec5c969fc}\label{classlibrary_1_1physics_1_1time_1_1_duration_abf1323fa113b5203747ce9aec5c969fc}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!Days@{Days}}
+\index{Days@{Days}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{Days()}{Days()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} library\+::physics\+::time\+::\+Duration\+::\+Days (\begin{DoxyParamCaption}\item[{const Real \&}]{a\+Day\+Count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Constructs a duration from a day count. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration} duration = \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_abf1323fa113b5203747ce9aec5c969fc}{Duration::Days}(123) ;
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Day\+Count} & A day count \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_afbe401469b6b6356439d6f7c5b21e67e}\label{classlibrary_1_1physics_1_1time_1_1_duration_afbe401469b6b6356439d6f7c5b21e67e}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!get\+Absolute@{get\+Absolute}}
+\index{get\+Absolute@{get\+Absolute}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{get\+Absolute()}{getAbsolute()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} library\+::physics\+::time\+::\+Duration\+::get\+Absolute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get absolute duration. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ae10891c94a1b2278c444cb44b37132f1}{Duration::Seconds}(-123.456).\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_afbe401469b6b6356439d6f7c5b21e67e}{getAbsolute}() ; \textcolor{comment}{// +123.456 [s]}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+Absolute duration 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_a06ffb87b3c946a64a69000784488ab5c}\label{classlibrary_1_1physics_1_1time_1_1_duration_a06ffb87b3c946a64a69000784488ab5c}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!get\+Days@{get\+Days}}
+\index{get\+Days@{get\+Days}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{get\+Days()}{getDays()}}
+{\footnotesize\ttfamily Integer library\+::physics\+::time\+::\+Duration\+::get\+Days (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the number of days in duration. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_abf1323fa113b5203747ce9aec5c969fc}{Duration::Days}(15).days() ; \textcolor{comment}{// 15}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+Number of days in duration 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_a05ef46de76556cd571fd8a218dc3b24f}\label{classlibrary_1_1physics_1_1time_1_1_duration_a05ef46de76556cd571fd8a218dc3b24f}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!get\+Hours@{get\+Hours}}
+\index{get\+Hours@{get\+Hours}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{get\+Hours()}{getHours()}}
+{\footnotesize\ttfamily Integer library\+::physics\+::time\+::\+Duration\+::get\+Hours (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the number of hours in duration. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ae10891c94a1b2278c444cb44b37132f1}{Duration::Seconds}(15).hours() ; \textcolor{comment}{// 0}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+Number of hours in duration 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_a65db73a28d87e3f06d307cbd688739a3}\label{classlibrary_1_1physics_1_1time_1_1_duration_a65db73a28d87e3f06d307cbd688739a3}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!get\+Microseconds@{get\+Microseconds}}
+\index{get\+Microseconds@{get\+Microseconds}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{get\+Microseconds()}{getMicroseconds()}}
+{\footnotesize\ttfamily Integer library\+::physics\+::time\+::\+Duration\+::get\+Microseconds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the number of microseconds in duration. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ae10891c94a1b2278c444cb44b37132f1}{Duration::Seconds}(15).microseconds() ; \textcolor{comment}{// 0}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+Number of microseconds in duration 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_aac5063bb791db96348e23784106a4eba}\label{classlibrary_1_1physics_1_1time_1_1_duration_aac5063bb791db96348e23784106a4eba}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!get\+Milliseconds@{get\+Milliseconds}}
+\index{get\+Milliseconds@{get\+Milliseconds}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{get\+Milliseconds()}{getMilliseconds()}}
+{\footnotesize\ttfamily Integer library\+::physics\+::time\+::\+Duration\+::get\+Milliseconds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the number of milliseconds in duration. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ae10891c94a1b2278c444cb44b37132f1}{Duration::Seconds}(15).milliseconds() ; \textcolor{comment}{// 0}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+Number of milliseconds in duration 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_a2c8a5767f1a0add4999c649001cdb838}\label{classlibrary_1_1physics_1_1time_1_1_duration_a2c8a5767f1a0add4999c649001cdb838}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!get\+Minutes@{get\+Minutes}}
+\index{get\+Minutes@{get\+Minutes}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{get\+Minutes()}{getMinutes()}}
+{\footnotesize\ttfamily Integer library\+::physics\+::time\+::\+Duration\+::get\+Minutes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the number of minutes in duration. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ae10891c94a1b2278c444cb44b37132f1}{Duration::Seconds}(15).minutes() ; \textcolor{comment}{// 0}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+Number of minutes in duration 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_a5dad1e24c78cd7ef13a4220eb4e73dd0}\label{classlibrary_1_1physics_1_1time_1_1_duration_a5dad1e24c78cd7ef13a4220eb4e73dd0}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!get\+Nanoseconds@{get\+Nanoseconds}}
+\index{get\+Nanoseconds@{get\+Nanoseconds}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{get\+Nanoseconds()}{getNanoseconds()}}
+{\footnotesize\ttfamily Integer library\+::physics\+::time\+::\+Duration\+::get\+Nanoseconds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the number of nanoseconds in duration. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ae10891c94a1b2278c444cb44b37132f1}{Duration::Seconds}(15).nanoseconds() ; \textcolor{comment}{// 0}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+Number of nanoseconds in duration 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_a98388bab81d1d5550532fdedaa08635c}\label{classlibrary_1_1physics_1_1time_1_1_duration_a98388bab81d1d5550532fdedaa08635c}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!get\+Seconds@{get\+Seconds}}
+\index{get\+Seconds@{get\+Seconds}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{get\+Seconds()}{getSeconds()}}
+{\footnotesize\ttfamily Integer library\+::physics\+::time\+::\+Duration\+::get\+Seconds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the number of seconds in duration. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ae10891c94a1b2278c444cb44b37132f1}{Duration::Seconds}(15).seconds() ; \textcolor{comment}{// 15}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+Number of seconds in duration 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_a11cf17341b43110b443ffd150571f43c}\label{classlibrary_1_1physics_1_1time_1_1_duration_a11cf17341b43110b443ffd150571f43c}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!get\+Weeks@{get\+Weeks}}
+\index{get\+Weeks@{get\+Weeks}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{get\+Weeks()}{getWeeks()}}
+{\footnotesize\ttfamily Integer library\+::physics\+::time\+::\+Duration\+::get\+Weeks (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the number of weeks in duration. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_abf1323fa113b5203747ce9aec5c969fc}{Duration::Days}(15).weeks() ; \textcolor{comment}{// 2}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+Number of weeks in duration 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_aadef86b1b803b8764380ef623f99ce95}\label{classlibrary_1_1physics_1_1time_1_1_duration_aadef86b1b803b8764380ef623f99ce95}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!Hours@{Hours}}
+\index{Hours@{Hours}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{Hours()}{Hours()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} library\+::physics\+::time\+::\+Duration\+::\+Hours (\begin{DoxyParamCaption}\item[{const Real \&}]{an\+Hour\+Count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Constructs a duration from a hour count. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration} duration = \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_aadef86b1b803b8764380ef623f99ce95}{Duration::Hours}(123) ;
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em an\+Hour\+Count} & A hour count \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_ace9b1e589d3dc6e76002d389e2a480df}\label{classlibrary_1_1physics_1_1time_1_1_duration_ace9b1e589d3dc6e76002d389e2a480df}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!in@{in}}
+\index{in@{in}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{in()}{in()}}
+{\footnotesize\ttfamily Real library\+::physics\+::time\+::\+Duration\+::in (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1units_1_1_time_ab876a6a05c9a2f28905f2753bfd64109}{units\+::\+Time\+::\+Unit} \&}]{a\+Time\+Unit }\end{DoxyParamCaption}) const}
+
+
+
+Get count in given time unit. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ae9d507f6cbb36902529b28d3721507c1}{Duration::Weeks}(123).\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ace9b1e589d3dc6e76002d389e2a480df}{in}(Time::Unit::Week) ; \textcolor{comment}{// 123.0}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Time\+Unit} & A time unit \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Count in given time unit 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_a73ebd929416f360ff5c4c840fbcae67b}\label{classlibrary_1_1physics_1_1time_1_1_duration_a73ebd929416f360ff5c4c840fbcae67b}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!in\+Days@{in\+Days}}
+\index{in\+Days@{in\+Days}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{in\+Days()}{inDays()}}
+{\footnotesize\ttfamily Real library\+::physics\+::time\+::\+Duration\+::in\+Days (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get day count. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_abf1323fa113b5203747ce9aec5c969fc}{Duration::Days}(123).\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a73ebd929416f360ff5c4c840fbcae67b}{inDays}() ; \textcolor{comment}{// 123.0}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+Day count 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_a1f5e207d7c6f7b62d3cfee13e75dfa48}\label{classlibrary_1_1physics_1_1time_1_1_duration_a1f5e207d7c6f7b62d3cfee13e75dfa48}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!in\+Hours@{in\+Hours}}
+\index{in\+Hours@{in\+Hours}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{in\+Hours()}{inHours()}}
+{\footnotesize\ttfamily Real library\+::physics\+::time\+::\+Duration\+::in\+Hours (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get hour count. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_aadef86b1b803b8764380ef623f99ce95}{Duration::Hours}(123).\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a1f5e207d7c6f7b62d3cfee13e75dfa48}{inHours}() ; \textcolor{comment}{// 123.0}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+Hour count 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_a69c9501a4432aac49cecd9d47da7c4f6}\label{classlibrary_1_1physics_1_1time_1_1_duration_a69c9501a4432aac49cecd9d47da7c4f6}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!in\+Microseconds@{in\+Microseconds}}
+\index{in\+Microseconds@{in\+Microseconds}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{in\+Microseconds()}{inMicroseconds()}}
+{\footnotesize\ttfamily Real library\+::physics\+::time\+::\+Duration\+::in\+Microseconds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get microsecond count. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a9082d43579a99fd667b0080de8adf8ed}{Duration::Microseconds}(123).\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a69c9501a4432aac49cecd9d47da7c4f6}{inMicroseconds}() ; \textcolor{comment}{// 123.0}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+Microsecond count 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_ac7c1fce0e8488954fe9e2abe1767548b}\label{classlibrary_1_1physics_1_1time_1_1_duration_ac7c1fce0e8488954fe9e2abe1767548b}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!in\+Milliseconds@{in\+Milliseconds}}
+\index{in\+Milliseconds@{in\+Milliseconds}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{in\+Milliseconds()}{inMilliseconds()}}
+{\footnotesize\ttfamily Real library\+::physics\+::time\+::\+Duration\+::in\+Milliseconds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get millisecond count. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ab6eab798898a96019a8c944cd565e161}{Duration::Milliseconds}(123).\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ac7c1fce0e8488954fe9e2abe1767548b}{inMilliseconds}() ; \textcolor{comment}{// 123.0}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+Millisecond count 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_aef580516014096d1e5ae5bb6ae8e6f29}\label{classlibrary_1_1physics_1_1time_1_1_duration_aef580516014096d1e5ae5bb6ae8e6f29}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!in\+Minutes@{in\+Minutes}}
+\index{in\+Minutes@{in\+Minutes}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{in\+Minutes()}{inMinutes()}}
+{\footnotesize\ttfamily Real library\+::physics\+::time\+::\+Duration\+::in\+Minutes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get minute count. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ad7171befa3075e796bfb02a7542dacdd}{Duration::Minutes}(123).\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_aef580516014096d1e5ae5bb6ae8e6f29}{inMinutes}() ; \textcolor{comment}{// 123.0}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+Minute count 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_a45aa358d61481356dd591290d6ab3691}\label{classlibrary_1_1physics_1_1time_1_1_duration_a45aa358d61481356dd591290d6ab3691}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!in\+Nanoseconds@{in\+Nanoseconds}}
+\index{in\+Nanoseconds@{in\+Nanoseconds}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{in\+Nanoseconds()}{inNanoseconds()}}
+{\footnotesize\ttfamily Real library\+::physics\+::time\+::\+Duration\+::in\+Nanoseconds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get nanosecond count. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a6a629b2275337fbadac912cc9364a9f1}{Duration::Nanoseconds}(123).\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a45aa358d61481356dd591290d6ab3691}{inNanoseconds}() ; \textcolor{comment}{// 123.0}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+Nanosecond count 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_a9272debd96e7f86df9b0852c6663a0bb}\label{classlibrary_1_1physics_1_1time_1_1_duration_a9272debd96e7f86df9b0852c6663a0bb}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!in\+Seconds@{in\+Seconds}}
+\index{in\+Seconds@{in\+Seconds}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{in\+Seconds()}{inSeconds()}}
+{\footnotesize\ttfamily Real library\+::physics\+::time\+::\+Duration\+::in\+Seconds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get second count. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ae10891c94a1b2278c444cb44b37132f1}{Duration::Seconds}(123).\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a9272debd96e7f86df9b0852c6663a0bb}{inSeconds}() ; \textcolor{comment}{// 123.0}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+Second count 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_ae49243cf87ccf07693b65e7170642b65}\label{classlibrary_1_1physics_1_1time_1_1_duration_ae49243cf87ccf07693b65e7170642b65}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!in\+Weeks@{in\+Weeks}}
+\index{in\+Weeks@{in\+Weeks}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{in\+Weeks()}{inWeeks()}}
+{\footnotesize\ttfamily Real library\+::physics\+::time\+::\+Duration\+::in\+Weeks (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get week count. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ae9d507f6cbb36902529b28d3721507c1}{Duration::Weeks}(123).\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ae49243cf87ccf07693b65e7170642b65}{inWeeks}() ; \textcolor{comment}{// 123.0}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+Week count 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_af6ee4c1644a1cafc96d670e576dc6749}\label{classlibrary_1_1physics_1_1time_1_1_duration_af6ee4c1644a1cafc96d670e576dc6749}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!is\+Defined@{is\+Defined}}
+\index{is\+Defined@{is\+Defined}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{is\+Defined()}{isDefined()}}
+{\footnotesize\ttfamily bool library\+::physics\+::time\+::\+Duration\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Check if duration is defined. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration}(123).isDefined() ; \textcolor{comment}{// True}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+True if duration is defined 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_a443d719fb2acf922cc80a8f2be441fa1}\label{classlibrary_1_1physics_1_1time_1_1_duration_a443d719fb2acf922cc80a8f2be441fa1}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!is\+Positive@{is\+Positive}}
+\index{is\+Positive@{is\+Positive}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{is\+Positive()}{isPositive()}}
+{\footnotesize\ttfamily bool library\+::physics\+::time\+::\+Duration\+::is\+Positive (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Check if duration is positive. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration}(+1).isPositive() ; \textcolor{comment}{// True}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration}(-1).isPositive() ; \textcolor{comment}{// False}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration}(0).isPositive() ; \textcolor{comment}{// True}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+True if duration is positive 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_a2d4f7691e997232d4d9b88e7d4ab49d7}\label{classlibrary_1_1physics_1_1time_1_1_duration_a2d4f7691e997232d4d9b88e7d4ab49d7}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!is\+Strictly\+Positive@{is\+Strictly\+Positive}}
+\index{is\+Strictly\+Positive@{is\+Strictly\+Positive}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{is\+Strictly\+Positive()}{isStrictlyPositive()}}
+{\footnotesize\ttfamily bool library\+::physics\+::time\+::\+Duration\+::is\+Strictly\+Positive (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Check if duration is strictly positive. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration}(+1).isStrictlyPositive() ; \textcolor{comment}{// True}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration}(-1).isStrictlyPositive() ; \textcolor{comment}{// False}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration}(0).isStrictlyPositive() ; \textcolor{comment}{// False}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+True if duration is strictly positive 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_a7f14980ea22f7e9cad122f7a37ba50be}\label{classlibrary_1_1physics_1_1time_1_1_duration_a7f14980ea22f7e9cad122f7a37ba50be}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!is\+Zero@{is\+Zero}}
+\index{is\+Zero@{is\+Zero}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{is\+Zero()}{isZero()}}
+{\footnotesize\ttfamily bool library\+::physics\+::time\+::\+Duration\+::is\+Zero (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Check if duration is zero. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration}(0).isZero() ; \textcolor{comment}{// True}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+True if duration is zero 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_a9082d43579a99fd667b0080de8adf8ed}\label{classlibrary_1_1physics_1_1time_1_1_duration_a9082d43579a99fd667b0080de8adf8ed}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!Microseconds@{Microseconds}}
+\index{Microseconds@{Microseconds}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{Microseconds()}{Microseconds()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} library\+::physics\+::time\+::\+Duration\+::\+Microseconds (\begin{DoxyParamCaption}\item[{const Real \&}]{a\+Microsecond\+Count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Constructs a duration from a microsecond count. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration} duration = \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a9082d43579a99fd667b0080de8adf8ed}{Duration::Microseconds}(123) ;
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Microsecond\+Count} & A microsecond count \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_ab6eab798898a96019a8c944cd565e161}\label{classlibrary_1_1physics_1_1time_1_1_duration_ab6eab798898a96019a8c944cd565e161}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!Milliseconds@{Milliseconds}}
+\index{Milliseconds@{Milliseconds}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{Milliseconds()}{Milliseconds()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} library\+::physics\+::time\+::\+Duration\+::\+Milliseconds (\begin{DoxyParamCaption}\item[{const Real \&}]{a\+Millisecond\+Count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Constructs a duration from a millisecond count. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration} duration = \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ab6eab798898a96019a8c944cd565e161}{Duration::Milliseconds}(123) ;
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Millisecond\+Count} & A millisecond count \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_ad7171befa3075e796bfb02a7542dacdd}\label{classlibrary_1_1physics_1_1time_1_1_duration_ad7171befa3075e796bfb02a7542dacdd}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!Minutes@{Minutes}}
+\index{Minutes@{Minutes}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{Minutes()}{Minutes()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} library\+::physics\+::time\+::\+Duration\+::\+Minutes (\begin{DoxyParamCaption}\item[{const Real \&}]{a\+Minute\+Count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Constructs a duration from a minute count. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration} duration = \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ad7171befa3075e796bfb02a7542dacdd}{Duration::Minutes}(123) ;
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Minute\+Count} & A minute count \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_a6a629b2275337fbadac912cc9364a9f1}\label{classlibrary_1_1physics_1_1time_1_1_duration_a6a629b2275337fbadac912cc9364a9f1}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!Nanoseconds@{Nanoseconds}}
+\index{Nanoseconds@{Nanoseconds}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{Nanoseconds()}{Nanoseconds()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} library\+::physics\+::time\+::\+Duration\+::\+Nanoseconds (\begin{DoxyParamCaption}\item[{const Real \&}]{a\+Nanosecond\+Count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Constructs a duration from a nanosecond count. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration} duration = \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a6a629b2275337fbadac912cc9364a9f1}{Duration::Nanoseconds}(123) ;
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Nanosecond\+Count} & A nanosecond count \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_a620feff807a95ea439fdfdd5cf5490b2}\label{classlibrary_1_1physics_1_1time_1_1_duration_a620feff807a95ea439fdfdd5cf5490b2}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool library\+::physics\+::time\+::\+Duration\+::operator!= (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \&}]{a\+Duration }\end{DoxyParamCaption}) const}
+
+
+
+Not equal to operator. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration}(123) != \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration}(456) ; \textcolor{comment}{// True}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Duration} & A duration \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if durations are not equal 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_a6aea6dbe11b3199e63ee29a851c3fc16}\label{classlibrary_1_1physics_1_1time_1_1_duration_a6aea6dbe11b3199e63ee29a851c3fc16}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{operator$\ast$()}{operator*()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} library\+::physics\+::time\+::\+Duration\+::operator$\ast$ (\begin{DoxyParamCaption}\item[{const Real \&}]{a\+Multiplier }\end{DoxyParamCaption}) const}
+
+
+
+Multiplication operator. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ae10891c94a1b2278c444cb44b37132f1}{Duration::Seconds}(1.0) * 2.0 ; \textcolor{comment}{// 2.0 [s]}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Multiplier} & A multiplier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_a510b18495d52c34ebd34e3bb9bf723e6}\label{classlibrary_1_1physics_1_1time_1_1_duration_a510b18495d52c34ebd34e3bb9bf723e6}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!operator$\ast$=@{operator$\ast$=}}
+\index{operator$\ast$=@{operator$\ast$=}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{operator$\ast$=()}{operator*=()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \& library\+::physics\+::time\+::\+Duration\+::operator$\ast$= (\begin{DoxyParamCaption}\item[{const Real \&}]{a\+Multiplier }\end{DoxyParamCaption})}
+
+
+
+Multiplication assignement operator. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration} duration = \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ae10891c94a1b2278c444cb44b37132f1}{Duration::Seconds}(1.0) ;
+duration *= 2.0 ; \textcolor{comment}{// 2.0 [s]}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Multiplier} & A multiplier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to duration 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_ae130ab9904fc08b9cf19b32510913350}\label{classlibrary_1_1physics_1_1time_1_1_duration_ae130ab9904fc08b9cf19b32510913350}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!operator+@{operator+}}
+\index{operator+@{operator+}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{operator+()}{operator+()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} library\+::physics\+::time\+::\+Duration\+::operator+ (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \&}]{a\+Duration }\end{DoxyParamCaption}) const}
+
+
+
+Addition operator. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ae10891c94a1b2278c444cb44b37132f1}{Duration::Seconds}(1.0) + \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ae10891c94a1b2278c444cb44b37132f1}{Duration::Seconds}(1.0) ; \textcolor{comment}{// 2.0 [s]}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Duration} & A duration \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_a315c20670e53373e2d9f47ff07c6c09c}\label{classlibrary_1_1physics_1_1time_1_1_duration_a315c20670e53373e2d9f47ff07c6c09c}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!operator+@{operator+}}
+\index{operator+@{operator+}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{operator+()}{operator+()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} library\+::physics\+::time\+::\+Duration\+::operator+ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Unary plus operator. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration} duration = +\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ae10891c94a1b2278c444cb44b37132f1}{Duration::Seconds}(1.0) ; \textcolor{comment}{// +1.0 [s]}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_a2d2848688c326591ea1a406e5a0275d0}\label{classlibrary_1_1physics_1_1time_1_1_duration_a2d2848688c326591ea1a406e5a0275d0}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{operator+=()}{operator+=()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \& library\+::physics\+::time\+::\+Duration\+::operator+= (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \&}]{a\+Duration }\end{DoxyParamCaption})}
+
+
+
+Addition assignement operator. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration} duration = \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ae10891c94a1b2278c444cb44b37132f1}{Duration::Seconds}(1.0) ;
+duration += \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ae10891c94a1b2278c444cb44b37132f1}{Duration::Seconds}(1.0) ; \textcolor{comment}{// 2.0 [s]}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Duration} & A duration \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to duration 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_a9d45bbc3db56c0163bb5d33c41888879}\label{classlibrary_1_1physics_1_1time_1_1_duration_a9d45bbc3db56c0163bb5d33c41888879}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{operator-\/()}{operator-()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} library\+::physics\+::time\+::\+Duration\+::operator-\/ (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \&}]{a\+Duration }\end{DoxyParamCaption}) const}
+
+
+
+Subtraction operator. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ae10891c94a1b2278c444cb44b37132f1}{Duration::Seconds}(1.0) - \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ae10891c94a1b2278c444cb44b37132f1}{Duration::Seconds}(1.0) ; \textcolor{comment}{// 0.0 [s]}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Duration} & A duration \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_a9f2fa54832b4ef58c48167c80285bad2}\label{classlibrary_1_1physics_1_1time_1_1_duration_a9f2fa54832b4ef58c48167c80285bad2}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{operator-\/()}{operator-()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} library\+::physics\+::time\+::\+Duration\+::operator-\/ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Unary minus operator. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration} duration = -\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ae10891c94a1b2278c444cb44b37132f1}{Duration::Seconds}(1.0) ; \textcolor{comment}{// -1.0 [s]}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_a49e7a4be10cf8cade127314a80b4180e}\label{classlibrary_1_1physics_1_1time_1_1_duration_a49e7a4be10cf8cade127314a80b4180e}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!operator-\/=@{operator-\/=}}
+\index{operator-\/=@{operator-\/=}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{operator-\/=()}{operator-=()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \& library\+::physics\+::time\+::\+Duration\+::operator-\/= (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \&}]{a\+Duration }\end{DoxyParamCaption})}
+
+
+
+Subtraction assignement operator. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration} duration = \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ae10891c94a1b2278c444cb44b37132f1}{Duration::Seconds}(1.0) ;
+duration -= \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ae10891c94a1b2278c444cb44b37132f1}{Duration::Seconds}(1.0) ; \textcolor{comment}{// 0.0 [s]}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Duration} & A duration \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to duration 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_aa1488a4b12024ff181631951758676be}\label{classlibrary_1_1physics_1_1time_1_1_duration_aa1488a4b12024ff181631951758676be}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!operator/@{operator/}}
+\index{operator/@{operator/}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{operator/()}{operator/()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} library\+::physics\+::time\+::\+Duration\+::operator/ (\begin{DoxyParamCaption}\item[{const Real \&}]{a\+Divider }\end{DoxyParamCaption}) const}
+
+
+
+Division operator. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ae10891c94a1b2278c444cb44b37132f1}{Duration::Seconds}(1.0) / 2.0 ; \textcolor{comment}{// 0.5 [s]}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Divider} & A divider \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_a0f57d9d0934d6851e3956744f2e85b48}\label{classlibrary_1_1physics_1_1time_1_1_duration_a0f57d9d0934d6851e3956744f2e85b48}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!operator/=@{operator/=}}
+\index{operator/=@{operator/=}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{operator/=()}{operator/=()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \& library\+::physics\+::time\+::\+Duration\+::operator/= (\begin{DoxyParamCaption}\item[{const Real \&}]{a\+Divider }\end{DoxyParamCaption})}
+
+
+
+Division assignement operator. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration} duration = \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ae10891c94a1b2278c444cb44b37132f1}{Duration::Seconds}(1.0) ;
+duration /= 2.0 ; \textcolor{comment}{// 0.5 [s]}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Divider} & A divider \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to duration 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_a90fbdc66d103d7ce07122224db6fc1d9}\label{classlibrary_1_1physics_1_1time_1_1_duration_a90fbdc66d103d7ce07122224db6fc1d9}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool library\+::physics\+::time\+::\+Duration\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \&}]{a\+Duration }\end{DoxyParamCaption}) const}
+
+
+
+Less than operator. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration}(123) < \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration}(456) ; \textcolor{comment}{// True}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Duration} & A duration \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if lhs duration is less than rhs duration 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_a95d806324b7235b0dec175bde4996e7c}\label{classlibrary_1_1physics_1_1time_1_1_duration_a95d806324b7235b0dec175bde4996e7c}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!operator$<$=@{operator$<$=}}
+\index{operator$<$=@{operator$<$=}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{operator$<$=()}{operator<=()}}
+{\footnotesize\ttfamily bool library\+::physics\+::time\+::\+Duration\+::operator$<$= (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \&}]{a\+Duration }\end{DoxyParamCaption}) const}
+
+
+
+Less than or equal to operator. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration}(123) <= \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration}(456) ; \textcolor{comment}{// True}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Duration} & A duration \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if lhs duration is less than or equal to rhs duration 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_ac368d2fe8d2a04248dac2b53bdfbfb21}\label{classlibrary_1_1physics_1_1time_1_1_duration_ac368d2fe8d2a04248dac2b53bdfbfb21}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!operator==@{operator==}}
+\index{operator==@{operator==}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool library\+::physics\+::time\+::\+Duration\+::operator== (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \&}]{a\+Duration }\end{DoxyParamCaption}) const}
+
+
+
+Equal to operator. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration}(123) == \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration}(123) ; \textcolor{comment}{// True}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Duration} & A duration \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if durations are equal 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_ac7fa93e402efc7c23f1acb8df9b54c79}\label{classlibrary_1_1physics_1_1time_1_1_duration_ac7fa93e402efc7c23f1acb8df9b54c79}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!operator$>$@{operator$>$}}
+\index{operator$>$@{operator$>$}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{operator$>$()}{operator>()}}
+{\footnotesize\ttfamily bool library\+::physics\+::time\+::\+Duration\+::operator$>$ (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \&}]{a\+Duration }\end{DoxyParamCaption}) const}
+
+
+
+Greater than operator. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration}(456) > \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration}(123) ; \textcolor{comment}{// True}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Duration} & A duration \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if lhs duration is greater than rhs duration 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_a4338d704712640124d44a6e7a52909ea}\label{classlibrary_1_1physics_1_1time_1_1_duration_a4338d704712640124d44a6e7a52909ea}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!operator$>$=@{operator$>$=}}
+\index{operator$>$=@{operator$>$=}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{operator$>$=()}{operator>=()}}
+{\footnotesize\ttfamily bool library\+::physics\+::time\+::\+Duration\+::operator$>$= (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \&}]{a\+Duration }\end{DoxyParamCaption}) const}
+
+
+
+Greater than operator. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration}(456) >= \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration}(123) ; \textcolor{comment}{// True}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Duration} & A duration \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if lhs duration is greater than or equal to rhs duration 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_a52ba6dd2958d1e193b81d8f659bb6bf3}\label{classlibrary_1_1physics_1_1time_1_1_duration_a52ba6dd2958d1e193b81d8f659bb6bf3}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!Parse@{Parse}}
+\index{Parse@{Parse}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{Parse()}{Parse()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} library\+::physics\+::time\+::\+Duration\+::\+Parse (\begin{DoxyParamCaption}\item[{const String \&}]{a\+String,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ace85659cafe97df992c0e4273bdc88d1}{Duration\+::\+Format} \&}]{a\+Format = {\ttfamily \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ace85659cafe97df992c0e4273bdc88d1aec0fc0100c4fc1ce4eea230c3dc10360}{Duration\+::\+Format\+::\+Undefined}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Constructs a duration from a string representation. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration} duration = \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a52ba6dd2958d1e193b81d8f659bb6bf3}{Duration::Parse}(\textcolor{stringliteral}{"12:34:56.123.456.789"}) ; 
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration} duration = \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a52ba6dd2958d1e193b81d8f659bb6bf3}{Duration::Parse}(\textcolor{stringliteral}{"12:34:56.123.456.789"}, 
+      \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ace85659cafe97df992c0e4273bdc88d1aeb6d8ae6f20283755b339c0dc273988b}{Duration::Format::Standard}) ;
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration} duration = \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a52ba6dd2958d1e193b81d8f659bb6bf3}{Duration::Parse}(\textcolor{stringliteral}{"12:34:56.123456789"}, 
+      \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ace85659cafe97df992c0e4273bdc88d1a35b6786739efcdc5a74ab1dca29d3b6b}{Duration::Format::ISO8601}) ;
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+String} & A string \\
+\hline
+\mbox{\tt in}  & {\em (optional)} & a\+Format A duration format (automatic detection if Undefined) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_ae10891c94a1b2278c444cb44b37132f1}\label{classlibrary_1_1physics_1_1time_1_1_duration_ae10891c94a1b2278c444cb44b37132f1}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!Seconds@{Seconds}}
+\index{Seconds@{Seconds}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{Seconds()}{Seconds()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} library\+::physics\+::time\+::\+Duration\+::\+Seconds (\begin{DoxyParamCaption}\item[{const Real \&}]{a\+Second\+Count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Constructs a duration from a second count. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration} duration = \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ae10891c94a1b2278c444cb44b37132f1}{Duration::Seconds}(123) ;
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Second\+Count} & A second count \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_a06f24e6cc8cb867abbae969c5f199513}\label{classlibrary_1_1physics_1_1time_1_1_duration_a06f24e6cc8cb867abbae969c5f199513}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!to\+String@{to\+String}}
+\index{to\+String@{to\+String}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{to\+String()}{toString()}}
+{\footnotesize\ttfamily String library\+::physics\+::time\+::\+Duration\+::to\+String (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ace85659cafe97df992c0e4273bdc88d1}{Duration\+::\+Format} \&}]{a\+Format = {\ttfamily \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ace85659cafe97df992c0e4273bdc88d1aeb6d8ae6f20283755b339c0dc273988b}{Duration\+::\+Format\+::\+Standard}} }\end{DoxyParamCaption}) const}
+
+
+
+Get string representation of duration. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ae10891c94a1b2278c444cb44b37132f1}{Duration::Seconds}(123.456).\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a06f24e6cc8cb867abbae969c5f199513}{toString}(
+      \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ace85659cafe97df992c0e4273bdc88d1aeb6d8ae6f20283755b339c0dc273988b}{Duration::Format::Standard}) ; \textcolor{comment}{// 02:03.456}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ae10891c94a1b2278c444cb44b37132f1}{Duration::Seconds}(123.456).\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a06f24e6cc8cb867abbae969c5f199513}{toString}(
+      \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ace85659cafe97df992c0e4273bdc88d1a35b6786739efcdc5a74ab1dca29d3b6b}{Duration::Format::ISO8601}) ; \textcolor{comment}{// PT2M3.456S}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Format} & A representation format \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Serialized duration 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_a67012781d9b7491e26bdc3da9f513130}\label{classlibrary_1_1physics_1_1time_1_1_duration_a67012781d9b7491e26bdc3da9f513130}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!Undefined@{Undefined}}
+\index{Undefined@{Undefined}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{Undefined()}{Undefined()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} library\+::physics\+::time\+::\+Duration\+::\+Undefined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Constructs an undefined duration. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration} duration = \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a67012781d9b7491e26bdc3da9f513130}{Duration::Undefined}() ;
+duration.isDefined() ; \textcolor{comment}{// False}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+Undefined duration 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_ae9d507f6cbb36902529b28d3721507c1}\label{classlibrary_1_1physics_1_1time_1_1_duration_ae9d507f6cbb36902529b28d3721507c1}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!Weeks@{Weeks}}
+\index{Weeks@{Weeks}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{Weeks()}{Weeks()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} library\+::physics\+::time\+::\+Duration\+::\+Weeks (\begin{DoxyParamCaption}\item[{const Real \&}]{a\+Week\+Count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Constructs a duration from a week count. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration} duration = \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ae9d507f6cbb36902529b28d3721507c1}{Duration::Weeks}(123) ;
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Week\+Count} & A week count \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_aa68c3998cd4cf9068fb239dd66102c2c}\label{classlibrary_1_1physics_1_1time_1_1_duration_aa68c3998cd4cf9068fb239dd66102c2c}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!Zero@{Zero}}
+\index{Zero@{Zero}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{Zero()}{Zero()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} library\+::physics\+::time\+::\+Duration\+::\+Zero (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Constructs a zero duration. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration} duration = \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_aa68c3998cd4cf9068fb239dd66102c2c}{Duration::Zero}() ;
+duration.isZero() ; \textcolor{comment}{// True}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+Zero duration 
+\end{DoxyReturn}
+
+
+\subsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_a30be5772f32cb400f8d8a8e2975abf6d}\label{classlibrary_1_1physics_1_1time_1_1_duration_a30be5772f32cb400f8d8a8e2975abf6d}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{operator$\ast$}{operator*}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} operator$\ast$ (\begin{DoxyParamCaption}\item[{double}]{a\+Multiplier,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \&}]{a\+Duration }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Multiplication operator. 
+
+
+\begin{DoxyCode}
+2.0 * \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ae10891c94a1b2278c444cb44b37132f1}{Duration::Seconds}(1.0) ; \textcolor{comment}{// 2.0 [s]}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Multiplier} & A multiplier \\
+\hline
+\mbox{\tt in}  & {\em a\+Duration} & A duration \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_a82573aea35c8642b571f78c85ca70fbc}\label{classlibrary_1_1physics_1_1time_1_1_duration_a82573aea35c8642b571f78c85ca70fbc}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{an\+Output\+Stream,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \&}]{a\+Duration }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Output stream operator. 
+
+
+\begin{DoxyCode}
+std::cout << \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a0a70efcf487a841da572afcf00001f64}{Duration}(123) ;
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em an\+Output\+Stream} & An output stream \\
+\hline
+\mbox{\tt in}  & {\em a\+Duration} & A duration \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An output stream 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_ac98d9996643dde64fe1ffe67c12cc945}\label{classlibrary_1_1physics_1_1time_1_1_duration_ac98d9996643dde64fe1ffe67c12cc945}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!Instant@{Instant}}
+\index{Instant@{Instant}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{Instant}{Instant}}
+{\footnotesize\ttfamily friend library\+::physics\+::time\+::\+Duration\+::\+Instant}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Library/\+Physics/\+Time/\hyperlink{_duration_8hpp}{Duration.\+hpp}\item 
+src/\+Library/\+Physics/\+Time/\hyperlink{_duration_8cpp}{Duration.\+cpp}\end{DoxyCompactItemize}
