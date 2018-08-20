@@ -24,6 +24,8 @@ inline void                     LibraryPhysicsPy_Time_DateTime              ( )
 
         .def(init<int, int, int, int, int, int, int, int, int>())
 
+        .def(init<int, int, int, int, int, int>())
+
         .def(self == self)
         .def(self != self)
 

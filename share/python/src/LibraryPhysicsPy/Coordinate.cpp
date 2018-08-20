@@ -1,30 +1,28 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Library/Physics
-/// @file           LibraryPhysicsPy.cxx
+/// @file           LibraryPhysicsPy/Coordinate.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        TBD
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <boost/python.hpp>
-
-#include <LibraryPhysicsPy/Coordinate.cpp>
-#include <LibraryPhysicsPy/Time.cpp>
-#include <LibraryPhysicsPy/Units.cpp>
+#include <LibraryPhysicsPy/Coordinate/Transform.cpp>
+#include <LibraryPhysicsPy/Coordinate/Frame.cpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-BOOST_PYTHON_MODULE (LibraryPhysicsPy)
+inline void                     LibraryPhysicsPy_Coordinate                      ( )
 {
-
-	boost::python::object package = boost::python::scope() ;
-	
-	package.attr("__path__") = "Library" ;
-
-	LibraryPhysicsPy_Units() ;
-	LibraryPhysicsPy_Time() ;
-	LibraryPhysicsPy_Coordinate() ;
+    
+    boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("Library.Physics.Coordinate")))) ;
+    
+    boost::python::scope().attr("Coordinate") = module ;
+    
+    boost::python::scope scope = module ;
+    
+    LibraryPhysicsPy_Coordinate_Frame() ;
+    LibraryPhysicsPy_Coordinate_Transform() ;
 
 }
 
