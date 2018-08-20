@@ -160,6 +160,8 @@ Vector2d                        Manager::getPolarMotionAt                   (   
         return finals2000aPtr->getPolarMotionAt(anInstant) ;
     }
 
+    throw library::core::error::RuntimeError("Cannot obtain polar motion at [{}].", anInstant.toString()) ;
+
     return Vector2d::Undefined() ;
 
 }
@@ -209,6 +211,8 @@ Real                            Manager::getUt1MinusUtcAt                   (   
         return finals2000aPtr->getUt1MinusUtcAt(anInstant) ;
     }
 
+    throw library::core::error::RuntimeError("Cannot obtain UT1 - UTC at [{}].", anInstant.toString()) ;
+
     return Real::Undefined() ;
 
 }
@@ -229,6 +233,8 @@ Real                            Manager::getLodAt                           (   
     {
         return finals2000aPtr->getLodAt(anInstant) ;
     }
+
+    throw library::core::error::RuntimeError("Cannot obtain LOD at [{}].", anInstant.toString()) ;
 
     return Real::Undefined() ;
 

@@ -24,8 +24,11 @@ docker run \
 --env="JUPYTER_LAB_ENABLE=yes" \
 --env="LD_LIBRARY_PATH=/opt/conda/lib/python3.6/site-packages:/home/jovyan/lib" \
 --env="PYTHONPATH=/opt/conda/lib/python3.6/site-packages:/home/jovyan/lib" \
---volume=$(pwd)/../../lib:/opt/lib:ro \
---volume=$(pwd)/../../share/python/notebooks:/home/jovyan/notebooks \
+--volume="$(pwd)/../../../library-core/lib:/opt/core:ro" \
+--volume="$(pwd)/../../../library-mathematics/lib:/opt/mathematics:ro" \
+--volume="$(pwd)/../../lib:/opt/lib:ro" \
+--volume="$(pwd)/../../share/python/notebooks:/home/jovyan/notebooks" \
+--volume="$(pwd)/../../share/data:/app/share/data" \
 jupyter/scipy-notebook \
 bash -c "mkdir -p /opt/conda/lib/python3.6/site-packages/Library/Physics \
 && ln -s /opt/lib/liblibrary-physics.so.0 /opt/conda/lib/python3.6/site-packages/Library/Physics/liblibrary-physics.so.0 \

@@ -20,5 +20,5 @@ setuptools.setup(
     ),
     keywords="open-space-collective physics",
     packages=setuptools.find_packages(),
-    package_data={"": ["${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_PATH}/LibraryPhysicsPy.so", "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_PATH}/liblibrary-physics.so.0"]}
+    package_data={"": ["${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_PATH}/LibraryPhysicsPy.so", "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_PATH}/liblibrary-physics.so.0", "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_PATH}/libboost_python36.so.1.68.0"]}
 )

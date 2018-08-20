@@ -16,8 +16,11 @@ inline void                     LibraryPhysicsPy_Coordinate_Transform       ( )
 
     using namespace boost::python ;
 
+    using library::core::types::Real ;
+
     using library::math::obj::Vector3d ;
     using library::math::geom::trf::rot::Quaternion ;
+    using library::math::geom::trf::rot::RotationVector ;
 
     using library::physics::time::Instant ;
 
@@ -56,6 +59,14 @@ inline void                     LibraryPhysicsPy_Coordinate_Transform       ( )
         // .def("Translation", &Transform::Translation).staticmethod("Translation")
         .def("Active", &Transform::Active).staticmethod("Active")
         .def("Passive", &Transform::Passive).staticmethod("Passive")
+
+    ;
+
+    enum_<Transform::Type>("Type")
+
+        .value("Undefined", Transform::Type::Undefined)
+        .value("Active", Transform::Type::Active)
+        .value("Passive", Transform::Type::Passive)
 
     ;
 
