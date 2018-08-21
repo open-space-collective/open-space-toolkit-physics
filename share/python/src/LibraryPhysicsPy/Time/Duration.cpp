@@ -39,6 +39,8 @@ inline void                     LibraryPhysicsPy_Time_Duration               ( )
         .def(self /= other<double>())
 
         .def(self_ns::str(self_ns::self))
+        
+        .def("__repr__", +[] (const Duration& aDuration) -> std::string { return aDuration.toString() ; })
 
         .def("isDefined", &Duration::isDefined)
         .def("isZero", &Duration::isZero)

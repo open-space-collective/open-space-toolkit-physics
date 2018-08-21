@@ -32,6 +32,59 @@ namespace coord
                                     frameWPtr_(aFrame)
 {
 
+    std::cout << "Position :: Position (...) | Shared<const Frame> @ " << &aFrame << " / " << aFrame.get() << " frameWPtr_ | frameWPtr_.expired = " << frameWPtr_.expired() << std::endl ;
+
+    std::cout << "Position :: Position (...) :: use_count = " << aFrame.use_count() << std::endl ;
+
+    if (auto frameSPtr = frameWPtr_.lock())
+    {
+        std::cout << "this @ " << this << " >> LOCK @ " << frameSPtr.get() << std::endl ;
+    }
+    else
+    {
+        std::cout << "this @ " << this << " >> CANNOT LOCK" << std::endl ;
+    }
+
+    std::cout << "Position :: Position (...) >> &frameWPtr_ = " << &frameWPtr_ << " ? " << frameWPtr_.expired() << " - " << frameWPtr_.use_count() << std::endl ;
+
+}
+
+                                Position::Position                          (   const   Position&                   aPosition                                   )
+                                :   coordinates_(aPosition.coordinates_),
+                                    unit_(aPosition.unit_),
+                                    frameWPtr_(aPosition.frameWPtr_)
+{
+
+    std::cout << "Position :: Position (const Position&) ..." << std::endl ;
+
+    if (auto frameSPtr = aPosition.frameWPtr_.lock())
+    {
+
+        std::cout << "aPosition @ " << &aPosition << " >> LOCK @ " << frameSPtr.get() << std::endl ;
+        // frameWPtr_ = frameSPtr ;
+
+        std::cout << "Position :: Position (const Position&) :: use_count = " << frameSPtr.use_count() << std::endl ;
+
+    }
+    else
+    {
+        std::cout << "aPosition @ " << &aPosition << " >> CANNOT LOCK" << std::endl ;
+    }
+
+    std::cout << "Position :: Position (const Position&) >> &frameWPtr_ = " << &aPosition.frameWPtr_ << " ? " << aPosition.frameWPtr_.expired() << " - " << aPosition.frameWPtr_.use_count() << std::endl ;
+
+    if (auto frameSPtr = frameWPtr_.lock())
+    {
+        std::cout << "this @ " << this << " >> LOCK @ " << frameSPtr.get() << std::endl ;
+        std::cout << "Position :: Position (const Position&) :: use_count = " << frameSPtr.use_count() << std::endl ;
+    }
+    else
+    {
+        std::cout << "this @ " << this << " >> CANNOT LOCK" << std::endl ;
+    }
+
+    std::cout << "Position :: Position (const Position&) >> &frameWPtr_ = " << &frameWPtr_ << " ? " << frameWPtr_.expired() << " - " << frameWPtr_.use_count() << std::endl ;
+
 }
 
 bool                            Position::operator ==                       (   const   Position&                   aPosition                                   ) const
@@ -88,10 +141,18 @@ std::ostream&                   operator <<                                 (   
 bool                            Position::isDefined                         ( ) const
 {
 
+    std::cout << "Position :: isDefined @ " << this << std::endl ;
+    std::cout << "Position :: isDefined >> &frameWPtr_ = " << &frameWPtr_ << " ? " << frameWPtr_.expired() << " - " << frameWPtr_.use_count() << std::endl ;
+
     if (auto frameSPtr = frameWPtr_.lock())
     {
         return coordinates_.isDefined() && (unit_ != Position::Unit::Undefined) && frameSPtr->isDefined() ;
     }
+    else
+    {
+        std::cout << "CANNOT LOCK" << std::endl ;
+    }
+    
     
     return false ;
 
@@ -221,7 +282,11 @@ Position                        Position::Undefined                         ( )
 Position                        Position::Meters                            (   const   Vector3d&                   aCoordinateSet,
                                                                                 const   Shared<const Frame>&        aFrame                                      )
 {
+
+    std::cout << "Position :: Meters :: use_count = " << aFrame.use_count() << std::endl ;
+    
     return Position(aCoordinateSet, Position::Unit::Meter, aFrame) ;
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

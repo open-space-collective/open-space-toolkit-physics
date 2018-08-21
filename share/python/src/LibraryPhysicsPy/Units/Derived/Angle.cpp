@@ -11,6 +11,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (LibraryPhysicsPy_Units_Angle_toString_overloads, library::physics::units::Angle::toString, 0, 1)
+
 inline void                     LibraryPhysicsPy_Units_Derived_Angle        ( )
 {
 
@@ -39,16 +41,19 @@ inline void                     LibraryPhysicsPy_Units_Derived_Angle        ( )
 
         .def(self_ns::str(self_ns::self))
 
+        .def("__repr__", +[] (const Angle& anAngle) -> std::string { return anAngle.toString() ; })
+
         .def("isDefined", &Angle::isDefined)
+        .def("isZero", &Angle::isZero)
 
         .def("getUnit", &Angle::getUnit)
-        .def("in", &Angle::in)
+        .def("inUnit", &Angle::in)
         .def("inRadians", +[] (const Angle& anAngle) -> Real { return anAngle.inRadians() ; })
         .def("inDegrees", +[] (const Angle& anAngle) -> Real { return anAngle.inDegrees() ; })
         .def("inArcminutes", +[] (const Angle& anAngle) -> Real { return anAngle.inArcminutes() ; })
         .def("inArcseconds", +[] (const Angle& anAngle) -> Real { return anAngle.inArcseconds() ; })
         .def("inRevolutions", &Angle::inRevolutions)
-        .def("toString", &Angle::toString)
+        .def("toString", &Angle::toString, LibraryPhysicsPy_Units_Angle_toString_overloads())
         
         .def("Undefined", &Angle::Undefined).staticmethod("Undefined")
         .def("Radians", &Angle::Radians).staticmethod("Radians")

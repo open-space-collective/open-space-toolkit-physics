@@ -60,9 +60,37 @@ void                            Manager::addFrame                           (   
 
     std::lock_guard<std::mutex> lock(mutex_) ;
 
+    std::cout << "Manager :: addFrame | Frame @ " << &aFrame << std::endl ;
+
     if (frameMap_.find(aFrame.getName()) == frameMap_.end())
     {
-        frameMap_.insert({ aFrame.getName(), std::make_shared<Frame>(aFrame) }) ;
+
+        // auto frameSPtr = std::make_shared<Frame>(aFrame) ;
+        Shared<const Frame> frameSPtr(new Frame(aFrame), [] (Frame* aFramePtr) { std::cout << "Shared<Frame> :: Deleter @ " << aFramePtr << std::endl ; delete aFramePtr ; }) ;
+
+        std::cout << "Manager :: addFrame | frameSPtr @ " << &frameSPtr << " / " << frameSPtr.get() << std::endl ;
+        
+        frameMap_.insert({ aFrame.getName(), frameSPtr }) ;
+
+    }
+
+}
+
+void                            Manager::addFrame                           (   const   Shared<const Frame>&        aFrameSPtr                                  )
+{
+
+    if (aFrameSPtr == nullptr)
+    {
+        throw library::core::error::runtime::Undefined("Frame") ;
+    }
+
+    std::lock_guard<std::mutex> lock(mutex_) ;
+
+    std::cout << "Manager :: addFrame | Frame @ " << aFrameSPtr.get() << std::endl ;
+
+    if (frameMap_.find(aFrameSPtr->getName()) == frameMap_.end())
+    {
+        frameMap_.insert({ aFrameSPtr->getName(), aFrameSPtr }) ;
     }
 
 }

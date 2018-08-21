@@ -60,6 +60,10 @@ class Position
                                                                                 const   Position::Unit&             aUnit,
                                                                                 const   Shared<const Frame>&        aFrame                                      ) ;
 
+                                Position                                    (   const   Position&                   aPosition                                   ) ;
+
+        Position&               operator =                                  (   const   Position&                   Position                                    ) = delete ;
+
         bool                    operator ==                                 (   const   Position&                   aPosition                                   ) const ;
         
         bool                    operator !=                                 (   const   Position&                   aPosition                                   ) const ;

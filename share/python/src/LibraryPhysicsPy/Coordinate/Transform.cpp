@@ -36,6 +36,7 @@ inline void                     LibraryPhysicsPy_Coordinate_Transform       ( )
         .def(self *= self)
 
         .def(self_ns::str(self_ns::self))
+        .def(self_ns::repr(self_ns::self))
 
         .def("isDefined", &Transform::isDefined)
 

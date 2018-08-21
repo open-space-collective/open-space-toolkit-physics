@@ -22,7 +22,9 @@ inline void                     LibraryPhysicsPy_Coordinate_Frame           ( )
     using library::physics::coord::Frame ;
     using library::physics::coord::frame::Provider ;
 
-    scope in_Frame = class_<Frame>("Frame", init<String, bool, Shared<const Frame>, Shared<Provider>>())
+    // scope in_Frame = class_<Frame, Shared<Frame>>("Frame", init<String&, bool, Shared<const Frame>&, Shared<Provider>&>())
+    // scope in_Frame = class_<Frame, Shared<Frame>, boost::noncopyable>("Frame", init<String&, bool, Shared<const Frame>&, Shared<Provider>&>())
+    scope in_Frame = class_<Frame>("Frame", init<String&, bool, Shared<const Frame>&, Shared<Provider>&>())
 
         .def(self == self)
         .def(self != self)
@@ -44,6 +46,7 @@ inline void                     LibraryPhysicsPy_Coordinate_Frame           ( )
         .def("Undefined", &Frame::Undefined).staticmethod("Undefined")
         // .def("ICRF", &Frame::ICRF).staticmethod("ICRF")
         .def("GCRF", &Frame::GCRF).staticmethod("GCRF")
+        .def("GCRFShared", &Frame::GCRFShared).staticmethod("GCRFShared")
         // .def("EME2000", &Frame::EME2000).staticmethod("EME2000")
         .def("TEME", &Frame::TEME).staticmethod("TEME")
         .def("TEMEOfEpoch", &Frame::TEMEOfEpoch).staticmethod("TEMEOfEpoch")
@@ -51,7 +54,15 @@ inline void                     LibraryPhysicsPy_Coordinate_Frame           ( )
         .def("TIRF", &Frame::TIRF).staticmethod("TIRF")
         .def("ITRF", &Frame::ITRF).staticmethod("ITRF")
 
+        // .def("Shared", +[] (const Frame& aFrame) -> Shared<Frame> { return std::make_shared<Frame>(aFrame) ; })
+        // .def("ConstShared", +[] (const Frame& aFrame) -> Shared<const Frame> { return std::make_shared<const Frame>(aFrame) ; })
+
     ;
+
+    // register_ptr_to_python<Shared<Frame>>() ;
+    register_ptr_to_python<Shared<const Frame>>() ;
+
+    implicitly_convertible<Shared<Frame>, Shared<const Frame>>() ;
 
 }
 

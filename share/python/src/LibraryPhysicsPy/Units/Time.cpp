@@ -11,6 +11,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (LibraryPhysicsPy_Units_Time_toString_overloads, library::physics::units::Time::toString, 0, 1)
+
 inline void                     LibraryPhysicsPy_Units_Time               ( )
 {
 
@@ -44,9 +46,11 @@ inline void                     LibraryPhysicsPy_Units_Time               ( )
 
         // .def(self_ns::str(self_ns::self))
 
+        .def("__repr__", +[] (const Time& aTime) -> std::string { return aTime.toString() ; })
+
         .def("isDefined", &Time::isDefined)
 
-        .def("toString", &Time::toString)
+        .def("toString", &Time::toString, LibraryPhysicsPy_Units_Time_toString_overloads())
         
         .def("Undefined", &Time::Undefined).staticmethod("Undefined")
         .def("StringFromUnit", &Time::StringFromUnit).staticmethod("StringFromUnit")

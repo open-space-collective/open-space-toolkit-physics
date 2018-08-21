@@ -15,27 +15,60 @@ pushd "${script_directory}" > /dev/null
 
 source ../.env
 
-docker run \
---name="${container_name}-notebook" \
--it \
---rm \
---publish="8888:8888" \
---user="" \
---env="JUPYTER_LAB_ENABLE=yes" \
---env="LD_LIBRARY_PATH=/opt/conda/lib/python3.6/site-packages:/home/jovyan/lib" \
---env="PYTHONPATH=/opt/conda/lib/python3.6/site-packages:/home/jovyan/lib" \
---volume="$(pwd)/../../../library-core/lib:/opt/core:ro" \
---volume="$(pwd)/../../../library-mathematics/lib:/opt/mathematics:ro" \
---volume="$(pwd)/../../lib:/opt/lib:ro" \
---volume="$(pwd)/../../share/python/notebooks:/home/jovyan/notebooks" \
---volume="$(pwd)/../../share/data:/app/share/data" \
-jupyter/scipy-notebook \
-bash -c "mkdir -p /opt/conda/lib/python3.6/site-packages/Library/Physics \
-&& ln -s /opt/lib/liblibrary-physics.so.0 /opt/conda/lib/python3.6/site-packages/Library/Physics/liblibrary-physics.so.0 \
-&& ln -s /opt/lib/LibraryPhysicsPy.so /opt/conda/lib/python3.6/site-packages/Library/Physics/LibraryPhysicsPy.so \
-&& echo 'from .LibraryPhysicsPy import *' > /opt/conda/lib/python3.6/site-packages/Library/Physics/__init__.py \
-&& start-notebook.sh --NotebookApp.token=''"
+if [[ ! -z $1 ]] && [[ $1 == "--link" ]]; then
 
-popd
+    docker run \
+    --name="${container_name}-notebook" \
+    -it \
+    --rm \
+    --publish="8888:8888" \
+    --user="" \
+    --env="JUPYTER_LAB_ENABLE=yes" \
+    --env="LD_LIBRARY_PATH=/usr/local/lib:/opt/conda/lib/python3.6/site-packages:/home/jovyan/lib" \
+    --env="PYTHONPATH=/opt/conda/lib/python3.6/site-packages:/home/jovyan/lib" \
+    --volume="$(pwd)/../../../library-core/lib:/opt/library-core:ro" \
+    --volume="$(pwd)/../../../library-mathematics/lib:/opt/library-mathematics:ro" \
+    --volume="$(pwd)/../../lib:/opt/lib:ro" \
+    --volume="$(pwd)/../../share/python/notebooks:/home/jovyan/notebooks" \
+    --volume="$(pwd)/../../share/data:/app/share/data" \
+    "${repository_name}/${project_name}-python" \
+    bash -c "mkdir -p /opt/conda/lib/python3.6/site-packages/Library/Core \
+    && ln -s /opt/library-core/liblibrary-core.so.0 /opt/conda/lib/python3.6/site-packages/Library/Core/liblibrary-core.so.0 \
+    && ln -s /opt/library-core/LibraryCorePy.so /opt/conda/lib/python3.6/site-packages/Library/Core/LibraryCorePy.so \
+    && echo 'from .LibraryCorePy import *' > /opt/conda/lib/python3.6/site-packages/Library/Core/__init__.py \
+    && mkdir -p /opt/conda/lib/python3.6/site-packages/Library/Mathematics \
+    && ln -s /opt/library-mathematics/liblibrary-mathematics.so.0 /opt/conda/lib/python3.6/site-packages/Library/Mathematics/liblibrary-mathematics.so.0 \
+    && ln -s /opt/library-mathematics/LibraryMathematicsPy.so /opt/conda/lib/python3.6/site-packages/Library/Mathematics/LibraryMathematicsPy.so \
+    && echo 'from .LibraryMathematicsPy import *' > /opt/conda/lib/python3.6/site-packages/Library/Mathematics/__init__.py \
+    && mkdir -p /opt/conda/lib/python3.6/site-packages/Library/Physics \
+    && ln -s /opt/lib/liblibrary-physics.so.0 /opt/conda/lib/python3.6/site-packages/Library/Physics/liblibrary-physics.so.0 \
+    && ln -s /opt/lib/LibraryPhysicsPy.so /opt/conda/lib/python3.6/site-packages/Library/Physics/LibraryPhysicsPy.so \
+    && echo 'from .LibraryPhysicsPy import *' > /opt/conda/lib/python3.6/site-packages/Library/Physics/__init__.py \
+    && start-notebook.sh --NotebookApp.token=''"
+
+else
+
+    docker run \
+    --name="${container_name}-notebook" \
+    -it \
+    --rm \
+    --publish="8888:8888" \
+    --user="" \
+    --env="JUPYTER_LAB_ENABLE=yes" \
+    --env="LD_LIBRARY_PATH=/usr/local/lib:/opt/conda/lib/python3.6/site-packages:/home/jovyan/lib" \
+    --env="PYTHONPATH=/opt/conda/lib/python3.6/site-packages:/home/jovyan/lib" \
+    --volume="$(pwd)/../../lib:/opt/lib:ro" \
+    --volume="$(pwd)/../../share/python/notebooks:/home/jovyan/notebooks" \
+    --volume="$(pwd)/../../share/data:/app/share/data" \
+    "${repository_name}/${project_name}-python" \
+    bash -c "mkdir -p /opt/conda/lib/python3.6/site-packages/Library/Physics \
+    && ln -s /opt/lib/liblibrary-physics.so.0 /opt/conda/lib/python3.6/site-packages/Library/Physics/liblibrary-physics.so.0 \
+    && ln -s /opt/lib/LibraryPhysicsPy.so /opt/conda/lib/python3.6/site-packages/Library/Physics/LibraryPhysicsPy.so \
+    && echo 'from .LibraryPhysicsPy import *' > /opt/conda/lib/python3.6/site-packages/Library/Physics/__init__.py \
+    && start-notebook.sh --NotebookApp.token=''"
+
+fi
+
+popd > /dev/null
 
 ################################################################################################################################################################
