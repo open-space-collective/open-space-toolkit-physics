@@ -50,7 +50,7 @@ static Manager FrameManager ;
                                     providerSPtr_(aProvider)
 {
 
-    std::cout << "Frame :: Frame () @ " << this << std::endl ;
+    // std::cout << "Frame :: Frame () @ " << this << std::endl ;
 
 }
 
@@ -61,14 +61,14 @@ static Manager FrameManager ;
                                     providerSPtr_(aFrame.providerSPtr_)
 {
 
-    std::cout << "Frame :: Frame (const Frame&) @ " << &aFrame << " -> " << this << std::endl ;
+    // std::cout << "Frame :: Frame (const Frame&) @ " << &aFrame << " -> " << this << std::endl ;
 
 }
 
                                 Frame::~Frame                               ( )
 {
 
-    std::cout << "Frame :: ~Frame @ " << this << std::endl ;
+    // std::cout << "Frame :: ~Frame @ " << this << std::endl ;
 
 }
 
@@ -325,7 +325,7 @@ Frame                           Frame::Undefined                            ( )
 Frame                           Frame::GCRF                                 ( )
 {
 
-    std::cout << "Frame :: GCRF..." << std::endl ;
+    // std::cout << "Frame :: GCRF..." << std::endl ;
 
     using GCRFProvider = library::physics::coord::frame::provider::GCRF ;
 
@@ -334,17 +334,17 @@ Frame                           Frame::GCRF                                 ( )
         return *FrameManager.accessFrameWithName("GCRF") ;
     }
 
-    std::cout << "Frame :: GCRF >> new..." << std::endl ;
+    // std::cout << "Frame :: GCRF >> new..." << std::endl ;
     
     const Frame gcrf = { "GCRF", true, nullptr, std::make_shared<GCRFProvider>() } ;
 
-    std::cout << "Frame :: GCRF >> new" << std::endl ;
+    // std::cout << "Frame :: GCRF >> new" << std::endl ;
 
-    std::cout << "Frame :: GCRF >> addFrame..." << std::endl ;
+    // std::cout << "Frame :: GCRF >> addFrame..." << std::endl ;
 
     FrameManager.addFrame(gcrf) ;
 
-    std::cout << "Frame :: GCRF >> addFrame" << std::endl ;
+    // std::cout << "Frame :: GCRF >> addFrame" << std::endl ;
 
     return gcrf ;
 
@@ -353,7 +353,7 @@ Frame                           Frame::GCRF                                 ( )
 Shared<const Frame>             Frame::GCRFShared                           ( )
 {
 
-    std::cout << "Frame :: GCRFShared..." << std::endl ;
+    // std::cout << "Frame :: GCRFShared..." << std::endl ;
 
     using GCRFProvider = library::physics::coord::frame::provider::GCRF ;
 
@@ -362,18 +362,18 @@ Shared<const Frame>             Frame::GCRFShared                           ( )
         return FrameManager.accessFrameWithName("GCRF") ;
     }
 
-    std::cout << "Frame :: GCRF >> new..." << std::endl ;
+    // std::cout << "Frame :: GCRF >> new..." << std::endl ;
     
-    // const Shared<const Frame> gcrfSPtr = std::make_shared<const Frame>("GCRF", true, nullptr, std::make_shared<GCRFProvider>()) ;
-    const Shared<const Frame> gcrfSPtr(new Frame("GCRF", true, nullptr, std::make_shared<GCRFProvider>()), [] (Frame* aFramePtr) { std::cout << "Shared<Frame> :: Deleter @ " << aFramePtr << std::endl ; delete aFramePtr ; }) ;
+    const Shared<const Frame> gcrfSPtr = std::make_shared<const Frame>("GCRF", true, nullptr, std::make_shared<GCRFProvider>()) ;
+    // const Shared<const Frame> gcrfSPtr(new Frame("GCRF", true, nullptr, std::make_shared<GCRFProvider>()), [] (Frame* aFramePtr) { std::cout << "Shared<Frame> :: Deleter @ " << aFramePtr << std::endl ; delete aFramePtr ; }) ;
 
-    std::cout << "Frame :: GCRF >> new" << std::endl ;
+    // std::cout << "Frame :: GCRF >> new" << std::endl ;
 
-    std::cout << "Frame :: GCRF >> addFrame..." << std::endl ;
+    // std::cout << "Frame :: GCRF >> addFrame..." << std::endl ;
 
     FrameManager.addFrame(gcrfSPtr) ;
 
-    std::cout << "Frame :: GCRF >> addFrame" << std::endl ;
+    // std::cout << "Frame :: GCRF >> addFrame" << std::endl ;
 
     return gcrfSPtr ;
 

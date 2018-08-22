@@ -77,6 +77,8 @@ class Position
 
         Shared<const Frame>     accessFrame                                 ( ) const ;
 
+        Vector3d                getCoordinates                              ( ) const ;
+
         Position::Unit          getUnit                                     ( ) const ;
 
         Position                inUnit                                      (   const   Position::Unit&             aUnit                                       ) const ;

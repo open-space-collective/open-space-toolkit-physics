@@ -97,7 +97,6 @@ bool                            Velocity::isDefined                         ( ) 
 
 }
 
-
 const Vector3d&                 Velocity::accessCoordinates                 ( ) const
 {
 
@@ -124,6 +123,18 @@ Shared<const Frame>             Velocity::accessFrame                       ( ) 
     }
 
     throw library::core::error::RuntimeError("Cannot access frame.") ;
+
+}
+
+Vector3d                        Velocity::getCoordinates                    ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Velocity") ;
+    }
+
+    return coordinates_ ;
 
 }
 

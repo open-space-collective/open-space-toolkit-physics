@@ -23,7 +23,7 @@ if [[ ! -z $1 ]] && [[ $1 == "--link" ]]; then
     --rm \
     --publish="8888:8888" \
     --user="" \
-    --env="JUPYTER_LAB_ENABLE=yes" \
+    --env="JUPYTER_ENABLE_LAB=yes" \
     --env="LD_LIBRARY_PATH=/usr/local/lib:/opt/conda/lib/python3.6/site-packages:/home/jovyan/lib" \
     --env="PYTHONPATH=/opt/conda/lib/python3.6/site-packages:/home/jovyan/lib" \
     --volume="$(pwd)/../../../library-core/lib:/opt/library-core:ro" \
@@ -31,6 +31,7 @@ if [[ ! -z $1 ]] && [[ $1 == "--link" ]]; then
     --volume="$(pwd)/../../lib:/opt/lib:ro" \
     --volume="$(pwd)/../../share/python/notebooks:/home/jovyan/notebooks" \
     --volume="$(pwd)/../../share/data:/app/share/data" \
+    --workdir="/home/jovyan/notebooks" \
     "${repository_name}/${project_name}-python" \
     bash -c "mkdir -p /opt/conda/lib/python3.6/site-packages/Library/Core \
     && ln -s /opt/library-core/liblibrary-core.so.0 /opt/conda/lib/python3.6/site-packages/Library/Core/liblibrary-core.so.0 \
@@ -54,12 +55,13 @@ else
     --rm \
     --publish="8888:8888" \
     --user="" \
-    --env="JUPYTER_LAB_ENABLE=yes" \
+    --env="JUPYTER_ENABLE_LAB=yes" \
     --env="LD_LIBRARY_PATH=/usr/local/lib:/opt/conda/lib/python3.6/site-packages:/home/jovyan/lib" \
     --env="PYTHONPATH=/opt/conda/lib/python3.6/site-packages:/home/jovyan/lib" \
     --volume="$(pwd)/../../lib:/opt/lib:ro" \
     --volume="$(pwd)/../../share/python/notebooks:/home/jovyan/notebooks" \
     --volume="$(pwd)/../../share/data:/app/share/data" \
+    --workdir="/home/jovyan/notebooks" \
     "${repository_name}/${project_name}-python" \
     bash -c "mkdir -p /opt/conda/lib/python3.6/site-packages/Library/Physics \
     && ln -s /opt/lib/liblibrary-physics.so.0 /opt/conda/lib/python3.6/site-packages/Library/Physics/liblibrary-physics.so.0 \

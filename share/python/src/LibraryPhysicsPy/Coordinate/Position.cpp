@@ -35,8 +35,8 @@ inline void                     LibraryPhysicsPy_Coordinate_Position        ( )
 
         .def("isDefined", &Position::isDefined)
 
-        .def("accessCoordinates", &Position::accessCoordinates, return_value_policy<reference_existing_object>())
         .def("accessFrame", &Position::accessFrame)
+        .def("getCoordinates", &Position::getCoordinates)
         .def("getUnit", &Position::getUnit)
         .def("inUnit", &Position::inUnit)
         .def("inFrame", &Position::inFrame)

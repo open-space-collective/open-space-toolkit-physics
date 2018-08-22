@@ -1,32 +1,28 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Library/Physics
-/// @file           LibraryPhysicsPy/Units.cpp
+/// @file           LibraryPhysicsPy/Environment/Objects.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        TBD
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <LibraryPhysicsPy/Units/Derived/Angle.cpp>
-#include <LibraryPhysicsPy/Units/Derived.cpp>
-#include <LibraryPhysicsPy/Units/Time.cpp>
-#include <LibraryPhysicsPy/Units/Length.cpp>
+#include <LibraryPhysicsPy/Environment/Objects/CelestialBodies.cpp>
+#include <LibraryPhysicsPy/Environment/Objects/Celestial.cpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     LibraryPhysicsPy_Units                      ( )
+inline void                     LibraryPhysicsPy_Environment_Objects        ( )
 {
     
-    boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("Library.Physics.Units")))) ;
+    boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("Library.Physics.Environment.Objects")))) ;
     
-    boost::python::scope().attr("Units") = module ;
+    boost::python::scope().attr("Objects") = module ;
     
     boost::python::scope scope = module ;
     
-    LibraryPhysicsPy_Units_Length() ;
-    LibraryPhysicsPy_Units_Time() ;
-    LibraryPhysicsPy_Units_Derived() ;
-    LibraryPhysicsPy_Units_Derived_Angle() ;
+    LibraryPhysicsPy_Environment_Objects_Celestial() ;
+    LibraryPhysicsPy_Environment_Objects_CelestialBodies() ;
 
 }
 

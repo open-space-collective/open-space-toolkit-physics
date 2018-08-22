@@ -9,6 +9,7 @@
 
 #include <boost/python.hpp>
 
+#include <LibraryPhysicsPy/Environment.cpp>
 #include <LibraryPhysicsPy/Coordinate.cpp>
 #include <LibraryPhysicsPy/Time.cpp>
 #include <LibraryPhysicsPy/Units.cpp>
@@ -25,6 +26,7 @@ BOOST_PYTHON_MODULE (LibraryPhysicsPy)
 	LibraryPhysicsPy_Units() ;
 	LibraryPhysicsPy_Time() ;
 	LibraryPhysicsPy_Coordinate() ;
+	LibraryPhysicsPy_Environment() ;
 
 }
 
