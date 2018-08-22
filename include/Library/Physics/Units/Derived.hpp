@@ -67,9 +67,9 @@ class Derived : public Unit
                 
                 bool            isUnity                                     ( ) const ;
 
-                const Int16&    accessNumerator                             ( ) const ;
+                Int16           getNumerator                                ( ) const ;
 
-                const Int16&    accessDenominator                           ( ) const ;
+                Int16           getDenominator                              ( ) const ;
 
                 Real            getValue                                    ( ) const ;
 

@@ -11,6 +11,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (LibraryPhysicsPy_Time_Interval_toString_overloads, library::physics::time::Interval::toString, 0, 1)
+
 inline void                     LibraryPhysicsPy_Time_Interval              ( )
 {
 
@@ -25,6 +27,8 @@ inline void                     LibraryPhysicsPy_Time_Interval              ( )
         .def(self != self)
 
         .def(self_ns::str(self_ns::self))
+        
+        .def("__repr__", +[] (const Interval& anInterval) -> std::string { return anInterval.toString() ; })
 
         .def("isDefined", &Interval::isDefined)
         .def("isDegenerate", &Interval::isDegenerate)
@@ -43,7 +47,7 @@ inline void                     LibraryPhysicsPy_Time_Interval              ( )
         .def("getEnd", &Interval::getEnd)
         .def("getDuration", &Interval::getDuration)
         .def("getCenter", &Interval::getCenter)
-        .def("toString", &Interval::toString)
+        .def("toString", &Interval::toString, LibraryPhysicsPy_Time_Interval_toString_overloads())
         .def("generateGrid", &Interval::generateGrid)
         
         .def("Undefined", &Interval::Undefined).staticmethod("Undefined")
@@ -62,6 +66,8 @@ inline void                     LibraryPhysicsPy_Time_Interval              ( )
         .value("HalfOpenRight", Interval::Type::HalfOpenRight)
 
     ;
+
+    implicitly_convertible<Interval, library::math::obj::Interval<library::physics::time::Instant>>() ;
 
 }
 

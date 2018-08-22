@@ -62,7 +62,11 @@ class Frame
                                                                                 const   Shared<const Frame>&        aParentFrame,
                                                                                 const   Shared<Provider>&           aProvider                                   ) ;
 
+                                Frame                                       (   const   Frame&                      aFrame                                      ) ;    
+
                                 ~Frame                                      ( ) ;
+
+        Frame&                  operator =                                  (   const   Frame&                      aFrame                                      ) = delete ;    
 
         bool                    operator ==                                 (   const   Frame&                      aFrame                                      ) const ;
         
@@ -99,6 +103,7 @@ class Frame
         static Frame            ICRF                                        ( ) ;
 
         static Frame            GCRF                                        ( ) ;
+        static Shared<const Frame> GCRFShared                               ( ) ;
 
         static Frame            EME2000                                     ( ) ;
 

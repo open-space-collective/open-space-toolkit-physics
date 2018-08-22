@@ -65,12 +65,12 @@ bool                            Derived::Order::isUnity                     ( ) 
     return (numerator_ == 1) && (denominator_ == 1) ;
 }
 
-const Int16&                    Derived::Order::accessNumerator             ( ) const
+Int16                           Derived::Order::getNumerator                ( ) const
 {
     return numerator_ ;
 }
 
-const Int16&                    Derived::Order::accessDenominator           ( ) const
+Int16                           Derived::Order::getDenominator              ( ) const
 {
     return denominator_ ;
 }

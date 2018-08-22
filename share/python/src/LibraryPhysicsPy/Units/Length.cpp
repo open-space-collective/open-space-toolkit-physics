@@ -11,6 +11,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (LibraryPhysicsPy_Units_Length_toString_overloads, library::physics::units::Length::toString, 0, 1)
+
 inline void                     LibraryPhysicsPy_Units_Length               ( )
 {
 
@@ -44,13 +46,15 @@ inline void                     LibraryPhysicsPy_Units_Length               ( )
 
         .def(self_ns::str(self_ns::self))
 
+        .def("__repr__", +[] (const Length& aLength) -> std::string { return aLength.toString() ; })
+
         .def("isDefined", &Length::isDefined)
 
         .def("getUnit", &Length::getUnit)
-        .def("in", &Length::in)
+        .def("inUnit", &Length::in)
         .def("inMeters", &Length::inMeters)
         .def("inKilometers", &Length::inKilometers)
-        .def("toString", &Length::toString)
+        .def("toString", &Length::toString, LibraryPhysicsPy_Units_Length_toString_overloads())
         
         .def("Undefined", &Length::Undefined).staticmethod("Undefined")
         .def("Millimeters", &Length::Millimeters).staticmethod("Millimeters")

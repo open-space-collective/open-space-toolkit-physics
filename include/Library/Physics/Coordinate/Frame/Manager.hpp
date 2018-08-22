@@ -15,6 +15,7 @@
 
 #include <Library/Core/Containers/Map.hpp>
 #include <Library/Core/Types/String.hpp>
+#include <Library/Core/Types/Shared.hpp>
 
 #include <mutex>
 
@@ -31,6 +32,7 @@ namespace frame
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using library::core::types::Shared ;
 using library::core::types::String ;
 using library::core::ctnr::Map ;
 
@@ -54,11 +56,13 @@ class Manager
 
         void                    addFrame                                    (   const   Frame&                      aFrame                                      ) ;
 
+        void                    addFrame                                    (   const   Shared<const Frame>&        aFrameSPtr                                  ) ;
+
         void                    removeFrameWithName                         (   const   String&                     aFrameName                                  ) ;
 
     private:
 
-        Map<String, Shared<Frame>> frameMap_ ;
+        Map<String, Shared<const Frame>> frameMap_ ;
 
         mutable std::mutex      mutex_ ;
 

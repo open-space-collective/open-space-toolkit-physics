@@ -60,6 +60,10 @@ class Position
                                                                                 const   Position::Unit&             aUnit,
                                                                                 const   Shared<const Frame>&        aFrame                                      ) ;
 
+                                Position                                    (   const   Position&                   aPosition                                   ) ;
+
+        Position&               operator =                                  (   const   Position&                   Position                                    ) = delete ;
+
         bool                    operator ==                                 (   const   Position&                   aPosition                                   ) const ;
         
         bool                    operator !=                                 (   const   Position&                   aPosition                                   ) const ;
@@ -72,6 +76,8 @@ class Position
         const Vector3d&         accessCoordinates                           ( ) const ;
 
         Shared<const Frame>     accessFrame                                 ( ) const ;
+
+        Vector3d                getCoordinates                              ( ) const ;
 
         Position::Unit          getUnit                                     ( ) const ;
 
