@@ -1,6 +1,7 @@
 var classlibrary_1_1physics_1_1coord_1_1_frame =
 [
     [ "Frame", "classlibrary_1_1physics_1_1coord_1_1_frame.html#a53c1f8884a118492a3b024317c0ae0fd", null ],
+    [ "Frame", "classlibrary_1_1physics_1_1coord_1_1_frame.html#ac375d8c787f92815af3b41e605264966", null ],
     [ "~Frame", "classlibrary_1_1physics_1_1coord_1_1_frame.html#a7a4b031eff12e290c0ccacb7d5a47dfd", null ],
     [ "accessAncestor", "classlibrary_1_1physics_1_1coord_1_1_frame.html#a82db48e361c6804146083c7478a2528f", null ],
     [ "accessParent", "classlibrary_1_1physics_1_1coord_1_1_frame.html#aaa33dd0c2af00aee0ffb4278cccdc8a2", null ],
@@ -13,6 +14,7 @@ var classlibrary_1_1physics_1_1coord_1_1_frame =
     [ "isDefined", "classlibrary_1_1physics_1_1coord_1_1_frame.html#ad5a450dd6740fc5a27473e661375dde6", null ],
     [ "isQuasiInertial", "classlibrary_1_1physics_1_1coord_1_1_frame.html#a894d1ac6152e28dbb749058ca6ffd663", null ],
     [ "operator!=", "classlibrary_1_1physics_1_1coord_1_1_frame.html#a2b3b046c3779b4281f14601302446169", null ],
+    [ "operator=", "classlibrary_1_1physics_1_1coord_1_1_frame.html#acd5cf67c12acb2ef5e95355fea262ca7", null ],
     [ "operator==", "classlibrary_1_1physics_1_1coord_1_1_frame.html#a19c5c4ce3b1669a774980d9c3f18fe6c", null ],
     [ "operator<<", "classlibrary_1_1physics_1_1coord_1_1_frame.html#a509ac1926cfc3553748bace204e2b1cc", null ]
 ];

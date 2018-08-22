@@ -14,7 +14,11 @@ Reference frame.
 \item 
 \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame_a53c1f8884a118492a3b024317c0ae0fd}{Frame} (const String \&a\+Name, bool \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame_a894d1ac6152e28dbb749058ca6ffd663}{is\+Quasi\+Inertial}, const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+Parent\+Frame, const Shared$<$ \hyperlink{classlibrary_1_1physics_1_1coord_1_1frame_1_1_provider}{Provider} $>$ \&a\+Provider)
 \item 
+\hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame_ac375d8c787f92815af3b41e605264966}{Frame} (const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} \&a\+Frame)
+\item 
 \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame_a7a4b031eff12e290c0ccacb7d5a47dfd}{$\sim$\+Frame} ()
+\item 
+\hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} \& \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame_acd5cf67c12acb2ef5e95355fea262ca7}{operator=} (const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} \&a\+Frame)=delete
 \item 
 bool \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame_a19c5c4ce3b1669a774980d9c3f18fe6c}{operator==} (const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} \&a\+Frame) const
 \item 
@@ -49,6 +53,8 @@ static \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} \hyperlink{
 \item 
 static \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame_a13d27e609f1dc1b2eed4bfe3d48559a4}{G\+C\+RF} ()
 \item 
+static Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame_a2959dd170a574fe034d11afbd250274d}{G\+C\+R\+F\+Shared} ()
+\item 
 static \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame_a9844ee4c21409aeb5105532c9dd3d89c}{E\+M\+E2000} ()
 \item 
 static \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame_a187b1f1c49486503ad6860f7f1f2d257}{T\+E\+ME} ()
@@ -80,8 +86,14 @@ Implementation heavily inspired by (the great!) \href{https://www.orekit.org/sta
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1_frame_a53c1f8884a118492a3b024317c0ae0fd}\label{classlibrary_1_1physics_1_1coord_1_1_frame_a53c1f8884a118492a3b024317c0ae0fd}} 
 \index{library\+::physics\+::coord\+::\+Frame@{library\+::physics\+::coord\+::\+Frame}!Frame@{Frame}}
 \index{Frame@{Frame}!library\+::physics\+::coord\+::\+Frame@{library\+::physics\+::coord\+::\+Frame}}
-\subsubsection{\texorpdfstring{Frame()}{Frame()}}
+\subsubsection{\texorpdfstring{Frame()}{Frame()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily library\+::physics\+::coord\+::\+Frame\+::\+Frame (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Name,  }\item[{bool}]{is\+Quasi\+Inertial,  }\item[{const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+Parent\+Frame,  }\item[{const Shared$<$ \hyperlink{classlibrary_1_1physics_1_1coord_1_1frame_1_1_provider}{Provider} $>$ \&}]{a\+Provider }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1_frame_ac375d8c787f92815af3b41e605264966}\label{classlibrary_1_1physics_1_1coord_1_1_frame_ac375d8c787f92815af3b41e605264966}} 
+\index{library\+::physics\+::coord\+::\+Frame@{library\+::physics\+::coord\+::\+Frame}!Frame@{Frame}}
+\index{Frame@{Frame}!library\+::physics\+::coord\+::\+Frame@{library\+::physics\+::coord\+::\+Frame}}
+\subsubsection{\texorpdfstring{Frame()}{Frame()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily library\+::physics\+::coord\+::\+Frame\+::\+Frame (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} \&}]{a\+Frame }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1_frame_a7a4b031eff12e290c0ccacb7d5a47dfd}\label{classlibrary_1_1physics_1_1coord_1_1_frame_a7a4b031eff12e290c0ccacb7d5a47dfd}} 
 \index{library\+::physics\+::coord\+::\+Frame@{library\+::physics\+::coord\+::\+Frame}!````~Frame@{$\sim$\+Frame}}
@@ -127,6 +139,12 @@ Implementation heavily inspired by (the great!) \href{https://www.orekit.org/sta
 \index{G\+C\+RF@{G\+C\+RF}!library\+::physics\+::coord\+::\+Frame@{library\+::physics\+::coord\+::\+Frame}}
 \subsubsection{\texorpdfstring{G\+C\+R\+F()}{GCRF()}}
 {\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} library\+::physics\+::coord\+::\+Frame\+::\+G\+C\+RF (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1_frame_a2959dd170a574fe034d11afbd250274d}\label{classlibrary_1_1physics_1_1coord_1_1_frame_a2959dd170a574fe034d11afbd250274d}} 
+\index{library\+::physics\+::coord\+::\+Frame@{library\+::physics\+::coord\+::\+Frame}!G\+C\+R\+F\+Shared@{G\+C\+R\+F\+Shared}}
+\index{G\+C\+R\+F\+Shared@{G\+C\+R\+F\+Shared}!library\+::physics\+::coord\+::\+Frame@{library\+::physics\+::coord\+::\+Frame}}
+\subsubsection{\texorpdfstring{G\+C\+R\+F\+Shared()}{GCRFShared()}}
+{\footnotesize\ttfamily Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ library\+::physics\+::coord\+::\+Frame\+::\+G\+C\+R\+F\+Shared (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1_frame_a6d5c6a2f3b821c4bc621fa75cccdf333}\label{classlibrary_1_1physics_1_1coord_1_1_frame_a6d5c6a2f3b821c4bc621fa75cccdf333}} 
 \index{library\+::physics\+::coord\+::\+Frame@{library\+::physics\+::coord\+::\+Frame}!get\+Axes\+In@{get\+Axes\+In}}
@@ -187,6 +205,12 @@ Implementation heavily inspired by (the great!) \href{https://www.orekit.org/sta
 \index{operator"!=@{operator"!=}!library\+::physics\+::coord\+::\+Frame@{library\+::physics\+::coord\+::\+Frame}}
 \subsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
 {\footnotesize\ttfamily bool library\+::physics\+::coord\+::\+Frame\+::operator!= (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} \&}]{a\+Frame }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1_frame_acd5cf67c12acb2ef5e95355fea262ca7}\label{classlibrary_1_1physics_1_1coord_1_1_frame_acd5cf67c12acb2ef5e95355fea262ca7}} 
+\index{library\+::physics\+::coord\+::\+Frame@{library\+::physics\+::coord\+::\+Frame}!operator=@{operator=}}
+\index{operator=@{operator=}!library\+::physics\+::coord\+::\+Frame@{library\+::physics\+::coord\+::\+Frame}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame}\& library\+::physics\+::coord\+::\+Frame\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} \&}]{a\+Frame }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
 
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1_frame_a19c5c4ce3b1669a774980d9c3f18fe6c}\label{classlibrary_1_1physics_1_1coord_1_1_frame_a19c5c4ce3b1669a774980d9c3f18fe6c}} 
 \index{library\+::physics\+::coord\+::\+Frame@{library\+::physics\+::coord\+::\+Frame}!operator==@{operator==}}

@@ -7,6 +7,7 @@ var classlibrary_1_1physics_1_1coord_1_1_velocity =
     [ "Velocity", "classlibrary_1_1physics_1_1coord_1_1_velocity.html#a4e2058adb91710a45a6d8165fae9e8e0", null ],
     [ "accessCoordinates", "classlibrary_1_1physics_1_1coord_1_1_velocity.html#aea8fe9c62293e20393d9a662f277b0e7", null ],
     [ "accessFrame", "classlibrary_1_1physics_1_1coord_1_1_velocity.html#a1d3dc032dba7937276b06649cb16a871", null ],
+    [ "getCoordinates", "classlibrary_1_1physics_1_1coord_1_1_velocity.html#a1ac18f97a304ac026c2544292b89e030", null ],
     [ "getUnit", "classlibrary_1_1physics_1_1coord_1_1_velocity.html#aa04a5b82a46d5ea4e92bf53046a18494", null ],
     [ "inFrame", "classlibrary_1_1physics_1_1coord_1_1_velocity.html#ac2e825fe682f526884764218425a14b7", null ],
     [ "inUnit", "classlibrary_1_1physics_1_1coord_1_1_velocity.html#a814e6740d6b54cf5421d9aa7fc0f5958", null ],
