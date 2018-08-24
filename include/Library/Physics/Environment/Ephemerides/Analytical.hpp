@@ -44,7 +44,7 @@ class Analytical : public Ephemeris
 
     public:
 
-                                Analytical                                  (   const   Shared<Frame>&              aFrame                                      ) ;
+                                Analytical                                  (   const   Shared<const Frame>&        aFrame                                      ) ;
 
         virtual                 ~Analytical                                 ( ) override ;
 
@@ -56,7 +56,7 @@ class Analytical : public Ephemeris
 
     private:
 
-        Shared<Frame>           frameSPtr_ ;
+        Shared<const Frame>     frameSPtr_ ;
 
 } ;
 

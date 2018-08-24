@@ -29,6 +29,8 @@ namespace physics
                                     objects_(Array<Shared<Object>>::Empty())
 {
 
+    objects_.reserve(anObjectArray.getSize()) ;
+
     for (const auto& objectSPtr : anObjectArray)
     {
         objects_.add(Shared<Object>(objectSPtr->clone())) ;
@@ -40,6 +42,8 @@ namespace physics
                                 :   instant_(anEnvironment.instant_),
                                     objects_(Array<Shared<Object>>::Empty())
 {
+
+    objects_.reserve(anEnvironment.objects_.getSize()) ;
 
     for (const auto& objectSPtr : anEnvironment.objects_)
     {
@@ -57,6 +61,8 @@ Environment&                    Environment::operator =                     (   
         instant_ = anEnvironment.instant_ ;
         
         objects_.clear() ;
+
+        objects_.reserve(anEnvironment.objects_.getSize()) ;
 
         for (const auto& objectSPtr : anEnvironment.objects_)
         {

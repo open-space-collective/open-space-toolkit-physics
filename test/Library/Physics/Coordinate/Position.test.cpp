@@ -24,8 +24,7 @@ TEST (Library_Physics_Coordinate_Position, Constructor)
 
     {
 
-        // const Shared<const Frame> gcrfSPtr = std::make_shared<const Frame>(Frame::GCRF()) ;
-        const Shared<const Frame> gcrfSPtr = Frame::GCRFShared() ;
+        const Shared<const Frame> gcrfSPtr = Frame::GCRF() ;
 
         const Position position = { { 0.0, 0.0, 0.0 }, Position::Unit::Meter, gcrfSPtr } ;
 
@@ -45,8 +44,7 @@ TEST (Library_Physics_Coordinate_Position, Meters)
 
     {
 
-        // const Shared<const Frame> gcrfSPtr = std::make_shared<const Frame>(Frame::GCRF()) ;
-        const Shared<const Frame> gcrfSPtr = Frame::GCRFShared() ;
+        const Shared<const Frame> gcrfSPtr = Frame::GCRF() ;
 
         const Position position = Position::Meters({ 0.0, 0.0, 0.0 }, gcrfSPtr) ;
 

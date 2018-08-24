@@ -163,10 +163,10 @@ Weak<const Frame>               Celestial::accessFrame                      ( ) 
 
 }
 
-Position                        Celestial::getPositionIn                    (   const   Frame&                      aFrame                                      ) const
+Position                        Celestial::getPositionIn                    (   const   Shared<const Frame>&        aFrameSPtr                                  ) const
 {
 
-    if (!aFrame.isDefined())
+    if ((aFrameSPtr == nullptr) || (!aFrameSPtr->isDefined()))
     {
         throw library::core::error::runtime::Undefined("Frame") ;
     }
@@ -178,7 +178,7 @@ Position                        Celestial::getPositionIn                    (   
 
     if (auto frameSPtr = ephemeris_->accessFrame().lock())
     {
-        return frameSPtr->getOriginIn(aFrame, this->accessInstant()) ;
+        return frameSPtr->getOriginIn(aFrameSPtr, this->accessInstant()) ;
     }
     else
     {
@@ -189,10 +189,15 @@ Position                        Celestial::getPositionIn                    (   
 
 }
 
-Transform                       Celestial::getTransformTo                   (   const   Frame&                      aFrame                                      ) const
+Velocity                        Celestial::getVelocityIn                    (   const   Shared<const Frame>&        aFrameSPtr                                  ) const
+{
+    return Velocity(this->getTransformTo(aFrameSPtr).applyToVelocity(Vector3d::Zero(), Vector3d::Zero()), Velocity::Unit::MeterPerSecond, aFrameSPtr) ;
+}
+
+Transform                       Celestial::getTransformTo                   (   const   Shared<const Frame>&        aFrameSPtr                                  ) const
 {
 
-    if (!aFrame.isDefined())
+    if ((aFrameSPtr == nullptr) || (!aFrameSPtr->isDefined()))
     {
         throw library::core::error::runtime::Undefined("Frame") ;
     }
@@ -204,7 +209,7 @@ Transform                       Celestial::getTransformTo                   (   
 
     if (auto frameSPtr = ephemeris_->accessFrame().lock())
     {
-        return frameSPtr->getTransformTo(aFrame, this->accessInstant()) ;
+        return frameSPtr->getTransformTo(aFrameSPtr, this->accessInstant()) ;
     }
     else
     {
@@ -215,10 +220,10 @@ Transform                       Celestial::getTransformTo                   (   
 
 }
 
-Axes                            Celestial::getAxesIn                        (   const   Frame&                      aFrame                                      ) const
+Axes                            Celestial::getAxesIn                        (   const   Shared<const Frame>&        aFrameSPtr                                  ) const
 {
 
-    if (!aFrame.isDefined())
+    if ((aFrameSPtr == nullptr) || (!aFrameSPtr->isDefined()))
     {
         throw library::core::error::runtime::Undefined("Frame") ;
     }
@@ -230,7 +235,7 @@ Axes                            Celestial::getAxesIn                        (   
 
     if (auto frameSPtr = ephemeris_->accessFrame().lock())
     {
-        return frameSPtr->getAxesIn(aFrame, this->accessInstant()) ;
+        return frameSPtr->getAxesIn(aFrameSPtr, this->accessInstant()) ;
     }
     else
     {

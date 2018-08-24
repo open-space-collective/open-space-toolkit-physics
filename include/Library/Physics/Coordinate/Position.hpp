@@ -58,7 +58,7 @@ class Position
 
                                 Position                                    (   const   Vector3d&                   aCoordinateSet, // [TBI] Replace w/ Point
                                                                                 const   Position::Unit&             aUnit,
-                                                                                const   Shared<const Frame>&        aFrame                                      ) ;
+                                                                                const   Shared<const Frame>&        aFrameSPtr                                  ) ;
 
                                 Position                                    (   const   Position&                   aPosition                                   ) ;
 
@@ -83,7 +83,7 @@ class Position
 
         Position                inUnit                                      (   const   Position::Unit&             aUnit                                       ) const ;
 
-        Position                inFrame                                     (   const   Shared<const Frame>&        aFrame,
+        Position                inFrame                                     (   const   Shared<const Frame>&        aFrameSPtr,
                                                                                 const   Instant&                    anInstant                                   ) const ;
 
         String                  toString                                    (   const   Integer&                    aPrecision                                  =   Integer::Undefined() ) const ;
@@ -91,7 +91,7 @@ class Position
         static Position         Undefined                                   ( ) ;
 
         static Position         Meters                                      (   const   Vector3d&                   aCoordinateSet,
-                                                                                const   Shared<const Frame>&        aFrame                                      ) ;
+                                                                                const   Shared<const Frame>&        aFrameSPtr                                  ) ;
 
     private:
 

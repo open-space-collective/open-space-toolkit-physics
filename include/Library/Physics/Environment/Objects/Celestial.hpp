@@ -114,11 +114,13 @@ class Celestial : public Object
 
         virtual Weak<const Frame> accessFrame                               ( ) const override ;
 
-        virtual Position        getPositionIn                               (   const   Frame&                      aFrame                                      ) const override ;
+        virtual Position        getPositionIn                               (   const   Shared<const Frame>&        aFrameSPtr                                  ) const override ;
 
-        virtual Transform       getTransformTo                              (   const   Frame&                      aFrame                                      ) const override ;
+        virtual Velocity        getVelocityIn                               (   const   Shared<const Frame>&        aFrameSPtr                                  ) const override ;
 
-        virtual Axes            getAxesIn                                   (   const   Frame&                      aFrame                                      ) const override ;
+        virtual Transform       getTransformTo                              (   const   Shared<const Frame>&        aFrameSPtr                                  ) const override ;
+
+        virtual Axes            getAxesIn                                   (   const   Shared<const Frame>&        aFrameSPtr                                  ) const override ;
 
         Vector3d                getGravitationalFieldAt                     (   const   Position&                   aPosition                                   ) const ;
 

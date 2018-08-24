@@ -26,10 +26,10 @@ namespace coord
 
                                 Position::Position                          (   const   Vector3d&                   aCoordinateSet,
                                                                                 const   Position::Unit&             aUnit,
-                                                                                const   Shared<const Frame>&        aFrame                                      )
+                                                                                const   Shared<const Frame>&        aFrameSPtr                                  )
                                 :   coordinates_(aCoordinateSet),
                                     unit_(aUnit),
-                                    frameWPtr_(aFrame)
+                                    frameWPtr_(aFrameSPtr)
 {
 
     // std::cout << "Position :: Position (...) | Shared<const Frame> @ " << &aFrame << " / " << aFrame.get() << " frameWPtr_ | frameWPtr_.expired = " << frameWPtr_.expired() << std::endl ;
@@ -120,8 +120,8 @@ std::ostream&                   operator <<                                 (   
 
     library::core::utils::Print::Header(anOutputStream, "Position") ;
 
-    library::core::utils::Print::Line(anOutputStream) << "Coordinates:"         << (aPosition.isDefined() ? aPosition.coordinates_.toString() : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Unit:"                << (aPosition.isDefined() ? Length::StringFromUnit(aPosition.unit_) : "Undefined") ;
+    library::core::utils::Print::Line(anOutputStream) << "Coordinates:"         << (aPosition.coordinates_.isDefined() ? aPosition.coordinates_.toString() : "Undefined") ;
+    library::core::utils::Print::Line(anOutputStream) << "Unit:"                << ((aPosition.unit_ != Position::Unit::Undefined) ? Length::StringFromUnit(aPosition.unit_) : "Undefined") ;
 
     if (auto frameSPtr = aPosition.frameWPtr_.lock())
     {
@@ -235,11 +235,11 @@ Position                        Position::inUnit                            (   
 
 }
 
-Position                        Position::inFrame                           (   const   Shared<const Frame>&        aFrame,
+Position                        Position::inFrame                           (   const   Shared<const Frame>&        aFrameSPtr,
                                                                                 const   Instant&                    anInstant                                   ) const
 {
 
-    if ((aFrame == nullptr) || (!aFrame->isDefined()))
+    if ((aFrameSPtr == nullptr) || (!aFrameSPtr->isDefined()))
     {
         throw library::core::error::runtime::Undefined("Frame") ;
     }
@@ -257,7 +257,7 @@ Position                        Position::inFrame                           (   
         //     return ??? ; // Frame is a function of time... to be improved
         // }
 
-        return Position(frameSPtr->getTransformTo(*aFrame, anInstant).applyToPosition(coordinates_), unit_, aFrame) ;
+        return Position(frameSPtr->getTransformTo(aFrameSPtr, anInstant).applyToPosition(coordinates_), unit_, aFrameSPtr) ;
 
     }
 
@@ -277,7 +277,7 @@ String                          Position::toString                          (   
 
     if (auto frameSPtr = frameWPtr_.lock())
     {
-        return String::Format("{} [{}] @ {}", coordinates_.toString(aPrecision), Length::SymbolFromUnit(unit_), frameSPtr->getName()) ;
+        return String::Format("{} [{}] @ {}", (aPrecision.isDefined() ? coordinates_.toString(aPrecision) : coordinates_.toString()), Length::SymbolFromUnit(unit_), frameSPtr->getName()) ;
     }
 
     throw library::core::error::RuntimeError("Cannot access frame.") ;
@@ -292,12 +292,12 @@ Position                        Position::Undefined                         ( )
 }
 
 Position                        Position::Meters                            (   const   Vector3d&                   aCoordinateSet,
-                                                                                const   Shared<const Frame>&        aFrame                                      )
+                                                                                const   Shared<const Frame>&        aFrameSPtr                                  )
 {
 
     // std::cout << "Position :: Meters :: use_count = " << aFrame.use_count() << std::endl ;
     
-    return Position(aCoordinateSet, Position::Unit::Meter, aFrame) ;
+    return Position(aCoordinateSet, Position::Unit::Meter, aFrameSPtr) ;
 
 }
 

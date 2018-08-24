@@ -76,7 +76,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_TEME, GetTransformAt)
 
                 const Quaternion dq_ITRF = (transform_TEME_ITRF.getOrientation() / referenceOrientation_ITRF_TEME).normalize().rectify() ;
 
-                const Transform transform_TEME_GCRF = Frame::GCRF().getTransformTo(Frame::TEME(), instant) ;
+                const Transform transform_TEME_GCRF = Frame::GCRF()->getTransformTo(Frame::TEME(), instant) ;
 
                 const Quaternion dq_GCRF = (transform_TEME_GCRF.getOrientation() / referenceOrientation_GCRF_TEME).normalize().rectify() ;
 

@@ -26,10 +26,10 @@ namespace coord
 
                                 Velocity::Velocity                          (   const   Vector3d&                   aCoordinateSet,
                                                                                 const   Velocity::Unit&             aUnit,
-                                                                                const   Shared<const Frame>&        aFrame                                      )
+                                                                                const   Shared<const Frame>&        aFrameSPtr                                  )
                                 :   coordinates_(aCoordinateSet),
                                     unit_(aUnit),
-                                    frameWPtr_(aFrame)
+                                    frameWPtr_(aFrameSPtr)
 {
 
 }
@@ -179,11 +179,11 @@ Velocity                        Velocity::inUnit                            (   
 }
 
 Velocity                        Velocity::inFrame                           (   const   Position&                   aPosition,
-                                                                                const   Shared<const Frame>&        aFrame,
+                                                                                const   Shared<const Frame>&        aFrameSPtr,
                                                                                 const   Instant&                    anInstant                                   ) const
 {
 
-    if ((aFrame == nullptr) || (!aFrame->isDefined()))
+    if ((aFrameSPtr == nullptr) || (!aFrameSPtr->isDefined()))
     {
         throw library::core::error::runtime::Undefined("Frame") ;
     }
@@ -195,7 +195,7 @@ Velocity                        Velocity::inFrame                           (   
 
     if (auto frameSPtr = frameWPtr_.lock())
     {
-        return Velocity(frameSPtr->getTransformTo(*aFrame, anInstant).applyToVelocity(aPosition.inFrame(frameSPtr, anInstant).accessCoordinates(), coordinates_), unit_, aFrame) ;
+        return Velocity(frameSPtr->getTransformTo(aFrameSPtr, anInstant).applyToVelocity(aPosition.inFrame(frameSPtr, anInstant).accessCoordinates(), coordinates_), unit_, aFrameSPtr) ;
     }
 
     throw library::core::error::RuntimeError("Cannot access frame.") ;
@@ -214,7 +214,7 @@ String                          Velocity::toString                          (   
 
     if (auto frameSPtr = frameWPtr_.lock())
     {
-        return String::Format("{} [{}] @ {}", coordinates_.toString(aPrecision), Velocity::StringFromUnit(unit_), frameSPtr->getName()) ;
+        return String::Format("{} [{}] @ {}", (aPrecision.isDefined() ? coordinates_.toString(aPrecision) : coordinates_.toString()), Velocity::StringFromUnit(unit_), frameSPtr->getName()) ;
     }
 
     throw library::core::error::RuntimeError("Cannot access frame.") ;
@@ -229,9 +229,9 @@ Velocity                        Velocity::Undefined                         ( )
 }
 
 Velocity                        Velocity::MetersPerSecond                   (   const   Vector3d&                   aCoordinateSet,
-                                                                                const   Shared<const Frame>&        aFrame                                      )
+                                                                                const   Shared<const Frame>&        aFrameSPtr                                  )
 {
-    return Velocity(aCoordinateSet, Velocity::Unit::MeterPerSecond, aFrame) ;
+    return Velocity(aCoordinateSet, Velocity::Unit::MeterPerSecond, aFrameSPtr) ;
 }
 
 String                          Velocity::StringFromUnit                    (   const   Velocity::Unit&             aUnit                                       )

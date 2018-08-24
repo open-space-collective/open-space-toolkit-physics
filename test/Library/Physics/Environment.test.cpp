@@ -243,3 +243,82 @@ TEST (Library_Physics_Environment, Undefined)
 // }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+TEST (Library_Physics_Environment, Test_1)
+{
+
+    using library::core::types::Shared ;
+    using library::core::types::Weak ;
+    using library::core::types::String ;
+    using library::core::ctnr::Array ;
+
+    using library::math::geom::trf::rot::Quaternion ;
+
+    using library::physics::time::Scale ;
+    using library::physics::time::Instant ;
+    using library::physics::time::Duration ;
+    using library::physics::time::Interval ;
+    using library::physics::time::DateTime ;
+    using library::physics::coord::Position ;
+    using library::physics::coord::Velocity ;
+    using library::physics::coord::Transform ;
+    using library::physics::coord::Frame ;
+    using library::physics::coord::Axes ;
+    using library::physics::Environment ;
+    using library::physics::env::Object ;
+    using library::physics::env::obj::celest::Earth ;
+
+    const Instant startInstant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC) ;
+    const Instant endInstant = Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC) ;
+    const Duration step = Duration::Minutes(1.0) ;
+
+    const Array<Shared<Object>> objects =
+    {
+        std::make_shared<Earth>(Earth::Analytical(startInstant))
+    } ;
+
+    Environment environment = { startInstant, objects } ;
+
+    const Weak<const Object> earthWPtr = environment.accessObjectWithName("Earth") ;
+
+    if (auto earthSPtr = earthWPtr.lock())
+    {
+        
+        const Earth& earth = dynamic_cast<const Earth&>(*earthSPtr) ;
+
+        for (const auto& instant : Interval::Closed(startInstant, endInstant).generateGrid(step))
+        {
+
+            environment.setInstant(instant) ;
+
+            const Transform earthFrameTransform = earth.getTransformTo(Frame::GCRF()) ;
+
+            EXPECT_TRUE(earthFrameTransform.isDefined()) ;
+
+            const Position earthPosition = earth.getPositionIn(Frame::GCRF()) ;
+            const Velocity earthVelocity = earth.getVelocityIn(Frame::GCRF()) ;
+
+            EXPECT_TRUE(earthPosition.isDefined()) ;
+            EXPECT_TRUE(earthVelocity.isDefined()) ;
+
+            const Quaternion earthOrientation = earth.getTransformTo(Frame::GCRF()).getOrientation() ;
+
+            EXPECT_TRUE(earthOrientation.isDefined()) ;
+
+            const Axes earthAxes = earth.getAxesIn(Frame::GCRF()) ;
+
+            EXPECT_TRUE(earthAxes.isDefined()) ;
+
+            std::cout << String::Format("@ {}: {} --- {} --- {}", instant.toString(), earthPosition.toString(), earthVelocity.toString(), earthOrientation.toString()) << std::endl ;
+
+        }
+
+    }
+    else
+    {
+        FAIL() ;
+    }
+
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

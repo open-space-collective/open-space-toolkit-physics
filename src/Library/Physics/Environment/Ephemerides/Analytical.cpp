@@ -25,7 +25,7 @@ namespace ephem
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                                Analytical::Analytical                      (   const   Shared<Frame>&              aFrame                                      )
+                                Analytical::Analytical                      (   const   Shared<const Frame>&        aFrame                                      )
                                 :   frameSPtr_(aFrame)
 {
 

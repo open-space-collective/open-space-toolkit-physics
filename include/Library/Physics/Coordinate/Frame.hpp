@@ -89,33 +89,50 @@ class Frame
 
         String                  getName                                     ( ) const ;
 
-        Position                getOriginIn                                 (   const   Frame&                      aFrame,
+        Position                getOriginIn                                 (   const   Shared<const Frame>&        aFrame,
                                                                                 const   Instant&                    anInstant                                   ) const ;
 
-        Axes                    getAxesIn                                   (   const   Frame&                      aFrame,
+        Axes                    getAxesIn                                   (   const   Shared<const Frame>&        aFrame,
                                                                                 const   Instant&                    anInstant                                   ) const ;
 
-        Transform               getTransformTo                              (   const   Frame&                      aFrame,
+        Transform               getTransformTo                              (   const   Shared<const Frame>&        aFrame,
                                                                                 const   Instant&                    anInstant                                   ) const ;
 
-        static Frame            Undefined                                   ( ) ;
+        // static Frame            Undefined                                   ( ) ;
 
-        static Frame            ICRF                                        ( ) ;
+        // static Frame            ICRF                                        ( ) ;
 
-        static Frame            GCRF                                        ( ) ;
-        static Shared<const Frame> GCRFShared                               ( ) ;
+        // static Frame            GCRF                                        ( ) ;
 
-        static Frame            EME2000                                     ( ) ;
+        // static Frame            EME2000                                     ( ) ;
 
-        static Frame            TEME                                        ( ) ;
+        // static Frame            TEME                                        ( ) ;
 
-        static Frame            TEMEOfEpoch                                 (   const   Instant&                    anEpoch                                     ) ;
+        // static Frame            TEMEOfEpoch                                 (   const   Instant&                    anEpoch                                     ) ;
 
-        static Frame            CIRF                                        ( ) ;
+        // static Frame            CIRF                                        ( ) ;
 
-        static Frame            TIRF                                        ( ) ;
+        // static Frame            TIRF                                        ( ) ;
 
-        static Frame            ITRF                                        ( ) ;
+        // static Frame            ITRF                                        ( ) ;
+
+        static Shared<const Frame> Undefined                                ( ) ;
+
+        static Shared<const Frame> ICRF                                     ( ) ;
+
+        static Shared<const Frame> GCRF                                     ( ) ;
+
+        static Shared<const Frame> EME2000                                  ( ) ;
+
+        static Shared<const Frame> TEME                                     ( ) ;
+
+        static Shared<const Frame> TEMEOfEpoch                              (   const   Instant&                    anEpoch                                     ) ;
+
+        static Shared<const Frame> CIRF                                     ( ) ;
+
+        static Shared<const Frame> TIRF                                     ( ) ;
+
+        static Shared<const Frame> ITRF                                     ( ) ;
 
     private:
 

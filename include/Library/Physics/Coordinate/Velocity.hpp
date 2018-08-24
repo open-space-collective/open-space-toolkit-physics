@@ -66,7 +66,7 @@ class Velocity
 
                                 Velocity                                    (   const   Vector3d&                   aCoordinateSet,
                                                                                 const   Velocity::Unit&             aUnit,
-                                                                                const   Shared<const Frame>&        aFrame                                      ) ;
+                                                                                const   Shared<const Frame>&        aFrameSPtr                                  ) ;
 
         bool                    operator ==                                 (   const   Velocity&                   aVelocity                                   ) const ;
         
@@ -88,7 +88,7 @@ class Velocity
         Velocity                inUnit                                      (   const   Velocity::Unit&             aUnit                                       ) const ;
 
         Velocity                inFrame                                     (   const   Position&                   aPosition,
-                                                                                const   Shared<const Frame>&        aFrame,
+                                                                                const   Shared<const Frame>&        aFrameSPtr,
                                                                                 const   Instant&                    anInstant                                   ) const ;
 
         String                  toString                                    (   const   Integer&                    aPrecision                                  =   Integer::Undefined() ) const ;
@@ -96,7 +96,7 @@ class Velocity
         static Velocity         Undefined                                   ( ) ;
 
         static Velocity         MetersPerSecond                             (   const   Vector3d&                   aCoordinateSet,
-                                                                                const   Shared<const Frame>&        aFrame                                      ) ;
+                                                                                const   Shared<const Frame>&        aFrameSPtr                                  ) ;
 
         static String           StringFromUnit                              (   const   Velocity::Unit&             aUnit                                       ) ;
 

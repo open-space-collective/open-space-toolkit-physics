@@ -100,7 +100,7 @@ Earth                           Earth::Analytical                           (   
     using library::physics::coord::Frame ;
     using library::physics::env::ephem::Analytical ;
 
-    const Shared<Frame> earthFrame = std::make_shared<Frame>(Frame::ITRF()) ; // [TBM]
+    const Shared<const Frame> earthFrame = Frame::ITRF() ;
 
     return Earth(std::make_shared<Analytical>(earthFrame), anInstant) ;
 
