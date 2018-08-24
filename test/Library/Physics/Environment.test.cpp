@@ -7,6 +7,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <Library/Physics/Environment/Objects/CelestialBodies/Moon.hpp>
 #include <Library/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
 #include <Library/Physics/Environment.hpp>
 #include <Library/Physics/Time/Interval.hpp>
@@ -267,6 +268,7 @@ TEST (Library_Physics_Environment, Test_1)
     using library::physics::Environment ;
     using library::physics::env::Object ;
     using library::physics::env::obj::celest::Earth ;
+    using library::physics::env::obj::celest::Moon ;
 
     const Instant startInstant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC) ;
     const Instant endInstant = Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC) ;
@@ -274,49 +276,96 @@ TEST (Library_Physics_Environment, Test_1)
 
     const Array<Shared<Object>> objects =
     {
-        std::make_shared<Earth>(Earth::Analytical(startInstant))
+        std::make_shared<Earth>(Earth::Analytical(startInstant)),
+        std::make_shared<Moon>(Moon::Analytical(startInstant))
     } ;
 
     Environment environment = { startInstant, objects } ;
 
-    const Weak<const Object> earthWPtr = environment.accessObjectWithName("Earth") ;
+    Shared<const Earth> earthSPtr = nullptr ;
+    Shared<const Moon> moonSPtr = nullptr ;
 
-    if (auto earthSPtr = earthWPtr.lock())
+    if (auto objectSPtr = environment.accessObjectWithName("Earth").lock())
     {
         
-        const Earth& earth = dynamic_cast<const Earth&>(*earthSPtr) ;
+        earthSPtr = std::dynamic_pointer_cast<const Earth>(objectSPtr) ;
 
-        for (const auto& instant : Interval::Closed(startInstant, endInstant).generateGrid(step))
+        if (earthSPtr == nullptr)
         {
-
-            environment.setInstant(instant) ;
-
-            const Transform earthFrameTransform = earth.getTransformTo(Frame::GCRF()) ;
-
-            EXPECT_TRUE(earthFrameTransform.isDefined()) ;
-
-            const Position earthPosition = earth.getPositionIn(Frame::GCRF()) ;
-            const Velocity earthVelocity = earth.getVelocityIn(Frame::GCRF()) ;
-
-            EXPECT_TRUE(earthPosition.isDefined()) ;
-            EXPECT_TRUE(earthVelocity.isDefined()) ;
-
-            const Quaternion earthOrientation = earth.getTransformTo(Frame::GCRF()).getOrientation() ;
-
-            EXPECT_TRUE(earthOrientation.isDefined()) ;
-
-            const Axes earthAxes = earth.getAxesIn(Frame::GCRF()) ;
-
-            EXPECT_TRUE(earthAxes.isDefined()) ;
-
-            std::cout << String::Format("@ {}: {} --- {} --- {}", instant.toString(), earthPosition.toString(), earthVelocity.toString(), earthOrientation.toString()) << std::endl ;
-
+            FAIL() ;
         }
 
     }
     else
     {
         FAIL() ;
+    }
+
+    if (auto objectSPtr = environment.accessObjectWithName("Moon").lock())
+    {
+        
+        moonSPtr = std::dynamic_pointer_cast<const Moon>(objectSPtr) ;
+
+        if (moonSPtr == nullptr)
+        {
+            FAIL() ;
+        }
+
+    }
+    else
+    {
+        FAIL() ;
+    }
+
+    for (const auto& instant : Interval::Closed(startInstant, endInstant).generateGrid(step))
+    {
+
+        environment.setInstant(instant) ;
+
+        // Earth
+
+        const Transform earthFrameTransform = earthSPtr->getTransformTo(Frame::GCRF()) ;
+
+        EXPECT_TRUE(earthFrameTransform.isDefined()) ;
+
+        const Position earthPosition = earthSPtr->getPositionIn(Frame::GCRF()) ;
+        const Velocity earthVelocity = earthSPtr->getVelocityIn(Frame::GCRF()) ;
+
+        EXPECT_TRUE(earthPosition.isDefined()) ;
+        EXPECT_TRUE(earthVelocity.isDefined()) ;
+
+        const Quaternion earthOrientation = earthSPtr->getTransformTo(Frame::GCRF()).getOrientation() ;
+
+        EXPECT_TRUE(earthOrientation.isDefined()) ;
+
+        const Axes earthAxes = earthSPtr->getAxesIn(Frame::GCRF()) ;
+
+        EXPECT_TRUE(earthAxes.isDefined()) ;
+
+        std::cout << String::Format("Earth @ {}: {} --- {} --- {}", instant.toString(), earthPosition.toString(), earthVelocity.toString(), earthOrientation.toString()) << std::endl ;
+
+        // Moon
+
+        const Transform moonFrameTransform = moonSPtr->getTransformTo(Frame::GCRF()) ;
+
+        EXPECT_TRUE(moonFrameTransform.isDefined()) ;
+
+        const Position moonPosition = moonSPtr->getPositionIn(Frame::GCRF()) ;
+        const Velocity moonVelocity = moonSPtr->getVelocityIn(Frame::GCRF()) ;
+
+        EXPECT_TRUE(moonPosition.isDefined()) ;
+        EXPECT_TRUE(moonVelocity.isDefined()) ;
+
+        const Quaternion moonOrientation = moonSPtr->getTransformTo(Frame::GCRF()).getOrientation() ;
+
+        EXPECT_TRUE(moonOrientation.isDefined()) ;
+
+        const Axes moonAxes = moonSPtr->getAxesIn(Frame::GCRF()) ;
+
+        EXPECT_TRUE(moonAxes.isDefined()) ;
+
+        std::cout << String::Format("Moon @ {}: {} --- {} --- {}", instant.toString(), moonPosition.toString(), moonVelocity.toString(), moonOrientation.toString()) << std::endl ;
+
     }
 
 }

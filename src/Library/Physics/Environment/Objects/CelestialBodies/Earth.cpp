@@ -100,9 +100,9 @@ Earth                           Earth::Analytical                           (   
     using library::physics::coord::Frame ;
     using library::physics::env::ephem::Analytical ;
 
-    const Shared<const Frame> earthFrame = Frame::ITRF() ;
+    const Shared<const Frame> earthFrameSPtr = Frame::ITRF() ;
 
-    return Earth(std::make_shared<Analytical>(earthFrame), anInstant) ;
+    return Earth(std::make_shared<Analytical>(earthFrameSPtr), anInstant) ;
 
 }
 

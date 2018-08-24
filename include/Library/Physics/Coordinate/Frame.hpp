@@ -60,7 +60,7 @@ class Frame
                                 Frame                                       (   const   String&                     aName,
                                                                                         bool                        isQuasiInertial,
                                                                                 const   Shared<const Frame>&        aParentFrame,
-                                                                                const   Shared<Provider>&           aProvider                                   ) ;
+                                                                                const   Shared<const Provider>&     aProvider                                   ) ;
 
                                 Frame                                       (   const   Frame&                      aFrame                                      ) ;    
 
@@ -141,7 +141,7 @@ class Frame
 
         Shared<const Frame>     parentFrameSPtr_ ;
 
-        Shared<Provider>        providerSPtr_ ; // Provides transform from parent to instance
+        Shared<const Provider>  providerSPtr_ ; // Provides transform from parent to instance
 
         Uint8                   getDepth                                    ( ) const ;
 

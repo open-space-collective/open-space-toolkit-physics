@@ -24,7 +24,7 @@ inline void                     LibraryPhysicsPy_Coordinate_Frame           ( )
 
     // scope in_Frame = class_<Frame, Shared<Frame>>("Frame", init<String&, bool, Shared<const Frame>&, Shared<Provider>&>())
     // scope in_Frame = class_<Frame, Shared<Frame>, boost::noncopyable>("Frame", init<String&, bool, Shared<const Frame>&, Shared<Provider>&>())
-    scope in_Frame = class_<Frame>("Frame", init<String&, bool, Shared<const Frame>&, Shared<Provider>&>())
+    scope in_Frame = class_<Frame>("Frame", init<String&, bool, Shared<const Frame>&, Shared<const Provider>&>())
 
         .def(self == self)
         .def(self != self)
