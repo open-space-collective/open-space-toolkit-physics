@@ -32,7 +32,7 @@ inline void                     LibraryPhysicsPy_Time_Interval              ( )
 
         .def("isDefined", &Interval::isDefined)
         .def("isDegenerate", &Interval::isDegenerate)
-        .def("isIntersectingWith", &Interval::isIntersectingWith)
+        .def("intersects", &Interval::intersects)
         .def("containsInstant", +[] (const Interval& anInterval, const Instant& anInstant) -> bool { return anInterval.contains(anInstant) ; })
         .def("containsInterval", +[] (const Interval& anInterval, const Interval& anOtherInterval) -> bool { return anInterval.contains(anOtherInterval) ; })
 

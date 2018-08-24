@@ -129,6 +129,33 @@ void                            Environment::setInstant                     (   
 
 }
 
+bool                            Environment::intersects                     (   const   GeometricalObject&          aGeometricalObject                          ) const
+{
+
+    if (!aGeometricalObject.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Geometrical object") ;
+    }
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Environment") ;
+    }
+
+    for (const auto& objectSPtr : objects_)
+    {
+
+        if (objectSPtr->accessGeometry().intersects(aGeometricalObject))
+        {
+            return true ;
+        }
+
+    }
+
+    return false ;
+
+}
+
 Environment                     Environment::Undefined                      ( )
 {
     return Environment(Instant::Undefined(), Array<Shared<Object>>::Empty()) ;

@@ -13,6 +13,8 @@
 #include <Library/Physics/Environment/Object.hpp>
 #include <Library/Physics/Time/Instant.hpp>
 
+#include <Library/Mathematics/Geometry/3D/Object.hpp>
+
 #include <Library/Core/Containers/Array.hpp>
 #include <Library/Core/Types/String.hpp>
 #include <Library/Core/Types/Weak.hpp>
@@ -33,6 +35,8 @@ using library::core::types::Shared ;
 using library::core::types::Weak ;
 using library::core::types::String ;
 using library::core::ctnr::Array ;
+
+using GeometricalObject = library::math::geom::d3::Object ;
 
 using library::physics::time::Instant ;
 using library::physics::env::Object ;
@@ -58,6 +62,8 @@ class Environment
         Instant                 getInstant                                  ( ) const ;
 
         void                    setInstant                                  (   const   Instant&                    anInstant                                   ) ;
+
+        bool                    intersects                                  (   const   GeometricalObject&          aGeometricalObject                          ) const ;
 
         static Environment      Undefined                                   ( ) ;
 

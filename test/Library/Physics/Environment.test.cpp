@@ -18,6 +18,7 @@
 
 #include <Library/Mathematics/Geometry/Transformations/Rotations/RotationVector.hpp>
 #include <Library/Mathematics/Geometry/Transformations/Rotations/Quaternion.hpp>
+#include <Library/Mathematics/Geometry/3D/Objects/Segment.hpp>
 
 #include <Library/Core/Containers/Map.hpp>
 #include <Library/Core/Types/String.hpp>
@@ -67,44 +68,80 @@
 
 // }
 
-// TEST (Library_Physics_Environment, getInstant)
-// {
+TEST (Library_Physics_Environment, getInstant)
+{
 
-//     using library::physics::Environment ;
+    using library::physics::Environment ;
 
-//     {
+    {
 
-//         FAIL() ;
+        FAIL() ;
 
-//     }
+    }
 
-// }
+}
 
-// TEST (Library_Physics_Environment, setInstant)
-// {
+TEST (Library_Physics_Environment, setInstant)
+{
 
-//     using library::physics::Environment ;
+    using library::physics::Environment ;
 
-//     {
+    {
 
-//         FAIL() ;
+        FAIL() ;
 
-//     }
+    }
 
-// }
+}
 
-// TEST (Library_Physics_Environment, Undefined)
-// {
+TEST (Library_Physics_Environment, Intersects)
+{
 
-//     using library::physics::Environment ;
+    using library::core::types::Shared ;
+    using library::core::ctnr::Array ;
 
-//     {
+    using library::math::geom::d3::objects::Segment ;
 
-//         FAIL() ;
+    using library::physics::time::Scale ;
+    using library::physics::time::Instant ;
+    using library::physics::time::DateTime ;
+    using library::physics::Environment ;
+    using library::physics::env::Object ;
+    using library::physics::env::obj::celest::Earth ;
 
-//     }
+    {
 
-// }
+        const Instant instant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC) ;
+
+        const Array<Shared<Object>> objects =
+        {
+            std::make_shared<Earth>(Earth::Analytical(instant))
+        } ;
+
+        Environment environment = { instant, objects } ;
+
+        Segment segment = { { 0.0, 0.0, 0.0 }, { 7000e3, 0.0, 0.0 } } ;
+
+        EXPECT_TRUE(environment.intersects(segment)) ;
+
+    }
+
+}
+
+TEST (Library_Physics_Environment, Undefined)
+{
+
+    using library::physics::Environment ;
+
+    {
+
+        EXPECT_NO_THROW(Environment::Undefined()) ;
+
+        EXPECT_FALSE(Environment::Undefined().isDefined()) ;
+
+    }
+
+}
 
 // TEST (Library_Physics_Environment, Default)
 // {

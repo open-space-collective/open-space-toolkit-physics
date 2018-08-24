@@ -56,7 +56,7 @@ class Position
 
         typedef                 Length::Unit                                    Unit ;
 
-                                Position                                    (   const   Vector3d&                   aCoordinateSet,
+                                Position                                    (   const   Vector3d&                   aCoordinateSet, // [TBI] Replace w/ Point
                                                                                 const   Position::Unit&             aUnit,
                                                                                 const   Shared<const Frame>&        aFrame                                      ) ;
 
