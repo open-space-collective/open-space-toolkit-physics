@@ -65,7 +65,7 @@ Environment&                    Environment::operator =                     (   
 
     }
 
-    return (*this) ;
+    return *this ;
 
 }
 

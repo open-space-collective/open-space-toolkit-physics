@@ -136,7 +136,7 @@ Transform&                      Transform::operator *=                      (   
     orientation_ = orientation ;
     angularVelocity_ = angularVelocity ;
 
-    return (*this) ;
+    return *this ;
 
 }
 

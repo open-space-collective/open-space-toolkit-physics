@@ -162,7 +162,7 @@ const Frame&                    Frame::accessAncestor                       (   
 
     if (anAncestorDegree == 0)
     {
-        return (*this) ;
+        return *this ;
     }
 
     if (anAncestorDegree > this->getDepth())
