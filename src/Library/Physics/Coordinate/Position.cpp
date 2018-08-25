@@ -288,17 +288,13 @@ String                          Position::toString                          (   
 
 Position                        Position::Undefined                         ( )
 {
-    return Position(Vector3d::Undefined(), Position::Unit::Undefined, nullptr) ;
+    return { Vector3d::Undefined(), Position::Unit::Undefined, nullptr } ;
 }
 
 Position                        Position::Meters                            (   const   Vector3d&                   aCoordinateSet,
                                                                                 const   Shared<const Frame>&        aFrameSPtr                                  )
 {
-
-    // std::cout << "Position :: Meters :: use_count = " << aFrame.use_count() << std::endl ;
-    
-    return Position(aCoordinateSet, Position::Unit::Meter, aFrameSPtr) ;
-
+    return { aCoordinateSet, Position::Unit::Meter, aFrameSPtr } ;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

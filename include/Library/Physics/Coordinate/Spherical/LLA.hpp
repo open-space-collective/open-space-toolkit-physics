@@ -14,6 +14,7 @@
 #include <Library/Physics/Units/Length.hpp>
 
 #include <Library/Core/Types/String.hpp>
+#include <Library/Core/Types/Real.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -28,35 +29,27 @@ namespace spherical
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using library::core::types::Real ;
 using library::core::types::String ;
 
 using library::math::obj::Vector3d ;
 
-using library::physics::units::Angle ;
 using library::physics::units::Length ;
+using library::physics::units::Angle ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @brief                      Latitude - Longitude - Altitude (LLA)
+/// @brief                      Geodetic Latitude - Longitude - Altitude (LLA)
 ///
-/// @ref                        https://en.wikipedia.org/wiki/Latitude#Geodetic_and_geocentric_latitudes
+/// @ref                        https://en.wikipedia.org/wiki/Latitude
+/// @ref                        https://en.wikipedia.org/wiki/Longitude
 
 class LLA
 {
 
     public:
     
-        enum class Type
-        {
-
-            Undefined,
-            Geocentric,
-            Geodetic
-
-        } ;
-
-                                LLA                                         (   const   LLA::Type&                  aType,
-                                                                                const   Angle&                      aLatitude,
+                                LLA                                         (   const   Angle&                      aLatitude,
                                                                                 const   Angle&                      aLongitude,
                                                                                 const   Length&                     anAltitude                                  ) ;
 
@@ -69,13 +62,13 @@ class LLA
 
         bool                    isDefined                                   ( ) const ;
 
-        LLA::Type               getType                                     ( ) const ;
-
         Angle                   getLatitude                                 ( ) const ;
 
         Angle                   getLongitude                                ( ) const ;
 
         Length                  getAltitude                                 ( ) const ;
+
+        Vector3d                toVector                                    ( ) const ;
 
         Vector3d                toCartesian                                 ( ) const ;
         
@@ -86,23 +79,13 @@ class LLA
 
         static LLA              Undefined                                   ( ) ;
 
-        static LLA              Geocentric                                  (   const   Angle&                      aLatitude,
-                                                                                const   Angle&                      aLongitude,
-                                                                                const   Length&                     anAltitude                                  ) ;
+        static LLA              Vector                                      (   const   Vector3d&                   aVector                                     ) ;
 
-        static LLA              Geodetic                                    (   const   Angle&                      aLatitude,
-                                                                                const   Angle&                      aLongitude,
-                                                                                const   Length&                     anAltitude                                  ) ;
-
-        static LLA              GeocentricFromCartesian                     (   const   Vector3d&                   aCartesianCoordinateSet                     ) ;
-
-        static LLA              GeodeticFromCartesian                       (   const   Vector3d&                   aCartesianCoordinateSet,
+        static LLA              Cartesian                                   (   const   Vector3d&                   aCartesianCoordinateSet,
                                                                                 const   Length&                     anEllipsoidEquatorialRadius,
                                                                                 const   Real&                       anEllipsoidFlattening                       ) ;
 
     private:
-
-        LLA::Type               type_ ;
 
         Angle                   latitude_ ;
         Angle                   longitude_ ;

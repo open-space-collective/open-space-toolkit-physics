@@ -225,13 +225,13 @@ String                          Velocity::toString                          (   
 
 Velocity                        Velocity::Undefined                         ( )
 {
-    return Velocity(Vector3d::Undefined(), Velocity::Unit::Undefined, nullptr) ;
+    return { Vector3d::Undefined(), Velocity::Unit::Undefined, nullptr } ;
 }
 
 Velocity                        Velocity::MetersPerSecond                   (   const   Vector3d&                   aCoordinateSet,
                                                                                 const   Shared<const Frame>&        aFrameSPtr                                  )
 {
-    return Velocity(aCoordinateSet, Velocity::Unit::MeterPerSecond, aFrameSPtr) ;
+    return { aCoordinateSet, Velocity::Unit::MeterPerSecond, aFrameSPtr } ;
 }
 
 String                          Velocity::StringFromUnit                    (   const   Velocity::Unit&             aUnit                                       )
