@@ -42,7 +42,7 @@ Real                            Moon::Flattening                                
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                                Moon::Moon                                  (   const   Shared<Ephemeris>&          anEphemeris,
+                                Moon::Moon                                  (   const   Shared<Ephemeris>&          anEphemerisSPtr,
                                                                                 const   Instant&                    anInstant                                   )
                                 :   Celestial
                                     (
@@ -52,9 +52,9 @@ Real                            Moon::Flattening                                
                                         Moon::EquatorialRadius,
                                         Moon::Flattening,
                                         0.0,
-                                        anEphemeris,
+                                        anEphemerisSPtr,
                                         anInstant,
-                                        Moon::Geometry()
+                                        Moon::Geometry(anEphemerisSPtr->accessFrame())
                                     )
 {
 
@@ -68,11 +68,6 @@ Real                            Moon::Flattening                                
 Moon*                           Moon::clone                                 ( ) const
 {
     return new Moon(*this) ;
-}
-
-const Ellipsoid&                Moon::accessGeometry                        ( ) const
-{
-    return dynamic_cast<const Ellipsoid&>(Celestial::accessGeometry()) ;
 }
 
 Moon                            Moon::Analytical                            (   const   Instant&                    anInstant                                   )
@@ -91,7 +86,7 @@ Moon                            Moon::Analytical                            (   
 
 }
 
-Ellipsoid                       Moon::Geometry                              ( )
+Object::Geometry                Moon::Geometry                              (   const   Shared<const Frame>&        aFrame                                      )
 {
 
     using library::math::geom::d3::objects::Point ;
@@ -100,7 +95,9 @@ Ellipsoid                       Moon::Geometry                              ( )
     const Real equatorialRadius_m = Moon::EquatorialRadius.inMeters() ;
     const Real polarRadius = equatorialRadius_m * (1.0 - Moon::Flattening) ;
     
-    return Ellipsoid(Point::Origin(), equatorialRadius_m, equatorialRadius_m, polarRadius, Quaternion::Unit()) ;
+    const Ellipsoid ellipsoid = { Point::Origin(), equatorialRadius_m, equatorialRadius_m, polarRadius, Quaternion::Unit() } ;
+
+    return Object::Geometry(ellipsoid, aFrame) ;
 
 }
 

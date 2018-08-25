@@ -134,6 +134,8 @@ class Frame
 
         static Shared<const Frame> ITRF                                     ( ) ;
 
+        static Shared<const Frame> WithName                                 (   const   String&                     aName                                       ) ;
+
     private:
 
         String                  name_ ;

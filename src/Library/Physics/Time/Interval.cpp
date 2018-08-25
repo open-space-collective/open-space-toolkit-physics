@@ -166,68 +166,70 @@ String                          Interval::toString                         (   c
 Array<Instant>                  Interval::generateGrid                      (   const   Duration&                   aTimeStep                                   ) const
 {
 
-    using library::core::types::Index ;
-    using library::core::types::Size ;
+    return this->generateArrayWithStep(aTimeStep) ;
 
-    if (!this->isDefined())
-    {
-        throw library::core::error::runtime::Undefined("Interval") ;
-    }
+    // using library::core::types::Index ;
+    // using library::core::types::Size ;
 
-    if (!aTimeStep.isDefined())
-    {
-        throw library::core::error::runtime::Undefined("Time step") ;
-    }
+    // if (!this->isDefined())
+    // {
+    //     throw library::core::error::runtime::Undefined("Interval") ;
+    // }
+
+    // if (!aTimeStep.isDefined())
+    // {
+    //     throw library::core::error::runtime::Undefined("Time step") ;
+    // }
     
-    if (aTimeStep.isZero())
-    {
-        throw library::core::error::RuntimeError("Time step is zero.") ;
-    }
+    // if (aTimeStep.isZero())
+    // {
+    //     throw library::core::error::RuntimeError("Time step is zero.") ;
+    // }
 
-    Array<Instant> grid = Array<Instant>::Empty() ;
+    // Array<Instant> grid = Array<Instant>::Empty() ;
 
-    if (aTimeStep.isPositive())
-    {
+    // if (aTimeStep.isPositive())
+    // {
 
-        Instant instant = this->accessLowerBound() ;
+    //     Instant instant = this->accessLowerBound() ;
 
-        while (instant <= this->accessUpperBound())
-        {
+    //     while (instant <= this->accessUpperBound())
+    //     {
             
-            grid.add(instant) ;
+    //         grid.add(instant) ;
             
-            instant += aTimeStep ;
+    //         instant += aTimeStep ;
         
-        }
+    //     }
 
-        if (grid.accessLast() < this->accessUpperBound())
-        {
-            grid.add(this->accessUpperBound()) ;
-        }
+    //     if (grid.accessLast() < this->accessUpperBound())
+    //     {
+    //         grid.add(this->accessUpperBound()) ;
+    //     }
 
-    }
-    else
-    {
+    // }
+    // else
+    // {
 
-        Instant instant = this->accessUpperBound() ;
+    //     Instant instant = this->accessUpperBound() ;
 
-        while (instant >= this->accessLowerBound())
-        {
+    //     while (instant >= this->accessLowerBound())
+    //     {
             
-            grid.add(instant) ;
+    //         grid.add(instant) ;
             
-            instant += aTimeStep ;
+    //         instant += aTimeStep ;
         
-        }
+    //     }
 
-        if (grid.accessLast() > this->accessLowerBound())
-        {
-            grid.add(this->accessLowerBound()) ;
-        }
+    //     if (grid.accessLast() > this->accessLowerBound())
+    //     {
+    //         grid.add(this->accessLowerBound()) ;
+    //     }
 
-    }
+    // }
 
-    return grid ;
+    // return grid ;
 
 }
 

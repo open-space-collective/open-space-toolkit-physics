@@ -10,6 +10,7 @@
 #ifndef __Library_Physics_Coordinate_Frame_Manager__
 #define __Library_Physics_Coordinate_Frame_Manager__
 
+#include <Library/Physics/Coordinate/Transform.hpp>
 #include <Library/Physics/Coordinate/Frame.hpp>
 #include <Library/Physics/Time/Instant.hpp>
 
@@ -38,6 +39,7 @@ using library::core::ctnr::Map ;
 
 using library::physics::time::Instant ;
 using library::physics::coord::Frame ;
+using library::physics::coord::Transform ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -54,15 +56,26 @@ class Manager
 
         Shared<const Frame>     accessFrameWithName                         (   const   String&                     aFrameName                                  ) const ;
 
+        const Transform*        accessCachedTransform                       (   const   Frame*                      aFromFramePtr,
+                                                                                const   Frame*                      aToFramePtr,
+                                                                                const   Instant&                    anInstant                                   ) const ;
+
         void                    addFrame                                    (   const   Frame&                      aFrame                                      ) ;
 
         void                    addFrame                                    (   const   Shared<const Frame>&        aFrameSPtr                                  ) ;
 
         void                    removeFrameWithName                         (   const   String&                     aFrameName                                  ) ;
 
+        void                    addCachedTransform                          (   const   Frame*                      aFromFramePtr,
+                                                                                const   Frame*                      aToFramePtr,
+                                                                                const   Instant&                    anInstant,
+                                                                                const   Transform&                  aTransform                                  ) ;
+
     private:
 
         Map<String, Shared<const Frame>> frameMap_ ;
+
+        Map<const Frame*, Map<const Frame*, Map<Instant, Transform>>> transformCache_ ;
 
         mutable std::mutex      mutex_ ;
 

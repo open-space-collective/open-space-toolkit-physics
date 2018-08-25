@@ -135,12 +135,12 @@ void                            Environment::setInstant                     (   
 
 }
 
-bool                            Environment::intersects                     (   const   GeometricalObject&          aGeometricalObject                          ) const
+bool                            Environment::intersects                     (   const   Object::Geometry&           aGeometry                                   ) const
 {
 
-    if (!aGeometricalObject.isDefined())
+    if (!aGeometry.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Geometrical object") ;
+        throw library::core::error::runtime::Undefined("Geometry") ;
     }
 
     if (!this->isDefined())
@@ -151,7 +151,7 @@ bool                            Environment::intersects                     (   
     for (const auto& objectSPtr : objects_)
     {
 
-        if (objectSPtr->accessGeometry().intersects(aGeometricalObject))
+        if (objectSPtr->getGeometryIn(aGeometry.accessFrame()).intersects(aGeometry))
         {
             return true ;
         }

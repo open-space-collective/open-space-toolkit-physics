@@ -10,6 +10,7 @@
 #ifndef __Library_Physics_Environment_Object__
 #define __Library_Physics_Environment_Object__
 
+#include <Library/Physics/Environment/Object/Geometry.hpp>
 #include <Library/Physics/Coordinate/Transform.hpp>
 #include <Library/Physics/Coordinate/Frame.hpp>
 #include <Library/Physics/Coordinate/Axes.hpp>
@@ -54,7 +55,7 @@ class Object
 
     public:
     
-        typedef library::math::geom::d3::Object Geometry ;
+        typedef object::Geometry Geometry ;
 
                                 Object                                      (   const   String&                     aName,
                                                                                 const   Instant&                    anInstant                                   ) ;
@@ -82,9 +83,7 @@ class Object
 
         virtual Weak<const Frame> accessFrame                               ( ) const = 0 ;
 
-        virtual const Object::Geometry& accessGeometry                      ( ) const ;
-
-        // Frame                   getFrame                                    ( ) const ;
+        const Object::Geometry& accessGeometry                              ( ) const ;
 
         virtual Position        getPositionIn                               (   const   Shared<const Frame>&        aFrameSPtr                                  ) const = 0 ;
 
@@ -94,6 +93,8 @@ class Object
 
         virtual Axes            getAxesIn                                   (   const   Shared<const Frame>&        aFrameSPtr                                  ) const = 0 ;
 
+        Object::Geometry        getGeometryIn                               (   const   Shared<const Frame>&        aFrameSPtr                                  ) const ;
+
         void                    setInstant                                  (   const   Instant&                    anInstant                                   ) ;
 
     private:
@@ -101,7 +102,7 @@ class Object
         String                  name_ ;
         Instant                 instant_ ;
 
-        Unique<Object::Geometry> geometryUPtr_ ;
+        Object::Geometry        geometry_ ;
 
 } ;
 

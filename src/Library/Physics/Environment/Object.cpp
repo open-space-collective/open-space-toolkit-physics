@@ -27,7 +27,7 @@ namespace env
                                                                                 const   Instant&                    anInstant                                   )
                                 :   name_(aName),
                                     instant_(anInstant),
-                                    geometryUPtr_(nullptr)
+                                    geometry_(Geometry::Undefined())
 {
 
 }
@@ -37,7 +37,7 @@ namespace env
                                                                                 const   Object::Geometry&           aGeometry                                   )
                                 :   name_(aName),
                                     instant_(anInstant),
-                                    geometryUPtr_(aGeometry.clone())
+                                    geometry_(aGeometry)
 {
 
 }
@@ -45,7 +45,7 @@ namespace env
                                 Object::Object                              (   const   Object&                     anObject                                    )
                                 :   name_(anObject.name_),
                                     instant_(anObject.instant_),
-                                    geometryUPtr_((anObject.geometryUPtr_ != nullptr) ? anObject.geometryUPtr_->clone() : nullptr)
+                                    geometry_(anObject.geometry_)
 {
 
 }
@@ -64,8 +64,7 @@ Object&                         Object::operator =                          (   
 
         name_ = anObject.name_ ;
         instant_ = anObject.instant_ ;
-
-        geometryUPtr_.reset((anObject.geometryUPtr_ != nullptr) ? anObject.geometryUPtr_->clone() : nullptr) ;
+        geometry_ = anObject.geometry_ ;
 
     }
 
@@ -119,41 +118,13 @@ const Instant&                  Object::accessInstant                       ( ) 
 
 const Object::Geometry&         Object::accessGeometry                      ( ) const
 {
-
-    if (!this->isDefined())
-    {
-        throw library::core::error::runtime::Undefined("Object") ;
-    }
-
-    if (geometryUPtr_ == nullptr)
-    {
-        throw library::core::error::runtime::Undefined("Geometry") ;
-    }
-    
-    return *geometryUPtr_ ;
-
+    return geometry_ ;
 }
 
-// Frame                           Object::getFrame                            ( ) const
-// {
-
-//     if (!this->isDefined())
-//     {
-//         throw library::core::error::runtime::Undefined("Object") ;
-//     }
-
-//     if (auto frameSPtr = this->accessFrame().lock())
-//     {
-//         return *frameSPtr ;
-//     }
-//     else
-//     {
-//         throw library::core::error::RuntimeError("Cannot access frame.") ;
-//     }
-
-//     return Frame::Undefined() ;
-
-// }
+Object::Geometry                Object::getGeometryIn                       (   const   Shared<const Frame>&        aFrameSPtr                                  ) const
+{
+    return this->accessGeometry().in(aFrameSPtr, instant_) ;
+}
 
 void                            Object::setInstant                          (   const   Instant&                    anInstant                                   )
 {

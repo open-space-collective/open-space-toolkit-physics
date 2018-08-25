@@ -14,7 +14,7 @@
 #include <Library/Physics/Coordinate/Position.hpp>
 #include <Library/Physics/Time/Instant.hpp>
 
-#include <Library/Core/Types/Weak.hpp>
+#include <Library/Core/Types/Shared.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -27,7 +27,7 @@ namespace env
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using library::core::types::Weak ;
+using library::core::types::Shared ;
 
 using library::physics::coord::Frame ;
 
@@ -46,7 +46,7 @@ class Ephemeris
 
         virtual bool            isDefined                                   ( ) const = 0 ;
 
-        virtual Weak<const Frame> accessFrame                               ( ) const = 0 ;
+        virtual Shared<const Frame> accessFrame                             ( ) const = 0 ;
 
 } ;
 

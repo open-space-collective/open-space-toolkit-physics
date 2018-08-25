@@ -176,16 +176,7 @@ Position                        Celestial::getPositionIn                    (   
         throw library::core::error::runtime::Undefined("Celestial") ;
     }
 
-    if (auto frameSPtr = ephemeris_->accessFrame().lock())
-    {
-        return frameSPtr->getOriginIn(aFrameSPtr, this->accessInstant()) ;
-    }
-    else
-    {
-        throw library::core::error::RuntimeError("Cannot access frame.") ;
-    }
-
-    return Position::Undefined() ;
+    return ephemeris_->accessFrame()->getOriginIn(aFrameSPtr, this->accessInstant()) ;
 
 }
 
@@ -207,16 +198,7 @@ Transform                       Celestial::getTransformTo                   (   
         throw library::core::error::runtime::Undefined("Celestial") ;
     }
 
-    if (auto frameSPtr = ephemeris_->accessFrame().lock())
-    {
-        return frameSPtr->getTransformTo(aFrameSPtr, this->accessInstant()) ;
-    }
-    else
-    {
-        throw library::core::error::RuntimeError("Cannot access frame.") ;
-    }
-
-    return Transform::Undefined() ;
+    return ephemeris_->accessFrame()->getTransformTo(aFrameSPtr, this->accessInstant()) ;
 
 }
 
@@ -233,16 +215,7 @@ Axes                            Celestial::getAxesIn                        (   
         throw library::core::error::runtime::Undefined("Celestial") ;
     }
 
-    if (auto frameSPtr = ephemeris_->accessFrame().lock())
-    {
-        return frameSPtr->getAxesIn(aFrameSPtr, this->accessInstant()) ;
-    }
-    else
-    {
-        throw library::core::error::RuntimeError("Cannot access frame.") ;
-    }
-
-    return Axes::Undefined() ;
+    return ephemeris_->accessFrame()->getAxesIn(aFrameSPtr, this->accessInstant()) ;
 
 }
 

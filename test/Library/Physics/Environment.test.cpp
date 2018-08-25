@@ -99,13 +99,16 @@ TEST (Library_Physics_Environment, Intersects)
 {
 
     using library::core::types::Shared ;
+    using library::core::types::Real ;
     using library::core::ctnr::Array ;
 
+    using library::math::obj::Interval ;
     using library::math::geom::d3::objects::Segment ;
 
     using library::physics::time::Scale ;
     using library::physics::time::Instant ;
     using library::physics::time::DateTime ;
+    using library::physics::coord::Frame ;
     using library::physics::Environment ;
     using library::physics::env::Object ;
     using library::physics::env::obj::celest::Earth ;
@@ -119,11 +122,20 @@ TEST (Library_Physics_Environment, Intersects)
             std::make_shared<Earth>(Earth::Analytical(instant))
         } ;
 
-        Environment environment = { instant, objects } ;
+        const Environment environment = { instant, objects } ;
 
-        Segment segment = { { 0.0, 0.0, 0.0 }, { 7000e3, 0.0, 0.0 } } ;
+        for (const auto& y_ECI : Interval<Real>::Closed(-7000e3, +7000e3).generateArrayWithStep(Real(1000.0)))
+        {
 
-        EXPECT_TRUE(environment.intersects(segment)) ;
+            const Segment segment = { { -7000e3, y_ECI, 0.0 }, { +7000e3, y_ECI, 0.0 } } ;
+
+            const Object::Geometry segmentGeometry = { segment, Frame::GCRF() } ;
+
+            std::cout << environment.intersects(segmentGeometry) << " @ " << y_ECI.toString(15) << std::endl ;
+
+            // EXPECT_TRUE(environment.intersects(segment)) ;
+
+        }
 
     }
 

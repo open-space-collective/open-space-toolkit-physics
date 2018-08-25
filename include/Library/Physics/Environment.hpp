@@ -63,7 +63,7 @@ class Environment
 
         void                    setInstant                                  (   const   Instant&                    anInstant                                   ) ;
 
-        bool                    intersects                                  (   const   GeometricalObject&          aGeometricalObject                          ) const ;
+        bool                    intersects                                  (   const   Object::Geometry&           aGeometry                                   ) const ;
 
         static Environment      Undefined                                   ( ) ;
 

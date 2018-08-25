@@ -55,6 +55,59 @@ Shared<const Frame>             Manager::accessFrameWithName                (   
 
 }
 
+const Transform*                Manager::accessCachedTransform              (   const   Frame*                      aFromFramePtr,
+                                                                                const   Frame*                      aToFramePtr,
+                                                                                const   Instant&                    anInstant                                   ) const
+{
+
+    std::lock_guard<std::mutex> lock(mutex_) ;
+
+    // auto transformCacheIt = transformCache_.find(anInstant) ;
+
+    // if (transformCacheIt != transformCache_.end())
+    // {
+
+    //     auto transformCacheFromFrameIt = transformCacheIt->second.find(aFromFramePtr) ;
+
+    //     if (transformCacheFromFrameIt != transformCacheIt->second.end())
+    //     {
+
+    //         auto transformCacheToFrameIt = transformCacheFromFrameIt->second.find(aToFramePtr) ;
+
+    //         if (transformCacheToFrameIt != transformCacheFromFrameIt->second.end())
+    //         {
+    //             return &(transformCacheToFrameIt->second) ;
+    //         }
+
+    //     }
+
+    // }
+
+    auto transformCacheFromFrameIt = transformCache_.find(aFromFramePtr) ;
+
+    if (transformCacheFromFrameIt != transformCache_.end())
+    {
+
+        auto transformCacheToFrameIt = transformCacheFromFrameIt->second.find(aToFramePtr) ;
+
+        if (transformCacheToFrameIt != transformCacheFromFrameIt->second.end())
+        {
+
+            auto transformCacheInstantIt = transformCacheToFrameIt->second.find(anInstant) ;
+
+            if (transformCacheInstantIt != transformCacheToFrameIt->second.end())
+            {
+                return &(transformCacheInstantIt->second) ;
+            }
+
+        }
+
+    }
+
+    return nullptr ;
+
+}
+
 void                            Manager::addFrame                           (   const   Frame&                      aFrame                                      )
 {
 
@@ -106,6 +159,20 @@ void                            Manager::removeFrameWithName                (   
     {
         frameMap_.erase(frameMapIt) ;
     }
+
+}
+
+void                            Manager::addCachedTransform                 (   const   Frame*                      aFromFramePtr,
+                                                                                const   Frame*                      aToFramePtr,
+                                                                                const   Instant&                    anInstant,
+                                                                                const   Transform&                  aTransform                                  )
+{
+
+    std::lock_guard<std::mutex> lock(mutex_) ;
+
+    auto transformCacheFromFrameIt = transformCache_.insert({ aFromFramePtr, {} }).first ;
+    auto transformCacheToFrameIt = transformCacheFromFrameIt->second.insert({ aToFramePtr, {} }).first ;
+    auto transformCacheToInstantIt = transformCacheToFrameIt->second.insert({ anInstant, aTransform }).first ;
 
 }
 

@@ -261,6 +261,11 @@ Transform                       Frame::getTransformTo                       (   
         return Transform::Identity(anInstant) ;
     }
 
+    if (auto transformPtr = FrameManager.accessCachedTransform(this, aFrameSPtr.get(), anInstant))
+    {
+        return *transformPtr ;
+    }
+
     // std::cout << "(*this) = " << (*this) << std::endl ;
     // std::cout << "aFrame = " << aFrame << std::endl ;
 
@@ -307,6 +312,8 @@ Transform                       Frame::getTransformTo                       (   
     const Transform originToDestinationTransform = commonToOriginTransform.getInverse() * commonToDestinationTransform ;
 
     // std::cout << "originToDestinationTransform = " << std::endl << originToDestinationTransform << std::endl ;
+
+    FrameManager.addCachedTransform(this, aFrameSPtr.get(), anInstant, originToDestinationTransform) ;
     
     return originToDestinationTransform ;
     

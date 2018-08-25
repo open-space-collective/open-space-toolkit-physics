@@ -11,6 +11,7 @@
 #define __Library_Physics_Environment_Objects_CelestialBodies_Moon__
 
 #include <Library/Physics/Environment/Objects/Celestial.hpp>
+#include <Library/Physics/Environment/Object.hpp>
 #include <Library/Physics/Environment/Ephemeris.hpp>
 #include <Library/Physics/Units/Derived.hpp>
 #include <Library/Physics/Units/Length.hpp>
@@ -43,6 +44,7 @@ using library::math::geom::d3::objects::Ellipsoid ;
 using library::physics::units::Length ;
 using library::physics::units::Derived ;
 using library::physics::env::Ephemeris ;
+using library::physics::env::Object ;
 using library::physics::env::obj::Celestial ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -56,20 +58,18 @@ class Moon : public Celestial
         static Length           EquatorialRadius ;
         static Real             Flattening ;
 
-                                Moon                                        (   const   Shared<Ephemeris>&          anEphemeris,
+                                Moon                                        (   const   Shared<Ephemeris>&          anEphemerisSPtr,
                                                                                 const   Instant&                    anInstant                                   ) ;
 
         virtual                 ~Moon                                       ( ) override ;
 
         virtual Moon*           clone                                       ( ) const override ;
 
-        virtual const Ellipsoid& accessGeometry                             ( ) const override ;
-
         static Moon             Analytical                                  (   const   Instant&                    anInstant                                   ) ; // [TBI] Analytical options
 
     private:
 
-        static Ellipsoid        Geometry                                    ( ) ;
+        static Object::Geometry Geometry                                    (   const   Shared<const Frame>&        aFrameSPtr                                  ) ;
 
 } ;
 

@@ -61,7 +61,7 @@ Real                            Earth::J2                                       
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                                Earth::Earth                                (   const   Shared<Ephemeris>&          anEphemeris,
+                                Earth::Earth                                (   const   Shared<Ephemeris>&          anEphemerisSPtr,
                                                                                 const   Instant&                    anInstant                                   )
                                 :   Celestial
                                     (
@@ -71,9 +71,9 @@ Real                            Earth::J2                                       
                                         Earth::EquatorialRadius,
                                         Earth::Flattening,
                                         Earth::J2,
-                                        anEphemeris,
+                                        anEphemerisSPtr,
                                         anInstant,
-                                        Earth::Geometry()
+                                        Earth::Geometry(anEphemerisSPtr->accessFrame())
                                     )
 {
 
@@ -89,11 +89,6 @@ Earth*                          Earth::clone                                ( ) 
     return new Earth(*this) ;
 }
 
-const Ellipsoid&                Earth::accessGeometry                       ( ) const
-{
-    return dynamic_cast<const Ellipsoid&>(Celestial::accessGeometry()) ;
-}
-
 Earth                           Earth::Analytical                           (   const   Instant&                    anInstant                                   )
 {
 
@@ -106,16 +101,18 @@ Earth                           Earth::Analytical                           (   
 
 }
 
-Ellipsoid                       Earth::Geometry                             ( )
+Object::Geometry                Earth::Geometry                             (   const   Shared<const Frame>&        aFrameSPtr                                  )
 {
 
     using library::math::geom::d3::objects::Point ;
     using library::math::geom::trf::rot::Quaternion ;
 
     const Real equatorialRadius_m = Earth::EquatorialRadius.inMeters() ;
-    const Real polarRadius = equatorialRadius_m * (1.0 - Earth::Flattening) ;
+    const Real polarRadius_m = equatorialRadius_m * (1.0 - Earth::Flattening) ;
     
-    return Ellipsoid(Point::Origin(), equatorialRadius_m, equatorialRadius_m, polarRadius, Quaternion::Unit()) ;
+    const Ellipsoid ellipsoid = { Point::Origin(), equatorialRadius_m, equatorialRadius_m, polarRadius_m, Quaternion::Unit() } ;
+
+    return Object::Geometry(ellipsoid, aFrameSPtr) ;
 
 }
 
