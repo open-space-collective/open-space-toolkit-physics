@@ -18,7 +18,6 @@
 #include <Library/Mathematics/Objects/Vector.hpp>
 
 #include <Library/Core/Types/String.hpp>
-#include <Library/Core/Types/Weak.hpp>
 #include <Library/Core/Types/Integer.hpp>
 #include <Library/Core/Types/Shared.hpp>
 
@@ -34,7 +33,6 @@ namespace coord
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using library::core::types::Shared ;
-using library::core::types::Weak ;
 using library::core::types::Integer ;
 using library::core::types::String ;
 
@@ -100,7 +98,7 @@ class Position
 
         Vector3d                coordinates_ ;
         Position::Unit          unit_ ;
-        Weak<const Frame>       frameWPtr_ ; // [TBR] With Transform instead, as Frame is a function of time...
+        Shared<const Frame>     frameSPtr_ ; // [TBR] With Transform instead, as Frame is a function of time...
 
 } ;
 

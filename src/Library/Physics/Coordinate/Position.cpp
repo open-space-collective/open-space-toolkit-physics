@@ -29,14 +29,14 @@ namespace coord
                                                                                 const   Shared<const Frame>&        aFrameSPtr                                  )
                                 :   coordinates_(aCoordinateSet),
                                     unit_(aUnit),
-                                    frameWPtr_(aFrameSPtr)
+                                    frameSPtr_(aFrameSPtr)
 {
 
-    // std::cout << "Position :: Position (...) | Shared<const Frame> @ " << &aFrame << " / " << aFrame.get() << " frameWPtr_ | frameWPtr_.expired = " << frameWPtr_.expired() << std::endl ;
+    // std::cout << "Position :: Position (...) | Shared<const Frame> @ " << &aFrame << " / " << aFrame.get() << " frameSPtr_ | frameSPtr_.expired = " << frameSPtr_.expired() << std::endl ;
 
     // std::cout << "Position :: Position (...) :: use_count = " << aFrame.use_count() << std::endl ;
 
-    // if (auto frameSPtr = frameWPtr_.lock())
+    // if (auto frameSPtr = frameSPtr_.lock())
     // {
     //     std::cout << "this @ " << this << " >> LOCK @ " << frameSPtr.get() << std::endl ;
     // }
@@ -45,23 +45,23 @@ namespace coord
     //     std::cout << "this @ " << this << " >> CANNOT LOCK" << std::endl ;
     // }
 
-    // std::cout << "Position :: Position (...) >> &frameWPtr_ = " << &frameWPtr_ << " ? " << frameWPtr_.expired() << " - " << frameWPtr_.use_count() << std::endl ;
+    // std::cout << "Position :: Position (...) >> &frameSPtr_ = " << &frameSPtr_ << " ? " << frameSPtr_.expired() << " - " << frameSPtr_.use_count() << std::endl ;
 
 }
 
                                 Position::Position                          (   const   Position&                   aPosition                                   )
                                 :   coordinates_(aPosition.coordinates_),
                                     unit_(aPosition.unit_),
-                                    frameWPtr_(aPosition.frameWPtr_)
+                                    frameSPtr_(aPosition.frameSPtr_)
 {
 
     // std::cout << "Position :: Position (const Position&) ..." << std::endl ;
 
-    // if (auto frameSPtr = aPosition.frameWPtr_.lock())
+    // if (auto frameSPtr = aPosition.frameSPtr_.lock())
     // {
 
     //     std::cout << "aPosition @ " << &aPosition << " >> LOCK @ " << frameSPtr.get() << std::endl ;
-    //     // frameWPtr_ = frameSPtr ;
+    //     // frameSPtr_ = frameSPtr ;
 
     //     std::cout << "Position :: Position (const Position&) :: use_count = " << frameSPtr.use_count() << std::endl ;
 
@@ -71,9 +71,9 @@ namespace coord
     //     std::cout << "aPosition @ " << &aPosition << " >> CANNOT LOCK" << std::endl ;
     // }
 
-    // std::cout << "Position :: Position (const Position&) >> &frameWPtr_ = " << &aPosition.frameWPtr_ << " ? " << aPosition.frameWPtr_.expired() << " - " << aPosition.frameWPtr_.use_count() << std::endl ;
+    // std::cout << "Position :: Position (const Position&) >> &frameSPtr_ = " << &aPosition.frameSPtr_ << " ? " << aPosition.frameSPtr_.expired() << " - " << aPosition.frameSPtr_.use_count() << std::endl ;
 
-    // if (auto frameSPtr = frameWPtr_.lock())
+    // if (auto frameSPtr = frameSPtr_.lock())
     // {
     //     std::cout << "this @ " << this << " >> LOCK @ " << frameSPtr.get() << std::endl ;
     //     std::cout << "Position :: Position (const Position&) :: use_count = " << frameSPtr.use_count() << std::endl ;
@@ -83,7 +83,7 @@ namespace coord
     //     std::cout << "this @ " << this << " >> CANNOT LOCK" << std::endl ;
     // }
 
-    // std::cout << "Position :: Position (const Position&) >> &frameWPtr_ = " << &frameWPtr_ << " ? " << frameWPtr_.expired() << " - " << frameWPtr_.use_count() << std::endl ;
+    // std::cout << "Position :: Position (const Position&) >> &frameSPtr_ = " << &frameSPtr_ << " ? " << frameSPtr_.expired() << " - " << frameSPtr_.use_count() << std::endl ;
 
 }
 
@@ -95,17 +95,7 @@ bool                            Position::operator ==                       (   
         return false ;
     }
 
-    if (auto leftFrameSPtr = frameWPtr_.lock())
-    {
-
-        if (auto rightFrameSPtr = aPosition.frameWPtr_.lock())
-        {
-            return (coordinates_ == aPosition.coordinates_) && (unit_ == aPosition.unit_) && ((*leftFrameSPtr) == (*rightFrameSPtr)) ;
-        }
-
-    }
-    
-    return false ;
+    return (coordinates_ == aPosition.coordinates_) && (unit_ == aPosition.unit_) && ((*frameSPtr_) == (*aPosition.frameSPtr_)) ;
 
 }
 
@@ -122,15 +112,7 @@ std::ostream&                   operator <<                                 (   
 
     library::core::utils::Print::Line(anOutputStream) << "Coordinates:"         << (aPosition.coordinates_.isDefined() ? aPosition.coordinates_.toString() : "Undefined") ;
     library::core::utils::Print::Line(anOutputStream) << "Unit:"                << ((aPosition.unit_ != Position::Unit::Undefined) ? Length::StringFromUnit(aPosition.unit_) : "Undefined") ;
-
-    if (auto frameSPtr = aPosition.frameWPtr_.lock())
-    {
-        library::core::utils::Print::Line(anOutputStream) << "Frame:"           << frameSPtr->getName() ;
-    }
-    else
-    {
-        library::core::utils::Print::Line(anOutputStream) << "Frame:"           << "Undefined" ;
-    }
+    library::core::utils::Print::Line(anOutputStream) << "Frame:"               << (((aPosition.frameSPtr_ != nullptr) && aPosition.frameSPtr_->isDefined()) ? aPosition.frameSPtr_->getName() : "Undefined") ;
 
     library::core::utils::Print::Footer(anOutputStream) ;
 
@@ -140,22 +122,7 @@ std::ostream&                   operator <<                                 (   
 
 bool                            Position::isDefined                         ( ) const
 {
-
-    // std::cout << "Position :: isDefined @ " << this << std::endl ;
-    // std::cout << "Position :: isDefined >> &frameWPtr_ = " << &frameWPtr_ << " ? " << frameWPtr_.expired() << " - " << frameWPtr_.use_count() << std::endl ;
-
-    if (auto frameSPtr = frameWPtr_.lock())
-    {
-        return coordinates_.isDefined() && (unit_ != Position::Unit::Undefined) && frameSPtr->isDefined() ;
-    }
-    // else
-    // {
-    //     std::cout << "CANNOT LOCK" << std::endl ;
-    // }
-    
-    
-    return false ;
-
+    return coordinates_.isDefined() && (unit_ != Position::Unit::Undefined) && (frameSPtr_ != nullptr) && frameSPtr_->isDefined() ;
 }
 
 const Vector3d&                 Position::accessCoordinates                 ( ) const
@@ -178,12 +145,7 @@ Shared<const Frame>             Position::accessFrame                       ( ) 
         throw library::core::error::runtime::Undefined("Position") ;
     }
 
-    if (auto frameSPtr = frameWPtr_.lock())
-    {
-        return frameSPtr ;
-    }
-
-    throw library::core::error::RuntimeError("Cannot access frame.") ;
+    return frameSPtr_ ;
 
 }
 
@@ -224,14 +186,7 @@ Position                        Position::inUnit                            (   
         throw library::core::error::runtime::Undefined("Position") ;
     }
 
-    if (auto frameSPtr = frameWPtr_.lock())
-    {
-        return Position(coordinates_ * Length(1.0, unit_).in(aUnit), aUnit, frameSPtr) ;
-    }
-
-    throw library::core::error::RuntimeError("Cannot access frame.") ;
-
-    return Position::Undefined() ;
+    return { coordinates_ * Length(1.0, unit_).in(aUnit), aUnit, frameSPtr_ } ;
 
 }
 
@@ -249,21 +204,7 @@ Position                        Position::inFrame                           (   
         throw library::core::error::runtime::Undefined("Position") ;
     }
 
-    if (auto frameSPtr = frameWPtr_.lock())
-    {
-
-        // if ((*frameSPtr) == (*aFrame))
-        // {
-        //     return ??? ; // Frame is a function of time... to be improved
-        // }
-
-        return Position(frameSPtr->getTransformTo(aFrameSPtr, anInstant).applyToPosition(coordinates_), unit_, aFrameSPtr) ;
-
-    }
-
-    throw library::core::error::RuntimeError("Cannot access frame.") ;
-
-    return Position::Undefined() ;
+    return { frameSPtr_->getTransformTo(aFrameSPtr, anInstant).applyToPosition(coordinates_), unit_, frameSPtr_ } ;
 
 }
 
@@ -275,14 +216,7 @@ String                          Position::toString                          (   
         throw library::core::error::runtime::Undefined("Position") ;
     }
 
-    if (auto frameSPtr = frameWPtr_.lock())
-    {
-        return String::Format("{} [{}] @ {}", (aPrecision.isDefined() ? coordinates_.toString(aPrecision) : coordinates_.toString()), Length::SymbolFromUnit(unit_), frameSPtr->getName()) ;
-    }
-
-    throw library::core::error::RuntimeError("Cannot access frame.") ;
-
-    return String::Empty() ;
+    return String::Format("{} [{}] @ {}", (aPrecision.isDefined() ? coordinates_.toString(aPrecision) : coordinates_.toString()), Length::SymbolFromUnit(unit_), frameSPtr_->getName()) ;
 
 }
 

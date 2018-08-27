@@ -29,7 +29,7 @@ namespace coord
                                                                                 const   Shared<const Frame>&        aFrameSPtr                                  )
                                 :   coordinates_(aCoordinateSet),
                                     unit_(aUnit),
-                                    frameWPtr_(aFrameSPtr)
+                                    frameSPtr_(aFrameSPtr)
 {
 
 }
@@ -42,17 +42,7 @@ bool                            Velocity::operator ==                       (   
         return false ;
     }
 
-    if (auto leftFrameSPtr = frameWPtr_.lock())
-    {
-
-        if (auto rightFrameSPtr = aVelocity.frameWPtr_.lock())
-        {
-            return (coordinates_ == aVelocity.coordinates_) && (unit_ == aVelocity.unit_) && ((*leftFrameSPtr) == (*rightFrameSPtr)) ;
-        }
-
-    }
-    
-    return false ;
+    return (coordinates_ == aVelocity.coordinates_) && (unit_ == aVelocity.unit_) && ((*frameSPtr_) == (*aVelocity.frameSPtr_)) ;
 
 }
 
@@ -69,15 +59,7 @@ std::ostream&                   operator <<                                 (   
 
     library::core::utils::Print::Line(anOutputStream) << "Coordinates:"         << (aVelocity.isDefined() ? aVelocity.coordinates_.toString() : "Undefined") ;
     library::core::utils::Print::Line(anOutputStream) << "Unit:"                << (aVelocity.isDefined() ? Velocity::StringFromUnit(aVelocity.unit_) : "Undefined") ;
-    
-    if (auto frameSPtr = aVelocity.frameWPtr_.lock())
-    {
-        library::core::utils::Print::Line(anOutputStream) << "Frame:"           << frameSPtr->getName() ;
-    }
-    else
-    {
-        library::core::utils::Print::Line(anOutputStream) << "Frame:"           << "Undefined" ;
-    }
+    library::core::utils::Print::Line(anOutputStream) << "Frame:"               << (((aVelocity.frameSPtr_ != nullptr) && aVelocity.frameSPtr_->isDefined()) ? aVelocity.frameSPtr_->getName() : "Undefined") ;
 
     library::core::utils::Print::Footer(anOutputStream) ;
 
@@ -87,14 +69,7 @@ std::ostream&                   operator <<                                 (   
 
 bool                            Velocity::isDefined                         ( ) const
 {
-    
-    if (auto frameSPtr = frameWPtr_.lock())
-    {
-        return coordinates_.isDefined() && (unit_ != Velocity::Unit::Undefined) && frameSPtr->isDefined() ;
-    }
-    
-    return false ;
-
+    return coordinates_.isDefined() && (unit_ != Velocity::Unit::Undefined) && (frameSPtr_ != nullptr) && frameSPtr_->isDefined() ;
 }
 
 const Vector3d&                 Velocity::accessCoordinates                 ( ) const
@@ -117,12 +92,7 @@ Shared<const Frame>             Velocity::accessFrame                       ( ) 
         throw library::core::error::runtime::Undefined("Velocity") ;
     }
 
-    if (auto frameSPtr = frameWPtr_.lock())
-    {
-        return frameSPtr ;
-    }
-
-    throw library::core::error::RuntimeError("Cannot access frame.") ;
+    return frameSPtr_ ;
 
 }
 
@@ -163,18 +133,9 @@ Velocity                        Velocity::inUnit                            (   
         throw library::core::error::runtime::Undefined("Velocity") ;
     }
 
-    if (auto frameSPtr = frameWPtr_.lock())
-    {
-
-        const Real conversionFactor = Derived(1.0, Velocity::DerivedUnitFromVelocityUnit(unit_)).in(Velocity::DerivedUnitFromVelocityUnit(aUnit)) ;
+    const Real conversionFactor = Derived(1.0, Velocity::DerivedUnitFromVelocityUnit(unit_)).in(Velocity::DerivedUnitFromVelocityUnit(aUnit)) ;
         
-        return Velocity(coordinates_ * conversionFactor, aUnit, frameSPtr) ;
-        
-    }
-
-    throw library::core::error::RuntimeError("Cannot access frame.") ;
-
-    return Velocity::Undefined() ;
+    return { coordinates_ * conversionFactor, aUnit, frameSPtr_ } ;
 
 }
 
@@ -193,14 +154,7 @@ Velocity                        Velocity::inFrame                           (   
         throw library::core::error::runtime::Undefined("Velocity") ;
     }
 
-    if (auto frameSPtr = frameWPtr_.lock())
-    {
-        return Velocity(frameSPtr->getTransformTo(aFrameSPtr, anInstant).applyToVelocity(aPosition.inFrame(frameSPtr, anInstant).accessCoordinates(), coordinates_), unit_, aFrameSPtr) ;
-    }
-
-    throw library::core::error::RuntimeError("Cannot access frame.") ;
-
-    return Velocity::Undefined() ;
+    return { frameSPtr_->getTransformTo(aFrameSPtr, anInstant).applyToVelocity(aPosition.inFrame(frameSPtr_, anInstant).accessCoordinates(), coordinates_), unit_, aFrameSPtr } ;
 
 }
 
@@ -212,14 +166,7 @@ String                          Velocity::toString                          (   
         throw library::core::error::runtime::Undefined("Velocity") ;
     }
 
-    if (auto frameSPtr = frameWPtr_.lock())
-    {
-        return String::Format("{} [{}] @ {}", (aPrecision.isDefined() ? coordinates_.toString(aPrecision) : coordinates_.toString()), Velocity::StringFromUnit(unit_), frameSPtr->getName()) ;
-    }
-
-    throw library::core::error::RuntimeError("Cannot access frame.") ;
-
-    return String::Empty() ;
+    return String::Format("{} [{}] @ {}", (aPrecision.isDefined() ? coordinates_.toString(aPrecision) : coordinates_.toString()), Velocity::StringFromUnit(unit_), frameSPtr_->getName()) ;
 
 }
 

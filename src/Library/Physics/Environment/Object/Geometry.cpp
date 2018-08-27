@@ -88,8 +88,8 @@ std::ostream&                   operator <<                                 (   
 
     library::core::utils::Print::Header(anOutputStream, "Geometry") ;
 
-    // library::core::utils::Print::Line(anOutputStream) << "Object:"              << (!anObject.name_.isEmpty() ? anObject.name_ : "Undefined") ;
-    // library::core::utils::Print::Line(anOutputStream) << "Frame:"               << (anObject.instant_.isDefined() ? anObject.instant_.toString() : "Undefined") ;
+    // library::core::utils::Print::Line(anOutputStream) << "Object:"              << (((aGeometry.objectUPtr_ != nullptr) && aGeometry.objectUPtr_->isDefined()) ? aGeometry.objectUPtr_->toString() : "Undefined") ;
+    library::core::utils::Print::Line(anOutputStream) << "Frame:"               << (((aGeometry.frameSPtr_ != nullptr) && aGeometry.frameSPtr_->isDefined()) ? aGeometry.frameSPtr_->getName() : "Undefined") ;
 
     library::core::utils::Print::Footer(anOutputStream) ;
 
