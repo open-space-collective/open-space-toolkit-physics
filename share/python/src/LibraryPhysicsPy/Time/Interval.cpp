@@ -21,7 +21,7 @@ inline void                     LibraryPhysicsPy_Time_Interval              ( )
     using library::physics::time::Instant ;
     using library::physics::time::Interval ;
 
-    scope in_Interval = class_<Interval>("Interval", init<Instant, Instant, Interval::Type>())
+    scope in_Interval = class_<Interval>("Interval", init<const Instant&, const Instant&, const Interval::Type&>())
 
         .def(self == self)
         .def(self != self)
