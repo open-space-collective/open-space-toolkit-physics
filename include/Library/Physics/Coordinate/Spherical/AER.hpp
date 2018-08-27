@@ -10,6 +10,7 @@
 #ifndef __Library_Physics_Coordinate_Spherical_AER__
 #define __Library_Physics_Coordinate_Spherical_AER__
 
+#include <Library/Physics/Coordinate/Position.hpp>
 #include <Library/Physics/Units/Derived/Angle.hpp>
 #include <Library/Physics/Units/Length.hpp>
 
@@ -34,6 +35,7 @@ using library::math::obj::Vector3d ;
 
 using library::physics::units::Angle ;
 using library::physics::units::Length ;
+using library::physics::coord::Position ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -72,6 +74,9 @@ class AER
         static AER              Undefined                                   ( ) ;
 
         static AER              Vector                                      (   const   Vector3d&                   aVector                                     ) ;
+
+        static AER              FromPositionToPosition                      (   const   Position&                   aFromPosition,
+                                                                                const   Position&                   aToPosition                                 ) ;
 
     private:
 

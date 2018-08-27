@@ -8,6 +8,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <Library/Physics/Coordinate/Spherical/AER.hpp>
+#include <Library/Physics/Coordinate/Frame.hpp>
 
 #include <Library/Core/Error.hpp>
 #include <Library/Core/Utilities.hpp>
@@ -117,7 +118,7 @@ Vector3d                        AER::toVector                               ( ) 
         throw library::core::error::runtime::Undefined("AER") ;
     }
     
-    return Vector3d(azimuth_.inDegrees(), elevation_.inDegrees(), range_.inMeters()) ;
+    return { azimuth_.inDegrees(), elevation_.inDegrees(), range_.inMeters() } ;
 
 }
 
@@ -147,7 +148,7 @@ String                          AER::toString                               ( ) 
 
 AER                             AER::Undefined                              ( )
 {
-    return AER(Angle::Undefined(), Angle::Undefined(), Length::Undefined()) ;
+    return { Angle::Undefined(), Angle::Undefined(), Length::Undefined() } ;
 }
 
 AER                             AER::Vector                                 (   const   Vector3d&                   aVector                                     )
@@ -158,7 +159,46 @@ AER                             AER::Vector                                 (   
         throw library::core::error::runtime::Undefined("Vector") ;
     }
     
-    return AER(Angle::Degrees(aVector.x()), Angle::Degrees(aVector.y()), Length::Meters(aVector.z())) ;
+    return { Angle::Degrees(aVector.x()), Angle::Degrees(aVector.y()), Length::Meters(aVector.z()) } ;
+
+}
+
+AER                             AER::FromPositionToPosition                 (   const   Position&                   aFromPosition,
+                                                                                const   Position&                   aToPosition                                 )
+{
+
+    if (!aFromPosition.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("From position") ;
+    }
+
+    if (!aToPosition.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("To position") ;
+    }
+
+    if ((*aFromPosition.accessFrame()) != (*aToPosition.accessFrame()))
+    {
+        throw library::core::error::RuntimeError("Positions should be given in the same frame.") ;
+    }
+
+    const Vector3d fromPositionCoordinates_REF = aFromPosition.getCoordinates() ;
+    const Vector3d toPositionCoordinates_REF = aToPosition.getCoordinates() ;
+
+    const Vector3d fromPositionToPosition_REF = toPositionCoordinates_REF - fromPositionCoordinates_REF ;
+    const Vector3d fromPositionToPositionDirection_REF = fromPositionToPosition_REF.normalized() ;
+
+    Real azimuth_rad = std::atan2(fromPositionToPositionDirection_REF.y(), fromPositionToPositionDirection_REF.x()) ;
+
+    if (azimuth_rad < 0.0)
+    {
+        azimuth_rad += 2.0 * M_PI ;
+    }
+
+    const Real elevation_rad = std::asin(-fromPositionToPositionDirection_REF.z()) ;
+    const Real range_m = fromPositionToPosition_REF.norm() ;
+
+    return { Angle::Radians(azimuth_rad), Angle::Radians(elevation_rad), Length::Meters(range_m) } ;
 
 }
 

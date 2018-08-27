@@ -70,8 +70,6 @@ class LLA
 
         Vector3d                toVector                                    ( ) const ;
 
-        Vector3d                toCartesian                                 ( ) const ;
-        
         Vector3d                toCartesian                                 (   const   Length&                     anEllipsoidEquatorialRadius,
                                                                                 const   Real&                       anEllipsoidFlattening                       ) const ;
 
