@@ -75,12 +75,33 @@ Environment&                    Environment::operator =                     (   
 
 }
 
+std::ostream&                   operator <<                                 (           std::ostream&               anOutputStream,
+                                                                                const   Environment&                anEnvironment                               )
+{
+
+    library::core::utils::Print::Header(anOutputStream, "Environment") ;
+
+    library::core::utils::Print::Line(anOutputStream) << "Instant:"             << (anEnvironment.isDefined() ? anEnvironment.instant_.toString() : "Undefined") ;
+    
+    library::core::utils::Print::Line(anOutputStream) << "Objects:" ;
+
+    for (const auto& objectSPtr : anEnvironment.objects_)
+    {
+        library::core::utils::Print::Line(anOutputStream) << (*objectSPtr) ;
+    }
+
+    library::core::utils::Print::Footer(anOutputStream) ;
+
+    return anOutputStream ;
+
+}
+
 bool                            Environment::isDefined                      ( ) const
 {
     return instant_.isDefined() ;
 }
 
-Weak<const Object>              Environment::accessObjectWithName           (   const   String&                     aName                                       ) const
+Shared<const Object>            Environment::accessObjectWithName           (   const   String&                     aName                                       ) const
 {
 
     if (!this->isDefined())
@@ -100,7 +121,7 @@ Weak<const Object>              Environment::accessObjectWithName           (   
 
     throw library::core::error::RuntimeError("No object with name [{}].", aName) ;
 
-    return Weak<const Object>() ;
+    return nullptr ;
 
 }
 

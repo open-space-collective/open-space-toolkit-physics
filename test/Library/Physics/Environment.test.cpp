@@ -294,40 +294,8 @@ TEST (Library_Physics_Environment, Test_1)
 
     Environment environment = { startInstant, objects } ;
 
-    Shared<const Earth> earthSPtr = nullptr ;
-    Shared<const Moon> moonSPtr = nullptr ;
-
-    if (auto objectSPtr = environment.accessObjectWithName("Earth").lock())
-    {
-        
-        earthSPtr = std::dynamic_pointer_cast<const Earth>(objectSPtr) ;
-
-        if (earthSPtr == nullptr)
-        {
-            FAIL() ;
-        }
-
-    }
-    else
-    {
-        FAIL() ;
-    }
-
-    if (auto objectSPtr = environment.accessObjectWithName("Moon").lock())
-    {
-        
-        moonSPtr = std::dynamic_pointer_cast<const Moon>(objectSPtr) ;
-
-        if (moonSPtr == nullptr)
-        {
-            FAIL() ;
-        }
-
-    }
-    else
-    {
-        FAIL() ;
-    }
+    Shared<const Earth> earthSPtr = std::dynamic_pointer_cast<const Earth>(environment.accessObjectWithName("Earth")) ;
+    Shared<const Moon> moonSPtr = std::dynamic_pointer_cast<const Moon>(environment.accessObjectWithName("Moon")) ;
 
     for (const auto& instant : Interval::Closed(startInstant, endInstant).generateGrid(step))
     {

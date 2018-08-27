@@ -102,18 +102,6 @@ bool                            Geometry::isDefined                         ( ) 
     return (objectUPtr_ != nullptr) && objectUPtr_->isDefined() && (frameSPtr_ != nullptr) && frameSPtr_->isDefined() ;
 }
 
-const Shared<const Frame>       Geometry::accessFrame                       ( ) const
-{
-
-    if (!this->isDefined())
-    {
-        throw library::core::error::runtime::Undefined("Geometry") ;
-    }
-
-    return frameSPtr_ ;
-
-}
-
 bool                            Geometry::intersects                        (   const   Geometry&                   aGeometry                                   ) const
 {
 
@@ -138,10 +126,41 @@ bool                            Geometry::intersects                        (   
 
 }
 
-// bool                            Geometry::contains                          (   const   Geometry&                   aGeometry                                   ) const
-// {
+bool                            Geometry::contains                          (   const   Geometry&                   aGeometry                                   ) const
+{
 
-// }
+    if (!aGeometry.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Geometry") ;
+    }
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Geometry") ;
+    }
+
+    if ((*frameSPtr_) == (*aGeometry.frameSPtr_))
+    {
+        return objectUPtr_->contains(*aGeometry.objectUPtr_) ;
+    }
+
+    throw library::core::error::runtime::ToBeImplemented("Geometry :: contains") ;
+
+    return false ;
+
+}
+
+Shared<const Frame>             Geometry::accessFrame                       ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Geometry") ;
+    }
+
+    return frameSPtr_ ;
+
+}
 
 Geometry                        Geometry::in                                (   const   Shared<const Frame>&        aFrameSPtr,
                                                                                 const   Instant&                    anInstant                                   ) const

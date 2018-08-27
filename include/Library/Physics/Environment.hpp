@@ -55,9 +55,12 @@ class Environment
 
         Environment&            operator =                                  (   const   Environment&                anEnvironment                               ) ;
 
+        friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
+                                                                                const   Environment&                anEnvironment                               ) ;
+
         bool                    isDefined                                   ( ) const ;
 
-        Weak<const Object>      accessObjectWithName                        (   const   String&                     aName                                       ) const ;
+        Shared<const Object>    accessObjectWithName                        (   const   String&                     aName                                       ) const ;
 
         Instant                 getInstant                                  ( ) const ;
 

@@ -65,8 +65,6 @@ class Geometry
 
         bool                    isDefined                                   ( ) const ;
 
-        const Shared<const Frame> accessFrame                               ( ) const ;
-
         /// @brief              Check if geometry intersects another geometry
         ///
         /// @param              [in] aGeometry A geometry
@@ -80,6 +78,8 @@ class Geometry
         /// @return             True if geometry contains another geometry
 
         bool                    contains                                    (   const   Geometry&                   aGeometry                                   ) const ;
+
+        Shared<const Frame>     accessFrame                                 ( ) const ;
 
         Geometry                in                                          (   const   Shared<const Frame>&        aFrameSPtr,
                                                                                 const   Instant&                    anInstant                                   ) const ;

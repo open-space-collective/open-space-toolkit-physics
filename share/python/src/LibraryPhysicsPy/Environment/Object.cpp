@@ -7,6 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <LibraryPhysicsPy/Environment/Object/Geometry.cpp>
+
 #include <Library/Physics/Environment/Object.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -38,6 +40,12 @@ inline void                     LibraryPhysicsPy_Environment_Object         ( )
         .def("setInstant", &Object::setInstant)
 
     ;
+
+    register_ptr_to_python<Shared<const Object>>() ;
+
+    implicitly_convertible<Shared<Object>, Shared<const Object>>() ;
+
+    LibraryPhysicsPy_Environment_Object_Geometry() ;
 
 }
 
