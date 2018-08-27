@@ -204,7 +204,7 @@ Position                        Position::inFrame                           (   
         throw library::core::error::runtime::Undefined("Position") ;
     }
 
-    return { frameSPtr_->getTransformTo(aFrameSPtr, anInstant).applyToPosition(coordinates_), unit_, frameSPtr_ } ;
+    return { frameSPtr_->getTransformTo(aFrameSPtr, anInstant).applyToPosition(coordinates_), unit_, aFrameSPtr } ;
 
 }
 
