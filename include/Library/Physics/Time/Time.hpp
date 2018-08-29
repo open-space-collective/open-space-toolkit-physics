@@ -101,7 +101,7 @@ class Time
         ///
         /// @param              [in] anOutputStream An output stream
         /// @param              [in] aTime A time
-        /// @return             An output stream
+        /// @return             A reference to output stream
 
         friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
                                                                                 const   Time&                       aTime                                       ) ;
