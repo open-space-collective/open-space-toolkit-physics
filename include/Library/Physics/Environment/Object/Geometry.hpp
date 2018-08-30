@@ -17,6 +17,10 @@
 
 #include <Library/Core/Types/Shared.hpp>
 #include <Library/Core/Types/Unique.hpp>
+#include <Library/Core/Types/Unique.hpp>
+
+#include <Library/Core/Error.hpp>
+#include <Library/Core/Utilities.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -83,6 +87,42 @@ class Geometry
 
         Geometry                in                                          (   const   Shared<const Frame>&        aFrameSPtr,
                                                                                 const   Instant&                    anInstant                                   ) const ;
+
+        /// @brief              Returns true if geometry's underlying object is of given type
+        ///
+        /// @return             True if geometry's underlying object is of given type
+
+        template <class Type>
+        bool                    is                                          ( ) const
+        {
+            return this->isDefined() && (dynamic_cast<const Type*>(objectUPtr_.get()) != nullptr) ;
+        }
+
+        /// @brief              Access eometry's underlying object
+        ///
+        /// @return             Reference to underlying object
+
+        template <class Type>
+        const Type&             as                                          ( ) const
+        {
+
+            if (!this->isDefined())
+            {
+                throw library::core::error::RuntimeError("Geometry is undefined.") ;
+            }
+
+            const Type* objectPtr = dynamic_cast<const Type*>(objectUPtr_.get()) ;
+
+            if (objectPtr == nullptr)
+            {
+                throw library::core::error::RuntimeError("Cannot convert underlying object to type.") ;
+            }
+
+            return *objectPtr ;
+
+        }
+
+        Geometry                intersectionWith                            (   const   Geometry&                   aGeometry                                   ) const ;
 
         static Geometry         Undefined                                   ( ) ;
 

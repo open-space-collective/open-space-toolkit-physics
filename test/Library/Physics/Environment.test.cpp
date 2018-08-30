@@ -10,6 +10,7 @@
 #include <Library/Physics/Environment/Objects/CelestialBodies/Moon.hpp>
 #include <Library/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
 #include <Library/Physics/Environment.hpp>
+#include <Library/Physics/Coordinate/Spherical/LLA.hpp>
 #include <Library/Physics/Time/Interval.hpp>
 #include <Library/Physics/Time/Duration.hpp>
 #include <Library/Physics/Time/Instant.hpp>
@@ -19,7 +20,15 @@
 
 #include <Library/Mathematics/Geometry/Transformations/Rotations/RotationVector.hpp>
 #include <Library/Mathematics/Geometry/Transformations/Rotations/Quaternion.hpp>
+#include <Library/Mathematics/Geometry/3D/Intersection.hpp>
+#include <Library/Mathematics/Geometry/3D/Objects/Pyramid.hpp>
+#include <Library/Mathematics/Geometry/3D/Objects/Ellipsoid.hpp>
+#include <Library/Mathematics/Geometry/3D/Objects/Polygon.hpp>
 #include <Library/Mathematics/Geometry/3D/Objects/Segment.hpp>
+#include <Library/Mathematics/Geometry/3D/Objects/LineString.hpp>
+#include <Library/Mathematics/Geometry/3D/Objects/Point.hpp>
+#include <Library/Mathematics/Geometry/2D/Objects/Polygon.hpp>
+#include <Library/Mathematics/Geometry/2D/Objects/Point.hpp>
 
 #include <Library/Core/Containers/Map.hpp>
 #include <Library/Core/Types/String.hpp>
@@ -294,8 +303,8 @@ TEST (Library_Physics_Environment, Test_1)
 
     Environment environment = { startInstant, objects } ;
 
-    Shared<const Earth> earthSPtr = std::dynamic_pointer_cast<const Earth>(environment.accessObjectWithName("Earth")) ;
-    Shared<const Moon> moonSPtr = std::dynamic_pointer_cast<const Moon>(environment.accessObjectWithName("Moon")) ;
+    const Shared<const Earth> earthSPtr = std::dynamic_pointer_cast<const Earth>(environment.accessObjectWithName("Earth")) ;
+    const Shared<const Moon> moonSPtr = std::dynamic_pointer_cast<const Moon>(environment.accessObjectWithName("Moon")) ;
 
     for (const auto& instant : Interval::Closed(startInstant, endInstant).generateGrid(step))
     {
@@ -347,6 +356,95 @@ TEST (Library_Physics_Environment, Test_1)
         std::cout << String::Format("Moon @ {}: {} --- {} --- {}", instant.toString(), moonPosition.toString(), moonVelocity.toString(), moonOrientation.toString()) << std::endl ;
 
     }
+
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+TEST (Library_Physics_Environment, Test_2)
+{
+
+    using library::core::types::Shared ;
+    using library::core::types::Weak ;
+    using library::core::types::String ;
+    using library::core::ctnr::Array ;
+
+    using Point2d = library::math::geom::d2::objects::Point ;
+    using Polygon2d = library::math::geom::d2::objects::Polygon ;
+    using library::math::geom::d3::objects::Point ;
+    using library::math::geom::d3::objects::LineString ;
+    using library::math::geom::d3::objects::Polygon ;
+    using library::math::geom::d3::objects::Ellipsoid ;
+    using library::math::geom::d3::objects::Pyramid ;
+    using library::math::geom::d3::Intersection ;
+    using library::math::geom::trf::rot::Quaternion ;
+
+    using library::physics::time::Scale ;
+    using library::physics::time::Instant ;
+    using library::physics::time::Duration ;
+    using library::physics::time::Interval ;
+    using library::physics::time::DateTime ;
+    using library::physics::coord::Position ;
+    using library::physics::coord::Velocity ;
+    using library::physics::coord::Transform ;
+    using library::physics::coord::Frame ;
+    using library::physics::coord::Axes ;
+    using library::physics::coord::spherical::LLA ;
+    using library::physics::Environment ;
+    using library::physics::env::Object ;
+    using library::physics::env::obj::celest::Earth ;
+    using library::physics::env::obj::celest::Moon ;
+
+    // Setup scene
+
+    const Instant startInstant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC) ;
+
+    const Array<Shared<Object>> objects =
+    {
+        std::make_shared<Earth>(Earth::Analytical(startInstant))
+    } ;
+
+    Environment environment = { startInstant, objects } ;
+
+    const Shared<const Earth> earthSPtr = std::dynamic_pointer_cast<const Earth>(environment.accessObjectWithName("Earth")) ;
+
+    const Object::Geometry earthGeometry = earthSPtr->getGeometryIn(Frame::ITRF()) ;
+
+    const Ellipsoid& ellipsoid = earthGeometry.as<Ellipsoid>() ;
+
+    // Setup observer
+
+    const Point apex = { 7000e3, 0.0, 0.0 } ;
+    const Polygon base = { { { { -1.0, -1.0 }, { +1.0, -1.0 }, { +1.0, +1.0 }, { -1.0, +1.0 } } }, apex - Point(1.0, 0.4, 0.4), { 0.0, 1.0, 0.0 }, { 0.0, 0.0, 1.0 } } ;
+
+    const Pyramid pyramid = { base, apex } ;
+
+    // Compute intersection
+
+    const Intersection intersection = pyramid.intersectionWith(ellipsoid, true, 32) ;
+
+    std::cout << intersection << std::endl ;
+
+    // Project intersection
+
+    const LineString intersectionLineString = intersection.as<LineString>() ;
+
+    Array<Point2d> intersectionPoints2d = Array<Point2d>::Empty() ;
+
+    for (const auto& intersectionPoint : intersectionLineString) // Implement segment and point iterators...
+    {
+
+        const LLA intersectionLla = LLA::Cartesian(intersectionPoint, Earth::EquatorialRadius, Earth::Flattening) ;
+
+        const Point2d intersectionPoint2d = { intersectionLla.getLongitude().inDegrees(), intersectionLla.getLatitude().inDegrees() } ;
+
+        intersectionPoints2d.add(intersectionPoint2d) ;
+
+    }
+
+    const Polygon2d intersectionPolygon2d = { intersectionPoints2d } ;
+
+    std::cout << intersectionPolygon2d.toString(Polygon2d::Format::WKT) << std::endl ;
 
 }
 

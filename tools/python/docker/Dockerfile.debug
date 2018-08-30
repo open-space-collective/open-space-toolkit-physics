@@ -1,31 +1,26 @@
-#!/bin/bash
-
 ################################################################################################################################################################
 
 # @project        Library/Physics
-# @file           tools/python/docker/build.sh
+# @file           tools/python/docker/Dockerfile.debug
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        TBD
 
 ################################################################################################################################################################
 
-script_directory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+ARG repository_name
+ARG project_name
 
-pushd ${script_directory} > /dev/null
+FROM ${repository_name}/${project_name}-python:latest
 
-source "../../.env"
+LABEL maintainer="lucas@loftorbital.com"
 
-docker build \
---tag="${repository_name}/${project_name}-python" \
-.
+USER root
 
-docker build \
---tag="${repository_name}/${project_name}-python-debug" \
---file="Dockerfile.debug" \
---build-arg="repository_name=${repository_name}" \
---build-arg="project_name=${project_name}" \
-.
+RUN apt-get update \
+ && apt-get install -y gdb \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
 
-popd > /dev/null
+USER $NB_UID
 
 ################################################################################################################################################################

@@ -3,7 +3,7 @@
 ################################################################################################################################################################
 
 # @project        Library/Physics
-# @file           tools/python/docker/build.sh
+# @file           tools/python/exec.sh
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        TBD
 
@@ -11,21 +11,15 @@
 
 script_directory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-pushd ${script_directory} > /dev/null
+# Setup environment
 
-source "../../.env"
+source "${script_directory}/../.env"
 
-docker build \
---tag="${repository_name}/${project_name}-python" \
-.
+# Exec Docker container
 
-docker build \
---tag="${repository_name}/${project_name}-python-debug" \
---file="Dockerfile.debug" \
---build-arg="repository_name=${repository_name}" \
---build-arg="project_name=${project_name}" \
-.
-
-popd > /dev/null
+docker exec \
+-it \
+"${container_name}-notebook" \
+/bin/bash
 
 ################################################################################################################################################################

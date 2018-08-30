@@ -10,6 +10,19 @@
 #include <Library/Physics/Environment/Object/Geometry.hpp>
 #include <Library/Physics/Coordinate/Transform.hpp>
 
+#include <Library/Mathematics/Geometry/3D/Intersection.hpp>
+#include <Library/Mathematics/Geometry/3D/Objects/Pyramid.hpp>
+#include <Library/Mathematics/Geometry/3D/Objects/Ellipsoid.hpp>
+#include <Library/Mathematics/Geometry/3D/Objects/Sphere.hpp>
+#include <Library/Mathematics/Geometry/3D/Objects/Plane.hpp>
+#include <Library/Mathematics/Geometry/3D/Objects/Polygon.hpp>
+#include <Library/Mathematics/Geometry/3D/Objects/LineString.hpp>
+#include <Library/Mathematics/Geometry/3D/Objects/Segment.hpp>
+#include <Library/Mathematics/Geometry/3D/Objects/Ray.hpp>
+#include <Library/Mathematics/Geometry/3D/Objects/Line.hpp>
+#include <Library/Mathematics/Geometry/3D/Objects/PointSet.hpp>
+#include <Library/Mathematics/Geometry/3D/Objects/Point.hpp>
+
 #include <Library/Core/Error.hpp>
 #include <Library/Core/Utilities.hpp>
 
@@ -88,7 +101,11 @@ std::ostream&                   operator <<                                 (   
 
     library::core::utils::Print::Header(anOutputStream, "Geometry") ;
 
-    // library::core::utils::Print::Line(anOutputStream) << "Object:"              << (((aGeometry.objectUPtr_ != nullptr) && aGeometry.objectUPtr_->isDefined()) ? aGeometry.objectUPtr_->toString() : "Undefined") ;
+    if (aGeometry.objectUPtr_ != nullptr)
+    {
+        anOutputStream << (*aGeometry.objectUPtr_) ;
+    }
+
     library::core::utils::Print::Line(anOutputStream) << "Frame:"               << (((aGeometry.frameSPtr_ != nullptr) && aGeometry.frameSPtr_->isDefined()) ? aGeometry.frameSPtr_->getName() : "Undefined") ;
 
     library::core::utils::Print::Footer(anOutputStream) ;
@@ -201,13 +218,72 @@ Geometry                        Geometry::in                                (   
     objectUPtr->translate(translation) ;
     objectUPtr->rotate(rotation) ;
 
-    return Geometry(objectUPtr, aFrameSPtr) ;
+    return { objectUPtr, aFrameSPtr } ;
+
+}
+
+Geometry                        Geometry::intersectionWith                  (   const   Geometry&                   aGeometry                                   ) const
+{
+
+    using library::math::geom::d3::objects::Point ;
+    using library::math::geom::d3::objects::PointSet ;
+    using library::math::geom::d3::objects::Line ;
+    using library::math::geom::d3::objects::Ray ;
+    using library::math::geom::d3::objects::Segment ;
+    using library::math::geom::d3::objects::LineString ;
+    using library::math::geom::d3::objects::Polygon ;
+    using library::math::geom::d3::objects::Plane ;
+    using library::math::geom::d3::objects::Sphere ;
+    using library::math::geom::d3::objects::Ellipsoid ;
+    using library::math::geom::d3::objects::Pyramid ;
+    using library::math::geom::d3::Intersection ;
+
+    if (!aGeometry.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Geometry") ;
+    }
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Geometry") ;
+    }
+
+    if ((*frameSPtr_) != (*aGeometry.frameSPtr_))
+    {
+        throw library::core::error::RuntimeError("Only same frame intersection supported at the moment.") ;
+    }
+
+    const Intersection intersection = objectUPtr_->intersectionWith(*aGeometry.objectUPtr_) ;
+
+    if (!intersection.isEmpty())
+    {
+
+        if (intersection.is<Point>())
+        {
+            return { intersection.as<Point>(), frameSPtr_ } ;
+        }
+
+        if (intersection.is<PointSet>())
+        {
+            return { intersection.as<PointSet>(), frameSPtr_ } ;
+        }
+
+        if (intersection.is<LineString>())
+        {
+            return { intersection.as<LineString>(), frameSPtr_ } ;
+        }
+        
+        throw library::core::error::runtime::ToBeImplemented("Intersection type is not supported.") ;
+
+    }
+
+    return Geometry::Undefined() ;
 
 }
 
 Geometry                        Geometry::Undefined                         ( )
 {
-    return Geometry(nullptr, nullptr) ;
+    return { nullptr, nullptr } ;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -3,7 +3,7 @@
 ################################################################################################################################################################
 
 # @project        Library/Physics
-# @file           tools/python/docker/build.sh
+# @file           tools/python/helpers/debug.sh
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        TBD
 
@@ -11,20 +11,13 @@
 
 script_directory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-pushd ${script_directory} > /dev/null
+pushd "${script_directory}" > /dev/null
 
-source "../../.env"
+gdb `which python`
 
-docker build \
---tag="${repository_name}/${project_name}-python" \
-.
+# gdb `which python` --args /home/jovyan/notebooks/A.py
 
-docker build \
---tag="${repository_name}/${project_name}-python-debug" \
---file="Dockerfile.debug" \
---build-arg="repository_name=${repository_name}" \
---build-arg="project_name=${project_name}" \
-.
+# set args /home/jovyan/notebooks/A.py
 
 popd > /dev/null
 
