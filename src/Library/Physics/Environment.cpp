@@ -125,6 +125,25 @@ Shared<const Object>            Environment::accessObjectWithName           (   
 
 }
 
+Shared<const Celestial>         Environment::accessCelestialObjectWithName  (   const   String&                     aName                                       ) const
+{
+
+    if (const auto objectSPtr = this->accessObjectWithName(aName))
+    {
+
+        if (const auto celestialObjectSPtr = std::dynamic_pointer_cast<const Celestial>(objectSPtr))
+        {
+            return celestialObjectSPtr ;
+        }
+
+    }
+
+    throw library::core::error::RuntimeError("No celestial object with name [{}].", aName) ;
+
+    return nullptr ;
+
+}
+
 Instant                         Environment::getInstant                     ( ) const
 {
 

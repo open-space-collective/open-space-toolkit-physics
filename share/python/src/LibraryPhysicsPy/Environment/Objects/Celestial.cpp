@@ -35,6 +35,7 @@ inline void                     LibraryPhysicsPy_Environment_Objects_Celestial (
         // .def(self != self)
 
         .def(self_ns::str(self_ns::self))
+        .def(self_ns::repr(self_ns::self))
 
         .def("isDefined", &Celestial::isDefined)
         
@@ -75,6 +76,10 @@ inline void                     LibraryPhysicsPy_Environment_Objects_Celestial (
         .value("NED", Celestial::FrameType::NED)
 
     ;
+
+    register_ptr_to_python<Shared<const Celestial>>() ;
+
+    implicitly_convertible<Shared<Celestial>, Shared<const Celestial>>() ;
 
 }
 

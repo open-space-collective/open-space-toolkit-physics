@@ -39,44 +39,57 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// TEST (Library_Physics_Environment, Constructor)
-// {
+TEST (Library_Physics_Environment, Constructor)
+{
 
-//     using library::physics::Environment ;
+    using library::physics::Environment ;
 
-//     {
+    {
 
-//         FAIL() ;
+        FAIL() ;
 
-//     }
+    }
 
-// }
+}
 
-// TEST (Library_Physics_Environment, isDefined)
-// {
+TEST (Library_Physics_Environment, isDefined)
+{
 
-//     using library::physics::Environment ;
+    using library::physics::Environment ;
 
-//     {
+    {
 
-//         FAIL() ;
+        FAIL() ;
 
-//     }
+    }
 
-// }
+}
 
-// TEST (Library_Physics_Environment, accessObjectWithName)
-// {
+TEST (Library_Physics_Environment, accessObjectWithName)
+{
 
-//     using library::physics::Environment ;
+    using library::physics::Environment ;
 
-//     {
+    {
 
-//         FAIL() ;
+        FAIL() ;
 
-//     }
+    }
 
-// }
+}
+
+TEST (Library_Physics_Environment, accessCelestialObjectWithName)
+{
+
+    using library::physics::Environment ;
+
+    {
+
+        FAIL() ;
+
+    }
+
+}
 
 TEST (Library_Physics_Environment, getInstant)
 {

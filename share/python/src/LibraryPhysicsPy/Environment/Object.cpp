@@ -27,6 +27,7 @@ inline void                     LibraryPhysicsPy_Environment_Object         ( )
     scope in_Object = class_<Object, boost::noncopyable>("Object", no_init)
 
         .def(self_ns::str(self_ns::self))
+        .def(self_ns::repr(self_ns::self))
 
         .def("isDefined", &Object::isDefined)
         

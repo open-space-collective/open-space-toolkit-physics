@@ -30,6 +30,7 @@ inline void                     LibraryPhysicsPy_Coordinate_Frame           ( )
         .def(self != self)
 
         .def(self_ns::str(self_ns::self))
+        .def(self_ns::repr(self_ns::self))
 
         .def("isDefined", &Frame::isDefined)
         .def("isQuasiInertial", &Frame::isQuasiInertial)

@@ -10,6 +10,7 @@
 #ifndef __Library_Physics_Environment__
 #define __Library_Physics_Environment__
 
+#include <Library/Physics/Environment/Objects/Celestial.hpp>
 #include <Library/Physics/Environment/Object.hpp>
 #include <Library/Physics/Time/Instant.hpp>
 
@@ -40,6 +41,7 @@ using GeometricalObject = library::math::geom::d3::Object ;
 
 using library::physics::time::Instant ;
 using library::physics::env::Object ;
+using library::physics::env::obj::Celestial ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -61,6 +63,8 @@ class Environment
         bool                    isDefined                                   ( ) const ;
 
         Shared<const Object>    accessObjectWithName                        (   const   String&                     aName                                       ) const ;
+        
+        Shared<const Celestial> accessCelestialObjectWithName               (   const   String&                     aName                                       ) const ;
 
         Instant                 getInstant                                  ( ) const ;
 

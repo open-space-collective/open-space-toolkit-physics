@@ -36,6 +36,7 @@ inline void                     LibraryPhysicsPy_Environment                ( )
         .def("isDefined", &Environment::isDefined)
 
         .def("accessObjectWithName", &Environment::accessObjectWithName)
+        .def("accessCelestialObjectWithName", &Environment::accessCelestialObjectWithName)
         .def("getInstant", &Environment::getInstant)
         .def("setInstant", &Environment::setInstant)
         .def("intersects", &Environment::intersects)
