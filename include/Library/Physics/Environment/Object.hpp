@@ -81,7 +81,7 @@ class Object
 
         const Instant&          accessInstant                               ( ) const ;
 
-        virtual Weak<const Frame> accessFrame                               ( ) const = 0 ;
+        virtual Shared<const Frame> accessFrame                             ( ) const = 0 ;
 
         const Object::Geometry& accessGeometry                              ( ) const ;
 

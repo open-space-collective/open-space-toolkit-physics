@@ -25,11 +25,6 @@ namespace frame
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                                Manager::Manager                            ( )
-{
-
-}
-
 bool                            Manager::hasFrameWithName                   (   const   String&                     aFrameName                                  ) const
 {
 
@@ -173,6 +168,15 @@ void                            Manager::addCachedTransform                 (   
     auto transformCacheFromFrameIt = transformCache_.insert({ aFromFramePtr, {} }).first ;
     auto transformCacheToFrameIt = transformCacheFromFrameIt->second.insert({ aToFramePtr, {} }).first ;
     auto transformCacheToInstantIt = transformCacheToFrameIt->second.insert({ anInstant, aTransform }).first ;
+
+}
+
+Manager&                        Manager::Get                                ( )
+{
+
+    static Manager manager ;
+
+    return manager ;
 
 }
 

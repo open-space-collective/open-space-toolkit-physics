@@ -7,6 +7,9 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <Library/Physics/Coordinate/Frame/Utilities.hpp>
+#include <Library/Physics/Coordinate/Frame/Providers/Fixed.hpp>
+#include <Library/Physics/Coordinate/Frame/Manager.hpp>
 #include <Library/Physics/Environment/Objects/Celestial.hpp>
 
 #include <Library/Core/Error.hpp>
@@ -22,6 +25,10 @@ namespace env
 {
 namespace obj
 {
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+using FrameManager = library::physics::coord::frame::Manager ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -151,7 +158,7 @@ Real                            Celestial::getJ2                            ( ) 
 
 }
 
-Weak<const Frame>               Celestial::accessFrame                      ( ) const
+Shared<const Frame>             Celestial::accessFrame                      ( ) const
 {
 
     if (!this->isDefined())
@@ -240,9 +247,41 @@ Vector3d                        Celestial::getGravitationalFieldAt          (   
 
 }
 
+Shared<const Frame>             Celestial::getNEDFrameAt                    (   const   LLA&                        aLla                                        ) const
+{
+
+    using FixedProvider = library::physics::coord::frame::provider::Fixed ;
+
+    if (!aLla.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("LLA") ;
+    }
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Celestial") ;
+    }
+
+    const String frameName = String::Format("NED {} @ {}", aLla.toString(), this->accessName()) ;
+
+    if (FrameManager::Get().hasFrameWithName(frameName))
+    {
+        return FrameManager::Get().accessFrameWithName(frameName) ;
+    }
+    
+    const Transform transform = library::physics::coord::frame::utilities::NorthEastDownTransformAt(aLla, this->getEquatorialRadius(), this->getFlattening()) ;
+
+    const Shared<const Frame> nedSPtr = std::make_shared<const Frame>(frameName, false, ephemeris_->accessFrame(), std::make_shared<const FixedProvider>(transform)) ;
+
+    FrameManager::Get().addFrame(nedSPtr) ;
+
+    return nedSPtr ;
+    
+}
+
 Celestial                       Celestial::Undefined                        ( )
 {
-    return Celestial(String::Empty(), Celestial::Type::Undefined, Derived::Undefined(), Length::Undefined(), Real::Undefined(), Real::Undefined(), nullptr, Instant::Undefined()) ;
+    return { String::Empty(), Celestial::Type::Undefined, Derived::Undefined(), Length::Undefined(), Real::Undefined(), Real::Undefined(), nullptr, Instant::Undefined() } ;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

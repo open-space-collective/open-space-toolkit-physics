@@ -98,24 +98,6 @@ class Frame
         Transform               getTransformTo                              (   const   Shared<const Frame>&        aFrame,
                                                                                 const   Instant&                    anInstant                                   ) const ;
 
-        // static Frame            Undefined                                   ( ) ;
-
-        // static Frame            ICRF                                        ( ) ;
-
-        // static Frame            GCRF                                        ( ) ;
-
-        // static Frame            EME2000                                     ( ) ;
-
-        // static Frame            TEME                                        ( ) ;
-
-        // static Frame            TEMEOfEpoch                                 (   const   Instant&                    anEpoch                                     ) ;
-
-        // static Frame            CIRF                                        ( ) ;
-
-        // static Frame            TIRF                                        ( ) ;
-
-        // static Frame            ITRF                                        ( ) ;
-
         static Shared<const Frame> Undefined                                ( ) ;
 
         static Shared<const Frame> ICRF                                     ( ) ;
@@ -140,9 +122,7 @@ class Frame
 
         String                  name_ ;
         bool                    quasiInertial_ ;
-
         Shared<const Frame>     parentFrameSPtr_ ;
-
         Shared<const Provider>  providerSPtr_ ; // Provides transform from parent to instance
 
         Uint8                   getDepth                                    ( ) const ;

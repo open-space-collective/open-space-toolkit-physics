@@ -19,8 +19,6 @@
 #include <Library/Core/Error.hpp>
 #include <Library/Core/Utilities.hpp>
 
-#include <iostream>
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 namespace library
@@ -32,11 +30,7 @@ namespace coord
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using library::physics::coord::frame::Manager ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-static Manager FrameManager ;
+using FrameManager = library::physics::coord::frame::Manager ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -261,7 +255,7 @@ Transform                       Frame::getTransformTo                       (   
         return Transform::Identity(anInstant) ;
     }
 
-    if (auto transformPtr = FrameManager.accessCachedTransform(this, aFrameSPtr.get(), anInstant))
+    if (auto transformPtr = FrameManager::Get().accessCachedTransform(this, aFrameSPtr.get(), anInstant))
     {
         return *transformPtr ;
     }
@@ -313,7 +307,7 @@ Transform                       Frame::getTransformTo                       (   
 
     // std::cout << "originToDestinationTransform = " << std::endl << originToDestinationTransform << std::endl ;
 
-    FrameManager.addCachedTransform(this, aFrameSPtr.get(), anInstant, originToDestinationTransform) ;
+    FrameManager::Get().addCachedTransform(this, aFrameSPtr.get(), anInstant, originToDestinationTransform) ;
     
     return originToDestinationTransform ;
     
@@ -334,14 +328,14 @@ Shared<const Frame>             Frame::GCRF                                 ( )
 
     using GCRFProvider = library::physics::coord::frame::provider::GCRF ;
 
-    if (FrameManager.hasFrameWithName("GCRF"))
+    if (FrameManager::Get().hasFrameWithName("GCRF"))
     {
-        return FrameManager.accessFrameWithName("GCRF") ;
+        return FrameManager::Get().accessFrameWithName("GCRF") ;
     }
 
     const Shared<const Frame> gcrfSPtr = std::make_shared<const Frame>("GCRF", true, nullptr, std::make_shared<const GCRFProvider>()) ;
 
-    FrameManager.addFrame(gcrfSPtr) ;
+    FrameManager::Get().addFrame(gcrfSPtr) ;
 
     return gcrfSPtr ;
 
@@ -357,21 +351,21 @@ Shared<const Frame>             Frame::TEME                                 ( )
 
     using TEMEProvider = library::physics::coord::frame::provider::TEME ;
 
-    if (FrameManager.hasFrameWithName("TEME"))
+    if (FrameManager::Get().hasFrameWithName("TEME"))
     {
-        return FrameManager.accessFrameWithName("TEME") ;
+        return FrameManager::Get().accessFrameWithName("TEME") ;
     }
 
-    if (!FrameManager.hasFrameWithName("ITRF"))
+    if (!FrameManager::Get().hasFrameWithName("ITRF"))
     {
-        FrameManager.addFrame(Frame::ITRF()) ;
+        FrameManager::Get().addFrame(Frame::ITRF()) ;
     }
 
-    const Shared<const Frame> itrfSPtr = FrameManager.accessFrameWithName("ITRF") ;
+    const Shared<const Frame> itrfSPtr = FrameManager::Get().accessFrameWithName("ITRF") ;
 
     const Shared<const Frame> temeFrameSPtr = std::make_shared<const Frame>("TEME", true, itrfSPtr, std::make_shared<const TEMEProvider>()) ;
 
-    FrameManager.addFrame(temeFrameSPtr) ;
+    FrameManager::Get().addFrame(temeFrameSPtr) ;
 
     return temeFrameSPtr ;
 
@@ -384,21 +378,21 @@ Shared<const Frame>             Frame::TEMEOfEpoch                          (   
 
     const String temeOfEpochFrameName = String::Format("TEMEOfEpoch @ {}", anEpoch.toString()) ;
     
-    if (FrameManager.hasFrameWithName(temeOfEpochFrameName))
+    if (FrameManager::Get().hasFrameWithName(temeOfEpochFrameName))
     {
-        return FrameManager.accessFrameWithName(temeOfEpochFrameName) ;
+        return FrameManager::Get().accessFrameWithName(temeOfEpochFrameName) ;
     }
 
-    if (!FrameManager.hasFrameWithName("GCRF"))
+    if (!FrameManager::Get().hasFrameWithName("GCRF"))
     {
-        FrameManager.addFrame(Frame::GCRF()) ;
+        FrameManager::Get().addFrame(Frame::GCRF()) ;
     }
 
-    const Shared<const Frame> gcrfSPtr = FrameManager.accessFrameWithName("GCRF") ;
+    const Shared<const Frame> gcrfSPtr = FrameManager::Get().accessFrameWithName("GCRF") ;
 
     const Shared<const Frame> temeOfEpochFrameSPtr = std::make_shared<const Frame>(temeOfEpochFrameName, true, gcrfSPtr, std::make_shared<const FixedProvider>(Frame::GCRF()->getTransformTo(Frame::TEME(), anEpoch))) ;
 
-    FrameManager.addFrame(temeOfEpochFrameSPtr) ;
+    FrameManager::Get().addFrame(temeOfEpochFrameSPtr) ;
 
     return temeOfEpochFrameSPtr ;
 
@@ -409,21 +403,21 @@ Shared<const Frame>             Frame::CIRF                                 ( )
 
     using CIRFProvider = library::physics::coord::frame::provider::CIRF ;
 
-    if (FrameManager.hasFrameWithName("CIRF"))
+    if (FrameManager::Get().hasFrameWithName("CIRF"))
     {
-        return FrameManager.accessFrameWithName("CIRF") ;
+        return FrameManager::Get().accessFrameWithName("CIRF") ;
     }
 
-    if (!FrameManager.hasFrameWithName("GCRF"))
+    if (!FrameManager::Get().hasFrameWithName("GCRF"))
     {
-        FrameManager.addFrame(Frame::GCRF()) ;
+        FrameManager::Get().addFrame(Frame::GCRF()) ;
     }
 
-    const Shared<const Frame> gcrfSPtr = FrameManager.accessFrameWithName("GCRF") ;
+    const Shared<const Frame> gcrfSPtr = FrameManager::Get().accessFrameWithName("GCRF") ;
 
     const Shared<const Frame> cirfSPtr = std::make_shared<const Frame>("CIRF", false, gcrfSPtr, std::make_shared<const CIRFProvider>()) ;
 
-    FrameManager.addFrame(cirfSPtr) ;
+    FrameManager::Get().addFrame(cirfSPtr) ;
 
     return cirfSPtr ;
 
@@ -434,21 +428,21 @@ Shared<const Frame>             Frame::TIRF                                 ( )
 
     using TIRFProvider = library::physics::coord::frame::provider::TIRF ;
 
-    if (FrameManager.hasFrameWithName("TIRF"))
+    if (FrameManager::Get().hasFrameWithName("TIRF"))
     {
-        return FrameManager.accessFrameWithName("TIRF") ;
+        return FrameManager::Get().accessFrameWithName("TIRF") ;
     }
 
-    if (!FrameManager.hasFrameWithName("CIRF"))
+    if (!FrameManager::Get().hasFrameWithName("CIRF"))
     {
-        FrameManager.addFrame(Frame::CIRF()) ;
+        FrameManager::Get().addFrame(Frame::CIRF()) ;
     }
 
-    const Shared<const Frame> cirfSPtr = FrameManager.accessFrameWithName("CIRF") ;
+    const Shared<const Frame> cirfSPtr = FrameManager::Get().accessFrameWithName("CIRF") ;
 
     const Shared<const Frame> tirfSPtr = std::make_shared<const Frame>("TIRF", false, cirfSPtr, std::make_shared<const TIRFProvider>()) ;
 
-    FrameManager.addFrame(tirfSPtr) ;
+    FrameManager::Get().addFrame(tirfSPtr) ;
 
     return tirfSPtr ;
 
@@ -459,21 +453,21 @@ Shared<const Frame>             Frame::ITRF                                 ( )
 
     using ITRFProvider = library::physics::coord::frame::provider::ITRF ;
 
-    if (FrameManager.hasFrameWithName("ITRF"))
+    if (FrameManager::Get().hasFrameWithName("ITRF"))
     {
-        return FrameManager.accessFrameWithName("ITRF") ;
+        return FrameManager::Get().accessFrameWithName("ITRF") ;
     }
 
-    if (!FrameManager.hasFrameWithName("TIRF"))
+    if (!FrameManager::Get().hasFrameWithName("TIRF"))
     {
-        FrameManager.addFrame(Frame::TIRF()) ;
+        FrameManager::Get().addFrame(Frame::TIRF()) ;
     }
 
-    const Shared<const Frame> tirfSPtr = FrameManager.accessFrameWithName("TIRF") ;
+    const Shared<const Frame> tirfSPtr = FrameManager::Get().accessFrameWithName("TIRF") ;
 
     const Shared<const Frame> itrfSPtr = std::make_shared<const Frame>("ITRF", false, tirfSPtr, std::make_shared<const ITRFProvider>()) ;
 
-    FrameManager.addFrame(itrfSPtr) ;
+    FrameManager::Get().addFrame(itrfSPtr) ;
 
     return itrfSPtr ;
 

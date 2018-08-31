@@ -15,6 +15,7 @@
 #include <Library/Physics/Coordinate/Transform.hpp>
 #include <Library/Physics/Coordinate/Frame.hpp>
 #include <Library/Physics/Coordinate/Axes.hpp>
+#include <Library/Physics/Coordinate/Spherical/LLA.hpp>
 #include <Library/Physics/Coordinate/Position.hpp>
 #include <Library/Physics/Units/Derived.hpp>
 #include <Library/Physics/Units/Length.hpp>
@@ -49,6 +50,7 @@ using library::physics::time::Instant ;
 using library::physics::units::Length ;
 using library::physics::units::Derived ;
 using library::physics::coord::Position ;
+using library::physics::coord::spherical::LLA ;
 using library::physics::coord::Axes ;
 using library::physics::coord::Frame ;
 using library::physics::coord::Transform ;
@@ -112,7 +114,7 @@ class Celestial : public Object
 
         Real                    getJ2                                       ( ) const ;
 
-        virtual Weak<const Frame> accessFrame                               ( ) const override ;
+        virtual Shared<const Frame> accessFrame                             ( ) const override ;
 
         virtual Position        getPositionIn                               (   const   Shared<const Frame>&        aFrameSPtr                                  ) const override ;
 
@@ -123,6 +125,8 @@ class Celestial : public Object
         virtual Axes            getAxesIn                                   (   const   Shared<const Frame>&        aFrameSPtr                                  ) const override ;
 
         Vector3d                getGravitationalFieldAt                     (   const   Position&                   aPosition                                   ) const ;
+
+        Shared<const Frame>     getNEDFrameAt                               (   const   LLA&                        aLla                                        ) const ;
 
         static Celestial        Undefined                                   ( ) ;
 

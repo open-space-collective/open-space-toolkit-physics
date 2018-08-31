@@ -50,7 +50,9 @@ class Manager
 
     public:
 
-                                Manager                                     ( ) ;
+                                Manager                                     (   const   Manager&                    aManager                                    ) = delete ;
+
+        Manager&                operator =                                  (   const   Manager&                    aManager                                    ) = delete ;
 
         bool                    hasFrameWithName                            (   const   String&                     aFrameName                                  ) const ;
 
@@ -71,6 +73,8 @@ class Manager
                                                                                 const   Instant&                    anInstant,
                                                                                 const   Transform&                  aTransform                                  ) ;
 
+        static Manager&         Get                                         ( ) ;
+
     private:
 
         Map<String, Shared<const Frame>> frameMap_ ;
@@ -78,6 +82,8 @@ class Manager
         Map<const Frame*, Map<const Frame*, Map<Instant, Transform>>> transformCache_ ;
 
         mutable std::mutex      mutex_ ;
+
+                                Manager                                     ( ) = default ;
 
 } ;
 
