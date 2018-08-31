@@ -213,7 +213,25 @@ Position                        Frame::getOriginIn                          (   
         throw library::core::error::runtime::Undefined("Frame") ;
     }
 
-    return Position(this->getTransformTo(aFrameSPtr, anInstant).applyToPosition(Vector3d::Zero()), Position::Unit::Meter, aFrameSPtr) ;
+    return { this->getTransformTo(aFrameSPtr, anInstant).applyToPosition(Vector3d::Zero()), Position::Unit::Meter, aFrameSPtr } ;
+
+}
+
+Velocity                        Frame::getVelocityIn                        (   const   Shared<const Frame>&        aFrameSPtr,
+                                                                                const   Instant&                    anInstant                                   ) const
+{
+
+    if (!anInstant.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Instant") ;
+    }
+
+    if ((!this->isDefined()) || (aFrameSPtr == nullptr) || (!aFrameSPtr->isDefined()))
+    {
+        throw library::core::error::runtime::Undefined("Frame") ;
+    }
+
+    return { this->getTransformTo(aFrameSPtr, anInstant).applyToVelocity(Vector3d::Zero(), Vector3d::Zero()), Velocity::Unit::MeterPerSecond, aFrameSPtr } ;
 
 }
 
@@ -237,7 +255,7 @@ Axes                            Frame::getAxesIn                            (   
     const Vector3d yAxis = transform.applyToVector(Vector3d::Y()) ;
     const Vector3d zAxis = transform.applyToVector(Vector3d::Z()) ;
 
-    return Axes(xAxis, yAxis, zAxis, aFrameSPtr) ;
+    return { xAxis, yAxis, zAxis, aFrameSPtr } ;
 
 }
 

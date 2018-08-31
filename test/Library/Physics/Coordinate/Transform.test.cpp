@@ -642,10 +642,10 @@ TEST (Library_Physics_Coordinate_Transform, GetInverse)
 
             const Transform transform = Transform::Passive(Instant::J2000(), t_A_B, v_A_B, q_B_A, w_B_A_in_B) ;
 
-            EXPECT_TRUE(transform.getInverse().getInverse().accessTranslation().isApprox(transform.accessTranslation(), 1e-14)) ;
-            EXPECT_TRUE(transform.getInverse().getInverse().accessVelocity().isApprox(transform.accessVelocity(), 1e-14)) ;
+            EXPECT_TRUE(transform.getInverse().getInverse().accessTranslation().isNear(transform.accessTranslation(), 1e-14)) ;
+            EXPECT_TRUE(transform.getInverse().getInverse().accessVelocity().isNear(transform.accessVelocity(), 1e-14)) ;
             EXPECT_TRUE(transform.getInverse().getInverse().accessOrientation().isNear(transform.accessOrientation(), Angle::Radians(1e-7))) ;
-            EXPECT_TRUE(transform.getInverse().getInverse().accessAngularVelocity().isApprox(transform.accessAngularVelocity(), 1e-14)) ;
+            EXPECT_TRUE(transform.getInverse().getInverse().accessAngularVelocity().isNear(transform.accessAngularVelocity(), 1e-14)) ;
 
         }
 
@@ -684,7 +684,7 @@ TEST (Library_Physics_Coordinate_Transform, ApplyToPosition)
 
         const Vector3d x_B = transform_B_A.applyToPosition(x_A) ;
 
-        EXPECT_TRUE(x_B.isApprox(x_A, 1e-14)) ;
+        EXPECT_TRUE(x_B.isNear(x_A, 1e-14)) ;
 
     }
 
@@ -706,7 +706,7 @@ TEST (Library_Physics_Coordinate_Transform, ApplyToPosition)
 
         const Vector3d x_B = transform_B_A.applyToPosition(x_A) ;
 
-        EXPECT_TRUE(x_B.isApprox(Vector3d(+0.0, +0.0, +0.0), 1e-14)) ;
+        EXPECT_TRUE(x_B.isNear(Vector3d(+0.0, +0.0, +0.0), 1e-14)) ;
 
     }
 
@@ -728,7 +728,7 @@ TEST (Library_Physics_Coordinate_Transform, ApplyToPosition)
 
         const Vector3d x_B = transform_B_A.applyToPosition(x_A) ;
 
-        EXPECT_TRUE(x_B.isApprox(Vector3d(+1.0, +0.0, +0.0), 1e-14)) ;
+        EXPECT_TRUE(x_B.isNear(Vector3d(+1.0, +0.0, +0.0), 1e-14)) ;
 
     }
 
@@ -750,7 +750,7 @@ TEST (Library_Physics_Coordinate_Transform, ApplyToPosition)
 
         const Vector3d x_B = transform_B_A.applyToPosition(x_A) ;
 
-        EXPECT_TRUE(x_B.isApprox(Vector3d(+1.0, +0.0, +0.0), 1e-14)) ;
+        EXPECT_TRUE(x_B.isNear(Vector3d(+1.0, +0.0, +0.0), 1e-14)) ;
 
     }
 
@@ -772,7 +772,7 @@ TEST (Library_Physics_Coordinate_Transform, ApplyToPosition)
 
         const Vector3d x_B = transform_B_A.applyToPosition(x_A) ;
 
-        EXPECT_TRUE(x_B.isApprox(Vector3d(+0.0, +0.0, +0.0), 1e-14)) ;
+        EXPECT_TRUE(x_B.isNear(Vector3d(+0.0, +0.0, +0.0), 1e-14)) ;
 
     }
 
@@ -794,7 +794,7 @@ TEST (Library_Physics_Coordinate_Transform, ApplyToPosition)
 
         const Vector3d x_B = transform_B_A.applyToPosition(x_A) ;
 
-        EXPECT_TRUE(x_B.isApprox(Vector3d(+1.0, +0.0, +0.0), 1e-14)) ;
+        EXPECT_TRUE(x_B.isNear(Vector3d(+1.0, +0.0, +0.0), 1e-14)) ;
 
     }
 
@@ -816,7 +816,7 @@ TEST (Library_Physics_Coordinate_Transform, ApplyToPosition)
 
         const Vector3d x_B = transform_B_A.applyToPosition(x_A) ;
 
-        EXPECT_TRUE(x_B.isApprox(Vector3d(+1.0, +0.0, +0.0), 1e-14)) ;
+        EXPECT_TRUE(x_B.isNear(Vector3d(+1.0, +0.0, +0.0), 1e-14)) ;
 
     }
 
@@ -848,7 +848,7 @@ TEST (Library_Physics_Coordinate_Transform, ApplyToVelocity)
 
         const Vector3d v_B = transform_B_A.applyToVelocity(x_A, v_A) ;
 
-        EXPECT_TRUE(v_B.isApprox(v_A, 1e-14)) ;
+        EXPECT_TRUE(v_B.isNear(v_A, 1e-14)) ;
 
     }
 
@@ -871,7 +871,7 @@ TEST (Library_Physics_Coordinate_Transform, ApplyToVelocity)
 
         const Vector3d v_B = transform_B_A.applyToVelocity(x_A, v_A) ;
 
-        EXPECT_TRUE(v_B.isApprox(Vector3d(+0.0, +1.0, +0.0), 1e-14)) ;
+        EXPECT_TRUE(v_B.isNear(Vector3d(+0.0, +1.0, +0.0), 1e-14)) ;
 
     }
 
@@ -894,7 +894,7 @@ TEST (Library_Physics_Coordinate_Transform, ApplyToVelocity)
 
         const Vector3d v_B = transform_B_A.applyToVelocity(x_A, v_A) ;
 
-        EXPECT_TRUE(v_B.isApprox(Vector3d(+1.0, +0.0, +0.0), 1e-14)) ;
+        EXPECT_TRUE(v_B.isNear(Vector3d(+1.0, +0.0, +0.0), 1e-14)) ;
 
     }
 
@@ -917,7 +917,7 @@ TEST (Library_Physics_Coordinate_Transform, ApplyToVelocity)
 
         const Vector3d v_B = transform_B_A.applyToVelocity(x_A, v_A) ;
 
-        EXPECT_TRUE(v_B.isApprox(Vector3d(+1.0, +0.0, +0.0), 1e-14)) ;
+        EXPECT_TRUE(v_B.isNear(Vector3d(+1.0, +0.0, +0.0), 1e-14)) ;
 
     }
 
@@ -940,7 +940,7 @@ TEST (Library_Physics_Coordinate_Transform, ApplyToVelocity)
 
         const Vector3d v_B = transform_B_A.applyToVelocity(x_A, v_A) ;
 
-        EXPECT_TRUE(v_B.isApprox(Vector3d(+0.0, +1.0, +0.0), 1e-14)) ;
+        EXPECT_TRUE(v_B.isNear(Vector3d(+0.0, +1.0, +0.0), 1e-14)) ;
 
     }
 
@@ -963,7 +963,7 @@ TEST (Library_Physics_Coordinate_Transform, ApplyToVelocity)
 
         const Vector3d v_B = transform_B_A.applyToVelocity(x_A, v_A) ;
 
-        EXPECT_TRUE(v_B.isApprox(Vector3d(+1.0, +0.0, +0.0), 1e-14)) ;
+        EXPECT_TRUE(v_B.isNear(Vector3d(+1.0, +0.0, +0.0), 1e-14)) ;
 
     }
 
@@ -986,7 +986,7 @@ TEST (Library_Physics_Coordinate_Transform, ApplyToVelocity)
 
         const Vector3d v_B = transform_B_A.applyToVelocity(x_A, v_A) ;
 
-        EXPECT_TRUE(v_B.isApprox(Vector3d(+1.0, -1.0, +0.0), 1e-14)) ;
+        EXPECT_TRUE(v_B.isNear(Vector3d(+1.0, -1.0, +0.0), 1e-14)) ;
 
     }
 
@@ -1017,7 +1017,7 @@ TEST (Library_Physics_Coordinate_Transform, ApplyToVector)
 
         const Vector3d v_B = transform_B_A.applyToVector(v_A) ;
 
-        EXPECT_TRUE(v_B.isApprox(v_A, 1e-14)) ;
+        EXPECT_TRUE(v_B.isNear(v_A, 1e-14)) ;
 
     }
 
@@ -1039,7 +1039,7 @@ TEST (Library_Physics_Coordinate_Transform, ApplyToVector)
 
         const Vector3d v_B = transform_B_A.applyToVector(v_A) ;
 
-        EXPECT_TRUE(v_B.isApprox(v_A, 1e-14)) ;
+        EXPECT_TRUE(v_B.isNear(v_A, 1e-14)) ;
 
     }
 
@@ -1061,7 +1061,7 @@ TEST (Library_Physics_Coordinate_Transform, ApplyToVector)
 
         const Vector3d v_B = transform_B_A.applyToVector(v_A) ;
 
-        EXPECT_TRUE(v_B.isApprox(Vector3d(+1.0, +0.0, +0.0), 1e-14)) ;
+        EXPECT_TRUE(v_B.isNear(Vector3d(+1.0, +0.0, +0.0), 1e-14)) ;
 
     }
 
@@ -1083,7 +1083,7 @@ TEST (Library_Physics_Coordinate_Transform, ApplyToVector)
 
         const Vector3d v_B = transform_B_A.applyToVector(v_A) ;
 
-        EXPECT_TRUE(v_B.isApprox(Vector3d(+1.0, +0.0, +0.0), 1e-14)) ;
+        EXPECT_TRUE(v_B.isNear(Vector3d(+1.0, +0.0, +0.0), 1e-14)) ;
 
     }
 
@@ -1105,7 +1105,7 @@ TEST (Library_Physics_Coordinate_Transform, ApplyToVector)
 
         const Vector3d v_B = transform_B_A.applyToVector(v_A) ;
 
-        EXPECT_TRUE(v_B.isApprox(Vector3d(+0.0, +2.0, +0.0), 1e-14)) ;
+        EXPECT_TRUE(v_B.isNear(Vector3d(+0.0, +2.0, +0.0), 1e-14)) ;
 
     }
 
@@ -1127,7 +1127,7 @@ TEST (Library_Physics_Coordinate_Transform, ApplyToVector)
 
         const Vector3d v_B = transform_B_A.applyToVector(v_A) ;
 
-        EXPECT_TRUE(v_B.isApprox(Vector3d(+2.0, +0.0, +0.0), 1e-14)) ;
+        EXPECT_TRUE(v_B.isNear(Vector3d(+2.0, +0.0, +0.0), 1e-14)) ;
 
     }
 
@@ -1149,7 +1149,7 @@ TEST (Library_Physics_Coordinate_Transform, ApplyToVector)
 
         const Vector3d v_B = transform_B_A.applyToVector(v_A) ;
 
-        EXPECT_TRUE(v_B.isApprox(Vector3d(+2.0, +0.0, +0.0), 1e-14)) ;
+        EXPECT_TRUE(v_B.isNear(Vector3d(+2.0, +0.0, +0.0), 1e-14)) ;
 
     }
     

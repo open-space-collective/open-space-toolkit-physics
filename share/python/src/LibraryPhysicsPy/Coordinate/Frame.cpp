@@ -40,6 +40,7 @@ inline void                     LibraryPhysicsPy_Coordinate_Frame           ( )
         .def("accessProvider", &Frame::accessProvider)
         .def("getName", &Frame::getName)
         .def("getOriginIn", &Frame::getOriginIn)
+        .def("getVelocityIn", &Frame::getVelocityIn)
         .def("getAxesIn", &Frame::getAxesIn)
         .def("getTransformTo", &Frame::getTransformTo)
         

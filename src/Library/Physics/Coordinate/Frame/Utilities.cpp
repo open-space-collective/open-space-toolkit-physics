@@ -35,7 +35,7 @@ Transform                       NorthEastDownTransformAt                    (   
     using library::math::geom::trf::rot::Quaternion ;
     using library::math::geom::trf::rot::RotationMatrix ;
 
-    const Vector3d x_NED_ECEF = aLLA.toCartesian(anEllipsoidEquatorialRadius, anEllipsoidFlattening) ;
+    const Vector3d x_NED_ECEF = - aLLA.toCartesian(anEllipsoidEquatorialRadius, anEllipsoidFlattening) ;
     const Vector3d v_NED_ECEF = { 0.0, 0.0, 0.0 } ;
 
     const Real latitude_rad	= aLLA.getLatitude().inRadians() ;

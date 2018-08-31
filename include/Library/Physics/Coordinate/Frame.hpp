@@ -13,6 +13,7 @@
 #include <Library/Physics/Coordinate/Frame/Provider.hpp>
 #include <Library/Physics/Coordinate/Transform.hpp>
 #include <Library/Physics/Coordinate/Axes.hpp>
+#include <Library/Physics/Coordinate/Velocity.hpp>
 #include <Library/Physics/Coordinate/Position.hpp>
 
 #include <Library/Mathematics/Objects/Vector.hpp>
@@ -41,6 +42,7 @@ using library::core::types::String ;
 using library::math::obj::Vector3d ;
 
 using library::physics::coord::Position ;
+using library::physics::coord::Velocity ;
 using library::physics::coord::Axes ;
 using library::physics::coord::Transform ;
 using library::physics::coord::frame::Provider ;
@@ -90,6 +92,9 @@ class Frame
         String                  getName                                     ( ) const ;
 
         Position                getOriginIn                                 (   const   Shared<const Frame>&        aFrame,
+                                                                                const   Instant&                    anInstant                                   ) const ;
+
+        Velocity                getVelocityIn                               (   const   Shared<const Frame>&        aFrame,
                                                                                 const   Instant&                    anInstant                                   ) const ;
 
         Axes                    getAxesIn                                   (   const   Shared<const Frame>&        aFrame,

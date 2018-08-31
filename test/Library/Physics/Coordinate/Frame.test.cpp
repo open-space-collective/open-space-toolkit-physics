@@ -97,7 +97,7 @@
         
 //             const Vector3d x_GCRF = customFrame.getTransformTo(Frame::GCRF(), Instant::J2000()).applyToPosition(x_CUSTOM) ;
             
-//             EXPECT_TRUE(x_GCRF.isApprox(Vector3d(+2.0, +0.0, +0.0), Real::Epsilon())) ;
+//             EXPECT_TRUE(x_GCRF.isNear(Vector3d(+2.0, +0.0, +0.0), Real::Epsilon())) ;
 
 //         }
 
@@ -110,7 +110,7 @@
 
 //             const Vector3d v_GCRF = customFrame.getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVelocity(x_CUSTOM, v_CUSTOM) ;
             
-//             EXPECT_TRUE(v_GCRF.isApprox(Vector3d(+1.0, +0.0, +0.0), Real::Epsilon())) ;
+//             EXPECT_TRUE(v_GCRF.isNear(Vector3d(+1.0, +0.0, +0.0), Real::Epsilon())) ;
 
 //         }
 
@@ -122,7 +122,7 @@
 
 //             const Vector3d u_GCRF = customFrame.getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVector(u_CUSTOM) ;
 
-//             EXPECT_TRUE(u_GCRF.isApprox(Vector3d(+1.0, +0.0, +0.0), Real::Epsilon())) ;
+//             EXPECT_TRUE(u_GCRF.isNear(Vector3d(+1.0, +0.0, +0.0), Real::Epsilon())) ;
 
 //         }
 
@@ -151,7 +151,7 @@
         
 //             const Vector3d x_GCRF = customFrame.getTransformTo(Frame::GCRF(), Instant::J2000()).applyToPosition(x_CUSTOM) ;
             
-//             EXPECT_TRUE(x_GCRF.isApprox(Vector3d(+2.0, +0.0, +0.0), Real::Epsilon())) ;
+//             EXPECT_TRUE(x_GCRF.isNear(Vector3d(+2.0, +0.0, +0.0), Real::Epsilon())) ;
 
 //         }
 
@@ -164,7 +164,7 @@
 
 //             const Vector3d v_GCRF = customFrame.getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVelocity(x_CUSTOM, v_CUSTOM) ;
             
-//             EXPECT_TRUE(v_GCRF.isApprox(Vector3d(+2.0, +1.0, +0.0), Real::Epsilon())) ;
+//             EXPECT_TRUE(v_GCRF.isNear(Vector3d(+2.0, +1.0, +0.0), Real::Epsilon())) ;
 
 //         }
 
@@ -176,7 +176,7 @@
 
 //             const Vector3d u_GCRF = customFrame.getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVector(u_CUSTOM) ;
 
-//             EXPECT_TRUE(u_GCRF.isApprox(Vector3d(+1.0, +0.0, +0.0), Real::Epsilon())) ;
+//             EXPECT_TRUE(u_GCRF.isNear(Vector3d(+1.0, +0.0, +0.0), Real::Epsilon())) ;
 
 //         }
 
@@ -205,7 +205,7 @@
         
 //             const Vector3d x_GCRF = customFrame.getTransformTo(Frame::GCRF(), Instant::J2000()).applyToPosition(x_CUSTOM) ;
             
-//             EXPECT_TRUE(x_GCRF.isApprox(Vector3d(+0.0, +1.0, +0.0), Real::Epsilon())) ;
+//             EXPECT_TRUE(x_GCRF.isNear(Vector3d(+0.0, +1.0, +0.0), Real::Epsilon())) ;
 
 //         }
 
@@ -218,7 +218,7 @@
 
 //             const Vector3d v_GCRF = customFrame.getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVelocity(x_CUSTOM, v_CUSTOM) ;
             
-//             EXPECT_TRUE(v_GCRF.isApprox(Vector3d(+0.0, +1.0, +0.0), Real::Epsilon())) ;
+//             EXPECT_TRUE(v_GCRF.isNear(Vector3d(+0.0, +1.0, +0.0), Real::Epsilon())) ;
 
 //         }
 
@@ -230,7 +230,7 @@
 
 //             const Vector3d u_GCRF = customFrame.getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVector(u_CUSTOM) ;
 
-//             EXPECT_TRUE(u_GCRF.isApprox(Vector3d(+0.0, +1.0, +0.0), Real::Epsilon())) ;
+//             EXPECT_TRUE(u_GCRF.isNear(Vector3d(+0.0, +1.0, +0.0), Real::Epsilon())) ;
 
 //         }
 
@@ -259,7 +259,7 @@
         
 //             const Vector3d x_GCRF = customFrame.getTransformTo(Frame::GCRF(), Instant::J2000()).applyToPosition(x_CUSTOM) ;
             
-//             EXPECT_TRUE(x_GCRF.isApprox(Vector3d(+1.0, +0.0, +0.0), Real::Epsilon())) ;
+//             EXPECT_TRUE(x_GCRF.isNear(Vector3d(+1.0, +0.0, +0.0), Real::Epsilon())) ;
 
 //         }
 
@@ -272,7 +272,7 @@
 
 //             const Vector3d v_GCRF = customFrame.getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVelocity(x_CUSTOM, v_CUSTOM) ;
             
-//             EXPECT_TRUE(v_GCRF.isApprox(Vector3d(+1.0, +1.0, +0.0), Real::Epsilon())) ;
+//             EXPECT_TRUE(v_GCRF.isNear(Vector3d(+1.0, +1.0, +0.0), Real::Epsilon())) ;
 
 //         }
 
@@ -284,7 +284,7 @@
 
 //             const Vector3d u_GCRF = customFrame.getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVector(u_CUSTOM) ;
 
-//             EXPECT_TRUE(u_GCRF.isApprox(Vector3d(+1.0, +0.0, +0.0), Real::Epsilon())) ;
+//             EXPECT_TRUE(u_GCRF.isNear(Vector3d(+1.0, +0.0, +0.0), Real::Epsilon())) ;
 
 //         }
 
@@ -311,7 +311,7 @@
         
 //     //         const Vector3d x_GCRF = customFrame.getTransformTo(Frame::GCRF(), Instant::J2000()).applyToPosition(x_CUSTOM) ;
             
-//     //         EXPECT_TRUE(x_GCRF.isApprox(Vector3d(+1.0, 0.0, 0.0), Real::Epsilon())) ;
+//     //         EXPECT_TRUE(x_GCRF.isNear(Vector3d(+1.0, 0.0, 0.0), Real::Epsilon())) ;
 
 //     //     }
 
@@ -324,7 +324,7 @@
 
 //     //         const Vector3d v_GCRF = customFrame.getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVelocity(x_CUSTOM, v_CUSTOM) ;
             
-//     //         EXPECT_TRUE(v_GCRF.isApprox(Vector3d(+1.0, 0.0, 0.0), Real::Epsilon())) ;
+//     //         EXPECT_TRUE(v_GCRF.isNear(Vector3d(+1.0, 0.0, 0.0), Real::Epsilon())) ;
 
 //     //     }
 
@@ -336,7 +336,7 @@
 
 //     //         const Vector3d v_GCRF = customFrame.getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVector(v_CUSTOM) ;
 
-//     //         EXPECT_TRUE(v_GCRF.isApprox(Vector3d(+1.0, 0.0, 0.0), Real::Epsilon())) ;
+//     //         EXPECT_TRUE(v_GCRF.isNear(Vector3d(+1.0, 0.0, 0.0), Real::Epsilon())) ;
 
 //     //     }
 
@@ -363,7 +363,7 @@
         
 //     //         const Vector3d x_GCRF = customFrame.getTransformTo(Frame::GCRF(), Instant::J2000()).applyToPosition(x_CUSTOM) ;
             
-//     //         EXPECT_TRUE(x_GCRF.isApprox(Vector3d(+1.0, 0.0, 0.0), Real::Epsilon())) ;
+//     //         EXPECT_TRUE(x_GCRF.isNear(Vector3d(+1.0, 0.0, 0.0), Real::Epsilon())) ;
 
 //     //     }
 
@@ -376,7 +376,7 @@
 
 //     //         const Vector3d v_GCRF = customFrame.getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVelocity(x_CUSTOM, v_CUSTOM) ;
             
-//     //         EXPECT_TRUE(v_GCRF.isApprox(Vector3d(+1.0, 0.0, 0.0), Real::Epsilon())) ;
+//     //         EXPECT_TRUE(v_GCRF.isNear(Vector3d(+1.0, 0.0, 0.0), Real::Epsilon())) ;
 
 //     //     }
 
@@ -388,7 +388,7 @@
 
 //     //         const Vector3d v_GCRF = customFrame.getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVector(v_CUSTOM) ;
 
-//     //         EXPECT_TRUE(v_GCRF.isApprox(Vector3d(+1.0, 0.0, 0.0), Real::Epsilon())) ;
+//     //         EXPECT_TRUE(v_GCRF.isNear(Vector3d(+1.0, 0.0, 0.0), Real::Epsilon())) ;
 
 //     //     }
 
@@ -523,6 +523,19 @@
 // // }
 
 // // TEST (Library_Physics_Coordinate_Frame, GetOriginIn)
+// // {
+
+// //     using library::physics::coord::Frame ;
+    
+// //     {
+
+// //         FAIL() ;
+
+// //     }
+
+// // }
+
+// // TEST (Library_Physics_Coordinate_Frame, GetVelocityIn)
 // // {
 
 // //     using library::physics::coord::Frame ;
