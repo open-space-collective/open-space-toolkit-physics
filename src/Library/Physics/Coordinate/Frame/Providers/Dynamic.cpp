@@ -1,13 +1,13 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Library/Physics
-/// @file           Library/Physics/Coordinate/Frame/Providers/Fixed.cpp
+/// @file           Library/Physics/Coordinate/Frame/Providers/Dynamic.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        TBD
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <Library/Physics/Coordinate/Frame/Providers/Fixed.hpp>
+#include <Library/Physics/Coordinate/Frame/Providers/Dynamic.hpp>
 
 #include <Library/Core/Error.hpp>
 #include <Library/Core/Utilities.hpp>
@@ -27,36 +27,36 @@ namespace provider
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                                Fixed::Fixed                                (   const   Transform&                  aTransform                                  )
-                                :   transform_(aTransform)
+                                Dynamic::Dynamic                            (   const   Dynamic::Generator&         aGenerator                                  )
+                                :   generator_(aGenerator)
 {
 
 }
 
-                                Fixed::~Fixed                               ( )
+                                Dynamic::~Dynamic                           ( )
 {
 
 }
 
-Fixed*                          Fixed::clone                                ( ) const
+Dynamic*                        Dynamic::clone                              ( ) const
 {
-    return new Fixed(*this) ;
+    return new Dynamic(*this) ;
 }
 
-bool                            Fixed::isDefined                            ( ) const
+bool                            Dynamic::isDefined                          ( ) const
 {
-    return transform_.isDefined() ;
+    return !!generator_ ;
 }
 
-Transform                       Fixed::getTransformAt                       (   const   Instant&                    anInstant                                   ) const
+Transform                       Dynamic::getTransformAt                     (   const   Instant&                    anInstant                                   ) const
 {
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Fixed provider") ;
+        throw library::core::error::runtime::Undefined("Dynamic provider") ;
     }
     
-    return Transform(anInstant, transform_.accessTranslation(), transform_.accessVelocity(), transform_.accessOrientation(), transform_.accessAngularVelocity(), Transform::Type::Passive) ;
+    return generator_(anInstant) ;
 
 }
 

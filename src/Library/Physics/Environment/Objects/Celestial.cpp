@@ -28,10 +28,6 @@ namespace obj
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using FrameManager = library::physics::coord::frame::Manager ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
                                 Celestial::Celestial                        (   const   String&                     aName,
                                                                                 const   Celestial::Type&            aType,
                                                                                 const   Derived&                    aGravitationalConstant,
@@ -247,9 +243,11 @@ Vector3d                        Celestial::getGravitationalFieldAt          (   
 
 }
 
-Shared<const Frame>             Celestial::getNEDFrameAt                    (   const   LLA&                        aLla                                        ) const
+Shared<const Frame>             Celestial::getFrameAt                       (   const   LLA&                        aLla,
+                                                                                const   Celestial::FrameType&       aFrameType                                  ) const
 {
 
+    using FrameManager = library::physics::coord::frame::Manager ;
     using FixedProvider = library::physics::coord::frame::provider::Fixed ;
 
     if (!aLla.isDefined())
@@ -262,26 +260,64 @@ Shared<const Frame>             Celestial::getNEDFrameAt                    (   
         throw library::core::error::runtime::Undefined("Celestial") ;
     }
 
-    const String frameName = String::Format("NED {} @ {}", aLla.toString(), this->accessName()) ;
-
-    if (FrameManager::Get().hasFrameWithName(frameName))
+    switch (aFrameType)
     {
-        return FrameManager::Get().accessFrameWithName(frameName) ;
+
+        case Celestial::FrameType::NED:
+        {
+
+            const String frameName = String::Format("NED {} @ {}", aLla.toString(), this->accessName()) ;
+
+            if (FrameManager::Get().hasFrameWithName(frameName))
+            {
+                return FrameManager::Get().accessFrameWithName(frameName) ;
+            }
+            
+            const Transform transform = library::physics::coord::frame::utilities::NorthEastDownTransformAt(aLla, this->getEquatorialRadius(), this->getFlattening()) ;
+
+            const Shared<const Frame> nedSPtr = std::make_shared<const Frame>(frameName, false, ephemeris_->accessFrame(), std::make_shared<const FixedProvider>(transform)) ;
+
+            FrameManager::Get().addFrame(nedSPtr) ;
+
+            return nedSPtr ;
+
+        }
+
+        default:
+            throw library::core::error::runtime::Wrong("Frame type") ;
+            break ;
+
     }
-    
-    const Transform transform = library::physics::coord::frame::utilities::NorthEastDownTransformAt(aLla, this->getEquatorialRadius(), this->getFlattening()) ;
 
-    const Shared<const Frame> nedSPtr = std::make_shared<const Frame>(frameName, false, ephemeris_->accessFrame(), std::make_shared<const FixedProvider>(transform)) ;
-
-    FrameManager::Get().addFrame(nedSPtr) ;
-
-    return nedSPtr ;
+    return nullptr ;
     
 }
 
 Celestial                       Celestial::Undefined                        ( )
 {
     return { String::Empty(), Celestial::Type::Undefined, Derived::Undefined(), Length::Undefined(), Real::Undefined(), Real::Undefined(), nullptr, Instant::Undefined() } ;
+}
+
+String                          Celestial::StringFromFrameType              (   const   Celestial::FrameType&       aFrameType                                  )
+{
+
+    switch (aFrameType)
+    {
+
+        case Celestial::FrameType::Undefined:
+            return "Undefined" ;
+
+        case Celestial::FrameType::NED:
+            return "NED" ;
+
+        default:
+            throw library::core::error::runtime::Wrong("Frame type") ;
+            break ;
+
+    }
+
+    return String::Empty() ;
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

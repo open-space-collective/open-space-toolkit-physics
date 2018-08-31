@@ -49,8 +49,30 @@ inline void                     LibraryPhysicsPy_Environment_Objects_Celestial (
         .def("getTransformTo", &Celestial::getTransformTo)
         .def("getAxesIn", &Celestial::getAxesIn)
         .def("getGravitationalFieldAt", &Celestial::getGravitationalFieldAt)
+        .def("getFrameAt", &Celestial::getFrameAt)
         
         .def("Undefined", &Celestial::Undefined).staticmethod("Undefined")
+
+        .def("StringFromFrameType", &Celestial::StringFromFrameType).staticmethod("StringFromFrameType")
+
+    ;
+
+    enum_<Celestial::Type>("Type")
+
+        .value("Undefined", Celestial::Type::Undefined)
+        .value("Sun", Celestial::Type::Sun)
+        .value("Mercury", Celestial::Type::Mercury)
+        .value("Venus", Celestial::Type::Venus)
+        .value("Earth", Celestial::Type::Earth)
+        .value("Moon", Celestial::Type::Moon)
+        .value("Mars", Celestial::Type::Mars)
+
+    ;
+
+    enum_<Celestial::FrameType>("FrameType")
+
+        .value("Undefined", Celestial::FrameType::Undefined)
+        .value("NED", Celestial::FrameType::NED)
 
     ;
 

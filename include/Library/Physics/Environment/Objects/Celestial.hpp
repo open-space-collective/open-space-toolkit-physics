@@ -23,6 +23,7 @@
 
 #include <Library/Mathematics/Objects/Vector.hpp>
 
+#include <Library/Core/Types/String.hpp>
 #include <Library/Core/Types/Real.hpp>
 #include <Library/Core/Types/Weak.hpp>
 #include <Library/Core/Types/Shared.hpp>
@@ -43,6 +44,7 @@ namespace obj
 using library::core::types::Shared ;
 using library::core::types::Weak ;
 using library::core::types::Real ;
+using library::core::types::String ;
 
 using library::math::obj::Vector3d ;
 
@@ -74,6 +76,14 @@ class Celestial : public Object
             Earth,
             Moon,
             Mars
+
+        } ;
+
+        enum class FrameType
+        {
+
+            Undefined,          ///< Undefined frame
+            NED,                ///< North-East-Down (NED) frame
 
         } ;
 
@@ -126,9 +136,12 @@ class Celestial : public Object
 
         Vector3d                getGravitationalFieldAt                     (   const   Position&                   aPosition                                   ) const ;
 
-        Shared<const Frame>     getNEDFrameAt                               (   const   LLA&                        aLla                                        ) const ;
+        Shared<const Frame>     getFrameAt                                  (   const   LLA&                        aLla,
+                                                                                const   Celestial::FrameType&       aFrameType                                  ) const ;
 
         static Celestial        Undefined                                   ( ) ;
+
+        static String           StringFromFrameType                         (   const   Celestial::FrameType&       aFrameType                                  ) ;
 
     private:
 
