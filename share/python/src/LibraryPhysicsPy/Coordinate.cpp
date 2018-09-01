@@ -7,6 +7,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <LibraryPhysicsPy/Coordinate/Axes.cpp>
 #include <LibraryPhysicsPy/Coordinate/Transform.cpp>
 #include <LibraryPhysicsPy/Coordinate/Frame.cpp>
 #include <LibraryPhysicsPy/Coordinate/Velocity.cpp>
@@ -29,6 +30,7 @@ inline void                     LibraryPhysicsPy_Coordinate                     
     LibraryPhysicsPy_Coordinate_Velocity() ;
     LibraryPhysicsPy_Coordinate_Frame() ;
     LibraryPhysicsPy_Coordinate_Transform() ;
+    LibraryPhysicsPy_Coordinate_Axes() ;
 
 }
 

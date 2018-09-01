@@ -61,7 +61,7 @@ inline void                     LibraryPhysicsPy_Environment_Object_Geometry ( )
         // .def("contains", &Geometry::contains)
         
         .def("accessFrame", &Geometry::accessFrame)
-        .def("in", &Geometry::in)
+        .def("inFrame", &Geometry::in)
         .def("isPoint", +[] (const Geometry& aGeometry) -> bool { return aGeometry.is<Point>() ; })
         .def("isPointSet", +[] (const Geometry& aGeometry) -> bool { return aGeometry.is<PointSet>() ; })
         .def("isLine", +[] (const Geometry& aGeometry) -> bool { return aGeometry.is<Line>() ; })

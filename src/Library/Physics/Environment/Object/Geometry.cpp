@@ -10,7 +10,9 @@
 #include <Library/Physics/Environment/Object/Geometry.hpp>
 #include <Library/Physics/Coordinate/Transform.hpp>
 
+#include <Library/Mathematics/Geometry/Transformations/Rotations/RotationVector.hpp>
 #include <Library/Mathematics/Geometry/3D/Intersection.hpp>
+#include <Library/Mathematics/Geometry/3D/Transformation.hpp>
 #include <Library/Mathematics/Geometry/3D/Objects/Pyramid.hpp>
 #include <Library/Mathematics/Geometry/3D/Objects/Ellipsoid.hpp>
 #include <Library/Mathematics/Geometry/3D/Objects/Sphere.hpp>
@@ -184,7 +186,9 @@ Geometry                        Geometry::in                                (   
 {
 
     using library::math::obj::Vector3d ;
+    using library::math::geom::d3::Transformation ;
     using library::math::geom::trf::rot::Quaternion ;
+    using library::math::geom::trf::rot::RotationVector ;
     
     using library::physics::coord::Transform ;
 
@@ -212,11 +216,9 @@ Geometry                        Geometry::in                                (   
 
     const Transform transform = frameSPtr_->getTransformTo(aFrameSPtr, anInstant) ;
 
-    const Vector3d translation = transform.getTranslation() ;
-    const Quaternion rotation = transform.getOrientation() ;
+    const Transformation transformation = Transformation::Rotation(RotationVector::Quaternion(transform.getOrientation())) * Transformation::Translation(transform.getTranslation()) ;
 
-    objectUPtr->translate(translation) ;
-    objectUPtr->rotate(rotation) ;
+    objectUPtr->applyTransformation(transformation) ;
 
     return { objectUPtr, aFrameSPtr } ;
 
@@ -248,12 +250,19 @@ Geometry                        Geometry::intersectionWith                  (   
         throw library::core::error::runtime::Undefined("Geometry") ;
     }
 
-    if ((*frameSPtr_) != (*aGeometry.frameSPtr_))
+    Intersection intersection = Intersection::Undefined() ;
+
+    if ((*frameSPtr_) == (*aGeometry.frameSPtr_))
+    {
+        intersection = objectUPtr_->intersectionWith(*aGeometry.objectUPtr_) ;
+    }
+    else
     {
         throw library::core::error::RuntimeError("Only same frame intersection supported at the moment.") ;
+        // intersection = objectUPtr_->intersectionWith(*aGeometry.in(frameSPtr_, anInstant).objectUPtr_) ;
     }
 
-    const Intersection intersection = objectUPtr_->intersectionWith(*aGeometry.objectUPtr_) ;
+    // const Intersection intersection = objectUPtr_->intersectionWith(*aGeometry.objectUPtr_) ;
 
     if (!intersection.isEmpty())
     {
