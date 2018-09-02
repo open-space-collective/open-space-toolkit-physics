@@ -67,11 +67,11 @@ class Earth : public Celestial
 
         virtual Earth*          clone                                       ( ) const override ;
 
-        static Earth            Analytical                                  (   const   Instant&                    anInstant                                   ) ; // [TBI] Analytical options
+        static Earth            Analytical                                  (   const   Instant&                    anInstant                                   =   Instant::J2000() ) ; // [TBI] Analytical options
 
     private:
 
-        static Object::Geometry Geometry                                   (   const   Shared<const Frame>&        aFrameSPtr                                  ) ;
+        static Object::Geometry Geometry                                   (   const   Shared<const Frame>&         aFrameSPtr                                  ) ;
 
 } ;
 

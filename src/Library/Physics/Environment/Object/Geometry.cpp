@@ -216,7 +216,7 @@ Geometry                        Geometry::in                                (   
 
     const Transform transform = frameSPtr_->getTransformTo(aFrameSPtr, anInstant) ;
 
-    const Transformation transformation = Transformation::Rotation(RotationVector::Quaternion(transform.getOrientation())) * Transformation::Translation(transform.getTranslation()) ;
+    const Transformation transformation = Transformation::Rotation(RotationVector::Quaternion(transform.getOrientation())).getInverse() * Transformation::Translation(transform.getTranslation()) ;
 
     objectUPtr->applyTransformation(transformation) ;
 
