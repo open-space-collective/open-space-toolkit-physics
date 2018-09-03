@@ -274,6 +274,8 @@ Transform                       Frame::getTransformTo                       (   
         return Transform::Identity(anInstant) ;
     }
 
+    // TRY DISABLING CACHE...
+
     if (auto transformPtr = FrameManager::Get().accessCachedTransform(this, aFrameSPtr.get(), anInstant))
     {
         return *transformPtr ;
