@@ -62,11 +62,17 @@ class Environment
 
         bool                    isDefined                                   ( ) const ;
 
+        bool                    hasObjectWithName                           (   const   String&                     aName                                       ) const ;
+
+        Array<Shared<const Object>> accessObjects                           ( ) const ;
+        
         Shared<const Object>    accessObjectWithName                        (   const   String&                     aName                                       ) const ;
         
         Shared<const Celestial> accessCelestialObjectWithName               (   const   String&                     aName                                       ) const ;
 
         Instant                 getInstant                                  ( ) const ;
+
+        Array<String>           getObjectNames                              ( ) const ;
 
         void                    setInstant                                  (   const   Instant&                    anInstant                                   ) ;
 

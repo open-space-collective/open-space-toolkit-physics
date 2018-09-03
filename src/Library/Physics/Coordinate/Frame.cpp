@@ -93,6 +93,7 @@ std::ostream&                   operator <<                                 (   
 
     library::core::utils::Print::Line(anOutputStream) << "Name:"                << (aFrame.isDefined() ? aFrame.getName() : "Undefined") ;
     library::core::utils::Print::Line(anOutputStream) << "Quasi-inertial:"      << (aFrame.isDefined() ? String::Format("{}", aFrame.isQuasiInertial()) : "Undefined") ;
+    library::core::utils::Print::Line(anOutputStream) << "Parent frame:"        << (((aFrame.parentFrameSPtr_ != nullptr) && (aFrame.parentFrameSPtr_->isDefined())) ? aFrame.parentFrameSPtr_->getName() : "Undefined") ;
 
     library::core::utils::Print::Footer(anOutputStream) ;
 

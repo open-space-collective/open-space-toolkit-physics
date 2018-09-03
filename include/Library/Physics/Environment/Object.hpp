@@ -85,6 +85,12 @@ class Object
 
         const Object::Geometry& accessGeometry                              ( ) const ;
 
+        String                  getName                                     ( ) const ;
+
+        Instant                 getInstant                                  ( ) const ;
+
+        Object::Geometry        getGeometry                                 ( ) const ;
+
         virtual Position        getPositionIn                               (   const   Shared<const Frame>&        aFrameSPtr                                  ) const = 0 ;
 
         virtual Velocity        getVelocityIn                               (   const   Shared<const Frame>&        aFrameSPtr                                  ) const = 0 ;

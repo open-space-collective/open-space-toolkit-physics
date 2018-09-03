@@ -34,10 +34,13 @@ inline void                     LibraryPhysicsPy_Environment                ( )
         .def(self_ns::repr(self_ns::self))
 
         .def("isDefined", &Environment::isDefined)
+        .def("hasObjectWithName", &Environment::hasObjectWithName)
 
+        .def("accessObjects", &Environment::accessObjects)
         .def("accessObjectWithName", &Environment::accessObjectWithName)
         .def("accessCelestialObjectWithName", &Environment::accessCelestialObjectWithName)
         .def("getInstant", &Environment::getInstant)
+        .def("getObjectNames", &Environment::getObjectNames)
         .def("setInstant", &Environment::setInstant)
         .def("intersects", &Environment::intersects)
         

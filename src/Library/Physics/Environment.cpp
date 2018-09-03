@@ -7,6 +7,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <Library/Physics/Environment/Objects/CelestialBodies/Moon.hpp>
 #include <Library/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
 #include <Library/Physics/Environment/Objects/Celestial.hpp>
 #include <Library/Physics/Environment.hpp>
@@ -101,8 +102,61 @@ bool                            Environment::isDefined                      ( ) 
     return instant_.isDefined() ;
 }
 
+bool                            Environment::hasObjectWithName              (   const   String&                     aName                                       ) const
+{
+
+    if (aName.isEmpty())
+    {
+        throw library::core::error::runtime::Undefined("Name") ;
+    }
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Environment") ;
+    }
+
+    for (const auto& objectSPtr : objects_)
+    {
+
+        if (objectSPtr->accessName() == aName)
+        {
+            return true ;
+        }
+
+    }
+
+    return false ;
+
+}
+
+Array<Shared<const Object>>     Environment::accessObjects                  ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Environment") ;
+    }
+
+    Array<Shared<const Object>> objects = Array<Shared<const Object>>::Empty() ;
+
+    objects.reserve(objects_.getSize()) ;
+
+    for (const auto& objectSPtr : objects_)
+    {
+        objects.add(objectSPtr) ;
+    }
+    
+    return objects ;
+
+}
+
 Shared<const Object>            Environment::accessObjectWithName           (   const   String&                     aName                                       ) const
 {
+
+    if (aName.isEmpty())
+    {
+        throw library::core::error::runtime::Undefined("Name") ;
+    }
 
     if (!this->isDefined())
     {
@@ -156,6 +210,27 @@ Instant                         Environment::getInstant                     ( ) 
 
 }
 
+Array<String>                   Environment::getObjectNames                 ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Environment") ;
+    }
+
+    Array<String> objectNames = Array<String>::Empty() ;
+
+    objectNames.reserve(objects_.getSize()) ;
+
+    for (const auto& objectSPtr : objects_)
+    {
+        objectNames.add(objectSPtr->getName()) ;
+    }
+
+    return objectNames ;
+
+}
+
 void                            Environment::setInstant                     (   const   Instant&                    anInstant                                   )
 {
 
@@ -204,7 +279,7 @@ bool                            Environment::intersects                     (   
 
 Environment                     Environment::Undefined                      ( )
 {
-    return Environment(Instant::Undefined(), Array<Shared<Object>>::Empty()) ;
+    return { Instant::Undefined(), Array<Shared<Object>>::Empty() } ;
 }
 
 Environment                     Environment::Default                        ( )
@@ -213,15 +288,17 @@ Environment                     Environment::Default                        ( )
     using library::physics::coord::Frame ;
     using library::physics::env::obj::Celestial ;
     using library::physics::env::obj::celest::Earth ;
+    using library::physics::env::obj::celest::Moon ;
 
     const Instant instant = Instant::J2000() ;
 
     const Array<Shared<Object>> objects =
     {
-        std::make_shared<Earth>(Earth::Analytical(instant))
+        std::make_shared<Earth>(Earth::Analytical(instant)),
+        std::make_shared<Moon>(Moon::Analytical(instant))
     } ;
 
-    return Environment(instant, objects) ;
+    return { instant, objects } ;
 
 }
 

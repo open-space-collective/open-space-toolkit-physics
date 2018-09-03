@@ -118,7 +118,29 @@ const Instant&                  Object::accessInstant                       ( ) 
 
 const Object::Geometry&         Object::accessGeometry                      ( ) const
 {
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Object") ;
+    }
+    
     return geometry_ ;
+
+}
+
+String                          Object::getName                             ( ) const
+{
+    return this->accessName() ;
+}
+
+Instant                         Object::getInstant                          ( ) const
+{
+    return this->accessInstant() ;
+}
+
+Object::Geometry                Object::getGeometry                         ( ) const
+{
+    return this->accessGeometry() ;
 }
 
 Object::Geometry                Object::getGeometryIn                       (   const   Shared<const Frame>&        aFrameSPtr                                  ) const
