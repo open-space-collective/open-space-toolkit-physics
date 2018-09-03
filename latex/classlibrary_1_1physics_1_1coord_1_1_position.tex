@@ -17,7 +17,7 @@ typedef \hyperlink{classlibrary_1_1physics_1_1units_1_1_length_a3b8b39cd245cf6b1
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classlibrary_1_1physics_1_1coord_1_1_position_a68bead4a5057939ee5b6e77d2a8aa446}{Position} (const Vector3d \&a\+Coordinate\+Set, const \hyperlink{classlibrary_1_1physics_1_1units_1_1_length_a3b8b39cd245cf6b19dc34459baeccb18}{Position\+::\+Unit} \&a\+Unit, const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+Frame)
+\hyperlink{classlibrary_1_1physics_1_1coord_1_1_position_ac69f2ea85b82a43db1793f7e9cb183f8}{Position} (const Vector3d \&a\+Coordinate\+Set, const \hyperlink{classlibrary_1_1physics_1_1units_1_1_length_a3b8b39cd245cf6b19dc34459baeccb18}{Position\+::\+Unit} \&a\+Unit, const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+Frame\+S\+Ptr)
 \item 
 \hyperlink{classlibrary_1_1physics_1_1coord_1_1_position_a8916e7e373ca3f2bd44d7b41b7f2c2aa}{Position} (const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_position}{Position} \&a\+Position)
 \item 
@@ -39,7 +39,7 @@ Vector3d \hyperlink{classlibrary_1_1physics_1_1coord_1_1_position_a35981f1150639
 \item 
 \hyperlink{classlibrary_1_1physics_1_1coord_1_1_position}{Position} \hyperlink{classlibrary_1_1physics_1_1coord_1_1_position_a908878d741ad2de6a2d278d2d674e949}{in\+Unit} (const \hyperlink{classlibrary_1_1physics_1_1units_1_1_length_a3b8b39cd245cf6b19dc34459baeccb18}{Position\+::\+Unit} \&a\+Unit) const
 \item 
-\hyperlink{classlibrary_1_1physics_1_1coord_1_1_position}{Position} \hyperlink{classlibrary_1_1physics_1_1coord_1_1_position_af8dcfe9e1f9e172d2123ab38cd7b30c8}{in\+Frame} (const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+Frame, const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant) const
+\hyperlink{classlibrary_1_1physics_1_1coord_1_1_position}{Position} \hyperlink{classlibrary_1_1physics_1_1coord_1_1_position_adc0e64905c2463bcaf9d53a08b3426fb}{in\+Frame} (const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+Frame\+S\+Ptr, const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant) const
 \item 
 String \hyperlink{classlibrary_1_1physics_1_1coord_1_1_position_ab88010154fdbcb36b0e25b3986bcc80c}{to\+String} (const Integer \&a\+Precision=Integer\+::\+Undefined()) const
 \end{DoxyCompactItemize}
@@ -48,7 +48,7 @@ String \hyperlink{classlibrary_1_1physics_1_1coord_1_1_position_ab88010154fdbcb3
 \item 
 static \hyperlink{classlibrary_1_1physics_1_1coord_1_1_position}{Position} \hyperlink{classlibrary_1_1physics_1_1coord_1_1_position_a65f80401df5fa5c1eab7e3bdf1b8f8c5}{Undefined} ()
 \item 
-static \hyperlink{classlibrary_1_1physics_1_1coord_1_1_position}{Position} \hyperlink{classlibrary_1_1physics_1_1coord_1_1_position_a9ee5717230be48ee3f52e16383314ba0}{Meters} (const Vector3d \&a\+Coordinate\+Set, const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+Frame)
+static \hyperlink{classlibrary_1_1physics_1_1coord_1_1_position}{Position} \hyperlink{classlibrary_1_1physics_1_1coord_1_1_position_a7ef7cc80563339b3f4727f508d19875c}{Meters} (const Vector3d \&a\+Coordinate\+Set, const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+Frame\+S\+Ptr)
 \end{DoxyCompactItemize}
 \subsection*{Friends}
 \begin{DoxyCompactItemize}
@@ -70,11 +70,11 @@ std\+::ostream \& \hyperlink{classlibrary_1_1physics_1_1coord_1_1_position_aab9f
 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1_position_a68bead4a5057939ee5b6e77d2a8aa446}\label{classlibrary_1_1physics_1_1coord_1_1_position_a68bead4a5057939ee5b6e77d2a8aa446}} 
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1_position_ac69f2ea85b82a43db1793f7e9cb183f8}\label{classlibrary_1_1physics_1_1coord_1_1_position_ac69f2ea85b82a43db1793f7e9cb183f8}} 
 \index{library\+::physics\+::coord\+::\+Position@{library\+::physics\+::coord\+::\+Position}!Position@{Position}}
 \index{Position@{Position}!library\+::physics\+::coord\+::\+Position@{library\+::physics\+::coord\+::\+Position}}
 \subsubsection{\texorpdfstring{Position()}{Position()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily library\+::physics\+::coord\+::\+Position\+::\+Position (\begin{DoxyParamCaption}\item[{const Vector3d \&}]{a\+Coordinate\+Set,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1units_1_1_length_a3b8b39cd245cf6b19dc34459baeccb18}{Position\+::\+Unit} \&}]{a\+Unit,  }\item[{const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+Frame }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily library\+::physics\+::coord\+::\+Position\+::\+Position (\begin{DoxyParamCaption}\item[{const Vector3d \&}]{a\+Coordinate\+Set,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1units_1_1_length_a3b8b39cd245cf6b19dc34459baeccb18}{Position\+::\+Unit} \&}]{a\+Unit,  }\item[{const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+Frame\+S\+Ptr }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1_position_a8916e7e373ca3f2bd44d7b41b7f2c2aa}\label{classlibrary_1_1physics_1_1coord_1_1_position_a8916e7e373ca3f2bd44d7b41b7f2c2aa}} 
 \index{library\+::physics\+::coord\+::\+Position@{library\+::physics\+::coord\+::\+Position}!Position@{Position}}
@@ -109,11 +109,11 @@ std\+::ostream \& \hyperlink{classlibrary_1_1physics_1_1coord_1_1_position_aab9f
 \subsubsection{\texorpdfstring{get\+Unit()}{getUnit()}}
 {\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1units_1_1_length_a3b8b39cd245cf6b19dc34459baeccb18}{Position\+::\+Unit} library\+::physics\+::coord\+::\+Position\+::get\+Unit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
-\mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1_position_af8dcfe9e1f9e172d2123ab38cd7b30c8}\label{classlibrary_1_1physics_1_1coord_1_1_position_af8dcfe9e1f9e172d2123ab38cd7b30c8}} 
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1_position_adc0e64905c2463bcaf9d53a08b3426fb}\label{classlibrary_1_1physics_1_1coord_1_1_position_adc0e64905c2463bcaf9d53a08b3426fb}} 
 \index{library\+::physics\+::coord\+::\+Position@{library\+::physics\+::coord\+::\+Position}!in\+Frame@{in\+Frame}}
 \index{in\+Frame@{in\+Frame}!library\+::physics\+::coord\+::\+Position@{library\+::physics\+::coord\+::\+Position}}
 \subsubsection{\texorpdfstring{in\+Frame()}{inFrame()}}
-{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1coord_1_1_position}{Position} library\+::physics\+::coord\+::\+Position\+::in\+Frame (\begin{DoxyParamCaption}\item[{const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+Frame,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1coord_1_1_position}{Position} library\+::physics\+::coord\+::\+Position\+::in\+Frame (\begin{DoxyParamCaption}\item[{const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+Frame\+S\+Ptr,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption}) const}
 
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1_position_a908878d741ad2de6a2d278d2d674e949}\label{classlibrary_1_1physics_1_1coord_1_1_position_a908878d741ad2de6a2d278d2d674e949}} 
 \index{library\+::physics\+::coord\+::\+Position@{library\+::physics\+::coord\+::\+Position}!in\+Unit@{in\+Unit}}
@@ -127,11 +127,11 @@ std\+::ostream \& \hyperlink{classlibrary_1_1physics_1_1coord_1_1_position_aab9f
 \subsubsection{\texorpdfstring{is\+Defined()}{isDefined()}}
 {\footnotesize\ttfamily bool library\+::physics\+::coord\+::\+Position\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
-\mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1_position_a9ee5717230be48ee3f52e16383314ba0}\label{classlibrary_1_1physics_1_1coord_1_1_position_a9ee5717230be48ee3f52e16383314ba0}} 
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1_position_a7ef7cc80563339b3f4727f508d19875c}\label{classlibrary_1_1physics_1_1coord_1_1_position_a7ef7cc80563339b3f4727f508d19875c}} 
 \index{library\+::physics\+::coord\+::\+Position@{library\+::physics\+::coord\+::\+Position}!Meters@{Meters}}
 \index{Meters@{Meters}!library\+::physics\+::coord\+::\+Position@{library\+::physics\+::coord\+::\+Position}}
 \subsubsection{\texorpdfstring{Meters()}{Meters()}}
-{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1coord_1_1_position}{Position} library\+::physics\+::coord\+::\+Position\+::\+Meters (\begin{DoxyParamCaption}\item[{const Vector3d \&}]{a\+Coordinate\+Set,  }\item[{const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+Frame }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1coord_1_1_position}{Position} library\+::physics\+::coord\+::\+Position\+::\+Meters (\begin{DoxyParamCaption}\item[{const Vector3d \&}]{a\+Coordinate\+Set,  }\item[{const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+Frame\+S\+Ptr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1_position_a78524e4b9328853ca6266defbe61fc7e}\label{classlibrary_1_1physics_1_1coord_1_1_position_a78524e4b9328853ca6266defbe61fc7e}} 
 \index{library\+::physics\+::coord\+::\+Position@{library\+::physics\+::coord\+::\+Position}!operator"!=@{operator"!=}}

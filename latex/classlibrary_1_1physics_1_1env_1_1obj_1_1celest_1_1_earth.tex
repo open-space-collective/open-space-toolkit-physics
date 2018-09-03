@@ -13,18 +13,16 @@ Inheritance diagram for library\+:\+:physics\+:\+:env\+:\+:obj\+:\+:celest\+:\+:
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_a3e239fd6fca2ff160308e217af4057bb}{Earth} (const Shared$<$ \hyperlink{classlibrary_1_1physics_1_1env_1_1_ephemeris}{Ephemeris} $>$ \&an\+Ephemeris, const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant)
+\hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_a775057b64077c61329a426260327022c}{Earth} (const Shared$<$ \hyperlink{classlibrary_1_1physics_1_1env_1_1_ephemeris}{Ephemeris} $>$ \&an\+Ephemeris\+S\+Ptr, const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant)
 \item 
 virtual \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_a93fbd2015a7c7d786654919197c63963}{$\sim$\+Earth} () override
 \item 
 virtual \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} $\ast$ \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_aca39bec00a2046a3fcef9bf22be52428}{clone} () const override
-\item 
-virtual const Ellipsoid \& \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_a5c6a6a902eb52c3f74e20dd7aa5ad359}{access\+Geometry} () const override
 \end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_ae8e22cdc523ae85985949dd7a4e76d68}{Analytical} (const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant)
+static \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_af0456d0dfe17d3cf4473ec02aec1683b}{Analytical} (const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant=\hyperlink{classlibrary_1_1physics_1_1time_1_1_instant_a2a4f57aa71693b8def06788d55bc3bd3}{Instant\+::\+J2000}())
 \end{DoxyCompactItemize}
 \subsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
@@ -43,11 +41,11 @@ static Real \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth
 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_a3e239fd6fca2ff160308e217af4057bb}\label{classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_a3e239fd6fca2ff160308e217af4057bb}} 
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_a775057b64077c61329a426260327022c}\label{classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_a775057b64077c61329a426260327022c}} 
 \index{library\+::physics\+::env\+::obj\+::celest\+::\+Earth@{library\+::physics\+::env\+::obj\+::celest\+::\+Earth}!Earth@{Earth}}
 \index{Earth@{Earth}!library\+::physics\+::env\+::obj\+::celest\+::\+Earth@{library\+::physics\+::env\+::obj\+::celest\+::\+Earth}}
 \subsubsection{\texorpdfstring{Earth()}{Earth()}}
-{\footnotesize\ttfamily library\+::physics\+::env\+::obj\+::celest\+::\+Earth\+::\+Earth (\begin{DoxyParamCaption}\item[{const Shared$<$ \hyperlink{classlibrary_1_1physics_1_1env_1_1_ephemeris}{Ephemeris} $>$ \&}]{an\+Ephemeris,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily library\+::physics\+::env\+::obj\+::celest\+::\+Earth\+::\+Earth (\begin{DoxyParamCaption}\item[{const Shared$<$ \hyperlink{classlibrary_1_1physics_1_1env_1_1_ephemeris}{Ephemeris} $>$ \&}]{an\+Ephemeris\+S\+Ptr,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_a93fbd2015a7c7d786654919197c63963}\label{classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_a93fbd2015a7c7d786654919197c63963}} 
 \index{library\+::physics\+::env\+::obj\+::celest\+::\+Earth@{library\+::physics\+::env\+::obj\+::celest\+::\+Earth}!````~Earth@{$\sim$\+Earth}}
@@ -58,21 +56,11 @@ static Real \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth
 
 
 \subsection{Member Function Documentation}
-\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_a5c6a6a902eb52c3f74e20dd7aa5ad359}\label{classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_a5c6a6a902eb52c3f74e20dd7aa5ad359}} 
-\index{library\+::physics\+::env\+::obj\+::celest\+::\+Earth@{library\+::physics\+::env\+::obj\+::celest\+::\+Earth}!access\+Geometry@{access\+Geometry}}
-\index{access\+Geometry@{access\+Geometry}!library\+::physics\+::env\+::obj\+::celest\+::\+Earth@{library\+::physics\+::env\+::obj\+::celest\+::\+Earth}}
-\subsubsection{\texorpdfstring{access\+Geometry()}{accessGeometry()}}
-{\footnotesize\ttfamily const Ellipsoid \& library\+::physics\+::env\+::obj\+::celest\+::\+Earth\+::access\+Geometry (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
-
-
-
-Reimplemented from \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_ac7a98e912dadb573e557eb91c8f5e891}{library\+::physics\+::env\+::\+Object}.
-
-\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_ae8e22cdc523ae85985949dd7a4e76d68}\label{classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_ae8e22cdc523ae85985949dd7a4e76d68}} 
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_af0456d0dfe17d3cf4473ec02aec1683b}\label{classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_af0456d0dfe17d3cf4473ec02aec1683b}} 
 \index{library\+::physics\+::env\+::obj\+::celest\+::\+Earth@{library\+::physics\+::env\+::obj\+::celest\+::\+Earth}!Analytical@{Analytical}}
 \index{Analytical@{Analytical}!library\+::physics\+::env\+::obj\+::celest\+::\+Earth@{library\+::physics\+::env\+::obj\+::celest\+::\+Earth}}
 \subsubsection{\texorpdfstring{Analytical()}{Analytical()}}
-{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} library\+::physics\+::env\+::obj\+::celest\+::\+Earth\+::\+Analytical (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} library\+::physics\+::env\+::obj\+::celest\+::\+Earth\+::\+Analytical (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant = {\ttfamily \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant_a2a4f57aa71693b8def06788d55bc3bd3}{Instant\+::\+J2000}()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_aca39bec00a2046a3fcef9bf22be52428}\label{classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_aca39bec00a2046a3fcef9bf22be52428}} 
 \index{library\+::physics\+::env\+::obj\+::celest\+::\+Earth@{library\+::physics\+::env\+::obj\+::celest\+::\+Earth}!clone@{clone}}

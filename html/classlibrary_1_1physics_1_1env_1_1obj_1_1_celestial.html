@@ -94,8 +94,9 @@ Inheritance diagram for library::physics::env::obj::Celestial:</div>
  <div class="center">
   <img src="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.png" usemap="#library::physics::env::obj::Celestial_map" alt=""/>
   <map id="library::physics::env::obj::Celestial_map" name="library::physics::env::obj::Celestial_map">
-<area href="classlibrary_1_1physics_1_1env_1_1_object.html" alt="library::physics::env::Object" shape="rect" coords="0,0,223,24"/>
-<area href="classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth.html" alt="library::physics::env::obj::celest::Earth" shape="rect" coords="0,112,223,136"/>
+<area href="classlibrary_1_1physics_1_1env_1_1_object.html" alt="library::physics::env::Object" shape="rect" coords="117,0,342,24"/>
+<area href="classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth.html" alt="library::physics::env::obj::celest::Earth" shape="rect" coords="0,112,225,136"/>
+<area href="classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon.html" alt="library::physics::env::obj::celest::Moon" shape="rect" coords="235,112,460,136"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -113,15 +114,19 @@ Public Types</h2></td></tr>
 <br />
  }</td></tr>
 <tr class="separator:aab1f58aa727e639288d65f3d33c4f245"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8585fb32125cb6c73ae1339a5ea09c79"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#a8585fb32125cb6c73ae1339a5ea09c79">FrameType</a> { <a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#a8585fb32125cb6c73ae1339a5ea09c79aec0fc0100c4fc1ce4eea230c3dc10360">FrameType::Undefined</a>, 
+<a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#a8585fb32125cb6c73ae1339a5ea09c79acd3459b28418fa8fa75ffaba4f3e7c74">FrameType::NED</a>
+ }</td></tr>
+<tr class="separator:a8585fb32125cb6c73ae1339a5ea09c79"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_types_classlibrary_1_1physics_1_1env_1_1_object"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classlibrary_1_1physics_1_1env_1_1_object')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html">library::physics::env::Object</a></td></tr>
-<tr class="memitem:a750fd821b17667fec9e0a4eda23af048 inherit pub_types_classlibrary_1_1physics_1_1env_1_1_object"><td class="memItemLeft" align="right" valign="top">typedef library::math::geom::d3::Object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a750fd821b17667fec9e0a4eda23af048">Geometry</a></td></tr>
-<tr class="separator:a750fd821b17667fec9e0a4eda23af048 inherit pub_types_classlibrary_1_1physics_1_1env_1_1_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdf50733c7ad97327fb64edca5670f13 inherit pub_types_classlibrary_1_1physics_1_1env_1_1_object"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classlibrary_1_1physics_1_1env_1_1object_1_1_geometry.html">object::Geometry</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#abdf50733c7ad97327fb64edca5670f13">Geometry</a></td></tr>
+<tr class="separator:abdf50733c7ad97327fb64edca5670f13 inherit pub_types_classlibrary_1_1physics_1_1env_1_1_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a86c385e43005598c96778d41cff5639e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#a86c385e43005598c96778d41cff5639e">Celestial</a> (const String &amp;aName, const <a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#aab1f58aa727e639288d65f3d33c4f245">Celestial::Type</a> &amp;aType, const <a class="el" href="classlibrary_1_1physics_1_1units_1_1_derived.html">Derived</a> &amp;aGravitationalConstant, const <a class="el" href="classlibrary_1_1physics_1_1units_1_1_length.html">Length</a> &amp;anEquatorialRadius, const Real &amp;aFlattening, const Real &amp;aJ2, const Shared&lt; <a class="el" href="classlibrary_1_1physics_1_1env_1_1_ephemeris.html">Ephemeris</a> &gt; &amp;anEphemeris, const <a class="el" href="classlibrary_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;anInstant)</td></tr>
 <tr class="separator:a86c385e43005598c96778d41cff5639e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ee6c55653113c71bf79d8c0d64878d7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#a7ee6c55653113c71bf79d8c0d64878d7">Celestial</a> (const String &amp;aName, const <a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#aab1f58aa727e639288d65f3d33c4f245">Celestial::Type</a> &amp;aType, const <a class="el" href="classlibrary_1_1physics_1_1units_1_1_derived.html">Derived</a> &amp;aGravitationalConstant, const <a class="el" href="classlibrary_1_1physics_1_1units_1_1_length.html">Length</a> &amp;anEquatorialRadius, const Real &amp;aFlattening, const Real &amp;aJ2, const Shared&lt; <a class="el" href="classlibrary_1_1physics_1_1env_1_1_ephemeris.html">Ephemeris</a> &gt; &amp;anEphemeris, const <a class="el" href="classlibrary_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;anInstant, const <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a750fd821b17667fec9e0a4eda23af048">Object::Geometry</a> &amp;aGeometry)</td></tr>
+<tr class="memitem:a7ee6c55653113c71bf79d8c0d64878d7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#a7ee6c55653113c71bf79d8c0d64878d7">Celestial</a> (const String &amp;aName, const <a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#aab1f58aa727e639288d65f3d33c4f245">Celestial::Type</a> &amp;aType, const <a class="el" href="classlibrary_1_1physics_1_1units_1_1_derived.html">Derived</a> &amp;aGravitationalConstant, const <a class="el" href="classlibrary_1_1physics_1_1units_1_1_length.html">Length</a> &amp;anEquatorialRadius, const Real &amp;aFlattening, const Real &amp;aJ2, const Shared&lt; <a class="el" href="classlibrary_1_1physics_1_1env_1_1_ephemeris.html">Ephemeris</a> &gt; &amp;anEphemeris, const <a class="el" href="classlibrary_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;anInstant, const <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#abdf50733c7ad97327fb64edca5670f13">Object::Geometry</a> &amp;aGeometry)</td></tr>
 <tr class="separator:a7ee6c55653113c71bf79d8c0d64878d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a508a59c34ac23a582f2fed6003c4c907"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#a508a59c34ac23a582f2fed6003c4c907">~Celestial</a> () override</td></tr>
 <tr class="separator:a508a59c34ac23a582f2fed6003c4c907"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -141,20 +146,24 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aac48ed47a25a10c120f066995dc3c6d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3740b398dca520bd50862f67c29ab8e7"><td class="memItemLeft" align="right" valign="top">Real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#a3740b398dca520bd50862f67c29ab8e7">getJ2</a> () const</td></tr>
 <tr class="separator:a3740b398dca520bd50862f67c29ab8e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c3035480bad1749f12d1170113ba2ad"><td class="memItemLeft" align="right" valign="top">virtual Weak&lt; const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#a2c3035480bad1749f12d1170113ba2ad">accessFrame</a> () const override</td></tr>
-<tr class="separator:a2c3035480bad1749f12d1170113ba2ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3b5b5b5e1f0749345afc5e6cead6e86e"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#a3b5b5b5e1f0749345afc5e6cead6e86e">getPositionIn</a> (const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &amp;aFrame) const override</td></tr>
-<tr class="separator:a3b5b5b5e1f0749345afc5e6cead6e86e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa8efdcb1d3e0f51be20291a74ca1fdc7"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_transform.html">Transform</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#aa8efdcb1d3e0f51be20291a74ca1fdc7">getTransformTo</a> (const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &amp;aFrame) const override</td></tr>
-<tr class="separator:aa8efdcb1d3e0f51be20291a74ca1fdc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad13d0656d681ca53ee4cbfe7792db036"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_axes.html">Axes</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#ad13d0656d681ca53ee4cbfe7792db036">getAxesIn</a> (const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &amp;aFrame) const override</td></tr>
-<tr class="separator:ad13d0656d681ca53ee4cbfe7792db036"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6649bfe0bf0795aa4def046a8c38aef5"><td class="memItemLeft" align="right" valign="top">virtual Shared&lt; const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#a6649bfe0bf0795aa4def046a8c38aef5">accessFrame</a> () const override</td></tr>
+<tr class="separator:a6649bfe0bf0795aa4def046a8c38aef5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2a209f37414e24303c21d994396664f"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#aa2a209f37414e24303c21d994396664f">getPositionIn</a> (const Shared&lt; const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &gt; &amp;aFrameSPtr) const override</td></tr>
+<tr class="separator:aa2a209f37414e24303c21d994396664f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accaa3b1fdc39a1a058fd35006f31982d"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_velocity.html">Velocity</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#accaa3b1fdc39a1a058fd35006f31982d">getVelocityIn</a> (const Shared&lt; const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &gt; &amp;aFrameSPtr) const override</td></tr>
+<tr class="separator:accaa3b1fdc39a1a058fd35006f31982d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6676b10ebbb63a8483137c9c734c58a"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_transform.html">Transform</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#ac6676b10ebbb63a8483137c9c734c58a">getTransformTo</a> (const Shared&lt; const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &gt; &amp;aFrameSPtr) const override</td></tr>
+<tr class="separator:ac6676b10ebbb63a8483137c9c734c58a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51d7ed3c0dcf627fbbcd81f9b190fb6b"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_axes.html">Axes</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#a51d7ed3c0dcf627fbbcd81f9b190fb6b">getAxesIn</a> (const Shared&lt; const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &gt; &amp;aFrameSPtr) const override</td></tr>
+<tr class="separator:a51d7ed3c0dcf627fbbcd81f9b190fb6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac715a5cc62581070d55ab839e3309c9e"><td class="memItemLeft" align="right" valign="top">Vector3d&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#ac715a5cc62581070d55ab839e3309c9e">getGravitationalFieldAt</a> (const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_position.html">Position</a> &amp;aPosition) const</td></tr>
 <tr class="separator:ac715a5cc62581070d55ab839e3309c9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1dfffd88b216eccf83a9441cae304be"><td class="memItemLeft" align="right" valign="top">Shared&lt; const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#ad1dfffd88b216eccf83a9441cae304be">getFrameAt</a> (const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1spherical_1_1_l_l_a.html">LLA</a> &amp;aLla, const <a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#a8585fb32125cb6c73ae1339a5ea09c79">Celestial::FrameType</a> &amp;aFrameType) const</td></tr>
+<tr class="separator:ad1dfffd88b216eccf83a9441cae304be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classlibrary_1_1physics_1_1env_1_1_object"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classlibrary_1_1physics_1_1env_1_1_object')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html">library::physics::env::Object</a></td></tr>
 <tr class="memitem:af112257aa51a94dcc61a36e2c0db4b05 inherit pub_methods_classlibrary_1_1physics_1_1env_1_1_object"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#af112257aa51a94dcc61a36e2c0db4b05">Object</a> (const String &amp;aName, const <a class="el" href="classlibrary_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;anInstant)</td></tr>
 <tr class="separator:af112257aa51a94dcc61a36e2c0db4b05 inherit pub_methods_classlibrary_1_1physics_1_1env_1_1_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a37e5ddc8f0b89e006025a7ac6ac71fe5 inherit pub_methods_classlibrary_1_1physics_1_1env_1_1_object"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a37e5ddc8f0b89e006025a7ac6ac71fe5">Object</a> (const String &amp;aName, const <a class="el" href="classlibrary_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;anInstant, const <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a750fd821b17667fec9e0a4eda23af048">Object::Geometry</a> &amp;aGeometry)</td></tr>
+<tr class="memitem:a37e5ddc8f0b89e006025a7ac6ac71fe5 inherit pub_methods_classlibrary_1_1physics_1_1env_1_1_object"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a37e5ddc8f0b89e006025a7ac6ac71fe5">Object</a> (const String &amp;aName, const <a class="el" href="classlibrary_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;anInstant, const <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#abdf50733c7ad97327fb64edca5670f13">Object::Geometry</a> &amp;aGeometry)</td></tr>
 <tr class="separator:a37e5ddc8f0b89e006025a7ac6ac71fe5 inherit pub_methods_classlibrary_1_1physics_1_1env_1_1_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac7b0b65eb0f2a65a46314269687ad49e inherit pub_methods_classlibrary_1_1physics_1_1env_1_1_object"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#ac7b0b65eb0f2a65a46314269687ad49e">Object</a> (const <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html">Object</a> &amp;anObject)</td></tr>
 <tr class="separator:ac7b0b65eb0f2a65a46314269687ad49e inherit pub_methods_classlibrary_1_1physics_1_1env_1_1_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -166,10 +175,16 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a0cf28bef038e493ee0771680976f5e28 inherit pub_methods_classlibrary_1_1physics_1_1env_1_1_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f183331fd0ad20e88cae41e2491a5dc inherit pub_methods_classlibrary_1_1physics_1_1env_1_1_object"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classlibrary_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a3f183331fd0ad20e88cae41e2491a5dc">accessInstant</a> () const</td></tr>
 <tr class="separator:a3f183331fd0ad20e88cae41e2491a5dc inherit pub_methods_classlibrary_1_1physics_1_1env_1_1_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7a98e912dadb573e557eb91c8f5e891 inherit pub_methods_classlibrary_1_1physics_1_1env_1_1_object"><td class="memItemLeft" align="right" valign="top">virtual const <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a750fd821b17667fec9e0a4eda23af048">Object::Geometry</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#ac7a98e912dadb573e557eb91c8f5e891">accessGeometry</a> () const</td></tr>
+<tr class="memitem:ac7a98e912dadb573e557eb91c8f5e891 inherit pub_methods_classlibrary_1_1physics_1_1env_1_1_object"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#abdf50733c7ad97327fb64edca5670f13">Object::Geometry</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#ac7a98e912dadb573e557eb91c8f5e891">accessGeometry</a> () const</td></tr>
 <tr class="separator:ac7a98e912dadb573e557eb91c8f5e891 inherit pub_methods_classlibrary_1_1physics_1_1env_1_1_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f5434fd62619d61812ce7505f44260e inherit pub_methods_classlibrary_1_1physics_1_1env_1_1_object"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a5f5434fd62619d61812ce7505f44260e">getFrame</a> () const</td></tr>
-<tr class="separator:a5f5434fd62619d61812ce7505f44260e inherit pub_methods_classlibrary_1_1physics_1_1env_1_1_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9c4454cd7beb5a5bab5f888c0ea2f1f inherit pub_methods_classlibrary_1_1physics_1_1env_1_1_object"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#ab9c4454cd7beb5a5bab5f888c0ea2f1f">getName</a> () const</td></tr>
+<tr class="separator:ab9c4454cd7beb5a5bab5f888c0ea2f1f inherit pub_methods_classlibrary_1_1physics_1_1env_1_1_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ca9c7efb9fee9196e23d660c46adac0 inherit pub_methods_classlibrary_1_1physics_1_1env_1_1_object"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classlibrary_1_1physics_1_1time_1_1_instant.html">Instant</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a8ca9c7efb9fee9196e23d660c46adac0">getInstant</a> () const</td></tr>
+<tr class="separator:a8ca9c7efb9fee9196e23d660c46adac0 inherit pub_methods_classlibrary_1_1physics_1_1env_1_1_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a504f76c6e6da18b531972e6f26329255 inherit pub_methods_classlibrary_1_1physics_1_1env_1_1_object"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#abdf50733c7ad97327fb64edca5670f13">Object::Geometry</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a504f76c6e6da18b531972e6f26329255">getGeometry</a> () const</td></tr>
+<tr class="separator:a504f76c6e6da18b531972e6f26329255 inherit pub_methods_classlibrary_1_1physics_1_1env_1_1_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a199472d1b6a3b6a3b1694aaddc7b3046 inherit pub_methods_classlibrary_1_1physics_1_1env_1_1_object"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#abdf50733c7ad97327fb64edca5670f13">Object::Geometry</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a199472d1b6a3b6a3b1694aaddc7b3046">getGeometryIn</a> (const Shared&lt; const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &gt; &amp;aFrameSPtr) const</td></tr>
+<tr class="separator:a199472d1b6a3b6a3b1694aaddc7b3046 inherit pub_methods_classlibrary_1_1physics_1_1env_1_1_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a215fef40593ef3dae3bf2b681339d2 inherit pub_methods_classlibrary_1_1physics_1_1env_1_1_object"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a6a215fef40593ef3dae3bf2b681339d2">setInstant</a> (const <a class="el" href="classlibrary_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;anInstant)</td></tr>
 <tr class="separator:a6a215fef40593ef3dae3bf2b681339d2 inherit pub_methods_classlibrary_1_1physics_1_1env_1_1_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -177,8 +192,38 @@ Public Member Functions</h2></td></tr>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a5e33230d05d77f5e1132151ecf5e94e9"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html">Celestial</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#a5e33230d05d77f5e1132151ecf5e94e9">Undefined</a> ()</td></tr>
 <tr class="separator:a5e33230d05d77f5e1132151ecf5e94e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a020864aa551a1ec6f5674cc2e166b131"><td class="memItemLeft" align="right" valign="top">static String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#a020864aa551a1ec6f5674cc2e166b131">StringFromFrameType</a> (const <a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#a8585fb32125cb6c73ae1339a5ea09c79">Celestial::FrameType</a> &amp;aFrameType)</td></tr>
+<tr class="separator:a020864aa551a1ec6f5674cc2e166b131"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="a8585fb32125cb6c73ae1339a5ea09c79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8585fb32125cb6c73ae1339a5ea09c79">&#9670;&nbsp;</a></span>FrameType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#a8585fb32125cb6c73ae1339a5ea09c79">library::physics::env::obj::Celestial::FrameType</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a8585fb32125cb6c73ae1339a5ea09c79aec0fc0100c4fc1ce4eea230c3dc10360"></a>Undefined&#160;</td><td class="fielddoc"><p>Undefined frame. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a8585fb32125cb6c73ae1339a5ea09c79acd3459b28418fa8fa75ffaba4f3e7c74"></a>NED&#160;</td><td class="fielddoc"><p>North-East-Down (NED) frame. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
 <a id="aab1f58aa727e639288d65f3d33c4f245"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aab1f58aa727e639288d65f3d33c4f245">&#9670;&nbsp;</a></span>Type</h2>
 
@@ -332,7 +377,7 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a750fd821b17667fec9e0a4eda23af048">Object::Geometry</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#abdf50733c7ad97327fb64edca5670f13">Object::Geometry</a> &amp;&#160;</td>
           <td class="paramname"><em>aGeometry</em>&#160;</td>
         </tr>
         <tr>
@@ -388,8 +433,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a2c3035480bad1749f12d1170113ba2ad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2c3035480bad1749f12d1170113ba2ad">&#9670;&nbsp;</a></span>accessFrame()</h2>
+<a id="a6649bfe0bf0795aa4def046a8c38aef5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6649bfe0bf0795aa4def046a8c38aef5">&#9670;&nbsp;</a></span>accessFrame()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -398,7 +443,7 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Weak&lt; const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &gt; library::physics::env::obj::Celestial::accessFrame </td>
+          <td class="memname">Shared&lt; const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &gt; library::physics::env::obj::Celestial::accessFrame </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -411,7 +456,7 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a304d1fc452fbe6a45ef5f55591a0787a">library::physics::env::Object</a>.</p>
+<p>Implements <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a6ff59bc7375388118c60b5823dad748b">library::physics::env::Object</a>.</p>
 
 </div>
 </div>
@@ -440,12 +485,12 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a498e0d1a15e937a5aa77374c6f899768">library::physics::env::Object</a>.</p>
 
-<p>Reimplemented in <a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth.html#aca39bec00a2046a3fcef9bf22be52428">library::physics::env::obj::celest::Earth</a>.</p>
+<p>Reimplemented in <a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth.html#aca39bec00a2046a3fcef9bf22be52428">library::physics::env::obj::celest::Earth</a>, and <a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon.html#a9d922ab338809a6c1052edbe11ce3e60">library::physics::env::obj::celest::Moon</a>.</p>
 
 </div>
 </div>
-<a id="ad13d0656d681ca53ee4cbfe7792db036"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad13d0656d681ca53ee4cbfe7792db036">&#9670;&nbsp;</a></span>getAxesIn()</h2>
+<a id="a51d7ed3c0dcf627fbbcd81f9b190fb6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51d7ed3c0dcf627fbbcd81f9b190fb6b">&#9670;&nbsp;</a></span>getAxesIn()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -456,8 +501,8 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="classlibrary_1_1physics_1_1coord_1_1_axes.html">Axes</a> library::physics::env::obj::Celestial::getAxesIn </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &amp;&#160;</td>
-          <td class="paramname"><em>aFrame</em></td><td>)</td>
+          <td class="paramtype">const Shared&lt; const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>aFrameSPtr</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -468,7 +513,7 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a165a95ae6f63e5db38a03c3227dba4fc">library::physics::env::Object</a>.</p>
+<p>Implements <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a6807199a92fd78c10c6327b9ca654f50">library::physics::env::Object</a>.</p>
 
 </div>
 </div>
@@ -500,6 +545,34 @@ Static Public Member Functions</h2></td></tr>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad1dfffd88b216eccf83a9441cae304be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1dfffd88b216eccf83a9441cae304be">&#9670;&nbsp;</a></span>getFrameAt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Shared&lt; const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &gt; library::physics::env::obj::Celestial::getFrameAt </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1spherical_1_1_l_l_a.html">LLA</a> &amp;&#160;</td>
+          <td class="paramname"><em>aLla</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#a8585fb32125cb6c73ae1339a5ea09c79">Celestial::FrameType</a> &amp;&#160;</td>
+          <td class="paramname"><em>aFrameType</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -558,8 +631,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a3b5b5b5e1f0749345afc5e6cead6e86e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3b5b5b5e1f0749345afc5e6cead6e86e">&#9670;&nbsp;</a></span>getPositionIn()</h2>
+<a id="aa2a209f37414e24303c21d994396664f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2a209f37414e24303c21d994396664f">&#9670;&nbsp;</a></span>getPositionIn()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -570,8 +643,8 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="classlibrary_1_1physics_1_1coord_1_1_position.html">Position</a> library::physics::env::obj::Celestial::getPositionIn </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &amp;&#160;</td>
-          <td class="paramname"><em>aFrame</em></td><td>)</td>
+          <td class="paramtype">const Shared&lt; const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>aFrameSPtr</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -582,12 +655,12 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#ad9c15bf11720fc7432f2c0fa3490531b">library::physics::env::Object</a>.</p>
+<p>Implements <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#acc86d12ad94de870fc2684f7b768b617">library::physics::env::Object</a>.</p>
 
 </div>
 </div>
-<a id="aa8efdcb1d3e0f51be20291a74ca1fdc7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa8efdcb1d3e0f51be20291a74ca1fdc7">&#9670;&nbsp;</a></span>getTransformTo()</h2>
+<a id="ac6676b10ebbb63a8483137c9c734c58a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6676b10ebbb63a8483137c9c734c58a">&#9670;&nbsp;</a></span>getTransformTo()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -598,8 +671,8 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="classlibrary_1_1physics_1_1coord_1_1_transform.html">Transform</a> library::physics::env::obj::Celestial::getTransformTo </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &amp;&#160;</td>
-          <td class="paramname"><em>aFrame</em></td><td>)</td>
+          <td class="paramtype">const Shared&lt; const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>aFrameSPtr</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -610,7 +683,7 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a21312b7217aeb12086681401b4a6c41f">library::physics::env::Object</a>.</p>
+<p>Implements <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#abe850e2334c19ae185456cd52aeeca7d">library::physics::env::Object</a>.</p>
 
 </div>
 </div>
@@ -628,6 +701,34 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="accaa3b1fdc39a1a058fd35006f31982d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#accaa3b1fdc39a1a058fd35006f31982d">&#9670;&nbsp;</a></span>getVelocityIn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classlibrary_1_1physics_1_1coord_1_1_velocity.html">Velocity</a> library::physics::env::obj::Celestial::getVelocityIn </td>
+          <td>(</td>
+          <td class="paramtype">const Shared&lt; const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>aFrameSPtr</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a1a8f4358db37b1b8830866373f8f3670">library::physics::env::Object</a>.</p>
 
 </div>
 </div>
@@ -655,6 +756,32 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a7035edc921681401ddd43b094645a024">library::physics::env::Object</a>.</p>
+
+</div>
+</div>
+<a id="a020864aa551a1ec6f5674cc2e166b131"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a020864aa551a1ec6f5674cc2e166b131">&#9670;&nbsp;</a></span>StringFromFrameType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">String library::physics::env::obj::Celestial::StringFromFrameType </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#a8585fb32125cb6c73ae1339a5ea09c79">Celestial::FrameType</a> &amp;&#160;</td>
+          <td class="paramname"><em>aFrameType</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

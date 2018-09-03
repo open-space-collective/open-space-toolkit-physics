@@ -15,11 +15,21 @@
 \item 
 bool \hyperlink{classlibrary_1_1physics_1_1_environment_acbe2e199328ec6a3d2c233dbe8eb6359}{is\+Defined} () const
 \item 
-Weak$<$ const \hyperlink{classlibrary_1_1physics_1_1env_1_1_object}{Object} $>$ \hyperlink{classlibrary_1_1physics_1_1_environment_a86e1c1b5f7e7364610faf35491e2613a}{access\+Object\+With\+Name} (const String \&a\+Name) const
+bool \hyperlink{classlibrary_1_1physics_1_1_environment_ab88060948d60e3775d3c48047e1565aa}{has\+Object\+With\+Name} (const String \&a\+Name) const
+\item 
+Array$<$ Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1env_1_1_object}{Object} $>$ $>$ \hyperlink{classlibrary_1_1physics_1_1_environment_a109b7156dadfe992126e01c629146a75}{access\+Objects} () const
+\item 
+Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1env_1_1_object}{Object} $>$ \hyperlink{classlibrary_1_1physics_1_1_environment_adb18bd17dfbffa181d7e0d868c2647a0}{access\+Object\+With\+Name} (const String \&a\+Name) const
+\item 
+Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial}{Celestial} $>$ \hyperlink{classlibrary_1_1physics_1_1_environment_a3dd52e151e9f09788d46072095bd48a6}{access\+Celestial\+Object\+With\+Name} (const String \&a\+Name) const
 \item 
 \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \hyperlink{classlibrary_1_1physics_1_1_environment_a551ca61eb2aebd762e67b7c9e561d22e}{get\+Instant} () const
 \item 
+Array$<$ String $>$ \hyperlink{classlibrary_1_1physics_1_1_environment_ad90a5d1e67d62009e7cf6875c4fa7907}{get\+Object\+Names} () const
+\item 
 void \hyperlink{classlibrary_1_1physics_1_1_environment_a6279d44965a3894993cee2bc0c51d068}{set\+Instant} (const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant)
+\item 
+bool \hyperlink{classlibrary_1_1physics_1_1_environment_a96b2455aff4cefe7d5ce92bb008a7d51}{intersects} (const \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_abdf50733c7ad97327fb64edca5670f13}{Object\+::\+Geometry} \&a\+Geometry) const
 \end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -27,6 +37,11 @@ void \hyperlink{classlibrary_1_1physics_1_1_environment_a6279d44965a3894993cee2b
 static \hyperlink{classlibrary_1_1physics_1_1_environment}{Environment} \hyperlink{classlibrary_1_1physics_1_1_environment_a8d1dfff3867d59ecdebd3ee6e98a2dab}{Undefined} ()
 \item 
 static \hyperlink{classlibrary_1_1physics_1_1_environment}{Environment} \hyperlink{classlibrary_1_1physics_1_1_environment_a7fcc57999bfb9c0c7e70b7cc783e30c8}{Default} ()
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \hyperlink{classlibrary_1_1physics_1_1_environment_a7bc4b39898452fbe5ce3a8de75ad2596}{operator$<$$<$} (std\+::ostream \&an\+Output\+Stream, const \hyperlink{classlibrary_1_1physics_1_1_environment}{Environment} \&an\+Environment)
 \end{DoxyCompactItemize}
 
 
@@ -46,11 +61,23 @@ static \hyperlink{classlibrary_1_1physics_1_1_environment}{Environment} \hyperli
 
 
 \subsection{Member Function Documentation}
-\mbox{\Hypertarget{classlibrary_1_1physics_1_1_environment_a86e1c1b5f7e7364610faf35491e2613a}\label{classlibrary_1_1physics_1_1_environment_a86e1c1b5f7e7364610faf35491e2613a}} 
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1_environment_a3dd52e151e9f09788d46072095bd48a6}\label{classlibrary_1_1physics_1_1_environment_a3dd52e151e9f09788d46072095bd48a6}} 
+\index{library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}!access\+Celestial\+Object\+With\+Name@{access\+Celestial\+Object\+With\+Name}}
+\index{access\+Celestial\+Object\+With\+Name@{access\+Celestial\+Object\+With\+Name}!library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}}
+\subsubsection{\texorpdfstring{access\+Celestial\+Object\+With\+Name()}{accessCelestialObjectWithName()}}
+{\footnotesize\ttfamily Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial}{Celestial} $>$ library\+::physics\+::\+Environment\+::access\+Celestial\+Object\+With\+Name (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Name }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1_environment_a109b7156dadfe992126e01c629146a75}\label{classlibrary_1_1physics_1_1_environment_a109b7156dadfe992126e01c629146a75}} 
+\index{library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}!access\+Objects@{access\+Objects}}
+\index{access\+Objects@{access\+Objects}!library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}}
+\subsubsection{\texorpdfstring{access\+Objects()}{accessObjects()}}
+{\footnotesize\ttfamily Array$<$ Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1env_1_1_object}{Object} $>$ $>$ library\+::physics\+::\+Environment\+::access\+Objects (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1_environment_adb18bd17dfbffa181d7e0d868c2647a0}\label{classlibrary_1_1physics_1_1_environment_adb18bd17dfbffa181d7e0d868c2647a0}} 
 \index{library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}!access\+Object\+With\+Name@{access\+Object\+With\+Name}}
 \index{access\+Object\+With\+Name@{access\+Object\+With\+Name}!library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}}
 \subsubsection{\texorpdfstring{access\+Object\+With\+Name()}{accessObjectWithName()}}
-{\footnotesize\ttfamily Weak$<$ const \hyperlink{classlibrary_1_1physics_1_1env_1_1_object}{Object} $>$ library\+::physics\+::\+Environment\+::access\+Object\+With\+Name (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Name }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1env_1_1_object}{Object} $>$ library\+::physics\+::\+Environment\+::access\+Object\+With\+Name (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Name }\end{DoxyParamCaption}) const}
 
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1_environment_a7fcc57999bfb9c0c7e70b7cc783e30c8}\label{classlibrary_1_1physics_1_1_environment_a7fcc57999bfb9c0c7e70b7cc783e30c8}} 
 \index{library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}!Default@{Default}}
@@ -63,6 +90,24 @@ static \hyperlink{classlibrary_1_1physics_1_1_environment}{Environment} \hyperli
 \index{get\+Instant@{get\+Instant}!library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}}
 \subsubsection{\texorpdfstring{get\+Instant()}{getInstant()}}
 {\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} library\+::physics\+::\+Environment\+::get\+Instant (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1_environment_ad90a5d1e67d62009e7cf6875c4fa7907}\label{classlibrary_1_1physics_1_1_environment_ad90a5d1e67d62009e7cf6875c4fa7907}} 
+\index{library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}!get\+Object\+Names@{get\+Object\+Names}}
+\index{get\+Object\+Names@{get\+Object\+Names}!library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}}
+\subsubsection{\texorpdfstring{get\+Object\+Names()}{getObjectNames()}}
+{\footnotesize\ttfamily Array$<$ String $>$ library\+::physics\+::\+Environment\+::get\+Object\+Names (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1_environment_ab88060948d60e3775d3c48047e1565aa}\label{classlibrary_1_1physics_1_1_environment_ab88060948d60e3775d3c48047e1565aa}} 
+\index{library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}!has\+Object\+With\+Name@{has\+Object\+With\+Name}}
+\index{has\+Object\+With\+Name@{has\+Object\+With\+Name}!library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}}
+\subsubsection{\texorpdfstring{has\+Object\+With\+Name()}{hasObjectWithName()}}
+{\footnotesize\ttfamily bool library\+::physics\+::\+Environment\+::has\+Object\+With\+Name (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Name }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1_environment_a96b2455aff4cefe7d5ce92bb008a7d51}\label{classlibrary_1_1physics_1_1_environment_a96b2455aff4cefe7d5ce92bb008a7d51}} 
+\index{library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}!intersects@{intersects}}
+\index{intersects@{intersects}!library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}}
+\subsubsection{\texorpdfstring{intersects()}{intersects()}}
+{\footnotesize\ttfamily bool library\+::physics\+::\+Environment\+::intersects (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_abdf50733c7ad97327fb64edca5670f13}{Object\+::\+Geometry} \&}]{a\+Geometry }\end{DoxyParamCaption}) const}
 
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1_environment_acbe2e199328ec6a3d2c233dbe8eb6359}\label{classlibrary_1_1physics_1_1_environment_acbe2e199328ec6a3d2c233dbe8eb6359}} 
 \index{library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}!is\+Defined@{is\+Defined}}
@@ -87,6 +132,15 @@ static \hyperlink{classlibrary_1_1physics_1_1_environment}{Environment} \hyperli
 \index{Undefined@{Undefined}!library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}}
 \subsubsection{\texorpdfstring{Undefined()}{Undefined()}}
 {\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1_environment}{Environment} library\+::physics\+::\+Environment\+::\+Undefined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\subsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1_environment_a7bc4b39898452fbe5ce3a8de75ad2596}\label{classlibrary_1_1physics_1_1_environment_a7bc4b39898452fbe5ce3a8de75ad2596}} 
+\index{library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}}
+\subsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{an\+Output\+Stream,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1_environment}{Environment} \&}]{an\+Environment }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
 
 
 

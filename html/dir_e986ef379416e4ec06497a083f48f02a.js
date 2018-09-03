@@ -4,6 +4,9 @@ var dir_e986ef379416e4ec06497a083f48f02a =
     [ "CIRF.hpp", "_c_i_r_f_8hpp.html", [
       [ "CIRF", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1_c_i_r_f.html", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1_c_i_r_f" ]
     ] ],
+    [ "Dynamic.hpp", "_dynamic_8hpp.html", [
+      [ "Dynamic", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1_dynamic.html", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1_dynamic" ]
+    ] ],
     [ "Fixed.hpp", "_fixed_8hpp.html", [
       [ "Fixed", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1_fixed.html", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1_fixed" ]
     ] ],

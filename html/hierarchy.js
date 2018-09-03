@@ -1,5 +1,6 @@
 var hierarchy =
 [
+    [ "library::physics::coord::spherical::AER", "classlibrary_1_1physics_1_1coord_1_1spherical_1_1_a_e_r.html", null ],
     [ "library::physics::coord::Axes", "classlibrary_1_1physics_1_1coord_1_1_axes.html", null ],
     [ "library::physics::coord::frame::provider::iers::BulletinA", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_a.html", null ],
     [ "library::physics::coord::frame::provider::iers::BulletinB", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_b.html", null ],
@@ -13,15 +14,18 @@ var hierarchy =
     ] ],
     [ "library::physics::coord::frame::provider::iers::Finals2000A", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a.html", null ],
     [ "library::physics::coord::Frame", "classlibrary_1_1physics_1_1coord_1_1_frame.html", null ],
+    [ "library::physics::env::object::Geometry", "classlibrary_1_1physics_1_1env_1_1object_1_1_geometry.html", null ],
     [ "library::physics::time::Instant", "classlibrary_1_1physics_1_1time_1_1_instant.html", null ],
     [ "Interval", null, [
       [ "library::physics::time::Interval", "classlibrary_1_1physics_1_1time_1_1_interval.html", null ]
     ] ],
-    [ "library::physics::coord::frame::Manager", "classlibrary_1_1physics_1_1coord_1_1frame_1_1_manager.html", null ],
+    [ "library::physics::coord::spherical::LLA", "classlibrary_1_1physics_1_1coord_1_1spherical_1_1_l_l_a.html", null ],
     [ "library::physics::coord::frame::provider::iers::Manager", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager.html", null ],
+    [ "library::physics::coord::frame::Manager", "classlibrary_1_1physics_1_1coord_1_1frame_1_1_manager.html", null ],
     [ "library::physics::env::Object", "classlibrary_1_1physics_1_1env_1_1_object.html", [
       [ "library::physics::env::obj::Celestial", "classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html", [
-        [ "library::physics::env::obj::celest::Earth", "classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth.html", null ]
+        [ "library::physics::env::obj::celest::Earth", "classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth.html", null ],
+        [ "library::physics::env::obj::celest::Moon", "classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon.html", null ]
       ] ]
     ] ],
     [ "library::physics::coord::frame::provider::iers::BulletinA::Observation", "structlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_observation.html", null ],
@@ -30,6 +34,7 @@ var hierarchy =
     [ "library::physics::coord::frame::provider::iers::BulletinA::Prediction", "structlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction.html", null ],
     [ "library::physics::coord::frame::Provider", "classlibrary_1_1physics_1_1coord_1_1frame_1_1_provider.html", [
       [ "library::physics::coord::frame::provider::CIRF", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1_c_i_r_f.html", null ],
+      [ "library::physics::coord::frame::provider::Dynamic", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1_dynamic.html", null ],
       [ "library::physics::coord::frame::provider::Fixed", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1_fixed.html", null ],
       [ "library::physics::coord::frame::provider::GCRF", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1_g_c_r_f.html", null ],
       [ "library::physics::coord::frame::provider::ICRF", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1_i_c_r_f.html", null ],
@@ -39,6 +44,7 @@ var hierarchy =
     ] ],
     [ "library::physics::time::Time", "classlibrary_1_1physics_1_1time_1_1_time.html", null ],
     [ "library::physics::coord::Transform", "classlibrary_1_1physics_1_1coord_1_1_transform.html", null ],
+    [ "library::physics::units::Derived::Unit", "classlibrary_1_1physics_1_1units_1_1_derived_1_1_unit.html", null ],
     [ "library::physics::units::Unit", "classlibrary_1_1physics_1_1units_1_1_unit.html", [
       [ "library::physics::units::Angle", "classlibrary_1_1physics_1_1units_1_1_angle.html", null ],
       [ "library::physics::units::Derived", "classlibrary_1_1physics_1_1units_1_1_derived.html", null ],
@@ -46,6 +52,5 @@ var hierarchy =
       [ "library::physics::units::Mass", "classlibrary_1_1physics_1_1units_1_1_mass.html", null ],
       [ "library::physics::units::Time", "classlibrary_1_1physics_1_1units_1_1_time.html", null ]
     ] ],
-    [ "library::physics::units::Derived::Unit", "classlibrary_1_1physics_1_1units_1_1_derived_1_1_unit.html", null ],
     [ "library::physics::coord::Velocity", "classlibrary_1_1physics_1_1coord_1_1_velocity.html", null ]
 ];

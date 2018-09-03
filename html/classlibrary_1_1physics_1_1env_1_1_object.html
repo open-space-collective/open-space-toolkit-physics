@@ -94,21 +94,22 @@ Inheritance diagram for library::physics::env::Object:</div>
  <div class="center">
   <img src="classlibrary_1_1physics_1_1env_1_1_object.png" usemap="#library::physics::env::Object_map" alt=""/>
   <map id="library::physics::env::Object_map" name="library::physics::env::Object_map">
-<area href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html" alt="library::physics::env::obj::Celestial" shape="rect" coords="0,56,223,80"/>
-<area href="classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth.html" alt="library::physics::env::obj::celest::Earth" shape="rect" coords="0,112,223,136"/>
+<area href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html" alt="library::physics::env::obj::Celestial" shape="rect" coords="117,56,342,80"/>
+<area href="classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth.html" alt="library::physics::env::obj::celest::Earth" shape="rect" coords="0,112,225,136"/>
+<area href="classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon.html" alt="library::physics::env::obj::celest::Moon" shape="rect" coords="235,112,460,136"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a750fd821b17667fec9e0a4eda23af048"><td class="memItemLeft" align="right" valign="top">typedef library::math::geom::d3::Object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a750fd821b17667fec9e0a4eda23af048">Geometry</a></td></tr>
-<tr class="separator:a750fd821b17667fec9e0a4eda23af048"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdf50733c7ad97327fb64edca5670f13"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classlibrary_1_1physics_1_1env_1_1object_1_1_geometry.html">object::Geometry</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#abdf50733c7ad97327fb64edca5670f13">Geometry</a></td></tr>
+<tr class="separator:abdf50733c7ad97327fb64edca5670f13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:af112257aa51a94dcc61a36e2c0db4b05"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#af112257aa51a94dcc61a36e2c0db4b05">Object</a> (const String &amp;aName, const <a class="el" href="classlibrary_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;anInstant)</td></tr>
 <tr class="separator:af112257aa51a94dcc61a36e2c0db4b05"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a37e5ddc8f0b89e006025a7ac6ac71fe5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a37e5ddc8f0b89e006025a7ac6ac71fe5">Object</a> (const String &amp;aName, const <a class="el" href="classlibrary_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;anInstant, const <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a750fd821b17667fec9e0a4eda23af048">Object::Geometry</a> &amp;aGeometry)</td></tr>
+<tr class="memitem:a37e5ddc8f0b89e006025a7ac6ac71fe5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a37e5ddc8f0b89e006025a7ac6ac71fe5">Object</a> (const String &amp;aName, const <a class="el" href="classlibrary_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;anInstant, const <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#abdf50733c7ad97327fb64edca5670f13">Object::Geometry</a> &amp;aGeometry)</td></tr>
 <tr class="separator:a37e5ddc8f0b89e006025a7ac6ac71fe5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac7b0b65eb0f2a65a46314269687ad49e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#ac7b0b65eb0f2a65a46314269687ad49e">Object</a> (const <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html">Object</a> &amp;anObject)</td></tr>
 <tr class="separator:ac7b0b65eb0f2a65a46314269687ad49e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -124,18 +125,26 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a0cf28bef038e493ee0771680976f5e28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f183331fd0ad20e88cae41e2491a5dc"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classlibrary_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a3f183331fd0ad20e88cae41e2491a5dc">accessInstant</a> () const</td></tr>
 <tr class="separator:a3f183331fd0ad20e88cae41e2491a5dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a304d1fc452fbe6a45ef5f55591a0787a"><td class="memItemLeft" align="right" valign="top">virtual Weak&lt; const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a304d1fc452fbe6a45ef5f55591a0787a">accessFrame</a> () const =0</td></tr>
-<tr class="separator:a304d1fc452fbe6a45ef5f55591a0787a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7a98e912dadb573e557eb91c8f5e891"><td class="memItemLeft" align="right" valign="top">virtual const <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a750fd821b17667fec9e0a4eda23af048">Object::Geometry</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#ac7a98e912dadb573e557eb91c8f5e891">accessGeometry</a> () const</td></tr>
+<tr class="memitem:a6ff59bc7375388118c60b5823dad748b"><td class="memItemLeft" align="right" valign="top">virtual Shared&lt; const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a6ff59bc7375388118c60b5823dad748b">accessFrame</a> () const =0</td></tr>
+<tr class="separator:a6ff59bc7375388118c60b5823dad748b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7a98e912dadb573e557eb91c8f5e891"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#abdf50733c7ad97327fb64edca5670f13">Object::Geometry</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#ac7a98e912dadb573e557eb91c8f5e891">accessGeometry</a> () const</td></tr>
 <tr class="separator:ac7a98e912dadb573e557eb91c8f5e891"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f5434fd62619d61812ce7505f44260e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a5f5434fd62619d61812ce7505f44260e">getFrame</a> () const</td></tr>
-<tr class="separator:a5f5434fd62619d61812ce7505f44260e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad9c15bf11720fc7432f2c0fa3490531b"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#ad9c15bf11720fc7432f2c0fa3490531b">getPositionIn</a> (const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &amp;aFrame) const =0</td></tr>
-<tr class="separator:ad9c15bf11720fc7432f2c0fa3490531b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21312b7217aeb12086681401b4a6c41f"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_transform.html">Transform</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a21312b7217aeb12086681401b4a6c41f">getTransformTo</a> (const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &amp;aFrame) const =0</td></tr>
-<tr class="separator:a21312b7217aeb12086681401b4a6c41f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a165a95ae6f63e5db38a03c3227dba4fc"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_axes.html">Axes</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a165a95ae6f63e5db38a03c3227dba4fc">getAxesIn</a> (const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &amp;aFrame) const =0</td></tr>
-<tr class="separator:a165a95ae6f63e5db38a03c3227dba4fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9c4454cd7beb5a5bab5f888c0ea2f1f"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#ab9c4454cd7beb5a5bab5f888c0ea2f1f">getName</a> () const</td></tr>
+<tr class="separator:ab9c4454cd7beb5a5bab5f888c0ea2f1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ca9c7efb9fee9196e23d660c46adac0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classlibrary_1_1physics_1_1time_1_1_instant.html">Instant</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a8ca9c7efb9fee9196e23d660c46adac0">getInstant</a> () const</td></tr>
+<tr class="separator:a8ca9c7efb9fee9196e23d660c46adac0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a504f76c6e6da18b531972e6f26329255"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#abdf50733c7ad97327fb64edca5670f13">Object::Geometry</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a504f76c6e6da18b531972e6f26329255">getGeometry</a> () const</td></tr>
+<tr class="separator:a504f76c6e6da18b531972e6f26329255"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc86d12ad94de870fc2684f7b768b617"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#acc86d12ad94de870fc2684f7b768b617">getPositionIn</a> (const Shared&lt; const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &gt; &amp;aFrameSPtr) const =0</td></tr>
+<tr class="separator:acc86d12ad94de870fc2684f7b768b617"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a8f4358db37b1b8830866373f8f3670"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_velocity.html">Velocity</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a1a8f4358db37b1b8830866373f8f3670">getVelocityIn</a> (const Shared&lt; const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &gt; &amp;aFrameSPtr) const =0</td></tr>
+<tr class="separator:a1a8f4358db37b1b8830866373f8f3670"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe850e2334c19ae185456cd52aeeca7d"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_transform.html">Transform</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#abe850e2334c19ae185456cd52aeeca7d">getTransformTo</a> (const Shared&lt; const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &gt; &amp;aFrameSPtr) const =0</td></tr>
+<tr class="separator:abe850e2334c19ae185456cd52aeeca7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6807199a92fd78c10c6327b9ca654f50"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_axes.html">Axes</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a6807199a92fd78c10c6327b9ca654f50">getAxesIn</a> (const Shared&lt; const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &gt; &amp;aFrameSPtr) const =0</td></tr>
+<tr class="separator:a6807199a92fd78c10c6327b9ca654f50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a199472d1b6a3b6a3b1694aaddc7b3046"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#abdf50733c7ad97327fb64edca5670f13">Object::Geometry</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a199472d1b6a3b6a3b1694aaddc7b3046">getGeometryIn</a> (const Shared&lt; const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &gt; &amp;aFrameSPtr) const</td></tr>
+<tr class="separator:a199472d1b6a3b6a3b1694aaddc7b3046"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a215fef40593ef3dae3bf2b681339d2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a6a215fef40593ef3dae3bf2b681339d2">setInstant</a> (const <a class="el" href="classlibrary_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;anInstant)</td></tr>
 <tr class="separator:a6a215fef40593ef3dae3bf2b681339d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -145,14 +154,14 @@ Friends</h2></td></tr>
 <tr class="separator:a418df9bf4a73078f3d494edef1743f8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Typedef Documentation</h2>
-<a id="a750fd821b17667fec9e0a4eda23af048"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a750fd821b17667fec9e0a4eda23af048">&#9670;&nbsp;</a></span>Geometry</h2>
+<a id="abdf50733c7ad97327fb64edca5670f13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abdf50733c7ad97327fb64edca5670f13">&#9670;&nbsp;</a></span>Geometry</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef library::math::geom::d3::Object <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a750fd821b17667fec9e0a4eda23af048">library::physics::env::Object::Geometry</a></td>
+          <td class="memname">typedef <a class="el" href="classlibrary_1_1physics_1_1env_1_1object_1_1_geometry.html">object::Geometry</a> <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#abdf50733c7ad97327fb64edca5670f13">library::physics::env::Object::Geometry</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -209,7 +218,7 @@ Friends</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a750fd821b17667fec9e0a4eda23af048">Object::Geometry</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#abdf50733c7ad97327fb64edca5670f13">Object::Geometry</a> &amp;&#160;</td>
           <td class="paramname"><em>aGeometry</em>&#160;</td>
         </tr>
         <tr>
@@ -266,8 +275,8 @@ Friends</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a304d1fc452fbe6a45ef5f55591a0787a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a304d1fc452fbe6a45ef5f55591a0787a">&#9670;&nbsp;</a></span>accessFrame()</h2>
+<a id="a6ff59bc7375388118c60b5823dad748b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ff59bc7375388118c60b5823dad748b">&#9670;&nbsp;</a></span>accessFrame()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -276,7 +285,7 @@ Friends</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual Weak&lt;const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a>&gt; library::physics::env::Object::accessFrame </td>
+          <td class="memname">virtual Shared&lt;const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a>&gt; library::physics::env::Object::accessFrame </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -289,7 +298,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#a2c3035480bad1749f12d1170113ba2ad">library::physics::env::obj::Celestial</a>.</p>
+<p>Implemented in <a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#a6649bfe0bf0795aa4def046a8c38aef5">library::physics::env::obj::Celestial</a>.</p>
 
 </div>
 </div>
@@ -298,25 +307,15 @@ Friends</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a750fd821b17667fec9e0a4eda23af048">Object::Geometry</a> &amp; library::physics::env::Object::accessGeometry </td>
+          <td class="memname">const <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#abdf50733c7ad97327fb64edca5670f13">Object::Geometry</a> &amp; library::physics::env::Object::accessGeometry </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
-
-<p>Reimplemented in <a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth.html#a5c6a6a902eb52c3f74e20dd7aa5ad359">library::physics::env::obj::celest::Earth</a>.</p>
 
 </div>
 </div>
@@ -377,12 +376,12 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#aaf8aa41a0ff9336eba62c07e3c27f82d">library::physics::env::obj::Celestial</a>, and <a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth.html#aca39bec00a2046a3fcef9bf22be52428">library::physics::env::obj::celest::Earth</a>.</p>
+<p>Implemented in <a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#aaf8aa41a0ff9336eba62c07e3c27f82d">library::physics::env::obj::Celestial</a>, <a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth.html#aca39bec00a2046a3fcef9bf22be52428">library::physics::env::obj::celest::Earth</a>, and <a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon.html#a9d922ab338809a6c1052edbe11ce3e60">library::physics::env::obj::celest::Moon</a>.</p>
 
 </div>
 </div>
-<a id="a165a95ae6f63e5db38a03c3227dba4fc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a165a95ae6f63e5db38a03c3227dba4fc">&#9670;&nbsp;</a></span>getAxesIn()</h2>
+<a id="a6807199a92fd78c10c6327b9ca654f50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6807199a92fd78c10c6327b9ca654f50">&#9670;&nbsp;</a></span>getAxesIn()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -393,8 +392,8 @@ Friends</h2></td></tr>
         <tr>
           <td class="memname">virtual <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_axes.html">Axes</a> library::physics::env::Object::getAxesIn </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &amp;&#160;</td>
-          <td class="paramname"><em>aFrame</em></td><td>)</td>
+          <td class="paramtype">const Shared&lt; const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>aFrameSPtr</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -405,18 +404,18 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#ad13d0656d681ca53ee4cbfe7792db036">library::physics::env::obj::Celestial</a>.</p>
+<p>Implemented in <a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#a51d7ed3c0dcf627fbbcd81f9b190fb6b">library::physics::env::obj::Celestial</a>.</p>
 
 </div>
 </div>
-<a id="a5f5434fd62619d61812ce7505f44260e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5f5434fd62619d61812ce7505f44260e">&#9670;&nbsp;</a></span>getFrame()</h2>
+<a id="a504f76c6e6da18b531972e6f26329255"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a504f76c6e6da18b531972e6f26329255">&#9670;&nbsp;</a></span>getGeometry()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> library::physics::env::Object::getFrame </td>
+          <td class="memname"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#abdf50733c7ad97327fb64edca5670f13">Object::Geometry</a> library::physics::env::Object::getGeometry </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -426,8 +425,60 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="ad9c15bf11720fc7432f2c0fa3490531b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad9c15bf11720fc7432f2c0fa3490531b">&#9670;&nbsp;</a></span>getPositionIn()</h2>
+<a id="a199472d1b6a3b6a3b1694aaddc7b3046"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a199472d1b6a3b6a3b1694aaddc7b3046">&#9670;&nbsp;</a></span>getGeometryIn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#abdf50733c7ad97327fb64edca5670f13">Object::Geometry</a> library::physics::env::Object::getGeometryIn </td>
+          <td>(</td>
+          <td class="paramtype">const Shared&lt; const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>aFrameSPtr</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8ca9c7efb9fee9196e23d660c46adac0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ca9c7efb9fee9196e23d660c46adac0">&#9670;&nbsp;</a></span>getInstant()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classlibrary_1_1physics_1_1time_1_1_instant.html">Instant</a> library::physics::env::Object::getInstant </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab9c4454cd7beb5a5bab5f888c0ea2f1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9c4454cd7beb5a5bab5f888c0ea2f1f">&#9670;&nbsp;</a></span>getName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String library::physics::env::Object::getName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acc86d12ad94de870fc2684f7b768b617"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc86d12ad94de870fc2684f7b768b617">&#9670;&nbsp;</a></span>getPositionIn()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -438,8 +489,8 @@ Friends</h2></td></tr>
         <tr>
           <td class="memname">virtual <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_position.html">Position</a> library::physics::env::Object::getPositionIn </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &amp;&#160;</td>
-          <td class="paramname"><em>aFrame</em></td><td>)</td>
+          <td class="paramtype">const Shared&lt; const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>aFrameSPtr</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -450,12 +501,12 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#a3b5b5b5e1f0749345afc5e6cead6e86e">library::physics::env::obj::Celestial</a>.</p>
+<p>Implemented in <a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#aa2a209f37414e24303c21d994396664f">library::physics::env::obj::Celestial</a>.</p>
 
 </div>
 </div>
-<a id="a21312b7217aeb12086681401b4a6c41f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a21312b7217aeb12086681401b4a6c41f">&#9670;&nbsp;</a></span>getTransformTo()</h2>
+<a id="abe850e2334c19ae185456cd52aeeca7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe850e2334c19ae185456cd52aeeca7d">&#9670;&nbsp;</a></span>getTransformTo()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -466,8 +517,8 @@ Friends</h2></td></tr>
         <tr>
           <td class="memname">virtual <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_transform.html">Transform</a> library::physics::env::Object::getTransformTo </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &amp;&#160;</td>
-          <td class="paramname"><em>aFrame</em></td><td>)</td>
+          <td class="paramtype">const Shared&lt; const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>aFrameSPtr</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -478,7 +529,35 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#aa8efdcb1d3e0f51be20291a74ca1fdc7">library::physics::env::obj::Celestial</a>.</p>
+<p>Implemented in <a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#ac6676b10ebbb63a8483137c9c734c58a">library::physics::env::obj::Celestial</a>.</p>
+
+</div>
+</div>
+<a id="a1a8f4358db37b1b8830866373f8f3670"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a8f4358db37b1b8830866373f8f3670">&#9670;&nbsp;</a></span>getVelocityIn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_velocity.html">Velocity</a> library::physics::env::Object::getVelocityIn </td>
+          <td>(</td>
+          <td class="paramtype">const Shared&lt; const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>aFrameSPtr</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#accaa3b1fdc39a1a058fd35006f31982d">library::physics::env::obj::Celestial</a>.</p>
 
 </div>
 </div>

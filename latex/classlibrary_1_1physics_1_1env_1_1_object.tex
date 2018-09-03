@@ -13,14 +13,14 @@ Inheritance diagram for library\+:\+:physics\+:\+:env\+:\+:Object\+:\begin{figur
 \subsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-typedef library\+::math\+::geom\+::d3\+::\+Object \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_a750fd821b17667fec9e0a4eda23af048}{Geometry}
+typedef \hyperlink{classlibrary_1_1physics_1_1env_1_1object_1_1_geometry}{object\+::\+Geometry} \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_abdf50733c7ad97327fb64edca5670f13}{Geometry}
 \end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_af112257aa51a94dcc61a36e2c0db4b05}{Object} (const String \&a\+Name, const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant)
 \item 
-\hyperlink{classlibrary_1_1physics_1_1env_1_1_object_a37e5ddc8f0b89e006025a7ac6ac71fe5}{Object} (const String \&a\+Name, const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant, const \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_a750fd821b17667fec9e0a4eda23af048}{Object\+::\+Geometry} \&a\+Geometry)
+\hyperlink{classlibrary_1_1physics_1_1env_1_1_object_a37e5ddc8f0b89e006025a7ac6ac71fe5}{Object} (const String \&a\+Name, const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant, const \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_abdf50733c7ad97327fb64edca5670f13}{Object\+::\+Geometry} \&a\+Geometry)
 \item 
 \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_ac7b0b65eb0f2a65a46314269687ad49e}{Object} (const \hyperlink{classlibrary_1_1physics_1_1env_1_1_object}{Object} \&an\+Object)
 \item 
@@ -36,17 +36,25 @@ const String \& \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_a0cf28bef03
 \item 
 const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \& \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_a3f183331fd0ad20e88cae41e2491a5dc}{access\+Instant} () const
 \item 
-virtual Weak$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_a304d1fc452fbe6a45ef5f55591a0787a}{access\+Frame} () const =0
+virtual Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_a6ff59bc7375388118c60b5823dad748b}{access\+Frame} () const =0
 \item 
-virtual const \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_a750fd821b17667fec9e0a4eda23af048}{Object\+::\+Geometry} \& \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_ac7a98e912dadb573e557eb91c8f5e891}{access\+Geometry} () const
+const \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_abdf50733c7ad97327fb64edca5670f13}{Object\+::\+Geometry} \& \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_ac7a98e912dadb573e557eb91c8f5e891}{access\+Geometry} () const
 \item 
-\hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_a5f5434fd62619d61812ce7505f44260e}{get\+Frame} () const
+String \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_ab9c4454cd7beb5a5bab5f888c0ea2f1f}{get\+Name} () const
 \item 
-virtual \hyperlink{classlibrary_1_1physics_1_1coord_1_1_position}{Position} \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_ad9c15bf11720fc7432f2c0fa3490531b}{get\+Position\+In} (const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} \&a\+Frame) const =0
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_a8ca9c7efb9fee9196e23d660c46adac0}{get\+Instant} () const
 \item 
-virtual \hyperlink{classlibrary_1_1physics_1_1coord_1_1_transform}{Transform} \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_a21312b7217aeb12086681401b4a6c41f}{get\+Transform\+To} (const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} \&a\+Frame) const =0
+\hyperlink{classlibrary_1_1physics_1_1env_1_1_object_abdf50733c7ad97327fb64edca5670f13}{Object\+::\+Geometry} \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_a504f76c6e6da18b531972e6f26329255}{get\+Geometry} () const
 \item 
-virtual \hyperlink{classlibrary_1_1physics_1_1coord_1_1_axes}{Axes} \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_a165a95ae6f63e5db38a03c3227dba4fc}{get\+Axes\+In} (const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} \&a\+Frame) const =0
+virtual \hyperlink{classlibrary_1_1physics_1_1coord_1_1_position}{Position} \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_acc86d12ad94de870fc2684f7b768b617}{get\+Position\+In} (const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+Frame\+S\+Ptr) const =0
+\item 
+virtual \hyperlink{classlibrary_1_1physics_1_1coord_1_1_velocity}{Velocity} \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_a1a8f4358db37b1b8830866373f8f3670}{get\+Velocity\+In} (const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+Frame\+S\+Ptr) const =0
+\item 
+virtual \hyperlink{classlibrary_1_1physics_1_1coord_1_1_transform}{Transform} \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_abe850e2334c19ae185456cd52aeeca7d}{get\+Transform\+To} (const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+Frame\+S\+Ptr) const =0
+\item 
+virtual \hyperlink{classlibrary_1_1physics_1_1coord_1_1_axes}{Axes} \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_a6807199a92fd78c10c6327b9ca654f50}{get\+Axes\+In} (const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+Frame\+S\+Ptr) const =0
+\item 
+\hyperlink{classlibrary_1_1physics_1_1env_1_1_object_abdf50733c7ad97327fb64edca5670f13}{Object\+::\+Geometry} \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_a199472d1b6a3b6a3b1694aaddc7b3046}{get\+Geometry\+In} (const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+Frame\+S\+Ptr) const
 \item 
 void \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_a6a215fef40593ef3dae3bf2b681339d2}{set\+Instant} (const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant)
 \end{DoxyCompactItemize}
@@ -58,11 +66,11 @@ std\+::ostream \& \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_a418df9bf
 
 
 \subsection{Member Typedef Documentation}
-\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1_object_a750fd821b17667fec9e0a4eda23af048}\label{classlibrary_1_1physics_1_1env_1_1_object_a750fd821b17667fec9e0a4eda23af048}} 
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1_object_abdf50733c7ad97327fb64edca5670f13}\label{classlibrary_1_1physics_1_1env_1_1_object_abdf50733c7ad97327fb64edca5670f13}} 
 \index{library\+::physics\+::env\+::\+Object@{library\+::physics\+::env\+::\+Object}!Geometry@{Geometry}}
 \index{Geometry@{Geometry}!library\+::physics\+::env\+::\+Object@{library\+::physics\+::env\+::\+Object}}
 \subsubsection{\texorpdfstring{Geometry}{Geometry}}
-{\footnotesize\ttfamily typedef library\+::math\+::geom\+::d3\+::\+Object \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_a750fd821b17667fec9e0a4eda23af048}{library\+::physics\+::env\+::\+Object\+::\+Geometry}}
+{\footnotesize\ttfamily typedef \hyperlink{classlibrary_1_1physics_1_1env_1_1object_1_1_geometry}{object\+::\+Geometry} \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_abdf50733c7ad97327fb64edca5670f13}{library\+::physics\+::env\+::\+Object\+::\+Geometry}}
 
 
 
@@ -77,7 +85,7 @@ std\+::ostream \& \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_a418df9bf
 \index{library\+::physics\+::env\+::\+Object@{library\+::physics\+::env\+::\+Object}!Object@{Object}}
 \index{Object@{Object}!library\+::physics\+::env\+::\+Object@{library\+::physics\+::env\+::\+Object}}
 \subsubsection{\texorpdfstring{Object()}{Object()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
-{\footnotesize\ttfamily library\+::physics\+::env\+::\+Object\+::\+Object (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Name,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_a750fd821b17667fec9e0a4eda23af048}{Object\+::\+Geometry} \&}]{a\+Geometry }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily library\+::physics\+::env\+::\+Object\+::\+Object (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Name,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_abdf50733c7ad97327fb64edca5670f13}{Object\+::\+Geometry} \&}]{a\+Geometry }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1_object_ac7b0b65eb0f2a65a46314269687ad49e}\label{classlibrary_1_1physics_1_1env_1_1_object_ac7b0b65eb0f2a65a46314269687ad49e}} 
 \index{library\+::physics\+::env\+::\+Object@{library\+::physics\+::env\+::\+Object}!Object@{Object}}
@@ -94,25 +102,21 @@ std\+::ostream \& \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_a418df9bf
 
 
 \subsection{Member Function Documentation}
-\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1_object_a304d1fc452fbe6a45ef5f55591a0787a}\label{classlibrary_1_1physics_1_1env_1_1_object_a304d1fc452fbe6a45ef5f55591a0787a}} 
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1_object_a6ff59bc7375388118c60b5823dad748b}\label{classlibrary_1_1physics_1_1env_1_1_object_a6ff59bc7375388118c60b5823dad748b}} 
 \index{library\+::physics\+::env\+::\+Object@{library\+::physics\+::env\+::\+Object}!access\+Frame@{access\+Frame}}
 \index{access\+Frame@{access\+Frame}!library\+::physics\+::env\+::\+Object@{library\+::physics\+::env\+::\+Object}}
 \subsubsection{\texorpdfstring{access\+Frame()}{accessFrame()}}
-{\footnotesize\ttfamily virtual Weak$<$const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame}$>$ library\+::physics\+::env\+::\+Object\+::access\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily virtual Shared$<$const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame}$>$ library\+::physics\+::env\+::\+Object\+::access\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
-Implemented in \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_a2c3035480bad1749f12d1170113ba2ad}{library\+::physics\+::env\+::obj\+::\+Celestial}.
+Implemented in \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_a6649bfe0bf0795aa4def046a8c38aef5}{library\+::physics\+::env\+::obj\+::\+Celestial}.
 
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1_object_ac7a98e912dadb573e557eb91c8f5e891}\label{classlibrary_1_1physics_1_1env_1_1_object_ac7a98e912dadb573e557eb91c8f5e891}} 
 \index{library\+::physics\+::env\+::\+Object@{library\+::physics\+::env\+::\+Object}!access\+Geometry@{access\+Geometry}}
 \index{access\+Geometry@{access\+Geometry}!library\+::physics\+::env\+::\+Object@{library\+::physics\+::env\+::\+Object}}
 \subsubsection{\texorpdfstring{access\+Geometry()}{accessGeometry()}}
-{\footnotesize\ttfamily const \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_a750fd821b17667fec9e0a4eda23af048}{Object\+::\+Geometry} \& library\+::physics\+::env\+::\+Object\+::access\+Geometry (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Reimplemented in \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_a5c6a6a902eb52c3f74e20dd7aa5ad359}{library\+::physics\+::env\+::obj\+::celest\+::\+Earth}.
+{\footnotesize\ttfamily const \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_abdf50733c7ad97327fb64edca5670f13}{Object\+::\+Geometry} \& library\+::physics\+::env\+::\+Object\+::access\+Geometry (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1_object_a3f183331fd0ad20e88cae41e2491a5dc}\label{classlibrary_1_1physics_1_1env_1_1_object_a3f183331fd0ad20e88cae41e2491a5dc}} 
 \index{library\+::physics\+::env\+::\+Object@{library\+::physics\+::env\+::\+Object}!access\+Instant@{access\+Instant}}
@@ -134,43 +138,71 @@ Reimplemented in \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_
 
 
 
-Implemented in \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_aaf8aa41a0ff9336eba62c07e3c27f82d}{library\+::physics\+::env\+::obj\+::\+Celestial}, and \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_aca39bec00a2046a3fcef9bf22be52428}{library\+::physics\+::env\+::obj\+::celest\+::\+Earth}.
+Implemented in \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_aaf8aa41a0ff9336eba62c07e3c27f82d}{library\+::physics\+::env\+::obj\+::\+Celestial}, \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_aca39bec00a2046a3fcef9bf22be52428}{library\+::physics\+::env\+::obj\+::celest\+::\+Earth}, and \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon_a9d922ab338809a6c1052edbe11ce3e60}{library\+::physics\+::env\+::obj\+::celest\+::\+Moon}.
 
-\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1_object_a165a95ae6f63e5db38a03c3227dba4fc}\label{classlibrary_1_1physics_1_1env_1_1_object_a165a95ae6f63e5db38a03c3227dba4fc}} 
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1_object_a6807199a92fd78c10c6327b9ca654f50}\label{classlibrary_1_1physics_1_1env_1_1_object_a6807199a92fd78c10c6327b9ca654f50}} 
 \index{library\+::physics\+::env\+::\+Object@{library\+::physics\+::env\+::\+Object}!get\+Axes\+In@{get\+Axes\+In}}
 \index{get\+Axes\+In@{get\+Axes\+In}!library\+::physics\+::env\+::\+Object@{library\+::physics\+::env\+::\+Object}}
 \subsubsection{\texorpdfstring{get\+Axes\+In()}{getAxesIn()}}
-{\footnotesize\ttfamily virtual \hyperlink{classlibrary_1_1physics_1_1coord_1_1_axes}{Axes} library\+::physics\+::env\+::\+Object\+::get\+Axes\+In (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} \&}]{a\+Frame }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily virtual \hyperlink{classlibrary_1_1physics_1_1coord_1_1_axes}{Axes} library\+::physics\+::env\+::\+Object\+::get\+Axes\+In (\begin{DoxyParamCaption}\item[{const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+Frame\+S\+Ptr }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
-Implemented in \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_ad13d0656d681ca53ee4cbfe7792db036}{library\+::physics\+::env\+::obj\+::\+Celestial}.
+Implemented in \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_a51d7ed3c0dcf627fbbcd81f9b190fb6b}{library\+::physics\+::env\+::obj\+::\+Celestial}.
 
-\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1_object_a5f5434fd62619d61812ce7505f44260e}\label{classlibrary_1_1physics_1_1env_1_1_object_a5f5434fd62619d61812ce7505f44260e}} 
-\index{library\+::physics\+::env\+::\+Object@{library\+::physics\+::env\+::\+Object}!get\+Frame@{get\+Frame}}
-\index{get\+Frame@{get\+Frame}!library\+::physics\+::env\+::\+Object@{library\+::physics\+::env\+::\+Object}}
-\subsubsection{\texorpdfstring{get\+Frame()}{getFrame()}}
-{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} library\+::physics\+::env\+::\+Object\+::get\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1_object_a504f76c6e6da18b531972e6f26329255}\label{classlibrary_1_1physics_1_1env_1_1_object_a504f76c6e6da18b531972e6f26329255}} 
+\index{library\+::physics\+::env\+::\+Object@{library\+::physics\+::env\+::\+Object}!get\+Geometry@{get\+Geometry}}
+\index{get\+Geometry@{get\+Geometry}!library\+::physics\+::env\+::\+Object@{library\+::physics\+::env\+::\+Object}}
+\subsubsection{\texorpdfstring{get\+Geometry()}{getGeometry()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_abdf50733c7ad97327fb64edca5670f13}{Object\+::\+Geometry} library\+::physics\+::env\+::\+Object\+::get\+Geometry (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
-\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1_object_ad9c15bf11720fc7432f2c0fa3490531b}\label{classlibrary_1_1physics_1_1env_1_1_object_ad9c15bf11720fc7432f2c0fa3490531b}} 
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1_object_a199472d1b6a3b6a3b1694aaddc7b3046}\label{classlibrary_1_1physics_1_1env_1_1_object_a199472d1b6a3b6a3b1694aaddc7b3046}} 
+\index{library\+::physics\+::env\+::\+Object@{library\+::physics\+::env\+::\+Object}!get\+Geometry\+In@{get\+Geometry\+In}}
+\index{get\+Geometry\+In@{get\+Geometry\+In}!library\+::physics\+::env\+::\+Object@{library\+::physics\+::env\+::\+Object}}
+\subsubsection{\texorpdfstring{get\+Geometry\+In()}{getGeometryIn()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_abdf50733c7ad97327fb64edca5670f13}{Object\+::\+Geometry} library\+::physics\+::env\+::\+Object\+::get\+Geometry\+In (\begin{DoxyParamCaption}\item[{const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+Frame\+S\+Ptr }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1_object_a8ca9c7efb9fee9196e23d660c46adac0}\label{classlibrary_1_1physics_1_1env_1_1_object_a8ca9c7efb9fee9196e23d660c46adac0}} 
+\index{library\+::physics\+::env\+::\+Object@{library\+::physics\+::env\+::\+Object}!get\+Instant@{get\+Instant}}
+\index{get\+Instant@{get\+Instant}!library\+::physics\+::env\+::\+Object@{library\+::physics\+::env\+::\+Object}}
+\subsubsection{\texorpdfstring{get\+Instant()}{getInstant()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} library\+::physics\+::env\+::\+Object\+::get\+Instant (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1_object_ab9c4454cd7beb5a5bab5f888c0ea2f1f}\label{classlibrary_1_1physics_1_1env_1_1_object_ab9c4454cd7beb5a5bab5f888c0ea2f1f}} 
+\index{library\+::physics\+::env\+::\+Object@{library\+::physics\+::env\+::\+Object}!get\+Name@{get\+Name}}
+\index{get\+Name@{get\+Name}!library\+::physics\+::env\+::\+Object@{library\+::physics\+::env\+::\+Object}}
+\subsubsection{\texorpdfstring{get\+Name()}{getName()}}
+{\footnotesize\ttfamily String library\+::physics\+::env\+::\+Object\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1_object_acc86d12ad94de870fc2684f7b768b617}\label{classlibrary_1_1physics_1_1env_1_1_object_acc86d12ad94de870fc2684f7b768b617}} 
 \index{library\+::physics\+::env\+::\+Object@{library\+::physics\+::env\+::\+Object}!get\+Position\+In@{get\+Position\+In}}
 \index{get\+Position\+In@{get\+Position\+In}!library\+::physics\+::env\+::\+Object@{library\+::physics\+::env\+::\+Object}}
 \subsubsection{\texorpdfstring{get\+Position\+In()}{getPositionIn()}}
-{\footnotesize\ttfamily virtual \hyperlink{classlibrary_1_1physics_1_1coord_1_1_position}{Position} library\+::physics\+::env\+::\+Object\+::get\+Position\+In (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} \&}]{a\+Frame }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily virtual \hyperlink{classlibrary_1_1physics_1_1coord_1_1_position}{Position} library\+::physics\+::env\+::\+Object\+::get\+Position\+In (\begin{DoxyParamCaption}\item[{const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+Frame\+S\+Ptr }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
-Implemented in \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_a3b5b5b5e1f0749345afc5e6cead6e86e}{library\+::physics\+::env\+::obj\+::\+Celestial}.
+Implemented in \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_aa2a209f37414e24303c21d994396664f}{library\+::physics\+::env\+::obj\+::\+Celestial}.
 
-\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1_object_a21312b7217aeb12086681401b4a6c41f}\label{classlibrary_1_1physics_1_1env_1_1_object_a21312b7217aeb12086681401b4a6c41f}} 
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1_object_abe850e2334c19ae185456cd52aeeca7d}\label{classlibrary_1_1physics_1_1env_1_1_object_abe850e2334c19ae185456cd52aeeca7d}} 
 \index{library\+::physics\+::env\+::\+Object@{library\+::physics\+::env\+::\+Object}!get\+Transform\+To@{get\+Transform\+To}}
 \index{get\+Transform\+To@{get\+Transform\+To}!library\+::physics\+::env\+::\+Object@{library\+::physics\+::env\+::\+Object}}
 \subsubsection{\texorpdfstring{get\+Transform\+To()}{getTransformTo()}}
-{\footnotesize\ttfamily virtual \hyperlink{classlibrary_1_1physics_1_1coord_1_1_transform}{Transform} library\+::physics\+::env\+::\+Object\+::get\+Transform\+To (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} \&}]{a\+Frame }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily virtual \hyperlink{classlibrary_1_1physics_1_1coord_1_1_transform}{Transform} library\+::physics\+::env\+::\+Object\+::get\+Transform\+To (\begin{DoxyParamCaption}\item[{const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+Frame\+S\+Ptr }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
-Implemented in \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_aa8efdcb1d3e0f51be20291a74ca1fdc7}{library\+::physics\+::env\+::obj\+::\+Celestial}.
+Implemented in \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_ac6676b10ebbb63a8483137c9c734c58a}{library\+::physics\+::env\+::obj\+::\+Celestial}.
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1_object_a1a8f4358db37b1b8830866373f8f3670}\label{classlibrary_1_1physics_1_1env_1_1_object_a1a8f4358db37b1b8830866373f8f3670}} 
+\index{library\+::physics\+::env\+::\+Object@{library\+::physics\+::env\+::\+Object}!get\+Velocity\+In@{get\+Velocity\+In}}
+\index{get\+Velocity\+In@{get\+Velocity\+In}!library\+::physics\+::env\+::\+Object@{library\+::physics\+::env\+::\+Object}}
+\subsubsection{\texorpdfstring{get\+Velocity\+In()}{getVelocityIn()}}
+{\footnotesize\ttfamily virtual \hyperlink{classlibrary_1_1physics_1_1coord_1_1_velocity}{Velocity} library\+::physics\+::env\+::\+Object\+::get\+Velocity\+In (\begin{DoxyParamCaption}\item[{const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+Frame\+S\+Ptr }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_accaa3b1fdc39a1a058fd35006f31982d}{library\+::physics\+::env\+::obj\+::\+Celestial}.
 
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1_object_a7035edc921681401ddd43b094645a024}\label{classlibrary_1_1physics_1_1env_1_1_object_a7035edc921681401ddd43b094645a024}} 
 \index{library\+::physics\+::env\+::\+Object@{library\+::physics\+::env\+::\+Object}!is\+Defined@{is\+Defined}}

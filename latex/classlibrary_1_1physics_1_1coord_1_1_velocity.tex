@@ -19,7 +19,7 @@ enum \hyperlink{classlibrary_1_1physics_1_1coord_1_1_velocity_a8bbc811932c454dbe
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classlibrary_1_1physics_1_1coord_1_1_velocity_a4e2058adb91710a45a6d8165fae9e8e0}{Velocity} (const Vector3d \&a\+Coordinate\+Set, const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_velocity_a8bbc811932c454dbe0ab8b56f1b2c0b3}{Velocity\+::\+Unit} \&a\+Unit, const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+Frame)
+\hyperlink{classlibrary_1_1physics_1_1coord_1_1_velocity_a8fa6aa2464ceddd44b65ef1b1de4c77d}{Velocity} (const Vector3d \&a\+Coordinate\+Set, const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_velocity_a8bbc811932c454dbe0ab8b56f1b2c0b3}{Velocity\+::\+Unit} \&a\+Unit, const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+Frame\+S\+Ptr)
 \item 
 bool \hyperlink{classlibrary_1_1physics_1_1coord_1_1_velocity_afa328f637276f940812aea194836aeb9}{operator==} (const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_velocity}{Velocity} \&a\+Velocity) const
 \item 
@@ -37,7 +37,7 @@ Vector3d \hyperlink{classlibrary_1_1physics_1_1coord_1_1_velocity_a1ac18f97a304a
 \item 
 \hyperlink{classlibrary_1_1physics_1_1coord_1_1_velocity}{Velocity} \hyperlink{classlibrary_1_1physics_1_1coord_1_1_velocity_a814e6740d6b54cf5421d9aa7fc0f5958}{in\+Unit} (const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_velocity_a8bbc811932c454dbe0ab8b56f1b2c0b3}{Velocity\+::\+Unit} \&a\+Unit) const
 \item 
-\hyperlink{classlibrary_1_1physics_1_1coord_1_1_velocity}{Velocity} \hyperlink{classlibrary_1_1physics_1_1coord_1_1_velocity_ac2e825fe682f526884764218425a14b7}{in\+Frame} (const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_position}{Position} \&a\+Position, const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+Frame, const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant) const
+\hyperlink{classlibrary_1_1physics_1_1coord_1_1_velocity}{Velocity} \hyperlink{classlibrary_1_1physics_1_1coord_1_1_velocity_a2c6cf9ff38a1352b3e87578e0d2cb132}{in\+Frame} (const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_position}{Position} \&a\+Position, const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+Frame\+S\+Ptr, const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant) const
 \item 
 String \hyperlink{classlibrary_1_1physics_1_1coord_1_1_velocity_a16c176cadc68b384eb3d8e5594b316bd}{to\+String} (const Integer \&a\+Precision=Integer\+::\+Undefined()) const
 \end{DoxyCompactItemize}
@@ -46,7 +46,7 @@ String \hyperlink{classlibrary_1_1physics_1_1coord_1_1_velocity_a16c176cadc68b38
 \item 
 static \hyperlink{classlibrary_1_1physics_1_1coord_1_1_velocity}{Velocity} \hyperlink{classlibrary_1_1physics_1_1coord_1_1_velocity_ae6480807520330e282b712805aa4fea5}{Undefined} ()
 \item 
-static \hyperlink{classlibrary_1_1physics_1_1coord_1_1_velocity}{Velocity} \hyperlink{classlibrary_1_1physics_1_1coord_1_1_velocity_ae00ee3d929b00160789cf33dcb448ae3}{Meters\+Per\+Second} (const Vector3d \&a\+Coordinate\+Set, const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+Frame)
+static \hyperlink{classlibrary_1_1physics_1_1coord_1_1_velocity}{Velocity} \hyperlink{classlibrary_1_1physics_1_1coord_1_1_velocity_aca486d66f18e8fab83d45c3b52bb9324}{Meters\+Per\+Second} (const Vector3d \&a\+Coordinate\+Set, const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+Frame\+S\+Ptr)
 \item 
 static String \hyperlink{classlibrary_1_1physics_1_1coord_1_1_velocity_ad9a3d2d5759384f513f7790534e620a3}{String\+From\+Unit} (const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_velocity_a8bbc811932c454dbe0ab8b56f1b2c0b3}{Velocity\+::\+Unit} \&a\+Unit)
 \end{DoxyCompactItemize}
@@ -80,11 +80,11 @@ Meter\+Per\+Second&\\
 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1_velocity_a4e2058adb91710a45a6d8165fae9e8e0}\label{classlibrary_1_1physics_1_1coord_1_1_velocity_a4e2058adb91710a45a6d8165fae9e8e0}} 
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1_velocity_a8fa6aa2464ceddd44b65ef1b1de4c77d}\label{classlibrary_1_1physics_1_1coord_1_1_velocity_a8fa6aa2464ceddd44b65ef1b1de4c77d}} 
 \index{library\+::physics\+::coord\+::\+Velocity@{library\+::physics\+::coord\+::\+Velocity}!Velocity@{Velocity}}
 \index{Velocity@{Velocity}!library\+::physics\+::coord\+::\+Velocity@{library\+::physics\+::coord\+::\+Velocity}}
 \subsubsection{\texorpdfstring{Velocity()}{Velocity()}}
-{\footnotesize\ttfamily library\+::physics\+::coord\+::\+Velocity\+::\+Velocity (\begin{DoxyParamCaption}\item[{const Vector3d \&}]{a\+Coordinate\+Set,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_velocity_a8bbc811932c454dbe0ab8b56f1b2c0b3}{Velocity\+::\+Unit} \&}]{a\+Unit,  }\item[{const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+Frame }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily library\+::physics\+::coord\+::\+Velocity\+::\+Velocity (\begin{DoxyParamCaption}\item[{const Vector3d \&}]{a\+Coordinate\+Set,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_velocity_a8bbc811932c454dbe0ab8b56f1b2c0b3}{Velocity\+::\+Unit} \&}]{a\+Unit,  }\item[{const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+Frame\+S\+Ptr }\end{DoxyParamCaption})}
 
 
 
@@ -113,11 +113,11 @@ Meter\+Per\+Second&\\
 \subsubsection{\texorpdfstring{get\+Unit()}{getUnit()}}
 {\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1coord_1_1_velocity_a8bbc811932c454dbe0ab8b56f1b2c0b3}{Velocity\+::\+Unit} library\+::physics\+::coord\+::\+Velocity\+::get\+Unit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
-\mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1_velocity_ac2e825fe682f526884764218425a14b7}\label{classlibrary_1_1physics_1_1coord_1_1_velocity_ac2e825fe682f526884764218425a14b7}} 
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1_velocity_a2c6cf9ff38a1352b3e87578e0d2cb132}\label{classlibrary_1_1physics_1_1coord_1_1_velocity_a2c6cf9ff38a1352b3e87578e0d2cb132}} 
 \index{library\+::physics\+::coord\+::\+Velocity@{library\+::physics\+::coord\+::\+Velocity}!in\+Frame@{in\+Frame}}
 \index{in\+Frame@{in\+Frame}!library\+::physics\+::coord\+::\+Velocity@{library\+::physics\+::coord\+::\+Velocity}}
 \subsubsection{\texorpdfstring{in\+Frame()}{inFrame()}}
-{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1coord_1_1_velocity}{Velocity} library\+::physics\+::coord\+::\+Velocity\+::in\+Frame (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_position}{Position} \&}]{a\+Position,  }\item[{const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+Frame,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1coord_1_1_velocity}{Velocity} library\+::physics\+::coord\+::\+Velocity\+::in\+Frame (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_position}{Position} \&}]{a\+Position,  }\item[{const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+Frame\+S\+Ptr,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption}) const}
 
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1_velocity_a814e6740d6b54cf5421d9aa7fc0f5958}\label{classlibrary_1_1physics_1_1coord_1_1_velocity_a814e6740d6b54cf5421d9aa7fc0f5958}} 
 \index{library\+::physics\+::coord\+::\+Velocity@{library\+::physics\+::coord\+::\+Velocity}!in\+Unit@{in\+Unit}}
@@ -131,11 +131,11 @@ Meter\+Per\+Second&\\
 \subsubsection{\texorpdfstring{is\+Defined()}{isDefined()}}
 {\footnotesize\ttfamily bool library\+::physics\+::coord\+::\+Velocity\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
-\mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1_velocity_ae00ee3d929b00160789cf33dcb448ae3}\label{classlibrary_1_1physics_1_1coord_1_1_velocity_ae00ee3d929b00160789cf33dcb448ae3}} 
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1_velocity_aca486d66f18e8fab83d45c3b52bb9324}\label{classlibrary_1_1physics_1_1coord_1_1_velocity_aca486d66f18e8fab83d45c3b52bb9324}} 
 \index{library\+::physics\+::coord\+::\+Velocity@{library\+::physics\+::coord\+::\+Velocity}!Meters\+Per\+Second@{Meters\+Per\+Second}}
 \index{Meters\+Per\+Second@{Meters\+Per\+Second}!library\+::physics\+::coord\+::\+Velocity@{library\+::physics\+::coord\+::\+Velocity}}
 \subsubsection{\texorpdfstring{Meters\+Per\+Second()}{MetersPerSecond()}}
-{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1coord_1_1_velocity}{Velocity} library\+::physics\+::coord\+::\+Velocity\+::\+Meters\+Per\+Second (\begin{DoxyParamCaption}\item[{const Vector3d \&}]{a\+Coordinate\+Set,  }\item[{const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+Frame }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1coord_1_1_velocity}{Velocity} library\+::physics\+::coord\+::\+Velocity\+::\+Meters\+Per\+Second (\begin{DoxyParamCaption}\item[{const Vector3d \&}]{a\+Coordinate\+Set,  }\item[{const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+Frame\+S\+Ptr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1_velocity_aaa76cc11a5ecbbff21839f1ea5f8aa8e}\label{classlibrary_1_1physics_1_1coord_1_1_velocity_aaa76cc11a5ecbbff21839f1ea5f8aa8e}} 
 \index{library\+::physics\+::coord\+::\+Velocity@{library\+::physics\+::coord\+::\+Velocity}!operator"!=@{operator"!=}}

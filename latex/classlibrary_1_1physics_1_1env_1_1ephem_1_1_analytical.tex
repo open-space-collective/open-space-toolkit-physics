@@ -13,7 +13,7 @@ Inheritance diagram for library\+:\+:physics\+:\+:env\+:\+:ephem\+:\+:Analytical
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1_analytical_af74e01bea441355b0ad445f94c10eb3a}{Analytical} (const Shared$<$ \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+Frame)
+\hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1_analytical_a3282f9dfc8fbe95f4b8a7a89141ca60e}{Analytical} (const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+Frame\+S\+Ptr)
 \item 
 virtual \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1_analytical_a0219af2c16308c2e7d39e40ba57fa11e}{$\sim$\+Analytical} () override
 \item 
@@ -21,16 +21,16 @@ virtual \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1_analytical}{Analy
 \item 
 virtual bool \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1_analytical_a0c0fe5d8326ba439bb0b51e7536ab0fd}{is\+Defined} () const override
 \item 
-virtual Weak$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1_analytical_a5de6a5ae0fe86c7e2ad76a3848820899}{access\+Frame} () const override
+virtual Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1_analytical_ad16f575a7804bd29710030289d5630b1}{access\+Frame} () const override
 \end{DoxyCompactItemize}
 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1ephem_1_1_analytical_af74e01bea441355b0ad445f94c10eb3a}\label{classlibrary_1_1physics_1_1env_1_1ephem_1_1_analytical_af74e01bea441355b0ad445f94c10eb3a}} 
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1ephem_1_1_analytical_a3282f9dfc8fbe95f4b8a7a89141ca60e}\label{classlibrary_1_1physics_1_1env_1_1ephem_1_1_analytical_a3282f9dfc8fbe95f4b8a7a89141ca60e}} 
 \index{library\+::physics\+::env\+::ephem\+::\+Analytical@{library\+::physics\+::env\+::ephem\+::\+Analytical}!Analytical@{Analytical}}
 \index{Analytical@{Analytical}!library\+::physics\+::env\+::ephem\+::\+Analytical@{library\+::physics\+::env\+::ephem\+::\+Analytical}}
 \subsubsection{\texorpdfstring{Analytical()}{Analytical()}}
-{\footnotesize\ttfamily library\+::physics\+::env\+::ephem\+::\+Analytical\+::\+Analytical (\begin{DoxyParamCaption}\item[{const Shared$<$ \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+Frame }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily library\+::physics\+::env\+::ephem\+::\+Analytical\+::\+Analytical (\begin{DoxyParamCaption}\item[{const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+Frame\+S\+Ptr }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1ephem_1_1_analytical_a0219af2c16308c2e7d39e40ba57fa11e}\label{classlibrary_1_1physics_1_1env_1_1ephem_1_1_analytical_a0219af2c16308c2e7d39e40ba57fa11e}} 
 \index{library\+::physics\+::env\+::ephem\+::\+Analytical@{library\+::physics\+::env\+::ephem\+::\+Analytical}!````~Analytical@{$\sim$\+Analytical}}
@@ -41,15 +41,15 @@ virtual Weak$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Fra
 
 
 \subsection{Member Function Documentation}
-\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1ephem_1_1_analytical_a5de6a5ae0fe86c7e2ad76a3848820899}\label{classlibrary_1_1physics_1_1env_1_1ephem_1_1_analytical_a5de6a5ae0fe86c7e2ad76a3848820899}} 
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1ephem_1_1_analytical_ad16f575a7804bd29710030289d5630b1}\label{classlibrary_1_1physics_1_1env_1_1ephem_1_1_analytical_ad16f575a7804bd29710030289d5630b1}} 
 \index{library\+::physics\+::env\+::ephem\+::\+Analytical@{library\+::physics\+::env\+::ephem\+::\+Analytical}!access\+Frame@{access\+Frame}}
 \index{access\+Frame@{access\+Frame}!library\+::physics\+::env\+::ephem\+::\+Analytical@{library\+::physics\+::env\+::ephem\+::\+Analytical}}
 \subsubsection{\texorpdfstring{access\+Frame()}{accessFrame()}}
-{\footnotesize\ttfamily Weak$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ library\+::physics\+::env\+::ephem\+::\+Analytical\+::access\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ library\+::physics\+::env\+::ephem\+::\+Analytical\+::access\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
-Implements \hyperlink{classlibrary_1_1physics_1_1env_1_1_ephemeris_a62109772f7673764f31a496ec9a52a27}{library\+::physics\+::env\+::\+Ephemeris}.
+Implements \hyperlink{classlibrary_1_1physics_1_1env_1_1_ephemeris_ac832f493239ace4d53c1c5130c1dad31}{library\+::physics\+::env\+::\+Ephemeris}.
 
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1ephem_1_1_analytical_acd51ca99177b1433b6623829ae003bec}\label{classlibrary_1_1physics_1_1env_1_1ephem_1_1_analytical_acd51ca99177b1433b6623829ae003bec}} 
 \index{library\+::physics\+::env\+::ephem\+::\+Analytical@{library\+::physics\+::env\+::ephem\+::\+Analytical}!clone@{clone}}

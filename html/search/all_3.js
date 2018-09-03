@@ -26,5 +26,8 @@ var searchData=
   ['dxerror_5fa',['dxError_A',['../structlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data.html#aae23ff1f9d5d4f111929bb36ddf5c38b',1,'library::physics::coord::frame::provider::iers::Finals2000A::Data']]],
   ['dy_5fa',['dy_A',['../structlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data.html#aca5aeb05f1d26dc623a6fe1453f7eb50',1,'library::physics::coord::frame::provider::iers::Finals2000A::Data']]],
   ['dy_5fb',['dy_B',['../structlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data.html#a4abde09f9207049900da449411801c53',1,'library::physics::coord::frame::provider::iers::Finals2000A::Data']]],
-  ['dyerror_5fa',['dyError_A',['../structlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data.html#ab0b291e4b6e8c890373c75876eeab417',1,'library::physics::coord::frame::provider::iers::Finals2000A::Data']]]
+  ['dyerror_5fa',['dyError_A',['../structlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data.html#ab0b291e4b6e8c890373c75876eeab417',1,'library::physics::coord::frame::provider::iers::Finals2000A::Data']]],
+  ['dynamic',['Dynamic',['../classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1_dynamic.html',1,'library::physics::coord::frame::provider::Dynamic'],['../classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1_dynamic.html#a9969003390848043b95d6ee4f451eade',1,'library::physics::coord::frame::provider::Dynamic::Dynamic()']]],
+  ['dynamic_2ecpp',['Dynamic.cpp',['../_dynamic_8cpp.html',1,'']]],
+  ['dynamic_2ehpp',['Dynamic.hpp',['../_dynamic_8hpp.html',1,'']]]
 ];

@@ -1,6 +1,7 @@
 var dir_da5becb1fdc5727395c91a98fe77e654 =
 [
     [ "Ephemerides", "dir_091c6a418787f0ffa10d2c08e6069a4b.html", "dir_091c6a418787f0ffa10d2c08e6069a4b" ],
+    [ "Object", "dir_c717d95e5af8ed035eae258323d361fe.html", "dir_c717d95e5af8ed035eae258323d361fe" ],
     [ "Objects", "dir_def22a01ec957cce1c2968d8e24a5135.html", "dir_def22a01ec957cce1c2968d8e24a5135" ],
     [ "Constants.hpp", "_constants_8hpp.html", null ],
     [ "Ephemeris.hpp", "_ephemeris_8hpp.html", [

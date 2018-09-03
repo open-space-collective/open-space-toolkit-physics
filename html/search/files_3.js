@@ -7,5 +7,7 @@ var searchData=
   ['derived_2ecpp',['Derived.cpp',['../_derived_8cpp.html',1,'']]],
   ['derived_2ehpp',['Derived.hpp',['../_derived_8hpp.html',1,'']]],
   ['duration_2ecpp',['Duration.cpp',['../_duration_8cpp.html',1,'']]],
-  ['duration_2ehpp',['Duration.hpp',['../_duration_8hpp.html',1,'']]]
+  ['duration_2ehpp',['Duration.hpp',['../_duration_8hpp.html',1,'']]],
+  ['dynamic_2ecpp',['Dynamic.cpp',['../_dynamic_8cpp.html',1,'']]],
+  ['dynamic_2ehpp',['Dynamic.hpp',['../_dynamic_8hpp.html',1,'']]]
 ];
