@@ -95,7 +95,14 @@ class Geometry
         template <class Type>
         bool                    is                                          ( ) const
         {
-            return this->isDefined() && (dynamic_cast<const Type*>(objectUPtr_.get()) != nullptr) ;
+
+            if (!this->isDefined())
+            {
+                throw library::core::error::RuntimeError("Geometry is undefined.") ;
+            }
+            
+            return dynamic_cast<const Type*>(objectUPtr_.get()) != nullptr ;
+
         }
 
         /// @brief              Access eometry's underlying object

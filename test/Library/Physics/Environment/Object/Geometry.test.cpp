@@ -41,11 +41,21 @@
 TEST (Library_Physics_Environment_Object_Geometry, Constructor)
 {
 
+    using library::math::geom::d3::objects::Point ;
+    using library::math::geom::d3::objects::Polygon ;
+    using library::math::geom::d3::objects::Pyramid ;
+
+    using library::physics::coord::Frame ;
     using library::physics::env::object::Geometry ;
 
     {
 
-        FAIL() ;
+        const Polygon base = { { { { 0.0, 0.0 }, { 1.0, 0.0 }, { 1.0, 1.0 }, { 0.0, 1.0 } } }, { 0.0, 0.0, 2.0 }, { 1.0, 0.0, 0.0 }, { 0.0, 1.0, 0.0 } } ;
+        const Point apex = { 0.0, 0.0, 1.0 } ;
+
+        const Pyramid pyramid = { base, apex } ;
+
+        EXPECT_NO_THROW(Geometry geometry(pyramid, Frame::GCRF()) ; ) ;
 
     }
 
@@ -54,11 +64,46 @@ TEST (Library_Physics_Environment_Object_Geometry, Constructor)
 TEST (Library_Physics_Environment_Object_Geometry, EqualToOperator)
 {
 
+    using library::math::geom::d3::objects::Point ;
+    using library::math::geom::d3::objects::Polygon ;
+    using library::math::geom::d3::objects::Pyramid ;
+
+    using library::physics::coord::Frame ;
     using library::physics::env::object::Geometry ;
 
     {
 
-        FAIL() ;
+        const Polygon base = { { { { 0.0, 0.0 }, { 1.0, 0.0 }, { 1.0, 1.0 }, { 0.0, 1.0 } } }, { 0.0, 0.0, 2.0 }, { 1.0, 0.0, 0.0 }, { 0.0, 1.0, 0.0 } } ;
+        const Point apex = { 0.0, 0.0, 1.0 } ;
+
+        const Pyramid pyramid = { base, apex } ;
+
+        const Geometry geometry = { pyramid, Frame::GCRF() } ;
+
+        EXPECT_TRUE(geometry == geometry) ;
+
+    }
+
+    {
+
+        const Polygon base = { { { { 0.0, 0.0 }, { 1.0, 0.0 }, { 1.0, 1.0 }, { 0.0, 1.0 } } }, { 0.0, 0.0, 2.0 }, { 1.0, 0.0, 0.0 }, { 0.0, 1.0, 0.0 } } ;
+        const Point apex = { 0.0, 0.0, 1.0 } ;
+
+        const Pyramid pyramid = { base, apex } ;
+
+        const Geometry firstGeometry = { pyramid, Frame::GCRF() } ;
+        const Geometry secondGeometry = { pyramid, Frame::ITRF() } ;
+
+        EXPECT_FALSE(firstGeometry == secondGeometry) ;
+
+        EXPECT_FALSE(firstGeometry == Geometry::Undefined()) ;
+        EXPECT_FALSE(Geometry::Undefined() == firstGeometry) ;
+
+    }
+
+    {
+
+        EXPECT_FALSE(Geometry::Undefined() == Geometry::Undefined()) ;
 
     }
 
@@ -67,11 +112,46 @@ TEST (Library_Physics_Environment_Object_Geometry, EqualToOperator)
 TEST (Library_Physics_Environment_Object_Geometry, NotEqualToOperator)
 {
 
+    using library::math::geom::d3::objects::Point ;
+    using library::math::geom::d3::objects::Polygon ;
+    using library::math::geom::d3::objects::Pyramid ;
+
+    using library::physics::coord::Frame ;
     using library::physics::env::object::Geometry ;
 
     {
 
-        FAIL() ;
+        const Polygon base = { { { { 0.0, 0.0 }, { 1.0, 0.0 }, { 1.0, 1.0 }, { 0.0, 1.0 } } }, { 0.0, 0.0, 2.0 }, { 1.0, 0.0, 0.0 }, { 0.0, 1.0, 0.0 } } ;
+        const Point apex = { 0.0, 0.0, 1.0 } ;
+
+        const Pyramid pyramid = { base, apex } ;
+
+        const Geometry geometry = { pyramid, Frame::GCRF() } ;
+
+        EXPECT_FALSE(geometry != geometry) ;
+
+    }
+
+    {
+
+        const Polygon base = { { { { 0.0, 0.0 }, { 1.0, 0.0 }, { 1.0, 1.0 }, { 0.0, 1.0 } } }, { 0.0, 0.0, 2.0 }, { 1.0, 0.0, 0.0 }, { 0.0, 1.0, 0.0 } } ;
+        const Point apex = { 0.0, 0.0, 1.0 } ;
+
+        const Pyramid pyramid = { base, apex } ;
+
+        const Geometry firstGeometry = { pyramid, Frame::GCRF() } ;
+        const Geometry secondGeometry = { pyramid, Frame::ITRF() } ;
+
+        EXPECT_TRUE(firstGeometry != secondGeometry) ;
+
+        EXPECT_TRUE(firstGeometry != Geometry::Undefined()) ;
+        EXPECT_TRUE(Geometry::Undefined() != firstGeometry) ;
+
+    }
+
+    {
+
+        EXPECT_TRUE(Geometry::Undefined() != Geometry::Undefined()) ;
 
     }
 
@@ -80,11 +160,27 @@ TEST (Library_Physics_Environment_Object_Geometry, NotEqualToOperator)
 TEST (Library_Physics_Environment_Object_Geometry, StreamOperator)
 {
 
+    using library::math::geom::d3::objects::Point ;
+    using library::math::geom::d3::objects::Polygon ;
+    using library::math::geom::d3::objects::Pyramid ;
+
+    using library::physics::coord::Frame ;
     using library::physics::env::object::Geometry ;
 
     {
 
-        FAIL() ;
+        const Polygon base = { { { { 0.0, 0.0 }, { 1.0, 0.0 }, { 1.0, 1.0 }, { 0.0, 1.0 } } }, { 0.0, 0.0, 2.0 }, { 1.0, 0.0, 0.0 }, { 0.0, 1.0, 0.0 } } ;
+        const Point apex = { 0.0, 0.0, 1.0 } ;
+
+        const Pyramid pyramid = { base, apex } ;
+
+        const Geometry geometry = { pyramid, Frame::GCRF() } ;
+
+        testing::internal::CaptureStdout() ;
+
+        EXPECT_NO_THROW(std::cout << geometry << std::endl) ;
+
+        EXPECT_FALSE(testing::internal::GetCapturedStdout().empty()) ;
 
     }
 
@@ -93,50 +189,113 @@ TEST (Library_Physics_Environment_Object_Geometry, StreamOperator)
 TEST (Library_Physics_Environment_Object_Geometry, IsDefined)
 {
 
+    using library::math::geom::d3::objects::Point ;
+    using library::math::geom::d3::objects::Polygon ;
+    using library::math::geom::d3::objects::Pyramid ;
+
+    using library::physics::coord::Frame ;
     using library::physics::env::object::Geometry ;
 
     {
 
-        FAIL() ;
+        const Polygon base = { { { { 0.0, 0.0 }, { 1.0, 0.0 }, { 1.0, 1.0 }, { 0.0, 1.0 } } }, { 0.0, 0.0, 2.0 }, { 1.0, 0.0, 0.0 }, { 0.0, 1.0, 0.0 } } ;
+        const Point apex = { 0.0, 0.0, 1.0 } ;
+
+        const Pyramid pyramid = { base, apex } ;
+
+        const Geometry geometry = { pyramid, Frame::GCRF() } ;
+
+        EXPECT_TRUE(geometry.isDefined()) ;
+
+    }
+
+    {
+
+        EXPECT_FALSE(Geometry::Undefined().isDefined()) ;
 
     }
 
 }
 
-TEST (Library_Physics_Environment_Object_Geometry, Intersects)
-{
+// TEST (Library_Physics_Environment_Object_Geometry, Intersects)
+// {
 
-    using library::physics::env::object::Geometry ;
+//     using library::math::geom::d3::objects::Point ;
+//     using library::math::geom::d3::objects::Polygon ;
+//     using library::math::geom::d3::objects::Pyramid ;
 
-    {
+//     using library::physics::coord::Frame ;
+//     using library::physics::env::object::Geometry ;
 
-        FAIL() ;
+//     {
 
-    }
+//         const Polygon base = { { { { 0.0, 0.0 }, { 1.0, 0.0 }, { 1.0, 1.0 }, { 0.0, 1.0 } } }, { 0.0, 0.0, 2.0 }, { 1.0, 0.0, 0.0 }, { 0.0, 1.0, 0.0 } } ;
+//         const Point apex = { 0.0, 0.0, 1.0 } ;
 
-}
+//         const Pyramid pyramid = { base, apex } ;
 
-TEST (Library_Physics_Environment_Object_Geometry, Contains)
-{
+//         const Geometry geometry = { pyramid, Frame::GCRF() } ;
 
-    using library::physics::env::object::Geometry ;
+//         EXPECT_TRUE(geometry.intersects(geometry)) ;
 
-    {
+//     }
 
-        FAIL() ;
+//     {
 
-    }
+//         const Polygon base = { { { { 0.0, 0.0 }, { 1.0, 0.0 }, { 1.0, 1.0 }, { 0.0, 1.0 } } }, { 0.0, 0.0, 2.0 }, { 1.0, 0.0, 0.0 }, { 0.0, 1.0, 0.0 } } ;
+//         const Point apex = { 0.0, 0.0, 1.0 } ;
 
-}
+//         const Pyramid pyramid = { base, apex } ;
+
+//         const Geometry geometry = { pyramid, Frame::GCRF() } ;
+
+//         EXPECT_ANY_THROW(Geometry::Undefined().intersects(Geometry::Undefined())) ;
+//         EXPECT_ANY_THROW(geometry.intersects(Geometry::Undefined())) ;
+//         EXPECT_ANY_THROW(Geometry::Undefined().intersects(geometry)) ;
+
+//     }
+
+// }
+
+// TEST (Library_Physics_Environment_Object_Geometry, Contains)
+// {
+
+//     using library::physics::env::object::Geometry ;
+
+//     {
+
+//         FAIL() ;
+
+//     }
+
+// }
 
 TEST (Library_Physics_Environment_Object_Geometry, AccessFrame)
 {
 
+    using library::math::geom::d3::objects::Point ;
+    using library::math::geom::d3::objects::Polygon ;
+    using library::math::geom::d3::objects::Pyramid ;
+
+    using library::physics::coord::Frame ;
     using library::physics::env::object::Geometry ;
 
     {
 
-        FAIL() ;
+        const Polygon base = { { { { 0.0, 0.0 }, { 1.0, 0.0 }, { 1.0, 1.0 }, { 0.0, 1.0 } } }, { 0.0, 0.0, 2.0 }, { 1.0, 0.0, 0.0 }, { 0.0, 1.0, 0.0 } } ;
+        const Point apex = { 0.0, 0.0, 1.0 } ;
+
+        const Pyramid pyramid = { base, apex } ;
+
+        const Geometry geometry = { pyramid, Frame::GCRF() } ;
+
+        EXPECT_EQ(Frame::GCRF(), geometry.accessFrame()) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Geometry::Undefined().accessFrame()) ;
 
     }
 
@@ -204,11 +363,31 @@ TEST (Library_Physics_Environment_Object_Geometry, In)
 TEST (Library_Physics_Environment_Object_Geometry, Is)
 {
 
+    using library::math::geom::d3::objects::Point ;
+    using library::math::geom::d3::objects::Polygon ;
+    using library::math::geom::d3::objects::Ellipsoid ;
+    using library::math::geom::d3::objects::Pyramid ;
+
+    using library::physics::coord::Frame ;
     using library::physics::env::object::Geometry ;
 
     {
 
-        FAIL() ;
+        const Polygon base = { { { { 0.0, 0.0 }, { 1.0, 0.0 }, { 1.0, 1.0 }, { 0.0, 1.0 } } }, { 0.0, 0.0, 2.0 }, { 1.0, 0.0, 0.0 }, { 0.0, 1.0, 0.0 } } ;
+        const Point apex = { 0.0, 0.0, 1.0 } ;
+
+        const Pyramid pyramid = { base, apex } ;
+
+        const Geometry geometry = { pyramid, Frame::GCRF() } ;
+
+        EXPECT_TRUE(geometry.is<Pyramid>()) ;
+        EXPECT_FALSE(geometry.is<Ellipsoid>()) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Geometry::Undefined().is<Pyramid>()) ;
 
     }
 
@@ -217,28 +396,50 @@ TEST (Library_Physics_Environment_Object_Geometry, Is)
 TEST (Library_Physics_Environment_Object_Geometry, As)
 {
 
+    using library::math::geom::d3::objects::Point ;
+    using library::math::geom::d3::objects::Polygon ;
+    using library::math::geom::d3::objects::Ellipsoid ;
+    using library::math::geom::d3::objects::Pyramid ;
+
+    using library::physics::coord::Frame ;
     using library::physics::env::object::Geometry ;
 
     {
 
-        FAIL() ;
+        const Polygon base = { { { { 0.0, 0.0 }, { 1.0, 0.0 }, { 1.0, 1.0 }, { 0.0, 1.0 } } }, { 0.0, 0.0, 2.0 }, { 1.0, 0.0, 0.0 }, { 0.0, 1.0, 0.0 } } ;
+        const Point apex = { 0.0, 0.0, 1.0 } ;
+
+        const Pyramid pyramid = { base, apex } ;
+
+        const Geometry geometry = { pyramid, Frame::GCRF() } ;
+
+        EXPECT_NO_THROW(geometry.as<Pyramid>()) ;
+        EXPECT_ANY_THROW(geometry.as<Ellipsoid>()) ;
+
+        EXPECT_EQ(pyramid, geometry.as<Pyramid>()) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Geometry::Undefined().as<Pyramid>()) ;
 
     }
 
 }
 
-TEST (Library_Physics_Environment_Object_Geometry, IntersectionWith)
-{
+// TEST (Library_Physics_Environment_Object_Geometry, IntersectionWith)
+// {
 
-    using library::physics::env::object::Geometry ;
+//     using library::physics::env::object::Geometry ;
 
-    {
+//     {
 
-        FAIL() ;
+//         FAIL() ;
 
-    }
+//     }
 
-}
+// }
 
 TEST (Library_Physics_Environment_Object_Geometry, Undefined)
 {

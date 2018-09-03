@@ -40,18 +40,18 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-TEST (Library_Physics_Environment_Objects_CelestialBodies_Earth, Constructor)
-{
+// TEST (Library_Physics_Environment_Objects_CelestialBodies_Earth, Constructor)
+// {
 
-    using library::physics::env::obj::celest::Earth ;
+//     using library::physics::env::obj::celest::Earth ;
 
-    {
+//     {
 
-        FAIL() ;
+//         FAIL() ;
 
-    }
+//     }
 
-}
+// }
 
 TEST (Library_Physics_Environment_Objects_CelestialBodies_Earth, GetFrameAt)
 {

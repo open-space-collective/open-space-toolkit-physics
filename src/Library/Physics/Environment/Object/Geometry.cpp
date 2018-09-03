@@ -83,7 +83,7 @@ Geometry&                       Geometry::operator =                        (   
 bool                            Geometry::operator ==                       (   const   Geometry&                   aGeometry                                   ) const
 {
 
-    if ((!this->isDefined()) && (!aGeometry.isDefined()))
+    if ((!this->isDefined()) || (!aGeometry.isDefined()))
     {
         return false ;
     }
