@@ -15,6 +15,7 @@
 #include <Library/Physics/Coordinate/Transform.hpp>
 #include <Library/Physics/Coordinate/Frame.hpp>
 #include <Library/Physics/Coordinate/Axes.hpp>
+#include <Library/Physics/Coordinate/Spherical/LLA.hpp>
 #include <Library/Physics/Coordinate/Position.hpp>
 #include <Library/Physics/Units/Derived.hpp>
 #include <Library/Physics/Units/Length.hpp>
@@ -22,6 +23,7 @@
 
 #include <Library/Mathematics/Objects/Vector.hpp>
 
+#include <Library/Core/Types/String.hpp>
 #include <Library/Core/Types/Real.hpp>
 #include <Library/Core/Types/Weak.hpp>
 #include <Library/Core/Types/Shared.hpp>
@@ -42,6 +44,7 @@ namespace obj
 using library::core::types::Shared ;
 using library::core::types::Weak ;
 using library::core::types::Real ;
+using library::core::types::String ;
 
 using library::math::obj::Vector3d ;
 
@@ -49,6 +52,7 @@ using library::physics::time::Instant ;
 using library::physics::units::Length ;
 using library::physics::units::Derived ;
 using library::physics::coord::Position ;
+using library::physics::coord::spherical::LLA ;
 using library::physics::coord::Axes ;
 using library::physics::coord::Frame ;
 using library::physics::coord::Transform ;
@@ -72,6 +76,14 @@ class Celestial : public Object
             Earth,
             Moon,
             Mars
+
+        } ;
+
+        enum class FrameType
+        {
+
+            Undefined,          ///< Undefined frame
+            NED,                ///< North-East-Down (NED) frame
 
         } ;
 
@@ -112,17 +124,24 @@ class Celestial : public Object
 
         Real                    getJ2                                       ( ) const ;
 
-        virtual Weak<const Frame> accessFrame                               ( ) const override ;
+        virtual Shared<const Frame> accessFrame                             ( ) const override ;
 
-        virtual Position        getPositionIn                               (   const   Frame&                      aFrame                                      ) const override ;
+        virtual Position        getPositionIn                               (   const   Shared<const Frame>&        aFrameSPtr                                  ) const override ;
 
-        virtual Transform       getTransformTo                              (   const   Frame&                      aFrame                                      ) const override ;
+        virtual Velocity        getVelocityIn                               (   const   Shared<const Frame>&        aFrameSPtr                                  ) const override ;
 
-        virtual Axes            getAxesIn                                   (   const   Frame&                      aFrame                                      ) const override ;
+        virtual Transform       getTransformTo                              (   const   Shared<const Frame>&        aFrameSPtr                                  ) const override ;
+
+        virtual Axes            getAxesIn                                   (   const   Shared<const Frame>&        aFrameSPtr                                  ) const override ;
 
         Vector3d                getGravitationalFieldAt                     (   const   Position&                   aPosition                                   ) const ;
 
+        Shared<const Frame>     getFrameAt                                  (   const   LLA&                        aLla,
+                                                                                const   Celestial::FrameType&       aFrameType                                  ) const ;
+
         static Celestial        Undefined                                   ( ) ;
+
+        static String           StringFromFrameType                         (   const   Celestial::FrameType&       aFrameType                                  ) ;
 
     private:
 

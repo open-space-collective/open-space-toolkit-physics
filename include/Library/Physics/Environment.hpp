@@ -10,8 +10,11 @@
 #ifndef __Library_Physics_Environment__
 #define __Library_Physics_Environment__
 
+#include <Library/Physics/Environment/Objects/Celestial.hpp>
 #include <Library/Physics/Environment/Object.hpp>
 #include <Library/Physics/Time/Instant.hpp>
+
+#include <Library/Mathematics/Geometry/3D/Object.hpp>
 
 #include <Library/Core/Containers/Array.hpp>
 #include <Library/Core/Types/String.hpp>
@@ -34,8 +37,11 @@ using library::core::types::Weak ;
 using library::core::types::String ;
 using library::core::ctnr::Array ;
 
+using GeometricalObject = library::math::geom::d3::Object ;
+
 using library::physics::time::Instant ;
 using library::physics::env::Object ;
+using library::physics::env::obj::Celestial ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -51,13 +57,26 @@ class Environment
 
         Environment&            operator =                                  (   const   Environment&                anEnvironment                               ) ;
 
+        friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
+                                                                                const   Environment&                anEnvironment                               ) ;
+
         bool                    isDefined                                   ( ) const ;
 
-        Weak<const Object>      accessObjectWithName                        (   const   String&                     aName                                       ) const ;
+        bool                    hasObjectWithName                           (   const   String&                     aName                                       ) const ;
+
+        Array<Shared<const Object>> accessObjects                           ( ) const ;
+        
+        Shared<const Object>    accessObjectWithName                        (   const   String&                     aName                                       ) const ;
+        
+        Shared<const Celestial> accessCelestialObjectWithName               (   const   String&                     aName                                       ) const ;
 
         Instant                 getInstant                                  ( ) const ;
 
+        Array<String>           getObjectNames                              ( ) const ;
+
         void                    setInstant                                  (   const   Instant&                    anInstant                                   ) ;
+
+        bool                    intersects                                  (   const   Object::Geometry&           aGeometry                                   ) const ;
 
         static Environment      Undefined                                   ( ) ;
 

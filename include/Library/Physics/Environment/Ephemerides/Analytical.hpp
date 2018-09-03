@@ -14,7 +14,6 @@
 #include <Library/Physics/Coordinate/Frame.hpp>
 #include <Library/Physics/Time/Instant.hpp>
 
-#include <Library/Core/Types/Weak.hpp>
 #include <Library/Core/Types/Shared.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -31,7 +30,6 @@ namespace ephem
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using library::core::types::Shared ;
-using library::core::types::Weak ;
 
 using library::physics::time::Instant ;
 using library::physics::coord::Frame ;
@@ -44,7 +42,7 @@ class Analytical : public Ephemeris
 
     public:
 
-                                Analytical                                  (   const   Shared<Frame>&              aFrame                                      ) ;
+                                Analytical                                  (   const   Shared<const Frame>&        aFrameSPtr                                  ) ;
 
         virtual                 ~Analytical                                 ( ) override ;
 
@@ -52,11 +50,11 @@ class Analytical : public Ephemeris
 
         virtual bool            isDefined                                   ( ) const override ;
 
-        virtual Weak<const Frame> accessFrame                               ( ) const override ;
+        virtual Shared<const Frame> accessFrame                             ( ) const override ;
 
     private:
 
-        Shared<Frame>           frameSPtr_ ;
+        Shared<const Frame>     frameSPtr_ ;
 
 } ;
 

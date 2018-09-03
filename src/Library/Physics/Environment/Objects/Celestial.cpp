@@ -7,6 +7,9 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <Library/Physics/Coordinate/Frame/Utilities.hpp>
+#include <Library/Physics/Coordinate/Frame/Providers/Fixed.hpp>
+#include <Library/Physics/Coordinate/Frame/Manager.hpp>
 #include <Library/Physics/Environment/Objects/Celestial.hpp>
 
 #include <Library/Core/Error.hpp>
@@ -151,7 +154,7 @@ Real                            Celestial::getJ2                            ( ) 
 
 }
 
-Weak<const Frame>               Celestial::accessFrame                      ( ) const
+Shared<const Frame>             Celestial::accessFrame                      ( ) const
 {
 
     if (!this->isDefined())
@@ -163,10 +166,10 @@ Weak<const Frame>               Celestial::accessFrame                      ( ) 
 
 }
 
-Position                        Celestial::getPositionIn                    (   const   Frame&                      aFrame                                      ) const
+Position                        Celestial::getPositionIn                    (   const   Shared<const Frame>&        aFrameSPtr                                  ) const
 {
 
-    if (!aFrame.isDefined())
+    if ((aFrameSPtr == nullptr) || (!aFrameSPtr->isDefined()))
     {
         throw library::core::error::runtime::Undefined("Frame") ;
     }
@@ -176,23 +179,19 @@ Position                        Celestial::getPositionIn                    (   
         throw library::core::error::runtime::Undefined("Celestial") ;
     }
 
-    if (auto frameSPtr = ephemeris_->accessFrame().lock())
-    {
-        return frameSPtr->getOriginIn(aFrame, this->accessInstant()) ;
-    }
-    else
-    {
-        throw library::core::error::RuntimeError("Cannot access frame.") ;
-    }
-
-    return Position::Undefined() ;
+    return ephemeris_->accessFrame()->getOriginIn(aFrameSPtr, this->accessInstant()) ;
 
 }
 
-Transform                       Celestial::getTransformTo                   (   const   Frame&                      aFrame                                      ) const
+Velocity                        Celestial::getVelocityIn                    (   const   Shared<const Frame>&        aFrameSPtr                                  ) const
+{
+    return Velocity(this->getTransformTo(aFrameSPtr).applyToVelocity(Vector3d::Zero(), Vector3d::Zero()), Velocity::Unit::MeterPerSecond, aFrameSPtr) ;
+}
+
+Transform                       Celestial::getTransformTo                   (   const   Shared<const Frame>&        aFrameSPtr                                  ) const
 {
 
-    if (!aFrame.isDefined())
+    if ((aFrameSPtr == nullptr) || (!aFrameSPtr->isDefined()))
     {
         throw library::core::error::runtime::Undefined("Frame") ;
     }
@@ -202,23 +201,14 @@ Transform                       Celestial::getTransformTo                   (   
         throw library::core::error::runtime::Undefined("Celestial") ;
     }
 
-    if (auto frameSPtr = ephemeris_->accessFrame().lock())
-    {
-        return frameSPtr->getTransformTo(aFrame, this->accessInstant()) ;
-    }
-    else
-    {
-        throw library::core::error::RuntimeError("Cannot access frame.") ;
-    }
-
-    return Transform::Undefined() ;
+    return ephemeris_->accessFrame()->getTransformTo(aFrameSPtr, this->accessInstant()) ;
 
 }
 
-Axes                            Celestial::getAxesIn                        (   const   Frame&                      aFrame                                      ) const
+Axes                            Celestial::getAxesIn                        (   const   Shared<const Frame>&        aFrameSPtr                                  ) const
 {
 
-    if (!aFrame.isDefined())
+    if ((aFrameSPtr == nullptr) || (!aFrameSPtr->isDefined()))
     {
         throw library::core::error::runtime::Undefined("Frame") ;
     }
@@ -228,16 +218,7 @@ Axes                            Celestial::getAxesIn                        (   
         throw library::core::error::runtime::Undefined("Celestial") ;
     }
 
-    if (auto frameSPtr = ephemeris_->accessFrame().lock())
-    {
-        return frameSPtr->getAxesIn(aFrame, this->accessInstant()) ;
-    }
-    else
-    {
-        throw library::core::error::RuntimeError("Cannot access frame.") ;
-    }
-
-    return Axes::Undefined() ;
+    return ephemeris_->accessFrame()->getAxesIn(aFrameSPtr, this->accessInstant()) ;
 
 }
 
@@ -262,9 +243,81 @@ Vector3d                        Celestial::getGravitationalFieldAt          (   
 
 }
 
+Shared<const Frame>             Celestial::getFrameAt                       (   const   LLA&                        aLla,
+                                                                                const   Celestial::FrameType&       aFrameType                                  ) const
+{
+
+    using FrameManager = library::physics::coord::frame::Manager ;
+    using FixedProvider = library::physics::coord::frame::provider::Fixed ;
+
+    if (!aLla.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("LLA") ;
+    }
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Celestial") ;
+    }
+
+    switch (aFrameType)
+    {
+
+        case Celestial::FrameType::NED:
+        {
+
+            const String frameName = String::Format("{} NED @ {}", this->accessName(), aLla.toString()) ;
+
+            if (FrameManager::Get().hasFrameWithName(frameName))
+            {
+                return FrameManager::Get().accessFrameWithName(frameName) ;
+            }
+            
+            const Transform transform = library::physics::coord::frame::utilities::NorthEastDownTransformAt(aLla, this->getEquatorialRadius(), this->getFlattening()) ;
+
+            const Shared<const Frame> nedSPtr = std::make_shared<const Frame>(frameName, false, ephemeris_->accessFrame(), std::make_shared<const FixedProvider>(transform)) ;
+
+            FrameManager::Get().addFrame(nedSPtr) ;
+
+            return nedSPtr ;
+
+        }
+
+        default:
+            throw library::core::error::runtime::Wrong("Frame type") ;
+            break ;
+
+    }
+
+    return nullptr ;
+    
+}
+
 Celestial                       Celestial::Undefined                        ( )
 {
-    return Celestial(String::Empty(), Celestial::Type::Undefined, Derived::Undefined(), Length::Undefined(), Real::Undefined(), Real::Undefined(), nullptr, Instant::Undefined()) ;
+    return { String::Empty(), Celestial::Type::Undefined, Derived::Undefined(), Length::Undefined(), Real::Undefined(), Real::Undefined(), nullptr, Instant::Undefined() } ;
+}
+
+String                          Celestial::StringFromFrameType              (   const   Celestial::FrameType&       aFrameType                                  )
+{
+
+    switch (aFrameType)
+    {
+
+        case Celestial::FrameType::Undefined:
+            return "Undefined" ;
+
+        case Celestial::FrameType::NED:
+            return "NED" ;
+
+        default:
+            throw library::core::error::runtime::Wrong("Frame type") ;
+            break ;
+
+    }
+
+    return String::Empty() ;
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

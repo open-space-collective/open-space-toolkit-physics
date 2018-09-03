@@ -13,6 +13,7 @@
 #include <Library/Physics/Coordinate/Frame/Provider.hpp>
 #include <Library/Physics/Coordinate/Transform.hpp>
 #include <Library/Physics/Coordinate/Axes.hpp>
+#include <Library/Physics/Coordinate/Velocity.hpp>
 #include <Library/Physics/Coordinate/Position.hpp>
 
 #include <Library/Mathematics/Objects/Vector.hpp>
@@ -41,6 +42,7 @@ using library::core::types::String ;
 using library::math::obj::Vector3d ;
 
 using library::physics::coord::Position ;
+using library::physics::coord::Velocity ;
 using library::physics::coord::Axes ;
 using library::physics::coord::Transform ;
 using library::physics::coord::frame::Provider ;
@@ -60,7 +62,7 @@ class Frame
                                 Frame                                       (   const   String&                     aName,
                                                                                         bool                        isQuasiInertial,
                                                                                 const   Shared<const Frame>&        aParentFrame,
-                                                                                const   Shared<Provider>&           aProvider                                   ) ;
+                                                                                const   Shared<const Provider>&     aProvider                                   ) ;
 
                                 Frame                                       (   const   Frame&                      aFrame                                      ) ;    
 
@@ -89,42 +91,44 @@ class Frame
 
         String                  getName                                     ( ) const ;
 
-        Position                getOriginIn                                 (   const   Frame&                      aFrame,
+        Position                getOriginIn                                 (   const   Shared<const Frame>&        aFrame,
                                                                                 const   Instant&                    anInstant                                   ) const ;
 
-        Axes                    getAxesIn                                   (   const   Frame&                      aFrame,
+        Velocity                getVelocityIn                               (   const   Shared<const Frame>&        aFrame,
                                                                                 const   Instant&                    anInstant                                   ) const ;
 
-        Transform               getTransformTo                              (   const   Frame&                      aFrame,
+        Axes                    getAxesIn                                   (   const   Shared<const Frame>&        aFrame,
                                                                                 const   Instant&                    anInstant                                   ) const ;
 
-        static Frame            Undefined                                   ( ) ;
+        Transform               getTransformTo                              (   const   Shared<const Frame>&        aFrame,
+                                                                                const   Instant&                    anInstant                                   ) const ;
 
-        static Frame            ICRF                                        ( ) ;
+        static Shared<const Frame> Undefined                                ( ) ;
 
-        static Frame            GCRF                                        ( ) ;
-        static Shared<const Frame> GCRFShared                               ( ) ;
+        static Shared<const Frame> ICRF                                     ( ) ;
 
-        static Frame            EME2000                                     ( ) ;
+        static Shared<const Frame> GCRF                                     ( ) ;
 
-        static Frame            TEME                                        ( ) ;
+        static Shared<const Frame> EME2000                                  ( ) ;
 
-        static Frame            TEMEOfEpoch                                 (   const   Instant&                    anEpoch                                     ) ;
+        static Shared<const Frame> TEME                                     ( ) ;
 
-        static Frame            CIRF                                        ( ) ;
+        static Shared<const Frame> TEMEOfEpoch                              (   const   Instant&                    anEpoch                                     ) ;
 
-        static Frame            TIRF                                        ( ) ;
+        static Shared<const Frame> CIRF                                     ( ) ;
 
-        static Frame            ITRF                                        ( ) ;
+        static Shared<const Frame> TIRF                                     ( ) ;
+
+        static Shared<const Frame> ITRF                                     ( ) ;
+
+        static Shared<const Frame> WithName                                 (   const   String&                     aName                                       ) ;
 
     private:
 
         String                  name_ ;
         bool                    quasiInertial_ ;
-
         Shared<const Frame>     parentFrameSPtr_ ;
-
-        Shared<Provider>        providerSPtr_ ; // Provides transform from parent to instance
+        Shared<const Provider>  providerSPtr_ ; // Provides transform from parent to instance
 
         Uint8                   getDepth                                    ( ) const ;
 

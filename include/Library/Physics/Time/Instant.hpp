@@ -187,7 +187,7 @@ class Instant
         ///
         /// @param              [in] anOutputStream An output stream
         /// @param              [in] anInstant An instant
-        /// @return             An output stream
+        /// @return             A reference to output stream
 
         friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
                                                                                 const   Instant&                    anInstant                                   ) ;

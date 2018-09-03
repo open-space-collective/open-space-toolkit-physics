@@ -7,11 +7,16 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <LibraryPhysicsPy/Utilities/IterableConverter.hpp>
+
 #include <Library/Physics/Units/Length.hpp>
+
+#include <Library/Mathematics/Objects/Interval.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (LibraryPhysicsPy_Units_Length_toString_overloads, library::physics::units::Length::toString, 0, 1)
+BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (LibraryPhysicsPy_Units_Length_Interval_toString_overloads, library::math::obj::Interval<library::physics::units::Length>::toString, 0, 1)
 
 inline void                     LibraryPhysicsPy_Units_Length               ( )
 {
@@ -75,6 +80,36 @@ inline void                     LibraryPhysicsPy_Units_Length               ( )
         .value("NauticalMile", Length::Unit::NauticalMile)
         .value("AstronomicalUnit", Length::Unit::AstronomicalUnit)
 
+    ;
+
+    // using library::core::ctnr::Array ;
+
+    // IterableConverter()
+
+    //     .from_python<Array<Length>>()
+    //     .to_python<Array<Length>>()
+        
+    // ;
+
+    using library::math::obj::Interval ;
+
+    class_<Interval<Length>>("Interval", init<const Length&, const Length&, const Interval<Length>::Type&>())
+
+        .def(self == self)
+        .def(self != self)
+
+        .def("isDefined", &Interval<Length>::isDefined)
+        .def("isDegenerate", &Interval<Length>::isDegenerate)
+        .def("intersects", &Interval<Length>::intersects)
+        .def("containsLength", +[] (const Interval<Length>& anInterval, const Length& aLength) -> bool { return anInterval.contains(aLength) ; })
+        .def("containsInterval", +[] (const Interval<Length>& anInterval, const Interval<Length>& anOtherInterval) -> bool { return anInterval.contains(anOtherInterval) ; })
+
+        .def("getLowerBound", &Interval<Length>::getLowerBound)
+        .def("getUpperBound", &Interval<Length>::getUpperBound)
+
+        .def("Undefined", &Interval<Length>::Undefined).staticmethod("Undefined")
+        .def("Closed", &Interval<Length>::Closed).staticmethod("Closed")
+    
     ;
 
 }

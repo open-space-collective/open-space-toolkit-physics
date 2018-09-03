@@ -144,7 +144,7 @@ Angle&                          Angle::operator +=                          (   
 
     this->accessValue() += ((unit_ == anAngle.unit_) ? anAngle.accessValue() : anAngle.in(unit_)) ;
 
-    return (*this) ;
+    return *this ;
 
 }
 
@@ -158,7 +158,7 @@ Angle&                          Angle::operator -=                          (   
 
     this->accessValue() -= ((unit_ == anAngle.unit_) ? anAngle.accessValue() : anAngle.in(unit_)) ;
 
-    return (*this) ;
+    return *this ;
 
 }
 
@@ -177,7 +177,7 @@ Angle&                          Angle::operator *=                          (   
 
     this->accessValue() *= aReal ;
 
-    return (*this) ;
+    return *this ;
 
 }
 
@@ -201,7 +201,7 @@ Angle&                          Angle::operator /=                          (   
 
     this->accessValue() /= aReal ;
 
-    return (*this) ;
+    return *this ;
 
 }
 

@@ -123,7 +123,7 @@ class DateTime
         ///
         /// @param              [in] anOutputStream An output stream
         /// @param              [in] aDateTime A date-time
-        /// @return             An output stream
+        /// @return             A reference to output stream
 
         friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
                                                                                 const   DateTime&                   aDateTime                                   ) ;

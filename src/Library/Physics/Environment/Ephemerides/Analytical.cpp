@@ -25,8 +25,8 @@ namespace ephem
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                                Analytical::Analytical                      (   const   Shared<Frame>&              aFrame                                      )
-                                :   frameSPtr_(aFrame)
+                                Analytical::Analytical                      (   const   Shared<const Frame>&        aFrameSPtr                                  )
+                                :   frameSPtr_(aFrameSPtr)
 {
 
 }
@@ -46,7 +46,7 @@ bool                            Analytical::isDefined                       ( ) 
     return (frameSPtr_ != nullptr) && frameSPtr_->isDefined() ;
 }
 
-Weak<const Frame>               Analytical::accessFrame                     ( ) const
+Shared<const Frame>             Analytical::accessFrame                     ( ) const
 {
     return frameSPtr_ ;
 }

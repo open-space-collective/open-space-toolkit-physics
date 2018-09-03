@@ -19,6 +19,13 @@ docker build \
 --tag="${repository_name}/${project_name}-python" \
 .
 
+docker build \
+--tag="${repository_name}/${project_name}-python-debug" \
+--file="Dockerfile.debug" \
+--build-arg="repository_name=${repository_name}" \
+--build-arg="project_name=${project_name}" \
+.
+
 popd > /dev/null
 
 ################################################################################################################################################################

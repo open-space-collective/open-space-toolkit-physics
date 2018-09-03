@@ -18,7 +18,6 @@
 
 #include <Library/Core/Types/String.hpp>
 #include <Library/Core/Types/Integer.hpp>
-#include <Library/Core/Types/Weak.hpp>
 #include <Library/Core/Types/Shared.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -33,7 +32,6 @@ namespace coord
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using library::core::types::Shared ;
-using library::core::types::Weak ;
 using library::core::types::Integer ;
 using library::core::types::String ;
 
@@ -66,7 +64,7 @@ class Velocity
 
                                 Velocity                                    (   const   Vector3d&                   aCoordinateSet,
                                                                                 const   Velocity::Unit&             aUnit,
-                                                                                const   Shared<const Frame>&        aFrame                                      ) ;
+                                                                                const   Shared<const Frame>&        aFrameSPtr                                  ) ;
 
         bool                    operator ==                                 (   const   Velocity&                   aVelocity                                   ) const ;
         
@@ -88,7 +86,7 @@ class Velocity
         Velocity                inUnit                                      (   const   Velocity::Unit&             aUnit                                       ) const ;
 
         Velocity                inFrame                                     (   const   Position&                   aPosition,
-                                                                                const   Shared<const Frame>&        aFrame,
+                                                                                const   Shared<const Frame>&        aFrameSPtr,
                                                                                 const   Instant&                    anInstant                                   ) const ;
 
         String                  toString                                    (   const   Integer&                    aPrecision                                  =   Integer::Undefined() ) const ;
@@ -96,7 +94,7 @@ class Velocity
         static Velocity         Undefined                                   ( ) ;
 
         static Velocity         MetersPerSecond                             (   const   Vector3d&                   aCoordinateSet,
-                                                                                const   Shared<const Frame>&        aFrame                                      ) ;
+                                                                                const   Shared<const Frame>&        aFrameSPtr                                  ) ;
 
         static String           StringFromUnit                              (   const   Velocity::Unit&             aUnit                                       ) ;
 
@@ -104,7 +102,7 @@ class Velocity
 
         Vector3d                coordinates_ ;
         Velocity::Unit          unit_ ;
-        Weak<const Frame>       frameWPtr_ ; // [TBR] With Transform instead, as Frame is a function of time...
+        Shared<const Frame>     frameSPtr_ ; // [TBR] With Transform instead, as Frame is a function of time...
 
         static Derived::Unit    DerivedUnitFromVelocityUnit                 (   const   Velocity::Unit&             aUnit                                       ) ;
 

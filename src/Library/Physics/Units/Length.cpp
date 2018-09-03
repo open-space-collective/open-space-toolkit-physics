@@ -11,8 +11,6 @@
 #include <Library/Core/Error.hpp>
 #include <Library/Core/Utilities.hpp>
 
-#include <iostream>
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 namespace library
@@ -170,7 +168,7 @@ Length&                         Length::operator +=                         (   
 
     this->accessValue() += ((unit_ == aLength.unit_) ? aLength.accessValue() : aLength.in(unit_)) ;
 
-    return (*this) ;
+    return *this ;
 
 }
 
@@ -184,7 +182,7 @@ Length&                         Length::operator -=                         (   
 
     this->accessValue() -= ((unit_ == aLength.unit_) ? aLength.accessValue() : aLength.in(unit_)) ;
 
-    return (*this) ;
+    return *this ;
 
 }
 
@@ -203,7 +201,7 @@ Length&                         Length::operator *=                         (   
 
     this->accessValue() *= aReal ;
 
-    return (*this) ;
+    return *this ;
 
 }
 
@@ -227,7 +225,7 @@ Length&                         Length::operator /=                         (   
 
     this->accessValue() /= aReal ;
 
-    return (*this) ;
+    return *this ;
 
 }
 

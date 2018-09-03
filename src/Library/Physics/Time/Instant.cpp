@@ -16,7 +16,6 @@
 
 #include <chrono>
 #include <iomanip>
-#include <iostream>
 #include <stdlib.h>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -181,7 +180,7 @@ Instant&                        Instant::operator +=                        (   
 
     count_ = count_ + aDuration.count_ ;
 
-    return (*this) ;
+    return *this ;
 
 }
 
@@ -200,7 +199,7 @@ Instant&                        Instant::operator -=                        (   
 
     count_ = count_ - aDuration.count_ ;
 
-    return (*this) ;
+    return *this ;
 
 }
 

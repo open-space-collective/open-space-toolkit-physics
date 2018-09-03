@@ -78,6 +78,27 @@ inline void                     LibraryPhysicsPy_Units_Derived_Angle        ( )
 
     ;
 
+    // using library::math::obj::Interval ;
+
+    // class_<Interval<Angle>>("Interval", init<const Angle&, const Angle&, const Interval<Angle>::Type&>())
+
+    //     .def(self == self)
+    //     .def(self != self)
+
+    //     .def("isDefined", &Interval<Angle>::isDefined)
+    //     .def("isDegenerate", &Interval<Angle>::isDegenerate)
+    //     .def("intersects", &Interval<Angle>::intersects)
+    //     .def("containsAngle", +[] (const Interval<Angle>& anInterval, const Angle& anAngle) -> bool { return anInterval.contains(anAngle) ; })
+    //     .def("containsInterval", +[] (const Interval<Angle>& anInterval, const Interval<Angle>& anOtherInterval) -> bool { return anInterval.contains(anOtherInterval) ; })
+
+    //     .def("getLowerBound", &Interval<Angle>::getLowerBound)
+    //     .def("getUpperBound", &Interval<Angle>::getUpperBound)
+
+    //     .def("Undefined", &Interval<Angle>::Undefined).staticmethod("Undefined")
+    //     .def("Closed", &Interval<Angle>::Closed).staticmethod("Closed")
+    
+    // ;
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

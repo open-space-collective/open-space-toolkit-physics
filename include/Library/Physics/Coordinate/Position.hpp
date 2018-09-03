@@ -10,13 +10,14 @@
 #ifndef __Library_Physics_Coordinate_Position__
 #define __Library_Physics_Coordinate_Position__
 
+#include <Library/Physics/Coordinate/Spherical/LLA.hpp>
 #include <Library/Physics/Time/Instant.hpp>
 #include <Library/Physics/Units/Length.hpp>
 
+#include <Library/Mathematics/Geometry/3D/Objects/Point.hpp>
 #include <Library/Mathematics/Objects/Vector.hpp>
 
 #include <Library/Core/Types/String.hpp>
-#include <Library/Core/Types/Weak.hpp>
 #include <Library/Core/Types/Integer.hpp>
 #include <Library/Core/Types/Shared.hpp>
 
@@ -32,10 +33,10 @@ namespace coord
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using library::core::types::Shared ;
-using library::core::types::Weak ;
 using library::core::types::Integer ;
 using library::core::types::String ;
 
+using library::math::geom::d3::objects::Point ;
 using library::math::obj::Vector3d ;
 
 using library::physics::units::Length ;
@@ -56,9 +57,9 @@ class Position
 
         typedef                 Length::Unit                                    Unit ;
 
-                                Position                                    (   const   Vector3d&                   aCoordinateSet,
+                                Position                                    (   const   Vector3d&                   aCoordinateSet, // [TBI] Replace w/ Point
                                                                                 const   Position::Unit&             aUnit,
-                                                                                const   Shared<const Frame>&        aFrame                                      ) ;
+                                                                                const   Shared<const Frame>&        aFrameSPtr                                  ) ;
 
                                 Position                                    (   const   Position&                   aPosition                                   ) ;
 
@@ -83,7 +84,7 @@ class Position
 
         Position                inUnit                                      (   const   Position::Unit&             aUnit                                       ) const ;
 
-        Position                inFrame                                     (   const   Shared<const Frame>&        aFrame,
+        Position                inFrame                                     (   const   Shared<const Frame>&        aFrameSPtr,
                                                                                 const   Instant&                    anInstant                                   ) const ;
 
         String                  toString                                    (   const   Integer&                    aPrecision                                  =   Integer::Undefined() ) const ;
@@ -91,13 +92,13 @@ class Position
         static Position         Undefined                                   ( ) ;
 
         static Position         Meters                                      (   const   Vector3d&                   aCoordinateSet,
-                                                                                const   Shared<const Frame>&        aFrame                                      ) ;
+                                                                                const   Shared<const Frame>&        aFrameSPtr                                  ) ;
 
     private:
 
         Vector3d                coordinates_ ;
         Position::Unit          unit_ ;
-        Weak<const Frame>       frameWPtr_ ; // [TBR] With Transform instead, as Frame is a function of time...
+        Shared<const Frame>     frameSPtr_ ; // [TBR] With Transform instead, as Frame is a function of time...
 
 } ;
 

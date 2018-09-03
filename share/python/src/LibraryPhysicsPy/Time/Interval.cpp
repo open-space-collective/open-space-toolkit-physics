@@ -21,7 +21,7 @@ inline void                     LibraryPhysicsPy_Time_Interval              ( )
     using library::physics::time::Instant ;
     using library::physics::time::Interval ;
 
-    scope in_Interval = class_<Interval>("Interval", init<Instant, Instant, Interval::Type>())
+    scope in_Interval = class_<Interval>("Interval", init<const Instant&, const Instant&, const Interval::Type&>())
 
         .def(self == self)
         .def(self != self)
@@ -32,7 +32,7 @@ inline void                     LibraryPhysicsPy_Time_Interval              ( )
 
         .def("isDefined", &Interval::isDefined)
         .def("isDegenerate", &Interval::isDegenerate)
-        .def("isIntersectingWith", &Interval::isIntersectingWith)
+        .def("intersects", &Interval::intersects)
         .def("containsInstant", +[] (const Interval& anInterval, const Instant& anInstant) -> bool { return anInterval.contains(anInstant) ; })
         .def("containsInterval", +[] (const Interval& anInterval, const Interval& anOtherInterval) -> bool { return anInterval.contains(anOtherInterval) ; })
 

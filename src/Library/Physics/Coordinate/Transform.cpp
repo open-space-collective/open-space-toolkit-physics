@@ -13,8 +13,6 @@
 #include <Library/Core/Error.hpp>
 #include <Library/Core/Utilities.hpp>
 
-#include <iostream>
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 namespace library
@@ -136,7 +134,7 @@ Transform&                      Transform::operator *=                      (   
     orientation_ = orientation ;
     angularVelocity_ = angularVelocity ;
 
-    return (*this) ;
+    return *this ;
 
 }
 

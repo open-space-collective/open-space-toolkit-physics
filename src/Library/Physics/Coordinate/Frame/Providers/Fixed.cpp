@@ -9,6 +9,9 @@
 
 #include <Library/Physics/Coordinate/Frame/Providers/Fixed.hpp>
 
+#include <Library/Core/Error.hpp>
+#include <Library/Core/Utilities.hpp>
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 namespace library
@@ -47,7 +50,14 @@ bool                            Fixed::isDefined                            ( ) 
 
 Transform                       Fixed::getTransformAt                       (   const   Instant&                    anInstant                                   ) const
 {
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Fixed provider") ;
+    }
+    
     return Transform(anInstant, transform_.accessTranslation(), transform_.accessVelocity(), transform_.accessOrientation(), transform_.accessAngularVelocity(), Transform::Type::Passive) ;
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -10,9 +10,11 @@
 #ifndef __Library_Physics_Environment_Object__
 #define __Library_Physics_Environment_Object__
 
+#include <Library/Physics/Environment/Object/Geometry.hpp>
 #include <Library/Physics/Coordinate/Transform.hpp>
 #include <Library/Physics/Coordinate/Frame.hpp>
 #include <Library/Physics/Coordinate/Axes.hpp>
+#include <Library/Physics/Coordinate/Velocity.hpp>
 #include <Library/Physics/Coordinate/Position.hpp>
 #include <Library/Physics/Time/Instant.hpp>
 
@@ -20,6 +22,7 @@
 
 #include <Library/Core/Types/String.hpp>
 #include <Library/Core/Types/Weak.hpp>
+#include <Library/Core/Types/Shared.hpp>
 #include <Library/Core/Types/Unique.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -34,11 +37,13 @@ namespace env
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using library::core::types::Unique ;
+using library::core::types::Shared ;
 using library::core::types::Weak ;
 using library::core::types::String ;
 
 using library::physics::time::Instant ;
 using library::physics::coord::Position ;
+using library::physics::coord::Velocity ;
 using library::physics::coord::Axes ;
 using library::physics::coord::Frame ;
 using library::physics::coord::Transform ;
@@ -50,7 +55,7 @@ class Object
 
     public:
     
-        typedef library::math::geom::d3::Object Geometry ;
+        typedef object::Geometry Geometry ;
 
                                 Object                                      (   const   String&                     aName,
                                                                                 const   Instant&                    anInstant                                   ) ;
@@ -76,17 +81,25 @@ class Object
 
         const Instant&          accessInstant                               ( ) const ;
 
-        virtual Weak<const Frame> accessFrame                               ( ) const = 0 ;
+        virtual Shared<const Frame> accessFrame                             ( ) const = 0 ;
 
-        virtual const Object::Geometry& accessGeometry                      ( ) const ;
+        const Object::Geometry& accessGeometry                              ( ) const ;
 
-        Frame                   getFrame                                    ( ) const ;
+        String                  getName                                     ( ) const ;
 
-        virtual Position        getPositionIn                               (   const   Frame&                      aFrame                                      ) const = 0 ;
+        Instant                 getInstant                                  ( ) const ;
 
-        virtual Transform       getTransformTo                              (   const   Frame&                      aFrame                                      ) const = 0 ;
+        Object::Geometry        getGeometry                                 ( ) const ;
 
-        virtual Axes            getAxesIn                                   (   const   Frame&                      aFrame                                      ) const = 0 ;
+        virtual Position        getPositionIn                               (   const   Shared<const Frame>&        aFrameSPtr                                  ) const = 0 ;
+
+        virtual Velocity        getVelocityIn                               (   const   Shared<const Frame>&        aFrameSPtr                                  ) const = 0 ;
+
+        virtual Transform       getTransformTo                              (   const   Shared<const Frame>&        aFrameSPtr                                  ) const = 0 ;
+
+        virtual Axes            getAxesIn                                   (   const   Shared<const Frame>&        aFrameSPtr                                  ) const = 0 ;
+
+        Object::Geometry        getGeometryIn                               (   const   Shared<const Frame>&        aFrameSPtr                                  ) const ;
 
         void                    setInstant                                  (   const   Instant&                    anInstant                                   ) ;
 
@@ -95,7 +108,7 @@ class Object
         String                  name_ ;
         Instant                 instant_ ;
 
-        Unique<Object::Geometry> geometryUPtr_ ;
+        Object::Geometry        geometry_ ;
 
 } ;
 

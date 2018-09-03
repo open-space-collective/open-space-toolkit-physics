@@ -1,0 +1,26 @@
+################################################################################################################################################################
+
+# @project        Library/Physics
+# @file           tools/python/docker/Dockerfile.debug
+# @author         Lucas Brémond <lucas@loftorbital.com>
+# @license        TBD
+
+################################################################################################################################################################
+
+ARG repository_name
+ARG project_name
+
+FROM ${repository_name}/${project_name}-python:latest
+
+LABEL maintainer="lucas@loftorbital.com"
+
+USER root
+
+RUN apt-get update \
+ && apt-get install -y gdb \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
+
+USER $NB_UID
+
+################################################################################################################################################################

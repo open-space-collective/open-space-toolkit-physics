@@ -266,7 +266,7 @@ class Duration
         ///
         /// @param              [in] anOutputStream An output stream
         /// @param              [in] aDuration A duration
-        /// @return             An output stream
+        /// @return             A reference to output stream
 
         friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
                                                                                 const   Duration&                   aDuration                                   ) ;

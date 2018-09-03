@@ -16,7 +16,6 @@
 #include <boost/regex.hpp>
 #include <boost/lexical_cast.hpp>
 
-#include <iostream>
 #include <cmath>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -180,7 +179,7 @@ Duration                        Duration::operator +                        ( ) 
         throw library::core::error::runtime::Undefined("Duration") ;
     }
     
-    return (*this) ;
+    return *this ;
 
 }
 
@@ -206,7 +205,7 @@ Duration&                       Duration::operator +=                       (   
 
     count_ += aDuration.count_ ;
 
-    return (*this) ;
+    return *this ;
 
 }
 
@@ -220,7 +219,7 @@ Duration&                       Duration::operator -=                       (   
 
     count_ -= aDuration.count_ ;
 
-    return (*this) ;
+    return *this ;
 
 }
 
@@ -239,7 +238,7 @@ Duration&                       Duration::operator *=                       (   
 
     count_ *= aMultiplier ;
 
-    return (*this) ;
+    return *this ;
 
 }
 
@@ -263,7 +262,7 @@ Duration&                       Duration::operator /=                       (   
 
     count_ /= aDivider ;
 
-    return (*this) ;
+    return *this ;
 
 }
 

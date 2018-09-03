@@ -32,9 +32,8 @@ inline void                     LibraryPhysicsPy_Environment_Objects_CelestialBo
         .def_readonly("J2", &Earth::J2)
 
         .def(self_ns::str(self_ns::self))
+        .def(self_ns::repr(self_ns::self))
 
-        .def("accessGeometry", &Earth::accessGeometry, return_value_policy<reference_existing_object>())
-        
         .def("Analytical", &Earth::Analytical).staticmethod("Analytical")
 
     ;
