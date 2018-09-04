@@ -6,6 +6,7 @@ var searchData=
   ['default',['Default',['../classlibrary_1_1physics_1_1_environment.html#a7fcc57999bfb9c0c7e70b7cc783e30c8',1,'library::physics::Environment']]],
   ['degrees',['Degrees',['../classlibrary_1_1physics_1_1units_1_1_angle.html#a20b061534d7d24f807781a06b191603b',1,'library::physics::units::Angle']]],
   ['derived',['Derived',['../classlibrary_1_1physics_1_1units_1_1_derived.html#a526996552af20a987c045ced9bd87fc7',1,'library::physics::units::Derived']]],
+  ['destruct',['Destruct',['../classlibrary_1_1physics_1_1coord_1_1_frame.html#a2d4229290a0332c70240ebc8b02bd132',1,'library::physics::coord::Frame']]],
   ['duration',['Duration',['../classlibrary_1_1physics_1_1time_1_1_duration.html#a0a70efcf487a841da572afcf00001f64',1,'library::physics::time::Duration']]],
   ['dynamic',['Dynamic',['../classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1_dynamic.html#a9969003390848043b95d6ee4f451eade',1,'library::physics::coord::frame::provider::Dynamic']]]
 ];

@@ -21,6 +21,7 @@ var classlibrary_1_1physics_1_1coord_1_1_transform =
     [ "getTranslation", "classlibrary_1_1physics_1_1coord_1_1_transform.html#a9cdc57080aff638c321de68564bf913b", null ],
     [ "getVelocity", "classlibrary_1_1physics_1_1coord_1_1_transform.html#aa5d6b48208919b34cdafb9ea56aaef12", null ],
     [ "isDefined", "classlibrary_1_1physics_1_1coord_1_1_transform.html#a782bf485d01d3ff9b38cabe94ff9406f", null ],
+    [ "isIdentity", "classlibrary_1_1physics_1_1coord_1_1_transform.html#a3349e51005c3240c373e89671ab847a6", null ],
     [ "operator!=", "classlibrary_1_1physics_1_1coord_1_1_transform.html#a0481b3053d7dfb4a3cfc7ced3a13dc68", null ],
     [ "operator*", "classlibrary_1_1physics_1_1coord_1_1_transform.html#a61e4d3b1cbbebb7e882f421d2f732d64", null ],
     [ "operator*=", "classlibrary_1_1physics_1_1coord_1_1_transform.html#af0e36a56b799db736bd4e2228a48a8e6", null ],

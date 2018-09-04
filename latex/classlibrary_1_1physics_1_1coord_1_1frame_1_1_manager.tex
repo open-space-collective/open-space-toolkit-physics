@@ -20,15 +20,13 @@ bool \hyperlink{classlibrary_1_1physics_1_1coord_1_1frame_1_1_manager_a842f8a806
 \item 
 Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \hyperlink{classlibrary_1_1physics_1_1coord_1_1frame_1_1_manager_a13b4885965a111cebff6f04339d81596}{access\+Frame\+With\+Name} (const String \&a\+Frame\+Name) const
 \item 
-const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_transform}{Transform} $\ast$ \hyperlink{classlibrary_1_1physics_1_1coord_1_1frame_1_1_manager_a1c506ae3841eaa03d2629df356ec8e28}{access\+Cached\+Transform} (const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $\ast$a\+From\+Frame\+Ptr, const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $\ast$a\+To\+Frame\+Ptr, const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant) const
-\item 
-void \hyperlink{classlibrary_1_1physics_1_1coord_1_1frame_1_1_manager_aa4215eb9b956a3b4a2933a33d98b7007}{add\+Frame} (const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} \&a\+Frame)
+const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_transform}{Transform} $\ast$ \hyperlink{classlibrary_1_1physics_1_1coord_1_1frame_1_1_manager_a0754fdf8670d625254c5acac8367a81e}{access\+Cached\+Transform} (const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+From\+Frame\+S\+Ptr, const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+To\+Frame\+S\+Ptr, const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant) const
 \item 
 void \hyperlink{classlibrary_1_1physics_1_1coord_1_1frame_1_1_manager_a65ef93583a62089cb3192527babddab6}{add\+Frame} (const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+Frame\+S\+Ptr)
 \item 
 void \hyperlink{classlibrary_1_1physics_1_1coord_1_1frame_1_1_manager_a63e05e289d34f354dafefbff2b8478af}{remove\+Frame\+With\+Name} (const String \&a\+Frame\+Name)
 \item 
-void \hyperlink{classlibrary_1_1physics_1_1coord_1_1frame_1_1_manager_a5b8f0ef450a7dfbda58f1c63e6efc7ac}{add\+Cached\+Transform} (const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $\ast$a\+From\+Frame\+Ptr, const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $\ast$a\+To\+Frame\+Ptr, const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant, const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_transform}{Transform} \&a\+Transform)
+void \hyperlink{classlibrary_1_1physics_1_1coord_1_1frame_1_1_manager_a4c1070c91adb2bccc92c685d3f7bfc0b}{add\+Cached\+Transform} (const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+From\+Frame\+S\+Ptr, const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+To\+Frame\+S\+Ptr, const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant, const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_transform}{Transform} \&a\+Transform)
 \end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -50,11 +48,11 @@ Reference frame manager (thread-\/safe)
 
 
 \subsection{Member Function Documentation}
-\mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1frame_1_1_manager_a1c506ae3841eaa03d2629df356ec8e28}\label{classlibrary_1_1physics_1_1coord_1_1frame_1_1_manager_a1c506ae3841eaa03d2629df356ec8e28}} 
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1frame_1_1_manager_a0754fdf8670d625254c5acac8367a81e}\label{classlibrary_1_1physics_1_1coord_1_1frame_1_1_manager_a0754fdf8670d625254c5acac8367a81e}} 
 \index{library\+::physics\+::coord\+::frame\+::\+Manager@{library\+::physics\+::coord\+::frame\+::\+Manager}!access\+Cached\+Transform@{access\+Cached\+Transform}}
 \index{access\+Cached\+Transform@{access\+Cached\+Transform}!library\+::physics\+::coord\+::frame\+::\+Manager@{library\+::physics\+::coord\+::frame\+::\+Manager}}
 \subsubsection{\texorpdfstring{access\+Cached\+Transform()}{accessCachedTransform()}}
-{\footnotesize\ttfamily const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_transform}{Transform} $\ast$ library\+::physics\+::coord\+::frame\+::\+Manager\+::access\+Cached\+Transform (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $\ast$}]{a\+From\+Frame\+Ptr,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $\ast$}]{a\+To\+Frame\+Ptr,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_transform}{Transform} $\ast$ library\+::physics\+::coord\+::frame\+::\+Manager\+::access\+Cached\+Transform (\begin{DoxyParamCaption}\item[{const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+From\+Frame\+S\+Ptr,  }\item[{const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+To\+Frame\+S\+Ptr,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption}) const}
 
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1frame_1_1_manager_a13b4885965a111cebff6f04339d81596}\label{classlibrary_1_1physics_1_1coord_1_1frame_1_1_manager_a13b4885965a111cebff6f04339d81596}} 
 \index{library\+::physics\+::coord\+::frame\+::\+Manager@{library\+::physics\+::coord\+::frame\+::\+Manager}!access\+Frame\+With\+Name@{access\+Frame\+With\+Name}}
@@ -62,22 +60,16 @@ Reference frame manager (thread-\/safe)
 \subsubsection{\texorpdfstring{access\+Frame\+With\+Name()}{accessFrameWithName()}}
 {\footnotesize\ttfamily Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ library\+::physics\+::coord\+::frame\+::\+Manager\+::access\+Frame\+With\+Name (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Frame\+Name }\end{DoxyParamCaption}) const}
 
-\mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1frame_1_1_manager_a5b8f0ef450a7dfbda58f1c63e6efc7ac}\label{classlibrary_1_1physics_1_1coord_1_1frame_1_1_manager_a5b8f0ef450a7dfbda58f1c63e6efc7ac}} 
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1frame_1_1_manager_a4c1070c91adb2bccc92c685d3f7bfc0b}\label{classlibrary_1_1physics_1_1coord_1_1frame_1_1_manager_a4c1070c91adb2bccc92c685d3f7bfc0b}} 
 \index{library\+::physics\+::coord\+::frame\+::\+Manager@{library\+::physics\+::coord\+::frame\+::\+Manager}!add\+Cached\+Transform@{add\+Cached\+Transform}}
 \index{add\+Cached\+Transform@{add\+Cached\+Transform}!library\+::physics\+::coord\+::frame\+::\+Manager@{library\+::physics\+::coord\+::frame\+::\+Manager}}
 \subsubsection{\texorpdfstring{add\+Cached\+Transform()}{addCachedTransform()}}
-{\footnotesize\ttfamily void library\+::physics\+::coord\+::frame\+::\+Manager\+::add\+Cached\+Transform (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $\ast$}]{a\+From\+Frame\+Ptr,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $\ast$}]{a\+To\+Frame\+Ptr,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_transform}{Transform} \&}]{a\+Transform }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1frame_1_1_manager_aa4215eb9b956a3b4a2933a33d98b7007}\label{classlibrary_1_1physics_1_1coord_1_1frame_1_1_manager_aa4215eb9b956a3b4a2933a33d98b7007}} 
-\index{library\+::physics\+::coord\+::frame\+::\+Manager@{library\+::physics\+::coord\+::frame\+::\+Manager}!add\+Frame@{add\+Frame}}
-\index{add\+Frame@{add\+Frame}!library\+::physics\+::coord\+::frame\+::\+Manager@{library\+::physics\+::coord\+::frame\+::\+Manager}}
-\subsubsection{\texorpdfstring{add\+Frame()}{addFrame()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily void library\+::physics\+::coord\+::frame\+::\+Manager\+::add\+Frame (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} \&}]{a\+Frame }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void library\+::physics\+::coord\+::frame\+::\+Manager\+::add\+Cached\+Transform (\begin{DoxyParamCaption}\item[{const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+From\+Frame\+S\+Ptr,  }\item[{const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+To\+Frame\+S\+Ptr,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_transform}{Transform} \&}]{a\+Transform }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1frame_1_1_manager_a65ef93583a62089cb3192527babddab6}\label{classlibrary_1_1physics_1_1coord_1_1frame_1_1_manager_a65ef93583a62089cb3192527babddab6}} 
 \index{library\+::physics\+::coord\+::frame\+::\+Manager@{library\+::physics\+::coord\+::frame\+::\+Manager}!add\+Frame@{add\+Frame}}
 \index{add\+Frame@{add\+Frame}!library\+::physics\+::coord\+::frame\+::\+Manager@{library\+::physics\+::coord\+::frame\+::\+Manager}}
-\subsubsection{\texorpdfstring{add\+Frame()}{addFrame()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+\subsubsection{\texorpdfstring{add\+Frame()}{addFrame()}}
 {\footnotesize\ttfamily void library\+::physics\+::coord\+::frame\+::\+Manager\+::add\+Frame (\begin{DoxyParamCaption}\item[{const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+Frame\+S\+Ptr }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1frame_1_1_manager_ab17540188339548c7235a21236f8118e}\label{classlibrary_1_1physics_1_1coord_1_1frame_1_1_manager_ab17540188339548c7235a21236f8118e}} 

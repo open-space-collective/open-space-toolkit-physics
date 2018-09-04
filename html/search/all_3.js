@@ -17,6 +17,7 @@ var searchData=
   ['derived',['Derived',['../classlibrary_1_1physics_1_1units_1_1_derived.html',1,'library::physics::units::Derived'],['../classlibrary_1_1physics_1_1units_1_1_derived.html#a526996552af20a987c045ced9bd87fc7',1,'library::physics::units::Derived::Derived()'],['../classlibrary_1_1physics_1_1units_1_1_unit.html#a828bc1b6ad6fa5cbef904ea0fede986aa0e77a10e9579997fa646fbda4118e108',1,'library::physics::units::Unit::Derived()']]],
   ['derived_2ecpp',['Derived.cpp',['../_derived_8cpp.html',1,'']]],
   ['derived_2ehpp',['Derived.hpp',['../_derived_8hpp.html',1,'']]],
+  ['destruct',['Destruct',['../classlibrary_1_1physics_1_1coord_1_1_frame.html#a2d4229290a0332c70240ebc8b02bd132',1,'library::physics::coord::Frame']]],
   ['dmas2r',['DMAS2R',['../_c_i_r_f_8cpp.html#aaf2d6ce49301fb872ab8cca3bc003a2a',1,'CIRF.cpp']]],
   ['duration',['Duration',['../classlibrary_1_1physics_1_1time_1_1_duration.html',1,'library::physics::time::Duration'],['../classlibrary_1_1physics_1_1time_1_1_duration.html#a0a70efcf487a841da572afcf00001f64',1,'library::physics::time::Duration::Duration()']]],
   ['duration_2ecpp',['Duration.cpp',['../_duration_8cpp.html',1,'']]],
