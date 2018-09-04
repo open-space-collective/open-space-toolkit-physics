@@ -123,7 +123,7 @@ Transform&                      Transform::operator *=                      (   
 
     // q_C_A = q_C_B * q_B_A
 
-    const Quaternion orientation = orientation_ * aTransform.orientation_ ;
+    const Quaternion orientation = (orientation_ * aTransform.orientation_).toNormalized() ;
 
     // Ω_C_A_in_C = Ω_C_B_in_C + q_C_B * Ω_B_A_in_B
 
