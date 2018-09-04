@@ -39,6 +39,7 @@ inline void                     LibraryPhysicsPy_Coordinate_Transform       ( )
         .def(self_ns::repr(self_ns::self))
 
         .def("isDefined", &Transform::isDefined)
+        .def("isIdentity", &Transform::isIdentity)
 
         .def("accessInstant", &Transform::accessInstant, return_value_policy<reference_existing_object>())
         .def("accessTranslation", &Transform::accessTranslation, return_value_policy<reference_existing_object>())

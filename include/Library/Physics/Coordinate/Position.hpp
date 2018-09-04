@@ -74,6 +74,9 @@ class Position
 
         bool                    isDefined                                   ( ) const ;
 
+        bool                    isNear                                      (   const   Position&                   aPosition,
+                                                                                const   Length&                     aLength                                     ) const ;
+
         const Vector3d&         accessCoordinates                           ( ) const ;
 
         Shared<const Frame>     accessFrame                                 ( ) const ;

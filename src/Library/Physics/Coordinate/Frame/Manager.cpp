@@ -28,7 +28,7 @@ namespace frame
 bool                            Manager::hasFrameWithName                   (   const   String&                     aFrameName                                  ) const
 {
 
-    std::lock_guard<std::mutex> lock(mutex_) ;
+    const std::lock_guard<std::mutex> lock(mutex_) ;
 
     return frameMap_.find(aFrameName) != frameMap_.end() ;
 
@@ -37,58 +37,39 @@ bool                            Manager::hasFrameWithName                   (   
 Shared<const Frame>             Manager::accessFrameWithName                (   const   String&                     aFrameName                                  ) const
 {
 
-    std::lock_guard<std::mutex> lock(mutex_) ;
+    const std::lock_guard<std::mutex> lock(mutex_) ;
 
     const auto frameMapIt = frameMap_.find(aFrameName) ;
 
-    if (frameMapIt == frameMap_.end())
+    if (frameMapIt != frameMap_.end())
     {
-        throw library::core::error::RuntimeError("Cannot access frame with name [{}].", aFrameName) ;
+        return frameMapIt->second ;
     }
 
-    return frameMapIt->second ;
+    // throw library::core::error::RuntimeError("Cannot access frame with name [{}].", aFrameName) ;
+
+    return nullptr ;
 
 }
 
-const Transform*                Manager::accessCachedTransform              (   const   Frame*                      aFromFramePtr,
-                                                                                const   Frame*                      aToFramePtr,
+const Transform*                Manager::accessCachedTransform              (   const   Shared<const Frame>&        aFromFrameSPtr,
+                                                                                const   Shared<const Frame>&        aToFrameSPtr,
                                                                                 const   Instant&                    anInstant                                   ) const
 {
 
-    std::lock_guard<std::mutex> lock(mutex_) ;
+    const std::lock_guard<std::mutex> lock(mutex_) ;
 
-    // auto transformCacheIt = transformCache_.find(anInstant) ;
-
-    // if (transformCacheIt != transformCache_.end())
-    // {
-
-    //     auto transformCacheFromFrameIt = transformCacheIt->second.find(aFromFramePtr) ;
-
-    //     if (transformCacheFromFrameIt != transformCacheIt->second.end())
-    //     {
-
-    //         auto transformCacheToFrameIt = transformCacheFromFrameIt->second.find(aToFramePtr) ;
-
-    //         if (transformCacheToFrameIt != transformCacheFromFrameIt->second.end())
-    //         {
-    //             return &(transformCacheToFrameIt->second) ;
-    //         }
-
-    //     }
-
-    // }
-
-    auto transformCacheFromFrameIt = transformCache_.find(aFromFramePtr) ;
+    const auto transformCacheFromFrameIt = transformCache_.find(aFromFrameSPtr.get()) ;
 
     if (transformCacheFromFrameIt != transformCache_.end())
     {
 
-        auto transformCacheToFrameIt = transformCacheFromFrameIt->second.find(aToFramePtr) ;
+        const auto transformCacheToFrameIt = transformCacheFromFrameIt->second.find(aToFrameSPtr.get()) ;
 
         if (transformCacheToFrameIt != transformCacheFromFrameIt->second.end())
         {
 
-            auto transformCacheInstantIt = transformCacheToFrameIt->second.find(anInstant) ;
+            const auto transformCacheInstantIt = transformCacheToFrameIt->second.find(anInstant) ;
 
             if (transformCacheInstantIt != transformCacheToFrameIt->second.end())
             {
@@ -103,27 +84,6 @@ const Transform*                Manager::accessCachedTransform              (   
 
 }
 
-void                            Manager::addFrame                           (   const   Frame&                      aFrame                                      )
-{
-
-    std::lock_guard<std::mutex> lock(mutex_) ;
-
-    // std::cout << "Manager :: addFrame | Frame @ " << &aFrame << std::endl ;
-
-    if (frameMap_.find(aFrame.getName()) == frameMap_.end())
-    {
-
-        auto frameSPtr = std::make_shared<Frame>(aFrame) ;
-        // Shared<const Frame> frameSPtr(new Frame(aFrame), [] (Frame* aFramePtr) { std::cout << "Shared<Frame> :: Deleter @ " << aFramePtr << std::endl ; delete aFramePtr ; }) ;
-
-        // std::cout << "Manager :: addFrame | frameSPtr @ " << &frameSPtr << " / " << frameSPtr.get() << std::endl ;
-        
-        frameMap_.insert({ aFrame.getName(), frameSPtr }) ;
-
-    }
-
-}
-
 void                            Manager::addFrame                           (   const   Shared<const Frame>&        aFrameSPtr                                  )
 {
 
@@ -132,7 +92,7 @@ void                            Manager::addFrame                           (   
         throw library::core::error::runtime::Undefined("Frame") ;
     }
 
-    std::lock_guard<std::mutex> lock(mutex_) ;
+    const std::lock_guard<std::mutex> lock(mutex_) ;
 
     // std::cout << "Manager :: addFrame | Frame @ " << aFrameSPtr.get() << std::endl ;
 
@@ -146,28 +106,61 @@ void                            Manager::addFrame                           (   
 void                            Manager::removeFrameWithName                (   const   String&                     aFrameName                                  )
 {
 
-    std::lock_guard<std::mutex> lock(mutex_) ;
+    const std::lock_guard<std::mutex> lock(mutex_) ;
 
-    auto frameMapIt = frameMap_.find(aFrameName) ;
+    const auto frameMapIt = frameMap_.find(aFrameName) ;
 
     if (frameMapIt != frameMap_.end())
     {
+
+        const Frame* framePtr = frameMapIt->second.get() ;
+
+        // Delete related cached transforms
+
+        const auto transformCacheFromFrameIt = transformCache_.find(framePtr) ;
+
+        if (transformCacheFromFrameIt != transformCache_.end())
+        {
+            transformCache_.erase(transformCacheFromFrameIt) ;
+        }
+
+        for (auto& transformCacheIt : transformCache_)
+        {
+
+            const auto transformCacheToFrameIt = transformCacheIt.second.find(framePtr) ;
+
+            if (transformCacheToFrameIt != transformCacheIt.second.end())
+            {
+                transformCacheIt.second.erase(transformCacheToFrameIt) ;
+            }
+
+        }
+
+        // Delete frame
+
         frameMap_.erase(frameMapIt) ;
+
+    }
+    else
+    {
+        throw library::core::error::RuntimeError("No frame with name [{}].", aFrameName) ;
     }
 
 }
 
-void                            Manager::addCachedTransform                 (   const   Frame*                      aFromFramePtr,
-                                                                                const   Frame*                      aToFramePtr,
+void                            Manager::addCachedTransform                 (   const   Shared<const Frame>&        aFromFrameSPtr,
+                                                                                const   Shared<const Frame>&        aToFrameSPtr,
                                                                                 const   Instant&                    anInstant,
                                                                                 const   Transform&                  aTransform                                  )
 {
 
-    std::lock_guard<std::mutex> lock(mutex_) ;
+    const std::lock_guard<std::mutex> lock(mutex_) ;
 
-    auto transformCacheFromFrameIt = transformCache_.insert({ aFromFramePtr, {} }).first ;
-    auto transformCacheToFrameIt = transformCacheFromFrameIt->second.insert({ aToFramePtr, {} }).first ;
-    auto transformCacheToInstantIt = transformCacheToFrameIt->second.insert({ anInstant, aTransform }).first ;
+    const auto transformCacheFromFrameIt = transformCache_.insert({ aFromFrameSPtr.get(), {} }).first ;
+    const auto transformCacheToFrameIt = transformCacheFromFrameIt->second.insert({ aToFrameSPtr.get(), {} }).first ;
+    const auto transformCacheToInstantIt = transformCacheToFrameIt->second.insert({ anInstant, aTransform }).first ;
+
+    (void) transformCacheToInstantIt ;
 
 }
 

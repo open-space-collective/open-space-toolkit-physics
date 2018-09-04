@@ -34,6 +34,20 @@ TEST (Library_Physics_Coordinate_Position, Constructor)
 
 }
 
+// TEST (Library_Physics_Coordinate_Position, EqualToOperator)
+// TEST (Library_Physics_Coordinate_Position, NotEqualToOperator)
+// TEST (Library_Physics_Coordinate_Position, StreamOperator)
+// TEST (Library_Physics_Coordinate_Position, IsDefined)
+// TEST (Library_Physics_Coordinate_Position, IsNear)
+// TEST (Library_Physics_Coordinate_Position, AccessCoordinates)
+// TEST (Library_Physics_Coordinate_Position, AccessFrame)
+// TEST (Library_Physics_Coordinate_Position, GetCoordinates)
+// TEST (Library_Physics_Coordinate_Position, GetUnit)
+// TEST (Library_Physics_Coordinate_Position, InUnit)
+// TEST (Library_Physics_Coordinate_Position, InFrame)
+// TEST (Library_Physics_Coordinate_Position, ToString)
+// TEST (Library_Physics_Coordinate_Position, Undefined)
+
 TEST (Library_Physics_Coordinate_Position, Meters)
 {
 

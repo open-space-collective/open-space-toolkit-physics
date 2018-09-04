@@ -91,7 +91,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_TEME, GetTransformAt)
                 // << " : [TEME - GCRF]" << referenceOrientation_GCRF_TEME.toString(15) << " " << transform_TEME_GCRF.getOrientation().toString(15)
                 // << " >> " << RotationVector::Quaternion(dq_GCRF).getAngle().inArcseconds().toString(3) << " [asec]" << std::endl ;
     
-                //  TEST ANGULAR VEL
+                // [TBI] Add angular velocity test
 
             }
 

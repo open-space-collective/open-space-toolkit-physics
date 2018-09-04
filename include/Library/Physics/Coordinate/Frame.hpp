@@ -23,6 +23,8 @@
 #include <Library/Core/Types/Integer.hpp>
 #include <Library/Core/Types/Shared.hpp>
 
+#include <memory>
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 namespace library
@@ -54,21 +56,14 @@ using library::physics::coord::frame::Provider ;
 /// @ref                        https://en.wikipedia.org/wiki/Frame_of_reference
 /// @note                       Implementation heavily inspired by (the great!) https://www.orekit.org/static/architecture/frames.html
 
-class Frame
+class Frame : public std::enable_shared_from_this<Frame>
 {
 
     public:
 
-                                Frame                                       (   const   String&                     aName,
-                                                                                        bool                        isQuasiInertial,
-                                                                                const   Shared<const Frame>&        aParentFrame,
-                                                                                const   Shared<const Provider>&     aProvider                                   ) ;
-
-                                Frame                                       (   const   Frame&                      aFrame                                      ) ;    
+        /// @brief              Destructor
 
                                 ~Frame                                      ( ) ;
-
-        Frame&                  operator =                                  (   const   Frame&                      aFrame                                      ) = delete ;    
 
         bool                    operator ==                                 (   const   Frame&                      aFrame                                      ) const ;
         
@@ -83,9 +78,9 @@ class Frame
 
         bool                    hasParent                                   ( ) const ;
 
-        const Frame&            accessParent                                ( ) const ;
+        Shared<const Frame>     accessParent                                ( ) const ;
 
-        const Frame&            accessAncestor                              (           Uint8                       anAncestorDegree                            ) const ;
+        Shared<const Frame>     accessAncestor                              (   const   Uint8                       anAncestorDegree                            ) const ;
 
         Shared<const Provider>  accessProvider                              ( ) const ;
 
@@ -123,6 +118,31 @@ class Frame
 
         static Shared<const Frame> WithName                                 (   const   String&                     aName                                       ) ;
 
+        /// @brief              Constructor
+        ///
+        /// @param              [in] aName A frame name
+        /// @param              [in] isQuasiInertialT True is frame is quasi-inertial
+        /// @param              [in] aParentFrame A shared pointer to the parent frame
+        /// @param              [in] aProvider A shared pointer to the transform provider
+
+        static Shared<const Frame> Construct                                (   const   String&                     aName,
+                                                                                        bool                        isQuasiInertial,
+                                                                                const   Shared<const Frame>&        aParentFrame,
+                                                                                const   Shared<const Provider>&     aProvider                                   ) ;
+
+        static void             Destruct                                    (   const   String&                     aName                                       ) ;
+
+    protected:
+
+                                Frame                                       (   const   String&                     aName,
+                                                                                        bool                        isQuasiInertial,
+                                                                                const   Shared<const Frame>&        aParentFrame,
+                                                                                const   Shared<const Provider>&     aProvider                                   ) ;
+
+                                Frame                                       (   const   Frame&                      aFrame                                      ) = default ;
+
+        Frame&                  operator =                                  (   const   Frame&                      aFrame                                      ) = default ;
+    
     private:
 
         String                  name_ ;
@@ -132,8 +152,13 @@ class Frame
 
         Uint8                   getDepth                                    ( ) const ;
 
-        static const Frame&     FindCommonAncestor                          (   const   Frame&                      aFirstFrame,
-                                                                                const   Frame&                      aSecondFrame                                ) ;
+        static Shared<const Frame> Emplace                                  (   const   String&                     aName,
+                                                                                        bool                        isQuasiInertial,
+                                                                                const   Shared<const Frame>&        aParentFrame,
+                                                                                const   Shared<const Provider>&     aProvider                                   ) ;
+
+        static Shared<const Frame> FindCommonAncestor                       (   const   Shared<const Frame>&        aFirstFrameSPtr,
+                                                                                const   Shared<const Frame>&        aSecondFrameSPtr                            ) ;
 
 } ;
 

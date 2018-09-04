@@ -58,18 +58,16 @@ class Manager
 
         Shared<const Frame>     accessFrameWithName                         (   const   String&                     aFrameName                                  ) const ;
 
-        const Transform*        accessCachedTransform                       (   const   Frame*                      aFromFramePtr,
-                                                                                const   Frame*                      aToFramePtr,
+        const Transform*        accessCachedTransform                       (   const   Shared<const Frame>&        aFromFrameSPtr,
+                                                                                const   Shared<const Frame>&        aToFrameSPtr,
                                                                                 const   Instant&                    anInstant                                   ) const ;
-
-        void                    addFrame                                    (   const   Frame&                      aFrame                                      ) ;
 
         void                    addFrame                                    (   const   Shared<const Frame>&        aFrameSPtr                                  ) ;
 
         void                    removeFrameWithName                         (   const   String&                     aFrameName                                  ) ;
 
-        void                    addCachedTransform                          (   const   Frame*                      aFromFramePtr,
-                                                                                const   Frame*                      aToFramePtr,
+        void                    addCachedTransform                          (   const   Shared<const Frame>&        aFromFrameSPtr,
+                                                                                const   Shared<const Frame>&        aToFrameSPtr,
                                                                                 const   Instant&                    anInstant,
                                                                                 const   Transform&                  aTransform                                  ) ;
 
