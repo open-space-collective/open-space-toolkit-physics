@@ -59,9 +59,6 @@ inline void                     LibraryPhysicsPy_Coordinate_Frame           ( )
         .def("Construct", &Frame::Construct).staticmethod("Construct")
         .def("Destruct", &Frame::Destruct).staticmethod("Destruct")
 
-        // .def("Shared", +[] (const Frame& aFrame) -> Shared<Frame> { return std::make_shared<Frame>(aFrame) ; })
-        // .def("ConstShared", +[] (const Frame& aFrame) -> Shared<const Frame> { return std::make_shared<const Frame>(aFrame) ; })
-
     ;
 
     // register_ptr_to_python<Shared<Frame>>() ;

@@ -688,11 +688,95 @@ TEST (Library_Physics_Coordinate_Frame, GetOriginIn)
 TEST (Library_Physics_Coordinate_Frame, GetVelocityIn)
 {
 
-    using library::physics::coord::Frame ;
+    using library::core::types::Shared ;
+    using library::core::types::Real ;
+    using library::core::types::String ;
+
+    using library::math::obj::Vector3d ;
+    using library::math::geom::trf::rot::Quaternion ;
+    using library::math::geom::trf::rot::RotationVector ;
+    using library::math::geom::trf::rot::RotationMatrix ;
     
+    using library::physics::units::Length ;
+    using library::physics::units::Angle ;
+    using library::physics::time::Scale ;
+    using library::physics::time::Instant ;
+    using library::physics::time::DateTime ;
+    using library::physics::coord::Transform ;
+    using library::physics::coord::Velocity ;
+    using library::physics::coord::Axes ;
+    using library::physics::coord::Frame ;
+    using library::physics::coord::frame::Provider ;
+    using library::physics::coord::frame::provider::Fixed ;
+
     {
 
-        FAIL() ;
+        const Velocity referenceVelocity = Velocity::MetersPerSecond({ 0.0, 0.0, 0.0 }, Frame::GCRF()) ;
+
+        EXPECT_EQ(referenceVelocity, Frame::ITRF()->getVelocityIn(Frame::GCRF(), Instant::J2000())) ;
+
+    }
+
+    {
+
+        const Velocity referenceVelocity = Velocity::MetersPerSecond({ 0.0, 0.0, 0.0 }, Frame::ITRF()) ;
+
+        EXPECT_EQ(referenceVelocity, Frame::GCRF()->getVelocityIn(Frame::ITRF(), Instant::J2000())) ;
+
+    }
+
+    {
+
+        const Instant epoch = Instant::J2000() ;
+
+        {
+
+            const String name = "Custom A" ;
+            const bool isQuasiInertial = true ;
+            const Shared<const Frame> parentFrameSPtr = Frame::GCRF() ;
+            const Shared<const Provider> providerSPtr = std::make_shared<Fixed>(Fixed(Transform::Passive(epoch, Vector3d(0.0, -1.0, 0.0), Vector3d(-1.0, 0.0, 0.0), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(+90.0))), Vector3d::Zero()))) ;
+            
+            Frame::Construct(name, isQuasiInertial, parentFrameSPtr, providerSPtr) ;
+
+            const Velocity velocity = Frame::WithName("Custom A")->getVelocityIn(Frame::GCRF(), epoch) ;
+
+            const Velocity referenceVelocity = Velocity::MetersPerSecond({ +1.0, 0.0, 0.0 }, Frame::GCRF()) ;
+
+            EXPECT_TRUE(velocity.getCoordinates().isNear(referenceVelocity.getCoordinates(), Real::Epsilon())) << velocity ;
+
+        }
+
+        {
+
+            const String name = "Custom B" ;
+            const bool isQuasiInertial = true ;
+            const Shared<const Frame> parentFrameSPtr = Frame::GCRF() ;
+            const Shared<const Provider> providerSPtr = std::make_shared<Fixed>(Fixed(Transform::Passive(epoch, Vector3d(-1.0, 0.0, 0.0), Vector3d(0.0, -1.0, 0.0), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d::Zero()))) ;
+            
+            Frame::Construct(name, isQuasiInertial, parentFrameSPtr, providerSPtr) ;
+
+            const Velocity velocity = Frame::WithName("Custom B")->getVelocityIn(Frame::GCRF(), epoch) ;
+
+            const Velocity referenceVelocity = Velocity::MetersPerSecond({ 0.0, +1.0, 0.0 }, Frame::GCRF()) ;
+
+            EXPECT_TRUE(velocity.getCoordinates().isNear(referenceVelocity.getCoordinates(), Real::Epsilon())) << velocity ;
+
+        }
+
+        const Velocity velocity = Frame::WithName("Custom B")->getVelocityIn(Frame::WithName("Custom A"), epoch) ;
+
+        const Velocity referenceVelocity = Velocity::MetersPerSecond({ +1.0, +1.0, 0.0 }, Frame::WithName("Custom A")) ;
+
+        EXPECT_TRUE(velocity.getCoordinates().isNear(referenceVelocity.getCoordinates(), Real::Epsilon())) << velocity ;
+
+        Frame::Destruct("Custom A") ;
+        Frame::Destruct("Custom B") ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Frame::Undefined()->getVelocityIn(Frame::Undefined(), Instant::J2000())) ;
 
     }
 
@@ -1099,7 +1183,7 @@ TEST (Library_Physics_Coordinate_Frame, Test_1)
         
             const Vector3d x_GCRF = customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToPosition(x_CUSTOM) ;
             
-            EXPECT_TRUE(x_GCRF.isNear(Vector3d(+2.0, +0.0, +0.0), Real::Epsilon())) ;
+            EXPECT_TRUE(x_GCRF.isNear(Vector3d(+2.0, +0.0, +0.0), Real::Epsilon())) << x_GCRF.toString() ;
 
         }
 
@@ -1112,7 +1196,7 @@ TEST (Library_Physics_Coordinate_Frame, Test_1)
 
             const Vector3d v_GCRF = customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVelocity(x_CUSTOM, v_CUSTOM) ;
             
-            EXPECT_TRUE(v_GCRF.isNear(Vector3d(+1.0, +0.0, +0.0), Real::Epsilon())) ;
+            EXPECT_TRUE(v_GCRF.isNear(Vector3d(+1.0, +0.0, +0.0), Real::Epsilon())) << v_GCRF.toString() ;
 
         }
 
@@ -1124,7 +1208,7 @@ TEST (Library_Physics_Coordinate_Frame, Test_1)
 
             const Vector3d u_GCRF = customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVector(u_CUSTOM) ;
 
-            EXPECT_TRUE(u_GCRF.isNear(Vector3d(+1.0, +0.0, +0.0), Real::Epsilon())) ;
+            EXPECT_TRUE(u_GCRF.isNear(Vector3d(+1.0, +0.0, +0.0), Real::Epsilon())) << u_GCRF.toString() ;
 
         }
 
@@ -1153,7 +1237,7 @@ TEST (Library_Physics_Coordinate_Frame, Test_1)
         
             const Vector3d x_GCRF = customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToPosition(x_CUSTOM) ;
             
-            EXPECT_TRUE(x_GCRF.isNear(Vector3d(+2.0, +0.0, +0.0), Real::Epsilon())) ;
+            EXPECT_TRUE(x_GCRF.isNear(Vector3d(+2.0, +0.0, +0.0), Real::Epsilon())) << x_GCRF.toString() ;
 
         }
 
@@ -1166,7 +1250,7 @@ TEST (Library_Physics_Coordinate_Frame, Test_1)
 
             const Vector3d v_GCRF = customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVelocity(x_CUSTOM, v_CUSTOM) ;
             
-            EXPECT_TRUE(v_GCRF.isNear(Vector3d(+2.0, +1.0, +0.0), Real::Epsilon())) ;
+            EXPECT_TRUE(v_GCRF.isNear(Vector3d(+2.0, +1.0, +0.0), Real::Epsilon())) << v_GCRF.toString() ;
 
         }
 
@@ -1178,7 +1262,7 @@ TEST (Library_Physics_Coordinate_Frame, Test_1)
 
             const Vector3d u_GCRF = customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVector(u_CUSTOM) ;
 
-            EXPECT_TRUE(u_GCRF.isNear(Vector3d(+1.0, +0.0, +0.0), Real::Epsilon())) ;
+            EXPECT_TRUE(u_GCRF.isNear(Vector3d(+1.0, +0.0, +0.0), Real::Epsilon())) << u_GCRF.toString() ;
 
         }
 
@@ -1207,7 +1291,7 @@ TEST (Library_Physics_Coordinate_Frame, Test_1)
         
             const Vector3d x_GCRF = customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToPosition(x_CUSTOM) ;
             
-            EXPECT_TRUE(x_GCRF.isNear(Vector3d(+0.0, +1.0, +0.0), Real::Epsilon())) ;
+            EXPECT_TRUE(x_GCRF.isNear(Vector3d(+0.0, +1.0, +0.0), Real::Epsilon())) << x_GCRF.toString() ;
 
         }
 
@@ -1220,7 +1304,7 @@ TEST (Library_Physics_Coordinate_Frame, Test_1)
 
             const Vector3d v_GCRF = customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVelocity(x_CUSTOM, v_CUSTOM) ;
             
-            EXPECT_TRUE(v_GCRF.isNear(Vector3d(+0.0, +1.0, +0.0), Real::Epsilon())) ;
+            EXPECT_TRUE(v_GCRF.isNear(Vector3d(+0.0, +1.0, +0.0), Real::Epsilon())) << v_GCRF.toString() ;
 
         }
 
@@ -1232,7 +1316,7 @@ TEST (Library_Physics_Coordinate_Frame, Test_1)
 
             const Vector3d u_GCRF = customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVector(u_CUSTOM) ;
 
-            EXPECT_TRUE(u_GCRF.isNear(Vector3d(+0.0, +1.0, +0.0), Real::Epsilon())) ;
+            EXPECT_TRUE(u_GCRF.isNear(Vector3d(+0.0, +1.0, +0.0), Real::Epsilon())) << u_GCRF.toString() ;
 
         }
 
@@ -1261,7 +1345,7 @@ TEST (Library_Physics_Coordinate_Frame, Test_1)
         
             const Vector3d x_GCRF = customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToPosition(x_CUSTOM) ;
             
-            EXPECT_TRUE(x_GCRF.isNear(Vector3d(+1.0, +0.0, +0.0), Real::Epsilon())) ;
+            EXPECT_TRUE(x_GCRF.isNear(Vector3d(+1.0, +0.0, +0.0), Real::Epsilon())) << x_GCRF.toString() ;
 
         }
 
@@ -1274,7 +1358,7 @@ TEST (Library_Physics_Coordinate_Frame, Test_1)
 
             const Vector3d v_GCRF = customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVelocity(x_CUSTOM, v_CUSTOM) ;
             
-            EXPECT_TRUE(v_GCRF.isNear(Vector3d(+1.0, +1.0, +0.0), Real::Epsilon())) ;
+            EXPECT_TRUE(v_GCRF.isNear(Vector3d(+1.0, -1.0, +0.0), Real::Epsilon())) << v_GCRF.toString() ;
 
         }
 
@@ -1286,7 +1370,7 @@ TEST (Library_Physics_Coordinate_Frame, Test_1)
 
             const Vector3d u_GCRF = customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVector(u_CUSTOM) ;
 
-            EXPECT_TRUE(u_GCRF.isNear(Vector3d(+1.0, +0.0, +0.0), Real::Epsilon())) ;
+            EXPECT_TRUE(u_GCRF.isNear(Vector3d(+1.0, +0.0, +0.0), Real::Epsilon())) << u_GCRF.toString() ;
 
         }
 
@@ -1313,7 +1397,7 @@ TEST (Library_Physics_Coordinate_Frame, Test_1)
         
             const Vector3d x_GCRF = customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToPosition(x_CUSTOM) ;
             
-            EXPECT_TRUE(x_GCRF.isNear(Vector3d(+1.0, 0.0, 0.0), Real::Epsilon())) ;
+            EXPECT_TRUE(x_GCRF.isNear(Vector3d(0.0, +1.0, 0.0), Real::Epsilon())) << x_GCRF.toString() ;
 
         }
 
@@ -1326,7 +1410,7 @@ TEST (Library_Physics_Coordinate_Frame, Test_1)
 
             const Vector3d v_GCRF = customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVelocity(x_CUSTOM, v_CUSTOM) ;
             
-            EXPECT_TRUE(v_GCRF.isNear(Vector3d(+1.0, 0.0, 0.0), Real::Epsilon())) ;
+            EXPECT_TRUE(v_GCRF.isNear(Vector3d(-4.0, +1.0, 0.0), Real::Epsilon())) << v_GCRF.toString() ;
 
         }
 
@@ -1338,7 +1422,7 @@ TEST (Library_Physics_Coordinate_Frame, Test_1)
 
             const Vector3d v_GCRF = customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVector(v_CUSTOM) ;
 
-            EXPECT_TRUE(v_GCRF.isNear(Vector3d(+1.0, 0.0, 0.0), Real::Epsilon())) ;
+            EXPECT_TRUE(v_GCRF.isNear(Vector3d(0.0, +1.0, 0.0), Real::Epsilon())) << v_GCRF.toString() ;
 
         }
 
@@ -1365,7 +1449,7 @@ TEST (Library_Physics_Coordinate_Frame, Test_1)
         
             const Vector3d x_GCRF = customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToPosition(x_CUSTOM) ;
             
-            EXPECT_TRUE(x_GCRF.isNear(Vector3d(+1.0, 0.0, 0.0), Real::Epsilon())) ;
+            EXPECT_TRUE(x_GCRF.isNear(Vector3d(+1.0, 0.0, 0.0), Real::Epsilon())) << x_GCRF.toString() ;
 
         }
 
@@ -1378,7 +1462,7 @@ TEST (Library_Physics_Coordinate_Frame, Test_1)
 
             const Vector3d v_GCRF = customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVelocity(x_CUSTOM, v_CUSTOM) ;
             
-            EXPECT_TRUE(v_GCRF.isNear(Vector3d(+1.0, 0.0, 0.0), Real::Epsilon())) ;
+            EXPECT_TRUE(v_GCRF.isNear(Vector3d(+1.0, +4.0, 0.0), Real::Epsilon())) << v_GCRF.toString() ;
 
         }
 
@@ -1390,7 +1474,7 @@ TEST (Library_Physics_Coordinate_Frame, Test_1)
 
             const Vector3d v_GCRF = customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVector(v_CUSTOM) ;
 
-            EXPECT_TRUE(v_GCRF.isNear(Vector3d(+1.0, 0.0, 0.0), Real::Epsilon())) ;
+            EXPECT_TRUE(v_GCRF.isNear(Vector3d(+1.0, 0.0, 0.0), Real::Epsilon())) << v_GCRF.toString() ;
 
         }
 
