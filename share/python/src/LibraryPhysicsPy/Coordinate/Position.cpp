@@ -34,6 +34,7 @@ inline void                     LibraryPhysicsPy_Coordinate_Position        ( )
         .def(self_ns::repr(self_ns::self))
 
         .def("isDefined", &Position::isDefined)
+        .def("isNear", &Position::isNear)
 
         .def("accessFrame", &Position::accessFrame)
         .def("getCoordinates", &Position::getCoordinates)

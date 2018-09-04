@@ -142,17 +142,19 @@ std::ostream&                   operator <<                                 (   
                                                                                 const   Transform&                  aTransform                                  )
 {
 
+    using library::math::geom::trf::rot::RotationVector ;
+
     using library::physics::time::Scale ;
 
     library::core::utils::Print::Header(anOutputStream, "Transform") ;
 
-    library::core::utils::Print::Line(anOutputStream) << "Instant:" << (aTransform.isDefined() ? aTransform.accessInstant().toString(Scale::UTC) : "Undefined") ;
+    library::core::utils::Print::Line(anOutputStream) << "Instant:"             << (aTransform.isDefined() ? aTransform.accessInstant().toString(Scale::UTC) : "Undefined") ;
     
-    library::core::utils::Print::Line(anOutputStream) << "Translation:" << (aTransform.isDefined() ? (aTransform.accessTranslation().toString() + " [m]") : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Velocity:" << (aTransform.isDefined() ? (aTransform.accessVelocity().toString() + " [m/s]") : "Undefined") ;
+    library::core::utils::Print::Line(anOutputStream) << "Translation:"         << (aTransform.isDefined() ? (aTransform.accessTranslation().toString() + " [m]") : "Undefined") ;
+    library::core::utils::Print::Line(anOutputStream) << "Velocity:"            << (aTransform.isDefined() ? (aTransform.accessVelocity().toString() + " [m/s]") : "Undefined") ;
 
-    library::core::utils::Print::Line(anOutputStream) << "Orientation:" << (aTransform.isDefined() ? (aTransform.accessOrientation().toString()) : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Angular Velocity:" << (aTransform.isDefined() ? (aTransform.accessAngularVelocity().toString() + " [rad/s]") : "Undefined") ;
+    library::core::utils::Print::Line(anOutputStream) << "Orientation:"         << (aTransform.isDefined() ? String::Format("{} == {}", aTransform.accessOrientation().toString(), RotationVector::Quaternion(aTransform.accessOrientation()).toString()) : "Undefined") ;
+    library::core::utils::Print::Line(anOutputStream) << "Angular Velocity:"    << (aTransform.isDefined() ? (aTransform.accessAngularVelocity().toString() + " [rad/s]") : "Undefined") ;
 
     library::core::utils::Print::Footer(anOutputStream) ;
 
@@ -168,6 +170,21 @@ bool                            Transform::isDefined                        ( ) 
         && velocity_.isDefined() 
         && orientation_.isDefined() 
         && angularVelocity_.isDefined() ;
+
+}
+
+bool                            Transform::isIdentity                       ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Transform") ;
+    }
+
+    return (translation_ == Vector3d::Zero())
+        && (velocity_ == Vector3d::Zero())
+        && (orientation_ == Quaternion::Unit())
+        && (angularVelocity_ == Vector3d::Zero()) ;
 
 }
 
@@ -315,7 +332,7 @@ Transform                       Transform::getInverse                       ( ) 
 
     const Vector3d angularVelocity = - (orientation * angularVelocity_) ;
 
-    return Transform(instant_, translation, velocity, orientation, angularVelocity, Transform::Type::Passive) ;
+    return { instant_, translation, velocity, orientation, angularVelocity, Transform::Type::Passive } ;
 
 }
 
@@ -390,12 +407,12 @@ Vector3d                        Transform::applyToVector                    (   
 
 Transform                       Transform::Undefined                        ( )
 {
-    return Transform(Instant::Undefined(), Vector3d::Undefined(), Vector3d::Undefined(), Quaternion::Undefined(), Vector3d::Undefined(), Transform::Type::Undefined) ;
+    return { Instant::Undefined(), Vector3d::Undefined(), Vector3d::Undefined(), Quaternion::Undefined(), Vector3d::Undefined(), Transform::Type::Undefined } ;
 }
 
 Transform                       Transform::Identity                         (   const   Instant&                    anInstant                                   )
 {
-    return Transform(anInstant, Vector3d::Zero(), Vector3d::Zero(), Quaternion::Unit(), Vector3d::Zero(), Transform::Type::Passive) ;
+    return { anInstant, Vector3d::Zero(), Vector3d::Zero(), Quaternion::Unit(), Vector3d::Zero(), Transform::Type::Passive } ;
 }
 
 Transform                       Transform::Active                           (   const   Instant&                    anInstant,
@@ -404,7 +421,7 @@ Transform                       Transform::Active                           (   
                                                                                 const   Quaternion&                 anOrientation,
                                                                                 const   Vector3d&                   anAngularVelocity                           )
 {
-    return Transform(anInstant, aTranslation, aVelocity, anOrientation, anAngularVelocity, Transform::Type::Active) ;
+    return { anInstant, aTranslation, aVelocity, anOrientation, anAngularVelocity, Transform::Type::Active } ;
 }
 
 Transform                       Transform::Passive                          (   const   Instant&                    anInstant,
@@ -413,7 +430,7 @@ Transform                       Transform::Passive                          (   
                                                                                 const   Quaternion&                 anOrientation,
                                                                                 const   Vector3d&                   anAngularVelocity                           )
 {
-    return Transform(anInstant, aTranslation, aVelocity, anOrientation, anAngularVelocity, Transform::Type::Passive) ;
+    return { anInstant, aTranslation, aVelocity, anOrientation, anAngularVelocity, Transform::Type::Passive } ;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

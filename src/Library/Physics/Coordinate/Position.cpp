@@ -125,6 +125,43 @@ bool                            Position::isDefined                         ( ) 
     return coordinates_.isDefined() && (unit_ != Position::Unit::Undefined) && (frameSPtr_ != nullptr) && frameSPtr_->isDefined() ;
 }
 
+bool                            Position::isNear                            (   const   Position&                   aPosition,
+                                                                                const   Length&                     aLength                                     ) const
+{
+
+    if (!aPosition.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Position") ;
+    }
+
+    if (!aLength.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Length") ;
+    }
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Position") ;
+    }
+
+    if (frameSPtr_ != aPosition.frameSPtr_)
+    {
+        throw library::core::error::RuntimeError("Position are expressed in different frames.") ;
+    }
+
+    if (unit_ == aPosition.unit_)
+    {
+        return (coordinates_ - aPosition.coordinates_).norm() <= aLength.in(unit_) ;
+    }
+    else
+    {
+        return (coordinates_ - aPosition.inUnit(unit_).coordinates_).norm() <= aLength.in(unit_) ;
+    }
+
+    return false ;
+
+}
+
 const Vector3d&                 Position::accessCoordinates                 ( ) const
 {
 

@@ -97,7 +97,7 @@ Earth                           Earth::Analytical                           (   
 
     const Shared<const Frame> earthFrameSPtr = Frame::ITRF() ;
 
-    return Earth(std::make_shared<Analytical>(earthFrameSPtr), anInstant) ;
+    return { std::make_shared<Analytical>(earthFrameSPtr), anInstant } ;
 
 }
 
@@ -112,7 +112,7 @@ Object::Geometry                Earth::Geometry                             (   
     
     const Ellipsoid ellipsoid = { Point::Origin(), equatorialRadius_m, equatorialRadius_m, polarRadius_m, Quaternion::Unit() } ;
 
-    return Object::Geometry(ellipsoid, aFrameSPtr) ;
+    return { ellipsoid, aFrameSPtr } ;
 
 }
 

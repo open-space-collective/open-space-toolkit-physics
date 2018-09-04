@@ -24,7 +24,8 @@ inline void                     LibraryPhysicsPy_Coordinate_Frame           ( )
 
     // scope in_Frame = class_<Frame, Shared<Frame>>("Frame", init<String&, bool, Shared<const Frame>&, Shared<Provider>&>())
     // scope in_Frame = class_<Frame, Shared<Frame>, boost::noncopyable>("Frame", init<String&, bool, Shared<const Frame>&, Shared<Provider>&>())
-    scope in_Frame = class_<Frame>("Frame", init<String&, bool, Shared<const Frame>&, Shared<const Provider>&>())
+    // scope in_Frame = class_<Frame>("Frame", init<String&, bool, Shared<const Frame>&, Shared<const Provider>&>())
+    scope in_Frame = class_<Frame, boost::noncopyable>("Frame", no_init)
 
         .def(self == self)
         .def(self != self)
@@ -36,8 +37,8 @@ inline void                     LibraryPhysicsPy_Coordinate_Frame           ( )
         .def("isQuasiInertial", &Frame::isQuasiInertial)
         .def("hasParent", &Frame::hasParent)
 
-        .def("accessParent", &Frame::accessParent, return_value_policy<reference_existing_object>())
-        .def("accessAncestor", &Frame::accessAncestor, return_value_policy<reference_existing_object>())
+        .def("accessParent", &Frame::accessParent)
+        .def("accessAncestor", &Frame::accessAncestor)
         .def("accessProvider", &Frame::accessProvider)
         .def("getName", &Frame::getName)
         .def("getOriginIn", &Frame::getOriginIn)
@@ -54,9 +55,9 @@ inline void                     LibraryPhysicsPy_Coordinate_Frame           ( )
         .def("CIRF", &Frame::CIRF).staticmethod("CIRF")
         .def("TIRF", &Frame::TIRF).staticmethod("TIRF")
         .def("ITRF", &Frame::ITRF).staticmethod("ITRF")
-
-        // .def("Shared", +[] (const Frame& aFrame) -> Shared<Frame> { return std::make_shared<Frame>(aFrame) ; })
-        // .def("ConstShared", +[] (const Frame& aFrame) -> Shared<const Frame> { return std::make_shared<const Frame>(aFrame) ; })
+        .def("WithName", &Frame::WithName).staticmethod("WithName")
+        .def("Construct", &Frame::Construct).staticmethod("Construct")
+        .def("Destruct", &Frame::Destruct).staticmethod("Destruct")
 
     ;
 

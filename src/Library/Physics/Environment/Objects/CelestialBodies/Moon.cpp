@@ -78,11 +78,20 @@ Moon                            Moon::Analytical                            (   
     using library::physics::coord::frame::provider::Fixed ;
     using library::physics::env::ephem::Analytical ;
 
-    const Shared<const Provider> moonFrameProviderSPtr = std::make_shared<const Fixed>(Transform::Identity(anInstant)) ;
+    const String frameName = "Moon" ;
 
-    const Shared<const Frame> moonFrameSPtr = std::make_shared<const Frame>("Moon", false, Frame::GCRF(), moonFrameProviderSPtr) ;
+    Shared<const Frame> moonFrameSPtr = Frame::WithName(frameName) ;
 
-    return Moon(std::make_shared<Analytical>(moonFrameSPtr), anInstant) ;
+    if (moonFrameSPtr == nullptr)
+    {
+
+        const Shared<const Provider> moonFrameProviderSPtr = std::make_shared<const Fixed>(Transform::Identity(anInstant)) ;
+
+        moonFrameSPtr = Frame::Construct(frameName, false, Frame::GCRF(), moonFrameProviderSPtr) ;
+
+    }
+
+    return { std::make_shared<Analytical>(moonFrameSPtr), anInstant } ;
 
 }
 
@@ -93,11 +102,11 @@ Object::Geometry                Moon::Geometry                              (   
     using library::math::geom::trf::rot::Quaternion ;
 
     const Real equatorialRadius_m = Moon::EquatorialRadius.inMeters() ;
-    const Real polarRadius = equatorialRadius_m * (1.0 - Moon::Flattening) ;
+    const Real polarRadius_m = equatorialRadius_m * (1.0 - Moon::Flattening) ;
     
-    const Ellipsoid ellipsoid = { Point::Origin(), equatorialRadius_m, equatorialRadius_m, polarRadius, Quaternion::Unit() } ;
+    const Ellipsoid ellipsoid = { Point::Origin(), equatorialRadius_m, equatorialRadius_m, polarRadius_m, Quaternion::Unit() } ;
 
-    return Object::Geometry(ellipsoid, aFrame) ;
+    return { ellipsoid, aFrame } ;
 
 }
 

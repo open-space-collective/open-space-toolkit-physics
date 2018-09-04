@@ -21,7 +21,6 @@
 #include <Library/Mathematics/Geometry/3D/Object.hpp>
 
 #include <Library/Core/Types/String.hpp>
-#include <Library/Core/Types/Weak.hpp>
 #include <Library/Core/Types/Shared.hpp>
 #include <Library/Core/Types/Unique.hpp>
 
@@ -38,7 +37,6 @@ namespace env
 
 using library::core::types::Unique ;
 using library::core::types::Shared ;
-using library::core::types::Weak ;
 using library::core::types::String ;
 
 using library::physics::time::Instant ;

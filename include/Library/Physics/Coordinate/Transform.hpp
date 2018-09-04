@@ -80,6 +80,8 @@ class Transform
 
         bool                    isDefined                                   ( ) const ;
 
+        bool                    isIdentity                                  ( ) const ;
+
         const Instant&          accessInstant                               ( ) const ;
 
         const Vector3d&         accessTranslation                           ( ) const ;
@@ -112,8 +114,6 @@ class Transform
         static Transform        Undefined                                   ( ) ;
 
         static Transform        Identity                                    (   const   Instant&                    anInstant                                   ) ;
-
-        // static Transform        Translation                                 (   const   Vector3d&                   aTranslation                                ) ;
 
         static Transform        Active                                      (   const   Instant&                    anInstant,
                                                                                 const   Vector3d&                   aTranslation,
