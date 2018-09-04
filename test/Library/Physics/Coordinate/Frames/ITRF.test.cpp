@@ -12,8 +12,8 @@
 #include <Library/Physics/Units/Length.hpp>
 #include <Library/Physics/Units/Derived/Angle.hpp>
 
-#include <Library/Mathematics/Geometry/Transformations/Rotations/RotationMatrix.hpp>
-#include <Library/Mathematics/Geometry/Transformations/Rotations/RotationVector.hpp>
+#include <Library/Mathematics/Geometry/3D/Transformations/Rotations/RotationMatrix.hpp>
+#include <Library/Mathematics/Geometry/3D/Transformations/Rotations/RotationVector.hpp>
 
 #include <Library/Core/FileSystem/File.hpp>
 #include <Library/Core/FileSystem/Path.hpp>
@@ -38,9 +38,9 @@
 
 //     using library::math::obj::Vector3d ;
 
-//     using library::math::geom::trf::rot::Quaternion ;
-//     using library::math::geom::trf::rot::RotationVector ;
-//     using library::math::geom::trf::rot::RotationMatrix ;
+//     using library::math::geom::d3::trf::rot::Quaternion ;
+//     using library::math::geom::d3::trf::rot::RotationVector ;
+//     using library::math::geom::d3::trf::rot::RotationMatrix ;
     
 //     using library::physics::units::Length ;
 //     using library::physics::units::Angle ;

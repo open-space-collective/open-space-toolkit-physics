@@ -7,7 +7,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <Library/Mathematics/Geometry/Transformations/Rotations/RotationVector.hpp>
+#include <Library/Mathematics/Geometry/3D/Transformations/Rotations/RotationVector.hpp>
 #include <Library/Physics/Coordinate/Transform.hpp>
 
 #include <Library/Core/Error.hpp>
@@ -123,7 +123,7 @@ Transform&                      Transform::operator *=                      (   
 
     // q_C_A = q_C_B * q_B_A
 
-    const Quaternion orientation = orientation_ * aTransform.orientation_ ;
+    const Quaternion orientation = (orientation_ * aTransform.orientation_).toNormalized() ;
 
     // Ω_C_A_in_C = Ω_C_B_in_C + q_C_B * Ω_B_A_in_B
 
@@ -142,7 +142,7 @@ std::ostream&                   operator <<                                 (   
                                                                                 const   Transform&                  aTransform                                  )
 {
 
-    using library::math::geom::trf::rot::RotationVector ;
+    using library::math::geom::d3::trf::rot::RotationVector ;
 
     using library::physics::time::Scale ;
 
