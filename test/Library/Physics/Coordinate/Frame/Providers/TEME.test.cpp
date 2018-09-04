@@ -12,8 +12,8 @@
 #include <Library/Physics/Coordinate/Frame.hpp>
 #include <Library/Physics/Units/Derived/Angle.hpp>
 
-#include <Library/Mathematics/Geometry/Transformations/Rotations/RotationVector.hpp>
-#include <Library/Mathematics/Geometry/Transformations/Rotations/Quaternion.hpp>
+#include <Library/Mathematics/Geometry/3D/Transformations/Rotations/RotationVector.hpp>
+#include <Library/Mathematics/Geometry/3D/Transformations/Rotations/Quaternion.hpp>
 #include <Library/Mathematics/Objects/Vector.hpp>
 
 #include <Library/Core/Containers/Table.hpp>
@@ -32,8 +32,8 @@ TEST (Library_Physics_Coordinate_Frame_Providers_TEME, GetTransformAt)
     using library::core::fs::Path ;
     using library::core::fs::File ;
 
-    using library::math::geom::trf::rot::Quaternion ;
-    using library::math::geom::trf::rot::RotationVector ;
+    using library::math::geom::d3::trf::rot::Quaternion ;
+    using library::math::geom::d3::trf::rot::RotationVector ;
 
     using library::physics::units::Angle ;
     using library::physics::time::Scale ;

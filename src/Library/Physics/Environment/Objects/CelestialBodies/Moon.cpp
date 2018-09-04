@@ -99,7 +99,7 @@ Object::Geometry                Moon::Geometry                              (   
 {
 
     using library::math::geom::d3::objects::Point ;
-    using library::math::geom::trf::rot::Quaternion ;
+    using library::math::geom::d3::trf::rot::Quaternion ;
 
     const Real equatorialRadius_m = Moon::EquatorialRadius.inMeters() ;
     const Real polarRadius_m = equatorialRadius_m * (1.0 - Moon::Flattening) ;

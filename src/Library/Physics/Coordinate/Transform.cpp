@@ -7,7 +7,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <Library/Mathematics/Geometry/Transformations/Rotations/RotationVector.hpp>
+#include <Library/Mathematics/Geometry/3D/Transformations/Rotations/RotationVector.hpp>
 #include <Library/Physics/Coordinate/Transform.hpp>
 
 #include <Library/Core/Error.hpp>
@@ -142,7 +142,7 @@ std::ostream&                   operator <<                                 (   
                                                                                 const   Transform&                  aTransform                                  )
 {
 
-    using library::math::geom::trf::rot::RotationVector ;
+    using library::math::geom::d3::trf::rot::RotationVector ;
 
     using library::physics::time::Scale ;
 

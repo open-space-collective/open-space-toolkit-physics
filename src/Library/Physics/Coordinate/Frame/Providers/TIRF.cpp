@@ -12,7 +12,7 @@
 #include <Library/Physics/Time/DateTime.hpp>
 #include <Library/Physics/Time/Scale.hpp>
 
-#include <Library/Mathematics/Geometry/Transformations/Rotations/RotationMatrix.hpp>
+#include <Library/Mathematics/Geometry/3D/Transformations/Rotations/RotationMatrix.hpp>
 
 #include <Library/Core/Error.hpp>
 #include <Library/Core/Utilities.hpp>
@@ -69,7 +69,7 @@ bool                            TIRF::isDefined                             ( ) 
 Transform                       TIRF::getTransformAt                        (   const   Instant&                    anInstant                                   ) const
 {
 
-    using library::math::geom::trf::rot::RotationMatrix ;
+    using library::math::geom::d3::trf::rot::RotationMatrix ;
 
     using library::physics::time::Scale ;
     using library::physics::time::DateTime ;

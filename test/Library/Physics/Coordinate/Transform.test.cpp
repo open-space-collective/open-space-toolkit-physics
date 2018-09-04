@@ -12,8 +12,8 @@
 #include <Library/Physics/Time/Instant.hpp>
 #include <Library/Physics/Units/Derived/Angle.hpp>
 
-#include <Library/Mathematics/Geometry/Transformations/Rotations/RotationMatrix.hpp>
-#include <Library/Mathematics/Geometry/Transformations/Rotations/RotationVector.hpp>
+#include <Library/Mathematics/Geometry/3D/Transformations/Rotations/RotationMatrix.hpp>
+#include <Library/Mathematics/Geometry/3D/Transformations/Rotations/RotationVector.hpp>
 
 #include <Global.test.hpp>
 
@@ -23,7 +23,7 @@ TEST (Library_Physics_Coordinate_Transform, Constructor)
 {
 
     using library::math::obj::Vector3d ;
-    using library::math::geom::trf::rot::Quaternion ;
+    using library::math::geom::d3::trf::rot::Quaternion ;
     
     using library::physics::time::Instant ;
     using library::physics::coord::Transform ;
@@ -76,8 +76,8 @@ TEST (Library_Physics_Coordinate_Transform, EqualToOperator)
 {
 
     using library::math::obj::Vector3d ;
-    using library::math::geom::trf::rot::Quaternion ;
-    using library::math::geom::trf::rot::RotationVector ;
+    using library::math::geom::d3::trf::rot::Quaternion ;
+    using library::math::geom::d3::trf::rot::RotationVector ;
     
     using library::physics::units::Angle ;
     using library::physics::time::Scale ;
@@ -121,8 +121,8 @@ TEST (Library_Physics_Coordinate_Transform, NotEqualToOperator)
 {
 
     using library::math::obj::Vector3d ;
-    using library::math::geom::trf::rot::Quaternion ;
-    using library::math::geom::trf::rot::RotationVector ;
+    using library::math::geom::d3::trf::rot::Quaternion ;
+    using library::math::geom::d3::trf::rot::RotationVector ;
     
     using library::physics::units::Angle ;
     using library::physics::time::Scale ;
@@ -168,8 +168,8 @@ TEST (Library_Physics_Coordinate_Transform, MultiplicationOperator)
     using library::core::types::Real ;
     
     using library::math::obj::Vector3d ;
-    using library::math::geom::trf::rot::Quaternion ;
-    using library::math::geom::trf::rot::RotationVector ;
+    using library::math::geom::d3::trf::rot::Quaternion ;
+    using library::math::geom::d3::trf::rot::RotationVector ;
     
     using library::physics::units::Angle ;
     using library::physics::time::Instant ;
@@ -226,8 +226,8 @@ TEST (Library_Physics_Coordinate_Transform, StreamOperator)
 {
 
     using library::math::obj::Vector3d ;
-    using library::math::geom::trf::rot::Quaternion ;
-    using library::math::geom::trf::rot::RotationVector ;
+    using library::math::geom::d3::trf::rot::Quaternion ;
+    using library::math::geom::d3::trf::rot::RotationVector ;
     
     using library::physics::units::Angle ;
     using library::physics::time::Instant ;
@@ -257,8 +257,8 @@ TEST (Library_Physics_Coordinate_Transform, IsDefined)
 {
 
     using library::math::obj::Vector3d ;
-    using library::math::geom::trf::rot::Quaternion ;
-    using library::math::geom::trf::rot::RotationVector ;
+    using library::math::geom::d3::trf::rot::Quaternion ;
+    using library::math::geom::d3::trf::rot::RotationVector ;
     
     using library::physics::units::Angle ;
     using library::physics::time::Instant ;
@@ -290,8 +290,8 @@ TEST (Library_Physics_Coordinate_Transform, IsIdentity)
 {
 
     using library::math::obj::Vector3d ;
-    using library::math::geom::trf::rot::Quaternion ;
-    using library::math::geom::trf::rot::RotationVector ;
+    using library::math::geom::d3::trf::rot::Quaternion ;
+    using library::math::geom::d3::trf::rot::RotationVector ;
     
     using library::physics::units::Angle ;
     using library::physics::time::Instant ;
@@ -339,8 +339,8 @@ TEST (Library_Physics_Coordinate_Transform, AccessInstant)
 {
 
     using library::math::obj::Vector3d ;
-    using library::math::geom::trf::rot::Quaternion ;
-    using library::math::geom::trf::rot::RotationVector ;
+    using library::math::geom::d3::trf::rot::Quaternion ;
+    using library::math::geom::d3::trf::rot::RotationVector ;
     
     using library::physics::units::Angle ;
     using library::physics::time::Instant ;
@@ -372,8 +372,8 @@ TEST (Library_Physics_Coordinate_Transform, AccessTranslation)
 {
 
     using library::math::obj::Vector3d ;
-    using library::math::geom::trf::rot::Quaternion ;
-    using library::math::geom::trf::rot::RotationVector ;
+    using library::math::geom::d3::trf::rot::Quaternion ;
+    using library::math::geom::d3::trf::rot::RotationVector ;
     
     using library::physics::units::Angle ;
     using library::physics::time::Instant ;
@@ -405,8 +405,8 @@ TEST (Library_Physics_Coordinate_Transform, AccessVelocity)
 {
 
     using library::math::obj::Vector3d ;
-    using library::math::geom::trf::rot::Quaternion ;
-    using library::math::geom::trf::rot::RotationVector ;
+    using library::math::geom::d3::trf::rot::Quaternion ;
+    using library::math::geom::d3::trf::rot::RotationVector ;
     
     using library::physics::units::Angle ;
     using library::physics::time::Instant ;
@@ -438,8 +438,8 @@ TEST (Library_Physics_Coordinate_Transform, AccessOrientation)
 {
 
     using library::math::obj::Vector3d ;
-    using library::math::geom::trf::rot::Quaternion ;
-    using library::math::geom::trf::rot::RotationVector ;
+    using library::math::geom::d3::trf::rot::Quaternion ;
+    using library::math::geom::d3::trf::rot::RotationVector ;
     
     using library::physics::units::Angle ;
     using library::physics::time::Instant ;
@@ -471,8 +471,8 @@ TEST (Library_Physics_Coordinate_Transform, AccessAngularVelocity)
 {
 
     using library::math::obj::Vector3d ;
-    using library::math::geom::trf::rot::Quaternion ;
-    using library::math::geom::trf::rot::RotationVector ;
+    using library::math::geom::d3::trf::rot::Quaternion ;
+    using library::math::geom::d3::trf::rot::RotationVector ;
     
     using library::physics::units::Angle ;
     using library::physics::time::Instant ;
@@ -504,8 +504,8 @@ TEST (Library_Physics_Coordinate_Transform, GetInstant)
 {
 
     using library::math::obj::Vector3d ;
-    using library::math::geom::trf::rot::Quaternion ;
-    using library::math::geom::trf::rot::RotationVector ;
+    using library::math::geom::d3::trf::rot::Quaternion ;
+    using library::math::geom::d3::trf::rot::RotationVector ;
     
     using library::physics::units::Angle ;
     using library::physics::time::Instant ;
@@ -537,8 +537,8 @@ TEST (Library_Physics_Coordinate_Transform, GetTranslation)
 {
 
     using library::math::obj::Vector3d ;
-    using library::math::geom::trf::rot::Quaternion ;
-    using library::math::geom::trf::rot::RotationVector ;
+    using library::math::geom::d3::trf::rot::Quaternion ;
+    using library::math::geom::d3::trf::rot::RotationVector ;
     
     using library::physics::units::Angle ;
     using library::physics::time::Instant ;
@@ -570,8 +570,8 @@ TEST (Library_Physics_Coordinate_Transform, GetVelocity)
 {
 
     using library::math::obj::Vector3d ;
-    using library::math::geom::trf::rot::Quaternion ;
-    using library::math::geom::trf::rot::RotationVector ;
+    using library::math::geom::d3::trf::rot::Quaternion ;
+    using library::math::geom::d3::trf::rot::RotationVector ;
     
     using library::physics::units::Angle ;
     using library::physics::time::Instant ;
@@ -603,8 +603,8 @@ TEST (Library_Physics_Coordinate_Transform, GetOrientation)
 {
 
     using library::math::obj::Vector3d ;
-    using library::math::geom::trf::rot::Quaternion ;
-    using library::math::geom::trf::rot::RotationVector ;
+    using library::math::geom::d3::trf::rot::Quaternion ;
+    using library::math::geom::d3::trf::rot::RotationVector ;
     
     using library::physics::units::Angle ;
     using library::physics::time::Instant ;
@@ -636,8 +636,8 @@ TEST (Library_Physics_Coordinate_Transform, GetAngularVelocity)
 {
 
     using library::math::obj::Vector3d ;
-    using library::math::geom::trf::rot::Quaternion ;
-    using library::math::geom::trf::rot::RotationVector ;
+    using library::math::geom::d3::trf::rot::Quaternion ;
+    using library::math::geom::d3::trf::rot::RotationVector ;
     
     using library::physics::units::Angle ;
     using library::physics::time::Instant ;
@@ -671,8 +671,8 @@ TEST (Library_Physics_Coordinate_Transform, GetInverse)
     using library::core::types::Real ;
 
     using library::math::obj::Vector3d ;
-    using library::math::geom::trf::rot::Quaternion ;
-    using library::math::geom::trf::rot::RotationVector ;
+    using library::math::geom::d3::trf::rot::Quaternion ;
+    using library::math::geom::d3::trf::rot::RotationVector ;
     
     using library::physics::units::Angle ;
     using library::physics::time::Instant ;
@@ -714,8 +714,8 @@ TEST (Library_Physics_Coordinate_Transform, ApplyToPosition)
     using library::core::types::Real ;
 
     using library::math::obj::Vector3d ;
-    using library::math::geom::trf::rot::Quaternion ;
-    using library::math::geom::trf::rot::RotationVector ;
+    using library::math::geom::d3::trf::rot::Quaternion ;
+    using library::math::geom::d3::trf::rot::RotationVector ;
     
     using library::physics::units::Angle ;
     using library::physics::time::Instant ;
@@ -877,8 +877,8 @@ TEST (Library_Physics_Coordinate_Transform, ApplyToVelocity)
     using library::core::types::Real ;
     
     using library::math::obj::Vector3d ;
-    using library::math::geom::trf::rot::Quaternion ;
-    using library::math::geom::trf::rot::RotationVector ;
+    using library::math::geom::d3::trf::rot::Quaternion ;
+    using library::math::geom::d3::trf::rot::RotationVector ;
     
     using library::physics::units::Angle ;
     using library::physics::time::Instant ;
@@ -1047,8 +1047,8 @@ TEST (Library_Physics_Coordinate_Transform, ApplyToVector)
     using library::core::types::Real ;
     
     using library::math::obj::Vector3d ;
-    using library::math::geom::trf::rot::Quaternion ;
-    using library::math::geom::trf::rot::RotationVector ;
+    using library::math::geom::d3::trf::rot::Quaternion ;
+    using library::math::geom::d3::trf::rot::RotationVector ;
     
     using library::physics::units::Angle ;
     using library::physics::time::Instant ;
@@ -1241,7 +1241,7 @@ TEST (Library_Physics_Coordinate_Transform, Active)
 {
 
     using library::math::obj::Vector3d ;
-    using library::math::geom::trf::rot::Quaternion ;
+    using library::math::geom::d3::trf::rot::Quaternion ;
     
     using library::physics::time::Instant ;
     using library::physics::coord::Transform ;
@@ -1266,7 +1266,7 @@ TEST (Library_Physics_Coordinate_Transform, Passive)
 {
 
     using library::math::obj::Vector3d ;
-    using library::math::geom::trf::rot::Quaternion ;
+    using library::math::geom::d3::trf::rot::Quaternion ;
     
     using library::physics::time::Instant ;
     using library::physics::coord::Transform ;
@@ -1295,7 +1295,7 @@ TEST (Library_Physics_Coordinate_Transform, Test_1)
     using library::core::types::Real ;
 
     using library::math::obj::Vector3d ;
-    using library::math::geom::trf::rot::Quaternion ;
+    using library::math::geom::d3::trf::rot::Quaternion ;
     
     using library::physics::time::Instant ;
     using library::physics::coord::Transform ;

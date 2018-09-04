@@ -19,8 +19,8 @@ inline void                     LibraryPhysicsPy_Coordinate_Transform       ( )
     using library::core::types::Real ;
 
     using library::math::obj::Vector3d ;
-    using library::math::geom::trf::rot::Quaternion ;
-    using library::math::geom::trf::rot::RotationVector ;
+    using library::math::geom::d3::trf::rot::Quaternion ;
+    using library::math::geom::d3::trf::rot::RotationVector ;
 
     using library::physics::time::Instant ;
 
