@@ -71,6 +71,8 @@ class Angle : public Unit
                                 Angle                                       (   const   Real&                       aValue,
                                                                                 const   Angle::Unit&                aUnit                                       ) ;
 
+                                Angle                                       (   const   library::math::geom::Angle& anAngle                                     ) ;
+
         bool                    operator ==                                 (   const   Angle&                      anAngle                                     ) const ;
 
         bool                    operator !=                                 (   const   Angle&                      anAngle                                     ) const ;

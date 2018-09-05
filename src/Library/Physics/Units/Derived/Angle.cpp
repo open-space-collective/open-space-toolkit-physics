@@ -30,6 +30,42 @@ namespace units
 
 }
 
+                                Angle::Angle                                (   const   library::math::geom::Angle& anAngle                                     )
+                                :   units::Unit(units::Unit::Type::Derived, anAngle.in(anAngle.getUnit())),
+                                    unit_(Angle::Unit::Undefined)
+{
+
+    switch (anAngle.getUnit())
+    {
+
+        case library::math::geom::Angle::Unit::Radian:
+            unit_ = Angle::Unit::Radian ;
+            break ;
+        
+        case library::math::geom::Angle::Unit::Degree:
+            unit_ = Angle::Unit::Degree ;
+            break ;
+        
+        case library::math::geom::Angle::Unit::Arcminute:
+            unit_ = Angle::Unit::Arcminute ;
+            break ;
+        
+        case library::math::geom::Angle::Unit::Arcsecond:
+            unit_ = Angle::Unit::Arcsecond ;
+            break ;
+        
+        case library::math::geom::Angle::Unit::Revolution:
+            unit_ = Angle::Unit::Revolution ;
+            break ;
+
+        default:
+            throw library::core::error::runtime::Wrong("Unit") ;
+            break ;
+
+    }
+
+}
+
 bool                            Angle::operator ==                          (   const   Angle&                      anAngle                                     ) const
 {
 

@@ -95,9 +95,9 @@ Vector2d                        Finals2000A::getPolarMotionAt               (   
         const Finals2000A::Data& previousData = *(dataRange.first) ;
         const Finals2000A::Data& nextData = *(dataRange.second) ;
 
-        const Real instantMjd = anInstant.getModifiedJulianDate(Scale::UTC) ;
+        const Real instantMjd_UTC = anInstant.getModifiedJulianDate(Scale::UTC) ;
 
-        const Real ratio = (instantMjd - previousData.mjd) / (nextData.mjd - previousData.mjd) ;
+        const Real ratio = (instantMjd_UTC - previousData.mjd) / (nextData.mjd - previousData.mjd) ;
         
         const Real x_A = previousData.x_A + ratio * (nextData.x_A - previousData.x_A) ;
         const Real y_A = previousData.y_A + ratio * (nextData.y_A - previousData.y_A) ;
@@ -133,10 +133,10 @@ Real                            Finals2000A::getUt1MinusUtcAt               (   
         const Finals2000A::Data& previousData = *(dataRange.first) ;
         const Finals2000A::Data& nextData = *(dataRange.second) ;
 
-        const Real instantMjd = anInstant.getModifiedJulianDate(Scale::UTC) ;
+        const Real instantMjd_UTC = anInstant.getModifiedJulianDate(Scale::UTC) ;
 
-        const Real ratio = (instantMjd - previousData.mjd) / (nextData.mjd - previousData.mjd) ;
-        
+        const Real ratio = (instantMjd_UTC - previousData.mjd) / (nextData.mjd - previousData.mjd) ;
+
         const Real ut1MinusUtc_A = previousData.ut1MinusUtc_A + ratio * (nextData.ut1MinusUtc_A - previousData.ut1MinusUtc_A) ;
         // const Real ut1MinusUtc_B = previousData.ut1MinusUtc_B + ratio * (nextData.ut1MinusUtc_B - previousData.ut1MinusUtc_B) ;
 
@@ -171,9 +171,9 @@ Real                            Finals2000A::getLodAt                       (   
         const Finals2000A::Data& previousData = *(dataRange.first) ;
         const Finals2000A::Data& nextData = *(dataRange.second) ;
 
-        const Real instantMjd = anInstant.getModifiedJulianDate(Scale::UTC) ;
+        const Real instantMjd_UTC = anInstant.getModifiedJulianDate(Scale::UTC) ;
 
-        const Real ratio = (instantMjd - previousData.mjd) / (nextData.mjd - previousData.mjd) ;
+        const Real ratio = (instantMjd_UTC - previousData.mjd) / (nextData.mjd - previousData.mjd) ;
         
         const Real lod_A = previousData.lod_A + ratio * (nextData.lod_A - previousData.lod_A) ;
 
@@ -208,9 +208,9 @@ Finals2000A::Data               Finals2000A::getDataAt                      (   
         const Finals2000A::Data& previousData = *(dataRange.first) ;
         const Finals2000A::Data& nextData = *(dataRange.second) ;
 
-        const Real instantMjd = anInstant.getModifiedJulianDate(Scale::UTC) ;
+        const Real instantMjd_UTC = anInstant.getModifiedJulianDate(Scale::UTC) ;
 
-        const Real ratio = (instantMjd - previousData.mjd) / (nextData.mjd - previousData.mjd) ;
+        const Real ratio = (instantMjd_UTC - previousData.mjd) / (nextData.mjd - previousData.mjd) ;
 
         const Integer year = previousData.year ;
         const Integer month = previousData.month ;
@@ -460,9 +460,9 @@ Pair<const Finals2000A::Data*, const Finals2000A::Data*> Finals2000A::accessData
 
     using library::physics::time::Scale ;
 
-    const Real instantMjd = anInstant.getModifiedJulianDate(Scale::UTC) ;
+    const Real instantMjd_UTC = anInstant.getModifiedJulianDate(Scale::UTC) ;
     
-    const auto nextDataIt = data_.lower_bound(instantMjd) ;
+    const auto nextDataIt = data_.lower_bound(instantMjd_UTC) ;
 
     if (nextDataIt == data_.end())
     {

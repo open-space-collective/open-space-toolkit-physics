@@ -219,6 +219,51 @@ BEGIN Scenario
             WindowRectRight		 1811
             WindowRectBottom		 819
         END Report
+
+        BEGIN Report
+            Name		 ITRF_GCRF3
+            Type		 Report
+            BaseDir		 User
+            Style		 ITRF_GCRF
+            AGIViewer		 Yes
+            Instance		 *
+            BEGIN TimeData
+                BEGIN Section
+                    SectionNumber		 1
+                    SectionType		 2
+                    ShowIntervals		 No
+                    BEGIN IntervalList
+
+                        DateUnitAbrv		 UTCG
+
+                        BEGIN Intervals
+
+"1 Jan 2018 00:00:00.000000000" "2 Jan 2018 00:00:00.000000000"
+                        END Intervals
+
+                    END IntervalList
+
+                    TimeType		 Interval
+                    TimeInterval		                    IntervalTimePeriod		
+                    SamplingType		 Default
+                    TimeBound		 0
+                END Section
+            END TimeData
+            BEGIN PreDataList
+                BEGIN PreData
+                    ServiceName		 AxesChooseAxes
+                    Data		 CentralBody/Earth ICRF
+                END PreData
+            END PreDataList
+            DisplayOnLoad		 Yes
+            FrameType		 0
+            DockCircleID		 0
+            DockID		 0
+            WindowRectLeft		 218
+            WindowRectTop		 100
+            WindowRectRight		 2563
+            WindowRectBottom		 1171
+        END Report
     END QuickReports
 
     BEGIN Extensions
@@ -249,8 +294,8 @@ BEGIN Scenario
             LaunchWindowUseEntireTraj		 Yes
             LaunchWindowTrajMETStart		 0
             LaunchWindowTrajMETStop		 900
-            LaunchWindowStart		 0
-            LaunchWindowStop		 0
+            LaunchWindowStart		 1.80396e+07
+            LaunchWindowStop		 1.80396e+07
             LaunchMETOffset		 0
             LaunchWindowUseSecEphem		 No 
             LaunchWindowUseScenFolderForSecEphem		 Yes
@@ -609,12 +654,6 @@ BEGIN Scenario
         END ExportDataFile
 
         BEGIN Desc
-            BEGIN ShortText
-
-            END ShortText
-            BEGIN LongText
-
-            END LongText
         END Desc
 
         BEGIN RfEnv
@@ -1133,7 +1172,7 @@ BEGIN Scenario
                             BEGIN ZoomLocation
                                 CenterLat		 0
                                 CenterLon		 0
-                                ZoomWidth		 359.999998
+                                ZoomWidth		 360
                                 ZoomHeight		 180
                             END ZoomLocation
                         END ZoomLocations
