@@ -107,8 +107,8 @@ Transform                       TEME::getTransformAt                        (   
 
     // UT1 as a 2-part Julian Date
 
-    const double uta = djmjd0 + date ;
-    const double utb = tut ;
+    const Real uta = djmjd0 + date ;
+    const Real utb = tut ;
 
     // Greenwich apparent sidereal time (consistent with IAU 1982/94 resolutions)
 

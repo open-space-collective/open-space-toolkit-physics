@@ -56,7 +56,7 @@ Transform                       Fixed::getTransformAt                       (   
         throw library::core::error::runtime::Undefined("Fixed provider") ;
     }
     
-    return Transform(anInstant, transform_.accessTranslation(), transform_.accessVelocity(), transform_.accessOrientation(), transform_.accessAngularVelocity(), Transform::Type::Passive) ;
+    return { anInstant, transform_.accessTranslation(), transform_.accessVelocity(), transform_.accessOrientation(), transform_.accessAngularVelocity(), Transform::Type::Passive } ;
 
 }
 
