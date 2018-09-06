@@ -18,6 +18,9 @@ inline void                     LibraryPhysicsPy_Time_Instant               ( )
 
     using namespace boost::python ;
 
+    using library::core::types::String ;
+
+    using library::physics::time::Scale ;
     using library::physics::time::Instant ;
     using library::physics::time::Duration ;
 
@@ -47,7 +50,8 @@ inline void                     LibraryPhysicsPy_Time_Instant               ( )
         .def("getDateTime", &Instant::getDateTime)
         .def("getJulianDate", &Instant::getJulianDate)
         .def("getModifiedJulianDate", &Instant::getModifiedJulianDate)
-        .def("toString", &Instant::toString)
+        .def("toString", +[] (const Instant& anInstant) -> String { return anInstant.toString() ; })
+        .def("toString", +[] (const Instant& anInstant, const Scale& aScale) -> String { return anInstant.toString(aScale) ; })
 
         .def("Undefined", &Instant::Undefined).staticmethod("Undefined")
         .def("Now", &Instant::Now).staticmethod("Now")

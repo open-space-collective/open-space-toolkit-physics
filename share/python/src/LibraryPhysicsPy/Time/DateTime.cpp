@@ -16,6 +16,8 @@ inline void                     LibraryPhysicsPy_Time_DateTime              ( )
 
     using namespace boost::python ;
 
+    using library::core::types::String ;
+
     using library::physics::time::DateTime ;
     using library::physics::time::Date ;
     using library::physics::time::Time ;
@@ -23,13 +25,14 @@ inline void                     LibraryPhysicsPy_Time_DateTime              ( )
     scope in_DateTime = class_<DateTime>("DateTime", init<Date, Time>())
 
         .def(init<int, int, int, int, int, int, int, int, int>())
-
         .def(init<int, int, int, int, int, int>())
 
         .def(self == self)
         .def(self != self)
 
         .def(self_ns::str(self_ns::self))
+        
+        .def("__repr__", +[] (const DateTime& aDateTime) -> std::string { return aDateTime.toString() ; })
 
         .def("isDefined", &DateTime::isDefined)
 
@@ -37,7 +40,8 @@ inline void                     LibraryPhysicsPy_Time_DateTime              ( )
         .def("getTime", +[] (const DateTime& aDateTime) -> Time { return aDateTime.accessTime() ; })
         .def("getJulianDate", &DateTime::getJulianDate)
         .def("getModifiedJulianDate", &DateTime::getModifiedJulianDate)
-        .def("toString", &DateTime::toString)
+        .def("toString", +[] (const DateTime& aDateTime) -> String { return aDateTime.toString() ; })
+        .def("toString", +[] (const DateTime& aDateTime, const DateTime::Format& aFormat) -> String { return aDateTime.toString(aFormat) ; })
 
         .def("Undefined", &DateTime::Undefined).staticmethod("Undefined")
         .def("J2000", &DateTime::J2000).staticmethod("J2000")
@@ -46,7 +50,8 @@ inline void                     LibraryPhysicsPy_Time_DateTime              ( )
         .def("ModifiedJulianDateEpoch", &DateTime::ModifiedJulianDateEpoch).staticmethod("ModifiedJulianDateEpoch")
         .def("JulianDate", &DateTime::JulianDate).staticmethod("JulianDate")
         .def("ModifiedJulianDate", &DateTime::ModifiedJulianDate).staticmethod("ModifiedJulianDate")
-        .def("Parse", &DateTime::Parse).staticmethod("Parse")
+        .def("Parse", +[] (const String& aString) -> DateTime { return DateTime::Parse(aString) ; })
+        .def("Parse", +[] (const String& aString, const DateTime::Format& aFormat) -> DateTime { return DateTime::Parse(aString, aFormat) ; })
 
     ;
 

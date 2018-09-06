@@ -18,6 +18,8 @@ inline void                     LibraryPhysicsPy_Time_Interval              ( )
 
     using namespace boost::python ;
 
+    using library::core::types::String ;
+
     using library::physics::time::Instant ;
     using library::physics::time::Interval ;
 
