@@ -7,6 +7,9 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <LibraryPhysicsPy/Coordinate/Frame/Providers.cpp>
+#include <LibraryPhysicsPy/Coordinate/Frame/Provider.cpp>
+
 #include <Library/Physics/Coordinate/Frame.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -65,6 +68,9 @@ inline void                     LibraryPhysicsPy_Coordinate_Frame           ( )
     register_ptr_to_python<Shared<const Frame>>() ;
 
     implicitly_convertible<Shared<Frame>, Shared<const Frame>>() ;
+    
+    LibraryPhysicsPy_Coordinate_Frame_Provider() ;
+    LibraryPhysicsPy_Coordinate_Frame_Providers() ;
 
 }
 
