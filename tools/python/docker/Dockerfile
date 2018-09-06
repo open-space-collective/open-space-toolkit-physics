@@ -18,6 +18,8 @@ USER root
 #  && apt-get clean \
 #  && rm -rf /var/lib/apt/lists/*
 
+RUN pip install --quiet numpy --upgrade
+
 RUN ln -s /opt/conda/include/python3.6m /opt/conda/include/python3.6
 
 RUN cd /tmp \
