@@ -7,9 +7,9 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <Library/Physics/Time/Instant.hpp>
-#include <Library/Physics/Coordinate/Transform.hpp>
 #include <Library/Physics/Coordinate/Frame/Providers/Dynamic.hpp>
+#include <Library/Physics/Coordinate/Transform.hpp>
+#include <Library/Physics/Time/Instant.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -20,6 +20,8 @@ inline void                     LibraryPhysicsPy_Coordinate_Frame_Providers_Dyna
 
     using library::core::types::Shared ;
 
+    using library::physics::time::Instant ;
+    using library::physics::coord::Transform ;
     using library::physics::coord::frame::Provider ;
     using library::physics::coord::frame::provider::Dynamic ;
 
@@ -35,7 +37,7 @@ inline void                     LibraryPhysicsPy_Coordinate_Frame_Providers_Dyna
 
                     const auto generatorProxy = [aGeneratorObject] (const Instant& anInstant) -> Transform
                     {
-                         return boost::python::extract<Transform>(aGeneratorObject(anInstant)) ;
+                        return boost::python::extract<Transform>(aGeneratorObject(anInstant)) ;
                     } ;
                     
                     return std::make_shared<Dynamic>(generatorProxy) ;

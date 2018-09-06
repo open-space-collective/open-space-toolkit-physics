@@ -7,7 +7,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <Library/Physics/Coordinate/Frame/Providers/Fixed.hpp>
+#include <Library/Physics/Coordinate/Frame/Providers/Static.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -18,13 +18,13 @@ inline void                     LibraryPhysicsPy_Coordinate_Frame_Providers_Stat
 
     using library::physics::coord::Transform ;
     using library::physics::coord::frame::Provider ;
-    using library::physics::coord::frame::provider::Fixed ; // [TBM]
+    using library::physics::coord::frame::provider::Static ;
 
-    scope in_Static = class_<Fixed, bases<Provider>>("Static", init<const Transform&>())
+    scope in_Static = class_<Static, bases<Provider>>("Static", init<const Transform&>())
 
-        .def("isDefined", &Fixed::isDefined)
+        .def("isDefined", &Static::isDefined)
 
-        .def("getTransformAt", &Fixed::getTransformAt)
+        .def("getTransformAt", &Static::getTransformAt)
 
     ;
 

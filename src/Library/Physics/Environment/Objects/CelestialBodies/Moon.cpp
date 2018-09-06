@@ -9,7 +9,7 @@
 
 #include <Library/Physics/Environment/Ephemerides/Analytical.hpp>
 #include <Library/Physics/Environment/Objects/CelestialBodies/Moon.hpp>
-#include <Library/Physics/Coordinate/Frame/Providers/Fixed.hpp>
+#include <Library/Physics/Coordinate/Frame/Providers/Static.hpp>
 #include <Library/Physics/Coordinate/Frame.hpp>
 
 #include <Library/Core/Error.hpp>
@@ -75,7 +75,7 @@ Moon                            Moon::Analytical                            (   
 
     using library::physics::coord::Frame ;
     using library::physics::coord::frame::Provider ;
-    using library::physics::coord::frame::provider::Fixed ;
+    using library::physics::coord::frame::provider::Static ;
     using library::physics::env::ephem::Analytical ;
 
     const String frameName = "Moon" ;
@@ -85,7 +85,7 @@ Moon                            Moon::Analytical                            (   
     if (moonFrameSPtr == nullptr)
     {
 
-        const Shared<const Provider> moonFrameProviderSPtr = std::make_shared<const Fixed>(Transform::Identity(anInstant)) ;
+        const Shared<const Provider> moonFrameProviderSPtr = std::make_shared<const Static>(Transform::Identity(anInstant)) ;
 
         moonFrameSPtr = Frame::Construct(frameName, false, Frame::GCRF(), moonFrameProviderSPtr) ;
 

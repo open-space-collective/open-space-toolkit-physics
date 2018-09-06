@@ -8,7 +8,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <Library/Physics/Coordinate/Frame/Utilities.hpp>
-#include <Library/Physics/Coordinate/Frame/Providers/Fixed.hpp>
+#include <Library/Physics/Coordinate/Frame/Providers/Static.hpp>
 #include <Library/Physics/Environment/Objects/Celestial.hpp>
 
 #include <Library/Core/Error.hpp>
@@ -246,7 +246,7 @@ Shared<const Frame>             Celestial::getFrameAt                       (   
                                                                                 const   Celestial::FrameType&       aFrameType                                  ) const
 {
 
-    using FixedProvider = library::physics::coord::frame::provider::Fixed ;
+    using StaticProvider = library::physics::coord::frame::provider::Static ;
 
     if (!aLla.isDefined())
     {
@@ -273,7 +273,7 @@ Shared<const Frame>             Celestial::getFrameAt                       (   
             
             const Transform transform = library::physics::coord::frame::utilities::NorthEastDownTransformAt(aLla, this->getEquatorialRadius(), this->getFlattening()) ;
 
-            const Shared<const Frame> nedSPtr = Frame::Construct(frameName, false, ephemeris_->accessFrame(), std::make_shared<const FixedProvider>(transform)) ;
+            const Shared<const Frame> nedSPtr = Frame::Construct(frameName, false, ephemeris_->accessFrame(), std::make_shared<const StaticProvider>(transform)) ;
 
             return nedSPtr ;
 
