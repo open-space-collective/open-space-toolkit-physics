@@ -18,6 +18,7 @@ inline void                     LibraryPhysicsPy_Coordinate_Spherical_AER   ( )
 
     using library::physics::units::Length ;
     using library::physics::units::Angle ;
+    using library::physics::coord::Position ;
     using library::physics::coord::spherical::AER ;
 
     scope in_AER = class_<AER>("AER", init<const Angle&, const Angle&, const Length&>())
@@ -38,7 +39,8 @@ inline void                     LibraryPhysicsPy_Coordinate_Spherical_AER   ( )
         
         .def("Undefined", &AER::Undefined).staticmethod("Undefined")
         .def("Vector", &AER::Vector).staticmethod("Vector")
-        .def("FromPositionToPosition", &AER::FromPositionToPosition).staticmethod("FromPositionToPosition")
+        .def("FromPositionToPosition", +[] (const Position& aFromPosition, const Position& aToPosition) -> AER { return AER::FromPositionToPosition(aFromPosition, aToPosition) ; })
+        .def("FromPositionToPosition", +[] (const Position& aFromPosition, const Position& aToPosition, const bool isZNegative) -> AER { return AER::FromPositionToPosition(aFromPosition, aToPosition, isZNegative) ; })
 
     ;
 
