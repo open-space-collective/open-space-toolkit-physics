@@ -723,6 +723,47 @@ TEST (Library_Physics_Time_Duration, IsStrictlyPositive)
 
 }
 
+TEST (Library_Physics_Time_Duration, IsNear)
+{
+    
+    using library::physics::time::Duration ;
+
+    {
+
+        EXPECT_TRUE(Duration::Seconds(+0.0).isNear(Duration::Seconds(+0.0), Duration::Seconds(0.0))) ;
+        
+        EXPECT_TRUE(Duration::Seconds(-1.0).isNear(Duration::Seconds(-1.0), Duration::Seconds(0.0))) ;
+        EXPECT_TRUE(Duration::Seconds(+1.0).isNear(Duration::Seconds(+1.0), Duration::Seconds(0.0))) ;
+
+        EXPECT_TRUE(Duration::Seconds(-2.0).isNear(Duration::Seconds(-1.0), Duration::Seconds(1.0))) ;
+        EXPECT_TRUE(Duration::Seconds(+2.0).isNear(Duration::Seconds(+1.0), Duration::Seconds(1.0))) ;
+
+        EXPECT_TRUE(Duration::Seconds(-1.0).isNear(Duration::Seconds(-2.0), Duration::Seconds(1.0))) ;
+        EXPECT_TRUE(Duration::Seconds(+1.0).isNear(Duration::Seconds(+2.0), Duration::Seconds(1.0))) ;
+        
+    }
+
+    {
+
+        EXPECT_FALSE(Duration::Seconds(-3.0).isNear(Duration::Seconds(-1.0), Duration::Seconds(1.0))) ;
+        EXPECT_FALSE(Duration::Seconds(+3.0).isNear(Duration::Seconds(+1.0), Duration::Seconds(1.0))) ;
+
+        EXPECT_FALSE(Duration::Seconds(-1.0).isNear(Duration::Seconds(-3.0), Duration::Seconds(1.0))) ;
+        EXPECT_FALSE(Duration::Seconds(+1.0).isNear(Duration::Seconds(+3.0), Duration::Seconds(1.0))) ;
+
+    }
+
+    {
+        
+        EXPECT_ANY_THROW(Duration::Undefined().isNear(Duration::Undefined(), Duration::Undefined())) ;
+        EXPECT_ANY_THROW(Duration::Undefined().isNear(Duration::Zero(), Duration::Zero())) ;
+        EXPECT_ANY_THROW(Duration::Zero().isNear(Duration::Undefined(), Duration::Zero())) ;
+        EXPECT_ANY_THROW(Duration::Zero().isNear(Duration::Zero(), Duration::Undefined())) ;
+
+    }
+
+}
+
 TEST (Library_Physics_Time_Duration, GetNanoseconds)
 {
 

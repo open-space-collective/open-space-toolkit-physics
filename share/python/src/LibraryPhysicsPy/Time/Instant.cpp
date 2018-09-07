@@ -46,6 +46,7 @@ inline void                     LibraryPhysicsPy_Time_Instant               ( )
 
         .def("isDefined", &Instant::isDefined)
         .def("isPostEpoch", &Instant::isPostEpoch)
+        .def("isNear", &Instant::isNear)
         
         .def("getDateTime", &Instant::getDateTime)
         .def("getJulianDate", &Instant::getJulianDate)

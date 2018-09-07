@@ -929,6 +929,47 @@ TEST (Library_Physics_Time_Instant, IsPostEpoch)
 
 }
 
+TEST (Library_Physics_Time_Instant, IsNear)
+{
+    
+    using library::physics::time::Scale ;
+    using library::physics::time::DateTime ;
+    using library::physics::time::Instant ;
+    using library::physics::time::Duration ;
+
+    {
+        
+        EXPECT_TRUE(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0), Scale::TT).isNear(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0), Scale::TT), Duration::Seconds(0.0))) ;
+        EXPECT_TRUE(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 1), Scale::TT).isNear(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0), Scale::TT), Duration::Seconds(1.0))) ;
+        EXPECT_TRUE(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0), Scale::TT).isNear(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 1), Scale::TT), Duration::Seconds(1.0))) ;
+
+    }
+
+    {
+
+        EXPECT_TRUE(Instant::J2000().isNear(Instant::J2000(), Duration::Zero())) ;
+        EXPECT_TRUE(Instant::J2000().isNear(Instant::J2000(), Duration::Seconds(1.0))) ;
+
+    }
+
+    {
+
+        EXPECT_FALSE(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 2), Scale::TT).isNear(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0), Scale::TT), Duration::Seconds(1.0))) ;
+        EXPECT_FALSE(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0), Scale::TT).isNear(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 2), Scale::TT), Duration::Seconds(1.0))) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Instant::Undefined().isNear(Instant::Undefined(), Duration::Undefined())) ;
+        EXPECT_ANY_THROW(Instant::Undefined().isNear(Instant::J2000(), Duration::Zero())) ;
+        EXPECT_ANY_THROW(Instant::J2000().isNear(Instant::Undefined(), Duration::Zero())) ;
+        EXPECT_ANY_THROW(Instant::J2000().isNear(Instant::J2000(), Duration::Undefined())) ;
+
+    }
+
+}
+
 TEST (Library_Physics_Time_Instant, GetDateTime)
 {
     

@@ -235,6 +235,34 @@ bool                            Instant::isPostEpoch                        ( ) 
 
 }
 
+bool                            Instant::isNear                             (   const   Instant&                    anInstant,
+                                                                                const   Duration&                   aTolerance                                  ) const
+{
+
+    if (!anInstant.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Instant") ;
+    }
+
+    if (!aTolerance.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Tolerance") ;
+    }
+
+    if (!aTolerance.isPositive())
+    {
+        throw library::core::error::RuntimeError("Tolerance is not positive.") ;
+    }
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Instant") ;
+    }
+
+    return Duration::Between(*this, anInstant).getAbsolute() <= aTolerance ;
+
+}
+
 time::DateTime                  Instant::getDateTime                        (   const   Scale&                      aTimeScale                                  ) const
 {
 
