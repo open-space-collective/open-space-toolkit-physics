@@ -35,6 +35,16 @@ namespace spherical
                                     altitude_(anAltitude)
 {
 
+    if (latitude_.isDefined() && ((latitude_.inDegrees() < -90.0) || (latitude_.inDegrees() > 90.0)))
+    {
+        throw library::core::error::runtime::Wrong("Latitude") ;
+    }
+
+    if (longitude_.isDefined() && ((longitude_.inDegrees() < -180.0) || (longitude_.inDegrees() > 180.0)))
+    {
+        throw library::core::error::runtime::Wrong("Longitude") ;
+    }
+
 }
 
 bool                            LLA::operator ==                            (   const   LLA&                        aLLA                                        ) const

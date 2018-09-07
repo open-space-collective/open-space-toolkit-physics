@@ -44,9 +44,12 @@ TEST (Library_Physics_Coordinate_Spherical_AER, Constructor)
 
     {
 
-        EXPECT_ANY_THROW(AER aer(Angle::Degrees(-10.0), Angle::Degrees(20.0), Length::Meters(30.0)) ;) ;
+        EXPECT_ANY_THROW(AER aer(Angle::Degrees(-1.0), Angle::Degrees(20.0), Length::Meters(30.0)) ;) ;
+        EXPECT_ANY_THROW(AER aer(Angle::Degrees(+361.0), Angle::Degrees(20.0), Length::Meters(30.0)) ;) ;
+
         EXPECT_ANY_THROW(AER aer(Angle::Degrees(10.0), Angle::Degrees(-91.0), Length::Meters(30.0)) ;) ;
         EXPECT_ANY_THROW(AER aer(Angle::Degrees(10.0), Angle::Degrees(+91.0), Length::Meters(30.0)) ;) ;
+        
         EXPECT_ANY_THROW(AER aer(Angle::Degrees(10.0), Angle::Degrees(20.0), Length::Meters(-30.0)) ;) ;
 
     }

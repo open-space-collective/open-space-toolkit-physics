@@ -34,7 +34,7 @@ namespace spherical
                                     range_(aRange)
 {
 
-    if (azimuth_.isDefined() && (azimuth_.inDegrees() < 0.0))
+    if (azimuth_.isDefined() && ((azimuth_.inDegrees() < 0.0) || (azimuth_.inDegrees() > 360.0)))
     {
         throw library::core::error::runtime::Wrong("Azimuth") ;
     }
