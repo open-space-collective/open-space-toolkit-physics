@@ -34,6 +34,21 @@ namespace spherical
                                     range_(aRange)
 {
 
+    if (azimuth_.isDefined() && (azimuth_.inDegrees() < 0.0))
+    {
+        throw library::core::error::runtime::Wrong("Azimuth") ;
+    }
+
+    if (elevation_.isDefined() && ((elevation_.inDegrees() < -90.0) || (elevation_.inDegrees() > 90.0)))
+    {
+        throw library::core::error::runtime::Wrong("Elevation") ;
+    }
+
+    if (range_.isDefined() && (range_.inMeters() < 0.0))
+    {
+        throw library::core::error::runtime::Wrong("Range") ;
+    }
+
 }
 
 bool                            AER::operator ==                            (   const   AER&                        anAER                                       ) const
@@ -164,7 +179,8 @@ AER                             AER::Vector                                 (   
 }
 
 AER                             AER::FromPositionToPosition                 (   const   Position&                   aFromPosition,
-                                                                                const   Position&                   aToPosition                                 )
+                                                                                const   Position&                   aToPosition,
+                                                                                const   bool                        isZNegative                                 )
 {
 
     if (!aFromPosition.isDefined())
@@ -182,21 +198,21 @@ AER                             AER::FromPositionToPosition                 (   
         throw library::core::error::RuntimeError("Positions should be given in the same frame.") ;
     }
 
-    const Vector3d fromPositionCoordinates_REF = aFromPosition.getCoordinates() ;
-    const Vector3d toPositionCoordinates_REF = aToPosition.getCoordinates() ;
+    const Vector3d fromPositionCoordinates = aFromPosition.getCoordinates() ;
+    const Vector3d toPositionCoordinates = aToPosition.getCoordinates() ;
 
-    const Vector3d fromPositionToPosition_REF = toPositionCoordinates_REF - fromPositionCoordinates_REF ;
-    const Vector3d fromPositionToPositionDirection_REF = fromPositionToPosition_REF.normalized() ;
+    const Vector3d fromPositionToPosition = toPositionCoordinates - fromPositionCoordinates ;
+    const Vector3d fromPositionToPositionDirection = fromPositionToPosition.normalized() ;
 
-    Real azimuth_rad = std::atan2(fromPositionToPositionDirection_REF.y(), fromPositionToPositionDirection_REF.x()) ;
+    Real azimuth_rad = std::atan2(fromPositionToPositionDirection.y(), fromPositionToPositionDirection.x()) ;
 
     if (azimuth_rad < 0.0)
     {
         azimuth_rad += 2.0 * M_PI ;
     }
 
-    const Real elevation_rad = std::asin(-fromPositionToPositionDirection_REF.z()) ;
-    const Real range_m = fromPositionToPosition_REF.norm() ;
+    const Real elevation_rad = isZNegative ? std::asin(-fromPositionToPositionDirection.z()) : std::asin(+fromPositionToPositionDirection.z()) ;
+    const Real range_m = fromPositionToPosition.norm() ;
 
     return { Angle::Radians(azimuth_rad), Angle::Radians(elevation_rad), Length::Meters(range_m) } ;
 
