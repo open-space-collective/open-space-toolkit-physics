@@ -11,5 +11,6 @@ var searchData=
   ['ephemeris',['Ephemeris',['../classlibrary_1_1physics_1_1env_1_1_ephemeris.html',1,'library::physics::env::Ephemeris'],['../classlibrary_1_1physics_1_1env_1_1_ephemeris.html#a99282f212b17cc6a4eb63f99e6b16f69',1,'library::physics::env::Ephemeris::Ephemeris()']]],
   ['ephemeris_2ecpp',['Ephemeris.cpp',['../_ephemeris_8cpp.html',1,'']]],
   ['ephemeris_2ehpp',['Ephemeris.hpp',['../_ephemeris_8hpp.html',1,'']]],
-  ['equatorialradius',['EquatorialRadius',['../classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth.html#a1f7b0ecdcec2f807427923af8d0d87dd',1,'library::physics::env::obj::celest::Earth::EquatorialRadius()'],['../classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon.html#a6b22597902ccee09be70ae4eecca2174',1,'library::physics::env::obj::celest::Moon::EquatorialRadius()']]]
+  ['equatorialradius',['EquatorialRadius',['../classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth.html#a1f7b0ecdcec2f807427923af8d0d87dd',1,'library::physics::env::obj::celest::Earth::EquatorialRadius()'],['../classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon.html#a6b22597902ccee09be70ae4eecca2174',1,'library::physics::env::obj::celest::Moon::EquatorialRadius()']]],
+  ['exists',['Exists',['../classlibrary_1_1physics_1_1coord_1_1_frame.html#aa63cd17cfaf963543a34a15a18c84d40',1,'library::physics::coord::Frame']]]
 ];

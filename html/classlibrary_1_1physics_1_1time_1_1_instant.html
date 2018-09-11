@@ -137,6 +137,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a649a2505c26b68b17ed7a80429b599ee"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1time_1_1_instant.html#a649a2505c26b68b17ed7a80429b599ee">isPostEpoch</a> () const</td></tr>
 <tr class="memdesc:a649a2505c26b68b17ed7a80429b599ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if instant is post-epoch (J2000)  <a href="#a649a2505c26b68b17ed7a80429b599ee">More...</a><br /></td></tr>
 <tr class="separator:a649a2505c26b68b17ed7a80429b599ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33c9efd22d0bbf1dd0cdd934d9587a2a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1time_1_1_instant.html#a33c9efd22d0bbf1dd0cdd934d9587a2a">isNear</a> (const <a class="el" href="classlibrary_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;anInstant, const <a class="el" href="classlibrary_1_1physics_1_1time_1_1_duration.html">Duration</a> &amp;aTolerance) const</td></tr>
+<tr class="memdesc:a33c9efd22d0bbf1dd0cdd934d9587a2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if instant is near another instant.  <a href="#a33c9efd22d0bbf1dd0cdd934d9587a2a">More...</a><br /></td></tr>
+<tr class="separator:a33c9efd22d0bbf1dd0cdd934d9587a2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae40dbe983c197c961c0cf5aceefa352c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classlibrary_1_1physics_1_1time_1_1_date_time.html">time::DateTime</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1time_1_1_instant.html#ae40dbe983c197c961c0cf5aceefa352c">getDateTime</a> (const <a class="el" href="namespacelibrary_1_1physics_1_1time.html#a09d2bc9fbc7b0b5f92e1419bd655e6bb">Scale</a> &amp;aTimeScale) const</td></tr>
 <tr class="memdesc:ae40dbe983c197c961c0cf5aceefa352c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get date-time expressed in given time scale.  <a href="#ae40dbe983c197c961c0cf5aceefa352c">More...</a><br /></td></tr>
 <tr class="separator:ae40dbe983c197c961c0cf5aceefa352c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -346,6 +349,44 @@ Friends</h2></td></tr>
 
 <p>Check if instant is defined. </p>
 <div class="fragment"><div class="line"><a class="code" href="classlibrary_1_1physics_1_1time_1_1_instant.html#ac827b6ffa57ce75a3c56c462d4c872f8">Instant::DateTime</a>(<a class="code" href="classlibrary_1_1physics_1_1time_1_1_instant.html#ac827b6ffa57ce75a3c56c462d4c872f8">DateTime</a>(2018, 1, 1, 0, 0, 0), <a class="code" href="namespacelibrary_1_1physics_1_1time.html#a09d2bc9fbc7b0b5f92e1419bd655e6bba9234324ddf6b4176b57d803a925b7961">Scale::UTC</a>).<a class="code" href="classlibrary_1_1physics_1_1time_1_1_instant.html#aaef81e773a2d3059612b0d99dc7cf661">isDefined</a>() ; <span class="comment">// True</span></div></div><!-- fragment --><dl class="section return"><dt>Returns</dt><dd>True if instant is defined </dd></dl>
+
+</div>
+</div>
+<a id="a33c9efd22d0bbf1dd0cdd934d9587a2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33c9efd22d0bbf1dd0cdd934d9587a2a">&#9670;&nbsp;</a></span>isNear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool library::physics::time::Instant::isNear </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classlibrary_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;&#160;</td>
+          <td class="paramname"><em>anInstant</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classlibrary_1_1physics_1_1time_1_1_duration.html">Duration</a> &amp;&#160;</td>
+          <td class="paramname"><em>aTolerance</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check if instant is near another instant. </p>
+<div class="fragment"><div class="line"><a class="code" href="classlibrary_1_1physics_1_1time_1_1_instant.html#a2a4f57aa71693b8def06788d55bc3bd3">Instant::J2000</a>().<a class="code" href="classlibrary_1_1physics_1_1time_1_1_instant.html#a33c9efd22d0bbf1dd0cdd934d9587a2a">isNear</a>(<a class="code" href="classlibrary_1_1physics_1_1time_1_1_instant.html#a2a4f57aa71693b8def06788d55bc3bd3">Instant::J2000</a>(), <a class="code" href="classlibrary_1_1physics_1_1time_1_1_duration.html#aa68c3998cd4cf9068fb239dd66102c2c">Duration::Zero</a>()) ; <span class="comment">// True</span></div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">anInstant</td><td>An instant </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">aTolerance</td><td>A tolerance </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if instant is near another instant </dd></dl>
 
 </div>
 </div>

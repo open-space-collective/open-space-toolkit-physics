@@ -7,9 +7,6 @@ var dir_e986ef379416e4ec06497a083f48f02a =
     [ "Dynamic.hpp", "_dynamic_8hpp.html", [
       [ "Dynamic", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1_dynamic.html", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1_dynamic" ]
     ] ],
-    [ "Fixed.hpp", "_fixed_8hpp.html", [
-      [ "Fixed", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1_fixed.html", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1_fixed" ]
-    ] ],
     [ "GCRF.hpp", "_g_c_r_f_8hpp.html", [
       [ "GCRF", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1_g_c_r_f.html", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1_g_c_r_f" ]
     ] ],
@@ -18,6 +15,9 @@ var dir_e986ef379416e4ec06497a083f48f02a =
     ] ],
     [ "ITRF.hpp", "_i_t_r_f_8hpp.html", [
       [ "ITRF", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1_i_t_r_f.html", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1_i_t_r_f" ]
+    ] ],
+    [ "Static.hpp", "_static_8hpp.html", [
+      [ "Static", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1_static.html", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1_static" ]
     ] ],
     [ "TEME.hpp", "_t_e_m_e_8hpp.html", [
       [ "TEME", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_e_m_e.html", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_e_m_e" ]

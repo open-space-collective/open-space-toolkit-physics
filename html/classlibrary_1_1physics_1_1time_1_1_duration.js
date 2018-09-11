@@ -25,6 +25,7 @@ var classlibrary_1_1physics_1_1time_1_1_duration =
     [ "inSeconds", "classlibrary_1_1physics_1_1time_1_1_duration.html#a9272debd96e7f86df9b0852c6663a0bb", null ],
     [ "inWeeks", "classlibrary_1_1physics_1_1time_1_1_duration.html#ae49243cf87ccf07693b65e7170642b65", null ],
     [ "isDefined", "classlibrary_1_1physics_1_1time_1_1_duration.html#af6ee4c1644a1cafc96d670e576dc6749", null ],
+    [ "isNear", "classlibrary_1_1physics_1_1time_1_1_duration.html#a7df03d520e9372f58c37309e8ac8e08d", null ],
     [ "isPositive", "classlibrary_1_1physics_1_1time_1_1_duration.html#a443d719fb2acf922cc80a8f2be441fa1", null ],
     [ "isStrictlyPositive", "classlibrary_1_1physics_1_1time_1_1_duration.html#a2d4f7691e997232d4d9b88e7d4ab49d7", null ],
     [ "isZero", "classlibrary_1_1physics_1_1time_1_1_duration.html#a7f14980ea22f7e9cad122f7a37ba50be", null ],

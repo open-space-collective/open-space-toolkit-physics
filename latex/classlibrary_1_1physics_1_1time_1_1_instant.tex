@@ -40,6 +40,8 @@ bool \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant_aaef81e773a2d3059612
 \begin{DoxyCompactList}\small\item\em Check if instant is defined. \end{DoxyCompactList}\item 
 bool \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant_a649a2505c26b68b17ed7a80429b599ee}{is\+Post\+Epoch} () const
 \begin{DoxyCompactList}\small\item\em Check if instant is post-\/epoch (J2000) \end{DoxyCompactList}\item 
+bool \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant_a33c9efd22d0bbf1dd0cdd934d9587a2a}{is\+Near} (const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant, const \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \&a\+Tolerance) const
+\begin{DoxyCompactList}\small\item\em Check if instant is near another instant. \end{DoxyCompactList}\item 
 \hyperlink{classlibrary_1_1physics_1_1time_1_1_date_time}{time\+::\+Date\+Time} \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant_ae40dbe983c197c961c0cf5aceefa352c}{get\+Date\+Time} (const \hyperlink{namespacelibrary_1_1physics_1_1time_a09d2bc9fbc7b0b5f92e1419bd655e6bb}{Scale} \&a\+Time\+Scale) const
 \begin{DoxyCompactList}\small\item\em Get date-\/time expressed in given time scale. \end{DoxyCompactList}\item 
 Real \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant_a592844ceab80e29ab65766aedc194acb}{get\+Julian\+Date} (const \hyperlink{namespacelibrary_1_1physics_1_1time_a09d2bc9fbc7b0b5f92e1419bd655e6bb}{Scale} \&a\+Time\+Scale) const
@@ -201,6 +203,33 @@ Check if instant is defined.
 
 \begin{DoxyReturn}{Returns}
 True if instant is defined 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_instant_a33c9efd22d0bbf1dd0cdd934d9587a2a}\label{classlibrary_1_1physics_1_1time_1_1_instant_a33c9efd22d0bbf1dd0cdd934d9587a2a}} 
+\index{library\+::physics\+::time\+::\+Instant@{library\+::physics\+::time\+::\+Instant}!is\+Near@{is\+Near}}
+\index{is\+Near@{is\+Near}!library\+::physics\+::time\+::\+Instant@{library\+::physics\+::time\+::\+Instant}}
+\subsubsection{\texorpdfstring{is\+Near()}{isNear()}}
+{\footnotesize\ttfamily bool library\+::physics\+::time\+::\+Instant\+::is\+Near (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \&}]{a\+Tolerance }\end{DoxyParamCaption}) const}
+
+
+
+Check if instant is near another instant. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_instant_a2a4f57aa71693b8def06788d55bc3bd3}{Instant::J2000}().\hyperlink{classlibrary_1_1physics_1_1time_1_1_instant_a33c9efd22d0bbf1dd0cdd934d9587a2a}{isNear}(\hyperlink{classlibrary_1_1physics_1_1time_1_1_instant_a2a4f57aa71693b8def06788d55bc3bd3}{Instant::J2000}(), 
+      \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_aa68c3998cd4cf9068fb239dd66102c2c}{Duration::Zero}()) ; \textcolor{comment}{// True}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em an\+Instant} & An instant \\
+\hline
+\mbox{\tt in}  & {\em a\+Tolerance} & A tolerance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if instant is near another instant 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_instant_a649a2505c26b68b17ed7a80429b599ee}\label{classlibrary_1_1physics_1_1time_1_1_instant_a649a2505c26b68b17ed7a80429b599ee}} 
 \index{library\+::physics\+::time\+::\+Instant@{library\+::physics\+::time\+::\+Instant}!is\+Post\+Epoch@{is\+Post\+Epoch}}

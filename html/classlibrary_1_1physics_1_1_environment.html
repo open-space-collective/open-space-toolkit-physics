@@ -87,34 +87,49 @@ $(document).ready(function(){initNavTree('classlibrary_1_1physics_1_1_environmen
 </div><!--header-->
 <div class="contents">
 
+<p><a class="el" href="classlibrary_1_1physics_1_1_environment.html" title="Environment modeling. ">Environment</a> modeling.  
+ <a href="classlibrary_1_1physics_1_1_environment.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_environment_8hpp_source.html">Environment.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a51854f130c31eb075ea623e332978495"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1_environment.html#a51854f130c31eb075ea623e332978495">Environment</a> (const <a class="el" href="classlibrary_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;anInstant, const Array&lt; Shared&lt; <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html">Object</a> &gt;&gt; &amp;anObjectArray)</td></tr>
+<tr class="memdesc:a51854f130c31eb075ea623e332978495"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a51854f130c31eb075ea623e332978495">More...</a><br /></td></tr>
 <tr class="separator:a51854f130c31eb075ea623e332978495"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb2fe03dcd7061a8ed5e155d7d134ba2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1_environment.html#afb2fe03dcd7061a8ed5e155d7d134ba2">Environment</a> (const <a class="el" href="classlibrary_1_1physics_1_1_environment.html">Environment</a> &amp;anEnvironment)</td></tr>
+<tr class="memdesc:afb2fe03dcd7061a8ed5e155d7d134ba2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor.  <a href="#afb2fe03dcd7061a8ed5e155d7d134ba2">More...</a><br /></td></tr>
 <tr class="separator:afb2fe03dcd7061a8ed5e155d7d134ba2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3410b331642161ad087d76b7d5019a86"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classlibrary_1_1physics_1_1_environment.html">Environment</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1_environment.html#a3410b331642161ad087d76b7d5019a86">operator=</a> (const <a class="el" href="classlibrary_1_1physics_1_1_environment.html">Environment</a> &amp;anEnvironment)</td></tr>
+<tr class="memdesc:a3410b331642161ad087d76b7d5019a86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy assignment operator.  <a href="#a3410b331642161ad087d76b7d5019a86">More...</a><br /></td></tr>
 <tr class="separator:a3410b331642161ad087d76b7d5019a86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acbe2e199328ec6a3d2c233dbe8eb6359"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1_environment.html#acbe2e199328ec6a3d2c233dbe8eb6359">isDefined</a> () const</td></tr>
+<tr class="memdesc:acbe2e199328ec6a3d2c233dbe8eb6359"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if environment is defined.  <a href="#acbe2e199328ec6a3d2c233dbe8eb6359">More...</a><br /></td></tr>
 <tr class="separator:acbe2e199328ec6a3d2c233dbe8eb6359"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab88060948d60e3775d3c48047e1565aa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1_environment.html#ab88060948d60e3775d3c48047e1565aa">hasObjectWithName</a> (const String &amp;aName) const</td></tr>
+<tr class="memdesc:ab88060948d60e3775d3c48047e1565aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if environment contains objects with a given name.  <a href="#ab88060948d60e3775d3c48047e1565aa">More...</a><br /></td></tr>
 <tr class="separator:ab88060948d60e3775d3c48047e1565aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96b2455aff4cefe7d5ce92bb008a7d51"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1_environment.html#a96b2455aff4cefe7d5ce92bb008a7d51">intersects</a> (const <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#abdf50733c7ad97327fb64edca5670f13">Object::Geometry</a> &amp;aGeometry) const</td></tr>
+<tr class="memdesc:a96b2455aff4cefe7d5ce92bb008a7d51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if a given geometry intersects any of the environment objects.  <a href="#a96b2455aff4cefe7d5ce92bb008a7d51">More...</a><br /></td></tr>
+<tr class="separator:a96b2455aff4cefe7d5ce92bb008a7d51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a109b7156dadfe992126e01c629146a75"><td class="memItemLeft" align="right" valign="top">Array&lt; Shared&lt; const <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html">Object</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1_environment.html#a109b7156dadfe992126e01c629146a75">accessObjects</a> () const</td></tr>
+<tr class="memdesc:a109b7156dadfe992126e01c629146a75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access objects.  <a href="#a109b7156dadfe992126e01c629146a75">More...</a><br /></td></tr>
 <tr class="separator:a109b7156dadfe992126e01c629146a75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb18bd17dfbffa181d7e0d868c2647a0"><td class="memItemLeft" align="right" valign="top">Shared&lt; const <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html">Object</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1_environment.html#adb18bd17dfbffa181d7e0d868c2647a0">accessObjectWithName</a> (const String &amp;aName) const</td></tr>
+<tr class="memdesc:adb18bd17dfbffa181d7e0d868c2647a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access object with a given name.  <a href="#adb18bd17dfbffa181d7e0d868c2647a0">More...</a><br /></td></tr>
 <tr class="separator:adb18bd17dfbffa181d7e0d868c2647a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3dd52e151e9f09788d46072095bd48a6"><td class="memItemLeft" align="right" valign="top">Shared&lt; const <a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html">Celestial</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1_environment.html#a3dd52e151e9f09788d46072095bd48a6">accessCelestialObjectWithName</a> (const String &amp;aName) const</td></tr>
+<tr class="memdesc:a3dd52e151e9f09788d46072095bd48a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access celestial object with a given name.  <a href="#a3dd52e151e9f09788d46072095bd48a6">More...</a><br /></td></tr>
 <tr class="separator:a3dd52e151e9f09788d46072095bd48a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a551ca61eb2aebd762e67b7c9e561d22e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classlibrary_1_1physics_1_1time_1_1_instant.html">Instant</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1_environment.html#a551ca61eb2aebd762e67b7c9e561d22e">getInstant</a> () const</td></tr>
+<tr class="memdesc:a551ca61eb2aebd762e67b7c9e561d22e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get instant.  <a href="#a551ca61eb2aebd762e67b7c9e561d22e">More...</a><br /></td></tr>
 <tr class="separator:a551ca61eb2aebd762e67b7c9e561d22e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad90a5d1e67d62009e7cf6875c4fa7907"><td class="memItemLeft" align="right" valign="top">Array&lt; String &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1_environment.html#ad90a5d1e67d62009e7cf6875c4fa7907">getObjectNames</a> () const</td></tr>
+<tr class="memdesc:ad90a5d1e67d62009e7cf6875c4fa7907"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get names of objects.  <a href="#ad90a5d1e67d62009e7cf6875c4fa7907">More...</a><br /></td></tr>
 <tr class="separator:ad90a5d1e67d62009e7cf6875c4fa7907"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6279d44965a3894993cee2bc0c51d068"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1_environment.html#a6279d44965a3894993cee2bc0c51d068">setInstant</a> (const <a class="el" href="classlibrary_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;anInstant)</td></tr>
+<tr class="memdesc:a6279d44965a3894993cee2bc0c51d068"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set instant.  <a href="#a6279d44965a3894993cee2bc0c51d068">More...</a><br /></td></tr>
 <tr class="separator:a6279d44965a3894993cee2bc0c51d068"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96b2455aff4cefe7d5ce92bb008a7d51"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1_environment.html#a96b2455aff4cefe7d5ce92bb008a7d51">intersects</a> (const <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#abdf50733c7ad97327fb64edca5670f13">Object::Geometry</a> &amp;aGeometry) const</td></tr>
-<tr class="separator:a96b2455aff4cefe7d5ce92bb008a7d51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -126,9 +141,12 @@ Static Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
 <tr class="memitem:a7bc4b39898452fbe5ce3a8de75ad2596"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1_environment.html#a7bc4b39898452fbe5ce3a8de75ad2596">operator&lt;&lt;</a> (std::ostream &amp;anOutputStream, const <a class="el" href="classlibrary_1_1physics_1_1_environment.html">Environment</a> &amp;anEnvironment)</td></tr>
+<tr class="memdesc:a7bc4b39898452fbe5ce3a8de75ad2596"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output stream operator.  <a href="#a7bc4b39898452fbe5ce3a8de75ad2596">More...</a><br /></td></tr>
 <tr class="separator:a7bc4b39898452fbe5ce3a8de75ad2596"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="classlibrary_1_1physics_1_1_environment.html" title="Environment modeling. ">Environment</a> modeling. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a51854f130c31eb075ea623e332978495"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a51854f130c31eb075ea623e332978495">&#9670;&nbsp;</a></span>Environment() <span class="overload">[1/2]</span></h2>
 
@@ -155,6 +173,15 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">anInstant</td><td>An instant </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">An</td><td>array of shared pointers to objects </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="afb2fe03dcd7061a8ed5e155d7d134ba2"></a>
@@ -172,6 +199,14 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Copy constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">anEnvironment</td><td>An environment </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -192,6 +227,15 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Access celestial object with a given name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">aName</td><td>A celestial object name </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to shared pointer to celestial object </dd></dl>
+
 </div>
 </div>
 <a id="a109b7156dadfe992126e01c629146a75"></a>
@@ -208,6 +252,9 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Access objects. </p>
+<dl class="section return"><dt>Returns</dt><dd>Reference to array of shared pointers to objects </dd></dl>
 
 </div>
 </div>
@@ -226,6 +273,15 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Access object with a given name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">aName</td><td>An object name </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to shared pointer to object </dd></dl>
 
 </div>
 </div>
@@ -269,6 +325,9 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Get instant. </p>
+<dl class="section return"><dt>Returns</dt><dd>Instant </dd></dl>
+
 </div>
 </div>
 <a id="ad90a5d1e67d62009e7cf6875c4fa7907"></a>
@@ -285,6 +344,9 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Get names of objects. </p>
+<dl class="section return"><dt>Returns</dt><dd>Array of objects names </dd></dl>
 
 </div>
 </div>
@@ -304,6 +366,15 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Returns true if environment contains objects with a given name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">aName</td><td>An object name </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if environment contains objects with a given name </dd></dl>
+
 </div>
 </div>
 <a id="a96b2455aff4cefe7d5ce92bb008a7d51"></a>
@@ -322,6 +393,15 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Returns true if a given geometry intersects any of the environment objects. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">aGeometry</td><td>A geometry </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if a given geometry intersects any of the environment objects </dd></dl>
+
 </div>
 </div>
 <a id="acbe2e199328ec6a3d2c233dbe8eb6359"></a>
@@ -338,6 +418,9 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Check if environment is defined. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if environment is defined </dd></dl>
 
 </div>
 </div>
@@ -357,6 +440,15 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Copy assignment operator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">anEnvironment</td><td>An environment </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to environment </dd></dl>
+
 </div>
 </div>
 <a id="a6279d44965a3894993cee2bc0c51d068"></a>
@@ -374,6 +466,14 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set instant. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">anInstant</td><td>An instant </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -436,6 +536,16 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Output stream operator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">anOutputStream</td><td>An output stream </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">anEnvironment</td><td>An environment </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to output stream </dd></dl>
 
 </div>
 </div>

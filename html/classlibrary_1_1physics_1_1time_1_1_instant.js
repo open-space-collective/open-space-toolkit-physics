@@ -5,6 +5,7 @@ var classlibrary_1_1physics_1_1time_1_1_instant =
     [ "getJulianDate", "classlibrary_1_1physics_1_1time_1_1_instant.html#a592844ceab80e29ab65766aedc194acb", null ],
     [ "getModifiedJulianDate", "classlibrary_1_1physics_1_1time_1_1_instant.html#a01a167d6aee17d47ff200b2472199382", null ],
     [ "isDefined", "classlibrary_1_1physics_1_1time_1_1_instant.html#aaef81e773a2d3059612b0d99dc7cf661", null ],
+    [ "isNear", "classlibrary_1_1physics_1_1time_1_1_instant.html#a33c9efd22d0bbf1dd0cdd934d9587a2a", null ],
     [ "isPostEpoch", "classlibrary_1_1physics_1_1time_1_1_instant.html#a649a2505c26b68b17ed7a80429b599ee", null ],
     [ "operator!=", "classlibrary_1_1physics_1_1time_1_1_instant.html#a1d055c15365cc75756e6a85040e1ae04", null ],
     [ "operator+", "classlibrary_1_1physics_1_1time_1_1_instant.html#afa8c43afa94b882543c64e9610ccdc61", null ],

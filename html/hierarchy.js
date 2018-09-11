@@ -37,10 +37,10 @@ var hierarchy =
     [ "library::physics::coord::frame::Provider", "classlibrary_1_1physics_1_1coord_1_1frame_1_1_provider.html", [
       [ "library::physics::coord::frame::provider::CIRF", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1_c_i_r_f.html", null ],
       [ "library::physics::coord::frame::provider::Dynamic", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1_dynamic.html", null ],
-      [ "library::physics::coord::frame::provider::Fixed", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1_fixed.html", null ],
       [ "library::physics::coord::frame::provider::GCRF", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1_g_c_r_f.html", null ],
       [ "library::physics::coord::frame::provider::ICRF", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1_i_c_r_f.html", null ],
       [ "library::physics::coord::frame::provider::ITRF", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1_i_t_r_f.html", null ],
+      [ "library::physics::coord::frame::provider::Static", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1_static.html", null ],
       [ "library::physics::coord::frame::provider::TEME", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_e_m_e.html", null ],
       [ "library::physics::coord::frame::provider::TIRF", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_i_r_f.html", null ]
     ] ],

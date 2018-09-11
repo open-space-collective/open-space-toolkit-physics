@@ -62,6 +62,8 @@ bool \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a443d719fb2acf922cc
 \begin{DoxyCompactList}\small\item\em Check if duration is positive. \end{DoxyCompactList}\item 
 bool \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a2d4f7691e997232d4d9b88e7d4ab49d7}{is\+Strictly\+Positive} () const
 \begin{DoxyCompactList}\small\item\em Check if duration is strictly positive. \end{DoxyCompactList}\item 
+bool \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a7df03d520e9372f58c37309e8ac8e08d}{is\+Near} (const \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \&a\+Duration, const \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \&a\+Tolerance) const
+\begin{DoxyCompactList}\small\item\em Check if duration is near another duration. \end{DoxyCompactList}\item 
 Integer \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a5dad1e24c78cd7ef13a4220eb4e73dd0}{get\+Nanoseconds} () const
 \begin{DoxyCompactList}\small\item\em Get the number of nanoseconds in duration. \end{DoxyCompactList}\item 
 Integer \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a65db73a28d87e3f06d307cbd688739a3}{get\+Microseconds} () const
@@ -635,6 +637,33 @@ Check if duration is defined.
 
 \begin{DoxyReturn}{Returns}
 True if duration is defined 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_a7df03d520e9372f58c37309e8ac8e08d}\label{classlibrary_1_1physics_1_1time_1_1_duration_a7df03d520e9372f58c37309e8ac8e08d}} 
+\index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!is\+Near@{is\+Near}}
+\index{is\+Near@{is\+Near}!library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}}
+\subsubsection{\texorpdfstring{is\+Near()}{isNear()}}
+{\footnotesize\ttfamily bool library\+::physics\+::time\+::\+Duration\+::is\+Near (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \&}]{a\+Duration,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \&}]{a\+Tolerance }\end{DoxyParamCaption}) const}
+
+
+
+Check if duration is near another duration. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ae10891c94a1b2278c444cb44b37132f1}{Duration::Seconds}(2.0).\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_a7df03d520e9372f58c37309e8ac8e08d}{isNear}(\hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ae10891c94a1b2278c444cb44b37132f1}{Duration::Seconds}(1.0), 
+      \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration_ae10891c94a1b2278c444cb44b37132f1}{Duration::Seconds}(1.0)) ; \textcolor{comment}{// True}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Duration} & A duration \\
+\hline
+\mbox{\tt in}  & {\em a\+Tolerance} & A tolerance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if instant is near another instant 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1time_1_1_duration_a443d719fb2acf922cc80a8f2be441fa1}\label{classlibrary_1_1physics_1_1time_1_1_duration_a443d719fb2acf922cc80a8f2be441fa1}} 
 \index{library\+::physics\+::time\+::\+Duration@{library\+::physics\+::time\+::\+Duration}!is\+Positive@{is\+Positive}}

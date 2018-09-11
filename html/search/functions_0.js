@@ -6,6 +6,7 @@ var searchData=
   ['accessangularvelocity',['accessAngularVelocity',['../classlibrary_1_1physics_1_1coord_1_1_transform.html#a0e7dc9e3c40a5e3b836ccb10e250d207',1,'library::physics::coord::Transform']]],
   ['accesscachedtransform',['accessCachedTransform',['../classlibrary_1_1physics_1_1coord_1_1frame_1_1_manager.html#a0754fdf8670d625254c5acac8367a81e',1,'library::physics::coord::frame::Manager']]],
   ['accesscelestialobjectwithname',['accessCelestialObjectWithName',['../classlibrary_1_1physics_1_1_environment.html#a3dd52e151e9f09788d46072095bd48a6',1,'library::physics::Environment']]],
+  ['accesscomposite',['accessComposite',['../classlibrary_1_1physics_1_1env_1_1object_1_1_geometry.html#ac107f01b791d7844e434c553643dcdf3',1,'library::physics::env::object::Geometry']]],
   ['accesscoordinates',['accessCoordinates',['../classlibrary_1_1physics_1_1coord_1_1_position.html#abbcef57299f3416b88c458ea6bcd24e5',1,'library::physics::coord::Position::accessCoordinates()'],['../classlibrary_1_1physics_1_1coord_1_1_velocity.html#aea8fe9c62293e20393d9a662f277b0e7',1,'library::physics::coord::Velocity::accessCoordinates()']]],
   ['accessdate',['accessDate',['../classlibrary_1_1physics_1_1time_1_1_date_time.html#aa5042ece04c5b9accf745dbd26ecb0b4',1,'library::physics::time::DateTime']]],
   ['accessend',['accessEnd',['../classlibrary_1_1physics_1_1time_1_1_interval.html#acdf92b0713da0d9691f5c25acb4c8001',1,'library::physics::time::Interval']]],
@@ -43,13 +44,12 @@ var searchData=
   ['addframe',['addFrame',['../classlibrary_1_1physics_1_1coord_1_1frame_1_1_manager.html#a65ef93583a62089cb3192527babddab6',1,'library::physics::coord::frame::Manager']]],
   ['aer',['AER',['../classlibrary_1_1physics_1_1coord_1_1spherical_1_1_a_e_r.html#a40e444abec38e14d0e592d6d0dd92829',1,'library::physics::coord::spherical::AER']]],
   ['analytical',['Analytical',['../classlibrary_1_1physics_1_1env_1_1ephem_1_1_analytical.html#a3282f9dfc8fbe95f4b8a7a89141ca60e',1,'library::physics::env::ephem::Analytical::Analytical()'],['../classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth.html#af0456d0dfe17d3cf4473ec02aec1683b',1,'library::physics::env::obj::celest::Earth::Analytical()'],['../classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon.html#a3af7c97ead0a90e481705e74bef0d18d',1,'library::physics::env::obj::celest::Moon::Analytical()']]],
-  ['angle',['Angle',['../classlibrary_1_1physics_1_1units_1_1_angle.html#a6cd94e306cdc3a15fe13135729299d99',1,'library::physics::units::Angle']]],
+  ['angle',['Angle',['../classlibrary_1_1physics_1_1units_1_1_angle.html#a6cd94e306cdc3a15fe13135729299d99',1,'library::physics::units::Angle::Angle(const Real &amp;aValue, const Angle::Unit &amp;aUnit)'],['../classlibrary_1_1physics_1_1units_1_1_angle.html#a6c841e6d88730f6b1289b02dccf591f1',1,'library::physics::units::Angle::Angle(const library::math::geom::Angle &amp;anAngle)']]],
   ['angularvelocity',['AngularVelocity',['../classlibrary_1_1physics_1_1units_1_1_derived_1_1_unit.html#addd355a633d2d5addd72efdd7cfebc65',1,'library::physics::units::Derived::Unit']]],
   ['applytoposition',['applyToPosition',['../classlibrary_1_1physics_1_1coord_1_1_transform.html#ae55f2f7fc9769d42ac31f9e5fd0ddfe5',1,'library::physics::coord::Transform']]],
   ['applytovector',['applyToVector',['../classlibrary_1_1physics_1_1coord_1_1_transform.html#a0709a5af7a97adbda05a24b9d4ad677d',1,'library::physics::coord::Transform']]],
   ['applytovelocity',['applyToVelocity',['../classlibrary_1_1physics_1_1coord_1_1_transform.html#a017c1ec77f5ddda3f7d93dd63a9a6d3f',1,'library::physics::coord::Transform']]],
   ['arcminutes',['Arcminutes',['../classlibrary_1_1physics_1_1units_1_1_angle.html#a52f391389a2d59b327b5206e2ee24645',1,'library::physics::units::Angle']]],
   ['arcseconds',['Arcseconds',['../classlibrary_1_1physics_1_1units_1_1_angle.html#a04df20ae83aa3609c7e7ac5eaf013db9',1,'library::physics::units::Angle']]],
-  ['as',['as',['../classlibrary_1_1physics_1_1env_1_1object_1_1_geometry.html#a4bded0d750a47eaf975cf2f70dafe6e9',1,'library::physics::env::object::Geometry']]],
   ['axes',['Axes',['../classlibrary_1_1physics_1_1coord_1_1_axes.html#ac4db55f930e0038c8d1e3223d3911952',1,'library::physics::coord::Axes']]]
 ];

@@ -9,6 +9,7 @@ var classlibrary_1_1physics_1_1units_1_1_angle =
       [ "Revolution", "classlibrary_1_1physics_1_1units_1_1_angle.html#a3c329d415a61783b16ce481874cc5956aad09b2d48b2811c68e5a2bf421f7f2f2", null ]
     ] ],
     [ "Angle", "classlibrary_1_1physics_1_1units_1_1_angle.html#a6cd94e306cdc3a15fe13135729299d99", null ],
+    [ "Angle", "classlibrary_1_1physics_1_1units_1_1_angle.html#a6c841e6d88730f6b1289b02dccf591f1", null ],
     [ "getUnit", "classlibrary_1_1physics_1_1units_1_1_angle.html#a44ca98d9a05643948f5d3bee79bcba63", null ],
     [ "in", "classlibrary_1_1physics_1_1units_1_1_angle.html#aa641b9b6dabfe5fa0b546a2d6492e5be", null ],
     [ "inArcminutes", "classlibrary_1_1physics_1_1units_1_1_angle.html#a10195e20b7540e0813c3b2a13c8bf453", null ],

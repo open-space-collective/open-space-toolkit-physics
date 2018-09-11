@@ -2,35 +2,40 @@
 \label{classlibrary_1_1physics_1_1_environment}\index{library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}}
 
 
+\hyperlink{classlibrary_1_1physics_1_1_environment}{Environment} modeling.  
+
+
+
+
 {\ttfamily \#include $<$Environment.\+hpp$>$}
 
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{classlibrary_1_1physics_1_1_environment_a51854f130c31eb075ea623e332978495}{Environment} (const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant, const Array$<$ Shared$<$ \hyperlink{classlibrary_1_1physics_1_1env_1_1_object}{Object} $>$$>$ \&an\+Object\+Array)
-\item 
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
 \hyperlink{classlibrary_1_1physics_1_1_environment_afb2fe03dcd7061a8ed5e155d7d134ba2}{Environment} (const \hyperlink{classlibrary_1_1physics_1_1_environment}{Environment} \&an\+Environment)
-\item 
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
 \hyperlink{classlibrary_1_1physics_1_1_environment}{Environment} \& \hyperlink{classlibrary_1_1physics_1_1_environment_a3410b331642161ad087d76b7d5019a86}{operator=} (const \hyperlink{classlibrary_1_1physics_1_1_environment}{Environment} \&an\+Environment)
-\item 
+\begin{DoxyCompactList}\small\item\em Copy assignment operator. \end{DoxyCompactList}\item 
 bool \hyperlink{classlibrary_1_1physics_1_1_environment_acbe2e199328ec6a3d2c233dbe8eb6359}{is\+Defined} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Check if environment is defined. \end{DoxyCompactList}\item 
 bool \hyperlink{classlibrary_1_1physics_1_1_environment_ab88060948d60e3775d3c48047e1565aa}{has\+Object\+With\+Name} (const String \&a\+Name) const
-\item 
-Array$<$ Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1env_1_1_object}{Object} $>$ $>$ \hyperlink{classlibrary_1_1physics_1_1_environment_a109b7156dadfe992126e01c629146a75}{access\+Objects} () const
-\item 
-Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1env_1_1_object}{Object} $>$ \hyperlink{classlibrary_1_1physics_1_1_environment_adb18bd17dfbffa181d7e0d868c2647a0}{access\+Object\+With\+Name} (const String \&a\+Name) const
-\item 
-Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial}{Celestial} $>$ \hyperlink{classlibrary_1_1physics_1_1_environment_a3dd52e151e9f09788d46072095bd48a6}{access\+Celestial\+Object\+With\+Name} (const String \&a\+Name) const
-\item 
-\hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \hyperlink{classlibrary_1_1physics_1_1_environment_a551ca61eb2aebd762e67b7c9e561d22e}{get\+Instant} () const
-\item 
-Array$<$ String $>$ \hyperlink{classlibrary_1_1physics_1_1_environment_ad90a5d1e67d62009e7cf6875c4fa7907}{get\+Object\+Names} () const
-\item 
-void \hyperlink{classlibrary_1_1physics_1_1_environment_a6279d44965a3894993cee2bc0c51d068}{set\+Instant} (const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant)
-\item 
+\begin{DoxyCompactList}\small\item\em Returns true if environment contains objects with a given name. \end{DoxyCompactList}\item 
 bool \hyperlink{classlibrary_1_1physics_1_1_environment_a96b2455aff4cefe7d5ce92bb008a7d51}{intersects} (const \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_abdf50733c7ad97327fb64edca5670f13}{Object\+::\+Geometry} \&a\+Geometry) const
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns true if a given geometry intersects any of the environment objects. \end{DoxyCompactList}\item 
+Array$<$ Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1env_1_1_object}{Object} $>$ $>$ \hyperlink{classlibrary_1_1physics_1_1_environment_a109b7156dadfe992126e01c629146a75}{access\+Objects} () const
+\begin{DoxyCompactList}\small\item\em Access objects. \end{DoxyCompactList}\item 
+Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1env_1_1_object}{Object} $>$ \hyperlink{classlibrary_1_1physics_1_1_environment_adb18bd17dfbffa181d7e0d868c2647a0}{access\+Object\+With\+Name} (const String \&a\+Name) const
+\begin{DoxyCompactList}\small\item\em Access object with a given name. \end{DoxyCompactList}\item 
+Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial}{Celestial} $>$ \hyperlink{classlibrary_1_1physics_1_1_environment_a3dd52e151e9f09788d46072095bd48a6}{access\+Celestial\+Object\+With\+Name} (const String \&a\+Name) const
+\begin{DoxyCompactList}\small\item\em Access celestial object with a given name. \end{DoxyCompactList}\item 
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \hyperlink{classlibrary_1_1physics_1_1_environment_a551ca61eb2aebd762e67b7c9e561d22e}{get\+Instant} () const
+\begin{DoxyCompactList}\small\item\em Get instant. \end{DoxyCompactList}\item 
+Array$<$ String $>$ \hyperlink{classlibrary_1_1physics_1_1_environment_ad90a5d1e67d62009e7cf6875c4fa7907}{get\+Object\+Names} () const
+\begin{DoxyCompactList}\small\item\em Get names of objects. \end{DoxyCompactList}\item 
+void \hyperlink{classlibrary_1_1physics_1_1_environment_a6279d44965a3894993cee2bc0c51d068}{set\+Instant} (const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant)
+\begin{DoxyCompactList}\small\item\em Set instant. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -42,8 +47,11 @@ static \hyperlink{classlibrary_1_1physics_1_1_environment}{Environment} \hyperli
 \begin{DoxyCompactItemize}
 \item 
 std\+::ostream \& \hyperlink{classlibrary_1_1physics_1_1_environment_a7bc4b39898452fbe5ce3a8de75ad2596}{operator$<$$<$} (std\+::ostream \&an\+Output\+Stream, const \hyperlink{classlibrary_1_1physics_1_1_environment}{Environment} \&an\+Environment)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Output stream operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+\hyperlink{classlibrary_1_1physics_1_1_environment}{Environment} modeling. 
 
 \subsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1_environment_a51854f130c31eb075ea623e332978495}\label{classlibrary_1_1physics_1_1_environment_a51854f130c31eb075ea623e332978495}} 
@@ -52,12 +60,32 @@ std\+::ostream \& \hyperlink{classlibrary_1_1physics_1_1_environment_a7bc4b39898
 \subsubsection{\texorpdfstring{Environment()}{Environment()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily library\+::physics\+::\+Environment\+::\+Environment (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant,  }\item[{const Array$<$ Shared$<$ \hyperlink{classlibrary_1_1physics_1_1env_1_1_object}{Object} $>$$>$ \&}]{an\+Object\+Array }\end{DoxyParamCaption})}
 
+
+
+Constructor. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em an\+Instant} & An instant \\
+\hline
+\mbox{\tt in}  & {\em An} & array of shared pointers to objects \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1_environment_afb2fe03dcd7061a8ed5e155d7d134ba2}\label{classlibrary_1_1physics_1_1_environment_afb2fe03dcd7061a8ed5e155d7d134ba2}} 
 \index{library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}!Environment@{Environment}}
 \index{Environment@{Environment}!library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}}
 \subsubsection{\texorpdfstring{Environment()}{Environment()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily library\+::physics\+::\+Environment\+::\+Environment (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1_environment}{Environment} \&}]{an\+Environment }\end{DoxyParamCaption})}
 
+
+
+Copy constructor. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em an\+Environment} & An environment \\
+\hline
+\end{DoxyParams}
 
 
 \subsection{Member Function Documentation}
@@ -67,18 +95,49 @@ std\+::ostream \& \hyperlink{classlibrary_1_1physics_1_1_environment_a7bc4b39898
 \subsubsection{\texorpdfstring{access\+Celestial\+Object\+With\+Name()}{accessCelestialObjectWithName()}}
 {\footnotesize\ttfamily Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial}{Celestial} $>$ library\+::physics\+::\+Environment\+::access\+Celestial\+Object\+With\+Name (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Name }\end{DoxyParamCaption}) const}
 
+
+
+Access celestial object with a given name. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Name} & A celestial object name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to shared pointer to celestial object 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1_environment_a109b7156dadfe992126e01c629146a75}\label{classlibrary_1_1physics_1_1_environment_a109b7156dadfe992126e01c629146a75}} 
 \index{library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}!access\+Objects@{access\+Objects}}
 \index{access\+Objects@{access\+Objects}!library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}}
 \subsubsection{\texorpdfstring{access\+Objects()}{accessObjects()}}
 {\footnotesize\ttfamily Array$<$ Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1env_1_1_object}{Object} $>$ $>$ library\+::physics\+::\+Environment\+::access\+Objects (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
+
+
+Access objects. 
+
+\begin{DoxyReturn}{Returns}
+Reference to array of shared pointers to objects 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1_environment_adb18bd17dfbffa181d7e0d868c2647a0}\label{classlibrary_1_1physics_1_1_environment_adb18bd17dfbffa181d7e0d868c2647a0}} 
 \index{library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}!access\+Object\+With\+Name@{access\+Object\+With\+Name}}
 \index{access\+Object\+With\+Name@{access\+Object\+With\+Name}!library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}}
 \subsubsection{\texorpdfstring{access\+Object\+With\+Name()}{accessObjectWithName()}}
 {\footnotesize\ttfamily Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1env_1_1_object}{Object} $>$ library\+::physics\+::\+Environment\+::access\+Object\+With\+Name (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Name }\end{DoxyParamCaption}) const}
 
+
+
+Access object with a given name. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Name} & An object name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to shared pointer to object 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1_environment_a7fcc57999bfb9c0c7e70b7cc783e30c8}\label{classlibrary_1_1physics_1_1_environment_a7fcc57999bfb9c0c7e70b7cc783e30c8}} 
 \index{library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}!Default@{Default}}
 \index{Default@{Default}!library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}}
@@ -91,42 +150,108 @@ std\+::ostream \& \hyperlink{classlibrary_1_1physics_1_1_environment_a7bc4b39898
 \subsubsection{\texorpdfstring{get\+Instant()}{getInstant()}}
 {\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} library\+::physics\+::\+Environment\+::get\+Instant (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
+
+
+Get instant. 
+
+\begin{DoxyReturn}{Returns}
+Instant 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1_environment_ad90a5d1e67d62009e7cf6875c4fa7907}\label{classlibrary_1_1physics_1_1_environment_ad90a5d1e67d62009e7cf6875c4fa7907}} 
 \index{library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}!get\+Object\+Names@{get\+Object\+Names}}
 \index{get\+Object\+Names@{get\+Object\+Names}!library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}}
 \subsubsection{\texorpdfstring{get\+Object\+Names()}{getObjectNames()}}
 {\footnotesize\ttfamily Array$<$ String $>$ library\+::physics\+::\+Environment\+::get\+Object\+Names (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
+
+
+Get names of objects. 
+
+\begin{DoxyReturn}{Returns}
+Array of objects names 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1_environment_ab88060948d60e3775d3c48047e1565aa}\label{classlibrary_1_1physics_1_1_environment_ab88060948d60e3775d3c48047e1565aa}} 
 \index{library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}!has\+Object\+With\+Name@{has\+Object\+With\+Name}}
 \index{has\+Object\+With\+Name@{has\+Object\+With\+Name}!library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}}
 \subsubsection{\texorpdfstring{has\+Object\+With\+Name()}{hasObjectWithName()}}
 {\footnotesize\ttfamily bool library\+::physics\+::\+Environment\+::has\+Object\+With\+Name (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Name }\end{DoxyParamCaption}) const}
 
+
+
+Returns true if environment contains objects with a given name. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Name} & An object name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if environment contains objects with a given name 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1_environment_a96b2455aff4cefe7d5ce92bb008a7d51}\label{classlibrary_1_1physics_1_1_environment_a96b2455aff4cefe7d5ce92bb008a7d51}} 
 \index{library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}!intersects@{intersects}}
 \index{intersects@{intersects}!library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}}
 \subsubsection{\texorpdfstring{intersects()}{intersects()}}
 {\footnotesize\ttfamily bool library\+::physics\+::\+Environment\+::intersects (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_abdf50733c7ad97327fb64edca5670f13}{Object\+::\+Geometry} \&}]{a\+Geometry }\end{DoxyParamCaption}) const}
 
+
+
+Returns true if a given geometry intersects any of the environment objects. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Geometry} & A geometry \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if a given geometry intersects any of the environment objects 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1_environment_acbe2e199328ec6a3d2c233dbe8eb6359}\label{classlibrary_1_1physics_1_1_environment_acbe2e199328ec6a3d2c233dbe8eb6359}} 
 \index{library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}!is\+Defined@{is\+Defined}}
 \index{is\+Defined@{is\+Defined}!library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}}
 \subsubsection{\texorpdfstring{is\+Defined()}{isDefined()}}
 {\footnotesize\ttfamily bool library\+::physics\+::\+Environment\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
+
+
+Check if environment is defined. 
+
+\begin{DoxyReturn}{Returns}
+True if environment is defined 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1_environment_a3410b331642161ad087d76b7d5019a86}\label{classlibrary_1_1physics_1_1_environment_a3410b331642161ad087d76b7d5019a86}} 
 \index{library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}!operator=@{operator=}}
 \index{operator=@{operator=}!library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}}
 \subsubsection{\texorpdfstring{operator=()}{operator=()}}
 {\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1_environment}{Environment} \& library\+::physics\+::\+Environment\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1_environment}{Environment} \&}]{an\+Environment }\end{DoxyParamCaption})}
 
+
+
+Copy assignment operator. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em an\+Environment} & An environment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to environment 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1_environment_a6279d44965a3894993cee2bc0c51d068}\label{classlibrary_1_1physics_1_1_environment_a6279d44965a3894993cee2bc0c51d068}} 
 \index{library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}!set\+Instant@{set\+Instant}}
 \index{set\+Instant@{set\+Instant}!library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}}
 \subsubsection{\texorpdfstring{set\+Instant()}{setInstant()}}
 {\footnotesize\ttfamily void library\+::physics\+::\+Environment\+::set\+Instant (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption})}
 
+
+
+Set instant. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em an\+Instant} & An instant \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1_environment_a8d1dfff3867d59ecdebd3ee6e98a2dab}\label{classlibrary_1_1physics_1_1_environment_a8d1dfff3867d59ecdebd3ee6e98a2dab}} 
 \index{library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}!Undefined@{Undefined}}
 \index{Undefined@{Undefined}!library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}}
@@ -142,6 +267,20 @@ std\+::ostream \& \hyperlink{classlibrary_1_1physics_1_1_environment_a7bc4b39898
 \subsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
 {\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{an\+Output\+Stream,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1_environment}{Environment} \&}]{an\+Environment }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
 
+
+
+Output stream operator. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em an\+Output\+Stream} & An output stream \\
+\hline
+\mbox{\tt in}  & {\em an\+Environment} & An environment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to output stream 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
