@@ -81,8 +81,8 @@ Transform                       CIRF::getTransformAt                        (   
 
     // Time (TT)
 
-    static const double djmjd0 = 2400000.5 ;
-    const double tt = anInstant.getDateTime(Scale::TT).getModifiedJulianDate() ;
+    static const Real djmjd0 = 2400000.5 ;
+    const Real tt = anInstant.getDateTime(Scale::TT).getModifiedJulianDate() ;
 
     // CIP and CIO, IAU 2006/2000A
 
@@ -94,8 +94,8 @@ Transform                       CIRF::getTransformAt                        (   
 
     // CIP offsets wrt IAU 2006/2000A (mas->radians)
     
-    static const double dx06 = +0.1750 * DMAS2R ;
-    static const double dy06 = -0.2259 * DMAS2R ;
+    static const Real dx06 = +0.1750 * DMAS2R ;
+    static const Real dy06 = -0.2259 * DMAS2R ;
 
     // Add CIP corrections
 

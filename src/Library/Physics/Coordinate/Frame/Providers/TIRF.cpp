@@ -88,26 +88,26 @@ Transform                       TIRF::getTransformAt                        (   
 
     // Time (UTC)
 
-    static const double djmjd0 = 2400000.5 ;
-    const double utc = anInstant.getDateTime(Scale::UTC).getModifiedJulianDate() ;
+    static const Real djmjd0 = 2400000.5 ;
+    const Real utc = anInstant.getDateTime(Scale::UTC).getModifiedJulianDate() ;
 
-    const double date = std::floor(utc) ;
-    const double time = utc - date ;
+    const Real date = std::floor(utc) ;
+    const Real time = utc - date ;
 
     // UT1 - UTC (s)
 
-    const double dut1 = IersManager.getUt1MinusUtcAt(anInstant) ; // [s]
+    const Real dut1 = IersManager.getUt1MinusUtcAt(anInstant) ; // [s]
 
-    const double tut = time + dut1 / DAYSEC ;
+    const Real tut = time + dut1 / DAYSEC ;
 
     // Earth rotation angle, IAU 2000 [rad]
 
-    const double era = iauEra00(djmjd0 + date, tut) ;
+    const Real era = iauEra00(djmjd0 + date, tut) ;
 
     // CIRS to TIRF matrix
 
-    const double cosEra = std::cos(era) ;
-    const double sinEra = std::sin(era) ;
+    const Real cosEra = std::cos(era) ;
+    const Real sinEra = std::sin(era) ;
 
     const RotationMatrix dcm_TIRF_CIRF = RotationMatrix::Rows(  { +cosEra, +sinEra, 0.0 },
                                                                 { -sinEra, +cosEra, 0.0 },
@@ -119,12 +119,11 @@ Transform                       TIRF::getTransformAt                        (   
 
     if (!lod_ms.isDefined())
     {
-        // throw library::core::error::runtime::Undefined("LOD") ;
-        std::cout << "LOD :: LOW RES" << std::endl ;
+        // throw library::core::error::runtime::Undefined("LOD") ; // [TBI] Fail in strict mode
         lod_ms = 0.0 ;
     }
 
-    const double w_TIRF_CIRF = (72921151.467064 - 0.843994809 * lod_ms) * 1e-12 ; // [rad/s] https://www.iers.org/IERS/EN/Science/EarthRotation/UT1LOD.html
+    const Real w_TIRF_CIRF = (72921151.467064 - 0.843994809 * lod_ms) * 1e-12 ; // [rad/s] https://www.iers.org/IERS/EN/Science/EarthRotation/UT1LOD.html
 
     // Output
 

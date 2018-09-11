@@ -212,6 +212,19 @@ class Instant
 
         bool                    isPostEpoch                                 ( ) const ;
 
+        /// @brief              Check if instant is near another instant
+        ///
+        /// @code
+        ///                     Instant::J2000().isNear(Instant::J2000(), Duration::Zero()) ; // True
+        /// @endcode
+        ///
+        /// @param              [in] anInstant An instant
+        /// @param              [in] aTolerance A tolerance
+        /// @return             True if instant is near another instant
+
+        bool                    isNear                                      (   const   Instant&                    anInstant,
+                                                                                const   Duration&                   aTolerance                                  ) const ;
+
         /// @brief              Get date-time expressed in given time scale
         ///
         /// @code

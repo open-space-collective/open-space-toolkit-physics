@@ -12,7 +12,7 @@
 #include <Library/Physics/Coordinate/Frame/Providers/CIRF.hpp>
 #include <Library/Physics/Coordinate/Frame/Providers/TEME.hpp>
 #include <Library/Physics/Coordinate/Frame/Providers/GCRF.hpp>
-#include <Library/Physics/Coordinate/Frame/Providers/Fixed.hpp>
+#include <Library/Physics/Coordinate/Frame/Providers/Static.hpp>
 #include <Library/Physics/Coordinate/Frame/Manager.hpp>
 #include <Library/Physics/Coordinate/Frame.hpp>
 
@@ -359,11 +359,11 @@ Shared<const Frame>             Frame::TEMEOfEpoch                          (   
 {
 
     using Scale = library::physics::time::Scale ;
-    using FixedProvider = library::physics::coord::frame::provider::Fixed ;
+    using StaticProvider = library::physics::coord::frame::provider::Static ;
 
     const String temeOfEpochFrameName = String::Format("TEMEOfEpoch @ {}", anEpoch.toString(Scale::TT)) ;
     
-    static const Shared<const Provider> providerSPtr = std::make_shared<const FixedProvider>(Frame::GCRF()->getTransformTo(Frame::TEME(), anEpoch)) ;
+    static const Shared<const Provider> providerSPtr = std::make_shared<const StaticProvider>(Frame::GCRF()->getTransformTo(Frame::TEME(), anEpoch)) ;
 
     return Frame::Emplace(temeOfEpochFrameName, true, Frame::GCRF(), providerSPtr) ;
 
@@ -416,6 +416,18 @@ Shared<const Frame>             Frame::WithName                             (   
     }
 
     return nullptr ;
+
+}
+
+bool                            Frame::Exists                               (   const   String&                     aName                                       )
+{
+
+    if (aName.isEmpty())
+    {
+        throw library::core::error::runtime::Undefined("Name") ;
+    }
+
+    return FrameManager::Get().hasFrameWithName(aName) ;
 
 }
 

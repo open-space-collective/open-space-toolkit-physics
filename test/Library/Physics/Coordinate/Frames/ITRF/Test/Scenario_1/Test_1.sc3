@@ -686,10 +686,6 @@ BEGIN SceneWindow
         RubberBandLineWidth		 2
         RubberBandCrosshairSize		 16
         RubberBandRGB		 0.66 0.66 0.66
-        _AGI_PIBEGINTYPEMGR3DSCENEDATA
-            BEGIN 3dScene
-            END
-        END
         BEGIN View
             ViewName		 STKVOInitialView
             ViewTime		 0

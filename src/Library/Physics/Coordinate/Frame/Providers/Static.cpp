@@ -1,13 +1,13 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Library/Physics
-/// @file           Library/Physics/Coordinate/Frame/Providers/Fixed.cpp
+/// @file           Library/Physics/Coordinate/Frame/Providers/Static.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        TBD
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <Library/Physics/Coordinate/Frame/Providers/Fixed.hpp>
+#include <Library/Physics/Coordinate/Frame/Providers/Static.hpp>
 
 #include <Library/Core/Error.hpp>
 #include <Library/Core/Utilities.hpp>
@@ -27,36 +27,36 @@ namespace provider
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                                Fixed::Fixed                                (   const   Transform&                  aTransform                                  )
+                                Static::Static                              (   const   Transform&                  aTransform                                  )
                                 :   transform_(aTransform)
 {
 
 }
 
-                                Fixed::~Fixed                               ( )
+                                Static::~Static                             ( )
 {
 
 }
 
-Fixed*                          Fixed::clone                                ( ) const
+Static*                         Static::clone                               ( ) const
 {
-    return new Fixed(*this) ;
+    return new Static(*this) ;
 }
 
-bool                            Fixed::isDefined                            ( ) const
+bool                            Static::isDefined                           ( ) const
 {
     return transform_.isDefined() ;
 }
 
-Transform                       Fixed::getTransformAt                       (   const   Instant&                    anInstant                                   ) const
+Transform                       Static::getTransformAt                      (   const   Instant&                    anInstant                                   ) const
 {
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Fixed provider") ;
+        throw library::core::error::runtime::Undefined("Static provider") ;
     }
     
-    return Transform(anInstant, transform_.accessTranslation(), transform_.accessVelocity(), transform_.accessOrientation(), transform_.accessAngularVelocity(), Transform::Type::Passive) ;
+    return { anInstant, transform_.accessTranslation(), transform_.accessVelocity(), transform_.accessOrientation(), transform_.accessAngularVelocity(), Transform::Type::Passive } ;
 
 }
 

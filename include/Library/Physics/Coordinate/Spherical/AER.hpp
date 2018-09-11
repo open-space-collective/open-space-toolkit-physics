@@ -75,8 +75,15 @@ class AER
 
         static AER              Vector                                      (   const   Vector3d&                   aVector                                     ) ;
 
+        /// @brief              AER from the relative position between two positions
+        ///
+        /// @param              [in] aFromPosition A FROM position
+        /// @param              [in] aToPosition A TO position
+        /// @param              [in] (optional) isZNegative If true, elevation is measured positive toward the -Z axis
+
         static AER              FromPositionToPosition                      (   const   Position&                   aFromPosition,
-                                                                                const   Position&                   aToPosition                                 ) ;
+                                                                                const   Position&                   aToPosition,
+                                                                                const   bool                        isZNegative                                 =   true ) ;
 
     private:
 

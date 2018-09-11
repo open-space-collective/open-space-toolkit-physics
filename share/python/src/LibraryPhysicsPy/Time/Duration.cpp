@@ -46,6 +46,7 @@ inline void                     LibraryPhysicsPy_Time_Duration               ( )
         .def("isZero", &Duration::isZero)
         .def("isPositive", &Duration::isPositive)
         .def("isStrictlyPositive", &Duration::isStrictlyPositive)
+        .def("isNear", &Duration::isNear)
 
         .def("getNanoseconds", &Duration::getNanoseconds)
         .def("getMicroseconds", &Duration::getMicroseconds)

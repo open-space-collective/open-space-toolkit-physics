@@ -43,38 +43,100 @@ using library::physics::env::obj::Celestial ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/// @brief                      Environment modeling
+
 class Environment
 {
 
     public:
 
+        /// @brief              Constructor
+        ///
+        /// @param              [in] anInstant An instant
+        /// @param              [in] An array of shared pointers to objects
+
                                 Environment                                 (   const   Instant&                    anInstant,
                                                                                 const   Array<Shared<Object>>&      anObjectArray                               ) ;
 
+        /// @brief              Copy constructor
+        ///
+        /// @param              [in] anEnvironment An environment
+
                                 Environment                                 (   const   Environment&                anEnvironment                               ) ;
 
+        /// @brief              Copy assignment operator
+        ///
+        /// @param              [in] anEnvironment An environment
+        /// @return             Reference to environment
+
         Environment&            operator =                                  (   const   Environment&                anEnvironment                               ) ;
+
+        /// @brief              Output stream operator
+        ///
+        /// @param              [in] anOutputStream An output stream
+        /// @param              [in] anEnvironment An environment
+        /// @return             A reference to output stream
 
         friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
                                                                                 const   Environment&                anEnvironment                               ) ;
 
+        /// @brief              Check if environment is defined
+        ///
+        /// @return             True if environment is defined
+
         bool                    isDefined                                   ( ) const ;
+
+        /// @brief              Returns true if environment contains objects with a given name
+        ///
+        /// @param              [in] aName An object name
+        /// @return             True if environment contains objects with a given name
 
         bool                    hasObjectWithName                           (   const   String&                     aName                                       ) const ;
 
+        /// @brief              Returns true if a given geometry intersects any of the environment objects
+        ///
+        /// @param              [in] aGeometry A geometry
+        /// @return             True if a given geometry intersects any of the environment objects
+
+        bool                    intersects                                  (   const   Object::Geometry&           aGeometry                                   ) const ;
+
+        /// @brief              Access objects
+        ///
+        /// @return             Reference to array of shared pointers to objects
+
         Array<Shared<const Object>> accessObjects                           ( ) const ;
+
+        /// @brief              Access object with a given name
+        ///
+        /// @param              [in] aName An object name
+        /// @return             Reference to shared pointer to object
         
         Shared<const Object>    accessObjectWithName                        (   const   String&                     aName                                       ) const ;
+
+        /// @brief              Access celestial object with a given name
+        ///
+        /// @param              [in] aName A celestial object name
+        /// @return             Reference to shared pointer to celestial object
         
         Shared<const Celestial> accessCelestialObjectWithName               (   const   String&                     aName                                       ) const ;
 
+        /// @brief              Get instant
+        ///
+        /// @return             Instant
+
         Instant                 getInstant                                  ( ) const ;
+
+        /// @brief              Get names of objects
+        ///
+        /// @return             Array of objects names
 
         Array<String>           getObjectNames                              ( ) const ;
 
-        void                    setInstant                                  (   const   Instant&                    anInstant                                   ) ;
+        /// @brief              Set instant
+        ///
+        /// @param              [in] anInstant An instant
 
-        bool                    intersects                                  (   const   Object::Geometry&           aGeometry                                   ) const ;
+        void                    setInstant                                  (   const   Instant&                    anInstant                                   ) ;
 
         static Environment      Undefined                                   ( ) ;
 

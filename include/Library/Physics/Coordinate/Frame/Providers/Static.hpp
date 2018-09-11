@@ -1,14 +1,14 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Library/Physics
-/// @file           Library/Physics/Coordinate/Frame/Providers/Fixed.hpp
+/// @file           Library/Physics/Coordinate/Frame/Providers/Static.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        TBD
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Coordinate_Frame_Providers_Fixed__
-#define __Library_Physics_Coordinate_Frame_Providers_Fixed__
+#ifndef __Library_Physics_Coordinate_Frame_Providers_Static__
+#define __Library_Physics_Coordinate_Frame_Providers_Static__
 
 #include <Library/Physics/Coordinate/Transform.hpp>
 #include <Library/Physics/Coordinate/Frame/Provider.hpp>
@@ -35,18 +35,18 @@ using library::physics::coord::Transform ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @brief                      Fixed provider
+/// @brief                      Static provider
 
-class Fixed : public Provider
+class Static : public Provider
 {
 
     public:
 
-                                Fixed                                       (   const   Transform&                  aTransform                                  ) ;
+                                Static                                      (   const   Transform&                  aTransform                                  ) ;
 
-        virtual                 ~Fixed                                      ( ) override ;
+        virtual                 ~Static                                     ( ) override ;
 
-        virtual Fixed*          clone                                       ( ) const override ;
+        virtual Static*         clone                                       ( ) const override ;
 
         virtual bool            isDefined                                   ( ) const override ;
 

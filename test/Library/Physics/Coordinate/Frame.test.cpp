@@ -7,7 +7,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <Library/Physics/Coordinate/Frame/Providers/Fixed.hpp>
+#include <Library/Physics/Coordinate/Frame/Providers/Static.hpp>
 #include <Library/Physics/Coordinate/Frame.hpp>
 #include <Library/Mathematics/Geometry/3D/Transformations/Rotations/RotationMatrix.hpp>
 #include <Library/Mathematics/Geometry/3D/Transformations/Rotations/RotationVector.hpp>
@@ -36,14 +36,14 @@ TEST (Library_Physics_Coordinate_Frame, EqualToOperator)
     using library::physics::coord::Transform ;
     using library::physics::coord::Frame ;
     using library::physics::coord::frame::Provider ;
-    using library::physics::coord::frame::provider::Fixed ;
+    using library::physics::coord::frame::provider::Static ;
 
     {
 
         const String name = "Custom" ;
         const bool isQuasiInertial = true ;
         const Shared<const Frame> parentFrameSPtr = Frame::GCRF() ;
-        const Shared<const Provider> providerSPtr = std::make_shared<Fixed>(Fixed(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
+        const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
         
         const Shared<const Frame> customFrameSPtr = Frame::Construct(name, isQuasiInertial, parentFrameSPtr, providerSPtr) ;
 
@@ -65,7 +65,7 @@ TEST (Library_Physics_Coordinate_Frame, EqualToOperator)
     {
 
         const bool isQuasiInertial = true ;
-        const Shared<const Provider> providerSPtr = std::make_shared<Fixed>(Fixed(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
+        const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
         
         const Shared<const Frame> firstCustomFrameSPtr = Frame::Construct("Custom A", isQuasiInertial, Frame::GCRF(), providerSPtr) ;
         const Shared<const Frame> secondCustomFrameSPtr = Frame::Construct("Custom B", isQuasiInertial, Frame::GCRF(), providerSPtr) ;
@@ -79,7 +79,7 @@ TEST (Library_Physics_Coordinate_Frame, EqualToOperator)
 
     {
 
-        const Shared<const Provider> providerSPtr = std::make_shared<Fixed>(Fixed(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
+        const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
         
         const Shared<const Frame> firstCustomFrameSPtr = Frame::Construct("Custom A", true, Frame::GCRF(), providerSPtr) ;
         const Shared<const Frame> secondCustomFrameSPtr = Frame::Construct("Custom B", false, Frame::GCRF(), providerSPtr) ;
@@ -94,7 +94,7 @@ TEST (Library_Physics_Coordinate_Frame, EqualToOperator)
     {
 
         const bool isQuasiInertial = true ;
-        const Shared<const Provider> providerSPtr = std::make_shared<Fixed>(Fixed(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
+        const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
         
         const Shared<const Frame> firstCustomFrameSPtr = Frame::Construct("Custom A", isQuasiInertial, Frame::GCRF(), providerSPtr) ;
         const Shared<const Frame> secondCustomFrameSPtr = Frame::Construct("Custom B", isQuasiInertial, Frame::ITRF(), providerSPtr) ;
@@ -109,8 +109,8 @@ TEST (Library_Physics_Coordinate_Frame, EqualToOperator)
     {
 
         const bool isQuasiInertial = true ;
-        const Shared<const Provider> firstProviderSPtr = std::make_shared<Fixed>(Fixed(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
-        const Shared<const Provider> secondProviderSPtr = std::make_shared<Fixed>(Fixed(Transform::Passive(Instant::J2000(), Vector3d(1.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
+        const Shared<const Provider> firstProviderSPtr = std::make_shared<Static>(Static(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
+        const Shared<const Provider> secondProviderSPtr = std::make_shared<Static>(Static(Transform::Passive(Instant::J2000(), Vector3d(1.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
         
         const Shared<const Frame> firstCustomFrameSPtr = Frame::Construct("Custom A", isQuasiInertial, Frame::GCRF(), firstProviderSPtr) ;
         const Shared<const Frame> secondCustomFrameSPtr = Frame::Construct("Custom B", isQuasiInertial, Frame::GCRF(), secondProviderSPtr) ;
@@ -158,14 +158,14 @@ TEST (Library_Physics_Coordinate_Frame, NotEqualToOperator)
     using library::physics::coord::Transform ;
     using library::physics::coord::Frame ;
     using library::physics::coord::frame::Provider ;
-    using library::physics::coord::frame::provider::Fixed ;
+    using library::physics::coord::frame::provider::Static ;
 
     {
 
         const String name = "Custom" ;
         const bool isQuasiInertial = true ;
         const Shared<const Frame> parentFrameSPtr = Frame::GCRF() ;
-        const Shared<const Provider> providerSPtr = std::make_shared<Fixed>(Fixed(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
+        const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
         
         const Shared<const Frame> customFrameSPtr = Frame::Construct(name, isQuasiInertial, parentFrameSPtr, providerSPtr) ;
 
@@ -187,7 +187,7 @@ TEST (Library_Physics_Coordinate_Frame, NotEqualToOperator)
     {
 
         const bool isQuasiInertial = true ;
-        const Shared<const Provider> providerSPtr = std::make_shared<Fixed>(Fixed(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
+        const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
         
         const Shared<const Frame> firstCustomFrameSPtr = Frame::Construct("Custom A", isQuasiInertial, Frame::GCRF(), providerSPtr) ;
         const Shared<const Frame> secondCustomFrameSPtr = Frame::Construct("Custom B", isQuasiInertial, Frame::GCRF(), providerSPtr) ;
@@ -201,7 +201,7 @@ TEST (Library_Physics_Coordinate_Frame, NotEqualToOperator)
 
     {
 
-        const Shared<const Provider> providerSPtr = std::make_shared<Fixed>(Fixed(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
+        const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
         
         const Shared<const Frame> firstCustomFrameSPtr = Frame::Construct("Custom A", true, Frame::GCRF(), providerSPtr) ;
         const Shared<const Frame> secondCustomFrameSPtr = Frame::Construct("Custom B", false, Frame::GCRF(), providerSPtr) ;
@@ -216,7 +216,7 @@ TEST (Library_Physics_Coordinate_Frame, NotEqualToOperator)
     {
 
         const bool isQuasiInertial = true ;
-        const Shared<const Provider> providerSPtr = std::make_shared<Fixed>(Fixed(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
+        const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
         
         const Shared<const Frame> firstCustomFrameSPtr = Frame::Construct("Custom A", isQuasiInertial, Frame::GCRF(), providerSPtr) ;
         const Shared<const Frame> secondCustomFrameSPtr = Frame::Construct("Custom B", isQuasiInertial, Frame::ITRF(), providerSPtr) ;
@@ -231,8 +231,8 @@ TEST (Library_Physics_Coordinate_Frame, NotEqualToOperator)
     {
 
         const bool isQuasiInertial = true ;
-        const Shared<const Provider> firstProviderSPtr = std::make_shared<Fixed>(Fixed(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
-        const Shared<const Provider> secondProviderSPtr = std::make_shared<Fixed>(Fixed(Transform::Passive(Instant::J2000(), Vector3d(1.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
+        const Shared<const Provider> firstProviderSPtr = std::make_shared<Static>(Static(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
+        const Shared<const Provider> secondProviderSPtr = std::make_shared<Static>(Static(Transform::Passive(Instant::J2000(), Vector3d(1.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
         
         const Shared<const Frame> firstCustomFrameSPtr = Frame::Construct("Custom A", isQuasiInertial, Frame::GCRF(), firstProviderSPtr) ;
         const Shared<const Frame> secondCustomFrameSPtr = Frame::Construct("Custom B", isQuasiInertial, Frame::GCRF(), secondProviderSPtr) ;
@@ -280,14 +280,14 @@ TEST (Library_Physics_Coordinate_Frame, StreamOperator)
     using library::physics::coord::Transform ;
     using library::physics::coord::Frame ;
     using library::physics::coord::frame::Provider ;
-    using library::physics::coord::frame::provider::Fixed ;
+    using library::physics::coord::frame::provider::Static ;
 
     {
 
         const String name = "Custom" ;
         const bool isQuasiInertial = true ;
         const Shared<const Frame> parentFrameSPtr = Frame::GCRF() ;
-        const Shared<const Provider> providerSPtr = std::make_shared<Fixed>(Fixed(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
+        const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
         
         const Shared<const Frame> customFrameSPtr = Frame::Construct(name, isQuasiInertial, parentFrameSPtr, providerSPtr) ;
 
@@ -322,14 +322,14 @@ TEST (Library_Physics_Coordinate_Frame, IsDefined)
     using library::physics::coord::Transform ;
     using library::physics::coord::Frame ;
     using library::physics::coord::frame::Provider ;
-    using library::physics::coord::frame::provider::Fixed ;
+    using library::physics::coord::frame::provider::Static ;
 
     {
 
         const String name = "Custom" ;
         const bool isQuasiInertial = true ;
         const Shared<const Frame> parentFrameSPtr = Frame::GCRF() ;
-        const Shared<const Provider> providerSPtr = std::make_shared<Fixed>(Fixed(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
+        const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
         
         const Shared<const Frame> customFrameSPtr = Frame::Construct(name, isQuasiInertial, parentFrameSPtr, providerSPtr) ;
 
@@ -379,14 +379,14 @@ TEST (Library_Physics_Coordinate_Frame, IsQuasiInertial)
     using library::physics::coord::Transform ;
     using library::physics::coord::Frame ;
     using library::physics::coord::frame::Provider ;
-    using library::physics::coord::frame::provider::Fixed ;
+    using library::physics::coord::frame::provider::Static ;
 
     {
 
         const String name = "Custom" ;
         const bool isQuasiInertial = true ;
         const Shared<const Frame> parentFrameSPtr = Frame::GCRF() ;
-        const Shared<const Provider> providerSPtr = std::make_shared<Fixed>(Fixed(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
+        const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
         
         const Shared<const Frame> customFrameSPtr = Frame::Construct(name, isQuasiInertial, parentFrameSPtr, providerSPtr) ;
 
@@ -436,14 +436,14 @@ TEST (Library_Physics_Coordinate_Frame, HasParent)
     using library::physics::coord::Transform ;
     using library::physics::coord::Frame ;
     using library::physics::coord::frame::Provider ;
-    using library::physics::coord::frame::provider::Fixed ;
+    using library::physics::coord::frame::provider::Static ;
 
     {
 
         const String name = "Custom" ;
         const bool isQuasiInertial = true ;
         const Shared<const Frame> parentFrameSPtr = Frame::GCRF() ;
-        const Shared<const Provider> providerSPtr = std::make_shared<Fixed>(Fixed(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
+        const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
         
         const Shared<const Frame> customFrameSPtr = Frame::Construct(name, isQuasiInertial, parentFrameSPtr, providerSPtr) ;
 
@@ -493,14 +493,14 @@ TEST (Library_Physics_Coordinate_Frame, AccessParent)
     using library::physics::coord::Transform ;
     using library::physics::coord::Frame ;
     using library::physics::coord::frame::Provider ;
-    using library::physics::coord::frame::provider::Fixed ;
+    using library::physics::coord::frame::provider::Static ;
 
     {
 
         const String name = "Custom" ;
         const bool isQuasiInertial = true ;
         const Shared<const Frame> parentFrameSPtr = Frame::GCRF() ;
-        const Shared<const Provider> providerSPtr = std::make_shared<Fixed>(Fixed(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
+        const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
         
         const Shared<const Frame> customFrameSPtr = Frame::Construct(name, isQuasiInertial, parentFrameSPtr, providerSPtr) ;
 
@@ -550,14 +550,14 @@ TEST (Library_Physics_Coordinate_Frame, GetName)
     using library::physics::coord::Transform ;
     using library::physics::coord::Frame ;
     using library::physics::coord::frame::Provider ;
-    using library::physics::coord::frame::provider::Fixed ;
+    using library::physics::coord::frame::provider::Static ;
 
     {
 
         const String name = "Custom" ;
         const bool isQuasiInertial = true ;
         const Shared<const Frame> parentFrameSPtr = Frame::GCRF() ;
-        const Shared<const Provider> providerSPtr = std::make_shared<Fixed>(Fixed(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
+        const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
         
         const Shared<const Frame> customFrameSPtr = Frame::Construct(name, isQuasiInertial, parentFrameSPtr, providerSPtr) ;
 
@@ -610,7 +610,7 @@ TEST (Library_Physics_Coordinate_Frame, GetOriginIn)
     using library::physics::coord::Axes ;
     using library::physics::coord::Frame ;
     using library::physics::coord::frame::Provider ;
-    using library::physics::coord::frame::provider::Fixed ;
+    using library::physics::coord::frame::provider::Static ;
 
     {
 
@@ -637,7 +637,7 @@ TEST (Library_Physics_Coordinate_Frame, GetOriginIn)
             const String name = "Custom A" ;
             const bool isQuasiInertial = true ;
             const Shared<const Frame> parentFrameSPtr = Frame::GCRF() ;
-            const Shared<const Provider> providerSPtr = std::make_shared<Fixed>(Fixed(Transform::Passive(epoch, Vector3d(0.0, -1.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(+90.0))), Vector3d::Zero()))) ;
+            const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(epoch, Vector3d(0.0, -1.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(+90.0))), Vector3d::Zero()))) ;
             
             Frame::Construct(name, isQuasiInertial, parentFrameSPtr, providerSPtr) ;
 
@@ -654,7 +654,7 @@ TEST (Library_Physics_Coordinate_Frame, GetOriginIn)
             const String name = "Custom B" ;
             const bool isQuasiInertial = true ;
             const Shared<const Frame> parentFrameSPtr = Frame::GCRF() ;
-            const Shared<const Provider> providerSPtr = std::make_shared<Fixed>(Fixed(Transform::Passive(epoch, Vector3d(-1.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d::Zero()))) ;
+            const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(epoch, Vector3d(-1.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d::Zero()))) ;
             
             Frame::Construct(name, isQuasiInertial, parentFrameSPtr, providerSPtr) ;
 
@@ -707,7 +707,7 @@ TEST (Library_Physics_Coordinate_Frame, GetVelocityIn)
     using library::physics::coord::Axes ;
     using library::physics::coord::Frame ;
     using library::physics::coord::frame::Provider ;
-    using library::physics::coord::frame::provider::Fixed ;
+    using library::physics::coord::frame::provider::Static ;
 
     {
 
@@ -734,7 +734,7 @@ TEST (Library_Physics_Coordinate_Frame, GetVelocityIn)
             const String name = "Custom A" ;
             const bool isQuasiInertial = true ;
             const Shared<const Frame> parentFrameSPtr = Frame::GCRF() ;
-            const Shared<const Provider> providerSPtr = std::make_shared<Fixed>(Fixed(Transform::Passive(epoch, Vector3d(0.0, -1.0, 0.0), Vector3d(-1.0, 0.0, 0.0), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(+90.0))), Vector3d::Zero()))) ;
+            const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(epoch, Vector3d(0.0, -1.0, 0.0), Vector3d(-1.0, 0.0, 0.0), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(+90.0))), Vector3d::Zero()))) ;
             
             Frame::Construct(name, isQuasiInertial, parentFrameSPtr, providerSPtr) ;
 
@@ -751,7 +751,7 @@ TEST (Library_Physics_Coordinate_Frame, GetVelocityIn)
             const String name = "Custom B" ;
             const bool isQuasiInertial = true ;
             const Shared<const Frame> parentFrameSPtr = Frame::GCRF() ;
-            const Shared<const Provider> providerSPtr = std::make_shared<Fixed>(Fixed(Transform::Passive(epoch, Vector3d(-1.0, 0.0, 0.0), Vector3d(0.0, -1.0, 0.0), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d::Zero()))) ;
+            const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(epoch, Vector3d(-1.0, 0.0, 0.0), Vector3d(0.0, -1.0, 0.0), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d::Zero()))) ;
             
             Frame::Construct(name, isQuasiInertial, parentFrameSPtr, providerSPtr) ;
 
@@ -804,7 +804,7 @@ TEST (Library_Physics_Coordinate_Frame, GetAxesIn)
     using library::physics::coord::Axes ;
     using library::physics::coord::Frame ;
     using library::physics::coord::frame::Provider ;
-    using library::physics::coord::frame::provider::Fixed ;
+    using library::physics::coord::frame::provider::Static ;
 
     {
 
@@ -815,7 +815,7 @@ TEST (Library_Physics_Coordinate_Frame, GetAxesIn)
             const String name = "Custom A" ;
             const bool isQuasiInertial = true ;
             const Shared<const Frame> parentFrameSPtr = Frame::GCRF() ;
-            const Shared<const Provider> providerSPtr = std::make_shared<Fixed>(Fixed(Transform::Passive(epoch, Vector3d(0.0, -1.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(+90.0))), Vector3d::Zero()))) ;
+            const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(epoch, Vector3d(0.0, -1.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(+90.0))), Vector3d::Zero()))) ;
             
             Frame::Construct(name, isQuasiInertial, parentFrameSPtr, providerSPtr) ;
 
@@ -834,7 +834,7 @@ TEST (Library_Physics_Coordinate_Frame, GetAxesIn)
             const String name = "Custom B" ;
             const bool isQuasiInertial = true ;
             const Shared<const Frame> parentFrameSPtr = Frame::GCRF() ;
-            const Shared<const Provider> providerSPtr = std::make_shared<Fixed>(Fixed(Transform::Passive(epoch, Vector3d(-1.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d::Zero()))) ;
+            const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(epoch, Vector3d(-1.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d::Zero()))) ;
             
             Frame::Construct(name, isQuasiInertial, parentFrameSPtr, providerSPtr) ;
 
@@ -1050,6 +1050,54 @@ TEST (Library_Physics_Coordinate_Frame, WithName)
 
 }
 
+TEST (Library_Physics_Coordinate_Frame, Exists)
+{
+
+    using library::core::types::Shared ;
+    using library::core::types::Real ;
+    using library::core::types::String ;
+
+    using library::math::obj::Vector3d ;
+    using library::math::geom::d3::trf::rot::Quaternion ;
+    using library::math::geom::d3::trf::rot::RotationVector ;
+    using library::math::geom::d3::trf::rot::RotationMatrix ;
+    
+    using library::physics::units::Angle ;
+    using library::physics::time::Scale ;
+    using library::physics::time::Instant ;
+    using library::physics::time::DateTime ;
+    using library::physics::coord::Transform ;
+    using library::physics::coord::Frame ;
+    using library::physics::coord::frame::Provider ;
+    using library::physics::coord::frame::provider::Static ;
+
+    {
+
+        const String name = "Custom" ;
+        const bool isQuasiInertial = true ;
+        const Shared<const Frame> parentFrameSPtr = Frame::GCRF() ;
+        const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
+        
+        EXPECT_FALSE(Frame::Exists("Custom")) ;
+
+        Frame::Construct(name, isQuasiInertial, parentFrameSPtr, providerSPtr) ;
+
+        EXPECT_TRUE(Frame::Exists("Custom")) ;
+
+        Frame::Destruct("Custom") ;
+
+        EXPECT_FALSE(Frame::Exists("Custom")) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Frame::Exists("")) ;
+        
+    }
+
+}
+
 TEST (Library_Physics_Coordinate_Frame, Construct)
 {
 
@@ -1069,14 +1117,14 @@ TEST (Library_Physics_Coordinate_Frame, Construct)
     using library::physics::coord::Transform ;
     using library::physics::coord::Frame ;
     using library::physics::coord::frame::Provider ;
-    using library::physics::coord::frame::provider::Fixed ;
+    using library::physics::coord::frame::provider::Static ;
 
     {
 
         const String name = "Custom" ;
         const bool isQuasiInertial = true ;
         const Shared<const Frame> parentFrameSPtr = Frame::GCRF() ;
-        const Shared<const Provider> providerSPtr = std::make_shared<Fixed>(Fixed(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
+        const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
         
         EXPECT_NO_THROW(Frame::Construct(name, isQuasiInertial, parentFrameSPtr, providerSPtr)) ;
         EXPECT_ANY_THROW(Frame::Construct(name, isQuasiInertial, parentFrameSPtr, providerSPtr)) ;
@@ -1090,7 +1138,7 @@ TEST (Library_Physics_Coordinate_Frame, Construct)
         const String name = "" ;
         const bool isQuasiInertial = true ;
         const Shared<const Frame> parentFrameSPtr = Frame::GCRF() ;
-        const Shared<const Provider> providerSPtr = std::make_shared<Fixed>(Fixed(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
+        const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
         
         EXPECT_ANY_THROW(Frame::Construct(name, isQuasiInertial, parentFrameSPtr, providerSPtr)) ;
 
@@ -1117,14 +1165,14 @@ TEST (Library_Physics_Coordinate_Frame, Destruct)
     using library::physics::coord::Transform ;
     using library::physics::coord::Frame ;
     using library::physics::coord::frame::Provider ;
-    using library::physics::coord::frame::provider::Fixed ;
+    using library::physics::coord::frame::provider::Static ;
 
     {
 
         const String name = "Custom" ;
         const bool isQuasiInertial = true ;
         const Shared<const Frame> parentFrameSPtr = Frame::GCRF() ;
-        const Shared<const Provider> providerSPtr = std::make_shared<Fixed>(Fixed(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
+        const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
         
         const Shared<const Frame> customFrameSPtr = Frame::Construct(name, isQuasiInertial, parentFrameSPtr, providerSPtr) ;
 
@@ -1160,7 +1208,7 @@ TEST (Library_Physics_Coordinate_Frame, Test_1)
     using library::physics::coord::Transform ;
     using library::physics::coord::Frame ;
     using library::physics::coord::frame::Provider ;
-    using library::physics::coord::frame::provider::Fixed ;
+    using library::physics::coord::frame::provider::Static ;
 
     // Pure static translation
 
@@ -1169,7 +1217,7 @@ TEST (Library_Physics_Coordinate_Frame, Test_1)
         const String name = "Custom" ;
         const bool isQuasiInertial = true ;
         const Shared<const Frame> parentFrameSPtr = Frame::GCRF() ;
-        const Shared<const Provider> providerSPtr = std::make_shared<Fixed>(Fixed(Transform::Passive(Instant::J2000(), Vector3d(-1.0, +0.0, +0.0), Vector3d::Zero(), Quaternion::Unit(), Vector3d::Zero()))) ;
+        const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(Instant::J2000(), Vector3d(-1.0, +0.0, +0.0), Vector3d::Zero(), Quaternion::Unit(), Vector3d::Zero()))) ;
         
         const Shared<const Frame> customFrameSPtr = Frame::Construct(name, isQuasiInertial, parentFrameSPtr, providerSPtr) ;
 
@@ -1223,7 +1271,7 @@ TEST (Library_Physics_Coordinate_Frame, Test_1)
         const String name = "Custom" ;
         const bool isQuasiInertial = true ;
         const Shared<const Frame> parentFrameSPtr = Frame::GCRF() ;
-        const Shared<const Provider> providerSPtr = std::make_shared<Fixed>(Fixed(Transform::Passive(Instant::J2000(), Vector3d(-1.0, +0.0, +0.0), Vector3d(-2.0, +0.0, +0.0), Quaternion::Unit(), Vector3d::Zero()))) ;
+        const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(Instant::J2000(), Vector3d(-1.0, +0.0, +0.0), Vector3d(-2.0, +0.0, +0.0), Quaternion::Unit(), Vector3d::Zero()))) ;
         
         const Shared<const Frame> customFrameSPtr = Frame::Construct(name, isQuasiInertial, parentFrameSPtr, providerSPtr) ;
 
@@ -1277,7 +1325,7 @@ TEST (Library_Physics_Coordinate_Frame, Test_1)
         const String name = "Custom" ;
         const bool isQuasiInertial = true ;
         const Shared<const Frame> parentFrameSPtr = Frame::GCRF() ;
-        const Shared<const Provider> providerSPtr = std::make_shared<Fixed>(Fixed(Transform::Passive(Instant::J2000(), Vector3d::Zero(), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ +0.0, +0.0, +1.0 }, Angle::Degrees(90.0))), Vector3d::Zero()))) ;
+        const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(Instant::J2000(), Vector3d::Zero(), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ +0.0, +0.0, +1.0 }, Angle::Degrees(90.0))), Vector3d::Zero()))) ;
         
         const Shared<const Frame> customFrameSPtr = Frame::Construct(name, isQuasiInertial, parentFrameSPtr, providerSPtr) ;
 
@@ -1331,7 +1379,7 @@ TEST (Library_Physics_Coordinate_Frame, Test_1)
         const String name = "Custom" ;
         const bool isQuasiInertial = true ;
         const Shared<const Frame> parentFrameSPtr = Frame::GCRF() ;
-        const Shared<const Provider> providerSPtr = std::make_shared<Fixed>(Fixed(Transform::Passive(Instant::J2000(), Vector3d::Zero(), Vector3d::Zero(), Quaternion::Unit(), Vector3d(+0.0, +0.0, -1.0)))) ;
+        const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(Instant::J2000(), Vector3d::Zero(), Vector3d::Zero(), Quaternion::Unit(), Vector3d(+0.0, +0.0, -1.0)))) ;
         
         const Shared<const Frame> customFrameSPtr = Frame::Construct(name, isQuasiInertial, parentFrameSPtr, providerSPtr) ;
 
@@ -1383,7 +1431,7 @@ TEST (Library_Physics_Coordinate_Frame, Test_1)
         const String name = "Custom" ;
         const bool isQuasiInertial = true ;
         const Shared<const Frame> parentFrameSPtr = Frame::GCRF() ;
-        const Shared<const Provider> providerSPtr = std::make_shared<Fixed>(Fixed(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::Unit(), Vector3d(0.0, 0.0, +2.0)))) ;
+        const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::Unit(), Vector3d(0.0, 0.0, +2.0)))) ;
         
         const Shared<const Frame> customFrameSPtr = Frame::Construct(name, isQuasiInertial, parentFrameSPtr, providerSPtr) ;
 
@@ -1435,7 +1483,7 @@ TEST (Library_Physics_Coordinate_Frame, Test_1)
         const String name = "Custom" ;
         const bool isQuasiInertial = true ;
         const Shared<const Frame> parentFrameSPtr = Frame::GCRF() ;
-        const Shared<const Provider> providerSPtr = std::make_shared<Fixed>(Fixed(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
+        const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
         
         const Shared<const Frame> customFrameSPtr = Frame::Construct(name, isQuasiInertial, parentFrameSPtr, providerSPtr) ;
 

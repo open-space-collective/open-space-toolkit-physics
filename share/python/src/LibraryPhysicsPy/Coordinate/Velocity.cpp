@@ -48,6 +48,13 @@ inline void                     LibraryPhysicsPy_Coordinate_Velocity        ( )
 
     ;
 
+    enum_<Velocity::Unit>("Unit")
+
+        .value("Undefined", Velocity::Unit::Undefined)
+        .value("MeterPerSecond", Velocity::Unit::MeterPerSecond)
+
+    ;
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

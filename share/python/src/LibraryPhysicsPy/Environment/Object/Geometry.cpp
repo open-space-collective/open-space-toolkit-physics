@@ -42,13 +42,14 @@ inline void                     LibraryPhysicsPy_Environment_Object_Geometry ( )
     using library::math::geom::d3::objects::Sphere ;
     using library::math::geom::d3::objects::Ellipsoid ;
     using library::math::geom::d3::objects::Pyramid ;
+    using library::math::geom::d3::objects::Composite ;
 
     using library::physics::coord::Frame ;
     using library::physics::env::object::Geometry ;
 
     scope in_Geometry = class_<Geometry>("Geometry", init<const Geometry::Object&, const Shared<const Frame>&>())
 
-        .def(init<const Unique<Geometry::Object>&, const Shared<const Frame>&>())
+        .def(init<const Composite&, const Shared<const Frame>&>())
 
         .def(self == self)
         .def(self != self)
@@ -58,32 +59,11 @@ inline void                     LibraryPhysicsPy_Environment_Object_Geometry ( )
 
         .def("isDefined", &Geometry::isDefined)
         .def("intersects", &Geometry::intersects)
-        // .def("contains", &Geometry::contains)
+        .def("contains", &Geometry::contains)
         
+        .def("accessComposite", &Geometry::accessComposite, return_value_policy<reference_existing_object>())
         .def("accessFrame", &Geometry::accessFrame)
         .def("inFrame", &Geometry::in)
-        .def("isPoint", +[] (const Geometry& aGeometry) -> bool { return aGeometry.is<Point>() ; })
-        .def("isPointSet", +[] (const Geometry& aGeometry) -> bool { return aGeometry.is<PointSet>() ; })
-        .def("isLine", +[] (const Geometry& aGeometry) -> bool { return aGeometry.is<Line>() ; })
-        .def("isRay", +[] (const Geometry& aGeometry) -> bool { return aGeometry.is<Ray>() ; })
-        .def("isSegment", +[] (const Geometry& aGeometry) -> bool { return aGeometry.is<Segment>() ; })
-        .def("isLineString", +[] (const Geometry& aGeometry) -> bool { return aGeometry.is<LineString>() ; })
-        .def("isPolygon", +[] (const Geometry& aGeometry) -> bool { return aGeometry.is<Polygon>() ; })
-        .def("isPlane", +[] (const Geometry& aGeometry) -> bool { return aGeometry.is<Plane>() ; })
-        .def("isSphere", +[] (const Geometry& aGeometry) -> bool { return aGeometry.is<Sphere>() ; })
-        .def("isEllipsoid", +[] (const Geometry& aGeometry) -> bool { return aGeometry.is<Ellipsoid>() ; })
-        .def("isPyramid", +[] (const Geometry& aGeometry) -> bool { return aGeometry.is<Pyramid>() ; })
-        .def("asPoint", +[] (const Geometry& aGeometry) -> Point { return aGeometry.as<Point>() ; })
-        .def("asPointSet", +[] (const Geometry& aGeometry) -> PointSet { return aGeometry.as<PointSet>() ; })
-        .def("asLine", +[] (const Geometry& aGeometry) -> Line { return aGeometry.as<Line>() ; })
-        .def("asRay", +[] (const Geometry& aGeometry) -> Ray { return aGeometry.as<Ray>() ; })
-        .def("asSegment", +[] (const Geometry& aGeometry) -> Segment { return aGeometry.as<Segment>() ; })
-        .def("asLineString", +[] (const Geometry& aGeometry) -> LineString { return aGeometry.as<LineString>() ; })
-        .def("asPolygon", +[] (const Geometry& aGeometry) -> Polygon { return aGeometry.as<Polygon>() ; })
-        .def("asPlane", +[] (const Geometry& aGeometry) -> Plane { return aGeometry.as<Plane>() ; })
-        .def("asSphere", +[] (const Geometry& aGeometry) -> Sphere { return aGeometry.as<Sphere>() ; })
-        .def("asEllipsoid", +[] (const Geometry& aGeometry) -> Ellipsoid { return aGeometry.as<Ellipsoid>() ; })
-        .def("asPyramid", +[] (const Geometry& aGeometry) -> Pyramid { return aGeometry.as<Pyramid>() ; })
         .def("intersectionWith", &Geometry::intersectionWith)
         
         .def("Undefined", &Geometry::Undefined).staticmethod("Undefined")

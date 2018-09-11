@@ -315,6 +315,19 @@ class Duration
         
         bool                    isStrictlyPositive                          ( ) const ;
 
+        /// @brief              Check if duration is near another duration
+        ///
+        /// @code
+        ///                     Duration::Seconds(2.0).isNear(Duration::Seconds(1.0), Duration::Seconds(1.0)) ; // True
+        /// @endcode
+        ///
+        /// @param              [in] aDuration A duration
+        /// @param              [in] aTolerance A tolerance
+        /// @return             True if instant is near another instant
+
+        bool                    isNear                                      (   const   Duration&                   aDuration,
+                                                                                const   Duration&                   aTolerance                                  ) const ;
+
         /// @brief              Get the number of nanoseconds in duration
         ///
         /// @code

@@ -1,7 +1,7 @@
 stk.v.11.0
 WrittenBy    STK_v11.3.0
 BEGIN Scenario
-    Name		 Test_1
+    Name		 Scenario
 
     BEGIN Epoch
 
@@ -23,12 +23,12 @@ BEGIN Scenario
     BEGIN Interval
 
         Start		 1 Jan 2018 00:00:00.000000000
-        Stop		 2 Jan 2018 00:00:00.000000000
+        Stop		 1 Jan 2020 00:00:00.000000000
         SmartInterval		
         BEGIN EVENTINTERVAL
             BEGIN Interval
                 Start		 1 Jan 2018 00:00:00.000000000
-                Stop		 2 Jan 2018 00:00:00.000000000
+                Stop		 1 Jan 2020 00:00:00.000000000
             END Interval
             IntervalState		 Explicit
         END EVENTINTERVAL
@@ -219,6 +219,190 @@ BEGIN Scenario
             WindowRectRight		 1811
             WindowRectBottom		 819
         END Report
+
+        BEGIN Report
+            Name		 ITRF_GCRF3
+            Type		 Report
+            BaseDir		 User
+            Style		 ITRF_GCRF
+            AGIViewer		 Yes
+            Instance		 *
+            BEGIN TimeData
+                BEGIN Section
+                    SectionNumber		 1
+                    SectionType		 2
+                    ShowIntervals		 No
+                    BEGIN IntervalList
+
+                        DateUnitAbrv		 UTCG
+
+                        BEGIN Intervals
+
+"1 Jan 2018 00:00:00.000000000" "2 Jan 2028 00:00:04.000000000"
+                        END Intervals
+
+                    END IntervalList
+
+                    TimeType		 Interval
+                    TimeInterval		                    IntervalTimePeriod		
+                    SamplingType		 FixedStep
+                    Step		 86400
+                    TimeBound		 0
+                END Section
+            END TimeData
+            BEGIN PreDataList
+                BEGIN PreData
+                    ServiceName		 AxesChooseAxes
+                    Data		 CentralBody/Earth ICRF
+                END PreData
+            END PreDataList
+            DisplayOnLoad		 No
+            FrameType		 0
+            DockCircleID		 0
+            DockID		 0
+            WindowRectLeft		 382
+            WindowRectTop		 287
+            WindowRectRight		 1811
+            WindowRectBottom		 819
+        END Report
+
+        BEGIN Report
+            Name		 ITRF_GCRF4
+            Type		 Report
+            BaseDir		 User
+            Style		 ITRF_GCRF
+            AGIViewer		 Yes
+            Instance		 *
+            BEGIN TimeData
+                BEGIN Section
+                    SectionNumber		 1
+                    SectionType		 2
+                    ShowIntervals		 No
+                    BEGIN IntervalList
+
+                        DateUnitAbrv		 UTCG
+
+                        BEGIN Intervals
+
+"1 Jan 2018 00:00:00.000000000" "2 Jan 2028 00:00:04.000000000"
+                        END Intervals
+
+                    END IntervalList
+
+                    TimeType		 Interval
+                    TimeInterval		                    IntervalTimePeriod		
+                    SamplingType		 FixedStep
+                    Step		 86400
+                    TimeBound		 0
+                END Section
+            END TimeData
+            BEGIN PreDataList
+                BEGIN PreData
+                    ServiceName		 AxesChooseAxes
+                    Data		 CentralBody/Earth ICRF
+                END PreData
+            END PreDataList
+            DisplayOnLoad		 No
+            FrameType		 0
+            DockCircleID		 0
+            DockID		 0
+            WindowRectLeft		 460
+            WindowRectTop		 365
+            WindowRectRight		 1889
+            WindowRectBottom		 897
+        END Report
+
+        BEGIN Report
+            Name		 ITRF_GCRF5
+            Type		 Report
+            BaseDir		 User
+            Style		 ITRF_GCRF
+            AGIViewer		 Yes
+            Instance		 *
+            BEGIN TimeData
+                BEGIN Section
+                    SectionNumber		 1
+                    SectionType		 2
+                    ShowIntervals		 No
+                    BEGIN IntervalList
+
+                        DateUnitAbrv		 UTCG
+
+                        BEGIN Intervals
+
+"1 Jan 2018 00:00:00.000000000" "2 Jan 2028 00:00:04.000000000"
+                        END Intervals
+
+                    END IntervalList
+
+                    TimeType		 Interval
+                    TimeInterval		                    IntervalTimePeriod		
+                    SamplingType		 FixedStep
+                    Step		 86400
+                    TimeBound		 0
+                END Section
+            END TimeData
+            BEGIN PreDataList
+                BEGIN PreData
+                    ServiceName		 AxesChooseAxes
+                    Data		 CentralBody/Earth ICRF
+                END PreData
+            END PreDataList
+            DisplayOnLoad		 No
+            FrameType		 0
+            DockCircleID		 0
+            DockID		 0
+            WindowRectLeft		 330
+            WindowRectTop		 209
+            WindowRectRight		 2321
+            WindowRectBottom		 929
+        END Report
+
+        BEGIN Report
+            Name		 ITRF_GCRF6
+            Type		 Report
+            BaseDir		 User
+            Style		 ITRF_GCRF
+            AGIViewer		 Yes
+            Instance		 *
+            BEGIN TimeData
+                BEGIN Section
+                    SectionNumber		 1
+                    SectionType		 2
+                    ShowIntervals		 No
+                    BEGIN IntervalList
+
+                        DateUnitAbrv		 UTCG
+
+                        BEGIN Intervals
+
+"1 Jan 2018 00:00:00.000000000" "1 Jan 2020 00:00:00.000000000"
+                        END Intervals
+
+                    END IntervalList
+
+                    TimeType		 Interval
+                    TimeInterval		                    IntervalTimePeriod		
+                    SamplingType		 FixedStep
+                    Step		 86400
+                    TimeBound		 0
+                END Section
+            END TimeData
+            BEGIN PreDataList
+                BEGIN PreData
+                    ServiceName		 AxesChooseAxes
+                    Data		 CentralBody/Earth ICRF
+                END PreData
+            END PreDataList
+            DisplayOnLoad		 Yes
+            FrameType		 0
+            DockCircleID		 0
+            DockID		 0
+            WindowRectLeft		 218
+            WindowRectTop		 74
+            WindowRectRight		 2563
+            WindowRectBottom		 1171
+        END Report
     END QuickReports
 
     BEGIN Extensions
@@ -249,8 +433,8 @@ BEGIN Scenario
             LaunchWindowUseEntireTraj		 Yes
             LaunchWindowTrajMETStart		 0
             LaunchWindowTrajMETStop		 900
-            LaunchWindowStart		 0
-            LaunchWindowStop		 0
+            LaunchWindowStart		 3.33659e+08
+            LaunchWindowStop		 1.8126e+07
             LaunchMETOffset		 0
             LaunchWindowUseSecEphem		 No 
             LaunchWindowUseScenFolderForSecEphem		 Yes
@@ -1010,10 +1194,10 @@ BEGIN Scenario
             BEGIN Animation
 
                 StartTime		 1 Jan 2018 00:00:00.000000000
-                EndTime		 2 Jan 2018 00:00:00.000000000
+                EndTime		 1 Jan 2020 00:00:00.000000000
                 CurrentTime		 1 Jan 2018 00:00:00.000000000
                 Direction		 Forward
-                UpdateDelta		 10
+                UpdateDelta		 86400
                 RefreshDelta		 0.010000
                 XRealTimeMult		 1
                 RealTimeOffset		 0

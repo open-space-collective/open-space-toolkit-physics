@@ -95,14 +95,23 @@ Vector2d                        Finals2000A::getPolarMotionAt               (   
         const Finals2000A::Data& previousData = *(dataRange.first) ;
         const Finals2000A::Data& nextData = *(dataRange.second) ;
 
-        const Real instantMjd = anInstant.getModifiedJulianDate(Scale::UTC) ;
+        if (previousData.x_A.isDefined() && previousData.y_A.isDefined() && nextData.x_A.isDefined() && nextData.y_A.isDefined())
+        {
 
-        const Real ratio = (instantMjd - previousData.mjd) / (nextData.mjd - previousData.mjd) ;
-        
-        const Real x_A = previousData.x_A + ratio * (nextData.x_A - previousData.x_A) ;
-        const Real y_A = previousData.y_A + ratio * (nextData.y_A - previousData.y_A) ;
+            const Real instantMjd_UTC = anInstant.getModifiedJulianDate(Scale::UTC) ;
 
-        return { x_A, y_A } ;
+            const Real ratio = (instantMjd_UTC - previousData.mjd) / (nextData.mjd - previousData.mjd) ;
+            
+            const Real x_A = previousData.x_A + ratio * (nextData.x_A - previousData.x_A) ;
+            const Real y_A = previousData.y_A + ratio * (nextData.y_A - previousData.y_A) ;
+
+            return { x_A, y_A } ;
+            
+        }
+        else
+        {
+            return Vector2d::Undefined() ;
+        }
 
     }
 
@@ -133,14 +142,23 @@ Real                            Finals2000A::getUt1MinusUtcAt               (   
         const Finals2000A::Data& previousData = *(dataRange.first) ;
         const Finals2000A::Data& nextData = *(dataRange.second) ;
 
-        const Real instantMjd = anInstant.getModifiedJulianDate(Scale::UTC) ;
+        if (previousData.ut1MinusUtc_A.isDefined() && nextData.ut1MinusUtc_A.isDefined())
+        {
 
-        const Real ratio = (instantMjd - previousData.mjd) / (nextData.mjd - previousData.mjd) ;
-        
-        const Real ut1MinusUtc_A = previousData.ut1MinusUtc_A + ratio * (nextData.ut1MinusUtc_A - previousData.ut1MinusUtc_A) ;
-        // const Real ut1MinusUtc_B = previousData.ut1MinusUtc_B + ratio * (nextData.ut1MinusUtc_B - previousData.ut1MinusUtc_B) ;
+            const Real instantMjd_UTC = anInstant.getModifiedJulianDate(Scale::UTC) ;
 
-        return ut1MinusUtc_A ;
+            const Real ratio = (instantMjd_UTC - previousData.mjd) / (nextData.mjd - previousData.mjd) ;
+
+            const Real ut1MinusUtc_A = previousData.ut1MinusUtc_A + ratio * (nextData.ut1MinusUtc_A - previousData.ut1MinusUtc_A) ;
+            // const Real ut1MinusUtc_B = previousData.ut1MinusUtc_B + ratio * (nextData.ut1MinusUtc_B - previousData.ut1MinusUtc_B) ;
+
+            return ut1MinusUtc_A ;
+
+        }
+        else
+        {
+            return Real::Undefined() ;
+        }
 
     }
 
@@ -171,13 +189,22 @@ Real                            Finals2000A::getLodAt                       (   
         const Finals2000A::Data& previousData = *(dataRange.first) ;
         const Finals2000A::Data& nextData = *(dataRange.second) ;
 
-        const Real instantMjd = anInstant.getModifiedJulianDate(Scale::UTC) ;
+        if (previousData.lod_A.isDefined() && nextData.lod_A.isDefined())
+        {
 
-        const Real ratio = (instantMjd - previousData.mjd) / (nextData.mjd - previousData.mjd) ;
-        
-        const Real lod_A = previousData.lod_A + ratio * (nextData.lod_A - previousData.lod_A) ;
+            const Real instantMjd_UTC = anInstant.getModifiedJulianDate(Scale::UTC) ;
 
-        return lod_A ;
+            const Real ratio = (instantMjd_UTC - previousData.mjd) / (nextData.mjd - previousData.mjd) ;
+            
+            const Real lod_A = previousData.lod_A + ratio * (nextData.lod_A - previousData.lod_A) ;
+
+            return lod_A ;
+
+        }
+        else
+        {
+            return Real::Undefined() ;
+        }
 
     }
 
@@ -205,44 +232,61 @@ Finals2000A::Data               Finals2000A::getDataAt                      (   
     if ((dataRange.first != nullptr) && (dataRange.second != nullptr))
     {
 
+        auto interpolate = [] (const Real& aPreviousValue, const Real& aNextValue, const Real& aRatio) -> Real
+        {
+
+            if (!aRatio.isDefined())
+            {
+                throw library::core::error::runtime::Undefined("Ratio") ;
+            }
+
+            if (aPreviousValue.isDefined() && aNextValue.isDefined())
+            {
+                return aPreviousValue + aRatio * (aNextValue - aPreviousValue) ;
+            }
+            
+            return Real::Undefined() ;
+
+        } ;
+
         const Finals2000A::Data& previousData = *(dataRange.first) ;
         const Finals2000A::Data& nextData = *(dataRange.second) ;
 
-        const Real instantMjd = anInstant.getModifiedJulianDate(Scale::UTC) ;
+        const Real instantMjd_UTC = anInstant.getModifiedJulianDate(Scale::UTC) ;
 
-        const Real ratio = (instantMjd - previousData.mjd) / (nextData.mjd - previousData.mjd) ;
+        const Real ratio = (instantMjd_UTC - previousData.mjd) / (nextData.mjd - previousData.mjd) ;
 
         const Integer year = previousData.year ;
         const Integer month = previousData.month ;
         const Integer day = previousData.day ;
         
-        const Real mjd = previousData.mjd + ratio * (nextData.mjd - previousData.mjd) ;
+        const Real mjd = interpolate(previousData.mjd, nextData.mjd, ratio) ;
         
         const char polarMotionflag = (previousData.polarMotionflag == nextData.polarMotionflag) ? previousData.polarMotionflag : '?' ;
         
-        const Real x_A = previousData.x_A + ratio * (nextData.x_A - previousData.x_A) ;
-        const Real xError_A = previousData.xError_A + ratio * (nextData.xError_A - previousData.xError_A) ;
-        const Real y_A = previousData.y_A + ratio * (nextData.y_A - previousData.y_A) ;
-        const Real yError_A = previousData.yError_A + ratio * (nextData.yError_A - previousData.yError_A) ;
+        const Real x_A = interpolate(previousData.x_A, nextData.x_A, ratio) ;
+        const Real xError_A = interpolate(previousData.xError_A, nextData.xError_A, ratio) ;
+        const Real y_A = interpolate(previousData.y_A, nextData.y_A, ratio) ;
+        const Real yError_A = interpolate(previousData.yError_A, nextData.yError_A, ratio) ;
         
         const char ut1MinusUtcFlag = (previousData.ut1MinusUtcFlag == nextData.ut1MinusUtcFlag) ? previousData.ut1MinusUtcFlag : '?' ;
         
-        const Real ut1MinusUtc_A = previousData.ut1MinusUtc_A + ratio * (nextData.ut1MinusUtc_A - previousData.ut1MinusUtc_A) ;
-        const Real ut1MinusUtcError_A = previousData.ut1MinusUtcError_A + ratio * (nextData.ut1MinusUtcError_A - previousData.ut1MinusUtcError_A) ;
-        const Real lod_A = previousData.lod_A + ratio * (nextData.lod_A - previousData.lod_A) ;
-        const Real lodError_A = previousData.lodError_A + ratio * (nextData.lodError_A - previousData.lodError_A) ;
+        const Real ut1MinusUtc_A = interpolate(previousData.ut1MinusUtc_A, nextData.ut1MinusUtc_A, ratio) ;
+        const Real ut1MinusUtcError_A = interpolate(previousData.ut1MinusUtcError_A, nextData.ut1MinusUtcError_A, ratio) ;
+        const Real lod_A = interpolate(previousData.lod_A, nextData.lod_A, ratio) ;
+        const Real lodError_A = interpolate(previousData.lodError_A, nextData.lodError_A, ratio) ;
         
         const char nutationFlag = (previousData.nutationFlag == nextData.nutationFlag) ? previousData.nutationFlag : '?' ;
         
-        const Real dx_A = previousData.dx_A + ratio * (nextData.dx_A - previousData.dx_A) ;
-        const Real dxError_A = previousData.dxError_A + ratio * (nextData.dxError_A - previousData.dxError_A) ;
-        const Real dy_A = previousData.dy_A + ratio * (nextData.dy_A - previousData.dy_A) ;
-        const Real dyError_A = previousData.dyError_A + ratio * (nextData.dyError_A - previousData.dyError_A) ;
-        const Real x_B = previousData.x_B + ratio * (nextData.x_B - previousData.x_B) ;
-        const Real y_B = previousData.y_B + ratio * (nextData.y_B - previousData.y_B) ;
-        const Real ut1MinusUtc_B = previousData.ut1MinusUtc_B + ratio * (nextData.ut1MinusUtc_B - previousData.ut1MinusUtc_B) ;
-        const Real dx_B = previousData.dx_B + ratio * (nextData.dx_B - previousData.dx_B) ;
-        const Real dy_B = previousData.dy_B + ratio * (nextData.dy_B - previousData.dy_B) ;
+        const Real dx_A = interpolate(previousData.dx_A, nextData.dx_A, ratio) ;
+        const Real dxError_A = interpolate(previousData.dxError_A, nextData.dxError_A, ratio) ;
+        const Real dy_A = interpolate(previousData.dy_A, nextData.dy_A, ratio) ;
+        const Real dyError_A = interpolate(previousData.dyError_A, nextData.dyError_A, ratio) ;
+        const Real x_B = interpolate(previousData.x_B, nextData.x_B, ratio) ;
+        const Real y_B = interpolate(previousData.y_B, nextData.y_B, ratio) ;
+        const Real ut1MinusUtc_B = interpolate(previousData.ut1MinusUtc_B, nextData.ut1MinusUtc_B, ratio) ;
+        const Real dx_B = interpolate(previousData.dx_B, nextData.dx_B, ratio) ;
+        const Real dy_B = interpolate(previousData.dy_B, nextData.dy_B, ratio) ;
 
         const Finals2000A::Data data =
         {
@@ -460,9 +504,9 @@ Pair<const Finals2000A::Data*, const Finals2000A::Data*> Finals2000A::accessData
 
     using library::physics::time::Scale ;
 
-    const Real instantMjd = anInstant.getModifiedJulianDate(Scale::UTC) ;
+    const Real instantMjd_UTC = anInstant.getModifiedJulianDate(Scale::UTC) ;
     
-    const auto nextDataIt = data_.lower_bound(instantMjd) ;
+    const auto nextDataIt = data_.lower_bound(instantMjd_UTC) ;
 
     if (nextDataIt == data_.end())
     {

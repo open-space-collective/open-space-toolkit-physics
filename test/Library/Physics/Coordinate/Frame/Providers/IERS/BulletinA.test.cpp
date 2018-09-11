@@ -25,9 +25,9 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, StreamOperator)
 
         testing::internal::CaptureStdout() ;
 
-        File file = File::Path(Path::Parse("/app/share/data/ser7.dat")) ;
+        const File file = File::Path(Path::Parse("/app/share/data/ser7.dat")) ;
 
-        BulletinA bulletinA = BulletinA::Load(file) ;
+        const BulletinA bulletinA = BulletinA::Load(file) ;
 
         EXPECT_NO_THROW(std::cout << bulletinA << std::endl) ;
 
@@ -47,9 +47,9 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, IsDefined)
 
     {
 
-        File file = File::Path(Path::Parse("/app/share/data/ser7.dat")) ;
+        const File file = File::Path(Path::Parse("/app/share/data/ser7.dat")) ;
 
-        BulletinA bulletinA = BulletinA::Load(file) ;
+        const BulletinA bulletinA = BulletinA::Load(file) ;
 
         EXPECT_TRUE(bulletinA.isDefined()) ;
 
@@ -119,9 +119,9 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetReleaseDate)
 
     {
 
-        File file = File::Path(Path::Parse("/app/share/data/ser7.dat")) ;
+        const File file = File::Path(Path::Parse("/app/share/data/ser7.dat")) ;
 
-        BulletinA bulletinA = BulletinA::Load(file) ;
+        const BulletinA bulletinA = BulletinA::Load(file) ;
 
         EXPECT_EQ(Date(2018, 6, 28), bulletinA.getReleaseDate()) ;
 
@@ -146,9 +146,9 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetTAIMinusUTC)
 
     {
 
-        File file = File::Path(Path::Parse("/app/share/data/ser7.dat")) ;
+        const File file = File::Path(Path::Parse("/app/share/data/ser7.dat")) ;
 
-        BulletinA bulletinA = BulletinA::Load(file) ;
+        const BulletinA bulletinA = BulletinA::Load(file) ;
 
         EXPECT_EQ(Duration::Seconds(37.0), bulletinA.getTAIMinusUTC()) ;
 
@@ -175,9 +175,9 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetTAIMinusUTCE
 
     {
 
-        File file = File::Path(Path::Parse("/app/share/data/ser7.dat")) ;
+        const File file = File::Path(Path::Parse("/app/share/data/ser7.dat")) ;
 
-        BulletinA bulletinA = BulletinA::Load(file) ;
+        const BulletinA bulletinA = BulletinA::Load(file) ;
 
         EXPECT_EQ(Instant::DateTime(DateTime::Parse("2017-01-01 00:00:00"), Scale::UTC), bulletinA.getTAIMinusUTCEpoch()) ;
 
@@ -205,9 +205,9 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetObservationI
 
     {
 
-        File file = File::Path(Path::Parse("/app/share/data/ser7.dat")) ;
+        const File file = File::Path(Path::Parse("/app/share/data/ser7.dat")) ;
 
-        BulletinA bulletinA = BulletinA::Load(file) ;
+        const BulletinA bulletinA = BulletinA::Load(file) ;
 
         EXPECT_EQ(Interval::Closed(Instant::DateTime(DateTime::Parse("2018-06-22 00:00:00"), Scale::UTC), Instant::DateTime(DateTime::Parse("2018-06-28 00:00:00"), Scale::UTC)), bulletinA.getObservationInterval()) ;
 
@@ -234,9 +234,9 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetObservationA
 
     {
 
-        File file = File::Path(Path::Parse("/app/share/data/ser7.dat")) ;
+        const File file = File::Path(Path::Parse("/app/share/data/ser7.dat")) ;
 
-        BulletinA bulletinA = BulletinA::Load(file) ;
+        const BulletinA bulletinA = BulletinA::Load(file) ;
 
         {
 
@@ -279,9 +279,9 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetPredictionIn
 
     {
 
-        File file = File::Path(Path::Parse("/app/share/data/ser7.dat")) ;
+        const File file = File::Path(Path::Parse("/app/share/data/ser7.dat")) ;
 
-        BulletinA bulletinA = BulletinA::Load(file) ;
+        const BulletinA bulletinA = BulletinA::Load(file) ;
 
         EXPECT_EQ(Interval::Closed(Instant::DateTime(DateTime::Parse("2018-06-29 00:00:00"), Scale::UTC), Instant::DateTime(DateTime::Parse("2019-06-28 00:00:00"), Scale::UTC)), bulletinA.getPredictionInterval()) ;
 
@@ -308,9 +308,9 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetPredictionAt
 
     {
 
-        File file = File::Path(Path::Parse("/app/share/data/ser7.dat")) ;
+        const File file = File::Path(Path::Parse("/app/share/data/ser7.dat")) ;
 
-        BulletinA bulletinA = BulletinA::Load(file) ;
+        const BulletinA bulletinA = BulletinA::Load(file) ;
 
         {
 
@@ -352,9 +352,9 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, Load)
 
     {
 
-        File file = File::Path(Path::Parse("/app/share/data/ser7.dat")) ;
+        const File file = File::Path(Path::Parse("/app/share/data/ser7.dat")) ;
 
-        BulletinA bulletinA = BulletinA::Load(file) ;
+        const BulletinA bulletinA = BulletinA::Load(file) ;
 
         EXPECT_TRUE(bulletinA.isDefined()) ;
 

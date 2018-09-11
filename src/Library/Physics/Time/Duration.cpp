@@ -333,6 +333,34 @@ bool                            Duration::isStrictlyPositive                ( ) 
 
 }
 
+bool                            Duration::isNear                            (   const   Duration&                   aDuration,
+                                                                                const   Duration&                   aTolerance                                  ) const
+{
+
+    if (!aDuration.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Duration") ;
+    }
+
+    if (!aTolerance.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Tolerance") ;
+    }
+
+    if (!aTolerance.isPositive())
+    {
+        throw library::core::error::RuntimeError("Tolerance is not positive.") ;
+    }
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Duration") ;
+    }
+
+    return std::abs(count_ - aDuration.count_) <= aTolerance.count_ ;
+
+}
+
 Integer                         Duration::getNanoseconds                    ( ) const
 {
 
@@ -648,7 +676,7 @@ String                          Duration::toString                         (   c
                                            + (Real::Integer(microseconds) / 1000000.0)
                                            + (Real::Integer(nanoseconds) / 1000000000.0) ;
 
-                // Pretty ugly implementation, couldn't quickly find a better way... feel free to improve!
+                // [TBM] Pretty ugly implementation, couldn't quickly find a better way... feel free to improve!
 
                 if (nanoseconds == 100)
                 {

@@ -60,9 +60,21 @@ class Manager
 
     public:
 
+        /// @brief              Constructor (default)
+
                                 Manager                                     ( ) ;
 
+        /// @brief              Get Bulletin A at instant
+        ///
+        /// @param              [in] anInstant An instant
+        /// @return             Bulletin A
+
         BulletinA               getBulletinAAt                              (   const   Instant&                    anInstant                                   ) const ;
+
+        /// @brief              Get Finals 2000A at instant
+        ///
+        /// @param              [in] anInstant An instant
+        /// @return             Finals 2000A
 
         Finals2000A             getFinals2000AAt                            (   const   Instant&                    anInstant                                   ) const ;
 
@@ -87,7 +99,15 @@ class Manager
 
         Real                    getLodAt                                    (   const   Instant&                    anInstant                                   ) const ;
 
+        /// @brief              Add Bulletin A
+        ///
+        /// @param              [in] aBulletinA A Bulletin A
+
         void                    addBulletinA                                (   const   BulletinA&                  aBulletinA                                  ) ;
+
+        /// @brief              Add Finals 2000A
+        ///
+        /// @param              [in] aFinals2000A A Finals 2000A
 
         void                    addFinals2000A                              (   const   Finals2000A&                aFinals2000A                                ) ;
 
