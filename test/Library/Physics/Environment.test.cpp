@@ -141,6 +141,63 @@ TEST (Library_Physics_Environment, HasObjectWithName)
 
 }
 
+TEST (Library_Physics_Environment, Intersects)
+{
+
+    using library::core::types::Shared ;
+    using library::core::types::Real ;
+    using library::core::ctnr::Array ;
+
+    using library::math::obj::Interval ;
+    using library::math::geom::d3::objects::Segment ;
+
+    using library::physics::time::Scale ;
+    using library::physics::time::Instant ;
+    using library::physics::time::DateTime ;
+    using library::physics::coord::Frame ;
+    using library::physics::Environment ;
+    using library::physics::env::Object ;
+    using library::physics::env::obj::celest::Earth ;
+
+    {
+
+        const Instant instant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC) ;
+
+        const Array<Shared<Object>> objects =
+        {
+            std::make_shared<Earth>(Earth::Analytical(instant))
+        } ;
+
+        const Environment environment = { instant, objects } ;
+
+        // for (const auto& y_ECI : Interval<Real>::Closed(-Earth::EquatorialRadius.inMeters(), +Earth::EquatorialRadius.inMeters()).generateArrayWithStep(Real(1000.0)))
+        for (const auto& y_ECI : Interval<Real>::Closed(-Earth::EquatorialRadius.inMeters() + 1.0, +Earth::EquatorialRadius.inMeters() - 1.0).generateArrayWithStep(Real(1000.0))) // [TBI] Precision issues are preventing the tangential rays to be recognised as intersecting, hence the 1.0 [m] offset
+        {
+
+            const Segment segment = { { -10000e3, y_ECI, 0.0 }, { +10000e3, y_ECI, 0.0 } } ;
+
+            const Object::Geometry segmentGeometry = { segment, Frame::GCRF() } ;
+
+            ASSERT_TRUE(environment.intersects(segmentGeometry)) << segmentGeometry ;
+
+        }
+
+    }
+
+    {
+
+        const Environment environment = Environment::Default() ;
+        const Segment segment = { { -7000e3, 0.0, 0.0 }, { +7000e3, 0.0, 0.0 } } ;
+        const Object::Geometry geometry = { segment, Frame::GCRF() } ;
+
+        EXPECT_ANY_THROW(Environment::Undefined().intersects(Object::Geometry::Undefined())) ;
+        EXPECT_ANY_THROW(Environment::Undefined().intersects(geometry)) ;
+        EXPECT_ANY_THROW(environment.intersects(Object::Geometry::Undefined())) ;
+
+    }
+
+}
+
 TEST (Library_Physics_Environment, AccessObjects)
 {
 
@@ -382,63 +439,6 @@ TEST (Library_Physics_Environment, SetInstant)
 
 }
 
-TEST (Library_Physics_Environment, Intersects)
-{
-
-    using library::core::types::Shared ;
-    using library::core::types::Real ;
-    using library::core::ctnr::Array ;
-
-    using library::math::obj::Interval ;
-    using library::math::geom::d3::objects::Segment ;
-
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::DateTime ;
-    using library::physics::coord::Frame ;
-    using library::physics::Environment ;
-    using library::physics::env::Object ;
-    using library::physics::env::obj::celest::Earth ;
-
-    {
-
-        const Instant instant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC) ;
-
-        const Array<Shared<Object>> objects =
-        {
-            std::make_shared<Earth>(Earth::Analytical(instant))
-        } ;
-
-        const Environment environment = { instant, objects } ;
-
-        // for (const auto& y_ECI : Interval<Real>::Closed(-Earth::EquatorialRadius.inMeters(), +Earth::EquatorialRadius.inMeters()).generateArrayWithStep(Real(1000.0)))
-        for (const auto& y_ECI : Interval<Real>::Closed(-Earth::EquatorialRadius.inMeters() + 1.0, +Earth::EquatorialRadius.inMeters() - 1.0).generateArrayWithStep(Real(1000.0))) // [TBI] Precision issues are preventing the tangential rays to be recognised as intersecting, hence the 1.0 [m] offset
-        {
-
-            const Segment segment = { { -10000e3, y_ECI, 0.0 }, { +10000e3, y_ECI, 0.0 } } ;
-
-            const Object::Geometry segmentGeometry = { segment, Frame::GCRF() } ;
-
-            EXPECT_TRUE(environment.intersects(segmentGeometry)) << segmentGeometry ;
-
-        }
-
-    }
-
-    {
-
-        const Environment environment = Environment::Default() ;
-        const Segment segment = { { -7000e3, 0.0, 0.0 }, { +7000e3, 0.0, 0.0 } } ;
-        const Object::Geometry geometry = { segment, Frame::GCRF() } ;
-
-        EXPECT_ANY_THROW(Environment::Undefined().intersects(Object::Geometry::Undefined())) ;
-        EXPECT_ANY_THROW(Environment::Undefined().intersects(geometry)) ;
-        EXPECT_ANY_THROW(environment.intersects(Object::Geometry::Undefined())) ;
-
-    }
-
-}
-
 TEST (Library_Physics_Environment, Undefined)
 {
 
@@ -618,7 +618,7 @@ TEST (Library_Physics_Environment, Test_2)
 
     const Object::Geometry earthGeometry = earthSPtr->getGeometryIn(Frame::ITRF()) ;
 
-    const Ellipsoid& ellipsoid = earthGeometry.as<Ellipsoid>() ;
+    const Ellipsoid& ellipsoid = earthGeometry.accessComposite().as<Ellipsoid>() ;
 
     // Setup observer
 
@@ -636,7 +636,7 @@ TEST (Library_Physics_Environment, Test_2)
 
     // Project intersection
 
-    const LineString intersectionLineString = intersection.as<LineString>() ;
+    const LineString intersectionLineString = intersection.accessComposite().as<LineString>() ;
 
     Array<Point2d> intersectionPoints2d = Array<Point2d>::Empty() ;
 

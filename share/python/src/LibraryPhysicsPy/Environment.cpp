@@ -35,6 +35,7 @@ inline void                     LibraryPhysicsPy_Environment                ( )
 
         .def("isDefined", &Environment::isDefined)
         .def("hasObjectWithName", &Environment::hasObjectWithName)
+        .def("intersects", &Environment::intersects)
 
         .def("accessObjects", &Environment::accessObjects)
         .def("accessObjectWithName", &Environment::accessObjectWithName)
@@ -42,7 +43,6 @@ inline void                     LibraryPhysicsPy_Environment                ( )
         .def("getInstant", &Environment::getInstant)
         .def("getObjectNames", &Environment::getObjectNames)
         .def("setInstant", &Environment::setInstant)
-        .def("intersects", &Environment::intersects)
         
         .def("Undefined", &Environment::Undefined).staticmethod("Undefined")
         .def("Default", &Environment::Default).staticmethod("Default")

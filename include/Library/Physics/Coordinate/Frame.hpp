@@ -118,6 +118,8 @@ class Frame : public std::enable_shared_from_this<Frame>
 
         static Shared<const Frame> WithName                                 (   const   String&                     aName                                       ) ;
 
+        static bool             Exists                                      (   const   String&                     aName                                       ) ;
+
         /// @brief              Constructor
         ///
         /// @param              [in] aName A frame name

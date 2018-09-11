@@ -129,6 +129,33 @@ bool                            Environment::hasObjectWithName              (   
 
 }
 
+bool                            Environment::intersects                     (   const   Object::Geometry&           aGeometry                                   ) const
+{
+
+    if (!aGeometry.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Geometry") ;
+    }
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Environment") ;
+    }
+
+    for (const auto& objectSPtr : objects_)
+    {
+
+        if (objectSPtr->getGeometryIn(aGeometry.accessFrame()).intersects(aGeometry))
+        {
+            return true ;
+        }
+
+    }
+
+    return false ;
+
+}
+
 Array<Shared<const Object>>     Environment::accessObjects                  ( ) const
 {
 
@@ -247,33 +274,6 @@ void                            Environment::setInstant                     (   
     instant_ = anInstant ;
 
     this->updateObjects() ;
-
-}
-
-bool                            Environment::intersects                     (   const   Object::Geometry&           aGeometry                                   ) const
-{
-
-    if (!aGeometry.isDefined())
-    {
-        throw library::core::error::runtime::Undefined("Geometry") ;
-    }
-
-    if (!this->isDefined())
-    {
-        throw library::core::error::runtime::Undefined("Environment") ;
-    }
-
-    for (const auto& objectSPtr : objects_)
-    {
-
-        if (objectSPtr->getGeometryIn(aGeometry.accessFrame()).intersects(aGeometry))
-        {
-            return true ;
-        }
-
-    }
-
-    return false ;
 
 }
 

@@ -13,7 +13,7 @@
 #include <Library/Physics/Coordinate/Frame.hpp>
 #include <Library/Physics/Time/Instant.hpp>
 
-#include <Library/Mathematics/Geometry/3D/Object.hpp>
+#include <Library/Mathematics/Geometry/3D/Objects/Composite.hpp>
 
 #include <Library/Core/Types/Shared.hpp>
 #include <Library/Core/Types/Unique.hpp>
@@ -38,6 +38,8 @@ namespace object
 using library::core::types::Unique ;
 using library::core::types::Shared ;
 
+using library::math::geom::d3::objects::Composite ;
+
 using library::physics::time::Instant ;
 using library::physics::coord::Frame ;
 
@@ -50,22 +52,61 @@ class Geometry
 
         typedef math::geom::d3::Object Object ;
 
+        /// @brief              Constructor
+        ///
+        /// @param              [in] anObject An object
+        /// @param              [in] aFrameSPtr A shared pointer to frame
+
                                 Geometry                                    (   const   Geometry::Object&           anObject,
                                                                                 const   Shared<const Frame>&        aFrameSPtr                                  ) ;
 
-                                Geometry                                    (   const   Unique<Geometry::Object>&   anObjectUPtr,
+        /// @brief              Constructor
+        ///
+        /// @param              [in] aComposite A composite
+        /// @param              [in] aFrameSPtr A shared pointer to frame
+
+                                Geometry                                    (   const   Composite&                  aComposite,
                                                                                 const   Shared<const Frame>&        aFrameSPtr                                  ) ;
+
+        /// @brief              Copy constructor
+        ///
+        /// @param              [in] aGeometry A geometry
 
                                 Geometry                                    (   const   Geometry&                   aGeometry                                   ) ;
 
+        /// @brief              Copy assignment operator
+        ///
+        /// @param              [in] aGeometry A geometry
+        /// @return             Reference to geometry
+
         Geometry&               operator =                                  (   const   Geometry&                   aGeometry                                   ) ;
 
+        /// @brief              Equal to operator
+        ///
+        /// @param              [in] aGeometry A geometry
+        /// @return             True if geometries are equal
+
         bool                    operator ==                                 (   const   Geometry&                   aGeometry                                   ) const ;
+
+        /// @brief              Not equal to operator
+        ///
+        /// @param              [in] aGeometry A geometry
+        /// @return             True if geometries are not equal
         
         bool                    operator !=                                 (   const   Geometry&                   aGeometry                                   ) const ;
 
+        /// @brief              Output stream operator
+        ///
+        /// @param              [in] anOutputStream An output stream
+        /// @param              [in] aGeometry A geometry
+        /// @return             A reference to output stream
+
         friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
                                                                                 const   Geometry&                   aGeometry                                   ) ;
+
+        /// @brief              Check if geometry is defined
+        ///
+        /// @return             True if geometry is defined
 
         bool                    isDefined                                   ( ) const ;
 
@@ -83,60 +124,47 @@ class Geometry
 
         bool                    contains                                    (   const   Geometry&                   aGeometry                                   ) const ;
 
+        /// @brief              Access composite
+        ///
+        /// @return             Reference to composite
+
+        const Composite&        accessComposite                             ( ) const ;
+
+        /// @brief              Access frame
+        ///
+        /// @return             Shared pointer to frame
+
         Shared<const Frame>     accessFrame                                 ( ) const ;
+
+        /// @brief              Get geometry expressed in a given frame
+        ///
+        /// @param              [in] aFrameSPtr A shared pointer to frame
+        /// @param              [in] anInstant An instant
+        /// @return             Geometry expressed in a given frame
 
         Geometry                in                                          (   const   Shared<const Frame>&        aFrameSPtr,
                                                                                 const   Instant&                    anInstant                                   ) const ;
 
-        /// @brief              Returns true if geometry's underlying object is of given type
+        /// @brief              Compute intersection of geometry with another geometry
         ///
-        /// @return             True if geometry's underlying object is of given type
-
-        template <class Type>
-        bool                    is                                          ( ) const
-        {
-
-            if (!this->isDefined())
-            {
-                throw library::core::error::RuntimeError("Geometry is undefined.") ;
-            }
-            
-            return dynamic_cast<const Type*>(objectUPtr_.get()) != nullptr ;
-
-        }
-
-        /// @brief              Access eometry's underlying object
-        ///
-        /// @return             Reference to underlying object
-
-        template <class Type>
-        const Type&             as                                          ( ) const
-        {
-
-            if (!this->isDefined())
-            {
-                throw library::core::error::RuntimeError("Geometry is undefined.") ;
-            }
-
-            const Type* objectPtr = dynamic_cast<const Type*>(objectUPtr_.get()) ;
-
-            if (objectPtr == nullptr)
-            {
-                throw library::core::error::RuntimeError("Cannot convert underlying object to type.") ;
-            }
-
-            return *objectPtr ;
-
-        }
+        /// @param              [in] aGeometry A geometry
+        /// @return             Intersection of geometry with another geometry
 
         Geometry                intersectionWith                            (   const   Geometry&                   aGeometry                                   ) const ;
+
+        /// @brief              Constructs an undefined geometry
+        ///
+        /// @code
+        ///                     Geometry geometry = Geometry::Undefined() ; // Undefined
+        /// @endcode
+        ///
+        /// @return             Undefined geometry
 
         static Geometry         Undefined                                   ( ) ;
 
     private:
-
-        Unique<Geometry::Object> objectUPtr_ ;
-
+    
+        Composite               composite_ ;
         Shared<const Frame>     frameSPtr_ ;
 
 } ;

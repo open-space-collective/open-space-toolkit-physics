@@ -419,6 +419,18 @@ Shared<const Frame>             Frame::WithName                             (   
 
 }
 
+bool                            Frame::Exists                               (   const   String&                     aName                                       )
+{
+
+    if (aName.isEmpty())
+    {
+        throw library::core::error::runtime::Undefined("Name") ;
+    }
+
+    return FrameManager::Get().hasFrameWithName(aName) ;
+
+}
+
 Shared<const Frame>             Frame::Construct                            (   const   String&                     aName,
                                                                                         bool                        isQuasiInertial,
                                                                                 const   Shared<const Frame>&        aParentFrame,

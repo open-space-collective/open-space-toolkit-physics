@@ -59,6 +59,7 @@ inline void                     LibraryPhysicsPy_Coordinate_Frame           ( )
         .def("TIRF", &Frame::TIRF).staticmethod("TIRF")
         .def("ITRF", &Frame::ITRF).staticmethod("ITRF")
         .def("WithName", &Frame::WithName).staticmethod("WithName")
+        .def("Exists", &Frame::Exists).staticmethod("Exists")
         .def("Construct", &Frame::Construct).staticmethod("Construct")
         .def("Destruct", &Frame::Destruct).staticmethod("Destruct")
 

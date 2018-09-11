@@ -61,11 +61,14 @@ struct DateTimeFromPythonDateTime
 
         const int microseconds = PyDateTime_DATE_GET_MICROSECOND(pydate) ;
 
+        const int millisecond = microseconds / 1000 ;
+        const int microsecond = microseconds - millisecond * 1000 ;
+
         // Create DateTime object
 
         void* storage = ((boost::python::converter::rvalue_from_python_storage<DateTime>*) data)->storage.bytes ;
         
-        new (storage) DateTime (year, month, day, hour, minute, second, microseconds) ;
+        new (storage) DateTime (year, month, day, hour, minute, second, millisecond, microsecond) ;
         
         data->convertible = storage ;
     

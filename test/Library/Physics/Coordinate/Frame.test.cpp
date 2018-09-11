@@ -1050,6 +1050,54 @@ TEST (Library_Physics_Coordinate_Frame, WithName)
 
 }
 
+TEST (Library_Physics_Coordinate_Frame, Exists)
+{
+
+    using library::core::types::Shared ;
+    using library::core::types::Real ;
+    using library::core::types::String ;
+
+    using library::math::obj::Vector3d ;
+    using library::math::geom::d3::trf::rot::Quaternion ;
+    using library::math::geom::d3::trf::rot::RotationVector ;
+    using library::math::geom::d3::trf::rot::RotationMatrix ;
+    
+    using library::physics::units::Angle ;
+    using library::physics::time::Scale ;
+    using library::physics::time::Instant ;
+    using library::physics::time::DateTime ;
+    using library::physics::coord::Transform ;
+    using library::physics::coord::Frame ;
+    using library::physics::coord::frame::Provider ;
+    using library::physics::coord::frame::provider::Static ;
+
+    {
+
+        const String name = "Custom" ;
+        const bool isQuasiInertial = true ;
+        const Shared<const Frame> parentFrameSPtr = Frame::GCRF() ;
+        const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(Instant::J2000(), Vector3d(0.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::RotationVector(RotationVector({ 0.0, 0.0, 1.0 }, Angle::Degrees(-90.0))), Vector3d(0.0, 0.0, +2.0)))) ;
+        
+        EXPECT_FALSE(Frame::Exists("Custom")) ;
+
+        Frame::Construct(name, isQuasiInertial, parentFrameSPtr, providerSPtr) ;
+
+        EXPECT_TRUE(Frame::Exists("Custom")) ;
+
+        Frame::Destruct("Custom") ;
+
+        EXPECT_FALSE(Frame::Exists("Custom")) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Frame::Exists("")) ;
+        
+    }
+
+}
+
 TEST (Library_Physics_Coordinate_Frame, Construct)
 {
 

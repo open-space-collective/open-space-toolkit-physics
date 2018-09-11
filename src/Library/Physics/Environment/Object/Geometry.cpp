@@ -43,22 +43,22 @@ namespace object
 
                                 Geometry::Geometry                          (   const   Geometry::Object&           anObject,
                                                                                 const   Shared<const Frame>&        aFrameSPtr                                  )
-                                :   objectUPtr_(anObject.clone()),
+                                :   composite_(anObject),
                                     frameSPtr_(aFrameSPtr)
 {
 
 }
 
-                                Geometry::Geometry                          (   const   Unique<Geometry::Object>&   anObjectUPtr,
+                                Geometry::Geometry                          (   const   Composite&                  aComposite,
                                                                                 const   Shared<const Frame>&        aFrameSPtr                                  )
-                                :   objectUPtr_((anObjectUPtr != nullptr) ? anObjectUPtr->clone() : nullptr),
+                                :   composite_(aComposite),
                                     frameSPtr_(aFrameSPtr)
 {
 
 }
 
                                 Geometry::Geometry                          (   const   Geometry&                   aGeometry                                   )
-                                :   objectUPtr_((aGeometry.objectUPtr_ != nullptr) ? aGeometry.objectUPtr_->clone() : nullptr),
+                                :   composite_(aGeometry.composite_),
                                     frameSPtr_(aGeometry.frameSPtr_)
 {
 
@@ -70,8 +70,7 @@ Geometry&                       Geometry::operator =                        (   
     if (this != &aGeometry)
     {
 
-        objectUPtr_.reset((aGeometry.objectUPtr_ != nullptr) ? aGeometry.objectUPtr_->clone() : nullptr) ;
-
+        composite_ = aGeometry.composite_ ;
         frameSPtr_ = aGeometry.frameSPtr_ ;
 
     }
@@ -88,7 +87,7 @@ bool                            Geometry::operator ==                       (   
         return false ;
     }
 
-    return ((*objectUPtr_) == (*aGeometry.objectUPtr_)) && ((*frameSPtr_) == (*aGeometry.frameSPtr_)) ;
+    return (composite_ == aGeometry.composite_) && ((*frameSPtr_) == (*aGeometry.frameSPtr_)) ;
 
 }
 
@@ -103,11 +102,10 @@ std::ostream&                   operator <<                                 (   
 
     library::core::utils::Print::Header(anOutputStream, "Geometry") ;
 
-    if (aGeometry.objectUPtr_ != nullptr)
-    {
-        anOutputStream << (*aGeometry.objectUPtr_) ;
-    }
+    library::core::utils::Print::Line(anOutputStream) << "Objects:" ;
 
+    aGeometry.composite_.print(anOutputStream, false) ;
+    
     library::core::utils::Print::Line(anOutputStream) << "Frame:"               << (((aGeometry.frameSPtr_ != nullptr) && aGeometry.frameSPtr_->isDefined()) ? aGeometry.frameSPtr_->getName() : "Undefined") ;
 
     library::core::utils::Print::Footer(anOutputStream) ;
@@ -118,7 +116,7 @@ std::ostream&                   operator <<                                 (   
 
 bool                            Geometry::isDefined                         ( ) const
 {
-    return (objectUPtr_ != nullptr) && objectUPtr_->isDefined() && (frameSPtr_ != nullptr) && frameSPtr_->isDefined() ;
+    return  composite_.isDefined() && (frameSPtr_ != nullptr) && frameSPtr_->isDefined() ;
 }
 
 bool                            Geometry::intersects                        (   const   Geometry&                   aGeometry                                   ) const
@@ -136,7 +134,7 @@ bool                            Geometry::intersects                        (   
 
     if ((*frameSPtr_) == (*aGeometry.frameSPtr_))
     {
-        return objectUPtr_->intersects(*aGeometry.objectUPtr_) ;
+        return composite_.intersects(aGeometry.composite_) ;
     }
 
     throw library::core::error::runtime::ToBeImplemented("Geometry :: intersects") ;
@@ -160,12 +158,24 @@ bool                            Geometry::contains                          (   
 
     if ((*frameSPtr_) == (*aGeometry.frameSPtr_))
     {
-        return objectUPtr_->contains(*aGeometry.objectUPtr_) ;
+        return composite_.contains(aGeometry.composite_) ;
     }
 
     throw library::core::error::runtime::ToBeImplemented("Geometry :: contains") ;
 
     return false ;
+
+}
+
+const Composite&                Geometry::accessComposite                   ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Geometry") ;
+    }
+
+    return composite_ ;
 
 }
 
@@ -212,15 +222,15 @@ Geometry                        Geometry::in                                (   
         return *this ;
     }
 
-    const Unique<Geometry::Object> objectUPtr(objectUPtr_->clone()) ;
-
-    const Transform transform = frameSPtr_->getTransformTo(aFrameSPtr, anInstant) ;
+    const Transform transform = frameSPtr_->getTransformTo(aFrameSPtr, anInstant) ; // [TBM] Bottleneck here
 
     const Transformation transformation = Transformation::Rotation(RotationVector::Quaternion(transform.getOrientation())).getInverse() * Transformation::Translation(transform.getTranslation()) ;
 
-    objectUPtr->applyTransformation(transformation) ;
+    Composite composite = composite_ ;
 
-    return { objectUPtr, aFrameSPtr } ;
+    composite.applyTransformation(transformation) ;
+
+    return { composite, aFrameSPtr } ;
 
 }
 
@@ -250,49 +260,29 @@ Geometry                        Geometry::intersectionWith                  (   
         throw library::core::error::runtime::Undefined("Geometry") ;
     }
 
-    Intersection intersection = Intersection::Undefined() ;
+    Intersection intersection = Intersection::Empty() ;
 
     if ((*frameSPtr_) == (*aGeometry.frameSPtr_))
     {
-        intersection = objectUPtr_->intersectionWith(*aGeometry.objectUPtr_) ;
+        intersection = composite_.intersectionWith(aGeometry.composite_) ;
     }
     else
     {
         throw library::core::error::RuntimeError("Only same frame intersection supported at the moment.") ;
-        // intersection = objectUPtr_->intersectionWith(*aGeometry.in(frameSPtr_, anInstant).objectUPtr_) ;
     }
 
-    // const Intersection intersection = objectUPtr_->intersectionWith(*aGeometry.objectUPtr_) ;
-
-    if (!intersection.isEmpty())
+    if (intersection.isEmpty())
     {
-
-        if (intersection.is<Point>())
-        {
-            return { intersection.as<Point>(), frameSPtr_ } ;
-        }
-
-        if (intersection.is<PointSet>())
-        {
-            return { intersection.as<PointSet>(), frameSPtr_ } ;
-        }
-
-        if (intersection.is<LineString>())
-        {
-            return { intersection.as<LineString>(), frameSPtr_ } ;
-        }
-        
-        throw library::core::error::runtime::ToBeImplemented("Intersection type is not supported.") ;
-
+        return { Composite::Undefined(), frameSPtr_ } ;
     }
-
-    return Geometry::Undefined() ;
+    
+    return { intersection.accessComposite(), frameSPtr_ } ;
 
 }
 
 Geometry                        Geometry::Undefined                         ( )
 {
-    return { nullptr, nullptr } ;
+    return { Composite::Undefined(), nullptr } ;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
