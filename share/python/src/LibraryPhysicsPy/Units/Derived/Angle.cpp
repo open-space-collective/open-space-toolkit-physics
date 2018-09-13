@@ -20,6 +20,9 @@ inline void                     LibraryPhysicsPy_Units_Derived_Angle        ( )
 
     using library::core::types::Real ;
 
+    using library::math::obj::Vector2d ;
+    using library::math::obj::Vector3d ;
+
     using library::physics::units::Angle ;
 
     scope in_Angle = class_<Angle>("Angle", init<Real, Angle::Unit>())
@@ -56,11 +59,17 @@ inline void                     LibraryPhysicsPy_Units_Derived_Angle        ( )
         .def("toString", &Angle::toString, LibraryPhysicsPy_Units_Angle_toString_overloads())
         
         .def("Undefined", &Angle::Undefined).staticmethod("Undefined")
+        .def("Zero", &Angle::Zero).staticmethod("Zero")
+        .def("HalfPi", &Angle::HalfPi).staticmethod("HalfPi")
+        .def("Pi", &Angle::Pi).staticmethod("Pi")
+        .def("TwoPi", &Angle::TwoPi).staticmethod("TwoPi")
         .def("Radians", &Angle::Radians).staticmethod("Radians")
         .def("Degrees", &Angle::Degrees).staticmethod("Degrees")
         .def("Arcminutes", &Angle::Arcminutes).staticmethod("Arcminutes")
         .def("Arcseconds", &Angle::Arcseconds).staticmethod("Arcseconds")
         .def("Revolutions", &Angle::Revolutions).staticmethod("Revolutions")
+        .def("BetweenVector2d", +[] (const Vector2d& aFirstVector, const Vector2d& aSecondVector) -> Angle { return Angle::Between(aFirstVector, aSecondVector) ; })
+        .def("BetweenVector3d", +[] (const Vector3d& aFirstVector, const Vector3d& aSecondVector) -> Angle { return Angle::Between(aFirstVector, aSecondVector) ; })
         // .def("Parse", &Angle::Parse).staticmethod("Parse")
         .def("StringFromUnit", &Angle::StringFromUnit).staticmethod("StringFromUnit")
         .def("SymbolFromUnit", &Angle::SymbolFromUnit).staticmethod("SymbolFromUnit")
