@@ -138,7 +138,26 @@ class Environment
 
         void                    setInstant                                  (   const   Instant&                    anInstant                                   ) ;
 
+        /// @brief              Constructs an undefined environment
+        ///
+        /// @code
+        ///                     Environment environment = Environment::Undefined() ;
+        ///                     environment.isDefined() ; // False
+        /// @endcode
+        ///
+        /// @return             Undefined environment
+
         static Environment      Undefined                                   ( ) ;
+
+        /// @brief              Constructs a default environment
+        ///
+        ///                     Contains Earth, Sun and Moon, with SPICE-based ephemeris.
+        ///
+        /// @code
+        ///                     Environment environment = Environment::Default() ;
+        /// @endcode
+        ///
+        /// @return             Undefined environment
 
         static Environment      Default                                     ( ) ;
 

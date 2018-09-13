@@ -89,7 +89,7 @@ Earth*                          Earth::clone                                ( ) 
     return new Earth(*this) ;
 }
 
-Earth                           Earth::Analytical                           (   const   Instant&                    anInstant                                   )
+Earth                           Earth::Default                              ( )
 {
 
     using library::physics::coord::Frame ;
@@ -97,9 +97,11 @@ Earth                           Earth::Analytical                           (   
 
     const Shared<const Frame> earthFrameSPtr = Frame::ITRF() ;
 
-    return { std::make_shared<Analytical>(earthFrameSPtr), anInstant } ;
+    return { std::make_shared<Analytical>(earthFrameSPtr), Instant::J2000() } ;
 
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Object::Geometry                Earth::Geometry                             (   const   Shared<const Frame>&        aFrameSPtr                                  )
 {

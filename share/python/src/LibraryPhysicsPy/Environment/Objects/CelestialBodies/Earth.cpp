@@ -34,7 +34,7 @@ inline void                     LibraryPhysicsPy_Environment_Objects_CelestialBo
         .def(self_ns::str(self_ns::self))
         .def(self_ns::repr(self_ns::self))
 
-        .def("Analytical", &Earth::Analytical).staticmethod("Analytical")
+        .def("Default", &Earth::Default).staticmethod("Default")
 
     ;
 

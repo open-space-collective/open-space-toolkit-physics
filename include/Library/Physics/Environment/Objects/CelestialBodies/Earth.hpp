@@ -67,7 +67,7 @@ class Earth : public Celestial
 
         virtual Earth*          clone                                       ( ) const override ;
 
-        static Earth            Analytical                                  (   const   Instant&                    anInstant                                   =   Instant::J2000() ) ; // [TBI] Analytical options
+        static Earth            Default                                     ( ) ;
 
     private:
 

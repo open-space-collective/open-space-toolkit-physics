@@ -353,7 +353,7 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, ToCartesian)
 
             // Test
 
-            const Earth earth = Earth::Analytical() ;
+            const Earth earth = Earth::Default() ;
 
             for (const auto& referenceRow : referenceData)
             {
@@ -509,7 +509,7 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, Cartesian)
 
             // Test
 
-            const Earth earth = Earth::Analytical() ;
+            const Earth earth = Earth::Default() ;
 
             for (const auto& referenceRow : referenceData)
             {

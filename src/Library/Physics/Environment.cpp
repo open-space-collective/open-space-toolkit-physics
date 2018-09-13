@@ -8,6 +8,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <Library/Physics/Environment/Objects/CelestialBodies/Moon.hpp>
+#include <Library/Physics/Environment/Objects/CelestialBodies/Sun.hpp>
 #include <Library/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
 #include <Library/Physics/Environment/Objects/Celestial.hpp>
 #include <Library/Physics/Environment.hpp>
@@ -285,17 +286,17 @@ Environment                     Environment::Undefined                      ( )
 Environment                     Environment::Default                        ( )
 {
 
-    using library::physics::coord::Frame ;
-    using library::physics::env::obj::Celestial ;
     using library::physics::env::obj::celest::Earth ;
+    using library::physics::env::obj::celest::Sun ;
     using library::physics::env::obj::celest::Moon ;
 
     const Instant instant = Instant::J2000() ;
 
     const Array<Shared<Object>> objects =
     {
-        std::make_shared<Earth>(Earth::Analytical(instant)),
-        std::make_shared<Moon>(Moon::Analytical(instant))
+        std::make_shared<Earth>(Earth::Default()),
+        std::make_shared<Sun>(Sun::Default()),
+        std::make_shared<Moon>(Moon::Default())
     } ;
 
     return { instant, objects } ;

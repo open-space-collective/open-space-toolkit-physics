@@ -146,12 +146,14 @@ Manually:
 
 The **Physics** library internally uses the following dependencies:
 
-| Name        | Version | License                | Link                                                                                                                 |
-|-------------|---------|------------------------|----------------------------------------------------------------------------------------------------------------------|
-| Boost       | 1.67.0  | Boost Software License | [boost.org](https://www.boost.org)                                                                                   |
-| Eigen       | 3.3.4   | MPL2                   | [eigen.tuxfamily.org](http://eigen.tuxfamily.org/index.php)                                                          |
-| Core        | master  | TBD                    | [github.com/open-space-collective/library-core](https://github.com/open-space-collective/library-core)               |
-| Mathematics | master  | TBD                    | [github.com/open-space-collective/library-mathematics](https://github.com/open-space-collective/library-mathematics) |
+| Name          | Version    | License                                                    | Link                                                                                                                 |
+|---------------|------------|------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
+| Boost         | 1.67.0     | Boost Software License                                     | [boost.org](https://www.boost.org)                                                                                   |
+| Eigen         | 3.3.4      | MPL2                                                       | [eigen.tuxfamily.org](http://eigen.tuxfamily.org/index.php)                                                          |
+| IAU SOFA      | 2018-01-30 | [SOFA Software License](http://www.iausofa.org/tandc.html) | [www.iausofa.org](http://www.iausofa.org)                                                                            |
+| SPICE Toolkit | N0066      | [NAIF](https://naif.jpl.nasa.gov/naif/rules.html)          | [naif.jpl.nasa.gov/naif/toolkit.html](https://naif.jpl.nasa.gov/naif/toolkit.html)                                   |
+| Core          | master     | TBD                                                        | [github.com/open-space-collective/library-core](https://github.com/open-space-collective/library-core)               |
+| Mathematics   | master     | TBD                                                        | [github.com/open-space-collective/library-mathematics](https://github.com/open-space-collective/library-mathematics) |
 
 ## Contribution
 
