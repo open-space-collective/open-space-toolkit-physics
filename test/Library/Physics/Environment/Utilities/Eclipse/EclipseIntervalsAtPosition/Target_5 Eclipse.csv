@@ -1,0 +1,5 @@
+"Start Time (UTCG)","Stop Time (UTCG)","Duration (sec)","Obstruction","Current Condition","Worst Condition","Total Duration (sec)"
+1 Jan 2018 00:00:00.000,1 Jan 2018 01:45:09.118,6309.118,"Earth","Umbra","Umbra",6491.252
+1 Jan 2018 01:45:09.118,1 Jan 2018 01:48:11.252,182.134,"Earth","Penumbra","Umbra",6491.252
+1 Jan 2018 22:18:44.257,1 Jan 2018 22:21:45.807,181.551,"Earth","Penumbra","Umbra",6075.743
+1 Jan 2018 22:21:45.807,2 Jan 2018 00:00:00.000,5894.193,"Earth","Umbra","Umbra",6075.743

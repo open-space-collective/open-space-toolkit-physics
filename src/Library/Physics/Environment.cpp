@@ -130,7 +130,8 @@ bool                            Environment::hasObjectWithName              (   
 
 }
 
-bool                            Environment::intersects                     (   const   Object::Geometry&           aGeometry                                   ) const
+bool                            Environment::intersects                     (   const   Object::Geometry&           aGeometry,
+                                                                                const   Array<Shared<const Object>>& anObjectToIgnoreArray                      ) const
 {
 
     if (!aGeometry.isDefined())
@@ -146,9 +147,14 @@ bool                            Environment::intersects                     (   
     for (const auto& objectSPtr : objects_)
     {
 
-        if (objectSPtr->getGeometryIn(aGeometry.accessFrame()).intersects(aGeometry))
+        if (!anObjectToIgnoreArray.contains(objectSPtr))
         {
-            return true ;
+            
+            if (objectSPtr->getGeometryIn(aGeometry.accessFrame()).intersects(aGeometry))
+            {
+                return true ;
+            }
+            
         }
 
     }

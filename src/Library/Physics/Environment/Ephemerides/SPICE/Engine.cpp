@@ -98,7 +98,7 @@ void                            Engine::loadKernel                          (   
 
     if (!aKernelFile.exists())
     {
-        throw library::core::error::RuntimeError("Kernel file does not exist.") ;
+        throw library::core::error::RuntimeError("Kernel file [{}] does not exist.", aKernelFile.toString()) ;
     }
 
     const String kernelFilePathString = aKernelFile.getPath().toString() ;
