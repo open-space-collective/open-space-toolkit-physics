@@ -54,6 +54,8 @@ class Dynamic : public Provider
 
         virtual Transform       getTransformAt                              (   const   Instant&                    anInstant                                   ) const override ;
 
+        static Dynamic          Undefined                                   ( ) ;
+
     private:
 
         Dynamic::Generator      generator_ ;

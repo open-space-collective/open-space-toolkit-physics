@@ -49,6 +49,8 @@ inline void                     LibraryPhysicsPy_Coordinate_Frame_Providers_Dyna
         .def("isDefined", &Dynamic::isDefined)
 
         .def("getTransformAt", &Dynamic::getTransformAt)
+        
+        .def("Undefined", &Dynamic::Undefined).staticmethod("Undefined")
 
     ;
 
