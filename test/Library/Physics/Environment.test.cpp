@@ -58,7 +58,7 @@ TEST (Library_Physics_Environment, Constructor)
 
         const Array<Shared<Object>> objects =
         {
-            std::make_shared<Earth>(Earth::Analytical())
+            std::make_shared<Earth>(Earth::Default())
         } ;
 
         EXPECT_NO_THROW(Environment environment(instant, objects) ;) ;
@@ -86,7 +86,7 @@ TEST (Library_Physics_Environment, IsDefined)
 
         const Array<Shared<Object>> objects =
         {
-            std::make_shared<Earth>(Earth::Analytical())
+            std::make_shared<Earth>(Earth::Default())
         } ;
 
         const Environment environment = { instant, objects } ;
@@ -122,7 +122,7 @@ TEST (Library_Physics_Environment, HasObjectWithName)
 
         const Array<Shared<Object>> objects =
         {
-            std::make_shared<Earth>(Earth::Analytical())
+            std::make_shared<Earth>(Earth::Default())
         } ;
 
         const Environment environment = { instant, objects } ;
@@ -165,7 +165,7 @@ TEST (Library_Physics_Environment, Intersects)
 
         const Array<Shared<Object>> objects =
         {
-            std::make_shared<Earth>(Earth::Analytical(instant))
+            std::make_shared<Earth>(Earth::Default())
         } ;
 
         const Environment environment = { instant, objects } ;
@@ -217,7 +217,7 @@ TEST (Library_Physics_Environment, AccessObjects)
 
         const Array<Shared<Object>> objects =
         {
-            std::make_shared<Earth>(Earth::Analytical())
+            std::make_shared<Earth>(Earth::Default())
         } ;
 
         const Environment environment = { instant, objects } ;
@@ -255,7 +255,7 @@ TEST (Library_Physics_Environment, AccessObjectWithName)
 
         const Array<Shared<Object>> objects =
         {
-            std::make_shared<Earth>(Earth::Analytical())
+            std::make_shared<Earth>(Earth::Default())
         } ;
 
         const Environment environment = { instant, objects } ;
@@ -298,7 +298,7 @@ TEST (Library_Physics_Environment, AccessCelestialObjectWithName)
 
         const Array<Shared<Object>> objects =
         {
-            std::make_shared<Earth>(Earth::Analytical())
+            std::make_shared<Earth>(Earth::Default())
         } ;
 
         const Environment environment = { instant, objects } ;
@@ -341,7 +341,7 @@ TEST (Library_Physics_Environment, GetInstant)
 
         const Array<Shared<Object>> objects =
         {
-            std::make_shared<Earth>(Earth::Analytical())
+            std::make_shared<Earth>(Earth::Default())
         } ;
 
         const Environment environment = { instant, objects } ;
@@ -378,7 +378,7 @@ TEST (Library_Physics_Environment, GetObjectNames)
 
         const Array<Shared<Object>> objects =
         {
-            std::make_shared<Earth>(Earth::Analytical())
+            std::make_shared<Earth>(Earth::Default())
         } ;
 
         const Environment environment = { instant, objects } ;
@@ -414,7 +414,7 @@ TEST (Library_Physics_Environment, SetInstant)
 
         const Array<Shared<Object>> objects =
         {
-            std::make_shared<Earth>(Earth::Analytical())
+            std::make_shared<Earth>(Earth::Default())
         } ;
 
         Environment environment = { firstInstant, objects } ;
@@ -466,6 +466,7 @@ TEST (Library_Physics_Environment, Default)
         EXPECT_TRUE(Environment::Default().isDefined()) ;
 
         EXPECT_TRUE(Environment::Default().hasObjectWithName("Earth")) ;
+        EXPECT_TRUE(Environment::Default().hasObjectWithName("Sun")) ;
         EXPECT_TRUE(Environment::Default().hasObjectWithName("Moon")) ;
 
     }
@@ -505,8 +506,8 @@ TEST (Library_Physics_Environment, Test_1)
 
     const Array<Shared<Object>> objects =
     {
-        std::make_shared<Earth>(Earth::Analytical(startInstant)),
-        std::make_shared<Moon>(Moon::Analytical(startInstant))
+        std::make_shared<Earth>(Earth::Default()),
+        std::make_shared<Moon>(Moon::Default())
     } ;
 
     Environment environment = { startInstant, objects } ;
@@ -577,6 +578,7 @@ TEST (Library_Physics_Environment, Test_2)
     using library::core::types::String ;
     using library::core::ctnr::Array ;
 
+    using library::math::obj::Vector3d ;
     using Point2d = library::math::geom::d2::objects::Point ;
     using Polygon2d = library::math::geom::d2::objects::Polygon ;
     using library::math::geom::d3::objects::Point ;
@@ -609,7 +611,7 @@ TEST (Library_Physics_Environment, Test_2)
 
     const Array<Shared<Object>> objects =
     {
-        std::make_shared<Earth>(Earth::Analytical(startInstant))
+        std::make_shared<Earth>(Earth::Default())
     } ;
 
     Environment environment = { startInstant, objects } ;
@@ -623,7 +625,7 @@ TEST (Library_Physics_Environment, Test_2)
     // Setup observer
 
     const Point apex = { 7000e3, 0.0, 0.0 } ;
-    const Polygon base = { { { { -1.0, -1.0 }, { +1.0, -1.0 }, { +1.0, +1.0 }, { -1.0, +1.0 } } }, apex - Point(1.0, 0.4, 0.4), { 0.0, 1.0, 0.0 }, { 0.0, 0.0, 1.0 } } ;
+    const Polygon base = { { { { -1.0, -1.0 }, { +1.0, -1.0 }, { +1.0, +1.0 }, { -1.0, +1.0 } } }, apex - Vector3d(1.0, 0.4, 0.4), { 0.0, 1.0, 0.0 }, { 0.0, 0.0, 1.0 } } ;
 
     const Pyramid pyramid = { base, apex } ;
 
@@ -643,7 +645,7 @@ TEST (Library_Physics_Environment, Test_2)
     for (const auto& intersectionPoint : intersectionLineString) // Implement segment and point iterators...
     {
 
-        const LLA intersectionLla = LLA::Cartesian(intersectionPoint, Earth::EquatorialRadius, Earth::Flattening) ;
+        const LLA intersectionLla = LLA::Cartesian(intersectionPoint.asVector(), Earth::EquatorialRadius, Earth::Flattening) ;
 
         const Point2d intersectionPoint2d = { intersectionLla.getLongitude().inDegrees(), intersectionLla.getLatitude().inDegrees() } ;
 
@@ -737,7 +739,7 @@ TEST (Library_Physics_Environment, Test_3)
 
             const Quaternion orientation = earthSPtr->accessFrame()->getTransformTo(Frame::GCRF(), instant).getOrientation() ;
 
-            const Length errorAtSurface = earthEquatorialRadius * RotationVector::Quaternion((orientation * referenceOrientation.toConjugate())).getAngle().inRadians() ;
+            const Length errorAtSurface = earthEquatorialRadius * RotationVector::Quaternion((orientation * referenceOrientation.toConjugate()).toNormalized()).getAngle().inRadians() ;
 
             EXPECT_GE(Length::Millimeters(1.0), errorAtSurface) << errorAtSurface ;
 

@@ -7,7 +7,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <Library/Physics/Environment/Ephemerides/Analytical.hpp>
+#include <Library/Physics/Environment/Ephemerides/SPICE.hpp>
 #include <Library/Physics/Environment/Objects/CelestialBodies/Moon.hpp>
 #include <Library/Physics/Coordinate/Frame/Providers/Static.hpp>
 #include <Library/Physics/Coordinate/Frame.hpp>
@@ -70,30 +70,16 @@ Moon*                           Moon::clone                                 ( ) 
     return new Moon(*this) ;
 }
 
-Moon                            Moon::Analytical                            (   const   Instant&                    anInstant                                   )
+Moon                            Moon::Default                               ( )
 {
 
-    using library::physics::coord::Frame ;
-    using library::physics::coord::frame::Provider ;
-    using library::physics::coord::frame::provider::Static ;
-    using library::physics::env::ephem::Analytical ;
+    using library::physics::env::ephem::SPICE ;
 
-    const String frameName = "Moon" ;
-
-    Shared<const Frame> moonFrameSPtr = Frame::WithName(frameName) ;
-
-    if (moonFrameSPtr == nullptr)
-    {
-
-        const Shared<const Provider> moonFrameProviderSPtr = std::make_shared<const Static>(Transform::Identity(anInstant)) ;
-
-        moonFrameSPtr = Frame::Construct(frameName, false, Frame::GCRF(), moonFrameProviderSPtr) ;
-
-    }
-
-    return { std::make_shared<Analytical>(moonFrameSPtr), anInstant } ;
+    return { std::make_shared<SPICE>(SPICE::Object::Moon), Instant::J2000() } ;
 
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Object::Geometry                Moon::Geometry                              (   const   Shared<const Frame>&        aFrame                                      )
 {

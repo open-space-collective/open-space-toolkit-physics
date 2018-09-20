@@ -80,9 +80,7 @@ TEST (Library_Physics_Environment_Objects_CelestialBodies_Earth, GetFrameAt)
 
     {
 
-        const Instant epoch = Instant::J2000() ;
-
-        const Earth earth = Earth::Analytical(epoch) ;
+        const Earth earth = Earth::Default() ;
 
         const Array<Triple<LLA, File, File>> referenceScenarios =
         {
@@ -149,17 +147,14 @@ TEST (Library_Physics_Environment_Objects_CelestialBodies_Earth, GetFrameAt)
 
 }
 
-TEST (Library_Physics_Environment_Objects_CelestialBodies_Earth, Analytical)
+TEST (Library_Physics_Environment_Objects_CelestialBodies_Earth, Default)
 {
 
-    using library::physics::time::Instant ;
     using library::physics::env::obj::celest::Earth ;
 
     {
 
-        const Instant epoch = Instant::J2000() ;
-
-        EXPECT_NO_THROW(Earth::Analytical(epoch)) ;
+        EXPECT_NO_THROW(Earth::Default()) ;
 
     }
 

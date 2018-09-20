@@ -478,6 +478,26 @@ Angle                           Angle::Undefined                            ( )
     return Angle(Real::Undefined(), Angle::Unit::Undefined) ;
 }
 
+Angle                           Angle::Zero                                 ( )
+{
+    return { Real::Zero(), Angle::Unit::Radian } ;
+}
+
+Angle                           Angle::HalfPi                               ( )
+{
+    return { M_PI / 2.0, Angle::Unit::Radian } ;
+}
+        
+Angle                           Angle::Pi                                   ( )
+{
+    return { M_PI, Angle::Unit::Radian } ;
+}
+
+Angle                           Angle::TwoPi                                ( )
+{
+    return { M_PI * 2.0, Angle::Unit::Radian } ;
+}
+
 Angle                           Angle::Radians                              (   const   Real&                       aValue                                      )
 {
     return Angle(aValue, Angle::Unit::Radian) ;
@@ -501,6 +521,86 @@ Angle                           Angle::Arcseconds                           (   
 Angle                           Angle::Revolutions                          (   const   Real&                       aValue                                      )
 {
     return Angle(aValue, Angle::Unit::Revolution) ;
+}
+
+Angle                           Angle::Between                              (   const   Vector2d&                   aFirstVector,
+                                                                                const   Vector2d&                   aSecondVector                               )
+{
+
+    if ((!aFirstVector.isDefined()) || (!aSecondVector.isDefined()))
+    {
+        throw library::core::error::runtime::Undefined("Vector") ;
+    }
+
+    if ((aFirstVector.squaredNorm() < Real::Epsilon()) || (aSecondVector.squaredNorm() < Real::Epsilon()))
+    {
+        throw library::core::error::RuntimeError("Vector norm is too small.") ;
+    }
+
+    if (aFirstVector == aSecondVector)
+    {
+        return Angle::Zero() ;
+    }
+
+    if (aFirstVector == -aSecondVector)
+    {
+        return Angle::Pi() ;
+    }
+
+    const Real dotProduct = aFirstVector.normalized().dot(aSecondVector.normalized()) ;
+
+    if (dotProduct >= 1.0)
+    {
+        return Angle::Zero() ;
+    }
+
+    if (dotProduct <= -1.0)
+    {
+        return Angle::Pi() ;
+    }
+    
+    return Angle::Radians(std::acos(dotProduct)) ;
+
+}
+        
+Angle                           Angle::Between                              (   const   Vector3d&                   aFirstVector,
+                                                                                const   Vector3d&                   aSecondVector                               )
+{
+
+    if ((!aFirstVector.isDefined()) || (!aSecondVector.isDefined()))
+    {
+        throw library::core::error::runtime::Undefined("Vector") ;
+    }
+
+    if ((aFirstVector.squaredNorm() < Real::Epsilon()) || (aSecondVector.squaredNorm() < Real::Epsilon()))
+    {
+        throw library::core::error::RuntimeError("Vector norm is too small.") ;
+    }
+
+    if (aFirstVector == aSecondVector)
+    {
+        return Angle::Zero() ;
+    }
+
+    if (aFirstVector == -aSecondVector)
+    {
+        return Angle::Pi() ;
+    }
+
+    const Real dotProduct = aFirstVector.normalized().dot(aSecondVector.normalized()) ;
+
+    if (dotProduct >= 1.0)
+    {
+        return Angle::Zero() ;
+    }
+
+    if (dotProduct <= -1.0)
+    {
+        return Angle::Pi() ;
+    }
+    
+    return Angle::Radians(std::acos(dotProduct)) ;
+
 }
 
 // Angle                            Angle::Parse                               (   const   String&                     aString                                     )

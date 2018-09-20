@@ -184,7 +184,7 @@ Position                        Celestial::getPositionIn                    (   
 
 Velocity                        Celestial::getVelocityIn                    (   const   Shared<const Frame>&        aFrameSPtr                                  ) const
 {
-    return Velocity(this->getTransformTo(aFrameSPtr).applyToVelocity(Vector3d::Zero(), Vector3d::Zero()), Velocity::Unit::MeterPerSecond, aFrameSPtr) ;
+    return Velocity::MetersPerSecond(this->getTransformTo(aFrameSPtr).applyToVelocity(Vector3d::Zero(), Vector3d::Zero()), aFrameSPtr) ;
 }
 
 Transform                       Celestial::getTransformTo                   (   const   Shared<const Frame>&        aFrameSPtr                                  ) const
@@ -238,6 +238,8 @@ Vector3d                        Celestial::getGravitationalFieldAt          (   
 
     // [TBI]
 
+    throw library::core::error::runtime::ToBeImplemented("Celestial::getGravitationalFieldAt") ;
+
     return Vector3d::Undefined() ;
 
 }
@@ -288,6 +290,18 @@ Shared<const Frame>             Celestial::getFrameAt                       (   
     return nullptr ;
     
 }
+
+// Object::Geometry                Celestial::getTerminatorGeometry            ( ) const
+// {
+
+//     if (!this->isDefined())
+//     {
+//         throw library::core::error::runtime::Undefined("Celestial") ;
+//     }
+
+//     sss
+
+// }
 
 Celestial                       Celestial::Undefined                        ( )
 {

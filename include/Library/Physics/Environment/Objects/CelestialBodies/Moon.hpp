@@ -65,7 +65,7 @@ class Moon : public Celestial
 
         virtual Moon*           clone                                       ( ) const override ;
 
-        static Moon             Analytical                                  (   const   Instant&                    anInstant                                   ) ; // [TBI] Analytical options
+        static Moon             Default                                     ( ) ;
 
     private:
 

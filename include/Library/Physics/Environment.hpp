@@ -96,9 +96,11 @@ class Environment
         /// @brief              Returns true if a given geometry intersects any of the environment objects
         ///
         /// @param              [in] aGeometry A geometry
+        /// @param              [in] (optional) anObjectToIgnoreArray An array of objects to ignore
         /// @return             True if a given geometry intersects any of the environment objects
 
-        bool                    intersects                                  (   const   Object::Geometry&           aGeometry                                   ) const ;
+        bool                    intersects                                  (   const   Object::Geometry&           aGeometry,
+                                                                                const   Array<Shared<const Object>>& anObjectToIgnoreArray                      =   Array<Shared<const Object>>::Empty() ) const ;
 
         /// @brief              Access objects
         ///
@@ -138,7 +140,26 @@ class Environment
 
         void                    setInstant                                  (   const   Instant&                    anInstant                                   ) ;
 
+        /// @brief              Constructs an undefined environment
+        ///
+        /// @code
+        ///                     Environment environment = Environment::Undefined() ;
+        ///                     environment.isDefined() ; // False
+        /// @endcode
+        ///
+        /// @return             Undefined environment
+
         static Environment      Undefined                                   ( ) ;
+
+        /// @brief              Constructs a default environment
+        ///
+        ///                     Contains Earth, Sun and Moon, with SPICE-based ephemeris.
+        ///
+        /// @code
+        ///                     Environment environment = Environment::Default() ;
+        /// @endcode
+        ///
+        /// @return             Undefined environment
 
         static Environment      Default                                     ( ) ;
 
