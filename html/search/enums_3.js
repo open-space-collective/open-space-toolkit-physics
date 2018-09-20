@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['unit',['Unit',['../classlibrary_1_1physics_1_1coord_1_1_velocity.html#a8bbc811932c454dbe0ab8b56f1b2c0b3',1,'library::physics::coord::Velocity::Unit()'],['../classlibrary_1_1physics_1_1units_1_1_angle.html#a3c329d415a61783b16ce481874cc5956',1,'library::physics::units::Angle::Unit()'],['../classlibrary_1_1physics_1_1units_1_1_length.html#a3b8b39cd245cf6b19dc34459baeccb18',1,'library::physics::units::Length::Unit()'],['../classlibrary_1_1physics_1_1units_1_1_mass.html#a95f1e0434bc16794926b8e273bc2a54b',1,'library::physics::units::Mass::Unit()'],['../classlibrary_1_1physics_1_1units_1_1_time.html#ab876a6a05c9a2f28905f2753bfd64109',1,'library::physics::units::Time::Unit()']]]
+  ['type',['Type',['../classlibrary_1_1physics_1_1coord_1_1_transform.html#a4f19d7d232ce1fda0dcee16e4157db2c',1,'library::physics::coord::Transform::Type()'],['../classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#aab1f58aa727e639288d65f3d33c4f245',1,'library::physics::env::obj::Celestial::Type()'],['../classlibrary_1_1physics_1_1units_1_1_unit.html#a828bc1b6ad6fa5cbef904ea0fede986a',1,'library::physics::units::Unit::Type()']]]
 ];

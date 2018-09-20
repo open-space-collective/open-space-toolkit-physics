@@ -1,7 +1,7 @@
 var NAVTREE =
 [
   [ "LibraryPhysics", "index.html", [
-    [ "Library :: Physics", "index.html", null ],
+    [ "Library ▸ Physics", "index.html", null ],
     [ "Contributing", "md__c_o_n_t_r_i_b_u_t_i_n_g.html", [
       [ "Introduction", "md__c_o_n_t_r_i_b_u_t_i_n_g.html#Introduction", null ],
       [ "Guidelines", "md__c_o_n_t_r_i_b_u_t_i_n_g.html#Guidelines", [
@@ -54,9 +54,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_a_e_r_8cpp.html",
-"classlibrary_1_1physics_1_1coord_1_1_transform.html#a0481b3053d7dfb4a3cfc7ced3a13dc68",
-"classlibrary_1_1physics_1_1env_1_1object_1_1_geometry.html#ac750e2584bc1564fbf1daf57a2231a5a",
-"classlibrary_1_1physics_1_1units_1_1_mass.html#a6e7757920752ac9f6918525d6fadb31e"
+"classlibrary_1_1physics_1_1coord_1_1_position.html",
+"classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#a8585fb32125cb6c73ae1339a5ea09c79acd3459b28418fa8fa75ffaba4f3e7c74",
+"classlibrary_1_1physics_1_1units_1_1_derived_1_1_unit.html#a44a173b22d6c9c26bfbbc4291cd00cc8",
+"structlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

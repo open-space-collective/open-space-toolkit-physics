@@ -12,7 +12,8 @@ var searchData=
   ['physics',['physics',['../namespacelibrary_1_1physics.html',1,'library']]],
   ['provider',['provider',['../namespacelibrary_1_1physics_1_1coord_1_1frame_1_1provider.html',1,'library::physics::coord::frame']]],
   ['spherical',['spherical',['../namespacelibrary_1_1physics_1_1coord_1_1spherical.html',1,'library::physics::coord']]],
+  ['spice',['spice',['../namespacelibrary_1_1physics_1_1env_1_1ephem_1_1spice.html',1,'library::physics::env::ephem']]],
   ['time',['time',['../namespacelibrary_1_1physics_1_1time.html',1,'library::physics']]],
   ['units',['units',['../namespacelibrary_1_1physics_1_1units.html',1,'library::physics']]],
-  ['utilities',['utilities',['../namespacelibrary_1_1physics_1_1coord_1_1frame_1_1utilities.html',1,'library::physics::coord::frame']]]
+  ['utilities',['utilities',['../namespacelibrary_1_1physics_1_1coord_1_1frame_1_1utilities.html',1,'library::physics::coord::frame::utilities'],['../namespacelibrary_1_1physics_1_1env_1_1utilities.html',1,'library::physics::env::utilities']]]
 ];

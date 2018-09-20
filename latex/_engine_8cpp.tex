@@ -1,0 +1,62 @@
+\hypertarget{_engine_8cpp}{}\section{src/\+Library/\+Physics/\+Environment/\+Ephemerides/\+S\+P\+I\+C\+E/\+Engine.cpp File Reference}
+\label{_engine_8cpp}\index{src/\+Library/\+Physics/\+Environment/\+Ephemerides/\+S\+P\+I\+C\+E/\+Engine.\+cpp@{src/\+Library/\+Physics/\+Environment/\+Ephemerides/\+S\+P\+I\+C\+E/\+Engine.\+cpp}}
+{\ttfamily \#include $<$Library/\+Physics/\+Environment/\+Ephemerides/\+S\+P\+I\+C\+E/\+Engine.\+hpp$>$}\newline
+{\ttfamily \#include $<$Library/\+Physics/\+Coordinate/\+Frame/\+Providers/\+Dynamic.\+hpp$>$}\newline
+{\ttfamily \#include $<$Library/\+Mathematics/\+Geometry/3\+D/\+Transformations/\+Rotations/\+Rotation\+Matrix.\+hpp$>$}\newline
+{\ttfamily \#include $<$Library/\+Core/\+Containers/\+Map.\+hpp$>$}\newline
+{\ttfamily \#include $<$Library/\+Core/\+Containers/\+Array.\+hpp$>$}\newline
+{\ttfamily \#include $<$Library/\+Core/\+Error.\+hpp$>$}\newline
+{\ttfamily \#include $<$Library/\+Core/\+Utilities.\+hpp$>$}\newline
+{\ttfamily \#include \char`\"{}cspice/\+Spice\+Zfc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cspice/\+Spice\+Usr.\+h\char`\"{}}\newline
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \hyperlink{namespacelibrary}{library}
+\item 
+ \hyperlink{namespacelibrary_1_1physics}{library\+::physics}
+\item 
+ \hyperlink{namespacelibrary_1_1physics_1_1env}{library\+::physics\+::env}
+\item 
+ \hyperlink{namespacelibrary_1_1physics_1_1env_1_1ephem}{library\+::physics\+::env\+::ephem}
+\item 
+ \hyperlink{namespacelibrary_1_1physics_1_1env_1_1ephem_1_1spice}{library\+::physics\+::env\+::ephem\+::spice}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_engine_8cpp_a34c2ce1eb1739733668af5e38329d065}{A\+B\+C\+O\+RR}~\char`\"{}N\+O\+NE\char`\"{}
+\item 
+\#define \hyperlink{_engine_8cpp_abf514111ae227cbe6246f8887900e588}{F\+R\+A\+ME}~\char`\"{}J2000\char`\"{}
+\item 
+\#define \hyperlink{_engine_8cpp_a5c0a14040ca51a256225674a48844d5e}{O\+B\+S\+E\+R\+V\+ER}~\char`\"{}earth\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Library/\+Physics
+
+\begin{DoxyAuthor}{Author}
+Lucas Brémond \href{mailto:lucas@loftorbital.com}{\tt lucas@loftorbital.\+com}  T\+BD 
+\end{DoxyAuthor}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_engine_8cpp_a34c2ce1eb1739733668af5e38329d065}\label{_engine_8cpp_a34c2ce1eb1739733668af5e38329d065}} 
+\index{Engine.\+cpp@{Engine.\+cpp}!A\+B\+C\+O\+RR@{A\+B\+C\+O\+RR}}
+\index{A\+B\+C\+O\+RR@{A\+B\+C\+O\+RR}!Engine.\+cpp@{Engine.\+cpp}}
+\subsubsection{\texorpdfstring{A\+B\+C\+O\+RR}{ABCORR}}
+{\footnotesize\ttfamily \#define A\+B\+C\+O\+RR~\char`\"{}N\+O\+NE\char`\"{}}
+
+\mbox{\Hypertarget{_engine_8cpp_abf514111ae227cbe6246f8887900e588}\label{_engine_8cpp_abf514111ae227cbe6246f8887900e588}} 
+\index{Engine.\+cpp@{Engine.\+cpp}!F\+R\+A\+ME@{F\+R\+A\+ME}}
+\index{F\+R\+A\+ME@{F\+R\+A\+ME}!Engine.\+cpp@{Engine.\+cpp}}
+\subsubsection{\texorpdfstring{F\+R\+A\+ME}{FRAME}}
+{\footnotesize\ttfamily \#define F\+R\+A\+ME~\char`\"{}J2000\char`\"{}}
+
+\mbox{\Hypertarget{_engine_8cpp_a5c0a14040ca51a256225674a48844d5e}\label{_engine_8cpp_a5c0a14040ca51a256225674a48844d5e}} 
+\index{Engine.\+cpp@{Engine.\+cpp}!O\+B\+S\+E\+R\+V\+ER@{O\+B\+S\+E\+R\+V\+ER}}
+\index{O\+B\+S\+E\+R\+V\+ER@{O\+B\+S\+E\+R\+V\+ER}!Engine.\+cpp@{Engine.\+cpp}}
+\subsubsection{\texorpdfstring{O\+B\+S\+E\+R\+V\+ER}{OBSERVER}}
+{\footnotesize\ttfamily \#define O\+B\+S\+E\+R\+V\+ER~\char`\"{}earth\char`\"{}}
+

@@ -27,6 +27,7 @@ var classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial =
     [ "getGravitationalFieldAt", "classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#ac715a5cc62581070d55ab839e3309c9e", null ],
     [ "getJ2", "classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#a3740b398dca520bd50862f67c29ab8e7", null ],
     [ "getPositionIn", "classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#aa2a209f37414e24303c21d994396664f", null ],
+    [ "getTerminatorGeometry", "classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#aa910ed14605693ee5af68d88015cd53b", null ],
     [ "getTransformTo", "classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#ac6676b10ebbb63a8483137c9c734c58a", null ],
     [ "getType", "classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#ae020ad574249ea82679347c0a6933355", null ],
     [ "getVelocityIn", "classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#accaa3b1fdc39a1a058fd35006f31982d", null ],

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['library_20_3a_3a_20physics',['Library :: Physics',['../index.html',1,'']]]
+  ['library_20▸_20physics',['Library ▸ Physics',['../index.html',1,'']]]
 ];

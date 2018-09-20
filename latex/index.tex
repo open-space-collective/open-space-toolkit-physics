@@ -1,6 +1,6 @@
 Physical units, time, reference frames, environment modeling.
 
-\href{https://travis-ci.com/open-space-collective/library-physics}{\tt } \href{https://codecov.io/gh/open-space-collective/library-physics}{\tt } \href{https://open-space-collective.github.io/library-physics}{\tt }
+\href{https://travis-ci.com/open-space-collective/library-physics}{\tt } \href{https://codecov.io/gh/open-space-collective/library-physics}{\tt } \href{https://open-space-collective.github.io/library-physics}{\tt } \href{https://badge.fury.io/gh/open-space-collective%2Flibrary-physics}{\tt } \href{https://badge.fury.io/py/LibraryPhysicsPy}{\tt }
 
 \subsection*{Warning}
 
@@ -90,7 +90,23 @@ The {\bfseries Physics} library exhibits the following structure\+:
 
 \subsection*{Documentation}
 
-The documentation can be found \href{https://open-space-collective.github.io/library-physics}{\tt here}.
+The documentation can be found here\+:
+
+
+\begin{DoxyItemize}
+\item \href{https://open-space-collective.github.io/library-physics}{\tt C++}
+\item \href{./bindings/python/docs}{\tt Python}
+\end{DoxyItemize}
+
+\subsection*{Tutorials}
+
+Various tutorials are available here\+:
+
+
+\begin{DoxyItemize}
+\item \href{./tutorials/cpp}{\tt C++}
+\item \href{./tutorials/python}{\tt Python}
+\end{DoxyItemize}
 
 \subsection*{Setup}
 
@@ -108,7 +124,7 @@ Start the development environment\+:
 \end{DoxyCode}
 
 
-This will also build the {\ttfamily openspacecollective/library-\/physics\+:latest} Docker image, if not present already.
+This will also build the {\ttfamily openspacecollective/library-\/physics\+:latest} Docker image, if not already.
 
 If installing Docker is not an option, please manually install the development tools (G\+CC, C\+Make) and the dependencies. The procedure should be similar to the one described in the \href{./tools/development/docker/Dockerfile}{\tt Dockerfile}.
 
@@ -167,6 +183,8 @@ The {\bfseries Physics} library internally uses the following dependencies\+:
 \endhead
 Boost &1.\+67.\+0 &Boost Software License &\href{https://www.boost.org}{\tt boost.\+org} \\\cline{1-4}
 Eigen &3.\+3.\+4 &M\+P\+L2 &\href{http://eigen.tuxfamily.org/index.php}{\tt eigen.\+tuxfamily.\+org} \\\cline{1-4}
+I\+AU S\+O\+FA &2018-\/01-\/30 &\href{http://www.iausofa.org/tandc.html}{\tt S\+O\+FA Software License} &\href{http://www.iausofa.org}{\tt www.\+iausofa.\+org} \\\cline{1-4}
+S\+P\+I\+CE Toolkit &N0066 &\href{https://naif.jpl.nasa.gov/naif/rules.html}{\tt N\+A\+IF} &\href{https://naif.jpl.nasa.gov/naif/toolkit.html}{\tt naif.\+jpl.\+nasa.\+gov/naif/toolkit.html} \\\cline{1-4}
 Core &master &T\+BD &\href{https://github.com/open-space-collective/library-core}{\tt github.\+com/open-\/space-\/collective/library-\/core} \\\cline{1-4}
 Mathematics &master &T\+BD &\href{https://github.com/open-space-collective/library-mathematics}{\tt github.\+com/open-\/space-\/collective/library-\/mathematics} \\\cline{1-4}
 \end{longtabu}

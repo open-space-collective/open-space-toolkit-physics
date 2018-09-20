@@ -13,7 +13,9 @@ var searchData=
   ['_7emoon',['~Moon',['../classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon.html#aef4e99355b923e8c41ec12237bf41ecb',1,'library::physics::env::obj::celest::Moon']]],
   ['_7eobject',['~Object',['../classlibrary_1_1physics_1_1env_1_1_object.html#a2b48d75c2f1a01e2808e9efe4fe68393',1,'library::physics::env::Object']]],
   ['_7eprovider',['~Provider',['../classlibrary_1_1physics_1_1coord_1_1frame_1_1_provider.html#a7683aa718a339d1bfc8658dc9509adaf',1,'library::physics::coord::frame::Provider']]],
+  ['_7espice',['~SPICE',['../classlibrary_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae6f089a215f400957d5cad057997d007',1,'library::physics::env::ephem::SPICE']]],
   ['_7estatic',['~Static',['../classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1_static.html#ac2eedd75deffe49efa2de7ccf22f4a4a',1,'library::physics::coord::frame::provider::Static']]],
+  ['_7esun',['~Sun',['../classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_sun.html#a34a14e47bbbc26292809dba9c8d1ece8',1,'library::physics::env::obj::celest::Sun']]],
   ['_7eteme',['~TEME',['../classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_e_m_e.html#a945c6d66994dad1572e0895111fcfaba',1,'library::physics::coord::frame::provider::TEME']]],
   ['_7etirf',['~TIRF',['../classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_i_r_f.html#ade20a8def3caccb02466e2349e0924e5',1,'library::physics::coord::frame::provider::TIRF']]],
   ['_7eunit',['~Unit',['../classlibrary_1_1physics_1_1units_1_1_unit.html#a6c50741e149602a9fecf3b45100463a0',1,'library::physics::units::Unit']]]

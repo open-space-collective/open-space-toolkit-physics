@@ -22,7 +22,7 @@ bool \hyperlink{classlibrary_1_1physics_1_1_environment_acbe2e199328ec6a3d2c233d
 \begin{DoxyCompactList}\small\item\em Check if environment is defined. \end{DoxyCompactList}\item 
 bool \hyperlink{classlibrary_1_1physics_1_1_environment_ab88060948d60e3775d3c48047e1565aa}{has\+Object\+With\+Name} (const String \&a\+Name) const
 \begin{DoxyCompactList}\small\item\em Returns true if environment contains objects with a given name. \end{DoxyCompactList}\item 
-bool \hyperlink{classlibrary_1_1physics_1_1_environment_a96b2455aff4cefe7d5ce92bb008a7d51}{intersects} (const \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_abdf50733c7ad97327fb64edca5670f13}{Object\+::\+Geometry} \&a\+Geometry) const
+bool \hyperlink{classlibrary_1_1physics_1_1_environment_ad3dec84407f2d3d91efc833a563f11c9}{intersects} (const \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_abdf50733c7ad97327fb64edca5670f13}{Object\+::\+Geometry} \&a\+Geometry, const Array$<$ Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1env_1_1_object}{Object} $>$$>$ \&an\+Object\+To\+Ignore\+Array=Array$<$ Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1env_1_1_object}{Object} $>$$>$\+::Empty()) const
 \begin{DoxyCompactList}\small\item\em Returns true if a given geometry intersects any of the environment objects. \end{DoxyCompactList}\item 
 Array$<$ Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1env_1_1_object}{Object} $>$ $>$ \hyperlink{classlibrary_1_1physics_1_1_environment_a109b7156dadfe992126e01c629146a75}{access\+Objects} () const
 \begin{DoxyCompactList}\small\item\em Access objects. \end{DoxyCompactList}\item 
@@ -40,9 +40,9 @@ void \hyperlink{classlibrary_1_1physics_1_1_environment_a6279d44965a3894993cee2b
 \begin{DoxyCompactItemize}
 \item 
 static \hyperlink{classlibrary_1_1physics_1_1_environment}{Environment} \hyperlink{classlibrary_1_1physics_1_1_environment_a8d1dfff3867d59ecdebd3ee6e98a2dab}{Undefined} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Constructs an undefined environment. \end{DoxyCompactList}\item 
 static \hyperlink{classlibrary_1_1physics_1_1_environment}{Environment} \hyperlink{classlibrary_1_1physics_1_1_environment_a7fcc57999bfb9c0c7e70b7cc783e30c8}{Default} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Constructs a default environment. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
@@ -144,6 +144,21 @@ Reference to shared pointer to object
 \subsubsection{\texorpdfstring{Default()}{Default()}}
 {\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1_environment}{Environment} library\+::physics\+::\+Environment\+::\+Default (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+
+
+Constructs a default environment. 
+
+Contains Earth, Sun and Moon, with S\+P\+I\+C\+E-\/based ephemeris.
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1_environment_a51854f130c31eb075ea623e332978495}{Environment} environment = \hyperlink{classlibrary_1_1physics_1_1_environment_a7fcc57999bfb9c0c7e70b7cc783e30c8}{Environment::Default}() ;
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+Undefined environment 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1_environment_a551ca61eb2aebd762e67b7c9e561d22e}\label{classlibrary_1_1physics_1_1_environment_a551ca61eb2aebd762e67b7c9e561d22e}} 
 \index{library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}!get\+Instant@{get\+Instant}}
 \index{get\+Instant@{get\+Instant}!library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}}
@@ -188,11 +203,11 @@ Returns true if environment contains objects with a given name.
 \begin{DoxyReturn}{Returns}
 True if environment contains objects with a given name 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classlibrary_1_1physics_1_1_environment_a96b2455aff4cefe7d5ce92bb008a7d51}\label{classlibrary_1_1physics_1_1_environment_a96b2455aff4cefe7d5ce92bb008a7d51}} 
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1_environment_ad3dec84407f2d3d91efc833a563f11c9}\label{classlibrary_1_1physics_1_1_environment_ad3dec84407f2d3d91efc833a563f11c9}} 
 \index{library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}!intersects@{intersects}}
 \index{intersects@{intersects}!library\+::physics\+::\+Environment@{library\+::physics\+::\+Environment}}
 \subsubsection{\texorpdfstring{intersects()}{intersects()}}
-{\footnotesize\ttfamily bool library\+::physics\+::\+Environment\+::intersects (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_abdf50733c7ad97327fb64edca5670f13}{Object\+::\+Geometry} \&}]{a\+Geometry }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily bool library\+::physics\+::\+Environment\+::intersects (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_abdf50733c7ad97327fb64edca5670f13}{Object\+::\+Geometry} \&}]{a\+Geometry,  }\item[{const Array$<$ Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1env_1_1_object}{Object} $>$$>$ \&}]{an\+Object\+To\+Ignore\+Array = {\ttfamily Array$<$Shared$<$const~\hyperlink{classlibrary_1_1physics_1_1env_1_1_object}{Object}$>$$>$\+:\+:Empty()} }\end{DoxyParamCaption}) const}
 
 
 
@@ -201,6 +216,8 @@ Returns true if a given geometry intersects any of the environment objects.
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em a\+Geometry} & A geometry \\
+\hline
+\mbox{\tt in}  & {\em (optional)} & an\+Object\+To\+Ignore\+Array An array of objects to ignore \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -258,6 +275,20 @@ Set instant.
 \subsubsection{\texorpdfstring{Undefined()}{Undefined()}}
 {\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1_environment}{Environment} library\+::physics\+::\+Environment\+::\+Undefined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+
+
+Constructs an undefined environment. 
+
+
+\begin{DoxyCode}
+\hyperlink{classlibrary_1_1physics_1_1_environment_a51854f130c31eb075ea623e332978495}{Environment} environment = \hyperlink{classlibrary_1_1physics_1_1_environment_a8d1dfff3867d59ecdebd3ee6e98a2dab}{Environment::Undefined}() ;
+environment.isDefined() ; \textcolor{comment}{// False}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+Undefined environment 
+\end{DoxyReturn}
 
 
 \subsection{Friends And Related Function Documentation}
