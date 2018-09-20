@@ -137,6 +137,8 @@ class Celestial : public Object
         Shared<const Frame>     getFrameAt                                  (   const   LLA&                        aLla,
                                                                                 const   Celestial::FrameType&       aFrameType                                  ) const ;
 
+        Object::Geometry        getTerminatorGeometry                       ( ) const ;
+
         static Celestial        Undefined                                   ( ) ;
 
         static String           StringFromFrameType                         (   const   Celestial::FrameType&       aFrameType                                  ) ;

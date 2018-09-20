@@ -34,6 +34,7 @@ bool                            isPositionInEclipse                         (   
 
     using library::core::types::Shared ;
 
+    using library::math::geom::d3::objects::Point ;
     using library::math::geom::d3::objects::Segment ;
 
     using library::physics::env::Object ;
@@ -55,7 +56,7 @@ bool                            isPositionInEclipse                         (   
 
     const Shared<const Object> sunSPtr = anEnvironment.accessObjectWithName("Sun") ;
 
-    const Segment sunToObjectSegment_GCRF = { aPosition.getCoordinates(), sunSPtr->getPositionIn(Frame::GCRF()).getCoordinates() } ;
+    const Segment sunToObjectSegment_GCRF = { Point::Vector(aPosition.getCoordinates()), Point::Vector(sunSPtr->getPositionIn(Frame::GCRF()).getCoordinates()) } ;
 
     const Object::Geometry sunToObjectGeometry = { sunToObjectSegment_GCRF, Frame::GCRF() } ;
 

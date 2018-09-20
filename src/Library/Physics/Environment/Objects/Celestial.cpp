@@ -291,6 +291,18 @@ Shared<const Frame>             Celestial::getFrameAt                       (   
     
 }
 
+// Object::Geometry                Celestial::getTerminatorGeometry            ( ) const
+// {
+
+//     if (!this->isDefined())
+//     {
+//         throw library::core::error::runtime::Undefined("Celestial") ;
+//     }
+
+//     sss
+
+// }
+
 Celestial                       Celestial::Undefined                        ( )
 {
     return { String::Empty(), Celestial::Type::Undefined, Derived::Undefined(), Length::Undefined(), Real::Undefined(), Real::Undefined(), nullptr, Instant::Undefined() } ;

@@ -578,6 +578,7 @@ TEST (Library_Physics_Environment, Test_2)
     using library::core::types::String ;
     using library::core::ctnr::Array ;
 
+    using library::math::obj::Vector3d ;
     using Point2d = library::math::geom::d2::objects::Point ;
     using Polygon2d = library::math::geom::d2::objects::Polygon ;
     using library::math::geom::d3::objects::Point ;
@@ -624,7 +625,7 @@ TEST (Library_Physics_Environment, Test_2)
     // Setup observer
 
     const Point apex = { 7000e3, 0.0, 0.0 } ;
-    const Polygon base = { { { { -1.0, -1.0 }, { +1.0, -1.0 }, { +1.0, +1.0 }, { -1.0, +1.0 } } }, apex - Point(1.0, 0.4, 0.4), { 0.0, 1.0, 0.0 }, { 0.0, 0.0, 1.0 } } ;
+    const Polygon base = { { { { -1.0, -1.0 }, { +1.0, -1.0 }, { +1.0, +1.0 }, { -1.0, +1.0 } } }, apex - Vector3d(1.0, 0.4, 0.4), { 0.0, 1.0, 0.0 }, { 0.0, 0.0, 1.0 } } ;
 
     const Pyramid pyramid = { base, apex } ;
 
@@ -644,7 +645,7 @@ TEST (Library_Physics_Environment, Test_2)
     for (const auto& intersectionPoint : intersectionLineString) // Implement segment and point iterators...
     {
 
-        const LLA intersectionLla = LLA::Cartesian(intersectionPoint, Earth::EquatorialRadius, Earth::Flattening) ;
+        const LLA intersectionLla = LLA::Cartesian(intersectionPoint.asVector(), Earth::EquatorialRadius, Earth::Flattening) ;
 
         const Point2d intersectionPoint2d = { intersectionLla.getLongitude().inDegrees(), intersectionLla.getLatitude().inDegrees() } ;
 
