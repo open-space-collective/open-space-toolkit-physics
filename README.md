@@ -6,6 +6,8 @@ Physical units, time, reference frames, environment modeling.
 [![Build Status](https://travis-ci.com/open-space-collective/library-physics.svg?branch=master)](https://travis-ci.com/open-space-collective/library-physics)
 [![Code Coverage](https://codecov.io/gh/open-space-collective/library-physics/branch/master/graph/badge.svg)](https://codecov.io/gh/open-space-collective/library-physics)
 [![Documentation](https://img.shields.io/readthedocs/pip/stable.svg)](https://open-space-collective.github.io/library-physics)
+[![GitHub version](https://badge.fury.io/gh/open-space-collective%2Flibrary-physics.svg)](https://badge.fury.io/gh/open-space-collective%2Flibrary-physics)
+[![PyPI version](https://badge.fury.io/py/LibraryPhysicsPy.svg)](https://badge.fury.io/py/LibraryPhysicsPy)
 
 ## Warning
 
@@ -90,7 +92,17 @@ The **Physics** library exhibits the following structure:
 
 ## Documentation
 
-The documentation can be found [here](https://open-space-collective.github.io/library-physics).
+The documentation can be found here:
+
+- [C++](https://open-space-collective.github.io/library-physics)
+- [Python](./bindings/python/docs)
+
+## Tutorials
+
+Various tutorials are available here:
+
+- [C++](./tutorials/cpp)
+- [Python](./tutorials/python)
 
 ## Setup
 
@@ -106,7 +118,7 @@ Start the development environment:
 ./tools/development/start.sh
 ```
 
-This will also build the `openspacecollective/library-physics:latest` Docker image, if not present already.
+This will also build the `openspacecollective/library-physics:latest` Docker image, if not already.
 
 If installing Docker is not an option, please manually install the development tools (GCC, CMake) and the dependencies.
 The procedure should be similar to the one described in the [Dockerfile](./tools/development/docker/Dockerfile).

@@ -52,12 +52,12 @@ RUN pushd /tmp > /dev/null \
  && dnf clean all \
  && popd > /dev/null
 
-## Library ▸ Mathematics [0.1.10]
+## Library ▸ Mathematics [0.1.12]
 
 RUN mkdir -p /tmp/library-mathematics \
  && pushd /tmp/library-mathematics > /dev/null \
- && wget --quiet https://github.com/open-space-collective/library-mathematics/releases/download/0.1.10/library-mathematics-0.1.10-1.x86_64-runtime.rpm \
- && wget --quiet https://github.com/open-space-collective/library-mathematics/releases/download/0.1.10/library-mathematics-0.1.10-1.x86_64-devel.rpm \
+ && wget --quiet https://github.com/open-space-collective/library-mathematics/releases/download/0.1.12/library-mathematics-0.1.12-1.x86_64-runtime.rpm \
+ && wget --quiet https://github.com/open-space-collective/library-mathematics/releases/download/0.1.12/library-mathematics-0.1.12-1.x86_64-devel.rpm \
  && dnf install -y ./*.rpm \
  && rm -rf /tmp/library-mathematics \
  && popd > /dev/null
