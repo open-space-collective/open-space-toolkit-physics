@@ -276,11 +276,11 @@ ELSE ()
     MESSAGE (SEND_ERROR "[SPICE Toolkit] not found.")
 ENDIF ()
 
-### Library :: Core [0.1]
+### Library ▸ Core [0.1]
 
 FIND_PACKAGE ("LibraryCore" "0.1" REQUIRED)
 
-### Library :: Mathematics [0.1]
+### Library ▸ Mathematics [0.1]
 
 FIND_PACKAGE ("LibraryMathematics" "0.1" REQUIRED)
 

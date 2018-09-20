@@ -1,5 +1,5 @@
-Library :: Physics
-==================
+Library ▸ Physics
+=================
 
 Physical units, time, reference frames, environment modeling.
 

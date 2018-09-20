@@ -52,7 +52,7 @@ RUN pushd /tmp > /dev/null \
  && dnf clean all \
  && popd > /dev/null
 
-## Library :: Mathematics [0.1.10]
+## Library ▸ Mathematics [0.1.10]
 
 RUN mkdir -p /tmp/library-mathematics \
  && pushd /tmp/library-mathematics > /dev/null \

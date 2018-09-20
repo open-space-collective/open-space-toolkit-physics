@@ -1,2 +1,2 @@
-Library :: Physics :: Python Bindings
-=====================================
+Library ▸ Physics ▸ Python Bindings
+===================================
