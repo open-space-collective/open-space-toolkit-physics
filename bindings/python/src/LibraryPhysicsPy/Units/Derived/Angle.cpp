@@ -87,6 +87,9 @@ inline void                     LibraryPhysicsPy_Units_Derived_Angle        ( )
 
     ;
 
+    implicitly_convertible<library::physics::units::Angle, library::math::geom::Angle>() ;
+    implicitly_convertible<library::math::geom::Angle, library::physics::units::Angle>() ;
+
     // using library::math::obj::Interval ;
 
     // class_<Interval<Angle>>("Interval", init<const Angle&, const Angle&, const Interval<Angle>::Type&>())
