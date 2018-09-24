@@ -417,43 +417,41 @@ TEST (Library_Physics_Environment_Object_Geometry, In)
 
     }
 
-    // {
+    {
 
-    //     const Environment environment = Environment::Default() ;
+        const Environment environment = Environment::Default() ;
 
-    //     const Shared<const Celestial> earthSPtr = environment.accessCelestialObjectWithName("Earth") ;
+        const Shared<const Celestial> earthSPtr = environment.accessCelestialObjectWithName("Earth") ;
 
-    //     const Instant instant = Instant::J2000() ;
+        const Instant instant = Instant::J2000() ;
 
-    //     const Angle latitude = Angle::Degrees(0.0) ;
-    //     const Angle longitude = Angle::Degrees(155.0) ;
-    //     const Length altitude = Length::Meters(0.0) ;
+        const Angle latitude = Angle::Degrees(0.0) ;
+        const Angle longitude = Angle::Degrees(180.0) ;
+        const Length altitude = Length::Meters(0.0) ;
 
-    //     const Shared<const Frame> nedFrameSPtr = earthSPtr->getFrameAt(LLA(latitude, longitude, altitude), Celestial::FrameType::NED) ;
-    //     const Shared<const Frame> itrfFrameSPtr = Frame::ITRF() ;
+        const Shared<const Frame> nedFrameSPtr = earthSPtr->getFrameAt(LLA(latitude, longitude, altitude), Celestial::FrameType::NED) ;
+        const Shared<const Frame> itrfFrameSPtr = Frame::ITRF() ;
 
-    //     const Polygon base = { { { { 0.0, 0.0 }, { 1.0, 0.0 }, { 1.0, 1.0 }, { 0.0, 1.0 } } }, { 0.0, 0.0, 2.0 }, { 1.0, 0.0, 0.0 }, { 0.0, 1.0, 0.0 } } ;
-    //     const Point apex = { 0.0, 0.0, 1.0 } ;
+        const Polygon base = { { { { 0.0, 0.0 }, { 1.0, 0.0 }, { 1.0, 1.0 }, { 0.0, 1.0 } } }, { 0.0, 0.0, 2.0 }, { 1.0, 0.0, 0.0 }, { 0.0, 1.0, 0.0 } } ;
+        const Point apex = { 0.0, 0.0, 1.0 } ;
 
-    //     const Pyramid pyramid = { base, apex } ;
+        const Pyramid pyramid = { base, apex } ;
 
-    //     const Geometry geometry = { pyramid, nedFrameSPtr } ;
+        const Geometry geometry = { pyramid, nedFrameSPtr } ;
 
-    //     const Geometry transformedGeometry = geometry.in(itrfFrameSPtr, instant) ;
+        const Geometry transformedGeometry = geometry.in(itrfFrameSPtr, instant) ;
 
-    //     const Polygon referenceBase = { { { { 0.0, 0.0 }, { 1.0, 0.0 }, { 1.0, 1.0 }, { 0.0, 1.0 } } }, { 6378134.3, 0.0, 0.0 }, { 0.0, 0.0, 1.0 }, { 0.0, 1.0, 0.0 } } ;
-    //     const Point referenceApex = { 6378135.3, 0.0, 0.0 } ;
+        const Polygon referenceBase = { { { { 0.0, 0.0 }, { 1.0, 0.0 }, { 1.0, 1.0 }, { 0.0, 1.0 } } }, { -6378134.3, 0.0, 0.0 }, { 0.0, 0.0, 1.0 }, { 0.0, -1.0, 0.0 } } ;
+        const Point referenceApex = { -6378135.3, 0.0, 0.0 } ;
 
-    //     const Pyramid referencePyramid = { referenceBase, referenceApex } ;
+        const Pyramid referencePyramid = { referenceBase, referenceApex } ;
 
-    //     EXPECT_EQ(itrfFrameSPtr, transformedGeometry.accessFrame()) ;
+        EXPECT_EQ(itrfFrameSPtr, transformedGeometry.accessFrame()) ;
         
-    //     // EXPECT_TRUE(transformedGeometry.accessComposite().as<Pyramid>().getBase().isNear(referencePyramid.getBase(), 1e-8)) << referencePyramid.getBase() << transformedGeometry.accessComposite().as<Pyramid>().getBase() ;
-    //     // EXPECT_TRUE(transformedGeometry.accessComposite().as<Pyramid>().getApex().isNear(referencePyramid.getApex(), 1e-8)) << referencePyramid.getApex().toString() << transformedGeometry.accessComposite().as<Pyramid>().getApex().toString() ;
+        EXPECT_TRUE(transformedGeometry.accessComposite().as<Pyramid>().getBase().isNear(referencePyramid.getBase(), 1e-8)) << referencePyramid.getBase() << transformedGeometry.accessComposite().as<Pyramid>().getBase() ;
+        EXPECT_TRUE(transformedGeometry.accessComposite().as<Pyramid>().getApex().isNear(referencePyramid.getApex(), 1e-8)) << referencePyramid.getApex().toString() << transformedGeometry.accessComposite().as<Pyramid>().getApex().toString() ;
 
-    //     FAIL() ;
-
-    // }
+    }
 
 
     {
