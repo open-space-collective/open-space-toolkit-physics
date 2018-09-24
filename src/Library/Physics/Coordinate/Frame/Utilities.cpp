@@ -11,6 +11,9 @@
 
 #include <Library/Mathematics/Geometry/3D/Transformations/Rotations/RotationMatrix.hpp>
 
+#include <Library/Core/Error.hpp>
+#include <Library/Core/Utilities.hpp>
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 namespace library
@@ -35,7 +38,7 @@ Transform                       NorthEastDownTransformAt                    (   
     using library::math::geom::d3::trf::rot::Quaternion ;
     using library::math::geom::d3::trf::rot::RotationMatrix ;
 
-    const Vector3d x_NED_ECEF = - aLLA.toCartesian(anEllipsoidEquatorialRadius, anEllipsoidFlattening) ;
+    const Vector3d x_NED_ECEF = aLLA.toCartesian(anEllipsoidEquatorialRadius, anEllipsoidFlattening) ;
     const Vector3d v_NED_ECEF = { 0.0, 0.0, 0.0 } ;
 
     const Real latitude_rad	= aLLA.getLatitude().inRadians() ;
@@ -70,7 +73,7 @@ Transform                       NorthEastDownTransformAt                    (   
     
     const Vector3d w_NED_ECEF_in_NED = { 0.0, 0.0, 0.0 } ;
 
-    return Transform::Passive(Instant::J2000(), x_NED_ECEF, v_NED_ECEF, q_NED_ECEF, w_NED_ECEF_in_NED) ;
+    return Transform::Passive(Instant::J2000(), -x_NED_ECEF, v_NED_ECEF, q_NED_ECEF, w_NED_ECEF_in_NED) ;
 
 }
 

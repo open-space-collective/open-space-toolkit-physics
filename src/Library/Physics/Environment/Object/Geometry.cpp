@@ -10,6 +10,7 @@
 #include <Library/Physics/Environment/Object/Geometry.hpp>
 #include <Library/Physics/Coordinate/Transform.hpp>
 
+#include <Library/Mathematics/Geometry/3D/Transformations/Rotations/RotationMatrix.hpp>
 #include <Library/Mathematics/Geometry/3D/Transformations/Rotations/RotationVector.hpp>
 #include <Library/Mathematics/Geometry/3D/Intersection.hpp>
 #include <Library/Mathematics/Geometry/3D/Transformation.hpp>
@@ -195,10 +196,14 @@ Geometry                        Geometry::in                                (   
                                                                                 const   Instant&                    anInstant                                   ) const
 {
 
+    using library::core::types::String ;
+
     using library::math::obj::Vector3d ;
+    using library::math::geom::d3::objects::Point ;
     using library::math::geom::d3::Transformation ;
     using library::math::geom::d3::trf::rot::Quaternion ;
     using library::math::geom::d3::trf::rot::RotationVector ;
+    using library::math::geom::d3::trf::rot::RotationMatrix ;
     
     using library::physics::coord::Transform ;
 
@@ -224,8 +229,12 @@ Geometry                        Geometry::in                                (   
 
     const Transform transform = frameSPtr_->getTransformTo(aFrameSPtr, anInstant) ; // [TBM] Bottleneck here
 
-    const Transformation transformation = Transformation::Rotation(RotationVector::Quaternion(transform.getOrientation())).getInverse() * Transformation::Translation(transform.getTranslation()) ;
+    const RotationMatrix rotationMatrix = RotationMatrix::Quaternion(transform.getOrientation().toConjugate()) ;
 
+    const Vector3d translationVector = transform.getOrientation() * transform.getTranslation() ;
+
+    const Transformation transformation = Transformation::Translation(translationVector) * Transformation::Rotation(rotationMatrix) ;
+    
     Composite composite = composite_ ;
 
     composite.applyTransformation(transformation) ;
