@@ -246,9 +246,9 @@ Axes                            Frame::getAxesIn                            (   
 
     const Transform transform = this->getTransformTo(aFrameSPtr, anInstant) ;
 
-    const Vector3d xAxis = transform.applyToVector(Vector3d::X()) ;
-    const Vector3d yAxis = transform.applyToVector(Vector3d::Y()) ;
-    const Vector3d zAxis = transform.applyToVector(Vector3d::Z()) ;
+    const Vector3d xAxis = transform.applyToVector(Vector3d::X()).normalized() ;
+    const Vector3d yAxis = transform.applyToVector(Vector3d::Y()).normalized() ;
+    const Vector3d zAxis = xAxis.cross(yAxis) ;
 
     return { xAxis, yAxis, zAxis, aFrameSPtr } ;
 

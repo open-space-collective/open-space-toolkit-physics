@@ -30,6 +30,11 @@ namespace units
 
 }
 
+Length*                         Length::clone                               ( ) const
+{
+    return new Length(*this) ;
+}
+
 bool                            Length::operator ==                         (   const   Length&                     aLength                                     ) const
 {
 

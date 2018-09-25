@@ -30,6 +30,11 @@ namespace units
 
 }
 
+Mass*                           Mass::clone                                 ( ) const
+{
+    return new Mass(*this) ;
+}
+
 bool                            Mass::isDefined                             ( ) const
 {
     return units::Unit::isDefined() && (unit_ != Mass::Unit::Undefined) ;

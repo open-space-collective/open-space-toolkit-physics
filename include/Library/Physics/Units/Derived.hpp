@@ -192,6 +192,8 @@ class Derived : public Unit
                                 Derived                                     (   const   Real&                       aValue,
                                                                                 const   Derived::Unit&              aUnit                                       ) ;
 
+        virtual Derived*        clone                                       ( ) const override ;
+
         bool                    operator ==                                 (   const   Derived&                    aDerivedUnit                                ) const ;
 
         bool                    operator !=                                 (   const   Derived&                    aDerivedUnit                                ) const ;

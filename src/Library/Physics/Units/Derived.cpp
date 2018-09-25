@@ -351,6 +351,11 @@ Derived::Unit                   Derived::Unit::AngularVelocity              (   
 
 }
 
+Derived*                        Derived::clone                              ( ) const
+{
+    return new Derived(*this) ;
+}
+
 bool                            Derived::operator ==                        (   const   Derived&                    aDerivedUnit                                ) const
 {
 

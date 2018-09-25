@@ -64,6 +64,8 @@ class Unit
 
         virtual                 ~Unit                                       ( ) = 0 ;
 
+        virtual Unit*           clone                                       ( ) const = 0 ;
+
         bool                    operator ==                                 (   const   Unit&                       aUnit                                       ) const ;
         
         bool                    operator !=                                 (   const   Unit&                       aUnit                                       ) const ;
@@ -78,7 +80,7 @@ class Unit
 
         Real                    getValue                                    ( ) const ;
 
-        virtual String          toString                                    (   const   Integer&                    aPrecision                                  ) const = 0 ;
+        virtual String          toString                                    (   const   Integer&                    aPrecision                                  =   Integer::Undefined() ) const = 0 ;
 
         Real&                   accessValue                                 ( ) ;
 

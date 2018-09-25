@@ -63,7 +63,7 @@ class Position
 
                                 Position                                    (   const   Position&                   aPosition                                   ) ;
 
-        Position&               operator =                                  (   const   Position&                   Position                                    ) = delete ;
+        Position&               operator =                                  (   const   Position&                   aPosition                                   ) = delete ;
 
         bool                    operator ==                                 (   const   Position&                   aPosition                                   ) const ;
         

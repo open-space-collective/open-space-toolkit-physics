@@ -64,6 +64,8 @@ class Mass : public Unit
                                 Mass                                        (   const   Real&                       aValue,
                                                                                 const   Mass::Unit&                 aUnit                                       ) ;
 
+        virtual Mass*           clone                                       ( ) const override ;
+
         virtual bool            isDefined                                   ( ) const override ;
         
         virtual String          toString                                    (   const   Integer&                    aPrecision                                  =   Integer::Undefined() ) const override ;

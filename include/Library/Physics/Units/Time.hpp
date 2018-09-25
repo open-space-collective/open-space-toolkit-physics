@@ -69,6 +69,8 @@ class Time : public Unit
                                 Time                                        (   const   Real&                       aValue,
                                                                                 const   Time::Unit&                 aUnit                                       ) ;
 
+        virtual Time*           clone                                       ( ) const override ;
+
         virtual bool            isDefined                                   ( ) const override ;
         
         virtual String          toString                                    (   const   Integer&                    aPrecision                                  =   Integer::Undefined() ) const override ;

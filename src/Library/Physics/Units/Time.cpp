@@ -30,6 +30,11 @@ namespace units
 
 }
 
+Time*                           Time::clone                                 ( ) const
+{
+    return new Time(*this) ;
+}
+
 bool                            Time::isDefined                             ( ) const
 {
     return units::Unit::isDefined() && (unit_ != Time::Unit::Undefined) ;
