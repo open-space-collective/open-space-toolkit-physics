@@ -45,7 +45,7 @@ SPICE*                          SPICE::clone                                ( ) 
 
 bool                            SPICE::isDefined                            ( ) const
 {
-    return true ; // [TBI]
+    return object_ != SPICE::Object::Undefined ;
 }
 
 Shared<const Frame>             SPICE::accessFrame                          ( ) const
@@ -64,16 +64,17 @@ String                          SPICE::StringFromObject                     (   
 
     static const Map<SPICE::Object, String> objectStringMap =
     {
-        { SPICE::Object::Sun, "Sun" },
-        { SPICE::Object::Mercury, "Mercury" },
-        { SPICE::Object::Venus, "Venus" },
-        { SPICE::Object::Earth, "Earth" },
-        { SPICE::Object::Moon, "Moon" },
-        { SPICE::Object::Mars, "Mars" },
-        { SPICE::Object::Jupiter, "Jupiter" },
-        { SPICE::Object::Saturn, "Saturn" },
-        { SPICE::Object::Uranus, "Uranus" },
-        { SPICE::Object::Neptune, "Neptune" }
+        { SPICE::Object::Undefined, "Undefined" },
+        { SPICE::Object::Sun,       "Sun" },
+        { SPICE::Object::Mercury,   "Mercury" },
+        { SPICE::Object::Venus,     "Venus" },
+        { SPICE::Object::Earth,     "Earth" },
+        { SPICE::Object::Moon,      "Moon" },
+        { SPICE::Object::Mars,      "Mars" },
+        { SPICE::Object::Jupiter,   "Jupiter" },
+        { SPICE::Object::Saturn,    "Saturn" },
+        { SPICE::Object::Uranus,    "Uranus" },
+        { SPICE::Object::Neptune,   "Neptune" }
     } ;
 
     return objectStringMap.at(anObject) ;

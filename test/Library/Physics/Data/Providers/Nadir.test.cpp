@@ -33,6 +33,8 @@ TEST (Library_Physics_Data_Providers_Nadir, Nadir)
 
         std::cout << nadir << std::endl ;
 
+        FAIL() ;
+
     }
 
 }
