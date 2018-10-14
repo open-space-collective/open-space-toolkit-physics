@@ -225,6 +225,11 @@ void                            Engine::reset                               ( )
 
     kclear_c() ;
 
+    if (mode_ == Engine::Mode::Automatic)
+    {
+        this->setup() ;
+    }
+
 }
 
 Engine&                         Engine::Get                                 (   const   Engine::Mode&               aMode                                       )

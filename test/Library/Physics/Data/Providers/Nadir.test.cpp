@@ -16,6 +16,8 @@
 TEST (Library_Physics_Data_Providers_Nadir, Nadir)
 {
 
+    using library::math::obj::Vector3d ;
+
     using library::physics::data::Direction ;
     using library::physics::coord::Position ;
     using library::physics::coord::Frame ;
@@ -31,9 +33,9 @@ TEST (Library_Physics_Data_Providers_Nadir, Nadir)
 
         const Direction nadir = Nadir(position, celestialObject, environment) ;
 
-        std::cout << nadir << std::endl ;
-
-        FAIL() ;
+        EXPECT_EQ(Vector3d(-1.0, 0.0, 0.0), nadir.getValue()) ;
+        EXPECT_TRUE(nadir.getUnit().isNone()) ;
+        EXPECT_EQ(Frame::ITRF(), nadir.getFrame()) ;
 
     }
 

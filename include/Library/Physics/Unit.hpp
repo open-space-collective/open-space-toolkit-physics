@@ -79,6 +79,8 @@ class Unit
 
         bool                    isDefined                                   ( ) const ;
 
+        bool                    isNone                                      ( ) const ;
+
         Unit::Type              getType                                     ( ) const ;
 
         Real                    ratioTo                                     (   const   Unit&                       aUnit                                       ) const ;

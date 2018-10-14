@@ -177,9 +177,9 @@ TEST (Library_Physics_Environment_Ephemerides_SPICE, ManualMode)
 
     {
 
-        Engine::Get().reset() ;
-
         Engine::Get().setMode(Engine::Mode::Manual) ;
+
+        Engine::Get().reset() ;
 
         const SPICE spice = { SPICE::Object::Sun } ;
 
@@ -217,9 +217,9 @@ TEST (Library_Physics_Environment_Ephemerides_SPICE, ManualMode)
 
         EXPECT_TRUE(sunPosition.isDefined()) ;
 
-        Engine::Get().reset() ;
-
         Engine::Get().setMode(Engine::Mode::Automatic) ;
+
+        Engine::Get().reset() ;
 
     }
 

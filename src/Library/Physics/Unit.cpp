@@ -115,9 +115,28 @@ bool                            Unit::isDefined                             ( ) 
     return type_ != Unit::Type::Undefined ;
 }
 
+bool                            Unit::isNone                                ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Unit") ;
+    }
+    
+    return type_ == Unit::Type::None ;
+
+}
+
 Unit::Type                      Unit::getType                               ( ) const
 {
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Unit") ;
+    }
+    
     return type_ ;
+
 }
 
 Real                            Unit::ratioTo                               (   const   Unit&                       aUnit                                       ) const

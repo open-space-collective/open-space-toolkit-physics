@@ -138,6 +138,27 @@ TEST (Library_Physics_Unit, IsDefined)
 
 }
 
+TEST (Library_Physics_Unit, IsNone)
+{
+
+    using library::physics::Unit ;
+    using library::physics::units::Length ;
+
+    {
+
+        EXPECT_TRUE(Unit::None().isNone()) ;
+        EXPECT_FALSE(Unit::Length(Length::Unit::Meter).isNone()) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Unit::Undefined().isNone()) ;
+
+    }
+
+}
+
 TEST (Library_Physics_Unit, GetType)
 {
 
@@ -146,9 +167,14 @@ TEST (Library_Physics_Unit, GetType)
 
     {
 
-        EXPECT_EQ(Unit::Type::Undefined, Unit::Undefined().getType()) ;
         EXPECT_EQ(Unit::Type::None, Unit::None().getType()) ;
         EXPECT_EQ(Unit::Type::Length, Unit::Length(Length::Unit::Meter).getType()) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Unit::Undefined().getType()) ;
 
     }
 
