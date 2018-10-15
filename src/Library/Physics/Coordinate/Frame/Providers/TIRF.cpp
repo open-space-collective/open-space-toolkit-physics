@@ -25,11 +25,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using library::physics::coord::frame::provider::iers::Manager ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-static const Manager IersManager ;
+using IersManager = library::physics::coord::frame::provider::iers::Manager ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -96,7 +92,7 @@ Transform                       TIRF::getTransformAt                        (   
 
     // UT1 - UTC (s)
 
-    const Real dut1 = IersManager.getUt1MinusUtcAt(anInstant) ; // [s]
+    const Real dut1 = IersManager::Get().getUt1MinusUtcAt(anInstant) ; // [s]
 
     const Real tut = time + dut1 / DAYSEC ;
 
@@ -115,7 +111,7 @@ Transform                       TIRF::getTransformAt                        (   
 
     // Angular velocity
 
-    Real lod_ms = IersManager.getLodAt(anInstant) ; // [ms]
+    Real lod_ms = IersManager::Get().getLodAt(anInstant) ; // [ms]
 
     if (!lod_ms.isDefined())
     {

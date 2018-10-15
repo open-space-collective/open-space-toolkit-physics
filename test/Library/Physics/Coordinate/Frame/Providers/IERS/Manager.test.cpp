@@ -20,6 +20,45 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, GetMode)
+// {
+
+//     using library::physics::coord::frame::provider::iers::Manager ;
+
+//     {
+
+//         FAIL() ;
+
+//     }
+
+// }
+
+// TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, GetLocalRepository)
+// {
+
+//     using library::physics::coord::frame::provider::iers::Manager ;
+
+//     {
+
+//         FAIL() ;
+
+//     }
+
+// }
+
+// TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, GetRemoteUrl)
+// {
+
+//     using library::physics::coord::frame::provider::iers::Manager ;
+
+//     {
+
+//         FAIL() ;
+
+//     }
+
+// }
+
 // TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, GetBulletinAAt)
 // {
 
@@ -37,7 +76,7 @@
 
 //         Manager manager ;
 
-//         manager.addBulletinA(bulletinA) ;
+//         manager.loadBulletinA(bulletinA) ;
 
 //         EXPECT_NO_THROW(manager.getBulletinAAt(bulletinA.getObservationInterval().accessStart())) ;
 //         EXPECT_NO_THROW(manager.getBulletinAAt(bulletinA.getObservationInterval().accessEnd())) ;
@@ -92,7 +131,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, GetPolarMotionAt)
         for (const auto& referenceScenario : referenceScenarios)
         {
 
-            const Manager manager ;
+            const Manager& manager = Manager::Get() ;
 
             // Reference data setup
 
@@ -150,7 +189,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, GetUt1MinusUtcAt)
         for (const auto& referenceScenario : referenceScenarios)
         {
 
-            const Manager manager ;
+            const Manager& manager = Manager::Get() ;
 
             // Reference data setup
 
@@ -178,6 +217,20 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, GetUt1MinusUtcAt)
 
     }
 
+    {
+
+        const Manager& manager = Manager::Get() ;
+
+        const Instant instant = Instant::DateTime(DateTime(2018, 10, 10, 0, 0, 0), Scale::UTC) ;
+
+        EXPECT_NO_THROW(manager.getUt1MinusUtcAt(instant)) ;
+
+        // const Real dUT1 = manager.getUt1MinusUtcAt(instant) ;
+
+        // EXPECT_EQ(0.0, dUT1) ;
+
+    }
+
 }
 
 // TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, GetLodAt)
@@ -193,7 +246,46 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, GetUt1MinusUtcAt)
 
 // }
 
-// TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, AddBulletinA)
+// TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, SetMode)
+// {
+
+//     using library::physics::coord::frame::provider::iers::Manager ;
+
+//     {
+
+//         FAIL() ;
+
+//     }
+
+// }
+
+// TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, SetLocalRepository)
+// {
+
+//     using library::physics::coord::frame::provider::iers::Manager ;
+
+//     {
+
+//         FAIL() ;
+
+//     }
+
+// }
+
+// TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, SetRemoteUrl)
+// {
+
+//     using library::physics::coord::frame::provider::iers::Manager ;
+
+//     {
+
+//         FAIL() ;
+
+//     }
+
+// }
+
+// TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, LoadBulletinA)
 // {
 
 //     using library::core::fs::Path ;
@@ -210,16 +302,48 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, GetUt1MinusUtcAt)
 
 //         Manager manager ;
 
-//         manager.addBulletinA(bulletinA) ;
+//         manager.loadBulletinA(bulletinA) ;
 
-//         EXPECT_ANY_THROW(manager.addBulletinA(bulletinA)) ;
-//         EXPECT_ANY_THROW(manager.addBulletinA(BulletinA::Undefined())) ;
+//         EXPECT_ANY_THROW(manager.loadBulletinA(bulletinA)) ;
+//         EXPECT_ANY_THROW(manager.loadBulletinA(BulletinA::Undefined())) ;
 
 //     }
 
 // }
 
-// TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, AddFinals2000A)
+// TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, LoadFinals2000A)
+// {
+
+//     using library::physics::coord::frame::provider::iers::Manager ;
+
+//     {
+
+//         FAIL() ;
+
+//     }
+
+// }
+
+// TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, FetchLatestBulletinA)
+// {
+
+//     using library::core::fs::File ;
+
+//     using library::physics::coord::frame::provider::iers::Manager ;
+
+//     {
+
+//         Manager& manager = Manager::Get() ;
+
+//         const File latestBulletinA = manager.fetchLatestBulletinA() ;
+
+//         std::cout << latestBulletinA << std::endl ;
+
+//     }
+
+// }
+
+// TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, Reset)
 // {
 
 //     using library::physics::coord::frame::provider::iers::Manager ;

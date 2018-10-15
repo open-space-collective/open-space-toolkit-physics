@@ -112,6 +112,30 @@ const Date&                     DateTime::accessDate                        ( ) 
 
 }
 
+Time                            DateTime::getTime                           ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("DateTime") ;
+    }
+
+    return time_ ;
+
+}
+
+Date                            DateTime::getDate                           ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("DateTime") ;
+    }
+
+    return date_ ;
+
+}
+
 const Time&                     DateTime::accessTime                        ( ) const
 {
 

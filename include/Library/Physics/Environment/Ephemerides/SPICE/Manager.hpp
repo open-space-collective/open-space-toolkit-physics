@@ -75,6 +75,18 @@ class Manager
 
         Manager&                operator =                                  (   const   Manager&                    aSpiceManager                               ) = delete ;
 
+        /// @brief              Get local repository
+        ///
+        /// @return             Local repository
+
+        Directory               getLocalRepository                          ( ) const ;
+
+        /// @brief              Get remote URL
+        ///
+        /// @return             Remote URL
+
+        URL                     getRemoteUrl                                ( ) const ;
+        
         /// @brief              Set local repository
         ///
         /// @param              [in] aDirectory A repository directory

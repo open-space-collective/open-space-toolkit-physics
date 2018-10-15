@@ -141,6 +141,7 @@ class Engine
 
         /// @brief              Get engine singleton
         ///
+        /// @param              [in] (optional) aMode An engine mode
         /// @return             Reference to engine
 
         static Engine&          Get                                         (   const   Engine::Mode&               aMode                                       =   Engine::Mode::Automatic ) ;

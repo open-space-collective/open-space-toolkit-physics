@@ -245,6 +245,46 @@ TEST (Library_Physics_Time_DateTime, AccessTime)
 
 }
 
+TEST (Library_Physics_Time_DateTime, GetDate)
+{
+
+    using library::physics::time::Date ;
+    using library::physics::time::DateTime ;
+
+    {
+
+        EXPECT_EQ(Date(2018, 1, 2), DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789).getDate()) ;
+
+    }
+
+    {
+        
+        EXPECT_ANY_THROW(DateTime::Undefined().getDate()) ;
+
+    }
+
+}
+
+TEST (Library_Physics_Time_DateTime, GetTime)
+{
+
+    using library::physics::time::Time ;
+    using library::physics::time::DateTime ;
+
+    {
+
+        EXPECT_EQ(Time(12, 34, 56, 123, 456, 789), DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789).getTime()) ;
+
+    }
+
+    {
+        
+        EXPECT_ANY_THROW(DateTime::Undefined().getTime()) ;
+
+    }
+
+}
+
 TEST (Library_Physics_Time_DateTime, GetJulianDate)
 {
 

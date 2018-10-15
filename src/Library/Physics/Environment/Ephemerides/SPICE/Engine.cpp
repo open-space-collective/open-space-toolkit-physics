@@ -255,7 +255,6 @@ Array<Kernel>                   Engine::DefaultKernels                      ( )
 
         Kernel::File(File::Path(localRepository.getPath() + Path::Parse("earth_assoc_itrf93.tf"))),
         Kernel::File(File::Path(localRepository.getPath() + Path::Parse("earth_070425_370426_predict.bpc"))),
-        // Kernel::File(File::Path(localRepository.getPath() + Path::Parse("earth_000101_190103_181012.bpc"))),     // [TBR]
         
         Kernel::File(File::Path(localRepository.getPath() + Path::Parse("moon_080317.tf"))),
         Kernel::File(File::Path(localRepository.getPath() + Path::Parse("moon_assoc_me.tf"))),

@@ -150,6 +150,18 @@ class DateTime
 
         const Time&             accessTime                                  ( ) const ;
 
+        /// @brief              Get date
+        ///
+        /// @return             Date
+
+        Date                    getDate                                     ( ) const ;
+
+        /// @brief              Get time
+        ///
+        /// @return             Time
+
+        Time                    getTime                                     ( ) const ;
+
         /// @brief              Get Julian Date
         ///
         /// @code

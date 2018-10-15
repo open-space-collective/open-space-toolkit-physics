@@ -37,6 +37,24 @@ namespace spice
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+Directory                       Manager::getLocalRepository                 ( ) const
+{
+
+    const std::lock_guard<std::mutex> lock(mutex_) ;
+
+    return localRepository_ ;
+
+}
+
+URL                             Manager::getRemoteUrl                       ( ) const
+{
+
+    const std::lock_guard<std::mutex> lock(mutex_) ;
+
+    return remoteUrl_ ;
+
+}
+
 void                            Manager::setLocalRepository                 (   const   Directory&                  aDirectory                                  )
 {
 
@@ -149,6 +167,11 @@ URL                             Manager::DefaultRemoteUrl                   ( )
                                     index_(Index::Empty())
 {
 
+    if (!localRepository_.exists())
+    {
+        localRepository_.create() ;
+    }
+
     this->updateIndex() ;
     
 }
@@ -196,13 +219,20 @@ void                            Manager::fetchIndexAt                       (   
     }
 
     Dictionary fileListingDictionary = Dictionary::Empty() ;
+
+    Directory temporaryDirectory = Directory::Path(localRepository_.getPath() + Path::Parse("tmp")) ;
+
+    if (!temporaryDirectory.exists())
+    {
+        temporaryDirectory.create() ;
+    }
     
     // Group by kernel type
 
-    const std::function<void (const URL&, const Index&)> fetchListing = [&fetchListing, &fileListingDictionary] (const URL& aListingUrl, const Index& aDepth)
+    const std::function<void (const URL&, const Index&)> fetchListing = [&temporaryDirectory, &fetchListing, &fileListingDictionary] (const URL& aListingUrl, const Index& aDepth)
     {
 
-        File listingFile = File::Path(Path::Parse("/tmp/listing.txt")) ;
+        File listingFile = File::Path(temporaryDirectory.getPath() + Path::Parse(String::Format("listing-{}.txt", aDepth))) ;
 
         if (listingFile.exists())
         {
@@ -300,6 +330,8 @@ void                            Manager::fetchIndexAt                       (   
     remoteIndexFile << Object::Dictionary(fileListingDictionary) ;
 
     remoteIndexFile.close() ;
+
+    temporaryDirectory.remove() ;
 
 }
 

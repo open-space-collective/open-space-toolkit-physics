@@ -127,8 +127,8 @@ inline void                     LibraryPhysicsPy_Time_DateTime              ( )
 
         .def("isDefined", &DateTime::isDefined)
 
-        .def("getDate", +[] (const DateTime& aDateTime) -> Date { return aDateTime.accessDate() ; })
-        .def("getTime", +[] (const DateTime& aDateTime) -> Time { return aDateTime.accessTime() ; })
+        .def("getDate", &DateTime::getDate)
+        .def("getTime", &DateTime::getTime)
         .def("getJulianDate", &DateTime::getJulianDate)
         .def("getModifiedJulianDate", &DateTime::getModifiedJulianDate)
         .def("toString", +[] (const DateTime& aDateTime) -> String { return aDateTime.toString() ; })
