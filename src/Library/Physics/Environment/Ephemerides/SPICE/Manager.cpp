@@ -155,7 +155,7 @@ Directory                       Manager::DefaultLocalRepository             ( )
 
 URL                             Manager::DefaultRemoteUrl                   ( )
 {
-    return URL::Parse("ftp://naif.jpl.nasa.gov/pub/naif/generic_kernels/") ;
+    return URL::Parse("https://naif.jpl.nasa.gov/pub/naif/generic_kernels/") ;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -239,7 +239,11 @@ void                            Manager::fetchIndexAt                       (   
             listingFile.remove() ;
         }
 
-        Client::List(aListingUrl, listingFile, false) ;
+        URL ftpListingUrl = aListingUrl ; // [TBR]
+
+        ftpListingUrl.setScheme("ftp") ;
+
+        Client::List(ftpListingUrl, listingFile, false) ;
 
         std::ifstream listingFileStream { listingFile.getPath().toString() } ;
 
