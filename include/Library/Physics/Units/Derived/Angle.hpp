@@ -77,6 +77,8 @@ class Angle : public Unit
 
                                 Angle                                       (   const   library::math::geom::Angle& anAngle                                     ) ;
 
+        virtual Angle*          clone                                       ( ) const override ;
+
         bool                    operator ==                                 (   const   Angle&                      anAngle                                     ) const ;
 
         bool                    operator !=                                 (   const   Angle&                      anAngle                                     ) const ;

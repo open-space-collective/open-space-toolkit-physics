@@ -400,8 +400,7 @@ BulletinA                       BulletinA::Load                             (   
         throw library::core::error::RuntimeError("File [{}] does not exist.", aFile.toString()) ;
     }
 
-    auto monthFromString =
-    [ ] (const String& aMonthString) -> Uint8
+    const auto monthFromString = [ ] (const String& aMonthString) -> Uint8
     {
 
         if (aMonthString == "January")
@@ -472,7 +471,7 @@ BulletinA                       BulletinA::Load                             (   
 
     BulletinA bulletin ;
 
-    std::ifstream fileStream(aFile.getPath().toString()) ;
+    std::ifstream fileStream { aFile.getPath().toString() } ;
     
     Index lineIndex = 0 ;
     String line ;

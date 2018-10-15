@@ -66,6 +66,8 @@ class Length : public Unit
                                 Length                                      (   const   Real&                       aValue,
                                                                                 const   Length::Unit&               aUnit                                       ) ;
 
+        virtual Length*         clone                                       ( ) const override ;
+
         bool                    operator ==                                 (   const   Length&                     aLength                                     ) const ;
 
         bool                    operator !=                                 (   const   Length&                     aLength                                     ) const ;

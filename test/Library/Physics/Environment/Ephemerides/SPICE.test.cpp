@@ -7,6 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <Library/Physics/Environment/Ephemerides/SPICE/Manager.hpp>
+#include <Library/Physics/Environment/Ephemerides/SPICE/Engine.hpp>
 #include <Library/Physics/Environment/Ephemerides/SPICE.hpp>
 #include <Library/Physics/Time/Instant.hpp>
 #include <Library/Physics/Time/DateTime.hpp>
@@ -146,6 +148,78 @@ TEST (Library_Physics_Environment_Ephemerides_SPICE, StringFromObject)
         EXPECT_EQ("Saturn", SPICE::StringFromObject(SPICE::Object::Saturn)) ;
         EXPECT_EQ("Uranus", SPICE::StringFromObject(SPICE::Object::Uranus)) ;
         EXPECT_EQ("Neptune", SPICE::StringFromObject(SPICE::Object::Neptune)) ;
+
+    }
+
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+TEST (Library_Physics_Environment_Ephemerides_SPICE, ManualMode)
+{
+
+    using library::core::types::Shared ;
+    using library::core::types::Real ;
+    using library::core::types::String ;
+    using library::core::fs::Path ;
+    using library::core::fs::File ;
+    using library::core::fs::Directory ;
+
+    using library::physics::time::Scale ;
+    using library::physics::time::Instant ;
+    using library::physics::time::DateTime ;
+    using library::physics::coord::Position ;
+    using library::physics::coord::Frame ;
+    using library::physics::env::ephem::SPICE ;
+    using library::physics::env::ephem::spice::Engine ;
+    using library::physics::env::ephem::spice::Manager ;
+    using library::physics::env::ephem::spice::Kernel ;
+
+    {
+
+        Engine::Get().setMode(Engine::Mode::Manual) ;
+
+        Engine::Get().reset() ;
+
+        const SPICE spice = { SPICE::Object::Sun } ;
+
+        const Shared<const Frame> sunFrameSPtr = spice.accessFrame() ;
+
+        const Instant instant = Instant::DateTime(DateTime(2016, 1, 1, 0, 0, 0), Scale::UTC) ;
+
+        Position sunPosition = Position::Undefined() ;
+
+        EXPECT_ANY_THROW
+        (
+
+            {
+
+                sunPosition = sunFrameSPtr->getOriginIn(Frame::GCRF(), instant) ;
+
+            }
+
+        ) ;
+
+        Engine::Get().loadKernel(Kernel::File(File::Path(Path::Parse("/var/library-physics/environment/ephemerides/spice/naif0012.tls")))) ;
+        Engine::Get().loadKernel(Kernel::File(File::Path(Path::Parse("/var/library-physics/environment/ephemerides/spice/de430.bsp")))) ;
+        Engine::Get().loadKernel(Kernel::File(File::Path(Path::Parse("/var/library-physics/environment/ephemerides/spice/pck00010.tpc")))) ;
+
+        EXPECT_NO_THROW
+        (
+
+            {
+
+                sunPosition = sunFrameSPtr->getOriginIn(Frame::GCRF(), instant) ;
+
+            }
+
+        ) ;
+
+        EXPECT_TRUE(sunPosition.isDefined()) ;
+
+        Engine::Get().setMode(Engine::Mode::Automatic) ;
+
+        Engine::Get().reset() ;
 
     }
 

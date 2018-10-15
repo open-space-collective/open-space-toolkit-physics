@@ -40,11 +40,7 @@ namespace provider
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using library::physics::coord::frame::provider::iers::Manager ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-static const Manager IersManager ;
+using IersManager = library::physics::coord::frame::provider::iers::Manager ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -102,7 +98,7 @@ Transform                       TEME::getTransformAt                        (   
 
     // UT1 - UTC (s)
 
-    const Real dut1 = IersManager.getUt1MinusUtcAt(anInstant) ; // [s]
+    const Real dut1 = IersManager::Get().getUt1MinusUtcAt(anInstant) ; // [s]
     const Real tut = time + dut1 / DAYSEC ;
 
     // UT1 as a 2-part Julian Date
@@ -118,7 +114,7 @@ Transform                       TEME::getTransformAt                        (   
 
     // Polar motion matrix using the IAU 1980 model
 
-    const Vector2d polarMotion = IersManager.getPolarMotionAt(anInstant) ; // [asec]
+    const Vector2d polarMotion = IersManager::Get().getPolarMotionAt(anInstant) ; // [asec]
 
     const Real xp = polarMotion.x() * DAS2R ; // [rad]
     const Real yp = polarMotion.y() * DAS2R ; // [rad]

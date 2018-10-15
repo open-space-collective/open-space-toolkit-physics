@@ -32,21 +32,6 @@ namespace coord
                                     frameSPtr_(aFrameSPtr)
 {
 
-    // std::cout << "Position :: Position (...) | Shared<const Frame> @ " << &aFrame << " / " << aFrame.get() << " frameSPtr_ | frameSPtr_.expired = " << frameSPtr_.expired() << std::endl ;
-
-    // std::cout << "Position :: Position (...) :: use_count = " << aFrame.use_count() << std::endl ;
-
-    // if (auto frameSPtr = frameSPtr_.lock())
-    // {
-    //     std::cout << "this @ " << this << " >> LOCK @ " << frameSPtr.get() << std::endl ;
-    // }
-    // else
-    // {
-    //     std::cout << "this @ " << this << " >> CANNOT LOCK" << std::endl ;
-    // }
-
-    // std::cout << "Position :: Position (...) >> &frameSPtr_ = " << &frameSPtr_ << " ? " << frameSPtr_.expired() << " - " << frameSPtr_.use_count() << std::endl ;
-
 }
 
                                 Position::Position                          (   const   Position&                   aPosition                                   )
@@ -55,35 +40,21 @@ namespace coord
                                     frameSPtr_(aPosition.frameSPtr_)
 {
 
-    // std::cout << "Position :: Position (const Position&) ..." << std::endl ;
+}
 
-    // if (auto frameSPtr = aPosition.frameSPtr_.lock())
-    // {
+Position&                       Position::operator =                        (   const   Position&                   aPosition                                   )
+{
 
-    //     std::cout << "aPosition @ " << &aPosition << " >> LOCK @ " << frameSPtr.get() << std::endl ;
-    //     // frameSPtr_ = frameSPtr ;
+    if (this != &aPosition)
+    {
 
-    //     std::cout << "Position :: Position (const Position&) :: use_count = " << frameSPtr.use_count() << std::endl ;
+        coordinates_ = aPosition.coordinates_ ;
+        unit_ = aPosition.unit_ ;
+        frameSPtr_ = aPosition.frameSPtr_ ;
 
-    // }
-    // else
-    // {
-    //     std::cout << "aPosition @ " << &aPosition << " >> CANNOT LOCK" << std::endl ;
-    // }
-
-    // std::cout << "Position :: Position (const Position&) >> &frameSPtr_ = " << &aPosition.frameSPtr_ << " ? " << aPosition.frameSPtr_.expired() << " - " << aPosition.frameSPtr_.use_count() << std::endl ;
-
-    // if (auto frameSPtr = frameSPtr_.lock())
-    // {
-    //     std::cout << "this @ " << this << " >> LOCK @ " << frameSPtr.get() << std::endl ;
-    //     std::cout << "Position :: Position (const Position&) :: use_count = " << frameSPtr.use_count() << std::endl ;
-    // }
-    // else
-    // {
-    //     std::cout << "this @ " << this << " >> CANNOT LOCK" << std::endl ;
-    // }
-
-    // std::cout << "Position :: Position (const Position&) >> &frameSPtr_ = " << &frameSPtr_ << " ? " << frameSPtr_.expired() << " - " << frameSPtr_.use_count() << std::endl ;
+    }
+    
+    return *this ;
 
 }
 

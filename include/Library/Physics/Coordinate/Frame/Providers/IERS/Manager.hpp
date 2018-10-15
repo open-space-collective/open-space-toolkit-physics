@@ -16,6 +16,9 @@
 
 #include <Library/Mathematics/Objects/Vector.hpp>
 
+#include <Library/IO/URL.hpp>
+
+#include <Library/Core/FileSystem/Directory.hpp>
 #include <Library/Core/Containers/Array.hpp>
 #include <Library/Core/Types/Real.hpp>
 #include <Library/Core/Types/Index.hpp>
@@ -42,6 +45,9 @@ namespace iers
 using library::core::types::Index ;
 using library::core::types::Real ;
 using library::core::ctnr::Array ;
+using library::core::fs::Directory ;
+
+using library::io::URL ;
 
 using library::math::obj::Vector2d ;
 
@@ -60,9 +66,31 @@ class Manager
 
     public:
 
-        /// @brief              Constructor (default)
+        enum class Mode
+        {
 
-                                Manager                                     ( ) ;
+            Manual,             ///< Manually load and unload bulletins
+            Automatic           ///< Automatically fetch, load and unload bulletins (from remote repositories)
+
+        } ;
+
+        /// @brief              Get manager mode
+        ///
+        /// @return             Manager mode
+
+        Manager::Mode           getMode                                     ( ) const ;
+
+        /// @brief              Get local repository
+        ///
+        /// @return             Local repository
+
+        Directory               getLocalRepository                          ( ) const ;
+
+        /// @brief              Get remote URL
+        ///
+        /// @return             Remote URL
+
+        URL                     getRemoteUrl                                ( ) const ;
 
         /// @brief              Get Bulletin A at instant
         ///
@@ -99,19 +127,80 @@ class Manager
 
         Real                    getLodAt                                    (   const   Instant&                    anInstant                                   ) const ;
 
-        /// @brief              Add Bulletin A
+        /// @brief              Set manager mode
+        ///
+        /// @param              [in] aMode A manager mode
+
+        void                    setMode                                     (   const   Manager::Mode&              aMode                                       ) ;
+
+        /// @brief              Set local repository
+        ///
+        /// @param              [in] aDirectory A repository directory
+
+        void                    setLocalRepository                          (   const   Directory&                  aDirectory                                  ) ;
+
+        /// @brief              Set remote URL
+        ///
+        /// @param              [in] aRemoteUrl A remote URL
+
+        void                    setRemoteUrl                                (   const   URL&                        aRemoteUrl                                  ) ;
+
+        /// @brief              Load Bulletin A
         ///
         /// @param              [in] aBulletinA A Bulletin A
 
-        void                    addBulletinA                                (   const   BulletinA&                  aBulletinA                                  ) ;
+        void                    loadBulletinA                               (   const   BulletinA&                  aBulletinA                                  ) ;
 
-        /// @brief              Add Finals 2000A
+        /// @brief              Load Finals 2000A
         ///
         /// @param              [in] aFinals2000A A Finals 2000A
 
-        void                    addFinals2000A                              (   const   Finals2000A&                aFinals2000A                                ) ;
+        void                    loadFinals2000A                             (   const   Finals2000A&                aFinals2000A                                ) ;
+
+        /// @brief              Fetch latest Bulletin A file
+        ///
+        /// @return             Latest Bulletin A file
+
+        File                    fetchLatestBulletinA                        ( ) ;
+
+        /// @brief              Fetch latest Finals 2000A file
+        ///
+        /// @return             Latest Finals 2000A file
+
+        File                    fetchLatestFinals2000A                      ( ) ;
+
+        /// @brief              Reset manager
+        ///
+        ///                     Unload all bulletins and clear cache.
+
+        void                    reset                                       ( ) ;
+
+        /// @brief              Get manager singleton
+        ///
+        /// @param              [in] (optional) aMode A manager mode
+        /// @return             Reference to manager
+
+        static Manager&         Get                                         (   const   Manager::Mode&              aMode                                       =   Manager::Mode::Automatic ) ;
+
+        /// @brief              Get default local repository
+        ///
+        /// @return             Default local repository
+
+        static Directory        DefaultLocalRepository                      ( ) ;
+
+        /// @brief              Get default remote URL
+        ///
+        /// @return             Default remote URL
+
+        static URL              DefaultRemoteUrl                            ( ) ;
 
     private:
+
+        Manager::Mode           mode_ ;
+
+        Directory               localRepository_ ;
+
+        URL                     remoteUrl_ ;
 
         Array<BulletinA>        aBulletins_ ;
         Array<Finals2000A>      finals2000aArray_ ;
@@ -121,9 +210,28 @@ class Manager
         mutable Index           aBulletinIndex_ ;
         mutable Index           finals2000aIndex_ ;
 
+        mutable Instant         bulletinAUpdateInstant_ ;
+        mutable Instant         finals2000AUpdateInstant_ ;
+
+                                Manager                                     (   const   Manager::Mode&              aMode                                       ) ;
+
         const BulletinA*        accessBulletinAAt                           (   const   Instant&                    anInstant                                   ) const ;
 
         const Finals2000A*      accessFinals2000AAt                         (   const   Instant&                    anInstant                                   ) const ;
+
+        File                    getLatestBulletinAFile                      ( ) const ;
+        
+        File                    getLatestFinals2000AFile                    ( ) const ;
+
+        void                    setup                                       ( ) ;
+
+        void                    loadBulletinA_                              (   const   BulletinA&                  aBulletinA                                  ) ;
+
+        void                    loadFinals2000A_                            (   const   Finals2000A&                aFinals2000A                                ) ;
+
+        File                    fetchLatestBulletinA_                       ( ) ;
+        
+        File                    fetchLatestFinals2000A_                     ( ) ;
 
 } ;
 

@@ -39,12 +39,10 @@ if [[ ! -z $1 ]] && [[ $1 == "--link" ]]; then
 
     # Library ▸ Core
 
-    library_core_directory="${project_directory}/../library-core"
-
     if [[ ! -d ${library_core_directory} ]]
     then
 
-        echo "Library ▸ Core directory [${library_core_directory}s] cannot be found."
+        echo "Library ▸ Core directory [${library_core_directory}] cannot be found."
 
         exit 1
 
@@ -61,14 +59,34 @@ if [[ ! -z $1 ]] && [[ $1 == "--link" ]]; then
     ln -s /mnt/library-core/lib/liblibrary-core.so /usr/local/lib/; \
     ln -s /mnt/library-core/lib/liblibrary-core.so.0 /usr/local/lib/;"
 
-    ## Library ▸ Mathematics
+    # Library ▸ I/O
 
-    library_mathematics_directory="${project_directory}/../library-mathematics"
+    if [[ ! -d ${library_io_directory} ]]
+    then
+
+        echo "Library ▸ I/O directory [${library_io_directory}] cannot be found."
+
+        exit 1
+
+    fi
+
+    options="${options} \
+    --volume=${library_io_directory}:/mnt/library-io:ro"
+
+    command="${command} \
+    rm -rf /usr/local/include/Library/IO; \
+    rm -f /usr/local/lib/liblibrary-io.so*; \
+    cp -as /mnt/library-io/include/Library/IO /usr/local/include/Library/IO; \
+    cp -as /mnt/library-io/src/Library/IO/* /usr/local/include/Library/IO/; \
+    ln -s /mnt/library-io/lib/liblibrary-io.so /usr/local/lib/; \
+    ln -s /mnt/library-io/lib/liblibrary-io.so.0 /usr/local/lib/;"
+
+    ## Library ▸ Mathematics
 
     if [[ ! -d ${library_mathematics_directory} ]]
     then
 
-        echo "Library ▸ Mathematics directory [${library_mathematics_directory}s] cannot be found."
+        echo "Library ▸ Mathematics directory [${library_mathematics_directory}] cannot be found."
 
         exit 1
 
@@ -102,7 +120,7 @@ docker run \
 --env="cpu_count=${cpu_count}" \
 ${options} \
 --volume="${project_directory}:/app:rw" \
---volume="/app/build" \
+--volume="${project_directory}/share:/var/library-physics:rw" \
 --volume="${script_directory}/helpers/build.sh:/app/build/build.sh:ro" \
 --volume="${script_directory}/helpers/test.sh:/app/build/test.sh:ro" \
 --volume="${script_directory}/helpers/debug.sh:/app/build/debug.sh:ro" \

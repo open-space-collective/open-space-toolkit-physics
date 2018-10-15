@@ -33,9 +33,9 @@ inline void                     LibraryPhysicsPy_Coordinate_Axes            ( )
 
         .def("isDefined", &Axes::isDefined)
 
-        .def("x", &Axes::x, return_value_policy<reference_existing_object>())
-        .def("y", &Axes::y, return_value_policy<reference_existing_object>())
-        .def("z", &Axes::z, return_value_policy<reference_existing_object>())
+        .def("x", +[] (const Axes& anAxes) -> Vector3d { return anAxes.x() ; })
+        .def("y", +[] (const Axes& anAxes) -> Vector3d { return anAxes.y() ; })
+        .def("z", +[] (const Axes& anAxes) -> Vector3d { return anAxes.z() ; })
         
         .def("Undefined", &Axes::Undefined).staticmethod("Undefined")
 

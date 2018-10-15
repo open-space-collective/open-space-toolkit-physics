@@ -360,7 +360,40 @@ TEST (Library_Physics_Environment_Object_Geometry, In)
 
         const Instant instant = Instant::J2000() ;
 
-        const Shared<const Frame> nedFrameSPtr = earthSPtr->getFrameAt(LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Meters(0.0)), Celestial::FrameType::NED) ;
+        const Angle latitude = Angle::Degrees(0.0) ;
+        const Angle longitude = Angle::Degrees(0.0) ;
+        const Length altitude = Length::Meters(0.0) ;
+
+        const Shared<const Frame> nedFrameSPtr = earthSPtr->getFrameAt(LLA(latitude, longitude, altitude), Celestial::FrameType::NED) ;
+        const Shared<const Frame> itrfFrameSPtr = Frame::ITRF() ;
+
+        const Point vertex = { 0.0, 0.0, 0.0 } ;
+
+        const Geometry geometry = { vertex, nedFrameSPtr } ;
+
+        const Geometry transformedGeometry = geometry.in(itrfFrameSPtr, instant) ;
+
+        const Point referenceVertex = { 6378136.3, 0.0, 0.0 } ;
+
+        EXPECT_EQ(itrfFrameSPtr, transformedGeometry.accessFrame()) ;
+        
+        EXPECT_TRUE(transformedGeometry.accessComposite().as<Point>().isNear(referenceVertex, 1e-8)) << referenceVertex.toString() << transformedGeometry.accessComposite().as<Point>().toString() ;
+
+    }
+
+    {
+
+        const Environment environment = Environment::Default() ;
+
+        const Shared<const Celestial> earthSPtr = environment.accessCelestialObjectWithName("Earth") ;
+
+        const Instant instant = Instant::J2000() ;
+
+        const Angle latitude = Angle::Degrees(0.0) ;
+        const Angle longitude = Angle::Degrees(0.0) ;
+        const Length altitude = Length::Meters(0.0) ;
+
+        const Shared<const Frame> nedFrameSPtr = earthSPtr->getFrameAt(LLA(latitude, longitude, altitude), Celestial::FrameType::NED) ;
         const Shared<const Frame> itrfFrameSPtr = Frame::ITRF() ;
 
         const Polygon base = { { { { 0.0, 0.0 }, { 1.0, 0.0 }, { 1.0, 1.0 }, { 0.0, 1.0 } } }, { 0.0, 0.0, 2.0 }, { 1.0, 0.0, 0.0 }, { 0.0, 1.0, 0.0 } } ;
@@ -377,12 +410,49 @@ TEST (Library_Physics_Environment_Object_Geometry, In)
 
         const Pyramid referencePyramid = { referenceBase, referenceApex } ;
 
-        EXPECT_EQ(*itrfFrameSPtr, *transformedGeometry.accessFrame()) ;
+        EXPECT_EQ(itrfFrameSPtr, transformedGeometry.accessFrame()) ;
         
         EXPECT_TRUE(transformedGeometry.accessComposite().as<Pyramid>().getBase().isNear(referencePyramid.getBase(), 1e-8)) << referencePyramid.getBase() << transformedGeometry.accessComposite().as<Pyramid>().getBase() ;
         EXPECT_TRUE(transformedGeometry.accessComposite().as<Pyramid>().getApex().isNear(referencePyramid.getApex(), 1e-8)) << referencePyramid.getApex().toString() << transformedGeometry.accessComposite().as<Pyramid>().getApex().toString() ;
 
     }
+
+    {
+
+        const Environment environment = Environment::Default() ;
+
+        const Shared<const Celestial> earthSPtr = environment.accessCelestialObjectWithName("Earth") ;
+
+        const Instant instant = Instant::J2000() ;
+
+        const Angle latitude = Angle::Degrees(0.0) ;
+        const Angle longitude = Angle::Degrees(180.0) ;
+        const Length altitude = Length::Meters(0.0) ;
+
+        const Shared<const Frame> nedFrameSPtr = earthSPtr->getFrameAt(LLA(latitude, longitude, altitude), Celestial::FrameType::NED) ;
+        const Shared<const Frame> itrfFrameSPtr = Frame::ITRF() ;
+
+        const Polygon base = { { { { 0.0, 0.0 }, { 1.0, 0.0 }, { 1.0, 1.0 }, { 0.0, 1.0 } } }, { 0.0, 0.0, 2.0 }, { 1.0, 0.0, 0.0 }, { 0.0, 1.0, 0.0 } } ;
+        const Point apex = { 0.0, 0.0, 1.0 } ;
+
+        const Pyramid pyramid = { base, apex } ;
+
+        const Geometry geometry = { pyramid, nedFrameSPtr } ;
+
+        const Geometry transformedGeometry = geometry.in(itrfFrameSPtr, instant) ;
+
+        const Polygon referenceBase = { { { { 0.0, 0.0 }, { 1.0, 0.0 }, { 1.0, 1.0 }, { 0.0, 1.0 } } }, { -6378134.3, 0.0, 0.0 }, { 0.0, 0.0, 1.0 }, { 0.0, -1.0, 0.0 } } ;
+        const Point referenceApex = { -6378135.3, 0.0, 0.0 } ;
+
+        const Pyramid referencePyramid = { referenceBase, referenceApex } ;
+
+        EXPECT_EQ(itrfFrameSPtr, transformedGeometry.accessFrame()) ;
+        
+        EXPECT_TRUE(transformedGeometry.accessComposite().as<Pyramid>().getBase().isNear(referencePyramid.getBase(), 1e-8)) << referencePyramid.getBase() << transformedGeometry.accessComposite().as<Pyramid>().getBase() ;
+        EXPECT_TRUE(transformedGeometry.accessComposite().as<Pyramid>().getApex().isNear(referencePyramid.getApex(), 1e-8)) << referencePyramid.getApex().toString() << transformedGeometry.accessComposite().as<Pyramid>().getApex().toString() ;
+
+    }
+
 
     {
 
@@ -498,46 +568,46 @@ TEST (Library_Physics_Environment_Object_Geometry, IntersectionWith)
         const LineString secondIntersectionLineString_ITRF_reference =
         {
             {
-                { 2850286.2341284, -4027850.0658716, -4027850.0658716 },
+                { 2850286.23412841, -4027850.0658716, -4027850.0658716 },
                 { 2008495.0335098, -3573982.07529378, -4869641.2664902 },
-                { 1319079.2310724, -2798082.50445344, -5559057.0689276 },
-                { 830226.414467597, -1779781.10004965, -6047909.8855324 },
-                { 576720.733377391, -610382.558718058, -6301415.56662261 },
-                { 576720.733377391, 610382.558718058, -6301415.56662261 },
-                { 830226.414467597, 1779781.10004965, -6047909.8855324 },
+                { 1319079.2310724, -2798082.50445344, -5559057.06892761 },
+                { 830226.414467599, -1779781.10004965, -6047909.8855324 },
+                { 576720.733377395, -610382.558718057, -6301415.56662261 },
+                { 576720.733377396, 610382.558718058, -6301415.56662261 },
+                { 830226.414467599, 1779781.10004965, -6047909.8855324 },
                 { 1319079.2310724, 2798082.50445345, -5559057.0689276 },
                 { 2008495.0335098, 3573982.07529378, -4869641.2664902 },
-                { 2850286.2341284, 4027850.0658716, -4027850.0658716 },
-                { 2850286.2341284, 4027850.0658716, -4027850.0658716 },
+                { 2850286.23412841, 4027850.06587159, -4027850.06587159 },
+                { 2850286.23412841, 4027850.0658716, -4027850.0658716 },
                 { 2001804.89505489, 4876331.40494511, -3578892.17721106 },
                 { 1305374.15085261, 5572762.14914739, -2804980.78678975 },
                 { 810699.067441951, 6067437.23255805, -1785527.61476765 },
-                { 553895.431828732, 6324240.86817127, -612593.516845716 },
-                { 553895.431828732, 6324240.86817127, 612593.516845717 },
+                { 553895.431828734, 6324240.86817127, -612593.516845716 },
+                { 553895.431828735, 6324240.86817127, 612593.516845717 },
                 { 810699.067441951, 6067437.23255805, 1785527.61476766 },
                 { 1305374.15085261, 5572762.14914739, 2804980.78678975 },
                 { 2001804.89505489, 4876331.40494511, 3578892.17721106 },
-                { 2850286.2341284, 4027850.0658716, 4027850.0658716 },
-                { 2850286.2341284, 4027850.0658716, 4027850.0658716 },
+                { 2850286.23412841, 4027850.0658716, 4027850.0658716 },
+                { 2850286.23412841, 4027850.0658716, 4027850.0658716 },
                 { 2008495.0335098, 3573982.07529378, 4869641.2664902 },
                 { 1319079.2310724, 2798082.50445344, 5559057.06892761 },
-                { 830226.414467596, 1779781.10004965, 6047909.88553241 },
-                { 576720.733377391, 610382.558718057, 6301415.56662261 },
-                { 576720.733377391, -610382.558718057, 6301415.56662261 },
-                { 830226.414467596, -1779781.10004965, 6047909.88553241 },
+                { 830226.414467599, 1779781.10004965, 6047909.8855324 },
+                { 576720.733377395, 610382.558718057, 6301415.56662261 },
+                { 576720.733377396, -610382.558718058, 6301415.56662261 },
+                { 830226.414467599, -1779781.10004965, 6047909.8855324 },
                 { 1319079.2310724, -2798082.50445345, 5559057.0689276 },
                 { 2008495.0335098, -3573982.07529378, 4869641.2664902 },
-                { 2850286.2341284, -4027850.0658716, 4027850.0658716 },
-                { 2850286.2341284, -4027850.0658716, 4027850.0658716 },
+                { 2850286.23412841, -4027850.06587159, 4027850.06587159 },
+                { 2850286.23412841, -4027850.0658716, 4027850.0658716 },
                 { 2001804.89505489, -4876331.40494511, 3578892.17721106 },
                 { 1305374.15085261, -5572762.14914739, 2804980.78678975 },
                 { 810699.067441951, -6067437.23255805, 1785527.61476765 },
-                { 553895.431828732, -6324240.86817127, 612593.516845716 },
-                { 553895.431828732, -6324240.86817127, -612593.516845717 },
+                { 553895.431828734, -6324240.86817127, 612593.516845716 },
+                { 553895.431828735, -6324240.86817127, -612593.516845717 },
                 { 810699.067441951, -6067437.23255805, -1785527.61476766 },
-                { 1305374.15085261, -5572762.14914739, -2804980.78678976 },
+                { 1305374.15085261, -5572762.14914739, -2804980.78678975 },
                 { 2001804.89505489, -4876331.40494511, -3578892.17721106 },
-                { 2850286.2341284, -4027850.0658716, -4027850.0658716 }
+                { 2850286.23412841, -4027850.0658716, -4027850.0658716 }
             }
         } ;
 

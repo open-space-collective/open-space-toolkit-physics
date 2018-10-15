@@ -66,6 +66,11 @@ namespace units
 
 }
 
+Angle*                          Angle::clone                                ( ) const
+{
+    return new Angle(*this) ;
+}
+
 bool                            Angle::operator ==                          (   const   Angle&                      anAngle                                     ) const
 {
 
