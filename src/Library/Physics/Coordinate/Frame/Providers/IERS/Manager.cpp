@@ -353,7 +353,7 @@ Directory                       Manager::DefaultLocalRepository             ( )
 
 URL                             Manager::DefaultRemoteUrl                   ( )
 {
-    return URL::Parse("ftp://maia.usno.navy.mil/ser7/") ;
+    return URL::Parse("http://maia.usno.navy.mil/ser7/") ;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -847,29 +847,51 @@ File                            Manager::fetchLatestBulletinA_              ( )
 
     const URL remoteUrl = remoteUrl_ + "ser7.dat" ;
 
-    File latestBulletinAFile = Client::Fetch(remoteUrl, temporaryDirectory) ;
+    File latestBulletinAFile = File::Undefined() ;
+    Directory destinationDirectory = Directory::Undefined() ;
 
-    // [TBI] Add file size verification
-
-    const BulletinA latestBulletinA = BulletinA::Load(latestBulletinAFile) ;
-
-    if (!latestBulletinAFile.exists())
+    try
     {
-        throw library::core::error::RuntimeError("Cannot fetch Bulletin A file [{}] at [{}].", latestBulletinAFile.toString(), remoteUrl.toString()) ;
+        
+        latestBulletinAFile = Client::Fetch(remoteUrl, temporaryDirectory) ;
+
+        // [TBI] Add file size verification
+
+        if (!latestBulletinAFile.exists())
+        {
+            throw library::core::error::RuntimeError("Cannot fetch Bulletin A file [{}] at [{}].", latestBulletinAFile.toString(), remoteUrl.toString()) ;
+        }
+
+        const BulletinA latestBulletinA = BulletinA::Load(latestBulletinAFile) ;
+
+        destinationDirectory = Directory::Path(localRepository_.getPath() + Path::Parse(latestBulletinA.accessReleaseDate().toString())) ;
+        
+        if (destinationDirectory.exists())
+        {
+            destinationDirectory.remove() ;
+        }
+
+        destinationDirectory.create() ;
+
+        latestBulletinAFile.moveToDirectory(destinationDirectory) ;
+
+        temporaryDirectory.remove() ;
+        
     }
-
-    Directory destinationDirectory = Directory::Path(localRepository_.getPath() + Path::Parse(latestBulletinA.accessReleaseDate().toString())) ;
-
-    if (destinationDirectory.exists())
+    catch (const library::core::error::Exception& anException)
     {
-        destinationDirectory.remove() ;
+
+        if (latestBulletinAFile.isDefined() && latestBulletinAFile.exists())
+        {
+            latestBulletinAFile.remove() ;
+        }
+
+        if (temporaryDirectory.isDefined() && temporaryDirectory.exists())
+        {
+            temporaryDirectory.remove() ;
+        }
+        
     }
-
-    destinationDirectory.create() ;
-
-    latestBulletinAFile.moveToDirectory(destinationDirectory) ;
-
-    temporaryDirectory.remove() ;
 
     return latestBulletinAFile ;
 

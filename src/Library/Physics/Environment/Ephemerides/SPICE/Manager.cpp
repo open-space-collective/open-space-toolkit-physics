@@ -248,6 +248,8 @@ void                            Manager::fetchIndexAt                       (   
         while (std::getline(listingFileStream, listingLine))
         {
 
+            // <a href="[/w+]">
+
             // Split spaces into tokens
 
             std::istringstream iss { listingLine } ;
