@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['earth',['Earth',['../classlibrary_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#a86f1a863677210ba8884807cc725c0f8a5cdd21c97f86686cc505e02fd32a7523',1,'library::physics::env::ephem::SPICE::Earth()'],['../classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#aab1f58aa727e639288d65f3d33c4f245a5cdd21c97f86686cc505e02fd32a7523',1,'library::physics::env::obj::Celestial::Earth()']]],
-  ['electriccurrent',['ElectricCurrent',['../classlibrary_1_1physics_1_1units_1_1_unit.html#a828bc1b6ad6fa5cbef904ea0fede986aa9a60fd92ac6161bffa549ef2cd17f05e',1,'library::physics::units::Unit']]]
+  ['day',['Day',['../classlibrary_1_1physics_1_1units_1_1_time.html#ab876a6a05c9a2f28905f2753bfd64109a03727ac48595a24daed975559c944a44',1,'library::physics::units::Time']]],
+  ['degree',['Degree',['../classlibrary_1_1physics_1_1units_1_1_angle.html#a3c329d415a61783b16ce481874cc5956a6669c4dc00cb161446821b3529ca07d8',1,'library::physics::units::Angle']]],
+  ['derived',['Derived',['../classlibrary_1_1physics_1_1_unit.html#ab01b0024991fd80f3e5ef7c8282fccc1a0e77a10e9579997fa646fbda4118e108',1,'library::physics::Unit::Derived()'],['../classlibrary_1_1physics_1_1units_1_1_unit.html#a828bc1b6ad6fa5cbef904ea0fede986aa0e77a10e9579997fa646fbda4118e108',1,'library::physics::units::Unit::Derived()']]]
 ];

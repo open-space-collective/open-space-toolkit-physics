@@ -14,6 +14,7 @@ var classlibrary_1_1physics_1_1units_1_1_unit =
     [ "~Unit", "classlibrary_1_1physics_1_1units_1_1_unit.html#a6c50741e149602a9fecf3b45100463a0", null ],
     [ "accessValue", "classlibrary_1_1physics_1_1units_1_1_unit.html#a836f37ccb8db8220064f6718d3236f32", null ],
     [ "accessValue", "classlibrary_1_1physics_1_1units_1_1_unit.html#a73cd28e6cae2cd36ab65bdeaf9814e8f", null ],
+    [ "clone", "classlibrary_1_1physics_1_1units_1_1_unit.html#aff727141d73acddfae382e5e375f4640", null ],
     [ "getType", "classlibrary_1_1physics_1_1units_1_1_unit.html#a4f4e6ba62e833324970a06c29685488a", null ],
     [ "getValue", "classlibrary_1_1physics_1_1units_1_1_unit.html#ab6541add236a0c2e5bbfb4b5b35126fb", null ],
     [ "isDefined", "classlibrary_1_1physics_1_1units_1_1_unit.html#a5ce011c1ffa0fce4cf1f5d42ff06ee78", null ],
@@ -21,5 +22,5 @@ var classlibrary_1_1physics_1_1units_1_1_unit =
     [ "operator!=", "classlibrary_1_1physics_1_1units_1_1_unit.html#a68d7c6e97c9748b43b55b5f74e0f9cda", null ],
     [ "operator==", "classlibrary_1_1physics_1_1units_1_1_unit.html#ad7b6273fa1232ff0d26f98c2af39d183", null ],
     [ "setValue", "classlibrary_1_1physics_1_1units_1_1_unit.html#a0d61125a36ae706eb4800564fb7c5e54", null ],
-    [ "toString", "classlibrary_1_1physics_1_1units_1_1_unit.html#aac05cb6ed1ea7c18c233a3381c81caf8", null ]
+    [ "toString", "classlibrary_1_1physics_1_1units_1_1_unit.html#ad7364d457300e36413323c4aebce8029", null ]
 ];

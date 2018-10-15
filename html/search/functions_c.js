@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['manager',['Manager',['../classlibrary_1_1physics_1_1coord_1_1frame_1_1_manager.html#a2a044628916a829eeaf4da33c2b187b3',1,'library::physics::coord::frame::Manager::Manager()'],['../classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager.html#a8be831f65e5851152337a19de02cf23d',1,'library::physics::coord::frame::provider::iers::Manager::Manager()']]],
+  ['manager',['Manager',['../classlibrary_1_1physics_1_1coord_1_1frame_1_1_manager.html#a2a044628916a829eeaf4da33c2b187b3',1,'library::physics::coord::frame::Manager::Manager()'],['../classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager.html#aa4ec6e585791cf27dfa66a3b0ced57fb',1,'library::physics::env::ephem::spice::Manager::Manager()']]],
   ['mass',['Mass',['../classlibrary_1_1physics_1_1units_1_1_mass.html#a079df004a90cfe6cfa5c00ce0d816122',1,'library::physics::units::Mass']]],
   ['meters',['Meters',['../classlibrary_1_1physics_1_1coord_1_1_position.html#a7ef7cc80563339b3f4727f508d19875c',1,'library::physics::coord::Position::Meters()'],['../classlibrary_1_1physics_1_1units_1_1_length.html#ad523a3737d5c3f23a64588eac83f2148',1,'library::physics::units::Length::Meters()']]],
   ['meterspersecond',['MetersPerSecond',['../classlibrary_1_1physics_1_1coord_1_1_velocity.html#aca486d66f18e8fab83d45c3b52bb9324',1,'library::physics::coord::Velocity']]],

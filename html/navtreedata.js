@@ -45,6 +45,7 @@ var NAVTREE =
       [ "File List", "files.html", "files" ],
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
+        [ "Typedefs", "globals_type.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ]
@@ -54,10 +55,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_a_e_r_8cpp.html",
-"classlibrary_1_1physics_1_1coord_1_1_position.html",
-"classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#a8585fb32125cb6c73ae1339a5ea09c79acd3459b28418fa8fa75ffaba4f3e7c74",
-"classlibrary_1_1physics_1_1units_1_1_derived_1_1_unit.html#a44a173b22d6c9c26bfbbc4291cd00cc8",
-"structlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction.html"
+"classlibrary_1_1physics_1_1_environment.html#a7bc4b39898452fbe5ce3a8de75ad2596",
+"classlibrary_1_1physics_1_1coord_1_1spherical_1_1_l_l_a.html#af18b9011d2df6c1120e0f770ab1eb909",
+"classlibrary_1_1physics_1_1time_1_1_duration.html#a7df03d520e9372f58c37309e8ac8e08d",
+"dir_6434c8e831e1f5fcd508ca08461b9550.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

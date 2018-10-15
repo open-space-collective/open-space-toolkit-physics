@@ -165,6 +165,7 @@ The **Physics** library internally uses the following dependencies:
 | IAU SOFA      | 2018-01-30 | [SOFA Software License](http://www.iausofa.org/tandc.html) | [www.iausofa.org](http://www.iausofa.org)                                                                            |
 | SPICE Toolkit | N0066      | [NAIF](https://naif.jpl.nasa.gov/naif/rules.html)          | [naif.jpl.nasa.gov/naif/toolkit.html](https://naif.jpl.nasa.gov/naif/toolkit.html)                                   |
 | Core          | master     | TBD                                                        | [github.com/open-space-collective/library-core](https://github.com/open-space-collective/library-core)               |
+| I/O           | master     | TBD                                                        | [github.com/open-space-collective/library-io](https://github.com/open-space-collective/library-io)                   |
 | Mathematics   | master     | TBD                                                        | [github.com/open-space-collective/library-mathematics](https://github.com/open-space-collective/library-mathematics) |
 
 ## Contribution

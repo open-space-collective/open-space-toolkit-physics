@@ -1,6 +1,7 @@
 var classlibrary_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e =
 [
     [ "Object", "classlibrary_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#a86f1a863677210ba8884807cc725c0f8", [
+      [ "Undefined", "classlibrary_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#a86f1a863677210ba8884807cc725c0f8aec0fc0100c4fc1ce4eea230c3dc10360", null ],
       [ "Sun", "classlibrary_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#a86f1a863677210ba8884807cc725c0f8aef6572e4cd58bb39a3f4e82fc64fe9f0", null ],
       [ "Mercury", "classlibrary_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#a86f1a863677210ba8884807cc725c0f8a34dae487e31f37aa74633258b7774d4f", null ],
       [ "Venus", "classlibrary_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#a86f1a863677210ba8884807cc725c0f8a0bdc508a17811a3a860d32749ad44e4b", null ],

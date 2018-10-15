@@ -3,6 +3,7 @@ var classlibrary_1_1physics_1_1units_1_1_derived =
     [ "Order", "classlibrary_1_1physics_1_1units_1_1_derived_1_1_order.html", "classlibrary_1_1physics_1_1units_1_1_derived_1_1_order" ],
     [ "Unit", "classlibrary_1_1physics_1_1units_1_1_derived_1_1_unit.html", "classlibrary_1_1physics_1_1units_1_1_derived_1_1_unit" ],
     [ "Derived", "classlibrary_1_1physics_1_1units_1_1_derived.html#a526996552af20a987c045ced9bd87fc7", null ],
+    [ "clone", "classlibrary_1_1physics_1_1units_1_1_derived.html#a6328e9f5bcf35f1c587c20f9c3fdb497", null ],
     [ "getUnit", "classlibrary_1_1physics_1_1units_1_1_derived.html#a020b4ab6cb1d2ed73b01cde2bf1aab0e", null ],
     [ "in", "classlibrary_1_1physics_1_1units_1_1_derived.html#a6ea039897b7a5905b096db05e392c484", null ],
     [ "isDefined", "classlibrary_1_1physics_1_1units_1_1_derived.html#a26c20c57fc3a7c2fb2ff215d6d4687a2", null ],

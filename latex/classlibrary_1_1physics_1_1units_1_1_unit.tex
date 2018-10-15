@@ -37,6 +37,8 @@ enum \hyperlink{classlibrary_1_1physics_1_1units_1_1_unit_a828bc1b6ad6fa5cbef904
 \item 
 virtual \hyperlink{classlibrary_1_1physics_1_1units_1_1_unit_a6c50741e149602a9fecf3b45100463a0}{$\sim$\+Unit} ()=0
 \item 
+virtual \hyperlink{classlibrary_1_1physics_1_1units_1_1_unit}{Unit} $\ast$ \hyperlink{classlibrary_1_1physics_1_1units_1_1_unit_aff727141d73acddfae382e5e375f4640}{clone} () const =0
+\item 
 bool \hyperlink{classlibrary_1_1physics_1_1units_1_1_unit_ad7b6273fa1232ff0d26f98c2af39d183}{operator==} (const \hyperlink{classlibrary_1_1physics_1_1units_1_1_unit}{Unit} \&a\+Unit) const
 \item 
 bool \hyperlink{classlibrary_1_1physics_1_1units_1_1_unit_a68d7c6e97c9748b43b55b5f74e0f9cda}{operator!=} (const \hyperlink{classlibrary_1_1physics_1_1units_1_1_unit}{Unit} \&a\+Unit) const
@@ -51,7 +53,7 @@ const Real \& \hyperlink{classlibrary_1_1physics_1_1units_1_1_unit_a836f37ccb8db
 \item 
 Real \hyperlink{classlibrary_1_1physics_1_1units_1_1_unit_ab6541add236a0c2e5bbfb4b5b35126fb}{get\+Value} () const
 \item 
-virtual String \hyperlink{classlibrary_1_1physics_1_1units_1_1_unit_aac05cb6ed1ea7c18c233a3381c81caf8}{to\+String} (const Integer \&a\+Precision) const =0
+virtual String \hyperlink{classlibrary_1_1physics_1_1units_1_1_unit_ad7364d457300e36413323c4aebce8029}{to\+String} (const Integer \&a\+Precision=Integer\+::\+Undefined()) const =0
 \item 
 Real \& \hyperlink{classlibrary_1_1physics_1_1units_1_1_unit_a73cd28e6cae2cd36ab65bdeaf9814e8f}{access\+Value} ()
 \item 
@@ -146,6 +148,16 @@ Derived&\\
 \subsubsection{\texorpdfstring{access\+Value()}{accessValue()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily Real \& library\+::physics\+::units\+::\+Unit\+::access\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1units_1_1_unit_aff727141d73acddfae382e5e375f4640}\label{classlibrary_1_1physics_1_1units_1_1_unit_aff727141d73acddfae382e5e375f4640}} 
+\index{library\+::physics\+::units\+::\+Unit@{library\+::physics\+::units\+::\+Unit}!clone@{clone}}
+\index{clone@{clone}!library\+::physics\+::units\+::\+Unit@{library\+::physics\+::units\+::\+Unit}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual \hyperlink{classlibrary_1_1physics_1_1units_1_1_unit}{Unit}$\ast$ library\+::physics\+::units\+::\+Unit\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \hyperlink{classlibrary_1_1physics_1_1units_1_1_derived_a6328e9f5bcf35f1c587c20f9c3fdb497}{library\+::physics\+::units\+::\+Derived}, \hyperlink{classlibrary_1_1physics_1_1units_1_1_angle_add51af263128e384d3d89827d0f70dcf}{library\+::physics\+::units\+::\+Angle}, \hyperlink{classlibrary_1_1physics_1_1units_1_1_time_a8745ebee6707751e91137c3e87782b59}{library\+::physics\+::units\+::\+Time}, \hyperlink{classlibrary_1_1physics_1_1units_1_1_length_ae06162cf9f3d140a3b53e156a4cb3309}{library\+::physics\+::units\+::\+Length}, and \hyperlink{classlibrary_1_1physics_1_1units_1_1_mass_a7a09438b05edbe4b21a05ec234a6372f}{library\+::physics\+::units\+::\+Mass}.
+
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1units_1_1_unit_a4f4e6ba62e833324970a06c29685488a}\label{classlibrary_1_1physics_1_1units_1_1_unit_a4f4e6ba62e833324970a06c29685488a}} 
 \index{library\+::physics\+::units\+::\+Unit@{library\+::physics\+::units\+::\+Unit}!get\+Type@{get\+Type}}
 \index{get\+Type@{get\+Type}!library\+::physics\+::units\+::\+Unit@{library\+::physics\+::units\+::\+Unit}}
@@ -192,11 +204,11 @@ Reimplemented in \hyperlink{classlibrary_1_1physics_1_1units_1_1_derived_a26c20c
 \subsubsection{\texorpdfstring{set\+Value()}{setValue()}}
 {\footnotesize\ttfamily void library\+::physics\+::units\+::\+Unit\+::set\+Value (\begin{DoxyParamCaption}\item[{const Real \&}]{a\+Value }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{classlibrary_1_1physics_1_1units_1_1_unit_aac05cb6ed1ea7c18c233a3381c81caf8}\label{classlibrary_1_1physics_1_1units_1_1_unit_aac05cb6ed1ea7c18c233a3381c81caf8}} 
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1units_1_1_unit_ad7364d457300e36413323c4aebce8029}\label{classlibrary_1_1physics_1_1units_1_1_unit_ad7364d457300e36413323c4aebce8029}} 
 \index{library\+::physics\+::units\+::\+Unit@{library\+::physics\+::units\+::\+Unit}!to\+String@{to\+String}}
 \index{to\+String@{to\+String}!library\+::physics\+::units\+::\+Unit@{library\+::physics\+::units\+::\+Unit}}
 \subsubsection{\texorpdfstring{to\+String()}{toString()}}
-{\footnotesize\ttfamily virtual String library\+::physics\+::units\+::\+Unit\+::to\+String (\begin{DoxyParamCaption}\item[{const Integer \&}]{a\+Precision }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily virtual String library\+::physics\+::units\+::\+Unit\+::to\+String (\begin{DoxyParamCaption}\item[{const Integer \&}]{a\+Precision = {\ttfamily Integer\+:\+:Undefined()} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
@@ -206,5 +218,5 @@ Implemented in \hyperlink{classlibrary_1_1physics_1_1units_1_1_derived_a3626d6c7
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-include/\+Library/\+Physics/\+Units/\hyperlink{_unit_8hpp}{Unit.\+hpp}\item 
-src/\+Library/\+Physics/\+Units/\hyperlink{_unit_8cpp}{Unit.\+cpp}\end{DoxyCompactItemize}
+include/\+Library/\+Physics/\+Units/\hyperlink{_units_2_unit_8hpp}{Unit.\+hpp}\item 
+src/\+Library/\+Physics/\+Units/\hyperlink{_units_2_unit_8cpp}{Unit.\+cpp}\end{DoxyCompactItemize}

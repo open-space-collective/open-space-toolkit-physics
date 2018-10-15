@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['manager',['Manager',['../classlibrary_1_1physics_1_1coord_1_1frame_1_1_manager.html',1,'library::physics::coord::frame::Manager'],['../classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager.html',1,'library::physics::coord::frame::provider::iers::Manager']]],
-  ['mass',['Mass',['../classlibrary_1_1physics_1_1units_1_1_mass.html',1,'library::physics::units']]],
-  ['moon',['Moon',['../classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon.html',1,'library::physics::env::obj::celest']]]
+  ['length',['Length',['../classlibrary_1_1physics_1_1units_1_1_length.html',1,'library::physics::units']]],
+  ['lla',['LLA',['../classlibrary_1_1physics_1_1coord_1_1spherical_1_1_l_l_a.html',1,'library::physics::coord::spherical']]]
 ];

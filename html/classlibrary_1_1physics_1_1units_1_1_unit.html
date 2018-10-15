@@ -89,7 +89,7 @@ $(document).ready(function(){initNavTree('classlibrary_1_1physics_1_1units_1_1_u
 <p><a class="el" href="classlibrary_1_1physics_1_1units_1_1_unit.html" title="Unit. ">Unit</a>.  
  <a href="classlibrary_1_1physics_1_1units_1_1_unit.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="_unit_8hpp_source.html">Unit.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="_units_2_unit_8hpp_source.html">Unit.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for library::physics::units::Unit:</div>
 <div class="dyncontent">
@@ -126,6 +126,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a52369bb8717bfe8d04d7dcb992903208"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c50741e149602a9fecf3b45100463a0"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1units_1_1_unit.html#a6c50741e149602a9fecf3b45100463a0">~Unit</a> ()=0</td></tr>
 <tr class="separator:a6c50741e149602a9fecf3b45100463a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff727141d73acddfae382e5e375f4640"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classlibrary_1_1physics_1_1units_1_1_unit.html">Unit</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1units_1_1_unit.html#aff727141d73acddfae382e5e375f4640">clone</a> () const =0</td></tr>
+<tr class="separator:aff727141d73acddfae382e5e375f4640"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7b6273fa1232ff0d26f98c2af39d183"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1units_1_1_unit.html#ad7b6273fa1232ff0d26f98c2af39d183">operator==</a> (const <a class="el" href="classlibrary_1_1physics_1_1units_1_1_unit.html">Unit</a> &amp;aUnit) const</td></tr>
 <tr class="separator:ad7b6273fa1232ff0d26f98c2af39d183"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68d7c6e97c9748b43b55b5f74e0f9cda"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1units_1_1_unit.html#a68d7c6e97c9748b43b55b5f74e0f9cda">operator!=</a> (const <a class="el" href="classlibrary_1_1physics_1_1units_1_1_unit.html">Unit</a> &amp;aUnit) const</td></tr>
@@ -140,8 +142,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a4f4e6ba62e833324970a06c29685488a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab6541add236a0c2e5bbfb4b5b35126fb"><td class="memItemLeft" align="right" valign="top">Real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1units_1_1_unit.html#ab6541add236a0c2e5bbfb4b5b35126fb">getValue</a> () const</td></tr>
 <tr class="separator:ab6541add236a0c2e5bbfb4b5b35126fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aac05cb6ed1ea7c18c233a3381c81caf8"><td class="memItemLeft" align="right" valign="top">virtual String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1units_1_1_unit.html#aac05cb6ed1ea7c18c233a3381c81caf8">toString</a> (const Integer &amp;aPrecision) const =0</td></tr>
-<tr class="separator:aac05cb6ed1ea7c18c233a3381c81caf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7364d457300e36413323c4aebce8029"><td class="memItemLeft" align="right" valign="top">virtual String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1units_1_1_unit.html#ad7364d457300e36413323c4aebce8029">toString</a> (const Integer &amp;aPrecision=Integer::Undefined()) const =0</td></tr>
+<tr class="separator:ad7364d457300e36413323c4aebce8029"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73cd28e6cae2cd36ab65bdeaf9814e8f"><td class="memItemLeft" align="right" valign="top">Real &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1units_1_1_unit.html#a73cd28e6cae2cd36ab65bdeaf9814e8f">accessValue</a> ()</td></tr>
 <tr class="separator:a73cd28e6cae2cd36ab65bdeaf9814e8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d61125a36ae706eb4800564fb7c5e54"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1units_1_1_unit.html#a0d61125a36ae706eb4800564fb7c5e54">setValue</a> (const Real &amp;aValue)</td></tr>
@@ -279,6 +281,33 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="aff727141d73acddfae382e5e375f4640"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff727141d73acddfae382e5e375f4640">&#9670;&nbsp;</a></span>clone()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="classlibrary_1_1physics_1_1units_1_1_unit.html">Unit</a>* library::physics::units::Unit::clone </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classlibrary_1_1physics_1_1units_1_1_derived.html#a6328e9f5bcf35f1c587c20f9c3fdb497">library::physics::units::Derived</a>, <a class="el" href="classlibrary_1_1physics_1_1units_1_1_angle.html#add51af263128e384d3d89827d0f70dcf">library::physics::units::Angle</a>, <a class="el" href="classlibrary_1_1physics_1_1units_1_1_time.html#a8745ebee6707751e91137c3e87782b59">library::physics::units::Time</a>, <a class="el" href="classlibrary_1_1physics_1_1units_1_1_length.html#ae06162cf9f3d140a3b53e156a4cb3309">library::physics::units::Length</a>, and <a class="el" href="classlibrary_1_1physics_1_1units_1_1_mass.html#a7a09438b05edbe4b21a05ec234a6372f">library::physics::units::Mass</a>.</p>
+
+</div>
+</div>
 <a id="a4f4e6ba62e833324970a06c29685488a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4f4e6ba62e833324970a06c29685488a">&#9670;&nbsp;</a></span>getType()</h2>
 
@@ -411,8 +440,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aac05cb6ed1ea7c18c233a3381c81caf8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aac05cb6ed1ea7c18c233a3381c81caf8">&#9670;&nbsp;</a></span>toString()</h2>
+<a id="ad7364d457300e36413323c4aebce8029"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7364d457300e36413323c4aebce8029">&#9670;&nbsp;</a></span>toString()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -424,7 +453,7 @@ Public Member Functions</h2></td></tr>
           <td class="memname">virtual String library::physics::units::Unit::toString </td>
           <td>(</td>
           <td class="paramtype">const Integer &amp;&#160;</td>
-          <td class="paramname"><em>aPrecision</em></td><td>)</td>
+          <td class="paramname"><em>aPrecision</em> = <code>Integer::Undefined()</code></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -440,8 +469,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>include/Library/Physics/Units/<a class="el" href="_unit_8hpp_source.html">Unit.hpp</a></li>
-<li>src/Library/Physics/Units/<a class="el" href="_unit_8cpp.html">Unit.cpp</a></li>
+<li>include/Library/Physics/Units/<a class="el" href="_units_2_unit_8hpp_source.html">Unit.hpp</a></li>
+<li>src/Library/Physics/Units/<a class="el" href="_units_2_unit_8cpp.html">Unit.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

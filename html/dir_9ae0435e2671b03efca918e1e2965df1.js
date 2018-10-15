@@ -15,7 +15,7 @@ var dir_9ae0435e2671b03efca918e1e2965df1 =
     [ "Time.hpp", "_units_2_time_8hpp.html", [
       [ "Time", "classlibrary_1_1physics_1_1units_1_1_time.html", "classlibrary_1_1physics_1_1units_1_1_time" ]
     ] ],
-    [ "Unit.hpp", "_unit_8hpp.html", [
+    [ "Unit.hpp", "_units_2_unit_8hpp.html", [
       [ "Unit", "classlibrary_1_1physics_1_1units_1_1_unit.html", "classlibrary_1_1physics_1_1units_1_1_unit" ]
     ] ]
 ];

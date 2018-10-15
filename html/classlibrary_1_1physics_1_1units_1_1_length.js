@@ -9,6 +9,7 @@ var classlibrary_1_1physics_1_1units_1_1_length =
       [ "AstronomicalUnit", "classlibrary_1_1physics_1_1units_1_1_length.html#a3b8b39cd245cf6b19dc34459baeccb18aa05a35804c7e4fff8e02f5a58782f133", null ]
     ] ],
     [ "Length", "classlibrary_1_1physics_1_1units_1_1_length.html#a37acb2579b889c48c526be57208187c6", null ],
+    [ "clone", "classlibrary_1_1physics_1_1units_1_1_length.html#ae06162cf9f3d140a3b53e156a4cb3309", null ],
     [ "getUnit", "classlibrary_1_1physics_1_1units_1_1_length.html#ab0a44822f33903e24c3dc8021d185348", null ],
     [ "in", "classlibrary_1_1physics_1_1units_1_1_length.html#a8cabc872d3de8fe8c9abf9d09462a7e8", null ],
     [ "inKilometers", "classlibrary_1_1physics_1_1units_1_1_length.html#a0d57a97fc408ae0f1a5353d0ee5837aa", null ],

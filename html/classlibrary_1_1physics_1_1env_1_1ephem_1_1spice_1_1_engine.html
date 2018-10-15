@@ -78,8 +78,10 @@ $(document).ready(function(){initNavTree('classlibrary_1_1physics_1_1env_1_1ephe
 
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">library::physics::env::ephem::spice::Engine Class Reference</div>  </div>
@@ -91,25 +93,93 @@ $(document).ready(function(){initNavTree('classlibrary_1_1physics_1_1env_1_1ephe
 
 <p><code>#include &lt;<a class="el" href="_engine_8hpp_source.html">Engine.hpp</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a2d185a63bce354bff9ad38810410eab4"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#a2d185a63bce354bff9ad38810410eab4">Mode</a> { <a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#a2d185a63bce354bff9ad38810410eab4ae1ba155a9f2e8c3be94020eef32a0301">Mode::Manual</a>, 
+<a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#a2d185a63bce354bff9ad38810410eab4a086247a9b57fde6eefee2a0c4752242d">Mode::Automatic</a>
+ }<tr class="memdesc:a2d185a63bce354bff9ad38810410eab4"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html" title="SPICE Toolkit engine. ">Engine</a> mode.  <a href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#a2d185a63bce354bff9ad38810410eab4">More...</a><br /></td></tr>
+</td></tr>
+<tr class="separator:a2d185a63bce354bff9ad38810410eab4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a26bf9260d2730a6825a975c1a0b49b5b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#a26bf9260d2730a6825a975c1a0b49b5b">Engine</a> (const <a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html">Engine</a> &amp;aSpiceEngine)=delete</td></tr>
+<tr class="memdesc:a26bf9260d2730a6825a975c1a0b49b5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor (deleted)  <a href="#a26bf9260d2730a6825a975c1a0b49b5b">More...</a><br /></td></tr>
 <tr class="separator:a26bf9260d2730a6825a975c1a0b49b5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6aca23c8962df540725dc0e9fbb3eb47"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html">Engine</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#a6aca23c8962df540725dc0e9fbb3eb47">operator=</a> (const <a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html">Engine</a> &amp;aSpiceEngine)=delete</td></tr>
+<tr class="memdesc:a6aca23c8962df540725dc0e9fbb3eb47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy assignment operator (deleted)  <a href="#a6aca23c8962df540725dc0e9fbb3eb47">More...</a><br /></td></tr>
 <tr class="separator:a6aca23c8962df540725dc0e9fbb3eb47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36cc8408d86696192a623eb4bc4f41cc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#a36cc8408d86696192a623eb4bc4f41cc">isKernelLoaded</a> (const <a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel.html">Kernel</a> &amp;aKernel) const</td></tr>
+<tr class="memdesc:a36cc8408d86696192a623eb4bc4f41cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if kernel is loaded.  <a href="#a36cc8408d86696192a623eb4bc4f41cc">More...</a><br /></td></tr>
+<tr class="separator:a36cc8408d86696192a623eb4bc4f41cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50990662e08401c21b369365b332cd2e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#a2d185a63bce354bff9ad38810410eab4">Engine::Mode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#a50990662e08401c21b369365b332cd2e">getMode</a> () const</td></tr>
+<tr class="memdesc:a50990662e08401c21b369365b332cd2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get engine mode.  <a href="#a50990662e08401c21b369365b332cd2e">More...</a><br /></td></tr>
+<tr class="separator:a50990662e08401c21b369365b332cd2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af5bdad7a3783f772b726ac3f0cd09957"><td class="memItemLeft" align="right" valign="top">Shared&lt; const <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_frame.html">Frame</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#af5bdad7a3783f772b726ac3f0cd09957">getFrameOf</a> (const <a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#a86f1a863677210ba8884807cc725c0f8">SPICE::Object</a> &amp;aSpiceObject) const</td></tr>
+<tr class="memdesc:af5bdad7a3783f772b726ac3f0cd09957"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get frame of <a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html" title="SPICE Toolkit ephemeris. ">SPICE</a> object.  <a href="#af5bdad7a3783f772b726ac3f0cd09957">More...</a><br /></td></tr>
 <tr class="separator:af5bdad7a3783f772b726ac3f0cd09957"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada61913070593a15e7417ad300ae67d2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#ada61913070593a15e7417ad300ae67d2">loadKernel</a> (const File &amp;aKernelFile)</td></tr>
-<tr class="separator:ada61913070593a15e7417ad300ae67d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e4ba12bfad03f16aa64cdcc352ad777"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#a0e4ba12bfad03f16aa64cdcc352ad777">setMode</a> (const <a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#a2d185a63bce354bff9ad38810410eab4">Engine::Mode</a> &amp;aMode)</td></tr>
+<tr class="memdesc:a0e4ba12bfad03f16aa64cdcc352ad777"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set engine mode.  <a href="#a0e4ba12bfad03f16aa64cdcc352ad777">More...</a><br /></td></tr>
+<tr class="separator:a0e4ba12bfad03f16aa64cdcc352ad777"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4bc48d95aadb38a755e2aaf60acaf55"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#ad4bc48d95aadb38a755e2aaf60acaf55">loadKernel</a> (const <a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel.html">Kernel</a> &amp;aKernel)</td></tr>
+<tr class="memdesc:ad4bc48d95aadb38a755e2aaf60acaf55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load kernel.  <a href="#ad4bc48d95aadb38a755e2aaf60acaf55">More...</a><br /></td></tr>
+<tr class="separator:ad4bc48d95aadb38a755e2aaf60acaf55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00f5e8f4ad56ce48cf291b3a3356970f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#a00f5e8f4ad56ce48cf291b3a3356970f">unloadKernel</a> (const <a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel.html">Kernel</a> &amp;aKernel)</td></tr>
+<tr class="memdesc:a00f5e8f4ad56ce48cf291b3a3356970f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unload kernel.  <a href="#a00f5e8f4ad56ce48cf291b3a3356970f">More...</a><br /></td></tr>
+<tr class="separator:a00f5e8f4ad56ce48cf291b3a3356970f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a949c14d9c53ea21c29f1945ef43f0cd9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#a949c14d9c53ea21c29f1945ef43f0cd9">reset</a> ()</td></tr>
+<tr class="memdesc:a949c14d9c53ea21c29f1945ef43f0cd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset engine.  <a href="#a949c14d9c53ea21c29f1945ef43f0cd9">More...</a><br /></td></tr>
+<tr class="separator:a949c14d9c53ea21c29f1945ef43f0cd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a9d5058448b12c353edcf5a420cec2745"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html">Engine</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#a9d5058448b12c353edcf5a420cec2745">Get</a> ()</td></tr>
-<tr class="separator:a9d5058448b12c353edcf5a420cec2745"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5def9d4300f0673b2bc73f0703afeb1"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html">Engine</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#ae5def9d4300f0673b2bc73f0703afeb1">Get</a> (const <a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#a2d185a63bce354bff9ad38810410eab4">Engine::Mode</a> &amp;aMode=<a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#a2d185a63bce354bff9ad38810410eab4a086247a9b57fde6eefee2a0c4752242d">Engine::Mode::Automatic</a>)</td></tr>
+<tr class="memdesc:ae5def9d4300f0673b2bc73f0703afeb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get engine singleton.  <a href="#ae5def9d4300f0673b2bc73f0703afeb1">More...</a><br /></td></tr>
+<tr class="separator:ae5def9d4300f0673b2bc73f0703afeb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5963ba07fc5c8c58b439964a5666b527"><td class="memItemLeft" align="right" valign="top">static Array&lt; <a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel.html">Kernel</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#a5963ba07fc5c8c58b439964a5666b527">DefaultKernels</a> ()</td></tr>
+<tr class="memdesc:a5963ba07fc5c8c58b439964a5666b527"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get default kernels.  <a href="#a5963ba07fc5c8c58b439964a5666b527">More...</a><br /></td></tr>
+<tr class="separator:a5963ba07fc5c8c58b439964a5666b527"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a880dd680a3b5444757480fafd1a52679"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#a880dd680a3b5444757480fafd1a52679">operator&lt;&lt;</a> (std::ostream &amp;anOutputStream, const <a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html">Engine</a> &amp;anEngine)</td></tr>
+<tr class="memdesc:a880dd680a3b5444757480fafd1a52679"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output stream operator.  <a href="#a880dd680a3b5444757480fafd1a52679">More...</a><br /></td></tr>
+<tr class="separator:a880dd680a3b5444757480fafd1a52679"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html" title="SPICE Toolkit ephemeris. ">SPICE</a> Toolkit engine. </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+</div><h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="a2d185a63bce354bff9ad38810410eab4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d185a63bce354bff9ad38810410eab4">&#9670;&nbsp;</a></span>Mode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#a2d185a63bce354bff9ad38810410eab4">library::physics::env::ephem::spice::Engine::Mode</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html" title="SPICE Toolkit engine. ">Engine</a> mode. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a2d185a63bce354bff9ad38810410eab4ae1ba155a9f2e8c3be94020eef32a0301"></a>Manual&#160;</td><td class="fielddoc"><p>Manually load and unload kernels. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2d185a63bce354bff9ad38810410eab4a086247a9b57fde6eefee2a0c4752242d"></a>Automatic&#160;</td><td class="fielddoc"><p>Automatically fetch, load and unload kernels (from remote repositories) </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a26bf9260d2730a6825a975c1a0b49b5b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a26bf9260d2730a6825a975c1a0b49b5b">&#9670;&nbsp;</a></span>Engine()</h2>
 
@@ -134,11 +204,13 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Copy constructor (deleted) </p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a9d5058448b12c353edcf5a420cec2745"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9d5058448b12c353edcf5a420cec2745">&#9670;&nbsp;</a></span>Get()</h2>
+<a id="a5963ba07fc5c8c58b439964a5666b527"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5963ba07fc5c8c58b439964a5666b527">&#9670;&nbsp;</a></span>DefaultKernels()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -147,7 +219,7 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html">Engine</a> &amp; library::physics::env::ephem::spice::Engine::Get </td>
+          <td class="memname">Array&lt; <a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel.html">Kernel</a> &gt; library::physics::env::ephem::spice::Engine::DefaultKernels </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -159,6 +231,44 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Get default kernels. </p>
+<dl class="section return"><dt>Returns</dt><dd>Default kernels </dd></dl>
+
+</div>
+</div>
+<a id="ae5def9d4300f0673b2bc73f0703afeb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5def9d4300f0673b2bc73f0703afeb1">&#9670;&nbsp;</a></span>Get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html">Engine</a> &amp; library::physics::env::ephem::spice::Engine::Get </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#a2d185a63bce354bff9ad38810410eab4">Engine::Mode</a> &amp;&#160;</td>
+          <td class="paramname"><em>aMode</em> = <code><a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#a2d185a63bce354bff9ad38810410eab4a086247a9b57fde6eefee2a0c4752242d">Engine::Mode::Automatic</a></code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get engine singleton. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">(optional)</td><td>aMode An engine mode </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to engine </dd></dl>
 
 </div>
 </div>
@@ -178,10 +288,66 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Get frame of <a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html" title="SPICE Toolkit ephemeris. ">SPICE</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">A</td><td><a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html" title="SPICE Toolkit ephemeris. ">SPICE</a> object </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Frame of <a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html" title="SPICE Toolkit ephemeris. ">SPICE</a> object </dd></dl>
+
 </div>
 </div>
-<a id="ada61913070593a15e7417ad300ae67d2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ada61913070593a15e7417ad300ae67d2">&#9670;&nbsp;</a></span>loadKernel()</h2>
+<a id="a50990662e08401c21b369365b332cd2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50990662e08401c21b369365b332cd2e">&#9670;&nbsp;</a></span>getMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#a2d185a63bce354bff9ad38810410eab4">Engine::Mode</a> library::physics::env::ephem::spice::Engine::getMode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get engine mode. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html" title="SPICE Toolkit engine. ">Engine</a> mode </dd></dl>
+
+</div>
+</div>
+<a id="a36cc8408d86696192a623eb4bc4f41cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36cc8408d86696192a623eb4bc4f41cc">&#9670;&nbsp;</a></span>isKernelLoaded()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool library::physics::env::ephem::spice::Engine::isKernelLoaded </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel.html">Kernel</a> &amp;&#160;</td>
+          <td class="paramname"><em>aKernel</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns true if kernel is loaded. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">aKernel</td><td>A kernel </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if kernel is loaded </dd></dl>
+
+</div>
+</div>
+<a id="ad4bc48d95aadb38a755e2aaf60acaf55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4bc48d95aadb38a755e2aaf60acaf55">&#9670;&nbsp;</a></span>loadKernel()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -189,12 +355,20 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void library::physics::env::ephem::spice::Engine::loadKernel </td>
           <td>(</td>
-          <td class="paramtype">const File &amp;&#160;</td>
-          <td class="paramname"><em>aKernelFile</em></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel.html">Kernel</a> &amp;&#160;</td>
+          <td class="paramname"><em>aKernel</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Load kernel. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">aKernel</td><td>A kernel </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -221,6 +395,128 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Copy assignment operator (deleted) </p>
+
+</div>
+</div>
+<a id="a949c14d9c53ea21c29f1945ef43f0cd9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a949c14d9c53ea21c29f1945ef43f0cd9">&#9670;&nbsp;</a></span>reset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void library::physics::env::ephem::spice::Engine::reset </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reset engine. </p>
+<p>Unload all kernels and clear cache. </p>
+
+</div>
+</div>
+<a id="a0e4ba12bfad03f16aa64cdcc352ad777"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e4ba12bfad03f16aa64cdcc352ad777">&#9670;&nbsp;</a></span>setMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void library::physics::env::ephem::spice::Engine::setMode </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#a2d185a63bce354bff9ad38810410eab4">Engine::Mode</a> &amp;&#160;</td>
+          <td class="paramname"><em>aMode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set engine mode. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">aMode</td><td>An engine mode </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html" title="SPICE Toolkit engine. ">Engine</a> mode </dd></dl>
+
+</div>
+</div>
+<a id="a00f5e8f4ad56ce48cf291b3a3356970f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00f5e8f4ad56ce48cf291b3a3356970f">&#9670;&nbsp;</a></span>unloadKernel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void library::physics::env::ephem::spice::Engine::unloadKernel </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel.html">Kernel</a> &amp;&#160;</td>
+          <td class="paramname"><em>aKernel</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Unload kernel. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">aKernel</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="a880dd680a3b5444757480fafd1a52679"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a880dd680a3b5444757480fafd1a52679">&#9670;&nbsp;</a></span>operator<<</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>anOutputStream</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html">Engine</a> &amp;&#160;</td>
+          <td class="paramname"><em>anEngine</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Output stream operator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">anOutputStream</td><td>An output stream </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">anEngine</td><td>A <a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html" title="SPICE Toolkit ephemeris. ">SPICE</a> engine </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to output stream </dd></dl>
 
 </div>
 </div>

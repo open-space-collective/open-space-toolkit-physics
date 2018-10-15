@@ -12,7 +12,7 @@ var classlibrary_1_1physics_1_1coord_1_1_position =
     [ "isDefined", "classlibrary_1_1physics_1_1coord_1_1_position.html#ac13492ffe13b093bb26173089db1a24b", null ],
     [ "isNear", "classlibrary_1_1physics_1_1coord_1_1_position.html#a1fafd3a66e10d748f5a27e13d482acea", null ],
     [ "operator!=", "classlibrary_1_1physics_1_1coord_1_1_position.html#a78524e4b9328853ca6266defbe61fc7e", null ],
-    [ "operator=", "classlibrary_1_1physics_1_1coord_1_1_position.html#a5efd032c43ad551922c7ffcd71961090", null ],
+    [ "operator=", "classlibrary_1_1physics_1_1coord_1_1_position.html#af09db5e8cedf8a643ad8fc7632a8826f", null ],
     [ "operator==", "classlibrary_1_1physics_1_1coord_1_1_position.html#a520bfdf64e8f45f60e815ebc72012fde", null ],
     [ "toString", "classlibrary_1_1physics_1_1coord_1_1_position.html#ab88010154fdbcb36b0e25b3986bcc80c", null ],
     [ "operator<<", "classlibrary_1_1physics_1_1coord_1_1_position.html#aab9f362c268370239ccad2c8a6d0eaee", null ]

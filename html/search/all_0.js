@@ -39,9 +39,7 @@ var searchData=
   ['accessvalue',['accessValue',['../classlibrary_1_1physics_1_1units_1_1_unit.html#a836f37ccb8db8220064f6718d3236f32',1,'library::physics::units::Unit::accessValue() const'],['../classlibrary_1_1physics_1_1units_1_1_unit.html#a73cd28e6cae2cd36ab65bdeaf9814e8f',1,'library::physics::units::Unit::accessValue()']]],
   ['accessvelocity',['accessVelocity',['../classlibrary_1_1physics_1_1coord_1_1_transform.html#a376d079de305b16e05251bfe84ca2199',1,'library::physics::coord::Transform']]],
   ['active',['Active',['../classlibrary_1_1physics_1_1coord_1_1_transform.html#aa82ab1a4be06a10e7c8f004062fcc35d',1,'library::physics::coord::Transform::Active(const Instant &amp;anInstant, const Vector3d &amp;aTranslation, const Vector3d &amp;aVelocity, const Quaternion &amp;anOrientation, const Vector3d &amp;anAngularVelocity)'],['../classlibrary_1_1physics_1_1coord_1_1_transform.html#a4f19d7d232ce1fda0dcee16e4157db2ca4d3d769b812b6faa6b76e1a8abaece2d',1,'library::physics::coord::Transform::Active()']]],
-  ['addbulletina',['addBulletinA',['../classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager.html#a754e24a455c15f7d954718b0e6821e49',1,'library::physics::coord::frame::provider::iers::Manager']]],
   ['addcachedtransform',['addCachedTransform',['../classlibrary_1_1physics_1_1coord_1_1frame_1_1_manager.html#a4c1070c91adb2bccc92c685d3f7bfc0b',1,'library::physics::coord::frame::Manager']]],
-  ['addfinals2000a',['addFinals2000A',['../classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager.html#a28affac9f1340a79fc0f100af5105c42',1,'library::physics::coord::frame::provider::iers::Manager']]],
   ['addframe',['addFrame',['../classlibrary_1_1physics_1_1coord_1_1frame_1_1_manager.html#a65ef93583a62089cb3192527babddab6',1,'library::physics::coord::frame::Manager']]],
   ['aer',['AER',['../classlibrary_1_1physics_1_1coord_1_1spherical_1_1_a_e_r.html',1,'library::physics::coord::spherical::AER'],['../classlibrary_1_1physics_1_1coord_1_1spherical_1_1_a_e_r.html#a40e444abec38e14d0e592d6d0dd92829',1,'library::physics::coord::spherical::AER::AER()']]],
   ['aer_2ecpp',['AER.cpp',['../_a_e_r_8cpp.html',1,'']]],
@@ -61,6 +59,7 @@ var searchData=
   ['arcsecond',['Arcsecond',['../classlibrary_1_1physics_1_1units_1_1_angle.html#a3c329d415a61783b16ce481874cc5956a7839ceecae19481f2e21e0ce3e11d3aa',1,'library::physics::units::Angle']]],
   ['arcseconds',['Arcseconds',['../classlibrary_1_1physics_1_1units_1_1_angle.html#a04df20ae83aa3609c7e7ac5eaf013db9',1,'library::physics::units::Angle']]],
   ['astronomicalunit',['AstronomicalUnit',['../classlibrary_1_1physics_1_1units_1_1_length.html#a3b8b39cd245cf6b19dc34459baeccb18aa05a35804c7e4fff8e02f5a58782f133',1,'library::physics::units::Length']]],
+  ['automatic',['Automatic',['../classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager.html#a84f44554ac04c5e18ed7ff448debf392a086247a9b57fde6eefee2a0c4752242d',1,'library::physics::coord::frame::provider::iers::Manager::Automatic()'],['../classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#a2d185a63bce354bff9ad38810410eab4a086247a9b57fde6eefee2a0c4752242d',1,'library::physics::env::ephem::spice::Engine::Automatic()']]],
   ['axes',['Axes',['../classlibrary_1_1physics_1_1coord_1_1_axes.html',1,'library::physics::coord::Axes'],['../classlibrary_1_1physics_1_1coord_1_1_axes.html#ac4db55f930e0038c8d1e3223d3911952',1,'library::physics::coord::Axes::Axes()']]],
   ['axes_2ecpp',['Axes.cpp',['../_axes_8cpp.html',1,'']]],
   ['axes_2ehpp',['Axes.hpp',['../_axes_8hpp.html',1,'']]]

@@ -12,6 +12,7 @@ var classlibrary_1_1physics_1_1units_1_1_time =
       [ "Week", "classlibrary_1_1physics_1_1units_1_1_time.html#ab876a6a05c9a2f28905f2753bfd64109ad2ce009594dcc60befa6a4e6cbeb71fc", null ]
     ] ],
     [ "Time", "classlibrary_1_1physics_1_1units_1_1_time.html#a60e2228b16ea9156a4c5ede4d7b141e5", null ],
+    [ "clone", "classlibrary_1_1physics_1_1units_1_1_time.html#a8745ebee6707751e91137c3e87782b59", null ],
     [ "isDefined", "classlibrary_1_1physics_1_1units_1_1_time.html#ab62163386c3253277c5ba71782261cad", null ],
     [ "toString", "classlibrary_1_1physics_1_1units_1_1_time.html#a6f56977493a45d334bb53bc4246888c4", null ]
 ];

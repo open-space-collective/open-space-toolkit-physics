@@ -1,0 +1,140 @@
+\hypertarget{classlibrary_1_1physics_1_1data_1_1_vector}{}\section{library\+:\+:physics\+:\+:data\+:\+:Vector Class Reference}
+\label{classlibrary_1_1physics_1_1data_1_1_vector}\index{library\+::physics\+::data\+::\+Vector@{library\+::physics\+::data\+::\+Vector}}
+
+
+\hyperlink{classlibrary_1_1physics_1_1data_1_1_vector}{Vector} quantity.  
+
+
+
+
+{\ttfamily \#include $<$Vector.\+hpp$>$}
+
+Inheritance diagram for library\+:\+:physics\+:\+:data\+:\+:Vector\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classlibrary_1_1physics_1_1data_1_1_vector}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classlibrary_1_1physics_1_1data_1_1_vector_a1e94a0820c3d865d5c30214ad180da4b}{Vector} (const Vector3d \&a\+Value, const \hyperlink{classlibrary_1_1physics_1_1_unit}{Unit} \&a\+Unit, const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+Frame\+S\+Ptr)
+\item 
+bool \hyperlink{classlibrary_1_1physics_1_1data_1_1_vector_a1fd3ad788a7cf055b94e41ea3d144dcf}{operator==} (const \hyperlink{classlibrary_1_1physics_1_1data_1_1_vector}{Vector} \&a\+Vector) const
+\item 
+bool \hyperlink{classlibrary_1_1physics_1_1data_1_1_vector_a18ee3fb47062c710c17f4e07a02d2718}{operator!=} (const \hyperlink{classlibrary_1_1physics_1_1data_1_1_vector}{Vector} \&a\+Vector) const
+\item 
+bool \hyperlink{classlibrary_1_1physics_1_1data_1_1_vector_a6da3d60255221e61124c2f98811116c5}{is\+Defined} () const
+\item 
+Vector3d \hyperlink{classlibrary_1_1physics_1_1data_1_1_vector_ae15343639a44b9b4c5f613e56b50e3a6}{get\+Value} () const
+\item 
+\hyperlink{classlibrary_1_1physics_1_1_unit}{Unit} \hyperlink{classlibrary_1_1physics_1_1data_1_1_vector_a647b1c8a5e20595d0a845315b986c83e}{get\+Unit} () const
+\item 
+Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \hyperlink{classlibrary_1_1physics_1_1data_1_1_vector_aca18b6c7aca796a7aa75c7cbd18da953}{get\+Frame} () const
+\item 
+\hyperlink{classlibrary_1_1physics_1_1data_1_1_vector}{Vector} \hyperlink{classlibrary_1_1physics_1_1data_1_1_vector_a3d39e6e9951f1698d72d0077dc7bfc07}{in\+Unit} (const \hyperlink{classlibrary_1_1physics_1_1_unit}{Unit} \&a\+Unit) const
+\item 
+\hyperlink{classlibrary_1_1physics_1_1data_1_1_vector}{Vector} \hyperlink{classlibrary_1_1physics_1_1data_1_1_vector_ae9375ac11960387b3d93f59501878eff}{in\+Frame} (const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+Frame\+S\+Ptr, const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant) const
+\item 
+String \hyperlink{classlibrary_1_1physics_1_1data_1_1_vector_adce52d653ad603ab2b4ef20cf477fada}{to\+String} (const Integer \&a\+Precision=Integer\+::\+Undefined()) const
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classlibrary_1_1physics_1_1data_1_1_vector}{Vector} \hyperlink{classlibrary_1_1physics_1_1data_1_1_vector_a75b4dda1e2ddffc9ee76b2c5e9ff2aaf}{Undefined} ()
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \hyperlink{classlibrary_1_1physics_1_1data_1_1_vector_a2f1253dbad20965d2209456421eabf71}{operator$<$$<$} (std\+::ostream \&an\+Output\+Stream, const \hyperlink{classlibrary_1_1physics_1_1data_1_1_vector}{Vector} \&a\+Vector)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classlibrary_1_1physics_1_1data_1_1_vector}{Vector} quantity. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1data_1_1_vector_a1e94a0820c3d865d5c30214ad180da4b}\label{classlibrary_1_1physics_1_1data_1_1_vector_a1e94a0820c3d865d5c30214ad180da4b}} 
+\index{library\+::physics\+::data\+::\+Vector@{library\+::physics\+::data\+::\+Vector}!Vector@{Vector}}
+\index{Vector@{Vector}!library\+::physics\+::data\+::\+Vector@{library\+::physics\+::data\+::\+Vector}}
+\subsubsection{\texorpdfstring{Vector()}{Vector()}}
+{\footnotesize\ttfamily library\+::physics\+::data\+::\+Vector\+::\+Vector (\begin{DoxyParamCaption}\item[{const Vector3d \&}]{a\+Value,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1_unit}{Unit} \&}]{a\+Unit,  }\item[{const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+Frame\+S\+Ptr }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1data_1_1_vector_aca18b6c7aca796a7aa75c7cbd18da953}\label{classlibrary_1_1physics_1_1data_1_1_vector_aca18b6c7aca796a7aa75c7cbd18da953}} 
+\index{library\+::physics\+::data\+::\+Vector@{library\+::physics\+::data\+::\+Vector}!get\+Frame@{get\+Frame}}
+\index{get\+Frame@{get\+Frame}!library\+::physics\+::data\+::\+Vector@{library\+::physics\+::data\+::\+Vector}}
+\subsubsection{\texorpdfstring{get\+Frame()}{getFrame()}}
+{\footnotesize\ttfamily Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ library\+::physics\+::data\+::\+Vector\+::get\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1data_1_1_vector_a647b1c8a5e20595d0a845315b986c83e}\label{classlibrary_1_1physics_1_1data_1_1_vector_a647b1c8a5e20595d0a845315b986c83e}} 
+\index{library\+::physics\+::data\+::\+Vector@{library\+::physics\+::data\+::\+Vector}!get\+Unit@{get\+Unit}}
+\index{get\+Unit@{get\+Unit}!library\+::physics\+::data\+::\+Vector@{library\+::physics\+::data\+::\+Vector}}
+\subsubsection{\texorpdfstring{get\+Unit()}{getUnit()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1_unit}{Unit} library\+::physics\+::data\+::\+Vector\+::get\+Unit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1data_1_1_vector_ae15343639a44b9b4c5f613e56b50e3a6}\label{classlibrary_1_1physics_1_1data_1_1_vector_ae15343639a44b9b4c5f613e56b50e3a6}} 
+\index{library\+::physics\+::data\+::\+Vector@{library\+::physics\+::data\+::\+Vector}!get\+Value@{get\+Value}}
+\index{get\+Value@{get\+Value}!library\+::physics\+::data\+::\+Vector@{library\+::physics\+::data\+::\+Vector}}
+\subsubsection{\texorpdfstring{get\+Value()}{getValue()}}
+{\footnotesize\ttfamily Vector3d library\+::physics\+::data\+::\+Vector\+::get\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1data_1_1_vector_ae9375ac11960387b3d93f59501878eff}\label{classlibrary_1_1physics_1_1data_1_1_vector_ae9375ac11960387b3d93f59501878eff}} 
+\index{library\+::physics\+::data\+::\+Vector@{library\+::physics\+::data\+::\+Vector}!in\+Frame@{in\+Frame}}
+\index{in\+Frame@{in\+Frame}!library\+::physics\+::data\+::\+Vector@{library\+::physics\+::data\+::\+Vector}}
+\subsubsection{\texorpdfstring{in\+Frame()}{inFrame()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1data_1_1_vector}{Vector} library\+::physics\+::data\+::\+Vector\+::in\+Frame (\begin{DoxyParamCaption}\item[{const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+Frame\+S\+Ptr,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1data_1_1_vector_a3d39e6e9951f1698d72d0077dc7bfc07}\label{classlibrary_1_1physics_1_1data_1_1_vector_a3d39e6e9951f1698d72d0077dc7bfc07}} 
+\index{library\+::physics\+::data\+::\+Vector@{library\+::physics\+::data\+::\+Vector}!in\+Unit@{in\+Unit}}
+\index{in\+Unit@{in\+Unit}!library\+::physics\+::data\+::\+Vector@{library\+::physics\+::data\+::\+Vector}}
+\subsubsection{\texorpdfstring{in\+Unit()}{inUnit()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1data_1_1_vector}{Vector} library\+::physics\+::data\+::\+Vector\+::in\+Unit (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1_unit}{Unit} \&}]{a\+Unit }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1data_1_1_vector_a6da3d60255221e61124c2f98811116c5}\label{classlibrary_1_1physics_1_1data_1_1_vector_a6da3d60255221e61124c2f98811116c5}} 
+\index{library\+::physics\+::data\+::\+Vector@{library\+::physics\+::data\+::\+Vector}!is\+Defined@{is\+Defined}}
+\index{is\+Defined@{is\+Defined}!library\+::physics\+::data\+::\+Vector@{library\+::physics\+::data\+::\+Vector}}
+\subsubsection{\texorpdfstring{is\+Defined()}{isDefined()}}
+{\footnotesize\ttfamily bool library\+::physics\+::data\+::\+Vector\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1data_1_1_vector_a18ee3fb47062c710c17f4e07a02d2718}\label{classlibrary_1_1physics_1_1data_1_1_vector_a18ee3fb47062c710c17f4e07a02d2718}} 
+\index{library\+::physics\+::data\+::\+Vector@{library\+::physics\+::data\+::\+Vector}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!library\+::physics\+::data\+::\+Vector@{library\+::physics\+::data\+::\+Vector}}
+\subsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool library\+::physics\+::data\+::\+Vector\+::operator!= (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1data_1_1_vector}{Vector} \&}]{a\+Vector }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1data_1_1_vector_a1fd3ad788a7cf055b94e41ea3d144dcf}\label{classlibrary_1_1physics_1_1data_1_1_vector_a1fd3ad788a7cf055b94e41ea3d144dcf}} 
+\index{library\+::physics\+::data\+::\+Vector@{library\+::physics\+::data\+::\+Vector}!operator==@{operator==}}
+\index{operator==@{operator==}!library\+::physics\+::data\+::\+Vector@{library\+::physics\+::data\+::\+Vector}}
+\subsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool library\+::physics\+::data\+::\+Vector\+::operator== (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1data_1_1_vector}{Vector} \&}]{a\+Vector }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1data_1_1_vector_adce52d653ad603ab2b4ef20cf477fada}\label{classlibrary_1_1physics_1_1data_1_1_vector_adce52d653ad603ab2b4ef20cf477fada}} 
+\index{library\+::physics\+::data\+::\+Vector@{library\+::physics\+::data\+::\+Vector}!to\+String@{to\+String}}
+\index{to\+String@{to\+String}!library\+::physics\+::data\+::\+Vector@{library\+::physics\+::data\+::\+Vector}}
+\subsubsection{\texorpdfstring{to\+String()}{toString()}}
+{\footnotesize\ttfamily String library\+::physics\+::data\+::\+Vector\+::to\+String (\begin{DoxyParamCaption}\item[{const Integer \&}]{a\+Precision = {\ttfamily Integer\+:\+:Undefined()} }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1data_1_1_vector_a75b4dda1e2ddffc9ee76b2c5e9ff2aaf}\label{classlibrary_1_1physics_1_1data_1_1_vector_a75b4dda1e2ddffc9ee76b2c5e9ff2aaf}} 
+\index{library\+::physics\+::data\+::\+Vector@{library\+::physics\+::data\+::\+Vector}!Undefined@{Undefined}}
+\index{Undefined@{Undefined}!library\+::physics\+::data\+::\+Vector@{library\+::physics\+::data\+::\+Vector}}
+\subsubsection{\texorpdfstring{Undefined()}{Undefined()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1data_1_1_vector}{Vector} library\+::physics\+::data\+::\+Vector\+::\+Undefined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\subsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1data_1_1_vector_a2f1253dbad20965d2209456421eabf71}\label{classlibrary_1_1physics_1_1data_1_1_vector_a2f1253dbad20965d2209456421eabf71}} 
+\index{library\+::physics\+::data\+::\+Vector@{library\+::physics\+::data\+::\+Vector}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!library\+::physics\+::data\+::\+Vector@{library\+::physics\+::data\+::\+Vector}}
+\subsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{an\+Output\+Stream,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1data_1_1_vector}{Vector} \&}]{a\+Vector }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Library/\+Physics/\+Data/\hyperlink{_vector_8hpp}{Vector.\+hpp}\item 
+src/\+Library/\+Physics/\+Data/\hyperlink{_vector_8cpp}{Vector.\+cpp}\end{DoxyCompactItemize}

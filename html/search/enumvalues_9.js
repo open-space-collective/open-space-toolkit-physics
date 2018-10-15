@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['kilogram',['Kilogram',['../classlibrary_1_1physics_1_1units_1_1_mass.html#a95f1e0434bc16794926b8e273bc2a54ba9d71f8d145c74f11bf9b02047645bcf4',1,'library::physics::units::Mass']]]
+  ['jupiter',['Jupiter',['../classlibrary_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#a86f1a863677210ba8884807cc725c0f8a89c5c30498c2989611f9044be006197c',1,'library::physics::env::ephem::SPICE']]]
 ];
