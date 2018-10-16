@@ -52,12 +52,12 @@ RUN pushd /tmp > /dev/null \
  && dnf clean all \
  && popd > /dev/null
 
-## Library ▸ I/O [0.1.3]
+## Library ▸ I/O [0.1.4]
 
 RUN mkdir -p /tmp/library-io \
  && pushd /tmp/library-io > /dev/null \
- && wget --quiet https://github.com/open-space-collective/library-io/releases/download/0.1.3/library-io-0.1.3-1.x86_64-runtime.rpm \
- && wget --quiet https://github.com/open-space-collective/library-io/releases/download/0.1.3/library-io-0.1.3-1.x86_64-devel.rpm \
+ && wget --quiet https://github.com/open-space-collective/library-io/releases/download/0.1.4/library-io-0.1.4-1.x86_64-runtime.rpm \
+ && wget --quiet https://github.com/open-space-collective/library-io/releases/download/0.1.4/library-io-0.1.4-1.x86_64-devel.rpm \
  && dnf install -y ./*.rpm \
  && rm -rf /tmp/library-io \
  && popd > /dev/null
