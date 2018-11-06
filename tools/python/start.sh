@@ -15,6 +15,18 @@ pushd "${script_directory}" > /dev/null
 
 source ../.env
 
+# Build Docker image if it does not exist already
+
+if [[ "$(docker images -q ${repository_name}/${project_name}-python 2> /dev/null)" == "" ]]; then
+
+    pushd "${script_directory}/docker" > /dev/null
+
+    ./build.sh
+
+    popd
+
+fi
+
 if [[ ! -z $1 ]] && [[ $1 == "--link" ]]; then
 
     docker run \
@@ -31,7 +43,7 @@ if [[ ! -z $1 ]] && [[ $1 == "--link" ]]; then
     --volume="${project_directory}/lib:/opt/lib:ro" \
     --volume="${project_directory}/bindings/python/docs:/home/jovyan/docs" \
     --volume="${project_directory}/tutorials/python/notebooks:/home/jovyan/tutorials" \
-    --volume="${project_directory}/share/data:/app/share/data" \
+    --volume="${project_directory}/share:/var/library-physics" \
     --workdir="/home/jovyan" \
     "${repository_name}/${project_name}-python" \
     bash -c "mkdir -p /opt/conda/lib/python3.6/site-packages/Library/Core \
@@ -62,7 +74,7 @@ else
     --volume="${project_directory}/lib:/opt/lib:ro" \
     --volume="${project_directory}/bindings/python/docs:/home/jovyan/docs" \
     --volume="${project_directory}/tutorials/python/notebooks:/home/jovyan/tutorials" \
-    --volume="${project_directory}/share/data:/app/share/data" \
+    --volume="${project_directory}/share:/var/library-physics" \
     --workdir="/home/jovyan" \
     "${repository_name}/${project_name}-python" \
     bash -c "mkdir -p /opt/conda/lib/python3.6/site-packages/Library/Physics \

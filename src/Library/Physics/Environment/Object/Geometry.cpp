@@ -234,7 +234,7 @@ Geometry                        Geometry::in                                (   
     const Vector3d translationVector = transform.getOrientation() * transform.getTranslation() ;
 
     const Transformation transformation = Transformation::Translation(translationVector) * Transformation::Rotation(rotationMatrix) ;
-    
+
     Composite composite = composite_ ;
 
     composite.applyTransformation(transformation) ;

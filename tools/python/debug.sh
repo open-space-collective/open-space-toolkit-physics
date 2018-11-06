@@ -30,7 +30,7 @@ if [[ ! -z $1 ]] && [[ $1 == "--link" ]]; then
     --volume="${project_directory}/lib:/opt/lib:ro" \
     --volume="${project_directory}/bindings/python/docs:/home/jovyan/docs" \
     --volume="${project_directory}/tutorials/python/notebooks:/home/jovyan/tutorials" \
-    --volume="${project_directory}/share/data:/app/share/data" \
+    --volume="${project_directory}/share:/var/library-physics" \
     --volume="${script_directory}/helpers:/home/jovyan/notebooks/helpers:ro" \
     --workdir="/home/jovyan/notebooks" \
     "${repository_name}/${project_name}-python-debug" \
@@ -61,7 +61,7 @@ else
     --volume="${project_directory}/lib:/opt/lib:ro" \
     --volume="${project_directory}/bindings/python/docs:/home/jovyan/docs" \
     --volume="${project_directory}/tutorials/python/notebooks:/home/jovyan/tutorials" \
-    --volume="${project_directory}/share/data:/app/share/data" \
+    --volume="${project_directory}/share:/var/library-physics" \
     --volume="${script_directory}/helpers:/home/jovyan/notebooks/helpers:ro" \
     --workdir="/home/jovyan/notebooks" \
     "${repository_name}/${project_name}-python-debug" \

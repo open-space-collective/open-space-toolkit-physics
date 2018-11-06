@@ -10,6 +10,8 @@
 #ifndef __Library_Physics_Coordinate_Axes__
 #define __Library_Physics_Coordinate_Axes__
 
+#include <Library/Physics/Time/Instant.hpp>
+
 #include <Library/Mathematics/Objects/Vector.hpp>
 
 #include <Library/Core/Types/Shared.hpp>
@@ -29,6 +31,8 @@ using library::core::types::Shared ;
 
 using library::math::obj::Vector3d ;
 
+using library::physics::time::Instant ;
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 class Frame ;
@@ -45,7 +49,7 @@ class Axes
                                 Axes                                        (   const   Vector3d&                   aXAxis,
                                                                                 const   Vector3d&                   aYAxis,
                                                                                 const   Vector3d&                   aZAxis,
-                                                                                const   Shared<const Frame>&        aFrame                                      ) ;
+                                                                                const   Shared<const Frame>&        aFrameSPtr                                  ) ;
 
         bool                    operator ==                                 (   const   Axes&                       anAxes                                      ) const ;
         
@@ -61,6 +65,11 @@ class Axes
         const Vector3d&         y                                           ( ) const ;
 
         const Vector3d&         z                                           ( ) const ;
+
+        Shared<const Frame>     getFrame                                    ( ) const ;
+
+        Axes                    inFrame                                     (   const   Shared<const Frame>&        aFrameSPtr,
+                                                                                const   Instant&                    anInstant                                   ) const ;
 
         static Axes             Undefined                                   ( ) ;
 

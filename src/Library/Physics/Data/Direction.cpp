@@ -10,6 +10,7 @@
 #include <Library/Physics/Data/Direction.hpp>
 #include <Library/Physics/Unit.hpp>
 
+#include <Library/Core/Types/Real.hpp>
 #include <Library/Core/Error.hpp>
 #include <Library/Core/Utilities.hpp>
 
@@ -24,6 +25,8 @@ namespace data
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using library::core::types::Real ;
+
 using library::physics::Unit ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -33,7 +36,7 @@ using library::physics::Unit ;
                                 :   Vector(aValue.normalized(), Unit::None(), aFrameSPtr)
 {
 
-    if (aValue.norm() != 1.0)
+    if (std::abs(aValue.norm() - 1.0) > Real::Epsilon())
     {
         throw library::core::error::RuntimeError("Direction vector is not unitary [{}].", aValue.norm()) ;
     }
