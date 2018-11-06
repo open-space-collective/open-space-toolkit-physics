@@ -27,11 +27,11 @@ namespace coord
                                 Axes::Axes                                  (   const   Vector3d&                   aXAxis,
                                                                                 const   Vector3d&                   aYAxis,
                                                                                 const   Vector3d&                   aZAxis,
-                                                                                const   Shared<const Frame>&        aFrame                                      )
+                                                                                const   Shared<const Frame>&        aFrameSPtr                                  )
                                 :   x_(aXAxis),
                                     y_(aYAxis),
                                     z_(aZAxis),
-                                    frameSPtr_(aFrame)
+                                    frameSPtr_(aFrameSPtr)
 {
 
 }
@@ -111,9 +111,48 @@ const Vector3d&                 Axes::z                                     ( ) 
 
 }
 
+Shared<const Frame>             Axes::getFrame                              ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Axes") ;
+    }
+
+    return frameSPtr_ ;
+
+}
+
+Axes                            Axes::inFrame                               (   const   Shared<const Frame>&        aFrameSPtr,
+                                                                                const   Instant&                    anInstant                                   ) const
+{
+
+    using library::physics::coord::Transform ;
+
+    if ((aFrameSPtr == nullptr) && (!aFrameSPtr->isDefined()))
+    {
+        throw library::core::error::runtime::Undefined("Frame") ;
+    }
+
+    if (!anInstant.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Instant") ;
+    }
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Axes") ;
+    }
+
+    const Transform transform = frameSPtr_->getTransformTo(aFrameSPtr, anInstant) ;
+
+    return { transform.applyToVector(x_).normalized(), transform.applyToVector(y_).normalized(), transform.applyToVector(z_).normalized(), aFrameSPtr } ;
+
+}
+
 Axes                            Axes::Undefined                             ( )
 {
-    return Axes(Vector3d::Undefined(), Vector3d::Undefined(), Vector3d::Undefined(), nullptr) ;
+    return { Vector3d::Undefined(), Vector3d::Undefined(), Vector3d::Undefined(), nullptr } ;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

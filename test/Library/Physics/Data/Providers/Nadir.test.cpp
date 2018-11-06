@@ -18,11 +18,11 @@ TEST (Library_Physics_Data_Providers_Nadir, Nadir)
 
     using library::math::obj::Vector3d ;
 
-    using library::physics::data::Direction ;
     using library::physics::coord::Position ;
     using library::physics::coord::Frame ;
     using library::physics::Environment ;
     using library::physics::env::obj::Celestial ;
+    using library::physics::data::Direction ;
     using library::physics::data::providers::Nadir ;
 
     {

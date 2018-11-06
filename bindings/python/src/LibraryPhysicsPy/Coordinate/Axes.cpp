@@ -36,6 +36,8 @@ inline void                     LibraryPhysicsPy_Coordinate_Axes            ( )
         .def("x", +[] (const Axes& anAxes) -> Vector3d { return anAxes.x() ; })
         .def("y", +[] (const Axes& anAxes) -> Vector3d { return anAxes.y() ; })
         .def("z", +[] (const Axes& anAxes) -> Vector3d { return anAxes.z() ; })
+        .def("getFrame", &Axes::getFrame)
+        .def("inFrame", &Axes::inFrame)
         
         .def("Undefined", &Axes::Undefined).staticmethod("Undefined")
 

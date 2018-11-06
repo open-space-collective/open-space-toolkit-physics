@@ -13,6 +13,8 @@
 #include <Library/Core/Error.hpp>
 #include <Library/Core/Utilities.hpp>
 
+#include <boost/stacktrace.hpp>
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 namespace library
@@ -209,6 +211,7 @@ Position                        Position::inFrame                           (   
 
     if (!this->isDefined())
     {
+        std::cout << boost::stacktrace::stacktrace() ;
         throw library::core::error::runtime::Undefined("Position") ;
     }
 

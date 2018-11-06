@@ -150,7 +150,7 @@ class Frame : public std::enable_shared_from_this<Frame>
         String                  name_ ;
         bool                    quasiInertial_ ;
         Shared<const Frame>     parentFrameSPtr_ ;
-        Shared<const Provider>  providerSPtr_ ; // Provides transform from parent to instance
+        Shared<const Provider>  providerSPtr_ ; // Provides transform from parent to instance -> Unique<> instead?
 
         Uint8                   getDepth                                    ( ) const ;
 
