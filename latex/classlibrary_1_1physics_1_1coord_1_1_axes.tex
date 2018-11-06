@@ -12,7 +12,7 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classlibrary_1_1physics_1_1coord_1_1_axes_ac4db55f930e0038c8d1e3223d3911952}{Axes} (const Vector3d \&a\+X\+Axis, const Vector3d \&a\+Y\+Axis, const Vector3d \&a\+Z\+Axis, const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+Frame)
+\hyperlink{classlibrary_1_1physics_1_1coord_1_1_axes_a1af682b7f36ff1d594e6d93c56f7bf1d}{Axes} (const Vector3d \&a\+X\+Axis, const Vector3d \&a\+Y\+Axis, const Vector3d \&a\+Z\+Axis, const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+Frame\+S\+Ptr)
 \item 
 bool \hyperlink{classlibrary_1_1physics_1_1coord_1_1_axes_ace61547b524226237b377644201f62dd}{operator==} (const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_axes}{Axes} \&an\+Axes) const
 \item 
@@ -25,6 +25,10 @@ const Vector3d \& \hyperlink{classlibrary_1_1physics_1_1coord_1_1_axes_acb94f5b4
 const Vector3d \& \hyperlink{classlibrary_1_1physics_1_1coord_1_1_axes_ae777cb405641d9f71d07ec706787b217}{y} () const
 \item 
 const Vector3d \& \hyperlink{classlibrary_1_1physics_1_1coord_1_1_axes_a22fa1ae49680fc2c4e8e7e905e472301}{z} () const
+\item 
+Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \hyperlink{classlibrary_1_1physics_1_1coord_1_1_axes_a117493dc268795fd00a785c9cc373259}{get\+Frame} () const
+\item 
+\hyperlink{classlibrary_1_1physics_1_1coord_1_1_axes}{Axes} \hyperlink{classlibrary_1_1physics_1_1coord_1_1_axes_af2d10c4af1b5b8165f1d75bdd5c3d882}{in\+Frame} (const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+Frame\+S\+Ptr, const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant) const
 \end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -42,15 +46,27 @@ std\+::ostream \& \hyperlink{classlibrary_1_1physics_1_1coord_1_1_axes_a0ed7e604
 \hyperlink{classlibrary_1_1physics_1_1coord_1_1_axes}{Axes}. 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1_axes_ac4db55f930e0038c8d1e3223d3911952}\label{classlibrary_1_1physics_1_1coord_1_1_axes_ac4db55f930e0038c8d1e3223d3911952}} 
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1_axes_a1af682b7f36ff1d594e6d93c56f7bf1d}\label{classlibrary_1_1physics_1_1coord_1_1_axes_a1af682b7f36ff1d594e6d93c56f7bf1d}} 
 \index{library\+::physics\+::coord\+::\+Axes@{library\+::physics\+::coord\+::\+Axes}!Axes@{Axes}}
 \index{Axes@{Axes}!library\+::physics\+::coord\+::\+Axes@{library\+::physics\+::coord\+::\+Axes}}
 \subsubsection{\texorpdfstring{Axes()}{Axes()}}
-{\footnotesize\ttfamily library\+::physics\+::coord\+::\+Axes\+::\+Axes (\begin{DoxyParamCaption}\item[{const Vector3d \&}]{a\+X\+Axis,  }\item[{const Vector3d \&}]{a\+Y\+Axis,  }\item[{const Vector3d \&}]{a\+Z\+Axis,  }\item[{const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+Frame }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily library\+::physics\+::coord\+::\+Axes\+::\+Axes (\begin{DoxyParamCaption}\item[{const Vector3d \&}]{a\+X\+Axis,  }\item[{const Vector3d \&}]{a\+Y\+Axis,  }\item[{const Vector3d \&}]{a\+Z\+Axis,  }\item[{const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+Frame\+S\+Ptr }\end{DoxyParamCaption})}
 
 
 
 \subsection{Member Function Documentation}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1_axes_a117493dc268795fd00a785c9cc373259}\label{classlibrary_1_1physics_1_1coord_1_1_axes_a117493dc268795fd00a785c9cc373259}} 
+\index{library\+::physics\+::coord\+::\+Axes@{library\+::physics\+::coord\+::\+Axes}!get\+Frame@{get\+Frame}}
+\index{get\+Frame@{get\+Frame}!library\+::physics\+::coord\+::\+Axes@{library\+::physics\+::coord\+::\+Axes}}
+\subsubsection{\texorpdfstring{get\+Frame()}{getFrame()}}
+{\footnotesize\ttfamily Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ library\+::physics\+::coord\+::\+Axes\+::get\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1_axes_af2d10c4af1b5b8165f1d75bdd5c3d882}\label{classlibrary_1_1physics_1_1coord_1_1_axes_af2d10c4af1b5b8165f1d75bdd5c3d882}} 
+\index{library\+::physics\+::coord\+::\+Axes@{library\+::physics\+::coord\+::\+Axes}!in\+Frame@{in\+Frame}}
+\index{in\+Frame@{in\+Frame}!library\+::physics\+::coord\+::\+Axes@{library\+::physics\+::coord\+::\+Axes}}
+\subsubsection{\texorpdfstring{in\+Frame()}{inFrame()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1coord_1_1_axes}{Axes} library\+::physics\+::coord\+::\+Axes\+::in\+Frame (\begin{DoxyParamCaption}\item[{const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+Frame\+S\+Ptr,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption}) const}
+
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1_axes_a5f03439d03d6f22449bdea28e22bb074}\label{classlibrary_1_1physics_1_1coord_1_1_axes_a5f03439d03d6f22449bdea28e22bb074}} 
 \index{library\+::physics\+::coord\+::\+Axes@{library\+::physics\+::coord\+::\+Axes}!is\+Defined@{is\+Defined}}
 \index{is\+Defined@{is\+Defined}!library\+::physics\+::coord\+::\+Axes@{library\+::physics\+::coord\+::\+Axes}}

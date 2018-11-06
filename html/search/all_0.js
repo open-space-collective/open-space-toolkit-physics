@@ -60,7 +60,7 @@ var searchData=
   ['arcseconds',['Arcseconds',['../classlibrary_1_1physics_1_1units_1_1_angle.html#a04df20ae83aa3609c7e7ac5eaf013db9',1,'library::physics::units::Angle']]],
   ['astronomicalunit',['AstronomicalUnit',['../classlibrary_1_1physics_1_1units_1_1_length.html#a3b8b39cd245cf6b19dc34459baeccb18aa05a35804c7e4fff8e02f5a58782f133',1,'library::physics::units::Length']]],
   ['automatic',['Automatic',['../classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager.html#a84f44554ac04c5e18ed7ff448debf392a086247a9b57fde6eefee2a0c4752242d',1,'library::physics::coord::frame::provider::iers::Manager::Automatic()'],['../classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#a2d185a63bce354bff9ad38810410eab4a086247a9b57fde6eefee2a0c4752242d',1,'library::physics::env::ephem::spice::Engine::Automatic()']]],
-  ['axes',['Axes',['../classlibrary_1_1physics_1_1coord_1_1_axes.html',1,'library::physics::coord::Axes'],['../classlibrary_1_1physics_1_1coord_1_1_axes.html#ac4db55f930e0038c8d1e3223d3911952',1,'library::physics::coord::Axes::Axes()']]],
+  ['axes',['Axes',['../classlibrary_1_1physics_1_1coord_1_1_axes.html',1,'library::physics::coord::Axes'],['../classlibrary_1_1physics_1_1coord_1_1_axes.html#a1af682b7f36ff1d594e6d93c56f7bf1d',1,'library::physics::coord::Axes::Axes()']]],
   ['axes_2ecpp',['Axes.cpp',['../_axes_8cpp.html',1,'']]],
   ['axes_2ehpp',['Axes.hpp',['../_axes_8hpp.html',1,'']]]
 ];

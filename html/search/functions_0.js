@@ -49,5 +49,5 @@ var searchData=
   ['applytovelocity',['applyToVelocity',['../classlibrary_1_1physics_1_1coord_1_1_transform.html#a017c1ec77f5ddda3f7d93dd63a9a6d3f',1,'library::physics::coord::Transform']]],
   ['arcminutes',['Arcminutes',['../classlibrary_1_1physics_1_1units_1_1_angle.html#a52f391389a2d59b327b5206e2ee24645',1,'library::physics::units::Angle']]],
   ['arcseconds',['Arcseconds',['../classlibrary_1_1physics_1_1units_1_1_angle.html#a04df20ae83aa3609c7e7ac5eaf013db9',1,'library::physics::units::Angle']]],
-  ['axes',['Axes',['../classlibrary_1_1physics_1_1coord_1_1_axes.html#ac4db55f930e0038c8d1e3223d3911952',1,'library::physics::coord::Axes']]]
+  ['axes',['Axes',['../classlibrary_1_1physics_1_1coord_1_1_axes.html#a1af682b7f36ff1d594e6d93c56f7bf1d',1,'library::physics::coord::Axes']]]
 ];

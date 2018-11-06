@@ -14,7 +14,7 @@ var searchData=
   ['index',['Index',['../classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_index.html',1,'library::physics::env::ephem::spice']]],
   ['index_2ecpp',['Index.cpp',['../_index_8cpp.html',1,'']]],
   ['index_2ehpp',['Index.hpp',['../_index_8hpp.html',1,'']]],
-  ['inframe',['inFrame',['../classlibrary_1_1physics_1_1coord_1_1_position.html#adc0e64905c2463bcaf9d53a08b3426fb',1,'library::physics::coord::Position::inFrame()'],['../classlibrary_1_1physics_1_1coord_1_1_velocity.html#a2c6cf9ff38a1352b3e87578e0d2cb132',1,'library::physics::coord::Velocity::inFrame()'],['../classlibrary_1_1physics_1_1data_1_1_vector.html#ae9375ac11960387b3d93f59501878eff',1,'library::physics::data::Vector::inFrame()']]],
+  ['inframe',['inFrame',['../classlibrary_1_1physics_1_1coord_1_1_axes.html#af2d10c4af1b5b8165f1d75bdd5c3d882',1,'library::physics::coord::Axes::inFrame()'],['../classlibrary_1_1physics_1_1coord_1_1_position.html#adc0e64905c2463bcaf9d53a08b3426fb',1,'library::physics::coord::Position::inFrame()'],['../classlibrary_1_1physics_1_1coord_1_1_velocity.html#a2c6cf9ff38a1352b3e87578e0d2cb132',1,'library::physics::coord::Velocity::inFrame()'],['../classlibrary_1_1physics_1_1data_1_1_vector.html#ae9375ac11960387b3d93f59501878eff',1,'library::physics::data::Vector::inFrame()']]],
   ['inhours',['inHours',['../classlibrary_1_1physics_1_1time_1_1_duration.html#a1f5e207d7c6f7b62d3cfee13e75dfa48',1,'library::physics::time::Duration']]],
   ['inkilometers',['inKilometers',['../classlibrary_1_1physics_1_1units_1_1_length.html#a0d57a97fc408ae0f1a5353d0ee5837aa',1,'library::physics::units::Length']]],
   ['inmeters',['inMeters',['../classlibrary_1_1physics_1_1units_1_1_length.html#ae8064733601131d3ccf1e5d53ecaf001',1,'library::physics::units::Length']]],

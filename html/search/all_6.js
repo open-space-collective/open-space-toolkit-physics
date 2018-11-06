@@ -32,7 +32,7 @@ var searchData=
   ['getfinals2000aat',['getFinals2000AAt',['../classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager.html#a7e419906c184e80e78b1538c929b9fc1',1,'library::physics::coord::frame::provider::iers::Manager']]],
   ['getflattening',['getFlattening',['../classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#aac48ed47a25a10c120f066995dc3c6d4',1,'library::physics::env::obj::Celestial']]],
   ['getfloatingseconds',['getFloatingSeconds',['../classlibrary_1_1physics_1_1time_1_1_time.html#adfbd0fd8b766f43a6f3a8bdccd8852fb',1,'library::physics::time::Time']]],
-  ['getframe',['getFrame',['../classlibrary_1_1physics_1_1data_1_1_vector.html#aca18b6c7aca796a7aa75c7cbd18da953',1,'library::physics::data::Vector']]],
+  ['getframe',['getFrame',['../classlibrary_1_1physics_1_1coord_1_1_axes.html#a117493dc268795fd00a785c9cc373259',1,'library::physics::coord::Axes::getFrame()'],['../classlibrary_1_1physics_1_1data_1_1_vector.html#aca18b6c7aca796a7aa75c7cbd18da953',1,'library::physics::data::Vector::getFrame()']]],
   ['getframeat',['getFrameAt',['../classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#ad1dfffd88b216eccf83a9441cae304be',1,'library::physics::env::obj::Celestial']]],
   ['getframeof',['getFrameOf',['../classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#af5bdad7a3783f772b726ac3f0cd09957',1,'library::physics::env::ephem::spice::Engine']]],
   ['getgeometry',['getGeometry',['../classlibrary_1_1physics_1_1env_1_1_object.html#a504f76c6e6da18b531972e6f26329255',1,'library::physics::env::Object']]],

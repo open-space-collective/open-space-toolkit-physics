@@ -1,5 +1,7 @@
 var NAVTREEINDEX2 =
 {
+"classlibrary_1_1physics_1_1coord_1_1spherical_1_1_l_l_a.html#a9784847b6e35cf506896e6810ec73f23":[4,0,0,0,0,1,1,4],
+"classlibrary_1_1physics_1_1coord_1_1spherical_1_1_l_l_a.html#aed6303008da6b6c85c3abdda2bd63c24":[4,0,0,0,0,1,1,9],
 "classlibrary_1_1physics_1_1coord_1_1spherical_1_1_l_l_a.html#af18b9011d2df6c1120e0f770ab1eb909":[4,0,0,0,0,1,1,0],
 "classlibrary_1_1physics_1_1data_1_1_direction.html":[4,0,0,0,1,0],
 "classlibrary_1_1physics_1_1data_1_1_direction.html#a2f1253dbad20965d2209456421eabf71":[4,0,0,0,1,0,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX2 =
 "classlibrary_1_1physics_1_1time_1_1_duration.html#a5dad1e24c78cd7ef13a4220eb4e73dd0":[4,0,0,0,3,2,8],
 "classlibrary_1_1physics_1_1time_1_1_duration.html#a620feff807a95ea439fdfdd5cf5490b2":[4,0,0,0,3,2,25],
 "classlibrary_1_1physics_1_1time_1_1_duration.html#a65db73a28d87e3f06d307cbd688739a3":[4,0,0,0,3,2,5],
-"classlibrary_1_1physics_1_1time_1_1_duration.html#a69c9501a4432aac49cecd9d47da7c4f6":[4,0,0,0,3,2,14],
-"classlibrary_1_1physics_1_1time_1_1_duration.html#a6aea6dbe11b3199e63ee29a851c3fc16":[4,0,0,0,3,2,26],
-"classlibrary_1_1physics_1_1time_1_1_duration.html#a73ebd929416f360ff5c4c840fbcae67b":[4,0,0,0,3,2,12]
+"classlibrary_1_1physics_1_1time_1_1_duration.html#a69c9501a4432aac49cecd9d47da7c4f6":[4,0,0,0,3,2,14]
 };
