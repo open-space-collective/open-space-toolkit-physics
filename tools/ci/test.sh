@@ -5,7 +5,7 @@
 # @project        Library/Physics
 # @file           tools/ci/test.sh
 # @author         Lucas Brémond <lucas@loftorbital.com>
-# @license        TBD
+# @license        Apache License 2.0
 
 ################################################################################################################################################################
 

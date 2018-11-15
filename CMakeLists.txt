@@ -3,7 +3,7 @@
 # @project        Library/Physics
 # @file           CMakeLists.txt
 # @author         Lucas Brémond <lucas@loftorbital.com>
-# @license        TBD
+# @license        Apache License 2.0
 
 ################################################################################################################################################################
 
@@ -13,7 +13,7 @@ SET (PROJECT_NAME "LibraryPhysics")
 SET (PROJECT_DESCRIPTION "Physics library.")
 SET (PROJECT_PATH "Library/Physics")
 SET (PROJECT_PACKAGE_NAME "library-physics")
-SET (PROJECT_LICENSE "TBD")
+SET (PROJECT_LICENSE "Apache License 2.0")
 SET (PROJECT_VENDOR_ID "org.open-space-collective")
 SET (PROJECT_VENDOR_NAME "Open Space Collective")
 SET (PROJECT_VENDOR_CONTACT "contact@open-space-collective.org")

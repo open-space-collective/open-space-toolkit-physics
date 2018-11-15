@@ -5,7 +5,7 @@
 # @project        Library/Physics
 # @file           LibraryPhysicsPy/Time/Instant.py
 # @author         Lucas Brémond <lucas@loftorbital.com>
-# @license        TBD
+# @license        Apache License 2.0
 
 ################################################################################################################################################################
 
