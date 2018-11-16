@@ -28,7 +28,7 @@ namespace frame
 bool                            Manager::hasFrameWithName                   (   const   String&                     aFrameName                                  ) const
 {
 
-    const std::lock_guard<std::mutex> lock(mutex_) ;
+    const std::lock_guard<std::mutex> lock { mutex_ } ;
 
     return frameMap_.find(aFrameName) != frameMap_.end() ;
 
@@ -37,7 +37,7 @@ bool                            Manager::hasFrameWithName                   (   
 Shared<const Frame>             Manager::accessFrameWithName                (   const   String&                     aFrameName                                  ) const
 {
 
-    const std::lock_guard<std::mutex> lock(mutex_) ;
+    const std::lock_guard<std::mutex> lock { mutex_ } ;
 
     const auto frameMapIt = frameMap_.find(aFrameName) ;
 
@@ -57,7 +57,7 @@ const Transform*                Manager::accessCachedTransform              (   
                                                                                 const   Instant&                    anInstant                                   ) const
 {
 
-    const std::lock_guard<std::mutex> lock(mutex_) ;
+    const std::lock_guard<std::mutex> lock { mutex_ } ;
 
     const auto transformCacheFromFrameIt = transformCache_.find(aFromFrameSPtr.get()) ;
 
@@ -92,7 +92,7 @@ void                            Manager::addFrame                           (   
         throw library::core::error::runtime::Undefined("Frame") ;
     }
 
-    const std::lock_guard<std::mutex> lock(mutex_) ;
+    const std::lock_guard<std::mutex> lock { mutex_ } ;
 
     // std::cout << "Manager :: addFrame | Frame @ " << aFrameSPtr.get() << std::endl ;
 
@@ -106,7 +106,7 @@ void                            Manager::addFrame                           (   
 void                            Manager::removeFrameWithName                (   const   String&                     aFrameName                                  )
 {
 
-    const std::lock_guard<std::mutex> lock(mutex_) ;
+    const std::lock_guard<std::mutex> lock { mutex_ } ;
 
     const auto frameMapIt = frameMap_.find(aFrameName) ;
 
@@ -154,7 +154,7 @@ void                            Manager::addCachedTransform                 (   
                                                                                 const   Transform&                  aTransform                                  )
 {
 
-    const std::lock_guard<std::mutex> lock(mutex_) ;
+    const std::lock_guard<std::mutex> lock { mutex_ } ;
 
     const auto transformCacheFromFrameIt = transformCache_.insert({ aFromFrameSPtr.get(), {} }).first ;
     const auto transformCacheToFrameIt = transformCacheFromFrameIt->second.insert({ aToFrameSPtr.get(), {} }).first ;

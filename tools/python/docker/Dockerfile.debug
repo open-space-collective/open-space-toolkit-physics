@@ -7,10 +7,10 @@
 
 ################################################################################################################################################################
 
-ARG repository_name
-ARG project_name
+ARG image_name
+ARG image_version
 
-FROM ${repository_name}/${project_name}-python:latest
+FROM ${image_name}-python:${image_version}
 
 LABEL maintainer="lucas@loftorbital.com"
 

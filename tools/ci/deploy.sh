@@ -27,7 +27,7 @@ docker run \
 --workdir="/app/build" \
 --env="TWINE_USERNAME=${PYPI_USERNAME}" \
 --env="TWINE_PASSWORD=${PYPI_PASSWORD}" \
-${image_name} \
+${image_name}:${image_version} \
 /bin/bash -c "make publish"
 
 ################################################################################################################################################################

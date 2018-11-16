@@ -40,7 +40,7 @@ namespace spice
 Directory                       Manager::getLocalRepository                 ( ) const
 {
 
-    const std::lock_guard<std::mutex> lock(mutex_) ;
+    const std::lock_guard<std::mutex> lock { mutex_ } ;
 
     return localRepository_ ;
 
@@ -49,37 +49,9 @@ Directory                       Manager::getLocalRepository                 ( ) 
 URL                             Manager::getRemoteUrl                       ( ) const
 {
 
-    const std::lock_guard<std::mutex> lock(mutex_) ;
+    const std::lock_guard<std::mutex> lock { mutex_ } ;
 
     return remoteUrl_ ;
-
-}
-
-void                            Manager::setLocalRepository                 (   const   Directory&                  aDirectory                                  )
-{
-
-    if (!aDirectory.isDefined())
-    {
-        throw library::core::error::runtime::Undefined("Directory") ;
-    }
-
-    const std::lock_guard<std::mutex> lock(mutex_) ;
-
-    localRepository_ = aDirectory ;
-
-}
-
-void                            Manager::setRemoteUrl                       (   const   URL&                        aRemoteUrl                                  )
-{
-
-    if (!aRemoteUrl.isDefined())
-    {
-        throw library::core::error::runtime::Undefined("Remote URL") ;
-    }
-
-    const std::lock_guard<std::mutex> lock(mutex_) ;
-
-    remoteUrl_ = aRemoteUrl ;
 
 }
 
@@ -87,6 +59,8 @@ void                            Manager::fetchKernel                        (   
 {
 
     using library::io::ip::tcp::http::Client ;
+
+    const std::lock_guard<std::mutex> lock { mutex_ } ;
 
     if (!aKernel.isDefined())
     {
@@ -100,7 +74,7 @@ void                            Manager::fetchKernel                        (   
         throw library::core::error::RuntimeError("Kernel file [{}] already exists.", kernelFile.toString()) ;
     }
 
-    this->updateIndex() ;
+    const_cast<Manager*>(this)->updateIndex() ;
 
     const URL remoteUrl = index_.getRemoteUrlOfKernel(aKernel) ;
 
@@ -120,22 +94,85 @@ Array<Kernel>                   Manager::fetchMatchingKernels               (   
 
     using library::io::ip::tcp::http::Client ;
 
-    this->updateIndex() ;
+    const std::lock_guard<std::mutex> lock { mutex_ } ;
 
-    Array<Kernel> matchingKernels = Array<Kernel>::Empty() ;
-
-    for (const auto& remoteUrl : index_.findRemoteUrls(aRegex))
+    const auto fetch = [&] () -> Array<Kernel>
     {
 
-        const File fetchedKernelFile = Client::Fetch(remoteUrl, localRepository_) ;
+        const_cast<Manager*>(this)->updateIndex() ;
 
-        const Kernel fetchedKernel = { Kernel::TypeFromFileExtension(fetchedKernelFile.getExtension()), fetchedKernelFile } ;
+        Array<Kernel> matchingKernels = Array<Kernel>::Empty() ;
 
-        matchingKernels.add(fetchedKernel) ;
+        for (const auto& remoteUrl : index_.findRemoteUrls(aRegex))
+        {
+
+            const File fetchedKernelFile = Client::Fetch(remoteUrl, localRepository_) ;
+
+            const Kernel fetchedKernel = { Kernel::TypeFromFileExtension(fetchedKernelFile.getExtension()), fetchedKernelFile } ;
+
+            matchingKernels.add(fetchedKernel) ;
+
+        }
+
+        return matchingKernels ;
+
+    } ;
+
+    // [TBM] This is a quick hack, should be improved
+
+    try
+    {
+        return fetch() ;
+    }
+    catch (const library::core::error::Exception& anException)
+    {
+        
+        const_cast<Manager*>(this)->flushIndex() ;
+    
+        const_cast<Manager*>(this)->updateIndex() ;
 
     }
 
-    return matchingKernels ;
+    return fetch() ;
+
+}
+
+void                            Manager::setLocalRepository                 (   const   Directory&                  aDirectory                                  )
+{
+
+    if (!aDirectory.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Directory") ;
+    }
+
+    const std::lock_guard<std::mutex> lock { mutex_ } ;
+
+    localRepository_ = aDirectory ;
+
+}
+
+void                            Manager::setRemoteUrl                       (   const   URL&                        aRemoteUrl                                  )
+{
+
+    if (!aRemoteUrl.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Remote URL") ;
+    }
+
+    const std::lock_guard<std::mutex> lock { mutex_ } ;
+
+    remoteUrl_ = aRemoteUrl ;
+
+}
+
+void                            Manager::refresh                            ( )
+{
+
+    const std::lock_guard<std::mutex> lock { mutex_ } ;
+
+    this->flushIndex() ;
+    
+    this->updateIndex() ;
 
 }
 
@@ -176,7 +213,7 @@ URL                             Manager::DefaultRemoteUrl                   ( )
     
 }
 
-void                            Manager::updateIndex                        ( ) const
+void                            Manager::updateIndex                        ( )
 {
 
     if (!indexFile_.exists())
@@ -202,7 +239,7 @@ void                            Manager::updateIndex                        ( ) 
 
 }
 
-void                            Manager::fetchIndexAt                       (   const   URL&                        aUrl                                        ) const
+void                            Manager::fetchIndexAt                       (   const   URL&                        aUrl                                        )
 {
 
     using library::core::types::Index ;
