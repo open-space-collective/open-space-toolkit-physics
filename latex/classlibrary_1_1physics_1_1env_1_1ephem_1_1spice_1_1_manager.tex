@@ -20,14 +20,16 @@ Directory \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manage
 \begin{DoxyCompactList}\small\item\em Get local repository. \end{DoxyCompactList}\item 
 U\+RL \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a583bd086060b607e617ee1676fa54f67}{get\+Remote\+Url} () const
 \begin{DoxyCompactList}\small\item\em Get remote U\+RL. \end{DoxyCompactList}\item 
+void \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a52e06b9cc1180effbd4bdd30cc488bb4}{fetch\+Kernel} (const \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel} \&a\+Kernel) const
+\begin{DoxyCompactList}\small\item\em Fetch kernel from remote. \end{DoxyCompactList}\item 
+Array$<$ \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel} $>$ \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_ac6f9fa45224f6f1116e66ae2c32e3e65}{fetch\+Matching\+Kernels} (const std\+::regex \&a\+Regex) const
+\begin{DoxyCompactList}\small\item\em Fetch kernels matching regular expression. \end{DoxyCompactList}\item 
 void \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a98450d702f95a67b53fe3f08ba6e8625}{set\+Local\+Repository} (const Directory \&a\+Directory)
 \begin{DoxyCompactList}\small\item\em Set local repository. \end{DoxyCompactList}\item 
 void \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_acddf543ad7c3ba467311166dc2192458}{set\+Remote\+Url} (const U\+RL \&a\+Remote\+Url)
 \begin{DoxyCompactList}\small\item\em Set remote U\+RL. \end{DoxyCompactList}\item 
-void \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a52e06b9cc1180effbd4bdd30cc488bb4}{fetch\+Kernel} (const \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel} \&a\+Kernel) const
-\begin{DoxyCompactList}\small\item\em Fetch kernel from remote. \end{DoxyCompactList}\item 
-Array$<$ \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel} $>$ \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_ac6f9fa45224f6f1116e66ae2c32e3e65}{fetch\+Matching\+Kernels} (const std\+::regex \&a\+Regex) const
-\begin{DoxyCompactList}\small\item\em Fetch kernels matching regular expression. \end{DoxyCompactList}\end{DoxyCompactItemize}
+void \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_ae09ea8ee9bb108497fad079308d9becd}{refresh} ()
+\begin{DoxyCompactList}\small\item\em Refresh manager. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -166,7 +168,17 @@ Remote U\+RL
 
 Copy assignment operator (deleted) 
 
-\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a98450d702f95a67b53fe3f08ba6e8625}\label{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a98450d702f95a67b53fe3f08ba6e8625}} 
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_ae09ea8ee9bb108497fad079308d9becd}\label{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_ae09ea8ee9bb108497fad079308d9becd}} 
+\index{library\+::physics\+::env\+::ephem\+::spice\+::\+Manager@{library\+::physics\+::env\+::ephem\+::spice\+::\+Manager}!refresh@{refresh}}
+\index{refresh@{refresh}!library\+::physics\+::env\+::ephem\+::spice\+::\+Manager@{library\+::physics\+::env\+::ephem\+::spice\+::\+Manager}}
+\subsubsection{\texorpdfstring{refresh()}{refresh()}}
+{\footnotesize\ttfamily void library\+::physics\+::env\+::ephem\+::spice\+::\+Manager\+::refresh (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Refresh manager. 
+
+This will re-\/fetch a new index. \mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a98450d702f95a67b53fe3f08ba6e8625}\label{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a98450d702f95a67b53fe3f08ba6e8625}} 
 \index{library\+::physics\+::env\+::ephem\+::spice\+::\+Manager@{library\+::physics\+::env\+::ephem\+::spice\+::\+Manager}!set\+Local\+Repository@{set\+Local\+Repository}}
 \index{set\+Local\+Repository@{set\+Local\+Repository}!library\+::physics\+::env\+::ephem\+::spice\+::\+Manager@{library\+::physics\+::env\+::ephem\+::spice\+::\+Manager}}
 \subsubsection{\texorpdfstring{set\+Local\+Repository()}{setLocalRepository()}}

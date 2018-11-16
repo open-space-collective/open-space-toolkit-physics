@@ -128,11 +128,12 @@ var NAVTREEINDEX2 =
 "classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager.html#a52e06b9cc1180effbd4bdd30cc488bb4":[4,0,0,0,2,0,0,3,1],
 "classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager.html#a583bd086060b607e617ee1676fa54f67":[4,0,0,0,2,0,0,3,4],
 "classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager.html#a88cdb0d3353d86f1eabad722cfb8ba2b":[4,0,0,0,2,0,0,3,3],
-"classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager.html#a98450d702f95a67b53fe3f08ba6e8625":[4,0,0,0,2,0,0,3,6],
+"classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager.html#a98450d702f95a67b53fe3f08ba6e8625":[4,0,0,0,2,0,0,3,7],
 "classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager.html#a9cefb3ab334147e42eaadaa1229b0048":[4,0,0,0,2,0,0,3,5],
 "classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager.html#aa4ec6e585791cf27dfa66a3b0ced57fb":[4,0,0,0,2,0,0,3,0],
 "classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager.html#ac6f9fa45224f6f1116e66ae2c32e3e65":[4,0,0,0,2,0,0,3,2],
-"classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager.html#acddf543ad7c3ba467311166dc2192458":[4,0,0,0,2,0,0,3,7],
+"classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager.html#acddf543ad7c3ba467311166dc2192458":[4,0,0,0,2,0,0,3,8],
+"classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager.html#ae09ea8ee9bb108497fad079308d9becd":[4,0,0,0,2,0,0,3,6],
 "classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html":[4,0,0,0,2,1,1],
 "classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#a2b16a76f609891450356457de13c26d8":[4,0,0,0,2,1,1,20],
 "classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#a3740b398dca520bd50862f67c29ab8e7":[4,0,0,0,2,1,1,14],
@@ -248,6 +249,5 @@ var NAVTREEINDEX2 =
 "classlibrary_1_1physics_1_1time_1_1_duration.html#a510b18495d52c34ebd34e3bb9bf723e6":[4,0,0,0,3,2,27],
 "classlibrary_1_1physics_1_1time_1_1_duration.html#a5dad1e24c78cd7ef13a4220eb4e73dd0":[4,0,0,0,3,2,8],
 "classlibrary_1_1physics_1_1time_1_1_duration.html#a620feff807a95ea439fdfdd5cf5490b2":[4,0,0,0,3,2,25],
-"classlibrary_1_1physics_1_1time_1_1_duration.html#a65db73a28d87e3f06d307cbd688739a3":[4,0,0,0,3,2,5],
-"classlibrary_1_1physics_1_1time_1_1_duration.html#a69c9501a4432aac49cecd9d47da7c4f6":[4,0,0,0,3,2,14]
+"classlibrary_1_1physics_1_1time_1_1_duration.html#a65db73a28d87e3f06d307cbd688739a3":[4,0,0,0,3,2,5]
 };

@@ -6,6 +6,7 @@ var classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager =
     [ "getLocalRepository", "classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager.html#a88cdb0d3353d86f1eabad722cfb8ba2b", null ],
     [ "getRemoteUrl", "classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager.html#a583bd086060b607e617ee1676fa54f67", null ],
     [ "operator=", "classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager.html#a9cefb3ab334147e42eaadaa1229b0048", null ],
+    [ "refresh", "classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager.html#ae09ea8ee9bb108497fad079308d9becd", null ],
     [ "setLocalRepository", "classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager.html#a98450d702f95a67b53fe3f08ba6e8625", null ],
     [ "setRemoteUrl", "classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager.html#acddf543ad7c3ba467311166dc2192458", null ]
 ];

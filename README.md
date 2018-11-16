@@ -8,15 +8,15 @@ Physical units, time, reference frames, environment modeling.
 [![Documentation](https://img.shields.io/readthedocs/pip/stable.svg)](https://open-space-collective.github.io/library-physics)
 [![GitHub version](https://badge.fury.io/gh/open-space-collective%2Flibrary-physics.svg)](https://badge.fury.io/gh/open-space-collective%2Flibrary-physics)
 [![PyPI version](https://badge.fury.io/py/LibraryPhysicsPy.svg)](https://badge.fury.io/py/LibraryPhysicsPy)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ## Warning
 
-Library **name** and **license** are yet to be defined.
+Library **name** is yet to be defined.
 
 Please check the following projects:
 
 - [Naming Project](https://github.com/orgs/open-space-collective/projects/1)
-- [Licensing Project](https://github.com/orgs/open-space-collective/projects/2)
 
 *⚠ This library is still under heavy development. Do not use!*
 
@@ -164,9 +164,9 @@ The **Physics** library internally uses the following dependencies:
 | Eigen         | 3.3.4      | MPL2                                                       | [eigen.tuxfamily.org](http://eigen.tuxfamily.org/index.php)                                                          |
 | IAU SOFA      | 2018-01-30 | [SOFA Software License](http://www.iausofa.org/tandc.html) | [www.iausofa.org](http://www.iausofa.org)                                                                            |
 | SPICE Toolkit | N0066      | [NAIF](https://naif.jpl.nasa.gov/naif/rules.html)          | [naif.jpl.nasa.gov/naif/toolkit.html](https://naif.jpl.nasa.gov/naif/toolkit.html)                                   |
-| Core          | master     | TBD                                                        | [github.com/open-space-collective/library-core](https://github.com/open-space-collective/library-core)               |
-| I/O           | master     | TBD                                                        | [github.com/open-space-collective/library-io](https://github.com/open-space-collective/library-io)                   |
-| Mathematics   | master     | TBD                                                        | [github.com/open-space-collective/library-mathematics](https://github.com/open-space-collective/library-mathematics) |
+| Core          | master     | Apache License 2.0                                         | [github.com/open-space-collective/library-core](https://github.com/open-space-collective/library-core)               |
+| I/O           | master     | Apache License 2.0                                         | [github.com/open-space-collective/library-io](https://github.com/open-space-collective/library-io)                   |
+| Mathematics   | master     | Apache License 2.0                                         | [github.com/open-space-collective/library-mathematics](https://github.com/open-space-collective/library-mathematics) |
 
 ## Contribution
 
@@ -180,4 +180,4 @@ Please read our [contributing guide](CONTRIBUTING.md) to learn about our develop
 
 ## License
 
-*To be defined...*
+Apache License 2.0
