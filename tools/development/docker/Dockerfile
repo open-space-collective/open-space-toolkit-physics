@@ -3,17 +3,13 @@
 # @project        Library/Physics
 # @file           tools/development/docker/Dockerfile
 # @author         Lucas Brémond <lucas@loftorbital.com>
-# @license        TBD
+# @license        Apache License 2.0
 
 ################################################################################################################################################################
 
-FROM openspacecollective/library-mathematics:0.1.13
+FROM openspacecollective/library-mathematics:0.1.14
 
 LABEL maintainer="lucas@loftorbital.com"
-
-# Arguments
-
-ARG cpu_count=1
 
 # Dependencies
 
@@ -28,7 +24,7 @@ RUN pushd /tmp > /dev/null \
  && pattern="CFLAGF = -c -pedantic -Wall -W -O" \
  && target="CFLAGF = -c -pedantic -Wall -W -O -fpic" \
  && sed -i -e 's,'"$pattern"','"$target"',g' makefile \
- && make -j ${cpu_count} \
+ && make -j $(nproc) \
  && mkdir /usr/local/include/sofa \
  && cp -r *.h /usr/local/include/sofa \
  && cp -r *.a /usr/local/lib \
@@ -52,33 +48,33 @@ RUN pushd /tmp > /dev/null \
  && dnf clean all \
  && popd > /dev/null
 
-## Library ▸ I/O [0.1.6]
+## Library ▸ I/O [0.2.0]
 
 RUN mkdir -p /tmp/library-io \
  && pushd /tmp/library-io > /dev/null \
- && wget --quiet https://github.com/open-space-collective/library-io/releases/download/0.1.6/library-io-0.1.6-1.x86_64-runtime.rpm \
- && wget --quiet https://github.com/open-space-collective/library-io/releases/download/0.1.6/library-io-0.1.6-1.x86_64-devel.rpm \
+ && wget --quiet https://github.com/open-space-collective/library-io/releases/download/0.2.0/library-io-0.2.0-1.x86_64-runtime.rpm \
+ && wget --quiet https://github.com/open-space-collective/library-io/releases/download/0.2.0/library-io-0.2.0-1.x86_64-devel.rpm \
  && dnf install -y ./*.rpm \
  && rm -rf /tmp/library-io \
  && popd > /dev/null
 
-## Library ▸ Mathematics [0.1.15]
+## Library ▸ Mathematics [0.2.0]
 
 RUN mkdir -p /tmp/library-mathematics \
  && pushd /tmp/library-mathematics > /dev/null \
- && wget --quiet https://github.com/open-space-collective/library-mathematics/releases/download/0.1.15/library-mathematics-0.1.15-1.x86_64-runtime.rpm \
- && wget --quiet https://github.com/open-space-collective/library-mathematics/releases/download/0.1.15/library-mathematics-0.1.15-1.x86_64-devel.rpm \
+ && wget --quiet https://github.com/open-space-collective/library-mathematics/releases/download/0.2.0/library-mathematics-0.2.0-1.x86_64-runtime.rpm \
+ && wget --quiet https://github.com/open-space-collective/library-mathematics/releases/download/0.2.0/library-mathematics-0.2.0-1.x86_64-devel.rpm \
  && dnf install -y ./*.rpm \
  && rm -rf /tmp/library-mathematics \
  && popd > /dev/null
 
 # Labels
 
-ARG version
+ARG VERSION
 
-ENV version ${version}
+ENV VERSION ${VERSION}
 
-LABEL version="${version}"
+LABEL VERSION="${VERSION}"
 
 # Execution
 

@@ -3,7 +3,7 @@
 /// @project        Library/Physics
 /// @file           Library/Physics/Coordinate/Frame/Providers/IERS/Manager.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
-/// @license        TBD
+/// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -46,7 +46,7 @@ namespace iers
 Manager::Mode                   Manager::getMode                            ( ) const
 {
 
-    std::lock_guard<std::mutex> lock(mutex_) ;
+    std::lock_guard<std::mutex> lock { mutex_ } ;
 
     return mode_ ;
 
@@ -55,7 +55,7 @@ Manager::Mode                   Manager::getMode                            ( ) 
 Directory                       Manager::getLocalRepository                 ( ) const
 {
 
-    std::lock_guard<std::mutex> lock(mutex_) ;
+    std::lock_guard<std::mutex> lock { mutex_ } ;
 
     return localRepository_ ;
 
@@ -64,7 +64,7 @@ Directory                       Manager::getLocalRepository                 ( ) 
 URL                             Manager::getRemoteUrl                       ( ) const
 {
 
-    const std::lock_guard<std::mutex> lock(mutex_) ;
+    const std::lock_guard<std::mutex> lock { mutex_ } ;
 
     return remoteUrl_ ;
 
@@ -78,7 +78,7 @@ BulletinA                       Manager::getBulletinAAt                     (   
         throw library::core::error::runtime::Undefined("Instant") ;
     }
 
-    std::lock_guard<std::mutex> lock(mutex_) ;
+    std::lock_guard<std::mutex> lock { mutex_ } ;
 
     const BulletinA* bulletinAPtr = this->accessBulletinAAt(anInstant) ;
 
@@ -99,7 +99,7 @@ Finals2000A                     Manager::getFinals2000AAt                   (   
         throw library::core::error::runtime::Undefined("Instant") ;
     }
 
-    std::lock_guard<std::mutex> lock(mutex_) ;
+    std::lock_guard<std::mutex> lock { mutex_ } ;
 
     const Finals2000A* finals2000aPtr = this->accessFinals2000AAt(anInstant) ;
 
@@ -120,7 +120,7 @@ Vector2d                        Manager::getPolarMotionAt                   (   
         throw library::core::error::runtime::Undefined("Instant") ;
     }
 
-    std::lock_guard<std::mutex> lock(mutex_) ;
+    std::lock_guard<std::mutex> lock { mutex_ } ;
 
     const BulletinA* bulletinAPtr = this->accessBulletinAAt(anInstant) ;
 
@@ -171,7 +171,7 @@ Real                            Manager::getUt1MinusUtcAt                   (   
         throw library::core::error::runtime::Undefined("Instant") ;
     }
 
-    std::lock_guard<std::mutex> lock(mutex_) ;
+    std::lock_guard<std::mutex> lock { mutex_ } ;
 
     const BulletinA* bulletinAPtr = this->accessBulletinAAt(anInstant) ;
 
@@ -222,7 +222,7 @@ Real                            Manager::getLodAt                           (   
         throw library::core::error::runtime::Undefined("Instant") ;
     }
 
-    std::lock_guard<std::mutex> lock(mutex_) ;
+    std::lock_guard<std::mutex> lock { mutex_ } ;
 
     const Finals2000A* finals2000aPtr = this->accessFinals2000AAt(anInstant) ;
 
@@ -240,7 +240,7 @@ Real                            Manager::getLodAt                           (   
 void                            Manager::setMode                            (   const   Manager::Mode&              aMode                                       )
 {
 
-    std::lock_guard<std::mutex> lock(mutex_) ;
+    std::lock_guard<std::mutex> lock { mutex_ } ;
 
     mode_ = aMode ;
 
@@ -254,7 +254,7 @@ void                            Manager::setLocalRepository                 (   
         throw library::core::error::runtime::Undefined("Directory") ;
     }
 
-    const std::lock_guard<std::mutex> lock(mutex_) ;
+    const std::lock_guard<std::mutex> lock { mutex_ } ;
 
     localRepository_ = aDirectory ;
 
@@ -268,7 +268,7 @@ void                            Manager::setRemoteUrl                       (   
         throw library::core::error::runtime::Undefined("Remote URL") ;
     }
 
-    const std::lock_guard<std::mutex> lock(mutex_) ;
+    const std::lock_guard<std::mutex> lock { mutex_ } ;
 
     remoteUrl_ = aRemoteUrl ;
 
@@ -282,7 +282,7 @@ void                            Manager::loadBulletinA                      (   
         throw library::core::error::runtime::Undefined("Bulletin A") ;
     }
 
-    std::lock_guard<std::mutex> lock(mutex_) ;
+    std::lock_guard<std::mutex> lock { mutex_ } ;
 
     this->loadBulletinA_(aBulletinA) ;
 
@@ -296,7 +296,7 @@ void                            Manager::loadFinals2000A                    (   
         throw library::core::error::runtime::Undefined("Finals 2000A") ;
     }
 
-    std::lock_guard<std::mutex> lock(mutex_) ;
+    std::lock_guard<std::mutex> lock { mutex_ } ;
 
     this->loadFinals2000A_(aFinals2000A) ;
 
@@ -305,7 +305,7 @@ void                            Manager::loadFinals2000A                    (   
 File                            Manager::fetchLatestBulletinA               ( )
 {
 
-    std::lock_guard<std::mutex> lock(mutex_) ;
+    std::lock_guard<std::mutex> lock { mutex_ } ;
 
     return this->fetchLatestBulletinA_() ;
 
@@ -314,7 +314,7 @@ File                            Manager::fetchLatestBulletinA               ( )
 File                            Manager::fetchLatestFinals2000A             ( )
 {
 
-    std::lock_guard<std::mutex> lock(mutex_) ;
+    std::lock_guard<std::mutex> lock { mutex_ } ;
 
     return this->fetchLatestFinals2000A_() ;
 
@@ -323,7 +323,7 @@ File                            Manager::fetchLatestFinals2000A             ( )
 void                            Manager::reset                              ( )
 {
 
-    std::lock_guard<std::mutex> lock(mutex_) ;
+    std::lock_guard<std::mutex> lock { mutex_ } ;
 
     aBulletinIndex_ = 0 ;
     finals2000aIndex_ = 0 ;

@@ -3,7 +3,7 @@
 /// @project        Library/Physics
 /// @file           Library/Physics/Environment/Ephemerides/SPICE/Engine.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
-/// @license        TBD
+/// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -60,7 +60,6 @@ static void                     handleException                             ( )
     // https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/C/cspice/reset_c.html
 
     reset_c() ;
-    
     clpool_c() ;
 
     throw library::core::error::RuntimeError("SPICE exception: [{}] [{}].", shortMessage, longMessage) ;
@@ -75,7 +74,7 @@ std::ostream&                   operator <<                                 (   
 
     library::core::utils::Print::Header(anOutputStream, "SPICE :: Engine") ;
 
-    const std::lock_guard<std::mutex> lock(anEngine.mutex_) ;
+    const std::lock_guard<std::mutex> lock { anEngine.mutex_ } ;
 
     SpiceInt kernelCount = 0 ;
 
@@ -126,7 +125,7 @@ bool                            Engine::isKernelLoaded                      (   
         throw library::core::error::runtime::Undefined("Kernel") ;
     }
 
-    const std::lock_guard<std::mutex> lock(mutex_) ;
+    const std::lock_guard<std::mutex> lock { mutex_ } ;
     
     return this->isKernelLoaded_(aKernel) ;
 
@@ -135,7 +134,7 @@ bool                            Engine::isKernelLoaded                      (   
 Engine::Mode                    Engine::getMode                             ( ) const
 {
 
-    const std::lock_guard<std::mutex> lock(mutex_) ;
+    const std::lock_guard<std::mutex> lock { mutex_ } ;
     
     return mode_ ;
 
@@ -160,7 +159,7 @@ Shared<const Frame>             Engine::getFrameOf                          (   
         [this, objectIdentifier, spiceFrameName] (const Instant& anInstant) -> Transform // [TBI] Use shared_from_this instead
         {
 
-            const std::lock_guard<std::mutex> lock(mutex_) ;
+            const std::lock_guard<std::mutex> lock { mutex_ } ;
             
             return this->getTransformAt(objectIdentifier, spiceFrameName, anInstant) ;
 
@@ -176,7 +175,7 @@ Shared<const Frame>             Engine::getFrameOf                          (   
 void                            Engine::setMode                             (   const   Engine::Mode&               aMode                                       )
 {
 
-    const std::lock_guard<std::mutex> lock(mutex_) ;
+    const std::lock_guard<std::mutex> lock { mutex_ } ;
 
     mode_ = aMode ;
 
@@ -190,7 +189,7 @@ void                            Engine::loadKernel                          (   
         throw library::core::error::runtime::Undefined("Kernel") ;
     }
 
-    const std::lock_guard<std::mutex> lock(mutex_) ;
+    const std::lock_guard<std::mutex> lock { mutex_ } ;
 
     this->loadKernel_(aKernel) ;
 
@@ -204,7 +203,7 @@ void                            Engine::unloadKernel                        (   
         throw library::core::error::runtime::Undefined("Kernel") ;
     }
 
-    const std::lock_guard<std::mutex> lock(mutex_) ;
+    const std::lock_guard<std::mutex> lock { mutex_ } ;
 
     this->unloadKernel_(aKernel) ;
 
@@ -213,7 +212,7 @@ void                            Engine::unloadKernel                        (   
 void                            Engine::reset                               ( )
 {
 
-    const std::lock_guard<std::mutex> lock(mutex_) ;
+    const std::lock_guard<std::mutex> lock { mutex_ } ;
 
     earthKernelCache_.clear() ;
     earthKernelCacheIndex_ = 0 ;
@@ -334,16 +333,66 @@ Transform                       Engine::getTransformAt                      (   
             if (mode_ == Engine::Mode::Automatic)
             {
 
-                const Array<Kernel> earthKernels = Manager::Get().fetchMatchingKernels(std::regex("^earth_000101_[\\d]{6}_[\\d]{6}.bpc$")) ;
+                const std::function<void (const bool)> loadEarthKernel = [&] (const bool isFirstTime) -> void
+                {
 
-                if (earthKernels.getSize() > 0)
-                {
-                    const_cast<Engine*>(this)->loadKernel_(earthKernels.accessFirst()) ; // [TBM] The first is not necessarily the correct one
-                }
-                else
-                {
-                    throw library::core::error::RuntimeError("Cannot fetch BPC Earth kernel at [{}].", anInstant.toString()) ;
-                }
+                    (void) isFirstTime ;
+
+                    // try
+                    // {
+
+                        // List available Earth kernels
+
+                        const Array<Kernel> earthKernels = Manager::Get().fetchMatchingKernels(std::regex("^earth_000101_[\\d]{6}_[\\d]{6}.bpc$")) ;
+
+                        if (!earthKernels.isEmpty())
+                        {
+
+                            const_cast<Engine*>(this)->loadKernel_(earthKernels.accessFirst()) ; // [TBM] The first kernel is not necessarily the correct one
+
+                            // bool didLoadKernel = false ;
+
+                            // for (const auto& earthKernel : earthKernels)
+                            // {
+
+                            //     // [TBM] This is a temporary hack, should be improved
+
+                            //     std::cout << "Loading..." << std::endl ;
+
+                            //     const_cast<Engine*>(this)->loadKernel_(earthKernel) ; // [TBM] The order is not necessarily the correct one: should be ordered by ascending duration from kernel epoch to queried instant
+
+                            //     std::cout << "Loading OK" << std::endl ;
+
+                            //     didLoadKernel = true ;
+
+                            //     break ;
+
+                            // }
+
+                            // if (isFirstTime && (!didLoadKernel)) // The index is probably too old: force refresh
+                            // {
+                                
+                            //     Manager::Get().refresh() ;
+
+                            //     loadEarthKernel(false) ;
+
+                            // }
+
+                        }
+                        else
+                        {
+                            throw library::core::error::RuntimeError("Cannot fetch BPC Earth kernel at [{}].", anInstant.toString()) ;
+                        }
+
+                    // }
+                    // catch (const library::core::error::Exception& anException)
+                    // {
+                    //     // Do nothing
+                    // }
+
+                } ;
+
+                loadEarthKernel(true) ;
 
             }
             else

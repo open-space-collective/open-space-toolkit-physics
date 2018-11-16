@@ -3,7 +3,7 @@
 # @project        Library/Physics
 # @file           LibraryPhysicsPy/CMakeLists.txt
 # @author         Lucas Brémond <lucas@loftorbital.com>
-# @license        TBD
+# @license        Apache License 2.0
 
 ################################################################################################################################################################
 
@@ -13,7 +13,7 @@ SET (PROJECT_NAME "LibraryPhysicsPy")
 SET (PROJECT_DESCRIPTION "Python bindings for Library / Physics.")
 SET (PROJECT_PACKAGE_NAME "LibraryPhysicsPy")
 SET (PROJECT_PATH "Library/Physics")
-SET (PROJECT_LICENSE "MIT License")
+SET (PROJECT_LICENSE "Apache License 2.0")
 SET (PROJECT_VENDOR_ID "com.bremond.lucas")
 SET (PROJECT_VENDOR_NAME "Lucas Brémond")
 SET (PROJECT_VENDOR_CONTACT "lucas.bremond@gmail.com")

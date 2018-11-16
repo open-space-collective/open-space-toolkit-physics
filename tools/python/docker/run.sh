@@ -5,7 +5,7 @@
 # @project        Library/Physics
 # @file           tools/python/docker/run.sh
 # @author         Lucas Brémond <lucas@loftorbital.com>
-# @license        TBD
+# @license        Apache License 2.0
 
 ################################################################################################################################################################
 
@@ -19,7 +19,7 @@ docker run \
 --name="${container_name}-python" \
 -it \
 --rm \
-"${repository_name}/${project_name}-python" \
+"${image_name}-python:${image_version}" \
 /bin/bash
 
 popd > /dev/null

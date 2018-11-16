@@ -5,7 +5,7 @@
 # @project        Library/Physics
 # @file           tools/ci/deploy.sh
 # @author         Lucas Brémond <lucas@loftorbital.com>
-# @license        TBD
+# @license        Apache License 2.0
 
 ################################################################################################################################################################
 
@@ -27,7 +27,7 @@ docker run \
 --workdir="/app/build" \
 --env="TWINE_USERNAME=${PYPI_USERNAME}" \
 --env="TWINE_PASSWORD=${PYPI_PASSWORD}" \
-${image_name} \
+${image_name}:${image_version} \
 /bin/bash -c "make publish"
 
 ################################################################################################################################################################

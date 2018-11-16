@@ -3,7 +3,7 @@
 # @project        Library/Physics
 # @file           CMakeLists.txt
 # @author         Lucas Brémond <lucas@loftorbital.com>
-# @license        TBD
+# @license        Apache License 2.0
 
 ################################################################################################################################################################
 
@@ -13,7 +13,7 @@ SET (PROJECT_NAME "LibraryPhysics")
 SET (PROJECT_DESCRIPTION "Physics library.")
 SET (PROJECT_PATH "Library/Physics")
 SET (PROJECT_PACKAGE_NAME "library-physics")
-SET (PROJECT_LICENSE "TBD")
+SET (PROJECT_LICENSE "Apache License 2.0")
 SET (PROJECT_VENDOR_ID "org.open-space-collective")
 SET (PROJECT_VENDOR_NAME "Open Space Collective")
 SET (PROJECT_VENDOR_CONTACT "contact@open-space-collective.org")
@@ -275,13 +275,19 @@ ELSE ()
     MESSAGE (SEND_ERROR "[SPICE Toolkit] not found.")
 ENDIF ()
 
-### Library ▸ Core [0.1]
+### Library ▸ Core [0.2.x]
 
-FIND_PACKAGE ("LibraryCore" "0.1" REQUIRED)
+FIND_PACKAGE ("LibraryCore" "0.2" REQUIRED)
 
-### Library ▸ I/O [0.1]
+IF (NOT LibraryCore_FOUND)
 
-FIND_PACKAGE ("LibraryIO" "0.1" REQUIRED)
+    MESSAGE (SEND_ERROR "[Library ▸ Core] not found.")
+
+ENDIF ()
+
+### Library ▸ I/O [0.2.x]
+
+FIND_PACKAGE ("LibraryIO" "0.2" REQUIRED)
 
 IF (NOT LibraryIO_FOUND)
 
@@ -289,9 +295,15 @@ IF (NOT LibraryIO_FOUND)
 
 ENDIF ()
 
-### Library ▸ Mathematics [0.1]
+### Library ▸ Mathematics [0.2.x]
 
-FIND_PACKAGE ("LibraryMathematics" "0.1" REQUIRED)
+FIND_PACKAGE ("LibraryMathematics" "0.2" REQUIRED)
+
+IF (NOT LibraryMathematics_FOUND)
+
+    MESSAGE (SEND_ERROR "[Library ▸ Mathematics] not found.")
+
+ENDIF ()
 
 #####################################################################################3###########################################################################
 

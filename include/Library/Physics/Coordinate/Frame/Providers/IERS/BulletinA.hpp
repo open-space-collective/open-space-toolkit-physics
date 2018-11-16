@@ -3,7 +3,7 @@
 /// @project        Library/Physics
 /// @file           Library/Physics/Coordinate/Frame/Providers/IERS/BulletinA.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
-/// @license        TBD
+/// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
