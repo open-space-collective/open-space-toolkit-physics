@@ -120,7 +120,7 @@ class Earth : public Celestial
 
         virtual Earth*          clone                                       ( ) const override ;
 
-        /// @brief              Default Earth model (WGS84 + EGM96)
+        /// @brief              Default Earth model (EGM2008)
         ///
         /// @return             Earth
 

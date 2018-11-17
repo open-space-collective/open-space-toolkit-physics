@@ -88,11 +88,11 @@ const Real                      Earth::Models::WGS84::J2                        
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-const Derived                   Earth::GravitationalConstant                    =       Earth::Models::WGS84_EGM96::GravitationalConstant ; // [TBR]
-const Length                    Earth::EquatorialRadius                         =       Earth::Models::WGS84_EGM96::EquatorialRadius ; // [TBR]
-const Real                      Earth::Flattening                               =       Earth::Models::WGS84_EGM96::Flattening ; // [TBR]
-const Real                      Earth::C20                                      =       Earth::Models::WGS84_EGM96::C20 ; // [TBR]
-const Real                      Earth::J2                                       =       Earth::Models::WGS84_EGM96::J2 ; // [TBR]
+const Derived                   Earth::GravitationalConstant                    =       Earth::Models::EGM2008::GravitationalConstant ; // [TBR]
+const Length                    Earth::EquatorialRadius                         =       Earth::Models::EGM2008::EquatorialRadius ; // [TBR]
+const Real                      Earth::Flattening                               =       Earth::Models::EGM2008::Flattening ; // [TBR]
+const Real                      Earth::C20                                      =       Earth::Models::EGM2008::C20 ; // [TBR]
+const Real                      Earth::J2                                       =       Earth::Models::EGM2008::J2 ; // [TBR]
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -130,7 +130,7 @@ Earth*                          Earth::clone                                ( ) 
 
 Earth                           Earth::Default                              ( )
 {
-    return Earth::WGS84_EGM96() ;
+    return Earth::EGM2008() ;
 }
 
 Earth                           Earth::EGM2008                              ( )
