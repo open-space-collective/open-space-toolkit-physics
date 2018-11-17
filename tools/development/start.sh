@@ -113,7 +113,7 @@ fi
 # Run Docker container
 
 docker run \
---name="${container_name}" \
+--name=${container_name} \
 -it \
 --rm \
 --privileged \
@@ -124,7 +124,7 @@ ${options} \
 --volume="${script_directory}/helpers/debug.sh:/app/build/debug.sh:ro" \
 --volume="${script_directory}/helpers/clean.sh:/app/build/clean.sh:ro" \
 --workdir="/app/build" \
-"${image_name}:${image_version}" \
+${image_name}:${image_version} \
 /bin/bash -c "${command}"
 
 # --volume="${project_directory}/share:/var/library-physics:rw" \
