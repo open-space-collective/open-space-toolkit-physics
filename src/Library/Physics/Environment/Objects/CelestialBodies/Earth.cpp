@@ -35,45 +35,84 @@ using library::physics::units::Angle ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// EGM96
-
-Derived                         Earth::GravitationalConstant                    =       Derived(398600441500000.0, { Length::Unit::Meter, Derived::Order(3), Mass::Unit::Undefined, Derived::Order::Zero(), Time::Unit::Second, Derived::Order(-2), Angle::Unit::Undefined, Derived::Order::Zero() }) ;
-Length                          Earth::EquatorialRadius                         =       Length::Meters(6378136.3) ;
-Real                            Earth::Flattening                               =       0.003352810664747 ;
-Real                            Earth::C20                                      =       -4.841653717360e-04 ;
-Real                            Earth::J2                                       =       -Earth::C20 * std::sqrt(5.0) ;
-
-// WGS84
-
-// Derived                         Earth::GravitationalConstant                    =       Derived(398600441800000.0, { Length::Unit::Meter, Derived::Order(3), Mass::Unit::Undefined, Derived::Order::Zero(), Time::Unit::Second, Derived::Order(-2), Angle::Unit::Undefined, Derived::Order::Zero() }) ;
-// Length                          Earth::EquatorialRadius                         =       Length::Meters(6378137.0) ;
-// Real                            Earth::Flattening                               =       0.003352810664747 ;
-// Real                            Earth::C20                                      =       -4.841668500000e-04 ;
-// Real                            Earth::J2                                       =       -Earth::C20 * std::sqrt(5.0) ;
-
-// EGM96 + WGS84
-
-// Derived                         Earth::GravitationalConstant                    =       Derived(398600441800000.0, { Length::Unit::Meter, Derived::Order(3), Mass::Unit::Undefined, Derived::Order::Zero(), Time::Unit::Second, Derived::Order(-2), Angle::Unit::Undefined, Derived::Order::Zero() }) ;
-// Length                          Earth::EquatorialRadius                         =       Length::Meters(6378137.0) ;
-// Real                            Earth::Flattening                               =       0.003352810664747 ;
-// Real                            Earth::C20                                      =       -4.841653717360e-04 ;
-// Real                            Earth::J2                                       =       -Earth::C20 * std::sqrt(5.0) ; // 0.0010826266835531513
+static const Derived::Unit      GravitationParameterSIUnit                      =   {
+                                                                                        Length::Unit::Meter,
+                                                                                        Derived::Order(3),
+                                                                                        Mass::Unit::Undefined,
+                                                                                        Derived::Order::Zero(),
+                                                                                        Time::Unit::Second,
+                                                                                        Derived::Order(-2),
+                                                                                        Angle::Unit::Undefined,
+                                                                                        Derived::Order::Zero()
+                                                                                    } ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                                Earth::Earth                                (   const   Shared<Ephemeris>&          anEphemerisSPtr,
+// http://jules.unavco.org/Voyager/Anc/Earth/egm96_geoid_diff
+// https://science.gsfc.nasa.gov/sed/content/uploadFiles/publication_files/EGM96_NASA-TP-1998-206861.pdf
+// https://geographiclib.sourceforge.io/html/gravity.html
+// http://help.agi.com/stk/Content/gator/ab-cb.htm
+// https://www.iers.org/SharedDocs/Publikationen/EN/IERS/Publications/tn/TechnNote36/tn36_079.pdf?__blob=publicationFile&v=1
+
+// EGM2008
+
+const Derived                   Earth::Models::EGM2008::GravitationalConstant    =       { 398600441500000.0, GravitationParameterSIUnit } ;
+const Length                    Earth::Models::EGM2008::EquatorialRadius         =       Length::Meters(6378137.0) ;
+const Real                      Earth::Models::EGM2008::Flattening               =       1.0 / 298.257223563 ;
+const Real                      Earth::Models::EGM2008::C20                      =       -4.84169317366974e-4 ;
+const Real                      Earth::Models::EGM2008::J2                       =       -Earth::Models::EGM2008::C20 * std::sqrt(5.0) ;
+
+// EGM96 + WGS84
+
+const Derived                   Earth::Models::WGS84_EGM96::GravitationalConstant =      { 398600441800000.0, GravitationParameterSIUnit } ;
+const Length                    Earth::Models::WGS84_EGM96::EquatorialRadius    =       Length::Meters(6378137.0) ;
+const Real                      Earth::Models::WGS84_EGM96::Flattening          =       1.0 / 298.257223563 ;
+const Real                      Earth::Models::WGS84_EGM96::C20                 =       -4.841653717360e-04 ;
+const Real                      Earth::Models::WGS84_EGM96::J2                  =       -Earth::Models::WGS84_EGM96::C20 * std::sqrt(5.0) ; // 0.0010826266835531513
+
+// EGM96
+
+const Derived                   Earth::Models::EGM96::GravitationalConstant     =       { 398600441500000.0, GravitationParameterSIUnit } ;
+const Length                    Earth::Models::EGM96::EquatorialRadius          =       Length::Meters(6378136.3) ;
+const Real                      Earth::Models::EGM96::Flattening                =       1.0 / 298.257223563 ;
+const Real                      Earth::Models::EGM96::C20                       =       -4.841653717360e-04 ;
+const Real                      Earth::Models::EGM96::J2                        =       -Earth::Models::EGM96::C20 * std::sqrt(5.0) ;
+
+// WGS84
+
+const Derived                   Earth::Models::WGS84::GravitationalConstant     =       { 398600441800000.0, GravitationParameterSIUnit } ;
+const Length                    Earth::Models::WGS84::EquatorialRadius          =       Length::Meters(6378137.0) ;
+const Real                      Earth::Models::WGS84::Flattening                =       1.0 / 298.257223563 ;
+const Real                      Earth::Models::WGS84::C20                       =       -4.841668500000e-04 ;
+const Real                      Earth::Models::WGS84::J2                        =       -Earth::Models::WGS84::C20 * std::sqrt(5.0) ;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const Derived                   Earth::GravitationalConstant                    =       Earth::Models::WGS84_EGM96::GravitationalConstant ; // [TBR]
+const Length                    Earth::EquatorialRadius                         =       Earth::Models::WGS84_EGM96::EquatorialRadius ; // [TBR]
+const Real                      Earth::Flattening                               =       Earth::Models::WGS84_EGM96::Flattening ; // [TBR]
+const Real                      Earth::C20                                      =       Earth::Models::WGS84_EGM96::C20 ; // [TBR]
+const Real                      Earth::J2                                       =       Earth::Models::WGS84_EGM96::J2 ; // [TBR]
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                                Earth::Earth                                (   const   Derived&                    aGravitationalConstant,
+                                                                                const   Length&                     anEquatorialRadius,
+                                                                                const   Real&                       aFlattening,
+                                                                                const   Real&                       aJ2,
+                                                                                const   Shared<Ephemeris>&          anEphemerisSPtr,
                                                                                 const   Instant&                    anInstant                                   )
                                 :   Celestial
                                     (
                                         "Earth",
                                         Celestial::Type::Earth,
-                                        Earth::GravitationalConstant,
-                                        Earth::EquatorialRadius,
-                                        Earth::Flattening,
-                                        Earth::J2,
+                                        aGravitationalConstant,
+                                        anEquatorialRadius,
+                                        aFlattening,
+                                        aJ2,
                                         anEphemerisSPtr,
                                         anInstant,
-                                        Earth::Geometry(anEphemerisSPtr->accessFrame())
+                                        Earth::Geometry(anEquatorialRadius, aFlattening, anEphemerisSPtr->accessFrame())
                                     )
 {
 
@@ -91,26 +130,101 @@ Earth*                          Earth::clone                                ( ) 
 
 Earth                           Earth::Default                              ( )
 {
+    return Earth::WGS84_EGM96() ;
+}
+
+Earth                           Earth::EGM2008                              ( )
+{
 
     using library::physics::coord::Frame ;
     using library::physics::env::ephem::Analytical ;
 
     const Shared<const Frame> earthFrameSPtr = Frame::ITRF() ;
 
-    return { std::make_shared<Analytical>(earthFrameSPtr), Instant::J2000() } ;
+    return
+    {
+        Earth::Models::EGM2008::GravitationalConstant,
+        Earth::Models::EGM2008::EquatorialRadius,
+        Earth::Models::EGM2008::Flattening,
+        Earth::Models::EGM2008::J2,
+        std::make_shared<Analytical>(earthFrameSPtr),
+        Instant::J2000()
+    } ;
+
+}
+
+Earth                           Earth::WGS84_EGM96                          ( )
+{
+
+    using library::physics::coord::Frame ;
+    using library::physics::env::ephem::Analytical ;
+
+    const Shared<const Frame> earthFrameSPtr = Frame::ITRF() ;
+
+    return
+    {
+        Earth::Models::WGS84_EGM96::GravitationalConstant,
+        Earth::Models::WGS84_EGM96::EquatorialRadius,
+        Earth::Models::WGS84_EGM96::Flattening,
+        Earth::Models::WGS84_EGM96::J2,
+        std::make_shared<Analytical>(earthFrameSPtr),
+        Instant::J2000()
+    } ;
+
+}
+
+Earth                           Earth::EGM96                                ( )
+{
+
+    using library::physics::coord::Frame ;
+    using library::physics::env::ephem::Analytical ;
+
+    const Shared<const Frame> earthFrameSPtr = Frame::ITRF() ;
+
+    return
+    {
+        Earth::Models::EGM96::GravitationalConstant,
+        Earth::Models::EGM96::EquatorialRadius,
+        Earth::Models::EGM96::Flattening,
+        Earth::Models::EGM96::J2,
+        std::make_shared<Analytical>(earthFrameSPtr),
+        Instant::J2000()
+    } ;
+
+}
+
+Earth                           Earth::WGS84                                ( )
+{
+
+    using library::physics::coord::Frame ;
+    using library::physics::env::ephem::Analytical ;
+
+    const Shared<const Frame> earthFrameSPtr = Frame::ITRF() ;
+
+    return
+    {
+        Earth::Models::WGS84::GravitationalConstant,
+        Earth::Models::WGS84::EquatorialRadius,
+        Earth::Models::WGS84::Flattening,
+        Earth::Models::WGS84::J2,
+        std::make_shared<Analytical>(earthFrameSPtr),
+        Instant::J2000()
+    } ;
 
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-Object::Geometry                Earth::Geometry                             (   const   Shared<const Frame>&        aFrameSPtr                                  )
+Object::Geometry                Earth::Geometry                             (   const   Length&                     anEquatorialRadius,
+                                                                                const   Real&                       aFlattening,
+                                                                                const   Shared<const Frame>&        aFrameSPtr                                  )
 {
 
     using library::math::geom::d3::objects::Point ;
     using library::math::geom::d3::trf::rot::Quaternion ;
 
-    const Real equatorialRadius_m = Earth::EquatorialRadius.inMeters() ;
-    const Real polarRadius_m = equatorialRadius_m * (1.0 - Earth::Flattening) ;
+    const Real equatorialRadius_m = anEquatorialRadius.inMeters() ;
+    const Real polarRadius_m = equatorialRadius_m * (1.0 - aFlattening) ;
     
     const Ellipsoid ellipsoid = { Point::Origin(), equatorialRadius_m, equatorialRadius_m, polarRadius_m, Quaternion::Unit() } ;
 

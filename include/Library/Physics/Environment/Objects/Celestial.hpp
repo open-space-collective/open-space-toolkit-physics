@@ -85,6 +85,17 @@ class Celestial : public Object
 
         } ;
 
+        struct ModelBase
+        {
+
+            static Derived      GravitationalConstant ;
+            static Length       EquatorialRadius ;
+            static Real         Flattening ;
+            static Real         C20 ;
+            static Real         J2 ;
+
+        } ;
+
                                 Celestial                                   (   const   String&                     aName,
                                                                                 const   Celestial::Type&            aType,
                                                                                 const   Derived&                    aGravitationalConstant,
