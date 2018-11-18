@@ -53,16 +53,16 @@ class Time
         /// @brief              Constructor
         ///
         /// @code
-        ///                     Time time(12, 34, 56) ; // 12:34:56.000.000.000
-        ///                     Time time(12, 34, 56, 123, 456, 789) ; // 12:34:56.123.456.789
+        ///                     Time time { 12, 34, 56 } ; // 12:34:56.000.000.000
+        ///                     Time time { 12, 34, 56, 123, 456, 789 } ; // 12:34:56.123.456.789
         /// @endcode
         ///
-        /// @param              [in] anHour An hour (0 - 23)
-        /// @param              [in] aMinute A minute (0 - 59)
-        /// @param              [in] aSecond A second (0 - 60)
-        /// @param              [in] (optional) aMillisecond A millisecond (0 - 999)
-        /// @param              [in] (optional) aMicrosecond A microsecond (0 - 999)
-        /// @param              [in] (optional) aNanosecond A nanosecond (0 - 999)
+        /// @param              [in] anHour An hour count (0 - 23)
+        /// @param              [in] aMinute A minute count (0 - 59)
+        /// @param              [in] aSecond A second count (0 - 60)
+        /// @param              [in] (optional) aMillisecond A millisecond count (0 - 999)
+        /// @param              [in] (optional) aMicrosecond A microsecond count (0 - 999)
+        /// @param              [in] (optional) aNanosecond A nanosecond count (0 - 999)
 
                                 Time                                        (           Uint8                       anHour,
                                                                                         Uint8                       aMinute,
@@ -74,7 +74,7 @@ class Time
         /// @brief              Equal to operator
         ///
         /// @code
-        ///                     Time(12, 34, 56) == Time(12, 34, 56) ; // True
+        ///                     Time { 12, 34, 56 }  == Time { 12, 34, 56 }  ; // True
         /// @endcode
         ///
         /// @param              [in] aTime A time
@@ -85,7 +85,7 @@ class Time
         /// @brief              Not equal to operator
         ///
         /// @code
-        ///                     Time(12, 34, 56) != Time(12, 34, 57) ; // True
+        ///                     Time { 12, 34, 56 }  != Time { 12, 34, 57 } ; // True
         /// @endcode
         ///
         /// @param              [in] aTime A time
@@ -96,7 +96,7 @@ class Time
         /// @brief              Output stream operator
         ///
         /// @code
-        ///                     std::cout << Time(12, 34, 56) ;
+        ///                     std::cout << Time { 12, 34, 56 }  ;
         /// @endcode
         ///
         /// @param              [in] anOutputStream An output stream
@@ -109,7 +109,7 @@ class Time
         /// @brief              Check if time is defined
         ///
         /// @code
-        ///                     Time(12, 34, 56).isDefined() ; // True
+        ///                     Time { 12, 34, 56 } .isDefined() ; // True
         /// @endcode
         ///
         /// @return             True if time is defined
@@ -161,7 +161,7 @@ class Time
         /// @brief              Get string representation of time
         ///
         /// @code
-        ///                     Time(12, 34, 56).toString() ; // 12:34:56.000.000.000
+        ///                     Time { 12, 34, 56 } .toString() ; // 12:34:56.000.000.000
         /// @endcode
         ///
         /// @param              [in] (optional) aFormat A time format
