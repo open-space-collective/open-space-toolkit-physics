@@ -8,6 +8,8 @@ var hierarchy =
     [ "library::physics::time::Date", "classlibrary_1_1physics_1_1time_1_1_date.html", null ],
     [ "library::physics::time::DateTime", "classlibrary_1_1physics_1_1time_1_1_date_time.html", null ],
     [ "library::physics::time::Duration", "classlibrary_1_1physics_1_1time_1_1_duration.html", null ],
+    [ "library::physics::env::obj::celest::Earth::Models::EGM2008", "structlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_1_1_models_1_1_e_g_m2008.html", null ],
+    [ "library::physics::env::obj::celest::Earth::Models::EGM96", "structlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_1_1_models_1_1_e_g_m96.html", null ],
     [ "enable_shared_from_this", null, [
       [ "library::physics::coord::Frame", "classlibrary_1_1physics_1_1coord_1_1_frame.html", null ]
     ] ],
@@ -29,6 +31,8 @@ var hierarchy =
     [ "library::physics::coord::frame::Manager", "classlibrary_1_1physics_1_1coord_1_1frame_1_1_manager.html", null ],
     [ "library::physics::coord::frame::provider::iers::Manager", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager.html", null ],
     [ "library::physics::env::ephem::spice::Manager", "classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager.html", null ],
+    [ "library::physics::env::obj::Celestial::ModelBase", "structlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_1_1_model_base.html", null ],
+    [ "library::physics::env::obj::celest::Earth::Models", "structlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_1_1_models.html", null ],
     [ "library::physics::env::Object", "classlibrary_1_1physics_1_1env_1_1_object.html", [
       [ "library::physics::env::obj::Celestial", "classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html", [
         [ "library::physics::env::obj::celest::Earth", "classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth.html", null ],
@@ -65,5 +69,7 @@ var hierarchy =
     [ "library::physics::data::Vector", "classlibrary_1_1physics_1_1data_1_1_vector.html", [
       [ "library::physics::data::Direction", "classlibrary_1_1physics_1_1data_1_1_direction.html", null ]
     ] ],
-    [ "library::physics::coord::Velocity", "classlibrary_1_1physics_1_1coord_1_1_velocity.html", null ]
+    [ "library::physics::coord::Velocity", "classlibrary_1_1physics_1_1coord_1_1_velocity.html", null ],
+    [ "library::physics::env::obj::celest::Earth::Models::WGS84", "structlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_1_1_models_1_1_w_g_s84.html", null ],
+    [ "library::physics::env::obj::celest::Earth::Models::WGS84_EGM96", "structlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_1_1_models_1_1_w_g_s84___e_g_m96.html", null ]
 ];

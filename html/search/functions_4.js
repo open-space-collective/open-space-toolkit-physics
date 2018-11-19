@@ -1,7 +1,9 @@
 var searchData=
 [
-  ['earth',['Earth',['../classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth.html#a775057b64077c61329a426260327022c',1,'library::physics::env::obj::celest::Earth']]],
+  ['earth',['Earth',['../classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth.html#a43e41a95f19ee7a3043a17e69b4ec33c',1,'library::physics::env::obj::celest::Earth']]],
   ['eclipseintervalsatposition',['eclipseIntervalsAtPosition',['../namespacelibrary_1_1physics_1_1env_1_1utilities.html#ae138a495bc66b6c3ff4dc5e899ca1587',1,'library::physics::env::utilities']]],
+  ['egm2008',['EGM2008',['../classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth.html#a24492fd9077ed4ac7d55118f3f98e30c',1,'library::physics::env::obj::celest::Earth']]],
+  ['egm96',['EGM96',['../classlibrary_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth.html#a6774555411628b2a8032186efd14f33d',1,'library::physics::env::obj::celest::Earth']]],
   ['eme2000',['EME2000',['../classlibrary_1_1physics_1_1coord_1_1_frame.html#a16840fb31ca3fdaff3465a714b486683',1,'library::physics::coord::Frame']]],
   ['empty',['Empty',['../classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_index.html#a86b66f9884b8820ab592553005f18c51',1,'library::physics::env::ephem::spice::Index']]],
   ['engine',['Engine',['../classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#a26bf9260d2730a6825a975c1a0b49b5b',1,'library::physics::env::ephem::spice::Engine']]],

@@ -267,14 +267,14 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Constructor. </p>
-<div class="fragment"><div class="line"><a class="code" href="classlibrary_1_1physics_1_1time_1_1_time.html#a46a4b9be1451041ae65332f04db21c4b">Time</a> time(12, 34, 56) ; <span class="comment">// 12:34:56.000.000.000</span></div><div class="line"><a class="code" href="classlibrary_1_1physics_1_1time_1_1_time.html#a46a4b9be1451041ae65332f04db21c4b">Time</a> time(12, 34, 56, 123, 456, 789) ; <span class="comment">// 12:34:56.123.456.789</span></div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+<div class="fragment"><div class="line"><a class="code" href="classlibrary_1_1physics_1_1time_1_1_time.html#a46a4b9be1451041ae65332f04db21c4b">Time</a> time { 12, 34, 56 } ; <span class="comment">// 12:34:56.000.000.000</span></div><div class="line"><a class="code" href="classlibrary_1_1physics_1_1time_1_1_time.html#a46a4b9be1451041ae65332f04db21c4b">Time</a> time { 12, 34, 56, 123, 456, 789 } ; <span class="comment">// 12:34:56.123.456.789</span></div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">anHour</td><td>An hour (0 - 23) </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">aMinute</td><td>A minute (0 - 59) </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">aSecond</td><td>A second (0 - 60) </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">(optional)</td><td>aMillisecond A millisecond (0 - 999) </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">(optional)</td><td>aMicrosecond A microsecond (0 - 999) </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">(optional)</td><td>aNanosecond A nanosecond (0 - 999) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">anHour</td><td>An hour count (0 - 23) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">aMinute</td><td>A minute count (0 - 59) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">aSecond</td><td>A second count (0 - 60) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">(optional)</td><td>aMillisecond A millisecond count (0 - 999) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">(optional)</td><td>aMicrosecond A microsecond count (0 - 999) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">(optional)</td><td>aNanosecond A nanosecond count (0 - 999) </td></tr>
   </table>
   </dd>
 </dl>
@@ -438,7 +438,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Check if time is defined. </p>
-<div class="fragment"><div class="line"><a class="code" href="classlibrary_1_1physics_1_1time_1_1_time.html#a46a4b9be1451041ae65332f04db21c4b">Time</a>(12, 34, 56).isDefined() ; <span class="comment">// True</span></div></div><!-- fragment --><dl class="section return"><dt>Returns</dt><dd>True if time is defined </dd></dl>
+<div class="fragment"><div class="line"><a class="code" href="classlibrary_1_1physics_1_1time_1_1_time.html#a46a4b9be1451041ae65332f04db21c4b">Time</a> { 12, 34, 56 } .isDefined() ; <span class="comment">// True</span></div></div><!-- fragment --><dl class="section return"><dt>Returns</dt><dd>True if time is defined </dd></dl>
 
 </div>
 </div>
@@ -515,7 +515,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Not equal to operator. </p>
-<div class="fragment"><div class="line"><a class="code" href="classlibrary_1_1physics_1_1time_1_1_time.html#a46a4b9be1451041ae65332f04db21c4b">Time</a>(12, 34, 56) != <a class="code" href="classlibrary_1_1physics_1_1time_1_1_time.html#a46a4b9be1451041ae65332f04db21c4b">Time</a>(12, 34, 57) ; <span class="comment">// True</span></div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+<div class="fragment"><div class="line"><a class="code" href="classlibrary_1_1physics_1_1time_1_1_time.html#a46a4b9be1451041ae65332f04db21c4b">Time</a> { 12, 34, 56 }  != <a class="code" href="classlibrary_1_1physics_1_1time_1_1_time.html#a46a4b9be1451041ae65332f04db21c4b">Time</a> { 12, 34, 57 } ; <span class="comment">// True</span></div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">aTime</td><td>A time </td></tr>
   </table>
@@ -542,7 +542,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Equal to operator. </p>
-<div class="fragment"><div class="line"><a class="code" href="classlibrary_1_1physics_1_1time_1_1_time.html#a46a4b9be1451041ae65332f04db21c4b">Time</a>(12, 34, 56) == <a class="code" href="classlibrary_1_1physics_1_1time_1_1_time.html#a46a4b9be1451041ae65332f04db21c4b">Time</a>(12, 34, 56) ; <span class="comment">// True</span></div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+<div class="fragment"><div class="line"><a class="code" href="classlibrary_1_1physics_1_1time_1_1_time.html#a46a4b9be1451041ae65332f04db21c4b">Time</a> { 12, 34, 56 }  == <a class="code" href="classlibrary_1_1physics_1_1time_1_1_time.html#a46a4b9be1451041ae65332f04db21c4b">Time</a> { 12, 34, 56 }  ; <span class="comment">// True</span></div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">aTime</td><td>A time </td></tr>
   </table>
@@ -771,7 +771,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get string representation of time. </p>
-<div class="fragment"><div class="line"><a class="code" href="classlibrary_1_1physics_1_1time_1_1_time.html#a46a4b9be1451041ae65332f04db21c4b">Time</a>(12, 34, 56).toString() ; <span class="comment">// 12:34:56.000.000.000</span></div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+<div class="fragment"><div class="line"><a class="code" href="classlibrary_1_1physics_1_1time_1_1_time.html#a46a4b9be1451041ae65332f04db21c4b">Time</a> { 12, 34, 56 } .toString() ; <span class="comment">// 12:34:56.000.000.000</span></div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">(optional)</td><td>aFormat A time format </td></tr>
   </table>
@@ -845,7 +845,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Output stream operator. </p>
-<div class="fragment"><div class="line">std::cout &lt;&lt; <a class="code" href="classlibrary_1_1physics_1_1time_1_1_time.html#a46a4b9be1451041ae65332f04db21c4b">Time</a>(12, 34, 56) ;</div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+<div class="fragment"><div class="line">std::cout &lt;&lt; <a class="code" href="classlibrary_1_1physics_1_1time_1_1_time.html#a46a4b9be1451041ae65332f04db21c4b">Time</a> { 12, 34, 56 }  ;</div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">anOutputStream</td><td>An output stream </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">aTime</td><td>A time </td></tr>

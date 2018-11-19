@@ -117,24 +117,24 @@ Constructor.
 
 
 \begin{DoxyCode}
-\hyperlink{classlibrary_1_1physics_1_1time_1_1_time_a46a4b9be1451041ae65332f04db21c4b}{Time} time(12, 34, 56) ; \textcolor{comment}{// 12:34:56.000.000.000}
-\hyperlink{classlibrary_1_1physics_1_1time_1_1_time_a46a4b9be1451041ae65332f04db21c4b}{Time} time(12, 34, 56, 123, 456, 789) ; \textcolor{comment}{// 12:34:56.123.456.789}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_time_a46a4b9be1451041ae65332f04db21c4b}{Time} time \{ 12, 34, 56 \} ; \textcolor{comment}{// 12:34:56.000.000.000}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_time_a46a4b9be1451041ae65332f04db21c4b}{Time} time \{ 12, 34, 56, 123, 456, 789 \} ; \textcolor{comment}{// 12:34:56.123.456.789}
 \end{DoxyCode}
 
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em an\+Hour} & An hour (0 -\/ 23) \\
+\mbox{\tt in}  & {\em an\+Hour} & An hour count (0 -\/ 23) \\
 \hline
-\mbox{\tt in}  & {\em a\+Minute} & A minute (0 -\/ 59) \\
+\mbox{\tt in}  & {\em a\+Minute} & A minute count (0 -\/ 59) \\
 \hline
-\mbox{\tt in}  & {\em a\+Second} & A second (0 -\/ 60) \\
+\mbox{\tt in}  & {\em a\+Second} & A second count (0 -\/ 60) \\
 \hline
-\mbox{\tt in}  & {\em (optional)} & a\+Millisecond A millisecond (0 -\/ 999) \\
+\mbox{\tt in}  & {\em (optional)} & a\+Millisecond A millisecond count (0 -\/ 999) \\
 \hline
-\mbox{\tt in}  & {\em (optional)} & a\+Microsecond A microsecond (0 -\/ 999) \\
+\mbox{\tt in}  & {\em (optional)} & a\+Microsecond A microsecond count (0 -\/ 999) \\
 \hline
-\mbox{\tt in}  & {\em (optional)} & a\+Nanosecond A nanosecond (0 -\/ 999) \\
+\mbox{\tt in}  & {\em (optional)} & a\+Nanosecond A nanosecond count (0 -\/ 999) \\
 \hline
 \end{DoxyParams}
 
@@ -243,7 +243,7 @@ Check if time is defined.
 
 
 \begin{DoxyCode}
-\hyperlink{classlibrary_1_1physics_1_1time_1_1_time_a46a4b9be1451041ae65332f04db21c4b}{Time}(12, 34, 56).isDefined() ; \textcolor{comment}{// True}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_time_a46a4b9be1451041ae65332f04db21c4b}{Time} \{ 12, 34, 56 \} .isDefined() ; \textcolor{comment}{// True}
 \end{DoxyCode}
 
 
@@ -300,7 +300,7 @@ Not equal to operator.
 
 
 \begin{DoxyCode}
-\hyperlink{classlibrary_1_1physics_1_1time_1_1_time_a46a4b9be1451041ae65332f04db21c4b}{Time}(12, 34, 56) != \hyperlink{classlibrary_1_1physics_1_1time_1_1_time_a46a4b9be1451041ae65332f04db21c4b}{Time}(12, 34, 57) ; \textcolor{comment}{// True}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_time_a46a4b9be1451041ae65332f04db21c4b}{Time} \{ 12, 34, 56 \}  != \hyperlink{classlibrary_1_1physics_1_1time_1_1_time_a46a4b9be1451041ae65332f04db21c4b}{Time} \{ 12, 34, 57 \} ; \textcolor{comment}{// True}
 \end{DoxyCode}
 
 
@@ -324,7 +324,7 @@ Equal to operator.
 
 
 \begin{DoxyCode}
-\hyperlink{classlibrary_1_1physics_1_1time_1_1_time_a46a4b9be1451041ae65332f04db21c4b}{Time}(12, 34, 56) == \hyperlink{classlibrary_1_1physics_1_1time_1_1_time_a46a4b9be1451041ae65332f04db21c4b}{Time}(12, 34, 56) ; \textcolor{comment}{// True}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_time_a46a4b9be1451041ae65332f04db21c4b}{Time} \{ 12, 34, 56 \}  == \hyperlink{classlibrary_1_1physics_1_1time_1_1_time_a46a4b9be1451041ae65332f04db21c4b}{Time} \{ 12, 34, 56 \}  ; \textcolor{comment}{// True}
 \end{DoxyCode}
 
 
@@ -470,7 +470,7 @@ Get string representation of time.
 
 
 \begin{DoxyCode}
-\hyperlink{classlibrary_1_1physics_1_1time_1_1_time_a46a4b9be1451041ae65332f04db21c4b}{Time}(12, 34, 56).toString() ; \textcolor{comment}{// 12:34:56.000.000.000}
+\hyperlink{classlibrary_1_1physics_1_1time_1_1_time_a46a4b9be1451041ae65332f04db21c4b}{Time} \{ 12, 34, 56 \} .toString() ; \textcolor{comment}{// 12:34:56.000.000.000}
 \end{DoxyCode}
 
 
@@ -517,7 +517,7 @@ Output stream operator.
 
 
 \begin{DoxyCode}
-std::cout << \hyperlink{classlibrary_1_1physics_1_1time_1_1_time_a46a4b9be1451041ae65332f04db21c4b}{Time}(12, 34, 56) ;
+std::cout << \hyperlink{classlibrary_1_1physics_1_1time_1_1_time_a46a4b9be1451041ae65332f04db21c4b}{Time} \{ 12, 34, 56 \}  ;
 \end{DoxyCode}
 
 

@@ -1,5 +1,6 @@
 var classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial =
 [
+    [ "ModelBase", "structlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_1_1_model_base.html", null ],
     [ "FrameType", "classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#a8585fb32125cb6c73ae1339a5ea09c79", [
       [ "Undefined", "classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#a8585fb32125cb6c73ae1339a5ea09c79aec0fc0100c4fc1ce4eea230c3dc10360", null ],
       [ "NED", "classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#a8585fb32125cb6c73ae1339a5ea09c79acd3459b28418fa8fa75ffaba4f3e7c74", null ]
