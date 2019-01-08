@@ -54,7 +54,7 @@ class Sun : public Celestial
 
     public:
 
-        static Derived          GravitationalConstant ;
+        static Derived          GravitationalParameter ;
         static Length           EquatorialRadius ;
         static Real             Flattening ;
 

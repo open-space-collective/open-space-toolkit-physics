@@ -60,7 +60,7 @@ class Earth : public Celestial
             struct EGM2008
             {
 
-                static const Derived GravitationalConstant ;
+                static const Derived GravitationalParameter ;
                 static const Length EquatorialRadius ;
                 static const Real Flattening ;
                 static const Real C20 ;
@@ -71,7 +71,7 @@ class Earth : public Celestial
             struct WGS84_EGM96
             {
 
-                static const Derived GravitationalConstant ;
+                static const Derived GravitationalParameter ;
                 static const Length EquatorialRadius ;
                 static const Real Flattening ;
                 static const Real C20 ;
@@ -82,7 +82,7 @@ class Earth : public Celestial
             struct EGM96
             {
 
-                static const Derived GravitationalConstant ;
+                static const Derived GravitationalParameter ;
                 static const Length EquatorialRadius ;
                 static const Real Flattening ;
                 static const Real C20 ;
@@ -93,7 +93,7 @@ class Earth : public Celestial
             struct WGS84
             {
 
-                static const Derived GravitationalConstant ;
+                static const Derived GravitationalParameter ;
                 static const Length EquatorialRadius ;
                 static const Real Flattening ;
                 static const Real C20 ;
@@ -103,13 +103,13 @@ class Earth : public Celestial
             
         } ;
 
-        static const Derived    GravitationalConstant ; // [TBR]
+        static const Derived    GravitationalParameter ; // [TBR]
         static const Length     EquatorialRadius ; // [TBR]
         static const Real       Flattening ; // [TBR]
         static const Real       C20 ; // [TBR]
         static const Real       J2 ; // [TBR]
 
-                                Earth                                       (   const   Derived&                    aGravitationalConstant,
+                                Earth                                       (   const   Derived&                    aGravitationalParameter,
                                                                                 const   Length&                     anEquatorialRadius,
                                                                                 const   Real&                       aFlattening,
                                                                                 const   Real&                       aJ2,

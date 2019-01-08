@@ -41,7 +41,7 @@ inline void                     LibraryPhysicsPy_Environment_Objects_Celestial (
         
         .def("accessEphemeris", &Celestial::accessEphemeris)
         .def("getType", &Celestial::getType)
-        .def("getGravitationalConstant", &Celestial::getGravitationalConstant)
+        .def("getGravitationalParameter", &Celestial::getGravitationalParameter)
         .def("getEquatorialRadius", &Celestial::getEquatorialRadius)
         .def("getFlattening", &Celestial::getFlattening)
         .def("getJ2", &Celestial::getJ2)

@@ -36,7 +36,7 @@ using library::physics::units::Angle ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-Derived                         Moon::GravitationalConstant                     =       Derived(4902.8000e9, { Length::Unit::Meter, Derived::Order(3), Mass::Unit::Undefined, Derived::Order::Zero(), Time::Unit::Second, Derived::Order(-2), Angle::Unit::Undefined, Derived::Order::Zero() }) ;
+Derived                         Moon::GravitationalParameter                    =       Derived(4902.8000e9, { Length::Unit::Meter, Derived::Order(3), Mass::Unit::Undefined, Derived::Order::Zero(), Time::Unit::Second, Derived::Order(-2), Angle::Unit::Undefined, Derived::Order::Zero() }) ;
 Length                          Moon::EquatorialRadius                          =       Length::Meters(1738.14e3) ;
 Real                            Moon::Flattening                                =       0.00125 ;
 
@@ -48,7 +48,7 @@ Real                            Moon::Flattening                                
                                     (
                                         "Moon",
                                         Celestial::Type::Moon,
-                                        Moon::GravitationalConstant,
+                                        Moon::GravitationalParameter,
                                         Moon::EquatorialRadius,
                                         Moon::Flattening,
                                         0.0,

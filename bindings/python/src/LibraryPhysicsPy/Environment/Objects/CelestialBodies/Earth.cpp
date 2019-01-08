@@ -28,7 +28,7 @@ inline void                     LibraryPhysicsPy_Environment_Objects_CelestialBo
 
     scope in_Earth = class_<Earth, bases<Celestial>>("Earth", init<const Derived&, const Length&, const Real&, const Real&, const Shared<Ephemeris>&, const Instant&>())
 
-        .def_readonly("GravitationalConstant", &Earth::GravitationalConstant)
+        .def_readonly("GravitationalParameter", &Earth::GravitationalParameter)
         .def_readonly("EquatorialRadius", &Earth::EquatorialRadius)
         .def_readonly("Flattening", &Earth::Flattening)
         .def_readonly("C20", &Earth::C20)
@@ -49,7 +49,7 @@ inline void                     LibraryPhysicsPy_Environment_Objects_CelestialBo
 
     class_<Earth::Models::EGM2008>("EGM2008", no_init)
 
-        .def_readonly("GravitationalConstant", &Earth::Models::EGM2008::GravitationalConstant)
+        .def_readonly("GravitationalParameter", &Earth::Models::EGM2008::GravitationalParameter)
         .def_readonly("EquatorialRadius", &Earth::Models::EGM2008::EquatorialRadius)
         .def_readonly("Flattening", &Earth::Models::EGM2008::Flattening)
         .def_readonly("C20", &Earth::Models::EGM2008::C20)
@@ -59,7 +59,7 @@ inline void                     LibraryPhysicsPy_Environment_Objects_CelestialBo
 
     class_<Earth::Models::WGS84_EGM96>("WGS84_EGM96", no_init)
 
-        .def_readonly("GravitationalConstant", &Earth::Models::WGS84_EGM96::GravitationalConstant)
+        .def_readonly("GravitationalParameter", &Earth::Models::WGS84_EGM96::GravitationalParameter)
         .def_readonly("EquatorialRadius", &Earth::Models::WGS84_EGM96::EquatorialRadius)
         .def_readonly("Flattening", &Earth::Models::WGS84_EGM96::Flattening)
         .def_readonly("C20", &Earth::Models::WGS84_EGM96::C20)
@@ -69,7 +69,7 @@ inline void                     LibraryPhysicsPy_Environment_Objects_CelestialBo
 
     class_<Earth::Models::EGM96>("EGM96", no_init)
 
-        .def_readonly("GravitationalConstant", &Earth::Models::EGM96::GravitationalConstant)
+        .def_readonly("GravitationalParameter", &Earth::Models::EGM96::GravitationalParameter)
         .def_readonly("EquatorialRadius", &Earth::Models::EGM96::EquatorialRadius)
         .def_readonly("Flattening", &Earth::Models::EGM96::Flattening)
         .def_readonly("C20", &Earth::Models::EGM96::C20)
@@ -79,7 +79,7 @@ inline void                     LibraryPhysicsPy_Environment_Objects_CelestialBo
 
     class_<Earth::Models::WGS84>("WGS84", no_init)
 
-        .def_readonly("GravitationalConstant", &Earth::Models::WGS84::GravitationalConstant)
+        .def_readonly("GravitationalParameter", &Earth::Models::WGS84::GravitationalParameter)
         .def_readonly("EquatorialRadius", &Earth::Models::WGS84::EquatorialRadius)
         .def_readonly("Flattening", &Earth::Models::WGS84::Flattening)
         .def_readonly("C20", &Earth::Models::WGS84::C20)

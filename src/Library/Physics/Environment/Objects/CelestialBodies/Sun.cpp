@@ -36,7 +36,7 @@ using library::physics::units::Angle ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-Derived                         Sun::GravitationalConstant                      =       Derived(132712440018e9, { Length::Unit::Meter, Derived::Order(3), Mass::Unit::Undefined, Derived::Order::Zero(), Time::Unit::Second, Derived::Order(-2), Angle::Unit::Undefined, Derived::Order::Zero() }) ;
+Derived                         Sun::GravitationalParameter                     =       Derived(132712440018e9, { Length::Unit::Meter, Derived::Order(3), Mass::Unit::Undefined, Derived::Order::Zero(), Time::Unit::Second, Derived::Order(-2), Angle::Unit::Undefined, Derived::Order::Zero() }) ;
 Length                          Sun::EquatorialRadius                           =       Length::Meters(6.955e8) ;
 Real                            Sun::Flattening                                 =       0.0 ;
 
@@ -48,7 +48,7 @@ Real                            Sun::Flattening                                 
                                     (
                                         "Sun",
                                         Celestial::Type::Sun,
-                                        Sun::GravitationalConstant,
+                                        Sun::GravitationalParameter,
                                         Sun::EquatorialRadius,
                                         Sun::Flattening,
                                         0.0,
