@@ -330,6 +330,18 @@ Derived::Unit                   Derived::Unit::Velocity                     (   
     return Derived::Unit(aLengthUnit, { 1 }, Mass::Unit::Undefined, { 0 }, aTimeUnit, { -1 }, Angle::Unit::Undefined, { 0 }) ;
 }
 
+Derived::Unit                   Derived::Unit::Acceleration                 (   const   Length::Unit&               aLengthUnit,
+                                                                                const   Time::Unit&                 aTimeUnit                                   )
+{
+    return Derived::Unit(aLengthUnit, { 1 }, Mass::Unit::Undefined, { 0 }, aTimeUnit, { -2 }, Angle::Unit::Undefined, { 0 }) ;
+}
+
+Derived::Unit                   Derived::Unit::GravitationalParameter       (   const   Length::Unit&               aLengthUnit,
+                                                                                const   Time::Unit&                 aTimeUnit                                   )
+{
+    return Derived::Unit(aLengthUnit, { 3 }, Mass::Unit::Undefined, { 0 }, aTimeUnit, { -2 }, Angle::Unit::Undefined, { 0 }) ;
+}
+
 Derived::Unit                   Derived::Unit::AngularVelocity              (   const   Angle::Unit&                anAngleUnit,
                                                                                 const   Time::Unit&                 aTimeUnit                                   )
 {

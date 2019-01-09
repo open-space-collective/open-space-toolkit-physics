@@ -245,6 +245,11 @@ Unit                            Unit::Length                                (   
     return { Unit::Type::Length, std::make_unique<units::Length>(1.0, aLengthUnit) } ;
 }
 
+Unit                            Unit::Derived                               (   const   units::Derived::Unit&       aDerivedUnit                                )
+{
+    return { Unit::Type::Derived, std::make_unique<units::Derived>(1.0, aDerivedUnit) } ;
+}
+
 String                          Unit::StringFromType                        (   const   Unit::Type&                 aType                                       )
 {
 

@@ -48,6 +48,21 @@ RUN pushd /tmp > /dev/null \
  && dnf clean all \
  && popd > /dev/null
 
+## GeographicLib [1.49]
+
+RUN git clone git://git.code.sf.net/p/geographiclib/code /tmp/geographiclib \
+ && pushd /tmp/geographiclib > /dev/null \
+ && git checkout tags/r1.49 \
+ && mkdir build \
+ && cd build \
+ && dnf install -y proj-devel \
+ && cmake -DGEOGRAPHICLIB_LIB_TYPE=STATIC -DCMAKE_CXX_FLAGS="-fPIC" .. \
+ && make -j $(nproc) \
+ && make install \
+ && popd > /dev/null \
+ && rm -rf /tmp/geographiclib \
+ && dnf clean all
+
 ## Library ▸ I/O [0.2.0]
 
 RUN mkdir -p /tmp/library-io \

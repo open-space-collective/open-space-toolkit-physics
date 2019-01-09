@@ -200,9 +200,9 @@ TEST (Library_Physics_Environment_Ephemerides_SPICE, ManualMode)
 
         ) ;
 
-        Engine::Get().loadKernel(Kernel::File(File::Path(Path::Parse("~/.library/physics/environment/ephemerides/spice/naif0012.tls")))) ;
-        Engine::Get().loadKernel(Kernel::File(File::Path(Path::Parse("~/.library/physics/environment/ephemerides/spice/de430.bsp")))) ;
-        Engine::Get().loadKernel(Kernel::File(File::Path(Path::Parse("~/.library/physics/environment/ephemerides/spice/pck00010.tpc")))) ;
+        Engine::Get().loadKernel(Kernel::File(File::Path(Path::Parse("./.library/physics/environment/ephemerides/spice/naif0012.tls")))) ;
+        Engine::Get().loadKernel(Kernel::File(File::Path(Path::Parse("./.library/physics/environment/ephemerides/spice/de430.bsp")))) ;
+        Engine::Get().loadKernel(Kernel::File(File::Path(Path::Parse("./.library/physics/environment/ephemerides/spice/pck00010.tpc")))) ;
 
         EXPECT_NO_THROW
         (

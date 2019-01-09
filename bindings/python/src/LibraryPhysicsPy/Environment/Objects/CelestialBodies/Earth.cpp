@@ -25,8 +25,9 @@ inline void                     LibraryPhysicsPy_Environment_Objects_CelestialBo
     using library::physics::env::Ephemeris ;
     using library::physics::env::obj::Celestial ;
     using library::physics::env::obj::celest::Earth ;
+    using GravitationalModel = library::physics::environment::gravitational::Model ;
 
-    scope in_Earth = class_<Earth, bases<Celestial>>("Earth", init<const Derived&, const Length&, const Real&, const Real&, const Shared<Ephemeris>&, const Instant&>())
+    scope in_Earth = class_<Earth, bases<Celestial>>("Earth", init<const Derived&, const Length&, const Real&, const Real&, const Shared<Ephemeris>&, const Shared<GravitationalModel>&, const Instant&>())
 
         .def_readonly("GravitationalParameter", &Earth::GravitationalParameter)
         .def_readonly("EquatorialRadius", &Earth::EquatorialRadius)

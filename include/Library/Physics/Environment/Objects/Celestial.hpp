@@ -10,6 +10,7 @@
 #ifndef __Library_Physics_Environment_Objects_Celestial__
 #define __Library_Physics_Environment_Objects_Celestial__
 
+#include <Library/Physics/Environment/Gravitational/Model.hpp>
 #include <Library/Physics/Environment/Ephemeris.hpp>
 #include <Library/Physics/Environment/Object.hpp>
 #include <Library/Physics/Coordinate/Transform.hpp>
@@ -17,6 +18,7 @@
 #include <Library/Physics/Coordinate/Axes.hpp>
 #include <Library/Physics/Coordinate/Spherical/LLA.hpp>
 #include <Library/Physics/Coordinate/Position.hpp>
+#include <Library/Physics/Data/Vector.hpp>
 #include <Library/Physics/Units/Derived.hpp>
 #include <Library/Physics/Units/Length.hpp>
 #include <Library/Physics/Time/Instant.hpp>
@@ -49,6 +51,7 @@ using library::math::obj::Vector3d ;
 using library::physics::time::Instant ;
 using library::physics::units::Length ;
 using library::physics::units::Derived ;
+using library::physics::data::Vector ;
 using library::physics::coord::Position ;
 using library::physics::coord::spherical::LLA ;
 using library::physics::coord::Axes ;
@@ -56,6 +59,7 @@ using library::physics::coord::Frame ;
 using library::physics::coord::Transform ;
 using library::physics::env::Object ;
 using library::physics::env::Ephemeris ;
+using GravitationalModel = library::physics::environment::gravitational::Model ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -103,6 +107,7 @@ class Celestial : public Object
                                                                                 const   Real&                       aFlattening,
                                                                                 const   Real&                       aJ2,
                                                                                 const   Shared<Ephemeris>&          anEphemeris,
+                                                                                const   Shared<GravitationalModel>& aGravitationalModel,
                                                                                 const   Instant&                    anInstant                                   ) ;
 
                                 Celestial                                   (   const   String&                     aName,
@@ -112,6 +117,7 @@ class Celestial : public Object
                                                                                 const   Real&                       aFlattening,
                                                                                 const   Real&                       aJ2,
                                                                                 const   Shared<Ephemeris>&          anEphemeris,
+                                                                                const   Shared<GravitationalModel>& aGravitationalModel,
                                                                                 const   Instant&                    anInstant,
                                                                                 const   Object::Geometry&           aGeometry                                   ) ;
 
@@ -122,6 +128,8 @@ class Celestial : public Object
         virtual bool            isDefined                                   ( ) const override ;
 
         Shared<const Ephemeris> accessEphemeris                             ( ) const ;
+
+        Shared<const GravitationalModel> accessGravitationalModel	        ( ) const ;
 
         Celestial::Type         getType                                     ( ) const ;
 
@@ -143,7 +151,7 @@ class Celestial : public Object
 
         virtual Axes            getAxesIn                                   (   const   Shared<const Frame>&        aFrameSPtr                                  ) const override ;
 
-        Vector3d                getGravitationalFieldAt                     (   const   Position&                   aPosition                                   ) const ;
+        Vector                  getGravitationalFieldAt                     (   const   Position&                   aPosition                                   ) const ;
 
         Shared<const Frame>     getFrameAt                                  (   const   LLA&                        aLla,
                                                                                 const   Celestial::FrameType&       aFrameType                                  ) const ;
@@ -162,6 +170,7 @@ class Celestial : public Object
         Real                    flattening_ ;
         Real                    j2_ ;
         Shared<Ephemeris>       ephemeris_ ;
+        Shared<GravitationalModel> gravitationalModelSPtr_ ;
 
 } ;
 

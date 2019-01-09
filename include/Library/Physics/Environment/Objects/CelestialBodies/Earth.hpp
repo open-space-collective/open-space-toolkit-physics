@@ -10,6 +10,7 @@
 #ifndef __Library_Physics_Environment_Objects_CelestialBodies_Earth__
 #define __Library_Physics_Environment_Objects_CelestialBodies_Earth__
 
+#include <Library/Physics/Environment/Gravitational/Model.hpp>
 #include <Library/Physics/Environment/Objects/Celestial.hpp>
 #include <Library/Physics/Environment/Object.hpp>
 #include <Library/Physics/Environment/Ephemeris.hpp>
@@ -46,6 +47,7 @@ using library::physics::units::Derived ;
 using library::physics::env::Ephemeris ;
 using library::physics::env::Object ;
 using library::physics::env::obj::Celestial ;
+using GravitationalModel = library::physics::environment::gravitational::Model ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -113,7 +115,8 @@ class Earth : public Celestial
                                                                                 const   Length&                     anEquatorialRadius,
                                                                                 const   Real&                       aFlattening,
                                                                                 const   Real&                       aJ2,
-                                                                                const   Shared<Ephemeris>&          anEphemerisSPtr,
+                                                                                const   Shared<Ephemeris>&          anEphemeris,
+                                                                                const   Shared<GravitationalModel>& aGravitationalModel,
                                                                                 const   Instant&                    anInstant                                   ) ;
 
         virtual                 ~Earth                                      ( ) override ;

@@ -187,7 +187,7 @@ Manager&                        Manager::Get                                ( )
 
 Directory                       Manager::DefaultLocalRepository             ( )
 {
-    return Directory::Path(Path::Parse("~/.library/physics/environment/ephemerides/spice")) ;
+    return Directory::Path(Path::Parse("./.library/physics/environment/ephemerides/spice")) ;
 }
 
 URL                             Manager::DefaultRemoteUrl                   ( )

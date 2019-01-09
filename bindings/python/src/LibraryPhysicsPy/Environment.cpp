@@ -7,6 +7,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <LibraryPhysicsPy/Environment/Gravitational.cpp>
 #include <LibraryPhysicsPy/Environment/Objects.cpp>
 #include <LibraryPhysicsPy/Environment/Object.cpp>
 
@@ -58,6 +59,7 @@ inline void                     LibraryPhysicsPy_Environment                ( )
     
     LibraryPhysicsPy_Environment_Object() ;
     LibraryPhysicsPy_Environment_Objects() ;
+    LibraryPhysicsPy_Environment_Gravitational() ;
 
 }
 

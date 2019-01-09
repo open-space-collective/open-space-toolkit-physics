@@ -93,6 +93,8 @@ class Unit
 
         static Unit             Length                                      (   const   units::Length::Unit&        aLengthUnit                                 ) ;
 
+        static Unit             Derived	                                    (   const   units::Derived::Unit&       aDerivedUnit                                ) ;
+
         static String           StringFromType                              (   const   Unit::Type&                 aType                                       ) ;
 
     private:

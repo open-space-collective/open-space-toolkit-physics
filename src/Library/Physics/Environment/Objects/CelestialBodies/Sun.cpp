@@ -42,7 +42,8 @@ Real                            Sun::Flattening                                 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                                Sun::Sun                                    (   const   Shared<Ephemeris>&          anEphemerisSPtr,
+                                Sun::Sun                                    (   const   Shared<Ephemeris>&          anEphemeris,
+                                                                                const   Shared<GravitationalModel>& aGravitationalModel,
                                                                                 const   Instant&                    anInstant                                   )
                                 :   Celestial
                                     (
@@ -52,9 +53,10 @@ Real                            Sun::Flattening                                 
                                         Sun::EquatorialRadius,
                                         Sun::Flattening,
                                         0.0,
-                                        anEphemerisSPtr,
+                                        anEphemeris,
+                                        aGravitationalModel,
                                         anInstant,
-                                        Sun::Geometry(anEphemerisSPtr->accessFrame())
+                                        Sun::Geometry(anEphemeris->accessFrame())
                                     )
 {
 
@@ -75,7 +77,7 @@ Sun                             Sun::Default                                ( )
 
     using library::physics::env::ephem::SPICE ;
 
-    return { std::make_shared<SPICE>(SPICE::Object::Sun), Instant::J2000() } ;
+    return { std::make_shared<SPICE>(SPICE::Object::Sun), nullptr, Instant::J2000() } ; // [TBI]
 
 }
 

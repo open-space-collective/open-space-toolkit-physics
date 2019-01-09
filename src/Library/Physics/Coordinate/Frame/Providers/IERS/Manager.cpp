@@ -347,7 +347,7 @@ Directory                       Manager::DefaultLocalRepository             ( )
 
     using library::core::fs::Path ;
     
-    return Directory::Path(Path::Parse("~/.library/physics/coordinate/frame/providers/iers")) ;
+    return Directory::Path(Path::Parse("./.library/physics/coordinate/frame/providers/iers")) ;
 
 }
 

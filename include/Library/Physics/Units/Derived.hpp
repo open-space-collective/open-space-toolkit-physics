@@ -146,7 +146,13 @@ class Derived : public Unit
                 static Unit     Velocity                                    (   const   Length::Unit&               aLengthUnit,
                                                                                 const   Time::Unit&                 aTimeUnit                                   ) ;
 
+                static Unit     Acceleration                                (   const   Length::Unit&               aLengthUnit,
+                                                                                const   Time::Unit&                 aTimeUnit                                   ) ;
+
                 static Unit     AngularVelocity                             (   const   Angle::Unit&                anAngleUnit,
+                                                                                const   Time::Unit&                 aTimeUnit                                   ) ;
+
+                static Unit     GravitationalParameter                      (   const   Length::Unit&               aLengthUnit,
                                                                                 const   Time::Unit&                 aTimeUnit                                   ) ;
 
                 static Unit     Parse                                       (   const   String&                     aString                                     ) ;

@@ -7,6 +7,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <Library/Physics/Environment/Gravitational/Earth.hpp>
 #include <Library/Physics/Environment/Ephemerides/Analytical.hpp>
 #include <Library/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
 #include <Library/Physics/Coordinate/Frame.hpp>
@@ -32,6 +33,8 @@ namespace celest
 using library::physics::units::Mass ;
 using library::physics::units::Time ;
 using library::physics::units::Angle ;
+
+using EarthGravitationalModel = library::physics::environment::gravitational::Earth ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -100,7 +103,8 @@ const Real                      Earth::J2                                       
                                                                                 const   Length&                     anEquatorialRadius,
                                                                                 const   Real&                       aFlattening,
                                                                                 const   Real&                       aJ2,
-                                                                                const   Shared<Ephemeris>&          anEphemerisSPtr,
+                                                                                const   Shared<Ephemeris>&          anEphemeris,
+                                                                                const   Shared<GravitationalModel>& aGravitationalModel,
                                                                                 const   Instant&                    anInstant                                   )
                                 :   Celestial
                                     (
@@ -110,9 +114,10 @@ const Real                      Earth::J2                                       
                                         anEquatorialRadius,
                                         aFlattening,
                                         aJ2,
-                                        anEphemerisSPtr,
+                                        anEphemeris,
+                                        aGravitationalModel,
                                         anInstant,
-                                        Earth::Geometry(anEquatorialRadius, aFlattening, anEphemerisSPtr->accessFrame())
+                                        Earth::Geometry(anEquatorialRadius, aFlattening, anEphemeris->accessFrame())
                                     )
 {
 
@@ -141,6 +146,8 @@ Earth                           Earth::EGM2008                              ( )
 
     const Shared<const Frame> earthFrameSPtr = Frame::ITRF() ;
 
+    static const Shared<GravitationalModel> gravitationalModel = std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::EGM2008) ;
+
     return
     {
         Earth::Models::EGM2008::GravitationalParameter,
@@ -148,6 +155,7 @@ Earth                           Earth::EGM2008                              ( )
         Earth::Models::EGM2008::Flattening,
         Earth::Models::EGM2008::J2,
         std::make_shared<Analytical>(earthFrameSPtr),
+        gravitationalModel,
         Instant::J2000()
     } ;
 
@@ -161,6 +169,8 @@ Earth                           Earth::WGS84_EGM96                          ( )
 
     const Shared<const Frame> earthFrameSPtr = Frame::ITRF() ;
 
+    static const Shared<GravitationalModel> gravitationalModel = std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::EGM96) ;
+
     return
     {
         Earth::Models::WGS84_EGM96::GravitationalParameter,
@@ -168,6 +178,7 @@ Earth                           Earth::WGS84_EGM96                          ( )
         Earth::Models::WGS84_EGM96::Flattening,
         Earth::Models::WGS84_EGM96::J2,
         std::make_shared<Analytical>(earthFrameSPtr),
+        gravitationalModel,
         Instant::J2000()
     } ;
 
@@ -181,6 +192,8 @@ Earth                           Earth::EGM96                                ( )
 
     const Shared<const Frame> earthFrameSPtr = Frame::ITRF() ;
 
+    static const Shared<GravitationalModel> gravitationalModel = std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::EGM96) ;
+
     return
     {
         Earth::Models::EGM96::GravitationalParameter,
@@ -188,6 +201,7 @@ Earth                           Earth::EGM96                                ( )
         Earth::Models::EGM96::Flattening,
         Earth::Models::EGM96::J2,
         std::make_shared<Analytical>(earthFrameSPtr),
+        gravitationalModel,
         Instant::J2000()
     } ;
 
@@ -201,6 +215,8 @@ Earth                           Earth::WGS84                                ( )
 
     const Shared<const Frame> earthFrameSPtr = Frame::ITRF() ;
 
+    static const Shared<GravitationalModel> gravitationalModel = std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::WGS84) ;
+
     return
     {
         Earth::Models::WGS84::GravitationalParameter,
@@ -208,6 +224,7 @@ Earth                           Earth::WGS84                                ( )
         Earth::Models::WGS84::Flattening,
         Earth::Models::WGS84::J2,
         std::make_shared<Analytical>(earthFrameSPtr),
+        gravitationalModel,
         Instant::J2000()
     } ;
 

@@ -10,3 +10,5 @@
 *.tls filter=lfs diff=lfs merge=lfs -text
 *.pc filter=lfs diff=lfs merge=lfs -text
 *.tpc filter=lfs diff=lfs merge=lfs -text
+*.egm filter=lfs diff=lfs merge=lfs -text
+*.egm.cof filter=lfs diff=lfs merge=lfs -text
