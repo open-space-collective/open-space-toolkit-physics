@@ -21,6 +21,7 @@
 
 #include <fstream>
 #include <numeric>
+#include <cstdlib>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -52,6 +53,15 @@ URL                             Manager::getRemoteUrl                       ( ) 
     const std::lock_guard<std::mutex> lock { mutex_ } ;
 
     return remoteUrl_ ;
+
+}
+
+File                            Manager::getIndexFile                        ( ) const
+{
+
+    const std::lock_guard<std::mutex> lock { mutex_ } ;
+
+    return this->getIndexFile_() ;
 
 }
 
@@ -187,12 +197,30 @@ Manager&                        Manager::Get                                ( )
 
 Directory                       Manager::DefaultLocalRepository             ( )
 {
-    return Directory::Path(Path::Parse("./.library/physics/environment/ephemerides/spice")) ;
+
+    static const Directory defaultLocalRepository = Directory::Path(Path::Parse("./.library/physics/environment/ephemerides/spice")) ;
+
+    if (const char* localRepositoryPath = std::getenv("LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY"))
+    {
+        return Directory::Path(Path::Parse(localRepositoryPath)) ;
+    }
+    
+    return defaultLocalRepository ;
+
 }
 
 URL                             Manager::DefaultRemoteUrl                   ( )
 {
-    return URL::Parse("https://naif.jpl.nasa.gov/pub/naif/generic_kernels/") ;
+
+    static const URL defaultRemoteUrl = URL::Parse("https://naif.jpl.nasa.gov/pub/naif/generic_kernels/") ;
+
+    if (const char* remoteUrl = std::getenv("LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_REMOTE_URL"))
+    {
+        return URL::Parse(remoteUrl) ;
+    }
+    
+    return defaultRemoteUrl ;
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -200,8 +228,17 @@ URL                             Manager::DefaultRemoteUrl                   ( )
                                 Manager::Manager                            ( )
                                 :   localRepository_(Manager::DefaultLocalRepository()),
                                     remoteUrl_(Manager::DefaultRemoteUrl()),
-                                    indexFile_(File::Path(localRepository_.getPath() + Path::Parse("./index.json"))),
                                     index_(Index::Empty())
+{
+
+}
+
+File                            Manager::getIndexFile_                      ( ) const
+{
+    return File::Path(localRepository_.getPath() + Path::Parse("./spice_index.json")) ;
+}
+
+void                            Manager::updateIndex                        ( )
 {
 
     if (!localRepository_.exists())
@@ -209,14 +246,9 @@ URL                             Manager::DefaultRemoteUrl                   ( )
         localRepository_.create() ;
     }
 
-    this->updateIndex() ;
-    
-}
+    const File indexFile = this->getIndexFile_() ;
 
-void                            Manager::updateIndex                        ( )
-{
-
-    if (!indexFile_.exists())
+    if (!indexFile.exists())
     {
 
         this->fetchIndexAt(remoteUrl_) ;
@@ -226,12 +258,12 @@ void                            Manager::updateIndex                        ( )
     if (index_.isEmpty())
     {
         
-        if (!indexFile_.exists())
+        if (!indexFile.exists())
         {
             throw library::core::error::RuntimeError("Index file [{}] does not exist.", remoteUrl_.toString()) ;
         }
 
-        index_ = Index::Load(indexFile_) ;
+        index_ = Index::Load(indexFile) ;
 
     }
 
@@ -364,7 +396,7 @@ void                            Manager::fetchIndexAt                       (   
         throw library::core::error::RuntimeError("Error when fetching index at [{}]: [{}].", aUrl.toString(), anException.what()) ;
     }
 
-    File remoteIndexFile = indexFile_ ;
+    File remoteIndexFile = this->getIndexFile_() ;
 
     remoteIndexFile.create() ;
     
@@ -383,14 +415,16 @@ void                            Manager::flushIndex                         ( )
 
     index_ = Index::Empty() ;
 
-    if (indexFile_.exists())
+    File indexFile = this->getIndexFile_() ;
+
+    if (indexFile.exists())
     {
 
-        File(indexFile_).remove() ;
+        indexFile.remove() ;
 
-        if (indexFile_.exists())
+        if (indexFile.exists())
         {
-            throw library::core::error::RuntimeError("Cannot flush index at [{}].", indexFile_.toString()) ;
+            throw library::core::error::RuntimeError("Cannot flush index at [{}].", indexFile.toString()) ;
         }
         
     }

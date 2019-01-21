@@ -34,7 +34,7 @@ TEST (Library_Physics_Environment_Ephemerides_SPICE, Constructor)
 
     {
 
-        EXPECT_NO_THROW(SPICE spice(SPICE::Object::Earth)) ;
+        EXPECT_NO_THROW(SPICE spice { SPICE::Object::Earth }) ;
 
     }
 
@@ -66,6 +66,7 @@ TEST (Library_Physics_Environment_Ephemerides_SPICE, AccessFrame)
     using library::core::ctnr::Table ;
     using library::core::fs::Path ;
     using library::core::fs::File ;
+    using library::core::fs::Directory ;
 
     using library::math::obj::Vector3d ;
     using library::math::geom::d3::trf::rot::Quaternion ;
@@ -78,14 +79,59 @@ TEST (Library_Physics_Environment_Ephemerides_SPICE, AccessFrame)
     using library::physics::coord::Frame ;
     using library::physics::coord::Transform ;
     using library::physics::env::ephem::SPICE ;
+    using library::physics::env::ephem::spice::Engine ;
+    using library::physics::env::ephem::spice::Kernel ;
 
     {
 
-        const Array<Tuple<SPICE::Object, File, Real, Real, Real, Real>> referenceScenarios =
+        const Directory spiceLocalRepository = Directory::Path(Path::Parse("/app/share/environment/ephemerides/spice")) ;
+
+        const Array<Tuple<SPICE::Object, File, Real, Real, Real, Real, Array<Kernel>>> referenceScenarios =
         {
-            { SPICE::Object::Earth, File::Path(Path::Parse("../test/Library/Physics/Environment/Ephemerides/SPICE/AccessFrame/Scenario_1 Earth.csv")), 0.0, 0.0, 0.03, 1e-10 },
-            { SPICE::Object::Sun, File::Path(Path::Parse("../test/Library/Physics/Environment/Ephemerides/SPICE/AccessFrame/Scenario_1 Sun.csv")), 100.0, 1e-5, 0.0, 1e-12 },
-            { SPICE::Object::Moon, File::Path(Path::Parse("../test/Library/Physics/Environment/Ephemerides/SPICE/AccessFrame/Scenario_1 Moon.csv")), 10.0, 1e-5, 1.0, 1e-11 }
+            {
+                SPICE::Object::Earth,
+                File::Path(Path::Parse("../test/Library/Physics/Environment/Ephemerides/SPICE/AccessFrame/Scenario_1 Earth.csv")),
+                0.0,
+                0.0,
+                0.03,
+                1e-10,
+                {
+                    Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("naif0012.tls"))), // Leap seconds
+                    Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("de430.bsp"))), // Ephemeris
+                    Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("pck00010.tpc"))), // System body shape and orientation constants
+                    Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("earth_assoc_itrf93.tf"))),
+                    Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("earth_000101_181204_180912.bpc")))
+                }
+            },
+            {
+                SPICE::Object::Sun,
+                File::Path(Path::Parse("../test/Library/Physics/Environment/Ephemerides/SPICE/AccessFrame/Scenario_1 Sun.csv")),
+                100.0,
+                1e-5,
+                0.0,
+                1e-12,
+                {
+                    Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("naif0012.tls"))), // Leap seconds
+                    Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("de430.bsp"))), // Ephemeris
+                    Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("pck00010.tpc"))) // System body shape and orientation constants
+                }
+            },
+            {
+                SPICE::Object::Moon,
+                File::Path(Path::Parse("../test/Library/Physics/Environment/Ephemerides/SPICE/AccessFrame/Scenario_1 Moon.csv")),
+                10.0,
+                1e-5,
+                1.0,
+                1e-11,
+                {
+                    Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("naif0012.tls"))), // Leap seconds
+                    Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("de430.bsp"))), // Ephemeris
+                    Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("pck00010.tpc"))), // System body shape and orientation constants
+                    Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("moon_080317.tf"))),
+                    Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("moon_assoc_me.tf"))),
+                    Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("moon_pa_de421_1900-2050.bpc")))
+                }
+            }
         } ;
 
         for (const auto& referenceScenario : referenceScenarios)
@@ -97,6 +143,16 @@ TEST (Library_Physics_Environment_Ephemerides_SPICE, AccessFrame)
             const Real velocityTolerance_meterPerSec = std::get<3>(referenceScenario) ;
             const Real orientation_asec = std::get<4>(referenceScenario) ;
             const Real angularVelocityTolerance_radPerSec = std::get<5>(referenceScenario) ;
+            const Array<Kernel> kernels = std::get<6>(referenceScenario) ;
+
+            Engine::Get().setMode(Engine::Mode::Manual) ;
+
+            Engine::Get().reset() ;
+
+            for (const auto& kernel : kernels)
+            {
+                Engine::Get().loadKernel(kernel) ;
+            }
 
             const SPICE spice = { object } ;
 
@@ -124,6 +180,10 @@ TEST (Library_Physics_Environment_Ephemerides_SPICE, AccessFrame)
                 ASSERT_TRUE(w_OBJECT_GCRF_in_OBJECT.isNear(w_OBJECT_GCRF_in_OBJECT_reference, angularVelocityTolerance_radPerSec)) << String::Format("{} - {} ~ {} = {} [rad/s]", instant_reference.toString(), w_OBJECT_GCRF_in_OBJECT.toString(), w_OBJECT_GCRF_in_OBJECT_reference.toString(), (w_OBJECT_GCRF_in_OBJECT - w_OBJECT_GCRF_in_OBJECT_reference).norm()) ;
 
             }
+
+            Engine::Get().setMode(Engine::DefaultMode()) ;
+
+            Engine::Get().reset() ;
 
         }
 
@@ -172,10 +232,11 @@ TEST (Library_Physics_Environment_Ephemerides_SPICE, ManualMode)
     using library::physics::coord::Frame ;
     using library::physics::env::ephem::SPICE ;
     using library::physics::env::ephem::spice::Engine ;
-    using library::physics::env::ephem::spice::Manager ;
     using library::physics::env::ephem::spice::Kernel ;
 
     {
+
+        const Directory spiceLocalRepository = Directory::Path(Path::Parse("/app/share/environment/ephemerides/spice")) ;
 
         Engine::Get().setMode(Engine::Mode::Manual) ;
 
@@ -200,9 +261,9 @@ TEST (Library_Physics_Environment_Ephemerides_SPICE, ManualMode)
 
         ) ;
 
-        Engine::Get().loadKernel(Kernel::File(File::Path(Path::Parse("./.library/physics/environment/ephemerides/spice/naif0012.tls")))) ;
-        Engine::Get().loadKernel(Kernel::File(File::Path(Path::Parse("./.library/physics/environment/ephemerides/spice/de430.bsp")))) ;
-        Engine::Get().loadKernel(Kernel::File(File::Path(Path::Parse("./.library/physics/environment/ephemerides/spice/pck00010.tpc")))) ;
+        Engine::Get().loadKernel(Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("./naif0012.tls")))) ;
+        Engine::Get().loadKernel(Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("./de430.bsp")))) ;
+        Engine::Get().loadKernel(Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("./pck00010.tpc")))) ;
 
         EXPECT_NO_THROW
         (
@@ -217,7 +278,65 @@ TEST (Library_Physics_Environment_Ephemerides_SPICE, ManualMode)
 
         EXPECT_TRUE(sunPosition.isDefined()) ;
 
+        Engine::Get().setMode(Engine::DefaultMode()) ;
+
+        Engine::Get().reset() ;
+
+    }
+
+}
+
+TEST (Library_Physics_Environment_Ephemerides_SPICE, AutomaticMode)
+{
+
+    using library::core::types::Shared ;
+    using library::core::types::Real ;
+    using library::core::types::String ;
+    using library::core::fs::Path ;
+    using library::core::fs::File ;
+    using library::core::fs::Directory ;
+
+    using library::physics::time::Scale ;
+    using library::physics::time::Instant ;
+    using library::physics::time::DateTime ;
+    using library::physics::coord::Position ;
+    using library::physics::coord::Frame ;
+    using library::physics::env::ephem::SPICE ;
+    using library::physics::env::ephem::spice::Engine ;
+    using library::physics::env::ephem::spice::Manager ;
+
+    {
+
+        Manager::Get().setLocalRepository(Directory::Path(Path::Parse("/app/share/environment/ephemerides/spice"))) ;
+
         Engine::Get().setMode(Engine::Mode::Automatic) ;
+
+        Engine::Get().reset() ;
+
+        const SPICE spice = { SPICE::Object::Sun } ;
+
+        const Shared<const Frame> sunFrameSPtr = spice.accessFrame() ;
+
+        const Instant instant = Instant::DateTime(DateTime(2016, 1, 1, 0, 0, 0), Scale::UTC) ;
+
+        Position sunPosition = Position::Undefined() ;
+
+        EXPECT_NO_THROW
+        (
+
+            {
+
+                sunPosition = sunFrameSPtr->getOriginIn(Frame::GCRF(), instant) ;
+
+            }
+
+        ) ;
+
+        EXPECT_TRUE(sunPosition.isDefined()) ;
+
+        Manager::Get().setLocalRepository(Manager::DefaultLocalRepository()) ;
+
+        Engine::Get().setMode(Engine::DefaultMode()) ;
 
         Engine::Get().reset() ;
 

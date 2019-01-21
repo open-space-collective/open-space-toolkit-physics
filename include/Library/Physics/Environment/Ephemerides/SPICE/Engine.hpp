@@ -17,6 +17,7 @@
 #include <Library/Physics/Time/Interval.hpp>
 #include <Library/Physics/Time/Instant.hpp>
 
+#include <Library/Core/FileSystem/Directory.hpp>
 #include <Library/Core/FileSystem/File.hpp>
 #include <Library/Core/FileSystem/Path.hpp>
 #include <Library/Core/Containers/Array.hpp>
@@ -50,6 +51,7 @@ using library::core::ctnr::Pair ;
 using library::core::ctnr::Array ;
 using library::core::fs::Path ;
 using library::core::fs::File ;
+using library::core::fs::Directory ;
 
 using library::physics::time::Instant ;
 using library::physics::time::Interval ;
@@ -61,6 +63,10 @@ using library::physics::env::ephem::spice::Kernel ;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @brief                      SPICE Toolkit engine
+///
+///                             The following environment variables can be defined:
+///
+///                             - "LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_ENGINE_MODE" will override "DefaultMode"
 
 class Engine
 {
@@ -141,16 +147,25 @@ class Engine
 
         /// @brief              Get engine singleton
         ///
-        /// @param              [in] (optional) aMode An engine mode
         /// @return             Reference to engine
 
-        static Engine&          Get                                         (   const   Engine::Mode&               aMode                                       =   Engine::Mode::Automatic ) ;
+        static Engine&          Get                                         ( ) ;
+
+        /// @brief              Get default engine mode
+        ///
+        ///                     Value: Engine::Mode::Manual
+        ///                     Overriden by: LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_ENGINE_MODE
+        ///
+        /// @return             Default engine mode
+
+        static Engine::Mode	    DefaultMode	                                ( ) ;
 
         /// @brief              Get default kernels
         ///
+        /// @param	            [in] aLocalRepository A local repository
         /// @return             Default kernels
 
-        static Array<Kernel>    DefaultKernels                              ( ) ;
+        static Array<Kernel>    DefaultKernels                              (   const   Directory&                  aLocalRepository	                        ) ;
 
     private:
 
@@ -163,7 +178,7 @@ class Engine
 
         mutable std::mutex      mutex_ ;
 
-                                Engine                                      (   const   Engine::Mode&               aMode                                       ) ;
+                                Engine                                      (   const   Engine::Mode&               aMode                                       =   Engine::DefaultMode() ) ;
 
         bool                    isKernelLoaded_                             (   const   Kernel&                     aKernel                                     ) const ;
 
@@ -172,6 +187,9 @@ class Engine
                                                                                 const   Instant&                    anInstant                                   ) const ;
 
         void                    setup                                       ( ) ;
+
+        void                    manageKernels                               (   const   String&                     aSpiceIdentifier,
+                                                                                const   Instant&                    anInstant                                   ) const ;
 
         void                    loadKernel_                                 (   const   Kernel&                     aKernel                                     ) ;
 

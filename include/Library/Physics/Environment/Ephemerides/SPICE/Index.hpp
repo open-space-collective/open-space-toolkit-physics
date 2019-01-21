@@ -89,7 +89,7 @@ class Index
 
         Array<URL>              findRemoteUrls                              (   const   std::regex&                 aKernelNameRegex                            ) const ;
 
-        /// @brief              Constructs empty index
+        /// @brief              Constructs an empty index
         ///
         /// @return             Empty index
 
