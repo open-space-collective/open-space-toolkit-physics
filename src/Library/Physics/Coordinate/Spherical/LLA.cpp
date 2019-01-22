@@ -152,20 +152,20 @@ Vector3d                        LLA::toCartesian                            (   
         throw library::core::error::runtime::Undefined("LLA") ;
     }
 
-	const double latitude_rad = latitude_.inRadians() ;
+    const double latitude_rad = latitude_.inRadians() ;
     const double longitude_rad = longitude_.inRadians() ;
-	const double altitude_m = altitude_.inMeters() ;
+    const double altitude_m = altitude_.inMeters() ;
 
-	double cartesianArray[3] ;
+    double cartesianArray[3] ;
 
-	const int result = iauGd2gce(anEllipsoidEquatorialRadius.inMeters(), anEllipsoidFlattening, longitude_rad, latitude_rad, altitude_m, cartesianArray) ;
+    const int result = iauGd2gce(anEllipsoidEquatorialRadius.inMeters(), anEllipsoidFlattening, longitude_rad, latitude_rad, altitude_m, cartesianArray) ;
 
-	if (result != 0)
-	{
+    if (result != 0)
+    {
         throw library::core::error::RuntimeError("Cannot convert LLA to Cartesian.") ;
-	}
+    }
 
-	return { cartesianArray[0], cartesianArray[1], cartesianArray[2] } ;
+    return { cartesianArray[0], cartesianArray[1], cartesianArray[2] } ;
 
 }
 

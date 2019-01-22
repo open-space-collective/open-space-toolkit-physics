@@ -19,14 +19,14 @@
 BOOST_PYTHON_MODULE (LibraryPhysicsPy)
 {
 
-	boost::python::object package = boost::python::scope() ;
-	
-	package.attr("__path__") = "Library" ;
+    boost::python::object package = boost::python::scope() ;
+    
+    package.attr("__path__") = "Library" ;
 
-	LibraryPhysicsPy_Units() ;
-	LibraryPhysicsPy_Time() ;
-	LibraryPhysicsPy_Coordinate() ;
-	LibraryPhysicsPy_Environment() ;
+    LibraryPhysicsPy_Units() ;
+    LibraryPhysicsPy_Time() ;
+    LibraryPhysicsPy_Coordinate() ;
+    LibraryPhysicsPy_Environment() ;
 
 }
 

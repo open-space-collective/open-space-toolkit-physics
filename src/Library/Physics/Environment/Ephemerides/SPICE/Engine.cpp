@@ -237,7 +237,7 @@ Engine&                         Engine::Get                                 ( )
 
 }
 
-Engine::Mode	                Engine::DefaultMode	                        ( )
+Engine::Mode                    Engine::DefaultMode                         ( )
 {
 
     static const Engine::Mode defaultMode = Engine::Mode::Manual ;
@@ -264,7 +264,7 @@ Engine::Mode	                Engine::DefaultMode	                        ( )
 
 }
 
-Array<Kernel>                   Engine::DefaultKernels                      (   const   Directory&                  aLocalRepository	                        )
+Array<Kernel>                   Engine::DefaultKernels                      (   const   Directory&                  aLocalRepository                            )
 {
 
     static const Array<Kernel> defaultKernels =

@@ -37,37 +37,37 @@ using library::physics::environment::gravitational::Model ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @brief	                    Spherical gravitational model
+/// @brief                      Spherical gravitational model
 
 class Spherical : public Model
 {
 
     public:
 
-        /// @brief	            Constructor
+        /// @brief              Constructor
         ///
         /// @param              [in] aGravitationalParameter A gravitational constant
     
-                                Spherical                                   (   const	Derived&                    aGravitationalParameter	                    ) ;
+                                Spherical                                   (   const   Derived&                    aGravitationalParameter                     ) ;
         
-        /// @brief	            Clone the spherical gravitational model
+        /// @brief              Clone the spherical gravitational model
         ///
-        /// @return	            Pointer to spherical gravitational model
+        /// @return             Pointer to spherical gravitational model
 
-        virtual Spherical*      clone	                                    ( ) const override ;
+        virtual Spherical*      clone                                       ( ) const override ;
 
-        /// @brief	            Get the gravitational field value at a given position and instant
+        /// @brief              Get the gravitational field value at a given position and instant
         ///
         /// @param              [in] aPosition A position, expressed in the gravitational object frame [m]
         /// @param              [in] anInstant An instant
-        /// @return	            Gravitational field value, expressed in the gravitational object frame [m.s-2]
+        /// @return             Gravitational field value, expressed in the gravitational object frame [m.s-2]
 
-        virtual Vector3d        getFieldValueAt                             (   const	Vector3d&                   aPosition,
-                                                                                const	Instant&                    anInstant	                                ) const override ;
+        virtual Vector3d        getFieldValueAt                             (   const   Vector3d&                   aPosition,
+                                                                                const   Instant&                    anInstant                                   ) const override ;
 
     private:
 
-        Real	                gravitationalParameter_SI_ ;
+        Real                    gravitationalParameter_SI_ ;
 
 } ;
 

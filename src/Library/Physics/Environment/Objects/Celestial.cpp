@@ -98,7 +98,7 @@ Shared<const Ephemeris>         Celestial::accessEphemeris                  ( ) 
 
 }
 
-Shared<const GravitationalModel> Celestial::accessGravitationalModel	    ( ) const
+Shared<const GravitationalModel> Celestial::accessGravitationalModel        ( ) const
 {
 
     if (!this->isDefined())

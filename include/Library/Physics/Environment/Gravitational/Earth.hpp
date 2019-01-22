@@ -45,12 +45,12 @@ using library::physics::environment::gravitational::Model ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @brief	                    Earth gravitational model
+/// @brief                      Earth gravitational model
 ///
 ///                             The gravitational potential is expanded as sum of spherical harmonics.
 ///
-/// @ref	                    https://en.wikipedia.org/wiki/Spherical_harmonics
-/// @ref	                    https://geographiclib.sourceforge.io/html/gravity.html
+/// @ref                        https://en.wikipedia.org/wiki/Spherical_harmonics
+/// @ref                        https://geographiclib.sourceforge.io/html/gravity.html
 
 class Earth : public Model
 {
@@ -60,58 +60,58 @@ class Earth : public Model
         enum class Type
         {
 
-            WGS84,	            ///< The normal gravitational field for the reference ellipsoid. This includes the zonal coefficients up to order 20.
-            EGM84,	            ///< The Earth Gravity Model 1984, which includes terms up to degree 180.
-            EGM96,	            ///< The Earth Gravity Model 1996, which includes terms up to degree 360.
-            EGM2008	            ///< The Earth Gravity Model 2008, which includes terms up to degree 2190.
+            WGS84,              ///< The normal gravitational field for the reference ellipsoid. This includes the zonal coefficients up to order 20.
+            EGM84,              ///< The Earth Gravity Model 1984, which includes terms up to degree 180.
+            EGM96,              ///< The Earth Gravity Model 1996, which includes terms up to degree 360.
+            EGM2008             ///< The Earth Gravity Model 2008, which includes terms up to degree 2190.
 
         } ;
 
-        /// @brief	            Constructor
+        /// @brief              Constructor
         ///
         /// @param              [in] aType A gravitational model type
         /// @param              [in] (optional) aDataDirectory A gravitational model data directory
     
-                                Earth                                       (   const	Earth::Type&                aType,
-                                                                                const	Directory&                  aDataDirectory                              =   Directory::Undefined() ) ;
+                                Earth                                       (   const   Earth::Type&                aType,
+                                                                                const   Directory&                  aDataDirectory                              =   Directory::Undefined() ) ;
 
-        /// @brief	            Copy constructor
+        /// @brief              Copy constructor
         ///
         /// @param              [in] anEarthGravitationalModel An Earth model
 
-                                Earth                                       (   const	Earth&                      anEarthGravitationalModel                   ) ;
+                                Earth                                       (   const   Earth&                      anEarthGravitationalModel                   ) ;
 
         /// @brief              Copy assignment operator
         ///
         /// @param              [in] anEarthGravitationalModel An Earth model
         /// @return             Reference to Earth model
 
-        Earth&                  operator =                                  (   const	Earth&                      anEarthGravitationalModel                   ) ;
+        Earth&                  operator =                                  (   const   Earth&                      anEarthGravitationalModel                   ) ;
 
-        /// @brief	            Destructor
+        /// @brief              Destructor
 
-                                ~Earth	                                    ( ) ;
+                                ~Earth                                      ( ) ;
         
-        /// @brief	            Clone the Earth gravitational model
+        /// @brief              Clone the Earth gravitational model
         ///
-        /// @return	            Pointer to Earth gravitational model
+        /// @return             Pointer to Earth gravitational model
 
-        virtual Earth*          clone	                                    ( ) const override ;
+        virtual Earth*          clone                                       ( ) const override ;
 
-        /// @brief	            Get gravitational model type
+        /// @brief              Get gravitational model type
         ///
-        /// @return	            Gravitational model type
+        /// @return             Gravitational model type
 
-        Earth::Type	            getType                                     ( ) const ;
+        Earth::Type             getType                                     ( ) const ;
 
-        /// @brief	            Get the gravitational field value at a given position and instant
+        /// @brief              Get the gravitational field value at a given position and instant
         ///
         /// @param              [in] aPosition A position, expressed in the gravitational object frame [m]
         /// @param              [in] anInstant An instant
-        /// @return	            Gravitational field value, expressed in the gravitational object frame [m.s-2]
+        /// @return             Gravitational field value, expressed in the gravitational object frame [m.s-2]
 
-        virtual Vector3d        getFieldValueAt                             (   const	Vector3d&                   aPosition,
-                                                                                const	Instant&                    anInstant	                                ) const override ;
+        virtual Vector3d        getFieldValueAt                             (   const   Vector3d&                   aPosition,
+                                                                                const   Instant&                    anInstant                                   ) const override ;
 
     private:
 

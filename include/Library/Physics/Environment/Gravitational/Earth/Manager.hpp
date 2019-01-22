@@ -50,6 +50,12 @@ using EarthGravitationalModel = library::physics::environment::gravitational::Ea
 /// @brief                      Earth gravitational model data manager
 ///
 ///                             Fetches and manages necessary gravity model data files.
+///
+///                             The following environment variables can be defined:
+///
+///                             - "LIBRARY_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_ENABLED" will override "DefaultEnabled"
+///                             - "LIBRARY_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY" will override "DefaultLocalRepository"
+///                             - "LIBRARY_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_REMOTE_URL" will override "DefaultRemoteUrl"
 
 class Manager
 {
@@ -64,18 +70,18 @@ class Manager
 
         Manager&                operator =                                  (   const   Manager&                    aManager                                    ) = delete ;
 
-        /// @brief	            Returns true is manager is enabled
+        /// @brief              Returns true is manager is enabled
         ///
         /// @return             True is manager is enabled
 
-        bool                    isEnabled	                                ( ) const ;
+        bool                    isEnabled                                   ( ) const ;
 
-        /// @brief	            Returns true if manager has data file for the given model type
+        /// @brief              Returns true if manager has data file for the given model type
         ///
         /// @param              [in] aModelType A model type
         /// @return             True if manager has data file for the given model type
 
-        bool                    hasDataFileForType	                        (   const   EarthGravitationalModel::Type& aModelType                               ) const ;
+        bool                    hasDataFileForType                          (   const   EarthGravitationalModel::Type& aModelType                               ) const ;
 
         /// @brief              Get local repository
         ///
@@ -107,13 +113,19 @@ class Manager
 
         void                    setRemoteUrl                                (   const   URL&                        aRemoteUrl                                  ) ;
 
-        /// @brief	            Enable manager
+        /// @brief              Enable manager
 
-        void                    enable	                                    ( ) ;
+        void                    enable                                      ( ) ;
 
-        /// @brief	            Disable manager
+        /// @brief              Disable manager
 
-        void                    disable	                                    ( ) ;
+        void                    disable                                     ( ) ;
+
+        /// @brief              Set enabled flag
+        ///
+        /// @param              [in] aBoolean An enabled flag
+
+        void                    setEnabled                                  (   const   bool                        aBoolean                                    ) ;
 
         /// @brief              Get manager singleton
         ///
@@ -121,13 +133,28 @@ class Manager
 
         static Manager&         Get                                         ( ) ;
 
+        /// @brief              Get default enabled flag
+        ///
+        ///                     Value: false
+        ///                     Overriden by: LIBRARY_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_ENABLED
+        ///
+        /// @return             Default enabled flag
+
+        static bool             DefaultEnabled                              ( ) ;
+
         /// @brief              Get default local repository
+        ///
+        ///                     Value: "./.library/physics/environment/gravitational/earth"
+        ///                     Overriden by: LIBRARY_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY
         ///
         /// @return             Default local repository
 
         static Directory        DefaultLocalRepository                      ( ) ;
 
         /// @brief              Get default remote URL
+        ///
+        ///                     Value: "https://sourceforge.net/projects/geographiclib/files/gravity-distrib/"
+        ///                     Overriden by: LIBRARY_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_REMOTE_URL
         ///
         /// @return             Default remote URL
 
@@ -145,9 +172,9 @@ class Manager
 
                                 Manager                                     ( ) ;
 
-        URL                     getDataFileUrlForType	                    (   const   EarthGravitationalModel::Type& aModelType                               ) const ;
+        URL                     getDataFileUrlForType                       (   const   EarthGravitationalModel::Type& aModelType                               ) const ;
 
-        static String           DataFileNameFromType	                    (   const   EarthGravitationalModel::Type& aModelType                               ) ;
+        static String           DataFileNameFromType                        (   const   EarthGravitationalModel::Type& aModelType                               ) ;
 
 } ;
 

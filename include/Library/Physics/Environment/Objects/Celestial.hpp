@@ -129,7 +129,7 @@ class Celestial : public Object
 
         Shared<const Ephemeris> accessEphemeris                             ( ) const ;
 
-        Shared<const GravitationalModel> accessGravitationalModel	        ( ) const ;
+        Shared<const GravitationalModel> accessGravitationalModel           ( ) const ;
 
         Celestial::Type         getType                                     ( ) const ;
 

@@ -39,13 +39,13 @@ class Earth::Impl
 
     public:
 
-                                Impl                                        (   const	Earth::Type&                aType,
-                                                                                const	Directory&                  aDataDirectory	                            ) ;
+                                Impl                                        (   const   Earth::Type&                aType,
+                                                                                const   Directory&                  aDataDirectory                              ) ;
 
-        Earth::Type	            getType                                     ( ) const ;
+        Earth::Type             getType                                     ( ) const ;
 
-        Vector3d                getFieldValueAt                             (   const	Vector3d&                   aPosition,
-                                                                                const	Instant&                    anInstant	                                ) const ;
+        Vector3d                getFieldValueAt                             (   const   Vector3d&                   aPosition,
+                                                                                const   Instant&                    anInstant                                   ) const ;
 
     private:
 
@@ -53,44 +53,44 @@ class Earth::Impl
 
         GravityModel*           gravityModelPtr_ ;
 
-        static GravityModel*    GravityModelFromType	                    (   const	Earth::Type&                aType,
-                                                                                const	Directory&                  aDataDirectory	                            ) ;
+        static GravityModel*    GravityModelFromType                        (   const   Earth::Type&                aType,
+                                                                                const   Directory&                  aDataDirectory                              ) ;
 
 } ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                                Earth::Impl::Impl	                        (   const	Earth::Type&                aType,
-                                                                                const	Directory&                  aDataDirectory	                            )
+                                Earth::Impl::Impl                           (   const   Earth::Type&                aType,
+                                                                                const   Directory&                  aDataDirectory                              )
                                 :   type_(aType),
                                     gravityModelPtr_(Earth::Impl::GravityModelFromType(aType, aDataDirectory))
 {
 
 }
 
-Earth::Type	                    Earth::Impl::getType                        ( ) const
+Earth::Type                     Earth::Impl::getType                        ( ) const
 {
     return type_ ;
 }
 
-Vector3d                        Earth::Impl::getFieldValueAt                (   const	Vector3d&                   aPosition,
-                                                                                const	Instant&                    anInstant	                                ) const
+Vector3d                        Earth::Impl::getFieldValueAt                (   const   Vector3d&                   aPosition,
+                                                                                const   Instant&                    anInstant                                   ) const
 {
 
     (void) anInstant ; // Temporal invariance
 
     double g_x ;
-	double g_y ;
-	double g_z ;
+    double g_y ;
+    double g_z ;
 
-	gravityModelPtr_->V(aPosition.x(), aPosition.y(), aPosition.z(), g_x, g_y, g_z) ;
+    gravityModelPtr_->V(aPosition.x(), aPosition.y(), aPosition.z(), g_x, g_y, g_z) ;
 
-	return { g_x, g_y, g_z } ;
+    return { g_x, g_y, g_z } ;
 
 }
 
-GravityModel*                   Earth::Impl::GravityModelFromType	        (   const	Earth::Type&                aType,
-                                                                                const	Directory&                  aDataDirectory	                            )
+GravityModel*                   Earth::Impl::GravityModelFromType           (   const   Earth::Type&                aType,
+                                                                                const   Directory&                  aDataDirectory                              )
 {
 
     using library::core::types::String ;
@@ -153,22 +153,22 @@ GravityModel*                   Earth::Impl::GravityModelFromType	        (   co
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                                Earth::Earth                                (   const	Earth::Type&                aType,
-                                                                                const	Directory&                  aDataDirectory	                            )
+                                Earth::Earth                                (   const   Earth::Type&                aType,
+                                                                                const   Directory&                  aDataDirectory                              )
                                 :   Model(),
                                     implUPtr_(std::make_unique<Earth::Impl>(aType, aDataDirectory))
 {
 
 }
 
-                                Earth::Earth                                (   const	Earth&                      anEarthGravitationalModel                   )
+                                Earth::Earth                                (   const   Earth&                      anEarthGravitationalModel                   )
                                 :   Model(anEarthGravitationalModel),
                                     implUPtr_((anEarthGravitationalModel.implUPtr_ != nullptr) ? std::make_unique<Earth::Impl>(*anEarthGravitationalModel.implUPtr_) : nullptr)
 {
 
 }
 
-Earth&                          Earth::operator =                           (   const	Earth&                      anEarthGravitationalModel                   )
+Earth&                          Earth::operator =                           (   const   Earth&                      anEarthGravitationalModel                   )
 {
 
     if (this != &anEarthGravitationalModel)
@@ -194,13 +194,13 @@ Earth*                          Earth::clone                                ( ) 
     return new Earth(*this) ;
 }
 
-Earth::Type	                    Earth::getType                              ( ) const
+Earth::Type                     Earth::getType                              ( ) const
 {
     return implUPtr_->getType() ;
 }
 
-Vector3d                        Earth::getFieldValueAt                      (   const	Vector3d&                   aPosition,
-                                                                                const	Instant&                    anInstant	                                ) const
+Vector3d                        Earth::getFieldValueAt                      (   const   Vector3d&                   aPosition,
+                                                                                const   Instant&                    anInstant                                   ) const
 {
     return implUPtr_->getFieldValueAt(aPosition, anInstant) ;
 }

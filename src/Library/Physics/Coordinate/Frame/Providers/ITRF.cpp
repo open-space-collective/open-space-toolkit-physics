@@ -119,9 +119,9 @@ Transform                       ITRF::getTransformAt                        (   
     // Polar motion matrix (TIRS -> ITRS, IERS 2003)
     // The matrix operates in the sense V(TRS) = rpom * V(CIP), meaning
     // that it is the final rotation when computing the pointing direction to a celestial source.
-	
-	double rpom[3][3] ;
-	
+
+    double rpom[3][3] ;
+
     iauPom00(xp, yp, sp, rpom) ;
 
     const Vector3d TIRF_x_ITRF = Vector3d(rpom[0][0], rpom[1][0], rpom[2][0]).normalized() ;

@@ -158,14 +158,14 @@ class Engine
         ///
         /// @return             Default engine mode
 
-        static Engine::Mode	    DefaultMode	                                ( ) ;
+        static Engine::Mode     DefaultMode                                 ( ) ;
 
         /// @brief              Get default kernels
         ///
-        /// @param	            [in] aLocalRepository A local repository
+        /// @param              [in] aLocalRepository A local repository
         /// @return             Default kernels
 
-        static Array<Kernel>    DefaultKernels                              (   const   Directory&                  aLocalRepository	                        ) ;
+        static Array<Kernel>    DefaultKernels                              (   const   Directory&                  aLocalRepository                            ) ;
 
     private:
 

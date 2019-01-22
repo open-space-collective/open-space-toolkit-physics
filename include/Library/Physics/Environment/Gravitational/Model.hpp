@@ -33,35 +33,35 @@ using library::physics::time::Instant ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @brief	                    Gravitational model (interface)
+/// @brief                      Gravitational model (interface)
 
 class Model
 {
 
     public:
 
-        /// @brief	            Constructor (default)
+        /// @brief              Constructor (default)
     
                                 Model                                       ( ) ;
 
-        /// @brief	            Destructor (pure virtual)
+        /// @brief              Destructor (pure virtual)
 
-        virtual                 ~Model	                                    ( ) = 0 ;
+        virtual                 ~Model                                      ( ) = 0 ;
 
-        /// @brief	            Clone the gravitational model (pure virtual)
+        /// @brief              Clone the gravitational model (pure virtual)
         ///
-        /// @return	            Pointer to gravitational model
+        /// @return             Pointer to gravitational model
 
-        virtual Model*          clone	                                    ( ) const = 0 ;
+        virtual Model*          clone                                       ( ) const = 0 ;
 
-        /// @brief	            Get the gravitational field value at a given position and instant (pure virtual)
+        /// @brief              Get the gravitational field value at a given position and instant (pure virtual)
         ///
         /// @param              [in] aPosition A position, expressed in the gravitational object frame [m]
         /// @param              [in] anInstant An instant
-        /// @return	            Gravitational field value, expressed in the gravitational object frame [m.s-2]
+        /// @return             Gravitational field value, expressed in the gravitational object frame [m.s-2]
 
-        virtual Vector3d        getFieldValueAt                             (   const	Vector3d&                   aPosition,
-                                                                                const	Instant&                    anInstant	                                ) const = 0 ;
+        virtual Vector3d        getFieldValueAt                             (   const   Vector3d&                   aPosition,
+                                                                                const   Instant&                    anInstant                                   ) const = 0 ;
 
 } ;
 

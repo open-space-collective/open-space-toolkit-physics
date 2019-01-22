@@ -96,7 +96,7 @@ class Manager
         ///
         /// @return             Index file
 
-        File	                getIndexFile	                            ( ) const ;
+        File                    getIndexFile                                ( ) const ;
 
         /// @brief              Fetch kernel from remote
         ///
@@ -165,7 +165,7 @@ class Manager
 
                                 Manager                                     ( ) ;
 
-        File	                getIndexFile_	                            ( ) const ;
+        File                    getIndexFile_                               ( ) const ;
 
         void                    updateIndex                                 ( ) ;
 

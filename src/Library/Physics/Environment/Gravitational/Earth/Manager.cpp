@@ -37,7 +37,7 @@ namespace earth
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-bool                            Manager::isEnabled	                        ( ) const
+bool                            Manager::isEnabled                          ( ) const
 {
 
     const std::lock_guard<std::mutex> lock { mutex_ } ;
@@ -46,7 +46,7 @@ bool                            Manager::isEnabled	                        ( ) c
 
 }
 
-bool                            Manager::hasDataFileForType	                (   const   EarthGravitationalModel::Type& aModelType                               ) const
+bool                            Manager::hasDataFileForType                 (   const   EarthGravitationalModel::Type& aModelType                               ) const
 {
 
     const std::lock_guard<std::mutex> lock { mutex_ } ;
@@ -212,7 +212,7 @@ void                            Manager::setRemoteUrl                       (   
 
 }
 
-void                            Manager::enable	                            ( )
+void                            Manager::enable                             ( )
 {
 
     const std::lock_guard<std::mutex> lock { mutex_ } ;
@@ -221,12 +221,21 @@ void                            Manager::enable	                            ( )
 
 }
 
-void                            Manager::disable	                        ( )
+void                            Manager::disable                            ( )
 {
 
     const std::lock_guard<std::mutex> lock { mutex_ } ;
 
     enabled_ = false ;
+
+}
+
+void                            Manager::setEnabled                         (   const   bool                        aBoolean                                    )
+{
+
+    const std::lock_guard<std::mutex> lock { mutex_ } ;
+
+    enabled_ = aBoolean ;
 
 }
 
@@ -239,14 +248,46 @@ Manager&                        Manager::Get                                ( )
 
 }
 
+bool                            Manager::DefaultEnabled                     ( )
+{
+
+    static const bool defaultEnabled = false ;
+
+    if (const char* enabledString = std::getenv("LIBRARY_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_ENABLED"))
+    {
+        return strcmp(enabledString, "true") == 0 ;
+    }
+
+    return defaultEnabled ;
+
+}
+
 Directory                       Manager::DefaultLocalRepository             ( )
 {
-    return Directory::Path(Path::Parse("./.library/physics/environment/gravitational/earth")) ;
+    
+    static const Directory defaultLocalRepository = Directory::Path(Path::Parse("./.library/physics/environment/gravitational/earth")) ;
+
+    if (const char* localRepositoryPath = std::getenv("LIBRARY_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY"))
+    {
+        return Directory::Path(Path::Parse(localRepositoryPath)) ;
+    }
+    
+    return defaultLocalRepository ;
+
 }
 
 URL                             Manager::DefaultRemoteUrl                   ( )
 {
-    return URL::Parse("https://sourceforge.net/projects/geographiclib/files/gravity-distrib/") ;
+
+    static const URL defaultRemoteUrl = URL::Parse("https://sourceforge.net/projects/geographiclib/files/gravity-distrib/") ;
+
+    if (const char* remoteUrl = std::getenv("LIBRARY_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_REMOTE_URL"))
+    {
+        return URL::Parse(remoteUrl) ;
+    }
+    
+    return defaultRemoteUrl ;
+    
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -254,7 +295,7 @@ URL                             Manager::DefaultRemoteUrl                   ( )
                                 Manager::Manager                            ( )
                                 :   localRepository_(Manager::DefaultLocalRepository()),
                                     remoteUrl_(Manager::DefaultRemoteUrl()),
-                                    enabled_(true)
+                                    enabled_(Manager::DefaultEnabled())
 {
 
     if (!localRepository_.exists())
@@ -264,12 +305,12 @@ URL                             Manager::DefaultRemoteUrl                   ( )
     
 }
 
-URL                             Manager::getDataFileUrlForType	            (   const   EarthGravitationalModel::Type& aModelType                               ) const
+URL                             Manager::getDataFileUrlForType              (   const   EarthGravitationalModel::Type& aModelType                               ) const
 {
     return remoteUrl_ + String::Format("{}.zip", Manager::DataFileNameFromType(aModelType)) ;
 }
 
-String                          Manager::DataFileNameFromType	            (   const   EarthGravitationalModel::Type& aModelType                               )
+String                          Manager::DataFileNameFromType               (   const   EarthGravitationalModel::Type& aModelType                               )
 {
 
     switch (aModelType)

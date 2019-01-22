@@ -36,7 +36,7 @@ static const Derived::Unit GravitationParameterSIUnit = { Length::Unit::Meter, D
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                                Spherical::Spherical                        (   const	Derived&                    aGravitationalParameter	                    )
+                                Spherical::Spherical                        (   const   Derived&                    aGravitationalParameter                     )
                                 :   Model(),
                                     gravitationalParameter_SI_(aGravitationalParameter.in(GravitationParameterSIUnit))
 {
@@ -48,8 +48,8 @@ Spherical*                      Spherical::clone                            ( ) 
     return new Spherical(*this) ;
 }
 
-Vector3d                        Spherical::getFieldValueAt                  (   const	Vector3d&                   aPosition,
-                                                                                const	Instant&                    anInstant	                                ) const
+Vector3d                        Spherical::getFieldValueAt                  (   const   Vector3d&                   aPosition,
+                                                                                const   Instant&                    anInstant                                   ) const
 {
 
     (void) anInstant ; // Temporal invariance

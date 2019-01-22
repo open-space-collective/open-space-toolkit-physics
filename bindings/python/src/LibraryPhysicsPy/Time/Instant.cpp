@@ -35,10 +35,10 @@ inline void                     LibraryPhysicsPy_Time_Instant               ( )
         .def(self >= self)
 
         .def(self + other<Duration>())
-		.def(self - other<Duration>())
-		.def(self - self)
-		.def(self += other<Duration>())
-		.def(self -= other<Duration>())
+        .def(self - other<Duration>())
+        .def(self - self)
+        .def(self += other<Duration>())
+        .def(self -= other<Duration>())
 
         .def(self_ns::str(self_ns::self))
         

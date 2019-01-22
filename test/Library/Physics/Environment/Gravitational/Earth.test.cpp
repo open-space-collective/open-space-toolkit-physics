@@ -29,14 +29,22 @@ TEST (Library_Physics_Environment_Gravitational_Earth, Constructor)
     using library::core::fs::Directory ;
 
     using EarthGravitationalModel = library::physics::environment::gravitational::Earth ;
-    using library::physics::environment::gravitational::earth::Manager ;
+    using EarthGravitationalModelManager = library::physics::environment::gravitational::earth::Manager ;
 
     {
+
+        EarthGravitationalModelManager::Get().setLocalRepository(Directory::Path(Path::Parse("/app/share/environment/gravitational/earth"))) ;
+
+        EarthGravitationalModelManager::Get().enable() ;
 
         EXPECT_NO_THROW(EarthGravitationalModel earthGravitationalModel(EarthGravitationalModel::Type::WGS84)) ;
         EXPECT_NO_THROW(EarthGravitationalModel earthGravitationalModel(EarthGravitationalModel::Type::EGM84)) ;
         EXPECT_NO_THROW(EarthGravitationalModel earthGravitationalModel(EarthGravitationalModel::Type::EGM96)) ;
         EXPECT_NO_THROW(EarthGravitationalModel earthGravitationalModel(EarthGravitationalModel::Type::EGM2008)) ;
+
+        EarthGravitationalModelManager::Get().setLocalRepository(EarthGravitationalModelManager::DefaultLocalRepository()) ;
+
+        EarthGravitationalModelManager::Get().setEnabled(EarthGravitationalModelManager::DefaultEnabled()) ;
 
     }
 
@@ -63,13 +71,25 @@ TEST (Library_Physics_Environment_Gravitational_Earth, Constructor)
 TEST (Library_Physics_Environment_Gravitational_Earth, Clone)
 {
 
+    using library::core::fs::Path ;
+    using library::core::fs::Directory ;
+
     using EarthGravitationalModel = library::physics::environment::gravitational::Earth ;
+    using EarthGravitationalModelManager = library::physics::environment::gravitational::earth::Manager ;
 
     {
+
+        EarthGravitationalModelManager::Get().setLocalRepository(Directory::Path(Path::Parse("/app/share/environment/gravitational/earth"))) ;
+
+        EarthGravitationalModelManager::Get().enable() ;
 
         const EarthGravitationalModel earthGravitationalModel = { EarthGravitationalModel::Type::EGM96 } ;
 
         EXPECT_NO_THROW(const EarthGravitationalModel* earthGravitationalModelPtr = earthGravitationalModel.clone() ; delete earthGravitationalModelPtr ;) ;
+
+        EarthGravitationalModelManager::Get().setLocalRepository(EarthGravitationalModelManager::DefaultLocalRepository()) ;
+
+        EarthGravitationalModelManager::Get().setEnabled(EarthGravitationalModelManager::DefaultEnabled()) ;
 
     }
 
@@ -78,14 +98,26 @@ TEST (Library_Physics_Environment_Gravitational_Earth, Clone)
 TEST (Library_Physics_Environment_Gravitational_Earth, GetType)
 {
 
+    using library::core::fs::Path ;
+    using library::core::fs::Directory ;
+
     using EarthGravitationalModel = library::physics::environment::gravitational::Earth ;
+    using EarthGravitationalModelManager = library::physics::environment::gravitational::earth::Manager ;
 
     {
+
+        EarthGravitationalModelManager::Get().setLocalRepository(Directory::Path(Path::Parse("/app/share/environment/gravitational/earth"))) ;
+
+        EarthGravitationalModelManager::Get().enable() ;
 
         EXPECT_EQ(EarthGravitationalModel::Type::WGS84, EarthGravitationalModel(EarthGravitationalModel::Type::WGS84).getType()) ;
         EXPECT_EQ(EarthGravitationalModel::Type::EGM84, EarthGravitationalModel(EarthGravitationalModel::Type::EGM84).getType()) ;
         EXPECT_EQ(EarthGravitationalModel::Type::EGM96, EarthGravitationalModel(EarthGravitationalModel::Type::EGM96).getType()) ;
         EXPECT_EQ(EarthGravitationalModel::Type::EGM2008, EarthGravitationalModel(EarthGravitationalModel::Type::EGM2008).getType()) ;
+
+        EarthGravitationalModelManager::Get().setLocalRepository(EarthGravitationalModelManager::DefaultLocalRepository()) ;
+
+        EarthGravitationalModelManager::Get().setEnabled(EarthGravitationalModelManager::DefaultEnabled()) ;
 
     }
 
@@ -98,13 +130,21 @@ TEST (Library_Physics_Environment_Gravitational_Earth, GetFieldValueAt)
     using library::core::types::String ;
     using library::core::ctnr::Tuple ;
     using library::core::ctnr::Array ;
+    using library::core::fs::Path ;
+    using library::core::fs::Directory ;
+    
 
     using library::math::obj::Vector3d ;
 
     using library::physics::time::Instant ;
     using EarthGravitationalModel = library::physics::environment::gravitational::Earth ;
+    using EarthGravitationalModelManager = library::physics::environment::gravitational::earth::Manager ;
 
     {
+
+        EarthGravitationalModelManager::Get().setLocalRepository(Directory::Path(Path::Parse("/app/share/environment/gravitational/earth"))) ;
+
+        EarthGravitationalModelManager::Get().enable() ;
 
         static const Array<Tuple<EarthGravitationalModel::Type, Vector3d, Instant, Vector3d, Real>> testCases =
         {
@@ -147,6 +187,10 @@ TEST (Library_Physics_Environment_Gravitational_Earth, GetFieldValueAt)
             EXPECT_TRUE(fieldValue.isNear(referenceFieldValue, tolerance)) << String::Format("{} ≈ {} Δ {} [m.s-2]", fieldValue.toString(), referenceFieldValue.toString(), (fieldValue - referenceFieldValue).norm()) ;
 
         }
+
+        EarthGravitationalModelManager::Get().setLocalRepository(EarthGravitationalModelManager::DefaultLocalRepository()) ;
+
+        EarthGravitationalModelManager::Get().setEnabled(EarthGravitationalModelManager::DefaultEnabled()) ;
 
     }
 
