@@ -36,9 +36,9 @@ enum \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_a8585fb32125
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_a86c385e43005598c96778d41cff5639e}{Celestial} (const String \&a\+Name, const \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_aab1f58aa727e639288d65f3d33c4f245}{Celestial\+::\+Type} \&a\+Type, const \hyperlink{classlibrary_1_1physics_1_1units_1_1_derived}{Derived} \&a\+Gravitational\+Constant, const \hyperlink{classlibrary_1_1physics_1_1units_1_1_length}{Length} \&an\+Equatorial\+Radius, const Real \&a\+Flattening, const Real \&a\+J2, const Shared$<$ \hyperlink{classlibrary_1_1physics_1_1env_1_1_ephemeris}{Ephemeris} $>$ \&an\+Ephemeris, const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant)
+\hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_ae3710304fcb39c6cee0b0f1b9ea646f1}{Celestial} (const String \&a\+Name, const \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_aab1f58aa727e639288d65f3d33c4f245}{Celestial\+::\+Type} \&a\+Type, const \hyperlink{classlibrary_1_1physics_1_1units_1_1_derived}{Derived} \&a\+Gravitational\+Parameter, const \hyperlink{classlibrary_1_1physics_1_1units_1_1_length}{Length} \&an\+Equatorial\+Radius, const Real \&a\+Flattening, const Real \&a\+J2, const Shared$<$ \hyperlink{classlibrary_1_1physics_1_1env_1_1_ephemeris}{Ephemeris} $>$ \&an\+Ephemeris, const Shared$<$ \hyperlink{namespacelibrary_1_1physics_1_1env_1_1obj_ade509c84a4970a3420c03c058ada152a}{Gravitational\+Model} $>$ \&a\+Gravitational\+Model, const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant)
 \item 
-\hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_a7ee6c55653113c71bf79d8c0d64878d7}{Celestial} (const String \&a\+Name, const \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_aab1f58aa727e639288d65f3d33c4f245}{Celestial\+::\+Type} \&a\+Type, const \hyperlink{classlibrary_1_1physics_1_1units_1_1_derived}{Derived} \&a\+Gravitational\+Constant, const \hyperlink{classlibrary_1_1physics_1_1units_1_1_length}{Length} \&an\+Equatorial\+Radius, const Real \&a\+Flattening, const Real \&a\+J2, const Shared$<$ \hyperlink{classlibrary_1_1physics_1_1env_1_1_ephemeris}{Ephemeris} $>$ \&an\+Ephemeris, const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant, const \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_abdf50733c7ad97327fb64edca5670f13}{Object\+::\+Geometry} \&a\+Geometry)
+\hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_a7c2263420e3ebdb99523a87716f7575a}{Celestial} (const String \&a\+Name, const \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_aab1f58aa727e639288d65f3d33c4f245}{Celestial\+::\+Type} \&a\+Type, const \hyperlink{classlibrary_1_1physics_1_1units_1_1_derived}{Derived} \&a\+Gravitational\+Parameter, const \hyperlink{classlibrary_1_1physics_1_1units_1_1_length}{Length} \&an\+Equatorial\+Radius, const Real \&a\+Flattening, const Real \&a\+J2, const Shared$<$ \hyperlink{classlibrary_1_1physics_1_1env_1_1_ephemeris}{Ephemeris} $>$ \&an\+Ephemeris, const Shared$<$ \hyperlink{namespacelibrary_1_1physics_1_1env_1_1obj_ade509c84a4970a3420c03c058ada152a}{Gravitational\+Model} $>$ \&a\+Gravitational\+Model, const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant, const \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_abdf50733c7ad97327fb64edca5670f13}{Object\+::\+Geometry} \&a\+Geometry)
 \item 
 virtual \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_a508a59c34ac23a582f2fed6003c4c907}{$\sim$\+Celestial} () override
 \item 
@@ -48,9 +48,11 @@ virtual bool \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_a2b1
 \item 
 Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1env_1_1_ephemeris}{Ephemeris} $>$ \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_ab56fff3f2f1508dee79fa7410d67e300}{access\+Ephemeris} () const
 \item 
+Shared$<$ const \hyperlink{namespacelibrary_1_1physics_1_1env_1_1obj_ade509c84a4970a3420c03c058ada152a}{Gravitational\+Model} $>$ \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_acbb834f37fa8f0fc7868d41ebb5173ee}{access\+Gravitational\+Model} () const
+\item 
 \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_aab1f58aa727e639288d65f3d33c4f245}{Celestial\+::\+Type} \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_ae020ad574249ea82679347c0a6933355}{get\+Type} () const
 \item 
-\hyperlink{classlibrary_1_1physics_1_1units_1_1_derived}{Derived} \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_a3c7c4b64ec4b37e311fe914b4ea5b9d1}{get\+Gravitational\+Constant} () const
+\hyperlink{classlibrary_1_1physics_1_1units_1_1_derived}{Derived} \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_a2e8341c35d9c4c07eed4ce9aa5d9acc2}{get\+Gravitational\+Parameter} () const
 \item 
 \hyperlink{classlibrary_1_1physics_1_1units_1_1_length}{Length} \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_a7dd4326ff317292262d1a9adf8887cfe}{get\+Equatorial\+Radius} () const
 \item 
@@ -68,7 +70,7 @@ virtual \hyperlink{classlibrary_1_1physics_1_1coord_1_1_transform}{Transform} \h
 \item 
 virtual \hyperlink{classlibrary_1_1physics_1_1coord_1_1_axes}{Axes} \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_a51d7ed3c0dcf627fbbcd81f9b190fb6b}{get\+Axes\+In} (const Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+Frame\+S\+Ptr) const override
 \item 
-Vector3d \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_ac715a5cc62581070d55ab839e3309c9e}{get\+Gravitational\+Field\+At} (const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_position}{Position} \&a\+Position) const
+\hyperlink{classlibrary_1_1physics_1_1data_1_1_vector}{Vector} \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_aa6313086a85ad19128d16f376a32aefe}{get\+Gravitational\+Field\+At} (const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_position}{Position} \&a\+Position) const
 \item 
 Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_ad1dfffd88b216eccf83a9441cae304be}{get\+Frame\+At} (const \hyperlink{classlibrary_1_1physics_1_1coord_1_1spherical_1_1_l_l_a}{L\+LA} \&a\+Lla, const \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_a8585fb32125cb6c73ae1339a5ea09c79}{Celestial\+::\+Frame\+Type} \&a\+Frame\+Type) const
 \item 
@@ -139,17 +141,17 @@ Mars&\\
 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_a86c385e43005598c96778d41cff5639e}\label{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_a86c385e43005598c96778d41cff5639e}} 
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_ae3710304fcb39c6cee0b0f1b9ea646f1}\label{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_ae3710304fcb39c6cee0b0f1b9ea646f1}} 
 \index{library\+::physics\+::env\+::obj\+::\+Celestial@{library\+::physics\+::env\+::obj\+::\+Celestial}!Celestial@{Celestial}}
 \index{Celestial@{Celestial}!library\+::physics\+::env\+::obj\+::\+Celestial@{library\+::physics\+::env\+::obj\+::\+Celestial}}
 \subsubsection{\texorpdfstring{Celestial()}{Celestial()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily library\+::physics\+::env\+::obj\+::\+Celestial\+::\+Celestial (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Name,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_aab1f58aa727e639288d65f3d33c4f245}{Celestial\+::\+Type} \&}]{a\+Type,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1units_1_1_derived}{Derived} \&}]{a\+Gravitational\+Constant,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1units_1_1_length}{Length} \&}]{an\+Equatorial\+Radius,  }\item[{const Real \&}]{a\+Flattening,  }\item[{const Real \&}]{a\+J2,  }\item[{const Shared$<$ \hyperlink{classlibrary_1_1physics_1_1env_1_1_ephemeris}{Ephemeris} $>$ \&}]{an\+Ephemeris,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily library\+::physics\+::env\+::obj\+::\+Celestial\+::\+Celestial (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Name,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_aab1f58aa727e639288d65f3d33c4f245}{Celestial\+::\+Type} \&}]{a\+Type,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1units_1_1_derived}{Derived} \&}]{a\+Gravitational\+Parameter,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1units_1_1_length}{Length} \&}]{an\+Equatorial\+Radius,  }\item[{const Real \&}]{a\+Flattening,  }\item[{const Real \&}]{a\+J2,  }\item[{const Shared$<$ \hyperlink{classlibrary_1_1physics_1_1env_1_1_ephemeris}{Ephemeris} $>$ \&}]{an\+Ephemeris,  }\item[{const Shared$<$ \hyperlink{namespacelibrary_1_1physics_1_1env_1_1obj_ade509c84a4970a3420c03c058ada152a}{Gravitational\+Model} $>$ \&}]{a\+Gravitational\+Model,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_a7ee6c55653113c71bf79d8c0d64878d7}\label{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_a7ee6c55653113c71bf79d8c0d64878d7}} 
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_a7c2263420e3ebdb99523a87716f7575a}\label{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_a7c2263420e3ebdb99523a87716f7575a}} 
 \index{library\+::physics\+::env\+::obj\+::\+Celestial@{library\+::physics\+::env\+::obj\+::\+Celestial}!Celestial@{Celestial}}
 \index{Celestial@{Celestial}!library\+::physics\+::env\+::obj\+::\+Celestial@{library\+::physics\+::env\+::obj\+::\+Celestial}}
 \subsubsection{\texorpdfstring{Celestial()}{Celestial()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily library\+::physics\+::env\+::obj\+::\+Celestial\+::\+Celestial (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Name,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_aab1f58aa727e639288d65f3d33c4f245}{Celestial\+::\+Type} \&}]{a\+Type,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1units_1_1_derived}{Derived} \&}]{a\+Gravitational\+Constant,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1units_1_1_length}{Length} \&}]{an\+Equatorial\+Radius,  }\item[{const Real \&}]{a\+Flattening,  }\item[{const Real \&}]{a\+J2,  }\item[{const Shared$<$ \hyperlink{classlibrary_1_1physics_1_1env_1_1_ephemeris}{Ephemeris} $>$ \&}]{an\+Ephemeris,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_abdf50733c7ad97327fb64edca5670f13}{Object\+::\+Geometry} \&}]{a\+Geometry }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily library\+::physics\+::env\+::obj\+::\+Celestial\+::\+Celestial (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Name,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_aab1f58aa727e639288d65f3d33c4f245}{Celestial\+::\+Type} \&}]{a\+Type,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1units_1_1_derived}{Derived} \&}]{a\+Gravitational\+Parameter,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1units_1_1_length}{Length} \&}]{an\+Equatorial\+Radius,  }\item[{const Real \&}]{a\+Flattening,  }\item[{const Real \&}]{a\+J2,  }\item[{const Shared$<$ \hyperlink{classlibrary_1_1physics_1_1env_1_1_ephemeris}{Ephemeris} $>$ \&}]{an\+Ephemeris,  }\item[{const Shared$<$ \hyperlink{namespacelibrary_1_1physics_1_1env_1_1obj_ade509c84a4970a3420c03c058ada152a}{Gravitational\+Model} $>$ \&}]{a\+Gravitational\+Model,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_abdf50733c7ad97327fb64edca5670f13}{Object\+::\+Geometry} \&}]{a\+Geometry }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_a508a59c34ac23a582f2fed6003c4c907}\label{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_a508a59c34ac23a582f2fed6003c4c907}} 
 \index{library\+::physics\+::env\+::obj\+::\+Celestial@{library\+::physics\+::env\+::obj\+::\+Celestial}!````~Celestial@{$\sim$\+Celestial}}
@@ -175,6 +177,12 @@ Mars&\\
 
 
 Implements \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_a6ff59bc7375388118c60b5823dad748b}{library\+::physics\+::env\+::\+Object}.
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_acbb834f37fa8f0fc7868d41ebb5173ee}\label{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_acbb834f37fa8f0fc7868d41ebb5173ee}} 
+\index{library\+::physics\+::env\+::obj\+::\+Celestial@{library\+::physics\+::env\+::obj\+::\+Celestial}!access\+Gravitational\+Model@{access\+Gravitational\+Model}}
+\index{access\+Gravitational\+Model@{access\+Gravitational\+Model}!library\+::physics\+::env\+::obj\+::\+Celestial@{library\+::physics\+::env\+::obj\+::\+Celestial}}
+\subsubsection{\texorpdfstring{access\+Gravitational\+Model()}{accessGravitationalModel()}}
+{\footnotesize\ttfamily Shared$<$ const \hyperlink{namespacelibrary_1_1physics_1_1env_1_1obj_ade509c84a4970a3420c03c058ada152a}{Gravitational\+Model} $>$ library\+::physics\+::env\+::obj\+::\+Celestial\+::access\+Gravitational\+Model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_aaf8aa41a0ff9336eba62c07e3c27f82d}\label{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_aaf8aa41a0ff9336eba62c07e3c27f82d}} 
 \index{library\+::physics\+::env\+::obj\+::\+Celestial@{library\+::physics\+::env\+::obj\+::\+Celestial}!clone@{clone}}
@@ -218,17 +226,17 @@ Implements \hyperlink{classlibrary_1_1physics_1_1env_1_1_object_a6807199a92fd78c
 \subsubsection{\texorpdfstring{get\+Frame\+At()}{getFrameAt()}}
 {\footnotesize\ttfamily Shared$<$ const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_frame}{Frame} $>$ library\+::physics\+::env\+::obj\+::\+Celestial\+::get\+Frame\+At (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1coord_1_1spherical_1_1_l_l_a}{L\+LA} \&}]{a\+Lla,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_a8585fb32125cb6c73ae1339a5ea09c79}{Celestial\+::\+Frame\+Type} \&}]{a\+Frame\+Type }\end{DoxyParamCaption}) const}
 
-\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_a3c7c4b64ec4b37e311fe914b4ea5b9d1}\label{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_a3c7c4b64ec4b37e311fe914b4ea5b9d1}} 
-\index{library\+::physics\+::env\+::obj\+::\+Celestial@{library\+::physics\+::env\+::obj\+::\+Celestial}!get\+Gravitational\+Constant@{get\+Gravitational\+Constant}}
-\index{get\+Gravitational\+Constant@{get\+Gravitational\+Constant}!library\+::physics\+::env\+::obj\+::\+Celestial@{library\+::physics\+::env\+::obj\+::\+Celestial}}
-\subsubsection{\texorpdfstring{get\+Gravitational\+Constant()}{getGravitationalConstant()}}
-{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1units_1_1_derived}{Derived} library\+::physics\+::env\+::obj\+::\+Celestial\+::get\+Gravitational\+Constant (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_ac715a5cc62581070d55ab839e3309c9e}\label{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_ac715a5cc62581070d55ab839e3309c9e}} 
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_aa6313086a85ad19128d16f376a32aefe}\label{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_aa6313086a85ad19128d16f376a32aefe}} 
 \index{library\+::physics\+::env\+::obj\+::\+Celestial@{library\+::physics\+::env\+::obj\+::\+Celestial}!get\+Gravitational\+Field\+At@{get\+Gravitational\+Field\+At}}
 \index{get\+Gravitational\+Field\+At@{get\+Gravitational\+Field\+At}!library\+::physics\+::env\+::obj\+::\+Celestial@{library\+::physics\+::env\+::obj\+::\+Celestial}}
 \subsubsection{\texorpdfstring{get\+Gravitational\+Field\+At()}{getGravitationalFieldAt()}}
-{\footnotesize\ttfamily Vector3d library\+::physics\+::env\+::obj\+::\+Celestial\+::get\+Gravitational\+Field\+At (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_position}{Position} \&}]{a\+Position }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1data_1_1_vector}{Vector} library\+::physics\+::env\+::obj\+::\+Celestial\+::get\+Gravitational\+Field\+At (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1coord_1_1_position}{Position} \&}]{a\+Position }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_a2e8341c35d9c4c07eed4ce9aa5d9acc2}\label{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_a2e8341c35d9c4c07eed4ce9aa5d9acc2}} 
+\index{library\+::physics\+::env\+::obj\+::\+Celestial@{library\+::physics\+::env\+::obj\+::\+Celestial}!get\+Gravitational\+Parameter@{get\+Gravitational\+Parameter}}
+\index{get\+Gravitational\+Parameter@{get\+Gravitational\+Parameter}!library\+::physics\+::env\+::obj\+::\+Celestial@{library\+::physics\+::env\+::obj\+::\+Celestial}}
+\subsubsection{\texorpdfstring{get\+Gravitational\+Parameter()}{getGravitationalParameter()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1units_1_1_derived}{Derived} library\+::physics\+::env\+::obj\+::\+Celestial\+::get\+Gravitational\+Parameter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_a3740b398dca520bd50862f67c29ab8e7}\label{classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial_a3740b398dca520bd50862f67c29ab8e7}} 
 \index{library\+::physics\+::env\+::obj\+::\+Celestial@{library\+::physics\+::env\+::obj\+::\+Celestial}!get\+J2@{get\+J2}}

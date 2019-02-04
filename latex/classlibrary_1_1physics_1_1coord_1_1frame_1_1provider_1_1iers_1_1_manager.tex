@@ -54,16 +54,30 @@ void \hyperlink{classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \hyperlink{classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager}{Manager} \& \hyperlink{classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a3fc3d26a680efef3636607805d924d27}{Get} (const \hyperlink{classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a84f44554ac04c5e18ed7ff448debf392}{Manager\+::\+Mode} \&a\+Mode=\hyperlink{classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a84f44554ac04c5e18ed7ff448debf392a086247a9b57fde6eefee2a0c4752242d}{Manager\+::\+Mode\+::\+Automatic})
+static \hyperlink{classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager}{Manager} \& \hyperlink{classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_aec609996f33ad5ae72a0e3dcc3a77f78}{Get} ()
 \begin{DoxyCompactList}\small\item\em Get manager singleton. \end{DoxyCompactList}\item 
+static \hyperlink{classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a84f44554ac04c5e18ed7ff448debf392}{Manager\+::\+Mode} \hyperlink{classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a803f1c3c00bdf34a1860999613270047}{Default\+Mode} ()
+\begin{DoxyCompactList}\small\item\em Get default manager mode. \end{DoxyCompactList}\item 
 static Directory \hyperlink{classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a0d62a5b30c69f723146fc366dff865dd}{Default\+Local\+Repository} ()
 \begin{DoxyCompactList}\small\item\em Get default local repository. \end{DoxyCompactList}\item 
+static \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} \hyperlink{classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a63300991a534897cc3e850e58876f62b}{Default\+Local\+Repository\+Lock\+Timeout} ()
+\begin{DoxyCompactList}\small\item\em Get default local repository lock timeout. \end{DoxyCompactList}\item 
 static U\+RL \hyperlink{classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a9af03c7810e280309b30e61f051c2004}{Default\+Remote\+Url} ()
 \begin{DoxyCompactList}\small\item\em Get default remote U\+RL. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 I\+E\+RS bulletins manager (thread-\/safe) 
+
+The following environment variables can be defined\+:
+
+
+\begin{DoxyItemize}
+\item \char`\"{}\+L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+C\+O\+O\+R\+D\+I\+N\+A\+T\+E\+\_\+\+F\+R\+A\+M\+E\+\_\+\+P\+R\+O\+V\+I\+D\+E\+R\+S\+\_\+\+I\+E\+R\+S\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+M\+O\+D\+E\char`\"{} will override \char`\"{}\+Default\+Mode\char`\"{}
+\item \char`\"{}\+L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+C\+O\+O\+R\+D\+I\+N\+A\+T\+E\+\_\+\+F\+R\+A\+M\+E\+\_\+\+P\+R\+O\+V\+I\+D\+E\+R\+S\+\_\+\+I\+E\+R\+S\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+R\+Y\char`\"{} will override \char`\"{}\+Default\+Local\+Repository\char`\"{}
+\item \char`\"{}\+L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+C\+O\+O\+R\+D\+I\+N\+A\+T\+E\+\_\+\+F\+R\+A\+M\+E\+\_\+\+P\+R\+O\+V\+I\+D\+E\+R\+S\+\_\+\+I\+E\+R\+S\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+R\+Y\+\_\+\+L\+O\+C\+K\+\_\+\+T\+I\+M\+E\+O\+U\+T\char`\"{} will override \char`\"{}\+Default\+Local\+Repository\+Lock\+Timeout\char`\"{}
+\item \char`\"{}\+L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+C\+O\+O\+R\+D\+I\+N\+A\+T\+E\+\_\+\+F\+R\+A\+M\+E\+\_\+\+P\+R\+O\+V\+I\+D\+E\+R\+S\+\_\+\+I\+E\+R\+S\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+R\+E\+M\+O\+T\+E\+\_\+\+U\+R\+L\char`\"{} will override \char`\"{}\+Default\+Remote\+Url\char`\"{}
+\end{DoxyItemize}
 
 https\+://www.iers.\+org/\+I\+E\+R\+S/\+E\+N/\+Data\+Products/\+Earth\+Orientation\+Data/eop.html 
 
@@ -97,8 +111,40 @@ Automatic&Automatically fetch, load and unload bulletins (from remote repositori
 
 Get default local repository. 
 
+Value\+: \char`\"{}./.\+library/physics/coordinate/frame/providers/iers\char`\"{} Overriden by\+: L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+C\+O\+O\+R\+D\+I\+N\+A\+T\+E\+\_\+\+F\+R\+A\+M\+E\+\_\+\+P\+R\+O\+V\+I\+D\+E\+R\+S\+\_\+\+I\+E\+R\+S\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+RY
+
 \begin{DoxyReturn}{Returns}
 Default local repository 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a63300991a534897cc3e850e58876f62b}\label{classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a63300991a534897cc3e850e58876f62b}} 
+\index{library\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{library\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}!Default\+Local\+Repository\+Lock\+Timeout@{Default\+Local\+Repository\+Lock\+Timeout}}
+\index{Default\+Local\+Repository\+Lock\+Timeout@{Default\+Local\+Repository\+Lock\+Timeout}!library\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{library\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}}
+\subsubsection{\texorpdfstring{Default\+Local\+Repository\+Lock\+Timeout()}{DefaultLocalRepositoryLockTimeout()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1time_1_1_duration}{Duration} library\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager\+::\+Default\+Local\+Repository\+Lock\+Timeout (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get default local repository lock timeout. 
+
+Value\+: 60 \mbox{[}s\mbox{]} Overriden by\+: L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+C\+O\+O\+R\+D\+I\+N\+A\+T\+E\+\_\+\+F\+R\+A\+M\+E\+\_\+\+P\+R\+O\+V\+I\+D\+E\+R\+S\+\_\+\+I\+E\+R\+S\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+R\+Y\+\_\+\+L\+O\+C\+K\+\_\+\+T\+I\+M\+E\+O\+UT
+
+\begin{DoxyReturn}{Returns}
+Default local repository lock timeout 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a803f1c3c00bdf34a1860999613270047}\label{classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a803f1c3c00bdf34a1860999613270047}} 
+\index{library\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{library\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}!Default\+Mode@{Default\+Mode}}
+\index{Default\+Mode@{Default\+Mode}!library\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{library\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}}
+\subsubsection{\texorpdfstring{Default\+Mode()}{DefaultMode()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a84f44554ac04c5e18ed7ff448debf392}{Manager\+::\+Mode} library\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager\+::\+Default\+Mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get default manager mode. 
+
+Value\+: \hyperlink{classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a84f44554ac04c5e18ed7ff448debf392ae1ba155a9f2e8c3be94020eef32a0301}{Manager\+::\+Mode\+::\+Manual} Overriden by\+: L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+C\+O\+O\+R\+D\+I\+N\+A\+T\+E\+\_\+\+F\+R\+A\+M\+E\+\_\+\+P\+R\+O\+V\+I\+D\+E\+R\+S\+\_\+\+I\+E\+R\+S\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+M\+O\+DE
+
+\begin{DoxyReturn}{Returns}
+Default manager mode 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a9af03c7810e280309b30e61f051c2004}\label{classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a9af03c7810e280309b30e61f051c2004}} 
 \index{library\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{library\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}!Default\+Remote\+Url@{Default\+Remote\+Url}}
@@ -109,6 +155,8 @@ Default local repository
 
 
 Get default remote U\+RL. 
+
+Value\+: \char`\"{}http\+://maia.\+usno.\+navy.\+mil/ser7/\char`\"{} Overriden by\+: L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+C\+O\+O\+R\+D\+I\+N\+A\+T\+E\+\_\+\+F\+R\+A\+M\+E\+\_\+\+P\+R\+O\+V\+I\+D\+E\+R\+S\+\_\+\+I\+E\+R\+S\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+R\+E\+M\+O\+T\+E\+\_\+\+U\+RL
 
 \begin{DoxyReturn}{Returns}
 Default remote U\+RL 
@@ -139,21 +187,16 @@ Fetch latest Finals 2000A file.
 \begin{DoxyReturn}{Returns}
 Latest Finals 2000A file 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a3fc3d26a680efef3636607805d924d27}\label{classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a3fc3d26a680efef3636607805d924d27}} 
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_aec609996f33ad5ae72a0e3dcc3a77f78}\label{classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_aec609996f33ad5ae72a0e3dcc3a77f78}} 
 \index{library\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{library\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}!Get@{Get}}
 \index{Get@{Get}!library\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{library\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}}
 \subsubsection{\texorpdfstring{Get()}{Get()}}
-{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager}{Manager} \& library\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager\+::\+Get (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a84f44554ac04c5e18ed7ff448debf392}{Manager\+::\+Mode} \&}]{a\+Mode = {\ttfamily \hyperlink{classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a84f44554ac04c5e18ed7ff448debf392a086247a9b57fde6eefee2a0c4752242d}{Manager\+::\+Mode\+::\+Automatic}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager}{Manager} \& library\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager\+::\+Get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
 Get manager singleton. 
 
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em (optional)} & a\+Mode A manager mode \\
-\hline
-\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Reference to manager 
 \end{DoxyReturn}

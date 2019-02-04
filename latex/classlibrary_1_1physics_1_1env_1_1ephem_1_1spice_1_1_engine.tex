@@ -40,9 +40,11 @@ void \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_a949
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine}{Engine} \& \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_ae5def9d4300f0673b2bc73f0703afeb1}{Get} (const \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_a2d185a63bce354bff9ad38810410eab4}{Engine\+::\+Mode} \&a\+Mode=\hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_a2d185a63bce354bff9ad38810410eab4a086247a9b57fde6eefee2a0c4752242d}{Engine\+::\+Mode\+::\+Automatic})
+static \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine}{Engine} \& \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_a9d5058448b12c353edcf5a420cec2745}{Get} ()
 \begin{DoxyCompactList}\small\item\em Get engine singleton. \end{DoxyCompactList}\item 
-static Array$<$ \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel} $>$ \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_a5963ba07fc5c8c58b439964a5666b527}{Default\+Kernels} ()
+static \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_a2d185a63bce354bff9ad38810410eab4}{Engine\+::\+Mode} \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_a0aef811b9d0dfcaffa9d9e8f62b9bb58}{Default\+Mode} ()
+\begin{DoxyCompactList}\small\item\em Get default engine mode. \end{DoxyCompactList}\item 
+static Array$<$ \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel} $>$ \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_afdecf7e76737dd44ed1729dfef8a54a8}{Default\+Kernels} (const Directory \&a\+Local\+Repository)
 \begin{DoxyCompactList}\small\item\em Get default kernels. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Friends}
 \begin{DoxyCompactItemize}
@@ -53,6 +55,13 @@ std\+::ostream \& \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_
 
 \subsection{Detailed Description}
 \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e}{S\+P\+I\+CE} Toolkit engine. 
+
+The following environment variables can be defined\+:
+
+
+\begin{DoxyItemize}
+\item \char`\"{}\+L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+E\+P\+H\+E\+M\+E\+R\+I\+D\+E\+S\+\_\+\+S\+P\+I\+C\+E\+\_\+\+E\+N\+G\+I\+N\+E\+\_\+\+M\+O\+D\+E\char`\"{} will override \char`\"{}\+Default\+Mode\char`\"{} 
+\end{DoxyItemize}
 
 \subsection{Member Enumeration Documentation}
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_a2d185a63bce354bff9ad38810410eab4}\label{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_a2d185a63bce354bff9ad38810410eab4}} 
@@ -91,34 +100,49 @@ Copy constructor (deleted)
 
 
 \subsection{Member Function Documentation}
-\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_a5963ba07fc5c8c58b439964a5666b527}\label{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_a5963ba07fc5c8c58b439964a5666b527}} 
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_afdecf7e76737dd44ed1729dfef8a54a8}\label{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_afdecf7e76737dd44ed1729dfef8a54a8}} 
 \index{library\+::physics\+::env\+::ephem\+::spice\+::\+Engine@{library\+::physics\+::env\+::ephem\+::spice\+::\+Engine}!Default\+Kernels@{Default\+Kernels}}
 \index{Default\+Kernels@{Default\+Kernels}!library\+::physics\+::env\+::ephem\+::spice\+::\+Engine@{library\+::physics\+::env\+::ephem\+::spice\+::\+Engine}}
 \subsubsection{\texorpdfstring{Default\+Kernels()}{DefaultKernels()}}
-{\footnotesize\ttfamily Array$<$ \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel} $>$ library\+::physics\+::env\+::ephem\+::spice\+::\+Engine\+::\+Default\+Kernels (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily Array$<$ \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel} $>$ library\+::physics\+::env\+::ephem\+::spice\+::\+Engine\+::\+Default\+Kernels (\begin{DoxyParamCaption}\item[{const Directory \&}]{a\+Local\+Repository }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
 Get default kernels. 
 
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Local\+Repository} & A local repository \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Default kernels 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_ae5def9d4300f0673b2bc73f0703afeb1}\label{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_ae5def9d4300f0673b2bc73f0703afeb1}} 
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_a0aef811b9d0dfcaffa9d9e8f62b9bb58}\label{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_a0aef811b9d0dfcaffa9d9e8f62b9bb58}} 
+\index{library\+::physics\+::env\+::ephem\+::spice\+::\+Engine@{library\+::physics\+::env\+::ephem\+::spice\+::\+Engine}!Default\+Mode@{Default\+Mode}}
+\index{Default\+Mode@{Default\+Mode}!library\+::physics\+::env\+::ephem\+::spice\+::\+Engine@{library\+::physics\+::env\+::ephem\+::spice\+::\+Engine}}
+\subsubsection{\texorpdfstring{Default\+Mode()}{DefaultMode()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_a2d185a63bce354bff9ad38810410eab4}{Engine\+::\+Mode} library\+::physics\+::env\+::ephem\+::spice\+::\+Engine\+::\+Default\+Mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get default engine mode. 
+
+Value\+: \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_a2d185a63bce354bff9ad38810410eab4ae1ba155a9f2e8c3be94020eef32a0301}{Engine\+::\+Mode\+::\+Manual} Overriden by\+: L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+E\+P\+H\+E\+M\+E\+R\+I\+D\+E\+S\+\_\+\+S\+P\+I\+C\+E\+\_\+\+E\+N\+G\+I\+N\+E\+\_\+\+M\+O\+DE
+
+\begin{DoxyReturn}{Returns}
+Default engine mode 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_a9d5058448b12c353edcf5a420cec2745}\label{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_a9d5058448b12c353edcf5a420cec2745}} 
 \index{library\+::physics\+::env\+::ephem\+::spice\+::\+Engine@{library\+::physics\+::env\+::ephem\+::spice\+::\+Engine}!Get@{Get}}
 \index{Get@{Get}!library\+::physics\+::env\+::ephem\+::spice\+::\+Engine@{library\+::physics\+::env\+::ephem\+::spice\+::\+Engine}}
 \subsubsection{\texorpdfstring{Get()}{Get()}}
-{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine}{Engine} \& library\+::physics\+::env\+::ephem\+::spice\+::\+Engine\+::\+Get (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_a2d185a63bce354bff9ad38810410eab4}{Engine\+::\+Mode} \&}]{a\+Mode = {\ttfamily \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_a2d185a63bce354bff9ad38810410eab4a086247a9b57fde6eefee2a0c4752242d}{Engine\+::\+Mode\+::\+Automatic}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine}{Engine} \& library\+::physics\+::env\+::ephem\+::spice\+::\+Engine\+::\+Get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
 Get engine singleton. 
 
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em (optional)} & a\+Mode An engine mode \\
-\hline
-\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Reference to engine 
 \end{DoxyReturn}

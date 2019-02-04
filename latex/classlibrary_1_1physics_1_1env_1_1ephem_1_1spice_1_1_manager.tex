@@ -20,6 +20,8 @@ Directory \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manage
 \begin{DoxyCompactList}\small\item\em Get local repository. \end{DoxyCompactList}\item 
 U\+RL \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a583bd086060b607e617ee1676fa54f67}{get\+Remote\+Url} () const
 \begin{DoxyCompactList}\small\item\em Get remote U\+RL. \end{DoxyCompactList}\item 
+File \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a904b232e125037b276bd6c2bf86e16ab}{get\+Index\+File} () const
+\begin{DoxyCompactList}\small\item\em Get index file. \end{DoxyCompactList}\item 
 void \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a52e06b9cc1180effbd4bdd30cc488bb4}{fetch\+Kernel} (const \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel} \&a\+Kernel) const
 \begin{DoxyCompactList}\small\item\em Fetch kernel from remote. \end{DoxyCompactList}\item 
 Array$<$ \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel} $>$ \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_ac6f9fa45224f6f1116e66ae2c32e3e65}{fetch\+Matching\+Kernels} (const std\+::regex \&a\+Regex) const
@@ -44,7 +46,15 @@ static U\+RL \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_man
 \subsection{Detailed Description}
 \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e}{S\+P\+I\+CE} Toolkit kernel manager. 
 
-Fetches and manages necessary \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e}{S\+P\+I\+CE} kernels. 
+Fetches and manages necessary \hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e}{S\+P\+I\+CE} kernels.
+
+The following environment variables can be defined\+:
+
+
+\begin{DoxyItemize}
+\item \char`\"{}\+L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+E\+P\+H\+E\+M\+E\+R\+I\+D\+E\+S\+\_\+\+S\+P\+I\+C\+E\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+R\+Y\char`\"{} will override \char`\"{}\+Default\+Local\+Repository\char`\"{}
+\item \char`\"{}\+L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+E\+P\+H\+E\+M\+E\+R\+I\+D\+E\+S\+\_\+\+S\+P\+I\+C\+E\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+R\+E\+M\+O\+T\+E\+\_\+\+U\+R\+L\char`\"{} will override \char`\"{}\+Default\+Remote\+Url\char`\"{} 
+\end{DoxyItemize}
 
 \subsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_aa4ec6e585791cf27dfa66a3b0ced57fb}\label{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_aa4ec6e585791cf27dfa66a3b0ced57fb}} 
@@ -70,6 +80,8 @@ Copy constructor (deleted)
 
 Get default local repository. 
 
+Value\+: \char`\"{}./.\+library/physics/environment/ephemerides/spice\char`\"{} Overriden by\+: L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+E\+P\+H\+E\+M\+E\+R\+I\+D\+E\+S\+\_\+\+S\+P\+I\+C\+E\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+RY
+
 \begin{DoxyReturn}{Returns}
 Default local repository 
 \end{DoxyReturn}
@@ -82,6 +94,8 @@ Default local repository
 
 
 Get default remote U\+RL. 
+
+Value\+: \char`\"{}https\+://naif.\+jpl.\+nasa.\+gov/pub/naif/generic\+\_\+kernels/\char`\"{} Overriden by\+: L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+E\+P\+H\+E\+M\+E\+R\+I\+D\+E\+S\+\_\+\+S\+P\+I\+C\+E\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+R\+E\+M\+O\+T\+E\+\_\+\+U\+RL
 
 \begin{DoxyReturn}{Returns}
 Default remote U\+RL 
@@ -131,6 +145,19 @@ Get manager singleton.
 
 \begin{DoxyReturn}{Returns}
 Reference to manager 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a904b232e125037b276bd6c2bf86e16ab}\label{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a904b232e125037b276bd6c2bf86e16ab}} 
+\index{library\+::physics\+::env\+::ephem\+::spice\+::\+Manager@{library\+::physics\+::env\+::ephem\+::spice\+::\+Manager}!get\+Index\+File@{get\+Index\+File}}
+\index{get\+Index\+File@{get\+Index\+File}!library\+::physics\+::env\+::ephem\+::spice\+::\+Manager@{library\+::physics\+::env\+::ephem\+::spice\+::\+Manager}}
+\subsubsection{\texorpdfstring{get\+Index\+File()}{getIndexFile()}}
+{\footnotesize\ttfamily File library\+::physics\+::env\+::ephem\+::spice\+::\+Manager\+::get\+Index\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get index file. 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_index}{Index} file 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a88cdb0d3353d86f1eabad722cfb8ba2b}\label{classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a88cdb0d3353d86f1eabad722cfb8ba2b}} 
 \index{library\+::physics\+::env\+::ephem\+::spice\+::\+Manager@{library\+::physics\+::env\+::ephem\+::spice\+::\+Manager}!get\+Local\+Repository@{get\+Local\+Repository}}

@@ -92,9 +92,10 @@ $(document).ready(function(){initNavTree('functions_func_g.html','');});
 </li>
 <li>Get()
 : <a class="el" href="classlibrary_1_1physics_1_1coord_1_1frame_1_1_manager.html#ab17540188339548c7235a21236f8118e">library::physics::coord::frame::Manager</a>
-, <a class="el" href="classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager.html#a3fc3d26a680efef3636607805d924d27">library::physics::coord::frame::provider::iers::Manager</a>
-, <a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#ae5def9d4300f0673b2bc73f0703afeb1">library::physics::env::ephem::spice::Engine</a>
+, <a class="el" href="classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager.html#aec609996f33ad5ae72a0e3dcc3a77f78">library::physics::coord::frame::provider::iers::Manager</a>
+, <a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#a9d5058448b12c353edcf5a420cec2745">library::physics::env::ephem::spice::Engine</a>
 , <a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager.html#a3555b4555090b1140f1041d7e51ad640">library::physics::env::ephem::spice::Manager</a>
+, <a class="el" href="classlibrary_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager.html#a17dbce5f18754f96fc83819d8e209884">library::physics::environment::gravitational::earth::Manager</a>
 </li>
 <li>getAbsolute()
 : <a class="el" href="classlibrary_1_1physics_1_1time_1_1_duration.html#afbe401469b6b6356439d6f7c5b21e67e">library::physics::time::Duration</a>
@@ -153,6 +154,11 @@ $(document).ready(function(){initNavTree('functions_func_g.html','');});
 <li>getEquatorialRadius()
 : <a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#a7dd4326ff317292262d1a9adf8887cfe">library::physics::env::obj::Celestial</a>
 </li>
+<li>getFieldValueAt()
+: <a class="el" href="classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#a493e78b74deb178fcbed8eff70adb390">library::physics::environment::gravitational::Earth</a>
+, <a class="el" href="classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_model.html#aac2962e4bf0fddb4d80c21038f1b24e2">library::physics::environment::gravitational::Model</a>
+, <a class="el" href="classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_spherical.html#ae33a94d691c7fa1aea5bfc629fd3fb9f">library::physics::environment::gravitational::Spherical</a>
+</li>
 <li>getFile()
 : <a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel.html#a5e0166f77d89de5af6279d465a5c22ca">library::physics::env::ephem::spice::Kernel</a>
 </li>
@@ -181,17 +187,20 @@ $(document).ready(function(){initNavTree('functions_func_g.html','');});
 <li>getGeometryIn()
 : <a class="el" href="classlibrary_1_1physics_1_1env_1_1_object.html#a199472d1b6a3b6a3b1694aaddc7b3046">library::physics::env::Object</a>
 </li>
-<li>getGravitationalConstant()
-: <a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#a3c7c4b64ec4b37e311fe914b4ea5b9d1">library::physics::env::obj::Celestial</a>
-</li>
 <li>getGravitationalFieldAt()
-: <a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#ac715a5cc62581070d55ab839e3309c9e">library::physics::env::obj::Celestial</a>
+: <a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#aa6313086a85ad19128d16f376a32aefe">library::physics::env::obj::Celestial</a>
+</li>
+<li>getGravitationalParameter()
+: <a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#a2e8341c35d9c4c07eed4ce9aa5d9acc2">library::physics::env::obj::Celestial</a>
 </li>
 <li>getHour()
 : <a class="el" href="classlibrary_1_1physics_1_1time_1_1_time.html#a3744d684384aabf0122dcac098e480fa">library::physics::time::Time</a>
 </li>
 <li>getHours()
 : <a class="el" href="classlibrary_1_1physics_1_1time_1_1_duration.html#a05ef46de76556cd571fd8a218dc3b24f">library::physics::time::Duration</a>
+</li>
+<li>getIndexFile()
+: <a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager.html#a904b232e125037b276bd6c2bf86e16ab">library::physics::env::ephem::spice::Manager</a>
 </li>
 <li>getInstant()
 : <a class="el" href="classlibrary_1_1physics_1_1coord_1_1_transform.html#a674c8ac4676d07aa641b85e049233838">library::physics::coord::Transform</a>
@@ -217,6 +226,7 @@ $(document).ready(function(){initNavTree('functions_func_g.html','');});
 <li>getLocalRepository()
 : <a class="el" href="classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager.html#a80dc3aab9fbe0e36b522bd44349ca1d8">library::physics::coord::frame::provider::iers::Manager</a>
 , <a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager.html#a88cdb0d3353d86f1eabad722cfb8ba2b">library::physics::env::ephem::spice::Manager</a>
+, <a class="el" href="classlibrary_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager.html#af485913053b7f7f65829a804baadc8b0">library::physics::environment::gravitational::earth::Manager</a>
 </li>
 <li>getLodAt()
 : <a class="el" href="classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a.html#a8ea6986b80b0777ec7b11a9a0ee60d70">library::physics::coord::frame::provider::iers::Finals2000A</a>
@@ -306,6 +316,7 @@ $(document).ready(function(){initNavTree('functions_func_g.html','');});
 <li>getRemoteUrl()
 : <a class="el" href="classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager.html#a306dc26605d2c314fcfc8a89e76d4f65">library::physics::coord::frame::provider::iers::Manager</a>
 , <a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager.html#a583bd086060b607e617ee1676fa54f67">library::physics::env::ephem::spice::Manager</a>
+, <a class="el" href="classlibrary_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager.html#a2c153ea8718d3090f04b93c897acbc50">library::physics::environment::gravitational::earth::Manager</a>
 </li>
 <li>getRemoteUrlOfKernel()
 : <a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_index.html#a6ac6977e717c7399433dc06b306a75a3">library::physics::env::ephem::spice::Index</a>
@@ -359,6 +370,7 @@ $(document).ready(function(){initNavTree('functions_func_g.html','');});
 <li>getType()
 : <a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel.html#afd9f97cd229887921df198a90c23b1be">library::physics::env::ephem::spice::Kernel</a>
 , <a class="el" href="classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#ae020ad574249ea82679347c0a6933355">library::physics::env::obj::Celestial</a>
+, <a class="el" href="classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#aa3297aab7cd635ace4a33c1ffee39673">library::physics::environment::gravitational::Earth</a>
 , <a class="el" href="classlibrary_1_1physics_1_1_unit.html#ac924d3a1abe03ba3ee0a05fdb3f1115f">library::physics::Unit</a>
 , <a class="el" href="classlibrary_1_1physics_1_1units_1_1_unit.html#a4f4e6ba62e833324970a06c29685488a">library::physics::units::Unit</a>
 </li>
@@ -398,6 +410,9 @@ $(document).ready(function(){initNavTree('functions_func_g.html','');});
 <li>GPSEpoch()
 : <a class="el" href="classlibrary_1_1physics_1_1time_1_1_date.html#ae76f9f45430ed0c6d56c36e32d0fa7c8">library::physics::time::Date</a>
 , <a class="el" href="classlibrary_1_1physics_1_1time_1_1_date_time.html#a24eadd0df51d4426f4be5618db93a8af">library::physics::time::DateTime</a>
+</li>
+<li>GravitationalParameter()
+: <a class="el" href="classlibrary_1_1physics_1_1units_1_1_derived_1_1_unit.html#a583c1a64f6220c2a9296f3aa4a2ad989">library::physics::units::Derived::Unit</a>
 </li>
 </ul>
 </div><!-- contents -->

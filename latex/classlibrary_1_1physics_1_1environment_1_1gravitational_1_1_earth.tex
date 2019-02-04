@@ -1,0 +1,203 @@
+\hypertarget{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth}{}\section{library\+:\+:physics\+:\+:environment\+:\+:gravitational\+:\+:Earth Class Reference}
+\label{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth}\index{library\+::physics\+::environment\+::gravitational\+::\+Earth@{library\+::physics\+::environment\+::gravitational\+::\+Earth}}
+
+
+\hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} gravitational model.  
+
+
+
+
+{\ttfamily \#include $<$Earth.\+hpp$>$}
+
+Inheritance diagram for library\+:\+:physics\+:\+:environment\+:\+:gravitational\+:\+:Earth\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_ab20a2b260831c66ac10f7b9a307d25ca}{Type} \{ \hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_ab20a2b260831c66ac10f7b9a307d25caa5dda43a21474cf33e7088b8247f19c4b}{Type\+::\+W\+G\+S84}, 
+\hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_ab20a2b260831c66ac10f7b9a307d25caa2ae5659e79a4bb66ae4ee8cb033ef196}{Type\+::\+E\+G\+M84}, 
+\hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_ab20a2b260831c66ac10f7b9a307d25caa7c7ad846cb98dafc9309087d3ba36013}{Type\+::\+E\+G\+M96}, 
+\hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_ab20a2b260831c66ac10f7b9a307d25caaf22fbbe07f6feeaa3d6446dabcd8b164}{Type\+::\+E\+G\+M2008}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_a11a143d30e7ced44b805bd55c70b1299}{Earth} (const \hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_ab20a2b260831c66ac10f7b9a307d25ca}{Earth\+::\+Type} \&a\+Type, const Directory \&a\+Data\+Directory=Directory\+::\+Undefined())
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_a55f57c8c64dcac3a74597f8f978d3841}{Earth} (const \hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} \&an\+Earth\+Gravitational\+Model)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} \& \hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_a2b58f2040af5b0e6180e1dbb8c9b9ee8}{operator=} (const \hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} \&an\+Earth\+Gravitational\+Model)
+\begin{DoxyCompactList}\small\item\em Copy assignment operator. \end{DoxyCompactList}\item 
+\hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_a5780296ed772dd730c657df51ded8b0c}{$\sim$\+Earth} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+virtual \hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} $\ast$ \hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_af49bd5f4dda5dc344a60240bfc7bc820}{clone} () const override
+\begin{DoxyCompactList}\small\item\em Clone the \hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} gravitational model. \end{DoxyCompactList}\item 
+\hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_ab20a2b260831c66ac10f7b9a307d25ca}{Earth\+::\+Type} \hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_aa3297aab7cd635ace4a33c1ffee39673}{get\+Type} () const
+\begin{DoxyCompactList}\small\item\em Get gravitational model type. \end{DoxyCompactList}\item 
+virtual Vector3d \hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_a493e78b74deb178fcbed8eff70adb390}{get\+Field\+Value\+At} (const Vector3d \&a\+Position, const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant) const override
+\begin{DoxyCompactList}\small\item\em Get the gravitational field value at a given position and instant. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} gravitational model. 
+
+The gravitational potential is expanded as sum of spherical harmonics.
+
+https\+://en.wikipedia.\+org/wiki/\+Spherical\+\_\+harmonics https\+://geographiclib.sourceforge.\+io/html/gravity.html 
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_ab20a2b260831c66ac10f7b9a307d25ca}\label{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_ab20a2b260831c66ac10f7b9a307d25ca}} 
+\index{library\+::physics\+::environment\+::gravitational\+::\+Earth@{library\+::physics\+::environment\+::gravitational\+::\+Earth}!Type@{Type}}
+\index{Type@{Type}!library\+::physics\+::environment\+::gravitational\+::\+Earth@{library\+::physics\+::environment\+::gravitational\+::\+Earth}}
+\subsubsection{\texorpdfstring{Type}{Type}}
+{\footnotesize\ttfamily enum \hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_ab20a2b260831c66ac10f7b9a307d25ca}{library\+::physics\+::environment\+::gravitational\+::\+Earth\+::\+Type}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{W\+G\+S84@{W\+G\+S84}!library\+::physics\+::environment\+::gravitational\+::\+Earth@{library\+::physics\+::environment\+::gravitational\+::\+Earth}}\index{library\+::physics\+::environment\+::gravitational\+::\+Earth@{library\+::physics\+::environment\+::gravitational\+::\+Earth}!W\+G\+S84@{W\+G\+S84}}}\mbox{\Hypertarget{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_ab20a2b260831c66ac10f7b9a307d25caa5dda43a21474cf33e7088b8247f19c4b}\label{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_ab20a2b260831c66ac10f7b9a307d25caa5dda43a21474cf33e7088b8247f19c4b}} 
+W\+G\+S84&The normal gravitational field for the reference ellipsoid. This includes the zonal coefficients up to order 20. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\+G\+M84@{E\+G\+M84}!library\+::physics\+::environment\+::gravitational\+::\+Earth@{library\+::physics\+::environment\+::gravitational\+::\+Earth}}\index{library\+::physics\+::environment\+::gravitational\+::\+Earth@{library\+::physics\+::environment\+::gravitational\+::\+Earth}!E\+G\+M84@{E\+G\+M84}}}\mbox{\Hypertarget{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_ab20a2b260831c66ac10f7b9a307d25caa2ae5659e79a4bb66ae4ee8cb033ef196}\label{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_ab20a2b260831c66ac10f7b9a307d25caa2ae5659e79a4bb66ae4ee8cb033ef196}} 
+E\+G\+M84&The \hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} Gravity \hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_model}{Model} 1984, which includes terms up to degree 180. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\+G\+M96@{E\+G\+M96}!library\+::physics\+::environment\+::gravitational\+::\+Earth@{library\+::physics\+::environment\+::gravitational\+::\+Earth}}\index{library\+::physics\+::environment\+::gravitational\+::\+Earth@{library\+::physics\+::environment\+::gravitational\+::\+Earth}!E\+G\+M96@{E\+G\+M96}}}\mbox{\Hypertarget{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_ab20a2b260831c66ac10f7b9a307d25caa7c7ad846cb98dafc9309087d3ba36013}\label{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_ab20a2b260831c66ac10f7b9a307d25caa7c7ad846cb98dafc9309087d3ba36013}} 
+E\+G\+M96&The \hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} Gravity \hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_model}{Model} 1996, which includes terms up to degree 360. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\+G\+M2008@{E\+G\+M2008}!library\+::physics\+::environment\+::gravitational\+::\+Earth@{library\+::physics\+::environment\+::gravitational\+::\+Earth}}\index{library\+::physics\+::environment\+::gravitational\+::\+Earth@{library\+::physics\+::environment\+::gravitational\+::\+Earth}!E\+G\+M2008@{E\+G\+M2008}}}\mbox{\Hypertarget{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_ab20a2b260831c66ac10f7b9a307d25caaf22fbbe07f6feeaa3d6446dabcd8b164}\label{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_ab20a2b260831c66ac10f7b9a307d25caaf22fbbe07f6feeaa3d6446dabcd8b164}} 
+E\+G\+M2008&The \hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} Gravity \hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_model}{Model} 2008, which includes terms up to degree 2190. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_a11a143d30e7ced44b805bd55c70b1299}\label{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_a11a143d30e7ced44b805bd55c70b1299}} 
+\index{library\+::physics\+::environment\+::gravitational\+::\+Earth@{library\+::physics\+::environment\+::gravitational\+::\+Earth}!Earth@{Earth}}
+\index{Earth@{Earth}!library\+::physics\+::environment\+::gravitational\+::\+Earth@{library\+::physics\+::environment\+::gravitational\+::\+Earth}}
+\subsubsection{\texorpdfstring{Earth()}{Earth()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily library\+::physics\+::environment\+::gravitational\+::\+Earth\+::\+Earth (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_ab20a2b260831c66ac10f7b9a307d25ca}{Earth\+::\+Type} \&}]{a\+Type,  }\item[{const Directory \&}]{a\+Data\+Directory = {\ttfamily Directory\+:\+:Undefined()} }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Type} & A gravitational model type \\
+\hline
+\mbox{\tt in}  & {\em (optional)} & a\+Data\+Directory A gravitational model data directory \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_a55f57c8c64dcac3a74597f8f978d3841}\label{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_a55f57c8c64dcac3a74597f8f978d3841}} 
+\index{library\+::physics\+::environment\+::gravitational\+::\+Earth@{library\+::physics\+::environment\+::gravitational\+::\+Earth}!Earth@{Earth}}
+\index{Earth@{Earth}!library\+::physics\+::environment\+::gravitational\+::\+Earth@{library\+::physics\+::environment\+::gravitational\+::\+Earth}}
+\subsubsection{\texorpdfstring{Earth()}{Earth()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily library\+::physics\+::environment\+::gravitational\+::\+Earth\+::\+Earth (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} \&}]{an\+Earth\+Gravitational\+Model }\end{DoxyParamCaption})}
+
+
+
+Copy constructor. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em an\+Earth\+Gravitational\+Model} & An \hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} model \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_a5780296ed772dd730c657df51ded8b0c}\label{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_a5780296ed772dd730c657df51ded8b0c}} 
+\index{library\+::physics\+::environment\+::gravitational\+::\+Earth@{library\+::physics\+::environment\+::gravitational\+::\+Earth}!````~Earth@{$\sim$\+Earth}}
+\index{````~Earth@{$\sim$\+Earth}!library\+::physics\+::environment\+::gravitational\+::\+Earth@{library\+::physics\+::environment\+::gravitational\+::\+Earth}}
+\subsubsection{\texorpdfstring{$\sim$\+Earth()}{~Earth()}}
+{\footnotesize\ttfamily library\+::physics\+::environment\+::gravitational\+::\+Earth\+::$\sim$\+Earth (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_af49bd5f4dda5dc344a60240bfc7bc820}\label{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_af49bd5f4dda5dc344a60240bfc7bc820}} 
+\index{library\+::physics\+::environment\+::gravitational\+::\+Earth@{library\+::physics\+::environment\+::gravitational\+::\+Earth}!clone@{clone}}
+\index{clone@{clone}!library\+::physics\+::environment\+::gravitational\+::\+Earth@{library\+::physics\+::environment\+::gravitational\+::\+Earth}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} $\ast$ library\+::physics\+::environment\+::gravitational\+::\+Earth\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clone the \hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} gravitational model. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to \hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} gravitational model 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_model_a5e75fe26d0635e2d97916ea0e7def842}{library\+::physics\+::environment\+::gravitational\+::\+Model}.
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_a493e78b74deb178fcbed8eff70adb390}\label{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_a493e78b74deb178fcbed8eff70adb390}} 
+\index{library\+::physics\+::environment\+::gravitational\+::\+Earth@{library\+::physics\+::environment\+::gravitational\+::\+Earth}!get\+Field\+Value\+At@{get\+Field\+Value\+At}}
+\index{get\+Field\+Value\+At@{get\+Field\+Value\+At}!library\+::physics\+::environment\+::gravitational\+::\+Earth@{library\+::physics\+::environment\+::gravitational\+::\+Earth}}
+\subsubsection{\texorpdfstring{get\+Field\+Value\+At()}{getFieldValueAt()}}
+{\footnotesize\ttfamily Vector3d library\+::physics\+::environment\+::gravitational\+::\+Earth\+::get\+Field\+Value\+At (\begin{DoxyParamCaption}\item[{const Vector3d \&}]{a\+Position,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the gravitational field value at a given position and instant. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Position} & A position, expressed in the gravitational object frame \mbox{[}m\mbox{]} \\
+\hline
+\mbox{\tt in}  & {\em an\+Instant} & An instant \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Gravitational field value, expressed in the gravitational object frame \mbox{[}m.\+s-\/2\mbox{]} 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_model_aac2962e4bf0fddb4d80c21038f1b24e2}{library\+::physics\+::environment\+::gravitational\+::\+Model}.
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_aa3297aab7cd635ace4a33c1ffee39673}\label{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_aa3297aab7cd635ace4a33c1ffee39673}} 
+\index{library\+::physics\+::environment\+::gravitational\+::\+Earth@{library\+::physics\+::environment\+::gravitational\+::\+Earth}!get\+Type@{get\+Type}}
+\index{get\+Type@{get\+Type}!library\+::physics\+::environment\+::gravitational\+::\+Earth@{library\+::physics\+::environment\+::gravitational\+::\+Earth}}
+\subsubsection{\texorpdfstring{get\+Type()}{getType()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_ab20a2b260831c66ac10f7b9a307d25ca}{Earth\+::\+Type} library\+::physics\+::environment\+::gravitational\+::\+Earth\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get gravitational model type. 
+
+\begin{DoxyReturn}{Returns}
+Gravitational model type 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_a2b58f2040af5b0e6180e1dbb8c9b9ee8}\label{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth_a2b58f2040af5b0e6180e1dbb8c9b9ee8}} 
+\index{library\+::physics\+::environment\+::gravitational\+::\+Earth@{library\+::physics\+::environment\+::gravitational\+::\+Earth}!operator=@{operator=}}
+\index{operator=@{operator=}!library\+::physics\+::environment\+::gravitational\+::\+Earth@{library\+::physics\+::environment\+::gravitational\+::\+Earth}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} \& library\+::physics\+::environment\+::gravitational\+::\+Earth\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} \&}]{an\+Earth\+Gravitational\+Model }\end{DoxyParamCaption})}
+
+
+
+Copy assignment operator. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em an\+Earth\+Gravitational\+Model} & An \hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} model \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to \hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} model 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Library/\+Physics/\+Environment/\+Gravitational/\hyperlink{_gravitational_2_earth_8hpp}{Earth.\+hpp}\item 
+src/\+Library/\+Physics/\+Environment/\+Gravitational/\hyperlink{_gravitational_2_earth_8cpp}{Earth.\+cpp}\end{DoxyCompactItemize}

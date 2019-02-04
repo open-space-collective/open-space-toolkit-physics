@@ -1,0 +1,97 @@
+\hypertarget{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_spherical}{}\section{library\+:\+:physics\+:\+:environment\+:\+:gravitational\+:\+:Spherical Class Reference}
+\label{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_spherical}\index{library\+::physics\+::environment\+::gravitational\+::\+Spherical@{library\+::physics\+::environment\+::gravitational\+::\+Spherical}}
+
+
+\hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_spherical}{Spherical} gravitational model.  
+
+
+
+
+{\ttfamily \#include $<$Spherical.\+hpp$>$}
+
+Inheritance diagram for library\+:\+:physics\+:\+:environment\+:\+:gravitational\+:\+:Spherical\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_spherical}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_spherical_a988c31125ac7141be32c0d274ccc73cb}{Spherical} (const \hyperlink{classlibrary_1_1physics_1_1units_1_1_derived}{Derived} \&a\+Gravitational\+Parameter)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+virtual \hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_spherical}{Spherical} $\ast$ \hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_spherical_a4f27273f7e9897e9d67607a8b7b0bca7}{clone} () const override
+\begin{DoxyCompactList}\small\item\em Clone the spherical gravitational model. \end{DoxyCompactList}\item 
+virtual Vector3d \hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_spherical_ae33a94d691c7fa1aea5bfc629fd3fb9f}{get\+Field\+Value\+At} (const Vector3d \&a\+Position, const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant) const override
+\begin{DoxyCompactList}\small\item\em Get the gravitational field value at a given position and instant. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_spherical}{Spherical} gravitational model. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_spherical_a988c31125ac7141be32c0d274ccc73cb}\label{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_spherical_a988c31125ac7141be32c0d274ccc73cb}} 
+\index{library\+::physics\+::environment\+::gravitational\+::\+Spherical@{library\+::physics\+::environment\+::gravitational\+::\+Spherical}!Spherical@{Spherical}}
+\index{Spherical@{Spherical}!library\+::physics\+::environment\+::gravitational\+::\+Spherical@{library\+::physics\+::environment\+::gravitational\+::\+Spherical}}
+\subsubsection{\texorpdfstring{Spherical()}{Spherical()}}
+{\footnotesize\ttfamily library\+::physics\+::environment\+::gravitational\+::\+Spherical\+::\+Spherical (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1units_1_1_derived}{Derived} \&}]{a\+Gravitational\+Parameter }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Gravitational\+Parameter} & A gravitational constant \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_spherical_a4f27273f7e9897e9d67607a8b7b0bca7}\label{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_spherical_a4f27273f7e9897e9d67607a8b7b0bca7}} 
+\index{library\+::physics\+::environment\+::gravitational\+::\+Spherical@{library\+::physics\+::environment\+::gravitational\+::\+Spherical}!clone@{clone}}
+\index{clone@{clone}!library\+::physics\+::environment\+::gravitational\+::\+Spherical@{library\+::physics\+::environment\+::gravitational\+::\+Spherical}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_spherical}{Spherical} $\ast$ library\+::physics\+::environment\+::gravitational\+::\+Spherical\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clone the spherical gravitational model. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to spherical gravitational model 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_model_a5e75fe26d0635e2d97916ea0e7def842}{library\+::physics\+::environment\+::gravitational\+::\+Model}.
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_spherical_ae33a94d691c7fa1aea5bfc629fd3fb9f}\label{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_spherical_ae33a94d691c7fa1aea5bfc629fd3fb9f}} 
+\index{library\+::physics\+::environment\+::gravitational\+::\+Spherical@{library\+::physics\+::environment\+::gravitational\+::\+Spherical}!get\+Field\+Value\+At@{get\+Field\+Value\+At}}
+\index{get\+Field\+Value\+At@{get\+Field\+Value\+At}!library\+::physics\+::environment\+::gravitational\+::\+Spherical@{library\+::physics\+::environment\+::gravitational\+::\+Spherical}}
+\subsubsection{\texorpdfstring{get\+Field\+Value\+At()}{getFieldValueAt()}}
+{\footnotesize\ttfamily Vector3d library\+::physics\+::environment\+::gravitational\+::\+Spherical\+::get\+Field\+Value\+At (\begin{DoxyParamCaption}\item[{const Vector3d \&}]{a\+Position,  }\item[{const \hyperlink{classlibrary_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the gravitational field value at a given position and instant. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Position} & A position, expressed in the gravitational object frame \mbox{[}m\mbox{]} \\
+\hline
+\mbox{\tt in}  & {\em an\+Instant} & An instant \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Gravitational field value, expressed in the gravitational object frame \mbox{[}m.\+s-\/2\mbox{]} 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_model_aac2962e4bf0fddb4d80c21038f1b24e2}{library\+::physics\+::environment\+::gravitational\+::\+Model}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Library/\+Physics/\+Environment/\+Gravitational/\hyperlink{_spherical_8hpp}{Spherical.\+hpp}\item 
+src/\+Library/\+Physics/\+Environment/\+Gravitational/\hyperlink{_spherical_8cpp}{Spherical.\+cpp}\end{DoxyCompactItemize}

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['unit',['Unit',['../classlibrary_1_1physics_1_1coord_1_1_position.html#aa89cc8ffbcb33e1b347e51b179183613',1,'library::physics::coord::Position']]]
+  ['type',['Type',['../classlibrary_1_1physics_1_1time_1_1_interval.html#aba490e7120a05be7b17a4d8076f25d48',1,'library::physics::time::Interval']]]
 ];

@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['fetchdatafilefortype',['fetchDataFileForType',['../classlibrary_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager.html#a780f3766dc88d974424e50866531f6e3',1,'library::physics::environment::gravitational::earth::Manager']]],
   ['fetchkernel',['fetchKernel',['../classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager.html#a52e06b9cc1180effbd4bdd30cc488bb4',1,'library::physics::env::ephem::spice::Manager']]],
   ['fetchlatestbulletina',['fetchLatestBulletinA',['../classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager.html#aebd629476fc4a74bcdbacdc006cb137f',1,'library::physics::coord::frame::provider::iers::Manager']]],
   ['fetchlatestfinals2000a',['fetchLatestFinals2000A',['../classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager.html#afe61163d199c705387baafae88669a3f',1,'library::physics::coord::frame::provider::iers::Manager']]],

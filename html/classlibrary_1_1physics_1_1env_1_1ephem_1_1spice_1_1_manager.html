@@ -105,6 +105,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a583bd086060b607e617ee1676fa54f67"><td class="memItemLeft" align="right" valign="top">URL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager.html#a583bd086060b607e617ee1676fa54f67">getRemoteUrl</a> () const</td></tr>
 <tr class="memdesc:a583bd086060b607e617ee1676fa54f67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get remote URL.  <a href="#a583bd086060b607e617ee1676fa54f67">More...</a><br /></td></tr>
 <tr class="separator:a583bd086060b607e617ee1676fa54f67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a904b232e125037b276bd6c2bf86e16ab"><td class="memItemLeft" align="right" valign="top">File&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager.html#a904b232e125037b276bd6c2bf86e16ab">getIndexFile</a> () const</td></tr>
+<tr class="memdesc:a904b232e125037b276bd6c2bf86e16ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get index file.  <a href="#a904b232e125037b276bd6c2bf86e16ab">More...</a><br /></td></tr>
+<tr class="separator:a904b232e125037b276bd6c2bf86e16ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52e06b9cc1180effbd4bdd30cc488bb4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager.html#a52e06b9cc1180effbd4bdd30cc488bb4">fetchKernel</a> (const <a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel.html">Kernel</a> &amp;aKernel) const</td></tr>
 <tr class="memdesc:a52e06b9cc1180effbd4bdd30cc488bb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetch kernel from remote.  <a href="#a52e06b9cc1180effbd4bdd30cc488bb4">More...</a><br /></td></tr>
 <tr class="separator:a52e06b9cc1180effbd4bdd30cc488bb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -135,7 +138,12 @@ Static Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html" title="SPICE Toolkit ephemeris. ">SPICE</a> Toolkit kernel manager. </p>
-<p>Fetches and manages necessary <a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html" title="SPICE Toolkit ephemeris. ">SPICE</a> kernels. </p>
+<p>Fetches and manages necessary <a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html" title="SPICE Toolkit ephemeris. ">SPICE</a> kernels.</p>
+<p>The following environment variables can be defined:</p>
+<ul>
+<li>"LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY" will override "DefaultLocalRepository"</li>
+<li>"LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_REMOTE_URL" will override "DefaultRemoteUrl" </li>
+</ul>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa4ec6e585791cf27dfa66a3b0ced57fb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa4ec6e585791cf27dfa66a3b0ced57fb">&#9670;&nbsp;</a></span>Manager()</h2>
@@ -190,6 +198,7 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get default local repository. </p>
+<p>Value: "./.library/physics/environment/ephemerides/spice" Overriden by: LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY</p>
 <dl class="section return"><dt>Returns</dt><dd>Default local repository </dd></dl>
 
 </div>
@@ -218,6 +227,7 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get default remote URL. </p>
+<p>Value: "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/" Overriden by: LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_REMOTE_URL</p>
 <dl class="section return"><dt>Returns</dt><dd>Default remote URL </dd></dl>
 
 </div>
@@ -300,6 +310,26 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Get manager singleton. </p>
 <dl class="section return"><dt>Returns</dt><dd>Reference to manager </dd></dl>
+
+</div>
+</div>
+<a id="a904b232e125037b276bd6c2bf86e16ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a904b232e125037b276bd6c2bf86e16ab">&#9670;&nbsp;</a></span>getIndexFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">File library::physics::env::ephem::spice::Manager::getIndexFile </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get index file. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_index.html" title="SPICE Toolkit kernel index. ">Index</a> file </dd></dl>
 
 </div>
 </div>
