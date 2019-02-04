@@ -20,6 +20,7 @@ source "${project_directory}/tools/.env"
 
 docker run \
 --rm \
+--env-file="${script_directory}/.env" \
 --volume="${project_directory}:/app:rw" \
 --volume="${project_directory}/share:/var/library-physics:rw" \
 --volume="${development_directory}/helpers/build.sh:/app/build/build.sh:ro" \

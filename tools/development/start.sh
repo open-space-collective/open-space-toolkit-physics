@@ -118,6 +118,7 @@ docker run \
 --rm \
 --privileged \
 ${options} \
+--env-file="${script_directory}/.env" \
 --volume="${project_directory}:/app:rw" \
 --volume="${script_directory}/helpers/build.sh:/app/build/build.sh:ro" \
 --volume="${script_directory}/helpers/test.sh:/app/build/test.sh:ro" \
