@@ -85,30 +85,39 @@ std::ostream&                   operator <<                                 (   
         handleException() ;
     }
 
-    for (SpiceInt kernelIndex = 0; kernelIndex < kernelCount; ++kernelIndex)
+    if (kernelCount > 0)
     {
 
-        // Return data for the nth kernel that is among a list of specified kernel types
-        // https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/C/cspice/kdata_c.html
-
-        SpiceChar fileName[256] ;
-        SpiceChar fileType[81] ;
-        SpiceChar fileSource[256] ;
-        SpiceInt handle = 0 ;
-        SpiceBoolean found = SPICEFALSE ;
-
-        kdata_c(kernelIndex, "ALL", 256, 81, 256, fileName, fileType, fileSource, &handle, &found) ;
-
-        if (failed_c()) 
+        for (SpiceInt kernelIndex = 0; kernelIndex < kernelCount; ++kernelIndex)
         {
-            handleException() ;
+
+            // Return data for the nth kernel that is among a list of specified kernel types
+            // https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/C/cspice/kdata_c.html
+
+            SpiceChar fileName[256] ;
+            SpiceChar fileType[81] ;
+            SpiceChar fileSource[256] ;
+            SpiceInt handle = 0 ;
+            SpiceBoolean found = SPICEFALSE ;
+
+            kdata_c(kernelIndex, "ALL", 256, 81, 256, fileName, fileType, fileSource, &handle, &found) ;
+
+            if (failed_c()) 
+            {
+                handleException() ;
+            }
+
+            if (found)
+            {
+                library::core::utils::Print::Line(anOutputStream) << fileName ;
+            }
+
         }
 
-        if (found)
-        {
-            library::core::utils::Print::Line(anOutputStream) << fileName ;
-        }
-
+    }
+    else
+    {
+        library::core::utils::Print::Line(anOutputStream) << "No kernel loaded." ;
     }
 
     library::core::utils::Print::Footer(anOutputStream) ;
@@ -224,40 +233,62 @@ void                            Engine::reset                               ( )
 
     kclear_c() ;
 
-    if (mode_ == Engine::Mode::Automatic)
-    {
-        this->setup() ;
-    }
+    this->setup() ;
 
 }
 
-Engine&                         Engine::Get                                 (   const   Engine::Mode&               aMode                                       )
+Engine&                         Engine::Get                                 ( )
 {
 
-    static Engine engine = { aMode } ;
+    static Engine engine ;
 
     return engine ;
 
 }
 
-Array<Kernel>                   Engine::DefaultKernels                      ( )
+Engine::Mode                    Engine::DefaultMode                         ( )
 {
 
-    static const Directory localRepository = Manager::Get().DefaultLocalRepository() ;
+    static const Engine::Mode defaultMode = Engine::Mode::Manual ;
+
+    if (const char* modeString = std::getenv("LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_ENGINE_MODE"))
+    {
+        
+        if (strcmp(modeString, "Manual") == 0)
+        {
+            return Engine::Mode::Manual ;
+        }
+        else if (strcmp(modeString, "Automatic") == 0)
+        {
+            return Engine::Mode::Automatic ;
+        }
+        else
+        {
+            throw library::core::error::runtime::Wrong("Mode", modeString) ;
+        }
+        
+    }
+
+    return defaultMode ;
+
+}
+
+Array<Kernel>                   Engine::DefaultKernels                      (   const   Directory&                  aLocalRepository                            )
+{
 
     static const Array<Kernel> defaultKernels =
     {
 
-        Kernel::File(File::Path(localRepository.getPath() + Path::Parse("naif0012.tls"))),                          // Leap seconds
-        Kernel::File(File::Path(localRepository.getPath() + Path::Parse("de430.bsp"))),                             // Ephemeris
-        Kernel::File(File::Path(localRepository.getPath() + Path::Parse("pck00010.tpc"))),                          // System body shape and orientation constants
+        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("naif0012.tls"))),                         // Leap seconds
+        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("de430.bsp"))),                            // Ephemeris
+        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("pck00010.tpc"))),                         // System body shape and orientation constants
 
-        Kernel::File(File::Path(localRepository.getPath() + Path::Parse("earth_assoc_itrf93.tf"))),
-        Kernel::File(File::Path(localRepository.getPath() + Path::Parse("earth_070425_370426_predict.bpc"))),
+        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("earth_assoc_itrf93.tf"))),
+        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("earth_070425_370426_predict.bpc"))),
         
-        Kernel::File(File::Path(localRepository.getPath() + Path::Parse("moon_080317.tf"))),
-        Kernel::File(File::Path(localRepository.getPath() + Path::Parse("moon_assoc_me.tf"))),
-        Kernel::File(File::Path(localRepository.getPath() + Path::Parse("moon_pa_de421_1900-2050.bpc")))
+        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("moon_080317.tf"))),
+        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("moon_assoc_me.tf"))),
+        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("moon_pa_de421_1900-2050.bpc")))
 
     } ;
 
@@ -292,117 +323,9 @@ Transform                       Engine::getTransformAt                      (   
 
     using library::physics::time::Scale ;
 
-    // Load kernel (if necessary)
+    // Load required kernels
 
-    if (aSpiceIdentifier == "399") // Earth
-    {
-
-        bool earthKernelFound = false ;
-
-        if (!earthKernelCache_.isEmpty())
-        {
-
-            if (earthKernelCache_.at(earthKernelCacheIndex_).first.contains(anInstant))
-            {
-                earthKernelFound = true ;
-            }
-            else
-            {
-
-                for (earthKernelCacheIndex_ = 0; earthKernelCacheIndex_ < earthKernelCache_.getSize(); ++earthKernelCacheIndex_)
-                {
-
-                    if (earthKernelCache_.at(earthKernelCacheIndex_).first.contains(anInstant))
-                    {
-
-                        earthKernelFound = true ;
-
-                        break ;
-
-                    }
-
-                }
-
-            }
-
-        }
-
-        if (!earthKernelFound)
-        {
-
-            if (mode_ == Engine::Mode::Automatic)
-            {
-
-                const std::function<void (const bool)> loadEarthKernel = [&] (const bool isFirstTime) -> void
-                {
-
-                    (void) isFirstTime ;
-
-                    // try
-                    // {
-
-                        // List available Earth kernels
-
-                        const Array<Kernel> earthKernels = Manager::Get().fetchMatchingKernels(std::regex("^earth_000101_[\\d]{6}_[\\d]{6}.bpc$")) ;
-
-                        if (!earthKernels.isEmpty())
-                        {
-
-                            const_cast<Engine*>(this)->loadKernel_(earthKernels.accessFirst()) ; // [TBM] The first kernel is not necessarily the correct one
-
-                            // bool didLoadKernel = false ;
-
-                            // for (const auto& earthKernel : earthKernels)
-                            // {
-
-                            //     // [TBM] This is a temporary hack, should be improved
-
-                            //     std::cout << "Loading..." << std::endl ;
-
-                            //     const_cast<Engine*>(this)->loadKernel_(earthKernel) ; // [TBM] The order is not necessarily the correct one: should be ordered by ascending duration from kernel epoch to queried instant
-
-                            //     std::cout << "Loading OK" << std::endl ;
-
-                            //     didLoadKernel = true ;
-
-                            //     break ;
-
-                            // }
-
-                            // if (isFirstTime && (!didLoadKernel)) // The index is probably too old: force refresh
-                            // {
-                                
-                            //     Manager::Get().refresh() ;
-
-                            //     loadEarthKernel(false) ;
-
-                            // }
-
-                        }
-                        else
-                        {
-                            throw library::core::error::RuntimeError("Cannot fetch BPC Earth kernel at [{}].", anInstant.toString()) ;
-                        }
-
-                    // }
-                    // catch (const library::core::error::Exception& anException)
-                    // {
-                    //     // Do nothing
-                    // }
-
-                } ;
-
-                loadEarthKernel(true) ;
-
-            }
-            else
-            {
-                throw library::core::error::RuntimeError("BPC Earth kernel file at [{}] does not exist.", anInstant.toString()) ;
-            }
-
-        }
-
-    }
+    this->manageKernels(aSpiceIdentifier, anInstant) ;
 
     // Time
 
@@ -474,6 +397,8 @@ Transform                       Engine::getTransformAt                      (   
 void                            Engine::setup                               ( )
 {
 
+    // std::cout << "Setting up SPICE engine..." << std::endl ;
+
     // Set error action
     // https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/C/cspice/erract_c.html
 
@@ -484,11 +409,132 @@ void                            Engine::setup                               ( )
 
     errdev_c("SET", 4096, (SpiceChar*)"NULL") ;
 
-    // Load default kernels
-
-    for (const auto& kernel : Engine::DefaultKernels())
+    if (mode_ == Engine::Mode::Automatic)
     {
-        this->loadKernel_(kernel) ;
+
+        // Load default kernels
+
+        // std::cout << "Loading default kernels..." << std::endl ;
+
+        for (const auto& kernel : Engine::DefaultKernels(Manager::Get().getLocalRepository()))
+        {
+            this->loadKernel_(kernel) ;
+        }
+
+    }
+
+}
+
+void                            Engine::manageKernels                       (   const   String&                     aSpiceIdentifier,
+                                                                                const   Instant&                    anInstant                                   ) const
+{
+
+    if (mode_ == Engine::Mode::Automatic)
+    {
+
+        // Load kernel (if necessary)
+
+        if (aSpiceIdentifier == "399") // Earth
+        {
+
+            bool earthKernelFound = false ;
+
+            if (!earthKernelCache_.isEmpty())
+            {
+
+                if (earthKernelCache_.at(earthKernelCacheIndex_).first.contains(anInstant))
+                {
+                    earthKernelFound = true ;
+                }
+                else
+                {
+
+                    for (earthKernelCacheIndex_ = 0; earthKernelCacheIndex_ < earthKernelCache_.getSize(); ++earthKernelCacheIndex_)
+                    {
+
+                        if (earthKernelCache_.at(earthKernelCacheIndex_).first.contains(anInstant))
+                        {
+
+                            earthKernelFound = true ;
+
+                            break ;
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+            if (!earthKernelFound)
+            {
+
+                const std::function<void (const bool)> loadEarthKernel = [&] (const bool isFirstTime) -> void
+                {
+
+                    (void) isFirstTime ;
+
+                    // try
+                    // {
+
+                        // List available Earth kernels
+
+                        const Array<Kernel> earthKernels = Manager::Get().fetchMatchingKernels(std::regex("^earth_000101_[\\d]{6}_[\\d]{6}.bpc$")) ;
+
+                        if (!earthKernels.isEmpty())
+                        {
+
+                            const_cast<Engine*>(this)->loadKernel_(earthKernels.accessFirst()) ; // [TBM] The first kernel is not necessarily the correct one
+
+                            // bool didLoadKernel = false ;
+
+                            // for (const auto& earthKernel : earthKernels)
+                            // {
+
+                            //     // [TBM] This is a temporary hack, should be improved
+
+                            //     std::cout << "Loading..." << std::endl ;
+
+                            //     const_cast<Engine*>(this)->loadKernel_(earthKernel) ; // [TBM] The order is not necessarily the correct one: should be ordered by ascending duration from kernel epoch to queried instant
+
+                            //     std::cout << "Loading OK" << std::endl ;
+
+                            //     didLoadKernel = true ;
+
+                            //     break ;
+
+                            // }
+
+                            // if (isFirstTime && (!didLoadKernel)) // The index is probably too old: force refresh
+                            // {
+                                
+                            //     Manager::Get().refresh() ;
+
+                            //     loadEarthKernel(false) ;
+
+                            // }
+
+                        }
+                        else
+                        {
+                            throw library::core::error::RuntimeError("Cannot fetch BPC Earth kernel at [{}].", anInstant.toString()) ;
+                        }
+
+                    // }
+                    // catch (const library::core::error::Exception& anException)
+                    // {
+                    //     // Do nothing
+                    // }
+
+                } ;
+
+                loadEarthKernel(true) ;
+
+            }
+
+        }
+
     }
 
 }

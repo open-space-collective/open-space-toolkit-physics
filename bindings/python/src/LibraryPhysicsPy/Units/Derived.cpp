@@ -94,6 +94,8 @@ inline void                     LibraryPhysicsPy_Units_Derived              ( )
         .def("Hertz", &Derived::Unit::Hertz).staticmethod("Hertz")
         .def("Watt", &Derived::Unit::Watt).staticmethod("Watt")
         .def("Velocity", &Derived::Unit::Velocity).staticmethod("Velocity")
+        .def("Acceleration", &Derived::Unit::Acceleration).staticmethod("Acceleration")
+        .def("GravitationalParameter", &Derived::Unit::GravitationalParameter).staticmethod("GravitationalParameter")
         .def("AngularVelocity", &Derived::Unit::AngularVelocity).staticmethod("AngularVelocity")
         // .def("Parse", &Derived::Unit::Parse).staticmethod("Parse")
 

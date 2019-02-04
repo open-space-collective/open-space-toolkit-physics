@@ -10,6 +10,7 @@
 #ifndef __Library_Physics_Environment_Objects_CelestialBodies_Earth__
 #define __Library_Physics_Environment_Objects_CelestialBodies_Earth__
 
+#include <Library/Physics/Environment/Gravitational/Model.hpp>
 #include <Library/Physics/Environment/Objects/Celestial.hpp>
 #include <Library/Physics/Environment/Object.hpp>
 #include <Library/Physics/Environment/Ephemeris.hpp>
@@ -46,6 +47,7 @@ using library::physics::units::Derived ;
 using library::physics::env::Ephemeris ;
 using library::physics::env::Object ;
 using library::physics::env::obj::Celestial ;
+using GravitationalModel = library::physics::environment::gravitational::Model ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -60,7 +62,7 @@ class Earth : public Celestial
             struct EGM2008
             {
 
-                static const Derived GravitationalConstant ;
+                static const Derived GravitationalParameter ;
                 static const Length EquatorialRadius ;
                 static const Real Flattening ;
                 static const Real C20 ;
@@ -71,7 +73,7 @@ class Earth : public Celestial
             struct WGS84_EGM96
             {
 
-                static const Derived GravitationalConstant ;
+                static const Derived GravitationalParameter ;
                 static const Length EquatorialRadius ;
                 static const Real Flattening ;
                 static const Real C20 ;
@@ -82,7 +84,7 @@ class Earth : public Celestial
             struct EGM96
             {
 
-                static const Derived GravitationalConstant ;
+                static const Derived GravitationalParameter ;
                 static const Length EquatorialRadius ;
                 static const Real Flattening ;
                 static const Real C20 ;
@@ -93,7 +95,7 @@ class Earth : public Celestial
             struct WGS84
             {
 
-                static const Derived GravitationalConstant ;
+                static const Derived GravitationalParameter ;
                 static const Length EquatorialRadius ;
                 static const Real Flattening ;
                 static const Real C20 ;
@@ -103,17 +105,18 @@ class Earth : public Celestial
             
         } ;
 
-        static const Derived    GravitationalConstant ; // [TBR]
+        static const Derived    GravitationalParameter ; // [TBR]
         static const Length     EquatorialRadius ; // [TBR]
         static const Real       Flattening ; // [TBR]
         static const Real       C20 ; // [TBR]
         static const Real       J2 ; // [TBR]
 
-                                Earth                                       (   const   Derived&                    aGravitationalConstant,
+                                Earth                                       (   const   Derived&                    aGravitationalParameter,
                                                                                 const   Length&                     anEquatorialRadius,
                                                                                 const   Real&                       aFlattening,
                                                                                 const   Real&                       aJ2,
-                                                                                const   Shared<Ephemeris>&          anEphemerisSPtr,
+                                                                                const   Shared<Ephemeris>&          anEphemeris,
+                                                                                const   Shared<GravitationalModel>& aGravitationalModel,
                                                                                 const   Instant&                    anInstant                                   ) ;
 
         virtual                 ~Earth                                      ( ) override ;

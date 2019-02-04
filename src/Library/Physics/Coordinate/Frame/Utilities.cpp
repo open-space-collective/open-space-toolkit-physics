@@ -41,7 +41,7 @@ Transform                       NorthEastDownTransformAt                    (   
     const Vector3d x_NED_ECEF = aLLA.toCartesian(anEllipsoidEquatorialRadius, anEllipsoidFlattening) ;
     const Vector3d v_NED_ECEF = { 0.0, 0.0, 0.0 } ;
 
-    const Real latitude_rad	= aLLA.getLatitude().inRadians() ;
+    const Real latitude_rad = aLLA.getLatitude().inRadians() ;
     const Real longitude_rad = aLLA.getLongitude().inRadians() ;
 
     Quaternion q_NED_ECEF = Quaternion::Undefined() ;
@@ -63,9 +63,9 @@ Transform                       NorthEastDownTransformAt                    (   
         const Real cos_lon = std::cos(longitude_rad) ;
         const Real sin_lon = std::sin(longitude_rad) ;
 
-        const RotationMatrix dcm_NED_ECEF = {   -sin_lat * cos_lon,	-sin_lat * sin_lon,	+cos_lat,
-                                                -sin_lon,			+cos_lon,			0.0,
-                                                -cos_lat * cos_lon,	-cos_lat * sin_lon,	-sin_lat } ;
+        const RotationMatrix dcm_NED_ECEF = {   -sin_lat * cos_lon, -sin_lat * sin_lon, +cos_lat,
+                                                -sin_lon,           +cos_lon,           0.0,
+                                                -cos_lat * cos_lon, -cos_lat * sin_lon, -sin_lat } ;
 
         q_NED_ECEF = Quaternion::RotationMatrix(dcm_NED_ECEF).rectify() ;
 

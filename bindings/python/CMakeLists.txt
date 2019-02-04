@@ -131,7 +131,6 @@ ADD_CUSTOM_COMMAND (OUTPUT ${OUTPUT}
                     COMMAND mkdir -p "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_PATH}"
                     COMMAND cp "${CMAKE_CURRENT_SOURCE_DIR}/tools/python/Library/__init__.py" "${CMAKE_CURRENT_BINARY_DIR}/Library/__init__.py"
                     COMMAND cp "${CMAKE_CURRENT_SOURCE_DIR}/tools/python/${PROJECT_PATH}/__init__.py" "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_PATH}/__init__.py"
-                    COMMAND cp "/usr/local/lib/libboost_python36.so.1.68.0" "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_PATH}/libboost_python36.so.1.68.0"
                     COMMAND cp "${CMAKE_SOURCE_DIR}/lib/${SHARED_LIBRARY_TARGET}" "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_PATH}/liblibrary-physics.so.0"
                     COMMAND cp "${CMAKE_SOURCE_DIR}/lib/${LIBRARY_TARGET}" "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_PATH}/LibraryPhysicsPy.so"
                     COMMAND ${PYTHON} ${SETUP_PY} bdist_wheel

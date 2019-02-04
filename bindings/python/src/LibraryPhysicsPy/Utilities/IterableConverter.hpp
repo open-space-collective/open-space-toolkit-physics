@@ -18,19 +18,19 @@ template <typename Container>
 struct ToListConverter
 {
 
-	static PyObject*            convert                                     (   const   Container&                  aContainer                                  )
+    static PyObject*            convert                                     (   const   Container&                  aContainer                                  )
     {
-		
+        
         boost::python::list list ;
 
         for (const auto& element : aContainer)
         {
             list.append(element) ;
         }
-		
+        
         return boost::python::incref(list.ptr()) ;
 
-	}
+    }
 
 } ;
 

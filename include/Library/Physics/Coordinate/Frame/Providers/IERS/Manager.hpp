@@ -12,6 +12,7 @@
 
 #include <Library/Physics/Coordinate/Frame/Providers/IERS/Finals2000A.hpp>
 #include <Library/Physics/Coordinate/Frame/Providers/IERS/BulletinA.hpp>
+#include <Library/Physics/Time/Duration.hpp>
 #include <Library/Physics/Time/Instant.hpp>
 
 #include <Library/Mathematics/Objects/Vector.hpp>
@@ -52,12 +53,20 @@ using library::io::URL ;
 using library::math::obj::Vector2d ;
 
 using library::physics::time::Instant ;
+using library::physics::time::Duration ;
 using library::physics::coord::frame::provider::iers::BulletinA ;
 using library::physics::coord::frame::provider::iers::Finals2000A ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @brief                      IERS bulletins manager (thread-safe)
+///
+///                             The following environment variables can be defined:
+///
+///                             - "LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE" will override "DefaultMode"
+///                             - "LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY" will override "DefaultLocalRepository"
+///                             - "LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT" will override "DefaultLocalRepositoryLockTimeout"
+///                             - "LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL" will override "DefaultRemoteUrl"
 ///
 /// @ref                        https://www.iers.org/IERS/EN/DataProducts/EarthOrientationData/eop.html
 
@@ -177,18 +186,41 @@ class Manager
 
         /// @brief              Get manager singleton
         ///
-        /// @param              [in] (optional) aMode A manager mode
         /// @return             Reference to manager
 
-        static Manager&         Get                                         (   const   Manager::Mode&              aMode                                       =   Manager::Mode::Automatic ) ;
+        static Manager&         Get                                         ( ) ;
+
+        /// @brief              Get default manager mode
+        ///
+        ///                     Value: Manager::Mode::Manual
+        ///                     Overriden by: LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE
+        ///
+        /// @return             Default manager mode
+
+        static Manager::Mode    DefaultMode                                 ( ) ;
 
         /// @brief              Get default local repository
+        ///
+        ///                     Value: "./.library/physics/coordinate/frame/providers/iers"
+        ///                     Overriden by: LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY
         ///
         /// @return             Default local repository
 
         static Directory        DefaultLocalRepository                      ( ) ;
 
+        /// @brief              Get default local repository lock timeout
+        ///
+        ///                     Value: 60 [s]
+        ///                     Overriden by: LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT
+        ///
+        /// @return             Default local repository lock timeout
+
+        static Duration         DefaultLocalRepositoryLockTimeout           ( ) ;
+
         /// @brief              Get default remote URL
+        ///
+        ///                     Value: "http://maia.usno.navy.mil/ser7/"
+        ///                     Overriden by: LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL
         ///
         /// @return             Default remote URL
 
@@ -199,6 +231,7 @@ class Manager
         Manager::Mode           mode_ ;
 
         Directory               localRepository_ ;
+        Duration                localRepositoryLockTimeout_ ;
 
         URL                     remoteUrl_ ;
 
@@ -213,7 +246,11 @@ class Manager
         mutable Instant         bulletinAUpdateInstant_ ;
         mutable Instant         finals2000AUpdateInstant_ ;
 
-                                Manager                                     (   const   Manager::Mode&              aMode                                       ) ;
+                                Manager                                     (   const   Manager::Mode&              aMode                                       =   Manager::DefaultMode() ) ;
+
+        bool                    isLocalRepositoryLocked                     ( ) const ;
+
+        File                    getLocalRepositoryLockFile                  ( ) const ;
 
         const BulletinA*        accessBulletinAAt                           (   const   Instant&                    anInstant                                   ) const ;
 
@@ -232,6 +269,10 @@ class Manager
         File                    fetchLatestBulletinA_                       ( ) ;
         
         File                    fetchLatestFinals2000A_                     ( ) ;
+
+        void                    lockLocalRepository                         (   const   Duration&                   aTimeout                                    ) ;
+
+        void                    unlockLocalRepository                       ( ) ;
 
 } ;
 

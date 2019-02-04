@@ -36,25 +36,27 @@ using library::physics::units::Angle ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-Derived                         Sun::GravitationalConstant                      =       Derived(132712440018e9, { Length::Unit::Meter, Derived::Order(3), Mass::Unit::Undefined, Derived::Order::Zero(), Time::Unit::Second, Derived::Order(-2), Angle::Unit::Undefined, Derived::Order::Zero() }) ;
+Derived                         Sun::GravitationalParameter                     =       Derived(132712440018e9, { Length::Unit::Meter, Derived::Order(3), Mass::Unit::Undefined, Derived::Order::Zero(), Time::Unit::Second, Derived::Order(-2), Angle::Unit::Undefined, Derived::Order::Zero() }) ;
 Length                          Sun::EquatorialRadius                           =       Length::Meters(6.955e8) ;
 Real                            Sun::Flattening                                 =       0.0 ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                                Sun::Sun                                    (   const   Shared<Ephemeris>&          anEphemerisSPtr,
+                                Sun::Sun                                    (   const   Shared<Ephemeris>&          anEphemeris,
+                                                                                const   Shared<GravitationalModel>& aGravitationalModel,
                                                                                 const   Instant&                    anInstant                                   )
                                 :   Celestial
                                     (
                                         "Sun",
                                         Celestial::Type::Sun,
-                                        Sun::GravitationalConstant,
+                                        Sun::GravitationalParameter,
                                         Sun::EquatorialRadius,
                                         Sun::Flattening,
                                         0.0,
-                                        anEphemerisSPtr,
+                                        anEphemeris,
+                                        aGravitationalModel,
                                         anInstant,
-                                        Sun::Geometry(anEphemerisSPtr->accessFrame())
+                                        Sun::Geometry(anEphemeris->accessFrame())
                                     )
 {
 
@@ -75,7 +77,7 @@ Sun                             Sun::Default                                ( )
 
     using library::physics::env::ephem::SPICE ;
 
-    return { std::make_shared<SPICE>(SPICE::Object::Sun), Instant::J2000() } ;
+    return { std::make_shared<SPICE>(SPICE::Object::Sun), nullptr, Instant::J2000() } ; // [TBI]
 
 }
 

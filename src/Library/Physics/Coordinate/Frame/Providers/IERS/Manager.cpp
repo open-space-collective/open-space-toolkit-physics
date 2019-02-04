@@ -23,8 +23,11 @@
 #include <Library/Core/Error.hpp>
 #include <Library/Core/Utilities.hpp>
 
+#include <thread>
+#include <chrono>
 #include <fstream>
 #include <numeric>
+#include <cstdlib>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -258,6 +261,11 @@ void                            Manager::setLocalRepository                 (   
 
     localRepository_ = aDirectory ;
 
+    if (!localRepository_.exists())
+    {
+        localRepository_.create() ;
+    }
+
 }
 
 void                            Manager::setRemoteUrl                       (   const   URL&                        aRemoteUrl                                  )
@@ -333,12 +341,39 @@ void                            Manager::reset                              ( )
         
 }
 
-Manager&                        Manager::Get                                (   const   Manager::Mode&              aMode                                       )
+Manager&                        Manager::Get                                ( )
 {
 
-    static Manager manager = { aMode } ;
+    static Manager manager ;
 
     return manager ;
+
+}
+
+Manager::Mode                   Manager::DefaultMode                        ( )
+{
+
+    static const Manager::Mode defaultMode = Manager::Mode::Manual ;
+
+    if (const char* modeString = std::getenv("LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE"))
+    {
+        
+        if (strcmp(modeString, "Manual") == 0)
+        {
+            return Manager::Mode::Manual ;
+        }
+        else if (strcmp(modeString, "Automatic") == 0)
+        {
+            return Manager::Mode::Automatic ;
+        }
+        else
+        {
+            throw library::core::error::runtime::Wrong("Mode", modeString) ;
+        }
+        
+    }
+
+    return defaultMode ;
 
 }
 
@@ -346,14 +381,44 @@ Directory                       Manager::DefaultLocalRepository             ( )
 {
 
     using library::core::fs::Path ;
+
+    static const Directory defaultLocalRepository = Directory::Path(Path::Parse("./.library/physics/coordinate/frame/providers/iers")) ;
+
+    if (const char* localRepositoryPath = std::getenv("LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY"))
+    {
+        return Directory::Path(Path::Parse(localRepositoryPath)) ;
+    }
     
-    return Directory::Path(Path::Parse("/var/library-physics/coordinate/frame/providers/iers")) ;
+    return defaultLocalRepository ;
+    
+}
+
+Duration                        Manager::DefaultLocalRepositoryLockTimeout  ( )
+{
+
+    static const Duration defaultLocalRepositoryLockTimeout = Duration::Seconds(60.0) ;
+
+    if (const char* localRepositoryLockTimeoutString = std::getenv("LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT"))
+    {
+        return Duration::Parse(localRepositoryLockTimeoutString) ;
+    }
+    
+    return defaultLocalRepositoryLockTimeout ;
 
 }
 
 URL                             Manager::DefaultRemoteUrl                   ( )
 {
-    return URL::Parse("http://maia.usno.navy.mil/ser7/") ;
+
+    static const URL defaultRemoteUrl = URL::Parse("http://maia.usno.navy.mil/ser7/") ;
+
+    if (const char* remoteUrl = std::getenv("LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL"))
+    {
+        return URL::Parse(remoteUrl) ;
+    }
+    
+    return defaultRemoteUrl ;
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -361,6 +426,7 @@ URL                             Manager::DefaultRemoteUrl                   ( )
                                 Manager::Manager                            (   const   Manager::Mode&              aMode                                       )
                                 :   mode_(aMode),
                                     localRepository_(Manager::DefaultLocalRepository()),
+                                    localRepositoryLockTimeout_(Manager::DefaultLocalRepositoryLockTimeout()),
                                     remoteUrl_(Manager::DefaultRemoteUrl()),
                                     aBulletins_(Array<BulletinA>::Empty()),
                                     finals2000aArray_(Array<Finals2000A>::Empty()),
@@ -372,6 +438,11 @@ URL                             Manager::DefaultRemoteUrl                   ( )
 
     this->setup() ;
 
+}
+
+bool                            Manager::isLocalRepositoryLocked            ( ) const
+{
+    return this->getLocalRepositoryLockFile().exists() ;
 }
 
 const BulletinA*                Manager::accessBulletinAAt                  (   const   Instant&                    anInstant                                   ) const
@@ -411,14 +482,14 @@ const BulletinA*                Manager::accessBulletinAAt                  (   
 
     }
 
-    // Try getting latest Bulletin A
+    // Try fetching latest Bulletin A
 
     if (mode_ == Manager::Mode::Automatic)
     {
 
         const Instant currentInstant = Instant::Now() ;
 
-        if ((!bulletinAUpdateInstant_.isDefined()) || ((bulletinAUpdateInstant_ + Duration::Weeks(1.0)) < currentInstant))
+        if ((!bulletinAUpdateInstant_.isDefined()) || ((bulletinAUpdateInstant_ + Duration::Weeks(1.0)) < currentInstant)) // [TBM] Param
         {
 
             const File latestBulletinAFile = const_cast<Manager*>(this)->getLatestBulletinAFile() ;
@@ -562,6 +633,15 @@ const Finals2000A*              Manager::accessFinals2000AAt                (   
 
 }
 
+File                            Manager::getLocalRepositoryLockFile         ( ) const
+{
+
+    using library::core::fs::Path ;
+    
+    return File::Path(localRepository_.getPath() + Path::Parse(".lock")) ;
+
+}
+
 File                            Manager::getLatestBulletinAFile             ( ) const
 {
 
@@ -594,7 +674,7 @@ File                            Manager::getLatestBulletinAFile             ( ) 
 
     }
 
-    if ((!bulletinAMap.empty()) && (Duration::Between(bulletinAMap.rbegin()->first, Instant::Now()) < Duration::Weeks(1.0))) // [TBM] 1 week is arbitrary
+    if (!bulletinAMap.empty())
     {
         return bulletinAMap.rbegin()->second ; // Latest bulletin
     }
@@ -635,7 +715,7 @@ File                            Manager::getLatestFinals2000AFile           ( ) 
 
     }
 
-    if ((!finals2000AMap.empty()) && (Duration::Between(finals2000AMap.rbegin()->first, Instant::Now()) < Duration::Weeks(1.0))) // [TBM] 1 week is arbitrary
+    if (!finals2000AMap.empty())
     {
         return finals2000AMap.rbegin()->second ; // Latest Finals 2000A
     }
@@ -852,6 +932,8 @@ File                            Manager::fetchLatestBulletinA_              ( )
 
     try
     {
+
+        this->lockLocalRepository(localRepositoryLockTimeout_) ;
         
         latestBulletinAFile = Client::Fetch(remoteUrl, temporaryDirectory) ;
 
@@ -890,6 +972,8 @@ File                            Manager::fetchLatestBulletinA_              ( )
         {
             temporaryDirectory.remove() ;
         }
+
+        this->unlockLocalRepository() ;
         
     }
 
@@ -926,31 +1010,117 @@ File                            Manager::fetchLatestFinals2000A_            ( )
 
     const URL remoteUrl = remoteUrl_ + "finals2000A.data" ;
 
-    File latestFinals2000AFile = Client::Fetch(remoteUrl, temporaryDirectory) ;
+    File latestFinals2000AFile = File::Undefined() ;
+    Directory destinationDirectory = Directory::Undefined() ;
 
-    // [TBI] Add file size verification
-
-    const Finals2000A latestFinals2000A = Finals2000A::Load(latestFinals2000AFile) ;
-
-    if (!latestFinals2000AFile.exists())
+    try
     {
-        throw library::core::error::RuntimeError("Cannot fetch Finals 2000A file [{}] at [{}].", latestFinals2000AFile.toString(), remoteUrl.toString()) ;
+
+        this->lockLocalRepository(localRepositoryLockTimeout_) ;
+
+        latestFinals2000AFile = Client::Fetch(remoteUrl, temporaryDirectory) ;
+
+        // [TBI] Add file size verification
+
+        const Finals2000A latestFinals2000A = Finals2000A::Load(latestFinals2000AFile) ;
+
+        if (!latestFinals2000AFile.exists())
+        {
+            throw library::core::error::RuntimeError("Cannot fetch Finals 2000A file [{}] at [{}].", latestFinals2000AFile.toString(), remoteUrl.toString()) ;
+        }
+
+        destinationDirectory = Directory::Path(localRepository_.getPath() + Path::Parse(Instant::Now().getDateTime(Scale::UTC).getDate().toString())) ;
+
+        if (destinationDirectory.exists())
+        {
+            destinationDirectory.remove() ;
+        }
+
+        destinationDirectory.create() ;
+
+        latestFinals2000AFile.moveToDirectory(destinationDirectory) ;
+
+        temporaryDirectory.remove() ;
+
     }
-
-    Directory destinationDirectory = Directory::Path(localRepository_.getPath() + Path::Parse(Instant::Now().getDateTime(Scale::UTC).getDate().toString())) ;
-
-    if (destinationDirectory.exists())
+    catch (const library::core::error::Exception& anException)
     {
-        destinationDirectory.remove() ;
+
+        if (latestFinals2000AFile.isDefined() && latestFinals2000AFile.exists())
+        {
+            latestFinals2000AFile.remove() ;
+        }
+
+        if (temporaryDirectory.isDefined() && temporaryDirectory.exists())
+        {
+            temporaryDirectory.remove() ;
+        }
+
+        this->unlockLocalRepository() ;
+        
     }
-
-    destinationDirectory.create() ;
-
-    latestFinals2000AFile.moveToDirectory(destinationDirectory) ;
-
-    temporaryDirectory.remove() ;
 
     return latestFinals2000AFile ;
+
+}
+
+void                            Manager::lockLocalRepository                (   const   Duration&                   aTimeout                                    )
+{
+
+    const auto tryLock = [] (File& aLockFile) -> bool
+    {
+
+        if (!aLockFile.exists()) // [TBM] Should use system-wide semaphore instead (race condition can still occur)
+        {
+
+            try
+            {
+                
+                aLockFile.create() ;
+
+                return true ;
+
+            }
+            catch (...)
+            {
+                // Do nothing
+            }
+
+            return false ;
+            
+        }
+
+        return false ;
+
+    } ;
+
+    const Instant timeoutInstant = Instant::Now() + aTimeout ;
+
+    File lockFile = this->getLocalRepositoryLockFile() ;
+
+    while (!tryLock(lockFile))
+    {
+
+        if (Instant::Now() >= timeoutInstant)
+        {
+            throw library::core::error::RuntimeError("Cannot lock local repository: timeout reached.") ;
+        }
+
+        std::this_thread::sleep_for(std::chrono::seconds(1)) ;
+
+    }
+
+}
+
+void                            Manager::unlockLocalRepository              ( )
+{
+
+    if (!this->isLocalRepositoryLocked())
+    {
+        throw library::core::error::RuntimeError("Cannot unlock local repository: lock file does not exist.") ;
+    }
+
+    this->getLocalRepositoryLockFile().remove() ;
 
 }
 

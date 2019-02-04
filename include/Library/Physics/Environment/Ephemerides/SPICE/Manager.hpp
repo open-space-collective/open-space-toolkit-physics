@@ -61,6 +61,11 @@ using library::physics::env::ephem::spice::Index ;
 /// @brief                      SPICE Toolkit kernel manager
 ///
 ///                             Fetches and manages necessary SPICE kernels.
+///
+///                             The following environment variables can be defined:
+///
+///                             - "LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY" will override "DefaultLocalRepository"
+///                             - "LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_REMOTE_URL" will override "DefaultRemoteUrl"
 
 class Manager
 {
@@ -86,6 +91,12 @@ class Manager
         /// @return             Remote URL
 
         URL                     getRemoteUrl                                ( ) const ;
+
+        /// @brief              Get index file
+        ///
+        /// @return             Index file
+
+        File                    getIndexFile                                ( ) const ;
 
         /// @brief              Fetch kernel from remote
         ///
@@ -126,11 +137,17 @@ class Manager
 
         /// @brief              Get default local repository
         ///
+        ///                     Value: "./.library/physics/environment/ephemerides/spice"
+        ///                     Overriden by: LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY
+        ///
         /// @return             Default local repository
 
         static Directory        DefaultLocalRepository                      ( ) ;
 
         /// @brief              Get default remote URL
+        ///
+        ///                     Value: "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/"
+        ///                     Overriden by: LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_REMOTE_URL
         ///
         /// @return             Default remote URL
 
@@ -142,12 +159,13 @@ class Manager
 
         URL                     remoteUrl_ ;
         
-        File                    indexFile_ ;
         mutable Index           index_ ;
 
         mutable std::mutex      mutex_ ;
 
                                 Manager                                     ( ) ;
+
+        File                    getIndexFile_                               ( ) const ;
 
         void                    updateIndex                                 ( ) ;
 

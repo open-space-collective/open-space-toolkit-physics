@@ -70,7 +70,7 @@
 
 //     {
 
-//         const File file = File::Path(Path::Parse("/var/library-physics/coordinate/frame/providers/iers/ser7.dat")) ;
+//         const File file = File::Path(Path::Parse("./.library/physics/coordinate/frame/providers/iers/ser7.dat")) ;
 
 //         const BulletinA bulletinA = BulletinA::Load(file) ;
 
@@ -296,7 +296,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, GetUt1MinusUtcAt)
 
 //     {
 
-//         const File file = File::Path(Path::Parse("/var/library-physics/coordinate/frame/providers/iers/ser7.dat")) ;
+//         const File file = File::Path(Path::Parse("./.library/physics/coordinate/frame/providers/iers/ser7.dat")) ;
 
 //         const BulletinA bulletinA = BulletinA::Load(file) ;
 

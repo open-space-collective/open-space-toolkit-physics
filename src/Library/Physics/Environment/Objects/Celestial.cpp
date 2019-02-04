@@ -7,9 +7,10 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <Library/Physics/Environment/Objects/Celestial.hpp>
 #include <Library/Physics/Coordinate/Frame/Utilities.hpp>
 #include <Library/Physics/Coordinate/Frame/Providers/Static.hpp>
-#include <Library/Physics/Environment/Objects/Celestial.hpp>
+#include <Library/Physics/Unit.hpp>
 
 #include <Library/Core/Error.hpp>
 #include <Library/Core/Utilities.hpp>
@@ -29,39 +30,43 @@ namespace obj
 
                                 Celestial::Celestial                        (   const   String&                     aName,
                                                                                 const   Celestial::Type&            aType,
-                                                                                const   Derived&                    aGravitationalConstant,
+                                                                                const   Derived&                    aGravitationalParameter,
                                                                                 const   Length&                     anEquatorialRadius,
                                                                                 const   Real&                       aFlattening,
                                                                                 const   Real&                       aJ2,
                                                                                 const   Shared<Ephemeris>&          anEphemeris,
+                                                                                const   Shared<GravitationalModel>& aGravitationalModel,
                                                                                 const   Instant&                    anInstant                                   )
                                 :   Object(aName, anInstant),
                                     type_(aType),
-                                    gravitationalConstant_(aGravitationalConstant),
+                                    gravitationalParameter_(aGravitationalParameter),
                                     equatorialRadius_(anEquatorialRadius),
                                     flattening_(aFlattening),
                                     j2_(aJ2),
-                                    ephemeris_(anEphemeris)
+                                    ephemeris_(anEphemeris),
+                                    gravitationalModelSPtr_(aGravitationalModel)
 {
 
 }
 
                                 Celestial::Celestial                        (   const   String&                     aName,
                                                                                 const   Celestial::Type&            aType,
-                                                                                const   Derived&                    aGravitationalConstant,
+                                                                                const   Derived&                    aGravitationalParameter,
                                                                                 const   Length&                     anEquatorialRadius,
                                                                                 const   Real&                       aFlattening,
                                                                                 const   Real&                       aJ2,
                                                                                 const   Shared<Ephemeris>&          anEphemeris,
+                                                                                const   Shared<GravitationalModel>& aGravitationalModel,
                                                                                 const   Instant&                    anInstant,
                                                                                 const   Object::Geometry&           aGeometry                                   )
                                 :   Object(aName, anInstant, aGeometry),
                                     type_(aType),
-                                    gravitationalConstant_(aGravitationalConstant),
+                                    gravitationalParameter_(aGravitationalParameter),
                                     equatorialRadius_(anEquatorialRadius),
                                     flattening_(aFlattening),
                                     j2_(aJ2),
-                                    ephemeris_(anEphemeris)
+                                    ephemeris_(anEphemeris),
+                                    gravitationalModelSPtr_(aGravitationalModel)
 {
 
 }
@@ -93,6 +98,18 @@ Shared<const Ephemeris>         Celestial::accessEphemeris                  ( ) 
 
 }
 
+Shared<const GravitationalModel> Celestial::accessGravitationalModel        ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Celestial") ;
+    }
+
+    return gravitationalModelSPtr_ ;
+
+}
+
 Celestial::Type                 Celestial::getType                          ( ) const
 {
 
@@ -105,7 +122,7 @@ Celestial::Type                 Celestial::getType                          ( ) 
 
 }
 
-Derived                         Celestial::getGravitationalConstant         ( ) const
+Derived                         Celestial::getGravitationalParameter         ( ) const
 {
 
     if (!this->isDefined())
@@ -113,7 +130,7 @@ Derived                         Celestial::getGravitationalConstant         ( ) 
         throw library::core::error::runtime::Undefined("Celestial") ;
     }
 
-    return gravitationalConstant_ ;
+    return gravitationalParameter_ ;
 
 }
         
@@ -221,8 +238,11 @@ Axes                            Celestial::getAxesIn                        (   
 
 }
 
-Vector3d                        Celestial::getGravitationalFieldAt          (   const   Position&                   aPosition                                   ) const
+Vector                          Celestial::getGravitationalFieldAt          (   const   Position&                   aPosition                                   ) const
 {
+
+    using library::physics::Unit ;
+    using library::physics::units::Time ;
 
     if (!aPosition.isDefined())
     {
@@ -234,13 +254,18 @@ Vector3d                        Celestial::getGravitationalFieldAt          (   
         throw library::core::error::runtime::Undefined("Celestial") ;
     }
 
-    (void) aPosition ;
+    if (gravitationalModelSPtr_ == nullptr)
+    {
+        throw library::core::error::runtime::Undefined("Gravitational model") ;
+    }
 
-    // [TBI]
+    const Vector3d positionInBodyFrame = aPosition.inFrame(ephemeris_->accessFrame(), this->accessInstant()).getCoordinates() ;
 
-    throw library::core::error::runtime::ToBeImplemented("Celestial::getGravitationalFieldAt") ;
+    const Vector3d gravitationalFieldValue = gravitationalModelSPtr_->getFieldValueAt(positionInBodyFrame, this->accessInstant()) ;
 
-    return Vector3d::Undefined() ;
+    const static Unit gravitationalFieldUnit = Unit::Derived(Derived::Unit::Acceleration(Length::Unit::Meter, Time::Unit::Second)) ;
+
+    return { gravitationalFieldValue, gravitationalFieldUnit, ephemeris_->accessFrame() } ;
 
 }
 
@@ -305,7 +330,7 @@ Shared<const Frame>             Celestial::getFrameAt                       (   
 
 Celestial                       Celestial::Undefined                        ( )
 {
-    return { String::Empty(), Celestial::Type::Undefined, Derived::Undefined(), Length::Undefined(), Real::Undefined(), Real::Undefined(), nullptr, Instant::Undefined() } ;
+    return { String::Empty(), Celestial::Type::Undefined, Derived::Undefined(), Length::Undefined(), Real::Undefined(), Real::Undefined(), nullptr, nullptr, Instant::Undefined() } ;
 }
 
 String                          Celestial::StringFromFrameType              (   const   Celestial::FrameType&       aFrameType                                  )

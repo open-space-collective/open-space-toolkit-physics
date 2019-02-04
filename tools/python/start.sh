@@ -67,7 +67,6 @@ else
     -it \
     --rm \
     --publish="${python_port}:8888" \
-    --user="" \
     --env="JUPYTER_ENABLE_LAB=yes" \
     --env="LD_LIBRARY_PATH=/usr/local/lib:/opt/conda/lib/python3.6/site-packages:/home/jovyan/lib" \
     --env="PYTHONPATH=/opt/conda/lib/python3.6/site-packages:/home/jovyan/lib" \
@@ -77,10 +76,13 @@ else
     --volume="${project_directory}/share:/var/library-physics" \
     --workdir="/home/jovyan" \
     "${image_name}-python:${image_version}" \
-    bash -c "mkdir -p /opt/conda/lib/python3.6/site-packages/Library/Physics \
+    bash -c "pip install --quiet LibraryIOPy LibraryMathematicsPy \
+    && mkdir -p /opt/conda/lib/python3.6/site-packages/Library/Physics \
     && ln -s /opt/lib/liblibrary-physics.so.0 /opt/conda/lib/python3.6/site-packages/Library/Physics/liblibrary-physics.so.0 \
     && ln -s /opt/lib/LibraryPhysicsPy.so /opt/conda/lib/python3.6/site-packages/Library/Physics/LibraryPhysicsPy.so \
-    && echo 'from .LibraryPhysicsPy import *' > /opt/conda/lib/python3.6/site-packages/Library/Physics/__init__.py \
+    && echo -e 'from Library.IO import *' | tee -a /opt/conda/lib/python3.6/site-packages/Library/Physics/__init__.py \
+    && echo -e 'from Library.Mathematics import *' | tee -a /opt/conda/lib/python3.6/site-packages/Library/Physics/__init__.py \
+    && echo -e 'from .LibraryPhysicsPy import *' | tee -a /opt/conda/lib/python3.6/site-packages/Library/Physics/__init__.py \
     && start-notebook.sh --NotebookApp.token=''"
 
 fi

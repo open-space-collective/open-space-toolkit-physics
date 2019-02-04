@@ -10,6 +10,7 @@
 #ifndef __Library_Physics_Environment_Objects_CelestialBodies_Sun__
 #define __Library_Physics_Environment_Objects_CelestialBodies_Sun__
 
+#include <Library/Physics/Environment/Gravitational/Model.hpp>
 #include <Library/Physics/Environment/Objects/Celestial.hpp>
 #include <Library/Physics/Environment/Object.hpp>
 #include <Library/Physics/Environment/Ephemeris.hpp>
@@ -46,6 +47,7 @@ using library::physics::units::Derived ;
 using library::physics::env::Ephemeris ;
 using library::physics::env::Object ;
 using library::physics::env::obj::Celestial ;
+using GravitationalModel = library::physics::environment::gravitational::Model ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -54,11 +56,12 @@ class Sun : public Celestial
 
     public:
 
-        static Derived          GravitationalConstant ;
+        static Derived          GravitationalParameter ;
         static Length           EquatorialRadius ;
         static Real             Flattening ;
 
-                                Sun                                         (   const   Shared<Ephemeris>&          anEphemerisSPtr,
+                                Sun                                         (   const   Shared<Ephemeris>&          anEphemeris,
+                                                                                const   Shared<GravitationalModel>& aGravitationalModel,
                                                                                 const   Instant&                    anInstant                                   ) ;
 
         virtual                 ~Sun                                        ( ) override ;

@@ -26,10 +26,11 @@ inline void                     LibraryPhysicsPy_Environment_Objects_Celestial (
     using library::physics::env::Ephemeris ;
     using library::physics::env::Object ;
     using library::physics::env::obj::Celestial ;
+    using GravitationalModel = library::physics::environment::gravitational::Model ;
 
-    scope in_Celestial = class_<Celestial, bases<Object>>("Celestial", init<const String&, const Celestial::Type&, const Derived& , const Length&, const Real&, const Real&, const Shared<Ephemeris>&, const Instant&>())
+    scope in_Celestial = class_<Celestial, bases<Object>>("Celestial", init<const String&, const Celestial::Type&, const Derived& , const Length&, const Real&, const Real&, const Shared<Ephemeris>&, const Shared<GravitationalModel>&, const Instant&>())
 
-        .def(init<const String&, const Celestial::Type&, const Derived& , const Length&, const Real&, const Real&, const Shared<Ephemeris>&, const Instant&, const Object::Geometry&>())
+        .def(init<const String&, const Celestial::Type&, const Derived& , const Length&, const Real&, const Real&, const Shared<Ephemeris>&, const Shared<GravitationalModel>&, const Instant&, const Object::Geometry&>())
 
         // .def(self == self)
         // .def(self != self)
@@ -40,8 +41,10 @@ inline void                     LibraryPhysicsPy_Environment_Objects_Celestial (
         .def("isDefined", &Celestial::isDefined)
         
         .def("accessEphemeris", &Celestial::accessEphemeris)
+        .def("accessGravitationalModel", &Celestial::accessGravitationalModel)
+        
         .def("getType", &Celestial::getType)
-        .def("getGravitationalConstant", &Celestial::getGravitationalConstant)
+        .def("getGravitationalParameter", &Celestial::getGravitationalParameter)
         .def("getEquatorialRadius", &Celestial::getEquatorialRadius)
         .def("getFlattening", &Celestial::getFlattening)
         .def("getJ2", &Celestial::getJ2)

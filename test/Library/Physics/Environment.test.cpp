@@ -7,6 +7,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <Library/Physics/Environment/Ephemerides/SPICE/Engine.hpp>
 #include <Library/Physics/Environment/Objects/CelestialBodies/Moon.hpp>
 #include <Library/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
 #include <Library/Physics/Environment.hpp>
@@ -499,6 +500,8 @@ TEST (Library_Physics_Environment, Test_1)
     using library::physics::env::Object ;
     using library::physics::env::obj::celest::Earth ;
     using library::physics::env::obj::celest::Moon ;
+
+    using library::physics::env::ephem::spice::Engine ;
 
     const Instant startInstant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC) ;
     const Instant endInstant = Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC) ;
