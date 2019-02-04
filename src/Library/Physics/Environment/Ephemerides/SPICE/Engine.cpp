@@ -85,30 +85,39 @@ std::ostream&                   operator <<                                 (   
         handleException() ;
     }
 
-    for (SpiceInt kernelIndex = 0; kernelIndex < kernelCount; ++kernelIndex)
+    if (kernelCount > 0)
     {
 
-        // Return data for the nth kernel that is among a list of specified kernel types
-        // https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/C/cspice/kdata_c.html
-
-        SpiceChar fileName[256] ;
-        SpiceChar fileType[81] ;
-        SpiceChar fileSource[256] ;
-        SpiceInt handle = 0 ;
-        SpiceBoolean found = SPICEFALSE ;
-
-        kdata_c(kernelIndex, "ALL", 256, 81, 256, fileName, fileType, fileSource, &handle, &found) ;
-
-        if (failed_c()) 
+        for (SpiceInt kernelIndex = 0; kernelIndex < kernelCount; ++kernelIndex)
         {
-            handleException() ;
+
+            // Return data for the nth kernel that is among a list of specified kernel types
+            // https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/C/cspice/kdata_c.html
+
+            SpiceChar fileName[256] ;
+            SpiceChar fileType[81] ;
+            SpiceChar fileSource[256] ;
+            SpiceInt handle = 0 ;
+            SpiceBoolean found = SPICEFALSE ;
+
+            kdata_c(kernelIndex, "ALL", 256, 81, 256, fileName, fileType, fileSource, &handle, &found) ;
+
+            if (failed_c()) 
+            {
+                handleException() ;
+            }
+
+            if (found)
+            {
+                library::core::utils::Print::Line(anOutputStream) << fileName ;
+            }
+
         }
 
-        if (found)
-        {
-            library::core::utils::Print::Line(anOutputStream) << fileName ;
-        }
-
+    }
+    else
+    {
+        library::core::utils::Print::Line(anOutputStream) << "No kernel loaded." ;
     }
 
     library::core::utils::Print::Footer(anOutputStream) ;
@@ -242,7 +251,7 @@ Engine::Mode                    Engine::DefaultMode                         ( )
 
     static const Engine::Mode defaultMode = Engine::Mode::Manual ;
 
-    if (const char* modeString = std::getenv("LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MODE"))
+    if (const char* modeString = std::getenv("LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_ENGINE_MODE"))
     {
         
         if (strcmp(modeString, "Manual") == 0)
@@ -270,9 +279,9 @@ Array<Kernel>                   Engine::DefaultKernels                      (   
     static const Array<Kernel> defaultKernels =
     {
 
-        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("naif0012.tls"))),                          // Leap seconds
-        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("de430.bsp"))),                             // Ephemeris
-        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("pck00010.tpc"))),                          // System body shape and orientation constants
+        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("naif0012.tls"))),                         // Leap seconds
+        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("de430.bsp"))),                            // Ephemeris
+        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("pck00010.tpc"))),                         // System body shape and orientation constants
 
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("earth_assoc_itrf93.tf"))),
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("earth_070425_370426_predict.bpc"))),
@@ -388,6 +397,8 @@ Transform                       Engine::getTransformAt                      (   
 void                            Engine::setup                               ( )
 {
 
+    // std::cout << "Setting up SPICE engine..." << std::endl ;
+
     // Set error action
     // https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/C/cspice/erract_c.html
 
@@ -402,6 +413,8 @@ void                            Engine::setup                               ( )
     {
 
         // Load default kernels
+
+        // std::cout << "Loading default kernels..." << std::endl ;
 
         for (const auto& kernel : Engine::DefaultKernels(Manager::Get().getLocalRepository()))
         {
