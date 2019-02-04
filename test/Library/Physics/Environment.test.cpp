@@ -7,6 +7,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <Library/Physics/Environment/Ephemerides/SPICE/Engine.hpp>
 #include <Library/Physics/Environment/Objects/CelestialBodies/Moon.hpp>
 #include <Library/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
 #include <Library/Physics/Environment.hpp>
@@ -500,6 +501,8 @@ TEST (Library_Physics_Environment, Test_1)
     using library::physics::env::obj::celest::Earth ;
     using library::physics::env::obj::celest::Moon ;
 
+    using library::physics::env::ephem::spice::Engine ;
+
     const Instant startInstant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC) ;
     const Instant endInstant = Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC) ;
     const Duration step = Duration::Minutes(1.0) ;
@@ -522,45 +525,47 @@ TEST (Library_Physics_Environment, Test_1)
 
         // Earth
 
-        const Transform earthFrameTransform = earthSPtr->getTransformTo(Frame::GCRF()) ;
+        // const Transform earthFrameTransform = earthSPtr->getTransformTo(Frame::GCRF()) ;
 
-        EXPECT_TRUE(earthFrameTransform.isDefined()) ;
+        // EXPECT_TRUE(earthFrameTransform.isDefined()) ;
 
-        const Position earthPosition = earthSPtr->getPositionIn(Frame::GCRF()) ;
-        const Velocity earthVelocity = earthSPtr->getVelocityIn(Frame::GCRF()) ;
+        // const Position earthPosition = earthSPtr->getPositionIn(Frame::GCRF()) ;
+        // const Velocity earthVelocity = earthSPtr->getVelocityIn(Frame::GCRF()) ;
 
-        EXPECT_TRUE(earthPosition.isDefined()) ;
-        EXPECT_TRUE(earthVelocity.isDefined()) ;
+        // EXPECT_TRUE(earthPosition.isDefined()) ;
+        // EXPECT_TRUE(earthVelocity.isDefined()) ;
 
-        const Quaternion earthOrientation = earthSPtr->getTransformTo(Frame::GCRF()).getOrientation() ;
+        // const Quaternion earthOrientation = earthSPtr->getTransformTo(Frame::GCRF()).getOrientation() ;
 
-        EXPECT_TRUE(earthOrientation.isDefined()) ;
+        // EXPECT_TRUE(earthOrientation.isDefined()) ;
 
-        const Axes earthAxes = earthSPtr->getAxesIn(Frame::GCRF()) ;
+        // const Axes earthAxes = earthSPtr->getAxesIn(Frame::GCRF()) ;
 
-        EXPECT_TRUE(earthAxes.isDefined()) ;
+        // EXPECT_TRUE(earthAxes.isDefined()) ;
 
         // std::cout << String::Format("Earth @ {}: {} --- {} --- {}", instant.toString(), earthPosition.toString(), earthVelocity.toString(), earthOrientation.toString()) << std::endl ;
 
         // Moon
 
+        std::cout << Engine::Get() << std::endl ;
+
         const Transform moonFrameTransform = moonSPtr->getTransformTo(Frame::GCRF()) ;
 
         EXPECT_TRUE(moonFrameTransform.isDefined()) ;
 
-        const Position moonPosition = moonSPtr->getPositionIn(Frame::GCRF()) ;
-        const Velocity moonVelocity = moonSPtr->getVelocityIn(Frame::GCRF()) ;
+        // const Position moonPosition = moonSPtr->getPositionIn(Frame::GCRF()) ;
+        // const Velocity moonVelocity = moonSPtr->getVelocityIn(Frame::GCRF()) ;
 
-        EXPECT_TRUE(moonPosition.isDefined()) ;
-        EXPECT_TRUE(moonVelocity.isDefined()) ;
+        // EXPECT_TRUE(moonPosition.isDefined()) ;
+        // EXPECT_TRUE(moonVelocity.isDefined()) ;
 
-        const Quaternion moonOrientation = moonSPtr->getTransformTo(Frame::GCRF()).getOrientation() ;
+        // const Quaternion moonOrientation = moonSPtr->getTransformTo(Frame::GCRF()).getOrientation() ;
 
-        EXPECT_TRUE(moonOrientation.isDefined()) ;
+        // EXPECT_TRUE(moonOrientation.isDefined()) ;
 
-        const Axes moonAxes = moonSPtr->getAxesIn(Frame::GCRF()) ;
+        // const Axes moonAxes = moonSPtr->getAxesIn(Frame::GCRF()) ;
 
-        EXPECT_TRUE(moonAxes.isDefined()) ;
+        // EXPECT_TRUE(moonAxes.isDefined()) ;
 
         // std::cout << String::Format("Moon @ {}: {} --- {} --- {}", instant.toString(), moonPosition.toString(), moonVelocity.toString(), moonOrientation.toString()) << std::endl ;
 
