@@ -46,8 +46,8 @@ if [[ ! -z $1 ]] && [[ $1 == "--link" ]]; then
     && ln -s /opt/library-mathematics/LibraryMathematicsPy.so /opt/conda/lib/python3.6/site-packages/Library/Mathematics/LibraryMathematicsPy.so \
     && echo 'from .LibraryMathematicsPy import *' > /opt/conda/lib/python3.6/site-packages/Library/Mathematics/__init__.py \
     && mkdir -p /opt/conda/lib/python3.6/site-packages/Library/Physics \
-    && ln -s /opt/lib/liblibrary-physics.so.0 /opt/conda/lib/python3.6/site-packages/Library/Physics/liblibrary-physics.so.0 \
-    && ln -s /opt/lib/LibraryPhysicsPy.so /opt/conda/lib/python3.6/site-packages/Library/Physics/LibraryPhysicsPy.so \
+    && ln -s /opt/library-physics/liblibrary-physics.so.0 /opt/conda/lib/python3.6/site-packages/Library/Physics/liblibrary-physics.so.0 \
+    && ln -s /opt/library-physics/LibraryPhysicsPy.so /opt/conda/lib/python3.6/site-packages/Library/Physics/LibraryPhysicsPy.so \
     && echo 'from .LibraryPhysicsPy import *' > /opt/conda/lib/python3.6/site-packages/Library/Physics/__init__.py \
     && start-notebook.sh --NotebookApp.token=''"
 
@@ -56,8 +56,8 @@ else
     command=" \
     pip install --quiet LibraryIOPy LibraryMathematicsPy \
     && mkdir -p /opt/conda/lib/python3.6/site-packages/Library/Physics \
-    && ln -s /opt/lib/liblibrary-physics.so.0 /opt/conda/lib/python3.6/site-packages/Library/Physics/liblibrary-physics.so.0 \
-    && ln -s /opt/lib/LibraryPhysicsPy.so /opt/conda/lib/python3.6/site-packages/Library/Physics/LibraryPhysicsPy.so \
+    && ln -s /opt/library-physics/liblibrary-physics.so.0 /opt/conda/lib/python3.6/site-packages/Library/Physics/liblibrary-physics.so.0 \
+    && ln -s /opt/library-physics/LibraryPhysicsPy.so /opt/conda/lib/python3.6/site-packages/Library/Physics/LibraryPhysicsPy.so \
     && echo -e 'from Library.IO import *' | tee -a /opt/conda/lib/python3.6/site-packages/Library/Physics/__init__.py \
     && echo -e 'from Library.Mathematics import *' | tee -a /opt/conda/lib/python3.6/site-packages/Library/Physics/__init__.py \
     && echo -e 'from .LibraryPhysicsPy import *' | tee -a /opt/conda/lib/python3.6/site-packages/Library/Physics/__init__.py \
@@ -73,7 +73,7 @@ docker run \
 --rm \
 --publish="${python_port}:8888" \
 --env-file="${script_directory}/.env" \
---volume="${project_directory}/lib:/opt/lib:ro" \
+--volume="${project_directory}/lib:/opt/library-physics:ro" \
 --volume="${project_directory}/bindings/python/docs:/home/jovyan/docs" \
 --volume="${project_directory}/tutorials/python/notebooks:/home/jovyan/tutorials" \
 --volume="${project_directory}/share:/home/jovyan/.library/physics" \
