@@ -32,12 +32,12 @@ command="start-notebook.sh --NotebookApp.token=''"
 
 if [[ ! -z $1 ]] && [[ $1 == "--link" ]]; then
 
+    command=""
+
     # Library ▸ Core
 
     options="${options} \
     --volume=${library_core_directory}:/opt/library-core:ro"
-
-    command="pip install --quiet LibraryIOPy LibraryMathematicsPy;"
 
     command="${command} \
     mkdir -p /opt/conda/lib/python3.6/site-packages/Library/Core; \

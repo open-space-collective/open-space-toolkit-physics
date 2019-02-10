@@ -16,6 +16,8 @@ inline void                     LibraryPhysicsPy_Time_Duration               ( )
 
     using namespace boost::python ;
 
+    using library::core::types::String ;
+
     using library::physics::time::Duration ;
 
     scope in_Duration = class_<Duration>("Duration", init<int>())
@@ -64,9 +66,10 @@ inline void                     LibraryPhysicsPy_Time_Duration               ( )
         .def("inHours", &Duration::inHours)
         .def("inDays", &Duration::inDays)
         .def("inWeeks", &Duration::inWeeks)
-        .def("in", &Duration::in)
+        .def("inUnit", &Duration::in)
         .def("getAbsolute", &Duration::getAbsolute)
-        .def("toString", &Duration::toString)
+        .def("toString", +[] (const Duration& aDuration) -> String { return aDuration.toString() ; })
+        .def("toString", +[] (const Duration& aDuration, const Duration::Format& aFormat) -> String { return aDuration.toString(aFormat) ; })
 
         .def("Undefined", &Duration::Undefined).staticmethod("Undefined")
         .def("Zero", &Duration::Zero).staticmethod("Zero")
@@ -79,7 +82,8 @@ inline void                     LibraryPhysicsPy_Time_Duration               ( )
         .def("Days", &Duration::Days).staticmethod("Days")
         .def("Weeks", &Duration::Weeks).staticmethod("Weeks")
         .def("Between", &Duration::Between).staticmethod("Between")
-        .def("Parse", &Duration::Parse).staticmethod("Parse")
+        .def("Parse", +[] (const String& aString) -> Duration { return Duration::Parse(aString) ; })
+        .def("Parse", +[] (const String& aString, const Duration::Format& aFormat) -> Duration { return Duration::Parse(aString, aFormat) ; })
 
     ;
 
