@@ -28,18 +28,16 @@ if [[ "$(docker images -q ${image_name}-python:${image_version} 2> /dev/null)" =
 fi
 
 options=""
-command="/bin/bash"
+command="start-notebook.sh --NotebookApp.token=''"
 
 if [[ ! -z $1 ]] && [[ $1 == "--link" ]]; then
 
-    options="${options} \
-    --volume=${library_core_directory}:/opt/library-core:ro \
-    --volume=${library_io_directory}:/opt/library-io:ro \
-    --volume=${library_mathematics_directory}:/opt/library-mathematics:ro \
-    --volume=${project_directory}:/opt/library-physics:ro"
+    # Library ▸ Core
 
-    command=" \
-    pip install --quiet LibraryIOPy LibraryMathematicsPy;"
+    options="${options} \
+    --volume=${library_core_directory}:/opt/library-core:ro"
+
+    command="pip install --quiet LibraryIOPy LibraryMathematicsPy;"
 
     command="${command} \
     mkdir -p /opt/conda/lib/python3.6/site-packages/Library/Core; \
@@ -50,6 +48,11 @@ if [[ ! -z $1 ]] && [[ $1 == "--link" ]]; then
     ln -s /opt/library-core/lib/LibraryCorePy.so /opt/conda/lib/python3.6/site-packages/Library/Core/LibraryCorePy.so; \
     ln -s /opt/library-core/bindings/python/tools/python/Library/Core/__init__.py /opt/conda/lib/python3.6/site-packages/Library/Core/__init__.py;"
 
+    # Library ▸ I/O
+
+    options="${options} \
+    --volume=${library_io_directory}:/opt/library-io:ro"
+
     command="${command} \
     mkdir -p /opt/conda/lib/python3.6/site-packages/Library/IO; \
     rm -rf /opt/conda/lib/python3.6/site-packages/Library/IO/liblibrary-io.so.0; \
@@ -58,6 +61,11 @@ if [[ ! -z $1 ]] && [[ $1 == "--link" ]]; then
     ln -s /opt/library-io/lib/liblibrary-io.so.0 /opt/conda/lib/python3.6/site-packages/Library/IO/liblibrary-io.so.0; \
     ln -s /opt/library-io/lib/LibraryIOPy.so /opt/conda/lib/python3.6/site-packages/Library/IO/LibraryIOPy.so; \
     ln -s /opt/library-io/bindings/python/tools/python/Library/IO/__init__.py /opt/conda/lib/python3.6/site-packages/Library/IO/__init__.py;"
+
+    # Library ▸ Mathematics
+
+    options="${options} \
+    --volume=${library_mathematics_directory}:/opt/library-mathematics:ro"
 
     command="${command} \
     mkdir -p /opt/conda/lib/python3.6/site-packages/Library/Mathematics; \
@@ -68,30 +76,16 @@ if [[ ! -z $1 ]] && [[ $1 == "--link" ]]; then
     ln -s /opt/library-mathematics/lib/LibraryMathematicsPy.so /opt/conda/lib/python3.6/site-packages/Library/Mathematics/LibraryMathematicsPy.so; \
     ln -s /opt/library-mathematics/bindings/python/tools/python/Library/Mathematics/__init__.py /opt/conda/lib/python3.6/site-packages/Library/Mathematics/__init__.py;"
 
+    # Library ▸ Physics
+
+    options="${options} \
+    --volume=${project_directory}:/opt/library-physics:ro"
+
     command="${command} \
     mkdir -p /opt/conda/lib/python3.6/site-packages/Library/Physics; \
     rm -rf /opt/conda/lib/python3.6/site-packages/Library/Physics/liblibrary-physics.so.0; \
     rm -rf /opt/conda/lib/python3.6/site-packages/Library/Physics/LibraryPhysicsPy.so; \
     rm -rf /opt/conda/lib/python3.6/site-packages/Library/Physics/__init__.py; \
-    ln -s /opt/library-physics/lib/liblibrary-physics.so.0 /opt/conda/lib/python3.6/site-packages/Library/Physics/liblibrary-physics.so.0; \
-    ln -s /opt/library-physics/lib/LibraryPhysicsPy.so /opt/conda/lib/python3.6/site-packages/Library/Physics/LibraryPhysicsPy.so; \
-    ln -s /opt/library-physics/bindings/python/tools/python/Library/Physics/__init__.py /opt/conda/lib/python3.6/site-packages/Library/Physics/__init__.py;"
-
-    command="${command} \
-    start-notebook.sh --NotebookApp.token=''"
-
-else
-
-    options="${options} \
-    --volume=${project_directory}:/opt/library-physics:ro"
-
-    command=""
-
-    command=" \
-    pip install --quiet LibraryIOPy LibraryMathematicsPy;"
-
-    command="${command} \
-    mkdir -p /opt/conda/lib/python3.6/site-packages/Library/Physics; \
     ln -s /opt/library-physics/lib/liblibrary-physics.so.0 /opt/conda/lib/python3.6/site-packages/Library/Physics/liblibrary-physics.so.0; \
     ln -s /opt/library-physics/lib/LibraryPhysicsPy.so /opt/conda/lib/python3.6/site-packages/Library/Physics/LibraryPhysicsPy.so; \
     ln -s /opt/library-physics/bindings/python/tools/python/Library/Physics/__init__.py /opt/conda/lib/python3.6/site-packages/Library/Physics/__init__.py;"

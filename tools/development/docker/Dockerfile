@@ -63,22 +63,22 @@ RUN git clone git://git.code.sf.net/p/geographiclib/code /tmp/geographiclib \
  && rm -rf /tmp/geographiclib \
  && dnf clean all
 
-## Library ▸ I/O [0.2.0]
+## Library ▸ I/O [0.2.3]
 
 RUN mkdir -p /tmp/library-io \
  && pushd /tmp/library-io > /dev/null \
- && wget --quiet https://github.com/open-space-collective/library-io/releases/download/0.2.0/library-io-0.2.0-1.x86_64-runtime.rpm \
- && wget --quiet https://github.com/open-space-collective/library-io/releases/download/0.2.0/library-io-0.2.0-1.x86_64-devel.rpm \
+ && wget --quiet https://github.com/open-space-collective/library-io/releases/download/0.2.3/library-io-0.2.3-1.x86_64-runtime.rpm \
+ && wget --quiet https://github.com/open-space-collective/library-io/releases/download/0.2.3/library-io-0.2.3-1.x86_64-devel.rpm \
  && dnf install -y ./*.rpm \
  && rm -rf /tmp/library-io \
  && popd > /dev/null
 
-## Library ▸ Mathematics [0.2.0]
+## Library ▸ Mathematics [0.2.1]
 
 RUN mkdir -p /tmp/library-mathematics \
  && pushd /tmp/library-mathematics > /dev/null \
- && wget --quiet https://github.com/open-space-collective/library-mathematics/releases/download/0.2.0/library-mathematics-0.2.0-1.x86_64-runtime.rpm \
- && wget --quiet https://github.com/open-space-collective/library-mathematics/releases/download/0.2.0/library-mathematics-0.2.0-1.x86_64-devel.rpm \
+ && wget --quiet https://github.com/open-space-collective/library-mathematics/releases/download/0.2.1/library-mathematics-0.2.1-1.x86_64-runtime.rpm \
+ && wget --quiet https://github.com/open-space-collective/library-mathematics/releases/download/0.2.1/library-mathematics-0.2.1-1.x86_64-devel.rpm \
  && dnf install -y ./*.rpm \
  && rm -rf /tmp/library-mathematics \
  && popd > /dev/null
