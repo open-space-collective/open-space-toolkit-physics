@@ -11,7 +11,7 @@
 
 script_directory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-pushd ${script_directory} > /dev/null
+pushd "${script_directory}" > /dev/null
 
 source "../../.env"
 
