@@ -41,8 +41,13 @@ static const Derived::Unit GravitationParameterSIUnit = { Length::Unit::Meter, D
                                     gravitationalParameter_SI_(aGravitationalParameter.in(GravitationParameterSIUnit))
 {
 
+    if (!gravitationalParameter_SI_.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Gravitational parameter") ;
+    }
+
 }
-        
+
 Spherical*                      Spherical::clone                            ( ) const
 {
     return new Spherical(*this) ;
