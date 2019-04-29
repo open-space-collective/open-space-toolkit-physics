@@ -34,47 +34,47 @@ if [[ ! -z $1 ]] && [[ $1 == "--link" ]]; then
 
     command=""
 
-    # Library ▸ Core
+    # # Library ▸ Core
 
-    options="${options} \
-    --volume=${library_core_directory}:/opt/library-core:ro"
+    # options="${options} \
+    # --volume=${library_core_directory}:/opt/library-core:ro"
 
-    command="${command} \
-    mkdir -p /opt/conda/lib/python3.6/site-packages/Library/Core; \
-    rm -rf /opt/conda/lib/python3.6/site-packages/Library/Core/liblibrary-core.so.0; \
-    rm -rf /opt/conda/lib/python3.6/site-packages/Library/Core/LibraryCorePy.so; \
-    rm -rf /opt/conda/lib/python3.6/site-packages/Library/Core/__init__.py; \
-    ln -s /opt/library-core/lib/liblibrary-core.so.0 /opt/conda/lib/python3.6/site-packages/Library/Core/liblibrary-core.so.0; \
-    ln -s /opt/library-core/lib/LibraryCorePy.so /opt/conda/lib/python3.6/site-packages/Library/Core/LibraryCorePy.so; \
-    ln -s /opt/library-core/bindings/python/tools/python/Library/Core/__init__.py /opt/conda/lib/python3.6/site-packages/Library/Core/__init__.py;"
+    # command="${command} \
+    # mkdir -p /opt/conda/lib/python3.6/site-packages/Library/Core; \
+    # rm -rf /opt/conda/lib/python3.6/site-packages/Library/Core/liblibrary-core.so.0; \
+    # rm -rf /opt/conda/lib/python3.6/site-packages/Library/Core/LibraryCorePy.so; \
+    # rm -rf /opt/conda/lib/python3.6/site-packages/Library/Core/__init__.py; \
+    # ln -s /opt/library-core/lib/liblibrary-core.so.0 /opt/conda/lib/python3.6/site-packages/Library/Core/liblibrary-core.so.0; \
+    # ln -s /opt/library-core/lib/LibraryCorePy.so /opt/conda/lib/python3.6/site-packages/Library/Core/LibraryCorePy.so; \
+    # ln -s /opt/library-core/bindings/python/tools/python/Library/Core/__init__.py /opt/conda/lib/python3.6/site-packages/Library/Core/__init__.py;"
 
-    # Library ▸ I/O
+    # # Library ▸ I/O
 
-    options="${options} \
-    --volume=${library_io_directory}:/opt/library-io:ro"
+    # options="${options} \
+    # --volume=${library_io_directory}:/opt/library-io:ro"
 
-    command="${command} \
-    mkdir -p /opt/conda/lib/python3.6/site-packages/Library/IO; \
-    rm -rf /opt/conda/lib/python3.6/site-packages/Library/IO/liblibrary-io.so.0; \
-    rm -rf /opt/conda/lib/python3.6/site-packages/Library/IO/LibraryIOPy.so; \
-    rm -rf /opt/conda/lib/python3.6/site-packages/Library/IO/__init__.py; \
-    ln -s /opt/library-io/lib/liblibrary-io.so.0 /opt/conda/lib/python3.6/site-packages/Library/IO/liblibrary-io.so.0; \
-    ln -s /opt/library-io/lib/LibraryIOPy.so /opt/conda/lib/python3.6/site-packages/Library/IO/LibraryIOPy.so; \
-    ln -s /opt/library-io/bindings/python/tools/python/Library/IO/__init__.py /opt/conda/lib/python3.6/site-packages/Library/IO/__init__.py;"
+    # command="${command} \
+    # mkdir -p /opt/conda/lib/python3.6/site-packages/Library/IO; \
+    # rm -rf /opt/conda/lib/python3.6/site-packages/Library/IO/liblibrary-io.so.0; \
+    # rm -rf /opt/conda/lib/python3.6/site-packages/Library/IO/LibraryIOPy.so; \
+    # rm -rf /opt/conda/lib/python3.6/site-packages/Library/IO/__init__.py; \
+    # ln -s /opt/library-io/lib/liblibrary-io.so.0 /opt/conda/lib/python3.6/site-packages/Library/IO/liblibrary-io.so.0; \
+    # ln -s /opt/library-io/lib/LibraryIOPy.so /opt/conda/lib/python3.6/site-packages/Library/IO/LibraryIOPy.so; \
+    # ln -s /opt/library-io/bindings/python/tools/python/Library/IO/__init__.py /opt/conda/lib/python3.6/site-packages/Library/IO/__init__.py;"
 
-    # Library ▸ Mathematics
+    # # Library ▸ Mathematics
 
-    options="${options} \
-    --volume=${library_mathematics_directory}:/opt/library-mathematics:ro"
+    # options="${options} \
+    # --volume=${library_mathematics_directory}:/opt/library-mathematics:ro"
 
-    command="${command} \
-    mkdir -p /opt/conda/lib/python3.6/site-packages/Library/Mathematics; \
-    rm -rf /opt/conda/lib/python3.6/site-packages/Library/Mathematics/liblibrary-mathematics.so.0; \
-    rm -rf /opt/conda/lib/python3.6/site-packages/Library/Mathematics/LibraryMathematicsPy.so; \
-    rm -rf /opt/conda/lib/python3.6/site-packages/Library/Mathematics/__init__.py; \
-    ln -s /opt/library-mathematics/lib/liblibrary-mathematics.so.0 /opt/conda/lib/python3.6/site-packages/Library/Mathematics/liblibrary-mathematics.so.0; \
-    ln -s /opt/library-mathematics/lib/LibraryMathematicsPy.so /opt/conda/lib/python3.6/site-packages/Library/Mathematics/LibraryMathematicsPy.so; \
-    ln -s /opt/library-mathematics/bindings/python/tools/python/Library/Mathematics/__init__.py /opt/conda/lib/python3.6/site-packages/Library/Mathematics/__init__.py;"
+    # command="${command} \
+    # mkdir -p /opt/conda/lib/python3.6/site-packages/Library/Mathematics; \
+    # rm -rf /opt/conda/lib/python3.6/site-packages/Library/Mathematics/liblibrary-mathematics.so.0; \
+    # rm -rf /opt/conda/lib/python3.6/site-packages/Library/Mathematics/LibraryMathematicsPy.so; \
+    # rm -rf /opt/conda/lib/python3.6/site-packages/Library/Mathematics/__init__.py; \
+    # ln -s /opt/library-mathematics/lib/liblibrary-mathematics.so.0 /opt/conda/lib/python3.6/site-packages/Library/Mathematics/liblibrary-mathematics.so.0; \
+    # ln -s /opt/library-mathematics/lib/LibraryMathematicsPy.so /opt/conda/lib/python3.6/site-packages/Library/Mathematics/LibraryMathematicsPy.so; \
+    # ln -s /opt/library-mathematics/bindings/python/tools/python/Library/Mathematics/__init__.py /opt/conda/lib/python3.6/site-packages/Library/Mathematics/__init__.py;"
 
     # Library ▸ Physics
 

@@ -7,7 +7,7 @@
 
 ################################################################################################################################################################
 
-FROM jupyter/scipy-notebook:latest
+FROM jupyter/scipy-notebook:07eb788e5d10
 
 LABEL maintainer="lucas@loftorbital.com"
 
