@@ -108,7 +108,7 @@ Length                          Length::operator +                          (   
         throw library::core::error::runtime::Undefined("Length") ;
     }
 
-    return Length((this->accessValue() + ((unit_ == aLength.unit_) ? aLength.accessValue() : aLength.in(unit_))), unit_) ;
+    return { (this->accessValue() + ((unit_ == aLength.unit_) ? aLength.accessValue() : aLength.in(unit_))), unit_ } ;
 
 }
 
@@ -120,7 +120,7 @@ Length                          Length::operator -                          (   
         throw library::core::error::runtime::Undefined("Length") ;
     }
 
-    return Length((this->accessValue() - ((unit_ == aLength.unit_) ? aLength.accessValue() : aLength.in(unit_))), unit_) ;
+    return { (this->accessValue() - ((unit_ == aLength.unit_) ? aLength.accessValue() : aLength.in(unit_))), unit_ } ;
 
 }
 
@@ -137,7 +137,7 @@ Length                          Length::operator *                          (   
         throw library::core::error::runtime::Undefined("Real") ;
     }
 
-    return Length((this->accessValue() * aReal), unit_) ;
+    return { (this->accessValue() * aReal), unit_ } ;
 
 }
 
@@ -159,7 +159,7 @@ Length                          Length::operator /                          (   
         throw library::core::error::RuntimeError("Cannot divide by zero.") ;
     }
 
-    return Length((this->accessValue() / aReal), unit_) ;
+    return { (this->accessValue() / aReal), unit_ } ;
 
 }
 
@@ -247,8 +247,8 @@ Length                          operator *                                  (   
     {
         throw library::core::error::runtime::Undefined("Length") ;
     }
-    
-    return Length((aLength.accessValue() * aReal), aLength.unit_) ;
+
+    return { (aLength.accessValue() * aReal), aLength.unit_ } ;
 
 }
 
@@ -318,22 +318,22 @@ String                          Length::toString                            (   
 
 Length                          Length::Undefined                           ( )
 {
-    return Length(Real::Undefined(), Length::Unit::Undefined) ;
+    return { Real::Undefined(), Length::Unit::Undefined } ;
 }
 
 Length                          Length::Millimeters                         (   const   Real&                       aValue                                      )
 {
-    return Length(aValue / 1e3, Length::Unit::Meter) ;
+    return { aValue / 1e3, Length::Unit::Meter } ;
 }
 
 Length                          Length::Meters                              (   const   Real&                       aValue                                      )
 {
-    return Length(aValue, Length::Unit::Meter) ;
+    return { aValue, Length::Unit::Meter } ;
 }
 
 Length                          Length::Kilometers                          (   const   Real&                       aValue                                      )
 {
-    return Length(aValue * 1e3, Length::Unit::Meter) ;
+    return { aValue * 1e3, Length::Unit::Meter } ;
 }
 
 // Length                          Length::Parse                               (   const   String&                     aString                                     )
@@ -349,28 +349,27 @@ String                          Length::StringFromUnit                      (   
 
         case Length::Unit::Undefined:
             return "Undefined" ;
-            
+
         case Length::Unit::Meter:
             return "Meter" ;
-            
+
         case Length::Unit::Foot:
             return "Foot" ;
-            
+
         case Length::Unit::TerrestrialMile:
             return "Terrestrial Mile" ;
-            
+
         case Length::Unit::NauticalMile:
             return "Nautical Mile" ;
-            
+
         case Length::Unit::AstronomicalUnit:
             return "Astronomical Unit" ;
-            
+
         default:
+            throw library::core::error::runtime::Wrong("Unit") ;
             break ;
 
     }
-
-    throw library::core::error::runtime::Wrong("Unit") ;
 
     return String::Empty() ;
 
@@ -384,29 +383,30 @@ String                          Length::SymbolFromUnit                      (   
 
         case Length::Unit::Meter:
             return "m" ;
-            
+
         case Length::Unit::Foot:
             return "ft" ;
-            
+
         case Length::Unit::TerrestrialMile:
             return "mi" ;
-            
+
         case Length::Unit::NauticalMile:
             return "nmi" ;
-            
+
         case Length::Unit::AstronomicalUnit:
             return "AU" ;
-            
+
         default:
+            throw library::core::error::runtime::Wrong("Unit") ;
             break ;
 
     }
 
-    throw library::core::error::runtime::Wrong("Unit") ;
-
     return String::Empty() ;
 
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Real                            Length::SIRatio                             (   const   Length::Unit&               aUnit                                       )
 {
@@ -430,11 +430,10 @@ Real                            Length::SIRatio                             (   
             return 149597870700.0 ;
 
         default:
+            throw library::core::error::runtime::Wrong("Unit") ;
             break ;
 
     }
-
-    throw library::core::error::runtime::Wrong("Unit") ;
 
     return Real::Undefined() ;
 

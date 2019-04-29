@@ -132,7 +132,6 @@ TEST (Library_Physics_Environment_Gravitational_Earth, GetFieldValueAt)
     using library::core::ctnr::Array ;
     using library::core::fs::Path ;
     using library::core::fs::Directory ;
-    
 
     using library::math::obj::Vector3d ;
 

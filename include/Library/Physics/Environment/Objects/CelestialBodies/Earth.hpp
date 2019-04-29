@@ -10,7 +10,8 @@
 #ifndef __Library_Physics_Environment_Objects_CelestialBodies_Earth__
 #define __Library_Physics_Environment_Objects_CelestialBodies_Earth__
 
-#include <Library/Physics/Environment/Gravitational/Model.hpp>
+#include <Library/Physics/Environment/Magnetic/Earth.hpp>
+#include <Library/Physics/Environment/Gravitational/Earth.hpp>
 #include <Library/Physics/Environment/Objects/Celestial.hpp>
 #include <Library/Physics/Environment/Object.hpp>
 #include <Library/Physics/Environment/Ephemeris.hpp>
@@ -47,7 +48,8 @@ using library::physics::units::Derived ;
 using library::physics::env::Ephemeris ;
 using library::physics::env::Object ;
 using library::physics::env::obj::Celestial ;
-using GravitationalModel = library::physics::environment::gravitational::Model ;
+using EarthGravitationalModel = library::physics::environment::gravitational::Earth ;
+using EarthMagneticModel = library::physics::environment::magnetic::Earth ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -102,7 +104,7 @@ class Earth : public Celestial
                 static const Real J2 ;
 
             } ;
-            
+
         } ;
 
         static const Derived    GravitationalParameter ; // [TBR]
@@ -116,7 +118,8 @@ class Earth : public Celestial
                                                                                 const   Real&                       aFlattening,
                                                                                 const   Real&                       aJ2,
                                                                                 const   Shared<Ephemeris>&          anEphemeris,
-                                                                                const   Shared<GravitationalModel>& aGravitationalModel,
+                                                                                const   EarthGravitationalModel::Type& aGravitationalModelType,
+                                                                                const   EarthMagneticModel::Type&   aMagneticModelType,
                                                                                 const   Instant&                    anInstant                                   ) ;
 
         virtual                 ~Earth                                      ( ) override ;
@@ -150,7 +153,7 @@ class Earth : public Celestial
         /// @brief              Earth Gravity Model 1996 (EGM96)
         ///
         /// @return             Earth
-        
+
         static Earth            EGM96                                       ( ) ;
 
         /// @brief              World Geodetic System 1984 (WGS84)

@@ -7,7 +7,7 @@
 
 ################################################################################################################################################################
 
-FROM jupyter/scipy-notebook:latest
+FROM jupyter/scipy-notebook:07eb788e5d10
 
 LABEL maintainer="lucas@loftorbital.com"
 
@@ -22,7 +22,7 @@ COPY ./shortcuts-extension /home/jovyan/.jupyter/lab/user-settings/@jupyterlab/s
 RUN jupyter labextension install @jupyterlab/plotly-extension
 
 RUN python -m pip install --quiet numpy --upgrade \
- && python -m pip install --quiet plotly
+ && python -m pip install --quiet plotly ipympl
 
 RUN chown -R ${NB_UID}:${NB_UID} /home/jovyan/.jupyter
 

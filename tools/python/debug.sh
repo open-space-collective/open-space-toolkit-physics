@@ -18,7 +18,7 @@ source ../.env
 if [[ ! -z $1 ]] && [[ $1 == "--link" ]]; then
 
     docker run \
-    --name="${container_name}-python-debug" \
+    --name="${python_container_name}-debug" \
     -it \
     --rm \
     --privileged \
@@ -33,7 +33,7 @@ if [[ ! -z $1 ]] && [[ $1 == "--link" ]]; then
     --volume="${project_directory}/share:/var/library-physics" \
     --volume="${script_directory}/helpers:/home/jovyan/notebooks/helpers:ro" \
     --workdir="/home/jovyan/notebooks" \
-    "${image_name}-python-debug:${image_version}" \
+    "${image_name}-python-debug:${image_tag}" \
     bash -c "mkdir -p /opt/conda/lib/python3.6/site-packages/Library/Core \
     && ln -s /opt/library-core/liblibrary-core.so.0 /opt/conda/lib/python3.6/site-packages/Library/Core/liblibrary-core.so.0 \
     && ln -s /opt/library-core/LibraryCorePy.so /opt/conda/lib/python3.6/site-packages/Library/Core/LibraryCorePy.so \
@@ -51,7 +51,7 @@ if [[ ! -z $1 ]] && [[ $1 == "--link" ]]; then
 else
 
     docker run \
-    --name="${container_name}-python-debug" \
+    --name="${python_container_name}-debug" \
     -it \
     --rm \
     --privileged \
@@ -64,7 +64,7 @@ else
     --volume="${project_directory}/share:/var/library-physics" \
     --volume="${script_directory}/helpers:/home/jovyan/notebooks/helpers:ro" \
     --workdir="/home/jovyan/notebooks" \
-    "${image_name}-python-debug:${image_version}" \
+    "${image_name}-python-debug:${image_tag}" \
     bash -c "mkdir -p /opt/conda/lib/python3.6/site-packages/Library/Physics \
     && ln -s /opt/lib/liblibrary-physics.so.0 /opt/conda/lib/python3.6/site-packages/Library/Physics/liblibrary-physics.so.0 \
     && ln -s /opt/lib/LibraryPhysicsPy.so /opt/conda/lib/python3.6/site-packages/Library/Physics/LibraryPhysicsPy.so \

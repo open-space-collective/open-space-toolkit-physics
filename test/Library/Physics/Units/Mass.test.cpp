@@ -49,7 +49,7 @@ TEST (Library_Physics_Units_Mass, IsDefined)
     {
 
         EXPECT_TRUE(Mass(0.0, Mass::Unit::Kilogram).isDefined()) ;
-        
+
         EXPECT_TRUE(Mass(1.0, Mass::Unit::Kilogram).isDefined()) ;
         EXPECT_TRUE(Mass(1.0, Mass::Unit::Tonne).isDefined()) ;
         EXPECT_TRUE(Mass(1.0, Mass::Unit::Pound).isDefined()) ;
@@ -66,10 +66,62 @@ TEST (Library_Physics_Units_Mass, IsDefined)
 
 }
 
+TEST (Library_Physics_Units_Mass, GetUnit)
+{
+
+    using library::physics::units::Mass ;
+
+    {
+
+        EXPECT_EQ(Mass::Unit::Undefined, Mass(1.0, Mass::Unit::Undefined).getUnit()) ;
+        EXPECT_EQ(Mass::Unit::Kilogram, Mass(1.0, Mass::Unit::Kilogram).getUnit()) ;
+
+    }
+
+}
+
+TEST (Library_Physics_Units_Mass, In)
+{
+
+    using library::physics::units::Mass ;
+
+    {
+
+        EXPECT_EQ(1.0, Mass(1.0, Mass::Unit::Kilogram).in(Mass::Unit::Kilogram)) ;
+
+    }
+
+    {
+
+        EXPECT_FALSE(Mass::Undefined().in(Mass::Unit::Kilogram).isDefined()) ;
+
+    }
+
+}
+
+TEST (Library_Physics_Units_Mass, InKilograms)
+{
+
+    using library::physics::units::Mass ;
+
+    {
+
+        EXPECT_EQ(123.456, Mass(123.456, Mass::Unit::Kilogram).inKilograms()) ;
+
+    }
+
+    {
+
+        EXPECT_FALSE(Mass::Undefined().inKilograms().isDefined()) ;
+
+    }
+
+}
+
 TEST (Library_Physics_Units_Mass, ToString)
 {
 
-    using library::physics::units::Mass ; 
+    using library::physics::units::Mass ;
 
     {
 
@@ -106,7 +158,7 @@ TEST (Library_Physics_Units_Mass, ToString)
     {
 
         EXPECT_ANY_THROW(Mass::Undefined().toString()) ;
-        
+
     }
 
 }
@@ -122,6 +174,22 @@ TEST (Library_Physics_Units_Mass, Undefined)
         EXPECT_FALSE(Mass::Undefined().isDefined()) ;
 
         // EXPECT_NO_THROW(Mass::Undefined().in(Mass::Unit::Kilogram)) ;
+
+    }
+
+}
+
+TEST (Library_Physics_Units_Mass, Kilograms)
+{
+
+    using library::physics::units::Mass ;
+
+    {
+
+        EXPECT_NO_THROW(Mass::Kilograms(123.456)) ;
+        EXPECT_TRUE(Mass::Kilograms(123.456).isDefined()) ;
+
+        EXPECT_EQ(123.456, Mass::Kilograms(123.456).in(Mass::Unit::Kilogram)) ;
 
     }
 

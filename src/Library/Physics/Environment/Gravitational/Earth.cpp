@@ -10,12 +10,12 @@
 #include <Library/Physics/Environment/Gravitational/Earth/Manager.hpp>
 #include <Library/Physics/Environment/Gravitational/Earth.hpp>
 
+#include <Library/Core/Error.hpp>
+#include <Library/Core/Utilities.hpp>
+
 #include <GeographicLib/GravityModel.hpp>
 #include <GeographicLib/Constants.hpp>
 #include <GeographicLib/Utility.hpp>
-
-#include <Library/Core/Error.hpp>
-#include <Library/Core/Utilities.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -175,7 +175,7 @@ Earth&                          Earth::operator =                           (   
     {
 
         Model::operator = (anEarthGravitationalModel) ;
-        
+
         implUPtr_.reset((anEarthGravitationalModel.implUPtr_ != nullptr) ? new Earth::Impl(*anEarthGravitationalModel.implUPtr_) : nullptr) ;
 
     }
@@ -186,9 +186,9 @@ Earth&                          Earth::operator =                           (   
 
                                 Earth::~Earth                               ( )
 {
-    
+
 }
-        
+
 Earth*                          Earth::clone                                ( ) const
 {
     return new Earth(*this) ;

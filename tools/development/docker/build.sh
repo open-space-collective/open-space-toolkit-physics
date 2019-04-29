@@ -18,13 +18,13 @@ source "${script_directory}/../../.env"
 # Build Docker image
 
 docker build \
---build-arg="VERSION=${image_version}" \
---tag="${image_name}:${image_version}" \
+--build-arg="VERSION=${image_tag}" \
+--tag="${image_repository}:${image_tag}" \
 --file="${script_directory}/Dockerfile" \
 "${script_directory}"
 
 # Tag Docker image
 
-docker tag "${image_name}:${image_version}" "${image_name}:latest"
+docker tag "${image_repository}:${image_tag}" "${image_repository}:latest"
 
 ################################################################################################################################################################

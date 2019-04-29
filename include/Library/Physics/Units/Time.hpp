@@ -54,7 +54,7 @@ class Time : public Unit
             Hour,               ///< Hour
             Day,                ///< Day
             Week                ///< Week
-        
+
         } ;
 
         /// @brief              Constructor
@@ -72,10 +72,18 @@ class Time : public Unit
         virtual Time*           clone                                       ( ) const override ;
 
         virtual bool            isDefined                                   ( ) const override ;
-        
+
+        Time::Unit              getUnit                                     ( ) const ;
+
+        Real                    in                                          (   const   Time::Unit&                 aUnit                                       ) const ;
+
+        Real                    inSeconds                                   ( ) const ;
+
         virtual String          toString                                    (   const   Integer&                    aPrecision                                  =   Integer::Undefined() ) const override ;
 
         static Time             Undefined                                   ( ) ;
+
+        static Time             Seconds                                     (   const   Real&                       aValue                                      ) ;
 
         static String           StringFromUnit                              (   const   Time::Unit&                 aUnit                                       ) ;
 
@@ -84,6 +92,8 @@ class Time : public Unit
     private:
 
         Time::Unit              unit_ ;
+
+        static Real             SIRatio                                     (   const   Time::Unit&                 aUnit                                       ) ;
 
 } ;
 

@@ -21,13 +21,14 @@ TEST (Library_Physics_Units_Derived, Constructor)
     using library::physics::units::Length ;
     using library::physics::units::Mass ;
     using library::physics::units::Time ;
+    using library::physics::units::ElectricCurrent ;
     using library::physics::units::Angle ;
     using library::physics::units::Derived ;
 
     {
 
         const Real value = 123.456 ;
-        const Derived::Unit unit = { Length::Unit::Meter, Derived::Order::One(), Mass::Unit::Kilogram, Derived::Order::One(), Time::Unit::Second, Derived::Order::One(), Angle::Unit::Radian, Derived::Order::One() } ;
+        const Derived::Unit unit = { Length::Unit::Meter, Derived::Order::One(), Mass::Unit::Kilogram, Derived::Order::One(), Time::Unit::Second, Derived::Order::One(), ElectricCurrent::Unit::Ampere, Derived::Order::One(), Angle::Unit::Radian, Derived::Order::One() } ;
 
         EXPECT_NO_THROW(Derived(value, unit)) ;
 
@@ -36,16 +37,16 @@ TEST (Library_Physics_Units_Derived, Constructor)
     {
 
         const Real value = 123.456 ;
-        const Derived::Unit unit = { Length::Unit::Meter, Derived::Order::Two(), Mass::Unit::Kilogram, { 1 }, Time::Unit::Second, { 3, 2 }, Angle::Unit::Undefined, { 0 } } ;
+        const Derived::Unit unit = { Length::Unit::Meter, Derived::Order::Two(), Mass::Unit::Kilogram, { 1 }, Time::Unit::Second, { 3, 2 }, ElectricCurrent::Unit::Ampere, { 0 }, Angle::Unit::Undefined, { 0 } } ;
 
         EXPECT_NO_THROW(Derived(value, unit)) ;
 
     }
-    
+
     {
 
         const Real value = 123.456 ;
-        const Derived::Unit unit = { Length::Unit::Meter, { 1, 2 }, Mass::Unit::Kilogram, { 1 }, Time::Unit::Second, { 3, 2 }, Angle::Unit::Undefined, { 0 } } ;
+        const Derived::Unit unit = { Length::Unit::Meter, { 1, 2 }, Mass::Unit::Kilogram, { 1 }, Time::Unit::Second, { 3, 2 }, ElectricCurrent::Unit::Undefined, { 0 }, Angle::Unit::Undefined, { 0 } } ;
 
         EXPECT_NO_THROW(Derived(value, unit)) ;
 
@@ -62,36 +63,97 @@ TEST (Library_Physics_Units_Derived, Constructor)
 
 }
 
-// TEST (Library_Physics_Units_Derived, EqualToOperator)
-// {
+TEST (Library_Physics_Units_Derived, EqualToOperator)
+{
 
-//     using library::physics::units::Length ;
-//     using library::physics::units::Derived ;
+    using library::core::types::Real ;
+    using library::physics::units::Length ;
+    using library::physics::units::Mass ;
+    using library::physics::units::Time ;
+    using library::physics::units::ElectricCurrent ;
+    using library::physics::units::Angle ;
+    using library::physics::units::Derived ;
 
-//     {
+    {
 
-//         EXPECT_TRUE(Derived(1.0, { Length::Unit::Meter, { 1, 2 } }) == Derived(1.0, { Length::Unit::Meter, { 1, 2 } })) ;
-//         EXPECT_TRUE(Derived(1.0, { Length::Unit::Meter, { 1, 2 } }) == Derived(+1.0, { Length::Unit::Meter, { 1, 2 } })) ;
+        const Derived::Unit unit =
+        {
+            Length::Unit::Meter,           Derived::Order::One(),
+            Mass::Unit::Kilogram,          Derived::Order::One(),
+            Time::Unit::Second,            Derived::Order::One(),
+            ElectricCurrent::Unit::Ampere, Derived::Order::One(),
+            Angle::Unit::Radian,           Derived::Order::One()
+        } ;
 
-//     }
+        EXPECT_TRUE(Derived(1.0, unit) == Derived(1.0, unit)) ;
+        EXPECT_TRUE(Derived(1.0, unit) == Derived(+1.0, unit)) ;
 
-//     {
+    }
 
-//         EXPECT_TRUE(Derived(1.0, { Length::Unit::Foot, { 1 } }) == Derived(0.3048, { Length::Unit::Meter, { 1 } })) ;
+    {
 
-//     }
+        const Derived::Unit firstUnit =
+        {
+            Length::Unit::Foot,            Derived::Order::One(),
+            Mass::Unit::Kilogram,          Derived::Order::One(),
+            Time::Unit::Second,            Derived::Order::One(),
+            ElectricCurrent::Unit::Ampere, Derived::Order::One(),
+            Angle::Unit::Radian,           Derived::Order::One()
+        } ;
 
-//     {
+        const Derived::Unit secondUnit =
+        {
+            Length::Unit::Meter,           Derived::Order::One(),
+            Mass::Unit::Kilogram,          Derived::Order::One(),
+            Time::Unit::Second,            Derived::Order::One(),
+            ElectricCurrent::Unit::Ampere, Derived::Order::One(),
+            Angle::Unit::Radian,           Derived::Order::One()
+        } ;
 
-//         EXPECT_FALSE(Derived(1.0, { Length::Unit::Meter, { 1 } }) == Derived(2.0, { Length::Unit::Meter, { 1 } })) ;
-//         EXPECT_FALSE(Derived(+1.0, { Length::Unit::Meter, { 1 } }) == Derived(-1.0, { Length::Unit::Meter, { 1 } })) ;
-//         EXPECT_FALSE(Derived::Undefined() == Derived(1.0, { Length::Unit::Meter, { 1 } })) ;
-//         EXPECT_FALSE(Derived(1.0, { Length::Unit::Meter, { 1 } }) == Derived::Undefined()) ;
-//         EXPECT_FALSE(Derived::Undefined() == Derived::Undefined()) ;
+        EXPECT_TRUE(Derived(1.0, firstUnit) == Derived(0.3048, secondUnit)) ;
 
-//     }
+    }
 
-// }
+    {
+
+        const Derived::Unit unit =
+        {
+            Length::Unit::Meter,           Derived::Order::One(),
+            Mass::Unit::Kilogram,          Derived::Order::One(),
+            Time::Unit::Second,            Derived::Order::One(),
+            ElectricCurrent::Unit::Ampere, Derived::Order::One(),
+            Angle::Unit::Radian,           Derived::Order::One()
+        } ;
+
+        EXPECT_FALSE(Derived(1.0, unit) == Derived(2.0, unit)) ;
+
+    }
+
+    {
+
+        const Derived::Unit firstUnit =
+        {
+            Length::Unit::Meter,           Derived::Order::One(),
+            Mass::Unit::Kilogram,          Derived::Order::One(),
+            Time::Unit::Second,            Derived::Order::One(),
+            ElectricCurrent::Unit::Ampere, Derived::Order::One(),
+            Angle::Unit::Radian,           Derived::Order::One()
+        } ;
+
+        const Derived::Unit secondUnit =
+        {
+            Length::Unit::Meter,           Derived::Order::One(),
+            Mass::Unit::Kilogram,          Derived::Order::One(),
+            Time::Unit::Second,            Derived::Order::One(),
+            ElectricCurrent::Unit::Ampere, Derived::Order::One(),
+            Angle::Unit::Radian,           Derived::Order::Zero()
+        } ;
+
+        EXPECT_ANY_THROW(Derived(1.0, firstUnit) == Derived(1.0, secondUnit)) ;
+
+    }
+
+}
 
 // TEST (Library_Physics_Units_Derived, NotEqualToOperator)
 // {
@@ -575,7 +637,7 @@ TEST (Library_Physics_Units_Derived, Constructor)
 //     {
 
 //         EXPECT_TRUE(Derived(0.0, Derived::Unit::Meter).isDefined()) ;
-        
+
 //         EXPECT_TRUE(Derived(1.0, Derived::Unit::Meter).isDefined()) ;
 //         EXPECT_TRUE(Derived(1.0, Derived::Unit::Foot).isDefined()) ;
 //         EXPECT_TRUE(Derived(1.0, Derived::Unit::TerrestrialMile).isDefined()) ;
@@ -657,7 +719,7 @@ TEST (Library_Physics_Units_Derived, Constructor)
 // TEST (Library_Physics_Units_Derived, InKilometers)
 // {
 
-//     using library::physics::units::Derived ; 
+//     using library::physics::units::Derived ;
 
 //     {
 
@@ -676,7 +738,7 @@ TEST (Library_Physics_Units_Derived, Constructor)
 // TEST (Library_Physics_Units_Derived, ToString)
 // {
 
-//     using library::physics::units::Derived ; 
+//     using library::physics::units::Derived ;
 
 //     {
 
@@ -703,7 +765,7 @@ TEST (Library_Physics_Units_Derived, Constructor)
 //     {
 
 //         EXPECT_ANY_THROW(Derived::Undefined().toString()) ;
-        
+
 //     }
 
 // }

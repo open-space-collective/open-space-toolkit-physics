@@ -7,6 +7,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <LibraryPhysicsPy/Environment/Magnetic.cpp>
 #include <LibraryPhysicsPy/Environment/Gravitational.cpp>
 #include <LibraryPhysicsPy/Environment/Objects.cpp>
 #include <LibraryPhysicsPy/Environment/Object.cpp>
@@ -19,7 +20,7 @@
 
 inline void                     LibraryPhysicsPy_Environment                ( )
 {
-    
+
     using namespace boost::python ;
 
     using library::core::types::Shared ;
@@ -44,7 +45,7 @@ inline void                     LibraryPhysicsPy_Environment                ( )
         .def("getInstant", &Environment::getInstant)
         .def("getObjectNames", &Environment::getObjectNames)
         .def("setInstant", &Environment::setInstant)
-        
+
         .def("Undefined", &Environment::Undefined).staticmethod("Undefined")
         .def("Default", &Environment::Default).staticmethod("Default")
 
@@ -54,12 +55,13 @@ inline void                     LibraryPhysicsPy_Environment                ( )
 
         .from_python<Array<Shared<Object>>>()
         .to_python<Array<Shared<Object>>>()
-        
+
     ;
-    
+
     LibraryPhysicsPy_Environment_Object() ;
     LibraryPhysicsPy_Environment_Objects() ;
     LibraryPhysicsPy_Environment_Gravitational() ;
+    LibraryPhysicsPy_Environment_Magnetic() ;
 
 }
 

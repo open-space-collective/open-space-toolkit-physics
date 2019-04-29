@@ -15,6 +15,6 @@ script_directory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 source "${script_directory}/../.env"
 
-echo "Version: ${version}"
+echo "Version: ${project_version}"
 
 ################################################################################################################################################################

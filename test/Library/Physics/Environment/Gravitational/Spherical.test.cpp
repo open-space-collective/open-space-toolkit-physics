@@ -32,6 +32,12 @@ TEST (Library_Physics_Environment_Gravitational_Spherical, Constructor)
 
     }
 
+    {
+
+        EXPECT_ANY_THROW(Spherical(Derived::Undefined())) ;
+
+    }
+
 }
 
 TEST (Library_Physics_Environment_Gravitational_Spherical, Clone)

@@ -46,10 +46,10 @@ class Spherical : public Model
 
         /// @brief              Constructor
         ///
-        /// @param              [in] aGravitationalParameter A gravitational constant
-    
+        /// @param              [in] aGravitationalParameter A gravitational parameter
+
                                 Spherical                                   (   const   Derived&                    aGravitationalParameter                     ) ;
-        
+
         /// @brief              Clone the spherical gravitational model
         ///
         /// @return             Pointer to spherical gravitational model

@@ -22,7 +22,7 @@ docker run \
 --volume="${project_directory}/share:/var/library-physics:rw" \
 --volume="/app/build" \
 --workdir="/app/build" \
-${image_name}:${image_version} \
+${image_repository}:${image_tag} \
 /bin/bash -c "cmake -DBUILD_CODE_COVERAGE=ON .. && make coverage && bash <(curl -s https://codecov.io/bash) -X gcov -y /app/.codecov.yml -t ${ci_codecov_token} || echo 'Codecov did not collect coverage reports'"
 
 ################################################################################################################################################################

@@ -49,7 +49,7 @@ TEST (Library_Physics_Units_Time, IsDefined)
     {
 
         EXPECT_TRUE(Time(0.0, Time::Unit::Second).isDefined()) ;
-        
+
         EXPECT_TRUE(Time(1.0, Time::Unit::Nanosecond).isDefined()) ;
         EXPECT_TRUE(Time(1.0, Time::Unit::Microsecond).isDefined()) ;
         EXPECT_TRUE(Time(1.0, Time::Unit::Millisecond).isDefined()) ;
@@ -71,10 +71,96 @@ TEST (Library_Physics_Units_Time, IsDefined)
 
 }
 
+TEST (Library_Physics_Units_Time, GetUnit)
+{
+
+    using library::physics::units::Time ;
+
+    {
+
+        EXPECT_EQ(Time::Unit::Undefined, Time(1.0, Time::Unit::Undefined).getUnit()) ;
+        EXPECT_EQ(Time::Unit::Nanosecond, Time(1.0, Time::Unit::Nanosecond).getUnit()) ;
+        EXPECT_EQ(Time::Unit::Microsecond, Time(1.0, Time::Unit::Microsecond).getUnit()) ;
+        EXPECT_EQ(Time::Unit::Millisecond, Time(1.0, Time::Unit::Millisecond).getUnit()) ;
+        EXPECT_EQ(Time::Unit::Second, Time(1.0, Time::Unit::Second).getUnit()) ;
+        EXPECT_EQ(Time::Unit::Minute, Time(1.0, Time::Unit::Minute).getUnit()) ;
+        EXPECT_EQ(Time::Unit::Hour, Time(1.0, Time::Unit::Hour).getUnit()) ;
+        EXPECT_EQ(Time::Unit::Day, Time(1.0, Time::Unit::Day).getUnit()) ;
+        EXPECT_EQ(Time::Unit::Week, Time(1.0, Time::Unit::Week).getUnit()) ;
+
+    }
+
+}
+
+TEST (Library_Physics_Units_Time, In)
+{
+
+    using library::physics::units::Time ;
+
+    {
+
+        EXPECT_EQ(1.0, Time(1.0, Time::Unit::Nanosecond).in(Time::Unit::Nanosecond)) ;
+        EXPECT_EQ(1.0, Time(1.0, Time::Unit::Microsecond).in(Time::Unit::Microsecond)) ;
+        EXPECT_EQ(1.0, Time(1.0, Time::Unit::Millisecond).in(Time::Unit::Millisecond)) ;
+        EXPECT_EQ(1.0, Time(1.0, Time::Unit::Second).in(Time::Unit::Second)) ;
+        EXPECT_EQ(1.0, Time(1.0, Time::Unit::Minute).in(Time::Unit::Minute)) ;
+        EXPECT_EQ(1.0, Time(1.0, Time::Unit::Hour).in(Time::Unit::Hour)) ;
+        EXPECT_EQ(1.0, Time(1.0, Time::Unit::Day).in(Time::Unit::Day)) ;
+        EXPECT_EQ(1.0, Time(1.0, Time::Unit::Week).in(Time::Unit::Week)) ;
+
+    }
+
+    {
+
+        EXPECT_EQ(1e-9, Time(1.0, Time::Unit::Nanosecond).in(Time::Unit::Second)) ;
+        EXPECT_EQ(1e-6, Time(1.0, Time::Unit::Microsecond).in(Time::Unit::Second)) ;
+        EXPECT_EQ(1e-3, Time(1.0, Time::Unit::Millisecond).in(Time::Unit::Second)) ;
+        EXPECT_EQ(1.0, Time(1.0, Time::Unit::Second).in(Time::Unit::Second)) ;
+        EXPECT_EQ(60.0, Time(1.0, Time::Unit::Minute).in(Time::Unit::Second)) ;
+        EXPECT_EQ(60.0 * 60.0, Time(1.0, Time::Unit::Hour).in(Time::Unit::Second)) ;
+        EXPECT_EQ(24.0 * 60.0 * 60.0, Time(1.0, Time::Unit::Day).in(Time::Unit::Second)) ;
+        EXPECT_EQ(7.0 * 24.0 * 60.0 * 60.0, Time(1.0, Time::Unit::Week).in(Time::Unit::Second)) ;
+
+    }
+
+    {
+
+        EXPECT_FALSE(Time::Undefined().in(Time::Unit::Nanosecond).isDefined()) ;
+        EXPECT_FALSE(Time::Undefined().in(Time::Unit::Microsecond).isDefined()) ;
+        EXPECT_FALSE(Time::Undefined().in(Time::Unit::Millisecond).isDefined()) ;
+        EXPECT_FALSE(Time::Undefined().in(Time::Unit::Second).isDefined()) ;
+        EXPECT_FALSE(Time::Undefined().in(Time::Unit::Minute).isDefined()) ;
+        EXPECT_FALSE(Time::Undefined().in(Time::Unit::Hour).isDefined()) ;
+        EXPECT_FALSE(Time::Undefined().in(Time::Unit::Day).isDefined()) ;
+        EXPECT_FALSE(Time::Undefined().in(Time::Unit::Week).isDefined()) ;
+
+    }
+
+}
+
+TEST (Library_Physics_Units_Time, InSeconds)
+{
+
+    using library::physics::units::Time ;
+
+    {
+
+        EXPECT_EQ(123.456, Time(123.456, Time::Unit::Second).inSeconds()) ;
+
+    }
+
+    {
+
+        EXPECT_FALSE(Time::Undefined().inSeconds().isDefined()) ;
+
+    }
+
+}
+
 TEST (Library_Physics_Units_Time, ToString)
 {
 
-    using library::physics::units::Time ; 
+    using library::physics::units::Time ;
 
     {
 
@@ -141,7 +227,7 @@ TEST (Library_Physics_Units_Time, ToString)
     {
 
         EXPECT_ANY_THROW(Time::Undefined().toString()) ;
-        
+
     }
 
 }
@@ -157,6 +243,22 @@ TEST (Library_Physics_Units_Time, Undefined)
         EXPECT_FALSE(Time::Undefined().isDefined()) ;
 
         // EXPECT_NO_THROW(Time::Undefined().in(Time::Unit::Second)) ;
+
+    }
+
+}
+
+TEST (Library_Physics_Units_Time, Seconds)
+{
+
+    using library::physics::units::Time ;
+
+    {
+
+        EXPECT_NO_THROW(Time::Seconds(123.456)) ;
+        EXPECT_TRUE(Time::Seconds(123.456).isDefined()) ;
+
+        EXPECT_EQ(123.456, Time::Seconds(123.456).in(Time::Unit::Second)) ;
 
     }
 

@@ -32,7 +32,7 @@ using library::physics::units::Angle ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-static const Derived::Unit GravitationParameterSIUnit = { Length::Unit::Meter, Derived::Order(3), Mass::Unit::Undefined, Derived::Order::Zero(), Time::Unit::Second, Derived::Order(-2), Angle::Unit::Undefined, Derived::Order::Zero() } ;
+static const Derived::Unit GravitationParameterSIUnit = Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second) ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -41,8 +41,13 @@ static const Derived::Unit GravitationParameterSIUnit = { Length::Unit::Meter, D
                                     gravitationalParameter_SI_(aGravitationalParameter.in(GravitationParameterSIUnit))
 {
 
+    if (!gravitationalParameter_SI_.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Gravitational parameter") ;
+    }
+
 }
-        
+
 Spherical*                      Spherical::clone                            ( ) const
 {
     return new Spherical(*this) ;

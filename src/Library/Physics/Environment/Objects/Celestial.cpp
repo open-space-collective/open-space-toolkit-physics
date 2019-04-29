@@ -36,6 +36,7 @@ namespace obj
                                                                                 const   Real&                       aJ2,
                                                                                 const   Shared<Ephemeris>&          anEphemeris,
                                                                                 const   Shared<GravitationalModel>& aGravitationalModel,
+                                                                                const   Shared<MagneticModel>&      aMagneticModel,
                                                                                 const   Instant&                    anInstant                                   )
                                 :   Object(aName, anInstant),
                                     type_(aType),
@@ -44,7 +45,8 @@ namespace obj
                                     flattening_(aFlattening),
                                     j2_(aJ2),
                                     ephemeris_(anEphemeris),
-                                    gravitationalModelSPtr_(aGravitationalModel)
+                                    gravitationalModelSPtr_(aGravitationalModel),
+                                    magneticModelSPtr_(aMagneticModel)
 {
 
 }
@@ -57,6 +59,7 @@ namespace obj
                                                                                 const   Real&                       aJ2,
                                                                                 const   Shared<Ephemeris>&          anEphemeris,
                                                                                 const   Shared<GravitationalModel>& aGravitationalModel,
+                                                                                const   Shared<MagneticModel>&      aMagneticModel,
                                                                                 const   Instant&                    anInstant,
                                                                                 const   Object::Geometry&           aGeometry                                   )
                                 :   Object(aName, anInstant, aGeometry),
@@ -66,7 +69,8 @@ namespace obj
                                     flattening_(aFlattening),
                                     j2_(aJ2),
                                     ephemeris_(anEphemeris),
-                                    gravitationalModelSPtr_(aGravitationalModel)
+                                    gravitationalModelSPtr_(aGravitationalModel),
+                                    magneticModelSPtr_(aMagneticModel)
 {
 
 }
@@ -110,6 +114,18 @@ Shared<const GravitationalModel> Celestial::accessGravitationalModel        ( ) 
 
 }
 
+Shared<const MagneticModel>     Celestial::accessMagneticModel              ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Celestial") ;
+    }
+
+    return magneticModelSPtr_ ;
+
+}
+
 Celestial::Type                 Celestial::getType                          ( ) const
 {
 
@@ -133,7 +149,7 @@ Derived                         Celestial::getGravitationalParameter         ( )
     return gravitationalParameter_ ;
 
 }
-        
+
 Length                          Celestial::getEquatorialRadius              ( ) const
 {
 
@@ -269,6 +285,37 @@ Vector                          Celestial::getGravitationalFieldAt          (   
 
 }
 
+Vector                          Celestial::getMagneticFieldAt               (   const   Position&                   aPosition                                   ) const
+{
+
+    using library::physics::Unit ;
+    using library::physics::units::Time ;
+
+    if (!aPosition.isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Position") ;
+    }
+
+    if (!this->isDefined())
+    {
+        throw library::core::error::runtime::Undefined("Celestial") ;
+    }
+
+    if (magneticModelSPtr_ == nullptr)
+    {
+        throw library::core::error::runtime::Undefined("Magnetic model") ;
+    }
+
+    const Vector3d positionInBodyFrame = aPosition.inFrame(ephemeris_->accessFrame(), this->accessInstant()).getCoordinates() ;
+
+    const Vector3d magneticFieldValue = magneticModelSPtr_->getFieldValueAt(positionInBodyFrame, this->accessInstant()) ;
+
+    const static Unit magneticFieldUnit = Unit::Derived(Derived::Unit::Tesla()) ;
+
+    return { magneticFieldValue, magneticFieldUnit, ephemeris_->accessFrame() } ;
+
+}
+
 Shared<const Frame>             Celestial::getFrameAt                       (   const   LLA&                        aLla,
                                                                                 const   Celestial::FrameType&       aFrameType                                  ) const
 {
@@ -297,7 +344,7 @@ Shared<const Frame>             Celestial::getFrameAt                       (   
             {
                 return frameSPtr ;
             }
-            
+
             const Transform transform = library::physics::coord::frame::utilities::NorthEastDownTransformAt(aLla, this->getEquatorialRadius(), this->getFlattening()) ;
 
             const Shared<const Frame> nedSPtr = Frame::Construct(frameName, false, ephemeris_->accessFrame(), std::make_shared<const StaticProvider>(transform)) ;
@@ -313,7 +360,7 @@ Shared<const Frame>             Celestial::getFrameAt                       (   
     }
 
     return nullptr ;
-    
+
 }
 
 // Object::Geometry                Celestial::getTerminatorGeometry            ( ) const
@@ -330,7 +377,7 @@ Shared<const Frame>             Celestial::getFrameAt                       (   
 
 Celestial                       Celestial::Undefined                        ( )
 {
-    return { String::Empty(), Celestial::Type::Undefined, Derived::Undefined(), Length::Undefined(), Real::Undefined(), Real::Undefined(), nullptr, nullptr, Instant::Undefined() } ;
+    return { String::Empty(), Celestial::Type::Undefined, Derived::Undefined(), Length::Undefined(), Real::Undefined(), Real::Undefined(), nullptr, nullptr, nullptr, Instant::Undefined() } ;
 }
 
 String                          Celestial::StringFromFrameType              (   const   Celestial::FrameType&       aFrameType                                  )

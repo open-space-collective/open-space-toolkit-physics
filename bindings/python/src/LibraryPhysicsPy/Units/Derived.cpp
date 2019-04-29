@@ -23,6 +23,7 @@ inline void                     LibraryPhysicsPy_Units_Derived              ( )
     using library::physics::units::Length ;
     using library::physics::units::Mass ;
     using library::physics::units::Time ;
+    using library::physics::units::ElectricCurrent ;
     using library::physics::units::Angle ;
     using library::physics::units::Derived ;
 
@@ -36,11 +37,11 @@ inline void                     LibraryPhysicsPy_Units_Derived              ( )
         .def("__repr__", +[] (const Derived& aDerived) -> std::string { return aDerived.toString() ; })
 
         .def("isDefined", &Derived::isDefined)
-        
+
         .def("getUnit", &Derived::getUnit)
         .def("inUnit", &Derived::in)
         .def("toString", &Derived::toString, LibraryPhysicsPy_Units_Derived_toString_overloads())
-        
+
         .def("Undefined", &Derived::Undefined).staticmethod("Undefined")
         // .def("Parse", &Derived::Parse).staticmethod("Undefined")
         .def("StringFromUnit", &Derived::StringFromUnit).staticmethod("StringFromUnit")
@@ -57,19 +58,19 @@ inline void                     LibraryPhysicsPy_Units_Derived              ( )
 
         .def("isZero", &Derived::Order::isZero)
         .def("isUnity", &Derived::Order::isUnity)
-        
+
         .def("getNumerator", &Derived::Order::getNumerator)
         .def("getDenominator", &Derived::Order::getDenominator)
         .def("getValue", &Derived::Order::getValue)
         .def("toString", &Derived::Order::toString)
-        
+
         .def("Zero", &Derived::Order::Zero).staticmethod("Zero")
         .def("One", &Derived::Order::One).staticmethod("One")
         .def("Two", &Derived::Order::Two).staticmethod("Two")
 
     ;
 
-    class_<Derived::Unit>("Unit", init<const Length::Unit&, const Derived::Order&, const Mass::Unit&, const Derived::Order&, const Time::Unit&, const Derived::Order&, const Angle::Unit&, const Derived::Order&>())
+    class_<Derived::Unit>("Unit", init<const Length::Unit&, const Derived::Order&, const Mass::Unit&, const Derived::Order&, const Time::Unit&, const Derived::Order&, const ElectricCurrent::Unit&, const Derived::Order&, const Angle::Unit&, const Derived::Order&>())
 
         .def(self == self)
         .def(self != self)
@@ -87,12 +88,13 @@ inline void                     LibraryPhysicsPy_Units_Derived              ( )
         // .def("accessAngleOrder", &Derived::Unit::accessAngleOrder, return_value_policy<reference_existing_object>())
         .def("toString", &Derived::Unit::toString)
         .def("getSymbol", &Derived::Unit::getSymbol)
-        
+
         .def("Undefined", &Derived::Unit::Undefined).staticmethod("Undefined")
         .def("SquareMeter", &Derived::Unit::SquareMeter).staticmethod("SquareMeter")
         .def("CubicMeter", &Derived::Unit::CubicMeter).staticmethod("CubicMeter")
         .def("Hertz", &Derived::Unit::Hertz).staticmethod("Hertz")
         .def("Watt", &Derived::Unit::Watt).staticmethod("Watt")
+        .def("Tesla", &Derived::Unit::Tesla).staticmethod("Tesla")
         .def("Velocity", &Derived::Unit::Velocity).staticmethod("Velocity")
         .def("Acceleration", &Derived::Unit::Acceleration).staticmethod("Acceleration")
         .def("GravitationalParameter", &Derived::Unit::GravitationalParameter).staticmethod("GravitationalParameter")
