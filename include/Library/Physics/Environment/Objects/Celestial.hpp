@@ -10,6 +10,7 @@
 #ifndef __Library_Physics_Environment_Objects_Celestial__
 #define __Library_Physics_Environment_Objects_Celestial__
 
+#include <Library/Physics/Environment/Magnetic/Model.hpp>
 #include <Library/Physics/Environment/Gravitational/Model.hpp>
 #include <Library/Physics/Environment/Ephemeris.hpp>
 #include <Library/Physics/Environment/Object.hpp>
@@ -60,6 +61,7 @@ using library::physics::coord::Transform ;
 using library::physics::env::Object ;
 using library::physics::env::Ephemeris ;
 using GravitationalModel = library::physics::environment::gravitational::Model ;
+using MagneticModel = library::physics::environment::magnetic::Model ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -108,6 +110,7 @@ class Celestial : public Object
                                                                                 const   Real&                       aJ2,
                                                                                 const   Shared<Ephemeris>&          anEphemeris,
                                                                                 const   Shared<GravitationalModel>& aGravitationalModel,
+                                                                                const   Shared<MagneticModel>&      aMagneticModel,
                                                                                 const   Instant&                    anInstant                                   ) ;
 
                                 Celestial                                   (   const   String&                     aName,
@@ -118,6 +121,7 @@ class Celestial : public Object
                                                                                 const   Real&                       aJ2,
                                                                                 const   Shared<Ephemeris>&          anEphemeris,
                                                                                 const   Shared<GravitationalModel>& aGravitationalModel,
+                                                                                const   Shared<MagneticModel>&      aMagneticModel,
                                                                                 const   Instant&                    anInstant,
                                                                                 const   Object::Geometry&           aGeometry                                   ) ;
 
@@ -131,10 +135,12 @@ class Celestial : public Object
 
         Shared<const GravitationalModel> accessGravitationalModel           ( ) const ;
 
+        Shared<const MagneticModel> accessMagneticModel                     ( ) const ;
+
         Celestial::Type         getType                                     ( ) const ;
 
         Derived                 getGravitationalParameter                    ( ) const ;
-        
+
         Length                  getEquatorialRadius                         ( ) const ;
 
         Real                    getFlattening                               ( ) const ;
@@ -152,6 +158,8 @@ class Celestial : public Object
         virtual Axes            getAxesIn                                   (   const   Shared<const Frame>&        aFrameSPtr                                  ) const override ;
 
         Vector                  getGravitationalFieldAt                     (   const   Position&                   aPosition                                   ) const ;
+
+        Vector                  getMagneticFieldAt                          (   const   Position&                   aPosition                                   ) const ;
 
         Shared<const Frame>     getFrameAt                                  (   const   LLA&                        aLla,
                                                                                 const   Celestial::FrameType&       aFrameType                                  ) const ;
@@ -171,6 +179,7 @@ class Celestial : public Object
         Real                    j2_ ;
         Shared<Ephemeris>       ephemeris_ ;
         Shared<GravitationalModel> gravitationalModelSPtr_ ;
+        Shared<MagneticModel>   magneticModelSPtr_ ;
 
 } ;
 

@@ -36,14 +36,13 @@ using library::physics::units::Angle ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-Derived                         Sun::GravitationalParameter                     =       Derived(132712440018e9, { Length::Unit::Meter, Derived::Order(3), Mass::Unit::Undefined, Derived::Order::Zero(), Time::Unit::Second, Derived::Order(-2), Angle::Unit::Undefined, Derived::Order::Zero() }) ;
+Derived                         Sun::GravitationalParameter                     =       { 132712440018e9, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second) } ;
 Length                          Sun::EquatorialRadius                           =       Length::Meters(6.955e8) ;
 Real                            Sun::Flattening                                 =       0.0 ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
                                 Sun::Sun                                    (   const   Shared<Ephemeris>&          anEphemeris,
-                                                                                const   Shared<GravitationalModel>& aGravitationalModel,
                                                                                 const   Instant&                    anInstant                                   )
                                 :   Celestial
                                     (
@@ -54,7 +53,8 @@ Real                            Sun::Flattening                                 
                                         Sun::Flattening,
                                         0.0,
                                         anEphemeris,
-                                        aGravitationalModel,
+                                        nullptr, // [TBI] Add Sun gravitational model
+                                        nullptr, // [TBI] Add Sun magnetic model
                                         anInstant,
                                         Sun::Geometry(anEphemeris->accessFrame())
                                     )
@@ -77,7 +77,7 @@ Sun                             Sun::Default                                ( )
 
     using library::physics::env::ephem::SPICE ;
 
-    return { std::make_shared<SPICE>(SPICE::Object::Sun), nullptr, Instant::J2000() } ; // [TBI]
+    return { std::make_shared<SPICE>(SPICE::Object::Sun), Instant::J2000() } ;
 
 }
 
@@ -89,7 +89,7 @@ Object::Geometry                Sun::Geometry                               (   
     using library::math::geom::d3::objects::Point ;
 
     const Real equatorialRadius_m = Sun::EquatorialRadius.inMeters() ;
-    
+
     const Sphere sphere = { Point::Origin(), equatorialRadius_m } ;
 
     return { sphere, aFrame } ;

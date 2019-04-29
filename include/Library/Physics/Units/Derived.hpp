@@ -11,6 +11,7 @@
 #define __Library_Physics_Units_Derived__
 
 #include <Library/Physics/Units/Derived/Angle.hpp>
+#include <Library/Physics/Units/ElectricCurrent.hpp>
 #include <Library/Physics/Units/Time.hpp>
 #include <Library/Physics/Units/Mass.hpp>
 #include <Library/Physics/Units/Length.hpp>
@@ -64,7 +65,7 @@ class Derived : public Unit
                 bool            operator !=                                 (   const   Order&                      anOrder                                     ) const ;
 
                 bool            isZero                                      ( ) const ;
-                
+
                 bool            isUnity                                     ( ) const ;
 
                 Int16           getNumerator                                ( ) const ;
@@ -76,7 +77,7 @@ class Derived : public Unit
                 String          toString                                    ( ) const ;
 
                 static Order    Zero                                        ( ) ;
-                
+
                 static Order    One                                         ( ) ;
 
                 static Order    Two                                         ( ) ;
@@ -102,6 +103,8 @@ class Derived : public Unit
                                                                                 const   Order&                      aMassOrder,
                                                                                 const   Time::Unit&                 aTimeUnit,
                                                                                 const   Order&                      aTimeOrder,
+                                                                                const   ElectricCurrent::Unit&      anElectricCurrentUnit,
+                                                                                const   Order&                      anElectricCurrentOrder,
                                                                                 const   Angle::Unit&                anAngleUnit,
                                                                                 const   Order&                      anAngleOrder                                ) ; // [TBI]
 
@@ -114,7 +117,7 @@ class Derived : public Unit
                 bool            isCompatibleWith                            (   const   Unit&                       aUnit                                       ) const ;
 
                 const Length::Unit& accessLengthUnit                        ( ) const ;
-                
+
                 const Order&    accessLengthOrder                           ( ) const ;
 
                 const Mass::Unit& accessMassUnit                            ( ) const ;
@@ -124,6 +127,10 @@ class Derived : public Unit
                 const Time::Unit& accessTimeUnit                            ( ) const ;
 
                 const Derived::Order& accessTimeOrder                       ( ) const ;
+
+                const ElectricCurrent::Unit& accessElectricCurrentUnit      ( ) const ;
+
+                const Derived::Order& accessElectricCurrentOrder            ( ) const ;
 
                 const Angle::Unit& accessAngleUnit                          ( ) const ;
 
@@ -136,12 +143,14 @@ class Derived : public Unit
                 static Unit     Undefined                                   ( ) ;
 
                 static Unit     SquareMeter                                 ( ) ;
-                
+
                 static Unit     CubicMeter                                  ( ) ;
 
                 static Unit     Hertz                                       ( ) ;
-                
+
                 static Unit     Watt                                        ( ) ;
+
+                static Unit     Tesla                                       ( ) ;
 
                 static Unit     Velocity                                    (   const   Length::Unit&               aLengthUnit,
                                                                                 const   Time::Unit&                 aTimeUnit                                   ) ;
@@ -163,7 +172,7 @@ class Derived : public Unit
 
                 Length::Unit    lengthUnit_ ;
                 Order           lengthOrder_ ;
-                
+
                 Mass::Unit      massUnit_ ;
                 Order           massOrder_ ;
 
@@ -172,10 +181,10 @@ class Derived : public Unit
 
                 // Temperature::Unit temperatureUnit_ ;
                 // Order           temperatureOrder_ ;
-                
-                // ElectricCurrent::Unit electricCurrentUnit_ ;
-                // Order           electricCurrentOrder_ ;
-                
+
+                ElectricCurrent::Unit electricCurrentUnit_ ;
+                Order           electricCurrentOrder_ ;
+
                 // LuminousIntensity::Unit luminousIntensityUnit_ ;
                 // Order           luminousIntensityOrder_ ;
 
@@ -189,11 +198,11 @@ class Derived : public Unit
         /// @brief              Constructor
         ////
         /// @code
-        ///                     
+        ///
         /// @endcode
         ///
-        /// @param              [in] 
-        /// @param              [in] 
+        /// @param              [in]
+        /// @param              [in]
 
                                 Derived                                     (   const   Real&                       aValue,
                                                                                 const   Derived::Unit&              aUnit                                       ) ;

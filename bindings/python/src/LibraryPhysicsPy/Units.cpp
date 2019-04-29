@@ -9,6 +9,7 @@
 
 #include <LibraryPhysicsPy/Units/Derived/Angle.cpp>
 #include <LibraryPhysicsPy/Units/Derived.cpp>
+#include <LibraryPhysicsPy/Units/ElectricCurrent.cpp>
 #include <LibraryPhysicsPy/Units/Time.cpp>
 #include <LibraryPhysicsPy/Units/Length.cpp>
 
@@ -16,15 +17,16 @@
 
 inline void                     LibraryPhysicsPy_Units                      ( )
 {
-    
+
     boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("Library.Physics.Units")))) ;
-    
+
     boost::python::scope().attr("Units") = module ;
-    
+
     boost::python::scope scope = module ;
-    
+
     LibraryPhysicsPy_Units_Length() ;
     LibraryPhysicsPy_Units_Time() ;
+    LibraryPhysicsPy_Units_ElectricCurrent() ;
     LibraryPhysicsPy_Units_Derived() ;
     LibraryPhysicsPy_Units_Derived_Angle() ;
 

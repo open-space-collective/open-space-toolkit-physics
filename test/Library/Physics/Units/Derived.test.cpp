@@ -21,13 +21,14 @@ TEST (Library_Physics_Units_Derived, Constructor)
     using library::physics::units::Length ;
     using library::physics::units::Mass ;
     using library::physics::units::Time ;
+    using library::physics::units::ElectricCurrent ;
     using library::physics::units::Angle ;
     using library::physics::units::Derived ;
 
     {
 
         const Real value = 123.456 ;
-        const Derived::Unit unit = { Length::Unit::Meter, Derived::Order::One(), Mass::Unit::Kilogram, Derived::Order::One(), Time::Unit::Second, Derived::Order::One(), Angle::Unit::Radian, Derived::Order::One() } ;
+        const Derived::Unit unit = { Length::Unit::Meter, Derived::Order::One(), Mass::Unit::Kilogram, Derived::Order::One(), Time::Unit::Second, Derived::Order::One(), ElectricCurrent::Unit::Ampere, Derived::Order::One(), Angle::Unit::Radian, Derived::Order::One() } ;
 
         EXPECT_NO_THROW(Derived(value, unit)) ;
 
@@ -36,16 +37,16 @@ TEST (Library_Physics_Units_Derived, Constructor)
     {
 
         const Real value = 123.456 ;
-        const Derived::Unit unit = { Length::Unit::Meter, Derived::Order::Two(), Mass::Unit::Kilogram, { 1 }, Time::Unit::Second, { 3, 2 }, Angle::Unit::Undefined, { 0 } } ;
+        const Derived::Unit unit = { Length::Unit::Meter, Derived::Order::Two(), Mass::Unit::Kilogram, { 1 }, Time::Unit::Second, { 3, 2 }, ElectricCurrent::Unit::Ampere, { 0 }, Angle::Unit::Undefined, { 0 } } ;
 
         EXPECT_NO_THROW(Derived(value, unit)) ;
 
     }
-    
+
     {
 
         const Real value = 123.456 ;
-        const Derived::Unit unit = { Length::Unit::Meter, { 1, 2 }, Mass::Unit::Kilogram, { 1 }, Time::Unit::Second, { 3, 2 }, Angle::Unit::Undefined, { 0 } } ;
+        const Derived::Unit unit = { Length::Unit::Meter, { 1, 2 }, Mass::Unit::Kilogram, { 1 }, Time::Unit::Second, { 3, 2 }, ElectricCurrent::Unit::Undefined, { 0 }, Angle::Unit::Undefined, { 0 } } ;
 
         EXPECT_NO_THROW(Derived(value, unit)) ;
 
@@ -575,7 +576,7 @@ TEST (Library_Physics_Units_Derived, Constructor)
 //     {
 
 //         EXPECT_TRUE(Derived(0.0, Derived::Unit::Meter).isDefined()) ;
-        
+
 //         EXPECT_TRUE(Derived(1.0, Derived::Unit::Meter).isDefined()) ;
 //         EXPECT_TRUE(Derived(1.0, Derived::Unit::Foot).isDefined()) ;
 //         EXPECT_TRUE(Derived(1.0, Derived::Unit::TerrestrialMile).isDefined()) ;
@@ -657,7 +658,7 @@ TEST (Library_Physics_Units_Derived, Constructor)
 // TEST (Library_Physics_Units_Derived, InKilometers)
 // {
 
-//     using library::physics::units::Derived ; 
+//     using library::physics::units::Derived ;
 
 //     {
 
@@ -676,7 +677,7 @@ TEST (Library_Physics_Units_Derived, Constructor)
 // TEST (Library_Physics_Units_Derived, ToString)
 // {
 
-//     using library::physics::units::Derived ; 
+//     using library::physics::units::Derived ;
 
 //     {
 
@@ -703,7 +704,7 @@ TEST (Library_Physics_Units_Derived, Constructor)
 //     {
 
 //         EXPECT_ANY_THROW(Derived::Undefined().toString()) ;
-        
+
 //     }
 
 // }

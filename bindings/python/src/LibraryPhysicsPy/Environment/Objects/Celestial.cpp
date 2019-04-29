@@ -27,10 +27,11 @@ inline void                     LibraryPhysicsPy_Environment_Objects_Celestial (
     using library::physics::env::Object ;
     using library::physics::env::obj::Celestial ;
     using GravitationalModel = library::physics::environment::gravitational::Model ;
+    using MagneticModel = library::physics::environment::magnetic::Model ;
 
-    scope in_Celestial = class_<Celestial, bases<Object>>("Celestial", init<const String&, const Celestial::Type&, const Derived& , const Length&, const Real&, const Real&, const Shared<Ephemeris>&, const Shared<GravitationalModel>&, const Instant&>())
+    scope in_Celestial = class_<Celestial, bases<Object>>("Celestial", init<const String&, const Celestial::Type&, const Derived& , const Length&, const Real&, const Real&, const Shared<Ephemeris>&, const Shared<GravitationalModel>&, const Shared<MagneticModel>&, const Instant&>())
 
-        .def(init<const String&, const Celestial::Type&, const Derived& , const Length&, const Real&, const Real&, const Shared<Ephemeris>&, const Shared<GravitationalModel>&, const Instant&, const Object::Geometry&>())
+        .def(init<const String&, const Celestial::Type&, const Derived& , const Length&, const Real&, const Real&, const Shared<Ephemeris>&, const Shared<GravitationalModel>&, const Shared<MagneticModel>&, const Instant&, const Object::Geometry&>())
 
         // .def(self == self)
         // .def(self != self)
@@ -39,10 +40,11 @@ inline void                     LibraryPhysicsPy_Environment_Objects_Celestial (
         .def(self_ns::repr(self_ns::self))
 
         .def("isDefined", &Celestial::isDefined)
-        
+
         .def("accessEphemeris", &Celestial::accessEphemeris)
         .def("accessGravitationalModel", &Celestial::accessGravitationalModel)
-        
+        .def("accessMagneticModel", &Celestial::accessMagneticModel)
+
         .def("getType", &Celestial::getType)
         .def("getGravitationalParameter", &Celestial::getGravitationalParameter)
         .def("getEquatorialRadius", &Celestial::getEquatorialRadius)
@@ -53,8 +55,9 @@ inline void                     LibraryPhysicsPy_Environment_Objects_Celestial (
         .def("getTransformTo", &Celestial::getTransformTo)
         .def("getAxesIn", &Celestial::getAxesIn)
         .def("getGravitationalFieldAt", &Celestial::getGravitationalFieldAt)
+        .def("getMagneticFieldAt", &Celestial::getMagneticFieldAt)
         .def("getFrameAt", &Celestial::getFrameAt)
-        
+
         .def("Undefined", &Celestial::Undefined).staticmethod("Undefined")
 
         .def("StringFromFrameType", &Celestial::StringFromFrameType).staticmethod("StringFromFrameType")
