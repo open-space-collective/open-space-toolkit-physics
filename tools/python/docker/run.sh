@@ -16,10 +16,10 @@ pushd "${script_directory}" > /dev/null
 source "../../.env"
 
 docker run \
---name="${container_name}-python" \
+--name="${python_container_name}" \
 -it \
 --rm \
-"${image_name}-python:${image_version}" \
+"${python_image_repository}:${python_image_tag}" \
 /bin/bash
 
 popd > /dev/null

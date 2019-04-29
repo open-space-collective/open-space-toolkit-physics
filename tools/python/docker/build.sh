@@ -16,14 +16,14 @@ pushd "${script_directory}" > /dev/null
 source "../../.env"
 
 docker build \
---tag="${image_name}-python:${image_version}" \
+--tag="${python_image_repository}:${python_image_tag}" \
 .
 
 # docker build \
-# --tag="${image_name}-python-debug:${image_version}" \
+# --tag="${image_name}-python-debug:${image_tag}" \
 # --file="Dockerfile.debug" \
-# --build-arg="image_name=${image_name}" \
-# --build-arg="image_version=${image_version}" \
+# --build-arg="image_repository=${python_image_repository}" \
+# --build-arg="image_tag=${python_image_tag}" \
 # .
 
 popd > /dev/null

@@ -15,6 +15,8 @@ set -e
 script_directory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 tools_directory="${script_directory}/.."
 
+################################################################################################################################################################
+
 # Setup environment
 
 source "${tools_directory}/.env"
@@ -26,12 +28,12 @@ source "${tools_directory}/.env"
 pull_image ()
 {
 
-    echo "Pulling Docker image [${image_name}:${image_version}]..."
+    echo "Pulling Docker image [${image_repository}:${image_tag}]..."
 
     {
-        docker pull "${image_name}:${image_version}" 2> /dev/null && pull_result=1
+        docker pull "${image_repository}:${image_tag}" 2> /dev/null && pull_result=1
     } || {
-        echo "Cannot pull Docker image [${image_name}:${image_version}]." && pull_result=0
+        echo "Cannot pull Docker image [${image_repository}:${image_tag}]." && pull_result=0
     }
 
 }
@@ -39,7 +41,7 @@ pull_image ()
 build_image ()
 {
 
-    echo "Building Docker image [${image_name}:${image_version}]..."
+    echo "Building Docker image [${image_repository}:${image_tag}]..."
 
     pushd "${script_directory}/docker" > /dev/null
 
@@ -52,7 +54,7 @@ build_image ()
 pull_or_build_image ()
 {
 
-    if [[ "$(docker images -q ${image_name}:${image_version} 2> /dev/null)" == "" ]]; then
+    if [[ "$(docker images -q ${image_repository}:${image_tag} 2> /dev/null)" == "" ]]; then
 
         pull_image
 
@@ -167,7 +169,7 @@ run_container ()
     --volume="${script_directory}/helpers/debug.sh:/app/build/debug.sh:ro,delegated" \
     --volume="${script_directory}/helpers/clean.sh:/app/build/clean.sh:ro,delegated" \
     --workdir="/app/build" \
-    ${image_name}:${image_version} \
+    ${image_repository}:${image_tag} \
     /bin/bash -c "${command}"
 
 }

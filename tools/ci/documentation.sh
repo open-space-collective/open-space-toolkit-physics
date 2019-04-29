@@ -25,7 +25,7 @@ docker run \
 --volume="${project_directory}:/app:rw" \
 --volume="/app/build" \
 --workdir="/app/build" \
-${image_name}:${image_version} \
+${image_repository}:${image_tag} \
 /bin/bash -c "cmake -DBUILD_DOCUMENTATION=ON .. && make docs"
 
 # Deploy documentation
@@ -73,12 +73,12 @@ if [ -d "html" ] && [ -f "html/index.html" ]; then
     # stayed the same and will only update the changed files.
 
     echo 'Adding documentation to the gh-pages branch...'
-    
+
     git add --all
 
     # Commit the added files with a title and description containing the Travis CI
     # build number and the GitHub commit reference that issued this build.
-    
+
     git commit -m "[feature] Deploy documentation to GitHub Pages" -m "Travis build: ${TRAVIS_BUILD_NUMBER}" -m "Commit: ${TRAVIS_COMMIT}"
 
     # Force push to the remote gh-pages branch.
@@ -89,10 +89,10 @@ if [ -d "html" ] && [ -f "html/index.html" ]; then
     git push --force "https://${ci_doc_repo_token}@${ci_doc_repo_ref}" > /dev/null 2>&1
 
 else
-    
+
     echo '' >&2
     echo '[Error] No documentation (html) files have been found!' >&2
-    
+
     exit 1
 
 fi
