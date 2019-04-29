@@ -74,9 +74,14 @@ TEST (Library_Physics_Environment_Magnetic_Dipole, GetFieldValueAt)
 
         const Dipole dipole = { magneticMoment } ;
 
-        const Vector3d fieldValue = dipole.getFieldValueAt({ 1.0, 0.0, 0.0 }, Instant::J2000()) ;
+        EXPECT_TRUE(dipole.getFieldValueAt({ +1.0, 0.0, 0.0 }, Instant::J2000()).isApprox(Vector3d(0.0, 0.0, -1e-7), 1e-20)) ;
+        EXPECT_TRUE(dipole.getFieldValueAt({ -1.0, 0.0, 0.0 }, Instant::J2000()).isApprox(Vector3d(0.0, 0.0, -1e-7), 1e-20)) ;
 
-        EXPECT_EQ(Vector3d(0.0, 0.0, 0.0), fieldValue) ;
+        EXPECT_TRUE(dipole.getFieldValueAt({ 0.0, +1.0, 0.0 }, Instant::J2000()).isApprox(Vector3d(0.0, 0.0, -1e-7), 1e-20)) ;
+        EXPECT_TRUE(dipole.getFieldValueAt({ 0.0, -1.0, 0.0 }, Instant::J2000()).isApprox(Vector3d(0.0, 0.0, -1e-7), 1e-20)) ;
+
+        EXPECT_TRUE(dipole.getFieldValueAt({ 0.0, 0.0, +1.0 }, Instant::J2000()).isApprox(Vector3d(0.0, 0.0, +2e-7), 1e-20)) ;
+        EXPECT_TRUE(dipole.getFieldValueAt({ 0.0, 0.0, -1.0 }, Instant::J2000()).isApprox(Vector3d(0.0, 0.0, +2e-7), 1e-20)) ;
 
     }
 
