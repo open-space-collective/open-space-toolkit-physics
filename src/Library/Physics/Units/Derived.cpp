@@ -104,17 +104,17 @@ String                          Derived::Order::toString                    ( ) 
 
 Derived::Order                  Derived::Order::Zero                        ( )
 {
-    return Derived::Order(0, 1) ;
+    return { 0, 1 } ;
 }
 
 Derived::Order                  Derived::Order::One                         ( )
 {
-    return Derived::Order(1, 1) ;
+    return { 1, 1 } ;
 }
 
 Derived::Order                  Derived::Order::Two                         ( )
 {
-    return Derived::Order(2, 1) ;
+    return { 2, 1 } ;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -249,27 +249,27 @@ String                          Derived::Unit::toString                     ( ) 
 
     String symbol = "" ;
 
-    if (lengthUnit_ != Length::Unit::Undefined)
+    if ((lengthUnit_ != Length::Unit::Undefined) && (!lengthOrder_.isZero()))
     {
         symbol += ((!symbol.isEmpty()) ? "." : "") + Length::StringFromUnit(lengthUnit_) + ((!lengthOrder_.isUnity()) ? ("^" + lengthOrder_.toString()) : "") ;
     }
 
-    if (massUnit_ != Mass::Unit::Undefined)
+    if ((massUnit_ != Mass::Unit::Undefined) && (!massOrder_.isZero()))
     {
         symbol += ((!symbol.isEmpty()) ? "." : "") + Mass::StringFromUnit(massUnit_) + ((!massOrder_.isUnity()) ? ("^" + massOrder_.toString()) : "") ;
     }
 
-    if (electricCurrentUnit_ != ElectricCurrent::Unit::Undefined)
+    if ((electricCurrentUnit_ != ElectricCurrent::Unit::Undefined) && (!electricCurrentOrder_.isZero()))
     {
         symbol += ((!symbol.isEmpty()) ? "." : "") + ElectricCurrent::StringFromUnit(electricCurrentUnit_) + ((!electricCurrentOrder_.isUnity()) ? ("^" + electricCurrentOrder_.toString()) : "") ;
     }
 
-    if (angleUnit_ != Angle::Unit::Undefined)
+    if ((angleUnit_ != Angle::Unit::Undefined) && (!angleOrder_.isZero()))
     {
         symbol += ((!symbol.isEmpty()) ? "." : "") + Angle::StringFromUnit(angleUnit_) + ((!angleOrder_.isUnity()) ? ("^" + angleOrder_.toString()) : "") ;
     }
 
-    if (timeUnit_ != Time::Unit::Undefined)
+    if ((timeUnit_ != Time::Unit::Undefined) && (!timeOrder_.isZero()))
     {
         symbol += ((!symbol.isEmpty()) ? "." : "") + Time::StringFromUnit(timeUnit_) + ((!timeOrder_.isUnity()) ? ("^" + timeOrder_.toString()) : "") ;
     }
@@ -288,27 +288,27 @@ String                          Derived::Unit::getSymbol                    ( ) 
 
     String symbol = "" ;
 
-    if (lengthUnit_ != Length::Unit::Undefined)
+    if ((lengthUnit_ != Length::Unit::Undefined) && (!lengthOrder_.isZero()))
     {
         symbol += ((!symbol.isEmpty()) ? "." : "") + Length::SymbolFromUnit(lengthUnit_) + ((!lengthOrder_.isUnity()) ? ("^" + lengthOrder_.toString()) : "") ;
     }
 
-    if (massUnit_ != Mass::Unit::Undefined)
+    if ((massUnit_ != Mass::Unit::Undefined) && (!massOrder_.isZero()))
     {
         symbol += ((!symbol.isEmpty()) ? "." : "") + Mass::SymbolFromUnit(massUnit_) + ((!massOrder_.isUnity()) ? ("^" + massOrder_.toString()) : "") ;
     }
 
-    if (electricCurrentUnit_ != ElectricCurrent::Unit::Undefined)
+    if ((electricCurrentUnit_ != ElectricCurrent::Unit::Undefined) && (!electricCurrentOrder_.isZero()))
     {
         symbol += ((!symbol.isEmpty()) ? "." : "") + ElectricCurrent::SymbolFromUnit(electricCurrentUnit_) + ((!electricCurrentOrder_.isUnity()) ? ("^" + electricCurrentOrder_.toString()) : "") ;
     }
 
-    if (angleUnit_ != Angle::Unit::Undefined)
+    if ((angleUnit_ != Angle::Unit::Undefined) && (!angleOrder_.isZero()))
     {
         symbol += ((!symbol.isEmpty()) ? "." : "") + Angle::SymbolFromUnit(angleUnit_) + ((!angleOrder_.isUnity()) ? ("^" + angleOrder_.toString()) : "") ;
     }
 
-    if (timeUnit_ != Time::Unit::Undefined)
+    if ((timeUnit_ != Time::Unit::Undefined) && (!timeOrder_.isZero()))
     {
 
         if (timeOrder_.getValue() == -1.0) // Special case to support / time format
@@ -478,7 +478,7 @@ String                          Derived::toString                           (   
 
 Derived                         Derived::Undefined                          ( )
 {
-    return Derived(Real::Undefined(), Derived::Unit::Undefined()) ;
+    return { Real::Undefined(), Derived::Unit::Undefined() } ;
 }
 
 // Derived                         Derived::Parse                               (   const   String&                     aString                                     )
@@ -508,20 +508,22 @@ Real                            Derived::SIRatio                            (   
 
     if (!aUnit.accessMassOrder().isZero())
     {
-        throw library::core::error::runtime::ToBeImplemented("Mass::in(Mass::Unit)") ;
-        // ratio *= std::pow(Mass(1.0, aUnit.accessMassUnit()).in(Mass::Unit::Kilogram), aUnit.accessMassOrder().getValue()) ;
+        ratio *= std::pow(Mass(1.0, aUnit.accessMassUnit()).in(Mass::Unit::Kilogram), aUnit.accessMassOrder().getValue()) ;
     }
 
     if (!aUnit.accessTimeOrder().isZero())
     {
-        throw library::core::error::runtime::ToBeImplemented("Time::in(Time::Unit)") ;
-        // ratio *= std::pow(Time(1.0, aUnit.accessTimeUnit()).in(Time::Unit::Second), aUnit.accessTimeOrder().getValue()) ;
+        ratio *= std::pow(Time(1.0, aUnit.accessTimeUnit()).in(Time::Unit::Second), aUnit.accessTimeOrder().getValue()) ;
     }
 
     if (!aUnit.accessElectricCurrentOrder().isZero())
     {
-        throw library::core::error::runtime::ToBeImplemented("ElectricCurrent::in(ElectricCurrent::Unit)") ;
-        // ratio *= std::pow(ElectricCurrent(1.0, aUnit.accessElectricCurrentUnit()).in(ElectricCurrent::Unit::Kilogram), aUnit.accessElectricCurrentOrder().getValue()) ;
+        ratio *= std::pow(ElectricCurrent(1.0, aUnit.accessElectricCurrentUnit()).in(ElectricCurrent::Unit::Ampere), aUnit.accessElectricCurrentOrder().getValue()) ;
+    }
+
+    if (!aUnit.accessAngleOrder().isZero())
+    {
+        ratio *= std::pow(Angle(1.0, aUnit.accessAngleUnit()).in(Angle::Unit::Radian), aUnit.accessAngleOrder().getValue()) ;
     }
 
     return ratio ;

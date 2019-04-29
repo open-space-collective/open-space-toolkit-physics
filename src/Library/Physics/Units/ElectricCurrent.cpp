@@ -135,6 +135,8 @@ String                          ElectricCurrent::SymbolFromUnit             (   
 
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 Real                            ElectricCurrent::SIRatio                    (   const   ElectricCurrent::Unit&      aUnit                                       )
 {
 

@@ -40,6 +40,25 @@ TEST (Library_Physics_Units_ElectricCurrent, Constructor)
 
 }
 
+TEST (Library_Physics_Units_ElectricCurrent, Clone)
+{
+
+    using library::core::types::Real ;
+    using library::physics::units::ElectricCurrent ;
+
+    {
+
+        const Real value = 123.456 ;
+        const ElectricCurrent::Unit unit = ElectricCurrent::Unit::Ampere ;
+
+        const ElectricCurrent electricCurrent = { value, unit } ;
+
+        EXPECT_NO_THROW(const ElectricCurrent* electricCurrentPtr = electricCurrent.clone() ; delete electricCurrentPtr ;) ;
+
+    }
+
+}
+
 TEST (Library_Physics_Units_ElectricCurrent, IsDefined)
 {
 

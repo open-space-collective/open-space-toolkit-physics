@@ -49,7 +49,7 @@ class Mass : public Unit
             Kilogram,           ///< Kilogram (SI)
             Tonne,              ///< Tonne
             Pound               ///< Pound
-        
+
         } ;
 
         /// @brief              Constructor
@@ -67,10 +67,20 @@ class Mass : public Unit
         virtual Mass*           clone                                       ( ) const override ;
 
         virtual bool            isDefined                                   ( ) const override ;
-        
+
+        Mass::Unit              getUnit                                     ( ) const ;
+
+        Real                    in                                          (   const   Mass::Unit&                 aUnit                                       ) const ;
+
+        Real                    inKilograms                                 ( ) const ;
+
         virtual String          toString                                    (   const   Integer&                    aPrecision                                  =   Integer::Undefined() ) const override ;
 
         static Mass             Undefined                                   ( ) ;
+
+        static Mass             Kilograms                                   (   const   Real&                       aValue                                      ) ;
+
+        static Mass             Parse                                       (   const   String&                     aString                                     ) ;
 
         static String           StringFromUnit                              (   const   Mass::Unit&                 aUnit                                       ) ;
 
@@ -79,6 +89,8 @@ class Mass : public Unit
     private:
 
         Mass::Unit              unit_ ;
+
+        static Real             SIRatio                                     (   const   Mass::Unit&                 aUnit                                       ) ;
 
 } ;
 
