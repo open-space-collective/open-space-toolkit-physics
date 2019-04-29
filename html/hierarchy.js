@@ -29,9 +29,14 @@ var hierarchy =
     [ "library::physics::env::ephem::spice::Kernel", "classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel.html", null ],
     [ "library::physics::coord::spherical::LLA", "classlibrary_1_1physics_1_1coord_1_1spherical_1_1_l_l_a.html", null ],
     [ "library::physics::coord::frame::Manager", "classlibrary_1_1physics_1_1coord_1_1frame_1_1_manager.html", null ],
-    [ "library::physics::environment::gravitational::earth::Manager", "classlibrary_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager.html", null ],
-    [ "library::physics::env::ephem::spice::Manager", "classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager.html", null ],
     [ "library::physics::coord::frame::provider::iers::Manager", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager.html", null ],
+    [ "library::physics::environment::gravitational::earth::Manager", "classlibrary_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager.html", null ],
+    [ "library::physics::environment::magnetic::earth::Manager", "classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager.html", null ],
+    [ "library::physics::env::ephem::spice::Manager", "classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager.html", null ],
+    [ "library::physics::environment::magnetic::Model", "classlibrary_1_1physics_1_1environment_1_1magnetic_1_1_model.html", [
+      [ "library::physics::environment::magnetic::Dipole", "classlibrary_1_1physics_1_1environment_1_1magnetic_1_1_dipole.html", null ],
+      [ "library::physics::environment::magnetic::Earth", "classlibrary_1_1physics_1_1environment_1_1magnetic_1_1_earth.html", null ]
+    ] ],
     [ "library::physics::environment::gravitational::Model", "classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_model.html", [
       [ "library::physics::environment::gravitational::Earth", "classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth.html", null ],
       [ "library::physics::environment::gravitational::Spherical", "classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_spherical.html", null ]
@@ -62,15 +67,16 @@ var hierarchy =
     [ "library::physics::data::Scalar", "classlibrary_1_1physics_1_1data_1_1_scalar.html", null ],
     [ "library::physics::time::Time", "classlibrary_1_1physics_1_1time_1_1_time.html", null ],
     [ "library::physics::coord::Transform", "classlibrary_1_1physics_1_1coord_1_1_transform.html", null ],
+    [ "library::physics::Unit", "classlibrary_1_1physics_1_1_unit.html", null ],
+    [ "library::physics::units::Derived::Unit", "classlibrary_1_1physics_1_1units_1_1_derived_1_1_unit.html", null ],
     [ "library::physics::units::Unit", "classlibrary_1_1physics_1_1units_1_1_unit.html", [
       [ "library::physics::units::Angle", "classlibrary_1_1physics_1_1units_1_1_angle.html", null ],
       [ "library::physics::units::Derived", "classlibrary_1_1physics_1_1units_1_1_derived.html", null ],
+      [ "library::physics::units::ElectricCurrent", "classlibrary_1_1physics_1_1units_1_1_electric_current.html", null ],
       [ "library::physics::units::Length", "classlibrary_1_1physics_1_1units_1_1_length.html", null ],
       [ "library::physics::units::Mass", "classlibrary_1_1physics_1_1units_1_1_mass.html", null ],
       [ "library::physics::units::Time", "classlibrary_1_1physics_1_1units_1_1_time.html", null ]
     ] ],
-    [ "library::physics::Unit", "classlibrary_1_1physics_1_1_unit.html", null ],
-    [ "library::physics::units::Derived::Unit", "classlibrary_1_1physics_1_1units_1_1_derived_1_1_unit.html", null ],
     [ "library::physics::data::Vector", "classlibrary_1_1physics_1_1data_1_1_vector.html", [
       [ "library::physics::data::Direction", "classlibrary_1_1physics_1_1data_1_1_direction.html", null ]
     ] ],

@@ -13,6 +13,9 @@ var classlibrary_1_1physics_1_1units_1_1_time =
     ] ],
     [ "Time", "classlibrary_1_1physics_1_1units_1_1_time.html#a60e2228b16ea9156a4c5ede4d7b141e5", null ],
     [ "clone", "classlibrary_1_1physics_1_1units_1_1_time.html#a8745ebee6707751e91137c3e87782b59", null ],
+    [ "getUnit", "classlibrary_1_1physics_1_1units_1_1_time.html#ad058563b71fd972a66b647d6ca8b7fbe", null ],
+    [ "in", "classlibrary_1_1physics_1_1units_1_1_time.html#a88217c85038d0153f699166de8746383", null ],
+    [ "inSeconds", "classlibrary_1_1physics_1_1units_1_1_time.html#a8fb17118722828e091a29a665d402a8e", null ],
     [ "isDefined", "classlibrary_1_1physics_1_1units_1_1_time.html#ab62163386c3253277c5ba71782261cad", null ],
     [ "toString", "classlibrary_1_1physics_1_1units_1_1_time.html#a6f56977493a45d334bb53bc4246888c4", null ]
 ];

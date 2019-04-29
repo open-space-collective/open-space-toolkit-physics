@@ -1,0 +1,290 @@
+\hypertarget{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager}{}\section{library\+:\+:physics\+:\+:environment\+:\+:magnetic\+:\+:earth\+:\+:Manager Class Reference}
+\label{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager}\index{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager@{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager}}
+
+
+\hyperlink{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1_earth}{Earth} magnetic model data manager.  
+
+
+
+
+{\ttfamily \#include $<$Manager.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_a8487bb588deb7bb2c9b3fa1a5a59b422}{Manager} (const \hyperlink{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager}{Manager} \&a\+Manager)=delete
+\begin{DoxyCompactList}\small\item\em Copy constructor (deleted) \end{DoxyCompactList}\item 
+\hyperlink{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager}{Manager} \& \hyperlink{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_a1f9e25590f17e9a58d8b4948f290e255}{operator=} (const \hyperlink{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager}{Manager} \&a\+Manager)=delete
+\begin{DoxyCompactList}\small\item\em Copy assignment operator (deleted) \end{DoxyCompactList}\item 
+bool \hyperlink{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_a0b238ac6a27372ef08a87eb72fae0ba0}{is\+Enabled} () const
+\begin{DoxyCompactList}\small\item\em Returns true is manager is enabled. \end{DoxyCompactList}\item 
+bool \hyperlink{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_ad163496bf42eb8acabbafcb3c2cb6f05}{has\+Data\+File\+For\+Type} (const \hyperlink{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1_earth_ab9d257d23aa5899a3ef36c7dec62ef72}{Earth\+Magnetic\+Model\+::\+Type} \&a\+Model\+Type) const
+\begin{DoxyCompactList}\small\item\em Returns true if manager has data file for the given model type. \end{DoxyCompactList}\item 
+Directory \hyperlink{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_a39ef95997e959ff2d74e3b8c4ac8ff7d}{get\+Local\+Repository} () const
+\begin{DoxyCompactList}\small\item\em Get local repository. \end{DoxyCompactList}\item 
+U\+RL \hyperlink{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_ad5f056edd2595e364bfb7a17fb90997b}{get\+Remote\+Url} () const
+\begin{DoxyCompactList}\small\item\em Get remote U\+RL. \end{DoxyCompactList}\item 
+void \hyperlink{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_ab7b2a60a81f8acda94ad977ba6db17d0}{fetch\+Data\+File\+For\+Type} (const \hyperlink{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1_earth_ab9d257d23aa5899a3ef36c7dec62ef72}{Earth\+Magnetic\+Model\+::\+Type} \&a\+Model\+Type) const
+\begin{DoxyCompactList}\small\item\em Fetch data file from remote. \end{DoxyCompactList}\item 
+void \hyperlink{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_a83e0891efe48d2a92639d7dd37f6b661}{set\+Local\+Repository} (const Directory \&a\+Directory)
+\begin{DoxyCompactList}\small\item\em Set local repository. \end{DoxyCompactList}\item 
+void \hyperlink{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_a1c809eef5c24719dd852e63befdd6a64}{set\+Remote\+Url} (const U\+RL \&a\+Remote\+Url)
+\begin{DoxyCompactList}\small\item\em Set remote U\+RL. \end{DoxyCompactList}\item 
+void \hyperlink{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_a30d2ab3d6b2c1d6fae3728ccfd9945bf}{enable} ()
+\begin{DoxyCompactList}\small\item\em Enable manager. \end{DoxyCompactList}\item 
+void \hyperlink{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_a169f617d62727a12019624b712c416d7}{disable} ()
+\begin{DoxyCompactList}\small\item\em Disable manager. \end{DoxyCompactList}\item 
+void \hyperlink{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_a5b2fea6c64af1c55ab776ae722ea4866}{set\+Enabled} (const bool a\+Boolean)
+\begin{DoxyCompactList}\small\item\em Set enabled flag. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager}{Manager} \& \hyperlink{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_a61dcc0186b95a95dfdbec9bf1e285c5a}{Get} ()
+\begin{DoxyCompactList}\small\item\em Get manager singleton. \end{DoxyCompactList}\item 
+static bool \hyperlink{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_a814a799750a890606ac9ecbd4fe35fff}{Default\+Enabled} ()
+\begin{DoxyCompactList}\small\item\em Get default enabled flag. \end{DoxyCompactList}\item 
+static Directory \hyperlink{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_a2d7532e36f80abf29d2e60bc565a5cc5}{Default\+Local\+Repository} ()
+\begin{DoxyCompactList}\small\item\em Get default local repository. \end{DoxyCompactList}\item 
+static U\+RL \hyperlink{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_af27590c795dd6b87166b84495b777d2f}{Default\+Remote\+Url} ()
+\begin{DoxyCompactList}\small\item\em Get default remote U\+RL. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1_earth}{Earth} magnetic model data manager. 
+
+Fetches and manages necessary magnetic model data files.
+
+The following environment variables can be defined\+:
+
+
+\begin{DoxyItemize}
+\item \char`\"{}\+L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+M\+A\+G\+N\+E\+T\+I\+C\+\_\+\+E\+A\+R\+T\+H\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+E\+N\+A\+B\+L\+E\+D\char`\"{} will override \char`\"{}\+Default\+Enabled\char`\"{}
+\item \char`\"{}\+L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+M\+A\+G\+N\+E\+T\+I\+C\+\_\+\+E\+A\+R\+T\+H\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+R\+Y\char`\"{} will override \char`\"{}\+Default\+Local\+Repository\char`\"{}
+\item \char`\"{}\+L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+M\+A\+G\+N\+E\+T\+I\+C\+\_\+\+E\+A\+R\+T\+H\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+R\+E\+M\+O\+T\+E\+\_\+\+U\+R\+L\char`\"{} will override \char`\"{}\+Default\+Remote\+Url\char`\"{} 
+\end{DoxyItemize}
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_a8487bb588deb7bb2c9b3fa1a5a59b422}\label{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_a8487bb588deb7bb2c9b3fa1a5a59b422}} 
+\index{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager@{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager}!Manager@{Manager}}
+\index{Manager@{Manager}!library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager@{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager}}
+\subsubsection{\texorpdfstring{Manager()}{Manager()}}
+{\footnotesize\ttfamily library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager\+::\+Manager (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager}{Manager} \&}]{a\+Manager }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Copy constructor (deleted) 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_a814a799750a890606ac9ecbd4fe35fff}\label{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_a814a799750a890606ac9ecbd4fe35fff}} 
+\index{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager@{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager}!Default\+Enabled@{Default\+Enabled}}
+\index{Default\+Enabled@{Default\+Enabled}!library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager@{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager}}
+\subsubsection{\texorpdfstring{Default\+Enabled()}{DefaultEnabled()}}
+{\footnotesize\ttfamily bool library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager\+::\+Default\+Enabled (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get default enabled flag. 
+
+Value\+: false Overriden by\+: L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+M\+A\+G\+N\+E\+T\+I\+C\+\_\+\+E\+A\+R\+T\+H\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+E\+N\+A\+B\+L\+ED
+
+\begin{DoxyReturn}{Returns}
+Default enabled flag 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_a2d7532e36f80abf29d2e60bc565a5cc5}\label{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_a2d7532e36f80abf29d2e60bc565a5cc5}} 
+\index{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager@{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager}!Default\+Local\+Repository@{Default\+Local\+Repository}}
+\index{Default\+Local\+Repository@{Default\+Local\+Repository}!library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager@{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager}}
+\subsubsection{\texorpdfstring{Default\+Local\+Repository()}{DefaultLocalRepository()}}
+{\footnotesize\ttfamily Directory library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager\+::\+Default\+Local\+Repository (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get default local repository. 
+
+Value\+: \char`\"{}./.\+library/physics/environment/magnetic/earth\char`\"{} Overriden by\+: L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+M\+A\+G\+N\+E\+T\+I\+C\+\_\+\+E\+A\+R\+T\+H\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+RY
+
+\begin{DoxyReturn}{Returns}
+Default local repository 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_af27590c795dd6b87166b84495b777d2f}\label{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_af27590c795dd6b87166b84495b777d2f}} 
+\index{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager@{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager}!Default\+Remote\+Url@{Default\+Remote\+Url}}
+\index{Default\+Remote\+Url@{Default\+Remote\+Url}!library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager@{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager}}
+\subsubsection{\texorpdfstring{Default\+Remote\+Url()}{DefaultRemoteUrl()}}
+{\footnotesize\ttfamily U\+RL library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager\+::\+Default\+Remote\+Url (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get default remote U\+RL. 
+
+Value\+: \char`\"{}https\+://sourceforge.\+net/projects/geographiclib/files/magnetic-\/distrib/\char`\"{} Overriden by\+: L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+M\+A\+G\+N\+E\+T\+I\+C\+\_\+\+E\+A\+R\+T\+H\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+R\+E\+M\+O\+T\+E\+\_\+\+U\+RL
+
+\begin{DoxyReturn}{Returns}
+Default remote U\+RL 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_a169f617d62727a12019624b712c416d7}\label{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_a169f617d62727a12019624b712c416d7}} 
+\index{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager@{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager}!disable@{disable}}
+\index{disable@{disable}!library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager@{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager}}
+\subsubsection{\texorpdfstring{disable()}{disable()}}
+{\footnotesize\ttfamily void library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager\+::disable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Disable manager. 
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_a30d2ab3d6b2c1d6fae3728ccfd9945bf}\label{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_a30d2ab3d6b2c1d6fae3728ccfd9945bf}} 
+\index{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager@{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager}!enable@{enable}}
+\index{enable@{enable}!library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager@{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager}}
+\subsubsection{\texorpdfstring{enable()}{enable()}}
+{\footnotesize\ttfamily void library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager\+::enable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Enable manager. 
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_ab7b2a60a81f8acda94ad977ba6db17d0}\label{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_ab7b2a60a81f8acda94ad977ba6db17d0}} 
+\index{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager@{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager}!fetch\+Data\+File\+For\+Type@{fetch\+Data\+File\+For\+Type}}
+\index{fetch\+Data\+File\+For\+Type@{fetch\+Data\+File\+For\+Type}!library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager@{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager}}
+\subsubsection{\texorpdfstring{fetch\+Data\+File\+For\+Type()}{fetchDataFileForType()}}
+{\footnotesize\ttfamily void library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager\+::fetch\+Data\+File\+For\+Type (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1_earth_ab9d257d23aa5899a3ef36c7dec62ef72}{Earth\+Magnetic\+Model\+::\+Type} \&}]{a\+Model\+Type }\end{DoxyParamCaption}) const}
+
+
+
+Fetch data file from remote. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Model\+Type} & A model type \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_a61dcc0186b95a95dfdbec9bf1e285c5a}\label{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_a61dcc0186b95a95dfdbec9bf1e285c5a}} 
+\index{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager@{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager}!Get@{Get}}
+\index{Get@{Get}!library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager@{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager}}
+\subsubsection{\texorpdfstring{Get()}{Get()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager}{Manager} \& library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager\+::\+Get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get manager singleton. 
+
+\begin{DoxyReturn}{Returns}
+Reference to manager 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_a39ef95997e959ff2d74e3b8c4ac8ff7d}\label{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_a39ef95997e959ff2d74e3b8c4ac8ff7d}} 
+\index{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager@{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager}!get\+Local\+Repository@{get\+Local\+Repository}}
+\index{get\+Local\+Repository@{get\+Local\+Repository}!library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager@{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager}}
+\subsubsection{\texorpdfstring{get\+Local\+Repository()}{getLocalRepository()}}
+{\footnotesize\ttfamily Directory library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager\+::get\+Local\+Repository (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get local repository. 
+
+\begin{DoxyReturn}{Returns}
+Local repository 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_ad5f056edd2595e364bfb7a17fb90997b}\label{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_ad5f056edd2595e364bfb7a17fb90997b}} 
+\index{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager@{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager}!get\+Remote\+Url@{get\+Remote\+Url}}
+\index{get\+Remote\+Url@{get\+Remote\+Url}!library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager@{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager}}
+\subsubsection{\texorpdfstring{get\+Remote\+Url()}{getRemoteUrl()}}
+{\footnotesize\ttfamily U\+RL library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager\+::get\+Remote\+Url (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get remote U\+RL. 
+
+\begin{DoxyReturn}{Returns}
+Remote U\+RL 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_ad163496bf42eb8acabbafcb3c2cb6f05}\label{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_ad163496bf42eb8acabbafcb3c2cb6f05}} 
+\index{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager@{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager}!has\+Data\+File\+For\+Type@{has\+Data\+File\+For\+Type}}
+\index{has\+Data\+File\+For\+Type@{has\+Data\+File\+For\+Type}!library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager@{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager}}
+\subsubsection{\texorpdfstring{has\+Data\+File\+For\+Type()}{hasDataFileForType()}}
+{\footnotesize\ttfamily bool library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager\+::has\+Data\+File\+For\+Type (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1_earth_ab9d257d23aa5899a3ef36c7dec62ef72}{Earth\+Magnetic\+Model\+::\+Type} \&}]{a\+Model\+Type }\end{DoxyParamCaption}) const}
+
+
+
+Returns true if manager has data file for the given model type. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Model\+Type} & A model type \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if manager has data file for the given model type 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_a0b238ac6a27372ef08a87eb72fae0ba0}\label{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_a0b238ac6a27372ef08a87eb72fae0ba0}} 
+\index{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager@{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager}!is\+Enabled@{is\+Enabled}}
+\index{is\+Enabled@{is\+Enabled}!library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager@{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager}}
+\subsubsection{\texorpdfstring{is\+Enabled()}{isEnabled()}}
+{\footnotesize\ttfamily bool library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager\+::is\+Enabled (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns true is manager is enabled. 
+
+\begin{DoxyReturn}{Returns}
+True is manager is enabled 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_a1f9e25590f17e9a58d8b4948f290e255}\label{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_a1f9e25590f17e9a58d8b4948f290e255}} 
+\index{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager@{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager}!operator=@{operator=}}
+\index{operator=@{operator=}!library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager@{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager}{Manager}\& library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager}{Manager} \&}]{a\+Manager }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Copy assignment operator (deleted) 
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_a5b2fea6c64af1c55ab776ae722ea4866}\label{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_a5b2fea6c64af1c55ab776ae722ea4866}} 
+\index{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager@{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager}!set\+Enabled@{set\+Enabled}}
+\index{set\+Enabled@{set\+Enabled}!library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager@{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager}}
+\subsubsection{\texorpdfstring{set\+Enabled()}{setEnabled()}}
+{\footnotesize\ttfamily void library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager\+::set\+Enabled (\begin{DoxyParamCaption}\item[{const bool}]{a\+Boolean }\end{DoxyParamCaption})}
+
+
+
+Set enabled flag. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Boolean} & An enabled flag \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_a83e0891efe48d2a92639d7dd37f6b661}\label{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_a83e0891efe48d2a92639d7dd37f6b661}} 
+\index{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager@{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager}!set\+Local\+Repository@{set\+Local\+Repository}}
+\index{set\+Local\+Repository@{set\+Local\+Repository}!library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager@{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager}}
+\subsubsection{\texorpdfstring{set\+Local\+Repository()}{setLocalRepository()}}
+{\footnotesize\ttfamily void library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager\+::set\+Local\+Repository (\begin{DoxyParamCaption}\item[{const Directory \&}]{a\+Directory }\end{DoxyParamCaption})}
+
+
+
+Set local repository. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Directory} & A repository directory \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_a1c809eef5c24719dd852e63befdd6a64}\label{classlibrary_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_a1c809eef5c24719dd852e63befdd6a64}} 
+\index{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager@{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager}!set\+Remote\+Url@{set\+Remote\+Url}}
+\index{set\+Remote\+Url@{set\+Remote\+Url}!library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager@{library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager}}
+\subsubsection{\texorpdfstring{set\+Remote\+Url()}{setRemoteUrl()}}
+{\footnotesize\ttfamily void library\+::physics\+::environment\+::magnetic\+::earth\+::\+Manager\+::set\+Remote\+Url (\begin{DoxyParamCaption}\item[{const U\+RL \&}]{a\+Remote\+Url }\end{DoxyParamCaption})}
+
+
+
+Set remote U\+RL. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Remote\+Url} & A remote U\+RL \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Library/\+Physics/\+Environment/\+Magnetic/\+Earth/\hyperlink{_environment_2_magnetic_2_earth_2_manager_8hpp}{Manager.\+hpp}\item 
+src/\+Library/\+Physics/\+Environment/\+Magnetic/\+Earth/\hyperlink{_environment_2_magnetic_2_earth_2_manager_8cpp}{Manager.\+cpp}\end{DoxyCompactItemize}

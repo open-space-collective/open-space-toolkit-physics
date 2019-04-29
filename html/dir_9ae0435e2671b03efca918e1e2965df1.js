@@ -6,6 +6,9 @@ var dir_9ae0435e2671b03efca918e1e2965df1 =
       [ "Order", "classlibrary_1_1physics_1_1units_1_1_derived_1_1_order.html", "classlibrary_1_1physics_1_1units_1_1_derived_1_1_order" ],
       [ "Unit", "classlibrary_1_1physics_1_1units_1_1_derived_1_1_unit.html", "classlibrary_1_1physics_1_1units_1_1_derived_1_1_unit" ]
     ] ],
+    [ "ElectricCurrent.hpp", "_electric_current_8hpp.html", [
+      [ "ElectricCurrent", "classlibrary_1_1physics_1_1units_1_1_electric_current.html", "classlibrary_1_1physics_1_1units_1_1_electric_current" ]
+    ] ],
     [ "Length.hpp", "_length_8hpp.html", [
       [ "Length", "classlibrary_1_1physics_1_1units_1_1_length.html", "classlibrary_1_1physics_1_1units_1_1_length" ]
     ] ],

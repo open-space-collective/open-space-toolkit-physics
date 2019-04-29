@@ -8,6 +8,9 @@ var classlibrary_1_1physics_1_1units_1_1_mass =
     ] ],
     [ "Mass", "classlibrary_1_1physics_1_1units_1_1_mass.html#a079df004a90cfe6cfa5c00ce0d816122", null ],
     [ "clone", "classlibrary_1_1physics_1_1units_1_1_mass.html#a7a09438b05edbe4b21a05ec234a6372f", null ],
+    [ "getUnit", "classlibrary_1_1physics_1_1units_1_1_mass.html#ab564abfc37cc17f2902445f06254082c", null ],
+    [ "in", "classlibrary_1_1physics_1_1units_1_1_mass.html#a85f4a66996e4b52fb5b3a71e42c4d6e3", null ],
+    [ "inKilograms", "classlibrary_1_1physics_1_1units_1_1_mass.html#a163fc62b4141ff5d31092dd688745518", null ],
     [ "isDefined", "classlibrary_1_1physics_1_1units_1_1_mass.html#a0efde6eb08d6b79baa84229746776b6a", null ],
     [ "toString", "classlibrary_1_1physics_1_1units_1_1_mass.html#a6e7757920752ac9f6918525d6fadb31e", null ]
 ];

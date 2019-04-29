@@ -41,12 +41,20 @@ virtual \hyperlink{classlibrary_1_1physics_1_1units_1_1_time}{Time} $\ast$ \hype
 \item 
 virtual bool \hyperlink{classlibrary_1_1physics_1_1units_1_1_time_ab62163386c3253277c5ba71782261cad}{is\+Defined} () const override
 \item 
+\hyperlink{classlibrary_1_1physics_1_1units_1_1_time_ab876a6a05c9a2f28905f2753bfd64109}{Time\+::\+Unit} \hyperlink{classlibrary_1_1physics_1_1units_1_1_time_ad058563b71fd972a66b647d6ca8b7fbe}{get\+Unit} () const
+\item 
+Real \hyperlink{classlibrary_1_1physics_1_1units_1_1_time_a88217c85038d0153f699166de8746383}{in} (const \hyperlink{classlibrary_1_1physics_1_1units_1_1_time_ab876a6a05c9a2f28905f2753bfd64109}{Time\+::\+Unit} \&a\+Unit) const
+\item 
+Real \hyperlink{classlibrary_1_1physics_1_1units_1_1_time_a8fb17118722828e091a29a665d402a8e}{in\+Seconds} () const
+\item 
 virtual String \hyperlink{classlibrary_1_1physics_1_1units_1_1_time_a6f56977493a45d334bb53bc4246888c4}{to\+String} (const Integer \&a\+Precision=Integer\+::\+Undefined()) const override
 \end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 static \hyperlink{classlibrary_1_1physics_1_1units_1_1_time}{Time} \hyperlink{classlibrary_1_1physics_1_1units_1_1_time_a532c992968408dcb70f5ee94e672c595}{Undefined} ()
+\item 
+static \hyperlink{classlibrary_1_1physics_1_1units_1_1_time}{Time} \hyperlink{classlibrary_1_1physics_1_1units_1_1_time_a07132f52798140d876eaeef4292688d4}{Seconds} (const Real \&a\+Value)
 \item 
 static String \hyperlink{classlibrary_1_1physics_1_1units_1_1_time_a413c7045742e568efc2e0e2b64eb6c86}{String\+From\+Unit} (const \hyperlink{classlibrary_1_1physics_1_1units_1_1_time_ab876a6a05c9a2f28905f2753bfd64109}{Time\+::\+Unit} \&a\+Unit)
 \item 
@@ -143,6 +151,24 @@ Constructor.
 
 Implements \hyperlink{classlibrary_1_1physics_1_1units_1_1_unit_aff727141d73acddfae382e5e375f4640}{library\+::physics\+::units\+::\+Unit}.
 
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1units_1_1_time_ad058563b71fd972a66b647d6ca8b7fbe}\label{classlibrary_1_1physics_1_1units_1_1_time_ad058563b71fd972a66b647d6ca8b7fbe}} 
+\index{library\+::physics\+::units\+::\+Time@{library\+::physics\+::units\+::\+Time}!get\+Unit@{get\+Unit}}
+\index{get\+Unit@{get\+Unit}!library\+::physics\+::units\+::\+Time@{library\+::physics\+::units\+::\+Time}}
+\subsubsection{\texorpdfstring{get\+Unit()}{getUnit()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1units_1_1_time_ab876a6a05c9a2f28905f2753bfd64109}{Time\+::\+Unit} library\+::physics\+::units\+::\+Time\+::get\+Unit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1units_1_1_time_a88217c85038d0153f699166de8746383}\label{classlibrary_1_1physics_1_1units_1_1_time_a88217c85038d0153f699166de8746383}} 
+\index{library\+::physics\+::units\+::\+Time@{library\+::physics\+::units\+::\+Time}!in@{in}}
+\index{in@{in}!library\+::physics\+::units\+::\+Time@{library\+::physics\+::units\+::\+Time}}
+\subsubsection{\texorpdfstring{in()}{in()}}
+{\footnotesize\ttfamily Real library\+::physics\+::units\+::\+Time\+::in (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1units_1_1_time_ab876a6a05c9a2f28905f2753bfd64109}{Time\+::\+Unit} \&}]{a\+Unit }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1units_1_1_time_a8fb17118722828e091a29a665d402a8e}\label{classlibrary_1_1physics_1_1units_1_1_time_a8fb17118722828e091a29a665d402a8e}} 
+\index{library\+::physics\+::units\+::\+Time@{library\+::physics\+::units\+::\+Time}!in\+Seconds@{in\+Seconds}}
+\index{in\+Seconds@{in\+Seconds}!library\+::physics\+::units\+::\+Time@{library\+::physics\+::units\+::\+Time}}
+\subsubsection{\texorpdfstring{in\+Seconds()}{inSeconds()}}
+{\footnotesize\ttfamily Real library\+::physics\+::units\+::\+Time\+::in\+Seconds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1units_1_1_time_ab62163386c3253277c5ba71782261cad}\label{classlibrary_1_1physics_1_1units_1_1_time_ab62163386c3253277c5ba71782261cad}} 
 \index{library\+::physics\+::units\+::\+Time@{library\+::physics\+::units\+::\+Time}!is\+Defined@{is\+Defined}}
 \index{is\+Defined@{is\+Defined}!library\+::physics\+::units\+::\+Time@{library\+::physics\+::units\+::\+Time}}
@@ -152,6 +178,12 @@ Implements \hyperlink{classlibrary_1_1physics_1_1units_1_1_unit_aff727141d73acdd
 
 
 Reimplemented from \hyperlink{classlibrary_1_1physics_1_1units_1_1_unit_a5ce011c1ffa0fce4cf1f5d42ff06ee78}{library\+::physics\+::units\+::\+Unit}.
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1units_1_1_time_a07132f52798140d876eaeef4292688d4}\label{classlibrary_1_1physics_1_1units_1_1_time_a07132f52798140d876eaeef4292688d4}} 
+\index{library\+::physics\+::units\+::\+Time@{library\+::physics\+::units\+::\+Time}!Seconds@{Seconds}}
+\index{Seconds@{Seconds}!library\+::physics\+::units\+::\+Time@{library\+::physics\+::units\+::\+Time}}
+\subsubsection{\texorpdfstring{Seconds()}{Seconds()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1units_1_1_time}{Time} library\+::physics\+::units\+::\+Time\+::\+Seconds (\begin{DoxyParamCaption}\item[{const Real \&}]{a\+Value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1units_1_1_time_a413c7045742e568efc2e0e2b64eb6c86}\label{classlibrary_1_1physics_1_1units_1_1_time_a413c7045742e568efc2e0e2b64eb6c86}} 
 \index{library\+::physics\+::units\+::\+Time@{library\+::physics\+::units\+::\+Time}!String\+From\+Unit@{String\+From\+Unit}}

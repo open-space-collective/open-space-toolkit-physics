@@ -59,7 +59,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('_model_8hpp.html','');});
+$(document).ready(function(){initNavTree('_magnetic_2_earth_8hpp.html','');});
 </script>
 <div id="doc-content">
 <!-- window showing the filter options -->
@@ -81,18 +81,23 @@ $(document).ready(function(){initNavTree('_model_8hpp.html','');});
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a>  </div>
   <div class="headertitle">
-<div class="title">Model.hpp File Reference</div>  </div>
+<div class="title">Earth.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="_instant_8hpp_source.html">Library/Physics/Time/Instant.hpp</a>&gt;</code><br />
-<code>#include &lt;Library/Mathematics/Objects/Vector.hpp&gt;</code><br />
+<div class="textblock"><code>#include &lt;<a class="el" href="_magnetic_2_model_8hpp_source.html">Library/Physics/Environment/Magnetic/Model.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="_instant_8hpp_source.html">Library/Physics/Time/Instant.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="_derived_8hpp_source.html">Library/Physics/Units/Derived.hpp</a>&gt;</code><br />
+<code>#include &lt;Library/IO/URL.hpp&gt;</code><br />
+<code>#include &lt;Library/Core/FileSystem/Directory.hpp&gt;</code><br />
+<code>#include &lt;Library/Core/Types/Real.hpp&gt;</code><br />
+<code>#include &lt;Library/Core/Types/Unique.hpp&gt;</code><br />
 </div>
-<p><a href="_model_8hpp_source.html">Go to the source code of this file.</a></p>
+<p><a href="_magnetic_2_earth_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_model.html">library::physics::environment::gravitational::Model</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gravitational model (interface)  <a href="classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_model.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlibrary_1_1physics_1_1environment_1_1magnetic_1_1_earth.html">library::physics::environment::magnetic::Earth</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classlibrary_1_1physics_1_1environment_1_1magnetic_1_1_earth.html" title="Earth magnetic model. ">Earth</a> magnetic model.  <a href="classlibrary_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
@@ -103,7 +108,7 @@ Namespaces</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespacelibrary_1_1physics_1_1environment"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelibrary_1_1physics_1_1environment.html">library::physics::environment</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:namespacelibrary_1_1physics_1_1environment_1_1gravitational"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelibrary_1_1physics_1_1environment_1_1gravitational.html">library::physics::environment::gravitational</a></td></tr>
+<tr class="memitem:namespacelibrary_1_1physics_1_1environment_1_1magnetic"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelibrary_1_1physics_1_1environment_1_1magnetic.html">library::physics::environment::magnetic</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -115,7 +120,7 @@ Namespaces</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_f3b5534f769798fe34f6616e7fe90e4d.html">Library</a></li><li class="navelem"><a class="el" href="dir_b086a22c03a0127bdddb748d3540edd1.html">Physics</a></li><li class="navelem"><a class="el" href="dir_da5becb1fdc5727395c91a98fe77e654.html">Environment</a></li><li class="navelem"><a class="el" href="dir_6f50e7f40c2181505144e3fe9ecc76b6.html">Gravitational</a></li><li class="navelem"><a class="el" href="_model_8hpp.html">Model.hpp</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_f3b5534f769798fe34f6616e7fe90e4d.html">Library</a></li><li class="navelem"><a class="el" href="dir_b086a22c03a0127bdddb748d3540edd1.html">Physics</a></li><li class="navelem"><a class="el" href="dir_da5becb1fdc5727395c91a98fe77e654.html">Environment</a></li><li class="navelem"><a class="el" href="dir_50d54167c8ea45b3306e6c00a23dd02e.html">Magnetic</a></li><li class="navelem"><a class="el" href="_magnetic_2_earth_8hpp.html">Earth.hpp</a></li>
   </ul>
 </div>
 </body>

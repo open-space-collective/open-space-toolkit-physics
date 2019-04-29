@@ -33,12 +33,22 @@ virtual \hyperlink{classlibrary_1_1physics_1_1units_1_1_mass}{Mass} $\ast$ \hype
 \item 
 virtual bool \hyperlink{classlibrary_1_1physics_1_1units_1_1_mass_a0efde6eb08d6b79baa84229746776b6a}{is\+Defined} () const override
 \item 
+\hyperlink{classlibrary_1_1physics_1_1units_1_1_mass_a95f1e0434bc16794926b8e273bc2a54b}{Mass\+::\+Unit} \hyperlink{classlibrary_1_1physics_1_1units_1_1_mass_ab564abfc37cc17f2902445f06254082c}{get\+Unit} () const
+\item 
+Real \hyperlink{classlibrary_1_1physics_1_1units_1_1_mass_a85f4a66996e4b52fb5b3a71e42c4d6e3}{in} (const \hyperlink{classlibrary_1_1physics_1_1units_1_1_mass_a95f1e0434bc16794926b8e273bc2a54b}{Mass\+::\+Unit} \&a\+Unit) const
+\item 
+Real \hyperlink{classlibrary_1_1physics_1_1units_1_1_mass_a163fc62b4141ff5d31092dd688745518}{in\+Kilograms} () const
+\item 
 virtual String \hyperlink{classlibrary_1_1physics_1_1units_1_1_mass_a6e7757920752ac9f6918525d6fadb31e}{to\+String} (const Integer \&a\+Precision=Integer\+::\+Undefined()) const override
 \end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 static \hyperlink{classlibrary_1_1physics_1_1units_1_1_mass}{Mass} \hyperlink{classlibrary_1_1physics_1_1units_1_1_mass_af3acc8762e8791a218e877595e94090b}{Undefined} ()
+\item 
+static \hyperlink{classlibrary_1_1physics_1_1units_1_1_mass}{Mass} \hyperlink{classlibrary_1_1physics_1_1units_1_1_mass_a6c334d95b07234aa10002529dff99f2c}{Kilograms} (const Real \&a\+Value)
+\item 
+static \hyperlink{classlibrary_1_1physics_1_1units_1_1_mass}{Mass} \hyperlink{classlibrary_1_1physics_1_1units_1_1_mass_a632ee29b61e4008ddafbc62664dc72c4}{Parse} (const String \&a\+String)
 \item 
 static String \hyperlink{classlibrary_1_1physics_1_1units_1_1_mass_ab2abb07bd20ab0a435b49b494f4ceb3f}{String\+From\+Unit} (const \hyperlink{classlibrary_1_1physics_1_1units_1_1_mass_a95f1e0434bc16794926b8e273bc2a54b}{Mass\+::\+Unit} \&a\+Unit)
 \item 
@@ -115,6 +125,24 @@ Constructor.
 
 Implements \hyperlink{classlibrary_1_1physics_1_1units_1_1_unit_aff727141d73acddfae382e5e375f4640}{library\+::physics\+::units\+::\+Unit}.
 
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1units_1_1_mass_ab564abfc37cc17f2902445f06254082c}\label{classlibrary_1_1physics_1_1units_1_1_mass_ab564abfc37cc17f2902445f06254082c}} 
+\index{library\+::physics\+::units\+::\+Mass@{library\+::physics\+::units\+::\+Mass}!get\+Unit@{get\+Unit}}
+\index{get\+Unit@{get\+Unit}!library\+::physics\+::units\+::\+Mass@{library\+::physics\+::units\+::\+Mass}}
+\subsubsection{\texorpdfstring{get\+Unit()}{getUnit()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1units_1_1_mass_a95f1e0434bc16794926b8e273bc2a54b}{Mass\+::\+Unit} library\+::physics\+::units\+::\+Mass\+::get\+Unit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1units_1_1_mass_a85f4a66996e4b52fb5b3a71e42c4d6e3}\label{classlibrary_1_1physics_1_1units_1_1_mass_a85f4a66996e4b52fb5b3a71e42c4d6e3}} 
+\index{library\+::physics\+::units\+::\+Mass@{library\+::physics\+::units\+::\+Mass}!in@{in}}
+\index{in@{in}!library\+::physics\+::units\+::\+Mass@{library\+::physics\+::units\+::\+Mass}}
+\subsubsection{\texorpdfstring{in()}{in()}}
+{\footnotesize\ttfamily Real library\+::physics\+::units\+::\+Mass\+::in (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1units_1_1_mass_a95f1e0434bc16794926b8e273bc2a54b}{Mass\+::\+Unit} \&}]{a\+Unit }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1units_1_1_mass_a163fc62b4141ff5d31092dd688745518}\label{classlibrary_1_1physics_1_1units_1_1_mass_a163fc62b4141ff5d31092dd688745518}} 
+\index{library\+::physics\+::units\+::\+Mass@{library\+::physics\+::units\+::\+Mass}!in\+Kilograms@{in\+Kilograms}}
+\index{in\+Kilograms@{in\+Kilograms}!library\+::physics\+::units\+::\+Mass@{library\+::physics\+::units\+::\+Mass}}
+\subsubsection{\texorpdfstring{in\+Kilograms()}{inKilograms()}}
+{\footnotesize\ttfamily Real library\+::physics\+::units\+::\+Mass\+::in\+Kilograms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1units_1_1_mass_a0efde6eb08d6b79baa84229746776b6a}\label{classlibrary_1_1physics_1_1units_1_1_mass_a0efde6eb08d6b79baa84229746776b6a}} 
 \index{library\+::physics\+::units\+::\+Mass@{library\+::physics\+::units\+::\+Mass}!is\+Defined@{is\+Defined}}
 \index{is\+Defined@{is\+Defined}!library\+::physics\+::units\+::\+Mass@{library\+::physics\+::units\+::\+Mass}}
@@ -124,6 +152,18 @@ Implements \hyperlink{classlibrary_1_1physics_1_1units_1_1_unit_aff727141d73acdd
 
 
 Reimplemented from \hyperlink{classlibrary_1_1physics_1_1units_1_1_unit_a5ce011c1ffa0fce4cf1f5d42ff06ee78}{library\+::physics\+::units\+::\+Unit}.
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1units_1_1_mass_a6c334d95b07234aa10002529dff99f2c}\label{classlibrary_1_1physics_1_1units_1_1_mass_a6c334d95b07234aa10002529dff99f2c}} 
+\index{library\+::physics\+::units\+::\+Mass@{library\+::physics\+::units\+::\+Mass}!Kilograms@{Kilograms}}
+\index{Kilograms@{Kilograms}!library\+::physics\+::units\+::\+Mass@{library\+::physics\+::units\+::\+Mass}}
+\subsubsection{\texorpdfstring{Kilograms()}{Kilograms()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1units_1_1_mass}{Mass} library\+::physics\+::units\+::\+Mass\+::\+Kilograms (\begin{DoxyParamCaption}\item[{const Real \&}]{a\+Value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1units_1_1_mass_a632ee29b61e4008ddafbc62664dc72c4}\label{classlibrary_1_1physics_1_1units_1_1_mass_a632ee29b61e4008ddafbc62664dc72c4}} 
+\index{library\+::physics\+::units\+::\+Mass@{library\+::physics\+::units\+::\+Mass}!Parse@{Parse}}
+\index{Parse@{Parse}!library\+::physics\+::units\+::\+Mass@{library\+::physics\+::units\+::\+Mass}}
+\subsubsection{\texorpdfstring{Parse()}{Parse()}}
+{\footnotesize\ttfamily static \hyperlink{classlibrary_1_1physics_1_1units_1_1_mass}{Mass} library\+::physics\+::units\+::\+Mass\+::\+Parse (\begin{DoxyParamCaption}\item[{const String \&}]{a\+String }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1units_1_1_mass_ab2abb07bd20ab0a435b49b494f4ceb3f}\label{classlibrary_1_1physics_1_1units_1_1_mass_ab2abb07bd20ab0a435b49b494f4ceb3f}} 
 \index{library\+::physics\+::units\+::\+Mass@{library\+::physics\+::units\+::\+Mass}!String\+From\+Unit@{String\+From\+Unit}}
