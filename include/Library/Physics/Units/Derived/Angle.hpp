@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Units/Derived/Angle.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -60,7 +60,7 @@ class Angle : public Unit
             Arcminute,          ///< Arcminute
             Arcsecond,          ///< Arcsecond
             Revolution          ///< Revolution
-        
+
         } ;
 
         /// @brief              Constructor
@@ -84,19 +84,19 @@ class Angle : public Unit
         bool                    operator !=                                 (   const   Angle&                      anAngle                                     ) const ;
 
         Angle                   operator +                                  (   const   Angle&                      anAngle                                     ) const ;
-        
+
         Angle                   operator -                                  (   const   Angle&                      anAngle                                     ) const ;
-        
+
         Angle                   operator *                                  (   const   Real&                       aReal                                       ) const ;
-        
+
         Angle                   operator /                                  (   const   Real&                       aReal                                       ) const ;
 
         Angle&                  operator +=                                 (   const   Angle&                      anAngle                                     ) ;
-        
+
         Angle&                  operator -=                                 (   const   Angle&                      anAngle                                     ) ;
-        
+
         Angle&                  operator *=                                 (   const   Real&                       aReal                                       ) ;
-        
+
         Angle&                  operator /=                                 (   const   Real&                       aReal                                       ) ;
 
         friend Angle            operator *                                  (   const   Real&                       aReal,
@@ -117,7 +117,7 @@ class Angle : public Unit
 
         Real                    inRadians                                   (   const   Real&                       aLowerBound,
                                                                                 const   Real&                       anUpperBound                                ) const ;
-        
+
         Real                    inDegrees                                   ( ) const ;
 
         Real                    inDegrees                                   (   const   Real&                       aLowerBound,
@@ -136,19 +136,19 @@ class Angle : public Unit
         Real                    inRevolutions                               ( ) const ;
 
         virtual String          toString                                    (   const   Integer&                    aPrecision                                  =   Integer::Undefined() ) const override ;
-                                                                                
+
         static Angle            Undefined                                   ( ) ;
 
         static Angle            Zero                                        ( ) ;
 
         static Angle            HalfPi                                      ( ) ;
-        
+
         static Angle            Pi                                          ( ) ;
 
         static Angle            TwoPi                                       ( ) ;
 
         static Angle            Radians                                     (   const   Real&                       aValue                                      ) ;
-        
+
         static Angle            Degrees                                     (   const   Real&                       aValue                                      ) ;
 
         static Angle            Arcminutes                                  (   const   Real&                       aValue                                      ) ;
@@ -159,10 +159,10 @@ class Angle : public Unit
 
         static Angle            Between                                     (   const   Vector2d&                   aFirstVector,
                                                                                 const   Vector2d&                   aSecondVector                               ) ;
-        
+
         static Angle            Between                                     (   const   Vector3d&                   aFirstVector,
                                                                                 const   Vector3d&                   aSecondVector                               ) ;
-        
+
         static Angle            Parse                                       (   const   String&                     aString                                     ) ;
 
         static String           StringFromUnit                              (   const   Angle::Unit&                aUnit                                       ) ;

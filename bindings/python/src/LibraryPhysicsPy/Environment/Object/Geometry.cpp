@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           LibraryPhysicsPy/Environment/Object/Geometry.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -60,12 +60,12 @@ inline void                     LibraryPhysicsPy_Environment_Object_Geometry ( )
         .def("isDefined", &Geometry::isDefined)
         .def("intersects", &Geometry::intersects)
         .def("contains", &Geometry::contains)
-        
+
         .def("accessComposite", &Geometry::accessComposite, return_value_policy<reference_existing_object>())
         .def("accessFrame", &Geometry::accessFrame)
         .def("inFrame", &Geometry::in)
         .def("intersectionWith", &Geometry::intersectionWith)
-        
+
         .def("Undefined", &Geometry::Undefined).staticmethod("Undefined")
 
     ;

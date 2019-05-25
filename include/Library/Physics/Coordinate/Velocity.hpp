@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Coordinate/Velocity.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -67,7 +67,7 @@ class Velocity
                                                                                 const   Shared<const Frame>&        aFrameSPtr                                  ) ;
 
         bool                    operator ==                                 (   const   Velocity&                   aVelocity                                   ) const ;
-        
+
         bool                    operator !=                                 (   const   Velocity&                   aVelocity                                   ) const ;
 
         friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,

@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Coordinate/Transform.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -68,7 +68,7 @@ class Transform
                                                                                 const   Transform::Type&            aType                                       ) ;
 
         bool                    operator ==                                 (   const   Transform&                  aTransform                                  ) const ;
-        
+
         bool                    operator !=                                 (   const   Transform&                  aTransform                                  ) const ;
 
         Transform               operator *                                  (   const   Transform&                  aTransform                                  ) const ;
@@ -89,17 +89,17 @@ class Transform
         const Vector3d&         accessVelocity                              ( ) const ;
 
         const Quaternion&       accessOrientation                           ( ) const ;
-        
+
         const Vector3d&         accessAngularVelocity                       ( ) const ;
 
         Instant                 getInstant                                  ( ) const ;
-        
+
         Vector3d                getTranslation                              ( ) const ;
-        
+
         Vector3d                getVelocity                                 ( ) const ;
 
         Quaternion              getOrientation                              ( ) const ;
-        
+
         Vector3d                getAngularVelocity                          ( ) const ;
 
         Transform               getInverse                                  ( ) const ;
@@ -130,7 +130,7 @@ class Transform
     private:
 
         Instant                 instant_ ;
-        
+
         Vector3d                translation_ ;
         Vector3d                velocity_ ;
 

@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Time/Scale.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -72,7 +72,7 @@ String                          StringFromScale                             (   
 
         case Scale::IRNSST:
             return "IRNSST" ;
-        
+
         default:
             throw library::core::error::runtime::Wrong("Scale") ;
             break ;

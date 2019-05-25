@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           LibraryPhysicsPy/Time/DateTime.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -67,11 +67,11 @@ struct DateTimeFromPythonDateTime
         // Create DateTime object
 
         void* storage = ((boost::python::converter::rvalue_from_python_storage<DateTime>*) data)->storage.bytes ;
-        
+
         new (storage) DateTime (year, month, day, hour, minute, second, millisecond, microsecond) ;
-        
+
         data->convertible = storage ;
-    
+
     }
 
 } ;
@@ -122,7 +122,7 @@ inline void                     LibraryPhysicsPy_Time_DateTime              ( )
         .def(self != self)
 
         .def(self_ns::str(self_ns::self))
-        
+
         .def("__repr__", +[] (const DateTime& aDateTime) -> std::string { return aDateTime.toString() ; })
 
         .def("isDefined", &DateTime::isDefined)

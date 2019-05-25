@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           LibraryPhysicsPy/Time/Instant.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -41,13 +41,13 @@ inline void                     LibraryPhysicsPy_Time_Instant               ( )
         .def(self -= other<Duration>())
 
         .def(self_ns::str(self_ns::self))
-        
+
         .def("__repr__", +[] (const Instant& anInstant) -> std::string { return anInstant.toString() ; })
 
         .def("isDefined", &Instant::isDefined)
         .def("isPostEpoch", &Instant::isPostEpoch)
         .def("isNear", &Instant::isNear)
-        
+
         .def("getDateTime", &Instant::getDateTime)
         .def("getJulianDate", &Instant::getJulianDate)
         .def("getModifiedJulianDate", &Instant::getModifiedJulianDate)
@@ -69,7 +69,7 @@ inline void                     LibraryPhysicsPy_Time_Instant               ( )
 
         .from_python<Array<Instant>>()
         .to_python<Array<Instant>>()
-        
+
     ;
 
 }

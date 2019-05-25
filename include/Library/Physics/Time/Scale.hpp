@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Time/Scale.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -43,13 +43,13 @@ enum class Scale
     UTC,                        ///< Coordinated Universal Time
     TT,                         ///< Terrestial Time (a.k.a. TDT)
     TAI,                        ///< International Atomic Time
-    
+
     UT1,                        ///< Universal Time
     TCG,                        ///< Geocentric Coordinate Time
     TCB,                        ///< Barycentric Coordinate Time
     TDB,                        ///< Barycentric Dynamic Time
     GMST,                       ///< Greenwich Mean Sidereal Time
-    
+
     GPST,                       ///< Global Positioning System (GPS) Time
     GST,                        ///< Galileo System Time
     GLST,                       ///< GLONASS Time

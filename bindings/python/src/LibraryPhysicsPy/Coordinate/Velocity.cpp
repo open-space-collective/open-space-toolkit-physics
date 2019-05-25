@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           LibraryPhysicsPy/Coordinate/Velocity.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -41,7 +41,7 @@ inline void                     LibraryPhysicsPy_Coordinate_Velocity        ( )
         .def("inUnit", &Velocity::inUnit)
         .def("inFrame", &Velocity::inFrame)
         .def("toString", &Velocity::toString, LibraryPhysicsPy_Coordinate_Velocity_toString_overloads())
-        
+
         .def("Undefined", &Velocity::Undefined).staticmethod("Undefined")
         .def("MetersPerSecond", &Velocity::MetersPerSecond).staticmethod("MetersPerSecond")
         .def("StringFromUnit", &Velocity::StringFromUnit).staticmethod("StringFromUnit")

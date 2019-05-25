@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           LibraryPhysicsPy/Coordinate.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -18,13 +18,13 @@
 
 inline void                     LibraryPhysicsPy_Coordinate                      ( )
 {
-    
+
     boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("Library.Physics.Coordinate")))) ;
-    
+
     boost::python::scope().attr("Coordinate") = module ;
-    
+
     boost::python::scope scope = module ;
-    
+
     LibraryPhysicsPy_Coordinate_Spherical() ;
     LibraryPhysicsPy_Coordinate_Position() ;
     LibraryPhysicsPy_Coordinate_Velocity() ;

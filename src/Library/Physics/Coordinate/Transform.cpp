@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Coordinate/Transform.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -63,7 +63,7 @@ bool                            Transform::operator ==                      (   
     {
         return false ;
     }
-    
+
     return (instant_ == aTransform.instant_)
         && (translation_ == aTransform.translation_)
         && (velocity_ == aTransform.velocity_)
@@ -115,10 +115,10 @@ Transform&                      Transform::operator *=                      (   
 
     // t_C_A_in_A = t_B_A_in_A + q_A_B * t_C_B_in_B
 
-    const Vector3d translation = aTransform.translation_ + aTransform.orientation_.toConjugate() * translation_ ; 
-    
+    const Vector3d translation = aTransform.translation_ + aTransform.orientation_.toConjugate() * translation_ ;
+
     // v_C_A_in_A = v_B_A_in_A + q_A_B * v_C_B_in_B + Ω_B_C_in_A x t_B_A_in_A
-    
+
     const Vector3d velocity = aTransform.velocity_ + aTransform.orientation_.toConjugate() * velocity_ + angularVelocity_.cross(aTransform.translation_) ;
 
     // q_C_A = q_C_B * q_B_A
@@ -149,7 +149,7 @@ std::ostream&                   operator <<                                 (   
     library::core::utils::Print::Header(anOutputStream, "Transform") ;
 
     library::core::utils::Print::Line(anOutputStream) << "Instant:"             << (aTransform.isDefined() ? aTransform.accessInstant().toString(Scale::UTC) : "Undefined") ;
-    
+
     library::core::utils::Print::Line(anOutputStream) << "Translation:"         << (aTransform.isDefined() ? (aTransform.accessTranslation().toString() + " [m]") : "Undefined") ;
     library::core::utils::Print::Line(anOutputStream) << "Velocity:"            << (aTransform.isDefined() ? (aTransform.accessVelocity().toString() + " [m/s]") : "Undefined") ;
 
@@ -165,10 +165,10 @@ std::ostream&                   operator <<                                 (   
 bool                            Transform::isDefined                        ( ) const
 {
 
-    return instant_.isDefined() 
-        && translation_.isDefined() 
-        && velocity_.isDefined() 
-        && orientation_.isDefined() 
+    return instant_.isDefined()
+        && translation_.isDefined()
+        && velocity_.isDefined()
+        && orientation_.isDefined()
         && angularVelocity_.isDefined() ;
 
 }
@@ -195,7 +195,7 @@ const Instant&                  Transform::accessInstant                    ( ) 
     {
         throw library::core::error::runtime::Undefined("Transform") ;
     }
-    
+
     return instant_ ;
 
 }
@@ -207,7 +207,7 @@ const Vector3d&                 Transform::accessTranslation                ( ) 
     {
         throw library::core::error::runtime::Undefined("Transform") ;
     }
-    
+
     return translation_ ;
 
 }
@@ -219,7 +219,7 @@ const Vector3d&                 Transform::accessVelocity                   ( ) 
     {
         throw library::core::error::runtime::Undefined("Transform") ;
     }
-    
+
     return velocity_ ;
 
 }
@@ -231,11 +231,11 @@ const Quaternion&               Transform::accessOrientation                ( ) 
     {
         throw library::core::error::runtime::Undefined("Transform") ;
     }
-    
+
     return orientation_ ;
 
 }
-        
+
 const Vector3d&                 Transform::accessAngularVelocity            ( ) const
 {
 
@@ -243,7 +243,7 @@ const Vector3d&                 Transform::accessAngularVelocity            ( ) 
     {
         throw library::core::error::runtime::Undefined("Transform") ;
     }
-    
+
     return angularVelocity_ ;
 
 }
@@ -255,7 +255,7 @@ Instant                         Transform::getInstant                       ( ) 
     {
         throw library::core::error::runtime::Undefined("Transform") ;
     }
-    
+
     return instant_ ;
 
 }
@@ -267,7 +267,7 @@ Vector3d                        Transform::getTranslation                   ( ) 
     {
         throw library::core::error::runtime::Undefined("Transform") ;
     }
-    
+
     return translation_ ;
 
 }
@@ -279,7 +279,7 @@ Vector3d                        Transform::getVelocity                      ( ) 
     {
         throw library::core::error::runtime::Undefined("Transform") ;
     }
-    
+
     return velocity_ ;
 
 }
@@ -291,11 +291,11 @@ Quaternion                      Transform::getOrientation                   ( ) 
     {
         throw library::core::error::runtime::Undefined("Transform") ;
     }
-    
+
     return orientation_ ;
 
 }
-        
+
 Vector3d                        Transform::getAngularVelocity               ( ) const
 {
 
@@ -303,7 +303,7 @@ Vector3d                        Transform::getAngularVelocity               ( ) 
     {
         throw library::core::error::runtime::Undefined("Transform") ;
     }
-    
+
     return angularVelocity_ ;
 
 }

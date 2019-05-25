@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Coordinate/Frame/Providers/IERS/BulletinA.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -127,7 +127,7 @@ class BulletinA
         const Interval&         accessObservationInterval                   ( ) const ;
 
         const Interval&         accessPredictionInterval                    ( ) const ;
-        
+
         Date                    getReleaseDate                              ( ) const ;
 
         Duration                getTAIMinusUTC                              ( ) const ;
@@ -139,7 +139,7 @@ class BulletinA
         BulletinA::Observation  getObservationAt                            (   const   Instant&                    anInstant                                   ) const ;
 
         Interval                getPredictionInterval                       ( ) const ;
-        
+
         BulletinA::Prediction   getPredictionAt                             (   const   Instant&                    anInstant                                   ) const ;
 
         static BulletinA        Undefined                                   ( ) ;

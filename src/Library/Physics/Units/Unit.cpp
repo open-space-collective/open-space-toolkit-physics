@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Units/Unit.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -42,7 +42,7 @@ bool                            Unit::operator ==                           (   
     }
 
     return (type_ == aUnit.type_) && (value_ == aUnit.value_) ;
-    
+
 }
 
 bool                            Unit::operator !=                           (   const   Unit&                       aUnit                                       ) const

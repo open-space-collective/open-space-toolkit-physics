@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           LibraryPhysicsPy/Coordinate/Axes.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -38,7 +38,7 @@ inline void                     LibraryPhysicsPy_Coordinate_Axes            ( )
         .def("z", +[] (const Axes& anAxes) -> Vector3d { return anAxes.z() ; })
         .def("getFrame", &Axes::getFrame)
         .def("inFrame", &Axes::inFrame)
-        
+
         .def("Undefined", &Axes::Undefined).staticmethod("Undefined")
 
     ;

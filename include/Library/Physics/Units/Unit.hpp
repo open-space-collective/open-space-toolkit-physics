@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Units/Unit.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -56,7 +56,7 @@ class Unit
             ElectricCurrent,
             LuminousIntensity,
             Derived
-        
+
         } ;
 
                                 Unit                                        (   const   Unit::Type&                 aType,
@@ -67,7 +67,7 @@ class Unit
         virtual Unit*           clone                                       ( ) const = 0 ;
 
         bool                    operator ==                                 (   const   Unit&                       aUnit                                       ) const ;
-        
+
         bool                    operator !=                                 (   const   Unit&                       aUnit                                       ) const ;
 
         virtual bool            isDefined                                   ( ) const ;

@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           LibraryPhysicsPy/Time.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -19,13 +19,13 @@
 
 inline void                     LibraryPhysicsPy_Time                       ( )
 {
-    
+
     boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("Library.Physics.Time")))) ;
-    
+
     boost::python::scope().attr("Time") = module ;
-    
+
     boost::python::scope scope = module ;
-    
+
     LibraryPhysicsPy_Time_Scale() ;
     LibraryPhysicsPy_Time_Instant() ;
     LibraryPhysicsPy_Time_Duration() ;

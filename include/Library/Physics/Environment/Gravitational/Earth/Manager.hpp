@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Environment/Gravitational/Earth/Manager.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -100,7 +100,7 @@ class Manager
         /// @param              [in] aModelType A model type
 
         void                    fetchDataFileForType                        (   const   EarthGravitationalModel::Type& aModelType                               ) const ;
-        
+
         /// @brief              Set local repository
         ///
         /// @param              [in] aDirectory A repository directory
@@ -167,7 +167,7 @@ class Manager
         URL                     remoteUrl_ ;
 
         bool                    enabled_ ;
-        
+
         mutable std::mutex      mutex_ ;
 
                                 Manager                                     ( ) ;

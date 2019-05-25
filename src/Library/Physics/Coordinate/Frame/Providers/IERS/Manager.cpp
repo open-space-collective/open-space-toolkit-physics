@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Coordinate/Frame/Providers/IERS/Manager.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -147,7 +147,7 @@ Vector2d                        Manager::getPolarMotionAt                   (   
 
         }
         else
-        {            
+        {
             throw library::core::error::RuntimeError("Cannot obtain polar motion from Bulletin A at [{}].", anInstant.toString()) ;
         }
 
@@ -198,7 +198,7 @@ Real                            Manager::getUt1MinusUtcAt                   (   
 
         }
         else
-        {            
+        {
             throw library::core::error::RuntimeError("Cannot obtain UT1 - UTC from Bulletin A at [{}].", anInstant.toString()) ;
         }
 
@@ -338,7 +338,7 @@ void                            Manager::reset                              ( )
 
     aBulletins_.clear() ;
     finals2000aArray_.clear() ;
-        
+
 }
 
 Manager&                        Manager::Get                                ( )
@@ -357,7 +357,7 @@ Manager::Mode                   Manager::DefaultMode                        ( )
 
     if (const char* modeString = std::getenv("LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE"))
     {
-        
+
         if (strcmp(modeString, "Manual") == 0)
         {
             return Manager::Mode::Manual ;
@@ -370,7 +370,7 @@ Manager::Mode                   Manager::DefaultMode                        ( )
         {
             throw library::core::error::runtime::Wrong("Mode", modeString) ;
         }
-        
+
     }
 
     return defaultMode ;
@@ -388,9 +388,9 @@ Directory                       Manager::DefaultLocalRepository             ( )
     {
         return Directory::Path(Path::Parse(localRepositoryPath)) ;
     }
-    
+
     return defaultLocalRepository ;
-    
+
 }
 
 Duration                        Manager::DefaultLocalRepositoryLockTimeout  ( )
@@ -402,7 +402,7 @@ Duration                        Manager::DefaultLocalRepositoryLockTimeout  ( )
     {
         return Duration::Parse(localRepositoryLockTimeoutString) ;
     }
-    
+
     return defaultLocalRepositoryLockTimeout ;
 
 }
@@ -416,7 +416,7 @@ URL                             Manager::DefaultRemoteUrl                   ( )
     {
         return URL::Parse(remoteUrl) ;
     }
-    
+
     return defaultRemoteUrl ;
 
 }
@@ -467,7 +467,7 @@ const BulletinA*                Manager::accessBulletinAAt                  (   
     {
 
         aBulletinIndex_ = 0 ;
-    
+
         for (const auto& bulletinA : aBulletins_)
         {
 
@@ -500,10 +500,10 @@ const BulletinA*                Manager::accessBulletinAAt                  (   
                 bulletinAUpdateInstant_ = currentInstant ;
 
                 const BulletinA bulletinA = BulletinA::Load(latestBulletinAFile) ;
-                
+
                 if (bulletinA.accessObservationInterval().contains(anInstant))
                 {
-                    
+
                     const_cast<Manager*>(this)->loadBulletinA_(bulletinA) ;
 
                     aBulletinIndex_ = aBulletins_.getSize() - 1 ;
@@ -523,7 +523,7 @@ const BulletinA*                Manager::accessBulletinAAt                  (   
     {
 
         aBulletinIndex_ = 0 ;
-    
+
         for (const auto& bulletinA : aBulletins_)
         {
 
@@ -572,7 +572,7 @@ const Finals2000A*              Manager::accessFinals2000AAt                (   
     {
 
         finals2000aIndex_ = 0 ;
-    
+
         for (const auto& finals2000a : finals2000aArray_)
         {
 
@@ -605,10 +605,10 @@ const Finals2000A*              Manager::accessFinals2000AAt                (   
                 finals2000AUpdateInstant_ = currentInstant ;
 
                 const Finals2000A finals2000A = Finals2000A::Load(latestFinals2000AFile) ;
-                
+
                 if (finals2000A.getInterval().contains(anInstant))
                 {
-                    
+
                     const_cast<Manager*>(this)->loadFinals2000A_(finals2000A) ;
 
                     finals2000aIndex_ = finals2000aArray_.getSize() - 1 ;
@@ -618,7 +618,7 @@ const Finals2000A*              Manager::accessFinals2000AAt                (   
                 }
 
             }
-            
+
         }
 
     }
@@ -637,7 +637,7 @@ File                            Manager::getLocalRepositoryLockFile         ( ) 
 {
 
     using library::core::fs::Path ;
-    
+
     return File::Path(localRepository_.getPath() + Path::Parse(".lock")) ;
 
 }
@@ -647,7 +647,7 @@ File                            Manager::getLatestBulletinAFile             ( ) 
 
     using library::core::ctnr::Map ;
     using library::core::fs::Path ;
-    
+
     using library::physics::time::Scale ;
     using library::physics::time::Date ;
     using library::physics::time::Time ;
@@ -667,7 +667,7 @@ File                            Manager::getLatestBulletinAFile             ( ) 
             const Instant instant = Instant::DateTime({date, Time::Midnight()}, Scale::UTC) ;
 
             const File bulletinFile = File::Path(directory.getPath() + Path::Parse("ser7.dat")) ;
-            
+
             bulletinAMap.insert({ instant, bulletinFile }) ;
 
         }
@@ -688,7 +688,7 @@ File                            Manager::getLatestFinals2000AFile           ( ) 
 
     using library::core::ctnr::Map ;
     using library::core::fs::Path ;
-    
+
     using library::physics::time::Scale ;
     using library::physics::time::Date ;
     using library::physics::time::Time ;
@@ -708,7 +708,7 @@ File                            Manager::getLatestFinals2000AFile           ( ) 
             const Instant instant = Instant::DateTime({date, Time::Midnight()}, Scale::UTC) ;
 
             const File finals2000AFile = File::Path(directory.getPath() + Path::Parse("finals2000A.data")) ;
-            
+
             finals2000AMap.insert({ instant, finals2000AFile }) ;
 
         }
@@ -834,7 +834,7 @@ File                            Manager::fetchLatestBulletinA_              ( )
     using library::core::fs::Path ;
 
     using library::io::ip::tcp::http::Client ;
-    
+
     using library::physics::time::Scale ;
     using library::physics::time::Date ;
     using library::physics::time::Time ;
@@ -908,7 +908,7 @@ File                            Manager::fetchLatestBulletinA_              ( )
     //         }
 
     //     }
-        
+
     // }
 
     // if (listingFile.exists())
@@ -934,7 +934,7 @@ File                            Manager::fetchLatestBulletinA_              ( )
     {
 
         this->lockLocalRepository(localRepositoryLockTimeout_) ;
-        
+
         latestBulletinAFile = Client::Fetch(remoteUrl, temporaryDirectory) ;
 
         // [TBI] Add file size verification
@@ -947,7 +947,7 @@ File                            Manager::fetchLatestBulletinA_              ( )
         const BulletinA latestBulletinA = BulletinA::Load(latestBulletinAFile) ;
 
         destinationDirectory = Directory::Path(localRepository_.getPath() + Path::Parse(latestBulletinA.accessReleaseDate().toString())) ;
-        
+
         if (destinationDirectory.exists())
         {
             destinationDirectory.remove() ;
@@ -958,7 +958,7 @@ File                            Manager::fetchLatestBulletinA_              ( )
         latestBulletinAFile.moveToDirectory(destinationDirectory) ;
 
         temporaryDirectory.remove() ;
-        
+
     }
     catch (const library::core::error::Exception& anException)
     {
@@ -974,7 +974,7 @@ File                            Manager::fetchLatestBulletinA_              ( )
         }
 
         this->unlockLocalRepository() ;
-        
+
     }
 
     return latestBulletinAFile ;
@@ -992,7 +992,7 @@ File                            Manager::fetchLatestFinals2000A_            ( )
     using library::core::fs::Path ;
 
     using library::io::ip::tcp::http::Client ;
-    
+
     using library::physics::time::Scale ;
     using library::physics::time::Date ;
     using library::physics::time::Time ;
@@ -1057,7 +1057,7 @@ File                            Manager::fetchLatestFinals2000A_            ( )
         }
 
         this->unlockLocalRepository() ;
-        
+
     }
 
     return latestFinals2000AFile ;
@@ -1075,7 +1075,7 @@ void                            Manager::lockLocalRepository                (   
 
             try
             {
-                
+
                 aLockFile.create() ;
 
                 return true ;
@@ -1087,7 +1087,7 @@ void                            Manager::lockLocalRepository                (   
             }
 
             return false ;
-            
+
         }
 
         return false ;

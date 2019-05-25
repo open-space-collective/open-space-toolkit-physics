@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           LibraryPhysicsPy.cxx
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -20,7 +20,7 @@ BOOST_PYTHON_MODULE (LibraryPhysicsPy)
 {
 
     boost::python::object package = boost::python::scope() ;
-    
+
     package.attr("__path__") = "Library" ;
 
     LibraryPhysicsPy_Units() ;

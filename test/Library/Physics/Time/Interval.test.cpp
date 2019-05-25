@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Time/Interval.test.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -89,7 +89,7 @@ TEST (Library_Physics_Time_Interval, IsDefined)
     }
 
     {
-        
+
         EXPECT_FALSE(Interval::Undefined().isDefined()) ;
 
         EXPECT_FALSE(Interval(Instant::Undefined(), Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT), Interval::Type::Closed).isDefined()) ;
@@ -290,7 +290,7 @@ TEST (Library_Physics_Time_Interval, ToString)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(Interval::Undefined().toString(Scale::TT)) ;
 
     }

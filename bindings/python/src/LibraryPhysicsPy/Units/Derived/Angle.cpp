@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           LibraryPhysicsPy/Units/Derived/Angle.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -57,7 +57,7 @@ inline void                     LibraryPhysicsPy_Units_Derived_Angle        ( )
         .def("inArcseconds", +[] (const Angle& anAngle) -> Real { return anAngle.inArcseconds() ; })
         .def("inRevolutions", &Angle::inRevolutions)
         .def("toString", &Angle::toString, LibraryPhysicsPy_Units_Angle_toString_overloads())
-        
+
         .def("Undefined", &Angle::Undefined).staticmethod("Undefined")
         .def("Zero", &Angle::Zero).staticmethod("Zero")
         .def("HalfPi", &Angle::HalfPi).staticmethod("HalfPi")
@@ -108,7 +108,7 @@ inline void                     LibraryPhysicsPy_Units_Derived_Angle        ( )
 
     //     .def("Undefined", &Interval<Angle>::Undefined).staticmethod("Undefined")
     //     .def("Closed", &Interval<Angle>::Closed).staticmethod("Closed")
-    
+
     // ;
 
 }

@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Time/Instant.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -75,7 +75,7 @@ class Instant
         ///
         /// @param              [in] anInstant An instant
         /// @return             True if instants are not equal
-        
+
         bool                    operator !=                                 (   const   Instant&                    anInstant                                   ) const ;
 
         /// @brief              Less than operator
@@ -86,7 +86,7 @@ class Instant
         ///
         /// @param              [in] anInstant An instant
         /// @return             True if lhs duration is less than rhs duration
-        
+
         bool                    operator <                                  (   const   Instant&                    anInstant                                   ) const ;
 
         /// @brief              Less than or equal to operator
@@ -97,7 +97,7 @@ class Instant
         ///
         /// @param              [in] anInstant An instant
         /// @return             True if lhs duration is less than or equal to rhs duration
-        
+
         bool                    operator <=                                 (   const   Instant&                    anInstant                                   ) const ;
 
         /// @brief              Greater than operator
@@ -108,7 +108,7 @@ class Instant
         ///
         /// @param              [in] anInstant An instant
         /// @return             True if lhs duration is greater than rhs duration
-        
+
         bool                    operator >                                  (   const   Instant&                    anInstant                                   ) const ;
 
         /// @brief              Greater than operator
@@ -119,7 +119,7 @@ class Instant
         ///
         /// @param              [in] anInstant An instant
         /// @return             True if lhs duration is greater than or equal to rhs duration
-        
+
         bool                    operator >=                                 (   const   Instant&                    anInstant                                   ) const ;
 
         /// @brief              Addition operator

@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Coordinate/Axes.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -52,7 +52,7 @@ class Axes
                                                                                 const   Shared<const Frame>&        aFrameSPtr                                  ) ;
 
         bool                    operator ==                                 (   const   Axes&                       anAxes                                      ) const ;
-        
+
         bool                    operator !=                                 (   const   Axes&                       anAxes                                      ) const ;
 
         friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,

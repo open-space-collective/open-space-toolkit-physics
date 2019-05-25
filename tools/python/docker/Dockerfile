@@ -1,6 +1,6 @@
 ################################################################################################################################################################
 
-# @project        Library/Physics
+# @project        Library ▸ Physics
 # @file           tools/python/docker/Dockerfile
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        Apache License 2.0
@@ -28,7 +28,7 @@ RUN chown -R ${NB_UID}:${NB_UID} /home/jovyan/.jupyter
 
 USER ${NB_UID}
 
-RUN pip install LibraryPhysicsPy
+RUN pip install LibraryPhysicsPy==0.2.6
 
 RUN mkdir -p /home/jovyan/.library
 

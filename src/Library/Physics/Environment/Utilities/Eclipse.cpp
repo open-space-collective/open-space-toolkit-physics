@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Environment/Utilities/Eclipse.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -81,7 +81,7 @@ Array<Interval>                 eclipseIntervalsAtPosition                  (   
     {
         throw library::core::error::runtime::Undefined("Analysis interval") ;
     }
-    
+
     if (!aPosition.isDefined())
     {
         throw library::core::error::runtime::Undefined("Position") ;
@@ -116,12 +116,12 @@ Array<Interval>                 eclipseIntervalsAtPosition                  (   
         }
         else if ((!inEclipse) && eclipseStartInstant.isDefined())
         {
-            
+
             eclipseIntervals.add(Interval::Closed(eclipseStartInstant, eclipseEndInstant)) ;
 
             eclipseStartInstant = Instant::Undefined() ;
             eclipseEndInstant = Instant::Undefined() ;
-            
+
         }
 
         eclipseEndInstant = instant ;

@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Time/Interval.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -178,7 +178,7 @@ Array<Instant>                  Interval::generateGrid                      (   
     // {
     //     throw library::core::error::runtime::Undefined("Time step") ;
     // }
-    
+
     // if (aTimeStep.isZero())
     // {
     //     throw library::core::error::RuntimeError("Time step is zero.") ;
@@ -193,11 +193,11 @@ Array<Instant>                  Interval::generateGrid                      (   
 
     //     while (instant <= this->accessUpperBound())
     //     {
-            
+
     //         grid.add(instant) ;
-            
+
     //         instant += aTimeStep ;
-        
+
     //     }
 
     //     if (grid.accessLast() < this->accessUpperBound())
@@ -213,11 +213,11 @@ Array<Instant>                  Interval::generateGrid                      (   
 
     //     while (instant >= this->accessLowerBound())
     //     {
-            
+
     //         grid.add(instant) ;
-            
+
     //         instant += aTimeStep ;
-        
+
     //     }
 
     //     if (grid.accessLast() > this->accessLowerBound())
@@ -239,7 +239,7 @@ Interval                        Interval::Undefined                         ( )
 Interval                        Interval::Closed                            (   const   Instant&                    aLowerBound,
                                                                                 const   Instant&                    anUpperBound                                )
 {
-    
+
     if (!aLowerBound.isDefined())
     {
         throw library::core::error::runtime::Undefined("Lower bound") ;
@@ -313,19 +313,19 @@ Interval                        Interval::Parse                             (   
 
         if ((openingBracket == "[") && (closingBracket == "]"))
         {
-            type = Interval::Type::Closed ;   
+            type = Interval::Type::Closed ;
         }
         else if ((openingBracket == "]") && (closingBracket == "["))
         {
-            type = Interval::Type::Open ;   
+            type = Interval::Type::Open ;
         }
         else if ((openingBracket == "]") && (closingBracket == "]"))
         {
-            type = Interval::Type::HalfOpenLeft ;   
+            type = Interval::Type::HalfOpenLeft ;
         }
         else if ((openingBracket == "[") && (closingBracket == "["))
         {
-            type = Interval::Type::HalfOpenRight ;   
+            type = Interval::Type::HalfOpenRight ;
         }
         else
         {

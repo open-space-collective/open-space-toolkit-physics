@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Environment/Object/Geometry.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -106,7 +106,7 @@ std::ostream&                   operator <<                                 (   
     library::core::utils::Print::Line(anOutputStream) << "Objects:" ;
 
     aGeometry.composite_.print(anOutputStream, false) ;
-    
+
     library::core::utils::Print::Line(anOutputStream) << "Frame:"               << (((aGeometry.frameSPtr_ != nullptr) && aGeometry.frameSPtr_->isDefined()) ? aGeometry.frameSPtr_->getName() : "Undefined") ;
 
     library::core::utils::Print::Footer(anOutputStream) ;
@@ -204,7 +204,7 @@ Geometry                        Geometry::in                                (   
     using library::math::geom::d3::trf::rot::Quaternion ;
     using library::math::geom::d3::trf::rot::RotationVector ;
     using library::math::geom::d3::trf::rot::RotationMatrix ;
-    
+
     using library::physics::coord::Transform ;
 
     if ((aFrameSPtr == nullptr) || (!aFrameSPtr->isDefined()))
@@ -284,7 +284,7 @@ Geometry                        Geometry::intersectionWith                  (   
     {
         return { Composite::Undefined(), frameSPtr_ } ;
     }
-    
+
     return { intersection.accessComposite(), frameSPtr_ } ;
 
 }

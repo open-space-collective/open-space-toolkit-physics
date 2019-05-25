@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Time/Time.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -90,7 +90,7 @@ class Time
         ///
         /// @param              [in] aTime A time
         /// @return             True if times are not equal
-        
+
         bool                    operator !=                                 (   const   Time&                       aTime                                       ) const ;
 
         /// @brief              Output stream operator
@@ -119,37 +119,37 @@ class Time
         /// @brief              Get hour (0 - 23)
         ///
         /// @return             Hour
-        
+
         Uint8                   getHour                                     ( ) const ;
 
         /// @brief              Get minute (0 - 59)
         ///
         /// @return             Minute
-        
+
         Uint8                   getMinute                                   ( ) const ;
 
         /// @brief              Get second (0 - 60)
         ///
         /// @return             Second
-        
+
         Uint8                   getSecond                                   ( ) const ;
 
         /// @brief              Get millisecond (0 - 999)
         ///
         /// @return             Millisecond
-        
+
         Uint16                  getMillisecond                              ( ) const ;
 
         /// @brief              Get microsecond (0 - 999)
         ///
         /// @return             Microsecond
-        
+
         Uint16                  getMicrosecond                              ( ) const ;
 
         /// @brief              Get nanosecond (0 - 999)
         ///
         /// @return             Nanosecond
-        
+
         Uint16                  getNanosecond                               ( ) const ;
 
         /// @brief              Get floating seconds (0.0 - 59.999999999)
@@ -172,37 +172,37 @@ class Time
         /// @brief              Set hour
         ///
         /// @param              [in] anHour An hour (0 - 23)
-        
+
         void                    setHour                                     (           Uint8                       anHour                                      ) ;
 
         /// @brief              Set minute
         ///
         /// @param              [in] aMinute A minute (0 - 59)
-        
+
         void                    setMinute                                   (           Uint8                       aMinute                                     ) ;
 
         /// @brief              Set second
         ///
         /// @param              [in] aSecond A second (0 - 60)
-        
+
         void                    setSecond                                   (           Uint8                       aSecond                                     ) ;
 
         /// @brief              Set millisecond
         ///
         /// @param              [in] aMillisecond A millisecond (0 - 999)
-        
+
         void                    setMillisecond                              (           Uint16                      aMillisecond                                ) ;
 
         /// @brief              Set microsecond
         ///
         /// @param              [in] aMicrosecond A microsecond (0 - 999)
-        
+
         void                    setMicrosecond                              (           Uint16                      aMicrosecond                                ) ;
 
         /// @brief              Set nanosecond
         ///
         /// @param              [in] aNanosecond A nanosecond (0 - 999)
-        
+
         void                    setNanosecond                               (           Uint16                      aNanosecond                                 ) ;
 
         /// @brief              Constructs an undefined time
@@ -213,7 +213,7 @@ class Time
         /// @endcode
         ///
         /// @return             Undefined time
-        
+
         static Time             Undefined                                   ( ) ;
 
         /// @brief              Constructs a time at midnight

@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Time/Date.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -81,7 +81,7 @@ class Date
         ///
         /// @param              [in] aDate A date
         /// @return             True if dates are not equal
-        
+
         bool                    operator !=                                 (   const   Date&                       aDate                                       ) const ;
 
         /// @brief              Output stream operator
@@ -110,19 +110,19 @@ class Date
         /// @brief              Get year (1400 - 9999)
         ///
         /// @return             Year
-        
+
         Uint16                  getYear                                     ( ) const ;
 
         /// @brief              Get month (1 - 12)
         ///
         /// @return             Month
-        
+
         Uint8                   getMonth                                    ( ) const ;
 
         /// @brief              Get day (1 - 31)
         ///
         /// @return             Day
-        
+
         Uint8                   getDay                                      ( ) const ;
 
         /// @brief              Get string representation of date
@@ -139,19 +139,19 @@ class Date
         /// @brief              Set year
         ///
         /// @param              [in] aYear A year (1400 - 9999)
-        
+
         void                    setYear                                     (           Uint16                      aYear                                       ) ;
 
         /// @brief              Set month
         ///
         /// @param              [in] aMonth A month (1 - 12)
-        
+
         void                    setMonth                                    (           Uint8                       aMonth                                      ) ;
 
         /// @brief              Set day
         ///
         /// @param              [in] aDay A day (1 - 31)
-        
+
         void                    setDay                                      (           Uint8                       aDay                                        ) ;
 
         /// @brief              Constructs an undefined date
@@ -162,7 +162,7 @@ class Date
         /// @endcode
         ///
         /// @return             Undefined date
-        
+
         static Date             Undefined                                   ( ) ;
 
         /// @brief              J2000 epoch (2000-01-01)
@@ -178,7 +178,7 @@ class Date
         /// @ref                http://tycho.usno.navy.mil/gpstt.html
         ///
         /// @return             Date at GPS epoch
-        
+
         static Date             GPSEpoch                                    ( ) ;
 
         /// @brief              Unix epoch (1970-01-01)

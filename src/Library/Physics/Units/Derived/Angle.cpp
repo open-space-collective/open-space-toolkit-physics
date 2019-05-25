@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Units/Derived/Angle.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -41,19 +41,19 @@ namespace units
         case library::math::geom::Angle::Unit::Radian:
             unit_ = Angle::Unit::Radian ;
             break ;
-        
+
         case library::math::geom::Angle::Unit::Degree:
             unit_ = Angle::Unit::Degree ;
             break ;
-        
+
         case library::math::geom::Angle::Unit::Arcminute:
             unit_ = Angle::Unit::Arcminute ;
             break ;
-        
+
         case library::math::geom::Angle::Unit::Arcsecond:
             unit_ = Angle::Unit::Arcsecond ;
             break ;
-        
+
         case library::math::geom::Angle::Unit::Revolution:
             unit_ = Angle::Unit::Revolution ;
             break ;
@@ -259,14 +259,14 @@ Angle                           operator *                                  (   
     {
         throw library::core::error::runtime::Undefined("Angle") ;
     }
-    
+
     return Angle((anAngle.accessValue() * aReal), anAngle.unit_) ;
 
 }
 
                                 Angle::operator library::math::geom::Angle  ( ) const
 {
-    
+
     if (!this->isDefined())
     {
         return library::math::geom::Angle::Undefined() ;
@@ -277,16 +277,16 @@ Angle                           operator *                                  (   
 
         case Angle::Unit::Radian:
             return library::math::geom::Angle(this->accessValue(), library::math::geom::Angle::Unit::Radian) ;
-        
+
         case Angle::Unit::Degree:
             return library::math::geom::Angle(this->accessValue(), library::math::geom::Angle::Unit::Degree) ;
-        
+
         case Angle::Unit::Arcminute:
             return library::math::geom::Angle(this->accessValue(), library::math::geom::Angle::Unit::Arcminute) ;
-        
+
         case Angle::Unit::Arcsecond:
             return library::math::geom::Angle(this->accessValue(), library::math::geom::Angle::Unit::Arcsecond) ;
-        
+
         case Angle::Unit::Revolution:
             return library::math::geom::Angle(this->accessValue(), library::math::geom::Angle::Unit::Revolution) ;
 
@@ -327,7 +327,7 @@ Angle::Unit                     Angle::getUnit                              ( ) 
     {
         throw library::core::error::runtime::Undefined("Angle") ;
     }
-    
+
     return unit_ ;
 
 }
@@ -372,7 +372,7 @@ Real                            Angle::inRadians                            (   
     {
         throw library::core::error::runtime::Undefined("Range span is not [2π].") ;
     }
-    
+
     return Angle::ReduceRange(this->in(Angle::Unit::Radian), aLowerBound, anUpperBound) ;
 
 }
@@ -400,7 +400,7 @@ Real                            Angle::inDegrees                            (   
     {
         throw library::core::error::runtime::Undefined("Range span is not [360].") ;
     }
-    
+
     return Angle::ReduceRange(this->in(Angle::Unit::Degree), aLowerBound, anUpperBound) ;
 
 }
@@ -428,7 +428,7 @@ Real                            Angle::inArcminutes                         (   
     {
         throw library::core::error::runtime::Undefined("Range span is not [21600].") ;
     }
-    
+
     return Angle::ReduceRange(this->in(Angle::Unit::Arcminute), aLowerBound, anUpperBound) ;
 
 }
@@ -456,7 +456,7 @@ Real                            Angle::inArcseconds                         (   
     {
         throw library::core::error::runtime::Undefined("Range span is not [1296000].") ;
     }
-    
+
     return Angle::ReduceRange(this->in(Angle::Unit::Arcsecond), aLowerBound, anUpperBound) ;
 
 }
@@ -492,7 +492,7 @@ Angle                           Angle::HalfPi                               ( )
 {
     return { M_PI / 2.0, Angle::Unit::Radian } ;
 }
-        
+
 Angle                           Angle::Pi                                   ( )
 {
     return { M_PI, Angle::Unit::Radian } ;
@@ -563,11 +563,11 @@ Angle                           Angle::Between                              (   
     {
         return Angle::Pi() ;
     }
-    
+
     return Angle::Radians(std::acos(dotProduct)) ;
 
 }
-        
+
 Angle                           Angle::Between                              (   const   Vector3d&                   aFirstVector,
                                                                                 const   Vector3d&                   aSecondVector                               )
 {
@@ -603,7 +603,7 @@ Angle                           Angle::Between                              (   
     {
         return Angle::Pi() ;
     }
-    
+
     return Angle::Radians(std::acos(dotProduct)) ;
 
 }
@@ -621,22 +621,22 @@ String                          Angle::StringFromUnit                       (   
 
         case Angle::Unit::Undefined:
             return "Undefined" ;
-            
+
         case Angle::Unit::Radian:
             return "Radian" ;
-            
+
         case Angle::Unit::Degree:
             return "Degree" ;
-            
+
         case Angle::Unit::Arcminute:
             return "Arcminute" ;
-            
+
         case Angle::Unit::Arcsecond:
             return "Arcsecond" ;
 
         case Angle::Unit::Revolution:
             return "Revolution" ;
-            
+
         default:
             break ;
 
@@ -656,19 +656,19 @@ String                          Angle::SymbolFromUnit                       (   
 
         case Angle::Unit::Radian:
             return "rad" ;
-            
+
         case Angle::Unit::Degree:
             return "deg" ;
-            
+
         case Angle::Unit::Arcminute:
             return "amin" ;
-            
+
         case Angle::Unit::Arcsecond:
             return "asec" ;
-            
+
         case Angle::Unit::Revolution:
             return "rev" ;
-            
+
         default:
             break ;
 
@@ -735,7 +735,7 @@ Real                            Angle::ReduceRange                          (   
     {
         value += range ;
     }
-    
+
     while (value >= aRangeUpperBound) // [TBM] This is a STUPID implementation: just used as a logic placeholder... should be improved ASAP
     {
         value -= range ;

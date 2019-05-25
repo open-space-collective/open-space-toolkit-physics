@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Unit.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -61,7 +61,7 @@ class Unit
             ElectricCurrent,
             LuminousIntensity,
             Derived
-        
+
         } ;
 
                                 Unit                                        ( ) = delete ;
@@ -71,7 +71,7 @@ class Unit
         Unit&                   operator =                                  (   const   Unit&                       aUnit                                       ) ;
 
         bool                    operator ==                                 (   const   Unit&                       aUnit                                       ) const ;
-        
+
         bool                    operator !=                                 (   const   Unit&                       aUnit                                       ) const ;
 
         friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,

@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           LibraryPhysicsPy/Coordinate/Spherical/LLA.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -36,7 +36,7 @@ inline void                     LibraryPhysicsPy_Coordinate_Spherical_LLA   ( )
         .def("toVector", &LLA::toVector)
         .def("toCartesian", &LLA::toCartesian)
         .def("toString", &LLA::toString)
-        
+
         .def("Undefined", &LLA::Undefined).staticmethod("Undefined")
         .def("Vector", &LLA::Vector).staticmethod("Vector")
         .def("Cartesian", &LLA::Cartesian).staticmethod("Cartesian")

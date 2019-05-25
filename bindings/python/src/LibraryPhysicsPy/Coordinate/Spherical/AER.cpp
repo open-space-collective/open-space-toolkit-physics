@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           LibraryPhysicsPy/Coordinate/Spherical/AER.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -36,7 +36,7 @@ inline void                     LibraryPhysicsPy_Coordinate_Spherical_AER   ( )
         .def("getRange", &AER::getRange)
         .def("toVector", &AER::toVector)
         .def("toString", &AER::toString)
-        
+
         .def("Undefined", &AER::Undefined).staticmethod("Undefined")
         .def("Vector", &AER::Vector).staticmethod("Vector")
         .def("FromPositionToPosition", +[] (const Position& aFromPosition, const Position& aToPosition) -> AER { return AER::FromPositionToPosition(aFromPosition, aToPosition) ; })

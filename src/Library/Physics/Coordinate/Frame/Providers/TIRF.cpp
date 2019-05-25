@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Coordinate/Frame/Providers/TIRF.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -69,7 +69,7 @@ Transform                       TIRF::getTransformAt                        (   
 
     using library::physics::time::Scale ;
     using library::physics::time::DateTime ;
-    
+
     if (!anInstant.isDefined())
     {
         throw library::core::error::runtime::Undefined("Instant") ;
@@ -128,7 +128,7 @@ Transform                       TIRF::getTransformAt                        (   
 
     const Quaternion q_TIRF_CIRF = Quaternion::RotationMatrix(dcm_TIRF_CIRF).rectify() ;
     const Vector3d w_TIRF_CIRF_in_TIRF = Vector3d::Z() * w_TIRF_CIRF ;
-    
+
     return Transform::Passive(anInstant, x_TIRF_CIRF, v_TIRF_CIRF, q_TIRF_CIRF, w_TIRF_CIRF_in_TIRF) ;
 
 }

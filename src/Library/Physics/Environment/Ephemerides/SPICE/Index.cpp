@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Environment/Ephemerides/SPICE/Index.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -162,7 +162,7 @@ Index                           Index::Load                                 (   
             index.itemMap_[kernelType].emplace(kernelName, remoteUrl) ;
 
         }
-        
+
     }
 
     return index ;

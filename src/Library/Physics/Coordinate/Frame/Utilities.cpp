@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Coordinate/Frame/Utilities.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -70,7 +70,7 @@ Transform                       NorthEastDownTransformAt                    (   
         q_NED_ECEF = Quaternion::RotationMatrix(dcm_NED_ECEF).rectify() ;
 
     }
-    
+
     const Vector3d w_NED_ECEF_in_NED = { 0.0, 0.0, 0.0 } ;
 
     return Transform::Passive(Instant::J2000(), -x_NED_ECEF, v_NED_ECEF, q_NED_ECEF, w_NED_ECEF_in_NED) ;

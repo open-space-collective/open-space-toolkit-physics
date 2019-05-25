@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Environment/Object.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -99,7 +99,7 @@ const String&                   Object::accessName                          ( ) 
     {
         throw library::core::error::runtime::Undefined("Object") ;
     }
-    
+
     return name_ ;
 
 }
@@ -111,7 +111,7 @@ const Instant&                  Object::accessInstant                       ( ) 
     {
         throw library::core::error::runtime::Undefined("Object") ;
     }
-    
+
     return instant_ ;
 
 }
@@ -123,7 +123,7 @@ const Object::Geometry&         Object::accessGeometry                      ( ) 
     {
         throw library::core::error::runtime::Undefined("Object") ;
     }
-    
+
     return geometry_ ;
 
 }

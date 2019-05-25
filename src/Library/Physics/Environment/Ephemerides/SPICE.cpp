@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Environment/Ephemerides/SPICE.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -52,7 +52,7 @@ Shared<const Frame>             SPICE::accessFrame                          ( ) 
 {
 
     using library::physics::env::ephem::spice::Engine ;
-    
+
     return Engine::Get().getFrameOf(object_) ;
 
 }

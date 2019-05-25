@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Coordinate/Position.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -66,7 +66,7 @@ class Position
         Position&               operator =                                  (   const   Position&                   aPosition                                   ) ;
 
         bool                    operator ==                                 (   const   Position&                   aPosition                                   ) const ;
-        
+
         bool                    operator !=                                 (   const   Position&                   aPosition                                   ) const ;
 
         friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,

@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Time/Time.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -115,7 +115,7 @@ Uint8                           Time::getHour                               ( ) 
     {
         throw library::core::error::runtime::Undefined("Time") ;
     }
-    
+
     return hour_ ;
 
 }
@@ -127,7 +127,7 @@ Uint8                           Time::getMinute                             ( ) 
     {
         throw library::core::error::runtime::Undefined("Time") ;
     }
-    
+
     return minute_ ;
 
 }
@@ -139,7 +139,7 @@ Uint8                           Time::getSecond                             ( ) 
     {
         throw library::core::error::runtime::Undefined("Time") ;
     }
-    
+
     return second_ ;
 
 }
@@ -151,7 +151,7 @@ Uint16                          Time::getMillisecond                        ( ) 
     {
         throw library::core::error::runtime::Undefined("Time") ;
     }
-    
+
     return millisecond_ ;
 
 }
@@ -163,7 +163,7 @@ Uint16                          Time::getMicrosecond                        ( ) 
     {
         throw library::core::error::runtime::Undefined("Time") ;
     }
-    
+
     return microsecond_ ;
 
 }
@@ -175,7 +175,7 @@ Uint16                          Time::getNanosecond                         ( ) 
     {
         throw library::core::error::runtime::Undefined("Time") ;
     }
-    
+
     return nanosecond_ ;
 
 }
@@ -260,7 +260,7 @@ String                          Time::toString                              (   
             break ;
 
     }
-    
+
     return String::Empty() ;
 
 }
@@ -383,7 +383,7 @@ Time                            Time::Parse                                 (   
             {
                 return Time::Parse(aString, Time::Format::ISO8601) ;
             }
-            
+
             return Time::Parse(aString, Time::Format::Standard) ;
 
         }
@@ -595,7 +595,7 @@ void                            Time::ValidateMinute                        (   
 void                            Time::ValidateSecond                        (           Uint8                       aSecond                                     )
 {
 
-    
+
 
     if (aSecond > 60)
     {
@@ -607,7 +607,7 @@ void                            Time::ValidateSecond                        (   
 void                            Time::ValidateMillisecond                   (           Uint16                      aMillisecond                                )
 {
 
-    
+
 
     if (aMillisecond > 999)
     {
@@ -619,7 +619,7 @@ void                            Time::ValidateMillisecond                   (   
 void                            Time::ValidateMicrosecond                   (           Uint16                      aMicrosecond                                )
 {
 
-    
+
 
     if (aMicrosecond > 999)
     {

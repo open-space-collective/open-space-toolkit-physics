@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           LibraryPhysicsPy/Coordinate/Frame/Providers/Dynamic.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -39,7 +39,7 @@ inline void                     LibraryPhysicsPy_Coordinate_Frame_Providers_Dyna
                     {
                         return boost::python::extract<Transform>(aGeneratorObject(anInstant)) ;
                     } ;
-                    
+
                     return std::make_shared<Dynamic>(generatorProxy) ;
 
                 }
@@ -49,7 +49,7 @@ inline void                     LibraryPhysicsPy_Coordinate_Frame_Providers_Dyna
         .def("isDefined", &Dynamic::isDefined)
 
         .def("getTransformAt", &Dynamic::getTransformAt)
-        
+
         .def("Undefined", &Dynamic::Undefined).staticmethod("Undefined")
 
     ;

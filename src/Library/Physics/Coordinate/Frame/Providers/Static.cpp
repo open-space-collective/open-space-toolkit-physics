@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Coordinate/Frame/Providers/Static.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -55,7 +55,7 @@ Transform                       Static::getTransformAt                      (   
     {
         throw library::core::error::runtime::Undefined("Static provider") ;
     }
-    
+
     return { anInstant, transform_.accessTranslation(), transform_.accessVelocity(), transform_.accessOrientation(), transform_.accessAngularVelocity(), Transform::Type::Passive } ;
 
 }

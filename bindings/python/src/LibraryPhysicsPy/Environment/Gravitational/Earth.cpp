@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           LibraryPhysicsPy/Environment/Gravitational/Earth.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -18,7 +18,7 @@ inline void                     LibraryPhysicsPy_Environment_Gravitational_Earth
     using namespace boost::python ;
 
     using library::core::fs::Directory ;
-    
+
     using library::physics::units::Derived ;
     using library::physics::environment::gravitational::Earth ;
     using library::physics::environment::gravitational::earth::Manager ;
@@ -45,7 +45,7 @@ inline void                     LibraryPhysicsPy_Environment_Gravitational_Earth
 
         .def("isEnabled", &Manager::isEnabled)
         .def("hasDataFileForType", &Manager::hasDataFileForType)
-        
+
         .def("getLocalRepository", &Manager::getLocalRepository)
         .def("getRemoteUrl", &Manager::getRemoteUrl)
         .def("fetchDataFileForType", &Manager::fetchDataFileForType)
@@ -53,7 +53,7 @@ inline void                     LibraryPhysicsPy_Environment_Gravitational_Earth
         .def("setRemoteUrl", &Manager::setRemoteUrl)
         .def("enable", &Manager::enable)
         .def("disable", &Manager::disable)
-        
+
         .def("Get", &Manager::Get, return_value_policy<reference_existing_object>()).staticmethod("Get")
         .def("DefaultLocalRepository", &Manager::DefaultLocalRepository).staticmethod("DefaultLocalRepository")
         .def("DefaultRemoteUrl", &Manager::DefaultRemoteUrl).staticmethod("DefaultRemoteUrl")

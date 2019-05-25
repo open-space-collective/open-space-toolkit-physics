@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Time/Duration.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -47,7 +47,7 @@ bool                            Duration::operator ==                       (   
     return count_ == aDuration.count_ ;
 
 }
-        
+
 bool                            Duration::operator !=                       (   const   Duration&                   aDuration                                   ) const
 {
 
@@ -71,7 +71,7 @@ bool                            Duration::operator <                        (   
     return count_ < aDuration.count_ ;
 
 }
-        
+
 bool                            Duration::operator <=                       (   const   Duration&                   aDuration                                   ) const
 {
 
@@ -83,7 +83,7 @@ bool                            Duration::operator <=                       (   
     return count_ <= aDuration.count_ ;
 
 }
-        
+
 bool                            Duration::operator >                        (   const   Duration&                   aDuration                                   ) const
 {
 
@@ -95,7 +95,7 @@ bool                            Duration::operator >                        (   
     return count_ > aDuration.count_ ;
 
 }
-        
+
 bool                            Duration::operator >=                       (   const   Duration&                   aDuration                                   ) const
 {
 
@@ -139,7 +139,7 @@ Duration                        Duration::operator *                        (   
     {
         throw library::core::error::runtime::Undefined("Duration") ;
     }
-    
+
     if (!aMultiplier.isDefined())
     {
         throw library::core::error::runtime::Undefined("Multiplier") ;
@@ -156,7 +156,7 @@ Duration                        Duration::operator /                        (   
     {
         throw library::core::error::runtime::Undefined("Duration") ;
     }
-    
+
     if (!aDivider.isDefined())
     {
         throw library::core::error::runtime::Undefined("Divider") ;
@@ -178,7 +178,7 @@ Duration                        Duration::operator +                        ( ) 
     {
         throw library::core::error::runtime::Undefined("Duration") ;
     }
-    
+
     return *this ;
 
 }
@@ -190,7 +190,7 @@ Duration                        Duration::operator -                        ( ) 
     {
         throw library::core::error::runtime::Undefined("Duration") ;
     }
-    
+
     return Duration(-count_) ;
 
 }
@@ -230,7 +230,7 @@ Duration&                       Duration::operator *=                       (   
     {
         throw library::core::error::runtime::Undefined("Duration") ;
     }
-    
+
     if (!aMultiplier.isDefined())
     {
         throw library::core::error::runtime::Undefined("Multiplier") ;
@@ -249,7 +249,7 @@ Duration&                       Duration::operator /=                       (   
     {
         throw library::core::error::runtime::Undefined("Duration") ;
     }
-    
+
     if (!aDivider.isDefined())
     {
         throw library::core::error::runtime::Undefined("Divider") ;
@@ -274,7 +274,7 @@ Duration                        operator *                                  (   
     {
         throw library::core::error::runtime::Undefined("Duration") ;
     }
-    
+
     return Duration(aMultiplier * aDuration.count_) ;
 
 }
@@ -316,7 +316,7 @@ bool                            Duration::isPositive                        ( ) 
     {
         throw library::core::error::runtime::Undefined("Duration") ;
     }
-    
+
     return count_ >= 0 ;
 
 }
@@ -328,7 +328,7 @@ bool                            Duration::isStrictlyPositive                ( ) 
     {
         throw library::core::error::runtime::Undefined("Duration") ;
     }
-    
+
     return count_ > 0 ;
 
 }
@@ -587,7 +587,7 @@ Real                            Duration::in                                (   
 
         case units::Time::Unit::Week:
             return Real(count_ / 604800000000000.0) ;
-        
+
         default:
             throw library::core::error::runtime::Wrong("Unit") ;
             break ;
@@ -605,7 +605,7 @@ Duration                        Duration::getAbsolute                       ( ) 
     {
         throw library::core::error::runtime::Undefined("Duration") ;
     }
-    
+
     return Duration(std::abs(count_)) ;
 
 }
@@ -747,7 +747,7 @@ String                          Duration::toString                         (   c
 
 Duration                        Duration::Undefined                         ( )
 {
-    return Duration() ;   
+    return Duration() ;
 }
 
 Duration                        Duration::Zero                              ( )
@@ -820,7 +820,7 @@ Duration                        Duration::Parse                             (   
             {
                 return Duration::Parse(aString, Duration::Format::ISO8601) ;
             }
-            
+
             return Duration::Parse(aString, Duration::Format::Standard) ;
 
         }
@@ -846,10 +846,10 @@ Duration                        Duration::Parse                             (   
                     const Int64 microseconds = (match[7] != "") ? boost::lexical_cast<Int64>(match[7]) : 0 ;
                     const Int64 nanoseconds = (match[8] != "") ? boost::lexical_cast<Int64>(match[8]) : 0 ;
 
-                    const Duration duration = Duration::Days(days) 
-                                            + Duration::Hours(hours) 
-                                            + Duration::Minutes(minutes) 
-                                            + Duration::Seconds(seconds) 
+                    const Duration duration = Duration::Days(days)
+                                            + Duration::Hours(hours)
+                                            + Duration::Minutes(minutes)
+                                            + Duration::Seconds(seconds)
                                             + Duration::Milliseconds(milliseconds)
                                             + Duration::Microseconds(microseconds)
                                             + Duration::Nanoseconds(nanoseconds) ;
@@ -885,7 +885,7 @@ Duration                        Duration::Parse                             (   
                 {
 
                     const bool isNegative = (match[1] == "-") ;
-                    
+
                     const Int64 days = (match[2] != "") ? boost::lexical_cast<Int64>(match[2]) : 0 ;
                     const Int64 hours = (match[3] != "") ? boost::lexical_cast<Int64>(match[3]) : 0 ;
                     const Int64 minutes = (match[4] != "") ? boost::lexical_cast<Int64>(match[4]) : 0 ;
@@ -958,7 +958,7 @@ Duration                        Duration::Parse                             (   
                     const Duration duration = Duration::Days(days)
                                             + Duration::Hours(hours)
                                             + Duration::Minutes(minutes)
-                                            + Duration::Seconds(seconds) 
+                                            + Duration::Seconds(seconds)
                                             + Duration::Milliseconds(milliseconds)
                                             + Duration::Microseconds(microseconds)
                                             + Duration::Nanoseconds(nanoseconds) ;
@@ -997,7 +997,7 @@ Duration                        Duration::Parse                             (   
                                 :   defined_(false),
                                     count_(0)
 {
-    
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

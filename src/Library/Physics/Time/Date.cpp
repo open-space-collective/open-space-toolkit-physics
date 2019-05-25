@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Time/Date.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -92,7 +92,7 @@ Uint16                          Date::getYear                               ( ) 
     {
         throw library::core::error::runtime::Undefined("Date") ;
     }
-    
+
     return year_ ;
 
 }
@@ -104,7 +104,7 @@ Uint8                           Date::getMonth                              ( ) 
     {
         throw library::core::error::runtime::Undefined("Date") ;
     }
-    
+
     return month_ ;
 
 }
@@ -116,7 +116,7 @@ Uint8                           Date::getDay                                ( ) 
     {
         throw library::core::error::runtime::Undefined("Date") ;
     }
-    
+
     return day_ ;
 
 }
@@ -139,7 +139,7 @@ String                          Date::toString                              (   
             {
                 return String::Format("{0:04d}-{1:02d}-{2:02d}", year_, month_, day_) ;
             }
-            
+
             return String::Format("{0:d}-{1:02d}-{2:02d}", year_, month_, day_) ;
 
         }
@@ -220,7 +220,7 @@ void                            Date::setYear                               (   
     }
 
     Date::ValidateDate(aYear, month_, day_) ;
-    
+
     year_ = aYear ;
 
 }
@@ -234,7 +234,7 @@ void                            Date::setMonth                              (   
     }
 
     Date::ValidateDate(year_, aMonth, day_) ;
-    
+
     month_ = aMonth ;
 
 }
@@ -248,7 +248,7 @@ void                            Date::setDay                                (   
     }
 
     Date::ValidateDate(year_, month_, aDay) ;
-    
+
     day_ = aDay ;
 
 }
@@ -297,7 +297,7 @@ Date                            Date::Parse                                 (   
             {
                 return Date::Parse(aString, Date::Format::STK) ;
             }
-            
+
             return Date::Parse(aString, Date::Format::Standard) ;
 
         }

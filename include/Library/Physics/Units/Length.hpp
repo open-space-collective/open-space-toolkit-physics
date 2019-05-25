@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Units/Length.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -51,7 +51,7 @@ class Length : public Unit
             TerrestrialMile,    ///< Terrestrial mile
             NauticalMile,       ///< Nautical mile
             AstronomicalUnit    ///< Astronomical Unit
-        
+
         } ;
 
         /// @brief              Constructor
@@ -81,19 +81,19 @@ class Length : public Unit
         bool                    operator >=                                 (   const   Length&                     aLength                                     ) const ;
 
         Length                  operator +                                  (   const   Length&                     aLength                                     ) const ;
-        
+
         Length                  operator -                                  (   const   Length&                     aLength                                     ) const ;
-        
+
         Length                  operator *                                  (   const   Real&                       aReal                                       ) const ;
-        
+
         Length                  operator /                                  (   const   Real&                       aReal                                       ) const ;
 
         Length&                 operator +=                                 (   const   Length&                     aLength                                     ) ;
-        
+
         Length&                 operator -=                                 (   const   Length&                     aLength                                     ) ;
-        
+
         Length&                 operator *=                                 (   const   Real&                       aReal                                       ) ;
-        
+
         Length&                 operator /=                                 (   const   Real&                       aReal                                       ) ;
 
         friend Length           operator *                                  (   const   Real&                       aReal,
@@ -117,11 +117,11 @@ class Length : public Unit
         static Length           Undefined                                   ( ) ;
 
         static Length           Millimeters                                 (   const   Real&                       aValue                                      ) ;
-        
+
         static Length           Meters                                      (   const   Real&                       aValue                                      ) ;
-        
+
         static Length           Kilometers                                  (   const   Real&                       aValue                                      ) ;
-        
+
         static Length           Parse                                       (   const   String&                     aString                                     ) ;
 
         static String           StringFromUnit                              (   const   Length::Unit&               aUnit                                       ) ;

@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Coordinate/Spherical/LLA.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -92,7 +92,7 @@ Angle                           LLA::getLatitude                            ( ) 
     {
         throw library::core::error::runtime::Undefined("LLA") ;
     }
-    
+
     return latitude_ ;
 
 }
@@ -104,7 +104,7 @@ Angle                           LLA::getLongitude                           ( ) 
     {
         throw library::core::error::runtime::Undefined("LLA") ;
     }
-    
+
     return longitude_ ;
 
 }
@@ -116,7 +116,7 @@ Length                          LLA::getAltitude                            ( ) 
     {
         throw library::core::error::runtime::Undefined("LLA") ;
     }
-    
+
     return altitude_ ;
 
 }
@@ -128,11 +128,11 @@ Vector3d                        LLA::toVector                               ( ) 
     {
         throw library::core::error::runtime::Undefined("LLA") ;
     }
-    
+
     return { latitude_.inDegrees(), longitude_.inDegrees(), altitude_.inMeters() } ;
 
 }
-        
+
 Vector3d                        LLA::toCartesian                            (   const   Length&                     anEllipsoidEquatorialRadius,
                                                                                 const   Real&                       anEllipsoidFlattening                       ) const
 {
@@ -176,7 +176,7 @@ String                          LLA::toString                               ( ) 
     {
         throw library::core::error::runtime::Undefined("LLA") ;
     }
-    
+
     return String::Format("[{}, {}, {}]", latitude_.toString(), longitude_.toString(), altitude_.toString()) ;
 
 }
@@ -193,7 +193,7 @@ LLA                             LLA::Vector                                 (   
     {
         throw library::core::error::runtime::Undefined("Vector") ;
     }
-    
+
     return { Angle::Degrees(aVector.x()), Angle::Degrees(aVector.y()), Length::Meters(aVector.z()) } ;
 
 }

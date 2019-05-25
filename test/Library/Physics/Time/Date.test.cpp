@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Time/Date.test.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -21,7 +21,7 @@ TEST (Library_Physics_Time_Date, Constructor)
     {
 
         EXPECT_NO_THROW(Date(2018, 1, 1)) ;
-        
+
         EXPECT_NO_THROW(Date(1400, 1, 1)) ;
         EXPECT_NO_THROW(Date(2000, 1, 1)) ;
         EXPECT_NO_THROW(Date(9999, 12, 31)) ;
@@ -33,7 +33,7 @@ TEST (Library_Physics_Time_Date, Constructor)
         EXPECT_ANY_THROW(Date(0, 1, 1)) ;
         EXPECT_ANY_THROW(Date(1399, 12, 31)) ;
         EXPECT_ANY_THROW(Date(10000, 1, 1)) ;
-        
+
         EXPECT_ANY_THROW(Date(2018, 2, 29)) ;
 
         EXPECT_ANY_THROW(Date(2018, 0, 1)) ;
@@ -129,14 +129,14 @@ TEST (Library_Physics_Time_Date, IsDefined)
     {
 
         EXPECT_TRUE(Date(2018, 2, 3).isDefined()) ;
-        
+
         EXPECT_TRUE(Date(1400, 1, 1).isDefined()) ;
         EXPECT_TRUE(Date(9999, 1, 1).isDefined()) ;
 
     }
 
     {
-        
+
         EXPECT_FALSE(Date::Undefined().isDefined()) ;
 
     }
@@ -151,14 +151,14 @@ TEST (Library_Physics_Time_Date, GetYear)
     {
 
         EXPECT_EQ(2018, Date(2018, 2, 3).getYear()) ;
-        
+
         EXPECT_EQ(1400, Date(1400, 1, 1).getYear()) ;
         EXPECT_EQ(9999, Date(9999, 1, 1).getYear()) ;
 
     }
 
     {
-        
+
         EXPECT_ANY_THROW(Date::Undefined().getYear()) ;
 
     }
@@ -178,7 +178,7 @@ TEST (Library_Physics_Time_Date, GetMonth)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(Date::Undefined().getMonth()) ;
 
     }
@@ -198,7 +198,7 @@ TEST (Library_Physics_Time_Date, GetDay)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(Date::Undefined().getDay()) ;
 
     }
@@ -241,7 +241,7 @@ TEST (Library_Physics_Time_Date, ToString)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(Date::Undefined().toString()) ;
         EXPECT_ANY_THROW(Date(2000, 1, 1).toString(Date::Format::Undefined)) ;
 
@@ -267,7 +267,7 @@ TEST (Library_Physics_Time_Date, SetYear)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(Date::Undefined().setYear(2018)) ;
 
     }
@@ -292,9 +292,9 @@ TEST (Library_Physics_Time_Date, SetMonth)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(Date::Undefined().setMonth(1)) ;
-        
+
         EXPECT_ANY_THROW(Date(2018, 1, 1).setMonth(0)) ;
         EXPECT_ANY_THROW(Date(2018, 1, 1).setMonth(13)) ;
 
@@ -320,9 +320,9 @@ TEST (Library_Physics_Time_Date, SetDay)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(Date::Undefined().setDay(1)) ;
-        
+
         EXPECT_ANY_THROW(Date(2018, 1, 1).setDay(0)) ;
         EXPECT_ANY_THROW(Date(2018, 1, 1).setDay(32)) ;
 
@@ -408,7 +408,7 @@ TEST (Library_Physics_Time_Date, Parse)
         EXPECT_EQ(Date(1980, 1, 6), Date::Parse("1980-01-06")) ;
         EXPECT_EQ(Date(1970, 1, 1), Date::Parse("1970-01-01")) ;
         EXPECT_EQ(Date(1858, 11, 17), Date::Parse("1858-11-17")) ;
-        
+
         EXPECT_EQ(Date(1400, 1, 1), Date::Parse("1400-01-01")) ;
         EXPECT_EQ(Date(9999, 12, 31), Date::Parse("9999-12-31")) ;
 
@@ -416,7 +416,7 @@ TEST (Library_Physics_Time_Date, Parse)
         EXPECT_EQ(Date(1980, 1, 6), Date::Parse("6 Jan 1980")) ;
         EXPECT_EQ(Date(1970, 1, 1), Date::Parse("1 Jan 1970")) ;
         EXPECT_EQ(Date(1858, 11, 17), Date::Parse("17 Nov 1858")) ;
-        
+
         EXPECT_EQ(Date(1400, 1, 1), Date::Parse("1 Jan 1400")) ;
         EXPECT_EQ(Date(9999, 12, 31), Date::Parse("31 Dec 9999")) ;
 
@@ -428,7 +428,7 @@ TEST (Library_Physics_Time_Date, Parse)
         EXPECT_EQ(Date(1980, 1, 6), Date::Parse("1980-01-06", Date::Format::Standard)) ;
         EXPECT_EQ(Date(1970, 1, 1), Date::Parse("1970-01-01", Date::Format::Standard)) ;
         EXPECT_EQ(Date(1858, 11, 17), Date::Parse("1858-11-17", Date::Format::Standard)) ;
-        
+
         EXPECT_EQ(Date(1400, 1, 1), Date::Parse("1400-01-01", Date::Format::Standard)) ;
         EXPECT_EQ(Date(9999, 12, 31), Date::Parse("9999-12-31", Date::Format::Standard)) ;
 
@@ -440,7 +440,7 @@ TEST (Library_Physics_Time_Date, Parse)
         EXPECT_EQ(Date(1980, 1, 6), Date::Parse("6 Jan 1980", Date::Format::STK)) ;
         EXPECT_EQ(Date(1970, 1, 1), Date::Parse("1 Jan 1970", Date::Format::STK)) ;
         EXPECT_EQ(Date(1858, 11, 17), Date::Parse("17 Nov 1858", Date::Format::STK)) ;
-        
+
         EXPECT_EQ(Date(1400, 1, 1), Date::Parse("1 Jan 1400", Date::Format::STK)) ;
         EXPECT_EQ(Date(9999, 12, 31), Date::Parse("31 Dec 9999", Date::Format::STK)) ;
 

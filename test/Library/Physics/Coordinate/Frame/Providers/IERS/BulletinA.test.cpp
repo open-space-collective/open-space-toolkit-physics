@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Coordinate/Frame/Providers/IERS/BulletinA.test.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -113,7 +113,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetReleaseDate)
 
     using library::core::fs::Path ;
     using library::core::fs::File ;
-    
+
     using library::physics::time::Date ;
     using library::physics::coord::frame::provider::iers::BulletinA ;
 
@@ -140,7 +140,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetTAIMinusUTC)
 
     using library::core::fs::Path ;
     using library::core::fs::File ;
-    
+
     using library::physics::time::Duration ;
     using library::physics::coord::frame::provider::iers::BulletinA ;
 
@@ -167,7 +167,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetTAIMinusUTCE
 
     using library::core::fs::Path ;
     using library::core::fs::File ;
-    
+
     using library::physics::time::Scale ;
     using library::physics::time::Instant ;
     using library::physics::time::DateTime ;
@@ -196,7 +196,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetObservationI
 
     using library::core::fs::Path ;
     using library::core::fs::File ;
-    
+
     using library::physics::time::Scale ;
     using library::physics::time::Instant ;
     using library::physics::time::Interval ;

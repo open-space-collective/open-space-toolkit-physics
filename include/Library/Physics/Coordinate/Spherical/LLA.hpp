@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Coordinate/Spherical/LLA.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -48,13 +48,13 @@ class LLA
 {
 
     public:
-    
+
                                 LLA                                         (   const   Angle&                      aLatitude,
                                                                                 const   Angle&                      aLongitude,
                                                                                 const   Length&                     anAltitude                                  ) ;
 
         bool                    operator ==                                 (   const   LLA&                        aLLA                                        ) const ;
-        
+
         bool                    operator !=                                 (   const   LLA&                        aLLA                                        ) const ;
 
         friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
