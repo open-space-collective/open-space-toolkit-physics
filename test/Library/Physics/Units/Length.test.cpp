@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Units/Length.test.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -555,7 +555,7 @@ TEST (Library_Physics_Units_Length, IsDefined)
     {
 
         EXPECT_TRUE(Length(0.0, Length::Unit::Meter).isDefined()) ;
-        
+
         EXPECT_TRUE(Length(1.0, Length::Unit::Meter).isDefined()) ;
         EXPECT_TRUE(Length(1.0, Length::Unit::Foot).isDefined()) ;
         EXPECT_TRUE(Length(1.0, Length::Unit::TerrestrialMile).isDefined()) ;
@@ -637,7 +637,7 @@ TEST (Library_Physics_Units_Length, InMeters)
 TEST (Library_Physics_Units_Length, InKilometers)
 {
 
-    using library::physics::units::Length ; 
+    using library::physics::units::Length ;
 
     {
 
@@ -656,7 +656,7 @@ TEST (Library_Physics_Units_Length, InKilometers)
 TEST (Library_Physics_Units_Length, ToString)
 {
 
-    using library::physics::units::Length ; 
+    using library::physics::units::Length ;
 
     {
 
@@ -705,7 +705,7 @@ TEST (Library_Physics_Units_Length, ToString)
     {
 
         EXPECT_ANY_THROW(Length::Undefined().toString()) ;
-        
+
     }
 
 }

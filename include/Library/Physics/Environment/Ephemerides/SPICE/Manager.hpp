@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Environment/Ephemerides/SPICE/Manager.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -110,7 +110,7 @@ class Manager
         /// @return             An array of kernels
 
         Array<Kernel>           fetchMatchingKernels                        (   const   std::regex&                 aRegex                                      ) const ;
-        
+
         /// @brief              Set local repository
         ///
         /// @param              [in] aDirectory A repository directory
@@ -158,7 +158,7 @@ class Manager
         Directory               localRepository_ ;
 
         URL                     remoteUrl_ ;
-        
+
         mutable Index           index_ ;
 
         mutable std::mutex      mutex_ ;
@@ -172,7 +172,7 @@ class Manager
         void                    fetchIndexAt                                (   const   URL&                        aUrl                                        ) ;
 
         void                    loadIndex                                   ( ) ;
-        
+
         void                    flushIndex                                  ( ) ;
 
 } ;

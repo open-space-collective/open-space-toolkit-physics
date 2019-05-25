@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Environment/Ephemerides/SPICE/Manager.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -136,9 +136,9 @@ Array<Kernel>                   Manager::fetchMatchingKernels               (   
     }
     catch (const library::core::error::Exception& anException)
     {
-        
+
         const_cast<Manager*>(this)->flushIndex() ;
-    
+
         const_cast<Manager*>(this)->updateIndex() ;
 
     }
@@ -181,7 +181,7 @@ void                            Manager::refresh                            ( )
     const std::lock_guard<std::mutex> lock { mutex_ } ;
 
     this->flushIndex() ;
-    
+
     this->updateIndex() ;
 
 }
@@ -204,7 +204,7 @@ Directory                       Manager::DefaultLocalRepository             ( )
     {
         return Directory::Path(Path::Parse(localRepositoryPath)) ;
     }
-    
+
     return defaultLocalRepository ;
 
 }
@@ -218,7 +218,7 @@ URL                             Manager::DefaultRemoteUrl                   ( )
     {
         return URL::Parse(remoteUrl) ;
     }
-    
+
     return defaultRemoteUrl ;
 
 }
@@ -257,7 +257,7 @@ void                            Manager::updateIndex                        ( )
 
     if (index_.isEmpty())
     {
-        
+
         if (!indexFile.exists())
         {
             throw library::core::error::RuntimeError("Index file [{}] does not exist.", remoteUrl_.toString()) ;
@@ -295,7 +295,7 @@ void                            Manager::fetchIndexAt                       (   
     {
         temporaryDirectory.create() ;
     }
-    
+
     // Group by kernel type
 
     const std::function<void (const URL&, const Index&)> fetchListing = [&temporaryDirectory, &fetchListing, &fileListingDictionary] (const URL& aListingUrl, const Index& aDepth)
@@ -363,19 +363,19 @@ void                            Manager::fetchIndexAt                       (   
 
                         if (kernelType != Kernel::Type::Undefined)
                         {
-                            
+
                             // fileListing.add(Pair<String, String> { aListingUrl.toString(), fileName }) ;
 
                             fileListingDictionary[Kernel::StringFromType(kernelType)][fileName] = Object::String(aListingUrl.toString()) ;
 
                         }
 
-                    }                    
+                    }
 
                 }
 
             }
-            
+
         }
 
         if (listingFile.exists())
@@ -387,7 +387,7 @@ void                            Manager::fetchIndexAt                       (   
 
     try
     {
-        
+
         fetchListing(aUrl, 0) ;
 
     }
@@ -399,7 +399,7 @@ void                            Manager::fetchIndexAt                       (   
     File remoteIndexFile = this->getIndexFile_() ;
 
     remoteIndexFile.create() ;
-    
+
     remoteIndexFile.open(File::OpenMode::Truncate) ;
 
     remoteIndexFile << Object::Dictionary(fileListingDictionary) ;
@@ -426,7 +426,7 @@ void                            Manager::flushIndex                         ( )
         {
             throw library::core::error::RuntimeError("Cannot flush index at [{}].", indexFile.toString()) ;
         }
-        
+
     }
 
 }

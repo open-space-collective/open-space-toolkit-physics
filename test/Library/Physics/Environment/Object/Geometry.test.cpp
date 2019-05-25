@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Environment/Object/Geometry.test.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -376,7 +376,7 @@ TEST (Library_Physics_Environment_Object_Geometry, In)
         const Point referenceVertex = { earthSPtr->getEquatorialRadius().inMeters(), 0.0, 0.0 } ;
 
         EXPECT_EQ(itrfFrameSPtr, transformedGeometry.accessFrame()) ;
-        
+
         EXPECT_TRUE(transformedGeometry.accessComposite().as<Point>().isNear(referenceVertex, 1e-8)) << referenceVertex.toString() << transformedGeometry.accessComposite().as<Point>().toString() ;
 
     }
@@ -411,7 +411,7 @@ TEST (Library_Physics_Environment_Object_Geometry, In)
         const Pyramid referencePyramid = { referenceBase, referenceApex } ;
 
         EXPECT_EQ(itrfFrameSPtr, transformedGeometry.accessFrame()) ;
-        
+
         EXPECT_TRUE(transformedGeometry.accessComposite().as<Pyramid>().getBase().isNear(referencePyramid.getBase(), 1e-8)) << referencePyramid.getBase() << transformedGeometry.accessComposite().as<Pyramid>().getBase() ;
         EXPECT_TRUE(transformedGeometry.accessComposite().as<Pyramid>().getApex().isNear(referencePyramid.getApex(), 1e-8)) << referencePyramid.getApex().toString() << transformedGeometry.accessComposite().as<Pyramid>().getApex().toString() ;
 
@@ -447,7 +447,7 @@ TEST (Library_Physics_Environment_Object_Geometry, In)
         const Pyramid referencePyramid = { referenceBase, referenceApex } ;
 
         EXPECT_EQ(itrfFrameSPtr, transformedGeometry.accessFrame()) ;
-        
+
         EXPECT_TRUE(transformedGeometry.accessComposite().as<Pyramid>().getBase().isNear(referencePyramid.getBase(), 1e-8)) << referencePyramid.getBase() << transformedGeometry.accessComposite().as<Pyramid>().getBase() ;
         EXPECT_TRUE(transformedGeometry.accessComposite().as<Pyramid>().getApex().isNear(referencePyramid.getApex(), 1e-8)) << referencePyramid.getApex().toString() << transformedGeometry.accessComposite().as<Pyramid>().getApex().toString() ;
 
@@ -715,7 +715,7 @@ TEST (Library_Physics_Environment_Object_Geometry, IntersectionWith)
     {
 
         EXPECT_ANY_THROW(Geometry::Undefined().intersectionWith(Geometry::Undefined())) ;
-        
+
     }
 
 }

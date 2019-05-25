@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           LibraryPhysicsPy/Units/Length.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -60,7 +60,7 @@ inline void                     LibraryPhysicsPy_Units_Length               ( )
         .def("inMeters", &Length::inMeters)
         .def("inKilometers", &Length::inKilometers)
         .def("toString", &Length::toString, LibraryPhysicsPy_Units_Length_toString_overloads())
-        
+
         .def("Undefined", &Length::Undefined).staticmethod("Undefined")
         .def("Millimeters", &Length::Millimeters).staticmethod("Millimeters")
         .def("Meters", &Length::Meters).staticmethod("Meters")
@@ -88,7 +88,7 @@ inline void                     LibraryPhysicsPy_Units_Length               ( )
 
     //     .from_python<Array<Length>>()
     //     .to_python<Array<Length>>()
-        
+
     // ;
 
     using library::math::obj::Interval ;
@@ -109,7 +109,7 @@ inline void                     LibraryPhysicsPy_Units_Length               ( )
 
         .def("Undefined", &Interval<Length>::Undefined).staticmethod("Undefined")
         .def("Closed", &Interval<Length>::Closed).staticmethod("Closed")
-    
+
     ;
 
 }

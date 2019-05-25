@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Coordinate/Frame/Providers/ITRF.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -73,7 +73,7 @@ Transform                       ITRF::getTransformAt                        (   
 
     using library::physics::time::Scale ;
     using library::physics::time::DateTime ;
-    
+
     if (!anInstant.isDefined())
     {
         throw library::core::error::runtime::Undefined("Instant") ;
@@ -97,7 +97,7 @@ Transform                       ITRF::getTransformAt                        (   
     // xp and yp can be set to zero.
 
     // IERS Bulletin A
-    
+
     // Bulletin A: http://maia.usno.navy.mil/ser7/ser7.dat
     // Data: http://maia.usno.navy.mil/ser7/finals2000A.data
     // Format: http://maia.usno.navy.mil/ser7/readme.finals2000A
@@ -109,7 +109,7 @@ Transform                       ITRF::getTransformAt                        (   
     const Real xp = polarMotion.x() * DAS2R ; // [rad]
     const Real yp = polarMotion.y() * DAS2R ; // [rad]
 
-    // TIO locator s', in radians, which positions the Terrestrial Intermediate Origin on the equator. 
+    // TIO locator s', in radians, which positions the Terrestrial Intermediate Origin on the equator.
     // It is obtained from polar motion observations by numerical integration, and so is in essence unpredictable.
     // However, it is dominated by a secular drift of about 47 microarcseconds per century, and so can be taken into account by using s' = -47*t,
     // where t is centuries since J2000.0.
@@ -138,7 +138,7 @@ Transform                       ITRF::getTransformAt                        (   
     const Quaternion q_ITRF_TIRF = Quaternion::RotationMatrix(dcm_ITRF_TIRF).rectify() ;
     // const Quaternion q_ITRF_TIRF = Quaternion::RotationMatrix(dcm_ITRF_TIRF).conjugate().rectify() ; // ANGULAR VELOCITY WORKS IF CONJUGATED
     const Vector3d w_ITRF_TIRF_in_ITRF = { 0.0, 0.0, 0.0 } ;
-    
+
     return Transform::Passive(anInstant, x_ITRF_TIRF, v_ITRF_TIRF, q_ITRF_TIRF, w_ITRF_TIRF_in_ITRF) ;
 
 }

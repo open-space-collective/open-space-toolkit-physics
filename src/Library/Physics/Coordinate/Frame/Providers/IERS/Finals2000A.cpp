@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Coordinate/Frame/Providers/IERS/Finals2000A.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -101,12 +101,12 @@ Vector2d                        Finals2000A::getPolarMotionAt               (   
             const Real instantMjd_UTC = anInstant.getModifiedJulianDate(Scale::UTC) ;
 
             const Real ratio = (instantMjd_UTC - previousData.mjd) / (nextData.mjd - previousData.mjd) ;
-            
+
             const Real x_A = previousData.x_A + ratio * (nextData.x_A - previousData.x_A) ;
             const Real y_A = previousData.y_A + ratio * (nextData.y_A - previousData.y_A) ;
 
             return { x_A, y_A } ;
-            
+
         }
         else
         {
@@ -195,7 +195,7 @@ Real                            Finals2000A::getLodAt                       (   
             const Real instantMjd_UTC = anInstant.getModifiedJulianDate(Scale::UTC) ;
 
             const Real ratio = (instantMjd_UTC - previousData.mjd) / (nextData.mjd - previousData.mjd) ;
-            
+
             const Real lod_A = previousData.lod_A + ratio * (nextData.lod_A - previousData.lod_A) ;
 
             return lod_A ;
@@ -214,7 +214,7 @@ Real                            Finals2000A::getLodAt                       (   
 
 Finals2000A::Data               Finals2000A::getDataAt                      (   const   Instant&                    anInstant                                   ) const
 {
-    
+
     using library::physics::time::Scale ;
 
     if (!anInstant.isDefined())
@@ -244,7 +244,7 @@ Finals2000A::Data               Finals2000A::getDataAt                      (   
             {
                 return aPreviousValue + aRatio * (aNextValue - aPreviousValue) ;
             }
-            
+
             return Real::Undefined() ;
 
         } ;
@@ -259,25 +259,25 @@ Finals2000A::Data               Finals2000A::getDataAt                      (   
         const Integer year = previousData.year ;
         const Integer month = previousData.month ;
         const Integer day = previousData.day ;
-        
+
         const Real mjd = interpolate(previousData.mjd, nextData.mjd, ratio) ;
-        
+
         const char polarMotionflag = (previousData.polarMotionflag == nextData.polarMotionflag) ? previousData.polarMotionflag : '?' ;
-        
+
         const Real x_A = interpolate(previousData.x_A, nextData.x_A, ratio) ;
         const Real xError_A = interpolate(previousData.xError_A, nextData.xError_A, ratio) ;
         const Real y_A = interpolate(previousData.y_A, nextData.y_A, ratio) ;
         const Real yError_A = interpolate(previousData.yError_A, nextData.yError_A, ratio) ;
-        
+
         const char ut1MinusUtcFlag = (previousData.ut1MinusUtcFlag == nextData.ut1MinusUtcFlag) ? previousData.ut1MinusUtcFlag : '?' ;
-        
+
         const Real ut1MinusUtc_A = interpolate(previousData.ut1MinusUtc_A, nextData.ut1MinusUtc_A, ratio) ;
         const Real ut1MinusUtcError_A = interpolate(previousData.ut1MinusUtcError_A, nextData.ut1MinusUtcError_A, ratio) ;
         const Real lod_A = interpolate(previousData.lod_A, nextData.lod_A, ratio) ;
         const Real lodError_A = interpolate(previousData.lodError_A, nextData.lodError_A, ratio) ;
-        
+
         const char nutationFlag = (previousData.nutationFlag == nextData.nutationFlag) ? previousData.nutationFlag : '?' ;
-        
+
         const Real dx_A = interpolate(previousData.dx_A, nextData.dx_A, ratio) ;
         const Real dxError_A = interpolate(previousData.dxError_A, nextData.dxError_A, ratio) ;
         const Real dy_A = interpolate(previousData.dy_A, nextData.dy_A, ratio) ;
@@ -356,7 +356,7 @@ Finals2000A                     Finals2000A::Load                           (   
     Finals2000A finals2000a ;
 
     std::ifstream fileStream(aFile.getPath().toString()) ;
-    
+
     Index lineIndex = 0 ;
     String line ;
 
@@ -364,9 +364,9 @@ Finals2000A                     Finals2000A::Load                           (   
     // {
 
     //     Array<String> aStringArray = Array<String>::Empty() ;
-        
+
     //     std::stringstream stringStream(aString) ;
-        
+
     //     String item ;
 
     //     while (std::getline(stringStream, item, aDelimiter))
@@ -378,7 +378,7 @@ Finals2000A                     Finals2000A::Load                           (   
     //         }
 
     //     }
-        
+
     //     return aStringArray ;
 
     // } ;
@@ -413,25 +413,25 @@ Finals2000A                     Finals2000A::Load                           (   
         const Integer year = Integer::Parse(line.getSubstring(0, 2).trim()) ;
         const Integer month = Integer::Parse(line.getSubstring(2, 2).trim()) ;
         const Integer day = Integer::Parse(line.getSubstring(4, 2).trim()) ;
-        
+
         const Real mjd = parseReal(line, 8, 15) ;
-        
+
         const char polarMotionflag = line.at(16) ;
-        
+
         const Real x_A = parseReal(line, 19, 27) ;
         const Real xError_A = parseReal(line, 28, 36) ;
         const Real y_A = parseReal(line, 38, 46) ;
         const Real yError_A = parseReal(line, 47, 55) ;
-        
+
         const char ut1MinusUtcFlag = line.at(57) ;
-        
+
         const Real ut1MinusUtc_A = parseReal(line, 59, 68) ;
         const Real ut1MinusUtcError_A = parseReal(line, 69, 78) ;
         const Real lod_A = parseReal(line, 80, 86) ;
         const Real lodError_A = parseReal(line, 87, 93) ;
-        
+
         const char nutationFlag = line.at(95) ;
-        
+
         const Real dx_A = parseReal(line, 98, 106) ;
         const Real dxError_A = parseReal(line, 107, 115) ;
         const Real dy_A = parseReal(line, 117, 125) ;
@@ -478,10 +478,10 @@ Finals2000A                     Finals2000A::Load                           (   
 
     if (!finals2000a.data_.empty())
     {
-        
+
         const Instant startInstant = Instant::ModifiedJulianDate(finals2000a.data_.begin()->first, Scale::UTC) ;
         const Instant endInstant = Instant::ModifiedJulianDate(finals2000a.data_.rbegin()->first, Scale::UTC) ;
-        
+
         finals2000a.span_ = Interval::Closed(startInstant, endInstant) ;
 
     }
@@ -505,7 +505,7 @@ Pair<const Finals2000A::Data*, const Finals2000A::Data*> Finals2000A::accessData
     using library::physics::time::Scale ;
 
     const Real instantMjd_UTC = anInstant.getModifiedJulianDate(Scale::UTC) ;
-    
+
     const auto nextDataIt = data_.lower_bound(instantMjd_UTC) ;
 
     if (nextDataIt == data_.end())

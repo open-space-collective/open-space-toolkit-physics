@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Environment/Gravitational/Model.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -41,7 +41,7 @@ class Model
     public:
 
         /// @brief              Constructor (default)
-    
+
                                 Model                                       ( ) ;
 
         /// @brief              Destructor (pure virtual)

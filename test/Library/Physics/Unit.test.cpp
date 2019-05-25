@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Unit.test.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -258,7 +258,7 @@ TEST (Library_Physics_Unit, Undefined)
     {
 
         EXPECT_NO_THROW(Unit::Undefined()) ;
-        
+
         EXPECT_FALSE(Unit::Undefined().isDefined()) ;
 
     }
@@ -273,7 +273,7 @@ TEST (Library_Physics_Unit, None)
     {
 
         EXPECT_NO_THROW(Unit::None()) ;
-        
+
         EXPECT_TRUE(Unit::None().isDefined()) ;
 
     }
@@ -289,7 +289,7 @@ TEST (Library_Physics_Unit, Length)
     {
 
         EXPECT_NO_THROW(Unit::Length(Length::Unit::Meter)) ;
-        
+
         EXPECT_TRUE(Unit::Length(Length::Unit::Meter).isDefined()) ;
 
     }

@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Coordinate/Frame.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -105,7 +105,7 @@ bool                            Frame::isQuasiInertial                      ( ) 
     {
         throw library::core::error::runtime::Undefined("Frame") ;
     }
-    
+
     return quasiInertial_ ;
 
 }
@@ -117,7 +117,7 @@ bool                            Frame::hasParent                            ( ) 
     {
         throw library::core::error::runtime::Undefined("Frame") ;
     }
-    
+
     return parentFrameSPtr_ != nullptr ;
 
 }
@@ -187,7 +187,7 @@ String                          Frame::getName                              ( ) 
     {
         throw library::core::error::runtime::Undefined("Frame") ;
     }
-    
+
     return name_ ;
 
 }
@@ -207,7 +207,7 @@ Position                        Frame::getOriginIn                          (   
     }
 
     const Transform transform = this->getTransformTo(aFrameSPtr, anInstant) ;
-    
+
     return { transform.applyToPosition(Vector3d::Zero()), Position::Unit::Meter, aFrameSPtr } ;
 
 }
@@ -306,7 +306,7 @@ Transform                       Frame::getTransformTo                       (   
     // std::cout << String::Format("{} → {}:", commonAncestorSPtr->getName(), this->getName()) << std::endl << transform_origin_common << std::endl ;
 
     // Compute transform from destination to common ancestor
-    
+
     Transform transform_destination_common = Transform::Identity(anInstant) ;
 
     for (auto framePtr = aFrameSPtr.get(); framePtr != commonAncestorSPtr.get(); framePtr = framePtr->accessParent().get())
@@ -323,13 +323,13 @@ Transform                       Frame::getTransformTo                       (   
     // std::cout << String::Format("{} → {}:", this->getName(), aFrameSPtr->getName()) << std::endl << transform_destination_origin << std::endl ;
 
     FrameManager::Get().addCachedTransform(thisSPtr, aFrameSPtr, anInstant, transform_destination_origin) ;
-    
+
     return transform_destination_origin ;
-    
+
 }
 
 Shared<const Frame>             Frame::Undefined                            ( )
-{ 
+{
     return std::make_shared<const SharedFrameEnabler>(String::Empty(), false, nullptr, nullptr) ;
 }
 
@@ -362,7 +362,7 @@ Shared<const Frame>             Frame::TEMEOfEpoch                          (   
     using StaticProvider = library::physics::coord::frame::provider::Static ;
 
     const String temeOfEpochFrameName = String::Format("TEMEOfEpoch @ {}", anEpoch.toString(Scale::TT)) ;
-    
+
     static const Shared<const Provider> providerSPtr = std::make_shared<const StaticProvider>(Frame::GCRF()->getTransformTo(Frame::TEME(), anEpoch)) ;
 
     return Frame::Emplace(temeOfEpochFrameName, true, Frame::GCRF(), providerSPtr) ;
@@ -477,7 +477,7 @@ void                            Frame::Destruct                             (   
 
 Uint8                           Frame::getDepth                             ( ) const
 {
-    
+
     Uint8 depth = 0 ;
 
     Shared<const Frame> frameSPtr = this->shared_from_this() ;
@@ -489,7 +489,7 @@ Uint8                           Frame::getDepth                             ( ) 
         {
             throw library::core::error::RuntimeError("Depth overflow.") ;
         }
-        
+
         depth++ ;
 
         frameSPtr = frameSPtr->accessParent() ;

@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Coordinate/Frame/Providers/TEME.test.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -47,7 +47,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_TEME, GetTransformAt)
 
         const Array<Pair<File, Angle>> referenceScenarios =
         {
-            { File::Path(Path::Parse("../test/Library/Physics/Coordinate/Frame/Providers/TEME/Scenario_A/Scenario ITRF_TEME.csv")), Angle::Arcseconds(1.0) }, 
+            { File::Path(Path::Parse("../test/Library/Physics/Coordinate/Frame/Providers/TEME/Scenario_A/Scenario ITRF_TEME.csv")), Angle::Arcseconds(1.0) },
             { File::Path(Path::Parse("../test/Library/Physics/Coordinate/Frame/Providers/TEME/Scenario_B/Scenario ITRF_TEME.csv")), Angle::Arcseconds(20.0) }
         } ;
 
@@ -85,12 +85,12 @@ TEST (Library_Physics_Coordinate_Frame_Providers_TEME, GetTransformAt)
                 EXPECT_GT(toleranceAngle.inDegrees(), RotationVector::Quaternion(dq_ITRF).getAngle().inDegrees()) ;
                 EXPECT_GT(toleranceAngle.inDegrees(), RotationVector::Quaternion(dq_GCRF).getAngle().inDegrees()) ;
 
-                // std::cout << instant.toString() 
+                // std::cout << instant.toString()
                 // << " : [TEME - ITRF]" << referenceOrientation_ITRF_TEME.toString(15) << " " << transform_TEME_ITRF.getOrientation().toString(15)
                 // << " >> " << RotationVector::Quaternion(dq_ITRF).getAngle().inArcseconds().toString(3) << " [asec]"
                 // << " : [TEME - GCRF]" << referenceOrientation_GCRF_TEME.toString(15) << " " << transform_TEME_GCRF.getOrientation().toString(15)
                 // << " >> " << RotationVector::Quaternion(dq_GCRF).getAngle().inArcseconds().toString(3) << " [asec]" << std::endl ;
-    
+
                 // [TBI] Add angular velocity test
 
             }

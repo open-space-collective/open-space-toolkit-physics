@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Setup.test.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -50,19 +50,19 @@ class Environment : public testing::Environment
             {
                 global::someGlobalString = "World" ;
             }
-            
+
         }
 
         virtual                 ~Environment                                ( )
         {
 
         }
-        
+
         virtual void            SetUp                                       ( )
         {
 
         }
-        
+
         virtual void            TearDown                                    ( )
         {
 

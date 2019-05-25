@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Environment/Gravitational/Earth.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -71,7 +71,7 @@ class Earth : public Model
         ///
         /// @param              [in] aType A gravitational model type
         /// @param              [in] (optional) aDataDirectory A gravitational model data directory
-    
+
                                 Earth                                       (   const   Earth::Type&                aType,
                                                                                 const   Directory&                  aDataDirectory                              =   Directory::Undefined() ) ;
 
@@ -91,7 +91,7 @@ class Earth : public Model
         /// @brief              Destructor
 
                                 ~Earth                                      ( ) ;
-        
+
         /// @brief              Clone the Earth gravitational model
         ///
         /// @return             Pointer to Earth gravitational model

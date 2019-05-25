@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Environment/Ephemerides/SPICE/Engine.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -80,7 +80,7 @@ std::ostream&                   operator <<                                 (   
 
     ktotal_c("ALL", &kernelCount) ;
 
-    if (failed_c()) 
+    if (failed_c())
     {
         handleException() ;
     }
@@ -102,7 +102,7 @@ std::ostream&                   operator <<                                 (   
 
             kdata_c(kernelIndex, "ALL", 256, 81, 256, fileName, fileType, fileSource, &handle, &found) ;
 
-            if (failed_c()) 
+            if (failed_c())
             {
                 handleException() ;
             }
@@ -135,7 +135,7 @@ bool                            Engine::isKernelLoaded                      (   
     }
 
     const std::lock_guard<std::mutex> lock { mutex_ } ;
-    
+
     return this->isKernelLoaded_(aKernel) ;
 
 }
@@ -144,7 +144,7 @@ Engine::Mode                    Engine::getMode                             ( ) 
 {
 
     const std::lock_guard<std::mutex> lock { mutex_ } ;
-    
+
     return mode_ ;
 
 }
@@ -162,14 +162,14 @@ Shared<const Frame>             Engine::getFrameOf                          (   
     {
         return frameSPtr ;
     }
-    
+
     const Shared<const DynamicProvider> transformProviderSPtr = std::make_shared<const DynamicProvider>
     (
         [this, objectIdentifier, spiceFrameName] (const Instant& anInstant) -> Transform // [TBI] Use shared_from_this instead
         {
 
             const std::lock_guard<std::mutex> lock { mutex_ } ;
-            
+
             return this->getTransformAt(objectIdentifier, spiceFrameName, anInstant) ;
 
         }
@@ -253,7 +253,7 @@ Engine::Mode                    Engine::DefaultMode                         ( )
 
     if (const char* modeString = std::getenv("LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_ENGINE_MODE"))
     {
-        
+
         if (strcmp(modeString, "Manual") == 0)
         {
             return Engine::Mode::Manual ;
@@ -266,7 +266,7 @@ Engine::Mode                    Engine::DefaultMode                         ( )
         {
             throw library::core::error::runtime::Wrong("Mode", modeString) ;
         }
-        
+
     }
 
     return defaultMode ;
@@ -285,7 +285,7 @@ Array<Kernel>                   Engine::DefaultKernels                      (   
 
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("earth_assoc_itrf93.tf"))),
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("earth_070425_370426_predict.bpc"))),
-        
+
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("moon_080317.tf"))),
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("moon_assoc_me.tf"))),
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("moon_pa_de421_1900-2050.bpc")))
@@ -331,7 +331,7 @@ Transform                       Engine::getTransformAt                      (   
 
     const SpiceDouble ephemerisTime = unitim_c(anInstant.getJulianDate(Scale::TT), "JDTDB", "ET") ;
 
-    if (failed_c()) 
+    if (failed_c())
     {
         handleException() ;
     }
@@ -346,8 +346,8 @@ Transform                       Engine::getTransformAt                      (   
     #define OBSERVER "earth"
 
     spkezr_c(aSpiceIdentifier.data(), ephemerisTime, FRAME, ABCORR, OBSERVER, state, &lt) ;
-    
-    if (failed_c()) 
+
+    if (failed_c())
     {
         handleException() ;
     }
@@ -360,7 +360,7 @@ Transform                       Engine::getTransformAt                      (   
     SpiceDouble stateTransformationMatrix[6][6] ;
 
     sxform_c(aFrameName.data(), "J2000", ephemerisTime, stateTransformationMatrix) ;
-    
+
     if (failed_c())
     {
         handleException() ;
@@ -370,13 +370,13 @@ Transform                       Engine::getTransformAt                      (   
     SpiceDouble angularVelocity[3] ;
 
     xf2rav_c(stateTransformationMatrix, rotationMatrix, angularVelocity) ;
-    
-    if (failed_c()) 
+
+    if (failed_c())
     {
         handleException() ;
     }
 
-    const RotationMatrix dcm_GCRF_BODY = 
+    const RotationMatrix dcm_GCRF_BODY =
     {
         rotationMatrix[0][0], rotationMatrix[0][1], rotationMatrix[0][2],
         rotationMatrix[1][0], rotationMatrix[1][1], rotationMatrix[1][2],
@@ -508,7 +508,7 @@ void                            Engine::manageKernels                       (   
 
                             // if (isFirstTime && (!didLoadKernel)) // The index is probably too old: force refresh
                             // {
-                                
+
                             //     Manager::Get().refresh() ;
 
                             //     loadEarthKernel(false) ;
@@ -568,14 +568,14 @@ void                            Engine::loadKernel_                         (   
     }
 
     const String kernelFilePathString = kernelFile.getPath().toString() ;
-    
+
     // std::cout << String::Format("Loading kernel [{}]...", kernelFilePathString) << std::endl ;
 
     const ConstSpiceChar* kernelFilePathSpiceChar = kernelFilePathString.data() ;
 
     furnsh_c(kernelFilePathSpiceChar) ;
 
-    if (failed_c()) 
+    if (failed_c())
     {
         handleException() ;
     }
@@ -602,7 +602,7 @@ void                            Engine::unloadKernel_                       (   
 
     unload_c(kernelFilePathSpiceChar) ;
 
-    if (failed_c()) 
+    if (failed_c())
     {
         handleException() ;
     }

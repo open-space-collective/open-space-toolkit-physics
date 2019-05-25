@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Time/Duration.test.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -49,7 +49,7 @@ TEST (Library_Physics_Time_Duration, Constructor)
 
 TEST (Library_Physics_Time_Duration, EqualToOperator)
 {
-    
+
     using library::physics::time::Duration ;
 
     {
@@ -82,7 +82,7 @@ TEST (Library_Physics_Time_Duration, EqualToOperator)
 
 TEST (Library_Physics_Time_Duration, NoEqualToOperator)
 {
-    
+
     using library::physics::time::Duration ;
 
     {
@@ -115,7 +115,7 @@ TEST (Library_Physics_Time_Duration, NoEqualToOperator)
 
 TEST (Library_Physics_Time_Duration, LessThanOperator)
 {
-    
+
     using library::physics::time::Duration ;
 
     {
@@ -147,7 +147,7 @@ TEST (Library_Physics_Time_Duration, LessThanOperator)
 
 TEST (Library_Physics_Time_Duration, LessThanOrEqualToOperator)
 {
-    
+
     using library::physics::time::Duration ;
 
     {
@@ -180,7 +180,7 @@ TEST (Library_Physics_Time_Duration, LessThanOrEqualToOperator)
 
 TEST (Library_Physics_Time_Duration, GreaterThanOperator)
 {
-    
+
     using library::physics::time::Duration ;
 
     {
@@ -194,7 +194,7 @@ TEST (Library_Physics_Time_Duration, GreaterThanOperator)
     {
 
         EXPECT_FALSE(Duration(0) > Duration(0)) ;
-        
+
         EXPECT_FALSE(Duration(-1) > Duration(0)) ;
         EXPECT_FALSE(Duration(0) > Duration(+1)) ;
         EXPECT_FALSE(Duration(-1) > Duration(+1)) ;
@@ -213,7 +213,7 @@ TEST (Library_Physics_Time_Duration, GreaterThanOperator)
 
 TEST (Library_Physics_Time_Duration, GreaterThanOrEqualToOperator)
 {
-    
+
     using library::physics::time::Duration ;
 
     {
@@ -246,7 +246,7 @@ TEST (Library_Physics_Time_Duration, GreaterThanOrEqualToOperator)
 
 TEST (Library_Physics_Time_Duration, AdditionOperator)
 {
-    
+
     using library::physics::time::Duration ;
 
     {
@@ -255,7 +255,7 @@ TEST (Library_Physics_Time_Duration, AdditionOperator)
         EXPECT_EQ(Duration(1), Duration(1) + Duration(0)) ;
         EXPECT_EQ(Duration(1), Duration(0) + Duration(1)) ;
         EXPECT_EQ(Duration(2), Duration(1) + Duration(1)) ;
-        
+
         EXPECT_EQ(Duration(-1), Duration(-1) + Duration(0)) ;
         EXPECT_EQ(Duration(-1), Duration(0) + Duration(-1)) ;
         EXPECT_EQ(Duration(-2), Duration(-1) + Duration(-1)) ;
@@ -274,7 +274,7 @@ TEST (Library_Physics_Time_Duration, AdditionOperator)
 
 TEST (Library_Physics_Time_Duration, SubtractionOperator)
 {
-    
+
     using library::physics::time::Duration ;
 
     {
@@ -283,7 +283,7 @@ TEST (Library_Physics_Time_Duration, SubtractionOperator)
         EXPECT_EQ(Duration(+1), Duration(1) - Duration(0)) ;
         EXPECT_EQ(Duration(-1), Duration(0) - Duration(1)) ;
         EXPECT_EQ(Duration(0), Duration(1) - Duration(1)) ;
-        
+
         EXPECT_EQ(Duration(-1), Duration(-1) - Duration(0)) ;
         EXPECT_EQ(Duration(+1), Duration(0) - Duration(-1)) ;
         EXPECT_EQ(Duration(0), Duration(-1) - Duration(-1)) ;
@@ -302,7 +302,7 @@ TEST (Library_Physics_Time_Duration, SubtractionOperator)
 
 TEST (Library_Physics_Time_Duration, MultiplicationOperator)
 {
-    
+
     using library::core::types::Real ;
     using library::physics::time::Duration ;
 
@@ -314,7 +314,7 @@ TEST (Library_Physics_Time_Duration, MultiplicationOperator)
         EXPECT_EQ(Duration(0), Duration(1) * 0) ;
         EXPECT_EQ(Duration(+1), Duration(1) * +1) ;
         EXPECT_EQ(Duration(-1), Duration(1) * -1) ;
-        
+
         EXPECT_EQ(Duration(0), Duration(-1) * 0) ;
         EXPECT_EQ(Duration(-1), Duration(-1) * +1) ;
         EXPECT_EQ(Duration(+1), Duration(-1) * -1) ;
@@ -329,7 +329,7 @@ TEST (Library_Physics_Time_Duration, MultiplicationOperator)
         EXPECT_EQ(Duration(0), Duration(1) * 0.0) ;
         EXPECT_EQ(Duration(+1), Duration(1) * +1.0) ;
         EXPECT_EQ(Duration(-1), Duration(1) * -1.0) ;
-        
+
         EXPECT_EQ(Duration(0), Duration(-1) * 0.0) ;
         EXPECT_EQ(Duration(-1), Duration(-1) * +1.0) ;
         EXPECT_EQ(Duration(+1), Duration(-1) * -1.0) ;
@@ -344,7 +344,7 @@ TEST (Library_Physics_Time_Duration, MultiplicationOperator)
         EXPECT_EQ(Duration(0), 0 * Duration(1)) ;
         EXPECT_EQ(Duration(+1), +1 * Duration(1)) ;
         EXPECT_EQ(Duration(-1), -1 * Duration(1)) ;
-        
+
         EXPECT_EQ(Duration(0), 0 * Duration(-1)) ;
         EXPECT_EQ(Duration(-1), +1 * Duration(-1)) ;
         EXPECT_EQ(Duration(+1), -1 * Duration(-1)) ;
@@ -359,7 +359,7 @@ TEST (Library_Physics_Time_Duration, MultiplicationOperator)
         EXPECT_EQ(Duration(0), 0.0 * Duration(1)) ;
         EXPECT_EQ(Duration(+1), +1.0 * Duration(1)) ;
         EXPECT_EQ(Duration(-1), -1.0 * Duration(1)) ;
-        
+
         EXPECT_EQ(Duration(0), 0.0 * Duration(-1)) ;
         EXPECT_EQ(Duration(-1), +1.0 * Duration(-1)) ;
         EXPECT_EQ(Duration(+1), -1.0 * Duration(-1)) ;
@@ -387,7 +387,7 @@ TEST (Library_Physics_Time_Duration, MultiplicationOperator)
 
 TEST (Library_Physics_Time_Duration, DivisionOperator)
 {
-    
+
     using library::core::types::Real ;
     using library::physics::time::Duration ;
 
@@ -397,7 +397,7 @@ TEST (Library_Physics_Time_Duration, DivisionOperator)
 
         EXPECT_EQ(Duration(+1), Duration(1) / +1) ;
         EXPECT_EQ(Duration(-1), Duration(1) / -1) ;
-        
+
         EXPECT_EQ(Duration(-1), Duration(-1) / +1) ;
         EXPECT_EQ(Duration(+1), Duration(-1) / -1) ;
 
@@ -409,7 +409,7 @@ TEST (Library_Physics_Time_Duration, DivisionOperator)
 
         EXPECT_EQ(Duration(+1), Duration(1) / +1.0) ;
         EXPECT_EQ(Duration(-1), Duration(1) / -1.0) ;
-        
+
         EXPECT_EQ(Duration(-1), Duration(-1) / +1.0) ;
         EXPECT_EQ(Duration(+1), Duration(-1) / -1.0) ;
 
@@ -443,7 +443,7 @@ TEST (Library_Physics_Time_Duration, DivisionOperator)
 
 TEST (Library_Physics_Time_Duration, AdditionAssignementOperator)
 {
-    
+
     using library::physics::time::Duration ;
 
     {
@@ -452,7 +452,7 @@ TEST (Library_Physics_Time_Duration, AdditionAssignementOperator)
         EXPECT_EQ(Duration(1), Duration(1) += Duration(0)) ;
         EXPECT_EQ(Duration(1), Duration(0) += Duration(1)) ;
         EXPECT_EQ(Duration(2), Duration(1) += Duration(1)) ;
-        
+
         EXPECT_EQ(Duration(-1), Duration(-1) += Duration(0)) ;
         EXPECT_EQ(Duration(-1), Duration(0) += Duration(-1)) ;
         EXPECT_EQ(Duration(-2), Duration(-1) += Duration(-1)) ;
@@ -471,7 +471,7 @@ TEST (Library_Physics_Time_Duration, AdditionAssignementOperator)
 
 TEST (Library_Physics_Time_Duration, SubtractionAssignementOperator)
 {
-    
+
     using library::physics::time::Duration ;
 
     {
@@ -480,7 +480,7 @@ TEST (Library_Physics_Time_Duration, SubtractionAssignementOperator)
         EXPECT_EQ(Duration(+1), Duration(1) -= Duration(0)) ;
         EXPECT_EQ(Duration(-1), Duration(0) -= Duration(1)) ;
         EXPECT_EQ(Duration(0), Duration(1) -= Duration(1)) ;
-        
+
         EXPECT_EQ(Duration(-1), Duration(-1) -= Duration(0)) ;
         EXPECT_EQ(Duration(+1), Duration(0) -= Duration(-1)) ;
         EXPECT_EQ(Duration(0), Duration(-1) -= Duration(-1)) ;
@@ -499,7 +499,7 @@ TEST (Library_Physics_Time_Duration, SubtractionAssignementOperator)
 
 TEST (Library_Physics_Time_Duration, MultiplicationAssignementOperator)
 {
-    
+
     using library::core::types::Real ;
     using library::physics::time::Duration ;
 
@@ -511,7 +511,7 @@ TEST (Library_Physics_Time_Duration, MultiplicationAssignementOperator)
         EXPECT_EQ(Duration(0), Duration(1) *= 0) ;
         EXPECT_EQ(Duration(+1), Duration(1) *= +1) ;
         EXPECT_EQ(Duration(-1), Duration(1) *= -1) ;
-        
+
         EXPECT_EQ(Duration(0), Duration(-1) *= 0) ;
         EXPECT_EQ(Duration(-1), Duration(-1) *= +1) ;
         EXPECT_EQ(Duration(+1), Duration(-1) *= -1) ;
@@ -526,7 +526,7 @@ TEST (Library_Physics_Time_Duration, MultiplicationAssignementOperator)
         EXPECT_EQ(Duration(0), Duration(1) *= 0.0) ;
         EXPECT_EQ(Duration(+1), Duration(1) *= +1.0) ;
         EXPECT_EQ(Duration(-1), Duration(1) *= -1.0) ;
-        
+
         EXPECT_EQ(Duration(0), Duration(-1) *= 0.0) ;
         EXPECT_EQ(Duration(-1), Duration(-1) *= +1.0) ;
         EXPECT_EQ(Duration(+1), Duration(-1) *= -1.0) ;
@@ -552,7 +552,7 @@ TEST (Library_Physics_Time_Duration, MultiplicationAssignementOperator)
 
 TEST (Library_Physics_Time_Duration, DivisionAssignementOperator)
 {
-    
+
     using library::core::types::Real ;
     using library::physics::time::Duration ;
 
@@ -562,7 +562,7 @@ TEST (Library_Physics_Time_Duration, DivisionAssignementOperator)
 
         EXPECT_EQ(Duration(+1), Duration(1) /= +1) ;
         EXPECT_EQ(Duration(-1), Duration(1) /= -1) ;
-        
+
         EXPECT_EQ(Duration(-1), Duration(-1) /= +1) ;
         EXPECT_EQ(Duration(+1), Duration(-1) /= -1) ;
 
@@ -574,7 +574,7 @@ TEST (Library_Physics_Time_Duration, DivisionAssignementOperator)
 
         EXPECT_EQ(Duration(+1), Duration(1) /= +1.0) ;
         EXPECT_EQ(Duration(-1), Duration(1) /= -1.0) ;
-        
+
         EXPECT_EQ(Duration(-1), Duration(-1) /= +1.0) ;
         EXPECT_EQ(Duration(+1), Duration(-1) /= -1.0) ;
 
@@ -608,7 +608,7 @@ TEST (Library_Physics_Time_Duration, DivisionAssignementOperator)
 
 TEST (Library_Physics_Time_Duration, StreamOperator)
 {
-    
+
     using library::physics::time::Duration ;
 
     {
@@ -625,20 +625,20 @@ TEST (Library_Physics_Time_Duration, StreamOperator)
 
 TEST (Library_Physics_Time_Duration, IsDefined)
 {
-    
+
     using library::physics::time::Duration ;
 
     {
 
         EXPECT_TRUE(Duration(0).isDefined()) ;
-        
+
         EXPECT_TRUE(Duration(+1).isDefined()) ;
         EXPECT_TRUE(Duration(-1).isDefined()) ;
 
     }
 
     {
-        
+
         EXPECT_FALSE(Duration::Undefined().isDefined()) ;
 
     }
@@ -647,13 +647,13 @@ TEST (Library_Physics_Time_Duration, IsDefined)
 
 TEST (Library_Physics_Time_Duration, IsZero)
 {
-    
+
     using library::physics::time::Duration ;
 
     {
 
         EXPECT_TRUE(Duration(0).isZero()) ;
-        
+
     }
 
     {
@@ -664,7 +664,7 @@ TEST (Library_Physics_Time_Duration, IsZero)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(Duration::Undefined().isZero()) ;
 
     }
@@ -673,14 +673,14 @@ TEST (Library_Physics_Time_Duration, IsZero)
 
 TEST (Library_Physics_Time_Duration, IsPositive)
 {
-    
+
     using library::physics::time::Duration ;
 
     {
 
         EXPECT_TRUE(Duration(0).isPositive()) ;
         EXPECT_TRUE(Duration(+1).isPositive()) ;
-        
+
     }
 
     {
@@ -690,7 +690,7 @@ TEST (Library_Physics_Time_Duration, IsPositive)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(Duration::Undefined().isPositive()) ;
 
     }
@@ -699,13 +699,13 @@ TEST (Library_Physics_Time_Duration, IsPositive)
 
 TEST (Library_Physics_Time_Duration, IsStrictlyPositive)
 {
-    
+
     using library::physics::time::Duration ;
 
     {
 
         EXPECT_TRUE(Duration(+1).isStrictlyPositive()) ;
-        
+
     }
 
     {
@@ -716,7 +716,7 @@ TEST (Library_Physics_Time_Duration, IsStrictlyPositive)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(Duration::Undefined().isStrictlyPositive()) ;
 
     }
@@ -725,13 +725,13 @@ TEST (Library_Physics_Time_Duration, IsStrictlyPositive)
 
 TEST (Library_Physics_Time_Duration, IsNear)
 {
-    
+
     using library::physics::time::Duration ;
 
     {
 
         EXPECT_TRUE(Duration::Seconds(+0.0).isNear(Duration::Seconds(+0.0), Duration::Seconds(0.0))) ;
-        
+
         EXPECT_TRUE(Duration::Seconds(-1.0).isNear(Duration::Seconds(-1.0), Duration::Seconds(0.0))) ;
         EXPECT_TRUE(Duration::Seconds(+1.0).isNear(Duration::Seconds(+1.0), Duration::Seconds(0.0))) ;
 
@@ -740,7 +740,7 @@ TEST (Library_Physics_Time_Duration, IsNear)
 
         EXPECT_TRUE(Duration::Seconds(-1.0).isNear(Duration::Seconds(-2.0), Duration::Seconds(1.0))) ;
         EXPECT_TRUE(Duration::Seconds(+1.0).isNear(Duration::Seconds(+2.0), Duration::Seconds(1.0))) ;
-        
+
     }
 
     {
@@ -754,7 +754,7 @@ TEST (Library_Physics_Time_Duration, IsNear)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(Duration::Undefined().isNear(Duration::Undefined(), Duration::Undefined())) ;
         EXPECT_ANY_THROW(Duration::Undefined().isNear(Duration::Zero(), Duration::Zero())) ;
         EXPECT_ANY_THROW(Duration::Zero().isNear(Duration::Undefined(), Duration::Zero())) ;
@@ -776,7 +776,7 @@ TEST (Library_Physics_Time_Duration, GetNanoseconds)
         EXPECT_EQ(10, Duration(10).getNanoseconds()) ;
         EXPECT_EQ(100, Duration(100).getNanoseconds()) ;
         EXPECT_EQ(999, Duration(999).getNanoseconds()) ;
-        
+
         EXPECT_EQ(0, Duration(1000).getNanoseconds()) ;
         EXPECT_EQ(1, Duration(1001).getNanoseconds()) ;
 
@@ -788,7 +788,7 @@ TEST (Library_Physics_Time_Duration, GetNanoseconds)
         EXPECT_EQ(10, Duration(-10).getNanoseconds()) ;
         EXPECT_EQ(100, Duration(-100).getNanoseconds()) ;
         EXPECT_EQ(999, Duration(-999).getNanoseconds()) ;
-        
+
         EXPECT_EQ(0, Duration(-1000).getNanoseconds()) ;
         EXPECT_EQ(1, Duration(-1001).getNanoseconds()) ;
 
@@ -821,12 +821,12 @@ TEST (Library_Physics_Time_Duration, GetNanoseconds)
                                     + Duration::Milliseconds(idx)
                                     + Duration::Microseconds(idx)
                                     + Duration::Nanoseconds(idx) ;
-            
+
             EXPECT_LE(0, duration.getNanoseconds()) ;
             EXPECT_GE(999, duration.getNanoseconds()) ;
-        
+
         }
-        
+
     }
 
     {
@@ -842,14 +842,14 @@ TEST (Library_Physics_Time_Duration, GetMicroseconds)
 
     using library::physics::time::Duration ;
 
-    { 
+    {
 
         EXPECT_EQ(0, Duration(0).getMicroseconds()) ;
         EXPECT_EQ(0, Duration(1).getMicroseconds()) ;
         EXPECT_EQ(0, Duration(10).getMicroseconds()) ;
         EXPECT_EQ(0, Duration(100).getMicroseconds()) ;
         EXPECT_EQ(0, Duration(999).getMicroseconds()) ;
-        
+
         EXPECT_EQ(1, Duration(1000).getMicroseconds()) ;
         EXPECT_EQ(1, Duration(1001).getMicroseconds()) ;
         EXPECT_EQ(2, Duration(2001).getMicroseconds()) ;
@@ -866,7 +866,7 @@ TEST (Library_Physics_Time_Duration, GetMicroseconds)
         EXPECT_EQ(0, Duration(-10).getMicroseconds()) ;
         EXPECT_EQ(0, Duration(-100).getMicroseconds()) ;
         EXPECT_EQ(0, Duration(-999).getMicroseconds()) ;
-        
+
         EXPECT_EQ(1, Duration(-1000).getMicroseconds()) ;
         EXPECT_EQ(1, Duration(-1001).getMicroseconds()) ;
         EXPECT_EQ(2, Duration(-2001).getMicroseconds()) ;
@@ -904,12 +904,12 @@ TEST (Library_Physics_Time_Duration, GetMicroseconds)
                                     + Duration::Milliseconds(idx)
                                     + Duration::Microseconds(idx)
                                     + Duration::Nanoseconds(idx) ;
-            
+
             EXPECT_LE(0, duration.getMicroseconds()) ;
             EXPECT_GE(999, duration.getMicroseconds()) ;
-        
+
         }
-        
+
     }
 
     {
@@ -925,14 +925,14 @@ TEST (Library_Physics_Time_Duration, GetMilliseconds)
 
     using library::physics::time::Duration ;
 
-    { 
+    {
 
         EXPECT_EQ(0, Duration(0).getMilliseconds()) ;
         EXPECT_EQ(0, Duration(1).getMilliseconds()) ;
         EXPECT_EQ(0, Duration(10).getMilliseconds()) ;
         EXPECT_EQ(0, Duration(100).getMilliseconds()) ;
         EXPECT_EQ(0, Duration(999).getMilliseconds()) ;
-        
+
         EXPECT_EQ(0, Duration(1000).getMilliseconds()) ;
         EXPECT_EQ(0, Duration(1001).getMilliseconds()) ;
         EXPECT_EQ(0, Duration(1002).getMilliseconds()) ;
@@ -953,7 +953,7 @@ TEST (Library_Physics_Time_Duration, GetMilliseconds)
         EXPECT_EQ(0, Duration(-10).getMilliseconds()) ;
         EXPECT_EQ(0, Duration(-100).getMilliseconds()) ;
         EXPECT_EQ(0, Duration(-999).getMilliseconds()) ;
-        
+
         EXPECT_EQ(0, Duration(-1000).getMilliseconds()) ;
         EXPECT_EQ(0, Duration(-1001).getMilliseconds()) ;
         EXPECT_EQ(0, Duration(-1002).getMilliseconds()) ;
@@ -995,12 +995,12 @@ TEST (Library_Physics_Time_Duration, GetMilliseconds)
                                     + Duration::Milliseconds(idx)
                                     + Duration::Microseconds(idx)
                                     + Duration::Nanoseconds(idx) ;
-            
+
             EXPECT_LE(0, duration.getMilliseconds()) ;
             EXPECT_GE(999, duration.getMilliseconds()) ;
-        
+
         }
-        
+
     }
 
     {
@@ -1016,14 +1016,14 @@ TEST (Library_Physics_Time_Duration, GetSeconds)
 
     using library::physics::time::Duration ;
 
-    { 
+    {
 
         EXPECT_EQ(0, Duration(0).getSeconds()) ;
         EXPECT_EQ(0, Duration(1).getSeconds()) ;
         EXPECT_EQ(0, Duration(10).getSeconds()) ;
         EXPECT_EQ(0, Duration(100).getSeconds()) ;
         EXPECT_EQ(0, Duration(999).getSeconds()) ;
-        
+
         EXPECT_EQ(0, Duration(1000).getSeconds()) ;
         EXPECT_EQ(0, Duration(1001).getSeconds()) ;
         EXPECT_EQ(0, Duration(1002).getSeconds()) ;
@@ -1052,7 +1052,7 @@ TEST (Library_Physics_Time_Duration, GetSeconds)
         EXPECT_EQ(0, Duration(-10).getSeconds()) ;
         EXPECT_EQ(0, Duration(-100).getSeconds()) ;
         EXPECT_EQ(0, Duration(-999).getSeconds()) ;
-        
+
         EXPECT_EQ(0, Duration(-1000).getSeconds()) ;
         EXPECT_EQ(0, Duration(-1001).getSeconds()) ;
         EXPECT_EQ(0, Duration(-1002).getSeconds()) ;
@@ -1102,12 +1102,12 @@ TEST (Library_Physics_Time_Duration, GetSeconds)
                                     + Duration::Milliseconds(idx)
                                     + Duration::Microseconds(idx)
                                     + Duration::Nanoseconds(idx) ;
-            
+
             EXPECT_LE(0, duration.getSeconds()) ;
             EXPECT_GE(59, duration.getSeconds()) ;
-        
+
         }
-        
+
     }
 
     {
@@ -1123,11 +1123,11 @@ TEST (Library_Physics_Time_Duration, GetMinutes)
 
     using library::physics::time::Duration ;
 
-    { 
+    {
 
         EXPECT_EQ(0, Duration(0).getMinutes()) ;
         EXPECT_EQ(0, Duration(1).getMinutes()) ;
-        
+
         EXPECT_EQ(1, (Duration::Minutes(1.0) + Duration::Seconds(30.0)).getMinutes()) ;
         EXPECT_EQ(2, (Duration::Minutes(1.0) + Duration::Seconds(60.0)).getMinutes()) ;
         EXPECT_EQ(2, (Duration::Minutes(1.0) + Duration::Seconds(61.0)).getMinutes()) ;
@@ -1138,7 +1138,7 @@ TEST (Library_Physics_Time_Duration, GetMinutes)
     }
 
     {
-        
+
         EXPECT_EQ(1, (-(Duration::Minutes(1.0) + Duration::Seconds(30.0))).getMinutes()) ;
         EXPECT_EQ(2, (-(Duration::Minutes(1.0) + Duration::Seconds(60.0))).getMinutes()) ;
         EXPECT_EQ(2, (-(Duration::Minutes(1.0) + Duration::Seconds(61.0))).getMinutes()) ;
@@ -1175,12 +1175,12 @@ TEST (Library_Physics_Time_Duration, GetMinutes)
                                     + Duration::Milliseconds(idx)
                                     + Duration::Microseconds(idx)
                                     + Duration::Nanoseconds(idx) ;
-            
+
             EXPECT_LE(0, duration.getMinutes()) ;
             EXPECT_GE(59, duration.getMinutes()) ;
-        
+
         }
-        
+
     }
 
     {
@@ -1196,11 +1196,11 @@ TEST (Library_Physics_Time_Duration, GetHours)
 
     using library::physics::time::Duration ;
 
-    { 
+    {
 
         EXPECT_EQ(0, Duration(0).getHours()) ;
         EXPECT_EQ(0, Duration(1).getHours()) ;
-        
+
         EXPECT_EQ(1, (Duration::Hours(1.0) + Duration::Minutes(30.0)).getHours()) ;
         EXPECT_EQ(2, (Duration::Hours(1.0) + Duration::Minutes(60.0)).getHours()) ;
         EXPECT_EQ(2, (Duration::Hours(1.0) + Duration::Minutes(61.0)).getHours()) ;
@@ -1248,12 +1248,12 @@ TEST (Library_Physics_Time_Duration, GetHours)
                                     + Duration::Milliseconds(idx)
                                     + Duration::Microseconds(idx)
                                     + Duration::Nanoseconds(idx) ;
-            
+
             EXPECT_LE(0, duration.getHours()) ;
             EXPECT_GE(23, duration.getHours()) ;
-        
+
         }
-        
+
     }
 
     {
@@ -1269,11 +1269,11 @@ TEST (Library_Physics_Time_Duration, GetDays)
 
     using library::physics::time::Duration ;
 
-    { 
+    {
 
         EXPECT_EQ(0, Duration(0).getDays()) ;
         EXPECT_EQ(0, Duration(1).getDays()) ;
-        
+
         EXPECT_EQ(1, (Duration::Days(1.0) + Duration::Hours(12.0)).getDays()) ;
         EXPECT_EQ(2, (Duration::Days(1.0) + Duration::Hours(24.0)).getDays()) ;
         EXPECT_EQ(2, (Duration::Days(1.0) + Duration::Hours(25.0)).getDays()) ;
@@ -1321,11 +1321,11 @@ TEST (Library_Physics_Time_Duration, GetDays)
                                     + Duration::Milliseconds(idx)
                                     + Duration::Microseconds(idx)
                                     + Duration::Nanoseconds(idx) ;
-            
+
             EXPECT_LE(0, duration.getDays()) ;
-        
+
         }
-        
+
     }
 
     {
@@ -1341,11 +1341,11 @@ TEST (Library_Physics_Time_Duration, GetWeeks)
 
     using library::physics::time::Duration ;
 
-    { 
+    {
 
         EXPECT_EQ(0, Duration(0).getWeeks()) ;
         EXPECT_EQ(0, Duration(1).getWeeks()) ;
-        
+
         EXPECT_EQ(1, (Duration::Weeks(1.0) + Duration::Days(4.5)).getWeeks()) ;
         EXPECT_EQ(2, (Duration::Weeks(1.0) + Duration::Days(7.0)).getWeeks()) ;
         EXPECT_EQ(2, (Duration::Weeks(1.0) + Duration::Days(8.0)).getWeeks()) ;
@@ -1394,11 +1394,11 @@ TEST (Library_Physics_Time_Duration, GetWeeks)
                                     + Duration::Milliseconds(idx)
                                     + Duration::Microseconds(idx)
                                     + Duration::Nanoseconds(idx) ;
-            
+
             EXPECT_LE(0, duration.getWeeks()) ;
-        
+
         }
-        
+
     }
 
     {
@@ -1412,7 +1412,7 @@ TEST (Library_Physics_Time_Duration, GetWeeks)
 
 TEST (Library_Physics_Time_Duration, InNanoseconds)
 {
-    
+
     using library::core::types::Int64 ;
     using library::physics::time::Duration ;
 
@@ -1433,7 +1433,7 @@ TEST (Library_Physics_Time_Duration, InNanoseconds)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(Duration::Undefined().inNanoseconds()) ;
 
     }
@@ -1442,7 +1442,7 @@ TEST (Library_Physics_Time_Duration, InNanoseconds)
 
 TEST (Library_Physics_Time_Duration, InMicroseconds)
 {
-    
+
     using library::core::types::Int64 ;
     using library::physics::time::Duration ;
 
@@ -1463,7 +1463,7 @@ TEST (Library_Physics_Time_Duration, InMicroseconds)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(Duration::Undefined().inMicroseconds()) ;
 
     }
@@ -1472,7 +1472,7 @@ TEST (Library_Physics_Time_Duration, InMicroseconds)
 
 TEST (Library_Physics_Time_Duration, InMilliseconds)
 {
-    
+
     using library::core::types::Int64 ;
     using library::physics::time::Duration ;
 
@@ -1493,7 +1493,7 @@ TEST (Library_Physics_Time_Duration, InMilliseconds)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(Duration::Undefined().inMilliseconds()) ;
 
     }
@@ -1502,7 +1502,7 @@ TEST (Library_Physics_Time_Duration, InMilliseconds)
 
 TEST (Library_Physics_Time_Duration, InSeconds)
 {
-    
+
     using library::core::types::Int64 ;
     using library::physics::time::Duration ;
 
@@ -1523,7 +1523,7 @@ TEST (Library_Physics_Time_Duration, InSeconds)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(Duration::Undefined().inSeconds()) ;
 
     }
@@ -1532,7 +1532,7 @@ TEST (Library_Physics_Time_Duration, InSeconds)
 
 TEST (Library_Physics_Time_Duration, InMinutes)
 {
-    
+
     using library::core::types::Int64 ;
     using library::physics::time::Duration ;
 
@@ -1553,7 +1553,7 @@ TEST (Library_Physics_Time_Duration, InMinutes)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(Duration::Undefined().inMinutes()) ;
 
     }
@@ -1562,7 +1562,7 @@ TEST (Library_Physics_Time_Duration, InMinutes)
 
 TEST (Library_Physics_Time_Duration, InHours)
 {
-    
+
     using library::core::types::Int64 ;
     using library::physics::time::Duration ;
 
@@ -1583,7 +1583,7 @@ TEST (Library_Physics_Time_Duration, InHours)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(Duration::Undefined().inHours()) ;
 
     }
@@ -1592,7 +1592,7 @@ TEST (Library_Physics_Time_Duration, InHours)
 
 TEST (Library_Physics_Time_Duration, InDays)
 {
-    
+
     using library::core::types::Int64 ;
     using library::physics::time::Duration ;
 
@@ -1613,7 +1613,7 @@ TEST (Library_Physics_Time_Duration, InDays)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(Duration::Undefined().inDays()) ;
 
     }
@@ -1622,7 +1622,7 @@ TEST (Library_Physics_Time_Duration, InDays)
 
 TEST (Library_Physics_Time_Duration, InWeeks)
 {
-    
+
     using library::core::types::Int64 ;
     using library::physics::time::Duration ;
 
@@ -1643,7 +1643,7 @@ TEST (Library_Physics_Time_Duration, InWeeks)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(Duration::Undefined().inWeeks()) ;
 
     }
@@ -1652,7 +1652,7 @@ TEST (Library_Physics_Time_Duration, InWeeks)
 
 TEST (Library_Physics_Time_Duration, In)
 {
-    
+
     using library::core::types::Int64 ;
     using library::physics::units::Time ;
     using library::physics::time::Duration ;
@@ -1671,7 +1671,7 @@ TEST (Library_Physics_Time_Duration, In)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(Duration::Undefined().in(Time::Unit::Nanosecond)) ;
 
     }
@@ -1680,7 +1680,7 @@ TEST (Library_Physics_Time_Duration, In)
 
 TEST (Library_Physics_Time_Duration, GetAbsolute)
 {
-    
+
     using library::physics::time::Duration ;
 
     {
@@ -1692,7 +1692,7 @@ TEST (Library_Physics_Time_Duration, GetAbsolute)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(Duration::Undefined().getAbsolute()) ;
 
     }
@@ -1701,7 +1701,7 @@ TEST (Library_Physics_Time_Duration, GetAbsolute)
 
 TEST (Library_Physics_Time_Duration, ToString)
 {
-    
+
     using library::physics::time::Duration ;
 
     // Standard
@@ -1864,7 +1864,7 @@ TEST (Library_Physics_Time_Duration, ToString)
 
 TEST (Library_Physics_Time_Duration, Undefined)
 {
-    
+
     using library::physics::time::Duration ;
 
     {
@@ -1878,7 +1878,7 @@ TEST (Library_Physics_Time_Duration, Undefined)
 
 TEST (Library_Physics_Time_Duration, Zero)
 {
-    
+
     using library::physics::time::Duration ;
 
     {
@@ -1894,7 +1894,7 @@ TEST (Library_Physics_Time_Duration, Zero)
 
 TEST (Library_Physics_Time_Duration, Nanoseconds)
 {
-    
+
     using library::physics::time::Duration ;
 
     {
@@ -1911,7 +1911,7 @@ TEST (Library_Physics_Time_Duration, Nanoseconds)
 
 TEST (Library_Physics_Time_Duration, Microseconds)
 {
-    
+
     using library::physics::time::Duration ;
 
     {
@@ -1928,7 +1928,7 @@ TEST (Library_Physics_Time_Duration, Microseconds)
 
 TEST (Library_Physics_Time_Duration, Milliseconds)
 {
-    
+
     using library::physics::time::Duration ;
 
     {
@@ -1945,7 +1945,7 @@ TEST (Library_Physics_Time_Duration, Milliseconds)
 
 TEST (Library_Physics_Time_Duration, Seconds)
 {
-    
+
     using library::physics::time::Duration ;
 
     {
@@ -1962,7 +1962,7 @@ TEST (Library_Physics_Time_Duration, Seconds)
 
 TEST (Library_Physics_Time_Duration, Minutes)
 {
-    
+
     using library::physics::time::Duration ;
 
     {
@@ -1979,7 +1979,7 @@ TEST (Library_Physics_Time_Duration, Minutes)
 
 TEST (Library_Physics_Time_Duration, Hours)
 {
-    
+
     using library::physics::time::Duration ;
 
     {
@@ -1996,7 +1996,7 @@ TEST (Library_Physics_Time_Duration, Hours)
 
 TEST (Library_Physics_Time_Duration, Days)
 {
-    
+
     using library::physics::time::Duration ;
 
     {
@@ -2013,7 +2013,7 @@ TEST (Library_Physics_Time_Duration, Days)
 
 TEST (Library_Physics_Time_Duration, Weeks)
 {
-    
+
     using library::physics::time::Duration ;
 
     {
@@ -2030,7 +2030,7 @@ TEST (Library_Physics_Time_Duration, Weeks)
 
 TEST (Library_Physics_Time_Duration, Between)
 {
-    
+
     using library::physics::time::Scale ;
     using library::physics::time::DateTime ;
     using library::physics::time::Instant ;
@@ -2087,7 +2087,7 @@ TEST (Library_Physics_Time_Duration, Between)
 
                         EXPECT_EQ(Duration::Hours(+1), Duration::Between(Instant::DateTime(DateTime(year, month, day, 12, 0, 0), scale), Instant::DateTime(DateTime(year, month, day, 13, 0, 0), scale))) ;
                         EXPECT_EQ(Duration::Hours(-1), Duration::Between(Instant::DateTime(DateTime(year, month, day, 12, 0, 0), scale), Instant::DateTime(DateTime(year, month, day, 11, 0, 0), scale))) ;
-                        
+
                     }
 
                 }
@@ -2099,7 +2099,7 @@ TEST (Library_Physics_Time_Duration, Between)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(Duration::Between(Instant::Undefined(), Instant::Undefined())) ;
         EXPECT_ANY_THROW(Duration::Between(Instant::DateTime(DateTime(2000, 1, 1, 0, 0, 0), Scale::UTC), Instant::Undefined())) ;
         EXPECT_ANY_THROW(Duration::Between(Instant::Undefined(), Instant::DateTime(DateTime(2000, 1, 1, 0, 0, 0), Scale::UTC))) ;
@@ -2110,11 +2110,11 @@ TEST (Library_Physics_Time_Duration, Between)
 
 TEST (Library_Physics_Time_Duration, Parse)
 {
-    
+
     using library::physics::time::Duration ;
 
     // Undefined (automatic format detection)
-    
+
     {
 
         EXPECT_EQ(Duration::Zero(), Duration::Parse("00.000.000.000")) ;
@@ -2188,7 +2188,7 @@ TEST (Library_Physics_Time_Duration, Parse)
 
         for (auto idx = 0; idx < 100000; idx += 10)
         {
-            
+
             const Duration duration = Duration::Days(idx)
                                     + Duration::Hours(idx)
                                     + Duration::Minutes(idx)
@@ -2196,7 +2196,7 @@ TEST (Library_Physics_Time_Duration, Parse)
                                     + Duration::Milliseconds(idx)
                                     + Duration::Microseconds(idx)
                                     + Duration::Nanoseconds(idx) ;
-                                    
+
             EXPECT_EQ(duration, Duration::Parse(duration.toString(Duration::Format::Standard), Duration::Format::Standard)) ;
             EXPECT_EQ((-duration), Duration::Parse((-duration).toString(Duration::Format::Standard), Duration::Format::Standard)) ;
 
@@ -2288,7 +2288,7 @@ TEST (Library_Physics_Time_Duration, Parse)
 
         for (auto idx = 0; idx < 100000; idx += 10)
         {
-            
+
             const Duration duration = Duration::Days(idx)
                                     + Duration::Hours(idx)
                                     + Duration::Minutes(idx)
@@ -2296,7 +2296,7 @@ TEST (Library_Physics_Time_Duration, Parse)
                                     + Duration::Milliseconds(idx)
                                     + Duration::Microseconds(idx)
                                     + Duration::Nanoseconds(idx) ;
-                                    
+
             EXPECT_EQ(duration, Duration::Parse(duration.toString(Duration::Format::ISO8601), Duration::Format::ISO8601)) ;
             EXPECT_EQ((-duration), Duration::Parse((-duration).toString(Duration::Format::ISO8601), Duration::Format::ISO8601)) ;
 

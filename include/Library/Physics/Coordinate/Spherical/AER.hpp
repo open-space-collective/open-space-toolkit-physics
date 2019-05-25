@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Coordinate/Spherical/AER.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -51,7 +51,7 @@ class AER
                                                                                 const   Length&                     aRange                                      ) ;
 
         bool                    operator ==                                 (   const   AER&                        anAER                                       ) const ;
-        
+
         bool                    operator !=                                 (   const   AER&                        anAER                                       ) const ;
 
         friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
@@ -66,7 +66,7 @@ class AER
         Length                  getRange                                    ( ) const ;
 
         Vector3d                toVector                                    ( ) const ;
-        
+
         Vector3d                toCartesian                                 ( ) const ; // [TBI]
 
         String                  toString                                    ( ) const ;

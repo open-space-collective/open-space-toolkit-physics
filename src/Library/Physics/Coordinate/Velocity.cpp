@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Coordinate/Velocity.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -134,7 +134,7 @@ Velocity                        Velocity::inUnit                            (   
     }
 
     const Real conversionFactor = Derived(1.0, Velocity::DerivedUnitFromVelocityUnit(unit_)).in(Velocity::DerivedUnitFromVelocityUnit(aUnit)) ;
-        
+
     return { coordinates_ * conversionFactor, aUnit, frameSPtr_ } ;
 
 }

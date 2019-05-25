@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Units/Derived/Angle.test.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -634,7 +634,7 @@ TEST (Library_Physics_Units_Derived_Angle, IsDefined)
     {
 
         EXPECT_TRUE(Angle(0.0, Angle::Unit::Radian).isDefined()) ;
-        
+
         EXPECT_TRUE(Angle(1.0, Angle::Unit::Radian).isDefined()) ;
         EXPECT_TRUE(Angle(1.0, Angle::Unit::Degree).isDefined()) ;
         EXPECT_TRUE(Angle(1.0, Angle::Unit::Arcminute).isDefined()) ;
@@ -755,7 +755,7 @@ TEST (Library_Physics_Units_Derived_Angle, InRadians)
         EXPECT_ANY_THROW(Angle(0.0, Angle::Unit::Radian).inRadians(0.0, 0.0)) ;
         EXPECT_ANY_THROW(Angle(0.0, Angle::Unit::Radian).inRadians(0.0, Real::Pi())) ;
         EXPECT_ANY_THROW(Angle(0.0, Angle::Unit::Radian).inRadians(+Real::Pi(), -Real::Pi())) ;
-        
+
     }
 
 }
@@ -764,7 +764,7 @@ TEST (Library_Physics_Units_Derived_Angle, InDegrees)
 {
 
     using library::core::types::Real ;
-    using library::physics::units::Angle ; 
+    using library::physics::units::Angle ;
 
     {
 
@@ -815,7 +815,7 @@ TEST (Library_Physics_Units_Derived_Angle, InDegrees)
         EXPECT_ANY_THROW(Angle(0.0, Angle::Unit::Radian).inDegrees(0.0, 0.0)) ;
         EXPECT_ANY_THROW(Angle(0.0, Angle::Unit::Radian).inDegrees(0.0, 180.0)) ;
         EXPECT_ANY_THROW(Angle(0.0, Angle::Unit::Radian).inDegrees(+180.0, -180.0)) ;
-        
+
     }
 
 }
@@ -824,7 +824,7 @@ TEST (Library_Physics_Units_Derived_Angle, InArcminutes)
 {
 
     using library::core::types::Real ;
-    using library::physics::units::Angle ; 
+    using library::physics::units::Angle ;
 
     {
 
@@ -875,7 +875,7 @@ TEST (Library_Physics_Units_Derived_Angle, InArcminutes)
         EXPECT_ANY_THROW(Angle(0.0, Angle::Unit::Radian).inDegrees(0.0, 0.0)) ;
         EXPECT_ANY_THROW(Angle(0.0, Angle::Unit::Radian).inDegrees(0.0, 180.0 * 60.0)) ;
         EXPECT_ANY_THROW(Angle(0.0, Angle::Unit::Radian).inDegrees(+180.0 * 60.0, -180.0 * 60.0)) ;
-        
+
     }
 
 }
@@ -884,7 +884,7 @@ TEST (Library_Physics_Units_Derived_Angle, InArcseconds)
 {
 
     using library::core::types::Real ;
-    using library::physics::units::Angle ; 
+    using library::physics::units::Angle ;
 
     {
 
@@ -935,7 +935,7 @@ TEST (Library_Physics_Units_Derived_Angle, InArcseconds)
         EXPECT_ANY_THROW(Angle(0.0, Angle::Unit::Radian).inDegrees(0.0, 0.0)) ;
         EXPECT_ANY_THROW(Angle(0.0, Angle::Unit::Radian).inDegrees(0.0, 180.0 * 3600.0)) ;
         EXPECT_ANY_THROW(Angle(0.0, Angle::Unit::Radian).inDegrees(+180.0 * 3600.0, -180.0 * 3600.0)) ;
-        
+
     }
 
 }
@@ -944,7 +944,7 @@ TEST (Library_Physics_Units_Derived_Angle, InRevolutions)
 {
 
     using library::core::types::Real ;
-    using library::physics::units::Angle ; 
+    using library::physics::units::Angle ;
 
     {
 
@@ -963,7 +963,7 @@ TEST (Library_Physics_Units_Derived_Angle, InRevolutions)
 TEST (Library_Physics_Units_Derived_Angle, ToString)
 {
 
-    using library::physics::units::Angle ; 
+    using library::physics::units::Angle ;
 
     {
 
@@ -1012,7 +1012,7 @@ TEST (Library_Physics_Units_Derived_Angle, ToString)
     {
 
         EXPECT_ANY_THROW(Angle::Undefined().toString()) ;
-        
+
     }
 
 }

@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Coordinate/Frame/Providers/TEME.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -77,7 +77,7 @@ Transform                       TEME::getTransformAt                        (   
     using library::physics::time::Scale ;
     using library::physics::time::DateTime ;
     using library::physics::units::Angle ;
-    
+
     if (!anInstant.isDefined())
     {
         throw library::core::error::runtime::Undefined("Instant") ;
@@ -121,7 +121,7 @@ Transform                       TEME::getTransformAt                        (   
 
     const Real cos_xp = std::cos(xp) ;
     const Real sin_xp = std::sin(xp) ;
-    
+
     const Real cos_yp = std::cos(yp) ;
     const Real sin_yp = std::sin(yp) ;
 
@@ -138,7 +138,7 @@ Transform                       TEME::getTransformAt                        (   
 
     const Quaternion q_TEME_ITRF = Quaternion::RotationMatrix(dcm_ITRF_TEME).conjugate().rectify() ;
     const Vector3d w_TEME_ITRF_in_TEME = { 0.0, 0.0, 0.0 } ; // [TBI]
-    
+
     return Transform::Passive(anInstant, x_TEME_ITRF, v_TEME_ITRF, q_TEME_ITRF, w_TEME_ITRF_in_TEME) ;
 
 }

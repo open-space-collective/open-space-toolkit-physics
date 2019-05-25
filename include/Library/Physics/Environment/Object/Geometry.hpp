@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Environment/Object/Geometry.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -92,7 +92,7 @@ class Geometry
         ///
         /// @param              [in] aGeometry A geometry
         /// @return             True if geometries are not equal
-        
+
         bool                    operator !=                                 (   const   Geometry&                   aGeometry                                   ) const ;
 
         /// @brief              Output stream operator
@@ -114,7 +114,7 @@ class Geometry
         ///
         /// @param              [in] aGeometry A geometry
         /// @return             True if geometry intersects another geometry
-        
+
         bool                    intersects                                  (   const   Geometry&                   aGeometry                                   ) const ;
 
         /// @brief              Check if geometry contains another geometry
@@ -163,7 +163,7 @@ class Geometry
         static Geometry         Undefined                                   ( ) ;
 
     private:
-    
+
         Composite               composite_ ;
         Shared<const Frame>     frameSPtr_ ;
 

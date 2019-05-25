@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Time/DateTime.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -59,7 +59,7 @@ bool                            DateTime::operator ==                       (   
     return (date_ == aDateTime.date_) && (time_ == aDateTime.time_) ;
 
 }
-        
+
 bool                            DateTime::operator !=                       (   const   DateTime&                   aDateTime                                   ) const
 {
 
@@ -196,7 +196,7 @@ Real                            DateTime::getModifiedJulianDate             ( ) 
 
 String                          DateTime::toString                         (   const   DateTime::Format&           aFormat                                     ) const
 {
-    
+
     if (!this->isDefined())
     {
         throw library::core::error::runtime::Undefined("DateTime") ;
@@ -286,7 +286,7 @@ DateTime                        DateTime::JulianDate                        (   
     // const Int32 e = r * f + v ;
     // const Int32 g = (e % p) / r ;
     // const Int32 h = u * g + w ;
-    
+
     // const Int32 D = (h % s) / u + 1 ;
     // const Int32 M = ((h / s + m) % n) + 1 ;
     // const Int32 Y = (e / p) - y + (n + m - M) / n ;
@@ -311,27 +311,27 @@ DateTime                        DateTime::JulianDate                        (   
     Uint32 day = static_cast<Uint32>(e - std::floor((153 * m + 2) / 5) + 1) ;
 
     Uint64 nanosecondCountOfDay = Uint64(fractionalJulianDate * 86400.0 * 1e9) ;
-    
+
     Uint32 hours = static_cast<Uint32>(std::floor(nanosecondCountOfDay / (3600.0 * 1e9))) ;
 
     nanosecondCountOfDay -= Uint64(hours * 3600 * 1e9) ;
-    
+
     Uint32 minute = static_cast<Uint32>(std::floor(nanosecondCountOfDay / (60.0 * 1e9))) ;
 
     nanosecondCountOfDay -= Uint64(minute * 60 * 1e9) ;
-    
+
     Uint32 second = static_cast<Uint32>(std::floor(nanosecondCountOfDay / 1e9)) ;
 
     nanosecondCountOfDay -= Uint64(second * 1e9) ;
-    
+
     Uint32 millisecond = static_cast<Uint32>(std::round(nanosecondCountOfDay / 1e6)) ;
 
     nanosecondCountOfDay -= Uint64(millisecond * 1e6) ;
-    
+
     Uint32 microsecond = static_cast<Uint32>(std::round(nanosecondCountOfDay / 1e3)) ;
 
     nanosecondCountOfDay -= Uint64(microsecond * 1e3) ;
-    
+
     Uint32 nanosecond = nanosecondCountOfDay ;
 
     if (millisecond == 1000)
@@ -381,7 +381,7 @@ DateTime                        DateTime::ModifiedJulianDate                (   
     {
         throw library::core::error::RuntimeError("Modified Julian Date [{}] is negative.", aModifiedJulianDate) ;
     }
-    
+
     return DateTime::JulianDate(DateTime::JulianDateFromModifiedJulianDate(aModifiedJulianDate)) ;
 
 }
@@ -410,7 +410,7 @@ DateTime                        DateTime::Parse                             (   
             {
                 return DateTime::Parse(aString, DateTime::Format::STK) ;
             }
-            
+
             return DateTime::Parse(aString, DateTime::Format::Standard) ;
 
         }

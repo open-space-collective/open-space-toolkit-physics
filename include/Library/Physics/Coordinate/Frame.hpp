@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Coordinate/Frame.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -66,7 +66,7 @@ class Frame : public std::enable_shared_from_this<Frame>
                                 ~Frame                                      ( ) ;
 
         bool                    operator ==                                 (   const   Frame&                      aFrame                                      ) const ;
-        
+
         bool                    operator !=                                 (   const   Frame&                      aFrame                                      ) const ;
 
         friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
@@ -144,7 +144,7 @@ class Frame : public std::enable_shared_from_this<Frame>
                                 Frame                                       (   const   Frame&                      aFrame                                      ) = default ;
 
         Frame&                  operator =                                  (   const   Frame&                      aFrame                                      ) = default ;
-    
+
     private:
 
         String                  name_ ;

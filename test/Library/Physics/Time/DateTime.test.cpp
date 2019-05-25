@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Time/DateTime.test.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -23,7 +23,7 @@ TEST (Library_Physics_Time_DateTime, Constructor)
     {
 
         EXPECT_NO_THROW(DateTime(Date(2018, 1, 1), Time(1, 2, 3))) ;
-        
+
         EXPECT_NO_THROW(DateTime(Date(1400, 1, 1), Time(1, 2, 3, 123, 456, 789))) ;
         EXPECT_NO_THROW(DateTime(Date(9999, 1, 1), Time(1, 2, 3, 123, 456, 789))) ;
 
@@ -32,7 +32,7 @@ TEST (Library_Physics_Time_DateTime, Constructor)
     {
 
         EXPECT_ANY_THROW(DateTime(Date(2018, 2, 29), Time(0, 0, 0))) ;
-        
+
         EXPECT_ANY_THROW(DateTime(Date(0, 1, 1), Time(0, 0, 0))) ;
         EXPECT_ANY_THROW(DateTime(Date(1399, 12, 31), Time(0, 0, 0))) ;
         EXPECT_ANY_THROW(DateTime(Date(10000, 1, 1), Time(0, 0, 0))) ;
@@ -60,7 +60,7 @@ TEST (Library_Physics_Time_DateTime, Constructor)
     {
 
         EXPECT_NO_THROW(DateTime(2018, 1, 1, 1, 2, 3)) ;
-        
+
         EXPECT_NO_THROW(DateTime(1400, 1, 1, 1, 2, 3, 123, 456, 789)) ;
         EXPECT_NO_THROW(DateTime(9999, 1, 1, 1, 2, 3, 123, 456, 789)) ;
 
@@ -104,7 +104,7 @@ TEST (Library_Physics_Time_DateTime, EqualToOperator)
     {
 
         EXPECT_TRUE(DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789) == DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789)) ;
-        
+
         EXPECT_TRUE(DateTime(1400, 1, 2, 12, 34, 56, 123, 456, 789) == DateTime(1400, 1, 2, 12, 34, 56, 123, 456, 789)) ;
         EXPECT_TRUE(DateTime(9999, 1, 2, 12, 34, 56, 123, 456, 789) == DateTime(9999, 1, 2, 12, 34, 56, 123, 456, 789)) ;
 
@@ -154,7 +154,7 @@ TEST (Library_Physics_Time_DateTime, NotEqualToOperator)
     {
 
         EXPECT_FALSE(DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789) != DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789)) ;
-        
+
         EXPECT_FALSE(DateTime(1400, 1, 2, 12, 34, 56, 123, 456, 789) != DateTime(1400, 1, 2, 12, 34, 56, 123, 456, 789)) ;
         EXPECT_FALSE(DateTime(9999, 1, 2, 12, 34, 56, 123, 456, 789) != DateTime(9999, 1, 2, 12, 34, 56, 123, 456, 789)) ;
 
@@ -198,7 +198,7 @@ TEST (Library_Physics_Time_DateTime, IsDefined)
     }
 
     {
-        
+
         EXPECT_FALSE(DateTime::Undefined().isDefined()) ;
 
     }
@@ -218,7 +218,7 @@ TEST (Library_Physics_Time_DateTime, AccessDate)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(DateTime::Undefined().accessDate()) ;
 
     }
@@ -238,7 +238,7 @@ TEST (Library_Physics_Time_DateTime, AccessTime)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(DateTime::Undefined().accessTime()) ;
 
     }
@@ -258,7 +258,7 @@ TEST (Library_Physics_Time_DateTime, GetDate)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(DateTime::Undefined().getDate()) ;
 
     }
@@ -278,7 +278,7 @@ TEST (Library_Physics_Time_DateTime, GetTime)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(DateTime::Undefined().getTime()) ;
 
     }
@@ -291,7 +291,7 @@ TEST (Library_Physics_Time_DateTime, GetJulianDate)
     using library::physics::time::DateTime ;
 
     {
-        
+
         EXPECT_EQ(2451545.0, DateTime(2000, 1, 1, 12, 0, 0).getJulianDate()) ;
         EXPECT_EQ(2451545.25, DateTime(2000, 1, 1, 18, 0, 0).getJulianDate()) ;
         EXPECT_EQ(2451545.50, DateTime(2000, 1, 2, 0, 0, 0).getJulianDate()) ;
@@ -331,7 +331,7 @@ TEST (Library_Physics_Time_DateTime, GetModifiedJulianDate)
 
 TEST (Library_Physics_Time_DateTime, ToString)
 {
-    
+
     using library::physics::time::DateTime ;
 
     {
@@ -380,7 +380,7 @@ TEST (Library_Physics_Time_DateTime, ToString)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(DateTime::Undefined().toString()) ;
         EXPECT_ANY_THROW(DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789).toString(DateTime::Format::Undefined)) ;
 
@@ -489,9 +489,9 @@ TEST (Library_Physics_Time_DateTime, ModifiedJulianDate)
     {
 
         EXPECT_EQ(DateTime(1858, 11, 17, 0, 0, 0), DateTime::ModifiedJulianDate(0.0)) ;
-        
+
         EXPECT_EQ(DateTime(2006, 9, 22, 0, 0, 0), DateTime::ModifiedJulianDate(54000.0)) ;
-        
+
         EXPECT_EQ(DateTime(2100, 1, 1, 0, 0, 0), DateTime::ModifiedJulianDate(88069.0)) ;
 
     }

@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Coordinate/Frame/Providers/IERS/Manager.test.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -150,7 +150,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, GetPolarMotionAt)
                 const Vector2d referencePolarMotion_rad = { referenceRow[1].accessReal(), referenceRow[2].accessReal() } ;
 
                 const Vector2d polarMotion_rad = manager.getPolarMotionAt(instant) * (Real::Pi() / 180.0 / 3600.0) ;
-                
+
                 EXPECT_TRUE(polarMotion_rad.isNear(referencePolarMotion_rad, tolerance)) << String::Format("{} - {} ~ {}", instant.toString(Scale::TAI), referencePolarMotion_rad.toString(), polarMotion_rad.toString()) ;
 
             }
@@ -208,7 +208,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, GetUt1MinusUtcAt)
                 const Real referenceDUT1 = { referenceRow[3].accessReal() } ;
 
                 const Real dUT1 = manager.getUt1MinusUtcAt(instant) ;
-                
+
                 EXPECT_NEAR(referenceDUT1, dUT1, tolerance) << String::Format("{} - {} ~ {}", instant.toString(Scale::TAI), referenceDUT1, dUT1) ;
 
             }

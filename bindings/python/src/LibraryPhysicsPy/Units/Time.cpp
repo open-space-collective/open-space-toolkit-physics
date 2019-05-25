@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           LibraryPhysicsPy/Units/Time.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -51,7 +51,7 @@ inline void                     LibraryPhysicsPy_Units_Time               ( )
         .def("isDefined", &Time::isDefined)
 
         .def("toString", &Time::toString, LibraryPhysicsPy_Units_Time_toString_overloads())
-        
+
         .def("Undefined", &Time::Undefined).staticmethod("Undefined")
         .def("StringFromUnit", &Time::StringFromUnit).staticmethod("StringFromUnit")
         .def("SymbolFromUnit", &Time::SymbolFromUnit).staticmethod("SymbolFromUnit")

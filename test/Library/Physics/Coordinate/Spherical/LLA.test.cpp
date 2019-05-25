@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Coordinate/Spherical/LLA.test.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -32,7 +32,7 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, Constructor)
     using library::physics::coord::spherical::LLA ;
 
     {
-        
+
         const Angle latitude = Angle::Degrees(10.0) ;
         const Angle longitude = Angle::Degrees(20.0) ;
         const Length altitude = Length::Meters(30.0) ;
@@ -184,7 +184,7 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, IsDefined)
     }
 
     {
-        
+
         EXPECT_FALSE(LLA::Undefined().isDefined()) ;
 
     }
@@ -193,7 +193,7 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, IsDefined)
 
 TEST (Library_Physics_Coordinate_Spherical_LLA, GetLatitude)
 {
-    
+
     using library::physics::units::Length ;
     using library::physics::units::Angle ;
     using library::physics::coord::Position ;
@@ -221,7 +221,7 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, GetLatitude)
 
 TEST (Library_Physics_Coordinate_Spherical_LLA, GetLongitude)
 {
-    
+
     using library::physics::units::Length ;
     using library::physics::units::Angle ;
     using library::physics::coord::Position ;
@@ -249,7 +249,7 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, GetLongitude)
 
 TEST (Library_Physics_Coordinate_Spherical_LLA, GetAltitude)
 {
-    
+
     using library::physics::units::Length ;
     using library::physics::units::Angle ;
     using library::physics::coord::Position ;
@@ -279,7 +279,7 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, ToVector)
 {
 
     using library::math::obj::Vector3d ;
-    
+
     using library::physics::units::Length ;
     using library::physics::units::Angle ;
     using library::physics::coord::Position ;
@@ -307,7 +307,7 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, ToVector)
 
 TEST (Library_Physics_Coordinate_Spherical_LLA, ToCartesian)
 {
-    
+
     using library::physics::units::Length ;
     using library::physics::units::Angle ;
     using library::physics::coord::Position ;
@@ -323,7 +323,7 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, ToCartesian)
     using library::core::fs::File ;
 
     using library::math::obj::Vector3d ;
-    
+
     using library::physics::units::Length ;
     using library::physics::units::Angle ;
     using library::physics::time::Scale ;
@@ -333,7 +333,7 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, ToCartesian)
     using library::physics::coord::spherical::LLA ;
     using library::physics::coord::Frame ;
     using library::physics::env::obj::celest::Earth ;
-    
+
     {
 
         const Array<Tuple<File, Length>> referenceScenarios =
@@ -377,11 +377,11 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, ToCartesian)
                     ASSERT_TRUE(position_ITRF.isNear(reference_position_ITRF, toleranceLength.inMeters())) << String::Format("{} - {} [m] ~ {} [m] ? {} [m]", instant.toString(), reference_position_ITRF.toString(), position_ITRF.toString(), error_m.toString()) ;
 
                 }
-                
+
             }
 
         }
-        
+
     }
 
     {
@@ -394,7 +394,7 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, ToCartesian)
 
 TEST (Library_Physics_Coordinate_Spherical_LLA, ToString)
 {
-    
+
     using library::physics::units::Length ;
     using library::physics::units::Angle ;
     using library::physics::coord::Position ;
@@ -422,7 +422,7 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, ToString)
 
 TEST (Library_Physics_Coordinate_Spherical_LLA, Undefined)
 {
-    
+
     using library::physics::coord::spherical::LLA ;
 
     {
@@ -437,7 +437,7 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, Vector)
 {
 
     using library::math::obj::Vector3d ;
-    
+
     using library::physics::units::Length ;
     using library::physics::units::Angle ;
     using library::physics::coord::Position ;
@@ -478,7 +478,7 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, Cartesian)
     using library::core::fs::File ;
 
     using library::math::obj::Vector3d ;
-    
+
     using library::physics::units::Length ;
     using library::physics::units::Angle ;
     using library::physics::time::Scale ;
@@ -488,7 +488,7 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, Cartesian)
     using library::physics::coord::spherical::LLA ;
     using library::physics::coord::Frame ;
     using library::physics::env::obj::celest::Earth ;
-    
+
     {
 
         const Array<Tuple<File, Angle, Length>> referenceScenarios =
@@ -560,11 +560,11 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, Cartesian)
                     ASSERT_TRUE(altitude_m.isNear(reference_altitude_m, tolerance_m)) << String::Format("{} - {} [m] ~ {} [m] ? {} [m]", instant.toString(), reference_altitude_m.toString(), altitude_m.toString(), error_m.toString()) ;
 
                 }
-                
+
             }
 
         }
-        
+
     }
 
     {

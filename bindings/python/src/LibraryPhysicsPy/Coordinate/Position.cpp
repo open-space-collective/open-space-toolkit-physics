@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           LibraryPhysicsPy/Coordinate/Position.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -42,7 +42,7 @@ inline void                     LibraryPhysicsPy_Coordinate_Position        ( )
         .def("inUnit", &Position::inUnit)
         .def("inFrame", &Position::inFrame)
         .def("toString", &Position::toString, LibraryPhysicsPy_Coordinate_Position_toString_overloads())
-        
+
         .def("Undefined", &Position::Undefined).staticmethod("Undefined")
         .def("Meters", &Position::Meters).staticmethod("Meters")
 

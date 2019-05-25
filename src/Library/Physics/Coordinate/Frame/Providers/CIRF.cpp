@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Coordinate/Frame/Providers/CIRF.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -93,7 +93,7 @@ Transform                       CIRF::getTransformAt                        (   
     iauXys06a(djmjd0, tt, &x, &y, &s) ;
 
     // CIP offsets wrt IAU 2006/2000A (mas->radians)
-    
+
     static const Real dx06 = +0.1750 * DMAS2R ;
     static const Real dy06 = -0.2259 * DMAS2R ;
 
@@ -113,7 +113,7 @@ Transform                       CIRF::getTransformAt                        (   
     const Vector3d GCRF_z_CIRF = Vector3d(rc2i[0][2], rc2i[1][2], rc2i[2][2]).normalized() ;
 
     const RotationMatrix dcm_CIRF_GCRF = RotationMatrix::Columns(GCRF_x_CIRF, GCRF_y_CIRF, GCRF_z_CIRF) ;
-    
+
     // Output
 
     const Vector3d x_CIRF_GCRF = { 0.0, 0.0, 0.0 } ;
@@ -121,7 +121,7 @@ Transform                       CIRF::getTransformAt                        (   
 
     const Quaternion q_CIRF_GCRF = Quaternion::RotationMatrix(dcm_CIRF_GCRF).rectify() ;
     const Vector3d w_CIRF_GCRF_in_CIRF = { 0.0, 0.0, 0.0 } ;
-    
+
     return Transform::Passive(anInstant, x_CIRF_GCRF, v_CIRF_GCRF, q_CIRF_GCRF, w_CIRF_GCRF_in_CIRF) ;
 
 }

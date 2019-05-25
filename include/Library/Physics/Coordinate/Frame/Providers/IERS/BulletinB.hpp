@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Coordinate/Frame/Providers/IERS/BulletinB.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -54,22 +54,22 @@ using library::physics::time::Interval ;
 /// @brief                      IERS Bulletin B
 ///
 ///                             IERS Bulletin B provides current information on the Earth’s orientation in the IERS Reference System.
-///                             This includes Universal Time, coordinates of the terrestrial pole, and celestial pole offsets. 
+///                             This includes Universal Time, coordinates of the terrestrial pole, and celestial pole offsets.
 ///                             IERS Bulletin B consists of 5 sections:
-///                             
-///                             Section 1: 
+///
+///                             Section 1:
 ///                             Daily final values at 0:00 UT of x, y, UT1-UTC, dX, dY, and their uncertainties. Time span: one month with final values, one month with preliminary values.
-///                             
-///                             Section 2: 
+///
+///                             Section 2:
 ///                             Daily final values at 0:00 UT of celestial pole offsets dPsi and dEps in the IAU 1980 system and their uncertainties.
-///                             
-///                             Section 3: 
+///
+///                             Section 3:
 ///                             Earth angular velocity (daily estimates of LOD and OMEGA with their uncertainties).
-///                             
-///                             Section 4: 
+///
+///                             Section 4:
 ///                             Information on the time scales and announcement of occurring leap seconds.
-///                             
-///                             Section 5: 
+///
+///                             Section 5:
 ///                             Average formal precision of the individual and combined series contributing or not to the combination and their agreement with the combination.
 ///
 /// @ref                        https://www.iers.org/IERS/EN/Publications/Bulletins/bulletins.html

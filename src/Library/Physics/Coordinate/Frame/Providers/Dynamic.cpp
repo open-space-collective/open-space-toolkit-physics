@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Coordinate/Frame/Providers/Dynamic.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -55,7 +55,7 @@ Transform                       Dynamic::getTransformAt                     (   
     {
         throw library::core::error::runtime::Undefined("Dynamic provider") ;
     }
-    
+
     return generator_(anInstant) ;
 
 }

@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Time/Instant.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -36,7 +36,7 @@ bool                            Instant::operator ==                        (   
     {
         return false ;
     }
-    
+
     return count_ == ((scale_ == anInstant.scale_) ? anInstant.count_ : anInstant.inScale(scale_).count_) ;
 
 }
@@ -48,7 +48,7 @@ bool                            Instant::operator !=                        (   
     {
         return true ;
     }
-    
+
     return count_ != ((scale_ == anInstant.scale_) ? anInstant.count_ : anInstant.inScale(scale_).count_) ;
 
 }
@@ -60,7 +60,7 @@ bool                            Instant::operator <                         (   
     {
         throw library::core::error::runtime::Undefined("Instant") ;
     }
-    
+
     return count_ < ((scale_ == anInstant.scale_) ? anInstant.count_ : anInstant.inScale(scale_).count_) ;
 
 }
@@ -72,7 +72,7 @@ bool                            Instant::operator <=                        (   
     {
         throw library::core::error::runtime::Undefined("Instant") ;
     }
-    
+
     return count_ <= ((scale_ == anInstant.scale_) ? anInstant.count_ : anInstant.inScale(scale_).count_) ;
 
 }
@@ -84,7 +84,7 @@ bool                            Instant::operator >                         (   
     {
         throw library::core::error::runtime::Undefined("Instant") ;
     }
-    
+
     return count_ > ((scale_ == anInstant.scale_) ? anInstant.count_ : anInstant.inScale(scale_).count_) ;
 
 }
@@ -96,7 +96,7 @@ bool                            Instant::operator >=                        (   
     {
         throw library::core::error::runtime::Undefined("Instant") ;
     }
-    
+
     return count_ >= ((scale_ == anInstant.scale_) ? anInstant.count_ : anInstant.inScale(scale_).count_) ;
 
 }
@@ -230,7 +230,7 @@ bool                            Instant::isPostEpoch                        ( ) 
     {
         throw library::core::error::runtime::Undefined("Instant") ;
     }
-    
+
     return (*this) >= Instant::J2000() ;
 
 }
@@ -433,7 +433,7 @@ Instant                         Instant::Now                                ( )
     epochTime.tm_year = 100 ;
 
     const std::chrono::time_point<std::chrono::system_clock> epochTimePoint = std::chrono::system_clock::from_time_t(std::mktime(&epochTime)) ;
-    
+
     // std::cout << "Instant::DateTime >> Epoch: " << getTimePointString(epochTimePoint) << std::endl ;
 
     // Now
@@ -522,13 +522,13 @@ Instant                         Instant::DateTime                           (   
     epochTime.tm_year = 100 ;
 
     const std::chrono::time_point<std::chrono::system_clock> epochTimePoint = std::chrono::system_clock::from_time_t(std::mktime(&epochTime)) ;
-    
+
     // std::cout << "Instant::DateTime >> Epoch: " << getTimePointString(epochTimePoint) << std::endl ;
 
     // Date
 
     std::tm dateTime = {} ;
-    
+
     dateTime.tm_sec = aDateTime.accessTime().getSecond() ;
     dateTime.tm_min = aDateTime.accessTime().getMinute() ;
     dateTime.tm_hour = aDateTime.accessTime().getHour() ;
@@ -564,13 +564,13 @@ Instant                         Instant::DateTime                           (   
     //     std::cout << "tm_year = " << dateTime.tm_year << std::endl ;
 
     //     const std::chrono::time_point<std::chrono::system_clock> dateTimePoint = std::chrono::system_clock::from_time_t(std::mktime(&dateTime)) ;
-    
+
     //     std::cout << "Instant::DateTime >> AAA: " << getTimePointString(dateTimePoint) << std::endl ;
 
     // }
 
     const std::chrono::time_point<std::chrono::system_clock> dateTimePoint = std::chrono::system_clock::from_time_t(std::mktime(&dateTime)) ;
-    
+
     // std::cout << "Instant::DateTime >> Date: " << getTimePointString(dateTimePoint) << std::endl ;
 
     // Difference
@@ -667,7 +667,7 @@ Instant                         Instant::ModifiedJulianDate                 (   
                                 Instant::Instant                            (   const   Instant::Count&             aCount,
                                                                                 const   Scale&                      aTimeScale                                  )
                                 :   count_(aCount),
-                                    scale_(aTimeScale)    
+                                    scale_(aTimeScale)
 {
 
 }
@@ -910,7 +910,7 @@ Int64                           Instant::dAT_UTC                            (   
             { 552398400000000000, 583934400000000000, 20000000000 },            // June 1982        <   June 1981       : dAT =   20 [s]
             { 583934400000000000, 631195200000000000, 19000000000 }             // June 1981        <   December 1979   : dAT =   19 [s]
         } ;
-        
+
         for (const auto& dATIt: dATMap)
         {
 
@@ -931,7 +931,7 @@ Int64                           Instant::dAT_UTC                            (   
 
 Int64                           Instant::dAT_TAI                            (   const   Instant::Count&             aCount_TAI                                  )
 {
-    
+
     // [TBI] Implement dAT automatic manager
 
     using library::core::ctnr::Array ;
@@ -987,7 +987,7 @@ Int64                           Instant::dAT_TAI                            (   
             { 552398400000000000 - 20000000000, 583934400000000000 - 19000000000, 20000000000 },            // June 1982        <   June 1981       : dAT =   20 [s]
             { 583934400000000000 - 19000000000, 631195200000000000 - 18000000000, 19000000000 }             // June 1981        <   December 1979   : dAT =   19 [s]
         } ;
-        
+
         for (const auto& dATIt: dATMap)
         {
 
@@ -1010,7 +1010,7 @@ Int64                           Instant::DUT1_UTC                           (   
 {
 
     (void) aCount_UTC ;
-    
+
     throw library::core::error::runtime::ToBeImplemented("DUT1_UTC") ;
 
     return 0 ;
@@ -1021,7 +1021,7 @@ Int64                           Instant::DUT1_UT1                           (   
 {
 
     (void) aCount_UT1 ;
-    
+
     throw library::core::error::runtime::ToBeImplemented("DUT1_UT1") ;
 
     return 0 ;
@@ -1163,7 +1163,7 @@ String                          Instant::Count::toString                   ( ) c
 {
 
     using library::core::types::Integer ;
-    
+
     return postEpoch_ ? ("+" + std::to_string(countFromEpoch_)) : ("-" + std::to_string(countFromEpoch_)) ;
 
 }
@@ -1177,7 +1177,7 @@ String                          Instant::Count::toString                   ( ) c
 //     std::istringstream stringStream(aDateTimeString) ;
 
 //     std::tm dateTime = {} ;
-    
+
 //     stringStream >> std::get_time(&dateTime, "%Y-%m-%d %H:%M:%S") ;
 
 //     if (stringStream.fail())

@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Time/Duration.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -55,7 +55,7 @@ class Duration
             Undefined,          ///< Undefined format
             Standard,           ///< Standard format (d hh:mm:ss.mmm.uuu.nnn)
             ISO8601             ///< ISO 8601 format (PnDTnHnMnS)
-            
+
         } ;
 
         /// @brief              Constructor
@@ -86,7 +86,7 @@ class Duration
         ///
         /// @param              [in] aDuration A duration
         /// @return             True if durations are not equal
-        
+
         bool                    operator !=                                 (   const   Duration&                   aDuration                                   ) const ;
 
         /// @brief              Less than operator
@@ -108,7 +108,7 @@ class Duration
         ///
         /// @param              [in] aDuration A duration
         /// @return             True if lhs duration is less than or equal to rhs duration
-        
+
         bool                    operator <=                                 (   const   Duration&                   aDuration                                   ) const ;
 
         /// @brief              Greater than operator
@@ -119,7 +119,7 @@ class Duration
         ///
         /// @param              [in] aDuration A duration
         /// @return             True if lhs duration is greater than rhs duration
-        
+
         bool                    operator >                                  (   const   Duration&                   aDuration                                   ) const ;
 
         /// @brief              Greater than operator
@@ -130,7 +130,7 @@ class Duration
         ///
         /// @param              [in] aDuration A duration
         /// @return             True if lhs duration is greater than or equal to rhs duration
-        
+
         bool                    operator >=                                 (   const   Duration&                   aDuration                                   ) const ;
 
         /// @brief              Addition operator
@@ -141,7 +141,7 @@ class Duration
         ///
         /// @param              [in] aDuration A duration
         /// @return             Duration
-        
+
         Duration                operator +                                  (   const   Duration&                   aDuration                                   ) const ;
 
         /// @brief              Subtraction operator
@@ -152,7 +152,7 @@ class Duration
         ///
         /// @param              [in] aDuration A duration
         /// @return             Duration
-        
+
         Duration                operator -                                  (   const   Duration&                   aDuration                                   ) const ;
 
         /// @brief              Multiplication operator
@@ -163,7 +163,7 @@ class Duration
         ///
         /// @param              [in] aMultiplier A multiplier
         /// @return             Duration
-        
+
         Duration                operator *                                  (   const   Real&                       aMultiplier                                 ) const ;
 
         /// @brief              Division operator
@@ -174,7 +174,7 @@ class Duration
         ///
         /// @param              [in] aDivider A divider
         /// @return             Duration
-        
+
         Duration                operator /                                  (   const   Real&                       aDivider                                    ) const ;
 
         /// @brief              Unary plus operator
@@ -206,7 +206,7 @@ class Duration
         ///
         /// @param              [in] aDuration A duration
         /// @return             Reference to duration
-        
+
         Duration&               operator +=                                 (   const   Duration&                   aDuration                                   ) ;
 
         /// @brief              Subtraction assignement operator
@@ -218,7 +218,7 @@ class Duration
         ///
         /// @param              [in] aDuration A duration
         /// @return             Reference to duration
-        
+
         Duration&               operator -=                                 (   const   Duration&                   aDuration                                   ) ;
 
         /// @brief              Multiplication assignement operator
@@ -230,7 +230,7 @@ class Duration
         ///
         /// @param              [in] aMultiplier A multiplier
         /// @return             Reference to duration
-        
+
         Duration&               operator *=                                 (   const   Real&                       aMultiplier                                 ) ;
 
         /// @brief              Division assignement operator
@@ -242,7 +242,7 @@ class Duration
         ///
         /// @param              [in] aDivider A divider
         /// @return             Reference to duration
-        
+
         Duration&               operator /=                                 (   const   Real&                       aDivider                                    ) ;
 
         /// @brief              Multiplication operator
@@ -312,7 +312,7 @@ class Duration
         /// @endcode
         ///
         /// @return             True if duration is strictly positive
-        
+
         bool                    isStrictlyPositive                          ( ) const ;
 
         /// @brief              Check if duration is near another duration
@@ -562,7 +562,7 @@ class Duration
         ///
         /// @param              [in] aMicrosecondCount A microsecond count
         /// @return             Duration
-        
+
         static Duration         Microseconds                                (   const   Real&                       aMicrosecondCount                           ) ;
 
         /// @brief              Constructs a duration from a millisecond count
@@ -573,7 +573,7 @@ class Duration
         ///
         /// @param              [in] aMillisecondCount A millisecond count
         /// @return             Duration
-        
+
         static Duration         Milliseconds                                (   const   Real&                       aMillisecondCount                           ) ;
 
         /// @brief              Constructs a duration from a second count
@@ -584,7 +584,7 @@ class Duration
         ///
         /// @param              [in] aSecondCount A second count
         /// @return             Duration
-        
+
         static Duration         Seconds                                     (   const   Real&                       aSecondCount                                ) ;
 
         /// @brief              Constructs a duration from a minute count
@@ -595,7 +595,7 @@ class Duration
         ///
         /// @param              [in] aMinuteCount A minute count
         /// @return             Duration
-        
+
         static Duration         Minutes                                     (   const   Real&                       aMinuteCount                                ) ;
 
         /// @brief              Constructs a duration from a hour count
@@ -606,7 +606,7 @@ class Duration
         ///
         /// @param              [in] anHourCount A hour count
         /// @return             Duration
-        
+
         static Duration         Hours                                       (   const   Real&                       anHourCount                                 ) ;
 
         /// @brief              Constructs a duration from a day count
@@ -617,7 +617,7 @@ class Duration
         ///
         /// @param              [in] aDayCount A day count
         /// @return             Duration
-        
+
         static Duration         Days                                        (   const   Real&                       aDayCount                                   ) ;
 
         /// @brief              Constructs a duration from a week count
@@ -628,7 +628,7 @@ class Duration
         ///
         /// @param              [in] aWeekCount A week count
         /// @return             Duration
-        
+
         static Duration         Weeks                                       (   const   Real&                       aWeekCount                                  ) ;
 
         /// @brief              Constructs a duration between two instants
@@ -649,7 +649,7 @@ class Duration
         /// @brief              Constructs a duration from a string representation
         ///
         /// @code
-        ///                     Duration duration = Duration::Parse("12:34:56.123.456.789") ; 
+        ///                     Duration duration = Duration::Parse("12:34:56.123.456.789") ;
         ///                     Duration duration = Duration::Parse("12:34:56.123.456.789", Duration::Format::Standard) ;
         ///                     Duration duration = Duration::Parse("12:34:56.123456789", Duration::Format::ISO8601) ;
         /// @endcode

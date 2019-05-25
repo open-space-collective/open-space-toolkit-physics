@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Environment.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -112,14 +112,14 @@ class Environment
         ///
         /// @param              [in] aName An object name
         /// @return             Reference to shared pointer to object
-        
+
         Shared<const Object>    accessObjectWithName                        (   const   String&                     aName                                       ) const ;
 
         /// @brief              Access celestial object with a given name
         ///
         /// @param              [in] aName A celestial object name
         /// @return             Reference to shared pointer to celestial object
-        
+
         Shared<const Celestial> accessCelestialObjectWithName               (   const   String&                     aName                                       ) const ;
 
         /// @brief              Get instant

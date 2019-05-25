@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Environment/Gravitational/Earth/Manager.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -86,7 +86,7 @@ void                            Manager::fetchDataFileForType               (   
     // Lock file
 
     File lockFile = File::Path(localRepository_.getPath() + Path::Parse(".lock")) ;
-    
+
     Index lockWaitIndex = 0 ;
     const Size lockWaitMaxCount = 60 ; // [TBM] Param
 
@@ -96,14 +96,14 @@ void                            Manager::fetchDataFileForType               (   
         std::cout << String::Format("Lock file [{}] found: waiting [{}/{}]...", lockFile.toString(), lockWaitIndex, lockWaitMaxCount) << std::endl ;
 
         lockWaitIndex++ ;
-        
+
         std::this_thread::sleep_for(std::chrono::seconds(1)) ;
 
     }
 
     if (!lockFile.exists())
     {
-        lockFile.create() ;    
+        lockFile.create() ;
     }
     else
     {
@@ -264,14 +264,14 @@ bool                            Manager::DefaultEnabled                     ( )
 
 Directory                       Manager::DefaultLocalRepository             ( )
 {
-    
+
     static const Directory defaultLocalRepository = Directory::Path(Path::Parse("./.library/physics/environment/gravitational/earth")) ;
 
     if (const char* localRepositoryPath = std::getenv("LIBRARY_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY"))
     {
         return Directory::Path(Path::Parse(localRepositoryPath)) ;
     }
-    
+
     return defaultLocalRepository ;
 
 }
@@ -285,9 +285,9 @@ URL                             Manager::DefaultRemoteUrl                   ( )
     {
         return URL::Parse(remoteUrl) ;
     }
-    
+
     return defaultRemoteUrl ;
-    
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -302,7 +302,7 @@ URL                             Manager::DefaultRemoteUrl                   ( )
     {
         localRepository_.create() ;
     }
-    
+
 }
 
 URL                             Manager::getDataFileUrlForType              (   const   EarthGravitationalModel::Type& aModelType                               ) const

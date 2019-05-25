@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           LibraryPhysicsPy/Coordinate/Frame.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -48,7 +48,7 @@ inline void                     LibraryPhysicsPy_Coordinate_Frame           ( )
         .def("getVelocityIn", &Frame::getVelocityIn)
         .def("getAxesIn", &Frame::getAxesIn)
         .def("getTransformTo", &Frame::getTransformTo)
-        
+
         .def("Undefined", &Frame::Undefined).staticmethod("Undefined")
         // .def("ICRF", &Frame::ICRF).staticmethod("ICRF")
         .def("GCRF", &Frame::GCRF).staticmethod("GCRF")
@@ -69,7 +69,7 @@ inline void                     LibraryPhysicsPy_Coordinate_Frame           ( )
     register_ptr_to_python<Shared<const Frame>>() ;
 
     implicitly_convertible<Shared<Frame>, Shared<const Frame>>() ;
-    
+
     LibraryPhysicsPy_Coordinate_Frame_Provider() ;
     LibraryPhysicsPy_Coordinate_Frame_Providers() ;
 

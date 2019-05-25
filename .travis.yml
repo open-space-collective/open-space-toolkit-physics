@@ -1,6 +1,6 @@
 ################################################################################################################################################################
 
-# @project        Library/Physics
+# @project        Library ▸ Physics
 # @file           .travis.yml
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        Apache License 2.0
@@ -49,7 +49,7 @@ jobs:
           script:
 
                 # Login to the Docker registry
-                
+
                 - echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
 
                 # Run tests
@@ -57,23 +57,23 @@ jobs:
                 - ./tools/ci/test.sh
 
         - stage: coverage
-        
+
           script:
 
                 # Login to the Docker registry
-                
+
                 - echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
 
                 # Run coverage
 
                 - ./tools/ci/coverage.sh
-        
+
         - stage: deploy
 
           script:
 
                 # Login to the Docker registry
-                
+
                 - echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
 
                 # Generate and deploy documentation

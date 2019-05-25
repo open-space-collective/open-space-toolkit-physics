@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           LibraryPhysicsPy/Time/Time.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -32,7 +32,7 @@ inline void                     LibraryPhysicsPy_Time_Time                  ( )
         .def("__repr__", +[] (const Time& aTime) -> std::string { return aTime.toString() ; })
 
         .def("isDefined", &Time::isDefined)
-        
+
         .def("getHour", &Time::getHour)
         .def("getMinute", &Time::getMinute)
         .def("getSecond", &Time::getSecond)
@@ -49,7 +49,7 @@ inline void                     LibraryPhysicsPy_Time_Time                  ( )
         .def("setNanosecond", &Time::setNanosecond)
         .def("toString", +[] (const Time& aTime) -> String { return aTime.toString() ; })
         .def("toString", +[] (const Time& aTime, const Time::Format& aFormat) -> String { return aTime.toString(aFormat) ; })
-        
+
         .def("Undefined", &Time::Undefined).staticmethod("Undefined")
         .def("Midnight", &Time::Midnight).staticmethod("Midnight")
         .def("Noon", &Time::Noon).staticmethod("Noon")

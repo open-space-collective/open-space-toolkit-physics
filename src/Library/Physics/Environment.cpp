@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Environment.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -61,7 +61,7 @@ Environment&                    Environment::operator =                     (   
     {
 
         instant_ = anEnvironment.instant_ ;
-        
+
         objects_.clear() ;
 
         objects_.reserve(anEnvironment.objects_.getSize()) ;
@@ -84,7 +84,7 @@ std::ostream&                   operator <<                                 (   
     library::core::utils::Print::Header(anOutputStream, "Environment") ;
 
     library::core::utils::Print::Line(anOutputStream) << "Instant:"             << (anEnvironment.isDefined() ? anEnvironment.instant_.toString() : "Undefined") ;
-    
+
     library::core::utils::Print::Line(anOutputStream) << "Objects:" ;
 
     for (const auto& objectSPtr : anEnvironment.objects_)
@@ -149,12 +149,12 @@ bool                            Environment::intersects                     (   
 
         if (!anObjectToIgnoreArray.contains(objectSPtr))
         {
-            
+
             if (objectSPtr->getGeometryIn(aGeometry.accessFrame()).intersects(aGeometry))
             {
                 return true ;
             }
-            
+
         }
 
     }
@@ -179,7 +179,7 @@ Array<Shared<const Object>>     Environment::accessObjects                  ( ) 
     {
         objects.add(objectSPtr) ;
     }
-    
+
     return objects ;
 
 }

@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Environment/Object.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -52,7 +52,7 @@ class Object
 {
 
     public:
-    
+
         typedef object::Geometry Geometry ;
 
                                 Object                                      (   const   String&                     aName,

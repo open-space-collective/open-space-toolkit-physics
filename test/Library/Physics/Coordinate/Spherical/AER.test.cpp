@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Coordinate/Spherical/AER.test.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -33,7 +33,7 @@ TEST (Library_Physics_Coordinate_Spherical_AER, Constructor)
     using library::physics::coord::spherical::AER ;
 
     {
-        
+
         const Angle azimuth = Angle::Degrees(10.0) ;
         const Angle elevation = Angle::Degrees(20.0) ;
         const Length range = Length::Meters(30.0) ;
@@ -49,7 +49,7 @@ TEST (Library_Physics_Coordinate_Spherical_AER, Constructor)
 
         EXPECT_ANY_THROW(AER aer(Angle::Degrees(10.0), Angle::Degrees(-91.0), Length::Meters(30.0)) ;) ;
         EXPECT_ANY_THROW(AER aer(Angle::Degrees(10.0), Angle::Degrees(+91.0), Length::Meters(30.0)) ;) ;
-        
+
         EXPECT_ANY_THROW(AER aer(Angle::Degrees(10.0), Angle::Degrees(20.0), Length::Meters(-30.0)) ;) ;
 
     }
@@ -187,7 +187,7 @@ TEST (Library_Physics_Coordinate_Spherical_AER, IsDefined)
     }
 
     {
-        
+
         EXPECT_FALSE(AER::Undefined().isDefined()) ;
 
     }
@@ -196,7 +196,7 @@ TEST (Library_Physics_Coordinate_Spherical_AER, IsDefined)
 
 TEST (Library_Physics_Coordinate_Spherical_AER, GetAzimuth)
 {
-    
+
     using library::physics::units::Length ;
     using library::physics::units::Angle ;
     using library::physics::coord::Position ;
@@ -224,7 +224,7 @@ TEST (Library_Physics_Coordinate_Spherical_AER, GetAzimuth)
 
 TEST (Library_Physics_Coordinate_Spherical_AER, GetElevation)
 {
-    
+
     using library::physics::units::Length ;
     using library::physics::units::Angle ;
     using library::physics::coord::Position ;
@@ -252,7 +252,7 @@ TEST (Library_Physics_Coordinate_Spherical_AER, GetElevation)
 
 TEST (Library_Physics_Coordinate_Spherical_AER, GetRange)
 {
-    
+
     using library::physics::units::Length ;
     using library::physics::units::Angle ;
     using library::physics::coord::Position ;
@@ -282,7 +282,7 @@ TEST (Library_Physics_Coordinate_Spherical_AER, ToVector)
 {
 
     using library::math::obj::Vector3d ;
-    
+
     using library::physics::units::Length ;
     using library::physics::units::Angle ;
     using library::physics::coord::Position ;
@@ -310,7 +310,7 @@ TEST (Library_Physics_Coordinate_Spherical_AER, ToVector)
 
 // TEST (Library_Physics_Coordinate_Spherical_AER, ToCartesian)
 // {
-    
+
 //     using library::physics::units::Length ;
 //     using library::physics::units::Angle ;
 //     using library::physics::coord::Position ;
@@ -338,7 +338,7 @@ TEST (Library_Physics_Coordinate_Spherical_AER, ToVector)
 
 TEST (Library_Physics_Coordinate_Spherical_AER, ToString)
 {
-    
+
     using library::physics::units::Length ;
     using library::physics::units::Angle ;
     using library::physics::coord::Position ;
@@ -366,7 +366,7 @@ TEST (Library_Physics_Coordinate_Spherical_AER, ToString)
 
 TEST (Library_Physics_Coordinate_Spherical_AER, Undefined)
 {
-    
+
     using library::physics::coord::spherical::AER ;
 
     {
@@ -381,7 +381,7 @@ TEST (Library_Physics_Coordinate_Spherical_AER, Vector)
 {
 
     using library::math::obj::Vector3d ;
-    
+
     using library::physics::units::Length ;
     using library::physics::units::Angle ;
     using library::physics::coord::Position ;
@@ -422,7 +422,7 @@ TEST (Library_Physics_Coordinate_Spherical_AER, FromPositionToPosition)
     using library::core::fs::File ;
 
     using library::math::obj::Vector3d ;
-    
+
     using library::physics::units::Length ;
     using library::physics::units::Angle ;
     using library::physics::time::Scale ;
@@ -433,7 +433,7 @@ TEST (Library_Physics_Coordinate_Spherical_AER, FromPositionToPosition)
     using library::physics::coord::spherical::AER ;
     using library::physics::coord::Frame ;
     using library::physics::env::obj::celest::Earth ;
-    
+
     {
 
         const Array<Tuple<File, Angle, Length>> referenceScenarios =
@@ -521,11 +521,11 @@ TEST (Library_Physics_Coordinate_Spherical_AER, FromPositionToPosition)
                     ASSERT_TRUE(range_m.isNear(reference_range_m, tolerance_m)) << String::Format("{} - {} [m] ~ {} [m] ? {} [m]", instant.toString(), reference_range_m.toString(), range_m.toString(), error_m.toString()) ;
 
                 }
-                
+
             }
 
         }
-        
+
     }
 
     {

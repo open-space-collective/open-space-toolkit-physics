@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Data/Direction.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -51,7 +51,7 @@ class Direction : public Vector
                                                                                 const   Shared<const Frame>&        aFrameSPtr                                  ) ;
 
         bool                    operator ==                                 (   const   Direction&                  aDirection                                  ) const ;
-        
+
         bool                    operator !=                                 (   const   Direction&                  aDirection                                  ) const ;
 
         friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,

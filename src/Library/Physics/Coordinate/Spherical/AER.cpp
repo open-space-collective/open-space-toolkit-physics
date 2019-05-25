@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Coordinate/Spherical/AER.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -96,7 +96,7 @@ Angle                           AER::getAzimuth                             ( ) 
     {
         throw library::core::error::runtime::Undefined("AER") ;
     }
-    
+
     return azimuth_ ;
 
 }
@@ -108,7 +108,7 @@ Angle                           AER::getElevation                           ( ) 
     {
         throw library::core::error::runtime::Undefined("AER") ;
     }
-    
+
     return elevation_ ;
 
 }
@@ -120,7 +120,7 @@ Length                          AER::getRange                               ( ) 
     {
         throw library::core::error::runtime::Undefined("AER") ;
     }
-    
+
     return range_ ;
 
 }
@@ -132,7 +132,7 @@ Vector3d                        AER::toVector                               ( ) 
     {
         throw library::core::error::runtime::Undefined("AER") ;
     }
-    
+
     return { azimuth_.inDegrees(), elevation_.inDegrees(), range_.inMeters() } ;
 
 }
@@ -156,7 +156,7 @@ String                          AER::toString                               ( ) 
     {
         throw library::core::error::runtime::Undefined("AER") ;
     }
-    
+
     return String::Format("[{}, {}, {}]", azimuth_.toString(), elevation_.toString(), range_.toString()) ;
 
 }
@@ -173,7 +173,7 @@ AER                             AER::Vector                                 (   
     {
         throw library::core::error::runtime::Undefined("Vector") ;
     }
-    
+
     return { Angle::Degrees(aVector.x()), Angle::Degrees(aVector.y()), Length::Meters(aVector.z()) } ;
 
 }

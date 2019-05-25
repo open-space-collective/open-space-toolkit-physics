@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Environment/Ephemerides/SPICE/Kernel.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -108,14 +108,14 @@ Kernel                          Kernel::File                                (   
     {
         throw library::core::error::runtime::Undefined("File") ;
     }
-    
+
     return { Kernel::TypeFromFileExtension(aFile.getExtension()), aFile } ;
 
 }
 
 Kernel::Type                    Kernel::TypeFromString                      (   const   String&                     aString                                     )
 {
-    
+
     using library::core::ctnr::Map ;
 
     static const Map<String, Kernel::Type> stringTypeMap =

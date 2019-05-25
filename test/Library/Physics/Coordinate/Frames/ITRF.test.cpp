@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Coordinate/Frames/ITRF.test.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -42,7 +42,7 @@ TEST (Library_Physics_Coordinate_Frames_ITRF, Test)
     using library::math::geom::d3::trf::rot::Quaternion ;
     using library::math::geom::d3::trf::rot::RotationVector ;
     using library::math::geom::d3::trf::rot::RotationMatrix ;
-    
+
     using library::physics::units::Length ;
     using library::physics::units::Angle ;
     using library::physics::time::Scale ;
@@ -86,7 +86,7 @@ TEST (Library_Physics_Coordinate_Frames_ITRF, Test)
 
                 const Quaternion reference_q_ITRF_GCRF = Quaternion::XYZS(referenceRow[1].accessReal(), referenceRow[2].accessReal(), referenceRow[3].accessReal(), referenceRow[4].accessReal()).normalize() ;
                 const Vector3d reference_w_ITRF_GCRF_in_ITRF = { referenceRow[5].accessReal(), referenceRow[6].accessReal(), referenceRow[7].accessReal() } ;
-                
+
                 // ITRF -> GCRF
 
                 const Transform transform_GCRF_ITRF = itrfSPtr->getTransformTo(gcrfSPtr, instant) ;
@@ -118,7 +118,7 @@ TEST (Library_Physics_Coordinate_Frames_ITRF, Test)
                 }
 
                 // Velocity
-                
+
                 {
 
                     EXPECT_EQ(Vector3d(0.0, 0.0, 0.0), transform_GCRF_ITRF.getVelocity()) ;

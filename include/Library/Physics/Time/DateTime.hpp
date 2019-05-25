@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Time/DateTime.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -112,7 +112,7 @@ class DateTime
         ///
         /// @param              [in] aDateTime A date-time
         /// @return             True if date-times are not equal
-        
+
         bool                    operator !=                                 (   const   DateTime&                   aDateTime                                   ) const ;
 
         /// @brief              Output stream operator
@@ -217,7 +217,7 @@ class DateTime
         /// @ref                http://tycho.usno.navy.mil/gpstt.html
         ///
         /// @return             Date-time at GPS epoch
-        
+
         static DateTime         GPSEpoch                                    ( ) ;
 
         /// @brief              Unix epoch (1970-01-01 00:00:00.000.000.000)

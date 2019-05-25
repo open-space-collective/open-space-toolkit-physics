@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           LibraryPhysicsPy/Time/Interval.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -29,7 +29,7 @@ inline void                     LibraryPhysicsPy_Time_Interval              ( )
         .def(self != self)
 
         .def(self_ns::str(self_ns::self))
-        
+
         .def("__repr__", +[] (const Interval& anInterval) -> std::string { return anInterval.toString() ; })
 
         .def("isDefined", &Interval::isDefined)
@@ -51,7 +51,7 @@ inline void                     LibraryPhysicsPy_Time_Interval              ( )
         .def("getCenter", &Interval::getCenter)
         .def("toString", &Interval::toString, LibraryPhysicsPy_Time_Interval_toString_overloads())
         .def("generateGrid", &Interval::generateGrid)
-        
+
         .def("Undefined", &Interval::Undefined).staticmethod("Undefined")
         .def("Closed", &Interval::Closed).staticmethod("Closed")
         .def("Centered", &Interval::Centered).staticmethod("Centered")

@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           LibraryPhysicsPy/Coordinate/Frame/Providers.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -14,13 +14,13 @@
 
 inline void                     LibraryPhysicsPy_Coordinate_Frame_Providers ( )
 {
-    
+
     boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("Library.Physics.Coordinate.Frame.Providers")))) ;
-    
+
     boost::python::scope().attr("Providers") = module ;
-    
+
     boost::python::scope scope = module ;
-    
+
     LibraryPhysicsPy_Coordinate_Frame_Providers_Static() ;
     LibraryPhysicsPy_Coordinate_Frame_Providers_Dynamic() ;
 

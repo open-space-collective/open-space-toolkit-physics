@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Unit.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -83,7 +83,7 @@ bool                            Unit::operator ==                           (   
                 break ;
 
         }
-        
+
     }
 
     return false ;
@@ -122,7 +122,7 @@ bool                            Unit::isNone                                ( ) 
     {
         throw library::core::error::runtime::Undefined("Unit") ;
     }
-    
+
     return type_ == Unit::Type::None ;
 
 }
@@ -134,7 +134,7 @@ Unit::Type                      Unit::getType                               ( ) 
     {
         throw library::core::error::runtime::Undefined("Unit") ;
     }
-    
+
     return type_ ;
 
 }

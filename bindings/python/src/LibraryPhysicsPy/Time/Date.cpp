@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           LibraryPhysicsPy/Time/Date.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -26,11 +26,11 @@ inline void                     LibraryPhysicsPy_Time_Date                  ( )
         .def(self != self)
 
         .def(self_ns::str(self_ns::self))
-        
+
         .def("__repr__", +[] (const Date& aDate) -> std::string { return aDate.toString() ; })
 
         .def("isDefined", &Date::isDefined)
-        
+
         .def("getYear", &Date::getYear)
         .def("getMonth", &Date::getMonth)
         .def("getDay", &Date::getDay)
@@ -40,7 +40,7 @@ inline void                     LibraryPhysicsPy_Time_Date                  ( )
         .def("setYear", &Date::setYear)
         .def("setMonth", &Date::setMonth)
         .def("setDay", &Date::setDay)
-        
+
         .def("Undefined", &Date::Undefined).staticmethod("Undefined")
         .def("J2000", &Date::J2000).staticmethod("J2000")
         .def("GPSEpoch", &Date::GPSEpoch).staticmethod("GPSEpoch")

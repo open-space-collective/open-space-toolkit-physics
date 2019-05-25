@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Environment/Ephemerides/SPICE/Kernel.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -77,7 +77,7 @@ class Kernel
         ///
         /// @param              [in] aKernel A kernel
         /// @return             True if kernels are equal
-                                                                                
+
         bool                    operator ==                                 (   const   Kernel&                     aKernel                                     ) const ;
 
         /// @brief              Not equal to operator
@@ -121,7 +121,7 @@ class Kernel
         ///
         /// @param              [in] aFile A kernel file
         /// @return             Kernel
-        
+
         static Kernel           File                                        (   const   fs::File&                   aFile                                       ) ;
 
         /// @brief              Converts kernel type string to type

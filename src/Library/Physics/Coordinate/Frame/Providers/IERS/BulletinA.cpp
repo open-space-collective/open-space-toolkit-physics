@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Coordinate/Frame/Providers/IERS/BulletinA.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -57,7 +57,7 @@ std::ostream&                   operator <<                                 (   
     {
 
         const BulletinA::Observation& observation = observationIt.second ;
-        
+
         library::core::utils::Print::Line(anOutputStream) << String::Format("{:>4d}  {:>2d}  {:>2d}  {:>5d}  {:f}  {:f}  {:f}  {:f}  {:f}  {:f}",
                                                                             static_cast<int>(observation.year),
                                                                             static_cast<int>(observation.month),
@@ -78,7 +78,7 @@ std::ostream&                   operator <<                                 (   
     {
 
         const BulletinA::Prediction& prediction = predictionIt.second ;
-        
+
         library::core::utils::Print::Line(anOutputStream) << String::Format("{:>4d}  {:>2d}  {:>2d}  {:>5d}  {:f}  {:f}  {:f}",
                                                                             static_cast<int>(prediction.year),
                                                                             static_cast<int>(prediction.month),
@@ -98,7 +98,7 @@ std::ostream&                   operator <<                                 (   
 
 bool                            BulletinA::isDefined                        ( ) const
 {
-    
+
     return releaseDate_.isDefined()
         && taiMinusUtc_.isDefined()
         && taiMinusUtcEpoch_.isDefined()
@@ -116,7 +116,7 @@ const Date&                     BulletinA::accessReleaseDate                ( ) 
     {
         throw library::core::error::runtime::Undefined("Bulletin A") ;
     }
-    
+
     return releaseDate_ ;
 
 }
@@ -128,7 +128,7 @@ const Duration&                 BulletinA::accessTAIMinusUTC                ( ) 
     {
         throw library::core::error::runtime::Undefined("Bulletin A") ;
     }
-    
+
     return taiMinusUtc_ ;
 
 }
@@ -140,7 +140,7 @@ const Instant&                  BulletinA::accessTAIMinusUTCEpoch           ( ) 
     {
         throw library::core::error::runtime::Undefined("Bulletin A") ;
     }
-    
+
     return taiMinusUtcEpoch_ ;
 
 }
@@ -152,7 +152,7 @@ const Interval&                 BulletinA::accessObservationInterval        ( ) 
     {
         throw library::core::error::runtime::Undefined("Bulletin A") ;
     }
-    
+
     return observationInterval_ ;
 
 }
@@ -164,7 +164,7 @@ const Interval&                 BulletinA::accessPredictionInterval         ( ) 
     {
         throw library::core::error::runtime::Undefined("Bulletin A") ;
     }
-    
+
     return predictionInterval_ ;
 
 }
@@ -191,7 +191,7 @@ Interval                        BulletinA::getObservationInterval           ( ) 
 
 BulletinA::Observation          BulletinA::getObservationAt                 (   const   Instant&                    anInstant                                   ) const
 {
-    
+
     using library::physics::time::Scale ;
 
     if (!anInstant.isDefined())
@@ -210,7 +210,7 @@ BulletinA::Observation          BulletinA::getObservationAt                 (   
     }
 
     const Real instantMjd = anInstant.getModifiedJulianDate(Scale::UTC) ;
-    
+
     const auto observationIt = observations_.find(instantMjd.floor()) ;
 
     if (observationIt != observations_.end())
@@ -287,7 +287,7 @@ Interval                        BulletinA::getPredictionInterval            ( ) 
 
 BulletinA::Prediction           BulletinA::getPredictionAt                  (   const   Instant&                    anInstant                                   ) const
 {
-    
+
     using library::core::types::Real ;
 
     using library::physics::time::Scale ;
@@ -308,7 +308,7 @@ BulletinA::Prediction           BulletinA::getPredictionAt                  (   
     }
 
     const Real instantMjd = anInstant.getModifiedJulianDate(Scale::UTC) ;
-    
+
     const auto predictionIt = predictions_.find(instantMjd.floor()) ;
 
     if (predictionIt != predictions_.end())
@@ -472,7 +472,7 @@ BulletinA                       BulletinA::Load                             (   
     BulletinA bulletin ;
 
     std::ifstream fileStream { aFile.getPath().toString() } ;
-    
+
     Index lineIndex = 0 ;
     String line ;
 
@@ -498,18 +498,18 @@ BulletinA                       BulletinA::Load                             (   
             const Uint8 day = static_cast<Uint8>(boost::lexical_cast<Uint16>(match[1])) ;
             const Uint8 month = monthFromString(String(match[2])) ;
             const Uint16 year = boost::lexical_cast<Uint16>(match[3]) ;
-            
+
             bulletin.releaseDate_ = Date(year, month, day) ;
 
         }
-        
+
         if ((lineIndex < 30) && (!bulletin.taiMinusUtcEpoch_.isDefined()) && std::regex_match(line, match, taiMinusUtcEpochRegex))
         {
 
             const Uint8 day = static_cast<Uint8>(boost::lexical_cast<Uint16>(match[1])) ;
             const Uint8 month = monthFromString(String(match[2])) ;
             const Uint16 year = boost::lexical_cast<Uint16>(match[3]) ;
-            
+
             bulletin.taiMinusUtcEpoch_ = Instant::DateTime(DateTime(Date(year, month, day), Time::Midnight()), Scale::UTC) ; // [TBC] UTC?
 
         }
@@ -518,7 +518,7 @@ BulletinA                       BulletinA::Load                             (   
         {
 
             const Real seconds = boost::lexical_cast<double>(match[1]) + boost::lexical_cast<double>(match[2]) / 1e6 ;
-            
+
             bulletin.taiMinusUtc_ = Duration::Seconds(seconds) ;
 
         }
@@ -591,20 +591,20 @@ BulletinA                       BulletinA::Load                             (   
 
     if (!bulletin.observations_.empty())
     {
-        
+
         const Instant observationStartInstant = Instant::ModifiedJulianDate(Real::Integer(bulletin.observations_.begin()->first), Scale::UTC) ;
         const Instant observationEndInstant = Instant::ModifiedJulianDate(Real::Integer(bulletin.observations_.rbegin()->first), Scale::UTC) ;
-        
+
         bulletin.observationInterval_ = Interval::Closed(observationStartInstant, observationEndInstant) ;
 
     }
 
     if (!bulletin.predictions_.empty())
     {
-        
+
         const Instant predictionStartInstant = Instant::ModifiedJulianDate(Real::Integer(bulletin.predictions_.begin()->first), Scale::UTC) ;
         const Instant predictionEndInstant = Instant::ModifiedJulianDate(Real::Integer(bulletin.predictions_.rbegin()->first), Scale::UTC) ;
-        
+
         bulletin.predictionInterval_ = Interval::Closed(predictionStartInstant, predictionEndInstant) ;
 
     }

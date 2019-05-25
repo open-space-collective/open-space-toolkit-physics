@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Time/Time.test.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -29,7 +29,7 @@ TEST (Library_Physics_Time_Time, Constructor)
         EXPECT_NO_THROW(Time(0, 0, 0, 999, 0, 0)) ;
         EXPECT_NO_THROW(Time(0, 0, 0, 0, 999, 0)) ;
         EXPECT_NO_THROW(Time(0, 0, 0, 0, 0, 999)) ;
-        
+
         EXPECT_NO_THROW(Time(23, 59, 59, 999, 999, 999)) ;
         EXPECT_NO_THROW(Time(23, 59, 60, 999, 999, 999)) ;
 
@@ -141,7 +141,7 @@ TEST (Library_Physics_Time_Time, IsDefined)
     }
 
     {
-        
+
         EXPECT_FALSE(Time::Undefined().isDefined()) ;
 
     }
@@ -160,7 +160,7 @@ TEST (Library_Physics_Time_Time, GetHour)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(Time::Undefined().getHour()) ;
 
     }
@@ -179,7 +179,7 @@ TEST (Library_Physics_Time_Time, GetMinute)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(Time::Undefined().getMinute()) ;
 
     }
@@ -198,7 +198,7 @@ TEST (Library_Physics_Time_Time, GetSecond)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(Time::Undefined().getSecond()) ;
 
     }
@@ -217,7 +217,7 @@ TEST (Library_Physics_Time_Time, GetMillisecond)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(Time::Undefined().getMillisecond()) ;
 
     }
@@ -236,7 +236,7 @@ TEST (Library_Physics_Time_Time, GetMicrosecond)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(Time::Undefined().getMicrosecond()) ;
 
     }
@@ -255,7 +255,7 @@ TEST (Library_Physics_Time_Time, GetNanosecond)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(Time::Undefined().getNanosecond()) ;
 
     }
@@ -279,7 +279,7 @@ TEST (Library_Physics_Time_Time, GetFloatingSeconds)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(Time::Undefined().getFloatingSeconds()) ;
 
     }
@@ -321,7 +321,7 @@ TEST (Library_Physics_Time_Time, ToString)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(Time::Undefined().toString()) ;
 
     }
@@ -346,7 +346,7 @@ TEST (Library_Physics_Time_Time, SetHour)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(Time::Undefined().setHour(24)) ;
 
     }
@@ -371,9 +371,9 @@ TEST (Library_Physics_Time_Time, SetMinute)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(Time::Undefined().setMinute(1)) ;
-        
+
         EXPECT_ANY_THROW(Time(1, 2, 3, 4, 5, 6).setMinute(60)) ;
 
     }
@@ -398,9 +398,9 @@ TEST (Library_Physics_Time_Time, SetSecond)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(Time::Undefined().setSecond(1)) ;
-        
+
         EXPECT_ANY_THROW(Time(1, 2, 3, 4, 5, 6).setSecond(61)) ;
 
     }
@@ -425,9 +425,9 @@ TEST (Library_Physics_Time_Time, SetMillisecond)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(Time::Undefined().setMillisecond(1)) ;
-        
+
         EXPECT_ANY_THROW(Time(1, 2, 3, 4, 5, 6).setMillisecond(1000)) ;
 
     }
@@ -452,9 +452,9 @@ TEST (Library_Physics_Time_Time, SetMicrosecond)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(Time::Undefined().setMicrosecond(1)) ;
-        
+
         EXPECT_ANY_THROW(Time(1, 2, 3, 4, 5, 6).setMicrosecond(1000)) ;
 
     }
@@ -479,9 +479,9 @@ TEST (Library_Physics_Time_Time, SetNanosecond)
     }
 
     {
-        
+
         EXPECT_ANY_THROW(Time::Undefined().setNanosecond(1)) ;
-        
+
         EXPECT_ANY_THROW(Time(1, 2, 3, 4, 5, 6).setNanosecond(1000)) ;
 
     }

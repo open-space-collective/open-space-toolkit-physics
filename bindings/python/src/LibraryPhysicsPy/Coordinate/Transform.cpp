@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           LibraryPhysicsPy/Coordinate/Transform.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -55,7 +55,7 @@ inline void                     LibraryPhysicsPy_Coordinate_Transform       ( )
         .def("applyToPosition", &Transform::applyToPosition)
         .def("applyToVelocity", &Transform::applyToVelocity)
         .def("applyToVector", &Transform::applyToVector)
-        
+
         .def("Undefined", &Transform::Undefined).staticmethod("Undefined")
         .def("Identity", &Transform::Identity).staticmethod("Identity")
         // .def("Translation", &Transform::Translation).staticmethod("Translation")

@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Coordinate/Frame/Providers/IERS/Manager.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -237,7 +237,7 @@ class Manager
 
         Array<BulletinA>        aBulletins_ ;
         Array<Finals2000A>      finals2000aArray_ ;
-        
+
         mutable std::mutex      mutex_ ;
 
         mutable Index           aBulletinIndex_ ;
@@ -257,7 +257,7 @@ class Manager
         const Finals2000A*      accessFinals2000AAt                         (   const   Instant&                    anInstant                                   ) const ;
 
         File                    getLatestBulletinAFile                      ( ) const ;
-        
+
         File                    getLatestFinals2000AFile                    ( ) const ;
 
         void                    setup                                       ( ) ;
@@ -267,7 +267,7 @@ class Manager
         void                    loadFinals2000A_                            (   const   Finals2000A&                aFinals2000A                                ) ;
 
         File                    fetchLatestBulletinA_                       ( ) ;
-        
+
         File                    fetchLatestFinals2000A_                     ( ) ;
 
         void                    lockLocalRepository                         (   const   Duration&                   aTimeout                                    ) ;

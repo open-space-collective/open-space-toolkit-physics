@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library/Physics
+/// @project        Library ▸ Physics
 /// @file           Library/Physics/Time/Instant.test.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
@@ -38,7 +38,7 @@ static const Array<Scale> scales = { Scale::TT, Scale::TAI, Scale::UTC, Scale::G
 
 TEST (Library_Physics_Time_Instant, EqualToOperator)
 {
-    
+
     using library::physics::time::Scale ;
     using library::physics::time::DateTime ;
     using library::physics::time::Instant ;
@@ -80,7 +80,7 @@ TEST (Library_Physics_Time_Instant, EqualToOperator)
                                                 EXPECT_TRUE(Instant::DateTime(dateTime, scale) == Instant::DateTime(dateTime, scale)) ;
 
                                             }
-                                            
+
                                         }
 
                                     }
@@ -153,7 +153,7 @@ TEST (Library_Physics_Time_Instant, EqualToOperator)
                                                 }
 
                                             }
-                                            
+
                                         }
 
                                     }
@@ -212,9 +212,9 @@ TEST (Library_Physics_Time_Instant, EqualToOperator)
 
                                                 EXPECT_FALSE(Instant::DateTime(dateTime, scale) == Instant::Undefined()) ;
                                                 EXPECT_FALSE(Instant::Undefined() == Instant::DateTime(dateTime, scale)) ;
-                                                
+
                                             }
-                                            
+
                                         }
 
                                     }
@@ -239,7 +239,7 @@ TEST (Library_Physics_Time_Instant, EqualToOperator)
 
 TEST (Library_Physics_Time_Instant, NotEqualToOperator)
 {
-    
+
     using library::physics::time::Scale ;
     using library::physics::time::DateTime ;
     using library::physics::time::Instant ;
@@ -296,7 +296,7 @@ TEST (Library_Physics_Time_Instant, NotEqualToOperator)
                                                 }
 
                                             }
-                                            
+
                                         }
 
                                     }
@@ -355,9 +355,9 @@ TEST (Library_Physics_Time_Instant, NotEqualToOperator)
 
                                                 EXPECT_TRUE(Instant::DateTime(dateTime, scale) != Instant::Undefined()) ;
                                                 EXPECT_TRUE(Instant::Undefined() != Instant::DateTime(dateTime, scale)) ;
-                                                
+
                                             }
-                                            
+
                                         }
 
                                     }
@@ -415,7 +415,7 @@ TEST (Library_Physics_Time_Instant, NotEqualToOperator)
                                                 EXPECT_FALSE(Instant::DateTime(dateTime, scale) != Instant::DateTime(dateTime, scale)) ;
 
                                             }
-                                            
+
                                         }
 
                                     }
@@ -440,7 +440,7 @@ TEST (Library_Physics_Time_Instant, NotEqualToOperator)
 
 TEST (Library_Physics_Time_Instant, LessThanOperator)
 {
-    
+
     using library::physics::time::Scale ;
     using library::physics::time::DateTime ;
     using library::physics::time::Instant ;
@@ -474,7 +474,7 @@ TEST (Library_Physics_Time_Instant, LessThanOperator)
 
 TEST (Library_Physics_Time_Instant, LessThanOrEqualToOperator)
 {
-    
+
     using library::physics::time::Scale ;
     using library::physics::time::DateTime ;
     using library::physics::time::Instant ;
@@ -508,7 +508,7 @@ TEST (Library_Physics_Time_Instant, LessThanOrEqualToOperator)
 
 TEST (Library_Physics_Time_Instant, GreaterThanOperator)
 {
-    
+
     using library::physics::time::Scale ;
     using library::physics::time::DateTime ;
     using library::physics::time::Instant ;
@@ -542,7 +542,7 @@ TEST (Library_Physics_Time_Instant, GreaterThanOperator)
 
 TEST (Library_Physics_Time_Instant, GreaterThanOrEqualToOperator)
 {
-    
+
     using library::physics::time::Scale ;
     using library::physics::time::DateTime ;
     using library::physics::time::Instant ;
@@ -576,7 +576,7 @@ TEST (Library_Physics_Time_Instant, GreaterThanOrEqualToOperator)
 
 TEST (Library_Physics_Time_Instant, AdditionOperator)
 {
-    
+
     using library::physics::time::Scale ;
     using library::physics::time::DateTime ;
     using library::physics::time::Instant ;
@@ -630,7 +630,7 @@ TEST (Library_Physics_Time_Instant, AdditionOperator)
 
 TEST (Library_Physics_Time_Instant, SubtractionOperator)
 {
-    
+
     using library::physics::time::Scale ;
     using library::physics::time::DateTime ;
     using library::physics::time::Instant ;
@@ -731,7 +731,7 @@ TEST (Library_Physics_Time_Instant, SubtractionOperator)
 
                         EXPECT_EQ(Duration::Hours(-1), Instant::DateTime(DateTime(year, month, day, 12, 0, 0), scale) - Instant::DateTime(DateTime(year, month, day, 13, 0, 0), scale)) ;
                         EXPECT_EQ(Duration::Hours(+1), Instant::DateTime(DateTime(year, month, day, 12, 0, 0), scale) - Instant::DateTime(DateTime(year, month, day, 11, 0, 0), scale)) ;
-                        
+
                     }
 
                 }
@@ -746,7 +746,7 @@ TEST (Library_Physics_Time_Instant, SubtractionOperator)
 
 TEST (Library_Physics_Time_Instant, AdditionAssignementOperator)
 {
-    
+
     using library::physics::time::Scale ;
     using library::physics::time::DateTime ;
     using library::physics::time::Instant ;
@@ -800,7 +800,7 @@ TEST (Library_Physics_Time_Instant, AdditionAssignementOperator)
 
 TEST (Library_Physics_Time_Instant, SubtractionAssignementOperator)
 {
-    
+
     using library::physics::time::Scale ;
     using library::physics::time::DateTime ;
     using library::physics::time::Instant ;
@@ -854,7 +854,7 @@ TEST (Library_Physics_Time_Instant, SubtractionAssignementOperator)
 
 TEST (Library_Physics_Time_Instant, StreamOperator)
 {
-    
+
     using library::physics::time::Scale ;
     using library::physics::time::Instant ;
 
@@ -872,7 +872,7 @@ TEST (Library_Physics_Time_Instant, StreamOperator)
 
 TEST (Library_Physics_Time_Instant, IsDefined)
 {
-    
+
     using library::physics::time::Scale ;
     using library::physics::time::DateTime ;
     using library::physics::time::Instant ;
@@ -881,7 +881,7 @@ TEST (Library_Physics_Time_Instant, IsDefined)
 
         for (auto const& scale : scales)
         {
-            
+
             EXPECT_TRUE(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0), scale).isDefined()) ;
             EXPECT_TRUE(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0, 0, 0, 1), scale).isDefined()) ;
             EXPECT_TRUE(Instant::DateTime(DateTime(2000, 1, 1, 11, 59, 59, 999, 999, 999), scale).isDefined()) ;
@@ -889,7 +889,7 @@ TEST (Library_Physics_Time_Instant, IsDefined)
         }
 
     }
-    
+
     {
 
         EXPECT_FALSE(Instant::Undefined().isDefined()) ;
@@ -900,15 +900,15 @@ TEST (Library_Physics_Time_Instant, IsDefined)
 
 TEST (Library_Physics_Time_Instant, IsPostEpoch)
 {
-    
+
     using library::physics::time::Scale ;
     using library::physics::time::DateTime ;
     using library::physics::time::Instant ;
 
     {
-        
+
         EXPECT_TRUE(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0), Scale::TT).isPostEpoch()) ;
-        
+
         EXPECT_TRUE(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0, 0, 0, 1), Scale::TT).isPostEpoch()) ;
 
         EXPECT_FALSE(Instant::DateTime(DateTime(2000, 1, 1, 11, 59, 59, 999, 999, 999), Scale::TT).isPostEpoch()) ;
@@ -931,14 +931,14 @@ TEST (Library_Physics_Time_Instant, IsPostEpoch)
 
 TEST (Library_Physics_Time_Instant, IsNear)
 {
-    
+
     using library::physics::time::Scale ;
     using library::physics::time::DateTime ;
     using library::physics::time::Instant ;
     using library::physics::time::Duration ;
 
     {
-        
+
         EXPECT_TRUE(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0), Scale::TT).isNear(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0), Scale::TT), Duration::Seconds(0.0))) ;
         EXPECT_TRUE(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 1), Scale::TT).isNear(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0), Scale::TT), Duration::Seconds(1.0))) ;
         EXPECT_TRUE(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0), Scale::TT).isNear(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 1), Scale::TT), Duration::Seconds(1.0))) ;
@@ -972,7 +972,7 @@ TEST (Library_Physics_Time_Instant, IsNear)
 
 TEST (Library_Physics_Time_Instant, GetDateTime)
 {
-    
+
     using library::physics::time::Scale ;
     using library::physics::time::DateTime ;
     using library::physics::time::Instant ;
@@ -1035,7 +1035,7 @@ TEST (Library_Physics_Time_Instant, GetDateTime)
 
 TEST (Library_Physics_Time_Instant, GetJulianDate)
 {
-    
+
     using library::physics::time::Scale ;
     using library::physics::time::DateTime ;
     using library::physics::time::Instant ;
@@ -1050,7 +1050,7 @@ TEST (Library_Physics_Time_Instant, GetJulianDate)
             EXPECT_EQ(2451545.50, Instant::DateTime(DateTime(2000, 1, 2, 0, 0, 0), scale).getJulianDate(scale)) ;
             EXPECT_EQ(2451545.75, Instant::DateTime(DateTime(2000, 1, 2, 6, 0, 0), scale).getJulianDate(scale)) ;
             EXPECT_EQ(2451546.0, Instant::DateTime(DateTime(2000, 1, 2, 12, 0, 0), scale).getJulianDate(scale)) ;
-            
+
         }
 
     }
@@ -1070,7 +1070,7 @@ TEST (Library_Physics_Time_Instant, GetJulianDate)
 
 TEST (Library_Physics_Time_Instant, GetModifiedJulianDate)
 {
-    
+
     using library::physics::time::Scale ;
     using library::physics::time::DateTime ;
     using library::physics::time::Instant ;
@@ -1102,7 +1102,7 @@ TEST (Library_Physics_Time_Instant, GetModifiedJulianDate)
 
 TEST (Library_Physics_Time_Instant, ToString)
 {
-    
+
     using library::core::types::String ;
     using library::physics::time::Scale ;
     using library::physics::time::DateTime ;
@@ -1123,7 +1123,7 @@ TEST (Library_Physics_Time_Instant, ToString)
             EXPECT_EQ(String::Format("2000-01-01 11:59:59.999.999.999 [{}]", StringFromScale(scale)), Instant::DateTime(DateTime(2000, 1, 1, 11, 59, 59, 999, 999, 999), scale).toString(scale)) ;
             EXPECT_EQ(String::Format("2000-01-01 12:00:00.000.000.001 [{}]", StringFromScale(scale)), Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0, 0, 0, 1), scale).toString(scale)) ;
 
-            EXPECT_EQ(String::Format("1999-01-01 00:00:00 [{}]", StringFromScale(scale)), Instant::DateTime(DateTime(1999, 1, 1, 0, 0, 0, 0, 0, 0), scale).toString(scale)) ;        
+            EXPECT_EQ(String::Format("1999-01-01 00:00:00 [{}]", StringFromScale(scale)), Instant::DateTime(DateTime(1999, 1, 1, 0, 0, 0, 0, 0, 0), scale).toString(scale)) ;
             EXPECT_EQ(String::Format("2000-01-01 00:00:00 [{}]", StringFromScale(scale)), Instant::DateTime(DateTime(2000, 1, 1, 0, 0, 0, 0, 0, 0), scale).toString(scale)) ;
             EXPECT_EQ(String::Format("2001-01-01 00:00:00 [{}]", StringFromScale(scale)), Instant::DateTime(DateTime(2001, 1, 1, 0, 0, 0, 0, 0, 0), scale).toString(scale)) ;
 
@@ -1155,7 +1155,7 @@ TEST (Library_Physics_Time_Instant, ToString)
 
 TEST (Library_Physics_Time_Instant, Undefined)
 {
-    
+
     using library::physics::time::Scale ;
     using library::physics::time::Instant ;
 
@@ -1170,7 +1170,7 @@ TEST (Library_Physics_Time_Instant, Undefined)
 
 TEST (Library_Physics_Time_Instant, Now)
 {
-    
+
     using library::physics::time::Scale ;
     using library::physics::time::Duration ;
     using library::physics::time::Instant ;
@@ -1196,7 +1196,7 @@ TEST (Library_Physics_Time_Instant, Now)
 
 TEST (Library_Physics_Time_Instant, J2000)
 {
-    
+
     using library::physics::time::Scale ;
     using library::physics::time::DateTime ;
     using library::physics::time::Instant ;
@@ -1216,7 +1216,7 @@ TEST (Library_Physics_Time_Instant, J2000)
 
 TEST (Library_Physics_Time_Instant, DateTime)
 {
-    
+
     using library::physics::time::Scale ;
     using library::physics::time::DateTime ;
     using library::physics::time::Instant ;
@@ -1260,7 +1260,7 @@ TEST (Library_Physics_Time_Instant, DateTime)
                                                 EXPECT_EQ(dateTime, Instant::DateTime(dateTime, scale).getDateTime(scale)) ;
 
                                             }
-                                            
+
                                         }
 
                                     }
@@ -1299,7 +1299,7 @@ TEST (Library_Physics_Time_Instant, DateTime)
 
 TEST (Library_Physics_Time_Instant, JulianDate)
 {
-    
+
     using library::core::types::Real ;
     using library::physics::time::Scale ;
     using library::physics::time::DateTime ;
@@ -1337,7 +1337,7 @@ TEST (Library_Physics_Time_Instant, JulianDate)
 
 TEST (Library_Physics_Time_Instant, ModifiedJulianDate)
 {
-    
+
     using library::core::types::Real ;
     using library::physics::time::Scale ;
     using library::physics::time::DateTime ;
@@ -1374,7 +1374,7 @@ TEST (Library_Physics_Time_Instant, ModifiedJulianDate)
 
 // TEST (Library_Physics_Time_Instant, Test_1)
 // {
-    
+
 //     using library::physics::time::Scale ;
 //     using library::physics::time::DateTime ;
 //     using library::physics::time::Instant ;
