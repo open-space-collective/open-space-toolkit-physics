@@ -21,7 +21,7 @@ var searchData=
   ['inhours',['inHours',['../classlibrary_1_1physics_1_1time_1_1_duration.html#a1f5e207d7c6f7b62d3cfee13e75dfa48',1,'library::physics::time::Duration']]],
   ['inkilograms',['inKilograms',['../classlibrary_1_1physics_1_1units_1_1_mass.html#a163fc62b4141ff5d31092dd688745518',1,'library::physics::units::Mass']]],
   ['inkilometers',['inKilometers',['../classlibrary_1_1physics_1_1units_1_1_length.html#a0d57a97fc408ae0f1a5353d0ee5837aa',1,'library::physics::units::Length']]],
-  ['inmeters',['inMeters',['../classlibrary_1_1physics_1_1units_1_1_length.html#ae8064733601131d3ccf1e5d53ecaf001',1,'library::physics::units::Length']]],
+  ['inmeters',['inMeters',['../classlibrary_1_1physics_1_1coord_1_1_position.html#a010f249f11762dcf2cd5528097ff5b4a',1,'library::physics::coord::Position::inMeters()'],['../classlibrary_1_1physics_1_1units_1_1_length.html#ae8064733601131d3ccf1e5d53ecaf001',1,'library::physics::units::Length::inMeters()']]],
   ['inmicroseconds',['inMicroseconds',['../classlibrary_1_1physics_1_1time_1_1_duration.html#a69c9501a4432aac49cecd9d47da7c4f6',1,'library::physics::time::Duration']]],
   ['inmilliseconds',['inMilliseconds',['../classlibrary_1_1physics_1_1time_1_1_duration.html#ac7c1fce0e8488954fe9e2abe1767548b',1,'library::physics::time::Duration']]],
   ['inminutes',['inMinutes',['../classlibrary_1_1physics_1_1time_1_1_duration.html#aef580516014096d1e5ae5bb6ae8e6f29',1,'library::physics::time::Duration']]],

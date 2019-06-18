@@ -40,7 +40,7 @@ void \hyperlink{classlibrary_1_1physics_1_1_environment_a6279d44965a3894993cee2b
 \begin{DoxyCompactItemize}
 \item 
 static \hyperlink{classlibrary_1_1physics_1_1_environment}{Environment} \hyperlink{classlibrary_1_1physics_1_1_environment_a8d1dfff3867d59ecdebd3ee6e98a2dab}{Undefined} ()
-\begin{DoxyCompactList}\small\item\em Constructs an undefined environment. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Get gravitational field at position. \end{DoxyCompactList}\item 
 static \hyperlink{classlibrary_1_1physics_1_1_environment}{Environment} \hyperlink{classlibrary_1_1physics_1_1_environment_a7fcc57999bfb9c0c7e70b7cc783e30c8}{Default} ()
 \begin{DoxyCompactList}\small\item\em Constructs a default environment. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Friends}
@@ -277,8 +277,24 @@ Set instant.
 
 
 
-Constructs an undefined environment. 
+Get gravitational field at position. 
 
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Position} & A position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Gravitational field vector Get magnetic field at position
+\end{DoxyReturn}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Position} & A position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Magnetic field vector Constructs an undefined environment
+\end{DoxyReturn}
 
 \begin{DoxyCode}
 \hyperlink{classlibrary_1_1physics_1_1_environment_a51854f130c31eb075ea623e332978495}{Environment} environment = \hyperlink{classlibrary_1_1physics_1_1_environment_a8d1dfff3867d59ecdebd3ee6e98a2dab}{Environment::Undefined}() ;

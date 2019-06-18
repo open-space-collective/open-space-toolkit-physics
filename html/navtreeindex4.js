@@ -1,5 +1,6 @@
 var NAVTREEINDEX4 =
 {
+"classlibrary_1_1physics_1_1units_1_1_derived_1_1_order.html#a7dac73673a407c33a5de0bf91f531c31":[4,0,0,0,5,1,0,3],
 "classlibrary_1_1physics_1_1units_1_1_derived_1_1_order.html#a8ebf2f4e2d3248ca01d1baf78ce7cb65":[4,0,0,0,5,1,0,8],
 "classlibrary_1_1physics_1_1units_1_1_derived_1_1_order.html#a8fd90d4af443c91824510a087d93a5b4":[4,0,0,0,5,1,0,9],
 "classlibrary_1_1physics_1_1units_1_1_derived_1_1_order.html#a9fc4a7af30cf5dc036ecfd77469d34ef":[4,0,0,0,5,1,0,1],
@@ -169,8 +170,8 @@ var NAVTREEINDEX4 =
 "dir_f3b5534f769798fe34f6616e7fe90e4d.html":[5,0,0,0],
 "dir_f741251061e5c7c7ed48ab45c3348f11.html":[5,0,1,0],
 "files.html":[5,0],
-"functions.html":[4,2,0,0],
 "functions.html":[4,2,0],
+"functions.html":[4,2,0,0],
 "functions_0x7e.html":[4,2,0,25],
 "functions_b.html":[4,2,0,1],
 "functions_c.html":[4,2,0,2],
@@ -246,8 +247,7 @@ var NAVTREEINDEX4 =
 "md_docs__tutorial.html":[2],
 "md_docs__tutorial.html#Examples":[2,1],
 "md_docs__tutorial.html#Setup":[2,0],
-"namespacelibrary.html":[4,0,0],
 "namespacelibrary.html":[3,0,0],
-"namespacelibrary_1_1physics.html":[4,0,0,0],
+"namespacelibrary.html":[4,0,0],
 "namespacelibrary_1_1physics.html":[3,0,0,0]
 };

@@ -8,6 +8,7 @@ var classlibrary_1_1physics_1_1coord_1_1_position =
     [ "getCoordinates", "classlibrary_1_1physics_1_1coord_1_1_position.html#a35981f1150639afac722ccf13bf2f4bd", null ],
     [ "getUnit", "classlibrary_1_1physics_1_1coord_1_1_position.html#a1b6173fd9226069e36ac075b444be794", null ],
     [ "inFrame", "classlibrary_1_1physics_1_1coord_1_1_position.html#adc0e64905c2463bcaf9d53a08b3426fb", null ],
+    [ "inMeters", "classlibrary_1_1physics_1_1coord_1_1_position.html#a010f249f11762dcf2cd5528097ff5b4a", null ],
     [ "inUnit", "classlibrary_1_1physics_1_1coord_1_1_position.html#a908878d741ad2de6a2d278d2d674e949", null ],
     [ "isDefined", "classlibrary_1_1physics_1_1coord_1_1_position.html#ac13492ffe13b093bb26173089db1a24b", null ],
     [ "isNear", "classlibrary_1_1physics_1_1coord_1_1_position.html#a1fafd3a66e10d748f5a27e13d482acea", null ],

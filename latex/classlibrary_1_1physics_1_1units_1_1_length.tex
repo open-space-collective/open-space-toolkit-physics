@@ -86,11 +86,13 @@ static \hyperlink{classlibrary_1_1physics_1_1units_1_1_length}{Length} \hyperlin
 \item 
 static \hyperlink{classlibrary_1_1physics_1_1units_1_1_length}{Length} \hyperlink{classlibrary_1_1physics_1_1units_1_1_length_a28e457b910a96d1eb2bdf661d815478a}{Kilometers} (const Real \&a\+Value)
 \item 
-static \hyperlink{classlibrary_1_1physics_1_1units_1_1_length}{Length} \hyperlink{classlibrary_1_1physics_1_1units_1_1_length_af4bf5addf6b3936ef7c6cbd3fdca5bb3}{Parse} (const String \&a\+String)
+static \hyperlink{classlibrary_1_1physics_1_1units_1_1_length}{Length} \hyperlink{classlibrary_1_1physics_1_1units_1_1_length_a4f48acd4abba06a7fc15bbc5ee48fe63}{Parse} (const String \&a\+String)
 \item 
 static String \hyperlink{classlibrary_1_1physics_1_1units_1_1_length_a2e5796c1a5f36b168cd0ddaa03381299}{String\+From\+Unit} (const \hyperlink{classlibrary_1_1physics_1_1units_1_1_length_a3b8b39cd245cf6b19dc34459baeccb18}{Length\+::\+Unit} \&a\+Unit)
 \item 
 static String \hyperlink{classlibrary_1_1physics_1_1units_1_1_length_a645313cc92b2863704275f9e8b3f8879}{Symbol\+From\+Unit} (const \hyperlink{classlibrary_1_1physics_1_1units_1_1_length_a3b8b39cd245cf6b19dc34459baeccb18}{Length\+::\+Unit} \&a\+Unit)
+\item 
+static \hyperlink{classlibrary_1_1physics_1_1units_1_1_length_a3b8b39cd245cf6b19dc34459baeccb18}{Length\+::\+Unit} \hyperlink{classlibrary_1_1physics_1_1units_1_1_length_af26d05f64f066bea686ed565c41eaf93}{Unit\+From\+Symbol} (const String \&a\+Symbol)
 \end{DoxyCompactItemize}
 \subsection*{Friends}
 \begin{DoxyCompactItemize}
@@ -99,6 +101,7 @@ static String \hyperlink{classlibrary_1_1physics_1_1units_1_1_length_a645313cc92
 \item 
 std\+::ostream \& \hyperlink{classlibrary_1_1physics_1_1units_1_1_length_a95a13170a8d57cb0060eae94520eace4}{operator$<$$<$} (std\+::ostream \&an\+Output\+Stream, const \hyperlink{classlibrary_1_1physics_1_1units_1_1_length}{Length} \&a\+Length)
 \end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
 
 
 \subsection{Detailed Description}
@@ -314,11 +317,11 @@ Reimplemented from \hyperlink{classlibrary_1_1physics_1_1units_1_1_unit_a5ce011c
 \subsubsection{\texorpdfstring{operator$>$=()}{operator>=()}}
 {\footnotesize\ttfamily bool library\+::physics\+::units\+::\+Length\+::operator$>$= (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1units_1_1_length}{Length} \&}]{a\+Length }\end{DoxyParamCaption}) const}
 
-\mbox{\Hypertarget{classlibrary_1_1physics_1_1units_1_1_length_af4bf5addf6b3936ef7c6cbd3fdca5bb3}\label{classlibrary_1_1physics_1_1units_1_1_length_af4bf5addf6b3936ef7c6cbd3fdca5bb3}} 
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1units_1_1_length_a4f48acd4abba06a7fc15bbc5ee48fe63}\label{classlibrary_1_1physics_1_1units_1_1_length_a4f48acd4abba06a7fc15bbc5ee48fe63}} 
 \index{library\+::physics\+::units\+::\+Length@{library\+::physics\+::units\+::\+Length}!Parse@{Parse}}
 \index{Parse@{Parse}!library\+::physics\+::units\+::\+Length@{library\+::physics\+::units\+::\+Length}}
 \subsubsection{\texorpdfstring{Parse()}{Parse()}}
-{\footnotesize\ttfamily static \hyperlink{classlibrary_1_1physics_1_1units_1_1_length}{Length} library\+::physics\+::units\+::\+Length\+::\+Parse (\begin{DoxyParamCaption}\item[{const String \&}]{a\+String }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1units_1_1_length}{Length} library\+::physics\+::units\+::\+Length\+::\+Parse (\begin{DoxyParamCaption}\item[{const String \&}]{a\+String }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1units_1_1_length_a2e5796c1a5f36b168cd0ddaa03381299}\label{classlibrary_1_1physics_1_1units_1_1_length_a2e5796c1a5f36b168cd0ddaa03381299}} 
 \index{library\+::physics\+::units\+::\+Length@{library\+::physics\+::units\+::\+Length}!String\+From\+Unit@{String\+From\+Unit}}
@@ -347,6 +350,12 @@ Implements \hyperlink{classlibrary_1_1physics_1_1units_1_1_unit_ad7364d457300e36
 \index{Undefined@{Undefined}!library\+::physics\+::units\+::\+Length@{library\+::physics\+::units\+::\+Length}}
 \subsubsection{\texorpdfstring{Undefined()}{Undefined()}}
 {\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1units_1_1_length}{Length} library\+::physics\+::units\+::\+Length\+::\+Undefined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1units_1_1_length_af26d05f64f066bea686ed565c41eaf93}\label{classlibrary_1_1physics_1_1units_1_1_length_af26d05f64f066bea686ed565c41eaf93}} 
+\index{library\+::physics\+::units\+::\+Length@{library\+::physics\+::units\+::\+Length}!Unit\+From\+Symbol@{Unit\+From\+Symbol}}
+\index{Unit\+From\+Symbol@{Unit\+From\+Symbol}!library\+::physics\+::units\+::\+Length@{library\+::physics\+::units\+::\+Length}}
+\subsubsection{\texorpdfstring{Unit\+From\+Symbol()}{UnitFromSymbol()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1units_1_1_length_a3b8b39cd245cf6b19dc34459baeccb18}{Length\+::\+Unit} library\+::physics\+::units\+::\+Length\+::\+Unit\+From\+Symbol (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Symbol }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 

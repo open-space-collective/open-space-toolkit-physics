@@ -112,11 +112,13 @@ static \hyperlink{classlibrary_1_1physics_1_1units_1_1_angle}{Angle} \hyperlink{
 \item 
 static \hyperlink{classlibrary_1_1physics_1_1units_1_1_angle}{Angle} \hyperlink{classlibrary_1_1physics_1_1units_1_1_angle_ab7ce400fbca2bfd2ebe453e1685ad049}{Between} (const Vector3d \&a\+First\+Vector, const Vector3d \&a\+Second\+Vector)
 \item 
-static \hyperlink{classlibrary_1_1physics_1_1units_1_1_angle}{Angle} \hyperlink{classlibrary_1_1physics_1_1units_1_1_angle_a3d7a56d496018330d9529036a31be312}{Parse} (const String \&a\+String)
+static \hyperlink{classlibrary_1_1physics_1_1units_1_1_angle}{Angle} \hyperlink{classlibrary_1_1physics_1_1units_1_1_angle_adb15fc7d0b586672b91fa80a69b508f1}{Parse} (const String \&a\+String)
 \item 
 static String \hyperlink{classlibrary_1_1physics_1_1units_1_1_angle_a95d8f1d9e27062ca480b7c264a035283}{String\+From\+Unit} (const \hyperlink{classlibrary_1_1physics_1_1units_1_1_angle_a3c329d415a61783b16ce481874cc5956}{Angle\+::\+Unit} \&a\+Unit)
 \item 
 static String \hyperlink{classlibrary_1_1physics_1_1units_1_1_angle_a2f51939276e1d1c2121e1fc911e6ca30}{Symbol\+From\+Unit} (const \hyperlink{classlibrary_1_1physics_1_1units_1_1_angle_a3c329d415a61783b16ce481874cc5956}{Angle\+::\+Unit} \&a\+Unit)
+\item 
+static \hyperlink{classlibrary_1_1physics_1_1units_1_1_angle_a3c329d415a61783b16ce481874cc5956}{Angle\+::\+Unit} \hyperlink{classlibrary_1_1physics_1_1units_1_1_angle_a78686250c9216e06b93f595d40ddfef1}{Unit\+From\+Symbol} (const String \&a\+Symbol)
 \end{DoxyCompactItemize}
 \subsection*{Friends}
 \begin{DoxyCompactItemize}
@@ -125,6 +127,7 @@ static String \hyperlink{classlibrary_1_1physics_1_1units_1_1_angle_a2f51939276e
 \item 
 std\+::ostream \& \hyperlink{classlibrary_1_1physics_1_1units_1_1_angle_a0846b77ee3281e8a559197c3c3208eed}{operator$<$$<$} (std\+::ostream \&an\+Output\+Stream, const \hyperlink{classlibrary_1_1physics_1_1units_1_1_angle}{Angle} \&an\+Angle)
 \end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
 
 
 \subsection{Detailed Description}
@@ -390,11 +393,11 @@ Reimplemented from \hyperlink{classlibrary_1_1physics_1_1units_1_1_unit_a5ce011c
 \subsubsection{\texorpdfstring{operator==()}{operator==()}}
 {\footnotesize\ttfamily bool library\+::physics\+::units\+::\+Angle\+::operator== (\begin{DoxyParamCaption}\item[{const \hyperlink{classlibrary_1_1physics_1_1units_1_1_angle}{Angle} \&}]{an\+Angle }\end{DoxyParamCaption}) const}
 
-\mbox{\Hypertarget{classlibrary_1_1physics_1_1units_1_1_angle_a3d7a56d496018330d9529036a31be312}\label{classlibrary_1_1physics_1_1units_1_1_angle_a3d7a56d496018330d9529036a31be312}} 
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1units_1_1_angle_adb15fc7d0b586672b91fa80a69b508f1}\label{classlibrary_1_1physics_1_1units_1_1_angle_adb15fc7d0b586672b91fa80a69b508f1}} 
 \index{library\+::physics\+::units\+::\+Angle@{library\+::physics\+::units\+::\+Angle}!Parse@{Parse}}
 \index{Parse@{Parse}!library\+::physics\+::units\+::\+Angle@{library\+::physics\+::units\+::\+Angle}}
 \subsubsection{\texorpdfstring{Parse()}{Parse()}}
-{\footnotesize\ttfamily static \hyperlink{classlibrary_1_1physics_1_1units_1_1_angle}{Angle} library\+::physics\+::units\+::\+Angle\+::\+Parse (\begin{DoxyParamCaption}\item[{const String \&}]{a\+String }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1units_1_1_angle}{Angle} library\+::physics\+::units\+::\+Angle\+::\+Parse (\begin{DoxyParamCaption}\item[{const String \&}]{a\+String }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1units_1_1_angle_a506b763d8a160b8b1ce5fb33a87119a9}\label{classlibrary_1_1physics_1_1units_1_1_angle_a506b763d8a160b8b1ce5fb33a87119a9}} 
 \index{library\+::physics\+::units\+::\+Angle@{library\+::physics\+::units\+::\+Angle}!Pi@{Pi}}
@@ -447,6 +450,12 @@ Implements \hyperlink{classlibrary_1_1physics_1_1units_1_1_unit_ad7364d457300e36
 \index{Undefined@{Undefined}!library\+::physics\+::units\+::\+Angle@{library\+::physics\+::units\+::\+Angle}}
 \subsubsection{\texorpdfstring{Undefined()}{Undefined()}}
 {\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1units_1_1_angle}{Angle} library\+::physics\+::units\+::\+Angle\+::\+Undefined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classlibrary_1_1physics_1_1units_1_1_angle_a78686250c9216e06b93f595d40ddfef1}\label{classlibrary_1_1physics_1_1units_1_1_angle_a78686250c9216e06b93f595d40ddfef1}} 
+\index{library\+::physics\+::units\+::\+Angle@{library\+::physics\+::units\+::\+Angle}!Unit\+From\+Symbol@{Unit\+From\+Symbol}}
+\index{Unit\+From\+Symbol@{Unit\+From\+Symbol}!library\+::physics\+::units\+::\+Angle@{library\+::physics\+::units\+::\+Angle}}
+\subsubsection{\texorpdfstring{Unit\+From\+Symbol()}{UnitFromSymbol()}}
+{\footnotesize\ttfamily \hyperlink{classlibrary_1_1physics_1_1units_1_1_angle_a3c329d415a61783b16ce481874cc5956}{Angle\+::\+Unit} library\+::physics\+::units\+::\+Angle\+::\+Unit\+From\+Symbol (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Symbol }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 \mbox{\Hypertarget{classlibrary_1_1physics_1_1units_1_1_angle_a3dcf6f9bcee4ae440d36859c30481d2b}\label{classlibrary_1_1physics_1_1units_1_1_angle_a3dcf6f9bcee4ae440d36859c30481d2b}} 
 \index{library\+::physics\+::units\+::\+Angle@{library\+::physics\+::units\+::\+Angle}!Zero@{Zero}}
