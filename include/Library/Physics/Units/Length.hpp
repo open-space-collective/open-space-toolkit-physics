@@ -128,6 +128,8 @@ class Length : public Unit
 
         static String           SymbolFromUnit                              (   const   Length::Unit&               aUnit                                       ) ;
 
+        static Length::Unit     UnitFromSymbol                              (   const   String&                     aSymbol                                     ) ;
+
     private:
 
         Length::Unit            unit_ ;

@@ -9,6 +9,12 @@
 
 #include <Library/Physics/Units/Unit.hpp>
 
+#include <Library/Core/Error.hpp>
+#include <Library/Core/Utilities.hpp>
+
+#include <boost/regex.hpp>
+#include <boost/lexical_cast.hpp>
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 namespace library
@@ -90,6 +96,32 @@ Real&                           Unit::accessValue                           ( )
 void                            Unit::setValue                              (   const   Real&                       aValue                                      )
 {
     value_ = aValue ;
+}
+
+Pair<Real, String>              Unit::ParseString                           (   const   String&                     aString                                     )
+{
+
+    if (aString.isEmpty())
+    {
+        throw library::core::error::runtime::Undefined("String") ;
+    }
+
+    boost::smatch match ;
+
+    if (boost::regex_match(aString, match, boost::regex("^([-+\\de.]+) \\[([\\w\\/^\\.]+)\\]$")))
+    {
+
+        const Real value = boost::lexical_cast<double>(match[1]) ;
+        const String unit = String(match[2]) ;
+
+        return { value, unit } ;
+
+    }
+    else
+    {
+        throw library::core::error::RuntimeError("Cannot parse unit string [{}].", aString) ;
+    }
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

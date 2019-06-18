@@ -608,10 +608,14 @@ Angle                           Angle::Between                              (   
 
 }
 
-// Angle                            Angle::Parse                               (   const   String&                     aString                                     )
-// {
+Angle                           Angle::Parse                                (   const   String&                     aString                                     )
+{
 
-// }
+    const auto [value, symbol] = units::Unit::ParseString(aString) ;
+
+    return { value, Angle::UnitFromSymbol(symbol) } ;
+
+}
 
 String                          Angle::StringFromUnit                       (   const   Angle::Unit&                aUnit                                       )
 {
@@ -670,13 +674,42 @@ String                          Angle::SymbolFromUnit                       (   
             return "rev" ;
 
         default:
+            throw library::core::error::runtime::Wrong("Unit") ;
             break ;
 
     }
 
-    throw library::core::error::runtime::Wrong("Unit") ;
+}
 
-    return String::Empty() ;
+Angle::Unit                     Angle::UnitFromSymbol                       (   const   String&                     aSymbol                                     )
+{
+
+    if (aSymbol == "rad")
+    {
+        return Angle::Unit::Radian ;
+    }
+
+    if (aSymbol == "deg")
+    {
+        return Angle::Unit::Degree ;
+    }
+
+    if (aSymbol == "amin")
+    {
+        return Angle::Unit::Arcminute ;
+    }
+
+    if (aSymbol == "asec")
+    {
+        return Angle::Unit::Arcsecond ;
+    }
+
+    if (aSymbol == "rev")
+    {
+        return Angle::Unit::Revolution ;
+    }
+
+    throw library::core::error::runtime::Wrong("Symbol", aSymbol) ;
 
 }
 

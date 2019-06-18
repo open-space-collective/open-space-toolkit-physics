@@ -774,18 +774,49 @@ TEST (Library_Physics_Units_Length, Kilometers)
 
 }
 
-// TEST (Library_Physics_Units_Length, Parse)
-// {
+TEST (Library_Physics_Units_Length, Parse)
+{
 
-//     using library::physics::units::Length ;
+    using library::physics::units::Length ;
 
-//     {
+    {
 
-//         FAIL() ;
+        EXPECT_EQ(Length::Meters(123.0), Length::Parse("123 [m]")) ;
+        EXPECT_EQ(Length::Meters(123.0), Length::Parse("123.0 [m]")) ;
+        EXPECT_EQ(Length::Meters(123.456), Length::Parse("123.456 [m]")) ;
+        EXPECT_EQ(Length::Meters(1.2e6), Length::Parse("1.2e6 [m]")) ;
+        EXPECT_EQ(Length::Meters(+123.0), Length::Parse("+123 [m]")) ;
+        EXPECT_EQ(Length::Meters(+123.0), Length::Parse("+123.0 [m]")) ;
+        EXPECT_EQ(Length::Meters(+123.456), Length::Parse("+123.456 [m]")) ;
+        EXPECT_EQ(Length::Meters(+1.2e6), Length::Parse("+1.2e6 [m]")) ;
+        EXPECT_EQ(Length::Meters(-123.0), Length::Parse("-123 [m]")) ;
+        EXPECT_EQ(Length::Meters(-123.0), Length::Parse("-123.0 [m]")) ;
+        EXPECT_EQ(Length::Meters(-123.456), Length::Parse("-123.456 [m]")) ;
+        EXPECT_EQ(Length::Meters(-1.2e6), Length::Parse("-1.2e6 [m]")) ;
 
-//     }
+        EXPECT_EQ(Length(123.0, Length::Unit::Foot), Length::Parse("123.0 [ft]")) ;
+        EXPECT_EQ(Length(123.0, Length::Unit::TerrestrialMile), Length::Parse("123.0 [mi]")) ;
+        EXPECT_EQ(Length(123.0, Length::Unit::NauticalMile), Length::Parse("123.0 [nmi]")) ;
+        EXPECT_EQ(Length(123.0, Length::Unit::AstronomicalUnit), Length::Parse("123.0 [AU]")) ;
 
-// }
+        EXPECT_EQ(Length::Millimeters(123.0), Length::Parse("123.0 [mm]")) ;
+        EXPECT_EQ(Length::Kilometers(123.0), Length::Parse("123.0 [km]")) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Length::Parse("")) ;
+        EXPECT_ANY_THROW(Length::Parse("1")) ;
+        EXPECT_ANY_THROW(Length::Parse("1.0")) ;
+        EXPECT_ANY_THROW(Length::Parse("1.0 []")) ;
+        EXPECT_ANY_THROW(Length::Parse("1.0 [kg]")) ;
+        EXPECT_ANY_THROW(Length::Parse("abc")) ;
+        EXPECT_ANY_THROW(Length::Parse("1.0  [m]")) ;
+
+    }
+
+}
 
 TEST (Library_Physics_Units_Length, StringFromUnit)
 {

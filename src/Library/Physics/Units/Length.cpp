@@ -8,6 +8,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <Library/Physics/Units/Length.hpp>
+
 #include <Library/Core/Error.hpp>
 #include <Library/Core/Utilities.hpp>
 
@@ -336,10 +337,26 @@ Length                          Length::Kilometers                          (   
     return { aValue * 1e3, Length::Unit::Meter } ;
 }
 
-// Length                          Length::Parse                               (   const   String&                     aString                                     )
-// {
+Length                          Length::Parse                               (   const   String&                     aString                                     )
+{
 
-// }
+    const auto [value, symbol] = units::Unit::ParseString(aString) ;
+
+    // Special cases
+
+    if (symbol == "mm")
+    {
+        return { value / 1000.0, Length::Unit::Meter } ;
+    }
+
+    if (symbol == "km")
+    {
+        return { value * 1000.0, Length::Unit::Meter } ;
+    }
+
+    return { value, Length::UnitFromSymbol(symbol) } ;
+
+}
 
 String                          Length::StringFromUnit                      (   const   Length::Unit&               aUnit                                       )
 {
@@ -403,6 +420,38 @@ String                          Length::SymbolFromUnit                      (   
     }
 
     return String::Empty() ;
+
+}
+
+Length::Unit                    Length::UnitFromSymbol                      (   const   String&                     aSymbol                                     )
+{
+
+    if (aSymbol == "m")
+    {
+        return Length::Unit::Meter ;
+    }
+
+    if (aSymbol == "ft")
+    {
+        return Length::Unit::Foot ;
+    }
+
+    if (aSymbol == "mi")
+    {
+        return Length::Unit::TerrestrialMile ;
+    }
+
+    if (aSymbol == "nmi")
+    {
+        return Length::Unit::NauticalMile ;
+    }
+
+    if (aSymbol == "AU")
+    {
+        return Length::Unit::AstronomicalUnit ;
+    }
+
+    throw library::core::error::runtime::Wrong("Symbol", aSymbol) ;
 
 }
 

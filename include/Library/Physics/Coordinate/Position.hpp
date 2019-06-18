@@ -87,6 +87,8 @@ class Position
 
         Position                inUnit                                      (   const   Position::Unit&             aUnit                                       ) const ;
 
+        Position                inMeters                                    ( ) const ;
+
         Position                inFrame                                     (   const   Shared<const Frame>&        aFrameSPtr,
                                                                                 const   Instant&                    anInstant                                   ) const ;
 

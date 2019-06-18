@@ -1111,18 +1111,46 @@ TEST (Library_Physics_Units_Derived_Angle, Revolutions)
 
 }
 
-// TEST (Library_Physics_Units_Derived_Angle, Parse)
-// {
+TEST (Library_Physics_Units_Derived_Angle, Parse)
+{
 
-//     using library::physics::units::Angle ;
+    using library::physics::units::Angle ;
 
-//     {
+    {
 
-//         FAIL() ;
+        EXPECT_EQ(Angle::Degrees(123.0), Angle::Parse("123 [deg]")) ;
+        EXPECT_EQ(Angle::Degrees(123.0), Angle::Parse("123.0 [deg]")) ;
+        EXPECT_EQ(Angle::Degrees(123.456), Angle::Parse("123.456 [deg]")) ;
+        EXPECT_EQ(Angle::Degrees(1.2e6), Angle::Parse("1.2e6 [deg]")) ;
+        EXPECT_EQ(Angle::Degrees(+123.0), Angle::Parse("+123 [deg]")) ;
+        EXPECT_EQ(Angle::Degrees(+123.0), Angle::Parse("+123.0 [deg]")) ;
+        EXPECT_EQ(Angle::Degrees(+123.456), Angle::Parse("+123.456 [deg]")) ;
+        EXPECT_EQ(Angle::Degrees(+1.2e6), Angle::Parse("+1.2e6 [deg]")) ;
+        EXPECT_EQ(Angle::Degrees(-123.0), Angle::Parse("-123 [deg]")) ;
+        EXPECT_EQ(Angle::Degrees(-123.0), Angle::Parse("-123.0 [deg]")) ;
+        EXPECT_EQ(Angle::Degrees(-123.456), Angle::Parse("-123.456 [deg]")) ;
+        EXPECT_EQ(Angle::Degrees(-1.2e6), Angle::Parse("-1.2e6 [deg]")) ;
 
-//     }
+        EXPECT_EQ(Angle(123.0, Angle::Unit::Radian), Angle::Parse("123.0 [rad]")) ;
+        EXPECT_EQ(Angle(123.0, Angle::Unit::Arcminute), Angle::Parse("123.0 [amin]")) ;
+        EXPECT_EQ(Angle(123.0, Angle::Unit::Arcsecond), Angle::Parse("123.0 [asec]")) ;
+        EXPECT_EQ(Angle(123.0, Angle::Unit::Revolution), Angle::Parse("123.0 [rev]")) ;
 
-// }
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Angle::Parse("")) ;
+        EXPECT_ANY_THROW(Angle::Parse("1")) ;
+        EXPECT_ANY_THROW(Angle::Parse("1.0")) ;
+        EXPECT_ANY_THROW(Angle::Parse("1.0 []")) ;
+        EXPECT_ANY_THROW(Angle::Parse("1.0 [m]")) ;
+        EXPECT_ANY_THROW(Angle::Parse("abc")) ;
+        EXPECT_ANY_THROW(Angle::Parse("1.0  [deg]")) ;
+
+    }
+
+}
 
 TEST (Library_Physics_Units_Derived_Angle, StringFromUnit)
 {

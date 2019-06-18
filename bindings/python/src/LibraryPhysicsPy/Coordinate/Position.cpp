@@ -40,6 +40,7 @@ inline void                     LibraryPhysicsPy_Coordinate_Position        ( )
         .def("getCoordinates", &Position::getCoordinates)
         .def("getUnit", &Position::getUnit)
         .def("inUnit", &Position::inUnit)
+        .def("inMeters", &Position::inMeters)
         .def("inFrame", &Position::inFrame)
         .def("toString", &Position::toString, LibraryPhysicsPy_Coordinate_Position_toString_overloads())
 

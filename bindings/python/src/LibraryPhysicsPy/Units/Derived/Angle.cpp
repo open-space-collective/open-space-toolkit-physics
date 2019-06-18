@@ -70,7 +70,7 @@ inline void                     LibraryPhysicsPy_Units_Derived_Angle        ( )
         .def("Revolutions", &Angle::Revolutions).staticmethod("Revolutions")
         .def("BetweenVector2d", +[] (const Vector2d& aFirstVector, const Vector2d& aSecondVector) -> Angle { return Angle::Between(aFirstVector, aSecondVector) ; })
         .def("BetweenVector3d", +[] (const Vector3d& aFirstVector, const Vector3d& aSecondVector) -> Angle { return Angle::Between(aFirstVector, aSecondVector) ; })
-        // .def("Parse", &Angle::Parse).staticmethod("Parse")
+        .def("Parse", &Angle::Parse).staticmethod("Parse")
         .def("StringFromUnit", &Angle::StringFromUnit).staticmethod("StringFromUnit")
         .def("SymbolFromUnit", &Angle::SymbolFromUnit).staticmethod("SymbolFromUnit")
 

@@ -65,7 +65,7 @@ inline void                     LibraryPhysicsPy_Units_Length               ( )
         .def("Millimeters", &Length::Millimeters).staticmethod("Millimeters")
         .def("Meters", &Length::Meters).staticmethod("Meters")
         .def("Kilometers", &Length::Kilometers).staticmethod("Kilometers")
-        // .def("Parse", &Length::Parse).staticmethod("Parse")
+        .def("Parse", &Length::Parse).staticmethod("Parse")
         .def("StringFromUnit", &Length::StringFromUnit).staticmethod("StringFromUnit")
         .def("SymbolFromUnit", &Length::SymbolFromUnit).staticmethod("SymbolFromUnit")
 

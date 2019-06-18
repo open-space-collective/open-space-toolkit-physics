@@ -304,6 +304,34 @@ TEST (Library_Physics_Coordinate_Position, InUnit)
 
 }
 
+TEST (Library_Physics_Coordinate_Position, InMeters)
+{
+
+    using library::core::types::Real ;
+
+    using library::math::obj::Vector3d ;
+
+    using library::physics::coord::Frame ;
+    using library::physics::coord::Position ;
+
+    {
+
+        const Position position = { { 1.0, 0.0, 0.0 }, Position::Unit::Meter, Frame::GCRF() } ;
+
+        EXPECT_EQ(Vector3d(1.0, 0.0, 0.0), position.inMeters().getCoordinates()) ;
+        EXPECT_EQ(Position::Unit::Meter, position.inMeters().getUnit()) ;
+        EXPECT_EQ(Frame::GCRF(), position.inMeters().accessFrame()) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Position::Undefined().inMeters()) ;
+
+    }
+
+}
+
 TEST (Library_Physics_Coordinate_Position, InFrame)
 {
 

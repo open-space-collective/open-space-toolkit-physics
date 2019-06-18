@@ -10,6 +10,7 @@
 #ifndef __Library_Physics_Units_Unit__
 #define __Library_Physics_Units_Unit__
 
+#include <Library/Core/Containers/Pair.hpp>
 #include <Library/Core/Types/String.hpp>
 #include <Library/Core/Types/Real.hpp>
 #include <Library/Core/Types/Integer.hpp>
@@ -28,6 +29,7 @@ namespace units
 using library::core::types::Integer ;
 using library::core::types::Real ;
 using library::core::types::String ;
+using library::core::ctnr::Pair ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -85,6 +87,10 @@ class Unit
         Real&                   accessValue                                 ( ) ;
 
         void                    setValue                                    (   const   Real&                       aValue                                      ) ;
+
+    protected:
+
+        static Pair<Real, String> ParseString                               (   const   String&                     aString                                     ) ;
 
     private:
 

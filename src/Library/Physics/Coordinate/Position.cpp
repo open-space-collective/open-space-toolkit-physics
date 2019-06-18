@@ -200,6 +200,11 @@ Position                        Position::inUnit                            (   
 
 }
 
+Position                        Position::inMeters                          ( ) const
+{
+    return this->inUnit(Position::Unit::Meter) ;
+}
+
 Position                        Position::inFrame                           (   const   Shared<const Frame>&        aFrameSPtr,
                                                                                 const   Instant&                    anInstant                                   ) const
 {
