@@ -7,6 +7,32 @@
 
 ################################################################################################################################################################
 
+project_name := library-physics
+project_version := $(shell git describe --tags --always)
+
+docker_registry := openspacecollective
+docker_image_repository = $(docker_registry)/$(project_name)
+
+################################################################################################################################################################
+
+build_development_image: ./tools/development/docker/Dockerfile
+
+	docker build \
+	--build-arg=VERSION=$(project_version) \
+	--tag=$(docker_image_repository):$(project_version) \
+	--file=./tools/development/docker/Dockerfile
+	./tools/development/docker
+
+push_development_image: build_development_image
+
+	docker push $(docker_image_repository):$(project_version)
+
+################################################################################################################################################################
+
+.PHONY: build_development_image push_development_image
+
+################################################################################################################################################################
+
 SHELL := /bin/bash
 RM    := rm -rf
 
