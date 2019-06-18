@@ -140,6 +140,20 @@ class Environment
 
         void                    setInstant                                  (   const   Instant&                    anInstant                                   ) ;
 
+        /// @brief              Get gravitational field at position
+        ///
+        /// @param              [in] aPosition A position
+        /// @return             Gravitational field vector
+
+        Vector                  getGravitationalFieldAt                     (   const   Position&                   aPosition                                   ) const ;
+
+        /// @brief              Get magnetic field at position
+        ///
+        /// @param              [in] aPosition A position
+        /// @return             Magnetic field vector
+
+        Vector                  getMagneticFieldAt                          (   const   Position&                   aPosition                                   ) const ;
+
         /// @brief              Constructs an undefined environment
         ///
         /// @code
