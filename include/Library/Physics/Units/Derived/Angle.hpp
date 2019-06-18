@@ -169,6 +169,8 @@ class Angle : public Unit
 
         static String           SymbolFromUnit                              (   const   Angle::Unit&                aUnit                                       ) ;
 
+        static Angle::Unit      UnitFromSymbol                              (   const   String&                     aSymbol                                     ) ;
+
     private:
 
         Angle::Unit             unit_ ;
