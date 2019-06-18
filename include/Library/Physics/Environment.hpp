@@ -145,14 +145,14 @@ class Environment
         /// @param              [in] aPosition A position
         /// @return             Gravitational field vector
 
-        Vector                  getGravitationalFieldAt                     (   const   Position&                   aPosition                                   ) const ;
+        // Vector                  getGravitationalFieldAt                     (   const   Position&                   aPosition                                   ) const ; [TBI]
 
         /// @brief              Get magnetic field at position
         ///
         /// @param              [in] aPosition A position
         /// @return             Magnetic field vector
 
-        Vector                  getMagneticFieldAt                          (   const   Position&                   aPosition                                   ) const ;
+        // Vector                  getMagneticFieldAt                          (   const   Position&                   aPosition                                   ) const ; [TBI]
 
         /// @brief              Constructs an undefined environment
         ///
