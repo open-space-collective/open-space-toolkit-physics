@@ -16,6 +16,8 @@ development_directory="${project_directory}/tools/development"
 
 source "${project_directory}/tools/.env"
 
+# Run C++ tests
+
 docker run \
 --rm \
 --env-file="${script_directory}/.env" \
@@ -27,5 +29,13 @@ docker run \
 --workdir="/app/build" \
 ${image_repository}:${image_tag} \
 /bin/bash -c "/app/build/build.sh && /app/build/test.sh"
+
+# Run Python tests
+
+pushd "${project_directory}/tools/python/testing" > /dev/null
+
+./run.sh
+
+popd > /dev/null
 
 ################################################################################################################################################################

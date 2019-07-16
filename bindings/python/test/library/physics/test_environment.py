@@ -1,24 +1,20 @@
-# coding=utf-8
-
 ################################################################################################################################################################
 
 # @project        Library ▸ Physics
-# @file           LibraryPhysicsPy/Time/Duration.py
+# @file           library/physics/time/test_environment.py
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        Apache License 2.0
 
 ################################################################################################################################################################
 
-from Library.Core import Types
+import pytest
 
-from LibraryPhysicsPy import Time
-
-Duration = Time.Duration
+from Library.Physics import Environment
 
 ################################################################################################################################################################
 
-duration = Duration.Seconds(123.456)
+def test_environment_default ():
 
-print(duration)
+    assert Environment.Default() is not None
 
 ################################################################################################################################################################
