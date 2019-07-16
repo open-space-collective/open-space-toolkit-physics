@@ -91,7 +91,6 @@ run_container ()
     --volume="${project_directory}/lib/LibraryPhysicsPy.so:/usr/local/lib/python3.6/site-packages/Library/Physics/LibraryPhysicsPy.so:ro" \
     --volume="${project_directory}/bindings/python/docs:/library/physics/docs:ro" \
     --volume="${project_directory}/bindings/python/test:/library/physics/test:ro" \
-    --volume="${project_directory}/share:/library/physics/data" \
     ${image_repository}:${image_tag} \
     ${@}
 
