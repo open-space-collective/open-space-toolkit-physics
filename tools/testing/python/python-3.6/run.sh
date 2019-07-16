@@ -3,7 +3,7 @@
 ################################################################################################################################################################
 
 # @project        Library ▸ Physics
-# @file           tools/python/testing/run.sh
+# @file           tools/testing/python/python-3.6/run.sh
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        Apache License 2.0
 
@@ -13,7 +13,7 @@ set -a
 set -e
 
 script_directory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-tools_directory="${script_directory}/../.."
+tools_directory="${script_directory}/../../.."
 
 ################################################################################################################################################################
 
@@ -49,7 +49,7 @@ build_image ()
 
     echo "Building Docker image [${image_repository}:${image_tag}]..."
 
-    pushd "${script_directory}/docker" > /dev/null
+    pushd "${script_directory}" > /dev/null
 
     ./build.sh
 
@@ -94,8 +94,6 @@ run_container ()
     --volume="${project_directory}/share:/library/physics/data" \
     ${image_repository}:${image_tag} \
     ${@}
-
-    # --entrypoint="/bin/bash" \
 
 }
 

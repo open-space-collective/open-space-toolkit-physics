@@ -32,7 +32,7 @@ ${image_repository}:${image_tag} \
 
 # Run Python tests
 
-pushd "${project_directory}/tools/python/testing" > /dev/null
+pushd "${project_directory}/tools/testing/python" > /dev/null
 
 ./run.sh
 

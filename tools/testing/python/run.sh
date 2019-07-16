@@ -3,7 +3,7 @@
 ################################################################################################################################################################
 
 # @project        Library ▸ Physics
-# @file           tools/python/testing/docker/build.sh
+# @file           tools/testing/python/run.sh
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        Apache License 2.0
 
@@ -13,16 +13,16 @@ set -a
 set -e
 
 script_directory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-top_directory="${script_directory}/../../../.."
 
-pushd "${top_directory}" > /dev/null
+pushd "${script_directory}" > /dev/null
 
-source "tools/python/testing/.env"
+# Python - 3.6
 
-docker build \
---tag="${python_test_image_repository}:${python_test_image_tag}" \
---file="${script_directory}/Dockerfile" \
-.
+./python-3.6/run.sh
+
+# Jupyter SciPy Notebook - 07eb788e5d10
+
+./jupyter-scipy-notebook-07eb788e5d10/run.sh
 
 popd > /dev/null
 
