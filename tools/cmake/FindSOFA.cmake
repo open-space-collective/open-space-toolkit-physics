@@ -7,9 +7,9 @@
 
 ################################################################################################################################################################
 
-SET (SOFA_ROOT_DIR ${SOFA_ROOT_DIR} "/usr/local")
+SET (SOFA_ROOT_DIR ${SOFA_ROOT_DIR} "/usr/lib" "/usr/include" "/usr/local")
 
-FIND_PATH (SOFA_INCLUDE_DIR "sofa/sofa.h" PATHS ${SOFA_ROOT_DIR} PATH_SUFFIXES "include" NO_DEFAULT_PATH)
+FIND_PATH (SOFA_INCLUDE_DIR "sofa.h" PATHS ${SOFA_ROOT_DIR} PATH_SUFFIXES "include" NO_DEFAULT_PATH)
 
 FIND_LIBRARY (SOFA_LIBRARY NAMES "libsofa_c.a" PATHS ${SOFA_ROOT_DIR} PATH_SUFFIXES "lib" NO_DEFAULT_PATH)
 
