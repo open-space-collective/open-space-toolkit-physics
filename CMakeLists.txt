@@ -265,6 +265,8 @@ ENDIF ()
 
 ### SPICE Toolkit
 
+SET (SPICEToolkit_ROOT_DIR ${SPICEToolkit_ROOT_DIR} "./thirdparty/cspice/lib" "./thirdparty/cspice/include")
+
 FIND_PACKAGE ("SPICEToolkit" REQUIRED)
 
 IF (SPICEToolkit_FOUND)
