@@ -22,8 +22,8 @@
 extern "C"
 {
 
-    #include "cspice/SpiceZfc.h"
-    #include "cspice/SpiceUsr.h"
+    #include "SpiceZfc.h"
+    #include "SpiceUsr.h"
 
 }
 
