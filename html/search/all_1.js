@@ -7,6 +7,7 @@ var searchData=
   ['bulletina',['BulletinA',['../classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_a.html',1,'library::physics::coord::frame::provider::iers']]],
   ['bulletina_2ecpp',['BulletinA.cpp',['../_bulletin_a_8cpp.html',1,'']]],
   ['bulletina_2ehpp',['BulletinA.hpp',['../_bulletin_a_8hpp.html',1,'']]],
+  ['bulletinafilename',['bulletinAFileName',['../namespacelibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers.html#a74902a6b275513970fb5d77f337da788',1,'library::physics::coord::frame::provider::iers']]],
   ['bulletinb',['BulletinB',['../classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_b.html',1,'library::physics::coord::frame::provider::iers']]],
   ['bulletinb_2ehpp',['BulletinB.hpp',['../_bulletin_b_8hpp.html',1,'']]]
 ];

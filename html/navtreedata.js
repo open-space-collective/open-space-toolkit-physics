@@ -25,6 +25,7 @@ var NAVTREE =
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
         [ "Functions", "namespacemembers_func.html", null ],
+        [ "Variables", "namespacemembers_vars.html", null ],
         [ "Typedefs", "namespacemembers_type.html", null ],
         [ "Enumerations", "namespacemembers_enum.html", null ]
       ] ]
@@ -55,11 +56,11 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_a_e_r_8cpp.html",
-"_unit_8cpp.html",
-"classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager.html#a7842650adf502ff5de1889bb6301c319",
-"classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_spherical.html#a4f27273f7e9897e9d67607a8b7b0bca7",
-"classlibrary_1_1physics_1_1units_1_1_derived_1_1_order.html#a7dac73673a407c33a5de0bf91f531c31",
-"namespacelibrary_1_1physics.html"
+"_t_i_r_f_8cpp.html#a0aa5623303f70231101ee12b44f66bac",
+"classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a.html#a327ff24883eb53123cc24138e9269c48",
+"classlibrary_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#a5780296ed772dd730c657df51ded8b0c",
+"classlibrary_1_1physics_1_1units_1_1_derived.html#a020b4ab6cb1d2ed73b01cde2bf1aab0e",
+"md__c_o_n_t_r_i_b_u_t_i_n_g.html#CodeOfConduct"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

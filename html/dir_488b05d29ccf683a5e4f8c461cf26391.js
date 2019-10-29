@@ -12,7 +12,5 @@ var dir_488b05d29ccf683a5e4f8c461cf26391 =
       [ "Finals2000A", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a.html", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a" ],
       [ "Data", "structlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data.html", "structlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data" ]
     ] ],
-    [ "Manager.hpp", "_coordinate_2_frame_2_providers_2_i_e_r_s_2_manager_8hpp.html", [
-      [ "Manager", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager.html", "classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager" ]
-    ] ]
+    [ "Manager.hpp", "_coordinate_2_frame_2_providers_2_i_e_r_s_2_manager_8hpp.html", "_coordinate_2_frame_2_providers_2_i_e_r_s_2_manager_8hpp" ]
 ];
