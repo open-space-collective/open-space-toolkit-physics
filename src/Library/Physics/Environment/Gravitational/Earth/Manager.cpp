@@ -131,6 +131,8 @@ void                            Manager::fetchDataFileForType               (   
 
             const URL remoteUrl = this->getDataFileUrlForType(aModelType) ;
 
+            std::cout << String::Format("Fetching gravitational data file from [{}]...", remoteUrl.toString()) << std::endl ;
+
             // const String fetchCommand = String::Format("curl --silent -L {} --output {} > /dev/null", remoteUrl.toString(), fetchedFile.getPath().toString()) ;
             const String fetchCommand = String::Format("wget --quiet --output-document {} {} > /dev/null", fetchedFile.getPath().toString(), remoteUrl.toString()) ;
 
