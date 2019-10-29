@@ -28,6 +28,9 @@
 
 #include <mutex>
 
+#define LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY "./.library/physics/environment/ephemerides/spice"
+#define LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_REMOTE_URL "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/"
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 namespace library
@@ -137,7 +140,6 @@ class Manager
 
         /// @brief              Get default local repository
         ///
-        ///                     Value: "./.library/physics/environment/ephemerides/spice"
         ///                     Overriden by: LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY
         ///
         /// @return             Default local repository
@@ -146,7 +148,6 @@ class Manager
 
         /// @brief              Get default remote URL
         ///
-        ///                     Value: "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/"
         ///                     Overriden by: LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_REMOTE_URL
         ///
         /// @return             Default remote URL

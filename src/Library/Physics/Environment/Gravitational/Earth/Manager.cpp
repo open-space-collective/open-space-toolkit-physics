@@ -131,6 +131,8 @@ void                            Manager::fetchDataFileForType               (   
 
             const URL remoteUrl = this->getDataFileUrlForType(aModelType) ;
 
+            std::cout << String::Format("Fetching gravitational data file from [{}]...", remoteUrl.toString()) << std::endl ;
+
             // const String fetchCommand = String::Format("curl --silent -L {} --output {} > /dev/null", remoteUrl.toString(), fetchedFile.getPath().toString()) ;
             const String fetchCommand = String::Format("wget --quiet --output-document {} {} > /dev/null", fetchedFile.getPath().toString(), remoteUrl.toString()) ;
 
@@ -251,7 +253,7 @@ Manager&                        Manager::Get                                ( )
 bool                            Manager::DefaultEnabled                     ( )
 {
 
-    static const bool defaultEnabled = false ;
+    static const bool defaultEnabled = LIBRARY_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_ENABLED ;
 
     if (const char* enabledString = std::getenv("LIBRARY_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_ENABLED"))
     {
@@ -265,7 +267,7 @@ bool                            Manager::DefaultEnabled                     ( )
 Directory                       Manager::DefaultLocalRepository             ( )
 {
 
-    static const Directory defaultLocalRepository = Directory::Path(Path::Parse("./.library/physics/environment/gravitational/earth")) ;
+    static const Directory defaultLocalRepository = Directory::Path(Path::Parse(LIBRARY_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY)) ;
 
     if (const char* localRepositoryPath = std::getenv("LIBRARY_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY"))
     {
@@ -279,7 +281,7 @@ Directory                       Manager::DefaultLocalRepository             ( )
 URL                             Manager::DefaultRemoteUrl                   ( )
 {
 
-    static const URL defaultRemoteUrl = URL::Parse("https://sourceforge.net/projects/geographiclib/files/gravity-distrib/") ;
+    static const URL defaultRemoteUrl = URL::Parse(LIBRARY_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_REMOTE_URL) ;
 
     if (const char* remoteUrl = std::getenv("LIBRARY_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_REMOTE_URL"))
     {

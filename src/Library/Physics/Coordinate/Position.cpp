@@ -216,7 +216,7 @@ Position                        Position::inFrame                           (   
 
     if (!this->isDefined())
     {
-        std::cout << boost::stacktrace::stacktrace() ;
+        // std::cout << boost::stacktrace::stacktrace() ;
         throw library::core::error::runtime::Undefined("Position") ;
     }
 

@@ -249,7 +249,7 @@ Engine&                         Engine::Get                                 ( )
 Engine::Mode                    Engine::DefaultMode                         ( )
 {
 
-    static const Engine::Mode defaultMode = Engine::Mode::Manual ;
+    static const Engine::Mode defaultMode = LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_ENGINE_MODE ;
 
     if (const char* modeString = std::getenv("LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_ENGINE_MODE"))
     {
@@ -341,11 +341,7 @@ Transform                       Engine::getTransformAt                      (   
     SpiceDouble lt ;
     SpiceDouble state[6] ;
 
-    #define ABCORR "NONE"
-    #define FRAME "J2000"
-    #define OBSERVER "earth"
-
-    spkezr_c(aSpiceIdentifier.data(), ephemerisTime, FRAME, ABCORR, OBSERVER, state, &lt) ;
+    spkezr_c(aSpiceIdentifier.data(), ephemerisTime, "J2000", "NONE", "earth", state, &lt) ;
 
     if (failed_c())
     {

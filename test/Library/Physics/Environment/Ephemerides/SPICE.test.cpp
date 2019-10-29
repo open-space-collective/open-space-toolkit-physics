@@ -84,7 +84,7 @@ TEST (Library_Physics_Environment_Ephemerides_SPICE, AccessFrame)
 
     {
 
-        const Directory spiceLocalRepository = Directory::Path(Path::Parse("/app/share/environment/ephemerides/spice")) ;
+        const Directory spiceLocalRepository = Directory::Path(Path::Parse("/app/test/Library/Physics/Environment/Ephemerides/SPICE")) ;
 
         const Array<Tuple<SPICE::Object, File, Real, Real, Real, Real, Array<Kernel>>> referenceScenarios =
         {
@@ -236,7 +236,7 @@ TEST (Library_Physics_Environment_Ephemerides_SPICE, ManualMode)
 
     {
 
-        const Directory spiceLocalRepository = Directory::Path(Path::Parse("/app/share/environment/ephemerides/spice")) ;
+        const Directory spiceLocalRepository = Directory::Path(Path::Parse("/app/test/Library/Physics/Environment/Ephemerides/SPICE")) ;
 
         Engine::Get().setMode(Engine::Mode::Manual) ;
 
@@ -307,7 +307,7 @@ TEST (Library_Physics_Environment_Ephemerides_SPICE, AutomaticMode)
 
     {
 
-        Manager::Get().setLocalRepository(Directory::Path(Path::Parse("/app/share/environment/ephemerides/spice"))) ;
+        Manager::Get().setLocalRepository(Directory::Path(Path::Parse("/app/test/Library/Physics/Environment/Ephemerides/SPICE"))) ;
 
         Engine::Get().setMode(Engine::Mode::Automatic) ;
 

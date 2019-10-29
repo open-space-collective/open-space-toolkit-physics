@@ -62,8 +62,7 @@ using library::physics::time::Interval ;
 ///                             This file (updated weekly) is the complete Earth orientation data set, since 1 January 1992 with 1 year of predictions.
 ///                             The nutation series in dX and dY uses the IAU 2000A Nutation Theory.
 ///
-/// @ref                        http://maia.usno.navy.mil/ser7/readme.finals2000A
-/// @ref                        https://datacenter.iers.org/eop/-/somos/5Rgv/latest/10
+/// @ref                        https://www.iers.org/IERS/EN/DataProducts/EarthOrientationData/eop.html -> finals.data (IAU2000)
 
 class Finals2000A
 {
