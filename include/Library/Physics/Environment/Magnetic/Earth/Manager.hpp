@@ -21,6 +21,10 @@
 
 #include <mutex>
 
+#define LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_ENABLED false
+#define LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY "./.library/physics/environment/magnetic/earth"
+#define LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_REMOTE_URL "https://sourceforge.net/projects/geographiclib/files/magnetic-distrib/"
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 namespace library
@@ -135,7 +139,6 @@ class Manager
 
         /// @brief              Get default enabled flag
         ///
-        ///                     Value: false
         ///                     Overriden by: LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_ENABLED
         ///
         /// @return             Default enabled flag
@@ -144,7 +147,6 @@ class Manager
 
         /// @brief              Get default local repository
         ///
-        ///                     Value: "./.library/physics/environment/magnetic/earth"
         ///                     Overriden by: LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY
         ///
         /// @return             Default local repository
@@ -153,7 +155,6 @@ class Manager
 
         /// @brief              Get default remote URL
         ///
-        ///                     Value: "https://sourceforge.net/projects/geographiclib/files/magnetic-distrib/"
         ///                     Overriden by: LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_REMOTE_URL
         ///
         /// @return             Default remote URL

@@ -53,8 +53,8 @@ using library::physics::time::Interval ;
 
 /// @brief                      IERS Bulletin A
 ///
-///                             IERS Bulletin A contains Earth orientation parameters x/y pole,
-///                             UT1-UTC and their errors at daily intervals and predictions for 1 year into the future.
+///                             Contains rapid determinations for eEarth orientation parameters:
+///                             x/y pole, UT1-UTC and their errors at daily intervals and predictions for 1 year into the future.
 ///
 ///                             The contents of IERS Bulletin A are divided into four sections:
 ///
@@ -71,7 +71,7 @@ using library::physics::time::Interval ;
 ///                             Bulletin A contains celestial pole offsets with respect to the IAU1980 Nutation theroy (dpsi and deps)
 ///                             and the IAU 2000 Resolutions (dX and dY), beginning on 1 January 2003.
 ///
-/// @ref                        http://maia.usno.navy.mil/ser7/ser7.dat
+/// @ref                        https://datacenter.iers.org/productMetadata.php?id=6
 
 class BulletinA
 {

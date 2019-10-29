@@ -23,6 +23,7 @@
 #include <Library/Core/Error.hpp>
 #include <Library/Core/Utilities.hpp>
 
+#include <experimental/filesystem>
 #include <thread>
 #include <chrono>
 #include <fstream>
@@ -43,6 +44,17 @@ namespace provider
 {
 namespace iers
 {
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+using library::core::types::String ;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const String bulletinAFileName = "ser7.dat" ;
+const String finals2000AFileName = "finals2000A.data" ;
+
+const String temporaryDirectoryName = "tmp" ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -181,6 +193,8 @@ Real                            Manager::getUt1MinusUtcAt                   (   
     if (bulletinAPtr != nullptr)
     {
 
+        // std::cout << String::Format("Bulletin A found for [{}].", anInstant.toString()) << std::endl ;
+
         if (bulletinAPtr->accessObservationInterval().contains(anInstant))
         {
 
@@ -208,7 +222,11 @@ Real                            Manager::getUt1MinusUtcAt                   (   
 
     if (finals2000aPtr != nullptr)
     {
+
+        // std::cout << String::Format("Finals 2000A found for [{}].", anInstant.toString()) << std::endl ;
+
         return finals2000aPtr->getUt1MinusUtcAt(anInstant) ;
+
     }
 
     throw library::core::error::RuntimeError("Cannot obtain UT1 - UTC at [{}].", anInstant.toString()) ;
@@ -353,7 +371,7 @@ Manager&                        Manager::Get                                ( )
 Manager::Mode                   Manager::DefaultMode                        ( )
 {
 
-    static const Manager::Mode defaultMode = Manager::Mode::Manual ;
+    static const Manager::Mode defaultMode = LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE ;
 
     if (const char* modeString = std::getenv("LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE"))
     {
@@ -382,7 +400,7 @@ Directory                       Manager::DefaultLocalRepository             ( )
 
     using library::core::fs::Path ;
 
-    static const Directory defaultLocalRepository = Directory::Path(Path::Parse("./.library/physics/coordinate/frame/providers/iers")) ;
+    static const Directory defaultLocalRepository = Directory::Path(Path::Parse(LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY)) ;
 
     if (const char* localRepositoryPath = std::getenv("LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY"))
     {
@@ -396,7 +414,7 @@ Directory                       Manager::DefaultLocalRepository             ( )
 Duration                        Manager::DefaultLocalRepositoryLockTimeout  ( )
 {
 
-    static const Duration defaultLocalRepositoryLockTimeout = Duration::Seconds(60.0) ;
+    static const Duration defaultLocalRepositoryLockTimeout = Duration::Seconds(LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT) ;
 
     if (const char* localRepositoryLockTimeoutString = std::getenv("LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT"))
     {
@@ -410,7 +428,7 @@ Duration                        Manager::DefaultLocalRepositoryLockTimeout  ( )
 URL                             Manager::DefaultRemoteUrl                   ( )
 {
 
-    static const URL defaultRemoteUrl = URL::Parse("http://maia.usno.navy.mil/ser7/") ;
+    static const URL defaultRemoteUrl = URL::Parse(LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL) ;
 
     if (const char* remoteUrl = std::getenv("LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL"))
     {
@@ -432,8 +450,8 @@ URL                             Manager::DefaultRemoteUrl                   ( )
                                     finals2000aArray_(Array<Finals2000A>::Empty()),
                                     aBulletinIndex_(0),
                                     finals2000aIndex_(0),
-                                    bulletinAUpdateInstant_(Instant::Undefined()),
-                                    finals2000AUpdateInstant_(Instant::Undefined())
+                                    bulletinAUpdateTimestamp_(Instant::Undefined()),
+                                    finals2000AUpdateTimestamp_(Instant::Undefined())
 {
 
     this->setup() ;
@@ -489,7 +507,7 @@ const BulletinA*                Manager::accessBulletinAAt                  (   
 
         const Instant currentInstant = Instant::Now() ;
 
-        if ((!bulletinAUpdateInstant_.isDefined()) || ((bulletinAUpdateInstant_ + Duration::Weeks(1.0)) < currentInstant)) // [TBM] Param
+        if ((!bulletinAUpdateTimestamp_.isDefined()) || ((bulletinAUpdateTimestamp_ + Duration::Weeks(1.0)) < currentInstant)) // [TBM] Param
         {
 
             const File latestBulletinAFile = const_cast<Manager*>(this)->getLatestBulletinAFile() ;
@@ -497,7 +515,7 @@ const BulletinA*                Manager::accessBulletinAAt                  (   
             if (latestBulletinAFile.isDefined())
             {
 
-                bulletinAUpdateInstant_ = currentInstant ;
+                bulletinAUpdateTimestamp_ = currentInstant ;
 
                 const BulletinA bulletinA = BulletinA::Load(latestBulletinAFile) ;
 
@@ -594,7 +612,7 @@ const Finals2000A*              Manager::accessFinals2000AAt                (   
 
         const Instant currentInstant = Instant::Now() ;
 
-        if ((!finals2000AUpdateInstant_.isDefined()) || ((finals2000AUpdateInstant_ + Duration::Weeks(1.0)) < currentInstant))
+        if ((!finals2000AUpdateTimestamp_.isDefined()) || ((finals2000AUpdateTimestamp_ + Duration::Weeks(1.0)) < currentInstant))
         {
 
             const File latestFinals2000AFile = const_cast<Manager*>(this)->getLatestFinals2000AFile() ;
@@ -602,7 +620,7 @@ const Finals2000A*              Manager::accessFinals2000AAt                (   
             if (latestFinals2000AFile.isDefined())
             {
 
-                finals2000AUpdateInstant_ = currentInstant ;
+                finals2000AUpdateTimestamp_ = currentInstant ;
 
                 const Finals2000A finals2000A = Finals2000A::Load(latestFinals2000AFile) ;
 
@@ -659,14 +677,14 @@ File                            Manager::getLatestBulletinAFile             ( ) 
     for (const auto& directory : localRepository_.getDirectories())
     {
 
-        if (directory.containsFileWithName("ser7.dat"))
+        if ((directory.getName() != temporaryDirectoryName) && directory.containsFileWithName(bulletinAFileName))
         {
 
             const Date date = Date::Parse(directory.getName()) ;
 
             const Instant instant = Instant::DateTime({date, Time::Midnight()}, Scale::UTC) ;
 
-            const File bulletinFile = File::Path(directory.getPath() + Path::Parse("ser7.dat")) ;
+            const File bulletinFile = File::Path(directory.getPath() + Path::Parse(bulletinAFileName)) ;
 
             bulletinAMap.insert({ instant, bulletinFile }) ;
 
@@ -700,14 +718,14 @@ File                            Manager::getLatestFinals2000AFile           ( ) 
     for (const auto& directory : localRepository_.getDirectories())
     {
 
-        if (directory.containsFileWithName("finals2000A.data"))
+        if (directory.containsFileWithName(finals2000AFileName))
         {
 
             const Date date = Date::Parse(directory.getName()) ;
 
             const Instant instant = Instant::DateTime({date, Time::Midnight()}, Scale::UTC) ;
 
-            const File finals2000AFile = File::Path(directory.getPath() + Path::Parse("finals2000A.data")) ;
+            const File finals2000AFile = File::Path(directory.getPath() + Path::Parse(finals2000AFileName)) ;
 
             finals2000AMap.insert({ instant, finals2000AFile }) ;
 
@@ -744,7 +762,7 @@ void                            Manager::setup                              ( )
 
         // {
 
-        //     File file = File::Path(localRepository_.getPath() + Path::Parse("ser7.dat")) ;
+        //     File file = File::Path(localRepository_.getPath() + Path::Parse(bulletinAFileName)) ;
 
         //     if (!file.exists())
         //     {
@@ -841,6 +859,8 @@ File                            Manager::fetchLatestBulletinA_              ( )
     using library::physics::time::DateTime ;
     using library::physics::time::Instant ;
 
+    std::cout << "Fetching latest Bulletin A..." << std::endl ;
+
     // File listingFile = File::Path(localRepository_.getPath() + Path::Parse("listing.txt")) ;
 
     // if (listingFile.exists())
@@ -890,7 +910,7 @@ File                            Manager::fetchLatestBulletinA_              ( )
 
     //         const String fileName = std::accumulate(tokens.begin() + 8, tokens.end(), std::string("")) ;
 
-    //         if (fileName == "ser7.dat")
+    //         if (fileName == bulletinAFileName)
     //         {
 
     //             const String monthString = tokens.at(5) ;
@@ -916,16 +936,18 @@ File                            Manager::fetchLatestBulletinA_              ( )
     //     listingFile.remove() ;
     // }
 
-    Directory temporaryDirectory = Directory::Path(localRepository_.getPath() + Path::Parse("tmp")) ;
+    Directory temporaryDirectory = Directory::Path(localRepository_.getPath() + Path::Parse(temporaryDirectoryName)) ;
 
     if (temporaryDirectory.exists())
     {
         throw library::core::error::RuntimeError("Temporary directory [{}] already exists.", temporaryDirectory.toString()) ;
     }
 
+    std::cout << String::Format("Creating temporary directory [{}]...", temporaryDirectory.toString()) << std::endl ;
+
     temporaryDirectory.create() ;
 
-    const URL remoteUrl = remoteUrl_ + "ser7.dat" ;
+    const URL latestBulletinAUrl = remoteUrl_ + bulletinAFileName ;
 
     File latestBulletinAFile = File::Undefined() ;
     Directory destinationDirectory = Directory::Undefined() ;
@@ -935,13 +957,26 @@ File                            Manager::fetchLatestBulletinA_              ( )
 
         this->lockLocalRepository(localRepositoryLockTimeout_) ;
 
-        latestBulletinAFile = Client::Fetch(remoteUrl, temporaryDirectory) ;
+        std::cout << String::Format("Fetching Bulletin A from [{}]...", latestBulletinAUrl.toString()) << std::endl ;
 
-        // [TBI] Add file size verification
+        latestBulletinAFile = Client::Fetch(latestBulletinAUrl, temporaryDirectory) ;
 
         if (!latestBulletinAFile.exists())
         {
-            throw library::core::error::RuntimeError("Cannot fetch Bulletin A file [{}] at [{}].", latestBulletinAFile.toString(), remoteUrl.toString()) ;
+            throw library::core::error::RuntimeError("Cannot fetch Bulletin A from [{}].", latestBulletinAUrl.toString()) ;
+        }
+        else
+        {
+
+            // Check that file size is not zero
+
+            std::uintmax_t latestBulletinAFileSize = std::experimental::filesystem::file_size(std::string(latestBulletinAFile.getPath().toString())) ;
+
+            if (latestBulletinAFileSize == 0)
+            {
+                throw library::core::error::RuntimeError("Cannot fetch Bulletin A from [{}]: file is empty.", latestBulletinAUrl.toString()) ;
+            }
+
         }
 
         const BulletinA latestBulletinA = BulletinA::Load(latestBulletinAFile) ;
@@ -959,13 +994,23 @@ File                            Manager::fetchLatestBulletinA_              ( )
 
         temporaryDirectory.remove() ;
 
+        this->unlockLocalRepository() ;
+
+        std::cout << String::Format("Bulletin A [{}] has been successfully fetched from [{}].", latestBulletinAFile.toString(), latestBulletinAUrl.toString()) << std::endl ;
+
     }
     catch (const library::core::error::Exception& anException)
     {
 
+        std::cerr << String::Format("Error caught while fetching latest Bulletin A from [{}]: [{}].", latestBulletinAUrl.toString(), anException.what()) << std::endl ;
+
         if (latestBulletinAFile.isDefined() && latestBulletinAFile.exists())
         {
+
             latestBulletinAFile.remove() ;
+
+            latestBulletinAFile = File::Undefined() ;
+
         }
 
         if (temporaryDirectory.isDefined() && temporaryDirectory.exists())
@@ -999,7 +1044,7 @@ File                            Manager::fetchLatestFinals2000A_            ( )
     using library::physics::time::DateTime ;
     using library::physics::time::Instant ;
 
-    Directory temporaryDirectory = Directory::Path(localRepository_.getPath() + Path::Parse("tmp")) ;
+    Directory temporaryDirectory = Directory::Path(localRepository_.getPath() + Path::Parse(temporaryDirectoryName)) ;
 
     if (temporaryDirectory.exists())
     {
@@ -1008,7 +1053,7 @@ File                            Manager::fetchLatestFinals2000A_            ( )
 
     temporaryDirectory.create() ;
 
-    const URL remoteUrl = remoteUrl_ + "finals2000A.data" ;
+    const URL latestFinals2000AUrl = remoteUrl_ + finals2000AFileName ;
 
     File latestFinals2000AFile = File::Undefined() ;
     Directory destinationDirectory = Directory::Undefined() ;
@@ -1018,15 +1063,28 @@ File                            Manager::fetchLatestFinals2000A_            ( )
 
         this->lockLocalRepository(localRepositoryLockTimeout_) ;
 
-        latestFinals2000AFile = Client::Fetch(remoteUrl, temporaryDirectory) ;
+        std::cout << String::Format("Fetching Finals 2000A from [{}]...", latestFinals2000AUrl.toString()) << std::endl ;
 
-        // [TBI] Add file size verification
+        latestFinals2000AFile = Client::Fetch(latestFinals2000AUrl, temporaryDirectory) ;
 
         const Finals2000A latestFinals2000A = Finals2000A::Load(latestFinals2000AFile) ;
 
         if (!latestFinals2000AFile.exists())
         {
-            throw library::core::error::RuntimeError("Cannot fetch Finals 2000A file [{}] at [{}].", latestFinals2000AFile.toString(), remoteUrl.toString()) ;
+            throw library::core::error::RuntimeError("Cannot fetch Finals 2000A [{}] from [{}].", latestFinals2000AFile.toString(), latestFinals2000AUrl.toString()) ;
+        }
+        else
+        {
+
+            // Check that file size is not zero
+
+            std::uintmax_t latestFinals2000AFileSize = std::experimental::filesystem::file_size(std::string(latestFinals2000AFile.getPath().toString())) ;
+
+            if (latestFinals2000AFileSize == 0)
+            {
+                throw library::core::error::RuntimeError("Cannot fetch Finals 2000A from [{}]: file is empty.", latestFinals2000AUrl.toString()) ;
+            }
+
         }
 
         destinationDirectory = Directory::Path(localRepository_.getPath() + Path::Parse(Instant::Now().getDateTime(Scale::UTC).getDate().toString())) ;
@@ -1042,13 +1100,23 @@ File                            Manager::fetchLatestFinals2000A_            ( )
 
         temporaryDirectory.remove() ;
 
+        this->unlockLocalRepository() ;
+
+        std::cout << String::Format("Finals 2000A [{}] has been successfully fetched from [{}].", latestFinals2000AFile.toString(), latestFinals2000AUrl.toString()) << std::endl ;
+
     }
     catch (const library::core::error::Exception& anException)
     {
 
+        std::cerr << String::Format("Error caught while fetching latest Finals 2000A from [{}]: [{}].", latestFinals2000AUrl.toString(), anException.what()) << std::endl ;
+
         if (latestFinals2000AFile.isDefined() && latestFinals2000AFile.exists())
         {
+
             latestFinals2000AFile.remove() ;
+
+            latestFinals2000AFile = File::Undefined() ;
+
         }
 
         if (temporaryDirectory.isDefined() && temporaryDirectory.exists())
@@ -1066,6 +1134,8 @@ File                            Manager::fetchLatestFinals2000A_            ( )
 
 void                            Manager::lockLocalRepository                (   const   Duration&                   aTimeout                                    )
 {
+
+    std::cout << String::Format("Locking local repository [{}]...", localRepository_.toString()) << std::endl ;
 
     const auto tryLock = [] (File& aLockFile) -> bool
     {
@@ -1114,6 +1184,8 @@ void                            Manager::lockLocalRepository                (   
 
 void                            Manager::unlockLocalRepository              ( )
 {
+
+    std::cout << String::Format("Unlocking local repository [{}]...", localRepository_.toString()) << std::endl ;
 
     if (!this->isLocalRepositoryLocked())
     {

@@ -19,6 +19,7 @@
 #include <Library/Core/Error.hpp>
 #include <Library/Core/Utilities.hpp>
 
+#include <experimental/filesystem>
 #include <fstream>
 #include <numeric>
 #include <cstdlib>
@@ -35,6 +36,14 @@ namespace ephem
 {
 namespace spice
 {
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+using library::core::types::String ;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const String temporaryDirectoryName = "tmp" ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -86,15 +95,30 @@ void                            Manager::fetchKernel                        (   
 
     const_cast<Manager*>(this)->updateIndex() ;
 
-    const URL remoteUrl = index_.getRemoteUrlOfKernel(aKernel) ;
+    const URL kernelFileUrl = index_.getRemoteUrlOfKernel(aKernel) ;
 
-    const File fetchedKernelFile = Client::Fetch(remoteUrl, localRepository_) ;
-
-    // [TBI] Add file size verification
+    File fetchedKernelFile = Client::Fetch(kernelFileUrl, localRepository_) ;
 
     if (!fetchedKernelFile.exists())
     {
-        throw library::core::error::RuntimeError("Cannot fetch kernel file [{}] at [{}].", fetchedKernelFile.toString(), remoteUrl.toString()) ;
+        throw library::core::error::RuntimeError("Cannot fetch kernel file [{}] at [{}].", fetchedKernelFile.toString(), kernelFileUrl.toString()) ;
+    }
+    else
+    {
+
+        // Check that file size is not zero
+
+        std::uintmax_t fetchedKernelFileSize = std::experimental::filesystem::file_size(std::string(fetchedKernelFile.getPath().toString())) ;
+
+        if (fetchedKernelFileSize == 0)
+        {
+
+            fetchedKernelFile.remove() ;
+
+            throw library::core::error::RuntimeError("Cannot fetch kernel from [{}]: file is empty.", kernelFileUrl.toString()) ;
+
+        }
+
     }
 
 }
@@ -116,7 +140,29 @@ Array<Kernel>                   Manager::fetchMatchingKernels               (   
         for (const auto& remoteUrl : index_.findRemoteUrls(aRegex))
         {
 
-            const File fetchedKernelFile = Client::Fetch(remoteUrl, localRepository_) ;
+            File fetchedKernelFile = Client::Fetch(remoteUrl, localRepository_) ;
+
+            if (!fetchedKernelFile.exists())
+            {
+                throw library::core::error::RuntimeError("Cannot fetch kernel file [{}] at [{}].", fetchedKernelFile.toString(), remoteUrl.toString()) ;
+            }
+            else
+            {
+
+                // Check that file size is not zero
+
+                std::uintmax_t fetchedKernelFileSize = std::experimental::filesystem::file_size(std::string(fetchedKernelFile.getPath().toString())) ;
+
+                if (fetchedKernelFileSize == 0)
+                {
+
+                    fetchedKernelFile.remove() ;
+
+                    throw library::core::error::RuntimeError("Cannot fetch kernel from [{}]: file is empty.", remoteUrl.toString()) ;
+
+                }
+
+            }
 
             const Kernel fetchedKernel = { Kernel::TypeFromFileExtension(fetchedKernelFile.getExtension()), fetchedKernelFile } ;
 
@@ -198,7 +244,7 @@ Manager&                        Manager::Get                                ( )
 Directory                       Manager::DefaultLocalRepository             ( )
 {
 
-    static const Directory defaultLocalRepository = Directory::Path(Path::Parse("./.library/physics/environment/ephemerides/spice")) ;
+    static const Directory defaultLocalRepository = Directory::Path(Path::Parse(LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY)) ;
 
     if (const char* localRepositoryPath = std::getenv("LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY"))
     {
@@ -212,7 +258,7 @@ Directory                       Manager::DefaultLocalRepository             ( )
 URL                             Manager::DefaultRemoteUrl                   ( )
 {
 
-    static const URL defaultRemoteUrl = URL::Parse("https://naif.jpl.nasa.gov/pub/naif/generic_kernels/") ;
+    static const URL defaultRemoteUrl = URL::Parse(LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_REMOTE_URL) ;
 
     if (const char* remoteUrl = std::getenv("LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_REMOTE_URL"))
     {
@@ -289,7 +335,7 @@ void                            Manager::fetchIndexAt                       (   
 
     Dictionary fileListingDictionary = Dictionary::Empty() ;
 
-    Directory temporaryDirectory = Directory::Path(localRepository_.getPath() + Path::Parse("tmp")) ;
+    Directory temporaryDirectory = Directory::Path(localRepository_.getPath() + Path::Parse(temporaryDirectoryName)) ;
 
     if (!temporaryDirectory.exists())
     {

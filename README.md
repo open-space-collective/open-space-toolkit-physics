@@ -1,5 +1,4 @@
-Library ▸ Physics
-=================
+# Library ▸ Physics
 
 Physical units, time, reference frames, environment modeling.
 
@@ -97,6 +96,26 @@ The documentation can be found here:
 - [C++](https://open-space-collective.github.io/library-physics)
 - [Python](./bindings/python/docs)
 
+## Settings
+
+The following environment variables can be set:
+
+| Environment Variable                                                                  | Default Value                                                            |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE                          | `Manual`                                                                 |
+| LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY              | `./.library/physics/coordinate/frame/providers/iers`                     |
+| LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT | `60`                                                                     |
+| LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL                    | `ftp://cddis.gsfc.nasa.gov/pub/products/iers/`                           |
+| LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_ENGINE_MODE                             | `Manual`                                                                 |
+| LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY                | `./.library/physics/environment/ephemerides/spice`                       |
+| LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_REMOTE_URL                      | `https://naif.jpl.nasa.gov/pub/naif/generic_kernels/`                    |
+| LIBRARY_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_ENABLED                       | `false`                                                                  |
+| LIBRARY_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY              | `./.library/physics/environment/gravitational/earth`                     |
+| LIBRARY_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_REMOTE_URL                    | `https://sourceforge.net/projects/geographiclib/files/gravity-distrib/`  |
+| LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_ENABLED                            | `false`                                                                  |
+| LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY                   | `./.library/physics/environment/magnetic/earth`                          |
+| LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_REMOTE_URL                         | `https://sourceforge.net/projects/geographiclib/files/magnetic-distrib/` |
+
 ## Tutorials
 
 Various tutorials are available here:
@@ -159,7 +178,7 @@ Manually:
 The **Physics** library internally uses the following dependencies:
 
 | Name          | Version    | License                                                    | Link                                                                                                                 |
-|---------------|------------|------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
+| ------------- | ---------- | ---------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
 | Boost         | 1.67.0     | Boost Software License                                     | [boost.org](https://www.boost.org)                                                                                   |
 | Eigen         | 3.3.4      | MPL2                                                       | [eigen.tuxfamily.org](http://eigen.tuxfamily.org/index.php)                                                          |
 | IAU SOFA      | 2018-01-30 | [SOFA Software License](http://www.iausofa.org/tandc.html) | [www.iausofa.org](http://www.iausofa.org)                                                                            |

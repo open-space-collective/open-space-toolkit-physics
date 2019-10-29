@@ -25,7 +25,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, StreamOperator)
 
         testing::internal::CaptureStdout() ;
 
-        const File file = File::Path(Path::Parse("/app/share/coordinate/frame/providers/iers/ser7.dat")) ;
+        const File file = File::Path(Path::Parse("/app/test/Library/Physics/Coordinate/Frame/Providers/IERS/BulletinA/ser7.dat")) ;
 
         const BulletinA bulletinA = BulletinA::Load(file) ;
 
@@ -47,7 +47,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, IsDefined)
 
     {
 
-        const File file = File::Path(Path::Parse("/app/share/coordinate/frame/providers/iers/ser7.dat")) ;
+        const File file = File::Path(Path::Parse("/app/test/Library/Physics/Coordinate/Frame/Providers/IERS/BulletinA/ser7.dat")) ;
 
         const BulletinA bulletinA = BulletinA::Load(file) ;
 
@@ -119,7 +119,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetReleaseDate)
 
     {
 
-        const File file = File::Path(Path::Parse("/app/share/coordinate/frame/providers/iers/ser7.dat")) ;
+        const File file = File::Path(Path::Parse("/app/test/Library/Physics/Coordinate/Frame/Providers/IERS/BulletinA/ser7.dat")) ;
 
         const BulletinA bulletinA = BulletinA::Load(file) ;
 
@@ -146,7 +146,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetTAIMinusUTC)
 
     {
 
-        const File file = File::Path(Path::Parse("/app/share/coordinate/frame/providers/iers/ser7.dat")) ;
+        const File file = File::Path(Path::Parse("/app/test/Library/Physics/Coordinate/Frame/Providers/IERS/BulletinA/ser7.dat")) ;
 
         const BulletinA bulletinA = BulletinA::Load(file) ;
 
@@ -175,7 +175,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetTAIMinusUTCE
 
     {
 
-        const File file = File::Path(Path::Parse("/app/share/coordinate/frame/providers/iers/ser7.dat")) ;
+        const File file = File::Path(Path::Parse("/app/test/Library/Physics/Coordinate/Frame/Providers/IERS/BulletinA/ser7.dat")) ;
 
         const BulletinA bulletinA = BulletinA::Load(file) ;
 
@@ -205,7 +205,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetObservationI
 
     {
 
-        const File file = File::Path(Path::Parse("/app/share/coordinate/frame/providers/iers/ser7.dat")) ;
+        const File file = File::Path(Path::Parse("/app/test/Library/Physics/Coordinate/Frame/Providers/IERS/BulletinA/ser7.dat")) ;
 
         const BulletinA bulletinA = BulletinA::Load(file) ;
 
@@ -234,7 +234,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetObservationA
 
     {
 
-        const File file = File::Path(Path::Parse("/app/share/coordinate/frame/providers/iers/ser7.dat")) ;
+        const File file = File::Path(Path::Parse("/app/test/Library/Physics/Coordinate/Frame/Providers/IERS/BulletinA/ser7.dat")) ;
 
         const BulletinA bulletinA = BulletinA::Load(file) ;
 
@@ -279,7 +279,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetPredictionIn
 
     {
 
-        const File file = File::Path(Path::Parse("/app/share/coordinate/frame/providers/iers/ser7.dat")) ;
+        const File file = File::Path(Path::Parse("/app/test/Library/Physics/Coordinate/Frame/Providers/IERS/BulletinA/ser7.dat")) ;
 
         const BulletinA bulletinA = BulletinA::Load(file) ;
 
@@ -308,7 +308,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetPredictionAt
 
     {
 
-        const File file = File::Path(Path::Parse("/app/share/coordinate/frame/providers/iers/ser7.dat")) ;
+        const File file = File::Path(Path::Parse("/app/test/Library/Physics/Coordinate/Frame/Providers/IERS/BulletinA/ser7.dat")) ;
 
         const BulletinA bulletinA = BulletinA::Load(file) ;
 
@@ -352,7 +352,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, Load)
 
     {
 
-        const File file = File::Path(Path::Parse("/app/share/coordinate/frame/providers/iers/ser7.dat")) ;
+        const File file = File::Path(Path::Parse("/app/test/Library/Physics/Coordinate/Frame/Providers/IERS/BulletinA/ser7.dat")) ;
 
         const BulletinA bulletinA = BulletinA::Load(file) ;
 

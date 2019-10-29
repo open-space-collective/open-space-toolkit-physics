@@ -228,7 +228,7 @@ BulletinA::Observation          BulletinA::getObservationAt                 (   
             if (nextObservationIt != observations_.end())
             {
 
-                // [TBI] http://maia.usno.navy.mil/iers-gaz13
+                // [TBI] IERS gazette #13 for more precise interpolation and correction for tidal effects
 
                 const BulletinA::Observation& previousObservation = observationIt->second ;
                 const BulletinA::Observation& nextObservation = nextObservationIt->second ;
@@ -326,7 +326,7 @@ BulletinA::Prediction           BulletinA::getPredictionAt                  (   
             if (nextPredictionIt != predictions_.end())
             {
 
-                // [TBI] http://maia.usno.navy.mil/iers-gaz13
+                // [TBI] IERS gazette #13 for more precise interpolation and correction for tidal effects
 
                 const BulletinA::Prediction& previousPrediction = predictionIt->second ;
                 const BulletinA::Prediction& nextPrediction = nextPredictionIt->second ;

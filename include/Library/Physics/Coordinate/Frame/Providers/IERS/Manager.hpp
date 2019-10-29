@@ -28,6 +28,13 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#define LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE Manager::Mode::Manual
+#define LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY "./.library/physics/coordinate/frame/providers/iers"
+#define LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT 60
+#define LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL "ftp://cddis.gsfc.nasa.gov/pub/products/iers/"
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 namespace library
 {
 namespace physics
@@ -192,7 +199,6 @@ class Manager
 
         /// @brief              Get default manager mode
         ///
-        ///                     Value: Manager::Mode::Manual
         ///                     Overriden by: LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE
         ///
         /// @return             Default manager mode
@@ -201,7 +207,6 @@ class Manager
 
         /// @brief              Get default local repository
         ///
-        ///                     Value: "./.library/physics/coordinate/frame/providers/iers"
         ///                     Overriden by: LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY
         ///
         /// @return             Default local repository
@@ -210,7 +215,6 @@ class Manager
 
         /// @brief              Get default local repository lock timeout
         ///
-        ///                     Value: 60 [s]
         ///                     Overriden by: LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT
         ///
         /// @return             Default local repository lock timeout
@@ -219,7 +223,6 @@ class Manager
 
         /// @brief              Get default remote URL
         ///
-        ///                     Value: "http://maia.usno.navy.mil/ser7/"
         ///                     Overriden by: LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL
         ///
         /// @return             Default remote URL
@@ -243,8 +246,8 @@ class Manager
         mutable Index           aBulletinIndex_ ;
         mutable Index           finals2000aIndex_ ;
 
-        mutable Instant         bulletinAUpdateInstant_ ;
-        mutable Instant         finals2000AUpdateInstant_ ;
+        mutable Instant         bulletinAUpdateTimestamp_ ;
+        mutable Instant         finals2000AUpdateTimestamp_ ;
 
                                 Manager                                     (   const   Manager::Mode&              aMode                                       =   Manager::DefaultMode() ) ;
 

@@ -96,12 +96,6 @@ Transform                       ITRF::getTransformAt                        (   
     // meridians 0 and 90 deg west respectively.  For many applications,
     // xp and yp can be set to zero.
 
-    // IERS Bulletin A
-
-    // Bulletin A: http://maia.usno.navy.mil/ser7/ser7.dat
-    // Data: http://maia.usno.navy.mil/ser7/finals2000A.data
-    // Format: http://maia.usno.navy.mil/ser7/readme.finals2000A
-
     // Polar motion
 
     const Vector2d polarMotion = IersManager::Get().getPolarMotionAt(anInstant) ; // [asec]
@@ -136,7 +130,7 @@ Transform                       ITRF::getTransformAt                        (   
     const Vector3d v_ITRF_TIRF = { 0.0, 0.0, 0.0 } ;
 
     const Quaternion q_ITRF_TIRF = Quaternion::RotationMatrix(dcm_ITRF_TIRF).rectify() ;
-    // const Quaternion q_ITRF_TIRF = Quaternion::RotationMatrix(dcm_ITRF_TIRF).conjugate().rectify() ; // ANGULAR VELOCITY WORKS IF CONJUGATED
+    // const Quaternion q_ITRF_TIRF = Quaternion::RotationMatrix(dcm_ITRF_TIRF).conjugate().rectify() ; // TBC ANGULAR VELOCITY WORKS IF CONJUGATED
     const Vector3d w_ITRF_TIRF_in_ITRF = { 0.0, 0.0, 0.0 } ;
 
     return Transform::Passive(anInstant, x_ITRF_TIRF, v_ITRF_TIRF, q_ITRF_TIRF, w_ITRF_TIRF_in_ITRF) ;
