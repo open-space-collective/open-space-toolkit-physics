@@ -64,15 +64,14 @@ RUN cd /tmp \
  && tar -xf cspice.tar.Z \
  && cd cspice \
  && dnf install -y csh \
- && ./makeall.csh \
+ && ./makeall.csh > /dev/null \
  && mkdir -p /usr/local/include/cspice \
  && cp -r include/* /usr/local/include/cspice/ \
  && cp -r lib/* /usr/local/lib/ \
  && ln -s /usr/local/lib/cspice.a /usr/local/lib/libcspice.a \
  && rm -rf /tmp/cspice \
  && dnf remove -y csh \
- && dnf clean all \
- && popd
+ && dnf clean all
 
 ## GeographicLib [1.49]
 
@@ -85,7 +84,6 @@ RUN git clone git://git.code.sf.net/p/geographiclib/code /tmp/geographiclib \
  && cmake -DGEOGRAPHICLIB_LIB_TYPE=STATIC -DCMAKE_CXX_FLAGS="-fPIC" .. \
  && make -j $(nproc) \
  && make install \
- && popd \
  && rm -rf /tmp/geographiclib \
  && dnf clean all
 

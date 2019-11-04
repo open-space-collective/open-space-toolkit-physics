@@ -77,7 +77,7 @@ RUN cd /tmp \
  && cd cspice \
  && apt-get update \
  && apt-get install -y csh \
- && ./makeall.csh \
+ && ./makeall.csh > /dev/null \
  && mkdir -p /usr/local/include/cspice \
  && cp -r include/* /usr/local/include/cspice/ \
  && cp -r lib/* /usr/local/lib/ \
