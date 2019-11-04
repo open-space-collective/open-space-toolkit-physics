@@ -56,9 +56,9 @@ TEST (Library_Physics_Coordinate_Frames_ITRF, Test)
 
         const Array<Tuple<File, Angle, Length, Length, Real>> referenceScenarios =
         {
-            { File::Path(Path::Parse("../test/Library/Physics/Coordinate/Frames/ITRF/Test/ITRF_GCRF 1.csv")), Angle::Arcseconds(1.0), Length::Meters(0.1), Length::Meters(0.1), 1e-12 }, // 1 Jan 2018 00:00:37.000 [TAI] -> 2 Jan 2018 00:00:37.000 [TAI] @ 1.0 [min]
-            { File::Path(Path::Parse("../test/Library/Physics/Coordinate/Frames/ITRF/Test/ITRF_GCRF 2.csv")), Angle::Arcseconds(20.0), Length::Meters(1000.0), Length::Meters(1000.0), 1e-10 }, // 1 Jan 2008 00:00:33.000 [TAI] -> 1 Jan 2018 00:00:37.000 [TAI] @ 1.0 [day]
-            { File::Path(Path::Parse("../test/Library/Physics/Coordinate/Frames/ITRF/Test/ITRF_GCRF 3.csv")), Angle::Arcseconds(10.0), Length::Meters(1000.0), Length::Meters(1000.0), 1e-8 } // 1 Jan 2018 00:00:37.000 [TAI] -> 30 Jun 2019 00:00:37.000 [TAI] @ 1.0 [day]
+            { File::Path(Path::Parse("/app/test/Library/Physics/Coordinate/Frames/ITRF/Test/ITRF_GCRF 1.csv")), Angle::Arcseconds(1.0), Length::Meters(0.1), Length::Meters(0.1), 1e-12 }, // 1 Jan 2018 00:00:37.000 [TAI] -> 2 Jan 2018 00:00:37.000 [TAI] @ 1.0 [min]
+            { File::Path(Path::Parse("/app/test/Library/Physics/Coordinate/Frames/ITRF/Test/ITRF_GCRF 2.csv")), Angle::Arcseconds(20.0), Length::Meters(1000.0), Length::Meters(1000.0), 1e-10 }, // 1 Jan 2008 00:00:33.000 [TAI] -> 1 Jan 2018 00:00:37.000 [TAI] @ 1.0 [day]
+            { File::Path(Path::Parse("/app/test/Library/Physics/Coordinate/Frames/ITRF/Test/ITRF_GCRF 3.csv")), Angle::Arcseconds(10.0), Length::Meters(1000.0), Length::Meters(1000.0), 1e-8 } // 1 Jan 2018 00:00:37.000 [TAI] -> 30 Jun 2019 00:00:37.000 [TAI] @ 1.0 [day]
         } ;
 
         for (const auto& referenceScenario : referenceScenarios)

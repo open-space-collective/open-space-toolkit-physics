@@ -438,8 +438,8 @@ TEST (Library_Physics_Coordinate_Spherical_AER, FromPositionToPosition)
 
         const Array<Tuple<File, Angle, Length>> referenceScenarios =
         {
-            { File::Path(Path::Parse("../test/Library/Physics/Coordinate/Spherical/AER/FromPositionToPosition/AER NoLightTimeDelay.csv")), Angle::Arcseconds(0.01), Length::Meters(0.01) },
-            { File::Path(Path::Parse("../test/Library/Physics/Coordinate/Spherical/AER/FromPositionToPosition/AER WithLightTimeDelay.csv")), Angle::Arcseconds(100.0), Length::Meters(20.0) } // [TBI]
+            { File::Path(Path::Parse("/app/test/Library/Physics/Coordinate/Spherical/AER/FromPositionToPosition/AER NoLightTimeDelay.csv")), Angle::Arcseconds(0.01), Length::Meters(0.01) },
+            { File::Path(Path::Parse("/app/test/Library/Physics/Coordinate/Spherical/AER/FromPositionToPosition/AER WithLightTimeDelay.csv")), Angle::Arcseconds(100.0), Length::Meters(20.0) } // [TBI]
         } ;
 
         for (const auto& referenceScenario : referenceScenarios)

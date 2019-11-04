@@ -1,21 +1,48 @@
 ################################################################################################################################################################
 
-# @project        Library ▸ Physics
-# @file           tools/development/docker/Dockerfile
+# @project        Library ▸ Mathematics
+# @file           docker/development/fedora/Dockerfile
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        Apache License 2.0
 
 ################################################################################################################################################################
 
-FROM openspacecollective/library-mathematics:0.1.14
+ARG BASE_IMAGE_VERSION=latest
+ARG BASE_IMAGE_SYSTEM=debian
+
+FROM openspacecollective/library-base:${BASE_IMAGE_VERSION}-${BASE_IMAGE_SYSTEM} as development-base
 
 LABEL maintainer="lucas@loftorbital.com"
 
 # Dependencies
 
+## {fmt} [5.2.0]
+
+RUN git clone --branch 5.2.0 --depth 1 https://github.com/fmtlib/fmt.git /tmp/fmt \
+ && cd /tmp/fmt \
+ && mkdir build \
+ && cd build \
+ && cmake -DCMAKE_POSITION_INDEPENDENT_CODE=TRUE .. \
+ && make --silent -j $(nproc) \
+ && make install \
+ && rm -rf /tmp/fmt
+
+## Eigen [3.3.7]
+
+RUN mkdir /tmp/eigen \
+ && cd /tmp/eigen \
+ && wget --quiet http://bitbucket.org/eigen/eigen/get/3.3.7.tar.gz \
+ && tar -xvf 3.3.7.tar.gz \
+ && cd eigen-eigen-323c052e1731 \
+ && mkdir build \
+ && cd build \
+ && cmake .. \
+ && make install \
+ && rm -rf /tmp/eigen
+
 ## IAU SOFA [2018-01-30]
 
-RUN pushd /tmp > /dev/null \
+RUN cd /tmp \
  && mkdir sofa \
  && cd sofa \
  && wget --quiet http://www.iausofa.org/2018_0130_C/sofa_c-20180130.tar.gz \
@@ -28,12 +55,11 @@ RUN pushd /tmp > /dev/null \
  && mkdir /usr/local/include/sofa \
  && cp -r *.h /usr/local/include/sofa \
  && cp -r *.a /usr/local/lib \
- && rm -rf /tmp/sofa \
- && popd > /dev/null
+ && rm -rf /tmp/sofa
 
 ## SPICE Toolkit [N0066]
 
-RUN pushd /tmp > /dev/null \
+RUN cd /tmp \
  && wget --quiet http://naif.jpl.nasa.gov/pub/naif/toolkit/C/PC_Linux_GCC_64bit/packages/cspice.tar.Z \
  && tar -xf cspice.tar.Z \
  && cd cspice \
@@ -46,12 +72,12 @@ RUN pushd /tmp > /dev/null \
  && rm -rf /tmp/cspice \
  && dnf remove -y csh \
  && dnf clean all \
- && popd > /dev/null
+ && popd
 
 ## GeographicLib [1.49]
 
 RUN git clone git://git.code.sf.net/p/geographiclib/code /tmp/geographiclib \
- && pushd /tmp/geographiclib > /dev/null \
+ && cd /tmp/geographiclib \
  && git checkout tags/r1.49 \
  && mkdir build \
  && cd build \
@@ -59,29 +85,36 @@ RUN git clone git://git.code.sf.net/p/geographiclib/code /tmp/geographiclib \
  && cmake -DGEOGRAPHICLIB_LIB_TYPE=STATIC -DCMAKE_CXX_FLAGS="-fPIC" .. \
  && make -j $(nproc) \
  && make install \
- && popd > /dev/null \
+ && popd \
  && rm -rf /tmp/geographiclib \
  && dnf clean all
 
-## Library ▸ I/O [0.2.3]
+## Library ▸ Core [0.2.5]
+
+RUN mkdir -p /tmp/library-core \
+ && cd /tmp/library-core \
+ && wget --quiet https://github.com/open-space-collective/library-core/releases/download/0.2.5/library-core-0.2.5-1.x86_64-runtime.rpm \
+ && wget --quiet https://github.com/open-space-collective/library-core/releases/download/0.2.5/library-core-0.2.5-1.x86_64-devel.rpm \
+ && dnf install -y ./*.rpm \
+ && rm -rf /tmp/library-core
+
+## Library ▸ IO [0.2.4]
 
 RUN mkdir -p /tmp/library-io \
- && pushd /tmp/library-io > /dev/null \
- && wget --quiet https://github.com/open-space-collective/library-io/releases/download/0.2.3/library-io-0.2.3-1.x86_64-runtime.rpm \
- && wget --quiet https://github.com/open-space-collective/library-io/releases/download/0.2.3/library-io-0.2.3-1.x86_64-devel.rpm \
+ && cd /tmp/library-io \
+ && wget --quiet https://github.com/open-space-collective/library-io/releases/download/0.2.4/library-io-0.2.4-1.x86_64-runtime.rpm \
+ && wget --quiet https://github.com/open-space-collective/library-io/releases/download/0.2.4/library-io-0.2.4-1.x86_64-devel.rpm \
  && dnf install -y ./*.rpm \
- && rm -rf /tmp/library-io \
- && popd > /dev/null
+ && rm -rf /tmp/library-io
 
-## Library ▸ Mathematics [0.2.1]
+## Library ▸ Mathematics [0.2.6]
 
 RUN mkdir -p /tmp/library-mathematics \
- && pushd /tmp/library-mathematics > /dev/null \
- && wget --quiet https://github.com/open-space-collective/library-mathematics/releases/download/0.2.1/library-mathematics-0.2.1-1.x86_64-runtime.rpm \
- && wget --quiet https://github.com/open-space-collective/library-mathematics/releases/download/0.2.1/library-mathematics-0.2.1-1.x86_64-devel.rpm \
+ && cd /tmp/library-mathematics \
+ && wget --quiet https://github.com/open-space-collective/library-mathematics/releases/download/0.2.6/library-mathematics-0.2.6-1.x86_64-runtime.rpm \
+ && wget --quiet https://github.com/open-space-collective/library-mathematics/releases/download/0.2.6/library-mathematics-0.2.6-1.x86_64-devel.rpm \
  && dnf install -y ./*.rpm \
- && rm -rf /tmp/library-mathematics \
- && popd > /dev/null
+ && rm -rf /tmp/library-mathematics
 
 # Labels
 

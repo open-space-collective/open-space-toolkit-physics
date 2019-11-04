@@ -123,9 +123,9 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, GetPolarMotionAt)
 
         const Array<Tuple<File, Real>> referenceScenarios =
         {
-            { File::Path(Path::Parse("../test/Library/Physics/Coordinate/Frame/Providers/IERS/Manager/GetPolarMotionAt/Pole Wander 1.csv")), 1e-8 },
-            { File::Path(Path::Parse("../test/Library/Physics/Coordinate/Frame/Providers/IERS/Manager/GetPolarMotionAt/Pole Wander 2.csv")), 1e-8 },
-            { File::Path(Path::Parse("../test/Library/Physics/Coordinate/Frame/Providers/IERS/Manager/GetPolarMotionAt/Pole Wander 3.csv")), 1e-8 }
+            { File::Path(Path::Parse("/app/test/Library/Physics/Coordinate/Frame/Providers/IERS/Manager/GetPolarMotionAt/Pole Wander 1.csv")), 1e-8 },
+            { File::Path(Path::Parse("/app/test/Library/Physics/Coordinate/Frame/Providers/IERS/Manager/GetPolarMotionAt/Pole Wander 2.csv")), 1e-8 },
+            { File::Path(Path::Parse("/app/test/Library/Physics/Coordinate/Frame/Providers/IERS/Manager/GetPolarMotionAt/Pole Wander 3.csv")), 1e-8 }
         } ;
 
         for (const auto& referenceScenario : referenceScenarios)
@@ -181,9 +181,9 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, GetUt1MinusUtcAt)
 
         const Array<Tuple<File, Real>> referenceScenarios =
         {
-            { File::Path(Path::Parse("../test/Library/Physics/Coordinate/Frame/Providers/IERS/Manager/GetUt1MinusUtcAt/DUT1 1.csv")), 1e-4 },
-            { File::Path(Path::Parse("../test/Library/Physics/Coordinate/Frame/Providers/IERS/Manager/GetUt1MinusUtcAt/DUT1 2.csv")), 1e-4 },
-            // { File::Path(Path::Parse("../test/Library/Physics/Coordinate/Frame/Providers/IERS/Manager/GetUt1MinusUtcAt/DUT1 3.csv")), 1e-4 } // [TBI] Discrepancy with STK at leap second crossing
+            { File::Path(Path::Parse("/app/test/Library/Physics/Coordinate/Frame/Providers/IERS/Manager/GetUt1MinusUtcAt/DUT1 1.csv")), 1e-4 },
+            { File::Path(Path::Parse("/app/test/Library/Physics/Coordinate/Frame/Providers/IERS/Manager/GetUt1MinusUtcAt/DUT1 2.csv")), 1e-4 },
+            // { File::Path(Path::Parse("/app/test/Library/Physics/Coordinate/Frame/Providers/IERS/Manager/GetUt1MinusUtcAt/DUT1 3.csv")), 1e-4 } // [TBI] Discrepancy with STK at leap second crossing
         } ;
 
         for (const auto& referenceScenario : referenceScenarios)

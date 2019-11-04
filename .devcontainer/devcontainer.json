@@ -1,0 +1,13 @@
+{
+    "name": "Library Physics",
+    "extensions": [
+        "ms-vscode.cpptools",
+        "ms-python.python",
+        "mhutchie.git-graph"
+    ],
+    "image": "openspacecollective/library-physics-development:latest-debian",
+	"settings": {
+		"terminal.integrated.shell.linux": "/bin/bash"
+	},
+    "shutdownAction": "stopContainer"
+}

@@ -1,7 +1,7 @@
 ################################################################################################################################################################
 
 # @project        Library ▸ Physics
-# @file           tools/python/setup.py.in
+# @file           bindings/python/tools/python/setup.py.in
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        Apache License 2.0
 
@@ -35,7 +35,8 @@ setuptools.setup(
     package_data = {
         '': [
             '${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_PATH}/LibraryPhysicsPy.so',
-            '${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_PATH}/liblibrary-physics.so.0'
+            '${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_PATH}/liblibrary-physics.so.0',
+            '${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_PATH}/libboost_numpy37.so.1.69.0'
         ]
     },
     install_requires = requirements

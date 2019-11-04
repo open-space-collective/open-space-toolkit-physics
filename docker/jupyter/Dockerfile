@@ -1,25 +1,31 @@
 ################################################################################################################################################################
 
 # @project        Library ▸ Physics
-# @file           tools/python/docker/Dockerfile
+# @file           docker/jupyter/Dockerfile
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        Apache License 2.0
 
 ################################################################################################################################################################
 
-FROM jupyter/scipy-notebook:07eb788e5d10
+ARG JUPYTER_NOTEBOOK_IMAGE_REPOSITORY=jupyter/scipy-notebook:latest
+
+FROM ${JUPYTER_NOTEBOOK_IMAGE_REPOSITORY}
 
 LABEL maintainer="lucas@loftorbital.com"
 
 USER root
 
-RUN apt-get update \
- && apt-get install -y libssl1.0.0 libssl-dev \
- && rm -rf /var/lib/apt/lists/*
+# RUN apt-get update \
+#  && apt-get install -y libssl1.0.0 libssl-dev \
+#  && rm -rf /var/lib/apt/lists/*
+
+# Install extensions
+
+RUN jupyter labextension install @jupyterlab/plotly-extension
 
 COPY ./shortcuts-extension /home/jovyan/.jupyter/lab/user-settings/@jupyterlab/shortcuts-extension
 
-RUN jupyter labextension install @jupyterlab/plotly-extension
+# Install NumPy and Plotly
 
 RUN python -m pip install --quiet numpy --upgrade \
  && python -m pip install --quiet plotly ipympl
@@ -28,8 +34,11 @@ RUN chown -R ${NB_UID}:${NB_UID} /home/jovyan/.jupyter
 
 USER ${NB_UID}
 
-RUN pip install LibraryPhysicsPy==0.2.6
+ENV JUPYTER_ENABLE_LAB yes
 
-RUN mkdir -p /home/jovyan/.library
+ENV LD_LIBRARY_PATH "/usr/local/lib:/usr/lib/x86_64-linux-gnu:/opt/conda/lib/python3.7/site-packages:/home/jovyan/lib:/opt/conda/lib"
+ENV PYTHONPATH "/opt/conda/lib/python3.7/site-packages:/home/jovyan/lib"
+
+RUN pip install LibraryPhysicsPy
 
 ################################################################################################################################################################
