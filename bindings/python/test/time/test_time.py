@@ -1,140 +1,177 @@
 ################################################################################################################################################################
 
 # @project        Library ▸ Physics
-# @file           library/physics/time/test_date_time.py
+# @file           bindings/python/test/time/test_time.py
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        Apache License 2.0
 
 ################################################################################################################################################################
 
-import datetime
 import pytest
 
-from Library.Physics.Time import Date
 from Library.Physics.Time import Time
-from Library.Physics.Time import DateTime
 
 ################################################################################################################################################################
 
-def test_date_time_constructors ():
+def test_time_constructors ():
 
-    assert DateTime(2018, 1, 1, 0, 0, 0, 0, 0, 0) is not None
-    assert DateTime(2018, 1, 1, 0, 0, 0) is not None
-
-    assert DateTime(Date(2018, 1, 1), Time(0, 0, 0)) is not None
+    assert Time(0, 0, 0) is not None
 
 ################################################################################################################################################################
 
-@pytest.mark.skip(reason = 'This is currently failing.')
-def test_date_time_undefined ():
+def test_time_undefined ():
 
-    assert DateTime.Undefined() is not None
-
-################################################################################################################################################################
-
-def test_date_time_j2000 ():
-
-    assert DateTime.J2000() is not None
+    assert Time.Undefined() is not None
 
 ################################################################################################################################################################
 
-def test_date_time_gps_epoch ():
+def test_time_midnight ():
 
-    assert DateTime.GPSEpoch() is not None
-
-################################################################################################################################################################
-
-def test_date_time_unix_epoch ():
-
-    assert DateTime.UnixEpoch() is not None
+    assert Time.Midnight() is not None
 
 ################################################################################################################################################################
 
-def test_date_time_modified_julian_date_epoch ():
+def test_time_noon ():
 
-    assert DateTime.ModifiedJulianDateEpoch() is not None
-
-################################################################################################################################################################
-
-def test_date_time_julian_date ():
-
-    assert DateTime.JulianDate(2458119.5) is not None
+    assert Time.Noon() is not None
 
 ################################################################################################################################################################
 
-def test_date_time_modified_julian_date ():
+def test_time_parse ():
 
-    assert DateTime.ModifiedJulianDate(58119.0) is not None
-
-################################################################################################################################################################
-
-def test_date_time_parse ():
-
-    assert DateTime.Parse('2018-01-01 00:00:00') is not None
-    assert DateTime.Parse('2018-01-01 00:00:00', DateTime.Format.Standard) is not None
-    assert DateTime.Parse('2018-01-01T00:00:00', DateTime.Format.ISO8601) is not None
-    assert DateTime.Parse('1 Jan 2018 00:00:00', DateTime.Format.STK) is not None
-
-    assert (datetime.datetime.now() + datetime.timedelta(days = 1)) is not None
+    assert Time.Parse('00:00:00') is not None
+    assert Time.Parse('00:00:00', Time.Format.Standard) is not None
+    assert Time.Parse('00:00:00', Time.Format.ISO8601) is not None
 
 ################################################################################################################################################################
 
-def test_date_time_operators ():
+def test_time_operators ():
 
-    date_time = DateTime(2018, 1, 1, 0, 0, 0, 0, 0, 0)
+    time = Time(0, 0, 0)
 
-    assert (date_time == date_time) is not None
-    assert (date_time != date_time) is not None
-
-################################################################################################################################################################
-
-def test_date_time_is_defined ():
-
-    date_time = DateTime(2018, 1, 1, 0, 0, 0, 0, 0, 0)
-
-    assert date_time.isDefined()
+    assert (time == time) is not None
+    assert (time != time) is not None
 
 ################################################################################################################################################################
 
-def test_date_time_get_date ():
+def test_time_is_defined ():
 
-    date_time = DateTime(2018, 1, 1, 0, 0, 0, 0, 0, 0)
+    time = Time(0, 0, 0)
 
-    assert date_time.getDate()
-
-################################################################################################################################################################
-
-def test_date_time_get_time ():
-
-    date_time = DateTime(2018, 1, 1, 0, 0, 0, 0, 0, 0)
-
-    assert date_time.getTime()
+    assert time.isDefined() is not None
 
 ################################################################################################################################################################
 
-def test_date_time_get_julian_date ():
+def test_time_get_hour ():
 
-    date_time = DateTime(2018, 1, 1, 0, 0, 0, 0, 0, 0)
+    time = Time(0, 0, 0)
 
-    assert date_time.getJulianDate()
-
-################################################################################################################################################################
-
-def test_date_time_get_modified_julian_date ():
-
-    date_time = DateTime(2018, 1, 1, 0, 0, 0, 0, 0, 0)
-
-    assert date_time.getModifiedJulianDate()
+    assert time.getHour() is not None
 
 ################################################################################################################################################################
 
-def test_date_time_to_string ():
+def test_time_get_minute ():
 
-    date_time = DateTime(2018, 1, 1, 0, 0, 0, 0, 0, 0)
+    time = Time(0, 0, 0)
 
-    assert date_time.toString()
-    assert date_time.toString(DateTime.Format.Standard)
-    assert date_time.toString(DateTime.Format.ISO8601)
-    assert date_time.toString(DateTime.Format.STK)
+    assert time.getMinute() is not None
+
+################################################################################################################################################################
+
+def test_time_get_second ():
+
+    time = Time(0, 0, 0)
+
+    assert time.getSecond() is not None
+
+################################################################################################################################################################
+
+def test_time_get_millisecond ():
+
+    time = Time(0, 0, 0)
+
+    assert time.getMillisecond() is not None
+
+################################################################################################################################################################
+
+def test_time_get_microsecond ():
+
+    time = Time(0, 0, 0)
+
+    assert time.getMicrosecond() is not None
+
+################################################################################################################################################################
+
+def test_time_get_nanosecond ():
+
+    time = Time(0, 0, 0)
+
+    assert time.getNanosecond() is not None
+
+################################################################################################################################################################
+
+def test_time_get_floating_seconds ():
+
+    time = Time(0, 0, 0)
+
+    assert time.getFloatingSeconds() is not None
+
+################################################################################################################################################################
+
+def test_time_to_string ():
+
+    time = Time(0, 0, 0)
+
+    assert time.toString() is not None
+    assert time.toString(Time.Format.Standard) is not None
+    assert time.toString(Time.Format.ISO8601) is not None
+
+################################################################################################################################################################
+
+def test_time_set_hour ():
+
+    time = Time(0, 0, 0)
+
+    time.setHour(1)
+
+################################################################################################################################################################
+
+def test_time_set_minute ():
+
+    time = Time(0, 0, 0)
+
+    time.setMinute(1)
+
+################################################################################################################################################################
+
+def test_time_set_second ():
+
+    time = Time(0, 0, 0)
+
+    time.setSecond(1)
+
+################################################################################################################################################################
+
+def test_time_set_millisecond ():
+
+    time = Time(0, 0, 0)
+
+    time.setMillisecond(1)
+
+################################################################################################################################################################
+
+def test_time_set_microsecond ():
+
+    time = Time(0, 0, 0)
+
+    time.setMicrosecond(1)
+
+################################################################################################################################################################
+
+def test_time_set_nanosecond ():
+
+    time = Time(0, 0, 0)
+
+    time.setNanosecond(1)
 
 ################################################################################################################################################################

@@ -1,133 +1,140 @@
 ################################################################################################################################################################
 
 # @project        Library ▸ Physics
-# @file           library/physics/time/test_date.py
+# @file           bindings/python/test/time/test_date_time.py
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        Apache License 2.0
 
 ################################################################################################################################################################
 
+import datetime
 import pytest
 
 from Library.Physics.Time import Date
+from Library.Physics.Time import Time
+from Library.Physics.Time import DateTime
 
 ################################################################################################################################################################
 
-def test_date_constructors ():
+def test_date_time_constructors ():
 
-    assert Date(2018, 1, 1) is not None
+    assert DateTime(2018, 1, 1, 0, 0, 0, 0, 0, 0) is not None
+    assert DateTime(2018, 1, 1, 0, 0, 0) is not None
 
-################################################################################################################################################################
-
-def test_date_undefined ():
-
-    assert Date.Undefined() is not None
+    assert DateTime(Date(2018, 1, 1), Time(0, 0, 0)) is not None
 
 ################################################################################################################################################################
 
-def test_date_j2000 ():
+@pytest.mark.skip(reason = 'This is currently failing.')
+def test_date_time_undefined ():
 
-    assert Date.J2000() is not None
-
-################################################################################################################################################################
-
-def test_date_gps_epoch ():
-
-    assert Date.GPSEpoch() is not None
+    assert DateTime.Undefined() is not None
 
 ################################################################################################################################################################
 
-def test_date_unix_epoch ():
+def test_date_time_j2000 ():
 
-    assert Date.UnixEpoch() is not None
-
-################################################################################################################################################################
-
-def test_date_modified_julian_date_epoch ():
-
-    assert Date.ModifiedJulianDateEpoch() is not None
+    assert DateTime.J2000() is not None
 
 ################################################################################################################################################################
 
-def test_date_parse ():
+def test_date_time_gps_epoch ():
 
-    assert Date.Parse('2018-01-01') is not None
-    assert Date.Parse('2018-01-01', Date.Format.Standard) is not None
-    assert Date.Parse('2 Jan 2019', Date.Format.STK) is not None
+    assert DateTime.GPSEpoch() is not None
 
 ################################################################################################################################################################
 
-def test_date_operators ():
+def test_date_time_unix_epoch ():
 
-    date = Date(2018, 1, 1)
-
-    assert (date == date) is not None
-    assert (date != date) is not None
+    assert DateTime.UnixEpoch() is not None
 
 ################################################################################################################################################################
 
-def test_date_is_defined ():
+def test_date_time_modified_julian_date_epoch ():
 
-    date = Date(2018, 1, 1)
-
-    assert date.isDefined() is not None
+    assert DateTime.ModifiedJulianDateEpoch() is not None
 
 ################################################################################################################################################################
 
-def test_date_get_year ():
+def test_date_time_julian_date ():
 
-    date = Date(2018, 1, 1)
-
-    assert date.getYear() is not None
+    assert DateTime.JulianDate(2458119.5) is not None
 
 ################################################################################################################################################################
 
-def test_date_get_day ():
+def test_date_time_modified_julian_date ():
 
-    date = Date(2018, 1, 1)
-
-    assert date.getDay() is not None
+    assert DateTime.ModifiedJulianDate(58119.0) is not None
 
 ################################################################################################################################################################
 
-def test_date_get_month ():
+def test_date_time_parse ():
 
-    date = Date(2018, 1, 1)
+    assert DateTime.Parse('2018-01-01 00:00:00') is not None
+    assert DateTime.Parse('2018-01-01 00:00:00', DateTime.Format.Standard) is not None
+    assert DateTime.Parse('2018-01-01T00:00:00', DateTime.Format.ISO8601) is not None
+    assert DateTime.Parse('1 Jan 2018 00:00:00', DateTime.Format.STK) is not None
 
-    assert date.getMonth() is not None
-
-################################################################################################################################################################
-
-def test_date_to_string ():
-
-    date = Date(2018, 1, 1)
-
-    date.toString()
-    date.toString(Date.Format.Standard)
-    date.toString(Date.Format.STK)
+    assert (datetime.datetime.now() + datetime.timedelta(days = 1)) is not None
 
 ################################################################################################################################################################
 
-def test_date_set_year ():
+def test_date_time_operators ():
 
-    date = Date(2018, 1, 1)
+    date_time = DateTime(2018, 1, 1, 0, 0, 0, 0, 0, 0)
 
-    date.setYear(2019)
-
-################################################################################################################################################################
-
-def test_date_set_month ():
-
-    date = Date(2018, 1, 1)
-
-    date.setMonth(2)
+    assert (date_time == date_time) is not None
+    assert (date_time != date_time) is not None
 
 ################################################################################################################################################################
 
-def test_date_set_day ():
+def test_date_time_is_defined ():
 
-    date = Date(2018, 1, 1)
+    date_time = DateTime(2018, 1, 1, 0, 0, 0, 0, 0, 0)
 
-    date.setDay(2)
+    assert date_time.isDefined()
+
+################################################################################################################################################################
+
+def test_date_time_get_date ():
+
+    date_time = DateTime(2018, 1, 1, 0, 0, 0, 0, 0, 0)
+
+    assert date_time.getDate()
+
+################################################################################################################################################################
+
+def test_date_time_get_time ():
+
+    date_time = DateTime(2018, 1, 1, 0, 0, 0, 0, 0, 0)
+
+    assert date_time.getTime()
+
+################################################################################################################################################################
+
+def test_date_time_get_julian_date ():
+
+    date_time = DateTime(2018, 1, 1, 0, 0, 0, 0, 0, 0)
+
+    assert date_time.getJulianDate()
+
+################################################################################################################################################################
+
+def test_date_time_get_modified_julian_date ():
+
+    date_time = DateTime(2018, 1, 1, 0, 0, 0, 0, 0, 0)
+
+    assert date_time.getModifiedJulianDate()
+
+################################################################################################################################################################
+
+def test_date_time_to_string ():
+
+    date_time = DateTime(2018, 1, 1, 0, 0, 0, 0, 0, 0)
+
+    assert date_time.toString()
+    assert date_time.toString(DateTime.Format.Standard)
+    assert date_time.toString(DateTime.Format.ISO8601)
+    assert date_time.toString(DateTime.Format.STK)
 
 ################################################################################################################################################################

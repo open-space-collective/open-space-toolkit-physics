@@ -1,7 +1,7 @@
 ################################################################################################################################################################
 
 # @project        Library ▸ Physics
-# @file           library/physics/time/test_duration.py
+# @file           bindings/python/test/time/test_duration.py
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        Apache License 2.0
 

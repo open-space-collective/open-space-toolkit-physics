@@ -1,7 +1,7 @@
 ################################################################################################################################################################
 
 # @project        Library ▸ Physics
-# @file           library/physics/time/test_environment.py
+# @file           bindings/python/test/test_environment.py
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        Apache License 2.0
 
