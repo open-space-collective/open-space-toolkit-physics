@@ -390,6 +390,10 @@ _test-unit-cpp: _build-development-image
 	--volume="$(project_directory):/app:delegated" \
 	--volume="/app/build" \
 	--workdir=/app/build \
+	--env=LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY \
+	--env=LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY \
+	--env=LIBRARY_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY \
+	--env=LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY \
 	$(docker_development_image_repository):$(docker_image_version)-$(target) \
 	/bin/bash -c "cmake -DBUILD_UNIT_TESTS=ON .. && make -j 4 && make test"
 
@@ -435,6 +439,10 @@ _test-coverage-cpp: _build-development-image
 	--volume="$(project_directory):/app:delegated" \
 	--volume="/app/build" \
 	--workdir=/app/build \
+	--env=LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY \
+	--env=LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY \
+	--env=LIBRARY_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY \
+	--env=LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY \
 	$(docker_development_image_repository):$(docker_image_version)-$(target) \
 	/bin/bash -c "cmake -DBUILD_CODE_COVERAGE=ON .. && make -j 4 && make coverage && (rm -rf /app/coverage || true) && mkdir /app/coverage && mv /app/build/coverage* /app/coverage"
 
