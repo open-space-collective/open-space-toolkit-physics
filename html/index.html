@@ -93,10 +93,16 @@ $(document).ready(function(){initNavTree('index.html','');});
 <h2>Structure</h2>
 <p>The <b>Physics</b> library exhibits the following structure:</p>
 <div class="fragment"><div class="line">├── Units</div><div class="line">│   ├── Length</div><div class="line">│   ├── Mass</div><div class="line">│   ├── Time</div><div class="line">│   ├── Temperature</div><div class="line">│   ├── Electric Current</div><div class="line">│   ├── Luminous Intensity</div><div class="line">│   └── Derived</div><div class="line">│       ├── Angle</div><div class="line">│       ├── Solid Angle</div><div class="line">│       ├── Frequency</div><div class="line">│       ├── Force</div><div class="line">│       ├── Pressure</div><div class="line">│       ├── Area</div><div class="line">│       ├── Volume</div><div class="line">│       └── Information</div><div class="line">├── Time</div><div class="line">│   ├── <a class="code" href="namespacelibrary_1_1physics_1_1time.html#a09d2bc9fbc7b0b5f92e1419bd655e6bb">Scale</a> (UTC, TT, TAI, UT1, TCG, TCB, TDB, GMST, GPST, GST, GLST, BDT, QZSST, IRNSST)</div><div class="line">│   ├── Instant</div><div class="line">│   ├── Duration</div><div class="line">│   ├── Interval</div><div class="line">│   ├── Date</div><div class="line">│   ├── Time</div><div class="line">│   └── DateTime</div><div class="line">├── Coordinate</div><div class="line">│   ├── Transform</div><div class="line">│   └── Frame (ECI, ECEF, NED, LVLHGD, LVLHGDGT, ...)</div><div class="line">├── Geographic</div><div class="line">│   ├── Position</div><div class="line">│   ├── Area</div><div class="line">│   ├── Volume</div><div class="line">│   ├── Coordinate Reference System (CRS)</div><div class="line">│   └── Universal Transverse Mercator (UTM)</div><div class="line">└── Environment</div><div class="line">    ├── Constants</div><div class="line">    ├── Object</div><div class="line">    │   └── Celestial</div><div class="line">    ├── Ephemerides</div><div class="line">    │   ├── Analytical</div><div class="line">    │   ├── Tabulated</div><div class="line">    │   ├── SOFA</div><div class="line">    │   └── SPICE (JPL)</div><div class="line">    ├── Gravity</div><div class="line">    │   ├── Barycentric</div><div class="line">    │   ├── Earth Gravitational Model 1996 (EGM96)</div><div class="line">    │   └── Earth Gravitational Model 2008 (EGM2008)</div><div class="line">    ├── Atmospheric</div><div class="line">    │   ├── Exponential</div><div class="line">    │   ├── USSA1976</div><div class="line">    │   ├── Jacchia Roberts</div><div class="line">    │   └── NRLMSISE00</div><div class="line">    ├── Magnetic</div><div class="line">    │   ├── Dipole</div><div class="line">    │   ├── World Magnetic Model 2010 (WMM2010)</div><div class="line">    │   ├── World Magnetic Model 2015 (WMM2015)</div><div class="line">    │   ├── Enhanced Magnetic Model 2010 (EMM2010)</div><div class="line">    │   ├── Enhanced Magnetic Model 2015 (EMM2015)</div><div class="line">    │   ├── International Geomagnetic Reference Field 11 (IGRF11)</div><div class="line">    │   └── International Geomagnetic Reference Field 12 (IGRF12)</div><div class="line">    ├── Radiation</div><div class="line">    │   └── Sun Static</div><div class="line">    └── Stars</div><div class="line">        └── Hipparcos</div></div><!-- fragment --><h2>Documentation</h2>
-<p>The documentation can be found here:</p>
+<p>Documentation is available here:</p>
 <ul>
 <li><a href="https://open-space-collective.github.io/library-physics">C++</a></li>
 <li><a href="./bindings/python/docs">Python</a></li>
+</ul>
+<h2>Tutorials</h2>
+<p>Tutorials are available here:</p>
+<ul>
+<li><a href="./tutorials/cpp">C++</a></li>
+<li><a href="./tutorials/python">Python</a></li>
 </ul>
 <h2>Settings</h2>
 <p>The following environment variables can be set:</p>
@@ -130,34 +136,32 @@ $(document).ready(function(){initNavTree('index.html','');});
 <tr>
 <td>LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_REMOTE_URL </td><td><code><a href="https://sourceforge.net/projects/geographiclib/files/magnetic-distrib/">https://sourceforge.net/projects/geographiclib/files/magnetic-distrib/</a></code> </td></tr>
 </table>
-<h2>Tutorials</h2>
-<p>Various tutorials are available here:</p>
-<ul>
-<li><a href="./tutorials/cpp">C++</a></li>
-<li><a href="./tutorials/python">Python</a></li>
-</ul>
 <h2>Setup</h2>
-<h3>Development</h3>
-<p>Using <a href="https://www.docker.com">Docker</a> is recommended, as the development tools and dependencies setup is described in the provided <a href="./tools/development/docker/Dockerfile">Dockerfile</a>.</p>
-<p>Instructions to install Docker can be found <a href="https://docs.docker.com/install/">here</a>.</p>
-<p>Start the development environment:</p>
-<div class="fragment"><div class="line">./tools/development/start.sh</div></div><!-- fragment --><p>This will also build the <code>openspacecollective/library-physics:latest</code> Docker image, if not already.</p>
-<p>If installing Docker is not an option, please manually install the development tools (GCC, CMake) and the dependencies. The procedure should be similar to the one described in the <a href="./tools/development/docker/Dockerfile">Dockerfile</a>.</p>
+<h3>Development Environment</h3>
+<p>Using <a href="https://www.docker.com">Docker</a> for development is recommended, to simplify the installation of the necessary build tools and dependencies. Instructions on how to install Docker are available <a href="https://docs.docker.com/install/">here</a>.</p>
+<p>To start the development environment:</p>
+<div class="fragment"><div class="line">make start-development</div></div><!-- fragment --><p>This will:</p>
+<ol type="1">
+<li>Build the <code>openspacecollective/library-physics-development</code> Docker image.</li>
+<li>Create a development environment container with local source files and helper scripts mounted.</li>
+<li>Start a <code>bash</code> shell from the <code>./build</code> working directory.</li>
+</ol>
+<p>If installing Docker is not an option, you can manually install the development tools (GCC, CMake) and all required dependencies, by following a procedure similar to the one described in the <a href="./docker/development/Dockerfile">Development Dockerfile</a>.</p>
 <h3>Build</h3>
-<p>From the development environment:</p>
-<div class="fragment"><div class="line">./build.sh</div></div><!-- fragment --><p>Manually:</p>
-<div class="fragment"><div class="line">mkdir -p build</div><div class="line">cd build</div><div class="line">cmake ..</div><div class="line">make</div></div><!-- fragment --><h3>Test</h3>
-<p>From the development environment:</p>
-<div class="fragment"><div class="line">./test.sh</div></div><!-- fragment --><p>Manually:</p>
-<div class="fragment"><div class="line">./bin/library-physics.test</div></div><!-- fragment --><h2>Dependencies</h2>
-<p>The <b>Physics</b> library internally uses the following dependencies:</p>
+<p>From the <code>./build</code> directory:</p>
+<div class="fragment"><div class="line">cmake ..</div><div class="line">make</div></div><!-- fragment --><p><em>Tip: <code>helpers/build.sh</code> simplifies building from within the development environment.</em></p>
+<h3>Test</h3>
+<p>To start a container to build and run the tests:</p>
+<div class="fragment"><div class="line">make test</div></div><!-- fragment --><p>Or to run them manually:</p>
+<div class="fragment"><div class="line">./bin/library-physics.test</div></div><!-- fragment --><p><em>Tip: <code>helpers/test.sh</code> simplifies running tests from within the development environment.</em></p>
+<h2>Dependencies</h2>
 <table class="doxtable">
 <tr>
 <th>Name </th><th>Version </th><th>License </th><th>Link  </th></tr>
 <tr>
-<td>Boost </td><td>1.67.0 </td><td>Boost Software License </td><td><a href="https://www.boost.org">boost.org</a> </td></tr>
+<td>Boost </td><td>1.69.0 </td><td>Boost Software License </td><td><a href="https://www.boost.org">boost.org</a> </td></tr>
 <tr>
-<td>Eigen </td><td>3.3.4 </td><td>MPL2 </td><td><a href="http://eigen.tuxfamily.org/index.php">eigen.tuxfamily.org</a> </td></tr>
+<td>Eigen </td><td>3.3.7 </td><td>MPL2 </td><td><a href="http://eigen.tuxfamily.org/index.php">eigen.tuxfamily.org</a> </td></tr>
 <tr>
 <td>IAU SOFA </td><td>2018-01-30 </td><td><a href="http://www.iausofa.org/tandc.html">SOFA Software License</a> </td><td><a href="http://www.iausofa.org">www.iausofa.org</a> </td></tr>
 <tr>
