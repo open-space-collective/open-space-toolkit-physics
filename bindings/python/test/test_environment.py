@@ -53,6 +53,7 @@ def test_environment_hasObjectWithName ():
 
 ################################################################################################################################################################
 
+@pytest.mark.skip
 def test_environment_intersects ():
 
     environment = Environment.Default()
