@@ -90,7 +90,7 @@ TEST (Library_Physics_Environment_Ephemerides_SPICE, AccessFrame)
         {
             {
                 SPICE::Object::Earth,
-                File::Path(Path::Parse("../test/Library/Physics/Environment/Ephemerides/SPICE/AccessFrame/Scenario_1 Earth.csv")),
+                File::Path(Path::Parse("/app/test/Library/Physics/Environment/Ephemerides/SPICE/AccessFrame/Scenario_1 Earth.csv")),
                 0.0,
                 0.0,
                 0.03,
@@ -105,7 +105,7 @@ TEST (Library_Physics_Environment_Ephemerides_SPICE, AccessFrame)
             },
             {
                 SPICE::Object::Sun,
-                File::Path(Path::Parse("../test/Library/Physics/Environment/Ephemerides/SPICE/AccessFrame/Scenario_1 Sun.csv")),
+                File::Path(Path::Parse("/app/test/Library/Physics/Environment/Ephemerides/SPICE/AccessFrame/Scenario_1 Sun.csv")),
                 100.0,
                 1e-5,
                 0.0,
@@ -118,7 +118,7 @@ TEST (Library_Physics_Environment_Ephemerides_SPICE, AccessFrame)
             },
             {
                 SPICE::Object::Moon,
-                File::Path(Path::Parse("../test/Library/Physics/Environment/Ephemerides/SPICE/AccessFrame/Scenario_1 Moon.csv")),
+                File::Path(Path::Parse("/app/test/Library/Physics/Environment/Ephemerides/SPICE/AccessFrame/Scenario_1 Moon.csv")),
                 10.0,
                 1e-5,
                 1.0,

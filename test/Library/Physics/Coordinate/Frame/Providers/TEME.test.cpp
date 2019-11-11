@@ -47,8 +47,8 @@ TEST (Library_Physics_Coordinate_Frame_Providers_TEME, GetTransformAt)
 
         const Array<Pair<File, Angle>> referenceScenarios =
         {
-            { File::Path(Path::Parse("../test/Library/Physics/Coordinate/Frame/Providers/TEME/Scenario_A/Scenario ITRF_TEME.csv")), Angle::Arcseconds(1.0) },
-            { File::Path(Path::Parse("../test/Library/Physics/Coordinate/Frame/Providers/TEME/Scenario_B/Scenario ITRF_TEME.csv")), Angle::Arcseconds(20.0) }
+            { File::Path(Path::Parse("/app/test/Library/Physics/Coordinate/Frame/Providers/TEME/Scenario_A/Scenario ITRF_TEME.csv")), Angle::Arcseconds(1.0) },
+            { File::Path(Path::Parse("/app/test/Library/Physics/Coordinate/Frame/Providers/TEME/Scenario_B/Scenario ITRF_TEME.csv")), Angle::Arcseconds(20.0) }
         } ;
 
         for (const auto& referenceScenario : referenceScenarios)

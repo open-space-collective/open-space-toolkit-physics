@@ -126,35 +126,35 @@ TEST (Library_Physics_Environment_Utilities_Eclipse, EclipseIntervalsAtPosition)
                 Interval::Closed(Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC),
                 Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC)),
                 LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Meters(10.0)), // [TBM] Should be 0 [m]
-                File::Path(Path::Parse("../test/Library/Physics/Environment/Utilities/Eclipse/EclipseIntervalsAtPosition/Target_1 Eclipse.csv")),
+                File::Path(Path::Parse("/app/test/Library/Physics/Environment/Utilities/Eclipse/EclipseIntervalsAtPosition/Target_1 Eclipse.csv")),
                 Duration::Minutes(2.0) // [TBM] Should improve precision
             },
             {
                 Interval::Closed(Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC),
                 Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC)),
                 LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Kilometers(500.0)),
-                File::Path(Path::Parse("../test/Library/Physics/Environment/Utilities/Eclipse/EclipseIntervalsAtPosition/Target_2 Eclipse.csv")),
+                File::Path(Path::Parse("/app/test/Library/Physics/Environment/Utilities/Eclipse/EclipseIntervalsAtPosition/Target_2 Eclipse.csv")),
                 Duration::Minutes(2.0) // [TBM] Should improve precision
             },
             {
                 Interval::Closed(Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC),
                 Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC)),
                 LLA(Angle::Degrees(+90.0), Angle::Degrees(0.0), Length::Meters(10.0)), // [TBM] Should be 0 [m]
-                File::Path(Path::Parse("../test/Library/Physics/Environment/Utilities/Eclipse/EclipseIntervalsAtPosition/Target_3 Eclipse.csv")),
+                File::Path(Path::Parse("/app/test/Library/Physics/Environment/Utilities/Eclipse/EclipseIntervalsAtPosition/Target_3 Eclipse.csv")),
                 Duration::Minutes(2.0) // [TBM] Should improve precision
             },
             {
                 Interval::Closed(Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC),
                 Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC)),
                 LLA(Angle::Degrees(-90.0), Angle::Degrees(0.0), Length::Meters(10.0)), // [TBM] Should be 0 [m]
-                File::Path(Path::Parse("../test/Library/Physics/Environment/Utilities/Eclipse/EclipseIntervalsAtPosition/Target_4 Eclipse.csv")),
+                File::Path(Path::Parse("/app/test/Library/Physics/Environment/Utilities/Eclipse/EclipseIntervalsAtPosition/Target_4 Eclipse.csv")),
                 Duration::Minutes(2.0) // [TBM] Should improve precision
             },
             {
                 Interval::Closed(Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC),
                 Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC)),
                 LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Kilometers(5000.0)),
-                File::Path(Path::Parse("../test/Library/Physics/Environment/Utilities/Eclipse/EclipseIntervalsAtPosition/Target_5 Eclipse.csv")),
+                File::Path(Path::Parse("/app/test/Library/Physics/Environment/Utilities/Eclipse/EclipseIntervalsAtPosition/Target_5 Eclipse.csv")),
                 Duration::Minutes(2.0) // [TBM] Should improve precision
             }
         } ;

@@ -338,7 +338,7 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, ToCartesian)
 
         const Array<Tuple<File, Length>> referenceScenarios =
         {
-            { File::Path(Path::Parse("../test/Library/Physics/Coordinate/Spherical/LLA/ToCartesian/LLA 1.csv")), Length::Meters(1.0) }
+            { File::Path(Path::Parse("/app/test/Library/Physics/Coordinate/Spherical/LLA/ToCartesian/LLA 1.csv")), Length::Meters(1.0) }
         } ;
 
         for (const auto& referenceScenario : referenceScenarios)
@@ -493,7 +493,7 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, Cartesian)
 
         const Array<Tuple<File, Angle, Length>> referenceScenarios =
         {
-            { File::Path(Path::Parse("../test/Library/Physics/Coordinate/Spherical/LLA/Cartesian/LLA 1.csv")), Angle::Arcseconds(0.01), Length::Meters(1.0) }
+            { File::Path(Path::Parse("/app/test/Library/Physics/Coordinate/Spherical/LLA/Cartesian/LLA 1.csv")), Angle::Arcseconds(0.01), Length::Meters(1.0) }
         } ;
 
         for (const auto& referenceScenario : referenceScenarios)

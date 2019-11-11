@@ -1044,6 +1044,11 @@ TEST (Library_Physics_Coordinate_Frame, WithName)
 
     {
 
+        if (!Frame::Exists("ITRF"))
+        {
+            Frame::ITRF() ;
+        }
+
         EXPECT_TRUE(Frame::WithName("ITRF")->isDefined()) ;
 
     }

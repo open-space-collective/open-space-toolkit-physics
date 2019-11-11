@@ -1,5 +1,4 @@
-Library ▸ Physics ▸ Bindings ▸ Python
-=====================================
+# Library ▸ Physics ▸ Bindings ▸ Python
 
 Physical units, time, reference frames, environment modeling.
 
