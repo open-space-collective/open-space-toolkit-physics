@@ -27,6 +27,13 @@ RUN git clone --branch 5.2.0 --depth 1 https://github.com/fmtlib/fmt.git /tmp/fm
  && make install \
  && rm -rf /tmp/fmt
 
+## ordered-map [0.6.0]
+
+RUN git clone --branch v0.6.0 --depth 1 https://github.com/Tessil/ordered-map.git /tmp/ordered-map \
+ && cd /tmp/ordered-map \
+ && cp -r ./include/tsl /usr/local/include \
+ && rm -rf /tmp/ordered-map
+
 ## Eigen [3.3.7]
 
 RUN mkdir /tmp/eigen \
