@@ -61,6 +61,10 @@ LABEL maintainer="lucas@loftorbital.com"
 
 RUN ln -s /usr/bin/pip3 /usr/bin/pip
 
+RUN dnf update -y \
+ && dnf install -y libcurl-devel openssl-devel \
+ && dnf clean all
+
 RUN pip install numpy
 
 COPY --from=python-builder /usr/local/lib/python3.7/site-packages/Library /usr/local/lib/python3.7/site-packages/Library

@@ -410,6 +410,11 @@ _test-unit-python: _build-release-image-python
 	--rm \
 	--workdir=/usr/local/lib/python3.7/site-packages/Library/Physics \
 	--entrypoint="" \
+	--volume="$(project_directory)/share:/app/share" \
+	--env=LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY \
+	--env=LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY \
+	--env=LIBRARY_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY \
+	--env=LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY \
 	$(docker_release_image_python_repository):$(docker_image_version)-$(target) \
 	/bin/bash -c "pip install pytest && pytest ."
 
