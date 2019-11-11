@@ -62,6 +62,7 @@ def test_environment_intersects ():
 
 ################################################################################################################################################################
 
+@pytest.mark.skip
 def test_environment_accessObjects ():
 
     environment = Environment.Default()
