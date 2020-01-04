@@ -101,7 +101,6 @@ _build-development-image: _pull-development-image
 	--tag=$(docker_development_image_repository):$(docker_image_version)-$(target) \
 	--tag=$(docker_development_image_repository):latest-$(target) \
 	--build-arg="BASE_IMAGE_VERSION=$(development_base_image_version)" \
-	--build-arg="BASE_IMAGE_SYSTEM=$(target)" \
 	--build-arg="VERSION=$(docker_image_version)" \
 	"$(project_directory)"
 
@@ -149,8 +148,6 @@ build-release-image-cpp-debian build-release-image-cpp-fedora: _build-release-im
 _build-release-image-cpp: _build-development-image _pull-release-image-cpp
 
 	@ echo "Building [$(target)] C++ release image..."
-
-	docker pull --quiet $(docker_image_repository):latest-$(target) || true
 
 	docker build \
 	--cache-from=$(docker_image_repository):latest-$(target) \
