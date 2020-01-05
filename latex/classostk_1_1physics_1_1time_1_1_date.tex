@@ -1,0 +1,441 @@
+\hypertarget{classostk_1_1physics_1_1time_1_1_date}{}\section{ostk\+:\+:physics\+:\+:time\+:\+:Date Class Reference}
+\label{classostk_1_1physics_1_1time_1_1_date}\index{ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}}
+
+
+\hyperlink{classostk_1_1physics_1_1time_1_1_date}{Date} as year, month and day.  
+
+
+
+
+{\ttfamily \#include $<$Date.\+hpp$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{classostk_1_1physics_1_1time_1_1_date_a77a2e52ee3bcfd7c93139d2fe2c9a141}{Format} \{ \hyperlink{classostk_1_1physics_1_1time_1_1_date_a77a2e52ee3bcfd7c93139d2fe2c9a141aec0fc0100c4fc1ce4eea230c3dc10360}{Format\+::\+Undefined}, 
+\hyperlink{classostk_1_1physics_1_1time_1_1_date_a77a2e52ee3bcfd7c93139d2fe2c9a141aeb6d8ae6f20283755b339c0dc273988b}{Format\+::\+Standard}, 
+\hyperlink{classostk_1_1physics_1_1time_1_1_date_a77a2e52ee3bcfd7c93139d2fe2c9a141a9c3581080a26f47bbe0746a2d9b7cf2c}{Format\+::\+S\+TK}
+ \}\begin{DoxyCompactList}\small\item\em \hyperlink{classostk_1_1physics_1_1time_1_1_date}{Date} format. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classostk_1_1physics_1_1time_1_1_date_a3ff43a5f7a8ce8350e894b51befeb50d}{Date} (Uint16 a\+Year, Uint8 a\+Month, Uint8 a\+Day)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+bool \hyperlink{classostk_1_1physics_1_1time_1_1_date_aeb81c9a588fb376cff125b5c7a6c102b}{operator==} (const \hyperlink{classostk_1_1physics_1_1time_1_1_date}{Date} \&a\+Date) const
+\begin{DoxyCompactList}\small\item\em Equal to operator. \end{DoxyCompactList}\item 
+bool \hyperlink{classostk_1_1physics_1_1time_1_1_date_a556e99ee4d580ef765e67e150193872e}{operator!=} (const \hyperlink{classostk_1_1physics_1_1time_1_1_date}{Date} \&a\+Date) const
+\begin{DoxyCompactList}\small\item\em Not equal to operator. \end{DoxyCompactList}\item 
+bool \hyperlink{classostk_1_1physics_1_1time_1_1_date_af73384bd32110f0b66214afd79b60b60}{is\+Defined} () const
+\begin{DoxyCompactList}\small\item\em Check if date is defined. \end{DoxyCompactList}\item 
+Uint16 \hyperlink{classostk_1_1physics_1_1time_1_1_date_ac22f785a79d49e0ffd96e38e73fe94cc}{get\+Year} () const
+\begin{DoxyCompactList}\small\item\em Get year (1400 -\/ 9999) \end{DoxyCompactList}\item 
+Uint8 \hyperlink{classostk_1_1physics_1_1time_1_1_date_a82987dc8c6a37826cb4810781eb4cff6}{get\+Month} () const
+\begin{DoxyCompactList}\small\item\em Get month (1 -\/ 12) \end{DoxyCompactList}\item 
+Uint8 \hyperlink{classostk_1_1physics_1_1time_1_1_date_a8c8303a3934138bf18cebe4dd2430f83}{get\+Day} () const
+\begin{DoxyCompactList}\small\item\em Get day (1 -\/ 31) \end{DoxyCompactList}\item 
+String \hyperlink{classostk_1_1physics_1_1time_1_1_date_a633d86cf7c5baf4726b08a78fbc6dd47}{to\+String} (const \hyperlink{classostk_1_1physics_1_1time_1_1_date_a77a2e52ee3bcfd7c93139d2fe2c9a141}{Date\+::\+Format} \&a\+Format=\hyperlink{classostk_1_1physics_1_1time_1_1_date_a77a2e52ee3bcfd7c93139d2fe2c9a141aeb6d8ae6f20283755b339c0dc273988b}{Date\+::\+Format\+::\+Standard}) const
+\begin{DoxyCompactList}\small\item\em Get string representation of date. \end{DoxyCompactList}\item 
+void \hyperlink{classostk_1_1physics_1_1time_1_1_date_a86b990462a6e3a79211b7a3c888ade04}{set\+Year} (Uint16 a\+Year)
+\begin{DoxyCompactList}\small\item\em Set year. \end{DoxyCompactList}\item 
+void \hyperlink{classostk_1_1physics_1_1time_1_1_date_a40a08deb839e23115ef4ca822497dd9b}{set\+Month} (Uint8 a\+Month)
+\begin{DoxyCompactList}\small\item\em Set month. \end{DoxyCompactList}\item 
+void \hyperlink{classostk_1_1physics_1_1time_1_1_date_aa4e71082fc602b1a1e5740e9db04b071}{set\+Day} (Uint8 a\+Day)
+\begin{DoxyCompactList}\small\item\em Set day. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classostk_1_1physics_1_1time_1_1_date}{Date} \hyperlink{classostk_1_1physics_1_1time_1_1_date_adbffa0c4847013c5a562acccda582f4e}{Undefined} ()
+\begin{DoxyCompactList}\small\item\em Constructs an undefined date. \end{DoxyCompactList}\item 
+static \hyperlink{classostk_1_1physics_1_1time_1_1_date}{Date} \hyperlink{classostk_1_1physics_1_1time_1_1_date_a0291e75d2537f1df98246a811eb24811}{J2000} ()
+\begin{DoxyCompactList}\small\item\em J2000 epoch (2000-\/01-\/01) \end{DoxyCompactList}\item 
+static \hyperlink{classostk_1_1physics_1_1time_1_1_date}{Date} \hyperlink{classostk_1_1physics_1_1time_1_1_date_afd90b35a6ca9b2a55a69a3de34b09623}{G\+P\+S\+Epoch} ()
+\begin{DoxyCompactList}\small\item\em G\+PS epoch (1980-\/01-\/06) \end{DoxyCompactList}\item 
+static \hyperlink{classostk_1_1physics_1_1time_1_1_date}{Date} \hyperlink{classostk_1_1physics_1_1time_1_1_date_acc3389d494f95b539f600997d1ec7d85}{Unix\+Epoch} ()
+\begin{DoxyCompactList}\small\item\em Unix epoch (1970-\/01-\/01) \end{DoxyCompactList}\item 
+static \hyperlink{classostk_1_1physics_1_1time_1_1_date}{Date} \hyperlink{classostk_1_1physics_1_1time_1_1_date_a1745f88cba99bde5a17c30170b80b1b4}{Modified\+Julian\+Date\+Epoch} ()
+\begin{DoxyCompactList}\small\item\em Modified julian dates epoch (1858-\/11-\/17) \end{DoxyCompactList}\item 
+static \hyperlink{classostk_1_1physics_1_1time_1_1_date}{Date} \hyperlink{classostk_1_1physics_1_1time_1_1_date_a385deed9349a7b4fc20f5502c4919600}{Parse} (const String \&a\+String, const \hyperlink{classostk_1_1physics_1_1time_1_1_date_a77a2e52ee3bcfd7c93139d2fe2c9a141}{Date\+::\+Format} \&a\+Format=\hyperlink{classostk_1_1physics_1_1time_1_1_date_a77a2e52ee3bcfd7c93139d2fe2c9a141aec0fc0100c4fc1ce4eea230c3dc10360}{Date\+::\+Format\+::\+Undefined})
+\begin{DoxyCompactList}\small\item\em Constructs a date from a string representation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \hyperlink{classostk_1_1physics_1_1time_1_1_date_a70ae98f5f6c575ec0c9bd948d12dea41}{operator$<$$<$} (std\+::ostream \&an\+Output\+Stream, const \hyperlink{classostk_1_1physics_1_1time_1_1_date}{Date} \&a\+Date)
+\begin{DoxyCompactList}\small\item\em Output stream operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classostk_1_1physics_1_1time_1_1_date}{Date} as year, month and day. 
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1time_1_1_date_a77a2e52ee3bcfd7c93139d2fe2c9a141}\label{classostk_1_1physics_1_1time_1_1_date_a77a2e52ee3bcfd7c93139d2fe2c9a141}} 
+\index{ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}!Format@{Format}}
+\index{Format@{Format}!ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}}
+\subsubsection{\texorpdfstring{Format}{Format}}
+{\footnotesize\ttfamily enum \hyperlink{classostk_1_1physics_1_1time_1_1_date_a77a2e52ee3bcfd7c93139d2fe2c9a141}{ostk\+::physics\+::time\+::\+Date\+::\+Format}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+\hyperlink{classostk_1_1physics_1_1time_1_1_date}{Date} format. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Undefined@{Undefined}!ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}}\index{ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}!Undefined@{Undefined}}}\mbox{\Hypertarget{classostk_1_1physics_1_1time_1_1_date_a77a2e52ee3bcfd7c93139d2fe2c9a141aec0fc0100c4fc1ce4eea230c3dc10360}\label{classostk_1_1physics_1_1time_1_1_date_a77a2e52ee3bcfd7c93139d2fe2c9a141aec0fc0100c4fc1ce4eea230c3dc10360}} 
+Undefined&Undefined format. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Standard@{Standard}!ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}}\index{ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}!Standard@{Standard}}}\mbox{\Hypertarget{classostk_1_1physics_1_1time_1_1_date_a77a2e52ee3bcfd7c93139d2fe2c9a141aeb6d8ae6f20283755b339c0dc273988b}\label{classostk_1_1physics_1_1time_1_1_date_a77a2e52ee3bcfd7c93139d2fe2c9a141aeb6d8ae6f20283755b339c0dc273988b}} 
+Standard&Standard format (Y\+Y\+Y\+Y\+:\+MM\+:DD) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+TK@{S\+TK}!ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}}\index{ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}!S\+TK@{S\+TK}}}\mbox{\Hypertarget{classostk_1_1physics_1_1time_1_1_date_a77a2e52ee3bcfd7c93139d2fe2c9a141a9c3581080a26f47bbe0746a2d9b7cf2c}\label{classostk_1_1physics_1_1time_1_1_date_a77a2e52ee3bcfd7c93139d2fe2c9a141a9c3581080a26f47bbe0746a2d9b7cf2c}} 
+S\+TK&S\+TK format (d Mon Y\+Y\+YY) \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1time_1_1_date_a3ff43a5f7a8ce8350e894b51befeb50d}\label{classostk_1_1physics_1_1time_1_1_date_a3ff43a5f7a8ce8350e894b51befeb50d}} 
+\index{ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}!Date@{Date}}
+\index{Date@{Date}!ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}}
+\subsubsection{\texorpdfstring{Date()}{Date()}}
+{\footnotesize\ttfamily ostk\+::physics\+::time\+::\+Date\+::\+Date (\begin{DoxyParamCaption}\item[{Uint16}]{a\+Year,  }\item[{Uint8}]{a\+Month,  }\item[{Uint8}]{a\+Day }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+
+\begin{DoxyCode}
+\hyperlink{classostk_1_1physics_1_1time_1_1_date_a3ff43a5f7a8ce8350e894b51befeb50d}{Date} date(2018, 1, 2) ; \textcolor{comment}{// 2018-01-02}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Year} & A year (1400 -\/ 9999) \\
+\hline
+\mbox{\tt in}  & {\em a\+Month} & A month (1 -\/ 12) \\
+\hline
+\mbox{\tt in}  & {\em a\+Day} & A day (1 -\/ 31) \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1time_1_1_date_a8c8303a3934138bf18cebe4dd2430f83}\label{classostk_1_1physics_1_1time_1_1_date_a8c8303a3934138bf18cebe4dd2430f83}} 
+\index{ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}!get\+Day@{get\+Day}}
+\index{get\+Day@{get\+Day}!ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}}
+\subsubsection{\texorpdfstring{get\+Day()}{getDay()}}
+{\footnotesize\ttfamily Uint8 ostk\+::physics\+::time\+::\+Date\+::get\+Day (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get day (1 -\/ 31) 
+
+\begin{DoxyReturn}{Returns}
+Day 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1time_1_1_date_a82987dc8c6a37826cb4810781eb4cff6}\label{classostk_1_1physics_1_1time_1_1_date_a82987dc8c6a37826cb4810781eb4cff6}} 
+\index{ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}!get\+Month@{get\+Month}}
+\index{get\+Month@{get\+Month}!ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}}
+\subsubsection{\texorpdfstring{get\+Month()}{getMonth()}}
+{\footnotesize\ttfamily Uint8 ostk\+::physics\+::time\+::\+Date\+::get\+Month (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get month (1 -\/ 12) 
+
+\begin{DoxyReturn}{Returns}
+Month 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1time_1_1_date_ac22f785a79d49e0ffd96e38e73fe94cc}\label{classostk_1_1physics_1_1time_1_1_date_ac22f785a79d49e0ffd96e38e73fe94cc}} 
+\index{ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}!get\+Year@{get\+Year}}
+\index{get\+Year@{get\+Year}!ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}}
+\subsubsection{\texorpdfstring{get\+Year()}{getYear()}}
+{\footnotesize\ttfamily Uint16 ostk\+::physics\+::time\+::\+Date\+::get\+Year (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get year (1400 -\/ 9999) 
+
+\begin{DoxyReturn}{Returns}
+Year 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1time_1_1_date_afd90b35a6ca9b2a55a69a3de34b09623}\label{classostk_1_1physics_1_1time_1_1_date_afd90b35a6ca9b2a55a69a3de34b09623}} 
+\index{ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}!G\+P\+S\+Epoch@{G\+P\+S\+Epoch}}
+\index{G\+P\+S\+Epoch@{G\+P\+S\+Epoch}!ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}}
+\subsubsection{\texorpdfstring{G\+P\+S\+Epoch()}{GPSEpoch()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1time_1_1_date}{Date} ostk\+::physics\+::time\+::\+Date\+::\+G\+P\+S\+Epoch (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+G\+PS epoch (1980-\/01-\/06) 
+
+http\+://tycho.usno.\+navy.\+mil/gpstt.html
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classostk_1_1physics_1_1time_1_1_date}{Date} at G\+PS epoch 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1time_1_1_date_af73384bd32110f0b66214afd79b60b60}\label{classostk_1_1physics_1_1time_1_1_date_af73384bd32110f0b66214afd79b60b60}} 
+\index{ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}!is\+Defined@{is\+Defined}}
+\index{is\+Defined@{is\+Defined}!ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}}
+\subsubsection{\texorpdfstring{is\+Defined()}{isDefined()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::time\+::\+Date\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Check if date is defined. 
+
+
+\begin{DoxyCode}
+\hyperlink{classostk_1_1physics_1_1time_1_1_date_a3ff43a5f7a8ce8350e894b51befeb50d}{Date}(2018, 1, 2).isDefined() ; \textcolor{comment}{// True}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+True if date is defined 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1time_1_1_date_a0291e75d2537f1df98246a811eb24811}\label{classostk_1_1physics_1_1time_1_1_date_a0291e75d2537f1df98246a811eb24811}} 
+\index{ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}!J2000@{J2000}}
+\index{J2000@{J2000}!ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}}
+\subsubsection{\texorpdfstring{J2000()}{J2000()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1time_1_1_date}{Date} ostk\+::physics\+::time\+::\+Date\+::\+J2000 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+J2000 epoch (2000-\/01-\/01) 
+
+https\+://en.wikipedia.\+org/wiki/\+Epoch\+\_\+(astronomy)\#\+Julian\+\_\+years\+\_\+and\+\_\+\+J2000
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classostk_1_1physics_1_1time_1_1_date}{Date} at J2000 epoch 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1time_1_1_date_a1745f88cba99bde5a17c30170b80b1b4}\label{classostk_1_1physics_1_1time_1_1_date_a1745f88cba99bde5a17c30170b80b1b4}} 
+\index{ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}!Modified\+Julian\+Date\+Epoch@{Modified\+Julian\+Date\+Epoch}}
+\index{Modified\+Julian\+Date\+Epoch@{Modified\+Julian\+Date\+Epoch}!ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}}
+\subsubsection{\texorpdfstring{Modified\+Julian\+Date\+Epoch()}{ModifiedJulianDateEpoch()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1time_1_1_date}{Date} ostk\+::physics\+::time\+::\+Date\+::\+Modified\+Julian\+Date\+Epoch (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Modified julian dates epoch (1858-\/11-\/17) 
+
+https\+://en.wikipedia.\+org/wiki/\+Julian\+\_\+day
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classostk_1_1physics_1_1time_1_1_date}{Date} at Modified Julian epoch 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1time_1_1_date_a556e99ee4d580ef765e67e150193872e}\label{classostk_1_1physics_1_1time_1_1_date_a556e99ee4d580ef765e67e150193872e}} 
+\index{ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}}
+\subsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::time\+::\+Date\+::operator!= (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1time_1_1_date}{Date} \&}]{a\+Date }\end{DoxyParamCaption}) const}
+
+
+
+Not equal to operator. 
+
+
+\begin{DoxyCode}
+\hyperlink{classostk_1_1physics_1_1time_1_1_date_a3ff43a5f7a8ce8350e894b51befeb50d}{Date}(2018, 1, 2) != \hyperlink{classostk_1_1physics_1_1time_1_1_date_a3ff43a5f7a8ce8350e894b51befeb50d}{Date}(2018, 1, 1) ; \textcolor{comment}{// True}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Date} & A date \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if dates are not equal 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1time_1_1_date_aeb81c9a588fb376cff125b5c7a6c102b}\label{classostk_1_1physics_1_1time_1_1_date_aeb81c9a588fb376cff125b5c7a6c102b}} 
+\index{ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}!operator==@{operator==}}
+\index{operator==@{operator==}!ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}}
+\subsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::time\+::\+Date\+::operator== (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1time_1_1_date}{Date} \&}]{a\+Date }\end{DoxyParamCaption}) const}
+
+
+
+Equal to operator. 
+
+
+\begin{DoxyCode}
+\hyperlink{classostk_1_1physics_1_1time_1_1_date_a3ff43a5f7a8ce8350e894b51befeb50d}{Date}(2018, 1, 2) == \hyperlink{classostk_1_1physics_1_1time_1_1_date_a3ff43a5f7a8ce8350e894b51befeb50d}{Date}(2018, 1, 2) ; \textcolor{comment}{// True}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Date} & A date \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if dates are equal 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1time_1_1_date_a385deed9349a7b4fc20f5502c4919600}\label{classostk_1_1physics_1_1time_1_1_date_a385deed9349a7b4fc20f5502c4919600}} 
+\index{ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}!Parse@{Parse}}
+\index{Parse@{Parse}!ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}}
+\subsubsection{\texorpdfstring{Parse()}{Parse()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1time_1_1_date}{Date} ostk\+::physics\+::time\+::\+Date\+::\+Parse (\begin{DoxyParamCaption}\item[{const String \&}]{a\+String,  }\item[{const \hyperlink{classostk_1_1physics_1_1time_1_1_date_a77a2e52ee3bcfd7c93139d2fe2c9a141}{Date\+::\+Format} \&}]{a\+Format = {\ttfamily \hyperlink{classostk_1_1physics_1_1time_1_1_date_a77a2e52ee3bcfd7c93139d2fe2c9a141aec0fc0100c4fc1ce4eea230c3dc10360}{Date\+::\+Format\+::\+Undefined}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Constructs a date from a string representation. 
+
+
+\begin{DoxyCode}
+\hyperlink{classostk_1_1physics_1_1time_1_1_date_a3ff43a5f7a8ce8350e894b51befeb50d}{Date} date = \hyperlink{classostk_1_1physics_1_1time_1_1_date_a385deed9349a7b4fc20f5502c4919600}{Date::Parse}(\textcolor{stringliteral}{"2018-01-02"}) ; \textcolor{comment}{// 2018-01-02}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+String} & A string \\
+\hline
+\mbox{\tt in}  & {\em (optional)} & a\+Format A date format \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classostk_1_1physics_1_1time_1_1_date}{Date} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1time_1_1_date_aa4e71082fc602b1a1e5740e9db04b071}\label{classostk_1_1physics_1_1time_1_1_date_aa4e71082fc602b1a1e5740e9db04b071}} 
+\index{ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}!set\+Day@{set\+Day}}
+\index{set\+Day@{set\+Day}!ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}}
+\subsubsection{\texorpdfstring{set\+Day()}{setDay()}}
+{\footnotesize\ttfamily void ostk\+::physics\+::time\+::\+Date\+::set\+Day (\begin{DoxyParamCaption}\item[{Uint8}]{a\+Day }\end{DoxyParamCaption})}
+
+
+
+Set day. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Day} & A day (1 -\/ 31) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classostk_1_1physics_1_1time_1_1_date_a40a08deb839e23115ef4ca822497dd9b}\label{classostk_1_1physics_1_1time_1_1_date_a40a08deb839e23115ef4ca822497dd9b}} 
+\index{ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}!set\+Month@{set\+Month}}
+\index{set\+Month@{set\+Month}!ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}}
+\subsubsection{\texorpdfstring{set\+Month()}{setMonth()}}
+{\footnotesize\ttfamily void ostk\+::physics\+::time\+::\+Date\+::set\+Month (\begin{DoxyParamCaption}\item[{Uint8}]{a\+Month }\end{DoxyParamCaption})}
+
+
+
+Set month. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Month} & A month (1 -\/ 12) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classostk_1_1physics_1_1time_1_1_date_a86b990462a6e3a79211b7a3c888ade04}\label{classostk_1_1physics_1_1time_1_1_date_a86b990462a6e3a79211b7a3c888ade04}} 
+\index{ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}!set\+Year@{set\+Year}}
+\index{set\+Year@{set\+Year}!ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}}
+\subsubsection{\texorpdfstring{set\+Year()}{setYear()}}
+{\footnotesize\ttfamily void ostk\+::physics\+::time\+::\+Date\+::set\+Year (\begin{DoxyParamCaption}\item[{Uint16}]{a\+Year }\end{DoxyParamCaption})}
+
+
+
+Set year. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Year} & A year (1400 -\/ 9999) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classostk_1_1physics_1_1time_1_1_date_a633d86cf7c5baf4726b08a78fbc6dd47}\label{classostk_1_1physics_1_1time_1_1_date_a633d86cf7c5baf4726b08a78fbc6dd47}} 
+\index{ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}!to\+String@{to\+String}}
+\index{to\+String@{to\+String}!ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}}
+\subsubsection{\texorpdfstring{to\+String()}{toString()}}
+{\footnotesize\ttfamily String ostk\+::physics\+::time\+::\+Date\+::to\+String (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1time_1_1_date_a77a2e52ee3bcfd7c93139d2fe2c9a141}{Date\+::\+Format} \&}]{a\+Format = {\ttfamily \hyperlink{classostk_1_1physics_1_1time_1_1_date_a77a2e52ee3bcfd7c93139d2fe2c9a141aeb6d8ae6f20283755b339c0dc273988b}{Date\+::\+Format\+::\+Standard}} }\end{DoxyParamCaption}) const}
+
+
+
+Get string representation of date. 
+
+
+\begin{DoxyCode}
+\hyperlink{classostk_1_1physics_1_1time_1_1_date_a3ff43a5f7a8ce8350e894b51befeb50d}{Date}(2018, 1, 2).toString() ; \textcolor{comment}{// 2018-01-02}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em (optional)} & a\+Format A date format \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Serialized date 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1time_1_1_date_adbffa0c4847013c5a562acccda582f4e}\label{classostk_1_1physics_1_1time_1_1_date_adbffa0c4847013c5a562acccda582f4e}} 
+\index{ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}!Undefined@{Undefined}}
+\index{Undefined@{Undefined}!ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}}
+\subsubsection{\texorpdfstring{Undefined()}{Undefined()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1time_1_1_date}{Date} ostk\+::physics\+::time\+::\+Date\+::\+Undefined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Constructs an undefined date. 
+
+
+\begin{DoxyCode}
+\hyperlink{classostk_1_1physics_1_1time_1_1_date_a3ff43a5f7a8ce8350e894b51befeb50d}{Date} date = \hyperlink{classostk_1_1physics_1_1time_1_1_date_adbffa0c4847013c5a562acccda582f4e}{Date::Undefined}() ;
+date.isDefined() ; \textcolor{comment}{// False}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+Undefined date 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1time_1_1_date_acc3389d494f95b539f600997d1ec7d85}\label{classostk_1_1physics_1_1time_1_1_date_acc3389d494f95b539f600997d1ec7d85}} 
+\index{ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}!Unix\+Epoch@{Unix\+Epoch}}
+\index{Unix\+Epoch@{Unix\+Epoch}!ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}}
+\subsubsection{\texorpdfstring{Unix\+Epoch()}{UnixEpoch()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1time_1_1_date}{Date} ostk\+::physics\+::time\+::\+Date\+::\+Unix\+Epoch (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Unix epoch (1970-\/01-\/01) 
+
+https\+://en.wikipedia.\+org/wiki/\+Unix\+\_\+time
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classostk_1_1physics_1_1time_1_1_date}{Date} at Unix epoch 
+\end{DoxyReturn}
+
+
+\subsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1time_1_1_date_a70ae98f5f6c575ec0c9bd948d12dea41}\label{classostk_1_1physics_1_1time_1_1_date_a70ae98f5f6c575ec0c9bd948d12dea41}} 
+\index{ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!ostk\+::physics\+::time\+::\+Date@{ostk\+::physics\+::time\+::\+Date}}
+\subsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{an\+Output\+Stream,  }\item[{const \hyperlink{classostk_1_1physics_1_1time_1_1_date}{Date} \&}]{a\+Date }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Output stream operator. 
+
+
+\begin{DoxyCode}
+std::cout << \hyperlink{classostk_1_1physics_1_1time_1_1_date_a3ff43a5f7a8ce8350e894b51befeb50d}{Date}(2018, 1, 2) ;
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em an\+Output\+Stream} & An output stream \\
+\hline
+\mbox{\tt in}  & {\em a\+Date} & A date \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to output stream 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Open\+Space\+Toolkit/\+Physics/\+Time/\hyperlink{_date_8hpp}{Date.\+hpp}\item 
+src/\+Open\+Space\+Toolkit/\+Physics/\+Time/\hyperlink{_date_8cpp}{Date.\+cpp}\end{DoxyCompactItemize}

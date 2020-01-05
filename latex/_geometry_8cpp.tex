@@ -1,44 +1,44 @@
-\hypertarget{_geometry_8cpp}{}\section{src/\+Library/\+Physics/\+Environment/\+Object/\+Geometry.cpp File Reference}
-\label{_geometry_8cpp}\index{src/\+Library/\+Physics/\+Environment/\+Object/\+Geometry.\+cpp@{src/\+Library/\+Physics/\+Environment/\+Object/\+Geometry.\+cpp}}
-{\ttfamily \#include $<$Library/\+Physics/\+Environment/\+Object/\+Geometry.\+hpp$>$}\newline
-{\ttfamily \#include $<$Library/\+Physics/\+Coordinate/\+Transform.\+hpp$>$}\newline
-{\ttfamily \#include $<$Library/\+Mathematics/\+Geometry/3\+D/\+Transformations/\+Rotations/\+Rotation\+Matrix.\+hpp$>$}\newline
-{\ttfamily \#include $<$Library/\+Mathematics/\+Geometry/3\+D/\+Transformations/\+Rotations/\+Rotation\+Vector.\+hpp$>$}\newline
-{\ttfamily \#include $<$Library/\+Mathematics/\+Geometry/3\+D/\+Intersection.\+hpp$>$}\newline
-{\ttfamily \#include $<$Library/\+Mathematics/\+Geometry/3\+D/\+Transformation.\+hpp$>$}\newline
-{\ttfamily \#include $<$Library/\+Mathematics/\+Geometry/3\+D/\+Objects/\+Pyramid.\+hpp$>$}\newline
-{\ttfamily \#include $<$Library/\+Mathematics/\+Geometry/3\+D/\+Objects/\+Ellipsoid.\+hpp$>$}\newline
-{\ttfamily \#include $<$Library/\+Mathematics/\+Geometry/3\+D/\+Objects/\+Sphere.\+hpp$>$}\newline
-{\ttfamily \#include $<$Library/\+Mathematics/\+Geometry/3\+D/\+Objects/\+Plane.\+hpp$>$}\newline
-{\ttfamily \#include $<$Library/\+Mathematics/\+Geometry/3\+D/\+Objects/\+Polygon.\+hpp$>$}\newline
-{\ttfamily \#include $<$Library/\+Mathematics/\+Geometry/3\+D/\+Objects/\+Line\+String.\+hpp$>$}\newline
-{\ttfamily \#include $<$Library/\+Mathematics/\+Geometry/3\+D/\+Objects/\+Segment.\+hpp$>$}\newline
-{\ttfamily \#include $<$Library/\+Mathematics/\+Geometry/3\+D/\+Objects/\+Ray.\+hpp$>$}\newline
-{\ttfamily \#include $<$Library/\+Mathematics/\+Geometry/3\+D/\+Objects/\+Line.\+hpp$>$}\newline
-{\ttfamily \#include $<$Library/\+Mathematics/\+Geometry/3\+D/\+Objects/\+Point\+Set.\+hpp$>$}\newline
-{\ttfamily \#include $<$Library/\+Mathematics/\+Geometry/3\+D/\+Objects/\+Point.\+hpp$>$}\newline
-{\ttfamily \#include $<$Library/\+Core/\+Error.\+hpp$>$}\newline
-{\ttfamily \#include $<$Library/\+Core/\+Utilities.\+hpp$>$}\newline
+\hypertarget{_geometry_8cpp}{}\section{src/\+Open\+Space\+Toolkit/\+Physics/\+Environment/\+Object/\+Geometry.cpp File Reference}
+\label{_geometry_8cpp}\index{src/\+Open\+Space\+Toolkit/\+Physics/\+Environment/\+Object/\+Geometry.\+cpp@{src/\+Open\+Space\+Toolkit/\+Physics/\+Environment/\+Object/\+Geometry.\+cpp}}
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Environment/\+Object/\+Geometry.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Transform.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Mathematics/\+Geometry/3\+D/\+Transformations/\+Rotations/\+Rotation\+Matrix.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Mathematics/\+Geometry/3\+D/\+Transformations/\+Rotations/\+Rotation\+Vector.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Mathematics/\+Geometry/3\+D/\+Intersection.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Mathematics/\+Geometry/3\+D/\+Transformation.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Mathematics/\+Geometry/3\+D/\+Objects/\+Pyramid.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Mathematics/\+Geometry/3\+D/\+Objects/\+Ellipsoid.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Mathematics/\+Geometry/3\+D/\+Objects/\+Sphere.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Mathematics/\+Geometry/3\+D/\+Objects/\+Plane.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Mathematics/\+Geometry/3\+D/\+Objects/\+Polygon.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Mathematics/\+Geometry/3\+D/\+Objects/\+Line\+String.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Mathematics/\+Geometry/3\+D/\+Objects/\+Segment.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Mathematics/\+Geometry/3\+D/\+Objects/\+Ray.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Mathematics/\+Geometry/3\+D/\+Objects/\+Line.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Mathematics/\+Geometry/3\+D/\+Objects/\+Point\+Set.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Mathematics/\+Geometry/3\+D/\+Objects/\+Point.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Core/\+Error.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Core/\+Utilities.\+hpp$>$}\newline
 \subsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
- \hyperlink{namespacelibrary}{library}
+ \hyperlink{namespaceostk}{ostk}
 \item 
- \hyperlink{namespacelibrary_1_1physics}{library\+::physics}
+ \hyperlink{namespaceostk_1_1physics}{ostk\+::physics}
 \item 
- \hyperlink{namespacelibrary_1_1physics_1_1env}{library\+::physics\+::env}
+ \hyperlink{namespaceostk_1_1physics_1_1env}{ostk\+::physics\+::env}
 \item 
- \hyperlink{namespacelibrary_1_1physics_1_1env_1_1object}{library\+::physics\+::env\+::object}
+ \hyperlink{namespaceostk_1_1physics_1_1env_1_1object}{ostk\+::physics\+::env\+::object}
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-std\+::ostream \& \hyperlink{namespacelibrary_1_1physics_1_1env_1_1object_a165109a96a386cf1ef3ca96e4b1694f4}{library\+::physics\+::env\+::object\+::operator$<$$<$} (std\+::ostream \&an\+Output\+Stream, const Geometry \&a\+Geometry)
+std\+::ostream \& \hyperlink{namespaceostk_1_1physics_1_1env_1_1object_aacb8176754929dc71f3d0ef35d371bdf}{ostk\+::physics\+::env\+::object\+::operator$<$$<$} (std\+::ostream \&an\+Output\+Stream, const Geometry \&a\+Geometry)
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Library ▸ Physics
+Open Space Toolkit ▸ Physics
 
 \begin{DoxyAuthor}{Author}
 Lucas Brémond \href{mailto:lucas@loftorbital.com}{\tt lucas@loftorbital.\+com}  Apache License 2.\+0 

@@ -1,5 +1,5 @@
 var _eclipse_8cpp =
 [
-    [ "eclipseIntervalsAtPosition", "_eclipse_8cpp.html#ae138a495bc66b6c3ff4dc5e899ca1587", null ],
-    [ "isPositionInEclipse", "_eclipse_8cpp.html#a8e0f4d40a34e939f9ba87c3f52e36765", null ]
+    [ "eclipseIntervalsAtPosition", "_eclipse_8cpp.html#a9da13011efaf44a053fe532663ec16a1", null ],
+    [ "isPositionInEclipse", "_eclipse_8cpp.html#a09c27d154a98f8de9b0015f0b3b6d36d", null ]
 ];

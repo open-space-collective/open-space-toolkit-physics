@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
-<title>LibraryPhysics: Documentation</title>
+<title>OpenSpaceToolkitPhysics: Documentation</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -27,7 +27,7 @@
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
-<div id="topbanner"><a href="https://github.com/open-space-collective/library-physics" title="Library ▸ Physics"><i class="githublogo"></i></a></div>
+<div id="topbanner"><a href="https://github.com/open-space-collective/open-space-toolkit-physics" title="Open Space Toolkit ▸ Physics"><i class="githublogo"></i></a></div>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
           <img id="MSearchSelect" src="search/mag_sel.png"
@@ -78,24 +78,19 @@ $(document).ready(function(){initNavTree('index.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">Library ▸ Physics </div>  </div>
+<div class="title">Open Space Toolkit ▸ Physics </div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>Physical units, time, reference frames, environment modeling.</p>
-<p><a href="https://travis-ci.com/open-space-collective/library-physics"></a> <a href="https://codecov.io/gh/open-space-collective/library-physics"></a> <a href="https://open-space-collective.github.io/library-physics"></a> <a href="https://badge.fury.io/gh/open-space-collective%2Flibrary-physics"></a> <a href="https://badge.fury.io/py/LibraryPhysicsPy"></a> <a href="https://opensource.org/licenses/Apache-2.0"></a></p>
+<p><a href="https://travis-ci.com/open-space-collective/open-space-toolkit-physics"></a> <a href="https://codecov.io/gh/open-space-collective/open-space-toolkit-physics"></a> <a href="https://open-space-collective.github.io/open-space-toolkit-physics"></a> <a href="https://badge.fury.io/gh/open-space-collective%2Fopen-space-toolkit-physics"></a> <a href="https://badge.fury.io/py/open-space-toolkit-physics"></a> <a href="https://opensource.org/licenses/Apache-2.0"></a></p>
 <h2>Warning</h2>
-<p>Library <b>name</b> is yet to be defined.</p>
-<p>Please check the following projects:</p>
-<ul>
-<li><a href="https://github.com/orgs/open-space-collective/projects/1">Naming Project</a></li>
-</ul>
-<p><em>⚠ This library is still under heavy development. Do not use!</em></p>
+<p><em>⚠ This component is under development.</em></p>
 <h2>Structure</h2>
 <p>The <b>Physics</b> library exhibits the following structure:</p>
-<div class="fragment"><div class="line">├── Units</div><div class="line">│   ├── Length</div><div class="line">│   ├── Mass</div><div class="line">│   ├── Time</div><div class="line">│   ├── Temperature</div><div class="line">│   ├── Electric Current</div><div class="line">│   ├── Luminous Intensity</div><div class="line">│   └── Derived</div><div class="line">│       ├── Angle</div><div class="line">│       ├── Solid Angle</div><div class="line">│       ├── Frequency</div><div class="line">│       ├── Force</div><div class="line">│       ├── Pressure</div><div class="line">│       ├── Area</div><div class="line">│       ├── Volume</div><div class="line">│       └── Information</div><div class="line">├── Time</div><div class="line">│   ├── <a class="code" href="namespacelibrary_1_1physics_1_1time.html#a09d2bc9fbc7b0b5f92e1419bd655e6bb">Scale</a> (UTC, TT, TAI, UT1, TCG, TCB, TDB, GMST, GPST, GST, GLST, BDT, QZSST, IRNSST)</div><div class="line">│   ├── Instant</div><div class="line">│   ├── Duration</div><div class="line">│   ├── Interval</div><div class="line">│   ├── Date</div><div class="line">│   ├── Time</div><div class="line">│   └── DateTime</div><div class="line">├── Coordinate</div><div class="line">│   ├── Transform</div><div class="line">│   └── Frame (ECI, ECEF, NED, LVLHGD, LVLHGDGT, ...)</div><div class="line">├── Geographic</div><div class="line">│   ├── Position</div><div class="line">│   ├── Area</div><div class="line">│   ├── Volume</div><div class="line">│   ├── Coordinate Reference System (CRS)</div><div class="line">│   └── Universal Transverse Mercator (UTM)</div><div class="line">└── Environment</div><div class="line">    ├── Constants</div><div class="line">    ├── Object</div><div class="line">    │   └── Celestial</div><div class="line">    ├── Ephemerides</div><div class="line">    │   ├── Analytical</div><div class="line">    │   ├── Tabulated</div><div class="line">    │   ├── SOFA</div><div class="line">    │   └── SPICE (JPL)</div><div class="line">    ├── Gravity</div><div class="line">    │   ├── Barycentric</div><div class="line">    │   ├── Earth Gravitational Model 1996 (EGM96)</div><div class="line">    │   └── Earth Gravitational Model 2008 (EGM2008)</div><div class="line">    ├── Atmospheric</div><div class="line">    │   ├── Exponential</div><div class="line">    │   ├── USSA1976</div><div class="line">    │   ├── Jacchia Roberts</div><div class="line">    │   └── NRLMSISE00</div><div class="line">    ├── Magnetic</div><div class="line">    │   ├── Dipole</div><div class="line">    │   ├── World Magnetic Model 2010 (WMM2010)</div><div class="line">    │   ├── World Magnetic Model 2015 (WMM2015)</div><div class="line">    │   ├── Enhanced Magnetic Model 2010 (EMM2010)</div><div class="line">    │   ├── Enhanced Magnetic Model 2015 (EMM2015)</div><div class="line">    │   ├── International Geomagnetic Reference Field 11 (IGRF11)</div><div class="line">    │   └── International Geomagnetic Reference Field 12 (IGRF12)</div><div class="line">    ├── Radiation</div><div class="line">    │   └── Sun Static</div><div class="line">    └── Stars</div><div class="line">        └── Hipparcos</div></div><!-- fragment --><h2>Documentation</h2>
+<div class="fragment"><div class="line">├── Units</div><div class="line">│   ├── Length</div><div class="line">│   ├── Mass</div><div class="line">│   ├── Time</div><div class="line">│   ├── Temperature</div><div class="line">│   ├── Electric Current</div><div class="line">│   ├── Luminous Intensity</div><div class="line">│   └── Derived</div><div class="line">│       ├── Angle</div><div class="line">│       ├── Solid Angle</div><div class="line">│       ├── Frequency</div><div class="line">│       ├── Force</div><div class="line">│       ├── Pressure</div><div class="line">│       ├── Area</div><div class="line">│       ├── Volume</div><div class="line">│       └── Information</div><div class="line">├── Time</div><div class="line">│   ├── <a class="code" href="namespaceostk_1_1physics_1_1time.html#adf23d37bd8641fb76a0e98ab46a70df7">Scale</a> (UTC, TT, TAI, UT1, TCG, TCB, TDB, GMST, GPST, GST, GLST, BDT, QZSST, IRNSST)</div><div class="line">│   ├── Instant</div><div class="line">│   ├── Duration</div><div class="line">│   ├── Interval</div><div class="line">│   ├── Date</div><div class="line">│   ├── Time</div><div class="line">│   └── DateTime</div><div class="line">├── Coordinate</div><div class="line">│   ├── Transform</div><div class="line">│   └── Frame (ECI, ECEF, NED, LVLHGD, LVLHGDGT, ...)</div><div class="line">├── Geographic</div><div class="line">│   ├── Position</div><div class="line">│   ├── Area</div><div class="line">│   ├── Volume</div><div class="line">│   ├── Coordinate Reference System (CRS)</div><div class="line">│   └── Universal Transverse Mercator (UTM)</div><div class="line">└── Environment</div><div class="line">    ├── Constants</div><div class="line">    ├── Object</div><div class="line">    │   └── Celestial</div><div class="line">    ├── Ephemerides</div><div class="line">    │   ├── Analytical</div><div class="line">    │   ├── Tabulated</div><div class="line">    │   ├── SOFA</div><div class="line">    │   └── SPICE (JPL)</div><div class="line">    ├── Gravity</div><div class="line">    │   ├── Barycentric</div><div class="line">    │   ├── Earth Gravitational Model 1996 (EGM96)</div><div class="line">    │   └── Earth Gravitational Model 2008 (EGM2008)</div><div class="line">    ├── Atmospheric</div><div class="line">    │   ├── Exponential</div><div class="line">    │   ├── USSA1976</div><div class="line">    │   ├── Jacchia Roberts</div><div class="line">    │   └── NRLMSISE00</div><div class="line">    ├── Magnetic</div><div class="line">    │   ├── Dipole</div><div class="line">    │   ├── World Magnetic Model 2010 (WMM2010)</div><div class="line">    │   ├── World Magnetic Model 2015 (WMM2015)</div><div class="line">    │   ├── Enhanced Magnetic Model 2010 (EMM2010)</div><div class="line">    │   ├── Enhanced Magnetic Model 2015 (EMM2015)</div><div class="line">    │   ├── International Geomagnetic Reference Field 11 (IGRF11)</div><div class="line">    │   └── International Geomagnetic Reference Field 12 (IGRF12)</div><div class="line">    ├── Radiation</div><div class="line">    │   └── Sun Static</div><div class="line">    └── Stars</div><div class="line">        └── Hipparcos</div></div><!-- fragment --><h2>Documentation</h2>
 <p>Documentation is available here:</p>
 <ul>
-<li><a href="https://open-space-collective.github.io/library-physics">C++</a></li>
+<li><a href="https://open-space-collective.github.io/open-space-toolkit-physics">C++</a></li>
 <li><a href="./bindings/python/docs">Python</a></li>
 </ul>
 <h2>Tutorials</h2>
@@ -112,7 +107,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <tr>
 <td>LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE </td><td><code>Manual</code> </td></tr>
 <tr>
-<td>LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY </td><td><code>./.library/physics/coordinate/frame/providers/iers</code> </td></tr>
+<td>LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY </td><td><code>./.open-space-toolkit/physics/coordinate/frame/providers/iers</code> </td></tr>
 <tr>
 <td>LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT </td><td><code>60</code> </td></tr>
 <tr>
@@ -120,19 +115,19 @@ $(document).ready(function(){initNavTree('index.html','');});
 <tr>
 <td>LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_ENGINE_MODE </td><td><code>Manual</code> </td></tr>
 <tr>
-<td>LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY </td><td><code>./.library/physics/environment/ephemerides/spice</code> </td></tr>
+<td>LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY </td><td><code>./.open-space-toolkit/physics/environment/ephemerides/spice</code> </td></tr>
 <tr>
 <td>LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_REMOTE_URL </td><td><code><a href="https://naif.jpl.nasa.gov/pub/naif/generic_kernels/">https://naif.jpl.nasa.gov/pub/naif/generic_kernels/</a></code> </td></tr>
 <tr>
 <td>LIBRARY_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_ENABLED </td><td><code>false</code> </td></tr>
 <tr>
-<td>LIBRARY_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY </td><td><code>./.library/physics/environment/gravitational/earth</code> </td></tr>
+<td>LIBRARY_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY </td><td><code>./.open-space-toolkit/physics/environment/gravitational/earth</code> </td></tr>
 <tr>
 <td>LIBRARY_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_REMOTE_URL </td><td><code><a href="https://sourceforge.net/projects/geographiclib/files/gravity-distrib/">https://sourceforge.net/projects/geographiclib/files/gravity-distrib/</a></code> </td></tr>
 <tr>
 <td>LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_ENABLED </td><td><code>false</code> </td></tr>
 <tr>
-<td>LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY </td><td><code>./.library/physics/environment/magnetic/earth</code> </td></tr>
+<td>LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY </td><td><code>./.open-space-toolkit/physics/environment/magnetic/earth</code> </td></tr>
 <tr>
 <td>LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_REMOTE_URL </td><td><code><a href="https://sourceforge.net/projects/geographiclib/files/magnetic-distrib/">https://sourceforge.net/projects/geographiclib/files/magnetic-distrib/</a></code> </td></tr>
 </table>
@@ -142,7 +137,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <p>To start the development environment:</p>
 <div class="fragment"><div class="line">make start-development</div></div><!-- fragment --><p>This will:</p>
 <ol type="1">
-<li>Build the <code>openspacecollective/library-physics-development</code> Docker image.</li>
+<li>Build the <code>openspacecollective/open-space-toolkit-physics-development</code> Docker image.</li>
 <li>Create a development environment container with local source files and helper scripts mounted.</li>
 <li>Start a <code>bash</code> shell from the <code>./build</code> working directory.</li>
 </ol>
@@ -153,7 +148,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <h3>Test</h3>
 <p>To start a container to build and run the tests:</p>
 <div class="fragment"><div class="line">make test</div></div><!-- fragment --><p>Or to run them manually:</p>
-<div class="fragment"><div class="line">./bin/library-physics.test</div></div><!-- fragment --><p><em>Tip: <code>helpers/test.sh</code> simplifies running tests from within the development environment.</em></p>
+<div class="fragment"><div class="line">./bin/open-space-toolkit-physics.test</div></div><!-- fragment --><p><em>Tip: <code>helpers/test.sh</code> simplifies running tests from within the development environment.</em></p>
 <h2>Dependencies</h2>
 <table class="doxtable">
 <tr>
@@ -169,11 +164,11 @@ $(document).ready(function(){initNavTree('index.html','');});
 <tr>
 <td>GeographicLib </td><td>1.49 </td><td>MIT </td><td><a href="https://geographiclib.sourceforge.io">geographiclib.sourceforge.io</a> </td></tr>
 <tr>
-<td>Core </td><td>master </td><td>Apache License 2.0 </td><td><a href="https://github.com/open-space-collective/library-core">github.com/open-space-collective/library-core</a> </td></tr>
+<td>Core </td><td>master </td><td>Apache License 2.0 </td><td><a href="https://github.com/open-space-collective/open-space-toolkit-core">github.com/open-space-collective/open-space-toolkit-core</a> </td></tr>
 <tr>
-<td>I/O </td><td>master </td><td>Apache License 2.0 </td><td><a href="https://github.com/open-space-collective/library-io">github.com/open-space-collective/library-io</a> </td></tr>
+<td>I/O </td><td>master </td><td>Apache License 2.0 </td><td><a href="https://github.com/open-space-collective/open-space-toolkit-io">github.com/open-space-collective/open-space-toolkit-io</a> </td></tr>
 <tr>
-<td>Mathematics </td><td>master </td><td>Apache License 2.0 </td><td><a href="https://github.com/open-space-collective/library-mathematics">github.com/open-space-collective/library-mathematics</a> </td></tr>
+<td>Mathematics </td><td>master </td><td>Apache License 2.0 </td><td><a href="https://github.com/open-space-collective/open-space-toolkit-mathematics">github.com/open-space-collective/open-space-toolkit-mathematics</a> </td></tr>
 </table>
 <h2>Contribution</h2>
 <p>Contributions are more than welcome!</p>

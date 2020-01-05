@@ -1,0 +1,203 @@
+\hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth}{}\section{ostk\+:\+:physics\+:\+:environment\+:\+:gravitational\+:\+:Earth Class Reference}
+\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth}\index{ostk\+::physics\+::environment\+::gravitational\+::\+Earth@{ostk\+::physics\+::environment\+::gravitational\+::\+Earth}}
+
+
+\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} gravitational model.  
+
+
+
+
+{\ttfamily \#include $<$Earth.\+hpp$>$}
+
+Inheritance diagram for ostk\+:\+:physics\+:\+:environment\+:\+:gravitational\+:\+:Earth\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05}{Type} \{ \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05a5dda43a21474cf33e7088b8247f19c4b}{Type\+::\+W\+G\+S84}, 
+\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05a2ae5659e79a4bb66ae4ee8cb033ef196}{Type\+::\+E\+G\+M84}, 
+\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05a7c7ad846cb98dafc9309087d3ba36013}{Type\+::\+E\+G\+M96}, 
+\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05af22fbbe07f6feeaa3d6446dabcd8b164}{Type\+::\+E\+G\+M2008}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a2266b9103f680d49643a5a8b4739a323}{Earth} (const \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05}{Earth\+::\+Type} \&a\+Type, const Directory \&a\+Data\+Directory=Directory\+::\+Undefined())
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a821f98411c65f59e6a297c6bcc3de291}{Earth} (const \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} \&an\+Earth\+Gravitational\+Model)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} \& \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_accc913e0c0a5c7c8348c13217c5de4f3}{operator=} (const \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} \&an\+Earth\+Gravitational\+Model)
+\begin{DoxyCompactList}\small\item\em Copy assignment operator. \end{DoxyCompactList}\item 
+\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a0bd1037605f6fb37fb6babc7bb8ae745}{$\sim$\+Earth} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+virtual \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} $\ast$ \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a987c2df62d8fedb368acf37e71ba7a47}{clone} () const override
+\begin{DoxyCompactList}\small\item\em Clone the \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} gravitational model. \end{DoxyCompactList}\item 
+\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05}{Earth\+::\+Type} \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_aa65dd2a5ce980e8a4f7f502387c1ff61}{get\+Type} () const
+\begin{DoxyCompactList}\small\item\em Get gravitational model type. \end{DoxyCompactList}\item 
+virtual Vector3d \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9e536649566761f4bdd467993abfcedd}{get\+Field\+Value\+At} (const Vector3d \&a\+Position, const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant) const override
+\begin{DoxyCompactList}\small\item\em Get the gravitational field value at a given position and instant. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} gravitational model. 
+
+The gravitational potential is expanded as sum of spherical harmonics.
+
+https\+://en.wikipedia.\+org/wiki/\+Spherical\+\_\+harmonics https\+://geographiclib.sourceforge.\+io/html/gravity.html 
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05}} 
+\index{ostk\+::physics\+::environment\+::gravitational\+::\+Earth@{ostk\+::physics\+::environment\+::gravitational\+::\+Earth}!Type@{Type}}
+\index{Type@{Type}!ostk\+::physics\+::environment\+::gravitational\+::\+Earth@{ostk\+::physics\+::environment\+::gravitational\+::\+Earth}}
+\subsubsection{\texorpdfstring{Type}{Type}}
+{\footnotesize\ttfamily enum \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05}{ostk\+::physics\+::environment\+::gravitational\+::\+Earth\+::\+Type}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{W\+G\+S84@{W\+G\+S84}!ostk\+::physics\+::environment\+::gravitational\+::\+Earth@{ostk\+::physics\+::environment\+::gravitational\+::\+Earth}}\index{ostk\+::physics\+::environment\+::gravitational\+::\+Earth@{ostk\+::physics\+::environment\+::gravitational\+::\+Earth}!W\+G\+S84@{W\+G\+S84}}}\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05a5dda43a21474cf33e7088b8247f19c4b}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05a5dda43a21474cf33e7088b8247f19c4b}} 
+W\+G\+S84&The normal gravitational field for the reference ellipsoid. This includes the zonal coefficients up to order 20. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\+G\+M84@{E\+G\+M84}!ostk\+::physics\+::environment\+::gravitational\+::\+Earth@{ostk\+::physics\+::environment\+::gravitational\+::\+Earth}}\index{ostk\+::physics\+::environment\+::gravitational\+::\+Earth@{ostk\+::physics\+::environment\+::gravitational\+::\+Earth}!E\+G\+M84@{E\+G\+M84}}}\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05a2ae5659e79a4bb66ae4ee8cb033ef196}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05a2ae5659e79a4bb66ae4ee8cb033ef196}} 
+E\+G\+M84&The \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} Gravity \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_model}{Model} 1984, which includes terms up to degree 180. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\+G\+M96@{E\+G\+M96}!ostk\+::physics\+::environment\+::gravitational\+::\+Earth@{ostk\+::physics\+::environment\+::gravitational\+::\+Earth}}\index{ostk\+::physics\+::environment\+::gravitational\+::\+Earth@{ostk\+::physics\+::environment\+::gravitational\+::\+Earth}!E\+G\+M96@{E\+G\+M96}}}\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05a7c7ad846cb98dafc9309087d3ba36013}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05a7c7ad846cb98dafc9309087d3ba36013}} 
+E\+G\+M96&The \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} Gravity \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_model}{Model} 1996, which includes terms up to degree 360. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\+G\+M2008@{E\+G\+M2008}!ostk\+::physics\+::environment\+::gravitational\+::\+Earth@{ostk\+::physics\+::environment\+::gravitational\+::\+Earth}}\index{ostk\+::physics\+::environment\+::gravitational\+::\+Earth@{ostk\+::physics\+::environment\+::gravitational\+::\+Earth}!E\+G\+M2008@{E\+G\+M2008}}}\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05af22fbbe07f6feeaa3d6446dabcd8b164}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05af22fbbe07f6feeaa3d6446dabcd8b164}} 
+E\+G\+M2008&The \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} Gravity \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_model}{Model} 2008, which includes terms up to degree 2190. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a2266b9103f680d49643a5a8b4739a323}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a2266b9103f680d49643a5a8b4739a323}} 
+\index{ostk\+::physics\+::environment\+::gravitational\+::\+Earth@{ostk\+::physics\+::environment\+::gravitational\+::\+Earth}!Earth@{Earth}}
+\index{Earth@{Earth}!ostk\+::physics\+::environment\+::gravitational\+::\+Earth@{ostk\+::physics\+::environment\+::gravitational\+::\+Earth}}
+\subsubsection{\texorpdfstring{Earth()}{Earth()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily ostk\+::physics\+::environment\+::gravitational\+::\+Earth\+::\+Earth (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05}{Earth\+::\+Type} \&}]{a\+Type,  }\item[{const Directory \&}]{a\+Data\+Directory = {\ttfamily Directory\+:\+:Undefined()} }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Type} & A gravitational model type \\
+\hline
+\mbox{\tt in}  & {\em (optional)} & a\+Data\+Directory A gravitational model data directory \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a821f98411c65f59e6a297c6bcc3de291}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a821f98411c65f59e6a297c6bcc3de291}} 
+\index{ostk\+::physics\+::environment\+::gravitational\+::\+Earth@{ostk\+::physics\+::environment\+::gravitational\+::\+Earth}!Earth@{Earth}}
+\index{Earth@{Earth}!ostk\+::physics\+::environment\+::gravitational\+::\+Earth@{ostk\+::physics\+::environment\+::gravitational\+::\+Earth}}
+\subsubsection{\texorpdfstring{Earth()}{Earth()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily ostk\+::physics\+::environment\+::gravitational\+::\+Earth\+::\+Earth (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} \&}]{an\+Earth\+Gravitational\+Model }\end{DoxyParamCaption})}
+
+
+
+Copy constructor. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em an\+Earth\+Gravitational\+Model} & An \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} model \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a0bd1037605f6fb37fb6babc7bb8ae745}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a0bd1037605f6fb37fb6babc7bb8ae745}} 
+\index{ostk\+::physics\+::environment\+::gravitational\+::\+Earth@{ostk\+::physics\+::environment\+::gravitational\+::\+Earth}!````~Earth@{$\sim$\+Earth}}
+\index{````~Earth@{$\sim$\+Earth}!ostk\+::physics\+::environment\+::gravitational\+::\+Earth@{ostk\+::physics\+::environment\+::gravitational\+::\+Earth}}
+\subsubsection{\texorpdfstring{$\sim$\+Earth()}{~Earth()}}
+{\footnotesize\ttfamily ostk\+::physics\+::environment\+::gravitational\+::\+Earth\+::$\sim$\+Earth (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a987c2df62d8fedb368acf37e71ba7a47}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a987c2df62d8fedb368acf37e71ba7a47}} 
+\index{ostk\+::physics\+::environment\+::gravitational\+::\+Earth@{ostk\+::physics\+::environment\+::gravitational\+::\+Earth}!clone@{clone}}
+\index{clone@{clone}!ostk\+::physics\+::environment\+::gravitational\+::\+Earth@{ostk\+::physics\+::environment\+::gravitational\+::\+Earth}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} $\ast$ ostk\+::physics\+::environment\+::gravitational\+::\+Earth\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clone the \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} gravitational model. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} gravitational model 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_a399257ac86e7f0112a702141e0e2e4a7}{ostk\+::physics\+::environment\+::gravitational\+::\+Model}.
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9e536649566761f4bdd467993abfcedd}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9e536649566761f4bdd467993abfcedd}} 
+\index{ostk\+::physics\+::environment\+::gravitational\+::\+Earth@{ostk\+::physics\+::environment\+::gravitational\+::\+Earth}!get\+Field\+Value\+At@{get\+Field\+Value\+At}}
+\index{get\+Field\+Value\+At@{get\+Field\+Value\+At}!ostk\+::physics\+::environment\+::gravitational\+::\+Earth@{ostk\+::physics\+::environment\+::gravitational\+::\+Earth}}
+\subsubsection{\texorpdfstring{get\+Field\+Value\+At()}{getFieldValueAt()}}
+{\footnotesize\ttfamily Vector3d ostk\+::physics\+::environment\+::gravitational\+::\+Earth\+::get\+Field\+Value\+At (\begin{DoxyParamCaption}\item[{const Vector3d \&}]{a\+Position,  }\item[{const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the gravitational field value at a given position and instant. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Position} & A position, expressed in the gravitational object frame \mbox{[}m\mbox{]} \\
+\hline
+\mbox{\tt in}  & {\em an\+Instant} & An instant \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Gravitational field value, expressed in the gravitational object frame \mbox{[}m.\+s-\/2\mbox{]} 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_a5ef3b4ddf4240e8a26553294fe392581}{ostk\+::physics\+::environment\+::gravitational\+::\+Model}.
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_aa65dd2a5ce980e8a4f7f502387c1ff61}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_aa65dd2a5ce980e8a4f7f502387c1ff61}} 
+\index{ostk\+::physics\+::environment\+::gravitational\+::\+Earth@{ostk\+::physics\+::environment\+::gravitational\+::\+Earth}!get\+Type@{get\+Type}}
+\index{get\+Type@{get\+Type}!ostk\+::physics\+::environment\+::gravitational\+::\+Earth@{ostk\+::physics\+::environment\+::gravitational\+::\+Earth}}
+\subsubsection{\texorpdfstring{get\+Type()}{getType()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05}{Earth\+::\+Type} ostk\+::physics\+::environment\+::gravitational\+::\+Earth\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get gravitational model type. 
+
+\begin{DoxyReturn}{Returns}
+Gravitational model type 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_accc913e0c0a5c7c8348c13217c5de4f3}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_accc913e0c0a5c7c8348c13217c5de4f3}} 
+\index{ostk\+::physics\+::environment\+::gravitational\+::\+Earth@{ostk\+::physics\+::environment\+::gravitational\+::\+Earth}!operator=@{operator=}}
+\index{operator=@{operator=}!ostk\+::physics\+::environment\+::gravitational\+::\+Earth@{ostk\+::physics\+::environment\+::gravitational\+::\+Earth}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} \& ostk\+::physics\+::environment\+::gravitational\+::\+Earth\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} \&}]{an\+Earth\+Gravitational\+Model }\end{DoxyParamCaption})}
+
+
+
+Copy assignment operator. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em an\+Earth\+Gravitational\+Model} & An \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} model \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} model 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Open\+Space\+Toolkit/\+Physics/\+Environment/\+Gravitational/\hyperlink{_gravitational_2_earth_8hpp}{Earth.\+hpp}\item 
+src/\+Open\+Space\+Toolkit/\+Physics/\+Environment/\+Gravitational/\hyperlink{_gravitational_2_earth_8cpp}{Earth.\+cpp}\end{DoxyCompactItemize}

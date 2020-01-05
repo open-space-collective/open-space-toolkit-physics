@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['format',['Format',['../classlibrary_1_1physics_1_1time_1_1_date.html#a97671e22ec7b7825cf99ead6d86d0bf7',1,'library::physics::time::Date::Format()'],['../classlibrary_1_1physics_1_1time_1_1_date_time.html#a99e6afd988c9b091b1540d707922c804',1,'library::physics::time::DateTime::Format()'],['../classlibrary_1_1physics_1_1time_1_1_duration.html#ace85659cafe97df992c0e4273bdc88d1',1,'library::physics::time::Duration::Format()'],['../classlibrary_1_1physics_1_1time_1_1_time.html#a7cfbcbb1d5d0c536e28e61f1e7cbf1c8',1,'library::physics::time::Time::Format()']]],
-  ['frametype',['FrameType',['../classlibrary_1_1physics_1_1env_1_1obj_1_1_celestial.html#a8585fb32125cb6c73ae1339a5ea09c79',1,'library::physics::env::obj::Celestial']]]
+  ['format',['Format',['../classostk_1_1physics_1_1time_1_1_date.html#a77a2e52ee3bcfd7c93139d2fe2c9a141',1,'ostk::physics::time::Date::Format()'],['../classostk_1_1physics_1_1time_1_1_date_time.html#a1d21d982b18bf56ed684fcf1cd97e092',1,'ostk::physics::time::DateTime::Format()'],['../classostk_1_1physics_1_1time_1_1_duration.html#a4bf616b67d15e0fbc4beb4fcc306c368',1,'ostk::physics::time::Duration::Format()'],['../classostk_1_1physics_1_1time_1_1_time.html#a207e776746c45c3aaffcf7112b2bc951',1,'ostk::physics::time::Time::Format()']]],
+  ['frametype',['FrameType',['../classostk_1_1physics_1_1env_1_1obj_1_1_celestial.html#ad005258cdc5969759c8a516fb1cfd262',1,'ostk::physics::env::obj::Celestial']]]
 ];

@@ -1,4 +1,4 @@
 var _direction_8cpp =
 [
-    [ "operator<<", "_direction_8cpp.html#ab8943251539d57e6cfc3c11d2d89b5e0", null ]
+    [ "operator<<", "_direction_8cpp.html#a55120922223397f7b4b8ae23e9fd6d12", null ]
 ];

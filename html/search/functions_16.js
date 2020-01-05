@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['x',['x',['../classlibrary_1_1physics_1_1coord_1_1_axes.html#acb94f5b4bc9e6cf628635987cfb9c990',1,'library::physics::coord::Axes']]]
+  ['x',['x',['../classostk_1_1physics_1_1coord_1_1_axes.html#a3e982cbaeccbb99c2115fb30a46dd520',1,'ostk::physics::coord::Axes']]]
 ];

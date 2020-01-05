@@ -1,18 +1,18 @@
-\hypertarget{_coordinate_2_frame_2_providers_2_i_e_r_s_2_manager_8cpp}{}\section{src/\+Library/\+Physics/\+Coordinate/\+Frame/\+Providers/\+I\+E\+R\+S/\+Manager.cpp File Reference}
-\label{_coordinate_2_frame_2_providers_2_i_e_r_s_2_manager_8cpp}\index{src/\+Library/\+Physics/\+Coordinate/\+Frame/\+Providers/\+I\+E\+R\+S/\+Manager.\+cpp@{src/\+Library/\+Physics/\+Coordinate/\+Frame/\+Providers/\+I\+E\+R\+S/\+Manager.\+cpp}}
-{\ttfamily \#include $<$Library/\+Physics/\+Coordinate/\+Frame/\+Providers/\+I\+E\+R\+S/\+Manager.\+hpp$>$}\newline
-{\ttfamily \#include $<$Library/\+Physics/\+Time/\+Instant.\+hpp$>$}\newline
-{\ttfamily \#include $<$Library/\+Physics/\+Time/\+Date\+Time.\+hpp$>$}\newline
-{\ttfamily \#include $<$Library/\+Physics/\+Time/\+Time.\+hpp$>$}\newline
-{\ttfamily \#include $<$Library/\+Physics/\+Time/\+Date.\+hpp$>$}\newline
-{\ttfamily \#include $<$Library/\+Physics/\+Time/\+Scale.\+hpp$>$}\newline
-{\ttfamily \#include $<$Library/\+I\+O/\+I\+P/\+T\+C\+P/\+H\+T\+T\+P/\+Client.\+hpp$>$}\newline
-{\ttfamily \#include $<$Library/\+Core/\+File\+System/\+Path.\+hpp$>$}\newline
-{\ttfamily \#include $<$Library/\+Core/\+Containers/\+Map.\+hpp$>$}\newline
-{\ttfamily \#include $<$Library/\+Core/\+Types/\+String.\+hpp$>$}\newline
-{\ttfamily \#include $<$Library/\+Core/\+Types/\+Integer.\+hpp$>$}\newline
-{\ttfamily \#include $<$Library/\+Core/\+Error.\+hpp$>$}\newline
-{\ttfamily \#include $<$Library/\+Core/\+Utilities.\+hpp$>$}\newline
+\hypertarget{_coordinate_2_frame_2_providers_2_i_e_r_s_2_manager_8cpp}{}\section{src/\+Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Providers/\+I\+E\+R\+S/\+Manager.cpp File Reference}
+\label{_coordinate_2_frame_2_providers_2_i_e_r_s_2_manager_8cpp}\index{src/\+Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Providers/\+I\+E\+R\+S/\+Manager.\+cpp@{src/\+Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Providers/\+I\+E\+R\+S/\+Manager.\+cpp}}
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Providers/\+I\+E\+R\+S/\+Manager.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Time/\+Instant.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Time/\+Date\+Time.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Time/\+Time.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Time/\+Date.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Time/\+Scale.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+I\+O/\+I\+P/\+T\+C\+P/\+H\+T\+T\+P/\+Client.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Core/\+File\+System/\+Path.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Core/\+Containers/\+Map.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Core/\+Types/\+String.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Core/\+Types/\+Integer.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Core/\+Error.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Core/\+Utilities.\+hpp$>$}\newline
 {\ttfamily \#include $<$experimental/filesystem$>$}\newline
 {\ttfamily \#include $<$thread$>$}\newline
 {\ttfamily \#include $<$chrono$>$}\newline
@@ -22,31 +22,31 @@
 \subsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
- \hyperlink{namespacelibrary}{library}
+ \hyperlink{namespaceostk}{ostk}
 \item 
- \hyperlink{namespacelibrary_1_1physics}{library\+::physics}
+ \hyperlink{namespaceostk_1_1physics}{ostk\+::physics}
 \item 
- \hyperlink{namespacelibrary_1_1physics_1_1coord}{library\+::physics\+::coord}
+ \hyperlink{namespaceostk_1_1physics_1_1coord}{ostk\+::physics\+::coord}
 \item 
- \hyperlink{namespacelibrary_1_1physics_1_1coord_1_1frame}{library\+::physics\+::coord\+::frame}
+ \hyperlink{namespaceostk_1_1physics_1_1coord_1_1frame}{ostk\+::physics\+::coord\+::frame}
 \item 
- \hyperlink{namespacelibrary_1_1physics_1_1coord_1_1frame_1_1provider}{library\+::physics\+::coord\+::frame\+::provider}
+ \hyperlink{namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider}{ostk\+::physics\+::coord\+::frame\+::provider}
 \item 
- \hyperlink{namespacelibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers}{library\+::physics\+::coord\+::frame\+::provider\+::iers}
+ \hyperlink{namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers}{ostk\+::physics\+::coord\+::frame\+::provider\+::iers}
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-const String \hyperlink{namespacelibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_a74902a6b275513970fb5d77f337da788}{library\+::physics\+::coord\+::frame\+::provider\+::iers\+::bulletin\+A\+File\+Name} = \char`\"{}ser7.\+dat\char`\"{}
+const String \hyperlink{namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_a5cb43c38a8bca47ff425a549b839ba52}{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::bulletin\+A\+File\+Name} = \char`\"{}ser7.\+dat\char`\"{}
 \item 
-const String \hyperlink{namespacelibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_acbca40e7605700724acf924be0c922a1}{library\+::physics\+::coord\+::frame\+::provider\+::iers\+::finals2000\+A\+File\+Name} = \char`\"{}finals2000\+A.\+data\char`\"{}
+const String \hyperlink{namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_afaf60ac8fac4be315f2b944146314aab}{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::finals2000\+A\+File\+Name} = \char`\"{}finals2000\+A.\+data\char`\"{}
 \item 
-const String \hyperlink{namespacelibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_acda6d9c00dfd330465fcca24a19549ce}{library\+::physics\+::coord\+::frame\+::provider\+::iers\+::temporary\+Directory\+Name} = \char`\"{}tmp\char`\"{}
+const String \hyperlink{namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_adf91c1c8fbc2cd95d50b48f2a5cc03f2}{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::temporary\+Directory\+Name} = \char`\"{}tmp\char`\"{}
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Library ▸ Physics
+Open Space Toolkit ▸ Physics
 
 \begin{DoxyAuthor}{Author}
 Lucas Brémond \href{mailto:lucas@loftorbital.com}{\tt lucas@loftorbital.\+com}  Apache License 2.\+0 

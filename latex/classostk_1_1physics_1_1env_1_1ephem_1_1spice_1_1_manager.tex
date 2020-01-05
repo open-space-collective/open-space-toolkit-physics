@@ -1,0 +1,243 @@
+\hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager}{}\section{ostk\+:\+:physics\+:\+:env\+:\+:ephem\+:\+:spice\+:\+:Manager Class Reference}
+\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager}\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager}}
+
+
+\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e}{S\+P\+I\+CE} Toolkit kernel manager.  
+
+
+
+
+{\ttfamily \#include $<$Manager.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a20d663efed8e9d8604c8b86d055e905b}{Manager} (const \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager}{Manager} \&a\+Spice\+Manager)=delete
+\begin{DoxyCompactList}\small\item\em Copy constructor (deleted) \end{DoxyCompactList}\item 
+\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager}{Manager} \& \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a07113610331854fbf1b2376790703b48}{operator=} (const \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager}{Manager} \&a\+Spice\+Manager)=delete
+\begin{DoxyCompactList}\small\item\em Copy assignment operator (deleted) \end{DoxyCompactList}\item 
+Directory \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a5b214027763ff5425dd488bb25c45d82}{get\+Local\+Repository} () const
+\begin{DoxyCompactList}\small\item\em Get local repository. \end{DoxyCompactList}\item 
+U\+RL \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_ac8e69ec64b7f287eaded8bb10cdd5996}{get\+Remote\+Url} () const
+\begin{DoxyCompactList}\small\item\em Get remote U\+RL. \end{DoxyCompactList}\item 
+File \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a64f056cb9d851c9cf0842db81d85d468}{get\+Index\+File} () const
+\begin{DoxyCompactList}\small\item\em Get index file. \end{DoxyCompactList}\item 
+void \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a7c32b7266846a0c0d0471bff27d7ce21}{fetch\+Kernel} (const \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel} \&a\+Kernel) const
+\begin{DoxyCompactList}\small\item\em Fetch kernel from remote. \end{DoxyCompactList}\item 
+Array$<$ \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel} $>$ \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a5a539eb56558f1a0d6dfe1389760459f}{fetch\+Matching\+Kernels} (const std\+::regex \&a\+Regex) const
+\begin{DoxyCompactList}\small\item\em Fetch kernels matching regular expression. \end{DoxyCompactList}\item 
+void \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a6a3b6a49dfc44fc7f5545e55e8ef4e19}{set\+Local\+Repository} (const Directory \&a\+Directory)
+\begin{DoxyCompactList}\small\item\em Set local repository. \end{DoxyCompactList}\item 
+void \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_aa5a020cb2245b5583086bb788428f5a6}{set\+Remote\+Url} (const U\+RL \&a\+Remote\+Url)
+\begin{DoxyCompactList}\small\item\em Set remote U\+RL. \end{DoxyCompactList}\item 
+void \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_ac8163df1e48cc4aa3cb21821e98d89f3}{refresh} ()
+\begin{DoxyCompactList}\small\item\em Refresh manager. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager}{Manager} \& \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a9662ac46fe23c562941b4ade980f30dd}{Get} ()
+\begin{DoxyCompactList}\small\item\em Get manager singleton. \end{DoxyCompactList}\item 
+static Directory \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_ada263e74ec723c920f6a81ffb1fde181}{Default\+Local\+Repository} ()
+\begin{DoxyCompactList}\small\item\em Get default local repository. \end{DoxyCompactList}\item 
+static U\+RL \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a7e30532e70e5e8fbbafc2e1dcdc411a8}{Default\+Remote\+Url} ()
+\begin{DoxyCompactList}\small\item\em Get default remote U\+RL. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e}{S\+P\+I\+CE} Toolkit kernel manager. 
+
+Fetches and manages necessary \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e}{S\+P\+I\+CE} kernels.
+
+The following environment variables can be defined\+:
+
+
+\begin{DoxyItemize}
+\item \char`\"{}\+L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+E\+P\+H\+E\+M\+E\+R\+I\+D\+E\+S\+\_\+\+S\+P\+I\+C\+E\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+R\+Y\char`\"{} will override \char`\"{}\+Default\+Local\+Repository\char`\"{}
+\item \char`\"{}\+L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+E\+P\+H\+E\+M\+E\+R\+I\+D\+E\+S\+\_\+\+S\+P\+I\+C\+E\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+R\+E\+M\+O\+T\+E\+\_\+\+U\+R\+L\char`\"{} will override \char`\"{}\+Default\+Remote\+Url\char`\"{} 
+\end{DoxyItemize}
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a20d663efed8e9d8604c8b86d055e905b}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a20d663efed8e9d8604c8b86d055e905b}} 
+\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager}!Manager@{Manager}}
+\index{Manager@{Manager}!ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager}}
+\subsubsection{\texorpdfstring{Manager()}{Manager()}}
+{\footnotesize\ttfamily ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager\+::\+Manager (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager}{Manager} \&}]{a\+Spice\+Manager }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Copy constructor (deleted) 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_ada263e74ec723c920f6a81ffb1fde181}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_ada263e74ec723c920f6a81ffb1fde181}} 
+\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager}!Default\+Local\+Repository@{Default\+Local\+Repository}}
+\index{Default\+Local\+Repository@{Default\+Local\+Repository}!ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager}}
+\subsubsection{\texorpdfstring{Default\+Local\+Repository()}{DefaultLocalRepository()}}
+{\footnotesize\ttfamily Directory ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager\+::\+Default\+Local\+Repository (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get default local repository. 
+
+Overriden by\+: L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+E\+P\+H\+E\+M\+E\+R\+I\+D\+E\+S\+\_\+\+S\+P\+I\+C\+E\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+RY
+
+\begin{DoxyReturn}{Returns}
+Default local repository 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a7e30532e70e5e8fbbafc2e1dcdc411a8}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a7e30532e70e5e8fbbafc2e1dcdc411a8}} 
+\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager}!Default\+Remote\+Url@{Default\+Remote\+Url}}
+\index{Default\+Remote\+Url@{Default\+Remote\+Url}!ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager}}
+\subsubsection{\texorpdfstring{Default\+Remote\+Url()}{DefaultRemoteUrl()}}
+{\footnotesize\ttfamily U\+RL ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager\+::\+Default\+Remote\+Url (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get default remote U\+RL. 
+
+Overriden by\+: L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+E\+P\+H\+E\+M\+E\+R\+I\+D\+E\+S\+\_\+\+S\+P\+I\+C\+E\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+R\+E\+M\+O\+T\+E\+\_\+\+U\+RL
+
+\begin{DoxyReturn}{Returns}
+Default remote U\+RL 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a7c32b7266846a0c0d0471bff27d7ce21}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a7c32b7266846a0c0d0471bff27d7ce21}} 
+\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager}!fetch\+Kernel@{fetch\+Kernel}}
+\index{fetch\+Kernel@{fetch\+Kernel}!ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager}}
+\subsubsection{\texorpdfstring{fetch\+Kernel()}{fetchKernel()}}
+{\footnotesize\ttfamily void ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager\+::fetch\+Kernel (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel} \&}]{a\+Kernel }\end{DoxyParamCaption}) const}
+
+
+
+Fetch kernel from remote. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Kernel} & A kernel \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a5a539eb56558f1a0d6dfe1389760459f}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a5a539eb56558f1a0d6dfe1389760459f}} 
+\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager}!fetch\+Matching\+Kernels@{fetch\+Matching\+Kernels}}
+\index{fetch\+Matching\+Kernels@{fetch\+Matching\+Kernels}!ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager}}
+\subsubsection{\texorpdfstring{fetch\+Matching\+Kernels()}{fetchMatchingKernels()}}
+{\footnotesize\ttfamily Array$<$ \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel} $>$ ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager\+::fetch\+Matching\+Kernels (\begin{DoxyParamCaption}\item[{const std\+::regex \&}]{a\+Regex }\end{DoxyParamCaption}) const}
+
+
+
+Fetch kernels matching regular expression. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Regex} & A regular expression \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An array of kernels 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a9662ac46fe23c562941b4ade980f30dd}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a9662ac46fe23c562941b4ade980f30dd}} 
+\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager}!Get@{Get}}
+\index{Get@{Get}!ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager}}
+\subsubsection{\texorpdfstring{Get()}{Get()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager}{Manager} \& ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager\+::\+Get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get manager singleton. 
+
+\begin{DoxyReturn}{Returns}
+Reference to manager 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a64f056cb9d851c9cf0842db81d85d468}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a64f056cb9d851c9cf0842db81d85d468}} 
+\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager}!get\+Index\+File@{get\+Index\+File}}
+\index{get\+Index\+File@{get\+Index\+File}!ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager}}
+\subsubsection{\texorpdfstring{get\+Index\+File()}{getIndexFile()}}
+{\footnotesize\ttfamily File ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager\+::get\+Index\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get index file. 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_index}{Index} file 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a5b214027763ff5425dd488bb25c45d82}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a5b214027763ff5425dd488bb25c45d82}} 
+\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager}!get\+Local\+Repository@{get\+Local\+Repository}}
+\index{get\+Local\+Repository@{get\+Local\+Repository}!ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager}}
+\subsubsection{\texorpdfstring{get\+Local\+Repository()}{getLocalRepository()}}
+{\footnotesize\ttfamily Directory ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager\+::get\+Local\+Repository (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get local repository. 
+
+\begin{DoxyReturn}{Returns}
+Local repository 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_ac8e69ec64b7f287eaded8bb10cdd5996}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_ac8e69ec64b7f287eaded8bb10cdd5996}} 
+\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager}!get\+Remote\+Url@{get\+Remote\+Url}}
+\index{get\+Remote\+Url@{get\+Remote\+Url}!ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager}}
+\subsubsection{\texorpdfstring{get\+Remote\+Url()}{getRemoteUrl()}}
+{\footnotesize\ttfamily U\+RL ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager\+::get\+Remote\+Url (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get remote U\+RL. 
+
+\begin{DoxyReturn}{Returns}
+Remote U\+RL 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a07113610331854fbf1b2376790703b48}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a07113610331854fbf1b2376790703b48}} 
+\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager}!operator=@{operator=}}
+\index{operator=@{operator=}!ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager}{Manager}\& ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager}{Manager} \&}]{a\+Spice\+Manager }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Copy assignment operator (deleted) 
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_ac8163df1e48cc4aa3cb21821e98d89f3}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_ac8163df1e48cc4aa3cb21821e98d89f3}} 
+\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager}!refresh@{refresh}}
+\index{refresh@{refresh}!ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager}}
+\subsubsection{\texorpdfstring{refresh()}{refresh()}}
+{\footnotesize\ttfamily void ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager\+::refresh (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Refresh manager. 
+
+This will re-\/fetch a new index. \mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a6a3b6a49dfc44fc7f5545e55e8ef4e19}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a6a3b6a49dfc44fc7f5545e55e8ef4e19}} 
+\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager}!set\+Local\+Repository@{set\+Local\+Repository}}
+\index{set\+Local\+Repository@{set\+Local\+Repository}!ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager}}
+\subsubsection{\texorpdfstring{set\+Local\+Repository()}{setLocalRepository()}}
+{\footnotesize\ttfamily void ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager\+::set\+Local\+Repository (\begin{DoxyParamCaption}\item[{const Directory \&}]{a\+Directory }\end{DoxyParamCaption})}
+
+
+
+Set local repository. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Directory} & A repository directory \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_aa5a020cb2245b5583086bb788428f5a6}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_aa5a020cb2245b5583086bb788428f5a6}} 
+\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager}!set\+Remote\+Url@{set\+Remote\+Url}}
+\index{set\+Remote\+Url@{set\+Remote\+Url}!ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager}}
+\subsubsection{\texorpdfstring{set\+Remote\+Url()}{setRemoteUrl()}}
+{\footnotesize\ttfamily void ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager\+::set\+Remote\+Url (\begin{DoxyParamCaption}\item[{const U\+RL \&}]{a\+Remote\+Url }\end{DoxyParamCaption})}
+
+
+
+Set remote U\+RL. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Remote\+Url} & A remote U\+RL \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Open\+Space\+Toolkit/\+Physics/\+Environment/\+Ephemerides/\+S\+P\+I\+C\+E/\hyperlink{_environment_2_ephemerides_2_s_p_i_c_e_2_manager_8hpp}{Manager.\+hpp}\item 
+src/\+Open\+Space\+Toolkit/\+Physics/\+Environment/\+Ephemerides/\+S\+P\+I\+C\+E/\hyperlink{_environment_2_ephemerides_2_s_p_i_c_e_2_manager_8cpp}{Manager.\+cpp}\end{DoxyCompactItemize}

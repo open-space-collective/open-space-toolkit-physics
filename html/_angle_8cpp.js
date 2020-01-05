@@ -1,5 +1,5 @@
 var _angle_8cpp =
 [
-    [ "operator*", "_angle_8cpp.html#ac89514ddad142e1c8c6d67f0f7708b6b", null ],
-    [ "operator<<", "_angle_8cpp.html#ae0f25add792e8ea9705789fb8587ec1b", null ]
+    [ "operator*", "_angle_8cpp.html#ad1643ff392ba66b2db744efcdec31141", null ],
+    [ "operator<<", "_angle_8cpp.html#a0fc91bc012e2d19265e3d0aec1bf61c7", null ]
 ];

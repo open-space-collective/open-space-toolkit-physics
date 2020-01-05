@@ -1,0 +1,319 @@
+\hypertarget{classostk_1_1physics_1_1coord_1_1_frame}{}\section{ostk\+:\+:physics\+:\+:coord\+:\+:Frame Class Reference}
+\label{classostk_1_1physics_1_1coord_1_1_frame}\index{ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}}
+
+
+Reference frame.  
+
+
+
+
+{\ttfamily \#include $<$Frame.\+hpp$>$}
+
+Inheritance diagram for ostk\+:\+:physics\+:\+:coord\+:\+:Frame\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classostk_1_1physics_1_1coord_1_1_frame}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classostk_1_1physics_1_1coord_1_1_frame_a9c8b5b7869ee8e730e0b23be60920a9d}{$\sim$\+Frame} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+bool \hyperlink{classostk_1_1physics_1_1coord_1_1_frame_a010fbd30fe3a937d44d0fbbdeb60222b}{operator==} (const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} \&a\+Frame) const
+\item 
+bool \hyperlink{classostk_1_1physics_1_1coord_1_1_frame_a12a5cb341c34a404f220b0940a5dff79}{operator!=} (const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} \&a\+Frame) const
+\item 
+bool \hyperlink{classostk_1_1physics_1_1coord_1_1_frame_a3c4750cec74616ad3e48adf31c314756}{is\+Defined} () const
+\item 
+bool \hyperlink{classostk_1_1physics_1_1coord_1_1_frame_ac0f7d78be14f09ccef5b862c4f963da8}{is\+Quasi\+Inertial} () const
+\item 
+bool \hyperlink{classostk_1_1physics_1_1coord_1_1_frame_aa4c778fa91e6599cdea0a889fd5bf69c}{has\+Parent} () const
+\item 
+Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \hyperlink{classostk_1_1physics_1_1coord_1_1_frame_a549b54435e1a47193ff7288df9d2b0cb}{access\+Parent} () const
+\item 
+Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \hyperlink{classostk_1_1physics_1_1coord_1_1_frame_af2276e1ed3a74752194ae3414b10636d}{access\+Ancestor} (const Uint8 an\+Ancestor\+Degree) const
+\item 
+Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_provider}{Provider} $>$ \hyperlink{classostk_1_1physics_1_1coord_1_1_frame_a60c1717e04993577c0dcf4eae23be672}{access\+Provider} () const
+\item 
+String \hyperlink{classostk_1_1physics_1_1coord_1_1_frame_a47aca195a73e14198f6d615c8988ce6e}{get\+Name} () const
+\item 
+\hyperlink{classostk_1_1physics_1_1coord_1_1_position}{Position} \hyperlink{classostk_1_1physics_1_1coord_1_1_frame_a9f0544fd284d2ff4bca6a54dc8835bff}{get\+Origin\+In} (const Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+Frame, const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant) const
+\item 
+\hyperlink{classostk_1_1physics_1_1coord_1_1_velocity}{Velocity} \hyperlink{classostk_1_1physics_1_1coord_1_1_frame_ab2d8bdcd3f68604d4ca104341f51b7f1}{get\+Velocity\+In} (const Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+Frame, const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant) const
+\item 
+\hyperlink{classostk_1_1physics_1_1coord_1_1_axes}{Axes} \hyperlink{classostk_1_1physics_1_1coord_1_1_frame_ac75780963694dd74ea2e6a66f6ae17d8}{get\+Axes\+In} (const Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+Frame, const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant) const
+\item 
+\hyperlink{classostk_1_1physics_1_1coord_1_1_transform}{Transform} \hyperlink{classostk_1_1physics_1_1coord_1_1_frame_aa6f51c81724f36644ad8343a1124c264}{get\+Transform\+To} (const Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+Frame, const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant) const
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \hyperlink{classostk_1_1physics_1_1coord_1_1_frame_a292d32b849648a8e530d35ac47b5c699}{Undefined} ()
+\item 
+static Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \hyperlink{classostk_1_1physics_1_1coord_1_1_frame_af111d96da6adf5405a354a769618b5f4}{I\+C\+RF} ()
+\item 
+static Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \hyperlink{classostk_1_1physics_1_1coord_1_1_frame_abe31c60e3e7f654b101876cb6b9b5238}{G\+C\+RF} ()
+\item 
+static Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \hyperlink{classostk_1_1physics_1_1coord_1_1_frame_a61b7c68b761966956251d393bf57f5e5}{E\+M\+E2000} ()
+\item 
+static Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \hyperlink{classostk_1_1physics_1_1coord_1_1_frame_a1441cef9cd2abe312753f3a81606adfb}{T\+E\+ME} ()
+\item 
+static Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \hyperlink{classostk_1_1physics_1_1coord_1_1_frame_ab47046bc517b04537c96844d95c13fdd}{T\+E\+M\+E\+Of\+Epoch} (const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Epoch)
+\item 
+static Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \hyperlink{classostk_1_1physics_1_1coord_1_1_frame_ae858400dfa432f12b71712b52b3f5108}{C\+I\+RF} ()
+\item 
+static Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \hyperlink{classostk_1_1physics_1_1coord_1_1_frame_ac159b1d21bc5f55e7163d27f4cc25c34}{T\+I\+RF} ()
+\item 
+static Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \hyperlink{classostk_1_1physics_1_1coord_1_1_frame_ac1d0d50dc15982fbef3caba62a9ed507}{I\+T\+RF} ()
+\item 
+static Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \hyperlink{classostk_1_1physics_1_1coord_1_1_frame_ad9f12f000a68daaec4969ba739f43ee7}{With\+Name} (const String \&a\+Name)
+\item 
+static bool \hyperlink{classostk_1_1physics_1_1coord_1_1_frame_afe14b695035c704b408563a12a47eb38}{Exists} (const String \&a\+Name)
+\item 
+static Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \hyperlink{classostk_1_1physics_1_1coord_1_1_frame_a6faa8908c55e5e56ce3ed4c96d15b9af}{Construct} (const String \&a\+Name, bool \hyperlink{classostk_1_1physics_1_1coord_1_1_frame_ac0f7d78be14f09ccef5b862c4f963da8}{is\+Quasi\+Inertial}, const Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+Parent\+Frame, const Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_provider}{Provider} $>$ \&a\+Provider)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+static void \hyperlink{classostk_1_1physics_1_1coord_1_1_frame_a2c4bf16207b59862deaeee224153b8f9}{Destruct} (const String \&a\+Name)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classostk_1_1physics_1_1coord_1_1_frame_a66f32d0c9dd2497b6e7ace4fcccbce60}{Frame} (const String \&a\+Name, bool \hyperlink{classostk_1_1physics_1_1coord_1_1_frame_ac0f7d78be14f09ccef5b862c4f963da8}{is\+Quasi\+Inertial}, const Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+Parent\+Frame, const Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_provider}{Provider} $>$ \&a\+Provider)
+\item 
+\hyperlink{classostk_1_1physics_1_1coord_1_1_frame_acaa7ddfcad1566838ca72bf431a3bd4f}{Frame} (const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} \&a\+Frame)=default
+\item 
+\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} \& \hyperlink{classostk_1_1physics_1_1coord_1_1_frame_ac47e4fe942c8cd0b8969ee9f6d32b816}{operator=} (const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} \&a\+Frame)=default
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \hyperlink{classostk_1_1physics_1_1coord_1_1_frame_a509ac1926cfc3553748bace204e2b1cc}{operator$<$$<$} (std\+::ostream \&an\+Output\+Stream, const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} \&a\+Frame)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Reference frame. 
+
+https\+://en.wikipedia.\+org/wiki/\+Frame\+\_\+of\+\_\+reference \begin{DoxyNote}{Note}
+Implementation heavily inspired by (the great!) \href{https://www.orekit.org/static/architecture/frames.html}{\tt https\+://www.\+orekit.\+org/static/architecture/frames.\+html} 
+\end{DoxyNote}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1_frame_a9c8b5b7869ee8e730e0b23be60920a9d}\label{classostk_1_1physics_1_1coord_1_1_frame_a9c8b5b7869ee8e730e0b23be60920a9d}} 
+\index{ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}!````~Frame@{$\sim$\+Frame}}
+\index{````~Frame@{$\sim$\+Frame}!ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}}
+\subsubsection{\texorpdfstring{$\sim$\+Frame()}{~Frame()}}
+{\footnotesize\ttfamily ostk\+::physics\+::coord\+::\+Frame\+::$\sim$\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor. 
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1_frame_a66f32d0c9dd2497b6e7ace4fcccbce60}\label{classostk_1_1physics_1_1coord_1_1_frame_a66f32d0c9dd2497b6e7ace4fcccbce60}} 
+\index{ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}!Frame@{Frame}}
+\index{Frame@{Frame}!ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}}
+\subsubsection{\texorpdfstring{Frame()}{Frame()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily ostk\+::physics\+::coord\+::\+Frame\+::\+Frame (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Name,  }\item[{bool}]{is\+Quasi\+Inertial,  }\item[{const Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+Parent\+Frame,  }\item[{const Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_provider}{Provider} $>$ \&}]{a\+Provider }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1_frame_acaa7ddfcad1566838ca72bf431a3bd4f}\label{classostk_1_1physics_1_1coord_1_1_frame_acaa7ddfcad1566838ca72bf431a3bd4f}} 
+\index{ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}!Frame@{Frame}}
+\index{Frame@{Frame}!ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}}
+\subsubsection{\texorpdfstring{Frame()}{Frame()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily ostk\+::physics\+::coord\+::\+Frame\+::\+Frame (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} \&}]{a\+Frame }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [default]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1_frame_af2276e1ed3a74752194ae3414b10636d}\label{classostk_1_1physics_1_1coord_1_1_frame_af2276e1ed3a74752194ae3414b10636d}} 
+\index{ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}!access\+Ancestor@{access\+Ancestor}}
+\index{access\+Ancestor@{access\+Ancestor}!ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}}
+\subsubsection{\texorpdfstring{access\+Ancestor()}{accessAncestor()}}
+{\footnotesize\ttfamily Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ ostk\+::physics\+::coord\+::\+Frame\+::access\+Ancestor (\begin{DoxyParamCaption}\item[{const Uint8}]{an\+Ancestor\+Degree }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1_frame_a549b54435e1a47193ff7288df9d2b0cb}\label{classostk_1_1physics_1_1coord_1_1_frame_a549b54435e1a47193ff7288df9d2b0cb}} 
+\index{ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}!access\+Parent@{access\+Parent}}
+\index{access\+Parent@{access\+Parent}!ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}}
+\subsubsection{\texorpdfstring{access\+Parent()}{accessParent()}}
+{\footnotesize\ttfamily Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ ostk\+::physics\+::coord\+::\+Frame\+::access\+Parent (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1_frame_a60c1717e04993577c0dcf4eae23be672}\label{classostk_1_1physics_1_1coord_1_1_frame_a60c1717e04993577c0dcf4eae23be672}} 
+\index{ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}!access\+Provider@{access\+Provider}}
+\index{access\+Provider@{access\+Provider}!ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}}
+\subsubsection{\texorpdfstring{access\+Provider()}{accessProvider()}}
+{\footnotesize\ttfamily Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_provider}{Provider} $>$ ostk\+::physics\+::coord\+::\+Frame\+::access\+Provider (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1_frame_ae858400dfa432f12b71712b52b3f5108}\label{classostk_1_1physics_1_1coord_1_1_frame_ae858400dfa432f12b71712b52b3f5108}} 
+\index{ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}!C\+I\+RF@{C\+I\+RF}}
+\index{C\+I\+RF@{C\+I\+RF}!ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}}
+\subsubsection{\texorpdfstring{C\+I\+R\+F()}{CIRF()}}
+{\footnotesize\ttfamily Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ ostk\+::physics\+::coord\+::\+Frame\+::\+C\+I\+RF (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1_frame_a6faa8908c55e5e56ce3ed4c96d15b9af}\label{classostk_1_1physics_1_1coord_1_1_frame_a6faa8908c55e5e56ce3ed4c96d15b9af}} 
+\index{ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}!Construct@{Construct}}
+\index{Construct@{Construct}!ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}}
+\subsubsection{\texorpdfstring{Construct()}{Construct()}}
+{\footnotesize\ttfamily Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ ostk\+::physics\+::coord\+::\+Frame\+::\+Construct (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Name,  }\item[{bool}]{is\+Quasi\+Inertial,  }\item[{const Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+Parent\+Frame,  }\item[{const Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_provider}{Provider} $>$ \&}]{a\+Provider }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Name} & A frame name \\
+\hline
+\mbox{\tt in}  & {\em is\+Quasi\+InertialT} & True is frame is quasi-\/inertial \\
+\hline
+\mbox{\tt in}  & {\em a\+Parent\+Frame} & A shared pointer to the parent frame \\
+\hline
+\mbox{\tt in}  & {\em a\+Provider} & A shared pointer to the transform provider \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1_frame_a2c4bf16207b59862deaeee224153b8f9}\label{classostk_1_1physics_1_1coord_1_1_frame_a2c4bf16207b59862deaeee224153b8f9}} 
+\index{ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}!Destruct@{Destruct}}
+\index{Destruct@{Destruct}!ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}}
+\subsubsection{\texorpdfstring{Destruct()}{Destruct()}}
+{\footnotesize\ttfamily void ostk\+::physics\+::coord\+::\+Frame\+::\+Destruct (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1_frame_a61b7c68b761966956251d393bf57f5e5}\label{classostk_1_1physics_1_1coord_1_1_frame_a61b7c68b761966956251d393bf57f5e5}} 
+\index{ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}!E\+M\+E2000@{E\+M\+E2000}}
+\index{E\+M\+E2000@{E\+M\+E2000}!ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}}
+\subsubsection{\texorpdfstring{E\+M\+E2000()}{EME2000()}}
+{\footnotesize\ttfamily static Shared$<$const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}$>$ ostk\+::physics\+::coord\+::\+Frame\+::\+E\+M\+E2000 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1_frame_afe14b695035c704b408563a12a47eb38}\label{classostk_1_1physics_1_1coord_1_1_frame_afe14b695035c704b408563a12a47eb38}} 
+\index{ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}!Exists@{Exists}}
+\index{Exists@{Exists}!ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}}
+\subsubsection{\texorpdfstring{Exists()}{Exists()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::coord\+::\+Frame\+::\+Exists (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1_frame_abe31c60e3e7f654b101876cb6b9b5238}\label{classostk_1_1physics_1_1coord_1_1_frame_abe31c60e3e7f654b101876cb6b9b5238}} 
+\index{ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}!G\+C\+RF@{G\+C\+RF}}
+\index{G\+C\+RF@{G\+C\+RF}!ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}}
+\subsubsection{\texorpdfstring{G\+C\+R\+F()}{GCRF()}}
+{\footnotesize\ttfamily Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ ostk\+::physics\+::coord\+::\+Frame\+::\+G\+C\+RF (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1_frame_ac75780963694dd74ea2e6a66f6ae17d8}\label{classostk_1_1physics_1_1coord_1_1_frame_ac75780963694dd74ea2e6a66f6ae17d8}} 
+\index{ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}!get\+Axes\+In@{get\+Axes\+In}}
+\index{get\+Axes\+In@{get\+Axes\+In}!ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}}
+\subsubsection{\texorpdfstring{get\+Axes\+In()}{getAxesIn()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1coord_1_1_axes}{Axes} ostk\+::physics\+::coord\+::\+Frame\+::get\+Axes\+In (\begin{DoxyParamCaption}\item[{const Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+Frame,  }\item[{const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1_frame_a47aca195a73e14198f6d615c8988ce6e}\label{classostk_1_1physics_1_1coord_1_1_frame_a47aca195a73e14198f6d615c8988ce6e}} 
+\index{ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}!get\+Name@{get\+Name}}
+\index{get\+Name@{get\+Name}!ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}}
+\subsubsection{\texorpdfstring{get\+Name()}{getName()}}
+{\footnotesize\ttfamily String ostk\+::physics\+::coord\+::\+Frame\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1_frame_a9f0544fd284d2ff4bca6a54dc8835bff}\label{classostk_1_1physics_1_1coord_1_1_frame_a9f0544fd284d2ff4bca6a54dc8835bff}} 
+\index{ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}!get\+Origin\+In@{get\+Origin\+In}}
+\index{get\+Origin\+In@{get\+Origin\+In}!ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}}
+\subsubsection{\texorpdfstring{get\+Origin\+In()}{getOriginIn()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1coord_1_1_position}{Position} ostk\+::physics\+::coord\+::\+Frame\+::get\+Origin\+In (\begin{DoxyParamCaption}\item[{const Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+Frame,  }\item[{const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1_frame_aa6f51c81724f36644ad8343a1124c264}\label{classostk_1_1physics_1_1coord_1_1_frame_aa6f51c81724f36644ad8343a1124c264}} 
+\index{ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}!get\+Transform\+To@{get\+Transform\+To}}
+\index{get\+Transform\+To@{get\+Transform\+To}!ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}}
+\subsubsection{\texorpdfstring{get\+Transform\+To()}{getTransformTo()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1coord_1_1_transform}{Transform} ostk\+::physics\+::coord\+::\+Frame\+::get\+Transform\+To (\begin{DoxyParamCaption}\item[{const Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+Frame,  }\item[{const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1_frame_ab2d8bdcd3f68604d4ca104341f51b7f1}\label{classostk_1_1physics_1_1coord_1_1_frame_ab2d8bdcd3f68604d4ca104341f51b7f1}} 
+\index{ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}!get\+Velocity\+In@{get\+Velocity\+In}}
+\index{get\+Velocity\+In@{get\+Velocity\+In}!ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}}
+\subsubsection{\texorpdfstring{get\+Velocity\+In()}{getVelocityIn()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1coord_1_1_velocity}{Velocity} ostk\+::physics\+::coord\+::\+Frame\+::get\+Velocity\+In (\begin{DoxyParamCaption}\item[{const Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+Frame,  }\item[{const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1_frame_aa4c778fa91e6599cdea0a889fd5bf69c}\label{classostk_1_1physics_1_1coord_1_1_frame_aa4c778fa91e6599cdea0a889fd5bf69c}} 
+\index{ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}!has\+Parent@{has\+Parent}}
+\index{has\+Parent@{has\+Parent}!ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}}
+\subsubsection{\texorpdfstring{has\+Parent()}{hasParent()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::coord\+::\+Frame\+::has\+Parent (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1_frame_af111d96da6adf5405a354a769618b5f4}\label{classostk_1_1physics_1_1coord_1_1_frame_af111d96da6adf5405a354a769618b5f4}} 
+\index{ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}!I\+C\+RF@{I\+C\+RF}}
+\index{I\+C\+RF@{I\+C\+RF}!ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}}
+\subsubsection{\texorpdfstring{I\+C\+R\+F()}{ICRF()}}
+{\footnotesize\ttfamily static Shared$<$const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}$>$ ostk\+::physics\+::coord\+::\+Frame\+::\+I\+C\+RF (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1_frame_a3c4750cec74616ad3e48adf31c314756}\label{classostk_1_1physics_1_1coord_1_1_frame_a3c4750cec74616ad3e48adf31c314756}} 
+\index{ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}!is\+Defined@{is\+Defined}}
+\index{is\+Defined@{is\+Defined}!ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}}
+\subsubsection{\texorpdfstring{is\+Defined()}{isDefined()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::coord\+::\+Frame\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1_frame_ac0f7d78be14f09ccef5b862c4f963da8}\label{classostk_1_1physics_1_1coord_1_1_frame_ac0f7d78be14f09ccef5b862c4f963da8}} 
+\index{ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}!is\+Quasi\+Inertial@{is\+Quasi\+Inertial}}
+\index{is\+Quasi\+Inertial@{is\+Quasi\+Inertial}!ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}}
+\subsubsection{\texorpdfstring{is\+Quasi\+Inertial()}{isQuasiInertial()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::coord\+::\+Frame\+::is\+Quasi\+Inertial (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1_frame_ac1d0d50dc15982fbef3caba62a9ed507}\label{classostk_1_1physics_1_1coord_1_1_frame_ac1d0d50dc15982fbef3caba62a9ed507}} 
+\index{ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}!I\+T\+RF@{I\+T\+RF}}
+\index{I\+T\+RF@{I\+T\+RF}!ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}}
+\subsubsection{\texorpdfstring{I\+T\+R\+F()}{ITRF()}}
+{\footnotesize\ttfamily Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ ostk\+::physics\+::coord\+::\+Frame\+::\+I\+T\+RF (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1_frame_a12a5cb341c34a404f220b0940a5dff79}\label{classostk_1_1physics_1_1coord_1_1_frame_a12a5cb341c34a404f220b0940a5dff79}} 
+\index{ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}}
+\subsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::coord\+::\+Frame\+::operator!= (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} \&}]{a\+Frame }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1_frame_ac47e4fe942c8cd0b8969ee9f6d32b816}\label{classostk_1_1physics_1_1coord_1_1_frame_ac47e4fe942c8cd0b8969ee9f6d32b816}} 
+\index{ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}!operator=@{operator=}}
+\index{operator=@{operator=}!ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}\& ostk\+::physics\+::coord\+::\+Frame\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} \&}]{a\+Frame }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [default]}}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1_frame_a010fbd30fe3a937d44d0fbbdeb60222b}\label{classostk_1_1physics_1_1coord_1_1_frame_a010fbd30fe3a937d44d0fbbdeb60222b}} 
+\index{ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}!operator==@{operator==}}
+\index{operator==@{operator==}!ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}}
+\subsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::coord\+::\+Frame\+::operator== (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} \&}]{a\+Frame }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1_frame_a1441cef9cd2abe312753f3a81606adfb}\label{classostk_1_1physics_1_1coord_1_1_frame_a1441cef9cd2abe312753f3a81606adfb}} 
+\index{ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}!T\+E\+ME@{T\+E\+ME}}
+\index{T\+E\+ME@{T\+E\+ME}!ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}}
+\subsubsection{\texorpdfstring{T\+E\+M\+E()}{TEME()}}
+{\footnotesize\ttfamily Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ ostk\+::physics\+::coord\+::\+Frame\+::\+T\+E\+ME (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1_frame_ab47046bc517b04537c96844d95c13fdd}\label{classostk_1_1physics_1_1coord_1_1_frame_ab47046bc517b04537c96844d95c13fdd}} 
+\index{ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}!T\+E\+M\+E\+Of\+Epoch@{T\+E\+M\+E\+Of\+Epoch}}
+\index{T\+E\+M\+E\+Of\+Epoch@{T\+E\+M\+E\+Of\+Epoch}!ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}}
+\subsubsection{\texorpdfstring{T\+E\+M\+E\+Of\+Epoch()}{TEMEOfEpoch()}}
+{\footnotesize\ttfamily Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ ostk\+::physics\+::coord\+::\+Frame\+::\+T\+E\+M\+E\+Of\+Epoch (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Epoch }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1_frame_ac159b1d21bc5f55e7163d27f4cc25c34}\label{classostk_1_1physics_1_1coord_1_1_frame_ac159b1d21bc5f55e7163d27f4cc25c34}} 
+\index{ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}!T\+I\+RF@{T\+I\+RF}}
+\index{T\+I\+RF@{T\+I\+RF}!ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}}
+\subsubsection{\texorpdfstring{T\+I\+R\+F()}{TIRF()}}
+{\footnotesize\ttfamily Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ ostk\+::physics\+::coord\+::\+Frame\+::\+T\+I\+RF (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1_frame_a292d32b849648a8e530d35ac47b5c699}\label{classostk_1_1physics_1_1coord_1_1_frame_a292d32b849648a8e530d35ac47b5c699}} 
+\index{ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}!Undefined@{Undefined}}
+\index{Undefined@{Undefined}!ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}}
+\subsubsection{\texorpdfstring{Undefined()}{Undefined()}}
+{\footnotesize\ttfamily Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ ostk\+::physics\+::coord\+::\+Frame\+::\+Undefined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1_frame_ad9f12f000a68daaec4969ba739f43ee7}\label{classostk_1_1physics_1_1coord_1_1_frame_ad9f12f000a68daaec4969ba739f43ee7}} 
+\index{ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}!With\+Name@{With\+Name}}
+\index{With\+Name@{With\+Name}!ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}}
+\subsubsection{\texorpdfstring{With\+Name()}{WithName()}}
+{\footnotesize\ttfamily Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ ostk\+::physics\+::coord\+::\+Frame\+::\+With\+Name (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\subsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1_frame_a509ac1926cfc3553748bace204e2b1cc}\label{classostk_1_1physics_1_1coord_1_1_frame_a509ac1926cfc3553748bace204e2b1cc}} 
+\index{ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!ostk\+::physics\+::coord\+::\+Frame@{ostk\+::physics\+::coord\+::\+Frame}}
+\subsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{an\+Output\+Stream,  }\item[{const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} \&}]{a\+Frame }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Open\+Space\+Toolkit/\+Physics/\+Coordinate/\hyperlink{_frame_8hpp}{Frame.\+hpp}\item 
+src/\+Open\+Space\+Toolkit/\+Physics/\+Coordinate/\hyperlink{_frame_8cpp}{Frame.\+cpp}\end{DoxyCompactItemize}

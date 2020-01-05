@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['hour',['Hour',['../classlibrary_1_1physics_1_1units_1_1_time.html#ab876a6a05c9a2f28905f2753bfd64109ab55e509c697e4cca0e1d160a7806698f',1,'library::physics::units::Time']]]
+  ['hour',['Hour',['../classostk_1_1physics_1_1units_1_1_time.html#aa961f0dbca7ec297e19e15e0dfa3bb4aab55e509c697e4cca0e1d160a7806698f',1,'ostk::physics::units::Time']]]
 ];

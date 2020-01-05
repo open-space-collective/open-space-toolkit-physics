@@ -1,0 +1,97 @@
+\hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical}{}\section{ostk\+:\+:physics\+:\+:environment\+:\+:gravitational\+:\+:Spherical Class Reference}
+\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical}\index{ostk\+::physics\+::environment\+::gravitational\+::\+Spherical@{ostk\+::physics\+::environment\+::gravitational\+::\+Spherical}}
+
+
+\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical}{Spherical} gravitational model.  
+
+
+
+
+{\ttfamily \#include $<$Spherical.\+hpp$>$}
+
+Inheritance diagram for ostk\+:\+:physics\+:\+:environment\+:\+:gravitational\+:\+:Spherical\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical_aa0181210c54a42a0b6e808d6e6811d6b}{Spherical} (const \hyperlink{classostk_1_1physics_1_1units_1_1_derived}{Derived} \&a\+Gravitational\+Parameter)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+virtual \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical}{Spherical} $\ast$ \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical_ac9f63de9656589a27a77e7a8d48836bd}{clone} () const override
+\begin{DoxyCompactList}\small\item\em Clone the spherical gravitational model. \end{DoxyCompactList}\item 
+virtual Vector3d \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical_a37243cf671418b0cb9eff229101b5e96}{get\+Field\+Value\+At} (const Vector3d \&a\+Position, const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant) const override
+\begin{DoxyCompactList}\small\item\em Get the gravitational field value at a given position and instant. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical}{Spherical} gravitational model. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical_aa0181210c54a42a0b6e808d6e6811d6b}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical_aa0181210c54a42a0b6e808d6e6811d6b}} 
+\index{ostk\+::physics\+::environment\+::gravitational\+::\+Spherical@{ostk\+::physics\+::environment\+::gravitational\+::\+Spherical}!Spherical@{Spherical}}
+\index{Spherical@{Spherical}!ostk\+::physics\+::environment\+::gravitational\+::\+Spherical@{ostk\+::physics\+::environment\+::gravitational\+::\+Spherical}}
+\subsubsection{\texorpdfstring{Spherical()}{Spherical()}}
+{\footnotesize\ttfamily ostk\+::physics\+::environment\+::gravitational\+::\+Spherical\+::\+Spherical (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1units_1_1_derived}{Derived} \&}]{a\+Gravitational\+Parameter }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Gravitational\+Parameter} & A gravitational parameter \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical_ac9f63de9656589a27a77e7a8d48836bd}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical_ac9f63de9656589a27a77e7a8d48836bd}} 
+\index{ostk\+::physics\+::environment\+::gravitational\+::\+Spherical@{ostk\+::physics\+::environment\+::gravitational\+::\+Spherical}!clone@{clone}}
+\index{clone@{clone}!ostk\+::physics\+::environment\+::gravitational\+::\+Spherical@{ostk\+::physics\+::environment\+::gravitational\+::\+Spherical}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical}{Spherical} $\ast$ ostk\+::physics\+::environment\+::gravitational\+::\+Spherical\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clone the spherical gravitational model. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to spherical gravitational model 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_a399257ac86e7f0112a702141e0e2e4a7}{ostk\+::physics\+::environment\+::gravitational\+::\+Model}.
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical_a37243cf671418b0cb9eff229101b5e96}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical_a37243cf671418b0cb9eff229101b5e96}} 
+\index{ostk\+::physics\+::environment\+::gravitational\+::\+Spherical@{ostk\+::physics\+::environment\+::gravitational\+::\+Spherical}!get\+Field\+Value\+At@{get\+Field\+Value\+At}}
+\index{get\+Field\+Value\+At@{get\+Field\+Value\+At}!ostk\+::physics\+::environment\+::gravitational\+::\+Spherical@{ostk\+::physics\+::environment\+::gravitational\+::\+Spherical}}
+\subsubsection{\texorpdfstring{get\+Field\+Value\+At()}{getFieldValueAt()}}
+{\footnotesize\ttfamily Vector3d ostk\+::physics\+::environment\+::gravitational\+::\+Spherical\+::get\+Field\+Value\+At (\begin{DoxyParamCaption}\item[{const Vector3d \&}]{a\+Position,  }\item[{const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the gravitational field value at a given position and instant. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Position} & A position, expressed in the gravitational object frame \mbox{[}m\mbox{]} \\
+\hline
+\mbox{\tt in}  & {\em an\+Instant} & An instant \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Gravitational field value, expressed in the gravitational object frame \mbox{[}m.\+s-\/2\mbox{]} 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_a5ef3b4ddf4240e8a26553294fe392581}{ostk\+::physics\+::environment\+::gravitational\+::\+Model}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Open\+Space\+Toolkit/\+Physics/\+Environment/\+Gravitational/\hyperlink{_spherical_8hpp}{Spherical.\+hpp}\item 
+src/\+Open\+Space\+Toolkit/\+Physics/\+Environment/\+Gravitational/\hyperlink{_spherical_8cpp}{Spherical.\+cpp}\end{DoxyCompactItemize}

@@ -1,5 +1,5 @@
 var _duration_8cpp =
 [
-    [ "operator*", "_duration_8cpp.html#a6da180b0b926ce6b8208810238d47234", null ],
-    [ "operator<<", "_duration_8cpp.html#a707806f1dd1dd8b14fb4b0d3031f55f5", null ]
+    [ "operator*", "_duration_8cpp.html#a8622f39865ce8d6d88d9628bae351198", null ],
+    [ "operator<<", "_duration_8cpp.html#af077846f664aa623cdb845097c2dc46d", null ]
 ];

@@ -1,0 +1,80 @@
+\hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_b}{}\section{ostk\+:\+:physics\+:\+:coord\+:\+:frame\+:\+:provider\+:\+:iers\+:\+:BulletinB Class Reference}
+\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_b}\index{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+BulletinB@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+BulletinB}}
+
+
+I\+E\+RS Bulletin B.  
+
+
+
+
+{\ttfamily \#include $<$Bulletin\+B.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_b_ab90d582229f254830583cd9ce65d8dab}{is\+Defined} () const
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_b}{BulletinB} \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_b_acb41581b3948a93fca9968a3f3750711}{Undefined} ()
+\item 
+static \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_b}{BulletinB} \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_b_ae28b57329f192b329fe38476f4f026b5}{Load} (const fs\+::\+File \&a\+File)
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_b_a36d9e78a5de0361186ca1cb63ab6f1ee}{operator$<$$<$} (std\+::ostream \&an\+Output\+Stream, const \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_b}{BulletinB} \&a\+BulletinB)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+I\+E\+RS Bulletin B. 
+
+I\+E\+RS Bulletin B provides current information on the Earth’s orientation in the I\+E\+RS Reference System. This includes Universal Time, coordinates of the terrestrial pole, and celestial pole offsets. I\+E\+RS Bulletin B consists of 5 sections\+:
+
+Section 1\+: Daily final values at 0\+:00 UT of x, y, U\+T1-\/\+U\+TC, dX, dY, and their uncertainties. Time span\+: one month with final values, one month with preliminary values.
+
+Section 2\+: Daily final values at 0\+:00 UT of celestial pole offsets d\+Psi and d\+Eps in the I\+AU 1980 system and their uncertainties.
+
+Section 3\+: Earth angular velocity (daily estimates of L\+OD and O\+M\+E\+GA with their uncertainties).
+
+Section 4\+: Information on the time scales and announcement of occurring leap seconds.
+
+Section 5\+: Average formal precision of the individual and combined series contributing or not to the combination and their agreement with the combination.
+
+https\+://www.iers.\+org/\+I\+E\+R\+S/\+E\+N/\+Publications/\+Bulletins/bulletins.html 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_b_ab90d582229f254830583cd9ce65d8dab}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_b_ab90d582229f254830583cd9ce65d8dab}} 
+\index{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+BulletinB@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+BulletinB}!is\+Defined@{is\+Defined}}
+\index{is\+Defined@{is\+Defined}!ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+BulletinB@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+BulletinB}}
+\subsubsection{\texorpdfstring{is\+Defined()}{isDefined()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Bulletin\+B\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_b_ae28b57329f192b329fe38476f4f026b5}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_b_ae28b57329f192b329fe38476f4f026b5}} 
+\index{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+BulletinB@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+BulletinB}!Load@{Load}}
+\index{Load@{Load}!ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+BulletinB@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+BulletinB}}
+\subsubsection{\texorpdfstring{Load()}{Load()}}
+{\footnotesize\ttfamily static \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_b}{BulletinB} ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Bulletin\+B\+::\+Load (\begin{DoxyParamCaption}\item[{const fs\+::\+File \&}]{a\+File }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_b_acb41581b3948a93fca9968a3f3750711}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_b_acb41581b3948a93fca9968a3f3750711}} 
+\index{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+BulletinB@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+BulletinB}!Undefined@{Undefined}}
+\index{Undefined@{Undefined}!ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+BulletinB@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+BulletinB}}
+\subsubsection{\texorpdfstring{Undefined()}{Undefined()}}
+{\footnotesize\ttfamily static \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_b}{BulletinB} ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Bulletin\+B\+::\+Undefined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\subsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_b_a36d9e78a5de0361186ca1cb63ab6f1ee}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_b_a36d9e78a5de0361186ca1cb63ab6f1ee}} 
+\index{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+BulletinB@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+BulletinB}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+BulletinB@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+BulletinB}}
+\subsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{an\+Output\+Stream,  }\item[{const \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_b}{BulletinB} \&}]{a\+BulletinB }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Providers/\+I\+E\+R\+S/\hyperlink{_bulletin_b_8hpp}{Bulletin\+B.\+hpp}\end{DoxyCompactItemize}

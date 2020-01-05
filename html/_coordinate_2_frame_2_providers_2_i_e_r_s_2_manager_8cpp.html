@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
-<title>LibraryPhysics: Documentation</title>
+<title>OpenSpaceToolkitPhysics: Documentation</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -27,7 +27,7 @@
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
-<div id="topbanner"><a href="https://github.com/open-space-collective/library-physics" title="Library ▸ Physics"><i class="githublogo"></i></a></div>
+<div id="topbanner"><a href="https://github.com/open-space-collective/open-space-toolkit-physics" title="Open Space Toolkit ▸ Physics"><i class="githublogo"></i></a></div>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
           <img id="MSearchSelect" src="search/mag_sel.png"
@@ -84,19 +84,19 @@ $(document).ready(function(){initNavTree('_coordinate_2_frame_2_providers_2_i_e_
 <div class="title">Manager.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="_coordinate_2_frame_2_providers_2_i_e_r_s_2_manager_8hpp_source.html">Library/Physics/Coordinate/Frame/Providers/IERS/Manager.hpp</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="_instant_8hpp_source.html">Library/Physics/Time/Instant.hpp</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="_date_time_8hpp_source.html">Library/Physics/Time/DateTime.hpp</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="_time_2_time_8hpp_source.html">Library/Physics/Time/Time.hpp</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="_date_8hpp_source.html">Library/Physics/Time/Date.hpp</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="_scale_8hpp_source.html">Library/Physics/Time/Scale.hpp</a>&gt;</code><br />
-<code>#include &lt;Library/IO/IP/TCP/HTTP/Client.hpp&gt;</code><br />
-<code>#include &lt;Library/Core/FileSystem/Path.hpp&gt;</code><br />
-<code>#include &lt;Library/Core/Containers/Map.hpp&gt;</code><br />
-<code>#include &lt;Library/Core/Types/String.hpp&gt;</code><br />
-<code>#include &lt;Library/Core/Types/Integer.hpp&gt;</code><br />
-<code>#include &lt;Library/Core/Error.hpp&gt;</code><br />
-<code>#include &lt;Library/Core/Utilities.hpp&gt;</code><br />
+<div class="textblock"><code>#include &lt;<a class="el" href="_coordinate_2_frame_2_providers_2_i_e_r_s_2_manager_8hpp_source.html">OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Manager.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="_instant_8hpp_source.html">OpenSpaceToolkit/Physics/Time/Instant.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="_date_time_8hpp_source.html">OpenSpaceToolkit/Physics/Time/DateTime.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="_time_2_time_8hpp_source.html">OpenSpaceToolkit/Physics/Time/Time.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="_date_8hpp_source.html">OpenSpaceToolkit/Physics/Time/Date.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="_scale_8hpp_source.html">OpenSpaceToolkit/Physics/Time/Scale.hpp</a>&gt;</code><br />
+<code>#include &lt;OpenSpaceToolkit/IO/IP/TCP/HTTP/Client.hpp&gt;</code><br />
+<code>#include &lt;OpenSpaceToolkit/Core/FileSystem/Path.hpp&gt;</code><br />
+<code>#include &lt;OpenSpaceToolkit/Core/Containers/Map.hpp&gt;</code><br />
+<code>#include &lt;OpenSpaceToolkit/Core/Types/String.hpp&gt;</code><br />
+<code>#include &lt;OpenSpaceToolkit/Core/Types/Integer.hpp&gt;</code><br />
+<code>#include &lt;OpenSpaceToolkit/Core/Error.hpp&gt;</code><br />
+<code>#include &lt;OpenSpaceToolkit/Core/Utilities.hpp&gt;</code><br />
 <code>#include &lt;experimental/filesystem&gt;</code><br />
 <code>#include &lt;thread&gt;</code><br />
 <code>#include &lt;chrono&gt;</code><br />
@@ -106,30 +106,30 @@ $(document).ready(function(){initNavTree('_coordinate_2_frame_2_providers_2_i_e_
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
-<tr class="memitem:namespacelibrary"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelibrary.html">library</a></td></tr>
+<tr class="memitem:namespaceostk"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceostk.html">ostk</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:namespacelibrary_1_1physics"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelibrary_1_1physics.html">library::physics</a></td></tr>
+<tr class="memitem:namespaceostk_1_1physics"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceostk_1_1physics.html">ostk::physics</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:namespacelibrary_1_1physics_1_1coord"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelibrary_1_1physics_1_1coord.html">library::physics::coord</a></td></tr>
+<tr class="memitem:namespaceostk_1_1physics_1_1coord"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceostk_1_1physics_1_1coord.html">ostk::physics::coord</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:namespacelibrary_1_1physics_1_1coord_1_1frame"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelibrary_1_1physics_1_1coord_1_1frame.html">library::physics::coord::frame</a></td></tr>
+<tr class="memitem:namespaceostk_1_1physics_1_1coord_1_1frame"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceostk_1_1physics_1_1coord_1_1frame.html">ostk::physics::coord::frame</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:namespacelibrary_1_1physics_1_1coord_1_1frame_1_1provider"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelibrary_1_1physics_1_1coord_1_1frame_1_1provider.html">library::physics::coord::frame::provider</a></td></tr>
+<tr class="memitem:namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider.html">ostk::physics::coord::frame::provider</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:namespacelibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers.html">library::physics::coord::frame::provider::iers</a></td></tr>
+<tr class="memitem:namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers.html">ostk::physics::coord::frame::provider::iers</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a74902a6b275513970fb5d77f337da788"><td class="memItemLeft" align="right" valign="top">const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers.html#a74902a6b275513970fb5d77f337da788">library::physics::coord::frame::provider::iers::bulletinAFileName</a> = &quot;ser7.dat&quot;</td></tr>
-<tr class="separator:a74902a6b275513970fb5d77f337da788"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acbca40e7605700724acf924be0c922a1"><td class="memItemLeft" align="right" valign="top">const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers.html#acbca40e7605700724acf924be0c922a1">library::physics::coord::frame::provider::iers::finals2000AFileName</a> = &quot;finals2000A.data&quot;</td></tr>
-<tr class="separator:acbca40e7605700724acf924be0c922a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acda6d9c00dfd330465fcca24a19549ce"><td class="memItemLeft" align="right" valign="top">const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers.html#acda6d9c00dfd330465fcca24a19549ce">library::physics::coord::frame::provider::iers::temporaryDirectoryName</a> = &quot;tmp&quot;</td></tr>
-<tr class="separator:acda6d9c00dfd330465fcca24a19549ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cb43c38a8bca47ff425a549b839ba52"><td class="memItemLeft" align="right" valign="top">const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers.html#a5cb43c38a8bca47ff425a549b839ba52">ostk::physics::coord::frame::provider::iers::bulletinAFileName</a> = &quot;ser7.dat&quot;</td></tr>
+<tr class="separator:a5cb43c38a8bca47ff425a549b839ba52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afaf60ac8fac4be315f2b944146314aab"><td class="memItemLeft" align="right" valign="top">const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers.html#afaf60ac8fac4be315f2b944146314aab">ostk::physics::coord::frame::provider::iers::finals2000AFileName</a> = &quot;finals2000A.data&quot;</td></tr>
+<tr class="separator:afaf60ac8fac4be315f2b944146314aab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf91c1c8fbc2cd95d50b48f2a5cc03f2"><td class="memItemLeft" align="right" valign="top">const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers.html#adf91c1c8fbc2cd95d50b48f2a5cc03f2">ostk::physics::coord::frame::provider::iers::temporaryDirectoryName</a> = &quot;tmp&quot;</td></tr>
+<tr class="separator:adf91c1c8fbc2cd95d50b48f2a5cc03f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Library ▸ Physics</p>
+<div class="textblock"><p>Open Space Toolkit ▸ Physics</p>
 <dl class="section author"><dt>Author</dt><dd>Lucas Brémond <a href="#" onclick="location.href='mai'+'lto:'+'luc'+'as'+'@lo'+'ft'+'orb'+'it'+'al.'+'co'+'m'; return false;">lucas<span style="display: none;">.nosp@m.</span>@lof<span style="display: none;">.nosp@m.</span>torbi<span style="display: none;">.nosp@m.</span>tal.<span style="display: none;">.nosp@m.</span>com</a>  Apache License 2.0 </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
@@ -137,7 +137,7 @@ Variables</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_f741251061e5c7c7ed48ab45c3348f11.html">Library</a></li><li class="navelem"><a class="el" href="dir_0f9899169cbfc2d05b2af8cd33250ee2.html">Physics</a></li><li class="navelem"><a class="el" href="dir_26d174172e2136058cf9fefb339b142a.html">Coordinate</a></li><li class="navelem"><a class="el" href="dir_8daf2f88c0abf0ca0c63705d83adb217.html">Frame</a></li><li class="navelem"><a class="el" href="dir_e43b96b98a89ff1735f7e20b3aa4d779.html">Providers</a></li><li class="navelem"><a class="el" href="dir_3b75fb362f734e8632daf95d91056339.html">IERS</a></li><li class="navelem"><a class="el" href="_coordinate_2_frame_2_providers_2_i_e_r_s_2_manager_8cpp.html">Manager.cpp</a></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdc2ce6839bd9a3b87630c53f2ae038b.html">OpenSpaceToolkit</a></li><li class="navelem"><a class="el" href="dir_0c308b368590d0cd120aebf39fe12303.html">Physics</a></li><li class="navelem"><a class="el" href="dir_b64bc372b3c1aa1cb143fe64465c384c.html">Coordinate</a></li><li class="navelem"><a class="el" href="dir_d6338ea32b329fc9679c2dc3057edda2.html">Frame</a></li><li class="navelem"><a class="el" href="dir_5592a586f73f8a1a6fc2d979778e7529.html">Providers</a></li><li class="navelem"><a class="el" href="dir_e7e68c3ec2508d9fae34d60bef447c82.html">IERS</a></li><li class="navelem"><a class="el" href="_coordinate_2_frame_2_providers_2_i_e_r_s_2_manager_8cpp.html">Manager.cpp</a></li>
   </ul>
 </div>
 </body>

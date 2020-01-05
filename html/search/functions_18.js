@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['z',['z',['../classlibrary_1_1physics_1_1coord_1_1_axes.html#a22fa1ae49680fc2c4e8e7e905e472301',1,'library::physics::coord::Axes']]],
-  ['zero',['Zero',['../classlibrary_1_1physics_1_1time_1_1_duration.html#aa68c3998cd4cf9068fb239dd66102c2c',1,'library::physics::time::Duration::Zero()'],['../classlibrary_1_1physics_1_1units_1_1_angle.html#a3dcf6f9bcee4ae440d36859c30481d2b',1,'library::physics::units::Angle::Zero()'],['../classlibrary_1_1physics_1_1units_1_1_derived_1_1_order.html#ad001256340bff8a9c55156f9c45d4969',1,'library::physics::units::Derived::Order::Zero()']]]
+  ['z',['z',['../classostk_1_1physics_1_1coord_1_1_axes.html#a56a219efa05ba3b614e1ae52b27ae8a6',1,'ostk::physics::coord::Axes']]],
+  ['zero',['Zero',['../classostk_1_1physics_1_1time_1_1_duration.html#acacd92afc598a3a48289307337fce217',1,'ostk::physics::time::Duration::Zero()'],['../classostk_1_1physics_1_1units_1_1_angle.html#a4454975f87e5d3532cf8b819819207e7',1,'ostk::physics::units::Angle::Zero()'],['../classostk_1_1physics_1_1units_1_1_derived_1_1_order.html#a3d73f8e4264528130adfe7d596a2ac2b',1,'ostk::physics::units::Derived::Order::Zero()']]]
 ];

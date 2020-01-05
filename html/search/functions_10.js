@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['radians',['Radians',['../classlibrary_1_1physics_1_1units_1_1_angle.html#ac065fbde3c625159cf21153c23c3045b',1,'library::physics::units::Angle']]],
-  ['ratioto',['ratioTo',['../classlibrary_1_1physics_1_1_unit.html#a23f1befd7161e4f70e5cb84bb851c347',1,'library::physics::Unit']]],
-  ['refresh',['refresh',['../classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager.html#ae09ea8ee9bb108497fad079308d9becd',1,'library::physics::env::ephem::spice::Manager']]],
-  ['removeframewithname',['removeFrameWithName',['../classlibrary_1_1physics_1_1coord_1_1frame_1_1_manager.html#a63e05e289d34f354dafefbff2b8478af',1,'library::physics::coord::frame::Manager']]],
-  ['reset',['reset',['../classlibrary_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager.html#a9f33e958715ef7af62a91aa54789e78a',1,'library::physics::coord::frame::provider::iers::Manager::reset()'],['../classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#a949c14d9c53ea21c29f1945ef43f0cd9',1,'library::physics::env::ephem::spice::Engine::reset()']]],
-  ['revolutions',['Revolutions',['../classlibrary_1_1physics_1_1units_1_1_angle.html#a2e712e11187dec11a781d457a3f949dc',1,'library::physics::units::Angle']]]
+  ['radians',['Radians',['../classostk_1_1physics_1_1units_1_1_angle.html#aceb137f392490d9b1d1de90406e62c9c',1,'ostk::physics::units::Angle']]],
+  ['ratioto',['ratioTo',['../classostk_1_1physics_1_1_unit.html#a6c88c955a56b590f4623e8a1fa2a9cbb',1,'ostk::physics::Unit']]],
+  ['refresh',['refresh',['../classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager.html#ac8163df1e48cc4aa3cb21821e98d89f3',1,'ostk::physics::env::ephem::spice::Manager']]],
+  ['removeframewithname',['removeFrameWithName',['../classostk_1_1physics_1_1coord_1_1frame_1_1_manager.html#ada10a8a3ff3ced0182bbb2a42abbbb71',1,'ostk::physics::coord::frame::Manager']]],
+  ['reset',['reset',['../classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager.html#ab43eacd0e4e55398731f1d1294c874bc',1,'ostk::physics::coord::frame::provider::iers::Manager::reset()'],['../classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#ad459dacf25f4ba08089b5d1111ca7814',1,'ostk::physics::env::ephem::spice::Engine::reset()']]],
+  ['revolutions',['Revolutions',['../classostk_1_1physics_1_1units_1_1_angle.html#a827dcc99310b0b0117cf5d7dd5b4c899',1,'ostk::physics::units::Angle']]]
 ];

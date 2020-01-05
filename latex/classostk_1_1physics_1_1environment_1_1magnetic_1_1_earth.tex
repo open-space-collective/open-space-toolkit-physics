@@ -1,0 +1,223 @@
+\hypertarget{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth}{}\section{ostk\+:\+:physics\+:\+:environment\+:\+:magnetic\+:\+:Earth Class Reference}
+\label{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth}\index{ostk\+::physics\+::environment\+::magnetic\+::\+Earth@{ostk\+::physics\+::environment\+::magnetic\+::\+Earth}}
+
+
+\hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth}{Earth} magnetic model.  
+
+
+
+
+{\ttfamily \#include $<$Earth.\+hpp$>$}
+
+Inheritance diagram for ostk\+:\+:physics\+:\+:environment\+:\+:magnetic\+:\+:Earth\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6}{Type} \{ \newline
+\hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6a7627ce84eadbc3098e818fa89b368c2c}{Type\+::\+Dipole}, 
+\hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6aed2fcd927feb1858e659c2278acc9b04}{Type\+::\+E\+M\+M2010}, 
+\hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6abeb005aa2afa040561e58b462da8583d}{Type\+::\+E\+M\+M2015}, 
+\hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6a19d30648df1be691437893aae34fcf62}{Type\+::\+E\+M\+M2017}, 
+\newline
+\hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6aa2ad57512dc0d08c7e8937152ebec747}{Type\+::\+I\+G\+R\+F11}, 
+\hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6a9a61c68f57fc5ed7927cfcec00291c11}{Type\+::\+I\+G\+R\+F12}, 
+\hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6acf25da7a5a5ba3ab08e4c26071ed0b20}{Type\+::\+W\+M\+M2010}, 
+\hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6a164a99cca8995f690571ed8f964e6166}{Type\+::\+W\+M\+M2015}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_ade6f1fc6f3a69543e2bb1921aa8168c5}{Earth} (const \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6}{Earth\+::\+Type} \&a\+Type, const Directory \&a\+Data\+Directory=Directory\+::\+Undefined())
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a0d12c37ce2e12e778a01d5c79dcfd355}{Earth} (const \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth}{Earth} \&an\+Earth\+Magnetic\+Model)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth}{Earth} \& \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_ad7ce781762b59980fb255b3b2a3f6aca}{operator=} (const \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth}{Earth} \&an\+Earth\+Magnetic\+Model)
+\begin{DoxyCompactList}\small\item\em Copy assignment operator. \end{DoxyCompactList}\item 
+\hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a980e325b00a1dc56103d18c3199d0e33}{$\sim$\+Earth} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+virtual \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth}{Earth} $\ast$ \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_ac4b57f94304595595fc3eebb0dd0d050}{clone} () const override
+\begin{DoxyCompactList}\small\item\em Clone the \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth}{Earth} magnetic model. \end{DoxyCompactList}\item 
+\hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6}{Earth\+::\+Type} \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a20952c06c726e4f89f2f8184653ea74e}{get\+Type} () const
+\begin{DoxyCompactList}\small\item\em Get magnetic model type. \end{DoxyCompactList}\item 
+virtual Vector3d \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a2f39ff75c4a674b6720b27c2c6a0b930}{get\+Field\+Value\+At} (const Vector3d \&a\+Position, const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant) const override
+\begin{DoxyCompactList}\small\item\em Get the magnetic field value at a given position and instant. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth}{Earth} magnetic model. 
+
+https\+://geographiclib.sourceforge.\+io/html/magnetic.html 
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6}\label{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6}} 
+\index{ostk\+::physics\+::environment\+::magnetic\+::\+Earth@{ostk\+::physics\+::environment\+::magnetic\+::\+Earth}!Type@{Type}}
+\index{Type@{Type}!ostk\+::physics\+::environment\+::magnetic\+::\+Earth@{ostk\+::physics\+::environment\+::magnetic\+::\+Earth}}
+\subsubsection{\texorpdfstring{Type}{Type}}
+{\footnotesize\ttfamily enum \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6}{ostk\+::physics\+::environment\+::magnetic\+::\+Earth\+::\+Type}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Dipole@{Dipole}!ostk\+::physics\+::environment\+::magnetic\+::\+Earth@{ostk\+::physics\+::environment\+::magnetic\+::\+Earth}}\index{ostk\+::physics\+::environment\+::magnetic\+::\+Earth@{ostk\+::physics\+::environment\+::magnetic\+::\+Earth}!Dipole@{Dipole}}}\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6a7627ce84eadbc3098e818fa89b368c2c}\label{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6a7627ce84eadbc3098e818fa89b368c2c}} 
+Dipole&\hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole}{Dipole} \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_model}{Model}. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\+M\+M2010@{E\+M\+M2010}!ostk\+::physics\+::environment\+::magnetic\+::\+Earth@{ostk\+::physics\+::environment\+::magnetic\+::\+Earth}}\index{ostk\+::physics\+::environment\+::magnetic\+::\+Earth@{ostk\+::physics\+::environment\+::magnetic\+::\+Earth}!E\+M\+M2010@{E\+M\+M2010}}}\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6aed2fcd927feb1858e659c2278acc9b04}\label{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6aed2fcd927feb1858e659c2278acc9b04}} 
+E\+M\+M2010&Enhanced Magnetic \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_model}{Model} 2010\+: approximates the main and crustal magnetic fields for the period 2010–2015. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\+M\+M2015@{E\+M\+M2015}!ostk\+::physics\+::environment\+::magnetic\+::\+Earth@{ostk\+::physics\+::environment\+::magnetic\+::\+Earth}}\index{ostk\+::physics\+::environment\+::magnetic\+::\+Earth@{ostk\+::physics\+::environment\+::magnetic\+::\+Earth}!E\+M\+M2015@{E\+M\+M2015}}}\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6abeb005aa2afa040561e58b462da8583d}\label{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6abeb005aa2afa040561e58b462da8583d}} 
+E\+M\+M2015&Enhanced Magnetic \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_model}{Model} 2015\+: approximates the main and crustal magnetic fields for the period 2000–2020. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\+M\+M2017@{E\+M\+M2017}!ostk\+::physics\+::environment\+::magnetic\+::\+Earth@{ostk\+::physics\+::environment\+::magnetic\+::\+Earth}}\index{ostk\+::physics\+::environment\+::magnetic\+::\+Earth@{ostk\+::physics\+::environment\+::magnetic\+::\+Earth}!E\+M\+M2017@{E\+M\+M2017}}}\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6a19d30648df1be691437893aae34fcf62}\label{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6a19d30648df1be691437893aae34fcf62}} 
+E\+M\+M2017&Enhanced Magnetic \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_model}{Model} 2017\+: approximates the main and crustal magnetic fields for the period 2000–2022. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{I\+G\+R\+F11@{I\+G\+R\+F11}!ostk\+::physics\+::environment\+::magnetic\+::\+Earth@{ostk\+::physics\+::environment\+::magnetic\+::\+Earth}}\index{ostk\+::physics\+::environment\+::magnetic\+::\+Earth@{ostk\+::physics\+::environment\+::magnetic\+::\+Earth}!I\+G\+R\+F11@{I\+G\+R\+F11}}}\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6aa2ad57512dc0d08c7e8937152ebec747}\label{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6aa2ad57512dc0d08c7e8937152ebec747}} 
+I\+G\+R\+F11&International Geomagnetic Reference Field (11th generation)\+: approximates the main magnetic field for the period 1900–2015. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{I\+G\+R\+F12@{I\+G\+R\+F12}!ostk\+::physics\+::environment\+::magnetic\+::\+Earth@{ostk\+::physics\+::environment\+::magnetic\+::\+Earth}}\index{ostk\+::physics\+::environment\+::magnetic\+::\+Earth@{ostk\+::physics\+::environment\+::magnetic\+::\+Earth}!I\+G\+R\+F12@{I\+G\+R\+F12}}}\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6a9a61c68f57fc5ed7927cfcec00291c11}\label{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6a9a61c68f57fc5ed7927cfcec00291c11}} 
+I\+G\+R\+F12&International Geomagnetic Reference Field (12th generation)\+: approximates the main magnetic field for the period 1900–2020. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{W\+M\+M2010@{W\+M\+M2010}!ostk\+::physics\+::environment\+::magnetic\+::\+Earth@{ostk\+::physics\+::environment\+::magnetic\+::\+Earth}}\index{ostk\+::physics\+::environment\+::magnetic\+::\+Earth@{ostk\+::physics\+::environment\+::magnetic\+::\+Earth}!W\+M\+M2010@{W\+M\+M2010}}}\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6acf25da7a5a5ba3ab08e4c26071ed0b20}\label{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6acf25da7a5a5ba3ab08e4c26071ed0b20}} 
+W\+M\+M2010&World Magnetic \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_model}{Model} 2010\+: approximates the main magnetic field for the period 2010–2015. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{W\+M\+M2015@{W\+M\+M2015}!ostk\+::physics\+::environment\+::magnetic\+::\+Earth@{ostk\+::physics\+::environment\+::magnetic\+::\+Earth}}\index{ostk\+::physics\+::environment\+::magnetic\+::\+Earth@{ostk\+::physics\+::environment\+::magnetic\+::\+Earth}!W\+M\+M2015@{W\+M\+M2015}}}\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6a164a99cca8995f690571ed8f964e6166}\label{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6a164a99cca8995f690571ed8f964e6166}} 
+W\+M\+M2015&World Magnetic \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_model}{Model} 2015\+: approximates the main magnetic field for the period 2015–2020. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_ade6f1fc6f3a69543e2bb1921aa8168c5}\label{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_ade6f1fc6f3a69543e2bb1921aa8168c5}} 
+\index{ostk\+::physics\+::environment\+::magnetic\+::\+Earth@{ostk\+::physics\+::environment\+::magnetic\+::\+Earth}!Earth@{Earth}}
+\index{Earth@{Earth}!ostk\+::physics\+::environment\+::magnetic\+::\+Earth@{ostk\+::physics\+::environment\+::magnetic\+::\+Earth}}
+\subsubsection{\texorpdfstring{Earth()}{Earth()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily ostk\+::physics\+::environment\+::magnetic\+::\+Earth\+::\+Earth (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6}{Earth\+::\+Type} \&}]{a\+Type,  }\item[{const Directory \&}]{a\+Data\+Directory = {\ttfamily Directory\+:\+:Undefined()} }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Type} & A magnetic model type \\
+\hline
+\mbox{\tt in}  & {\em (optional)} & a\+Data\+Directory A magnetic model data directory \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a0d12c37ce2e12e778a01d5c79dcfd355}\label{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a0d12c37ce2e12e778a01d5c79dcfd355}} 
+\index{ostk\+::physics\+::environment\+::magnetic\+::\+Earth@{ostk\+::physics\+::environment\+::magnetic\+::\+Earth}!Earth@{Earth}}
+\index{Earth@{Earth}!ostk\+::physics\+::environment\+::magnetic\+::\+Earth@{ostk\+::physics\+::environment\+::magnetic\+::\+Earth}}
+\subsubsection{\texorpdfstring{Earth()}{Earth()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily ostk\+::physics\+::environment\+::magnetic\+::\+Earth\+::\+Earth (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth}{Earth} \&}]{an\+Earth\+Magnetic\+Model }\end{DoxyParamCaption})}
+
+
+
+Copy constructor. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em an\+Earth\+Magnetic\+Model} & An \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth}{Earth} model \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a980e325b00a1dc56103d18c3199d0e33}\label{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a980e325b00a1dc56103d18c3199d0e33}} 
+\index{ostk\+::physics\+::environment\+::magnetic\+::\+Earth@{ostk\+::physics\+::environment\+::magnetic\+::\+Earth}!````~Earth@{$\sim$\+Earth}}
+\index{````~Earth@{$\sim$\+Earth}!ostk\+::physics\+::environment\+::magnetic\+::\+Earth@{ostk\+::physics\+::environment\+::magnetic\+::\+Earth}}
+\subsubsection{\texorpdfstring{$\sim$\+Earth()}{~Earth()}}
+{\footnotesize\ttfamily ostk\+::physics\+::environment\+::magnetic\+::\+Earth\+::$\sim$\+Earth (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_ac4b57f94304595595fc3eebb0dd0d050}\label{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_ac4b57f94304595595fc3eebb0dd0d050}} 
+\index{ostk\+::physics\+::environment\+::magnetic\+::\+Earth@{ostk\+::physics\+::environment\+::magnetic\+::\+Earth}!clone@{clone}}
+\index{clone@{clone}!ostk\+::physics\+::environment\+::magnetic\+::\+Earth@{ostk\+::physics\+::environment\+::magnetic\+::\+Earth}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth}{Earth} $\ast$ ostk\+::physics\+::environment\+::magnetic\+::\+Earth\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clone the \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth}{Earth} magnetic model. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth}{Earth} magnetic model 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_model_af357908c151a7809bbbc8fc676bd07b6}{ostk\+::physics\+::environment\+::magnetic\+::\+Model}.
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a2f39ff75c4a674b6720b27c2c6a0b930}\label{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a2f39ff75c4a674b6720b27c2c6a0b930}} 
+\index{ostk\+::physics\+::environment\+::magnetic\+::\+Earth@{ostk\+::physics\+::environment\+::magnetic\+::\+Earth}!get\+Field\+Value\+At@{get\+Field\+Value\+At}}
+\index{get\+Field\+Value\+At@{get\+Field\+Value\+At}!ostk\+::physics\+::environment\+::magnetic\+::\+Earth@{ostk\+::physics\+::environment\+::magnetic\+::\+Earth}}
+\subsubsection{\texorpdfstring{get\+Field\+Value\+At()}{getFieldValueAt()}}
+{\footnotesize\ttfamily Vector3d ostk\+::physics\+::environment\+::magnetic\+::\+Earth\+::get\+Field\+Value\+At (\begin{DoxyParamCaption}\item[{const Vector3d \&}]{a\+Position,  }\item[{const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the magnetic field value at a given position and instant. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Position} & A position, expressed in the magnetic object frame \mbox{[}m\mbox{]} \\
+\hline
+\mbox{\tt in}  & {\em an\+Instant} & An instant \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Magnetic field value, expressed in the magnetic object frame \mbox{[}T\mbox{]} 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_model_abf0510f9be2c196ea3c0586d02979b0f}{ostk\+::physics\+::environment\+::magnetic\+::\+Model}.
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a20952c06c726e4f89f2f8184653ea74e}\label{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a20952c06c726e4f89f2f8184653ea74e}} 
+\index{ostk\+::physics\+::environment\+::magnetic\+::\+Earth@{ostk\+::physics\+::environment\+::magnetic\+::\+Earth}!get\+Type@{get\+Type}}
+\index{get\+Type@{get\+Type}!ostk\+::physics\+::environment\+::magnetic\+::\+Earth@{ostk\+::physics\+::environment\+::magnetic\+::\+Earth}}
+\subsubsection{\texorpdfstring{get\+Type()}{getType()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6}{Earth\+::\+Type} ostk\+::physics\+::environment\+::magnetic\+::\+Earth\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get magnetic model type. 
+
+\begin{DoxyReturn}{Returns}
+Magnetic model type 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_ad7ce781762b59980fb255b3b2a3f6aca}\label{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_ad7ce781762b59980fb255b3b2a3f6aca}} 
+\index{ostk\+::physics\+::environment\+::magnetic\+::\+Earth@{ostk\+::physics\+::environment\+::magnetic\+::\+Earth}!operator=@{operator=}}
+\index{operator=@{operator=}!ostk\+::physics\+::environment\+::magnetic\+::\+Earth@{ostk\+::physics\+::environment\+::magnetic\+::\+Earth}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth}{Earth} \& ostk\+::physics\+::environment\+::magnetic\+::\+Earth\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth}{Earth} \&}]{an\+Earth\+Magnetic\+Model }\end{DoxyParamCaption})}
+
+
+
+Copy assignment operator. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em an\+Earth\+Magnetic\+Model} & An \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth}{Earth} model \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth}{Earth} model 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Open\+Space\+Toolkit/\+Physics/\+Environment/\+Magnetic/\hyperlink{_magnetic_2_earth_8hpp}{Earth.\+hpp}\item 
+src/\+Open\+Space\+Toolkit/\+Physics/\+Environment/\+Magnetic/\hyperlink{_magnetic_2_earth_8cpp}{Earth.\+cpp}\end{DoxyCompactItemize}

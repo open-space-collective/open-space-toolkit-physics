@@ -1,0 +1,99 @@
+\hypertarget{classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole}{}\section{ostk\+:\+:physics\+:\+:environment\+:\+:magnetic\+:\+:Dipole Class Reference}
+\label{classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole}\index{ostk\+::physics\+::environment\+::magnetic\+::\+Dipole@{ostk\+::physics\+::environment\+::magnetic\+::\+Dipole}}
+
+
+Magnetic dipole model.  
+
+
+
+
+{\ttfamily \#include $<$Dipole.\+hpp$>$}
+
+Inheritance diagram for ostk\+:\+:physics\+:\+:environment\+:\+:magnetic\+:\+:Dipole\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole_a974e9a8c1062516d6c872b96d5573779}{Dipole} (const Vector3d \&a\+Magnetic\+Moment)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+virtual \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole}{Dipole} $\ast$ \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole_ad4255ff1007a339c9f0bdbda321c0ab2}{clone} () const override
+\begin{DoxyCompactList}\small\item\em Clone the dipole magnetic model. \end{DoxyCompactList}\item 
+virtual Vector3d \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole_ae2c65e41445c91b3efec455fb5077ab1}{get\+Field\+Value\+At} (const Vector3d \&a\+Position, const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant) const override
+\begin{DoxyCompactList}\small\item\em Get the magnetic field value at a given position and instant. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Magnetic dipole model. 
+
+https\+://en.wikipedia.\+org/wiki/\+Magnetic\+\_\+dipole https\+://en.wikipedia.\+org/wiki/\+Magnetic\+\_\+moment https\+://en.wikipedia.\+org/wiki/\+Vacuum\+\_\+permeability https\+://en.wikipedia.\+org/wiki/\+Dipole\+\_\+model\+\_\+of\+\_\+the\+\_\+\+Earth\%27s\+\_\+magnetic\+\_\+field 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole_a974e9a8c1062516d6c872b96d5573779}\label{classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole_a974e9a8c1062516d6c872b96d5573779}} 
+\index{ostk\+::physics\+::environment\+::magnetic\+::\+Dipole@{ostk\+::physics\+::environment\+::magnetic\+::\+Dipole}!Dipole@{Dipole}}
+\index{Dipole@{Dipole}!ostk\+::physics\+::environment\+::magnetic\+::\+Dipole@{ostk\+::physics\+::environment\+::magnetic\+::\+Dipole}}
+\subsubsection{\texorpdfstring{Dipole()}{Dipole()}}
+{\footnotesize\ttfamily ostk\+::physics\+::environment\+::magnetic\+::\+Dipole\+::\+Dipole (\begin{DoxyParamCaption}\item[{const Vector3d \&}]{a\+Magnetic\+Moment }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Magnetic\+Moment} & A magnetic moment \mbox{[}A⋅m2\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole_ad4255ff1007a339c9f0bdbda321c0ab2}\label{classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole_ad4255ff1007a339c9f0bdbda321c0ab2}} 
+\index{ostk\+::physics\+::environment\+::magnetic\+::\+Dipole@{ostk\+::physics\+::environment\+::magnetic\+::\+Dipole}!clone@{clone}}
+\index{clone@{clone}!ostk\+::physics\+::environment\+::magnetic\+::\+Dipole@{ostk\+::physics\+::environment\+::magnetic\+::\+Dipole}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole}{Dipole} $\ast$ ostk\+::physics\+::environment\+::magnetic\+::\+Dipole\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clone the dipole magnetic model. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to dipole magnetic model 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_model_af357908c151a7809bbbc8fc676bd07b6}{ostk\+::physics\+::environment\+::magnetic\+::\+Model}.
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole_ae2c65e41445c91b3efec455fb5077ab1}\label{classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole_ae2c65e41445c91b3efec455fb5077ab1}} 
+\index{ostk\+::physics\+::environment\+::magnetic\+::\+Dipole@{ostk\+::physics\+::environment\+::magnetic\+::\+Dipole}!get\+Field\+Value\+At@{get\+Field\+Value\+At}}
+\index{get\+Field\+Value\+At@{get\+Field\+Value\+At}!ostk\+::physics\+::environment\+::magnetic\+::\+Dipole@{ostk\+::physics\+::environment\+::magnetic\+::\+Dipole}}
+\subsubsection{\texorpdfstring{get\+Field\+Value\+At()}{getFieldValueAt()}}
+{\footnotesize\ttfamily Vector3d ostk\+::physics\+::environment\+::magnetic\+::\+Dipole\+::get\+Field\+Value\+At (\begin{DoxyParamCaption}\item[{const Vector3d \&}]{a\+Position,  }\item[{const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the magnetic field value at a given position and instant. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Position} & A position, expressed in the magnetic object frame \mbox{[}m\mbox{]} \\
+\hline
+\mbox{\tt in}  & {\em an\+Instant} & An instant \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Magnetic field value, expressed in the magnetic object frame \mbox{[}T\mbox{]} 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_model_abf0510f9be2c196ea3c0586d02979b0f}{ostk\+::physics\+::environment\+::magnetic\+::\+Model}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Open\+Space\+Toolkit/\+Physics/\+Environment/\+Magnetic/\hyperlink{_dipole_8hpp}{Dipole.\+hpp}\item 
+src/\+Open\+Space\+Toolkit/\+Physics/\+Environment/\+Magnetic/\hyperlink{_dipole_8cpp}{Dipole.\+cpp}\end{DoxyCompactItemize}

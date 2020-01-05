@@ -1,0 +1,234 @@
+\hypertarget{classostk_1_1physics_1_1_unit}{}\section{ostk\+:\+:physics\+:\+:Unit Class Reference}
+\label{classostk_1_1physics_1_1_unit}\index{ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}}
+
+
+\hyperlink{classostk_1_1physics_1_1_unit}{Unit}.  
+
+
+
+
+{\ttfamily \#include $<$Unit.\+hpp$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{classostk_1_1physics_1_1_unit_a1c07d36cd02be8541eb972367e2b628f}{Type} \{ \newline
+\hyperlink{classostk_1_1physics_1_1_unit_a1c07d36cd02be8541eb972367e2b628faec0fc0100c4fc1ce4eea230c3dc10360}{Type\+::\+Undefined}, 
+\hyperlink{classostk_1_1physics_1_1_unit_a1c07d36cd02be8541eb972367e2b628fa6adf97f83acf6453d4a6a4b1070f3754}{Type\+::\+None}, 
+\hyperlink{classostk_1_1physics_1_1_unit_a1c07d36cd02be8541eb972367e2b628faba2a9c6c8c77e03f83ef8bf543612275}{Type\+::\+Length}, 
+\hyperlink{classostk_1_1physics_1_1_unit_a1c07d36cd02be8541eb972367e2b628faff2864d6f652ee0ac254814f1ae4f4a8}{Type\+::\+Mass}, 
+\newline
+\hyperlink{classostk_1_1physics_1_1_unit_a1c07d36cd02be8541eb972367e2b628faa76d4ef5f3f6a672bbfab2865563e530}{Type\+::\+Time}, 
+\hyperlink{classostk_1_1physics_1_1_unit_a1c07d36cd02be8541eb972367e2b628faee7a8e262285ed49ea1b4e4ae11525bd}{Type\+::\+Temperature}, 
+\hyperlink{classostk_1_1physics_1_1_unit_a1c07d36cd02be8541eb972367e2b628fa9a60fd92ac6161bffa549ef2cd17f05e}{Type\+::\+Electric\+Current}, 
+\hyperlink{classostk_1_1physics_1_1_unit_a1c07d36cd02be8541eb972367e2b628fae91a9eb4f5dcc51ea18e180ea981d6ae}{Type\+::\+Luminous\+Intensity}, 
+\newline
+\hyperlink{classostk_1_1physics_1_1_unit_a1c07d36cd02be8541eb972367e2b628fa0e77a10e9579997fa646fbda4118e108}{Type\+::\+Derived}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classostk_1_1physics_1_1_unit_abb6ab5ed9dcc07c65af5bb594e5f87f0}{Unit} ()=delete
+\item 
+\hyperlink{classostk_1_1physics_1_1_unit_aaa79239cad3b8499ce9dc4ebec2b8f05}{Unit} (const \hyperlink{classostk_1_1physics_1_1_unit}{Unit} \&a\+Unit)
+\item 
+\hyperlink{classostk_1_1physics_1_1_unit}{Unit} \& \hyperlink{classostk_1_1physics_1_1_unit_a1ca37a2c58beea2b837504356ac9a312}{operator=} (const \hyperlink{classostk_1_1physics_1_1_unit}{Unit} \&a\+Unit)
+\item 
+bool \hyperlink{classostk_1_1physics_1_1_unit_a2f402b7601cef9914f8c367e44f9886c}{operator==} (const \hyperlink{classostk_1_1physics_1_1_unit}{Unit} \&a\+Unit) const
+\item 
+bool \hyperlink{classostk_1_1physics_1_1_unit_ab99c2e4afec3e69ba573528dd9f3f9ac}{operator!=} (const \hyperlink{classostk_1_1physics_1_1_unit}{Unit} \&a\+Unit) const
+\item 
+bool \hyperlink{classostk_1_1physics_1_1_unit_a94e73e5bae82b568280fd3055702dac8}{is\+Defined} () const
+\item 
+bool \hyperlink{classostk_1_1physics_1_1_unit_a300c6c5aac22fa2badf2b8a480d770f8}{is\+None} () const
+\item 
+\hyperlink{classostk_1_1physics_1_1_unit_a1c07d36cd02be8541eb972367e2b628f}{Unit\+::\+Type} \hyperlink{classostk_1_1physics_1_1_unit_ad7cf872fcf44faaa79b4f59855060f89}{get\+Type} () const
+\item 
+Real \hyperlink{classostk_1_1physics_1_1_unit_a6c88c955a56b590f4623e8a1fa2a9cbb}{ratio\+To} (const \hyperlink{classostk_1_1physics_1_1_unit}{Unit} \&a\+Unit) const
+\item 
+String \hyperlink{classostk_1_1physics_1_1_unit_a496115fe0905a2a26b6f742382f3b7f0}{to\+String} () const
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classostk_1_1physics_1_1_unit}{Unit} \hyperlink{classostk_1_1physics_1_1_unit_a61c8e231a744ece53683ae79deee0850}{Undefined} ()
+\item 
+static \hyperlink{classostk_1_1physics_1_1_unit}{Unit} \hyperlink{classostk_1_1physics_1_1_unit_a72a993421e48c8b2d4d4fd89ce0142da}{None} ()
+\item 
+static \hyperlink{classostk_1_1physics_1_1_unit}{Unit} \hyperlink{classostk_1_1physics_1_1_unit_abbf99c91d09a31011c18b359c49d31ed}{Length} (const \hyperlink{classostk_1_1physics_1_1units_1_1_length_a2664470a7eedf5d45c88861fe69badea}{units\+::\+Length\+::\+Unit} \&a\+Length\+Unit)
+\item 
+static \hyperlink{classostk_1_1physics_1_1_unit}{Unit} \hyperlink{classostk_1_1physics_1_1_unit_af41e733d436f73949ab2fd9766071bdd}{Derived} (const \hyperlink{classostk_1_1physics_1_1units_1_1_derived_1_1_unit}{units\+::\+Derived\+::\+Unit} \&a\+Derived\+Unit)
+\item 
+static String \hyperlink{classostk_1_1physics_1_1_unit_a2834e4e5fa10d96212016a3cb8a02f02}{String\+From\+Type} (const \hyperlink{classostk_1_1physics_1_1_unit_a1c07d36cd02be8541eb972367e2b628f}{Unit\+::\+Type} \&a\+Type)
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \hyperlink{classostk_1_1physics_1_1_unit_a70630a82d569152709a999efabdb3e4f}{operator$<$$<$} (std\+::ostream \&an\+Output\+Stream, const \hyperlink{classostk_1_1physics_1_1_unit}{Unit} \&a\+Unit)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classostk_1_1physics_1_1_unit}{Unit}. 
+
+A unit of measurement is a definite magnitude of a quantity, defined and adopted by convention or by law, that is used as a standard for measurement of the same kind of quantity. Any other quantity of that kind can be expressed as a multiple of the unit of measurement.
+
+https\+://en.wikipedia.\+org/wiki/\+Unit\+\_\+of\+\_\+measurement 
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1_unit_a1c07d36cd02be8541eb972367e2b628f}\label{classostk_1_1physics_1_1_unit_a1c07d36cd02be8541eb972367e2b628f}} 
+\index{ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}!Type@{Type}}
+\index{Type@{Type}!ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}}
+\subsubsection{\texorpdfstring{Type}{Type}}
+{\footnotesize\ttfamily enum \hyperlink{classostk_1_1physics_1_1_unit_a1c07d36cd02be8541eb972367e2b628f}{ostk\+::physics\+::\+Unit\+::\+Type}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Undefined@{Undefined}!ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}}\index{ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}!Undefined@{Undefined}}}\mbox{\Hypertarget{classostk_1_1physics_1_1_unit_a1c07d36cd02be8541eb972367e2b628faec0fc0100c4fc1ce4eea230c3dc10360}\label{classostk_1_1physics_1_1_unit_a1c07d36cd02be8541eb972367e2b628faec0fc0100c4fc1ce4eea230c3dc10360}} 
+Undefined&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{None@{None}!ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}}\index{ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}!None@{None}}}\mbox{\Hypertarget{classostk_1_1physics_1_1_unit_a1c07d36cd02be8541eb972367e2b628fa6adf97f83acf6453d4a6a4b1070f3754}\label{classostk_1_1physics_1_1_unit_a1c07d36cd02be8541eb972367e2b628fa6adf97f83acf6453d4a6a4b1070f3754}} 
+None&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Length@{Length}!ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}}\index{ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}!Length@{Length}}}\mbox{\Hypertarget{classostk_1_1physics_1_1_unit_a1c07d36cd02be8541eb972367e2b628faba2a9c6c8c77e03f83ef8bf543612275}\label{classostk_1_1physics_1_1_unit_a1c07d36cd02be8541eb972367e2b628faba2a9c6c8c77e03f83ef8bf543612275}} 
+Length&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Mass@{Mass}!ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}}\index{ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}!Mass@{Mass}}}\mbox{\Hypertarget{classostk_1_1physics_1_1_unit_a1c07d36cd02be8541eb972367e2b628faff2864d6f652ee0ac254814f1ae4f4a8}\label{classostk_1_1physics_1_1_unit_a1c07d36cd02be8541eb972367e2b628faff2864d6f652ee0ac254814f1ae4f4a8}} 
+Mass&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Time@{Time}!ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}}\index{ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}!Time@{Time}}}\mbox{\Hypertarget{classostk_1_1physics_1_1_unit_a1c07d36cd02be8541eb972367e2b628faa76d4ef5f3f6a672bbfab2865563e530}\label{classostk_1_1physics_1_1_unit_a1c07d36cd02be8541eb972367e2b628faa76d4ef5f3f6a672bbfab2865563e530}} 
+Time&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Temperature@{Temperature}!ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}}\index{ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}!Temperature@{Temperature}}}\mbox{\Hypertarget{classostk_1_1physics_1_1_unit_a1c07d36cd02be8541eb972367e2b628faee7a8e262285ed49ea1b4e4ae11525bd}\label{classostk_1_1physics_1_1_unit_a1c07d36cd02be8541eb972367e2b628faee7a8e262285ed49ea1b4e4ae11525bd}} 
+Temperature&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Electric\+Current@{Electric\+Current}!ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}}\index{ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}!Electric\+Current@{Electric\+Current}}}\mbox{\Hypertarget{classostk_1_1physics_1_1_unit_a1c07d36cd02be8541eb972367e2b628fa9a60fd92ac6161bffa549ef2cd17f05e}\label{classostk_1_1physics_1_1_unit_a1c07d36cd02be8541eb972367e2b628fa9a60fd92ac6161bffa549ef2cd17f05e}} 
+Electric\+Current&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Luminous\+Intensity@{Luminous\+Intensity}!ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}}\index{ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}!Luminous\+Intensity@{Luminous\+Intensity}}}\mbox{\Hypertarget{classostk_1_1physics_1_1_unit_a1c07d36cd02be8541eb972367e2b628fae91a9eb4f5dcc51ea18e180ea981d6ae}\label{classostk_1_1physics_1_1_unit_a1c07d36cd02be8541eb972367e2b628fae91a9eb4f5dcc51ea18e180ea981d6ae}} 
+Luminous\+Intensity&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Derived@{Derived}!ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}}\index{ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}!Derived@{Derived}}}\mbox{\Hypertarget{classostk_1_1physics_1_1_unit_a1c07d36cd02be8541eb972367e2b628fa0e77a10e9579997fa646fbda4118e108}\label{classostk_1_1physics_1_1_unit_a1c07d36cd02be8541eb972367e2b628fa0e77a10e9579997fa646fbda4118e108}} 
+Derived&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1_unit_abb6ab5ed9dcc07c65af5bb594e5f87f0}\label{classostk_1_1physics_1_1_unit_abb6ab5ed9dcc07c65af5bb594e5f87f0}} 
+\index{ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}!Unit@{Unit}}
+\index{Unit@{Unit}!ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}}
+\subsubsection{\texorpdfstring{Unit()}{Unit()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily ostk\+::physics\+::\+Unit\+::\+Unit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1_unit_aaa79239cad3b8499ce9dc4ebec2b8f05}\label{classostk_1_1physics_1_1_unit_aaa79239cad3b8499ce9dc4ebec2b8f05}} 
+\index{ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}!Unit@{Unit}}
+\index{Unit@{Unit}!ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}}
+\subsubsection{\texorpdfstring{Unit()}{Unit()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily ostk\+::physics\+::\+Unit\+::\+Unit (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1_unit}{Unit} \&}]{a\+Unit }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1_unit_af41e733d436f73949ab2fd9766071bdd}\label{classostk_1_1physics_1_1_unit_af41e733d436f73949ab2fd9766071bdd}} 
+\index{ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}!Derived@{Derived}}
+\index{Derived@{Derived}!ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}}
+\subsubsection{\texorpdfstring{Derived()}{Derived()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1_unit}{Unit} ostk\+::physics\+::\+Unit\+::\+Derived (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1units_1_1_derived_1_1_unit}{units\+::\+Derived\+::\+Unit} \&}]{a\+Derived\+Unit }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1_unit_ad7cf872fcf44faaa79b4f59855060f89}\label{classostk_1_1physics_1_1_unit_ad7cf872fcf44faaa79b4f59855060f89}} 
+\index{ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}!get\+Type@{get\+Type}}
+\index{get\+Type@{get\+Type}!ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}}
+\subsubsection{\texorpdfstring{get\+Type()}{getType()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1_unit_a1c07d36cd02be8541eb972367e2b628f}{Unit\+::\+Type} ostk\+::physics\+::\+Unit\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1_unit_a94e73e5bae82b568280fd3055702dac8}\label{classostk_1_1physics_1_1_unit_a94e73e5bae82b568280fd3055702dac8}} 
+\index{ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}!is\+Defined@{is\+Defined}}
+\index{is\+Defined@{is\+Defined}!ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}}
+\subsubsection{\texorpdfstring{is\+Defined()}{isDefined()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::\+Unit\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1_unit_a300c6c5aac22fa2badf2b8a480d770f8}\label{classostk_1_1physics_1_1_unit_a300c6c5aac22fa2badf2b8a480d770f8}} 
+\index{ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}!is\+None@{is\+None}}
+\index{is\+None@{is\+None}!ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}}
+\subsubsection{\texorpdfstring{is\+None()}{isNone()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::\+Unit\+::is\+None (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1_unit_abbf99c91d09a31011c18b359c49d31ed}\label{classostk_1_1physics_1_1_unit_abbf99c91d09a31011c18b359c49d31ed}} 
+\index{ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}!Length@{Length}}
+\index{Length@{Length}!ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}}
+\subsubsection{\texorpdfstring{Length()}{Length()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1_unit}{Unit} ostk\+::physics\+::\+Unit\+::\+Length (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1units_1_1_length_a2664470a7eedf5d45c88861fe69badea}{units\+::\+Length\+::\+Unit} \&}]{a\+Length\+Unit }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1_unit_a72a993421e48c8b2d4d4fd89ce0142da}\label{classostk_1_1physics_1_1_unit_a72a993421e48c8b2d4d4fd89ce0142da}} 
+\index{ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}!None@{None}}
+\index{None@{None}!ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}}
+\subsubsection{\texorpdfstring{None()}{None()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1_unit}{Unit} ostk\+::physics\+::\+Unit\+::\+None (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1_unit_ab99c2e4afec3e69ba573528dd9f3f9ac}\label{classostk_1_1physics_1_1_unit_ab99c2e4afec3e69ba573528dd9f3f9ac}} 
+\index{ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}}
+\subsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::\+Unit\+::operator!= (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1_unit}{Unit} \&}]{a\+Unit }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1_unit_a1ca37a2c58beea2b837504356ac9a312}\label{classostk_1_1physics_1_1_unit_a1ca37a2c58beea2b837504356ac9a312}} 
+\index{ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}!operator=@{operator=}}
+\index{operator=@{operator=}!ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1_unit}{Unit} \& ostk\+::physics\+::\+Unit\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1_unit}{Unit} \&}]{a\+Unit }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1_unit_a2f402b7601cef9914f8c367e44f9886c}\label{classostk_1_1physics_1_1_unit_a2f402b7601cef9914f8c367e44f9886c}} 
+\index{ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}!operator==@{operator==}}
+\index{operator==@{operator==}!ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}}
+\subsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::\+Unit\+::operator== (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1_unit}{Unit} \&}]{a\+Unit }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1_unit_a6c88c955a56b590f4623e8a1fa2a9cbb}\label{classostk_1_1physics_1_1_unit_a6c88c955a56b590f4623e8a1fa2a9cbb}} 
+\index{ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}!ratio\+To@{ratio\+To}}
+\index{ratio\+To@{ratio\+To}!ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}}
+\subsubsection{\texorpdfstring{ratio\+To()}{ratioTo()}}
+{\footnotesize\ttfamily Real ostk\+::physics\+::\+Unit\+::ratio\+To (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1_unit}{Unit} \&}]{a\+Unit }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1_unit_a2834e4e5fa10d96212016a3cb8a02f02}\label{classostk_1_1physics_1_1_unit_a2834e4e5fa10d96212016a3cb8a02f02}} 
+\index{ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}!String\+From\+Type@{String\+From\+Type}}
+\index{String\+From\+Type@{String\+From\+Type}!ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}}
+\subsubsection{\texorpdfstring{String\+From\+Type()}{StringFromType()}}
+{\footnotesize\ttfamily String ostk\+::physics\+::\+Unit\+::\+String\+From\+Type (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1_unit_a1c07d36cd02be8541eb972367e2b628f}{Unit\+::\+Type} \&}]{a\+Type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1_unit_a496115fe0905a2a26b6f742382f3b7f0}\label{classostk_1_1physics_1_1_unit_a496115fe0905a2a26b6f742382f3b7f0}} 
+\index{ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}!to\+String@{to\+String}}
+\index{to\+String@{to\+String}!ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}}
+\subsubsection{\texorpdfstring{to\+String()}{toString()}}
+{\footnotesize\ttfamily String ostk\+::physics\+::\+Unit\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1_unit_a61c8e231a744ece53683ae79deee0850}\label{classostk_1_1physics_1_1_unit_a61c8e231a744ece53683ae79deee0850}} 
+\index{ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}!Undefined@{Undefined}}
+\index{Undefined@{Undefined}!ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}}
+\subsubsection{\texorpdfstring{Undefined()}{Undefined()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1_unit}{Unit} ostk\+::physics\+::\+Unit\+::\+Undefined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\subsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1_unit_a70630a82d569152709a999efabdb3e4f}\label{classostk_1_1physics_1_1_unit_a70630a82d569152709a999efabdb3e4f}} 
+\index{ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!ostk\+::physics\+::\+Unit@{ostk\+::physics\+::\+Unit}}
+\subsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{an\+Output\+Stream,  }\item[{const \hyperlink{classostk_1_1physics_1_1_unit}{Unit} \&}]{a\+Unit }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Open\+Space\+Toolkit/\+Physics/\hyperlink{_unit_8hpp}{Unit.\+hpp}\item 
+src/\+Open\+Space\+Toolkit/\+Physics/\hyperlink{_unit_8cpp}{Unit.\+cpp}\end{DoxyCompactItemize}

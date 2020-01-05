@@ -1,0 +1,422 @@
+\hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager}{}\section{ostk\+:\+:physics\+:\+:coord\+:\+:frame\+:\+:provider\+:\+:iers\+:\+:Manager Class Reference}
+\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager}\index{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}}
+
+
+I\+E\+RS bulletins manager (thread-\/safe)  
+
+
+
+
+{\ttfamily \#include $<$Manager.\+hpp$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a3a8dd1081d1094069417687b4a3f16ba}{Mode} \{ \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a3a8dd1081d1094069417687b4a3f16baae1ba155a9f2e8c3be94020eef32a0301}{Mode\+::\+Manual}, 
+\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a3a8dd1081d1094069417687b4a3f16baa086247a9b57fde6eefee2a0c4752242d}{Mode\+::\+Automatic}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a3a8dd1081d1094069417687b4a3f16ba}{Manager\+::\+Mode} \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a00d80d91459b7d0fdac3c2dfed99d447}{get\+Mode} () const
+\begin{DoxyCompactList}\small\item\em Get manager mode. \end{DoxyCompactList}\item 
+Directory \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a0319940b293dd137109918ccbb54066a}{get\+Local\+Repository} () const
+\begin{DoxyCompactList}\small\item\em Get local repository. \end{DoxyCompactList}\item 
+U\+RL \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_aee0fdfd01bea7d3cb6edf90d25536ca0}{get\+Remote\+Url} () const
+\begin{DoxyCompactList}\small\item\em Get remote U\+RL. \end{DoxyCompactList}\item 
+\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_a}{BulletinA} \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a50eef4d573db5ad33f6ce7ee13749ad9}{get\+Bulletin\+A\+At} (const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant) const
+\begin{DoxyCompactList}\small\item\em Get Bulletin A at instant. \end{DoxyCompactList}\item 
+\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a}{Finals2000A} \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a57081be2537ed82f94729c5954d2c28d}{get\+Finals2000\+A\+At} (const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant) const
+\begin{DoxyCompactList}\small\item\em Get Finals 2000A at instant. \end{DoxyCompactList}\item 
+Vector2d \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a2e2fb0b741c41e8936f1ed20d7b2b873}{get\+Polar\+Motion\+At} (const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant) const
+\begin{DoxyCompactList}\small\item\em Get polar motion at instant. \end{DoxyCompactList}\item 
+Real \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_ac0670e062b624d5b1881a820275bb906}{get\+Ut1\+Minus\+Utc\+At} (const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant) const
+\begin{DoxyCompactList}\small\item\em Get U\+T1 -\/ U\+TC at instant. \end{DoxyCompactList}\item 
+Real \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_aa533ea91c79df156cd2904c63a58df34}{get\+Lod\+At} (const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant) const
+\begin{DoxyCompactList}\small\item\em Get length of day at instant. \end{DoxyCompactList}\item 
+void \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a6a43ef4397efc074f02d2dbcce01e3f9}{set\+Mode} (const \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a3a8dd1081d1094069417687b4a3f16ba}{Manager\+::\+Mode} \&a\+Mode)
+\begin{DoxyCompactList}\small\item\em Set manager mode. \end{DoxyCompactList}\item 
+void \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_abf2cc0416dae265af7d249526bb8f73d}{set\+Local\+Repository} (const Directory \&a\+Directory)
+\begin{DoxyCompactList}\small\item\em Set local repository. \end{DoxyCompactList}\item 
+void \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a4beb69ab9704ee45f06ec5cdf3df4dde}{set\+Remote\+Url} (const U\+RL \&a\+Remote\+Url)
+\begin{DoxyCompactList}\small\item\em Set remote U\+RL. \end{DoxyCompactList}\item 
+void \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a57d53edcf28bd7d02181384e9ea63dab}{load\+BulletinA} (const \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_a}{BulletinA} \&a\+BulletinA)
+\begin{DoxyCompactList}\small\item\em Load Bulletin A. \end{DoxyCompactList}\item 
+void \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_ad79ddb22cfd125d810840611c24a9f42}{load\+Finals2000A} (const \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a}{Finals2000A} \&a\+Finals2000A)
+\begin{DoxyCompactList}\small\item\em Load Finals 2000A. \end{DoxyCompactList}\item 
+File \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_acb6883a9760e0809627ff695d2586176}{fetch\+Latest\+BulletinA} ()
+\begin{DoxyCompactList}\small\item\em Fetch latest Bulletin A file. \end{DoxyCompactList}\item 
+File \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_ad0e823d55bb0db0d5547a4b4c8a571fa}{fetch\+Latest\+Finals2000A} ()
+\begin{DoxyCompactList}\small\item\em Fetch latest Finals 2000A file. \end{DoxyCompactList}\item 
+void \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_ab43eacd0e4e55398731f1d1294c874bc}{reset} ()
+\begin{DoxyCompactList}\small\item\em Reset manager. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager}{Manager} \& \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a1ce6a052108fc9345997b61200d33a09}{Get} ()
+\begin{DoxyCompactList}\small\item\em Get manager singleton. \end{DoxyCompactList}\item 
+static \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a3a8dd1081d1094069417687b4a3f16ba}{Manager\+::\+Mode} \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a0a1975c6e7c3990f6a4f679415f4065e}{Default\+Mode} ()
+\begin{DoxyCompactList}\small\item\em Get default manager mode. \end{DoxyCompactList}\item 
+static Directory \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a13ba1984f851041d69026b85e520c02d}{Default\+Local\+Repository} ()
+\begin{DoxyCompactList}\small\item\em Get default local repository. \end{DoxyCompactList}\item 
+static \hyperlink{classostk_1_1physics_1_1time_1_1_duration}{Duration} \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a00b7a5114cd80fbff515dd7af9381519}{Default\+Local\+Repository\+Lock\+Timeout} ()
+\begin{DoxyCompactList}\small\item\em Get default local repository lock timeout. \end{DoxyCompactList}\item 
+static U\+RL \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_aa1ca4334d5652c6533a9b8a093845836}{Default\+Remote\+Url} ()
+\begin{DoxyCompactList}\small\item\em Get default remote U\+RL. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+I\+E\+RS bulletins manager (thread-\/safe) 
+
+The following environment variables can be defined\+:
+
+
+\begin{DoxyItemize}
+\item \char`\"{}\+L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+C\+O\+O\+R\+D\+I\+N\+A\+T\+E\+\_\+\+F\+R\+A\+M\+E\+\_\+\+P\+R\+O\+V\+I\+D\+E\+R\+S\+\_\+\+I\+E\+R\+S\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+M\+O\+D\+E\char`\"{} will override \char`\"{}\+Default\+Mode\char`\"{}
+\item \char`\"{}\+L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+C\+O\+O\+R\+D\+I\+N\+A\+T\+E\+\_\+\+F\+R\+A\+M\+E\+\_\+\+P\+R\+O\+V\+I\+D\+E\+R\+S\+\_\+\+I\+E\+R\+S\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+R\+Y\char`\"{} will override \char`\"{}\+Default\+Local\+Repository\char`\"{}
+\item \char`\"{}\+L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+C\+O\+O\+R\+D\+I\+N\+A\+T\+E\+\_\+\+F\+R\+A\+M\+E\+\_\+\+P\+R\+O\+V\+I\+D\+E\+R\+S\+\_\+\+I\+E\+R\+S\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+R\+Y\+\_\+\+L\+O\+C\+K\+\_\+\+T\+I\+M\+E\+O\+U\+T\char`\"{} will override \char`\"{}\+Default\+Local\+Repository\+Lock\+Timeout\char`\"{}
+\item \char`\"{}\+L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+C\+O\+O\+R\+D\+I\+N\+A\+T\+E\+\_\+\+F\+R\+A\+M\+E\+\_\+\+P\+R\+O\+V\+I\+D\+E\+R\+S\+\_\+\+I\+E\+R\+S\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+R\+E\+M\+O\+T\+E\+\_\+\+U\+R\+L\char`\"{} will override \char`\"{}\+Default\+Remote\+Url\char`\"{}
+\end{DoxyItemize}
+
+https\+://www.iers.\+org/\+I\+E\+R\+S/\+E\+N/\+Data\+Products/\+Earth\+Orientation\+Data/eop.html 
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a3a8dd1081d1094069417687b4a3f16ba}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a3a8dd1081d1094069417687b4a3f16ba}} 
+\index{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}!Mode@{Mode}}
+\index{Mode@{Mode}!ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}}
+\subsubsection{\texorpdfstring{Mode}{Mode}}
+{\footnotesize\ttfamily enum \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a3a8dd1081d1094069417687b4a3f16ba}{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager\+::\+Mode}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Manual@{Manual}!ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}}\index{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}!Manual@{Manual}}}\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a3a8dd1081d1094069417687b4a3f16baae1ba155a9f2e8c3be94020eef32a0301}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a3a8dd1081d1094069417687b4a3f16baae1ba155a9f2e8c3be94020eef32a0301}} 
+Manual&Manually load and unload bulletins. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Automatic@{Automatic}!ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}}\index{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}!Automatic@{Automatic}}}\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a3a8dd1081d1094069417687b4a3f16baa086247a9b57fde6eefee2a0c4752242d}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a3a8dd1081d1094069417687b4a3f16baa086247a9b57fde6eefee2a0c4752242d}} 
+Automatic&Automatically fetch, load and unload bulletins (from remote repositories) \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a13ba1984f851041d69026b85e520c02d}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a13ba1984f851041d69026b85e520c02d}} 
+\index{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}!Default\+Local\+Repository@{Default\+Local\+Repository}}
+\index{Default\+Local\+Repository@{Default\+Local\+Repository}!ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}}
+\subsubsection{\texorpdfstring{Default\+Local\+Repository()}{DefaultLocalRepository()}}
+{\footnotesize\ttfamily Directory ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager\+::\+Default\+Local\+Repository (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get default local repository. 
+
+Overriden by\+: L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+C\+O\+O\+R\+D\+I\+N\+A\+T\+E\+\_\+\+F\+R\+A\+M\+E\+\_\+\+P\+R\+O\+V\+I\+D\+E\+R\+S\+\_\+\+I\+E\+R\+S\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+RY
+
+\begin{DoxyReturn}{Returns}
+Default local repository 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a00b7a5114cd80fbff515dd7af9381519}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a00b7a5114cd80fbff515dd7af9381519}} 
+\index{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}!Default\+Local\+Repository\+Lock\+Timeout@{Default\+Local\+Repository\+Lock\+Timeout}}
+\index{Default\+Local\+Repository\+Lock\+Timeout@{Default\+Local\+Repository\+Lock\+Timeout}!ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}}
+\subsubsection{\texorpdfstring{Default\+Local\+Repository\+Lock\+Timeout()}{DefaultLocalRepositoryLockTimeout()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1time_1_1_duration}{Duration} ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager\+::\+Default\+Local\+Repository\+Lock\+Timeout (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get default local repository lock timeout. 
+
+Overriden by\+: L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+C\+O\+O\+R\+D\+I\+N\+A\+T\+E\+\_\+\+F\+R\+A\+M\+E\+\_\+\+P\+R\+O\+V\+I\+D\+E\+R\+S\+\_\+\+I\+E\+R\+S\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+R\+Y\+\_\+\+L\+O\+C\+K\+\_\+\+T\+I\+M\+E\+O\+UT
+
+\begin{DoxyReturn}{Returns}
+Default local repository lock timeout 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a0a1975c6e7c3990f6a4f679415f4065e}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a0a1975c6e7c3990f6a4f679415f4065e}} 
+\index{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}!Default\+Mode@{Default\+Mode}}
+\index{Default\+Mode@{Default\+Mode}!ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}}
+\subsubsection{\texorpdfstring{Default\+Mode()}{DefaultMode()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a3a8dd1081d1094069417687b4a3f16ba}{Manager\+::\+Mode} ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager\+::\+Default\+Mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get default manager mode. 
+
+Overriden by\+: L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+C\+O\+O\+R\+D\+I\+N\+A\+T\+E\+\_\+\+F\+R\+A\+M\+E\+\_\+\+P\+R\+O\+V\+I\+D\+E\+R\+S\+\_\+\+I\+E\+R\+S\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+M\+O\+DE
+
+\begin{DoxyReturn}{Returns}
+Default manager mode 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_aa1ca4334d5652c6533a9b8a093845836}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_aa1ca4334d5652c6533a9b8a093845836}} 
+\index{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}!Default\+Remote\+Url@{Default\+Remote\+Url}}
+\index{Default\+Remote\+Url@{Default\+Remote\+Url}!ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}}
+\subsubsection{\texorpdfstring{Default\+Remote\+Url()}{DefaultRemoteUrl()}}
+{\footnotesize\ttfamily U\+RL ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager\+::\+Default\+Remote\+Url (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get default remote U\+RL. 
+
+Overriden by\+: L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+C\+O\+O\+R\+D\+I\+N\+A\+T\+E\+\_\+\+F\+R\+A\+M\+E\+\_\+\+P\+R\+O\+V\+I\+D\+E\+R\+S\+\_\+\+I\+E\+R\+S\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+R\+E\+M\+O\+T\+E\+\_\+\+U\+RL
+
+\begin{DoxyReturn}{Returns}
+Default remote U\+RL 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_acb6883a9760e0809627ff695d2586176}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_acb6883a9760e0809627ff695d2586176}} 
+\index{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}!fetch\+Latest\+BulletinA@{fetch\+Latest\+BulletinA}}
+\index{fetch\+Latest\+BulletinA@{fetch\+Latest\+BulletinA}!ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}}
+\subsubsection{\texorpdfstring{fetch\+Latest\+Bulletin\+A()}{fetchLatestBulletinA()}}
+{\footnotesize\ttfamily File ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager\+::fetch\+Latest\+BulletinA (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Fetch latest Bulletin A file. 
+
+\begin{DoxyReturn}{Returns}
+Latest Bulletin A file 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_ad0e823d55bb0db0d5547a4b4c8a571fa}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_ad0e823d55bb0db0d5547a4b4c8a571fa}} 
+\index{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}!fetch\+Latest\+Finals2000A@{fetch\+Latest\+Finals2000A}}
+\index{fetch\+Latest\+Finals2000A@{fetch\+Latest\+Finals2000A}!ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}}
+\subsubsection{\texorpdfstring{fetch\+Latest\+Finals2000\+A()}{fetchLatestFinals2000A()}}
+{\footnotesize\ttfamily File ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager\+::fetch\+Latest\+Finals2000A (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Fetch latest Finals 2000A file. 
+
+\begin{DoxyReturn}{Returns}
+Latest Finals 2000A file 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a1ce6a052108fc9345997b61200d33a09}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a1ce6a052108fc9345997b61200d33a09}} 
+\index{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}!Get@{Get}}
+\index{Get@{Get}!ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}}
+\subsubsection{\texorpdfstring{Get()}{Get()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager}{Manager} \& ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager\+::\+Get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get manager singleton. 
+
+\begin{DoxyReturn}{Returns}
+Reference to manager 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a50eef4d573db5ad33f6ce7ee13749ad9}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a50eef4d573db5ad33f6ce7ee13749ad9}} 
+\index{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}!get\+Bulletin\+A\+At@{get\+Bulletin\+A\+At}}
+\index{get\+Bulletin\+A\+At@{get\+Bulletin\+A\+At}!ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}}
+\subsubsection{\texorpdfstring{get\+Bulletin\+A\+At()}{getBulletinAAt()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_a}{BulletinA} ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager\+::get\+Bulletin\+A\+At (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption}) const}
+
+
+
+Get Bulletin A at instant. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em an\+Instant} & An instant \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Bulletin A 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a57081be2537ed82f94729c5954d2c28d}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a57081be2537ed82f94729c5954d2c28d}} 
+\index{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}!get\+Finals2000\+A\+At@{get\+Finals2000\+A\+At}}
+\index{get\+Finals2000\+A\+At@{get\+Finals2000\+A\+At}!ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}}
+\subsubsection{\texorpdfstring{get\+Finals2000\+A\+At()}{getFinals2000AAt()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a}{Finals2000A} ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager\+::get\+Finals2000\+A\+At (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption}) const}
+
+
+
+Get Finals 2000A at instant. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em an\+Instant} & An instant \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Finals 2000A 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a0319940b293dd137109918ccbb54066a}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a0319940b293dd137109918ccbb54066a}} 
+\index{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}!get\+Local\+Repository@{get\+Local\+Repository}}
+\index{get\+Local\+Repository@{get\+Local\+Repository}!ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}}
+\subsubsection{\texorpdfstring{get\+Local\+Repository()}{getLocalRepository()}}
+{\footnotesize\ttfamily Directory ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager\+::get\+Local\+Repository (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get local repository. 
+
+\begin{DoxyReturn}{Returns}
+Local repository 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_aa533ea91c79df156cd2904c63a58df34}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_aa533ea91c79df156cd2904c63a58df34}} 
+\index{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}!get\+Lod\+At@{get\+Lod\+At}}
+\index{get\+Lod\+At@{get\+Lod\+At}!ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}}
+\subsubsection{\texorpdfstring{get\+Lod\+At()}{getLodAt()}}
+{\footnotesize\ttfamily Real ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager\+::get\+Lod\+At (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption}) const}
+
+
+
+Get length of day at instant. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em an\+Instant} & An instant \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}ms\mbox{]} Length of day 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a00d80d91459b7d0fdac3c2dfed99d447}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a00d80d91459b7d0fdac3c2dfed99d447}} 
+\index{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}!get\+Mode@{get\+Mode}}
+\index{get\+Mode@{get\+Mode}!ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}}
+\subsubsection{\texorpdfstring{get\+Mode()}{getMode()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a3a8dd1081d1094069417687b4a3f16ba}{Manager\+::\+Mode} ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager\+::get\+Mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get manager mode. 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager}{Manager} mode 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a2e2fb0b741c41e8936f1ed20d7b2b873}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a2e2fb0b741c41e8936f1ed20d7b2b873}} 
+\index{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}!get\+Polar\+Motion\+At@{get\+Polar\+Motion\+At}}
+\index{get\+Polar\+Motion\+At@{get\+Polar\+Motion\+At}!ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}}
+\subsubsection{\texorpdfstring{get\+Polar\+Motion\+At()}{getPolarMotionAt()}}
+{\footnotesize\ttfamily Vector2d ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager\+::get\+Polar\+Motion\+At (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption}) const}
+
+
+
+Get polar motion at instant. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em an\+Instant} & An instant \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}asec\mbox{]} Polar motion 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_aee0fdfd01bea7d3cb6edf90d25536ca0}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_aee0fdfd01bea7d3cb6edf90d25536ca0}} 
+\index{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}!get\+Remote\+Url@{get\+Remote\+Url}}
+\index{get\+Remote\+Url@{get\+Remote\+Url}!ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}}
+\subsubsection{\texorpdfstring{get\+Remote\+Url()}{getRemoteUrl()}}
+{\footnotesize\ttfamily U\+RL ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager\+::get\+Remote\+Url (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get remote U\+RL. 
+
+\begin{DoxyReturn}{Returns}
+Remote U\+RL 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_ac0670e062b624d5b1881a820275bb906}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_ac0670e062b624d5b1881a820275bb906}} 
+\index{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}!get\+Ut1\+Minus\+Utc\+At@{get\+Ut1\+Minus\+Utc\+At}}
+\index{get\+Ut1\+Minus\+Utc\+At@{get\+Ut1\+Minus\+Utc\+At}!ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}}
+\subsubsection{\texorpdfstring{get\+Ut1\+Minus\+Utc\+At()}{getUt1MinusUtcAt()}}
+{\footnotesize\ttfamily Real ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager\+::get\+Ut1\+Minus\+Utc\+At (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption}) const}
+
+
+
+Get U\+T1 -\/ U\+TC at instant. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em an\+Instant} & An instant \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}sec\mbox{]} U\+T1 -\/ U\+TC 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a57d53edcf28bd7d02181384e9ea63dab}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a57d53edcf28bd7d02181384e9ea63dab}} 
+\index{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}!load\+BulletinA@{load\+BulletinA}}
+\index{load\+BulletinA@{load\+BulletinA}!ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}}
+\subsubsection{\texorpdfstring{load\+Bulletin\+A()}{loadBulletinA()}}
+{\footnotesize\ttfamily void ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager\+::load\+BulletinA (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_a}{BulletinA} \&}]{a\+BulletinA }\end{DoxyParamCaption})}
+
+
+
+Load Bulletin A. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+BulletinA} & A Bulletin A \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_ad79ddb22cfd125d810840611c24a9f42}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_ad79ddb22cfd125d810840611c24a9f42}} 
+\index{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}!load\+Finals2000A@{load\+Finals2000A}}
+\index{load\+Finals2000A@{load\+Finals2000A}!ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}}
+\subsubsection{\texorpdfstring{load\+Finals2000\+A()}{loadFinals2000A()}}
+{\footnotesize\ttfamily void ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager\+::load\+Finals2000A (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a}{Finals2000A} \&}]{a\+Finals2000A }\end{DoxyParamCaption})}
+
+
+
+Load Finals 2000A. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Finals2000A} & A Finals 2000A \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_ab43eacd0e4e55398731f1d1294c874bc}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_ab43eacd0e4e55398731f1d1294c874bc}} 
+\index{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}!reset@{reset}}
+\index{reset@{reset}!ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}}
+\subsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reset manager. 
+
+Unload all bulletins and clear cache. \mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_abf2cc0416dae265af7d249526bb8f73d}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_abf2cc0416dae265af7d249526bb8f73d}} 
+\index{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}!set\+Local\+Repository@{set\+Local\+Repository}}
+\index{set\+Local\+Repository@{set\+Local\+Repository}!ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}}
+\subsubsection{\texorpdfstring{set\+Local\+Repository()}{setLocalRepository()}}
+{\footnotesize\ttfamily void ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager\+::set\+Local\+Repository (\begin{DoxyParamCaption}\item[{const Directory \&}]{a\+Directory }\end{DoxyParamCaption})}
+
+
+
+Set local repository. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Directory} & A repository directory \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a6a43ef4397efc074f02d2dbcce01e3f9}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a6a43ef4397efc074f02d2dbcce01e3f9}} 
+\index{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}!set\+Mode@{set\+Mode}}
+\index{set\+Mode@{set\+Mode}!ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}}
+\subsubsection{\texorpdfstring{set\+Mode()}{setMode()}}
+{\footnotesize\ttfamily void ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager\+::set\+Mode (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a3a8dd1081d1094069417687b4a3f16ba}{Manager\+::\+Mode} \&}]{a\+Mode }\end{DoxyParamCaption})}
+
+
+
+Set manager mode. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Mode} & A manager mode \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a4beb69ab9704ee45f06ec5cdf3df4dde}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a4beb69ab9704ee45f06ec5cdf3df4dde}} 
+\index{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}!set\+Remote\+Url@{set\+Remote\+Url}}
+\index{set\+Remote\+Url@{set\+Remote\+Url}!ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}}
+\subsubsection{\texorpdfstring{set\+Remote\+Url()}{setRemoteUrl()}}
+{\footnotesize\ttfamily void ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager\+::set\+Remote\+Url (\begin{DoxyParamCaption}\item[{const U\+RL \&}]{a\+Remote\+Url }\end{DoxyParamCaption})}
+
+
+
+Set remote U\+RL. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Remote\+Url} & A remote U\+RL \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Providers/\+I\+E\+R\+S/\hyperlink{_coordinate_2_frame_2_providers_2_i_e_r_s_2_manager_8hpp}{Manager.\+hpp}\item 
+src/\+Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Providers/\+I\+E\+R\+S/\hyperlink{_coordinate_2_frame_2_providers_2_i_e_r_s_2_manager_8cpp}{Manager.\+cpp}\end{DoxyCompactItemize}

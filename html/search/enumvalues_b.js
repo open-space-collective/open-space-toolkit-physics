@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['length',['Length',['../classlibrary_1_1physics_1_1_unit.html#ab01b0024991fd80f3e5ef7c8282fccc1aba2a9c6c8c77e03f83ef8bf543612275',1,'library::physics::Unit::Length()'],['../classlibrary_1_1physics_1_1units_1_1_unit.html#a828bc1b6ad6fa5cbef904ea0fede986aaba2a9c6c8c77e03f83ef8bf543612275',1,'library::physics::units::Unit::Length()']]],
-  ['lsk',['LSK',['../classlibrary_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel.html#ab28fd08b98057f635ee6a0e75b59fae6a1352b10452a6331f4858173133cad49d',1,'library::physics::env::ephem::spice::Kernel']]],
-  ['luminousintensity',['LuminousIntensity',['../classlibrary_1_1physics_1_1_unit.html#ab01b0024991fd80f3e5ef7c8282fccc1ae91a9eb4f5dcc51ea18e180ea981d6ae',1,'library::physics::Unit::LuminousIntensity()'],['../classlibrary_1_1physics_1_1units_1_1_unit.html#a828bc1b6ad6fa5cbef904ea0fede986aae91a9eb4f5dcc51ea18e180ea981d6ae',1,'library::physics::units::Unit::LuminousIntensity()']]]
+  ['length',['Length',['../classostk_1_1physics_1_1_unit.html#a1c07d36cd02be8541eb972367e2b628faba2a9c6c8c77e03f83ef8bf543612275',1,'ostk::physics::Unit::Length()'],['../classostk_1_1physics_1_1units_1_1_unit.html#a113924e2dd880bd0e95d4ee9646ea4caaba2a9c6c8c77e03f83ef8bf543612275',1,'ostk::physics::units::Unit::Length()']]],
+  ['lsk',['LSK',['../classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel.html#a76d560bbface15a0cb24cd82e9a93d77a1352b10452a6331f4858173133cad49d',1,'ostk::physics::env::ephem::spice::Kernel']]],
+  ['luminousintensity',['LuminousIntensity',['../classostk_1_1physics_1_1_unit.html#a1c07d36cd02be8541eb972367e2b628fae91a9eb4f5dcc51ea18e180ea981d6ae',1,'ostk::physics::Unit::LuminousIntensity()'],['../classostk_1_1physics_1_1units_1_1_unit.html#a113924e2dd880bd0e95d4ee9646ea4caae91a9eb4f5dcc51ea18e180ea981d6ae',1,'ostk::physics::units::Unit::LuminousIntensity()']]]
 ];
