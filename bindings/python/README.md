@@ -1,4 +1,4 @@
-# Open Space Toolkit ▸ Physics ▸ Bindings ▸ Python
+# Open Space Toolkit ▸ Physics
 
 Physical units, time, reference frames, environment modeling.
 
@@ -6,7 +6,7 @@ Physical units, time, reference frames, environment modeling.
 [![Code Coverage](https://codecov.io/gh/open-space-collective/open-space-toolkit-physics/branch/master/graph/badge.svg)](https://codecov.io/gh/open-space-collective/open-space-toolkit-physics)
 [![Documentation](https://img.shields.io/readthedocs/pip/stable.svg)](https://open-space-collective.github.io/open-space-toolkit-physics)
 [![GitHub version](https://badge.fury.io/gh/open-space-collective%2Fopen-space-toolkit-physics.svg)](https://badge.fury.io/gh/open-space-collective%2Fopen-space-toolkit-physics)
-[![PyPI version](https://badge.fury.io/py/OpenSpaceToolkitPhysicsPy.svg)](https://badge.fury.io/py/OpenSpaceToolkitPhysicsPy)
+[![PyPI version](https://badge.fury.io/py/open-space-toolkit-physics.svg)](https://badge.fury.io/py/open-space-toolkit-physics)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-[Open Space Toolkit ▸ Physics](https://github.com/open-space-collective/open-space-toolkit-physics)
+[GitHub](https://github.com/open-space-collective/open-space-toolkit-physics)
