@@ -18,7 +18,7 @@ from ostk.physics import Environment
 
 def test_environment_constructors ():
 
-    instant = Instant.DateTime(DateTime(2019, 1, 1, 0, 0, 0), Scale.UTC)
+    instant = Instant.date_time(DateTime(2019, 1, 1, 0, 0, 0), Scale.UTC)
     objects = []
 
     assert Environment(instant, objects) is not None
@@ -27,36 +27,36 @@ def test_environment_constructors ():
 
 def test_environment_undefined ():
 
-    assert Environment.Undefined() is not None
+    assert Environment.undefined() is not None
 
 ################################################################################################################################################################
 
 def test_environment_default ():
 
-    assert Environment.Default() is not None
+    assert Environment.default() is not None
 
 ################################################################################################################################################################
 
 def test_environment_isDefined ():
 
-    environment = Environment.Default()
+    environment = Environment.default()
 
-    assert environment.isDefined() is not None
+    assert environment.is_defined() is not None
 
 ################################################################################################################################################################
 
 def test_environment_hasObjectWithName ():
 
-    environment = Environment.Default()
+    environment = Environment.default()
 
-    assert environment.hasObjectWithName('Earth') is not None
+    assert environment.has_object_with_name('Earth') is not None
 
 ################################################################################################################################################################
 
 @pytest.mark.skip
 def test_environment_intersects ():
 
-    environment = Environment.Default()
+    environment = Environment.default()
 
     assert environment.intersects() is not None
 
@@ -65,48 +65,48 @@ def test_environment_intersects ():
 @pytest.mark.skip
 def test_environment_accessObjects ():
 
-    environment = Environment.Default()
+    environment = Environment.default()
 
-    assert environment.accessObjects() is not None
+    assert environment.access_objects() is not None
 
 ################################################################################################################################################################
 
 def test_environment_accessObjectWithName ():
 
-    environment = Environment.Default()
+    environment = Environment.default()
 
-    assert environment.accessObjectWithName('Earth') is not None
+    assert environment.access_object_with_name('Earth') is not None
 
 ################################################################################################################################################################
 
 def test_environment_accessCelestialObjectWithName ():
 
-    environment = Environment.Default()
+    environment = Environment.default()
 
-    assert environment.accessCelestialObjectWithName('Earth') is not None
+    assert environment.access_celestial_object_with_name('Earth') is not None
 
 ################################################################################################################################################################
 
 def test_environment_getInstant ():
 
-    environment = Environment.Default()
+    environment = Environment.default()
 
-    assert environment.getInstant() is not None
+    assert environment.get_instant() is not None
 
 ################################################################################################################################################################
 
 def test_environment_getObjectNames ():
 
-    environment = Environment.Default()
+    environment = Environment.default()
 
-    assert environment.getObjectNames() is not None
+    assert environment.get_object_names() is not None
 
 ################################################################################################################################################################
 
 def test_environment_setInstant ():
 
-    environment = Environment.Default()
+    environment = Environment.default()
 
-    environment.setInstant(Instant.DateTime(DateTime(2019, 1, 1, 0, 0, 0), Scale.UTC))
+    environment.set_instant(Instant.date_time(DateTime(2019, 1, 1, 0, 0, 0), Scale.UTC))
 
 ################################################################################################################################################################

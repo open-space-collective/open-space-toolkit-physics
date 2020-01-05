@@ -33,18 +33,18 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Velocity   
         .def(self_ns::str(self_ns::self))
         .def(self_ns::repr(self_ns::self))
 
-        .def("isDefined", &Velocity::isDefined)
+        .def("is_defined", &Velocity::isDefined)
 
-        .def("accessFrame", &Velocity::accessFrame)
-        .def("getCoordinates", &Velocity::getCoordinates)
-        .def("getUnit", &Velocity::getUnit)
-        .def("inUnit", &Velocity::inUnit)
-        .def("inFrame", &Velocity::inFrame)
-        .def("toString", &Velocity::toString, OpenSpaceToolkitPhysicsPy_Coordinate_Velocity_toString_overloads())
+        .def("access_frame", &Velocity::accessFrame)
+        .def("get_coordinates", &Velocity::getCoordinates)
+        .def("get_unit", &Velocity::getUnit)
+        .def("in_unit", &Velocity::inUnit)
+        .def("in_frame", &Velocity::inFrame)
+        .def("to_string", &Velocity::toString, OpenSpaceToolkitPhysicsPy_Coordinate_Velocity_toString_overloads())
 
-        .def("Undefined", &Velocity::Undefined).staticmethod("Undefined")
-        .def("MetersPerSecond", &Velocity::MetersPerSecond).staticmethod("MetersPerSecond")
-        .def("StringFromUnit", &Velocity::StringFromUnit).staticmethod("StringFromUnit")
+        .def("undefined", &Velocity::Undefined).staticmethod("undefined")
+        .def("meters_per_second", &Velocity::MetersPerSecond).staticmethod("meters_per_second")
+        .def("string_from_unit", &Velocity::StringFromUnit).staticmethod("string_from_unit")
 
     ;
 

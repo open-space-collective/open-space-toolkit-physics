@@ -33,19 +33,19 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Position   
         .def(self_ns::str(self_ns::self))
         .def(self_ns::repr(self_ns::self))
 
-        .def("isDefined", &Position::isDefined)
-        .def("isNear", &Position::isNear)
+        .def("is_defined", &Position::isDefined)
+        .def("is_near", &Position::isNear)
 
-        .def("accessFrame", &Position::accessFrame)
-        .def("getCoordinates", &Position::getCoordinates)
-        .def("getUnit", &Position::getUnit)
-        .def("inUnit", &Position::inUnit)
-        .def("inMeters", &Position::inMeters)
-        .def("inFrame", &Position::inFrame)
-        .def("toString", &Position::toString, OpenSpaceToolkitPhysicsPy_Coordinate_Position_toString_overloads())
+        .def("access_frame", &Position::accessFrame)
+        .def("get_coordinates", &Position::getCoordinates)
+        .def("get_unit", &Position::getUnit)
+        .def("in_unit", &Position::inUnit)
+        .def("in_meters", &Position::inMeters)
+        .def("in_frame", &Position::inFrame)
+        .def("to_string", &Position::toString, OpenSpaceToolkitPhysicsPy_Coordinate_Position_toString_overloads())
 
-        .def("Undefined", &Position::Undefined).staticmethod("Undefined")
-        .def("Meters", &Position::Meters).staticmethod("Meters")
+        .def("undefined", &Position::Undefined).staticmethod("undefined")
+        .def("meters", &Position::Meters).staticmethod("meters")
 
     ;
 

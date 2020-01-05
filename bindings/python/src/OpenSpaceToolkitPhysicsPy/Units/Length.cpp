@@ -53,21 +53,21 @@ inline void                     OpenSpaceToolkitPhysicsPy_Units_Length          
 
         .def("__repr__", +[] (const Length& aLength) -> std::string { return aLength.toString() ; })
 
-        .def("isDefined", &Length::isDefined)
+        .def("is_defined", &Length::isDefined)
 
-        .def("getUnit", &Length::getUnit)
-        .def("inUnit", &Length::in)
-        .def("inMeters", &Length::inMeters)
-        .def("inKilometers", &Length::inKilometers)
-        .def("toString", &Length::toString, OpenSpaceToolkitPhysicsPy_Units_Length_toString_overloads())
+        .def("get_unit", &Length::getUnit)
+        .def("in_unit", &Length::in)
+        .def("in_meters", &Length::inMeters)
+        .def("in_kilometers", &Length::inKilometers)
+        .def("to_string", &Length::toString, OpenSpaceToolkitPhysicsPy_Units_Length_toString_overloads())
 
-        .def("Undefined", &Length::Undefined).staticmethod("Undefined")
-        .def("Millimeters", &Length::Millimeters).staticmethod("Millimeters")
-        .def("Meters", &Length::Meters).staticmethod("Meters")
-        .def("Kilometers", &Length::Kilometers).staticmethod("Kilometers")
-        .def("Parse", &Length::Parse).staticmethod("Parse")
-        .def("StringFromUnit", &Length::StringFromUnit).staticmethod("StringFromUnit")
-        .def("SymbolFromUnit", &Length::SymbolFromUnit).staticmethod("SymbolFromUnit")
+        .def("undefined", &Length::Undefined).staticmethod("undefined")
+        .def("millimeters", &Length::Millimeters).staticmethod("millimeters")
+        .def("meters", &Length::Meters).staticmethod("meters")
+        .def("kilometers", &Length::Kilometers).staticmethod("kilometers")
+        .def("parse", &Length::Parse).staticmethod("parse")
+        .def("string_from_unit", &Length::StringFromUnit).staticmethod("string_from_unit")
+        .def("symbol_from_unit", &Length::SymbolFromUnit).staticmethod("symbol_from_unit")
 
     ;
 
@@ -98,17 +98,17 @@ inline void                     OpenSpaceToolkitPhysicsPy_Units_Length          
         .def(self == self)
         .def(self != self)
 
-        .def("isDefined", &Interval<Length>::isDefined)
-        .def("isDegenerate", &Interval<Length>::isDegenerate)
+        .def("is_defined", &Interval<Length>::isDefined)
+        .def("is_degenerate", &Interval<Length>::isDegenerate)
         .def("intersects", &Interval<Length>::intersects)
-        .def("containsLength", +[] (const Interval<Length>& anInterval, const Length& aLength) -> bool { return anInterval.contains(aLength) ; })
-        .def("containsInterval", +[] (const Interval<Length>& anInterval, const Interval<Length>& anOtherInterval) -> bool { return anInterval.contains(anOtherInterval) ; })
+        .def("contains_length", +[] (const Interval<Length>& anInterval, const Length& aLength) -> bool { return anInterval.contains(aLength) ; })
+        .def("contains_interval", +[] (const Interval<Length>& anInterval, const Interval<Length>& anOtherInterval) -> bool { return anInterval.contains(anOtherInterval) ; })
 
-        .def("getLowerBound", &Interval<Length>::getLowerBound)
-        .def("getUpperBound", &Interval<Length>::getUpperBound)
+        .def("get_lower_bound", &Interval<Length>::getLowerBound)
+        .def("get_upper_bound", &Interval<Length>::getUpperBound)
 
-        .def("Undefined", &Interval<Length>::Undefined).staticmethod("Undefined")
-        .def("Closed", &Interval<Length>::Closed).staticmethod("Closed")
+        .def("undefined", &Interval<Length>::Undefined).staticmethod("undefined")
+        .def("closed", &Interval<Length>::Closed).staticmethod("closed")
 
     ;
 

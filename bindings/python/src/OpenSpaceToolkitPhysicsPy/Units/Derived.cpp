@@ -36,16 +36,16 @@ inline void                     OpenSpaceToolkitPhysicsPy_Units_Derived         
 
         .def("__repr__", +[] (const Derived& aDerived) -> std::string { return aDerived.toString() ; })
 
-        .def("isDefined", &Derived::isDefined)
+        .def("is_defined", &Derived::isDefined)
 
-        .def("getUnit", &Derived::getUnit)
-        .def("inUnit", &Derived::in)
-        .def("toString", &Derived::toString, OpenSpaceToolkitPhysicsPy_Units_Derived_toString_overloads())
+        .def("get_unit", &Derived::getUnit)
+        .def("in_unit", &Derived::in)
+        .def("to_string", &Derived::toString, OpenSpaceToolkitPhysicsPy_Units_Derived_toString_overloads())
 
-        .def("Undefined", &Derived::Undefined).staticmethod("Undefined")
-        // .def("Parse", &Derived::Parse).staticmethod("Undefined")
-        .def("StringFromUnit", &Derived::StringFromUnit).staticmethod("StringFromUnit")
-        .def("SymbolFromUnit", &Derived::SymbolFromUnit).staticmethod("SymbolFromUnit")
+        .def("undefined", &Derived::Undefined).staticmethod("undefined")
+        // .def("parse", &Derived::Parse).staticmethod("undefined")
+        .def("string_from_unit", &Derived::StringFromUnit).staticmethod("string_from_unit")
+        .def("symbol_from_unit", &Derived::SymbolFromUnit).staticmethod("symbol_from_unit")
 
     ;
 
@@ -56,17 +56,17 @@ inline void                     OpenSpaceToolkitPhysicsPy_Units_Derived         
         .def(self == self)
         .def(self != self)
 
-        .def("isZero", &Derived::Order::isZero)
-        .def("isUnity", &Derived::Order::isUnity)
+        .def("is_zero", &Derived::Order::isZero)
+        .def("is_unity", &Derived::Order::isUnity)
 
-        .def("getNumerator", &Derived::Order::getNumerator)
-        .def("getDenominator", &Derived::Order::getDenominator)
-        .def("getValue", &Derived::Order::getValue)
-        .def("toString", &Derived::Order::toString)
+        .def("get_numerator", &Derived::Order::getNumerator)
+        .def("get_denominator", &Derived::Order::getDenominator)
+        .def("get_value", &Derived::Order::getValue)
+        .def("to_string", &Derived::Order::toString)
 
-        .def("Zero", &Derived::Order::Zero).staticmethod("Zero")
-        .def("One", &Derived::Order::One).staticmethod("One")
-        .def("Two", &Derived::Order::Two).staticmethod("Two")
+        .def("zero", &Derived::Order::Zero).staticmethod("zero")
+        .def("one", &Derived::Order::One).staticmethod("one")
+        .def("two", &Derived::Order::Two).staticmethod("two")
 
     ;
 
@@ -75,31 +75,31 @@ inline void                     OpenSpaceToolkitPhysicsPy_Units_Derived         
         .def(self == self)
         .def(self != self)
 
-        .def("isDefined", &Derived::Unit::isDefined)
-        .def("isCompatibleWith", &Derived::Unit::isCompatibleWith)
+        .def("is_defined", &Derived::Unit::isDefined)
+        .def("is_compatible_with", &Derived::Unit::isCompatibleWith)
 
-        // .def("accessLengthUnit", &Derived::Unit::accessLengthUnit, return_value_policy<reference_existing_object>())
-        // .def("accessLengthOrder", &Derived::Unit::accessLengthOrder, return_value_policy<reference_existing_object>())
-        // .def("accessMassUnit", &Derived::Unit::accessMassUnit, return_value_policy<reference_existing_object>())
-        // .def("accessMassOrder", &Derived::Unit::accessMassOrder, return_value_policy<reference_existing_object>())
-        // .def("accessTimeUnit", &Derived::Unit::accessTimeUnit, return_value_policy<reference_existing_object>())
-        // .def("accessTimeOrder", &Derived::Unit::accessTimeOrder, return_value_policy<reference_existing_object>())
-        // .def("accessAngleUnit", &Derived::Unit::accessAngleUnit, return_value_policy<reference_existing_object>())
-        // .def("accessAngleOrder", &Derived::Unit::accessAngleOrder, return_value_policy<reference_existing_object>())
-        .def("toString", &Derived::Unit::toString)
-        .def("getSymbol", &Derived::Unit::getSymbol)
+        // .def("access_length_unit", &Derived::Unit::accessLengthUnit, return_value_policy<reference_existing_object>())
+        // .def("access_length_order", &Derived::Unit::accessLengthOrder, return_value_policy<reference_existing_object>())
+        // .def("access_mass_unit", &Derived::Unit::accessMassUnit, return_value_policy<reference_existing_object>())
+        // .def("access_mass_order", &Derived::Unit::accessMassOrder, return_value_policy<reference_existing_object>())
+        // .def("access_time_unit", &Derived::Unit::accessTimeUnit, return_value_policy<reference_existing_object>())
+        // .def("access_time_order", &Derived::Unit::accessTimeOrder, return_value_policy<reference_existing_object>())
+        // .def("access_angle_unit", &Derived::Unit::accessAngleUnit, return_value_policy<reference_existing_object>())
+        // .def("access_angle_order", &Derived::Unit::accessAngleOrder, return_value_policy<reference_existing_object>())
+        .def("to_string", &Derived::Unit::toString)
+        .def("get_symbol", &Derived::Unit::getSymbol)
 
-        .def("Undefined", &Derived::Unit::Undefined).staticmethod("Undefined")
-        .def("SquareMeter", &Derived::Unit::SquareMeter).staticmethod("SquareMeter")
-        .def("CubicMeter", &Derived::Unit::CubicMeter).staticmethod("CubicMeter")
-        .def("Hertz", &Derived::Unit::Hertz).staticmethod("Hertz")
-        .def("Watt", &Derived::Unit::Watt).staticmethod("Watt")
-        .def("Tesla", &Derived::Unit::Tesla).staticmethod("Tesla")
-        .def("Velocity", &Derived::Unit::Velocity).staticmethod("Velocity")
-        .def("Acceleration", &Derived::Unit::Acceleration).staticmethod("Acceleration")
-        .def("GravitationalParameter", &Derived::Unit::GravitationalParameter).staticmethod("GravitationalParameter")
-        .def("AngularVelocity", &Derived::Unit::AngularVelocity).staticmethod("AngularVelocity")
-        // .def("Parse", &Derived::Unit::Parse).staticmethod("Parse")
+        .def("undefined", &Derived::Unit::Undefined).staticmethod("undefined")
+        .def("square_meter", &Derived::Unit::SquareMeter).staticmethod("square_meter")
+        .def("cubic_meter", &Derived::Unit::CubicMeter).staticmethod("cubic_meter")
+        .def("hertz", &Derived::Unit::Hertz).staticmethod("hertz")
+        .def("watt", &Derived::Unit::Watt).staticmethod("watt")
+        .def("tesla", &Derived::Unit::Tesla).staticmethod("tesla")
+        .def("velocity", &Derived::Unit::Velocity).staticmethod("velocity")
+        .def("acceleration", &Derived::Unit::Acceleration).staticmethod("acceleration")
+        .def("gravitational_parameter", &Derived::Unit::GravitationalParameter).staticmethod("gravitational_parameter")
+        .def("angular_velocity", &Derived::Unit::AngularVelocity).staticmethod("angular_velocity")
+        // .def("parse", &Derived::Unit::Parse).staticmethod("parse")
 
     ;
 

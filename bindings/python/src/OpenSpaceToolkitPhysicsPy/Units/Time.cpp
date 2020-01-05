@@ -48,13 +48,13 @@ inline void                     OpenSpaceToolkitPhysicsPy_Units_Time            
 
         .def("__repr__", +[] (const Time& aTime) -> std::string { return aTime.toString() ; })
 
-        .def("isDefined", &Time::isDefined)
+        .def("is_defined", &Time::isDefined)
 
-        .def("toString", &Time::toString, OpenSpaceToolkitPhysicsPy_Units_Time_toString_overloads())
+        .def("to_string", &Time::toString, OpenSpaceToolkitPhysicsPy_Units_Time_toString_overloads())
 
-        .def("Undefined", &Time::Undefined).staticmethod("Undefined")
-        .def("StringFromUnit", &Time::StringFromUnit).staticmethod("StringFromUnit")
-        .def("SymbolFromUnit", &Time::SymbolFromUnit).staticmethod("SymbolFromUnit")
+        .def("undefined", &Time::Undefined).staticmethod("undefined")
+        .def("string_from_unit", &Time::StringFromUnit).staticmethod("string_from_unit")
+        .def("symbol_from_unit", &Time::SymbolFromUnit).staticmethod("symbol_from_unit")
 
     ;
 

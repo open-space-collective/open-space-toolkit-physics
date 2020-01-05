@@ -22,7 +22,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Magnetic_D
 
     scope in_Dipole = class_<Dipole>("Dipole", init<const Vector3d&>())
 
-        .def("getFieldValueAt", &Dipole::getFieldValueAt)
+        .def("get_field_value_at", &Dipole::getFieldValueAt)
 
     ;
 

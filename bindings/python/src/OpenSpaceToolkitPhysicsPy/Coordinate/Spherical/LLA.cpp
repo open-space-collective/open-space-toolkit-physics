@@ -28,18 +28,18 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_L
         .def(self_ns::str(self_ns::self))
         .def(self_ns::repr(self_ns::self))
 
-        .def("isDefined", &LLA::isDefined)
+        .def("is_defined", &LLA::isDefined)
 
-        .def("getLatitude", &LLA::getLatitude)
-        .def("getLongitude", &LLA::getLongitude)
-        .def("getAltitude", &LLA::getAltitude)
-        .def("toVector", &LLA::toVector)
-        .def("toCartesian", &LLA::toCartesian)
-        .def("toString", &LLA::toString)
+        .def("get_latitude", &LLA::getLatitude)
+        .def("get_longitude", &LLA::getLongitude)
+        .def("get_altitude", &LLA::getAltitude)
+        .def("to_vector", &LLA::toVector)
+        .def("to_cartesian", &LLA::toCartesian)
+        .def("to_string", &LLA::toString)
 
-        .def("Undefined", &LLA::Undefined).staticmethod("Undefined")
-        .def("Vector", &LLA::Vector).staticmethod("Vector")
-        .def("Cartesian", &LLA::Cartesian).staticmethod("Cartesian")
+        .def("undefined", &LLA::Undefined).staticmethod("undefined")
+        .def("vector", &LLA::Vector).staticmethod("vector")
+        .def("cartesian", &LLA::Cartesian).staticmethod("cartesian")
 
     ;
 

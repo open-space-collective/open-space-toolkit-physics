@@ -22,9 +22,9 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provi
 
     scope in_Static = class_<Static, bases<Provider>>("Static", init<const Transform&>())
 
-        .def("isDefined", &Static::isDefined)
+        .def("is_defined", &Static::isDefined)
 
-        .def("getTransformAt", &Static::getTransformAt)
+        .def("get_transform_at", &Static::getTransformAt)
 
     ;
 

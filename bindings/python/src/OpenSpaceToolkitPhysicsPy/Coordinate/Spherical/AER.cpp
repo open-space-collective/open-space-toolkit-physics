@@ -29,18 +29,18 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_A
         .def(self_ns::str(self_ns::self))
         .def(self_ns::repr(self_ns::self))
 
-        .def("isDefined", &AER::isDefined)
+        .def("is_defined", &AER::isDefined)
 
-        .def("getAzimuth", &AER::getAzimuth)
-        .def("getElevation", &AER::getElevation)
-        .def("getRange", &AER::getRange)
-        .def("toVector", &AER::toVector)
-        .def("toString", &AER::toString)
+        .def("get_azimuth", &AER::getAzimuth)
+        .def("get_elevation", &AER::getElevation)
+        .def("get_range", &AER::getRange)
+        .def("to_vector", &AER::toVector)
+        .def("to_string", &AER::toString)
 
-        .def("Undefined", &AER::Undefined).staticmethod("Undefined")
-        .def("Vector", &AER::Vector).staticmethod("Vector")
-        .def("FromPositionToPosition", +[] (const Position& aFromPosition, const Position& aToPosition) -> AER { return AER::FromPositionToPosition(aFromPosition, aToPosition) ; })
-        .def("FromPositionToPosition", +[] (const Position& aFromPosition, const Position& aToPosition, const bool isZNegative) -> AER { return AER::FromPositionToPosition(aFromPosition, aToPosition, isZNegative) ; })
+        .def("undefined", &AER::Undefined).staticmethod("undefined")
+        .def("vector", &AER::Vector).staticmethod("vector")
+        .def("from_position_to_position", +[] (const Position& aFromPosition, const Position& aToPosition) -> AER { return AER::FromPositionToPosition(aFromPosition, aToPosition) ; })
+        .def("from_position_to_position", +[] (const Position& aFromPosition, const Position& aToPosition, const bool isZNegative) -> AER { return AER::FromPositionToPosition(aFromPosition, aToPosition, isZNegative) ; })
 
     ;
 

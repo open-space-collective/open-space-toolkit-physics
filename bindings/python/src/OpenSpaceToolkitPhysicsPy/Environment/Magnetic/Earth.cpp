@@ -27,8 +27,8 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Magnetic_E
 
         .def(init<const Earth::Type&>())
 
-        .def("getType", &Earth::getType)
-        .def("getFieldValueAt", &Earth::getFieldValueAt)
+        .def("get_type", &Earth::getType)
+        .def("get_field_value_at", &Earth::getFieldValueAt)
 
     ;
 
@@ -47,20 +47,20 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Magnetic_E
 
     scope in_Manager = class_<Manager, boost::noncopyable>("Manager", no_init)
 
-        .def("isEnabled", &Manager::isEnabled)
-        .def("hasDataFileForType", &Manager::hasDataFileForType)
+        .def("is_enabled", &Manager::isEnabled)
+        .def("has_data_file_for_type", &Manager::hasDataFileForType)
 
-        .def("getLocalRepository", &Manager::getLocalRepository)
-        .def("getRemoteUrl", &Manager::getRemoteUrl)
-        .def("fetchDataFileForType", &Manager::fetchDataFileForType)
-        .def("setLocalRepository", &Manager::setLocalRepository)
-        .def("setRemoteUrl", &Manager::setRemoteUrl)
+        .def("get_local_repository", &Manager::getLocalRepository)
+        .def("get_remote_url", &Manager::getRemoteUrl)
+        .def("fetch_data_file_for_type", &Manager::fetchDataFileForType)
+        .def("set_local_repository", &Manager::setLocalRepository)
+        .def("set_remote_url", &Manager::setRemoteUrl)
         .def("enable", &Manager::enable)
         .def("disable", &Manager::disable)
 
-        .def("Get", &Manager::Get, return_value_policy<reference_existing_object>()).staticmethod("Get")
-        .def("DefaultLocalRepository", &Manager::DefaultLocalRepository).staticmethod("DefaultLocalRepository")
-        .def("DefaultRemoteUrl", &Manager::DefaultRemoteUrl).staticmethod("DefaultRemoteUrl")
+        .def("get", &Manager::Get, return_value_policy<reference_existing_object>()).staticmethod("get")
+        .def("default_local_repository", &Manager::DefaultLocalRepository).staticmethod("default_local_repository")
+        .def("default_remote_url", &Manager::DefaultRemoteUrl).staticmethod("default_remote_url")
 
     ;
 

@@ -35,19 +35,19 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment           
         .def(self_ns::str(self_ns::self))
         .def(self_ns::repr(self_ns::self))
 
-        .def("isDefined", &Environment::isDefined)
-        .def("hasObjectWithName", &Environment::hasObjectWithName)
+        .def("is_defined", &Environment::isDefined)
+        .def("has_object_with_name", &Environment::hasObjectWithName)
         .def("intersects", &Environment::intersects)
 
-        .def("accessObjects", &Environment::accessObjects)
-        .def("accessObjectWithName", &Environment::accessObjectWithName)
-        .def("accessCelestialObjectWithName", &Environment::accessCelestialObjectWithName)
-        .def("getInstant", &Environment::getInstant)
-        .def("getObjectNames", &Environment::getObjectNames)
-        .def("setInstant", &Environment::setInstant)
+        .def("access_objects", &Environment::accessObjects)
+        .def("access_object_with_name", &Environment::accessObjectWithName)
+        .def("access_celestial_object_with_name", &Environment::accessCelestialObjectWithName)
+        .def("get_instant", &Environment::getInstant)
+        .def("get_object_names", &Environment::getObjectNames)
+        .def("set_instant", &Environment::setInstant)
 
-        .def("Undefined", &Environment::Undefined).staticmethod("Undefined")
-        .def("Default", &Environment::Default).staticmethod("Default")
+        .def("undefined", &Environment::Undefined).staticmethod("undefined")
+        .def("default", &Environment::Default).staticmethod("default")
 
     ;
 
