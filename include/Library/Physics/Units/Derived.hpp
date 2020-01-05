@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Units/Derived.hpp
+/// @file           OpenSpaceToolkit/Physics/Units/Derived.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -10,12 +10,12 @@
 #ifndef __OpenSpaceToolkit_Physics_Units_Derived__
 #define __OpenSpaceToolkit_Physics_Units_Derived__
 
-#include <Library/Physics/Units/Derived/Angle.hpp>
-#include <Library/Physics/Units/ElectricCurrent.hpp>
-#include <Library/Physics/Units/Time.hpp>
-#include <Library/Physics/Units/Mass.hpp>
-#include <Library/Physics/Units/Length.hpp>
-#include <Library/Physics/Units/Unit.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Derived/Angle.hpp>
+#include <OpenSpaceToolkit/Physics/Units/ElectricCurrent.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Time.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Mass.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Length.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Unit.hpp>
 
 #include <Library/Core/Types/String.hpp>
 #include <Library/Core/Types/Real.hpp>

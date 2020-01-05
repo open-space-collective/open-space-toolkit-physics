@@ -1,20 +1,20 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Coordinate/Frame.cpp
+/// @file           OpenSpaceToolkit/Physics/Coordinate/Frame.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <Library/Physics/Coordinate/Frame/Providers/ITRF.hpp>
-#include <Library/Physics/Coordinate/Frame/Providers/TIRF.hpp>
-#include <Library/Physics/Coordinate/Frame/Providers/CIRF.hpp>
-#include <Library/Physics/Coordinate/Frame/Providers/TEME.hpp>
-#include <Library/Physics/Coordinate/Frame/Providers/GCRF.hpp>
-#include <Library/Physics/Coordinate/Frame/Providers/Static.hpp>
-#include <Library/Physics/Coordinate/Frame/Manager.hpp>
-#include <Library/Physics/Coordinate/Frame.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/ITRF.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/TIRF.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/CIRF.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/TEME.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/GCRF.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Static.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 
 #include <Library/Core/Error.hpp>
 #include <Library/Core/Utilities.hpp>

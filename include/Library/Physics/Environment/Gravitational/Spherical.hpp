@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Environment/Gravitational/Spherical.hpp
+/// @file           OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -10,9 +10,9 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Gravitational_Spherical__
 #define __OpenSpaceToolkit_Physics_Environment_Gravitational_Spherical__
 
-#include <Library/Physics/Environment/Gravitational/Model.hpp>
-#include <Library/Physics/Time/Instant.hpp>
-#include <Library/Physics/Units/Derived.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Derived.hpp>
 
 #include <Library/Core/Types/Real.hpp>
 

@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Time/DateTime.hpp
+/// @file           OpenSpaceToolkit/Physics/Time/DateTime.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -10,8 +10,8 @@
 #ifndef __OpenSpaceToolkit_Physics_Time_DateTime__
 #define __OpenSpaceToolkit_Physics_Time_DateTime__
 
-#include <Library/Physics/Time/Date.hpp>
-#include <Library/Physics/Time/Time.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Date.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Time.hpp>
 
 #include <Library/Core/Types/String.hpp>
 #include <Library/Core/Types/Real.hpp>

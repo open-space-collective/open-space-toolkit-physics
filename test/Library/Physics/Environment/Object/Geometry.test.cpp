@@ -1,23 +1,23 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Environment/Object/Geometry.test.cpp
+/// @file           OpenSpaceToolkit/Physics/Environment/Object/Geometry.test.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <Library/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
-#include <Library/Physics/Environment/Object/Geometry.hpp>
-#include <Library/Physics/Environment.hpp>
-#include <Library/Physics/Coordinate/Frame.hpp>
-#include <Library/Physics/Coordinate/Spherical/LLA.hpp>
-#include <Library/Physics/Time/Interval.hpp>
-#include <Library/Physics/Time/Duration.hpp>
-#include <Library/Physics/Time/Instant.hpp>
-#include <Library/Physics/Time/DateTime.hpp>
-#include <Library/Physics/Time/Scale.hpp>
-#include <Library/Physics/Units/Length.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp>
+#include <OpenSpaceToolkit/Physics/Environment.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Interval.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Length.hpp>
 
 #include <Library/Mathematics/Geometry/3D/Transformations/Rotations/RotationVector.hpp>
 #include <Library/Mathematics/Geometry/3D/Transformations/Rotations/Quaternion.hpp>

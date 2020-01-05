@@ -1,14 +1,14 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Coordinate/Axes.cpp
+/// @file           OpenSpaceToolkit/Physics/Coordinate/Axes.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <Library/Physics/Coordinate/Frame.hpp>
-#include <Library/Physics/Coordinate/Axes.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Axes.hpp>
 
 #include <Library/Core/Error.hpp>
 #include <Library/Core/Utilities.hpp>

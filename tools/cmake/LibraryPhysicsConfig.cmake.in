@@ -9,7 +9,7 @@
 
 SET (LibraryPhysics_ROOT_DIR ${LibraryPhysics_ROOT_DIR} @CMAKE_INSTALL_PREFIX@)
 
-FIND_PATH (LibraryPhysics_INCLUDE_DIR "Library/Physics/Units.hpp" PATHS ${LibraryPhysics_ROOT_DIR} PATH_SUFFIXES "include" NO_DEFAULT_PATH)
+FIND_PATH (LibraryPhysics_INCLUDE_DIR "OpenSpaceToolkit/Physics/Units.hpp" PATHS ${LibraryPhysics_ROOT_DIR} PATH_SUFFIXES "include" NO_DEFAULT_PATH)
 FIND_LIBRARY (LibraryPhysics_LIBRARY NAMES "libopen-space-toolkit-physics.so" PATHS ${LibraryPhysics_ROOT_DIR} PATH_SUFFIXES "lib" NO_DEFAULT_PATH)
 
 # MESSAGE (STATUS "LibraryPhysics_ROOT_DIR = ${LibraryPhysics_ROOT_DIR}")
@@ -19,7 +19,7 @@ FIND_LIBRARY (LibraryPhysics_LIBRARY NAMES "libopen-space-toolkit-physics.so" PA
 
 IF (LibraryPhysics_INCLUDE_DIR)
 
-    SET (LibraryPhysics_INCLUDE_DIRS ${LibraryPhysics_INCLUDE_DIR} ${LibraryPhysics_INCLUDE_DIR}/Library/Physics)
+    SET (LibraryPhysics_INCLUDE_DIRS ${LibraryPhysics_INCLUDE_DIR} ${LibraryPhysics_INCLUDE_DIR}/OpenSpaceToolkit/Physics)
     SET (LibraryPhysics_LIBRARIES ${LibraryPhysics_LIBRARY})
 
     SET (LibraryPhysics_FOUND TRUE)

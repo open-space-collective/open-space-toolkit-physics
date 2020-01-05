@@ -1,18 +1,18 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Environment/Ephemerides/SPICE.test.cpp
+/// @file           OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE.test.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <Library/Physics/Environment/Ephemerides/SPICE/Manager.hpp>
-#include <Library/Physics/Environment/Ephemerides/SPICE/Engine.hpp>
-#include <Library/Physics/Environment/Ephemerides/SPICE.hpp>
-#include <Library/Physics/Time/Instant.hpp>
-#include <Library/Physics/Time/DateTime.hpp>
-#include <Library/Physics/Time/Scale.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Manager.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Engine.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
 
 #include <Library/Mathematics/Geometry/3D/Transformations/Rotations/Quaternion.hpp>
 #include <Library/Mathematics/Geometry/3D/Transformations/Rotations/RotationVector.hpp>
@@ -84,13 +84,13 @@ TEST (Library_Physics_Environment_Ephemerides_SPICE, AccessFrame)
 
     {
 
-        const Directory spiceLocalRepository = Directory::Path(Path::Parse("/app/test/Library/Physics/Environment/Ephemerides/SPICE")) ;
+        const Directory spiceLocalRepository = Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE")) ;
 
         const Array<Tuple<SPICE::Object, File, Real, Real, Real, Real, Array<Kernel>>> referenceScenarios =
         {
             {
                 SPICE::Object::Earth,
-                File::Path(Path::Parse("/app/test/Library/Physics/Environment/Ephemerides/SPICE/AccessFrame/Scenario_1 Earth.csv")),
+                File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/AccessFrame/Scenario_1 Earth.csv")),
                 0.0,
                 0.0,
                 0.03,
@@ -105,7 +105,7 @@ TEST (Library_Physics_Environment_Ephemerides_SPICE, AccessFrame)
             },
             {
                 SPICE::Object::Sun,
-                File::Path(Path::Parse("/app/test/Library/Physics/Environment/Ephemerides/SPICE/AccessFrame/Scenario_1 Sun.csv")),
+                File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/AccessFrame/Scenario_1 Sun.csv")),
                 100.0,
                 1e-5,
                 0.0,
@@ -118,7 +118,7 @@ TEST (Library_Physics_Environment_Ephemerides_SPICE, AccessFrame)
             },
             {
                 SPICE::Object::Moon,
-                File::Path(Path::Parse("/app/test/Library/Physics/Environment/Ephemerides/SPICE/AccessFrame/Scenario_1 Moon.csv")),
+                File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/AccessFrame/Scenario_1 Moon.csv")),
                 10.0,
                 1e-5,
                 1.0,
@@ -236,7 +236,7 @@ TEST (Library_Physics_Environment_Ephemerides_SPICE, ManualMode)
 
     {
 
-        const Directory spiceLocalRepository = Directory::Path(Path::Parse("/app/test/Library/Physics/Environment/Ephemerides/SPICE")) ;
+        const Directory spiceLocalRepository = Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE")) ;
 
         Engine::Get().setMode(Engine::Mode::Manual) ;
 
@@ -307,7 +307,7 @@ TEST (Library_Physics_Environment_Ephemerides_SPICE, AutomaticMode)
 
     {
 
-        Manager::Get().setLocalRepository(Directory::Path(Path::Parse("/app/test/Library/Physics/Environment/Ephemerides/SPICE"))) ;
+        Manager::Get().setLocalRepository(Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE"))) ;
 
         Engine::Get().setMode(Engine::Mode::Automatic) ;
 

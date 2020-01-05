@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Environment/Objects/Celestial.hpp
+/// @file           OpenSpaceToolkit/Physics/Environment/Objects/Celestial.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -10,19 +10,19 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Objects_Celestial__
 #define __OpenSpaceToolkit_Physics_Environment_Objects_Celestial__
 
-#include <Library/Physics/Environment/Magnetic/Model.hpp>
-#include <Library/Physics/Environment/Gravitational/Model.hpp>
-#include <Library/Physics/Environment/Ephemeris.hpp>
-#include <Library/Physics/Environment/Object.hpp>
-#include <Library/Physics/Coordinate/Transform.hpp>
-#include <Library/Physics/Coordinate/Frame.hpp>
-#include <Library/Physics/Coordinate/Axes.hpp>
-#include <Library/Physics/Coordinate/Spherical/LLA.hpp>
-#include <Library/Physics/Coordinate/Position.hpp>
-#include <Library/Physics/Data/Vector.hpp>
-#include <Library/Physics/Units/Derived.hpp>
-#include <Library/Physics/Units/Length.hpp>
-#include <Library/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Magnetic/Model.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Object.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Axes.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
+#include <OpenSpaceToolkit/Physics/Data/Vector.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Derived.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Length.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
 #include <Library/Mathematics/Objects/Vector.hpp>
 

@@ -1,14 +1,14 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Data/Providers/Nadir.cpp
+/// @file           OpenSpaceToolkit/Physics/Data/Providers/Nadir.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <Library/Physics/Data/Providers/Nadir.hpp>
-#include <Library/Physics/Coordinate/Spherical/LLA.hpp>
+#include <OpenSpaceToolkit/Physics/Data/Providers/Nadir.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
 
 #include <Library/Core/Error.hpp>
 #include <Library/Core/Utilities.hpp>

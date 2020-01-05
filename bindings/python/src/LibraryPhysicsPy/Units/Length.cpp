@@ -9,7 +9,7 @@
 
 #include <LibraryPhysicsPy/Utilities/IterableConverter.hpp>
 
-#include <Library/Physics/Units/Length.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Length.hpp>
 
 #include <Library/Mathematics/Objects/Interval.hpp>
 

@@ -1,17 +1,17 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Coordinate/Spherical/AER.test.cpp
+/// @file           OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.test.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <Library/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
-#include <Library/Physics/Coordinate/Frame.hpp>
-#include <Library/Physics/Coordinate/Spherical/AER.hpp>
-#include <Library/Physics/Coordinate/Spherical/LLA.hpp>
-#include <Library/Physics/Units/Derived/Angle.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Derived/Angle.hpp>
 
 #include <Library/Core/FileSystem/File.hpp>
 #include <Library/Core/FileSystem/Path.hpp>
@@ -438,8 +438,8 @@ TEST (Library_Physics_Coordinate_Spherical_AER, FromPositionToPosition)
 
         const Array<Tuple<File, Angle, Length>> referenceScenarios =
         {
-            { File::Path(Path::Parse("/app/test/Library/Physics/Coordinate/Spherical/AER/FromPositionToPosition/AER NoLightTimeDelay.csv")), Angle::Arcseconds(0.01), Length::Meters(0.01) },
-            { File::Path(Path::Parse("/app/test/Library/Physics/Coordinate/Spherical/AER/FromPositionToPosition/AER WithLightTimeDelay.csv")), Angle::Arcseconds(100.0), Length::Meters(20.0) } // [TBI]
+            { File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER/FromPositionToPosition/AER NoLightTimeDelay.csv")), Angle::Arcseconds(0.01), Length::Meters(0.01) },
+            { File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER/FromPositionToPosition/AER WithLightTimeDelay.csv")), Angle::Arcseconds(100.0), Length::Meters(20.0) } // [TBI]
         } ;
 
         for (const auto& referenceScenario : referenceScenarios)

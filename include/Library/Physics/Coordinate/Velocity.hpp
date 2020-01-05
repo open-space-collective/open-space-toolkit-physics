@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Coordinate/Velocity.hpp
+/// @file           OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -10,9 +10,9 @@
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Velocity__
 #define __OpenSpaceToolkit_Physics_Coordinate_Velocity__
 
-#include <Library/Physics/Coordinate/Position.hpp>
-#include <Library/Physics/Time/Instant.hpp>
-#include <Library/Physics/Units/Derived.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Derived.hpp>
 
 #include <Library/Mathematics/Objects/Vector.hpp>
 

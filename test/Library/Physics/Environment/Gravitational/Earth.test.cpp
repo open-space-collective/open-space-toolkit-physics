@@ -1,17 +1,17 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Environment/Gravitational/Earth.test.cpp
+/// @file           OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.test.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <Library/Physics/Environment/Gravitational/Earth/Manager.hpp>
-#include <Library/Physics/Environment/Gravitational/Earth.hpp>
-#include <Library/Physics/Time/Instant.hpp>
-#include <Library/Physics/Time/DateTime.hpp>
-#include <Library/Physics/Time/Scale.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
 
 #include <Library/Core/FileSystem/File.hpp>
 #include <Library/Core/FileSystem/Path.hpp>
@@ -33,7 +33,7 @@ TEST (Library_Physics_Environment_Gravitational_Earth, Constructor)
 
     {
 
-        EarthGravitationalModelManager::Get().setLocalRepository(Directory::Path(Path::Parse("/app/test/Library/Physics/Environment/Gravitational/Earth"))) ;
+        EarthGravitationalModelManager::Get().setLocalRepository(Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth"))) ;
 
         EarthGravitationalModelManager::Get().enable() ;
 
@@ -50,10 +50,10 @@ TEST (Library_Physics_Environment_Gravitational_Earth, Constructor)
 
     {
 
-        EXPECT_NO_THROW(EarthGravitationalModel earthGravitationalModel(EarthGravitationalModel::Type::WGS84, Directory::Path(Path::Parse("/app/test/Library/Physics/Environment/Gravitational/Earth")))) ;
-        EXPECT_NO_THROW(EarthGravitationalModel earthGravitationalModel(EarthGravitationalModel::Type::EGM84, Directory::Path(Path::Parse("/app/test/Library/Physics/Environment/Gravitational/Earth")))) ;
-        EXPECT_NO_THROW(EarthGravitationalModel earthGravitationalModel(EarthGravitationalModel::Type::EGM96, Directory::Path(Path::Parse("/app/test/Library/Physics/Environment/Gravitational/Earth")))) ;
-        EXPECT_NO_THROW(EarthGravitationalModel earthGravitationalModel(EarthGravitationalModel::Type::EGM2008, Directory::Path(Path::Parse("/app/test/Library/Physics/Environment/Gravitational/Earth")))) ;
+        EXPECT_NO_THROW(EarthGravitationalModel earthGravitationalModel(EarthGravitationalModel::Type::WGS84, Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth")))) ;
+        EXPECT_NO_THROW(EarthGravitationalModel earthGravitationalModel(EarthGravitationalModel::Type::EGM84, Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth")))) ;
+        EXPECT_NO_THROW(EarthGravitationalModel earthGravitationalModel(EarthGravitationalModel::Type::EGM96, Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth")))) ;
+        EXPECT_NO_THROW(EarthGravitationalModel earthGravitationalModel(EarthGravitationalModel::Type::EGM2008, Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth")))) ;
 
     }
 
@@ -79,7 +79,7 @@ TEST (Library_Physics_Environment_Gravitational_Earth, Clone)
 
     {
 
-        EarthGravitationalModelManager::Get().setLocalRepository(Directory::Path(Path::Parse("/app/test/Library/Physics/Environment/Gravitational/Earth"))) ;
+        EarthGravitationalModelManager::Get().setLocalRepository(Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth"))) ;
 
         EarthGravitationalModelManager::Get().enable() ;
 
@@ -106,7 +106,7 @@ TEST (Library_Physics_Environment_Gravitational_Earth, GetType)
 
     {
 
-        EarthGravitationalModelManager::Get().setLocalRepository(Directory::Path(Path::Parse("/app/test/Library/Physics/Environment/Gravitational/Earth"))) ;
+        EarthGravitationalModelManager::Get().setLocalRepository(Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth"))) ;
 
         EarthGravitationalModelManager::Get().enable() ;
 
@@ -141,7 +141,7 @@ TEST (Library_Physics_Environment_Gravitational_Earth, GetFieldValueAt)
 
     {
 
-        EarthGravitationalModelManager::Get().setLocalRepository(Directory::Path(Path::Parse("/app/test/Library/Physics/Environment/Gravitational/Earth"))) ;
+        EarthGravitationalModelManager::Get().setLocalRepository(Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth"))) ;
 
         EarthGravitationalModelManager::Get().enable() ;
 

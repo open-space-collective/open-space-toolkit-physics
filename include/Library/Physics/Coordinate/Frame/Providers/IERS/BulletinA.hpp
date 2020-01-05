@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Coordinate/Frame/Providers/IERS/BulletinA.hpp
+/// @file           OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/BulletinA.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -10,10 +10,10 @@
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA__
 #define __OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA__
 
-#include <Library/Physics/Time/Interval.hpp>
-#include <Library/Physics/Time/Duration.hpp>
-#include <Library/Physics/Time/Instant.hpp>
-#include <Library/Physics/Time/Date.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Interval.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Date.hpp>
 
 #include <Library/Core/FileSystem/File.hpp>
 #include <Library/Core/Containers/Map.hpp>

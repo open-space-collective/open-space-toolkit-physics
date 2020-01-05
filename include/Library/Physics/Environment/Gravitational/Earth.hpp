@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Environment/Gravitational/Earth.hpp
+/// @file           OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -10,9 +10,9 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Gravitational_Earth__
 #define __OpenSpaceToolkit_Physics_Environment_Gravitational_Earth__
 
-#include <Library/Physics/Environment/Gravitational/Model.hpp>
-#include <Library/Physics/Time/Instant.hpp>
-#include <Library/Physics/Units/Derived.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Derived.hpp>
 
 #include <Library/IO/URL.hpp>
 

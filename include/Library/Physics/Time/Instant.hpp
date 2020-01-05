@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Time/Instant.hpp
+/// @file           OpenSpaceToolkit/Physics/Time/Instant.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -10,10 +10,10 @@
 #ifndef __OpenSpaceToolkit_Physics_Time_Instant__
 #define __OpenSpaceToolkit_Physics_Time_Instant__
 
-#include <Library/Physics/Time/DateTime.hpp>
-#include <Library/Physics/Time/Duration.hpp>
-#include <Library/Physics/Time/Scale.hpp>
-#include <Library/Physics/Units/Time.hpp>
+#include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Time.hpp>
 
 #include <Library/Core/Types/String.hpp>
 #include <Library/Core/Types/Real.hpp>

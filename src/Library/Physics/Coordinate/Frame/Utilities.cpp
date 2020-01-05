@@ -1,13 +1,13 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Coordinate/Frame/Utilities.cpp
+/// @file           OpenSpaceToolkit/Physics/Coordinate/Frame/Utilities.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <Library/Physics/Coordinate/Frame/Utilities.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Utilities.hpp>
 
 #include <Library/Mathematics/Geometry/3D/Transformations/Rotations/RotationMatrix.hpp>
 

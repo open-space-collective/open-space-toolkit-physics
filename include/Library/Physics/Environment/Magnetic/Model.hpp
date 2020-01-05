@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Environment/Magnetic/Model.hpp
+/// @file           OpenSpaceToolkit/Physics/Environment/Magnetic/Model.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -10,7 +10,7 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Magnetic_Model__
 #define __OpenSpaceToolkit_Physics_Environment_Magnetic_Model__
 
-#include <Library/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
 #include <Library/Mathematics/Objects/Vector.hpp>
 

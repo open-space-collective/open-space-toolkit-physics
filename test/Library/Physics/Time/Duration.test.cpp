@@ -1,15 +1,15 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Time/Duration.test.cpp
+/// @file           OpenSpaceToolkit/Physics/Time/Duration.test.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <Library/Physics/Time/Scale.hpp>
-#include <Library/Physics/Time/Instant.hpp>
-#include <Library/Physics/Time/Duration.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
 
 #include <Global.test.hpp>
 

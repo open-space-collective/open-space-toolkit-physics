@@ -1,16 +1,16 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Coordinate/Spherical/LLA.test.cpp
+/// @file           OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.test.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <Library/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
-#include <Library/Physics/Coordinate/Frame.hpp>
-#include <Library/Physics/Coordinate/Spherical/LLA.hpp>
-#include <Library/Physics/Units/Derived/Angle.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Derived/Angle.hpp>
 
 #include <Library/Core/FileSystem/File.hpp>
 #include <Library/Core/FileSystem/Path.hpp>
@@ -338,7 +338,7 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, ToCartesian)
 
         const Array<Tuple<File, Length>> referenceScenarios =
         {
-            { File::Path(Path::Parse("/app/test/Library/Physics/Coordinate/Spherical/LLA/ToCartesian/LLA 1.csv")), Length::Meters(1.0) }
+            { File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA/ToCartesian/LLA 1.csv")), Length::Meters(1.0) }
         } ;
 
         for (const auto& referenceScenario : referenceScenarios)
@@ -493,7 +493,7 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, Cartesian)
 
         const Array<Tuple<File, Angle, Length>> referenceScenarios =
         {
-            { File::Path(Path::Parse("/app/test/Library/Physics/Coordinate/Spherical/LLA/Cartesian/LLA 1.csv")), Angle::Arcseconds(0.01), Length::Meters(1.0) }
+            { File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA/Cartesian/LLA 1.csv")), Angle::Arcseconds(0.01), Length::Meters(1.0) }
         } ;
 
         for (const auto& referenceScenario : referenceScenarios)

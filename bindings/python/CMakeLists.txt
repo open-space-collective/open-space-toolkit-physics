@@ -12,7 +12,7 @@
 SET (PROJECT_NAME "LibraryPhysicsPy")
 SET (PROJECT_DESCRIPTION "Python bindings for Open Space Toolkit / Physics.")
 SET (PROJECT_PACKAGE_NAME "LibraryPhysicsPy")
-SET (PROJECT_PATH "Library/Physics")
+SET (PROJECT_PATH "OpenSpaceToolkit/Physics")
 SET (PROJECT_LICENSE "Apache License 2.0")
 SET (PROJECT_VENDOR_ID "com.bremond.lucas")
 SET (PROJECT_VENDOR_NAME "Lucas Brémond")

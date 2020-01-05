@@ -10,7 +10,7 @@
 #include <LibraryPhysicsPy/Coordinate/Frame/Providers.cpp>
 #include <LibraryPhysicsPy/Coordinate/Frame/Provider.cpp>
 
-#include <Library/Physics/Coordinate/Frame.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

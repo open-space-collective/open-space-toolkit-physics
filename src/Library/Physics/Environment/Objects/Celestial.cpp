@@ -1,16 +1,16 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Environment/Objects/Celestial.cpp
+/// @file           OpenSpaceToolkit/Physics/Environment/Objects/Celestial.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <Library/Physics/Environment/Objects/Celestial.hpp>
-#include <Library/Physics/Coordinate/Frame/Utilities.hpp>
-#include <Library/Physics/Coordinate/Frame/Providers/Static.hpp>
-#include <Library/Physics/Unit.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Objects/Celestial.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Utilities.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Static.hpp>
+#include <OpenSpaceToolkit/Physics/Unit.hpp>
 
 #include <Library/Core/Error.hpp>
 #include <Library/Core/Utilities.hpp>

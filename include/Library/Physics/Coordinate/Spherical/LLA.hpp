@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Coordinate/Spherical/LLA.hpp
+/// @file           OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -10,8 +10,8 @@
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA__
 #define __OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA__
 
-#include <Library/Physics/Units/Derived/Angle.hpp>
-#include <Library/Physics/Units/Length.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Derived/Angle.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Length.hpp>
 
 #include <Library/Core/Types/String.hpp>
 #include <Library/Core/Types/Real.hpp>

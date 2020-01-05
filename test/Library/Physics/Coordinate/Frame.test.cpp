@@ -1,17 +1,17 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Coordinate/Frame.test.cpp
+/// @file           OpenSpaceToolkit/Physics/Coordinate/Frame.test.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <Library/Physics/Coordinate/Frame/Providers/Static.hpp>
-#include <Library/Physics/Coordinate/Frame.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Static.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <Library/Mathematics/Geometry/3D/Transformations/Rotations/RotationMatrix.hpp>
 #include <Library/Mathematics/Geometry/3D/Transformations/Rotations/RotationVector.hpp>
-#include <Library/Physics/Units/Derived/Angle.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Derived/Angle.hpp>
 
 #include <Global.test.hpp>
 

@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Coordinate/Position.hpp
+/// @file           OpenSpaceToolkit/Physics/Coordinate/Position.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -10,9 +10,9 @@
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Position__
 #define __OpenSpaceToolkit_Physics_Coordinate_Position__
 
-#include <Library/Physics/Coordinate/Spherical/LLA.hpp>
-#include <Library/Physics/Time/Instant.hpp>
-#include <Library/Physics/Units/Length.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Length.hpp>
 
 #include <Library/Mathematics/Geometry/3D/Objects/Point.hpp>
 #include <Library/Mathematics/Objects/Vector.hpp>

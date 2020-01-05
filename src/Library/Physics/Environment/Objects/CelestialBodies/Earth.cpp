@@ -1,15 +1,15 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Environment/Objects/CelestialBodies/Earth.cpp
+/// @file           OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <Library/Physics/Environment/Ephemerides/Analytical.hpp>
-#include <Library/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
-#include <Library/Physics/Coordinate/Frame.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/Analytical.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 
 #include <Library/Core/Error.hpp>
 #include <Library/Core/Utilities.hpp>

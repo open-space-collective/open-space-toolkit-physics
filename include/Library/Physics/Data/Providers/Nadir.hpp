@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Data/Providers/Nadir.hpp
+/// @file           OpenSpaceToolkit/Physics/Data/Providers/Nadir.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -10,10 +10,10 @@
 #ifndef __OpenSpaceToolkit_Physics_Data_Providers_Nadir__
 #define __OpenSpaceToolkit_Physics_Data_Providers_Nadir__
 
-#include <Library/Physics/Environment/Objects/Celestial.hpp>
-#include <Library/Physics/Environment.hpp>
-#include <Library/Physics/Coordinate/Position.hpp>
-#include <Library/Physics/Data/Direction.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Objects/Celestial.hpp>
+#include <OpenSpaceToolkit/Physics/Environment.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
+#include <OpenSpaceToolkit/Physics/Data/Direction.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

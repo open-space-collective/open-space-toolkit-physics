@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Environment/Ephemerides/SPICE/Manager.hpp
+/// @file           OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Manager.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -10,12 +10,12 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager__
 #define __OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager__
 
-#include <Library/Physics/Environment/Ephemerides/SPICE/Index.hpp>
-#include <Library/Physics/Environment/Ephemerides/SPICE/Kernel.hpp>
-#include <Library/Physics/Environment/Ephemerides/SPICE.hpp>
-#include <Library/Physics/Coordinate/Transform.hpp>
-#include <Library/Physics/Coordinate/Frame.hpp>
-#include <Library/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Index.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Kernel.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
 #include <Library/IO/URL.hpp>
 

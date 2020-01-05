@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Coordinate/Frame/Providers/TEME.hpp
+/// @file           OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/TEME.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -10,9 +10,9 @@
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_TEME__
 #define __OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_TEME__
 
-#include <Library/Physics/Coordinate/Transform.hpp>
-#include <Library/Physics/Coordinate/Frame/Provider.hpp>
-#include <Library/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

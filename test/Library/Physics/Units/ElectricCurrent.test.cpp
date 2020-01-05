@@ -1,13 +1,13 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Units/ElectricCurrent.test.cpp
+/// @file           OpenSpaceToolkit/Physics/Units/ElectricCurrent.test.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <Library/Physics/Units/ElectricCurrent.hpp>
+#include <OpenSpaceToolkit/Physics/Units/ElectricCurrent.hpp>
 #include <Library/Core/Types/Real.hpp>
 
 #include <Global.test.hpp>

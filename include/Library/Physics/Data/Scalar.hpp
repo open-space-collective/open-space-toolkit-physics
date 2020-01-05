@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Data/Scalar.hpp
+/// @file           OpenSpaceToolkit/Physics/Data/Scalar.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -10,8 +10,8 @@
 #ifndef __OpenSpaceToolkit_Physics_Data_Scalar__
 #define __OpenSpaceToolkit_Physics_Data_Scalar__
 
-#include <Library/Physics/Time/Instant.hpp>
-#include <Library/Physics/Unit.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Physics/Unit.hpp>
 
 #include <Library/Core/Types/Real.hpp>
 #include <Library/Core/Types/Shared.hpp>

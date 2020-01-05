@@ -1,14 +1,14 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Environment/Utilities/Eclipse.cpp
+/// @file           OpenSpaceToolkit/Physics/Environment/Utilities/Eclipse.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <Library/Physics/Environment/Utilities/Eclipse.hpp>
-#include <Library/Physics/Environment/Object.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Utilities/Eclipse.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Object.hpp>
 
 #include <Library/Mathematics/Geometry/3D/Objects/Segment.hpp>
 

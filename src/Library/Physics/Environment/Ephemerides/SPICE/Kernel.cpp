@@ -1,13 +1,13 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Environment/Ephemerides/SPICE/Kernel.cpp
+/// @file           OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Kernel.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <Library/Physics/Environment/Ephemerides/SPICE/Kernel.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Kernel.hpp>
 
 #include <Library/Core/Containers/Map.hpp>
 #include <Library/Core/Error.hpp>

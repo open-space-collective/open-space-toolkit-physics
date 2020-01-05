@@ -20,7 +20,7 @@ RUN pip install -r /requirements.txt
 ENV LD_LIBRARY_PATH /usr/local/lib:/usr/local/lib/python3.6/site-packages:/library/physics/lib
 ENV PYTHONPATH /usr/local/lib/python3.6/site-packages:/library/physics/lib
 
-COPY bindings/python/tools/python/Library/Physics /usr/local/lib/python3.6/site-packages/Library/Physics
+COPY bindings/python/tools/python/OpenSpaceToolkit/Physics /usr/local/lib/python3.6/site-packages/OpenSpaceToolkit/Physics
 
 RUN mkdir -p /library \
  && mkdir -p /library/physics

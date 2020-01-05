@@ -9,7 +9,7 @@
 
 #include <LibraryPhysicsPy/Utilities/IterableConverter.hpp>
 
-#include <Library/Physics/Units/ElectricCurrent.hpp>
+#include <OpenSpaceToolkit/Physics/Units/ElectricCurrent.hpp>
 
 #include <Library/Mathematics/Objects/Interval.hpp>
 

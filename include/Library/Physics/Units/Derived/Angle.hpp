@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Units/Derived/Angle.hpp
+/// @file           OpenSpaceToolkit/Physics/Units/Derived/Angle.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -10,7 +10,7 @@
 #ifndef __OpenSpaceToolkit_Physics_Units_Derived_Angle__
 #define __OpenSpaceToolkit_Physics_Units_Derived_Angle__
 
-#include <Library/Physics/Units/Unit.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Unit.hpp>
 
 #include <Library/Mathematics/Geometry/Angle.hpp>
 #include <Library/Mathematics/Objects/Vector.hpp>

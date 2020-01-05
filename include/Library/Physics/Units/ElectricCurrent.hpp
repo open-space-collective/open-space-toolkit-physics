@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Units/ElectricCurrent.hpp
+/// @file           OpenSpaceToolkit/Physics/Units/ElectricCurrent.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -10,7 +10,7 @@
 #ifndef __OpenSpaceToolkit_Physics_Units_ElectricCurrent__
 #define __OpenSpaceToolkit_Physics_Units_ElectricCurrent__
 
-#include <Library/Physics/Units/Unit.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Unit.hpp>
 
 #include <Library/Core/Types/String.hpp>
 #include <Library/Core/Types/Real.hpp>

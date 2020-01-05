@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Environment/Ephemerides/SPICE/Index.hpp
+/// @file           OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Index.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -10,8 +10,8 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Index__
 #define __OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Index__
 
-#include <Library/Physics/Environment/Ephemerides/SPICE/Kernel.hpp>
-#include <Library/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Kernel.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
 #include <Library/IO/URL.hpp>
 

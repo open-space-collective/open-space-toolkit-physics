@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Coordinate/Frame/Manager.hpp
+/// @file           OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -10,9 +10,9 @@
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Frame_Manager__
 #define __OpenSpaceToolkit_Physics_Coordinate_Frame_Manager__
 
-#include <Library/Physics/Coordinate/Transform.hpp>
-#include <Library/Physics/Coordinate/Frame.hpp>
-#include <Library/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
 #include <Library/Core/Containers/Map.hpp>
 #include <Library/Core/Types/String.hpp>

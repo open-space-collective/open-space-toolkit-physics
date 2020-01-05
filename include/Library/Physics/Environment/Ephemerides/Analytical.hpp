@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Environment/Ephemerides/Analytical.hpp
+/// @file           OpenSpaceToolkit/Physics/Environment/Ephemerides/Analytical.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -10,9 +10,9 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Ephemerides_Analytical__
 #define __OpenSpaceToolkit_Physics_Environment_Ephemerides_Analytical__
 
-#include <Library/Physics/Environment/Ephemeris.hpp>
-#include <Library/Physics/Coordinate/Frame.hpp>
-#include <Library/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
 #include <Library/Core/Types/Shared.hpp>
 

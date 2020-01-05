@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Time/Interval.hpp
+/// @file           OpenSpaceToolkit/Physics/Time/Interval.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -10,8 +10,8 @@
 #ifndef __OpenSpaceToolkit_Physics_Time_Interval__
 #define __OpenSpaceToolkit_Physics_Time_Interval__
 
-#include <Library/Physics/Time/Instant.hpp>
-#include <Library/Physics/Time/Scale.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
 
 #include <Library/Mathematics/Objects/Interval.hpp>
 

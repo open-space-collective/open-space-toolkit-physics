@@ -1,17 +1,17 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Coordinate/Frame/Providers/ITRF.cpp
+/// @file           OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/ITRF.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <Library/Physics/Coordinate/Frame/Providers/IERS/BulletinA.hpp>
-#include <Library/Physics/Coordinate/Frame/Providers/IERS/Manager.hpp>
-#include <Library/Physics/Coordinate/Frame/Providers/ITRF.hpp>
-#include <Library/Physics/Time/DateTime.hpp>
-#include <Library/Physics/Time/Scale.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/BulletinA.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Manager.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/ITRF.hpp>
+#include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
 
 #include <Library/Mathematics/Geometry/3D/Transformations/Rotations/RotationMatrix.hpp>
 

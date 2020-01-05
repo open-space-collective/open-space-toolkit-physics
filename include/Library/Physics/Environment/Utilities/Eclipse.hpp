@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Environment/Utilities/Eclipse.hpp
+/// @file           OpenSpaceToolkit/Physics/Environment/Utilities/Eclipse.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -10,9 +10,9 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Utilities_Eclipse__
 #define __OpenSpaceToolkit_Physics_Environment_Utilities_Eclipse__
 
-#include <Library/Physics/Environment.hpp>
-#include <Library/Physics/Coordinate/Position.hpp>
-#include <Library/Physics/Time/Interval.hpp>
+#include <OpenSpaceToolkit/Physics/Environment.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Interval.hpp>
 
 #include <Library/Core/Containers/Array.hpp>
 

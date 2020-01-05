@@ -1,16 +1,16 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Coordinate/Frame/Providers/TEME.test.cpp
+/// @file           OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/TEME.test.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <Library/Physics/Coordinate/Frame/Providers/ITRF.hpp>
-#include <Library/Physics/Coordinate/Frame/Providers/TEME.hpp>
-#include <Library/Physics/Coordinate/Frame.hpp>
-#include <Library/Physics/Units/Derived/Angle.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/ITRF.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/TEME.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Derived/Angle.hpp>
 
 #include <Library/Mathematics/Geometry/3D/Transformations/Rotations/RotationVector.hpp>
 #include <Library/Mathematics/Geometry/3D/Transformations/Rotations/Quaternion.hpp>
@@ -47,8 +47,8 @@ TEST (Library_Physics_Coordinate_Frame_Providers_TEME, GetTransformAt)
 
         const Array<Pair<File, Angle>> referenceScenarios =
         {
-            { File::Path(Path::Parse("/app/test/Library/Physics/Coordinate/Frame/Providers/TEME/Scenario_A/Scenario ITRF_TEME.csv")), Angle::Arcseconds(1.0) },
-            { File::Path(Path::Parse("/app/test/Library/Physics/Coordinate/Frame/Providers/TEME/Scenario_B/Scenario ITRF_TEME.csv")), Angle::Arcseconds(20.0) }
+            { File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/TEME/Scenario_A/Scenario ITRF_TEME.csv")), Angle::Arcseconds(1.0) },
+            { File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/TEME/Scenario_B/Scenario ITRF_TEME.csv")), Angle::Arcseconds(20.0) }
         } ;
 
         for (const auto& referenceScenario : referenceScenarios)

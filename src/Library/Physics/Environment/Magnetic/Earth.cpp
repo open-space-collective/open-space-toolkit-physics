@@ -1,15 +1,15 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Environment/Magnetic/Earth.cpp
+/// @file           OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <Library/Physics/Environment/Magnetic/Earth/Manager.hpp>
-#include <Library/Physics/Environment/Magnetic/Earth.hpp>
-#include <Library/Physics/Environment/Magnetic/Dipole.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Magnetic/Dipole.hpp>
 
 #include <Library/Mathematics/Geometry/3D/Transformations/Rotations/RotationMatrix.hpp>
 

@@ -43,7 +43,7 @@ COPY --from=cpp-builder /usr/local/lib/libopen-space-toolkit-physics.* /usr/loca
 COPY --from=cpp-builder /usr/local/share/Library /usr/local/share/Library
 COPY --from=cpp-builder /usr/local/test/Library /usr/local/test/Library
 
-ENTRYPOINT ["/usr/local/test/Library/Physics/open-space-toolkit-physics.test"]
+ENTRYPOINT ["/usr/local/test/OpenSpaceToolkit/Physics/open-space-toolkit-physics.test"]
 
 ################################################################################################################################################################
 

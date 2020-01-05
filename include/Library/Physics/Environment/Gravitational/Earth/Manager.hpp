@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Environment/Gravitational/Earth/Manager.hpp
+/// @file           OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -10,7 +10,7 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Gravitational_Earth_Manager__
 #define __OpenSpaceToolkit_Physics_Environment_Gravitational_Earth_Manager__
 
-#include <Library/Physics/Environment/Gravitational/Earth.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp>
 
 #include <Library/IO/URL.hpp>
 

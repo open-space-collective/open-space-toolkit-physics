@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Coordinate/Frame.hpp
+/// @file           OpenSpaceToolkit/Physics/Coordinate/Frame.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -10,11 +10,11 @@
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Frame__
 #define __OpenSpaceToolkit_Physics_Coordinate_Frame__
 
-#include <Library/Physics/Coordinate/Frame/Provider.hpp>
-#include <Library/Physics/Coordinate/Transform.hpp>
-#include <Library/Physics/Coordinate/Axes.hpp>
-#include <Library/Physics/Coordinate/Velocity.hpp>
-#include <Library/Physics/Coordinate/Position.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Axes.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
 
 #include <Library/Mathematics/Objects/Vector.hpp>
 

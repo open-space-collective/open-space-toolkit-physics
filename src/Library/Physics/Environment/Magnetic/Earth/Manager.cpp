@@ -1,13 +1,13 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Environment/Magnetic/Earth/Manager.cpp
+/// @file           OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <Library/Physics/Environment/Magnetic/Earth/Manager.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp>
 
 #include <Library/IO/IP/TCP/HTTP/Client.hpp>
 

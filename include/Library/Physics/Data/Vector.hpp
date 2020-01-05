@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Data/Vector.hpp
+/// @file           OpenSpaceToolkit/Physics/Data/Vector.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -10,9 +10,9 @@
 #ifndef __OpenSpaceToolkit_Physics_Data_Vector__
 #define __OpenSpaceToolkit_Physics_Data_Vector__
 
-#include <Library/Physics/Coordinate/Frame.hpp>
-#include <Library/Physics/Time/Instant.hpp>
-#include <Library/Physics/Unit.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Physics/Unit.hpp>
 
 #include <Library/Mathematics/Objects/Vector.hpp>
 

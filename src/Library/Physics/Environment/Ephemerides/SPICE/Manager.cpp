@@ -1,13 +1,13 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Environment/Ephemerides/SPICE/Manager.cpp
+/// @file           OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Manager.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <Library/Physics/Environment/Ephemerides/SPICE/Manager.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Manager.hpp>
 
 #include <Library/IO/IP/TCP/HTTP/Client.hpp>
 

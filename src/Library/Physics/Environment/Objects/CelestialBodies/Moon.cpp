@@ -1,16 +1,16 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Environment/Objects/CelestialBodies/Moon.cpp
+/// @file           OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Moon.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <Library/Physics/Environment/Ephemerides/SPICE.hpp>
-#include <Library/Physics/Environment/Objects/CelestialBodies/Moon.hpp>
-#include <Library/Physics/Coordinate/Frame/Providers/Static.hpp>
-#include <Library/Physics/Coordinate/Frame.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Moon.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Static.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 
 #include <Library/Core/Error.hpp>
 #include <Library/Core/Utilities.hpp>

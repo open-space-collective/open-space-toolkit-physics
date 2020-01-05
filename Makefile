@@ -470,7 +470,7 @@ _test-unit-python: _build-release-image-python
 
 	docker run \
 	--rm \
-	--workdir=/usr/local/lib/python3.7/site-packages/Library/Physics \
+	--workdir=/usr/local/lib/python3.7/site-packages/OpenSpaceToolkit/Physics \
 	--entrypoint="" \
 	--volume="$(project_directory)/share:/app/share" \
 	--env=LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY \

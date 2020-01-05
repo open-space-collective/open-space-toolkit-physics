@@ -1,17 +1,17 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Environment/Magnetic/Earth.test.cpp
+/// @file           OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.test.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <Library/Physics/Environment/Magnetic/Earth/Manager.hpp>
-#include <Library/Physics/Environment/Magnetic/Earth.hpp>
-#include <Library/Physics/Time/Instant.hpp>
-#include <Library/Physics/Time/DateTime.hpp>
-#include <Library/Physics/Time/Scale.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
 
 #include <Library/Core/FileSystem/File.hpp>
 #include <Library/Core/FileSystem/Path.hpp>
@@ -33,7 +33,7 @@ TEST (Library_Physics_Environment_Magnetic_Earth, Constructor)
 
     {
 
-        EarthMagneticModelManager::Get().setLocalRepository(Directory::Path(Path::Parse("/app/test/Library/Physics/Environment/Magnetic/Earth"))) ;
+        EarthMagneticModelManager::Get().setLocalRepository(Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth"))) ;
 
         EarthMagneticModelManager::Get().enable() ;
 
@@ -54,14 +54,14 @@ TEST (Library_Physics_Environment_Magnetic_Earth, Constructor)
 
     {
 
-        EXPECT_NO_THROW(EarthMagneticModel earthMagneticModel(EarthMagneticModel::Type::Dipole, Directory::Path(Path::Parse("/app/test/Library/Physics/Environment/Magnetic/Earth")))) ;
-        EXPECT_NO_THROW(EarthMagneticModel earthMagneticModel(EarthMagneticModel::Type::EMM2010, Directory::Path(Path::Parse("/app/test/Library/Physics/Environment/Magnetic/Earth")))) ;
-        EXPECT_NO_THROW(EarthMagneticModel earthMagneticModel(EarthMagneticModel::Type::EMM2015, Directory::Path(Path::Parse("/app/test/Library/Physics/Environment/Magnetic/Earth")))) ;
-        EXPECT_NO_THROW(EarthMagneticModel earthMagneticModel(EarthMagneticModel::Type::EMM2017, Directory::Path(Path::Parse("/app/test/Library/Physics/Environment/Magnetic/Earth")))) ;
-        EXPECT_NO_THROW(EarthMagneticModel earthMagneticModel(EarthMagneticModel::Type::IGRF11, Directory::Path(Path::Parse("/app/test/Library/Physics/Environment/Magnetic/Earth")))) ;
-        EXPECT_NO_THROW(EarthMagneticModel earthMagneticModel(EarthMagneticModel::Type::IGRF12, Directory::Path(Path::Parse("/app/test/Library/Physics/Environment/Magnetic/Earth")))) ;
-        EXPECT_NO_THROW(EarthMagneticModel earthMagneticModel(EarthMagneticModel::Type::WMM2010, Directory::Path(Path::Parse("/app/test/Library/Physics/Environment/Magnetic/Earth")))) ;
-        EXPECT_NO_THROW(EarthMagneticModel earthMagneticModel(EarthMagneticModel::Type::WMM2015, Directory::Path(Path::Parse("/app/test/Library/Physics/Environment/Magnetic/Earth")))) ;
+        EXPECT_NO_THROW(EarthMagneticModel earthMagneticModel(EarthMagneticModel::Type::Dipole, Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth")))) ;
+        EXPECT_NO_THROW(EarthMagneticModel earthMagneticModel(EarthMagneticModel::Type::EMM2010, Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth")))) ;
+        EXPECT_NO_THROW(EarthMagneticModel earthMagneticModel(EarthMagneticModel::Type::EMM2015, Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth")))) ;
+        EXPECT_NO_THROW(EarthMagneticModel earthMagneticModel(EarthMagneticModel::Type::EMM2017, Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth")))) ;
+        EXPECT_NO_THROW(EarthMagneticModel earthMagneticModel(EarthMagneticModel::Type::IGRF11, Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth")))) ;
+        EXPECT_NO_THROW(EarthMagneticModel earthMagneticModel(EarthMagneticModel::Type::IGRF12, Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth")))) ;
+        EXPECT_NO_THROW(EarthMagneticModel earthMagneticModel(EarthMagneticModel::Type::WMM2010, Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth")))) ;
+        EXPECT_NO_THROW(EarthMagneticModel earthMagneticModel(EarthMagneticModel::Type::WMM2015, Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth")))) ;
 
     }
 
@@ -92,7 +92,7 @@ TEST (Library_Physics_Environment_Magnetic_Earth, Clone)
 
     {
 
-        EarthMagneticModelManager::Get().setLocalRepository(Directory::Path(Path::Parse("/app/test/Library/Physics/Environment/Magnetic/Earth"))) ;
+        EarthMagneticModelManager::Get().setLocalRepository(Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth"))) ;
 
         EarthMagneticModelManager::Get().enable() ;
 
@@ -119,7 +119,7 @@ TEST (Library_Physics_Environment_Magnetic_Earth, GetType)
 
     {
 
-        EarthMagneticModelManager::Get().setLocalRepository(Directory::Path(Path::Parse("/app/test/Library/Physics/Environment/Magnetic/Earth"))) ;
+        EarthMagneticModelManager::Get().setLocalRepository(Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth"))) ;
 
         EarthMagneticModelManager::Get().enable() ;
 
@@ -160,7 +160,7 @@ TEST (Library_Physics_Environment_Magnetic_Earth, GetFieldValueAt)
 
     {
 
-        EarthMagneticModelManager::Get().setLocalRepository(Directory::Path(Path::Parse("/app/test/Library/Physics/Environment/Magnetic/Earth"))) ;
+        EarthMagneticModelManager::Get().setLocalRepository(Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth"))) ;
 
         EarthMagneticModelManager::Get().enable() ;
 

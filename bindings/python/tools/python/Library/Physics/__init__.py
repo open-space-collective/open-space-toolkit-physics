@@ -1,7 +1,7 @@
 ################################################################################################################################################################
 
 # @project        Open Space Toolkit ▸ Physics
-# @file           Library/Physics/__init__.py
+# @file           OpenSpaceToolkit/Physics/__init__.py
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        Apache License 2.0
 

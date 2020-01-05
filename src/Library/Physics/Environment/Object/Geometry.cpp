@@ -1,14 +1,14 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Environment/Object/Geometry.cpp
+/// @file           OpenSpaceToolkit/Physics/Environment/Object/Geometry.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <Library/Physics/Environment/Object/Geometry.hpp>
-#include <Library/Physics/Coordinate/Transform.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
 
 #include <Library/Mathematics/Geometry/3D/Transformations/Rotations/RotationMatrix.hpp>
 #include <Library/Mathematics/Geometry/3D/Transformations/Rotations/RotationVector.hpp>

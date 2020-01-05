@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Environment/Objects/CelestialBodies/Moon.hpp
+/// @file           OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Moon.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -10,11 +10,11 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Moon__
 #define __OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Moon__
 
-#include <Library/Physics/Environment/Objects/Celestial.hpp>
-#include <Library/Physics/Environment/Object.hpp>
-#include <Library/Physics/Environment/Ephemeris.hpp>
-#include <Library/Physics/Units/Derived.hpp>
-#include <Library/Physics/Units/Length.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Objects/Celestial.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Object.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Derived.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Length.hpp>
 
 #include <Library/Mathematics/Geometry/3D/Objects/Ellipsoid.hpp>
 

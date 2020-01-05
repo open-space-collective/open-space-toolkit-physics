@@ -1,14 +1,14 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Data/Direction.cpp
+/// @file           OpenSpaceToolkit/Physics/Data/Direction.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <Library/Physics/Data/Direction.hpp>
-#include <Library/Physics/Unit.hpp>
+#include <OpenSpaceToolkit/Physics/Data/Direction.hpp>
+#include <OpenSpaceToolkit/Physics/Unit.hpp>
 
 #include <Library/Core/Types/Real.hpp>
 #include <Library/Core/Error.hpp>

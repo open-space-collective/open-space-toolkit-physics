@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Data/Direction.hpp
+/// @file           OpenSpaceToolkit/Physics/Data/Direction.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -10,8 +10,8 @@
 #ifndef __OpenSpaceToolkit_Physics_Data_Direction__
 #define __OpenSpaceToolkit_Physics_Data_Direction__
 
-#include <Library/Physics/Coordinate/Frame.hpp>
-#include <Library/Physics/Data/Vector.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
+#include <OpenSpaceToolkit/Physics/Data/Vector.hpp>
 
 #include <Library/Core/Types/Shared.hpp>
 

@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Coordinate/Spherical/AER.hpp
+/// @file           OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -10,9 +10,9 @@
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Spherical_AER__
 #define __OpenSpaceToolkit_Physics_Coordinate_Spherical_AER__
 
-#include <Library/Physics/Coordinate/Position.hpp>
-#include <Library/Physics/Units/Derived/Angle.hpp>
-#include <Library/Physics/Units/Length.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Derived/Angle.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Length.hpp>
 
 #include <Library/Core/Types/String.hpp>
 

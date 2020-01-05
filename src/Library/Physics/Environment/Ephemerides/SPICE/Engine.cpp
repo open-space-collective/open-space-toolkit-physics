@@ -1,15 +1,15 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Environment/Ephemerides/SPICE/Engine.cpp
+/// @file           OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Engine.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <Library/Physics/Environment/Ephemerides/SPICE/Manager.hpp>
-#include <Library/Physics/Environment/Ephemerides/SPICE/Engine.hpp>
-#include <Library/Physics/Coordinate/Frame/Providers/Dynamic.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Manager.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Engine.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Dynamic.hpp>
 
 #include <Library/Mathematics/Geometry/3D/Transformations/Rotations/RotationMatrix.hpp>
 

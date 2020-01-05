@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Environment/Magnetic/Dipole.hpp
+/// @file           OpenSpaceToolkit/Physics/Environment/Magnetic/Dipole.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -10,9 +10,9 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Magnetic_Dipole__
 #define __OpenSpaceToolkit_Physics_Environment_Magnetic_Dipole__
 
-#include <Library/Physics/Environment/Magnetic/Model.hpp>
-#include <Library/Physics/Time/Instant.hpp>
-#include <Library/Physics/Units/Derived.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Magnetic/Model.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Derived.hpp>
 
 #include <Library/Core/Types/Real.hpp>
 

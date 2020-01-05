@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Environment/Object.hpp
+/// @file           OpenSpaceToolkit/Physics/Environment/Object.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -10,13 +10,13 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Object__
 #define __OpenSpaceToolkit_Physics_Environment_Object__
 
-#include <Library/Physics/Environment/Object/Geometry.hpp>
-#include <Library/Physics/Coordinate/Transform.hpp>
-#include <Library/Physics/Coordinate/Frame.hpp>
-#include <Library/Physics/Coordinate/Axes.hpp>
-#include <Library/Physics/Coordinate/Velocity.hpp>
-#include <Library/Physics/Coordinate/Position.hpp>
-#include <Library/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Axes.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
 #include <Library/Mathematics/Geometry/3D/Object.hpp>
 

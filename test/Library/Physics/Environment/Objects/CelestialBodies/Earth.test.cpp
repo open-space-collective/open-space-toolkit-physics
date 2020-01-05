@@ -1,21 +1,21 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Environment/Objects/CelestialBodies/Earth.test.cpp
+/// @file           OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth.test.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <Library/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
-#include <Library/Physics/Environment.hpp>
-#include <Library/Physics/Coordinate/Spherical/LLA.hpp>
-#include <Library/Physics/Time/Interval.hpp>
-#include <Library/Physics/Time/Duration.hpp>
-#include <Library/Physics/Time/Instant.hpp>
-#include <Library/Physics/Time/DateTime.hpp>
-#include <Library/Physics/Time/Scale.hpp>
-#include <Library/Physics/Units/Length.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
+#include <OpenSpaceToolkit/Physics/Environment.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Interval.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Length.hpp>
 
 #include <Library/Mathematics/Geometry/3D/Transformations/Rotations/RotationVector.hpp>
 #include <Library/Mathematics/Geometry/3D/Transformations/Rotations/Quaternion.hpp>
@@ -84,10 +84,10 @@ TEST (Library_Physics_Environment_Objects_CelestialBodies_Earth, GetFrameAt)
 
         const Array<Triple<LLA, File, File>> referenceScenarios =
         {
-            { { Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Kilometers(0.01716) }, File::Path(Path::Parse("/app/test/Library/Physics/Environment/Objects/CelestialBodies/Earth/GetFrameAt/NED_ITRF 1.csv")), File::Path(Path::Parse("/app/test/Library/Physics/Environment/Objects/CelestialBodies/Earth/GetFrameAt/NED_GCRF 1.csv")) },
-            { { Angle::Degrees(36.5), Angle::Degrees(-123.6), Length::Kilometers(-0.0379749) }, File::Path(Path::Parse("/app/test/Library/Physics/Environment/Objects/CelestialBodies/Earth/GetFrameAt/NED_ITRF 2.csv")), File::Path(Path::Parse("/app/test/Library/Physics/Environment/Objects/CelestialBodies/Earth/GetFrameAt/NED_GCRF 2.csv")) },
-            { { Angle::Degrees(90.0), Angle::Degrees(123.456), Length::Kilometers(0.0136095) }, File::Path(Path::Parse("/app/test/Library/Physics/Environment/Objects/CelestialBodies/Earth/GetFrameAt/NED_ITRF 3.csv")), File::Path(Path::Parse("/app/test/Library/Physics/Environment/Objects/CelestialBodies/Earth/GetFrameAt/NED_GCRF 3.csv")) },
-            { { Angle::Degrees(-90.0), Angle::Degrees(-95.31), Length::Kilometers(-0.0295348 ) }, File::Path(Path::Parse("/app/test/Library/Physics/Environment/Objects/CelestialBodies/Earth/GetFrameAt/NED_ITRF 4.csv")), File::Path(Path::Parse("/app/test/Library/Physics/Environment/Objects/CelestialBodies/Earth/GetFrameAt/NED_GCRF 4.csv")) }
+            { { Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Kilometers(0.01716) }, File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth/GetFrameAt/NED_ITRF 1.csv")), File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth/GetFrameAt/NED_GCRF 1.csv")) },
+            { { Angle::Degrees(36.5), Angle::Degrees(-123.6), Length::Kilometers(-0.0379749) }, File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth/GetFrameAt/NED_ITRF 2.csv")), File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth/GetFrameAt/NED_GCRF 2.csv")) },
+            { { Angle::Degrees(90.0), Angle::Degrees(123.456), Length::Kilometers(0.0136095) }, File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth/GetFrameAt/NED_ITRF 3.csv")), File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth/GetFrameAt/NED_GCRF 3.csv")) },
+            { { Angle::Degrees(-90.0), Angle::Degrees(-95.31), Length::Kilometers(-0.0295348 ) }, File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth/GetFrameAt/NED_ITRF 4.csv")), File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth/GetFrameAt/NED_GCRF 4.csv")) }
         } ;
 
         for (const auto& referenceScenario : referenceScenarios)

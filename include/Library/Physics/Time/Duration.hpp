@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           Library/Physics/Time/Duration.hpp
+/// @file           OpenSpaceToolkit/Physics/Time/Duration.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -10,7 +10,7 @@
 #ifndef __OpenSpaceToolkit_Physics_Time_Duration__
 #define __OpenSpaceToolkit_Physics_Time_Duration__
 
-#include <Library/Physics/Units/Time.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Time.hpp>
 
 #include <Library/Core/Types/String.hpp>
 #include <Library/Core/Types/Real.hpp>

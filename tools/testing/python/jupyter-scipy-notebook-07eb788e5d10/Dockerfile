@@ -20,7 +20,7 @@ RUN pip install -r /requirements.txt
 ENV LD_LIBRARY_PATH /usr/local/lib:/opt/conda/lib/python3.6/site-packages:/home/jovyan/library/physics/lib
 ENV PYTHONPATH /opt/conda/lib/python3.6/site-packages:/home/jovyan/library/physics/lib
 
-COPY bindings/python/tools/python/Library/Physics /opt/conda/lib/python3.6/site-packages/Library/Physics
+COPY bindings/python/tools/python/OpenSpaceToolkit/Physics /opt/conda/lib/python3.6/site-packages/OpenSpaceToolkit/Physics
 
 RUN mkdir -p /home/jovyan/library \
  && mkdir -p /home/jovyan/library/physics
