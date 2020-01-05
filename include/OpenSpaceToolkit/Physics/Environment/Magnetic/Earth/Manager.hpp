@@ -22,7 +22,7 @@
 #include <mutex>
 
 #define LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_ENABLED true
-#define LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY "./.library/physics/environment/magnetic/earth"
+#define LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY "./.open-space-toolkit/physics/environment/magnetic/earth"
 #define LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_REMOTE_URL "https://sourceforge.net/projects/geographiclib/files/magnetic-distrib/"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

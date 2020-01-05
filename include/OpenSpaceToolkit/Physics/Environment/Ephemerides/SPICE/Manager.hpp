@@ -28,7 +28,7 @@
 
 #include <mutex>
 
-#define LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY "./.library/physics/environment/ephemerides/spice"
+#define LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY "./.open-space-toolkit/physics/environment/ephemerides/spice"
 #define LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_REMOTE_URL "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
