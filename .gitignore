@@ -1,6 +1,6 @@
 ################################################################################################################################################################
 
-# @project        Library ▸ Physics
+# @project        Open Space Toolkit ▸ Physics
 # @file           .gitignore
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        Apache License 2.0
@@ -54,6 +54,6 @@ docs/latex/
 tmp/
 __pycache__
 .ipynb_checkpoints
-.library
+.open-space-toolkit/
 
 ################################################################################################################################################################

@@ -1,23 +1,17 @@
-# Library ▸ Physics
+# Open Space Toolkit ▸ Physics
 
 Physical units, time, reference frames, environment modeling.
 
-[![Build Status](https://travis-ci.com/open-space-collective/library-physics.svg?branch=master)](https://travis-ci.com/open-space-collective/library-physics)
-[![Code Coverage](https://codecov.io/gh/open-space-collective/library-physics/branch/master/graph/badge.svg)](https://codecov.io/gh/open-space-collective/library-physics)
-[![Documentation](https://img.shields.io/readthedocs/pip/stable.svg)](https://open-space-collective.github.io/library-physics)
-[![GitHub version](https://badge.fury.io/gh/open-space-collective%2Flibrary-physics.svg)](https://badge.fury.io/gh/open-space-collective%2Flibrary-physics)
-[![PyPI version](https://badge.fury.io/py/LibraryPhysicsPy.svg)](https://badge.fury.io/py/LibraryPhysicsPy)
+[![Build Status](https://travis-ci.com/open-space-collective/open-space-toolkit-physics.svg?branch=master)](https://travis-ci.com/open-space-collective/open-space-toolkit-physics)
+[![Code Coverage](https://codecov.io/gh/open-space-collective/open-space-toolkit-physics/branch/master/graph/badge.svg)](https://codecov.io/gh/open-space-collective/open-space-toolkit-physics)
+[![Documentation](https://img.shields.io/readthedocs/pip/stable.svg)](https://open-space-collective.github.io/open-space-toolkit-physics)
+[![GitHub version](https://badge.fury.io/gh/open-space-collective%2Fopen-space-toolkit-physics.svg)](https://badge.fury.io/gh/open-space-collective%2Fopen-space-toolkit-physics)
+[![PyPI version](https://badge.fury.io/py/open-space-toolkit-physics.svg)](https://badge.fury.io/py/open-space-toolkit-physics)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ## Warning
 
-Library **name** is yet to be defined.
-
-Please check the following projects:
-
-- [Naming Project](https://github.com/orgs/open-space-collective/projects/1)
-
-*⚠ This library is still under heavy development. Do not use!*
+*⚠ This component is under development.*
 
 ## Structure
 
@@ -93,7 +87,7 @@ The **Physics** library exhibits the following structure:
 
 Documentation is available here:
 
-- [C++](https://open-space-collective.github.io/library-physics)
+- [C++](https://open-space-collective.github.io/open-space-toolkit-physics)
 - [Python](./bindings/python/docs)
 
 ## Tutorials
@@ -110,17 +104,17 @@ The following environment variables can be set:
 | Environment Variable                                                                  | Default Value                                                            |
 | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
 | LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE                          | `Manual`                                                                 |
-| LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY              | `./.library/physics/coordinate/frame/providers/iers`                     |
+| LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY              | `./.open-space-toolkit/physics/coordinate/frame/providers/iers`          |
 | LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT | `60`                                                                     |
 | LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL                    | `ftp://cddis.gsfc.nasa.gov/pub/products/iers/`                           |
 | LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_ENGINE_MODE                             | `Manual`                                                                 |
-| LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY                | `./.library/physics/environment/ephemerides/spice`                       |
+| LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY                | `./.open-space-toolkit/physics/environment/ephemerides/spice`            |
 | LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_REMOTE_URL                      | `https://naif.jpl.nasa.gov/pub/naif/generic_kernels/`                    |
 | LIBRARY_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_ENABLED                       | `false`                                                                  |
-| LIBRARY_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY              | `./.library/physics/environment/gravitational/earth`                     |
+| LIBRARY_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY              | `./.open-space-toolkit/physics/environment/gravitational/earth`          |
 | LIBRARY_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_REMOTE_URL                    | `https://sourceforge.net/projects/geographiclib/files/gravity-distrib/`  |
 | LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_ENABLED                            | `false`                                                                  |
-| LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY                   | `./.library/physics/environment/magnetic/earth`                          |
+| LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY                   | `./.open-space-toolkit/physics/environment/magnetic/earth`               |
 | LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_REMOTE_URL                         | `https://sourceforge.net/projects/geographiclib/files/magnetic-distrib/` |
 
 ## Setup
@@ -138,7 +132,7 @@ make start-development
 
 This will:
 
-1. Build the `openspacecollective/library-physics-development` Docker image.
+1. Build the `openspacecollective/open-space-toolkit-physics-development` Docker image.
 2. Create a development environment container with local source files and helper scripts mounted.
 3. Start a `bash` shell from the `./build` working directory.
 
@@ -167,23 +161,23 @@ make test
 Or to run them manually:
 
 ```bash
-./bin/library-physics.test
+./bin/open-space-toolkit-physics.test
 ```
 
 *Tip: `helpers/test.sh` simplifies running tests from within the development environment.*
 
 ## Dependencies
 
-| Name          | Version    | License                                                    | Link                                                                                                                 |
-| ------------- | ---------- | ---------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Boost         | 1.69.0     | Boost Software License                                     | [boost.org](https://www.boost.org)                                                                                   |
-| Eigen         | 3.3.7      | MPL2                                                       | [eigen.tuxfamily.org](http://eigen.tuxfamily.org/index.php)                                                          |
-| IAU SOFA      | 2018-01-30 | [SOFA Software License](http://www.iausofa.org/tandc.html) | [www.iausofa.org](http://www.iausofa.org)                                                                            |
-| SPICE Toolkit | N0066      | [NAIF](https://naif.jpl.nasa.gov/naif/rules.html)          | [naif.jpl.nasa.gov/naif/toolkit.html](https://naif.jpl.nasa.gov/naif/toolkit.html)                                   |
-| GeographicLib | 1.49       | MIT                                                        | [geographiclib.sourceforge.io](https://geographiclib.sourceforge.io)                                                 |
-| Core          | master     | Apache License 2.0                                         | [github.com/open-space-collective/library-core](https://github.com/open-space-collective/library-core)               |
-| I/O           | master     | Apache License 2.0                                         | [github.com/open-space-collective/library-io](https://github.com/open-space-collective/library-io)                   |
-| Mathematics   | master     | Apache License 2.0                                         | [github.com/open-space-collective/library-mathematics](https://github.com/open-space-collective/library-mathematics) |
+| Name          | Version    | License                                                    | Link                                                                                                                                       |
+| ------------- | ---------- | ---------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------                       |
+| Boost         | 1.69.0     | Boost Software License                                     | [boost.org](https://www.boost.org)                                                                                                         |
+| Eigen         | 3.3.7      | MPL2                                                       | [eigen.tuxfamily.org](http://eigen.tuxfamily.org/index.php)                                                                                |
+| IAU SOFA      | 2018-01-30 | [SOFA Software License](http://www.iausofa.org/tandc.html) | [www.iausofa.org](http://www.iausofa.org)                                                                                                  |
+| SPICE Toolkit | N0066      | [NAIF](https://naif.jpl.nasa.gov/naif/rules.html)          | [naif.jpl.nasa.gov/naif/toolkit.html](https://naif.jpl.nasa.gov/naif/toolkit.html)                                                         |
+| GeographicLib | 1.49       | MIT                                                        | [geographiclib.sourceforge.io](https://geographiclib.sourceforge.io)                                                                       |
+| Core          | master     | Apache License 2.0                                         | [github.com/open-space-collective/open-space-toolkit-core](https://github.com/open-space-collective/open-space-toolkit-core)               |
+| I/O           | master     | Apache License 2.0                                         | [github.com/open-space-collective/open-space-toolkit-io](https://github.com/open-space-collective/open-space-toolkit-io)                   |
+| Mathematics   | master     | Apache License 2.0                                         | [github.com/open-space-collective/open-space-toolkit-mathematics](https://github.com/open-space-collective/open-space-toolkit-mathematics) |
 
 ## Contribution
 

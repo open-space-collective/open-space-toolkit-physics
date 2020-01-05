@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library ▸ Physics
-/// @file           Library/Physics/Main.test.cxx
+/// @project        Open Space Toolkit ▸ Physics
+/// @file           OpenSpaceToolkit/Physics/Main.test.cxx
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -17,7 +17,7 @@ int                             main                                        (   
 
     ::testing::InitGoogleTest(&argc, argv) ;
 
-    ::testing::AddGlobalTestEnvironment(new library::physics::test::Environment(argc >= 2 ? argv[1] : "")) ;
+    ::testing::AddGlobalTestEnvironment(new ostk::physics::test::Environment(argc >= 2 ? argv[1] : "")) ;
 
     return RUN_ALL_TESTS() ;
 

@@ -2,7 +2,7 @@
 
 ################################################################################################################################################################
 
-# @project        Library ▸ Physics
+# @project        Open Space Toolkit ▸ Physics
 # @file           tools/testing/python/jupyter-scipy-notebook-07eb788e5d10/run.sh
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        Apache License 2.0
@@ -86,12 +86,12 @@ run_container ()
     -it \
     --rm \
     --env-file="${script_directory}/.env" \
-    --volume="${project_directory}/lib/liblibrary-physics.so:/opt/conda/lib/python3.6/site-packages/Library/Physics/liblibrary-physics.so:ro" \
-    --volume="${project_directory}/lib/liblibrary-physics.so.0:/opt/conda/lib/python3.6/site-packages/Library/Physics/liblibrary-physics.so.0:ro" \
-    --volume="${project_directory}/lib/LibraryPhysicsPy.so:/opt/conda/lib/python3.6/site-packages/Library/Physics/LibraryPhysicsPy.so:ro" \
-    --volume="${project_directory}/bindings/python/docs:/home/jovyan/library/physics/docs:ro" \
-    --volume="${project_directory}/bindings/python/test:/home/jovyan/library/physics/test:ro" \
-    --volume="${project_directory}/share:/home/jovyan/library/physics/data" \
+    --volume="${project_directory}/lib/libopen-space-toolkit-physics.so:/opt/conda/lib/python3.6/site-packages/OpenSpaceToolkit/Physics/libopen-space-toolkit-physics.so:ro" \
+    --volume="${project_directory}/lib/libopen-space-toolkit-physics.so.0:/opt/conda/lib/python3.6/site-packages/OpenSpaceToolkit/Physics/libopen-space-toolkit-physics.so.0:ro" \
+    --volume="${project_directory}/lib/OpenSpaceToolkitPhysicsPy.so:/opt/conda/lib/python3.6/site-packages/OpenSpaceToolkit/Physics/OpenSpaceToolkitPhysicsPy.so:ro" \
+    --volume="${project_directory}/bindings/python/docs:/home/jovyan/open-space-toolkit/physics/docs:ro" \
+    --volume="${project_directory}/bindings/python/test:/home/jovyan/open-space-toolkit/physics/test:ro" \
+    --volume="${project_directory}/share:/home/jovyan/open-space-toolkit/physics/data" \
     ${image_repository}:${image_tag} \
     ${@}
 

@@ -2,7 +2,7 @@
 
 ################################################################################################################################################################
 
-# @project        Library ▸ Physics
+# @project        Open Space Toolkit ▸ Physics
 # @file           tools/development/start.sh
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        Apache License 2.0
@@ -24,34 +24,34 @@ if [[ ! -z ${1} ]] && [[ ${1} == "--link" ]]; then
     options=""
     command=""
 
-    # Library ▸ Core
+    # Open Space Toolkit ▸ Core
 
-    if [[ -z ${library_core_directory} ]]; then
-        echo "Variable [library_core_directory] is undefined."
+    if [[ -z ${open_space_toolkit_core_directory} ]]; then
+        echo "Variable [open_space_toolkit_core_directory] is undefined."
         exit 1
     fi
 
-    if [[ ! -d ${library_core_directory} ]]; then
-        echo "Library ▸ Core directory [${library_core_directory}] cannot be found."
+    if [[ ! -d ${open_space_toolkit_core_directory} ]]; then
+        echo "Open Space Toolkit ▸ Core directory [${open_space_toolkit_core_directory}] cannot be found."
         exit 1
     fi
 
     options="${options} \
-    --volume=${library_core_directory}:/mnt/library-core:ro"
+    --volume=${open_space_toolkit_core_directory}:/mnt/open-space-toolkit-core:ro"
 
     command=" \
-    rm -rf /usr/local/include/Library/Core; \
-    rm -f /usr/local/lib/liblibrary-core.so*; \
-    cp -as /mnt/library-core/include/Library/Core /usr/local/include/Library/Core; \
-    cp -as /mnt/library-core/src/Library/Core/* /usr/local/include/Library/Core/; \
-    ln -s /mnt/library-core/lib/liblibrary-core.so /usr/local/lib/; \
-    ln -s /mnt/library-core/lib/liblibrary-core.so.0 /usr/local/lib/;"
+    rm -rf /usr/local/include/OpenSpaceToolkit/Core; \
+    rm -f /usr/local/lib/libopen-space-toolkit-core.so*; \
+    cp -as /mnt/open-space-toolkit-core/include/OpenSpaceToolkit/Core /usr/local/include/OpenSpaceToolkit/Core; \
+    cp -as /mnt/open-space-toolkit-core/src/OpenSpaceToolkit/Core/* /usr/local/include/OpenSpaceToolkit/Core/; \
+    ln -s /mnt/open-space-toolkit-core/lib/libopen-space-toolkit-core.so /usr/local/lib/; \
+    ln -s /mnt/open-space-toolkit-core/lib/libopen-space-toolkit-core.so.0 /usr/local/lib/;"
 
-    # Library ▸ I/O
+    # Open Space Toolkit ▸ I/O
 
     # TBI
 
-    # Library ▸ Mathematics
+    # Open Space Toolkit ▸ Mathematics
 
     # TBI
 

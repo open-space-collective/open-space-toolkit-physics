@@ -1,13 +1,13 @@
 ################################################################################################################################################################
 
-# @project        Library ▸ Physics
+# @project        Open Space Toolkit ▸ Physics
 # @file           Makefile
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        Apache License 2.0
 
 ################################################################################################################################################################
 
-export project_name := library-physics
+export project_name := open-space-toolkit-physics
 export project_version := $(shell git describe --tags --always)
 export project_directory := $(shell git rev-parse --show-toplevel)
 
@@ -24,9 +24,9 @@ export docker_jupyter_notebook_image_repository := $(docker_image_repository)-ju
 export jupyter_notebook_image_repository := jupyter/scipy-notebook:latest
 export jupyter_notebook_port := 9004
 
-export library_core_directory := $(project_directory)/../library-core
-export library_io_directory := $(project_directory)/../library-io
-export library_mathematics_directory := $(project_directory)/../library-mathematics
+export open_space_toolkit_core_directory := $(project_directory)/../open-space-toolkit-core
+export open_space_toolkit_io_directory := $(project_directory)/../open-space-toolkit-io
+export open_space_toolkit_mathematics_directory := $(project_directory)/../open-space-toolkit-mathematics
 
 export LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY := /app/share/coordinate/frame/providers/iers
 export LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY := /app/share/environment/ephemerides/spice
@@ -67,8 +67,8 @@ _pull-development-image:
 
 	@ echo "Pulling [$(target)] development image..."
 
-	docker pull --quiet $(docker_development_image_repository):$(docker_image_version)-$(target) || true
-	docker pull --quiet $(docker_development_image_repository):latest-$(target) || true
+	docker pull $(docker_development_image_repository):$(docker_image_version)-$(target) || true
+	docker pull $(docker_development_image_repository):latest-$(target) || true
 
 build: build-images
 
@@ -125,8 +125,8 @@ _pull-release-image-cpp:
 
 	@ echo "Pull [$(target)] C++ release image..."
 
-	docker pull --quiet $(docker_image_repository):$(docker_image_version)-$(target) || true
-	docker pull --quiet $(docker_image_repository):latest-$(target) || true
+	docker pull $(docker_image_repository):$(docker_image_version)-$(target) || true
+	docker pull $(docker_image_repository):latest-$(target) || true
 
 build-release-images:
 
@@ -167,8 +167,8 @@ _pull-release-image-python: _pull-development-image
 
 	@ echo "Pulling [$(target)] Python release image..."
 
-	docker pull --quiet $(docker_release_image_python_repository):$(docker_image_version)-$(target) || true
-	docker pull --quiet $(docker_release_image_python_repository):latest-$(target) || true
+	docker pull $(docker_release_image_python_repository):$(docker_image_version)-$(target) || true
+	docker pull $(docker_release_image_python_repository):latest-$(target) || true
 
 build-release-image-python-debian: target := debian
 build-release-image-python-fedora: target := fedora
@@ -192,8 +192,8 @@ pull-jupyter-notebook-image:
 
 	@ echo "Pulling Jupyter Notebook image..."
 
-	docker pull --quiet $(docker_jupyter_notebook_image_repository):$(docker_image_version) || true
-	docker pull --quiet $(docker_jupyter_notebook_image_repository):latest || true
+	docker pull $(docker_jupyter_notebook_image_repository):$(docker_image_version) || true
+	docker pull $(docker_jupyter_notebook_image_repository):latest || true
 
 build-jupyter-notebook-image: pull-jupyter-notebook-image
 
@@ -470,7 +470,7 @@ _test-unit-python: _build-release-image-python
 
 	docker run \
 	--rm \
-	--workdir=/usr/local/lib/python3.7/site-packages/Library/Physics \
+	--workdir=/usr/local/lib/python3.7/site-packages/ostk/physics \
 	--entrypoint="" \
 	--volume="$(project_directory)/share:/app/share" \
 	--env=LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY \

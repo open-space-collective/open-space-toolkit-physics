@@ -1,6 +1,6 @@
 ################################################################################################################################################################
 
-# @project        Library ▸ Physics
+# @project        Open Space Toolkit ▸ Physics
 # @file           bindings/python/CMakeLists.txt
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        Apache License 2.0
@@ -9,10 +9,12 @@
 
 ## Project Properties
 
-SET (PROJECT_NAME "LibraryPhysicsPy")
-SET (PROJECT_DESCRIPTION "Python bindings for Library / Physics.")
-SET (PROJECT_PACKAGE_NAME "LibraryPhysicsPy")
-SET (PROJECT_PATH "Library/Physics")
+SET (PROJECT_NAME "OpenSpaceToolkitPhysicsPy")
+SET (PROJECT_DESCRIPTION "Python bindings for Open Space Toolkit / Physics.")
+SET (PROJECT_PACKAGE_NAME "OpenSpaceToolkitPhysicsPy")
+SET (PROJECT_GROUP "ostk")
+SET (PROJECT_SUBGROUP "physics")
+SET (PROJECT_PATH "${PROJECT_GROUP}/${PROJECT_SUBGROUP}")
 SET (PROJECT_LICENSE "Apache License 2.0")
 SET (PROJECT_VENDOR_ID "com.bremond.lucas")
 SET (PROJECT_VENDOR_NAME "Lucas Brémond")
@@ -121,7 +123,7 @@ SET_TARGET_PROPERTIES ( ${LIBRARY_TARGET} PROPERTIES
                         INSTALL_RPATH "$ORIGIN/../lib:$ORIGIN/")
 
 INSTALL (TARGETS ${LIBRARY_TARGET} DESTINATION "${INSTALL_LIB}/${PROJECT_PATH}" COMPONENT "python")
-INSTALL (FILES "${PROJECT_SOURCE_DIR}/tools/python/Library/__init__.py" DESTINATION "${INSTALL_LIB}/Library" COMPONENT "python")
+INSTALL (FILES "${PROJECT_SOURCE_DIR}/tools/python/${PROJECT_GROUP}/__init__.py" DESTINATION "${INSTALL_LIB}/${PROJECT_GROUP}" COMPONENT "python")
 INSTALL (FILES "${PROJECT_SOURCE_DIR}/tools/python/${PROJECT_PATH}/__init__.py" DESTINATION "${INSTALL_LIB}/${PROJECT_PATH}" COMPONENT "python")
 
 ################################################################################################################################################################
@@ -147,12 +149,12 @@ CONFIGURE_FILE (${SETUP_PY_IN} ${SETUP_PY})
 ADD_CUSTOM_COMMAND (OUTPUT ${OUTPUT}
                     COMMAND mkdir -p "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_PATH}"
                     COMMAND cp -r "${CMAKE_CURRENT_SOURCE_DIR}/test" "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_PATH}/test"
-                    COMMAND cp "${CMAKE_CURRENT_SOURCE_DIR}/tools/python/Library/__init__.py" "${CMAKE_CURRENT_BINARY_DIR}/Library/__init__.py"
+                    COMMAND cp "${CMAKE_CURRENT_SOURCE_DIR}/tools/python/${PROJECT_GROUP}/__init__.py" "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_GROUP}/__init__.py"
                     COMMAND cp "${CMAKE_CURRENT_SOURCE_DIR}/tools/python/${PROJECT_PATH}/__init__.py" "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_PATH}/__init__.py"
                     COMMAND cp "/usr/local/lib/libboost_${PYTHON_VERSION}.so.${BOOST_VERSION}.0" "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_PATH}/libboost_${PYTHON_VERSION}.so.${BOOST_VERSION}.0"
                     COMMAND cp "/usr/local/lib/libboost_numpy37.so.${BOOST_VERSION}.0" "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_PATH}/libboost_numpy37.so.${BOOST_VERSION}.0"
-                    COMMAND cp "${CMAKE_SOURCE_DIR}/lib/${SHARED_LIBRARY_TARGET}" "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_PATH}/liblibrary-physics.so.0"
-                    COMMAND cp "${CMAKE_SOURCE_DIR}/lib/${LIBRARY_TARGET}" "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_PATH}/LibraryPhysicsPy.so"
+                    COMMAND cp "${CMAKE_SOURCE_DIR}/lib/${SHARED_LIBRARY_TARGET}" "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_PATH}/libopen-space-toolkit-physics.so.0"
+                    COMMAND cp "${CMAKE_SOURCE_DIR}/lib/${LIBRARY_TARGET}" "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_PATH}/${LIBRARY_TARGET}"
                     COMMAND ${PYTHON} ${SETUP_PY} bdist_wheel
                     COMMAND ${CMAKE_COMMAND} -E touch ${OUTPUT}
                     DEPENDS ${DEPS})

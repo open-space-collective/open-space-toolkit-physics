@@ -1,6 +1,6 @@
 ################################################################################################################################################################
 
-# @project        Library ▸ Physics
+# @project        Open Space Toolkit ▸ Physics
 # @file           bindings/python/test/time/test_date_time.py
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        Apache License 2.0
@@ -10,9 +10,9 @@
 import datetime
 import pytest
 
-from Library.Physics.Time import Date
-from Library.Physics.Time import Time
-from Library.Physics.Time import DateTime
+from ostk.physics.time import Date
+from ostk.physics.time import Time
+from ostk.physics.time import DateTime
 
 ################################################################################################################################################################
 

@@ -2,7 +2,7 @@
 
 ################################################################################################################################################################
 
-# @project        Library ▸ Physics
+# @project        Open Space Toolkit ▸ Physics
 # @file           tools/testing/python/python-3.6/run.sh
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        Apache License 2.0
@@ -86,11 +86,11 @@ run_container ()
     -it \
     --rm \
     --env-file="${script_directory}/.env" \
-    --volume="${project_directory}/lib/liblibrary-physics.so:/usr/local/lib/python3.6/site-packages/Library/Physics/liblibrary-physics.so:ro" \
-    --volume="${project_directory}/lib/liblibrary-physics.so.0:/usr/local/lib/python3.6/site-packages/Library/Physics/liblibrary-physics.so.0:ro" \
-    --volume="${project_directory}/lib/LibraryPhysicsPy.so:/usr/local/lib/python3.6/site-packages/Library/Physics/LibraryPhysicsPy.so:ro" \
-    --volume="${project_directory}/bindings/python/docs:/library/physics/docs:ro" \
-    --volume="${project_directory}/bindings/python/test:/library/physics/test:ro" \
+    --volume="${project_directory}/lib/libopen-space-toolkit-physics.so:/usr/local/lib/python3.6/site-packages/OpenSpaceToolkit/Physics/libopen-space-toolkit-physics.so:ro" \
+    --volume="${project_directory}/lib/libopen-space-toolkit-physics.so.0:/usr/local/lib/python3.6/site-packages/OpenSpaceToolkit/Physics/libopen-space-toolkit-physics.so.0:ro" \
+    --volume="${project_directory}/lib/OpenSpaceToolkitPhysicsPy.so:/usr/local/lib/python3.6/site-packages/OpenSpaceToolkit/Physics/OpenSpaceToolkitPhysicsPy.so:ro" \
+    --volume="${project_directory}/bindings/python/docs:/open-space-toolkit/physics/docs:ro" \
+    --volume="${project_directory}/bindings/python/test:/open-space-toolkit/physics/test:ro" \
     ${image_repository}:${image_tag} \
     ${@}
 

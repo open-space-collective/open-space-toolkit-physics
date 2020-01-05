@@ -1,6 +1,6 @@
 ################################################################################################################################################################
 
-# @project        Library ▸ Physics
+# @project        Open Space Toolkit ▸ Physics
 # @file           bindings/python/test/test_environment.py
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        Apache License 2.0
@@ -9,10 +9,10 @@
 
 import pytest
 
-from Library.Physics.Time import Scale
-from Library.Physics.Time import Instant
-from Library.Physics.Time import DateTime
-from Library.Physics import Environment
+from ostk.physics.time import Scale
+from ostk.physics.time import Instant
+from ostk.physics.time import DateTime
+from ostk.physics import Environment
 
 ################################################################################################################################################################
 

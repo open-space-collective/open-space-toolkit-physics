@@ -1,0 +1,29 @@
+################################################################################################################################################################
+
+# @project        Open Space Toolkit ▸ Physics
+# @file           tools/cmake/OpenSpaceToolkitPhysicsConfig.cmake.in
+# @author         Lucas Brémond <lucas@loftorbital.com>
+# @license        Apache License 2.0
+
+################################################################################################################################################################
+
+SET (OpenSpaceToolkitPhysics_ROOT_DIR ${OpenSpaceToolkitPhysics_ROOT_DIR} @CMAKE_INSTALL_PREFIX@)
+
+FIND_PATH (OpenSpaceToolkitPhysics_INCLUDE_DIR "OpenSpaceToolkit/Physics/Units.hpp" PATHS ${OpenSpaceToolkitPhysics_ROOT_DIR} PATH_SUFFIXES "include" NO_DEFAULT_PATH)
+FIND_LIBRARY (OpenSpaceToolkitPhysics_LIBRARY NAMES "libopen-space-toolkit-physics.so" PATHS ${OpenSpaceToolkitPhysics_ROOT_DIR} PATH_SUFFIXES "lib" NO_DEFAULT_PATH)
+
+# MESSAGE (STATUS "OpenSpaceToolkitPhysics_ROOT_DIR = ${OpenSpaceToolkitPhysics_ROOT_DIR}")
+# MESSAGE (STATUS "OpenSpaceToolkitPhysics_INCLUDE_DIR = ${OpenSpaceToolkitPhysics_INCLUDE_DIR}")
+# MESSAGE (STATUS "OpenSpaceToolkitPhysics_LIBRARY = ${OpenSpaceToolkitPhysics_LIBRARY}")
+# MESSAGE (STATUS "OpenSpaceToolkitPhysics_FIND_VERSION = ${OpenSpaceToolkitPhysics_FIND_VERSION}")
+
+IF (OpenSpaceToolkitPhysics_INCLUDE_DIR)
+
+    SET (OpenSpaceToolkitPhysics_INCLUDE_DIRS ${OpenSpaceToolkitPhysics_INCLUDE_DIR} ${OpenSpaceToolkitPhysics_INCLUDE_DIR}/OpenSpaceToolkit/Physics)
+    SET (OpenSpaceToolkitPhysics_LIBRARIES ${OpenSpaceToolkitPhysics_LIBRARY})
+
+    SET (OpenSpaceToolkitPhysics_FOUND TRUE)
+
+ENDIF ()
+
+################################################################################################################################################################

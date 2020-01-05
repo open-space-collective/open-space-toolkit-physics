@@ -1,11 +1,11 @@
 {
-    "name": "Library Physics",
+    "name": "Open Space Toolkit Physics",
     "extensions": [
         "ms-vscode.cpptools",
         "ms-python.python",
         "mhutchie.git-graph"
     ],
-    "image": "openspacecollective/library-physics-development:latest-debian",
+    "image": "openspacecollective/open-space-toolkit-physics-development:latest-debian",
 	"settings": {
 		"terminal.integrated.shell.linux": "/bin/bash"
 	},

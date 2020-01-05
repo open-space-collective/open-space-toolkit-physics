@@ -1,6 +1,6 @@
 ################################################################################################################################################################
 
-# @project        Library ▸ Physics
+# @project        Open Space Toolkit ▸ Physics
 # @file           bindings/python/test/time/test_scale.py
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        Apache License 2.0
@@ -9,7 +9,7 @@
 
 import pytest
 
-from Library.Physics.Time import Scale
+from ostk.physics.time import Scale
 
 ################################################################################################################################################################
 

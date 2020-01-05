@@ -1,6 +1,6 @@
 ################################################################################################################################################################
 
-# @project        Library ▸ Physics
+# @project        Open Space Toolkit ▸ Physics
 # @file           CMakeLists.txt
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        Apache License 2.0
@@ -9,10 +9,10 @@
 
 ## Project Properties
 
-SET (PROJECT_NAME "LibraryPhysics")
+SET (PROJECT_NAME "OpenSpaceToolkitPhysics")
 SET (PROJECT_DESCRIPTION "Physics library.")
-SET (PROJECT_PATH "Library/Physics")
-SET (PROJECT_PACKAGE_NAME "library-physics")
+SET (PROJECT_PATH "OpenSpaceToolkit/Physics")
+SET (PROJECT_PACKAGE_NAME "open-space-toolkit-physics")
 SET (PROJECT_LICENSE "Apache License 2.0")
 SET (PROJECT_VENDOR_ID "org.open-space-collective")
 SET (PROJECT_VENDOR_NAME "Open Space Collective")
@@ -287,33 +287,33 @@ ELSE ()
     MESSAGE (SEND_ERROR "[GeographicLib] not found.")
 ENDIF ()
 
-### Library ▸ Core [0.2.x]
+### Open Space Toolkit ▸ Core [0.2.x]
 
-FIND_PACKAGE ("LibraryCore" "0.2" REQUIRED)
+FIND_PACKAGE ("OpenSpaceToolkitCore" "0.2" REQUIRED)
 
-IF (NOT LibraryCore_FOUND)
+IF (NOT OpenSpaceToolkitCore_FOUND)
 
-    MESSAGE (SEND_ERROR "[Library ▸ Core] not found.")
-
-ENDIF ()
-
-### Library ▸ I/O [0.2.x]
-
-FIND_PACKAGE ("LibraryIO" "0.2" REQUIRED)
-
-IF (NOT LibraryIO_FOUND)
-
-    MESSAGE (SEND_ERROR "[Library ▸ I/O] not found.")
+    MESSAGE (SEND_ERROR "[Open Space Toolkit ▸ Core] not found.")
 
 ENDIF ()
 
-### Library ▸ Mathematics [0.2.x]
+### Open Space Toolkit ▸ I/O [0.2.x]
 
-FIND_PACKAGE ("LibraryMathematics" "0.2" REQUIRED)
+FIND_PACKAGE ("OpenSpaceToolkitIO" "0.2" REQUIRED)
 
-IF (NOT LibraryMathematics_FOUND)
+IF (NOT OpenSpaceToolkitIO_FOUND)
 
-    MESSAGE (SEND_ERROR "[Library ▸ Mathematics] not found.")
+    MESSAGE (SEND_ERROR "[Open Space Toolkit ▸ I/O] not found.")
+
+ENDIF ()
+
+### Open Space Toolkit ▸ Mathematics [0.2.x]
+
+FIND_PACKAGE ("OpenSpaceToolkitMathematics" "0.2" REQUIRED)
+
+IF (NOT OpenSpaceToolkitMathematics_FOUND)
+
+    MESSAGE (SEND_ERROR "[Open Space Toolkit ▸ Mathematics] not found.")
 
 ENDIF ()
 
@@ -357,9 +357,9 @@ IF (BUILD_SHARED_LIBRARY)
     TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} ${SOFA_LIBRARIES})
     TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} ${SPICEToolkit_LIBRARIES})
     TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} ${GEOGRAPHICLIB_LIBRARIES})
-    TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} ${LibraryCore_LIBRARIES})
-    TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} ${LibraryIO_LIBRARIES})
-    TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} ${LibraryMathematics_LIBRARIES})
+    TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} ${OpenSpaceToolkitCore_LIBRARIES})
+    TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} ${OpenSpaceToolkitIO_LIBRARIES})
+    TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} ${OpenSpaceToolkitMathematics_LIBRARIES})
 
     SET_TARGET_PROPERTIES (${SHARED_LIBRARY_TARGET} PROPERTIES VERSION ${PROJECT_VERSION_STRING} SOVERSION ${PROJECT_VERSION_MAJOR} OUTPUT_NAME ${SHARED_LIBRARY_NAME} CLEAN_DIRECT_OUTPUT 1 INSTALL_RPATH "$ORIGIN/../lib:$ORIGIN/")
 
@@ -389,9 +389,9 @@ IF (BUILD_STATIC_LIBRARY)
     TARGET_LINK_LIBRARIES (${STATIC_LIBRARY_TARGET} ${SOFA_LIBRARIES})
     TARGET_LINK_LIBRARIES (${STATIC_LIBRARY_TARGET} ${SPICEToolkit_LIBRARIES})
     TARGET_LINK_LIBRARIES (${STATIC_LIBRARY_TARGET} ${GEOGRAPHICLIB_LIBRARIES})
-    TARGET_LINK_LIBRARIES (${STATIC_LIBRARY_TARGET} ${LibraryCore_LIBRARIES})
-    TARGET_LINK_LIBRARIES (${STATIC_LIBRARY_TARGET} ${LibraryIO_LIBRARIES})
-    TARGET_LINK_LIBRARIES (${STATIC_LIBRARY_TARGET} ${LibraryMathematics_LIBRARIES})
+    TARGET_LINK_LIBRARIES (${STATIC_LIBRARY_TARGET} ${OpenSpaceToolkitCore_LIBRARIES})
+    TARGET_LINK_LIBRARIES (${STATIC_LIBRARY_TARGET} ${OpenSpaceToolkitIO_LIBRARIES})
+    TARGET_LINK_LIBRARIES (${STATIC_LIBRARY_TARGET} ${OpenSpaceToolkitMathematics_LIBRARIES})
 
     SET_TARGET_PROPERTIES (${STATIC_LIBRARY_TARGET} PROPERTIES VERSION ${PROJECT_VERSION_STRING} OUTPUT_NAME ${SHARED_LIBRARY_NAME} CLEAN_DIRECT_OUTPUT 1 INSTALL_RPATH "$ORIGIN/../lib:$ORIGIN/")
 

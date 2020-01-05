@@ -1,6 +1,6 @@
 ################################################################################################################################################################
 
-# @project        Library ▸ Physics
+# @project        Open Space Toolkit ▸ Physics
 # @file           docker/release/debian/Dockerfile
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        Apache License 2.0
@@ -9,7 +9,7 @@
 
 ARG VERSION
 
-FROM openspacecollective/library-physics-development:${VERSION}-debian as cpp-builder
+FROM openspacecollective/open-space-toolkit-physics-development:${VERSION}-debian as cpp-builder
 
 RUN mkdir -p /app/bin /app/build /app/lib
 
@@ -38,17 +38,17 @@ FROM debian:buster as cpp-release
 
 ENV LD_LIBRARY_PATH /usr/local/lib
 
-ENV LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY "/usr/local/share/Library/Physics/coordinate/frame/providers/iers"
-ENV LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY "/usr/local/share/Library/Physics/environment/ephemerides/spice"
-ENV LIBRARY_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY "/usr/local/share/Library/Physics/environment/gravitational/earth"
-ENV LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY "/usr/local/share/Library/Physics/environment/magnetic/earth"
+ENV LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/coordinate/frame/providers/iers"
+ENV LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/environment/ephemerides/spice"
+ENV LIBRARY_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/environment/gravitational/earth"
+ENV LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/environment/magnetic/earth"
 
-COPY --from=cpp-builder /usr/local/include/Library /usr/local/include/Library
-COPY --from=cpp-builder /usr/local/lib/liblibrary-physics.* /usr/local/lib/
-COPY --from=cpp-builder /usr/local/share/Library /usr/local/share/Library
-COPY --from=cpp-builder /usr/local/test/Library /usr/local/test/Library
+COPY --from=cpp-builder /usr/local/include/OpenSpaceToolkit /usr/local/include/OpenSpaceToolkit
+COPY --from=cpp-builder /usr/local/lib/libopen-space-toolkit-physics.* /usr/local/lib/
+COPY --from=cpp-builder /usr/local/share/OpenSpaceToolkit /usr/local/share/OpenSpaceToolkit
+COPY --from=cpp-builder /usr/local/test/OpenSpaceToolkit /usr/local/test/OpenSpaceToolkit
 
-ENTRYPOINT ["/usr/local/test/Library/Physics/library-physics.test"]
+ENTRYPOINT ["/usr/local/test/OpenSpaceToolkit/Physics/open-space-toolkit-physics.test"]
 
 ################################################################################################################################################################
 
@@ -70,12 +70,12 @@ RUN apt-get update -y \
 
 RUN pip install ipython numpy
 
-ENV LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY "/usr/local/share/Library/Physics/coordinate/frame/providers/iers"
-ENV LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY "/usr/local/share/Library/Physics/environment/ephemerides/spice"
-ENV LIBRARY_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY "/usr/local/share/Library/Physics/environment/gravitational/earth"
-ENV LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY "/usr/local/share/Library/Physics/environment/magnetic/earth"
+ENV LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/coordinate/frame/providers/iers"
+ENV LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/environment/ephemerides/spice"
+ENV LIBRARY_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/environment/gravitational/earth"
+ENV LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/environment/magnetic/earth"
 
-COPY --from=python-builder /usr/local/lib/python3.7/site-packages/Library /usr/local/lib/python3.7/site-packages/Library
+COPY --from=python-builder /usr/local/lib/python3.7/site-packages/ostk /usr/local/lib/python3.7/site-packages/ostk
 
 ENTRYPOINT ["ipython"]
 

@@ -1,6 +1,6 @@
 ################################################################################################################################################################
 
-# @project        Library ▸ Physics
+# @project        Open Space Toolkit ▸ Physics
 # @file           bindings/python/tools/python/setup.py.in
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        Apache License 2.0
@@ -16,26 +16,26 @@ with open('${CMAKE_CURRENT_SOURCE_DIR}/requirements.txt', 'r') as f:
     requirements = f.read().splitlines()
 
 setuptools.setup(
-    name = 'LibraryPhysicsPy',
+    name = 'open-space-toolkit-physics',
     version = '${PROJECT_VERSION_STRING}',
     author = 'Open Space Collective',
     author_email = 'contact@open-space-collective.org',
     description = 'Physical units, time, reference frames, environment modeling.',
     long_description = long_description,
     long_description_content_type = 'text/markdown',
-    url = 'https://github.com/open-space-collective/library-physics',
+    url = 'https://github.com/open-space-collective/open-space-toolkit-physics',
     classifiers = (
         'Development Status :: 3 - Alpha',
         'Programming Language :: Python :: 3',
         'License :: OSI Approved :: Apache Software License',
         'Operating System :: POSIX :: Linux'
     ),
-    keywords = 'open-space-collective library physics',
+    keywords = 'open-space-collective open-space-toolkit physics',
     packages = setuptools.find_packages(),
     package_data = {
         '': [
-            '${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_PATH}/LibraryPhysicsPy.so',
-            '${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_PATH}/liblibrary-physics.so.0',
+            '${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_PATH}/${LIBRARY_TARGET}',
+            '${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_PATH}/libopen-space-toolkit-physics.so.0',
             '${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_PATH}/libboost_numpy37.so.1.69.0'
         ]
     },
