@@ -1,13 +1,13 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           LibraryPhysicsPy/Units/ElectricCurrent.cpp
+/// @file           OpenSpaceToolkitPhysicsPy/Units/ElectricCurrent.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <LibraryPhysicsPy/Utilities/IterableConverter.hpp>
+#include <OpenSpaceToolkitPhysicsPy/Utilities/IterableConverter.hpp>
 
 #include <OpenSpaceToolkit/Physics/Units/ElectricCurrent.hpp>
 
@@ -15,10 +15,10 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (LibraryPhysicsPy_Units_ElectricCurrent_toString_overloads, ostk::physics::units::ElectricCurrent::toString, 0, 1)
-BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (LibraryPhysicsPy_Units_ElectricCurrent_Interval_toString_overloads, ostk::math::obj::Interval<ostk::physics::units::ElectricCurrent>::toString, 0, 1)
+BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (OpenSpaceToolkitPhysicsPy_Units_ElectricCurrent_toString_overloads, ostk::physics::units::ElectricCurrent::toString, 0, 1)
+BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (OpenSpaceToolkitPhysicsPy_Units_ElectricCurrent_Interval_toString_overloads, ostk::math::obj::Interval<ostk::physics::units::ElectricCurrent>::toString, 0, 1)
 
-inline void                     LibraryPhysicsPy_Units_ElectricCurrent      ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Units_ElectricCurrent      ( )
 {
 
     using namespace boost::python ;
@@ -58,7 +58,7 @@ inline void                     LibraryPhysicsPy_Units_ElectricCurrent      ( )
         .def("getUnit", &ElectricCurrent::getUnit)
         .def("inUnit", &ElectricCurrent::in)
         .def("inAmperes", &ElectricCurrent::inAmperes)
-        .def("toString", &ElectricCurrent::toString, LibraryPhysicsPy_Units_ElectricCurrent_toString_overloads())
+        .def("toString", &ElectricCurrent::toString, OpenSpaceToolkitPhysicsPy_Units_ElectricCurrent_toString_overloads())
 
         .def("Undefined", &ElectricCurrent::Undefined).staticmethod("Undefined")
         .def("Amperes", &ElectricCurrent::Amperes).staticmethod("Amperes")

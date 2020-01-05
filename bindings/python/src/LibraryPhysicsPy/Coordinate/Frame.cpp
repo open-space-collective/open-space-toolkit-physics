@@ -1,20 +1,20 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           LibraryPhysicsPy/Coordinate/Frame.cpp
+/// @file           OpenSpaceToolkitPhysicsPy/Coordinate/Frame.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <LibraryPhysicsPy/Coordinate/Frame/Providers.cpp>
-#include <LibraryPhysicsPy/Coordinate/Frame/Provider.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Providers.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Provider.cpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     LibraryPhysicsPy_Coordinate_Frame           ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame           ( )
 {
 
     using namespace boost::python ;
@@ -70,8 +70,8 @@ inline void                     LibraryPhysicsPy_Coordinate_Frame           ( )
 
     implicitly_convertible<Shared<Frame>, Shared<const Frame>>() ;
 
-    LibraryPhysicsPy_Coordinate_Frame_Provider() ;
-    LibraryPhysicsPy_Coordinate_Frame_Providers() ;
+    OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider() ;
+    OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers() ;
 
 }
 

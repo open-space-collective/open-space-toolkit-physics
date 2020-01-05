@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           LibraryPhysicsPy/Units/Derived.cpp
+/// @file           OpenSpaceToolkitPhysicsPy/Units/Derived.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -11,9 +11,9 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (LibraryPhysicsPy_Units_Derived_toString_overloads, ostk::physics::units::Derived::toString, 0, 1)
+BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (OpenSpaceToolkitPhysicsPy_Units_Derived_toString_overloads, ostk::physics::units::Derived::toString, 0, 1)
 
-inline void                     LibraryPhysicsPy_Units_Derived              ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Units_Derived              ( )
 {
 
     using namespace boost::python ;
@@ -40,7 +40,7 @@ inline void                     LibraryPhysicsPy_Units_Derived              ( )
 
         .def("getUnit", &Derived::getUnit)
         .def("inUnit", &Derived::in)
-        .def("toString", &Derived::toString, LibraryPhysicsPy_Units_Derived_toString_overloads())
+        .def("toString", &Derived::toString, OpenSpaceToolkitPhysicsPy_Units_Derived_toString_overloads())
 
         .def("Undefined", &Derived::Undefined).staticmethod("Undefined")
         // .def("Parse", &Derived::Parse).staticmethod("Undefined")

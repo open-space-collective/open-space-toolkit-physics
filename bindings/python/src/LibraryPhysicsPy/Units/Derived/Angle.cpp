@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           LibraryPhysicsPy/Units/Derived/Angle.cpp
+/// @file           OpenSpaceToolkitPhysicsPy/Units/Derived/Angle.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -11,9 +11,9 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (LibraryPhysicsPy_Units_Angle_toString_overloads, ostk::physics::units::Angle::toString, 0, 1)
+BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (OpenSpaceToolkitPhysicsPy_Units_Angle_toString_overloads, ostk::physics::units::Angle::toString, 0, 1)
 
-inline void                     LibraryPhysicsPy_Units_Derived_Angle        ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Units_Derived_Angle        ( )
 {
 
     using namespace boost::python ;
@@ -56,7 +56,7 @@ inline void                     LibraryPhysicsPy_Units_Derived_Angle        ( )
         .def("inArcminutes", +[] (const Angle& anAngle) -> Real { return anAngle.inArcminutes() ; })
         .def("inArcseconds", +[] (const Angle& anAngle) -> Real { return anAngle.inArcseconds() ; })
         .def("inRevolutions", &Angle::inRevolutions)
-        .def("toString", &Angle::toString, LibraryPhysicsPy_Units_Angle_toString_overloads())
+        .def("toString", &Angle::toString, OpenSpaceToolkitPhysicsPy_Units_Angle_toString_overloads())
 
         .def("Undefined", &Angle::Undefined).staticmethod("Undefined")
         .def("Zero", &Angle::Zero).staticmethod("Zero")

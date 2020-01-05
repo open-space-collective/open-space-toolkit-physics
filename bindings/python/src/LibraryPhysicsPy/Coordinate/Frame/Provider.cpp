@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           LibraryPhysicsPy/Coordinate/Frame/Provider.cpp
+/// @file           OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Provider.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -11,7 +11,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     LibraryPhysicsPy_Coordinate_Frame_Provider ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider ( )
 {
 
     using namespace boost::python ;

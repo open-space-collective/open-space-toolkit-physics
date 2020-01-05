@@ -1,22 +1,22 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           LibraryPhysicsPy/Coordinate.cpp
+/// @file           OpenSpaceToolkitPhysicsPy/Coordinate.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <LibraryPhysicsPy/Coordinate/Axes.cpp>
-#include <LibraryPhysicsPy/Coordinate/Transform.cpp>
-#include <LibraryPhysicsPy/Coordinate/Frame.cpp>
-#include <LibraryPhysicsPy/Coordinate/Velocity.cpp>
-#include <LibraryPhysicsPy/Coordinate/Position.cpp>
-#include <LibraryPhysicsPy/Coordinate/Spherical.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Coordinate/Axes.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Coordinate/Transform.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Coordinate/Frame.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Coordinate/Velocity.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Coordinate/Position.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Coordinate/Spherical.cpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     LibraryPhysicsPy_Coordinate                      ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Coordinate                      ( )
 {
 
     boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("Library.Physics.Coordinate")))) ;
@@ -25,12 +25,12 @@ inline void                     LibraryPhysicsPy_Coordinate                     
 
     boost::python::scope scope = module ;
 
-    LibraryPhysicsPy_Coordinate_Spherical() ;
-    LibraryPhysicsPy_Coordinate_Position() ;
-    LibraryPhysicsPy_Coordinate_Velocity() ;
-    LibraryPhysicsPy_Coordinate_Frame() ;
-    LibraryPhysicsPy_Coordinate_Transform() ;
-    LibraryPhysicsPy_Coordinate_Axes() ;
+    OpenSpaceToolkitPhysicsPy_Coordinate_Spherical() ;
+    OpenSpaceToolkitPhysicsPy_Coordinate_Position() ;
+    OpenSpaceToolkitPhysicsPy_Coordinate_Velocity() ;
+    OpenSpaceToolkitPhysicsPy_Coordinate_Frame() ;
+    OpenSpaceToolkitPhysicsPy_Coordinate_Transform() ;
+    OpenSpaceToolkitPhysicsPy_Coordinate_Axes() ;
 
 }
 

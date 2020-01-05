@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           LibraryPhysicsPy/Coordinate/Velocity.cpp
+/// @file           OpenSpaceToolkitPhysicsPy/Coordinate/Velocity.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -11,9 +11,9 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (LibraryPhysicsPy_Coordinate_Velocity_toString_overloads, ostk::physics::coord::Velocity::toString, 0, 1)
+BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (OpenSpaceToolkitPhysicsPy_Coordinate_Velocity_toString_overloads, ostk::physics::coord::Velocity::toString, 0, 1)
 
-inline void                     LibraryPhysicsPy_Coordinate_Velocity        ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Velocity        ( )
 {
 
     using namespace boost::python ;
@@ -40,7 +40,7 @@ inline void                     LibraryPhysicsPy_Coordinate_Velocity        ( )
         .def("getUnit", &Velocity::getUnit)
         .def("inUnit", &Velocity::inUnit)
         .def("inFrame", &Velocity::inFrame)
-        .def("toString", &Velocity::toString, LibraryPhysicsPy_Coordinate_Velocity_toString_overloads())
+        .def("toString", &Velocity::toString, OpenSpaceToolkitPhysicsPy_Coordinate_Velocity_toString_overloads())
 
         .def("Undefined", &Velocity::Undefined).staticmethod("Undefined")
         .def("MetersPerSecond", &Velocity::MetersPerSecond).staticmethod("MetersPerSecond")

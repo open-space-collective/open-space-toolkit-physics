@@ -9,7 +9,7 @@
 
 ## Project Properties
 
-SET (PROJECT_NAME "LibraryPhysics")
+SET (PROJECT_NAME "OpenSpaceToolkitPhysics")
 SET (PROJECT_DESCRIPTION "Physics library.")
 SET (PROJECT_PATH "OpenSpaceToolkit/Physics")
 SET (PROJECT_PACKAGE_NAME "open-space-toolkit-physics")

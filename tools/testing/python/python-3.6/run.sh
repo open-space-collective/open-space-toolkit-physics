@@ -88,7 +88,7 @@ run_container ()
     --env-file="${script_directory}/.env" \
     --volume="${project_directory}/lib/libopen-space-toolkit-physics.so:/usr/local/lib/python3.6/site-packages/OpenSpaceToolkit/Physics/libopen-space-toolkit-physics.so:ro" \
     --volume="${project_directory}/lib/libopen-space-toolkit-physics.so.0:/usr/local/lib/python3.6/site-packages/OpenSpaceToolkit/Physics/libopen-space-toolkit-physics.so.0:ro" \
-    --volume="${project_directory}/lib/LibraryPhysicsPy.so:/usr/local/lib/python3.6/site-packages/OpenSpaceToolkit/Physics/LibraryPhysicsPy.so:ro" \
+    --volume="${project_directory}/lib/OpenSpaceToolkitPhysicsPy.so:/usr/local/lib/python3.6/site-packages/OpenSpaceToolkit/Physics/OpenSpaceToolkitPhysicsPy.so:ro" \
     --volume="${project_directory}/bindings/python/docs:/library/physics/docs:ro" \
     --volume="${project_directory}/bindings/python/test:/library/physics/test:ro" \
     ${image_repository}:${image_tag} \

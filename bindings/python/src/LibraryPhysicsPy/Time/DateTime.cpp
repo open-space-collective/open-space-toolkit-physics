@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           LibraryPhysicsPy/Time/DateTime.cpp
+/// @file           OpenSpaceToolkitPhysicsPy/Time/DateTime.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -102,7 +102,7 @@ struct PythonDatetimeFromDateTime
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     LibraryPhysicsPy_Time_DateTime              ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Time_DateTime              ( )
 {
 
     using namespace boost::python ;

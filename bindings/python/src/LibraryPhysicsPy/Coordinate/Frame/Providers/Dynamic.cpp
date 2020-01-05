@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           LibraryPhysicsPy/Coordinate/Frame/Providers/Dynamic.cpp
+/// @file           OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Providers/Dynamic.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -13,7 +13,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     LibraryPhysicsPy_Coordinate_Frame_Providers_Dynamic ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers_Dynamic ( )
 {
 
     using namespace boost::python ;

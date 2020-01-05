@@ -1,13 +1,13 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           LibraryPhysicsPy/Units/Length.cpp
+/// @file           OpenSpaceToolkitPhysicsPy/Units/Length.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <LibraryPhysicsPy/Utilities/IterableConverter.hpp>
+#include <OpenSpaceToolkitPhysicsPy/Utilities/IterableConverter.hpp>
 
 #include <OpenSpaceToolkit/Physics/Units/Length.hpp>
 
@@ -15,10 +15,10 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (LibraryPhysicsPy_Units_Length_toString_overloads, ostk::physics::units::Length::toString, 0, 1)
-BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (LibraryPhysicsPy_Units_Length_Interval_toString_overloads, ostk::math::obj::Interval<ostk::physics::units::Length>::toString, 0, 1)
+BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (OpenSpaceToolkitPhysicsPy_Units_Length_toString_overloads, ostk::physics::units::Length::toString, 0, 1)
+BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (OpenSpaceToolkitPhysicsPy_Units_Length_Interval_toString_overloads, ostk::math::obj::Interval<ostk::physics::units::Length>::toString, 0, 1)
 
-inline void                     LibraryPhysicsPy_Units_Length               ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Units_Length               ( )
 {
 
     using namespace boost::python ;
@@ -59,7 +59,7 @@ inline void                     LibraryPhysicsPy_Units_Length               ( )
         .def("inUnit", &Length::in)
         .def("inMeters", &Length::inMeters)
         .def("inKilometers", &Length::inKilometers)
-        .def("toString", &Length::toString, LibraryPhysicsPy_Units_Length_toString_overloads())
+        .def("toString", &Length::toString, OpenSpaceToolkitPhysicsPy_Units_Length_toString_overloads())
 
         .def("Undefined", &Length::Undefined).staticmethod("Undefined")
         .def("Millimeters", &Length::Millimeters).staticmethod("Millimeters")

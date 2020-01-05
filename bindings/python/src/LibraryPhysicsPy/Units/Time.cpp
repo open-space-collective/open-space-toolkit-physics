@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           LibraryPhysicsPy/Units/Time.cpp
+/// @file           OpenSpaceToolkitPhysicsPy/Units/Time.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -11,9 +11,9 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (LibraryPhysicsPy_Units_Time_toString_overloads, ostk::physics::units::Time::toString, 0, 1)
+BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (OpenSpaceToolkitPhysicsPy_Units_Time_toString_overloads, ostk::physics::units::Time::toString, 0, 1)
 
-inline void                     LibraryPhysicsPy_Units_Time               ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Units_Time               ( )
 {
 
     using namespace boost::python ;
@@ -50,7 +50,7 @@ inline void                     LibraryPhysicsPy_Units_Time               ( )
 
         .def("isDefined", &Time::isDefined)
 
-        .def("toString", &Time::toString, LibraryPhysicsPy_Units_Time_toString_overloads())
+        .def("toString", &Time::toString, OpenSpaceToolkitPhysicsPy_Units_Time_toString_overloads())
 
         .def("Undefined", &Time::Undefined).staticmethod("Undefined")
         .def("StringFromUnit", &Time::StringFromUnit).staticmethod("StringFromUnit")

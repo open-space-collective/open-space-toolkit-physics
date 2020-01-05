@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           LibraryPhysicsPy/Coordinate/Position.cpp
+/// @file           OpenSpaceToolkitPhysicsPy/Coordinate/Position.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -11,9 +11,9 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (LibraryPhysicsPy_Coordinate_Position_toString_overloads, ostk::physics::coord::Position::toString, 0, 1)
+BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (OpenSpaceToolkitPhysicsPy_Coordinate_Position_toString_overloads, ostk::physics::coord::Position::toString, 0, 1)
 
-inline void                     LibraryPhysicsPy_Coordinate_Position        ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Position        ( )
 {
 
     using namespace boost::python ;
@@ -42,7 +42,7 @@ inline void                     LibraryPhysicsPy_Coordinate_Position        ( )
         .def("inUnit", &Position::inUnit)
         .def("inMeters", &Position::inMeters)
         .def("inFrame", &Position::inFrame)
-        .def("toString", &Position::toString, LibraryPhysicsPy_Coordinate_Position_toString_overloads())
+        .def("toString", &Position::toString, OpenSpaceToolkitPhysicsPy_Coordinate_Position_toString_overloads())
 
         .def("Undefined", &Position::Undefined).staticmethod("Undefined")
         .def("Meters", &Position::Meters).staticmethod("Meters")

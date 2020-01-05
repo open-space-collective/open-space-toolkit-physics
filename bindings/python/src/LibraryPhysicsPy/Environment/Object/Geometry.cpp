@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           LibraryPhysicsPy/Environment/Object/Geometry.cpp
+/// @file           OpenSpaceToolkitPhysicsPy/Environment/Object/Geometry.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -23,7 +23,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     LibraryPhysicsPy_Environment_Object_Geometry ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Environment_Object_Geometry ( )
 {
 
     using namespace boost::python ;

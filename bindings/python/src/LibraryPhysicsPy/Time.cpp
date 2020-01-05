@@ -1,23 +1,23 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           LibraryPhysicsPy/Time.cpp
+/// @file           OpenSpaceToolkitPhysicsPy/Time.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <LibraryPhysicsPy/Time/Interval.cpp>
-#include <LibraryPhysicsPy/Time/Time.cpp>
-#include <LibraryPhysicsPy/Time/Date.cpp>
-#include <LibraryPhysicsPy/Time/DateTime.cpp>
-#include <LibraryPhysicsPy/Time/Duration.cpp>
-#include <LibraryPhysicsPy/Time/Instant.cpp>
-#include <LibraryPhysicsPy/Time/Scale.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Time/Interval.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Time/Time.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Time/Date.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Time/DateTime.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Time/Duration.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Time/Instant.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Time/Scale.cpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     LibraryPhysicsPy_Time                       ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Time                       ( )
 {
 
     boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("Library.Physics.Time")))) ;
@@ -26,13 +26,13 @@ inline void                     LibraryPhysicsPy_Time                       ( )
 
     boost::python::scope scope = module ;
 
-    LibraryPhysicsPy_Time_Scale() ;
-    LibraryPhysicsPy_Time_Instant() ;
-    LibraryPhysicsPy_Time_Duration() ;
-    LibraryPhysicsPy_Time_DateTime() ;
-    LibraryPhysicsPy_Time_Date() ;
-    LibraryPhysicsPy_Time_Time() ;
-    LibraryPhysicsPy_Time_Interval() ;
+    OpenSpaceToolkitPhysicsPy_Time_Scale() ;
+    OpenSpaceToolkitPhysicsPy_Time_Instant() ;
+    OpenSpaceToolkitPhysicsPy_Time_Duration() ;
+    OpenSpaceToolkitPhysicsPy_Time_DateTime() ;
+    OpenSpaceToolkitPhysicsPy_Time_Date() ;
+    OpenSpaceToolkitPhysicsPy_Time_Time() ;
+    OpenSpaceToolkitPhysicsPy_Time_Interval() ;
 
 }
 

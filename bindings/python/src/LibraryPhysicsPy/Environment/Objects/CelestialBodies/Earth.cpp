@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           LibraryPhysicsPy/Environment/Objects/CelestialBodies/Earth.cpp
+/// @file           OpenSpaceToolkitPhysicsPy/Environment/Objects/CelestialBodies/Earth.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -11,7 +11,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     LibraryPhysicsPy_Environment_Objects_CelestialBodies_Earth ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Earth ( )
 {
 
     using namespace boost::python ;

@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           LibraryPhysicsPy/Environment/Magnetic/Earth.cpp
+/// @file           OpenSpaceToolkitPhysicsPy/Environment/Magnetic/Earth.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -12,7 +12,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     LibraryPhysicsPy_Environment_Magnetic_Earth ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth ( )
 {
 
     using namespace boost::python ;

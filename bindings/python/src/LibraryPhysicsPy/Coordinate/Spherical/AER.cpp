@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           LibraryPhysicsPy/Coordinate/Spherical/AER.cpp
+/// @file           OpenSpaceToolkitPhysicsPy/Coordinate/Spherical/AER.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -11,7 +11,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     LibraryPhysicsPy_Coordinate_Spherical_AER   ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_AER   ( )
 {
 
     using namespace boost::python ;

@@ -37,7 +37,7 @@ ENV JUPYTER_ENABLE_LAB yes
 ENV LD_LIBRARY_PATH "/usr/local/lib:/usr/lib/x86_64-linux-gnu:/opt/conda/lib/python3.7/site-packages:/home/jovyan/lib:/opt/conda/lib"
 ENV PYTHONPATH "/opt/conda/lib/python3.7/site-packages:/home/jovyan/lib"
 
-RUN pip install LibraryPhysicsPy
+RUN pip install OpenSpaceToolkitPhysicsPy
 
 USER ${NB_UID}
 

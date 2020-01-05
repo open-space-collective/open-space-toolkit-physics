@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           LibraryPhysicsPy.cxx
+/// @file           OpenSpaceToolkitPhysicsPy.cxx
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -9,24 +9,24 @@
 
 #include <boost/python.hpp>
 
-#include <LibraryPhysicsPy/Environment.cpp>
-#include <LibraryPhysicsPy/Coordinate.cpp>
-#include <LibraryPhysicsPy/Time.cpp>
-#include <LibraryPhysicsPy/Units.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Environment.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Coordinate.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Time.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Units.cpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-BOOST_PYTHON_MODULE (LibraryPhysicsPy)
+BOOST_PYTHON_MODULE (OpenSpaceToolkitPhysicsPy)
 {
 
     boost::python::object package = boost::python::scope() ;
 
     package.attr("__path__") = "Library" ;
 
-    LibraryPhysicsPy_Units() ;
-    LibraryPhysicsPy_Time() ;
-    LibraryPhysicsPy_Coordinate() ;
-    LibraryPhysicsPy_Environment() ;
+    OpenSpaceToolkitPhysicsPy_Units() ;
+    OpenSpaceToolkitPhysicsPy_Time() ;
+    OpenSpaceToolkitPhysicsPy_Coordinate() ;
+    OpenSpaceToolkitPhysicsPy_Environment() ;
 
 }
 

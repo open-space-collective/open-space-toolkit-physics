@@ -1,21 +1,21 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           LibraryPhysicsPy/Units.cpp
+/// @file           OpenSpaceToolkitPhysicsPy/Units.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <LibraryPhysicsPy/Units/Derived/Angle.cpp>
-#include <LibraryPhysicsPy/Units/Derived.cpp>
-#include <LibraryPhysicsPy/Units/ElectricCurrent.cpp>
-#include <LibraryPhysicsPy/Units/Time.cpp>
-#include <LibraryPhysicsPy/Units/Length.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Units/Derived/Angle.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Units/Derived.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Units/ElectricCurrent.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Units/Time.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Units/Length.cpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     LibraryPhysicsPy_Units                      ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Units                      ( )
 {
 
     boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("Library.Physics.Units")))) ;
@@ -24,11 +24,11 @@ inline void                     LibraryPhysicsPy_Units                      ( )
 
     boost::python::scope scope = module ;
 
-    LibraryPhysicsPy_Units_Length() ;
-    LibraryPhysicsPy_Units_Time() ;
-    LibraryPhysicsPy_Units_ElectricCurrent() ;
-    LibraryPhysicsPy_Units_Derived() ;
-    LibraryPhysicsPy_Units_Derived_Angle() ;
+    OpenSpaceToolkitPhysicsPy_Units_Length() ;
+    OpenSpaceToolkitPhysicsPy_Units_Time() ;
+    OpenSpaceToolkitPhysicsPy_Units_ElectricCurrent() ;
+    OpenSpaceToolkitPhysicsPy_Units_Derived() ;
+    OpenSpaceToolkitPhysicsPy_Units_Derived_Angle() ;
 
 }
 

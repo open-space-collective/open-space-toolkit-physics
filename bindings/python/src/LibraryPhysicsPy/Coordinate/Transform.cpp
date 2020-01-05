@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           LibraryPhysicsPy/Coordinate/Transform.cpp
+/// @file           OpenSpaceToolkitPhysicsPy/Coordinate/Transform.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -11,7 +11,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     LibraryPhysicsPy_Coordinate_Transform       ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Transform       ( )
 {
 
     using namespace boost::python ;

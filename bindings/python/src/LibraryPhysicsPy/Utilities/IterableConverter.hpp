@@ -1,14 +1,14 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           LibraryPhysicsPy/Utilities/IterableConverter.hpp
+/// @file           OpenSpaceToolkitPhysicsPy/Utilities/IterableConverter.hpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __LibraryPhysicsPy_Utilities_IterableConverter__
-#define __LibraryPhysicsPy_Utilities_IterableConverter__
+#ifndef __OpenSpaceToolkitPhysicsPy_Utilities_IterableConverter__
+#define __OpenSpaceToolkitPhysicsPy_Utilities_IterableConverter__
 
 #include <boost/python/stl_iterator.hpp>
 

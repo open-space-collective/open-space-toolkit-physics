@@ -1,18 +1,18 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           LibraryPhysicsPy/Environment/Magnetic.cpp
+/// @file           OpenSpaceToolkitPhysicsPy/Environment/Magnetic.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <LibraryPhysicsPy/Environment/Magnetic/Earth.cpp>
-#include <LibraryPhysicsPy/Environment/Magnetic/Dipole.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Environment/Magnetic/Earth.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Environment/Magnetic/Dipole.cpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     LibraryPhysicsPy_Environment_Magnetic       ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Environment_Magnetic       ( )
 {
 
     boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("Library.Physics.Environment.Magnetic")))) ;
@@ -21,8 +21,8 @@ inline void                     LibraryPhysicsPy_Environment_Magnetic       ( )
 
     boost::python::scope scope = module ;
 
-    LibraryPhysicsPy_Environment_Magnetic_Dipole() ;
-    LibraryPhysicsPy_Environment_Magnetic_Earth() ;
+    OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Dipole() ;
+    OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth() ;
 
 }
 

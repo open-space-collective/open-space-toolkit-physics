@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           LibraryPhysicsPy/Time/Date.cpp
+/// @file           OpenSpaceToolkitPhysicsPy/Time/Date.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -11,7 +11,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     LibraryPhysicsPy_Time_Date                  ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Time_Date                  ( )
 {
 
     using namespace boost::python ;

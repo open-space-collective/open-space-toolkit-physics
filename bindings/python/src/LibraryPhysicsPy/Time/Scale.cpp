@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           LibraryPhysicsPy/Time/Scale.cpp
+/// @file           OpenSpaceToolkitPhysicsPy/Time/Scale.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -11,7 +11,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     LibraryPhysicsPy_Time_Scale                 ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Time_Scale                 ( )
 {
 
     using namespace boost::python ;

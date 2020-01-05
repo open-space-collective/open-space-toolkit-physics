@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           LibraryPhysicsPy/Environment/Gravitational/Spherical.cpp
+/// @file           OpenSpaceToolkitPhysicsPy/Environment/Gravitational/Spherical.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -11,7 +11,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     LibraryPhysicsPy_Environment_Gravitational_Spherical ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Spherical ( )
 {
 
     using namespace boost::python ;

@@ -1,18 +1,18 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           LibraryPhysicsPy/Environment/Objects.cpp
+/// @file           OpenSpaceToolkitPhysicsPy/Environment/Objects.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <LibraryPhysicsPy/Environment/Objects/CelestialBodies.cpp>
-#include <LibraryPhysicsPy/Environment/Objects/Celestial.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Environment/Objects/CelestialBodies.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Environment/Objects/Celestial.cpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     LibraryPhysicsPy_Environment_Objects        ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects        ( )
 {
 
     boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("Library.Physics.Environment.Objects")))) ;
@@ -21,8 +21,8 @@ inline void                     LibraryPhysicsPy_Environment_Objects        ( )
 
     boost::python::scope scope = module ;
 
-    LibraryPhysicsPy_Environment_Objects_Celestial() ;
-    LibraryPhysicsPy_Environment_Objects_CelestialBodies() ;
+    OpenSpaceToolkitPhysicsPy_Environment_Objects_Celestial() ;
+    OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies() ;
 
 }
 

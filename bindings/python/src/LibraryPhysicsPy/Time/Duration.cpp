@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           LibraryPhysicsPy/Time/Duration.cpp
+/// @file           OpenSpaceToolkitPhysicsPy/Time/Duration.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -11,7 +11,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     LibraryPhysicsPy_Time_Duration              ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Time_Duration              ( )
 {
 
     using namespace boost::python ;

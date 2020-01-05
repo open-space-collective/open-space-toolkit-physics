@@ -10,6 +10,6 @@
 from Library.IO import *
 from Library.Mathematics import *
 
-from .LibraryPhysicsPy import *
+from .OpenSpaceToolkitPhysicsPy import *
 
 ################################################################################################################################################################

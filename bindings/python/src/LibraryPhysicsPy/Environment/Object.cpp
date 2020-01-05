@@ -1,19 +1,19 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           LibraryPhysicsPy/Environment/Object.cpp
+/// @file           OpenSpaceToolkitPhysicsPy/Environment/Object.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <LibraryPhysicsPy/Environment/Object/Geometry.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Environment/Object/Geometry.cpp>
 
 #include <OpenSpaceToolkit/Physics/Environment/Object.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     LibraryPhysicsPy_Environment_Object         ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Environment_Object         ( )
 {
 
     using namespace boost::python ;
@@ -49,7 +49,7 @@ inline void                     LibraryPhysicsPy_Environment_Object         ( )
 
     implicitly_convertible<Shared<Object>, Shared<const Object>>() ;
 
-    LibraryPhysicsPy_Environment_Object_Geometry() ;
+    OpenSpaceToolkitPhysicsPy_Environment_Object_Geometry() ;
 
 }
 

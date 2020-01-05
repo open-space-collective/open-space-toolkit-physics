@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           LibraryPhysicsPy/Time/Interval.cpp
+/// @file           OpenSpaceToolkitPhysicsPy/Time/Interval.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
@@ -11,9 +11,9 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (LibraryPhysicsPy_Time_Interval_toString_overloads, ostk::physics::time::Interval::toString, 0, 1)
+BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (OpenSpaceToolkitPhysicsPy_Time_Interval_toString_overloads, ostk::physics::time::Interval::toString, 0, 1)
 
-inline void                     LibraryPhysicsPy_Time_Interval              ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Time_Interval              ( )
 {
 
     using namespace boost::python ;
@@ -49,7 +49,7 @@ inline void                     LibraryPhysicsPy_Time_Interval              ( )
         .def("getEnd", &Interval::getEnd)
         .def("getDuration", &Interval::getDuration)
         .def("getCenter", &Interval::getCenter)
-        .def("toString", &Interval::toString, LibraryPhysicsPy_Time_Interval_toString_overloads())
+        .def("toString", &Interval::toString, OpenSpaceToolkitPhysicsPy_Time_Interval_toString_overloads())
         .def("generateGrid", &Interval::generateGrid)
 
         .def("Undefined", &Interval::Undefined).staticmethod("Undefined")

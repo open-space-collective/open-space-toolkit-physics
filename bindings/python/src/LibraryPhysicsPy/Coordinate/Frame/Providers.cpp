@@ -1,18 +1,18 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           LibraryPhysicsPy/Coordinate/Frame/Providers.cpp
+/// @file           OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Providers.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <LibraryPhysicsPy/Coordinate/Frame/Providers/Dynamic.cpp>
-#include <LibraryPhysicsPy/Coordinate/Frame/Providers/Static.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Providers/Dynamic.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Providers/Static.cpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     LibraryPhysicsPy_Coordinate_Frame_Providers ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers ( )
 {
 
     boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("Library.Physics.Coordinate.Frame.Providers")))) ;
@@ -21,8 +21,8 @@ inline void                     LibraryPhysicsPy_Coordinate_Frame_Providers ( )
 
     boost::python::scope scope = module ;
 
-    LibraryPhysicsPy_Coordinate_Frame_Providers_Static() ;
-    LibraryPhysicsPy_Coordinate_Frame_Providers_Dynamic() ;
+    OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers_Static() ;
+    OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers_Dynamic() ;
 
 }
 

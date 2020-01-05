@@ -1,24 +1,24 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           LibraryPhysicsPy/Environment.cpp
+/// @file           OpenSpaceToolkitPhysicsPy/Environment.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <LibraryPhysicsPy/Environment/Magnetic.cpp>
-#include <LibraryPhysicsPy/Environment/Gravitational.cpp>
-#include <LibraryPhysicsPy/Environment/Objects.cpp>
-#include <LibraryPhysicsPy/Environment/Object.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Environment/Magnetic.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Environment/Gravitational.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Environment/Objects.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Environment/Object.cpp>
 
-#include <LibraryPhysicsPy/Utilities/IterableConverter.hpp>
+#include <OpenSpaceToolkitPhysicsPy/Utilities/IterableConverter.hpp>
 
 #include <OpenSpaceToolkit/Physics/Environment.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     LibraryPhysicsPy_Environment                ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Environment                ( )
 {
 
     using namespace boost::python ;
@@ -58,10 +58,10 @@ inline void                     LibraryPhysicsPy_Environment                ( )
 
     ;
 
-    LibraryPhysicsPy_Environment_Object() ;
-    LibraryPhysicsPy_Environment_Objects() ;
-    LibraryPhysicsPy_Environment_Gravitational() ;
-    LibraryPhysicsPy_Environment_Magnetic() ;
+    OpenSpaceToolkitPhysicsPy_Environment_Object() ;
+    OpenSpaceToolkitPhysicsPy_Environment_Objects() ;
+    OpenSpaceToolkitPhysicsPy_Environment_Gravitational() ;
+    OpenSpaceToolkitPhysicsPy_Environment_Magnetic() ;
 
 }
 
