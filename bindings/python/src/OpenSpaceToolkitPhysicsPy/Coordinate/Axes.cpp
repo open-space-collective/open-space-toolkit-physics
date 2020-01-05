@@ -31,15 +31,15 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Axes       
         .def(self_ns::str(self_ns::self))
         .def(self_ns::repr(self_ns::self))
 
-        .def("isDefined", &Axes::isDefined)
+        .def("is_defined", &Axes::isDefined)
 
         .def("x", +[] (const Axes& anAxes) -> Vector3d { return anAxes.x() ; })
         .def("y", +[] (const Axes& anAxes) -> Vector3d { return anAxes.y() ; })
         .def("z", +[] (const Axes& anAxes) -> Vector3d { return anAxes.z() ; })
-        .def("getFrame", &Axes::getFrame)
-        .def("inFrame", &Axes::inFrame)
+        .def("get_frame", &Axes::getFrame)
+        .def("in_frame", &Axes::inFrame)
 
-        .def("Undefined", &Axes::Undefined).staticmethod("Undefined")
+        .def("undefined", &Axes::Undefined).staticmethod("undefined")
 
     ;
 

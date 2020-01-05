@@ -21,7 +21,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Gravitatio
 
     scope in_Spherical = class_<Spherical>("Spherical", init<const Derived&>())
 
-        .def("getFieldValueAt", &Spherical::getFieldValueAt)
+        .def("get_field_value_at", &Spherical::getFieldValueAt)
 
     ;
 

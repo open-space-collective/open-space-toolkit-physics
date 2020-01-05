@@ -29,25 +29,25 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Date             
 
         .def("__repr__", +[] (const Date& aDate) -> std::string { return aDate.toString() ; })
 
-        .def("isDefined", &Date::isDefined)
+        .def("is_defined", &Date::isDefined)
 
-        .def("getYear", &Date::getYear)
-        .def("getMonth", &Date::getMonth)
-        .def("getDay", &Date::getDay)
-        .def("toString", &Date::toString)
-        .def("toString", +[] (const Date& aDate) -> String { return aDate.toString() ; })
-        .def("toString", +[] (const Date& aDate, const Date::Format& aFormat) -> String { return aDate.toString(aFormat) ; })
-        .def("setYear", &Date::setYear)
-        .def("setMonth", &Date::setMonth)
-        .def("setDay", &Date::setDay)
+        .def("get_year", &Date::getYear)
+        .def("get_month", &Date::getMonth)
+        .def("get_day", &Date::getDay)
+        .def("to_string", &Date::toString)
+        .def("to_string", +[] (const Date& aDate) -> String { return aDate.toString() ; })
+        .def("to_string", +[] (const Date& aDate, const Date::Format& aFormat) -> String { return aDate.toString(aFormat) ; })
+        .def("set_year", &Date::setYear)
+        .def("set_month", &Date::setMonth)
+        .def("set_day", &Date::setDay)
 
-        .def("Undefined", &Date::Undefined).staticmethod("Undefined")
+        .def("undefined", &Date::Undefined).staticmethod("undefined")
         .def("J2000", &Date::J2000).staticmethod("J2000")
-        .def("GPSEpoch", &Date::GPSEpoch).staticmethod("GPSEpoch")
-        .def("UnixEpoch", &Date::UnixEpoch).staticmethod("UnixEpoch")
-        .def("ModifiedJulianDateEpoch", &Date::ModifiedJulianDateEpoch).staticmethod("ModifiedJulianDateEpoch")
-        .def("Parse", +[] (const String& aString) -> Date { return Date::Parse(aString) ; })
-        .def("Parse", +[] (const String& aString, const Date::Format& aFormat) -> Date { return Date::Parse(aString, aFormat) ; })
+        .def("GPS_epoch", &Date::GPSEpoch).staticmethod("GPS_epoch")
+        .def("unix_epoch", &Date::UnixEpoch).staticmethod("unix_epoch")
+        .def("modified_julian_date_epoch", &Date::ModifiedJulianDateEpoch).staticmethod("modified_julian_date_epoch")
+        .def("parse", +[] (const String& aString) -> Date { return Date::Parse(aString) ; })
+        .def("parse", +[] (const String& aString, const Date::Format& aFormat) -> Date { return Date::Parse(aString, aFormat) ; })
 
     ;
 

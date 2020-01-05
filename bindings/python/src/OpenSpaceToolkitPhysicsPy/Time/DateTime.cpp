@@ -125,24 +125,24 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_DateTime         
 
         .def("__repr__", +[] (const DateTime& aDateTime) -> std::string { return aDateTime.toString() ; })
 
-        .def("isDefined", &DateTime::isDefined)
+        .def("is_defined", &DateTime::isDefined)
 
-        .def("getDate", &DateTime::getDate)
-        .def("getTime", &DateTime::getTime)
-        .def("getJulianDate", &DateTime::getJulianDate)
-        .def("getModifiedJulianDate", &DateTime::getModifiedJulianDate)
-        .def("toString", +[] (const DateTime& aDateTime) -> String { return aDateTime.toString() ; })
-        .def("toString", +[] (const DateTime& aDateTime, const DateTime::Format& aFormat) -> String { return aDateTime.toString(aFormat) ; })
+        .def("get_date", &DateTime::getDate)
+        .def("get_time", &DateTime::getTime)
+        .def("get_julian_date", &DateTime::getJulianDate)
+        .def("get_modified_julian_date", &DateTime::getModifiedJulianDate)
+        .def("to_string", +[] (const DateTime& aDateTime) -> String { return aDateTime.toString() ; })
+        .def("to_string", +[] (const DateTime& aDateTime, const DateTime::Format& aFormat) -> String { return aDateTime.toString(aFormat) ; })
 
-        .def("Undefined", &DateTime::Undefined).staticmethod("Undefined")
+        .def("undefined", &DateTime::Undefined).staticmethod("undefined")
         .def("J2000", &DateTime::J2000).staticmethod("J2000")
-        .def("GPSEpoch", &DateTime::GPSEpoch).staticmethod("GPSEpoch")
-        .def("UnixEpoch", &DateTime::UnixEpoch).staticmethod("UnixEpoch")
-        .def("ModifiedJulianDateEpoch", &DateTime::ModifiedJulianDateEpoch).staticmethod("ModifiedJulianDateEpoch")
-        .def("JulianDate", &DateTime::JulianDate).staticmethod("JulianDate")
-        .def("ModifiedJulianDate", &DateTime::ModifiedJulianDate).staticmethod("ModifiedJulianDate")
-        .def("Parse", +[] (const String& aString) -> DateTime { return DateTime::Parse(aString) ; })
-        .def("Parse", +[] (const String& aString, const DateTime::Format& aFormat) -> DateTime { return DateTime::Parse(aString, aFormat) ; })
+        .def("GPS_epoch", &DateTime::GPSEpoch).staticmethod("GPS_epoch")
+        .def("unix_epoch", &DateTime::UnixEpoch).staticmethod("unix_epoch")
+        .def("modified_julian_date_epoch", &DateTime::ModifiedJulianDateEpoch).staticmethod("modified_julian_date_epoch")
+        .def("julian_date", &DateTime::JulianDate).staticmethod("julian_date")
+        .def("modified_julian_date", &DateTime::ModifiedJulianDate).staticmethod("modified_julian_date")
+        .def("parse", +[] (const String& aString) -> DateTime { return DateTime::Parse(aString) ; })
+        .def("parse", +[] (const String& aString, const DateTime::Format& aFormat) -> DateTime { return DateTime::Parse(aString, aFormat) ; })
 
     ;
 

@@ -39,28 +39,28 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
         .def(self_ns::str(self_ns::self))
         .def(self_ns::repr(self_ns::self))
 
-        .def("isDefined", &Celestial::isDefined)
+        .def("is_defined", &Celestial::isDefined)
 
-        .def("accessEphemeris", &Celestial::accessEphemeris)
-        .def("accessGravitationalModel", &Celestial::accessGravitationalModel)
-        .def("accessMagneticModel", &Celestial::accessMagneticModel)
+        .def("access_ephemeris", &Celestial::accessEphemeris)
+        .def("access_gravitational_model", &Celestial::accessGravitationalModel)
+        .def("access_magnetic_model", &Celestial::accessMagneticModel)
 
-        .def("getType", &Celestial::getType)
-        .def("getGravitationalParameter", &Celestial::getGravitationalParameter)
-        .def("getEquatorialRadius", &Celestial::getEquatorialRadius)
-        .def("getFlattening", &Celestial::getFlattening)
-        .def("getJ2", &Celestial::getJ2)
-        // .def("accessFrame", &Celestial::accessFrame)
-        .def("getPositionIn", &Celestial::getPositionIn)
-        .def("getTransformTo", &Celestial::getTransformTo)
-        .def("getAxesIn", &Celestial::getAxesIn)
-        .def("getGravitationalFieldAt", &Celestial::getGravitationalFieldAt)
-        .def("getMagneticFieldAt", &Celestial::getMagneticFieldAt)
-        .def("getFrameAt", &Celestial::getFrameAt)
+        .def("get_type", &Celestial::getType)
+        .def("get_gravitational_parameter", &Celestial::getGravitationalParameter)
+        .def("get_equatorial_radius", &Celestial::getEquatorialRadius)
+        .def("get_flattening", &Celestial::getFlattening)
+        .def("get_j2", &Celestial::getJ2)
+        // .def("access_frame", &Celestial::accessFrame)
+        .def("get_position_in", &Celestial::getPositionIn)
+        .def("get_transform_to", &Celestial::getTransformTo)
+        .def("get_axes_in", &Celestial::getAxesIn)
+        .def("get_gravitational_field_at", &Celestial::getGravitationalFieldAt)
+        .def("get_magnetic_field_at", &Celestial::getMagneticFieldAt)
+        .def("get_frame_at", &Celestial::getFrameAt)
 
-        .def("Undefined", &Celestial::Undefined).staticmethod("Undefined")
+        .def("undefined", &Celestial::Undefined).staticmethod("undefined")
 
-        .def("StringFromFrameType", &Celestial::StringFromFrameType).staticmethod("StringFromFrameType")
+        .def("string_from_frame_type", &Celestial::StringFromFrameType).staticmethod("string_from_frame_type")
 
     ;
 

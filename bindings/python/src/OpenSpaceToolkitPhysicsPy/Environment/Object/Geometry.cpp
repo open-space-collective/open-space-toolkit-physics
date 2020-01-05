@@ -57,16 +57,16 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Object_Geo
         .def(self_ns::str(self_ns::self))
         .def(self_ns::repr(self_ns::self))
 
-        .def("isDefined", &Geometry::isDefined)
+        .def("is_defined", &Geometry::isDefined)
         .def("intersects", &Geometry::intersects)
         .def("contains", &Geometry::contains)
 
-        .def("accessComposite", &Geometry::accessComposite, return_value_policy<reference_existing_object>())
-        .def("accessFrame", &Geometry::accessFrame)
-        .def("inFrame", &Geometry::in)
-        .def("intersectionWith", &Geometry::intersectionWith)
+        .def("access_composite", &Geometry::accessComposite, return_value_policy<reference_existing_object>())
+        .def("access_frame", &Geometry::accessFrame)
+        .def("in_frame", &Geometry::in)
+        .def("intersection_with", &Geometry::intersectionWith)
 
-        .def("Undefined", &Geometry::Undefined).staticmethod("Undefined")
+        .def("undefined", &Geometry::Undefined).staticmethod("undefined")
 
     ;
 

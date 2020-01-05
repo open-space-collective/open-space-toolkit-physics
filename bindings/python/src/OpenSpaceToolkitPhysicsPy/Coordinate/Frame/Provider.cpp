@@ -22,9 +22,9 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provi
 
     scope in_Provider = class_<Provider, boost::noncopyable>("Provider", no_init)
 
-        .def("isDefined", &Provider::isDefined)
+        .def("is_defined", &Provider::isDefined)
 
-        .def("getTransformAt", &Provider::getTransformAt)
+        .def("get_transform_at", &Provider::getTransformAt)
 
     ;
 

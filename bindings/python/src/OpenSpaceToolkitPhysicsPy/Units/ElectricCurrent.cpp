@@ -53,18 +53,18 @@ inline void                     OpenSpaceToolkitPhysicsPy_Units_ElectricCurrent 
 
         .def("__repr__", +[] (const ElectricCurrent& aElectricCurrent) -> std::string { return aElectricCurrent.toString() ; })
 
-        .def("isDefined", &ElectricCurrent::isDefined)
+        .def("is_defined", &ElectricCurrent::isDefined)
 
-        .def("getUnit", &ElectricCurrent::getUnit)
-        .def("inUnit", &ElectricCurrent::in)
-        .def("inAmperes", &ElectricCurrent::inAmperes)
-        .def("toString", &ElectricCurrent::toString, OpenSpaceToolkitPhysicsPy_Units_ElectricCurrent_toString_overloads())
+        .def("get_unit", &ElectricCurrent::getUnit)
+        .def("in_unit", &ElectricCurrent::in)
+        .def("in_amperes", &ElectricCurrent::inAmperes)
+        .def("to_string", &ElectricCurrent::toString, OpenSpaceToolkitPhysicsPy_Units_ElectricCurrent_toString_overloads())
 
-        .def("Undefined", &ElectricCurrent::Undefined).staticmethod("Undefined")
-        .def("Amperes", &ElectricCurrent::Amperes).staticmethod("Amperes")
-        // .def("Parse", &ElectricCurrent::Parse).staticmethod("Parse")
-        .def("StringFromUnit", &ElectricCurrent::StringFromUnit).staticmethod("StringFromUnit")
-        .def("SymbolFromUnit", &ElectricCurrent::SymbolFromUnit).staticmethod("SymbolFromUnit")
+        .def("undefined", &ElectricCurrent::Undefined).staticmethod("undefined")
+        .def("amperes", &ElectricCurrent::Amperes).staticmethod("amperes")
+        // .def("parse", &ElectricCurrent::Parse).staticmethod("parse")
+        .def("string_from_unit", &ElectricCurrent::StringFromUnit).staticmethod("string_from_unit")
+        .def("symbol_from_unit", &ElectricCurrent::SymbolFromUnit).staticmethod("symbol_from_unit")
 
     ;
 

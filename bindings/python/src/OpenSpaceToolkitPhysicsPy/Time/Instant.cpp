@@ -44,22 +44,22 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Instant          
 
         .def("__repr__", +[] (const Instant& anInstant) -> std::string { return anInstant.toString() ; })
 
-        .def("isDefined", &Instant::isDefined)
-        .def("isPostEpoch", &Instant::isPostEpoch)
-        .def("isNear", &Instant::isNear)
+        .def("is_defined", &Instant::isDefined)
+        .def("is_post_epoch", &Instant::isPostEpoch)
+        .def("is_near", &Instant::isNear)
 
-        .def("getDateTime", &Instant::getDateTime)
-        .def("getJulianDate", &Instant::getJulianDate)
-        .def("getModifiedJulianDate", &Instant::getModifiedJulianDate)
-        .def("toString", +[] (const Instant& anInstant) -> String { return anInstant.toString() ; })
-        .def("toString", +[] (const Instant& anInstant, const Scale& aScale) -> String { return anInstant.toString(aScale) ; })
+        .def("get_date_time", &Instant::getDateTime)
+        .def("get_julian_date", &Instant::getJulianDate)
+        .def("get_modified_julian_date", &Instant::getModifiedJulianDate)
+        .def("to_string", +[] (const Instant& anInstant) -> String { return anInstant.toString() ; })
+        .def("to_string", +[] (const Instant& anInstant, const Scale& aScale) -> String { return anInstant.toString(aScale) ; })
 
-        .def("Undefined", &Instant::Undefined).staticmethod("Undefined")
-        .def("Now", &Instant::Now).staticmethod("Now")
+        .def("undefined", &Instant::Undefined).staticmethod("undefined")
+        .def("now", &Instant::Now).staticmethod("now")
         .def("J2000", &Instant::J2000).staticmethod("J2000")
-        .def("DateTime", &Instant::DateTime).staticmethod("DateTime")
-        .def("JulianDate", &Instant::JulianDate).staticmethod("JulianDate")
-        .def("ModifiedJulianDate", &Instant::ModifiedJulianDate).staticmethod("ModifiedJulianDate")
+        .def("date_time", &Instant::DateTime).staticmethod("date_time")
+        .def("julian_date", &Instant::JulianDate).staticmethod("julian_date")
+        .def("modified_julian_date", &Instant::ModifiedJulianDate).staticmethod("modified_julian_date")
 
     ;
 

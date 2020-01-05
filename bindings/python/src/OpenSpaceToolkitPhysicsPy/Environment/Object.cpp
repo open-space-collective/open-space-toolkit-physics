@@ -29,19 +29,19 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Object    
         .def(self_ns::str(self_ns::self))
         .def(self_ns::repr(self_ns::self))
 
-        .def("isDefined", &Object::isDefined)
+        .def("is_defined", &Object::isDefined)
 
-        .def("accessName", &Object::accessName, return_value_policy<reference_existing_object>())
-        .def("accessInstant", &Object::accessInstant, return_value_policy<reference_existing_object>())
-        .def("accessFrame", &Object::accessFrame)
-        .def("getName", &Object::getName)
-        .def("getInstant", &Object::getInstant)
-        .def("getGeometry", &Object::getGeometry)
-        .def("getPositionIn", &Object::getPositionIn)
-        .def("getTransformTo", &Object::getTransformTo)
-        .def("getAxesIn", &Object::getAxesIn)
-        .def("getGeometryIn", &Object::getGeometryIn)
-        .def("setInstant", &Object::setInstant)
+        .def("access_name", &Object::accessName, return_value_policy<reference_existing_object>())
+        .def("access_instant", &Object::accessInstant, return_value_policy<reference_existing_object>())
+        .def("access_frame", &Object::accessFrame)
+        .def("get_name", &Object::getName)
+        .def("get_instant", &Object::getInstant)
+        .def("get_geometry", &Object::getGeometry)
+        .def("get_position_in", &Object::getPositionIn)
+        .def("get_transform_to", &Object::getTransformTo)
+        .def("get_axes_in", &Object::getAxesIn)
+        .def("get_geometry_in", &Object::getGeometryIn)
+        .def("set_instant", &Object::setInstant)
 
     ;
 

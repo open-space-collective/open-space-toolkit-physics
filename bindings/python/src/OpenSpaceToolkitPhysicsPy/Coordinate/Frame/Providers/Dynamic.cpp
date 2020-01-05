@@ -46,11 +46,11 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provi
             )
         )
 
-        .def("isDefined", &Dynamic::isDefined)
+        .def("is_defined", &Dynamic::isDefined)
 
-        .def("getTransformAt", &Dynamic::getTransformAt)
+        .def("get_transform_at", &Dynamic::getTransformAt)
 
-        .def("Undefined", &Dynamic::Undefined).staticmethod("Undefined")
+        .def("undefined", &Dynamic::Undefined).staticmethod("undefined")
 
     ;
 
