@@ -115,7 +115,7 @@ void                            Manager::fetchDataFileForType               (   
 
         // If file already in global cache, just clone it
 
-        // static const Directory globalRepository = Directory::Path(Path::Parse("/usr/local/share/library-physics/environment/magnetic/earth")) ;
+        // static const Directory globalRepository = Directory::Path(Path::Parse("/usr/local/share/open-space-toolkit-physics/environment/magnetic/earth")) ;
 
         // if (globalRepository.containsFileWithName(String::Format("{}.egm", Manager::DataFileNameFromType(aModelType))))
         // {

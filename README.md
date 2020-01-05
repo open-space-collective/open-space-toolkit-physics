@@ -2,10 +2,10 @@
 
 Physical units, time, reference frames, environment modeling.
 
-[![Build Status](https://travis-ci.com/open-space-collective/library-physics.svg?branch=master)](https://travis-ci.com/open-space-collective/library-physics)
-[![Code Coverage](https://codecov.io/gh/open-space-collective/library-physics/branch/master/graph/badge.svg)](https://codecov.io/gh/open-space-collective/library-physics)
-[![Documentation](https://img.shields.io/readthedocs/pip/stable.svg)](https://open-space-collective.github.io/library-physics)
-[![GitHub version](https://badge.fury.io/gh/open-space-collective%2Flibrary-physics.svg)](https://badge.fury.io/gh/open-space-collective%2Flibrary-physics)
+[![Build Status](https://travis-ci.com/open-space-collective/open-space-toolkit-physics.svg?branch=master)](https://travis-ci.com/open-space-collective/open-space-toolkit-physics)
+[![Code Coverage](https://codecov.io/gh/open-space-collective/open-space-toolkit-physics/branch/master/graph/badge.svg)](https://codecov.io/gh/open-space-collective/open-space-toolkit-physics)
+[![Documentation](https://img.shields.io/readthedocs/pip/stable.svg)](https://open-space-collective.github.io/open-space-toolkit-physics)
+[![GitHub version](https://badge.fury.io/gh/open-space-collective%2Fopen-space-toolkit-physics.svg)](https://badge.fury.io/gh/open-space-collective%2Fopen-space-toolkit-physics)
 [![PyPI version](https://badge.fury.io/py/LibraryPhysicsPy.svg)](https://badge.fury.io/py/LibraryPhysicsPy)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
@@ -93,7 +93,7 @@ The **Physics** library exhibits the following structure:
 
 Documentation is available here:
 
-- [C++](https://open-space-collective.github.io/library-physics)
+- [C++](https://open-space-collective.github.io/open-space-toolkit-physics)
 - [Python](./bindings/python/docs)
 
 ## Tutorials
@@ -138,7 +138,7 @@ make start-development
 
 This will:
 
-1. Build the `openspacecollective/library-physics-development` Docker image.
+1. Build the `openspacecollective/open-space-toolkit-physics-development` Docker image.
 2. Create a development environment container with local source files and helper scripts mounted.
 3. Start a `bash` shell from the `./build` working directory.
 
@@ -167,7 +167,7 @@ make test
 Or to run them manually:
 
 ```bash
-./bin/library-physics.test
+./bin/open-space-toolkit-physics.test
 ```
 
 *Tip: `helpers/test.sh` simplifies running tests from within the development environment.*

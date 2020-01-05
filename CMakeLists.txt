@@ -12,7 +12,7 @@
 SET (PROJECT_NAME "LibraryPhysics")
 SET (PROJECT_DESCRIPTION "Physics library.")
 SET (PROJECT_PATH "Library/Physics")
-SET (PROJECT_PACKAGE_NAME "library-physics")
+SET (PROJECT_PACKAGE_NAME "open-space-toolkit-physics")
 SET (PROJECT_LICENSE "Apache License 2.0")
 SET (PROJECT_VENDOR_ID "org.open-space-collective")
 SET (PROJECT_VENDOR_NAME "Open Space Collective")
