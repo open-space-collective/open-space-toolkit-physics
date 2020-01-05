@@ -14,7 +14,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-TEST (Library_Physics_Coordinate_Position, Constructor)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Position, Constructor)
 {
 
     using ostk::physics::coord::Frame ;
@@ -28,7 +28,7 @@ TEST (Library_Physics_Coordinate_Position, Constructor)
 
 }
 
-TEST (Library_Physics_Coordinate_Position, EqualToOperator)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Position, EqualToOperator)
 {
 
     using ostk::physics::coord::Frame ;
@@ -59,7 +59,7 @@ TEST (Library_Physics_Coordinate_Position, EqualToOperator)
 
 }
 
-TEST (Library_Physics_Coordinate_Position, NotEqualToOperator)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Position, NotEqualToOperator)
 {
 
     using ostk::physics::coord::Frame ;
@@ -90,7 +90,7 @@ TEST (Library_Physics_Coordinate_Position, NotEqualToOperator)
 
 }
 
-TEST (Library_Physics_Coordinate_Position, StreamOperator)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Position, StreamOperator)
 {
 
     using ostk::physics::coord::Frame ;
@@ -110,7 +110,7 @@ TEST (Library_Physics_Coordinate_Position, StreamOperator)
 
 }
 
-TEST (Library_Physics_Coordinate_Position, IsDefined)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Position, IsDefined)
 {
 
     using ostk::physics::coord::Frame ;
@@ -132,7 +132,7 @@ TEST (Library_Physics_Coordinate_Position, IsDefined)
 
 }
 
-TEST (Library_Physics_Coordinate_Position, IsNear)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Position, IsNear)
 {
 
     using ostk::physics::units::Length ;
@@ -170,7 +170,7 @@ TEST (Library_Physics_Coordinate_Position, IsNear)
 
 }
 
-TEST (Library_Physics_Coordinate_Position, AccessCoordinates)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Position, AccessCoordinates)
 {
 
     using ostk::math::obj::Vector3d ;
@@ -195,7 +195,7 @@ TEST (Library_Physics_Coordinate_Position, AccessCoordinates)
 
 }
 
-TEST (Library_Physics_Coordinate_Position, AccessFrame)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Position, AccessFrame)
 {
 
     using ostk::physics::units::Length ;
@@ -226,7 +226,7 @@ TEST (Library_Physics_Coordinate_Position, AccessFrame)
 
 }
 
-TEST (Library_Physics_Coordinate_Position, GetCoordinates)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Position, GetCoordinates)
 {
 
     using ostk::math::obj::Vector3d ;
@@ -251,7 +251,7 @@ TEST (Library_Physics_Coordinate_Position, GetCoordinates)
 
 }
 
-TEST (Library_Physics_Coordinate_Position, GetUnit)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Position, GetUnit)
 {
 
     using ostk::physics::coord::Frame ;
@@ -273,7 +273,7 @@ TEST (Library_Physics_Coordinate_Position, GetUnit)
 
 }
 
-TEST (Library_Physics_Coordinate_Position, InUnit)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Position, InUnit)
 {
 
     using ostk::core::types::Real ;
@@ -304,7 +304,7 @@ TEST (Library_Physics_Coordinate_Position, InUnit)
 
 }
 
-TEST (Library_Physics_Coordinate_Position, InMeters)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Position, InMeters)
 {
 
     using ostk::core::types::Real ;
@@ -332,7 +332,7 @@ TEST (Library_Physics_Coordinate_Position, InMeters)
 
 }
 
-TEST (Library_Physics_Coordinate_Position, InFrame)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Position, InFrame)
 {
 
     using ostk::core::types::Real ;
@@ -368,7 +368,7 @@ TEST (Library_Physics_Coordinate_Position, InFrame)
 
 }
 
-TEST (Library_Physics_Coordinate_Position, ToString)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Position, ToString)
 {
 
     using ostk::physics::coord::Frame ;
@@ -390,7 +390,7 @@ TEST (Library_Physics_Coordinate_Position, ToString)
 
 }
 
-TEST (Library_Physics_Coordinate_Position, Undefined)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Position, Undefined)
 {
 
     using ostk::physics::coord::Position ;
@@ -406,7 +406,7 @@ TEST (Library_Physics_Coordinate_Position, Undefined)
 }
 
 
-TEST (Library_Physics_Coordinate_Position, Meters)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Position, Meters)
 {
 
     using ostk::core::types::Shared ;

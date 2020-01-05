@@ -42,7 +42,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// TEST (Library_Physics_Environment_Objects_Celestial, Constructor)
+// TEST (OpenSpaceToolkit_Physics_Environment_Objects_Celestial, Constructor)
 // {
 
 //     using ostk::physics::env::Object ;
@@ -55,7 +55,7 @@
 
 // }
 
-TEST (Library_Physics_Environment_Objects_Celestial, GetGravitationalFieldAt)
+TEST (OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetGravitationalFieldAt)
 {
 
     using ostk::core::types::Shared ;
@@ -150,7 +150,7 @@ TEST (Library_Physics_Environment_Objects_Celestial, GetGravitationalFieldAt)
 
 }
 
-TEST (Library_Physics_Environment_Objects_Celestial, GetMagneticFieldAt)
+TEST (OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetMagneticFieldAt)
 {
 
     using ostk::core::types::Shared ;

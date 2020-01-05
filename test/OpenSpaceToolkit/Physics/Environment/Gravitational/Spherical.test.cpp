@@ -16,7 +16,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-TEST (Library_Physics_Environment_Gravitational_Spherical, Constructor)
+TEST (OpenSpaceToolkit_Physics_Environment_Gravitational_Spherical, Constructor)
 {
 
     using ostk::physics::units::Length ;
@@ -40,7 +40,7 @@ TEST (Library_Physics_Environment_Gravitational_Spherical, Constructor)
 
 }
 
-TEST (Library_Physics_Environment_Gravitational_Spherical, Clone)
+TEST (OpenSpaceToolkit_Physics_Environment_Gravitational_Spherical, Clone)
 {
 
     using ostk::physics::units::Length ;
@@ -60,7 +60,7 @@ TEST (Library_Physics_Environment_Gravitational_Spherical, Clone)
 
 }
 
-TEST (Library_Physics_Environment_Gravitational_Spherical, GetFieldValueAt)
+TEST (OpenSpaceToolkit_Physics_Environment_Gravitational_Spherical, GetFieldValueAt)
 {
 
     using ostk::math::obj::Vector3d ;

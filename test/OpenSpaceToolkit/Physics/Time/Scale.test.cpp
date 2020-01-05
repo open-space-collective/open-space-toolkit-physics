@@ -13,7 +13,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-TEST (Library_Physics_Time_Scale, StringFromScale)
+TEST (OpenSpaceToolkit_Physics_Time_Scale, StringFromScale)
 {
 
     using ostk::physics::time::Scale ;
@@ -41,7 +41,7 @@ TEST (Library_Physics_Time_Scale, StringFromScale)
 
 }
 
-TEST (Library_Physics_Time_Scale, ScaleFromString)
+TEST (OpenSpaceToolkit_Physics_Time_Scale, ScaleFromString)
 {
 
     using ostk::physics::time::Scale ;

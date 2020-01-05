@@ -14,7 +14,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-TEST (Library_Physics_Units_Derived, Constructor)
+TEST (OpenSpaceToolkit_Physics_Units_Derived, Constructor)
 {
 
     using ostk::core::types::Real ;
@@ -63,7 +63,7 @@ TEST (Library_Physics_Units_Derived, Constructor)
 
 }
 
-TEST (Library_Physics_Units_Derived, EqualToOperator)
+TEST (OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 {
 
     using ostk::core::types::Real ;
@@ -155,7 +155,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 
 }
 
-// TEST (Library_Physics_Units_Derived, NotEqualToOperator)
+// TEST (OpenSpaceToolkit_Physics_Units_Derived, NotEqualToOperator)
 // {
 
 //     using ostk::physics::units::Derived ;
@@ -185,7 +185,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (Library_Physics_Units_Derived, LowerThanOperator)
+// TEST (OpenSpaceToolkit_Physics_Units_Derived, LowerThanOperator)
 // {
 
 //     using ostk::physics::units::Derived ;
@@ -217,7 +217,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (Library_Physics_Units_Derived, LowerThanOrEqualToOperator)
+// TEST (OpenSpaceToolkit_Physics_Units_Derived, LowerThanOrEqualToOperator)
 // {
 
 //     using ostk::physics::units::Derived ;
@@ -248,7 +248,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (Library_Physics_Units_Derived, GreaterThanOperator)
+// TEST (OpenSpaceToolkit_Physics_Units_Derived, GreaterThanOperator)
 // {
 
 //     using ostk::physics::units::Derived ;
@@ -280,7 +280,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (Library_Physics_Units_Derived, GreaterThanOrEqualToOperator)
+// TEST (OpenSpaceToolkit_Physics_Units_Derived, GreaterThanOrEqualToOperator)
 // {
 
 //     using ostk::physics::units::Derived ;
@@ -311,7 +311,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (Library_Physics_Units_Derived, AdditionOperator)
+// TEST (OpenSpaceToolkit_Physics_Units_Derived, AdditionOperator)
 // {
 
 //     using ostk::physics::units::Derived ;
@@ -342,7 +342,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (Library_Physics_Units_Derived, SubtractionOperator)
+// TEST (OpenSpaceToolkit_Physics_Units_Derived, SubtractionOperator)
 // {
 
 //     using ostk::physics::units::Derived ;
@@ -373,7 +373,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (Library_Physics_Units_Derived, MultiplicationOperator)
+// TEST (OpenSpaceToolkit_Physics_Units_Derived, MultiplicationOperator)
 // {
 
 //     using ostk::core::types::Real ;
@@ -430,7 +430,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (Library_Physics_Units_Derived, DivisionOperator)
+// TEST (OpenSpaceToolkit_Physics_Units_Derived, DivisionOperator)
 // {
 
 //     using ostk::core::types::Real ;
@@ -470,7 +470,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (Library_Physics_Units_Derived, AdditionAssignmentOperator)
+// TEST (OpenSpaceToolkit_Physics_Units_Derived, AdditionAssignmentOperator)
 // {
 
 //     using ostk::physics::units::Derived ;
@@ -501,7 +501,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (Library_Physics_Units_Derived, SubtractionAssignmentOperator)
+// TEST (OpenSpaceToolkit_Physics_Units_Derived, SubtractionAssignmentOperator)
 // {
 
 //     using ostk::physics::units::Derived ;
@@ -532,7 +532,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (Library_Physics_Units_Derived, MultiplicationAssignmentOperator)
+// TEST (OpenSpaceToolkit_Physics_Units_Derived, MultiplicationAssignmentOperator)
 // {
 
 //     using ostk::core::types::Real ;
@@ -571,7 +571,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (Library_Physics_Units_Derived, DivisionAssignmentOperator)
+// TEST (OpenSpaceToolkit_Physics_Units_Derived, DivisionAssignmentOperator)
 // {
 
 //     using ostk::core::types::Real ;
@@ -611,7 +611,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (Library_Physics_Units_Derived, StreamOperator)
+// TEST (OpenSpaceToolkit_Physics_Units_Derived, StreamOperator)
 // {
 
 //     using ostk::physics::units::Derived ;
@@ -628,7 +628,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (Library_Physics_Units_Derived, IsDefined)
+// TEST (OpenSpaceToolkit_Physics_Units_Derived, IsDefined)
 // {
 
 //     using ostk::core::types::Real ;
@@ -656,7 +656,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (Library_Physics_Units_Derived, GetUnit)
+// TEST (OpenSpaceToolkit_Physics_Units_Derived, GetUnit)
 // {
 
 //     using ostk::physics::units::Derived ;
@@ -674,7 +674,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (Library_Physics_Units_Derived, In)
+// TEST (OpenSpaceToolkit_Physics_Units_Derived, In)
 // {
 
 //     using ostk::physics::units::Derived ;
@@ -697,7 +697,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (Library_Physics_Units_Derived, InMeters)
+// TEST (OpenSpaceToolkit_Physics_Units_Derived, InMeters)
 // {
 
 //     using ostk::physics::units::Derived ;
@@ -716,7 +716,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (Library_Physics_Units_Derived, InKilometers)
+// TEST (OpenSpaceToolkit_Physics_Units_Derived, InKilometers)
 // {
 
 //     using ostk::physics::units::Derived ;
@@ -735,7 +735,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (Library_Physics_Units_Derived, ToString)
+// TEST (OpenSpaceToolkit_Physics_Units_Derived, ToString)
 // {
 
 //     using ostk::physics::units::Derived ;
@@ -770,7 +770,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (Library_Physics_Units_Derived, Undefined)
+// TEST (OpenSpaceToolkit_Physics_Units_Derived, Undefined)
 // {
 
 //     using ostk::physics::units::Derived ;
@@ -786,7 +786,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (Library_Physics_Units_Derived, Meters)
+// TEST (OpenSpaceToolkit_Physics_Units_Derived, Meters)
 // {
 
 //     using ostk::physics::units::Derived ;
@@ -802,7 +802,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (Library_Physics_Units_Derived, Kilometers)
+// TEST (OpenSpaceToolkit_Physics_Units_Derived, Kilometers)
 // {
 
 //     using ostk::physics::units::Derived ;
@@ -818,7 +818,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// // TEST (Library_Physics_Units_Derived, Parse)
+// // TEST (OpenSpaceToolkit_Physics_Units_Derived, Parse)
 // // {
 
 // //     using ostk::physics::units::Derived ;
@@ -831,7 +831,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 
 // // }
 
-// TEST (Library_Physics_Units_Derived, StringFromUnit)
+// TEST (OpenSpaceToolkit_Physics_Units_Derived, StringFromUnit)
 // {
 
 //     using ostk::physics::units::Derived ;

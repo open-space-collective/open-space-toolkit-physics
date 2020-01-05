@@ -40,7 +40,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-TEST (Library_Physics_Environment, Constructor)
+TEST (OpenSpaceToolkit_Physics_Environment, Constructor)
 {
 
     using ostk::core::types::Shared ;
@@ -68,7 +68,7 @@ TEST (Library_Physics_Environment, Constructor)
 
 }
 
-TEST (Library_Physics_Environment, IsDefined)
+TEST (OpenSpaceToolkit_Physics_Environment, IsDefined)
 {
 
     using ostk::core::types::Shared ;
@@ -104,7 +104,7 @@ TEST (Library_Physics_Environment, IsDefined)
 
 }
 
-TEST (Library_Physics_Environment, HasObjectWithName)
+TEST (OpenSpaceToolkit_Physics_Environment, HasObjectWithName)
 {
 
     using ostk::core::types::Shared ;
@@ -142,7 +142,7 @@ TEST (Library_Physics_Environment, HasObjectWithName)
 
 }
 
-TEST (Library_Physics_Environment, Intersects)
+TEST (OpenSpaceToolkit_Physics_Environment, Intersects)
 {
 
     using ostk::core::types::Shared ;
@@ -199,7 +199,7 @@ TEST (Library_Physics_Environment, Intersects)
 
 }
 
-TEST (Library_Physics_Environment, AccessObjects)
+TEST (OpenSpaceToolkit_Physics_Environment, AccessObjects)
 {
 
     using ostk::core::types::Shared ;
@@ -237,7 +237,7 @@ TEST (Library_Physics_Environment, AccessObjects)
 
 }
 
-TEST (Library_Physics_Environment, AccessObjectWithName)
+TEST (OpenSpaceToolkit_Physics_Environment, AccessObjectWithName)
 {
 
     using ostk::core::types::Shared ;
@@ -280,7 +280,7 @@ TEST (Library_Physics_Environment, AccessObjectWithName)
 
 }
 
-TEST (Library_Physics_Environment, AccessCelestialObjectWithName)
+TEST (OpenSpaceToolkit_Physics_Environment, AccessCelestialObjectWithName)
 {
 
     using ostk::core::types::Shared ;
@@ -323,7 +323,7 @@ TEST (Library_Physics_Environment, AccessCelestialObjectWithName)
 
 }
 
-TEST (Library_Physics_Environment, GetInstant)
+TEST (OpenSpaceToolkit_Physics_Environment, GetInstant)
 {
 
     using ostk::core::types::Shared ;
@@ -359,7 +359,7 @@ TEST (Library_Physics_Environment, GetInstant)
 
 }
 
-TEST (Library_Physics_Environment, GetObjectNames)
+TEST (OpenSpaceToolkit_Physics_Environment, GetObjectNames)
 {
 
     using ostk::core::types::Shared ;
@@ -396,7 +396,7 @@ TEST (Library_Physics_Environment, GetObjectNames)
 
 }
 
-TEST (Library_Physics_Environment, SetInstant)
+TEST (OpenSpaceToolkit_Physics_Environment, SetInstant)
 {
 
     using ostk::core::types::Shared ;
@@ -440,7 +440,7 @@ TEST (Library_Physics_Environment, SetInstant)
 
 }
 
-TEST (Library_Physics_Environment, Undefined)
+TEST (OpenSpaceToolkit_Physics_Environment, Undefined)
 {
 
     using ostk::physics::Environment ;
@@ -455,7 +455,7 @@ TEST (Library_Physics_Environment, Undefined)
 
 }
 
-TEST (Library_Physics_Environment, Default)
+TEST (OpenSpaceToolkit_Physics_Environment, Default)
 {
 
     using ostk::physics::Environment ;
@@ -476,7 +476,7 @@ TEST (Library_Physics_Environment, Default)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-TEST (Library_Physics_Environment, Test_1)
+TEST (OpenSpaceToolkit_Physics_Environment, Test_1)
 {
 
     using ostk::core::types::Shared ;
@@ -573,7 +573,7 @@ TEST (Library_Physics_Environment, Test_1)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-TEST (Library_Physics_Environment, Test_2)
+TEST (OpenSpaceToolkit_Physics_Environment, Test_2)
 {
 
     using ostk::core::types::Shared ;
@@ -666,7 +666,7 @@ TEST (Library_Physics_Environment, Test_2)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-TEST (Library_Physics_Environment, Test_3)
+TEST (OpenSpaceToolkit_Physics_Environment, Test_3)
 {
 
     using ostk::core::types::Shared ;

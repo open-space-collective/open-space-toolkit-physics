@@ -27,7 +27,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-TEST (Library_Physics_Environment_Utilities_Eclipse, IsPositionInEclipse)
+TEST (OpenSpaceToolkit_Physics_Environment_Utilities_Eclipse, IsPositionInEclipse)
 {
 
     using ostk::core::types::Shared ;
@@ -93,7 +93,7 @@ TEST (Library_Physics_Environment_Utilities_Eclipse, IsPositionInEclipse)
 
 }
 
-TEST (Library_Physics_Environment_Utilities_Eclipse, EclipseIntervalsAtPosition)
+TEST (OpenSpaceToolkit_Physics_Environment_Utilities_Eclipse, EclipseIntervalsAtPosition)
 {
 
     using ostk::core::types::Index ;

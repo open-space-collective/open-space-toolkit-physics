@@ -13,7 +13,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-TEST (Library_Physics_Time_Date, Constructor)
+TEST (OpenSpaceToolkit_Physics_Time_Date, Constructor)
 {
 
     using ostk::physics::time::Date ;
@@ -46,7 +46,7 @@ TEST (Library_Physics_Time_Date, Constructor)
 
 }
 
-TEST (Library_Physics_Time_Date, EqualToOperator)
+TEST (OpenSpaceToolkit_Physics_Time_Date, EqualToOperator)
 {
 
     using ostk::physics::time::Date ;
@@ -75,7 +75,7 @@ TEST (Library_Physics_Time_Date, EqualToOperator)
 
 }
 
-TEST (Library_Physics_Time_Date, NotEqualToOperator)
+TEST (OpenSpaceToolkit_Physics_Time_Date, NotEqualToOperator)
 {
 
     using ostk::physics::time::Date ;
@@ -104,7 +104,7 @@ TEST (Library_Physics_Time_Date, NotEqualToOperator)
 
 }
 
-TEST (Library_Physics_Time_Date, StreamOperator)
+TEST (OpenSpaceToolkit_Physics_Time_Date, StreamOperator)
 {
 
     using ostk::physics::time::Date ;
@@ -121,7 +121,7 @@ TEST (Library_Physics_Time_Date, StreamOperator)
 
 }
 
-TEST (Library_Physics_Time_Date, IsDefined)
+TEST (OpenSpaceToolkit_Physics_Time_Date, IsDefined)
 {
 
     using ostk::physics::time::Date ;
@@ -143,7 +143,7 @@ TEST (Library_Physics_Time_Date, IsDefined)
 
 }
 
-TEST (Library_Physics_Time_Date, GetYear)
+TEST (OpenSpaceToolkit_Physics_Time_Date, GetYear)
 {
 
     using ostk::physics::time::Date ;
@@ -165,7 +165,7 @@ TEST (Library_Physics_Time_Date, GetYear)
 
 }
 
-TEST (Library_Physics_Time_Date, GetMonth)
+TEST (OpenSpaceToolkit_Physics_Time_Date, GetMonth)
 {
 
     using ostk::physics::time::Date ;
@@ -185,7 +185,7 @@ TEST (Library_Physics_Time_Date, GetMonth)
 
 }
 
-TEST (Library_Physics_Time_Date, GetDay)
+TEST (OpenSpaceToolkit_Physics_Time_Date, GetDay)
 {
 
     using ostk::physics::time::Date ;
@@ -205,7 +205,7 @@ TEST (Library_Physics_Time_Date, GetDay)
 
 }
 
-TEST (Library_Physics_Time_Date, ToString)
+TEST (OpenSpaceToolkit_Physics_Time_Date, ToString)
 {
 
     using ostk::physics::time::Date ;
@@ -249,7 +249,7 @@ TEST (Library_Physics_Time_Date, ToString)
 
 }
 
-TEST (Library_Physics_Time_Date, SetYear)
+TEST (OpenSpaceToolkit_Physics_Time_Date, SetYear)
 {
 
     using ostk::physics::time::Date ;
@@ -274,7 +274,7 @@ TEST (Library_Physics_Time_Date, SetYear)
 
 }
 
-TEST (Library_Physics_Time_Date, SetMonth)
+TEST (OpenSpaceToolkit_Physics_Time_Date, SetMonth)
 {
 
     using ostk::physics::time::Date ;
@@ -302,7 +302,7 @@ TEST (Library_Physics_Time_Date, SetMonth)
 
 }
 
-TEST (Library_Physics_Time_Date, SetDay)
+TEST (OpenSpaceToolkit_Physics_Time_Date, SetDay)
 {
 
     using ostk::physics::time::Date ;
@@ -330,7 +330,7 @@ TEST (Library_Physics_Time_Date, SetDay)
 
 }
 
-TEST (Library_Physics_Time_Date, Undefined)
+TEST (OpenSpaceToolkit_Physics_Time_Date, Undefined)
 {
 
     using ostk::physics::time::Date ;
@@ -345,7 +345,7 @@ TEST (Library_Physics_Time_Date, Undefined)
 
 }
 
-TEST (Library_Physics_Time_Date, J2000)
+TEST (OpenSpaceToolkit_Physics_Time_Date, J2000)
 {
 
     using ostk::physics::time::Date ;
@@ -358,7 +358,7 @@ TEST (Library_Physics_Time_Date, J2000)
 
 }
 
-TEST (Library_Physics_Time_Date, GPSEpoch)
+TEST (OpenSpaceToolkit_Physics_Time_Date, GPSEpoch)
 {
 
     using ostk::physics::time::Date ;
@@ -371,7 +371,7 @@ TEST (Library_Physics_Time_Date, GPSEpoch)
 
 }
 
-TEST (Library_Physics_Time_Date, UnixEpoch)
+TEST (OpenSpaceToolkit_Physics_Time_Date, UnixEpoch)
 {
 
     using ostk::physics::time::Date ;
@@ -384,7 +384,7 @@ TEST (Library_Physics_Time_Date, UnixEpoch)
 
 }
 
-TEST (Library_Physics_Time_Date, ModifiedJulianDateEpoch)
+TEST (OpenSpaceToolkit_Physics_Time_Date, ModifiedJulianDateEpoch)
 {
 
     using ostk::physics::time::Date ;
@@ -397,7 +397,7 @@ TEST (Library_Physics_Time_Date, ModifiedJulianDateEpoch)
 
 }
 
-TEST (Library_Physics_Time_Date, Parse)
+TEST (OpenSpaceToolkit_Physics_Time_Date, Parse)
 {
 
     using ostk::physics::time::Date ;

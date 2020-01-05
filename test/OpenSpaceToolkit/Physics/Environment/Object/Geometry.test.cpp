@@ -38,7 +38,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-TEST (Library_Physics_Environment_Object_Geometry, Constructor)
+TEST (OpenSpaceToolkit_Physics_Environment_Object_Geometry, Constructor)
 {
 
     using ostk::math::geom::d3::objects::Point ;
@@ -61,7 +61,7 @@ TEST (Library_Physics_Environment_Object_Geometry, Constructor)
 
 }
 
-TEST (Library_Physics_Environment_Object_Geometry, EqualToOperator)
+TEST (OpenSpaceToolkit_Physics_Environment_Object_Geometry, EqualToOperator)
 {
 
     using ostk::math::geom::d3::objects::Point ;
@@ -109,7 +109,7 @@ TEST (Library_Physics_Environment_Object_Geometry, EqualToOperator)
 
 }
 
-TEST (Library_Physics_Environment_Object_Geometry, NotEqualToOperator)
+TEST (OpenSpaceToolkit_Physics_Environment_Object_Geometry, NotEqualToOperator)
 {
 
     using ostk::math::geom::d3::objects::Point ;
@@ -157,7 +157,7 @@ TEST (Library_Physics_Environment_Object_Geometry, NotEqualToOperator)
 
 }
 
-TEST (Library_Physics_Environment_Object_Geometry, StreamOperator)
+TEST (OpenSpaceToolkit_Physics_Environment_Object_Geometry, StreamOperator)
 {
 
     using ostk::math::geom::d3::objects::Point ;
@@ -186,7 +186,7 @@ TEST (Library_Physics_Environment_Object_Geometry, StreamOperator)
 
 }
 
-TEST (Library_Physics_Environment_Object_Geometry, IsDefined)
+TEST (OpenSpaceToolkit_Physics_Environment_Object_Geometry, IsDefined)
 {
 
     using ostk::math::geom::d3::objects::Point ;
@@ -217,7 +217,7 @@ TEST (Library_Physics_Environment_Object_Geometry, IsDefined)
 
 }
 
-// TEST (Library_Physics_Environment_Object_Geometry, Intersects)
+// TEST (OpenSpaceToolkit_Physics_Environment_Object_Geometry, Intersects)
 // {
 
 //     using ostk::math::geom::d3::objects::Point ;
@@ -257,7 +257,7 @@ TEST (Library_Physics_Environment_Object_Geometry, IsDefined)
 
 // }
 
-// TEST (Library_Physics_Environment_Object_Geometry, Contains)
+// TEST (OpenSpaceToolkit_Physics_Environment_Object_Geometry, Contains)
 // {
 
 //     using ostk::physics::env::object::Geometry ;
@@ -270,7 +270,7 @@ TEST (Library_Physics_Environment_Object_Geometry, IsDefined)
 
 // }
 
-TEST (Library_Physics_Environment_Object_Geometry, AccessComposite)
+TEST (OpenSpaceToolkit_Physics_Environment_Object_Geometry, AccessComposite)
 {
 
     using ostk::math::geom::d3::objects::Point ;
@@ -302,7 +302,7 @@ TEST (Library_Physics_Environment_Object_Geometry, AccessComposite)
 
 }
 
-TEST (Library_Physics_Environment_Object_Geometry, AccessFrame)
+TEST (OpenSpaceToolkit_Physics_Environment_Object_Geometry, AccessFrame)
 {
 
     using ostk::math::geom::d3::objects::Point ;
@@ -333,7 +333,7 @@ TEST (Library_Physics_Environment_Object_Geometry, AccessFrame)
 
 }
 
-TEST (Library_Physics_Environment_Object_Geometry, In)
+TEST (OpenSpaceToolkit_Physics_Environment_Object_Geometry, In)
 {
 
     using ostk::core::types::Shared ;
@@ -462,7 +462,7 @@ TEST (Library_Physics_Environment_Object_Geometry, In)
 
 }
 
-TEST (Library_Physics_Environment_Object_Geometry, IntersectionWith)
+TEST (OpenSpaceToolkit_Physics_Environment_Object_Geometry, IntersectionWith)
 {
 
     using ostk::core::types::Shared ;
@@ -720,7 +720,7 @@ TEST (Library_Physics_Environment_Object_Geometry, IntersectionWith)
 
 }
 
-TEST (Library_Physics_Environment_Object_Geometry, Undefined)
+TEST (OpenSpaceToolkit_Physics_Environment_Object_Geometry, Undefined)
 {
 
     using ostk::physics::env::object::Geometry ;

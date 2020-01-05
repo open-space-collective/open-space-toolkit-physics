@@ -27,7 +27,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-TEST (Library_Physics_Environment_Ephemerides_SPICE, Constructor)
+TEST (OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, Constructor)
 {
 
     using ostk::physics::env::ephem::SPICE ;
@@ -40,7 +40,7 @@ TEST (Library_Physics_Environment_Ephemerides_SPICE, Constructor)
 
 }
 
-TEST (Library_Physics_Environment_Ephemerides_SPICE, IsDefined)
+TEST (OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, IsDefined)
 {
 
     using ostk::physics::env::ephem::SPICE ;
@@ -55,7 +55,7 @@ TEST (Library_Physics_Environment_Ephemerides_SPICE, IsDefined)
 
 }
 
-TEST (Library_Physics_Environment_Ephemerides_SPICE, AccessFrame)
+TEST (OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, AccessFrame)
 {
 
     using ostk::core::types::Shared ;
@@ -191,7 +191,7 @@ TEST (Library_Physics_Environment_Ephemerides_SPICE, AccessFrame)
 
 }
 
-TEST (Library_Physics_Environment_Ephemerides_SPICE, StringFromObject)
+TEST (OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, StringFromObject)
 {
 
     using ostk::physics::env::ephem::SPICE ;
@@ -215,7 +215,7 @@ TEST (Library_Physics_Environment_Ephemerides_SPICE, StringFromObject)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-TEST (Library_Physics_Environment_Ephemerides_SPICE, ManualMode)
+TEST (OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, ManualMode)
 {
 
     using ostk::core::types::Shared ;
@@ -286,7 +286,7 @@ TEST (Library_Physics_Environment_Ephemerides_SPICE, ManualMode)
 
 }
 
-TEST (Library_Physics_Environment_Ephemerides_SPICE, AutomaticMode)
+TEST (OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, AutomaticMode)
 {
 
     using ostk::core::types::Shared ;

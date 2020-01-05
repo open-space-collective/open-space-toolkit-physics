@@ -16,7 +16,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-TEST (Library_Physics_Environment_Magnetic_Dipole, Constructor)
+TEST (OpenSpaceToolkit_Physics_Environment_Magnetic_Dipole, Constructor)
 {
 
     using ostk::math::obj::Vector3d ;
@@ -39,7 +39,7 @@ TEST (Library_Physics_Environment_Magnetic_Dipole, Constructor)
 
 }
 
-TEST (Library_Physics_Environment_Magnetic_Dipole, Clone)
+TEST (OpenSpaceToolkit_Physics_Environment_Magnetic_Dipole, Clone)
 {
 
     using ostk::math::obj::Vector3d ;
@@ -58,7 +58,7 @@ TEST (Library_Physics_Environment_Magnetic_Dipole, Clone)
 
 }
 
-TEST (Library_Physics_Environment_Magnetic_Dipole, GetFieldValueAt)
+TEST (OpenSpaceToolkit_Physics_Environment_Magnetic_Dipole, GetFieldValueAt)
 {
 
     using ostk::math::obj::Vector3d ;

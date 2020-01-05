@@ -19,7 +19,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-TEST (Library_Physics_Coordinate_Transform, Constructor)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Transform, Constructor)
 {
 
     using ostk::math::obj::Vector3d ;
@@ -72,7 +72,7 @@ TEST (Library_Physics_Coordinate_Transform, Constructor)
 
 }
 
-TEST (Library_Physics_Coordinate_Transform, EqualToOperator)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Transform, EqualToOperator)
 {
 
     using ostk::math::obj::Vector3d ;
@@ -117,7 +117,7 @@ TEST (Library_Physics_Coordinate_Transform, EqualToOperator)
 
 }
 
-TEST (Library_Physics_Coordinate_Transform, NotEqualToOperator)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Transform, NotEqualToOperator)
 {
 
     using ostk::math::obj::Vector3d ;
@@ -162,7 +162,7 @@ TEST (Library_Physics_Coordinate_Transform, NotEqualToOperator)
 
 }
 
-TEST (Library_Physics_Coordinate_Transform, MultiplicationOperator)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Transform, MultiplicationOperator)
 {
 
     using ostk::core::types::Real ;
@@ -222,7 +222,7 @@ TEST (Library_Physics_Coordinate_Transform, MultiplicationOperator)
 
 }
 
-TEST (Library_Physics_Coordinate_Transform, StreamOperator)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Transform, StreamOperator)
 {
 
     using ostk::math::obj::Vector3d ;
@@ -253,7 +253,7 @@ TEST (Library_Physics_Coordinate_Transform, StreamOperator)
 
 }
 
-TEST (Library_Physics_Coordinate_Transform, IsDefined)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Transform, IsDefined)
 {
 
     using ostk::math::obj::Vector3d ;
@@ -286,7 +286,7 @@ TEST (Library_Physics_Coordinate_Transform, IsDefined)
 
 }
 
-TEST (Library_Physics_Coordinate_Transform, IsIdentity)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Transform, IsIdentity)
 {
 
     using ostk::math::obj::Vector3d ;
@@ -335,7 +335,7 @@ TEST (Library_Physics_Coordinate_Transform, IsIdentity)
 
 }
 
-TEST (Library_Physics_Coordinate_Transform, AccessInstant)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Transform, AccessInstant)
 {
 
     using ostk::math::obj::Vector3d ;
@@ -368,7 +368,7 @@ TEST (Library_Physics_Coordinate_Transform, AccessInstant)
 
 }
 
-TEST (Library_Physics_Coordinate_Transform, AccessTranslation)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Transform, AccessTranslation)
 {
 
     using ostk::math::obj::Vector3d ;
@@ -401,7 +401,7 @@ TEST (Library_Physics_Coordinate_Transform, AccessTranslation)
 
 }
 
-TEST (Library_Physics_Coordinate_Transform, AccessVelocity)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Transform, AccessVelocity)
 {
 
     using ostk::math::obj::Vector3d ;
@@ -434,7 +434,7 @@ TEST (Library_Physics_Coordinate_Transform, AccessVelocity)
 
 }
 
-TEST (Library_Physics_Coordinate_Transform, AccessOrientation)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Transform, AccessOrientation)
 {
 
     using ostk::math::obj::Vector3d ;
@@ -467,7 +467,7 @@ TEST (Library_Physics_Coordinate_Transform, AccessOrientation)
 
 }
 
-TEST (Library_Physics_Coordinate_Transform, AccessAngularVelocity)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Transform, AccessAngularVelocity)
 {
 
     using ostk::math::obj::Vector3d ;
@@ -500,7 +500,7 @@ TEST (Library_Physics_Coordinate_Transform, AccessAngularVelocity)
 
 }
 
-TEST (Library_Physics_Coordinate_Transform, GetInstant)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Transform, GetInstant)
 {
 
     using ostk::math::obj::Vector3d ;
@@ -533,7 +533,7 @@ TEST (Library_Physics_Coordinate_Transform, GetInstant)
 
 }
 
-TEST (Library_Physics_Coordinate_Transform, GetTranslation)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Transform, GetTranslation)
 {
 
     using ostk::math::obj::Vector3d ;
@@ -566,7 +566,7 @@ TEST (Library_Physics_Coordinate_Transform, GetTranslation)
 
 }
 
-TEST (Library_Physics_Coordinate_Transform, GetVelocity)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Transform, GetVelocity)
 {
 
     using ostk::math::obj::Vector3d ;
@@ -599,7 +599,7 @@ TEST (Library_Physics_Coordinate_Transform, GetVelocity)
 
 }
 
-TEST (Library_Physics_Coordinate_Transform, GetOrientation)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Transform, GetOrientation)
 {
 
     using ostk::math::obj::Vector3d ;
@@ -632,7 +632,7 @@ TEST (Library_Physics_Coordinate_Transform, GetOrientation)
 
 }
 
-TEST (Library_Physics_Coordinate_Transform, GetAngularVelocity)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Transform, GetAngularVelocity)
 {
 
     using ostk::math::obj::Vector3d ;
@@ -665,7 +665,7 @@ TEST (Library_Physics_Coordinate_Transform, GetAngularVelocity)
 
 }
 
-TEST (Library_Physics_Coordinate_Transform, GetInverse)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Transform, GetInverse)
 {
 
     using ostk::core::types::Real ;
@@ -708,7 +708,7 @@ TEST (Library_Physics_Coordinate_Transform, GetInverse)
 
 }
 
-TEST (Library_Physics_Coordinate_Transform, ApplyToPosition)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Transform, ApplyToPosition)
 {
 
     using ostk::core::types::Real ;
@@ -871,7 +871,7 @@ TEST (Library_Physics_Coordinate_Transform, ApplyToPosition)
 
 }
 
-TEST (Library_Physics_Coordinate_Transform, ApplyToVelocity)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Transform, ApplyToVelocity)
 {
 
     using ostk::core::types::Real ;
@@ -1041,7 +1041,7 @@ TEST (Library_Physics_Coordinate_Transform, ApplyToVelocity)
 
 }
 
-TEST (Library_Physics_Coordinate_Transform, ApplyToVector)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Transform, ApplyToVector)
 {
 
     using ostk::core::types::Real ;
@@ -1204,7 +1204,7 @@ TEST (Library_Physics_Coordinate_Transform, ApplyToVector)
 
 }
 
-TEST (Library_Physics_Coordinate_Transform, Undefined)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Transform, Undefined)
 {
 
     using ostk::physics::coord::Transform ;
@@ -1219,7 +1219,7 @@ TEST (Library_Physics_Coordinate_Transform, Undefined)
 
 }
 
-TEST (Library_Physics_Coordinate_Transform, Identity)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Transform, Identity)
 {
 
     using ostk::physics::time::Instant ;
@@ -1237,7 +1237,7 @@ TEST (Library_Physics_Coordinate_Transform, Identity)
 
 }
 
-TEST (Library_Physics_Coordinate_Transform, Active)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Transform, Active)
 {
 
     using ostk::math::obj::Vector3d ;
@@ -1262,7 +1262,7 @@ TEST (Library_Physics_Coordinate_Transform, Active)
 
 }
 
-TEST (Library_Physics_Coordinate_Transform, Passive)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Transform, Passive)
 {
 
     using ostk::math::obj::Vector3d ;
@@ -1289,7 +1289,7 @@ TEST (Library_Physics_Coordinate_Transform, Passive)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-TEST (Library_Physics_Coordinate_Transform, Test_1)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Transform, Test_1)
 {
 
     using ostk::core::types::Real ;

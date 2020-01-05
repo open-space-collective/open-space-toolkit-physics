@@ -13,7 +13,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-TEST (Library_Physics_Time_DateTime, Constructor)
+TEST (OpenSpaceToolkit_Physics_Time_DateTime, Constructor)
 {
 
     using ostk::physics::time::Date ;
@@ -96,7 +96,7 @@ TEST (Library_Physics_Time_DateTime, Constructor)
 
 }
 
-TEST (Library_Physics_Time_DateTime, EqualToOperator)
+TEST (OpenSpaceToolkit_Physics_Time_DateTime, EqualToOperator)
 {
 
     using ostk::physics::time::DateTime ;
@@ -132,7 +132,7 @@ TEST (Library_Physics_Time_DateTime, EqualToOperator)
 
 }
 
-TEST (Library_Physics_Time_DateTime, NotEqualToOperator)
+TEST (OpenSpaceToolkit_Physics_Time_DateTime, NotEqualToOperator)
 {
 
     using ostk::physics::time::DateTime ;
@@ -168,7 +168,7 @@ TEST (Library_Physics_Time_DateTime, NotEqualToOperator)
 
 }
 
-TEST (Library_Physics_Time_DateTime, StreamOperator)
+TEST (OpenSpaceToolkit_Physics_Time_DateTime, StreamOperator)
 {
 
     using ostk::physics::time::DateTime ;
@@ -185,7 +185,7 @@ TEST (Library_Physics_Time_DateTime, StreamOperator)
 
 }
 
-TEST (Library_Physics_Time_DateTime, IsDefined)
+TEST (OpenSpaceToolkit_Physics_Time_DateTime, IsDefined)
 {
 
     using ostk::physics::time::DateTime ;
@@ -205,7 +205,7 @@ TEST (Library_Physics_Time_DateTime, IsDefined)
 
 }
 
-TEST (Library_Physics_Time_DateTime, AccessDate)
+TEST (OpenSpaceToolkit_Physics_Time_DateTime, AccessDate)
 {
 
     using ostk::physics::time::Date ;
@@ -225,7 +225,7 @@ TEST (Library_Physics_Time_DateTime, AccessDate)
 
 }
 
-TEST (Library_Physics_Time_DateTime, AccessTime)
+TEST (OpenSpaceToolkit_Physics_Time_DateTime, AccessTime)
 {
 
     using ostk::physics::time::Time ;
@@ -245,7 +245,7 @@ TEST (Library_Physics_Time_DateTime, AccessTime)
 
 }
 
-TEST (Library_Physics_Time_DateTime, GetDate)
+TEST (OpenSpaceToolkit_Physics_Time_DateTime, GetDate)
 {
 
     using ostk::physics::time::Date ;
@@ -265,7 +265,7 @@ TEST (Library_Physics_Time_DateTime, GetDate)
 
 }
 
-TEST (Library_Physics_Time_DateTime, GetTime)
+TEST (OpenSpaceToolkit_Physics_Time_DateTime, GetTime)
 {
 
     using ostk::physics::time::Time ;
@@ -285,7 +285,7 @@ TEST (Library_Physics_Time_DateTime, GetTime)
 
 }
 
-TEST (Library_Physics_Time_DateTime, GetJulianDate)
+TEST (OpenSpaceToolkit_Physics_Time_DateTime, GetJulianDate)
 {
 
     using ostk::physics::time::DateTime ;
@@ -308,7 +308,7 @@ TEST (Library_Physics_Time_DateTime, GetJulianDate)
 
 }
 
-TEST (Library_Physics_Time_DateTime, GetModifiedJulianDate)
+TEST (OpenSpaceToolkit_Physics_Time_DateTime, GetModifiedJulianDate)
 {
 
     using ostk::physics::time::DateTime ;
@@ -329,7 +329,7 @@ TEST (Library_Physics_Time_DateTime, GetModifiedJulianDate)
 
 }
 
-TEST (Library_Physics_Time_DateTime, ToString)
+TEST (OpenSpaceToolkit_Physics_Time_DateTime, ToString)
 {
 
     using ostk::physics::time::DateTime ;
@@ -388,7 +388,7 @@ TEST (Library_Physics_Time_DateTime, ToString)
 
 }
 
-TEST (Library_Physics_Time_DateTime, Undefined)
+TEST (OpenSpaceToolkit_Physics_Time_DateTime, Undefined)
 {
 
     using ostk::physics::time::DateTime ;
@@ -403,7 +403,7 @@ TEST (Library_Physics_Time_DateTime, Undefined)
 
 }
 
-TEST (Library_Physics_Time_DateTime, J2000)
+TEST (OpenSpaceToolkit_Physics_Time_DateTime, J2000)
 {
 
     using ostk::physics::time::DateTime ;
@@ -416,7 +416,7 @@ TEST (Library_Physics_Time_DateTime, J2000)
 
 }
 
-TEST (Library_Physics_Time_DateTime, GPSEpoch)
+TEST (OpenSpaceToolkit_Physics_Time_DateTime, GPSEpoch)
 {
 
     using ostk::physics::time::DateTime ;
@@ -429,7 +429,7 @@ TEST (Library_Physics_Time_DateTime, GPSEpoch)
 
 }
 
-TEST (Library_Physics_Time_DateTime, UnixEpoch)
+TEST (OpenSpaceToolkit_Physics_Time_DateTime, UnixEpoch)
 {
 
     using ostk::physics::time::DateTime ;
@@ -442,7 +442,7 @@ TEST (Library_Physics_Time_DateTime, UnixEpoch)
 
 }
 
-TEST (Library_Physics_Time_DateTime, ModifiedJulianDateEpoch)
+TEST (OpenSpaceToolkit_Physics_Time_DateTime, ModifiedJulianDateEpoch)
 {
 
     using ostk::physics::time::DateTime ;
@@ -455,7 +455,7 @@ TEST (Library_Physics_Time_DateTime, ModifiedJulianDateEpoch)
 
 }
 
-TEST (Library_Physics_Time_DateTime, JulianDate)
+TEST (OpenSpaceToolkit_Physics_Time_DateTime, JulianDate)
 {
 
     using ostk::core::types::Real ;
@@ -480,7 +480,7 @@ TEST (Library_Physics_Time_DateTime, JulianDate)
 
 }
 
-TEST (Library_Physics_Time_DateTime, ModifiedJulianDate)
+TEST (OpenSpaceToolkit_Physics_Time_DateTime, ModifiedJulianDate)
 {
 
     using ostk::core::types::Real ;
@@ -504,7 +504,7 @@ TEST (Library_Physics_Time_DateTime, ModifiedJulianDate)
 
 }
 
-TEST (Library_Physics_Time_DateTime, Parse)
+TEST (OpenSpaceToolkit_Physics_Time_DateTime, Parse)
 {
 
     using ostk::physics::time::DateTime ;

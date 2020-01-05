@@ -13,7 +13,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, StreamOperator)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, StreamOperator)
 {
 
     using ostk::core::fs::Path ;
@@ -37,7 +37,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, StreamOperator)
 
 }
 
-TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, IsDefined)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, IsDefined)
 {
 
     using ostk::core::fs::Path ;
@@ -63,7 +63,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, IsDefined)
 
 }
 
-TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessReleaseDate)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessReleaseDate)
 {
 
     using ostk::physics::coord::frame::provider::iers::BulletinA ;
@@ -72,7 +72,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessReleaseDa
 
 }
 
-TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessTAIMinusUTC)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessTAIMinusUTC)
 {
 
     using ostk::physics::coord::frame::provider::iers::BulletinA ;
@@ -81,7 +81,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessTAIMinusU
 
 }
 
-TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessTAIMinusUTCEpoch)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessTAIMinusUTCEpoch)
 {
 
     using ostk::physics::coord::frame::provider::iers::BulletinA ;
@@ -90,7 +90,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessTAIMinusU
 
 }
 
-TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessObservationInterval)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessObservationInterval)
 {
 
     using ostk::physics::coord::frame::provider::iers::BulletinA ;
@@ -99,7 +99,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessObservati
 
 }
 
-TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessPredictionInterval)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessPredictionInterval)
 {
 
     using ostk::physics::coord::frame::provider::iers::BulletinA ;
@@ -108,7 +108,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessPredictio
 
 }
 
-TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetReleaseDate)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetReleaseDate)
 {
 
     using ostk::core::fs::Path ;
@@ -135,7 +135,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetReleaseDate)
 
 }
 
-TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetTAIMinusUTC)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetTAIMinusUTC)
 {
 
     using ostk::core::fs::Path ;
@@ -162,7 +162,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetTAIMinusUTC)
 
 }
 
-TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetTAIMinusUTCEpoch)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetTAIMinusUTCEpoch)
 {
 
     using ostk::core::fs::Path ;
@@ -191,7 +191,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetTAIMinusUTCE
 
 }
 
-TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetObservationInterval)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetObservationInterval)
 {
 
     using ostk::core::fs::Path ;
@@ -221,7 +221,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetObservationI
 
 }
 
-TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetObservationAt)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetObservationAt)
 {
 
     using ostk::core::fs::Path ;
@@ -265,7 +265,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetObservationA
 
 }
 
-TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetPredictionInterval)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetPredictionInterval)
 {
 
     using ostk::core::fs::Path ;
@@ -295,7 +295,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetPredictionIn
 
 }
 
-TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetPredictionAt)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetPredictionAt)
 {
 
     using ostk::core::fs::Path ;
@@ -336,7 +336,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetPredictionAt
 
 }
 
-TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, Load)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, Load)
 {
 
     using ostk::core::fs::Path ;

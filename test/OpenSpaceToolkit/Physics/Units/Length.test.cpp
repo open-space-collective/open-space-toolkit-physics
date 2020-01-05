@@ -14,7 +14,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-TEST (Library_Physics_Units_Length, Constructor)
+TEST (OpenSpaceToolkit_Physics_Units_Length, Constructor)
 {
 
     using ostk::core::types::Real ;
@@ -40,7 +40,7 @@ TEST (Library_Physics_Units_Length, Constructor)
 
 }
 
-TEST (Library_Physics_Units_Length, EqualToOperator)
+TEST (OpenSpaceToolkit_Physics_Units_Length, EqualToOperator)
 {
 
     using ostk::physics::units::Length ;
@@ -73,7 +73,7 @@ TEST (Library_Physics_Units_Length, EqualToOperator)
 
 }
 
-TEST (Library_Physics_Units_Length, NotEqualToOperator)
+TEST (OpenSpaceToolkit_Physics_Units_Length, NotEqualToOperator)
 {
 
     using ostk::physics::units::Length ;
@@ -103,7 +103,7 @@ TEST (Library_Physics_Units_Length, NotEqualToOperator)
 
 }
 
-TEST (Library_Physics_Units_Length, LowerThanOperator)
+TEST (OpenSpaceToolkit_Physics_Units_Length, LowerThanOperator)
 {
 
     using ostk::physics::units::Length ;
@@ -135,7 +135,7 @@ TEST (Library_Physics_Units_Length, LowerThanOperator)
 
 }
 
-TEST (Library_Physics_Units_Length, LowerThanOrEqualToOperator)
+TEST (OpenSpaceToolkit_Physics_Units_Length, LowerThanOrEqualToOperator)
 {
 
     using ostk::physics::units::Length ;
@@ -166,7 +166,7 @@ TEST (Library_Physics_Units_Length, LowerThanOrEqualToOperator)
 
 }
 
-TEST (Library_Physics_Units_Length, GreaterThanOperator)
+TEST (OpenSpaceToolkit_Physics_Units_Length, GreaterThanOperator)
 {
 
     using ostk::physics::units::Length ;
@@ -198,7 +198,7 @@ TEST (Library_Physics_Units_Length, GreaterThanOperator)
 
 }
 
-TEST (Library_Physics_Units_Length, GreaterThanOrEqualToOperator)
+TEST (OpenSpaceToolkit_Physics_Units_Length, GreaterThanOrEqualToOperator)
 {
 
     using ostk::physics::units::Length ;
@@ -229,7 +229,7 @@ TEST (Library_Physics_Units_Length, GreaterThanOrEqualToOperator)
 
 }
 
-TEST (Library_Physics_Units_Length, AdditionOperator)
+TEST (OpenSpaceToolkit_Physics_Units_Length, AdditionOperator)
 {
 
     using ostk::physics::units::Length ;
@@ -260,7 +260,7 @@ TEST (Library_Physics_Units_Length, AdditionOperator)
 
 }
 
-TEST (Library_Physics_Units_Length, SubtractionOperator)
+TEST (OpenSpaceToolkit_Physics_Units_Length, SubtractionOperator)
 {
 
     using ostk::physics::units::Length ;
@@ -291,7 +291,7 @@ TEST (Library_Physics_Units_Length, SubtractionOperator)
 
 }
 
-TEST (Library_Physics_Units_Length, MultiplicationOperator)
+TEST (OpenSpaceToolkit_Physics_Units_Length, MultiplicationOperator)
 {
 
     using ostk::core::types::Real ;
@@ -348,7 +348,7 @@ TEST (Library_Physics_Units_Length, MultiplicationOperator)
 
 }
 
-TEST (Library_Physics_Units_Length, DivisionOperator)
+TEST (OpenSpaceToolkit_Physics_Units_Length, DivisionOperator)
 {
 
     using ostk::core::types::Real ;
@@ -388,7 +388,7 @@ TEST (Library_Physics_Units_Length, DivisionOperator)
 
 }
 
-TEST (Library_Physics_Units_Length, AdditionAssignmentOperator)
+TEST (OpenSpaceToolkit_Physics_Units_Length, AdditionAssignmentOperator)
 {
 
     using ostk::physics::units::Length ;
@@ -419,7 +419,7 @@ TEST (Library_Physics_Units_Length, AdditionAssignmentOperator)
 
 }
 
-TEST (Library_Physics_Units_Length, SubtractionAssignmentOperator)
+TEST (OpenSpaceToolkit_Physics_Units_Length, SubtractionAssignmentOperator)
 {
 
     using ostk::physics::units::Length ;
@@ -450,7 +450,7 @@ TEST (Library_Physics_Units_Length, SubtractionAssignmentOperator)
 
 }
 
-TEST (Library_Physics_Units_Length, MultiplicationAssignmentOperator)
+TEST (OpenSpaceToolkit_Physics_Units_Length, MultiplicationAssignmentOperator)
 {
 
     using ostk::core::types::Real ;
@@ -489,7 +489,7 @@ TEST (Library_Physics_Units_Length, MultiplicationAssignmentOperator)
 
 }
 
-TEST (Library_Physics_Units_Length, DivisionAssignmentOperator)
+TEST (OpenSpaceToolkit_Physics_Units_Length, DivisionAssignmentOperator)
 {
 
     using ostk::core::types::Real ;
@@ -529,7 +529,7 @@ TEST (Library_Physics_Units_Length, DivisionAssignmentOperator)
 
 }
 
-TEST (Library_Physics_Units_Length, StreamOperator)
+TEST (OpenSpaceToolkit_Physics_Units_Length, StreamOperator)
 {
 
     using ostk::physics::units::Length ;
@@ -546,7 +546,7 @@ TEST (Library_Physics_Units_Length, StreamOperator)
 
 }
 
-TEST (Library_Physics_Units_Length, IsDefined)
+TEST (OpenSpaceToolkit_Physics_Units_Length, IsDefined)
 {
 
     using ostk::core::types::Real ;
@@ -574,7 +574,7 @@ TEST (Library_Physics_Units_Length, IsDefined)
 
 }
 
-TEST (Library_Physics_Units_Length, GetUnit)
+TEST (OpenSpaceToolkit_Physics_Units_Length, GetUnit)
 {
 
     using ostk::physics::units::Length ;
@@ -592,7 +592,7 @@ TEST (Library_Physics_Units_Length, GetUnit)
 
 }
 
-TEST (Library_Physics_Units_Length, In)
+TEST (OpenSpaceToolkit_Physics_Units_Length, In)
 {
 
     using ostk::physics::units::Length ;
@@ -615,7 +615,7 @@ TEST (Library_Physics_Units_Length, In)
 
 }
 
-TEST (Library_Physics_Units_Length, InMeters)
+TEST (OpenSpaceToolkit_Physics_Units_Length, InMeters)
 {
 
     using ostk::physics::units::Length ;
@@ -634,7 +634,7 @@ TEST (Library_Physics_Units_Length, InMeters)
 
 }
 
-TEST (Library_Physics_Units_Length, InKilometers)
+TEST (OpenSpaceToolkit_Physics_Units_Length, InKilometers)
 {
 
     using ostk::physics::units::Length ;
@@ -653,7 +653,7 @@ TEST (Library_Physics_Units_Length, InKilometers)
 
 }
 
-TEST (Library_Physics_Units_Length, ToString)
+TEST (OpenSpaceToolkit_Physics_Units_Length, ToString)
 {
 
     using ostk::physics::units::Length ;
@@ -710,7 +710,7 @@ TEST (Library_Physics_Units_Length, ToString)
 
 }
 
-TEST (Library_Physics_Units_Length, Undefined)
+TEST (OpenSpaceToolkit_Physics_Units_Length, Undefined)
 {
 
     using ostk::physics::units::Length ;
@@ -726,7 +726,7 @@ TEST (Library_Physics_Units_Length, Undefined)
 
 }
 
-TEST (Library_Physics_Units_Length, Millimeters)
+TEST (OpenSpaceToolkit_Physics_Units_Length, Millimeters)
 {
 
     using ostk::physics::units::Length ;
@@ -742,7 +742,7 @@ TEST (Library_Physics_Units_Length, Millimeters)
 
 }
 
-TEST (Library_Physics_Units_Length, Meters)
+TEST (OpenSpaceToolkit_Physics_Units_Length, Meters)
 {
 
     using ostk::physics::units::Length ;
@@ -758,7 +758,7 @@ TEST (Library_Physics_Units_Length, Meters)
 
 }
 
-TEST (Library_Physics_Units_Length, Kilometers)
+TEST (OpenSpaceToolkit_Physics_Units_Length, Kilometers)
 {
 
     using ostk::physics::units::Length ;
@@ -774,7 +774,7 @@ TEST (Library_Physics_Units_Length, Kilometers)
 
 }
 
-TEST (Library_Physics_Units_Length, Parse)
+TEST (OpenSpaceToolkit_Physics_Units_Length, Parse)
 {
 
     using ostk::physics::units::Length ;
@@ -818,7 +818,7 @@ TEST (Library_Physics_Units_Length, Parse)
 
 }
 
-TEST (Library_Physics_Units_Length, StringFromUnit)
+TEST (OpenSpaceToolkit_Physics_Units_Length, StringFromUnit)
 {
 
     using ostk::physics::units::Length ;
@@ -836,7 +836,7 @@ TEST (Library_Physics_Units_Length, StringFromUnit)
 
 }
 
-TEST (Library_Physics_Units_Length, SymbolFromUnit)
+TEST (OpenSpaceToolkit_Physics_Units_Length, SymbolFromUnit)
 {
 
     using ostk::physics::units::Length ;

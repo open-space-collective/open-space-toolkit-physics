@@ -20,7 +20,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, GetMode)
+// TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetMode)
 // {
 
 //     using ostk::physics::coord::frame::provider::iers::Manager ;
@@ -33,7 +33,7 @@
 
 // }
 
-// TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, GetLocalRepository)
+// TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetLocalRepository)
 // {
 
 //     using ostk::physics::coord::frame::provider::iers::Manager ;
@@ -46,7 +46,7 @@
 
 // }
 
-// TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, GetRemoteUrl)
+// TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetRemoteUrl)
 // {
 
 //     using ostk::physics::coord::frame::provider::iers::Manager ;
@@ -59,7 +59,7 @@
 
 // }
 
-// TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, GetBulletinAAt)
+// TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetBulletinAAt)
 // {
 
 //     using ostk::core::fs::Path ;
@@ -88,7 +88,7 @@
 
 // }
 
-// TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, GetFinals2000AAt)
+// TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetFinals2000AAt)
 // {
 
 //     using ostk::physics::coord::frame::provider::iers::Manager ;
@@ -101,7 +101,7 @@
 
 // }
 
-TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, GetPolarMotionAt)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetPolarMotionAt)
 {
 
     using ostk::core::types::Real ;
@@ -161,7 +161,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, GetPolarMotionAt)
 
 }
 
-TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, GetUt1MinusUtcAt)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetUt1MinusUtcAt)
 {
 
     using ostk::core::types::Real ;
@@ -233,7 +233,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, GetUt1MinusUtcAt)
 
 }
 
-// TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, GetLodAt)
+// TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetLodAt)
 // {
 
 //     using ostk::physics::coord::frame::provider::iers::Manager ;
@@ -246,7 +246,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, GetUt1MinusUtcAt)
 
 // }
 
-// TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, SetMode)
+// TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, SetMode)
 // {
 
 //     using ostk::physics::coord::frame::provider::iers::Manager ;
@@ -259,7 +259,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, GetUt1MinusUtcAt)
 
 // }
 
-// TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, SetLocalRepository)
+// TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, SetLocalRepository)
 // {
 
 //     using ostk::physics::coord::frame::provider::iers::Manager ;
@@ -272,7 +272,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, GetUt1MinusUtcAt)
 
 // }
 
-// TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, SetRemoteUrl)
+// TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, SetRemoteUrl)
 // {
 
 //     using ostk::physics::coord::frame::provider::iers::Manager ;
@@ -285,7 +285,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, GetUt1MinusUtcAt)
 
 // }
 
-// TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, LoadBulletinA)
+// TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, LoadBulletinA)
 // {
 
 //     using ostk::core::fs::Path ;
@@ -311,7 +311,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, GetUt1MinusUtcAt)
 
 // }
 
-// TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, LoadFinals2000A)
+// TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, LoadFinals2000A)
 // {
 
 //     using ostk::physics::coord::frame::provider::iers::Manager ;
@@ -324,7 +324,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, GetUt1MinusUtcAt)
 
 // }
 
-// TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, FetchLatestBulletinA)
+// TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, FetchLatestBulletinA)
 // {
 
 //     using ostk::core::fs::File ;
@@ -343,7 +343,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, GetUt1MinusUtcAt)
 
 // }
 
-// TEST (Library_Physics_Coordinate_Frame_Providers_IERS_Manager, Reset)
+// TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, Reset)
 // {
 
 //     using ostk::physics::coord::frame::provider::iers::Manager ;

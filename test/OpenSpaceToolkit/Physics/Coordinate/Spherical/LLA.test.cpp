@@ -23,7 +23,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-TEST (Library_Physics_Coordinate_Spherical_LLA, Constructor)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Constructor)
 {
 
     using ostk::physics::units::Length ;
@@ -53,7 +53,7 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, Constructor)
 
 }
 
-TEST (Library_Physics_Coordinate_Spherical_LLA, EqualToOperator)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, EqualToOperator)
 {
 
     using ostk::physics::units::Length ;
@@ -95,7 +95,7 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, EqualToOperator)
 
 }
 
-TEST (Library_Physics_Coordinate_Spherical_LLA, NotEqualToOperator)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, NotEqualToOperator)
 {
 
     using ostk::physics::units::Length ;
@@ -137,7 +137,7 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, NotEqualToOperator)
 
 }
 
-TEST (Library_Physics_Coordinate_Spherical_LLA, StreamOperator)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, StreamOperator)
 {
 
     using ostk::physics::units::Length ;
@@ -163,7 +163,7 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, StreamOperator)
 
 }
 
-TEST (Library_Physics_Coordinate_Spherical_LLA, IsDefined)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, IsDefined)
 {
 
     using ostk::physics::units::Length ;
@@ -191,7 +191,7 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, IsDefined)
 
 }
 
-TEST (Library_Physics_Coordinate_Spherical_LLA, GetLatitude)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, GetLatitude)
 {
 
     using ostk::physics::units::Length ;
@@ -219,7 +219,7 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, GetLatitude)
 
 }
 
-TEST (Library_Physics_Coordinate_Spherical_LLA, GetLongitude)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, GetLongitude)
 {
 
     using ostk::physics::units::Length ;
@@ -247,7 +247,7 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, GetLongitude)
 
 }
 
-TEST (Library_Physics_Coordinate_Spherical_LLA, GetAltitude)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, GetAltitude)
 {
 
     using ostk::physics::units::Length ;
@@ -275,7 +275,7 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, GetAltitude)
 
 }
 
-TEST (Library_Physics_Coordinate_Spherical_LLA, ToVector)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToVector)
 {
 
     using ostk::math::obj::Vector3d ;
@@ -305,7 +305,7 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, ToVector)
 
 }
 
-TEST (Library_Physics_Coordinate_Spherical_LLA, ToCartesian)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToCartesian)
 {
 
     using ostk::physics::units::Length ;
@@ -392,7 +392,7 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, ToCartesian)
 
 }
 
-TEST (Library_Physics_Coordinate_Spherical_LLA, ToString)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToString)
 {
 
     using ostk::physics::units::Length ;
@@ -420,7 +420,7 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, ToString)
 
 }
 
-TEST (Library_Physics_Coordinate_Spherical_LLA, Undefined)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Undefined)
 {
 
     using ostk::physics::coord::spherical::LLA ;
@@ -433,7 +433,7 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, Undefined)
 
 }
 
-TEST (Library_Physics_Coordinate_Spherical_LLA, Vector)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Vector)
 {
 
     using ostk::math::obj::Vector3d ;
@@ -465,7 +465,7 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, Vector)
 
 }
 
-TEST (Library_Physics_Coordinate_Spherical_LLA, Cartesian)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Cartesian)
 {
 
     using ostk::core::types::Shared ;

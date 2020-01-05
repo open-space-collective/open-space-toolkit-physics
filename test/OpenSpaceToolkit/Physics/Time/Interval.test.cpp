@@ -13,7 +13,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-TEST (Library_Physics_Time_Interval, Constructor)
+TEST (OpenSpaceToolkit_Physics_Time_Interval, Constructor)
 {
 
     using ostk::physics::time::Scale ;
@@ -51,7 +51,7 @@ TEST (Library_Physics_Time_Interval, Constructor)
 
 }
 
-TEST (Library_Physics_Time_Interval, StreamOperator)
+TEST (OpenSpaceToolkit_Physics_Time_Interval, StreamOperator)
 {
 
     using ostk::physics::time::Scale ;
@@ -71,7 +71,7 @@ TEST (Library_Physics_Time_Interval, StreamOperator)
 
 }
 
-TEST (Library_Physics_Time_Interval, IsDefined)
+TEST (OpenSpaceToolkit_Physics_Time_Interval, IsDefined)
 {
 
     using ostk::physics::time::Scale ;
@@ -100,7 +100,7 @@ TEST (Library_Physics_Time_Interval, IsDefined)
 
 }
 
-TEST (Library_Physics_Time_Interval, AccessStart)
+TEST (OpenSpaceToolkit_Physics_Time_Interval, AccessStart)
 {
 
     using ostk::physics::time::Scale ;
@@ -128,7 +128,7 @@ TEST (Library_Physics_Time_Interval, AccessStart)
 
 }
 
-TEST (Library_Physics_Time_Interval, AccessEnd)
+TEST (OpenSpaceToolkit_Physics_Time_Interval, AccessEnd)
 {
 
     using ostk::physics::time::Scale ;
@@ -156,7 +156,7 @@ TEST (Library_Physics_Time_Interval, AccessEnd)
 
 }
 
-TEST (Library_Physics_Time_Interval, GetStart)
+TEST (OpenSpaceToolkit_Physics_Time_Interval, GetStart)
 {
 
     using ostk::physics::time::Scale ;
@@ -184,7 +184,7 @@ TEST (Library_Physics_Time_Interval, GetStart)
 
 }
 
-TEST (Library_Physics_Time_Interval, GetEnd)
+TEST (OpenSpaceToolkit_Physics_Time_Interval, GetEnd)
 {
 
     using ostk::physics::time::Scale ;
@@ -212,7 +212,7 @@ TEST (Library_Physics_Time_Interval, GetEnd)
 
 }
 
-TEST (Library_Physics_Time_Interval, GetDuration)
+TEST (OpenSpaceToolkit_Physics_Time_Interval, GetDuration)
 {
 
     using ostk::physics::time::Scale ;
@@ -241,7 +241,7 @@ TEST (Library_Physics_Time_Interval, GetDuration)
 
 }
 
-TEST (Library_Physics_Time_Interval, GetCenter)
+TEST (OpenSpaceToolkit_Physics_Time_Interval, GetCenter)
 {
 
     using ostk::physics::time::Scale ;
@@ -269,7 +269,7 @@ TEST (Library_Physics_Time_Interval, GetCenter)
 
 }
 
-TEST (Library_Physics_Time_Interval, ToString)
+TEST (OpenSpaceToolkit_Physics_Time_Interval, ToString)
 {
 
     using ostk::physics::time::Scale ;
@@ -297,7 +297,7 @@ TEST (Library_Physics_Time_Interval, ToString)
 
 }
 
-TEST (Library_Physics_Time_Interval, GenerateGrid)
+TEST (OpenSpaceToolkit_Physics_Time_Interval, GenerateGrid)
 {
 
     using ostk::core::ctnr::Array ;
@@ -441,7 +441,7 @@ TEST (Library_Physics_Time_Interval, GenerateGrid)
 
 }
 
-TEST (Library_Physics_Time_Interval, Undefined)
+TEST (OpenSpaceToolkit_Physics_Time_Interval, Undefined)
 {
 
     using ostk::physics::time::Interval ;
@@ -456,7 +456,7 @@ TEST (Library_Physics_Time_Interval, Undefined)
 
 }
 
-TEST (Library_Physics_Time_Interval, Closed)
+TEST (OpenSpaceToolkit_Physics_Time_Interval, Closed)
 {
 
     using ostk::physics::time::Scale ;
@@ -482,7 +482,7 @@ TEST (Library_Physics_Time_Interval, Closed)
 
 }
 
-TEST (Library_Physics_Time_Interval, Centered)
+TEST (OpenSpaceToolkit_Physics_Time_Interval, Centered)
 {
 
     using ostk::physics::time::Scale ;
@@ -515,7 +515,7 @@ TEST (Library_Physics_Time_Interval, Centered)
 
 }
 
-TEST (Library_Physics_Time_Interval, Parse)
+TEST (OpenSpaceToolkit_Physics_Time_Interval, Parse)
 {
 
     using ostk::physics::time::Scale ;

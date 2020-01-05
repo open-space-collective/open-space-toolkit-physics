@@ -22,7 +22,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-TEST (Library_Physics_Environment_Gravitational_Earth, Constructor)
+TEST (OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Constructor)
 {
 
     using ostk::core::fs::Path ;
@@ -68,7 +68,7 @@ TEST (Library_Physics_Environment_Gravitational_Earth, Constructor)
 
 }
 
-TEST (Library_Physics_Environment_Gravitational_Earth, Clone)
+TEST (OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Clone)
 {
 
     using ostk::core::fs::Path ;
@@ -95,7 +95,7 @@ TEST (Library_Physics_Environment_Gravitational_Earth, Clone)
 
 }
 
-TEST (Library_Physics_Environment_Gravitational_Earth, GetType)
+TEST (OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetType)
 {
 
     using ostk::core::fs::Path ;
@@ -123,7 +123,7 @@ TEST (Library_Physics_Environment_Gravitational_Earth, GetType)
 
 }
 
-TEST (Library_Physics_Environment_Gravitational_Earth, GetFieldValueAt)
+TEST (OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAt)
 {
 
     using ostk::core::types::Real ;

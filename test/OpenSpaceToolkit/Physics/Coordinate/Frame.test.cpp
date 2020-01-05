@@ -17,7 +17,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-TEST (Library_Physics_Coordinate_Frame, EqualToOperator)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, EqualToOperator)
 {
 
     using ostk::core::types::Shared ;
@@ -139,7 +139,7 @@ TEST (Library_Physics_Coordinate_Frame, EqualToOperator)
 
 }
 
-TEST (Library_Physics_Coordinate_Frame, NotEqualToOperator)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, NotEqualToOperator)
 {
 
     using ostk::core::types::Shared ;
@@ -261,7 +261,7 @@ TEST (Library_Physics_Coordinate_Frame, NotEqualToOperator)
 
 }
 
-TEST (Library_Physics_Coordinate_Frame, StreamOperator)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, StreamOperator)
 {
 
     using ostk::core::types::Shared ;
@@ -303,7 +303,7 @@ TEST (Library_Physics_Coordinate_Frame, StreamOperator)
 
 }
 
-TEST (Library_Physics_Coordinate_Frame, IsDefined)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, IsDefined)
 {
 
     using ostk::core::types::Shared ;
@@ -360,7 +360,7 @@ TEST (Library_Physics_Coordinate_Frame, IsDefined)
 
 }
 
-TEST (Library_Physics_Coordinate_Frame, IsQuasiInertial)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, IsQuasiInertial)
 {
 
     using ostk::core::types::Shared ;
@@ -417,7 +417,7 @@ TEST (Library_Physics_Coordinate_Frame, IsQuasiInertial)
 
 }
 
-TEST (Library_Physics_Coordinate_Frame, HasParent)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, HasParent)
 {
 
     using ostk::core::types::Shared ;
@@ -474,7 +474,7 @@ TEST (Library_Physics_Coordinate_Frame, HasParent)
 
 }
 
-TEST (Library_Physics_Coordinate_Frame, AccessParent)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, AccessParent)
 {
 
     using ostk::core::types::Shared ;
@@ -531,7 +531,7 @@ TEST (Library_Physics_Coordinate_Frame, AccessParent)
 
 }
 
-TEST (Library_Physics_Coordinate_Frame, GetName)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, GetName)
 {
 
     using ostk::core::types::Shared ;
@@ -588,7 +588,7 @@ TEST (Library_Physics_Coordinate_Frame, GetName)
 
 }
 
-TEST (Library_Physics_Coordinate_Frame, GetOriginIn)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, GetOriginIn)
 {
 
     using ostk::core::types::Shared ;
@@ -685,7 +685,7 @@ TEST (Library_Physics_Coordinate_Frame, GetOriginIn)
 
 }
 
-TEST (Library_Physics_Coordinate_Frame, GetVelocityIn)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, GetVelocityIn)
 {
 
     using ostk::core::types::Shared ;
@@ -782,7 +782,7 @@ TEST (Library_Physics_Coordinate_Frame, GetVelocityIn)
 
 }
 
-TEST (Library_Physics_Coordinate_Frame, GetAxesIn)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, GetAxesIn)
 {
 
     using ostk::core::types::Shared ;
@@ -869,7 +869,7 @@ TEST (Library_Physics_Coordinate_Frame, GetAxesIn)
 
 }
 
-TEST (Library_Physics_Coordinate_Frame, GetTransformTo)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, GetTransformTo)
 {
 
     using ostk::core::types::Shared ;
@@ -919,7 +919,7 @@ TEST (Library_Physics_Coordinate_Frame, GetTransformTo)
 
 }
 
-TEST (Library_Physics_Coordinate_Frame, Undefined)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, Undefined)
 {
 
     using ostk::physics::coord::Frame ;
@@ -932,7 +932,7 @@ TEST (Library_Physics_Coordinate_Frame, Undefined)
 
 }
 
-// TEST (Library_Physics_Coordinate_Frame, ICRF)
+// TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, ICRF)
 // {
 
 //     using ostk::physics::coord::Frame ;
@@ -945,7 +945,7 @@ TEST (Library_Physics_Coordinate_Frame, Undefined)
 
 // }
 
-TEST (Library_Physics_Coordinate_Frame, GCRF)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, GCRF)
 {
 
     using ostk::physics::coord::Frame ;
@@ -958,7 +958,7 @@ TEST (Library_Physics_Coordinate_Frame, GCRF)
 
 }
 
-// TEST (Library_Physics_Coordinate_Frame, EME2000)
+// TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, EME2000)
 // {
 
 //     using ostk::physics::coord::Frame ;
@@ -971,7 +971,7 @@ TEST (Library_Physics_Coordinate_Frame, GCRF)
 
 // }
 
-TEST (Library_Physics_Coordinate_Frame, TEME)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, TEME)
 {
 
     using ostk::physics::coord::Frame ;
@@ -984,7 +984,7 @@ TEST (Library_Physics_Coordinate_Frame, TEME)
 
 }
 
-TEST (Library_Physics_Coordinate_Frame, TEMEOfEpoch)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, TEMEOfEpoch)
 {
 
     using ostk::physics::time::Instant ;
@@ -998,7 +998,7 @@ TEST (Library_Physics_Coordinate_Frame, TEMEOfEpoch)
 
 }
 
-TEST (Library_Physics_Coordinate_Frame, CIRF)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, CIRF)
 {
 
     using ostk::physics::coord::Frame ;
@@ -1011,7 +1011,7 @@ TEST (Library_Physics_Coordinate_Frame, CIRF)
 
 }
 
-TEST (Library_Physics_Coordinate_Frame, TIRF)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, TIRF)
 {
 
     using ostk::physics::coord::Frame ;
@@ -1024,7 +1024,7 @@ TEST (Library_Physics_Coordinate_Frame, TIRF)
 
 }
 
-TEST (Library_Physics_Coordinate_Frame, ITRF)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, ITRF)
 {
 
     using ostk::physics::coord::Frame ;
@@ -1037,7 +1037,7 @@ TEST (Library_Physics_Coordinate_Frame, ITRF)
 
 }
 
-TEST (Library_Physics_Coordinate_Frame, WithName)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, WithName)
 {
 
     using ostk::physics::coord::Frame ;
@@ -1055,7 +1055,7 @@ TEST (Library_Physics_Coordinate_Frame, WithName)
 
 }
 
-TEST (Library_Physics_Coordinate_Frame, Exists)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, Exists)
 {
 
     using ostk::core::types::Shared ;
@@ -1103,7 +1103,7 @@ TEST (Library_Physics_Coordinate_Frame, Exists)
 
 }
 
-TEST (Library_Physics_Coordinate_Frame, Construct)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, Construct)
 {
 
     using ostk::core::types::Shared ;
@@ -1151,7 +1151,7 @@ TEST (Library_Physics_Coordinate_Frame, Construct)
 
 }
 
-TEST (Library_Physics_Coordinate_Frame, Destruct)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, Destruct)
 {
 
     using ostk::core::types::Shared ;
@@ -1196,7 +1196,7 @@ TEST (Library_Physics_Coordinate_Frame, Destruct)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-TEST (Library_Physics_Coordinate_Frame, Test_1)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
 {
 
     using ostk::core::types::Shared ;

@@ -13,7 +13,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-TEST (Library_Physics_Unit, EqualToOperator)
+TEST (OpenSpaceToolkit_Physics_Unit, EqualToOperator)
 {
 
     using ostk::physics::Unit ;
@@ -57,7 +57,7 @@ TEST (Library_Physics_Unit, EqualToOperator)
 
 }
 
-TEST (Library_Physics_Unit, NotEqualToOperator)
+TEST (OpenSpaceToolkit_Physics_Unit, NotEqualToOperator)
 {
 
     using ostk::physics::Unit ;
@@ -101,7 +101,7 @@ TEST (Library_Physics_Unit, NotEqualToOperator)
 
 }
 
-TEST (Library_Physics_Unit, StreamOperator)
+TEST (OpenSpaceToolkit_Physics_Unit, StreamOperator)
 {
 
     using ostk::physics::Unit ;
@@ -121,7 +121,7 @@ TEST (Library_Physics_Unit, StreamOperator)
 
 }
 
-TEST (Library_Physics_Unit, IsDefined)
+TEST (OpenSpaceToolkit_Physics_Unit, IsDefined)
 {
 
     using ostk::physics::Unit ;
@@ -138,7 +138,7 @@ TEST (Library_Physics_Unit, IsDefined)
 
 }
 
-TEST (Library_Physics_Unit, IsNone)
+TEST (OpenSpaceToolkit_Physics_Unit, IsNone)
 {
 
     using ostk::physics::Unit ;
@@ -159,7 +159,7 @@ TEST (Library_Physics_Unit, IsNone)
 
 }
 
-TEST (Library_Physics_Unit, GetType)
+TEST (OpenSpaceToolkit_Physics_Unit, GetType)
 {
 
     using ostk::physics::Unit ;
@@ -180,7 +180,7 @@ TEST (Library_Physics_Unit, GetType)
 
 }
 
-TEST (Library_Physics_Unit, RatioTo)
+TEST (OpenSpaceToolkit_Physics_Unit, RatioTo)
 {
 
     using ostk::physics::Unit ;
@@ -223,7 +223,7 @@ TEST (Library_Physics_Unit, RatioTo)
 
 }
 
-TEST (Library_Physics_Unit, ToString)
+TEST (OpenSpaceToolkit_Physics_Unit, ToString)
 {
 
     using ostk::physics::Unit ;
@@ -250,7 +250,7 @@ TEST (Library_Physics_Unit, ToString)
 
 }
 
-TEST (Library_Physics_Unit, Undefined)
+TEST (OpenSpaceToolkit_Physics_Unit, Undefined)
 {
 
     using ostk::physics::Unit ;
@@ -265,7 +265,7 @@ TEST (Library_Physics_Unit, Undefined)
 
 }
 
-TEST (Library_Physics_Unit, None)
+TEST (OpenSpaceToolkit_Physics_Unit, None)
 {
 
     using ostk::physics::Unit ;
@@ -280,7 +280,7 @@ TEST (Library_Physics_Unit, None)
 
 }
 
-TEST (Library_Physics_Unit, Length)
+TEST (OpenSpaceToolkit_Physics_Unit, Length)
 {
 
     using ostk::physics::Unit ;
@@ -296,7 +296,7 @@ TEST (Library_Physics_Unit, Length)
 
 }
 
-TEST (Library_Physics_Unit, StringFromType)
+TEST (OpenSpaceToolkit_Physics_Unit, StringFromType)
 {
 
     using ostk::physics::Unit ;

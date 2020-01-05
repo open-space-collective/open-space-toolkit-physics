@@ -14,7 +14,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-TEST (Library_Physics_Units_Time, Constructor)
+TEST (OpenSpaceToolkit_Physics_Units_Time, Constructor)
 {
 
     using ostk::core::types::Real ;
@@ -40,7 +40,7 @@ TEST (Library_Physics_Units_Time, Constructor)
 
 }
 
-TEST (Library_Physics_Units_Time, IsDefined)
+TEST (OpenSpaceToolkit_Physics_Units_Time, IsDefined)
 {
 
     using ostk::core::types::Real ;
@@ -71,7 +71,7 @@ TEST (Library_Physics_Units_Time, IsDefined)
 
 }
 
-TEST (Library_Physics_Units_Time, GetUnit)
+TEST (OpenSpaceToolkit_Physics_Units_Time, GetUnit)
 {
 
     using ostk::physics::units::Time ;
@@ -92,7 +92,7 @@ TEST (Library_Physics_Units_Time, GetUnit)
 
 }
 
-TEST (Library_Physics_Units_Time, In)
+TEST (OpenSpaceToolkit_Physics_Units_Time, In)
 {
 
     using ostk::physics::units::Time ;
@@ -138,7 +138,7 @@ TEST (Library_Physics_Units_Time, In)
 
 }
 
-TEST (Library_Physics_Units_Time, InSeconds)
+TEST (OpenSpaceToolkit_Physics_Units_Time, InSeconds)
 {
 
     using ostk::physics::units::Time ;
@@ -157,7 +157,7 @@ TEST (Library_Physics_Units_Time, InSeconds)
 
 }
 
-TEST (Library_Physics_Units_Time, ToString)
+TEST (OpenSpaceToolkit_Physics_Units_Time, ToString)
 {
 
     using ostk::physics::units::Time ;
@@ -232,7 +232,7 @@ TEST (Library_Physics_Units_Time, ToString)
 
 }
 
-TEST (Library_Physics_Units_Time, Undefined)
+TEST (OpenSpaceToolkit_Physics_Units_Time, Undefined)
 {
 
     using ostk::physics::units::Time ;
@@ -248,7 +248,7 @@ TEST (Library_Physics_Units_Time, Undefined)
 
 }
 
-TEST (Library_Physics_Units_Time, Seconds)
+TEST (OpenSpaceToolkit_Physics_Units_Time, Seconds)
 {
 
     using ostk::physics::units::Time ;
@@ -264,7 +264,7 @@ TEST (Library_Physics_Units_Time, Seconds)
 
 }
 
-TEST (Library_Physics_Units_Time, StringFromUnit)
+TEST (OpenSpaceToolkit_Physics_Units_Time, StringFromUnit)
 {
 
     using ostk::physics::units::Time ;
@@ -285,7 +285,7 @@ TEST (Library_Physics_Units_Time, StringFromUnit)
 
 }
 
-TEST (Library_Physics_Units_Time, SymbolFromUnit)
+TEST (OpenSpaceToolkit_Physics_Units_Time, SymbolFromUnit)
 {
 
     using ostk::physics::units::Time ;

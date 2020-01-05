@@ -15,7 +15,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-TEST (Library_Physics_Units_Derived_Angle, Constructor)
+TEST (OpenSpaceToolkit_Physics_Units_Derived_Angle, Constructor)
 {
 
     using ostk::core::types::Real ;
@@ -41,7 +41,7 @@ TEST (Library_Physics_Units_Derived_Angle, Constructor)
 
 }
 
-TEST (Library_Physics_Units_Derived_Angle, EqualToOperator)
+TEST (OpenSpaceToolkit_Physics_Units_Derived_Angle, EqualToOperator)
 {
 
     using ostk::core::types::Real ;
@@ -109,7 +109,7 @@ TEST (Library_Physics_Units_Derived_Angle, EqualToOperator)
 
 }
 
-TEST (Library_Physics_Units_Derived_Angle, NotEqualToOperator)
+TEST (OpenSpaceToolkit_Physics_Units_Derived_Angle, NotEqualToOperator)
 {
 
     using ostk::core::types::Real ;
@@ -177,7 +177,7 @@ TEST (Library_Physics_Units_Derived_Angle, NotEqualToOperator)
 
 }
 
-TEST (Library_Physics_Units_Derived_Angle, AdditionOperator)
+TEST (OpenSpaceToolkit_Physics_Units_Derived_Angle, AdditionOperator)
 {
 
     using ostk::physics::units::Angle ;
@@ -236,7 +236,7 @@ TEST (Library_Physics_Units_Derived_Angle, AdditionOperator)
 
 }
 
-TEST (Library_Physics_Units_Derived_Angle, SubtractionOperator)
+TEST (OpenSpaceToolkit_Physics_Units_Derived_Angle, SubtractionOperator)
 {
 
     using ostk::physics::units::Angle ;
@@ -295,7 +295,7 @@ TEST (Library_Physics_Units_Derived_Angle, SubtractionOperator)
 
 }
 
-TEST (Library_Physics_Units_Derived_Angle, MultiplicationOperator)
+TEST (OpenSpaceToolkit_Physics_Units_Derived_Angle, MultiplicationOperator)
 {
 
     using ostk::core::types::Real ;
@@ -352,7 +352,7 @@ TEST (Library_Physics_Units_Derived_Angle, MultiplicationOperator)
 
 }
 
-TEST (Library_Physics_Units_Derived_Angle, DivisionOperator)
+TEST (OpenSpaceToolkit_Physics_Units_Derived_Angle, DivisionOperator)
 {
 
     using ostk::core::types::Real ;
@@ -392,7 +392,7 @@ TEST (Library_Physics_Units_Derived_Angle, DivisionOperator)
 
 }
 
-TEST (Library_Physics_Units_Derived_Angle, AdditionAssignmentOperator)
+TEST (OpenSpaceToolkit_Physics_Units_Derived_Angle, AdditionAssignmentOperator)
 {
 
     using ostk::physics::units::Angle ;
@@ -451,7 +451,7 @@ TEST (Library_Physics_Units_Derived_Angle, AdditionAssignmentOperator)
 
 }
 
-TEST (Library_Physics_Units_Derived_Angle, SubtractionAssignmentOperator)
+TEST (OpenSpaceToolkit_Physics_Units_Derived_Angle, SubtractionAssignmentOperator)
 {
 
     using ostk::physics::units::Angle ;
@@ -510,7 +510,7 @@ TEST (Library_Physics_Units_Derived_Angle, SubtractionAssignmentOperator)
 
 }
 
-TEST (Library_Physics_Units_Derived_Angle, MultiplicationAssignmentOperator)
+TEST (OpenSpaceToolkit_Physics_Units_Derived_Angle, MultiplicationAssignmentOperator)
 {
 
     using ostk::core::types::Real ;
@@ -549,7 +549,7 @@ TEST (Library_Physics_Units_Derived_Angle, MultiplicationAssignmentOperator)
 
 }
 
-TEST (Library_Physics_Units_Derived_Angle, DivisionAssignmentOperator)
+TEST (OpenSpaceToolkit_Physics_Units_Derived_Angle, DivisionAssignmentOperator)
 {
 
     using ostk::core::types::Real ;
@@ -589,7 +589,7 @@ TEST (Library_Physics_Units_Derived_Angle, DivisionAssignmentOperator)
 
 }
 
-TEST (Library_Physics_Units_Derived_Angle, AngleConversionOperator)
+TEST (OpenSpaceToolkit_Physics_Units_Derived_Angle, AngleConversionOperator)
 {
 
     using ostk::physics::units::Angle ;
@@ -608,7 +608,7 @@ TEST (Library_Physics_Units_Derived_Angle, AngleConversionOperator)
 
 }
 
-TEST (Library_Physics_Units_Derived_Angle, StreamOperator)
+TEST (OpenSpaceToolkit_Physics_Units_Derived_Angle, StreamOperator)
 {
 
     using ostk::physics::units::Angle ;
@@ -625,7 +625,7 @@ TEST (Library_Physics_Units_Derived_Angle, StreamOperator)
 
 }
 
-TEST (Library_Physics_Units_Derived_Angle, IsDefined)
+TEST (OpenSpaceToolkit_Physics_Units_Derived_Angle, IsDefined)
 {
 
     using ostk::core::types::Real ;
@@ -653,7 +653,7 @@ TEST (Library_Physics_Units_Derived_Angle, IsDefined)
 
 }
 
-TEST (Library_Physics_Units_Derived_Angle, GetUnit)
+TEST (OpenSpaceToolkit_Physics_Units_Derived_Angle, GetUnit)
 {
 
     using ostk::physics::units::Angle ;
@@ -676,7 +676,7 @@ TEST (Library_Physics_Units_Derived_Angle, GetUnit)
 
 }
 
-TEST (Library_Physics_Units_Derived_Angle, In)
+TEST (OpenSpaceToolkit_Physics_Units_Derived_Angle, In)
 {
 
     using ostk::physics::units::Angle ;
@@ -699,7 +699,7 @@ TEST (Library_Physics_Units_Derived_Angle, In)
 
 }
 
-TEST (Library_Physics_Units_Derived_Angle, InRadians)
+TEST (OpenSpaceToolkit_Physics_Units_Derived_Angle, InRadians)
 {
 
     using ostk::core::types::Real ;
@@ -760,7 +760,7 @@ TEST (Library_Physics_Units_Derived_Angle, InRadians)
 
 }
 
-TEST (Library_Physics_Units_Derived_Angle, InDegrees)
+TEST (OpenSpaceToolkit_Physics_Units_Derived_Angle, InDegrees)
 {
 
     using ostk::core::types::Real ;
@@ -820,7 +820,7 @@ TEST (Library_Physics_Units_Derived_Angle, InDegrees)
 
 }
 
-TEST (Library_Physics_Units_Derived_Angle, InArcminutes)
+TEST (OpenSpaceToolkit_Physics_Units_Derived_Angle, InArcminutes)
 {
 
     using ostk::core::types::Real ;
@@ -880,7 +880,7 @@ TEST (Library_Physics_Units_Derived_Angle, InArcminutes)
 
 }
 
-TEST (Library_Physics_Units_Derived_Angle, InArcseconds)
+TEST (OpenSpaceToolkit_Physics_Units_Derived_Angle, InArcseconds)
 {
 
     using ostk::core::types::Real ;
@@ -940,7 +940,7 @@ TEST (Library_Physics_Units_Derived_Angle, InArcseconds)
 
 }
 
-TEST (Library_Physics_Units_Derived_Angle, InRevolutions)
+TEST (OpenSpaceToolkit_Physics_Units_Derived_Angle, InRevolutions)
 {
 
     using ostk::core::types::Real ;
@@ -960,7 +960,7 @@ TEST (Library_Physics_Units_Derived_Angle, InRevolutions)
 
 }
 
-TEST (Library_Physics_Units_Derived_Angle, ToString)
+TEST (OpenSpaceToolkit_Physics_Units_Derived_Angle, ToString)
 {
 
     using ostk::physics::units::Angle ;
@@ -1017,7 +1017,7 @@ TEST (Library_Physics_Units_Derived_Angle, ToString)
 
 }
 
-TEST (Library_Physics_Units_Derived_Angle, Undefined)
+TEST (OpenSpaceToolkit_Physics_Units_Derived_Angle, Undefined)
 {
 
     using ostk::physics::units::Angle ;
@@ -1031,7 +1031,7 @@ TEST (Library_Physics_Units_Derived_Angle, Undefined)
 
 }
 
-TEST (Library_Physics_Units_Derived_Angle, Radians)
+TEST (OpenSpaceToolkit_Physics_Units_Derived_Angle, Radians)
 {
 
     using ostk::physics::units::Angle ;
@@ -1047,7 +1047,7 @@ TEST (Library_Physics_Units_Derived_Angle, Radians)
 
 }
 
-TEST (Library_Physics_Units_Derived_Angle, Degrees)
+TEST (OpenSpaceToolkit_Physics_Units_Derived_Angle, Degrees)
 {
 
     using ostk::physics::units::Angle ;
@@ -1063,7 +1063,7 @@ TEST (Library_Physics_Units_Derived_Angle, Degrees)
 
 }
 
-TEST (Library_Physics_Units_Derived_Angle, Arcminutes)
+TEST (OpenSpaceToolkit_Physics_Units_Derived_Angle, Arcminutes)
 {
 
     using ostk::physics::units::Angle ;
@@ -1079,7 +1079,7 @@ TEST (Library_Physics_Units_Derived_Angle, Arcminutes)
 
 }
 
-TEST (Library_Physics_Units_Derived_Angle, Arcseconds)
+TEST (OpenSpaceToolkit_Physics_Units_Derived_Angle, Arcseconds)
 {
 
     using ostk::physics::units::Angle ;
@@ -1095,7 +1095,7 @@ TEST (Library_Physics_Units_Derived_Angle, Arcseconds)
 
 }
 
-TEST (Library_Physics_Units_Derived_Angle, Revolutions)
+TEST (OpenSpaceToolkit_Physics_Units_Derived_Angle, Revolutions)
 {
 
     using ostk::physics::units::Angle ;
@@ -1111,7 +1111,7 @@ TEST (Library_Physics_Units_Derived_Angle, Revolutions)
 
 }
 
-TEST (Library_Physics_Units_Derived_Angle, Parse)
+TEST (OpenSpaceToolkit_Physics_Units_Derived_Angle, Parse)
 {
 
     using ostk::physics::units::Angle ;
@@ -1152,7 +1152,7 @@ TEST (Library_Physics_Units_Derived_Angle, Parse)
 
 }
 
-TEST (Library_Physics_Units_Derived_Angle, StringFromUnit)
+TEST (OpenSpaceToolkit_Physics_Units_Derived_Angle, StringFromUnit)
 {
 
     using ostk::physics::units::Angle ;

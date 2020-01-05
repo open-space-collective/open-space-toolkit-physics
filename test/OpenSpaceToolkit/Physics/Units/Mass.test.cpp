@@ -14,7 +14,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-TEST (Library_Physics_Units_Mass, Constructor)
+TEST (OpenSpaceToolkit_Physics_Units_Mass, Constructor)
 {
 
     using ostk::core::types::Real ;
@@ -40,7 +40,7 @@ TEST (Library_Physics_Units_Mass, Constructor)
 
 }
 
-TEST (Library_Physics_Units_Mass, IsDefined)
+TEST (OpenSpaceToolkit_Physics_Units_Mass, IsDefined)
 {
 
     using ostk::core::types::Real ;
@@ -66,7 +66,7 @@ TEST (Library_Physics_Units_Mass, IsDefined)
 
 }
 
-TEST (Library_Physics_Units_Mass, GetUnit)
+TEST (OpenSpaceToolkit_Physics_Units_Mass, GetUnit)
 {
 
     using ostk::physics::units::Mass ;
@@ -80,7 +80,7 @@ TEST (Library_Physics_Units_Mass, GetUnit)
 
 }
 
-TEST (Library_Physics_Units_Mass, In)
+TEST (OpenSpaceToolkit_Physics_Units_Mass, In)
 {
 
     using ostk::physics::units::Mass ;
@@ -99,7 +99,7 @@ TEST (Library_Physics_Units_Mass, In)
 
 }
 
-TEST (Library_Physics_Units_Mass, InKilograms)
+TEST (OpenSpaceToolkit_Physics_Units_Mass, InKilograms)
 {
 
     using ostk::physics::units::Mass ;
@@ -118,7 +118,7 @@ TEST (Library_Physics_Units_Mass, InKilograms)
 
 }
 
-TEST (Library_Physics_Units_Mass, ToString)
+TEST (OpenSpaceToolkit_Physics_Units_Mass, ToString)
 {
 
     using ostk::physics::units::Mass ;
@@ -163,7 +163,7 @@ TEST (Library_Physics_Units_Mass, ToString)
 
 }
 
-TEST (Library_Physics_Units_Mass, Undefined)
+TEST (OpenSpaceToolkit_Physics_Units_Mass, Undefined)
 {
 
     using ostk::physics::units::Mass ;
@@ -179,7 +179,7 @@ TEST (Library_Physics_Units_Mass, Undefined)
 
 }
 
-TEST (Library_Physics_Units_Mass, Kilograms)
+TEST (OpenSpaceToolkit_Physics_Units_Mass, Kilograms)
 {
 
     using ostk::physics::units::Mass ;
@@ -195,7 +195,7 @@ TEST (Library_Physics_Units_Mass, Kilograms)
 
 }
 
-TEST (Library_Physics_Units_Mass, StringFromUnit)
+TEST (OpenSpaceToolkit_Physics_Units_Mass, StringFromUnit)
 {
 
     using ostk::physics::units::Mass ;
@@ -211,7 +211,7 @@ TEST (Library_Physics_Units_Mass, StringFromUnit)
 
 }
 
-TEST (Library_Physics_Units_Mass, SymbolFromUnit)
+TEST (OpenSpaceToolkit_Physics_Units_Mass, SymbolFromUnit)
 {
 
     using ostk::physics::units::Mass ;

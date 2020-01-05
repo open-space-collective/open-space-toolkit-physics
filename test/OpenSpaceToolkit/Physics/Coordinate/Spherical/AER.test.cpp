@@ -24,7 +24,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-TEST (Library_Physics_Coordinate_Spherical_AER, Constructor)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, Constructor)
 {
 
     using ostk::physics::units::Length ;
@@ -56,7 +56,7 @@ TEST (Library_Physics_Coordinate_Spherical_AER, Constructor)
 
 }
 
-TEST (Library_Physics_Coordinate_Spherical_AER, EqualToOperator)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, EqualToOperator)
 {
 
     using ostk::physics::units::Length ;
@@ -98,7 +98,7 @@ TEST (Library_Physics_Coordinate_Spherical_AER, EqualToOperator)
 
 }
 
-TEST (Library_Physics_Coordinate_Spherical_AER, NotEqualToOperator)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, NotEqualToOperator)
 {
 
     using ostk::physics::units::Length ;
@@ -140,7 +140,7 @@ TEST (Library_Physics_Coordinate_Spherical_AER, NotEqualToOperator)
 
 }
 
-TEST (Library_Physics_Coordinate_Spherical_AER, StreamOperator)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, StreamOperator)
 {
 
     using ostk::physics::units::Length ;
@@ -166,7 +166,7 @@ TEST (Library_Physics_Coordinate_Spherical_AER, StreamOperator)
 
 }
 
-TEST (Library_Physics_Coordinate_Spherical_AER, IsDefined)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, IsDefined)
 {
 
     using ostk::physics::units::Length ;
@@ -194,7 +194,7 @@ TEST (Library_Physics_Coordinate_Spherical_AER, IsDefined)
 
 }
 
-TEST (Library_Physics_Coordinate_Spherical_AER, GetAzimuth)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, GetAzimuth)
 {
 
     using ostk::physics::units::Length ;
@@ -222,7 +222,7 @@ TEST (Library_Physics_Coordinate_Spherical_AER, GetAzimuth)
 
 }
 
-TEST (Library_Physics_Coordinate_Spherical_AER, GetElevation)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, GetElevation)
 {
 
     using ostk::physics::units::Length ;
@@ -250,7 +250,7 @@ TEST (Library_Physics_Coordinate_Spherical_AER, GetElevation)
 
 }
 
-TEST (Library_Physics_Coordinate_Spherical_AER, GetRange)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, GetRange)
 {
 
     using ostk::physics::units::Length ;
@@ -278,7 +278,7 @@ TEST (Library_Physics_Coordinate_Spherical_AER, GetRange)
 
 }
 
-TEST (Library_Physics_Coordinate_Spherical_AER, ToVector)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, ToVector)
 {
 
     using ostk::math::obj::Vector3d ;
@@ -308,7 +308,7 @@ TEST (Library_Physics_Coordinate_Spherical_AER, ToVector)
 
 }
 
-// TEST (Library_Physics_Coordinate_Spherical_AER, ToCartesian)
+// TEST (OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, ToCartesian)
 // {
 
 //     using ostk::physics::units::Length ;
@@ -336,7 +336,7 @@ TEST (Library_Physics_Coordinate_Spherical_AER, ToVector)
 
 // }
 
-TEST (Library_Physics_Coordinate_Spherical_AER, ToString)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, ToString)
 {
 
     using ostk::physics::units::Length ;
@@ -364,7 +364,7 @@ TEST (Library_Physics_Coordinate_Spherical_AER, ToString)
 
 }
 
-TEST (Library_Physics_Coordinate_Spherical_AER, Undefined)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, Undefined)
 {
 
     using ostk::physics::coord::spherical::AER ;
@@ -377,7 +377,7 @@ TEST (Library_Physics_Coordinate_Spherical_AER, Undefined)
 
 }
 
-TEST (Library_Physics_Coordinate_Spherical_AER, Vector)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, Vector)
 {
 
     using ostk::math::obj::Vector3d ;
@@ -409,7 +409,7 @@ TEST (Library_Physics_Coordinate_Spherical_AER, Vector)
 
 }
 
-TEST (Library_Physics_Coordinate_Spherical_AER, FromPositionToPosition)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, FromPositionToPosition)
 {
 
     using ostk::core::types::Shared ;

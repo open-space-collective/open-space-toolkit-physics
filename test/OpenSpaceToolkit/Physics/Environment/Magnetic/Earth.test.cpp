@@ -22,7 +22,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-TEST (Library_Physics_Environment_Magnetic_Earth, Constructor)
+TEST (OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, Constructor)
 {
 
     using ostk::core::fs::Path ;
@@ -81,7 +81,7 @@ TEST (Library_Physics_Environment_Magnetic_Earth, Constructor)
 
 }
 
-TEST (Library_Physics_Environment_Magnetic_Earth, Clone)
+TEST (OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, Clone)
 {
 
     using ostk::core::fs::Path ;
@@ -108,7 +108,7 @@ TEST (Library_Physics_Environment_Magnetic_Earth, Clone)
 
 }
 
-TEST (Library_Physics_Environment_Magnetic_Earth, GetType)
+TEST (OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, GetType)
 {
 
     using ostk::core::fs::Path ;
@@ -140,7 +140,7 @@ TEST (Library_Physics_Environment_Magnetic_Earth, GetType)
 
 }
 
-TEST (Library_Physics_Environment_Magnetic_Earth, GetFieldValueAt)
+TEST (OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, GetFieldValueAt)
 {
 
     using ostk::core::types::Real ;

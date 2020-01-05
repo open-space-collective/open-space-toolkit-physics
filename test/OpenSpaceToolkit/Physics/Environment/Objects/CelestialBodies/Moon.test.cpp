@@ -40,7 +40,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// TEST (Library_Physics_Environment_Objects_CelestialBodies_Moon, Constructor)
+// TEST (OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Moon, Constructor)
 // {
 
 //     using ostk::physics::env::obj::celest::Moon ;
@@ -53,7 +53,7 @@
 
 // }
 
-TEST (Library_Physics_Environment_Objects_CelestialBodies_Moon, Default)
+TEST (OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Moon, Default)
 {
 
     using ostk::physics::env::obj::celest::Moon ;

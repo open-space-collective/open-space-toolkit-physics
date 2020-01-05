@@ -40,7 +40,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// TEST (Library_Physics_Environment_Objects_CelestialBodies_Earth, Constructor)
+// TEST (OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, Constructor)
 // {
 
 //     using ostk::physics::env::obj::celest::Earth ;
@@ -53,7 +53,7 @@
 
 // }
 
-TEST (Library_Physics_Environment_Objects_CelestialBodies_Earth, GetFrameAt)
+TEST (OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, GetFrameAt)
 {
 
     using ostk::core::types::Shared ;
@@ -147,7 +147,7 @@ TEST (Library_Physics_Environment_Objects_CelestialBodies_Earth, GetFrameAt)
 
 }
 
-TEST (Library_Physics_Environment_Objects_CelestialBodies_Earth, Default)
+TEST (OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, Default)
 {
 
     using ostk::physics::env::obj::celest::Earth ;

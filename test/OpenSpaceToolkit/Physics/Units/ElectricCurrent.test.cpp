@@ -14,7 +14,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-TEST (Library_Physics_Units_ElectricCurrent, Constructor)
+TEST (OpenSpaceToolkit_Physics_Units_ElectricCurrent, Constructor)
 {
 
     using ostk::core::types::Real ;
@@ -40,7 +40,7 @@ TEST (Library_Physics_Units_ElectricCurrent, Constructor)
 
 }
 
-TEST (Library_Physics_Units_ElectricCurrent, Clone)
+TEST (OpenSpaceToolkit_Physics_Units_ElectricCurrent, Clone)
 {
 
     using ostk::core::types::Real ;
@@ -59,7 +59,7 @@ TEST (Library_Physics_Units_ElectricCurrent, Clone)
 
 }
 
-TEST (Library_Physics_Units_ElectricCurrent, IsDefined)
+TEST (OpenSpaceToolkit_Physics_Units_ElectricCurrent, IsDefined)
 {
 
     using ostk::core::types::Real ;
@@ -83,7 +83,7 @@ TEST (Library_Physics_Units_ElectricCurrent, IsDefined)
 
 }
 
-TEST (Library_Physics_Units_ElectricCurrent, GetUnit)
+TEST (OpenSpaceToolkit_Physics_Units_ElectricCurrent, GetUnit)
 {
 
     using ostk::physics::units::ElectricCurrent ;
@@ -97,7 +97,7 @@ TEST (Library_Physics_Units_ElectricCurrent, GetUnit)
 
 }
 
-TEST (Library_Physics_Units_ElectricCurrent, In)
+TEST (OpenSpaceToolkit_Physics_Units_ElectricCurrent, In)
 {
 
     using ostk::physics::units::ElectricCurrent ;
@@ -116,7 +116,7 @@ TEST (Library_Physics_Units_ElectricCurrent, In)
 
 }
 
-TEST (Library_Physics_Units_ElectricCurrent, InAmperes)
+TEST (OpenSpaceToolkit_Physics_Units_ElectricCurrent, InAmperes)
 {
 
     using ostk::physics::units::ElectricCurrent ;
@@ -135,7 +135,7 @@ TEST (Library_Physics_Units_ElectricCurrent, InAmperes)
 
 }
 
-TEST (Library_Physics_Units_ElectricCurrent, ToString)
+TEST (OpenSpaceToolkit_Physics_Units_ElectricCurrent, ToString)
 {
 
     using ostk::physics::units::ElectricCurrent ;
@@ -168,7 +168,7 @@ TEST (Library_Physics_Units_ElectricCurrent, ToString)
 
 }
 
-TEST (Library_Physics_Units_ElectricCurrent, Undefined)
+TEST (OpenSpaceToolkit_Physics_Units_ElectricCurrent, Undefined)
 {
 
     using ostk::physics::units::ElectricCurrent ;
@@ -184,7 +184,7 @@ TEST (Library_Physics_Units_ElectricCurrent, Undefined)
 
 }
 
-TEST (Library_Physics_Units_ElectricCurrent, Amperes)
+TEST (OpenSpaceToolkit_Physics_Units_ElectricCurrent, Amperes)
 {
 
     using ostk::physics::units::ElectricCurrent ;
@@ -200,7 +200,7 @@ TEST (Library_Physics_Units_ElectricCurrent, Amperes)
 
 }
 
-TEST (Library_Physics_Units_ElectricCurrent, StringFromUnit)
+TEST (OpenSpaceToolkit_Physics_Units_ElectricCurrent, StringFromUnit)
 {
 
     using ostk::physics::units::ElectricCurrent ;
@@ -214,7 +214,7 @@ TEST (Library_Physics_Units_ElectricCurrent, StringFromUnit)
 
 }
 
-TEST (Library_Physics_Units_ElectricCurrent, SymbolFromUnit)
+TEST (OpenSpaceToolkit_Physics_Units_ElectricCurrent, SymbolFromUnit)
 {
 
     using ostk::physics::units::ElectricCurrent ;

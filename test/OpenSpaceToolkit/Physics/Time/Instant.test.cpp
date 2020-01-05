@@ -36,7 +36,7 @@ static const Array<Scale> scales = { Scale::TT, Scale::TAI, Scale::UTC, Scale::G
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-TEST (Library_Physics_Time_Instant, EqualToOperator)
+TEST (OpenSpaceToolkit_Physics_Time_Instant, EqualToOperator)
 {
 
     using ostk::physics::time::Scale ;
@@ -237,7 +237,7 @@ TEST (Library_Physics_Time_Instant, EqualToOperator)
 
 }
 
-TEST (Library_Physics_Time_Instant, NotEqualToOperator)
+TEST (OpenSpaceToolkit_Physics_Time_Instant, NotEqualToOperator)
 {
 
     using ostk::physics::time::Scale ;
@@ -438,7 +438,7 @@ TEST (Library_Physics_Time_Instant, NotEqualToOperator)
 
 }
 
-TEST (Library_Physics_Time_Instant, LessThanOperator)
+TEST (OpenSpaceToolkit_Physics_Time_Instant, LessThanOperator)
 {
 
     using ostk::physics::time::Scale ;
@@ -472,7 +472,7 @@ TEST (Library_Physics_Time_Instant, LessThanOperator)
 
 }
 
-TEST (Library_Physics_Time_Instant, LessThanOrEqualToOperator)
+TEST (OpenSpaceToolkit_Physics_Time_Instant, LessThanOrEqualToOperator)
 {
 
     using ostk::physics::time::Scale ;
@@ -506,7 +506,7 @@ TEST (Library_Physics_Time_Instant, LessThanOrEqualToOperator)
 
 }
 
-TEST (Library_Physics_Time_Instant, GreaterThanOperator)
+TEST (OpenSpaceToolkit_Physics_Time_Instant, GreaterThanOperator)
 {
 
     using ostk::physics::time::Scale ;
@@ -540,7 +540,7 @@ TEST (Library_Physics_Time_Instant, GreaterThanOperator)
 
 }
 
-TEST (Library_Physics_Time_Instant, GreaterThanOrEqualToOperator)
+TEST (OpenSpaceToolkit_Physics_Time_Instant, GreaterThanOrEqualToOperator)
 {
 
     using ostk::physics::time::Scale ;
@@ -574,7 +574,7 @@ TEST (Library_Physics_Time_Instant, GreaterThanOrEqualToOperator)
 
 }
 
-TEST (Library_Physics_Time_Instant, AdditionOperator)
+TEST (OpenSpaceToolkit_Physics_Time_Instant, AdditionOperator)
 {
 
     using ostk::physics::time::Scale ;
@@ -628,7 +628,7 @@ TEST (Library_Physics_Time_Instant, AdditionOperator)
 
 }
 
-TEST (Library_Physics_Time_Instant, SubtractionOperator)
+TEST (OpenSpaceToolkit_Physics_Time_Instant, SubtractionOperator)
 {
 
     using ostk::physics::time::Scale ;
@@ -744,7 +744,7 @@ TEST (Library_Physics_Time_Instant, SubtractionOperator)
 
 }
 
-TEST (Library_Physics_Time_Instant, AdditionAssignementOperator)
+TEST (OpenSpaceToolkit_Physics_Time_Instant, AdditionAssignementOperator)
 {
 
     using ostk::physics::time::Scale ;
@@ -798,7 +798,7 @@ TEST (Library_Physics_Time_Instant, AdditionAssignementOperator)
 
 }
 
-TEST (Library_Physics_Time_Instant, SubtractionAssignementOperator)
+TEST (OpenSpaceToolkit_Physics_Time_Instant, SubtractionAssignementOperator)
 {
 
     using ostk::physics::time::Scale ;
@@ -852,7 +852,7 @@ TEST (Library_Physics_Time_Instant, SubtractionAssignementOperator)
 
 }
 
-TEST (Library_Physics_Time_Instant, StreamOperator)
+TEST (OpenSpaceToolkit_Physics_Time_Instant, StreamOperator)
 {
 
     using ostk::physics::time::Scale ;
@@ -870,7 +870,7 @@ TEST (Library_Physics_Time_Instant, StreamOperator)
 
 }
 
-TEST (Library_Physics_Time_Instant, IsDefined)
+TEST (OpenSpaceToolkit_Physics_Time_Instant, IsDefined)
 {
 
     using ostk::physics::time::Scale ;
@@ -898,7 +898,7 @@ TEST (Library_Physics_Time_Instant, IsDefined)
 
 }
 
-TEST (Library_Physics_Time_Instant, IsPostEpoch)
+TEST (OpenSpaceToolkit_Physics_Time_Instant, IsPostEpoch)
 {
 
     using ostk::physics::time::Scale ;
@@ -929,7 +929,7 @@ TEST (Library_Physics_Time_Instant, IsPostEpoch)
 
 }
 
-TEST (Library_Physics_Time_Instant, IsNear)
+TEST (OpenSpaceToolkit_Physics_Time_Instant, IsNear)
 {
 
     using ostk::physics::time::Scale ;
@@ -970,7 +970,7 @@ TEST (Library_Physics_Time_Instant, IsNear)
 
 }
 
-TEST (Library_Physics_Time_Instant, GetDateTime)
+TEST (OpenSpaceToolkit_Physics_Time_Instant, GetDateTime)
 {
 
     using ostk::physics::time::Scale ;
@@ -1033,7 +1033,7 @@ TEST (Library_Physics_Time_Instant, GetDateTime)
 
 }
 
-TEST (Library_Physics_Time_Instant, GetJulianDate)
+TEST (OpenSpaceToolkit_Physics_Time_Instant, GetJulianDate)
 {
 
     using ostk::physics::time::Scale ;
@@ -1068,7 +1068,7 @@ TEST (Library_Physics_Time_Instant, GetJulianDate)
 
 }
 
-TEST (Library_Physics_Time_Instant, GetModifiedJulianDate)
+TEST (OpenSpaceToolkit_Physics_Time_Instant, GetModifiedJulianDate)
 {
 
     using ostk::physics::time::Scale ;
@@ -1100,7 +1100,7 @@ TEST (Library_Physics_Time_Instant, GetModifiedJulianDate)
 
 }
 
-TEST (Library_Physics_Time_Instant, ToString)
+TEST (OpenSpaceToolkit_Physics_Time_Instant, ToString)
 {
 
     using ostk::core::types::String ;
@@ -1153,7 +1153,7 @@ TEST (Library_Physics_Time_Instant, ToString)
 
 }
 
-TEST (Library_Physics_Time_Instant, Undefined)
+TEST (OpenSpaceToolkit_Physics_Time_Instant, Undefined)
 {
 
     using ostk::physics::time::Scale ;
@@ -1168,7 +1168,7 @@ TEST (Library_Physics_Time_Instant, Undefined)
 
 }
 
-TEST (Library_Physics_Time_Instant, Now)
+TEST (OpenSpaceToolkit_Physics_Time_Instant, Now)
 {
 
     using ostk::physics::time::Scale ;
@@ -1194,7 +1194,7 @@ TEST (Library_Physics_Time_Instant, Now)
 
 }
 
-TEST (Library_Physics_Time_Instant, J2000)
+TEST (OpenSpaceToolkit_Physics_Time_Instant, J2000)
 {
 
     using ostk::physics::time::Scale ;
@@ -1214,7 +1214,7 @@ TEST (Library_Physics_Time_Instant, J2000)
 
 }
 
-TEST (Library_Physics_Time_Instant, DateTime)
+TEST (OpenSpaceToolkit_Physics_Time_Instant, DateTime)
 {
 
     using ostk::physics::time::Scale ;
@@ -1297,7 +1297,7 @@ TEST (Library_Physics_Time_Instant, DateTime)
 
 }
 
-TEST (Library_Physics_Time_Instant, JulianDate)
+TEST (OpenSpaceToolkit_Physics_Time_Instant, JulianDate)
 {
 
     using ostk::core::types::Real ;
@@ -1335,7 +1335,7 @@ TEST (Library_Physics_Time_Instant, JulianDate)
 
 }
 
-TEST (Library_Physics_Time_Instant, ModifiedJulianDate)
+TEST (OpenSpaceToolkit_Physics_Time_Instant, ModifiedJulianDate)
 {
 
     using ostk::core::types::Real ;
@@ -1372,7 +1372,7 @@ TEST (Library_Physics_Time_Instant, ModifiedJulianDate)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// TEST (Library_Physics_Time_Instant, Test_1)
+// TEST (OpenSpaceToolkit_Physics_Time_Instant, Test_1)
 // {
 
 //     using ostk::physics::time::Scale ;
