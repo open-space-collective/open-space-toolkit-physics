@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library ▸ Physics
+/// @project        Open Space Toolkit ▸ Physics
 /// @file           LibraryPhysicsPy/Coordinate/Axes.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0

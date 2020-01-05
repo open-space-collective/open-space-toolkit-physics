@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @project        Library ▸ Physics
+/// @project        Open Space Toolkit ▸ Physics
 /// @file           Library/Physics/Environment/Ephemerides/SPICE/Kernel.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0

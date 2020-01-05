@@ -1,6 +1,6 @@
 ################################################################################################################################################################
 
-# @project        Library ▸ Physics
+# @project        Open Space Toolkit ▸ Physics
 # @file           bindings/python/test/test_environment.py
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        Apache License 2.0
