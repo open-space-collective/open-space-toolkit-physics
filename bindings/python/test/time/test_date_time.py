@@ -10,9 +10,9 @@
 import datetime
 import pytest
 
-from Library.Physics.Time import Date
-from Library.Physics.Time import Time
-from Library.Physics.Time import DateTime
+from ostk.physics.time import Date
+from ostk.physics.time import Time
+from ostk.physics.time import DateTime
 
 ################################################################################################################################################################
 

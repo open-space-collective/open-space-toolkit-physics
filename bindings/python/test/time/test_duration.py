@@ -9,9 +9,9 @@
 
 import pytest
 
-from Library.Physics.Units import Time
-from Library.Physics.Time import Instant
-from Library.Physics.Time import Duration
+from ostk.physics.units import Time
+from ostk.physics.time import Instant
+from ostk.physics.time import Duration
 
 ################################################################################################################################################################
 

@@ -1,15 +1,15 @@
 ################################################################################################################################################################
 
 # @project        Open Space Toolkit ▸ Physics
-# @file           bindings/python/requirements.txt
+# @file           bindings/python/tools/python/ostk/physics/__init__.py
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        Apache License 2.0
 
 ################################################################################################################################################################
 
-numpy>=1.17.4
+from ostk.io import *
+from ostk.mathematics import *
 
-open-space-toolkit-io>=0.3.0
-open-space-toolkit-mathematics>=0.3.0
+from .OpenSpaceToolkitPhysicsPy import *
 
 ################################################################################################################################################################

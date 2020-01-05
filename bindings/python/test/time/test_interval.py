@@ -9,10 +9,10 @@
 
 import pytest
 
-from Library.Physics.Time import Scale
-from Library.Physics.Time import Instant
-from Library.Physics.Time import Duration
-from Library.Physics.Time import Interval
+from ostk.physics.time import Scale
+from ostk.physics.time import Instant
+from ostk.physics.time import Duration
+from ostk.physics.time import Interval
 
 ################################################################################################################################################################
 
