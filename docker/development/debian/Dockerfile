@@ -100,7 +100,7 @@ RUN git clone git://git.code.sf.net/p/geographiclib/code /tmp/geographiclib \
  && rm -rf /tmp/geographiclib \
  && rm -rf /var/lib/apt/lists/*
 
-## Library ▸ Core [0.2.5]
+## Open Space Toolkit ▸ Core [0.2.5]
 
 RUN mkdir -p /tmp/library-core \
  && cd /tmp/library-core \
@@ -109,7 +109,7 @@ RUN mkdir -p /tmp/library-core \
  && apt-get install -y ./*.deb \
  && rm -rf /tmp/library-core
 
-## Library ▸ I/O [0.2.4]
+## Open Space Toolkit ▸ I/O [0.2.4]
 
 RUN mkdir -p /tmp/library-io \
  && cd /tmp/library-io \
@@ -118,7 +118,7 @@ RUN mkdir -p /tmp/library-io \
  && apt-get install -y ./*.deb \
  && rm -rf /tmp/library-io
 
-## Library ▸ Mathematics [0.2.6]
+## Open Space Toolkit ▸ Mathematics [0.2.6]
 
 RUN mkdir -p /tmp/library-mathematics \
  && cd /tmp/library-mathematics \

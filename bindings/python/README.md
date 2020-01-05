@@ -1,4 +1,4 @@
-# Library ▸ Physics ▸ Bindings ▸ Python
+# Open Space Toolkit ▸ Physics ▸ Bindings ▸ Python
 
 Physical units, time, reference frames, environment modeling.
 
@@ -9,4 +9,4 @@ Physical units, time, reference frames, environment modeling.
 [![PyPI version](https://badge.fury.io/py/LibraryPhysicsPy.svg)](https://badge.fury.io/py/LibraryPhysicsPy)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-[Library ▸ Physics](https://github.com/open-space-collective/library-physics)
+[Open Space Toolkit ▸ Physics](https://github.com/open-space-collective/library-physics)

@@ -93,7 +93,7 @@ RUN git clone git://git.code.sf.net/p/geographiclib/code /tmp/geographiclib \
  && rm -rf /tmp/geographiclib \
  && dnf clean all
 
-## Library ▸ Core [0.2.5]
+## Open Space Toolkit ▸ Core [0.2.5]
 
 RUN mkdir -p /tmp/library-core \
  && cd /tmp/library-core \
@@ -102,7 +102,7 @@ RUN mkdir -p /tmp/library-core \
  && dnf install -y ./*.rpm \
  && rm -rf /tmp/library-core
 
-## Library ▸ IO [0.2.4]
+## Open Space Toolkit ▸ IO [0.2.4]
 
 RUN mkdir -p /tmp/library-io \
  && cd /tmp/library-io \
@@ -111,7 +111,7 @@ RUN mkdir -p /tmp/library-io \
  && dnf install -y ./*.rpm \
  && rm -rf /tmp/library-io
 
-## Library ▸ Mathematics [0.2.6]
+## Open Space Toolkit ▸ Mathematics [0.2.6]
 
 RUN mkdir -p /tmp/library-mathematics \
  && cd /tmp/library-mathematics \

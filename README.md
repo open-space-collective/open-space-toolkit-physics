@@ -1,4 +1,4 @@
-# Library ▸ Physics
+# Open Space Toolkit ▸ Physics
 
 Physical units, time, reference frames, environment modeling.
 
