@@ -1,5 +1,5 @@
 {
-    "name": "Library Physics",
+    "name": "Open Space Toolkit Physics",
     "extensions": [
         "ms-vscode.cpptools",
         "ms-python.python",
