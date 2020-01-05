@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Environment_Magnetic_Model__
-#define __Library_Physics_Environment_Magnetic_Model__
+#ifndef __OpenSpaceToolkit_Physics_Environment_Magnetic_Model__
+#define __OpenSpaceToolkit_Physics_Environment_Magnetic_Model__
 
 #include <Library/Physics/Time/Instant.hpp>
 

@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Units_ElectricCurrent__
-#define __Library_Physics_Units_ElectricCurrent__
+#ifndef __OpenSpaceToolkit_Physics_Units_ElectricCurrent__
+#define __OpenSpaceToolkit_Physics_Units_ElectricCurrent__
 
 #include <Library/Physics/Units/Unit.hpp>
 

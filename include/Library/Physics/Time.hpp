@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Time__
-#define __Library_Physics_Time__
+#ifndef __OpenSpaceToolkit_Physics_Time__
+#define __OpenSpaceToolkit_Physics_Time__
 
 #include <Library/Physics/Time/Instant.hpp>
 #include <Library/Physics/Time/Duration.hpp>

@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Units__
-#define __Library_Physics_Units__
+#ifndef __OpenSpaceToolkit_Physics_Units__
+#define __OpenSpaceToolkit_Physics_Units__
 
 #include <Library/Physics/Units/Derived/Angle.hpp>
 #include <Library/Physics/Units/Derived.hpp>

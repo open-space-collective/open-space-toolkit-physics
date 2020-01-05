@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Environment_Constants__
-#define __Library_Physics_Environment_Constants__
+#ifndef __OpenSpaceToolkit_Physics_Environment_Constants__
+#define __OpenSpaceToolkit_Physics_Environment_Constants__
 
 #include <Library/Core/Types/Real.hpp>
 #include <Library/Core/Types/Integer.hpp>

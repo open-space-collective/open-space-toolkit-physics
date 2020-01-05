@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Coordinate_Spherical_AER__
-#define __Library_Physics_Coordinate_Spherical_AER__
+#ifndef __OpenSpaceToolkit_Physics_Coordinate_Spherical_AER__
+#define __OpenSpaceToolkit_Physics_Coordinate_Spherical_AER__
 
 #include <Library/Physics/Coordinate/Position.hpp>
 #include <Library/Physics/Units/Derived/Angle.hpp>

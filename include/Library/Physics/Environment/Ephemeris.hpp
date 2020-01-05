@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Environment_Ephemeris__
-#define __Library_Physics_Environment_Ephemeris__
+#ifndef __OpenSpaceToolkit_Physics_Environment_Ephemeris__
+#define __OpenSpaceToolkit_Physics_Environment_Ephemeris__
 
 #include <Library/Physics/Coordinate/Frame.hpp>
 #include <Library/Physics/Coordinate/Position.hpp>

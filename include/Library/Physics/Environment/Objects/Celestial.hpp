@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Environment_Objects_Celestial__
-#define __Library_Physics_Environment_Objects_Celestial__
+#ifndef __OpenSpaceToolkit_Physics_Environment_Objects_Celestial__
+#define __OpenSpaceToolkit_Physics_Environment_Objects_Celestial__
 
 #include <Library/Physics/Environment/Magnetic/Model.hpp>
 #include <Library/Physics/Environment/Gravitational/Model.hpp>

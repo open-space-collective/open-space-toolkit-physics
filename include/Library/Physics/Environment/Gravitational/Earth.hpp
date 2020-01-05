@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Environment_Gravitational_Earth__
-#define __Library_Physics_Environment_Gravitational_Earth__
+#ifndef __OpenSpaceToolkit_Physics_Environment_Gravitational_Earth__
+#define __OpenSpaceToolkit_Physics_Environment_Gravitational_Earth__
 
 #include <Library/Physics/Environment/Gravitational/Model.hpp>
 #include <Library/Physics/Time/Instant.hpp>

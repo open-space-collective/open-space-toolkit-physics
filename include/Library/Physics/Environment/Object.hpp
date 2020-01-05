@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Environment_Object__
-#define __Library_Physics_Environment_Object__
+#ifndef __OpenSpaceToolkit_Physics_Environment_Object__
+#define __OpenSpaceToolkit_Physics_Environment_Object__
 
 #include <Library/Physics/Environment/Object/Geometry.hpp>
 #include <Library/Physics/Coordinate/Transform.hpp>

@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Time_Date__
-#define __Library_Physics_Time_Date__
+#ifndef __OpenSpaceToolkit_Physics_Time_Date__
+#define __OpenSpaceToolkit_Physics_Time_Date__
 
 #include <Library/Core/Types/String.hpp>
 #include <Library/Core/Types/Integer.hpp>

@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Environment_Magnetic_Earth_Manager__
-#define __Library_Physics_Environment_Magnetic_Earth_Manager__
+#ifndef __OpenSpaceToolkit_Physics_Environment_Magnetic_Earth_Manager__
+#define __OpenSpaceToolkit_Physics_Environment_Magnetic_Earth_Manager__
 
 #include <Library/Physics/Environment/Magnetic/Earth.hpp>
 

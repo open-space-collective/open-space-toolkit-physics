@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Coordinate_Velocity__
-#define __Library_Physics_Coordinate_Velocity__
+#ifndef __OpenSpaceToolkit_Physics_Coordinate_Velocity__
+#define __OpenSpaceToolkit_Physics_Coordinate_Velocity__
 
 #include <Library/Physics/Coordinate/Position.hpp>
 #include <Library/Physics/Time/Instant.hpp>

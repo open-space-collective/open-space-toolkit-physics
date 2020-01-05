@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Data_Vector__
-#define __Library_Physics_Data_Vector__
+#ifndef __OpenSpaceToolkit_Physics_Data_Vector__
+#define __OpenSpaceToolkit_Physics_Data_Vector__
 
 #include <Library/Physics/Coordinate/Frame.hpp>
 #include <Library/Physics/Time/Instant.hpp>

@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Units_Mass__
-#define __Library_Physics_Units_Mass__
+#ifndef __OpenSpaceToolkit_Physics_Units_Mass__
+#define __OpenSpaceToolkit_Physics_Units_Mass__
 
 #include <Library/Physics/Units/Unit.hpp>
 

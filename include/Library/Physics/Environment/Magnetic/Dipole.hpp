@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Environment_Magnetic_Dipole__
-#define __Library_Physics_Environment_Magnetic_Dipole__
+#ifndef __OpenSpaceToolkit_Physics_Environment_Magnetic_Dipole__
+#define __OpenSpaceToolkit_Physics_Environment_Magnetic_Dipole__
 
 #include <Library/Physics/Environment/Magnetic/Model.hpp>
 #include <Library/Physics/Time/Instant.hpp>

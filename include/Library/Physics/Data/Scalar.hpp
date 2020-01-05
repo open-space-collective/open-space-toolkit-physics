@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Data_Scalar__
-#define __Library_Physics_Data_Scalar__
+#ifndef __OpenSpaceToolkit_Physics_Data_Scalar__
+#define __OpenSpaceToolkit_Physics_Data_Scalar__
 
 #include <Library/Physics/Time/Instant.hpp>
 #include <Library/Physics/Unit.hpp>

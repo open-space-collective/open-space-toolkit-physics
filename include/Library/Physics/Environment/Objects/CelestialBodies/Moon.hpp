@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Environment_Objects_CelestialBodies_Moon__
-#define __Library_Physics_Environment_Objects_CelestialBodies_Moon__
+#ifndef __OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Moon__
+#define __OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Moon__
 
 #include <Library/Physics/Environment/Objects/Celestial.hpp>
 #include <Library/Physics/Environment/Object.hpp>

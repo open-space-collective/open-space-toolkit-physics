@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Coordinate_Frame_Providers_IERS_Manager__
-#define __Library_Physics_Coordinate_Frame_Providers_IERS_Manager__
+#ifndef __OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager__
+#define __OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager__
 
 #include <Library/Physics/Coordinate/Frame/Providers/IERS/Finals2000A.hpp>
 #include <Library/Physics/Coordinate/Frame/Providers/IERS/BulletinA.hpp>

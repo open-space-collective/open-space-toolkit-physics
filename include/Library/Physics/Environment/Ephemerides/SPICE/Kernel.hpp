@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Environment_Ephemerides_SPICE_Kernel__
-#define __Library_Physics_Environment_Ephemerides_SPICE_Kernel__
+#ifndef __OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Kernel__
+#define __OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Kernel__
 
 #include <Library/Physics/Time/Instant.hpp>
 

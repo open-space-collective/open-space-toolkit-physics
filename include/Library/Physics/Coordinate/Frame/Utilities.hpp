@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Coordinate_Frame_Utilities__
-#define __Library_Physics_Coordinate_Frame_Utilities__
+#ifndef __OpenSpaceToolkit_Physics_Coordinate_Frame_Utilities__
+#define __OpenSpaceToolkit_Physics_Coordinate_Frame_Utilities__
 
 #include <Library/Physics/Coordinate/Transform.hpp>
 #include <Library/Physics/Coordinate/Spherical/LLA.hpp>

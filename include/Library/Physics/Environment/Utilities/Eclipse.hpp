@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Environment_Utilities_Eclipse__
-#define __Library_Physics_Environment_Utilities_Eclipse__
+#ifndef __OpenSpaceToolkit_Physics_Environment_Utilities_Eclipse__
+#define __OpenSpaceToolkit_Physics_Environment_Utilities_Eclipse__
 
 #include <Library/Physics/Environment.hpp>
 #include <Library/Physics/Coordinate/Position.hpp>

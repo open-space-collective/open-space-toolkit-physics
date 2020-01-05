@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Coordinate_Spherical_LLA__
-#define __Library_Physics_Coordinate_Spherical_LLA__
+#ifndef __OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA__
+#define __OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA__
 
 #include <Library/Physics/Units/Derived/Angle.hpp>
 #include <Library/Physics/Units/Length.hpp>

@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Environment_Object_Geometry__
-#define __Library_Physics_Environment_Object_Geometry__
+#ifndef __OpenSpaceToolkit_Physics_Environment_Object_Geometry__
+#define __OpenSpaceToolkit_Physics_Environment_Object_Geometry__
 
 #include <Library/Physics/Coordinate/Frame.hpp>
 #include <Library/Physics/Time/Instant.hpp>

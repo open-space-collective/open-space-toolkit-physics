@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Units_Unit__
-#define __Library_Physics_Units_Unit__
+#ifndef __OpenSpaceToolkit_Physics_Units_Unit__
+#define __OpenSpaceToolkit_Physics_Units_Unit__
 
 #include <Library/Core/Containers/Pair.hpp>
 #include <Library/Core/Types/String.hpp>

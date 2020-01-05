@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Coordinate_Position__
-#define __Library_Physics_Coordinate_Position__
+#ifndef __OpenSpaceToolkit_Physics_Coordinate_Position__
+#define __OpenSpaceToolkit_Physics_Coordinate_Position__
 
 #include <Library/Physics/Coordinate/Spherical/LLA.hpp>
 #include <Library/Physics/Time/Instant.hpp>

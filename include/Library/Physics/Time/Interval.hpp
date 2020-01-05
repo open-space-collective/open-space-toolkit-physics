@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Time_Interval__
-#define __Library_Physics_Time_Interval__
+#ifndef __OpenSpaceToolkit_Physics_Time_Interval__
+#define __OpenSpaceToolkit_Physics_Time_Interval__
 
 #include <Library/Physics/Time/Instant.hpp>
 #include <Library/Physics/Time/Scale.hpp>

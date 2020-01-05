@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Environment_Gravitational_Spherical__
-#define __Library_Physics_Environment_Gravitational_Spherical__
+#ifndef __OpenSpaceToolkit_Physics_Environment_Gravitational_Spherical__
+#define __OpenSpaceToolkit_Physics_Environment_Gravitational_Spherical__
 
 #include <Library/Physics/Environment/Gravitational/Model.hpp>
 #include <Library/Physics/Time/Instant.hpp>

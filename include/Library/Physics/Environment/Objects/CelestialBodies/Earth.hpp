@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Environment_Objects_CelestialBodies_Earth__
-#define __Library_Physics_Environment_Objects_CelestialBodies_Earth__
+#ifndef __OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth__
+#define __OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth__
 
 #include <Library/Physics/Environment/Magnetic/Earth.hpp>
 #include <Library/Physics/Environment/Gravitational/Earth.hpp>

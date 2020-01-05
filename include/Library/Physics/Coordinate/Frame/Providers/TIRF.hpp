@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Coordinate_Frame_Providers_TIRF__
-#define __Library_Physics_Coordinate_Frame_Providers_TIRF__
+#ifndef __OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_TIRF__
+#define __OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_TIRF__
 
 #include <Library/Physics/Coordinate/Transform.hpp>
 #include <Library/Physics/Coordinate/Frame/Provider.hpp>

@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Units_Time__
-#define __Library_Physics_Units_Time__
+#ifndef __OpenSpaceToolkit_Physics_Units_Time__
+#define __OpenSpaceToolkit_Physics_Units_Time__
 
 #include <Library/Physics/Units/Unit.hpp>
 

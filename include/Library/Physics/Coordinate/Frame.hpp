@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Coordinate_Frame__
-#define __Library_Physics_Coordinate_Frame__
+#ifndef __OpenSpaceToolkit_Physics_Coordinate_Frame__
+#define __OpenSpaceToolkit_Physics_Coordinate_Frame__
 
 #include <Library/Physics/Coordinate/Frame/Provider.hpp>
 #include <Library/Physics/Coordinate/Transform.hpp>

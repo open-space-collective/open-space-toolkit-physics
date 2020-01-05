@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Environment_Ephemerides_Analytical__
-#define __Library_Physics_Environment_Ephemerides_Analytical__
+#ifndef __OpenSpaceToolkit_Physics_Environment_Ephemerides_Analytical__
+#define __OpenSpaceToolkit_Physics_Environment_Ephemerides_Analytical__
 
 #include <Library/Physics/Environment/Ephemeris.hpp>
 #include <Library/Physics/Coordinate/Frame.hpp>

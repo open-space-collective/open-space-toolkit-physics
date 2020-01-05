@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Time_Time__
-#define __Library_Physics_Time_Time__
+#ifndef __OpenSpaceToolkit_Physics_Time_Time__
+#define __OpenSpaceToolkit_Physics_Time_Time__
 
 #include <Library/Core/Types/String.hpp>
 #include <Library/Core/Types/Real.hpp>

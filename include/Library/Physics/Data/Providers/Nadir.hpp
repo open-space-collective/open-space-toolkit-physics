@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Data_Providers_Nadir__
-#define __Library_Physics_Data_Providers_Nadir__
+#ifndef __OpenSpaceToolkit_Physics_Data_Providers_Nadir__
+#define __OpenSpaceToolkit_Physics_Data_Providers_Nadir__
 
 #include <Library/Physics/Environment/Objects/Celestial.hpp>
 #include <Library/Physics/Environment.hpp>

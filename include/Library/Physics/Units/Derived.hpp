@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Units_Derived__
-#define __Library_Physics_Units_Derived__
+#ifndef __OpenSpaceToolkit_Physics_Units_Derived__
+#define __OpenSpaceToolkit_Physics_Units_Derived__
 
 #include <Library/Physics/Units/Derived/Angle.hpp>
 #include <Library/Physics/Units/ElectricCurrent.hpp>

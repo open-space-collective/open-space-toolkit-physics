@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA__
-#define __Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA__
+#ifndef __OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA__
+#define __OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA__
 
 #include <Library/Physics/Time/Interval.hpp>
 #include <Library/Physics/Time/Duration.hpp>

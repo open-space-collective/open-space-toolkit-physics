@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __Library_Physics_Units_Length__
-#define __Library_Physics_Units_Length__
+#ifndef __OpenSpaceToolkit_Physics_Units_Length__
+#define __OpenSpaceToolkit_Physics_Units_Length__
 
 #include <Library/Physics/Units/Unit.hpp>
 
