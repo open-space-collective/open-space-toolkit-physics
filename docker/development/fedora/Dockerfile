@@ -95,30 +95,30 @@ RUN git clone git://git.code.sf.net/p/geographiclib/code /tmp/geographiclib \
 
 ## Open Space Toolkit ▸ Core [0.2.5]
 
-RUN mkdir -p /tmp/library-core \
- && cd /tmp/library-core \
- && wget --quiet https://github.com/open-space-collective/library-core/releases/download/0.2.5/library-core-0.2.5-1.x86_64-runtime.rpm \
- && wget --quiet https://github.com/open-space-collective/library-core/releases/download/0.2.5/library-core-0.2.5-1.x86_64-devel.rpm \
+RUN mkdir -p /tmp/open-space-toolkit-core \
+ && cd /tmp/open-space-toolkit-core \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/0.2.5/open-space-toolkit-core-0.2.5-1.x86_64-runtime.rpm \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/0.2.5/open-space-toolkit-core-0.2.5-1.x86_64-devel.rpm \
  && dnf install -y ./*.rpm \
- && rm -rf /tmp/library-core
+ && rm -rf /tmp/open-space-toolkit-core
 
 ## Open Space Toolkit ▸ IO [0.2.4]
 
-RUN mkdir -p /tmp/library-io \
- && cd /tmp/library-io \
- && wget --quiet https://github.com/open-space-collective/library-io/releases/download/0.2.4/library-io-0.2.4-1.x86_64-runtime.rpm \
- && wget --quiet https://github.com/open-space-collective/library-io/releases/download/0.2.4/library-io-0.2.4-1.x86_64-devel.rpm \
+RUN mkdir -p /tmp/open-space-toolkit-io \
+ && cd /tmp/open-space-toolkit-io \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/0.2.4/open-space-toolkit-io-0.2.4-1.x86_64-runtime.rpm \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/0.2.4/open-space-toolkit-io-0.2.4-1.x86_64-devel.rpm \
  && dnf install -y ./*.rpm \
- && rm -rf /tmp/library-io
+ && rm -rf /tmp/open-space-toolkit-io
 
 ## Open Space Toolkit ▸ Mathematics [0.2.6]
 
-RUN mkdir -p /tmp/library-mathematics \
- && cd /tmp/library-mathematics \
- && wget --quiet https://github.com/open-space-collective/library-mathematics/releases/download/0.2.6/library-mathematics-0.2.6-1.x86_64-runtime.rpm \
- && wget --quiet https://github.com/open-space-collective/library-mathematics/releases/download/0.2.6/library-mathematics-0.2.6-1.x86_64-devel.rpm \
+RUN mkdir -p /tmp/open-space-toolkit-mathematics \
+ && cd /tmp/open-space-toolkit-mathematics \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/0.2.6/open-space-toolkit-mathematics-0.2.6-1.x86_64-runtime.rpm \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/0.2.6/open-space-toolkit-mathematics-0.2.6-1.x86_64-devel.rpm \
  && dnf install -y ./*.rpm \
- && rm -rf /tmp/library-mathematics
+ && rm -rf /tmp/open-space-toolkit-mathematics
 
 # Labels
 

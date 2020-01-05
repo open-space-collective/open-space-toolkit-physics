@@ -100,32 +100,32 @@ RUN git clone git://git.code.sf.net/p/geographiclib/code /tmp/geographiclib \
  && rm -rf /tmp/geographiclib \
  && rm -rf /var/lib/apt/lists/*
 
-## Open Space Toolkit ▸ Core [0.2.5]
+## Open Space Toolkit ▸ Core [0.3.0]
 
-RUN mkdir -p /tmp/library-core \
- && cd /tmp/library-core \
- && wget --quiet https://github.com/open-space-collective/library-core/releases/download/0.2.5/library-core-0.2.5-1.x86_64-runtime.deb \
- && wget --quiet https://github.com/open-space-collective/library-core/releases/download/0.2.5/library-core-0.2.5-1.x86_64-devel.deb \
+RUN mkdir -p /tmp/open-space-toolkit-core \
+ && cd /tmp/open-space-toolkit-core \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/0.3.0/open-space-toolkit-core-0.3.0-1.x86_64-runtime.deb \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/0.3.0/open-space-toolkit-core-0.3.0-1.x86_64-devel.deb \
  && apt-get install -y ./*.deb \
- && rm -rf /tmp/library-core
+ && rm -rf /tmp/open-space-toolkit-core
 
-## Open Space Toolkit ▸ I/O [0.2.4]
+## Open Space Toolkit ▸ I/O [0.3.0]
 
-RUN mkdir -p /tmp/library-io \
- && cd /tmp/library-io \
- && wget --quiet https://github.com/open-space-collective/library-io/releases/download/0.2.4/library-io-0.2.4-1.x86_64-runtime.deb \
- && wget --quiet https://github.com/open-space-collective/library-io/releases/download/0.2.4/library-io-0.2.4-1.x86_64-devel.deb \
+RUN mkdir -p /tmp/open-space-toolkit-io \
+ && cd /tmp/open-space-toolkit-io \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/0.3.0/open-space-toolkit-io-0.3.0-1.x86_64-runtime.deb \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/0.3.0/open-space-toolkit-io-0.3.0-1.x86_64-devel.deb \
  && apt-get install -y ./*.deb \
- && rm -rf /tmp/library-io
+ && rm -rf /tmp/open-space-toolkit-io
 
-## Open Space Toolkit ▸ Mathematics [0.2.6]
+## Open Space Toolkit ▸ Mathematics [0.3.0]
 
-RUN mkdir -p /tmp/library-mathematics \
- && cd /tmp/library-mathematics \
- && wget --quiet https://github.com/open-space-collective/library-mathematics/releases/download/0.2.6/library-mathematics-0.2.6-1.x86_64-runtime.deb \
- && wget --quiet https://github.com/open-space-collective/library-mathematics/releases/download/0.2.6/library-mathematics-0.2.6-1.x86_64-devel.deb \
+RUN mkdir -p /tmp/open-space-toolkit-mathematics \
+ && cd /tmp/open-space-toolkit-mathematics \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/0.3.0/open-space-toolkit-mathematics-0.3.0-1.x86_64-runtime.deb \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/0.3.0/open-space-toolkit-mathematics-0.3.0-1.x86_64-devel.deb \
  && apt-get install -y ./*.deb \
- && rm -rf /tmp/library-mathematics
+ && rm -rf /tmp/open-space-toolkit-mathematics
 
 # Labels
 
