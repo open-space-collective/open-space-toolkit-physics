@@ -17,15 +17,15 @@ COPY bindings/python/requirements.txt /requirements.txt
 
 RUN pip install -r /requirements.txt
 
-ENV LD_LIBRARY_PATH /usr/local/lib:/opt/conda/lib/python3.6/site-packages:/home/jovyan/library/physics/lib
-ENV PYTHONPATH /opt/conda/lib/python3.6/site-packages:/home/jovyan/library/physics/lib
+ENV LD_LIBRARY_PATH /usr/local/lib:/opt/conda/lib/python3.6/site-packages:/home/jovyan/open-space-toolkit/physics/lib
+ENV PYTHONPATH /opt/conda/lib/python3.6/site-packages:/home/jovyan/open-space-toolkit/physics/lib
 
 COPY bindings/python/tools/python/OpenSpaceToolkit/Physics /opt/conda/lib/python3.6/site-packages/OpenSpaceToolkit/Physics
 
-RUN mkdir -p /home/jovyan/library \
- && mkdir -p /home/jovyan/library/physics
+RUN mkdir -p /home/jovyan/open-space-toolkit \
+ && mkdir -p /home/jovyan/open-space-toolkit/physics
 
-WORKDIR /home/jovyan/library/physics/test
+WORKDIR /home/jovyan/open-space-toolkit/physics/test
 
 CMD [ "pytest", "-sv" ]
 
