@@ -12,11 +12,11 @@
 
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
-#include <Library/Mathematics/Geometry/3D/Transformations/Rotations/Quaternion.hpp>
-#include <Library/Mathematics/Objects/Vector.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformations/Rotations/Quaternion.hpp>
+#include <OpenSpaceToolkit/Mathematics/Objects/Vector.hpp>
 
-#include <Library/Core/Types/String.hpp>
-#include <Library/Core/Types/Real.hpp>
+#include <OpenSpaceToolkit/Core/Types/String.hpp>
+#include <OpenSpaceToolkit/Core/Types/Real.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -13,14 +13,14 @@
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
-#include <Library/Mathematics/Geometry/3D/Objects/Composite.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/Composite.hpp>
 
-#include <Library/Core/Types/Shared.hpp>
-#include <Library/Core/Types/Unique.hpp>
-#include <Library/Core/Types/Unique.hpp>
+#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
+#include <OpenSpaceToolkit/Core/Types/Unique.hpp>
+#include <OpenSpaceToolkit/Core/Types/Unique.hpp>
 
-#include <Library/Core/Error.hpp>
-#include <Library/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Error.hpp>
+#include <OpenSpaceToolkit/Core/Utilities.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -9,15 +9,15 @@
 
 #include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Manager.hpp>
 
-#include <Library/IO/IP/TCP/HTTP/Client.hpp>
+#include <OpenSpaceToolkit/IO/IP/TCP/HTTP/Client.hpp>
 
-#include <Library/Core/Containers/Object.hpp>
-#include <Library/Core/Containers/Dictionary.hpp>
-#include <Library/Core/Containers/Array.hpp>
-#include <Library/Core/Containers/Pair.hpp>
-#include <Library/Core/Types/Index.hpp>
-#include <Library/Core/Error.hpp>
-#include <Library/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Containers/Object.hpp>
+#include <OpenSpaceToolkit/Core/Containers/Dictionary.hpp>
+#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
+#include <OpenSpaceToolkit/Core/Containers/Pair.hpp>
+#include <OpenSpaceToolkit/Core/Types/Index.hpp>
+#include <OpenSpaceToolkit/Core/Error.hpp>
+#include <OpenSpaceToolkit/Core/Utilities.hpp>
 
 #include <experimental/filesystem>
 #include <fstream>

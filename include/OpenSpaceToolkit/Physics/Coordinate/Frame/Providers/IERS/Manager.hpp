@@ -15,14 +15,14 @@
 #include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
-#include <Library/Mathematics/Objects/Vector.hpp>
+#include <OpenSpaceToolkit/Mathematics/Objects/Vector.hpp>
 
-#include <Library/IO/URL.hpp>
+#include <OpenSpaceToolkit/IO/URL.hpp>
 
-#include <Library/Core/FileSystem/Directory.hpp>
-#include <Library/Core/Containers/Array.hpp>
-#include <Library/Core/Types/Real.hpp>
-#include <Library/Core/Types/Index.hpp>
+#include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
+#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
+#include <OpenSpaceToolkit/Core/Types/Real.hpp>
+#include <OpenSpaceToolkit/Core/Types/Index.hpp>
 
 #include <mutex>
 

@@ -14,14 +14,14 @@
 #include <OpenSpaceToolkit/Physics/Time/Date.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
 
-#include <Library/IO/IP/TCP/HTTP/Client.hpp>
+#include <OpenSpaceToolkit/IO/IP/TCP/HTTP/Client.hpp>
 
-#include <Library/Core/FileSystem/Path.hpp>
-#include <Library/Core/Containers/Map.hpp>
-#include <Library/Core/Types/String.hpp>
-#include <Library/Core/Types/Integer.hpp>
-#include <Library/Core/Error.hpp>
-#include <Library/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
+#include <OpenSpaceToolkit/Core/Containers/Map.hpp>
+#include <OpenSpaceToolkit/Core/Types/String.hpp>
+#include <OpenSpaceToolkit/Core/Types/Integer.hpp>
+#include <OpenSpaceToolkit/Core/Error.hpp>
+#include <OpenSpaceToolkit/Core/Utilities.hpp>
 
 #include <experimental/filesystem>
 #include <thread>

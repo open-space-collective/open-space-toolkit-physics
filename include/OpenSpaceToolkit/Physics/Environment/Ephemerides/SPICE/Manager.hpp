@@ -17,14 +17,14 @@
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
-#include <Library/IO/URL.hpp>
+#include <OpenSpaceToolkit/IO/URL.hpp>
 
-#include <Library/Core/FileSystem/Directory.hpp>
-#include <Library/Core/FileSystem/File.hpp>
-#include <Library/Core/FileSystem/Path.hpp>
-#include <Library/Core/Containers/Array.hpp>
-#include <Library/Core/Types/String.hpp>
-#include <Library/Core/Types/Shared.hpp>
+#include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
+#include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
+#include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
+#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
+#include <OpenSpaceToolkit/Core/Types/String.hpp>
+#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
 
 #include <mutex>
 

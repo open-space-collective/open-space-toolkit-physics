@@ -13,12 +13,12 @@
 #include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Derived/Angle.hpp>
 
-#include <Library/Core/FileSystem/File.hpp>
-#include <Library/Core/FileSystem/Path.hpp>
-#include <Library/Core/Containers/Table.hpp>
-#include <Library/Core/Containers/Array.hpp>
-#include <Library/Core/Containers/Tuple.hpp>
-#include <Library/Core/Types/Real.hpp>
+#include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
+#include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
+#include <OpenSpaceToolkit/Core/Containers/Table.hpp>
+#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
+#include <OpenSpaceToolkit/Core/Containers/Tuple.hpp>
+#include <OpenSpaceToolkit/Core/Types/Real.hpp>
 
 #include <Global.test.hpp>
 

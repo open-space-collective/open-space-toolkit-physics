@@ -14,12 +14,12 @@
 #include <OpenSpaceToolkit/Physics/Environment/Object.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
-#include <Library/Mathematics/Geometry/3D/Object.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Object.hpp>
 
-#include <Library/Core/Containers/Array.hpp>
-#include <Library/Core/Types/String.hpp>
-#include <Library/Core/Types/Shared.hpp>
-#include <Library/Core/Types/Unique.hpp>
+#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
+#include <OpenSpaceToolkit/Core/Types/String.hpp>
+#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
+#include <OpenSpaceToolkit/Core/Types/Unique.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

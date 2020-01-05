@@ -14,11 +14,11 @@
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Derived.hpp>
 
-#include <Library/IO/URL.hpp>
+#include <OpenSpaceToolkit/IO/URL.hpp>
 
-#include <Library/Core/FileSystem/Directory.hpp>
-#include <Library/Core/Types/Real.hpp>
-#include <Library/Core/Types/Unique.hpp>
+#include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
+#include <OpenSpaceToolkit/Core/Types/Real.hpp>
+#include <OpenSpaceToolkit/Core/Types/Unique.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

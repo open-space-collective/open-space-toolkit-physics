@@ -9,10 +9,10 @@
 
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
-#include <Library/Core/Containers/Array.hpp>
-#include <Library/Core/Containers/Triple.hpp>
-#include <Library/Core/Error.hpp>
-#include <Library/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
+#include <OpenSpaceToolkit/Core/Containers/Triple.hpp>
+#include <OpenSpaceToolkit/Core/Error.hpp>
+#include <OpenSpaceToolkit/Core/Utilities.hpp>
 
 #include <chrono>
 #include <iomanip>

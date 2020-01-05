@@ -8,8 +8,8 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
-#include <Library/Core/Containers/Array.hpp>
-#include <Library/Core/Types/Integer.hpp>
+#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
+#include <OpenSpaceToolkit/Core/Types/Integer.hpp>
 
 #include <Global.test.hpp>
 

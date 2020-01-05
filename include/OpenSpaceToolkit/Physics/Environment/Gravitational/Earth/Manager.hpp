@@ -12,12 +12,12 @@
 
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp>
 
-#include <Library/IO/URL.hpp>
+#include <OpenSpaceToolkit/IO/URL.hpp>
 
-#include <Library/Core/FileSystem/Directory.hpp>
-#include <Library/Core/FileSystem/File.hpp>
-#include <Library/Core/FileSystem/Path.hpp>
-#include <Library/Core/Types/String.hpp>
+#include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
+#include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
+#include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
+#include <OpenSpaceToolkit/Core/Types/String.hpp>
 
 #include <mutex>
 

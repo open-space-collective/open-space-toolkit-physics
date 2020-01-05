@@ -14,7 +14,7 @@
 #include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Interval.hpp>
 
-#include <Library/Core/Containers/Array.hpp>
+#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

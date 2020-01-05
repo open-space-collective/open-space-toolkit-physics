@@ -10,10 +10,10 @@
 #ifndef __OpenSpaceToolkit_Physics_Units_Unit__
 #define __OpenSpaceToolkit_Physics_Units_Unit__
 
-#include <Library/Core/Containers/Pair.hpp>
-#include <Library/Core/Types/String.hpp>
-#include <Library/Core/Types/Real.hpp>
-#include <Library/Core/Types/Integer.hpp>
+#include <OpenSpaceToolkit/Core/Containers/Pair.hpp>
+#include <OpenSpaceToolkit/Core/Types/String.hpp>
+#include <OpenSpaceToolkit/Core/Types/Real.hpp>
+#include <OpenSpaceToolkit/Core/Types/Integer.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

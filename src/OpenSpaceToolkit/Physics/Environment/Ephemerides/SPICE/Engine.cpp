@@ -11,13 +11,13 @@
 #include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Engine.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Dynamic.hpp>
 
-#include <Library/Mathematics/Geometry/3D/Transformations/Rotations/RotationMatrix.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformations/Rotations/RotationMatrix.hpp>
 
-#include <Library/Core/Containers/Map.hpp>
-#include <Library/Core/Containers/Array.hpp>
-#include <Library/Core/Types/Integer.hpp>
-#include <Library/Core/Error.hpp>
-#include <Library/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Containers/Map.hpp>
+#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
+#include <OpenSpaceToolkit/Core/Types/Integer.hpp>
+#include <OpenSpaceToolkit/Core/Error.hpp>
+#include <OpenSpaceToolkit/Core/Utilities.hpp>
 
 extern "C"
 {

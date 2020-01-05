@@ -9,8 +9,8 @@
 
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 
-#include <Library/Core/Error.hpp>
-#include <Library/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Error.hpp>
+#include <OpenSpaceToolkit/Core/Utilities.hpp>
 
 #include <boost/regex.hpp>
 

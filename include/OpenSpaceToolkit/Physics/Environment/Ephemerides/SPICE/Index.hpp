@@ -13,12 +13,12 @@
 #include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Kernel.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
-#include <Library/IO/URL.hpp>
+#include <OpenSpaceToolkit/IO/URL.hpp>
 
-#include <Library/Core/FileSystem/File.hpp>
-#include <Library/Core/Containers/Map.hpp>
-#include <Library/Core/Containers/Array.hpp>
-#include <Library/Core/Types/String.hpp>
+#include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
+#include <OpenSpaceToolkit/Core/Containers/Map.hpp>
+#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
+#include <OpenSpaceToolkit/Core/Types/String.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

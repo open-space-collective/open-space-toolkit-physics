@@ -10,8 +10,8 @@
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp>
 
-#include <Library/Core/Error.hpp>
-#include <Library/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Error.hpp>
+#include <OpenSpaceToolkit/Core/Utilities.hpp>
 
 #include <GeographicLib/GravityModel.hpp>
 #include <GeographicLib/Constants.hpp>

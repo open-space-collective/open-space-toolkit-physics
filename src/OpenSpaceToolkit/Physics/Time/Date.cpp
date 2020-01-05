@@ -9,8 +9,8 @@
 
 #include <OpenSpaceToolkit/Physics/Time/Date.hpp>
 
-#include <Library/Core/Error.hpp>
-#include <Library/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Error.hpp>
+#include <OpenSpaceToolkit/Core/Utilities.hpp>
 
 #include <boost/date_time/gregorian/gregorian.hpp>
 #include <boost/regex.hpp>

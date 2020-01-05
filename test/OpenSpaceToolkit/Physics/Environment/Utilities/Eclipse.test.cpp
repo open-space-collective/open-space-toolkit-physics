@@ -18,10 +18,10 @@
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
 
-#include <Library/Core/Containers/Table.hpp>
-#include <Library/Core/Containers/Tuple.hpp>
-#include <Library/Core/Types/String.hpp>
-#include <Library/Core/Types/Shared.hpp>
+#include <OpenSpaceToolkit/Core/Containers/Table.hpp>
+#include <OpenSpaceToolkit/Core/Containers/Tuple.hpp>
+#include <OpenSpaceToolkit/Core/Types/String.hpp>
+#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
 
 #include <Global.test.hpp>
 

@@ -8,8 +8,8 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <OpenSpaceToolkit/Physics/Units/Derived/Angle.hpp>
-#include <Library/Mathematics/Geometry/Angle.hpp>
-#include <Library/Core/Types/Real.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/Angle.hpp>
+#include <OpenSpaceToolkit/Core/Types/Real.hpp>
 
 #include <Global.test.hpp>
 

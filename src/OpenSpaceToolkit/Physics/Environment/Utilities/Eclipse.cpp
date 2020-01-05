@@ -10,10 +10,10 @@
 #include <OpenSpaceToolkit/Physics/Environment/Utilities/Eclipse.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Object.hpp>
 
-#include <Library/Mathematics/Geometry/3D/Objects/Segment.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/Segment.hpp>
 
-#include <Library/Core/Error.hpp>
-#include <Library/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Error.hpp>
+#include <OpenSpaceToolkit/Core/Utilities.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

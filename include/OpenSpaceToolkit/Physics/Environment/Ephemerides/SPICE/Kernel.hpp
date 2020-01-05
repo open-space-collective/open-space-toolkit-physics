@@ -12,8 +12,8 @@
 
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
-#include <Library/Core/FileSystem/File.hpp>
-#include <Library/Core/Types/String.hpp>
+#include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
+#include <OpenSpaceToolkit/Core/Types/String.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
