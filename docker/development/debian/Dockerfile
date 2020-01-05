@@ -9,7 +9,7 @@
 
 ARG BASE_IMAGE_VERSION=latest
 
-FROM openspacecollective/library-base:${BASE_IMAGE_VERSION}-debian
+FROM openspacecollective/open-space-toolkit-base:${BASE_IMAGE_VERSION}-debian
 
 LABEL maintainer="lucas@loftorbital.com"
 

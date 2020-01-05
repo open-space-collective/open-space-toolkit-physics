@@ -9,7 +9,7 @@
 
 ARG BASE_IMAGE_VERSION=latest
 
-FROM openspacecollective/library-base:${BASE_IMAGE_VERSION}-fedora
+FROM openspacecollective/open-space-toolkit-base:${BASE_IMAGE_VERSION}-fedora
 
 LABEL maintainer="lucas@loftorbital.com"
 
