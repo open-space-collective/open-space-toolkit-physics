@@ -17,7 +17,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -32,26 +32,26 @@ bool                            isPositionInEclipse                         (   
                                                                                 const   Environment&                anEnvironment                               )
 {
 
-    using library::core::types::Shared ;
+    using ostk::core::types::Shared ;
 
-    using library::math::geom::d3::objects::Point ;
-    using library::math::geom::d3::objects::Segment ;
+    using ostk::math::geom::d3::objects::Point ;
+    using ostk::math::geom::d3::objects::Segment ;
 
-    using library::physics::env::Object ;
+    using ostk::physics::env::Object ;
 
     if (!aPosition.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Position") ;
+        throw ostk::core::error::runtime::Undefined("Position") ;
     }
 
     if (aPosition.accessFrame() != Frame::GCRF())
     {
-        throw library::core::error::RuntimeError("Position has to be expressed in GCRF.") ;
+        throw ostk::core::error::RuntimeError("Position has to be expressed in GCRF.") ;
     }
 
     if (!anEnvironment.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Environment") ;
+        throw ostk::core::error::runtime::Undefined("Environment") ;
     }
 
     const Shared<const Object> sunSPtr = anEnvironment.accessObjectWithName("Sun") ;
@@ -69,27 +69,27 @@ Array<Interval>                 eclipseIntervalsAtPosition                  (   
                                                                                 const   Environment&                anEnvironment                               )
 {
 
-    using library::core::types::Shared ;
+    using ostk::core::types::Shared ;
 
-    using library::math::geom::d3::objects::Segment ;
+    using ostk::math::geom::d3::objects::Segment ;
 
-    using library::physics::time::Instant ;
-    using library::physics::time::Duration ;
-    using library::physics::env::Object ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::Duration ;
+    using ostk::physics::env::Object ;
 
     if (!anAnalysisInterval.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Analysis interval") ;
+        throw ostk::core::error::runtime::Undefined("Analysis interval") ;
     }
 
     if (!aPosition.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Position") ;
+        throw ostk::core::error::runtime::Undefined("Position") ;
     }
 
     if (!anEnvironment.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Environment") ;
+        throw ostk::core::error::runtime::Undefined("Environment") ;
     }
 
     Environment environment = anEnvironment ;

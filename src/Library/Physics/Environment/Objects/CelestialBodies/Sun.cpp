@@ -17,7 +17,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -30,9 +30,9 @@ namespace celest
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using library::physics::units::Mass ;
-using library::physics::units::Time ;
-using library::physics::units::Angle ;
+using ostk::physics::units::Mass ;
+using ostk::physics::units::Time ;
+using ostk::physics::units::Angle ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -75,7 +75,7 @@ Sun*                            Sun::clone                                  ( ) 
 Sun                             Sun::Default                                ( )
 {
 
-    using library::physics::env::ephem::SPICE ;
+    using ostk::physics::env::ephem::SPICE ;
 
     return { std::make_shared<SPICE>(SPICE::Object::Sun), Instant::J2000() } ;
 
@@ -86,7 +86,7 @@ Sun                             Sun::Default                                ( )
 Object::Geometry                Sun::Geometry                               (   const   Shared<const Frame>&        aFrame                                      )
 {
 
-    using library::math::geom::d3::objects::Point ;
+    using ostk::math::geom::d3::objects::Point ;
 
     const Real equatorialRadius_m = Sun::EquatorialRadius.inMeters() ;
 

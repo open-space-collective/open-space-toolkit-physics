@@ -16,7 +16,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -29,9 +29,9 @@ namespace celest
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using library::physics::units::Mass ;
-using library::physics::units::Time ;
-using library::physics::units::Angle ;
+using ostk::physics::units::Mass ;
+using ostk::physics::units::Time ;
+using ostk::physics::units::Angle ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -131,8 +131,8 @@ Earth                           Earth::Default                              ( )
 Earth                           Earth::EGM2008                              ( )
 {
 
-    using library::physics::coord::Frame ;
-    using library::physics::env::ephem::Analytical ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::env::ephem::Analytical ;
 
     const Shared<const Frame> earthFrameSPtr = Frame::ITRF() ;
 
@@ -153,8 +153,8 @@ Earth                           Earth::EGM2008                              ( )
 Earth                           Earth::WGS84_EGM96                          ( )
 {
 
-    using library::physics::coord::Frame ;
-    using library::physics::env::ephem::Analytical ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::env::ephem::Analytical ;
 
     const Shared<const Frame> earthFrameSPtr = Frame::ITRF() ;
 
@@ -175,8 +175,8 @@ Earth                           Earth::WGS84_EGM96                          ( )
 Earth                           Earth::EGM96                                ( )
 {
 
-    using library::physics::coord::Frame ;
-    using library::physics::env::ephem::Analytical ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::env::ephem::Analytical ;
 
     const Shared<const Frame> earthFrameSPtr = Frame::ITRF() ;
 
@@ -197,8 +197,8 @@ Earth                           Earth::EGM96                                ( )
 Earth                           Earth::WGS84                                ( )
 {
 
-    using library::physics::coord::Frame ;
-    using library::physics::env::ephem::Analytical ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::env::ephem::Analytical ;
 
     const Shared<const Frame> earthFrameSPtr = Frame::ITRF() ;
 
@@ -223,8 +223,8 @@ Object::Geometry                Earth::Geometry                             (   
                                                                                 const   Shared<const Frame>&        aFrameSPtr                                  )
 {
 
-    using library::math::geom::d3::objects::Point ;
-    using library::math::geom::d3::trf::rot::Quaternion ;
+    using ostk::math::geom::d3::objects::Point ;
+    using ostk::math::geom::d3::trf::rot::Quaternion ;
 
     const Real equatorialRadius_m = anEquatorialRadius.inMeters() ;
     const Real polarRadius_m = equatorialRadius_m * (1.0 - aFlattening) ;

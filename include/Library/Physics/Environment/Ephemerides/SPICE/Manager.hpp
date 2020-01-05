@@ -33,7 +33,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -46,18 +46,18 @@ namespace spice
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using library::core::types::Shared ;
-using library::core::types::String ;
-using library::core::ctnr::Array ;
-using library::core::fs::Path ;
-using library::core::fs::File ;
-using library::core::fs::Directory ;
+using ostk::core::types::Shared ;
+using ostk::core::types::String ;
+using ostk::core::ctnr::Array ;
+using ostk::core::fs::Path ;
+using ostk::core::fs::File ;
+using ostk::core::fs::Directory ;
 
-using library::io::URL ;
+using ostk::io::URL ;
 
-using library::physics::time::Instant ;
-using library::physics::env::ephem::spice::Kernel ;
-using library::physics::env::ephem::spice::Index ;
+using ostk::physics::time::Instant ;
+using ostk::physics::env::ephem::spice::Kernel ;
+using ostk::physics::env::ephem::spice::Index ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

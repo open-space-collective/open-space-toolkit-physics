@@ -25,11 +25,11 @@
 TEST (Library_Physics_Environment_Magnetic_Earth, Constructor)
 {
 
-    using library::core::fs::Path ;
-    using library::core::fs::Directory ;
+    using ostk::core::fs::Path ;
+    using ostk::core::fs::Directory ;
 
-    using EarthMagneticModel = library::physics::environment::magnetic::Earth ;
-    using EarthMagneticModelManager = library::physics::environment::magnetic::earth::Manager ;
+    using EarthMagneticModel = ostk::physics::environment::magnetic::Earth ;
+    using EarthMagneticModelManager = ostk::physics::environment::magnetic::earth::Manager ;
 
     {
 
@@ -84,11 +84,11 @@ TEST (Library_Physics_Environment_Magnetic_Earth, Constructor)
 TEST (Library_Physics_Environment_Magnetic_Earth, Clone)
 {
 
-    using library::core::fs::Path ;
-    using library::core::fs::Directory ;
+    using ostk::core::fs::Path ;
+    using ostk::core::fs::Directory ;
 
-    using EarthMagneticModel = library::physics::environment::magnetic::Earth ;
-    using EarthMagneticModelManager = library::physics::environment::magnetic::earth::Manager ;
+    using EarthMagneticModel = ostk::physics::environment::magnetic::Earth ;
+    using EarthMagneticModelManager = ostk::physics::environment::magnetic::earth::Manager ;
 
     {
 
@@ -111,11 +111,11 @@ TEST (Library_Physics_Environment_Magnetic_Earth, Clone)
 TEST (Library_Physics_Environment_Magnetic_Earth, GetType)
 {
 
-    using library::core::fs::Path ;
-    using library::core::fs::Directory ;
+    using ostk::core::fs::Path ;
+    using ostk::core::fs::Directory ;
 
-    using EarthMagneticModel = library::physics::environment::magnetic::Earth ;
-    using EarthMagneticModelManager = library::physics::environment::magnetic::earth::Manager ;
+    using EarthMagneticModel = ostk::physics::environment::magnetic::Earth ;
+    using EarthMagneticModelManager = ostk::physics::environment::magnetic::earth::Manager ;
 
     {
 
@@ -143,20 +143,20 @@ TEST (Library_Physics_Environment_Magnetic_Earth, GetType)
 TEST (Library_Physics_Environment_Magnetic_Earth, GetFieldValueAt)
 {
 
-    using library::core::types::Real ;
-    using library::core::types::String ;
-    using library::core::ctnr::Tuple ;
-    using library::core::ctnr::Array ;
-    using library::core::fs::Path ;
-    using library::core::fs::Directory ;
+    using ostk::core::types::Real ;
+    using ostk::core::types::String ;
+    using ostk::core::ctnr::Tuple ;
+    using ostk::core::ctnr::Array ;
+    using ostk::core::fs::Path ;
+    using ostk::core::fs::Directory ;
 
-    using library::math::obj::Vector3d ;
+    using ostk::math::obj::Vector3d ;
 
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::DateTime ;
-    using EarthMagneticModel = library::physics::environment::magnetic::Earth ;
-    using EarthMagneticModelManager = library::physics::environment::magnetic::earth::Manager ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::DateTime ;
+    using EarthMagneticModel = ostk::physics::environment::magnetic::Earth ;
+    using EarthMagneticModelManager = ostk::physics::environment::magnetic::earth::Manager ;
 
     {
 

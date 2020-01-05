@@ -16,9 +16,9 @@ inline void                     LibraryPhysicsPy_Coordinate_Frame_Provider ( )
 
     using namespace boost::python ;
 
-    using library::core::types::Shared ;
+    using ostk::core::types::Shared ;
 
-    using library::physics::coord::frame::Provider ;
+    using ostk::physics::coord::frame::Provider ;
 
     scope in_Provider = class_<Provider, boost::noncopyable>("Provider", no_init)
 

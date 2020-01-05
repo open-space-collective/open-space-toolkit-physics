@@ -32,7 +32,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -47,7 +47,7 @@ namespace iers
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using library::core::types::String ;
+using ostk::core::types::String ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -90,7 +90,7 @@ BulletinA                       Manager::getBulletinAAt                     (   
 
     if (!anInstant.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     std::lock_guard<std::mutex> lock { mutex_ } ;
@@ -102,7 +102,7 @@ BulletinA                       Manager::getBulletinAAt                     (   
         return *bulletinAPtr ;
     }
 
-    throw library::core::error::RuntimeError("Cannot obtain Bulletin A at [{}].", anInstant.toString()) ;
+    throw ostk::core::error::RuntimeError("Cannot obtain Bulletin A at [{}].", anInstant.toString()) ;
 
 }
 
@@ -111,7 +111,7 @@ Finals2000A                     Manager::getFinals2000AAt                   (   
 
     if (!anInstant.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     std::lock_guard<std::mutex> lock { mutex_ } ;
@@ -123,7 +123,7 @@ Finals2000A                     Manager::getFinals2000AAt                   (   
         return *finals2000aPtr ;
     }
 
-    throw library::core::error::RuntimeError("Cannot obtain Finals 2000A at [{}].", anInstant.toString()) ;
+    throw ostk::core::error::RuntimeError("Cannot obtain Finals 2000A at [{}].", anInstant.toString()) ;
 
 }
 
@@ -132,7 +132,7 @@ Vector2d                        Manager::getPolarMotionAt                   (   
 
     if (!anInstant.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     std::lock_guard<std::mutex> lock { mutex_ } ;
@@ -160,7 +160,7 @@ Vector2d                        Manager::getPolarMotionAt                   (   
         }
         else
         {
-            throw library::core::error::RuntimeError("Cannot obtain polar motion from Bulletin A at [{}].", anInstant.toString()) ;
+            throw ostk::core::error::RuntimeError("Cannot obtain polar motion from Bulletin A at [{}].", anInstant.toString()) ;
         }
 
     }
@@ -172,7 +172,7 @@ Vector2d                        Manager::getPolarMotionAt                   (   
         return finals2000aPtr->getPolarMotionAt(anInstant) ;
     }
 
-    throw library::core::error::RuntimeError("Cannot obtain polar motion at [{}].", anInstant.toString()) ;
+    throw ostk::core::error::RuntimeError("Cannot obtain polar motion at [{}].", anInstant.toString()) ;
 
     return Vector2d::Undefined() ;
 
@@ -183,7 +183,7 @@ Real                            Manager::getUt1MinusUtcAt                   (   
 
     if (!anInstant.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     std::lock_guard<std::mutex> lock { mutex_ } ;
@@ -213,7 +213,7 @@ Real                            Manager::getUt1MinusUtcAt                   (   
         }
         else
         {
-            throw library::core::error::RuntimeError("Cannot obtain UT1 - UTC from Bulletin A at [{}].", anInstant.toString()) ;
+            throw ostk::core::error::RuntimeError("Cannot obtain UT1 - UTC from Bulletin A at [{}].", anInstant.toString()) ;
         }
 
     }
@@ -229,7 +229,7 @@ Real                            Manager::getUt1MinusUtcAt                   (   
 
     }
 
-    throw library::core::error::RuntimeError("Cannot obtain UT1 - UTC at [{}].", anInstant.toString()) ;
+    throw ostk::core::error::RuntimeError("Cannot obtain UT1 - UTC at [{}].", anInstant.toString()) ;
 
     return Real::Undefined() ;
 
@@ -240,7 +240,7 @@ Real                            Manager::getLodAt                           (   
 
     if (!anInstant.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     std::lock_guard<std::mutex> lock { mutex_ } ;
@@ -252,7 +252,7 @@ Real                            Manager::getLodAt                           (   
         return finals2000aPtr->getLodAt(anInstant) ;
     }
 
-    throw library::core::error::RuntimeError("Cannot obtain LOD at [{}].", anInstant.toString()) ;
+    throw ostk::core::error::RuntimeError("Cannot obtain LOD at [{}].", anInstant.toString()) ;
 
     return Real::Undefined() ;
 
@@ -272,7 +272,7 @@ void                            Manager::setLocalRepository                 (   
 
     if (!aDirectory.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Directory") ;
+        throw ostk::core::error::runtime::Undefined("Directory") ;
     }
 
     const std::lock_guard<std::mutex> lock { mutex_ } ;
@@ -291,7 +291,7 @@ void                            Manager::setRemoteUrl                       (   
 
     if (!aRemoteUrl.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Remote URL") ;
+        throw ostk::core::error::runtime::Undefined("Remote URL") ;
     }
 
     const std::lock_guard<std::mutex> lock { mutex_ } ;
@@ -305,7 +305,7 @@ void                            Manager::loadBulletinA                      (   
 
     if (!aBulletinA.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Bulletin A") ;
+        throw ostk::core::error::runtime::Undefined("Bulletin A") ;
     }
 
     std::lock_guard<std::mutex> lock { mutex_ } ;
@@ -319,7 +319,7 @@ void                            Manager::loadFinals2000A                    (   
 
     if (!aFinals2000A.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Finals 2000A") ;
+        throw ostk::core::error::runtime::Undefined("Finals 2000A") ;
     }
 
     std::lock_guard<std::mutex> lock { mutex_ } ;
@@ -386,7 +386,7 @@ Manager::Mode                   Manager::DefaultMode                        ( )
         }
         else
         {
-            throw library::core::error::runtime::Wrong("Mode", modeString) ;
+            throw ostk::core::error::runtime::Wrong("Mode", modeString) ;
         }
 
     }
@@ -398,7 +398,7 @@ Manager::Mode                   Manager::DefaultMode                        ( )
 Directory                       Manager::DefaultLocalRepository             ( )
 {
 
-    using library::core::fs::Path ;
+    using ostk::core::fs::Path ;
 
     static const Directory defaultLocalRepository = Directory::Path(Path::Parse(LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY)) ;
 
@@ -654,7 +654,7 @@ const Finals2000A*              Manager::accessFinals2000AAt                (   
 File                            Manager::getLocalRepositoryLockFile         ( ) const
 {
 
-    using library::core::fs::Path ;
+    using ostk::core::fs::Path ;
 
     return File::Path(localRepository_.getPath() + Path::Parse(".lock")) ;
 
@@ -663,14 +663,14 @@ File                            Manager::getLocalRepositoryLockFile         ( ) 
 File                            Manager::getLatestBulletinAFile             ( ) const
 {
 
-    using library::core::ctnr::Map ;
-    using library::core::fs::Path ;
+    using ostk::core::ctnr::Map ;
+    using ostk::core::fs::Path ;
 
-    using library::physics::time::Scale ;
-    using library::physics::time::Date ;
-    using library::physics::time::Time ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Date ;
+    using ostk::physics::time::Time ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
 
     Map<Instant, File> bulletinAMap = {} ;
 
@@ -704,14 +704,14 @@ File                            Manager::getLatestBulletinAFile             ( ) 
 File                            Manager::getLatestFinals2000AFile           ( ) const
 {
 
-    using library::core::ctnr::Map ;
-    using library::core::fs::Path ;
+    using ostk::core::ctnr::Map ;
+    using ostk::core::fs::Path ;
 
-    using library::physics::time::Scale ;
-    using library::physics::time::Date ;
-    using library::physics::time::Time ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Date ;
+    using ostk::physics::time::Time ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
 
     Map<Instant, File> finals2000AMap = {} ;
 
@@ -745,8 +745,8 @@ File                            Manager::getLatestFinals2000AFile           ( ) 
 void                            Manager::setup                              ( )
 {
 
-    using library::core::fs::Path ;
-    using library::core::fs::File ;
+    using ostk::core::fs::Path ;
+    using ostk::core::fs::File ;
 
     if (!localRepository_.exists())
     {
@@ -779,7 +779,7 @@ void                            Manager::setup                              ( )
         //     }
         //     else
         //     {
-        //         throw library::core::error::RuntimeError("Cannot load Bulletin A [{}].", file.toString()) ;
+        //         throw ostk::core::error::RuntimeError("Cannot load Bulletin A [{}].", file.toString()) ;
         //     }
 
         // }
@@ -811,7 +811,7 @@ void                            Manager::loadBulletinA_                     (   
 
         if (bulletinA.accessReleaseDate() == aBulletinA.accessReleaseDate())
         {
-            throw library::core::error::RuntimeError("Bulletin A already added.") ;
+            throw ostk::core::error::RuntimeError("Bulletin A already added.") ;
         }
 
     }
@@ -830,7 +830,7 @@ void                            Manager::loadFinals2000A_                   (   
 
         if (finals2000a.getInterval() == aFinals2000A.getInterval())
         {
-            throw library::core::error::RuntimeError("Finals 2000A already added.") ;
+            throw ostk::core::error::RuntimeError("Finals 2000A already added.") ;
         }
 
     }
@@ -844,20 +844,20 @@ void                            Manager::loadFinals2000A_                   (   
 File                            Manager::fetchLatestBulletinA_              ( )
 {
 
-    using library::core::types::Uint8 ;
-    using library::core::types::Uint16 ;
-    using library::core::types::Integer ;
-    using library::core::types::String ;
-    using library::core::ctnr::Map ;
-    using library::core::fs::Path ;
+    using ostk::core::types::Uint8 ;
+    using ostk::core::types::Uint16 ;
+    using ostk::core::types::Integer ;
+    using ostk::core::types::String ;
+    using ostk::core::ctnr::Map ;
+    using ostk::core::fs::Path ;
 
-    using library::io::ip::tcp::http::Client ;
+    using ostk::io::ip::tcp::http::Client ;
 
-    using library::physics::time::Scale ;
-    using library::physics::time::Date ;
-    using library::physics::time::Time ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Date ;
+    using ostk::physics::time::Time ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
 
     std::cout << "Fetching latest Bulletin A..." << std::endl ;
 
@@ -940,7 +940,7 @@ File                            Manager::fetchLatestBulletinA_              ( )
 
     if (temporaryDirectory.exists())
     {
-        throw library::core::error::RuntimeError("Temporary directory [{}] already exists.", temporaryDirectory.toString()) ;
+        throw ostk::core::error::RuntimeError("Temporary directory [{}] already exists.", temporaryDirectory.toString()) ;
     }
 
     std::cout << String::Format("Creating temporary directory [{}]...", temporaryDirectory.toString()) << std::endl ;
@@ -963,7 +963,7 @@ File                            Manager::fetchLatestBulletinA_              ( )
 
         if (!latestBulletinAFile.exists())
         {
-            throw library::core::error::RuntimeError("Cannot fetch Bulletin A from [{}].", latestBulletinAUrl.toString()) ;
+            throw ostk::core::error::RuntimeError("Cannot fetch Bulletin A from [{}].", latestBulletinAUrl.toString()) ;
         }
         else
         {
@@ -974,7 +974,7 @@ File                            Manager::fetchLatestBulletinA_              ( )
 
             if (latestBulletinAFileSize == 0)
             {
-                throw library::core::error::RuntimeError("Cannot fetch Bulletin A from [{}]: file is empty.", latestBulletinAUrl.toString()) ;
+                throw ostk::core::error::RuntimeError("Cannot fetch Bulletin A from [{}]: file is empty.", latestBulletinAUrl.toString()) ;
             }
 
         }
@@ -999,7 +999,7 @@ File                            Manager::fetchLatestBulletinA_              ( )
         std::cout << String::Format("Bulletin A [{}] has been successfully fetched from [{}].", latestBulletinAFile.toString(), latestBulletinAUrl.toString()) << std::endl ;
 
     }
-    catch (const library::core::error::Exception& anException)
+    catch (const ostk::core::error::Exception& anException)
     {
 
         std::cerr << String::Format("Error caught while fetching latest Bulletin A from [{}]: [{}].", latestBulletinAUrl.toString(), anException.what()) << std::endl ;
@@ -1029,26 +1029,26 @@ File                            Manager::fetchLatestBulletinA_              ( )
 File                            Manager::fetchLatestFinals2000A_            ( )
 {
 
-    using library::core::types::Uint8 ;
-    using library::core::types::Uint16 ;
-    using library::core::types::Integer ;
-    using library::core::types::String ;
-    using library::core::ctnr::Map ;
-    using library::core::fs::Path ;
+    using ostk::core::types::Uint8 ;
+    using ostk::core::types::Uint16 ;
+    using ostk::core::types::Integer ;
+    using ostk::core::types::String ;
+    using ostk::core::ctnr::Map ;
+    using ostk::core::fs::Path ;
 
-    using library::io::ip::tcp::http::Client ;
+    using ostk::io::ip::tcp::http::Client ;
 
-    using library::physics::time::Scale ;
-    using library::physics::time::Date ;
-    using library::physics::time::Time ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Date ;
+    using ostk::physics::time::Time ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
 
     Directory temporaryDirectory = Directory::Path(localRepository_.getPath() + Path::Parse(temporaryDirectoryName)) ;
 
     if (temporaryDirectory.exists())
     {
-        throw library::core::error::RuntimeError("Temporary directory [{}] already exists.", temporaryDirectory.toString()) ;
+        throw ostk::core::error::RuntimeError("Temporary directory [{}] already exists.", temporaryDirectory.toString()) ;
     }
 
     temporaryDirectory.create() ;
@@ -1071,7 +1071,7 @@ File                            Manager::fetchLatestFinals2000A_            ( )
 
         if (!latestFinals2000AFile.exists())
         {
-            throw library::core::error::RuntimeError("Cannot fetch Finals 2000A [{}] from [{}].", latestFinals2000AFile.toString(), latestFinals2000AUrl.toString()) ;
+            throw ostk::core::error::RuntimeError("Cannot fetch Finals 2000A [{}] from [{}].", latestFinals2000AFile.toString(), latestFinals2000AUrl.toString()) ;
         }
         else
         {
@@ -1082,7 +1082,7 @@ File                            Manager::fetchLatestFinals2000A_            ( )
 
             if (latestFinals2000AFileSize == 0)
             {
-                throw library::core::error::RuntimeError("Cannot fetch Finals 2000A from [{}]: file is empty.", latestFinals2000AUrl.toString()) ;
+                throw ostk::core::error::RuntimeError("Cannot fetch Finals 2000A from [{}]: file is empty.", latestFinals2000AUrl.toString()) ;
             }
 
         }
@@ -1105,7 +1105,7 @@ File                            Manager::fetchLatestFinals2000A_            ( )
         std::cout << String::Format("Finals 2000A [{}] has been successfully fetched from [{}].", latestFinals2000AFile.toString(), latestFinals2000AUrl.toString()) << std::endl ;
 
     }
-    catch (const library::core::error::Exception& anException)
+    catch (const ostk::core::error::Exception& anException)
     {
 
         std::cerr << String::Format("Error caught while fetching latest Finals 2000A from [{}]: [{}].", latestFinals2000AUrl.toString(), anException.what()) << std::endl ;
@@ -1173,7 +1173,7 @@ void                            Manager::lockLocalRepository                (   
 
         if (Instant::Now() >= timeoutInstant)
         {
-            throw library::core::error::RuntimeError("Cannot lock local repository: timeout reached.") ;
+            throw ostk::core::error::RuntimeError("Cannot lock local repository: timeout reached.") ;
         }
 
         std::this_thread::sleep_for(std::chrono::seconds(1)) ;
@@ -1189,7 +1189,7 @@ void                            Manager::unlockLocalRepository              ( )
 
     if (!this->isLocalRepositoryLocked())
     {
-        throw library::core::error::RuntimeError("Cannot unlock local repository: lock file does not exist.") ;
+        throw ostk::core::error::RuntimeError("Cannot unlock local repository: lock file does not exist.") ;
     }
 
     this->getLocalRepositoryLockFile().remove() ;

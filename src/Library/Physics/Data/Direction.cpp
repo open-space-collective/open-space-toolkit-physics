@@ -16,7 +16,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -25,9 +25,9 @@ namespace data
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using library::core::types::Real ;
+using ostk::core::types::Real ;
 
-using library::physics::Unit ;
+using ostk::physics::Unit ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -38,7 +38,7 @@ using library::physics::Unit ;
 
     if (std::abs(aValue.norm() - 1.0) > Real::Epsilon())
     {
-        throw library::core::error::RuntimeError("Direction vector is not unitary [{}].", aValue.norm()) ;
+        throw ostk::core::error::RuntimeError("Direction vector is not unitary [{}].", aValue.norm()) ;
     }
 
 }
@@ -64,12 +64,12 @@ std::ostream&                   operator <<                                 (   
                                                                                 const   Direction&                  aDirection                                  )
 {
 
-    library::core::utils::Print::Header(anOutputStream, "Direction") ;
+    ostk::core::utils::Print::Header(anOutputStream, "Direction") ;
 
-    library::core::utils::Print::Line(anOutputStream) << "Value:"               << (aDirection.getValue().isDefined() ? aDirection.getValue().toString() : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Frame:"                << (((aDirection.getFrame() != nullptr) && (aDirection.getFrame()->isDefined())) ? aDirection.getFrame()->getName() : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Value:"               << (aDirection.getValue().isDefined() ? aDirection.getValue().toString() : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Frame:"                << (((aDirection.getFrame() != nullptr) && (aDirection.getFrame()->isDefined())) ? aDirection.getFrame()->getName() : "Undefined") ;
 
-    library::core::utils::Print::Footer(anOutputStream) ;
+    ostk::core::utils::Print::Footer(anOutputStream) ;
 
     return anOutputStream ;
 

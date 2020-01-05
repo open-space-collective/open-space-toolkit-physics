@@ -17,8 +17,8 @@
 TEST (Library_Physics_Units_Time, Constructor)
 {
 
-    using library::core::types::Real ;
-    using library::physics::units::Time ;
+    using ostk::core::types::Real ;
+    using ostk::physics::units::Time ;
 
     {
 
@@ -43,8 +43,8 @@ TEST (Library_Physics_Units_Time, Constructor)
 TEST (Library_Physics_Units_Time, IsDefined)
 {
 
-    using library::core::types::Real ;
-    using library::physics::units::Time ;
+    using ostk::core::types::Real ;
+    using ostk::physics::units::Time ;
 
     {
 
@@ -74,7 +74,7 @@ TEST (Library_Physics_Units_Time, IsDefined)
 TEST (Library_Physics_Units_Time, GetUnit)
 {
 
-    using library::physics::units::Time ;
+    using ostk::physics::units::Time ;
 
     {
 
@@ -95,7 +95,7 @@ TEST (Library_Physics_Units_Time, GetUnit)
 TEST (Library_Physics_Units_Time, In)
 {
 
-    using library::physics::units::Time ;
+    using ostk::physics::units::Time ;
 
     {
 
@@ -141,7 +141,7 @@ TEST (Library_Physics_Units_Time, In)
 TEST (Library_Physics_Units_Time, InSeconds)
 {
 
-    using library::physics::units::Time ;
+    using ostk::physics::units::Time ;
 
     {
 
@@ -160,7 +160,7 @@ TEST (Library_Physics_Units_Time, InSeconds)
 TEST (Library_Physics_Units_Time, ToString)
 {
 
-    using library::physics::units::Time ;
+    using ostk::physics::units::Time ;
 
     {
 
@@ -235,7 +235,7 @@ TEST (Library_Physics_Units_Time, ToString)
 TEST (Library_Physics_Units_Time, Undefined)
 {
 
-    using library::physics::units::Time ;
+    using ostk::physics::units::Time ;
 
     {
 
@@ -251,7 +251,7 @@ TEST (Library_Physics_Units_Time, Undefined)
 TEST (Library_Physics_Units_Time, Seconds)
 {
 
-    using library::physics::units::Time ;
+    using ostk::physics::units::Time ;
 
     {
 
@@ -267,7 +267,7 @@ TEST (Library_Physics_Units_Time, Seconds)
 TEST (Library_Physics_Units_Time, StringFromUnit)
 {
 
-    using library::physics::units::Time ;
+    using ostk::physics::units::Time ;
 
     {
 
@@ -288,7 +288,7 @@ TEST (Library_Physics_Units_Time, StringFromUnit)
 TEST (Library_Physics_Units_Time, SymbolFromUnit)
 {
 
-    using library::physics::units::Time ;
+    using ostk::physics::units::Time ;
 
     {
 

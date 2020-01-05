@@ -20,7 +20,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -58,7 +58,7 @@ bool                            Instant::operator <                         (   
 
     if ((!this->isDefined()) || (!anInstant.isDefined()))
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     return count_ < ((scale_ == anInstant.scale_) ? anInstant.count_ : anInstant.inScale(scale_).count_) ;
@@ -70,7 +70,7 @@ bool                            Instant::operator <=                        (   
 
     if ((!this->isDefined()) || (!anInstant.isDefined()))
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     return count_ <= ((scale_ == anInstant.scale_) ? anInstant.count_ : anInstant.inScale(scale_).count_) ;
@@ -82,7 +82,7 @@ bool                            Instant::operator >                         (   
 
     if ((!this->isDefined()) || (!anInstant.isDefined()))
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     return count_ > ((scale_ == anInstant.scale_) ? anInstant.count_ : anInstant.inScale(scale_).count_) ;
@@ -94,7 +94,7 @@ bool                            Instant::operator >=                        (   
 
     if ((!this->isDefined()) || (!anInstant.isDefined()))
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     return count_ >= ((scale_ == anInstant.scale_) ? anInstant.count_ : anInstant.inScale(scale_).count_) ;
@@ -106,12 +106,12 @@ Instant                         Instant::operator +                         (   
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     if (!aDuration.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     return Instant(count_ + aDuration.count_, scale_) ;
@@ -123,12 +123,12 @@ Instant                         Instant::operator -                         (   
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     if (!aDuration.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     return Instant(count_ - aDuration.count_, scale_) ;
@@ -140,7 +140,7 @@ Duration                        Instant::operator -                         (   
 
     if ((!this->isDefined()) || (!anInstant.isDefined()))
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     const Instant::Count startCount = ((scale_ == anInstant.scale_) ? anInstant.count_ : anInstant.inScale(scale_).count_) ;
@@ -170,12 +170,12 @@ Instant&                        Instant::operator +=                        (   
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     if (!aDuration.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     count_ = count_ + aDuration.count_ ;
@@ -189,12 +189,12 @@ Instant&                        Instant::operator -=                        (   
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     if (!aDuration.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     count_ = count_ - aDuration.count_ ;
@@ -207,12 +207,12 @@ std::ostream&                   operator <<                                 (   
                                                                                 const   Instant&                    anInstant                                   )
 {
 
-    library::core::utils::Print::Header(anOutputStream, "Instant") ;
+    ostk::core::utils::Print::Header(anOutputStream, "Instant") ;
 
-    library::core::utils::Print::Line(anOutputStream) << "Date-Time:" << (anInstant.isDefined() ? anInstant.getDateTime(anInstant.scale_).toString() : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Scale:" << StringFromScale(anInstant.scale_) ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Date-Time:" << (anInstant.isDefined() ? anInstant.getDateTime(anInstant.scale_).toString() : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Scale:" << StringFromScale(anInstant.scale_) ;
 
-    library::core::utils::Print::Footer(anOutputStream) ;
+    ostk::core::utils::Print::Footer(anOutputStream) ;
 
     return anOutputStream ;
 
@@ -228,7 +228,7 @@ bool                            Instant::isPostEpoch                        ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     return (*this) >= Instant::J2000() ;
@@ -241,22 +241,22 @@ bool                            Instant::isNear                             (   
 
     if (!anInstant.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     if (!aTolerance.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Tolerance") ;
+        throw ostk::core::error::runtime::Undefined("Tolerance") ;
     }
 
     if (!aTolerance.isPositive())
     {
-        throw library::core::error::RuntimeError("Tolerance is not positive.") ;
+        throw ostk::core::error::RuntimeError("Tolerance is not positive.") ;
     }
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     return Duration::Between(*this, anInstant).getAbsolute() <= aTolerance ;
@@ -266,16 +266,16 @@ bool                            Instant::isNear                             (   
 time::DateTime                  Instant::getDateTime                        (   const   Scale&                      aTimeScale                                  ) const
 {
 
-    using library::core::types::Uint8 ;
+    using ostk::core::types::Uint8 ;
 
     if (aTimeScale == Scale::Undefined)
     {
-        throw library::core::error::runtime::Undefined("Scale") ;
+        throw ostk::core::error::runtime::Undefined("Scale") ;
     }
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     // auto getTimePointString =
@@ -358,12 +358,12 @@ Real                            Instant::getJulianDate                      (   
 
     if (aTimeScale == Scale::Undefined)
     {
-        throw library::core::error::runtime::Undefined("Scale") ;
+        throw ostk::core::error::runtime::Undefined("Scale") ;
     }
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     return this->getDateTime(aTimeScale).getJulianDate() ;
@@ -375,12 +375,12 @@ Real                            Instant::getModifiedJulianDate              (   
 
     if (aTimeScale == Scale::Undefined)
     {
-        throw library::core::error::runtime::Undefined("Scale") ;
+        throw ostk::core::error::runtime::Undefined("Scale") ;
     }
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     return this->getDateTime(aTimeScale).getModifiedJulianDate() ;
@@ -392,7 +392,7 @@ String                          Instant::toString                          (   c
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     return this->getDateTime(aTimeScale).toString() + " [" + StringFromScale(aTimeScale) + "]" ;
@@ -449,7 +449,7 @@ Instant                         Instant::Now                                ( )
 
     if (nanoseconds.count() < 0)
     {
-        throw library::core::error::RuntimeError("Current time is before J2000 epoch.") ; // [TBI] Implement this case
+        throw ostk::core::error::RuntimeError("Current time is before J2000 epoch.") ; // [TBI] Implement this case
     }
 
     // std::cout << "Delta: " << nanoseconds.count() << " [ns]" << std::endl ;
@@ -479,21 +479,21 @@ Instant                         Instant::DateTime                           (   
                                                                                 const   Scale&                      aTimeScale                                  )
 {
 
-    using library::core::types::Int32 ;
+    using ostk::core::types::Int32 ;
 
     if (!aDateTime.isDefined())
     {
-        throw library::core::error::runtime::Wrong("DateTime") ;
+        throw ostk::core::error::runtime::Wrong("DateTime") ;
     }
 
     if (aTimeScale == Scale::Undefined)
     {
-        throw library::core::error::runtime::Wrong("Scale") ;
+        throw ostk::core::error::runtime::Wrong("Scale") ;
     }
 
     if ((aDateTime.accessDate().getYear() < 1970) || (aDateTime.accessDate().getYear() > 2030))
     {
-        throw library::core::error::RuntimeError("DateTime year {} out of supported range [{} - {}]", aDateTime.accessDate().getYear(), 1970, 2030) ;
+        throw ostk::core::error::RuntimeError("DateTime year {} out of supported range [{} - {}]", aDateTime.accessDate().getYear(), 1970, 2030) ;
     }
 
     // auto getTimePointString =
@@ -553,7 +553,7 @@ Instant                         Instant::DateTime                           (   
 
     //     if (stringStream.fail())
     //     {
-    //         throw library::core::error::RuntimeError("Cannot parse date time string.") ;
+    //         throw ostk::core::error::RuntimeError("Cannot parse date time string.") ;
     //     }
 
     //     std::cout << "tm_sec = " << dateTime.tm_sec << std::endl ;
@@ -632,12 +632,12 @@ Instant                         Instant::JulianDate                         (   
 
     if (!aJulianDate.isDefined())
     {
-        throw library::core::error::runtime::Wrong("Julian Date") ;
+        throw ostk::core::error::runtime::Wrong("Julian Date") ;
     }
 
     if (aTimeScale == Scale::Undefined)
     {
-        throw library::core::error::runtime::Wrong("Scale") ;
+        throw ostk::core::error::runtime::Wrong("Scale") ;
     }
 
     return Instant::DateTime(DateTime::JulianDate(aJulianDate), aTimeScale) ;
@@ -650,12 +650,12 @@ Instant                         Instant::ModifiedJulianDate                 (   
 
     if (!aModifiedJulianDate.isDefined())
     {
-        throw library::core::error::runtime::Wrong("Modified Julian Date") ;
+        throw ostk::core::error::runtime::Wrong("Modified Julian Date") ;
     }
 
     if (aTimeScale == Scale::Undefined)
     {
-        throw library::core::error::runtime::Wrong("Scale") ;
+        throw ostk::core::error::runtime::Wrong("Scale") ;
     }
 
     return Instant::DateTime(DateTime::ModifiedJulianDate(aModifiedJulianDate), aTimeScale) ;
@@ -704,19 +704,19 @@ Instant::Count                  Instant::ConvertCountScale                  (   
             break ;
 
         case Scale::TCG:
-            throw library::core::error::runtime::ToBeImplemented("TCG") ;
+            throw ostk::core::error::runtime::ToBeImplemented("TCG") ;
             break ;
 
         case Scale::TCB:
-            throw library::core::error::runtime::ToBeImplemented("TCB") ;
+            throw ostk::core::error::runtime::ToBeImplemented("TCB") ;
             break ;
 
         case Scale::TDB:
-            throw library::core::error::runtime::ToBeImplemented("TDB") ;
+            throw ostk::core::error::runtime::ToBeImplemented("TDB") ;
             break ;
 
         case Scale::GMST:
-            throw library::core::error::runtime::ToBeImplemented("GMST") ;
+            throw ostk::core::error::runtime::ToBeImplemented("GMST") ;
             break ;
 
         case Scale::GPST:
@@ -724,27 +724,27 @@ Instant::Count                  Instant::ConvertCountScale                  (   
             break ;
 
         case Scale::GST:
-            throw library::core::error::runtime::ToBeImplemented("GST") ;
+            throw ostk::core::error::runtime::ToBeImplemented("GST") ;
             break ;
 
         case Scale::GLST:
-            throw library::core::error::runtime::ToBeImplemented("GLST") ;
+            throw ostk::core::error::runtime::ToBeImplemented("GLST") ;
             break ;
 
         case Scale::BDT:
-            throw library::core::error::runtime::ToBeImplemented("BDT") ;
+            throw ostk::core::error::runtime::ToBeImplemented("BDT") ;
             break ;
 
         case Scale::QZSST:
-            throw library::core::error::runtime::ToBeImplemented("QZSST") ;
+            throw ostk::core::error::runtime::ToBeImplemented("QZSST") ;
             break ;
 
         case Scale::IRNSST:
-            throw library::core::error::runtime::ToBeImplemented("IRNSST") ;
+            throw ostk::core::error::runtime::ToBeImplemented("IRNSST") ;
             break ;
 
         default:
-            throw library::core::error::runtime::Wrong("Time scale") ;
+            throw ostk::core::error::runtime::Wrong("Time scale") ;
             break ;
 
     }
@@ -765,46 +765,46 @@ Instant::Count                  Instant::ConvertCountScale                  (   
             return Instant::UT1_UTC(Instant::UTC_TAI(Instant::TAI_TT(count_TT))) ;
 
         case Scale::TCG:
-            throw library::core::error::runtime::ToBeImplemented("TCG") ;
+            throw ostk::core::error::runtime::ToBeImplemented("TCG") ;
             break ;
 
         case Scale::TCB:
-            throw library::core::error::runtime::ToBeImplemented("TCB") ;
+            throw ostk::core::error::runtime::ToBeImplemented("TCB") ;
             break ;
 
         case Scale::TDB:
-            throw library::core::error::runtime::ToBeImplemented("TDB") ;
+            throw ostk::core::error::runtime::ToBeImplemented("TDB") ;
             break ;
 
         case Scale::GMST:
-            throw library::core::error::runtime::ToBeImplemented("GMST") ;
+            throw ostk::core::error::runtime::ToBeImplemented("GMST") ;
             break ;
 
         case Scale::GPST:
             return Instant::GPST_TAI(Instant::TAI_TT(count_TT)) ;
 
         case Scale::GST:
-            throw library::core::error::runtime::ToBeImplemented("GST") ;
+            throw ostk::core::error::runtime::ToBeImplemented("GST") ;
             break ;
 
         case Scale::GLST:
-            throw library::core::error::runtime::ToBeImplemented("GLST") ;
+            throw ostk::core::error::runtime::ToBeImplemented("GLST") ;
             break ;
 
         case Scale::BDT:
-            throw library::core::error::runtime::ToBeImplemented("BDT") ;
+            throw ostk::core::error::runtime::ToBeImplemented("BDT") ;
             break ;
 
         case Scale::QZSST:
-            throw library::core::error::runtime::ToBeImplemented("QZSST") ;
+            throw ostk::core::error::runtime::ToBeImplemented("QZSST") ;
             break ;
 
         case Scale::IRNSST:
-            throw library::core::error::runtime::ToBeImplemented("IRNSST") ;
+            throw ostk::core::error::runtime::ToBeImplemented("IRNSST") ;
             break ;
 
         default:
-            throw library::core::error::runtime::Wrong("Time scale") ;
+            throw ostk::core::error::runtime::Wrong("Time scale") ;
             break ;
 
     }
@@ -858,8 +858,8 @@ Int64                           Instant::dAT_UTC                            (   
 
     // [TBI] Implement dAT automatic manager
 
-    using library::core::ctnr::Array ;
-    using library::core::ctnr::Triple ;
+    using ostk::core::ctnr::Array ;
+    using ostk::core::ctnr::Triple ;
 
     if (aCount_UTC.postEpoch_)
     {
@@ -921,7 +921,7 @@ Int64                           Instant::dAT_UTC                            (   
 
         }
 
-        throw library::core::error::RuntimeError("dAT out of bounds.") ;
+        throw ostk::core::error::RuntimeError("dAT out of bounds.") ;
 
     }
 
@@ -934,8 +934,8 @@ Int64                           Instant::dAT_TAI                            (   
 
     // [TBI] Implement dAT automatic manager
 
-    using library::core::ctnr::Array ;
-    using library::core::ctnr::Triple ;
+    using ostk::core::ctnr::Array ;
+    using ostk::core::ctnr::Triple ;
 
     if (aCount_TAI.postEpoch_)
     {
@@ -998,7 +998,7 @@ Int64                           Instant::dAT_TAI                            (   
 
         }
 
-        throw library::core::error::RuntimeError("dAT out of bounds.") ;
+        throw ostk::core::error::RuntimeError("dAT out of bounds.") ;
 
     }
 
@@ -1011,7 +1011,7 @@ Int64                           Instant::DUT1_UTC                           (   
 
     (void) aCount_UTC ;
 
-    throw library::core::error::runtime::ToBeImplemented("DUT1_UTC") ;
+    throw ostk::core::error::runtime::ToBeImplemented("DUT1_UTC") ;
 
     return 0 ;
 
@@ -1022,7 +1022,7 @@ Int64                           Instant::DUT1_UT1                           (   
 
     (void) aCount_UT1 ;
 
-    throw library::core::error::runtime::ToBeImplemented("DUT1_UT1") ;
+    throw ostk::core::error::runtime::ToBeImplemented("DUT1_UT1") ;
 
     return 0 ;
 
@@ -1162,7 +1162,7 @@ Instant::Count                  Instant::Count::operator -                  (   
 String                          Instant::Count::toString                   ( ) const
 {
 
-    using library::core::types::Integer ;
+    using ostk::core::types::Integer ;
 
     return postEpoch_ ? ("+" + std::to_string(countFromEpoch_)) : ("-" + std::to_string(countFromEpoch_)) ;
 
@@ -1182,7 +1182,7 @@ String                          Instant::Count::toString                   ( ) c
 
 //     if (stringStream.fail())
 //     {
-//         throw library::core::error::RuntimeError("Cannot parse date time string [" + aDateTimeString + "].") ;
+//         throw ostk::core::error::RuntimeError("Cannot parse date time string [" + aDateTimeString + "].") ;
 //     }
 
 //     return std::chrono::system_clock::from_time_t(std::mktime(&dateTime)) ;

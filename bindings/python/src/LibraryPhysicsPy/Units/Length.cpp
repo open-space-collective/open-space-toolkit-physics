@@ -15,17 +15,17 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (LibraryPhysicsPy_Units_Length_toString_overloads, library::physics::units::Length::toString, 0, 1)
-BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (LibraryPhysicsPy_Units_Length_Interval_toString_overloads, library::math::obj::Interval<library::physics::units::Length>::toString, 0, 1)
+BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (LibraryPhysicsPy_Units_Length_toString_overloads, ostk::physics::units::Length::toString, 0, 1)
+BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (LibraryPhysicsPy_Units_Length_Interval_toString_overloads, ostk::math::obj::Interval<ostk::physics::units::Length>::toString, 0, 1)
 
 inline void                     LibraryPhysicsPy_Units_Length               ( )
 {
 
     using namespace boost::python ;
 
-    using library::core::types::Real ;
+    using ostk::core::types::Real ;
 
-    using library::physics::units::Length ;
+    using ostk::physics::units::Length ;
 
     scope in_Length = class_<Length>("Length", init<Real, Length::Unit>())
 
@@ -82,7 +82,7 @@ inline void                     LibraryPhysicsPy_Units_Length               ( )
 
     ;
 
-    // using library::core::ctnr::Array ;
+    // using ostk::core::ctnr::Array ;
 
     // IterableConverter()
 
@@ -91,7 +91,7 @@ inline void                     LibraryPhysicsPy_Units_Length               ( )
 
     // ;
 
-    using library::math::obj::Interval ;
+    using ostk::math::obj::Interval ;
 
     class_<Interval<Length>>("Interval", init<const Length&, const Length&, const Interval<Length>::Type&>())
 

@@ -19,11 +19,11 @@ inline void                     LibraryPhysicsPy_Coordinate_Frame           ( )
 
     using namespace boost::python ;
 
-    using library::core::types::Shared ;
-    using library::core::types::String ;
+    using ostk::core::types::Shared ;
+    using ostk::core::types::String ;
 
-    using library::physics::coord::Frame ;
-    using library::physics::coord::frame::Provider ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::frame::Provider ;
 
     // scope in_Frame = class_<Frame, Shared<Frame>>("Frame", init<String&, bool, Shared<const Frame>&, Shared<Provider>&>())
     // scope in_Frame = class_<Frame, Shared<Frame>, boost::noncopyable>("Frame", init<String&, bool, Shared<const Frame>&, Shared<Provider>&>())

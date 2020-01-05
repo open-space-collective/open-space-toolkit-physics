@@ -25,11 +25,11 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using IersManager = library::physics::coord::frame::provider::iers::Manager ;
+using IersManager = ostk::physics::coord::frame::provider::iers::Manager ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -65,19 +65,19 @@ bool                            TIRF::isDefined                             ( ) 
 Transform                       TIRF::getTransformAt                        (   const   Instant&                    anInstant                                   ) const
 {
 
-    using library::math::geom::d3::trf::rot::RotationMatrix ;
+    using ostk::math::geom::d3::trf::rot::RotationMatrix ;
 
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
 
     if (!anInstant.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("TIRF") ;
+        throw ostk::core::error::runtime::Undefined("TIRF") ;
     }
 
     // http://www.iausofa.org/2018_0130_C/sofa/sofa_pn_c.pdf
@@ -115,7 +115,7 @@ Transform                       TIRF::getTransformAt                        (   
 
     if (!lod_ms.isDefined())
     {
-        // throw library::core::error::runtime::Undefined("LOD") ; // [TBI] Fail in strict mode
+        // throw ostk::core::error::runtime::Undefined("LOD") ; // [TBI] Fail in strict mode
         lod_ms = 0.0 ;
     }
 

@@ -16,9 +16,9 @@ inline void                     LibraryPhysicsPy_Time_Date                  ( )
 
     using namespace boost::python ;
 
-    using library::core::types::String ;
+    using ostk::core::types::String ;
 
-    using library::physics::time::Date ;
+    using ostk::physics::time::Date ;
 
     scope in_Date = class_<Date>("Date", init<int, int, int>())
 

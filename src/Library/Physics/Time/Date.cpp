@@ -18,7 +18,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -68,13 +68,13 @@ std::ostream&                   operator <<                                 (   
                                                                                 const   Date&                       aDate                                       )
 {
 
-    library::core::utils::Print::Header(anOutputStream, "Date") ;
+    ostk::core::utils::Print::Header(anOutputStream, "Date") ;
 
-    library::core::utils::Print::Line(anOutputStream) << "Year:" << (aDate.isDefined() ? String::Format("{:d}", aDate.year_) : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Month:" << (aDate.isDefined() ? String::Format("{:d}", aDate.month_) : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Day:" << (aDate.isDefined() ? String::Format("{:d}", aDate.day_) : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Year:" << (aDate.isDefined() ? String::Format("{:d}", aDate.year_) : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Month:" << (aDate.isDefined() ? String::Format("{:d}", aDate.month_) : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Day:" << (aDate.isDefined() ? String::Format("{:d}", aDate.day_) : "Undefined") ;
 
-    library::core::utils::Print::Footer(anOutputStream) ;
+    ostk::core::utils::Print::Footer(anOutputStream) ;
 
     return anOutputStream ;
 
@@ -90,7 +90,7 @@ Uint16                          Date::getYear                               ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Date") ;
+        throw ostk::core::error::runtime::Undefined("Date") ;
     }
 
     return year_ ;
@@ -102,7 +102,7 @@ Uint8                           Date::getMonth                              ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Date") ;
+        throw ostk::core::error::runtime::Undefined("Date") ;
     }
 
     return month_ ;
@@ -114,7 +114,7 @@ Uint8                           Date::getDay                                ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Date") ;
+        throw ostk::core::error::runtime::Undefined("Date") ;
     }
 
     return day_ ;
@@ -126,7 +126,7 @@ String                          Date::toString                              (   
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Date") ;
+        throw ostk::core::error::runtime::Undefined("Date") ;
     }
 
     switch (aFormat)
@@ -190,7 +190,7 @@ String                          Date::toString                              (   
                         return "Dec" ;
 
                     default:
-                        throw library::core::error::runtime::Wrong("Month", aMonth) ;
+                        throw ostk::core::error::runtime::Wrong("Month", aMonth) ;
                         break ;
 
                 }
@@ -202,7 +202,7 @@ String                          Date::toString                              (   
         }
 
         default:
-            throw library::core::error::runtime::Wrong("Format") ;
+            throw ostk::core::error::runtime::Wrong("Format") ;
             break ;
 
     }
@@ -216,7 +216,7 @@ void                            Date::setYear                               (   
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Date") ;
+        throw ostk::core::error::runtime::Undefined("Date") ;
     }
 
     Date::ValidateDate(aYear, month_, day_) ;
@@ -230,7 +230,7 @@ void                            Date::setMonth                              (   
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Date") ;
+        throw ostk::core::error::runtime::Undefined("Date") ;
     }
 
     Date::ValidateDate(year_, aMonth, day_) ;
@@ -244,7 +244,7 @@ void                            Date::setDay                                (   
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Date") ;
+        throw ostk::core::error::runtime::Undefined("Date") ;
     }
 
     Date::ValidateDate(year_, month_, aDay) ;
@@ -284,7 +284,7 @@ Date                            Date::Parse                                 (   
 
     if (aString.isEmpty())
     {
-        throw library::core::error::runtime::Undefined("String") ;
+        throw ostk::core::error::runtime::Undefined("String") ;
     }
 
     switch (aFormat)
@@ -322,13 +322,13 @@ Date                            Date::Parse                                 (   
                 }
                 catch (const boost::bad_lexical_cast& e)
                 {
-                    throw library::core::error::RuntimeError("Cannot parse date string [{}] ({}).", aString, e.what()) ;
+                    throw ostk::core::error::RuntimeError("Cannot parse date string [{}] ({}).", aString, e.what()) ;
                 }
 
             }
             else
             {
-                throw library::core::error::RuntimeError("Cannot parse date string [{}].", aString) ;
+                throw ostk::core::error::RuntimeError("Cannot parse date string [{}].", aString) ;
             }
 
         }
@@ -420,19 +420,19 @@ Date                            Date::Parse                                 (   
                 }
                 catch (const boost::bad_lexical_cast& e)
                 {
-                    throw library::core::error::RuntimeError("Cannot parse date string [{}] ({}).", aString, e.what()) ;
+                    throw ostk::core::error::RuntimeError("Cannot parse date string [{}] ({}).", aString, e.what()) ;
                 }
 
             }
             else
             {
-                throw library::core::error::RuntimeError("Cannot parse date string [{}].", aString) ;
+                throw ostk::core::error::RuntimeError("Cannot parse date string [{}].", aString) ;
             }
 
         }
 
         default:
-            throw library::core::error::runtime::Wrong("Format") ;
+            throw ostk::core::error::runtime::Wrong("Format") ;
             break ;
 
     }
@@ -459,17 +459,17 @@ void                            Date::ValidateDate                          (   
 
     if ((aYear < 1400) || (aYear > 9999))
     {
-        throw library::core::error::RuntimeError(String::Format("Year [{}] out of range [1400 - 9999].", aYear)) ;
+        throw ostk::core::error::RuntimeError(String::Format("Year [{}] out of range [1400 - 9999].", aYear)) ;
     }
 
     if ((aMonth == 0) || (aMonth > 12))
     {
-        throw library::core::error::RuntimeError(String::Format("Month [{}] out of range [1 - 12].", aMonth)) ;
+        throw ostk::core::error::RuntimeError(String::Format("Month [{}] out of range [1 - 12].", aMonth)) ;
     }
 
     if ((aDay == 0) || (aDay > 31))
     {
-        throw library::core::error::RuntimeError(String::Format("Day [{}] out of range [1 - 31].", aDay)) ;
+        throw ostk::core::error::RuntimeError(String::Format("Day [{}] out of range [1 - 31].", aDay)) ;
     }
 
     // [TBM] This is a quick and dirty implementation using boost::gregorian::date, it should be replaced by something more efficient
@@ -480,7 +480,7 @@ void                            Date::ValidateDate                          (   
     }
     catch (const std::out_of_range& e)
     {
-        throw library::core::error::RuntimeError(String::Format("Date [{:d}-{:02d}-{:02d}] out of range.", aYear, aMonth, aDay)) ;
+        throw ostk::core::error::RuntimeError(String::Format("Date [{:d}-{:02d}-{:02d}] out of range.", aYear, aMonth, aDay)) ;
     }
 
 }

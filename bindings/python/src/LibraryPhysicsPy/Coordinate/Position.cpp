@@ -11,19 +11,19 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (LibraryPhysicsPy_Coordinate_Position_toString_overloads, library::physics::coord::Position::toString, 0, 1)
+BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (LibraryPhysicsPy_Coordinate_Position_toString_overloads, ostk::physics::coord::Position::toString, 0, 1)
 
 inline void                     LibraryPhysicsPy_Coordinate_Position        ( )
 {
 
     using namespace boost::python ;
 
-    using library::core::types::Shared ;
+    using ostk::core::types::Shared ;
 
-    using library::math::obj::Vector3d ;
+    using ostk::math::obj::Vector3d ;
 
-    using library::physics::coord::Position ;
-    using library::physics::coord::Frame ;
+    using ostk::physics::coord::Position ;
+    using ostk::physics::coord::Frame ;
 
     scope in_Position = class_<Position>("Position", init<Vector3d, Position::Unit, Shared<const Frame>&>())
 

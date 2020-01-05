@@ -31,7 +31,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -101,15 +101,15 @@ std::ostream&                   operator <<                                 (   
                                                                                 const   Geometry&                   aGeometry                                   )
 {
 
-    library::core::utils::Print::Header(anOutputStream, "Geometry") ;
+    ostk::core::utils::Print::Header(anOutputStream, "Geometry") ;
 
-    library::core::utils::Print::Line(anOutputStream) << "Objects:" ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Objects:" ;
 
     aGeometry.composite_.print(anOutputStream, false) ;
 
-    library::core::utils::Print::Line(anOutputStream) << "Frame:"               << (((aGeometry.frameSPtr_ != nullptr) && aGeometry.frameSPtr_->isDefined()) ? aGeometry.frameSPtr_->getName() : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Frame:"               << (((aGeometry.frameSPtr_ != nullptr) && aGeometry.frameSPtr_->isDefined()) ? aGeometry.frameSPtr_->getName() : "Undefined") ;
 
-    library::core::utils::Print::Footer(anOutputStream) ;
+    ostk::core::utils::Print::Footer(anOutputStream) ;
 
     return anOutputStream ;
 
@@ -125,12 +125,12 @@ bool                            Geometry::intersects                        (   
 
     if (!aGeometry.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Geometry") ;
+        throw ostk::core::error::runtime::Undefined("Geometry") ;
     }
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Geometry") ;
+        throw ostk::core::error::runtime::Undefined("Geometry") ;
     }
 
     if ((*frameSPtr_) == (*aGeometry.frameSPtr_))
@@ -138,7 +138,7 @@ bool                            Geometry::intersects                        (   
         return composite_.intersects(aGeometry.composite_) ;
     }
 
-    throw library::core::error::runtime::ToBeImplemented("Geometry :: intersects") ;
+    throw ostk::core::error::runtime::ToBeImplemented("Geometry :: intersects") ;
 
     return false ;
 
@@ -149,12 +149,12 @@ bool                            Geometry::contains                          (   
 
     if (!aGeometry.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Geometry") ;
+        throw ostk::core::error::runtime::Undefined("Geometry") ;
     }
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Geometry") ;
+        throw ostk::core::error::runtime::Undefined("Geometry") ;
     }
 
     if ((*frameSPtr_) == (*aGeometry.frameSPtr_))
@@ -162,7 +162,7 @@ bool                            Geometry::contains                          (   
         return composite_.contains(aGeometry.composite_) ;
     }
 
-    throw library::core::error::runtime::ToBeImplemented("Geometry :: contains") ;
+    throw ostk::core::error::runtime::ToBeImplemented("Geometry :: contains") ;
 
     return false ;
 
@@ -173,7 +173,7 @@ const Composite&                Geometry::accessComposite                   ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Geometry") ;
+        throw ostk::core::error::runtime::Undefined("Geometry") ;
     }
 
     return composite_ ;
@@ -185,7 +185,7 @@ Shared<const Frame>             Geometry::accessFrame                       ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Geometry") ;
+        throw ostk::core::error::runtime::Undefined("Geometry") ;
     }
 
     return frameSPtr_ ;
@@ -196,30 +196,30 @@ Geometry                        Geometry::in                                (   
                                                                                 const   Instant&                    anInstant                                   ) const
 {
 
-    using library::core::types::String ;
+    using ostk::core::types::String ;
 
-    using library::math::obj::Vector3d ;
-    using library::math::geom::d3::objects::Point ;
-    using library::math::geom::d3::Transformation ;
-    using library::math::geom::d3::trf::rot::Quaternion ;
-    using library::math::geom::d3::trf::rot::RotationVector ;
-    using library::math::geom::d3::trf::rot::RotationMatrix ;
+    using ostk::math::obj::Vector3d ;
+    using ostk::math::geom::d3::objects::Point ;
+    using ostk::math::geom::d3::Transformation ;
+    using ostk::math::geom::d3::trf::rot::Quaternion ;
+    using ostk::math::geom::d3::trf::rot::RotationVector ;
+    using ostk::math::geom::d3::trf::rot::RotationMatrix ;
 
-    using library::physics::coord::Transform ;
+    using ostk::physics::coord::Transform ;
 
     if ((aFrameSPtr == nullptr) || (!aFrameSPtr->isDefined()))
     {
-        throw library::core::error::runtime::Undefined("Frame") ;
+        throw ostk::core::error::runtime::Undefined("Frame") ;
     }
 
     if (!anInstant.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Geometry") ;
+        throw ostk::core::error::runtime::Undefined("Geometry") ;
     }
 
     if ((*frameSPtr_) == (*aFrameSPtr))
@@ -246,27 +246,27 @@ Geometry                        Geometry::in                                (   
 Geometry                        Geometry::intersectionWith                  (   const   Geometry&                   aGeometry                                   ) const
 {
 
-    using library::math::geom::d3::objects::Point ;
-    using library::math::geom::d3::objects::PointSet ;
-    using library::math::geom::d3::objects::Line ;
-    using library::math::geom::d3::objects::Ray ;
-    using library::math::geom::d3::objects::Segment ;
-    using library::math::geom::d3::objects::LineString ;
-    using library::math::geom::d3::objects::Polygon ;
-    using library::math::geom::d3::objects::Plane ;
-    using library::math::geom::d3::objects::Sphere ;
-    using library::math::geom::d3::objects::Ellipsoid ;
-    using library::math::geom::d3::objects::Pyramid ;
-    using library::math::geom::d3::Intersection ;
+    using ostk::math::geom::d3::objects::Point ;
+    using ostk::math::geom::d3::objects::PointSet ;
+    using ostk::math::geom::d3::objects::Line ;
+    using ostk::math::geom::d3::objects::Ray ;
+    using ostk::math::geom::d3::objects::Segment ;
+    using ostk::math::geom::d3::objects::LineString ;
+    using ostk::math::geom::d3::objects::Polygon ;
+    using ostk::math::geom::d3::objects::Plane ;
+    using ostk::math::geom::d3::objects::Sphere ;
+    using ostk::math::geom::d3::objects::Ellipsoid ;
+    using ostk::math::geom::d3::objects::Pyramid ;
+    using ostk::math::geom::d3::Intersection ;
 
     if (!aGeometry.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Geometry") ;
+        throw ostk::core::error::runtime::Undefined("Geometry") ;
     }
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Geometry") ;
+        throw ostk::core::error::runtime::Undefined("Geometry") ;
     }
 
     Intersection intersection = Intersection::Empty() ;
@@ -277,7 +277,7 @@ Geometry                        Geometry::intersectionWith                  (   
     }
     else
     {
-        throw library::core::error::RuntimeError("Only same frame intersection supported at the moment.") ;
+        throw ostk::core::error::RuntimeError("Only same frame intersection supported at the moment.") ;
     }
 
     if (intersection.isEmpty())

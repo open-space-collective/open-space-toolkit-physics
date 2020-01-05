@@ -23,23 +23,23 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using library::core::types::Unique ;
-using library::core::types::Shared ;
-using library::core::types::String ;
-using library::core::ctnr::Array ;
+using ostk::core::types::Unique ;
+using ostk::core::types::Shared ;
+using ostk::core::types::String ;
+using ostk::core::ctnr::Array ;
 
-using GeometricalObject = library::math::geom::d3::Object ;
+using GeometricalObject = ostk::math::geom::d3::Object ;
 
-using library::physics::time::Instant ;
-using library::physics::env::Object ;
-using library::physics::env::obj::Celestial ;
+using ostk::physics::time::Instant ;
+using ostk::physics::env::Object ;
+using ostk::physics::env::obj::Celestial ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

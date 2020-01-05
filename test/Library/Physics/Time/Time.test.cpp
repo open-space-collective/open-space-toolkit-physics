@@ -16,7 +16,7 @@
 TEST (Library_Physics_Time_Time, Constructor)
 {
 
-    using library::physics::time::Time ;
+    using ostk::physics::time::Time ;
 
     {
 
@@ -51,7 +51,7 @@ TEST (Library_Physics_Time_Time, Constructor)
 TEST (Library_Physics_Time_Time, EqualToOperator)
 {
 
-    using library::physics::time::Time ;
+    using ostk::physics::time::Time ;
 
     {
 
@@ -82,7 +82,7 @@ TEST (Library_Physics_Time_Time, EqualToOperator)
 TEST (Library_Physics_Time_Time, NotEqualToOperator)
 {
 
-    using library::physics::time::Time ;
+    using ostk::physics::time::Time ;
 
     {
 
@@ -113,7 +113,7 @@ TEST (Library_Physics_Time_Time, NotEqualToOperator)
 TEST (Library_Physics_Time_Time, StreamOperator)
 {
 
-    using library::physics::time::Time ;
+    using ostk::physics::time::Time ;
 
     {
 
@@ -130,7 +130,7 @@ TEST (Library_Physics_Time_Time, StreamOperator)
 TEST (Library_Physics_Time_Time, IsDefined)
 {
 
-    using library::physics::time::Time ;
+    using ostk::physics::time::Time ;
 
     {
 
@@ -151,7 +151,7 @@ TEST (Library_Physics_Time_Time, IsDefined)
 TEST (Library_Physics_Time_Time, GetHour)
 {
 
-    using library::physics::time::Time ;
+    using ostk::physics::time::Time ;
 
     {
 
@@ -170,7 +170,7 @@ TEST (Library_Physics_Time_Time, GetHour)
 TEST (Library_Physics_Time_Time, GetMinute)
 {
 
-    using library::physics::time::Time ;
+    using ostk::physics::time::Time ;
 
     {
 
@@ -189,7 +189,7 @@ TEST (Library_Physics_Time_Time, GetMinute)
 TEST (Library_Physics_Time_Time, GetSecond)
 {
 
-    using library::physics::time::Time ;
+    using ostk::physics::time::Time ;
 
     {
 
@@ -208,7 +208,7 @@ TEST (Library_Physics_Time_Time, GetSecond)
 TEST (Library_Physics_Time_Time, GetMillisecond)
 {
 
-    using library::physics::time::Time ;
+    using ostk::physics::time::Time ;
 
     {
 
@@ -227,7 +227,7 @@ TEST (Library_Physics_Time_Time, GetMillisecond)
 TEST (Library_Physics_Time_Time, GetMicrosecond)
 {
 
-    using library::physics::time::Time ;
+    using ostk::physics::time::Time ;
 
     {
 
@@ -246,7 +246,7 @@ TEST (Library_Physics_Time_Time, GetMicrosecond)
 TEST (Library_Physics_Time_Time, GetNanosecond)
 {
 
-    using library::physics::time::Time ;
+    using ostk::physics::time::Time ;
 
     {
 
@@ -265,7 +265,7 @@ TEST (Library_Physics_Time_Time, GetNanosecond)
 TEST (Library_Physics_Time_Time, GetFloatingSeconds)
 {
 
-    using library::physics::time::Time ;
+    using ostk::physics::time::Time ;
 
     {
 
@@ -289,7 +289,7 @@ TEST (Library_Physics_Time_Time, GetFloatingSeconds)
 TEST (Library_Physics_Time_Time, ToString)
 {
 
-    using library::physics::time::Time ;
+    using ostk::physics::time::Time ;
 
     {
 
@@ -331,7 +331,7 @@ TEST (Library_Physics_Time_Time, ToString)
 TEST (Library_Physics_Time_Time, SetHour)
 {
 
-    using library::physics::time::Time ;
+    using ostk::physics::time::Time ;
 
     {
 
@@ -356,7 +356,7 @@ TEST (Library_Physics_Time_Time, SetHour)
 TEST (Library_Physics_Time_Time, SetMinute)
 {
 
-    using library::physics::time::Time ;
+    using ostk::physics::time::Time ;
 
     {
 
@@ -383,7 +383,7 @@ TEST (Library_Physics_Time_Time, SetMinute)
 TEST (Library_Physics_Time_Time, SetSecond)
 {
 
-    using library::physics::time::Time ;
+    using ostk::physics::time::Time ;
 
     {
 
@@ -410,7 +410,7 @@ TEST (Library_Physics_Time_Time, SetSecond)
 TEST (Library_Physics_Time_Time, SetMillisecond)
 {
 
-    using library::physics::time::Time ;
+    using ostk::physics::time::Time ;
 
     {
 
@@ -437,7 +437,7 @@ TEST (Library_Physics_Time_Time, SetMillisecond)
 TEST (Library_Physics_Time_Time, SetMicrosecond)
 {
 
-    using library::physics::time::Time ;
+    using ostk::physics::time::Time ;
 
     {
 
@@ -464,7 +464,7 @@ TEST (Library_Physics_Time_Time, SetMicrosecond)
 TEST (Library_Physics_Time_Time, SetNanosecond)
 {
 
-    using library::physics::time::Time ;
+    using ostk::physics::time::Time ;
 
     {
 
@@ -491,7 +491,7 @@ TEST (Library_Physics_Time_Time, SetNanosecond)
 TEST (Library_Physics_Time_Time, Undefined)
 {
 
-    using library::physics::time::Time ;
+    using ostk::physics::time::Time ;
 
     {
 
@@ -506,7 +506,7 @@ TEST (Library_Physics_Time_Time, Undefined)
 TEST (Library_Physics_Time_Time, Midnight)
 {
 
-    using library::physics::time::Time ;
+    using ostk::physics::time::Time ;
 
     {
 
@@ -519,7 +519,7 @@ TEST (Library_Physics_Time_Time, Midnight)
 TEST (Library_Physics_Time_Time, Noon)
 {
 
-    using library::physics::time::Time ;
+    using ostk::physics::time::Time ;
 
     {
 
@@ -532,7 +532,7 @@ TEST (Library_Physics_Time_Time, Noon)
 TEST (Library_Physics_Time_Time, Parse)
 {
 
-    using library::physics::time::Time ;
+    using ostk::physics::time::Time ;
 
     // Undefined (automatic format detection)
 

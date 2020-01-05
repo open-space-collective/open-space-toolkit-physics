@@ -45,7 +45,7 @@
 // TEST (Library_Physics_Environment_Objects_Celestial, Constructor)
 // {
 
-//     using library::physics::env::Object ;
+//     using ostk::physics::env::Object ;
 
 //     {
 
@@ -58,25 +58,25 @@
 TEST (Library_Physics_Environment_Objects_Celestial, GetGravitationalFieldAt)
 {
 
-    using library::core::types::Shared ;
-    using library::core::types::Real ;
-    using library::core::types::String ;
+    using ostk::core::types::Shared ;
+    using ostk::core::types::Real ;
+    using ostk::core::types::String ;
 
-    using library::math::obj::Vector3d ;
+    using ostk::math::obj::Vector3d ;
 
-    using library::physics::Unit ;
-    using library::physics::units::Length ;
-    using library::physics::units::Time ;
-    using library::physics::units::Derived ;
-    using library::physics::data::Vector ;
-    using library::physics::time::Instant ;
-    using library::physics::coord::Frame ;
-    using library::physics::coord::Position ;
-    using library::physics::env::obj::Celestial ;
-    using library::physics::env::Ephemeris ;
-    using library::physics::env::ephem::Analytical ;
-    using GravitationalModel = library::physics::environment::gravitational::Model ;
-    using library::physics::environment::gravitational::Spherical ;
+    using ostk::physics::Unit ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::units::Time ;
+    using ostk::physics::units::Derived ;
+    using ostk::physics::data::Vector ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::Position ;
+    using ostk::physics::env::obj::Celestial ;
+    using ostk::physics::env::Ephemeris ;
+    using ostk::physics::env::ephem::Analytical ;
+    using GravitationalModel = ostk::physics::environment::gravitational::Model ;
+    using ostk::physics::environment::gravitational::Spherical ;
 
     {
 
@@ -153,25 +153,25 @@ TEST (Library_Physics_Environment_Objects_Celestial, GetGravitationalFieldAt)
 TEST (Library_Physics_Environment_Objects_Celestial, GetMagneticFieldAt)
 {
 
-    using library::core::types::Shared ;
-    using library::core::types::Real ;
-    using library::core::types::String ;
+    using ostk::core::types::Shared ;
+    using ostk::core::types::Real ;
+    using ostk::core::types::String ;
 
-    using library::math::obj::Vector3d ;
+    using ostk::math::obj::Vector3d ;
 
-    using library::physics::Unit ;
-    using library::physics::units::Length ;
-    using library::physics::units::Time ;
-    using library::physics::units::Derived ;
-    using library::physics::data::Vector ;
-    using library::physics::time::Instant ;
-    using library::physics::coord::Frame ;
-    using library::physics::coord::Position ;
-    using library::physics::env::obj::Celestial ;
-    using library::physics::env::Ephemeris ;
-    using library::physics::env::ephem::Analytical ;
-    using MagneticModel = library::physics::environment::magnetic::Model ;
-    using library::physics::environment::magnetic::Dipole ;
+    using ostk::physics::Unit ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::units::Time ;
+    using ostk::physics::units::Derived ;
+    using ostk::physics::data::Vector ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::Position ;
+    using ostk::physics::env::obj::Celestial ;
+    using ostk::physics::env::Ephemeris ;
+    using ostk::physics::env::ephem::Analytical ;
+    using MagneticModel = ostk::physics::environment::magnetic::Model ;
+    using ostk::physics::environment::magnetic::Dipole ;
 
     {
 

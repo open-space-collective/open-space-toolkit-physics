@@ -29,7 +29,7 @@ extern "C"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -62,7 +62,7 @@ static void                     handleException                             ( )
     reset_c() ;
     clpool_c() ;
 
-    throw library::core::error::RuntimeError("SPICE exception: [{}] [{}].", shortMessage, longMessage) ;
+    throw ostk::core::error::RuntimeError("SPICE exception: [{}] [{}].", shortMessage, longMessage) ;
 
 }
 
@@ -72,7 +72,7 @@ std::ostream&                   operator <<                                 (   
                                                                                 const   Engine&                     anEngine                                    )
 {
 
-    library::core::utils::Print::Header(anOutputStream, "SPICE :: Engine") ;
+    ostk::core::utils::Print::Header(anOutputStream, "SPICE :: Engine") ;
 
     const std::lock_guard<std::mutex> lock { anEngine.mutex_ } ;
 
@@ -109,7 +109,7 @@ std::ostream&                   operator <<                                 (   
 
             if (found)
             {
-                library::core::utils::Print::Line(anOutputStream) << fileName ;
+                ostk::core::utils::Print::Line(anOutputStream) << fileName ;
             }
 
         }
@@ -117,10 +117,10 @@ std::ostream&                   operator <<                                 (   
     }
     else
     {
-        library::core::utils::Print::Line(anOutputStream) << "No kernel loaded." ;
+        ostk::core::utils::Print::Line(anOutputStream) << "No kernel loaded." ;
     }
 
-    library::core::utils::Print::Footer(anOutputStream) ;
+    ostk::core::utils::Print::Footer(anOutputStream) ;
 
     return anOutputStream ;
 
@@ -131,7 +131,7 @@ bool                            Engine::isKernelLoaded                      (   
 
     if (!aKernel.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Kernel") ;
+        throw ostk::core::error::runtime::Undefined("Kernel") ;
     }
 
     const std::lock_guard<std::mutex> lock { mutex_ } ;
@@ -152,7 +152,7 @@ Engine::Mode                    Engine::getMode                             ( ) 
 Shared<const Frame>             Engine::getFrameOf                          (   const   SPICE::Object&              aSpiceObject                                ) const
 {
 
-    using DynamicProvider = library::physics::coord::frame::provider::Dynamic ;
+    using DynamicProvider = ostk::physics::coord::frame::provider::Dynamic ;
 
     const String frameName = String::Format("{} (SPICE)", SPICE::StringFromObject(aSpiceObject)) ;
     const String objectIdentifier = Engine::SpiceIdentifierFromSpiceObject(aSpiceObject) ;
@@ -195,7 +195,7 @@ void                            Engine::loadKernel                          (   
 
     if (!aKernel.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Kernel") ;
+        throw ostk::core::error::runtime::Undefined("Kernel") ;
     }
 
     const std::lock_guard<std::mutex> lock { mutex_ } ;
@@ -209,7 +209,7 @@ void                            Engine::unloadKernel                        (   
 
     if (!aKernel.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Kernel") ;
+        throw ostk::core::error::runtime::Undefined("Kernel") ;
     }
 
     const std::lock_guard<std::mutex> lock { mutex_ } ;
@@ -264,7 +264,7 @@ Engine::Mode                    Engine::DefaultMode                         ( )
         }
         else
         {
-            throw library::core::error::runtime::Wrong("Mode", modeString) ;
+            throw ostk::core::error::runtime::Wrong("Mode", modeString) ;
         }
 
     }
@@ -316,12 +316,12 @@ Transform                       Engine::getTransformAt                      (   
                                                                                 const   Instant&                    anInstant                                   ) const
 {
 
-    using library::math::obj::Vector3d ;
-    using library::math::obj::Matrix3d ;
-    using library::math::geom::d3::trf::rot::Quaternion ;
-    using library::math::geom::d3::trf::rot::RotationMatrix ;
+    using ostk::math::obj::Vector3d ;
+    using ostk::math::obj::Matrix3d ;
+    using ostk::math::geom::d3::trf::rot::Quaternion ;
+    using ostk::math::geom::d3::trf::rot::RotationMatrix ;
 
-    using library::physics::time::Scale ;
+    using ostk::physics::time::Scale ;
 
     // Load required kernels
 
@@ -514,11 +514,11 @@ void                            Engine::manageKernels                       (   
                         }
                         else
                         {
-                            throw library::core::error::RuntimeError("Cannot fetch BPC Earth kernel at [{}].", anInstant.toString()) ;
+                            throw ostk::core::error::RuntimeError("Cannot fetch BPC Earth kernel at [{}].", anInstant.toString()) ;
                         }
 
                     // }
-                    // catch (const library::core::error::Exception& anException)
+                    // catch (const ostk::core::error::Exception& anException)
                     // {
                     //     // Do nothing
                     // }
@@ -558,7 +558,7 @@ void                            Engine::loadKernel_                         (   
         }
         else
         {
-            throw library::core::error::RuntimeError("Kernel file [{}] does not exist.", kernelFile.toString()) ;
+            throw ostk::core::error::RuntimeError("Kernel file [{}] does not exist.", kernelFile.toString()) ;
         }
 
     }
@@ -614,14 +614,14 @@ void                            Engine::unloadKernel_                       (   
 void                            Engine::updateEarthKernelCache              ( )
 {
 
-    using library::core::types::Uint8 ;
-    using library::core::types::Uint16 ;
-    using library::core::types::Integer ;
+    using ostk::core::types::Uint8 ;
+    using ostk::core::types::Uint16 ;
+    using ostk::core::types::Integer ;
 
-    using library::physics::time::Scale ;
-    using library::physics::time::Date ;
-    using library::physics::time::Time ;
-    using library::physics::time::DateTime ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Date ;
+    using ostk::physics::time::Time ;
+    using ostk::physics::time::DateTime ;
 
     earthKernelCache_.clear() ;
     earthKernelCacheIndex_ = 0 ;
@@ -664,7 +664,7 @@ void                            Engine::updateEarthKernelCache              ( )
 String                          Engine::SpiceIdentifierFromSpiceObject      (   const   SPICE::Object&              aSpiceObject                                )
 {
 
-    using library::core::ctnr::Map ;
+    using ostk::core::ctnr::Map ;
 
     static const Map<SPICE::Object, String> identifierMap =
     {
@@ -690,7 +690,7 @@ String                          Engine::FrameNameFromSpiceObject            (   
     // https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/C/req/frames.html#Appendix.%20%60%60Built%20in''%20PCK-Based%20IAU%20Body-Fixed%20Reference%20Frames
     // https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/Tutorials/pdf/individual_docs/23_lunar-earth_pck-fk.pdf
 
-    using library::core::ctnr::Map ;
+    using ostk::core::ctnr::Map ;
 
     static const Map<SPICE::Object, String> frameNameMap =
     {

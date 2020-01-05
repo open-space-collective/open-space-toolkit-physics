@@ -35,7 +35,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -50,19 +50,19 @@ namespace iers
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using library::core::types::Index ;
-using library::core::types::Real ;
-using library::core::ctnr::Array ;
-using library::core::fs::Directory ;
+using ostk::core::types::Index ;
+using ostk::core::types::Real ;
+using ostk::core::ctnr::Array ;
+using ostk::core::fs::Directory ;
 
-using library::io::URL ;
+using ostk::io::URL ;
 
-using library::math::obj::Vector2d ;
+using ostk::math::obj::Vector2d ;
 
-using library::physics::time::Instant ;
-using library::physics::time::Duration ;
-using library::physics::coord::frame::provider::iers::BulletinA ;
-using library::physics::coord::frame::provider::iers::Finals2000A ;
+using ostk::physics::time::Instant ;
+using ostk::physics::time::Duration ;
+using ostk::physics::coord::frame::provider::iers::BulletinA ;
+using ostk::physics::coord::frame::provider::iers::Finals2000A ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

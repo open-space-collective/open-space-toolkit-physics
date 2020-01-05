@@ -27,7 +27,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -36,18 +36,18 @@ namespace coord
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using library::core::types::Uint8 ;
-using library::core::types::Shared ;
-using library::core::types::Real ;
-using library::core::types::String ;
+using ostk::core::types::Uint8 ;
+using ostk::core::types::Shared ;
+using ostk::core::types::Real ;
+using ostk::core::types::String ;
 
-using library::math::obj::Vector3d ;
+using ostk::math::obj::Vector3d ;
 
-using library::physics::coord::Position ;
-using library::physics::coord::Velocity ;
-using library::physics::coord::Axes ;
-using library::physics::coord::Transform ;
-using library::physics::coord::frame::Provider ;
+using ostk::physics::coord::Position ;
+using ostk::physics::coord::Velocity ;
+using ostk::physics::coord::Axes ;
+using ostk::physics::coord::Transform ;
+using ostk::physics::coord::frame::Provider ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

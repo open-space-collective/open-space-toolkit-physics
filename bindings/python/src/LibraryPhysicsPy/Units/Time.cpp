@@ -11,16 +11,16 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (LibraryPhysicsPy_Units_Time_toString_overloads, library::physics::units::Time::toString, 0, 1)
+BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (LibraryPhysicsPy_Units_Time_toString_overloads, ostk::physics::units::Time::toString, 0, 1)
 
 inline void                     LibraryPhysicsPy_Units_Time               ( )
 {
 
     using namespace boost::python ;
 
-    using library::core::types::Real ;
+    using ostk::core::types::Real ;
 
-    using library::physics::units::Time ;
+    using ostk::physics::units::Time ;
 
     scope in_Time = class_<Time>("Time", init<Real, Time::Unit>())
 

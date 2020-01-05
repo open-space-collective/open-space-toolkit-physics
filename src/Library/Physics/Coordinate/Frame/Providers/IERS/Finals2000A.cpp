@@ -22,7 +22,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -41,15 +41,15 @@ std::ostream&                   operator <<                                 (   
                                                                                 const   Finals2000A&                aFinals2000A                                )
 {
 
-    using library::core::types::String ;
+    using ostk::core::types::String ;
 
-    using library::physics::time::Scale ;
+    using ostk::physics::time::Scale ;
 
-    library::core::utils::Print::Header(anOutputStream, "Finals 2000A") ;
+    ostk::core::utils::Print::Header(anOutputStream, "Finals 2000A") ;
 
-    library::core::utils::Print::Line(anOutputStream) << "Interval:" << (aFinals2000A.getInterval().isDefined() ? aFinals2000A.getInterval().toString(Scale::UTC) : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Interval:" << (aFinals2000A.getInterval().isDefined() ? aFinals2000A.getInterval().toString(Scale::UTC) : "Undefined") ;
 
-    library::core::utils::Print::Footer(anOutputStream) ;
+    ostk::core::utils::Print::Footer(anOutputStream) ;
 
     return anOutputStream ;
 
@@ -65,7 +65,7 @@ Interval                        Finals2000A::getInterval                    ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Finals 2000A") ;
+        throw ostk::core::error::runtime::Undefined("Finals 2000A") ;
     }
 
     return span_ ;
@@ -75,16 +75,16 @@ Interval                        Finals2000A::getInterval                    ( ) 
 Vector2d                        Finals2000A::getPolarMotionAt               (   const   Instant&                    anInstant                                   ) const
 {
 
-    using library::physics::time::Scale ;
+    using ostk::physics::time::Scale ;
 
     if (!anInstant.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Finals 2000A") ;
+        throw ostk::core::error::runtime::Undefined("Finals 2000A") ;
     }
 
     const Pair<const Finals2000A::Data*, const Finals2000A::Data*> dataRange = this->accessDataRange(anInstant) ;
@@ -115,23 +115,23 @@ Vector2d                        Finals2000A::getPolarMotionAt               (   
 
     }
 
-    throw library::core::error::RuntimeError("Cannot get polar motion at [{}].", anInstant.toString(Scale::UTC)) ;
+    throw ostk::core::error::RuntimeError("Cannot get polar motion at [{}].", anInstant.toString(Scale::UTC)) ;
 
 }
 
 Real                            Finals2000A::getUt1MinusUtcAt               (   const   Instant&                    anInstant                                   ) const
 {
 
-    using library::physics::time::Scale ;
+    using ostk::physics::time::Scale ;
 
     if (!anInstant.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Finals 2000A") ;
+        throw ostk::core::error::runtime::Undefined("Finals 2000A") ;
     }
 
     const Pair<const Finals2000A::Data*, const Finals2000A::Data*> dataRange = this->accessDataRange(anInstant) ;
@@ -162,23 +162,23 @@ Real                            Finals2000A::getUt1MinusUtcAt               (   
 
     }
 
-    throw library::core::error::RuntimeError("Cannot get UT1 - UTC at [{}].", anInstant.toString(Scale::UTC)) ;
+    throw ostk::core::error::RuntimeError("Cannot get UT1 - UTC at [{}].", anInstant.toString(Scale::UTC)) ;
 
 }
 
 Real                            Finals2000A::getLodAt                       (   const   Instant&                    anInstant                                   ) const
 {
 
-    using library::physics::time::Scale ;
+    using ostk::physics::time::Scale ;
 
     if (!anInstant.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Finals 2000A") ;
+        throw ostk::core::error::runtime::Undefined("Finals 2000A") ;
     }
 
     const Pair<const Finals2000A::Data*, const Finals2000A::Data*> dataRange = this->accessDataRange(anInstant) ;
@@ -208,23 +208,23 @@ Real                            Finals2000A::getLodAt                       (   
 
     }
 
-    throw library::core::error::RuntimeError("Cannot get length of day at [{}].", anInstant.toString(Scale::UTC)) ;
+    throw ostk::core::error::RuntimeError("Cannot get length of day at [{}].", anInstant.toString(Scale::UTC)) ;
 
 }
 
 Finals2000A::Data               Finals2000A::getDataAt                      (   const   Instant&                    anInstant                                   ) const
 {
 
-    using library::physics::time::Scale ;
+    using ostk::physics::time::Scale ;
 
     if (!anInstant.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Finals 2000A") ;
+        throw ostk::core::error::runtime::Undefined("Finals 2000A") ;
     }
 
     const Pair<const Finals2000A::Data*, const Finals2000A::Data*> dataRange = this->accessDataRange(anInstant) ;
@@ -237,7 +237,7 @@ Finals2000A::Data               Finals2000A::getDataAt                      (   
 
             if (!aRatio.isDefined())
             {
-                throw library::core::error::runtime::Undefined("Ratio") ;
+                throw ostk::core::error::runtime::Undefined("Ratio") ;
             }
 
             if (aPreviousValue.isDefined() && aNextValue.isDefined())
@@ -320,7 +320,7 @@ Finals2000A::Data               Finals2000A::getDataAt                      (   
 
     }
 
-    throw library::core::error::RuntimeError("Cannot get data at [{}].", anInstant.toString(Scale::UTC)) ;
+    throw ostk::core::error::RuntimeError("Cannot get data at [{}].", anInstant.toString(Scale::UTC)) ;
 
 }
 
@@ -332,25 +332,25 @@ Finals2000A                     Finals2000A::Undefined                      ( )
 Finals2000A                     Finals2000A::Load                           (   const   fs::File&                   aFile                                       )
 {
 
-    using library::core::types::Index ;
-    using library::core::types::Uint8 ;
-    using library::core::types::Uint16 ;
-    using library::core::types::Real ;
-    using library::core::types::String ;
-    using library::core::ctnr::Array ;
+    using ostk::core::types::Index ;
+    using ostk::core::types::Uint8 ;
+    using ostk::core::types::Uint16 ;
+    using ostk::core::types::Real ;
+    using ostk::core::types::String ;
+    using ostk::core::ctnr::Array ;
 
-    using library::physics::time::Scale ;
-    using library::physics::time::Time ;
-    using library::physics::time::DateTime ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Time ;
+    using ostk::physics::time::DateTime ;
 
     if (!aFile.isDefined())
     {
-        throw library::core::error::runtime::Undefined("File") ;
+        throw ostk::core::error::runtime::Undefined("File") ;
     }
 
     if (!aFile.exists())
     {
-        throw library::core::error::RuntimeError("File [{}] does not exist.", aFile.toString()) ;
+        throw ostk::core::error::RuntimeError("File [{}] does not exist.", aFile.toString()) ;
     }
 
     Finals2000A finals2000a ;
@@ -502,7 +502,7 @@ Finals2000A                     Finals2000A::Load                           (   
 Pair<const Finals2000A::Data*, const Finals2000A::Data*> Finals2000A::accessDataRange ( const Instant&              anInstant                                   ) const
 {
 
-    using library::physics::time::Scale ;
+    using ostk::physics::time::Scale ;
 
     const Real instantMjd_UTC = anInstant.getModifiedJulianDate(Scale::UTC) ;
 

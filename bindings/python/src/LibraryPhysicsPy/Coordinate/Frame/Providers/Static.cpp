@@ -16,9 +16,9 @@ inline void                     LibraryPhysicsPy_Coordinate_Frame_Providers_Stat
 
     using namespace boost::python ;
 
-    using library::physics::coord::Transform ;
-    using library::physics::coord::frame::Provider ;
-    using library::physics::coord::frame::provider::Static ;
+    using ostk::physics::coord::Transform ;
+    using ostk::physics::coord::frame::Provider ;
+    using ostk::physics::coord::frame::provider::Static ;
 
     scope in_Static = class_<Static, bases<Provider>>("Static", init<const Transform&>())
 

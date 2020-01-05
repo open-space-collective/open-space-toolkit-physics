@@ -26,7 +26,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -35,16 +35,16 @@ namespace env
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using library::core::types::Unique ;
-using library::core::types::Shared ;
-using library::core::types::String ;
+using ostk::core::types::Unique ;
+using ostk::core::types::Shared ;
+using ostk::core::types::String ;
 
-using library::physics::time::Instant ;
-using library::physics::coord::Position ;
-using library::physics::coord::Velocity ;
-using library::physics::coord::Axes ;
-using library::physics::coord::Frame ;
-using library::physics::coord::Transform ;
+using ostk::physics::time::Instant ;
+using ostk::physics::coord::Position ;
+using ostk::physics::coord::Velocity ;
+using ostk::physics::coord::Axes ;
+using ostk::physics::coord::Frame ;
+using ostk::physics::coord::Transform ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

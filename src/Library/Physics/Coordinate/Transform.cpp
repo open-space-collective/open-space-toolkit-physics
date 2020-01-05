@@ -15,7 +15,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -49,7 +49,7 @@ namespace coord
             break ;
 
         default:
-            throw library::core::error::runtime::Wrong("Type") ;
+            throw ostk::core::error::runtime::Wrong("Type") ;
             break ;
 
     }
@@ -82,12 +82,12 @@ Transform                       Transform::operator *                       (   
 
     if ((!this->isDefined()) || (!aTransform.isDefined()))
     {
-        throw library::core::error::runtime::Undefined("Transform") ;
+        throw ostk::core::error::runtime::Undefined("Transform") ;
     }
 
     if (instant_ != aTransform.instant_)
     {
-        throw library::core::error::RuntimeError("Instants are different.") ;
+        throw ostk::core::error::RuntimeError("Instants are different.") ;
     }
 
     Transform transform(*this) ;
@@ -103,12 +103,12 @@ Transform&                      Transform::operator *=                      (   
 
     if ((!this->isDefined()) || (!aTransform.isDefined()))
     {
-        throw library::core::error::runtime::Undefined("Transform") ;
+        throw ostk::core::error::runtime::Undefined("Transform") ;
     }
 
     if (instant_ != aTransform.instant_)
     {
-        throw library::core::error::RuntimeError("Instants are different.") ;
+        throw ostk::core::error::RuntimeError("Instants are different.") ;
     }
 
     // C_A = C_B * B_A
@@ -142,21 +142,21 @@ std::ostream&                   operator <<                                 (   
                                                                                 const   Transform&                  aTransform                                  )
 {
 
-    using library::math::geom::d3::trf::rot::RotationVector ;
+    using ostk::math::geom::d3::trf::rot::RotationVector ;
 
-    using library::physics::time::Scale ;
+    using ostk::physics::time::Scale ;
 
-    library::core::utils::Print::Header(anOutputStream, "Transform") ;
+    ostk::core::utils::Print::Header(anOutputStream, "Transform") ;
 
-    library::core::utils::Print::Line(anOutputStream) << "Instant:"             << (aTransform.isDefined() ? aTransform.accessInstant().toString(Scale::UTC) : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Instant:"             << (aTransform.isDefined() ? aTransform.accessInstant().toString(Scale::UTC) : "Undefined") ;
 
-    library::core::utils::Print::Line(anOutputStream) << "Translation:"         << (aTransform.isDefined() ? (aTransform.accessTranslation().toString() + " [m]") : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Velocity:"            << (aTransform.isDefined() ? (aTransform.accessVelocity().toString() + " [m/s]") : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Translation:"         << (aTransform.isDefined() ? (aTransform.accessTranslation().toString() + " [m]") : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Velocity:"            << (aTransform.isDefined() ? (aTransform.accessVelocity().toString() + " [m/s]") : "Undefined") ;
 
-    library::core::utils::Print::Line(anOutputStream) << "Orientation:"         << (aTransform.isDefined() ? String::Format("{} == {}", aTransform.accessOrientation().toString(), RotationVector::Quaternion(aTransform.accessOrientation()).toString()) : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Angular Velocity:"    << (aTransform.isDefined() ? (aTransform.accessAngularVelocity().toString() + " [rad/s]") : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Orientation:"         << (aTransform.isDefined() ? String::Format("{} == {}", aTransform.accessOrientation().toString(), RotationVector::Quaternion(aTransform.accessOrientation()).toString()) : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Angular Velocity:"    << (aTransform.isDefined() ? (aTransform.accessAngularVelocity().toString() + " [rad/s]") : "Undefined") ;
 
-    library::core::utils::Print::Footer(anOutputStream) ;
+    ostk::core::utils::Print::Footer(anOutputStream) ;
 
     return anOutputStream ;
 
@@ -178,7 +178,7 @@ bool                            Transform::isIdentity                       ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Transform") ;
+        throw ostk::core::error::runtime::Undefined("Transform") ;
     }
 
     return (translation_ == Vector3d::Zero())
@@ -193,7 +193,7 @@ const Instant&                  Transform::accessInstant                    ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Transform") ;
+        throw ostk::core::error::runtime::Undefined("Transform") ;
     }
 
     return instant_ ;
@@ -205,7 +205,7 @@ const Vector3d&                 Transform::accessTranslation                ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Transform") ;
+        throw ostk::core::error::runtime::Undefined("Transform") ;
     }
 
     return translation_ ;
@@ -217,7 +217,7 @@ const Vector3d&                 Transform::accessVelocity                   ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Transform") ;
+        throw ostk::core::error::runtime::Undefined("Transform") ;
     }
 
     return velocity_ ;
@@ -229,7 +229,7 @@ const Quaternion&               Transform::accessOrientation                ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Transform") ;
+        throw ostk::core::error::runtime::Undefined("Transform") ;
     }
 
     return orientation_ ;
@@ -241,7 +241,7 @@ const Vector3d&                 Transform::accessAngularVelocity            ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Transform") ;
+        throw ostk::core::error::runtime::Undefined("Transform") ;
     }
 
     return angularVelocity_ ;
@@ -253,7 +253,7 @@ Instant                         Transform::getInstant                       ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Transform") ;
+        throw ostk::core::error::runtime::Undefined("Transform") ;
     }
 
     return instant_ ;
@@ -265,7 +265,7 @@ Vector3d                        Transform::getTranslation                   ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Transform") ;
+        throw ostk::core::error::runtime::Undefined("Transform") ;
     }
 
     return translation_ ;
@@ -277,7 +277,7 @@ Vector3d                        Transform::getVelocity                      ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Transform") ;
+        throw ostk::core::error::runtime::Undefined("Transform") ;
     }
 
     return velocity_ ;
@@ -289,7 +289,7 @@ Quaternion                      Transform::getOrientation                   ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Transform") ;
+        throw ostk::core::error::runtime::Undefined("Transform") ;
     }
 
     return orientation_ ;
@@ -301,7 +301,7 @@ Vector3d                        Transform::getAngularVelocity               ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Transform") ;
+        throw ostk::core::error::runtime::Undefined("Transform") ;
     }
 
     return angularVelocity_ ;
@@ -313,7 +313,7 @@ Transform                       Transform::getInverse                       ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Transform") ;
+        throw ostk::core::error::runtime::Undefined("Transform") ;
     }
 
     // t_A_B_in_B = - q_B_A * t_B_A_in_A
@@ -341,12 +341,12 @@ Vector3d                        Transform::applyToPosition                  (   
 
     if (!aPosition.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Position") ;
+        throw ostk::core::error::runtime::Undefined("Position") ;
     }
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Transform") ;
+        throw ostk::core::error::runtime::Undefined("Transform") ;
     }
 
     // x_B = q_B_A * (x_A + t_B_A_in_A)
@@ -361,17 +361,17 @@ Vector3d                        Transform::applyToVelocity                  (   
 
     if (!aPosition.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Position") ;
+        throw ostk::core::error::runtime::Undefined("Position") ;
     }
 
     if (!aVelocity.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Velocity") ;
+        throw ostk::core::error::runtime::Undefined("Velocity") ;
     }
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Transform") ;
+        throw ostk::core::error::runtime::Undefined("Transform") ;
     }
 
     // v_B_in_B = q_B_A * (v_A_in_A + v_B_A_in_A) - Ω_B_A_in_B x (q_B_A * (x_A + t_B_A_in_A))
@@ -385,12 +385,12 @@ Vector3d                        Transform::applyToVector                    (   
 
     if (!aVector.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Vector") ;
+        throw ostk::core::error::runtime::Undefined("Vector") ;
     }
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Transform") ;
+        throw ostk::core::error::runtime::Undefined("Transform") ;
     }
 
     return orientation_ * aVector ;

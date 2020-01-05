@@ -19,9 +19,9 @@
 TEST (Library_Physics_Environment_Magnetic_Dipole, Constructor)
 {
 
-    using library::math::obj::Vector3d ;
+    using ostk::math::obj::Vector3d ;
 
-    using library::physics::environment::magnetic::Dipole ;
+    using ostk::physics::environment::magnetic::Dipole ;
 
     {
 
@@ -42,9 +42,9 @@ TEST (Library_Physics_Environment_Magnetic_Dipole, Constructor)
 TEST (Library_Physics_Environment_Magnetic_Dipole, Clone)
 {
 
-    using library::math::obj::Vector3d ;
+    using ostk::math::obj::Vector3d ;
 
-    using library::physics::environment::magnetic::Dipole ;
+    using ostk::physics::environment::magnetic::Dipole ;
 
     {
 
@@ -61,12 +61,12 @@ TEST (Library_Physics_Environment_Magnetic_Dipole, Clone)
 TEST (Library_Physics_Environment_Magnetic_Dipole, GetFieldValueAt)
 {
 
-    using library::math::obj::Vector3d ;
+    using ostk::math::obj::Vector3d ;
 
-    using library::physics::time::Instant ;
-    using library::math::obj::Vector3d ;
+    using ostk::physics::time::Instant ;
+    using ostk::math::obj::Vector3d ;
 
-    using library::physics::environment::magnetic::Dipole ;
+    using ostk::physics::environment::magnetic::Dipole ;
 
     {
 

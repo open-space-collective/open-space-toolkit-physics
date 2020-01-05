@@ -30,7 +30,7 @@
 TEST (Library_Physics_Environment_Ephemerides_SPICE, Constructor)
 {
 
-    using library::physics::env::ephem::SPICE ;
+    using ostk::physics::env::ephem::SPICE ;
 
     {
 
@@ -43,7 +43,7 @@ TEST (Library_Physics_Environment_Ephemerides_SPICE, Constructor)
 TEST (Library_Physics_Environment_Ephemerides_SPICE, IsDefined)
 {
 
-    using library::physics::env::ephem::SPICE ;
+    using ostk::physics::env::ephem::SPICE ;
 
     {
 
@@ -58,29 +58,29 @@ TEST (Library_Physics_Environment_Ephemerides_SPICE, IsDefined)
 TEST (Library_Physics_Environment_Ephemerides_SPICE, AccessFrame)
 {
 
-    using library::core::types::Shared ;
-    using library::core::types::Real ;
-    using library::core::types::String ;
-    using library::core::ctnr::Tuple ;
-    using library::core::ctnr::Array ;
-    using library::core::ctnr::Table ;
-    using library::core::fs::Path ;
-    using library::core::fs::File ;
-    using library::core::fs::Directory ;
+    using ostk::core::types::Shared ;
+    using ostk::core::types::Real ;
+    using ostk::core::types::String ;
+    using ostk::core::ctnr::Tuple ;
+    using ostk::core::ctnr::Array ;
+    using ostk::core::ctnr::Table ;
+    using ostk::core::fs::Path ;
+    using ostk::core::fs::File ;
+    using ostk::core::fs::Directory ;
 
-    using library::math::obj::Vector3d ;
-    using library::math::geom::d3::trf::rot::Quaternion ;
-    using library::math::geom::d3::trf::rot::RotationVector ;
+    using ostk::math::obj::Vector3d ;
+    using ostk::math::geom::d3::trf::rot::Quaternion ;
+    using ostk::math::geom::d3::trf::rot::RotationVector ;
 
-    using library::physics::units::Angle ;
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::DateTime ;
-    using library::physics::coord::Frame ;
-    using library::physics::coord::Transform ;
-    using library::physics::env::ephem::SPICE ;
-    using library::physics::env::ephem::spice::Engine ;
-    using library::physics::env::ephem::spice::Kernel ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::Transform ;
+    using ostk::physics::env::ephem::SPICE ;
+    using ostk::physics::env::ephem::spice::Engine ;
+    using ostk::physics::env::ephem::spice::Kernel ;
 
     {
 
@@ -194,7 +194,7 @@ TEST (Library_Physics_Environment_Ephemerides_SPICE, AccessFrame)
 TEST (Library_Physics_Environment_Ephemerides_SPICE, StringFromObject)
 {
 
-    using library::physics::env::ephem::SPICE ;
+    using ostk::physics::env::ephem::SPICE ;
 
     {
 
@@ -218,21 +218,21 @@ TEST (Library_Physics_Environment_Ephemerides_SPICE, StringFromObject)
 TEST (Library_Physics_Environment_Ephemerides_SPICE, ManualMode)
 {
 
-    using library::core::types::Shared ;
-    using library::core::types::Real ;
-    using library::core::types::String ;
-    using library::core::fs::Path ;
-    using library::core::fs::File ;
-    using library::core::fs::Directory ;
+    using ostk::core::types::Shared ;
+    using ostk::core::types::Real ;
+    using ostk::core::types::String ;
+    using ostk::core::fs::Path ;
+    using ostk::core::fs::File ;
+    using ostk::core::fs::Directory ;
 
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::DateTime ;
-    using library::physics::coord::Position ;
-    using library::physics::coord::Frame ;
-    using library::physics::env::ephem::SPICE ;
-    using library::physics::env::ephem::spice::Engine ;
-    using library::physics::env::ephem::spice::Kernel ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::coord::Position ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::env::ephem::SPICE ;
+    using ostk::physics::env::ephem::spice::Engine ;
+    using ostk::physics::env::ephem::spice::Kernel ;
 
     {
 
@@ -289,21 +289,21 @@ TEST (Library_Physics_Environment_Ephemerides_SPICE, ManualMode)
 TEST (Library_Physics_Environment_Ephemerides_SPICE, AutomaticMode)
 {
 
-    using library::core::types::Shared ;
-    using library::core::types::Real ;
-    using library::core::types::String ;
-    using library::core::fs::Path ;
-    using library::core::fs::File ;
-    using library::core::fs::Directory ;
+    using ostk::core::types::Shared ;
+    using ostk::core::types::Real ;
+    using ostk::core::types::String ;
+    using ostk::core::fs::Path ;
+    using ostk::core::fs::File ;
+    using ostk::core::fs::Directory ;
 
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::DateTime ;
-    using library::physics::coord::Position ;
-    using library::physics::coord::Frame ;
-    using library::physics::env::ephem::SPICE ;
-    using library::physics::env::ephem::spice::Engine ;
-    using library::physics::env::ephem::spice::Manager ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::coord::Position ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::env::ephem::SPICE ;
+    using ostk::physics::env::ephem::spice::Engine ;
+    using ostk::physics::env::ephem::spice::Manager ;
 
     {
 

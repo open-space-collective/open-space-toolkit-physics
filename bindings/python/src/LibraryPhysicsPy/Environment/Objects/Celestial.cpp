@@ -16,18 +16,18 @@ inline void                     LibraryPhysicsPy_Environment_Objects_Celestial (
 
     using namespace boost::python ;
 
-    using library::core::types::Shared ;
-    using library::core::types::Real ;
-    using library::core::types::String ;
+    using ostk::core::types::Shared ;
+    using ostk::core::types::Real ;
+    using ostk::core::types::String ;
 
-    using library::physics::time::Instant ;
-    using library::physics::units::Length ;
-    using library::physics::units::Derived ;
-    using library::physics::env::Ephemeris ;
-    using library::physics::env::Object ;
-    using library::physics::env::obj::Celestial ;
-    using GravitationalModel = library::physics::environment::gravitational::Model ;
-    using MagneticModel = library::physics::environment::magnetic::Model ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::units::Derived ;
+    using ostk::physics::env::Ephemeris ;
+    using ostk::physics::env::Object ;
+    using ostk::physics::env::obj::Celestial ;
+    using GravitationalModel = ostk::physics::environment::gravitational::Model ;
+    using MagneticModel = ostk::physics::environment::magnetic::Model ;
 
     scope in_Celestial = class_<Celestial, bases<Object>>("Celestial", init<const String&, const Celestial::Type&, const Derived& , const Length&, const Real&, const Real&, const Shared<Ephemeris>&, const Shared<GravitationalModel>&, const Shared<MagneticModel>&, const Instant&>())
 

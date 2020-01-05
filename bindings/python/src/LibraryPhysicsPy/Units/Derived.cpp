@@ -11,21 +11,21 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (LibraryPhysicsPy_Units_Derived_toString_overloads, library::physics::units::Derived::toString, 0, 1)
+BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (LibraryPhysicsPy_Units_Derived_toString_overloads, ostk::physics::units::Derived::toString, 0, 1)
 
 inline void                     LibraryPhysicsPy_Units_Derived              ( )
 {
 
     using namespace boost::python ;
 
-    using library::core::types::Real ;
+    using ostk::core::types::Real ;
 
-    using library::physics::units::Length ;
-    using library::physics::units::Mass ;
-    using library::physics::units::Time ;
-    using library::physics::units::ElectricCurrent ;
-    using library::physics::units::Angle ;
-    using library::physics::units::Derived ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::units::Mass ;
+    using ostk::physics::units::Time ;
+    using ostk::physics::units::ElectricCurrent ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::units::Derived ;
 
     scope in_Derived = class_<Derived>("Derived", init<Real, Derived::Unit>())
 

@@ -17,7 +17,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -65,7 +65,7 @@ Kernel::Type                    Kernel::getType                             ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Kernel") ;
+        throw ostk::core::error::runtime::Undefined("Kernel") ;
     }
 
     return type_ ;
@@ -77,7 +77,7 @@ String                          Kernel::getName                             ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Kernel") ;
+        throw ostk::core::error::runtime::Undefined("Kernel") ;
     }
 
     return file_.getName() ;
@@ -89,7 +89,7 @@ fs::File                        Kernel::getFile                             ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Kernel") ;
+        throw ostk::core::error::runtime::Undefined("Kernel") ;
     }
 
     return file_ ;
@@ -106,7 +106,7 @@ Kernel                          Kernel::File                                (   
 
     if (!aFile.isDefined())
     {
-        throw library::core::error::runtime::Undefined("File") ;
+        throw ostk::core::error::runtime::Undefined("File") ;
     }
 
     return { Kernel::TypeFromFileExtension(aFile.getExtension()), aFile } ;
@@ -116,7 +116,7 @@ Kernel                          Kernel::File                                (   
 Kernel::Type                    Kernel::TypeFromString                      (   const   String&                     aString                                     )
 {
 
-    using library::core::ctnr::Map ;
+    using ostk::core::ctnr::Map ;
 
     static const Map<String, Kernel::Type> stringTypeMap =
     {
@@ -141,7 +141,7 @@ Kernel::Type                    Kernel::TypeFromString                      (   
 String                          Kernel::StringFromType                      (   const   Kernel::Type&               aType                                       )
 {
 
-    using library::core::ctnr::Map ;
+    using ostk::core::ctnr::Map ;
 
     static const Map<Kernel::Type, String> typeStringMap =
     {
@@ -170,7 +170,7 @@ Kernel::Type                    Kernel::TypeFromFileExtension               (   
 
     if (aFileExtension.isEmpty())
     {
-        throw library::core::error::runtime::Undefined("File extension") ;
+        throw ostk::core::error::runtime::Undefined("File extension") ;
     }
 
     if (boost::iequals(aFileExtension, "tsc"))

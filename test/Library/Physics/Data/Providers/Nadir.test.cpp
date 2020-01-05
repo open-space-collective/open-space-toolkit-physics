@@ -16,14 +16,14 @@
 TEST (Library_Physics_Data_Providers_Nadir, Nadir)
 {
 
-    using library::math::obj::Vector3d ;
+    using ostk::math::obj::Vector3d ;
 
-    using library::physics::coord::Position ;
-    using library::physics::coord::Frame ;
-    using library::physics::Environment ;
-    using library::physics::env::obj::Celestial ;
-    using library::physics::data::Direction ;
-    using library::physics::data::providers::Nadir ;
+    using ostk::physics::coord::Position ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::Environment ;
+    using ostk::physics::env::obj::Celestial ;
+    using ostk::physics::data::Direction ;
+    using ostk::physics::data::providers::Nadir ;
 
     {
 

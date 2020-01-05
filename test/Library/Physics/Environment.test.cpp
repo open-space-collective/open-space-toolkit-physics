@@ -43,15 +43,15 @@
 TEST (Library_Physics_Environment, Constructor)
 {
 
-    using library::core::types::Shared ;
-    using library::core::ctnr::Array ;
+    using ostk::core::types::Shared ;
+    using ostk::core::ctnr::Array ;
 
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::DateTime ;
-    using library::physics::Environment ;
-    using library::physics::env::Object ;
-    using library::physics::env::obj::celest::Earth ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::Environment ;
+    using ostk::physics::env::Object ;
+    using ostk::physics::env::obj::celest::Earth ;
 
     {
 
@@ -71,15 +71,15 @@ TEST (Library_Physics_Environment, Constructor)
 TEST (Library_Physics_Environment, IsDefined)
 {
 
-    using library::core::types::Shared ;
-    using library::core::ctnr::Array ;
+    using ostk::core::types::Shared ;
+    using ostk::core::ctnr::Array ;
 
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::DateTime ;
-    using library::physics::Environment ;
-    using library::physics::env::Object ;
-    using library::physics::env::obj::celest::Earth ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::Environment ;
+    using ostk::physics::env::Object ;
+    using ostk::physics::env::obj::celest::Earth ;
 
     {
 
@@ -107,15 +107,15 @@ TEST (Library_Physics_Environment, IsDefined)
 TEST (Library_Physics_Environment, HasObjectWithName)
 {
 
-    using library::core::types::Shared ;
-    using library::core::ctnr::Array ;
+    using ostk::core::types::Shared ;
+    using ostk::core::ctnr::Array ;
 
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::DateTime ;
-    using library::physics::Environment ;
-    using library::physics::env::Object ;
-    using library::physics::env::obj::celest::Earth ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::Environment ;
+    using ostk::physics::env::Object ;
+    using ostk::physics::env::obj::celest::Earth ;
 
     {
 
@@ -145,20 +145,20 @@ TEST (Library_Physics_Environment, HasObjectWithName)
 TEST (Library_Physics_Environment, Intersects)
 {
 
-    using library::core::types::Shared ;
-    using library::core::types::Real ;
-    using library::core::ctnr::Array ;
+    using ostk::core::types::Shared ;
+    using ostk::core::types::Real ;
+    using ostk::core::ctnr::Array ;
 
-    using library::math::obj::Interval ;
-    using library::math::geom::d3::objects::Segment ;
+    using ostk::math::obj::Interval ;
+    using ostk::math::geom::d3::objects::Segment ;
 
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::DateTime ;
-    using library::physics::coord::Frame ;
-    using library::physics::Environment ;
-    using library::physics::env::Object ;
-    using library::physics::env::obj::celest::Earth ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::Environment ;
+    using ostk::physics::env::Object ;
+    using ostk::physics::env::obj::celest::Earth ;
 
     {
 
@@ -202,15 +202,15 @@ TEST (Library_Physics_Environment, Intersects)
 TEST (Library_Physics_Environment, AccessObjects)
 {
 
-    using library::core::types::Shared ;
-    using library::core::ctnr::Array ;
+    using ostk::core::types::Shared ;
+    using ostk::core::ctnr::Array ;
 
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::DateTime ;
-    using library::physics::Environment ;
-    using library::physics::env::Object ;
-    using library::physics::env::obj::celest::Earth ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::Environment ;
+    using ostk::physics::env::Object ;
+    using ostk::physics::env::obj::celest::Earth ;
 
     {
 
@@ -240,15 +240,15 @@ TEST (Library_Physics_Environment, AccessObjects)
 TEST (Library_Physics_Environment, AccessObjectWithName)
 {
 
-    using library::core::types::Shared ;
-    using library::core::ctnr::Array ;
+    using ostk::core::types::Shared ;
+    using ostk::core::ctnr::Array ;
 
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::DateTime ;
-    using library::physics::Environment ;
-    using library::physics::env::Object ;
-    using library::physics::env::obj::celest::Earth ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::Environment ;
+    using ostk::physics::env::Object ;
+    using ostk::physics::env::obj::celest::Earth ;
 
     {
 
@@ -283,15 +283,15 @@ TEST (Library_Physics_Environment, AccessObjectWithName)
 TEST (Library_Physics_Environment, AccessCelestialObjectWithName)
 {
 
-    using library::core::types::Shared ;
-    using library::core::ctnr::Array ;
+    using ostk::core::types::Shared ;
+    using ostk::core::ctnr::Array ;
 
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::DateTime ;
-    using library::physics::Environment ;
-    using library::physics::env::Object ;
-    using library::physics::env::obj::celest::Earth ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::Environment ;
+    using ostk::physics::env::Object ;
+    using ostk::physics::env::obj::celest::Earth ;
 
     {
 
@@ -326,15 +326,15 @@ TEST (Library_Physics_Environment, AccessCelestialObjectWithName)
 TEST (Library_Physics_Environment, GetInstant)
 {
 
-    using library::core::types::Shared ;
-    using library::core::ctnr::Array ;
+    using ostk::core::types::Shared ;
+    using ostk::core::ctnr::Array ;
 
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::DateTime ;
-    using library::physics::Environment ;
-    using library::physics::env::Object ;
-    using library::physics::env::obj::celest::Earth ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::Environment ;
+    using ostk::physics::env::Object ;
+    using ostk::physics::env::obj::celest::Earth ;
 
     {
 
@@ -362,16 +362,16 @@ TEST (Library_Physics_Environment, GetInstant)
 TEST (Library_Physics_Environment, GetObjectNames)
 {
 
-    using library::core::types::Shared ;
-    using library::core::types::String ;
-    using library::core::ctnr::Array ;
+    using ostk::core::types::Shared ;
+    using ostk::core::types::String ;
+    using ostk::core::ctnr::Array ;
 
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::DateTime ;
-    using library::physics::Environment ;
-    using library::physics::env::Object ;
-    using library::physics::env::obj::celest::Earth ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::Environment ;
+    using ostk::physics::env::Object ;
+    using ostk::physics::env::obj::celest::Earth ;
 
     {
 
@@ -399,15 +399,15 @@ TEST (Library_Physics_Environment, GetObjectNames)
 TEST (Library_Physics_Environment, SetInstant)
 {
 
-    using library::core::types::Shared ;
-    using library::core::ctnr::Array ;
+    using ostk::core::types::Shared ;
+    using ostk::core::ctnr::Array ;
 
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::DateTime ;
-    using library::physics::Environment ;
-    using library::physics::env::Object ;
-    using library::physics::env::obj::celest::Earth ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::Environment ;
+    using ostk::physics::env::Object ;
+    using ostk::physics::env::obj::celest::Earth ;
 
     {
 
@@ -443,7 +443,7 @@ TEST (Library_Physics_Environment, SetInstant)
 TEST (Library_Physics_Environment, Undefined)
 {
 
-    using library::physics::Environment ;
+    using ostk::physics::Environment ;
 
     {
 
@@ -458,7 +458,7 @@ TEST (Library_Physics_Environment, Undefined)
 TEST (Library_Physics_Environment, Default)
 {
 
-    using library::physics::Environment ;
+    using ostk::physics::Environment ;
 
     {
 
@@ -479,29 +479,29 @@ TEST (Library_Physics_Environment, Default)
 TEST (Library_Physics_Environment, Test_1)
 {
 
-    using library::core::types::Shared ;
-    using library::core::types::Weak ;
-    using library::core::types::String ;
-    using library::core::ctnr::Array ;
+    using ostk::core::types::Shared ;
+    using ostk::core::types::Weak ;
+    using ostk::core::types::String ;
+    using ostk::core::ctnr::Array ;
 
-    using library::math::geom::d3::trf::rot::Quaternion ;
+    using ostk::math::geom::d3::trf::rot::Quaternion ;
 
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::Duration ;
-    using library::physics::time::Interval ;
-    using library::physics::time::DateTime ;
-    using library::physics::coord::Position ;
-    using library::physics::coord::Velocity ;
-    using library::physics::coord::Transform ;
-    using library::physics::coord::Frame ;
-    using library::physics::coord::Axes ;
-    using library::physics::Environment ;
-    using library::physics::env::Object ;
-    using library::physics::env::obj::celest::Earth ;
-    using library::physics::env::obj::celest::Moon ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::Duration ;
+    using ostk::physics::time::Interval ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::coord::Position ;
+    using ostk::physics::coord::Velocity ;
+    using ostk::physics::coord::Transform ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::Axes ;
+    using ostk::physics::Environment ;
+    using ostk::physics::env::Object ;
+    using ostk::physics::env::obj::celest::Earth ;
+    using ostk::physics::env::obj::celest::Moon ;
 
-    using library::physics::env::ephem::spice::Engine ;
+    using ostk::physics::env::ephem::spice::Engine ;
 
     const Instant startInstant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC) ;
     const Instant endInstant = Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC) ;
@@ -576,37 +576,37 @@ TEST (Library_Physics_Environment, Test_1)
 TEST (Library_Physics_Environment, Test_2)
 {
 
-    using library::core::types::Shared ;
-    using library::core::types::Weak ;
-    using library::core::types::String ;
-    using library::core::ctnr::Array ;
+    using ostk::core::types::Shared ;
+    using ostk::core::types::Weak ;
+    using ostk::core::types::String ;
+    using ostk::core::ctnr::Array ;
 
-    using library::math::obj::Vector3d ;
-    using Point2d = library::math::geom::d2::objects::Point ;
-    using Polygon2d = library::math::geom::d2::objects::Polygon ;
-    using library::math::geom::d3::objects::Point ;
-    using library::math::geom::d3::objects::LineString ;
-    using library::math::geom::d3::objects::Polygon ;
-    using library::math::geom::d3::objects::Ellipsoid ;
-    using library::math::geom::d3::objects::Pyramid ;
-    using library::math::geom::d3::Intersection ;
-    using library::math::geom::d3::trf::rot::Quaternion ;
+    using ostk::math::obj::Vector3d ;
+    using Point2d = ostk::math::geom::d2::objects::Point ;
+    using Polygon2d = ostk::math::geom::d2::objects::Polygon ;
+    using ostk::math::geom::d3::objects::Point ;
+    using ostk::math::geom::d3::objects::LineString ;
+    using ostk::math::geom::d3::objects::Polygon ;
+    using ostk::math::geom::d3::objects::Ellipsoid ;
+    using ostk::math::geom::d3::objects::Pyramid ;
+    using ostk::math::geom::d3::Intersection ;
+    using ostk::math::geom::d3::trf::rot::Quaternion ;
 
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::Duration ;
-    using library::physics::time::Interval ;
-    using library::physics::time::DateTime ;
-    using library::physics::coord::Position ;
-    using library::physics::coord::Velocity ;
-    using library::physics::coord::Transform ;
-    using library::physics::coord::Frame ;
-    using library::physics::coord::Axes ;
-    using library::physics::coord::spherical::LLA ;
-    using library::physics::Environment ;
-    using library::physics::env::Object ;
-    using library::physics::env::obj::celest::Earth ;
-    using library::physics::env::obj::celest::Moon ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::Duration ;
+    using ostk::physics::time::Interval ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::coord::Position ;
+    using ostk::physics::coord::Velocity ;
+    using ostk::physics::coord::Transform ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::Axes ;
+    using ostk::physics::coord::spherical::LLA ;
+    using ostk::physics::Environment ;
+    using ostk::physics::env::Object ;
+    using ostk::physics::env::obj::celest::Earth ;
+    using ostk::physics::env::obj::celest::Moon ;
 
     // Setup scene
 
@@ -669,24 +669,24 @@ TEST (Library_Physics_Environment, Test_2)
 TEST (Library_Physics_Environment, Test_3)
 {
 
-    using library::core::types::Shared ;
-    using library::core::types::Weak ;
-    using library::core::types::String ;
-    using library::core::ctnr::Map ;
+    using ostk::core::types::Shared ;
+    using ostk::core::types::Weak ;
+    using ostk::core::types::String ;
+    using ostk::core::ctnr::Map ;
 
-    using library::math::geom::d3::trf::rot::Quaternion ;
-    using library::math::geom::d3::trf::rot::RotationVector ;
+    using ostk::math::geom::d3::trf::rot::Quaternion ;
+    using ostk::math::geom::d3::trf::rot::RotationVector ;
 
-    using library::physics::units::Length ;
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
-    using library::physics::time::Duration ;
-    using library::physics::time::Interval ;
-    using library::physics::coord::Frame ;
-    using library::physics::Environment ;
-    using library::physics::env::Object ;
-    using library::physics::env::obj::celest::Earth ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::Duration ;
+    using ostk::physics::time::Interval ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::Environment ;
+    using ostk::physics::env::Object ;
+    using ostk::physics::env::obj::celest::Earth ;
 
     {
 

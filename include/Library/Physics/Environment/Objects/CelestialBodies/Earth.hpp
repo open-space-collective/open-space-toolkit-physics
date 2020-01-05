@@ -25,7 +25,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -38,18 +38,18 @@ namespace celest
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using library::core::types::Shared ;
-using library::core::types::Real ;
+using ostk::core::types::Shared ;
+using ostk::core::types::Real ;
 
-using library::math::geom::d3::objects::Ellipsoid ;
+using ostk::math::geom::d3::objects::Ellipsoid ;
 
-using library::physics::units::Length ;
-using library::physics::units::Derived ;
-using library::physics::env::Ephemeris ;
-using library::physics::env::Object ;
-using library::physics::env::obj::Celestial ;
-using EarthGravitationalModel = library::physics::environment::gravitational::Earth ;
-using EarthMagneticModel = library::physics::environment::magnetic::Earth ;
+using ostk::physics::units::Length ;
+using ostk::physics::units::Derived ;
+using ostk::physics::env::Ephemeris ;
+using ostk::physics::env::Object ;
+using ostk::physics::env::obj::Celestial ;
+using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth ;
+using EarthMagneticModel = ostk::physics::environment::magnetic::Earth ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

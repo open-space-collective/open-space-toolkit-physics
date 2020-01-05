@@ -43,7 +43,7 @@
 // TEST (Library_Physics_Environment_Objects_CelestialBodies_Sun, Constructor)
 // {
 
-//     using library::physics::env::obj::celest::Sun ;
+//     using ostk::physics::env::obj::celest::Sun ;
 
 //     {
 
@@ -56,7 +56,7 @@
 TEST (Library_Physics_Environment_Objects_CelestialBodies_Sun, Default)
 {
 
-    using library::physics::env::obj::celest::Sun ;
+    using ostk::physics::env::obj::celest::Sun ;
 
     {
 

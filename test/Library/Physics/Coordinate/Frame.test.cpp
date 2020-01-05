@@ -20,23 +20,23 @@
 TEST (Library_Physics_Coordinate_Frame, EqualToOperator)
 {
 
-    using library::core::types::Shared ;
-    using library::core::types::Real ;
-    using library::core::types::String ;
+    using ostk::core::types::Shared ;
+    using ostk::core::types::Real ;
+    using ostk::core::types::String ;
 
-    using library::math::obj::Vector3d ;
-    using library::math::geom::d3::trf::rot::Quaternion ;
-    using library::math::geom::d3::trf::rot::RotationVector ;
-    using library::math::geom::d3::trf::rot::RotationMatrix ;
+    using ostk::math::obj::Vector3d ;
+    using ostk::math::geom::d3::trf::rot::Quaternion ;
+    using ostk::math::geom::d3::trf::rot::RotationVector ;
+    using ostk::math::geom::d3::trf::rot::RotationMatrix ;
 
-    using library::physics::units::Angle ;
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::DateTime ;
-    using library::physics::coord::Transform ;
-    using library::physics::coord::Frame ;
-    using library::physics::coord::frame::Provider ;
-    using library::physics::coord::frame::provider::Static ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::coord::Transform ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::frame::Provider ;
+    using ostk::physics::coord::frame::provider::Static ;
 
     {
 
@@ -142,23 +142,23 @@ TEST (Library_Physics_Coordinate_Frame, EqualToOperator)
 TEST (Library_Physics_Coordinate_Frame, NotEqualToOperator)
 {
 
-    using library::core::types::Shared ;
-    using library::core::types::Real ;
-    using library::core::types::String ;
+    using ostk::core::types::Shared ;
+    using ostk::core::types::Real ;
+    using ostk::core::types::String ;
 
-    using library::math::obj::Vector3d ;
-    using library::math::geom::d3::trf::rot::Quaternion ;
-    using library::math::geom::d3::trf::rot::RotationVector ;
-    using library::math::geom::d3::trf::rot::RotationMatrix ;
+    using ostk::math::obj::Vector3d ;
+    using ostk::math::geom::d3::trf::rot::Quaternion ;
+    using ostk::math::geom::d3::trf::rot::RotationVector ;
+    using ostk::math::geom::d3::trf::rot::RotationMatrix ;
 
-    using library::physics::units::Angle ;
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::DateTime ;
-    using library::physics::coord::Transform ;
-    using library::physics::coord::Frame ;
-    using library::physics::coord::frame::Provider ;
-    using library::physics::coord::frame::provider::Static ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::coord::Transform ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::frame::Provider ;
+    using ostk::physics::coord::frame::provider::Static ;
 
     {
 
@@ -264,23 +264,23 @@ TEST (Library_Physics_Coordinate_Frame, NotEqualToOperator)
 TEST (Library_Physics_Coordinate_Frame, StreamOperator)
 {
 
-    using library::core::types::Shared ;
-    using library::core::types::Real ;
-    using library::core::types::String ;
+    using ostk::core::types::Shared ;
+    using ostk::core::types::Real ;
+    using ostk::core::types::String ;
 
-    using library::math::obj::Vector3d ;
-    using library::math::geom::d3::trf::rot::Quaternion ;
-    using library::math::geom::d3::trf::rot::RotationVector ;
-    using library::math::geom::d3::trf::rot::RotationMatrix ;
+    using ostk::math::obj::Vector3d ;
+    using ostk::math::geom::d3::trf::rot::Quaternion ;
+    using ostk::math::geom::d3::trf::rot::RotationVector ;
+    using ostk::math::geom::d3::trf::rot::RotationMatrix ;
 
-    using library::physics::units::Angle ;
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::DateTime ;
-    using library::physics::coord::Transform ;
-    using library::physics::coord::Frame ;
-    using library::physics::coord::frame::Provider ;
-    using library::physics::coord::frame::provider::Static ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::coord::Transform ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::frame::Provider ;
+    using ostk::physics::coord::frame::provider::Static ;
 
     {
 
@@ -306,23 +306,23 @@ TEST (Library_Physics_Coordinate_Frame, StreamOperator)
 TEST (Library_Physics_Coordinate_Frame, IsDefined)
 {
 
-    using library::core::types::Shared ;
-    using library::core::types::Real ;
-    using library::core::types::String ;
+    using ostk::core::types::Shared ;
+    using ostk::core::types::Real ;
+    using ostk::core::types::String ;
 
-    using library::math::obj::Vector3d ;
-    using library::math::geom::d3::trf::rot::Quaternion ;
-    using library::math::geom::d3::trf::rot::RotationVector ;
-    using library::math::geom::d3::trf::rot::RotationMatrix ;
+    using ostk::math::obj::Vector3d ;
+    using ostk::math::geom::d3::trf::rot::Quaternion ;
+    using ostk::math::geom::d3::trf::rot::RotationVector ;
+    using ostk::math::geom::d3::trf::rot::RotationMatrix ;
 
-    using library::physics::units::Angle ;
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::DateTime ;
-    using library::physics::coord::Transform ;
-    using library::physics::coord::Frame ;
-    using library::physics::coord::frame::Provider ;
-    using library::physics::coord::frame::provider::Static ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::coord::Transform ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::frame::Provider ;
+    using ostk::physics::coord::frame::provider::Static ;
 
     {
 
@@ -363,23 +363,23 @@ TEST (Library_Physics_Coordinate_Frame, IsDefined)
 TEST (Library_Physics_Coordinate_Frame, IsQuasiInertial)
 {
 
-    using library::core::types::Shared ;
-    using library::core::types::Real ;
-    using library::core::types::String ;
+    using ostk::core::types::Shared ;
+    using ostk::core::types::Real ;
+    using ostk::core::types::String ;
 
-    using library::math::obj::Vector3d ;
-    using library::math::geom::d3::trf::rot::Quaternion ;
-    using library::math::geom::d3::trf::rot::RotationVector ;
-    using library::math::geom::d3::trf::rot::RotationMatrix ;
+    using ostk::math::obj::Vector3d ;
+    using ostk::math::geom::d3::trf::rot::Quaternion ;
+    using ostk::math::geom::d3::trf::rot::RotationVector ;
+    using ostk::math::geom::d3::trf::rot::RotationMatrix ;
 
-    using library::physics::units::Angle ;
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::DateTime ;
-    using library::physics::coord::Transform ;
-    using library::physics::coord::Frame ;
-    using library::physics::coord::frame::Provider ;
-    using library::physics::coord::frame::provider::Static ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::coord::Transform ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::frame::Provider ;
+    using ostk::physics::coord::frame::provider::Static ;
 
     {
 
@@ -420,23 +420,23 @@ TEST (Library_Physics_Coordinate_Frame, IsQuasiInertial)
 TEST (Library_Physics_Coordinate_Frame, HasParent)
 {
 
-    using library::core::types::Shared ;
-    using library::core::types::Real ;
-    using library::core::types::String ;
+    using ostk::core::types::Shared ;
+    using ostk::core::types::Real ;
+    using ostk::core::types::String ;
 
-    using library::math::obj::Vector3d ;
-    using library::math::geom::d3::trf::rot::Quaternion ;
-    using library::math::geom::d3::trf::rot::RotationVector ;
-    using library::math::geom::d3::trf::rot::RotationMatrix ;
+    using ostk::math::obj::Vector3d ;
+    using ostk::math::geom::d3::trf::rot::Quaternion ;
+    using ostk::math::geom::d3::trf::rot::RotationVector ;
+    using ostk::math::geom::d3::trf::rot::RotationMatrix ;
 
-    using library::physics::units::Angle ;
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::DateTime ;
-    using library::physics::coord::Transform ;
-    using library::physics::coord::Frame ;
-    using library::physics::coord::frame::Provider ;
-    using library::physics::coord::frame::provider::Static ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::coord::Transform ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::frame::Provider ;
+    using ostk::physics::coord::frame::provider::Static ;
 
     {
 
@@ -477,23 +477,23 @@ TEST (Library_Physics_Coordinate_Frame, HasParent)
 TEST (Library_Physics_Coordinate_Frame, AccessParent)
 {
 
-    using library::core::types::Shared ;
-    using library::core::types::Real ;
-    using library::core::types::String ;
+    using ostk::core::types::Shared ;
+    using ostk::core::types::Real ;
+    using ostk::core::types::String ;
 
-    using library::math::obj::Vector3d ;
-    using library::math::geom::d3::trf::rot::Quaternion ;
-    using library::math::geom::d3::trf::rot::RotationVector ;
-    using library::math::geom::d3::trf::rot::RotationMatrix ;
+    using ostk::math::obj::Vector3d ;
+    using ostk::math::geom::d3::trf::rot::Quaternion ;
+    using ostk::math::geom::d3::trf::rot::RotationVector ;
+    using ostk::math::geom::d3::trf::rot::RotationMatrix ;
 
-    using library::physics::units::Angle ;
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::DateTime ;
-    using library::physics::coord::Transform ;
-    using library::physics::coord::Frame ;
-    using library::physics::coord::frame::Provider ;
-    using library::physics::coord::frame::provider::Static ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::coord::Transform ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::frame::Provider ;
+    using ostk::physics::coord::frame::provider::Static ;
 
     {
 
@@ -534,23 +534,23 @@ TEST (Library_Physics_Coordinate_Frame, AccessParent)
 TEST (Library_Physics_Coordinate_Frame, GetName)
 {
 
-    using library::core::types::Shared ;
-    using library::core::types::Real ;
-    using library::core::types::String ;
+    using ostk::core::types::Shared ;
+    using ostk::core::types::Real ;
+    using ostk::core::types::String ;
 
-    using library::math::obj::Vector3d ;
-    using library::math::geom::d3::trf::rot::Quaternion ;
-    using library::math::geom::d3::trf::rot::RotationVector ;
-    using library::math::geom::d3::trf::rot::RotationMatrix ;
+    using ostk::math::obj::Vector3d ;
+    using ostk::math::geom::d3::trf::rot::Quaternion ;
+    using ostk::math::geom::d3::trf::rot::RotationVector ;
+    using ostk::math::geom::d3::trf::rot::RotationMatrix ;
 
-    using library::physics::units::Angle ;
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::DateTime ;
-    using library::physics::coord::Transform ;
-    using library::physics::coord::Frame ;
-    using library::physics::coord::frame::Provider ;
-    using library::physics::coord::frame::provider::Static ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::coord::Transform ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::frame::Provider ;
+    using ostk::physics::coord::frame::provider::Static ;
 
     {
 
@@ -591,26 +591,26 @@ TEST (Library_Physics_Coordinate_Frame, GetName)
 TEST (Library_Physics_Coordinate_Frame, GetOriginIn)
 {
 
-    using library::core::types::Shared ;
-    using library::core::types::Real ;
-    using library::core::types::String ;
+    using ostk::core::types::Shared ;
+    using ostk::core::types::Real ;
+    using ostk::core::types::String ;
 
-    using library::math::obj::Vector3d ;
-    using library::math::geom::d3::trf::rot::Quaternion ;
-    using library::math::geom::d3::trf::rot::RotationVector ;
-    using library::math::geom::d3::trf::rot::RotationMatrix ;
+    using ostk::math::obj::Vector3d ;
+    using ostk::math::geom::d3::trf::rot::Quaternion ;
+    using ostk::math::geom::d3::trf::rot::RotationVector ;
+    using ostk::math::geom::d3::trf::rot::RotationMatrix ;
 
-    using library::physics::units::Length ;
-    using library::physics::units::Angle ;
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::DateTime ;
-    using library::physics::coord::Transform ;
-    using library::physics::coord::Position ;
-    using library::physics::coord::Axes ;
-    using library::physics::coord::Frame ;
-    using library::physics::coord::frame::Provider ;
-    using library::physics::coord::frame::provider::Static ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::coord::Transform ;
+    using ostk::physics::coord::Position ;
+    using ostk::physics::coord::Axes ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::frame::Provider ;
+    using ostk::physics::coord::frame::provider::Static ;
 
     {
 
@@ -688,26 +688,26 @@ TEST (Library_Physics_Coordinate_Frame, GetOriginIn)
 TEST (Library_Physics_Coordinate_Frame, GetVelocityIn)
 {
 
-    using library::core::types::Shared ;
-    using library::core::types::Real ;
-    using library::core::types::String ;
+    using ostk::core::types::Shared ;
+    using ostk::core::types::Real ;
+    using ostk::core::types::String ;
 
-    using library::math::obj::Vector3d ;
-    using library::math::geom::d3::trf::rot::Quaternion ;
-    using library::math::geom::d3::trf::rot::RotationVector ;
-    using library::math::geom::d3::trf::rot::RotationMatrix ;
+    using ostk::math::obj::Vector3d ;
+    using ostk::math::geom::d3::trf::rot::Quaternion ;
+    using ostk::math::geom::d3::trf::rot::RotationVector ;
+    using ostk::math::geom::d3::trf::rot::RotationMatrix ;
 
-    using library::physics::units::Length ;
-    using library::physics::units::Angle ;
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::DateTime ;
-    using library::physics::coord::Transform ;
-    using library::physics::coord::Velocity ;
-    using library::physics::coord::Axes ;
-    using library::physics::coord::Frame ;
-    using library::physics::coord::frame::Provider ;
-    using library::physics::coord::frame::provider::Static ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::coord::Transform ;
+    using ostk::physics::coord::Velocity ;
+    using ostk::physics::coord::Axes ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::frame::Provider ;
+    using ostk::physics::coord::frame::provider::Static ;
 
     {
 
@@ -785,26 +785,26 @@ TEST (Library_Physics_Coordinate_Frame, GetVelocityIn)
 TEST (Library_Physics_Coordinate_Frame, GetAxesIn)
 {
 
-    using library::core::types::Shared ;
-    using library::core::types::Real ;
-    using library::core::types::String ;
+    using ostk::core::types::Shared ;
+    using ostk::core::types::Real ;
+    using ostk::core::types::String ;
 
-    using library::math::obj::Vector3d ;
-    using library::math::geom::d3::trf::rot::Quaternion ;
-    using library::math::geom::d3::trf::rot::RotationVector ;
-    using library::math::geom::d3::trf::rot::RotationMatrix ;
+    using ostk::math::obj::Vector3d ;
+    using ostk::math::geom::d3::trf::rot::Quaternion ;
+    using ostk::math::geom::d3::trf::rot::RotationVector ;
+    using ostk::math::geom::d3::trf::rot::RotationMatrix ;
 
-    using library::physics::units::Length ;
-    using library::physics::units::Angle ;
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::DateTime ;
-    using library::physics::coord::Transform ;
-    using library::physics::coord::Position ;
-    using library::physics::coord::Axes ;
-    using library::physics::coord::Frame ;
-    using library::physics::coord::frame::Provider ;
-    using library::physics::coord::frame::provider::Static ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::coord::Transform ;
+    using ostk::physics::coord::Position ;
+    using ostk::physics::coord::Axes ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::frame::Provider ;
+    using ostk::physics::coord::frame::provider::Static ;
 
     {
 
@@ -872,16 +872,16 @@ TEST (Library_Physics_Coordinate_Frame, GetAxesIn)
 TEST (Library_Physics_Coordinate_Frame, GetTransformTo)
 {
 
-    using library::core::types::Shared ;
-    using library::core::types::Real ;
+    using ostk::core::types::Shared ;
+    using ostk::core::types::Real ;
 
-    using library::math::obj::Vector3d ;
-    using library::math::geom::d3::trf::rot::Quaternion ;
+    using ostk::math::obj::Vector3d ;
+    using ostk::math::geom::d3::trf::rot::Quaternion ;
 
-    using library::physics::units::Angle ;
-    using library::physics::time::Instant ;
-    using library::physics::coord::Transform ;
-    using library::physics::coord::Frame ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::coord::Transform ;
+    using ostk::physics::coord::Frame ;
 
     {
 
@@ -922,7 +922,7 @@ TEST (Library_Physics_Coordinate_Frame, GetTransformTo)
 TEST (Library_Physics_Coordinate_Frame, Undefined)
 {
 
-    using library::physics::coord::Frame ;
+    using ostk::physics::coord::Frame ;
 
     {
 
@@ -935,7 +935,7 @@ TEST (Library_Physics_Coordinate_Frame, Undefined)
 // TEST (Library_Physics_Coordinate_Frame, ICRF)
 // {
 
-//     using library::physics::coord::Frame ;
+//     using ostk::physics::coord::Frame ;
 
 //     {
 
@@ -948,7 +948,7 @@ TEST (Library_Physics_Coordinate_Frame, Undefined)
 TEST (Library_Physics_Coordinate_Frame, GCRF)
 {
 
-    using library::physics::coord::Frame ;
+    using ostk::physics::coord::Frame ;
 
     {
 
@@ -961,7 +961,7 @@ TEST (Library_Physics_Coordinate_Frame, GCRF)
 // TEST (Library_Physics_Coordinate_Frame, EME2000)
 // {
 
-//     using library::physics::coord::Frame ;
+//     using ostk::physics::coord::Frame ;
 
 //     {
 
@@ -974,7 +974,7 @@ TEST (Library_Physics_Coordinate_Frame, GCRF)
 TEST (Library_Physics_Coordinate_Frame, TEME)
 {
 
-    using library::physics::coord::Frame ;
+    using ostk::physics::coord::Frame ;
 
     {
 
@@ -987,8 +987,8 @@ TEST (Library_Physics_Coordinate_Frame, TEME)
 TEST (Library_Physics_Coordinate_Frame, TEMEOfEpoch)
 {
 
-    using library::physics::time::Instant ;
-    using library::physics::coord::Frame ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::coord::Frame ;
 
     {
 
@@ -1001,7 +1001,7 @@ TEST (Library_Physics_Coordinate_Frame, TEMEOfEpoch)
 TEST (Library_Physics_Coordinate_Frame, CIRF)
 {
 
-    using library::physics::coord::Frame ;
+    using ostk::physics::coord::Frame ;
 
     {
 
@@ -1014,7 +1014,7 @@ TEST (Library_Physics_Coordinate_Frame, CIRF)
 TEST (Library_Physics_Coordinate_Frame, TIRF)
 {
 
-    using library::physics::coord::Frame ;
+    using ostk::physics::coord::Frame ;
 
     {
 
@@ -1027,7 +1027,7 @@ TEST (Library_Physics_Coordinate_Frame, TIRF)
 TEST (Library_Physics_Coordinate_Frame, ITRF)
 {
 
-    using library::physics::coord::Frame ;
+    using ostk::physics::coord::Frame ;
 
     {
 
@@ -1040,7 +1040,7 @@ TEST (Library_Physics_Coordinate_Frame, ITRF)
 TEST (Library_Physics_Coordinate_Frame, WithName)
 {
 
-    using library::physics::coord::Frame ;
+    using ostk::physics::coord::Frame ;
 
     {
 
@@ -1058,23 +1058,23 @@ TEST (Library_Physics_Coordinate_Frame, WithName)
 TEST (Library_Physics_Coordinate_Frame, Exists)
 {
 
-    using library::core::types::Shared ;
-    using library::core::types::Real ;
-    using library::core::types::String ;
+    using ostk::core::types::Shared ;
+    using ostk::core::types::Real ;
+    using ostk::core::types::String ;
 
-    using library::math::obj::Vector3d ;
-    using library::math::geom::d3::trf::rot::Quaternion ;
-    using library::math::geom::d3::trf::rot::RotationVector ;
-    using library::math::geom::d3::trf::rot::RotationMatrix ;
+    using ostk::math::obj::Vector3d ;
+    using ostk::math::geom::d3::trf::rot::Quaternion ;
+    using ostk::math::geom::d3::trf::rot::RotationVector ;
+    using ostk::math::geom::d3::trf::rot::RotationMatrix ;
 
-    using library::physics::units::Angle ;
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::DateTime ;
-    using library::physics::coord::Transform ;
-    using library::physics::coord::Frame ;
-    using library::physics::coord::frame::Provider ;
-    using library::physics::coord::frame::provider::Static ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::coord::Transform ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::frame::Provider ;
+    using ostk::physics::coord::frame::provider::Static ;
 
     {
 
@@ -1106,23 +1106,23 @@ TEST (Library_Physics_Coordinate_Frame, Exists)
 TEST (Library_Physics_Coordinate_Frame, Construct)
 {
 
-    using library::core::types::Shared ;
-    using library::core::types::Real ;
-    using library::core::types::String ;
+    using ostk::core::types::Shared ;
+    using ostk::core::types::Real ;
+    using ostk::core::types::String ;
 
-    using library::math::obj::Vector3d ;
-    using library::math::geom::d3::trf::rot::Quaternion ;
-    using library::math::geom::d3::trf::rot::RotationVector ;
-    using library::math::geom::d3::trf::rot::RotationMatrix ;
+    using ostk::math::obj::Vector3d ;
+    using ostk::math::geom::d3::trf::rot::Quaternion ;
+    using ostk::math::geom::d3::trf::rot::RotationVector ;
+    using ostk::math::geom::d3::trf::rot::RotationMatrix ;
 
-    using library::physics::units::Angle ;
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::DateTime ;
-    using library::physics::coord::Transform ;
-    using library::physics::coord::Frame ;
-    using library::physics::coord::frame::Provider ;
-    using library::physics::coord::frame::provider::Static ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::coord::Transform ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::frame::Provider ;
+    using ostk::physics::coord::frame::provider::Static ;
 
     {
 
@@ -1154,23 +1154,23 @@ TEST (Library_Physics_Coordinate_Frame, Construct)
 TEST (Library_Physics_Coordinate_Frame, Destruct)
 {
 
-    using library::core::types::Shared ;
-    using library::core::types::Real ;
-    using library::core::types::String ;
+    using ostk::core::types::Shared ;
+    using ostk::core::types::Real ;
+    using ostk::core::types::String ;
 
-    using library::math::obj::Vector3d ;
-    using library::math::geom::d3::trf::rot::Quaternion ;
-    using library::math::geom::d3::trf::rot::RotationVector ;
-    using library::math::geom::d3::trf::rot::RotationMatrix ;
+    using ostk::math::obj::Vector3d ;
+    using ostk::math::geom::d3::trf::rot::Quaternion ;
+    using ostk::math::geom::d3::trf::rot::RotationVector ;
+    using ostk::math::geom::d3::trf::rot::RotationMatrix ;
 
-    using library::physics::units::Angle ;
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::DateTime ;
-    using library::physics::coord::Transform ;
-    using library::physics::coord::Frame ;
-    using library::physics::coord::frame::Provider ;
-    using library::physics::coord::frame::provider::Static ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::coord::Transform ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::frame::Provider ;
+    using ostk::physics::coord::frame::provider::Static ;
 
     {
 
@@ -1199,21 +1199,21 @@ TEST (Library_Physics_Coordinate_Frame, Destruct)
 TEST (Library_Physics_Coordinate_Frame, Test_1)
 {
 
-    using library::core::types::Shared ;
-    using library::core::types::Real ;
-    using library::core::types::String ;
+    using ostk::core::types::Shared ;
+    using ostk::core::types::Real ;
+    using ostk::core::types::String ;
 
-    using library::math::obj::Vector3d ;
-    using library::math::geom::d3::trf::rot::Quaternion ;
-    using library::math::geom::d3::trf::rot::RotationVector ;
-    using library::math::geom::d3::trf::rot::RotationMatrix ;
+    using ostk::math::obj::Vector3d ;
+    using ostk::math::geom::d3::trf::rot::Quaternion ;
+    using ostk::math::geom::d3::trf::rot::RotationVector ;
+    using ostk::math::geom::d3::trf::rot::RotationMatrix ;
 
-    using library::physics::units::Angle ;
-    using library::physics::time::Instant ;
-    using library::physics::coord::Transform ;
-    using library::physics::coord::Frame ;
-    using library::physics::coord::frame::Provider ;
-    using library::physics::coord::frame::provider::Static ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::coord::Transform ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::frame::Provider ;
+    using ostk::physics::coord::frame::provider::Static ;
 
     // Pure static translation
 

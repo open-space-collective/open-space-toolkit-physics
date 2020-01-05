@@ -17,8 +17,8 @@
 TEST (Library_Physics_Coordinate_Position, Constructor)
 {
 
-    using library::physics::coord::Frame ;
-    using library::physics::coord::Position ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::Position ;
 
     {
 
@@ -31,8 +31,8 @@ TEST (Library_Physics_Coordinate_Position, Constructor)
 TEST (Library_Physics_Coordinate_Position, EqualToOperator)
 {
 
-    using library::physics::coord::Frame ;
-    using library::physics::coord::Position ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::Position ;
 
     {
 
@@ -62,8 +62,8 @@ TEST (Library_Physics_Coordinate_Position, EqualToOperator)
 TEST (Library_Physics_Coordinate_Position, NotEqualToOperator)
 {
 
-    using library::physics::coord::Frame ;
-    using library::physics::coord::Position ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::Position ;
 
     {
 
@@ -93,8 +93,8 @@ TEST (Library_Physics_Coordinate_Position, NotEqualToOperator)
 TEST (Library_Physics_Coordinate_Position, StreamOperator)
 {
 
-    using library::physics::coord::Frame ;
-    using library::physics::coord::Position ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::Position ;
 
     {
 
@@ -113,8 +113,8 @@ TEST (Library_Physics_Coordinate_Position, StreamOperator)
 TEST (Library_Physics_Coordinate_Position, IsDefined)
 {
 
-    using library::physics::coord::Frame ;
-    using library::physics::coord::Position ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::Position ;
 
     {
 
@@ -135,9 +135,9 @@ TEST (Library_Physics_Coordinate_Position, IsDefined)
 TEST (Library_Physics_Coordinate_Position, IsNear)
 {
 
-    using library::physics::units::Length ;
-    using library::physics::coord::Frame ;
-    using library::physics::coord::Position ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::Position ;
 
     {
 
@@ -173,11 +173,11 @@ TEST (Library_Physics_Coordinate_Position, IsNear)
 TEST (Library_Physics_Coordinate_Position, AccessCoordinates)
 {
 
-    using library::math::obj::Vector3d ;
+    using ostk::math::obj::Vector3d ;
 
-    using library::physics::units::Length ;
-    using library::physics::coord::Frame ;
-    using library::physics::coord::Position ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::Position ;
 
     {
 
@@ -198,9 +198,9 @@ TEST (Library_Physics_Coordinate_Position, AccessCoordinates)
 TEST (Library_Physics_Coordinate_Position, AccessFrame)
 {
 
-    using library::physics::units::Length ;
-    using library::physics::coord::Frame ;
-    using library::physics::coord::Position ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::Position ;
 
     {
 
@@ -229,11 +229,11 @@ TEST (Library_Physics_Coordinate_Position, AccessFrame)
 TEST (Library_Physics_Coordinate_Position, GetCoordinates)
 {
 
-    using library::math::obj::Vector3d ;
+    using ostk::math::obj::Vector3d ;
 
-    using library::physics::units::Length ;
-    using library::physics::coord::Frame ;
-    using library::physics::coord::Position ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::Position ;
 
     {
 
@@ -254,8 +254,8 @@ TEST (Library_Physics_Coordinate_Position, GetCoordinates)
 TEST (Library_Physics_Coordinate_Position, GetUnit)
 {
 
-    using library::physics::coord::Frame ;
-    using library::physics::coord::Position ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::Position ;
 
     {
 
@@ -276,12 +276,12 @@ TEST (Library_Physics_Coordinate_Position, GetUnit)
 TEST (Library_Physics_Coordinate_Position, InUnit)
 {
 
-    using library::core::types::Real ;
+    using ostk::core::types::Real ;
 
-    using library::math::obj::Vector3d ;
+    using ostk::math::obj::Vector3d ;
 
-    using library::physics::coord::Frame ;
-    using library::physics::coord::Position ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::Position ;
 
     {
 
@@ -307,12 +307,12 @@ TEST (Library_Physics_Coordinate_Position, InUnit)
 TEST (Library_Physics_Coordinate_Position, InMeters)
 {
 
-    using library::core::types::Real ;
+    using ostk::core::types::Real ;
 
-    using library::math::obj::Vector3d ;
+    using ostk::math::obj::Vector3d ;
 
-    using library::physics::coord::Frame ;
-    using library::physics::coord::Position ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::Position ;
 
     {
 
@@ -335,14 +335,14 @@ TEST (Library_Physics_Coordinate_Position, InMeters)
 TEST (Library_Physics_Coordinate_Position, InFrame)
 {
 
-    using library::core::types::Real ;
+    using ostk::core::types::Real ;
 
-    using library::math::obj::Vector3d ;
+    using ostk::math::obj::Vector3d ;
 
-    using library::physics::units::Length ;
-    using library::physics::time::Instant ;
-    using library::physics::coord::Frame ;
-    using library::physics::coord::Position ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::Position ;
 
     {
 
@@ -371,8 +371,8 @@ TEST (Library_Physics_Coordinate_Position, InFrame)
 TEST (Library_Physics_Coordinate_Position, ToString)
 {
 
-    using library::physics::coord::Frame ;
-    using library::physics::coord::Position ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::Position ;
 
     {
 
@@ -393,7 +393,7 @@ TEST (Library_Physics_Coordinate_Position, ToString)
 TEST (Library_Physics_Coordinate_Position, Undefined)
 {
 
-    using library::physics::coord::Position ;
+    using ostk::physics::coord::Position ;
 
     {
 
@@ -409,10 +409,10 @@ TEST (Library_Physics_Coordinate_Position, Undefined)
 TEST (Library_Physics_Coordinate_Position, Meters)
 {
 
-    using library::core::types::Shared ;
+    using ostk::core::types::Shared ;
 
-    using library::physics::coord::Frame ;
-    using library::physics::coord::Position ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::Position ;
 
     {
 

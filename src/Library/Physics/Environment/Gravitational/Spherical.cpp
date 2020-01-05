@@ -14,7 +14,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -25,10 +25,10 @@ namespace gravitational
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using library::physics::units::Length ;
-using library::physics::units::Mass ;
-using library::physics::units::Time ;
-using library::physics::units::Angle ;
+using ostk::physics::units::Length ;
+using ostk::physics::units::Mass ;
+using ostk::physics::units::Time ;
+using ostk::physics::units::Angle ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -43,7 +43,7 @@ static const Derived::Unit GravitationParameterSIUnit = Derived::Unit::Gravitati
 
     if (!gravitationalParameter_SI_.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Gravitational parameter") ;
+        throw ostk::core::error::runtime::Undefined("Gravitational parameter") ;
     }
 
 }

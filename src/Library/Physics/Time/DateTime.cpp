@@ -16,7 +16,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -76,20 +76,20 @@ std::ostream&                   operator <<                                 (   
                                                                                 const   DateTime&                   aDateTime                                   )
 {
 
-    library::core::utils::Print::Header(anOutputStream, "DateTime") ;
+    ostk::core::utils::Print::Header(anOutputStream, "DateTime") ;
 
-    library::core::utils::Print::Line(anOutputStream) << "Year:" << (aDateTime.isDefined() ? String::Format("{:d}", aDateTime.date_.getYear()) : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Month:" << (aDateTime.isDefined() ? String::Format("{:d}", aDateTime.date_.getMonth()) : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Day:" << (aDateTime.isDefined() ? String::Format("{:d}", aDateTime.date_.getDay()) : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Year:" << (aDateTime.isDefined() ? String::Format("{:d}", aDateTime.date_.getYear()) : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Month:" << (aDateTime.isDefined() ? String::Format("{:d}", aDateTime.date_.getMonth()) : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Day:" << (aDateTime.isDefined() ? String::Format("{:d}", aDateTime.date_.getDay()) : "Undefined") ;
 
-    library::core::utils::Print::Line(anOutputStream) << "Hour:" << (aDateTime.isDefined() ? String::Format("{:d}", aDateTime.time_.getHour()) : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Minute:" << (aDateTime.isDefined() ? String::Format("{:d}", aDateTime.time_.getMinute()) : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Second:" << (aDateTime.isDefined() ? String::Format("{:d}", aDateTime.time_.getSecond()) : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Millisecond:" << (aDateTime.isDefined() ? String::Format("{:d}", aDateTime.time_.getMillisecond()) : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Microsecond:" << (aDateTime.isDefined() ? String::Format("{:d}", aDateTime.time_.getMicrosecond()) : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Nanosecond:" << (aDateTime.isDefined() ? String::Format("{:d}", aDateTime.time_.getNanosecond()) : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Hour:" << (aDateTime.isDefined() ? String::Format("{:d}", aDateTime.time_.getHour()) : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Minute:" << (aDateTime.isDefined() ? String::Format("{:d}", aDateTime.time_.getMinute()) : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Second:" << (aDateTime.isDefined() ? String::Format("{:d}", aDateTime.time_.getSecond()) : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Millisecond:" << (aDateTime.isDefined() ? String::Format("{:d}", aDateTime.time_.getMillisecond()) : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Microsecond:" << (aDateTime.isDefined() ? String::Format("{:d}", aDateTime.time_.getMicrosecond()) : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Nanosecond:" << (aDateTime.isDefined() ? String::Format("{:d}", aDateTime.time_.getNanosecond()) : "Undefined") ;
 
-    library::core::utils::Print::Footer(anOutputStream) ;
+    ostk::core::utils::Print::Footer(anOutputStream) ;
 
     return anOutputStream ;
 
@@ -105,7 +105,7 @@ const Date&                     DateTime::accessDate                        ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("DateTime") ;
+        throw ostk::core::error::runtime::Undefined("DateTime") ;
     }
 
     return date_ ;
@@ -117,7 +117,7 @@ Time                            DateTime::getTime                           ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("DateTime") ;
+        throw ostk::core::error::runtime::Undefined("DateTime") ;
     }
 
     return time_ ;
@@ -129,7 +129,7 @@ Date                            DateTime::getDate                           ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("DateTime") ;
+        throw ostk::core::error::runtime::Undefined("DateTime") ;
     }
 
     return date_ ;
@@ -141,7 +141,7 @@ const Time&                     DateTime::accessTime                        ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("DateTime") ;
+        throw ostk::core::error::runtime::Undefined("DateTime") ;
     }
 
     return time_ ;
@@ -151,12 +151,12 @@ const Time&                     DateTime::accessTime                        ( ) 
 Real                            DateTime::getJulianDate                     ( ) const
 {
 
-    using library::core::types::Int16 ;
-    using library::core::types::Int32 ;
+    using ostk::core::types::Int16 ;
+    using ostk::core::types::Int32 ;
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("DateTime") ;
+        throw ostk::core::error::runtime::Undefined("DateTime") ;
     }
 
     const Uint16 year = date_.getYear() ;
@@ -187,7 +187,7 @@ Real                            DateTime::getModifiedJulianDate             ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("DateTime") ;
+        throw ostk::core::error::runtime::Undefined("DateTime") ;
     }
 
     return DateTime::ModifiedJulianDateFromJulianDate(this->getJulianDate()) ;
@@ -199,7 +199,7 @@ String                          DateTime::toString                         (   c
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("DateTime") ;
+        throw ostk::core::error::runtime::Undefined("DateTime") ;
     }
 
     switch (aFormat)
@@ -215,7 +215,7 @@ String                          DateTime::toString                         (   c
             return date_.toString(Date::Format::STK) + " " + time_.toString(Time::Format::ISO8601) ;
 
         default:
-            throw library::core::error::runtime::Wrong("Format") ;
+            throw ostk::core::error::runtime::Wrong("Format") ;
             break ;
 
     }
@@ -252,19 +252,19 @@ DateTime                        DateTime::ModifiedJulianDateEpoch           ( )
 DateTime                        DateTime::JulianDate                        (   const   Real&                       aJulianDate                                 )
 {
 
-    using library::core::types::Int32 ;
-    using library::core::types::Int64 ;
-    using library::core::types::Uint32 ;
-    using library::core::types::Uint64 ;
+    using ostk::core::types::Int32 ;
+    using ostk::core::types::Int64 ;
+    using ostk::core::types::Uint32 ;
+    using ostk::core::types::Uint64 ;
 
     if (!aJulianDate.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Julian Date") ;
+        throw ostk::core::error::runtime::Undefined("Julian Date") ;
     }
 
     if (aJulianDate < 0.0)
     {
-        throw library::core::error::RuntimeError("Julian Date [{}] is negative.", aJulianDate) ;
+        throw ostk::core::error::RuntimeError("Julian Date [{}] is negative.", aJulianDate) ;
     }
 
     // const Int32 J = std::floor(aJulianDate) ;
@@ -360,7 +360,7 @@ DateTime                        DateTime::JulianDate                        (   
 
         if (day > 28)
         {
-            throw library::core::error::RuntimeError("Implementation error.") ;
+            throw ostk::core::error::RuntimeError("Implementation error.") ;
         }
 
     }
@@ -374,12 +374,12 @@ DateTime                        DateTime::ModifiedJulianDate                (   
 
     if (!aModifiedJulianDate.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Modified Julian Date") ;
+        throw ostk::core::error::runtime::Undefined("Modified Julian Date") ;
     }
 
     if (aModifiedJulianDate < 0.0)
     {
-        throw library::core::error::RuntimeError("Modified Julian Date [{}] is negative.", aModifiedJulianDate) ;
+        throw ostk::core::error::RuntimeError("Modified Julian Date [{}] is negative.", aModifiedJulianDate) ;
     }
 
     return DateTime::JulianDate(DateTime::JulianDateFromModifiedJulianDate(aModifiedJulianDate)) ;
@@ -392,7 +392,7 @@ DateTime                        DateTime::Parse                             (   
 
     if (aString.isEmpty())
     {
-        throw library::core::error::runtime::Undefined("String") ;
+        throw ostk::core::error::runtime::Undefined("String") ;
     }
 
     switch (aFormat)
@@ -426,7 +426,7 @@ DateTime                        DateTime::Parse                             (   
             }
             else
             {
-                throw library::core::error::RuntimeError("Cannot parse [Standard] date-time string [{}].", aString) ;
+                throw ostk::core::error::RuntimeError("Cannot parse [Standard] date-time string [{}].", aString) ;
             }
 
         }
@@ -442,7 +442,7 @@ DateTime                        DateTime::Parse                             (   
             }
             else
             {
-                throw library::core::error::RuntimeError("Cannot parse [ISO 8601] date-time string [{}].", aString) ;
+                throw ostk::core::error::RuntimeError("Cannot parse [ISO 8601] date-time string [{}].", aString) ;
             }
 
         }
@@ -458,13 +458,13 @@ DateTime                        DateTime::Parse                             (   
             }
             else
             {
-                throw library::core::error::RuntimeError("Cannot parse [STK] date-time string [{}].", aString) ;
+                throw ostk::core::error::RuntimeError("Cannot parse [STK] date-time string [{}].", aString) ;
             }
 
         }
 
         default:
-            throw library::core::error::runtime::Wrong("Format") ;
+            throw ostk::core::error::runtime::Wrong("Format") ;
             break ;
 
     }

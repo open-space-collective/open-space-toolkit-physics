@@ -11,17 +11,17 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (LibraryPhysicsPy_Time_Interval_toString_overloads, library::physics::time::Interval::toString, 0, 1)
+BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (LibraryPhysicsPy_Time_Interval_toString_overloads, ostk::physics::time::Interval::toString, 0, 1)
 
 inline void                     LibraryPhysicsPy_Time_Interval              ( )
 {
 
     using namespace boost::python ;
 
-    using library::core::types::String ;
+    using ostk::core::types::String ;
 
-    using library::physics::time::Instant ;
-    using library::physics::time::Interval ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::Interval ;
 
     scope in_Interval = class_<Interval>("Interval", init<const Instant&, const Instant&, const Interval::Type&>())
 
@@ -69,7 +69,7 @@ inline void                     LibraryPhysicsPy_Time_Interval              ( )
 
     ;
 
-    implicitly_convertible<Interval, library::math::obj::Interval<library::physics::time::Instant>>() ;
+    implicitly_convertible<Interval, ostk::math::obj::Interval<ostk::physics::time::Instant>>() ;
 
 }
 

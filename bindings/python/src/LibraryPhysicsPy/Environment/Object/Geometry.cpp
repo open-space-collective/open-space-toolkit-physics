@@ -28,24 +28,24 @@ inline void                     LibraryPhysicsPy_Environment_Object_Geometry ( )
 
     using namespace boost::python ;
 
-    using library::core::types::Unique ;
-    using library::core::types::Shared ;
+    using ostk::core::types::Unique ;
+    using ostk::core::types::Shared ;
 
-    using library::math::geom::d3::objects::Point ;
-    using library::math::geom::d3::objects::PointSet ;
-    using library::math::geom::d3::objects::Line ;
-    using library::math::geom::d3::objects::Ray ;
-    using library::math::geom::d3::objects::Segment ;
-    using library::math::geom::d3::objects::LineString ;
-    using library::math::geom::d3::objects::Polygon ;
-    using library::math::geom::d3::objects::Plane ;
-    using library::math::geom::d3::objects::Sphere ;
-    using library::math::geom::d3::objects::Ellipsoid ;
-    using library::math::geom::d3::objects::Pyramid ;
-    using library::math::geom::d3::objects::Composite ;
+    using ostk::math::geom::d3::objects::Point ;
+    using ostk::math::geom::d3::objects::PointSet ;
+    using ostk::math::geom::d3::objects::Line ;
+    using ostk::math::geom::d3::objects::Ray ;
+    using ostk::math::geom::d3::objects::Segment ;
+    using ostk::math::geom::d3::objects::LineString ;
+    using ostk::math::geom::d3::objects::Polygon ;
+    using ostk::math::geom::d3::objects::Plane ;
+    using ostk::math::geom::d3::objects::Sphere ;
+    using ostk::math::geom::d3::objects::Ellipsoid ;
+    using ostk::math::geom::d3::objects::Pyramid ;
+    using ostk::math::geom::d3::objects::Composite ;
 
-    using library::physics::coord::Frame ;
-    using library::physics::env::object::Geometry ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::env::object::Geometry ;
 
     scope in_Geometry = class_<Geometry>("Geometry", init<const Geometry::Object&, const Shared<const Frame>&>())
 

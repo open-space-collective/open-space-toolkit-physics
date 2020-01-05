@@ -43,7 +43,7 @@
 // TEST (Library_Physics_Environment_Objects_CelestialBodies_Moon, Constructor)
 // {
 
-//     using library::physics::env::obj::celest::Moon ;
+//     using ostk::physics::env::obj::celest::Moon ;
 
 //     {
 
@@ -56,7 +56,7 @@
 TEST (Library_Physics_Environment_Objects_CelestialBodies_Moon, Default)
 {
 
-    using library::physics::env::obj::celest::Moon ;
+    using ostk::physics::env::obj::celest::Moon ;
 
     {
 

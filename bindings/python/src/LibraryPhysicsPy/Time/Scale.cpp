@@ -16,7 +16,7 @@ inline void                     LibraryPhysicsPy_Time_Scale                 ( )
 
     using namespace boost::python ;
 
-    using library::physics::time::Scale ;
+    using ostk::physics::time::Scale ;
 
     enum_<Scale>("Scale")
 

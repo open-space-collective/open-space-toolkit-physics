@@ -13,7 +13,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -72,7 +72,7 @@ String                          Mass::toString                              (   
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Mass") ;
+        throw ostk::core::error::runtime::Undefined("Mass") ;
     }
 
     return this->accessValue().toString(aPrecision) + " [" + Mass::SymbolFromUnit(unit_) + "]" ;
@@ -113,7 +113,7 @@ String                          Mass::StringFromUnit                        (   
             return "Pound" ;
 
         default:
-            throw library::core::error::runtime::Wrong("Unit") ;
+            throw ostk::core::error::runtime::Wrong("Unit") ;
             break ;
 
     }
@@ -138,7 +138,7 @@ String                          Mass::SymbolFromUnit                        (   
             return "lb" ;
 
         default:
-            throw library::core::error::runtime::Wrong("Unit") ;
+            throw ostk::core::error::runtime::Wrong("Unit") ;
             break ;
 
     }
@@ -159,7 +159,7 @@ Real                            Mass::SIRatio                               (   
             return 1.0 ;
 
         default:
-            throw library::core::error::runtime::Wrong("Unit") ;
+            throw ostk::core::error::runtime::Wrong("Unit") ;
             break ;
 
     }

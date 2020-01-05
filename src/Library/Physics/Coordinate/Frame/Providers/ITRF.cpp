@@ -27,12 +27,12 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using IersManager = library::physics::coord::frame::provider::iers::Manager ;
-using library::physics::coord::frame::provider::iers::BulletinA ;
+using IersManager = ostk::physics::coord::frame::provider::iers::Manager ;
+using ostk::physics::coord::frame::provider::iers::BulletinA ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -68,20 +68,20 @@ bool                            ITRF::isDefined                             ( ) 
 Transform                       ITRF::getTransformAt                        (   const   Instant&                    anInstant                                   ) const
 {
 
-    using library::math::obj::Vector2d ;
-    using library::math::geom::d3::trf::rot::RotationMatrix ;
+    using ostk::math::obj::Vector2d ;
+    using ostk::math::geom::d3::trf::rot::RotationMatrix ;
 
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
 
     if (!anInstant.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("ITRF") ;
+        throw ostk::core::error::runtime::Undefined("ITRF") ;
     }
 
     // Time (TT)

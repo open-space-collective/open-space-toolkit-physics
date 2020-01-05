@@ -43,7 +43,7 @@
 // TEST (Library_Physics_Environment_Objects_CelestialBodies_Earth, Constructor)
 // {
 
-//     using library::physics::env::obj::celest::Earth ;
+//     using ostk::physics::env::obj::celest::Earth ;
 
 //     {
 
@@ -56,27 +56,27 @@
 TEST (Library_Physics_Environment_Objects_CelestialBodies_Earth, GetFrameAt)
 {
 
-    using library::core::types::Shared ;
-    using library::core::types::String ;
-    using library::core::ctnr::Triple ;
-    using library::core::ctnr::Array ;
-    using library::core::ctnr::Table ;
-    using library::core::fs::Path ;
-    using library::core::fs::File ;
+    using ostk::core::types::Shared ;
+    using ostk::core::types::String ;
+    using ostk::core::ctnr::Triple ;
+    using ostk::core::ctnr::Array ;
+    using ostk::core::ctnr::Table ;
+    using ostk::core::fs::Path ;
+    using ostk::core::fs::File ;
 
-    using library::math::obj::Vector3d ;
-    using library::math::geom::d3::trf::rot::Quaternion ;
-    using library::math::geom::d3::trf::rot::RotationVector ;
+    using ostk::math::obj::Vector3d ;
+    using ostk::math::geom::d3::trf::rot::Quaternion ;
+    using ostk::math::geom::d3::trf::rot::RotationVector ;
 
-    using library::physics::units::Length ;
-    using library::physics::units::Angle ;
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Duration ;
-    using library::physics::coord::spherical::LLA ;
-    using library::physics::coord::Frame ;
-    using library::physics::env::obj::celest::Earth ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Duration ;
+    using ostk::physics::coord::spherical::LLA ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::env::obj::celest::Earth ;
 
     {
 
@@ -150,7 +150,7 @@ TEST (Library_Physics_Environment_Objects_CelestialBodies_Earth, GetFrameAt)
 TEST (Library_Physics_Environment_Objects_CelestialBodies_Earth, Default)
 {
 
-    using library::physics::env::obj::celest::Earth ;
+    using ostk::physics::env::obj::celest::Earth ;
 
     {
 

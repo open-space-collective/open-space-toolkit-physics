@@ -14,7 +14,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -53,7 +53,7 @@ Transform                       Static::getTransformAt                      (   
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Static provider") ;
+        throw ostk::core::error::runtime::Undefined("Static provider") ;
     }
 
     return { anInstant, transform_.accessTranslation(), transform_.accessVelocity(), transform_.accessOrientation(), transform_.accessAngularVelocity(), Transform::Type::Passive } ;

@@ -20,7 +20,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -65,7 +65,7 @@ bool                            Duration::operator <                        (   
 
     if ((!this->isDefined()) || (!aDuration.isDefined()))
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     return count_ < aDuration.count_ ;
@@ -77,7 +77,7 @@ bool                            Duration::operator <=                       (   
 
     if ((!this->isDefined()) || (!aDuration.isDefined()))
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     return count_ <= aDuration.count_ ;
@@ -89,7 +89,7 @@ bool                            Duration::operator >                        (   
 
     if ((!this->isDefined()) || (!aDuration.isDefined()))
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     return count_ > aDuration.count_ ;
@@ -101,7 +101,7 @@ bool                            Duration::operator >=                       (   
 
     if ((!this->isDefined()) || (!aDuration.isDefined()))
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     return count_ >= aDuration.count_ ;
@@ -113,7 +113,7 @@ Duration                        Duration::operator +                        (   
 
     if ((!this->isDefined()) || (!aDuration.isDefined()))
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     return Duration(count_ + aDuration.count_) ;
@@ -125,7 +125,7 @@ Duration                        Duration::operator -                        (   
 
     if ((!this->isDefined()) || (!aDuration.isDefined()))
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     return Duration(count_ - aDuration.count_) ;
@@ -137,12 +137,12 @@ Duration                        Duration::operator *                        (   
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     if (!aMultiplier.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Multiplier") ;
+        throw ostk::core::error::runtime::Undefined("Multiplier") ;
     }
 
     return Duration(count_ * static_cast<double>(aMultiplier)) ;
@@ -154,17 +154,17 @@ Duration                        Duration::operator /                        (   
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     if (!aDivider.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Divider") ;
+        throw ostk::core::error::runtime::Undefined("Divider") ;
     }
 
     if (aDivider.isZero())
     {
-        throw library::core::error::RuntimeError("Cannot divide by zero.") ;
+        throw ostk::core::error::RuntimeError("Cannot divide by zero.") ;
     }
 
     return Duration(count_ / static_cast<double>(aDivider)) ;
@@ -176,7 +176,7 @@ Duration                        Duration::operator +                        ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     return *this ;
@@ -188,7 +188,7 @@ Duration                        Duration::operator -                        ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     return Duration(-count_) ;
@@ -200,7 +200,7 @@ Duration&                       Duration::operator +=                       (   
 
     if ((!this->isDefined()) || (!aDuration.isDefined()))
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     count_ += aDuration.count_ ;
@@ -214,7 +214,7 @@ Duration&                       Duration::operator -=                       (   
 
     if ((!this->isDefined()) || (!aDuration.isDefined()))
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     count_ -= aDuration.count_ ;
@@ -228,12 +228,12 @@ Duration&                       Duration::operator *=                       (   
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     if (!aMultiplier.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Multiplier") ;
+        throw ostk::core::error::runtime::Undefined("Multiplier") ;
     }
 
     count_ *= aMultiplier ;
@@ -247,17 +247,17 @@ Duration&                       Duration::operator /=                       (   
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     if (!aDivider.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Divider") ;
+        throw ostk::core::error::runtime::Undefined("Divider") ;
     }
 
     if (aDivider.isZero())
     {
-        throw library::core::error::RuntimeError("Cannot divide by zero.") ;
+        throw ostk::core::error::RuntimeError("Cannot divide by zero.") ;
     }
 
     count_ /= aDivider ;
@@ -272,7 +272,7 @@ Duration                        operator *                                  (   
 
     if (!aDuration.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     return Duration(aMultiplier * aDuration.count_) ;
@@ -283,11 +283,11 @@ std::ostream&                   operator <<                                 (   
                                                                                 const   Duration&                   aDuration                                   )
 {
 
-    library::core::utils::Print::Header(anOutputStream, "Duration") ;
+    ostk::core::utils::Print::Header(anOutputStream, "Duration") ;
 
-    library::core::utils::Print::Line(anOutputStream) << (aDuration.isDefined() ? aDuration.toString() : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << (aDuration.isDefined() ? aDuration.toString() : "Undefined") ;
 
-    library::core::utils::Print::Footer(anOutputStream) ;
+    ostk::core::utils::Print::Footer(anOutputStream) ;
 
     return anOutputStream ;
 
@@ -303,7 +303,7 @@ bool                            Duration::isZero                            ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     return count_ == 0 ;
@@ -314,7 +314,7 @@ bool                            Duration::isPositive                        ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     return count_ >= 0 ;
@@ -326,7 +326,7 @@ bool                            Duration::isStrictlyPositive                ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     return count_ > 0 ;
@@ -339,22 +339,22 @@ bool                            Duration::isNear                            (   
 
     if (!aDuration.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     if (!aTolerance.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Tolerance") ;
+        throw ostk::core::error::runtime::Undefined("Tolerance") ;
     }
 
     if (!aTolerance.isPositive())
     {
-        throw library::core::error::RuntimeError("Tolerance is not positive.") ;
+        throw ostk::core::error::RuntimeError("Tolerance is not positive.") ;
     }
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     return std::abs(count_ - aDuration.count_) <= aTolerance.count_ ;
@@ -366,7 +366,7 @@ Integer                         Duration::getNanoseconds                    ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     return Integer::Int64(std::abs(count_) % 1000) ;
@@ -378,7 +378,7 @@ Integer                         Duration::getMicroseconds                   ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     return Integer::Int64((std::abs(count_) / 1000) % 1000) ;
@@ -390,7 +390,7 @@ Integer                         Duration::getMilliseconds                   ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     return Integer::Int64((std::abs(count_) / 1000000) % 1000) ;
@@ -402,7 +402,7 @@ Integer                         Duration::getSeconds                        ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     return Integer::Int64((std::abs(count_) / 1000000000) % 60) ;
@@ -414,7 +414,7 @@ Integer                         Duration::getMinutes                        ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     return Integer::Int64((std::abs(count_) / 60000000000) % 60) ;
@@ -426,7 +426,7 @@ Integer                         Duration::getHours                          ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     return Integer::Int64((std::abs(count_) / 3600000000000) % 24) ;
@@ -438,7 +438,7 @@ Integer                         Duration::getDays                           ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     return Integer::Int64(std::abs(count_) / 86400000000000) ;
@@ -450,7 +450,7 @@ Integer                         Duration::getWeeks                          ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     return Integer::Int64(std::abs(count_) / 604800000000000) ;
@@ -462,7 +462,7 @@ Real                            Duration::inNanoseconds                     ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     return Real(count_) ;
@@ -474,7 +474,7 @@ Real                            Duration::inMicroseconds                    ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     return Real(count_ / 1e3) ;
@@ -486,7 +486,7 @@ Real                            Duration::inMilliseconds                    ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     return Real(count_ / 1e6) ;
@@ -498,7 +498,7 @@ Real                            Duration::inSeconds                         ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     return Real(count_ / 1e9) ;
@@ -510,7 +510,7 @@ Real                            Duration::inMinutes                         ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     return Real(count_ / 60000000000.0) ;
@@ -522,7 +522,7 @@ Real                            Duration::inHours                           ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     return Real(count_ / 3600000000000.0) ;
@@ -534,7 +534,7 @@ Real                            Duration::inDays                            ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     return Real(count_ / 86400000000000.0) ;
@@ -546,7 +546,7 @@ Real                            Duration::inWeeks                           ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     return Real(count_ / 604800000000000.0) ;
@@ -558,7 +558,7 @@ Real                            Duration::in                                (   
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     switch (aTimeUnit)
@@ -589,7 +589,7 @@ Real                            Duration::in                                (   
             return Real(count_ / 604800000000000.0) ;
 
         default:
-            throw library::core::error::runtime::Wrong("Unit") ;
+            throw ostk::core::error::runtime::Wrong("Unit") ;
             break ;
 
     }
@@ -603,7 +603,7 @@ Duration                        Duration::getAbsolute                       ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     return Duration(std::abs(count_)) ;
@@ -615,7 +615,7 @@ String                          Duration::toString                         (   c
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     const Integer nanoseconds = this->getNanoseconds() ;
@@ -736,7 +736,7 @@ String                          Duration::toString                         (   c
         }
 
         default:
-            throw library::core::error::runtime::Wrong("Format") ;
+            throw ostk::core::error::runtime::Wrong("Format") ;
             break ;
 
     }
@@ -807,7 +807,7 @@ Duration                        Duration::Parse                             (   
 
     if (aString.isEmpty())
     {
-        throw library::core::error::runtime::Undefined("String") ;
+        throw ostk::core::error::runtime::Undefined("String") ;
     }
 
     switch (aFormat)
@@ -859,13 +859,13 @@ Duration                        Duration::Parse                             (   
                 }
                 catch (const boost::bad_lexical_cast& e)
                 {
-                    throw library::core::error::RuntimeError("Cannot parse [Standard] duration string [{}] ({}).", aString, e.what()) ;
+                    throw ostk::core::error::RuntimeError("Cannot parse [Standard] duration string [{}] ({}).", aString, e.what()) ;
                 }
 
             }
             else
             {
-                throw library::core::error::RuntimeError("Cannot parse [Standard] duration string [{}].", aString) ;
+                throw ostk::core::error::RuntimeError("Cannot parse [Standard] duration string [{}].", aString) ;
             }
 
             break ;
@@ -968,13 +968,13 @@ Duration                        Duration::Parse                             (   
                 }
                 catch (const boost::bad_lexical_cast& e)
                 {
-                    throw library::core::error::RuntimeError("Cannot parse [ISO 8601] duration string [{}] ({}).", aString, e.what()) ;
+                    throw ostk::core::error::RuntimeError("Cannot parse [ISO 8601] duration string [{}] ({}).", aString, e.what()) ;
                 }
 
             }
             else
             {
-                throw library::core::error::RuntimeError("Cannot parse [ISO 8601] duration string [{}].", aString) ;
+                throw ostk::core::error::RuntimeError("Cannot parse [ISO 8601] duration string [{}].", aString) ;
             }
 
             break ;
@@ -982,7 +982,7 @@ Duration                        Duration::Parse                             (   
         }
 
         default:
-            throw library::core::error::runtime::Wrong("Format") ;
+            throw ostk::core::error::runtime::Wrong("Format") ;
             break ;
 
     }

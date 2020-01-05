@@ -16,8 +16,8 @@
 TEST (Library_Physics_Unit, EqualToOperator)
 {
 
-    using library::physics::Unit ;
-    using library::physics::units::Length ;
+    using ostk::physics::Unit ;
+    using ostk::physics::units::Length ;
 
     {
 
@@ -60,8 +60,8 @@ TEST (Library_Physics_Unit, EqualToOperator)
 TEST (Library_Physics_Unit, NotEqualToOperator)
 {
 
-    using library::physics::Unit ;
-    using library::physics::units::Length ;
+    using ostk::physics::Unit ;
+    using ostk::physics::units::Length ;
 
     {
 
@@ -104,8 +104,8 @@ TEST (Library_Physics_Unit, NotEqualToOperator)
 TEST (Library_Physics_Unit, StreamOperator)
 {
 
-    using library::physics::Unit ;
-    using library::physics::units::Length ;
+    using ostk::physics::Unit ;
+    using ostk::physics::units::Length ;
 
     {
 
@@ -124,8 +124,8 @@ TEST (Library_Physics_Unit, StreamOperator)
 TEST (Library_Physics_Unit, IsDefined)
 {
 
-    using library::physics::Unit ;
-    using library::physics::units::Length ;
+    using ostk::physics::Unit ;
+    using ostk::physics::units::Length ;
 
     {
 
@@ -141,8 +141,8 @@ TEST (Library_Physics_Unit, IsDefined)
 TEST (Library_Physics_Unit, IsNone)
 {
 
-    using library::physics::Unit ;
-    using library::physics::units::Length ;
+    using ostk::physics::Unit ;
+    using ostk::physics::units::Length ;
 
     {
 
@@ -162,8 +162,8 @@ TEST (Library_Physics_Unit, IsNone)
 TEST (Library_Physics_Unit, GetType)
 {
 
-    using library::physics::Unit ;
-    using library::physics::units::Length ;
+    using ostk::physics::Unit ;
+    using ostk::physics::units::Length ;
 
     {
 
@@ -183,8 +183,8 @@ TEST (Library_Physics_Unit, GetType)
 TEST (Library_Physics_Unit, RatioTo)
 {
 
-    using library::physics::Unit ;
-    using library::physics::units::Length ;
+    using ostk::physics::Unit ;
+    using ostk::physics::units::Length ;
 
     {
 
@@ -226,8 +226,8 @@ TEST (Library_Physics_Unit, RatioTo)
 TEST (Library_Physics_Unit, ToString)
 {
 
-    using library::physics::Unit ;
-    using library::physics::units::Length ;
+    using ostk::physics::Unit ;
+    using ostk::physics::units::Length ;
 
     {
 
@@ -253,7 +253,7 @@ TEST (Library_Physics_Unit, ToString)
 TEST (Library_Physics_Unit, Undefined)
 {
 
-    using library::physics::Unit ;
+    using ostk::physics::Unit ;
 
     {
 
@@ -268,7 +268,7 @@ TEST (Library_Physics_Unit, Undefined)
 TEST (Library_Physics_Unit, None)
 {
 
-    using library::physics::Unit ;
+    using ostk::physics::Unit ;
 
     {
 
@@ -283,8 +283,8 @@ TEST (Library_Physics_Unit, None)
 TEST (Library_Physics_Unit, Length)
 {
 
-    using library::physics::Unit ;
-    using library::physics::units::Length ;
+    using ostk::physics::Unit ;
+    using ostk::physics::units::Length ;
 
     {
 
@@ -299,7 +299,7 @@ TEST (Library_Physics_Unit, Length)
 TEST (Library_Physics_Unit, StringFromType)
 {
 
-    using library::physics::Unit ;
+    using ostk::physics::Unit ;
 
     {
 

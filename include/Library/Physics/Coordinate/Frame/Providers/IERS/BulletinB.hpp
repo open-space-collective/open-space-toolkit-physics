@@ -22,7 +22,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -37,17 +37,17 @@ namespace iers
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace fs = library::core::fs ;
+namespace fs = ostk::core::fs ;
 
-using library::core::types::Integer ;
-using library::core::types::Real ;
-using library::core::ctnr::Map ;
-using library::core::fs::File ;
+using ostk::core::types::Integer ;
+using ostk::core::types::Real ;
+using ostk::core::ctnr::Map ;
+using ostk::core::fs::File ;
 
-using library::physics::time::Date ;
-using library::physics::time::Instant ;
-using library::physics::time::Duration ;
-using library::physics::time::Interval ;
+using ostk::physics::time::Date ;
+using ostk::physics::time::Instant ;
+using ostk::physics::time::Duration ;
+using ostk::physics::time::Interval ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -14,7 +14,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -53,7 +53,7 @@ Transform                       Dynamic::getTransformAt                     (   
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Dynamic provider") ;
+        throw ostk::core::error::runtime::Undefined("Dynamic provider") ;
     }
 
     return generator_(anInstant) ;

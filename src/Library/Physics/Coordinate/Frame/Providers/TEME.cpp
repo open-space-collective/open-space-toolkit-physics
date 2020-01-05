@@ -22,7 +22,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -40,7 +40,7 @@ namespace provider
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using IersManager = library::physics::coord::frame::provider::iers::Manager ;
+using IersManager = ostk::physics::coord::frame::provider::iers::Manager ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -71,21 +71,21 @@ Transform                       TEME::getTransformAt                        (   
     // https://celestrak.com/publications/AIAA/2006-6753/faq.php
     // http://www.dtic.mil/dtic/tr/fulltext/u2/a637370.pdf p.18
 
-    using library::math::obj::Vector2d ;
-    using library::math::geom::d3::trf::rot::RotationMatrix ;
+    using ostk::math::obj::Vector2d ;
+    using ostk::math::geom::d3::trf::rot::RotationMatrix ;
 
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
-    using library::physics::units::Angle ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::units::Angle ;
 
     if (!anInstant.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("TEME") ;
+        throw ostk::core::error::runtime::Undefined("TEME") ;
     }
 
     // Time (UTC)

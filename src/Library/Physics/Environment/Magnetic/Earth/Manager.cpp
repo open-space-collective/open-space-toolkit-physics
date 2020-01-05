@@ -24,7 +24,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -76,10 +76,10 @@ URL                             Manager::getRemoteUrl                       ( ) 
 void                            Manager::fetchDataFileForType               (   const   EarthMagneticModel::Type&   aModelType                                  ) const
 {
 
-    using library::core::types::Index ;
-    using library::core::types::Size ;
+    using ostk::core::types::Index ;
+    using ostk::core::types::Size ;
 
-    using library::io::ip::tcp::http::Client ;
+    using ostk::io::ip::tcp::http::Client ;
 
     const std::lock_guard<std::mutex> lock { mutex_ } ;
 
@@ -107,7 +107,7 @@ void                            Manager::fetchDataFileForType               (   
     }
     else
     {
-        throw library::core::error::RuntimeError("Cannot create lock file [{}].", lockFile.toString()) ;
+        throw ostk::core::error::RuntimeError("Cannot create lock file [{}].", lockFile.toString()) ;
     }
 
     try
@@ -138,7 +138,7 @@ void                            Manager::fetchDataFileForType               (   
 
             if (std::system(fetchCommand.data()) != 0)
             {
-                throw library::core::error::RuntimeError("Cannot fetch file at [{}]: [{}].", remoteUrl.toString(), fetchCommand) ;
+                throw ostk::core::error::RuntimeError("Cannot fetch file at [{}]: [{}].", remoteUrl.toString(), fetchCommand) ;
             }
 
         }
@@ -147,7 +147,7 @@ void                            Manager::fetchDataFileForType               (   
 
         // if (!fetchedFile.exists())
         // {
-        //     throw library::core::error::RuntimeError("Cannot fetch data file [{}] at [{}].", fetchedFile.toString(), remoteUrl.toString()) ;
+        //     throw ostk::core::error::RuntimeError("Cannot fetch data file [{}] at [{}].", fetchedFile.toString(), remoteUrl.toString()) ;
         // }
 
         // [TBI] Add file size verification
@@ -158,14 +158,14 @@ void                            Manager::fetchDataFileForType               (   
 
         if (std::system(unzipCommand.data()) != 0)
         {
-            throw library::core::error::RuntimeError("Cannot unzip file [{}]: [{}].", fetchedFile.toString(), unzipCommand) ;
+            throw ostk::core::error::RuntimeError("Cannot unzip file [{}]: [{}].", fetchedFile.toString(), unzipCommand) ;
         }
 
         const String moveCommand = String::Format("mv {} {} && rmdir {} > /dev/null", localRepository_.toString() + "/magnetic/*", localRepository_.toString(), localRepository_.toString() + "/magnetic") ;
 
         if (std::system(moveCommand.data()) != 0)
         {
-            throw library::core::error::RuntimeError("Cannot move files: [{}].", moveCommand) ;
+            throw ostk::core::error::RuntimeError("Cannot move files: [{}].", moveCommand) ;
         }
 
         // Delete zip file
@@ -191,7 +191,7 @@ void                            Manager::setLocalRepository                 (   
 
     if (!aDirectory.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Directory") ;
+        throw ostk::core::error::runtime::Undefined("Directory") ;
     }
 
     const std::lock_guard<std::mutex> lock { mutex_ } ;
@@ -205,7 +205,7 @@ void                            Manager::setRemoteUrl                       (   
 
     if (!aRemoteUrl.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Remote URL") ;
+        throw ostk::core::error::runtime::Undefined("Remote URL") ;
     }
 
     const std::lock_guard<std::mutex> lock { mutex_ } ;
@@ -340,7 +340,7 @@ String                          Manager::DataFileNameFromType               (   
             return "wmm2015" ;
 
         default:
-            throw library::core::error::runtime::Wrong("Type") ;
+            throw ostk::core::error::runtime::Wrong("Type") ;
 
     }
 

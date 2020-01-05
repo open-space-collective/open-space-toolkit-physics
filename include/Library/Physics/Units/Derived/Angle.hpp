@@ -21,7 +21,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -30,12 +30,12 @@ namespace units
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using library::core::types::Integer ;
-using library::core::types::Real ;
-using library::core::types::String ;
+using ostk::core::types::Integer ;
+using ostk::core::types::Real ;
+using ostk::core::types::String ;
 
-using library::math::obj::Vector2d ;
-using library::math::obj::Vector3d ;
+using ostk::math::obj::Vector2d ;
+using ostk::math::obj::Vector3d ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -75,7 +75,7 @@ class Angle : public Unit
                                 Angle                                       (   const   Real&                       aValue,
                                                                                 const   Angle::Unit&                aUnit                                       ) ;
 
-                                Angle                                       (   const   library::math::geom::Angle& anAngle                                     ) ;
+                                Angle                                       (   const   ostk::math::geom::Angle& anAngle                                     ) ;
 
         virtual Angle*          clone                                       ( ) const override ;
 
@@ -102,7 +102,7 @@ class Angle : public Unit
         friend Angle            operator *                                  (   const   Real&                       aReal,
                                                                                 const   Angle&                      anAngle                                     ) ;
 
-                                operator library::math::geom::Angle         ( ) const ;
+                                operator ostk::math::geom::Angle         ( ) const ;
 
         friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
                                                                                 const   Angle&                      anAngle                                     ) ;

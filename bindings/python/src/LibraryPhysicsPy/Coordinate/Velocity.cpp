@@ -11,19 +11,19 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (LibraryPhysicsPy_Coordinate_Velocity_toString_overloads, library::physics::coord::Velocity::toString, 0, 1)
+BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (LibraryPhysicsPy_Coordinate_Velocity_toString_overloads, ostk::physics::coord::Velocity::toString, 0, 1)
 
 inline void                     LibraryPhysicsPy_Coordinate_Velocity        ( )
 {
 
     using namespace boost::python ;
 
-    using library::core::types::Shared ;
+    using ostk::core::types::Shared ;
 
-    using library::math::obj::Vector3d ;
+    using ostk::math::obj::Vector3d ;
 
-    using library::physics::coord::Velocity ;
-    using library::physics::coord::Frame ;
+    using ostk::physics::coord::Velocity ;
+    using ostk::physics::coord::Frame ;
 
     scope in_Velocity = class_<Velocity>("Velocity", init<Vector3d, Velocity::Unit, Shared<const Frame>&>())
 

@@ -16,8 +16,8 @@
 TEST (Library_Physics_Time_Scale, StringFromScale)
 {
 
-    using library::physics::time::Scale ;
-    using library::physics::time::StringFromScale ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::StringFromScale ;
 
     {
 
@@ -44,8 +44,8 @@ TEST (Library_Physics_Time_Scale, StringFromScale)
 TEST (Library_Physics_Time_Scale, ScaleFromString)
 {
 
-    using library::physics::time::Scale ;
-    using library::physics::time::ScaleFromString ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::ScaleFromString ;
 
     {
 

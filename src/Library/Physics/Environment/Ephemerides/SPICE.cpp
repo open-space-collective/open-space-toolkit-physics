@@ -16,7 +16,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -51,7 +51,7 @@ bool                            SPICE::isDefined                            ( ) 
 Shared<const Frame>             SPICE::accessFrame                          ( ) const
 {
 
-    using library::physics::env::ephem::spice::Engine ;
+    using ostk::physics::env::ephem::spice::Engine ;
 
     return Engine::Get().getFrameOf(object_) ;
 
@@ -60,7 +60,7 @@ Shared<const Frame>             SPICE::accessFrame                          ( ) 
 String                          SPICE::StringFromObject                     (   const   SPICE::Object&              anObject                                    )
 {
 
-    using library::core::ctnr::Map ;
+    using ostk::core::ctnr::Map ;
 
     static const Map<SPICE::Object, String> objectStringMap =
     {

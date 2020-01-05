@@ -15,7 +15,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -39,7 +39,7 @@ namespace units
 
     if (denominator_ == 0)
     {
-        throw library::core::error::runtime::Wrong("Denominator") ;
+        throw ostk::core::error::runtime::Wrong("Denominator") ;
     }
 
 }
@@ -77,7 +77,7 @@ Int16                           Derived::Order::getDenominator              ( ) 
 Real                            Derived::Order::getValue                    ( ) const
 {
 
-    using library::core::types::Integer ;
+    using ostk::core::types::Integer ;
 
     return Real::Integer(Integer::Int16(numerator_)) / Real::Integer(Integer::Int16(denominator_)) ;
 
@@ -86,7 +86,7 @@ Real                            Derived::Order::getValue                    ( ) 
 String                          Derived::Order::toString                    ( ) const
 {
 
-    using library::core::types::Integer ;
+    using ostk::core::types::Integer ;
 
     if (denominator_ == 1)
     {
@@ -244,7 +244,7 @@ String                          Derived::Unit::toString                     ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Unit") ;
+        throw ostk::core::error::runtime::Undefined("Unit") ;
     }
 
     String symbol = "" ;
@@ -283,7 +283,7 @@ String                          Derived::Unit::getSymbol                    ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Unit") ;
+        throw ostk::core::error::runtime::Undefined("Unit") ;
     }
 
     String symbol = "" ;
@@ -421,12 +421,12 @@ std::ostream&                   operator <<                                 (   
                                                                                 const   Derived&                     aDerivedUnit                                     )
 {
 
-    library::core::utils::Print::Header(anOutputStream, "Derived") ;
+    ostk::core::utils::Print::Header(anOutputStream, "Derived") ;
 
-    library::core::utils::Print::Line(anOutputStream) << "Value:" << aDerivedUnit.accessValue() ;
-    library::core::utils::Print::Line(anOutputStream) << "Unit:" << aDerivedUnit.unit_.toString() ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Value:" << aDerivedUnit.accessValue() ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Unit:" << aDerivedUnit.unit_.toString() ;
 
-    library::core::utils::Print::Footer(anOutputStream) ;
+    ostk::core::utils::Print::Footer(anOutputStream) ;
 
     return anOutputStream ;
 
@@ -457,7 +457,7 @@ Real                            Derived::in                                 (   
 
     if (!unit_.isCompatibleWith(aUnit))
     {
-        throw library::core::error::RuntimeError("Cannot convert unit [" + unit_.toString() + "] to [" + aUnit.toString() + "].") ;
+        throw ostk::core::error::RuntimeError("Cannot convert unit [" + unit_.toString() + "] to [" + aUnit.toString() + "].") ;
     }
 
     return this->accessValue() * Derived::SIRatio(unit_) / Derived::SIRatio(aUnit) ;
@@ -469,7 +469,7 @@ String                          Derived::toString                           (   
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Derived") ;
+        throw ostk::core::error::runtime::Undefined("Derived") ;
     }
 
     return this->accessValue().toString(aPrecision) + " [" + unit_.getSymbol() + "]" ;

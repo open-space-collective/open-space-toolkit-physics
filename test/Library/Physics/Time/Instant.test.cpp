@@ -15,10 +15,10 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using library::core::types::Uint8 ;
-using library::core::types::Uint16 ;
-using library::core::ctnr::Array ;
-using library::physics::time::Scale ;
+using ostk::core::types::Uint8 ;
+using ostk::core::types::Uint16 ;
+using ostk::core::ctnr::Array ;
+using ostk::physics::time::Scale ;
 
 static const Array<Uint16> years = { 1981, 2000, 2030 } ;
 static const Array<Uint8> months = { 1, 6, 12 } ;
@@ -39,9 +39,9 @@ static const Array<Scale> scales = { Scale::TT, Scale::TAI, Scale::UTC, Scale::G
 TEST (Library_Physics_Time_Instant, EqualToOperator)
 {
 
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
 
     {
 
@@ -240,9 +240,9 @@ TEST (Library_Physics_Time_Instant, EqualToOperator)
 TEST (Library_Physics_Time_Instant, NotEqualToOperator)
 {
 
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
 
     {
 
@@ -441,9 +441,9 @@ TEST (Library_Physics_Time_Instant, NotEqualToOperator)
 TEST (Library_Physics_Time_Instant, LessThanOperator)
 {
 
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
 
     {
 
@@ -475,9 +475,9 @@ TEST (Library_Physics_Time_Instant, LessThanOperator)
 TEST (Library_Physics_Time_Instant, LessThanOrEqualToOperator)
 {
 
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
 
     {
 
@@ -509,9 +509,9 @@ TEST (Library_Physics_Time_Instant, LessThanOrEqualToOperator)
 TEST (Library_Physics_Time_Instant, GreaterThanOperator)
 {
 
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
 
     {
 
@@ -543,9 +543,9 @@ TEST (Library_Physics_Time_Instant, GreaterThanOperator)
 TEST (Library_Physics_Time_Instant, GreaterThanOrEqualToOperator)
 {
 
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
 
     {
 
@@ -577,10 +577,10 @@ TEST (Library_Physics_Time_Instant, GreaterThanOrEqualToOperator)
 TEST (Library_Physics_Time_Instant, AdditionOperator)
 {
 
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -631,10 +631,10 @@ TEST (Library_Physics_Time_Instant, AdditionOperator)
 TEST (Library_Physics_Time_Instant, SubtractionOperator)
 {
 
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -747,10 +747,10 @@ TEST (Library_Physics_Time_Instant, SubtractionOperator)
 TEST (Library_Physics_Time_Instant, AdditionAssignementOperator)
 {
 
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -801,10 +801,10 @@ TEST (Library_Physics_Time_Instant, AdditionAssignementOperator)
 TEST (Library_Physics_Time_Instant, SubtractionAssignementOperator)
 {
 
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -855,8 +855,8 @@ TEST (Library_Physics_Time_Instant, SubtractionAssignementOperator)
 TEST (Library_Physics_Time_Instant, StreamOperator)
 {
 
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
 
     {
 
@@ -873,9 +873,9 @@ TEST (Library_Physics_Time_Instant, StreamOperator)
 TEST (Library_Physics_Time_Instant, IsDefined)
 {
 
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
 
     {
 
@@ -901,9 +901,9 @@ TEST (Library_Physics_Time_Instant, IsDefined)
 TEST (Library_Physics_Time_Instant, IsPostEpoch)
 {
 
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
 
     {
 
@@ -932,10 +932,10 @@ TEST (Library_Physics_Time_Instant, IsPostEpoch)
 TEST (Library_Physics_Time_Instant, IsNear)
 {
 
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -973,9 +973,9 @@ TEST (Library_Physics_Time_Instant, IsNear)
 TEST (Library_Physics_Time_Instant, GetDateTime)
 {
 
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
 
     {
 
@@ -1036,9 +1036,9 @@ TEST (Library_Physics_Time_Instant, GetDateTime)
 TEST (Library_Physics_Time_Instant, GetJulianDate)
 {
 
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
 
     {
 
@@ -1071,9 +1071,9 @@ TEST (Library_Physics_Time_Instant, GetJulianDate)
 TEST (Library_Physics_Time_Instant, GetModifiedJulianDate)
 {
 
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
 
     {
 
@@ -1103,10 +1103,10 @@ TEST (Library_Physics_Time_Instant, GetModifiedJulianDate)
 TEST (Library_Physics_Time_Instant, ToString)
 {
 
-    using library::core::types::String ;
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
+    using ostk::core::types::String ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
 
     {
 
@@ -1156,8 +1156,8 @@ TEST (Library_Physics_Time_Instant, ToString)
 TEST (Library_Physics_Time_Instant, Undefined)
 {
 
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
 
     {
 
@@ -1171,9 +1171,9 @@ TEST (Library_Physics_Time_Instant, Undefined)
 TEST (Library_Physics_Time_Instant, Now)
 {
 
-    using library::physics::time::Scale ;
-    using library::physics::time::Duration ;
-    using library::physics::time::Instant ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Duration ;
+    using ostk::physics::time::Instant ;
 
     {
 
@@ -1197,9 +1197,9 @@ TEST (Library_Physics_Time_Instant, Now)
 TEST (Library_Physics_Time_Instant, J2000)
 {
 
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
 
     {
 
@@ -1217,9 +1217,9 @@ TEST (Library_Physics_Time_Instant, J2000)
 TEST (Library_Physics_Time_Instant, DateTime)
 {
 
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
 
     {
 
@@ -1300,10 +1300,10 @@ TEST (Library_Physics_Time_Instant, DateTime)
 TEST (Library_Physics_Time_Instant, JulianDate)
 {
 
-    using library::core::types::Real ;
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
+    using ostk::core::types::Real ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
 
     {
 
@@ -1338,10 +1338,10 @@ TEST (Library_Physics_Time_Instant, JulianDate)
 TEST (Library_Physics_Time_Instant, ModifiedJulianDate)
 {
 
-    using library::core::types::Real ;
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
+    using ostk::core::types::Real ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
 
     {
 
@@ -1375,9 +1375,9 @@ TEST (Library_Physics_Time_Instant, ModifiedJulianDate)
 // TEST (Library_Physics_Time_Instant, Test_1)
 // {
 
-//     using library::physics::time::Scale ;
-//     using library::physics::time::DateTime ;
-//     using library::physics::time::Instant ;
+//     using ostk::physics::time::Scale ;
+//     using ostk::physics::time::DateTime ;
+//     using ostk::physics::time::Instant ;
 
 //     {
 

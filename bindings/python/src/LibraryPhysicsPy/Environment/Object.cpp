@@ -18,11 +18,11 @@ inline void                     LibraryPhysicsPy_Environment_Object         ( )
 
     using namespace boost::python ;
 
-    using library::core::types::Shared ;
-    using library::core::types::String ;
+    using ostk::core::types::Shared ;
+    using ostk::core::types::String ;
 
-    using library::physics::time::Instant ;
-    using library::physics::env::Object ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::env::Object ;
 
     scope in_Object = class_<Object, boost::noncopyable>("Object", no_init)
 

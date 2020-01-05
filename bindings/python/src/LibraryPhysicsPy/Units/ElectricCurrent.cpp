@@ -15,17 +15,17 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (LibraryPhysicsPy_Units_ElectricCurrent_toString_overloads, library::physics::units::ElectricCurrent::toString, 0, 1)
-BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (LibraryPhysicsPy_Units_ElectricCurrent_Interval_toString_overloads, library::math::obj::Interval<library::physics::units::ElectricCurrent>::toString, 0, 1)
+BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (LibraryPhysicsPy_Units_ElectricCurrent_toString_overloads, ostk::physics::units::ElectricCurrent::toString, 0, 1)
+BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (LibraryPhysicsPy_Units_ElectricCurrent_Interval_toString_overloads, ostk::math::obj::Interval<ostk::physics::units::ElectricCurrent>::toString, 0, 1)
 
 inline void                     LibraryPhysicsPy_Units_ElectricCurrent      ( )
 {
 
     using namespace boost::python ;
 
-    using library::core::types::Real ;
+    using ostk::core::types::Real ;
 
-    using library::physics::units::ElectricCurrent ;
+    using ostk::physics::units::ElectricCurrent ;
 
     scope in_ElectricCurrent = class_<ElectricCurrent>("ElectricCurrent", init<Real, ElectricCurrent::Unit>())
 

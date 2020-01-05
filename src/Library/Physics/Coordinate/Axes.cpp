@@ -15,7 +15,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -57,14 +57,14 @@ std::ostream&                   operator <<                                 (   
                                                                                 const   Axes&                       anAxes                                      )
 {
 
-    library::core::utils::Print::Header(anOutputStream, "Axes") ;
+    ostk::core::utils::Print::Header(anOutputStream, "Axes") ;
 
-    library::core::utils::Print::Line(anOutputStream) << "X:" << (anAxes.isDefined() ? anAxes.x().toString() : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Y:" << (anAxes.isDefined() ? anAxes.y().toString() : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Z:" << (anAxes.isDefined() ? anAxes.z().toString() : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Frame:" << (anAxes.isDefined() ? anAxes.frameSPtr_->getName() : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "X:" << (anAxes.isDefined() ? anAxes.x().toString() : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Y:" << (anAxes.isDefined() ? anAxes.y().toString() : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Z:" << (anAxes.isDefined() ? anAxes.z().toString() : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Frame:" << (anAxes.isDefined() ? anAxes.frameSPtr_->getName() : "Undefined") ;
 
-    library::core::utils::Print::Footer(anOutputStream) ;
+    ostk::core::utils::Print::Footer(anOutputStream) ;
 
     return anOutputStream ;
 
@@ -80,7 +80,7 @@ const Vector3d&                 Axes::x                                     ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Axes") ;
+        throw ostk::core::error::runtime::Undefined("Axes") ;
     }
 
     return x_ ;
@@ -92,7 +92,7 @@ const Vector3d&                 Axes::y                                     ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Axes") ;
+        throw ostk::core::error::runtime::Undefined("Axes") ;
     }
 
     return y_ ;
@@ -104,7 +104,7 @@ const Vector3d&                 Axes::z                                     ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Axes") ;
+        throw ostk::core::error::runtime::Undefined("Axes") ;
     }
 
     return z_ ;
@@ -116,7 +116,7 @@ Shared<const Frame>             Axes::getFrame                              ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Axes") ;
+        throw ostk::core::error::runtime::Undefined("Axes") ;
     }
 
     return frameSPtr_ ;
@@ -127,21 +127,21 @@ Axes                            Axes::inFrame                               (   
                                                                                 const   Instant&                    anInstant                                   ) const
 {
 
-    using library::physics::coord::Transform ;
+    using ostk::physics::coord::Transform ;
 
     if ((aFrameSPtr == nullptr) && (!aFrameSPtr->isDefined()))
     {
-        throw library::core::error::runtime::Undefined("Frame") ;
+        throw ostk::core::error::runtime::Undefined("Frame") ;
     }
 
     if (!anInstant.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Axes") ;
+        throw ostk::core::error::runtime::Undefined("Axes") ;
     }
 
     const Transform transform = frameSPtr_->getTransformTo(aFrameSPtr, anInstant) ;

@@ -26,7 +26,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -62,19 +62,19 @@ bool                            CIRF::isDefined                             ( ) 
 Transform                       CIRF::getTransformAt                        (   const   Instant&                    anInstant                                   ) const
 {
 
-    using library::math::geom::d3::trf::rot::RotationMatrix ;
+    using ostk::math::geom::d3::trf::rot::RotationMatrix ;
 
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
 
     if (!anInstant.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("CIRF") ;
+        throw ostk::core::error::runtime::Undefined("CIRF") ;
     }
 
     // http://www.iausofa.org/2018_0130_C/sofa/sofa_pn_c.pdf

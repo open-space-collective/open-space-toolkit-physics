@@ -13,7 +13,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -72,7 +72,7 @@ String                          Time::toString                              (   
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Time") ;
+        throw ostk::core::error::runtime::Undefined("Time") ;
     }
 
     return this->accessValue().toString(aPrecision) + " [" + Time::SymbolFromUnit(unit_) + "]" ;
@@ -128,7 +128,7 @@ String                          Time::StringFromUnit                        (   
             return "Week" ;
 
         default:
-            throw library::core::error::runtime::Wrong("Unit") ;
+            throw ostk::core::error::runtime::Wrong("Unit") ;
             break ;
 
     }
@@ -168,7 +168,7 @@ String                          Time::SymbolFromUnit                        (   
             return "week" ;
 
         default:
-            throw library::core::error::runtime::Wrong("Unit") ;
+            throw ostk::core::error::runtime::Wrong("Unit") ;
             break ;
 
     }
@@ -210,7 +210,7 @@ Real                            Time::SIRatio                               (   
             return 604800.0 ;
 
         default:
-            throw library::core::error::runtime::Wrong("Unit") ;
+            throw ostk::core::error::runtime::Wrong("Unit") ;
             break ;
 
     }

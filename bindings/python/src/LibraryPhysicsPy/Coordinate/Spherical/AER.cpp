@@ -16,10 +16,10 @@ inline void                     LibraryPhysicsPy_Coordinate_Spherical_AER   ( )
 
     using namespace boost::python ;
 
-    using library::physics::units::Length ;
-    using library::physics::units::Angle ;
-    using library::physics::coord::Position ;
-    using library::physics::coord::spherical::AER ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::coord::Position ;
+    using ostk::physics::coord::spherical::AER ;
 
     scope in_AER = class_<AER>("AER", init<const Angle&, const Angle&, const Length&>())
 

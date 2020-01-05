@@ -14,7 +14,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -52,12 +52,12 @@ std::ostream&                   operator <<                                 (   
                                                                                 const   Scalar&                     aScalar                                     )
 {
 
-    library::core::utils::Print::Header(anOutputStream, "Scalar") ;
+    ostk::core::utils::Print::Header(anOutputStream, "Scalar") ;
 
-    library::core::utils::Print::Line(anOutputStream) << "Value:"               << (aScalar.value_.isDefined() ? aScalar.value_.toString() : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Unit:"                << (aScalar.unit_.isDefined() ? aScalar.unit_.toString() : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Value:"               << (aScalar.value_.isDefined() ? aScalar.value_.toString() : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Unit:"                << (aScalar.unit_.isDefined() ? aScalar.unit_.toString() : "Undefined") ;
 
-    library::core::utils::Print::Footer(anOutputStream) ;
+    ostk::core::utils::Print::Footer(anOutputStream) ;
 
     return anOutputStream ;
 
@@ -83,7 +83,7 @@ Scalar                          Scalar::inUnit                              (   
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Scalar") ;
+        throw ostk::core::error::runtime::Undefined("Scalar") ;
     }
 
     return { value_ * unit_.ratioTo(aUnit), aUnit } ;
@@ -95,7 +95,7 @@ String                          Scalar::toString                            (   
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Scalar") ;
+        throw ostk::core::error::runtime::Undefined("Scalar") ;
     }
 
     return String::Format("{} [{}]", value_.toString(aPrecision), unit_.toString()) ;

@@ -16,9 +16,9 @@ inline void                     LibraryPhysicsPy_Time_Duration              ( )
 
     using namespace boost::python ;
 
-    using library::core::types::String ;
+    using ostk::core::types::String ;
 
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Duration ;
 
     scope in_Duration = class_<Duration>("Duration", init<int>())
 

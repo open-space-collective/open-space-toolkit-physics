@@ -14,7 +14,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -46,7 +46,7 @@ Shared<const Frame>             Manager::accessFrameWithName                (   
         return frameMapIt->second ;
     }
 
-    // throw library::core::error::RuntimeError("Cannot access frame with name [{}].", aFrameName) ;
+    // throw ostk::core::error::RuntimeError("Cannot access frame with name [{}].", aFrameName) ;
 
     return nullptr ;
 
@@ -89,7 +89,7 @@ void                            Manager::addFrame                           (   
 
     if (aFrameSPtr == nullptr)
     {
-        throw library::core::error::runtime::Undefined("Frame") ;
+        throw ostk::core::error::runtime::Undefined("Frame") ;
     }
 
     const std::lock_guard<std::mutex> lock { mutex_ } ;
@@ -143,7 +143,7 @@ void                            Manager::removeFrameWithName                (   
     }
     else
     {
-        throw library::core::error::RuntimeError("No frame with name [{}].", aFrameName) ;
+        throw ostk::core::error::RuntimeError("No frame with name [{}].", aFrameName) ;
     }
 
 }

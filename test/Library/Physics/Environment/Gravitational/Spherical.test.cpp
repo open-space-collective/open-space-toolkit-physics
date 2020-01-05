@@ -19,10 +19,10 @@
 TEST (Library_Physics_Environment_Gravitational_Spherical, Constructor)
 {
 
-    using library::physics::units::Length ;
-    using library::physics::units::Time ;
-    using library::physics::units::Derived ;
-    using library::physics::environment::gravitational::Spherical ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::units::Time ;
+    using ostk::physics::units::Derived ;
+    using ostk::physics::environment::gravitational::Spherical ;
 
     {
 
@@ -43,10 +43,10 @@ TEST (Library_Physics_Environment_Gravitational_Spherical, Constructor)
 TEST (Library_Physics_Environment_Gravitational_Spherical, Clone)
 {
 
-    using library::physics::units::Length ;
-    using library::physics::units::Time ;
-    using library::physics::units::Derived ;
-    using library::physics::environment::gravitational::Spherical ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::units::Time ;
+    using ostk::physics::units::Derived ;
+    using ostk::physics::environment::gravitational::Spherical ;
 
     {
 
@@ -63,13 +63,13 @@ TEST (Library_Physics_Environment_Gravitational_Spherical, Clone)
 TEST (Library_Physics_Environment_Gravitational_Spherical, GetFieldValueAt)
 {
 
-    using library::math::obj::Vector3d ;
+    using ostk::math::obj::Vector3d ;
 
-    using library::physics::units::Length ;
-    using library::physics::units::Time ;
-    using library::physics::units::Derived ;
-    using library::physics::time::Instant ;
-    using library::physics::environment::gravitational::Spherical ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::units::Time ;
+    using ostk::physics::units::Derived ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::environment::gravitational::Spherical ;
 
     {
 

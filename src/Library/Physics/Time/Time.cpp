@@ -17,7 +17,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -88,16 +88,16 @@ std::ostream&                   operator <<                                 (   
                                                                                 const   Time&                       aTime                                       )
 {
 
-    library::core::utils::Print::Header(anOutputStream, "Time") ;
+    ostk::core::utils::Print::Header(anOutputStream, "Time") ;
 
-    library::core::utils::Print::Line(anOutputStream) << "Hour:" << (aTime.isDefined() ? String::Format("{:d}", aTime.hour_) : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Minute:" << (aTime.isDefined() ? String::Format("{:d}", aTime.minute_) : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Second:" << (aTime.isDefined() ? String::Format("{:d}", aTime.second_) : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Millisecond:" << (aTime.isDefined() ? String::Format("{:d}", aTime.millisecond_) : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Microsecond:" << (aTime.isDefined() ? String::Format("{:d}", aTime.microsecond_) : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Nanosecond:" << (aTime.isDefined() ? String::Format("{:d}", aTime.nanosecond_) : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Hour:" << (aTime.isDefined() ? String::Format("{:d}", aTime.hour_) : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Minute:" << (aTime.isDefined() ? String::Format("{:d}", aTime.minute_) : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Second:" << (aTime.isDefined() ? String::Format("{:d}", aTime.second_) : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Millisecond:" << (aTime.isDefined() ? String::Format("{:d}", aTime.millisecond_) : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Microsecond:" << (aTime.isDefined() ? String::Format("{:d}", aTime.microsecond_) : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Nanosecond:" << (aTime.isDefined() ? String::Format("{:d}", aTime.nanosecond_) : "Undefined") ;
 
-    library::core::utils::Print::Footer(anOutputStream) ;
+    ostk::core::utils::Print::Footer(anOutputStream) ;
 
     return anOutputStream ;
 
@@ -113,7 +113,7 @@ Uint8                           Time::getHour                               ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Time") ;
+        throw ostk::core::error::runtime::Undefined("Time") ;
     }
 
     return hour_ ;
@@ -125,7 +125,7 @@ Uint8                           Time::getMinute                             ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Time") ;
+        throw ostk::core::error::runtime::Undefined("Time") ;
     }
 
     return minute_ ;
@@ -137,7 +137,7 @@ Uint8                           Time::getSecond                             ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Time") ;
+        throw ostk::core::error::runtime::Undefined("Time") ;
     }
 
     return second_ ;
@@ -149,7 +149,7 @@ Uint16                          Time::getMillisecond                        ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Time") ;
+        throw ostk::core::error::runtime::Undefined("Time") ;
     }
 
     return millisecond_ ;
@@ -161,7 +161,7 @@ Uint16                          Time::getMicrosecond                        ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Time") ;
+        throw ostk::core::error::runtime::Undefined("Time") ;
     }
 
     return microsecond_ ;
@@ -173,7 +173,7 @@ Uint16                          Time::getNanosecond                         ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Time") ;
+        throw ostk::core::error::runtime::Undefined("Time") ;
     }
 
     return nanosecond_ ;
@@ -185,7 +185,7 @@ Real                            Time::getFloatingSeconds                    ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Time") ;
+        throw ostk::core::error::runtime::Undefined("Time") ;
     }
 
     return static_cast<double>(second_) + (static_cast<double>(millisecond_) / 1e3) + (static_cast<double>(microsecond_) / 1e6) + (static_cast<double>(nanosecond_) / 1e9) ;
@@ -197,7 +197,7 @@ String                          Time::toString                              (   
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Time") ;
+        throw ostk::core::error::runtime::Undefined("Time") ;
     }
 
     switch (aFormat)
@@ -256,7 +256,7 @@ String                          Time::toString                              (   
         }
 
         default:
-            throw library::core::error::runtime::Wrong("Format") ;
+            throw ostk::core::error::runtime::Wrong("Format") ;
             break ;
 
     }
@@ -270,7 +270,7 @@ void                            Time::setHour                               (   
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Time") ;
+        throw ostk::core::error::runtime::Undefined("Time") ;
     }
 
     Time::ValidateHour(anHour) ;
@@ -284,7 +284,7 @@ void                            Time::setMinute                             (   
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Time") ;
+        throw ostk::core::error::runtime::Undefined("Time") ;
     }
 
     Time::ValidateMinute(aMinute) ;
@@ -298,7 +298,7 @@ void                            Time::setSecond                             (   
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Time") ;
+        throw ostk::core::error::runtime::Undefined("Time") ;
     }
 
     Time::ValidateSecond(aSecond) ;
@@ -312,7 +312,7 @@ void                            Time::setMillisecond                        (   
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Time") ;
+        throw ostk::core::error::runtime::Undefined("Time") ;
     }
 
     Time::ValidateMillisecond(aMillisecond) ;
@@ -326,7 +326,7 @@ void                            Time::setMicrosecond                        (   
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Time") ;
+        throw ostk::core::error::runtime::Undefined("Time") ;
     }
 
     Time::ValidateMicrosecond(aMicrosecond) ;
@@ -340,7 +340,7 @@ void                            Time::setNanosecond                         (   
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Time") ;
+        throw ostk::core::error::runtime::Undefined("Time") ;
     }
 
     Time::ValidateNanosecond(aNanosecond) ;
@@ -370,7 +370,7 @@ Time                            Time::Parse                                 (   
 
     if (aString.isEmpty())
     {
-        throw library::core::error::runtime::Undefined("String") ;
+        throw ostk::core::error::runtime::Undefined("String") ;
     }
 
     switch (aFormat)
@@ -422,7 +422,7 @@ Time                            Time::Parse                                 (   
                                 return boost::lexical_cast<Uint16>(aFractionalString) ;
 
                             default:
-                                throw library::core::error::RuntimeError("Cannot parse fractional string [" + aFractionalString + "].") ;
+                                throw ostk::core::error::RuntimeError("Cannot parse fractional string [" + aFractionalString + "].") ;
                                 break ;
 
                         }
@@ -441,14 +441,14 @@ Time                            Time::Parse                                 (   
                 catch (const boost::bad_lexical_cast& e)
                 {
 
-                    throw library::core::error::RuntimeError(String::Format("Cannot parse time string [{0}] ({1}).", aString, e.what())) ;
+                    throw ostk::core::error::RuntimeError(String::Format("Cannot parse time string [{0}] ({1}).", aString, e.what())) ;
 
                 }
 
             }
             else
             {
-                throw library::core::error::RuntimeError("Cannot parse time string [" + aString + "].") ;
+                throw ostk::core::error::RuntimeError("Cannot parse time string [" + aString + "].") ;
             }
 
         }
@@ -537,19 +537,19 @@ Time                            Time::Parse                                 (   
                 }
                 catch (const boost::bad_lexical_cast& e)
                 {
-                    throw library::core::error::RuntimeError(String::Format("Cannot parse time string [{0}] ({1}).", aString, e.what())) ;
+                    throw ostk::core::error::RuntimeError(String::Format("Cannot parse time string [{0}] ({1}).", aString, e.what())) ;
                 }
 
             }
             else
             {
-                throw library::core::error::RuntimeError("Cannot parse time string [{}].", aString) ;
+                throw ostk::core::error::RuntimeError("Cannot parse time string [{}].", aString) ;
             }
 
         }
 
         default:
-            throw library::core::error::runtime::Wrong("Format") ;
+            throw ostk::core::error::runtime::Wrong("Format") ;
             break ;
 
     }
@@ -577,7 +577,7 @@ void                            Time::ValidateHour                          (   
 
     if (anHour > 23)
     {
-        throw library::core::error::RuntimeError(String::Format("Hour [{}] out of range [0 - 23].", anHour)) ;
+        throw ostk::core::error::RuntimeError(String::Format("Hour [{}] out of range [0 - 23].", anHour)) ;
     }
 
 }
@@ -587,7 +587,7 @@ void                            Time::ValidateMinute                        (   
 
     if (aMinute > 59)
     {
-        throw library::core::error::RuntimeError(String::Format("Minute [{}] out of range [0 - 59].", aMinute)) ;
+        throw ostk::core::error::RuntimeError(String::Format("Minute [{}] out of range [0 - 59].", aMinute)) ;
     }
 
 }
@@ -599,7 +599,7 @@ void                            Time::ValidateSecond                        (   
 
     if (aSecond > 60)
     {
-        throw library::core::error::RuntimeError(String::Format("Second [{}] out of range [0 - 60].", aSecond)) ;
+        throw ostk::core::error::RuntimeError(String::Format("Second [{}] out of range [0 - 60].", aSecond)) ;
     }
 
 }
@@ -611,7 +611,7 @@ void                            Time::ValidateMillisecond                   (   
 
     if (aMillisecond > 999)
     {
-        throw library::core::error::RuntimeError(String::Format("Millisecond [{}] out of range [0 - 999].", aMillisecond)) ;
+        throw ostk::core::error::RuntimeError(String::Format("Millisecond [{}] out of range [0 - 999].", aMillisecond)) ;
     }
 
 }
@@ -623,7 +623,7 @@ void                            Time::ValidateMicrosecond                   (   
 
     if (aMicrosecond > 999)
     {
-        throw library::core::error::RuntimeError(String::Format("Microsecond [{}] out of range [0 - 999].", aMicrosecond)) ;
+        throw ostk::core::error::RuntimeError(String::Format("Microsecond [{}] out of range [0 - 999].", aMicrosecond)) ;
     }
 
 }
@@ -633,7 +633,7 @@ void                            Time::ValidateNanosecond                    (   
 
     if (aNanosecond > 999)
     {
-        throw library::core::error::RuntimeError(String::Format("Nanosecond [{}] out of range [0 - 999].", aNanosecond)) ;
+        throw ostk::core::error::RuntimeError(String::Format("Nanosecond [{}] out of range [0 - 999].", aNanosecond)) ;
     }
 
 }

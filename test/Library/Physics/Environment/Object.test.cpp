@@ -42,7 +42,7 @@
 // TEST (Library_Physics_Environment_Object, Constructor)
 // {
 
-//     using library::physics::env::Object ;
+//     using ostk::physics::env::Object ;
 
 //     {
 

@@ -16,12 +16,12 @@ inline void                     LibraryPhysicsPy_Coordinate_Axes            ( )
 
     using namespace boost::python ;
 
-    using library::core::types::Shared ;
+    using ostk::core::types::Shared ;
 
-    using library::math::obj::Vector3d ;
+    using ostk::math::obj::Vector3d ;
 
-    using library::physics::coord::Axes ;
-    using library::physics::coord::Frame ;
+    using ostk::physics::coord::Axes ;
+    using ostk::physics::coord::Frame ;
 
     scope in_Axes = class_<Axes>("Axes", init<const Vector3d&, const Vector3d&, const Vector3d&, const Shared<const Frame>&>())
 

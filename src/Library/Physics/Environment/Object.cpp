@@ -14,7 +14,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -76,12 +76,12 @@ std::ostream&                   operator <<                                 (   
                                                                                 const   Object&                     anObject                                    )
 {
 
-    library::core::utils::Print::Header(anOutputStream, "Object") ;
+    ostk::core::utils::Print::Header(anOutputStream, "Object") ;
 
-    library::core::utils::Print::Line(anOutputStream) << "Name:" << (!anObject.name_.isEmpty() ? anObject.name_ : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Instant:" << (anObject.instant_.isDefined() ? anObject.instant_.toString() : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Name:" << (!anObject.name_.isEmpty() ? anObject.name_ : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Instant:" << (anObject.instant_.isDefined() ? anObject.instant_.toString() : "Undefined") ;
 
-    library::core::utils::Print::Footer(anOutputStream) ;
+    ostk::core::utils::Print::Footer(anOutputStream) ;
 
     return anOutputStream ;
 
@@ -97,7 +97,7 @@ const String&                   Object::accessName                          ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Object") ;
+        throw ostk::core::error::runtime::Undefined("Object") ;
     }
 
     return name_ ;
@@ -109,7 +109,7 @@ const Instant&                  Object::accessInstant                       ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Object") ;
+        throw ostk::core::error::runtime::Undefined("Object") ;
     }
 
     return instant_ ;
@@ -121,7 +121,7 @@ const Object::Geometry&         Object::accessGeometry                      ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Object") ;
+        throw ostk::core::error::runtime::Undefined("Object") ;
     }
 
     return geometry_ ;
@@ -153,12 +153,12 @@ void                            Object::setInstant                          (   
 
     if (!anInstant.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Object") ;
+        throw ostk::core::error::runtime::Undefined("Object") ;
     }
 
     instant_ = anInstant ;

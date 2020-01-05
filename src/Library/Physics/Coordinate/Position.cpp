@@ -17,7 +17,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -81,13 +81,13 @@ std::ostream&                   operator <<                                 (   
                                                                                 const   Position&                   aPosition                                   )
 {
 
-    library::core::utils::Print::Header(anOutputStream, "Position") ;
+    ostk::core::utils::Print::Header(anOutputStream, "Position") ;
 
-    library::core::utils::Print::Line(anOutputStream) << "Coordinates:"         << (aPosition.coordinates_.isDefined() ? aPosition.coordinates_.toString() : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Unit:"                << ((aPosition.unit_ != Position::Unit::Undefined) ? Length::StringFromUnit(aPosition.unit_) : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Frame:"               << (((aPosition.frameSPtr_ != nullptr) && aPosition.frameSPtr_->isDefined()) ? aPosition.frameSPtr_->getName() : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Coordinates:"         << (aPosition.coordinates_.isDefined() ? aPosition.coordinates_.toString() : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Unit:"                << ((aPosition.unit_ != Position::Unit::Undefined) ? Length::StringFromUnit(aPosition.unit_) : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Frame:"               << (((aPosition.frameSPtr_ != nullptr) && aPosition.frameSPtr_->isDefined()) ? aPosition.frameSPtr_->getName() : "Undefined") ;
 
-    library::core::utils::Print::Footer(anOutputStream) ;
+    ostk::core::utils::Print::Footer(anOutputStream) ;
 
     return anOutputStream ;
 
@@ -104,22 +104,22 @@ bool                            Position::isNear                            (   
 
     if (!aPosition.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Position") ;
+        throw ostk::core::error::runtime::Undefined("Position") ;
     }
 
     if (!aLength.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Length") ;
+        throw ostk::core::error::runtime::Undefined("Length") ;
     }
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Position") ;
+        throw ostk::core::error::runtime::Undefined("Position") ;
     }
 
     if (frameSPtr_ != aPosition.frameSPtr_)
     {
-        throw library::core::error::RuntimeError("Position are expressed in different frames.") ;
+        throw ostk::core::error::RuntimeError("Position are expressed in different frames.") ;
     }
 
     if (unit_ == aPosition.unit_)
@@ -140,7 +140,7 @@ const Vector3d&                 Position::accessCoordinates                 ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Position") ;
+        throw ostk::core::error::runtime::Undefined("Position") ;
     }
 
     return coordinates_ ;
@@ -152,7 +152,7 @@ Shared<const Frame>             Position::accessFrame                       ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Position") ;
+        throw ostk::core::error::runtime::Undefined("Position") ;
     }
 
     return frameSPtr_ ;
@@ -164,7 +164,7 @@ Vector3d                        Position::getCoordinates                    ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Position") ;
+        throw ostk::core::error::runtime::Undefined("Position") ;
     }
 
     return coordinates_ ;
@@ -176,7 +176,7 @@ Position::Unit                  Position::getUnit                           ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Position") ;
+        throw ostk::core::error::runtime::Undefined("Position") ;
     }
 
     return unit_ ;
@@ -188,12 +188,12 @@ Position                        Position::inUnit                            (   
 
     if (aUnit == Position::Unit::Undefined)
     {
-        throw library::core::error::runtime::Undefined("Unit") ;
+        throw ostk::core::error::runtime::Undefined("Unit") ;
     }
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Position") ;
+        throw ostk::core::error::runtime::Undefined("Position") ;
     }
 
     return { coordinates_ * Length(1.0, unit_).in(aUnit), aUnit, frameSPtr_ } ;
@@ -211,13 +211,13 @@ Position                        Position::inFrame                           (   
 
     if ((aFrameSPtr == nullptr) || (!aFrameSPtr->isDefined()))
     {
-        throw library::core::error::runtime::Undefined("Frame") ;
+        throw ostk::core::error::runtime::Undefined("Frame") ;
     }
 
     if (!this->isDefined())
     {
         // std::cout << boost::stacktrace::stacktrace() ;
-        throw library::core::error::runtime::Undefined("Position") ;
+        throw ostk::core::error::runtime::Undefined("Position") ;
     }
 
     return { frameSPtr_->getTransformTo(aFrameSPtr, anInstant).applyToPosition(coordinates_), unit_, aFrameSPtr } ;
@@ -229,7 +229,7 @@ String                          Position::toString                          (   
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Position") ;
+        throw ostk::core::error::runtime::Undefined("Position") ;
     }
 
     return String::Format("{} [{}] @ {}", (aPrecision.isDefined() ? coordinates_.toString(aPrecision) : coordinates_.toString()), Length::SymbolFromUnit(unit_), frameSPtr_->getName()) ;

@@ -16,17 +16,17 @@ inline void                     LibraryPhysicsPy_Environment_Objects_CelestialBo
 
     using namespace boost::python ;
 
-    using library::core::types::Real ;
-    using library::core::types::Shared ;
+    using ostk::core::types::Real ;
+    using ostk::core::types::Shared ;
 
-    using library::physics::units::Length ;
-    using library::physics::units::Derived ;
-    using library::physics::time::Instant ;
-    using library::physics::env::Ephemeris ;
-    using library::physics::env::obj::Celestial ;
-    using library::physics::env::obj::celest::Earth ;
-    using EarthGravitationalModel = library::physics::environment::gravitational::Earth ;
-    using EarthMagneticModel = library::physics::environment::magnetic::Earth ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::units::Derived ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::env::Ephemeris ;
+    using ostk::physics::env::obj::Celestial ;
+    using ostk::physics::env::obj::celest::Earth ;
+    using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth ;
+    using EarthMagneticModel = ostk::physics::environment::magnetic::Earth ;
 
     scope in_Earth = class_<Earth, bases<Celestial>>("Earth", init<const Derived&, const Length&, const Real&, const Real&, const Shared<Ephemeris>&, const EarthGravitationalModel::Type&, const EarthMagneticModel::Type&, const Instant&>())
 

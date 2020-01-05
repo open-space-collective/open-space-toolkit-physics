@@ -13,7 +13,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -74,7 +74,7 @@ String                          StringFromScale                             (   
             return "IRNSST" ;
 
         default:
-            throw library::core::error::runtime::Wrong("Scale") ;
+            throw ostk::core::error::runtime::Wrong("Scale") ;
             break ;
 
     }
@@ -161,7 +161,7 @@ Scale                           ScaleFromString                             (   
         return Scale::IRNSST ;
     }
 
-    throw library::core::error::runtime::Wrong("Scale", aString) ;
+    throw ostk::core::error::runtime::Wrong("Scale", aString) ;
 
     return Scale::Undefined ;
 

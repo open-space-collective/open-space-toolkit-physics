@@ -35,7 +35,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -48,21 +48,21 @@ namespace spice
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using library::core::types::Shared ;
-using library::core::types::Index ;
-using library::core::types::String ;
-using library::core::ctnr::Pair ;
-using library::core::ctnr::Array ;
-using library::core::fs::Path ;
-using library::core::fs::File ;
-using library::core::fs::Directory ;
+using ostk::core::types::Shared ;
+using ostk::core::types::Index ;
+using ostk::core::types::String ;
+using ostk::core::ctnr::Pair ;
+using ostk::core::ctnr::Array ;
+using ostk::core::fs::Path ;
+using ostk::core::fs::File ;
+using ostk::core::fs::Directory ;
 
-using library::physics::time::Instant ;
-using library::physics::time::Interval ;
-using library::physics::coord::Frame ;
-using library::physics::coord::Transform ;
-using library::physics::env::ephem::SPICE ;
-using library::physics::env::ephem::spice::Kernel ;
+using ostk::physics::time::Instant ;
+using ostk::physics::time::Interval ;
+using ostk::physics::coord::Frame ;
+using ostk::physics::coord::Transform ;
+using ostk::physics::env::ephem::SPICE ;
+using ostk::physics::env::ephem::spice::Kernel ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

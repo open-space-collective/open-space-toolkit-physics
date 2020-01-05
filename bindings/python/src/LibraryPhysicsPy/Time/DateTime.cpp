@@ -13,7 +13,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using library::physics::time::DateTime ;
+using ostk::physics::time::DateTime ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -107,11 +107,11 @@ inline void                     LibraryPhysicsPy_Time_DateTime              ( )
 
     using namespace boost::python ;
 
-    using library::core::types::String ;
+    using ostk::core::types::String ;
 
-    using library::physics::time::DateTime ;
-    using library::physics::time::Date ;
-    using library::physics::time::Time ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Date ;
+    using ostk::physics::time::Time ;
 
     scope in_DateTime = class_<DateTime>("DateTime", init<Date, Time>())
 

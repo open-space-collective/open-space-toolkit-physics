@@ -17,7 +17,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -103,7 +103,7 @@ Pair<Real, String>              Unit::ParseString                           (   
 
     if (aString.isEmpty())
     {
-        throw library::core::error::runtime::Undefined("String") ;
+        throw ostk::core::error::runtime::Undefined("String") ;
     }
 
     boost::smatch match ;
@@ -119,7 +119,7 @@ Pair<Real, String>              Unit::ParseString                           (   
     }
     else
     {
-        throw library::core::error::RuntimeError("Cannot parse unit string [{}].", aString) ;
+        throw ostk::core::error::RuntimeError("Cannot parse unit string [{}].", aString) ;
     }
 
 }

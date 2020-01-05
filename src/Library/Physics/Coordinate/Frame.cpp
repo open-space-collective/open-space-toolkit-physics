@@ -21,7 +21,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -30,7 +30,7 @@ namespace coord
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using FrameManager = library::physics::coord::frame::Manager ;
+using FrameManager = ostk::physics::coord::frame::Manager ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -81,13 +81,13 @@ std::ostream&                   operator <<                                 (   
                                                                                 const   Frame&                      aFrame                                      )
 {
 
-    library::core::utils::Print::Header(anOutputStream, "Frame") ;
+    ostk::core::utils::Print::Header(anOutputStream, "Frame") ;
 
-    library::core::utils::Print::Line(anOutputStream) << "Name:"                << (aFrame.isDefined() ? aFrame.getName() : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Quasi-inertial:"      << (aFrame.isDefined() ? String::Format("{}", aFrame.isQuasiInertial()) : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Parent frame:"        << (((aFrame.parentFrameSPtr_ != nullptr) && (aFrame.parentFrameSPtr_->isDefined())) ? aFrame.parentFrameSPtr_->getName() : "None") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Name:"                << (aFrame.isDefined() ? aFrame.getName() : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Quasi-inertial:"      << (aFrame.isDefined() ? String::Format("{}", aFrame.isQuasiInertial()) : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Parent frame:"        << (((aFrame.parentFrameSPtr_ != nullptr) && (aFrame.parentFrameSPtr_->isDefined())) ? aFrame.parentFrameSPtr_->getName() : "None") ;
 
-    library::core::utils::Print::Footer(anOutputStream) ;
+    ostk::core::utils::Print::Footer(anOutputStream) ;
 
     return anOutputStream ;
 
@@ -103,7 +103,7 @@ bool                            Frame::isQuasiInertial                      ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Frame") ;
+        throw ostk::core::error::runtime::Undefined("Frame") ;
     }
 
     return quasiInertial_ ;
@@ -115,7 +115,7 @@ bool                            Frame::hasParent                            ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Frame") ;
+        throw ostk::core::error::runtime::Undefined("Frame") ;
     }
 
     return parentFrameSPtr_ != nullptr ;
@@ -127,12 +127,12 @@ Shared<const Frame>             Frame::accessParent                         ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Frame") ;
+        throw ostk::core::error::runtime::Undefined("Frame") ;
     }
 
     if (parentFrameSPtr_ == nullptr)
     {
-        throw library::core::error::runtime::Undefined("Parent") ;
+        throw ostk::core::error::runtime::Undefined("Parent") ;
     }
 
     return parentFrameSPtr_ ;
@@ -144,7 +144,7 @@ Shared<const Frame>             Frame::accessAncestor                       (   
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Frame") ;
+        throw ostk::core::error::runtime::Undefined("Frame") ;
     }
 
     if (anAncestorDegree == 0)
@@ -154,7 +154,7 @@ Shared<const Frame>             Frame::accessAncestor                       (   
 
     if (anAncestorDegree > this->getDepth())
     {
-        throw library::core::error::RuntimeError("Ancestor degree [{}] is greater than depth [{}].", anAncestorDegree, this->getDepth()) ;
+        throw ostk::core::error::RuntimeError("Ancestor degree [{}] is greater than depth [{}].", anAncestorDegree, this->getDepth()) ;
     }
 
     Shared<const Frame> frameSPtr = this->shared_from_this() ;
@@ -173,7 +173,7 @@ Shared<const Provider>          Frame::accessProvider                       ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Frame") ;
+        throw ostk::core::error::runtime::Undefined("Frame") ;
     }
 
     return providerSPtr_ ;
@@ -185,7 +185,7 @@ String                          Frame::getName                              ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Frame") ;
+        throw ostk::core::error::runtime::Undefined("Frame") ;
     }
 
     return name_ ;
@@ -198,12 +198,12 @@ Position                        Frame::getOriginIn                          (   
 
     if (!anInstant.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     if ((!this->isDefined()) || (aFrameSPtr == nullptr) || (!aFrameSPtr->isDefined()))
     {
-        throw library::core::error::runtime::Undefined("Frame") ;
+        throw ostk::core::error::runtime::Undefined("Frame") ;
     }
 
     const Transform transform = this->getTransformTo(aFrameSPtr, anInstant) ;
@@ -218,12 +218,12 @@ Velocity                        Frame::getVelocityIn                        (   
 
     if (!anInstant.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     if ((!this->isDefined()) || (aFrameSPtr == nullptr) || (!aFrameSPtr->isDefined()))
     {
-        throw library::core::error::runtime::Undefined("Frame") ;
+        throw ostk::core::error::runtime::Undefined("Frame") ;
     }
 
     return { this->getTransformTo(aFrameSPtr, anInstant).applyToVelocity(Vector3d::Zero(), Vector3d::Zero()), Velocity::Unit::MeterPerSecond, aFrameSPtr } ;
@@ -236,12 +236,12 @@ Axes                            Frame::getAxesIn                            (   
 
     if (!anInstant.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     if ((!this->isDefined()) || (aFrameSPtr == nullptr) || (!aFrameSPtr->isDefined()))
     {
-        throw library::core::error::runtime::Undefined("Frame") ;
+        throw ostk::core::error::runtime::Undefined("Frame") ;
     }
 
     const Transform transform = this->getTransformTo(aFrameSPtr, anInstant) ;
@@ -260,12 +260,12 @@ Transform                       Frame::getTransformTo                       (   
 
     if (!anInstant.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     if ((!this->isDefined()) || (aFrameSPtr == nullptr) || (!aFrameSPtr->isDefined()))
     {
-        throw library::core::error::runtime::Undefined("Frame") ;
+        throw ostk::core::error::runtime::Undefined("Frame") ;
     }
 
     if ((*this) == (*aFrameSPtr))
@@ -289,7 +289,7 @@ Transform                       Frame::getTransformTo                       (   
 
     if ((commonAncestorSPtr == nullptr) || (!commonAncestorSPtr->isDefined()))
     {
-        throw library::core::error::RuntimeError("No common ancestor between [{}] and [{}].", this->getName(), aFrameSPtr->getName()) ;
+        throw ostk::core::error::RuntimeError("No common ancestor between [{}] and [{}].", this->getName(), aFrameSPtr->getName()) ;
     }
 
     // std::cout << "Common ancestor:" << std::endl << (*commonAncestorSPtr) << std::endl ;
@@ -336,7 +336,7 @@ Shared<const Frame>             Frame::Undefined                            ( )
 Shared<const Frame>             Frame::GCRF                                 ( )
 {
 
-    using GCRFProvider = library::physics::coord::frame::provider::GCRF ;
+    using GCRFProvider = ostk::physics::coord::frame::provider::GCRF ;
 
     static const Shared<const Provider> providerSPtr = std::make_shared<const GCRFProvider>() ;
 
@@ -347,7 +347,7 @@ Shared<const Frame>             Frame::GCRF                                 ( )
 Shared<const Frame>             Frame::TEME                                 ( )
 {
 
-    using TEMEProvider = library::physics::coord::frame::provider::TEME ;
+    using TEMEProvider = ostk::physics::coord::frame::provider::TEME ;
 
     static const Shared<const Provider> providerSPtr = std::make_shared<const TEMEProvider>() ;
 
@@ -358,8 +358,8 @@ Shared<const Frame>             Frame::TEME                                 ( )
 Shared<const Frame>             Frame::TEMEOfEpoch                          (   const   Instant&                    anEpoch                                     )
 {
 
-    using Scale = library::physics::time::Scale ;
-    using StaticProvider = library::physics::coord::frame::provider::Static ;
+    using Scale = ostk::physics::time::Scale ;
+    using StaticProvider = ostk::physics::coord::frame::provider::Static ;
 
     const String temeOfEpochFrameName = String::Format("TEMEOfEpoch @ {}", anEpoch.toString(Scale::TT)) ;
 
@@ -372,7 +372,7 @@ Shared<const Frame>             Frame::TEMEOfEpoch                          (   
 Shared<const Frame>             Frame::CIRF                                 ( )
 {
 
-    using CIRFProvider = library::physics::coord::frame::provider::CIRF ;
+    using CIRFProvider = ostk::physics::coord::frame::provider::CIRF ;
 
     static const Shared<const Provider> providerSPtr = std::make_shared<const CIRFProvider>() ;
 
@@ -383,7 +383,7 @@ Shared<const Frame>             Frame::CIRF                                 ( )
 Shared<const Frame>             Frame::TIRF                                 ( )
 {
 
-    using TIRFProvider = library::physics::coord::frame::provider::TIRF ;
+    using TIRFProvider = ostk::physics::coord::frame::provider::TIRF ;
 
     static const Shared<const Provider> providerSPtr = std::make_shared<const TIRFProvider>() ;
 
@@ -394,7 +394,7 @@ Shared<const Frame>             Frame::TIRF                                 ( )
 Shared<const Frame>             Frame::ITRF                                 ( )
 {
 
-    using ITRFProvider = library::physics::coord::frame::provider::ITRF ;
+    using ITRFProvider = ostk::physics::coord::frame::provider::ITRF ;
 
     static const Shared<const Provider> providerSPtr = std::make_shared<const ITRFProvider>() ;
 
@@ -407,7 +407,7 @@ Shared<const Frame>             Frame::WithName                             (   
 
     if (aName.isEmpty())
     {
-        throw library::core::error::runtime::Undefined("Name") ;
+        throw ostk::core::error::runtime::Undefined("Name") ;
     }
 
     if (const auto frameSPtr = FrameManager::Get().accessFrameWithName(aName))
@@ -424,7 +424,7 @@ bool                            Frame::Exists                               (   
 
     if (aName.isEmpty())
     {
-        throw library::core::error::runtime::Undefined("Name") ;
+        throw ostk::core::error::runtime::Undefined("Name") ;
     }
 
     return FrameManager::Get().hasFrameWithName(aName) ;
@@ -439,7 +439,7 @@ Shared<const Frame>             Frame::Construct                            (   
 
     if (FrameManager::Get().hasFrameWithName(aName))
     {
-        throw library::core::error::RuntimeError("Frame with name [{}] already exist.", aName) ;
+        throw ostk::core::error::RuntimeError("Frame with name [{}] already exist.", aName) ;
     }
 
     return Frame::Emplace(aName, isQuasiInertial, aParentFrame, aProvider) ;
@@ -455,7 +455,7 @@ void                            Frame::Destruct                             (   
     }
     else
     {
-        throw library::core::error::RuntimeError("No frame with name [{}].", aName) ;
+        throw ostk::core::error::RuntimeError("No frame with name [{}].", aName) ;
     }
 
 }
@@ -466,7 +466,7 @@ void                            Frame::Destruct                             (   
                                                                                         bool                        isQuasiInertial,
                                                                                 const   Shared<const Frame>&        aParentFrame,
                                                                                 const   Shared<const Provider>&     aProvider                                   )
-                                :   std::enable_shared_from_this<library::physics::coord::Frame>(),
+                                :   std::enable_shared_from_this<ostk::physics::coord::Frame>(),
                                     name_(aName),
                                     quasiInertial_(isQuasiInertial),
                                     parentFrameSPtr_(aParentFrame),
@@ -487,7 +487,7 @@ Uint8                           Frame::getDepth                             ( ) 
 
         if (depth == 255)
         {
-            throw library::core::error::RuntimeError("Depth overflow.") ;
+            throw ostk::core::error::RuntimeError("Depth overflow.") ;
         }
 
         depth++ ;

@@ -13,7 +13,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -72,7 +72,7 @@ String                          ElectricCurrent::toString                   (   
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Electric current") ;
+        throw ostk::core::error::runtime::Undefined("Electric current") ;
     }
 
     return this->accessValue().toString(aPrecision) + " [" + ElectricCurrent::SymbolFromUnit(unit_) + "]" ;
@@ -107,7 +107,7 @@ String                          ElectricCurrent::StringFromUnit             (   
             return "Ampere" ;
 
         default:
-            throw library::core::error::runtime::Wrong("Unit") ;
+            throw ostk::core::error::runtime::Wrong("Unit") ;
             break ;
 
     }
@@ -126,7 +126,7 @@ String                          ElectricCurrent::SymbolFromUnit             (   
             return "A" ;
 
         default:
-            throw library::core::error::runtime::Wrong("Unit") ;
+            throw ostk::core::error::runtime::Wrong("Unit") ;
             break ;
 
     }
@@ -147,7 +147,7 @@ Real                            ElectricCurrent::SIRatio                    (   
             return 1.0 ;
 
         default:
-            throw library::core::error::runtime::Wrong("Unit") ;
+            throw ostk::core::error::runtime::Wrong("Unit") ;
             break ;
 
     }

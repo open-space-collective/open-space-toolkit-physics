@@ -15,7 +15,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -31,21 +31,21 @@ Direction                       Nadir                                       (   
                                                                                 const   Environment&                anEnvironment                               )
 {
 
-    using library::physics::coord::spherical::LLA ;
+    using ostk::physics::coord::spherical::LLA ;
 
     if (!aPosition.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Position") ;
+        throw ostk::core::error::runtime::Undefined("Position") ;
     }
 
     if (!aCelestialObject.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Celestial object") ;
+        throw ostk::core::error::runtime::Undefined("Celestial object") ;
     }
 
     if (!anEnvironment.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Environment") ;
+        throw ostk::core::error::runtime::Undefined("Environment") ;
     }
 
     const LLA lla = LLA::Cartesian(aPosition.inFrame(aCelestialObject.accessFrame(), anEnvironment.getInstant()).getCoordinates(), aCelestialObject.getEquatorialRadius(), aCelestialObject.getFlattening()) ;

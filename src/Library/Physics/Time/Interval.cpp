@@ -16,7 +16,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -37,12 +37,12 @@ std::ostream&                   operator <<                                 (   
                                                                                 const   Interval&                   anInterval                                  )
 {
 
-    library::core::utils::Print::Header(anOutputStream, "Interval") ;
+    ostk::core::utils::Print::Header(anOutputStream, "Interval") ;
 
-    library::core::utils::Print::Line(anOutputStream) << "Start:" << (anInterval.isDefined() ? anInterval.accessStart().toString(Scale::UTC) : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "End:" << (anInterval.isDefined() ? anInterval.accessEnd().toString(Scale::UTC) : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Start:" << (anInterval.isDefined() ? anInterval.accessStart().toString(Scale::UTC) : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "End:" << (anInterval.isDefined() ? anInterval.accessEnd().toString(Scale::UTC) : "Undefined") ;
 
-    library::core::utils::Print::Footer(anOutputStream) ;
+    ostk::core::utils::Print::Footer(anOutputStream) ;
 
     return anOutputStream ;
 
@@ -58,7 +58,7 @@ const Instant&                  Interval::accessStart                       ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Interval") ;
+        throw ostk::core::error::runtime::Undefined("Interval") ;
     }
 
     return this->accessLowerBound() ;
@@ -70,7 +70,7 @@ const Instant&                  Interval::accessEnd                         ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Interval") ;
+        throw ostk::core::error::runtime::Undefined("Interval") ;
     }
 
     return this->accessUpperBound() ;
@@ -82,7 +82,7 @@ Instant                         Interval::getStart                          ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Interval") ;
+        throw ostk::core::error::runtime::Undefined("Interval") ;
     }
 
     return this->accessLowerBound() ;
@@ -94,7 +94,7 @@ Instant                         Interval::getEnd                            ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Interval") ;
+        throw ostk::core::error::runtime::Undefined("Interval") ;
     }
 
     return this->accessUpperBound() ;
@@ -106,7 +106,7 @@ Duration                        Interval::getDuration                       ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Interval") ;
+        throw ostk::core::error::runtime::Undefined("Interval") ;
     }
 
     return Duration::Between(this->accessLowerBound(), this->accessUpperBound()) ;
@@ -118,7 +118,7 @@ Instant                         Interval::getCenter                         ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Interval") ;
+        throw ostk::core::error::runtime::Undefined("Interval") ;
     }
 
     return this->accessLowerBound() + this->getDuration() / 2.0 ;
@@ -128,11 +128,11 @@ Instant                         Interval::getCenter                         ( ) 
 String                          Interval::toString                         (   const   Scale&                      aTimeScale                                  ) const
 {
 
-    using library::physics::time::DateTime ;
+    using ostk::physics::time::DateTime ;
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Interval") ;
+        throw ostk::core::error::runtime::Undefined("Interval") ;
     }
 
     switch (this->getType())
@@ -155,7 +155,7 @@ String                          Interval::toString                         (   c
 
     }
 
-    throw library::core::error::runtime::Wrong("Interval type") ;
+    throw ostk::core::error::runtime::Wrong("Interval type") ;
 
     return String::Empty() ;
 
@@ -166,22 +166,22 @@ Array<Instant>                  Interval::generateGrid                      (   
 
     return this->generateArrayWithStep(aTimeStep) ;
 
-    // using library::core::types::Index ;
-    // using library::core::types::Size ;
+    // using ostk::core::types::Index ;
+    // using ostk::core::types::Size ;
 
     // if (!this->isDefined())
     // {
-    //     throw library::core::error::runtime::Undefined("Interval") ;
+    //     throw ostk::core::error::runtime::Undefined("Interval") ;
     // }
 
     // if (!aTimeStep.isDefined())
     // {
-    //     throw library::core::error::runtime::Undefined("Time step") ;
+    //     throw ostk::core::error::runtime::Undefined("Time step") ;
     // }
 
     // if (aTimeStep.isZero())
     // {
-    //     throw library::core::error::RuntimeError("Time step is zero.") ;
+    //     throw ostk::core::error::RuntimeError("Time step is zero.") ;
     // }
 
     // Array<Instant> grid = Array<Instant>::Empty() ;
@@ -242,12 +242,12 @@ Interval                        Interval::Closed                            (   
 
     if (!aLowerBound.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Lower bound") ;
+        throw ostk::core::error::runtime::Undefined("Lower bound") ;
     }
 
     if (!anUpperBound.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Upper bound") ;
+        throw ostk::core::error::runtime::Undefined("Upper bound") ;
     }
 
     return Interval(aLowerBound, anUpperBound, Interval::Type::Closed) ;
@@ -261,22 +261,22 @@ Interval                        Interval::Centered                          (   
 
     if (!aCentralInstant.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Central instant") ;
+        throw ostk::core::error::runtime::Undefined("Central instant") ;
     }
 
     if (!aDuration.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Duration") ;
+        throw ostk::core::error::runtime::Undefined("Duration") ;
     }
 
     if (!aDuration.isPositive())
     {
-        throw library::core::error::RuntimeError("Duration is negative.") ;
+        throw ostk::core::error::RuntimeError("Duration is negative.") ;
     }
 
     if (anIntervalType == Interval::Type::Undefined)
     {
-        throw library::core::error::runtime::Undefined("Interval type") ;
+        throw ostk::core::error::runtime::Undefined("Interval type") ;
     }
 
     return Interval((aCentralInstant - aDuration / 2.0), (aCentralInstant + aDuration / 2.0), anIntervalType) ;
@@ -286,11 +286,11 @@ Interval                        Interval::Centered                          (   
 Interval                        Interval::Parse                             (   const   String&                     aString                                     )
 {
 
-    using library::physics::time::DateTime ;
+    using ostk::physics::time::DateTime ;
 
     if (aString.isEmpty())
     {
-        throw library::core::error::runtime::Undefined("String") ;
+        throw ostk::core::error::runtime::Undefined("String") ;
     }
 
     boost::smatch match ;
@@ -329,7 +329,7 @@ Interval                        Interval::Parse                             (   
         }
         else
         {
-            throw library::core::error::runtime::Wrong("Brackets") ;
+            throw ostk::core::error::runtime::Wrong("Brackets") ;
         }
 
         return Interval(startInstant, endInstant, type) ;
@@ -337,7 +337,7 @@ Interval                        Interval::Parse                             (   
     }
     else
     {
-        throw library::core::error::RuntimeError("Cannot parse interval string [{}].", aString) ;
+        throw ostk::core::error::RuntimeError("Cannot parse interval string [{}].", aString) ;
     }
 
     return Interval::Undefined() ;

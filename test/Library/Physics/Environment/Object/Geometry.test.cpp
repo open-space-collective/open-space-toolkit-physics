@@ -41,12 +41,12 @@
 TEST (Library_Physics_Environment_Object_Geometry, Constructor)
 {
 
-    using library::math::geom::d3::objects::Point ;
-    using library::math::geom::d3::objects::Polygon ;
-    using library::math::geom::d3::objects::Pyramid ;
+    using ostk::math::geom::d3::objects::Point ;
+    using ostk::math::geom::d3::objects::Polygon ;
+    using ostk::math::geom::d3::objects::Pyramid ;
 
-    using library::physics::coord::Frame ;
-    using library::physics::env::object::Geometry ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::env::object::Geometry ;
 
     {
 
@@ -64,12 +64,12 @@ TEST (Library_Physics_Environment_Object_Geometry, Constructor)
 TEST (Library_Physics_Environment_Object_Geometry, EqualToOperator)
 {
 
-    using library::math::geom::d3::objects::Point ;
-    using library::math::geom::d3::objects::Polygon ;
-    using library::math::geom::d3::objects::Pyramid ;
+    using ostk::math::geom::d3::objects::Point ;
+    using ostk::math::geom::d3::objects::Polygon ;
+    using ostk::math::geom::d3::objects::Pyramid ;
 
-    using library::physics::coord::Frame ;
-    using library::physics::env::object::Geometry ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::env::object::Geometry ;
 
     {
 
@@ -112,12 +112,12 @@ TEST (Library_Physics_Environment_Object_Geometry, EqualToOperator)
 TEST (Library_Physics_Environment_Object_Geometry, NotEqualToOperator)
 {
 
-    using library::math::geom::d3::objects::Point ;
-    using library::math::geom::d3::objects::Polygon ;
-    using library::math::geom::d3::objects::Pyramid ;
+    using ostk::math::geom::d3::objects::Point ;
+    using ostk::math::geom::d3::objects::Polygon ;
+    using ostk::math::geom::d3::objects::Pyramid ;
 
-    using library::physics::coord::Frame ;
-    using library::physics::env::object::Geometry ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::env::object::Geometry ;
 
     {
 
@@ -160,12 +160,12 @@ TEST (Library_Physics_Environment_Object_Geometry, NotEqualToOperator)
 TEST (Library_Physics_Environment_Object_Geometry, StreamOperator)
 {
 
-    using library::math::geom::d3::objects::Point ;
-    using library::math::geom::d3::objects::Polygon ;
-    using library::math::geom::d3::objects::Pyramid ;
+    using ostk::math::geom::d3::objects::Point ;
+    using ostk::math::geom::d3::objects::Polygon ;
+    using ostk::math::geom::d3::objects::Pyramid ;
 
-    using library::physics::coord::Frame ;
-    using library::physics::env::object::Geometry ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::env::object::Geometry ;
 
     {
 
@@ -189,12 +189,12 @@ TEST (Library_Physics_Environment_Object_Geometry, StreamOperator)
 TEST (Library_Physics_Environment_Object_Geometry, IsDefined)
 {
 
-    using library::math::geom::d3::objects::Point ;
-    using library::math::geom::d3::objects::Polygon ;
-    using library::math::geom::d3::objects::Pyramid ;
+    using ostk::math::geom::d3::objects::Point ;
+    using ostk::math::geom::d3::objects::Polygon ;
+    using ostk::math::geom::d3::objects::Pyramid ;
 
-    using library::physics::coord::Frame ;
-    using library::physics::env::object::Geometry ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::env::object::Geometry ;
 
     {
 
@@ -220,12 +220,12 @@ TEST (Library_Physics_Environment_Object_Geometry, IsDefined)
 // TEST (Library_Physics_Environment_Object_Geometry, Intersects)
 // {
 
-//     using library::math::geom::d3::objects::Point ;
-//     using library::math::geom::d3::objects::Polygon ;
-//     using library::math::geom::d3::objects::Pyramid ;
+//     using ostk::math::geom::d3::objects::Point ;
+//     using ostk::math::geom::d3::objects::Polygon ;
+//     using ostk::math::geom::d3::objects::Pyramid ;
 
-//     using library::physics::coord::Frame ;
-//     using library::physics::env::object::Geometry ;
+//     using ostk::physics::coord::Frame ;
+//     using ostk::physics::env::object::Geometry ;
 
 //     {
 
@@ -260,7 +260,7 @@ TEST (Library_Physics_Environment_Object_Geometry, IsDefined)
 // TEST (Library_Physics_Environment_Object_Geometry, Contains)
 // {
 
-//     using library::physics::env::object::Geometry ;
+//     using ostk::physics::env::object::Geometry ;
 
 //     {
 
@@ -273,13 +273,13 @@ TEST (Library_Physics_Environment_Object_Geometry, IsDefined)
 TEST (Library_Physics_Environment_Object_Geometry, AccessComposite)
 {
 
-    using library::math::geom::d3::objects::Point ;
-    using library::math::geom::d3::objects::Polygon ;
-    using library::math::geom::d3::objects::Pyramid ;
-    using library::math::geom::d3::objects::Composite ;
+    using ostk::math::geom::d3::objects::Point ;
+    using ostk::math::geom::d3::objects::Polygon ;
+    using ostk::math::geom::d3::objects::Pyramid ;
+    using ostk::math::geom::d3::objects::Composite ;
 
-    using library::physics::coord::Frame ;
-    using library::physics::env::object::Geometry ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::env::object::Geometry ;
 
     {
 
@@ -305,12 +305,12 @@ TEST (Library_Physics_Environment_Object_Geometry, AccessComposite)
 TEST (Library_Physics_Environment_Object_Geometry, AccessFrame)
 {
 
-    using library::math::geom::d3::objects::Point ;
-    using library::math::geom::d3::objects::Polygon ;
-    using library::math::geom::d3::objects::Pyramid ;
+    using ostk::math::geom::d3::objects::Point ;
+    using ostk::math::geom::d3::objects::Polygon ;
+    using ostk::math::geom::d3::objects::Pyramid ;
 
-    using library::physics::coord::Frame ;
-    using library::physics::env::object::Geometry ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::env::object::Geometry ;
 
     {
 
@@ -336,21 +336,21 @@ TEST (Library_Physics_Environment_Object_Geometry, AccessFrame)
 TEST (Library_Physics_Environment_Object_Geometry, In)
 {
 
-    using library::core::types::Shared ;
-    using library::core::types::Real ;
+    using ostk::core::types::Shared ;
+    using ostk::core::types::Real ;
 
-    using library::math::geom::d3::objects::Point ;
-    using library::math::geom::d3::objects::Polygon ;
-    using library::math::geom::d3::objects::Pyramid ;
+    using ostk::math::geom::d3::objects::Point ;
+    using ostk::math::geom::d3::objects::Polygon ;
+    using ostk::math::geom::d3::objects::Pyramid ;
 
-    using library::physics::units::Length ;
-    using library::physics::units::Angle ;
-    using library::physics::time::Instant ;
-    using library::physics::coord::spherical::LLA ;
-    using library::physics::coord::Frame ;
-    using library::physics::Environment ;
-    using library::physics::env::object::Geometry ;
-    using library::physics::env::obj::Celestial ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::coord::spherical::LLA ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::Environment ;
+    using ostk::physics::env::object::Geometry ;
+    using ostk::physics::env::obj::Celestial ;
 
     {
 
@@ -465,22 +465,22 @@ TEST (Library_Physics_Environment_Object_Geometry, In)
 TEST (Library_Physics_Environment_Object_Geometry, IntersectionWith)
 {
 
-    using library::core::types::Shared ;
-    using library::core::types::Real ;
+    using ostk::core::types::Shared ;
+    using ostk::core::types::Real ;
 
-    using library::math::geom::d3::objects::Point ;
-    using library::math::geom::d3::objects::LineString ;
-    using library::math::geom::d3::objects::Polygon ;
-    using library::math::geom::d3::objects::Pyramid ;
+    using ostk::math::geom::d3::objects::Point ;
+    using ostk::math::geom::d3::objects::LineString ;
+    using ostk::math::geom::d3::objects::Polygon ;
+    using ostk::math::geom::d3::objects::Pyramid ;
 
-    using library::physics::units::Length ;
-    using library::physics::units::Angle ;
-    using library::physics::time::Instant ;
-    using library::physics::coord::spherical::LLA ;
-    using library::physics::coord::Frame ;
-    using library::physics::Environment ;
-    using library::physics::env::object::Geometry ;
-    using library::physics::env::obj::Celestial ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::coord::spherical::LLA ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::Environment ;
+    using ostk::physics::env::object::Geometry ;
+    using ostk::physics::env::obj::Celestial ;
 
     {
 
@@ -723,7 +723,7 @@ TEST (Library_Physics_Environment_Object_Geometry, IntersectionWith)
 TEST (Library_Physics_Environment_Object_Geometry, Undefined)
 {
 
-    using library::physics::env::object::Geometry ;
+    using ostk::physics::env::object::Geometry ;
 
     {
 

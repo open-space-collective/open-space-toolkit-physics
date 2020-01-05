@@ -18,7 +18,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -81,18 +81,18 @@ std::ostream&                   operator <<                                 (   
                                                                                 const   Environment&                anEnvironment                               )
 {
 
-    library::core::utils::Print::Header(anOutputStream, "Environment") ;
+    ostk::core::utils::Print::Header(anOutputStream, "Environment") ;
 
-    library::core::utils::Print::Line(anOutputStream) << "Instant:"             << (anEnvironment.isDefined() ? anEnvironment.instant_.toString() : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Instant:"             << (anEnvironment.isDefined() ? anEnvironment.instant_.toString() : "Undefined") ;
 
-    library::core::utils::Print::Line(anOutputStream) << "Objects:" ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Objects:" ;
 
     for (const auto& objectSPtr : anEnvironment.objects_)
     {
-        library::core::utils::Print::Line(anOutputStream) << (*objectSPtr) ;
+        ostk::core::utils::Print::Line(anOutputStream) << (*objectSPtr) ;
     }
 
-    library::core::utils::Print::Footer(anOutputStream) ;
+    ostk::core::utils::Print::Footer(anOutputStream) ;
 
     return anOutputStream ;
 
@@ -108,12 +108,12 @@ bool                            Environment::hasObjectWithName              (   
 
     if (aName.isEmpty())
     {
-        throw library::core::error::runtime::Undefined("Name") ;
+        throw ostk::core::error::runtime::Undefined("Name") ;
     }
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Environment") ;
+        throw ostk::core::error::runtime::Undefined("Environment") ;
     }
 
     for (const auto& objectSPtr : objects_)
@@ -136,12 +136,12 @@ bool                            Environment::intersects                     (   
 
     if (!aGeometry.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Geometry") ;
+        throw ostk::core::error::runtime::Undefined("Geometry") ;
     }
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Environment") ;
+        throw ostk::core::error::runtime::Undefined("Environment") ;
     }
 
     for (const auto& objectSPtr : objects_)
@@ -168,7 +168,7 @@ Array<Shared<const Object>>     Environment::accessObjects                  ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Environment") ;
+        throw ostk::core::error::runtime::Undefined("Environment") ;
     }
 
     Array<Shared<const Object>> objects = Array<Shared<const Object>>::Empty() ;
@@ -189,12 +189,12 @@ Shared<const Object>            Environment::accessObjectWithName           (   
 
     if (aName.isEmpty())
     {
-        throw library::core::error::runtime::Undefined("Name") ;
+        throw ostk::core::error::runtime::Undefined("Name") ;
     }
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Environment") ;
+        throw ostk::core::error::runtime::Undefined("Environment") ;
     }
 
     for (const auto& objectSPtr : objects_)
@@ -207,7 +207,7 @@ Shared<const Object>            Environment::accessObjectWithName           (   
 
     }
 
-    throw library::core::error::RuntimeError("No object with name [{}].", aName) ;
+    throw ostk::core::error::RuntimeError("No object with name [{}].", aName) ;
 
     return nullptr ;
 
@@ -226,7 +226,7 @@ Shared<const Celestial>         Environment::accessCelestialObjectWithName  (   
 
     }
 
-    throw library::core::error::RuntimeError("No celestial object with name [{}].", aName) ;
+    throw ostk::core::error::RuntimeError("No celestial object with name [{}].", aName) ;
 
     return nullptr ;
 
@@ -237,7 +237,7 @@ Instant                         Environment::getInstant                     ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Environment") ;
+        throw ostk::core::error::runtime::Undefined("Environment") ;
     }
 
     return instant_ ;
@@ -249,7 +249,7 @@ Array<String>                   Environment::getObjectNames                 ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Environment") ;
+        throw ostk::core::error::runtime::Undefined("Environment") ;
     }
 
     Array<String> objectNames = Array<String>::Empty() ;
@@ -270,12 +270,12 @@ void                            Environment::setInstant                     (   
 
     if (!anInstant.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Environment") ;
+        throw ostk::core::error::runtime::Undefined("Environment") ;
     }
 
     instant_ = anInstant ;
@@ -292,9 +292,9 @@ Environment                     Environment::Undefined                      ( )
 Environment                     Environment::Default                        ( )
 {
 
-    using library::physics::env::obj::celest::Earth ;
-    using library::physics::env::obj::celest::Sun ;
-    using library::physics::env::obj::celest::Moon ;
+    using ostk::physics::env::obj::celest::Earth ;
+    using ostk::physics::env::obj::celest::Sun ;
+    using ostk::physics::env::obj::celest::Moon ;
 
     const Instant instant = Instant::J2000() ;
 

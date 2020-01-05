@@ -18,12 +18,12 @@ inline void                     LibraryPhysicsPy_Coordinate_Frame_Providers_Dyna
 
     using namespace boost::python ;
 
-    using library::core::types::Shared ;
+    using ostk::core::types::Shared ;
 
-    using library::physics::time::Instant ;
-    using library::physics::coord::Transform ;
-    using library::physics::coord::frame::Provider ;
-    using library::physics::coord::frame::provider::Dynamic ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::coord::Transform ;
+    using ostk::physics::coord::frame::Provider ;
+    using ostk::physics::coord::frame::provider::Dynamic ;
 
     scope in_Dynamic = class_<Dynamic, Shared<Dynamic>, bases<Provider>>("Dynamic", no_init)
 

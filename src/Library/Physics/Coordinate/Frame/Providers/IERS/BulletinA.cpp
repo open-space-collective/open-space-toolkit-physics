@@ -21,7 +21,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -40,25 +40,25 @@ std::ostream&                   operator <<                                 (   
                                                                                 const   BulletinA&                  aBulletinA                                  )
 {
 
-    using library::core::types::String ;
+    using ostk::core::types::String ;
 
-    using library::physics::time::Scale ;
+    using ostk::physics::time::Scale ;
 
-    library::core::utils::Print::Header(anOutputStream, "Bulletin A") ;
+    ostk::core::utils::Print::Header(anOutputStream, "Bulletin A") ;
 
-    library::core::utils::Print::Line(anOutputStream) << "Release date:" << (aBulletinA.releaseDate_.isDefined() ? aBulletinA.releaseDate_.toString() : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "TAI - UTC:" << (aBulletinA.taiMinusUtc_.isDefined() ? String::Format("{} @ {}", aBulletinA.taiMinusUtc_.toString(), aBulletinA.taiMinusUtcEpoch_.toString(Scale::UTC)) : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Observation interval:" << (aBulletinA.observationInterval_.isDefined() ? aBulletinA.observationInterval_.toString(Scale::UTC) : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Predictiom interval:" << (aBulletinA.predictionInterval_.isDefined() ? aBulletinA.predictionInterval_.toString(Scale::UTC) : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Release date:" << (aBulletinA.releaseDate_.isDefined() ? aBulletinA.releaseDate_.toString() : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "TAI - UTC:" << (aBulletinA.taiMinusUtc_.isDefined() ? String::Format("{} @ {}", aBulletinA.taiMinusUtc_.toString(), aBulletinA.taiMinusUtcEpoch_.toString(Scale::UTC)) : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Observation interval:" << (aBulletinA.observationInterval_.isDefined() ? aBulletinA.observationInterval_.toString(Scale::UTC) : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Predictiom interval:" << (aBulletinA.predictionInterval_.isDefined() ? aBulletinA.predictionInterval_.toString(Scale::UTC) : "Undefined") ;
 
-    library::core::utils::Print::Separator(anOutputStream, "Observation") ;
+    ostk::core::utils::Print::Separator(anOutputStream, "Observation") ;
 
     for (const auto& observationIt : aBulletinA.observations_)
     {
 
         const BulletinA::Observation& observation = observationIt.second ;
 
-        library::core::utils::Print::Line(anOutputStream) << String::Format("{:>4d}  {:>2d}  {:>2d}  {:>5d}  {:f}  {:f}  {:f}  {:f}  {:f}  {:f}",
+        ostk::core::utils::Print::Line(anOutputStream) << String::Format("{:>4d}  {:>2d}  {:>2d}  {:>5d}  {:f}  {:f}  {:f}  {:f}  {:f}  {:f}",
                                                                             static_cast<int>(observation.year),
                                                                             static_cast<int>(observation.month),
                                                                             static_cast<int>(observation.day),
@@ -72,14 +72,14 @@ std::ostream&                   operator <<                                 (   
 
     }
 
-    library::core::utils::Print::Separator(anOutputStream, "Prediction") ;
+    ostk::core::utils::Print::Separator(anOutputStream, "Prediction") ;
 
     for (const auto& predictionIt : aBulletinA.predictions_)
     {
 
         const BulletinA::Prediction& prediction = predictionIt.second ;
 
-        library::core::utils::Print::Line(anOutputStream) << String::Format("{:>4d}  {:>2d}  {:>2d}  {:>5d}  {:f}  {:f}  {:f}",
+        ostk::core::utils::Print::Line(anOutputStream) << String::Format("{:>4d}  {:>2d}  {:>2d}  {:>5d}  {:f}  {:f}  {:f}",
                                                                             static_cast<int>(prediction.year),
                                                                             static_cast<int>(prediction.month),
                                                                             static_cast<int>(prediction.day),
@@ -90,7 +90,7 @@ std::ostream&                   operator <<                                 (   
 
     }
 
-    library::core::utils::Print::Footer(anOutputStream) ;
+    ostk::core::utils::Print::Footer(anOutputStream) ;
 
     return anOutputStream ;
 
@@ -114,7 +114,7 @@ const Date&                     BulletinA::accessReleaseDate                ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Bulletin A") ;
+        throw ostk::core::error::runtime::Undefined("Bulletin A") ;
     }
 
     return releaseDate_ ;
@@ -126,7 +126,7 @@ const Duration&                 BulletinA::accessTAIMinusUTC                ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Bulletin A") ;
+        throw ostk::core::error::runtime::Undefined("Bulletin A") ;
     }
 
     return taiMinusUtc_ ;
@@ -138,7 +138,7 @@ const Instant&                  BulletinA::accessTAIMinusUTCEpoch           ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Bulletin A") ;
+        throw ostk::core::error::runtime::Undefined("Bulletin A") ;
     }
 
     return taiMinusUtcEpoch_ ;
@@ -150,7 +150,7 @@ const Interval&                 BulletinA::accessObservationInterval        ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Bulletin A") ;
+        throw ostk::core::error::runtime::Undefined("Bulletin A") ;
     }
 
     return observationInterval_ ;
@@ -162,7 +162,7 @@ const Interval&                 BulletinA::accessPredictionInterval         ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Bulletin A") ;
+        throw ostk::core::error::runtime::Undefined("Bulletin A") ;
     }
 
     return predictionInterval_ ;
@@ -192,21 +192,21 @@ Interval                        BulletinA::getObservationInterval           ( ) 
 BulletinA::Observation          BulletinA::getObservationAt                 (   const   Instant&                    anInstant                                   ) const
 {
 
-    using library::physics::time::Scale ;
+    using ostk::physics::time::Scale ;
 
     if (!anInstant.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Bulletin A") ;
+        throw ostk::core::error::runtime::Undefined("Bulletin A") ;
     }
 
     if (!observationInterval_.contains(anInstant))
     {
-        throw library::core::error::RuntimeError("Instant [] out of observation range [{} - {}].", anInstant.toString(Scale::UTC), observationInterval_.accessStart().toString(Scale::UTC), observationInterval_.accessEnd().toString(Scale::UTC)) ;
+        throw ostk::core::error::RuntimeError("Instant [] out of observation range [{} - {}].", anInstant.toString(Scale::UTC), observationInterval_.accessStart().toString(Scale::UTC), observationInterval_.accessEnd().toString(Scale::UTC)) ;
     }
 
     const Real instantMjd = anInstant.getModifiedJulianDate(Scale::UTC) ;
@@ -267,7 +267,7 @@ BulletinA::Observation          BulletinA::getObservationAt                 (   
             }
             else
             {
-                throw library::core::error::RuntimeError("Cannot find observation at [{}].", anInstant.toString(Scale::UTC)) ;
+                throw ostk::core::error::RuntimeError("Cannot find observation at [{}].", anInstant.toString(Scale::UTC)) ;
             }
 
         }
@@ -275,7 +275,7 @@ BulletinA::Observation          BulletinA::getObservationAt                 (   
     }
     else
     {
-        throw library::core::error::RuntimeError("Cannot find observation at [{}].", anInstant.toString(Scale::UTC)) ;
+        throw ostk::core::error::RuntimeError("Cannot find observation at [{}].", anInstant.toString(Scale::UTC)) ;
     }
 
 }
@@ -288,23 +288,23 @@ Interval                        BulletinA::getPredictionInterval            ( ) 
 BulletinA::Prediction           BulletinA::getPredictionAt                  (   const   Instant&                    anInstant                                   ) const
 {
 
-    using library::core::types::Real ;
+    using ostk::core::types::Real ;
 
-    using library::physics::time::Scale ;
+    using ostk::physics::time::Scale ;
 
     if (!anInstant.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Instant") ;
+        throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Bulletin A") ;
+        throw ostk::core::error::runtime::Undefined("Bulletin A") ;
     }
 
     if (!predictionInterval_.contains(anInstant))
     {
-        throw library::core::error::RuntimeError("Instant [] out of prediction range [{} - {}].", anInstant.toString(Scale::UTC), predictionInterval_.accessStart().toString(Scale::UTC), predictionInterval_.accessEnd().toString(Scale::UTC)) ;
+        throw ostk::core::error::RuntimeError("Instant [] out of prediction range [{} - {}].", anInstant.toString(Scale::UTC), predictionInterval_.accessStart().toString(Scale::UTC), predictionInterval_.accessEnd().toString(Scale::UTC)) ;
     }
 
     const Real instantMjd = anInstant.getModifiedJulianDate(Scale::UTC) ;
@@ -359,7 +359,7 @@ BulletinA::Prediction           BulletinA::getPredictionAt                  (   
             }
             else
             {
-                throw library::core::error::RuntimeError("Cannot find prediction at [{}].", anInstant.toString(Scale::UTC)) ;
+                throw ostk::core::error::RuntimeError("Cannot find prediction at [{}].", anInstant.toString(Scale::UTC)) ;
             }
 
         }
@@ -367,7 +367,7 @@ BulletinA::Prediction           BulletinA::getPredictionAt                  (   
     }
     else
     {
-        throw library::core::error::RuntimeError("Cannot find prediction at [{}].", anInstant.toString(Scale::UTC)) ;
+        throw ostk::core::error::RuntimeError("Cannot find prediction at [{}].", anInstant.toString(Scale::UTC)) ;
     }
 
 }
@@ -380,24 +380,24 @@ BulletinA                       BulletinA::Undefined                        ( )
 BulletinA                       BulletinA::Load                             (   const   fs::File&                   aFile                                       )
 {
 
-    using library::core::types::Index ;
-    using library::core::types::Uint8 ;
-    using library::core::types::Uint16 ;
-    using library::core::types::Real ;
-    using library::core::types::String ;
+    using ostk::core::types::Index ;
+    using ostk::core::types::Uint8 ;
+    using ostk::core::types::Uint16 ;
+    using ostk::core::types::Real ;
+    using ostk::core::types::String ;
 
-    using library::physics::time::Scale ;
-    using library::physics::time::Time ;
-    using library::physics::time::DateTime ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Time ;
+    using ostk::physics::time::DateTime ;
 
     if (!aFile.isDefined())
     {
-        throw library::core::error::runtime::Undefined("File") ;
+        throw ostk::core::error::runtime::Undefined("File") ;
     }
 
     if (!aFile.exists())
     {
-        throw library::core::error::RuntimeError("File [{}] does not exist.", aFile.toString()) ;
+        throw ostk::core::error::RuntimeError("File [{}] does not exist.", aFile.toString()) ;
     }
 
     const auto monthFromString = [ ] (const String& aMonthString) -> Uint8
@@ -463,7 +463,7 @@ BulletinA                       BulletinA::Load                             (   
             return 12 ;
         }
 
-        throw library::core::error::runtime::Wrong("Month string", aMonthString) ;
+        throw ostk::core::error::runtime::Wrong("Month string", aMonthString) ;
 
         return 0 ;
 

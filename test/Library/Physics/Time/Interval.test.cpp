@@ -16,10 +16,10 @@
 TEST (Library_Physics_Time_Interval, Constructor)
 {
 
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
-    using library::physics::time::Interval ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::Interval ;
 
     {
 
@@ -54,10 +54,10 @@ TEST (Library_Physics_Time_Interval, Constructor)
 TEST (Library_Physics_Time_Interval, StreamOperator)
 {
 
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
-    using library::physics::time::Interval ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::Interval ;
 
     {
 
@@ -74,10 +74,10 @@ TEST (Library_Physics_Time_Interval, StreamOperator)
 TEST (Library_Physics_Time_Interval, IsDefined)
 {
 
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
-    using library::physics::time::Interval ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::Interval ;
 
     {
 
@@ -103,10 +103,10 @@ TEST (Library_Physics_Time_Interval, IsDefined)
 TEST (Library_Physics_Time_Interval, AccessStart)
 {
 
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
-    using library::physics::time::Interval ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::Interval ;
 
     {
 
@@ -131,10 +131,10 @@ TEST (Library_Physics_Time_Interval, AccessStart)
 TEST (Library_Physics_Time_Interval, AccessEnd)
 {
 
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
-    using library::physics::time::Interval ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::Interval ;
 
     {
 
@@ -159,10 +159,10 @@ TEST (Library_Physics_Time_Interval, AccessEnd)
 TEST (Library_Physics_Time_Interval, GetStart)
 {
 
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
-    using library::physics::time::Interval ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::Interval ;
 
     {
 
@@ -187,10 +187,10 @@ TEST (Library_Physics_Time_Interval, GetStart)
 TEST (Library_Physics_Time_Interval, GetEnd)
 {
 
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
-    using library::physics::time::Interval ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::Interval ;
 
     {
 
@@ -215,11 +215,11 @@ TEST (Library_Physics_Time_Interval, GetEnd)
 TEST (Library_Physics_Time_Interval, GetDuration)
 {
 
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
-    using library::physics::time::Duration ;
-    using library::physics::time::Interval ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::Duration ;
+    using ostk::physics::time::Interval ;
 
     {
 
@@ -244,10 +244,10 @@ TEST (Library_Physics_Time_Interval, GetDuration)
 TEST (Library_Physics_Time_Interval, GetCenter)
 {
 
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
-    using library::physics::time::Interval ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::Interval ;
 
     {
 
@@ -272,10 +272,10 @@ TEST (Library_Physics_Time_Interval, GetCenter)
 TEST (Library_Physics_Time_Interval, ToString)
 {
 
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
-    using library::physics::time::Interval ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::Interval ;
 
     {
 
@@ -300,12 +300,12 @@ TEST (Library_Physics_Time_Interval, ToString)
 TEST (Library_Physics_Time_Interval, GenerateGrid)
 {
 
-    using library::core::ctnr::Array ;
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
-    using library::physics::time::Duration ;
-    using library::physics::time::Interval ;
+    using ostk::core::ctnr::Array ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::Duration ;
+    using ostk::physics::time::Interval ;
 
     // Positive step
 
@@ -444,7 +444,7 @@ TEST (Library_Physics_Time_Interval, GenerateGrid)
 TEST (Library_Physics_Time_Interval, Undefined)
 {
 
-    using library::physics::time::Interval ;
+    using ostk::physics::time::Interval ;
 
     {
 
@@ -459,11 +459,11 @@ TEST (Library_Physics_Time_Interval, Undefined)
 TEST (Library_Physics_Time_Interval, Closed)
 {
 
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
-    using library::physics::time::Duration ;
-    using library::physics::time::Interval ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::Duration ;
+    using ostk::physics::time::Interval ;
 
     {
 
@@ -485,11 +485,11 @@ TEST (Library_Physics_Time_Interval, Closed)
 TEST (Library_Physics_Time_Interval, Centered)
 {
 
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
-    using library::physics::time::Duration ;
-    using library::physics::time::Interval ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::Duration ;
+    using ostk::physics::time::Interval ;
 
     {
 
@@ -518,10 +518,10 @@ TEST (Library_Physics_Time_Interval, Centered)
 TEST (Library_Physics_Time_Interval, Parse)
 {
 
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
-    using library::physics::time::Interval ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::Interval ;
 
     {
 

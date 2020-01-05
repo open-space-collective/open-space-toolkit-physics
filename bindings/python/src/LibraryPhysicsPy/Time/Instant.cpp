@@ -18,11 +18,11 @@ inline void                     LibraryPhysicsPy_Time_Instant               ( )
 
     using namespace boost::python ;
 
-    using library::core::types::String ;
+    using ostk::core::types::String ;
 
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::Duration ;
 
     scope in_Instant = class_<Instant>("Instant", no_init)
 
@@ -63,7 +63,7 @@ inline void                     LibraryPhysicsPy_Time_Instant               ( )
 
     ;
 
-    using library::core::ctnr::Array ;
+    using ostk::core::ctnr::Array ;
 
     IterableConverter()
 

@@ -14,7 +14,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -58,7 +58,7 @@ bool                            Length::operator <                          (   
 
     if ((unit_ == Length::Unit::Undefined) || (aLength.unit_ == Length::Unit::Undefined))
     {
-        throw library::core::error::runtime::Undefined("Length") ;
+        throw ostk::core::error::runtime::Undefined("Length") ;
     }
 
     return this->accessValue() < ((unit_ == aLength.unit_) ? aLength.accessValue() : aLength.in(unit_)) ;
@@ -70,7 +70,7 @@ bool                            Length::operator <=                         (   
 
     if ((unit_ == Length::Unit::Undefined) || (aLength.unit_ == Length::Unit::Undefined))
     {
-        throw library::core::error::runtime::Undefined("Length") ;
+        throw ostk::core::error::runtime::Undefined("Length") ;
     }
 
     return this->accessValue() <= ((unit_ == aLength.unit_) ? aLength.accessValue() : aLength.in(unit_)) ;
@@ -82,7 +82,7 @@ bool                            Length::operator >                          (   
 
     if ((unit_ == Length::Unit::Undefined) || (aLength.unit_ == Length::Unit::Undefined))
     {
-        throw library::core::error::runtime::Undefined("Length") ;
+        throw ostk::core::error::runtime::Undefined("Length") ;
     }
 
     return this->accessValue() > ((unit_ == aLength.unit_) ? aLength.accessValue() : aLength.in(unit_)) ;
@@ -94,7 +94,7 @@ bool                            Length::operator >=                         (   
 
     if ((unit_ == Length::Unit::Undefined) || (aLength.unit_ == Length::Unit::Undefined))
     {
-        throw library::core::error::runtime::Undefined("Length") ;
+        throw ostk::core::error::runtime::Undefined("Length") ;
     }
 
     return this->accessValue() >= ((unit_ == aLength.unit_) ? aLength.accessValue() : aLength.in(unit_)) ;
@@ -106,7 +106,7 @@ Length                          Length::operator +                          (   
 
     if ((unit_ == Length::Unit::Undefined) || (aLength.unit_ == Length::Unit::Undefined))
     {
-        throw library::core::error::runtime::Undefined("Length") ;
+        throw ostk::core::error::runtime::Undefined("Length") ;
     }
 
     return { (this->accessValue() + ((unit_ == aLength.unit_) ? aLength.accessValue() : aLength.in(unit_))), unit_ } ;
@@ -118,7 +118,7 @@ Length                          Length::operator -                          (   
 
     if ((unit_ == Length::Unit::Undefined) || (aLength.unit_ == Length::Unit::Undefined))
     {
-        throw library::core::error::runtime::Undefined("Length") ;
+        throw ostk::core::error::runtime::Undefined("Length") ;
     }
 
     return { (this->accessValue() - ((unit_ == aLength.unit_) ? aLength.accessValue() : aLength.in(unit_))), unit_ } ;
@@ -130,12 +130,12 @@ Length                          Length::operator *                          (   
 
     if (unit_ == Length::Unit::Undefined)
     {
-        throw library::core::error::runtime::Undefined("Length") ;
+        throw ostk::core::error::runtime::Undefined("Length") ;
     }
 
     if (!aReal.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Real") ;
+        throw ostk::core::error::runtime::Undefined("Real") ;
     }
 
     return { (this->accessValue() * aReal), unit_ } ;
@@ -147,17 +147,17 @@ Length                          Length::operator /                          (   
 
     if (unit_ == Length::Unit::Undefined)
     {
-        throw library::core::error::runtime::Undefined("Length") ;
+        throw ostk::core::error::runtime::Undefined("Length") ;
     }
 
     if (!aReal.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Real") ;
+        throw ostk::core::error::runtime::Undefined("Real") ;
     }
 
     if (aReal.isZero())
     {
-        throw library::core::error::RuntimeError("Cannot divide by zero.") ;
+        throw ostk::core::error::RuntimeError("Cannot divide by zero.") ;
     }
 
     return { (this->accessValue() / aReal), unit_ } ;
@@ -169,7 +169,7 @@ Length&                         Length::operator +=                         (   
 
     if ((unit_ == Length::Unit::Undefined) || (aLength.unit_ == Length::Unit::Undefined))
     {
-        throw library::core::error::runtime::Undefined("Length") ;
+        throw ostk::core::error::runtime::Undefined("Length") ;
     }
 
     this->accessValue() += ((unit_ == aLength.unit_) ? aLength.accessValue() : aLength.in(unit_)) ;
@@ -183,7 +183,7 @@ Length&                         Length::operator -=                         (   
 
     if ((unit_ == Length::Unit::Undefined) || (aLength.unit_ == Length::Unit::Undefined))
     {
-        throw library::core::error::runtime::Undefined("Length") ;
+        throw ostk::core::error::runtime::Undefined("Length") ;
     }
 
     this->accessValue() -= ((unit_ == aLength.unit_) ? aLength.accessValue() : aLength.in(unit_)) ;
@@ -197,12 +197,12 @@ Length&                         Length::operator *=                         (   
 
     if (unit_ == Length::Unit::Undefined)
     {
-        throw library::core::error::runtime::Undefined("Length") ;
+        throw ostk::core::error::runtime::Undefined("Length") ;
     }
 
     if (!aReal.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Real") ;
+        throw ostk::core::error::runtime::Undefined("Real") ;
     }
 
     this->accessValue() *= aReal ;
@@ -216,17 +216,17 @@ Length&                         Length::operator /=                         (   
 
     if (unit_ == Length::Unit::Undefined)
     {
-        throw library::core::error::runtime::Undefined("Length") ;
+        throw ostk::core::error::runtime::Undefined("Length") ;
     }
 
     if (!aReal.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Real") ;
+        throw ostk::core::error::runtime::Undefined("Real") ;
     }
 
     if (aReal.isZero())
     {
-        throw library::core::error::RuntimeError("Cannot divide by zero.") ;
+        throw ostk::core::error::RuntimeError("Cannot divide by zero.") ;
     }
 
     this->accessValue() /= aReal ;
@@ -241,12 +241,12 @@ Length                          operator *                                  (   
 
     if (!aReal.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Real") ;
+        throw ostk::core::error::runtime::Undefined("Real") ;
     }
 
     if (aLength.unit_ == Length::Unit::Undefined)
     {
-        throw library::core::error::runtime::Undefined("Length") ;
+        throw ostk::core::error::runtime::Undefined("Length") ;
     }
 
     return { (aLength.accessValue() * aReal), aLength.unit_ } ;
@@ -257,12 +257,12 @@ std::ostream&                   operator <<                                 (   
                                                                                 const   Length&                     aLength                                     )
 {
 
-    library::core::utils::Print::Header(anOutputStream, "Length") ;
+    ostk::core::utils::Print::Header(anOutputStream, "Length") ;
 
-    library::core::utils::Print::Line(anOutputStream) << "Value:" << aLength.accessValue() ;
-    library::core::utils::Print::Line(anOutputStream) << "Unit:" << Length::StringFromUnit(aLength.unit_) ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Value:" << aLength.accessValue() ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Unit:" << Length::StringFromUnit(aLength.unit_) ;
 
-    library::core::utils::Print::Footer(anOutputStream) ;
+    ostk::core::utils::Print::Footer(anOutputStream) ;
 
     return anOutputStream ;
 
@@ -310,7 +310,7 @@ String                          Length::toString                            (   
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Length") ;
+        throw ostk::core::error::runtime::Undefined("Length") ;
     }
 
     return this->accessValue().toString(aPrecision) + " [" + Length::SymbolFromUnit(unit_) + "]" ;
@@ -383,7 +383,7 @@ String                          Length::StringFromUnit                      (   
             return "Astronomical Unit" ;
 
         default:
-            throw library::core::error::runtime::Wrong("Unit") ;
+            throw ostk::core::error::runtime::Wrong("Unit") ;
             break ;
 
     }
@@ -414,7 +414,7 @@ String                          Length::SymbolFromUnit                      (   
             return "AU" ;
 
         default:
-            throw library::core::error::runtime::Wrong("Unit") ;
+            throw ostk::core::error::runtime::Wrong("Unit") ;
             break ;
 
     }
@@ -451,7 +451,7 @@ Length::Unit                    Length::UnitFromSymbol                      (   
         return Length::Unit::AstronomicalUnit ;
     }
 
-    throw library::core::error::runtime::Wrong("Symbol", aSymbol) ;
+    throw ostk::core::error::runtime::Wrong("Symbol", aSymbol) ;
 
 }
 
@@ -479,7 +479,7 @@ Real                            Length::SIRatio                             (   
             return 149597870700.0 ;
 
         default:
-            throw library::core::error::runtime::Wrong("Unit") ;
+            throw ostk::core::error::runtime::Wrong("Unit") ;
             break ;
 
     }

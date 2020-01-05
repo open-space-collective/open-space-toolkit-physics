@@ -17,11 +17,11 @@ inline void                     LibraryPhysicsPy_Environment_Magnetic_Earth ( )
 
     using namespace boost::python ;
 
-    using library::core::fs::Directory ;
+    using ostk::core::fs::Directory ;
 
-    using library::physics::units::Derived ;
-    using library::physics::environment::magnetic::Earth ;
-    using library::physics::environment::magnetic::earth::Manager ;
+    using ostk::physics::units::Derived ;
+    using ostk::physics::environment::magnetic::Earth ;
+    using ostk::physics::environment::magnetic::earth::Manager ;
 
     scope in_Earth = class_<Earth>("Earth", init<const Earth::Type&, const Directory&>())
 

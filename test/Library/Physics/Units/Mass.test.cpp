@@ -17,8 +17,8 @@
 TEST (Library_Physics_Units_Mass, Constructor)
 {
 
-    using library::core::types::Real ;
-    using library::physics::units::Mass ;
+    using ostk::core::types::Real ;
+    using ostk::physics::units::Mass ;
 
     {
 
@@ -43,8 +43,8 @@ TEST (Library_Physics_Units_Mass, Constructor)
 TEST (Library_Physics_Units_Mass, IsDefined)
 {
 
-    using library::core::types::Real ;
-    using library::physics::units::Mass ;
+    using ostk::core::types::Real ;
+    using ostk::physics::units::Mass ;
 
     {
 
@@ -69,7 +69,7 @@ TEST (Library_Physics_Units_Mass, IsDefined)
 TEST (Library_Physics_Units_Mass, GetUnit)
 {
 
-    using library::physics::units::Mass ;
+    using ostk::physics::units::Mass ;
 
     {
 
@@ -83,7 +83,7 @@ TEST (Library_Physics_Units_Mass, GetUnit)
 TEST (Library_Physics_Units_Mass, In)
 {
 
-    using library::physics::units::Mass ;
+    using ostk::physics::units::Mass ;
 
     {
 
@@ -102,7 +102,7 @@ TEST (Library_Physics_Units_Mass, In)
 TEST (Library_Physics_Units_Mass, InKilograms)
 {
 
-    using library::physics::units::Mass ;
+    using ostk::physics::units::Mass ;
 
     {
 
@@ -121,7 +121,7 @@ TEST (Library_Physics_Units_Mass, InKilograms)
 TEST (Library_Physics_Units_Mass, ToString)
 {
 
-    using library::physics::units::Mass ;
+    using ostk::physics::units::Mass ;
 
     {
 
@@ -166,7 +166,7 @@ TEST (Library_Physics_Units_Mass, ToString)
 TEST (Library_Physics_Units_Mass, Undefined)
 {
 
-    using library::physics::units::Mass ;
+    using ostk::physics::units::Mass ;
 
     {
 
@@ -182,7 +182,7 @@ TEST (Library_Physics_Units_Mass, Undefined)
 TEST (Library_Physics_Units_Mass, Kilograms)
 {
 
-    using library::physics::units::Mass ;
+    using ostk::physics::units::Mass ;
 
     {
 
@@ -198,7 +198,7 @@ TEST (Library_Physics_Units_Mass, Kilograms)
 TEST (Library_Physics_Units_Mass, StringFromUnit)
 {
 
-    using library::physics::units::Mass ;
+    using ostk::physics::units::Mass ;
 
     {
 
@@ -214,7 +214,7 @@ TEST (Library_Physics_Units_Mass, StringFromUnit)
 TEST (Library_Physics_Units_Mass, SymbolFromUnit)
 {
 
-    using library::physics::units::Mass ;
+    using ostk::physics::units::Mass ;
 
     {
 

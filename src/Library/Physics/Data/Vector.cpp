@@ -14,7 +14,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -54,13 +54,13 @@ std::ostream&                   operator <<                                 (   
                                                                                 const   Vector&                     aVector                                     )
 {
 
-    library::core::utils::Print::Header(anOutputStream, "Vector") ;
+    ostk::core::utils::Print::Header(anOutputStream, "Vector") ;
 
-    library::core::utils::Print::Line(anOutputStream) << "Value:"               << (aVector.value_.isDefined() ? aVector.value_.toString() : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Unit:"                << (aVector.unit_.isDefined() ? aVector.unit_.toString() : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Frame:"                << (((aVector.frameSPtr_ != nullptr) && (aVector.frameSPtr_->isDefined())) ? aVector.frameSPtr_->getName() : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Value:"               << (aVector.value_.isDefined() ? aVector.value_.toString() : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Unit:"                << (aVector.unit_.isDefined() ? aVector.unit_.toString() : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Frame:"                << (((aVector.frameSPtr_ != nullptr) && (aVector.frameSPtr_->isDefined())) ? aVector.frameSPtr_->getName() : "Undefined") ;
 
-    library::core::utils::Print::Footer(anOutputStream) ;
+    ostk::core::utils::Print::Footer(anOutputStream) ;
 
     return anOutputStream ;
 
@@ -91,7 +91,7 @@ Vector                          Vector::inUnit                              (   
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Scalar") ;
+        throw ostk::core::error::runtime::Undefined("Scalar") ;
     }
 
     return { value_ * unit_.ratioTo(aUnit), aUnit, frameSPtr_ } ;
@@ -104,7 +104,7 @@ Vector                          Vector::inFrame                             (   
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Scalar") ;
+        throw ostk::core::error::runtime::Undefined("Scalar") ;
     }
 
     return { frameSPtr_->getTransformTo(aFrameSPtr, anInstant).applyToVector(value_), unit_, aFrameSPtr } ;
@@ -116,7 +116,7 @@ String                          Vector::toString                            (   
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Scalar") ;
+        throw ostk::core::error::runtime::Undefined("Scalar") ;
     }
 
     return String::Format("{} [{}] @ {}", value_.toString(aPrecision), unit_.toString(), frameSPtr_->getName()) ;

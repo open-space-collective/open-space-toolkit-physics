@@ -19,7 +19,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -93,9 +93,9 @@ GravityModel*                   Earth::Impl::GravityModelFromType           (   
                                                                                 const   Directory&                  aDataDirectory                              )
 {
 
-    using library::core::types::String ;
+    using ostk::core::types::String ;
 
-    using library::physics::environment::gravitational::earth::Manager ;
+    using ostk::physics::environment::gravitational::earth::Manager ;
 
     String dataPath = "" ;
 
@@ -104,7 +104,7 @@ GravityModel*                   Earth::Impl::GravityModelFromType           (   
 
         if (!aDataDirectory.exists())
         {
-            throw library::core::error::RuntimeError("Data directory [{}] does not exist.", aDataDirectory.toString()) ;
+            throw ostk::core::error::RuntimeError("Data directory [{}] does not exist.", aDataDirectory.toString()) ;
         }
 
         dataPath = aDataDirectory.getPath().toString() ;
@@ -143,7 +143,7 @@ GravityModel*                   Earth::Impl::GravityModelFromType           (   
             return new GeographicLib::GravityModel("egm2008", dataPath) ;
 
         default:
-            throw library::core::error::runtime::Wrong("Type") ;
+            throw ostk::core::error::runtime::Wrong("Type") ;
 
     }
 

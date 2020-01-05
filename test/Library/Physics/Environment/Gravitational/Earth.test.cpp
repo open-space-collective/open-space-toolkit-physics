@@ -25,11 +25,11 @@
 TEST (Library_Physics_Environment_Gravitational_Earth, Constructor)
 {
 
-    using library::core::fs::Path ;
-    using library::core::fs::Directory ;
+    using ostk::core::fs::Path ;
+    using ostk::core::fs::Directory ;
 
-    using EarthGravitationalModel = library::physics::environment::gravitational::Earth ;
-    using EarthGravitationalModelManager = library::physics::environment::gravitational::earth::Manager ;
+    using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth ;
+    using EarthGravitationalModelManager = ostk::physics::environment::gravitational::earth::Manager ;
 
     {
 
@@ -71,11 +71,11 @@ TEST (Library_Physics_Environment_Gravitational_Earth, Constructor)
 TEST (Library_Physics_Environment_Gravitational_Earth, Clone)
 {
 
-    using library::core::fs::Path ;
-    using library::core::fs::Directory ;
+    using ostk::core::fs::Path ;
+    using ostk::core::fs::Directory ;
 
-    using EarthGravitationalModel = library::physics::environment::gravitational::Earth ;
-    using EarthGravitationalModelManager = library::physics::environment::gravitational::earth::Manager ;
+    using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth ;
+    using EarthGravitationalModelManager = ostk::physics::environment::gravitational::earth::Manager ;
 
     {
 
@@ -98,11 +98,11 @@ TEST (Library_Physics_Environment_Gravitational_Earth, Clone)
 TEST (Library_Physics_Environment_Gravitational_Earth, GetType)
 {
 
-    using library::core::fs::Path ;
-    using library::core::fs::Directory ;
+    using ostk::core::fs::Path ;
+    using ostk::core::fs::Directory ;
 
-    using EarthGravitationalModel = library::physics::environment::gravitational::Earth ;
-    using EarthGravitationalModelManager = library::physics::environment::gravitational::earth::Manager ;
+    using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth ;
+    using EarthGravitationalModelManager = ostk::physics::environment::gravitational::earth::Manager ;
 
     {
 
@@ -126,18 +126,18 @@ TEST (Library_Physics_Environment_Gravitational_Earth, GetType)
 TEST (Library_Physics_Environment_Gravitational_Earth, GetFieldValueAt)
 {
 
-    using library::core::types::Real ;
-    using library::core::types::String ;
-    using library::core::ctnr::Tuple ;
-    using library::core::ctnr::Array ;
-    using library::core::fs::Path ;
-    using library::core::fs::Directory ;
+    using ostk::core::types::Real ;
+    using ostk::core::types::String ;
+    using ostk::core::ctnr::Tuple ;
+    using ostk::core::ctnr::Array ;
+    using ostk::core::fs::Path ;
+    using ostk::core::fs::Directory ;
 
-    using library::math::obj::Vector3d ;
+    using ostk::math::obj::Vector3d ;
 
-    using library::physics::time::Instant ;
-    using EarthGravitationalModel = library::physics::environment::gravitational::Earth ;
-    using EarthGravitationalModelManager = library::physics::environment::gravitational::earth::Manager ;
+    using ostk::physics::time::Instant ;
+    using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth ;
+    using EarthGravitationalModelManager = ostk::physics::environment::gravitational::earth::Manager ;
 
     {
 

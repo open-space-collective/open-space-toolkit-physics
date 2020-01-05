@@ -23,7 +23,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -36,16 +36,16 @@ namespace celest
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using library::core::types::Shared ;
-using library::core::types::Real ;
+using ostk::core::types::Shared ;
+using ostk::core::types::Real ;
 
-using library::math::geom::d3::objects::Sphere ;
+using ostk::math::geom::d3::objects::Sphere ;
 
-using library::physics::units::Length ;
-using library::physics::units::Derived ;
-using library::physics::env::Ephemeris ;
-using library::physics::env::Object ;
-using library::physics::env::obj::Celestial ;
+using ostk::physics::units::Length ;
+using ostk::physics::units::Derived ;
+using ostk::physics::env::Ephemeris ;
+using ostk::physics::env::Object ;
+using ostk::physics::env::obj::Celestial ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

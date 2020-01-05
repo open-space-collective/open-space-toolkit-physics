@@ -16,15 +16,15 @@ inline void                     LibraryPhysicsPy_Coordinate_Transform       ( )
 
     using namespace boost::python ;
 
-    using library::core::types::Real ;
+    using ostk::core::types::Real ;
 
-    using library::math::obj::Vector3d ;
-    using library::math::geom::d3::trf::rot::Quaternion ;
-    using library::math::geom::d3::trf::rot::RotationVector ;
+    using ostk::math::obj::Vector3d ;
+    using ostk::math::geom::d3::trf::rot::Quaternion ;
+    using ostk::math::geom::d3::trf::rot::RotationVector ;
 
-    using library::physics::time::Instant ;
+    using ostk::physics::time::Instant ;
 
-    using library::physics::coord::Transform ;
+    using ostk::physics::coord::Transform ;
 
     scope in_Transform = class_<Transform>("Transform", init<Instant, Vector3d, Vector3d, Quaternion, Vector3d, Transform::Type>())
 

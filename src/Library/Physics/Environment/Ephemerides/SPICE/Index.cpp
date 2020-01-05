@@ -16,7 +16,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -33,23 +33,23 @@ std::ostream&                   operator <<                                 (   
                                                                                 const   Index&                      anIndex                                     )
 {
 
-    library::core::utils::Print::Header(anOutputStream, "Index") ;
+    ostk::core::utils::Print::Header(anOutputStream, "Index") ;
 
-    library::core::utils::Print::Line(anOutputStream) << "Timestamp:" << (anIndex.timestamp_.isDefined() ? anIndex.timestamp_.toString() : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Timestamp:" << (anIndex.timestamp_.isDefined() ? anIndex.timestamp_.toString() : "Undefined") ;
 
     for (const auto& itemMapIt : anIndex.itemMap_)
     {
 
-        library::core::utils::Print::Separator(anOutputStream, Kernel::StringFromType(itemMapIt.first)) ;
+        ostk::core::utils::Print::Separator(anOutputStream, Kernel::StringFromType(itemMapIt.first)) ;
 
         for (const auto& itemMapItIt : itemMapIt.second)
         {
-            library::core::utils::Print::Line(anOutputStream) << (itemMapItIt.first + ":") << itemMapItIt.second.toString() ;
+            ostk::core::utils::Print::Line(anOutputStream) << (itemMapItIt.first + ":") << itemMapItIt.second.toString() ;
         }
 
     }
 
-    library::core::utils::Print::Footer(anOutputStream) ;
+    ostk::core::utils::Print::Footer(anOutputStream) ;
 
     return anOutputStream ;
 
@@ -70,7 +70,7 @@ URL                             Index::getRemoteUrlOfKernel                 (   
 
     if (!aKernel.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Kernel") ;
+        throw ostk::core::error::runtime::Undefined("Kernel") ;
     }
 
     const auto itemMapIt = itemMap_.find(aKernel.getType()) ;
@@ -127,12 +127,12 @@ Index                           Index::Empty                                ( )
 Index                           Index::Load                                 (   const   File&                       aFile                                       )
 {
 
-    using library::core::ctnr::Object ;
-    using library::core::ctnr::Dictionary ;
+    using ostk::core::ctnr::Object ;
+    using ostk::core::ctnr::Dictionary ;
 
     if (!aFile.exists())
     {
-        throw library::core::error::RuntimeError("File [{}] does not exist.", aFile.toString()) ;
+        throw ostk::core::error::RuntimeError("File [{}] does not exist.", aFile.toString()) ;
     }
 
     Index index ;

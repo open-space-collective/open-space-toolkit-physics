@@ -16,9 +16,9 @@ inline void                     LibraryPhysicsPy_Environment_Magnetic_Dipole ( )
 
     using namespace boost::python ;
 
-    using library::math::obj::Vector3d ;
+    using ostk::math::obj::Vector3d ;
 
-    using library::physics::environment::magnetic::Dipole ;
+    using ostk::physics::environment::magnetic::Dipole ;
 
     scope in_Dipole = class_<Dipole>("Dipole", init<const Vector3d&>())
 

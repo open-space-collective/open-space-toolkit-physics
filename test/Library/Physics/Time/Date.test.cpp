@@ -16,7 +16,7 @@
 TEST (Library_Physics_Time_Date, Constructor)
 {
 
-    using library::physics::time::Date ;
+    using ostk::physics::time::Date ;
 
     {
 
@@ -49,7 +49,7 @@ TEST (Library_Physics_Time_Date, Constructor)
 TEST (Library_Physics_Time_Date, EqualToOperator)
 {
 
-    using library::physics::time::Date ;
+    using ostk::physics::time::Date ;
 
     {
 
@@ -78,7 +78,7 @@ TEST (Library_Physics_Time_Date, EqualToOperator)
 TEST (Library_Physics_Time_Date, NotEqualToOperator)
 {
 
-    using library::physics::time::Date ;
+    using ostk::physics::time::Date ;
 
     {
 
@@ -107,7 +107,7 @@ TEST (Library_Physics_Time_Date, NotEqualToOperator)
 TEST (Library_Physics_Time_Date, StreamOperator)
 {
 
-    using library::physics::time::Date ;
+    using ostk::physics::time::Date ;
 
     {
 
@@ -124,7 +124,7 @@ TEST (Library_Physics_Time_Date, StreamOperator)
 TEST (Library_Physics_Time_Date, IsDefined)
 {
 
-    using library::physics::time::Date ;
+    using ostk::physics::time::Date ;
 
     {
 
@@ -146,7 +146,7 @@ TEST (Library_Physics_Time_Date, IsDefined)
 TEST (Library_Physics_Time_Date, GetYear)
 {
 
-    using library::physics::time::Date ;
+    using ostk::physics::time::Date ;
 
     {
 
@@ -168,7 +168,7 @@ TEST (Library_Physics_Time_Date, GetYear)
 TEST (Library_Physics_Time_Date, GetMonth)
 {
 
-    using library::physics::time::Date ;
+    using ostk::physics::time::Date ;
 
     {
 
@@ -188,7 +188,7 @@ TEST (Library_Physics_Time_Date, GetMonth)
 TEST (Library_Physics_Time_Date, GetDay)
 {
 
-    using library::physics::time::Date ;
+    using ostk::physics::time::Date ;
 
     {
 
@@ -208,7 +208,7 @@ TEST (Library_Physics_Time_Date, GetDay)
 TEST (Library_Physics_Time_Date, ToString)
 {
 
-    using library::physics::time::Date ;
+    using ostk::physics::time::Date ;
 
     {
 
@@ -252,7 +252,7 @@ TEST (Library_Physics_Time_Date, ToString)
 TEST (Library_Physics_Time_Date, SetYear)
 {
 
-    using library::physics::time::Date ;
+    using ostk::physics::time::Date ;
 
     {
 
@@ -277,7 +277,7 @@ TEST (Library_Physics_Time_Date, SetYear)
 TEST (Library_Physics_Time_Date, SetMonth)
 {
 
-    using library::physics::time::Date ;
+    using ostk::physics::time::Date ;
 
     {
 
@@ -305,7 +305,7 @@ TEST (Library_Physics_Time_Date, SetMonth)
 TEST (Library_Physics_Time_Date, SetDay)
 {
 
-    using library::physics::time::Date ;
+    using ostk::physics::time::Date ;
 
     {
 
@@ -333,7 +333,7 @@ TEST (Library_Physics_Time_Date, SetDay)
 TEST (Library_Physics_Time_Date, Undefined)
 {
 
-    using library::physics::time::Date ;
+    using ostk::physics::time::Date ;
 
     {
 
@@ -348,7 +348,7 @@ TEST (Library_Physics_Time_Date, Undefined)
 TEST (Library_Physics_Time_Date, J2000)
 {
 
-    using library::physics::time::Date ;
+    using ostk::physics::time::Date ;
 
     {
 
@@ -361,7 +361,7 @@ TEST (Library_Physics_Time_Date, J2000)
 TEST (Library_Physics_Time_Date, GPSEpoch)
 {
 
-    using library::physics::time::Date ;
+    using ostk::physics::time::Date ;
 
     {
 
@@ -374,7 +374,7 @@ TEST (Library_Physics_Time_Date, GPSEpoch)
 TEST (Library_Physics_Time_Date, UnixEpoch)
 {
 
-    using library::physics::time::Date ;
+    using ostk::physics::time::Date ;
 
     {
 
@@ -387,7 +387,7 @@ TEST (Library_Physics_Time_Date, UnixEpoch)
 TEST (Library_Physics_Time_Date, ModifiedJulianDateEpoch)
 {
 
-    using library::physics::time::Date ;
+    using ostk::physics::time::Date ;
 
     {
 
@@ -400,7 +400,7 @@ TEST (Library_Physics_Time_Date, ModifiedJulianDateEpoch)
 TEST (Library_Physics_Time_Date, Parse)
 {
 
-    using library::physics::time::Date ;
+    using ostk::physics::time::Date ;
 
     {
 

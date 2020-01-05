@@ -16,10 +16,10 @@
 TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, StreamOperator)
 {
 
-    using library::core::fs::Path ;
-    using library::core::fs::File ;
+    using ostk::core::fs::Path ;
+    using ostk::core::fs::File ;
 
-    using library::physics::coord::frame::provider::iers::BulletinA ;
+    using ostk::physics::coord::frame::provider::iers::BulletinA ;
 
     {
 
@@ -40,10 +40,10 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, StreamOperator)
 TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, IsDefined)
 {
 
-    using library::core::fs::Path ;
-    using library::core::fs::File ;
+    using ostk::core::fs::Path ;
+    using ostk::core::fs::File ;
 
-    using library::physics::coord::frame::provider::iers::BulletinA ;
+    using ostk::physics::coord::frame::provider::iers::BulletinA ;
 
     {
 
@@ -66,7 +66,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, IsDefined)
 TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessReleaseDate)
 {
 
-    using library::physics::coord::frame::provider::iers::BulletinA ;
+    using ostk::physics::coord::frame::provider::iers::BulletinA ;
 
     SUCCEED() ; // See: GetReleaseDate
 
@@ -75,7 +75,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessReleaseDa
 TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessTAIMinusUTC)
 {
 
-    using library::physics::coord::frame::provider::iers::BulletinA ;
+    using ostk::physics::coord::frame::provider::iers::BulletinA ;
 
     SUCCEED() ; // See: GetTAIMinusUTC
 
@@ -84,7 +84,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessTAIMinusU
 TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessTAIMinusUTCEpoch)
 {
 
-    using library::physics::coord::frame::provider::iers::BulletinA ;
+    using ostk::physics::coord::frame::provider::iers::BulletinA ;
 
     SUCCEED() ; // See: GetTAIMinusUTCEpoch
 
@@ -93,7 +93,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessTAIMinusU
 TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessObservationInterval)
 {
 
-    using library::physics::coord::frame::provider::iers::BulletinA ;
+    using ostk::physics::coord::frame::provider::iers::BulletinA ;
 
     SUCCEED() ; // See: GetObservationInterval
 
@@ -102,7 +102,7 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessObservati
 TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessPredictionInterval)
 {
 
-    using library::physics::coord::frame::provider::iers::BulletinA ;
+    using ostk::physics::coord::frame::provider::iers::BulletinA ;
 
     SUCCEED() ; // See: GetPredictionInterval
 
@@ -111,11 +111,11 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessPredictio
 TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetReleaseDate)
 {
 
-    using library::core::fs::Path ;
-    using library::core::fs::File ;
+    using ostk::core::fs::Path ;
+    using ostk::core::fs::File ;
 
-    using library::physics::time::Date ;
-    using library::physics::coord::frame::provider::iers::BulletinA ;
+    using ostk::physics::time::Date ;
+    using ostk::physics::coord::frame::provider::iers::BulletinA ;
 
     {
 
@@ -138,11 +138,11 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetReleaseDate)
 TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetTAIMinusUTC)
 {
 
-    using library::core::fs::Path ;
-    using library::core::fs::File ;
+    using ostk::core::fs::Path ;
+    using ostk::core::fs::File ;
 
-    using library::physics::time::Duration ;
-    using library::physics::coord::frame::provider::iers::BulletinA ;
+    using ostk::physics::time::Duration ;
+    using ostk::physics::coord::frame::provider::iers::BulletinA ;
 
     {
 
@@ -165,13 +165,13 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetTAIMinusUTC)
 TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetTAIMinusUTCEpoch)
 {
 
-    using library::core::fs::Path ;
-    using library::core::fs::File ;
+    using ostk::core::fs::Path ;
+    using ostk::core::fs::File ;
 
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::DateTime ;
-    using library::physics::coord::frame::provider::iers::BulletinA ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::coord::frame::provider::iers::BulletinA ;
 
     {
 
@@ -194,14 +194,14 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetTAIMinusUTCE
 TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetObservationInterval)
 {
 
-    using library::core::fs::Path ;
-    using library::core::fs::File ;
+    using ostk::core::fs::Path ;
+    using ostk::core::fs::File ;
 
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::Interval ;
-    using library::physics::time::DateTime ;
-    using library::physics::coord::frame::provider::iers::BulletinA ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::Interval ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::coord::frame::provider::iers::BulletinA ;
 
     {
 
@@ -224,13 +224,13 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetObservationI
 TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetObservationAt)
 {
 
-    using library::core::fs::Path ;
-    using library::core::fs::File ;
+    using ostk::core::fs::Path ;
+    using ostk::core::fs::File ;
 
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::DateTime ;
-    using library::physics::coord::frame::provider::iers::BulletinA ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::coord::frame::provider::iers::BulletinA ;
 
     {
 
@@ -268,14 +268,14 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetObservationA
 TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetPredictionInterval)
 {
 
-    using library::core::fs::Path ;
-    using library::core::fs::File ;
+    using ostk::core::fs::Path ;
+    using ostk::core::fs::File ;
 
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::Interval ;
-    using library::physics::time::DateTime ;
-    using library::physics::coord::frame::provider::iers::BulletinA ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::Interval ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::coord::frame::provider::iers::BulletinA ;
 
     {
 
@@ -298,13 +298,13 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetPredictionIn
 TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetPredictionAt)
 {
 
-    using library::core::fs::Path ;
-    using library::core::fs::File ;
+    using ostk::core::fs::Path ;
+    using ostk::core::fs::File ;
 
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::DateTime ;
-    using library::physics::coord::frame::provider::iers::BulletinA ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::coord::frame::provider::iers::BulletinA ;
 
     {
 
@@ -339,16 +339,16 @@ TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetPredictionAt
 TEST (Library_Physics_Coordinate_Frame_Providers_IERS_BulletinA, Load)
 {
 
-    using library::core::fs::Path ;
-    using library::core::fs::File ;
+    using ostk::core::fs::Path ;
+    using ostk::core::fs::File ;
 
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::Duration ;
-    using library::physics::time::Interval ;
-    using library::physics::time::Date ;
-    using library::physics::time::DateTime ;
-    using library::physics::coord::frame::provider::iers::BulletinA ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::Duration ;
+    using ostk::physics::time::Interval ;
+    using ostk::physics::time::Date ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::coord::frame::provider::iers::BulletinA ;
 
     {
 

@@ -16,7 +16,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -37,12 +37,12 @@ namespace spherical
 
     if (latitude_.isDefined() && ((latitude_.inDegrees() < -90.0) || (latitude_.inDegrees() > 90.0)))
     {
-        throw library::core::error::runtime::Wrong("Latitude") ;
+        throw ostk::core::error::runtime::Wrong("Latitude") ;
     }
 
     if (longitude_.isDefined() && ((longitude_.inDegrees() < -180.0) || (longitude_.inDegrees() > 180.0)))
     {
-        throw library::core::error::runtime::Wrong("Longitude") ;
+        throw ostk::core::error::runtime::Wrong("Longitude") ;
     }
 
 }
@@ -68,13 +68,13 @@ std::ostream&                   operator <<                                 (   
                                                                                 const   LLA&                        aLLA                                        )
 {
 
-    library::core::utils::Print::Header(anOutputStream, "LLA") ;
+    ostk::core::utils::Print::Header(anOutputStream, "LLA") ;
 
-    library::core::utils::Print::Line(anOutputStream) << "Latitude:"            << (aLLA.latitude_.isDefined() ? aLLA.latitude_.toString() : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Longitude:"           << (aLLA.longitude_.isDefined() ? aLLA.longitude_.toString() : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Altitude:"            << (aLLA.altitude_.isDefined() ? aLLA.altitude_.toString() : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Latitude:"            << (aLLA.latitude_.isDefined() ? aLLA.latitude_.toString() : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Longitude:"           << (aLLA.longitude_.isDefined() ? aLLA.longitude_.toString() : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Altitude:"            << (aLLA.altitude_.isDefined() ? aLLA.altitude_.toString() : "Undefined") ;
 
-    library::core::utils::Print::Footer(anOutputStream) ;
+    ostk::core::utils::Print::Footer(anOutputStream) ;
 
     return anOutputStream ;
 
@@ -90,7 +90,7 @@ Angle                           LLA::getLatitude                            ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("LLA") ;
+        throw ostk::core::error::runtime::Undefined("LLA") ;
     }
 
     return latitude_ ;
@@ -102,7 +102,7 @@ Angle                           LLA::getLongitude                           ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("LLA") ;
+        throw ostk::core::error::runtime::Undefined("LLA") ;
     }
 
     return longitude_ ;
@@ -114,7 +114,7 @@ Length                          LLA::getAltitude                            ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("LLA") ;
+        throw ostk::core::error::runtime::Undefined("LLA") ;
     }
 
     return altitude_ ;
@@ -126,7 +126,7 @@ Vector3d                        LLA::toVector                               ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("LLA") ;
+        throw ostk::core::error::runtime::Undefined("LLA") ;
     }
 
     return { latitude_.inDegrees(), longitude_.inDegrees(), altitude_.inMeters() } ;
@@ -139,17 +139,17 @@ Vector3d                        LLA::toCartesian                            (   
 
     if (!anEllipsoidEquatorialRadius.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Ellipsoid equatorial radius") ;
+        throw ostk::core::error::runtime::Undefined("Ellipsoid equatorial radius") ;
     }
 
     if (!anEllipsoidFlattening.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Ellipsoid flattening") ;
+        throw ostk::core::error::runtime::Undefined("Ellipsoid flattening") ;
     }
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("LLA") ;
+        throw ostk::core::error::runtime::Undefined("LLA") ;
     }
 
     const double latitude_rad = latitude_.inRadians() ;
@@ -162,7 +162,7 @@ Vector3d                        LLA::toCartesian                            (   
 
     if (result != 0)
     {
-        throw library::core::error::RuntimeError("Cannot convert LLA to Cartesian.") ;
+        throw ostk::core::error::RuntimeError("Cannot convert LLA to Cartesian.") ;
     }
 
     return { cartesianArray[0], cartesianArray[1], cartesianArray[2] } ;
@@ -174,7 +174,7 @@ String                          LLA::toString                               ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("LLA") ;
+        throw ostk::core::error::runtime::Undefined("LLA") ;
     }
 
     return String::Format("[{}, {}, {}]", latitude_.toString(), longitude_.toString(), altitude_.toString()) ;
@@ -191,7 +191,7 @@ LLA                             LLA::Vector                                 (   
 
     if (!aVector.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Vector") ;
+        throw ostk::core::error::runtime::Undefined("Vector") ;
     }
 
     return { Angle::Degrees(aVector.x()), Angle::Degrees(aVector.y()), Length::Meters(aVector.z()) } ;
@@ -205,17 +205,17 @@ LLA                             LLA::Cartesian                              (   
 
     if (!aCartesianCoordinateSet.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Cartesian coordinates") ;
+        throw ostk::core::error::runtime::Undefined("Cartesian coordinates") ;
     }
 
     if (!anEllipsoidEquatorialRadius.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Ellipsoid equatorial radius") ;
+        throw ostk::core::error::runtime::Undefined("Ellipsoid equatorial radius") ;
     }
 
     if (!anEllipsoidFlattening.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Ellipsoid flattening") ;
+        throw ostk::core::error::runtime::Undefined("Ellipsoid flattening") ;
     }
 
     double latitude_rad ;
@@ -226,7 +226,7 @@ LLA                             LLA::Cartesian                              (   
 
     if (result != 0)
     {
-        throw library::core::error::RuntimeError("Cannot convert Cartesian to LLA.") ;
+        throw ostk::core::error::RuntimeError("Cannot convert Cartesian to LLA.") ;
     }
 
     const Angle latitude = Angle::Degrees(latitude_rad * 180.0 / M_PI) ;

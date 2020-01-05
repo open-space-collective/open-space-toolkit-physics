@@ -23,12 +23,12 @@ inline void                     LibraryPhysicsPy_Environment                ( )
 
     using namespace boost::python ;
 
-    using library::core::types::Shared ;
-    using library::core::ctnr::Array ;
+    using ostk::core::types::Shared ;
+    using ostk::core::ctnr::Array ;
 
-    using library::physics::time::Instant ;
-    using library::physics::Environment ;
-    using library::physics::env::Object ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::Environment ;
+    using ostk::physics::env::Object ;
 
     scope in_Environment = class_<Environment>("Environment", init<const Instant&, const Array<Shared<Object>>&>())
 

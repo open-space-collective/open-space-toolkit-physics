@@ -17,13 +17,13 @@
 TEST (Library_Physics_Units_Derived, Constructor)
 {
 
-    using library::core::types::Real ;
-    using library::physics::units::Length ;
-    using library::physics::units::Mass ;
-    using library::physics::units::Time ;
-    using library::physics::units::ElectricCurrent ;
-    using library::physics::units::Angle ;
-    using library::physics::units::Derived ;
+    using ostk::core::types::Real ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::units::Mass ;
+    using ostk::physics::units::Time ;
+    using ostk::physics::units::ElectricCurrent ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::units::Derived ;
 
     {
 
@@ -66,13 +66,13 @@ TEST (Library_Physics_Units_Derived, Constructor)
 TEST (Library_Physics_Units_Derived, EqualToOperator)
 {
 
-    using library::core::types::Real ;
-    using library::physics::units::Length ;
-    using library::physics::units::Mass ;
-    using library::physics::units::Time ;
-    using library::physics::units::ElectricCurrent ;
-    using library::physics::units::Angle ;
-    using library::physics::units::Derived ;
+    using ostk::core::types::Real ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::units::Mass ;
+    using ostk::physics::units::Time ;
+    using ostk::physics::units::ElectricCurrent ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::units::Derived ;
 
     {
 
@@ -158,7 +158,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 // TEST (Library_Physics_Units_Derived, NotEqualToOperator)
 // {
 
-//     using library::physics::units::Derived ;
+//     using ostk::physics::units::Derived ;
 
 //     {
 
@@ -188,7 +188,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 // TEST (Library_Physics_Units_Derived, LowerThanOperator)
 // {
 
-//     using library::physics::units::Derived ;
+//     using ostk::physics::units::Derived ;
 
 //     {
 
@@ -220,7 +220,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 // TEST (Library_Physics_Units_Derived, LowerThanOrEqualToOperator)
 // {
 
-//     using library::physics::units::Derived ;
+//     using ostk::physics::units::Derived ;
 
 //     {
 
@@ -251,7 +251,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 // TEST (Library_Physics_Units_Derived, GreaterThanOperator)
 // {
 
-//     using library::physics::units::Derived ;
+//     using ostk::physics::units::Derived ;
 
 //     {
 
@@ -283,7 +283,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 // TEST (Library_Physics_Units_Derived, GreaterThanOrEqualToOperator)
 // {
 
-//     using library::physics::units::Derived ;
+//     using ostk::physics::units::Derived ;
 
 //     {
 
@@ -314,7 +314,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 // TEST (Library_Physics_Units_Derived, AdditionOperator)
 // {
 
-//     using library::physics::units::Derived ;
+//     using ostk::physics::units::Derived ;
 
 //     {
 
@@ -345,7 +345,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 // TEST (Library_Physics_Units_Derived, SubtractionOperator)
 // {
 
-//     using library::physics::units::Derived ;
+//     using ostk::physics::units::Derived ;
 
 //     {
 
@@ -376,8 +376,8 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 // TEST (Library_Physics_Units_Derived, MultiplicationOperator)
 // {
 
-//     using library::core::types::Real ;
-//     using library::physics::units::Derived ;
+//     using ostk::core::types::Real ;
+//     using ostk::physics::units::Derived ;
 
 //     {
 
@@ -433,8 +433,8 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 // TEST (Library_Physics_Units_Derived, DivisionOperator)
 // {
 
-//     using library::core::types::Real ;
-//     using library::physics::units::Derived ;
+//     using ostk::core::types::Real ;
+//     using ostk::physics::units::Derived ;
 
 //     {
 
@@ -473,7 +473,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 // TEST (Library_Physics_Units_Derived, AdditionAssignmentOperator)
 // {
 
-//     using library::physics::units::Derived ;
+//     using ostk::physics::units::Derived ;
 
 //     {
 
@@ -504,7 +504,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 // TEST (Library_Physics_Units_Derived, SubtractionAssignmentOperator)
 // {
 
-//     using library::physics::units::Derived ;
+//     using ostk::physics::units::Derived ;
 
 //     {
 
@@ -535,8 +535,8 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 // TEST (Library_Physics_Units_Derived, MultiplicationAssignmentOperator)
 // {
 
-//     using library::core::types::Real ;
-//     using library::physics::units::Derived ;
+//     using ostk::core::types::Real ;
+//     using ostk::physics::units::Derived ;
 
 //     {
 
@@ -574,8 +574,8 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 // TEST (Library_Physics_Units_Derived, DivisionAssignmentOperator)
 // {
 
-//     using library::core::types::Real ;
-//     using library::physics::units::Derived ;
+//     using ostk::core::types::Real ;
+//     using ostk::physics::units::Derived ;
 
 //     {
 
@@ -614,7 +614,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 // TEST (Library_Physics_Units_Derived, StreamOperator)
 // {
 
-//     using library::physics::units::Derived ;
+//     using ostk::physics::units::Derived ;
 
 //     {
 
@@ -631,8 +631,8 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 // TEST (Library_Physics_Units_Derived, IsDefined)
 // {
 
-//     using library::core::types::Real ;
-//     using library::physics::units::Derived ;
+//     using ostk::core::types::Real ;
+//     using ostk::physics::units::Derived ;
 
 //     {
 
@@ -659,7 +659,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 // TEST (Library_Physics_Units_Derived, GetUnit)
 // {
 
-//     using library::physics::units::Derived ;
+//     using ostk::physics::units::Derived ;
 
 //     {
 
@@ -677,7 +677,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 // TEST (Library_Physics_Units_Derived, In)
 // {
 
-//     using library::physics::units::Derived ;
+//     using ostk::physics::units::Derived ;
 
 //     {
 
@@ -700,7 +700,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 // TEST (Library_Physics_Units_Derived, InMeters)
 // {
 
-//     using library::physics::units::Derived ;
+//     using ostk::physics::units::Derived ;
 
 //     {
 
@@ -719,7 +719,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 // TEST (Library_Physics_Units_Derived, InKilometers)
 // {
 
-//     using library::physics::units::Derived ;
+//     using ostk::physics::units::Derived ;
 
 //     {
 
@@ -738,7 +738,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 // TEST (Library_Physics_Units_Derived, ToString)
 // {
 
-//     using library::physics::units::Derived ;
+//     using ostk::physics::units::Derived ;
 
 //     {
 
@@ -773,7 +773,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 // TEST (Library_Physics_Units_Derived, Undefined)
 // {
 
-//     using library::physics::units::Derived ;
+//     using ostk::physics::units::Derived ;
 
 //     {
 
@@ -789,7 +789,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 // TEST (Library_Physics_Units_Derived, Meters)
 // {
 
-//     using library::physics::units::Derived ;
+//     using ostk::physics::units::Derived ;
 
 //     {
 
@@ -805,7 +805,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 // TEST (Library_Physics_Units_Derived, Kilometers)
 // {
 
-//     using library::physics::units::Derived ;
+//     using ostk::physics::units::Derived ;
 
 //     {
 
@@ -821,7 +821,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 // // TEST (Library_Physics_Units_Derived, Parse)
 // // {
 
-// //     using library::physics::units::Derived ;
+// //     using ostk::physics::units::Derived ;
 
 // //     {
 
@@ -834,7 +834,7 @@ TEST (Library_Physics_Units_Derived, EqualToOperator)
 // TEST (Library_Physics_Units_Derived, StringFromUnit)
 // {
 
-//     using library::physics::units::Derived ;
+//     using ostk::physics::units::Derived ;
 
 //     {
 

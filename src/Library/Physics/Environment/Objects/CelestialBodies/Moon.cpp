@@ -17,7 +17,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -30,9 +30,9 @@ namespace celest
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using library::physics::units::Mass ;
-using library::physics::units::Time ;
-using library::physics::units::Angle ;
+using ostk::physics::units::Mass ;
+using ostk::physics::units::Time ;
+using ostk::physics::units::Angle ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -75,7 +75,7 @@ Moon*                           Moon::clone                                 ( ) 
 Moon                            Moon::Default                               ( )
 {
 
-    using library::physics::env::ephem::SPICE ;
+    using ostk::physics::env::ephem::SPICE ;
 
     return { std::make_shared<SPICE>(SPICE::Object::Moon), Instant::J2000() } ; // [TBI]
 
@@ -86,8 +86,8 @@ Moon                            Moon::Default                               ( )
 Object::Geometry                Moon::Geometry                              (   const   Shared<const Frame>&        aFrame                                      )
 {
 
-    using library::math::geom::d3::objects::Point ;
-    using library::math::geom::d3::trf::rot::Quaternion ;
+    using ostk::math::geom::d3::objects::Point ;
+    using ostk::math::geom::d3::trf::rot::Quaternion ;
 
     const Real equatorialRadius_m = Moon::EquatorialRadius.inMeters() ;
     const Real polarRadius_m = equatorialRadius_m * (1.0 - Moon::Flattening) ;

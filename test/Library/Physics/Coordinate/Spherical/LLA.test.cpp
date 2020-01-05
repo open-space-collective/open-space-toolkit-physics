@@ -26,10 +26,10 @@
 TEST (Library_Physics_Coordinate_Spherical_LLA, Constructor)
 {
 
-    using library::physics::units::Length ;
-    using library::physics::units::Angle ;
-    using library::physics::coord::Position ;
-    using library::physics::coord::spherical::LLA ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::coord::Position ;
+    using ostk::physics::coord::spherical::LLA ;
 
     {
 
@@ -56,10 +56,10 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, Constructor)
 TEST (Library_Physics_Coordinate_Spherical_LLA, EqualToOperator)
 {
 
-    using library::physics::units::Length ;
-    using library::physics::units::Angle ;
-    using library::physics::coord::Position ;
-    using library::physics::coord::spherical::LLA ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::coord::Position ;
+    using ostk::physics::coord::spherical::LLA ;
 
     {
 
@@ -98,10 +98,10 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, EqualToOperator)
 TEST (Library_Physics_Coordinate_Spherical_LLA, NotEqualToOperator)
 {
 
-    using library::physics::units::Length ;
-    using library::physics::units::Angle ;
-    using library::physics::coord::Position ;
-    using library::physics::coord::spherical::LLA ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::coord::Position ;
+    using ostk::physics::coord::spherical::LLA ;
 
     {
 
@@ -140,10 +140,10 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, NotEqualToOperator)
 TEST (Library_Physics_Coordinate_Spherical_LLA, StreamOperator)
 {
 
-    using library::physics::units::Length ;
-    using library::physics::units::Angle ;
-    using library::physics::coord::Position ;
-    using library::physics::coord::spherical::LLA ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::coord::Position ;
+    using ostk::physics::coord::spherical::LLA ;
 
     {
 
@@ -166,10 +166,10 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, StreamOperator)
 TEST (Library_Physics_Coordinate_Spherical_LLA, IsDefined)
 {
 
-    using library::physics::units::Length ;
-    using library::physics::units::Angle ;
-    using library::physics::coord::Position ;
-    using library::physics::coord::spherical::LLA ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::coord::Position ;
+    using ostk::physics::coord::spherical::LLA ;
 
     {
 
@@ -194,10 +194,10 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, IsDefined)
 TEST (Library_Physics_Coordinate_Spherical_LLA, GetLatitude)
 {
 
-    using library::physics::units::Length ;
-    using library::physics::units::Angle ;
-    using library::physics::coord::Position ;
-    using library::physics::coord::spherical::LLA ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::coord::Position ;
+    using ostk::physics::coord::spherical::LLA ;
 
     {
 
@@ -222,10 +222,10 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, GetLatitude)
 TEST (Library_Physics_Coordinate_Spherical_LLA, GetLongitude)
 {
 
-    using library::physics::units::Length ;
-    using library::physics::units::Angle ;
-    using library::physics::coord::Position ;
-    using library::physics::coord::spherical::LLA ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::coord::Position ;
+    using ostk::physics::coord::spherical::LLA ;
 
     {
 
@@ -250,10 +250,10 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, GetLongitude)
 TEST (Library_Physics_Coordinate_Spherical_LLA, GetAltitude)
 {
 
-    using library::physics::units::Length ;
-    using library::physics::units::Angle ;
-    using library::physics::coord::Position ;
-    using library::physics::coord::spherical::LLA ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::coord::Position ;
+    using ostk::physics::coord::spherical::LLA ;
 
     {
 
@@ -278,12 +278,12 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, GetAltitude)
 TEST (Library_Physics_Coordinate_Spherical_LLA, ToVector)
 {
 
-    using library::math::obj::Vector3d ;
+    using ostk::math::obj::Vector3d ;
 
-    using library::physics::units::Length ;
-    using library::physics::units::Angle ;
-    using library::physics::coord::Position ;
-    using library::physics::coord::spherical::LLA ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::coord::Position ;
+    using ostk::physics::coord::spherical::LLA ;
 
     {
 
@@ -308,31 +308,31 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, ToVector)
 TEST (Library_Physics_Coordinate_Spherical_LLA, ToCartesian)
 {
 
-    using library::physics::units::Length ;
-    using library::physics::units::Angle ;
-    using library::physics::coord::Position ;
-    using library::physics::coord::spherical::LLA ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::coord::Position ;
+    using ostk::physics::coord::spherical::LLA ;
 
-    using library::core::types::Shared ;
-    using library::core::types::Real ;
-    using library::core::types::String ;
-    using library::core::ctnr::Tuple ;
-    using library::core::ctnr::Array ;
-    using library::core::ctnr::Table ;
-    using library::core::fs::Path ;
-    using library::core::fs::File ;
+    using ostk::core::types::Shared ;
+    using ostk::core::types::Real ;
+    using ostk::core::types::String ;
+    using ostk::core::ctnr::Tuple ;
+    using ostk::core::ctnr::Array ;
+    using ostk::core::ctnr::Table ;
+    using ostk::core::fs::Path ;
+    using ostk::core::fs::File ;
 
-    using library::math::obj::Vector3d ;
+    using ostk::math::obj::Vector3d ;
 
-    using library::physics::units::Length ;
-    using library::physics::units::Angle ;
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::DateTime ;
-    using library::physics::coord::Position ;
-    using library::physics::coord::spherical::LLA ;
-    using library::physics::coord::Frame ;
-    using library::physics::env::obj::celest::Earth ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::coord::Position ;
+    using ostk::physics::coord::spherical::LLA ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::env::obj::celest::Earth ;
 
     {
 
@@ -395,10 +395,10 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, ToCartesian)
 TEST (Library_Physics_Coordinate_Spherical_LLA, ToString)
 {
 
-    using library::physics::units::Length ;
-    using library::physics::units::Angle ;
-    using library::physics::coord::Position ;
-    using library::physics::coord::spherical::LLA ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::coord::Position ;
+    using ostk::physics::coord::spherical::LLA ;
 
     {
 
@@ -423,7 +423,7 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, ToString)
 TEST (Library_Physics_Coordinate_Spherical_LLA, Undefined)
 {
 
-    using library::physics::coord::spherical::LLA ;
+    using ostk::physics::coord::spherical::LLA ;
 
     {
 
@@ -436,12 +436,12 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, Undefined)
 TEST (Library_Physics_Coordinate_Spherical_LLA, Vector)
 {
 
-    using library::math::obj::Vector3d ;
+    using ostk::math::obj::Vector3d ;
 
-    using library::physics::units::Length ;
-    using library::physics::units::Angle ;
-    using library::physics::coord::Position ;
-    using library::physics::coord::spherical::LLA ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::coord::Position ;
+    using ostk::physics::coord::spherical::LLA ;
 
     {
 
@@ -468,26 +468,26 @@ TEST (Library_Physics_Coordinate_Spherical_LLA, Vector)
 TEST (Library_Physics_Coordinate_Spherical_LLA, Cartesian)
 {
 
-    using library::core::types::Shared ;
-    using library::core::types::Real ;
-    using library::core::types::String ;
-    using library::core::ctnr::Tuple ;
-    using library::core::ctnr::Array ;
-    using library::core::ctnr::Table ;
-    using library::core::fs::Path ;
-    using library::core::fs::File ;
+    using ostk::core::types::Shared ;
+    using ostk::core::types::Real ;
+    using ostk::core::types::String ;
+    using ostk::core::ctnr::Tuple ;
+    using ostk::core::ctnr::Array ;
+    using ostk::core::ctnr::Table ;
+    using ostk::core::fs::Path ;
+    using ostk::core::fs::File ;
 
-    using library::math::obj::Vector3d ;
+    using ostk::math::obj::Vector3d ;
 
-    using library::physics::units::Length ;
-    using library::physics::units::Angle ;
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::DateTime ;
-    using library::physics::coord::Position ;
-    using library::physics::coord::spherical::LLA ;
-    using library::physics::coord::Frame ;
-    using library::physics::env::obj::celest::Earth ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::coord::Position ;
+    using ostk::physics::coord::spherical::LLA ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::env::obj::celest::Earth ;
 
     {
 

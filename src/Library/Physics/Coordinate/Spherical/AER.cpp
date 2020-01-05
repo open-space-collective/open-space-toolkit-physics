@@ -15,7 +15,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -36,17 +36,17 @@ namespace spherical
 
     if (azimuth_.isDefined() && ((azimuth_.inDegrees() < 0.0) || (azimuth_.inDegrees() > 360.0)))
     {
-        throw library::core::error::runtime::Wrong("Azimuth") ;
+        throw ostk::core::error::runtime::Wrong("Azimuth") ;
     }
 
     if (elevation_.isDefined() && ((elevation_.inDegrees() < -90.0) || (elevation_.inDegrees() > 90.0)))
     {
-        throw library::core::error::runtime::Wrong("Elevation") ;
+        throw ostk::core::error::runtime::Wrong("Elevation") ;
     }
 
     if (range_.isDefined() && (range_.inMeters() < 0.0))
     {
-        throw library::core::error::runtime::Wrong("Range") ;
+        throw ostk::core::error::runtime::Wrong("Range") ;
     }
 
 }
@@ -72,13 +72,13 @@ std::ostream&                   operator <<                                 (   
                                                                                 const   AER&                        anAER                                       )
 {
 
-    library::core::utils::Print::Header(anOutputStream, "AER") ;
+    ostk::core::utils::Print::Header(anOutputStream, "AER") ;
 
-    library::core::utils::Print::Line(anOutputStream) << "Azimuth:"             << (anAER.azimuth_.isDefined() ? anAER.azimuth_.toString() : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Elevation:"           << (anAER.elevation_.isDefined() ? anAER.elevation_.toString() : "Undefined") ;
-    library::core::utils::Print::Line(anOutputStream) << "Range:"               << (anAER.range_.isDefined() ? anAER.range_.toString() : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Azimuth:"             << (anAER.azimuth_.isDefined() ? anAER.azimuth_.toString() : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Elevation:"           << (anAER.elevation_.isDefined() ? anAER.elevation_.toString() : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Range:"               << (anAER.range_.isDefined() ? anAER.range_.toString() : "Undefined") ;
 
-    library::core::utils::Print::Footer(anOutputStream) ;
+    ostk::core::utils::Print::Footer(anOutputStream) ;
 
     return anOutputStream ;
 
@@ -94,7 +94,7 @@ Angle                           AER::getAzimuth                             ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("AER") ;
+        throw ostk::core::error::runtime::Undefined("AER") ;
     }
 
     return azimuth_ ;
@@ -106,7 +106,7 @@ Angle                           AER::getElevation                           ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("AER") ;
+        throw ostk::core::error::runtime::Undefined("AER") ;
     }
 
     return elevation_ ;
@@ -118,7 +118,7 @@ Length                          AER::getRange                               ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("AER") ;
+        throw ostk::core::error::runtime::Undefined("AER") ;
     }
 
     return range_ ;
@@ -130,7 +130,7 @@ Vector3d                        AER::toVector                               ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("AER") ;
+        throw ostk::core::error::runtime::Undefined("AER") ;
     }
 
     return { azimuth_.inDegrees(), elevation_.inDegrees(), range_.inMeters() } ;
@@ -142,7 +142,7 @@ Vector3d                        AER::toVector                               ( ) 
 
 //     if (!this->isDefined())
 //     {
-//         throw library::core::error::runtime::Undefined("AER") ;
+//         throw ostk::core::error::runtime::Undefined("AER") ;
 //     }
 
 
@@ -154,7 +154,7 @@ String                          AER::toString                               ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("AER") ;
+        throw ostk::core::error::runtime::Undefined("AER") ;
     }
 
     return String::Format("[{}, {}, {}]", azimuth_.toString(), elevation_.toString(), range_.toString()) ;
@@ -171,7 +171,7 @@ AER                             AER::Vector                                 (   
 
     if (!aVector.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Vector") ;
+        throw ostk::core::error::runtime::Undefined("Vector") ;
     }
 
     return { Angle::Degrees(aVector.x()), Angle::Degrees(aVector.y()), Length::Meters(aVector.z()) } ;
@@ -185,17 +185,17 @@ AER                             AER::FromPositionToPosition                 (   
 
     if (!aFromPosition.isDefined())
     {
-        throw library::core::error::runtime::Undefined("From position") ;
+        throw ostk::core::error::runtime::Undefined("From position") ;
     }
 
     if (!aToPosition.isDefined())
     {
-        throw library::core::error::runtime::Undefined("To position") ;
+        throw ostk::core::error::runtime::Undefined("To position") ;
     }
 
     if ((*aFromPosition.accessFrame()) != (*aToPosition.accessFrame()))
     {
-        throw library::core::error::RuntimeError("Positions should be given in the same frame.") ;
+        throw ostk::core::error::RuntimeError("Positions should be given in the same frame.") ;
     }
 
     const Vector3d fromPositionCoordinates = aFromPosition.getCoordinates() ;

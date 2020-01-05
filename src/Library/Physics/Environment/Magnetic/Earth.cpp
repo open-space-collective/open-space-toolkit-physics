@@ -23,7 +23,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -98,11 +98,11 @@ Vector3d                        Earth::Impl::getFieldValueAt                (   
 
     using GeographicLib::Geocentric ;
 
-    using library::core::types::Integer ;
+    using ostk::core::types::Integer ;
 
-    using library::math::geom::d3::trf::rot::RotationMatrix ;
+    using ostk::math::geom::d3::trf::rot::RotationMatrix ;
 
-    using library::physics::time::Scale ;
+    using ostk::physics::time::Scale ;
 
     if (type_ == Earth::Type::Dipole)
     {
@@ -113,7 +113,7 @@ Vector3d                        Earth::Impl::getFieldValueAt                (   
 
     if (((year < static_cast<int>(magneticModelPtr_->MinTime())) || (year > static_cast<int>(magneticModelPtr_->MaxTime()))))
     {
-        throw library::core::error::RuntimeError("Year [{}] is out of [{}, {}] bounds.", year, magneticModelPtr_->MinTime(), magneticModelPtr_->MaxTime()) ;
+        throw ostk::core::error::RuntimeError("Year [{}] is out of [{}, {}] bounds.", year, magneticModelPtr_->MinTime(), magneticModelPtr_->MaxTime()) ;
     }
 
     static const Geocentric earthGeocentric = Geocentric::WGS84() ;
@@ -155,9 +155,9 @@ MagneticModel*                  Earth::Impl::MagneticModelFromType          (   
                                                                                 const   Directory&                  aDataDirectory                              )
 {
 
-    using library::core::types::String ;
+    using ostk::core::types::String ;
 
-    using library::physics::environment::magnetic::earth::Manager ;
+    using ostk::physics::environment::magnetic::earth::Manager ;
 
     if (aType == Earth::Type::Dipole)
     {
@@ -171,7 +171,7 @@ MagneticModel*                  Earth::Impl::MagneticModelFromType          (   
 
         if (!aDataDirectory.exists())
         {
-            throw library::core::error::RuntimeError("Data directory [{}] does not exist.", aDataDirectory.toString()) ;
+            throw ostk::core::error::RuntimeError("Data directory [{}] does not exist.", aDataDirectory.toString()) ;
         }
 
         dataPath = aDataDirectory.getPath().toString() ;
@@ -219,7 +219,7 @@ MagneticModel*                  Earth::Impl::MagneticModelFromType          (   
             return new GeographicLib::MagneticModel("wmm2015", dataPath) ;
 
         default:
-            throw library::core::error::runtime::Wrong("Type") ;
+            throw ostk::core::error::runtime::Wrong("Type") ;
 
     }
 

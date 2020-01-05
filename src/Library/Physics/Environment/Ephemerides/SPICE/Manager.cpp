@@ -26,7 +26,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -39,7 +39,7 @@ namespace spice
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using library::core::types::String ;
+using ostk::core::types::String ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -77,20 +77,20 @@ File                            Manager::getIndexFile                        ( )
 void                            Manager::fetchKernel                        (   const   Kernel&                     aKernel                                     ) const
 {
 
-    using library::io::ip::tcp::http::Client ;
+    using ostk::io::ip::tcp::http::Client ;
 
     const std::lock_guard<std::mutex> lock { mutex_ } ;
 
     if (!aKernel.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Kernel") ;
+        throw ostk::core::error::runtime::Undefined("Kernel") ;
     }
 
     const File kernelFile = aKernel.getFile() ;
 
     if (kernelFile.exists())
     {
-        throw library::core::error::RuntimeError("Kernel file [{}] already exists.", kernelFile.toString()) ;
+        throw ostk::core::error::RuntimeError("Kernel file [{}] already exists.", kernelFile.toString()) ;
     }
 
     const_cast<Manager*>(this)->updateIndex() ;
@@ -101,7 +101,7 @@ void                            Manager::fetchKernel                        (   
 
     if (!fetchedKernelFile.exists())
     {
-        throw library::core::error::RuntimeError("Cannot fetch kernel file [{}] at [{}].", fetchedKernelFile.toString(), kernelFileUrl.toString()) ;
+        throw ostk::core::error::RuntimeError("Cannot fetch kernel file [{}] at [{}].", fetchedKernelFile.toString(), kernelFileUrl.toString()) ;
     }
     else
     {
@@ -115,7 +115,7 @@ void                            Manager::fetchKernel                        (   
 
             fetchedKernelFile.remove() ;
 
-            throw library::core::error::RuntimeError("Cannot fetch kernel from [{}]: file is empty.", kernelFileUrl.toString()) ;
+            throw ostk::core::error::RuntimeError("Cannot fetch kernel from [{}]: file is empty.", kernelFileUrl.toString()) ;
 
         }
 
@@ -126,7 +126,7 @@ void                            Manager::fetchKernel                        (   
 Array<Kernel>                   Manager::fetchMatchingKernels               (   const   std::regex&                 aRegex                                      ) const
 {
 
-    using library::io::ip::tcp::http::Client ;
+    using ostk::io::ip::tcp::http::Client ;
 
     const std::lock_guard<std::mutex> lock { mutex_ } ;
 
@@ -144,7 +144,7 @@ Array<Kernel>                   Manager::fetchMatchingKernels               (   
 
             if (!fetchedKernelFile.exists())
             {
-                throw library::core::error::RuntimeError("Cannot fetch kernel file [{}] at [{}].", fetchedKernelFile.toString(), remoteUrl.toString()) ;
+                throw ostk::core::error::RuntimeError("Cannot fetch kernel file [{}] at [{}].", fetchedKernelFile.toString(), remoteUrl.toString()) ;
             }
             else
             {
@@ -158,7 +158,7 @@ Array<Kernel>                   Manager::fetchMatchingKernels               (   
 
                     fetchedKernelFile.remove() ;
 
-                    throw library::core::error::RuntimeError("Cannot fetch kernel from [{}]: file is empty.", remoteUrl.toString()) ;
+                    throw ostk::core::error::RuntimeError("Cannot fetch kernel from [{}]: file is empty.", remoteUrl.toString()) ;
 
                 }
 
@@ -180,7 +180,7 @@ Array<Kernel>                   Manager::fetchMatchingKernels               (   
     {
         return fetch() ;
     }
-    catch (const library::core::error::Exception& anException)
+    catch (const ostk::core::error::Exception& anException)
     {
 
         const_cast<Manager*>(this)->flushIndex() ;
@@ -198,7 +198,7 @@ void                            Manager::setLocalRepository                 (   
 
     if (!aDirectory.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Directory") ;
+        throw ostk::core::error::runtime::Undefined("Directory") ;
     }
 
     const std::lock_guard<std::mutex> lock { mutex_ } ;
@@ -212,7 +212,7 @@ void                            Manager::setRemoteUrl                       (   
 
     if (!aRemoteUrl.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Remote URL") ;
+        throw ostk::core::error::runtime::Undefined("Remote URL") ;
     }
 
     const std::lock_guard<std::mutex> lock { mutex_ } ;
@@ -306,7 +306,7 @@ void                            Manager::updateIndex                        ( )
 
         if (!indexFile.exists())
         {
-            throw library::core::error::RuntimeError("Index file [{}] does not exist.", remoteUrl_.toString()) ;
+            throw ostk::core::error::RuntimeError("Index file [{}] does not exist.", remoteUrl_.toString()) ;
         }
 
         index_ = Index::Load(indexFile) ;
@@ -320,17 +320,17 @@ void                            Manager::updateIndex                        ( )
 void                            Manager::fetchIndexAt                       (   const   URL&                        aUrl                                        )
 {
 
-    using library::core::types::Index ;
-    using library::core::ctnr::Pair ;
-    using library::core::ctnr::Array ;
-    using library::core::ctnr::Dictionary ;
-    using library::core::ctnr::Object ;
+    using ostk::core::types::Index ;
+    using ostk::core::ctnr::Pair ;
+    using ostk::core::ctnr::Array ;
+    using ostk::core::ctnr::Dictionary ;
+    using ostk::core::ctnr::Object ;
 
-    using library::io::ip::tcp::http::Client ;
+    using ostk::io::ip::tcp::http::Client ;
 
     if (!aUrl.isDefined())
     {
-        throw library::core::error::runtime::Undefined("URL") ;
+        throw ostk::core::error::runtime::Undefined("URL") ;
     }
 
     Dictionary fileListingDictionary = Dictionary::Empty() ;
@@ -437,9 +437,9 @@ void                            Manager::fetchIndexAt                       (   
         fetchListing(aUrl, 0) ;
 
     }
-    catch (const library::core::error::RuntimeError& anException)
+    catch (const ostk::core::error::RuntimeError& anException)
     {
-        throw library::core::error::RuntimeError("Error when fetching index at [{}]: [{}].", aUrl.toString(), anException.what()) ;
+        throw ostk::core::error::RuntimeError("Error when fetching index at [{}]: [{}].", aUrl.toString(), anException.what()) ;
     }
 
     File remoteIndexFile = this->getIndexFile_() ;
@@ -470,7 +470,7 @@ void                            Manager::flushIndex                         ( )
 
         if (indexFile.exists())
         {
-            throw library::core::error::RuntimeError("Cannot flush index at [{}].", indexFile.toString()) ;
+            throw ostk::core::error::RuntimeError("Cannot flush index at [{}].", indexFile.toString()) ;
         }
 
     }

@@ -15,7 +15,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -73,13 +73,13 @@ bool                            Unit::operator ==                           (   
             case Unit::Type::Temperature:
             case Unit::Type::ElectricCurrent:
             case Unit::Type::LuminousIntensity:
-                throw library::core::error::runtime::ToBeImplemented(Unit::StringFromType(type_)) ;
+                throw ostk::core::error::runtime::ToBeImplemented(Unit::StringFromType(type_)) ;
 
             case Unit::Type::Derived:
                 return static_cast<const units::Derived&>(*unitUPtr_.get()) == static_cast<const units::Derived&>(*aUnit.unitUPtr_.get()) ;
 
             default:
-                throw library::core::error::runtime::Wrong("Type") ;
+                throw ostk::core::error::runtime::Wrong("Type") ;
                 break ;
 
         }
@@ -99,12 +99,12 @@ std::ostream&                   operator <<                                 (   
                                                                                 const   Unit&                       aUnit                                       )
 {
 
-    library::core::utils::Print::Header(anOutputStream, "Unit") ;
+    ostk::core::utils::Print::Header(anOutputStream, "Unit") ;
 
-    library::core::utils::Print::Line(anOutputStream) << "Type:"                << Unit::StringFromType(aUnit.type_) ;
-    library::core::utils::Print::Line(anOutputStream) << "Value:"               << (((aUnit.unitUPtr_ != nullptr) && aUnit.unitUPtr_->isDefined()) ? aUnit.unitUPtr_->toString() : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Type:"                << Unit::StringFromType(aUnit.type_) ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Value:"               << (((aUnit.unitUPtr_ != nullptr) && aUnit.unitUPtr_->isDefined()) ? aUnit.unitUPtr_->toString() : "Undefined") ;
 
-    library::core::utils::Print::Footer(anOutputStream) ;
+    ostk::core::utils::Print::Footer(anOutputStream) ;
 
     return anOutputStream ;
 
@@ -120,7 +120,7 @@ bool                            Unit::isNone                                ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Unit") ;
+        throw ostk::core::error::runtime::Undefined("Unit") ;
     }
 
     return type_ == Unit::Type::None ;
@@ -132,7 +132,7 @@ Unit::Type                      Unit::getType                               ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Unit") ;
+        throw ostk::core::error::runtime::Undefined("Unit") ;
     }
 
     return type_ ;
@@ -144,17 +144,17 @@ Real                            Unit::ratioTo                               (   
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Unit") ;
+        throw ostk::core::error::runtime::Undefined("Unit") ;
     }
 
     if (!aUnit.isDefined())
     {
-        throw library::core::error::runtime::Undefined("Unit") ;
+        throw ostk::core::error::runtime::Undefined("Unit") ;
     }
 
     if (type_ != aUnit.type_)
     {
-        throw library::core::error::RuntimeError("Types [{}] and [{}] are incompatibles.", Unit::StringFromType(type_), Unit::StringFromType(aUnit.type_)) ;
+        throw ostk::core::error::RuntimeError("Types [{}] and [{}] are incompatibles.", Unit::StringFromType(type_), Unit::StringFromType(aUnit.type_)) ;
     }
 
     switch (type_)
@@ -171,13 +171,13 @@ Real                            Unit::ratioTo                               (   
         case Unit::Type::Temperature:
         case Unit::Type::ElectricCurrent:
         case Unit::Type::LuminousIntensity:
-            throw library::core::error::runtime::ToBeImplemented(Unit::StringFromType(type_)) ;
+            throw ostk::core::error::runtime::ToBeImplemented(Unit::StringFromType(type_)) ;
 
         case Unit::Type::Derived:
             return static_cast<const units::Derived&>(*unitUPtr_.get()).in(static_cast<const units::Derived&>(*aUnit.unitUPtr_.get()).getUnit()) ;
 
         default:
-            throw library::core::error::runtime::Wrong("Type") ;
+            throw ostk::core::error::runtime::Wrong("Type") ;
             break ;
 
     }
@@ -191,7 +191,7 @@ String                          Unit::toString                              ( ) 
 
     if (!this->isDefined())
     {
-        throw library::core::error::runtime::Undefined("Unit") ;
+        throw ostk::core::error::runtime::Undefined("Unit") ;
     }
 
     switch (type_)
@@ -217,11 +217,11 @@ String                          Unit::toString                              ( ) 
         case Unit::Type::Temperature:
         case Unit::Type::ElectricCurrent:
         case Unit::Type::LuminousIntensity:
-            throw library::core::error::runtime::ToBeImplemented(Unit::StringFromType(type_)) ;
+            throw ostk::core::error::runtime::ToBeImplemented(Unit::StringFromType(type_)) ;
 
 
         default:
-            throw library::core::error::runtime::Wrong("Type") ;
+            throw ostk::core::error::runtime::Wrong("Type") ;
             break ;
 
     }
@@ -253,7 +253,7 @@ Unit                            Unit::Derived                               (   
 String                          Unit::StringFromType                        (   const   Unit::Type&                 aType                                       )
 {
 
-    using library::core::ctnr::Map ;
+    using ostk::core::ctnr::Map ;
 
     static const Map<Unit::Type, String> typeStringMap =
     {

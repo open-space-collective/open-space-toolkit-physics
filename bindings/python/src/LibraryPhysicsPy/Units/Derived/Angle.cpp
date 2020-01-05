@@ -11,19 +11,19 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (LibraryPhysicsPy_Units_Angle_toString_overloads, library::physics::units::Angle::toString, 0, 1)
+BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (LibraryPhysicsPy_Units_Angle_toString_overloads, ostk::physics::units::Angle::toString, 0, 1)
 
 inline void                     LibraryPhysicsPy_Units_Derived_Angle        ( )
 {
 
     using namespace boost::python ;
 
-    using library::core::types::Real ;
+    using ostk::core::types::Real ;
 
-    using library::math::obj::Vector2d ;
-    using library::math::obj::Vector3d ;
+    using ostk::math::obj::Vector2d ;
+    using ostk::math::obj::Vector3d ;
 
-    using library::physics::units::Angle ;
+    using ostk::physics::units::Angle ;
 
     scope in_Angle = class_<Angle>("Angle", init<Real, Angle::Unit>())
 
@@ -87,10 +87,10 @@ inline void                     LibraryPhysicsPy_Units_Derived_Angle        ( )
 
     ;
 
-    implicitly_convertible<library::physics::units::Angle, library::math::geom::Angle>() ;
-    implicitly_convertible<library::math::geom::Angle, library::physics::units::Angle>() ;
+    implicitly_convertible<ostk::physics::units::Angle, ostk::math::geom::Angle>() ;
+    implicitly_convertible<ostk::math::geom::Angle, ostk::physics::units::Angle>() ;
 
-    // using library::math::obj::Interval ;
+    // using ostk::math::obj::Interval ;
 
     // class_<Interval<Angle>>("Interval", init<const Angle&, const Angle&, const Interval<Angle>::Type&>())
 

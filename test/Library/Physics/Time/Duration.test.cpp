@@ -18,8 +18,8 @@
 TEST (Library_Physics_Time_Duration, Constructor)
 {
 
-    using library::core::types::Int64 ;
-    using library::physics::time::Duration ;
+    using ostk::core::types::Int64 ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -50,7 +50,7 @@ TEST (Library_Physics_Time_Duration, Constructor)
 TEST (Library_Physics_Time_Duration, EqualToOperator)
 {
 
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -83,7 +83,7 @@ TEST (Library_Physics_Time_Duration, EqualToOperator)
 TEST (Library_Physics_Time_Duration, NoEqualToOperator)
 {
 
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -116,7 +116,7 @@ TEST (Library_Physics_Time_Duration, NoEqualToOperator)
 TEST (Library_Physics_Time_Duration, LessThanOperator)
 {
 
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -148,7 +148,7 @@ TEST (Library_Physics_Time_Duration, LessThanOperator)
 TEST (Library_Physics_Time_Duration, LessThanOrEqualToOperator)
 {
 
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -181,7 +181,7 @@ TEST (Library_Physics_Time_Duration, LessThanOrEqualToOperator)
 TEST (Library_Physics_Time_Duration, GreaterThanOperator)
 {
 
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -214,7 +214,7 @@ TEST (Library_Physics_Time_Duration, GreaterThanOperator)
 TEST (Library_Physics_Time_Duration, GreaterThanOrEqualToOperator)
 {
 
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -247,7 +247,7 @@ TEST (Library_Physics_Time_Duration, GreaterThanOrEqualToOperator)
 TEST (Library_Physics_Time_Duration, AdditionOperator)
 {
 
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -275,7 +275,7 @@ TEST (Library_Physics_Time_Duration, AdditionOperator)
 TEST (Library_Physics_Time_Duration, SubtractionOperator)
 {
 
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -303,8 +303,8 @@ TEST (Library_Physics_Time_Duration, SubtractionOperator)
 TEST (Library_Physics_Time_Duration, MultiplicationOperator)
 {
 
-    using library::core::types::Real ;
-    using library::physics::time::Duration ;
+    using ostk::core::types::Real ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -388,8 +388,8 @@ TEST (Library_Physics_Time_Duration, MultiplicationOperator)
 TEST (Library_Physics_Time_Duration, DivisionOperator)
 {
 
-    using library::core::types::Real ;
-    using library::physics::time::Duration ;
+    using ostk::core::types::Real ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -444,7 +444,7 @@ TEST (Library_Physics_Time_Duration, DivisionOperator)
 TEST (Library_Physics_Time_Duration, AdditionAssignementOperator)
 {
 
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -472,7 +472,7 @@ TEST (Library_Physics_Time_Duration, AdditionAssignementOperator)
 TEST (Library_Physics_Time_Duration, SubtractionAssignementOperator)
 {
 
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -500,8 +500,8 @@ TEST (Library_Physics_Time_Duration, SubtractionAssignementOperator)
 TEST (Library_Physics_Time_Duration, MultiplicationAssignementOperator)
 {
 
-    using library::core::types::Real ;
-    using library::physics::time::Duration ;
+    using ostk::core::types::Real ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -553,8 +553,8 @@ TEST (Library_Physics_Time_Duration, MultiplicationAssignementOperator)
 TEST (Library_Physics_Time_Duration, DivisionAssignementOperator)
 {
 
-    using library::core::types::Real ;
-    using library::physics::time::Duration ;
+    using ostk::core::types::Real ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -609,7 +609,7 @@ TEST (Library_Physics_Time_Duration, DivisionAssignementOperator)
 TEST (Library_Physics_Time_Duration, StreamOperator)
 {
 
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -626,7 +626,7 @@ TEST (Library_Physics_Time_Duration, StreamOperator)
 TEST (Library_Physics_Time_Duration, IsDefined)
 {
 
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -648,7 +648,7 @@ TEST (Library_Physics_Time_Duration, IsDefined)
 TEST (Library_Physics_Time_Duration, IsZero)
 {
 
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -674,7 +674,7 @@ TEST (Library_Physics_Time_Duration, IsZero)
 TEST (Library_Physics_Time_Duration, IsPositive)
 {
 
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -700,7 +700,7 @@ TEST (Library_Physics_Time_Duration, IsPositive)
 TEST (Library_Physics_Time_Duration, IsStrictlyPositive)
 {
 
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -726,7 +726,7 @@ TEST (Library_Physics_Time_Duration, IsStrictlyPositive)
 TEST (Library_Physics_Time_Duration, IsNear)
 {
 
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -767,7 +767,7 @@ TEST (Library_Physics_Time_Duration, IsNear)
 TEST (Library_Physics_Time_Duration, GetNanoseconds)
 {
 
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -840,7 +840,7 @@ TEST (Library_Physics_Time_Duration, GetNanoseconds)
 TEST (Library_Physics_Time_Duration, GetMicroseconds)
 {
 
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -923,7 +923,7 @@ TEST (Library_Physics_Time_Duration, GetMicroseconds)
 TEST (Library_Physics_Time_Duration, GetMilliseconds)
 {
 
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -1014,7 +1014,7 @@ TEST (Library_Physics_Time_Duration, GetMilliseconds)
 TEST (Library_Physics_Time_Duration, GetSeconds)
 {
 
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -1121,7 +1121,7 @@ TEST (Library_Physics_Time_Duration, GetSeconds)
 TEST (Library_Physics_Time_Duration, GetMinutes)
 {
 
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -1194,7 +1194,7 @@ TEST (Library_Physics_Time_Duration, GetMinutes)
 TEST (Library_Physics_Time_Duration, GetHours)
 {
 
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -1267,7 +1267,7 @@ TEST (Library_Physics_Time_Duration, GetHours)
 TEST (Library_Physics_Time_Duration, GetDays)
 {
 
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -1339,7 +1339,7 @@ TEST (Library_Physics_Time_Duration, GetDays)
 TEST (Library_Physics_Time_Duration, GetWeeks)
 {
 
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -1413,8 +1413,8 @@ TEST (Library_Physics_Time_Duration, GetWeeks)
 TEST (Library_Physics_Time_Duration, InNanoseconds)
 {
 
-    using library::core::types::Int64 ;
-    using library::physics::time::Duration ;
+    using ostk::core::types::Int64 ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -1443,8 +1443,8 @@ TEST (Library_Physics_Time_Duration, InNanoseconds)
 TEST (Library_Physics_Time_Duration, InMicroseconds)
 {
 
-    using library::core::types::Int64 ;
-    using library::physics::time::Duration ;
+    using ostk::core::types::Int64 ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -1473,8 +1473,8 @@ TEST (Library_Physics_Time_Duration, InMicroseconds)
 TEST (Library_Physics_Time_Duration, InMilliseconds)
 {
 
-    using library::core::types::Int64 ;
-    using library::physics::time::Duration ;
+    using ostk::core::types::Int64 ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -1503,8 +1503,8 @@ TEST (Library_Physics_Time_Duration, InMilliseconds)
 TEST (Library_Physics_Time_Duration, InSeconds)
 {
 
-    using library::core::types::Int64 ;
-    using library::physics::time::Duration ;
+    using ostk::core::types::Int64 ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -1533,8 +1533,8 @@ TEST (Library_Physics_Time_Duration, InSeconds)
 TEST (Library_Physics_Time_Duration, InMinutes)
 {
 
-    using library::core::types::Int64 ;
-    using library::physics::time::Duration ;
+    using ostk::core::types::Int64 ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -1563,8 +1563,8 @@ TEST (Library_Physics_Time_Duration, InMinutes)
 TEST (Library_Physics_Time_Duration, InHours)
 {
 
-    using library::core::types::Int64 ;
-    using library::physics::time::Duration ;
+    using ostk::core::types::Int64 ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -1593,8 +1593,8 @@ TEST (Library_Physics_Time_Duration, InHours)
 TEST (Library_Physics_Time_Duration, InDays)
 {
 
-    using library::core::types::Int64 ;
-    using library::physics::time::Duration ;
+    using ostk::core::types::Int64 ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -1623,8 +1623,8 @@ TEST (Library_Physics_Time_Duration, InDays)
 TEST (Library_Physics_Time_Duration, InWeeks)
 {
 
-    using library::core::types::Int64 ;
-    using library::physics::time::Duration ;
+    using ostk::core::types::Int64 ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -1653,9 +1653,9 @@ TEST (Library_Physics_Time_Duration, InWeeks)
 TEST (Library_Physics_Time_Duration, In)
 {
 
-    using library::core::types::Int64 ;
-    using library::physics::units::Time ;
-    using library::physics::time::Duration ;
+    using ostk::core::types::Int64 ;
+    using ostk::physics::units::Time ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -1681,7 +1681,7 @@ TEST (Library_Physics_Time_Duration, In)
 TEST (Library_Physics_Time_Duration, GetAbsolute)
 {
 
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -1702,7 +1702,7 @@ TEST (Library_Physics_Time_Duration, GetAbsolute)
 TEST (Library_Physics_Time_Duration, ToString)
 {
 
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Duration ;
 
     // Standard
 
@@ -1865,7 +1865,7 @@ TEST (Library_Physics_Time_Duration, ToString)
 TEST (Library_Physics_Time_Duration, Undefined)
 {
 
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -1879,7 +1879,7 @@ TEST (Library_Physics_Time_Duration, Undefined)
 TEST (Library_Physics_Time_Duration, Zero)
 {
 
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -1895,7 +1895,7 @@ TEST (Library_Physics_Time_Duration, Zero)
 TEST (Library_Physics_Time_Duration, Nanoseconds)
 {
 
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -1912,7 +1912,7 @@ TEST (Library_Physics_Time_Duration, Nanoseconds)
 TEST (Library_Physics_Time_Duration, Microseconds)
 {
 
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -1929,7 +1929,7 @@ TEST (Library_Physics_Time_Duration, Microseconds)
 TEST (Library_Physics_Time_Duration, Milliseconds)
 {
 
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -1946,7 +1946,7 @@ TEST (Library_Physics_Time_Duration, Milliseconds)
 TEST (Library_Physics_Time_Duration, Seconds)
 {
 
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -1963,7 +1963,7 @@ TEST (Library_Physics_Time_Duration, Seconds)
 TEST (Library_Physics_Time_Duration, Minutes)
 {
 
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -1980,7 +1980,7 @@ TEST (Library_Physics_Time_Duration, Minutes)
 TEST (Library_Physics_Time_Duration, Hours)
 {
 
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -1997,7 +1997,7 @@ TEST (Library_Physics_Time_Duration, Hours)
 TEST (Library_Physics_Time_Duration, Days)
 {
 
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -2014,7 +2014,7 @@ TEST (Library_Physics_Time_Duration, Days)
 TEST (Library_Physics_Time_Duration, Weeks)
 {
 
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -2031,10 +2031,10 @@ TEST (Library_Physics_Time_Duration, Weeks)
 TEST (Library_Physics_Time_Duration, Between)
 {
 
-    using library::physics::time::Scale ;
-    using library::physics::time::DateTime ;
-    using library::physics::time::Instant ;
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::Duration ;
 
     {
 
@@ -2111,7 +2111,7 @@ TEST (Library_Physics_Time_Duration, Between)
 TEST (Library_Physics_Time_Duration, Parse)
 {
 
-    using library::physics::time::Duration ;
+    using ostk::physics::time::Duration ;
 
     // Undefined (automatic format detection)
 

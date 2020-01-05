@@ -30,22 +30,22 @@
 TEST (Library_Physics_Environment_Utilities_Eclipse, IsPositionInEclipse)
 {
 
-    using library::core::types::Shared ;
-    using library::core::types::String ;
-    using library::core::ctnr::Array ;
-    using library::core::ctnr::Table ;
-    using library::core::fs::Path ;
-    using library::core::fs::File ;
+    using ostk::core::types::Shared ;
+    using ostk::core::types::String ;
+    using ostk::core::ctnr::Array ;
+    using ostk::core::ctnr::Table ;
+    using ostk::core::fs::Path ;
+    using ostk::core::fs::File ;
 
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::Duration ;
-    using library::physics::time::Interval ;
-    using library::physics::time::DateTime ;
-    using library::physics::coord::Position ;
-    using library::physics::coord::Frame ;
-    using library::physics::Environment ;
-    using library::physics::env::utilities::isPositionInEclipse ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::Duration ;
+    using ostk::physics::time::Interval ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::coord::Position ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::Environment ;
+    using ostk::physics::env::utilities::isPositionInEclipse ;
 
     {
 
@@ -96,27 +96,27 @@ TEST (Library_Physics_Environment_Utilities_Eclipse, IsPositionInEclipse)
 TEST (Library_Physics_Environment_Utilities_Eclipse, EclipseIntervalsAtPosition)
 {
 
-    using library::core::types::Index ;
-    using library::core::types::String ;
-    using library::core::ctnr::Tuple ;
-    using library::core::ctnr::Array ;
-    using library::core::ctnr::Table ;
-    using library::core::fs::Path ;
-    using library::core::fs::File ;
+    using ostk::core::types::Index ;
+    using ostk::core::types::String ;
+    using ostk::core::ctnr::Tuple ;
+    using ostk::core::ctnr::Array ;
+    using ostk::core::ctnr::Table ;
+    using ostk::core::fs::Path ;
+    using ostk::core::fs::File ;
 
-    using library::physics::time::Scale ;
-    using library::physics::time::Instant ;
-    using library::physics::time::Duration ;
-    using library::physics::time::Interval ;
-    using library::physics::time::DateTime ;
-    using library::physics::units::Length ;
-    using library::physics::units::Angle ;
-    using library::physics::coord::Position ;
-    using library::physics::coord::Frame ;
-    using library::physics::coord::spherical::LLA ;
-    using library::physics::Environment ;
-    using library::physics::env::obj::celest::Earth ;
-    using library::physics::env::utilities::eclipseIntervalsAtPosition ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::Duration ;
+    using ostk::physics::time::Interval ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::coord::Position ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::spherical::LLA ;
+    using ostk::physics::Environment ;
+    using ostk::physics::env::obj::celest::Earth ;
+    using ostk::physics::env::utilities::eclipseIntervalsAtPosition ;
 
     {
 

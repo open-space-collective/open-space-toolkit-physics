@@ -16,9 +16,9 @@ inline void                     LibraryPhysicsPy_Coordinate_Spherical_LLA   ( )
 
     using namespace boost::python ;
 
-    using library::physics::units::Length ;
-    using library::physics::units::Angle ;
-    using library::physics::coord::spherical::LLA ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::coord::spherical::LLA ;
 
     scope in_LLA = class_<LLA>("LLA", init<const Angle&, const Angle&, const Length&>())
 

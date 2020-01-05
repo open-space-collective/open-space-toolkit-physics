@@ -32,7 +32,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace library
+namespace ostk
 {
 namespace physics
 {
@@ -43,25 +43,25 @@ namespace obj
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using library::core::types::Shared ;
-using library::core::types::Real ;
-using library::core::types::String ;
+using ostk::core::types::Shared ;
+using ostk::core::types::Real ;
+using ostk::core::types::String ;
 
-using library::math::obj::Vector3d ;
+using ostk::math::obj::Vector3d ;
 
-using library::physics::time::Instant ;
-using library::physics::units::Length ;
-using library::physics::units::Derived ;
-using library::physics::data::Vector ;
-using library::physics::coord::Position ;
-using library::physics::coord::spherical::LLA ;
-using library::physics::coord::Axes ;
-using library::physics::coord::Frame ;
-using library::physics::coord::Transform ;
-using library::physics::env::Object ;
-using library::physics::env::Ephemeris ;
-using GravitationalModel = library::physics::environment::gravitational::Model ;
-using MagneticModel = library::physics::environment::magnetic::Model ;
+using ostk::physics::time::Instant ;
+using ostk::physics::units::Length ;
+using ostk::physics::units::Derived ;
+using ostk::physics::data::Vector ;
+using ostk::physics::coord::Position ;
+using ostk::physics::coord::spherical::LLA ;
+using ostk::physics::coord::Axes ;
+using ostk::physics::coord::Frame ;
+using ostk::physics::coord::Transform ;
+using ostk::physics::env::Object ;
+using ostk::physics::env::Ephemeris ;
+using GravitationalModel = ostk::physics::environment::gravitational::Model ;
+using MagneticModel = ostk::physics::environment::magnetic::Model ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
