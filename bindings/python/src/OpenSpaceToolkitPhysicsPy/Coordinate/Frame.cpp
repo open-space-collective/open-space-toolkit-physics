@@ -28,7 +28,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame      
     // scope in_Frame = class_<Frame, Shared<Frame>>("Frame", init<String&, bool, Shared<const Frame>&, Shared<Provider>&>())
     // scope in_Frame = class_<Frame, Shared<Frame>, boost::noncopyable>("Frame", init<String&, bool, Shared<const Frame>&, Shared<Provider>&>())
     // scope in_Frame = class_<Frame>("Frame", init<String&, bool, Shared<const Frame>&, Shared<const Provider>&>())
-    scope in_Frame = class_<Frame, boost::noncopyable>("Frame", no_init)
+    class_<Frame, boost::noncopyable>("Frame", no_init)
 
         .def(self == self)
         .def(self != self)
@@ -69,6 +69,12 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame      
     register_ptr_to_python<Shared<const Frame>>() ;
 
     implicitly_convertible<Shared<Frame>, Shared<const Frame>>() ;
+
+    boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("ostk.physics.coordinate")))) ;
+
+    boost::python::scope().attr("coordinate") = module ;
+
+    boost::python::scope scope = module ;
 
     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider() ;
     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers() ;

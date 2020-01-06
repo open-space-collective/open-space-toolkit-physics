@@ -23,7 +23,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Gravitatio
     using ostk::physics::environment::gravitational::Earth ;
     using ostk::physics::environment::gravitational::earth::Manager ;
 
-    scope in_Earth = class_<Earth>("Earth", init<const Earth::Type&, const Directory&>())
+    class_<Earth>("Earth", init<const Earth::Type&, const Directory&>())
 
         .def(init<const Earth::Type&>())
 
@@ -41,7 +41,13 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Gravitatio
 
     ;
 
-    scope in_Manager = class_<Manager, boost::noncopyable>("Manager", no_init)
+    boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("ostk.physics.environment.gravitational.earth")))) ;
+
+    boost::python::scope().attr("earth") = module ;
+
+    boost::python::scope scope = module ;
+
+    class_<Manager, boost::noncopyable>("Manager", no_init)
 
         .def("is_enabled", &Manager::isEnabled)
         .def("has_data_file_for_type", &Manager::hasDataFileForType)

@@ -553,6 +553,18 @@ deploy-release-images:
 	@ make _deploy-release-images target=debian
 	@ make _deploy-release-images target=fedora
 
+	docker tag $(docker_release_image_cpp_repository):$(docker_image_version)-debian $(docker_release_image_cpp_repository):$(docker_image_version)
+	docker tag $(docker_release_image_cpp_repository):latest-debian $(docker_release_image_cpp_repository):latest
+
+	docker tag $(docker_release_image_python_repository):$(docker_image_version)-debian $(docker_release_image_python_repository):$(docker_image_version)
+	docker tag $(docker_release_image_python_repository):latest-debian $(docker_release_image_python_repository):latest
+
+	docker push $(docker_release_image_cpp_repository):$(docker_image_version)
+	docker push $(docker_release_image_cpp_repository):latest
+
+	docker push $(docker_release_image_python_repository):$(docker_image_version)
+	docker push $(docker_release_image_python_repository):latest
+
 	@ make deploy-release-image-jupyter
 
 _deploy-release-images: _build-release-image-cpp _build-release-image-python

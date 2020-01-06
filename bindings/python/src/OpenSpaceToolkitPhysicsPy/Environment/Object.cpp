@@ -24,7 +24,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Object    
     using ostk::physics::time::Instant ;
     using ostk::physics::env::Object ;
 
-    scope in_Object = class_<Object, boost::noncopyable>("Object", no_init)
+    class_<Object, boost::noncopyable>("Object", no_init)
 
         .def(self_ns::str(self_ns::self))
         .def(self_ns::repr(self_ns::self))
@@ -48,6 +48,12 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Object    
     register_ptr_to_python<Shared<const Object>>() ;
 
     implicitly_convertible<Shared<Object>, Shared<const Object>>() ;
+
+    boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("ostk.physics.environment.object")))) ;
+
+    boost::python::scope().attr("object") = module ;
+
+    boost::python::scope scope = module ;
 
     OpenSpaceToolkitPhysicsPy_Environment_Object_Geometry() ;
 

@@ -30,7 +30,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment           
     using ostk::physics::Environment ;
     using ostk::physics::env::Object ;
 
-    scope in_Environment = class_<Environment>("Environment", init<const Instant&, const Array<Shared<Object>>&>())
+    class_<Environment>("Environment", init<const Instant&, const Array<Shared<Object>>&>())
 
         .def(self_ns::str(self_ns::self))
         .def(self_ns::repr(self_ns::self))
@@ -57,6 +57,12 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment           
         .to_python<Array<Shared<Object>>>()
 
     ;
+
+    boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("ostk.physics.environment")))) ;
+
+    boost::python::scope().attr("environment") = module ;
+
+    boost::python::scope scope = module ;
 
     OpenSpaceToolkitPhysicsPy_Environment_Object() ;
     OpenSpaceToolkitPhysicsPy_Environment_Objects() ;
