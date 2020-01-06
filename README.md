@@ -1,7 +1,5 @@
 # Open Space Toolkit ▸ Physics
 
-Physical units, time, reference frames, environment modeling.
-
 [![Build Status](https://travis-ci.com/open-space-collective/open-space-toolkit-physics.svg?branch=master)](https://travis-ci.com/open-space-collective/open-space-toolkit-physics)
 [![Code Coverage](https://codecov.io/gh/open-space-collective/open-space-toolkit-physics/branch/master/graph/badge.svg)](https://codecov.io/gh/open-space-collective/open-space-toolkit-physics)
 [![Documentation](https://img.shields.io/readthedocs/pip/stable.svg)](https://open-space-collective.github.io/open-space-toolkit-physics)
@@ -9,9 +7,84 @@ Physical units, time, reference frames, environment modeling.
 [![PyPI version](https://badge.fury.io/py/open-space-toolkit-physics.svg)](https://badge.fury.io/py/open-space-toolkit-physics)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
+Physical units, time, reference frames, environment modeling.
+
 ## Warning
 
 *⚠ This component is under development.*
+
+## Installation
+
+### C++
+
+The binary packages are hosted using [GitHub Releases](https://github.com/open-space-collective/open-space-toolkit-physics/releases).
+
+*Note: Don't forget to set the desired version number in the URLs!*
+
+#### Debian / Ubuntu
+
+```bash
+# Download .deb packages
+
+wget https://github.com/open-space-collective/open-space-toolkit-physics/releases/download/0.4.0/open-space-toolkit-physics-0.4.0-1.x86_64-runtime.deb
+wget https://github.com/open-space-collective/open-space-toolkit-physics/releases/download/0.4.0/open-space-toolkit-physics-0.4.0-1.x86_64-devel.deb
+
+# Install .deb packages
+
+apt install -y open-space-toolkit-physics-0.4.0-*.deb
+```
+
+#### Fedora / CentOS
+
+```bash
+# Download .rpm packages
+
+wget https://github.com/open-space-collective/open-space-toolkit-physics/releases/download/0.4.0/open-space-toolkit-physics-0.4.0-1.x86_64-runtime.rpm
+wget https://github.com/open-space-collective/open-space-toolkit-physics/releases/download/0.4.0/open-space-toolkit-physics-0.4.0-1.x86_64-devel.rpm
+
+# Install .rpm packages
+
+dnf install -y open-space-toolkit-physics-0.4.0-*.rpm
+```
+
+### Python
+
+The binary packages are hosted on [PyPI](https://pypi.org/project/open-space-toolkit-physics/):
+
+```bash
+pip install open-space-toolkit-physics
+```
+
+## Getting Started
+
+Want to quickly get started? It's pretty simple.
+
+Install [Docker](https://www.docker.com/) and try this:
+
+```bash
+docker run -it openspacecollective/open-space-toolkit-physics-python
+```
+
+This will start an [iPython](https://ipython.org/) shell within a container where the OSTk Physics component is already installed.
+
+Once the shell is up and running, playing with it is easy:
+
+```py
+from ostk.physics import Environment # Environment modeling class
+from ostk.physics.time import Instant # Instant class
+from ostk.physics.coordinate import Frame # Reference frame class
+
+environment = Environment.default() # Bootstrap a default environment
+
+moon = environment.access_object_with_name('Moon') # Access Moon
+
+environment.set_instant(Instant.now()) # Set environment to present time
+
+moon.get_position_in(Frame.ITRF()) # Position of the Moon in ITRF
+moon.get_axes_in(Frame.ITRF()) # Axes of the Moon in ITRF
+```
+
+*Tip: Use tab for auto-completion!*
 
 ## Structure
 
