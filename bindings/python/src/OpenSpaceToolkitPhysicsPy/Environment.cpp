@@ -30,7 +30,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment           
     using ostk::physics::Environment ;
     using ostk::physics::env::Object ;
 
-    scope in_Environment = class_<Environment>("Environment", init<const Instant&, const Array<Shared<Object>>&>())
+    class_<Environment>("Environment", init<const Instant&, const Array<Shared<Object>>&>())
 
         .def(self_ns::str(self_ns::self))
         .def(self_ns::repr(self_ns::self))

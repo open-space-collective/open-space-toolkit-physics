@@ -24,7 +24,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Object    
     using ostk::physics::time::Instant ;
     using ostk::physics::env::Object ;
 
-    scope in_Object = class_<Object, boost::noncopyable>("Object", no_init)
+    class_<Object, boost::noncopyable>("Object", no_init)
 
         .def(self_ns::str(self_ns::self))
         .def(self_ns::repr(self_ns::self))
