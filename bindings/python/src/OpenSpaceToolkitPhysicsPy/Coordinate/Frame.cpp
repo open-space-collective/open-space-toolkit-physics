@@ -70,6 +70,12 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame      
 
     implicitly_convertible<Shared<Frame>, Shared<const Frame>>() ;
 
+    boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("ostk.physics.coordinate")))) ;
+
+    boost::python::scope().attr("coordinate") = module ;
+
+    boost::python::scope scope = module ;
+
     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider() ;
     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers() ;
 

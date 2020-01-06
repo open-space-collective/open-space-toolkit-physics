@@ -41,6 +41,12 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Gravitatio
 
     ;
 
+    boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("ostk.physics.environment.gravitational.earth")))) ;
+
+    boost::python::scope().attr("earth") = module ;
+
+    boost::python::scope scope = module ;
+
     scope in_Manager = class_<Manager, boost::noncopyable>("Manager", no_init)
 
         .def("is_enabled", &Manager::isEnabled)

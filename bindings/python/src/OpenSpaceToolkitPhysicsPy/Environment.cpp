@@ -58,6 +58,12 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment           
 
     ;
 
+    boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("ostk.physics.environment")))) ;
+
+    boost::python::scope().attr("environment") = module ;
+
+    boost::python::scope scope = module ;
+
     OpenSpaceToolkitPhysicsPy_Environment_Object() ;
     OpenSpaceToolkitPhysicsPy_Environment_Objects() ;
     OpenSpaceToolkitPhysicsPy_Environment_Gravitational() ;

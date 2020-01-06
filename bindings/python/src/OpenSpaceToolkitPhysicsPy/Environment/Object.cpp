@@ -49,6 +49,12 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Object    
 
     implicitly_convertible<Shared<Object>, Shared<const Object>>() ;
 
+    boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("ostk.physics.environment.object")))) ;
+
+    boost::python::scope().attr("object") = module ;
+
+    boost::python::scope scope = module ;
+
     OpenSpaceToolkitPhysicsPy_Environment_Object_Geometry() ;
 
 }
