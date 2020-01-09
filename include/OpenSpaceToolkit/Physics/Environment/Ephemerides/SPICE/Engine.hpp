@@ -31,7 +31,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#define LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_ENGINE_MODE Engine::Mode::Automatic
+#define OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_ENGINE_MODE Engine::Mode::Automatic
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -70,7 +70,7 @@ using ostk::physics::env::ephem::spice::Kernel ;
 ///
 ///                             The following environment variables can be defined:
 ///
-///                             - "LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_ENGINE_MODE" will override "DefaultMode"
+///                             - "OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_ENGINE_MODE" will override "DefaultMode"
 
 class Engine
 {
@@ -157,7 +157,7 @@ class Engine
 
         /// @brief              Get default engine mode
         ///
-        ///                     Overriden by: LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_ENGINE_MODE
+        ///                     Overriden by: OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_ENGINE_MODE
         ///
         /// @return             Default engine mode
 

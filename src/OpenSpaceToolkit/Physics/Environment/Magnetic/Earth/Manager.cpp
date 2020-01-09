@@ -253,9 +253,9 @@ Manager&                        Manager::Get                                ( )
 bool                            Manager::DefaultEnabled                     ( )
 {
 
-    static const bool defaultEnabled = LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_ENABLED ;
+    static const bool defaultEnabled = OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_ENABLED ;
 
-    if (const char* enabledString = std::getenv("LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_ENABLED"))
+    if (const char* enabledString = std::getenv("OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_ENABLED"))
     {
         return strcmp(enabledString, "true") == 0 ;
     }
@@ -267,9 +267,9 @@ bool                            Manager::DefaultEnabled                     ( )
 Directory                       Manager::DefaultLocalRepository             ( )
 {
 
-    static const Directory defaultLocalRepository = Directory::Path(Path::Parse(LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY)) ;
+    static const Directory defaultLocalRepository = Directory::Path(Path::Parse(OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY)) ;
 
-    if (const char* localRepositoryPath = std::getenv("LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY"))
+    if (const char* localRepositoryPath = std::getenv("OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY"))
     {
         return Directory::Path(Path::Parse(localRepositoryPath)) ;
     }
@@ -281,9 +281,9 @@ Directory                       Manager::DefaultLocalRepository             ( )
 URL                             Manager::DefaultRemoteUrl                   ( )
 {
 
-    static const URL defaultRemoteUrl = URL::Parse(LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_REMOTE_URL) ;
+    static const URL defaultRemoteUrl = URL::Parse(OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_REMOTE_URL) ;
 
-    if (const char* remoteUrl = std::getenv("LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_REMOTE_URL"))
+    if (const char* remoteUrl = std::getenv("OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_REMOTE_URL"))
     {
         return URL::Parse(remoteUrl) ;
     }

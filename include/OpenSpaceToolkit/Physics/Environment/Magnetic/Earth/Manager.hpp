@@ -21,9 +21,9 @@
 
 #include <mutex>
 
-#define LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_ENABLED true
-#define LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY "./.open-space-toolkit/physics/environment/magnetic/earth"
-#define LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_REMOTE_URL "https://sourceforge.net/projects/geographiclib/files/magnetic-distrib/"
+#define OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_ENABLED true
+#define OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY "./.open-space-toolkit/physics/environment/magnetic/earth"
+#define OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_REMOTE_URL "https://sourceforge.net/projects/geographiclib/files/magnetic-distrib/"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -57,9 +57,9 @@ using EarthMagneticModel = ostk::physics::environment::magnetic::Earth ;
 ///
 ///                             The following environment variables can be defined:
 ///
-///                             - "LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_ENABLED" will override "DefaultEnabled"
-///                             - "LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY" will override "DefaultLocalRepository"
-///                             - "LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_REMOTE_URL" will override "DefaultRemoteUrl"
+///                             - "OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_ENABLED" will override "DefaultEnabled"
+///                             - "OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY" will override "DefaultLocalRepository"
+///                             - "OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_REMOTE_URL" will override "DefaultRemoteUrl"
 
 class Manager
 {
@@ -139,7 +139,7 @@ class Manager
 
         /// @brief              Get default enabled flag
         ///
-        ///                     Overriden by: LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_ENABLED
+        ///                     Overriden by: OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_ENABLED
         ///
         /// @return             Default enabled flag
 
@@ -147,7 +147,7 @@ class Manager
 
         /// @brief              Get default local repository
         ///
-        ///                     Overriden by: LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY
+        ///                     Overriden by: OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY
         ///
         /// @return             Default local repository
 
@@ -155,7 +155,7 @@ class Manager
 
         /// @brief              Get default remote URL
         ///
-        ///                     Overriden by: LIBRARY_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_REMOTE_URL
+        ///                     Overriden by: OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_REMOTE_URL
         ///
         /// @return             Default remote URL
 
