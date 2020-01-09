@@ -28,10 +28,10 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#define LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE Manager::Mode::Automatic
-#define LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY "./.open-space-toolkit/physics/coordinate/frame/providers/iers"
-#define LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT 60
-#define LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL "ftp://cddis.gsfc.nasa.gov/pub/products/iers/"
+#define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE Manager::Mode::Automatic
+#define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY "./.open-space-toolkit/physics/coordinate/frame/providers/iers"
+#define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT 60
+#define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL "ftp://cddis.gsfc.nasa.gov/pub/products/iers/"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -70,10 +70,10 @@ using ostk::physics::coord::frame::provider::iers::Finals2000A ;
 ///
 ///                             The following environment variables can be defined:
 ///
-///                             - "LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE" will override "DefaultMode"
-///                             - "LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY" will override "DefaultLocalRepository"
-///                             - "LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT" will override "DefaultLocalRepositoryLockTimeout"
-///                             - "LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL" will override "DefaultRemoteUrl"
+///                             - "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE" will override "DefaultMode"
+///                             - "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY" will override "DefaultLocalRepository"
+///                             - "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT" will override "DefaultLocalRepositoryLockTimeout"
+///                             - "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL" will override "DefaultRemoteUrl"
 ///
 /// @ref                        https://www.iers.org/IERS/EN/DataProducts/EarthOrientationData/eop.html
 
@@ -199,7 +199,7 @@ class Manager
 
         /// @brief              Get default manager mode
         ///
-        ///                     Overriden by: LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE
+        ///                     Overriden by: OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE
         ///
         /// @return             Default manager mode
 
@@ -207,7 +207,7 @@ class Manager
 
         /// @brief              Get default local repository
         ///
-        ///                     Overriden by: LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY
+        ///                     Overriden by: OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY
         ///
         /// @return             Default local repository
 
@@ -215,7 +215,7 @@ class Manager
 
         /// @brief              Get default local repository lock timeout
         ///
-        ///                     Overriden by: LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT
+        ///                     Overriden by: OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT
         ///
         /// @return             Default local repository lock timeout
 
@@ -223,7 +223,7 @@ class Manager
 
         /// @brief              Get default remote URL
         ///
-        ///                     Overriden by: LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL
+        ///                     Overriden by: OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL
         ///
         /// @return             Default remote URL
 

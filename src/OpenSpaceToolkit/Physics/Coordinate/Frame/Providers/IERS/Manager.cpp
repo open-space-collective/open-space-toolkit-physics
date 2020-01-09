@@ -371,9 +371,9 @@ Manager&                        Manager::Get                                ( )
 Manager::Mode                   Manager::DefaultMode                        ( )
 {
 
-    static const Manager::Mode defaultMode = LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE ;
+    static const Manager::Mode defaultMode = OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE ;
 
-    if (const char* modeString = std::getenv("LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE"))
+    if (const char* modeString = std::getenv("OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE"))
     {
 
         if (strcmp(modeString, "Manual") == 0)
@@ -400,9 +400,9 @@ Directory                       Manager::DefaultLocalRepository             ( )
 
     using ostk::core::fs::Path ;
 
-    static const Directory defaultLocalRepository = Directory::Path(Path::Parse(LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY)) ;
+    static const Directory defaultLocalRepository = Directory::Path(Path::Parse(OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY)) ;
 
-    if (const char* localRepositoryPath = std::getenv("LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY"))
+    if (const char* localRepositoryPath = std::getenv("OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY"))
     {
         return Directory::Path(Path::Parse(localRepositoryPath)) ;
     }
@@ -414,9 +414,9 @@ Directory                       Manager::DefaultLocalRepository             ( )
 Duration                        Manager::DefaultLocalRepositoryLockTimeout  ( )
 {
 
-    static const Duration defaultLocalRepositoryLockTimeout = Duration::Seconds(LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT) ;
+    static const Duration defaultLocalRepositoryLockTimeout = Duration::Seconds(OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT) ;
 
-    if (const char* localRepositoryLockTimeoutString = std::getenv("LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT"))
+    if (const char* localRepositoryLockTimeoutString = std::getenv("OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT"))
     {
         return Duration::Parse(localRepositoryLockTimeoutString) ;
     }
@@ -428,9 +428,9 @@ Duration                        Manager::DefaultLocalRepositoryLockTimeout  ( )
 URL                             Manager::DefaultRemoteUrl                   ( )
 {
 
-    static const URL defaultRemoteUrl = URL::Parse(LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL) ;
+    static const URL defaultRemoteUrl = URL::Parse(OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL) ;
 
-    if (const char* remoteUrl = std::getenv("LIBRARY_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL"))
+    if (const char* remoteUrl = std::getenv("OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL"))
     {
         return URL::Parse(remoteUrl) ;
     }

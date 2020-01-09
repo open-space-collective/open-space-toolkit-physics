@@ -28,8 +28,8 @@
 
 #include <mutex>
 
-#define LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY "./.open-space-toolkit/physics/environment/ephemerides/spice"
-#define LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_REMOTE_URL "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/"
+#define OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY "./.open-space-toolkit/physics/environment/ephemerides/spice"
+#define OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_REMOTE_URL "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -67,8 +67,8 @@ using ostk::physics::env::ephem::spice::Index ;
 ///
 ///                             The following environment variables can be defined:
 ///
-///                             - "LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY" will override "DefaultLocalRepository"
-///                             - "LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_REMOTE_URL" will override "DefaultRemoteUrl"
+///                             - "OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY" will override "DefaultLocalRepository"
+///                             - "OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_REMOTE_URL" will override "DefaultRemoteUrl"
 
 class Manager
 {
@@ -140,7 +140,7 @@ class Manager
 
         /// @brief              Get default local repository
         ///
-        ///                     Overriden by: LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY
+        ///                     Overriden by: OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY
         ///
         /// @return             Default local repository
 
@@ -148,7 +148,7 @@ class Manager
 
         /// @brief              Get default remote URL
         ///
-        ///                     Overriden by: LIBRARY_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_REMOTE_URL
+        ///                     Overriden by: OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_REMOTE_URL
         ///
         /// @return             Default remote URL
 
