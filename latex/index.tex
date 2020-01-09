@@ -1,10 +1,97 @@
-Physical units, time, reference frames, environment modeling.
+\href{https://travis-ci.com/open-space-collective/open-space-toolkit-physics}{\tt } \href{https://codecov.io/gh/open-space-collective/open-space-toolkit-physics}{\tt } \href{https://open-space-collective.github.io/open-space-toolkit-physics}{\tt } \href{https://badge.fury.io/gh/open-space-collective%2Fopen-space-toolkit-physics}{\tt } \href{https://badge.fury.io/py/open-space-toolkit-physics}{\tt } \href{https://mybinder.org/v2/gh/open-space-collective/open-space-toolkit-physics/master?urlpath=lab/tree/tutorials%2Fpython%2Fnotebooks}{\tt } \href{https://opensource.org/licenses/Apache-2.0}{\tt }
 
-\href{https://travis-ci.com/open-space-collective/open-space-toolkit-physics}{\tt } \href{https://codecov.io/gh/open-space-collective/open-space-toolkit-physics}{\tt } \href{https://open-space-collective.github.io/open-space-toolkit-physics}{\tt } \href{https://badge.fury.io/gh/open-space-collective%2Fopen-space-toolkit-physics}{\tt } \href{https://badge.fury.io/py/open-space-toolkit-physics}{\tt } \href{https://opensource.org/licenses/Apache-2.0}{\tt }
+Physical units, time, reference frames, environment modeling.
 
 \subsection*{Warning}
 
 {\itshape ⚠ This component is under development.}
+
+\subsection*{Installation}
+
+\subsubsection*{C++}
+
+The binary packages are hosted using \href{https://github.com/open-space-collective/open-space-toolkit-physics/releases}{\tt Git\+Hub Releases}.
+
+{\itshape Note\+: Don\textquotesingle{}t forget to set the desired version number in the U\+R\+Ls!}
+
+\paragraph*{Debian / Ubuntu}
+
+
+\begin{DoxyCode}
+# Download .deb packages
+
+wget
+       https://github.com/open-space-collective/open-space-toolkit-physics/releases/download/0.4.0/open-space-toolkit-physics-0.4.0-1.x86\_64-runtime.deb
+wget
+       https://github.com/open-space-collective/open-space-toolkit-physics/releases/download/0.4.0/open-space-toolkit-physics-0.4.0-1.x86\_64-devel.deb
+
+# Install .deb packages
+
+apt install -y open-space-toolkit-physics-0.4.0-*.deb
+\end{DoxyCode}
+
+
+\paragraph*{Fedora / Cent\+OS}
+
+
+\begin{DoxyCode}
+# Download .rpm packages
+
+wget
+       https://github.com/open-space-collective/open-space-toolkit-physics/releases/download/0.4.0/open-space-toolkit-physics-0.4.0-1.x86\_64-runtime.rpm
+wget
+       https://github.com/open-space-collective/open-space-toolkit-physics/releases/download/0.4.0/open-space-toolkit-physics-0.4.0-1.x86\_64-devel.rpm
+
+# Install .rpm packages
+
+dnf install -y open-space-toolkit-physics-0.4.0-*.rpm
+\end{DoxyCode}
+
+
+\subsubsection*{Python}
+
+The binary packages are hosted on \href{https://pypi.org/project/open-space-toolkit-physics/}{\tt Py\+PI}\+:
+
+
+\begin{DoxyCode}
+pip install open-space-toolkit-physics
+\end{DoxyCode}
+
+
+\subsection*{Getting Started}
+
+Want to quickly get started? It\textquotesingle{}s pretty simple.
+
+Install \href{https://www.docker.com/}{\tt Docker} and try this\+:
+
+
+\begin{DoxyCode}
+docker run -it openspacecollective/open-space-toolkit-physics-python
+\end{DoxyCode}
+
+
+This will start an \href{https://ipython.org/}{\tt i\+Python} shell within a container where the O\+S\+Tk Physics component is already installed.
+
+Once the shell is up and running, playing with it is easy\+:
+
+
+\begin{DoxyCode}
+\textcolor{keyword}{from} \hyperlink{namespaceostk_1_1physics}{ostk.physics} \textcolor{keyword}{import} Environment \textcolor{comment}{# Environment modeling class}
+\textcolor{keyword}{from} \hyperlink{namespaceostk_1_1physics_1_1time}{ostk.physics.time} \textcolor{keyword}{import} Instant \textcolor{comment}{# Instant class}
+\textcolor{keyword}{from} ostk.physics.coordinate \textcolor{keyword}{import} Frame \textcolor{comment}{# Reference frame class}
+
+environment = Environment.default() \textcolor{comment}{# Bootstrap a default environment}
+
+moon = environment.access\_object\_with\_name(\textcolor{stringliteral}{'Moon'}) \textcolor{comment}{# Access Moon}
+
+environment.set\_instant(Instant.now()) \textcolor{comment}{# Set environment to present time}
+
+moon.get\_position\_in(Frame.ITRF()) \textcolor{comment}{# Position of the Moon in ITRF}
+moon.get\_axes\_in(Frame.ITRF()) \textcolor{comment}{# Axes of the Moon in ITRF}
+\end{DoxyCode}
+
+
+{\itshape Tip\+: Use tab for auto-\/completion!}
 
 \subsection*{Structure}
 
@@ -112,19 +199,19 @@ The following environment variables can be set\+:
 \hline
 \rowcolor{\tableheadbgcolor}\textbf{ Environment Variable }&\textbf{ Default Value  }\\\cline{1-2}
 \endhead
-{\ttfamily L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+C\+O\+O\+R\+D\+I\+N\+A\+T\+E\+\_\+\+F\+R\+A\+M\+E\+\_\+\+P\+R\+O\+V\+I\+D\+E\+R\+S\+\_\+\+I\+E\+R\+S\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+M\+O\+DE} &{\ttfamily Manual} \\\cline{1-2}
-{\ttfamily L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+C\+O\+O\+R\+D\+I\+N\+A\+T\+E\+\_\+\+F\+R\+A\+M\+E\+\_\+\+P\+R\+O\+V\+I\+D\+E\+R\+S\+\_\+\+I\+E\+R\+S\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+RY} &{\ttfamily ./.open-\/space-\/toolkit/physics/coordinate/frame/providers/iers} \\\cline{1-2}
-{\ttfamily L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+C\+O\+O\+R\+D\+I\+N\+A\+T\+E\+\_\+\+F\+R\+A\+M\+E\+\_\+\+P\+R\+O\+V\+I\+D\+E\+R\+S\+\_\+\+I\+E\+R\+S\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+R\+Y\+\_\+\+L\+O\+C\+K\+\_\+\+T\+I\+M\+E\+O\+UT} &{\ttfamily 60} \\\cline{1-2}
-{\ttfamily L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+C\+O\+O\+R\+D\+I\+N\+A\+T\+E\+\_\+\+F\+R\+A\+M\+E\+\_\+\+P\+R\+O\+V\+I\+D\+E\+R\+S\+\_\+\+I\+E\+R\+S\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+R\+E\+M\+O\+T\+E\+\_\+\+U\+RL} &{\ttfamily \href{ftp://cddis.gsfc.nasa.gov/pub/products/iers/}{\tt ftp\+://cddis.\+gsfc.\+nasa.\+gov/pub/products/iers/}} \\\cline{1-2}
-{\ttfamily L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+E\+P\+H\+E\+M\+E\+R\+I\+D\+E\+S\+\_\+\+S\+P\+I\+C\+E\+\_\+\+E\+N\+G\+I\+N\+E\+\_\+\+M\+O\+DE} &{\ttfamily Manual} \\\cline{1-2}
-{\ttfamily L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+E\+P\+H\+E\+M\+E\+R\+I\+D\+E\+S\+\_\+\+S\+P\+I\+C\+E\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+RY} &{\ttfamily ./.open-\/space-\/toolkit/physics/environment/ephemerides/spice} \\\cline{1-2}
-{\ttfamily L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+E\+P\+H\+E\+M\+E\+R\+I\+D\+E\+S\+\_\+\+S\+P\+I\+C\+E\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+R\+E\+M\+O\+T\+E\+\_\+\+U\+RL} &{\ttfamily \href{https://naif.jpl.nasa.gov/pub/naif/generic_kernels/}{\tt https\+://naif.\+jpl.\+nasa.\+gov/pub/naif/generic\+\_\+kernels/}} \\\cline{1-2}
-{\ttfamily L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+G\+R\+A\+V\+I\+T\+A\+T\+I\+O\+N\+A\+L\+\_\+\+E\+A\+R\+T\+H\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+E\+N\+A\+B\+L\+ED} &{\ttfamily false} \\\cline{1-2}
-{\ttfamily L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+G\+R\+A\+V\+I\+T\+A\+T\+I\+O\+N\+A\+L\+\_\+\+E\+A\+R\+T\+H\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+RY} &{\ttfamily ./.open-\/space-\/toolkit/physics/environment/gravitational/earth} \\\cline{1-2}
-{\ttfamily L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+G\+R\+A\+V\+I\+T\+A\+T\+I\+O\+N\+A\+L\+\_\+\+E\+A\+R\+T\+H\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+R\+E\+M\+O\+T\+E\+\_\+\+U\+RL} &{\ttfamily \href{https://sourceforge.net/projects/geographiclib/files/gravity-distrib/}{\tt https\+://sourceforge.\+net/projects/geographiclib/files/gravity-\/distrib/}} \\\cline{1-2}
-{\ttfamily L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+M\+A\+G\+N\+E\+T\+I\+C\+\_\+\+E\+A\+R\+T\+H\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+E\+N\+A\+B\+L\+ED} &{\ttfamily false} \\\cline{1-2}
-{\ttfamily L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+M\+A\+G\+N\+E\+T\+I\+C\+\_\+\+E\+A\+R\+T\+H\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+RY} &{\ttfamily ./.open-\/space-\/toolkit/physics/environment/magnetic/earth} \\\cline{1-2}
-{\ttfamily L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+M\+A\+G\+N\+E\+T\+I\+C\+\_\+\+E\+A\+R\+T\+H\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+R\+E\+M\+O\+T\+E\+\_\+\+U\+RL} &{\ttfamily \href{https://sourceforge.net/projects/geographiclib/files/magnetic-distrib/}{\tt https\+://sourceforge.\+net/projects/geographiclib/files/magnetic-\/distrib/}} \\\cline{1-2}
+{\ttfamily O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+C\+O\+O\+R\+D\+I\+N\+A\+T\+E\+\_\+\+F\+R\+A\+M\+E\+\_\+\+P\+R\+O\+V\+I\+D\+E\+R\+S\+\_\+\+I\+E\+R\+S\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+M\+O\+DE} &{\ttfamily Manual} \\\cline{1-2}
+{\ttfamily O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+C\+O\+O\+R\+D\+I\+N\+A\+T\+E\+\_\+\+F\+R\+A\+M\+E\+\_\+\+P\+R\+O\+V\+I\+D\+E\+R\+S\+\_\+\+I\+E\+R\+S\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+RY} &{\ttfamily ./.open-\/space-\/toolkit/physics/coordinate/frame/providers/iers} \\\cline{1-2}
+{\ttfamily O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+C\+O\+O\+R\+D\+I\+N\+A\+T\+E\+\_\+\+F\+R\+A\+M\+E\+\_\+\+P\+R\+O\+V\+I\+D\+E\+R\+S\+\_\+\+I\+E\+R\+S\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+R\+Y\+\_\+\+L\+O\+C\+K\+\_\+\+T\+I\+M\+E\+O\+UT} &{\ttfamily 60} \\\cline{1-2}
+{\ttfamily O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+C\+O\+O\+R\+D\+I\+N\+A\+T\+E\+\_\+\+F\+R\+A\+M\+E\+\_\+\+P\+R\+O\+V\+I\+D\+E\+R\+S\+\_\+\+I\+E\+R\+S\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+R\+E\+M\+O\+T\+E\+\_\+\+U\+RL} &{\ttfamily \href{ftp://cddis.gsfc.nasa.gov/pub/products/iers/}{\tt ftp\+://cddis.\+gsfc.\+nasa.\+gov/pub/products/iers/}} \\\cline{1-2}
+{\ttfamily O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+E\+P\+H\+E\+M\+E\+R\+I\+D\+E\+S\+\_\+\+S\+P\+I\+C\+E\+\_\+\+E\+N\+G\+I\+N\+E\+\_\+\+M\+O\+DE} &{\ttfamily Manual} \\\cline{1-2}
+{\ttfamily O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+E\+P\+H\+E\+M\+E\+R\+I\+D\+E\+S\+\_\+\+S\+P\+I\+C\+E\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+RY} &{\ttfamily ./.open-\/space-\/toolkit/physics/environment/ephemerides/spice} \\\cline{1-2}
+{\ttfamily O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+E\+P\+H\+E\+M\+E\+R\+I\+D\+E\+S\+\_\+\+S\+P\+I\+C\+E\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+R\+E\+M\+O\+T\+E\+\_\+\+U\+RL} &{\ttfamily \href{https://naif.jpl.nasa.gov/pub/naif/generic_kernels/}{\tt https\+://naif.\+jpl.\+nasa.\+gov/pub/naif/generic\+\_\+kernels/}} \\\cline{1-2}
+{\ttfamily O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+G\+R\+A\+V\+I\+T\+A\+T\+I\+O\+N\+A\+L\+\_\+\+E\+A\+R\+T\+H\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+E\+N\+A\+B\+L\+ED} &{\ttfamily false} \\\cline{1-2}
+{\ttfamily O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+G\+R\+A\+V\+I\+T\+A\+T\+I\+O\+N\+A\+L\+\_\+\+E\+A\+R\+T\+H\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+RY} &{\ttfamily ./.open-\/space-\/toolkit/physics/environment/gravitational/earth} \\\cline{1-2}
+{\ttfamily O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+G\+R\+A\+V\+I\+T\+A\+T\+I\+O\+N\+A\+L\+\_\+\+E\+A\+R\+T\+H\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+R\+E\+M\+O\+T\+E\+\_\+\+U\+RL} &{\ttfamily \href{https://sourceforge.net/projects/geographiclib/files/gravity-distrib/}{\tt https\+://sourceforge.\+net/projects/geographiclib/files/gravity-\/distrib/}} \\\cline{1-2}
+{\ttfamily O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+M\+A\+G\+N\+E\+T\+I\+C\+\_\+\+E\+A\+R\+T\+H\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+E\+N\+A\+B\+L\+ED} &{\ttfamily false} \\\cline{1-2}
+{\ttfamily O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+M\+A\+G\+N\+E\+T\+I\+C\+\_\+\+E\+A\+R\+T\+H\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+RY} &{\ttfamily ./.open-\/space-\/toolkit/physics/environment/magnetic/earth} \\\cline{1-2}
+{\ttfamily O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+M\+A\+G\+N\+E\+T\+I\+C\+\_\+\+E\+A\+R\+T\+H\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+R\+E\+M\+O\+T\+E\+\_\+\+U\+RL} &{\ttfamily \href{https://sourceforge.net/projects/geographiclib/files/magnetic-distrib/}{\tt https\+://sourceforge.\+net/projects/geographiclib/files/magnetic-\/distrib/}} \\\cline{1-2}
 \end{longtabu}
 \subsection*{Setup}
 
