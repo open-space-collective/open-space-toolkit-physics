@@ -5,7 +5,6 @@
 [![Documentation](https://img.shields.io/readthedocs/pip/stable.svg)](https://open-space-collective.github.io/open-space-toolkit-physics)
 [![GitHub version](https://badge.fury.io/gh/open-space-collective%2Fopen-space-toolkit-physics.svg)](https://badge.fury.io/gh/open-space-collective%2Fopen-space-toolkit-physics)
 [![PyPI version](https://badge.fury.io/py/open-space-toolkit-physics.svg)](https://badge.fury.io/py/open-space-toolkit-physics)
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/open-space-collective/open-space-toolkit-physics/master?urlpath=lab/tree/tutorials%2Fpython%2Fnotebooks)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 Physical units, time, reference frames, environment modeling.
@@ -14,51 +13,15 @@ Physical units, time, reference frames, environment modeling.
 
 *⚠ This component is under development.*
 
-## Installation
-
-### C++
-
-The binary packages are hosted using [GitHub Releases](https://github.com/open-space-collective/open-space-toolkit-physics/releases).
-
-*Note: Don't forget to set the desired version number in the URLs!*
-
-#### Debian / Ubuntu
-
-```bash
-# Download .deb packages
-
-wget https://github.com/open-space-collective/open-space-toolkit-physics/releases/download/0.4.0/open-space-toolkit-physics-0.4.0-1.x86_64-runtime.deb
-wget https://github.com/open-space-collective/open-space-toolkit-physics/releases/download/0.4.0/open-space-toolkit-physics-0.4.0-1.x86_64-devel.deb
-
-# Install .deb packages
-
-apt install -y open-space-toolkit-physics-0.4.0-*.deb
-```
-
-#### Fedora / CentOS
-
-```bash
-# Download .rpm packages
-
-wget https://github.com/open-space-collective/open-space-toolkit-physics/releases/download/0.4.0/open-space-toolkit-physics-0.4.0-1.x86_64-runtime.rpm
-wget https://github.com/open-space-collective/open-space-toolkit-physics/releases/download/0.4.0/open-space-toolkit-physics-0.4.0-1.x86_64-devel.rpm
-
-# Install .rpm packages
-
-dnf install -y open-space-toolkit-physics-0.4.0-*.rpm
-```
-
-### Python
-
-The binary packages are hosted on [PyPI](https://pypi.org/project/open-space-toolkit-physics/):
-
-```bash
-pip install open-space-toolkit-physics
-```
-
 ## Getting Started
 
-Want to quickly get started? It's pretty simple.
+Want to get started? This is the simplest and quickest way:
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/open-space-collective/open-space-toolkit-physics/master?urlpath=lab/tree/tutorials%2Fpython%2Fnotebooks)
+
+*Nothing to download or install! This will automatically start a [JupyterLab](https://jupyterlab.readthedocs.io/en/stable/) environment in your browser with Open Space Toolkit libraries and example notebooks ready to use.*
+
+### Alternatives
 
 Install [Docker](https://www.docker.com/) and try this:
 
@@ -86,6 +49,38 @@ moon.get_axes_in(Frame.ITRF()) # Axes of the Moon in ITRF
 ```
 
 *Tip: Use tab for auto-completion!*
+
+## Installation
+
+### C++
+
+The binary packages are hosted using [GitHub Releases](https://github.com/open-space-collective/open-space-toolkit-physics/releases).
+
+*Note: Don't forget to set the desired version number in the URLs!*
+
+#### Debian / Ubuntu
+
+Download `.deb` binary [packages](https://github.com/open-space-collective/open-space-toolkit-physics/releases/download/0.4.0) and install:
+
+```bash
+apt install -y open-space-toolkit-physics-0.4.0-*.deb
+```
+
+#### Fedora / CentOS
+
+Download `.rpm` binary [packages](https://github.com/open-space-collective/open-space-toolkit-physics/releases/download/0.4.0) and install:
+
+```bash
+dnf install -y open-space-toolkit-physics-0.4.0-*.rpm
+```
+
+### Python
+
+Install from [PyPI](https://pypi.org/project/open-space-toolkit-physics/):
+
+```bash
+pip install open-space-toolkit-physics
+```
 
 ## Structure
 
@@ -175,8 +170,8 @@ Tutorials are available here:
 
 The following environment variables can be set:
 
-| Environment Variable                                                                    | Default Value                                                            |
-| --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| Environment Variable                                                                 | Default Value                                                            |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
 | `OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE`                          | `Manual`                                                                 |
 | `OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY`              | `./.open-space-toolkit/physics/coordinate/frame/providers/iers`          |
 | `OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT` | `60`                                                                     |
@@ -243,7 +238,7 @@ Or to run them manually:
 ## Dependencies
 
 | Name          | Version    | License                                                    | Link                                                                                                                                       |
-| ------------- | ---------- | ---------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------                       |
+| ------------- | ---------- | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
 | Boost         | 1.69.0     | Boost Software License                                     | [boost.org](https://www.boost.org)                                                                                                         |
 | Eigen         | 3.3.7      | MPL2                                                       | [eigen.tuxfamily.org](http://eigen.tuxfamily.org/index.php)                                                                                |
 | IAU SOFA      | 2018-01-30 | [SOFA Software License](http://www.iausofa.org/tandc.html) | [www.iausofa.org](http://www.iausofa.org)                                                                                                  |
