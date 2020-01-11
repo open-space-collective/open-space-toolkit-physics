@@ -9,17 +9,27 @@
 
 ################################################################################################################################################################
 
-jupyter labextension install @jupyterlab/plotly-extension
+# Install Plotly for JupyterLab
 
-wget --quiet https://github.com/open-space-collective/open-space-toolkit-physics/archive/master.zip
+## Jupyter widgets extension
 
-unzip -q master.zip
+jupyter labextension install @jupyter-widgets/jupyterlab-manager@1.1 --no-build
 
-mkdir -p /home/jovyan/open-space-toolkit
+## FigureWidget support
 
-mv open-space-toolkit-physics-master/share /home/jovyan/open-space-toolkit/physics
+jupyter labextension install plotlywidget@1.4.0 --no-build
 
-rm master.zip
-rm -rf open-space-toolkit-physics-master
+## and jupyterlab renderer support
+
+jupyter labextension install jupyterlab-plotly@1.4.0 --no-build
+
+## Build extensions (must be done to activate extensions since --no-build is used above)
+
+jupyter lab build
+
+# Install Open Space Toolkit default datasets
+
+mkdir -p /home/jovyan/open-space-toolkit/physics
+gsutil -m cp -r gs://open-space-collective/library/physics /home/jovyan/open-space-toolkit/
 
 ################################################################################################################################################################
