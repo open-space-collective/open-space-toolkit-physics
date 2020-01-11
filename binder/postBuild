@@ -15,9 +15,9 @@ wget --quiet https://github.com/open-space-collective/open-space-toolkit-physics
 
 unzip -q master.zip
 
-mkdir -p /open-space-toolkit
+mkdir -p /home/jovyan/open-space-toolkit
 
-mv open-space-toolkit-physics-master/share /open-space-toolkit/physics
+mv open-space-toolkit-physics-master/share /home/jovyan/open-space-toolkit/physics
 
 rm master.zip
 rm -rf open-space-toolkit-physics-master
