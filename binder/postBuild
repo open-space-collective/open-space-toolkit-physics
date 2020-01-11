@@ -30,6 +30,6 @@ jupyter lab build
 # Install Open Space Toolkit default datasets
 
 mkdir -p /home/jovyan/open-space-toolkit/physics
-gsutil -m cp -r gs://open-space-collective/library/physics /home/jovyan/open-space-toolkit/
+gsutil -m cp -r gs://open-space-toolkit/physics /home/jovyan/open-space-toolkit/
 
 ################################################################################################################################################################
