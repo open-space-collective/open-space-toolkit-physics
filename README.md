@@ -54,24 +54,26 @@ moon.get_axes_in(Frame.ITRF()) # Axes of the Moon in ITRF
 
 ### C++
 
-The binary packages are hosted using [GitHub Releases](https://github.com/open-space-collective/open-space-toolkit-physics/releases).
+The binary packages are hosted using [GitHub Releases](https://github.com/open-space-collective/open-space-toolkit-physics/releases):
 
-*Note: Don't forget to set the desired version number in the URLs!*
+- Runtime libraries: `open-space-toolkit-physics-X.Y.Z-1.x86_64-runtime`
+- C++ headers: `open-space-toolkit-physics-X.Y.Z-1.x86_64-devel`
+- Python bindings: `open-space-toolkit-physics-X.Y.Z-1.x86_64-python`
 
 #### Debian / Ubuntu
 
-Download `.deb` binary [packages](https://github.com/open-space-collective/open-space-toolkit-physics/releases/download/0.4.0) and install:
+After downloading the relevant `.deb` binary packages, install:
 
 ```bash
-apt install -y open-space-toolkit-physics-0.4.0-*.deb
+apt install open-space-toolkit-physics-*.deb
 ```
 
 #### Fedora / CentOS
 
-Download `.rpm` binary [packages](https://github.com/open-space-collective/open-space-toolkit-physics/releases/download/0.4.0) and install:
+After downloading the relevant `.rpm` binary packages, install:
 
 ```bash
-dnf install -y open-space-toolkit-physics-0.4.0-*.rpm
+dnf install open-space-toolkit-physics-*.rpm
 ```
 
 ### Python
