@@ -354,8 +354,7 @@ start-jupyter-notebook: build-release-image-jupyter
 	--volume="${project_directory}/bindings/python/docs:/home/jovyan/docs" \
 	--volume="${project_directory}/tutorials/python/notebooks:/home/jovyan/tutorials" \
 	--workdir="/home/jovyan" \
-	$(docker_release_image_jupyter_repository):$(docker_image_version) \
-	bash -c "start-notebook.sh --NotebookApp.token=''"
+	$(docker_release_image_jupyter_repository):$(docker_image_version)
 
 ################################################################################################################################################################
 

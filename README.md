@@ -23,13 +23,17 @@ Want to get started? This is the simplest and quickest way:
 
 ### Alternatives
 
-Install [Docker](https://www.docker.com/) and try this:
+#### Docker Images
+
+[Docker](https://www.docker.com/) must be installed on your system.
+
+##### iPython
+
+The following command will start an [iPython](https://ipython.org/) shell within a container where the OSTk components are already installed:
 
 ```bash
 docker run -it openspacecollective/open-space-toolkit-physics-python
 ```
-
-This will start an [iPython](https://ipython.org/) shell within a container where the OSTk Physics component is already installed.
 
 Once the shell is up and running, playing with it is easy:
 
@@ -48,7 +52,21 @@ moon.get_position_in(Frame.ITRF()) # Position of the Moon in ITRF
 moon.get_axes_in(Frame.ITRF()) # Axes of the Moon in ITRF
 ```
 
+By default, OSTk fetches the ephemeris from JPL, Earth Orientation Parameters (EOP) and leap second count from IERS.
+
+As a result, when running OSTk for the first time, it may take a minute to fetch all the necessary data.
+
 *Tip: Use tab for auto-completion!*
+
+##### JupyterLab
+
+The following command will start a [JupyterLab](https://jupyterlab.readthedocs.io/en/stable/) server within a container where the OSTk components are already installed:
+
+```bash
+docker run --publish=8888:8888 openspacecollective/open-space-toolkit-physics-jupyter
+```
+
+Once the container is running, access [http://localhost:8888/lab](http://localhost:8888/lab) and create a Python 3 Notebook.
 
 ## Installation
 
