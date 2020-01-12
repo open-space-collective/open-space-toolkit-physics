@@ -53,6 +53,14 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
 
     {
 
+        boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("ostk.physics.environment.objects.celestial_bodies.earth")))) ;
+
+        boost::python::scope().attr("earth") = module ;
+
+    }
+
+    {
+
         boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("ostk.physics.environment.objects.celestial_bodies.earth.models")))) ;
 
         boost::python::scope().attr("models") = module ;
