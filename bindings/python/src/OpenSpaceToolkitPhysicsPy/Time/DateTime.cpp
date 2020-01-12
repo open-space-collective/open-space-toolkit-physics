@@ -102,7 +102,7 @@ struct PythonDatetimeFromDateTime
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Time_DateTime              ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Time_DateTime     ( )
 {
 
     using namespace boost::python ;

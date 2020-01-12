@@ -5,7 +5,6 @@
 [![Documentation](https://img.shields.io/readthedocs/pip/stable.svg)](https://open-space-collective.github.io/open-space-toolkit-physics)
 [![GitHub version](https://badge.fury.io/gh/open-space-collective%2Fopen-space-toolkit-physics.svg)](https://badge.fury.io/gh/open-space-collective%2Fopen-space-toolkit-physics)
 [![PyPI version](https://badge.fury.io/py/open-space-toolkit-physics.svg)](https://badge.fury.io/py/open-space-toolkit-physics)
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/open-space-collective/open-space-toolkit-physics/master?urlpath=lab/tree/tutorials%2Fpython%2Fnotebooks)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 Physical units, time, reference frames, environment modeling.
@@ -14,59 +13,27 @@ Physical units, time, reference frames, environment modeling.
 
 *⚠ This component is under development.*
 
-## Installation
-
-### C++
-
-The binary packages are hosted using [GitHub Releases](https://github.com/open-space-collective/open-space-toolkit-physics/releases).
-
-*Note: Don't forget to set the desired version number in the URLs!*
-
-#### Debian / Ubuntu
-
-```bash
-# Download .deb packages
-
-wget https://github.com/open-space-collective/open-space-toolkit-physics/releases/download/0.4.0/open-space-toolkit-physics-0.4.0-1.x86_64-runtime.deb
-wget https://github.com/open-space-collective/open-space-toolkit-physics/releases/download/0.4.0/open-space-toolkit-physics-0.4.0-1.x86_64-devel.deb
-
-# Install .deb packages
-
-apt install -y open-space-toolkit-physics-0.4.0-*.deb
-```
-
-#### Fedora / CentOS
-
-```bash
-# Download .rpm packages
-
-wget https://github.com/open-space-collective/open-space-toolkit-physics/releases/download/0.4.0/open-space-toolkit-physics-0.4.0-1.x86_64-runtime.rpm
-wget https://github.com/open-space-collective/open-space-toolkit-physics/releases/download/0.4.0/open-space-toolkit-physics-0.4.0-1.x86_64-devel.rpm
-
-# Install .rpm packages
-
-dnf install -y open-space-toolkit-physics-0.4.0-*.rpm
-```
-
-### Python
-
-The binary packages are hosted on [PyPI](https://pypi.org/project/open-space-toolkit-physics/):
-
-```bash
-pip install open-space-toolkit-physics
-```
-
 ## Getting Started
 
-Want to quickly get started? It's pretty simple.
+Want to get started? This is the simplest and quickest way:
 
-Install [Docker](https://www.docker.com/) and try this:
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/open-space-collective/open-space-toolkit-physics/master?urlpath=lab/tree/tutorials%2Fpython%2Fnotebooks)
+
+*Nothing to download or install! This will automatically start a [JupyterLab](https://jupyterlab.readthedocs.io/en/stable/) environment in your browser with Open Space Toolkit libraries and example notebooks ready to use.*
+
+### Alternatives
+
+#### Docker Images
+
+[Docker](https://www.docker.com/) must be installed on your system.
+
+##### iPython
+
+The following command will start an [iPython](https://ipython.org/) shell within a container where the OSTk components are already installed:
 
 ```bash
 docker run -it openspacecollective/open-space-toolkit-physics-python
 ```
-
-This will start an [iPython](https://ipython.org/) shell within a container where the OSTk Physics component is already installed.
 
 Once the shell is up and running, playing with it is easy:
 
@@ -85,7 +52,55 @@ moon.get_position_in(Frame.ITRF()) # Position of the Moon in ITRF
 moon.get_axes_in(Frame.ITRF()) # Axes of the Moon in ITRF
 ```
 
+By default, OSTk fetches the ephemeris from JPL, Earth Orientation Parameters (EOP) and leap second count from IERS.
+
+As a result, when running OSTk for the first time, it may take a minute to fetch all the necessary data.
+
 *Tip: Use tab for auto-completion!*
+
+##### JupyterLab
+
+The following command will start a [JupyterLab](https://jupyterlab.readthedocs.io/en/stable/) server within a container where the OSTk components are already installed:
+
+```bash
+docker run --publish=8888:8888 openspacecollective/open-space-toolkit-physics-jupyter
+```
+
+Once the container is running, access [http://localhost:8888/lab](http://localhost:8888/lab) and create a Python 3 Notebook.
+
+## Installation
+
+### C++
+
+The binary packages are hosted using [GitHub Releases](https://github.com/open-space-collective/open-space-toolkit-physics/releases):
+
+- Runtime libraries: `open-space-toolkit-physics-X.Y.Z-1.x86_64-runtime`
+- C++ headers: `open-space-toolkit-physics-X.Y.Z-1.x86_64-devel`
+- Python bindings: `open-space-toolkit-physics-X.Y.Z-1.x86_64-python`
+
+#### Debian / Ubuntu
+
+After downloading the relevant `.deb` binary packages, install:
+
+```bash
+apt install open-space-toolkit-physics-*.deb
+```
+
+#### Fedora / CentOS
+
+After downloading the relevant `.rpm` binary packages, install:
+
+```bash
+dnf install open-space-toolkit-physics-*.rpm
+```
+
+### Python
+
+Install from [PyPI](https://pypi.org/project/open-space-toolkit-physics/):
+
+```bash
+pip install open-space-toolkit-physics
+```
 
 ## Structure
 
@@ -175,8 +190,8 @@ Tutorials are available here:
 
 The following environment variables can be set:
 
-| Environment Variable                                                                    | Default Value                                                            |
-| --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| Environment Variable                                                                 | Default Value                                                            |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
 | `OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE`                          | `Manual`                                                                 |
 | `OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY`              | `./.open-space-toolkit/physics/coordinate/frame/providers/iers`          |
 | `OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT` | `60`                                                                     |
@@ -243,7 +258,7 @@ Or to run them manually:
 ## Dependencies
 
 | Name          | Version    | License                                                    | Link                                                                                                                                       |
-| ------------- | ---------- | ---------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------                       |
+| ------------- | ---------- | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
 | Boost         | 1.69.0     | Boost Software License                                     | [boost.org](https://www.boost.org)                                                                                                         |
 | Eigen         | 3.3.7      | MPL2                                                       | [eigen.tuxfamily.org](http://eigen.tuxfamily.org/index.php)                                                                                |
 | IAU SOFA      | 2018-01-30 | [SOFA Software License](http://www.iausofa.org/tandc.html) | [www.iausofa.org](http://www.iausofa.org)                                                                                                  |

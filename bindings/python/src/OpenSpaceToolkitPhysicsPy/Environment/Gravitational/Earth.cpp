@@ -23,23 +23,27 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Gravitatio
     using ostk::physics::environment::gravitational::Earth ;
     using ostk::physics::environment::gravitational::earth::Manager ;
 
-    class_<Earth>("Earth", init<const Earth::Type&, const Directory&>())
+    {
 
-        .def(init<const Earth::Type&>())
+        scope in_Earth = class_<Earth>("Earth", init<const Earth::Type&, const Directory&>())
 
-        .def("get_type", &Earth::getType)
-        .def("get_field_value_at", &Earth::getFieldValueAt)
+            .def(init<const Earth::Type&>())
 
-    ;
+            .def("get_type", &Earth::getType)
+            .def("get_field_value_at", &Earth::getFieldValueAt)
 
-    enum_<Earth::Type>("Type")
+        ;
 
-        .value("WGS84", Earth::Type::WGS84)
-        .value("EGM84", Earth::Type::EGM84)
-        .value("EGM96", Earth::Type::EGM96)
-        .value("EGM2008", Earth::Type::EGM2008)
+        enum_<Earth::Type>("Type")
 
-    ;
+            .value("WGS84", Earth::Type::WGS84)
+            .value("EGM84", Earth::Type::EGM84)
+            .value("EGM96", Earth::Type::EGM96)
+            .value("EGM2008", Earth::Type::EGM2008)
+
+        ;
+
+    }
 
     boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("ostk.physics.environment.gravitational.earth")))) ;
 
