@@ -33,7 +33,6 @@ RUN jupyter labextension install --no-build \
         plotlywidget \
         jupyterlab-plotly \
  && jupyter lab build \
- && jupyter labextension update --all \
  && jupyter labextension update --all
 
 COPY ./shortcuts-extension /home/jovyan/.jupyter/lab/user-settings/@jupyterlab/shortcuts-extension

@@ -9,6 +9,10 @@
 
 Physical units, time, reference frames, environment modeling.
 
+<img src="./docs/assets/gravitational-anomaly.png" height="500px" width="auto">
+
+*Gravitational field anomaly between EGM96 and WGS84 models.*
+
 ## Warning
 
 *⚠ This component is under development.*
