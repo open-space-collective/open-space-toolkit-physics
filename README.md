@@ -106,9 +106,18 @@ Install from [PyPI](https://pypi.org/project/open-space-toolkit-physics/):
 pip install open-space-toolkit-physics
 ```
 
-## Structure
+## Documentation
 
-The **Physics** library exhibits the following structure:
+Documentation is available here:
+
+- [C++](https://open-space-collective.github.io/open-space-toolkit-physics)
+- [Python](./bindings/python/docs)
+
+<details>
+<summary>Structure</summary>
+<p>
+
+The library exhibits the following structure:
 
 ```txt
 ├── Units
@@ -176,12 +185,8 @@ The **Physics** library exhibits the following structure:
         └── Hipparcos
 ```
 
-## Documentation
-
-Documentation is available here:
-
-- [C++](https://open-space-collective.github.io/open-space-toolkit-physics)
-- [Python](./bindings/python/docs)
+</p>
+</details>
 
 ## Tutorials
 
