@@ -13,10 +13,6 @@ Physical units, time, reference frames, environment modeling.
 
 *Gravitational field anomaly between EGM96 and WGS84 models.*
 
-## Warning
-
-*⚠ This component is under development.*
-
 ## Getting Started
 
 Want to get started? This is the simplest and quickest way:
