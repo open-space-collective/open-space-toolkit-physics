@@ -282,7 +282,7 @@ Geometry                        Geometry::intersectionWith                  (   
 
     if (intersection.isEmpty())
     {
-        return { Composite::Undefined(), frameSPtr_ } ;
+        return { Composite::Empty(), frameSPtr_ } ;
     }
 
     return { intersection.accessComposite(), frameSPtr_ } ;
