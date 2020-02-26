@@ -13,10 +13,6 @@ Physical units, time, reference frames, environment modeling.
 
 *Gravitational field anomaly between EGM96 and WGS84 models.*
 
-## Warning
-
-*⚠ This component is under development.*
-
 ## Getting Started
 
 Want to get started? This is the simplest and quickest way:
@@ -106,9 +102,18 @@ Install from [PyPI](https://pypi.org/project/open-space-toolkit-physics/):
 pip install open-space-toolkit-physics
 ```
 
-## Structure
+## Documentation
 
-The **Physics** library exhibits the following structure:
+Documentation is available here:
+
+- [C++](https://open-space-collective.github.io/open-space-toolkit-physics)
+- [Python](./bindings/python/docs)
+
+<details>
+<summary>Structure</summary>
+<p>
+
+The library exhibits the following structure:
 
 ```txt
 ├── Units
@@ -176,12 +181,8 @@ The **Physics** library exhibits the following structure:
         └── Hipparcos
 ```
 
-## Documentation
-
-Documentation is available here:
-
-- [C++](https://open-space-collective.github.io/open-space-toolkit-physics)
-- [Python](./bindings/python/docs)
+</p>
+</details>
 
 ## Tutorials
 
