@@ -8,6 +8,8 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <OpenSpaceToolkitPhysicsPy/Environment/Objects/CelestialBodies/Earth.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Environment/Objects/CelestialBodies/Moon.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Environment/Objects/CelestialBodies/Sun.cpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -21,6 +23,8 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
     boost::python::scope scope = module ;
 
     OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Earth() ;
+    OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Moon() ;
+    OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Sun() ;
 
 }
 
