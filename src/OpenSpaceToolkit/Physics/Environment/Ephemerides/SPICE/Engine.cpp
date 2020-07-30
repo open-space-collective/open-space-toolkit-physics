@@ -284,7 +284,7 @@ Array<Kernel>                   Engine::DefaultKernels                      (   
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("pck00010.tpc"))),                         // System body shape and orientation constants
 
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("earth_assoc_itrf93.tf"))),
-        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("earth_070425_370426_predict.bpc"))),
+        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("earth_200101_990628_predict.bpc"))),
 
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("moon_080317.tf"))),
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("moon_assoc_me.tf"))),
