@@ -37,7 +37,7 @@ struct ToListConverter
 struct IterableConverter
 {
 
-    /// @brief                  Registers converter from a python interable type to the provided type
+    /// @brief                  Registers converter from a python iterable type to the provided type
 
                                 template <typename Container>
     IterableConverter&          from_python                                 ( )
@@ -54,7 +54,7 @@ struct IterableConverter
 
     }
 
-    /// @brief                  Registers converter from the provided type to a python interable type
+    /// @brief                  Registers converter from the provided type to a python iterable type
 
                                 template <typename Container>
     IterableConverter&          to_python                                   ( )
@@ -70,7 +70,17 @@ struct IterableConverter
 
     static void*                convertible                                 (           PyObject*                   anObject                                    )
     {
-        return PyObject_GetIter(anObject) ? anObject : nullptr ;
+
+        auto *iterator = PyObject_GetIter(anObject) ;
+
+        if (iterator != nullptr)
+        {
+            boost::python::decref(iterator) ;
+            return anObject ;
+        }
+
+        return nullptr ;
+
     }
 
     /// @brief Convert iterable PyObject to C++ container type.
