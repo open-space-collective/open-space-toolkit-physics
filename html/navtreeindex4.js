@@ -1,5 +1,6 @@
 var NAVTREEINDEX4 =
 {
+"classostk_1_1physics_1_1units_1_1_derived.html":[4,0,0,0,5,1],
 "classostk_1_1physics_1_1units_1_1_derived.html#a033deb6664987f4b2f86f5abeb18da81":[4,0,0,0,5,1,10],
 "classostk_1_1physics_1_1units_1_1_derived.html#a34bdca5b46e49122573c2ecd4b5be924":[4,0,0,0,5,1,7],
 "classostk_1_1physics_1_1units_1_1_derived.html#a4221766463c2f4ab478e4a882239eec6":[4,0,0,0,5,1,6],
@@ -184,8 +185,8 @@ var NAVTREEINDEX4 =
 "dir_fafa3b18a87fe401f1a26033653cf1dd.html":[5,0,0,0,0,2,5],
 "dir_fdc2ce6839bd9a3b87630c53f2ae038b.html":[5,0,1,0],
 "files.html":[5,0],
-"functions.html":[4,2,0,0],
 "functions.html":[4,2,0],
+"functions.html":[4,2,0,0],
 "functions_0x7e.html":[4,2,0,25],
 "functions_b.html":[4,2,0,1],
 "functions_c.html":[4,2,0,2],
@@ -193,8 +194,8 @@ var NAVTREEINDEX4 =
 "functions_e.html":[4,2,0,4],
 "functions_enum.html":[4,2,4],
 "functions_f.html":[4,2,0,5],
-"functions_func.html":[4,2,1,0],
 "functions_func.html":[4,2,1],
+"functions_func.html":[4,2,1,0],
 "functions_func_0x7e.html":[4,2,1,25],
 "functions_func_b.html":[4,2,1,1],
 "functions_func_c.html":[4,2,1,2],
@@ -246,8 +247,7 @@ var NAVTREEINDEX4 =
 "globals_defs.html":[5,1,2],
 "globals_type.html":[5,1,1],
 "hierarchy.html":[4,1],
-"index.html":[],
 "index.html":[0],
-"md__c_o_n_t_r_i_b_u_t_i_n_g.html":[1],
-"md__c_o_n_t_r_i_b_u_t_i_n_g.html#C":[1,0,0]
+"index.html":[],
+"md__c_o_n_t_r_i_b_u_t_i_n_g.html":[1]
 };

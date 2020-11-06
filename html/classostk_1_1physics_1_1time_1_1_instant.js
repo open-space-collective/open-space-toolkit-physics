@@ -3,6 +3,7 @@ var classostk_1_1physics_1_1time_1_1_instant =
     [ "Instant", "classostk_1_1physics_1_1time_1_1_instant.html#a132c1e4b2fe9a9a671109206e297bd5d", null ],
     [ "getDateTime", "classostk_1_1physics_1_1time_1_1_instant.html#a3fccf9781f8466ce2163aa2396f70560", null ],
     [ "getJulianDate", "classostk_1_1physics_1_1time_1_1_instant.html#a71b3a5992123fddb3a3539dc99df66c1", null ],
+    [ "getLeapSecondCount", "classostk_1_1physics_1_1time_1_1_instant.html#aceab87ef79e6f5d1438ac78e11bdcd6f", null ],
     [ "getModifiedJulianDate", "classostk_1_1physics_1_1time_1_1_instant.html#aeaaf152c806c5f98ad03933ede05fe2d", null ],
     [ "isDefined", "classostk_1_1physics_1_1time_1_1_instant.html#a3036cb77f2686a81c51f0c658881b3ff", null ],
     [ "isNear", "classostk_1_1physics_1_1time_1_1_instant.html#a6bbb53cd76ec7d4e89ebbb45cf7ae03b", null ],

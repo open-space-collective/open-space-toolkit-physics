@@ -48,6 +48,8 @@ Real \hyperlink{classostk_1_1physics_1_1time_1_1_instant_a71b3a5992123fddb3a3539
 \begin{DoxyCompactList}\small\item\em Get Julian \hyperlink{classostk_1_1physics_1_1time_1_1_date}{Date} expressed in given time scale. \end{DoxyCompactList}\item 
 Real \hyperlink{classostk_1_1physics_1_1time_1_1_instant_aeaaf152c806c5f98ad03933ede05fe2d}{get\+Modified\+Julian\+Date} (const \hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7}{Scale} \&a\+Time\+Scale) const
 \begin{DoxyCompactList}\small\item\em Get Modified Julian \hyperlink{classostk_1_1physics_1_1time_1_1_date}{Date} expressed in given time scale. \end{DoxyCompactList}\item 
+Int64 \hyperlink{classostk_1_1physics_1_1time_1_1_instant_aceab87ef79e6f5d1438ac78e11bdcd6f}{get\+Leap\+Second\+Count} () const
+\begin{DoxyCompactList}\small\item\em Get Leap Second count. \end{DoxyCompactList}\item 
 String \hyperlink{classostk_1_1physics_1_1time_1_1_instant_a710ff6dec3b97f4e10bcfeae6335eb56}{to\+String} (const \hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7}{Scale} \&a\+Time\+Scale=\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7a9234324ddf6b4176b57d803a925b7961}{Scale\+::\+U\+TC}) const
 \begin{DoxyCompactList}\small\item\em Get string representation of instant. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
@@ -158,6 +160,27 @@ Get Julian \hyperlink{classostk_1_1physics_1_1time_1_1_date}{Date} expressed in 
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Julian \hyperlink{classostk_1_1physics_1_1time_1_1_date}{Date} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1time_1_1_instant_aceab87ef79e6f5d1438ac78e11bdcd6f}\label{classostk_1_1physics_1_1time_1_1_instant_aceab87ef79e6f5d1438ac78e11bdcd6f}} 
+\index{ostk\+::physics\+::time\+::\+Instant@{ostk\+::physics\+::time\+::\+Instant}!get\+Leap\+Second\+Count@{get\+Leap\+Second\+Count}}
+\index{get\+Leap\+Second\+Count@{get\+Leap\+Second\+Count}!ostk\+::physics\+::time\+::\+Instant@{ostk\+::physics\+::time\+::\+Instant}}
+\subsubsection{\texorpdfstring{get\+Leap\+Second\+Count()}{getLeapSecondCount()}}
+{\footnotesize\ttfamily Int64 ostk\+::physics\+::time\+::\+Instant\+::get\+Leap\+Second\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get Leap Second count. 
+
+The Leap Second count is the number of seconds between T\+AI and U\+TC scales.
+
+
+\begin{DoxyCode}
+\hyperlink{classostk_1_1physics_1_1time_1_1_instant_a3f84d0c2d0b140326d3b172b54e3ffff}{Instant::J2000}().\hyperlink{classostk_1_1physics_1_1time_1_1_instant_aceab87ef79e6f5d1438ac78e11bdcd6f}{getLeapSecondCount}() ;
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+Leap Second 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1time_1_1_instant_aeaaf152c806c5f98ad03933ede05fe2d}\label{classostk_1_1physics_1_1time_1_1_instant_aeaaf152c806c5f98ad03933ede05fe2d}} 
 \index{ostk\+::physics\+::time\+::\+Instant@{ostk\+::physics\+::time\+::\+Instant}!get\+Modified\+Julian\+Date@{get\+Modified\+Julian\+Date}}

@@ -149,6 +149,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aeaaf152c806c5f98ad03933ede05fe2d"><td class="memItemLeft" align="right" valign="top">Real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1time_1_1_instant.html#aeaaf152c806c5f98ad03933ede05fe2d">getModifiedJulianDate</a> (const <a class="el" href="namespaceostk_1_1physics_1_1time.html#adf23d37bd8641fb76a0e98ab46a70df7">Scale</a> &amp;aTimeScale) const</td></tr>
 <tr class="memdesc:aeaaf152c806c5f98ad03933ede05fe2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get Modified Julian <a class="el" href="classostk_1_1physics_1_1time_1_1_date.html" title="Date as year, month and day. ">Date</a> expressed in given time scale.  <a href="#aeaaf152c806c5f98ad03933ede05fe2d">More...</a><br /></td></tr>
 <tr class="separator:aeaaf152c806c5f98ad03933ede05fe2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aceab87ef79e6f5d1438ac78e11bdcd6f"><td class="memItemLeft" align="right" valign="top">Int64&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1time_1_1_instant.html#aceab87ef79e6f5d1438ac78e11bdcd6f">getLeapSecondCount</a> () const</td></tr>
+<tr class="memdesc:aceab87ef79e6f5d1438ac78e11bdcd6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get Leap Second count.  <a href="#aceab87ef79e6f5d1438ac78e11bdcd6f">More...</a><br /></td></tr>
+<tr class="separator:aceab87ef79e6f5d1438ac78e11bdcd6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a710ff6dec3b97f4e10bcfeae6335eb56"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1time_1_1_instant.html#a710ff6dec3b97f4e10bcfeae6335eb56">toString</a> (const <a class="el" href="namespaceostk_1_1physics_1_1time.html#adf23d37bd8641fb76a0e98ab46a70df7">Scale</a> &amp;aTimeScale=<a class="el" href="namespaceostk_1_1physics_1_1time.html#adf23d37bd8641fb76a0e98ab46a70df7a9234324ddf6b4176b57d803a925b7961">Scale::UTC</a>) const</td></tr>
 <tr class="memdesc:a710ff6dec3b97f4e10bcfeae6335eb56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get string representation of instant.  <a href="#a710ff6dec3b97f4e10bcfeae6335eb56">More...</a><br /></td></tr>
 <tr class="separator:a710ff6dec3b97f4e10bcfeae6335eb56"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -302,6 +305,27 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Julian <a class="el" href="classostk_1_1physics_1_1time_1_1_date.html" title="Date as year, month and day. ">Date</a> </dd></dl>
+
+</div>
+</div>
+<a id="aceab87ef79e6f5d1438ac78e11bdcd6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aceab87ef79e6f5d1438ac78e11bdcd6f">&#9670;&nbsp;</a></span>getLeapSecondCount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Int64 ostk::physics::time::Instant::getLeapSecondCount </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get Leap Second count. </p>
+<p>The Leap Second count is the number of seconds between TAI and UTC scales.</p>
+<div class="fragment"><div class="line"><a class="code" href="classostk_1_1physics_1_1time_1_1_instant.html#a3f84d0c2d0b140326d3b172b54e3ffff">Instant::J2000</a>().<a class="code" href="classostk_1_1physics_1_1time_1_1_instant.html#aceab87ef79e6f5d1438ac78e11bdcd6f">getLeapSecondCount</a>() ;</div></div><!-- fragment --><dl class="section return"><dt>Returns</dt><dd>Leap Second </dd></dl>
 
 </div>
 </div>
