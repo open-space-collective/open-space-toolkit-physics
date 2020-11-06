@@ -51,6 +51,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Instant          
         .def("get_date_time", &Instant::getDateTime)
         .def("get_julian_date", &Instant::getJulianDate)
         .def("get_modified_julian_date", &Instant::getModifiedJulianDate)
+        .def("get_leap_second_count", &Instant::getLeapSecondCount)
         .def("to_string", +[] (const Instant& anInstant) -> String { return anInstant.toString() ; })
         .def("to_string", +[] (const Instant& anInstant, const Scale& aScale) -> String { return anInstant.toString(aScale) ; })
 

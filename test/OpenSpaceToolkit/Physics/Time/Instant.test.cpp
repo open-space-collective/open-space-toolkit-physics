@@ -1100,6 +1100,103 @@ TEST (OpenSpaceToolkit_Physics_Time_Instant, GetModifiedJulianDate)
 
 }
 
+TEST (OpenSpaceToolkit_Physics_Time_Instant, GetLeapSecondCount)
+{
+
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::Duration ;
+
+    EXPECT_EQ(Instant::DateTime(DateTime::Parse("2030-01-01 00:00:00"), Scale::UTC).getLeapSecondCount(), 37) ;
+    EXPECT_EQ(Instant::DateTime(DateTime::Parse("2020-01-01 00:00:00"), Scale::UTC).getLeapSecondCount(), 37) ;
+    EXPECT_EQ(Instant::DateTime(DateTime::Parse("2016-12-31 23:59:59"), Scale::UTC).getLeapSecondCount(), 36) ;
+    EXPECT_EQ(Instant::DateTime(DateTime::Parse("2015-06-30 23:59:59"), Scale::UTC).getLeapSecondCount(), 35) ;
+    EXPECT_EQ(Instant::DateTime(DateTime::Parse("2012-06-30 23:59:59"), Scale::UTC).getLeapSecondCount(), 34) ;
+    EXPECT_EQ(Instant::DateTime(DateTime::Parse("2008-12-31 23:59:59"), Scale::UTC).getLeapSecondCount(), 33) ;
+    EXPECT_EQ(Instant::DateTime(DateTime::Parse("2005-12-31 23:59:59"), Scale::UTC).getLeapSecondCount(), 32) ;
+    EXPECT_EQ(Instant::DateTime(DateTime::Parse("1998-12-31 23:59:59"), Scale::UTC).getLeapSecondCount(), 31) ;
+    EXPECT_EQ(Instant::DateTime(DateTime::Parse("1997-06-30 23:59:59"), Scale::UTC).getLeapSecondCount(), 30) ;
+    EXPECT_EQ(Instant::DateTime(DateTime::Parse("1995-12-31 23:59:59"), Scale::UTC).getLeapSecondCount(), 29) ;
+    EXPECT_EQ(Instant::DateTime(DateTime::Parse("1994-06-30 23:59:59"), Scale::UTC).getLeapSecondCount(), 28) ;
+    EXPECT_EQ(Instant::DateTime(DateTime::Parse("1993-06-30 23:59:59"), Scale::UTC).getLeapSecondCount(), 27) ;
+    EXPECT_EQ(Instant::DateTime(DateTime::Parse("1992-06-30 23:59:59"), Scale::UTC).getLeapSecondCount(), 26) ;
+    EXPECT_EQ(Instant::DateTime(DateTime::Parse("1990-12-31 23:59:59"), Scale::UTC).getLeapSecondCount(), 25) ;
+    EXPECT_EQ(Instant::DateTime(DateTime::Parse("1989-12-31 23:59:59"), Scale::UTC).getLeapSecondCount(), 24) ;
+    EXPECT_EQ(Instant::DateTime(DateTime::Parse("1987-12-31 23:59:59"), Scale::UTC).getLeapSecondCount(), 23) ;
+    EXPECT_EQ(Instant::DateTime(DateTime::Parse("1985-06-30 23:59:59"), Scale::UTC).getLeapSecondCount(), 22) ;
+    EXPECT_EQ(Instant::DateTime(DateTime::Parse("1983-06-30 23:59:59"), Scale::UTC).getLeapSecondCount(), 21) ;
+    EXPECT_EQ(Instant::DateTime(DateTime::Parse("1982-06-30 23:59:59"), Scale::UTC).getLeapSecondCount(), 20) ;
+    EXPECT_EQ(Instant::DateTime(DateTime::Parse("1981-06-30 23:59:59"), Scale::UTC).getLeapSecondCount(), 19) ;
+    EXPECT_EQ(Instant::DateTime(DateTime::Parse("1979-12-31 23:59:59"), Scale::UTC).getLeapSecondCount(), 18) ;
+    EXPECT_EQ(Instant::DateTime(DateTime::Parse("1978-12-31 23:59:59"), Scale::UTC).getLeapSecondCount(), 17) ;
+    EXPECT_EQ(Instant::DateTime(DateTime::Parse("1977-12-31 23:59:59"), Scale::UTC).getLeapSecondCount(), 16) ;
+    EXPECT_EQ(Instant::DateTime(DateTime::Parse("1976-12-31 23:59:59"), Scale::UTC).getLeapSecondCount(), 15) ;
+    EXPECT_EQ(Instant::DateTime(DateTime::Parse("1975-12-31 23:59:59"), Scale::UTC).getLeapSecondCount(), 14) ;
+    EXPECT_EQ(Instant::DateTime(DateTime::Parse("1974-12-31 23:59:59"), Scale::UTC).getLeapSecondCount(), 13) ;
+    EXPECT_EQ(Instant::DateTime(DateTime::Parse("1973-12-31 23:59:59"), Scale::UTC).getLeapSecondCount(), 12) ;
+    EXPECT_EQ(Instant::DateTime(DateTime::Parse("1972-12-31 23:59:59"), Scale::UTC).getLeapSecondCount(), 11) ;
+    EXPECT_EQ(Instant::DateTime(DateTime::Parse("1972-06-30 23:59:59"), Scale::UTC).getLeapSecondCount(), 10) ;
+    EXPECT_EQ(Instant::DateTime(DateTime::Parse("1970-01-01 00:00:00"), Scale::UTC).getLeapSecondCount(), 10) ;
+
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("2016-12-31 23:59:59"), Scale::UTC) + Duration::Seconds(1.0)).getLeapSecondCount(), 36) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("2015-06-30 23:59:59"), Scale::UTC) + Duration::Seconds(1.0)).getLeapSecondCount(), 35) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("2012-06-30 23:59:59"), Scale::UTC) + Duration::Seconds(1.0)).getLeapSecondCount(), 34) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("2008-12-31 23:59:59"), Scale::UTC) + Duration::Seconds(1.0)).getLeapSecondCount(), 33) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("2005-12-31 23:59:59"), Scale::UTC) + Duration::Seconds(1.0)).getLeapSecondCount(), 32) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1998-12-31 23:59:59"), Scale::UTC) + Duration::Seconds(1.0)).getLeapSecondCount(), 31) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1997-06-30 23:59:59"), Scale::UTC) + Duration::Seconds(1.0)).getLeapSecondCount(), 30) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1995-12-31 23:59:59"), Scale::UTC) + Duration::Seconds(1.0)).getLeapSecondCount(), 29) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1994-06-30 23:59:59"), Scale::UTC) + Duration::Seconds(1.0)).getLeapSecondCount(), 28) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1993-06-30 23:59:59"), Scale::UTC) + Duration::Seconds(1.0)).getLeapSecondCount(), 27) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1992-06-30 23:59:59"), Scale::UTC) + Duration::Seconds(1.0)).getLeapSecondCount(), 26) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1990-12-31 23:59:59"), Scale::UTC) + Duration::Seconds(1.0)).getLeapSecondCount(), 25) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1989-12-31 23:59:59"), Scale::UTC) + Duration::Seconds(1.0)).getLeapSecondCount(), 24) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1987-12-31 23:59:59"), Scale::UTC) + Duration::Seconds(1.0)).getLeapSecondCount(), 23) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1985-06-30 23:59:59"), Scale::UTC) + Duration::Seconds(1.0)).getLeapSecondCount(), 22) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1983-06-30 23:59:59"), Scale::UTC) + Duration::Seconds(1.0)).getLeapSecondCount(), 21) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1982-06-30 23:59:59"), Scale::UTC) + Duration::Seconds(1.0)).getLeapSecondCount(), 20) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1981-06-30 23:59:59"), Scale::UTC) + Duration::Seconds(1.0)).getLeapSecondCount(), 19) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1979-12-31 23:59:59"), Scale::UTC) + Duration::Seconds(1.0)).getLeapSecondCount(), 18) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1978-12-31 23:59:59"), Scale::UTC) + Duration::Seconds(1.0)).getLeapSecondCount(), 17) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1977-12-31 23:59:59"), Scale::UTC) + Duration::Seconds(1.0)).getLeapSecondCount(), 16) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1976-12-31 23:59:59"), Scale::UTC) + Duration::Seconds(1.0)).getLeapSecondCount(), 15) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1975-12-31 23:59:59"), Scale::UTC) + Duration::Seconds(1.0)).getLeapSecondCount(), 14) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1974-12-31 23:59:59"), Scale::UTC) + Duration::Seconds(1.0)).getLeapSecondCount(), 13) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1973-12-31 23:59:59"), Scale::UTC) + Duration::Seconds(1.0)).getLeapSecondCount(), 12) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1972-12-31 23:59:59"), Scale::UTC) + Duration::Seconds(1.0)).getLeapSecondCount(), 11) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1972-06-30 23:59:59"), Scale::UTC) + Duration::Seconds(1.0)).getLeapSecondCount(), 10) ;
+
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("2016-12-31 23:59:59"), Scale::UTC) + Duration::Seconds(2.0)).getLeapSecondCount(), 36 + 1) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("2015-06-30 23:59:59"), Scale::UTC) + Duration::Seconds(2.0)).getLeapSecondCount(), 35 + 1) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("2012-06-30 23:59:59"), Scale::UTC) + Duration::Seconds(2.0)).getLeapSecondCount(), 34 + 1) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("2008-12-31 23:59:59"), Scale::UTC) + Duration::Seconds(2.0)).getLeapSecondCount(), 33 + 1) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("2005-12-31 23:59:59"), Scale::UTC) + Duration::Seconds(2.0)).getLeapSecondCount(), 32 + 1) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1998-12-31 23:59:59"), Scale::UTC) + Duration::Seconds(2.0)).getLeapSecondCount(), 31 + 1) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1997-06-30 23:59:59"), Scale::UTC) + Duration::Seconds(2.0)).getLeapSecondCount(), 30 + 1) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1995-12-31 23:59:59"), Scale::UTC) + Duration::Seconds(2.0)).getLeapSecondCount(), 29 + 1) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1994-06-30 23:59:59"), Scale::UTC) + Duration::Seconds(2.0)).getLeapSecondCount(), 28 + 1) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1993-06-30 23:59:59"), Scale::UTC) + Duration::Seconds(2.0)).getLeapSecondCount(), 27 + 1) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1992-06-30 23:59:59"), Scale::UTC) + Duration::Seconds(2.0)).getLeapSecondCount(), 26 + 1) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1990-12-31 23:59:59"), Scale::UTC) + Duration::Seconds(2.0)).getLeapSecondCount(), 25 + 1) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1989-12-31 23:59:59"), Scale::UTC) + Duration::Seconds(2.0)).getLeapSecondCount(), 24 + 1) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1987-12-31 23:59:59"), Scale::UTC) + Duration::Seconds(2.0)).getLeapSecondCount(), 23 + 1) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1985-06-30 23:59:59"), Scale::UTC) + Duration::Seconds(2.0)).getLeapSecondCount(), 22 + 1) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1983-06-30 23:59:59"), Scale::UTC) + Duration::Seconds(2.0)).getLeapSecondCount(), 21 + 1) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1982-06-30 23:59:59"), Scale::UTC) + Duration::Seconds(2.0)).getLeapSecondCount(), 20 + 1) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1981-06-30 23:59:59"), Scale::UTC) + Duration::Seconds(2.0)).getLeapSecondCount(), 19 + 1) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1979-12-31 23:59:59"), Scale::UTC) + Duration::Seconds(2.0)).getLeapSecondCount(), 18 + 1) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1978-12-31 23:59:59"), Scale::UTC) + Duration::Seconds(2.0)).getLeapSecondCount(), 17 + 1) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1977-12-31 23:59:59"), Scale::UTC) + Duration::Seconds(2.0)).getLeapSecondCount(), 16 + 1) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1976-12-31 23:59:59"), Scale::UTC) + Duration::Seconds(2.0)).getLeapSecondCount(), 15 + 1) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1975-12-31 23:59:59"), Scale::UTC) + Duration::Seconds(2.0)).getLeapSecondCount(), 14 + 1) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1974-12-31 23:59:59"), Scale::UTC) + Duration::Seconds(2.0)).getLeapSecondCount(), 13 + 1) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1973-12-31 23:59:59"), Scale::UTC) + Duration::Seconds(2.0)).getLeapSecondCount(), 12 + 1) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1972-12-31 23:59:59"), Scale::UTC) + Duration::Seconds(2.0)).getLeapSecondCount(), 11 + 1) ;
+    EXPECT_EQ((Instant::DateTime(DateTime::Parse("1972-06-30 23:59:59"), Scale::UTC) + Duration::Seconds(2.0)).getLeapSecondCount(), 10 + 1) ;
+
+}
+
 TEST (OpenSpaceToolkit_Physics_Time_Instant, ToString)
 {
 
@@ -1372,43 +1469,54 @@ TEST (OpenSpaceToolkit_Physics_Time_Instant, ModifiedJulianDate)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// TEST (OpenSpaceToolkit_Physics_Time_Instant, Test_1)
-// {
+TEST (OpenSpaceToolkit_Physics_Time_Instant, Test_1)
+{
 
-//     using ostk::physics::time::Scale ;
-//     using ostk::physics::time::DateTime ;
-//     using ostk::physics::time::Instant ;
+    // Test leap-second jump.
 
-//     {
+    using ostk::core::ctnr::Array ;
 
-//         Instant instant = Instant::DateTime(DateTime::Parse("2000-01-01 12:00:00"), Scale::TT) ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::Duration ;
 
-//         std::cout << instant.toString(Scale::TT) << std::endl  ;
-//         std::cout << instant.toString(Scale::TAI) << std::endl  ;
-//         std::cout << instant.toString(Scale::UTC) << std::endl  ;
+    const Array<Instant> instants =
+    {
+        Instant::DateTime(DateTime::Parse("2016-12-31 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("2015-06-30 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("2012-06-30 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("2008-12-31 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("2005-12-31 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1998-12-31 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1997-06-30 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1995-12-31 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1994-06-30 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1993-06-30 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1992-06-30 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1990-12-31 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1989-12-31 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1987-12-31 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1985-06-30 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1983-06-30 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1982-06-30 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1981-06-30 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1979-12-31 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1978-12-31 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1977-12-31 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1976-12-31 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1975-12-31 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1974-12-31 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1973-12-31 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1972-12-31 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1972-06-30 23:59:59"), Scale::UTC)
+    } ;
 
-//     }
+    for (const auto& instant: instants)
+    {
+        EXPECT_EQ(instant.getDateTime(Scale::UTC), (instant + Duration::Seconds(+1.0)).getDateTime(Scale::UTC)) ;
+    }
 
-//     {
-
-//         Instant instant = Instant::DateTime(DateTime::Parse("2000-01-01 12:00:00"), Scale::TAI) ;
-
-//         std::cout << instant.toString(Scale::TT) << std::endl  ;
-//         std::cout << instant.toString(Scale::TAI) << std::endl  ;
-//         std::cout << instant.toString(Scale::UTC) << std::endl  ;
-
-//     }
-
-//     {
-
-//         Instant instant = Instant::DateTime(DateTime::Parse("2000-01-01 12:00:00"), Scale::UTC) ;
-
-//         std::cout << instant.toString(Scale::TT) << std::endl  ;
-//         std::cout << instant.toString(Scale::TAI) << std::endl  ;
-//         std::cout << instant.toString(Scale::UTC) << std::endl  ;
-
-//     }
-
-// }
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

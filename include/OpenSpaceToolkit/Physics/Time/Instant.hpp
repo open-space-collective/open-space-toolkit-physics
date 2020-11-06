@@ -258,6 +258,18 @@ class Instant
 
         Real                    getModifiedJulianDate                       (   const   Scale&                      aTimeScale                                  ) const ;
 
+        /// @brief              Get Leap Second count
+        ///
+        ///                     The Leap Second count is the number of seconds between TAI and UTC scales.
+        ///
+        /// @code
+        ///                     Instant::J2000().getLeapSecondCount() ;
+        /// @endcode
+        ///
+        /// @return             Leap Second
+
+        Int64                   getLeapSecondCount                          ( ) const ;
+
         /// @brief              Get string representation of instant
         ///
         /// @code
