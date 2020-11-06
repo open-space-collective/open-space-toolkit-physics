@@ -296,9 +296,7 @@ void                            Manager::updateIndex                        ( )
 
     if (!indexFile.exists())
     {
-
         this->fetchIndexAt(remoteUrl_) ;
-
     }
 
     if (index_.isEmpty())
@@ -433,9 +431,7 @@ void                            Manager::fetchIndexAt                       (   
 
     try
     {
-
         fetchListing(aUrl, 0) ;
-
     }
     catch (const ostk::core::error::RuntimeError& anException)
     {
