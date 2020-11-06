@@ -1372,43 +1372,54 @@ TEST (OpenSpaceToolkit_Physics_Time_Instant, ModifiedJulianDate)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// TEST (OpenSpaceToolkit_Physics_Time_Instant, Test_1)
-// {
+TEST (OpenSpaceToolkit_Physics_Time_Instant, Test_1)
+{
 
-//     using ostk::physics::time::Scale ;
-//     using ostk::physics::time::DateTime ;
-//     using ostk::physics::time::Instant ;
+    // Test leap-second jump.
 
-//     {
+    using ostk::core::ctnr::Array ;
 
-//         Instant instant = Instant::DateTime(DateTime::Parse("2000-01-01 12:00:00"), Scale::TT) ;
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::Duration ;
 
-//         std::cout << instant.toString(Scale::TT) << std::endl  ;
-//         std::cout << instant.toString(Scale::TAI) << std::endl  ;
-//         std::cout << instant.toString(Scale::UTC) << std::endl  ;
+    const Array<Instant> instants =
+    {
+        Instant::DateTime(DateTime::Parse("2016-12-31 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("2015-06-30 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("2012-06-30 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("2008-12-31 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("2005-12-31 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1998-12-31 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1997-06-30 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1995-12-31 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1994-06-30 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1993-06-30 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1992-06-30 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1990-12-31 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1989-12-31 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1987-12-31 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1985-06-30 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1983-06-30 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1982-06-30 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1981-06-30 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1979-12-31 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1978-12-31 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1977-12-31 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1976-12-31 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1975-12-31 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1974-12-31 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1973-12-31 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1972-12-31 23:59:59"), Scale::UTC),
+        Instant::DateTime(DateTime::Parse("1972-06-30 23:59:59"), Scale::UTC)
+    } ;
 
-//     }
+    for (const auto& instant: instants)
+    {
+        EXPECT_EQ(instant.getDateTime(Scale::UTC), (instant + Duration::Seconds(+1.0)).getDateTime(Scale::UTC)) ;
+    }
 
-//     {
-
-//         Instant instant = Instant::DateTime(DateTime::Parse("2000-01-01 12:00:00"), Scale::TAI) ;
-
-//         std::cout << instant.toString(Scale::TT) << std::endl  ;
-//         std::cout << instant.toString(Scale::TAI) << std::endl  ;
-//         std::cout << instant.toString(Scale::UTC) << std::endl  ;
-
-//     }
-
-//     {
-
-//         Instant instant = Instant::DateTime(DateTime::Parse("2000-01-01 12:00:00"), Scale::UTC) ;
-
-//         std::cout << instant.toString(Scale::TT) << std::endl  ;
-//         std::cout << instant.toString(Scale::TAI) << std::endl  ;
-//         std::cout << instant.toString(Scale::UTC) << std::endl  ;
-
-//     }
-
-// }
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
