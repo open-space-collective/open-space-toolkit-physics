@@ -387,7 +387,12 @@ Real                            Instant::getModifiedJulianDate              (   
 
 }
 
-String                          Instant::toString                          (   const   Scale&                      aTimeScale                                  ) const
+Int64                           Instant::getLeapSecondCount                 ( ) const
+{
+    return Instant::dAT_UTC(this->inScale(Scale::UTC).count_) / 1000000000 ;
+}
+
+String                          Instant::toString                           (   const   Scale&                      aTimeScale                                  ) const
 {
 
     if (!this->isDefined())
