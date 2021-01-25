@@ -21,13 +21,17 @@ def test_environment_constructors ():
     instant = Instant.date_time(DateTime(2019, 1, 1, 0, 0, 0), Scale.UTC)
     objects = []
 
-    assert Environment(instant, objects) is not None
+    env: Environment = Environment(instant, objects)
+
+    assert env is not None
+    assert isinstance(env, Environment)
 
 ################################################################################################################################################################
 
 def test_environment_undefined ():
 
     assert Environment.undefined() is not None
+    assert Environment.undefined().is_defined() is False
 
 ################################################################################################################################################################
 

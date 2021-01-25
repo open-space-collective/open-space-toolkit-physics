@@ -67,7 +67,7 @@ RUN dnf update -y \
 
 RUN pip install ipython numpy
 
-COPY --from=python-builder /usr/local/lib/python3.7/site-packages/ostk /usr/local/lib/python3.7/site-packages/ostk
+COPY --from=python-builder /usr/local/lib/python3.8/site-packages/ostk /usr/local/lib/python3.8/site-packages/ostk
 
 ENTRYPOINT ["ipython"]
 

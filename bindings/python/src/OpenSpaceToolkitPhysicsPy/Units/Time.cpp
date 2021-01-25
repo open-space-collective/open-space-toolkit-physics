@@ -11,21 +11,23 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (OpenSpaceToolkitPhysicsPy_Units_Time_toString_overloads, ostk::physics::units::Time::toString, 0, 1)
+// BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (OpenSpaceToolkitPhysicsPy_Units_Time_toString_overloads, ostk::physics::units::Time::toString, 0, 1)
 
-inline void                     OpenSpaceToolkitPhysicsPy_Units_Time               ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Units_Time               (            pybind11::module&                     aModule                  )
 {
 
-    using namespace boost::python ;
+    using namespace pybind11 ;
 
     using ostk::core::types::Real ;
 
     using ostk::physics::units::Time ;
 
-    scope in_Time = class_<Time>("Time", init<Real, Time::Unit>())
+    class_<Time> time(aModule, "Time") ;
 
-        .def(self == self)
-        .def(self != self)
+    time.def(init<Real, Time::Unit>())
+
+        // .def(self == self)
+        // .def(self != self)
 
         // .def(self < self)
         // .def(self <= self)
@@ -35,14 +37,17 @@ inline void                     OpenSpaceToolkitPhysicsPy_Units_Time            
         // .def(self + self)
         // .def(self - self)
 
-        // .def(self * other<Real>())
+        // // .def(self * other<Real>())
         // .def(self / other<Real>())
+        // .def(self *= other<Real>())
+        // .def(self /= other<Real>())
+        // .def("__mul__", [](const Time &aTime, Real aReal) {return aTime * aReal;}, is_operator())
+        // .def("__truediv__", [](const Time &aTime, Real aReal) {return aTime / aReal;}, is_operator())
+        // .def("__imul__", [](const Time &aTime, Real aReal) {return aTime * aReal;}, is_operator())
+        // .def("__itruediv__", [](const Time &aTime, Real aReal) {return aTime / aReal;}, is_operator())
 
         // .def(self += self)
         // .def(self -= self)
-
-        // .def(self *= other<Real>())
-        // .def(self /= other<Real>())
 
         // .def(self_ns::str(self_ns::self))
 
@@ -50,15 +55,15 @@ inline void                     OpenSpaceToolkitPhysicsPy_Units_Time            
 
         .def("is_defined", &Time::isDefined)
 
-        .def("to_string", &Time::toString, OpenSpaceToolkitPhysicsPy_Units_Time_toString_overloads())
+        // .def("to_string", &Time::toString, OpenSpaceToolkitPhysicsPy_Units_Time_toString_overloads())
 
-        .def("undefined", &Time::Undefined).staticmethod("undefined")
-        .def("string_from_unit", &Time::StringFromUnit).staticmethod("string_from_unit")
-        .def("symbol_from_unit", &Time::SymbolFromUnit).staticmethod("symbol_from_unit")
+        .def_static("undefined", &Time::Undefined)
+        .def_static("string_from_unit", &Time::StringFromUnit)
+        .def_static("symbol_from_unit", &Time::SymbolFromUnit)
 
     ;
 
-    enum_<Time::Unit>("Unit")
+    enum_<Time::Unit>(time, "Unit")
 
         .value("Undefined", Time::Unit::Undefined)
         .value("Nanosecond", Time::Unit::Nanosecond)

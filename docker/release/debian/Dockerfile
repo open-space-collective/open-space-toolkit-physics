@@ -52,7 +52,7 @@ ENTRYPOINT ["/usr/local/test/OpenSpaceToolkit/Physics/open-space-toolkit-physics
 
 ################################################################################################################################################################
 
-FROM python:3.7-slim as python-builder
+FROM python:3.8-slim as python-builder
 
 COPY --from=cpp-builder /app/build/bindings/python/dist /dist
 
@@ -60,7 +60,7 @@ RUN pip install /dist/*.whl
 
 ################################################################################################################################################################
 
-FROM python:3.7-slim as python-release
+FROM python:3.8-slim as python-release
 
 LABEL maintainer="lucas@loftorbital.com"
 
@@ -75,7 +75,7 @@ ENV OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY "/usr/lo
 ENV OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/environment/gravitational/earth"
 ENV OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/environment/magnetic/earth"
 
-COPY --from=python-builder /usr/local/lib/python3.7/site-packages/ostk /usr/local/lib/python3.7/site-packages/ostk
+COPY --from=python-builder /usr/local/lib/python3.8/site-packages/ostk /usr/local/lib/python3.8/site-packages/ostk
 
 ENTRYPOINT ["ipython"]
 

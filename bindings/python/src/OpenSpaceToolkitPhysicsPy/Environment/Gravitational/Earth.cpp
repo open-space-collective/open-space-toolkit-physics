@@ -12,10 +12,10 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth (            pybind11::module&                     aModule           )
 {
 
-    using namespace boost::python ;
+    using namespace pybind11 ;
 
     using ostk::core::fs::Directory ;
 
@@ -25,7 +25,9 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Gravitatio
 
     {
 
-        scope in_Earth = class_<Earth>("Earth", init<const Earth::Type&, const Directory&>())
+        class_<Earth> earth_class(aModule, "Earth") ;
+
+        earth_class.def(init<const Earth::Type&, const Directory&>())
 
             .def(init<const Earth::Type&>())
 
@@ -34,7 +36,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Gravitatio
 
         ;
 
-        enum_<Earth::Type>("Type")
+        enum_<Earth::Type>(earth_class, "EarthType")
 
             .value("WGS84", Earth::Type::WGS84)
             .value("EGM84", Earth::Type::EGM84)
@@ -45,13 +47,19 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Gravitatio
 
     }
 
-    boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("ostk.physics.environment.gravitational.earth")))) ;
+    // Create "earth" python submodule
+    auto earth = aModule.def_submodule("earth") ;
 
-    boost::python::scope().attr("earth") = module ;
+    // Add __path__ attribute for "earth" submodule
+    earth.attr("__path__") = "ostk.physics.environment.gravitational.earth" ;
 
-    boost::python::scope scope = module ;
+    // boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("ostk.physics.environment.gravitational.earth")))) ;
 
-    class_<Manager, boost::noncopyable>("Manager", no_init)
+    // boost::python::scope().attr("earth") = module ;
+
+    // boost::python::scope scope = module ;
+
+    class_<Manager>(earth, "Manager")
 
         .def("is_enabled", &Manager::isEnabled)
         .def("has_data_file_for_type", &Manager::hasDataFileForType)
@@ -64,9 +72,10 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Gravitatio
         .def("enable", &Manager::enable)
         .def("disable", &Manager::disable)
 
-        .def("get", &Manager::Get, return_value_policy<reference_existing_object>()).staticmethod("get")
-        .def("default_local_repository", &Manager::DefaultLocalRepository).staticmethod("default_local_repository")
-        .def("default_remote_url", &Manager::DefaultRemoteUrl).staticmethod("default_remote_url")
+        // .def_static("get", &Manager::Get, return_value_policy<reference_existing_object>())
+        .def_static("get", &Manager::Get, return_value_policy::reference)
+        .def_static("default_local_repository", &Manager::DefaultLocalRepository)
+        .def_static("default_remote_url", &Manager::DefaultRemoteUrl)
 
     ;
 

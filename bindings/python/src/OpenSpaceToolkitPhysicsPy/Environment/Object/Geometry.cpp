@@ -23,10 +23,10 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Environment_Object_Geometry ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Environment_Object_Geometry (            pybind11::module&                     aModule               )
 {
 
-    using namespace boost::python ;
+    using namespace pybind11 ;
 
     using ostk::core::types::Unique ;
     using ostk::core::types::Shared ;
@@ -47,26 +47,28 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Object_Geo
     using ostk::physics::coord::Frame ;
     using ostk::physics::env::object::Geometry ;
 
-    scope in_Geometry = class_<Geometry>("Geometry", init<const Geometry::Object&, const Shared<const Frame>&>())
+    class_<Geometry>(aModule, "Geometry")
 
+        .def(init<const Geometry::Object&, const Shared<const Frame>&>())
         .def(init<const Composite&, const Shared<const Frame>&>())
 
         .def(self == self)
         .def(self != self)
 
-        .def(self_ns::str(self_ns::self))
-        .def(self_ns::repr(self_ns::self))
+        // .def(self_ns::str(self_ns::self))
+        // .def(self_ns::repr(self_ns::self))
 
         .def("is_defined", &Geometry::isDefined)
         .def("intersects", &Geometry::intersects)
         .def("contains", &Geometry::contains)
 
-        .def("access_composite", &Geometry::accessComposite, return_value_policy<reference_existing_object>())
+        // .def("access_composite", &Geometry::accessComposite, return_value_policy<reference_existing_object>())
+        .def("access_composite", &Geometry::accessComposite, return_value_policy::reference)
         .def("access_frame", &Geometry::accessFrame)
         .def("in_frame", &Geometry::in)
         .def("intersection_with", &Geometry::intersectionWith)
 
-        .def("undefined", &Geometry::Undefined).staticmethod("undefined")
+        .def_static("undefined", &Geometry::Undefined)
 
     ;
 

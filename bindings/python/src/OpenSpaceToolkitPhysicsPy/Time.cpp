@@ -17,22 +17,23 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Time                       ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Time                           (          pybind11::module&                     aModule              )
 {
 
-    boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("ostk.physics.time")))) ;
+    // Create "time" python submodule
+    auto time = aModule.def_submodule("time") ;
 
-    boost::python::scope().attr("time") = module ;
+    // Add __path__ attribute for "time" submodule
+    time.attr("__path__") = "ostk.physics.time" ;
 
-    boost::python::scope scope = module ;
-
-    OpenSpaceToolkitPhysicsPy_Time_Scale() ;
-    OpenSpaceToolkitPhysicsPy_Time_Instant() ;
-    OpenSpaceToolkitPhysicsPy_Time_Duration() ;
-    OpenSpaceToolkitPhysicsPy_Time_DateTime() ;
-    OpenSpaceToolkitPhysicsPy_Time_Date() ;
-    OpenSpaceToolkitPhysicsPy_Time_Time() ;
-    OpenSpaceToolkitPhysicsPy_Time_Interval() ;
+    // Add objects to python "time" submodules
+    OpenSpaceToolkitPhysicsPy_Time_Scale(time) ;
+    OpenSpaceToolkitPhysicsPy_Time_Instant(time) ;
+    OpenSpaceToolkitPhysicsPy_Time_Duration(time) ;
+    OpenSpaceToolkitPhysicsPy_Time_DateTime(time) ;
+    OpenSpaceToolkitPhysicsPy_Time_Date(time) ;
+    OpenSpaceToolkitPhysicsPy_Time_Time(time) ;
+    OpenSpaceToolkitPhysicsPy_Time_Interval(time) ;
 
 }
 

@@ -12,17 +12,18 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers      (          pybind11::module&                     aModule             )
 {
 
-    boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("ostk.physics.coordinate.frame.providers")))) ;
+    // Create "providers" python submodule
+    auto providers = aModule.def_submodule("providers") ;
 
-    boost::python::scope().attr("providers") = module ;
+    // Add __path__ attribute for "providers" submodule
+    providers.attr("__path__") = "ostk.physics.providers" ;
 
-    boost::python::scope scope = module ;
-
-    OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers_Static() ;
-    OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers_Dynamic() ;
+    // Add objects to python "providers" submodules
+    OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers_Static(providers) ;
+    OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers_Dynamic(providers) ;
 
 }
 

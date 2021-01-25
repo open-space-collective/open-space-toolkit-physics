@@ -11,24 +11,26 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (OpenSpaceToolkitPhysicsPy_Time_Interval_toString_overloads, ostk::physics::time::Interval::toString, 0, 1)
+// BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (OpenSpaceToolkitPhysicsPy_Time_Interval_toString_overloads, ostk::physics::time::Interval::toString, 0, 1)
 
-inline void                     OpenSpaceToolkitPhysicsPy_Time_Interval              ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Time_Interval              (           pybind11::module&                     aModule                 )
 {
 
-    using namespace boost::python ;
+    using namespace pybind11 ;
 
     using ostk::core::types::String ;
 
     using ostk::physics::time::Instant ;
     using ostk::physics::time::Interval ;
 
-    scope in_Interval = class_<Interval>("Interval", init<const Instant&, const Instant&, const Interval::Type&>())
+    class_<Interval> interval(aModule, "Interval") ;
+
+    interval.def(init<const Instant&, const Instant&, const Interval::Type&>())
 
         .def(self == self)
         .def(self != self)
 
-        .def(self_ns::str(self_ns::self))
+        // .def(self_ns::str(self_ns::self))
 
         .def("__repr__", +[] (const Interval& anInterval) -> std::string { return anInterval.toString() ; })
 
@@ -49,17 +51,17 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Interval         
         .def("get_end", &Interval::getEnd)
         .def("get_duration", &Interval::getDuration)
         .def("get_center", &Interval::getCenter)
-        .def("to_string", &Interval::toString, OpenSpaceToolkitPhysicsPy_Time_Interval_toString_overloads())
+        // .def("to_string", &Interval::toString, OpenSpaceToolkitPhysicsPy_Time_Interval_toString_overloads())
         .def("generate_grid", &Interval::generateGrid)
 
-        .def("undefined", &Interval::Undefined).staticmethod("undefined")
-        .def("closed", &Interval::Closed).staticmethod("closed")
-        .def("centered", &Interval::Centered).staticmethod("centered")
-        .def("parse", &Interval::Parse).staticmethod("parse")
+        .def_static("undefined", &Interval::Undefined)
+        .def_static("closed", &Interval::Closed)
+        .def_static("centered", &Interval::Centered)
+        .def_static("parse", &Interval::Parse)
 
     ;
 
-    enum_<Interval::Type>("Type")
+    enum_<Interval::Type>(interval, "TimeIntervalType")
 
         .value("Undefined", Interval::Type::Undefined)
         .value("Closed", Interval::Type::Closed)

@@ -15,20 +15,21 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Units                      ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Units                           (          pybind11::module&                     aModule             )
 {
 
-    boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("ostk.physics.units")))) ;
+    // Create "units" python submodule
+    auto units = aModule.def_submodule("units") ;
 
-    boost::python::scope().attr("units") = module ;
+    // Add __path__ attribute for "units" submodule
+    units.attr("__path__") = "ostk.physics.units" ;
 
-    boost::python::scope scope = module ;
-
-    OpenSpaceToolkitPhysicsPy_Units_Length() ;
-    OpenSpaceToolkitPhysicsPy_Units_Time() ;
-    OpenSpaceToolkitPhysicsPy_Units_ElectricCurrent() ;
-    OpenSpaceToolkitPhysicsPy_Units_Derived() ;
-    OpenSpaceToolkitPhysicsPy_Units_Derived_Angle() ;
+    // Add objects to python "units" submodules
+    OpenSpaceToolkitPhysicsPy_Units_Length(units) ;
+    OpenSpaceToolkitPhysicsPy_Units_Time(units) ;
+    OpenSpaceToolkitPhysicsPy_Units_ElectricCurrent(units) ;
+    OpenSpaceToolkitPhysicsPy_Units_Derived(units) ;
+    OpenSpaceToolkitPhysicsPy_Units_Derived_Angle(units) ;
 
 }
 

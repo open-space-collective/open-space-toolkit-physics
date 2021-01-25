@@ -11,14 +11,14 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Time_Scale                 ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Time_Scale                 (            pybind11::module&                     aModule                )
 {
 
-    using namespace boost::python ;
+    using namespace pybind11 ;
 
     using ostk::physics::time::Scale ;
 
-    enum_<Scale>("Scale")
+    enum_<Scale>(aModule, "Scale")
 
         .value("Undefined", Scale::Undefined)
         .value("UTC", Scale::UTC)

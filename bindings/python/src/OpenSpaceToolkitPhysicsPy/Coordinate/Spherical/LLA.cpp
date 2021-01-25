@@ -11,22 +11,24 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA   ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA   (           pybind11::module&                     aModule                 )
 {
 
-    using namespace boost::python ;
+    using namespace pybind11 ;
 
     using ostk::physics::units::Length ;
     using ostk::physics::units::Angle ;
     using ostk::physics::coord::spherical::LLA ;
 
-    scope in_LLA = class_<LLA>("LLA", init<const Angle&, const Angle&, const Length&>())
+    class_<LLA>(aModule, "LLA")
+
+        .def(init<const Angle&, const Angle&, const Length&>())
 
         .def(self == self)
         .def(self != self)
 
-        .def(self_ns::str(self_ns::self))
-        .def(self_ns::repr(self_ns::self))
+        // .def(self_ns::str(self_ns::self))
+        // .def(self_ns::repr(self_ns::self))
 
         .def("is_defined", &LLA::isDefined)
 
@@ -37,9 +39,9 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_L
         .def("to_cartesian", &LLA::toCartesian)
         .def("to_string", &LLA::toString)
 
-        .def("undefined", &LLA::Undefined).staticmethod("undefined")
-        .def("vector", &LLA::Vector).staticmethod("vector")
-        .def("cartesian", &LLA::Cartesian).staticmethod("cartesian")
+        .def_static("undefined", &LLA::Undefined)
+        .def_static("vector", &LLA::Vector)
+        .def_static("cartesian", &LLA::Cartesian)
 
     ;
 

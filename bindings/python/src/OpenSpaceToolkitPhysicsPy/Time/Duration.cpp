@@ -11,16 +11,18 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Time_Duration              ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Time_Duration              (            pybind11::module&                     aModule                )
 {
 
-    using namespace boost::python ;
+    using namespace pybind11 ;
 
     using ostk::core::types::String ;
 
     using ostk::physics::time::Duration ;
 
-    scope in_Duration = class_<Duration>("Duration", init<int>())
+    class_<Duration> duration(aModule, "Duration") ;
+
+    duration.def(init<int>())
 
         .def(self == self)
         .def(self != self)
@@ -32,15 +34,15 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Duration         
 
         .def(self + self)
         .def(self - self)
-        .def(self * other<double>())
-        .def(self / other<double>())
+        // .def(self * other<double>())
+        // .def(self / other<double>())
 
-        .def(self += self)
-        .def(self -= self)
-        .def(self *= other<double>())
-        .def(self /= other<double>())
+        // .def(self += self)
+        // .def(self -= self)
+        // .def(self *= other<double>())
+        // .def(self /= other<double>())
 
-        .def(self_ns::str(self_ns::self))
+        // .def(self_ns::str(self_ns::self))
 
         .def("__repr__", +[] (const Duration& aDuration) -> std::string { return aDuration.toString() ; })
 
@@ -71,23 +73,23 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Duration         
         .def("to_string", +[] (const Duration& aDuration) -> String { return aDuration.toString() ; })
         .def("to_string", +[] (const Duration& aDuration, const Duration::Format& aFormat) -> String { return aDuration.toString(aFormat) ; })
 
-        .def("undefined", &Duration::Undefined).staticmethod("undefined")
-        .def("zero", &Duration::Zero).staticmethod("zero")
-        .def("nanoseconds", &Duration::Nanoseconds).staticmethod("nanoseconds")
-        .def("microseconds", &Duration::Microseconds).staticmethod("microseconds")
-        .def("milliseconds", &Duration::Milliseconds).staticmethod("milliseconds")
-        .def("seconds", &Duration::Seconds).staticmethod("seconds")
-        .def("minutes", &Duration::Minutes).staticmethod("minutes")
-        .def("hours", &Duration::Hours).staticmethod("hours")
-        .def("days", &Duration::Days).staticmethod("days")
-        .def("weeks", &Duration::Weeks).staticmethod("weeks")
-        .def("between", &Duration::Between).staticmethod("between")
+        .def_static("undefined", &Duration::Undefined)
+        .def_static("zero", &Duration::Zero)
+        .def_static("nanoseconds", &Duration::Nanoseconds)
+        .def_static("microseconds", &Duration::Microseconds)
+        .def_static("milliseconds", &Duration::Milliseconds)
+        .def_static("seconds", &Duration::Seconds)
+        .def_static("minutes", &Duration::Minutes)
+        .def_static("hours", &Duration::Hours)
+        .def_static("days", &Duration::Days)
+        .def_static("weeks", &Duration::Weeks)
+        .def_static("between", &Duration::Between)
         .def("parse", +[] (const String& aString) -> Duration { return Duration::Parse(aString) ; })
         .def("parse", +[] (const String& aString, const Duration::Format& aFormat) -> Duration { return Duration::Parse(aString, aFormat) ; })
 
     ;
 
-    enum_<Duration::Format>("Format")
+    enum_<Duration::Format>(duration, "Format")
 
         .value("Undefined", Duration::Format::Undefined)
         .value("Standard", Duration::Format::Standard)

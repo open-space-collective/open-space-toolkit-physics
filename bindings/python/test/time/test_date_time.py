@@ -18,10 +18,26 @@ from ostk.physics.time import DateTime
 
 def test_date_time_constructors ():
 
-    assert DateTime(2018, 1, 1, 0, 0, 0, 0, 0, 0) is not None
-    assert DateTime(2018, 1, 1, 0, 0, 0) is not None
+    # Construction with 6 integers in input
+    date_time: DateTime = DateTime(2020, 1, 1, 0, 0, 0, 0, 0, 0)
 
-    assert DateTime(Date(2018, 1, 1), Time(0, 0, 0)) is not None
+    assert date_time is not None
+    assert isinstance(date_time, DateTime)
+    assert date_time.is_defined()
+
+    # Construction with 9 integers in input
+    date_time: DateTime = DateTime(2020, 1, 1, 0, 0, 0)
+
+    assert date_time is not None
+    assert isinstance(date_time, DateTime)
+    assert date_time.is_defined()
+
+    # Construction with Date and Time objects
+    date_time: DateTime = DateTime(Date(2020, 1, 1), Time(0, 0, 0))
+
+    assert date_time is not None
+    assert isinstance(date_time, DateTime)
+    assert date_time.is_defined()
 
 ################################################################################################################################################################
 
@@ -34,37 +50,61 @@ def test_date_time_undefined ():
 
 def test_date_time_J2000 ():
 
-    assert DateTime.J2000() is not None
+    date_time: DateTime = DateTime.J2000()
+
+    assert date_time is not None
+    assert isinstance(date_time, DateTime)
+    assert date_time.is_defined()
 
 ################################################################################################################################################################
 
 def test_date_time_GPS_epoch ():
 
-    assert DateTime.GPS_epoch() is not None
+    date_time: DateTime = DateTime.GPS_epoch()
+
+    assert date_time is not None
+    assert isinstance(date_time, DateTime)
+    assert date_time.is_defined()
 
 ################################################################################################################################################################
 
 def test_date_time_unix_epoch ():
 
-    assert DateTime.unix_epoch() is not None
+    date_time: DateTime = DateTime.unix_epoch()
+
+    assert date_time is not None
+    assert isinstance(date_time, DateTime)
+    assert date_time.is_defined()
 
 ################################################################################################################################################################
 
 def test_date_time_modified_julian_date_epoch ():
 
-    assert DateTime.modified_julian_date_epoch() is not None
+    date_time: DateTime = DateTime.modified_julian_date_epoch()
+
+    assert date_time is not None
+    assert isinstance(date_time, DateTime)
+    assert date_time.is_defined()
 
 ################################################################################################################################################################
 
 def test_date_time_julian_date ():
 
-    assert DateTime.julian_date(2458119.5) is not None
+    date_time: DateTime = DateTime.julian_date(2458119.5)
+
+    assert date_time is not None
+    assert isinstance(date_time, DateTime)
+    assert date_time.is_defined()
 
 ################################################################################################################################################################
 
 def test_date_time_modified_julian_date ():
 
-    assert DateTime.modified_julian_date(58119.0) is not None
+    date_time: DateTime = DateTime.modified_julian_date(58119.0)
+
+    assert date_time is not None
+    assert isinstance(date_time, DateTime)
+    assert date_time.is_defined()
 
 ################################################################################################################################################################
 
@@ -79,12 +119,17 @@ def test_date_time_parse ():
 
 ################################################################################################################################################################
 
-def test_date_time_operators ():
+def test_date_time_comparators ():
 
-    date_time = DateTime(2018, 1, 1, 0, 0, 0, 0, 0, 0)
+    date_time_1 = DateTime(2020, 1, 1, 0, 0, 0, 0, 0, 0)
+    date_time_2 = DateTime(2020, 1, 1, 0, 0, 0, 0, 0, 1)
+    date_time_3 = DateTime(2020, 1, 1, 0, 0, 1, 0, 0, 0)
 
-    assert (date_time == date_time) is not None
-    assert (date_time != date_time) is not None
+    assert date_time_1 == date_time_1
+    assert date_time_2 == date_time_2
+    assert date_time_3 == date_time_3
+    assert date_time_1 != date_time_2
+    assert date_time_1 != date_time_3
 
 ################################################################################################################################################################
 
@@ -92,6 +137,7 @@ def test_date_time_is_defined ():
 
     date_time = DateTime(2018, 1, 1, 0, 0, 0, 0, 0, 0)
 
+    assert date_time is not None
     assert date_time.is_defined()
 
 ################################################################################################################################################################
@@ -100,7 +146,8 @@ def test_date_time_get_date ():
 
     date_time = DateTime(2018, 1, 1, 0, 0, 0, 0, 0, 0)
 
-    assert date_time.get_date()
+    assert date_time.get_date() is not None
+    assert date_time.get_date() == Date(2018, 1, 1)
 
 ################################################################################################################################################################
 
@@ -108,7 +155,8 @@ def test_date_time_get_time ():
 
     date_time = DateTime(2018, 1, 1, 0, 0, 0, 0, 0, 0)
 
-    assert date_time.get_time()
+    assert date_time.get_time() is not None
+    assert date_time.get_time() == Time(0, 0, 0, 0, 0, 0)
 
 ################################################################################################################################################################
 

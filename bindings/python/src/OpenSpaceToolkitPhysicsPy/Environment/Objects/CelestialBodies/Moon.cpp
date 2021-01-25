@@ -11,10 +11,10 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Moon ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Moon (           pybind11::module&                     aModule   )
 {
 
-    using namespace boost::python ;
+    using namespace pybind11 ;
 
     using ostk::core::types::Shared ;
 
@@ -25,16 +25,18 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
 
     {
 
-        scope in_Moon = class_<Moon, bases<Celestial>>("Moon", init<const Shared<Ephemeris>&, const Instant&>())
+        class_<Moon, Celestial>(aModule, "Moon")
 
-            .def_readonly("gravitational_parameter", &Moon::GravitationalParameter)
-            .def_readonly("equatorial_radius", &Moon::EquatorialRadius)
-            .def_readonly("flattening", &Moon::Flattening)
+            .def(init<const Shared<Ephemeris>&, const Instant&>())
 
-            .def(self_ns::str(self_ns::self))
-            .def(self_ns::repr(self_ns::self))
+            .def_readonly_static("gravitational_parameter", &Moon::GravitationalParameter)
+            .def_readonly_static("equatorial_radius", &Moon::EquatorialRadius)
+            .def_readonly_static("flattening", &Moon::Flattening)
 
-            .def("default", &Moon::Default).staticmethod("default")
+            // .def(self_ns::str(self_ns::self))
+            // .def(self_ns::repr(self_ns::self))
+
+            .def_static("default", &Moon::Default)
 
         ;
 
@@ -42,9 +44,15 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
 
     {
 
-        boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("ostk.physics.environment.objects.celestial_bodies.moon")))) ;
+        // boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("ostk.physics.environment.objects.celestial_bodies.moon")))) ;
 
-        boost::python::scope().attr("moon") = module ;
+        // boost::python::scope().attr("moon") = module ;
+
+        // Create "moon" python submodule
+        auto moon = aModule.def_submodule("moon") ;
+
+        // Add __path__ attribute for "moon" submodule
+        moon.attr("__path__") = "ostk.physics.environment.objects.celestial_bodies.moon" ;
 
     }
 

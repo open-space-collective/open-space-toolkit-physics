@@ -13,10 +13,12 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers_Dynamic ( )
+// TB transitioned to something else soon
+
+inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers_Dynamic (           pybind11::module&                     aModule         )
 {
 
-    using namespace boost::python ;
+    using namespace pybind11 ;
 
     using ostk::core::types::Shared ;
 
@@ -25,19 +27,19 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provi
     using ostk::physics::coord::frame::Provider ;
     using ostk::physics::coord::frame::provider::Dynamic ;
 
-    scope in_Dynamic = class_<Dynamic, Shared<Dynamic>, bases<Provider>>("Dynamic", no_init)
+    class_<Dynamic, Shared<Dynamic>, Provider>(aModule, "Dynamic")
 
+        // Custom Constructor for Dynamic
         .def
         (
             "__init__",
-            make_constructor
             (
-                +[] (const boost::python::object& aGeneratorObject) -> Shared<Dynamic>
+                +[] (const pybind11::object& aGeneratorObject) -> Shared<Dynamic>
                 {
 
                     const auto generatorProxy = [aGeneratorObject] (const Instant& anInstant) -> Transform
                     {
-                        return boost::python::extract<Transform>(aGeneratorObject(anInstant)) ;
+                        return pybind11::cast<Transform>(aGeneratorObject(anInstant)) ;
                     } ;
 
                     return std::make_shared<Dynamic>(generatorProxy) ;
@@ -50,7 +52,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provi
 
         .def("get_transform_at", &Dynamic::getTransformAt)
 
-        .def("undefined", &Dynamic::Undefined).staticmethod("undefined")
+        .def_static("undefined", &Dynamic::Undefined)
 
     ;
 

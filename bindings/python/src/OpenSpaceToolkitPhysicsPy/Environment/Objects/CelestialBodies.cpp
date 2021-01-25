@@ -13,18 +13,19 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies   (          pybind11::module&                     aModule       )
 {
 
-    boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("ostk.physics.environment.objects.celestial_bodies")))) ;
+    // Create "celestial_bodies" python submodule
+    auto celestial_bodies = aModule.def_submodule("celestial_bodies") ;
 
-    boost::python::scope().attr("celestial_bodies") = module ;
+    // Add __path__ attribute for "celestial_bodies" submodule
+    celestial_bodies.attr("__path__") = "ostk.physics.environment.objects.celestial_bodies" ;
 
-    boost::python::scope scope = module ;
-
-    OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Earth() ;
-    OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Moon() ;
-    OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Sun() ;
+    // Add objects to python "celestial_bodies" submodules
+    OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Earth(celestial_bodies) ;
+    OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Moon(celestial_bodies) ;
+    OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Sun(celestial_bodies) ;
 
 }
 

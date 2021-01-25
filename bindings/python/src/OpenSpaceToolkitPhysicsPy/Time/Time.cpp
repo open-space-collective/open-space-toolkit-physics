@@ -11,23 +11,25 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Time_Time                  ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Time_Time                  (            pybind11::module&                     aModule                )
 {
 
-    using namespace boost::python ;
+    using namespace pybind11 ;
 
     using ostk::core::types::String ;
 
     using ostk::physics::time::Time ;
 
-    scope in_Time = class_<Time>("Time", init<int, int, int, int, int, int>())
+    class_<Time> time(aModule, "Time") ;
+
+    time.def(init<int, int, int, int, int, int>())
 
         .def(init<int, int, int>())
 
         .def(self == self)
         .def(self != self)
 
-        .def(self_ns::str(self_ns::self))
+        // .def(self_ns::str(self_ns::self))
 
         .def("__repr__", +[] (const Time& aTime) -> std::string { return aTime.toString() ; })
 
@@ -50,15 +52,15 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Time             
         .def("to_string", +[] (const Time& aTime) -> String { return aTime.toString() ; })
         .def("to_string", +[] (const Time& aTime, const Time::Format& aFormat) -> String { return aTime.toString(aFormat) ; })
 
-        .def("undefined", &Time::Undefined).staticmethod("undefined")
-        .def("midnight", &Time::Midnight).staticmethod("midnight")
-        .def("noon", &Time::Noon).staticmethod("noon")
+        .def_static("undefined", &Time::Undefined)
+        .def_static("midnight", &Time::Midnight)
+        .def_static("noon", &Time::Noon)
         .def("parse", +[] (const String& aString) -> Time { return Time::Parse(aString) ; })
         .def("parse", +[] (const String& aString, const Time::Format& aFormat) -> Time { return Time::Parse(aString, aFormat) ; })
 
     ;
 
-    enum_<Time::Format>("Format")
+    enum_<Time::Format>(time, "Format")
 
         .value("Undefined", Time::Format::Undefined)
         .value("Standard", Time::Format::Standard)

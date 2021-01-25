@@ -7,7 +7,11 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <boost/python.hpp>
+#include <pybind11/pybind11.h>
+#include <pybind11/operators.h>
+#include <pybind11/eigen.h>
+#include <pybind11/numpy.h>
+#include <pybind11/chrono.h>
 
 #include <OpenSpaceToolkitPhysicsPy/Environment.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Coordinate.cpp>
@@ -16,17 +20,30 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-BOOST_PYTHON_MODULE (OpenSpaceToolkitPhysicsPy)
+PYBIND11_MODULE (OpenSpaceToolkitPhysicsPy, m)
 {
 
-    boost::python::object package = boost::python::scope() ;
+    // Add optional docstring for package OpenSpaceToolkitPhysicsPy
+    m.doc() = "Physical units, time, reference frames, environment modeling for OpenSpaceToolkit" ;
 
-    package.attr("__path__") = "ostk" ;
+    // Add __path__ attribute to python package
+    m.attr("__path__") = "ostk.physics" ;
 
-    OpenSpaceToolkitPhysicsPy_Units() ;
-    OpenSpaceToolkitPhysicsPy_Time() ;
-    OpenSpaceToolkitPhysicsPy_Coordinate() ;
-    OpenSpaceToolkitPhysicsPy_Environment() ;
+    // Change attribute __name__ to make OpenSpaceToolkitPhysicsPy invisible in modules path
+    m.attr("__name__") = "ostk.phsyics" ;
+
+    // Package version information
+    #ifdef VERSION_INFO
+        m.attr("__version__") = VERSION_INFO ;
+    #else
+        m.attr("__version__") = "dev" ;
+    #endif
+
+    // Add python submodules to OpenSpaceToolkitPhysicsPy
+    OpenSpaceToolkitPhysicsPy_Units(m) ;
+    OpenSpaceToolkitPhysicsPy_Time(m) ;
+    OpenSpaceToolkitPhysicsPy_Coordinate(m) ;
+    OpenSpaceToolkitPhysicsPy_Environment(m) ;
 
 }
 
