@@ -18,8 +18,6 @@
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
 
-#include <sofa/sofa.h>
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 namespace ostk
@@ -36,7 +34,9 @@ namespace provider
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #define DAYSEC (86400.0)
+#define DJC (36525.0)
 #define DAS2R (4.848136811095359935899141e-6)
+#define DS2R (7.272205216643039903848712e-5)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -106,9 +106,22 @@ Transform                       TEME::getTransformAt                        (   
     const Real uta = djmjd0 + date ;
     const Real utb = tut ;
 
+    // Julian centuries since fundamental epoch
+
+    static const Real dj00 = 2451545.0 ;
+    const Real t = (uta + (utb - dj00)) / DJC ;
+
     // Greenwich apparent sidereal time (consistent with IAU 1982/94 resolutions)
 
-    const Real gmst_1982 = iauGmst82(uta, utb) ;
+    static const Real a = 24110.54841 - DAYSEC / 2.0 ;
+    static const Real b = 8640184.812866 ;
+    static const Real c = 0.093104 ;
+    static const Real d = -6.2e-6 ;
+
+    const Real f = DAYSEC * (fmod(uta, 1.0) + fmod(utb, 1.0)) ;
+
+    const Real gmst_1982 = ((a + (b * t) + (c * t * t) + (d * t * t * t)) + f) * DS2R ;
+    const Real dgmst_1982 = ((b + (2.0 * c * t) + (3.0 * d * t * t)) / (DAYSEC * DJC) + 1.0) * DS2R ;
 
     const RotationMatrix R_3 = RotationMatrix::RZ(Angle::Radians(gmst_1982)) ; // dcm_PEF_TEME
 
@@ -137,7 +150,7 @@ Transform                       TEME::getTransformAt                        (   
     const Vector3d v_TEME_ITRF = { 0.0, 0.0, 0.0 } ;
 
     const Quaternion q_TEME_ITRF = Quaternion::RotationMatrix(dcm_ITRF_TEME).conjugate().rectify() ;
-    const Vector3d w_TEME_ITRF_in_TEME = { 0.0, 0.0, 0.0 } ; // [TBI]
+    const Vector3d w_TEME_ITRF_in_TEME = { 0.0, 0.0, dgmst_1982 } ;
 
     return Transform::Passive(anInstant, x_TEME_ITRF, v_TEME_ITRF, q_TEME_ITRF, w_TEME_ITRF_in_TEME) ;
 
