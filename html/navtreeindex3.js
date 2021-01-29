@@ -1,5 +1,7 @@
 var NAVTREEINDEX3 =
 {
+"classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#a821f98411c65f59e6a297c6bcc3de291":[4,0,0,0,3,0,1,2],
+"classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#a987c2df62d8fedb368acf37e71ba7a47":[4,0,0,0,3,0,1,4],
 "classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#a9895df78b5c5aab5e981bf765f8c0f05":[4,0,0,0,3,0,1,0],
 "classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#a9895df78b5c5aab5e981bf765f8c0f05a2ae5659e79a4bb66ae4ee8cb033ef196":[4,0,0,0,3,0,1,0,1],
 "classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#a9895df78b5c5aab5e981bf765f8c0f05a5dda43a21474cf33e7088b8247f19c4b":[4,0,0,0,3,0,1,0,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX3 =
 "classostk_1_1physics_1_1units_1_1_angle.html#aea1f8018b1d378b9dee56959d8eb9defa6d59f6ca1b5de72cbdc10a6792bcf090":[4,0,0,0,5,0,0,3],
 "classostk_1_1physics_1_1units_1_1_angle.html#aea1f8018b1d378b9dee56959d8eb9defa7839ceecae19481f2e21e0ce3e11d3aa":[4,0,0,0,5,0,0,4],
 "classostk_1_1physics_1_1units_1_1_angle.html#aea1f8018b1d378b9dee56959d8eb9defaad09b2d48b2811c68e5a2bf421f7f2f2":[4,0,0,0,5,0,0,5],
-"classostk_1_1physics_1_1units_1_1_angle.html#aea1f8018b1d378b9dee56959d8eb9defaec0fc0100c4fc1ce4eea230c3dc10360":[4,0,0,0,5,0,0,0],
-"classostk_1_1physics_1_1units_1_1_angle.html#af0d5d649b2a1310e6337663f7b9283bf":[4,0,0,0,5,0,3],
-"classostk_1_1physics_1_1units_1_1_angle.html#af699984b24759466957ecddaa7e61fc9":[4,0,0,0,5,0,28]
+"classostk_1_1physics_1_1units_1_1_angle.html#aea1f8018b1d378b9dee56959d8eb9defaec0fc0100c4fc1ce4eea230c3dc10360":[4,0,0,0,5,0,0,0]
 };
