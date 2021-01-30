@@ -97,7 +97,8 @@ TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_TEME, GetTransformAt)
 
                 // Angular velocity test
 
-                const Vector3d referenceAngularVelocity_TEME_ITRF_in_TEME = { referenceRow[5].accessReal(), referenceRow[6].accessReal(), referenceRow[7].accessReal() } ;
+                const Vector3d referenceAngularVelocity_ITRF_TEME_in_TEME = { referenceRow[5].accessReal(), referenceRow[6].accessReal(), referenceRow[7].accessReal() } ;
+                const Vector3d referenceAngularVelocity_TEME_ITRF_in_TEME = - referenceAngularVelocity_ITRF_TEME_in_TEME ;
 
                 const Vector3d w_TEME_ITRF_in_TEME = transform_TEME_ITRF.accessAngularVelocity() ;
 

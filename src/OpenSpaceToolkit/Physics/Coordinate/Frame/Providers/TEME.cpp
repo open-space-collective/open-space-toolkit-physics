@@ -150,7 +150,7 @@ Transform                       TEME::getTransformAt                        (   
     const Vector3d v_TEME_ITRF = { 0.0, 0.0, 0.0 } ;
 
     const Quaternion q_TEME_ITRF = Quaternion::RotationMatrix(dcm_ITRF_TEME).conjugate().rectify() ;
-    const Vector3d w_TEME_ITRF_in_TEME = { 0.0, 0.0, dgmst_1982 } ;
+    const Vector3d w_TEME_ITRF_in_TEME = { 0.0, 0.0, - dgmst_1982 } ;
 
     return Transform::Passive(anInstant, x_TEME_ITRF, v_TEME_ITRF, q_TEME_ITRF, w_TEME_ITRF_in_TEME) ;
 
