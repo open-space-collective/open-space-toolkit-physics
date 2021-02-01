@@ -363,7 +363,7 @@ Shared<const Frame>             Frame::TEMEOfEpoch                          (   
 
     const String temeOfEpochFrameName = String::Format("TEMEOfEpoch @ {}", anEpoch.toString(Scale::TT)) ;
 
-    static const Shared<const Provider> providerSPtr = std::make_shared<const StaticProvider>(Frame::GCRF()->getTransformTo(Frame::TEME(), anEpoch)) ;
+    const Shared<const Provider> providerSPtr = std::make_shared<const StaticProvider>(Frame::GCRF()->getTransformTo(Frame::TEME(), anEpoch)) ;
 
     return Frame::Emplace(temeOfEpochFrameName, true, Frame::GCRF(), providerSPtr) ;
 
