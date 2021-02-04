@@ -11,7 +11,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Time_Date                  (            pybind11::module&                     aModule                )
+inline void                     OpenSpaceToolkitPhysicsPy_Time_Date         (            pybind11::module&          aModule                                     )
 {
 
     using namespace pybind11 ;
@@ -27,8 +27,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Date             
         .def(self == self)
         .def(self != self)
 
-        // .def(self_ns::str(self_ns::self))
-
+        .def("__str__", &(shiftToString<Date>))
         .def("__repr__", +[] (const Date& aDate) -> std::string { return aDate.toString() ; })
 
         .def("is_defined", &Date::isDefined)

@@ -12,7 +12,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth (            pybind11::module&                     aModule           )
+inline void                     OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth (        pybind11::module&aModule                                     )
 {
 
     using namespace pybind11 ;
@@ -52,12 +52,6 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Gravitatio
 
     // Add __path__ attribute for "earth" submodule
     earth.attr("__path__") = "ostk.physics.environment.gravitational.earth" ;
-
-    // boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("ostk.physics.environment.gravitational.earth")))) ;
-
-    // boost::python::scope().attr("earth") = module ;
-
-    // boost::python::scope scope = module ;
 
     class_<Manager>(earth, "Manager")
 

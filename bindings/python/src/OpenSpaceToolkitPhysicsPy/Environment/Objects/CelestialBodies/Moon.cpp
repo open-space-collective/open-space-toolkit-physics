@@ -11,7 +11,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Moon (           pybind11::module&                     aModule   )
+inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Moon (        pybind11::module& aModule                           )
 {
 
     using namespace pybind11 ;
@@ -33,8 +33,8 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
             .def_readonly_static("equatorial_radius", &Moon::EquatorialRadius)
             .def_readonly_static("flattening", &Moon::Flattening)
 
-            // .def(self_ns::str(self_ns::self))
-            // .def(self_ns::repr(self_ns::self))
+            .def("__str__", &(shiftToString<Moon>))
+            .def("__repr__", &(shiftToString<Moon>))
 
             .def_static("default", &Moon::Default)
 
@@ -43,10 +43,6 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
     }
 
     {
-
-        // boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("ostk.physics.environment.objects.celestial_bodies.moon")))) ;
-
-        // boost::python::scope().attr("moon") = module ;
 
         // Create "moon" python submodule
         auto moon = aModule.def_submodule("moon") ;

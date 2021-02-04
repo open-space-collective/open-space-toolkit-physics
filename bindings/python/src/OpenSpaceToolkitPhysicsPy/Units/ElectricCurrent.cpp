@@ -7,22 +7,18 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// #include <OpenSpaceToolkitPhysicsPy/Utilities/IterableConverter.hpp>
-
 #include <OpenSpaceToolkit/Physics/Units/ElectricCurrent.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Objects/Interval.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (OpenSpaceToolkitPhysicsPy_Units_ElectricCurrent_toString_overloads, ostk::physics::units::ElectricCurrent::toString, 0, 1)
-// BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (OpenSpaceToolkitPhysicsPy_Units_ElectricCurrent_Interval_toString_overloads, ostk::math::obj::Interval<ostk::physics::units::ElectricCurrent>::toString, 0, 1)
-
-inline void                     OpenSpaceToolkitPhysicsPy_Units_ElectricCurrent      (           pybind11::module&                     aModule                 )
+inline void                     OpenSpaceToolkitPhysicsPy_Units_ElectricCurrent (        pybind11::module&          aModule                                     )
 {
 
     using namespace pybind11 ;
 
+    using ostk::core::types::Integer ;
     using ostk::core::types::Real ;
 
     using ostk::physics::units::ElectricCurrent ;
@@ -50,8 +46,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Units_ElectricCurrent 
         // .def("__imul__", [](const ElectricCurrent &anElectricCurrent, Real aReal) {return anElectricCurrent * aReal;}, is_operator())
         // .def("__itruediv__", [](const ElectricCurrent &anElectricCurrent, Real aReal) {return anElectricCurrent / aReal;}, is_operator())
 
-        // .def(self_ns::str(self_ns::self))
-
+        // .def("__str__", &(shiftToString<ElectricCurrent>))
         .def("__repr__", +[] (const ElectricCurrent& aElectricCurrent) -> std::string { return aElectricCurrent.toString() ; })
 
         .def("is_defined", &ElectricCurrent::isDefined)
@@ -59,6 +54,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Units_ElectricCurrent 
         .def("get_unit", &ElectricCurrent::getUnit)
         .def("in_unit", &ElectricCurrent::in)
         .def("in_amperes", &ElectricCurrent::inAmperes)
+        .def("to_string", &ElectricCurrent::toString, "aPrecision"_a=Integer::Undefined())
         // .def("to_string", &ElectricCurrent::toString, OpenSpaceToolkitPhysicsPy_Units_ElectricCurrent_toString_overloads())
 
         .def_static("undefined", &ElectricCurrent::Undefined)

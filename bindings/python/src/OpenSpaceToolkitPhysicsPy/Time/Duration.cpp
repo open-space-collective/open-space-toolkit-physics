@@ -11,7 +11,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Time_Duration              (            pybind11::module&                     aModule                )
+inline void                     OpenSpaceToolkitPhysicsPy_Time_Duration     (           pybind11::module&           aModule                                     )
 {
 
     using namespace pybind11 ;
@@ -34,16 +34,15 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Duration         
 
         .def(self + self)
         .def(self - self)
-        // .def(self * other<double>())
-        // .def(self / other<double>())
+        .def(self * double())
+        .def(self / double())
 
-        // .def(self += self)
-        // .def(self -= self)
-        // .def(self *= other<double>())
-        // .def(self /= other<double>())
+        .def(self += self)
+        .def(self -= self)
+        .def(self *= double())
+        .def(self /= double())
 
-        // .def(self_ns::str(self_ns::self))
-
+        .def("__str__", &(shiftToString<Duration>))
         .def("__repr__", +[] (const Duration& aDuration) -> std::string { return aDuration.toString() ; })
 
         .def("is_defined", &Duration::isDefined)

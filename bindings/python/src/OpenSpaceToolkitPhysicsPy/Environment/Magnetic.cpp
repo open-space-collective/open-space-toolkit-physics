@@ -12,7 +12,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Environment_Magnetic           (          pybind11::module&                     aModule              )
+inline void                     OpenSpaceToolkitPhysicsPy_Environment_Magnetic (        pybind11::module&           aModule                                     )
 {
 
     // Create "magnetic" python submodule

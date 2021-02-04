@@ -11,7 +11,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Transform       (           pybind11::module&                     aModule                 )
+inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Transform (         pybind11::module&          aModule                                     )
 {
 
     using namespace pybind11 ;
@@ -26,9 +26,9 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Transform  
 
     using ostk::physics::coord::Transform ;
 
-    class_<Transform> trsf(aModule, "Transform") ;
+    class_<Transform> transform_class(aModule, "Transform") ;
 
-    trsf.def(init<Instant, Vector3d, Vector3d, Quaternion, Vector3d, Transform::Type>())
+    transform_class.def(init<Instant, Vector3d, Vector3d, Quaternion, Vector3d, Transform::Type>())
 
         .def(self == self)
         .def(self != self)
@@ -37,8 +37,8 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Transform  
 
         .def(self *= self)
 
-        // .def(self_ns::str(self_ns::self))
-        // .def(self_ns::repr(self_ns::self))
+        .def("__str__", &(shiftToString<Transform>))
+        .def("__repr__", &(shiftToString<Transform>))
 
         .def("is_defined", &Transform::isDefined)
         .def("is_identity", &Transform::isIdentity)
@@ -65,13 +65,13 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Transform  
 
         .def_static("undefined", &Transform::Undefined)
         .def_static("identity", &Transform::Identity)
-        // .def_static("translation", &Transform::Translation).staticmethod("translation")
+        // .def_static("translation", &Transform::Translation)
         .def_static("active", &Transform::Active)
         .def_static("passive", &Transform::Passive)
 
     ;
 
-    enum_<Transform::Type>(trsf, "Type")
+    enum_<Transform::Type>(transform_class, "Type")
 
         .value("Undefined", Transform::Type::Undefined)
         .value("Active", Transform::Type::Active)

@@ -12,7 +12,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth (            pybind11::module&                     aModule                )
+inline void                     OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth (        pybind11::module&     aModule                                     )
 {
 
     using namespace pybind11 ;

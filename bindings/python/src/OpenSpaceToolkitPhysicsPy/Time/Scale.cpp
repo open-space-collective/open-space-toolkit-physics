@@ -11,7 +11,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Time_Scale                 (            pybind11::module&                     aModule                )
+inline void                     OpenSpaceToolkitPhysicsPy_Time_Scale        (            pybind11::module&          aModule                                     )
 {
 
     using namespace pybind11 ;

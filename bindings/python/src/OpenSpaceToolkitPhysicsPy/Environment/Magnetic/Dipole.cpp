@@ -11,7 +11,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Dipole (           pybind11::module&                     aModule                )
+inline void                     OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Dipole (        pybind11::module&    aModule                                     )
 {
 
     using namespace pybind11 ;

@@ -13,96 +13,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using ostk::physics::time::DateTime ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// http://code.activestate.com/recipes/576395/
-
-// struct DateTimeFromPythonDateTime
-// {
-//                                 DateTimeFromPythonDateTime                  ( )
-//     {
-
-//         boost::python::converter::registry::push_back
-//         (
-//             &convertible,
-//             &construct,
-//             boost::python::type_id<DateTime>()
-//         ) ;
-
-//     }
-
-//     static void*                convertible                                 (           PyObject*                   anObject                                    )
-//     {
-
-//         if (!PyDateTime_Check(anObject))
-//         {
-//             return 0 ;
-//         }
-
-//         return anObject ;
-
-//     }
-
-//      static void                construct                                   (           PyObject*                   anObject,
-//                                                                                         boost::python::converter::rvalue_from_python_stage1_data* data          )
-//     {
-
-//         const PyDateTime_DateTime* pydate = reinterpret_cast<PyDateTime_DateTime*>(anObject) ;
-
-//         const int year = PyDateTime_GET_YEAR(pydate) ;
-//         const int month = PyDateTime_GET_MONTH(pydate) ;
-//         const int day = PyDateTime_GET_DAY(pydate) ;
-
-//         const int hour = PyDateTime_DATE_GET_HOUR(pydate) ;
-//         const int minute = PyDateTime_DATE_GET_MINUTE(pydate) ;
-//         const int second = PyDateTime_DATE_GET_SECOND(pydate) ;
-
-//         const int microseconds = PyDateTime_DATE_GET_MICROSECOND(pydate) ;
-
-//         const int millisecond = microseconds / 1000 ;
-//         const int microsecond = microseconds - millisecond * 1000 ;
-
-//         // Create DateTime object
-
-//         void* storage = ((boost::python::converter::rvalue_from_python_storage<DateTime>*) data)->storage.bytes ;
-
-//         new (storage) DateTime (year, month, day, hour, minute, second, millisecond, microsecond) ;
-
-//         data->convertible = storage ;
-
-//     }
-
-// } ;
-
-// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// struct PythonDatetimeFromDateTime
-// {
-
-//     static PyObject*            convert                                     (   const   DateTime&                   aDateTime                                   )
-//     {
-
-//         const int year = static_cast<int>(aDateTime.accessDate().getYear()) ;
-//         const int month = static_cast<int>(aDateTime.accessDate().getMonth()) ;
-//         const int day = static_cast<int>(aDateTime.accessDate().getDay()) ;
-
-//         const int hour = static_cast<int>(aDateTime.accessTime().getHour()) ;
-//         const int minute = static_cast<int>(aDateTime.accessTime().getMinute()) ;
-//         const int second = static_cast<int>(aDateTime.accessTime().getSecond()) ;
-
-//         const int microseconds = (aDateTime.accessTime().getMillisecond() * 1000) + aDateTime.accessTime().getMicrosecond() ;
-
-//         return PyDateTime_FromDateAndTime(year, month, day, hour, minute, second, microseconds) ;
-
-//     }
-
-// } ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-inline void                     OpenSpaceToolkitPhysicsPy_Time_DateTime     (            pybind11::module&                     aModule                         )
+inline void                     OpenSpaceToolkitPhysicsPy_Time_DateTime     (            pybind11::module&          aModule                                     )
 {
 
     using namespace pybind11 ;
@@ -113,18 +24,21 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_DateTime     (   
     using ostk::physics::time::Date ;
     using ostk::physics::time::Time ;
 
-    class_<DateTime> datetime(aModule, "DateTime") ;
+    class_<DateTime> datetime_class(aModule, "DateTime") ;
 
-    datetime.def(init<Date, Time>())
+    datetime_class.def(init<Date, Time>())
 
         .def(init<int, int, int, int, int, int, int, int, int>())
         .def(init<int, int, int, int, int, int>())
 
+        // Implicit conversion with special constructor
+        // https://github.com/pybind/pybind11/issues/482
+        // .def("__init__", +[] (const DateTime& aDateTime) -> PyDateTime_DateTime { return convert(aDateTime) ; })
+
         .def(self == self)
         .def(self != self)
 
-        // .def(self_ns::str(self_ns::self))
-
+        .def("__str__", &(shiftToString<DateTime>))
         .def("__repr__", +[] (const DateTime& aDateTime) -> std::string { return aDateTime.toString() ; })
 
         .def("is_defined", &DateTime::isDefined)
@@ -148,7 +62,9 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_DateTime     (   
 
     ;
 
-    enum_<DateTime::Format>(datetime, "Format")
+    implicitly_convertible<PyDateTime_DateTime, DateTime>() ;
+
+    enum_<DateTime::Format>(datetime_class, "Format")
 
         .value("Undefined", DateTime::Format::Undefined)
         .value("Standard", DateTime::Format::Standard)

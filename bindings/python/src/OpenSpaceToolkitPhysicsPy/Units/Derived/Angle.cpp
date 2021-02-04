@@ -11,13 +11,12 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (OpenSpaceToolkitPhysicsPy_Units_Angle_toString_overloads, ostk::physics::units::Angle::toString, 0, 1)
-
-inline void                     OpenSpaceToolkitPhysicsPy_Units_Derived_Angle        (            pybind11::module&                     aModule                )
+inline void                     OpenSpaceToolkitPhysicsPy_Units_Derived_Angle (         pybind11::module&           aModule                                     )
 {
 
     using namespace pybind11 ;
 
+    using ostk::core::types::Integer ;
     using ostk::core::types::Real ;
 
     using ostk::math::obj::Vector2d ;
@@ -43,8 +42,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Units_Derived_Angle   
         .def("__imul__", [](const Angle &anAngle, Real aReal) {return anAngle * aReal;}, is_operator())
         .def("__itruediv__", [](const Angle &anAngle, Real aReal) {return anAngle / aReal;}, is_operator())
 
-        // .def(self_ns::str(self_ns::self))
-
+        // .def("__str__", &(shiftToString<Angle>))
         .def("__repr__", +[] (const Angle& anAngle) -> std::string { return anAngle.toString() ; })
 
         .def("is_defined", &Angle::isDefined)
@@ -57,7 +55,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Units_Derived_Angle   
         .def("in_arcminutes", +[] (const Angle& anAngle) -> Real { return anAngle.inArcminutes() ; })
         .def("in_arcseconds", +[] (const Angle& anAngle) -> Real { return anAngle.inArcseconds() ; })
         .def("in_revolutions", &Angle::inRevolutions)
-        // .def("to_string", &Angle::toString, OpenSpaceToolkitPhysicsPy_Units_Angle_toString_overloads())
+        .def("to_string", &Angle::toString, "aPrecision"_a=Integer::Undefined())
 
         .def_static("undefined", &Angle::Undefined)
         .def_static("zero", &Angle::Zero)

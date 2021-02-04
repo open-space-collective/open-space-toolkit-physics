@@ -7,13 +7,13 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <OpenSpaceToolkit/Mathematics/Objects/Interval.hpp>
+
 #include <OpenSpaceToolkit/Physics/Time/Interval.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (OpenSpaceToolkitPhysicsPy_Time_Interval_toString_overloads, ostk::physics::time::Interval::toString, 0, 1)
-
-inline void                     OpenSpaceToolkitPhysicsPy_Time_Interval              (           pybind11::module&                     aModule                 )
+inline void                     OpenSpaceToolkitPhysicsPy_Time_Interval     (           pybind11::module&           aModule                                     )
 {
 
     using namespace pybind11 ;
@@ -22,16 +22,16 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Interval         
 
     using ostk::physics::time::Instant ;
     using ostk::physics::time::Interval ;
+    using ostk::physics::time::Scale ;
 
-    class_<Interval> interval(aModule, "Interval") ;
+    class_<Interval> interval_class(aModule, "Interval") ;
 
-    interval.def(init<const Instant&, const Instant&, const Interval::Type&>())
+    interval_class.def(init<const Instant&, const Instant&, const Interval::Type&>())
 
         .def(self == self)
         .def(self != self)
 
-        // .def(self_ns::str(self_ns::self))
-
+        .def("__str__", &(shiftToString<Interval>))
         .def("__repr__", +[] (const Interval& anInterval) -> std::string { return anInterval.toString() ; })
 
         .def("is_defined", &Interval::isDefined)
@@ -43,7 +43,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Interval         
         .def("get_lower_bound", &Interval::getLowerBound)
         .def("get_upper_bound", &Interval::getUpperBound)
         // .def("get_intersection_with", &Interval::getIntersectionWith)
-        // .def("get_union_with", &Interval::getUnionWith)
+        // .def("get_union_with", &Interval::geteUnionWith)
         // .def("generate_array_with_step", &Interval::generateArrayWithStep)
         // .def("generate_array_with_size", &Interval::generateArrayWithSize)
 
@@ -51,7 +51,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Interval         
         .def("get_end", &Interval::getEnd)
         .def("get_duration", &Interval::getDuration)
         .def("get_center", &Interval::getCenter)
-        // .def("to_string", &Interval::toString, OpenSpaceToolkitPhysicsPy_Time_Interval_toString_overloads())
+        .def("to_string", &Interval::toString, "aTimeScale"_a=Scale::UTC)
         .def("generate_grid", &Interval::generateGrid)
 
         .def_static("undefined", &Interval::Undefined)
@@ -61,17 +61,19 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Interval         
 
     ;
 
-    enum_<Interval::Type>(interval, "TimeIntervalType")
+    // https://github.com/pybind/pybind11/pull/949 locally to avoid conflicts with other potential objects in other ostk modules
+    // enum_<Interval::Type>(interval_class, "Type")
 
-        .value("Undefined", Interval::Type::Undefined)
-        .value("Closed", Interval::Type::Closed)
-        .value("Open", Interval::Type::Open)
-        .value("HalfOpenLeft", Interval::Type::HalfOpenLeft)
-        .value("HalfOpenRight", Interval::Type::HalfOpenRight)
+    //     .value("Undefined", Interval::Type::Undefined)
+    //     .value("Closed", Interval::Type::Closed)
+    //     .value("Open", Interval::Type::Open)
+    //     .value("HalfOpenLeft", Interval::Type::HalfOpenLeft)
+    //     .value("HalfOpenRight", Interval::Type::HalfOpenRight)
 
-    ;
+    // ;
 
-    implicitly_convertible<Interval, ostk::math::obj::Interval<ostk::physics::time::Instant>>() ;
+    // Second one not defined due to templating
+    // implicitly_convertible<Interval, ostk::math::obj::Interval<ostk::physics::time::Instant>>() ;
 
 }
 

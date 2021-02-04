@@ -13,7 +13,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Environment_Object         (           pybind11::module&                     aModule                 )
+inline void                     OpenSpaceToolkitPhysicsPy_Environment_Object (           pybind11::module&          aModule                                     )
 {
 
     using namespace pybind11 ;
@@ -29,8 +29,8 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Object    
 
         // no init
 
-        // .def(self_ns::str(self_ns::self))
-        // .def(self_ns::repr(self_ns::self))
+        .def("__str__", &(shiftToString<Object>))
+        .def("__repr__", &(shiftToString<Object>))
 
         .def("is_defined", &Object::isDefined)
 
@@ -52,7 +52,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Object    
 
     // register_ptr_to_python<Shared<const Object>>() ;
 
-    implicitly_convertible<Shared<Object>, Shared<const Object>>() ;
+    // implicitly_convertible<Shared<Object>, Shared<const Object>>() ;
 
     // Adding python submodule "object"
 

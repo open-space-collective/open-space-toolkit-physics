@@ -11,7 +11,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_AER   (           pybind11::module&                     aModule                 )
+inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_AER (         pybind11::module&      aModule                                     )
 {
 
     using namespace pybind11 ;
@@ -28,8 +28,8 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_A
         .def(self == self)
         .def(self != self)
 
-        // .def(self_ns::str(self_ns::self))
-        // .def(self_ns::repr(self_ns::self))
+        .def("__str__", &(shiftToString<AER>))
+        .def("__repr__", &(shiftToString<AER>))
 
         .def("is_defined", &AER::isDefined)
 

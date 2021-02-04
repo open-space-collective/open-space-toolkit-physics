@@ -12,13 +12,11 @@
 #include <OpenSpaceToolkitPhysicsPy/Environment/Objects.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Environment/Object.cpp>
 
-// #include <OpenSpaceToolkitPhysicsPy/Utilities/IterableConverter.hpp>
-
 #include <OpenSpaceToolkit/Physics/Environment.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Environment                (           pybind11::module&                     aModule                 )
+inline void                     OpenSpaceToolkitPhysicsPy_Environment       (           pybind11::module&           aModule                                     )
 {
 
     using namespace pybind11 ;
@@ -52,19 +50,6 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment           
         .def_static("default", &Environment::Default)
 
     ;
-
-    // IterableConverter()
-
-    //     .from_python<Array<Shared<Object>>>()
-    //     .to_python<Array<Shared<Object>>>()
-
-    // ;
-
-    // boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("ostk.physics.environment")))) ;
-
-    // boost::python::scope().attr("environment") = module ;
-
-    // boost::python::scope scope = module ;
 
     // Create "environment" python submodule
     auto environment = aModule.def_submodule("environment") ;

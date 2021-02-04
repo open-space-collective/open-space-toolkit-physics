@@ -11,13 +11,12 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (OpenSpaceToolkitPhysicsPy_Units_Derived_toString_overloads, ostk::physics::units::Derived::toString, 0, 1)
-
-inline void                     OpenSpaceToolkitPhysicsPy_Units_Derived              (           pybind11::module&                     aModule                 )
+inline void                     OpenSpaceToolkitPhysicsPy_Units_Derived     (           pybind11::module&           aModule                                     )
 {
 
     using namespace pybind11 ;
 
+    using ostk::core::types::Integer ;
     using ostk::core::types::Real ;
 
     using ostk::physics::units::Length ;
@@ -34,15 +33,14 @@ inline void                     OpenSpaceToolkitPhysicsPy_Units_Derived         
         .def(self == self)
         .def(self != self)
 
-        // .def(self_ns::str(self_ns::self))
-
+        // .def("__str__", &(shiftToString<Derived>))
         .def("__repr__", +[] (const Derived& aDerived) -> std::string { return aDerived.toString() ; })
 
-        .def("is_defined", &Derived::isDefined)
+        // .def("is_defined", &Derived::isDefined)
 
         .def("get_unit", &Derived::getUnit)
         .def("in_unit", &Derived::in)
-        // .def("to_string", &Derived::toString, OpenSpaceToolkitPhysicsPy_Units_Derived_toString_overloads())
+        .def("to_string", &Derived::toString, "aPrecision"_a=Integer::Undefined())
 
         .def_static("undefined", &Derived::Undefined)
         // .def_static("parse", &Derived::Parse)

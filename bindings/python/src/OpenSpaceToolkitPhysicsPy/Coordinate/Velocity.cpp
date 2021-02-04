@@ -11,13 +11,12 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (OpenSpaceToolkitPhysicsPy_Coordinate_Velocity_toString_overloads, ostk::physics::coord::Velocity::toString, 0, 1)
-
-inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Velocity        (           pybind11::module&                     aModule                 )
+inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Velocity (          pybind11::module&          aModule                                     )
 {
 
     using namespace pybind11 ;
 
+    using ostk::core::types::Integer ;
     using ostk::core::types::Shared ;
 
     using ostk::math::obj::Vector3d ;
@@ -32,8 +31,8 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Velocity   
         .def(self == self)
         .def(self != self)
 
-        // .def(self_ns::str(self_ns::self))
-        // .def(self_ns::repr(self_ns::self))
+        .def("__str__", &(shiftToString<Velocity>))
+        .def("__repr__", &(shiftToString<Velocity>))
 
         .def("is_defined", &Velocity::isDefined)
 
@@ -42,7 +41,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Velocity   
         .def("get_unit", &Velocity::getUnit)
         .def("in_unit", &Velocity::inUnit)
         .def("in_frame", &Velocity::inFrame)
-        // .def("to_string", &Velocity::toString, OpenSpaceToolkitPhysicsPy_Coordinate_Velocity_toString_overloads())
+        .def("to_string", &Velocity::toString, "aPrecision"_a=Integer::Undefined())
 
         .def_static("undefined", &Velocity::Undefined)
         .def_static("meters_per_second", &Velocity::MetersPerSecond)

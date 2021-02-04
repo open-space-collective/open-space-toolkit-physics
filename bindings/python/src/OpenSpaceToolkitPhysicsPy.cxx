@@ -13,6 +13,10 @@
 #include <pybind11/numpy.h>
 #include <pybind11/chrono.h>
 
+#include <OpenSpaceToolkitPhysicsPy/Utilities/ShiftToString.hpp>
+#include <OpenSpaceToolkitPhysicsPy/Utilities/ArrayCasting.hpp>
+// #include <OpenSpaceToolkitPhysicsPy/Utilities/DateTimeCasting.hpp>
+
 #include <OpenSpaceToolkitPhysicsPy/Environment.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Coordinate.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Time.cpp>
@@ -30,7 +34,7 @@ PYBIND11_MODULE (OpenSpaceToolkitPhysicsPy, m)
     m.attr("__path__") = "ostk.physics" ;
 
     // Change attribute __name__ to make OpenSpaceToolkitPhysicsPy invisible in modules path
-    m.attr("__name__") = "ostk.phsyics" ;
+    m.attr("__name__") = "ostk.physics" ;
 
     // Package version information
     #ifdef VERSION_INFO

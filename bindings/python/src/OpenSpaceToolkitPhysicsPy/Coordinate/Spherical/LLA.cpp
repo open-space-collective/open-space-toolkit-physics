@@ -11,7 +11,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA   (           pybind11::module&                     aModule                 )
+inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA (        pybind11::module&       aModule                                     )
 {
 
     using namespace pybind11 ;
@@ -27,8 +27,8 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_L
         .def(self == self)
         .def(self != self)
 
-        // .def(self_ns::str(self_ns::self))
-        // .def(self_ns::repr(self_ns::self))
+        .def("__str__", &(shiftToString<LLA>))
+        .def("__repr__", &(shiftToString<LLA>))
 
         .def("is_defined", &LLA::isDefined)
 

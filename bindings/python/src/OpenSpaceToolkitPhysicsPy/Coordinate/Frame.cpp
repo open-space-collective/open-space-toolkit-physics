@@ -14,7 +14,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame           (            pybind11::module&                     aModule                )
+inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame  (           pybind11::module&           aModule                                     )
 {
 
     using namespace pybind11 ;
@@ -33,8 +33,8 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame      
         .def(self == self)
         .def(self != self)
 
-        // .def(self_ns::str(self_ns::self))
-        // .def(self_ns::repr(self_ns::self))
+        .def("__str__", &(shiftToString<Frame>))
+        .def("__repr__", &(shiftToString<Frame>))
 
         .def("is_defined", &Frame::isDefined)
         .def("is_quasi_inertial", &Frame::isQuasiInertial)
@@ -68,7 +68,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame      
     // register_ptr_to_python<Shared<Frame>>() ;
     // register_ptr_to_python<Shared<const Frame>>() ;
 
-    implicitly_convertible<Shared<Frame>, Shared<const Frame>>() ;
+    // implicitly_convertible<Shared<Frame>, Shared<const Frame>>() ;
 
     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider(aModule) ;
     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers(aModule) ;

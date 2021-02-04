@@ -34,7 +34,7 @@ RUN cmake .. \
 
 ################################################################################################################################################################
 
-FROM fedora:30 as cpp-release
+FROM fedora:32 as cpp-release
 
 ENV LD_LIBRARY_PATH /usr/local/lib
 
@@ -47,25 +47,21 @@ ENTRYPOINT ["/usr/local/test/OpenSpaceToolkit/Physics/open-space-toolkit-physics
 
 ################################################################################################################################################################
 
-FROM fedora:30 as python-builder
+FROM fedora:32 as python-builder
 
 COPY --from=cpp-builder /app/build/bindings/python/dist /dist
 
-RUN pip3 install /dist/*.whl
+RUN python3.8 -m ensurepip --default-pip \
+ && python3.8 -m pip install /dist/*38*.whl
 
 ################################################################################################################################################################
 
-FROM fedora:30 as python-release
+FROM fedora:32 as python-release
 
 LABEL maintainer="lucas@loftorbital.com"
 
-RUN ln -s /usr/bin/pip3 /usr/bin/pip
-
-RUN dnf update -y \
- && dnf install -y wget libcurl-devel openssl-devel unzip \
- && dnf clean all
-
-RUN pip install ipython numpy
+RUN python3.8 -m ensurepip --default-pip \
+ && python3.8 -m pip install ipython numpy
 
 COPY --from=python-builder /usr/local/lib/python3.8/site-packages/ostk /usr/local/lib/python3.8/site-packages/ostk
 

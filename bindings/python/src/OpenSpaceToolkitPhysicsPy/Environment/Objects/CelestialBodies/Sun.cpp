@@ -11,7 +11,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Sun (            pybind11::module&                     aModule   )
+inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Sun (        pybind11::module& aModule                            )
 {
 
     using namespace pybind11 ;
@@ -33,8 +33,8 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
             .def_readonly_static("equatorial_radius", &Sun::EquatorialRadius)
             .def_readonly_static("flattening", &Sun::Flattening)
 
-            // .def(self_ns::str(self_ns::self))
-            // .def(self_ns::repr(self_ns::self))
+            .def("__str__", &(shiftToString<Sun>))
+            .def("__repr__", &(shiftToString<Sun>))
 
             .def_static("default", &Sun::Default)
 
@@ -43,10 +43,6 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
     }
 
     {
-
-        // boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("ostk.physics.environment.objects.celestial_bodies.sun")))) ;
-
-        // boost::python::scope().attr("sun") = module ;
 
         // Create "sun" python submodule
         auto sun = aModule.def_submodule("sun") ;

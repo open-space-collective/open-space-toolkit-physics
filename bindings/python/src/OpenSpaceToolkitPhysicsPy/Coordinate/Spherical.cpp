@@ -12,7 +12,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Spherical           (          pybind11::module&                     aModule              )
+inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Spherical (        pybind11::module&           aModule                                     )
 {
 
     // Create "spherical" python submodule

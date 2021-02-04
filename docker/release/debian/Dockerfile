@@ -56,7 +56,7 @@ FROM python:3.8-slim as python-builder
 
 COPY --from=cpp-builder /app/build/bindings/python/dist /dist
 
-RUN pip install /dist/*.whl
+RUN pip install /dist/*38*.whl
 
 ################################################################################################################################################################
 

@@ -7,22 +7,18 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// #include <OpenSpaceToolkitPhysicsPy/Utilities/IterableConverter.hpp>
-
 #include <OpenSpaceToolkit/Physics/Units/Length.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Objects/Interval.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (OpenSpaceToolkitPhysicsPy_Units_Length_toString_overloads, ostk::physics::units::Length::toString, 0, 1)
-// BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (OpenSpaceToolkitPhysicsPy_Units_Length_Interval_toString_overloads, ostk::math::obj::Interval<ostk::physics::units::Length>::toString, 0, 1)
-
-inline void                     OpenSpaceToolkitPhysicsPy_Units_Length               (           pybind11::module&                     aModule                 )
+inline void                     OpenSpaceToolkitPhysicsPy_Units_Length      (           pybind11::module&           aModule                                     )
 {
 
     using namespace pybind11 ;
 
+    using ostk::core::types::Integer ;
     using ostk::core::types::Real ;
 
     using ostk::physics::units::Length ;
@@ -50,8 +46,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Units_Length          
         .def("__imul__", [](const Length &aLength, Real aReal) {return aLength * aReal;}, is_operator())
         .def("__itruediv__", [](const Length &aLength, Real aReal) {return aLength / aReal;}, is_operator())
 
-        // .def(self_ns::str(self_ns::self))
-
+        // .def("__str__", &(shiftToString<Length>))
         .def("__repr__", +[] (const Length& aLength) -> std::string { return aLength.toString() ; })
 
         .def("is_defined", &Length::isDefined)
@@ -60,7 +55,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Units_Length          
         .def("in_unit", &Length::in)
         .def("in_meters", &Length::inMeters)
         .def("in_kilometers", &Length::inKilometers)
-        // .def("to_string", &Length::toString, OpenSpaceToolkitPhysicsPy_Units_Length_toString_overloads())
+        .def("to_string", &Length::toString, "aPrecision"_a=Integer::Undefined())
 
         .def_static("undefined", &Length::Undefined)
         .def_static("millimeters", &Length::Millimeters)

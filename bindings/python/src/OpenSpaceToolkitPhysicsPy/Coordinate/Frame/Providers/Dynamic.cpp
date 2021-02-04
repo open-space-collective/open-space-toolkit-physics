@@ -13,9 +13,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// TB transitioned to something else soon
-
-inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers_Dynamic (           pybind11::module&                     aModule         )
+inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers_Dynamic (        pybind11::module& aModule                                 )
 {
 
     using namespace pybind11 ;
@@ -30,8 +28,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provi
     class_<Dynamic, Shared<Dynamic>, Provider>(aModule, "Dynamic")
 
         // Custom Constructor for Dynamic
-        .def
-        (
+        .def(
             "__init__",
             (
                 +[] (const pybind11::object& aGeneratorObject) -> Shared<Dynamic>

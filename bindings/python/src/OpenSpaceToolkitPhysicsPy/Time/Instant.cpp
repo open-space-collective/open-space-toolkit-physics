@@ -7,13 +7,11 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// #include <OpenSpaceToolkitPhysicsPy/Utilities/IterableConverter.hpp>
-
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Time_Instant               (           pybind11::module&                     aModule                 )
+inline void                     OpenSpaceToolkitPhysicsPy_Time_Instant      (           pybind11::module&           aModule                                     )
 {
 
     using namespace pybind11 ;
@@ -34,14 +32,14 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Instant          
         .def(self > self)
         .def(self >= self)
 
-        // .def(self + other<Duration>())
-        // .def(self - other<Duration>())
+        // Duration() is private in this context
+        // .def(self + Duration())
+        // .def(self - Duration())
         // .def(self - self)
-        // .def(self += other<Duration>())
-        // .def(self -= other<Duration>())
+        // .def(self += Duration())
+        // .def(self -= Duration())
 
-        // .def(self_ns::str(self_ns::self))
-
+        .def("__str__", &(shiftToString<Instant>))
         .def("__repr__", +[] (const Instant& anInstant) -> std::string { return anInstant.toString() ; })
 
         .def("is_defined", &Instant::isDefined)

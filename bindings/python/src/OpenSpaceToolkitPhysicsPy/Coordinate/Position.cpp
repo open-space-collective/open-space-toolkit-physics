@@ -11,13 +11,12 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (OpenSpaceToolkitPhysicsPy_Coordinate_Position_toString_overloads, ostk::physics::coord::Position::toString, 0, 1)
-
-inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Position        (            pybind11::module&                     aModule                )
+inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Position (         pybind11::module&           aModule                                     )
 {
 
     using namespace pybind11 ;
 
+    using ostk::core::types::Integer ;
     using ostk::core::types::Shared ;
 
     using ostk::math::obj::Vector3d ;
@@ -32,8 +31,8 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Position   
         .def(self == self)
         .def(self != self)
 
-        // .def(self_ns::str(self_ns::self))
-        // .def(self_ns::repr(self_ns::self))
+        .def("__str__", &(shiftToString<Position>))
+        .def("__repr__", &(shiftToString<Position>))
 
         .def("is_defined", &Position::isDefined)
         .def("is_near", &Position::isNear)
@@ -44,7 +43,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Position   
         .def("in_unit", &Position::inUnit)
         .def("in_meters", &Position::inMeters)
         .def("in_frame", &Position::inFrame)
-        // .def("to_string", &Position::toString, OpenSpaceToolkitPhysicsPy_Coordinate_Position_toString_overloads())
+        .def("to_string", &Position::toString, "aPrecision"_a=Integer::Undefined())
 
         .def_static("undefined", &Position::Undefined)
         .def_static("meters", &Position::Meters)

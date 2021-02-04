@@ -11,7 +11,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Earth (           pybind11::module&                     aModule  )
+inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Earth (        pybind11::module& aModule                          )
 {
 
     using namespace pybind11 ;
@@ -40,8 +40,8 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
             .def_readonly_static("C20", &Earth::C20)
             .def_readonly_static("J2", &Earth::J2)
 
-            // .def(self_ns::str(self_ns::self))
-            // .def(self_ns::repr(self_ns::self))
+            .def("__str__", &(shiftToString<Earth>))
+            .def("__repr__", &(shiftToString<Earth>))
 
             .def_static("default", &Earth::Default)
             .def_static("EGM2008", &Earth::EGM2008)
@@ -55,10 +55,6 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
 
     {
 
-        // boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("ostk.physics.environment.objects.celestial_bodies.earth")))) ;
-
-        // boost::python::scope().attr("earth") = module ;
-
         // Create "earth" python submodule
         auto earth = aModule.def_submodule("earth") ;
 
@@ -68,12 +64,6 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
     }
 
     {
-
-        // boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("ostk.physics.environment.objects.celestial_bodies.earth.models")))) ;
-
-        // boost::python::scope().attr("models") = module ;
-
-        // boost::python::scope scope = module ;
 
         // Create "models" python submodule
         auto models = aModule.def_submodule("models") ;

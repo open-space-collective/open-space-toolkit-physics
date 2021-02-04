@@ -16,7 +16,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Coordinate                     (          pybind11::module&                     aModule              )
+inline void                     OpenSpaceToolkitPhysicsPy_Coordinate        (           pybind11::module&           aModule                                     )
 {
 
     // Create "coordinate" python submodule

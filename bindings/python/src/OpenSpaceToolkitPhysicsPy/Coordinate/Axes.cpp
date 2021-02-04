@@ -11,7 +11,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Axes            (            pybind11::module&                     aModule                )
+inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Axes   (           pybind11::module&           aModule                                     )
 {
 
     using namespace pybind11 ;
@@ -30,8 +30,8 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Axes       
         .def(self == self)
         .def(self != self)
 
-        // .def(self_ns::str(self_ns::self))
-        // .def(self_ns::repr(self_ns::self))
+        .def("__str__", &(shiftToString<Axes>))
+        .def("__repr__", &(shiftToString<Axes>))
 
         .def("is_defined", &Axes::isDefined)
 

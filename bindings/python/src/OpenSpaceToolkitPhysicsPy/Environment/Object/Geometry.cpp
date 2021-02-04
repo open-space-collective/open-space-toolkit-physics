@@ -23,7 +23,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Environment_Object_Geometry (            pybind11::module&                     aModule               )
+inline void                     OpenSpaceToolkitPhysicsPy_Environment_Object_Geometry (        pybind11::module&    aModule                                     )
 {
 
     using namespace pybind11 ;
@@ -55,8 +55,8 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Object_Geo
         .def(self == self)
         .def(self != self)
 
-        // .def(self_ns::str(self_ns::self))
-        // .def(self_ns::repr(self_ns::self))
+        .def("__str__", &(shiftToString<Geometry>))
+        .def("__repr__", &(shiftToString<Geometry>))
 
         .def("is_defined", &Geometry::isDefined)
         .def("intersects", &Geometry::intersects)

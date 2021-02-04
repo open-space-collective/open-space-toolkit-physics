@@ -15,7 +15,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Units                           (          pybind11::module&                     aModule             )
+inline void                     OpenSpaceToolkitPhysicsPy_Units             (           pybind11::module&           aModule                                     )
 {
 
     // Create "units" python submodule

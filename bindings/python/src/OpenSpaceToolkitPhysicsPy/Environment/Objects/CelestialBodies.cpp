@@ -13,7 +13,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies   (          pybind11::module&                     aModule       )
+inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies (        pybind11::module& aModule                                )
 {
 
     // Create "celestial_bodies" python submodule

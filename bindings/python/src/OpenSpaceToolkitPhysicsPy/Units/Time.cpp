@@ -11,13 +11,12 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (OpenSpaceToolkitPhysicsPy_Units_Time_toString_overloads, ostk::physics::units::Time::toString, 0, 1)
-
-inline void                     OpenSpaceToolkitPhysicsPy_Units_Time               (            pybind11::module&                     aModule                  )
+inline void                     OpenSpaceToolkitPhysicsPy_Units_Time        (           pybind11::module&           aModule                                     )
 {
 
     using namespace pybind11 ;
 
+    using ostk::core::types::Integer ;
     using ostk::core::types::Real ;
 
     using ostk::physics::units::Time ;
@@ -49,13 +48,12 @@ inline void                     OpenSpaceToolkitPhysicsPy_Units_Time            
         // .def(self += self)
         // .def(self -= self)
 
-        // .def(self_ns::str(self_ns::self))
-
+        // .def("__str__", &(shiftToString<Time>))
         .def("__repr__", +[] (const Time& aTime) -> std::string { return aTime.toString() ; })
 
         .def("is_defined", &Time::isDefined)
 
-        // .def("to_string", &Time::toString, OpenSpaceToolkitPhysicsPy_Units_Time_toString_overloads())
+        .def("to_string", &Time::toString, "aPrecision"_a=Integer::Undefined())
 
         .def_static("undefined", &Time::Undefined)
         .def_static("string_from_unit", &Time::StringFromUnit)

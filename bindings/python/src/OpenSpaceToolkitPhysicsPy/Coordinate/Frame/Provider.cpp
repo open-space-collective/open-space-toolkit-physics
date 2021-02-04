@@ -11,7 +11,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider (            pybind11::module&                     aModule                 )
+inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider (        pybind11::module&      aModule                                     )
 {
 
     using namespace pybind11 ;
@@ -20,7 +20,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provi
 
     using ostk::physics::coord::frame::Provider ;
 
-    class_<Provider>(aModule, "Provider")
+    class_<Provider, Shared<Provider>>(aModule, "Provider")
 
         .def("is_defined", &Provider::isDefined)
 
@@ -30,7 +30,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provi
 
     // register_ptr_to_python<Shared<const Provider>>() ;
 
-    implicitly_convertible<Shared<Provider>, Shared<const Provider>>() ;
+    // implicitly_convertible<Shared<Provider>, Shared<const Provider>>() ;
 
 }
 

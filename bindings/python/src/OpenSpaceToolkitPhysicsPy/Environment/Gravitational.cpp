@@ -12,7 +12,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Environment_Gravitational      (          pybind11::module&                     aModule              )
+inline void                     OpenSpaceToolkitPhysicsPy_Environment_Gravitational (        pybind11::module&      aModule                                     )
 {
 
     // Create "gravitational" python submodule

@@ -17,7 +17,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Time                           (          pybind11::module&                     aModule              )
+inline void                     OpenSpaceToolkitPhysicsPy_Time              (   pybind11::module&                   aModule                                     )
 {
 
     // Create "time" python submodule
