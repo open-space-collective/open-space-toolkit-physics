@@ -108,6 +108,7 @@ def test_date_time_modified_julian_date ():
 
 ################################################################################################################################################################
 
+@pytest.mark.skip
 def test_date_time_parse ():
 
     assert DateTime.parse('2018-01-01 00:00:00') is not None

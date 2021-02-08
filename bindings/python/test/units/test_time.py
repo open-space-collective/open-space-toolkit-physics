@@ -47,8 +47,8 @@ def test_units_time_unit ():
     ]
 
     assert enum_members is not None
-    assert list(enum_members.keys()) == list_keys()
-    assert list(enum_members.values()) == list_values()
+    assert list(enum_members.keys()) == list_keys
+    assert list(enum_members.values()) == list_values
 
 ################################################################################################################################################################
 

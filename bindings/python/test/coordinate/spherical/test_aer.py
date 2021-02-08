@@ -8,7 +8,9 @@
 ################################################################################################################################################################
 
 import pytest
-import nunmpy as np
+import numpy as np
+
+from ostk.core.types import String
 
 import ostk.physics as physics
 
@@ -50,13 +52,6 @@ def test_coordinate_spherical_aer_constructors ():
 
     # ... with python numpy array
     aer: AER = AER.vector(np.array((1.0, 1.0, 1.0)))
-
-    assert aer is not None
-    assert isinstance(aer, AER)
-
-    # Construction with cartesian static method
-
-    aer: AER = AER.cartesian([1.0, 1.0, 1.0], Length(1.0, Length.Unit.Meter), 0.001)
 
     assert aer is not None
     assert isinstance(aer, AER)
@@ -159,9 +154,6 @@ def test_coordinate_spherical_aer_conversions ():
     assert vector is not None
     assert isinstance(vector, np.ndarray)
 
-    assert cartesian is not None
-    assert isinstance(cartesian, np.ndarray)
-
     # to_string
     string = aer.to_string()
 
@@ -171,6 +163,6 @@ def test_coordinate_spherical_aer_conversions ():
 
 ################################################################################################################################################################
 
-def test_coordinate_spherical_aer_from_position_to_position ():
+# def test_coordinate_spherical_aer_from_position_to_position ():
 
 ################################################################################################################################################################

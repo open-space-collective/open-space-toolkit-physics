@@ -81,6 +81,7 @@ def test_duration_between ():
 
 ################################################################################################################################################################
 
+@pytest.mark.skip
 def test_duration_parse ():
 
     assert Duration.parse('02:03.456.000.000') is not None
@@ -91,8 +92,8 @@ def test_duration_parse ():
 
 def test_duration_operators ():
 
-    duration_A = Duration.seconds(123)
-    duration_B = Duration.seconds(456)
+    duration_A = Duration.seconds(123.0)
+    duration_B = Duration.seconds(456.0)
 
     assert (duration_A == duration_B) is not None
     assert (duration_A != duration_B) is not None
@@ -118,146 +119,146 @@ def test_duration_operators ():
 
 def test_duration_is_defined ():
 
-    assert Duration.seconds(123).is_defined() is not None
+    assert Duration.seconds(123.0).is_defined() is not None
 
 ################################################################################################################################################################
 
 def test_duration_is_zero ():
 
-    assert Duration.seconds(123).is_zero() is not None
+    assert Duration.seconds(123.0).is_zero() is not None
 
 ################################################################################################################################################################
 
 def test_duration_is_positive ():
 
-    assert Duration.seconds(123).is_positive() is not None
+    assert Duration.seconds(123.0).is_positive() is not None
 
 ################################################################################################################################################################
 
 def test_duration_is_strictly_positive ():
 
-    assert Duration.seconds(123).is_strictly_positive() is not None
+    assert Duration.seconds(123.0).is_strictly_positive() is not None
 
 ################################################################################################################################################################
 
 def test_duration_is_near ():
 
-    assert Duration.seconds(123).is_near(Duration.seconds(123), Duration.zero()) is not None
+    assert Duration.seconds(123.0).is_near(Duration.seconds(123.0), Duration.zero()) is not None
 
 ################################################################################################################################################################
 
 def test_duration_get_nanoseconds ():
 
-    assert Duration.seconds(123).get_nanoseconds() is not None
+    assert Duration.seconds(123.0).get_nanoseconds() is not None
 
 ################################################################################################################################################################
 
 def test_duration_get_microseconds ():
 
-    assert Duration.seconds(123).get_microseconds() is not None
+    assert Duration.seconds(123.0).get_microseconds() is not None
 
 ################################################################################################################################################################
 
 def test_duration_get_milliseconds ():
 
-    assert Duration.seconds(123).get_milliseconds() is not None
+    assert Duration.seconds(123.0).get_milliseconds() is not None
 
 ################################################################################################################################################################
 
 def test_duration_get_seconds ():
 
-    assert Duration.seconds(123).get_seconds() is not None
+    assert Duration.seconds(123.0).get_seconds() is not None
 
 ################################################################################################################################################################
 
 def test_duration_get_minutes ():
 
-    assert Duration.seconds(123).get_minutes() is not None
+    assert Duration.seconds(123.0).get_minutes() is not None
 
 ################################################################################################################################################################
 
 def test_duration_get_hours ():
 
-    assert Duration.seconds(123).get_hours() is not None
+    assert Duration.seconds(123.0).get_hours() is not None
 
 ################################################################################################################################################################
 
 def test_duration_get_days ():
 
-    assert Duration.seconds(123).get_days() is not None
+    assert Duration.seconds(123.0).get_days() is not None
 
 ################################################################################################################################################################
 
 def test_duration_get_weeks ():
 
-    assert Duration.seconds(123).get_weeks() is not None
+    assert Duration.seconds(123.0).get_weeks() is not None
 
 ################################################################################################################################################################
 
 def test_duration_in_nanoseconds ():
 
-    assert Duration.seconds(123).in_nanoseconds() is not None
+    assert Duration.seconds(123.0).in_nanoseconds() is not None
 
 ################################################################################################################################################################
 
 def test_duration_in_microseconds ():
 
-    assert Duration.seconds(123).in_microseconds() is not None
+    assert Duration.seconds(123.0).in_microseconds() is not None
 
 ################################################################################################################################################################
 
 def test_duration_in_milliseconds ():
 
-    assert Duration.seconds(123).in_milliseconds() is not None
+    assert Duration.seconds(123.0).in_milliseconds() is not None
 
 ################################################################################################################################################################
 
 def test_duration_in_seconds ():
 
-    assert Duration.seconds(123).in_seconds() is not None
+    assert Duration.seconds(123.0).in_seconds() is not None
 
 ################################################################################################################################################################
 
 def test_duration_in_minutes ():
 
-    assert Duration.seconds(123).in_minutes() is not None
+    assert Duration.seconds(123.0).in_minutes() is not None
 
 ################################################################################################################################################################
 
 def test_duration_in_hours ():
 
-    assert Duration.seconds(123).in_hours() is not None
+    assert Duration.seconds(123.0).in_hours() is not None
 
 ################################################################################################################################################################
 
 def test_duration_in_days ():
 
-    assert Duration.seconds(123).in_days() is not None
+    assert Duration.seconds(123.0).in_days() is not None
 
 ################################################################################################################################################################
 
 def test_duration_in_weeks ():
 
-    assert Duration.seconds(123).in_weeks() is not None
+    assert Duration.seconds(123.0).in_weeks() is not None
 
 ################################################################################################################################################################
 
 def test_duration_in_unit ():
 
-    assert Duration.seconds(123).in_unit(Time.Unit.Second) is not None
+    assert Duration.seconds(123.0).in_unit(Time.Unit.Second) is not None
 
 ################################################################################################################################################################
 
 def test_duration_get_absolute ():
 
-    assert Duration.seconds(123).get_absolute() is not None
+    assert Duration.seconds(123.0).get_absolute() is not None
 
 ################################################################################################################################################################
 
 def test_duration_to_string ():
 
-    assert Duration.seconds(123).to_string() is not None
-    assert Duration.seconds(123).to_string(Duration.Format.Standard)
-    assert Duration.seconds(123).to_string(Duration.Format.ISO8601)
+    assert Duration.seconds(123.0).to_string() is not None
+    assert Duration.seconds(123.0).to_string(Duration.Format.Standard)
+    assert Duration.seconds(123.0).to_string(Duration.Format.ISO8601)
 
 ################################################################################################################################################################

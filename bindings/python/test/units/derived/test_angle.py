@@ -9,8 +9,8 @@
 
 import pytest
 
-from ostk.mathematics.geometry import AngleMathematics
-from ostk.physics.units.derived import AnglePhysics
+from ostk.mathematics.geometry import Angle as AngleMathematics
+from ostk.physics.units import Angle as AnglePhysics
 
 ################################################################################################################################################################
 

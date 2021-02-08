@@ -75,6 +75,7 @@ def test_environment_accessObjects ():
 
 ################################################################################################################################################################
 
+@pytest.mark.skip
 def test_environment_accessObjectWithName ():
 
     environment = Environment.default()
@@ -83,6 +84,7 @@ def test_environment_accessObjectWithName ():
 
 ################################################################################################################################################################
 
+@pytest.mark.skip
 def test_environment_accessCelestialObjectWithName ():
 
     environment = Environment.default()
@@ -99,6 +101,7 @@ def test_environment_getInstant ():
 
 ################################################################################################################################################################
 
+@pytest.mark.skip
 def test_environment_getObjectNames ():
 
     environment = Environment.default()

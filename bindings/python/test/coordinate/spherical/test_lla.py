@@ -8,7 +8,9 @@
 ################################################################################################################################################################
 
 import pytest
-import nunmpy as np
+import numpy as np
+
+from ostk.core.types import String
 
 import ostk.physics as physics
 

@@ -8,12 +8,15 @@
 ################################################################################################################################################################
 
 import pytest
-import nunmpy as np
+import numpy as np
 
 import ostk.physics as physics
 
 ################################################################################################################################################################
 
+Scale = physics.time.Scale
+DateTime = physics.time.DateTime
+Instant = physics.time.Instant
 Frame = physics.coordinate.Frame
 Axes = physics.coordinate.Axes
 
@@ -109,6 +112,7 @@ def test_coordinate_axes_get_frame ():
 
 ################################################################################################################################################################
 
+@pytest.mark.skip
 def test_coordinate_axes_in_frame ():
 
     frame: Frame = Frame.GCRF()
@@ -118,12 +122,14 @@ def test_coordinate_axes_in_frame ():
 
     axes: Axes = Axes(vector_1, vector_2, vector_3, frame)
 
-    assert axes.in_frame(Frame.GCRF) is not None
-    assert isinstance(axes.in_frame(Frame.GCRF), Axes)
-    assert axes.in_frame(Frame.GCRF) == axes
+    instant: Instant = Instant.date_time(DateTime(2020, 1, 1, 0, 0, 0), Scale.UTC)
 
-    assert axes.in_frame(Frame.TEME) is not None
-    assert isinstance(axes.in_frame(Frame.TEME), Axes)
-    assert axes.in_frame(Frame.TEME) != axes
+    assert axes.in_frame(Frame.GCRF(), instant) is not None
+    assert isinstance(axes.in_frame(Frame.GCRF(), instant), Axes)
+    assert axes.in_frame(Frame.GCRF(), instant) == axes
+
+    assert axes.in_frame(Frame.TEME(), instant) is not None
+    assert isinstance(axes.in_frame(Frame.TEME(), instant), Axes)
+    assert axes.in_frame(Frame.TEME(), instant) != axes
 
 ################################################################################################################################################################
