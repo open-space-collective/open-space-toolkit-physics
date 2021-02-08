@@ -11,16 +11,18 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Dipole ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Dipole (        pybind11::module&    aModule                                     )
 {
 
-    using namespace boost::python ;
+    using namespace pybind11 ;
 
     using ostk::math::obj::Vector3d ;
 
     using ostk::physics::environment::magnetic::Dipole ;
 
-    scope in_Dipole = class_<Dipole>("Dipole", init<const Vector3d&>())
+    class_<Dipole>(aModule, "Dipole")
+
+        .def(init<const Vector3d&>())
 
         .def("get_field_value_at", &Dipole::getFieldValueAt)
 

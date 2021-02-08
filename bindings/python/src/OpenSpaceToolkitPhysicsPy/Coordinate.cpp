@@ -16,21 +16,22 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Coordinate                      ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Coordinate        (           pybind11::module&           aModule                                     )
 {
 
-    boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("ostk.physics.coordinate")))) ;
+    // Create "coordinate" python submodule
+    auto coordinate = aModule.def_submodule("coordinate") ;
 
-    boost::python::scope().attr("coordinate") = module ;
+    // Add __path__ attribute for "coordinate" submodule
+    coordinate.attr("__path__") = "ostk.physics.coordinate" ;
 
-    boost::python::scope scope = module ;
-
-    OpenSpaceToolkitPhysicsPy_Coordinate_Spherical() ;
-    OpenSpaceToolkitPhysicsPy_Coordinate_Position() ;
-    OpenSpaceToolkitPhysicsPy_Coordinate_Velocity() ;
-    OpenSpaceToolkitPhysicsPy_Coordinate_Frame() ;
-    OpenSpaceToolkitPhysicsPy_Coordinate_Transform() ;
-    OpenSpaceToolkitPhysicsPy_Coordinate_Axes() ;
+    // Add objects to python "coordinate" submodules
+    OpenSpaceToolkitPhysicsPy_Coordinate_Spherical(coordinate) ;
+    OpenSpaceToolkitPhysicsPy_Coordinate_Position(coordinate) ;
+    OpenSpaceToolkitPhysicsPy_Coordinate_Velocity(coordinate) ;
+    OpenSpaceToolkitPhysicsPy_Coordinate_Frame(coordinate) ;
+    OpenSpaceToolkitPhysicsPy_Coordinate_Transform(coordinate) ;
+    OpenSpaceToolkitPhysicsPy_Coordinate_Axes(coordinate) ; // Cannot be binded without Frame.cpp (class forward declared)
 
 }
 

@@ -12,17 +12,18 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Environment_Magnetic       ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Environment_Magnetic (        pybind11::module&           aModule                                     )
 {
 
-    boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("ostk.physics.environment.magnetic")))) ;
+    // Create "magnetic" python submodule
+    auto magnetic = aModule.def_submodule("magnetic") ;
 
-    boost::python::scope().attr("magnetic") = module ;
+    // Add __path__ attribute for "magnetic" submodule
+    magnetic.attr("__path__") = "ostk.physics.environment.magnetic" ;
 
-    boost::python::scope scope = module ;
-
-    OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Dipole() ;
-    OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth() ;
+    // Add objects to python "magnetic" submodules
+    OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Dipole(magnetic) ;
+    OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth(magnetic) ;
 
 }
 

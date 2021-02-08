@@ -11,10 +11,10 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Axes            ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Axes   (           pybind11::module&           aModule                                     )
 {
 
-    using namespace boost::python ;
+    using namespace pybind11 ;
 
     using ostk::core::types::Shared ;
 
@@ -23,13 +23,15 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Axes       
     using ostk::physics::coord::Axes ;
     using ostk::physics::coord::Frame ;
 
-    scope in_Axes = class_<Axes>("Axes", init<const Vector3d&, const Vector3d&, const Vector3d&, const Shared<const Frame>&>())
+    class_<Axes>(aModule, "Axes")
+
+        .def(init<const Vector3d&, const Vector3d&, const Vector3d&, const Shared<const Frame>&>())
 
         .def(self == self)
         .def(self != self)
 
-        .def(self_ns::str(self_ns::self))
-        .def(self_ns::repr(self_ns::self))
+        .def("__str__", &(shiftToString<Axes>))
+        .def("__repr__", &(shiftToString<Axes>))
 
         .def("is_defined", &Axes::isDefined)
 
@@ -39,7 +41,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Axes       
         .def("get_frame", &Axes::getFrame)
         .def("in_frame", &Axes::inFrame)
 
-        .def("undefined", &Axes::Undefined).staticmethod("undefined")
+        .def_static("undefined", &Axes::Undefined)
 
     ;
 

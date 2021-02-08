@@ -11,10 +11,10 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Sun ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Sun (        pybind11::module& aModule                            )
 {
 
-    using namespace boost::python ;
+    using namespace pybind11 ;
 
     using ostk::core::types::Shared ;
 
@@ -25,16 +25,18 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
 
     {
 
-        scope in_Sun = class_<Sun, bases<Celestial>>("Sun", init<const Shared<Ephemeris>&, const Instant&>())
+        class_<Sun, Celestial>(aModule, "Sun")
 
-            .def_readonly("gravitational_parameter", &Sun::GravitationalParameter)
-            .def_readonly("equatorial_radius", &Sun::EquatorialRadius)
-            .def_readonly("flattening", &Sun::Flattening)
+            .def(init<const Shared<Ephemeris>&, const Instant&>())
 
-            .def(self_ns::str(self_ns::self))
-            .def(self_ns::repr(self_ns::self))
+            .def_readonly_static("gravitational_parameter", &Sun::GravitationalParameter)
+            .def_readonly_static("equatorial_radius", &Sun::EquatorialRadius)
+            .def_readonly_static("flattening", &Sun::Flattening)
 
-            .def("default", &Sun::Default).staticmethod("default")
+            .def("__str__", &(shiftToString<Sun>))
+            .def("__repr__", &(shiftToString<Sun>))
+
+            .def_static("default", &Sun::Default)
 
         ;
 
@@ -42,9 +44,11 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
 
     {
 
-        boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("ostk.physics.environment.objects.celestial_bodies.sun")))) ;
+        // Create "sun" python submodule
+        auto sun = aModule.def_submodule("sun") ;
 
-        boost::python::scope().attr("sun") = module ;
+        // Add __path__ attribute for "moon" submodule
+        sun.attr("__path__") = "ostk.physics.environment.objects.celestial_bodies.sun" ;
 
     }
 

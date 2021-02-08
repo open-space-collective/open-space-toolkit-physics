@@ -12,18 +12,18 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Environment_Gravitational  ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Environment_Gravitational (        pybind11::module&      aModule                                     )
 {
 
-    boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("ostk.physics.environment.gravitational")))) ;
+    // Create "gravitational" python submodule
+    auto gravitational = aModule.def_submodule("gravitational") ;
 
-    boost::python::scope().attr("gravitational") = module ;
+    // Add __path__ attribute for "gravitational" submodule
+    gravitational.attr("__path__") = "ostk.physics.environment.gravitational" ;
 
-    boost::python::scope scope = module ;
-
-    OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Spherical() ;
-    OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth() ;
-
+    // Add objects to python "gravitational" submodules
+    OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Spherical(gravitational) ;
+    OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(gravitational) ;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

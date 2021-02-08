@@ -12,10 +12,10 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth (        pybind11::module&     aModule                                     )
 {
 
-    using namespace boost::python ;
+    using namespace pybind11 ;
 
     using ostk::core::fs::Directory ;
 
@@ -23,7 +23,9 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Magnetic_E
     using ostk::physics::environment::magnetic::Earth ;
     using ostk::physics::environment::magnetic::earth::Manager ;
 
-    scope in_Earth = class_<Earth>("Earth", init<const Earth::Type&, const Directory&>())
+    class_<Earth> earth_magnetic_class(aModule, "Earth") ;
+
+    earth_magnetic_class.def(init<const Earth::Type&, const Directory&>())
 
         .def(init<const Earth::Type&>())
 
@@ -32,7 +34,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Magnetic_E
 
     ;
 
-    enum_<Earth::Type>("Type")
+    enum_<Earth::Type>(earth_magnetic_class, "EarthMagneticType")
 
         .value("Dipole", Earth::Type::Dipole)
         .value("EMM2010", Earth::Type::EMM2010)
@@ -45,7 +47,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Magnetic_E
 
     ;
 
-    scope in_Manager = class_<Manager, boost::noncopyable>("Manager", no_init)
+    class_<Manager>(aModule, "Manager")
 
         .def("is_enabled", &Manager::isEnabled)
         .def("has_data_file_for_type", &Manager::hasDataFileForType)
@@ -58,9 +60,10 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Magnetic_E
         .def("enable", &Manager::enable)
         .def("disable", &Manager::disable)
 
-        .def("get", &Manager::Get, return_value_policy<reference_existing_object>()).staticmethod("get")
-        .def("default_local_repository", &Manager::DefaultLocalRepository).staticmethod("default_local_repository")
-        .def("default_remote_url", &Manager::DefaultRemoteUrl).staticmethod("default_remote_url")
+        // .def("get", &Manager::Get, return_value_policy<reference_existing_object>()).staticmethod("get")
+        .def_static("get", &Manager::Get, return_value_policy::reference)
+        .def_static("default_local_repository", &Manager::DefaultLocalRepository)
+        .def_static("default_remote_url", &Manager::DefaultRemoteUrl)
 
     ;
 

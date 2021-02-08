@@ -7,27 +7,25 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <OpenSpaceToolkitPhysicsPy/Utilities/IterableConverter.hpp>
-
 #include <OpenSpaceToolkit/Physics/Units/ElectricCurrent.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Objects/Interval.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (OpenSpaceToolkitPhysicsPy_Units_ElectricCurrent_toString_overloads, ostk::physics::units::ElectricCurrent::toString, 0, 1)
-BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS (OpenSpaceToolkitPhysicsPy_Units_ElectricCurrent_Interval_toString_overloads, ostk::math::obj::Interval<ostk::physics::units::ElectricCurrent>::toString, 0, 1)
-
-inline void                     OpenSpaceToolkitPhysicsPy_Units_ElectricCurrent      ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Units_ElectricCurrent (        pybind11::module&          aModule                                     )
 {
 
-    using namespace boost::python ;
+    using namespace pybind11 ;
 
+    using ostk::core::types::Integer ;
     using ostk::core::types::Real ;
 
     using ostk::physics::units::ElectricCurrent ;
 
-    scope in_ElectricCurrent = class_<ElectricCurrent>("ElectricCurrent", init<Real, ElectricCurrent::Unit>())
+    class_<ElectricCurrent> elec_current(aModule, "ElectricCurrent") ;
+
+    elec_current.def(init<Real, ElectricCurrent::Unit>())
 
         .def(self == self)
         .def(self != self)
@@ -40,17 +38,15 @@ inline void                     OpenSpaceToolkitPhysicsPy_Units_ElectricCurrent 
         // .def(self + self)
         // .def(self - self)
 
-        // .def(self * other<Real>())
-        // .def(self / other<Real>())
-
         // .def(self += self)
         // .def(self -= self)
 
-        // .def(self *= other<Real>())
-        // .def(self /= other<Real>())
+        // .def("__mul__", [](const ElectricCurrent &anElectricCurrent, Real aReal) {return anElectricCurrent * aReal;}, is_operator())
+        // .def("__truediv__", [](const ElectricCurrent &anElectricCurrent, Real aReal) {return anElectricCurrent / aReal;}, is_operator())
+        // .def("__imul__", [](const ElectricCurrent &anElectricCurrent, Real aReal) {return anElectricCurrent * aReal;}, is_operator())
+        // .def("__itruediv__", [](const ElectricCurrent &anElectricCurrent, Real aReal) {return anElectricCurrent / aReal;}, is_operator())
 
-        // .def(self_ns::str(self_ns::self))
-
+        // .def("__str__", &(shiftToString<ElectricCurrent>))
         .def("__repr__", +[] (const ElectricCurrent& aElectricCurrent) -> std::string { return aElectricCurrent.toString() ; })
 
         .def("is_defined", &ElectricCurrent::isDefined)
@@ -58,17 +54,17 @@ inline void                     OpenSpaceToolkitPhysicsPy_Units_ElectricCurrent 
         .def("get_unit", &ElectricCurrent::getUnit)
         .def("in_unit", &ElectricCurrent::in)
         .def("in_amperes", &ElectricCurrent::inAmperes)
-        .def("to_string", &ElectricCurrent::toString, OpenSpaceToolkitPhysicsPy_Units_ElectricCurrent_toString_overloads())
+        .def("to_string", &ElectricCurrent::toString, "aPrecision"_a=Integer::Undefined())
 
-        .def("undefined", &ElectricCurrent::Undefined).staticmethod("undefined")
-        .def("amperes", &ElectricCurrent::Amperes).staticmethod("amperes")
-        // .def("parse", &ElectricCurrent::Parse).staticmethod("parse")
-        .def("string_from_unit", &ElectricCurrent::StringFromUnit).staticmethod("string_from_unit")
-        .def("symbol_from_unit", &ElectricCurrent::SymbolFromUnit).staticmethod("symbol_from_unit")
+        .def_static("undefined", &ElectricCurrent::Undefined)
+        .def_static("amperes", &ElectricCurrent::Amperes)
+        // .def_static("parse", &ElectricCurrent::Parse)
+        .def_static("string_from_unit", &ElectricCurrent::StringFromUnit)
+        .def_static("symbol_from_unit", &ElectricCurrent::SymbolFromUnit)
 
     ;
 
-    enum_<ElectricCurrent::Unit>("Unit")
+    enum_<ElectricCurrent::Unit> (elec_current, "Unit")
 
         .value("Undefined", ElectricCurrent::Unit::Undefined)
         .value("Ampere", ElectricCurrent::Unit::Ampere)

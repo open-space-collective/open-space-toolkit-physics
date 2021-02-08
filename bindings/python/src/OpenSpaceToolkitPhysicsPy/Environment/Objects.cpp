@@ -12,17 +12,18 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects        ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects (         pybind11::module&           aModule                                     )
 {
 
-    boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("ostk.physics.environment.objects")))) ;
+    // Create "objects" python submodule
+    auto objects = aModule.def_submodule("objects") ;
 
-    boost::python::scope().attr("objects") = module ;
+    // Add __path__ attribute for "objects" submodule
+    objects.attr("__path__") = "ostk.physics.environment.objects" ;
 
-    boost::python::scope scope = module ;
-
-    OpenSpaceToolkitPhysicsPy_Environment_Objects_Celestial() ;
-    OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies() ;
+    // Add objects to python "objects" submodules
+    OpenSpaceToolkitPhysicsPy_Environment_Objects_Celestial(objects) ;
+    OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies(objects) ;
 
 }
 

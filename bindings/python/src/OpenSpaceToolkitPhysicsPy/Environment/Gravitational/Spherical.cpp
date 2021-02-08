@@ -11,15 +11,17 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Spherical ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Spherical (        pybind11::module& aModule                                )
 {
 
-    using namespace boost::python ;
+    using namespace pybind11 ;
 
     using ostk::physics::units::Derived ;
     using ostk::physics::environment::gravitational::Spherical ;
 
-    scope in_Spherical = class_<Spherical>("Spherical", init<const Derived&>())
+    class_<Spherical>(aModule, "Spherical")
+
+        .def(init<const Derived&>())
 
         .def("get_field_value_at", &Spherical::getFieldValueAt)
 

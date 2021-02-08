@@ -11,23 +11,25 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_AER   ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_AER (         pybind11::module&      aModule                                     )
 {
 
-    using namespace boost::python ;
+    using namespace pybind11 ;
 
     using ostk::physics::units::Length ;
     using ostk::physics::units::Angle ;
     using ostk::physics::coord::Position ;
     using ostk::physics::coord::spherical::AER ;
 
-    scope in_AER = class_<AER>("AER", init<const Angle&, const Angle&, const Length&>())
+    class_<AER>(aModule, "AER")
+
+        .def(init<const Angle&, const Angle&, const Length&>())
 
         .def(self == self)
         .def(self != self)
 
-        .def(self_ns::str(self_ns::self))
-        .def(self_ns::repr(self_ns::self))
+        .def("__str__", &(shiftToString<AER>))
+        .def("__repr__", &(shiftToString<AER>))
 
         .def("is_defined", &AER::isDefined)
 
@@ -37,8 +39,8 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_A
         .def("to_vector", &AER::toVector)
         .def("to_string", &AER::toString)
 
-        .def("undefined", &AER::Undefined).staticmethod("undefined")
-        .def("vector", &AER::Vector).staticmethod("vector")
+        .def_static("undefined", &AER::Undefined)
+        .def_static("vector", &AER::Vector)
         .def("from_position_to_position", +[] (const Position& aFromPosition, const Position& aToPosition) -> AER { return AER::FromPositionToPosition(aFromPosition, aToPosition) ; })
         .def("from_position_to_position", +[] (const Position& aFromPosition, const Position& aToPosition, const bool isZNegative) -> AER { return AER::FromPositionToPosition(aFromPosition, aToPosition, isZNegative) ; })
 

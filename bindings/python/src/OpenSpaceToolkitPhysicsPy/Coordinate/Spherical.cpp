@@ -12,17 +12,18 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Spherical       ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Spherical (        pybind11::module&           aModule                                     )
 {
 
-    boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("ostk.physics.coordinate.spherical")))) ;
+    // Create "spherical" python submodule
+    auto spherical = aModule.def_submodule("spherical") ;
 
-    boost::python::scope().attr("spherical") = module ;
+    // Add __path__ attribute for "spherical" submodule
+    spherical.attr("__path__") = "ostk.physics.coordinate.spherical" ;
 
-    boost::python::scope scope = module ;
-
-    OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA() ;
-    OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_AER() ;
+    // Add objects to python "spherical" submodules
+    OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(spherical) ;
+    OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_AER(spherical) ;
 
 }
 

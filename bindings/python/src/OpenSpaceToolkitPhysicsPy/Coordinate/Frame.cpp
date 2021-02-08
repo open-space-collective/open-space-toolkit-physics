@@ -14,10 +14,10 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame           ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame  (           pybind11::module&           aModule                                     )
 {
 
-    using namespace boost::python ;
+    using namespace pybind11 ;
 
     using ostk::core::types::Shared ;
     using ostk::core::types::String ;
@@ -28,13 +28,13 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame      
     // scope in_Frame = class_<Frame, Shared<Frame>>("Frame", init<String&, bool, Shared<const Frame>&, Shared<Provider>&>())
     // scope in_Frame = class_<Frame, Shared<Frame>, boost::noncopyable>("Frame", init<String&, bool, Shared<const Frame>&, Shared<Provider>&>())
     // scope in_Frame = class_<Frame>("Frame", init<String&, bool, Shared<const Frame>&, Shared<const Provider>&>())
-    class_<Frame, boost::noncopyable>("Frame", no_init)
+    class_<Frame, Shared<Frame>>(aModule, "Frame")  // Added Shared<Frame> as Parent
 
         .def(self == self)
         .def(self != self)
 
-        .def(self_ns::str(self_ns::self))
-        .def(self_ns::repr(self_ns::self))
+        .def("__str__", &(shiftToString<Frame>))
+        .def("__repr__", &(shiftToString<Frame>))
 
         .def("is_defined", &Frame::isDefined)
         .def("is_quasi_inertial", &Frame::isQuasiInertial)
@@ -49,35 +49,35 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame      
         .def("get_axes_in", &Frame::getAxesIn)
         .def("get_transform_to", &Frame::getTransformTo)
 
-        .def("undefined", &Frame::Undefined).staticmethod("undefined")
-        // .def("ICRF", &Frame::ICRF).staticmethod("ICRF")
-        .def("GCRF", &Frame::GCRF).staticmethod("GCRF")
-        // .def("EME2000", &Frame::EME2000).staticmethod("EME2000")
-        .def("TEME", &Frame::TEME).staticmethod("TEME")
-        .def("TEME_of_epoch", &Frame::TEMEOfEpoch).staticmethod("TEME_of_epoch")
-        .def("CIRF", &Frame::CIRF).staticmethod("CIRF")
-        .def("TIRF", &Frame::TIRF).staticmethod("TIRF")
-        .def("ITRF", &Frame::ITRF).staticmethod("ITRF")
-        .def("with_name", &Frame::WithName).staticmethod("with_name")
-        .def("exists", &Frame::Exists).staticmethod("exists")
-        .def("construct", &Frame::Construct).staticmethod("construct")
-        .def("destruct", &Frame::Destruct).staticmethod("destruct")
+        .def_static("undefined", &Frame::Undefined)
+        // .def_static("ICRF", &Frame::ICRF)
+        .def_static("GCRF", &Frame::GCRF)
+        // .def_static("EME2000", &Frame::EME2000)
+        .def_static("TEME", &Frame::TEME)
+        .def_static("TEME_of_epoch", &Frame::TEMEOfEpoch)
+        .def_static("CIRF", &Frame::CIRF)
+        .def_static("TIRF", &Frame::TIRF)
+        .def_static("ITRF", &Frame::ITRF)
+        .def_static("with_name", &Frame::WithName)
+        .def_static("exists", &Frame::Exists)
+        .def_static("construct", &Frame::Construct)
+        .def_static("destruct", &Frame::Destruct)
 
     ;
 
     // register_ptr_to_python<Shared<Frame>>() ;
-    register_ptr_to_python<Shared<const Frame>>() ;
+    // register_ptr_to_python<Shared<const Frame>>() ;
 
-    implicitly_convertible<Shared<Frame>, Shared<const Frame>>() ;
+    // implicitly_convertible<Shared<Frame>, Shared<const Frame>>() ;
 
-    boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("ostk.physics.coordinate")))) ;
+    // Create "frame" python submodule
+    auto frame = aModule.def_submodule("frame") ;
 
-    boost::python::scope().attr("coordinate") = module ;
+    // Add __path__ attribute for "frame" submodule
+    frame.attr("__path__") = "ostk.physics.coordinate.frame" ;
 
-    boost::python::scope scope = module ;
-
-    OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider() ;
-    OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers() ;
+    OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider(frame) ;
+    OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers(frame) ;
 
 }
 

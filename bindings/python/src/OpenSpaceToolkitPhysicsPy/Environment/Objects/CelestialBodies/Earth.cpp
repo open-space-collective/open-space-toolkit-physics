@@ -11,10 +11,10 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Earth ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Earth (        pybind11::module& aModule                          )
 {
 
-    using namespace boost::python ;
+    using namespace pybind11 ;
 
     using ostk::core::types::Real ;
     using ostk::core::types::Shared ;
@@ -30,22 +30,24 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
 
     {
 
-        scope in_Earth = class_<Earth, bases<Celestial>>("Earth", init<const Derived&, const Length&, const Real&, const Real&, const Shared<Ephemeris>&, const EarthGravitationalModel::Type&, const EarthMagneticModel::Type&, const Instant&>())
+        class_<Earth, Celestial>(aModule, "Earth")
 
-            .def_readonly("gravitational_parameter", &Earth::GravitationalParameter)
-            .def_readonly("equatorial_radius", &Earth::EquatorialRadius)
-            .def_readonly("flattening", &Earth::Flattening)
-            .def_readonly("C20", &Earth::C20)
-            .def_readonly("J2", &Earth::J2)
+            .def(init<const Derived&, const Length&, const Real&, const Real&, const Shared<Ephemeris>&, const EarthGravitationalModel::Type&, const EarthMagneticModel::Type&, const Instant&>())
 
-            .def(self_ns::str(self_ns::self))
-            .def(self_ns::repr(self_ns::self))
+            .def_readonly_static("gravitational_parameter", &Earth::GravitationalParameter)
+            .def_readonly_static("equatorial_radius", &Earth::EquatorialRadius)
+            .def_readonly_static("flattening", &Earth::Flattening)
+            .def_readonly_static("C20", &Earth::C20)
+            .def_readonly_static("J2", &Earth::J2)
 
-            .def("default", &Earth::Default).staticmethod("default")
-            .def("EGM2008", &Earth::EGM2008).staticmethod("EGM2008")
-            .def("WGS84_EGM96", &Earth::WGS84_EGM96).staticmethod("WGS84_EGM96")
-            .def("EGM96", &Earth::EGM96).staticmethod("EGM96")
-            .def("WGS84", &Earth::WGS84).staticmethod("WGS84")
+            .def("__str__", &(shiftToString<Earth>))
+            .def("__repr__", &(shiftToString<Earth>))
+
+            .def_static("default", &Earth::Default)
+            .def_static("EGM2008", &Earth::EGM2008)
+            .def_static("WGS84_EGM96", &Earth::WGS84_EGM96)
+            .def_static("EGM96", &Earth::EGM96)
+            .def_static("WGS84", &Earth::WGS84)
 
         ;
 
@@ -53,57 +55,59 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
 
     {
 
-        boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("ostk.physics.environment.objects.celestial_bodies.earth")))) ;
+        // Create "earth" python submodule
+        auto earth = aModule.def_submodule("earth") ;
 
-        boost::python::scope().attr("earth") = module ;
+        // Add __path__ attribute for "earth" submodule
+        earth.attr("__path__") = "ostk.physics.environment.objects.celestial_bodies.earth" ;
 
     }
 
     {
 
-        boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("ostk.physics.environment.objects.celestial_bodies.earth.models")))) ;
+        // Create "models" python submodule
+        auto models = aModule.def_submodule("models") ;
 
-        boost::python::scope().attr("models") = module ;
+        // Add __path__ attribute for "models" submodule
+        models.attr("__path__") = "ostk.physics.environment.objects.celestial_bodies.earth.models" ;
 
-        boost::python::scope scope = module ;
+        class_<Earth::Models::EGM2008>(models, "EGM2008")
 
-        class_<Earth::Models::EGM2008>("EGM2008", no_init)
-
-            .def_readonly("gravitational_parameter", &Earth::Models::EGM2008::GravitationalParameter)
-            .def_readonly("equatorial_radius", &Earth::Models::EGM2008::EquatorialRadius)
-            .def_readonly("flattening", &Earth::Models::EGM2008::Flattening)
-            .def_readonly("C20", &Earth::Models::EGM2008::C20)
-            .def_readonly("J2", &Earth::Models::EGM2008::J2)
-
-        ;
-
-        class_<Earth::Models::WGS84_EGM96>("WGS84_EGM96", no_init)
-
-            .def_readonly("gravitational_parameter", &Earth::Models::WGS84_EGM96::GravitationalParameter)
-            .def_readonly("equatorial_radius", &Earth::Models::WGS84_EGM96::EquatorialRadius)
-            .def_readonly("flattening", &Earth::Models::WGS84_EGM96::Flattening)
-            .def_readonly("C20", &Earth::Models::WGS84_EGM96::C20)
-            .def_readonly("J2", &Earth::Models::WGS84_EGM96::J2)
+            .def_readonly_static("gravitational_parameter", &Earth::Models::EGM2008::GravitationalParameter)
+            .def_readonly_static("equatorial_radius", &Earth::Models::EGM2008::EquatorialRadius)
+            .def_readonly_static("flattening", &Earth::Models::EGM2008::Flattening)
+            .def_readonly_static("C20", &Earth::Models::EGM2008::C20)
+            .def_readonly_static("J2", &Earth::Models::EGM2008::J2)
 
         ;
 
-        class_<Earth::Models::EGM96>("EGM96", no_init)
+        class_<Earth::Models::WGS84_EGM96>(models, "WGS84_EGM96")
 
-            .def_readonly("gravitational_parameter", &Earth::Models::EGM96::GravitationalParameter)
-            .def_readonly("equatorial_radius", &Earth::Models::EGM96::EquatorialRadius)
-            .def_readonly("flattening", &Earth::Models::EGM96::Flattening)
-            .def_readonly("C20", &Earth::Models::EGM96::C20)
-            .def_readonly("J2", &Earth::Models::EGM96::J2)
+            .def_readonly_static("gravitational_parameter", &Earth::Models::WGS84_EGM96::GravitationalParameter)
+            .def_readonly_static("equatorial_radius", &Earth::Models::WGS84_EGM96::EquatorialRadius)
+            .def_readonly_static("flattening", &Earth::Models::WGS84_EGM96::Flattening)
+            .def_readonly_static("C20", &Earth::Models::WGS84_EGM96::C20)
+            .def_readonly_static("J2", &Earth::Models::WGS84_EGM96::J2)
 
         ;
 
-        class_<Earth::Models::WGS84>("WGS84", no_init)
+        class_<Earth::Models::EGM96>(models, "EGM96")
 
-            .def_readonly("gravitational_parameter", &Earth::Models::WGS84::GravitationalParameter)
-            .def_readonly("equatorial_radius", &Earth::Models::WGS84::EquatorialRadius)
-            .def_readonly("flattening", &Earth::Models::WGS84::Flattening)
-            .def_readonly("C20", &Earth::Models::WGS84::C20)
-            .def_readonly("J2", &Earth::Models::WGS84::J2)
+            .def_readonly_static("gravitational_parameter", &Earth::Models::EGM96::GravitationalParameter)
+            .def_readonly_static("equatorial_radius", &Earth::Models::EGM96::EquatorialRadius)
+            .def_readonly_static("flattening", &Earth::Models::EGM96::Flattening)
+            .def_readonly_static("C20", &Earth::Models::EGM96::C20)
+            .def_readonly_static("J2", &Earth::Models::EGM96::J2)
+
+        ;
+
+        class_<Earth::Models::WGS84>(models, "WGS84")
+
+            .def_readonly_static("gravitational_parameter", &Earth::Models::WGS84::GravitationalParameter)
+            .def_readonly_static("equatorial_radius", &Earth::Models::WGS84::EquatorialRadius)
+            .def_readonly_static("flattening", &Earth::Models::WGS84::Flattening)
+            .def_readonly_static("C20", &Earth::Models::WGS84::C20)
+            .def_readonly_static("J2", &Earth::Models::WGS84::J2)
 
         ;
 

@@ -11,22 +11,23 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Time_Date                  ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Time_Date         (            pybind11::module&          aModule                                     )
 {
 
-    using namespace boost::python ;
+    using namespace pybind11 ;
 
     using ostk::core::types::String ;
 
     using ostk::physics::time::Date ;
 
-    scope in_Date = class_<Date>("Date", init<int, int, int>())
+    class_<Date> date(aModule, "Date") ;
+
+    date.def(init<int, int, int>())
 
         .def(self == self)
         .def(self != self)
 
-        .def(self_ns::str(self_ns::self))
-
+        .def("__str__", &(shiftToString<Date>))
         .def("__repr__", +[] (const Date& aDate) -> std::string { return aDate.toString() ; })
 
         .def("is_defined", &Date::isDefined)
@@ -41,17 +42,17 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Date             
         .def("set_month", &Date::setMonth)
         .def("set_day", &Date::setDay)
 
-        .def("undefined", &Date::Undefined).staticmethod("undefined")
-        .def("J2000", &Date::J2000).staticmethod("J2000")
-        .def("GPS_epoch", &Date::GPSEpoch).staticmethod("GPS_epoch")
-        .def("unix_epoch", &Date::UnixEpoch).staticmethod("unix_epoch")
-        .def("modified_julian_date_epoch", &Date::ModifiedJulianDateEpoch).staticmethod("modified_julian_date_epoch")
+        .def_static("undefined", &Date::Undefined)
+        .def_static("J2000", &Date::J2000)
+        .def_static("GPS_epoch", &Date::GPSEpoch)
+        .def_static("unix_epoch", &Date::UnixEpoch)
+        .def_static("modified_julian_date_epoch", &Date::ModifiedJulianDateEpoch)
         .def("parse", +[] (const String& aString) -> Date { return Date::Parse(aString) ; })
         .def("parse", +[] (const String& aString, const Date::Format& aFormat) -> Date { return Date::Parse(aString, aFormat) ; })
 
     ;
 
-    enum_<Date::Format>("Format")
+    enum_<Date::Format>(date, "Format", pybind11::module_local())
 
         .value("Undefined", Date::Format::Undefined)
         .value("Standard", Date::Format::Standard)

@@ -7,16 +7,14 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <OpenSpaceToolkitPhysicsPy/Utilities/IterableConverter.hpp>
-
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Time_Instant               ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Time_Instant      (           pybind11::module&           aModule                                     )
 {
 
-    using namespace boost::python ;
+    using namespace pybind11 ;
 
     using ostk::core::types::String ;
 
@@ -24,7 +22,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Instant          
     using ostk::physics::time::Instant ;
     using ostk::physics::time::Duration ;
 
-    scope in_Instant = class_<Instant>("Instant", no_init)
+    class_<Instant>(aModule, "Instant")
 
         .def(self == self)
         .def(self != self)
@@ -34,14 +32,18 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Instant          
         .def(self > self)
         .def(self >= self)
 
-        .def(self + other<Duration>())
-        .def(self - other<Duration>())
+        // Duration() is private in this context
+        // .def(self + Duration())
+        // .def(self - Duration())
+        // .def(self += Duration())
+        // .def(self -= Duration())
         .def(self - self)
-        .def(self += other<Duration>())
-        .def(self -= other<Duration>())
+        .def("__add__", [](const Instant &anInstant, Duration aDuration) {return anInstant + aDuration;}, is_operator())
+        .def("__sub__", [](const Instant &anInstant, Duration aDuration) {return anInstant - aDuration;}, is_operator())
+        .def("__iadd__", [](const Instant &anInstant, Duration aDuration) {return anInstant + aDuration;}, is_operator())
+        .def("__isub__", [](const Instant &anInstant, Duration aDuration) {return anInstant - aDuration;}, is_operator())
 
-        .def(self_ns::str(self_ns::self))
-
+        .def("__str__", &(shiftToString<Instant>))
         .def("__repr__", +[] (const Instant& anInstant) -> std::string { return anInstant.toString() ; })
 
         .def("is_defined", &Instant::isDefined)
@@ -55,21 +57,12 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Instant          
         .def("to_string", +[] (const Instant& anInstant) -> String { return anInstant.toString() ; })
         .def("to_string", +[] (const Instant& anInstant, const Scale& aScale) -> String { return anInstant.toString(aScale) ; })
 
-        .def("undefined", &Instant::Undefined).staticmethod("undefined")
-        .def("now", &Instant::Now).staticmethod("now")
-        .def("J2000", &Instant::J2000).staticmethod("J2000")
-        .def("date_time", &Instant::DateTime).staticmethod("date_time")
-        .def("julian_date", &Instant::JulianDate).staticmethod("julian_date")
-        .def("modified_julian_date", &Instant::ModifiedJulianDate).staticmethod("modified_julian_date")
-
-    ;
-
-    using ostk::core::ctnr::Array ;
-
-    IterableConverter()
-
-        .from_python<Array<Instant>>()
-        .to_python<Array<Instant>>()
+        .def_static("undefined", &Instant::Undefined)
+        .def_static("now", &Instant::Now)
+        .def_static("J2000", &Instant::J2000)
+        .def_static("date_time", &Instant::DateTime)
+        .def_static("julian_date", &Instant::JulianDate)
+        .def_static("modified_julian_date", &Instant::ModifiedJulianDate)
 
     ;
 

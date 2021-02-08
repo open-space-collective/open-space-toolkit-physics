@@ -43,9 +43,9 @@ RUN git clone --branch v0.6.0 --depth 1 https://github.com/Tessil/ordered-map.gi
 
 RUN mkdir /tmp/eigen \
  && cd /tmp/eigen \
- && wget --quiet http://bitbucket.org/eigen/eigen/get/3.3.7.tar.gz \
- && tar -xvf 3.3.7.tar.gz \
- && cd eigen-eigen-323c052e1731 \
+ && wget --quiet https://gitlab.com/libeigen/eigen/-/archive/3.3.7/eigen-3.3.7.tar.gz \
+ && tar -xvf eigen-3.3.7.tar.gz \
+ && cd eigen-3.3.7 \
  && mkdir build \
  && cd build \
  && cmake .. \
@@ -100,30 +100,30 @@ RUN git clone git://git.code.sf.net/p/geographiclib/code /tmp/geographiclib \
  && rm -rf /tmp/geographiclib \
  && rm -rf /var/lib/apt/lists/*
 
-## Open Space Toolkit ▸ Core [0.3.3]
+## Open Space Toolkit ▸ Core [0.4.2]
 
 RUN mkdir -p /tmp/open-space-toolkit-core \
  && cd /tmp/open-space-toolkit-core \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/0.3.3/open-space-toolkit-core-0.3.3-1.x86_64-runtime.deb \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/0.3.3/open-space-toolkit-core-0.3.3-1.x86_64-devel.deb \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/0.4.2/open-space-toolkit-core-0.4.2-1.x86_64-runtime.deb \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/0.4.2/open-space-toolkit-core-0.4.2-1.x86_64-devel.deb \
  && apt-get install -y ./*.deb \
  && rm -rf /tmp/open-space-toolkit-core
 
-## Open Space Toolkit ▸ I/O [0.3.3]
+## Open Space Toolkit ▸ I/O [0.4.0]
 
 RUN mkdir -p /tmp/open-space-toolkit-io \
  && cd /tmp/open-space-toolkit-io \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/0.3.3/open-space-toolkit-io-0.3.3-1.x86_64-runtime.deb \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/0.3.3/open-space-toolkit-io-0.3.3-1.x86_64-devel.deb \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/0.4.0/open-space-toolkit-io-0.4.0-1.x86_64-runtime.deb \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/0.4.0/open-space-toolkit-io-0.4.0-1.x86_64-devel.deb \
  && apt-get install -y ./*.deb \
  && rm -rf /tmp/open-space-toolkit-io
 
-## Open Space Toolkit ▸ Mathematics [0.3.4]
+## Open Space Toolkit ▸ Mathematics [0.4.0]
 
 RUN mkdir -p /tmp/open-space-toolkit-mathematics \
  && cd /tmp/open-space-toolkit-mathematics \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/0.3.4/open-space-toolkit-mathematics-0.3.4-1.x86_64-runtime.deb \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/0.3.4/open-space-toolkit-mathematics-0.3.4-1.x86_64-devel.deb \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/0.4.0/open-space-toolkit-mathematics-0.4.0-1.x86_64-runtime.deb \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/0.4.0/open-space-toolkit-mathematics-0.4.0-1.x86_64-devel.deb \
  && apt-get install -y ./*.deb \
  && rm -rf /tmp/open-space-toolkit-mathematics
 

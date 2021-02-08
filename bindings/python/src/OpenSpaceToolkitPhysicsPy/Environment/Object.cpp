@@ -13,10 +13,10 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Environment_Object         ( )
+inline void                     OpenSpaceToolkitPhysicsPy_Environment_Object (           pybind11::module&          aModule                                     )
 {
 
-    using namespace boost::python ;
+    using namespace pybind11 ;
 
     using ostk::core::types::Shared ;
     using ostk::core::types::String ;
@@ -24,15 +24,20 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Object    
     using ostk::physics::time::Instant ;
     using ostk::physics::env::Object ;
 
-    class_<Object, boost::noncopyable>("Object", no_init)
+    // Binding class "Object"
+    class_<Object>(aModule, "Object")
 
-        .def(self_ns::str(self_ns::self))
-        .def(self_ns::repr(self_ns::self))
+        // no init
+
+        .def("__str__", &(shiftToString<Object>))
+        .def("__repr__", &(shiftToString<Object>))
 
         .def("is_defined", &Object::isDefined)
 
-        .def("access_name", &Object::accessName, return_value_policy<reference_existing_object>())
-        .def("access_instant", &Object::accessInstant, return_value_policy<reference_existing_object>())
+        // .def("access_name", &Object::accessName, return_value_policy<reference_existing_object>())
+        // .def("access_instant", &Object::accessInstant, return_value_policy<reference_existing_object>())
+        .def("access_name", &Object::accessName, return_value_policy::reference)
+        .def("access_instant", &Object::accessInstant, return_value_policy::reference)
         .def("access_frame", &Object::accessFrame)
         .def("get_name", &Object::getName)
         .def("get_instant", &Object::getInstant)
@@ -45,17 +50,20 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Object    
 
     ;
 
-    register_ptr_to_python<Shared<const Object>>() ;
+    // register_ptr_to_python<Shared<const Object>>() ;
 
-    implicitly_convertible<Shared<Object>, Shared<const Object>>() ;
+    // implicitly_convertible<Shared<Object>, Shared<const Object>>() ;
 
-    boost::python::object module(boost::python::handle<>(boost::python::borrowed(PyImport_AddModule("ostk.physics.environment.object")))) ;
+    // Adding python submodule "object"
 
-    boost::python::scope().attr("object") = module ;
+    // Create "object" python submodule
+    auto object = aModule.def_submodule("object") ;
 
-    boost::python::scope scope = module ;
+    // Add __path__ attribute for "object" submodule
+    object.attr("__path__") = "ostk.physics.environment.object" ;
 
-    OpenSpaceToolkitPhysicsPy_Environment_Object_Geometry() ;
+    // Add elements to object
+    OpenSpaceToolkitPhysicsPy_Environment_Object_Geometry(object) ;
 
 }
 
