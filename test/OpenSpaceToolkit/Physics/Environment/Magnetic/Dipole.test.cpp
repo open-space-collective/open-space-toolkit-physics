@@ -64,7 +64,6 @@ TEST (OpenSpaceToolkit_Physics_Environment_Magnetic_Dipole, GetFieldValueAt)
     using ostk::math::obj::Vector3d ;
 
     using ostk::physics::time::Instant ;
-    using ostk::math::obj::Vector3d ;
 
     using ostk::physics::environment::magnetic::Dipole ;
 
