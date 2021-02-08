@@ -27,8 +27,8 @@ inline void                     OpenSpaceToolkitPhysicsPy_Units_ElectricCurrent 
 
     elec_current.def(init<Real, ElectricCurrent::Unit>())
 
-        // .def(self == self)
-        // .def(self != self)
+        .def(self == self)
+        .def(self != self)
 
         // .def(self < self)
         // .def(self <= self)
@@ -55,7 +55,6 @@ inline void                     OpenSpaceToolkitPhysicsPy_Units_ElectricCurrent 
         .def("in_unit", &ElectricCurrent::in)
         .def("in_amperes", &ElectricCurrent::inAmperes)
         .def("to_string", &ElectricCurrent::toString, "aPrecision"_a=Integer::Undefined())
-        // .def("to_string", &ElectricCurrent::toString, OpenSpaceToolkitPhysicsPy_Units_ElectricCurrent_toString_overloads())
 
         .def_static("undefined", &ElectricCurrent::Undefined)
         .def_static("amperes", &ElectricCurrent::Amperes)

@@ -24,7 +24,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Interval     (   
     using ostk::physics::time::Interval ;
     using ostk::physics::time::Scale ;
 
-    class_<Interval> interval_class(aModule, "Interval") ;
+    class_<Interval> interval_class(aModule, "Interval", pybind11::module_local()) ;
 
     interval_class.def(init<const Instant&, const Instant&, const Interval::Type&>())
 
@@ -62,15 +62,15 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Interval     (   
     ;
 
     // https://github.com/pybind/pybind11/pull/949 locally to avoid conflicts with other potential objects in other ostk modules
-    // enum_<Interval::Type>(interval_class, "Type")
+    enum_<Interval::Type>(interval_class, "Type", pybind11::module_local())
 
-    //     .value("Undefined", Interval::Type::Undefined)
-    //     .value("Closed", Interval::Type::Closed)
-    //     .value("Open", Interval::Type::Open)
-    //     .value("HalfOpenLeft", Interval::Type::HalfOpenLeft)
-    //     .value("HalfOpenRight", Interval::Type::HalfOpenRight)
+        .value("Undefined", Interval::Type::Undefined)
+        .value("Closed", Interval::Type::Closed)
+        .value("Open", Interval::Type::Open)
+        .value("HalfOpenLeft", Interval::Type::HalfOpenLeft)
+        .value("HalfOpenRight", Interval::Type::HalfOpenRight)
 
-    // ;
+    ;
 
     // Second one not defined due to templating
     // implicitly_convertible<Interval, ostk::math::obj::Interval<ostk::physics::time::Instant>>() ;

@@ -42,7 +42,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Units_Derived_Angle ( 
         .def("__imul__", [](const Angle &anAngle, Real aReal) {return anAngle * aReal;}, is_operator())
         .def("__itruediv__", [](const Angle &anAngle, Real aReal) {return anAngle / aReal;}, is_operator())
 
-        // .def("__str__", &(shiftToString<Angle>))
+        .def("__str__", &(shiftToString<Angle>))
         .def("__repr__", +[] (const Angle& anAngle) -> std::string { return anAngle.toString() ; })
 
         .def("is_defined", &Angle::isDefined)

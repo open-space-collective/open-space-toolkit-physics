@@ -20,9 +20,9 @@
 std::string                     shiftToString                               (   const   T&                          aClass                                      )
 {
 
-    std::ostringstream out;
-    out << aClass;
-    return out.str();
+    std::ostringstream out ;
+    out << aClass ;
+    return out.str() ;
 
 }
 

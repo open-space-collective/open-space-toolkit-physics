@@ -25,8 +25,8 @@ inline void                     OpenSpaceToolkitPhysicsPy_Units_Time        (   
 
     time.def(init<Real, Time::Unit>())
 
-        // .def(self == self)
-        // .def(self != self)
+        .def(self == self)
+        .def(self != self)
 
         // .def(self < self)
         // .def(self <= self)

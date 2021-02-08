@@ -31,7 +31,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provi
         .def(
             "__init__",
             (
-                +[] (const pybind11::object& aGeneratorObject) -> Shared<Dynamic>
+                +[] (Dynamic& aDynamicFrameProvider, const pybind11::object& aGeneratorObject)
                 {
 
                     const auto generatorProxy = [aGeneratorObject] (const Instant& anInstant) -> Transform
@@ -39,7 +39,11 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provi
                         return pybind11::cast<Transform>(aGeneratorObject(anInstant)) ;
                     } ;
 
-                    return std::make_shared<Dynamic>(generatorProxy) ;
+                    // might need to add return type to the function (Shared<Dynamic>)
+                    // return std::make_shared<Dynamic>(generatorProxy) ;
+                    // aDynamicFrameProviderPtr =  std::make_shared<Dynamic>(generatorProxy) ; "RuntimeError: Unable to cast from non-held to held instance (T& to Holder<T>)"
+                    // Will need to check resources with that formulation
+                    new (&aDynamicFrameProvider) Dynamic(generatorProxy) ;
 
                 }
             )

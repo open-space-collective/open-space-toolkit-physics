@@ -33,10 +33,10 @@ inline void                     OpenSpaceToolkitPhysicsPy_Units_Derived     (   
         .def(self == self)
         .def(self != self)
 
-        // .def("__str__", &(shiftToString<Derived>))
+        .def("__str__", &(shiftToString<Derived>))
         .def("__repr__", +[] (const Derived& aDerived) -> std::string { return aDerived.toString() ; })
 
-        // .def("is_defined", &Derived::isDefined)
+        .def("is_defined", &Derived::isDefined)
 
         .def("get_unit", &Derived::getUnit)
         .def("in_unit", &Derived::in)

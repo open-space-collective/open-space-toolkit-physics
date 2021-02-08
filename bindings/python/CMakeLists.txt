@@ -51,9 +51,6 @@ PROJECT (${PROJECT_NAME} VERSION ${PROJECT_VERSION_STRING} LANGUAGES "C" "CXX")
 
 ## Helper Functions
 
-# Largely inspired by https://github.com/ROCmSoftwarePlatform/AMDMIGraphX/pull/655/files
-# Possibly move these generic functions to a PythonBuilding.cmake hosted on base image and use the command INCLUDE (PythonBuilding) in this CMakeLists file
-
 ### Improved FIND_PYTHON macro
 
 MACRO (FIND_PYTHON version)
@@ -214,32 +211,17 @@ FOREACH (PYTHON_VERSION ${PYTHON_SEARCH_VERSIONS})
     ENDIF ()
 ENDFOREACH ()
 
-### Boost
-
-#UNSET (Boost_USE_STATIC_LIBS CACHE)
-#UNSET (Boost_USE_MULTITHREADED CACHE)
-
-#SET (BUILD_SHARED_LIBS ON)
-#SET (Boost_USE_STATIC_LIBS OFF)
-#SET (Boost_USE_MULTITHREADED ON)
-
-#FIND_PACKAGE ("Boost" ${BOOST_VERSION} REQUIRED COMPONENTS ${PYTHON_VERSION} "numpy37")
-
-#IF (NOT Boost_FOUND)
-#    MESSAGE (SEND_ERROR "[Boost ${BOOST_VERSION}] not found.")
-#ENDIF ()
-
 ### Eigen
 
-ADD_COMPILE_DEFINITIONS (EIGEN_MAX_STATIC_ALIGN_BYTES)
+# ADD_COMPILE_DEFINITIONS (EIGEN_MAX_STATIC_ALIGN_BYTES)
 
-### NumPy
+# ### NumPy
 
-SET (NUMPY_INCLUDE_DIR "/usr/lib64/python3.7/site-packages/numpy/core/include")
+# SET (NUMPY_INCLUDE_DIR "/usr/lib64/python3.7/site-packages/numpy/core/include")
 
-### Boost.NumPy Eigen
+# ### Boost.NumPy Eigen
 
-SET (EIGEN_NUMPY_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/thirdparty/boost_numpy_eigen")
+# SET (EIGEN_NUMPY_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/thirdparty/boost_numpy_eigen")
 
 ################################################################################################################################################################
 

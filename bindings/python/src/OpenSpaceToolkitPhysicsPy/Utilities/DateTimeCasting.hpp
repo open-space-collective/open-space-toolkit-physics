@@ -36,11 +36,12 @@ namespace detail
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Requires DateTime to have a Default Constructor to be used by load function
+// WARNING: Requires DateTime to have a Default Constructor to be used by load function. To be added if the following piece of code is to be used
 
 template <>
 // Alternative would not extend the type_caster_base
-class type_caster<DateTime> : public type_caster_base<DateTime> {
+class type_caster<DateTime> : public type_caster_base<DateTime>
+{
 
 public:
 

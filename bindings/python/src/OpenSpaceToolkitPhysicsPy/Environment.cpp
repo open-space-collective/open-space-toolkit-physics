@@ -32,8 +32,8 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment       (   
 
         .def(init<const Instant&, const Array<Shared<Object>>&>())
 
-        // .def(self_ns::str(self_ns::self))
-        // .def(self_ns::repr(self_ns::self))
+        .def("__str__", &(shiftToString<Environment>))
+        .def("__repr__", &(shiftToString<Environment>))
 
         .def("is_defined", &Environment::isDefined)
         .def("has_object_with_name", &Environment::hasObjectWithName)
@@ -43,7 +43,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment       (   
         .def("access_object_with_name", &Environment::accessObjectWithName)                       // check return_value_policy
         .def("access_celestial_object_with_name", &Environment::accessCelestialObjectWithName)    // check return_value_policy
         .def("get_instant", &Environment::getInstant)
-        .def("get_object_names", &Environment::getObjectNames)
+        // .def("get_object_names", &Environment::getObjectNames)
         .def("set_instant", &Environment::setInstant)
 
         .def_static("undefined", &Environment::Undefined)

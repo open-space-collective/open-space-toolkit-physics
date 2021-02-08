@@ -46,7 +46,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Units_Length      (   
         .def("__imul__", [](const Length &aLength, Real aReal) {return aLength * aReal;}, is_operator())
         .def("__itruediv__", [](const Length &aLength, Real aReal) {return aLength / aReal;}, is_operator())
 
-        // .def("__str__", &(shiftToString<Length>))
+        .def("__str__", &(shiftToString<Length>))
         .def("__repr__", +[] (const Length& aLength) -> std::string { return aLength.toString() ; })
 
         .def("is_defined", &Length::isDefined)
@@ -77,15 +77,6 @@ inline void                     OpenSpaceToolkitPhysicsPy_Units_Length      (   
         .value("AstronomicalUnit", Length::Unit::AstronomicalUnit)
 
     ;
-
-    // using ostk::core::ctnr::Array ;
-
-    // IterableConverter()
-
-    //     .from_python<Array<Length>>()
-    //     .to_python<Array<Length>>()
-
-    // ;
 
     using ostk::math::obj::Interval ;
 

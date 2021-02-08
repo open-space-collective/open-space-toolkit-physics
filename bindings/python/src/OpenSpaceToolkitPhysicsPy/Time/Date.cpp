@@ -52,7 +52,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Date         (   
 
     ;
 
-    enum_<Date::Format>(date, "Format")
+    enum_<Date::Format>(date, "Format", pybind11::module_local())
 
         .value("Undefined", Date::Format::Undefined)
         .value("Standard", Date::Format::Standard)

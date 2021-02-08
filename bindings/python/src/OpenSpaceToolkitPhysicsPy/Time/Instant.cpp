@@ -35,9 +35,13 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Instant      (   
         // Duration() is private in this context
         // .def(self + Duration())
         // .def(self - Duration())
-        // .def(self - self)
         // .def(self += Duration())
         // .def(self -= Duration())
+        .def(self - self)
+        .def("__add__", [](const Instant &anInstant, Duration aDuration) {return anInstant + aDuration;}, is_operator())
+        .def("__sub__", [](const Instant &anInstant, Duration aDuration) {return anInstant - aDuration;}, is_operator())
+        .def("__iadd__", [](const Instant &anInstant, Duration aDuration) {return anInstant + aDuration;}, is_operator())
+        .def("__isub__", [](const Instant &anInstant, Duration aDuration) {return anInstant - aDuration;}, is_operator())
 
         .def("__str__", &(shiftToString<Instant>))
         .def("__repr__", +[] (const Instant& anInstant) -> std::string { return anInstant.toString() ; })
@@ -61,15 +65,6 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Instant      (   
         .def_static("modified_julian_date", &Instant::ModifiedJulianDate)
 
     ;
-
-    // using ostk::core::ctnr::Array ;
-
-    // IterableConverter()
-
-    //     .from_python<Array<Instant>>()
-    //     .to_python<Array<Instant>>()
-
-    // ;
 
 }
 
