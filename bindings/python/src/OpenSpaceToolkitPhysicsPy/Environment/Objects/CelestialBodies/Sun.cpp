@@ -25,7 +25,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
 
     {
 
-        class_<Sun, Celestial>(aModule, "Sun")
+        class_<Sun, Shared<Sun>, Celestial>(aModule, "Sun")
 
             .def(init<const Shared<Ephemeris>&, const Instant&>())
 

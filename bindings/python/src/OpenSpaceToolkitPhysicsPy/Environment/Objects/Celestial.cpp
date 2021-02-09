@@ -29,7 +29,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
     using GravitationalModel = ostk::physics::environment::gravitational::Model ;
     using MagneticModel = ostk::physics::environment::magnetic::Model ;
 
-    class_<Celestial, Object> celestial_class(aModule, "Celestial") ;
+    class_<Celestial, Shared<Celestial>, Object> celestial_class(aModule, "Celestial") ;
 
     celestial_class.def(init<const String&, const Celestial::Type&, const Derived& , const Length&, const Real&, const Real&, const Shared<Ephemeris>&, const Shared<GravitationalModel>&, const Shared<MagneticModel>&, const Instant&>())
 
