@@ -30,7 +30,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
 
     {
 
-        class_<Earth, Celestial>(aModule, "Earth")
+        class_<Earth, Shared<Earth>, Celestial>(aModule, "Earth")
 
             .def(init<const Derived&, const Length&, const Real&, const Real&, const Shared<Ephemeris>&, const EarthGravitationalModel::Type&, const EarthMagneticModel::Type&, const Instant&>())
 

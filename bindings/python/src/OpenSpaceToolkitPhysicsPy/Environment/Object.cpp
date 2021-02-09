@@ -25,7 +25,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Object (  
     using ostk::physics::env::Object ;
 
     // Binding class "Object"
-    class_<Object>(aModule, "Object")
+    class_<Object, Shared<Object>>(aModule, "Object")
 
         // no init
 
