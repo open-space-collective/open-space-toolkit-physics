@@ -53,8 +53,7 @@ def test_date_time_J2000 ():
     date_time: DateTime = DateTime.J2000()
 
     assert date_time is not None
-    assert isinstance(date_time, DateTime)
-    assert date_time.is_defined()
+    assert isinstance(date_time, datetime.datetime)
 
 ################################################################################################################################################################
 
@@ -63,8 +62,7 @@ def test_date_time_GPS_epoch ():
     date_time: DateTime = DateTime.GPS_epoch()
 
     assert date_time is not None
-    assert isinstance(date_time, DateTime)
-    assert date_time.is_defined()
+    assert isinstance(date_time, datetime.datetime)
 
 ################################################################################################################################################################
 
@@ -73,8 +71,7 @@ def test_date_time_unix_epoch ():
     date_time: DateTime = DateTime.unix_epoch()
 
     assert date_time is not None
-    assert isinstance(date_time, DateTime)
-    assert date_time.is_defined()
+    assert isinstance(date_time, datetime.datetime)
 
 ################################################################################################################################################################
 
@@ -83,8 +80,7 @@ def test_date_time_modified_julian_date_epoch ():
     date_time: DateTime = DateTime.modified_julian_date_epoch()
 
     assert date_time is not None
-    assert isinstance(date_time, DateTime)
-    assert date_time.is_defined()
+    assert isinstance(date_time, datetime.datetime)
 
 ################################################################################################################################################################
 
@@ -93,8 +89,7 @@ def test_date_time_julian_date ():
     date_time: DateTime = DateTime.julian_date(2458119.5)
 
     assert date_time is not None
-    assert isinstance(date_time, DateTime)
-    assert date_time.is_defined()
+    assert isinstance(date_time, datetime.datetime)
 
 ################################################################################################################################################################
 
@@ -103,8 +98,7 @@ def test_date_time_modified_julian_date ():
     date_time: DateTime = DateTime.modified_julian_date(58119.0)
 
     assert date_time is not None
-    assert isinstance(date_time, DateTime)
-    assert date_time.is_defined()
+    assert isinstance(date_time, datetime.datetime)
 
 ################################################################################################################################################################
 
@@ -131,6 +125,14 @@ def test_date_time_comparators ():
     assert date_time_3 == date_time_3
     assert date_time_1 != date_time_2
     assert date_time_1 != date_time_3
+
+    date_time_1: DateTime = DateTime(2020, 1, 2, 3, 4, 5)
+    date_time_2: DateTime = datetime.datetime(2020, 1, 2, 3, 4, 5)
+
+    assert date_time_1 == date_time_1
+    assert date_time_1 == date_time_2
+    assert date_time_2 == date_time_2
+    assert (date_time_1 != date_time_1) is False
 
 ################################################################################################################################################################
 

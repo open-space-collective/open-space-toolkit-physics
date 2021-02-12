@@ -18,8 +18,6 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_DateTime     (   
 
     using namespace pybind11 ;
 
-    using ostk::core::types::Unique ;
-
     using ostk::core::types::String ;
 
     using ostk::physics::time::DateTime ;
