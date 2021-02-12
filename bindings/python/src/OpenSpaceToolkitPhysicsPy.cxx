@@ -15,7 +15,7 @@
 
 #include <OpenSpaceToolkitPhysicsPy/Utilities/ShiftToString.hpp>
 #include <OpenSpaceToolkitPhysicsPy/Utilities/ArrayCasting.hpp>
-// #include <OpenSpaceToolkitPhysicsPy/Utilities/DateTimeCasting.hpp>
+#include <OpenSpaceToolkitPhysicsPy/Utilities/DateTimeCasting.hpp>
 
 #include <OpenSpaceToolkitPhysicsPy/Environment.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Coordinate.cpp>

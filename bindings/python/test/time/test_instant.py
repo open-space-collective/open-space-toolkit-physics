@@ -39,7 +39,7 @@ def test_instant_datetime ():
 
     assert Instant.date_time(DateTime(2018, 1, 1, 0, 0, 0, 0, 0, 0), Scale.UTC) is not None
 
-    # assert Instant.date_time(datetime.datetime.now(), Scale.UTC)
+    assert Instant.date_time(datetime.datetime.now(), Scale.UTC)
 
 ################################################################################################################################################################
 

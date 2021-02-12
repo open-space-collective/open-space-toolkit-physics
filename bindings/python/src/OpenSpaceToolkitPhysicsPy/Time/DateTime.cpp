@@ -31,10 +31,6 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_DateTime     (   
         .def(init<int, int, int, int, int, int, int, int, int>())
         .def(init<int, int, int, int, int, int>())
 
-        // Implicit conversion with special constructor
-        // https://github.com/pybind/pybind11/issues/482
-        // .def("__init__", +[] (const DateTime& aDateTime) -> PyDateTime_DateTime { return convert(aDateTime) ; })
-
         .def(self == self)
         .def(self != self)
 
@@ -72,19 +68,6 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_DateTime     (   
         .value("STK", DateTime::Format::STK)
 
     ;
-
-    // PyDateTime_IMPORT ;
-
-    // DateTimeFromPythonDateTime() ;
-
-    // to_python_converter<DateTime, PythonDatetimeFromDateTime>() ;
-
-    // tduration_from_python_delta();
-
-    // to_python_converter<
-    // const boost::posix_time::time_duration
-    // , tduration_to_python_delta
-    // >();
 
 }
 
