@@ -9,13 +9,12 @@
 
 #include <pybind11/pybind11.h>
 #include <datetime.h>
-#include <iostream>
 
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// https://github.com/pybind/pybind11/issues/1176
+// https://github.com/pybind/pybind11/issues/1176 (MAIN)
 // https://pybind11.readthedocs.io/en/stable/advanced/cast/custom.html
 // https://github.com/pybind/pybind11/blob/master/include/pybind11/chrono.h
 // https://docs.python.org/3/c-api/datetime.html
@@ -36,17 +35,14 @@ namespace detail
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// WARNING: Requires DateTime to have a Default Constructor to be used by load function. To be added if the following piece of code is to be used
-
 template <>
-// Alternative would not extend the type_caster_base
 class type_caster<DateTime> : public type_caster_base<DateTime>
 {
 
-public:
+using type = DateTime ;
+using base = type_caster_base<DateTime> ;
 
-    using base = type_caster_base<DateTime>;
-    using type = DateTime ;
+public:
 
     bool load(handle src, bool convert)
     {
@@ -58,9 +54,10 @@ public:
 
         int year, month, day, hour, minute, second, microsecond, millisecond ;
 
-        // if (base::load(src, convert)) {
-        //     return true;
-        // }
+        if (base::load(src, convert))
+        {
+            return true ;
+        }
 
         else if (PyDateTime_Check(src.ptr()))
         {
@@ -78,17 +75,16 @@ public:
             millisecond = microseconds / 1000 ;
             microsecond = microseconds - millisecond * 1000 ;
 
+            value = new DateTime(year, month, day, hour, minute, second, millisecond, microsecond) ;
+
+            return true ;
+
         }
 
-        // ...
-        // Possibility to add loops to convert datetime.date and datetime.time
-        // and convert them directly to DateTime as well if wanted
+        // Possibility to add conditions to convert datetime.date and datetime.time
 
-        else return false;
+        else return false ;
 
-        value = DateTime(year, month, day, hour, minute, second, millisecond, microsecond) ;
-
-        return true;
     }
 
     // From C++ DateTime to python datetime.datetime
@@ -111,8 +107,6 @@ public:
         return PyDateTime_FromDateAndTime(year, month, day, hour, minute, second, microseconds) ;
 
     }
-
-    PYBIND11_TYPE_CASTER(type, _("datetime.datetime"));
 
 };
 
