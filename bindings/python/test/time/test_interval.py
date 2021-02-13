@@ -129,6 +129,10 @@ def test_interval_generate_grid ():
 
     interval = Interval(Instant.J2000(), Instant.J2000() + Duration.minutes(1.0), Interval.Type.Closed)
 
-    assert interval.generate_grid(Duration.seconds(1.0)) is not None
+    grid = interval.generate_grid(Duration.seconds(1.0))
+
+    assert grid is not None
+    assert isinstance(grid, list)
+    assert isinstance(grid[0], Instant)
 
 ################################################################################################################################################################
