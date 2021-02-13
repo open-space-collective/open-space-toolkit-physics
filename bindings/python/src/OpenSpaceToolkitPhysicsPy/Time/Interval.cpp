@@ -24,7 +24,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Interval     (   
     using ostk::physics::time::Interval ;
     using ostk::physics::time::Scale ;
 
-    class_<Interval> interval_class(aModule, "Interval", pybind11::module_local()) ;
+    class_<Interval> interval_class(aModule, "Interval") ;
 
     interval_class.def(init<const Instant&, const Instant&, const Interval::Type&>())
 
@@ -72,8 +72,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Interval     (   
 
     ;
 
-    // Second one not defined due to templating
-    // implicitly_convertible<Interval, ostk::math::obj::Interval<ostk::physics::time::Instant>>() ;
+    implicitly_convertible<ostk::math::obj::Interval<ostk::physics::time::Instant>, Interval>() ;
 
 }
 
