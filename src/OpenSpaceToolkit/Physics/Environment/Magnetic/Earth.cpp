@@ -61,6 +61,8 @@ class Earth::Impl
                                 Impl                                        (   const   Earth::Type&                aType,
                                                                                 const   Directory&                  aDataDirectory                              ) ;
 
+                                ~Impl                                       ( ) ;
+
         Earth::Type             getType                                     ( ) const ;
 
         Vector3d                getFieldValueAt                             (   const   Vector3d&                   aPosition,
@@ -85,6 +87,11 @@ class Earth::Impl
                                     magneticModelPtr_(Earth::Impl::MagneticModelFromType(aType, aDataDirectory))
 {
 
+}
+
+                                Earth::Impl::~Impl                          ( )
+{
+    delete magneticModelPtr_ ;
 }
 
 Earth::Type                     Earth::Impl::getType                        ( ) const
@@ -265,6 +272,7 @@ Earth&                          Earth::operator =                           (   
 
 }
 
+// Might want to look into using a Shared Pointer for Earth::Impl
 Earth*                          Earth::clone                                ( ) const
 {
     return new Earth(*this) ;

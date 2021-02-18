@@ -42,6 +42,8 @@ class Earth::Impl
                                 Impl                                        (   const   Earth::Type&                aType,
                                                                                 const   Directory&                  aDataDirectory                              ) ;
 
+                                ~Impl                                       ( ) ;
+
         Earth::Type             getType                                     ( ) const ;
 
         Vector3d                getFieldValueAt                             (   const   Vector3d&                   aPosition,
@@ -66,6 +68,11 @@ class Earth::Impl
                                     gravityModelPtr_(Earth::Impl::GravityModelFromType(aType, aDataDirectory))
 {
 
+}
+
+                                Earth::Impl::~Impl                          ( )
+{
+    delete gravityModelPtr_ ;
 }
 
 Earth::Type                     Earth::Impl::getType                        ( ) const
