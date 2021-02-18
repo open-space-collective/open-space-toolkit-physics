@@ -460,7 +460,7 @@ _test-unit-cpp: _build-development-image
 	--env=OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY \
 	--env=OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY \
 	$(docker_development_image_repository):$(docker_image_version)-$(target) \
-	/bin/bash -c "cmake -DBUILD_UNIT_TESTS=ON .. && make -j 4 && make test"
+	/bin/bash -c "cmake -DBUILD_PYTHON_BINDINGS=OFF -DBUILD_UNIT_TESTS=ON .. && make -j 4 && make test"
 
 test-unit-python-debian: target := debian
 test-unit-python-fedora: target := fedora
