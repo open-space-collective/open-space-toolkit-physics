@@ -10,6 +10,8 @@
 import datetime
 import pytest
 
+from ostk.core.types import String
+
 from ostk.physics.time import Date
 from ostk.physics.time import Time
 from ostk.physics.time import DateTime
@@ -102,13 +104,75 @@ def test_date_time_modified_julian_date ():
 
 ################################################################################################################################################################
 
-@pytest.mark.skip
 def test_date_time_parse ():
 
-    assert DateTime.parse('2018-01-01 00:00:00') is not None
-    assert DateTime.parse('2018-01-01 00:00:00', DateTime.Format.Standard) is not None
-    assert DateTime.parse('2018-01-01T00:00:00', DateTime.Format.ISO8601) is not None
-    assert DateTime.parse('1 Jan 2018 00:00:00', DateTime.Format.STK) is not None
+    ## Using python strings
+
+    # Testing with default argument (DateTime.Format.Undefined)
+    date_time = DateTime.parse('2018-01-01 00:00:00')
+
+    assert date_time is not None
+    assert isinstance(date_time, datetime.datetime)
+    assert date_time == datetime.datetime(2018, 1, 1, 0, 0)
+    assert date_time == DateTime(2018, 1, 1, 0, 0, 0)
+
+    # Testing with DateTime.Format.Standard
+    date_time = DateTime.parse('2018-01-01 00:00:00', DateTime.Format.Standard)
+
+    assert date_time is not None
+    assert isinstance(date_time, datetime.datetime)
+    assert date_time == datetime.datetime(2018, 1, 1, 0, 0)
+    assert date_time == DateTime(2018, 1, 1, 0, 0, 0)
+
+    # Testing with DateTime.Format.ISO8601
+    date_time = DateTime.parse('2018-01-01T00:00:00', DateTime.Format.ISO8601)
+
+    assert date_time is not None
+    assert isinstance(date_time, datetime.datetime)
+    assert date_time == datetime.datetime(2018, 1, 1, 0, 0)
+    assert date_time == DateTime(2018, 1, 1, 0, 0, 0)
+
+    # Testing with DateTime.Format.STK
+    date_time = DateTime.parse('1 Jan 2018 00:00:00', DateTime.Format.STK)
+
+    assert date_time is not None
+    assert isinstance(date_time, datetime.datetime)
+    assert date_time == datetime.datetime(2018, 1, 1, 0, 0)
+    assert date_time == DateTime(2018, 1, 1, 0, 0, 0)
+
+    ## Using String
+
+    # Testing with default argument (DateTime.Format.Undefined)
+    date_time = DateTime.parse(String('2018-01-01 00:00:00'))
+
+    assert date_time is not None
+    assert isinstance(date_time, datetime.datetime)
+    assert date_time == datetime.datetime(2018, 1, 1, 0, 0)
+    assert date_time == DateTime(2018, 1, 1, 0, 0, 0)
+
+    # Testing with DateTime.Format.Standard
+    date_time = DateTime.parse(String('2018-01-01 00:00:00'), DateTime.Format.Standard)
+
+    assert date_time is not None
+    assert isinstance(date_time, datetime.datetime)
+    assert date_time == datetime.datetime(2018, 1, 1, 0, 0)
+    assert date_time == DateTime(2018, 1, 1, 0, 0, 0)
+
+    # Testing with DateTime.Format.ISO8601
+    date_time = DateTime.parse(String('2018-01-01T00:00:00'), DateTime.Format.ISO8601)
+
+    assert date_time is not None
+    assert isinstance(date_time, datetime.datetime)
+    assert date_time == datetime.datetime(2018, 1, 1, 0, 0)
+    assert date_time == DateTime(2018, 1, 1, 0, 0, 0)
+
+    # Testing with DateTime.Format.STK
+    date_time = DateTime.parse(String('1 Jan 2018 00:00:00'), DateTime.Format.STK)
+
+    assert date_time is not None
+    assert isinstance(date_time, datetime.datetime)
+    assert date_time == datetime.datetime(2018, 1, 1, 0, 0)
+    assert date_time == DateTime(2018, 1, 1, 0, 0, 0)
 
     assert (datetime.datetime.now() + datetime.timedelta(days = 1)) is not None
 

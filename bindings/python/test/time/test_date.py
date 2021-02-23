@@ -9,6 +9,8 @@
 
 import pytest
 
+from ostk.core.types import String
+
 from ostk.physics.time import Date
 
 ################################################################################################################################################################
@@ -49,12 +51,53 @@ def test_date_modified_julian_date_epoch ():
 
 ################################################################################################################################################################
 
-@pytest.mark.skip
 def test_date_parse ():
 
-    assert Date.parse('2018-01-01') is not None
-    assert Date.parse('2018-01-01', Date.Format.Standard) is not None
-    assert Date.parse('2 Jan 2019', Date.Format.STK) is not None
+    ## Using python strings
+
+    # Testing with default format argument (Date::Format::Undefined)
+    date: Date = Date.parse('2018-01-01')
+
+    assert date is not None
+    assert isinstance(date, Date)
+    assert date.is_defined()
+
+    # Testing with Date.Format.Standard
+    date: Date = Date.parse('2018-01-01', Date.Format.Standard)
+
+    assert date is not None
+    assert isinstance(date, Date)
+    assert date.is_defined()
+
+    # Testing with Date.Format.STK
+    date: Date = Date.parse('2 Jan 2019', Date.Format.STK)
+
+    assert date is not None
+    assert isinstance(date, Date)
+    assert date.is_defined()
+
+    ## Using String class
+
+    # Testing with default format argument (Date::Format::Undefined)
+    date: Date = Date.parse(String('2018-01-01'))
+
+    assert date is not None
+    assert isinstance(date, Date)
+    assert date.is_defined()
+
+    # Testing with Date.Format.Standard
+    date: Date = Date.parse(String('2018-01-01'), Date.Format.Standard)
+
+    assert date is not None
+    assert isinstance(date, Date)
+    assert date.is_defined()
+
+    # Testing with Date.Format.STK
+    date: Date = Date.parse(String('2 Jan 2019'), Date.Format.STK)
+
+    assert date is not None
+    assert isinstance(date, Date)
+    assert date.is_defined()
 
 ################################################################################################################################################################
 

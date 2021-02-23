@@ -9,6 +9,8 @@
 
 import pytest
 
+from ostk.core.types import String
+
 from ostk.physics.time import Time
 
 ################################################################################################################################################################
@@ -37,12 +39,53 @@ def test_time_noon ():
 
 ################################################################################################################################################################
 
-@pytest.mark.skip
 def test_time_parse ():
 
-    assert Time.parse('00:00:00') is not None
-    assert Time.parse('00:00:00', Time.Format.Standard) is not None
-    assert Time.parse('00:00:00', Time.Format.ISO8601) is not None
+    ## Using python strings
+
+    # Testing with default format argument (Time::Format::Undefined)
+    time: Time = Time.parse('00:00:00')
+
+    assert time is not None
+    assert isinstance(time, Time)
+    assert time.is_defined()
+
+    # Testing with Time.Format.Standard
+    time: Time = Time.parse('00:00:00', Time.Format.Standard)
+
+    assert time is not None
+    assert isinstance(time, Time)
+    assert time.is_defined()
+
+    # Testing with Time.Format.ISO8601
+    time: Time = Time.parse('00:00:00', Time.Format.ISO8601)
+
+    assert time is not None
+    assert isinstance(time, Time)
+    assert time.is_defined()
+
+    ## Using String class
+
+    # Testing with default format argument (Time::Format::Undefined)
+    time: Time = Time.parse(String('00:00:00'))
+
+    assert time is not None
+    assert isinstance(time, Time)
+    assert time.is_defined()
+
+    # Testing with Time.Format.Standard
+    time: Time = Time.parse(String('00:00:00'), Time.Format.Standard)
+
+    assert time is not None
+    assert isinstance(time, Time)
+    assert time.is_defined()
+
+    # Testing with Time.Format.ISO8601
+    time: Time = Time.parse(String('00:00:00'), Time.Format.ISO8601)
+
+    assert time is not None
+    assert isinstance(time, Time)
+    assert time.is_defined()
 
 ################################################################################################################################################################
 
