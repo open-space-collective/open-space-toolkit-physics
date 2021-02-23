@@ -20,9 +20,9 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Date         (   
 
     using ostk::physics::time::Date ;
 
-    class_<Date> date(aModule, "Date") ;
+    class_<Date> date_class(aModule, "Date") ;
 
-    date.def(init<int, int, int>())
+    date_class.def(init<int, int, int>())
 
         .def(self == self)
         .def(self != self)
@@ -47,18 +47,18 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Date         (   
         .def_static("GPS_epoch", &Date::GPSEpoch)
         .def_static("unix_epoch", &Date::UnixEpoch)
         .def_static("modified_julian_date_epoch", &Date::ModifiedJulianDateEpoch)
-        .def("parse", +[] (const String& aString) -> Date { return Date::Parse(aString) ; })
-        .def("parse", +[] (const String& aString, const Date::Format& aFormat) -> Date { return Date::Parse(aString, aFormat) ; })
 
     ;
 
-    enum_<Date::Format>(date, "Format", pybind11::module_local())
+    enum_<Date::Format>(date_class, "Format", pybind11::module_local())
 
         .value("Undefined", Date::Format::Undefined)
         .value("Standard", Date::Format::Standard)
         .value("STK", Date::Format::STK)
 
     ;
+
+    date_class.def_static("parse", &Date::Parse, "aString"_a, "aFormat"_a=Date::Format::Undefined) ;
 
 }
 

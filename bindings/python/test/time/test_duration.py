@@ -9,6 +9,8 @@
 
 import pytest
 
+from ostk.core.types import String
+
 from ostk.physics.units import Time
 from ostk.physics.time import Instant
 from ostk.physics.time import Duration
@@ -81,12 +83,53 @@ def test_duration_between ():
 
 ################################################################################################################################################################
 
-@pytest.mark.skip
 def test_duration_parse ():
 
-    assert Duration.parse('02:03.456.000.000') is not None
-    assert Duration.parse('02:03.456.000.000', Duration.Format.Standard) is not None
-    assert Duration.parse('PT2M3.456S', Duration.Format.ISO8601) is not None
+    ## Using python strings
+
+    # Testing with default format argument (Duration::Format::Undefined)
+    duration: Duration = Duration.parse('02:03.456.000.000')
+
+    assert duration is not None
+    assert isinstance(duration, Duration)
+    assert duration.is_defined() is True
+
+    # Testing with Duration.Format.Standard
+    duration: Duration = Duration.parse('02:03.456.000.000', Duration.Format.Standard)
+
+    assert duration is not None
+    assert isinstance(duration, Duration)
+    assert duration.is_defined() is True
+
+    # Testing with Duration.Format.ISO8601
+    duration: Duration = Duration.parse('PT2M3.456S', Duration.Format.ISO8601)
+
+    assert duration is not None
+    assert isinstance(duration, Duration)
+    assert duration.is_defined() is True
+
+    ## Using String
+
+    # Testing with default format argument (Duration::Format::Undefined)
+    duration: Duration = Duration.parse(String('02:03.456.000.000'))
+
+    assert duration is not None
+    assert isinstance(duration, Duration)
+    assert duration.is_defined() is True
+
+    # Testing with Duration.Format.Standard
+    duration: Duration = Duration.parse(String('02:03.456.000.000'), Duration.Format.Standard)
+
+    assert duration is not None
+    assert isinstance(duration, Duration)
+    assert duration.is_defined() is True
+
+    # Testing with Duration.Format.ISO8601
+    duration: Duration = Duration.parse(String('PT2M3.456S'), Duration.Format.ISO8601)
+
+    assert duration is not None
+    assert isinstance(duration, Duration)
+    assert duration.is_defined() is True
 
 ################################################################################################################################################################
 

@@ -53,8 +53,6 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_DateTime     (   
         .def_static("modified_julian_date_epoch", &DateTime::ModifiedJulianDateEpoch)
         .def_static("julian_date", &DateTime::JulianDate)
         .def_static("modified_julian_date", &DateTime::ModifiedJulianDate)
-        .def("parse", +[] (const String& aString) -> DateTime { return DateTime::Parse(aString) ; })
-        .def("parse", +[] (const String& aString, const DateTime::Format& aFormat) -> DateTime { return DateTime::Parse(aString, aFormat) ; })
 
     ;
 
@@ -68,6 +66,11 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_DateTime     (   
         .value("STK", DateTime::Format::STK)
 
     ;
+
+    // https://pybind11.readthedocs.io/en/stable/advanced/functions.html#default-arguments-revisited
+    // "default arguments are converted to Python objects right at declaration time"
+    // The following parsing function requires DateTime::Format to be binded for proper declaration
+    datetime_class.def_static("parse", &DateTime::Parse, "aString"_a, "aFormat"_a=DateTime::Format::Undefined) ;
 
 }
 
