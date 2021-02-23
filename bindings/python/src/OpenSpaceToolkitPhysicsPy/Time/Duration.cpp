@@ -20,9 +20,9 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Duration     (   
 
     using ostk::physics::time::Duration ;
 
-    class_<Duration> duration(aModule, "Duration") ;
+    class_<Duration> duration_class(aModule, "Duration") ;
 
-    duration.def(init<int>())
+    duration_class.def(init<int>())
 
         .def(self == self)
         .def(self != self)
@@ -83,18 +83,18 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Duration     (   
         .def_static("days", &Duration::Days)
         .def_static("weeks", &Duration::Weeks)
         .def_static("between", &Duration::Between)
-        .def("parse", +[] (const String& aString) -> Duration { return Duration::Parse(aString) ; })
-        .def("parse", +[] (const String& aString, const Duration::Format& aFormat) -> Duration { return Duration::Parse(aString, aFormat) ; })
 
     ;
 
-    enum_<Duration::Format>(duration, "Format")
+    enum_<Duration::Format>(duration_class, "Format")
 
         .value("Undefined", Duration::Format::Undefined)
         .value("Standard", Duration::Format::Standard)
         .value("ISO8601", Duration::Format::ISO8601)
 
     ;
+
+    duration_class.def_static("parse", &Duration::Parse, "aString"_a, "aFormat"_a=Duration::Format::Undefined) ;
 
 }
 

@@ -20,9 +20,9 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Time         (   
 
     using ostk::physics::time::Time ;
 
-    class_<Time> time(aModule, "Time") ;
+    class_<Time> time_class(aModule, "Time") ;
 
-    time.def(init<int, int, int, int, int, int>())
+    time_class.def(init<int, int, int, int, int, int>())
 
         .def(init<int, int, int>())
 
@@ -54,18 +54,18 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Time         (   
         .def_static("undefined", &Time::Undefined)
         .def_static("midnight", &Time::Midnight)
         .def_static("noon", &Time::Noon)
-        .def("parse", +[] (const String& aString) -> Time { return Time::Parse(aString) ; })
-        .def("parse", +[] (const String& aString, const Time::Format& aFormat) -> Time { return Time::Parse(aString, aFormat) ; })
 
     ;
 
-    enum_<Time::Format>(time, "Format")
+    enum_<Time::Format>(time_class, "Format")
 
         .value("Undefined", Time::Format::Undefined)
         .value("Standard", Time::Format::Standard)
         .value("ISO8601", Time::Format::ISO8601)
 
     ;
+
+    time_class.def_static("parse", &Time::Parse, "aString"_a, "aFormat"_a=Time::Format::Undefined) ;
 
 }
 
