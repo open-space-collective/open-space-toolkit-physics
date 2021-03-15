@@ -98,7 +98,9 @@ class Celestial : public Object
             static Length       EquatorialRadius ;
             static Real         Flattening ;
             static Real         C20 ;
+            static Real         C40 ;
             static Real         J2 ;
+            static Real         J4 ;
 
         } ;
 
@@ -108,6 +110,7 @@ class Celestial : public Object
                                                                                 const   Length&                     anEquatorialRadius,
                                                                                 const   Real&                       aFlattening,
                                                                                 const   Real&                       aJ2,
+                                                                                const   Real&                       aJ4,
                                                                                 const   Shared<Ephemeris>&          anEphemeris,
                                                                                 const   Shared<GravitationalModel>& aGravitationalModel,
                                                                                 const   Shared<MagneticModel>&      aMagneticModel,
@@ -119,6 +122,7 @@ class Celestial : public Object
                                                                                 const   Length&                     anEquatorialRadius,
                                                                                 const   Real&                       aFlattening,
                                                                                 const   Real&                       aJ2,
+                                                                                const   Real&                       aJ4,
                                                                                 const   Shared<Ephemeris>&          anEphemeris,
                                                                                 const   Shared<GravitationalModel>& aGravitationalModel,
                                                                                 const   Shared<MagneticModel>&      aMagneticModel,
@@ -146,6 +150,8 @@ class Celestial : public Object
         Real                    getFlattening                               ( ) const ;
 
         Real                    getJ2                                       ( ) const ;
+
+        Real                    getJ4                                       ( ) const ;
 
         virtual Shared<const Frame> accessFrame                             ( ) const override ;
 
@@ -177,6 +183,7 @@ class Celestial : public Object
         Length                  equatorialRadius_ ;
         Real                    flattening_ ;
         Real                    j2_ ;
+        Real                    j4_ ;
         Shared<Ephemeris>       ephemeris_ ;
         Shared<GravitationalModel> gravitationalModelSPtr_ ;
         Shared<MagneticModel>   magneticModelSPtr_ ;

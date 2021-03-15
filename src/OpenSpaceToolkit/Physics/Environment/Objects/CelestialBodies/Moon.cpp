@@ -52,6 +52,7 @@ Real                            Moon::Flattening                                
                                         Moon::EquatorialRadius,
                                         Moon::Flattening,
                                         0.0,
+                                        0.0,
                                         anEphemeris,
                                         nullptr, // [TBI] Add gravitational model
                                         nullptr,

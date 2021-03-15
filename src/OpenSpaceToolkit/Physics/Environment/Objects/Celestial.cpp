@@ -34,6 +34,7 @@ namespace obj
                                                                                 const   Length&                     anEquatorialRadius,
                                                                                 const   Real&                       aFlattening,
                                                                                 const   Real&                       aJ2,
+                                                                                const   Real&                       aJ4,
                                                                                 const   Shared<Ephemeris>&          anEphemeris,
                                                                                 const   Shared<GravitationalModel>& aGravitationalModel,
                                                                                 const   Shared<MagneticModel>&      aMagneticModel,
@@ -44,6 +45,7 @@ namespace obj
                                     equatorialRadius_(anEquatorialRadius),
                                     flattening_(aFlattening),
                                     j2_(aJ2),
+                                    j4_(aJ4),
                                     ephemeris_(anEphemeris),
                                     gravitationalModelSPtr_(aGravitationalModel),
                                     magneticModelSPtr_(aMagneticModel)
@@ -57,6 +59,7 @@ namespace obj
                                                                                 const   Length&                     anEquatorialRadius,
                                                                                 const   Real&                       aFlattening,
                                                                                 const   Real&                       aJ2,
+                                                                                const   Real&                       aJ4,
                                                                                 const   Shared<Ephemeris>&          anEphemeris,
                                                                                 const   Shared<GravitationalModel>& aGravitationalModel,
                                                                                 const   Shared<MagneticModel>&      aMagneticModel,
@@ -68,6 +71,7 @@ namespace obj
                                     equatorialRadius_(anEquatorialRadius),
                                     flattening_(aFlattening),
                                     j2_(aJ2),
+                                    j4_(aJ4),
                                     ephemeris_(anEphemeris),
                                     gravitationalModelSPtr_(aGravitationalModel),
                                     magneticModelSPtr_(aMagneticModel)
@@ -183,6 +187,18 @@ Real                            Celestial::getJ2                            ( ) 
     }
 
     return j2_ ;
+
+}
+
+Real                            Celestial::getJ4                            ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Celestial") ;
+    }
+
+    return j4_ ;
 
 }
 
@@ -377,7 +393,7 @@ Shared<const Frame>             Celestial::getFrameAt                       (   
 
 Celestial                       Celestial::Undefined                        ( )
 {
-    return { String::Empty(), Celestial::Type::Undefined, Derived::Undefined(), Length::Undefined(), Real::Undefined(), Real::Undefined(), nullptr, nullptr, nullptr, Instant::Undefined() } ;
+    return { String::Empty(), Celestial::Type::Undefined, Derived::Undefined(), Length::Undefined(), Real::Undefined(), Real::Undefined(), Real::Undefined(), nullptr, nullptr, nullptr, Instant::Undefined() } ;
 }
 
 String                          Celestial::StringFromFrameType              (   const   Celestial::FrameType&       aFrameType                                  )

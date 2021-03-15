@@ -52,6 +52,7 @@ Real                            Sun::Flattening                                 
                                         Sun::EquatorialRadius,
                                         Sun::Flattening,
                                         0.0,
+                                        0.0,
                                         anEphemeris,
                                         nullptr, // [TBI] Add Sun gravitational model
                                         nullptr, // [TBI] Add Sun magnetic model

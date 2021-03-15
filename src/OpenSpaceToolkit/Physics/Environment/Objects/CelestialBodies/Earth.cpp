@@ -44,22 +44,28 @@ static const Derived::Unit      GravitationalParameterSIUnit                    
 // https://geographiclib.sourceforge.io/html/gravity.html
 // http://help.agi.com/stk/Content/gator/ab-cb.htm
 // https://www.iers.org/SharedDocs/Publikationen/EN/IERS/Publications/tn/TechnNote36/tn36_079.pdf?__blob=publicationFile&v=1
+// https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2011JB008916
+// https://books.google.fr/books?id=SuPQmbqyrFAC
 
 // EGM2008
 
 const Derived                   Earth::Models::EGM2008::GravitationalParameter  =       { 398600441500000.0, GravitationalParameterSIUnit } ;
 const Length                    Earth::Models::EGM2008::EquatorialRadius        =       Length::Meters(6378137.0) ;
 const Real                      Earth::Models::EGM2008::Flattening              =       1.0 / 298.257223563 ;
-const Real                      Earth::Models::EGM2008::C20                     =       -4.84169317366974e-4 ;
+const Real                      Earth::Models::EGM2008::C20                     =       -4.84169317366974e-04 ;
+const Real                      Earth::Models::EGM2008::C40                     =       5.39965866638991e-07 ;
 const Real                      Earth::Models::EGM2008::J2                      =       -Earth::Models::EGM2008::C20 * std::sqrt(5.0) ;
+const Real                      Earth::Models::EGM2008::J4                      =       -Earth::Models::EGM2008::C40 * std::sqrt(9.0) ;
 
 // EGM96 + WGS84
 
-const Derived                   Earth::Models::WGS84_EGM96::GravitationalParameter =      { 398600441800000.0, GravitationalParameterSIUnit } ;
+const Derived                   Earth::Models::WGS84_EGM96::GravitationalParameter =    { 398600441800000.0, GravitationalParameterSIUnit } ;
 const Length                    Earth::Models::WGS84_EGM96::EquatorialRadius    =       Length::Meters(6378137.0) ;
 const Real                      Earth::Models::WGS84_EGM96::Flattening          =       1.0 / 298.257223563 ;
 const Real                      Earth::Models::WGS84_EGM96::C20                 =       -4.841653717360e-04 ;
+const Real                      Earth::Models::WGS84_EGM96::C40                 =       5.398738637890e-07 ;
 const Real                      Earth::Models::WGS84_EGM96::J2                  =       -Earth::Models::WGS84_EGM96::C20 * std::sqrt(5.0) ; // 0.0010826266835531513
+const Real                      Earth::Models::WGS84_EGM96::J4                  =       -Earth::Models::WGS84_EGM96::C40 * std::sqrt(9.0) ;
 
 // EGM96
 
@@ -67,7 +73,9 @@ const Derived                   Earth::Models::EGM96::GravitationalParameter    
 const Length                    Earth::Models::EGM96::EquatorialRadius          =       Length::Meters(6378136.3) ;
 const Real                      Earth::Models::EGM96::Flattening                =       1.0 / 298.257223563 ;
 const Real                      Earth::Models::EGM96::C20                       =       -4.841653717360e-04 ;
+const Real                      Earth::Models::EGM96::C40                       =       5.398738637890e-07 ;
 const Real                      Earth::Models::EGM96::J2                        =       -Earth::Models::EGM96::C20 * std::sqrt(5.0) ;
+const Real                      Earth::Models::EGM96::J4                        =       -Earth::Models::EGM96::C40 * std::sqrt(9.0) ;
 
 // WGS84
 
@@ -75,7 +83,9 @@ const Derived                   Earth::Models::WGS84::GravitationalParameter    
 const Length                    Earth::Models::WGS84::EquatorialRadius          =       Length::Meters(6378137.0) ;
 const Real                      Earth::Models::WGS84::Flattening                =       1.0 / 298.257223563 ;
 const Real                      Earth::Models::WGS84::C20                       =       -4.841668500000e-04 ;
+const Real                      Earth::Models::WGS84::C40                       =       5.369958670000e-07 ;
 const Real                      Earth::Models::WGS84::J2                        =       -Earth::Models::WGS84::C20 * std::sqrt(5.0) ;
+const Real                      Earth::Models::WGS84::J4                        =       -Earth::Models::WGS84::C40 * std::sqrt(9.0) ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -83,7 +93,9 @@ const Derived                   Earth::GravitationalParameter                   
 const Length                    Earth::EquatorialRadius                         =       Earth::Models::EGM2008::EquatorialRadius ; // [TBR]
 const Real                      Earth::Flattening                               =       Earth::Models::EGM2008::Flattening ; // [TBR]
 const Real                      Earth::C20                                      =       Earth::Models::EGM2008::C20 ; // [TBR]
+const Real                      Earth::C40                                      =       Earth::Models::EGM2008::C40 ; // [TBR]
 const Real                      Earth::J2                                       =       Earth::Models::EGM2008::J2 ; // [TBR]
+const Real                      Earth::J4                                       =       Earth::Models::EGM2008::J4 ; // [TBR]
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -91,6 +103,7 @@ const Real                      Earth::J2                                       
                                                                                 const   Length&                     anEquatorialRadius,
                                                                                 const   Real&                       aFlattening,
                                                                                 const   Real&                       aJ2,
+                                                                                const   Real&                       aJ4,
                                                                                 const   Shared<Ephemeris>&          anEphemeris,
                                                                                 const   EarthGravitationalModel::Type& aGravitationalModelType,
                                                                                 const   EarthMagneticModel::Type&   aMagneticModelType,
@@ -103,6 +116,7 @@ const Real                      Earth::J2                                       
                                         anEquatorialRadius,
                                         aFlattening,
                                         aJ2,
+                                        aJ4,
                                         anEphemeris,
                                         std::make_shared<EarthGravitationalModel>(aGravitationalModelType),
                                         std::make_shared<EarthMagneticModel>(aMagneticModelType),
@@ -142,6 +156,7 @@ Earth                           Earth::EGM2008                              ( )
         Earth::Models::EGM2008::EquatorialRadius,
         Earth::Models::EGM2008::Flattening,
         Earth::Models::EGM2008::J2,
+        Earth::Models::EGM2008::J4,
         std::make_shared<Analytical>(earthFrameSPtr),
         EarthGravitationalModel::Type::EGM2008,
         EarthMagneticModel::Type::Dipole,
@@ -164,6 +179,7 @@ Earth                           Earth::WGS84_EGM96                          ( )
         Earth::Models::WGS84_EGM96::EquatorialRadius,
         Earth::Models::WGS84_EGM96::Flattening,
         Earth::Models::WGS84_EGM96::J2,
+        Earth::Models::WGS84_EGM96::J4,
         std::make_shared<Analytical>(earthFrameSPtr),
         EarthGravitationalModel::Type::EGM96,
         EarthMagneticModel::Type::Dipole,
@@ -186,6 +202,7 @@ Earth                           Earth::EGM96                                ( )
         Earth::Models::EGM96::EquatorialRadius,
         Earth::Models::EGM96::Flattening,
         Earth::Models::EGM96::J2,
+        Earth::Models::EGM96::J4,
         std::make_shared<Analytical>(earthFrameSPtr),
         EarthGravitationalModel::Type::EGM96,
         EarthMagneticModel::Type::Dipole,
@@ -208,6 +225,7 @@ Earth                           Earth::WGS84                                ( )
         Earth::Models::WGS84::EquatorialRadius,
         Earth::Models::WGS84::Flattening,
         Earth::Models::WGS84::J2,
+        Earth::Models::WGS84::J4,
         std::make_shared<Analytical>(earthFrameSPtr),
         EarthGravitationalModel::Type::WGS84,
         EarthMagneticModel::Type::Dipole,

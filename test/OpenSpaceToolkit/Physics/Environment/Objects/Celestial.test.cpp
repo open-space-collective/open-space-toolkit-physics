@@ -86,6 +86,7 @@ TEST (OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetGravitationalFi
         const Length equatorialRadius = Length::Kilometers(1000.0) ;
         const Real flattening = 0.0 ;
         const Real j2 = 0.0 ;
+        const Real j4 = 0.0 ;
         const Shared<Ephemeris> ephemeris = std::make_shared<Analytical>(Frame::ITRF()) ;
         const Shared<GravitationalModel> gravitationalModel = std::make_shared<Spherical>(gravitationalParameter) ;
         const Instant instant = Instant::J2000() ;
@@ -98,6 +99,7 @@ TEST (OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetGravitationalFi
             equatorialRadius,
             flattening,
             j2,
+            j4,
             ephemeris,
             gravitationalModel,
             nullptr,
@@ -181,6 +183,7 @@ TEST (OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetMagneticFieldAt
         const Length equatorialRadius = Length::Kilometers(1000.0) ;
         const Real flattening = 0.0 ;
         const Real j2 = 0.0 ;
+        const Real j4 = 0.0 ;
         const Shared<Ephemeris> ephemeris = std::make_shared<Analytical>(Frame::ITRF()) ;
         const Shared<MagneticModel> magneticModel = std::make_shared<Dipole>(Vector3d { 0.0, 0.0, 1.0 }) ;
         const Instant instant = Instant::J2000() ;
@@ -193,6 +196,7 @@ TEST (OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetMagneticFieldAt
             equatorialRadius,
             flattening,
             j2,
+            j4,
             ephemeris,
             nullptr,
             magneticModel,
