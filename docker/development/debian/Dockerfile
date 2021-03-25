@@ -100,21 +100,21 @@ RUN git clone git://git.code.sf.net/p/geographiclib/code /tmp/geographiclib \
  && rm -rf /tmp/geographiclib \
  && rm -rf /var/lib/apt/lists/*
 
-## Open Space Toolkit ▸ Core [0.4.2]
+## Open Space Toolkit ▸ Core [0.4.3]
 
 RUN mkdir -p /tmp/open-space-toolkit-core \
  && cd /tmp/open-space-toolkit-core \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/0.4.2/open-space-toolkit-core-0.4.2-1.x86_64-runtime.deb \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/0.4.2/open-space-toolkit-core-0.4.2-1.x86_64-devel.deb \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/0.4.3/open-space-toolkit-core-0.4.3-1.x86_64-runtime.deb \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/0.4.3/open-space-toolkit-core-0.4.3-1.x86_64-devel.deb \
  && apt-get install -y ./*.deb \
  && rm -rf /tmp/open-space-toolkit-core
 
-## Open Space Toolkit ▸ I/O [0.4.1]
+## Open Space Toolkit ▸ I/O [0.4.3]
 
 RUN mkdir -p /tmp/open-space-toolkit-io \
  && cd /tmp/open-space-toolkit-io \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/0.4.1/open-space-toolkit-io-0.4.1-1.x86_64-runtime.deb \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/0.4.1/open-space-toolkit-io-0.4.1-1.x86_64-devel.deb \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/0.4.3/open-space-toolkit-io-0.4.3-1.x86_64-runtime.deb \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/0.4.3/open-space-toolkit-io-0.4.3-1.x86_64-devel.deb \
  && apt-get install -y ./*.deb \
  && rm -rf /tmp/open-space-toolkit-io
 
