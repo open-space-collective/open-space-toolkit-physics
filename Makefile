@@ -15,7 +15,7 @@ export docker_registry_path := openspacecollective
 export docker_image_repository := $(docker_registry_path)/$(project_name)
 export docker_image_version := $(project_version)
 
-export development_base_image_version := 0.2.0
+export development_base_image_version := 0.2.1
 
 export docker_development_image_repository := $(docker_image_repository)-development
 export docker_release_image_cpp_repository := $(docker_image_repository)-cpp
@@ -259,7 +259,8 @@ _build-packages-cpp: _build-development-image
 	--volume="/app/build" \
 	--workdir=/app/build \
 	$(docker_development_image_repository):$(docker_image_version)-$(target) \
-	/bin/bash -c "cmake -DBUILD_UNIT_TESTS=OFF -DBUILD_PYTHON_BINDINGS=OFF -DCPACK_GENERATOR=$(package_generator) .. && make package && mkdir -p /app/packages/cpp && mv /app/build/*.$(package_extension) /app/packages/cpp"
+	/bin/bash -c "cmake -DBUILD_UNIT_TESTS=OFF -DBUILD_PYTHON_BINDINGS=OFF -DCPACK_GENERATOR=$(package_generator) .. \
+	&& make package && mkdir -p /app/packages/cpp && mv /app/build/*.$(package_extension) /app/packages/cpp"
 
 build-packages-python: ## Build Python packages
 
@@ -514,7 +515,8 @@ _test-coverage-cpp: _build-development-image
 	--env=OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY \
 	--env=OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY \
 	$(docker_development_image_repository):$(docker_image_version)-$(target) \
-	/bin/bash -c "cmake -DBUILD_PYTHON_BINDINGS=OFF -DBUILD_CODE_COVERAGE=ON .. && make -j 4 && make coverage && (rm -rf /app/coverage || true) && mkdir /app/coverage && mv /app/build/coverage* /app/coverage"
+	/bin/bash -c "cmake -DBUILD_PYTHON_BINDINGS=OFF -DBUILD_CODE_COVERAGE=ON .. && make -j 4 \
+	&& make coverage && (rm -rf /app/coverage || true) && mkdir /app/coverage && mv /app/build/coverage* /app/coverage"
 
 ################################################################################################################################################################
 
