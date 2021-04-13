@@ -41,6 +41,7 @@ var searchData=
   ['getinterval',['getInterval',['../classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a.html#a80c02efda876c2359d5f26a5804dff2d',1,'ostk::physics::coord::frame::provider::iers::Finals2000A']]],
   ['getinverse',['getInverse',['../classostk_1_1physics_1_1coord_1_1_transform.html#a5ef781c60716faaf49befca0380285fe',1,'ostk::physics::coord::Transform']]],
   ['getj2',['getJ2',['../classostk_1_1physics_1_1env_1_1obj_1_1_celestial.html#ac7b892c6433c93f227d53f59285aac1d',1,'ostk::physics::env::obj::Celestial']]],
+  ['getj4',['getJ4',['../classostk_1_1physics_1_1env_1_1obj_1_1_celestial.html#a8c117d675e0a8c46cc6bb1b7bfdbf87c',1,'ostk::physics::env::obj::Celestial']]],
   ['getjuliandate',['getJulianDate',['../classostk_1_1physics_1_1time_1_1_date_time.html#a067835c455394e18072d654455ac89cb',1,'ostk::physics::time::DateTime::getJulianDate()'],['../classostk_1_1physics_1_1time_1_1_instant.html#a71b3a5992123fddb3a3539dc99df66c1',1,'ostk::physics::time::Instant::getJulianDate()']]],
   ['getlatitude',['getLatitude',['../classostk_1_1physics_1_1coord_1_1spherical_1_1_l_l_a.html#a0b6d5f7409e1efbff0f01a9c00a876e8',1,'ostk::physics::coord::spherical::LLA']]],
   ['getleapsecondcount',['getLeapSecondCount',['../classostk_1_1physics_1_1time_1_1_instant.html#aceab87ef79e6f5d1438ac78e11bdcd6f',1,'ostk::physics::time::Instant']]],

@@ -14,8 +14,8 @@ var classostk_1_1physics_1_1env_1_1obj_1_1_celestial =
       [ "Moon", "classostk_1_1physics_1_1env_1_1obj_1_1_celestial.html#aa0711d887522b35b2b3630156d912779ad502a50ed945d5fca74e0105575b5b34", null ],
       [ "Mars", "classostk_1_1physics_1_1env_1_1obj_1_1_celestial.html#aa0711d887522b35b2b3630156d912779a671f028142280b556a85ffdd90e0a43d", null ]
     ] ],
-    [ "Celestial", "classostk_1_1physics_1_1env_1_1obj_1_1_celestial.html#a428093b00b3f96d733426a168b344984", null ],
-    [ "Celestial", "classostk_1_1physics_1_1env_1_1obj_1_1_celestial.html#a9519c2dacaeaf7b67fa7cae77eab427e", null ],
+    [ "Celestial", "classostk_1_1physics_1_1env_1_1obj_1_1_celestial.html#a9873ec6b48f6a0980dd604806d2d4840", null ],
+    [ "Celestial", "classostk_1_1physics_1_1env_1_1obj_1_1_celestial.html#aa7e7d7dbde7fae72ffbd859448f5397a", null ],
     [ "~Celestial", "classostk_1_1physics_1_1env_1_1obj_1_1_celestial.html#aadbeb101aaa4c4acb136278385d2080b", null ],
     [ "accessEphemeris", "classostk_1_1physics_1_1env_1_1obj_1_1_celestial.html#a381edd898ce5b55e533a250a8212cf1b", null ],
     [ "accessFrame", "classostk_1_1physics_1_1env_1_1obj_1_1_celestial.html#a0140fc682a707ec2dc715828e532db79", null ],
@@ -29,6 +29,7 @@ var classostk_1_1physics_1_1env_1_1obj_1_1_celestial =
     [ "getGravitationalFieldAt", "classostk_1_1physics_1_1env_1_1obj_1_1_celestial.html#adc8df9d860d30eb49600e644f63045bc", null ],
     [ "getGravitationalParameter", "classostk_1_1physics_1_1env_1_1obj_1_1_celestial.html#a433a6bf852e23db369fec77f02e90647", null ],
     [ "getJ2", "classostk_1_1physics_1_1env_1_1obj_1_1_celestial.html#ac7b892c6433c93f227d53f59285aac1d", null ],
+    [ "getJ4", "classostk_1_1physics_1_1env_1_1obj_1_1_celestial.html#a8c117d675e0a8c46cc6bb1b7bfdbf87c", null ],
     [ "getMagneticFieldAt", "classostk_1_1physics_1_1env_1_1obj_1_1_celestial.html#ae2cd7ac1cb6a896390394b77cffa0297", null ],
     [ "getPositionIn", "classostk_1_1physics_1_1env_1_1obj_1_1_celestial.html#af38fd0017fe14cfb6103684fcb1d3ee9", null ],
     [ "getTerminatorGeometry", "classostk_1_1physics_1_1env_1_1obj_1_1_celestial.html#a4c594d934cf5c6a25795d6a992ea564f", null ],

@@ -1,5 +1,6 @@
 var NAVTREEINDEX4 =
 {
+"classostk_1_1physics_1_1units_1_1_angle.html#aea1f8018b1d378b9dee56959d8eb9defaec0fc0100c4fc1ce4eea230c3dc10360":[4,0,0,0,5,0,0,0],
 "classostk_1_1physics_1_1units_1_1_angle.html#af0d5d649b2a1310e6337663f7b9283bf":[4,0,0,0,5,0,3],
 "classostk_1_1physics_1_1units_1_1_angle.html#af699984b24759466957ecddaa7e61fc9":[4,0,0,0,5,0,28],
 "classostk_1_1physics_1_1units_1_1_derived.html":[4,0,0,0,5,1],
@@ -187,8 +188,8 @@ var NAVTREEINDEX4 =
 "dir_fafa3b18a87fe401f1a26033653cf1dd.html":[5,0,0,0,0,2,5],
 "dir_fdc2ce6839bd9a3b87630c53f2ae038b.html":[5,0,1,0],
 "files.html":[5,0],
-"functions.html":[4,2,0],
 "functions.html":[4,2,0,0],
+"functions.html":[4,2,0],
 "functions_0x7e.html":[4,2,0,25],
 "functions_b.html":[4,2,0,1],
 "functions_c.html":[4,2,0,2],
@@ -248,6 +249,5 @@ var NAVTREEINDEX4 =
 "globals.html":[5,1,0],
 "globals_defs.html":[5,1,2],
 "globals_type.html":[5,1,1],
-"hierarchy.html":[4,1],
-"index.html":[]
+"hierarchy.html":[4,1]
 };

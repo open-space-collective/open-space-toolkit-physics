@@ -18,7 +18,7 @@ struct \hyperlink{structostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_1_1_mo
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_aeed4d52f7da5b8f895701eb79826599a}{Earth} (const \hyperlink{classostk_1_1physics_1_1units_1_1_derived}{Derived} \&a\+Gravitational\+Parameter, const \hyperlink{classostk_1_1physics_1_1units_1_1_length}{Length} \&an\+Equatorial\+Radius, const Real \&a\+Flattening, const Real \&a\+J2, const Shared$<$ \hyperlink{classostk_1_1physics_1_1env_1_1_ephemeris}{Ephemeris} $>$ \&an\+Ephemeris, const \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05}{Earth\+Gravitational\+Model\+::\+Type} \&a\+Gravitational\+Model\+Type, const \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6}{Earth\+Magnetic\+Model\+::\+Type} \&a\+Magnetic\+Model\+Type, const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant)
+\hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_ae3327b5673664451201468dd16667f42}{Earth} (const \hyperlink{classostk_1_1physics_1_1units_1_1_derived}{Derived} \&a\+Gravitational\+Parameter, const \hyperlink{classostk_1_1physics_1_1units_1_1_length}{Length} \&an\+Equatorial\+Radius, const Real \&a\+Flattening, const Real \&a\+J2, const Real \&a\+J4, const Shared$<$ \hyperlink{classostk_1_1physics_1_1env_1_1_ephemeris}{Ephemeris} $>$ \&an\+Ephemeris, const \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05}{Earth\+Gravitational\+Model\+::\+Type} \&a\+Gravitational\+Model\+Type, const \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6}{Earth\+Magnetic\+Model\+::\+Type} \&a\+Magnetic\+Model\+Type, const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant)
 \item 
 virtual \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_ac718f964c68fa41331978751a9ca4818}{$\sim$\+Earth} () override
 \item 
@@ -48,17 +48,21 @@ static const Real \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_ea
 \item 
 static const Real \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_a51d8f851ef1f2c199dbf7707d9843eb4}{C20} = Earth\+::\+Models\+::\+E\+G\+M2008\+::\+C20
 \item 
+static const Real \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_a0b6e3b6beaa94ea1ed611395e824ce9d}{C40} = Earth\+::\+Models\+::\+E\+G\+M2008\+::\+C40
+\item 
 static const Real \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_a0c09ef7a4fb1f6d5d077e4108fb4e56a}{J2} = Earth\+::\+Models\+::\+E\+G\+M2008\+::\+J2
+\item 
+static const Real \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_a1bbb48f44c28957851d971e35b628a6b}{J4} = Earth\+::\+Models\+::\+E\+G\+M2008\+::\+J4
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_aeed4d52f7da5b8f895701eb79826599a}\label{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_aeed4d52f7da5b8f895701eb79826599a}} 
+\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_ae3327b5673664451201468dd16667f42}\label{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_ae3327b5673664451201468dd16667f42}} 
 \index{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth@{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth}!Earth@{Earth}}
 \index{Earth@{Earth}!ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth@{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth}}
 \subsubsection{\texorpdfstring{Earth()}{Earth()}}
-{\footnotesize\ttfamily ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth\+::\+Earth (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1units_1_1_derived}{Derived} \&}]{a\+Gravitational\+Parameter,  }\item[{const \hyperlink{classostk_1_1physics_1_1units_1_1_length}{Length} \&}]{an\+Equatorial\+Radius,  }\item[{const Real \&}]{a\+Flattening,  }\item[{const Real \&}]{a\+J2,  }\item[{const Shared$<$ \hyperlink{classostk_1_1physics_1_1env_1_1_ephemeris}{Ephemeris} $>$ \&}]{an\+Ephemeris,  }\item[{const \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05}{Earth\+Gravitational\+Model\+::\+Type} \&}]{a\+Gravitational\+Model\+Type,  }\item[{const \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6}{Earth\+Magnetic\+Model\+::\+Type} \&}]{a\+Magnetic\+Model\+Type,  }\item[{const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth\+::\+Earth (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1units_1_1_derived}{Derived} \&}]{a\+Gravitational\+Parameter,  }\item[{const \hyperlink{classostk_1_1physics_1_1units_1_1_length}{Length} \&}]{an\+Equatorial\+Radius,  }\item[{const Real \&}]{a\+Flattening,  }\item[{const Real \&}]{a\+J2,  }\item[{const Real \&}]{a\+J4,  }\item[{const Shared$<$ \hyperlink{classostk_1_1physics_1_1env_1_1_ephemeris}{Ephemeris} $>$ \&}]{an\+Ephemeris,  }\item[{const \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05}{Earth\+Gravitational\+Model\+::\+Type} \&}]{a\+Gravitational\+Model\+Type,  }\item[{const \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6}{Earth\+Magnetic\+Model\+::\+Type} \&}]{a\+Magnetic\+Model\+Type,  }\item[{const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_ac718f964c68fa41331978751a9ca4818}\label{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_ac718f964c68fa41331978751a9ca4818}} 
 \index{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth@{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth}!````~Earth@{$\sim$\+Earth}}
@@ -157,6 +161,12 @@ N\+I\+MA T\+R8350.\+2, Third Edition, 4 July 1997.
 \subsubsection{\texorpdfstring{C20}{C20}}
 {\footnotesize\ttfamily const Real ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth\+::\+C20 = Earth\+::\+Models\+::\+E\+G\+M2008\+::\+C20\hspace{0.3cm}{\ttfamily [static]}}
 
+\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_a0b6e3b6beaa94ea1ed611395e824ce9d}\label{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_a0b6e3b6beaa94ea1ed611395e824ce9d}} 
+\index{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth@{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth}!C40@{C40}}
+\index{C40@{C40}!ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth@{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth}}
+\subsubsection{\texorpdfstring{C40}{C40}}
+{\footnotesize\ttfamily const Real ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth\+::\+C40 = Earth\+::\+Models\+::\+E\+G\+M2008\+::\+C40\hspace{0.3cm}{\ttfamily [static]}}
+
 \mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_ac700d34023a4654da6f781fc097034ad}\label{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_ac700d34023a4654da6f781fc097034ad}} 
 \index{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth@{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth}!Equatorial\+Radius@{Equatorial\+Radius}}
 \index{Equatorial\+Radius@{Equatorial\+Radius}!ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth@{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth}}
@@ -180,6 +190,12 @@ N\+I\+MA T\+R8350.\+2, Third Edition, 4 July 1997.
 \index{J2@{J2}!ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth@{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth}}
 \subsubsection{\texorpdfstring{J2}{J2}}
 {\footnotesize\ttfamily const Real ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth\+::\+J2 = Earth\+::\+Models\+::\+E\+G\+M2008\+::\+J2\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_a1bbb48f44c28957851d971e35b628a6b}\label{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_a1bbb48f44c28957851d971e35b628a6b}} 
+\index{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth@{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth}!J4@{J4}}
+\index{J4@{J4}!ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth@{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth}}
+\subsubsection{\texorpdfstring{J4}{J4}}
+{\footnotesize\ttfamily const Real ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth\+::\+J4 = Earth\+::\+Models\+::\+E\+G\+M2008\+::\+J4\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
