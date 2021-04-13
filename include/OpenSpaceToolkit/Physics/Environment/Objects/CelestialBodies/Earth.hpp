@@ -68,7 +68,9 @@ class Earth : public Celestial
                 static const Length EquatorialRadius ;
                 static const Real Flattening ;
                 static const Real C20 ;
+                static const Real C40 ;
                 static const Real J2 ;
+                static const Real J4 ;
 
             } ;
 
@@ -79,7 +81,9 @@ class Earth : public Celestial
                 static const Length EquatorialRadius ;
                 static const Real Flattening ;
                 static const Real C20 ;
+                static const Real C40 ;
                 static const Real J2 ;
+                static const Real J4 ;
 
             } ;
 
@@ -90,7 +94,9 @@ class Earth : public Celestial
                 static const Length EquatorialRadius ;
                 static const Real Flattening ;
                 static const Real C20 ;
+                static const Real C40 ;
                 static const Real J2 ;
+                static const Real J4 ;
 
             } ;
 
@@ -101,7 +107,9 @@ class Earth : public Celestial
                 static const Length EquatorialRadius ;
                 static const Real Flattening ;
                 static const Real C20 ;
+                static const Real C40 ;
                 static const Real J2 ;
+                static const Real J4 ;
 
             } ;
 
@@ -111,12 +119,15 @@ class Earth : public Celestial
         static const Length     EquatorialRadius ; // [TBR]
         static const Real       Flattening ; // [TBR]
         static const Real       C20 ; // [TBR]
+        static const Real       C40 ; // [TBR]
         static const Real       J2 ; // [TBR]
+        static const Real       J4 ; // [TBR]
 
                                 Earth                                       (   const   Derived&                    aGravitationalParameter,
                                                                                 const   Length&                     anEquatorialRadius,
                                                                                 const   Real&                       aFlattening,
                                                                                 const   Real&                       aJ2,
+                                                                                const   Real&                       aJ4,
                                                                                 const   Shared<Ephemeris>&          anEphemeris,
                                                                                 const   EarthGravitationalModel::Type& aGravitationalModelType,
                                                                                 const   EarthMagneticModel::Type&   aMagneticModelType,

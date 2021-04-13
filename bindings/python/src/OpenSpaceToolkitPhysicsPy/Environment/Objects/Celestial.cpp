@@ -31,9 +31,9 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
 
     class_<Celestial, Shared<Celestial>, Object> celestial_class(aModule, "Celestial") ;
 
-    celestial_class.def(init<const String&, const Celestial::Type&, const Derived& , const Length&, const Real&, const Real&, const Shared<Ephemeris>&, const Shared<GravitationalModel>&, const Shared<MagneticModel>&, const Instant&>())
+    celestial_class.def(init<const String&, const Celestial::Type&, const Derived& , const Length&, const Real&, const Real&, const Real&, const Shared<Ephemeris>&, const Shared<GravitationalModel>&, const Shared<MagneticModel>&, const Instant&>())
 
-        .def(init<const String&, const Celestial::Type&, const Derived& , const Length&, const Real&, const Real&, const Shared<Ephemeris>&, const Shared<GravitationalModel>&, const Shared<MagneticModel>&, const Instant&, const Object::Geometry&>())
+        .def(init<const String&, const Celestial::Type&, const Derived& , const Length&, const Real&, const Real&, const Real&, const Shared<Ephemeris>&, const Shared<GravitationalModel>&, const Shared<MagneticModel>&, const Instant&, const Object::Geometry&>())
 
         // Need to create corresponding operators in C++ source code for proper use of binding code below
         // .def(self == self)
@@ -55,6 +55,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
         .def("get_equatorial_radius", &Celestial::getEquatorialRadius)
         .def("get_flattening", &Celestial::getFlattening)
         .def("get_j2", &Celestial::getJ2)
+        .def("get_j4", &Celestial::getJ4)
         // .def("access_frame", &Celestial::accessFrame)
         .def("get_position_in", &Celestial::getPositionIn)
         .def("get_transform_to", &Celestial::getTransformTo)
