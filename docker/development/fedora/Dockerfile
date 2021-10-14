@@ -111,12 +111,12 @@ RUN mkdir -p /tmp/open-space-toolkit-io \
  && dnf install -y ./*.rpm \
  && rm -rf /tmp/open-space-toolkit-io
 
-## Open Space Toolkit ▸ Mathematics [0.4.1]
+## Open Space Toolkit ▸ Mathematics [0.4.2]
 
 RUN mkdir -p /tmp/open-space-toolkit-mathematics \
  && cd /tmp/open-space-toolkit-mathematics \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/0.4.1/open-space-toolkit-mathematics-0.4.1-1.x86_64-runtime.rpm \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/0.4.1/open-space-toolkit-mathematics-0.4.1-1.x86_64-devel.rpm \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/0.4.2/open-space-toolkit-mathematics-0.4.2-1.x86_64-runtime.rpm \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/0.4.2/open-space-toolkit-mathematics-0.4.2-1.x86_64-devel.rpm \
  && dnf install -y ./*.rpm \
  && rm -rf /tmp/open-space-toolkit-mathematics
 
