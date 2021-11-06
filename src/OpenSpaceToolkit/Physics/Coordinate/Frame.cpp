@@ -11,6 +11,7 @@
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/TIRF.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/CIRF.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/TEME.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/MOD.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/GCRF.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Static.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp>
@@ -341,6 +342,17 @@ Shared<const Frame>             Frame::GCRF                                 ( )
     static const Shared<const Provider> providerSPtr = std::make_shared<const GCRFProvider>() ;
 
     return Frame::Emplace("GCRF", true, nullptr, providerSPtr) ;
+
+}
+
+Shared<const Frame>             Frame::MOD                                  ( )
+{
+
+    using MODProvider = ostk::physics::coord::frame::provider::MOD ;
+
+    static const Shared<const Provider> providerSPtr = std::make_shared<const MODProvider>() ;
+
+    return Frame::Emplace("MOD", true, Frame::GCRF(), providerSPtr) ;
 
 }
 
