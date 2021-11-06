@@ -52,6 +52,8 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame  (   
         .def_static("undefined", &Frame::Undefined)
         // .def_static("ICRF", &Frame::ICRF)
         .def_static("GCRF", &Frame::GCRF)
+        .def_static("MOD", &Frame::MOD)
+        .def_static("TOD", &Frame::TOD)
         // .def_static("EME2000", &Frame::EME2000)
         .def_static("TEME", &Frame::TEME)
         .def_static("TEME_of_epoch", &Frame::TEMEOfEpoch)

@@ -314,23 +314,58 @@ DateTime                        DateTime::JulianDate                        (   
 
     Uint32 hours = static_cast<Uint32>(std::floor(nanosecondCountOfDay / (3600.0 * 1e9))) ;
 
-    nanosecondCountOfDay -= Uint64(hours * 3600 * 1e9) ;
+    if (nanosecondCountOfDay > Uint64(hours * 3600 * 1e9))
+    {
+        nanosecondCountOfDay -= Uint64(hours * 3600 * 1e9) ;
+    }
+    else
+    {
+        nanosecondCountOfDay = 0 ;
+    }
 
     Uint32 minute = static_cast<Uint32>(std::floor(nanosecondCountOfDay / (60.0 * 1e9))) ;
 
-    nanosecondCountOfDay -= Uint64(minute * 60 * 1e9) ;
+    if (nanosecondCountOfDay > Uint64(minute * 60 * 1e9))
+    {
+        nanosecondCountOfDay -= Uint64(minute * 60 * 1e9) ;
+    }
+    else
+    {
+        nanosecondCountOfDay = 0 ;
+    }
 
     Uint32 second = static_cast<Uint32>(std::floor(nanosecondCountOfDay / 1e9)) ;
 
-    nanosecondCountOfDay -= Uint64(second * 1e9) ;
+    if (nanosecondCountOfDay > Uint64(second * 1e9))
+    {
+        nanosecondCountOfDay -= Uint64(second * 1e9) ;
+    }
+    else
+    {
+        nanosecondCountOfDay = 0 ;
+    }
 
     Uint32 millisecond = static_cast<Uint32>(std::round(nanosecondCountOfDay / 1e6)) ;
 
-    nanosecondCountOfDay -= Uint64(millisecond * 1e6) ;
+    if (nanosecondCountOfDay > Uint64(millisecond * 1e6))
+    {
+        nanosecondCountOfDay -= Uint64(millisecond * 1e6) ;
+    }
+    else
+    {
+        nanosecondCountOfDay = 0 ;
+    }
 
     Uint32 microsecond = static_cast<Uint32>(std::round(nanosecondCountOfDay / 1e3)) ;
 
-    nanosecondCountOfDay -= Uint64(microsecond * 1e3) ;
+    if (nanosecondCountOfDay > Uint64(microsecond * 1e3))
+    {
+        nanosecondCountOfDay -= Uint64(microsecond * 1e3) ;
+    }
+    else
+    {
+        nanosecondCountOfDay = 0 ;
+    }
 
     Uint32 nanosecond = nanosecondCountOfDay ;
 

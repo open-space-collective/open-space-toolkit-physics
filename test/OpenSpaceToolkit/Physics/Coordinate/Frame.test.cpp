@@ -57,7 +57,8 @@ TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, EqualToOperator)
 
         EXPECT_TRUE(Frame::GCRF() == Frame::GCRF()) ;
         EXPECT_TRUE(Frame::ITRF() == Frame::ITRF()) ;
-
+        EXPECT_TRUE(Frame::MOD() == Frame::MOD()) ;
+        EXPECT_TRUE(Frame::TOD() == Frame::TOD()) ;
         EXPECT_TRUE(Frame::TEMEOfEpoch(Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC)) == Frame::TEMEOfEpoch(Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC))) ;
 
     }
@@ -344,6 +345,8 @@ TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, IsDefined)
         // EXPECT_TRUE(Frame::ICRF()->isDefined()) ;
         EXPECT_TRUE(Frame::GCRF()->isDefined()) ;
         // EXPECT_TRUE(Frame::EME2000()->isDefined()) ;
+        EXPECT_TRUE(Frame::MOD()->isDefined()) ;
+        EXPECT_TRUE(Frame::TOD()->isDefined()) ;
         EXPECT_TRUE(Frame::TEME()->isDefined()) ;
         EXPECT_TRUE(Frame::TEMEOfEpoch(Instant::J2000())->isDefined()) ;
         EXPECT_TRUE(Frame::CIRF()->isDefined()) ;
@@ -401,6 +404,8 @@ TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, IsQuasiInertial)
         // EXPECT_TRUE(Frame::ICRF()->isQuasiInertial()) ;
         EXPECT_TRUE(Frame::GCRF()->isQuasiInertial()) ;
         // EXPECT_TRUE(Frame::EME2000()->isQuasiInertial()) ;
+        EXPECT_TRUE(Frame::MOD()->isQuasiInertial()) ;
+        EXPECT_TRUE(Frame::TOD()->isQuasiInertial()) ;
         EXPECT_TRUE(Frame::TEME()->isQuasiInertial()) ;
         EXPECT_TRUE(Frame::TEMEOfEpoch(Instant::J2000())->isQuasiInertial()) ;
         EXPECT_FALSE(Frame::CIRF()->isQuasiInertial()) ;
@@ -458,6 +463,8 @@ TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, HasParent)
         // EXPECT_FALSE(Frame::ICRF()->hasParent()) ;
         EXPECT_FALSE(Frame::GCRF()->hasParent()) ;
         // EXPECT_TRUE(Frame::EME2000()->hasParent()) ;
+        EXPECT_TRUE(Frame::MOD()->hasParent()) ;
+        EXPECT_TRUE(Frame::TOD()->hasParent()) ;
         EXPECT_TRUE(Frame::TEME()->hasParent()) ;
         EXPECT_TRUE(Frame::TEMEOfEpoch(Instant::J2000())->hasParent()) ;
         EXPECT_TRUE(Frame::CIRF()->hasParent()) ;
@@ -515,6 +522,8 @@ TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, AccessParent)
         // EXPECT_EQ(..., Frame::ICRF()->accessParent()) ;
         EXPECT_ANY_THROW(Frame::GCRF()->accessParent()) ;
         // EXPECT_EQ(..., Frame::EME2000()->accessParent()) ;
+        EXPECT_EQ(Frame::GCRF(), Frame::MOD()->accessParent()) ;
+        EXPECT_EQ(Frame::MOD(), Frame::TOD()->accessParent()) ;
         EXPECT_EQ(Frame::ITRF(), Frame::TEME()->accessParent()) ;
         EXPECT_EQ(Frame::GCRF(), Frame::TEMEOfEpoch(Instant::J2000())->accessParent()) ;
         EXPECT_EQ(Frame::GCRF(), Frame::CIRF()->accessParent()) ;
@@ -572,6 +581,8 @@ TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, GetName)
         // EXPECT_EQ("ICRF", Frame::ICRF()->getName()) ;
         EXPECT_EQ("GCRF", Frame::GCRF()->getName()) ;
         // EXPECT_EQ("EME2000", Frame::EME2000()->getName()) ;
+        EXPECT_EQ("MOD", Frame::MOD()->getName()) ;
+        EXPECT_EQ("TOD", Frame::TOD()->getName()) ;
         EXPECT_EQ("TEME", Frame::TEME()->getName()) ;
         EXPECT_EQ("TEMEOfEpoch @ 2000-01-01 12:00:00 [TT]", Frame::TEMEOfEpoch(Instant::J2000())->getName()) ;
         EXPECT_EQ("CIRF", Frame::CIRF()->getName()) ;
@@ -970,6 +981,32 @@ TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, GCRF)
 //     }
 
 // }
+
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, MOD)
+{
+
+    using ostk::physics::coord::Frame ;
+
+    {
+
+        EXPECT_TRUE(Frame::MOD()->isDefined()) ;
+
+    }
+
+}
+
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, TOD)
+{
+
+    using ostk::physics::coord::Frame ;
+
+    {
+
+        EXPECT_TRUE(Frame::TOD()->isDefined()) ;
+
+    }
+
+}
 
 TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, TEME)
 {

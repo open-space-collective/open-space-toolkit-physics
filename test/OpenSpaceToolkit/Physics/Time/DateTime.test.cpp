@@ -469,6 +469,15 @@ TEST (OpenSpaceToolkit_Physics_Time_DateTime, JulianDate)
         EXPECT_EQ(DateTime(2000, 1, 2, 6, 0, 0), DateTime::JulianDate(2451545.75)) ;
         EXPECT_EQ(DateTime(2000, 1, 2, 12, 0, 0), DateTime::JulianDate(2451546.0)) ;
 
+        EXPECT_EQ(DateTime(2004, 4, 5, 12, 0, 0), DateTime::JulianDate(2453101.0)) ;
+        EXPECT_EQ(DateTime(2004, 4, 6, 7, 52, 19, 200, 18, 346), DateTime::JulianDate(2453101.828)) ;
+        EXPECT_EQ(DateTime(2004, 4, 6, 7, 52, 27, 840, 4), DateTime::JulianDate(2453101.8281)) ;
+        EXPECT_EQ(DateTime(2004, 4, 6, 7, 52, 32, 160, 0), DateTime::JulianDate(2453101.82815)) ;
+        EXPECT_EQ(DateTime(2004, 4, 6, 7, 52, 32, 506, 0), DateTime::JulianDate(2453101.828154)) ;
+        EXPECT_EQ(DateTime(2004, 4, 6, 7, 52, 32, 566, 69, 364), DateTime::JulianDate(2453101.8281547)) ;
+        EXPECT_EQ(DateTime(2004, 4, 6, 7, 52, 32, 570, 0, 0), DateTime::JulianDate(2453101.82815474)) ;
+        EXPECT_EQ(DateTime(2004, 4, 6, 7, 52, 32, 570, 0, 0), DateTime::JulianDate(2453101.828154745)) ;
+
     }
 
     {
