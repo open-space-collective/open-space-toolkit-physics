@@ -18,16 +18,32 @@ class \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_i_c_r_f}
 \begin{DoxyCompactList}\small\item\em International Celestial Reference \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} (\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_i_c_r_f}{I\+C\+RF}) provider. \end{DoxyCompactList}\item 
 class \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_i_t_r_f}{I\+T\+RF}
 \begin{DoxyCompactList}\small\item\em International Terrestrial Reference System (\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_i_t_r_f}{I\+T\+RF}) provider. \end{DoxyCompactList}\item 
+class \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_m_o_d}{M\+OD}
+\begin{DoxyCompactList}\small\item\em Mean of Date (\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_m_o_d}{M\+OD}) frame provider. \end{DoxyCompactList}\item 
 class \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_static}{Static}
 \begin{DoxyCompactList}\small\item\em \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_static}{Static} provider. \end{DoxyCompactList}\item 
 class \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_e_m_e}{T\+E\+ME}
 \begin{DoxyCompactList}\small\item\em True Equator Mean Equinox (\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_e_m_e}{T\+E\+ME}) frame provider. \end{DoxyCompactList}\item 
 class \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_i_r_f}{T\+I\+RF}
-\begin{DoxyCompactList}\small\item\em Terrestrial Intermediate Reference \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} (\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_i_r_f}{T\+I\+RF}) provider. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Terrestrial Intermediate Reference \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} (\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_i_r_f}{T\+I\+RF}) provider. \end{DoxyCompactList}\item 
+class \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d}{T\+OD}
+\begin{DoxyCompactList}\small\item\em True Of Date (\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d}{T\+OD}) frame provider. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
 using \hyperlink{namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider_a12fe12ec00381f0f866c1cb25df6b88f}{Iers\+Manager} = \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager}{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Triple$<$ \hyperlink{classostk_1_1physics_1_1units_1_1_angle}{Angle}, \hyperlink{classostk_1_1physics_1_1units_1_1_angle}{Angle}, \hyperlink{classostk_1_1physics_1_1units_1_1_angle}{Angle} $>$ \hyperlink{namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider_acd9c9770d79be89d7c94517df77ebe27}{compute\+F\+K5\+Precession} (const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant)
+\item 
+Triple$<$ \hyperlink{classostk_1_1physics_1_1units_1_1_angle}{Angle}, \hyperlink{classostk_1_1physics_1_1units_1_1_angle}{Angle}, \hyperlink{classostk_1_1physics_1_1units_1_1_angle}{Angle} $>$ \hyperlink{namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider_a0766714124629840ab0b3a909bc6e473}{compute\+F\+K5\+Nutation} (const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const std\+::array$<$ std\+::array$<$ double, 9 $>$, 106 $>$ \hyperlink{namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider_a73bcae3137799317545b837aa5693632}{nut\+\_\+coefs\+\_\+1980}
 \end{DoxyCompactItemize}
 
 
@@ -37,4 +53,28 @@ using \hyperlink{namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider_a12fe12e
 \index{Iers\+Manager@{Iers\+Manager}!ostk\+::physics\+::coord\+::frame\+::provider@{ostk\+::physics\+::coord\+::frame\+::provider}}
 \subsubsection{\texorpdfstring{Iers\+Manager}{IersManager}}
 {\footnotesize\ttfamily using \hyperlink{namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider_a12fe12ec00381f0f866c1cb25df6b88f}{ostk\+::physics\+::coord\+::frame\+::provider\+::\+Iers\+Manager} = typedef \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager}{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider_a0766714124629840ab0b3a909bc6e473}\label{namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider_a0766714124629840ab0b3a909bc6e473}} 
+\index{ostk\+::physics\+::coord\+::frame\+::provider@{ostk\+::physics\+::coord\+::frame\+::provider}!compute\+F\+K5\+Nutation@{compute\+F\+K5\+Nutation}}
+\index{compute\+F\+K5\+Nutation@{compute\+F\+K5\+Nutation}!ostk\+::physics\+::coord\+::frame\+::provider@{ostk\+::physics\+::coord\+::frame\+::provider}}
+\subsubsection{\texorpdfstring{compute\+F\+K5\+Nutation()}{computeFK5Nutation()}}
+{\footnotesize\ttfamily Triple$<$\hyperlink{classostk_1_1physics_1_1units_1_1_angle}{Angle}, \hyperlink{classostk_1_1physics_1_1units_1_1_angle}{Angle}, \hyperlink{classostk_1_1physics_1_1units_1_1_angle}{Angle}$>$ ostk\+::physics\+::coord\+::frame\+::provider\+::compute\+F\+K5\+Nutation (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider_acd9c9770d79be89d7c94517df77ebe27}\label{namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider_acd9c9770d79be89d7c94517df77ebe27}} 
+\index{ostk\+::physics\+::coord\+::frame\+::provider@{ostk\+::physics\+::coord\+::frame\+::provider}!compute\+F\+K5\+Precession@{compute\+F\+K5\+Precession}}
+\index{compute\+F\+K5\+Precession@{compute\+F\+K5\+Precession}!ostk\+::physics\+::coord\+::frame\+::provider@{ostk\+::physics\+::coord\+::frame\+::provider}}
+\subsubsection{\texorpdfstring{compute\+F\+K5\+Precession()}{computeFK5Precession()}}
+{\footnotesize\ttfamily Triple$<$\hyperlink{classostk_1_1physics_1_1units_1_1_angle}{Angle}, \hyperlink{classostk_1_1physics_1_1units_1_1_angle}{Angle}, \hyperlink{classostk_1_1physics_1_1units_1_1_angle}{Angle}$>$ ostk\+::physics\+::coord\+::frame\+::provider\+::compute\+F\+K5\+Precession (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption})}
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider_a73bcae3137799317545b837aa5693632}\label{namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider_a73bcae3137799317545b837aa5693632}} 
+\index{ostk\+::physics\+::coord\+::frame\+::provider@{ostk\+::physics\+::coord\+::frame\+::provider}!nut\+\_\+coefs\+\_\+1980@{nut\+\_\+coefs\+\_\+1980}}
+\index{nut\+\_\+coefs\+\_\+1980@{nut\+\_\+coefs\+\_\+1980}!ostk\+::physics\+::coord\+::frame\+::provider@{ostk\+::physics\+::coord\+::frame\+::provider}}
+\subsubsection{\texorpdfstring{nut\+\_\+coefs\+\_\+1980}{nut\_coefs\_1980}}
+{\footnotesize\ttfamily const std\+::array$<$std\+::array$<$double, 9$>$, 106$>$ ostk\+::physics\+::coord\+::frame\+::provider\+::nut\+\_\+coefs\+\_\+1980}
 

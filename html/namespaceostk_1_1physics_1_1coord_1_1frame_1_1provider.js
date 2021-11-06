@@ -6,7 +6,9 @@ var namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider =
     [ "GCRF", "classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_g_c_r_f.html", "classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_g_c_r_f" ],
     [ "ICRF", "classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_i_c_r_f.html", "classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_i_c_r_f" ],
     [ "ITRF", "classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_i_t_r_f.html", "classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_i_t_r_f" ],
+    [ "MOD", "classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_m_o_d.html", "classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_m_o_d" ],
     [ "Static", "classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_static.html", "classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_static" ],
     [ "TEME", "classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_e_m_e.html", "classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_e_m_e" ],
-    [ "TIRF", "classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_i_r_f.html", "classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_i_r_f" ]
+    [ "TIRF", "classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_i_r_f.html", "classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_i_r_f" ],
+    [ "TOD", "classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d.html", "classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d" ]
 ];

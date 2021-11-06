@@ -12,5 +12,6 @@ var searchData=
   ['noon',['Noon',['../classostk_1_1physics_1_1time_1_1_time.html#a2d242e4f07bbf56e51eb2267773042f2',1,'ostk::physics::time::Time']]],
   ['northeastdowntransformat',['NorthEastDownTransformAt',['../namespaceostk_1_1physics_1_1coord_1_1frame_1_1utilities.html#a941185e500ff05b0aba62e6af3f38c1c',1,'ostk::physics::coord::frame::utilities']]],
   ['now',['Now',['../classostk_1_1physics_1_1time_1_1_instant.html#afbc9a9219aa94e8a828f5876ee68f42c',1,'ostk::physics::time::Instant']]],
+  ['nut_5fcoefs_5f1980',['nut_coefs_1980',['../namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider.html#a73bcae3137799317545b837aa5693632',1,'ostk::physics::coord::frame::provider']]],
   ['nutationflag',['nutationFlag',['../structostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data.html#a65177eeddeab5d6bc4b24e2621323300',1,'ostk::physics::coord::frame::provider::iers::Finals2000A::Data']]]
 ];
