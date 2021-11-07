@@ -41,6 +41,9 @@ inline void                     OpenSpaceToolkitPhysicsPy_Units_Length      (   
         .def(self += self)
         .def(self -= self)
 
+        .def(+self)
+        .def(-self)
+
         .def("__mul__", [](const Length &aLength, Real aReal) {return aLength * aReal;}, is_operator())
         .def("__truediv__", [](const Length &aLength, Real aReal) {return aLength / aReal;}, is_operator())
         .def("__imul__", [](const Length &aLength, Real aReal) {return aLength * aReal;}, is_operator())
@@ -50,6 +53,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Units_Length      (   
         .def("__repr__", +[] (const Length& aLength) -> std::string { return aLength.toString() ; })
 
         .def("is_defined", &Length::isDefined)
+        .def("is_zero", &Length::isZero)
 
         .def("get_unit", &Length::getUnit)
         .def("in_unit", &Length::in)
