@@ -99,10 +99,16 @@ class Length : public Unit
         friend Length           operator *                                  (   const   Real&                       aReal,
                                                                                 const   Length&                     aLength                                     ) ;
 
+        Length                  operator +                                  ( ) const ;
+
+        Length                  operator -                                  ( ) const ;
+
         friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
                                                                                 const   Length&                     aLength                                     ) ;
 
         virtual bool            isDefined                                   ( ) const override ;
+
+        bool                    isZero                                      ( ) const ;
 
         Length::Unit            getUnit                                     ( ) const ;
 

@@ -49,33 +49,6 @@ TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_TOD, GetTransformAt)
 
     {
 
-        // https://github.com/JuliaSpace/SatelliteToolbox.jl/blob/master/test/transformations/fk5/fk5.jl#L421
-
-        const Instant instant = Instant::JulianDate(2453101.828154745, Scale::TT) ;
-
-        const Transform transform_TOD_MOD = TOD().getTransformAt(instant) ;
-
-        const Quaternion q_MOD_TOD = transform_TOD_MOD.getOrientation().toConjugate() ;
-
-        const Vector3d x_TOD = { 5094.51620300, 6127.36527840, 6380.34453270 } ;
-        const Vector3d v_TOD = { -4.7460883850, 0.7860783240, 5.5319312880 } ;
-
-        const Vector3d x_MOD = q_MOD_TOD * x_TOD ;
-        const Vector3d v_MOD = q_MOD_TOD * v_TOD ;
-
-        const Vector3d x_MOD_REF = { +5094.02837450, +6127.87081640, +6380.24851640 } ;
-        const Vector3d v_MOD_REF = { -4.7462630520, +0.7860140450, +5.5317905620 } ;
-
-        // TBI: Can't reach desired precision, for some reason.
-        EXPECT_GT(1e-0, (x_MOD - x_MOD_REF).norm()) ;
-        EXPECT_GT(1e-2, (v_MOD - v_MOD_REF).norm()) ;
-        // EXPECT_GT(1e-7, (x_MOD - x_MOD_REF).norm()) ;
-        // EXPECT_GT(1e-9, (v_MOD - v_MOD_REF).norm()) ;
-
-    }
-
-    {
-
         // https://github.com/JuliaSpace/SatelliteToolbox.jl/blob/master/test/transformations/fk5/fk5.jl#L443
 
         const Instant instant = Instant::JulianDate(2453101.82815474, Scale::TT) ;
@@ -93,18 +66,36 @@ TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_TOD, GetTransformAt)
         const Vector3d x_MOD_REF = { +5094.02901670, +6127.87093630, +6380.24788850 } ;
         const Vector3d v_MOD_REF = { -4.7462630520, +0.7860140450, +5.5317905620 } ;
 
-        // std::cout << "x_TOD     = " << x_TOD.toString() << std::endl ;
-        // std::cout << "x_MOD     = " << x_MOD.toString() << std::endl ;
-        // std::cout << "x_MOD_REF = " << x_MOD_REF.toString() << std::endl ;
+        EXPECT_GT(1e-6, (x_MOD - x_MOD_REF).norm()) ;
+        EXPECT_GT(1e-6, (v_MOD - v_MOD_REF).norm()) ;
 
-        // std::cout << "|x_TOD - x_MOD_REF| = " << (x_TOD - x_MOD_REF).norm() << std::endl ;
-        // std::cout << "|x_MOD - x_MOD_REF| = " << (x_MOD - x_MOD_REF).norm() << std::endl ;
+    }
 
-        // TBI: Can't reach desired precision, for some reason.
-        EXPECT_GT(1e-0, (x_MOD - x_MOD_REF).norm()) ;
-        EXPECT_GT(1e-2, (v_MOD - v_MOD_REF).norm()) ;
-        // EXPECT_GT(1e-7, (x_MOD - x_MOD_REF).norm()) ;
-        // EXPECT_GT(1e-9, (v_MOD - v_MOD_REF).norm()) ;
+    {
+
+        // https://github.com/JuliaSpace/SatelliteToolbox.jl/blob/master/test/transformations/fk5/fk5.jl#L421
+
+        const Instant instant = Instant::JulianDate(2453101.828154745, Scale::TT) ;
+        std::cout << instant << std::endl ;
+
+        const Angle obliquityCorrection = Angle::Radians(-0.003875 * M_PI / (180 * 3600)) ;
+        const Angle longitudeCorrection = Angle::Radians(-0.052195 * M_PI / (180 * 3600)) ;
+
+        const Transform transform_TOD_MOD = TOD(obliquityCorrection, longitudeCorrection).getTransformAt(instant) ;
+
+        const Quaternion q_MOD_TOD = transform_TOD_MOD.getOrientation().toConjugate() ;
+
+        const Vector3d x_TOD = { 5094.51620300, 6127.36527840, 6380.34453270 } ;
+        const Vector3d v_TOD = { -4.7460883850, 0.7860783240, 5.5319312880 } ;
+
+        const Vector3d x_MOD = q_MOD_TOD * x_TOD ;
+        const Vector3d v_MOD = q_MOD_TOD * v_TOD ;
+
+        const Vector3d x_MOD_REF = { +5094.02837450, +6127.87081640, +6380.24851640 } ;
+        const Vector3d v_MOD_REF = { -4.7462630520, +0.7860140450, +5.5317905620 } ;
+
+        EXPECT_GT(1e-6, (x_MOD - x_MOD_REF).norm()) ;
+        EXPECT_GT(1e-6, (v_MOD - v_MOD_REF).norm()) ;
 
     }
 

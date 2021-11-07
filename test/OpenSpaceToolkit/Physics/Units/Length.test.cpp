@@ -529,6 +529,56 @@ TEST (OpenSpaceToolkit_Physics_Units_Length, DivisionAssignmentOperator)
 
 }
 
+TEST (OpenSpaceToolkit_Physics_Units_Length, UnaryAdditionOperator)
+{
+
+    using ostk::physics::units::Length ;
+
+    {
+
+        EXPECT_EQ(Length(0.0, Length::Unit::Meter), +Length(0.0, Length::Unit::Foot)) ;
+
+        EXPECT_EQ(Length(+123.456, Length::Unit::Meter), +Length(123.456, Length::Unit::Meter)) ;
+        EXPECT_EQ(Length(+123.456, Length::Unit::Foot), +Length(123.456, Length::Unit::Foot)) ;
+
+        EXPECT_EQ(Length(-123.456, Length::Unit::Meter), +Length(-123.456, Length::Unit::Meter)) ;
+        EXPECT_EQ(Length(-123.456, Length::Unit::Foot), +Length(-123.456, Length::Unit::Foot)) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(+Length::Undefined()) ;
+
+    }
+
+}
+
+TEST (OpenSpaceToolkit_Physics_Units_Length, UnarySubtractionOperator)
+{
+
+    using ostk::physics::units::Length ;
+
+    {
+
+        EXPECT_EQ(Length(0.0, Length::Unit::Meter), -Length(0.0, Length::Unit::Foot)) ;
+
+        EXPECT_EQ(Length(-123.456, Length::Unit::Meter), -Length(123.456, Length::Unit::Meter)) ;
+        EXPECT_EQ(Length(-123.456, Length::Unit::Foot), -Length(123.456, Length::Unit::Foot)) ;
+
+        EXPECT_EQ(Length(123.456, Length::Unit::Meter), -Length(-123.456, Length::Unit::Meter)) ;
+        EXPECT_EQ(Length(123.456, Length::Unit::Foot), -Length(-123.456, Length::Unit::Foot)) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(-Length::Undefined()) ;
+
+    }
+
+}
+
 TEST (OpenSpaceToolkit_Physics_Units_Length, StreamOperator)
 {
 
@@ -569,6 +619,38 @@ TEST (OpenSpaceToolkit_Physics_Units_Length, IsDefined)
         EXPECT_FALSE(Length::Undefined().isDefined()) ;
         EXPECT_FALSE(Length(Real::Undefined(), Length::Unit::Meter).isDefined()) ;
         EXPECT_FALSE(Length(1.0, Length::Unit::Undefined).isDefined()) ;
+
+    }
+
+}
+
+TEST (OpenSpaceToolkit_Physics_Units_Length, IsZero)
+{
+
+    using ostk::core::types::Real ;
+    using ostk::physics::units::Length ;
+
+    {
+
+        EXPECT_TRUE(Length(0.0, Length::Unit::Meter).isZero()) ;
+        EXPECT_TRUE(Length(0.0, Length::Unit::Foot).isZero()) ;
+
+        EXPECT_TRUE(Length(+0.0, Length::Unit::Meter).isZero()) ;
+        EXPECT_TRUE(Length(-0.0, Length::Unit::Foot).isZero()) ;
+
+        EXPECT_FALSE(Length(+1.0, Length::Unit::Meter).isZero()) ;
+        EXPECT_FALSE(Length(-1.0, Length::Unit::Foot).isZero()) ;
+
+        EXPECT_FALSE(Length(+1e-9, Length::Unit::Meter).isZero()) ;
+        EXPECT_FALSE(Length(-1e-9, Length::Unit::Foot).isZero()) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Length::Undefined().isZero()) ;
+        EXPECT_ANY_THROW(Length(Real::Undefined(), Length::Unit::Meter).isZero()) ;
+        EXPECT_ANY_THROW(Length(1.0, Length::Unit::Undefined).isZero()) ;
 
     }
 

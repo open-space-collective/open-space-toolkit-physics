@@ -253,6 +253,30 @@ Length                          operator *                                  (   
 
 }
 
+Length                          Length::operator +                          ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Length") ;
+    }
+
+    return Length(this->accessValue(), unit_) ;
+
+}
+
+Length                          Length::operator -                          ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Length") ;
+    }
+
+    return Length(-this->accessValue(), unit_) ;
+
+}
+
 std::ostream&                   operator <<                                 (           std::ostream&               anOutputStream,
                                                                                 const   Length&                     aLength                                     )
 {
@@ -271,6 +295,18 @@ std::ostream&                   operator <<                                 (   
 bool                            Length::isDefined                           ( ) const
 {
     return units::Unit::isDefined() && (unit_ != Length::Unit::Undefined) ;
+}
+
+bool                            Length::isZero                              ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Length") ;
+    }
+
+    return this->accessValue() == 0.0 ;
+
 }
 
 Length::Unit                    Length::getUnit                             ( ) const

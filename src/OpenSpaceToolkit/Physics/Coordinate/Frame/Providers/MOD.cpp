@@ -13,7 +13,6 @@
 #include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformations/Rotations/RotationMatrix.hpp>
-#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformations/Rotations/RotationVector.hpp>
 
 #include <OpenSpaceToolkit/Core/Containers/Triple.hpp>
 #include <OpenSpaceToolkit/Core/Error.hpp>
@@ -36,8 +35,6 @@ namespace provider
 
 using ostk::core::ctnr::Triple ;
 
-using ostk::math::geom::d3::trf::rot::RotationVector ;
-
 using ostk::physics::units::Angle ;
 using ostk::physics::time::Scale ;
 
@@ -46,9 +43,8 @@ using ostk::physics::time::Scale ;
 Triple<Angle, Angle, Angle>     computeFK5Precession                        (   const   Instant&                    anInstant                                   )
 {
 
-    // Compute the angles related to the precession movement in the Julian Day `JD_TT` [Terrestrial Time] using the theory IAU-76/FK5.
+    // Compute the angles related to the precession movement using the theory IAU-76/FK5.
     // Ref.: Vallado, D. A (2013). Fundamentals of Astrodynamics and Applications. Microcosm Press, Hawthorn, CA, USA.
-    // https://github.com/JuliaSpace/SatelliteToolbox.jl/blob/master/src/transformations/fk5/precession.jl
 
     // Compute the Julian Centuries.
 
@@ -114,9 +110,7 @@ Transform                       MOD::getTransformAt                         (   
 
     const auto& [zeta, theta, z] = computeFK5Precession(anInstant) ;
 
-    const RotationMatrix dcm_GCRF_MOD = RotationMatrix::RotationVector(RotationVector::Z(z))
-                                      * RotationMatrix::RotationVector(RotationVector::Y(theta * -1.0))
-                                      * RotationMatrix::RotationVector(RotationVector::Z(zeta)) ;
+    const RotationMatrix dcm_GCRF_MOD = RotationMatrix::RZ(zeta) * RotationMatrix::RY(-theta) * RotationMatrix::RZ(z) ;
 
     const Vector3d x_MOD_GCRF = { 0.0, 0.0, 0.0 } ;
     const Vector3d v_MOD_GCRF = { 0.0, 0.0, 0.0 } ;

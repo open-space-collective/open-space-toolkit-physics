@@ -78,7 +78,7 @@ TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_TEME, GetTransformAt)
 
                 const Transform transform_TEME_ITRF = temeFrameProvider.getTransformAt(instant) ;
 
-                const Quaternion dq_ITRF = (transform_TEME_ITRF.getOrientation() / referenceOrientation_ITRF_TEME).normalize().rectify() ;
+                const Quaternion dq_ITRF = (transform_TEME_ITRF.getOrientation() / referenceOrientation_ITRF_TEME).normalize().rectify() ; // Why / not *?
 
                 const Transform transform_TEME_GCRF = Frame::GCRF()->getTransformTo(Frame::TEME(), instant) ;
 

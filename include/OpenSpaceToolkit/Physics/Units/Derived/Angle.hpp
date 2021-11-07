@@ -102,12 +102,18 @@ class Angle : public Unit
         friend Angle            operator *                                  (   const   Real&                       aReal,
                                                                                 const   Angle&                      anAngle                                     ) ;
 
-                                operator ostk::math::geom::Angle         ( ) const ;
+        Angle                   operator +                                  ( ) const ;
+
+        Angle                   operator -                                  ( ) const ;
+
+                                operator ostk::math::geom::Angle            ( ) const ;
 
         friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
                                                                                 const   Angle&                      anAngle                                     ) ;
 
         virtual bool            isDefined                                   ( ) const override ;
+
+        bool                    isZero                                      ( ) const ;
 
         Angle::Unit             getUnit                                     ( ) const ;
 

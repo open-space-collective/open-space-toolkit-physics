@@ -264,7 +264,31 @@ Angle                           operator *                                  (   
 
 }
 
-                                Angle::operator ostk::math::geom::Angle  ( ) const
+Angle                           Angle::operator +                           ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Angle") ;
+    }
+
+    return Angle(this->accessValue(), unit_) ;
+
+}
+
+Angle                           Angle::operator -                           ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Angle") ;
+    }
+
+    return Angle(-this->accessValue(), unit_) ;
+
+}
+
+                                Angle::operator ostk::math::geom::Angle    ( ) const
 {
 
     if (!this->isDefined())
@@ -318,6 +342,18 @@ std::ostream&                   operator <<                                 (   
 bool                            Angle::isDefined                            ( ) const
 {
     return units::Unit::isDefined() && (unit_ != Angle::Unit::Undefined) ;
+}
+
+bool                            Angle::isZero                               ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Angle") ;
+    }
+
+    return this->accessValue() == 0.0 ;
+
 }
 
 Angle::Unit                     Angle::getUnit                              ( ) const
