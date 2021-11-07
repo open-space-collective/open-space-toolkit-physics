@@ -2,7 +2,7 @@
 \label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d}\index{ostk\+::physics\+::coord\+::frame\+::provider\+::\+T\+OD@{ostk\+::physics\+::coord\+::frame\+::provider\+::\+T\+OD}}
 
 
-True Of Date (\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d}{T\+OD}) frame provider.  
+True of Date (\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d}{T\+OD}) frame provider.  
 
 
 
@@ -18,7 +18,7 @@ Inheritance diagram for ostk\+:\+:physics\+:\+:coord\+:\+:frame\+:\+:provider\+:
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_a8932522af5d9121ab0168c11428b0c81}{T\+OD} ()
+\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_ad04e95c1ab8ccfca5f6ed3c8d51639d4}{T\+OD} (const \hyperlink{classostk_1_1physics_1_1units_1_1_angle}{Angle} \&an\+Obliquity\+Correction=\hyperlink{classostk_1_1physics_1_1units_1_1_angle_a4454975f87e5d3532cf8b819819207e7}{Angle\+::\+Zero}(), const \hyperlink{classostk_1_1physics_1_1units_1_1_angle}{Angle} \&a\+Longitude\+Correction=\hyperlink{classostk_1_1physics_1_1units_1_1_angle_a4454975f87e5d3532cf8b819819207e7}{Angle\+::\+Zero}())
 \item 
 virtual \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_a1e59c3f3d3d31e768deb99abb502b577}{$\sim$\+T\+OD} () override
 \item 
@@ -31,16 +31,18 @@ virtual \hyperlink{classostk_1_1physics_1_1coord_1_1_transform}{Transform} \hype
 
 
 \subsection{Detailed Description}
-True Of Date (\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d}{T\+OD}) frame provider. 
+True of Date (\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d}{T\+OD}) frame provider. 
 
-https\+://en.wikipedia.\+org/wiki/\+Earth-\/centered\+\_\+inertial 
+Transformation from the Mean of Date (\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_m_o_d}{M\+OD}) frame to the True of Date (\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d}{T\+OD}) frame. This algorithm uses the I\+A\+U-\/76/\+F\+K5 theory. Notice that one can provide corrections for the nutation in obliquity and in longitude that are usually obtained from I\+E\+RS E\+OP Data.
+
+https\+://en.wikipedia.\+org/wiki/\+Earth-\/centered\+\_\+inertial https\+://github.com/\+Julia\+Space/\+Satellite\+Toolbox.\+jl/blob/master/src/transformations/fk5/fk5.jl\+::\+L296 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_a8932522af5d9121ab0168c11428b0c81}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_a8932522af5d9121ab0168c11428b0c81}} 
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_ad04e95c1ab8ccfca5f6ed3c8d51639d4}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_ad04e95c1ab8ccfca5f6ed3c8d51639d4}} 
 \index{ostk\+::physics\+::coord\+::frame\+::provider\+::\+T\+OD@{ostk\+::physics\+::coord\+::frame\+::provider\+::\+T\+OD}!T\+OD@{T\+OD}}
 \index{T\+OD@{T\+OD}!ostk\+::physics\+::coord\+::frame\+::provider\+::\+T\+OD@{ostk\+::physics\+::coord\+::frame\+::provider\+::\+T\+OD}}
 \subsubsection{\texorpdfstring{T\+O\+D()}{TOD()}}
-{\footnotesize\ttfamily ostk\+::physics\+::coord\+::frame\+::provider\+::\+T\+O\+D\+::\+T\+OD (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily ostk\+::physics\+::coord\+::frame\+::provider\+::\+T\+O\+D\+::\+T\+OD (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1units_1_1_angle}{Angle} \&}]{an\+Obliquity\+Correction = {\ttfamily \hyperlink{classostk_1_1physics_1_1units_1_1_angle_a4454975f87e5d3532cf8b819819207e7}{Angle\+::\+Zero}()},  }\item[{const \hyperlink{classostk_1_1physics_1_1units_1_1_angle}{Angle} \&}]{a\+Longitude\+Correction = {\ttfamily \hyperlink{classostk_1_1physics_1_1units_1_1_angle_a4454975f87e5d3532cf8b819819207e7}{Angle\+::\+Zero}()} }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_a1e59c3f3d3d31e768deb99abb502b577}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_a1e59c3f3d3d31e768deb99abb502b577}} 
 \index{ostk\+::physics\+::coord\+::frame\+::provider\+::\+T\+OD@{ostk\+::physics\+::coord\+::frame\+::provider\+::\+T\+OD}!````~T\+OD@{$\sim$\+T\+OD}}

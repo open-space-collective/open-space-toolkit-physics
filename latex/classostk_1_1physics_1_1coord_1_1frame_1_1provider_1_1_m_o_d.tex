@@ -33,7 +33,11 @@ virtual \hyperlink{classostk_1_1physics_1_1coord_1_1_transform}{Transform} \hype
 \subsection{Detailed Description}
 Mean of Date (\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_m_o_d}{M\+OD}) frame provider. 
 
-https\+://en.wikipedia.\+org/wiki/\+Earth-\/centered\+\_\+inertial 
+Transformation from the Geocentric Celestial Reference \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} (\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_g_c_r_f}{G\+C\+RF}) frame to the Mean of Date (\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_m_o_d}{M\+OD}) frame. This algorithm uses the I\+A\+U-\/76/\+F\+K5 theory.
+
+The Mean of Date (\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_m_o_d}{M\+OD}) frame is rotated into the Geocentric Celestial Reference \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} (\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_g_c_r_f}{G\+C\+RF}) considering the I\+AU 1976 Precession model. Notice that if the conversion {\ttfamily \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d}{T\+OD} =$>$ \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_m_o_d}{M\+OD}} is performed {\bfseries without} considering the E\+OP corrections, then the \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_g_c_r_f}{G\+C\+RF} obtained by this rotation is what is usually called the J2000 reference frame.
+
+https\+://en.wikipedia.\+org/wiki/\+Earth-\/centered\+\_\+inertial https\+://github.com/\+Julia\+Space/\+Satellite\+Toolbox.\+jl/blob/master/src/transformations/fk5/fk5.jl\+::\+L396 
 
 \subsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_m_o_d_a5f10eb22a5e4522253886d39577b8620}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_m_o_d_a5f10eb22a5e4522253886d39577b8620}} 

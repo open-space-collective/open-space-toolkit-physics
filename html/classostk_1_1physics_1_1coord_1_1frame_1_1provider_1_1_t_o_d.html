@@ -85,7 +85,7 @@ $(document).ready(function(){initNavTree('classostk_1_1physics_1_1coord_1_1frame
 </div><!--header-->
 <div class="contents">
 
-<p>True Of Date (<a class="el" href="classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d.html" title="True Of Date (TOD) frame provider. ">TOD</a>) frame provider.  
+<p>True of Date (<a class="el" href="classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d.html" title="True of Date (TOD) frame provider. ">TOD</a>) frame provider.  
  <a href="classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_t_o_d_8hpp_source.html">TOD.hpp</a>&gt;</code></p>
@@ -101,8 +101,8 @@ Inheritance diagram for ostk::physics::coord::frame::provider::TOD:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8932522af5d9121ab0168c11428b0c81"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d.html#a8932522af5d9121ab0168c11428b0c81">TOD</a> ()</td></tr>
-<tr class="separator:a8932522af5d9121ab0168c11428b0c81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad04e95c1ab8ccfca5f6ed3c8d51639d4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d.html#ad04e95c1ab8ccfca5f6ed3c8d51639d4">TOD</a> (const <a class="el" href="classostk_1_1physics_1_1units_1_1_angle.html">Angle</a> &amp;anObliquityCorrection=<a class="el" href="classostk_1_1physics_1_1units_1_1_angle.html#a4454975f87e5d3532cf8b819819207e7">Angle::Zero</a>(), const <a class="el" href="classostk_1_1physics_1_1units_1_1_angle.html">Angle</a> &amp;aLongitudeCorrection=<a class="el" href="classostk_1_1physics_1_1units_1_1_angle.html#a4454975f87e5d3532cf8b819819207e7">Angle::Zero</a>())</td></tr>
+<tr class="separator:ad04e95c1ab8ccfca5f6ed3c8d51639d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e59c3f3d3d31e768deb99abb502b577"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d.html#a1e59c3f3d3d31e768deb99abb502b577">~TOD</a> () override</td></tr>
 <tr class="separator:a1e59c3f3d3d31e768deb99abb502b577"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad374cdce01f5872311b61695502dd4e4"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d.html">TOD</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d.html#ad374cdce01f5872311b61695502dd4e4">clone</a> () const override</td></tr>
@@ -118,11 +118,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a6d84675199cb79c56de9189e91dbfe81 inherit pub_methods_classostk_1_1physics_1_1coord_1_1frame_1_1_provider"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>True Of Date (<a class="el" href="classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d.html" title="True Of Date (TOD) frame provider. ">TOD</a>) frame provider. </p>
-<p>https://en.wikipedia.org/wiki/Earth-centered_inertial </p>
+<div class="textblock"><p>True of Date (<a class="el" href="classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d.html" title="True of Date (TOD) frame provider. ">TOD</a>) frame provider. </p>
+<p>Transformation from the Mean of Date (<a class="el" href="classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_m_o_d.html" title="Mean of Date (MOD) frame provider. ">MOD</a>) frame to the True of Date (<a class="el" href="classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d.html" title="True of Date (TOD) frame provider. ">TOD</a>) frame. This algorithm uses the IAU-76/FK5 theory. Notice that one can provide corrections for the nutation in obliquity and in longitude that are usually obtained from IERS EOP Data.</p>
+<p>https://en.wikipedia.org/wiki/Earth-centered_inertial https://github.com/JuliaSpace/SatelliteToolbox.jl/blob/master/src/transformations/fk5/fk5.jl::L296 </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a8932522af5d9121ab0168c11428b0c81"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8932522af5d9121ab0168c11428b0c81">&#9670;&nbsp;</a></span>TOD()</h2>
+<a id="ad04e95c1ab8ccfca5f6ed3c8d51639d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad04e95c1ab8ccfca5f6ed3c8d51639d4">&#9670;&nbsp;</a></span>TOD()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -130,8 +131,19 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">ostk::physics::coord::frame::provider::TOD::TOD </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="classostk_1_1physics_1_1units_1_1_angle.html">Angle</a> &amp;&#160;</td>
+          <td class="paramname"><em>anObliquityCorrection</em> = <code><a class="el" href="classostk_1_1physics_1_1units_1_1_angle.html#a4454975f87e5d3532cf8b819819207e7">Angle::Zero</a>()</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const <a class="el" href="classostk_1_1physics_1_1units_1_1_angle.html">Angle</a> &amp;&#160;</td>
+          <td class="paramname"><em>aLongitudeCorrection</em> = <code><a class="el" href="classostk_1_1physics_1_1units_1_1_angle.html#a4454975f87e5d3532cf8b819819207e7">Angle::Zero</a>()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
