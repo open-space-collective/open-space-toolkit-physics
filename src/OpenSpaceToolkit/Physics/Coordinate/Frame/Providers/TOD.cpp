@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/TOD.hpp>
-#include <OpenSpaceToolkit/Physics/Units/Derived/Angle.hpp>
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
 
@@ -18,6 +18,8 @@
 #include <OpenSpaceToolkit/Core/Containers/Triple.hpp>
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
+
+#include <Eigen/Dense>
 
 #include <math.h>
 
@@ -40,13 +42,11 @@ using ostk::core::ctnr::Triple ;
 
 using ostk::math::geom::d3::trf::rot::RotationVector ;
 
-using ostk::physics::units::Angle ;
 using ostk::physics::time::Scale ;
+using IersManager = ostk::physics::coord::frame::provider::iers::Manager ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Notation used in [1, p. 226].
-//
 // an1  an2  an3  an4  an5        Ai            Bi         Ci            Di
 //                  Units:  [0.0001"]  [0.0001"/JC]  [0.0001"]  [0.0001"/JC]
 
@@ -165,11 +165,9 @@ const std::array<std::array<double, 9>, 106> nut_coefs_1980 =
 Triple<Angle, Angle, Angle>     computeFK5Nutation                          (   const   Instant&                    anInstant                                   )
 {
 
-    // The mean obliquity of the ecliptic [rad].
-    // The nutation in obliquity of the ecliptic [rad].
-    // The nutation in longitude [rad].
-
-    // https://github.com/JuliaSpace/SatelliteToolbox.jl/blob/master/src/transformations/fk5/nutation.jl
+    // Mean obliquity of the ecliptic.
+    // Nutation in obliquity of the ecliptic.
+    // Nutation in longitude.
 
     // Compute the Julian Centuries.
 
@@ -186,7 +184,6 @@ Triple<Angle, Angle, Angle>     computeFK5Nutation                          (   
     // Compute the mean obliquity of the ecliptic [°].
     double me_1980 = 23.439291 + (-0.0130042 * T_TT) + (-1.64e-7 * T_TT * T_TT) + (5.04e-7 * T_TT * T_TT * T_TT) ;
     me_1980 = fmod(me_1980, 360.0) * d2r ; // Reduce to the interval [0, 2π]°.
-    // std::cout << "me_1980 = " << me_1980 << std::endl ;
 
     // Delaunay parameters of the Sun and Moon
 
@@ -197,23 +194,18 @@ Triple<Angle, Angle, Angle>     computeFK5Nutation                          (   
 
     double M_m = +134.96298139 + (+(1325.0 * r + 198.8673981) * T_TT) + (+0.0086972 * T_TT * T_TT) + (+1.78e-5 * T_TT * T_TT * T_TT) ;
     M_m = fmod(M_m, 360.0) * d2r ;
-    // std::cout << "M_m = " << M_m << std::endl ;
 
     double M_s = +357.52772333 + (+(99.0 * r + 359.0503400) * T_TT) + (-0.0001603 * T_TT * T_TT) + (-3.3e-6 * T_TT * T_TT * T_TT) ;
     M_s = fmod(M_s, 360.0) * d2r ;
-    // std::cout << "M_s = " << M_s << std::endl ;
 
     double u_Mm = +93.27191028 + (+(1342.0 * r + 82.0175381) * T_TT) + (-0.0036825 * T_TT * T_TT) + (+3.1e-6 * T_TT * T_TT * T_TT) ;
     u_Mm = fmod(u_Mm, 360.0) * d2r ;
-    // std::cout << "u_Mm = " << u_Mm << std::endl ;
 
     double D_s = +297.85036306 + (+(1236.0 * r + 307.1114800) * T_TT) + (-0.0019142 * T_TT * T_TT) + (+5.3e-6 * T_TT * T_TT * T_TT) ;
     D_s = fmod(D_s, 360.0) * d2r ;
-    // std::cout << "D_s = " << D_s << std::endl ;
 
     double O_m = +125.04452222 + (-(5.0 * r + 134.1362608) * T_TT) + (+0.0020708 * T_TT * T_TT) + (+2.2e-6 * T_TT * T_TT * T_TT) ;
     O_m = fmod(O_m, 360.0) * d2r ;
-    // std::cout << "O_m = " << O_m << std::endl ;
 
     // Nutation in longitude and obliquity
 
@@ -258,7 +250,10 @@ Triple<Angle, Angle, Angle>     computeFK5Nutation                          (   
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                                TOD::TOD                                    ( )
+                                TOD::TOD                                    (   const   Angle&                      anObliquityCorrection,
+                                                                                const   Angle&                      aLongitudeCorrection                        )
+                                :   obliquityCorrection_(anObliquityCorrection),
+                                    longitudeCorrection_(aLongitudeCorrection)
 {
 
 }
@@ -298,19 +293,15 @@ Transform                       TOD::getTransformAt                         (   
         throw ostk::core::error::runtime::Undefined("TOD") ;
     }
 
-    const Angle dde_1980 = Angle::Zero() ; // Angle::Radians(-0.003875 * M_PI / (180.0 * 3600.0)) ; // TBI
-    const Angle ddpsi_1980 = Angle::Zero() ; // Angle::Radians(-0.052195 * M_PI / (180.0 * 3600.0)) ; // TBI
+    // In a future release, use `IersManager` Bulletin A or Finals 2000 instead to obtain deps and dpsi corrections.
+    // e.g.: const auto finals = IersManager::Get().getFinals2000AAt(anInstant).getDataAt(anInstant) ;
 
-    // std::cout << "dde_1980 = " << dde_1980.toString() << std::endl ;
-    // std::cout << "ddpsi_1980 = " << ddpsi_1980.toString() << std::endl ;
+    const Angle& dde_1980 = obliquityCorrection_ ;
+    const Angle& ddpsi_1980 = longitudeCorrection_ ;
 
     // Compute nutation angles
 
     auto [me_1980, de_1980, dpsi_1980] = computeFK5Nutation(anInstant) ;
-
-    // std::cout << "me_1980 = " << me_1980.toString() << std::endl ;
-    // std::cout << "de_1980 = " << de_1980.toString() << std::endl ;
-    // std::cout << "dpsi_1980 = " << dpsi_1980.toString() << std::endl ;
 
     // Add the corrections to the nutation in obliquity and longitude.
 
@@ -321,13 +312,7 @@ Transform                       TOD::getTransformAt                         (   
 
     const Angle e_1980 = me_1980 + de_1980 ;
 
-    // std::cout << "e_1980 = " << e_1980.toString() << std::endl ;
-    // std::cout << "dpsi_1980 = " << dpsi_1980.toString() << std::endl ;
-    // std::cout << "me_1980 = " << me_1980.toString() << std::endl ;
-
-    const RotationMatrix dcm_MOD_TOD = RotationMatrix::RotationVector(RotationVector::X(e_1980))
-                                     * RotationMatrix::RotationVector(RotationVector::Z(dpsi_1980))
-                                     * RotationMatrix::RotationVector(RotationVector::X(me_1980 * -1.0)) ;
+    const RotationMatrix dcm_MOD_TOD = RotationMatrix::RX(-me_1980) * RotationMatrix::RZ(dpsi_1980) * RotationMatrix::RX(e_1980) ;
 
     const Vector3d x_TOD_MOD = { 0.0, 0.0, 0.0 } ;
     const Vector3d v_TOD_MOD = { 0.0, 0.0, 0.0 } ;

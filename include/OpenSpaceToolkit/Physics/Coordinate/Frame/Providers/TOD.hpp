@@ -13,6 +13,7 @@
 #include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Derived/Angle.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -29,22 +30,30 @@ namespace provider
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using ostk::physics::units::Angle ;
 using ostk::physics::time::Instant ;
 using ostk::physics::coord::frame::Provider ;
 using ostk::physics::coord::Transform ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @brief                      True Of Date (TOD) frame provider
+/// @brief                      True of Date (TOD) frame provider.
+///
+///                             Transformation from the Mean of Date (MOD) frame to the True of Date (TOD) frame.
+///                             This algorithm uses the IAU-76/FK5 theory.
+///                             Notice that one can provide corrections for the nutation in obliquity and in longitude
+///                             that are usually obtained from IERS EOP Data.
 ///
 /// @ref                        https://en.wikipedia.org/wiki/Earth-centered_inertial
+/// @ref                        https://github.com/JuliaSpace/SatelliteToolbox.jl/blob/master/src/transformations/fk5/fk5.jl#L296
 
 class TOD : public Provider
 {
 
     public:
 
-                                TOD                                         ( ) ;
+                                TOD                                         (   const   Angle&                      anObliquityCorrection                       =   Angle::Zero(),
+                                                                                const   Angle&                      aLongitudeCorrection                        =   Angle::Zero()) ;
 
         virtual                 ~TOD                                        ( ) override ;
 
@@ -53,6 +62,11 @@ class TOD : public Provider
         virtual bool            isDefined                                   ( ) const override ;
 
         virtual Transform       getTransformAt                              (   const   Instant&                    anInstant                                   ) const override ;
+
+    private:
+
+        Angle                   obliquityCorrection_ ;
+        Angle                   longitudeCorrection_ ;
 
 } ;
 

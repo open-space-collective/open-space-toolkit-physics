@@ -53,7 +53,7 @@ using ostk::physics::time::Interval ;
 
 /// @brief                      IERS Bulletin A
 ///
-///                             Contains rapid determinations for eEarth orientation parameters:
+///                             Contains rapid determinations for Earth orientation parameters:
 ///                             x/y pole, UT1-UTC and their errors at daily intervals and predictions for 1 year into the future.
 ///
 ///                             The contents of IERS Bulletin A are divided into four sections:
@@ -68,7 +68,7 @@ using ostk::physics::time::Interval ;
 ///                             The predictions use similar algorithms based on seasonal filtering and autoregressive processing for x, y, and UT1.
 ///
 ///                             4. The combination series for the celestial pole offsets.
-///                             Bulletin A contains celestial pole offsets with respect to the IAU1980 Nutation theroy (dpsi and deps)
+///                             Bulletin A contains celestial pole offsets with respect to the IAU1980 Nutation theory (dpsi and deps)
 ///                             and the IAU 2000 Resolutions (dX and dY), beginning on 1 January 2003.
 ///
 /// @ref                        https://datacenter.iers.org/productMetadata.php?id=6
