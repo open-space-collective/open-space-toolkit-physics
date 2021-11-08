@@ -68,7 +68,8 @@ Triple<Angle, Angle, Angle>     computeFK5Precession                        (   
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                                MOD::MOD                                    ( )
+                                MOD::MOD                                    (   const   Instant&                    anEpoch                                     )
+                                :   epoch_(anEpoch)
 {
 
 }
@@ -86,6 +87,11 @@ MOD*                            MOD::clone                                  ( ) 
 bool                            MOD::isDefined                              ( ) const
 {
     return true ;
+}
+
+Instant                         MOD::getEpoch                               ( ) const
+{
+    return epoch_ ;
 }
 
 Transform                       MOD::getTransformAt                         (   const   Instant&                    anInstant                                   ) const
@@ -108,7 +114,7 @@ Transform                       MOD::getTransformAt                         (   
         throw ostk::core::error::runtime::Undefined("MOD") ;
     }
 
-    const auto& [zeta, theta, z] = computeFK5Precession(anInstant) ;
+    const auto& [zeta, theta, z] = computeFK5Precession(epoch_) ;
 
     const RotationMatrix dcm_GCRF_MOD = RotationMatrix::RZ(zeta) * RotationMatrix::RY(-theta) * RotationMatrix::RZ(z) ;
 

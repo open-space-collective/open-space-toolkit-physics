@@ -104,9 +104,9 @@ class Frame : public std::enable_shared_from_this<Frame>
 
         static Shared<const Frame> GCRF                                     ( ) ;
 
-        static Shared<const Frame> MOD                                      ( ) ;
+        static Shared<const Frame> MOD                                      (   const   Instant&                    anEpoch                                     ) ;
 
-        static Shared<const Frame> TOD                                      ( ) ;
+        static Shared<const Frame> TOD                                      (   const   Instant&                    anEpoch                                     ) ;
 
         static Shared<const Frame> EME2000                                  ( ) ;
 

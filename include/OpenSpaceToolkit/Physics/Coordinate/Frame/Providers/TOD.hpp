@@ -52,7 +52,8 @@ class TOD : public Provider
 
     public:
 
-                                TOD                                         (   const   Angle&                      anObliquityCorrection                       =   Angle::Zero(),
+                                TOD                                         (   const   Instant&                    anEpoch,
+                                                                                const   Angle&                      anObliquityCorrection                       =   Angle::Zero(),
                                                                                 const   Angle&                      aLongitudeCorrection                        =   Angle::Zero()) ;
 
         virtual                 ~TOD                                        ( ) override ;
@@ -61,10 +62,13 @@ class TOD : public Provider
 
         virtual bool            isDefined                                   ( ) const override ;
 
+        Instant                 getEpoch                                    ( ) const ;
+
         virtual Transform       getTransformAt                              (   const   Instant&                    anInstant                                   ) const override ;
 
     private:
 
+        Instant                 epoch_ ;
         Angle                   obliquityCorrection_ ;
         Angle                   longitudeCorrection_ ;
 
