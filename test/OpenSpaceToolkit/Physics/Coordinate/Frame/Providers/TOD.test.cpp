@@ -51,9 +51,12 @@ TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_TOD, GetTransformAt)
 
         // https://github.com/JuliaSpace/SatelliteToolbox.jl/blob/master/test/transformations/fk5/fk5.jl#L443
 
-        const Instant instant = Instant::JulianDate(2453101.82815474, Scale::TT) ;
+        const Instant epoch = Instant::JulianDate(2453101.82815474, Scale::TT) ;
+        const Instant instant = Instant::DateTime(DateTime(2020, 1, 1, 0, 0, 0), Scale::UTC) ;
 
-        const Transform transform_TOD_MOD = TOD().getTransformAt(instant) ;
+        const Transform transform_TOD_MOD = TOD(epoch).getTransformAt(instant) ;
+
+        EXPECT_EQ(instant, transform_TOD_MOD.getInstant()) ;
 
         const Quaternion q_MOD_TOD = transform_TOD_MOD.getOrientation().toConjugate() ;
 
@@ -75,13 +78,15 @@ TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_TOD, GetTransformAt)
 
         // https://github.com/JuliaSpace/SatelliteToolbox.jl/blob/master/test/transformations/fk5/fk5.jl#L421
 
-        const Instant instant = Instant::JulianDate(2453101.828154745, Scale::TT) ;
-        std::cout << instant << std::endl ;
+        const Instant epoch = Instant::JulianDate(2453101.828154745, Scale::TT) ;
+        const Instant instant = Instant::DateTime(DateTime(2020, 1, 1, 0, 0, 0), Scale::UTC) ;
 
         const Angle obliquityCorrection = Angle::Radians(-0.003875 * M_PI / (180 * 3600)) ;
         const Angle longitudeCorrection = Angle::Radians(-0.052195 * M_PI / (180 * 3600)) ;
 
-        const Transform transform_TOD_MOD = TOD(obliquityCorrection, longitudeCorrection).getTransformAt(instant) ;
+        const Transform transform_TOD_MOD = TOD(epoch, obliquityCorrection, longitudeCorrection).getTransformAt(instant) ;
+
+        EXPECT_EQ(instant, transform_TOD_MOD.getInstant()) ;
 
         const Quaternion q_MOD_TOD = transform_TOD_MOD.getOrientation().toConjugate() ;
 

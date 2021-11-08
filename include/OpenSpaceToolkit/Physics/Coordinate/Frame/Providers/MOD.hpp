@@ -54,7 +54,7 @@ class MOD : public Provider
 
     public:
 
-                                MOD                                         ( ) ;
+                                MOD                                         (   const   Instant&                    anEpoch                                     ) ;
 
         virtual                 ~MOD                                        ( ) override ;
 
@@ -62,7 +62,13 @@ class MOD : public Provider
 
         virtual bool            isDefined                                   ( ) const override ;
 
+        Instant                 getEpoch                                    ( ) const ;
+
         virtual Transform       getTransformAt                              (   const   Instant&                    anInstant                                   ) const override ;
+
+    private:
+
+        Instant                 epoch_ ;
 
 } ;
 

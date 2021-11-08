@@ -346,25 +346,33 @@ Shared<const Frame>             Frame::GCRF                                 ( )
 
 }
 
-Shared<const Frame>             Frame::MOD                                  ( )
+Shared<const Frame>             Frame::MOD                                  (   const   Instant&                    anEpoch                                     )
 {
+
+    using Scale = ostk::physics::time::Scale ;
+
+    const String frameName = String::Format("MOD @ {}", anEpoch.toString(Scale::TT)) ;
 
     using MODProvider = ostk::physics::coord::frame::provider::MOD ;
 
-    static const Shared<const Provider> providerSPtr = std::make_shared<const MODProvider>() ;
+    static const Shared<const Provider> providerSPtr = std::make_shared<const MODProvider>(anEpoch) ;
 
-    return Frame::Emplace("MOD", true, Frame::GCRF(), providerSPtr) ;
+    return Frame::Emplace(frameName, true, Frame::GCRF(), providerSPtr) ;
 
 }
 
-Shared<const Frame>             Frame::TOD                                  ( )
+Shared<const Frame>             Frame::TOD                                  (   const   Instant&                    anEpoch                                     )
 {
+
+    using Scale = ostk::physics::time::Scale ;
+
+    const String frameName = String::Format("TOD @ {}", anEpoch.toString(Scale::TT)) ;
 
     using TODProvider = ostk::physics::coord::frame::provider::TOD ;
 
-    static const Shared<const Provider> providerSPtr = std::make_shared<const TODProvider>() ;
+    static const Shared<const Provider> providerSPtr = std::make_shared<const TODProvider>(anEpoch) ;
 
-    return Frame::Emplace("TOD", true, Frame::MOD(), providerSPtr) ;
+    return Frame::Emplace(frameName, true, Frame::MOD(anEpoch), providerSPtr) ;
 
 }
 

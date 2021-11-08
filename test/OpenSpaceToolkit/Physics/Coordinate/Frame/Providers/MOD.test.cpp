@@ -51,9 +51,12 @@ TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_MOD, GetTransformAt)
 
         // https://github.com/JuliaSpace/SatelliteToolbox.jl/blob/master/test/transformations/fk5/fk5.jl#L635
 
-        const Instant instant = Instant::JulianDate(2453101.828154745, Scale::TT) ;
+        const Instant epoch = Instant::JulianDate(2453101.828154745, Scale::TT) ;
+        const Instant instant = Instant::DateTime(DateTime(2020, 1, 1, 0, 0, 0), Scale::UTC) ;
 
-        const Transform transform_MOD_GCRF = MOD().getTransformAt(instant) ;
+        const Transform transform_MOD_GCRF = MOD(epoch).getTransformAt(instant) ;
+
+        EXPECT_EQ(instant, transform_MOD_GCRF.getInstant()) ;
 
         const Quaternion q_GCRF_MOD = transform_MOD_GCRF.getOrientation().toConjugate() ;
 

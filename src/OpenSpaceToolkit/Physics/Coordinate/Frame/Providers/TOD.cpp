@@ -250,9 +250,11 @@ Triple<Angle, Angle, Angle>     computeFK5Nutation                          (   
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                                TOD::TOD                                    (   const   Angle&                      anObliquityCorrection,
+                                TOD::TOD                                    (   const   Instant&                    anEpoch,
+                                                                                const   Angle&                      anObliquityCorrection,
                                                                                 const   Angle&                      aLongitudeCorrection                        )
-                                :   obliquityCorrection_(anObliquityCorrection),
+                                :   epoch_(anEpoch),
+                                    obliquityCorrection_(anObliquityCorrection),
                                     longitudeCorrection_(aLongitudeCorrection)
 {
 
@@ -271,6 +273,11 @@ TOD*                            TOD::clone                                  ( ) 
 bool                            TOD::isDefined                              ( ) const
 {
     return true ;
+}
+
+Instant                         TOD::getEpoch                               ( ) const
+{
+    return epoch_ ;
 }
 
 Transform                       TOD::getTransformAt                         (   const   Instant&                    anInstant                                   ) const
@@ -294,14 +301,14 @@ Transform                       TOD::getTransformAt                         (   
     }
 
     // In a future release, use `IersManager` Bulletin A or Finals 2000 instead to obtain deps and dpsi corrections.
-    // e.g.: const auto finals = IersManager::Get().getFinals2000AAt(anInstant).getDataAt(anInstant) ;
+    // e.g.: const auto finals = IersManager::Get().getFinals2000AAt(epoch_).getDataAt(epoch_) ;
 
     const Angle& dde_1980 = obliquityCorrection_ ;
     const Angle& ddpsi_1980 = longitudeCorrection_ ;
 
     // Compute nutation angles
 
-    auto [me_1980, de_1980, dpsi_1980] = computeFK5Nutation(anInstant) ;
+    auto [me_1980, de_1980, dpsi_1980] = computeFK5Nutation(epoch_) ;
 
     // Add the corrections to the nutation in obliquity and longitude.
 
