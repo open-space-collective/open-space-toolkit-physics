@@ -18,13 +18,15 @@ Inheritance diagram for ostk\+:\+:physics\+:\+:coord\+:\+:frame\+:\+:provider\+:
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_ad04e95c1ab8ccfca5f6ed3c8d51639d4}{T\+OD} (const \hyperlink{classostk_1_1physics_1_1units_1_1_angle}{Angle} \&an\+Obliquity\+Correction=\hyperlink{classostk_1_1physics_1_1units_1_1_angle_a4454975f87e5d3532cf8b819819207e7}{Angle\+::\+Zero}(), const \hyperlink{classostk_1_1physics_1_1units_1_1_angle}{Angle} \&a\+Longitude\+Correction=\hyperlink{classostk_1_1physics_1_1units_1_1_angle_a4454975f87e5d3532cf8b819819207e7}{Angle\+::\+Zero}())
+\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_a457cb11c5a20ea3b575aa6c3887bd085}{T\+OD} (const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Epoch, const \hyperlink{classostk_1_1physics_1_1units_1_1_angle}{Angle} \&an\+Obliquity\+Correction=\hyperlink{classostk_1_1physics_1_1units_1_1_angle_a4454975f87e5d3532cf8b819819207e7}{Angle\+::\+Zero}(), const \hyperlink{classostk_1_1physics_1_1units_1_1_angle}{Angle} \&a\+Longitude\+Correction=\hyperlink{classostk_1_1physics_1_1units_1_1_angle_a4454975f87e5d3532cf8b819819207e7}{Angle\+::\+Zero}())
 \item 
 virtual \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_a1e59c3f3d3d31e768deb99abb502b577}{$\sim$\+T\+OD} () override
 \item 
 virtual \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d}{T\+OD} $\ast$ \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_ad374cdce01f5872311b61695502dd4e4}{clone} () const override
 \item 
 virtual bool \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_a57f8d993ac693b2cd39b4a99faadc92f}{is\+Defined} () const override
+\item 
+\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_aa57fb466a29c74c0f7e79087a7b90d91}{get\+Epoch} () const
 \item 
 virtual \hyperlink{classostk_1_1physics_1_1coord_1_1_transform}{Transform} \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_adc74a9cba68df62bf135f5ee775bd4a1}{get\+Transform\+At} (const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant) const override
 \end{DoxyCompactItemize}
@@ -38,11 +40,11 @@ Transformation from the Mean of Date (\hyperlink{classostk_1_1physics_1_1coord_1
 https\+://en.wikipedia.\+org/wiki/\+Earth-\/centered\+\_\+inertial https\+://github.com/\+Julia\+Space/\+Satellite\+Toolbox.\+jl/blob/master/src/transformations/fk5/fk5.jl\+::\+L296 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_ad04e95c1ab8ccfca5f6ed3c8d51639d4}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_ad04e95c1ab8ccfca5f6ed3c8d51639d4}} 
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_a457cb11c5a20ea3b575aa6c3887bd085}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_a457cb11c5a20ea3b575aa6c3887bd085}} 
 \index{ostk\+::physics\+::coord\+::frame\+::provider\+::\+T\+OD@{ostk\+::physics\+::coord\+::frame\+::provider\+::\+T\+OD}!T\+OD@{T\+OD}}
 \index{T\+OD@{T\+OD}!ostk\+::physics\+::coord\+::frame\+::provider\+::\+T\+OD@{ostk\+::physics\+::coord\+::frame\+::provider\+::\+T\+OD}}
 \subsubsection{\texorpdfstring{T\+O\+D()}{TOD()}}
-{\footnotesize\ttfamily ostk\+::physics\+::coord\+::frame\+::provider\+::\+T\+O\+D\+::\+T\+OD (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1units_1_1_angle}{Angle} \&}]{an\+Obliquity\+Correction = {\ttfamily \hyperlink{classostk_1_1physics_1_1units_1_1_angle_a4454975f87e5d3532cf8b819819207e7}{Angle\+::\+Zero}()},  }\item[{const \hyperlink{classostk_1_1physics_1_1units_1_1_angle}{Angle} \&}]{a\+Longitude\+Correction = {\ttfamily \hyperlink{classostk_1_1physics_1_1units_1_1_angle_a4454975f87e5d3532cf8b819819207e7}{Angle\+::\+Zero}()} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily ostk\+::physics\+::coord\+::frame\+::provider\+::\+T\+O\+D\+::\+T\+OD (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Epoch,  }\item[{const \hyperlink{classostk_1_1physics_1_1units_1_1_angle}{Angle} \&}]{an\+Obliquity\+Correction = {\ttfamily \hyperlink{classostk_1_1physics_1_1units_1_1_angle_a4454975f87e5d3532cf8b819819207e7}{Angle\+::\+Zero}()},  }\item[{const \hyperlink{classostk_1_1physics_1_1units_1_1_angle}{Angle} \&}]{a\+Longitude\+Correction = {\ttfamily \hyperlink{classostk_1_1physics_1_1units_1_1_angle_a4454975f87e5d3532cf8b819819207e7}{Angle\+::\+Zero}()} }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_a1e59c3f3d3d31e768deb99abb502b577}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_a1e59c3f3d3d31e768deb99abb502b577}} 
 \index{ostk\+::physics\+::coord\+::frame\+::provider\+::\+T\+OD@{ostk\+::physics\+::coord\+::frame\+::provider\+::\+T\+OD}!````~T\+OD@{$\sim$\+T\+OD}}
@@ -62,6 +64,12 @@ https\+://en.wikipedia.\+org/wiki/\+Earth-\/centered\+\_\+inertial https\+://git
 
 
 Implements \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_provider_ae41bc3862d088e9c8d90a79253294ce9}{ostk\+::physics\+::coord\+::frame\+::\+Provider}.
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_aa57fb466a29c74c0f7e79087a7b90d91}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_aa57fb466a29c74c0f7e79087a7b90d91}} 
+\index{ostk\+::physics\+::coord\+::frame\+::provider\+::\+T\+OD@{ostk\+::physics\+::coord\+::frame\+::provider\+::\+T\+OD}!get\+Epoch@{get\+Epoch}}
+\index{get\+Epoch@{get\+Epoch}!ostk\+::physics\+::coord\+::frame\+::provider\+::\+T\+OD@{ostk\+::physics\+::coord\+::frame\+::provider\+::\+T\+OD}}
+\subsubsection{\texorpdfstring{get\+Epoch()}{getEpoch()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} ostk\+::physics\+::coord\+::frame\+::provider\+::\+T\+O\+D\+::get\+Epoch (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 \mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_adc74a9cba68df62bf135f5ee775bd4a1}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_adc74a9cba68df62bf135f5ee775bd4a1}} 
 \index{ostk\+::physics\+::coord\+::frame\+::provider\+::\+T\+OD@{ostk\+::physics\+::coord\+::frame\+::provider\+::\+T\+OD}!get\+Transform\+At@{get\+Transform\+At}}
