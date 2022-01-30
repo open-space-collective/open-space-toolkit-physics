@@ -2237,6 +2237,10 @@ TEST (OpenSpaceToolkit_Physics_Time_Duration, Parse)
         EXPECT_EQ((Duration::Hours(+1.0) + Duration::Minutes(+2.0) + Duration::Seconds(+3.0)), Duration::Parse("PT1H2M3S", Duration::Format::ISO8601)) ;
         EXPECT_EQ((Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0)), Duration::Parse("PT12H34M56S", Duration::Format::ISO8601)) ;
 
+        EXPECT_EQ(Duration::Seconds(+123.0), Duration::Parse("PT123S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ((Duration::Minutes(+123.0) + Duration::Seconds(+45.0)), Duration::Parse("PT123M45S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ((Duration::Hours(+123.0) + Duration::Minutes(+45.0) + Duration::Seconds(+60.0)), Duration::Parse("PT123H45M60S", Duration::Format::ISO8601)) ;
+
         EXPECT_EQ((Duration::Days(+1.0)), Duration::Parse("P1D", Duration::Format::ISO8601)) ;
         EXPECT_EQ((Duration::Days(+1.0) + Duration::Hours(+1.0)), Duration::Parse("P1DT1H", Duration::Format::ISO8601)) ;
         EXPECT_EQ((Duration::Days(+1.0) + Duration::Hours(+1.0) + Duration::Minutes(+2.0)), Duration::Parse("P1DT1H2M", Duration::Format::ISO8601)) ;
@@ -2274,6 +2278,10 @@ TEST (OpenSpaceToolkit_Physics_Time_Duration, Parse)
 
         EXPECT_EQ((-(Duration::Hours(+1.0) + Duration::Minutes(+2.0) + Duration::Seconds(+3.0))), Duration::Parse("-PT1H2M3S", Duration::Format::ISO8601)) ;
         EXPECT_EQ((-(Duration::Hours(+12.0) + Duration::Minutes(+34.0) + Duration::Seconds(+56.0))), Duration::Parse("-PT12H34M56S", Duration::Format::ISO8601)) ;
+
+        EXPECT_EQ(Duration::Seconds(-123.0), Duration::Parse("-PT123S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ((-(Duration::Minutes(+123.0) + Duration::Seconds(+45.0))), Duration::Parse("-PT123M45S", Duration::Format::ISO8601)) ;
+        EXPECT_EQ((-(Duration::Hours(+123.0) + Duration::Minutes(+45.0) + Duration::Seconds(+60.0))), Duration::Parse("-PT123H45M60S", Duration::Format::ISO8601)) ;
 
         EXPECT_EQ((-(Duration::Days(+1.0))), Duration::Parse("-P1D", Duration::Format::ISO8601)) ;
         EXPECT_EQ((-(Duration::Days(+1.0) + Duration::Hours(+1.0))), Duration::Parse("-P1DT1H", Duration::Format::ISO8601)) ;
