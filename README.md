@@ -120,18 +120,9 @@ The library exhibits the following structure:
 │   ├── Length
 │   ├── Mass
 │   ├── Time
-│   ├── Temperature
 │   ├── Electric Current
-│   ├── Luminous Intensity
 │   └── Derived
-│       ├── Angle
-│       ├── Solid Angle
-│       ├── Frequency
-│       ├── Force
-│       ├── Pressure
-│       ├── Area
-│       ├── Volume
-│       └── Information
+│       └── Angle
 ├── Time
 │   ├── Scale (UTC, TT, TAI, UT1, TCG, TCB, TDB, GMST, GPST, GST, GLST, BDT, QZSST, IRNSST)
 │   ├── Instant
@@ -141,14 +132,17 @@ The library exhibits the following structure:
 │   ├── Time
 │   └── DateTime
 ├── Coordinate
+│   ├── Axes
 │   ├── Transform
-│   └── Frame (ECI, ECEF, NED, LVLHGD, LVLHGDGT, ...)
-├── Geographic
 │   ├── Position
-│   ├── Area
-│   ├── Volume
-│   ├── Coordinate Reference System (CRS)
-│   └── Universal Transverse Mercator (UTM)
+│   ├── Velocity
+│   ├── Frame (ECI, ECEF, NED, LVLHGD, LVLHGDGT, ...)
+│   └── Spherical (AER, LLA, ...)
+├── Data
+│   ├── Direction
+│   │   └── Nadir
+│   ├── Scalar
+│   ├── Vector
 └── Environment
     ├── Constants
     ├── Object
