@@ -13,10 +13,10 @@ branches:
     - master
     - dev
 
+dist: xenial
+
 os:
   - linux
-
-sudo: false
 
 services:
   - docker
@@ -73,12 +73,11 @@ jobs:
         - echo "Deploying packages to GitHub Releases..."
       deploy:
         - provider: releases
-          api_key: ${GITHUB_API_KEY}
+          token: ${GITHUB_API_KEY}
           file_glob: true
           file:
             - ./packages/cpp/*
             - ./packages/python/*
-          skip_cleanup: true
           on:
             branch: master
             tags: true
