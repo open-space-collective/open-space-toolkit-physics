@@ -225,10 +225,6 @@ TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetUt1Mi
 
         EXPECT_NO_THROW(manager.getUt1MinusUtcAt(instant)) ;
 
-        // const Real dUT1 = manager.getUt1MinusUtcAt(instant) ;
-
-        // EXPECT_EQ(0.0, dUT1) ;
-
     }
 
 }

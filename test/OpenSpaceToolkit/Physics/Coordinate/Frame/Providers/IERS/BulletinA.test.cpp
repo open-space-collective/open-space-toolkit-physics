@@ -23,11 +23,11 @@ TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, Stream
 
     {
 
-        testing::internal::CaptureStdout() ;
-
         const File file = File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/BulletinA/ser7.dat")) ;
 
         const BulletinA bulletinA = BulletinA::Load(file) ;
+
+        testing::internal::CaptureStdout() ;
 
         EXPECT_NO_THROW(std::cout << bulletinA << std::endl) ;
 
