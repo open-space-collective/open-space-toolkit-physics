@@ -35,6 +35,8 @@ setuptools.setup(
     packages = setuptools.find_packages(where='${CMAKE_CURRENT_BINARY_DIR}/${NAME}'),
     package_data = {
         '': [
+            '*.dat',
+            '*.data',
             '${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}/libopen-space-toolkit-physics.so.0',
             '${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}/${LIBRARY_TARGET}.*${EXTENSION}*.so'
         ]

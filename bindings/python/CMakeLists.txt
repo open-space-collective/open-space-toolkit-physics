@@ -148,6 +148,11 @@ FUNCTION (PY_ADD_PACKAGE_DIRECTORY NAME)
     SET (SETUP_PY "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/setup.py")
     CONFIGURE_FILE (${SETUP_PY_IN} ${SETUP_PY})
 
+    # Configure MANIFEST.in file
+    SET (MANIFEST_IN_IN "${CMAKE_CURRENT_SOURCE_DIR}/tools/python/MANIFEST.in.in")
+    SET (MANIFEST_IN "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/MANIFEST.in")
+    CONFIGURE_FILE (${MANIFEST_IN_IN} ${MANIFEST_IN})
+
     # Configure setup.cfg file
     # SET (SETUP_CFG_IN "${CMAKE_CURRENT_SOURCE_DIR}/tools/python/setup.cfg.in")
     # SET (SETUP_CFG "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/setup.cfg")
@@ -163,7 +168,7 @@ FUNCTION (PY_ADD_PACKAGE_DIRECTORY NAME)
                             COMMAND cp "${CMAKE_CURRENT_SOURCE_DIR}/tools/python/${PROJECT_PATH}/__init__.py" "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}/__init__.py"
                             COMMAND cp "${CMAKE_SOURCE_DIR}/lib/${SHARED_LIBRARY_TARGET}" "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}/libopen-space-toolkit-physics.so.0"
                             COMMAND cp "${CMAKE_SOURCE_DIR}/lib/${LIBRARY_TARGET}.*${EXTENSION}*.so" "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}/"
-                            COMMAND python${PYTHON_VERSION} ${SETUP_PY} build --build-base=./lib${EXTENSION} bdist_wheel --python-tag=py${EXTENSION} --bdist-dir=./dist${EXTENSION}
+                            COMMAND python${PYTHON_VERSION} ${SETUP_PY} -q build --build-base=./lib${EXTENSION} bdist_wheel --python-tag=py${EXTENSION} --bdist-dir=./dist${EXTENSION}
                             DEPENDS ${DEPS})
 
         # Install package on the machine
