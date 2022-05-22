@@ -206,7 +206,7 @@ BulletinA::Observation          BulletinA::getObservationAt                 (   
 
     if (!observationInterval_.contains(anInstant))
     {
-        throw ostk::core::error::RuntimeError("Instant [] out of observation range [{} - {}].", anInstant.toString(Scale::UTC), observationInterval_.accessStart().toString(Scale::UTC), observationInterval_.accessEnd().toString(Scale::UTC)) ;
+        throw ostk::core::error::RuntimeError("Instant [{}] out of observation range [{} - {}].", anInstant.toString(Scale::UTC), observationInterval_.accessStart().toString(Scale::UTC), observationInterval_.accessEnd().toString(Scale::UTC)) ;
     }
 
     const Real instantMjd = anInstant.getModifiedJulianDate(Scale::UTC) ;
@@ -304,7 +304,7 @@ BulletinA::Prediction           BulletinA::getPredictionAt                  (   
 
     if (!predictionInterval_.contains(anInstant))
     {
-        throw ostk::core::error::RuntimeError("Instant [] out of prediction range [{} - {}].", anInstant.toString(Scale::UTC), predictionInterval_.accessStart().toString(Scale::UTC), predictionInterval_.accessEnd().toString(Scale::UTC)) ;
+        throw ostk::core::error::RuntimeError("Instant [{}] out of prediction range [{} - {}].", anInstant.toString(Scale::UTC), predictionInterval_.accessStart().toString(Scale::UTC), predictionInterval_.accessEnd().toString(Scale::UTC)) ;
     }
 
     const Real instantMjd = anInstant.getModifiedJulianDate(Scale::UTC) ;
