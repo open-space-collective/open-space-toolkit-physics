@@ -103,21 +103,17 @@ void                            Manager::fetchKernel                        (   
     {
         throw ostk::core::error::RuntimeError("Cannot fetch kernel file [{}] at [{}].", fetchedKernelFile.toString(), kernelFileUrl.toString()) ;
     }
-    else
+
+    // Check that file size is not zero
+
+    std::uintmax_t fetchedKernelFileSize = std::experimental::filesystem::file_size(std::string(fetchedKernelFile.getPath().toString())) ;
+
+    if (fetchedKernelFileSize == 0)
     {
 
-        // Check that file size is not zero
+        fetchedKernelFile.remove() ;
 
-        std::uintmax_t fetchedKernelFileSize = std::experimental::filesystem::file_size(std::string(fetchedKernelFile.getPath().toString())) ;
-
-        if (fetchedKernelFileSize == 0)
-        {
-
-            fetchedKernelFile.remove() ;
-
-            throw ostk::core::error::RuntimeError("Cannot fetch kernel from [{}]: file is empty.", kernelFileUrl.toString()) ;
-
-        }
+        throw ostk::core::error::RuntimeError("Cannot fetch kernel from [{}]: file is empty.", kernelFileUrl.toString()) ;
 
     }
 
