@@ -148,21 +148,12 @@ FUNCTION (PY_ADD_PACKAGE_DIRECTORY NAME)
     SET (SETUP_PY "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/setup.py")
     CONFIGURE_FILE (${SETUP_PY_IN} ${SETUP_PY})
 
-    # Configure MANIFEST.in file
-    SET (MANIFEST_IN_IN "${CMAKE_CURRENT_SOURCE_DIR}/tools/python/MANIFEST.in.in")
-    SET (MANIFEST_IN "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/MANIFEST.in")
-    CONFIGURE_FILE (${MANIFEST_IN_IN} ${MANIFEST_IN})
-
-    # Configure setup.cfg file
-    # SET (SETUP_CFG_IN "${CMAKE_CURRENT_SOURCE_DIR}/tools/python/setup.cfg.in")
-    # SET (SETUP_CFG "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/setup.cfg")
-    # CONFIGURE_FILE (${SETUP_CFG_IN} ${SETUP_CFG})
-
     IF (BUILD_WHEELS_IN_CMAKE)
 
         # Build wheels with cmake
         ADD_CUSTOM_COMMAND (OUTPUT ${OUTPUT}
                             COMMAND mkdir -p "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}"
+                            COMMAND rm -rf "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}/test"
                             COMMAND cp -r "${CMAKE_CURRENT_SOURCE_DIR}/test" "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}/test"
                             COMMAND cp "${CMAKE_CURRENT_SOURCE_DIR}/tools/python/${PROJECT_GROUP}/__init__.py" "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_GROUP}/__init__.py"
                             COMMAND cp "${CMAKE_CURRENT_SOURCE_DIR}/tools/python/${PROJECT_PATH}/__init__.py" "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}/__init__.py"
@@ -178,6 +169,7 @@ FUNCTION (PY_ADD_PACKAGE_DIRECTORY NAME)
         # Build package directories only to integrate with a ci build wheel process
         ADD_CUSTOM_COMMAND (OUTPUT ${OUTPUT}
                             COMMAND mkdir -p "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}"
+                            COMMAND rm -rf "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}/test"
                             COMMAND cp -r "${CMAKE_CURRENT_SOURCE_DIR}/test" "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}/test"
                             COMMAND cp "${CMAKE_CURRENT_SOURCE_DIR}/tools/python/${PROJECT_GROUP}/__init__.py" "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_GROUP}/__init__.py"
                             COMMAND cp "${CMAKE_CURRENT_SOURCE_DIR}/tools/python/${PROJECT_PATH}/__init__.py" "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}/__init__.py"

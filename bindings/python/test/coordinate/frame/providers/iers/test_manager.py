@@ -11,6 +11,7 @@ import pytest
 
 from datetime import datetime
 import pathlib
+import os
 
 from ostk.core.filesystem import Path
 from ostk.core.filesystem import File
@@ -56,17 +57,17 @@ class TestManager:
     def test_get_local_repository_success (self, manager: Manager):
 
         assert isinstance(manager.get_local_repository(), Directory)
-        assert manager.get_local_repository().to_string() == './.open-space-toolkit/physics/coordinate/frame/providers/iers'
+        assert manager.get_local_repository().to_string() == os.environ.get('OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY')
 
     def test_get_bulletin_a_directory_success (self, manager: Manager):
 
         assert isinstance(manager.get_bulletin_a_directory(), Directory)
-        assert manager.get_bulletin_a_directory().to_string() == './.open-space-toolkit/physics/coordinate/frame/providers/iers/bulletin-A'
+        assert manager.get_bulletin_a_directory().to_string() == str(os.environ.get('OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY')) + '/bulletin-A'
 
     def test_get_finals_2000a_directory_success (self, manager: Manager):
 
         assert isinstance(manager.get_finals_2000a_directory(), Directory)
-        assert manager.get_finals_2000a_directory().to_string() == './.open-space-toolkit/physics/coordinate/frame/providers/iers/finals-2000A'
+        assert manager.get_finals_2000a_directory().to_string() == str(os.environ.get('OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY')) + '/finals-2000A'
 
     def test_get_remote_url_success (self, manager: Manager):
 
@@ -75,18 +76,18 @@ class TestManager:
 
     def test_get_bulletin_a_array_success (self, manager: Manager):
 
-        assert isinstance(manager.get_bulletin_a_array(),  list)
+        assert isinstance(manager.get_bulletin_a_array(), list)
         assert len(manager.get_bulletin_a_array()) == 0
 
     def test_get_bulletin_a_at_success (self, manager: Manager):
 
-        bulletin_a: BulletinA = manager.get_bulletin_a_at(Instant.now() - Duration.days(6.0))
+        bulletin_a: BulletinA = manager.get_bulletin_a_at(Instant.now() - Duration.days(5.0))
 
         assert isinstance(bulletin_a, BulletinA)
 
     def test_get_finals_2000a_array_success (self, manager: Manager):
 
-        assert isinstance(manager.get_finals_2000a_array(),  list)
+        assert isinstance(manager.get_finals_2000a_array(), list)
         assert len(manager.get_finals_2000a_array()) == 0
 
     def test_get_finals_2000a_at_success (self, manager: Manager):
@@ -104,7 +105,7 @@ class TestManager:
         assert len(manager.get_bulletin_a_array()) == 0
         assert len(manager.get_finals_2000a_array()) == 0
 
-        assert manager.get_polar_motion_at(Instant.now() - Duration.days(6.0)) is not None
+        assert manager.get_polar_motion_at(Instant.now() - Duration.days(5.0)) is not None
 
         assert len(manager.get_bulletin_a_array()) == 1
         assert len(manager.get_finals_2000a_array()) == 0
@@ -136,7 +137,7 @@ class TestManager:
     def test_set_local_repository_success (self, manager: Manager):
 
         assert isinstance(manager.get_local_repository(), Directory)
-        assert manager.get_local_repository().to_string() == './.open-space-toolkit/physics/coordinate/frame/providers/iers'
+        assert manager.get_local_repository().to_string() == os.environ.get('OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY')
 
         manager.set_local_repository(Directory.path(Path.parse('./.open-space-toolkit/physics/coordinate/frame/providers/iers2')))
 
@@ -223,7 +224,7 @@ class TestManager:
     def test_default_local_repository_success (self, manager: Manager):
 
         assert isinstance(manager.default_local_repository(), Directory)
-        assert manager.default_local_repository().to_string() == './.open-space-toolkit/physics/coordinate/frame/providers/iers'
+        assert manager.default_local_repository().to_string() == os.environ.get('OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY')
 
     def test_default_local_repository_lock_timeout_success (self, manager: Manager):
 
