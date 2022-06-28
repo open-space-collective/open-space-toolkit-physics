@@ -89,10 +89,14 @@ Mass                            Mass::Kilograms                             (   
     return { aValue, Mass::Unit::Kilogram } ;
 }
 
-// Mass                            Mass::Parse                                 (   const   String&                     aString                                     )
-// {
+Mass                            Mass::Parse                                 (   const   String&                     aString                                     )
+{
 
-// }
+    (void) aString ;
+
+    throw ostk::core::error::runtime::ToBeImplemented("Mass :: Parse") ;
+
+}
 
 String                          Mass::StringFromUnit                        (   const   Mass::Unit&                 aUnit                                       )
 {
@@ -157,6 +161,10 @@ Real                            Mass::SIRatio                               (   
 
         case Mass::Unit::Kilogram:
             return 1.0 ;
+        case Mass::Unit::Pound:
+            return 2.20462 ;
+        case Mass::Unit::Tonne:
+            return 1016.047 ;
 
         default:
             throw ostk::core::error::runtime::Wrong("Unit") ;
