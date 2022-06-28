@@ -88,6 +88,8 @@ TEST (OpenSpaceToolkit_Physics_Units_Mass, In)
     {
 
         EXPECT_EQ(1.0, Mass(1.0, Mass::Unit::Kilogram).in(Mass::Unit::Kilogram)) ;
+        EXPECT_EQ(1 / 2.20462, Mass(1.0, Mass::Unit::Kilogram).in(Mass::Unit::Pound)) ;
+        EXPECT_EQ(1 / 1016.047, Mass(1.0, Mass::Unit::Kilogram).in(Mass::Unit::Tonne)) ;
 
     }
 
