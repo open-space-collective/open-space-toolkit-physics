@@ -109,12 +109,12 @@ RUN mkdir -p /tmp/open-space-toolkit-core \
  && apt-get install -y ./*.deb \
  && rm -rf /tmp/open-space-toolkit-core
 
-## Open Space Toolkit ▸ I/O [0.4.3]
+## Open Space Toolkit ▸ I/O [0.4.4]
 
 RUN mkdir -p /tmp/open-space-toolkit-io \
  && cd /tmp/open-space-toolkit-io \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/0.4.3/open-space-toolkit-io-0.4.3-1.x86_64-runtime.deb \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/0.4.3/open-space-toolkit-io-0.4.3-1.x86_64-devel.deb \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/0.4.4/open-space-toolkit-io-0.4.4-1.x86_64-runtime.deb \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/0.4.4/open-space-toolkit-io-0.4.4-1.x86_64-devel.deb \
  && apt-get install -y ./*.deb \
  && rm -rf /tmp/open-space-toolkit-io
 

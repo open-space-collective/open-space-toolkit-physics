@@ -3,30 +3,22 @@
 ################################################################################################################################################################
 
 # @project        Open Space Toolkit ▸ Physics
-# @file           tools/development/helpers/build.sh
+# @file           tools/development/helpers/install-python.sh
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        Apache License 2.0
 
 ################################################################################################################################################################
 
+PYTHON_VERSION="3.9"
+
+################################################################################################################################################################
+
 project_directory="$(git rev-parse --show-toplevel)"
-build_directory="${project_directory}/build"
+python_directory="${project_directory}/build/bindings/python/OpenSpaceToolkitPhysicsPy-python-package-${PYTHON_VERSION}"
 
-mkdir -p "${build_directory}"
+pushd "${python_directory}" > /dev/null
 
-pushd "${build_directory}" > /dev/null
-
-if [[ ! -z $1 ]] && [[ $1 == "--debug" ]]; then
-
-    cmake -DCMAKE_BUILD_TYPE=Debug ..
-
-else
-
-    cmake ..
-
-fi
-
-make -j $(nproc)
+pip install . --force-reinstall
 
 popd > /dev/null
 

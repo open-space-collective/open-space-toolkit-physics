@@ -31,7 +31,7 @@
 #define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE Manager::Mode::Automatic
 #define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY "./.open-space-toolkit/physics/coordinate/frame/providers/iers"
 #define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT 60
-#define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL "ftp://cddis.gsfc.nasa.gov/pub/products/iers/"
+#define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL "https://maia.usno.navy.mil/ser7/"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -102,11 +102,29 @@ class Manager
 
         Directory               getLocalRepository                          ( ) const ;
 
+        /// @brief              Get Bulletin A directory
+        ///
+        /// @return             Bulletin A directory
+
+        Directory               getBulletinADirectory                       ( ) const ;
+
+        /// @brief              Get Finals 2000A directory
+        ///
+        /// @return             Finals 2000A directory
+
+        Directory               getFinals2000ADirectory                     ( ) const ;
+
         /// @brief              Get remote URL
         ///
         /// @return             Remote URL
 
         URL                     getRemoteUrl                                ( ) const ;
+
+        /// @brief              Get array of Bulletin A
+        ///
+        /// @return             Array of Bulletin A
+
+        Array<BulletinA>        getBulletinAArray                           ( ) const ;
 
         /// @brief              Get Bulletin A at instant
         ///
@@ -114,6 +132,12 @@ class Manager
         /// @return             Bulletin A
 
         BulletinA               getBulletinAAt                              (   const   Instant&                    anInstant                                   ) const ;
+
+        /// @brief              Get array of Finals 2000A
+        ///
+        /// @return             Array of Finals 2000A
+
+        Array<Finals2000A>      getFinals2000AArray                         ( ) const ;
 
         /// @brief              Get Finals 2000A at instant
         ///
@@ -190,6 +214,12 @@ class Manager
         ///                     Unload all bulletins and clear cache.
 
         void                    reset                                       ( ) ;
+
+        /// @brief              Clear local repository
+        ///
+        ///                     Delete all files in local repository.
+
+        void                    clearLocalRepository                        ( ) ;
 
         /// @brief              Get manager singleton
         ///

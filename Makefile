@@ -668,13 +668,14 @@ clean: ## Clean
 
 	@ echo "Cleaning up..."
 
-	rm -r "$(project_directory)/build" || true
-	rm -r "$(project_directory)/bin/"*.test* || true
-	rm -r "$(project_directory)/docs/html" || true
-	rm -r "$(project_directory)/docs/latex" || true
-	rm -r "$(project_directory)/lib/"*.so* || true
-	rm -r "$(project_directory)/coverage" || true
-	rm -r "$(project_directory)/packages" || true
+	rm -rf "$(project_directory)/build"
+	rm -rf "$(project_directory)/bin/"*.test*
+	rm -rf "$(project_directory)/docs/html"
+	rm -rf "$(project_directory)/docs/latex"
+	rm -rf "$(project_directory)/lib/"*.so*
+	rm -rf "$(project_directory)/coverage"
+	rm -rf "$(project_directory)/packages"
+	rm -rf "$(project_directory)/.open-space-toolkit"
 
 ################################################################################################################################################################
 
