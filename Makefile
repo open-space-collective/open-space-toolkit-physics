@@ -7,14 +7,12 @@
 
 ################################################################################################################################################################
 
-project_name := open-space-toolkit-physics
+project_name := physics
 project_version := $(shell git describe --tags --always)
 
 docker_registry_path := openspacecollective
-docker_image_repository := $(docker_registry_path)/$(project_name)
+docker_image_repository := $(docker_registry_path)/open-space-toolkit-$(project_name)
 docker_image_version := $(project_version)
-
-development_base_image_version := 0.2.1
 
 docker_development_image_repository := $(docker_image_repository)-development
 docker_release_image_cpp_repository := $(docker_image_repository)-cpp
@@ -28,10 +26,7 @@ open_space_toolkit_core_directory := $(CURDIR)/../open-space-toolkit-core
 open_space_toolkit_io_directory := $(CURDIR)/../open-space-toolkit-io
 open_space_toolkit_mathematics_directory := $(CURDIR)/../open-space-toolkit-mathematics
 
-export OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY := /app/share/coordinate/frame/providers/iers
-export OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY := /app/share/environment/ephemerides/spice
-export OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY := /app/share/environment/gravitational/earth
-export OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY := /app/share/environment/magnetic/earth
+project_name_camel_case := $(shell P=$(project_name); echo $${P^})
 
 ################################################################################################################################################################
 
@@ -136,7 +131,6 @@ _build-development-image: _pull-development-image
 		--file="$(CURDIR)/docker/development/$(target)/Dockerfile" \
 		--tag=$(docker_development_image_repository):$(docker_image_version)-$(target) \
 		--tag=$(docker_development_image_repository):latest-$(target) \
-		--build-arg="BASE_IMAGE_VERSION=$(development_base_image_version)" \
 		--build-arg="VERSION=$(docker_image_version)" \
 		"$(CURDIR)"
 
@@ -212,7 +206,8 @@ build-documentation: _build-development-image ## Build documentation
 		--volume="/app/build" \
 		--workdir=/app/build \
 		$(docker_development_image_repository):$(docker_image_version)-$(target) \
-		/bin/bash -c "cmake -DBUILD_DOCUMENTATION=ON .. && make docs"
+		/bin/bash -c "cmake -DBUILD_UNIT_TESTS=OFF -DBUILD_PYTHON_BINDINGS=OFF -DBUILD_DOCUMENTATION=ON .. \
+		&& make docs"
 
 build-packages: ## Build packages
 
@@ -275,7 +270,8 @@ _build-packages-python: _build-development-image
 		--volume="/app/build" \
 		--workdir=/app/build \
 		$(docker_development_image_repository):$(docker_image_version)-$(target) \
-		/bin/bash -c "cmake -DBUILD_UNIT_TESTS=OFF -DBUILD_PYTHON_BINDINGS=ON .. && make -j 4 \
+		/bin/bash -c "cmake -DBUILD_UNIT_TESTS=OFF -DBUILD_PYTHON_BINDINGS=ON .. \
+		&& make -j 4 \
 		&& mkdir -p /app/packages/python \
 		&& mv /app/build/bindings/python/dist/*.whl /app/packages/python"
 
@@ -303,7 +299,7 @@ _start-development-no-link:
 		--rm \
 		--privileged \
 		--volume="$(CURDIR):/app:delegated" \
-		--volume="${CURDIR}/tools/development/helpers:/app/build/helpers:ro,delegated" \
+		--volume="$(CURDIR)/tools/development/helpers:/app/build/helpers:ro,delegated" \
 		--workdir=/app/build \
 		$(docker_development_image_repository):$(docker_image_version)-$(target) \
 		/bin/bash
@@ -347,8 +343,8 @@ start-jupyter-notebook: build-release-image-jupyter ## Starting Jupyter Notebook
 	docker run \
 		-it \
 		--rm \
-		--publish="${jupyter_notebook_port}:8888" \
-		--volume="${CURDIR}/bindings/python/docs:/home/jovyan/docs" \
+		--publish="$(jupyter_notebook_port):8888" \
+		--volume="$(CURDIR)/bindings/python/docs:/home/jovyan/docs" \
 		--workdir="/home/jovyan" \
 		$(docker_release_image_jupyter_repository):$(docker_image_version) \
 		bash -c "start-notebook.sh --NotebookApp.token=''"
@@ -360,11 +356,11 @@ debug-jupyter-notebook: build-release-image-jupyter
 	docker run \
 		-it \
 		--rm \
-		--publish="${jupyter_notebook_port}:8888" \
-		--volume="${CURDIR}/bindings/python/docs:/home/jovyan/docs" \
-		--volume="${CURDIR}/tutorials/python/notebooks:/home/jovyan/tutorials" \
-		--volume="${CURDIR}/lib/libopen-space-toolkit-physics.so.0:/opt/conda/lib/python3.7/site-packages/ostk/physics/libopen-space-toolkit-physics.so.0:ro" \
-		--volume="${CURDIR}/lib/OpenSpaceToolkitPhysicsPy.so:/opt/conda/lib/python3.7/site-packages/ostk/physics/OpenSpaceToolkitPhysicsPy.so:ro" \
+		--publish="$(jupyter_notebook_port):8888" \
+		--volume="$(CURDIR)/bindings/python/docs:/home/jovyan/docs" \
+		--volume="$(CURDIR)/tutorials/python/notebooks:/home/jovyan/tutorials" \
+		--volume="$(CURDIR)/lib/libopen-space-toolkit-$(project_name).so.0:/opt/conda/lib/python3.7/site-packages/ostk/$(project_name)/libopen-space-toolkit-$(project_name).so.0:ro" \
+		--volume="$(CURDIR)/lib/OpenSpaceToolkit$(project_name_camel_case)Py.so:/opt/conda/lib/python3.7/site-packages/ostk/$(project_name)/OpenSpaceToolkit$(project_name_camel_case)Py.so:ro" \
 		--workdir="/home/jovyan" \
 		$(docker_release_image_jupyter_repository):$(docker_image_version) \
 		bash -c "start-notebook.sh --NotebookApp.token=''"
@@ -463,12 +459,9 @@ _test-unit-cpp: _build-development-image
 	docker run \
 		--rm \
 		--volume="$(CURDIR):/app:delegated" \
+		--volume="$(CURDIR)/share:/usr/local/share/OpenSpaceToolkit/$(project_name_camel_case):delegated" \
 		--volume="/app/build" \
 		--workdir=/app/build \
-		--env=OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY \
-		--env=OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY \
-		--env=OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY \
-		--env=OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY \
 		$(docker_development_image_repository):$(docker_image_version)-$(target) \
 		/bin/bash -c "cmake -DBUILD_PYTHON_BINDINGS=OFF -DBUILD_UNIT_TESTS=ON .. \
 		&& make -j 4 \
@@ -485,13 +478,9 @@ _test-unit-python: _build-release-image-python
 
 	docker run \
 		--rm \
-		--workdir=/usr/local/lib/python3.8/site-packages/ostk/physics \
+		--volume="$(CURDIR)/share:/usr/local/share/OpenSpaceToolkit/$(project_name_camel_case):delegated" \
+		--workdir=/usr/local/lib/python3.8/site-packages/ostk/astrodynamics \
 		--entrypoint="" \
-		--volume="$(CURDIR)/share:/app/share" \
-		--env=OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY \
-		--env=OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY \
-		--env=OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY \
-		--env=OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY \
 		$(docker_release_image_python_repository):$(docker_image_version)-$(target) \
 		/bin/bash -c "pip install pytest && pytest -sv ."
 
@@ -519,12 +508,9 @@ _test-coverage-cpp: _build-development-image
 	docker run \
 		--rm \
 		--volume="$(CURDIR):/app:delegated" \
+		--volume="$(CURDIR)/share:/usr/local/share/OpenSpaceToolkit/$(project_name_camel_case):delegated" \
 		--volume="/app/build" \
 		--workdir=/app/build \
-		--env=OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY \
-		--env=OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY \
-		--env=OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY \
-		--env=OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY \
 		$(docker_development_image_repository):$(docker_image_version)-$(target) \
 		/bin/bash -c "cmake -DBUILD_UNIT_TESTS=ON -DBUILD_PYTHON_BINDINGS=OFF -DBUILD_CODE_COVERAGE=ON .. \
 		&& make -j 4 \
