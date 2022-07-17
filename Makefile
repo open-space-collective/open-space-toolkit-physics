@@ -22,10 +22,6 @@ docker_release_image_jupyter_repository := $(docker_image_repository)-jupyter
 jupyter_notebook_image_repository := jupyter/scipy-notebook:latest
 jupyter_notebook_port := 9004
 
-open_space_toolkit_core_directory := $(CURDIR)/../open-space-toolkit-core
-open_space_toolkit_io_directory := $(CURDIR)/../open-space-toolkit-io
-open_space_toolkit_mathematics_directory := $(CURDIR)/../open-space-toolkit-mathematics
-
 project_name_camel_case := $(shell P=$(project_name); echo $${P^})
 
 ################################################################################################################################################################
