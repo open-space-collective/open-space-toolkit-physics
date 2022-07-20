@@ -81,7 +81,7 @@ class TestManager:
 
     def test_get_bulletin_a_at_success (self, manager: Manager):
 
-        bulletin_a: BulletinA = manager.get_bulletin_a_at(Instant.now() - Duration.days(5.0))
+        bulletin_a: BulletinA = manager.get_bulletin_a_at(Instant.now() - Duration.days(7.0))
 
         assert isinstance(bulletin_a, BulletinA)
 
@@ -105,7 +105,7 @@ class TestManager:
         assert len(manager.get_bulletin_a_array()) == 0
         assert len(manager.get_finals_2000a_array()) == 0
 
-        assert manager.get_polar_motion_at(Instant.now() - Duration.days(5.0)) is not None
+        assert manager.get_polar_motion_at(Instant.now() - Duration.days(7.0)) is not None
 
         assert len(manager.get_bulletin_a_array()) == 1
         assert len(manager.get_finals_2000a_array()) == 0
