@@ -295,6 +295,7 @@ _start-development-no-link:
 		--rm \
 		--privileged \
 		--volume="$(CURDIR):/app:delegated" \
+		--volume="$(CURDIR)/share/OpenSpaceToolkit:/usr/local/share/OpenSpaceToolkit:delegated" \
 		--volume="$(CURDIR)/tools/development/helpers:/app/build/helpers:ro,delegated" \
 		--workdir=/app/build \
 		$(docker_development_image_repository):$(docker_image_version)-$(target) \
