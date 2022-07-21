@@ -38,8 +38,11 @@ namespace celest
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using ostk::core::types::Shared ;
+using ostk::core::types::Integer ;
 using ostk::core::types::Real ;
+using ostk::core::types::String ;
+using ostk::core::types::Shared ;
+using ostk::core::fs::Directory ;
 
 using ostk::math::geom::d3::objects::Ellipsoid ;
 
@@ -100,7 +103,33 @@ class Earth : public Celestial
 
             } ;
 
+            struct EGM84
+            {
+
+                static const Derived GravitationalParameter ;
+                static const Length EquatorialRadius ;
+                static const Real Flattening ;
+                static const Real C20 ;
+                static const Real C40 ;
+                static const Real J2 ;
+                static const Real J4 ;
+
+            } ;
+
             struct WGS84
+            {
+
+                static const Derived GravitationalParameter ;
+                static const Length EquatorialRadius ;
+                static const Real Flattening ;
+                static const Real C20 ;
+                static const Real C40 ;
+                static const Real J2 ;
+                static const Real J4 ;
+
+            } ;
+
+            struct Spherical
             {
 
                 static const Derived GravitationalParameter ;
@@ -133,6 +162,18 @@ class Earth : public Celestial
                                                                                 const   EarthMagneticModel::Type&   aMagneticModelType,
                                                                                 const   Instant&                    anInstant                                   ) ;
 
+                                Earth                                       (   const   Derived&                    aGravitationalParameter,
+                                                                                const   Length&                     anEquatorialRadius,
+                                                                                const   Real&                       aFlattening,
+                                                                                const   Real&                       aJ2,
+                                                                                const   Real&                       aJ4,
+                                                                                const   Shared<Ephemeris>&          anEphemeris,
+                                                                                const   EarthGravitationalModel::Type& aGravitationalModelType,
+                                                                                const   Integer&                    aGravityModelDegree,
+                                                                                const   Integer&                    aGravityModelOrder,
+                                                                                const   EarthMagneticModel::Type&   aMagneticModelType,
+                                                                                const   Instant&                    anInstant                                   ) ;
+
         virtual                 ~Earth                                      ( ) override ;
 
         virtual Earth*          clone                                       ( ) const override ;
@@ -147,7 +188,8 @@ class Earth : public Celestial
         ///
         /// @return             Earth
 
-        static Earth            EGM2008                                     ( ) ;
+        static Earth            EGM2008                                     (   const   Integer&                    aGravityModelDegree                         = -1,
+                                                                                const   Integer&                    aGravityModelOrder                          = -1    ) ;
 
         /// @brief              World Geodetic System 1984 (WGS84) + Earth Gravity Model 1996 (EGM96)
         ///
@@ -159,19 +201,35 @@ class Earth : public Celestial
         ///
         /// @return             Earth
 
-        static Earth            WGS84_EGM96                                 ( ) ;
+        static Earth            WGS84_EGM96                                 (   const   Integer&                    aGravityModelDegree                         = -1,
+                                                                                const   Integer&                    aGravityModelOrder                          = -1    ) ;
 
         /// @brief              Earth Gravity Model 1996 (EGM96)
         ///
         /// @return             Earth
 
-        static Earth            EGM96                                       ( ) ;
+        static Earth            EGM84                                       (   const   Integer&                    aGravityModelDegree                         = -1,
+                                                                                const   Integer&                    aGravityModelOrder                          = -1    ) ;
+
+        /// @brief              Earth Gravity Model 1984 (EGM84)
+        ///
+        /// @return             Earth
+
+        static Earth            EGM96                                       (   const   Integer&                    aGravityModelDegree                         = -1,
+                                                                                const   Integer&                    aGravityModelOrder                          = -1    ) ;
 
         /// @brief              World Geodetic System 1984 (WGS84)
         ///
         /// @return             Earth
 
-        static Earth            WGS84                                       ( ) ;
+        static Earth            WGS84                                       (   const   Integer&                    aGravityModelDegree                         = -1,
+                                                                                const   Integer&                    aGravityModelOrder                          = -1    ) ;
+
+        /// @brief              Spherical model of Earth
+        ///
+        /// @return             Earth
+
+        static Earth            Spherical                                   ( ) ;
 
     private:
 

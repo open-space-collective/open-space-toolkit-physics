@@ -11,7 +11,10 @@
 #include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Moon.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Environment.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Objects/Celestial.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Interval.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
@@ -60,6 +63,19 @@ TEST (OpenSpaceToolkit_Physics_Environment, Constructor)
         const Array<Shared<Object>> objects =
         {
             std::make_shared<Earth>(Earth::Default())
+        } ;
+
+        EXPECT_NO_THROW(Environment environment(instant, objects) ;) ;
+
+    }
+
+    {
+
+        const Instant instant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC) ;
+
+        const Array<Shared<Object>> objects =
+        {
+            std::make_shared<Earth>(Earth::EGM2008(2190,2160))
         } ;
 
         EXPECT_NO_THROW(Environment environment(instant, objects) ;) ;

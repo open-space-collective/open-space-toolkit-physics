@@ -16,6 +16,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
 
     using namespace pybind11 ;
 
+    using ostk::core::types::Integer ;
     using ostk::core::types::Real ;
     using ostk::core::types::Shared ;
 
@@ -33,6 +34,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
         class_<Earth, Shared<Earth>, Celestial>(aModule, "Earth")
 
             .def(init<const Derived&, const Length&, const Real&, const Real&, const Real&, const Shared<Ephemeris>&, const EarthGravitationalModel::Type&, const EarthMagneticModel::Type&, const Instant&>())
+            .def(init<const Derived&, const Length&, const Real&, const Real&, const Real&, const Shared<Ephemeris>&, const EarthGravitationalModel::Type&, const Integer&, const Integer&, const EarthMagneticModel::Type&, const Instant&>())
 
             .def_readonly_static("gravitational_parameter", &Earth::GravitationalParameter)
             .def_readonly_static("equatorial_radius", &Earth::EquatorialRadius)
@@ -46,10 +48,12 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
             .def("__repr__", &(shiftToString<Earth>))
 
             .def_static("default", &Earth::Default)
-            .def_static("EGM2008", &Earth::EGM2008)
-            .def_static("WGS84_EGM96", &Earth::WGS84_EGM96)
-            .def_static("EGM96", &Earth::EGM96)
-            .def_static("WGS84", &Earth::WGS84)
+            .def_static("EGM2008", &Earth::EGM2008, arg("degree") = -1, arg("order") = -1 )
+            .def_static("WGS84_EGM96", &Earth::WGS84_EGM96, arg("degree") = -1, arg("order") = -1 )
+            .def_static("EGM96", &Earth::EGM96, arg("degree") = -1, arg("order") = -1 )
+            .def_static("EGM84", &Earth::EGM84, arg("degree") = -1, arg("order") = -1 )
+            .def_static("WGS84", &Earth::WGS84, arg("degree") = -1, arg("order") = -1 )
+            .def_static("spherical", &Earth::Spherical)
 
         ;
 
@@ -63,12 +67,8 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
         // Add __path__ attribute for "earth" submodule
         earth.attr("__path__") = "ostk.physics.environment.objects.celestial_bodies.earth" ;
 
-    }
-
-    {
-
         // Create "models" python submodule
-        auto models = aModule.def_submodule("models") ;
+        auto models = earth.def_submodule("models") ;
 
         // Add __path__ attribute for "models" submodule
         models.attr("__path__") = "ostk.physics.environment.objects.celestial_bodies.earth.models" ;
@@ -109,6 +109,18 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
 
         ;
 
+        class_<Earth::Models::EGM84>(models, "EGM84")
+
+            .def_readonly_static("gravitational_parameter", &Earth::Models::EGM84::GravitationalParameter)
+            .def_readonly_static("equatorial_radius", &Earth::Models::EGM84::EquatorialRadius)
+            .def_readonly_static("flattening", &Earth::Models::EGM84::Flattening)
+            .def_readonly_static("C20", &Earth::Models::EGM84::C20)
+            .def_readonly_static("C40", &Earth::Models::EGM84::C40)
+            .def_readonly_static("J2", &Earth::Models::EGM84::J2)
+            .def_readonly_static("J4", &Earth::Models::EGM84::J4)
+
+        ;
+
         class_<Earth::Models::WGS84>(models, "WGS84")
 
             .def_readonly_static("gravitational_parameter", &Earth::Models::WGS84::GravitationalParameter)
@@ -118,6 +130,18 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
             .def_readonly_static("C40", &Earth::Models::WGS84::C40)
             .def_readonly_static("J2", &Earth::Models::WGS84::J2)
             .def_readonly_static("J4", &Earth::Models::WGS84::J4)
+
+        ;
+
+        class_<Earth::Models::Spherical>(models, "Spherical")
+
+            .def_readonly_static("gravitational_parameter", &Earth::Models::Spherical::GravitationalParameter)
+            .def_readonly_static("equatorial_radius", &Earth::Models::Spherical::EquatorialRadius)
+            .def_readonly_static("flattening", &Earth::Models::Spherical::Flattening)
+            .def_readonly_static("C20", &Earth::Models::Spherical::C20)
+            .def_readonly_static("C40", &Earth::Models::Spherical::C40)
+            .def_readonly_static("J2", &Earth::Models::Spherical::J2)
+            .def_readonly_static("J4", &Earth::Models::Spherical::J4)
 
         ;
 

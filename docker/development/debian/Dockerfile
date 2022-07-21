@@ -85,11 +85,11 @@ RUN cd /tmp \
  && apt-get remove -y csh \
  && rm -rf /var/lib/apt/lists/*
 
-# GeographicLib [1.49]
+# GeographicLib [1.52]
 
-RUN git clone git://git.code.sf.net/p/geographiclib/code /tmp/geographiclib \
+RUN git clone https://github.com/geographiclib/geographiclib /tmp/geographiclib \
  && cd /tmp/geographiclib \
- && git checkout tags/r1.49 \
+ && git checkout tags/r1.52 \
  && mkdir build \
  && cd build \
  && apt-get update \
@@ -126,6 +126,13 @@ RUN mkdir -p /tmp/open-space-toolkit-mathematics \
  && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/0.4.5/open-space-toolkit-mathematics-0.4.5-1.x86_64-devel.deb \
  && apt-get install -y ./*.deb \
  && rm -rf /tmp/open-space-toolkit-mathematics
+
+# Container local repositories
+
+ENV OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/coordinate/frame/providers/iers"
+ENV OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/environment/ephemerides/spice"
+ENV OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/environment/gravitational/earth"
+ENV OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/environment/magnetic/earth"
 
 # Labels
 

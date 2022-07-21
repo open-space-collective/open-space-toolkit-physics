@@ -39,6 +39,7 @@ static const Derived::Unit      GravitationalParameterSIUnit                    
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// Coefficients taken from https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84#tab_egm2008
 // http://jules.unavco.org/Voyager/Anc/Earth/egm96_geoid_diff
 // https://science.gsfc.nasa.gov/sed/content/uploadFiles/publication_files/EGM96_NASA-TP-1998-206861.pdf
 // https://geographiclib.sourceforge.io/html/gravity.html
@@ -77,6 +78,16 @@ const Real                      Earth::Models::EGM96::C40                       
 const Real                      Earth::Models::EGM96::J2                        =       -Earth::Models::EGM96::C20 * std::sqrt(5.0) ;
 const Real                      Earth::Models::EGM96::J4                        =       -Earth::Models::EGM96::C40 * std::sqrt(9.0) ;
 
+// EGM84
+
+const Derived                   Earth::Models::EGM84::GravitationalParameter    =       { 398600441800000.0, GravitationalParameterSIUnit } ;
+const Length                    Earth::Models::EGM84::EquatorialRadius          =       Length::Meters(6378137.0) ;
+const Real                      Earth::Models::EGM84::Flattening                =       1.0 / 298.257223563 ;
+const Real                      Earth::Models::EGM84::C20                       =       -4.841668500000e-04 ;
+const Real                      Earth::Models::EGM84::C40                       =       5.369958670000e-07 ;
+const Real                      Earth::Models::EGM84::J2                        =       -Earth::Models::EGM84::C20 * std::sqrt(5.0) ;
+const Real                      Earth::Models::EGM84::J4                        =       -Earth::Models::EGM84::C40 * std::sqrt(9.0) ;
+
 // WGS84
 
 const Derived                   Earth::Models::WGS84::GravitationalParameter    =       { 398600441800000.0, GravitationalParameterSIUnit } ;
@@ -86,6 +97,16 @@ const Real                      Earth::Models::WGS84::C20                       
 const Real                      Earth::Models::WGS84::C40                       =       5.369958670000e-07 ;
 const Real                      Earth::Models::WGS84::J2                        =       -Earth::Models::WGS84::C20 * std::sqrt(5.0) ;
 const Real                      Earth::Models::WGS84::J4                        =       -Earth::Models::WGS84::C40 * std::sqrt(9.0) ;
+
+// Spherical
+
+const Derived                   Earth::Models::Spherical::GravitationalParameter=       { 398600441500000.0, GravitationalParameterSIUnit } ;
+const Length                    Earth::Models::Spherical::EquatorialRadius      =       Length::Meters(6378137.0) ;
+const Real                      Earth::Models::Spherical::Flattening            =       1.0 ;
+const Real                      Earth::Models::Spherical::C20                   =       0.0 ;
+const Real                      Earth::Models::Spherical::C40                   =       0.0 ;
+const Real                      Earth::Models::Spherical::J2                    =       0.0 ;
+const Real                      Earth::Models::Spherical::J4                    =       0.0 ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -127,6 +148,36 @@ const Real                      Earth::J4                                       
 
 }
 
+                                Earth::Earth                                (   const   Derived&                    aGravitationalParameter,
+                                                                                const   Length&                     anEquatorialRadius,
+                                                                                const   Real&                       aFlattening,
+                                                                                const   Real&                       aJ2,
+                                                                                const   Real&                       aJ4,
+                                                                                const   Shared<Ephemeris>&          anEphemeris,
+                                                                                const   EarthGravitationalModel::Type& aGravitationalModelType,
+                                                                                const   Integer&                    aGravityModelDegree,
+                                                                                const   Integer&                    aGravityModelOrder,
+                                                                                const   EarthMagneticModel::Type&   aMagneticModelType,
+                                                                                const   Instant&                    anInstant                                   )
+                                :   Celestial
+                                    (
+                                        "Earth",
+                                        Celestial::Type::Earth,
+                                        aGravitationalParameter,
+                                        anEquatorialRadius,
+                                        aFlattening,
+                                        aJ2,
+                                        aJ4,
+                                        anEphemeris,
+                                        std::make_shared<EarthGravitationalModel>(aGravitationalModelType, Directory::Undefined(), aGravityModelDegree, aGravityModelOrder),
+                                        std::make_shared<EarthMagneticModel>(aMagneticModelType),
+                                        anInstant,
+                                        Earth::Geometry(anEquatorialRadius, aFlattening, anEphemeris->accessFrame())
+                                    )
+{
+
+}
+
                                 Earth::~Earth                               ( )
 {
 
@@ -142,7 +193,8 @@ Earth                           Earth::Default                              ( )
     return Earth::EGM2008() ;
 }
 
-Earth                           Earth::EGM2008                              ( )
+Earth                           Earth::EGM2008                              (   const   Integer&                    aGravityModelDegree,
+                                                                                const   Integer&                    aGravityModelOrder                          )
 {
 
     using ostk::physics::coord::Frame ;
@@ -159,13 +211,16 @@ Earth                           Earth::EGM2008                              ( )
         Earth::Models::EGM2008::J4,
         std::make_shared<Analytical>(earthFrameSPtr),
         EarthGravitationalModel::Type::EGM2008,
+        aGravityModelDegree,
+        aGravityModelOrder,
         EarthMagneticModel::Type::Dipole,
         Instant::J2000()
     } ;
 
 }
 
-Earth                           Earth::WGS84_EGM96                          ( )
+Earth                           Earth::WGS84_EGM96                          (   const   Integer&                    aGravityModelDegree,
+                                                                                const   Integer&                    aGravityModelOrder                          )
 {
 
     using ostk::physics::coord::Frame ;
@@ -182,13 +237,16 @@ Earth                           Earth::WGS84_EGM96                          ( )
         Earth::Models::WGS84_EGM96::J4,
         std::make_shared<Analytical>(earthFrameSPtr),
         EarthGravitationalModel::Type::EGM96,
+        aGravityModelDegree,
+        aGravityModelOrder,
         EarthMagneticModel::Type::Dipole,
         Instant::J2000()
     } ;
 
 }
 
-Earth                           Earth::EGM96                                ( )
+Earth                           Earth::EGM96                                (   const   Integer&                    aGravityModelDegree,
+                                                                                const   Integer&                    aGravityModelOrder                          )
 {
 
     using ostk::physics::coord::Frame ;
@@ -205,13 +263,42 @@ Earth                           Earth::EGM96                                ( )
         Earth::Models::EGM96::J4,
         std::make_shared<Analytical>(earthFrameSPtr),
         EarthGravitationalModel::Type::EGM96,
+        aGravityModelDegree,
+        aGravityModelOrder,
         EarthMagneticModel::Type::Dipole,
         Instant::J2000()
     } ;
 
 }
 
-Earth                           Earth::WGS84                                ( )
+Earth                           Earth::EGM84                                (   const   Integer&                    aGravityModelDegree,
+                                                                                const   Integer&                    aGravityModelOrder                          )
+{
+
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::env::ephem::Analytical ;
+
+    const Shared<const Frame> earthFrameSPtr = Frame::ITRF() ;
+
+    return
+    {
+        Earth::Models::EGM84::GravitationalParameter,
+        Earth::Models::EGM84::EquatorialRadius,
+        Earth::Models::EGM84::Flattening,
+        Earth::Models::EGM84::J2,
+        Earth::Models::EGM84::J4,
+        std::make_shared<Analytical>(earthFrameSPtr),
+        EarthGravitationalModel::Type::EGM84,
+        aGravityModelDegree,
+        aGravityModelOrder,
+        EarthMagneticModel::Type::Dipole,
+        Instant::J2000()
+    } ;
+
+}
+
+Earth                           Earth::WGS84                                (   const   Integer&                    aGravityModelDegree,
+                                                                                const   Integer&                    aGravityModelOrder                          )
 {
 
     using ostk::physics::coord::Frame ;
@@ -228,6 +315,31 @@ Earth                           Earth::WGS84                                ( )
         Earth::Models::WGS84::J4,
         std::make_shared<Analytical>(earthFrameSPtr),
         EarthGravitationalModel::Type::WGS84,
+        aGravityModelDegree,
+        aGravityModelOrder,
+        EarthMagneticModel::Type::Dipole,
+        Instant::J2000()
+    } ;
+
+}
+
+Earth                           Earth::Spherical                            ( )
+{
+
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::env::ephem::Analytical ;
+
+    const Shared<const Frame> earthFrameSPtr = Frame::ITRF() ;
+
+    return
+    {
+        Earth::Models::Spherical::GravitationalParameter,
+        Earth::Models::Spherical::EquatorialRadius,
+        Earth::Models::Spherical::Flattening,
+        Earth::Models::Spherical::J2,
+        Earth::Models::Spherical::J4,
+        std::make_shared<Analytical>(earthFrameSPtr),
+        EarthGravitationalModel::Type::Spherical,
         EarthMagneticModel::Type::Dipole,
         Instant::J2000()
     } ;

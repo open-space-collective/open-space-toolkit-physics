@@ -9,6 +9,7 @@
 
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp>
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
@@ -34,13 +35,19 @@ using GeographicLib::GravityModel ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+static Real gravitationalParameter_SI = 398600441500000.0 ;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 class Earth::Impl
 {
 
     public:
 
                                 Impl                                        (   const   Earth::Type&                aType,
-                                                                                const   Directory&                  aDataDirectory                              ) ;
+                                                                                const   Directory&                  aDataDirectory,
+                                                                                const   Integer&                    aGravityModelDegree,
+                                                                                const   Integer&                    aGravityModelOrder                          ) ;
 
                                 ~Impl                                       ( ) ;
 
@@ -56,16 +63,22 @@ class Earth::Impl
         GravityModel*           gravityModelPtr_ ;
 
         static GravityModel*    GravityModelFromType                        (   const   Earth::Type&                aType,
-                                                                                const   Directory&                  aDataDirectory                              ) ;
+                                                                                const   Directory&                  aDataDirectory,
+                                                                                const   Integer&                    aGravityModelDegree,
+                                                                                const   Integer&                    aGravityModelOrder                          ) ;
 
 } ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
                                 Earth::Impl::Impl                           (   const   Earth::Type&                aType,
-                                                                                const   Directory&                  aDataDirectory                              )
+                                                                                const   Directory&                  aDataDirectory,
+                                                                                const   Integer&                    aGravityModelDegree,
+                                                                                const   Integer&                    aGravityModelOrder                          )
+
                                 :   type_(aType),
-                                    gravityModelPtr_(Earth::Impl::GravityModelFromType(aType, aDataDirectory))
+                                    gravityModelPtr_(Earth::Impl::GravityModelFromType(aType, aDataDirectory, aGravityModelDegree, aGravityModelOrder))
+
 {
 
 }
@@ -86,6 +99,18 @@ Vector3d                        Earth::Impl::getFieldValueAt                (   
 
     (void) anInstant ; // Temporal invariance
 
+    if (type_ == Earth::Type::Spherical)
+    {
+
+        const Real r = aPosition.norm() ;
+        const Vector3d fieldDirection = aPosition.normalized() ;
+
+        const Vector3d field = (- gravitationalParameter_SI) / (r * r) * fieldDirection ;
+
+        return field ;
+
+    }
+
     double g_x ;
     double g_y ;
     double g_z ;
@@ -97,12 +122,19 @@ Vector3d                        Earth::Impl::getFieldValueAt                (   
 }
 
 GravityModel*                   Earth::Impl::GravityModelFromType           (   const   Earth::Type&                aType,
-                                                                                const   Directory&                  aDataDirectory                              )
+                                                                                const   Directory&                  aDataDirectory,
+                                                                                const   Integer&                    aGravityModelDegree,
+                                                                                const   Integer&                    aGravityModelOrder                          )
 {
 
     using ostk::core::types::String ;
 
     using ostk::physics::environment::gravitational::earth::Manager ;
+
+    if (aType == Earth::Type::Spherical)
+    {
+        return nullptr ;
+    }
 
     String dataPath = "" ;
 
@@ -138,16 +170,20 @@ GravityModel*                   Earth::Impl::GravityModelFromType           (   
     {
 
         case Earth::Type::WGS84:
-            return new GeographicLib::GravityModel("wgs84", dataPath) ;
+            if ((aGravityModelDegree > 20) || (aGravityModelOrder > 0)) {throw ostk::core::error::runtime::Wrong("Model Degree/Order") ; }
+            return new GeographicLib::GravityModel("wgs84", dataPath, aGravityModelDegree, aGravityModelOrder) ;
 
         case Earth::Type::EGM84:
-            return new GeographicLib::GravityModel("egm84", dataPath) ;
+            if ((aGravityModelDegree > 180) || (aGravityModelOrder > 180)) {throw ostk::core::error::runtime::Wrong("Model Degree/Order") ; }
+            return new GeographicLib::GravityModel("egm84", dataPath, aGravityModelDegree, aGravityModelOrder) ;
 
         case Earth::Type::EGM96:
-            return new GeographicLib::GravityModel("egm96", dataPath) ;
+            if ((aGravityModelDegree > 360) || (aGravityModelOrder > 360)) {throw ostk::core::error::runtime::Wrong("Model Degree/Order") ; }
+            return new GeographicLib::GravityModel("egm96", dataPath, aGravityModelDegree, aGravityModelOrder) ;
 
         case Earth::Type::EGM2008:
-            return new GeographicLib::GravityModel("egm2008", dataPath) ;
+            if((aGravityModelDegree > 2190) || (aGravityModelOrder > 2160)) {throw ostk::core::error::runtime::Wrong("Model Degree/Order") ; }
+            return new GeographicLib::GravityModel("egm2008", dataPath, aGravityModelDegree, aGravityModelOrder) ;
 
         default:
             throw ostk::core::error::runtime::Wrong("Type") ;
@@ -161,12 +197,15 @@ GravityModel*                   Earth::Impl::GravityModelFromType           (   
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
                                 Earth::Earth                                (   const   Earth::Type&                aType,
-                                                                                const   Directory&                  aDataDirectory                              )
+                                                                                const   Directory&                  aDataDirectory,
+                                                                                const   Integer&                    aGravityModelDegree,
+                                                                                const   Integer&                    aGravityModelOrder                          )
                                 :   Model(),
-                                    implUPtr_(std::make_unique<Earth::Impl>(aType, aDataDirectory))
+                                    implUPtr_(std::make_unique<Earth::Impl>(aType, aDataDirectory, aGravityModelDegree, aGravityModelOrder))
 {
 
 }
+
 
                                 Earth::Earth                                (   const   Earth&                      anEarthGravitationalModel                   )
                                 :   Model(anEarthGravitationalModel),

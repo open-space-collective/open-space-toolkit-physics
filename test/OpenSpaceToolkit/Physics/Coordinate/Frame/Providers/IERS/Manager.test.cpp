@@ -191,7 +191,7 @@ TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetFinal
 
 }
 
-TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetPolarMotionAt)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetPolarMotionAtPreviousTime)
 {
 
     using ostk::core::types::Real ;
@@ -246,6 +246,36 @@ TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetPolar
             }
 
         }
+
+    }
+
+}
+
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetPolarMotionAtFutureTime)
+{
+
+    using ostk::core::types::Real ;
+    using ostk::core::types::String ;
+    using ostk::core::ctnr::Tuple ;
+    using ostk::core::ctnr::Array ;
+    using ostk::core::ctnr::Table ;
+    using ostk::core::fs::Path ;
+    using ostk::core::fs::File ;
+
+    using ostk::math::obj::Vector2d ;
+
+    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::time::DateTime ;
+    using ostk::physics::time::Duration ;
+    using ostk::physics::coord::frame::provider::iers::Manager ;
+
+    {
+        const Manager& manager = Manager::Get() ;
+
+        const Instant instant = Instant::Now() + Duration::Weeks(12.0) ;
+
+        manager.getPolarMotionAt(instant) ;
 
     }
 
