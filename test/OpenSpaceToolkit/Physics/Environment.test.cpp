@@ -75,7 +75,7 @@ TEST (OpenSpaceToolkit_Physics_Environment, Constructor)
 
         const Array<Shared<Object>> objects =
         {
-            std::make_shared<Earth>(Earth::EGM2008(2190,2160))
+            std::make_shared<Earth>(Earth::EGM2008(2190, 2160))
         } ;
 
         EXPECT_NO_THROW(Environment environment(instant, objects) ;) ;
