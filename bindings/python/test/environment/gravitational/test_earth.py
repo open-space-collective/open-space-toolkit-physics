@@ -85,6 +85,6 @@ def test_earth_get_field_value_at ():
 
     grav_acceleration = earth_gravitational_model.get_field_value_at(np.array([6400e3, 0.0, 0.0]), Instant.J2000())
     grav_acceleration_ref = np.array([-9.74722832e+00, -1.29220148e-05, -1.34173896e-05])
-    assert all([round(grav_acceleration[i], -7) == round(grav_acceleration_ref[i], -7) for i in range(0, 2)])
+    assert all([round(grav_acceleration[i], -7) == round(grav_acceleration_ref[i], -7) for i in range(0, len(grav_acceleration_ref))])
 
 ################################################################################################################################################################
