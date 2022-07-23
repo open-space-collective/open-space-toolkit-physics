@@ -184,8 +184,9 @@ class Earth : public Celestial
 
         static Earth            Default                                     ( ) ;
 
-        /// @brief              Earth Gravity Model 2008 model (EGM2008)
-        ///
+        /// @brief              Earth Gravity Model 2008 model (EGM2008).
+        ///                     Default degree and order values are set to -1 since Geographic Lib accepts negative numbers to mean no model truncation is needed.
+
         /// @return             Earth
 
         static Earth            EGM2008                                     (   const   Integer&                    aGravityModelDegree                         = -1,
@@ -193,6 +194,8 @@ class Earth : public Celestial
 
         /// @brief              World Geodetic System 1984 (WGS84) + Earth Gravity Model 1996 (EGM96)
         ///
+        ///                     Default degree and order values are set to -1 since Geographic Lib accepts negative numbers to mean no model truncation is needed.
+
         ///                     EGM96 coefficients and WGS84 shape.
         ///                     Gravitational parameter: 398600441800000 [m^3/s^2].
         ///                     Equatorial radius: 6378137.0 [m].
@@ -206,6 +209,8 @@ class Earth : public Celestial
 
         /// @brief              Earth Gravity Model 1996 (EGM96)
         ///
+        ///                     Default degree and order values are set to -1 since Geographic Lib accepts negative numbers to mean no model truncation is needed.
+
         /// @return             Earth
 
         static Earth            EGM84                                       (   const   Integer&                    aGravityModelDegree                         = -1,
@@ -213,6 +218,8 @@ class Earth : public Celestial
 
         /// @brief              Earth Gravity Model 1984 (EGM84)
         ///
+        ///                     Default degree and order values are set to -1 since Geographic Lib accepts negative numbers to mean no model truncation is needed.
+
         /// @return             Earth
 
         static Earth            EGM96                                       (   const   Integer&                    aGravityModelDegree                         = -1,
@@ -220,6 +227,8 @@ class Earth : public Celestial
 
         /// @brief              World Geodetic System 1984 (WGS84)
         ///
+        ///                     Default degree and order values are set to -1 since Geographic Lib accepts negative numbers to mean no model truncation is needed.
+
         /// @return             Earth
 
         static Earth            WGS84                                       (   const   Integer&                    aGravityModelDegree                         = -1,
