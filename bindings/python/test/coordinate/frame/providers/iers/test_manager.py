@@ -23,9 +23,13 @@ from ostk.physics.time import Scale
 from ostk.physics.time import Instant
 from ostk.physics.time import Duration
 
-from ostk.physics.coordinate.frame.providers.iers import Manager
-from ostk.physics.coordinate.frame.providers.iers import BulletinA
-from ostk.physics.coordinate.frame.providers.iers import Finals2000A
+import ostk.physics as physics
+
+################################################################################################################################################################
+
+Manager = physics.coordinate.frame.providers.iers.Manager
+BulletinA = physics.coordinate.frame.providers.iers.BulletinA
+Finals2000A = physics.coordinate.frame.providers.iers.Finals2000A
 
 ################################################################################################################################################################
 
@@ -33,13 +37,14 @@ from ostk.physics.coordinate.frame.providers.iers import Finals2000A
 def manager () -> Manager:
 
     manager = Manager.get()
-    manager.reset()
 
     manager.set_mode(Manager.Mode.Automatic)
     manager.set_remote_url(URL.parse('https://maia.usno.navy.mil/ser7/'))
-    manager.set_local_repository(Directory.path(Path.parse(os.environ.get('OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY'))))
 
-    return manager
+    yield manager
+
+    manager.reset()
+    manager.clear_local_repository()
 
 ################################################################################################################################################################
 
@@ -76,12 +81,7 @@ class TestManager:
 
     def test_get_bulletin_a_at_success (self, manager: Manager):
 
-        try:
-            bulletin_a: BulletinA = manager.get_bulletin_a_at(Instant.now() - Duration.days(8.0))
-        except RuntimeError:
-            manager.reset()
-            manager.clear_local_repository()
-            bulletin_a: BulletinA = manager.get_bulletin_a_at(Instant.now() - Duration.days(5.0))
+        bulletin_a: BulletinA = manager.get_bulletin_a_at(Instant.now() - Duration.days(7.0))
 
         assert isinstance(bulletin_a, BulletinA)
 
@@ -105,7 +105,7 @@ class TestManager:
         assert len(manager.get_bulletin_a_array()) == 0
         assert len(manager.get_finals_2000a_array()) == 0
 
-        assert manager.get_polar_motion_at(Instant.now() - Duration.days(5.0)) is not None
+        assert manager.get_polar_motion_at(Instant.now() - Duration.days(7.0)) is not None
 
         assert len(manager.get_bulletin_a_array()) == 1
         assert len(manager.get_finals_2000a_array()) == 0

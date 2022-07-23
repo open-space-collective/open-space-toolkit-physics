@@ -8,6 +8,7 @@
 ################################################################################################################################################################
 
 import pytest
+
 import numpy as np
 
 from ostk.core.filesystem import Directory
@@ -17,74 +18,43 @@ from ostk.physics.environment.gravitational import Earth as EarthGravitationalMo
 
 ################################################################################################################################################################
 
-def construct_earth ():
+@pytest.fixture
+def earth_gravitational_model () -> EarthGravitationalModel:
 
-    earth_gravitational_model: EarthGravitationalModel = EarthGravitationalModel(EarthGravitationalModel.EarthType.EGM2008)
-
-    assert earth_gravitational_model is not None
-    assert isinstance(earth_gravitational_model, EarthGravitationalModel)
-
-    return earth_gravitational_model
+    return EarthGravitationalModel(EarthGravitationalModel.EarthType.EGM2008)
 
 ################################################################################################################################################################
 
-def test_earth_constructors ():
+class TestEarth:
 
-    # Test constructor with enums
-    earth_gravitational_model: EarthGravitationalModel = EarthGravitationalModel(EarthGravitationalModel.EarthType.WGS84)
+    def test_constructor_success_with_type (self):
 
-    assert earth_gravitational_model is not None
-    assert isinstance(earth_gravitational_model, EarthGravitationalModel)
+        assert isinstance(EarthGravitationalModel(EarthGravitationalModel.EarthType.Spherical), EarthGravitationalModel)
+        assert isinstance(EarthGravitationalModel(EarthGravitationalModel.EarthType.WGS84), EarthGravitationalModel)
+        assert isinstance(EarthGravitationalModel(EarthGravitationalModel.EarthType.EGM96), EarthGravitationalModel)
+        assert isinstance(EarthGravitationalModel(EarthGravitationalModel.EarthType.EGM84), EarthGravitationalModel)
+        assert isinstance(EarthGravitationalModel(EarthGravitationalModel.EarthType.EGM2008), EarthGravitationalModel)
 
-    earth_gravitational_model: EarthGravitationalModel = EarthGravitationalModel(EarthGravitationalModel.EarthType.EGM96)
+    def test_constructor_success_with_directory (self):
 
-    assert earth_gravitational_model is not None
-    assert isinstance(earth_gravitational_model, EarthGravitationalModel)
+        earth_gravitational_model = EarthGravitationalModel(EarthGravitationalModel.EarthType.EGM2008, Directory.undefined())
 
-    earth_gravitational_model: EarthGravitationalModel = EarthGravitationalModel(EarthGravitationalModel.EarthType.EGM84)
+        assert isinstance(earth_gravitational_model, EarthGravitationalModel)
 
-    assert earth_gravitational_model is not None
-    assert isinstance(earth_gravitational_model, EarthGravitationalModel)
+    def test_constructor_success_with_degree_and_order (self):
 
-    earth_gravitational_model: EarthGravitationalModel = EarthGravitationalModel(EarthGravitationalModel.EarthType.EGM2008)
+        earth_gravitational_model = EarthGravitationalModel(EarthGravitationalModel.EarthType.EGM2008, Directory.undefined(), 2, 2)
 
-    assert earth_gravitational_model is not None
-    assert isinstance(earth_gravitational_model, EarthGravitationalModel)
+        assert isinstance(earth_gravitational_model, EarthGravitationalModel)
 
-    earth_gravitational_model: EarthGravitationalModel = EarthGravitationalModel(EarthGravitationalModel.EarthType.spherical)
+    def test_get_type_success (self, earth_gravitational_model: EarthGravitationalModel):
 
-    assert earth_gravitational_model is not None
-    assert isinstance(earth_gravitational_model, EarthGravitationalModel)
+        assert earth_gravitational_model.get_type() == EarthGravitationalModel.EarthType.EGM2008
 
-    # Test constructor with directory
-    earth_gravitational_model: EarthGravitationalModel = EarthGravitationalModel(EarthGravitationalModel.EarthType.EGM2008, Directory.undefined())
+    def test_get_field_value_at_success (self, earth_gravitational_model: EarthGravitationalModel):
 
-    assert earth_gravitational_model is not None
-    assert isinstance(earth_gravitational_model, EarthGravitationalModel)
-
-    # Test constructor with degree and order
-    earth_gravitational_model: EarthGravitationalModel = EarthGravitationalModel(EarthGravitationalModel.EarthType.EGM2008, Directory.undefined(), 2, 2)
-
-    assert earth_gravitational_model is not None
-    assert isinstance(earth_gravitational_model, EarthGravitationalModel)
-
-################################################################################################################################################################
-
-def test_earth_get_type ():
-
-    earth_gravitational_model = construct_earth()
-
-    assert earth_gravitational_model.get_type() is not None
-    assert earth_gravitational_model.get_type() == EarthGravitationalModel.EarthType.EGM2008
-
-################################################################################################################################################################
-
-def test_earth_get_field_value_at ():
-
-    earth_gravitational_model = construct_earth()
-
-    grav_acceleration = earth_gravitational_model.get_field_value_at(np.array([6400e3, 0.0, 0.0]), Instant.J2000())
-    grav_acceleration_ref = np.array([-9.74722832e+00, -1.29220148e-05, -1.34173896e-05])
-    assert all([round(grav_acceleration[i], -7) == round(grav_acceleration_ref[i], -7) for i in range(0, len(grav_acceleration_ref))])
+        grav_acceleration = earth_gravitational_model.get_field_value_at(np.array([6400e3, 0.0, 0.0]), Instant.J2000())
+        grav_acceleration_ref = np.array([-9.74722832e+00, -1.29220148e-05, -1.34173896e-05])
+        assert all([round(grav_acceleration[i], -7) == round(grav_acceleration_ref[i], -7) for i in range(0, len(grav_acceleration_ref))])
 
 ################################################################################################################################################################

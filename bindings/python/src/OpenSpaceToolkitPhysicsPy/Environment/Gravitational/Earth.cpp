@@ -40,7 +40,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Gravitatio
 
         enum_<Earth::Type>(earth_class, "EarthType")
 
-            .value("spherical", Earth::Type::Spherical)
+            .value("Spherical", Earth::Type::Spherical)
             .value("WGS84", Earth::Type::WGS84)
             .value("EGM84", Earth::Type::EGM84)
             .value("EGM96", Earth::Type::EGM96)

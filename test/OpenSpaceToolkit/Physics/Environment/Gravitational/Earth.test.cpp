@@ -50,13 +50,14 @@ TEST (OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Constructor)
     }
 
     // Test correct model order and degree combinations
+
     {
 
         EarthGravitationalModelManager::Get().setLocalRepository(Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth"))) ;
 
         EarthGravitationalModelManager::Get().enable() ;
 
-        EXPECT_NO_THROW(std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::Spherical,  Directory::Undefined())) ;
+        EXPECT_NO_THROW(std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::Spherical, Directory::Undefined())) ;
         EXPECT_NO_THROW(std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::WGS84, Directory::Undefined(), 20, 0)) ;
         EXPECT_NO_THROW(std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::EGM84, Directory::Undefined(), 180, 180)) ;
         EXPECT_NO_THROW(std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::EGM96, Directory::Undefined(), 360, 360)) ;
@@ -68,7 +69,8 @@ TEST (OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Constructor)
 
     }
 
-     // Test incorrect model order and degree combinations
+    // Test incorrect model order and degree combinations
+
     {
 
         EarthGravitationalModelManager::Get().setLocalRepository(Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth"))) ;
@@ -89,6 +91,7 @@ TEST (OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Constructor)
     }
 
     {
+
         EXPECT_NO_THROW(EarthGravitationalModel earthGravitationalModel(EarthGravitationalModel::Type::Spherical, Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth")))) ;
 
         EXPECT_NO_THROW(EarthGravitationalModel earthGravitationalModel(EarthGravitationalModel::Type::WGS84, Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth")))) ;
@@ -242,8 +245,6 @@ TEST (OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAtN
     }
 
 }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 TEST (OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAtWithTruncation)
 {
