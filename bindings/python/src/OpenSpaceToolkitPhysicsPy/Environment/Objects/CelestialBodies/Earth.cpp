@@ -67,12 +67,8 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
         // Add __path__ attribute for "earth" submodule
         earth.attr("__path__") = "ostk.physics.environment.objects.celestial_bodies.earth" ;
 
-    }
-
-    {
-
         // Create "models" python submodule
-        auto models = aModule.def_submodule("models") ;
+        auto models = earth.def_submodule("models") ;
 
         // Add __path__ attribute for "models" submodule
         models.attr("__path__") = "ostk.physics.environment.objects.celestial_bodies.earth.models" ;

@@ -68,6 +68,11 @@ class Earth::Impl
 
 }
 
+                                Earth::Impl::~Impl                          ( )
+{
+
+}
+
 Earth::Type                     Earth::Impl::getType                        ( ) const
 {
     return type_ ;
@@ -102,6 +107,11 @@ class Earth::SphericalImpl : public Earth::Impl
                                 :   Earth::Impl(aType),
                                     sphericalModel_(ostk::physics::env::obj::celest::Earth::Models::Spherical::GravitationalParameter)
 
+{
+
+}
+
+                                Earth::SphericalImpl::~SphericalImpl        ( )
 {
 
 }
@@ -232,8 +242,8 @@ GravityModel*                   Earth::ExternalImpl::GravityModelFromType   (   
 
     }
 
-    const Integer gravityModelDegree = aGravityModelDegree.isDefined() ? aGravityModelDegree : -1 ;
-    const Integer gravityModelOrder = aGravityModelOrder.isDefined() ? aGravityModelOrder : -1 ;
+    const Integer gravityModelDegree = aGravityModelDegree.isDefined() ? aGravityModelDegree : Integer(-1) ;
+    const Integer gravityModelOrder = aGravityModelOrder.isDefined() ? aGravityModelOrder : Integer(-1) ;
 
     switch (aType)
     {
