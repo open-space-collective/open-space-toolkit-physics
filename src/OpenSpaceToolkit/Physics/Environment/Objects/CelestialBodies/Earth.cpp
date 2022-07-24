@@ -100,9 +100,9 @@ const Real                      Earth::Models::WGS84::J4                        
 
 // Spherical
 
-const Derived                   Earth::Models::Spherical::GravitationalParameter=       { 398600441500000.0, GravitationalParameterSIUnit } ;
+const Derived                   Earth::Models::Spherical::GravitationalParameter =      { 398600441500000.0, GravitationalParameterSIUnit } ;
 const Length                    Earth::Models::Spherical::EquatorialRadius      =       Length::Meters(6378137.0) ;
-const Real                      Earth::Models::Spherical::Flattening            =       1.0 ;
+const Real                      Earth::Models::Spherical::Flattening            =       0.0 ;
 const Real                      Earth::Models::Spherical::C20                   =       0.0 ;
 const Real                      Earth::Models::Spherical::C40                   =       0.0 ;
 const Real                      Earth::Models::Spherical::J2                    =       0.0 ;

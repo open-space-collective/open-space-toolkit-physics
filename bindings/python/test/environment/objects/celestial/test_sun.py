@@ -7,17 +7,17 @@
 
 ################################################################################################################################################################
 
-import pytest
-
 from ostk.physics.environment.objects.celestial_bodies import Sun
 
 ################################################################################################################################################################
 
-def test_sun_static_default_constructor ():
+class TestSun:
 
-    sun: Sun = Sun.default()
+    def test_default_success (self):
 
-    assert sun is not None
-    assert isinstance(sun, Sun)
+        sun = Sun.default()
+
+        assert sun is not None
+        assert isinstance(sun, Sun)
 
 ################################################################################################################################################################

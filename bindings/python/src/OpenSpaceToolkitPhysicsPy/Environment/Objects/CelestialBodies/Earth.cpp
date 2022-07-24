@@ -48,11 +48,11 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
             .def("__repr__", &(shiftToString<Earth>))
 
             .def_static("default", &Earth::Default)
-            .def_static("EGM2008", &Earth::EGM2008, arg("degree") = -1, arg("order") = -1 )
-            .def_static("WGS84_EGM96", &Earth::WGS84_EGM96, arg("degree") = -1, arg("order") = -1 )
-            .def_static("EGM96", &Earth::EGM96, arg("degree") = -1, arg("order") = -1 )
-            .def_static("EGM84", &Earth::EGM84, arg("degree") = -1, arg("order") = -1 )
-            .def_static("WGS84", &Earth::WGS84, arg("degree") = -1, arg("order") = -1 )
+            .def_static("EGM2008", &Earth::EGM2008, arg("degree") = Integer::Undefined(), arg("order") = Integer::Undefined() )
+            .def_static("WGS84_EGM96", &Earth::WGS84_EGM96, arg("degree") = Integer::Undefined(), arg("order") = Integer::Undefined() )
+            .def_static("EGM96", &Earth::EGM96, arg("degree") = Integer::Undefined(), arg("order") = Integer::Undefined() )
+            .def_static("EGM84", &Earth::EGM84, arg("degree") = Integer::Undefined(), arg("order") = Integer::Undefined() )
+            .def_static("WGS84", &Earth::WGS84, arg("degree") = Integer::Undefined(), arg("order") = Integer::Undefined() )
             .def_static("spherical", &Earth::Spherical)
 
         ;

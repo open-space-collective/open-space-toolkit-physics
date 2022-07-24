@@ -10,6 +10,7 @@
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
@@ -35,30 +36,117 @@ using GeographicLib::GravityModel ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-static Real gravitationalParameter_SI = 398600441500000.0 ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 class Earth::Impl
 {
 
     public:
 
-                                Impl                                        (   const   Earth::Type&                aType,
-                                                                                const   Directory&                  aDataDirectory,
-                                                                                const   Integer&                    aGravityModelDegree,
-                                                                                const   Integer&                    aGravityModelOrder                          ) ;
+                                Impl                                        (   const   Earth::Type&                aType                                       ) ;
 
-                                ~Impl                                       ( ) ;
+        virtual                 ~Impl                                       ( ) = 0 ;
+
+        virtual Impl*           clone                                       ( ) const = 0 ;
 
         Earth::Type             getType                                     ( ) const ;
 
-        Vector3d                getFieldValueAt                             (   const   Vector3d&                   aPosition,
-                                                                                const   Instant&                    anInstant                                   ) const ;
+        virtual Vector3d        getFieldValueAt                             (   const   Vector3d&                   aPosition,
+                                                                                const   Instant&                    anInstant                                   ) const = 0 ;
 
     private:
 
         Earth::Type             type_ ;
+
+} ;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                                Earth::Impl::Impl                           (   const   Earth::Type&                aType                                       )
+
+                                :   type_(aType)
+
+{
+
+}
+
+                                Earth::Impl::~Impl                          ( )
+{
+
+}
+
+Earth::Type                     Earth::Impl::getType                        ( ) const
+{
+    return type_ ;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+class Earth::SphericalImpl : public Earth::Impl
+{
+
+    public:
+
+                                SphericalImpl                               (   const   Earth::Type&                aType                                       ) ;
+
+                                ~SphericalImpl                              ( ) ;
+
+        virtual SphericalImpl*  clone                                       ( ) const override ;
+
+        virtual Vector3d        getFieldValueAt                             (   const   Vector3d&                   aPosition,
+                                                                                const   Instant&                    anInstant                                   ) const override ;
+
+    private:
+
+        Spherical               sphericalModel_ ;
+
+} ;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                                Earth::SphericalImpl::SphericalImpl         (   const   Earth::Type&                aType                                       )
+
+                                :   Earth::Impl(aType),
+                                    sphericalModel_(ostk::physics::env::obj::celest::Earth::Models::Spherical::GravitationalParameter)
+
+{
+
+}
+
+                                Earth::SphericalImpl::~SphericalImpl        ( )
+{
+
+}
+
+Earth::SphericalImpl*           Earth::SphericalImpl::clone                 ( ) const
+{
+    return new Earth::SphericalImpl(*this) ;
+}
+
+Vector3d                        Earth::SphericalImpl::getFieldValueAt       (   const   Vector3d&                   aPosition,
+                                                                                const   Instant&                    anInstant                                   ) const
+{
+    return sphericalModel_.getFieldValueAt(aPosition, anInstant) ;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+class Earth::ExternalImpl : public Earth::Impl
+{
+
+    public:
+
+                                ExternalImpl                                (   const   Earth::Type&                aType,
+                                                                                const   Directory&                  aDataDirectory,
+                                                                                const   Integer&                    aGravityModelDegree,
+                                                                                const   Integer&                    aGravityModelOrder                          ) ;
+
+                                ~ExternalImpl                               ( ) ;
+
+        virtual ExternalImpl*   clone                                       ( ) const override ;
+
+        virtual Vector3d        getFieldValueAt                             (   const   Vector3d&                   aPosition,
+                                                                                const   Instant&                    anInstant                                   ) const override ;
+
+    private:
 
         GravityModel*           gravityModelPtr_ ;
 
@@ -71,45 +159,33 @@ class Earth::Impl
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                                Earth::Impl::Impl                           (   const   Earth::Type&                aType,
+                                Earth::ExternalImpl::ExternalImpl           (   const   Earth::Type&                aType,
                                                                                 const   Directory&                  aDataDirectory,
                                                                                 const   Integer&                    aGravityModelDegree,
                                                                                 const   Integer&                    aGravityModelOrder                          )
 
-                                :   type_(aType),
-                                    gravityModelPtr_(Earth::Impl::GravityModelFromType(aType, aDataDirectory, aGravityModelDegree, aGravityModelOrder))
+                                :   Earth::Impl(aType),
+                                    gravityModelPtr_(Earth::ExternalImpl::GravityModelFromType(aType, aDataDirectory, aGravityModelDegree, aGravityModelOrder))
 
 {
 
 }
 
-                                Earth::Impl::~Impl                          ( )
+                                Earth::ExternalImpl::~ExternalImpl          ( )
 {
     delete gravityModelPtr_ ;
 }
 
-Earth::Type                     Earth::Impl::getType                        ( ) const
+Earth::ExternalImpl*            Earth::ExternalImpl::clone                  ( ) const
 {
-    return type_ ;
+    return new Earth::ExternalImpl(*this) ;
 }
 
-Vector3d                        Earth::Impl::getFieldValueAt                (   const   Vector3d&                   aPosition,
+Vector3d                        Earth::ExternalImpl::getFieldValueAt        (   const   Vector3d&                   aPosition,
                                                                                 const   Instant&                    anInstant                                   ) const
 {
 
     (void) anInstant ; // Temporal invariance
-
-    if (type_ == Earth::Type::Spherical)
-    {
-
-        const Real r = aPosition.norm() ;
-        const Vector3d fieldDirection = aPosition.normalized() ;
-
-        const Vector3d field = (- gravitationalParameter_SI) / (r * r) * fieldDirection ;
-
-        return field ;
-
-    }
 
     double g_x ;
     double g_y ;
@@ -121,7 +197,7 @@ Vector3d                        Earth::Impl::getFieldValueAt                (   
 
 }
 
-GravityModel*                   Earth::Impl::GravityModelFromType           (   const   Earth::Type&                aType,
+GravityModel*                   Earth::ExternalImpl::GravityModelFromType   (   const   Earth::Type&                aType,
                                                                                 const   Directory&                  aDataDirectory,
                                                                                 const   Integer&                    aGravityModelDegree,
                                                                                 const   Integer&                    aGravityModelOrder                          )
@@ -133,7 +209,7 @@ GravityModel*                   Earth::Impl::GravityModelFromType           (   
 
     if (aType == Earth::Type::Spherical)
     {
-        return nullptr ;
+        throw ostk::core::error::runtime::Wrong("Type") ;
     }
 
     String dataPath = "" ;
@@ -166,24 +242,79 @@ GravityModel*                   Earth::Impl::GravityModelFromType           (   
 
     }
 
+    const Integer gravityModelDegree = aGravityModelDegree.isDefined() ? aGravityModelDegree : Integer(-1) ;
+    const Integer gravityModelOrder = aGravityModelOrder.isDefined() ? aGravityModelOrder : Integer(-1) ;
+
     switch (aType)
     {
 
         case Earth::Type::WGS84:
-            if ((aGravityModelDegree > 20) || (aGravityModelOrder > 0)) {throw ostk::core::error::runtime::Wrong("Model Degree/Order") ; }
-            return new GeographicLib::GravityModel("wgs84", dataPath, aGravityModelDegree, aGravityModelOrder) ;
+        {
+
+            if (gravityModelDegree > 20)
+            {
+                throw ostk::core::error::runtime::Wrong("Gravity Model Degree", gravityModelDegree) ;
+            }
+
+            if (gravityModelOrder > 0)
+            {
+                throw ostk::core::error::runtime::Wrong("Gravity Model Order", gravityModelOrder) ;
+            }
+
+            return new GeographicLib::GravityModel("wgs84", dataPath, gravityModelDegree, gravityModelOrder) ;
+
+        }
 
         case Earth::Type::EGM84:
-            if ((aGravityModelDegree > 180) || (aGravityModelOrder > 180)) {throw ostk::core::error::runtime::Wrong("Model Degree/Order") ; }
-            return new GeographicLib::GravityModel("egm84", dataPath, aGravityModelDegree, aGravityModelOrder) ;
+        {
+
+            if (gravityModelDegree > 180)
+            {
+                throw ostk::core::error::runtime::Wrong("Gravity Model Degree", gravityModelDegree) ;
+            }
+
+            if (gravityModelOrder > 180)
+            {
+                throw ostk::core::error::runtime::Wrong("Gravity Model Order", gravityModelOrder) ;
+            }
+
+            return new GeographicLib::GravityModel("egm84", dataPath, gravityModelDegree, gravityModelOrder) ;
+
+        }
 
         case Earth::Type::EGM96:
-            if ((aGravityModelDegree > 360) || (aGravityModelOrder > 360)) {throw ostk::core::error::runtime::Wrong("Model Degree/Order") ; }
-            return new GeographicLib::GravityModel("egm96", dataPath, aGravityModelDegree, aGravityModelOrder) ;
+        {
+
+            if (gravityModelDegree > 360)
+            {
+                throw ostk::core::error::runtime::Wrong("Gravity Model Degree", gravityModelDegree) ;
+            }
+
+            if (gravityModelOrder > 360)
+            {
+                throw ostk::core::error::runtime::Wrong("Gravity Model Order", gravityModelOrder) ;
+            }
+
+            return new GeographicLib::GravityModel("egm96", dataPath, gravityModelDegree, gravityModelOrder) ;
+
+        }
 
         case Earth::Type::EGM2008:
-            if((aGravityModelDegree > 2190) || (aGravityModelOrder > 2160)) {throw ostk::core::error::runtime::Wrong("Model Degree/Order") ; }
-            return new GeographicLib::GravityModel("egm2008", dataPath, aGravityModelDegree, aGravityModelOrder) ;
+        {
+
+            if (gravityModelDegree > 2190)
+            {
+                throw ostk::core::error::runtime::Wrong("Gravity Model Degree", gravityModelDegree) ;
+            }
+
+            if (gravityModelOrder > 2160)
+            {
+                throw ostk::core::error::runtime::Wrong("Gravity Model Order", gravityModelOrder) ;
+            }
+
+            return new GeographicLib::GravityModel("egm2008", dataPath, gravityModelDegree, gravityModelOrder) ;
+
+        }
 
         default:
             throw ostk::core::error::runtime::Wrong("Type") ;
@@ -201,15 +332,14 @@ GravityModel*                   Earth::Impl::GravityModelFromType           (   
                                                                                 const   Integer&                    aGravityModelDegree,
                                                                                 const   Integer&                    aGravityModelOrder                          )
                                 :   Model(),
-                                    implUPtr_(std::make_unique<Earth::Impl>(aType, aDataDirectory, aGravityModelDegree, aGravityModelOrder))
+                                    implUPtr_(Earth::ImplFromType(aType, aDataDirectory, aGravityModelDegree, aGravityModelOrder))
 {
 
 }
 
-
                                 Earth::Earth                                (   const   Earth&                      anEarthGravitationalModel                   )
                                 :   Model(anEarthGravitationalModel),
-                                    implUPtr_((anEarthGravitationalModel.implUPtr_ != nullptr) ? std::make_unique<Earth::Impl>(*anEarthGravitationalModel.implUPtr_) : nullptr)
+                                    implUPtr_((anEarthGravitationalModel.implUPtr_ != nullptr) ? anEarthGravitationalModel.implUPtr_->clone() : nullptr)
 {
 
 }
@@ -222,7 +352,7 @@ Earth&                          Earth::operator =                           (   
 
         Model::operator = (anEarthGravitationalModel) ;
 
-        implUPtr_.reset((anEarthGravitationalModel.implUPtr_ != nullptr) ? new Earth::Impl(*anEarthGravitationalModel.implUPtr_) : nullptr) ;
+        implUPtr_.reset((anEarthGravitationalModel.implUPtr_ != nullptr) ? anEarthGravitationalModel.implUPtr_->clone() : nullptr) ;
 
     }
 
@@ -249,6 +379,21 @@ Vector3d                        Earth::getFieldValueAt                      (   
                                                                                 const   Instant&                    anInstant                                   ) const
 {
     return implUPtr_->getFieldValueAt(aPosition, anInstant) ;
+}
+
+Unique<Earth::Impl>             Earth::ImplFromType                         (   const   Earth::Type&                aType,
+                                                                                const   Directory&                  aDataDirectory,
+                                                                                const   Integer&                    aGravityModelDegree,
+                                                                                const   Integer&                    aGravityModelOrder                          )
+{
+
+    if (aType == Earth::Type::Spherical)
+    {
+        return std::make_unique<Earth::SphericalImpl>(aType) ;
+    }
+
+    return std::make_unique<Earth::ExternalImpl>(aType, aDataDirectory, aGravityModelDegree, aGravityModelOrder) ;
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

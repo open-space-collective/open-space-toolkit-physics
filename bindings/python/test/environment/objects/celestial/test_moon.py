@@ -7,17 +7,17 @@
 
 ################################################################################################################################################################
 
-import pytest
-
 from ostk.physics.environment.objects.celestial_bodies import Moon
 
 ################################################################################################################################################################
 
-def test_moon_static_default_constructor ():
+class TestMoon:
 
-    moon: Moon = Moon.default()
+    def test_default_success (self):
 
-    assert moon is not None
-    assert isinstance(moon, Moon)
+        moon = Moon.default()
+
+        assert moon is not None
+        assert isinstance(moon, Moon)
 
 ################################################################################################################################################################

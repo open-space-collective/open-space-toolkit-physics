@@ -78,8 +78,8 @@ class Earth : public Model
 
                                 Earth                                       (   const   Earth::Type&                aType,
                                                                                 const   Directory&                  aDataDirectory                              =   Directory::Undefined(),
-                                                                                const   Integer&                    aGravityModelDegree                         = -1,
-                                                                                const   Integer&                    aGravityModelOrder                          = -1    ) ;
+                                                                                const   Integer&                    aGravityModelDegree                         =   Integer::Undefined(),
+                                                                                const   Integer&                    aGravityModelOrder                          =   Integer::Undefined() ) ;
 
         /// @brief              Copy constructor
         ///
@@ -122,8 +122,15 @@ class Earth : public Model
     private:
 
         class Impl ;
+        class SphericalImpl ;
+        class ExternalImpl ;
 
         Unique<Impl>            implUPtr_ ;
+
+        static Unique<Impl>     ImplFromType                                (   const   Earth::Type&                aType,
+                                                                                const   Directory&                  aDataDirectory,
+                                                                                const   Integer&                    aGravityModelDegree,
+                                                                                const   Integer&                    aGravityModelOrder                          ) ;
 
 } ;
 

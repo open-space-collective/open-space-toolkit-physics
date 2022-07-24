@@ -191,7 +191,7 @@ TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetFinal
 
 }
 
-TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetPolarMotionAtPreviousTime)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetPolarMotionAt_Past)
 {
 
     using ostk::core::types::Real ;
@@ -251,7 +251,7 @@ TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetPolar
 
 }
 
-TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetPolarMotionAtFutureTime)
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetPolarMotionAt_Future)
 {
 
     using ostk::core::types::Real ;
