@@ -93,30 +93,30 @@ RUN git clone https://github.com/geographiclib/geographiclib /tmp/geographiclib 
  && rm -rf /tmp/geographiclib \
  && dnf clean all
 
-## Open Space Toolkit ▸ Core [0.4.3]
+## Open Space Toolkit ▸ Core [0.4.5]
 
 RUN mkdir -p /tmp/open-space-toolkit-core \
  && cd /tmp/open-space-toolkit-core \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/0.4.3/open-space-toolkit-core-0.4.3-1.x86_64-runtime.rpm \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/0.4.3/open-space-toolkit-core-0.4.3-1.x86_64-devel.rpm \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/0.4.5/open-space-toolkit-core-0.4.5-1.x86_64-runtime.rpm \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/0.4.5/open-space-toolkit-core-0.4.5-1.x86_64-devel.rpm \
  && dnf install -y ./*.rpm \
  && rm -rf /tmp/open-space-toolkit-core
 
-## Open Space Toolkit ▸ IO [0.4.4]
+## Open Space Toolkit ▸ IO [0.4.5]
 
 RUN mkdir -p /tmp/open-space-toolkit-io \
  && cd /tmp/open-space-toolkit-io \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/0.4.4/open-space-toolkit-io-0.4.4-1.x86_64-runtime.rpm \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/0.4.4/open-space-toolkit-io-0.4.4-1.x86_64-devel.rpm \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/0.4.5/open-space-toolkit-io-0.4.5-1.x86_64-runtime.rpm \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/0.4.5/open-space-toolkit-io-0.4.5-1.x86_64-devel.rpm \
  && dnf install -y ./*.rpm \
  && rm -rf /tmp/open-space-toolkit-io
 
-## Open Space Toolkit ▸ Mathematics [0.4.5]
+## Open Space Toolkit ▸ Mathematics [0.4.6]
 
 RUN mkdir -p /tmp/open-space-toolkit-mathematics \
  && cd /tmp/open-space-toolkit-mathematics \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/0.4.5/open-space-toolkit-mathematics-0.4.5-1.x86_64-runtime.rpm \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/0.4.5/open-space-toolkit-mathematics-0.4.5-1.x86_64-devel.rpm \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/0.4.6/open-space-toolkit-mathematics-0.4.6-1.x86_64-runtime.rpm \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/0.4.6/open-space-toolkit-mathematics-0.4.6-1.x86_64-devel.rpm \
  && dnf install -y ./*.rpm \
  && rm -rf /tmp/open-space-toolkit-mathematics
 
