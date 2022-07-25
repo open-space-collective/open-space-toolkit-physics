@@ -18,17 +18,20 @@ Inheritance diagram for ostk\+:\+:physics\+:\+:environment\+:\+:gravitational\+:
 \subsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-enum \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05}{Type} \{ \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05a5dda43a21474cf33e7088b8247f19c4b}{Type\+::\+W\+G\+S84}, 
+enum \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05}{Type} \{ \newline
+\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05a24e5c24fabd1c081d4c729094df0b947}{Type\+::\+Spherical}, 
+\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05a5dda43a21474cf33e7088b8247f19c4b}{Type\+::\+W\+G\+S84}, 
 \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05a2ae5659e79a4bb66ae4ee8cb033ef196}{Type\+::\+E\+G\+M84}, 
 \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05a7c7ad846cb98dafc9309087d3ba36013}{Type\+::\+E\+G\+M96}, 
+\newline
 \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05af22fbbe07f6feeaa3d6446dabcd8b164}{Type\+::\+E\+G\+M2008}
  \}
 \end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a2266b9103f680d49643a5a8b4739a323}{Earth} (const \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05}{Earth\+::\+Type} \&a\+Type, const Directory \&a\+Data\+Directory=Directory\+::\+Undefined())
-\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a65816e63e9212691bb689d01bffb6755}{Earth} (const \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05}{Earth\+::\+Type} \&a\+Type, const Directory \&a\+Data\+Directory=Directory\+::\+Undefined(), const Integer \&a\+Gravity\+Model\+Degree=Integer\+::\+Undefined(), const Integer \&a\+Gravity\+Model\+Order=Integer\+::\+Undefined())
+\begin{DoxyCompactList}\small\item\em Constructor with max degree and order variables. \end{DoxyCompactList}\item 
 \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a821f98411c65f59e6a297c6bcc3de291}{Earth} (const \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} \&an\+Earth\+Gravitational\+Model)
 \begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
 \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} \& \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_accc913e0c0a5c7c8348c13217c5de4f3}{operator=} (const \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth} \&an\+Earth\+Gravitational\+Model)
@@ -58,6 +61,10 @@ https\+://en.wikipedia.\+org/wiki/\+Spherical\+\_\+harmonics https\+://geographi
 {\footnotesize\ttfamily enum \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05}{ostk\+::physics\+::environment\+::gravitational\+::\+Earth\+::\+Type}\hspace{0.3cm}{\ttfamily [strong]}}
 
 \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Spherical@{Spherical}!ostk\+::physics\+::environment\+::gravitational\+::\+Earth@{ostk\+::physics\+::environment\+::gravitational\+::\+Earth}}\index{ostk\+::physics\+::environment\+::gravitational\+::\+Earth@{ostk\+::physics\+::environment\+::gravitational\+::\+Earth}!Spherical@{Spherical}}}\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05a24e5c24fabd1c081d4c729094df0b947}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05a24e5c24fabd1c081d4c729094df0b947}} 
+Spherical&The spherical gravity originating from a point source at the center of the \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth}. \\
+\hline
+
 \raisebox{\heightof{T}}[0pt][0pt]{\index{W\+G\+S84@{W\+G\+S84}!ostk\+::physics\+::environment\+::gravitational\+::\+Earth@{ostk\+::physics\+::environment\+::gravitational\+::\+Earth}}\index{ostk\+::physics\+::environment\+::gravitational\+::\+Earth@{ostk\+::physics\+::environment\+::gravitational\+::\+Earth}!W\+G\+S84@{W\+G\+S84}}}\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05a5dda43a21474cf33e7088b8247f19c4b}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05a5dda43a21474cf33e7088b8247f19c4b}} 
 W\+G\+S84&The normal gravitational field for the reference ellipsoid. This includes the zonal coefficients up to order 20. \\
 \hline
@@ -78,21 +85,25 @@ E\+G\+M2008&The \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_
 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a2266b9103f680d49643a5a8b4739a323}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a2266b9103f680d49643a5a8b4739a323}} 
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a65816e63e9212691bb689d01bffb6755}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a65816e63e9212691bb689d01bffb6755}} 
 \index{ostk\+::physics\+::environment\+::gravitational\+::\+Earth@{ostk\+::physics\+::environment\+::gravitational\+::\+Earth}!Earth@{Earth}}
 \index{Earth@{Earth}!ostk\+::physics\+::environment\+::gravitational\+::\+Earth@{ostk\+::physics\+::environment\+::gravitational\+::\+Earth}}
 \subsubsection{\texorpdfstring{Earth()}{Earth()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily ostk\+::physics\+::environment\+::gravitational\+::\+Earth\+::\+Earth (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05}{Earth\+::\+Type} \&}]{a\+Type,  }\item[{const Directory \&}]{a\+Data\+Directory = {\ttfamily Directory\+:\+:Undefined()} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily ostk\+::physics\+::environment\+::gravitational\+::\+Earth\+::\+Earth (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05}{Earth\+::\+Type} \&}]{a\+Type,  }\item[{const Directory \&}]{a\+Data\+Directory = {\ttfamily Directory\+:\+:Undefined()},  }\item[{const Integer \&}]{a\+Gravity\+Model\+Degree = {\ttfamily Integer\+:\+:Undefined()},  }\item[{const Integer \&}]{a\+Gravity\+Model\+Order = {\ttfamily Integer\+:\+:Undefined()} }\end{DoxyParamCaption})}
 
 
 
-Constructor. 
+Constructor with max degree and order variables. 
 
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em a\+Type} & A gravitational model type \\
 \hline
 \mbox{\tt in}  & {\em (optional)} & a\+Data\+Directory A gravitational model data directory \\
+\hline
+\mbox{\tt in}  & {\em (optional)} & a\+Gravity\+Model\+Degree A gravitational model degree \\
+\hline
+\mbox{\tt in}  & {\em (optional)} & a\+Gravity\+Model\+Order A gravitational model order \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a821f98411c65f59e6a297c6bcc3de291}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a821f98411c65f59e6a297c6bcc3de291}} 

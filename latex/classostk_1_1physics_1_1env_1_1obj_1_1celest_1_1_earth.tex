@@ -20,6 +20,8 @@ struct \hyperlink{structostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_1_1_mo
 \item 
 \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_ae3327b5673664451201468dd16667f42}{Earth} (const \hyperlink{classostk_1_1physics_1_1units_1_1_derived}{Derived} \&a\+Gravitational\+Parameter, const \hyperlink{classostk_1_1physics_1_1units_1_1_length}{Length} \&an\+Equatorial\+Radius, const Real \&a\+Flattening, const Real \&a\+J2, const Real \&a\+J4, const Shared$<$ \hyperlink{classostk_1_1physics_1_1env_1_1_ephemeris}{Ephemeris} $>$ \&an\+Ephemeris, const \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05}{Earth\+Gravitational\+Model\+::\+Type} \&a\+Gravitational\+Model\+Type, const \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6}{Earth\+Magnetic\+Model\+::\+Type} \&a\+Magnetic\+Model\+Type, const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant)
 \item 
+\hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_acf1ba88a7e9747779807a0ac676efc99}{Earth} (const \hyperlink{classostk_1_1physics_1_1units_1_1_derived}{Derived} \&a\+Gravitational\+Parameter, const \hyperlink{classostk_1_1physics_1_1units_1_1_length}{Length} \&an\+Equatorial\+Radius, const Real \&a\+Flattening, const Real \&a\+J2, const Real \&a\+J4, const Shared$<$ \hyperlink{classostk_1_1physics_1_1env_1_1_ephemeris}{Ephemeris} $>$ \&an\+Ephemeris, const \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05}{Earth\+Gravitational\+Model\+::\+Type} \&a\+Gravitational\+Model\+Type, const Integer \&a\+Gravity\+Model\+Degree, const Integer \&a\+Gravity\+Model\+Order, const \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6}{Earth\+Magnetic\+Model\+::\+Type} \&a\+Magnetic\+Model\+Type, const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant)
+\item 
 virtual \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_ac718f964c68fa41331978751a9ca4818}{$\sim$\+Earth} () override
 \item 
 virtual \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} $\ast$ \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_ae86664b9d6fc870baa1dac5c3219f784}{clone} () const override
@@ -29,14 +31,18 @@ virtual \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth
 \item 
 static \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_ab23224bee36577e7ab40576384ba8f2e}{Default} ()
 \begin{DoxyCompactList}\small\item\em Default \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} model (E\+G\+M2008) \end{DoxyCompactList}\item 
-static \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_a69213489a7ce28c3dfa990283657b2bf}{E\+G\+M2008} ()
+static \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_a41309c72eb9f74ecc37a502b00e89b9b}{E\+G\+M2008} (const Integer \&a\+Gravity\+Model\+Degree=Integer\+::\+Undefined(), const Integer \&a\+Gravity\+Model\+Order=Integer\+::\+Undefined())
 \begin{DoxyCompactList}\small\item\em \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} Gravity Model 2008 model (E\+G\+M2008) \end{DoxyCompactList}\item 
-static \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_a2c2af2af178d0eb24391a1ab19baa36a}{W\+G\+S84\+\_\+\+E\+G\+M96} ()
+static \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_ae424f9430a33064680675a93825dcf8b}{W\+G\+S84\+\_\+\+E\+G\+M96} (const Integer \&a\+Gravity\+Model\+Degree=Integer\+::\+Undefined(), const Integer \&a\+Gravity\+Model\+Order=Integer\+::\+Undefined())
 \begin{DoxyCompactList}\small\item\em World Geodetic System 1984 (W\+G\+S84) + \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} Gravity Model 1996 (E\+G\+M96) \end{DoxyCompactList}\item 
-static \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_ae86930600e872b2af40da227454fe49f}{E\+G\+M96} ()
+static \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_a51931a35af7457fef1e23055d23646f2}{E\+G\+M96} (const Integer \&a\+Gravity\+Model\+Degree=Integer\+::\+Undefined(), const Integer \&a\+Gravity\+Model\+Order=Integer\+::\+Undefined())
 \begin{DoxyCompactList}\small\item\em \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} Gravity Model 1996 (E\+G\+M96) \end{DoxyCompactList}\item 
-static \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_ad2c89b180e92bdc6c525ce7c065400aa}{W\+G\+S84} ()
-\begin{DoxyCompactList}\small\item\em World Geodetic System 1984 (W\+G\+S84) \end{DoxyCompactList}\end{DoxyCompactItemize}
+static \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_ac9e279bcd59917a3e153c52c74639005}{E\+G\+M84} (const Integer \&a\+Gravity\+Model\+Degree=Integer\+::\+Undefined(), const Integer \&a\+Gravity\+Model\+Order=Integer\+::\+Undefined())
+\begin{DoxyCompactList}\small\item\em \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} Gravity Model 1984 (E\+G\+M84) \end{DoxyCompactList}\item 
+static \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_a463005e1807fa7d6baec9cc677dd69e1}{W\+G\+S84} (const Integer \&a\+Gravity\+Model\+Degree=Integer\+::\+Undefined(), const Integer \&a\+Gravity\+Model\+Order=Integer\+::\+Undefined())
+\begin{DoxyCompactList}\small\item\em World Geodetic System 1984 (W\+G\+S84) \end{DoxyCompactList}\item 
+static \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_ad0acee4f4eba8b80c7ed962ca86773fa}{Spherical} ()
+\begin{DoxyCompactList}\small\item\em Spherical model. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -61,8 +67,14 @@ static const Real \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_ea
 \mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_ae3327b5673664451201468dd16667f42}\label{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_ae3327b5673664451201468dd16667f42}} 
 \index{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth@{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth}!Earth@{Earth}}
 \index{Earth@{Earth}!ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth@{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth}}
-\subsubsection{\texorpdfstring{Earth()}{Earth()}}
+\subsubsection{\texorpdfstring{Earth()}{Earth()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth\+::\+Earth (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1units_1_1_derived}{Derived} \&}]{a\+Gravitational\+Parameter,  }\item[{const \hyperlink{classostk_1_1physics_1_1units_1_1_length}{Length} \&}]{an\+Equatorial\+Radius,  }\item[{const Real \&}]{a\+Flattening,  }\item[{const Real \&}]{a\+J2,  }\item[{const Real \&}]{a\+J4,  }\item[{const Shared$<$ \hyperlink{classostk_1_1physics_1_1env_1_1_ephemeris}{Ephemeris} $>$ \&}]{an\+Ephemeris,  }\item[{const \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05}{Earth\+Gravitational\+Model\+::\+Type} \&}]{a\+Gravitational\+Model\+Type,  }\item[{const \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6}{Earth\+Magnetic\+Model\+::\+Type} \&}]{a\+Magnetic\+Model\+Type,  }\item[{const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_acf1ba88a7e9747779807a0ac676efc99}\label{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_acf1ba88a7e9747779807a0ac676efc99}} 
+\index{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth@{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth}!Earth@{Earth}}
+\index{Earth@{Earth}!ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth@{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth}}
+\subsubsection{\texorpdfstring{Earth()}{Earth()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth\+::\+Earth (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1units_1_1_derived}{Derived} \&}]{a\+Gravitational\+Parameter,  }\item[{const \hyperlink{classostk_1_1physics_1_1units_1_1_length}{Length} \&}]{an\+Equatorial\+Radius,  }\item[{const Real \&}]{a\+Flattening,  }\item[{const Real \&}]{a\+J2,  }\item[{const Real \&}]{a\+J4,  }\item[{const Shared$<$ \hyperlink{classostk_1_1physics_1_1env_1_1_ephemeris}{Ephemeris} $>$ \&}]{an\+Ephemeris,  }\item[{const \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05}{Earth\+Gravitational\+Model\+::\+Type} \&}]{a\+Gravitational\+Model\+Type,  }\item[{const Integer \&}]{a\+Gravity\+Model\+Degree,  }\item[{const Integer \&}]{a\+Gravity\+Model\+Order,  }\item[{const \hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a30a064d87b6fce338e76aebd3043b6b6}{Earth\+Magnetic\+Model\+::\+Type} \&}]{a\+Magnetic\+Model\+Type,  }\item[{const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_ac718f964c68fa41331978751a9ca4818}\label{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_ac718f964c68fa41331978751a9ca4818}} 
 \index{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth@{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth}!````~Earth@{$\sim$\+Earth}}
@@ -96,11 +108,11 @@ Default \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth
 \begin{DoxyReturn}{Returns}
 \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_a69213489a7ce28c3dfa990283657b2bf}\label{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_a69213489a7ce28c3dfa990283657b2bf}} 
+\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_a41309c72eb9f74ecc37a502b00e89b9b}\label{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_a41309c72eb9f74ecc37a502b00e89b9b}} 
 \index{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth@{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth}!E\+G\+M2008@{E\+G\+M2008}}
 \index{E\+G\+M2008@{E\+G\+M2008}!ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth@{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth}}
 \subsubsection{\texorpdfstring{E\+G\+M2008()}{EGM2008()}}
-{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth\+::\+E\+G\+M2008 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth\+::\+E\+G\+M2008 (\begin{DoxyParamCaption}\item[{const Integer \&}]{a\+Gravity\+Model\+Degree = {\ttfamily Integer\+:\+:Undefined()},  }\item[{const Integer \&}]{a\+Gravity\+Model\+Order = {\ttfamily Integer\+:\+:Undefined()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -109,11 +121,24 @@ Default \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth
 \begin{DoxyReturn}{Returns}
 \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_ae86930600e872b2af40da227454fe49f}\label{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_ae86930600e872b2af40da227454fe49f}} 
+\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_ac9e279bcd59917a3e153c52c74639005}\label{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_ac9e279bcd59917a3e153c52c74639005}} 
+\index{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth@{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth}!E\+G\+M84@{E\+G\+M84}}
+\index{E\+G\+M84@{E\+G\+M84}!ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth@{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth}}
+\subsubsection{\texorpdfstring{E\+G\+M84()}{EGM84()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth\+::\+E\+G\+M84 (\begin{DoxyParamCaption}\item[{const Integer \&}]{a\+Gravity\+Model\+Degree = {\ttfamily Integer\+:\+:Undefined()},  }\item[{const Integer \&}]{a\+Gravity\+Model\+Order = {\ttfamily Integer\+:\+:Undefined()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} Gravity Model 1984 (E\+G\+M84) 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_a51931a35af7457fef1e23055d23646f2}\label{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_a51931a35af7457fef1e23055d23646f2}} 
 \index{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth@{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth}!E\+G\+M96@{E\+G\+M96}}
 \index{E\+G\+M96@{E\+G\+M96}!ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth@{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth}}
 \subsubsection{\texorpdfstring{E\+G\+M96()}{EGM96()}}
-{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth\+::\+E\+G\+M96 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth\+::\+E\+G\+M96 (\begin{DoxyParamCaption}\item[{const Integer \&}]{a\+Gravity\+Model\+Degree = {\ttfamily Integer\+:\+:Undefined()},  }\item[{const Integer \&}]{a\+Gravity\+Model\+Order = {\ttfamily Integer\+:\+:Undefined()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -122,11 +147,24 @@ Default \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth
 \begin{DoxyReturn}{Returns}
 \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_ad2c89b180e92bdc6c525ce7c065400aa}\label{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_ad2c89b180e92bdc6c525ce7c065400aa}} 
+\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_ad0acee4f4eba8b80c7ed962ca86773fa}\label{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_ad0acee4f4eba8b80c7ed962ca86773fa}} 
+\index{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth@{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth}!Spherical@{Spherical}}
+\index{Spherical@{Spherical}!ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth@{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth}}
+\subsubsection{\texorpdfstring{Spherical()}{Spherical()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth\+::\+Spherical (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Spherical model. 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_a463005e1807fa7d6baec9cc677dd69e1}\label{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_a463005e1807fa7d6baec9cc677dd69e1}} 
 \index{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth@{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth}!W\+G\+S84@{W\+G\+S84}}
 \index{W\+G\+S84@{W\+G\+S84}!ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth@{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth}}
 \subsubsection{\texorpdfstring{W\+G\+S84()}{WGS84()}}
-{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth\+::\+W\+G\+S84 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth\+::\+W\+G\+S84 (\begin{DoxyParamCaption}\item[{const Integer \&}]{a\+Gravity\+Model\+Degree = {\ttfamily Integer\+:\+:Undefined()},  }\item[{const Integer \&}]{a\+Gravity\+Model\+Order = {\ttfamily Integer\+:\+:Undefined()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -135,11 +173,11 @@ World Geodetic System 1984 (W\+G\+S84)
 \begin{DoxyReturn}{Returns}
 \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_a2c2af2af178d0eb24391a1ab19baa36a}\label{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_a2c2af2af178d0eb24391a1ab19baa36a}} 
+\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_ae424f9430a33064680675a93825dcf8b}\label{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_ae424f9430a33064680675a93825dcf8b}} 
 \index{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth@{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth}!W\+G\+S84\+\_\+\+E\+G\+M96@{W\+G\+S84\+\_\+\+E\+G\+M96}}
 \index{W\+G\+S84\+\_\+\+E\+G\+M96@{W\+G\+S84\+\_\+\+E\+G\+M96}!ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth@{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth}}
 \subsubsection{\texorpdfstring{W\+G\+S84\+\_\+\+E\+G\+M96()}{WGS84\_EGM96()}}
-{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth\+::\+W\+G\+S84\+\_\+\+E\+G\+M96 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{Earth} ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth\+::\+W\+G\+S84\+\_\+\+E\+G\+M96 (\begin{DoxyParamCaption}\item[{const Integer \&}]{a\+Gravity\+Model\+Degree = {\ttfamily Integer\+:\+:Undefined()},  }\item[{const Integer \&}]{a\+Gravity\+Model\+Order = {\ttfamily Integer\+:\+:Undefined()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 

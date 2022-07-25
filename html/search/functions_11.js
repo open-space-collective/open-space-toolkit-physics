@@ -18,7 +18,7 @@ var searchData=
   ['setsecond',['setSecond',['../classostk_1_1physics_1_1time_1_1_time.html#a4f5cc2bb2a6ff653eca82e5a754fa781',1,'ostk::physics::time::Time']]],
   ['setvalue',['setValue',['../classostk_1_1physics_1_1units_1_1_unit.html#a51c95b69e4f83766aae377ba13d01f26',1,'ostk::physics::units::Unit']]],
   ['setyear',['setYear',['../classostk_1_1physics_1_1time_1_1_date.html#a86b990462a6e3a79211b7a3c888ade04',1,'ostk::physics::time::Date']]],
-  ['spherical',['Spherical',['../classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical.html#aa0181210c54a42a0b6e808d6e6811d6b',1,'ostk::physics::environment::gravitational::Spherical']]],
+  ['spherical',['Spherical',['../classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical.html#aa0181210c54a42a0b6e808d6e6811d6b',1,'ostk::physics::environment::gravitational::Spherical::Spherical()'],['../classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth.html#ad0acee4f4eba8b80c7ed962ca86773fa',1,'ostk::physics::env::obj::celest::Earth::Spherical()']]],
   ['spice',['SPICE',['../classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#a47224d4625f6574ed2b9681f7bfa9c31',1,'ostk::physics::env::ephem::SPICE']]],
   ['squaremeter',['SquareMeter',['../classostk_1_1physics_1_1units_1_1_derived_1_1_unit.html#a3788de147adef6a77d6f7e6df52e52ed',1,'ostk::physics::units::Derived::Unit']]],
   ['static',['Static',['../classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_static.html#a0526a2aa502a52e89f7d205c5b64e90c',1,'ostk::physics::coord::frame::provider::Static']]],
