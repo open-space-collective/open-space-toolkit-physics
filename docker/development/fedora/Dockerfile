@@ -79,11 +79,11 @@ RUN cd /tmp \
  && dnf remove -y csh \
  && dnf clean all
 
-## GeographicLib [1.49]
+## GeographicLib [1.52]
 
-RUN git clone git://git.code.sf.net/p/geographiclib/code /tmp/geographiclib \
+RUN git clone https://github.com/geographiclib/geographiclib /tmp/geographiclib \
  && cd /tmp/geographiclib \
- && git checkout tags/r1.49 \
+ && git checkout tags/r1.52 \
  && mkdir build \
  && cd build \
  && dnf install -y proj-devel \
@@ -93,32 +93,39 @@ RUN git clone git://git.code.sf.net/p/geographiclib/code /tmp/geographiclib \
  && rm -rf /tmp/geographiclib \
  && dnf clean all
 
-## Open Space Toolkit ▸ Core [0.4.3]
+## Open Space Toolkit ▸ Core [0.4.5]
 
 RUN mkdir -p /tmp/open-space-toolkit-core \
  && cd /tmp/open-space-toolkit-core \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/0.4.3/open-space-toolkit-core-0.4.3-1.x86_64-runtime.rpm \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/0.4.3/open-space-toolkit-core-0.4.3-1.x86_64-devel.rpm \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/0.4.5/open-space-toolkit-core-0.4.5-1.x86_64-runtime.rpm \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/0.4.5/open-space-toolkit-core-0.4.5-1.x86_64-devel.rpm \
  && dnf install -y ./*.rpm \
  && rm -rf /tmp/open-space-toolkit-core
 
-## Open Space Toolkit ▸ IO [0.4.4]
+## Open Space Toolkit ▸ IO [0.4.5]
 
 RUN mkdir -p /tmp/open-space-toolkit-io \
  && cd /tmp/open-space-toolkit-io \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/0.4.4/open-space-toolkit-io-0.4.4-1.x86_64-runtime.rpm \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/0.4.4/open-space-toolkit-io-0.4.4-1.x86_64-devel.rpm \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/0.4.5/open-space-toolkit-io-0.4.5-1.x86_64-runtime.rpm \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/0.4.5/open-space-toolkit-io-0.4.5-1.x86_64-devel.rpm \
  && dnf install -y ./*.rpm \
  && rm -rf /tmp/open-space-toolkit-io
 
-## Open Space Toolkit ▸ Mathematics [0.4.5]
+## Open Space Toolkit ▸ Mathematics [0.4.6]
 
 RUN mkdir -p /tmp/open-space-toolkit-mathematics \
  && cd /tmp/open-space-toolkit-mathematics \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/0.4.5/open-space-toolkit-mathematics-0.4.5-1.x86_64-runtime.rpm \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/0.4.5/open-space-toolkit-mathematics-0.4.5-1.x86_64-devel.rpm \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/0.4.6/open-space-toolkit-mathematics-0.4.6-1.x86_64-runtime.rpm \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/0.4.6/open-space-toolkit-mathematics-0.4.6-1.x86_64-devel.rpm \
  && dnf install -y ./*.rpm \
  && rm -rf /tmp/open-space-toolkit-mathematics
+
+# Container local repositories
+
+ENV OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/coordinate/frame/providers/iers"
+ENV OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/environment/ephemerides/spice"
+ENV OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/environment/gravitational/earth"
+ENV OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/environment/magnetic/earth"
 
 # Labels
 

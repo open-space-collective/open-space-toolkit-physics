@@ -34,6 +34,7 @@ namespace gravitational
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using ostk::core::types::Unique ;
+using ostk::core::types::Integer ;
 using ostk::core::types::Real ;
 using ostk::core::fs::Directory ;
 
@@ -60,6 +61,7 @@ class Earth : public Model
         enum class Type
         {
 
+            Spherical,          ///< The spherical gravity originating from a point source at the center of the Earth
             WGS84,              ///< The normal gravitational field for the reference ellipsoid. This includes the zonal coefficients up to order 20.
             EGM84,              ///< The Earth Gravity Model 1984, which includes terms up to degree 180.
             EGM96,              ///< The Earth Gravity Model 1996, which includes terms up to degree 360.
@@ -67,13 +69,17 @@ class Earth : public Model
 
         } ;
 
-        /// @brief              Constructor
+        /// @brief              Constructor with max degree and order variables
         ///
         /// @param              [in] aType A gravitational model type
         /// @param              [in] (optional) aDataDirectory A gravitational model data directory
+        /// @param              [in] (optional) aGravityModelDegree A gravitational model degree
+        /// @param              [in] (optional) aGravityModelOrder A gravitational model order
 
                                 Earth                                       (   const   Earth::Type&                aType,
-                                                                                const   Directory&                  aDataDirectory                              =   Directory::Undefined() ) ;
+                                                                                const   Directory&                  aDataDirectory                              =   Directory::Undefined(),
+                                                                                const   Integer&                    aGravityModelDegree                         =   Integer::Undefined(),
+                                                                                const   Integer&                    aGravityModelOrder                          =   Integer::Undefined() ) ;
 
         /// @brief              Copy constructor
         ///
@@ -116,8 +122,15 @@ class Earth : public Model
     private:
 
         class Impl ;
+        class SphericalImpl ;
+        class ExternalImpl ;
 
         Unique<Impl>            implUPtr_ ;
+
+        static Unique<Impl>     ImplFromType                                (   const   Earth::Type&                aType,
+                                                                                const   Directory&                  aDataDirectory,
+                                                                                const   Integer&                    aGravityModelDegree,
+                                                                                const   Integer&                    aGravityModelOrder                          ) ;
 
 } ;
 

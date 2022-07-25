@@ -23,13 +23,9 @@ from ostk.physics.time import Scale
 from ostk.physics.time import Instant
 from ostk.physics.time import Duration
 
-import ostk.physics as physics
-
-################################################################################################################################################################
-
-Manager = physics.coordinate.frame.providers.iers.Manager
-BulletinA = physics.coordinate.frame.providers.iers.BulletinA
-Finals2000A = physics.coordinate.frame.providers.iers.Finals2000A
+from ostk.physics.coordinate.frame.providers.iers import Manager
+from ostk.physics.coordinate.frame.providers.iers import BulletinA
+from ostk.physics.coordinate.frame.providers.iers import Finals2000A
 
 ################################################################################################################################################################
 
@@ -81,7 +77,12 @@ class TestManager:
 
     def test_get_bulletin_a_at_success (self, manager: Manager):
 
-        bulletin_a: BulletinA = manager.get_bulletin_a_at(Instant.now() - Duration.days(7.0))
+        try:
+            bulletin_a: BulletinA = manager.get_bulletin_a_at(Instant.now() - Duration.days(8.0))
+        except RuntimeError:
+            manager.reset()
+            manager.clear_local_repository()
+            bulletin_a: BulletinA = manager.get_bulletin_a_at(Instant.now() - Duration.days(5.0))
 
         assert isinstance(bulletin_a, BulletinA)
 

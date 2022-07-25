@@ -147,16 +147,76 @@ TEST (OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, GetFra
 
 }
 
-TEST (OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, Default)
+TEST (OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, StaticMethods)
 {
 
     using ostk::physics::env::obj::celest::Earth ;
 
-    {
+    EXPECT_NO_THROW(Earth::Default()) ;
 
-        EXPECT_NO_THROW(Earth::Default()) ;
+}
 
-    }
+TEST (OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, EGM2008)
+{
+
+    using ostk::physics::env::obj::celest::Earth ;
+
+    EXPECT_NO_THROW(Earth::EGM2008()) ;
+    EXPECT_NO_THROW(Earth::EGM2008(2190, 2160)) ;
+    EXPECT_ANY_THROW(Earth::EGM2008(3000, 3000)) ;
+
+}
+
+TEST (OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, EGM96)
+{
+
+    using ostk::physics::env::obj::celest::Earth ;
+
+    EXPECT_NO_THROW(Earth::EGM96()) ;
+    EXPECT_NO_THROW(Earth::EGM96(360, 360)) ;
+    EXPECT_ANY_THROW(Earth::EGM96(3000, 3000)) ;
+
+}
+
+TEST (OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, EGM84)
+{
+
+    using ostk::physics::env::obj::celest::Earth ;
+
+    EXPECT_NO_THROW(Earth::EGM84()) ;
+    EXPECT_NO_THROW(Earth::EGM84(180, 180)) ;
+    EXPECT_ANY_THROW(Earth::EGM84(3000, 3000)) ;
+
+}
+
+TEST (OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, WGS84_EGM96)
+{
+
+    using ostk::physics::env::obj::celest::Earth ;
+
+    EXPECT_NO_THROW(Earth::WGS84_EGM96()) ;
+    EXPECT_NO_THROW(Earth::WGS84_EGM96(360, 360)) ;
+    EXPECT_ANY_THROW(Earth::WGS84_EGM96(3000, 3000)) ;
+
+}
+
+TEST (OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, WGS84)
+{
+
+    using ostk::physics::env::obj::celest::Earth ;
+
+    EXPECT_NO_THROW(Earth::WGS84()) ;
+    EXPECT_NO_THROW(Earth::WGS84(20, 0)) ;
+    EXPECT_ANY_THROW(Earth::WGS84(3000, 3000)) ;
+
+}
+
+TEST (OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, Spherical)
+{
+
+    using ostk::physics::env::obj::celest::Earth ;
+
+    EXPECT_NO_THROW(Earth::Spherical()) ;
 
 }
 

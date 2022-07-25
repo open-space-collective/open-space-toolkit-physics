@@ -1,15 +1,23 @@
 ################################################################################################################################################################
 
 # @project        Open Space Toolkit ▸ Physics
-# @file           bindings/python/requirements.txt
-# @author         Lucas Brémond <lucas@loftorbital.com>
+# @file           bindings/python/test/environment/objects/celestial/test_moon.py
+# @author         Antoine Paletta <antoine.paletta@loftorbital.com>
 # @license        Apache License 2.0
 
 ################################################################################################################################################################
 
-numpy>=1.17.4
+from ostk.physics.environment.objects.celestial_bodies import Moon
 
-open-space-toolkit-io==0.4.5
-open-space-toolkit-mathematics==0.4.6
+################################################################################################################################################################
+
+class TestMoon:
+
+    def test_default_success (self):
+
+        moon = Moon.default()
+
+        assert moon is not None
+        assert isinstance(moon, Moon)
 
 ################################################################################################################################################################

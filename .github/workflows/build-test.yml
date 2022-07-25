@@ -15,9 +15,6 @@ on:
       - master
       - main
   pull_request:
-    branches:
-      - master
-      - main
 
 concurrency:
   group: main-${{ github.ref }}

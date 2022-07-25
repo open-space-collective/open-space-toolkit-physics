@@ -1,15 +1,23 @@
 ################################################################################################################################################################
 
 # @project        Open Space Toolkit ▸ Physics
-# @file           bindings/python/requirements.txt
-# @author         Lucas Brémond <lucas@loftorbital.com>
+# @file           bindings/python/test/environment/objects/celestial/test_sun.py
+# @author         Antoine Paletta <antoine.paletta@loftorbital.com>
 # @license        Apache License 2.0
 
 ################################################################################################################################################################
 
-numpy>=1.17.4
+from ostk.physics.environment.objects.celestial_bodies import Sun
 
-open-space-toolkit-io==0.4.5
-open-space-toolkit-mathematics==0.4.6
+################################################################################################################################################################
+
+class TestSun:
+
+    def test_default_success (self):
+
+        sun = Sun.default()
+
+        assert sun is not None
+        assert isinstance(sun, Sun)
 
 ################################################################################################################################################################

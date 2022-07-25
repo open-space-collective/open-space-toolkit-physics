@@ -17,6 +17,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Gravitatio
 
     using namespace pybind11 ;
 
+    using ostk::core::types::Integer ;
     using ostk::core::fs::Directory ;
 
     using ostk::physics::units::Derived ;
@@ -30,6 +31,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Gravitatio
         earth_class.def(init<const Earth::Type&, const Directory&>())
 
             .def(init<const Earth::Type&>())
+            .def(init<const Earth::Type&, const Directory&, const Integer&, const Integer&>())
 
             .def("get_type", &Earth::getType)
             .def("get_field_value_at", &Earth::getFieldValueAt)
@@ -38,6 +40,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Gravitatio
 
         enum_<Earth::Type>(earth_class, "EarthType")
 
+            .value("Spherical", Earth::Type::Spherical)
             .value("WGS84", Earth::Type::WGS84)
             .value("EGM84", Earth::Type::EGM84)
             .value("EGM96", Earth::Type::EGM96)
