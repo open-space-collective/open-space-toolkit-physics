@@ -43,6 +43,7 @@ Real                            Moon::Flattening                                
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
                                 Moon::Moon                                  (   const   Shared<Ephemeris>&          anEphemeris,
+                                                                                const   MoonGravitationalModel::Type& aGravitationalModelType,
                                                                                 const   Instant&                    anInstant                                   )
                                 :   Celestial
                                     (
@@ -54,7 +55,7 @@ Real                            Moon::Flattening                                
                                         0.0,
                                         0.0,
                                         anEphemeris,
-                                        nullptr, // [TBI] Add gravitational model
+                                        std::make_shared<MoonGravitationalModel>(aGravitationalModelType),
                                         nullptr,
                                         anInstant,
                                         Moon::Geometry(anEphemeris->accessFrame())
@@ -78,7 +79,12 @@ Moon                            Moon::Default                               ( )
 
     using ostk::physics::env::ephem::SPICE ;
 
-    return { std::make_shared<SPICE>(SPICE::Object::Moon), Instant::J2000() } ; // [TBI]
+    return
+    {
+        std::make_shared<SPICE>(SPICE::Object::Moon),
+        MoonGravitationalModel::Type::Spherical,
+        Instant::J2000()
+    } ;
 
 }
 

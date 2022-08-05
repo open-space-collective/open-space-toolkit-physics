@@ -10,6 +10,7 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Moon__
 #define __OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Moon__
 
+#include <OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Objects/Celestial.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Object.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp>
@@ -46,6 +47,7 @@ using ostk::physics::units::Derived ;
 using ostk::physics::env::Ephemeris ;
 using ostk::physics::env::Object ;
 using ostk::physics::env::obj::Celestial ;
+using MoonGravitationalModel = ostk::physics::environment::gravitational::Moon ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -59,6 +61,7 @@ class Moon : public Celestial
         static Real             Flattening ;
 
                                 Moon                                        (   const   Shared<Ephemeris>&          anEphemeris,
+                                                                                const   MoonGravitationalModel::Type& aGravitationalModelType,
                                                                                 const   Instant&                    anInstant                                   ) ;
 
         virtual                 ~Moon                                       ( ) override ;

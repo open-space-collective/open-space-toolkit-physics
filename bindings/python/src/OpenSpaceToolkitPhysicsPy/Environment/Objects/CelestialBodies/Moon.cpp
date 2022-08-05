@@ -22,12 +22,13 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
     using ostk::physics::env::Ephemeris ;
     using ostk::physics::env::obj::Celestial ;
     using ostk::physics::env::obj::celest::Moon ;
+    using MoonGravitationalModel = ostk::physics::environment::gravitational::Moon ;
 
     {
 
         class_<Moon, Shared<Moon>, Celestial>(aModule, "Moon")
 
-            .def(init<const Shared<Ephemeris>&, const Instant&>())
+            .def(init<const Shared<Ephemeris>&, const MoonGravitationalModel::Type&, const Instant&>())
 
             .def_readonly_static("gravitational_parameter", &Moon::GravitationalParameter)
             .def_readonly_static("equatorial_radius", &Moon::EquatorialRadius)

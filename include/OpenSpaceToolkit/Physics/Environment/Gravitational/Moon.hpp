@@ -1,14 +1,14 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp
+/// @file           OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp
 /// @author         Antoine Paletta <antoine.paletta@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __OpenSpaceToolkit_Physics_Environment_Gravitational_Sun__
-#define __OpenSpaceToolkit_Physics_Environment_Gravitational_Sun__
+#ifndef __OpenSpaceToolkit_Physics_Environment_Gravitational_Moon__
+#define __OpenSpaceToolkit_Physics_Environment_Gravitational_Moon__
 
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
@@ -46,18 +46,18 @@ using ostk::physics::environment::gravitational::Model ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @brief                      Sun gravitational model
+/// @brief                      Moon gravitational model
 ///
-///                             The gravitational potential of the sun for now is kept as a simple spherical model.
+///                             The gravitational potential of the moon for now is kept as a simple spherical model.
 
-class Sun : public Model
+class Moon : public Model
 {
 
     public:
 
         enum class Type
         {
-            Spherical           /// The spherical gravity originating from a point source at the center of the Sun
+            Spherical           /// The spherical gravity originating from a point source at the center of the Moon
         } ;
 
         /// @brief              Constructor
@@ -65,37 +65,37 @@ class Sun : public Model
         /// @param              [in] aType A gravitational model type
         /// @param              [in] (optional) aDataDirectory A gravitational model data directory
 
-                                Sun                                         (   const   Sun::Type&                  aType,
+                                Moon                                        (   const   Moon::Type&                 aType,
                                                                                 const   Directory&                  aDataDirectory                              =   Directory::Undefined()  ) ;
 
         /// @brief              Copy constructor
         ///
-        /// @param              [in] aSunGravitationalModel An Sun model
+        /// @param              [in] aMoonGravitationalModel An Moon model
 
-                                Sun                                         (   const   Sun&                        aSunGravitationalModel                      ) ;
+                                Moon                                        (   const   Moon&                       aMoonGravitationalModel                     ) ;
 
         /// @brief              Copy assignment operator
         ///
-        /// @param              [in] aSunGravitationalModel An Sun model
-        /// @return             Reference to Sun model
+        /// @param              [in] aMoonGravitationalModel An Moon model
+        /// @return             Reference to Moon model
 
-        Sun&                    operator =                                  (   const   Sun&                        aSunGravitationalModel                      ) ;
+        Moon&                   operator =                                  (   const   Moon&                       aMoonGravitationalModel                     ) ;
 
         /// @brief              Destructor
 
-                                ~Sun                                        ( ) ;
+                                ~Moon                                       ( ) ;
 
-        /// @brief              Clone the Sun gravitational model
+        /// @brief              Clone the Moon gravitational model
         ///
-        /// @return             Pointer to Sun gravitational model
+        /// @return             Pointer to Moon gravitational model
 
-        virtual Sun*            clone                                       ( ) const override ;
+        virtual Moon*           clone                                       ( ) const override ;
 
         /// @brief              Get gravitational model type
         ///
         /// @return             Gravitational model type
 
-        Sun::Type               getType                                     ( ) const ;
+        Moon::Type              getType                                     ( ) const ;
 
         /// @brief              Get the gravitational field value at a given position and instant
         ///
@@ -113,7 +113,7 @@ class Sun : public Model
 
         Unique<Impl>            implUPtr_ ;
 
-        static Unique<Impl>     ImplFromType                                (   const   Sun::Type&                  aType,
+        static Unique<Impl>     ImplFromType                                (   const   Moon::Type&                 aType,
                                                                                 const   Directory&                  aDataDirectory                              ) ;
 
 } ;
