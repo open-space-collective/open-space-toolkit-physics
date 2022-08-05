@@ -43,6 +43,7 @@ Real                            Sun::Flattening                                 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
                                 Sun::Sun                                    (   const   Shared<Ephemeris>&          anEphemeris,
+                                                                                const   SunGravitationalModel::Type& aGravitationalModelType,
                                                                                 const   Instant&                    anInstant                                   )
                                 :   Celestial
                                     (
@@ -54,7 +55,7 @@ Real                            Sun::Flattening                                 
                                         0.0,
                                         0.0,
                                         anEphemeris,
-                                        nullptr, // [TBI] Add Sun gravitational model
+                                        std::make_shared<SunGravitationalModel>(aGravitationalModelType),
                                         nullptr, // [TBI] Add Sun magnetic model
                                         anInstant,
                                         Sun::Geometry(anEphemeris->accessFrame())
@@ -78,7 +79,12 @@ Sun                             Sun::Default                                ( )
 
     using ostk::physics::env::ephem::SPICE ;
 
-    return { std::make_shared<SPICE>(SPICE::Object::Sun), Instant::J2000() } ;
+    return
+    {
+        std::make_shared<SPICE>(SPICE::Object::Sun),
+        SunGravitationalModel::Type::Spherical,
+        Instant::J2000()
+    } ;
 
 }
 

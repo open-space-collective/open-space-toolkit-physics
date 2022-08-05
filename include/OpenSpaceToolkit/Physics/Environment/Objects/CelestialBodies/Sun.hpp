@@ -10,6 +10,7 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Sun__
 #define __OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Sun__
 
+#include <OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Objects/Celestial.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Object.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp>
@@ -46,6 +47,7 @@ using ostk::physics::units::Derived ;
 using ostk::physics::env::Ephemeris ;
 using ostk::physics::env::Object ;
 using ostk::physics::env::obj::Celestial ;
+using SunGravitationalModel = ostk::physics::environment::gravitational::Sun ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -59,6 +61,7 @@ class Sun : public Celestial
         static Real             Flattening ;
 
                                 Sun                                         (   const   Shared<Ephemeris>&          anEphemeris,
+                                                                                const   SunGravitationalModel::Type& aGravitationalModelType,
                                                                                 const   Instant&                    anInstant                                   ) ;
 
         virtual                 ~Sun                                        ( ) override ;
