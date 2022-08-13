@@ -1,5 +1,11 @@
 var NAVTREEINDEX3 =
 {
+"classostk_1_1physics_1_1env_1_1obj_1_1_celestial.html#ad5b0fb87f14be14519ecddd37f134719":[4,0,0,0,2,1,1,23],
+"classostk_1_1physics_1_1env_1_1obj_1_1_celestial.html#adc8df9d860d30eb49600e644f63045bc":[4,0,0,0,2,1,1,15],
+"classostk_1_1physics_1_1env_1_1obj_1_1_celestial.html#ae2cd7ac1cb6a896390394b77cffa0297":[4,0,0,0,2,1,1,19],
+"classostk_1_1physics_1_1env_1_1obj_1_1_celestial.html#af38fd0017fe14cfb6103684fcb1d3ee9":[4,0,0,0,2,1,1,20],
+"classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth.html":[4,0,0,0,2,1,0,0],
+"classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth.html#ac718f964c68fa41331978751a9ca4818":[4,0,0,0,2,1,0,0,3],
 "classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth.html#acf1ba88a7e9747779807a0ac676efc99":[4,0,0,0,2,1,0,0,2],
 "classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth.html#ae3327b5673664451201468dd16667f42":[4,0,0,0,2,1,0,0,1],
 "classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth.html#ae86664b9d6fc870baa1dac5c3219f784":[4,0,0,0,2,1,0,0,4],
@@ -130,11 +136,11 @@ var NAVTREEINDEX3 =
 "classostk_1_1physics_1_1time_1_1_date_time.html#a27b1ada0ea5f28fe6dcd131cdd4e2a5c":[4,0,0,0,4,1,3],
 "classostk_1_1physics_1_1time_1_1_date_time.html#a2fd2deab390516483e1757c45ae81282":[4,0,0,0,4,1,9],
 "classostk_1_1physics_1_1time_1_1_date_time.html#a693b5b08de1352b5c6120290629bcb26":[4,0,0,0,4,1,12],
+"classostk_1_1physics_1_1time_1_1_date_time.html#a85caea4e89f9d0436df65f1368f95738":[4,0,0,0,4,1,2],
 "classostk_1_1physics_1_1time_1_1_date_time.html#a8f2ca8f9d2a8e1828c8f92827e1803ca":[4,0,0,0,4,1,7],
 "classostk_1_1physics_1_1time_1_1_date_time.html#a8ffda673aa698ebe33cd4c4d4a041ef6":[4,0,0,0,4,1,11],
 "classostk_1_1physics_1_1time_1_1_date_time.html#a974b5a7581ae7461ccf0e6ab85e42633":[4,0,0,0,4,1,1],
 "classostk_1_1physics_1_1time_1_1_date_time.html#aafd979e2eb7095ee7bc8bb3e9a1b52ae":[4,0,0,0,4,1,5],
-"classostk_1_1physics_1_1time_1_1_date_time.html#ab73b68943ff5020a103794fc0c5481f0":[4,0,0,0,4,1,2],
 "classostk_1_1physics_1_1time_1_1_date_time.html#ae1460f38a9e41c5c7e42874de571d9f9":[4,0,0,0,4,1,8],
 "classostk_1_1physics_1_1time_1_1_date_time.html#ae96358ed48be6bb4325d3f3408a8ab5c":[4,0,0,0,4,1,10],
 "classostk_1_1physics_1_1time_1_1_date_time.html#afd7a10118810d4133db2044ddbb7e001":[4,0,0,0,4,1,13],
@@ -243,11 +249,5 @@ var NAVTREEINDEX3 =
 "classostk_1_1physics_1_1time_1_1_time.html#ad0c70220f4ba971306781eb92d8f2030":[4,0,0,0,4,5,2],
 "classostk_1_1physics_1_1time_1_1_time.html#ad914e61c2ace9527236f88b897a0c6de":[4,0,0,0,4,5,11],
 "classostk_1_1physics_1_1time_1_1_time.html#adc56fbb417453265e6d5a448e597fd76":[4,0,0,0,4,5,3],
-"classostk_1_1physics_1_1time_1_1_time.html#aebe3fc329d7b7b07c1f0ac04600ebc03":[4,0,0,0,4,5,7],
-"classostk_1_1physics_1_1time_1_1_time.html#aef028b25ce2ff2d216e9fdc957c6ac4f":[4,0,0,0,4,5,15],
-"classostk_1_1physics_1_1time_1_1_time.html#afe4041426b008059853110b13e2802de":[4,0,0,0,4,5,8],
-"classostk_1_1physics_1_1units_1_1_angle.html":[4,0,0,0,5,0],
-"classostk_1_1physics_1_1units_1_1_angle.html#a03d9c3a133d4076b6a67a0abc8d73271":[4,0,0,0,5,0,6],
-"classostk_1_1physics_1_1units_1_1_angle.html#a0846b77ee3281e8a559197c3c3208eed":[4,0,0,0,5,0,32],
-"classostk_1_1physics_1_1units_1_1_angle.html#a1199d17a4ea17dc976879f309a5e919f":[4,0,0,0,5,0,29]
+"classostk_1_1physics_1_1time_1_1_time.html#aebe3fc329d7b7b07c1f0ac04600ebc03":[4,0,0,0,4,5,7]
 };

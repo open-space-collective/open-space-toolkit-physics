@@ -3,9 +3,7 @@ var dir_ddb8162b7097943b20af81b23e842747 =
     [ "Date.hpp", "_date_8hpp.html", [
       [ "Date", "classostk_1_1physics_1_1time_1_1_date.html", "classostk_1_1physics_1_1time_1_1_date" ]
     ] ],
-    [ "DateTime.hpp", "_date_time_8hpp.html", [
-      [ "DateTime", "classostk_1_1physics_1_1time_1_1_date_time.html", "classostk_1_1physics_1_1time_1_1_date_time" ]
-    ] ],
+    [ "DateTime.hpp", "_date_time_8hpp.html", "_date_time_8hpp" ],
     [ "Duration.hpp", "_duration_8hpp.html", [
       [ "Duration", "classostk_1_1physics_1_1time_1_1_duration.html", "classostk_1_1physics_1_1time_1_1_duration" ]
     ] ],

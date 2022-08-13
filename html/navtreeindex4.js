@@ -1,5 +1,11 @@
 var NAVTREEINDEX4 =
 {
+"classostk_1_1physics_1_1time_1_1_time.html#aef028b25ce2ff2d216e9fdc957c6ac4f":[4,0,0,0,4,5,15],
+"classostk_1_1physics_1_1time_1_1_time.html#afe4041426b008059853110b13e2802de":[4,0,0,0,4,5,8],
+"classostk_1_1physics_1_1units_1_1_angle.html":[4,0,0,0,5,0],
+"classostk_1_1physics_1_1units_1_1_angle.html#a03d9c3a133d4076b6a67a0abc8d73271":[4,0,0,0,5,0,6],
+"classostk_1_1physics_1_1units_1_1_angle.html#a0846b77ee3281e8a559197c3c3208eed":[4,0,0,0,5,0,32],
+"classostk_1_1physics_1_1units_1_1_angle.html#a1199d17a4ea17dc976879f309a5e919f":[4,0,0,0,5,0,29],
 "classostk_1_1physics_1_1units_1_1_angle.html#a4892c7a7ed48adabf5c942dbda7ad848":[4,0,0,0,5,0,1],
 "classostk_1_1physics_1_1units_1_1_angle.html#a5507ed91abc944fd4cc91f5488276e95":[4,0,0,0,5,0,27],
 "classostk_1_1physics_1_1units_1_1_angle.html#a678a42204ee95b335e30853d94b31689":[4,0,0,0,5,0,7],
@@ -243,11 +249,5 @@ var NAVTREEINDEX4 =
 "functions_func_f.html":[4,2,1,5],
 "functions_func_g.html":[4,2,1,6],
 "functions_func_h.html":[4,2,1,7],
-"functions_func_i.html":[4,2,1,8],
-"functions_func_j.html":[4,2,1,9],
-"functions_func_k.html":[4,2,1,10],
-"functions_func_l.html":[4,2,1,11],
-"functions_func_m.html":[4,2,1,12],
-"functions_func_n.html":[4,2,1,13],
-"functions_func_o.html":[4,2,1,14]
+"functions_func_i.html":[4,2,1,8]
 };
