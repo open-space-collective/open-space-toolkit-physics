@@ -35,6 +35,15 @@ using ostk::physics::time::Time ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#define                         DEFAULT_HOUR                                    0
+#define                         DEFAULT_MINUTE                                  0
+#define                         DEFAULT_SECOND                                  0
+#define                         DEFAULT_MILLISECOND                             0
+#define                         DEFAULT_MICROSECOND                             0
+#define                         DEFAULT_NANOSECOND                              0
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 /// @brief                      Date-time
 
 class DateTime
@@ -69,6 +78,7 @@ class DateTime
         /// @brief              Constructor
         ///
         /// @code
+        ///                     DateTime dateTime(2018, 1, 2) ; // 2018-01-02 00:00:00.000.000.000
         ///                     DateTime dateTime(2018, 1, 2, 12, 34, 56) ; // 2018-01-02 12:34:56.000.000.000
         ///                     DateTime dateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789) ; // 2018-01-02 12:34:56.123.456.789
         /// @endcode
@@ -76,9 +86,9 @@ class DateTime
         /// @param              [in] aYear aYear A year
         /// @param              [in] aMonth aMonth A month (1 - 12)
         /// @param              [in] aDay aDay A day (1 - 31)
-        /// @param              [in] anHour An hour (0 - 23)
-        /// @param              [in] aMinute A minute (0 - 59)
-        /// @param              [in] aSecond A second (0 - 60)
+        /// @param              [in] (optional) anHour An hour (0 - 23)
+        /// @param              [in] (optional) aMinute A minute (0 - 59)
+        /// @param              [in] (optional) aSecond A second (0 - 60)
         /// @param              [in] (optional) aMillisecond A millisecond (0 - 999)
         /// @param              [in] (optional) aMicrosecond A microsecond (0 - 999)
         /// @param              [in] (optional) aNanosecond A nanosecond (0 - 999)
@@ -86,12 +96,12 @@ class DateTime
                                 DateTime                                    (           Uint16                      aYear,
                                                                                         Uint8                       aMonth,
                                                                                         Uint8                       aDay,
-                                                                                        Uint8                       anHour,
-                                                                                        Uint8                       aMinute,
-                                                                                        Uint8                       aSecond,
-                                                                                        Uint16                      aMillisecond                                =   0,
-                                                                                        Uint16                      aMicrosecond                                =   0,
-                                                                                        Uint16                      aNanosecond                                 =   0 ) ;
+                                                                                        Uint8                       anHour                                      =   DEFAULT_HOUR,
+                                                                                        Uint8                       aMinute                                     =   DEFAULT_MINUTE,
+                                                                                        Uint8                       aSecond                                     =   DEFAULT_SECOND,
+                                                                                        Uint16                      aMillisecond                                =   DEFAULT_MILLISECOND,
+                                                                                        Uint16                      aMicrosecond                                =   DEFAULT_MICROSECOND,
+                                                                                        Uint16                      aNanosecond                                 =   DEFAULT_NANOSECOND ) ;
 
         /// @brief              Equal to operator
         ///
