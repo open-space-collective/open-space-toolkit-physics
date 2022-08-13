@@ -42,8 +42,8 @@ namespace time
                                                                                         Uint16                      aMillisecond,
                                                                                         Uint16                      aMicrosecond,
                                                                                         Uint16                      aNanosecond                                 )
-                                :   date_({aYear, aMonth, aDay}),
-                                    time_({anHour, aMinute, aSecond, aMillisecond, aMicrosecond, aNanosecond})
+                                :   date_({ aYear, aMonth, aDay }),
+                                    time_({ anHour, aMinute, aSecond, aMillisecond, aMicrosecond, aNanosecond })
 {
 
 }
@@ -226,27 +226,27 @@ String                          DateTime::toString                         (   c
 
 DateTime                        DateTime::Undefined                         ( )
 {
-    return DateTime(Date::Undefined(), Time::Undefined()) ;
+    return { Date::Undefined(), Time::Undefined() } ;
 }
 
 DateTime                        DateTime::J2000                             ( )
 {
-    return DateTime(Date::J2000(), Time::Noon()) ;
+    return { Date::J2000(), Time::Noon() } ;
 }
 
 DateTime                        DateTime::GPSEpoch                          ( )
 {
-    return DateTime(Date::GPSEpoch(), Time::Midnight()) ;
+    return { Date::GPSEpoch(), Time::Midnight() } ;
 }
 
 DateTime                        DateTime::UnixEpoch                         ( )
 {
-    return DateTime(Date::UnixEpoch(), Time::Midnight()) ;
+    return { Date::UnixEpoch(), Time::Midnight() } ;
 }
 
 DateTime                        DateTime::ModifiedJulianDateEpoch           ( )
 {
-    return DateTime(Date::ModifiedJulianDateEpoch(), Time::Midnight()) ;
+    return { Date::ModifiedJulianDateEpoch(), Time::Midnight() } ;
 }
 
 DateTime                        DateTime::JulianDate                        (   const   Real&                       aJulianDate                                 )

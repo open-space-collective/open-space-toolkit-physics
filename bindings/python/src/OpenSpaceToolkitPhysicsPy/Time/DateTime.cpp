@@ -26,10 +26,28 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_DateTime     (   
 
     class_<DateTime> datetime_class(aModule, "DateTime") ;
 
-    datetime_class.def(init<Date, Time>())
+    datetime_class
 
-        .def(init<int, int, int, int, int, int, int, int, int>())
-        .def(init<int, int, int, int, int, int>())
+        .def
+        (
+            init<Date, Time>(),
+            arg("date"),
+            arg("time")
+        )
+
+        .def
+        (
+            init<int, int, int, int, int, int, int, int, int>(),
+            arg("year"),
+            arg("month"),
+            arg("day"),
+            arg("hour") = DEFAULT_HOUR,
+            arg("minute") = DEFAULT_MINUTE,
+            arg("second") = DEFAULT_SECOND,
+            arg("millisecond") = DEFAULT_MILLISECOND,
+            arg("microsecond") = DEFAULT_MICROSECOND,
+            arg("nanosecond") = DEFAULT_NANOSECOND
+        )
 
         .def(self == self)
         .def(self != self)
@@ -51,8 +69,8 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_DateTime     (   
         .def_static("GPS_epoch", &DateTime::GPSEpoch)
         .def_static("unix_epoch", &DateTime::UnixEpoch)
         .def_static("modified_julian_date_epoch", &DateTime::ModifiedJulianDateEpoch)
-        .def_static("julian_date", &DateTime::JulianDate)
-        .def_static("modified_julian_date", &DateTime::ModifiedJulianDate)
+        .def_static("julian_date", &DateTime::JulianDate, arg("julian_date"))
+        .def_static("modified_julian_date", &DateTime::ModifiedJulianDate, arg("modified_julian_date"))
 
     ;
 
@@ -70,7 +88,13 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_DateTime     (   
     // https://pybind11.readthedocs.io/en/stable/advanced/functions.html#default-arguments-revisited
     // "default arguments are converted to Python objects right at declaration time"
     // The following parsing function requires DateTime::Format to be binded for proper declaration
-    datetime_class.def_static("parse", &DateTime::Parse, "aString"_a, "aFormat"_a=DateTime::Format::Undefined) ;
+    datetime_class.def_static
+    (
+        "parse",
+        &DateTime::Parse,
+        arg("string"),
+        arg("format") = DateTime::Format::Undefined
+    ) ;
 
 }
 
