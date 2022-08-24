@@ -355,7 +355,7 @@ Shared<const Frame>             Frame::MOD                                  (   
 
     using MODProvider = ostk::physics::coord::frame::provider::MOD ;
 
-    static const Shared<const Provider> providerSPtr = std::make_shared<const MODProvider>(anEpoch) ;
+    const Shared<const Provider> providerSPtr = std::make_shared<const MODProvider>(anEpoch) ;
 
     return Frame::Emplace(frameName, true, Frame::GCRF(), providerSPtr) ;
 
@@ -370,7 +370,7 @@ Shared<const Frame>             Frame::TOD                                  (   
 
     using TODProvider = ostk::physics::coord::frame::provider::TOD ;
 
-    static const Shared<const Provider> providerSPtr = std::make_shared<const TODProvider>(anEpoch) ;
+    const Shared<const Provider> providerSPtr = std::make_shared<const TODProvider>(anEpoch) ;
 
     return Frame::Emplace(frameName, true, Frame::MOD(anEpoch), providerSPtr) ;
 
