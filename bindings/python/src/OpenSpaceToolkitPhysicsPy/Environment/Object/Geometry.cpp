@@ -49,8 +49,9 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Object_Geo
 
     class_<Geometry>(aModule, "Geometry")
 
-        .def(init<const Geometry::Object&, const Shared<const Frame>&>())
+        // Define constructors from children -> parents (to ensure that parent constructor is not always used by default)
         .def(init<const Composite&, const Shared<const Frame>&>())
+        .def(init<const Geometry::Object&, const Shared<const Frame>&>())
 
         .def(self == self)
         .def(self != self)
