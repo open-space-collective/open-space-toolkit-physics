@@ -174,6 +174,8 @@ Unique<Moon::Impl>              Moon::ImplFromType                          (   
                                                                                 const   Directory&                  aDataDirectory                              )
 {
 
+    (void) aDataDirectory ;  // Temporary
+
     if (aType == Moon::Type::Spherical)
     {
         return std::make_unique<Moon::SphericalImpl>(aType) ;

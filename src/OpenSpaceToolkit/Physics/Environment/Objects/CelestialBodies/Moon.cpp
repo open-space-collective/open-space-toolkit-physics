@@ -76,6 +76,11 @@ Moon*                           Moon::clone                                 ( ) 
 
 Moon                            Moon::Default                               ( )
 {
+    return Moon::Spherical() ;
+}
+
+Moon                            Moon::Spherical                             ( )
+{
 
     using ostk::physics::env::ephem::SPICE ;
 

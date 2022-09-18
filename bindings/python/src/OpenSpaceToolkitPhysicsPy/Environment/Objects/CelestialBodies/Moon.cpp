@@ -28,7 +28,13 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
 
         class_<Moon, Shared<Moon>, Celestial>(aModule, "Moon")
 
-            .def(init<const Shared<Ephemeris>&, const MoonGravitationalModel::Type&, const Instant&>())
+            .def
+            (
+                init<const Shared<Ephemeris>&, const MoonGravitationalModel::Type&, const Instant&>(),
+                arg("ephemeris"),
+                arg("gravitational_model_type"),
+                arg("instant")
+            )
 
             .def_readonly_static("gravitational_parameter", &Moon::GravitationalParameter)
             .def_readonly_static("equatorial_radius", &Moon::EquatorialRadius)
@@ -38,7 +44,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
             .def("__repr__", &(shiftToString<Moon>))
 
             .def_static("default", &Moon::Default)
-
+            .def_static("spherical", &Moon::Spherical)
         ;
 
     }

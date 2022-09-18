@@ -60,15 +60,37 @@ class Sun : public Celestial
         static Length           EquatorialRadius ;
         static Real             Flattening ;
 
+        /// @brief              Constructor
+        ///
+        /// @param              [in] anEphemeris An ephemeris for the Sun celestial object
+        /// @param              [in] aGravitationalModelType A gravitational model type for the Sun celestial object (Spherical model only)
+        /// @param              [in] anInstant An instant 
+
                                 Sun                                         (   const   Shared<Ephemeris>&          anEphemeris,
                                                                                 const   SunGravitationalModel::Type& aGravitationalModelType,
                                                                                 const   Instant&                    anInstant                                   ) ;
 
+        /// @brief              Destructor
+
         virtual                 ~Sun                                        ( ) override ;
+
+        /// @brief              Clone the Sun celestial object
+        ///
+        /// @return             Pointer to Sun celestial object
 
         virtual Sun*            clone                                       ( ) const override ;
 
+        /// @brief              Default Sun model (Spherical)
+        ///
+        /// @return             Sun
+
         static Sun              Default                                     ( ) ;
+
+        /// @brief              Spherical model
+        ///
+        /// @return             Sun
+
+        static Sun              Spherical                                   ( ) ;
 
     private:
 

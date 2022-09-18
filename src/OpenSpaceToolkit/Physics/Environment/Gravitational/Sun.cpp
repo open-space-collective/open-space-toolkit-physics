@@ -174,6 +174,8 @@ Unique<Sun::Impl>               Sun::ImplFromType                           (   
                                                                                 const   Directory&                  aDataDirectory                              )
 {
 
+    (void) aDataDirectory ;  // Temporary
+
     if (aType == Sun::Type::Spherical)
     {
         return std::make_unique<Sun::SphericalImpl>(aType) ;

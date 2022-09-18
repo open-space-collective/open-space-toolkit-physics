@@ -11,27 +11,47 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Sun                         (   pybind11::module&aModule                    )
+inline void                     OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Sun (        pybind11::module&  aModule                                     )
 {
 
     using namespace pybind11 ;
 
-    using ostk::core::types::Integer ;
     using ostk::core::fs::Directory ;
 
-    using ostk::physics::units::Derived ;
     using ostk::physics::environment::gravitational::Sun ;
 
     {
 
         class_<Sun> sun_class(aModule, "Sun") ;
 
-        sun_class.def(init<const Sun::Type&, const Directory&>())
+        sun_class
 
-            .def(init<const Sun::Type&>())
+            .def
+            (
+                init<const Sun::Type&, const Directory&>(),
+                arg("type"),
+                arg("directory")
+            )
 
-            .def("get_type", &Sun::getType)
-            .def("get_field_value_at", &Sun::getFieldValueAt)
+            .def
+            (
+                init<const Sun::Type&>(),
+                arg("type")
+            )
+
+            .def
+            (
+                "get_type",
+                &Sun::getType
+            )
+
+            .def
+            (
+                "get_field_value_at",
+                &Sun::getFieldValueAt,
+                arg("position"),
+                arg("instant")
+            )
 
         ;
 

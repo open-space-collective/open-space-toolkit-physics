@@ -60,15 +60,37 @@ class Moon : public Celestial
         static Length           EquatorialRadius ;
         static Real             Flattening ;
 
+        /// @brief              Constructor
+        ///
+        /// @param              [in] anEphemeris An ephemeris for the Moon celestial object
+        /// @param              [in] aGravitationalModelType A gravitational model type for the Moon celestial object (Spherical model only)
+        /// @param              [in] anInstant An instant
+
                                 Moon                                        (   const   Shared<Ephemeris>&          anEphemeris,
                                                                                 const   MoonGravitationalModel::Type& aGravitationalModelType,
                                                                                 const   Instant&                    anInstant                                   ) ;
 
+        /// @brief              Destructor
+
         virtual                 ~Moon                                       ( ) override ;
+
+        /// @brief              Clone the Moon celestial object
+        ///
+        /// @return             Pointer to Moon celestial object
 
         virtual Moon*           clone                                       ( ) const override ;
 
+        /// @brief              Default Moon model (Spherical)
+        ///
+        /// @return             Moon
+
         static Moon             Default                                     ( ) ;
+
+        /// @brief              Spherical model
+        ///
+        /// @return             Moon
+
+        static Moon             Spherical                                   ( ) ;
 
     private:
 

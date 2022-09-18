@@ -24,12 +24,17 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
     using ostk::physics::env::obj::celest::Sun ;
     using SunGravitationalModel = ostk::physics::environment::gravitational::Sun ;
 
-
     {
 
         class_<Sun, Shared<Sun>, Celestial>(aModule, "Sun")
 
-            .def(init<const Shared<Ephemeris>&, const SunGravitationalModel::Type&, const Instant&>())
+            .def
+            (
+                init<const Shared<Ephemeris>&, const SunGravitationalModel::Type&, const Instant&>(),
+                arg("ephemeris"),
+                arg("gravitational_model_type"),
+                arg("instant")
+            )
 
             .def_readonly_static("gravitational_parameter", &Sun::GravitationalParameter)
             .def_readonly_static("equatorial_radius", &Sun::EquatorialRadius)
@@ -39,6 +44,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
             .def("__repr__", &(shiftToString<Sun>))
 
             .def_static("default", &Sun::Default)
+            .def_static("spherical", &Sun::Spherical)
 
         ;
 

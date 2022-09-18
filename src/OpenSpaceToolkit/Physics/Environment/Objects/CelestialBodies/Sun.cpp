@@ -76,6 +76,11 @@ Sun*                            Sun::clone                                  ( ) 
 
 Sun                             Sun::Default                                ( )
 {
+    return Sun::Spherical() ;
+}
+
+Sun                             Sun::Spherical                              ( )
+{
 
     using ostk::physics::env::ephem::SPICE ;
 

@@ -21,9 +21,19 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Gravitatio
 
     class_<Spherical>(aModule, "Spherical")
 
-        .def(init<const Derived&>())
+        .def
+        (
+            init<const Derived&>(),
+            arg("gravitational_parameter")
+        )
 
-        .def("get_field_value_at", &Spherical::getFieldValueAt)
+        .def
+        (
+            "get_field_value_at",
+            &Spherical::getFieldValueAt,
+            arg("position"),
+            arg("instant")
+        )
 
     ;
 

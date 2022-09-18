@@ -73,11 +73,9 @@ TEST (OpenSpaceToolkit_Physics_Environment_Gravitational_Moon, GetFieldValueAt)
         static const Array<Tuple<MoonGravitationalModel::Type, Vector3d, Instant, Vector3d, Real>> testCases =
         {
 
-            { MoonGravitationalModel::Type::Spherical, { 1600e3, 0.0, 0.0 },    Instant::J2000(), { -1.91515625, 0.0, 0.0 },                                         1e-13 },
-
-            { MoonGravitationalModel::Type::Spherical, { 16000e3, 0.0, 0.0 },   Instant::J2000(), { -0.0191515625, 0.0, 0.0 },                                       1e-13 },
-
-            { MoonGravitationalModel::Type::Spherical, { 160000e3, 0.0, 0.0 },  Instant::J2000(), { -0.000191515625, 0.0, 0.0 },                                     1e-13 },
+            { MoonGravitationalModel::Type::Spherical, { 1600e3, 0.0, 0.0 },    Instant::J2000(), { -1.91515625, 0.0, 0.0 },      1e-13 },
+            { MoonGravitationalModel::Type::Spherical, { 16000e3, 0.0, 0.0 },   Instant::J2000(), { -0.0191515625, 0.0, 0.0 },    1e-13 },
+            { MoonGravitationalModel::Type::Spherical, { 160000e3, 0.0, 0.0 },  Instant::J2000(), { -0.000191515625, 0.0, 0.0 },  1e-13 },
 
         } ;
 

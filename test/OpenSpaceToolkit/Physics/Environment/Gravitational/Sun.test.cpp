@@ -73,11 +73,9 @@ TEST (OpenSpaceToolkit_Physics_Environment_Gravitational_Sun, GetFieldValueAt)
         static const Array<Tuple<SunGravitationalModel::Type, Vector3d, Instant, Vector3d, Real>> testCases =
         {
 
-            { SunGravitationalModel::Type::Spherical, { 1500e6, 0.0, 0.0 },    Instant::J2000(), { -58.9833066746667, 0.0, 0.0 },                                         1e-13 },
-
-            { SunGravitationalModel::Type::Spherical, { 15000e6, 0.0, 0.0 },   Instant::J2000(), { -0.589833066746667, 0.0, 0.0 },                                       1e-13 },
-
-            { SunGravitationalModel::Type::Spherical, { 150000e6, 0.0, 0.0 },  Instant::J2000(), { -0.00589833066746667, 0.0, 0.0 },                                     1e-13 },
+            { SunGravitationalModel::Type::Spherical, { 1500e6, 0.0, 0.0 },    Instant::J2000(), { -58.9833066746667, 0.0, 0.0 },     1e-13 },
+            { SunGravitationalModel::Type::Spherical, { 15000e6, 0.0, 0.0 },   Instant::J2000(), { -0.589833066746667, 0.0, 0.0 },    1e-13 },
+            { SunGravitationalModel::Type::Spherical, { 150000e6, 0.0, 0.0 },  Instant::J2000(), { -0.00589833066746667, 0.0, 0.0 },  1e-13 },
 
         } ;
 

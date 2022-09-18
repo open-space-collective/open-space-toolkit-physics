@@ -20,4 +20,11 @@ class TestMoon:
         assert moon is not None
         assert isinstance(moon, Moon)
 
+    def test_spherical_success (self):
+
+        moon = Moon.spherical()
+
+        assert moon is not None
+        assert isinstance(moon, Moon)
+
 ################################################################################################################################################################

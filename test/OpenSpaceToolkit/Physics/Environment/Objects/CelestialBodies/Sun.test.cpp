@@ -53,14 +53,14 @@
 
 // }
 
-TEST (OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Sun, Default)
+TEST (OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Sun, Spherical)
 {
 
     using ostk::physics::env::obj::celest::Sun ;
 
     {
 
-        EXPECT_NO_THROW(Sun::Default()) ;
+        EXPECT_NO_THROW(Sun::Spherical()) ;
 
     }
 

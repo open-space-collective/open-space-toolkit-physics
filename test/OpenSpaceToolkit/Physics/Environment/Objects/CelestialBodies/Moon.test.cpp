@@ -53,14 +53,14 @@
 
 // }
 
-TEST (OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Moon, Default)
+TEST (OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Moon, Spherical)
 {
 
     using ostk::physics::env::obj::celest::Moon ;
 
     {
 
-        EXPECT_NO_THROW(Moon::Default()) ;
+        EXPECT_NO_THROW(Moon::Spherical()) ;
 
     }
 
