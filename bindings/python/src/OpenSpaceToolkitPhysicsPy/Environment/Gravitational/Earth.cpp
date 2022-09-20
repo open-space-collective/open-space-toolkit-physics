@@ -20,7 +20,6 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Gravitatio
     using ostk::core::types::Integer ;
     using ostk::core::fs::Directory ;
 
-    using ostk::physics::units::Derived ;
     using ostk::physics::environment::gravitational::Earth ;
     using ostk::physics::environment::gravitational::earth::Manager ;
 
@@ -28,13 +27,43 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Gravitatio
 
         class_<Earth> earth_class(aModule, "Earth") ;
 
-        earth_class.def(init<const Earth::Type&, const Directory&>())
+        earth_class
 
-            .def(init<const Earth::Type&>())
-            .def(init<const Earth::Type&, const Directory&, const Integer&, const Integer&>())
+            .def
+            (
+                init<const Earth::Type&, const Directory&>(),
+                arg("type"),
+                arg("directory")
+            )
 
-            .def("get_type", &Earth::getType)
-            .def("get_field_value_at", &Earth::getFieldValueAt)
+            .def
+            (
+                init<const Earth::Type&>(),
+                arg("type")
+            )
+
+            .def
+            (
+                init<const Earth::Type&, const Directory&, const Integer&, const Integer&>(),
+                arg("type"),
+                arg("directory"),
+                arg("gravitational_model_degree"),
+                arg("gravitational_model_order")
+            )
+
+            .def
+            (
+                "get_type",
+                &Earth::getType
+            )
+
+            .def
+            (
+                "get_field_value_at",
+                &Earth::getFieldValueAt,
+                arg("position"),
+                arg("instant")
+            )
 
         ;
 
@@ -59,17 +88,41 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Gravitatio
     class_<Manager>(earth, "Manager")
 
         .def("is_enabled", &Manager::isEnabled)
-        .def("has_data_file_for_type", &Manager::hasDataFileForType)
+
+        .def
+        (
+            "has_data_file_for_type",
+            &Manager::hasDataFileForType,
+            arg("model_type")
+        )
 
         .def("get_local_repository", &Manager::getLocalRepository)
         .def("get_remote_url", &Manager::getRemoteUrl)
-        .def("fetch_data_file_for_type", &Manager::fetchDataFileForType)
-        .def("set_local_repository", &Manager::setLocalRepository)
-        .def("set_remote_url", &Manager::setRemoteUrl)
+
+        .def
+        (
+            "fetch_data_file_for_type",
+            &Manager::fetchDataFileForType,
+            arg("model_type")
+        )
+
+        .def
+        (
+            "set_local_repository",
+            &Manager::setLocalRepository,
+            arg("directory")
+        )
+
+        .def
+        (
+            "set_remote_url",
+            &Manager::setRemoteUrl,
+            arg("remote_url")
+        )
+
         .def("enable", &Manager::enable)
         .def("disable", &Manager::disable)
 
-        // .def_static("get", &Manager::Get, return_value_policy<reference_existing_object>())
         .def_static("get", &Manager::Get, return_value_policy::reference)
         .def_static("default_local_repository", &Manager::DefaultLocalRepository)
         .def_static("default_remote_url", &Manager::DefaultRemoteUrl)

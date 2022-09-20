@@ -20,4 +20,11 @@ class TestSun:
         assert sun is not None
         assert isinstance(sun, Sun)
 
+    def test_spherical_success (self):
+
+        sun = Sun.spherical()
+
+        assert sun is not None
+        assert isinstance(sun, Sun)
+
 ################################################################################################################################################################

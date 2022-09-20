@@ -33,8 +33,35 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
 
         class_<Earth, Shared<Earth>, Celestial>(aModule, "Earth")
 
-            .def(init<const Derived&, const Length&, const Real&, const Real&, const Real&, const Shared<Ephemeris>&, const EarthGravitationalModel::Type&, const EarthMagneticModel::Type&, const Instant&>())
-            .def(init<const Derived&, const Length&, const Real&, const Real&, const Real&, const Shared<Ephemeris>&, const EarthGravitationalModel::Type&, const Integer&, const Integer&, const EarthMagneticModel::Type&, const Instant&>())
+            .def
+            (
+                init<const Derived&, const Length&, const Real&, const Real&, const Real&, const Shared<Ephemeris>&, const EarthGravitationalModel::Type&, const EarthMagneticModel::Type&, const Instant&>(),
+                arg("gravitational_parameter"),
+                arg("equatorial_radius"),
+                arg("flattening"),
+                arg("J2_parameter_value"),
+                arg("J4_parameter_value"),
+                arg("ephemeris"),
+                arg("gravitational_model_type"),
+                arg("magnetic_model_type"),
+                arg("instant")
+            )
+
+            .def
+            (
+                init<const Derived&, const Length&, const Real&, const Real&, const Real&, const Shared<Ephemeris>&, const EarthGravitationalModel::Type&, const Integer&, const Integer&, const EarthMagneticModel::Type&, const Instant&>(),
+                arg("gravitational_parameter"),
+                arg("equatorial_radius"),
+                arg("flattening"),
+                arg("J2_parameter_value"),
+                arg("J4_parameter_value"),
+                arg("ephemeris"),
+                arg("gravitational_model_type"),
+                arg("gravitational_model_degree"),
+                arg("gravitational_model_order"),
+                arg("magnetic_model_type"),
+                arg("instant")
+            )
 
             .def_readonly_static("gravitational_parameter", &Earth::GravitationalParameter)
             .def_readonly_static("equatorial_radius", &Earth::EquatorialRadius)
