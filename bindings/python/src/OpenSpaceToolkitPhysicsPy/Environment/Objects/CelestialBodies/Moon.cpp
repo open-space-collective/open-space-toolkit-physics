@@ -45,6 +45,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
 
             .def_static("default", &Moon::Default)
             .def_static("spherical", &Moon::Spherical)
+
         ;
 
     }

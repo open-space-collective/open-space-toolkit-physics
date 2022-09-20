@@ -48,7 +48,7 @@ using ostk::physics::environment::gravitational::Model ;
 
 /// @brief                      Sun gravitational model
 ///
-///                             The gravitational potential of the sun for now is kept as a simple spherical model.
+///                             The gravitational potential of the Sun for now is kept as a simple spherical model.
 
 class Sun : public Model
 {
@@ -70,13 +70,13 @@ class Sun : public Model
 
         /// @brief              Copy constructor
         ///
-        /// @param              [in] aSunGravitationalModel An Sun model
+        /// @param              [in] aSunGravitationalModel A Sun model
 
                                 Sun                                         (   const   Sun&                        aSunGravitationalModel                      ) ;
 
         /// @brief              Copy assignment operator
         ///
-        /// @param              [in] aSunGravitationalModel An Sun model
+        /// @param              [in] aSunGravitationalModel A Sun model
         /// @return             Reference to Sun model
 
         Sun&                    operator =                                  (   const   Sun&                        aSunGravitationalModel                      ) ;

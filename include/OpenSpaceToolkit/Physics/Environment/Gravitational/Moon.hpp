@@ -48,7 +48,7 @@ using ostk::physics::environment::gravitational::Model ;
 
 /// @brief                      Moon gravitational model
 ///
-///                             The gravitational potential of the moon for now is kept as a simple spherical model.
+///                             The gravitational potential of the Moon for now is kept as a simple spherical model.
 
 class Moon : public Model
 {
@@ -70,13 +70,13 @@ class Moon : public Model
 
         /// @brief              Copy constructor
         ///
-        /// @param              [in] aMoonGravitationalModel An Moon model
+        /// @param              [in] aMoonGravitationalModel A Moon model
 
                                 Moon                                        (   const   Moon&                       aMoonGravitationalModel                     ) ;
 
         /// @brief              Copy assignment operator
         ///
-        /// @param              [in] aMoonGravitationalModel An Moon model
+        /// @param              [in] aMoonGravitationalModel A Moon model
         /// @return             Reference to Moon model
 
         Moon&                   operator =                                  (   const   Moon&                       aMoonGravitationalModel                     ) ;

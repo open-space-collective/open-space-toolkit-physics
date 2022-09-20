@@ -25,10 +25,9 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Gravitatio
 
     // Add objects to python "gravitational" submodules
     OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Spherical(gravitational) ;
-    OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(gravitational) ;
     OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Sun(gravitational) ;
     OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Moon(gravitational) ;
-
+    OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(gravitational) ;
 
 }
 
