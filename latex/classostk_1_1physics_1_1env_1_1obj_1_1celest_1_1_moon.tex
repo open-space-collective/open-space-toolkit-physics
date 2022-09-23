@@ -13,17 +13,19 @@ Inheritance diagram for ostk\+:\+:physics\+:\+:env\+:\+:obj\+:\+:celest\+:\+:Moo
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon_ad8fdde672c99f064ea7ad3e6d3d8451c}{Moon} (const Shared$<$ \hyperlink{classostk_1_1physics_1_1env_1_1_ephemeris}{Ephemeris} $>$ \&an\+Ephemeris, const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant)
-\item 
+\hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon_a6e688846e85ca12019d6e27600f80753}{Moon} (const Shared$<$ \hyperlink{classostk_1_1physics_1_1env_1_1_ephemeris}{Ephemeris} $>$ \&an\+Ephemeris, const \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_a09ec881799f85fdef3547ef443d57c27}{Moon\+Gravitational\+Model\+::\+Type} \&a\+Gravitational\+Model\+Type, const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
 virtual \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon_ad7c6677716956e7175798afa5f3bd9d4}{$\sim$\+Moon} () override
-\item 
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
 virtual \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon}{Moon} $\ast$ \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon_adcfeda7b73d32df67f5b38c05ca9351a}{clone} () const override
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Clone the \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon}{Moon} celestial object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 static \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon}{Moon} \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon_a20b7b36974130f942a113b05c4544a03}{Default} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Default \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon}{Moon} model (Spherical) \end{DoxyCompactList}\item 
+static \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon}{Moon} \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon_a88731f2b1fde53140ce68d004f2a8aa9}{Spherical} ()
+\begin{DoxyCompactList}\small\item\em Spherical model. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -37,17 +39,34 @@ static Real \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon_ab6
 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon_ad8fdde672c99f064ea7ad3e6d3d8451c}\label{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon_ad8fdde672c99f064ea7ad3e6d3d8451c}} 
+\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon_a6e688846e85ca12019d6e27600f80753}\label{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon_a6e688846e85ca12019d6e27600f80753}} 
 \index{ostk\+::physics\+::env\+::obj\+::celest\+::\+Moon@{ostk\+::physics\+::env\+::obj\+::celest\+::\+Moon}!Moon@{Moon}}
 \index{Moon@{Moon}!ostk\+::physics\+::env\+::obj\+::celest\+::\+Moon@{ostk\+::physics\+::env\+::obj\+::celest\+::\+Moon}}
 \subsubsection{\texorpdfstring{Moon()}{Moon()}}
-{\footnotesize\ttfamily ostk\+::physics\+::env\+::obj\+::celest\+::\+Moon\+::\+Moon (\begin{DoxyParamCaption}\item[{const Shared$<$ \hyperlink{classostk_1_1physics_1_1env_1_1_ephemeris}{Ephemeris} $>$ \&}]{an\+Ephemeris,  }\item[{const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily ostk\+::physics\+::env\+::obj\+::celest\+::\+Moon\+::\+Moon (\begin{DoxyParamCaption}\item[{const Shared$<$ \hyperlink{classostk_1_1physics_1_1env_1_1_ephemeris}{Ephemeris} $>$ \&}]{an\+Ephemeris,  }\item[{const \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_a09ec881799f85fdef3547ef443d57c27}{Moon\+Gravitational\+Model\+::\+Type} \&}]{a\+Gravitational\+Model\+Type,  }\item[{const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption})}
 
+
+
+Constructor. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em an\+Ephemeris} & An ephemeris for the \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon}{Moon} celestial object \\
+\hline
+\mbox{\tt in}  & {\em a\+Gravitational\+Model\+Type} & A gravitational model type for the \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon}{Moon} celestial object (Spherical model only) \\
+\hline
+\mbox{\tt in}  & {\em an\+Instant} & An instant \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon_ad7c6677716956e7175798afa5f3bd9d4}\label{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon_ad7c6677716956e7175798afa5f3bd9d4}} 
 \index{ostk\+::physics\+::env\+::obj\+::celest\+::\+Moon@{ostk\+::physics\+::env\+::obj\+::celest\+::\+Moon}!````~Moon@{$\sim$\+Moon}}
 \index{````~Moon@{$\sim$\+Moon}!ostk\+::physics\+::env\+::obj\+::celest\+::\+Moon@{ostk\+::physics\+::env\+::obj\+::celest\+::\+Moon}}
 \subsubsection{\texorpdfstring{$\sim$\+Moon()}{~Moon()}}
 {\footnotesize\ttfamily ostk\+::physics\+::env\+::obj\+::celest\+::\+Moon\+::$\sim$\+Moon (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Destructor. 
 
 
 
@@ -60,6 +79,13 @@ static Real \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon_ab6
 
 
 
+Clone the \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon}{Moon} celestial object. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon}{Moon} celestial object 
+\end{DoxyReturn}
+
+
 Reimplemented from \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1_celestial_a87c6f3ec3c0ec9758ae52e3edc3fc5df}{ostk\+::physics\+::env\+::obj\+::\+Celestial}.
 
 \mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon_a20b7b36974130f942a113b05c4544a03}\label{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon_a20b7b36974130f942a113b05c4544a03}} 
@@ -68,6 +94,26 @@ Reimplemented from \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1_celestial_a
 \subsubsection{\texorpdfstring{Default()}{Default()}}
 {\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon}{Moon} ostk\+::physics\+::env\+::obj\+::celest\+::\+Moon\+::\+Default (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+
+
+Default \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon}{Moon} model (Spherical) 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon}{Moon} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon_a88731f2b1fde53140ce68d004f2a8aa9}\label{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon_a88731f2b1fde53140ce68d004f2a8aa9}} 
+\index{ostk\+::physics\+::env\+::obj\+::celest\+::\+Moon@{ostk\+::physics\+::env\+::obj\+::celest\+::\+Moon}!Spherical@{Spherical}}
+\index{Spherical@{Spherical}!ostk\+::physics\+::env\+::obj\+::celest\+::\+Moon@{ostk\+::physics\+::env\+::obj\+::celest\+::\+Moon}}
+\subsubsection{\texorpdfstring{Spherical()}{Spherical()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon}{Moon} ostk\+::physics\+::env\+::obj\+::celest\+::\+Moon\+::\+Spherical (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Spherical model. 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon}{Moon} 
+\end{DoxyReturn}
 
 
 \subsection{Member Data Documentation}
@@ -93,5 +139,5 @@ Reimplemented from \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1_celestial_a
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-include/\+Open\+Space\+Toolkit/\+Physics/\+Environment/\+Objects/\+Celestial\+Bodies/\hyperlink{_moon_8hpp}{Moon.\+hpp}\item 
-src/\+Open\+Space\+Toolkit/\+Physics/\+Environment/\+Objects/\+Celestial\+Bodies/\hyperlink{_moon_8cpp}{Moon.\+cpp}\end{DoxyCompactItemize}
+include/\+Open\+Space\+Toolkit/\+Physics/\+Environment/\+Objects/\+Celestial\+Bodies/\hyperlink{_objects_2_celestial_bodies_2_moon_8hpp}{Moon.\+hpp}\item 
+src/\+Open\+Space\+Toolkit/\+Physics/\+Environment/\+Objects/\+Celestial\+Bodies/\hyperlink{_objects_2_celestial_bodies_2_moon_8cpp}{Moon.\+cpp}\end{DoxyCompactItemize}

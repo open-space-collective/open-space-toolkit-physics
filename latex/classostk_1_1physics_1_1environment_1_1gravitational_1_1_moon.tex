@@ -1,0 +1,186 @@
+\hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon}{}\section{ostk\+:\+:physics\+:\+:environment\+:\+:gravitational\+:\+:Moon Class Reference}
+\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon}\index{ostk\+::physics\+::environment\+::gravitational\+::\+Moon@{ostk\+::physics\+::environment\+::gravitational\+::\+Moon}}
+
+
+\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon}{Moon} gravitational model.  
+
+
+
+
+{\ttfamily \#include $<$Moon.\+hpp$>$}
+
+Inheritance diagram for ostk\+:\+:physics\+:\+:environment\+:\+:gravitational\+:\+:Moon\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_a09ec881799f85fdef3547ef443d57c27}{Type} \{ \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_a09ec881799f85fdef3547ef443d57c27a24e5c24fabd1c081d4c729094df0b947}{Type\+::\+Spherical}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_a3efd035ca7e61e851a930580ff73bb84}{Moon} (const \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_a09ec881799f85fdef3547ef443d57c27}{Moon\+::\+Type} \&a\+Type, const Directory \&a\+Data\+Directory=Directory\+::\+Undefined())
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_a9309d4ba7336268d4d173632ff1bf18d}{Moon} (const \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon}{Moon} \&a\+Moon\+Gravitational\+Model)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon}{Moon} \& \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_a26226ccd5a99dd7826cc38ff3d023afc}{operator=} (const \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon}{Moon} \&a\+Moon\+Gravitational\+Model)
+\begin{DoxyCompactList}\small\item\em Copy assignment operator. \end{DoxyCompactList}\item 
+\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_aa315790d15e586d7614f2abd630f00e7}{$\sim$\+Moon} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+virtual \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon}{Moon} $\ast$ \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_a264078001de13a1f35297a87a7c3abec}{clone} () const override
+\begin{DoxyCompactList}\small\item\em Clone the \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon}{Moon} gravitational model. \end{DoxyCompactList}\item 
+\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_a09ec881799f85fdef3547ef443d57c27}{Moon\+::\+Type} \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_a1f58512d7bc337392a7338b90aa213de}{get\+Type} () const
+\begin{DoxyCompactList}\small\item\em Get gravitational model type. \end{DoxyCompactList}\item 
+virtual Vector3d \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_a4771ff76d04a7f850b1bd29b146696ae}{get\+Field\+Value\+At} (const Vector3d \&a\+Position, const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant) const override
+\begin{DoxyCompactList}\small\item\em Get the gravitational field value at a given position and instant. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon}{Moon} gravitational model. 
+
+The gravitational potential of the \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon}{Moon} for now is kept as a simple spherical model. 
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_a09ec881799f85fdef3547ef443d57c27}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_a09ec881799f85fdef3547ef443d57c27}} 
+\index{ostk\+::physics\+::environment\+::gravitational\+::\+Moon@{ostk\+::physics\+::environment\+::gravitational\+::\+Moon}!Type@{Type}}
+\index{Type@{Type}!ostk\+::physics\+::environment\+::gravitational\+::\+Moon@{ostk\+::physics\+::environment\+::gravitational\+::\+Moon}}
+\subsubsection{\texorpdfstring{Type}{Type}}
+{\footnotesize\ttfamily enum \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_a09ec881799f85fdef3547ef443d57c27}{ostk\+::physics\+::environment\+::gravitational\+::\+Moon\+::\+Type}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Spherical@{Spherical}!ostk\+::physics\+::environment\+::gravitational\+::\+Moon@{ostk\+::physics\+::environment\+::gravitational\+::\+Moon}}\index{ostk\+::physics\+::environment\+::gravitational\+::\+Moon@{ostk\+::physics\+::environment\+::gravitational\+::\+Moon}!Spherical@{Spherical}}}\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_a09ec881799f85fdef3547ef443d57c27a24e5c24fabd1c081d4c729094df0b947}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_a09ec881799f85fdef3547ef443d57c27a24e5c24fabd1c081d4c729094df0b947}} 
+Spherical&The spherical gravity originating from a point source at the center of the \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon}{Moon}. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_a3efd035ca7e61e851a930580ff73bb84}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_a3efd035ca7e61e851a930580ff73bb84}} 
+\index{ostk\+::physics\+::environment\+::gravitational\+::\+Moon@{ostk\+::physics\+::environment\+::gravitational\+::\+Moon}!Moon@{Moon}}
+\index{Moon@{Moon}!ostk\+::physics\+::environment\+::gravitational\+::\+Moon@{ostk\+::physics\+::environment\+::gravitational\+::\+Moon}}
+\subsubsection{\texorpdfstring{Moon()}{Moon()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily ostk\+::physics\+::environment\+::gravitational\+::\+Moon\+::\+Moon (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_a09ec881799f85fdef3547ef443d57c27}{Moon\+::\+Type} \&}]{a\+Type,  }\item[{const Directory \&}]{a\+Data\+Directory = {\ttfamily Directory\+:\+:Undefined()} }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Type} & A gravitational model type \\
+\hline
+\mbox{\tt in}  & {\em (optional)} & a\+Data\+Directory A gravitational model data directory \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_a9309d4ba7336268d4d173632ff1bf18d}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_a9309d4ba7336268d4d173632ff1bf18d}} 
+\index{ostk\+::physics\+::environment\+::gravitational\+::\+Moon@{ostk\+::physics\+::environment\+::gravitational\+::\+Moon}!Moon@{Moon}}
+\index{Moon@{Moon}!ostk\+::physics\+::environment\+::gravitational\+::\+Moon@{ostk\+::physics\+::environment\+::gravitational\+::\+Moon}}
+\subsubsection{\texorpdfstring{Moon()}{Moon()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily ostk\+::physics\+::environment\+::gravitational\+::\+Moon\+::\+Moon (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon}{Moon} \&}]{a\+Moon\+Gravitational\+Model }\end{DoxyParamCaption})}
+
+
+
+Copy constructor. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Moon\+Gravitational\+Model} & A \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon}{Moon} model \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_aa315790d15e586d7614f2abd630f00e7}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_aa315790d15e586d7614f2abd630f00e7}} 
+\index{ostk\+::physics\+::environment\+::gravitational\+::\+Moon@{ostk\+::physics\+::environment\+::gravitational\+::\+Moon}!````~Moon@{$\sim$\+Moon}}
+\index{````~Moon@{$\sim$\+Moon}!ostk\+::physics\+::environment\+::gravitational\+::\+Moon@{ostk\+::physics\+::environment\+::gravitational\+::\+Moon}}
+\subsubsection{\texorpdfstring{$\sim$\+Moon()}{~Moon()}}
+{\footnotesize\ttfamily ostk\+::physics\+::environment\+::gravitational\+::\+Moon\+::$\sim$\+Moon (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_a264078001de13a1f35297a87a7c3abec}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_a264078001de13a1f35297a87a7c3abec}} 
+\index{ostk\+::physics\+::environment\+::gravitational\+::\+Moon@{ostk\+::physics\+::environment\+::gravitational\+::\+Moon}!clone@{clone}}
+\index{clone@{clone}!ostk\+::physics\+::environment\+::gravitational\+::\+Moon@{ostk\+::physics\+::environment\+::gravitational\+::\+Moon}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon}{Moon} $\ast$ ostk\+::physics\+::environment\+::gravitational\+::\+Moon\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clone the \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon}{Moon} gravitational model. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon}{Moon} gravitational model 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_a399257ac86e7f0112a702141e0e2e4a7}{ostk\+::physics\+::environment\+::gravitational\+::\+Model}.
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_a4771ff76d04a7f850b1bd29b146696ae}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_a4771ff76d04a7f850b1bd29b146696ae}} 
+\index{ostk\+::physics\+::environment\+::gravitational\+::\+Moon@{ostk\+::physics\+::environment\+::gravitational\+::\+Moon}!get\+Field\+Value\+At@{get\+Field\+Value\+At}}
+\index{get\+Field\+Value\+At@{get\+Field\+Value\+At}!ostk\+::physics\+::environment\+::gravitational\+::\+Moon@{ostk\+::physics\+::environment\+::gravitational\+::\+Moon}}
+\subsubsection{\texorpdfstring{get\+Field\+Value\+At()}{getFieldValueAt()}}
+{\footnotesize\ttfamily Vector3d ostk\+::physics\+::environment\+::gravitational\+::\+Moon\+::get\+Field\+Value\+At (\begin{DoxyParamCaption}\item[{const Vector3d \&}]{a\+Position,  }\item[{const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the gravitational field value at a given position and instant. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Position} & A position, expressed in the gravitational object frame \mbox{[}m\mbox{]} \\
+\hline
+\mbox{\tt in}  & {\em an\+Instant} & An instant \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Gravitational field value, expressed in the gravitational object frame \mbox{[}m.\+s-\/2\mbox{]} 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_a5ef3b4ddf4240e8a26553294fe392581}{ostk\+::physics\+::environment\+::gravitational\+::\+Model}.
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_a1f58512d7bc337392a7338b90aa213de}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_a1f58512d7bc337392a7338b90aa213de}} 
+\index{ostk\+::physics\+::environment\+::gravitational\+::\+Moon@{ostk\+::physics\+::environment\+::gravitational\+::\+Moon}!get\+Type@{get\+Type}}
+\index{get\+Type@{get\+Type}!ostk\+::physics\+::environment\+::gravitational\+::\+Moon@{ostk\+::physics\+::environment\+::gravitational\+::\+Moon}}
+\subsubsection{\texorpdfstring{get\+Type()}{getType()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_a09ec881799f85fdef3547ef443d57c27}{Moon\+::\+Type} ostk\+::physics\+::environment\+::gravitational\+::\+Moon\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get gravitational model type. 
+
+\begin{DoxyReturn}{Returns}
+Gravitational model type 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_a26226ccd5a99dd7826cc38ff3d023afc}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_a26226ccd5a99dd7826cc38ff3d023afc}} 
+\index{ostk\+::physics\+::environment\+::gravitational\+::\+Moon@{ostk\+::physics\+::environment\+::gravitational\+::\+Moon}!operator=@{operator=}}
+\index{operator=@{operator=}!ostk\+::physics\+::environment\+::gravitational\+::\+Moon@{ostk\+::physics\+::environment\+::gravitational\+::\+Moon}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon}{Moon} \& ostk\+::physics\+::environment\+::gravitational\+::\+Moon\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon}{Moon} \&}]{a\+Moon\+Gravitational\+Model }\end{DoxyParamCaption})}
+
+
+
+Copy assignment operator. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+Moon\+Gravitational\+Model} & A \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon}{Moon} model \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to \hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon}{Moon} model 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Open\+Space\+Toolkit/\+Physics/\+Environment/\+Gravitational/\hyperlink{_gravitational_2_moon_8hpp}{Moon.\+hpp}\item 
+src/\+Open\+Space\+Toolkit/\+Physics/\+Environment/\+Gravitational/\hyperlink{_gravitational_2_moon_8cpp}{Moon.\+cpp}\end{DoxyCompactItemize}
