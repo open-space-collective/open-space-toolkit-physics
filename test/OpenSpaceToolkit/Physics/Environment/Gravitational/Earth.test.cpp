@@ -318,29 +318,27 @@ TEST (OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAtW
 
 }
 
-TEST (OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAtEGM2008)
+TEST (OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAtSTKBenchmark)
 {
 
     using ostk::core::types::Real ;
+    using ostk::core::types::Integer ;
     using ostk::core::types::String ;
     using ostk::core::ctnr::Tuple ;
     using ostk::core::ctnr::Array ;
-    using ostk::core::ctnr::Table ;
     using ostk::core::fs::Path ;
     using ostk::core::fs::Directory ;
-    using ostk::core::fs::File ;
 
     using ostk::math::obj::Vector3d ;
 
-    using ostk::physics::Unit ;
-    using ostk::physics::coord::Position ;
-    using ostk::physics::coord::Frame ;
-    using ostk::physics::data::Vector ;
+    using ostk::physics::coord::Frame;
+    using ostk::physics::data::Vector;
     using ostk::physics::time::DateTime ;
-    using ostk::physics::time::Scale ;
-    using ostk::physics::time::Instant ;
-    using ostk::physics::units::Derived ;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+    using ostk::physics::Unit ;
     using ostk::physics::units::Length ;
+    using ostk::physics::units::Derived ;
     using ostk::physics::units::Time ;
     using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth ;
     using EarthGravitationalModelManager = ostk::physics::environment::gravitational::earth::Manager ;
@@ -351,32 +349,32 @@ TEST (OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAtE
 
         EarthGravitationalModelManager::Get().enable() ;
 
-        const EarthGravitationalModel earthGravitationalModel = { EarthGravitationalModel::Type::EGM2008 , Directory::Undefined(), 100, 100 } ;
-
-        // Time (UTCG),x (km),y (km),z (km),vx (km/sec),vy (km/sec),vz (km/sec),ax (km/sec^2),ay (km/sec^2),az (km/sec^2),x (km),y (km),z (km),vx (km/sec),vy (km/sec),vz (km/sec),ax (km/sec^2),ay (km/sec^2),az (km/sec^2)
-        const Table referenceData = Table::Load(File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/EGM2008_RK89_Propagated_pos_vel_accel.csv")), Table::Format::CSV, true) ;
-
-        for (const auto& referenceRow : referenceData)
+        // These accelerations were computed in STK using HPOP for the respective model, degree and orders
+        static const Array<Tuple<EarthGravitationalModel::Type, Integer, Integer, String, Vector3d, Vector3d, Real>> testCases =
         {
-            const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].accessString()), Scale::UTC) ;
 
-            const Vector3d positionITRF = {referenceRow[1].accessReal() * 1000.0, referenceRow[2].accessReal() * 1000.0, referenceRow[3].accessReal() * 1000.0} ;
+            { EarthGravitationalModel::Type::EGM96,   70,  70,    "2018-01-01T00:00:00", { -1259967.7256766256050, -6885661.5862085318440, 12076.8566057537079 },  { -8.145654, 0.000044, -0.000047 }, 5e-5 },
+            { EarthGravitationalModel::Type::EGM96,   70,  70,    "2018-01-01T01:00:00", { -828710.2602364119548, 6063793.4262837288770, -3373594.5811631504512 }, { 5.986840, 3.912014, 3.939528 },   5e-5 },
+            { EarthGravitationalModel::Type::EGM2008, 100, 100,   "2018-01-01T00:00:00", { -1259967.7256766256050, -6885661.5862085318440, 12076.8566057537079 },  { -8.145654, 0.000044, -0.000047 }, 5e-5 },
+            { EarthGravitationalModel::Type::EGM2008, 100, 100,   "2018-01-01T01:00:00", { -828709.2662392134079, 6063794.1147205904126, -3373594.0636269832029 }, { 5.986841, 3.912013, 3.939527 },   5e-5 },
+        } ;
 
-            const Vector3d truthFieldValueITRF = {referenceRow[7].accessReal() * 1000.0, referenceRow[8].accessReal() * 1000.0, referenceRow[9].accessReal() * 1000.0} ;
+        for (const auto& testCase : testCases)
+        {
 
-            const Vector3d accelValueICRF = {referenceRow[16].accessReal() * 1000.0, referenceRow[17].accessReal() * 1000.0, referenceRow[18].accessReal() * 1000.0} ;
+            const EarthGravitationalModel earthGravitationalModel = { std::get<0>(testCase), Directory::Undefined(), std::get<1>(testCase), std::get<2>(testCase) } ;
 
-            const Vector3d fieldValueITRF = earthGravitationalModel.getFieldValueAt(positionITRF, instant) ;
+            const Instant instant = Instant::DateTime(DateTime::Parse(std::get<3>(testCase)), Scale::UTC) ;
+            const Vector3d position = std::get<4>(testCase) ;
+            const Vector3d referenceFieldValue = std::get<5>(testCase) ;
+            const Real tolerance = std::get<6>(testCase) ;
 
-            const Unit gravitationalFieldUnit = Unit::Derived(Derived::Unit::Acceleration(Length::Unit::Meter, Time::Unit::Second)) ;
-
-            const Vector gravityVector = {fieldValueITRF, gravitationalFieldUnit, Frame::ITRF()} ;
-
+            const Vector3d fieldValue = earthGravitationalModel.getFieldValueAt(position, instant) ;
+            const static Unit gravitationalFieldUnit = Unit::Derived(Derived::Unit::Acceleration(Length::Unit::Meter, Time::Unit::Second)) ;
+            const Vector gravityVector = {fieldValue, gravitationalFieldUnit, Frame::ITRF()} ;
             const Vector3d fieldValueICRF = gravityVector.inFrame(Frame::GCRF(), instant).getValue() ;
 
-            EXPECT_TRUE(fieldValueITRF.isNear(truthFieldValueITRF, 1.5)) << String::Format("Frame ITRF: {} ≈ {} Δ {} [m.s-2]", fieldValueITRF.toString(), truthFieldValueITRF.toString(), (fieldValueITRF - truthFieldValueITRF).norm()) ;
-
-            EXPECT_TRUE(fieldValueICRF.isNear(accelValueICRF, 5e-5)) << String::Format("Frame GCRF: {} ≈ {} Δ {} [m.s-2]", fieldValueICRF.toString(), accelValueICRF.toString(), (fieldValueICRF - accelValueICRF).norm()) ;
+            EXPECT_TRUE(fieldValueICRF.isNear(referenceFieldValue, tolerance)) << String::Format("{} ≈ {} Δ {} [m.s-2]", fieldValueICRF.toString(), referenceFieldValue.toString(), (fieldValueICRF - referenceFieldValue).norm()) ;
 
         }
 
