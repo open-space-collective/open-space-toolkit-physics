@@ -357,6 +357,7 @@ TEST (OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAtS
             { EarthGravitationalModel::Type::EGM96,   70,  70,    "2018-01-01T01:00:00", { -828710.2602364119548, 6063793.4262837288770, -3373594.5811631504512 }, { 5.986840, 3.912014, 3.939528 },   5e-5 },
             { EarthGravitationalModel::Type::EGM2008, 100, 100,   "2018-01-01T00:00:00", { -1259967.7256766256050, -6885661.5862085318440, 12076.8566057537079 },  { -8.145654, 0.000044, -0.000047 }, 5e-5 },
             { EarthGravitationalModel::Type::EGM2008, 100, 100,   "2018-01-01T01:00:00", { -828709.2662392134079, 6063794.1147205904126, -3373594.0636269832029 }, { 5.986841, 3.912013, 3.939527 },   5e-5 },
+
         } ;
 
         for (const auto& testCase : testCases)
@@ -371,7 +372,7 @@ TEST (OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAtS
 
             const Vector3d fieldValue = earthGravitationalModel.getFieldValueAt(position, instant) ;
             const static Unit gravitationalFieldUnit = Unit::Derived(Derived::Unit::Acceleration(Length::Unit::Meter, Time::Unit::Second)) ;
-            const Vector gravityVector = {fieldValue, gravitationalFieldUnit, Frame::ITRF()} ;
+            const Vector gravityVector = { fieldValue, gravitationalFieldUnit, Frame::ITRF() } ;
             const Vector3d fieldValueICRF = gravityVector.inFrame(Frame::GCRF(), instant).getValue() ;
 
             EXPECT_TRUE(fieldValueICRF.isNear(referenceFieldValue, tolerance)) << String::Format("{} ≈ {} Δ {} [m.s-2]", fieldValueICRF.toString(), referenceFieldValue.toString(), (fieldValueICRF - referenceFieldValue).norm()) ;
