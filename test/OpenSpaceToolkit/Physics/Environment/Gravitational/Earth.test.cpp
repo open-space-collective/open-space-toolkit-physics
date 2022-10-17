@@ -15,12 +15,9 @@
 #include <OpenSpaceToolkit/Physics/Data/Vector.hpp>
 #include <OpenSpaceToolkit/Physics/Unit.hpp>
 
-#include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
 #include <OpenSpaceToolkit/Core/Containers/Array.hpp>
 #include <OpenSpaceToolkit/Core/Containers/Tuple.hpp>
-#include <OpenSpaceToolkit/Core/Containers/Table.hpp>
-#include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
 
 #include <Global.test.hpp>
 
