@@ -118,12 +118,12 @@ RUN mkdir -p /tmp/open-space-toolkit-io \
  && apt-get install -y ./*.deb \
  && rm -rf /tmp/open-space-toolkit-io
 
-## Open Space Toolkit ▸ Mathematics [0.4.6]
+## Open Space Toolkit ▸ Mathematics [0.4.8]
 
 RUN mkdir -p /tmp/open-space-toolkit-mathematics \
  && cd /tmp/open-space-toolkit-mathematics \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/0.4.6/open-space-toolkit-mathematics-0.4.6-1.x86_64-runtime.deb \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/0.4.6/open-space-toolkit-mathematics-0.4.6-1.x86_64-devel.deb \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/0.4.8/open-space-toolkit-mathematics-0.4.8-1.x86_64-runtime.deb \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/0.4.8/open-space-toolkit-mathematics-0.4.8-1.x86_64-devel.deb \
  && apt-get install -y ./*.deb \
  && rm -rf /tmp/open-space-toolkit-mathematics
 
