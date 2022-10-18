@@ -556,8 +556,6 @@ TEST (OpenSpaceToolkit_Physics_Environment, Test_1)
 
         EXPECT_TRUE(earthAxes.isDefined()) ;
 
-        // std::cout << String::Format("Earth @ {}: {} --- {} --- {}", instant.toString(), earthPosition.toString(), earthVelocity.toString(), earthOrientation.toString()) << std::endl ;
-
         // Moon
 
         const Transform moonFrameTransform = moonSPtr->getTransformTo(Frame::GCRF()) ;
@@ -577,8 +575,6 @@ TEST (OpenSpaceToolkit_Physics_Environment, Test_1)
         const Axes moonAxes = moonSPtr->getAxesIn(Frame::GCRF()) ;
 
         EXPECT_TRUE(moonAxes.isDefined()) ;
-
-        // std::cout << String::Format("Moon @ {}: {} --- {} --- {}", instant.toString(), moonPosition.toString(), moonVelocity.toString(), moonOrientation.toString()) << std::endl ;
 
     }
 
@@ -672,8 +668,6 @@ TEST (OpenSpaceToolkit_Physics_Environment, Test_2)
     const Polygon2d intersectionPolygon2d = { intersectionPoints2d } ;
 
     EXPECT_TRUE(intersectionPolygon2d.isDefined()) << intersectionPolygon2d ;
-
-    // std::cout << intersectionPolygon2d.toString(Polygon2d::Format::WKT) << std::endl ;
 
 }
 

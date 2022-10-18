@@ -216,7 +216,6 @@ Position                        Position::inFrame                           (   
 
     if (!this->isDefined())
     {
-        // std::cout << boost::stacktrace::stacktrace() ;
         throw ostk::core::error::runtime::Undefined("Position") ;
     }
 

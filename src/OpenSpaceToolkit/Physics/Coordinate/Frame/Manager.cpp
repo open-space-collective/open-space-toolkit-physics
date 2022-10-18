@@ -94,8 +94,6 @@ void                            Manager::addFrame                           (   
 
     const std::lock_guard<std::mutex> lock { mutex_ } ;
 
-    // std::cout << "Manager :: addFrame | Frame @ " << aFrameSPtr.get() << std::endl ;
-
     if (frameMap_.find(aFrameSPtr->getName()) == frameMap_.end())
     {
         frameMap_.insert({ aFrameSPtr->getName(), aFrameSPtr }) ;

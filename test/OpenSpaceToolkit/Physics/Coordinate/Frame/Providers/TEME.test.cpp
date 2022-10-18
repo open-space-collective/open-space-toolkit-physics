@@ -89,12 +89,6 @@ TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_TEME, GetTransformAt)
                 EXPECT_GT(toleranceAngle.inDegrees(), RotationVector::Quaternion(dq_ITRF).getAngle().inDegrees()) ;
                 EXPECT_GT(toleranceAngle.inDegrees(), RotationVector::Quaternion(dq_GCRF).getAngle().inDegrees()) ;
 
-                // std::cout << instant.toString()
-                // << " : [TEME - ITRF]" << referenceOrientation_ITRF_TEME.toString(15) << " " << transform_TEME_ITRF.getOrientation().toString(15)
-                // << " >> " << RotationVector::Quaternion(dq_ITRF).getAngle().inArcseconds().toString(3) << " [asec]"
-                // << " : [TEME - GCRF]" << referenceOrientation_GCRF_TEME.toString(15) << " " << transform_TEME_GCRF.getOrientation().toString(15)
-                // << " >> " << RotationVector::Quaternion(dq_GCRF).getAngle().inArcseconds().toString(3) << " [asec]" << std::endl ;
-
                 // Angular velocity test
 
                 const Vector3d referenceAngularVelocity_ITRF_TEME_in_TEME = { referenceRow[5].accessReal(), referenceRow[6].accessReal(), referenceRow[7].accessReal() } ;
