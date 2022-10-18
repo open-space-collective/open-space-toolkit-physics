@@ -275,9 +275,6 @@ Transform                       Frame::getTransformTo                       (   
         return Transform::Identity(anInstant) ;
     }
 
-    // std::cout << "From: " << std::endl << (*this) << std::endl ;
-    // std::cout << "To: " << std::endl << (*aFrameSPtr) << std::endl ;
-
     const Shared<const Frame> thisSPtr = this->shared_from_this() ;
 
     if (auto transformPtr = FrameManager::Get().accessCachedTransform(thisSPtr, aFrameSPtr, anInstant))
@@ -294,8 +291,6 @@ Transform                       Frame::getTransformTo                       (   
         throw ostk::core::error::RuntimeError("No common ancestor between [{}] and [{}].", this->getName(), aFrameSPtr->getName()) ;
     }
 
-    // std::cout << "Common ancestor:" << std::endl << (*commonAncestorSPtr) << std::endl ;
-
     // Compute transform from common ancestor to origin
 
     Transform transform_origin_common = Transform::Identity(anInstant) ;
@@ -304,8 +299,6 @@ Transform                       Frame::getTransformTo                       (   
     {
         transform_origin_common *= framePtr->accessProvider()->getTransformAt(anInstant) ;
     }
-
-    // std::cout << String::Format("{} → {}:", commonAncestorSPtr->getName(), this->getName()) << std::endl << transform_origin_common << std::endl ;
 
     // Compute transform from destination to common ancestor
 
@@ -316,13 +309,9 @@ Transform                       Frame::getTransformTo                       (   
         transform_destination_common *= framePtr->accessProvider()->getTransformAt(anInstant) ;
     }
 
-    // std::cout << String::Format("{} → {}:", commonAncestorSPtr->getName(), aFrameSPtr->getName()) << std::endl << transform_destination_common << std::endl ;
-
     // Compute transform from origin to destination
 
     const Transform transform_destination_origin = transform_destination_common * transform_origin_common.getInverse() ;
-
-    // std::cout << String::Format("{} → {}:", this->getName(), aFrameSPtr->getName()) << std::endl << transform_destination_origin << std::endl ;
 
     FrameManager::Get().addCachedTransform(thisSPtr, aFrameSPtr, anInstant, transform_destination_origin) ;
 

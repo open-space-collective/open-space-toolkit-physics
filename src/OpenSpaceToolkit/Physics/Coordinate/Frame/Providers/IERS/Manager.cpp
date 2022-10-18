@@ -221,8 +221,6 @@ Real                            Manager::getUt1MinusUtcAt                   (   
     if (bulletinAPtr != nullptr)
     {
 
-        // std::cout << String::Format("Bulletin A found for [{}].", anInstant.toString()) << std::endl ;
-
         if (bulletinAPtr->accessObservationInterval().contains(anInstant))
         {
 
@@ -250,8 +248,6 @@ Real                            Manager::getUt1MinusUtcAt                   (   
 
     if (finals2000aPtr != nullptr)
     {
-
-        // std::cout << String::Format("Finals 2000A found for [{}].", anInstant.toString()) << std::endl ;
 
         return finals2000aPtr->getUt1MinusUtcAt(anInstant) ;
 

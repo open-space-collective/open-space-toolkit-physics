@@ -305,17 +305,11 @@ time::DateTime                  Instant::getDateTime                        (   
 
     const std::chrono::time_point<std::chrono::system_clock> epochTimePoint = std::chrono::system_clock::from_time_t(std::mktime(&epochTime)) ;
 
-    // std::cout << "Instant::getDateTime >> Epoch: " << getTimePointString(epochTimePoint) << std::endl ;
-
     // const Instant::Count dateCount_TT = this->inScale(Scale::TT).count_ ; // [TBM] remove inScale ?
     const Instant::Count dateCount_TT = this->inScale(aTimeScale).count_ ; // [TBM] remove inScale ?
 
-    // std::cout << "Instant::getDateTime >> dateCount_TT.countFromEpoch_: " << dateCount_TT.countFromEpoch_ << std::endl ;
-
     const std::chrono::time_point<std::chrono::system_clock> dateTimePoint = dateCount_TT.postEpoch_ ? (epochTimePoint + std::chrono::nanoseconds(dateCount_TT.countFromEpoch_))
                                                                                                      : (epochTimePoint - std::chrono::nanoseconds(dateCount_TT.countFromEpoch_)) ;
-
-    // std::cout << "Instant::getDateTime >> Date: " << getTimePointString(dateTimePoint) << std::endl ;
 
     std::time_t time = std::chrono::system_clock::to_time_t(dateTimePoint) ;
 
@@ -331,21 +325,9 @@ time::DateTime                  Instant::getDateTime                        (   
 
     const auto fraction = dateTimePoint - std::chrono::time_point_cast<std::chrono::seconds>(dateTimePoint) ;
 
-    // std::cout << "std::chrono::duration_cast<std::chrono::nanoseconds>(fraction).count() = " << std::chrono::duration_cast<std::chrono::nanoseconds>(fraction).count() << std::endl ;
-
     const Uint16 milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(fraction).count() ;
     const Uint16 microseconds = std::chrono::duration_cast<std::chrono::microseconds>(fraction).count() - milliseconds * 1000 ;
     const Uint16 nanoseconds = std::chrono::duration_cast<std::chrono::nanoseconds>(fraction).count() - milliseconds * 1000000 - microseconds * 1000 ;
-
-    // std::cout << "Instant::getDateTime >> year: " << static_cast<int>(year) << std::endl ;
-    // std::cout << "Instant::getDateTime >> month: " << static_cast<int>(month) << std::endl ;
-    // std::cout << "Instant::getDateTime >> day: " << static_cast<int>(day) << std::endl ;
-    // std::cout << "Instant::getDateTime >> hours: " << static_cast<int>(hours) << std::endl ;
-    // std::cout << "Instant::getDateTime >> minutes: " << static_cast<int>(minutes) << std::endl ;
-    // std::cout << "Instant::getDateTime >> seconds: " << static_cast<int>(seconds) << std::endl ;
-    // std::cout << "Instant::getDateTime >> milliseconds: " << static_cast<int>(milliseconds) << std::endl ;
-    // std::cout << "Instant::getDateTime >> microseconds: " << static_cast<int>(microseconds) << std::endl ;
-    // std::cout << "Instant::getDateTime >> nanoseconds: " << static_cast<int>(nanoseconds) << std::endl ;
 
     // [TBI] Time scale conversion
 
@@ -439,14 +421,9 @@ Instant                         Instant::Now                                ( )
 
     const std::chrono::time_point<std::chrono::system_clock> epochTimePoint = std::chrono::system_clock::from_time_t(std::mktime(&epochTime)) ;
 
-    // std::cout << "Instant::DateTime >> Epoch: " << getTimePointString(epochTimePoint) << std::endl ;
-
     // Now
 
     const std::chrono::time_point<std::chrono::system_clock> nowTimePoint = std::chrono::system_clock::now() ;
-    // std::chrono::time_point<std::chrono::system_clock> nowTimePoint = parseDateTimeString("2006-01-01 00:00:01") ;
-
-    // std::cout << "Now: " << getTimePointString(nowTimePoint) << std::endl ;
 
     // Difference
 
@@ -457,19 +434,13 @@ Instant                         Instant::Now                                ( )
         throw ostk::core::error::RuntimeError("Current time is before J2000 epoch.") ; // [TBI] Implement this case
     }
 
-    // std::cout << "Delta: " << nanoseconds.count() << " [ns]" << std::endl ;
-
     // Output
 
     const Instant::Count count_UTC = {Uint64(nanoseconds.count()), (nanoseconds.count() >= 0)} ;
 
-    // std::cout << "count_UTC = " << count_UTC.countFromEpoch_ << std::endl ;
-
     // return Instant(count_UTC, Scale::UTC) ;
 
     const Instant::Count count_TT = Instant::TT_TAI(Instant::TAI_UTC(count_UTC)) ;
-
-    // std::cout << "count_TT   = " << count_TT.countFromEpoch_ << std::endl ;
 
     return Instant(count_TT, Scale::TT) ;
 
@@ -528,8 +499,6 @@ Instant                         Instant::DateTime                           (   
 
     const std::chrono::time_point<std::chrono::system_clock> epochTimePoint = std::chrono::system_clock::from_time_t(std::mktime(&epochTime)) ;
 
-    // std::cout << "Instant::DateTime >> Epoch: " << getTimePointString(epochTimePoint) << std::endl ;
-
     // Date
 
     std::tm dateTime = {} ;
@@ -541,53 +510,11 @@ Instant                         Instant::DateTime                           (   
     dateTime.tm_mon = aDateTime.accessDate().getMonth() - 1 ;
     dateTime.tm_year = static_cast<Int32>(aDateTime.accessDate().getYear()) - 1900 ;
 
-    // std::cout << "tm_sec = " << dateTime.tm_sec << std::endl ;
-    // std::cout << "tm_min = " << dateTime.tm_min << std::endl ;
-    // std::cout << "tm_hour = " << dateTime.tm_hour << std::endl ;
-    // std::cout << "tm_mday = " << dateTime.tm_mday << std::endl ;
-    // std::cout << "tm_mon = " << dateTime.tm_mon << std::endl ;
-    // std::cout << "tm_year = " << dateTime.tm_year << std::endl ;
-
-    // {
-
-    //     std::istringstream stringStream("1970-01-01 00:00:00") ;
-
-    //     std::tm dateTime = {} ;
-
-    //     stringStream >> std::get_time(&dateTime, "%Y-%m-%d %H:%M:%S") ;
-
-    //     if (stringStream.fail())
-    //     {
-    //         throw ostk::core::error::RuntimeError("Cannot parse date time string.") ;
-    //     }
-
-    //     std::cout << "tm_sec = " << dateTime.tm_sec << std::endl ;
-    //     std::cout << "tm_min = " << dateTime.tm_min << std::endl ;
-    //     std::cout << "tm_hour = " << dateTime.tm_hour << std::endl ;
-    //     std::cout << "tm_mday = " << dateTime.tm_mday << std::endl ;
-    //     std::cout << "tm_mon = " << dateTime.tm_mon << std::endl ;
-    //     std::cout << "tm_year = " << dateTime.tm_year << std::endl ;
-
-    //     const std::chrono::time_point<std::chrono::system_clock> dateTimePoint = std::chrono::system_clock::from_time_t(std::mktime(&dateTime)) ;
-
-    //     std::cout << "Instant::DateTime >> AAA: " << getTimePointString(dateTimePoint) << std::endl ;
-
-    // }
-
     const std::chrono::time_point<std::chrono::system_clock> dateTimePoint = std::chrono::system_clock::from_time_t(std::mktime(&dateTime)) ;
-
-    // std::cout << "Instant::DateTime >> Date: " << getTimePointString(dateTimePoint) << std::endl ;
 
     // Difference
 
     const auto nanoseconds = std::chrono::duration_cast<std::chrono::nanoseconds>(dateTimePoint - epochTimePoint) ;
-
-    // std::cout << "Instant::DateTime >> nanoseconds.count(): " << nanoseconds.count() << std::endl ;
-
-    // if (nanoseconds.count() < 0)
-    // {
-    //     std::cout << "Instant::DateTime >> WARNING NEGATIVE !" << std::endl ;
-    // }
 
     Uint64 nanosecondCount = 0 ;
     bool postEpoch = true ;
@@ -604,8 +531,6 @@ Instant                         Instant::DateTime                           (   
     else
     {
 
-        // std::cout << "Instant::DateTime >> WARNING NEGATIVE !" << std::endl ;
-
         const Uint64 ns = std::abs(nanoseconds.count()) ;
 
         nanosecondCount = ns - aDateTime.accessTime().getMillisecond() * 1000000 - aDateTime.accessTime().getMicrosecond() * 1000 - aDateTime.accessTime().getNanosecond() ;
@@ -615,17 +540,11 @@ Instant                         Instant::DateTime                           (   
 
     // const Int64 nanosecondCount = nanoseconds.count() + aDateTime.accessTime().getMillisecond() * 1000000 + aDateTime.accessTime().getMicrosecond() * 1000 + aDateTime.accessTime().getNanosecond() ;
 
-    // std::cout << "Instant::DateTime >> Delta: " << nanosecondCount << " [ns]" << std::endl ;
-
     // Output
 
     const Instant::Count count = {nanosecondCount, postEpoch} ; // [TBM] This cast in incorrect !!
 
-    // std::cout << "Instant::DateTime >> count = " << count.countFromEpoch_ << std::endl ;
-
     const Instant::Count count_TT = Instant::ConvertCountScale(count, aTimeScale, Scale::TT) ;
-
-    // std::cout << "Instant::DateTime >> count_TT   = " << count_TT.countFromEpoch_ << std::endl ;
 
     return Instant(count_TT, Scale::TT) ;
 

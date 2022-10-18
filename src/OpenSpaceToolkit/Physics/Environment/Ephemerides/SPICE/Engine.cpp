@@ -165,19 +165,13 @@ Shared<const Frame>             Engine::getFrameOf                          (   
 
     const Shared<const DynamicProvider> transformProviderSPtr = std::make_shared<const DynamicProvider>
     (
-        [this, objectIdentifier, spiceFrameName] (const Instant& anInstant) -> Transform // [TBI] Use shared_from_this instead
+        [objectIdentifier, spiceFrameName] (const Instant& anInstant) -> Transform
         {
-
-            const std::lock_guard<std::mutex> lock { mutex_ } ;
-
-            return this->getTransformAt(objectIdentifier, spiceFrameName, anInstant) ;
-
+            return Engine::Get().getTransformAt(objectIdentifier, spiceFrameName, anInstant) ;
         }
     ) ;
 
-    const Shared<const Frame> frameSPtr = Frame::Construct(frameName, false, Frame::GCRF(), transformProviderSPtr) ;
-
-    return frameSPtr ;
+    return Frame::Construct(frameName, false, Frame::GCRF(), transformProviderSPtr) ;
 
 }
 
@@ -393,8 +387,6 @@ Transform                       Engine::getTransformAt                      (   
 void                            Engine::setup                               ( )
 {
 
-    // std::cout << "Setting up SPICE engine..." << std::endl ;
-
     // Set error action
     // https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/C/cspice/erract_c.html
 
@@ -409,8 +401,6 @@ void                            Engine::setup                               ( )
     {
 
         // Load default kernels
-
-        // std::cout << "Loading default kernels..." << std::endl ;
 
         for (const auto& kernel : Engine::DefaultKernels(Manager::Get().getLocalRepository()))
         {
@@ -490,11 +480,7 @@ void                            Engine::manageKernels                       (   
 
                             //     // [TBM] This is a temporary hack, should be improved
 
-                            //     std::cout << "Loading..." << std::endl ;
-
                             //     const_cast<Engine*>(this)->loadKernel_(earthKernel) ; // [TBM] The order is not necessarily the correct one: should be ordered by ascending duration from kernel epoch to queried instant
-
-                            //     std::cout << "Loading OK" << std::endl ;
 
                             //     didLoadKernel = true ;
 
@@ -564,8 +550,6 @@ void                            Engine::loadKernel_                         (   
     }
 
     const String kernelFilePathString = kernelFile.getPath().toString() ;
-
-    // std::cout << String::Format("Loading kernel [{}]...", kernelFilePathString) << std::endl ;
 
     const ConstSpiceChar* kernelFilePathSpiceChar = kernelFilePathString.data() ;
 
