@@ -1,7 +1,7 @@
 # Open Space Toolkit ▸ Physics
 
-[![Build and Test](https://github.com/open-space-collective/open-space-toolkit-physics/actions/workflows/build-test.yml/badge.svg?branch=master)](https://github.com/open-space-collective/open-space-toolkit-physics/actions/workflows/build-test.yml)
-[![Code Coverage](https://codecov.io/gh/open-space-collective/open-space-toolkit-physics/branch/master/graph/badge.svg)](https://codecov.io/gh/open-space-collective/open-space-toolkit-physics)
+[![Build and Test](https://github.com/open-space-collective/open-space-toolkit-physics/actions/workflows/build-test.yml/badge.svg?branch=main)](https://github.com/open-space-collective/open-space-toolkit-physics/actions/workflows/build-test.yml)
+[![Code Coverage](https://codecov.io/gh/open-space-collective/open-space-toolkit-physics/branch/main/graph/badge.svg)](https://codecov.io/gh/open-space-collective/open-space-toolkit-physics)
 [![Documentation](https://img.shields.io/readthedocs/pip/stable.svg)](https://open-space-collective.github.io/open-space-toolkit-physics)
 [![GitHub version](https://badge.fury.io/gh/open-space-collective%2Fopen-space-toolkit-physics.svg)](https://badge.fury.io/gh/open-space-collective%2Fopen-space-toolkit-physics)
 [![PyPI version](https://badge.fury.io/py/open-space-toolkit-physics.svg)](https://badge.fury.io/py/open-space-toolkit-physics)
@@ -17,7 +17,7 @@ Physical units, time, reference frames, environment modeling.
 
 Want to get started? This is the simplest and quickest way:
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/open-space-collective/open-space-toolkit/master?urlpath=lab/tree/notebooks)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/open-space-collective/open-space-toolkit/main?urlpath=lab/tree/notebooks)
 
 *Nothing to download or install! This will automatically start a [JupyterLab](https://jupyterlab.readthedocs.io/en/stable/) environment in your browser with Open Space Toolkit libraries and example notebooks ready to use.*
 
@@ -269,9 +269,9 @@ Or to run them manually:
 | IAU SOFA      | 2018-01-30 | [SOFA Software License](http://www.iausofa.org/tandc.html) | [www.iausofa.org](http://www.iausofa.org)                                                                                                  |
 | SPICE Toolkit | N0066      | [NAIF](https://naif.jpl.nasa.gov/naif/rules.html)          | [naif.jpl.nasa.gov/naif/toolkit.html](https://naif.jpl.nasa.gov/naif/toolkit.html)                                                         |
 | GeographicLib | 1.52       | MIT                                                        | [geographiclib.sourceforge.io](https://geographiclib.sourceforge.io)                                                                       |
-| Core          | master     | Apache License 2.0                                         | [github.com/open-space-collective/open-space-toolkit-core](https://github.com/open-space-collective/open-space-toolkit-core)               |
-| I/O           | master     | Apache License 2.0                                         | [github.com/open-space-collective/open-space-toolkit-io](https://github.com/open-space-collective/open-space-toolkit-io)                   |
-| Mathematics   | master     | Apache License 2.0                                         | [github.com/open-space-collective/open-space-toolkit-mathematics](https://github.com/open-space-collective/open-space-toolkit-mathematics) |
+| Core          | main       | Apache License 2.0                                         | [github.com/open-space-collective/open-space-toolkit-core](https://github.com/open-space-collective/open-space-toolkit-core)               |
+| I/O           | main       | Apache License 2.0                                         | [github.com/open-space-collective/open-space-toolkit-io](https://github.com/open-space-collective/open-space-toolkit-io)                   |
+| Mathematics   | main       | Apache License 2.0                                         | [github.com/open-space-collective/open-space-toolkit-mathematics](https://github.com/open-space-collective/open-space-toolkit-mathematics) |
 
 ## Contribution
 
@@ -281,7 +281,7 @@ Please read our [contributing guide](CONTRIBUTING.md) to learn about our develop
 
 ## Special Thanks
 
-[![Loft Orbital](https://github.com/open-space-collective/open-space-toolkit/blob/master/assets/thanks/loft_orbital.png)](https://www.loftorbital.com/)
+[![Loft Orbital](https://github.com/open-space-collective/open-space-toolkit/blob/main/assets/thanks/loft_orbital.png)](https://www.loftorbital.com/)
 
 ## License
 
