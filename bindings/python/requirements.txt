@@ -9,7 +9,7 @@
 
 numpy>=1.17.4
 
-open-space-toolkit-io==0.4.5
-open-space-toolkit-mathematics==0.4.8
+open-space-toolkit-io~=0.4
+open-space-toolkit-mathematics~=0.5
 
 ################################################################################################################################################################
