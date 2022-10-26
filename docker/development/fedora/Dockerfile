@@ -128,9 +128,7 @@ RUN mkdir -p /tmp/open-space-toolkit-mathematics \
 
 # Install data
 
-ARG OSTK_DATA_VERSION=0.3.0
-
-COPY --from=us.gcr.io/loft-orbital-public/software/open-space-toolkit/data:${OSTK_DATA_VERSION} /open-space-toolkit/physics /usr/local/share/OpenSpaceToolkit/Physics
+COPY --from=us.gcr.io/loft-orbital-public/software/open-space-toolkit/data:0.3.0 /open-space-toolkit/physics /usr/local/share/OpenSpaceToolkit/Physics
 
 ENV OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/coordinate/frame/providers/iers"
 ENV OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/environment/ephemerides/spice"
