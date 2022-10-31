@@ -38,7 +38,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame  (   
         .def("has_parent", &Frame::hasParent)
 
         .def("access_parent", &Frame::accessParent)
-        .def("access_ancestor", &Frame::accessAncestor)
+        .def("access_ancestor", &Frame::accessAncestor, arg("ancestor_degree"))
         .def("access_provider", &Frame::accessProvider)
         .def("get_name", &Frame::getName)
         .def("get_origin_in", &Frame::getOriginIn, arg("frame"), arg("instant"))
@@ -58,7 +58,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame  (   
         .def_static("TIRF", &Frame::TIRF)
         .def_static("ITRF", &Frame::ITRF)
         .def_static("with_name", &Frame::WithName, arg("name"))
-        .def_static("exists", &Frame::Exists, arg("epoch"))
+        .def_static("exists", &Frame::Exists, arg("name"))
         .def_static("construct", &Frame::Construct, arg("name"), arg("is_quasi_inertial"), arg("parent_frame"), arg("provider"))
         .def_static("destruct", &Frame::Destruct, arg("name"))
 
