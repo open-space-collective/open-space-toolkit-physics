@@ -10,6 +10,7 @@
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Frame__
 #define __OpenSpaceToolkit_Physics_Coordinate_Frame__
 
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IAU/Theory.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Axes.hpp>
@@ -35,6 +36,8 @@ namespace coord
 {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+namespace iau = ostk::physics::coord::frame::providers::iau ;
 
 using ostk::core::types::Uint8 ;
 using ostk::core::types::Shared ;
@@ -104,11 +107,11 @@ class Frame : public std::enable_shared_from_this<Frame>
 
         static Shared<const Frame> GCRF                                     ( ) ;
 
+        static Shared<const Frame> J2000                                    (   const   iau::Theory&                aTheory                                     ) ;
+
         static Shared<const Frame> MOD                                      (   const   Instant&                    anEpoch                                     ) ;
 
         static Shared<const Frame> TOD                                      (   const   Instant&                    anEpoch                                     ) ;
-
-        static Shared<const Frame> EME2000                                  ( ) ;
 
         static Shared<const Frame> TEME                                     ( ) ;
 
