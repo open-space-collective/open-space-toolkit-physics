@@ -13,6 +13,7 @@
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/TEME.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/TOD.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/MOD.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/J2000.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/GCRF.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Static.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp>
@@ -332,6 +333,17 @@ Shared<const Frame>             Frame::GCRF                                 ( )
     static const Shared<const Provider> providerSPtr = std::make_shared<const GCRFProvider>() ;
 
     return Frame::Emplace("GCRF", true, nullptr, providerSPtr) ;
+
+}
+
+Shared<const Frame>             Frame::J2000                                (   const   iau::Theory&                aTheory                                     )
+{
+
+    using J2000Provider = ostk::physics::coord::frame::provider::J2000 ;
+
+    const Shared<const Provider> providerSPtr = std::make_shared<const J2000Provider>(aTheory) ;
+
+    return Frame::Emplace(String::Format("J2000 ({})", iau::StringFromTheory(aTheory)), true, Frame::GCRF(), providerSPtr) ;
 
 }
 

@@ -309,6 +309,8 @@ TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, StreamOperator)
 TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, IsDefined)
 {
 
+    namespace iau = ostk::physics::coord::frame::providers::iau ;
+
     using ostk::core::types::Shared ;
     using ostk::core::types::Real ;
     using ostk::core::types::String ;
@@ -346,7 +348,7 @@ TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, IsDefined)
 
         // EXPECT_TRUE(Frame::ICRF()->isDefined()) ;
         EXPECT_TRUE(Frame::GCRF()->isDefined()) ;
-        // EXPECT_TRUE(Frame::EME2000()->isDefined()) ;
+        EXPECT_TRUE(Frame::J2000(iau::Theory::IAU_2006)->isDefined()) ;
         EXPECT_TRUE(Frame::MOD(Instant::J2000())->isDefined()) ;
         EXPECT_TRUE(Frame::TOD(Instant::J2000())->isDefined()) ;
         EXPECT_TRUE(Frame::TEME()->isDefined()) ;
@@ -367,6 +369,8 @@ TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, IsDefined)
 
 TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, IsQuasiInertial)
 {
+
+    namespace iau = ostk::physics::coord::frame::providers::iau ;
 
     using ostk::core::types::Shared ;
     using ostk::core::types::Real ;
@@ -405,7 +409,7 @@ TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, IsQuasiInertial)
 
         // EXPECT_TRUE(Frame::ICRF()->isQuasiInertial()) ;
         EXPECT_TRUE(Frame::GCRF()->isQuasiInertial()) ;
-        // EXPECT_TRUE(Frame::EME2000()->isQuasiInertial()) ;
+        EXPECT_TRUE(Frame::J2000(iau::Theory::IAU_2006)->isQuasiInertial()) ;
         EXPECT_TRUE(Frame::MOD(Instant::J2000())->isQuasiInertial()) ;
         EXPECT_TRUE(Frame::TOD(Instant::J2000())->isQuasiInertial()) ;
         EXPECT_TRUE(Frame::TEME()->isQuasiInertial()) ;
@@ -426,6 +430,8 @@ TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, IsQuasiInertial)
 
 TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, HasParent)
 {
+
+    namespace iau = ostk::physics::coord::frame::providers::iau ;
 
     using ostk::core::types::Shared ;
     using ostk::core::types::Real ;
@@ -464,7 +470,7 @@ TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, HasParent)
 
         // EXPECT_FALSE(Frame::ICRF()->hasParent()) ;
         EXPECT_FALSE(Frame::GCRF()->hasParent()) ;
-        // EXPECT_TRUE(Frame::EME2000()->hasParent()) ;
+        EXPECT_TRUE(Frame::J2000(iau::Theory::IAU_2006)->hasParent()) ;
         EXPECT_TRUE(Frame::MOD(Instant::J2000())->hasParent()) ;
         EXPECT_TRUE(Frame::TOD(Instant::J2000())->hasParent()) ;
         EXPECT_TRUE(Frame::TEME()->hasParent()) ;
@@ -485,6 +491,8 @@ TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, HasParent)
 
 TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, AccessParent)
 {
+
+    namespace iau = ostk::physics::coord::frame::providers::iau ;
 
     using ostk::core::types::Shared ;
     using ostk::core::types::Real ;
@@ -523,7 +531,7 @@ TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, AccessParent)
 
         // EXPECT_EQ(..., Frame::ICRF()->accessParent()) ;
         EXPECT_ANY_THROW(Frame::GCRF()->accessParent()) ;
-        // EXPECT_EQ(..., Frame::EME2000()->accessParent()) ;
+        EXPECT_EQ(Frame::GCRF(), Frame::J2000(iau::Theory::IAU_2006)->accessParent()) ;
         EXPECT_EQ(Frame::GCRF(), Frame::MOD(Instant::J2000())->accessParent()) ;
         EXPECT_EQ(Frame::MOD(Instant::J2000()), Frame::TOD(Instant::J2000())->accessParent()) ;
         EXPECT_EQ(Frame::ITRF(), Frame::TEME()->accessParent()) ;
@@ -544,6 +552,8 @@ TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, AccessParent)
 
 TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, GetName)
 {
+
+    namespace iau = ostk::physics::coord::frame::providers::iau ;
 
     using ostk::core::types::Shared ;
     using ostk::core::types::Real ;
@@ -582,7 +592,7 @@ TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, GetName)
 
         // EXPECT_EQ("ICRF", Frame::ICRF()->getName()) ;
         EXPECT_EQ("GCRF", Frame::GCRF()->getName()) ;
-        // EXPECT_EQ("EME2000", Frame::EME2000()->getName()) ;
+        EXPECT_EQ("J2000 (IAU 2006)", Frame::J2000(iau::Theory::IAU_2006)->getName()) ;
         EXPECT_EQ("MOD @ 2000-01-01 12:00:00 [TT]", Frame::MOD(Instant::J2000())->getName()) ;
         EXPECT_EQ("TOD @ 2000-01-01 12:00:00 [TT]", Frame::TOD(Instant::J2000())->getName()) ;
         EXPECT_EQ("TEME", Frame::TEME()->getName()) ;
@@ -971,18 +981,21 @@ TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, GCRF)
 
 }
 
-// TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, EME2000)
-// {
+TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, J2000)
+{
 
-//     using ostk::physics::coord::Frame ;
+    namespace iau = ostk::physics::coord::frame::providers::iau ;
 
-//     {
+    using ostk::physics::coord::Frame ;
 
-//         EXPECT_TRUE(Frame::EME2000()->isDefined()) ;
+    {
 
-//     }
+        EXPECT_TRUE(Frame::J2000(iau::Theory::IAU_2000A)->isDefined()) ;
+        EXPECT_TRUE(Frame::J2000(iau::Theory::IAU_2006)->isDefined()) ;
 
-// }
+    }
+
+}
 
 TEST (OpenSpaceToolkit_Physics_Coordinate_Frame, MOD)
 {

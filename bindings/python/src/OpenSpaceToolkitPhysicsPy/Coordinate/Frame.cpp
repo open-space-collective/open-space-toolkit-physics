@@ -25,10 +25,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame  (   
     using ostk::physics::coord::Frame ;
     using ostk::physics::coord::frame::Provider ;
 
-    // scope in_Frame = class_<Frame, Shared<Frame>>("Frame", init<String&, bool, Shared<const Frame>&, Shared<Provider>&>())
-    // scope in_Frame = class_<Frame, Shared<Frame>, boost::noncopyable>("Frame", init<String&, bool, Shared<const Frame>&, Shared<Provider>&>())
-    // scope in_Frame = class_<Frame>("Frame", init<String&, bool, Shared<const Frame>&, Shared<const Provider>&>())
-    class_<Frame, Shared<Frame>>(aModule, "Frame")  // Added Shared<Frame> as Parent
+    class_<Frame, Shared<Frame>>(aModule, "Frame")
 
         .def(self == self)
         .def(self != self)
@@ -41,29 +38,29 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame  (   
         .def("has_parent", &Frame::hasParent)
 
         .def("access_parent", &Frame::accessParent)
-        .def("access_ancestor", &Frame::accessAncestor)
+        .def("access_ancestor", &Frame::accessAncestor, arg("ancestor_degree"))
         .def("access_provider", &Frame::accessProvider)
         .def("get_name", &Frame::getName)
-        .def("get_origin_in", &Frame::getOriginIn)
-        .def("get_velocity_in", &Frame::getVelocityIn)
-        .def("get_axes_in", &Frame::getAxesIn)
-        .def("get_transform_to", &Frame::getTransformTo)
+        .def("get_origin_in", &Frame::getOriginIn, arg("frame"), arg("instant"))
+        .def("get_velocity_in", &Frame::getVelocityIn, arg("frame"), arg("instant"))
+        .def("get_axes_in", &Frame::getAxesIn, arg("frame"), arg("instant"))
+        .def("get_transform_to", &Frame::getTransformTo, arg("frame"), arg("instant"))
 
         .def_static("undefined", &Frame::Undefined)
         // .def_static("ICRF", &Frame::ICRF)
         .def_static("GCRF", &Frame::GCRF)
-        .def_static("MOD", &Frame::MOD)
-        .def_static("TOD", &Frame::TOD)
-        // .def_static("EME2000", &Frame::EME2000)
+        .def_static("J2000", &Frame::J2000, arg("theory"))
+        .def_static("MOD", &Frame::MOD, arg("epoch"))
+        .def_static("TOD", &Frame::TOD, arg("epoch"))
         .def_static("TEME", &Frame::TEME)
-        .def_static("TEME_of_epoch", &Frame::TEMEOfEpoch)
+        .def_static("TEME_of_epoch", &Frame::TEMEOfEpoch, arg("epoch"))
         .def_static("CIRF", &Frame::CIRF)
         .def_static("TIRF", &Frame::TIRF)
         .def_static("ITRF", &Frame::ITRF)
-        .def_static("with_name", &Frame::WithName)
-        .def_static("exists", &Frame::Exists)
-        .def_static("construct", &Frame::Construct)
-        .def_static("destruct", &Frame::Destruct)
+        .def_static("with_name", &Frame::WithName, arg("name"))
+        .def_static("exists", &Frame::Exists, arg("name"))
+        .def_static("construct", &Frame::Construct, arg("name"), arg("is_quasi_inertial"), arg("parent_frame"), arg("provider"))
+        .def_static("destruct", &Frame::Destruct, arg("name"))
 
     ;
 

@@ -18,7 +18,7 @@ python_directory="${project_directory}/build/bindings/python/OpenSpaceToolkitPhy
 
 pushd "${python_directory}" > /dev/null
 
-pip install . --force-reinstall
+python${PYTHON_VERSION} -m pip install . --force-reinstall
 
 popd > /dev/null
 
