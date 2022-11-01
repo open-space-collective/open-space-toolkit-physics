@@ -1,0 +1,107 @@
+\hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_j2000}{}\section{ostk\+:\+:physics\+:\+:coord\+:\+:frame\+:\+:provider\+:\+:J2000 Class Reference}
+\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_j2000}\index{ostk\+::physics\+::coord\+::frame\+::provider\+::\+J2000@{ostk\+::physics\+::coord\+::frame\+::provider\+::\+J2000}}
+
+
+\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_j2000}{J2000} frame provider.  
+
+
+
+
+{\ttfamily \#include $<$J2000.\+hpp$>$}
+
+Inheritance diagram for ostk\+:\+:physics\+:\+:coord\+:\+:frame\+:\+:provider\+:\+:J2000\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_j2000}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_j2000_a4cb9a4dfc78904e0b7ff96a76f7cb46a}{J2000} (const \hyperlink{namespaceostk_1_1physics_1_1coord_1_1frame_1_1providers_1_1iau_ae5e299153ae66dd034c8427dabfaff05}{iau\+::\+Theory} \&a\+Theory)
+\item 
+virtual \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_j2000_ab4b5931ba40d609c86980962b37f6c36}{$\sim$\+J2000} () override
+\item 
+virtual \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_j2000}{J2000} $\ast$ \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_j2000_ab4ec150d7b6c0e38691f3dcb4dfd74c9}{clone} () const override
+\item 
+virtual bool \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_j2000_ab707ff9bba9634b2ce9684ebaad342bf}{is\+Defined} () const override
+\item 
+\hyperlink{namespaceostk_1_1physics_1_1coord_1_1frame_1_1providers_1_1iau_ae5e299153ae66dd034c8427dabfaff05}{iau\+::\+Theory} \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_j2000_aaa4b6174cab5b7a52a4bee763be5b033}{get\+Theory} () const
+\item 
+\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_j2000_aa30348e4a396632caff0d8266f81a788}{get\+Epoch} () const
+\item 
+virtual \hyperlink{classostk_1_1physics_1_1coord_1_1_transform}{Transform} \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_j2000_a8e67390cf0c828e41d33ec2960d7578f}{get\+Transform\+At} (const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant) const override
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_j2000}{J2000} frame provider. 
+
+Defined with the Earth\textquotesingle{}s Mean Equator and Mean Equinox (M\+E\+ME) at 12\+:00 Terrestrial Time on 1 January 2000. Also known as E\+M\+E2000.
+
+https\+://en.wikipedia.\+org/wiki/\+Earth-\/centered\+\_\+inertial 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_j2000_a4cb9a4dfc78904e0b7ff96a76f7cb46a}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_j2000_a4cb9a4dfc78904e0b7ff96a76f7cb46a}} 
+\index{ostk\+::physics\+::coord\+::frame\+::provider\+::\+J2000@{ostk\+::physics\+::coord\+::frame\+::provider\+::\+J2000}!J2000@{J2000}}
+\index{J2000@{J2000}!ostk\+::physics\+::coord\+::frame\+::provider\+::\+J2000@{ostk\+::physics\+::coord\+::frame\+::provider\+::\+J2000}}
+\subsubsection{\texorpdfstring{J2000()}{J2000()}}
+{\footnotesize\ttfamily ostk\+::physics\+::coord\+::frame\+::provider\+::\+J2000\+::\+J2000 (\begin{DoxyParamCaption}\item[{const \hyperlink{namespaceostk_1_1physics_1_1coord_1_1frame_1_1providers_1_1iau_ae5e299153ae66dd034c8427dabfaff05}{iau\+::\+Theory} \&}]{a\+Theory }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_j2000_ab4b5931ba40d609c86980962b37f6c36}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_j2000_ab4b5931ba40d609c86980962b37f6c36}} 
+\index{ostk\+::physics\+::coord\+::frame\+::provider\+::\+J2000@{ostk\+::physics\+::coord\+::frame\+::provider\+::\+J2000}!````~J2000@{$\sim$\+J2000}}
+\index{````~J2000@{$\sim$\+J2000}!ostk\+::physics\+::coord\+::frame\+::provider\+::\+J2000@{ostk\+::physics\+::coord\+::frame\+::provider\+::\+J2000}}
+\subsubsection{\texorpdfstring{$\sim$\+J2000()}{~J2000()}}
+{\footnotesize\ttfamily ostk\+::physics\+::coord\+::frame\+::provider\+::\+J2000\+::$\sim$\+J2000 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_j2000_ab4ec150d7b6c0e38691f3dcb4dfd74c9}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_j2000_ab4ec150d7b6c0e38691f3dcb4dfd74c9}} 
+\index{ostk\+::physics\+::coord\+::frame\+::provider\+::\+J2000@{ostk\+::physics\+::coord\+::frame\+::provider\+::\+J2000}!clone@{clone}}
+\index{clone@{clone}!ostk\+::physics\+::coord\+::frame\+::provider\+::\+J2000@{ostk\+::physics\+::coord\+::frame\+::provider\+::\+J2000}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_j2000}{J2000} $\ast$ ostk\+::physics\+::coord\+::frame\+::provider\+::\+J2000\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_provider_ae41bc3862d088e9c8d90a79253294ce9}{ostk\+::physics\+::coord\+::frame\+::\+Provider}.
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_j2000_aa30348e4a396632caff0d8266f81a788}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_j2000_aa30348e4a396632caff0d8266f81a788}} 
+\index{ostk\+::physics\+::coord\+::frame\+::provider\+::\+J2000@{ostk\+::physics\+::coord\+::frame\+::provider\+::\+J2000}!get\+Epoch@{get\+Epoch}}
+\index{get\+Epoch@{get\+Epoch}!ostk\+::physics\+::coord\+::frame\+::provider\+::\+J2000@{ostk\+::physics\+::coord\+::frame\+::provider\+::\+J2000}}
+\subsubsection{\texorpdfstring{get\+Epoch()}{getEpoch()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} ostk\+::physics\+::coord\+::frame\+::provider\+::\+J2000\+::get\+Epoch (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_j2000_aaa4b6174cab5b7a52a4bee763be5b033}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_j2000_aaa4b6174cab5b7a52a4bee763be5b033}} 
+\index{ostk\+::physics\+::coord\+::frame\+::provider\+::\+J2000@{ostk\+::physics\+::coord\+::frame\+::provider\+::\+J2000}!get\+Theory@{get\+Theory}}
+\index{get\+Theory@{get\+Theory}!ostk\+::physics\+::coord\+::frame\+::provider\+::\+J2000@{ostk\+::physics\+::coord\+::frame\+::provider\+::\+J2000}}
+\subsubsection{\texorpdfstring{get\+Theory()}{getTheory()}}
+{\footnotesize\ttfamily \hyperlink{namespaceostk_1_1physics_1_1coord_1_1frame_1_1providers_1_1iau_ae5e299153ae66dd034c8427dabfaff05}{iau\+::\+Theory} ostk\+::physics\+::coord\+::frame\+::provider\+::\+J2000\+::get\+Theory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_j2000_a8e67390cf0c828e41d33ec2960d7578f}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_j2000_a8e67390cf0c828e41d33ec2960d7578f}} 
+\index{ostk\+::physics\+::coord\+::frame\+::provider\+::\+J2000@{ostk\+::physics\+::coord\+::frame\+::provider\+::\+J2000}!get\+Transform\+At@{get\+Transform\+At}}
+\index{get\+Transform\+At@{get\+Transform\+At}!ostk\+::physics\+::coord\+::frame\+::provider\+::\+J2000@{ostk\+::physics\+::coord\+::frame\+::provider\+::\+J2000}}
+\subsubsection{\texorpdfstring{get\+Transform\+At()}{getTransformAt()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1coord_1_1_transform}{Transform} ostk\+::physics\+::coord\+::frame\+::provider\+::\+J2000\+::get\+Transform\+At (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_provider_a38b86a589f46f8b8a9c97ab2776f37d1}{ostk\+::physics\+::coord\+::frame\+::\+Provider}.
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_j2000_ab707ff9bba9634b2ce9684ebaad342bf}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_j2000_ab707ff9bba9634b2ce9684ebaad342bf}} 
+\index{ostk\+::physics\+::coord\+::frame\+::provider\+::\+J2000@{ostk\+::physics\+::coord\+::frame\+::provider\+::\+J2000}!is\+Defined@{is\+Defined}}
+\index{is\+Defined@{is\+Defined}!ostk\+::physics\+::coord\+::frame\+::provider\+::\+J2000@{ostk\+::physics\+::coord\+::frame\+::provider\+::\+J2000}}
+\subsubsection{\texorpdfstring{is\+Defined()}{isDefined()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::coord\+::frame\+::provider\+::\+J2000\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_provider_a27acab0012649796b97956fed1a91493}{ostk\+::physics\+::coord\+::frame\+::\+Provider}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Providers/\hyperlink{_j2000_8hpp}{J2000.\+hpp}\item 
+src/\+Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Providers/\hyperlink{_j2000_8cpp}{J2000.\+cpp}\end{DoxyCompactItemize}

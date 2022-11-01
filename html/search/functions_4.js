@@ -6,7 +6,6 @@ var searchData=
   ['egm84',['EGM84',['../classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth.html#ac9e279bcd59917a3e153c52c74639005',1,'ostk::physics::env::obj::celest::Earth']]],
   ['egm96',['EGM96',['../classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth.html#a51931a35af7457fef1e23055d23646f2',1,'ostk::physics::env::obj::celest::Earth']]],
   ['electriccurrent',['ElectricCurrent',['../classostk_1_1physics_1_1units_1_1_electric_current.html#af247c4dcd830d2c20f4ba20fdca555a7',1,'ostk::physics::units::ElectricCurrent']]],
-  ['eme2000',['EME2000',['../classostk_1_1physics_1_1coord_1_1_frame.html#a61b7c68b761966956251d393bf57f5e5',1,'ostk::physics::coord::Frame']]],
   ['empty',['Empty',['../classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_index.html#ac6afccc60da38e217e01f83b9f1c8d7a',1,'ostk::physics::env::ephem::spice::Index']]],
   ['enable',['enable',['../classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager.html#ad2bcfa6c79e5db2c11044f9db028fefa',1,'ostk::physics::environment::gravitational::earth::Manager::enable()'],['../classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager.html#ab07420855f535d19cd92e0eea8cf5b10',1,'ostk::physics::environment::magnetic::earth::Manager::enable()']]],
   ['engine',['Engine',['../classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#a60734f4383f29cfaaaa50126fef0ceb5',1,'ostk::physics::env::ephem::spice::Engine']]],

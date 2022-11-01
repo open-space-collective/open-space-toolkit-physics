@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['vector',['Vector',['../classostk_1_1physics_1_1data_1_1_vector.html',1,'ostk::physics::data']]],
-  ['velocity',['Velocity',['../classostk_1_1physics_1_1coord_1_1_velocity.html',1,'ostk::physics::coord']]]
+  ['unit',['Unit',['../classostk_1_1physics_1_1units_1_1_derived_1_1_unit.html',1,'ostk::physics::units::Derived::Unit'],['../classostk_1_1physics_1_1_unit.html',1,'ostk::physics::Unit'],['../classostk_1_1physics_1_1units_1_1_unit.html',1,'ostk::physics::units::Unit']]]
 ];
