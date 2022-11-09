@@ -25,7 +25,14 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Axes   (   
 
     class_<Axes>(aModule, "Axes")
 
-        .def(init<const Vector3d&, const Vector3d&, const Vector3d&, const Shared<const Frame>&>())
+        .def
+        (
+            init<const Vector3d&, const Vector3d&, const Vector3d&, const Shared<const Frame>&>(),
+            arg("x_axis"),
+            arg("y_axis"),
+            arg("z_axis"),
+            arg("frame")
+        )
 
         .def(self == self)
         .def(self != self)
@@ -39,7 +46,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Axes   (   
         .def("y", +[] (const Axes& anAxes) -> Vector3d { return anAxes.y() ; })
         .def("z", +[] (const Axes& anAxes) -> Vector3d { return anAxes.z() ; })
         .def("get_frame", &Axes::getFrame)
-        .def("in_frame", &Axes::inFrame)
+        .def("in_frame", &Axes::inFrame, arg("frame"), arg("instant"))
 
         .def_static("undefined", &Axes::Undefined)
 

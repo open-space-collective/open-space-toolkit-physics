@@ -11,7 +11,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers_IERS_Finals2000A ( pybind11::module& aModule                                 )
+inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers_IERS_Finals2000A ( pybind11::module& aModule                               )
 {
 
     using namespace pybind11 ;
@@ -30,13 +30,13 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provi
         .def("is_defined", &Finals2000A::isDefined)
 
         .def("get_interval", &Finals2000A::getInterval)
-        .def("get_polar_motion_at", &Finals2000A::getPolarMotionAt)
-        .def("get_ut1_minus_utc_at", &Finals2000A::getUt1MinusUtcAt)
-        .def("get_lod_at", &Finals2000A::getLodAt)
-        .def("get_data_at", &Finals2000A::getDataAt)
+        .def("get_polar_motion_at", &Finals2000A::getPolarMotionAt, arg("instant"))
+        .def("get_ut1_minus_utc_at", &Finals2000A::getUt1MinusUtcAt, arg("instant"))
+        .def("get_lod_at", &Finals2000A::getLodAt, arg("instant"))
+        .def("get_data_at", &Finals2000A::getDataAt, arg("instant"))
 
         .def_static("undefined", &Finals2000A::Undefined)
-        .def_static("load", &Finals2000A::Load)
+        .def_static("load", &Finals2000A::Load, arg("file"))
 
     ;
 

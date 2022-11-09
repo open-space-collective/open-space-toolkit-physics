@@ -46,12 +46,13 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provi
                     new (&aDynamicFrameProvider) Dynamic(generatorProxy) ;
 
                 }
-            )
+            ),
+            arg("generator")
         )
 
         .def("is_defined", &Dynamic::isDefined)
 
-        .def("get_transform_at", &Dynamic::getTransformAt)
+        .def("get_transform_at", &Dynamic::getTransformAt, arg("instant"))
 
         .def_static("undefined", &Dynamic::Undefined)
 

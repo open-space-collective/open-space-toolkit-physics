@@ -32,6 +32,10 @@ namespace coord
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#define                         DEFAULT_PRECISION                               Integer::Undefined()
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 using ostk::core::types::Shared ;
 using ostk::core::types::Integer ;
 using ostk::core::types::String ;
@@ -75,7 +79,7 @@ class Position
         bool                    isDefined                                   ( ) const ;
 
         bool                    isNear                                      (   const   Position&                   aPosition,
-                                                                                const   Length&                     aLength                                     ) const ;
+                                                                                const   Length&                     aTolerance                                  ) const ;
 
         const Vector3d&         accessCoordinates                           ( ) const ;
 
@@ -92,7 +96,7 @@ class Position
         Position                inFrame                                     (   const   Shared<const Frame>&        aFrameSPtr,
                                                                                 const   Instant&                    anInstant                                   ) const ;
 
-        String                  toString                                    (   const   Integer&                    aPrecision                                  =   Integer::Undefined() ) const ;
+        String                  toString                                    (   const   Integer&                    aPrecision                                  =   DEFAULT_PRECISION ) const ;
 
         static Position         Undefined                                   ( ) ;
 

@@ -29,6 +29,10 @@ namespace spherical
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#define                         DEFAULT_IS_Z_NEGATIVE                           true
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 using ostk::core::types::String ;
 
 using ostk::math::obj::Vector3d ;
@@ -83,7 +87,7 @@ class AER
 
         static AER              FromPositionToPosition                      (   const   Position&                   aFromPosition,
                                                                                 const   Position&                   aToPosition,
-                                                                                const   bool                        isZNegative                                 =   true ) ;
+                                                                                const   bool                        isZNegative                                 =   DEFAULT_IS_Z_NEGATIVE ) ;
 
     private:
 

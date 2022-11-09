@@ -24,7 +24,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provi
 
         .def("is_defined", &Provider::isDefined)
 
-        .def("get_transform_at", &Provider::getTransformAt)
+        .def("get_transform_at", &Provider::getTransformAt, arg("instant"))
 
     ;
 

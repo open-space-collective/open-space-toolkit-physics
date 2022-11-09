@@ -23,7 +23,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_A
 
     class_<AER>(aModule, "AER")
 
-        .def(init<const Angle&, const Angle&, const Length&>())
+        .def(init<const Angle&, const Angle&, const Length&>(), arg("azimuth"), arg("elevation"), arg("range"))
 
         .def(self == self)
         .def(self != self)
@@ -40,9 +40,8 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_A
         .def("to_string", &AER::toString)
 
         .def_static("undefined", &AER::Undefined)
-        .def_static("vector", &AER::Vector)
-        .def("from_position_to_position", +[] (const Position& aFromPosition, const Position& aToPosition) -> AER { return AER::FromPositionToPosition(aFromPosition, aToPosition) ; })
-        .def("from_position_to_position", +[] (const Position& aFromPosition, const Position& aToPosition, const bool isZNegative) -> AER { return AER::FromPositionToPosition(aFromPosition, aToPosition, isZNegative) ; })
+        .def_static("vector", &AER::Vector, arg("vector"))
+        .def_static("from_position_to_position", &AER::FromPositionToPosition, arg("from_position"), arg("to_position"), arg("is_z_negative") = DEFAULT_IS_Z_NEGATIVE)
 
     ;
 
