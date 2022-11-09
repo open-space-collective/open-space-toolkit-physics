@@ -362,18 +362,19 @@ Shared<const Frame>             Frame::MOD                                  (   
 
 }
 
-Shared<const Frame>             Frame::TOD                                  (   const   Instant&                    anEpoch                                     )
+Shared<const Frame>             Frame::TOD                                  (   const   Instant&                    anEpoch,
+                                                                                const   iau::Theory&                aTheory                                     )
 {
 
     using Scale = ostk::physics::time::Scale ;
 
-    const String frameName = String::Format("TOD @ {}", anEpoch.toString(Scale::TT)) ;
+    const String frameName = String::Format("TOD @ {} ({})", anEpoch.toString(Scale::TT), iau::StringFromTheory(aTheory)) ;
 
     using TODProvider = ostk::physics::coord::frame::provider::TOD ;
 
-    const Shared<const Provider> providerSPtr = std::make_shared<const TODProvider>(anEpoch) ;
+    const Shared<const Provider> providerSPtr = std::make_shared<const TODProvider>(anEpoch, aTheory) ;
 
-    return Frame::Emplace(frameName, true, Frame::MOD(anEpoch), providerSPtr) ;
+    return Frame::Emplace(frameName, true, Frame::GCRF(), providerSPtr) ;
 
 }
 

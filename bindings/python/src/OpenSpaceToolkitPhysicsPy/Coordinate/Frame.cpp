@@ -47,11 +47,10 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame  (   
         .def("get_transform_to", &Frame::getTransformTo, arg("frame"), arg("instant"))
 
         .def_static("undefined", &Frame::Undefined)
-        // .def_static("ICRF", &Frame::ICRF)
         .def_static("GCRF", &Frame::GCRF)
         .def_static("J2000", &Frame::J2000, arg("theory"))
         .def_static("MOD", &Frame::MOD, arg("epoch"))
-        .def_static("TOD", &Frame::TOD, arg("epoch"))
+        .def_static("TOD", &Frame::TOD, arg("epoch"), arg("theory"))
         .def_static("TEME", &Frame::TEME)
         .def_static("TEME_of_epoch", &Frame::TEMEOfEpoch, arg("epoch"))
         .def_static("CIRF", &Frame::CIRF)

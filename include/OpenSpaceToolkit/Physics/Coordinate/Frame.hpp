@@ -111,7 +111,8 @@ class Frame : public std::enable_shared_from_this<Frame>
 
         static Shared<const Frame> MOD                                      (   const   Instant&                    anEpoch                                     ) ;
 
-        static Shared<const Frame> TOD                                      (   const   Instant&                    anEpoch                                     ) ;
+        static Shared<const Frame> TOD                                      (   const   Instant&                    anEpoch,
+                                                                                const   iau::Theory&                aTheory                                     ) ;
 
         static Shared<const Frame> TEME                                     ( ) ;
 
