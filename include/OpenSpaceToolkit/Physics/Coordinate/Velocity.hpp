@@ -31,6 +31,10 @@ namespace coord
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#define                         DEFAULT_PRECISION                               Integer::Undefined()
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 using ostk::core::types::Shared ;
 using ostk::core::types::Integer ;
 using ostk::core::types::String ;
@@ -89,7 +93,7 @@ class Velocity
                                                                                 const   Shared<const Frame>&        aFrameSPtr,
                                                                                 const   Instant&                    anInstant                                   ) const ;
 
-        String                  toString                                    (   const   Integer&                    aPrecision                                  =   Integer::Undefined() ) const ;
+        String                  toString                                    (   const   Integer&                    aPrecision                                  =   DEFAULT_PRECISION ) const ;
 
         static Velocity         Undefined                                   ( ) ;
 

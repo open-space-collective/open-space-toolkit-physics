@@ -22,7 +22,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_L
 
     class_<LLA>(aModule, "LLA")
 
-        .def(init<const Angle&, const Angle&, const Length&>())
+        .def(init<const Angle&, const Angle&, const Length&>(), arg("latitude"), arg("longitude"), arg("altitude"))
 
         .def(self == self)
         .def(self != self)
@@ -36,12 +36,12 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_L
         .def("get_longitude", &LLA::getLongitude)
         .def("get_altitude", &LLA::getAltitude)
         .def("to_vector", &LLA::toVector)
-        .def("to_cartesian", &LLA::toCartesian)
+        .def("to_cartesian", &LLA::toCartesian, arg("ellipsoid_equatorial_radius"), arg("ellipsoid_flattening"))
         .def("to_string", &LLA::toString)
 
         .def_static("undefined", &LLA::Undefined)
-        .def_static("vector", &LLA::Vector)
-        .def_static("cartesian", &LLA::Cartesian)
+        .def_static("vector", &LLA::Vector, arg("vector"))
+        .def_static("cartesian", &LLA::Cartesian, arg("cartesian_coordinates"), arg("ellipsoid_equatorial_radius"), arg("ellipsoid_flattening"))
 
     ;
 

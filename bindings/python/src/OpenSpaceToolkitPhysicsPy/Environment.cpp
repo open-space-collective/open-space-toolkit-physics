@@ -30,21 +30,23 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment       (   
 
     class_<Environment>(aModule, "Environment")
 
-        .def(init<const Instant&, const Array<Shared<Object>>&>())
+        .def(init<const Instant&, const Array<Shared<Object>>&>(), arg("instant"), arg("objects"))
 
         .def("__str__", &(shiftToString<Environment>))
         .def("__repr__", &(shiftToString<Environment>))
 
         .def("is_defined", &Environment::isDefined)
-        .def("has_object_with_name", &Environment::hasObjectWithName)
-        .def("intersects", &Environment::intersects)
+        .def("has_object_with_name", &Environment::hasObjectWithName, arg("name"))
+        .def("intersects", &Environment::intersects, arg("geometry"), arg("objects_to_ignore") = Array<Shared<const Object>>::Empty())
 
-        .def("access_objects", &Environment::accessObjects)                                       // check return_value_policy
-        .def("access_object_with_name", &Environment::accessObjectWithName)                       // check return_value_policy
-        .def("access_celestial_object_with_name", &Environment::accessCelestialObjectWithName)    // check return_value_policy
+        .def("access_objects", &Environment::accessObjects, return_value_policy::reference)
+        .def("access_object_with_name", &Environment::accessObjectWithName, arg("name"), return_value_policy::reference)
+        .def("access_celestial_object_with_name", &Environment::accessCelestialObjectWithName, arg("name"), return_value_policy::reference)
+
         .def("get_instant", &Environment::getInstant)
-        // .def("get_object_names", &Environment::getObjectNames)
-        .def("set_instant", &Environment::setInstant)
+        .def("get_object_names", &Environment::getObjectNames)
+
+        .def("set_instant", &Environment::setInstant, arg("instant"))
 
         .def_static("undefined", &Environment::Undefined)
         .def_static("default", &Environment::Default)

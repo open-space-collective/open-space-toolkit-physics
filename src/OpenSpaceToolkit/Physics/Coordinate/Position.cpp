@@ -99,7 +99,7 @@ bool                            Position::isDefined                         ( ) 
 }
 
 bool                            Position::isNear                            (   const   Position&                   aPosition,
-                                                                                const   Length&                     aLength                                     ) const
+                                                                                const   Length&                     aTolerance                                  ) const
 {
 
     if (!aPosition.isDefined())
@@ -107,7 +107,7 @@ bool                            Position::isNear                            (   
         throw ostk::core::error::runtime::Undefined("Position") ;
     }
 
-    if (!aLength.isDefined())
+    if (!aTolerance.isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Length") ;
     }
@@ -124,11 +124,11 @@ bool                            Position::isNear                            (   
 
     if (unit_ == aPosition.unit_)
     {
-        return (coordinates_ - aPosition.coordinates_).norm() <= aLength.in(unit_) ;
+        return (coordinates_ - aPosition.coordinates_).norm() <= aTolerance.in(unit_) ;
     }
     else
     {
-        return (coordinates_ - aPosition.inUnit(unit_).coordinates_).norm() <= aLength.in(unit_) ;
+        return (coordinates_ - aPosition.inUnit(unit_).coordinates_).norm() <= aTolerance.in(unit_) ;
     }
 
     return false ;

@@ -39,12 +39,12 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provi
         .def("get_tai_minus_utc", &BulletinA::getTAIMinusUTC)
         .def("get_tai_minus_utc_epoch", &BulletinA::getTAIMinusUTCEpoch)
         .def("get_observation_interval", &BulletinA::getObservationInterval)
-        .def("get_observation_at", &BulletinA::getObservationAt)
+        .def("get_observation_at", &BulletinA::getObservationAt, arg("instant"))
         .def("get_prediction_interval", &BulletinA::getPredictionInterval)
-        .def("get_prediction_at", &BulletinA::getPredictionAt)
+        .def("get_prediction_at", &BulletinA::getPredictionAt, arg("instant"))
 
         .def_static("undefined", &BulletinA::Undefined)
-        .def_static("load", &BulletinA::Load)
+        .def_static("load", &BulletinA::Load, arg("file"))
 
     ;
 
