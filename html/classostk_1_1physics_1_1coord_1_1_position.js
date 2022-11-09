@@ -11,10 +11,10 @@ var classostk_1_1physics_1_1coord_1_1_position =
     [ "inMeters", "classostk_1_1physics_1_1coord_1_1_position.html#a4df0c4df2717f7f6613e18a0d8e177e4", null ],
     [ "inUnit", "classostk_1_1physics_1_1coord_1_1_position.html#a91baafa3dbbd48de681204c1c437ea35", null ],
     [ "isDefined", "classostk_1_1physics_1_1coord_1_1_position.html#a969585edcf7795bbb6f4e62a10b2885b", null ],
-    [ "isNear", "classostk_1_1physics_1_1coord_1_1_position.html#a9ed9c1f90cb058db0e79bd648296c2b5", null ],
+    [ "isNear", "classostk_1_1physics_1_1coord_1_1_position.html#a74cd31785d720561076b9f277d008dae", null ],
     [ "operator!=", "classostk_1_1physics_1_1coord_1_1_position.html#af1c3aef299ac63eac53a4b0fbffbc6fb", null ],
     [ "operator=", "classostk_1_1physics_1_1coord_1_1_position.html#a8479aecc508b17a092dd606242bd271b", null ],
     [ "operator==", "classostk_1_1physics_1_1coord_1_1_position.html#a5384658411f001cf57747382ab4fd461", null ],
-    [ "toString", "classostk_1_1physics_1_1coord_1_1_position.html#a6aa81e5bdaa16f35b1884ff8bc1238dc", null ],
+    [ "toString", "classostk_1_1physics_1_1coord_1_1_position.html#a4b5e999fb0fd55eda5637efa9694852e", null ],
     [ "operator<<", "classostk_1_1physics_1_1coord_1_1_position.html#aab9f362c268370239ccad2c8a6d0eaee", null ]
 ];

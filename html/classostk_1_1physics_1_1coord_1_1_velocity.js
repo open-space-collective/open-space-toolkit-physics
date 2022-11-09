@@ -14,6 +14,6 @@ var classostk_1_1physics_1_1coord_1_1_velocity =
     [ "isDefined", "classostk_1_1physics_1_1coord_1_1_velocity.html#a19318a3cef12b4248cd12e043ee41591", null ],
     [ "operator!=", "classostk_1_1physics_1_1coord_1_1_velocity.html#a83127c62ea6ce9497f57622a2ea3dbf0", null ],
     [ "operator==", "classostk_1_1physics_1_1coord_1_1_velocity.html#abadc0cc438b95d0820aa82603a0cd25b", null ],
-    [ "toString", "classostk_1_1physics_1_1coord_1_1_velocity.html#a130159d8ac35bd33440cb1890d65e8a5", null ],
+    [ "toString", "classostk_1_1physics_1_1coord_1_1_velocity.html#a48227bc666c8b559df29b5a812aa5ab2", null ],
     [ "operator<<", "classostk_1_1physics_1_1coord_1_1_velocity.html#ab3987a176df736aa7fa50aa763ed068b", null ]
 ];

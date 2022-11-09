@@ -29,7 +29,7 @@ bool \hyperlink{classostk_1_1physics_1_1coord_1_1_position_af1c3aef299ac63eac53a
 \item 
 bool \hyperlink{classostk_1_1physics_1_1coord_1_1_position_a969585edcf7795bbb6f4e62a10b2885b}{is\+Defined} () const
 \item 
-bool \hyperlink{classostk_1_1physics_1_1coord_1_1_position_a9ed9c1f90cb058db0e79bd648296c2b5}{is\+Near} (const \hyperlink{classostk_1_1physics_1_1coord_1_1_position}{Position} \&a\+Position, const \hyperlink{classostk_1_1physics_1_1units_1_1_length}{Length} \&a\+Length) const
+bool \hyperlink{classostk_1_1physics_1_1coord_1_1_position_a74cd31785d720561076b9f277d008dae}{is\+Near} (const \hyperlink{classostk_1_1physics_1_1coord_1_1_position}{Position} \&a\+Position, const \hyperlink{classostk_1_1physics_1_1units_1_1_length}{Length} \&a\+Tolerance) const
 \item 
 const Vector3d \& \hyperlink{classostk_1_1physics_1_1coord_1_1_position_a47594258eb1f13649f3ba705a9a3d1e8}{access\+Coordinates} () const
 \item 
@@ -45,7 +45,7 @@ Vector3d \hyperlink{classostk_1_1physics_1_1coord_1_1_position_ad316c42a469eb410
 \item 
 \hyperlink{classostk_1_1physics_1_1coord_1_1_position}{Position} \hyperlink{classostk_1_1physics_1_1coord_1_1_position_a01c22174b6c2d27ccb363f35e307c5e9}{in\+Frame} (const Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+Frame\+S\+Ptr, const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant) const
 \item 
-String \hyperlink{classostk_1_1physics_1_1coord_1_1_position_a6aa81e5bdaa16f35b1884ff8bc1238dc}{to\+String} (const Integer \&a\+Precision=Integer\+::\+Undefined()) const
+String \hyperlink{classostk_1_1physics_1_1coord_1_1_position_a4b5e999fb0fd55eda5637efa9694852e}{to\+String} (const Integer \&a\+Precision=\hyperlink{_velocity_8hpp_a6d81881a7883657dbc659ca545d9085d}{D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+R\+E\+C\+I\+S\+I\+ON}) const
 \end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -137,11 +137,11 @@ std\+::ostream \& \hyperlink{classostk_1_1physics_1_1coord_1_1_position_aab9f362
 \subsubsection{\texorpdfstring{is\+Defined()}{isDefined()}}
 {\footnotesize\ttfamily bool ostk\+::physics\+::coord\+::\+Position\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
-\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1_position_a9ed9c1f90cb058db0e79bd648296c2b5}\label{classostk_1_1physics_1_1coord_1_1_position_a9ed9c1f90cb058db0e79bd648296c2b5}} 
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1_position_a74cd31785d720561076b9f277d008dae}\label{classostk_1_1physics_1_1coord_1_1_position_a74cd31785d720561076b9f277d008dae}} 
 \index{ostk\+::physics\+::coord\+::\+Position@{ostk\+::physics\+::coord\+::\+Position}!is\+Near@{is\+Near}}
 \index{is\+Near@{is\+Near}!ostk\+::physics\+::coord\+::\+Position@{ostk\+::physics\+::coord\+::\+Position}}
 \subsubsection{\texorpdfstring{is\+Near()}{isNear()}}
-{\footnotesize\ttfamily bool ostk\+::physics\+::coord\+::\+Position\+::is\+Near (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1coord_1_1_position}{Position} \&}]{a\+Position,  }\item[{const \hyperlink{classostk_1_1physics_1_1units_1_1_length}{Length} \&}]{a\+Length }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily bool ostk\+::physics\+::coord\+::\+Position\+::is\+Near (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1coord_1_1_position}{Position} \&}]{a\+Position,  }\item[{const \hyperlink{classostk_1_1physics_1_1units_1_1_length}{Length} \&}]{a\+Tolerance }\end{DoxyParamCaption}) const}
 
 \mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1_position_abb788f397f0db9c86f7af8213ca2b063}\label{classostk_1_1physics_1_1coord_1_1_position_abb788f397f0db9c86f7af8213ca2b063}} 
 \index{ostk\+::physics\+::coord\+::\+Position@{ostk\+::physics\+::coord\+::\+Position}!Meters@{Meters}}
@@ -167,11 +167,11 @@ std\+::ostream \& \hyperlink{classostk_1_1physics_1_1coord_1_1_position_aab9f362
 \subsubsection{\texorpdfstring{operator==()}{operator==()}}
 {\footnotesize\ttfamily bool ostk\+::physics\+::coord\+::\+Position\+::operator== (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1coord_1_1_position}{Position} \&}]{a\+Position }\end{DoxyParamCaption}) const}
 
-\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1_position_a6aa81e5bdaa16f35b1884ff8bc1238dc}\label{classostk_1_1physics_1_1coord_1_1_position_a6aa81e5bdaa16f35b1884ff8bc1238dc}} 
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1_position_a4b5e999fb0fd55eda5637efa9694852e}\label{classostk_1_1physics_1_1coord_1_1_position_a4b5e999fb0fd55eda5637efa9694852e}} 
 \index{ostk\+::physics\+::coord\+::\+Position@{ostk\+::physics\+::coord\+::\+Position}!to\+String@{to\+String}}
 \index{to\+String@{to\+String}!ostk\+::physics\+::coord\+::\+Position@{ostk\+::physics\+::coord\+::\+Position}}
 \subsubsection{\texorpdfstring{to\+String()}{toString()}}
-{\footnotesize\ttfamily String ostk\+::physics\+::coord\+::\+Position\+::to\+String (\begin{DoxyParamCaption}\item[{const Integer \&}]{a\+Precision = {\ttfamily Integer\+:\+:Undefined()} }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily String ostk\+::physics\+::coord\+::\+Position\+::to\+String (\begin{DoxyParamCaption}\item[{const Integer \&}]{a\+Precision = {\ttfamily \hyperlink{_velocity_8hpp_a6d81881a7883657dbc659ca545d9085d}{D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+R\+E\+C\+I\+S\+I\+ON}} }\end{DoxyParamCaption}) const}
 
 \mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1_position_a9d9c2e5b2a72f978192eb9e3a7ce7d8b}\label{classostk_1_1physics_1_1coord_1_1_position_a9d9c2e5b2a72f978192eb9e3a7ce7d8b}} 
 \index{ostk\+::physics\+::coord\+::\+Position@{ostk\+::physics\+::coord\+::\+Position}!Undefined@{Undefined}}

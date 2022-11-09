@@ -8,13 +8,9 @@ var dir_949af57ef66b1ac2fa8b99078272a067 =
     [ "Frame.hpp", "_frame_8hpp.html", [
       [ "Frame", "classostk_1_1physics_1_1coord_1_1_frame.html", "classostk_1_1physics_1_1coord_1_1_frame" ]
     ] ],
-    [ "Position.hpp", "_position_8hpp.html", [
-      [ "Position", "classostk_1_1physics_1_1coord_1_1_position.html", "classostk_1_1physics_1_1coord_1_1_position" ]
-    ] ],
+    [ "Position.hpp", "_position_8hpp.html", "_position_8hpp" ],
     [ "Transform.hpp", "_transform_8hpp.html", [
       [ "Transform", "classostk_1_1physics_1_1coord_1_1_transform.html", "classostk_1_1physics_1_1coord_1_1_transform" ]
     ] ],
-    [ "Velocity.hpp", "_velocity_8hpp.html", [
-      [ "Velocity", "classostk_1_1physics_1_1coord_1_1_velocity.html", "classostk_1_1physics_1_1coord_1_1_velocity" ]
-    ] ]
+    [ "Velocity.hpp", "_velocity_8hpp.html", "_velocity_8hpp" ]
 ];
