@@ -200,7 +200,7 @@ The following environment variables can be set:
 | `OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE`                          | `Manual`                                                                 |
 | `OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY`              | `./.open-space-toolkit/physics/coordinate/frame/providers/iers`          |
 | `OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT` | `60`                                                                     |
-| `OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL`                    | `https://maia.usno.navy.mil/ser7/`                           |
+| `OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL`                    | `https://maia.usno.navy.mil/ser7/`                                       |
 | `OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_ENGINE_MODE`                             | `Manual`                                                                 |
 | `OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY`                | `./.open-space-toolkit/physics/environment/ephemerides/spice`            |
 | `OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_REMOTE_URL`                      | `https://naif.jpl.nasa.gov/pub/naif/generic_kernels/`                    |
@@ -262,16 +262,18 @@ Or to run them manually:
 
 ## Dependencies
 
-| Name          | Version    | License                                                    | Link                                                                                                                                       |
-| ------------- | ---------- | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| Pybind11    | 2.6.1   | BSD-3-Clause           | [github.com/pybind/pybind11](https://github.com/pybind/pybind11)       |
-| Eigen         | 3.3.7      | MPL2                                                       | [eigen.tuxfamily.org](http://eigen.tuxfamily.org/index.php)                                                                                |
-| IAU SOFA      | 2018-01-30 | [SOFA Software License](http://www.iausofa.org/tandc.html) | [www.iausofa.org](http://www.iausofa.org)                                                                                                  |
-| SPICE Toolkit | N0066      | [NAIF](https://naif.jpl.nasa.gov/naif/rules.html)          | [naif.jpl.nasa.gov/naif/toolkit.html](https://naif.jpl.nasa.gov/naif/toolkit.html)                                                         |
-| GeographicLib | 1.52       | MIT                                                        | [geographiclib.sourceforge.io](https://geographiclib.sourceforge.io)                                                                       |
-| Core          | main       | Apache License 2.0                                         | [github.com/open-space-collective/open-space-toolkit-core](https://github.com/open-space-collective/open-space-toolkit-core)               |
-| I/O           | main       | Apache License 2.0                                         | [github.com/open-space-collective/open-space-toolkit-io](https://github.com/open-space-collective/open-space-toolkit-io)                   |
-| Mathematics   | main       | Apache License 2.0                                         | [github.com/open-space-collective/open-space-toolkit-mathematics](https://github.com/open-space-collective/open-space-toolkit-mathematics) |
+| Name          | Version      | License                                                    | Link                                                                                                                                       |
+| ------------- | ------------ | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| Pybind11      | `2.10.1`     | BSD-3-Clause                                               | [github.com/pybind/pybind11](https://github.com/pybind/pybind11)                                                                           |
+| {fmt}         | `5.2.0`      | BSD-2-Clause                                               | [github.com/fmtlib/fmt](https://github.com/fmtlib/fmt)                                                                                     |
+| ordered-map   | `0.6.0`      | MIT                                                        | [github.com/Tessil/ordered-map](https://github.com/Tessil/ordered-map)                                                                     |
+| Eigen         | `3.3.7`      | MPL2                                                       | [eigen.tuxfamily.org](http://eigen.tuxfamily.org/index.php)                                                                                |
+| IAU SOFA      | `2018-01-30` | [SOFA Software License](http://www.iausofa.org/tandc.html) | [www.iausofa.org](http://www.iausofa.org)                                                                                                  |
+| SPICE Toolkit | `N0067`      | [NAIF](https://naif.jpl.nasa.gov/naif/rules.html)          | [naif.jpl.nasa.gov/naif/toolkit.html](https://naif.jpl.nasa.gov/naif/toolkit.html)                                                         |
+| GeographicLib | `1.52`       | MIT                                                        | [geographiclib.sourceforge.io](https://geographiclib.sourceforge.io)                                                                       |
+| Core          | `main`       | Apache License 2.0                                         | [github.com/open-space-collective/open-space-toolkit-core](https://github.com/open-space-collective/open-space-toolkit-core)               |
+| I/O           | `main`       | Apache License 2.0                                         | [github.com/open-space-collective/open-space-toolkit-io](https://github.com/open-space-collective/open-space-toolkit-io)                   |
+| Mathematics   | `main`       | Apache License 2.0                                         | [github.com/open-space-collective/open-space-toolkit-mathematics](https://github.com/open-space-collective/open-space-toolkit-mathematics) |
 
 ## Contribution
 
