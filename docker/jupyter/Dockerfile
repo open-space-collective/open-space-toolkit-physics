@@ -7,13 +7,13 @@
 
 ################################################################################################################################################################
 
-ARG JUPYTER_NOTEBOOK_IMAGE_REPOSITORY=jupyter/scipy-notebook:python-3.8.8
+ARG JUPYTER_NOTEBOOK_IMAGE_REPOSITORY="jupyter/scipy-notebook:python-3.8.8"
 
 FROM ${JUPYTER_NOTEBOOK_IMAGE_REPOSITORY}
 
 LABEL maintainer="lucas@loftorbital.com"
 
-ENV JUPYTER_ENABLE_LAB yes
+ENV JUPYTER_ENABLE_LAB="yes"
 
 # Set user to root
 
@@ -39,8 +39,8 @@ COPY ./shortcuts-extension /home/jovyan/.jupyter/lab/user-settings/@jupyterlab/s
 
 RUN chown -R ${NB_UID}:${NB_UID} /home/jovyan/.jupyter
 
-ENV LD_LIBRARY_PATH "/usr/local/lib:/usr/lib/x86_64-linux-gnu:/opt/conda/lib/python3.8/site-packages:/home/jovyan/lib:/opt/conda/lib"
-ENV PYTHONPATH "/opt/conda/lib/python3.8/site-packages:/home/jovyan/lib"
+ENV LD_LIBRARY_PATH="/usr/local/lib:/usr/lib/x86_64-linux-gnu:/opt/conda/lib/python3.8/site-packages:/home/jovyan/lib:/opt/conda/lib"
+ENV PYTHONPATH="/opt/conda/lib/python3.8/site-packages:/home/jovyan/lib"
 
 # Install Open Space Toolkit
 

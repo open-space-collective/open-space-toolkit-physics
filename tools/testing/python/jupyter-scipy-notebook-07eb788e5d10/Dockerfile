@@ -17,8 +17,8 @@ COPY bindings/python/requirements.txt /requirements.txt
 
 RUN pip install -r /requirements.txt
 
-ENV LD_LIBRARY_PATH /usr/local/lib:/opt/conda/lib/python3.6/site-packages:/home/jovyan/open-space-toolkit/physics/lib
-ENV PYTHONPATH /opt/conda/lib/python3.6/site-packages:/home/jovyan/open-space-toolkit/physics/lib
+ENV LD_LIBRARY_PATH="/usr/local/lib:/opt/conda/lib/python3.6/site-packages:/home/jovyan/open-space-toolkit/physics/lib"
+ENV PYTHONPATH="/opt/conda/lib/python3.6/site-packages:/home/jovyan/open-space-toolkit/physics/lib"
 
 COPY bindings/python/tools/python/OpenSpaceToolkit/Physics /opt/conda/lib/python3.6/site-packages/OpenSpaceToolkit/Physics
 
