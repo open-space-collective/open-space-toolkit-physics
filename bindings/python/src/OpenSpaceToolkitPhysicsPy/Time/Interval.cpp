@@ -26,7 +26,15 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Interval     (   
 
     class_<Interval> interval_class(aModule, "Interval") ;
 
-    interval_class.def(init<const Instant&, const Instant&, const Interval::Type&>())
+    interval_class
+
+        .def
+        (
+            init<const Instant&, const Instant&, const Interval::Type&>(),
+            arg("start_instant"),
+            arg("end_instant"),
+            arg("type")
+        )
 
         .def(self == self)
         .def(self != self)
@@ -36,9 +44,9 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Interval     (   
 
         .def("is_defined", &Interval::isDefined)
         .def("is_degenerate", &Interval::isDegenerate)
-        .def("intersects", &Interval::intersects)
-        .def("contains_instant", +[] (const Interval& anInterval, const Instant& anInstant) -> bool { return anInterval.contains(anInstant) ; })
-        .def("contains_interval", +[] (const Interval& anInterval, const Interval& anOtherInterval) -> bool { return anInterval.contains(anOtherInterval) ; })
+        .def("intersects", +[] (const Interval& anInterval, const Interval& anotherInterval) -> bool { return anInterval.intersects(anotherInterval) ; }, arg("interval"))
+        .def("contains_instant", +[] (const Interval& anInterval, const Instant& anInstant) -> bool { return anInterval.contains(anInstant) ; }, arg("instant"))
+        .def("contains_interval", +[] (const Interval& anInterval, const Interval& anOtherInterval) -> bool { return anInterval.contains(anOtherInterval) ; }, arg("interval"))
 
         .def("get_lower_bound", &Interval::getLowerBound)
         .def("get_upper_bound", &Interval::getUpperBound)
@@ -55,8 +63,8 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Interval     (   
         .def("generate_grid", &Interval::generateGrid)
 
         .def_static("undefined", &Interval::Undefined)
-        .def_static("closed", &Interval::Closed)
-        .def_static("centered", &Interval::Centered)
+        .def_static("closed", &Interval::Closed, arg("start_instant"), arg("end_instant"))
+        .def_static("centered", &Interval::Centered, arg("instant"), arg("duration"), arg("type"))
         .def_static("parse", &Interval::Parse)
 
     ;
