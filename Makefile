@@ -288,8 +288,6 @@ start-development-debian start-development-fedora: _start-development
 
 _start-development: _build-development-image
 
-_start-development-no-link:
-
 	@ echo "Starting [$(target)] development environment..."
 
 	docker run \
@@ -302,17 +300,23 @@ _start-development-no-link:
 		$(docker_development_image_repository):$(docker_image_version)-$(target) \
 		/bin/bash
 
-_start-development-link:
+start-development-link: ## Start linked development environment
+
+	@ echo "Starting linked development environment..."
+
+	make start-development-link-debian
+
+start-development-link-debian: target := debian
+
+start-development-link-debian: _start-development-link
+
+_start-development-link: _build-development-image
+
+	$(if $(links), , $(error "You need to provide the links to the C++ dependency repositories you want to link with, separated by white spaces. For example: make start-development-link links="/home/OSTk/open-space-toolkit-mathematics /home/OSTk/open-space-toolkit-core"))
 
 	@ echo "Starting [$(target)] development environment (linked)..."
 
-	@ target=$(target) "$(CURDIR)/tools/development/start.sh" --link
-
-ifndef link
-_start-development: _start-development-no-link
-else
-_start-development: _start-development-link
-endif
+	@ project_directory="$(CURDIR)" docker_development_image_repository=$(docker_development_image_repository) docker_image_version=$(docker_image_version) target=$(target) "$(CURDIR)/tools/development/start.sh" --link $(links)
 
 start-python: ## Start Python runtime environment
 
