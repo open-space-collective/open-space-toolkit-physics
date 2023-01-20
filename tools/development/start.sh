@@ -5,7 +5,7 @@
 # @project        Open Space Toolkit ▸ Physics
 # @file           tools/development/start.sh
 # @author         Remy Derollez <remy@loftorbital.com>
-# @license        Copyright © 2018-2022 Loft Orbital Solutions Inc.
+# @license        Apache License 2.0
 
 ################################################################################################################################################################
 
