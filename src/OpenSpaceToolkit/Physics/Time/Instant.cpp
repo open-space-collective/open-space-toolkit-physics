@@ -374,12 +374,18 @@ Int64                           Instant::getLeapSecondCount                 ( ) 
     return Instant::dAT_UTC(this->inScale(Scale::UTC).count_) / 1000000000 ;
 }
 
-String                          Instant::toString                           (   const   Scale&                      aTimeScale                                  ) const
+String                          Instant::toString                           (   const   Scale&                      aTimeScale,
+                                                                                const   DateTime::Format&           aDateTimeFormat                             ) const
 {
 
     if (!this->isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Instant") ;
+    }
+
+    if ((aTimeScale == Scale::UTC) && (aDateTimeFormat == DateTime::Format::ISO8601))
+    {
+        return this->getDateTime(aTimeScale).toString(aDateTimeFormat) + "Z" ;
     }
 
     return this->getDateTime(aTimeScale).toString() + " [" + StringFromScale(aTimeScale) + "]" ;
