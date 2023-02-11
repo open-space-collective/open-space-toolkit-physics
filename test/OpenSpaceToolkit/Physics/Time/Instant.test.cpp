@@ -1239,7 +1239,7 @@ TEST (OpenSpaceToolkit_Physics_Time_Instant, ToString)
         // UTC ISO8601
         {
 
-            const scale = Scale::UTC ;
+            const Scale scale = Scale::UTC ;
 
             EXPECT_EQ(String::Format("2000-01-01 12:00:00Z", StringFromScale(scale)), Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0, 0, 0, 0), scale).toString(scale, DateTime::Format::ISO8601)) ;
             EXPECT_EQ(String::Format("2000-01-01 11:59:59.999.999.999Z", StringFromScale(scale)), Instant::DateTime(DateTime(2000, 1, 1, 11, 59, 59, 999, 999, 999), scale).toString(scale, DateTime::Format::ISO8601)) ;
