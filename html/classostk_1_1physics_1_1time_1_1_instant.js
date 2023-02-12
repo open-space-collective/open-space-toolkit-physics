@@ -19,6 +19,6 @@ var classostk_1_1physics_1_1time_1_1_instant =
     [ "operator==", "classostk_1_1physics_1_1time_1_1_instant.html#a701dd98cce0e8b7536aab09555a889f2", null ],
     [ "operator>", "classostk_1_1physics_1_1time_1_1_instant.html#a1e73faadcf3c6724a5e67f35db007697", null ],
     [ "operator>=", "classostk_1_1physics_1_1time_1_1_instant.html#af5370a5e8c4b39f46f2baf79105b35cc", null ],
-    [ "toString", "classostk_1_1physics_1_1time_1_1_instant.html#a710ff6dec3b97f4e10bcfeae6335eb56", null ],
+    [ "toString", "classostk_1_1physics_1_1time_1_1_instant.html#ad2848890ee69709ed5540d1c8fa017e1", null ],
     [ "operator<<", "classostk_1_1physics_1_1time_1_1_instant.html#a01668796f6ebfd8c23c2d0df17f00b65", null ]
 ];

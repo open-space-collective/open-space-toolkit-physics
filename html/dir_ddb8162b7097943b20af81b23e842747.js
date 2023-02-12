@@ -7,9 +7,7 @@ var dir_ddb8162b7097943b20af81b23e842747 =
     [ "Duration.hpp", "_duration_8hpp.html", [
       [ "Duration", "classostk_1_1physics_1_1time_1_1_duration.html", "classostk_1_1physics_1_1time_1_1_duration" ]
     ] ],
-    [ "Instant.hpp", "_instant_8hpp.html", [
-      [ "Instant", "classostk_1_1physics_1_1time_1_1_instant.html", "classostk_1_1physics_1_1time_1_1_instant" ]
-    ] ],
+    [ "Instant.hpp", "_instant_8hpp.html", "_instant_8hpp" ],
     [ "Interval.hpp", "_interval_8hpp.html", [
       [ "Interval", "classostk_1_1physics_1_1time_1_1_interval.html", "classostk_1_1physics_1_1time_1_1_interval" ]
     ] ],

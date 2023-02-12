@@ -152,9 +152,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aceab87ef79e6f5d1438ac78e11bdcd6f"><td class="memItemLeft" align="right" valign="top">Int64&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1time_1_1_instant.html#aceab87ef79e6f5d1438ac78e11bdcd6f">getLeapSecondCount</a> () const</td></tr>
 <tr class="memdesc:aceab87ef79e6f5d1438ac78e11bdcd6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get Leap Second count.  <a href="#aceab87ef79e6f5d1438ac78e11bdcd6f">More...</a><br /></td></tr>
 <tr class="separator:aceab87ef79e6f5d1438ac78e11bdcd6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a710ff6dec3b97f4e10bcfeae6335eb56"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1time_1_1_instant.html#a710ff6dec3b97f4e10bcfeae6335eb56">toString</a> (const <a class="el" href="namespaceostk_1_1physics_1_1time.html#adf23d37bd8641fb76a0e98ab46a70df7">Scale</a> &amp;aTimeScale=<a class="el" href="namespaceostk_1_1physics_1_1time.html#adf23d37bd8641fb76a0e98ab46a70df7a9234324ddf6b4176b57d803a925b7961">Scale::UTC</a>) const</td></tr>
-<tr class="memdesc:a710ff6dec3b97f4e10bcfeae6335eb56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get string representation of instant.  <a href="#a710ff6dec3b97f4e10bcfeae6335eb56">More...</a><br /></td></tr>
-<tr class="separator:a710ff6dec3b97f4e10bcfeae6335eb56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2848890ee69709ed5540d1c8fa017e1"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1time_1_1_instant.html#ad2848890ee69709ed5540d1c8fa017e1">toString</a> (const <a class="el" href="namespaceostk_1_1physics_1_1time.html#adf23d37bd8641fb76a0e98ab46a70df7">Scale</a> &amp;aTimeScale=<a class="el" href="_instant_8hpp.html#a83fe97f5695ec6cbf25b55bb0cf31a6e">DEFAULT_TIME_SCALE</a>, const <a class="el" href="classostk_1_1physics_1_1time_1_1_date_time.html#a1d21d982b18bf56ed684fcf1cd97e092">DateTime::Format</a> &amp;aDateTimeFormat=<a class="el" href="_instant_8hpp.html#a29e15915855da5a5ac528ed12373dda4">DEFAULT_DATE_TIME_FORMAT</a>) const</td></tr>
+<tr class="memdesc:ad2848890ee69709ed5540d1c8fa017e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get string representation of instant.  <a href="#ad2848890ee69709ed5540d1c8fa017e1">More...</a><br /></td></tr>
+<tr class="separator:ad2848890ee69709ed5540d1c8fa017e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -874,8 +874,8 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="a710ff6dec3b97f4e10bcfeae6335eb56"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a710ff6dec3b97f4e10bcfeae6335eb56">&#9670;&nbsp;</a></span>toString()</h2>
+<a id="ad2848890ee69709ed5540d1c8fa017e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2848890ee69709ed5540d1c8fa017e1">&#9670;&nbsp;</a></span>toString()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -884,14 +884,24 @@ Friends</h2></td></tr>
           <td class="memname">String ostk::physics::time::Instant::toString </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="namespaceostk_1_1physics_1_1time.html#adf23d37bd8641fb76a0e98ab46a70df7">Scale</a> &amp;&#160;</td>
-          <td class="paramname"><em>aTimeScale</em> = <code><a class="el" href="namespaceostk_1_1physics_1_1time.html#adf23d37bd8641fb76a0e98ab46a70df7a9234324ddf6b4176b57d803a925b7961">Scale::UTC</a></code></td><td>)</td>
-          <td> const</td>
+          <td class="paramname"><em>aTimeScale</em> = <code><a class="el" href="_instant_8hpp.html#a83fe97f5695ec6cbf25b55bb0cf31a6e">DEFAULT_TIME_SCALE</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classostk_1_1physics_1_1time_1_1_date_time.html#a1d21d982b18bf56ed684fcf1cd97e092">DateTime::Format</a> &amp;&#160;</td>
+          <td class="paramname"><em>aDateTimeFormat</em> = <code><a class="el" href="_instant_8hpp.html#a29e15915855da5a5ac528ed12373dda4">DEFAULT_DATE_TIME_FORMAT</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Get string representation of instant. </p>
-<div class="fragment"><div class="line"><a class="code" href="classostk_1_1physics_1_1time_1_1_instant.html#a3f84d0c2d0b140326d3b172b54e3ffff">Instant::J2000</a>().<a class="code" href="classostk_1_1physics_1_1time_1_1_instant.html#a710ff6dec3b97f4e10bcfeae6335eb56">toString</a>(<a class="code" href="namespaceostk_1_1physics_1_1time.html#adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b">Scale::TT</a>) ; <span class="comment">// 2000-01-01 12:00:00 [TT]</span></div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+<div class="fragment"><div class="line"><a class="code" href="classostk_1_1physics_1_1time_1_1_instant.html#a3f84d0c2d0b140326d3b172b54e3ffff">Instant::J2000</a>().<a class="code" href="classostk_1_1physics_1_1time_1_1_instant.html#ad2848890ee69709ed5540d1c8fa017e1">toString</a>(<a class="code" href="namespaceostk_1_1physics_1_1time.html#adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b">Scale::TT</a>) ; <span class="comment">// 2000-01-01 12:00:00 [TT]</span></div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">aTimeScale</td><td>A time scale </td></tr>
   </table>
