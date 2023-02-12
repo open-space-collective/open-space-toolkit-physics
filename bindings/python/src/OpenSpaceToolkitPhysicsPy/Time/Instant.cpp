@@ -55,9 +55,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Instant      (   
         .def("get_julian_date", &Instant::getJulianDate)
         .def("get_modified_julian_date", &Instant::getModifiedJulianDate)
         .def("get_leap_second_count", &Instant::getLeapSecondCount)
-        .def("to_string", +[] (const Instant& anInstant) -> String { return anInstant.toString() ; })
-        .def("to_string", +[] (const Instant& anInstant, const Scale& aScale) -> String { return anInstant.toString(aScale) ; }, arg("scale"))
-        .def("to_string", +[] (const Instant& anInstant, const Scale& aScale, const DateTime::Format& aDateTimeFormat) -> String { return anInstant.toString(aScale) ; }, arg("scale"), arg("date_time_format"))
+        .def("to_string", overload_cast<const Scale&, const DateTime::Format&>(&Instant::toString, const_), arg("scale") = DEFAULT_TIME_SCALE, arg("date_time_format") = DEFAULT_DATE_TIME_FORMAT)
 
         .def_static("undefined", &Instant::Undefined)
         .def_static("now", &Instant::Now)

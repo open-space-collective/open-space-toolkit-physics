@@ -383,12 +383,12 @@ String                          Instant::toString                           (   
         throw ostk::core::error::runtime::Undefined("Instant") ;
     }
 
-    if ((aTimeScale == Scale::UTC) && (aDateTimeFormat == DateTime::Format::ISO8601))
+    if ((aDateTimeFormat == DateTime::Format::ISO8601) && (aTimeScale == Scale::UTC))
     {
         return this->getDateTime(aTimeScale).toString(aDateTimeFormat) + "Z" ;
     }
 
-    return this->getDateTime(aTimeScale).toString() + " [" + StringFromScale(aTimeScale) + "]" ;
+    return this->getDateTime(aTimeScale).toString(aDateTimeFormat) + " [" + StringFromScale(aTimeScale) + "]" ;
 
 }
 
