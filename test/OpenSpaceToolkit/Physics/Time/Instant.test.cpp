@@ -1233,6 +1233,24 @@ TEST (OpenSpaceToolkit_Physics_Time_Instant, ToString)
 
     }
 
+    // UTC ISO8601
+    {
+
+        EXPECT_EQ("2000-01-01T12:00:00Z", Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0, 0, 0, 0), Scale::UTC).toString(Scale::UTC, DateTime::Format::ISO8601)) ;
+        EXPECT_EQ("2000-01-01T11:59:59.999999999Z", Instant::DateTime(DateTime(2000, 1, 1, 11, 59, 59, 999, 999, 999), Scale::UTC).toString(Scale::UTC, DateTime::Format::ISO8601)) ;
+        EXPECT_EQ("2000-01-01T12:00:00.000000001Z", Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0, 0, 0, 1), Scale::UTC).toString(Scale::UTC, DateTime::Format::ISO8601)) ;
+
+        EXPECT_EQ("1999-01-01T00:00:00Z", Instant::DateTime(DateTime(1999, 1, 1, 0, 0, 0, 0, 0, 0), Scale::UTC).toString(Scale::UTC, DateTime::Format::ISO8601)) ;
+        EXPECT_EQ("2000-01-01T00:00:00Z", Instant::DateTime(DateTime(2000, 1, 1, 0, 0, 0, 0, 0, 0), Scale::UTC).toString(Scale::UTC, DateTime::Format::ISO8601)) ;
+        EXPECT_EQ("2001-01-01T00:00:00Z", Instant::DateTime(DateTime(2001, 1, 1, 0, 0, 0, 0, 0, 0), Scale::UTC).toString(Scale::UTC, DateTime::Format::ISO8601)) ;
+
+        EXPECT_EQ("2018-01-02T03:04:05.006007008Z", Instant::DateTime(DateTime(2018, 1, 2, 3, 4, 5, 6, 7, 8), Scale::UTC).toString(Scale::UTC, DateTime::Format::ISO8601)) ;
+
+        EXPECT_EQ("1981-01-01T00:00:00Z", Instant::DateTime(DateTime(1981, 1, 1, 0, 0, 0, 0, 0, 0), Scale::UTC).toString(Scale::UTC, DateTime::Format::ISO8601)) ;
+        EXPECT_EQ("2030-12-31T23:59:59.999999999Z", Instant::DateTime(DateTime(2030, 12, 31, 23, 59, 59, 999, 999, 999), Scale::UTC).toString(Scale::UTC, DateTime::Format::ISO8601)) ;
+
+    }
+
     {
 
         for (auto const& scale : scales)

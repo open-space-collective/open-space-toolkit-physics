@@ -39,6 +39,11 @@ using ostk::physics::time::Duration ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#define                         DEFAULT_TIME_SCALE                              Scale::UTC
+#define                         DEFAULT_DATE_TIME_FORMAT                        DateTime::Format::Standard
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 /// @brief                      Point in time
 ///
 /// @ref                        https://en.wikipedia.org/wiki/Instant
@@ -279,7 +284,8 @@ class Instant
         /// @param              [in] aTimeScale A time scale
         /// @return             Serialized instant
 
-        String                  toString                                    (   const   Scale&                      aTimeScale                                  =   Scale::UTC ) const ;
+        String                  toString                                    (   const   Scale&                      aTimeScale                                  =   DEFAULT_TIME_SCALE,
+                                                                                const   DateTime::Format&           aDateTimeFormat                             =   DEFAULT_DATE_TIME_FORMAT ) const ;
 
         /// @brief              Constructs an undefined instant
         ///

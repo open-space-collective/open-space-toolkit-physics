@@ -118,5 +118,6 @@ def test_instant_to_string ():
 
     assert Instant.J2000().to_string() is not None
     assert Instant.J2000().to_string(Scale.UTC) is not None
+    assert Instant.J2000().to_string(Scale.UTC, DateTime.Format.ISO8601) is not None
 
 ################################################################################################################################################################

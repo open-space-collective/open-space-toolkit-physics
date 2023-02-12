@@ -28,12 +28,12 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time              (   
 
     // Add objects to python "time" submodules
     OpenSpaceToolkitPhysicsPy_Time_Scale(time) ;
-    OpenSpaceToolkitPhysicsPy_Time_Instant(time) ;
     OpenSpaceToolkitPhysicsPy_Time_Duration(time) ;
     OpenSpaceToolkitPhysicsPy_Time_DateTime(time) ;
     OpenSpaceToolkitPhysicsPy_Time_Date(time) ;
     OpenSpaceToolkitPhysicsPy_Time_Time(time) ;
     OpenSpaceToolkitPhysicsPy_Time_Interval(time) ;
+    OpenSpaceToolkitPhysicsPy_Time_Instant(time) ;
 
 }
 
