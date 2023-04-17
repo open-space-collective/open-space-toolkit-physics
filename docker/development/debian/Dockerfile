@@ -45,7 +45,7 @@ RUN git clone --branch v${ORDERED_MAP_VERSION} --depth 1 https://github.com/Tess
 
 ## Eigen
 
-ARG EIGEN_VERSION="3.3.7"
+ARG EIGEN_VERSION="3.4.0"
 
 RUN mkdir /tmp/eigen \
  && cd /tmp/eigen \
@@ -143,6 +143,20 @@ RUN mkdir -p /tmp/open-space-toolkit-mathematics \
  && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/${OSTK_MATHEMATICS_VERSION}/open-space-toolkit-mathematics-${OSTK_MATHEMATICS_VERSION}-1.x86_64-devel.deb \
  && apt-get install -y ./*.deb \
  && rm -rf /tmp/open-space-toolkit-mathematics
+
+## Boost
+
+ARG BOOST_MAJOR_VERSION="1"
+ARG BOOST_MINOR_VERSION="82"
+ARG BOOST_VERSION="${BOOST_MAJOR_VERSION}.${BOOST_MINOR_VERSION}.0"
+
+RUN mkdir -p /tmp/boost \
+ && cd /tmp/boost \
+ && wget --quiet -O boost_${BOOST_VERSION}.tar.gz https://sourceforge.net/projects/boost/files/boost/${BOOST_VERSION}/boost_${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}_0.tar.gz/download \
+ && tar xzvf boost_${BOOST_VERSION}.tar.gz \
+ && cd boost_${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}_0 \
+ && ./bootstrap.sh --prefix=/usr/local --with-libraries="date_time,regex,math,filesystem" \
+ && ./b2 install
 
 # Install data
 
