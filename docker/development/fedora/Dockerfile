@@ -106,7 +106,7 @@ RUN git clone https://github.com/geographiclib/geographiclib /tmp/geographiclib 
 
 ## Open Space Toolkit ▸ Core
 
-ARG OSTK_CORE_VERSION="0.4.7"
+ARG OSTK_CORE_VERSION="0.5.0"
 
 RUN mkdir -p /tmp/open-space-toolkit-core \
  && cd /tmp/open-space-toolkit-core \
@@ -117,7 +117,7 @@ RUN mkdir -p /tmp/open-space-toolkit-core \
 
 ## Open Space Toolkit ▸ IO
 
-ARG OSTK_IO_VERSION="0.4.6"
+ARG OSTK_IO_VERSION="0.5.0"
 
 RUN mkdir -p /tmp/open-space-toolkit-io \
  && cd /tmp/open-space-toolkit-io \
@@ -128,7 +128,7 @@ RUN mkdir -p /tmp/open-space-toolkit-io \
 
 ## Open Space Toolkit ▸ Mathematics
 
-ARG OSTK_MATHEMATICS_VERSION="0.5.2"
+ARG OSTK_MATHEMATICS_VERSION="0.6.0"
 
 RUN mkdir -p /tmp/open-space-toolkit-mathematics \
  && cd /tmp/open-space-toolkit-mathematics \
