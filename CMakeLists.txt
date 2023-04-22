@@ -227,12 +227,12 @@ ENDFOREACH ()
 
 ## Dependencies
 
-### Boost [1.81.0]
+### Boost [1.82.0]
 
 SET (Boost_USE_STATIC_LIBS ON)
 SET (Boost_USE_MULTITHREADED ON)
 
-FIND_PACKAGE ("Boost" "1.81" REQUIRED COMPONENTS "date_time" "regex" "filesystem")
+FIND_PACKAGE ("Boost" "1.82" REQUIRED COMPONENTS "date_time" "regex" "filesystem")
 
 IF (NOT Boost_FOUND)
     MESSAGE (SEND_ERROR "[Boost] not found.")
