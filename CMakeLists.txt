@@ -26,7 +26,7 @@ SET (PROJECT_VENDOR_URL "open-space-collective.org")
 OPTION (BUILD_SHARED_LIBRARY "Build shared library." ON)
 OPTION (BUILD_STATIC_LIBRARY "Build static library." OFF)
 OPTION (BUILD_UNIT_TESTS "Build tests" ON)
-OPTION (BUILD_PYTHON_BINDINGS "Build Python bindings." ON)
+OPTION (BUILD_PYTHON_BINDINGS "Build Python bindings." OFF)
 OPTION (BUILD_CODE_COVERAGE "Build code coverage" OFF)
 OPTION (BUILD_DOCUMENTATION "Build documentation" OFF)
 
@@ -285,6 +285,19 @@ IF (GEOGRAPHICLIB_FOUND)
 
 ELSE ()
     MESSAGE (SEND_ERROR "[GeographicLib] not found.")
+ENDIF ()
+
+### NRLMSISE-00 Model
+
+FIND_PACKAGE ("nrlmsise-00" REQUIRED)
+
+IF (NRLMSISE-00_FOUND)
+
+    INCLUDE_DIRECTORIES (${NRLMSISE-00_INCLUDE_DIRS})
+    LINK_DIRECTORIES (${NRLMSISE-00_LIBRARY_DIRS})
+
+ELSE ()
+    MESSAGE (SEND_ERROR "[NRLMSISE-00] not found.")
 ENDIF ()
 
 ### Open Space Toolkit ▸ Core
