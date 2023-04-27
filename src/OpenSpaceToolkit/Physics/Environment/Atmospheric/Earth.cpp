@@ -69,15 +69,22 @@ Earth::Type                     Earth::Impl::getType                        ( ) 
 Real                            Earth::Impl::getDensityAt                   (   const   LLA&                        aLLA,
                                                                                 const   Instant&                    anInstant                                   ) const
 {
+    if (type_ == Earth::Type::exponential)
+    {
+        const Real h = aLLA.getAltitude().inMeters() ; 								// [m] Altitude
+        const Real h_0 = 0.0 ; 													    // [m] Reference altitude
+        const Real H_0 = 8.7e3 ; 													// [m] Scale height
+        const Real rho_0 = 1.2 ; 													// [kg/m^3] Density at reference altitude
 
-	Real h = aLLA.getAltitude().inMeters() ; 								// [m] Altitude
-	Real h_0 = 0.0 ; 													    // [m] Reference altitude
-	Real H_0 = 8.7e3 ; 														// [m] Scale height
-	Real rho_0 = 1.2 ; 														// [kg/m^3] Density at reference altitude
+        const Real rho = rho_0 * std::exp((- h - h_0) / H_0) ;
 
-	Real rho = rho_0 * std::exp((- h - h_0) / H_0) ;
-
-	return rho ;
+        return rho ;
+    }
+    else
+    {
+        throw ostk::core::error::runtime::Undefined("Type") ;
+    }
+	
 
 }
 
