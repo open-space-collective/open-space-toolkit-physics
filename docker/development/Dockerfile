@@ -63,11 +63,24 @@ RUN mkdir /tmp/eigen \
 ARG IAU_SOFA_RELEASE="2018_0130_C"
 ARG IAU_SOFA_VERSION="20180130"
 
+#RUN mkdir -p /tmp/sofa \
+# && cd /tmp/sofa \
+# && wget --quiet http://www.iausofa.org/${IAU_SOFA_RELEASE}/sofa_c-${IAU_SOFA_VERSION}.tar.gz \
+# && tar -zxf sofa_c-${IAU_SOFA_VERSION}.tar.gz \
+# && cd sofa/${IAU_SOFA_VERSION}/c/src/ \
+# && pattern="CFLAGF = -c -pedantic -Wall -W -O" \
+# && target="CFLAGF = -c -pedantic -Wall -W -O -fpic" \
+# && sed -i -e 's,'"$pattern"','"$target"',g' makefile \
+# && make -j $(nproc) \
+# && mkdir /usr/local/include/sofa \
+# && cp -r *.h /usr/local/include/sofa \
+# && cp -r *.a /usr/local/lib \
+# && rm -rf /tmp/sofa
+
 RUN mkdir -p /tmp/sofa \
  && cd /tmp/sofa \
- && wget --quiet http://www.iausofa.org/${IAU_SOFA_RELEASE}/sofa_c-${IAU_SOFA_VERSION}.tar.gz \
- && tar -zxf sofa_c-${IAU_SOFA_VERSION}.tar.gz \
- && cd sofa/${IAU_SOFA_VERSION}/c/src/ \
+ && git clone "https://github.com/Starlink/sofa.git" \
+ && cd sofa/src \
  && pattern="CFLAGF = -c -pedantic -Wall -W -O" \
  && target="CFLAGF = -c -pedantic -Wall -W -O -fpic" \
  && sed -i -e 's,'"$pattern"','"$target"',g' makefile \
@@ -76,6 +89,7 @@ RUN mkdir -p /tmp/sofa \
  && cp -r *.h /usr/local/include/sofa \
  && cp -r *.a /usr/local/lib \
  && rm -rf /tmp/sofa
+
 
 ## SPICE Toolkit
 
@@ -113,16 +127,17 @@ RUN git clone https://github.com/geographiclib/geographiclib /tmp/geographiclib 
 
  # NRLMSISE00 Model
 
-ARG NRLMSISE00_MODEL_TAG="a5f81be"
+ARG NRLMSISE00_MODEL_COMMIT="a5f81be"
 
 RUN git clone https://github.com/magnific0/nrlmsise-00.git /tmp/nrlmsise \
  && cd /tmp/nrlmsise \
- && git checkout ${NRLMSISE00_MODEL_TAG} \
+ && git checkout ${NRLMSISE00_MODEL_COMMIT} \
  && mkdir build \
  && cd build \
- && cmake -DNRLMSISE00_WITH_TESTS="OFF" .. \
+ && cmake -DNRLMSISE00_WITH_TESTS="OFF" -DCMAKE_C_FLAGS="-fPIC" .. \
  && make -j $(nproc) \
- && cp ../nrlmsise-00.h /usr/local/include \
+ && mkdir /usr/local/include/nrlmsise-00 \
+ && cp ../nrlmsise-00.h /usr/local/include/nrlmsise-00 \
  && cp ../lib/libnrlmsise00.a /usr/local/lib \
  && rm -rf /tmp/nrlmsise
 
