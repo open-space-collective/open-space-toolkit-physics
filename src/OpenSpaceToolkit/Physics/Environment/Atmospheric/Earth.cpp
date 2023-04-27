@@ -13,8 +13,17 @@
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
 
-#include <nrlmsise-00.h>
+extern "C"{
+    #include <nrlmsise-00/nrlmsise-00.h>
+}
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+extern "C"{
+    void gtd7d(struct nrlmsise_input *input, 
+            struct nrlmsise_flags *flags, 
+           struct nrlmsise_output *output);
+}*/
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 namespace ostk
@@ -74,13 +83,41 @@ Earth::Type                     Earth::Impl::getType                        ( ) 
     return type_ ;
 }
 
-extern "C" void 
+
 
 Real                        Earth::Impl::getDensityAt                (   const   Vector3d&                   aPosition,
                                                                                 const   Instant&                    anInstant                                   ) const
 {
     
-    return 0.0 ;
+    struct nrlmsise_output output;
+	struct nrlmsise_input input;
+  	struct nrlmsise_flags flags;
+	struct ap_array aph;
+
+    for (int i=0;i<7;i++){
+		aph.a[i]=100;
+    }
+	
+    flags.switches[0]=0;
+  	for (int i=1;i<24;i++){
+  		flags.switches[i]=1;
+    }
+
+    input.doy=172;
+    input.year=0;
+    input.sec=29000;
+    input.alt=400;
+    input.g_lat=60;
+    input.g_long=-70;
+    input.lst=16;
+    input.f107A=150;
+    input.f107=150;
+    input.ap=4;
+
+    gtd7d(&input, &flags, &output) ;
+    
+    
+    return  output.d[5];
 }
 /*
     using GeographicLib::Geocentric ;
