@@ -2,7 +2,7 @@
 
 /// @project        Open Space Toolkit ▸ Physics
 /// @file           OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>
+/// @author         Kyle Cochran <kyle.cochran@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -48,11 +48,6 @@ using ostk::physics::environment::atmospheric::Model ;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @brief                      Earth atmospheric model
-///
-///                             The atmospheric potential is expanded as sum of spherical harmonics.
-///
-/// @ref                        https://en.wikipedia.org/wiki/Spherical_harmonics
-/// @ref                        https://geographiclib.sourceforge.io/html/gravity.html
 
 class Earth : public Model
 {
@@ -60,18 +55,14 @@ class Earth : public Model
     public:
 
         enum class Type
-        {
-                NRLMSISE00           /// Naval Research Lab Model
-                
-
+        {      
+            exponential,
         } ;
 
-        /// @brief              Constructor with max degree and order variables
+        /// @brief              Constructor
         ///
         /// @param              [in] aType A atmospheric model type
         /// @param              [in] (optional) aDataDirectory A atmospheric model data directory
-        /// @param              [in] (optional) aGravityModelDegree A atmospheric model degree
-        /// @param              [in] (optional) aGravityModelOrder A atmospheric model order
 
                                 Earth                                       (   const   Earth::Type&                aType,
                                                                                 const   Directory&                  aDataDirectory                              =   Directory::Undefined()) ;
@@ -105,13 +96,13 @@ class Earth : public Model
 
         Earth::Type             getType                                     ( ) const ;
 
-        /// @brief              Get the atmospheric density at a given position and instant
+        /// @brief              Get the atmospheric density value at a given position and instant
         ///
-        /// @param              [in] aPosition A position, expressed in the atmospheric object frame [m]
+        /// @param              [in] aPosition A position, expressed as latitude, longitude, altitude [deg, deg, m]
         /// @param              [in] anInstant An instant
-        /// @return             Atmospheric field value, expressed in the atmospheric object frame [m.s-2]
+        /// @return             Atmospheric density value [kg.m^-3]
 
-        virtual Real            getDensityAt                                    (   const   Vector3d&                   aPosition,
+        virtual Real            getDensityAt                                (   const   Vector3d&                   aPosition,
                                                                                 const   Instant&                    anInstant                                   ) const override ;
 
     private:

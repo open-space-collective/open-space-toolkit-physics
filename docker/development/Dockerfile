@@ -125,22 +125,6 @@ RUN git clone https://github.com/geographiclib/geographiclib /tmp/geographiclib 
  && rm -rf /tmp/geographiclib \
  && rm -rf /var/lib/apt/lists/*
 
- # NRLMSISE00 Model
-
-ARG NRLMSISE00_MODEL_COMMIT="a5f81be"
-
-RUN git clone https://github.com/magnific0/nrlmsise-00.git /tmp/nrlmsise \
- && cd /tmp/nrlmsise \
- && git checkout ${NRLMSISE00_MODEL_COMMIT} \
- && mkdir build \
- && cd build \
- && cmake -DNRLMSISE00_WITH_TESTS="OFF" -DCMAKE_C_FLAGS="-fPIC" .. \
- && make -j $(nproc) \
- && mkdir /usr/local/include/nrlmsise-00 \
- && cp ../nrlmsise-00.h /usr/local/include/nrlmsise-00 \
- && cp ../lib/libnrlmsise00.a /usr/local/lib \
- && rm -rf /tmp/nrlmsise
-
 ## Open Space Toolkit ▸ Core
 
 ARG OSTK_CORE_VERSION="0.5.0"
