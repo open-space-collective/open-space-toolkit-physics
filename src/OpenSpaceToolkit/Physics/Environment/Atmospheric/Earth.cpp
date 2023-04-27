@@ -11,6 +11,7 @@
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
+#include <math.h>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -37,7 +38,7 @@ class Earth::Impl
 
         Earth::Type             getType                                     ( ) const ;
 
-        Real                    getDensityAt                                (   const   Vector3d&                   aPosition,
+        Real                    getDensityAt                                (   const   LLA&                        aLLA,
                                                                                 const   Instant&                    anInstant                                   ) const ;
 
     private:
@@ -65,12 +66,22 @@ Earth::Type                     Earth::Impl::getType                        ( ) 
     return type_ ;
 }
 
-Real                            Earth::Impl::getDensityAt                   (   const   Vector3d&                   aPosition,
+Real                            Earth::Impl::getDensityAt                   (   const   LLA&                        aLLA,
                                                                                 const   Instant&                    anInstant                                   ) const
 {
-    
-    return  0.0;
+
+	Real h = aLLA.getAltitude().inMeters() ; 								// [m] Altitude
+	Real h_0 = 0.0 ; 													    // [m] Reference altitude
+	Real H_0 = 8.7e3 ; 														// [m] Scale height
+	Real rho_0 = 1.2 ; 														// [kg/m^3] Density at reference altitude
+
+	Real rho = rho_0 * std::exp((- h - h_0) / H_0) ;
+
+	return rho ;
+
 }
+
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
                                 Earth::Earth                                (   const   Earth::Type&                aType,
@@ -120,10 +131,10 @@ Earth::Type                     Earth::getType                              ( ) 
     return implUPtr_->getType() ;
 }
 
-Real                            Earth::getDensityAt                         (   const   Vector3d&                   aPosition,
+Real                            Earth::getDensityAt                         (   const   LLA&                        aLLA,
                                                                                 const   Instant&                    anInstant                                   ) const
 {
-    return implUPtr_->getDensityAt(aPosition, anInstant) ;
+    return implUPtr_->getDensityAt(aLLA, anInstant) ;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

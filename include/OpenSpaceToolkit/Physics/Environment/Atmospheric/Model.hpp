@@ -14,6 +14,8 @@
 
 #include <OpenSpaceToolkit/Mathematics/Objects/Vector.hpp>
 #include <OpenSpaceToolkit/Core/Types/Real.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -33,6 +35,7 @@ using ostk::core::types::Real ;
 using ostk::math::obj::Vector3d ;
 
 using ostk::physics::time::Instant ;
+using ostk::physics::coord::spherical::LLA ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -63,7 +66,7 @@ class Model
         /// @param              [in] anInstant An instant
         /// @return             Atmospheric density value [kg.m^-3]
 
-        virtual Real            getDensityAt                                (   const   Vector3d&                   aPosition,
+        virtual Real            getDensityAt                                (   const   LLA&                        aLLA,
                                                                                 const   Instant&                    anInstant                                   ) const = 0 ;
 
 } ;

@@ -2,7 +2,7 @@
 
 /// @project        Open Space Toolkit ▸ Physics
 /// @file           OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.test.cpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>
+/// @author         Kyle Cochran <kyle.cochran@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -12,6 +12,8 @@
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Derived/Angle.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Length.hpp>
 
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
@@ -96,8 +98,9 @@ TEST (OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt)
     using ostk::core::fs::Path ;
     using ostk::core::fs::Directory ;
 
-    using ostk::math::obj::Vector3d ;
-
+    using ostk::physics::coord::spherical::LLA ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::units::Angle ;
     using ostk::physics::time::Scale ;
     using ostk::physics::time::Instant ;
     using ostk::physics::time::DateTime ;
@@ -111,13 +114,13 @@ TEST (OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt)
         //EarthAtmosphericModelManager::Get().enable() ;
 
         // Setup test inputs:
-        Vector3d dummy = {0,0,0} ;
+        LLA dummy = LLA(Angle(0, Angle::Unit::Degree), Angle(0, Angle::Unit::Degree), Length(0, Length::Unit::Meter)) ;
         Instant instant = Instant::DateTime(DateTime(2015, 1, 1, 0, 0, 0), Scale::UTC) ;
 
         EarthAtmosphericModel earthAtmosphericModel(EarthAtmosphericModel::Type::exponential, Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth"))) ;
         
         const double density = earthAtmosphericModel.getDensityAt(dummy, instant) ;
-        std::cout << "density is" << (density) ;
+        //std::cout << "density is" << (density) ;
         /*
         static const Array<Tuple<EarthAtmosphericModel::Type, Vector3d, Instant, Vector3d, Real>> testCases =
         {

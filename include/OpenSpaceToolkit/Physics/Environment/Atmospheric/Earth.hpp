@@ -98,11 +98,11 @@ class Earth : public Model
 
         /// @brief              Get the atmospheric density value at a given position and instant
         ///
-        /// @param              [in] aPosition A position, expressed as latitude, longitude, altitude [deg, deg, m]
+        /// @param              [in] aLLA A position, expressed as latitude, longitude, altitude [deg, deg, m]
         /// @param              [in] anInstant An instant
         /// @return             Atmospheric density value [kg.m^-3]
 
-        virtual Real            getDensityAt                                (   const   Vector3d&                   aPosition,
+        virtual Real            getDensityAt                                (   const   LLA&                        aLLA,
                                                                                 const   Instant&                    anInstant                                   ) const override ;
 
     private:
