@@ -7,7 +7,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.hpp>
+//#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
@@ -29,31 +29,31 @@ TEST (OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Constructor)
     using ostk::core::fs::Directory ;
 
     using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth ;
-    using EarthAtmosphericModelManager = ostk::physics::environment::atmospheric::earth::Manager ;
+    //using EarthAtmosphericModelManager = ostk::physics::environment::atmospheric::earth::Manager ;
 
     {
 
-        EarthAtmosphericModelManager::Get().setLocalRepository(Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth"))) ;
+        //EarthAtmosphericModelManager::Get().setLocalRepository(Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth"))) ;
 
-        EarthAtmosphericModelManager::Get().enable() ;
+        //EarthAtmosphericModelManager::Get().enable() ;
 
-        EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(EarthAtmosphericModel::Type::NRLMSISE00)) ;
+        EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(EarthAtmosphericModel::Type::exponential)) ;
 
-        EarthAtmosphericModelManager::Get().setLocalRepository(EarthAtmosphericModelManager::DefaultLocalRepository()) ;
+        //EarthAtmosphericModelManager::Get().setLocalRepository(EarthAtmosphericModelManager::DefaultLocalRepository()) ;
 
-        EarthAtmosphericModelManager::Get().setEnabled(EarthAtmosphericModelManager::DefaultEnabled()) ;
+        //EarthAtmosphericModelManager::Get().setEnabled(EarthAtmosphericModelManager::DefaultEnabled()) ;
 
     }
 
     {
 
-        EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(EarthAtmosphericModel::Type::NRLMSISE00, Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth")))) ;
+        EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(EarthAtmosphericModel::Type::exponential, Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth")))) ;
 
     }
 
     {
 
-        EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(EarthAtmosphericModel::Type::NRLMSISE00, Directory::Path(Path::Parse("/does/not/exist")))) ;
+        EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(EarthAtmosphericModel::Type::exponential, Directory::Path(Path::Parse("/does/not/exist")))) ;
 
     }
 
@@ -67,19 +67,19 @@ TEST (OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetType)
     using ostk::core::fs::Directory ;
 
     using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth ;
-    using EarthAtmosphericModelManager = ostk::physics::environment::atmospheric::earth::Manager ;
+    //using EarthAtmosphericModelManager = ostk::physics::environment::atmospheric::earth::Manager ;
 
     {
 
-        EarthAtmosphericModelManager::Get().setLocalRepository(Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth"))) ;
+        //EarthAtmosphericModelManager::Get().setLocalRepository(Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth"))) ;
 
-        EarthAtmosphericModelManager::Get().enable() ;
+        //EarthAtmosphericModelManager::Get().enable() ;
 
-        EXPECT_EQ(EarthAtmosphericModel::Type::NRLMSISE00, EarthAtmosphericModel(EarthAtmosphericModel::Type::NRLMSISE00).getType()) ;
+        EXPECT_EQ(EarthAtmosphericModel::Type::exponential, EarthAtmosphericModel(EarthAtmosphericModel::Type::exponential).getType()) ;
 
-        EarthAtmosphericModelManager::Get().setLocalRepository(EarthAtmosphericModelManager::DefaultLocalRepository()) ;
+        //EarthAtmosphericModelManager::Get().setLocalRepository(EarthAtmosphericModelManager::DefaultLocalRepository()) ;
 
-        EarthAtmosphericModelManager::Get().setEnabled(EarthAtmosphericModelManager::DefaultEnabled()) ;
+        //EarthAtmosphericModelManager::Get().setEnabled(EarthAtmosphericModelManager::DefaultEnabled()) ;
 
     }
 
@@ -102,7 +102,7 @@ TEST (OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt)
     using ostk::physics::time::Instant ;
     using ostk::physics::time::DateTime ;
     using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth ;
-    using EarthAtmosphericModelManager = ostk::physics::environment::atmospheric::earth::Manager ;
+    //using EarthAtmosphericModelManager = ostk::physics::environment::atmospheric::earth::Manager ;
 
     {
 
@@ -114,7 +114,7 @@ TEST (OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt)
         Vector3d dummy = {0,0,0} ;
         Instant instant = Instant::DateTime(DateTime(2015, 1, 1, 0, 0, 0), Scale::UTC) ;
 
-        EarthAtmosphericModel earthAtmosphericModel(EarthAtmosphericModel::Type::NRLMSISE00, Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth"))) ;
+        EarthAtmosphericModel earthAtmosphericModel(EarthAtmosphericModel::Type::exponential, Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth"))) ;
         
         const double density = earthAtmosphericModel.getDensityAt(dummy, instant) ;
         std::cout << "density is" << (density) ;

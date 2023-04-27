@@ -2,7 +2,7 @@
 
 /// @project        Open Space Toolkit ▸ Physics
 /// @file           OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>
+/// @author         Kyle Cochran <kyle.cochran@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -51,17 +51,17 @@ class Model
 
         virtual                 ~Model                                      ( ) = 0 ;
 
-        /// @brief              Clone the gravitational model (pure virtual)
+        /// @brief              Clone the atmospheric model (pure virtual)
         ///
-        /// @return             Pointer to gravitational model
+        /// @return             Pointer to atmospheric model
 
         virtual Model*          clone                                       ( ) const = 0 ;
 
-        /// @brief              Get the gravitational field value at a given position and instant (pure virtual)
+        /// @brief              Get the atmospheric density value at a given position and instant (pure virtual)
         ///
-        /// @param              [in] aPosition A position, expressed in the gravitational object frame [m]
+        /// @param              [in] aPosition A position, expressed as latitude, longitude, altitude [deg, deg, m]
         /// @param              [in] anInstant An instant
-        /// @return             Atmospheric field value, expressed in the gravitational object frame [m.s-2]
+        /// @return             Atmospheric density value [kg.m^-3]
 
         virtual Real            getDensityAt                                (   const   Vector3d&                   aPosition,
                                                                                 const   Instant&                    anInstant                                   ) const = 0 ;

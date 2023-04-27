@@ -2,7 +2,7 @@
 
 /// @project        Open Space Toolkit ▸ Physics
 /// @file           OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.cpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>
+/// @author         Kyle Cochran <kyle.cochran@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
