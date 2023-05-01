@@ -13,7 +13,6 @@
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
 
-#include <OpenSpaceToolkit/Mathematics/Objects/Vector.hpp>
 #include <OpenSpaceToolkit/Core/Types/Real.hpp>
 
 
@@ -31,8 +30,6 @@ namespace atmospheric
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using ostk::core::types::Real ;
-
-using ostk::math::obj::Vector3d ;
 
 using ostk::physics::time::Instant ;
 using ostk::physics::coord::spherical::LLA ;
