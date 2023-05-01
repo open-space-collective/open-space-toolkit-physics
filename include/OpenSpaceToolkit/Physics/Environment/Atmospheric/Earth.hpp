@@ -10,12 +10,13 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth__
 #define __OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth__
 
-#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp>
-#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
 #include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
 #include <OpenSpaceToolkit/Core/Types/Real.hpp>
 #include <OpenSpaceToolkit/Core/Types/Unique.hpp>
+
+#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -55,8 +56,8 @@ class Earth : public Model
 
         /// @brief              Constructor
         ///
-        /// @param              [in] aType A atmospheric model type
-        /// @param              [in] (optional) aDataDirectory A atmospheric model data directory
+        /// @param              [in] aType An atmospheric model type
+        /// @param              [in] (optional) aDataDirectory An atmospheric model data directory
 
                                 Earth                                       (   const   Earth::Type&                aType,
                                                                                 const   Directory&                  aDataDirectory                              =   Directory::Undefined()) ;
