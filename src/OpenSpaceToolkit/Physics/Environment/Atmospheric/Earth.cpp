@@ -53,7 +53,7 @@ class Earth::Impl
 
         Earth::Type             type_ ;
 
-        static Tuple<Real, Real, Real> getDensityBandValues_                (   const   Real&                       anAltitude                                 ) ;
+        static Tuple<Real, Real, Real> getDensityBandValues                 (   const   Length&                     anAltitude                                  ) ;
 
 } ;
 
@@ -76,12 +76,11 @@ Earth::Type                     Earth::Impl::getType                        ( ) 
     return type_ ;
 }
 
-
-
-Tuple<Real, Real, Real>         Earth::Impl::getDensityBandValues_          (   const   Real&                       anAltitude                                 )
+Tuple<Real, Real, Real>         Earth::Impl::getDensityBandValues           (   const   Length&                     anAltitude                                  )
 {
     // Reference values defined in Fundamentals of Astrodynamics and Applications by Vallado p. 534
-    static const Array<Real> refHeights = {
+    static const Array<Real> refHeights =
+    {
         0.0,
         25.0,
         30.0,
@@ -148,21 +147,24 @@ Tuple<Real, Real, Real>         Earth::Impl::getDensityBandValues_          (   
         static const Integer N_BANDS = 28 ;
         Integer bandIndex = Integer::Undefined() ;
 
-        for (Integer i = 0; i < N_BANDS-1; ++i) {
-            if (anAltitude < refHeights[i+1]) {
+        for (const auto i = 0; i < N_BANDS - 1; ++i)
+        {
+            if (anAltitude.inKilometers() < refHeights[i+1])
+            {
                 bandIndex = i ;
                 break ;
             }
         }
-        
-        if (bandIndex == Integer::Undefined()) {
-            throw ostk::core::error::RuntimeError(String::Format("Exponential density model is not valid for altitudes above 1000 km. Altitude = {} [km]", anAltitude)) ;
+
+        if (bandIndex == Integer::Undefined())
+        {
+            throw ostk::core::error::RuntimeError(String::Format("Exponential density model is not valid for altitudes above 1000 km. Altitude = {}", anAltitude)) ;
         }
 
         // TBI: can cache the index bandIndex to avoid searching from the top of the list every time.
 
         return {refHeights[bandIndex], std::get<0>(densityBands[bandIndex]), std::get<1>(densityBands[bandIndex])} ;
-    
+
 }
 
 Real                            Earth::Impl::getDensityAt                   (   const   LLA&                        aLLA,
@@ -170,16 +172,15 @@ Real                            Earth::Impl::getDensityAt                   (   
 {
     if (type_ == Earth::Type::Exponential)
     {
-        const Real h = aLLA.getAltitude().inKilometers() ;
+        const Length h = aLLA.getAltitude() ;
 
-
-        const Tuple<Real,Real,Real> densityBand = Earth::Impl::getDensityBandValues_(h) ;
+        const Tuple<Real, Real, Real> densityBand = Earth::Impl::getDensityBandValues_(h) ;
 
         const Real h_0 = std::get<0>(densityBand) ;
         const Real rho_0 = std::get<1>(densityBand) ;
         const Real H_0 = std::get<2>(densityBand) ;
 
-        const Real rho = rho_0 * std::exp(- (h - h_0) / H_0) ;
+        const Real rho = rho_0 * std::exp(- (h.inKilometers() - h_0) / H_0) ;
 
         return rho ;
     }
@@ -187,10 +188,8 @@ Real                            Earth::Impl::getDensityAt                   (   
     {
         throw ostk::core::error::runtime::Undefined("Type") ;
     }
-	
 
 }
-
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -202,14 +201,14 @@ Real                            Earth::Impl::getDensityAt                   (   
 
 }
 
-                                Earth::Earth                                (   const   Earth&                      anEarthAtmosphericModel                        )
+                                Earth::Earth                                (   const   Earth&                      anEarthAtmosphericModel                     )
                                 :   Model(anEarthAtmosphericModel),
                                     implUPtr_((anEarthAtmosphericModel.implUPtr_ != nullptr) ? std::make_unique<Earth::Impl>(*anEarthAtmosphericModel.implUPtr_) : nullptr)
 {
 
 }
 
-Earth&                          Earth::operator =                           (   const   Earth&                      anEarthAtmosphericModel                        )
+Earth&                          Earth::operator =                           (   const   Earth&                      anEarthAtmosphericModel                     )
 {
 
     if (this != &anEarthAtmosphericModel)
@@ -230,7 +229,6 @@ Earth&                          Earth::operator =                           (   
 
 }
 
-// Might want to look into using a Shared Pointer for Earth::Impl
 Earth*                          Earth::clone                                ( ) const
 {
     return new Earth(*this) ;
@@ -250,9 +248,7 @@ Real                            Earth::getDensityAt                         (   
 Unique<Earth::Impl>             Earth::ImplFromType                         (   const   Earth::Type&                aType,
                                                                                 const   Directory&                  aDataDirectory                              )
 {
-
     return std::make_unique<Earth::Impl>(aType, aDataDirectory) ;
-
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
