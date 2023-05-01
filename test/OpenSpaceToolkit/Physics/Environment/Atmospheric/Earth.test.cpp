@@ -31,31 +31,22 @@ TEST (OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Constructor)
     using ostk::core::fs::Directory ;
 
     using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth ;
-    //using EarthAtmosphericModelManager = ostk::physics::environment::atmospheric::earth::Manager ;
 
     {
 
-        //EarthAtmosphericModelManager::Get().setLocalRepository(Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth"))) ;
-
-        //EarthAtmosphericModelManager::Get().enable() ;
-
-        EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(EarthAtmosphericModel::Type::exponential)) ;
-
-        //EarthAtmosphericModelManager::Get().setLocalRepository(EarthAtmosphericModelManager::DefaultLocalRepository()) ;
-
-        //EarthAtmosphericModelManager::Get().setEnabled(EarthAtmosphericModelManager::DefaultEnabled()) ;
+        EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(EarthAtmosphericModel::Type::Exponential)) ;
 
     }
 
     {
 
-        EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(EarthAtmosphericModel::Type::exponential, Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth")))) ;
+        EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(EarthAtmosphericModel::Type::Exponential, Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth")))) ;
 
     }
 
     {
 
-        EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(EarthAtmosphericModel::Type::exponential, Directory::Path(Path::Parse("/does/not/exist")))) ;
+        EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(EarthAtmosphericModel::Type::Exponential, Directory::Path(Path::Parse("/does/not/exist")))) ;
 
     }
 
@@ -65,23 +56,11 @@ TEST (OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Constructor)
 TEST (OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetType)
 {
 
-    using ostk::core::fs::Path ;
-    using ostk::core::fs::Directory ;
-
     using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth ;
-    //using EarthAtmosphericModelManager = ostk::physics::environment::atmospheric::earth::Manager ;
 
     {
 
-        //EarthAtmosphericModelManager::Get().setLocalRepository(Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth"))) ;
-
-        //EarthAtmosphericModelManager::Get().enable() ;
-
-        EXPECT_EQ(EarthAtmosphericModel::Type::exponential, EarthAtmosphericModel(EarthAtmosphericModel::Type::exponential).getType()) ;
-
-        //EarthAtmosphericModelManager::Get().setLocalRepository(EarthAtmosphericModelManager::DefaultLocalRepository()) ;
-
-        //EarthAtmosphericModelManager::Get().setEnabled(EarthAtmosphericModelManager::DefaultEnabled()) ;
+        EXPECT_EQ(EarthAtmosphericModel::Type::Exponential, EarthAtmosphericModel(EarthAtmosphericModel::Type::Exponential).getType()) ;
 
     }
 
@@ -103,28 +82,44 @@ TEST (OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt)
     using ostk::physics::units::Angle ;
     using ostk::physics::time::Scale ;
     using ostk::physics::time::Instant ;
-    using ostk::physics::time::DateTime ;
     using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth ;
-    //using EarthAtmosphericModelManager = ostk::physics::environment::atmospheric::earth::Manager ;
 
     {
 
-        //EarthAtmosphericModelManager::Get().setLocalRepository(Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth"))) ;
-
-        //EarthAtmosphericModelManager::Get().enable() ;
-
-        // Setup test inputs:
-        LLA dummy = LLA(Angle(0, Angle::Unit::Degree), Angle(0, Angle::Unit::Degree), Length(0, Length::Unit::Meter)) ;
-        Instant instant = Instant::DateTime(DateTime(2015, 1, 1, 0, 0, 0), Scale::UTC) ;
-
-        EarthAtmosphericModel earthAtmosphericModel(EarthAtmosphericModel::Type::exponential, Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth"))) ;
-        
-        const double density = earthAtmosphericModel.getDensityAt(dummy, instant) ;
-        //std::cout << "density is" << (density) ;
-        /*
-        static const Array<Tuple<EarthAtmosphericModel::Type, Vector3d, Instant, Vector3d, Real>> testCases =
+        static const Array<Tuple<EarthAtmosphericModel::Type, LLA, Instant, Real, Real>> testCases =
         {
-            { EarthAtmosphericModel::Type::NRLMSISE00,  { 6378137.0, 0.0, 0.0 }, Instant::DateTime(DateTime(2015, 1, 1, 0, 0, 0), Scale::UTC), { -3.32722007216433e-06, -5.06143921819291e-06, +2.94583020764477e-05 }, 1e-15 },
+
+            { EarthAtmosphericModel::Type::Exponential, LLA( Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(123.0) ), Instant::J2000(), 1.77622e-08, 1e-13 },
+            { EarthAtmosphericModel::Type::Exponential, LLA( Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(499.0) ), Instant::J2000(), 7.08245e-13, 1e-15 },
+            { EarthAtmosphericModel::Type::Exponential, LLA( Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(501.0) ), Instant::J2000(), 6.85869e-13, 1e-15 },
+            { EarthAtmosphericModel::Type::Exponential, LLA( Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(550.0) ), Instant::J2000(), 3.18278e-13, 1e-15 }
+
+        } ;
+
+        for (const auto& testCase : testCases)
+        {
+
+            const EarthAtmosphericModel earthAtmosphericModel = { std::get<0>(testCase) } ;
+            const LLA lla = std::get<1>(testCase) ;
+            const Instant instant = std::get<2>(testCase) ;
+            const Real referenceDensity = std::get<3>(testCase) ;
+            const Real tolerance = std::get<4>(testCase) ;
+
+            const Real density = earthAtmosphericModel.getDensityAt(lla, instant) ;
+
+            EXPECT_TRUE(density.isNear(referenceDensity, tolerance)) << String::Format("{} ≈ {} Δ {} [T]", density.toString(), referenceDensity.toString(), (density - referenceDensity)) ;
+
+        }
+
+    }
+
+    {
+
+        static const Array<Tuple<EarthAtmosphericModel::Type, LLA, Instant>> testCases =
+        {
+
+            { EarthAtmosphericModel::Type::Exponential, LLA( Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(1001.0) ), Instant::J2000() },
+
         } ;
 
         for (const auto& testCase : testCases)
@@ -132,24 +127,13 @@ TEST (OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt)
 
             const EarthAtmosphericModel earthAtmosphericModel = { std::get<0>(testCase) } ;
 
-            const Vector3d position = std::get<1>(testCase) ;
+            const LLA lla = std::get<1>(testCase) ;
             const Instant instant = std::get<2>(testCase) ;
 
-            const Vector3d referenceFieldValue = std::get<3>(testCase) ;
-            const Real tolerance = std::get<4>(testCase) ;
-
-            const Vector3d fieldValue = earthAtmosphericModel.getFieldValueAt(position, instant) ;
-
-            EXPECT_TRUE(fieldValue.isNear(referenceFieldValue, tolerance)) << String::Format("{} ≈ {} Δ {} [T]", fieldValue.toString(), referenceFieldValue.toString(), (fieldValue - referenceFieldValue).norm()) ;
+            EXPECT_ANY_THROW(earthAtmosphericModel.getDensityAt(lla, instant)) ;
 
         }
-
-        EarthAtmosphericModelManager::Get().setLocalRepository(EarthAtmosphericModelManager::DefaultLocalRepository()) ;
-
-        EarthAtmosphericModelManager::Get().setEnabled(EarthAtmosphericModelManager::DefaultEnabled()) ;
-        */
     }
-
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

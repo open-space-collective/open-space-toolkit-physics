@@ -56,7 +56,7 @@ class Earth : public Model
 
         enum class Type
         {      
-            exponential,
+            Exponential,
         } ;
 
         /// @brief              Constructor
