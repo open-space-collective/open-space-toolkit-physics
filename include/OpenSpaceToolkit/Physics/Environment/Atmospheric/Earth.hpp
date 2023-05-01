@@ -12,9 +12,6 @@
 
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
-#include <OpenSpaceToolkit/Physics/Units/Derived.hpp>
-
-#include <OpenSpaceToolkit/IO/URL.hpp>
 
 #include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
 #include <OpenSpaceToolkit/Core/Types/Real.hpp>
@@ -35,13 +32,9 @@ namespace atmospheric
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using ostk::core::types::Unique ;
-using ostk::core::types::Integer ;
 using ostk::core::types::Real ;
 using ostk::core::fs::Directory ;
 
-using ostk::io::URL ;
-
-using ostk::physics::units::Derived ;
 using ostk::physics::time::Instant ;
 using ostk::physics::environment::atmospheric::Model ;
 

@@ -7,11 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
-#include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
-#include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Derived/Angle.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Length.hpp>
 
@@ -80,7 +77,6 @@ TEST (OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt)
     using ostk::physics::coord::spherical::LLA ;
     using ostk::physics::units::Length ;
     using ostk::physics::units::Angle ;
-    using ostk::physics::time::Scale ;
     using ostk::physics::time::Instant ;
     using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth ;
 
