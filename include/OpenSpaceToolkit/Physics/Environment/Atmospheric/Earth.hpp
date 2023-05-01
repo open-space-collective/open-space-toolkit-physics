@@ -50,6 +50,7 @@ class Earth : public Model
         enum class Type
         {      
             Exponential,
+            NRLMSISE00
         } ;
 
         /// @brief              Constructor
