@@ -245,6 +245,14 @@ Real                            Earth::getDensityAt                         (   
     return implUPtr_->getDensityAt(aLLA, anInstant) ;
 }
 
+Unique<Earth::Impl>             Earth::ImplFromType                         (   const   Earth::Type&                aType,
+                                                                                const   Directory&                  aDataDirectory                              )
+{
+
+    return std::make_unique<Earth::Impl>(aType, aDataDirectory) ;
+
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }
