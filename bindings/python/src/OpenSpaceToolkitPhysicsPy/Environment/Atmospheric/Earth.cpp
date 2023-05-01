@@ -43,13 +43,6 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Atmospheri
 
             .def
             (
-                init<const Earth::Type&, const Directory&,
-                arg("type"),
-                arg("directory"),
-            )
-
-            .def
-            (
                 "get_type",
                 &Earth::getType
             )
