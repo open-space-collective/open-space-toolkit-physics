@@ -11,10 +11,10 @@
 #define __OpenSpaceToolkit_Physics_Environment_Atmospheric_Model__
 
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Objects/Vector.hpp>
 #include <OpenSpaceToolkit/Core/Types/Real.hpp>
-#include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -60,9 +60,9 @@ class Model
 
         virtual Model*          clone                                       ( ) const = 0 ;
 
-        /// @brief              Get the atmospheric density value at a given position and instant (pure virtual)
+        /// @brief              Get the atmospheric density value at a given position and instant
         ///
-        /// @param              [in] aPosition A position, expressed as latitude, longitude, altitude [deg, deg, m]
+        /// @param              [in] aLLA A position, expressed as latitude, longitude, altitude [deg, deg, m]
         /// @param              [in] anInstant An instant
         /// @return             Atmospheric density value [kg.m^-3]
 
