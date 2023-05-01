@@ -157,7 +157,7 @@ Tuple<Real, Real, Real>         Earth::Impl::getDensityBandValues_          (   
             throw ostk::core::error::RuntimeError(String::Format("Exponential density model is not valid for altitudes above 1000 km. Altitude = {} [km]", anAltitude)) ;
         }
 
-        // TBI: can cache the index i to avoid searching from the bottom of the list every time.
+        // TBI: can cache the index bandIndex to avoid searching from the top of the list every time.
 
         return {refHeights[bandIndex], std::get<0>(densityBands[bandIndex]), std::get<1>(densityBands[bandIndex])} ;
     

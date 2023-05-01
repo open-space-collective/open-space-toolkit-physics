@@ -63,24 +63,11 @@ RUN mkdir /tmp/eigen \
 ARG IAU_SOFA_RELEASE="2018_0130_C"
 ARG IAU_SOFA_VERSION="20180130"
 
-#RUN mkdir -p /tmp/sofa \
-# && cd /tmp/sofa \
-# && wget --quiet http://www.iausofa.org/${IAU_SOFA_RELEASE}/sofa_c-${IAU_SOFA_VERSION}.tar.gz \
-# && tar -zxf sofa_c-${IAU_SOFA_VERSION}.tar.gz \
-# && cd sofa/${IAU_SOFA_VERSION}/c/src/ \
-# && pattern="CFLAGF = -c -pedantic -Wall -W -O" \
-# && target="CFLAGF = -c -pedantic -Wall -W -O -fpic" \
-# && sed -i -e 's,'"$pattern"','"$target"',g' makefile \
-# && make -j $(nproc) \
-# && mkdir /usr/local/include/sofa \
-# && cp -r *.h /usr/local/include/sofa \
-# && cp -r *.a /usr/local/lib \
-# && rm -rf /tmp/sofa
-
 RUN mkdir -p /tmp/sofa \
  && cd /tmp/sofa \
- && git clone "https://github.com/Starlink/sofa.git" \
- && cd sofa/src \
+ && wget --quiet http://www.iausofa.org/${IAU_SOFA_RELEASE}/sofa_c-${IAU_SOFA_VERSION}.tar.gz \
+ && tar -zxf sofa_c-${IAU_SOFA_VERSION}.tar.gz \
+ && cd sofa/${IAU_SOFA_VERSION}/c/src/ \
  && pattern="CFLAGF = -c -pedantic -Wall -W -O" \
  && target="CFLAGF = -c -pedantic -Wall -W -O -fpic" \
  && sed -i -e 's,'"$pattern"','"$target"',g' makefile \
@@ -89,7 +76,6 @@ RUN mkdir -p /tmp/sofa \
  && cp -r *.h /usr/local/include/sofa \
  && cp -r *.a /usr/local/lib \
  && rm -rf /tmp/sofa
-
 
 ## SPICE Toolkit
 
