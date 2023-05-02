@@ -121,7 +121,6 @@ TEST (OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt)
         {
 
             { EarthAtmosphericModel::Type::Exponential, LLA( Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(1001.0) ), Instant::J2000() },
-            { EarthAtmosphericModel::Type::NRLMSISE00, LLA( Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(100) ), Instant::J2000() }, // NRLMSISE throws because it is not yet implemented
 
         } ;
 
