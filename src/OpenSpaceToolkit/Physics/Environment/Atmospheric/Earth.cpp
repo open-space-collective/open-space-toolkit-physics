@@ -10,6 +10,7 @@
 #include <math.h>
 
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Length.hpp>
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
@@ -26,6 +27,8 @@ namespace atmospheric
 {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+using ostk::physics::units::Length ;
 
 using ostk::core::ctnr::Array ;
 using ostk::core::ctnr::Tuple ;
@@ -147,7 +150,7 @@ Tuple<Real, Real, Real>         Earth::Impl::getDensityBandValues           (   
         static const Integer N_BANDS = 28 ;
         Integer bandIndex = Integer::Undefined() ;
 
-        for (const auto i = 0; i < N_BANDS - 1; ++i)
+        for (int i = 0; i < N_BANDS - 1; ++i)
         {
             if (anAltitude.inKilometers() < refHeights[i+1])
             {
@@ -158,7 +161,7 @@ Tuple<Real, Real, Real>         Earth::Impl::getDensityBandValues           (   
 
         if (bandIndex == Integer::Undefined())
         {
-            throw ostk::core::error::RuntimeError(String::Format("Exponential density model is not valid for altitudes above 1000 km. Altitude = {}", anAltitude)) ;
+            throw ostk::core::error::RuntimeError(String::Format("Exponential density model is not valid for altitudes above 1000 km. Altitude = {}", anAltitude.inKilometers())) ;
         }
 
         // TBI: can cache the index bandIndex to avoid searching from the top of the list every time.
@@ -174,7 +177,7 @@ Real                            Earth::Impl::getDensityAt                   (   
     {
         const Length h = aLLA.getAltitude() ;
 
-        const Tuple<Real, Real, Real> densityBand = Earth::Impl::getDensityBandValues_(h) ;
+        const Tuple<Real, Real, Real> densityBand = Earth::Impl::getDensityBandValues(h) ;
 
         const Real h_0 = std::get<0>(densityBand) ;
         const Real rho_0 = std::get<1>(densityBand) ;
