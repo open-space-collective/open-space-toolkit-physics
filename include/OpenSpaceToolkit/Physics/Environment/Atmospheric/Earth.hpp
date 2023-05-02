@@ -12,6 +12,7 @@
 
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
 
 #include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
 #include <OpenSpaceToolkit/Core/Types/Real.hpp>
@@ -36,6 +37,7 @@ using ostk::core::fs::Directory ;
 
 using ostk::physics::time::Instant ;
 using ostk::physics::environment::atmospheric::Model ;
+using ostk::physics::coord::Position ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -97,6 +99,14 @@ class Earth : public Model
 
         virtual Real            getDensityAt                                (   const   LLA&                        aLLA,
                                                                                 const   Instant&                    anInstant                                   ) const override ;
+
+        /// @brief              Get the atmospheric density value at a given position and instant
+        ///
+        /// @param              [in] aPosition A Position
+        /// @param              [in] anInstant An Instant
+        /// @return             Atmospheric density value [kg.m^-3]
+         Real                   getDensityAt                                (   const   Position&                   aPosition,
+                                                                                const   Instant&                    anInstant                                   ) const ;
 
     private:
 

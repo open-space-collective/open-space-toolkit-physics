@@ -12,7 +12,7 @@
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Exponential.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Length.hpp>
-
+#include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
 
@@ -31,11 +31,15 @@ namespace atmospheric
 
 using ostk::physics::units::Length ;
 using ostk::physics::environment::atmospheric::Exponential ;
+using ostk::physics::env::obj::Celestial ;
+using ostk::physics::coord::Position ;
+using EarthCelestialBody = ostk::physics::env::obj::celest::Earth ;
 
 using ostk::core::ctnr::Array ;
 using ostk::core::ctnr::Tuple ;
 using ostk::core::types::String ;
 using ostk::core::types::Integer ;
+using ostk::core::types::Shared ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -101,7 +105,7 @@ class Earth::ExponentialImpl : public Earth::Impl
 
     private:
 
-        Exponential               ExponentialModel_ ;
+        Exponential             ExponentialModel_ ;
 
 } ;
 
@@ -182,6 +186,16 @@ Real                            Earth::getDensityAt                         (   
                                                                                 const   Instant&                    anInstant                                   ) const
 {
     return implUPtr_->getDensityAt(aLLA, anInstant) ;
+}
+
+Real                            Earth::getDensityAt                         (   const   Position&                   aPosition,
+                                                                                const   Instant&                    anInstant                                   ) const
+{
+
+    const LLA lla = LLA::Cartesian(aPosition.accessCoordinates(), EarthCelestialBody::EquatorialRadius, EarthCelestialBody::Flattening) ;
+    
+    return getDensityAt(lla, anInstant) ;
+
 }
 
 Unique<Earth::Impl>             Earth::ImplFromType                         (   const   Earth::Type&                aType,                                       
