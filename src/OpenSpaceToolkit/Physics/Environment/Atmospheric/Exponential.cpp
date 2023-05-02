@@ -142,6 +142,9 @@ Tuple<Real, Real, Real>         Exponential::getDensityBandValues           (   
 Real                            Exponential::getDensityAt                   (   const   LLA&                        aLLA, 
                                                                                 const   Instant&                    anInstant                                   ) const
 {
+
+    (void) anInstant ; // temporal invariance
+
     const Length h = aLLA.getAltitude() ;
 
     const Tuple<Real, Real, Real> densityBand = Exponential::getDensityBandValues(h) ;

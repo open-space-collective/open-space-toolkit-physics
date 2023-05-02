@@ -106,8 +106,8 @@ class Earth : public Model
 
         Unique<Impl>            implUPtr_ ;
 
-        static Unique<Impl>     ImplFromType                                (   const   Earth::Type&                aType ) ;
-
+        static Unique<Impl>     ImplFromType                                (   const   Type&                       aType,                                       
+                                                                                const   Directory&                  aDataDirectory                              = Directory::Undefined() ) ;
 } ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

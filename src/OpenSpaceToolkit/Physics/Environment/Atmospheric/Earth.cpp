@@ -45,9 +45,7 @@ class Earth::Impl
     public:
 
                                 Impl                                        (   const   Earth::Type&                aType,
-                                                                                const   Directory&                  aDataDirectory                              ) ;
-
-                                Impl                                        (   const   Earth::Type&                aType                                       ) ;
+                                                                                const   Directory&                  aDataDirectory                              =   Directory::Undefined()) ;
 
         virtual                 ~Impl                                       ( ) ;
 
@@ -72,13 +70,7 @@ class Earth::Impl
                                                                                 const   Directory&                  aDataDirectory                              )
                                 :   type_(aType)
 {
-
-}
-
-                                Earth::Impl::Impl                           (   const   Earth::Type&                aType                                       )
-                                :   type_(aType)
-{
-
+    (void) aDataDirectory ; // Not yet used
 }
 
                                 Earth::Impl::~Impl                          ( )
@@ -116,7 +108,6 @@ class Earth::ExponentialImpl : public Earth::Impl
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
                                 Earth::ExponentialImpl::ExponentialImpl     (   const   Earth::Type&                aType                                       )
-
                                 :   Earth::Impl(aType)
 {
 
@@ -144,7 +135,7 @@ Real                            Earth::ExponentialImpl::getDensityAt        (   
                                 Earth::Earth                                (   const   Earth::Type&                aType,
                                                                                 const   Directory&                  aDataDirectory                              )
                                 :   Model(),
-                                    implUPtr_(Earth::ImplFromType(aType))
+                                    implUPtr_(Earth::ImplFromType(aType, aDataDirectory))
 {
 
 }
@@ -193,8 +184,11 @@ Real                            Earth::getDensityAt                         (   
     return implUPtr_->getDensityAt(aLLA, anInstant) ;
 }
 
-Unique<Earth::Impl>             Earth::ImplFromType                         (   const   Earth::Type&                aType                                      )
+Unique<Earth::Impl>             Earth::ImplFromType                         (   const   Earth::Type&                aType,                                       
+                                                                                const   Directory&                  aDataDirectory                              )
 {
+
+    (void) aDataDirectory ; // Not yet used
 
     if (aType == Earth::Type::Exponential)
     {
