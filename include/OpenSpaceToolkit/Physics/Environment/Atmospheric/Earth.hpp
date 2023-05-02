@@ -101,11 +101,12 @@ class Earth : public Model
     private:
 
         class Impl ;
+        class ExponentialImpl ;
+        class ExternalImpl ;
 
         Unique<Impl>            implUPtr_ ;
 
-        static Unique<Impl>     ImplFromType                                (   const   Earth::Type&                aType,
-                                                                                const   Directory&                  aDataDirectory                              ) ;
+        static Unique<Impl>     ImplFromType                                (   const   Earth::Type&                aType ) ;
 
 } ;
 
