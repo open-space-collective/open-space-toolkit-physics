@@ -17,7 +17,6 @@
 #include <OpenSpaceToolkit/Core/Types/Real.hpp>
 #include <OpenSpaceToolkit/Core/Types/Unique.hpp>
 
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 namespace ostk
@@ -48,31 +47,31 @@ class Earth : public Model
     public:
 
         enum class Type
-        {      
+        {
             Exponential,
             NRLMSISE00
         } ;
 
         /// @brief              Constructor
         ///
-        /// @param              [in] aType A atmospheric model type
-        /// @param              [in] (optional) aDataDirectory A atmospheric model data directory
+        /// @param              [in] aType An atmospheric model type
+        /// @param              [in] (optional) aDataDirectory An atmospheric model data directory
 
                                 Earth                                       (   const   Earth::Type&                aType,
-                                                                                const   Directory&                  aDataDirectory                              =   Directory::Undefined()) ;
+                                                                                const   Directory&                  aDataDirectory                              =   Directory::Undefined() ) ;
 
         /// @brief              Copy constructor
         ///
-        /// @param              [in] anEarthAtmosphericModel An Earth model
+        /// @param              [in] anEarthAtmosphericModel An Earth atmospheric model
 
-                                Earth                                       (   const   Earth&                      anEarthAtmosphericModel                   ) ;
+                                Earth                                       (   const   Earth&                      anEarthAtmosphericModel                     ) ;
 
         /// @brief              Copy assignment operator
         ///
-        /// @param              [in] anEarthAtmosphericModel An Earth model
-        /// @return             Reference to Earth model
+        /// @param              [in] anEarthAtmosphericModel An Earth atmospheric model
+        /// @return             Reference to Earth atmospheric model
 
-        Earth&                  operator =                                  (   const   Earth&                      anEarthAtmosphericModel                   ) ;
+        Earth&                  operator =                                  (   const   Earth&                      anEarthAtmosphericModel                     ) ;
 
         /// @brief              Destructor
 
@@ -102,13 +101,11 @@ class Earth : public Model
     private:
 
         class Impl ;
-        class SphericalImpl ;
-        class ExternalImpl ;
 
         Unique<Impl>            implUPtr_ ;
 
         static Unique<Impl>     ImplFromType                                (   const   Earth::Type&                aType,
-                                                                                const   Directory&                  aDataDirectory                             ) ;
+                                                                                const   Directory&                  aDataDirectory                              ) ;
 
 } ;
 
