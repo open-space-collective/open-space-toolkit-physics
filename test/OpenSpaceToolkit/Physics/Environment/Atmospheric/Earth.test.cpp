@@ -87,7 +87,7 @@ TEST (OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt)
     using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth ;
 
     {
-
+        // Hand calculated values to validate
         static const Array<Tuple<EarthAtmosphericModel::Type, LLA, Instant, Real, Real>> testCases =
         {
 
