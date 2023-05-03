@@ -67,7 +67,9 @@ TEST (OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Clone)
 
         const EarthAtmosphericModel earthAtmosphericModel = { EarthAtmosphericModel::Type::Exponential } ;
 
-        EXPECT_NO_THROW( earthAtmosphericModel.clone() ) ;
+        EXPECT_NO_THROW( 
+            const EarthAtmosphericModel* earthAtmosphericModelPtr = earthAtmosphericModel.clone() ; delete earthAtmosphericModelPtr ;
+        ) ;
 
     }
 
