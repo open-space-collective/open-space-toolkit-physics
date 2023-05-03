@@ -11,8 +11,9 @@
 #define __OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth__
 
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp>
-#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
 #include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
 #include <OpenSpaceToolkit/Core/Types/Real.hpp>
@@ -36,8 +37,9 @@ using ostk::core::types::Real ;
 using ostk::core::fs::Directory ;
 
 using ostk::physics::time::Instant ;
-using ostk::physics::environment::atmospheric::Model ;
 using ostk::physics::coord::Position ;
+using ostk::physics::coord::spherical::LLA ;
+using ostk::physics::environment::atmospheric::Model ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -93,30 +95,31 @@ class Earth : public Model
 
         /// @brief              Get the atmospheric density value at a given position and instant
         ///
-        /// @param              [in] aLLA A position, expressed as latitude, longitude, altitude [deg, deg, m]
-        /// @param              [in] anInstant An instant
+        /// @param              [in] aPosition A Position
+        /// @param              [in] anInstant An Instant
         /// @return             Atmospheric density value [kg.m^-3]
 
-        virtual Real            getDensityAt                                (   const   LLA&                        aLLA,
+        virtual Real            getDensityAt                                (   const   Position&                   aPosition,
                                                                                 const   Instant&                    anInstant                                   ) const override ;
 
         /// @brief              Get the atmospheric density value at a given position and instant
         ///
-        /// @param              [in] aPosition A Position
-        /// @param              [in] anInstant An Instant
+        /// @param              [in] aLLA A position, expressed as latitude, longitude, altitude [deg, deg, m]
+        /// @param              [in] anInstant An instant
         /// @return             Atmospheric density value [kg.m^-3]
-         Real                   getDensityAt                                (   const   Position&                   aPosition,
+
+        Real                    getDensityAt                                (   const   LLA&                        aLLA,
                                                                                 const   Instant&                    anInstant                                   ) const ;
+
+
 
     private:
 
         class Impl ;
-        class ExponentialImpl ;
-        class ExternalImpl ;
 
         Unique<Impl>            implUPtr_ ;
 
-        static Unique<Impl>     ImplFromType                                (   const   Type&                       aType,                                       
+        static Unique<Impl>     ImplFromType                                (   const   Type&                       aType,
                                                                                 const   Directory&                  aDataDirectory                              = Directory::Undefined() ) ;
 } ;
 
