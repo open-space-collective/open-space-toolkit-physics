@@ -1,16 +1,15 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Physics
-/// @file           OpenSpaceToolkit/Physics/Environment/Atmospheric/Exponential.cpp
+/// @file           OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.cpp
 /// @author         Kyle Cochran <kyle.cochran@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <math.h>
-
-#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Exponential.hpp>
-#include <OpenSpaceToolkit/Physics/Units/Length.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
@@ -25,19 +24,17 @@ namespace environment
 {
 namespace atmospheric
 {
+namespace earth
+{
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using ostk::physics::units::Length ;
-
-using ostk::core::ctnr::Array ;
-using ostk::core::ctnr::Tuple ;
-using ostk::core::types::String ;
-using ostk::core::types::Integer ;
+using ostk::physics::coord::Frame ;
+using EarthCelestialBody = ostk::physics::env::obj::celest::Earth ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                                Exponential::Exponential                        ( )
+                                Exponential::Exponential                    ( )
                                 :   Model()
 {
 
@@ -48,8 +45,39 @@ Exponential*                    Exponential::clone                          ( ) 
     return new Exponential(*this) ;
 }
 
-Tuple<Real, Real, Real>         Exponential::getDensityBandValues           (   const   Length&                     anAltitude                                  )
+Real                            Exponential::getDensityAt                   (   const   Position&                   aPosition,
+                                                                                const   Instant&                    anInstant                                   ) const
 {
+    return this->getDensityAt
+    (
+        LLA::Cartesian(aPosition.inFrame(Frame::ITRF(), anInstant).accessCoordinates(), EarthCelestialBody::EquatorialRadius, EarthCelestialBody::Flattening),
+        anInstant
+    ) ;
+}
+
+Real                            Exponential::getDensityAt                   (   const   LLA&                        aLLA,
+                                                                                const   Instant&                    anInstant                                   ) const
+{
+
+    (void) anInstant ; // temporal invariance
+
+    const Length h = aLLA.getAltitude() ;
+
+    const Tuple<Real, Real, Real> densityBand = Exponential::DensityBandValues(h) ;
+
+    const Real h_0 = std::get<0>(densityBand) ;
+    const Real rho_0 = std::get<1>(densityBand) ;
+    const Real H_0 = std::get<2>(densityBand) ;
+
+    const Real rho = rho_0 * std::exp(- (h.inKilometers() - h_0) / H_0) ;
+
+    return rho ;
+
+}
+
+Tuple<Real, Real, Real>         Exponential::DensityBandValues              (   const   Length&                     anAltitude                                  )
+{
+
     // Reference values defined in Fundamentals of Astrodynamics and Applications by Vallado p. 534
     static const Array<Real> refHeights =
     {
@@ -116,51 +144,33 @@ Tuple<Real, Real, Real>         Exponential::getDensityBandValues           (   
         { 3.019e-15,   268.00 }  //  1000.0
     } ;
 
-        static const Integer N_BANDS = 28 ;
-        Integer bandIndex = Integer::Undefined() ;
+    const Real altitude_km = anAltitude.inKilometers() ;
 
-        for (int i = 0; i < N_BANDS - 1; ++i)
+    Integer bandIndex = Integer::Undefined() ;
+
+    for (uint i = 0; i < refHeights.getSize() - 1; ++i)
+    {
+        if (altitude_km < refHeights[i+1])
         {
-            if (anAltitude.inKilometers() < refHeights[i+1])
-            {
-                bandIndex = i ;
-                break ;
-            }
+            bandIndex = i ;
+            break ;
         }
+    }
 
-        if (bandIndex == Integer::Undefined())
-        {
-            throw ostk::core::error::RuntimeError(String::Format("Exponential density model is not valid for altitudes above 1000 km. Altitude = {}", anAltitude.inKilometers())) ;
-        }
+    if (bandIndex == Integer::Undefined())
+    {
+        throw ostk::core::error::RuntimeError(String::Format("Exponential density model is not valid for altitudes above 1000 km. Altitude = {}", anAltitude.toString())) ;
+    }
 
-        // TBI: can cache the index bandIndex to avoid searching from the top of the list every time.
+    // TBI: can cache the index bandIndex to avoid searching from the top of the list every time.
 
-        return {refHeights[bandIndex], std::get<0>(densityBands[bandIndex]), std::get<1>(densityBands[bandIndex])} ;
-
-}
-
-Real                            Exponential::getDensityAt                   (   const   LLA&                        aLLA, 
-                                                                                const   Instant&                    anInstant                                   ) const
-{
-
-    (void) anInstant ; // temporal invariance
-
-    const Length h = aLLA.getAltitude() ;
-
-    const Tuple<Real, Real, Real> densityBand = Exponential::getDensityBandValues(h) ;
-
-    const Real h_0 = std::get<0>(densityBand) ;
-    const Real rho_0 = std::get<1>(densityBand) ;
-    const Real H_0 = std::get<2>(densityBand) ;
-
-    const Real rho = rho_0 * std::exp(- (h.inKilometers() - h_0) / H_0) ;
-
-    return rho ;
+    return {refHeights[bandIndex], std::get<0>(densityBands[bandIndex]), std::get<1>(densityBands[bandIndex])} ;
 
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+}
 }
 }
 }
