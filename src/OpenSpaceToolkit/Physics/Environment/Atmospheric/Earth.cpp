@@ -7,8 +7,10 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
@@ -26,7 +28,9 @@ namespace atmospheric
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using ostk::physics::coord::Frame ;
 using ostk::physics::environment::atmospheric::earth::Exponential ;
+using EarthCelestialBody = ostk::physics::env::obj::celest::Earth ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -74,7 +78,7 @@ Earth::Type                     Earth::Impl::getType                        ( ) 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-class ExponentialImpl : public Earth::Impl
+class Earth::ExponentialImpl : public Earth::Impl
 {
 
     public:
@@ -96,23 +100,23 @@ class ExponentialImpl : public Earth::Impl
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                                ExponentialImpl::ExponentialImpl            (   const   Earth::Type&                aType                                       )
+                                Earth::ExponentialImpl::ExponentialImpl            (   const   Earth::Type&                aType                                       )
                                 :   Earth::Impl(aType)
 {
 
 }
 
-                                ExponentialImpl::~ExponentialImpl           ( )
+                                Earth::ExponentialImpl::~ExponentialImpl           ( )
 {
 
 }
 
-ExponentialImpl*                ExponentialImpl::clone                      ( ) const
+Earth::ExponentialImpl*                Earth::ExponentialImpl::clone                      ( ) const
 {
-    return new ExponentialImpl(*this) ;
+    return new Earth::ExponentialImpl(*this) ;
 }
 
-Real                            ExponentialImpl::getDensityAt               (   const   LLA&                        aLLA,
+Real                            Earth::ExponentialImpl::getDensityAt               (   const   LLA&                        aLLA,
                                                                                 const   Instant&                    anInstant                                   ) const
 {
     return this->exponentialModel_.getDensityAt(aLLA, anInstant) ;
@@ -171,7 +175,7 @@ Real                            Earth::getDensityAt                         (   
 {
     return this->getDensityAt
     (
-        LLA::Cartesian(aPosition.inFrame(Frame::ITRF()).accessCoordinates(), EarthCelestialBody::EquatorialRadius, EarthCelestialBody::Flattening),
+        LLA::Cartesian(aPosition.inFrame(Frame::ITRF(), anInstant).accessCoordinates(), EarthCelestialBody::EquatorialRadius, EarthCelestialBody::Flattening),
         anInstant
     ) ;
 }
@@ -193,7 +197,7 @@ Unique<Earth::Impl>             Earth::ImplFromType                         (   
         return std::make_unique<ExponentialImpl>(aType) ;
     }
 
-    throw ostk::core::error::runtime::Wrong("Type", aType) ;
+    throw ostk::core::error::runtime::Wrong("Type") ;
 
 }
 

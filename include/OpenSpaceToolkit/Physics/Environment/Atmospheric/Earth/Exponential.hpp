@@ -15,6 +15,9 @@
 #include <OpenSpaceToolkit/Physics/Units/Length.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
+#include <OpenSpaceToolkit/Core/Types/Integer.hpp>
+#include <OpenSpaceToolkit/Core/Types/String.hpp>
+#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
 #include <OpenSpaceToolkit/Core/Containers/Tuple.hpp>
 #include <OpenSpaceToolkit/Core/Types/Real.hpp>
 
@@ -35,10 +38,12 @@ namespace earth
 
 using ostk::core::types::Real ;
 using ostk::core::ctnr::Tuple ;
+using ostk::core::ctnr::Array ;
+using ostk::core::types::String ;
+using ostk::core::types::Integer ;
 
 using ostk::physics::time::Instant ;
 using ostk::physics::units::Length ;
-using ostk::physics::coord::Position ;
 using ostk::physics::coord::spherical::LLA ;
 using ostk::physics::environment::atmospheric::Model ;
 

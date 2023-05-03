@@ -8,6 +8,8 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
@@ -27,6 +29,11 @@ namespace earth
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using ostk::physics::coord::Frame ;
+using EarthCelestialBody = ostk::physics::env::obj::celest::Earth ;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
                                 Exponential::Exponential                    ( )
                                 :   Model()
 {
@@ -43,7 +50,7 @@ Real                            Exponential::getDensityAt                   (   
 {
     return this->getDensityAt
     (
-        LLA::Cartesian(aPosition.inFrame(Frame::ITRF()).accessCoordinates(), EarthCelestialBody::EquatorialRadius, EarthCelestialBody::Flattening),
+        LLA::Cartesian(aPosition.inFrame(Frame::ITRF(), anInstant).accessCoordinates(), EarthCelestialBody::EquatorialRadius, EarthCelestialBody::Flattening),
         anInstant
     ) ;
 }
@@ -141,7 +148,7 @@ Tuple<Real, Real, Real>         Exponential::DensityBandValues              (   
 
     Integer bandIndex = Integer::Undefined() ;
 
-    for (int i = 0; i < refHeights.getSize() - 1; ++i)
+    for (uint i = 0; i < refHeights.getSize() - 1; ++i)
     {
         if (altitude_km < refHeights[i+1])
         {
