@@ -66,7 +66,6 @@ TEST (OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetType)
     {
 
         EXPECT_EQ(EarthAtmosphericModel::Type::Exponential, EarthAtmosphericModel(EarthAtmosphericModel::Type::Exponential).getType()) ;
-        EXPECT_EQ(EarthAtmosphericModel::Type::NRLMSISE00, EarthAtmosphericModel(EarthAtmosphericModel::Type::NRLMSISE00).getType()) ;
 
     }
 
@@ -143,7 +142,7 @@ TEST (OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt)
             const EarthAtmosphericModel earthAtmosphericModel = { std::get<0>(testCase) } ;
             const LLA lla = std::get<1>(testCase) ;
 
-            const Position position = { lla.toCartesian(EarthCelestialBody::EquatorialRadius, EarthCelestialBody::Flattening), Position::Unit::Meter, Frame::GCRF() } ;
+            const Position position = { lla.toCartesian(EarthCelestialBody::EquatorialRadius, EarthCelestialBody::Flattening), Position::Unit::Meter, Frame::ITRF() } ;
 
             const Instant instant = std::get<2>(testCase) ;
             const Real referenceDensity = std::get<3>(testCase) ;
