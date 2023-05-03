@@ -87,6 +87,7 @@ class Exponential : public Model
     private:
 
         static Tuple<Real, Real, Real> DensityBandValues                    (   const   Length&                     anAltitude                                  ) ;
+
 } ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

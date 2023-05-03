@@ -115,7 +115,6 @@ class Earth : public Model
 
         class Impl ;
         class ExponentialImpl ;
-        //class ExternalImpl ;
 
         Unique<Impl>            implUPtr_ ;
 
