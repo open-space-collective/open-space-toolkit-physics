@@ -58,6 +58,21 @@ TEST (OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Constructor)
 
 }
 
+TEST (OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Clone)
+{
+
+    using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth ;
+
+    {
+
+        const EarthAtmosphericModel earthAtmosphericModel = { EarthAtmosphericModel::Type::Exponential } ;
+
+        EXPECT_NO_THROW( earthAtmosphericModel.clone() ) ;
+
+    }
+
+}
+
 TEST (OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetType)
 {
 
