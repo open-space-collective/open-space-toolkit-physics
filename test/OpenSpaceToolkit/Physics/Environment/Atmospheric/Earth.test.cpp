@@ -153,7 +153,6 @@ TEST (OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_LLA)
     using ostk::physics::coord::Frame ;
 
     using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth ;
-    using EarthCelestialBody = ostk::physics::env::obj::celest::Earth ;
 
     {
 

@@ -99,7 +99,7 @@ class Earth : public Model
         /// @param              [in] anInstant An Instant
         /// @return             Atmospheric density value [kg.m^-3]
 
-        virtual Real            getDensityAt                                (   const   Position&                   aPosition,
+        Real                    getDensityAt                                (   const   Position&                   aPosition,
                                                                                 const   Instant&                    anInstant                                   ) const override ;
 
         /// @brief              Get the atmospheric density value at a given position and instant
