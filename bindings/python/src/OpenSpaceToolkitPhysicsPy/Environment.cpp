@@ -7,6 +7,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <OpenSpaceToolkitPhysicsPy/Environment/Atmospheric.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Environment/Magnetic.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Environment/Gravitational.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Environment/Objects.cpp>
@@ -63,6 +64,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment       (   
     OpenSpaceToolkitPhysicsPy_Environment_Objects(environment) ;
     OpenSpaceToolkitPhysicsPy_Environment_Gravitational(environment) ;
     OpenSpaceToolkitPhysicsPy_Environment_Magnetic(environment) ;
+    OpenSpaceToolkitPhysicsPy_Environment_Atmospheric(environment) ;
 
 }
 

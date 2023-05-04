@@ -36,6 +36,8 @@ using ostk::core::types::Unique ;
 using ostk::core::types::Real ;
 using ostk::core::fs::Directory ;
 
+using ostk::physics::time::Instant ;
+using ostk::physics::coord::Position ;
 using ostk::physics::coord::spherical::LLA ;
 using ostk::physics::environment::atmospheric::Model ;
 
