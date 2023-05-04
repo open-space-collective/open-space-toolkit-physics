@@ -15,11 +15,11 @@
 #include <OpenSpaceToolkit/Physics/Units/Length.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
-#include <OpenSpaceToolkit/Core/Types/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
 #include <OpenSpaceToolkit/Core/Containers/Array.hpp>
 #include <OpenSpaceToolkit/Core/Containers/Tuple.hpp>
+#include <OpenSpaceToolkit/Core/Types/String.hpp>
 #include <OpenSpaceToolkit/Core/Types/Real.hpp>
+#include <OpenSpaceToolkit/Core/Types/Integer.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -36,11 +36,11 @@ namespace earth
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using ostk::core::types::Integer ;
 using ostk::core::types::Real ;
+using ostk::core::types::String ;
 using ostk::core::ctnr::Tuple ;
 using ostk::core::ctnr::Array ;
-using ostk::core::types::String ;
-using ostk::core::types::Integer ;
 
 using ostk::physics::time::Instant ;
 using ostk::physics::units::Length ;

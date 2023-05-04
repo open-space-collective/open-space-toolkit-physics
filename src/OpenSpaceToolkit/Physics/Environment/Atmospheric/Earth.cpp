@@ -100,23 +100,23 @@ class Earth::ExponentialImpl : public Earth::Impl
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                                Earth::ExponentialImpl::ExponentialImpl            (   const   Earth::Type&                aType                                       )
+                                Earth::ExponentialImpl::ExponentialImpl     (   const   Earth::Type&                aType                                       )
                                 :   Earth::Impl(aType)
 {
 
 }
 
-                                Earth::ExponentialImpl::~ExponentialImpl           ( )
+                                Earth::ExponentialImpl::~ExponentialImpl    ( )
 {
 
 }
 
-Earth::ExponentialImpl*                Earth::ExponentialImpl::clone                      ( ) const
+Earth::ExponentialImpl*         Earth::ExponentialImpl::clone               ( ) const
 {
     return new Earth::ExponentialImpl(*this) ;
 }
 
-Real                            Earth::ExponentialImpl::getDensityAt               (   const   LLA&                        aLLA,
+Real                            Earth::ExponentialImpl::getDensityAt        (   const   LLA&                        aLLA,
                                                                                 const   Instant&                    anInstant                                   ) const
 {
     return this->exponentialModel_.getDensityAt(aLLA, anInstant) ;
