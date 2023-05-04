@@ -14,8 +14,8 @@ import numpy as np
 from ostk.core.filesystem import Directory
 
 from ostk.physics.time import Instant
-from ost.physics.units import Length
-from ost.physics.units import Angle
+from ostk.physics.units import Length
+from ostk.physics.units import Angle
 from ostk.physics.coordinate import Position
 from ostk.physics.coordinate.spherical import LLA
 from ostk.physics.environment.atmospheric import Earth as EarthAtmosphericModel
