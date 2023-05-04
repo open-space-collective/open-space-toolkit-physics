@@ -26,7 +26,7 @@ TEST (OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Exponential, Constr
 
     {
 
-        EXPECT_NO_THROW(Exponential exponential()) ;
+        EXPECT_NO_THROW(Exponential exponential = {}) ;
 
     }
 
