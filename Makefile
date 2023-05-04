@@ -126,6 +126,7 @@ _build-development-image: _pull-development-image
 
 	docker build \
 		--cache-from=$(docker_development_image_repository):$(docker_image_version)-$(target) \
+		--cache-from=$(docker_development_image_repository):latest-$(target) \
 		--file="$(CURDIR)/docker/development/$(target)/Dockerfile" \
 		--tag=$(docker_development_image_repository):$(docker_image_version)-$(target) \
 		--tag=$(docker_development_image_repository):latest-$(target) \
