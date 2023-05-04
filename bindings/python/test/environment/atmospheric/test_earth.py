@@ -17,6 +17,7 @@ from ostk.physics.time import Instant
 from ostk.physics.units import Length
 from ostk.physics.units import Angle
 from ostk.physics.coordinate import Position
+from ostk.physics.coordinate import Frame
 from ostk.physics.coordinate.spherical import LLA
 from ostk.physics.environment.atmospheric import Earth as EarthAtmosphericModel
 from ostk.physics.environment.objects.celestial_bodies import Earth
