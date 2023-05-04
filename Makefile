@@ -123,9 +123,9 @@ build-development-image-debian build-development-image-fedora: _build-developmen
 _build-development-image: _pull-development-image
 
 	@ echo "Building [$(target)] development image..."
-
+	##--cache-from=$(docker_development_image_repository):$(docker_image_version)-$(target) \
+		
 	docker build \
-		--cache-from=$(docker_development_image_repository):$(docker_image_version)-$(target) \
 		--cache-from=$(docker_development_image_repository):latest-$(target) \
 		--file="$(CURDIR)/docker/development/$(target)/Dockerfile" \
 		--tag=$(docker_development_image_repository):$(docker_image_version)-$(target) \
