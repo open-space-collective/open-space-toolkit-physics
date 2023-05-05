@@ -1,7 +1,7 @@
 ################################################################################################################################################################
 
-# @project        Open Space Toolkit ▸ Mathematics
-# @file           docker/development/fedora/Dockerfile
+# @project        Open Space Toolkit ▸ Physics
+# @file           docker/development/Dockerfile
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        Apache License 2.0
 
@@ -9,11 +9,17 @@
 
 ARG BASE_IMAGE_VERSION="latest"
 
-FROM openspacecollective/open-space-toolkit-base:${BASE_IMAGE_VERSION}-fedora
+FROM openspacecollective/open-space-toolkit-base:${BASE_IMAGE_VERSION}
 
 LABEL maintainer="lucas@loftorbital.com"
 
 # Dependencies
+
+## Zip
+
+RUN apt-get update \
+ && apt-get install -y unzip \
+ && rm -rf /var/lib/apt/lists/*
 
 ## {fmt}
 
@@ -57,9 +63,8 @@ RUN mkdir /tmp/eigen \
 ARG IAU_SOFA_RELEASE="2018_0130_C"
 ARG IAU_SOFA_VERSION="20180130"
 
-RUN cd /tmp \
- && mkdir sofa \
- && cd sofa \
+RUN mkdir -p /tmp/sofa \
+ && cd /tmp/sofa \
  && wget --quiet http://www.iausofa.org/${IAU_SOFA_RELEASE}/sofa_c-${IAU_SOFA_VERSION}.tar.gz \
  && tar -zxf sofa_c-${IAU_SOFA_VERSION}.tar.gz \
  && cd sofa/${IAU_SOFA_VERSION}/c/src/ \
@@ -78,17 +83,18 @@ RUN cd /tmp \
  && wget --quiet http://naif.jpl.nasa.gov/pub/naif/toolkit/C/PC_Linux_GCC_64bit/packages/cspice.tar.Z \
  && tar -xf cspice.tar.Z \
  && cd cspice \
- && dnf install -y csh \
+ && apt-get update \
+ && apt-get install -y csh \
  && ./makeall.csh > /dev/null \
  && mkdir -p /usr/local/include/cspice \
  && cp -r include/* /usr/local/include/cspice/ \
  && cp -r lib/* /usr/local/lib/ \
  && ln -s /usr/local/lib/cspice.a /usr/local/lib/libcspice.a \
  && rm -rf /tmp/cspice \
- && dnf remove -y csh \
- && dnf clean all
+ && apt-get remove -y csh \
+ && rm -rf /var/lib/apt/lists/*
 
-## GeographicLib
+# GeographicLib
 
 ARG GEOGRAPHIC_LIB="1.52"
 
@@ -97,12 +103,13 @@ RUN git clone https://github.com/geographiclib/geographiclib /tmp/geographiclib 
  && git checkout tags/r${GEOGRAPHIC_LIB} \
  && mkdir build \
  && cd build \
- && dnf install -y proj-devel \
+ && apt-get update \
+ && apt-get install -y libproj-dev \
  && cmake -DGEOGRAPHICLIB_LIB_TYPE=STATIC -DCMAKE_CXX_FLAGS="-fPIC" .. \
  && make -j $(nproc) \
  && make install \
  && rm -rf /tmp/geographiclib \
- && dnf clean all
+ && rm -rf /var/lib/apt/lists/*
 
 ## Open Space Toolkit ▸ Core
 
@@ -110,20 +117,20 @@ ARG OSTK_CORE_VERSION="0.5.0"
 
 RUN mkdir -p /tmp/open-space-toolkit-core \
  && cd /tmp/open-space-toolkit-core \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/${OSTK_CORE_VERSION}/open-space-toolkit-core-${OSTK_CORE_VERSION}-1.x86_64-runtime.rpm \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/${OSTK_CORE_VERSION}/open-space-toolkit-core-${OSTK_CORE_VERSION}-1.x86_64-devel.rpm \
- && dnf install -y ./*.rpm \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/${OSTK_CORE_VERSION}/open-space-toolkit-core-${OSTK_CORE_VERSION}-1.x86_64-runtime.deb \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/${OSTK_CORE_VERSION}/open-space-toolkit-core-${OSTK_CORE_VERSION}-1.x86_64-devel.deb \
+ && apt-get install -y ./*.deb \
  && rm -rf /tmp/open-space-toolkit-core
 
-## Open Space Toolkit ▸ IO
+## Open Space Toolkit ▸ I/O
 
 ARG OSTK_IO_VERSION="0.5.0"
 
 RUN mkdir -p /tmp/open-space-toolkit-io \
  && cd /tmp/open-space-toolkit-io \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/${OSTK_IO_VERSION}/open-space-toolkit-io-${OSTK_IO_VERSION}-1.x86_64-runtime.rpm \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/${OSTK_IO_VERSION}/open-space-toolkit-io-${OSTK_IO_VERSION}-1.x86_64-devel.rpm \
- && dnf install -y ./*.rpm \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/${OSTK_IO_VERSION}/open-space-toolkit-io-${OSTK_IO_VERSION}-1.x86_64-runtime.deb \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/${OSTK_IO_VERSION}/open-space-toolkit-io-${OSTK_IO_VERSION}-1.x86_64-devel.deb \
+ && apt-get install -y ./*.deb \
  && rm -rf /tmp/open-space-toolkit-io
 
 ## Open Space Toolkit ▸ Mathematics
@@ -132,9 +139,9 @@ ARG OSTK_MATHEMATICS_VERSION="0.6.0"
 
 RUN mkdir -p /tmp/open-space-toolkit-mathematics \
  && cd /tmp/open-space-toolkit-mathematics \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/${OSTK_MATHEMATICS_VERSION}/open-space-toolkit-mathematics-${OSTK_MATHEMATICS_VERSION}-1.x86_64-runtime.rpm \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/${OSTK_MATHEMATICS_VERSION}/open-space-toolkit-mathematics-${OSTK_MATHEMATICS_VERSION}-1.x86_64-devel.rpm \
- && dnf install -y ./*.rpm \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/${OSTK_MATHEMATICS_VERSION}/open-space-toolkit-mathematics-${OSTK_MATHEMATICS_VERSION}-1.x86_64-runtime.deb \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/${OSTK_MATHEMATICS_VERSION}/open-space-toolkit-mathematics-${OSTK_MATHEMATICS_VERSION}-1.x86_64-devel.deb \
+ && apt-get install -y ./*.deb \
  && rm -rf /tmp/open-space-toolkit-mathematics
 
 # Install data
