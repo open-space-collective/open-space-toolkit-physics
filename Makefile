@@ -125,7 +125,7 @@ _build-development-image: _pull-development-image
 	@ echo "Building [$(target)] development image..."
 	##--cache-from=$(docker_development_image_repository):$(docker_image_version)-$(target) \
 		
-	docker build \
+	docker buildx build \
 		--cache-from=$(docker_development_image_repository):latest-$(target) \
 		--file="$(CURDIR)/docker/development/$(target)/Dockerfile" \
 		--tag=$(docker_development_image_repository):$(docker_image_version)-$(target) \
@@ -154,7 +154,7 @@ _build-release-image-cpp: _build-development-image _pull-release-image-cpp
 
 	@ echo "Building [$(target)] C++ release image..."
 
-	docker build \
+	docker buildx build \
 		--cache-from=$(docker_release_image_cpp_repository):latest-$(target) \
 		--file="$(CURDIR)/docker/release/$(target)/Dockerfile" \
 		--tag=$(docker_release_image_cpp_repository):$(docker_image_version)-$(target) \
@@ -172,7 +172,7 @@ _build-release-image-python: _build-development-image _pull-release-image-python
 
 	@ echo "Building [$(target)] Python release image..."
 
-	docker build \
+	docker buildx build \
 		--cache-from=$(docker_release_image_python_repository):latest-$(target) \
 		--file="$(CURDIR)/docker/release/$(target)/Dockerfile" \
 		--tag=$(docker_release_image_python_repository):$(docker_image_version)-$(target) \
@@ -185,7 +185,7 @@ build-release-image-jupyter: pull-release-image-jupyter
 
 	@ echo "Building Jupyter Notebook release image..."
 
-	docker build \
+	docker buildx build \
 		--cache-from=$(docker_release_image_jupyter_repository):latest \
 		--file="$(CURDIR)/docker/jupyter/Dockerfile" \
 		--tag=$(docker_release_image_jupyter_repository):$(docker_image_version) \
