@@ -128,6 +128,7 @@ const Real                      Earth::J4                                       
                                                                                 const   Shared<Ephemeris>&          anEphemeris,
                                                                                 const   EarthGravitationalModel::Type& aGravitationalModelType,
                                                                                 const   EarthMagneticModel::Type&   aMagneticModelType,
+                                                                                const   EarthAtmosphericModel::Type& anAtmosphericModelType,
                                                                                 const   Instant&                    anInstant                                   )
                                 :   Celestial
                                     (
@@ -141,6 +142,7 @@ const Real                      Earth::J4                                       
                                         anEphemeris,
                                         std::make_shared<EarthGravitationalModel>(aGravitationalModelType),
                                         std::make_shared<EarthMagneticModel>(aMagneticModelType),
+                                        std::make_shared<EarthAtmosphericModel>(anAtmosphericModelType),
                                         anInstant,
                                         Earth::Geometry(anEquatorialRadius, aFlattening, anEphemeris->accessFrame())
                                     )
@@ -158,6 +160,7 @@ const Real                      Earth::J4                                       
                                                                                 const   Integer&                    aGravityModelDegree,
                                                                                 const   Integer&                    aGravityModelOrder,
                                                                                 const   EarthMagneticModel::Type&   aMagneticModelType,
+                                                                                const   EarthAtmosphericModel::Type& anAtmosphericModelType,
                                                                                 const   Instant&                    anInstant                                   )
                                 :   Celestial
                                     (
@@ -171,6 +174,7 @@ const Real                      Earth::J4                                       
                                         anEphemeris,
                                         std::make_shared<EarthGravitationalModel>(aGravitationalModelType, Directory::Undefined(), aGravityModelDegree, aGravityModelOrder),
                                         std::make_shared<EarthMagneticModel>(aMagneticModelType),
+                                        std::make_shared<EarthAtmosphericModel>(anAtmosphericModelType),
                                         anInstant,
                                         Earth::Geometry(anEquatorialRadius, aFlattening, anEphemeris->accessFrame())
                                     )
@@ -214,6 +218,7 @@ Earth                           Earth::EGM2008                              (   
         aGravityModelDegree,
         aGravityModelOrder,
         EarthMagneticModel::Type::Dipole,
+        EarthAtmosphericModel::Type::Exponential,
         Instant::J2000()
     } ;
 
@@ -240,6 +245,7 @@ Earth                           Earth::WGS84_EGM96                          (   
         aGravityModelDegree,
         aGravityModelOrder,
         EarthMagneticModel::Type::Dipole,
+        EarthAtmosphericModel::Type::Exponential,
         Instant::J2000()
     } ;
 
@@ -266,6 +272,7 @@ Earth                           Earth::EGM96                                (   
         aGravityModelDegree,
         aGravityModelOrder,
         EarthMagneticModel::Type::Dipole,
+        EarthAtmosphericModel::Type::Exponential,
         Instant::J2000()
     } ;
 
@@ -292,6 +299,7 @@ Earth                           Earth::EGM84                                (   
         aGravityModelDegree,
         aGravityModelOrder,
         EarthMagneticModel::Type::Dipole,
+        EarthAtmosphericModel::Type::Exponential,
         Instant::J2000()
     } ;
 
@@ -318,6 +326,7 @@ Earth                           Earth::WGS84                                (   
         aGravityModelDegree,
         aGravityModelOrder,
         EarthMagneticModel::Type::Dipole,
+        EarthAtmosphericModel::Type::Exponential,
         Instant::J2000()
     } ;
 
@@ -341,6 +350,7 @@ Earth                           Earth::Spherical                            ( )
         std::make_shared<Analytical>(earthFrameSPtr),
         EarthGravitationalModel::Type::Spherical,
         EarthMagneticModel::Type::Dipole,
+        EarthAtmosphericModel::Type::Exponential,
         Instant::J2000()
     } ;
 

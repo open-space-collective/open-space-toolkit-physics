@@ -10,6 +10,7 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth__
 #define __OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth__
 
+#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Objects/Celestial.hpp>
@@ -53,6 +54,7 @@ using ostk::physics::env::Object ;
 using ostk::physics::env::obj::Celestial ;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth ;
 using EarthMagneticModel = ostk::physics::environment::magnetic::Earth ;
+using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -160,6 +162,7 @@ class Earth : public Celestial
                                                                                 const   Shared<Ephemeris>&          anEphemeris,
                                                                                 const   EarthGravitationalModel::Type& aGravitationalModelType,
                                                                                 const   EarthMagneticModel::Type&   aMagneticModelType,
+                                                                                const   EarthAtmosphericModel::Type& aAtmosphericModelType,
                                                                                 const   Instant&                    anInstant                                   ) ;
 
                                 Earth                                       (   const   Derived&                    aGravitationalParameter,
@@ -172,6 +175,7 @@ class Earth : public Celestial
                                                                                 const   Integer&                    aGravityModelDegree,
                                                                                 const   Integer&                    aGravityModelOrder,
                                                                                 const   EarthMagneticModel::Type&   aMagneticModelType,
+                                                                                const   EarthAtmosphericModel::Type& aAtmosphericModelType,
                                                                                 const   Instant&                    anInstant                                   ) ;
 
         virtual                 ~Earth                                      ( ) override ;

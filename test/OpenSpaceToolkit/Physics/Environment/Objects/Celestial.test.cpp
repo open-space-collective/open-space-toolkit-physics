@@ -103,6 +103,7 @@ TEST (OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetGravitationalFi
             ephemeris,
             gravitationalModel,
             nullptr,
+            nullptr,
             instant
         } ;
 
@@ -200,6 +201,7 @@ TEST (OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetMagneticFieldAt
             ephemeris,
             nullptr,
             magneticModel,
+            nullptr,
             instant
         } ;
 
@@ -248,5 +250,103 @@ TEST (OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetMagneticFieldAt
     }
 
 }
+/*
+TEST (OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetMagneticFieldAt)
+{
+
+    using ostk::core::types::Shared ;
+    using ostk::core::types::Real ;
+    using ostk::core::types::String ;
+
+    using ostk::math::obj::Vector3d ;
+
+    using ostk::physics::Unit ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::units::Time ;
+    using ostk::physics::units::Derived ;
+    using ostk::physics::data::Vector ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::Position ;
+    using ostk::physics::env::obj::Celestial ;
+    using ostk::physics::env::Ephemeris ;
+    using ostk::physics::env::ephem::Analytical ;
+    using MagneticModel = ostk::physics::environment::magnetic::Model ;
+    using ostk::physics::environment::magnetic::Dipole ;
+
+    {
+
+        const String name = "Some Planet" ;
+        const Celestial::Type type = Celestial::Type::Earth ;
+        const Derived gravitationalParameter = { 1.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second) } ;
+        const Length equatorialRadius = Length::Kilometers(1000.0) ;
+        const Real flattening = 0.0 ;
+        const Real j2 = 0.0 ;
+        const Real j4 = 0.0 ;
+        const Shared<Ephemeris> ephemeris = std::make_shared<Analytical>(Frame::ITRF()) ;
+        const Shared<MagneticModel> magneticModel = std::make_shared<Dipole>(Vector3d { 0.0, 0.0, 1.0 }) ;
+        const Instant instant = Instant::J2000() ;
+
+        const Celestial celestial =
+        {
+            name,
+            type,
+            gravitationalParameter,
+            equatorialRadius,
+            flattening,
+            j2,
+            j4,
+            ephemeris,
+            nullptr,
+            nullptr,
+            magneticModel,
+            instant
+        } ;
+
+        {
+
+            const Position position = { { 1.0, 0.0, 0.0 }, Length::Unit::Meter, celestial.accessFrame() } ;
+
+            const Vector magneticFieldValue = celestial.getMagneticFieldAt(position) ;
+
+            EXPECT_TRUE(magneticFieldValue.isDefined()) ;
+
+            EXPECT_TRUE(magneticFieldValue.getValue().isNear(Vector3d { 0.0, 0.0, -1e-07 }, 1e-20 )) ;
+            EXPECT_EQ(Unit::Derived(Derived::Unit::Tesla()), magneticFieldValue.getUnit()) ;
+            EXPECT_EQ(Frame::ITRF(), magneticFieldValue.getFrame()) ;
+
+        }
+
+        {
+
+            const Position position = { { 0.0, 0.0, 1.0 }, Length::Unit::Meter, celestial.accessFrame() } ;
+
+            const Vector magneticFieldValue = celestial.getMagneticFieldAt(position) ;
+
+            EXPECT_TRUE(magneticFieldValue.isDefined()) ;
+
+            EXPECT_TRUE(magneticFieldValue.getValue().isNear(Vector3d { 0.0, 0.0, +2e-07 }, 1e-20 )) ;
+            EXPECT_EQ(Unit::Derived(Derived::Unit::Tesla()), magneticFieldValue.getUnit()) ;
+            EXPECT_EQ(Frame::ITRF(), magneticFieldValue.getFrame()) ;
+
+        }
+
+        {
+
+            const Position position = { { 2.0, 0.0, 0.0 }, Length::Unit::Meter, celestial.accessFrame() } ;
+
+            const Vector magneticFieldValue = celestial.getMagneticFieldAt(position) ;
+
+            EXPECT_TRUE(magneticFieldValue.isDefined()) ;
+
+            EXPECT_TRUE(magneticFieldValue.getValue().isNear(Vector3d { 0.0, 0.0, -1.25e-08 }, 1e-20 )) ;
+            EXPECT_EQ(Unit::Derived(Derived::Unit::Tesla()), magneticFieldValue.getUnit()) ;
+            EXPECT_EQ(Frame::ITRF(), magneticFieldValue.getFrame()) ;
+
+        }
+
+    }
+
+}*/
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

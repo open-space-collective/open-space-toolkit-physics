@@ -164,6 +164,9 @@ class Derived : public Unit
                 static Unit     GravitationalParameter                      (   const   Length::Unit&               aLengthUnit,
                                                                                 const   Time::Unit&                 aTimeUnit                                   ) ;
 
+                static Unit     MassDensity                                 (   const   Mass::Unit&                 aMassUnit,
+                                                                                const   Length::Unit&               aLengthUnit                                 ) ;
+
                 static Unit     Parse                                       (   const   String&                     aString                                     ) ;
 
             private:

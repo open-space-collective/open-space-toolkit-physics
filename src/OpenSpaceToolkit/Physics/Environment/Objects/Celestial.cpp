@@ -38,6 +38,7 @@ namespace obj
                                                                                 const   Shared<Ephemeris>&          anEphemeris,
                                                                                 const   Shared<GravitationalModel>& aGravitationalModel,
                                                                                 const   Shared<MagneticModel>&      aMagneticModel,
+                                                                                const   Shared<AtmosphericModel>&   anAtmosphericModel,
                                                                                 const   Instant&                    anInstant                                   )
                                 :   Object(aName, anInstant),
                                     type_(aType),
@@ -48,7 +49,8 @@ namespace obj
                                     j4_(aJ4),
                                     ephemeris_(anEphemeris),
                                     gravitationalModelSPtr_(aGravitationalModel),
-                                    magneticModelSPtr_(aMagneticModel)
+                                    magneticModelSPtr_(aMagneticModel),
+                                    atmosphericModelSPtr_(anAtmosphericModel)
 {
 
 }
@@ -63,6 +65,7 @@ namespace obj
                                                                                 const   Shared<Ephemeris>&          anEphemeris,
                                                                                 const   Shared<GravitationalModel>& aGravitationalModel,
                                                                                 const   Shared<MagneticModel>&      aMagneticModel,
+                                                                                const   Shared<AtmosphericModel>&   anAtmosphericModel,
                                                                                 const   Instant&                    anInstant,
                                                                                 const   Object::Geometry&           aGeometry                                   )
                                 :   Object(aName, anInstant, aGeometry),
@@ -74,7 +77,8 @@ namespace obj
                                     j4_(aJ4),
                                     ephemeris_(anEphemeris),
                                     gravitationalModelSPtr_(aGravitationalModel),
-                                    magneticModelSPtr_(aMagneticModel)
+                                    magneticModelSPtr_(aMagneticModel),
+                                    atmosphericModelSPtr_(anAtmosphericModel)
 {
 
 }
@@ -127,6 +131,18 @@ Shared<const MagneticModel>     Celestial::accessMagneticModel              ( ) 
     }
 
     return magneticModelSPtr_ ;
+
+}
+
+Shared<const AtmosphericModel>  Celestial::accessAtmosphericModel           ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Celestial") ;
+    }
+
+    return atmosphericModelSPtr_ ;
 
 }
 
@@ -332,6 +348,35 @@ Vector                          Celestial::getMagneticFieldAt               (   
 
 }
 
+Scalar                          Celestial::getAtmosphericDensityAt          (   const   Position&                   aPosition                                   ) const
+{
+
+    using ostk::physics::Unit ;
+    using ostk::physics::units::Time ;
+
+    if (!aPosition.isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Position") ;
+    }
+
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Celestial") ;
+    }
+
+    if (atmosphericModelSPtr_ == nullptr)
+    {
+        throw ostk::core::error::runtime::Undefined("Atmospheric model") ;
+    }
+
+    const Real atmosphericDensityValue = atmosphericModelSPtr_->getDensityAt(aPosition, this->accessInstant()) ;
+
+    const static Unit atmosphericDensityUnit = Unit::Derived(Derived::Unit::MassDensity(Mass::Unit::Kilogram, Length::Unit::Meter)) ;
+
+    return { atmosphericDensityValue, atmosphericDensityUnit } ;
+
+}
+
 Shared<const Frame>             Celestial::getFrameAt                       (   const   LLA&                        aLla,
                                                                                 const   Celestial::FrameType&       aFrameType                                  ) const
 {
@@ -393,7 +438,7 @@ Shared<const Frame>             Celestial::getFrameAt                       (   
 
 Celestial                       Celestial::Undefined                        ( )
 {
-    return { String::Empty(), Celestial::Type::Undefined, Derived::Undefined(), Length::Undefined(), Real::Undefined(), Real::Undefined(), Real::Undefined(), nullptr, nullptr, nullptr, Instant::Undefined() } ;
+    return { String::Empty(), Celestial::Type::Undefined, Derived::Undefined(), Length::Undefined(), Real::Undefined(), Real::Undefined(), Real::Undefined(), nullptr, nullptr, nullptr, nullptr, Instant::Undefined() } ;
 }
 
 String                          Celestial::StringFromFrameType              (   const   Celestial::FrameType&       aFrameType                                  )
