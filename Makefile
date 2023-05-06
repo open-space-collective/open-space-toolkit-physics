@@ -84,12 +84,11 @@ build-images: ## Build development and release images
 	@ make build-development-image
 	@ make build-release-images
 
-build-development-image: pull-development-image ## Build development images
+build-development-image: ## Build development images
 
 	@ echo "Building development images..."
 
-	docker buildx build \
-		--cache-from=$(docker_development_image_repository):latest \
+	docker build \
 		--file="$(CURDIR)/docker/development/$(target)/Dockerfile" \
 		--tag=$(docker_development_image_repository):$(docker_image_version) \
 		--tag=$(docker_development_image_repository):latest \
@@ -106,12 +105,11 @@ build-release-images: ## Build release images
 
 	@ make build-release-image-jupyter
 
-build-release-image-cpp: build-development-image pull-release-image-cpp
+build-release-image-cpp: pull-release-image-cpp
 
 	@ echo "Building C++ release image..."
 
-	docker buildx build \
-		--cache-from=$(docker_release_image_cpp_repository):latest \
+	docker build \
 		--file="$(CURDIR)/docker/release/$(target)/Dockerfile" \
 		--tag=$(docker_release_image_cpp_repository):$(docker_image_version) \
 		--tag=$(docker_release_image_cpp_repository):latest \
@@ -119,12 +117,11 @@ build-release-image-cpp: build-development-image pull-release-image-cpp
 		--target=cpp-release \
 		"$(CURDIR)"
 
-build-release-image-python: build-development-image pull-release-image-python
+build-release-image-python: pull-release-image-python
 
 	@ echo "Building Python release image..."
 
-	docker buildx build \
-		--cache-from=$(docker_release_image_python_repository):latest \
+	docker build \
 		--file="$(CURDIR)/docker/release/$(target)/Dockerfile" \
 		--tag=$(docker_release_image_python_repository):$(docker_image_version) \
 		--tag=$(docker_release_image_python_repository):latest \
@@ -136,15 +133,14 @@ build-release-image-jupyter: pull-release-image-jupyter
 
 	@ echo "Building Jupyter Notebook release image..."
 
-	docker buildx build \
-		--cache-from=$(docker_release_image_jupyter_repository):latest \
+	docker build \
 		--file="$(CURDIR)/docker/jupyter/Dockerfile" \
 		--tag=$(docker_release_image_jupyter_repository):$(docker_image_version) \
 		--tag=$(docker_release_image_jupyter_repository):latest \
 		--build-arg="JUPYTER_NOTEBOOK_IMAGE_REPOSITORY=$(jupyter_notebook_image_repository)" \
 		"$(CURDIR)/docker/jupyter"
 
-build-documentation: build-development-image ## Build documentation
+build-documentation: ## Build documentation
 
 	@ echo "Building documentation..."
 
@@ -164,7 +160,7 @@ build-packages: ## Build packages
 	@ make build-packages-cpp
 	@ make build-packages-python
 
-build-packages-cpp: build-development-image ## Build C++ packages
+build-packages-cpp: ## Build C++ packages
 
 	@ echo "Building C++ packages..."
 
@@ -179,7 +175,7 @@ build-packages-cpp: build-development-image ## Build C++ packages
 		&& mkdir -p /app/packages/cpp \
 		&& mv /app/build/*.deb /app/packages/cpp"
 
-build-packages-python: build-development-image ## Build Python packages
+build-packages-python: ## Build Python packages
 
 	@ echo "Building Python packages..."
 
@@ -310,7 +306,7 @@ test-unit: ## Run unit tests
 	@ make test-unit-cpp
 	@ make test-unit-python
 
-test-unit-cpp: build-development-image ## Run C++ unit tests
+test-unit-cpp: ## Run C++ unit tests
 
 	@ echo "Running C++ unit tests..."
 
@@ -324,7 +320,8 @@ test-unit-cpp: build-development-image ## Run C++ unit tests
 		&& make -j 4 \
 		&& make test"
 
-test-unit-python: build-release-image-python ## Run Python unit tests
+## The CI step in python test mistakenly (I think) pulls the dev image, so manually pull release here
+test-unit-python: pull-release-image-python ## Run Python unit tests
 
 	@ echo "Running Python unit tests..."
 
@@ -341,7 +338,7 @@ test-coverage: ## Run test coverage cpp
 
 	@ make test-coverage-cpp
 
-test-coverage-cpp: build-development-image
+test-coverage-cpp:
 
 	@ echo "Running C++ coverage tests..."
 
