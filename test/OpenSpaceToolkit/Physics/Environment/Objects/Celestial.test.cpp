@@ -7,6 +7,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Magnetic/Dipole.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Ephemerides/Analytical.hpp>
@@ -19,7 +20,9 @@
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Derived/Angle.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Length.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Mass.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformations/Rotations/RotationVector.hpp>
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformations/Rotations/Quaternion.hpp>
@@ -250,41 +253,41 @@ TEST (OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetMagneticFieldAt
     }
 
 }
-/*
-TEST (OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetMagneticFieldAt)
+ 
+TEST (OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetAtmosphericDensityAt)
 {
 
     using ostk::core::types::Shared ;
     using ostk::core::types::Real ;
     using ostk::core::types::String ;
 
-    using ostk::math::obj::Vector3d ;
-
     using ostk::physics::Unit ;
     using ostk::physics::units::Length ;
+    using ostk::physics::units::Mass ;
     using ostk::physics::units::Time ;
     using ostk::physics::units::Derived ;
-    using ostk::physics::data::Vector ;
+    using ostk::physics::units::Angle ;
+    using ostk::physics::data::Scalar ;
     using ostk::physics::time::Instant ;
+    using ostk::physics::coord::spherical::LLA ;
     using ostk::physics::coord::Frame ;
     using ostk::physics::coord::Position ;
     using ostk::physics::env::obj::Celestial ;
     using ostk::physics::env::Ephemeris ;
+    using EarthCelestialBody = ostk::physics::env::obj::celest::Earth ;
     using ostk::physics::env::ephem::Analytical ;
-    using MagneticModel = ostk::physics::environment::magnetic::Model ;
-    using ostk::physics::environment::magnetic::Dipole ;
+    using AtmosphericModel = ostk::physics::environment::atmospheric::Model ;
+    using ostk::physics::environment::atmospheric::earth::Exponential ;
 
     {
 
         const String name = "Some Planet" ;
         const Celestial::Type type = Celestial::Type::Earth ;
         const Derived gravitationalParameter = { 1.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second) } ;
-        const Length equatorialRadius = Length::Kilometers(1000.0) ;
-        const Real flattening = 0.0 ;
         const Real j2 = 0.0 ;
         const Real j4 = 0.0 ;
         const Shared<Ephemeris> ephemeris = std::make_shared<Analytical>(Frame::ITRF()) ;
-        const Shared<MagneticModel> magneticModel = std::make_shared<Dipole>(Vector3d { 0.0, 0.0, 1.0 }) ;
+        const Shared<AtmosphericModel> atmosphericModel = std::make_shared<Exponential>() ;
         const Instant instant = Instant::J2000() ;
 
         const Celestial celestial =
@@ -292,61 +295,64 @@ TEST (OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetMagneticFieldAt
             name,
             type,
             gravitationalParameter,
-            equatorialRadius,
-            flattening,
+            EarthCelestialBody::EquatorialRadius, 
+            EarthCelestialBody::Flattening,
             j2,
             j4,
             ephemeris,
             nullptr,
             nullptr,
-            magneticModel,
+            atmosphericModel,
             instant
         } ;
 
         {
 
-            const Position position = { { 1.0, 0.0, 0.0 }, Length::Unit::Meter, celestial.accessFrame() } ;
+            const Position position = { 
+                LLA( Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(123.0) ).toCartesian(EarthCelestialBody::EquatorialRadius, EarthCelestialBody::Flattening), Position::Unit::Meter, Frame::ITRF() 
+            } ;
 
-            const Vector magneticFieldValue = celestial.getMagneticFieldAt(position) ;
+            const Scalar atmosphericDensityValue = celestial.getAtmosphericDensityAt(position) ;
 
-            EXPECT_TRUE(magneticFieldValue.isDefined()) ;
+            EXPECT_TRUE(atmosphericDensityValue.isDefined()) ;
 
-            EXPECT_TRUE(magneticFieldValue.getValue().isNear(Vector3d { 0.0, 0.0, -1e-07 }, 1e-20 )) ;
-            EXPECT_EQ(Unit::Derived(Derived::Unit::Tesla()), magneticFieldValue.getUnit()) ;
-            EXPECT_EQ(Frame::ITRF(), magneticFieldValue.getFrame()) ;
-
-        }
-
-        {
-
-            const Position position = { { 0.0, 0.0, 1.0 }, Length::Unit::Meter, celestial.accessFrame() } ;
-
-            const Vector magneticFieldValue = celestial.getMagneticFieldAt(position) ;
-
-            EXPECT_TRUE(magneticFieldValue.isDefined()) ;
-
-            EXPECT_TRUE(magneticFieldValue.getValue().isNear(Vector3d { 0.0, 0.0, +2e-07 }, 1e-20 )) ;
-            EXPECT_EQ(Unit::Derived(Derived::Unit::Tesla()), magneticFieldValue.getUnit()) ;
-            EXPECT_EQ(Frame::ITRF(), magneticFieldValue.getFrame()) ;
+            EXPECT_TRUE(atmosphericDensityValue.getValue().isNear( 1.77622e-08, 1e-13 )) ;
+            EXPECT_EQ(Unit::Derived(Derived::Unit::MassDensity(Mass::Unit::Kilogram, Length::Unit::Meter)), atmosphericDensityValue.getUnit()) ;
 
         }
 
         {
 
-            const Position position = { { 2.0, 0.0, 0.0 }, Length::Unit::Meter, celestial.accessFrame() } ;
+            const Position position = { 
+                LLA( Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(499.0) ).toCartesian(EarthCelestialBody::EquatorialRadius, EarthCelestialBody::Flattening), Position::Unit::Meter, Frame::ITRF() 
+            } ;
 
-            const Vector magneticFieldValue = celestial.getMagneticFieldAt(position) ;
+            const Scalar atmosphericDensityValue = celestial.getAtmosphericDensityAt(position) ;
 
-            EXPECT_TRUE(magneticFieldValue.isDefined()) ;
+            EXPECT_TRUE(atmosphericDensityValue.isDefined()) ;
 
-            EXPECT_TRUE(magneticFieldValue.getValue().isNear(Vector3d { 0.0, 0.0, -1.25e-08 }, 1e-20 )) ;
-            EXPECT_EQ(Unit::Derived(Derived::Unit::Tesla()), magneticFieldValue.getUnit()) ;
-            EXPECT_EQ(Frame::ITRF(), magneticFieldValue.getFrame()) ;
+            EXPECT_TRUE(atmosphericDensityValue.getValue().isNear( 7.08245e-13, 1e-15 )) ;
+            EXPECT_EQ(Unit::Derived(Derived::Unit::MassDensity(Mass::Unit::Kilogram, Length::Unit::Meter)), atmosphericDensityValue.getUnit()) ;
+
+        }
+
+        {
+
+            const Position position = { 
+                LLA( Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(501.0) ).toCartesian(EarthCelestialBody::EquatorialRadius, EarthCelestialBody::Flattening), Position::Unit::Meter, Frame::ITRF() 
+            } ;
+
+            const Scalar atmosphericDensityValue = celestial.getAtmosphericDensityAt(position) ;
+
+            EXPECT_TRUE(atmosphericDensityValue.isDefined()) ;
+
+            EXPECT_TRUE(atmosphericDensityValue.getValue().isNear( 6.85869e-13, 1e-15 )) ;
+            EXPECT_EQ(Unit::Derived(Derived::Unit::MassDensity(Mass::Unit::Kilogram, Length::Unit::Meter)), atmosphericDensityValue.getUnit()) ;
 
         }
 
     }
 
-}*/
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
