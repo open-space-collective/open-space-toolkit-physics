@@ -1,5 +1,5 @@
-\hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1_manager}{}\section{ostk\+:\+:physics\+:\+:coord\+:\+:frame\+:\+:Manager Class Reference}
-\label{classostk_1_1physics_1_1coord_1_1frame_1_1_manager}\index{ostk\+::physics\+::coord\+::frame\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::\+Manager}}
+\hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1_manager}{}\doxysection{ostk\+::physics\+::coord\+::frame\+::Manager Class Reference}
+\label{classostk_1_1physics_1_1coord_1_1frame_1_1_manager}\index{ostk::physics::coord::frame::Manager@{ostk::physics::coord::frame::Manager}}
 
 
 Reference frame manager (thread-\/safe)  
@@ -9,96 +9,96 @@ Reference frame manager (thread-\/safe)
 
 {\ttfamily \#include $<$Manager.\+hpp$>$}
 
-\subsection*{Public Member Functions}
+\doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_manager_af000e1deebf0cf7f08ffa54d0e2aa854}{Manager} (const \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_manager}{Manager} \&a\+Manager)=delete
+\mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_manager_af000e1deebf0cf7f08ffa54d0e2aa854}{Manager}} (const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_manager}{Manager}} \&a\+Manager)=delete
 \item 
-\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_manager}{Manager} \& \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_manager_a6503baa568803e9943a6685865269b6f}{operator=} (const \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_manager}{Manager} \&a\+Manager)=delete
+\mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_manager}{Manager}} \& \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_manager_a6503baa568803e9943a6685865269b6f}{operator=}} (const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_manager}{Manager}} \&a\+Manager)=delete
 \item 
-bool \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_manager_ac353df7eaa41ec705c7728afef0aff34}{has\+Frame\+With\+Name} (const String \&a\+Frame\+Name) const
+bool \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_manager_ac353df7eaa41ec705c7728afef0aff34}{has\+Frame\+With\+Name}} (const String \&a\+Frame\+Name) const
 \item 
-Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_manager_abe8ac950d9f04b01a7c1165a6acb2a65}{access\+Frame\+With\+Name} (const String \&a\+Frame\+Name) const
+Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_manager_abe8ac950d9f04b01a7c1165a6acb2a65}{access\+Frame\+With\+Name}} (const String \&a\+Frame\+Name) const
 \item 
-const \hyperlink{classostk_1_1physics_1_1coord_1_1_transform}{Transform} $\ast$ \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_manager_a241b2aea6a86ba5a0ec50a0bf91b4427}{access\+Cached\+Transform} (const Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+From\+Frame\+S\+Ptr, const Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+To\+Frame\+S\+Ptr, const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant) const
+const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_transform}{Transform}} $\ast$ \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_manager_a241b2aea6a86ba5a0ec50a0bf91b4427}{access\+Cached\+Transform}} (const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \&a\+From\+Frame\+S\+Ptr, const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \&a\+To\+Frame\+S\+Ptr, const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const
 \item 
-void \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_manager_a75538bd860deefad7cce2347a6b96d97}{add\+Frame} (const Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+Frame\+S\+Ptr)
+void \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_manager_a75538bd860deefad7cce2347a6b96d97}{add\+Frame}} (const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \&a\+Frame\+S\+Ptr)
 \item 
-void \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_manager_ada10a8a3ff3ced0182bbb2a42abbbb71}{remove\+Frame\+With\+Name} (const String \&a\+Frame\+Name)
+void \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_manager_ada10a8a3ff3ced0182bbb2a42abbbb71}{remove\+Frame\+With\+Name}} (const String \&a\+Frame\+Name)
 \item 
-void \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_manager_a0b6f34e9c38cc24982afc09b2b991c94}{add\+Cached\+Transform} (const Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+From\+Frame\+S\+Ptr, const Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&a\+To\+Frame\+S\+Ptr, const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant, const \hyperlink{classostk_1_1physics_1_1coord_1_1_transform}{Transform} \&a\+Transform)
+void \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_manager_a0b6f34e9c38cc24982afc09b2b991c94}{add\+Cached\+Transform}} (const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \&a\+From\+Frame\+S\+Ptr, const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \&a\+To\+Frame\+S\+Ptr, const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant, const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_transform}{Transform}} \&a\+Transform)
 \end{DoxyCompactItemize}
-\subsection*{Static Public Member Functions}
+\doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_manager}{Manager} \& \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_manager_a58450dcde801cd274f45fd000e5e6bd7}{Get} ()
+static \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_manager}{Manager}} \& \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_manager_a58450dcde801cd274f45fd000e5e6bd7}{Get}} ()
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
+\doxysubsection{Detailed Description}
 Reference frame manager (thread-\/safe) 
 
-\subsection{Constructor \& Destructor Documentation}
+\doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1_manager_af000e1deebf0cf7f08ffa54d0e2aa854}\label{classostk_1_1physics_1_1coord_1_1frame_1_1_manager_af000e1deebf0cf7f08ffa54d0e2aa854}} 
-\index{ostk\+::physics\+::coord\+::frame\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::\+Manager}!Manager@{Manager}}
-\index{Manager@{Manager}!ostk\+::physics\+::coord\+::frame\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::\+Manager}}
-\subsubsection{\texorpdfstring{Manager()}{Manager()}}
-{\footnotesize\ttfamily ostk\+::physics\+::coord\+::frame\+::\+Manager\+::\+Manager (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_manager}{Manager} \&}]{a\+Manager }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+\index{ostk::physics::coord::frame::Manager@{ostk::physics::coord::frame::Manager}!Manager@{Manager}}
+\index{Manager@{Manager}!ostk::physics::coord::frame::Manager@{ostk::physics::coord::frame::Manager}}
+\doxysubsubsection{\texorpdfstring{Manager()}{Manager()}}
+{\footnotesize\ttfamily ostk\+::physics\+::coord\+::frame\+::\+Manager\+::\+Manager (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_manager}{Manager}} \&}]{a\+Manager }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
 
 
 
-\subsection{Member Function Documentation}
+\doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1_manager_a241b2aea6a86ba5a0ec50a0bf91b4427}\label{classostk_1_1physics_1_1coord_1_1frame_1_1_manager_a241b2aea6a86ba5a0ec50a0bf91b4427}} 
-\index{ostk\+::physics\+::coord\+::frame\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::\+Manager}!access\+Cached\+Transform@{access\+Cached\+Transform}}
-\index{access\+Cached\+Transform@{access\+Cached\+Transform}!ostk\+::physics\+::coord\+::frame\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::\+Manager}}
-\subsubsection{\texorpdfstring{access\+Cached\+Transform()}{accessCachedTransform()}}
-{\footnotesize\ttfamily const \hyperlink{classostk_1_1physics_1_1coord_1_1_transform}{Transform} $\ast$ ostk\+::physics\+::coord\+::frame\+::\+Manager\+::access\+Cached\+Transform (\begin{DoxyParamCaption}\item[{const Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+From\+Frame\+S\+Ptr,  }\item[{const Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+To\+Frame\+S\+Ptr,  }\item[{const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption}) const}
+\index{ostk::physics::coord::frame::Manager@{ostk::physics::coord::frame::Manager}!accessCachedTransform@{accessCachedTransform}}
+\index{accessCachedTransform@{accessCachedTransform}!ostk::physics::coord::frame::Manager@{ostk::physics::coord::frame::Manager}}
+\doxysubsubsection{\texorpdfstring{accessCachedTransform()}{accessCachedTransform()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_transform}{Transform}} $\ast$ ostk\+::physics\+::coord\+::frame\+::\+Manager\+::access\+Cached\+Transform (\begin{DoxyParamCaption}\item[{const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \&}]{a\+From\+Frame\+S\+Ptr,  }\item[{const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \&}]{a\+To\+Frame\+S\+Ptr,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&}]{an\+Instant }\end{DoxyParamCaption}) const}
 
 \mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1_manager_abe8ac950d9f04b01a7c1165a6acb2a65}\label{classostk_1_1physics_1_1coord_1_1frame_1_1_manager_abe8ac950d9f04b01a7c1165a6acb2a65}} 
-\index{ostk\+::physics\+::coord\+::frame\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::\+Manager}!access\+Frame\+With\+Name@{access\+Frame\+With\+Name}}
-\index{access\+Frame\+With\+Name@{access\+Frame\+With\+Name}!ostk\+::physics\+::coord\+::frame\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::\+Manager}}
-\subsubsection{\texorpdfstring{access\+Frame\+With\+Name()}{accessFrameWithName()}}
-{\footnotesize\ttfamily Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ ostk\+::physics\+::coord\+::frame\+::\+Manager\+::access\+Frame\+With\+Name (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Frame\+Name }\end{DoxyParamCaption}) const}
+\index{ostk::physics::coord::frame::Manager@{ostk::physics::coord::frame::Manager}!accessFrameWithName@{accessFrameWithName}}
+\index{accessFrameWithName@{accessFrameWithName}!ostk::physics::coord::frame::Manager@{ostk::physics::coord::frame::Manager}}
+\doxysubsubsection{\texorpdfstring{accessFrameWithName()}{accessFrameWithName()}}
+{\footnotesize\ttfamily Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ ostk\+::physics\+::coord\+::frame\+::\+Manager\+::access\+Frame\+With\+Name (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Frame\+Name }\end{DoxyParamCaption}) const}
 
 \mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1_manager_a0b6f34e9c38cc24982afc09b2b991c94}\label{classostk_1_1physics_1_1coord_1_1frame_1_1_manager_a0b6f34e9c38cc24982afc09b2b991c94}} 
-\index{ostk\+::physics\+::coord\+::frame\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::\+Manager}!add\+Cached\+Transform@{add\+Cached\+Transform}}
-\index{add\+Cached\+Transform@{add\+Cached\+Transform}!ostk\+::physics\+::coord\+::frame\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::\+Manager}}
-\subsubsection{\texorpdfstring{add\+Cached\+Transform()}{addCachedTransform()}}
-{\footnotesize\ttfamily void ostk\+::physics\+::coord\+::frame\+::\+Manager\+::add\+Cached\+Transform (\begin{DoxyParamCaption}\item[{const Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+From\+Frame\+S\+Ptr,  }\item[{const Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+To\+Frame\+S\+Ptr,  }\item[{const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant,  }\item[{const \hyperlink{classostk_1_1physics_1_1coord_1_1_transform}{Transform} \&}]{a\+Transform }\end{DoxyParamCaption})}
+\index{ostk::physics::coord::frame::Manager@{ostk::physics::coord::frame::Manager}!addCachedTransform@{addCachedTransform}}
+\index{addCachedTransform@{addCachedTransform}!ostk::physics::coord::frame::Manager@{ostk::physics::coord::frame::Manager}}
+\doxysubsubsection{\texorpdfstring{addCachedTransform()}{addCachedTransform()}}
+{\footnotesize\ttfamily void ostk\+::physics\+::coord\+::frame\+::\+Manager\+::add\+Cached\+Transform (\begin{DoxyParamCaption}\item[{const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \&}]{a\+From\+Frame\+S\+Ptr,  }\item[{const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \&}]{a\+To\+Frame\+S\+Ptr,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&}]{an\+Instant,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_transform}{Transform}} \&}]{a\+Transform }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1_manager_a75538bd860deefad7cce2347a6b96d97}\label{classostk_1_1physics_1_1coord_1_1frame_1_1_manager_a75538bd860deefad7cce2347a6b96d97}} 
-\index{ostk\+::physics\+::coord\+::frame\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::\+Manager}!add\+Frame@{add\+Frame}}
-\index{add\+Frame@{add\+Frame}!ostk\+::physics\+::coord\+::frame\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::\+Manager}}
-\subsubsection{\texorpdfstring{add\+Frame()}{addFrame()}}
-{\footnotesize\ttfamily void ostk\+::physics\+::coord\+::frame\+::\+Manager\+::add\+Frame (\begin{DoxyParamCaption}\item[{const Shared$<$ const \hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame} $>$ \&}]{a\+Frame\+S\+Ptr }\end{DoxyParamCaption})}
+\index{ostk::physics::coord::frame::Manager@{ostk::physics::coord::frame::Manager}!addFrame@{addFrame}}
+\index{addFrame@{addFrame}!ostk::physics::coord::frame::Manager@{ostk::physics::coord::frame::Manager}}
+\doxysubsubsection{\texorpdfstring{addFrame()}{addFrame()}}
+{\footnotesize\ttfamily void ostk\+::physics\+::coord\+::frame\+::\+Manager\+::add\+Frame (\begin{DoxyParamCaption}\item[{const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \&}]{a\+Frame\+S\+Ptr }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1_manager_a58450dcde801cd274f45fd000e5e6bd7}\label{classostk_1_1physics_1_1coord_1_1frame_1_1_manager_a58450dcde801cd274f45fd000e5e6bd7}} 
-\index{ostk\+::physics\+::coord\+::frame\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::\+Manager}!Get@{Get}}
-\index{Get@{Get}!ostk\+::physics\+::coord\+::frame\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::\+Manager}}
-\subsubsection{\texorpdfstring{Get()}{Get()}}
-{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_manager}{Manager} \& ostk\+::physics\+::coord\+::frame\+::\+Manager\+::\+Get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+\index{ostk::physics::coord::frame::Manager@{ostk::physics::coord::frame::Manager}!Get@{Get}}
+\index{Get@{Get}!ostk::physics::coord::frame::Manager@{ostk::physics::coord::frame::Manager}}
+\doxysubsubsection{\texorpdfstring{Get()}{Get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_manager}{Manager}} \& ostk\+::physics\+::coord\+::frame\+::\+Manager\+::\+Get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 \mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1_manager_ac353df7eaa41ec705c7728afef0aff34}\label{classostk_1_1physics_1_1coord_1_1frame_1_1_manager_ac353df7eaa41ec705c7728afef0aff34}} 
-\index{ostk\+::physics\+::coord\+::frame\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::\+Manager}!has\+Frame\+With\+Name@{has\+Frame\+With\+Name}}
-\index{has\+Frame\+With\+Name@{has\+Frame\+With\+Name}!ostk\+::physics\+::coord\+::frame\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::\+Manager}}
-\subsubsection{\texorpdfstring{has\+Frame\+With\+Name()}{hasFrameWithName()}}
+\index{ostk::physics::coord::frame::Manager@{ostk::physics::coord::frame::Manager}!hasFrameWithName@{hasFrameWithName}}
+\index{hasFrameWithName@{hasFrameWithName}!ostk::physics::coord::frame::Manager@{ostk::physics::coord::frame::Manager}}
+\doxysubsubsection{\texorpdfstring{hasFrameWithName()}{hasFrameWithName()}}
 {\footnotesize\ttfamily bool ostk\+::physics\+::coord\+::frame\+::\+Manager\+::has\+Frame\+With\+Name (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Frame\+Name }\end{DoxyParamCaption}) const}
 
 \mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1_manager_a6503baa568803e9943a6685865269b6f}\label{classostk_1_1physics_1_1coord_1_1frame_1_1_manager_a6503baa568803e9943a6685865269b6f}} 
-\index{ostk\+::physics\+::coord\+::frame\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::\+Manager}!operator=@{operator=}}
-\index{operator=@{operator=}!ostk\+::physics\+::coord\+::frame\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::\+Manager}}
-\subsubsection{\texorpdfstring{operator=()}{operator=()}}
-{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_manager}{Manager}\& ostk\+::physics\+::coord\+::frame\+::\+Manager\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_manager}{Manager} \&}]{a\+Manager }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+\index{ostk::physics::coord::frame::Manager@{ostk::physics::coord::frame::Manager}!operator=@{operator=}}
+\index{operator=@{operator=}!ostk::physics::coord::frame::Manager@{ostk::physics::coord::frame::Manager}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_manager}{Manager}}\& ostk\+::physics\+::coord\+::frame\+::\+Manager\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_manager}{Manager}} \&}]{a\+Manager }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
 
 \mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1_manager_ada10a8a3ff3ced0182bbb2a42abbbb71}\label{classostk_1_1physics_1_1coord_1_1frame_1_1_manager_ada10a8a3ff3ced0182bbb2a42abbbb71}} 
-\index{ostk\+::physics\+::coord\+::frame\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::\+Manager}!remove\+Frame\+With\+Name@{remove\+Frame\+With\+Name}}
-\index{remove\+Frame\+With\+Name@{remove\+Frame\+With\+Name}!ostk\+::physics\+::coord\+::frame\+::\+Manager@{ostk\+::physics\+::coord\+::frame\+::\+Manager}}
-\subsubsection{\texorpdfstring{remove\+Frame\+With\+Name()}{removeFrameWithName()}}
+\index{ostk::physics::coord::frame::Manager@{ostk::physics::coord::frame::Manager}!removeFrameWithName@{removeFrameWithName}}
+\index{removeFrameWithName@{removeFrameWithName}!ostk::physics::coord::frame::Manager@{ostk::physics::coord::frame::Manager}}
+\doxysubsubsection{\texorpdfstring{removeFrameWithName()}{removeFrameWithName()}}
 {\footnotesize\ttfamily void ostk\+::physics\+::coord\+::frame\+::\+Manager\+::remove\+Frame\+With\+Name (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Frame\+Name }\end{DoxyParamCaption})}
 
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-include/\+Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\hyperlink{_coordinate_2_frame_2_manager_8hpp}{Manager.\+hpp}\item 
-src/\+Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\hyperlink{_coordinate_2_frame_2_manager_8cpp}{Manager.\+cpp}\end{DoxyCompactItemize}
+include/\+Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\mbox{\hyperlink{_coordinate_2_frame_2_manager_8hpp}{Manager.\+hpp}}\item 
+src/\+Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\mbox{\hyperlink{_coordinate_2_frame_2_manager_8cpp}{Manager.\+cpp}}\end{DoxyCompactItemize}

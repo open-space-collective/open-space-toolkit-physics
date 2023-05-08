@@ -1,64 +1,64 @@
-\hypertarget{classostk_1_1physics_1_1_environment}{}\section{ostk\+:\+:physics\+:\+:Environment Class Reference}
-\label{classostk_1_1physics_1_1_environment}\index{ostk\+::physics\+::\+Environment@{ostk\+::physics\+::\+Environment}}
+\hypertarget{classostk_1_1physics_1_1_environment}{}\doxysection{ostk\+::physics\+::Environment Class Reference}
+\label{classostk_1_1physics_1_1_environment}\index{ostk::physics::Environment@{ostk::physics::Environment}}
 
 
-\hyperlink{classostk_1_1physics_1_1_environment}{Environment} modeling.  
+\mbox{\hyperlink{classostk_1_1physics_1_1_environment}{Environment}} modeling.  
 
 
 
 
 {\ttfamily \#include $<$Environment.\+hpp$>$}
 
-\subsection*{Public Member Functions}
+\doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classostk_1_1physics_1_1_environment_a9c721c6c5eba3608b2225922ab498c95}{Environment} (const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant, const Array$<$ Shared$<$ \hyperlink{classostk_1_1physics_1_1env_1_1_object}{Object} $>$$>$ \&an\+Object\+Array)
+\mbox{\hyperlink{classostk_1_1physics_1_1_environment_a9c721c6c5eba3608b2225922ab498c95}{Environment}} (const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant, const Array$<$ Shared$<$ \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1_object}{Object}} $>$$>$ \&an\+Object\+Array)
 \begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
-\hyperlink{classostk_1_1physics_1_1_environment_ae2fa360cd4bd59f8af1b6c7874be3e2c}{Environment} (const \hyperlink{classostk_1_1physics_1_1_environment}{Environment} \&an\+Environment)
+\mbox{\hyperlink{classostk_1_1physics_1_1_environment_ae2fa360cd4bd59f8af1b6c7874be3e2c}{Environment}} (const \mbox{\hyperlink{classostk_1_1physics_1_1_environment}{Environment}} \&an\+Environment)
 \begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
-\hyperlink{classostk_1_1physics_1_1_environment}{Environment} \& \hyperlink{classostk_1_1physics_1_1_environment_ac0ddef2496b987f9780df94c9ec49990}{operator=} (const \hyperlink{classostk_1_1physics_1_1_environment}{Environment} \&an\+Environment)
+\mbox{\hyperlink{classostk_1_1physics_1_1_environment}{Environment}} \& \mbox{\hyperlink{classostk_1_1physics_1_1_environment_ac0ddef2496b987f9780df94c9ec49990}{operator=}} (const \mbox{\hyperlink{classostk_1_1physics_1_1_environment}{Environment}} \&an\+Environment)
 \begin{DoxyCompactList}\small\item\em Copy assignment operator. \end{DoxyCompactList}\item 
-bool \hyperlink{classostk_1_1physics_1_1_environment_ac597f4d54313d272bc24f62a9f2c0f5c}{is\+Defined} () const
+bool \mbox{\hyperlink{classostk_1_1physics_1_1_environment_ac597f4d54313d272bc24f62a9f2c0f5c}{is\+Defined}} () const
 \begin{DoxyCompactList}\small\item\em Check if environment is defined. \end{DoxyCompactList}\item 
-bool \hyperlink{classostk_1_1physics_1_1_environment_af83819fdcd1586e185ce21e92ce574ed}{has\+Object\+With\+Name} (const String \&a\+Name) const
+bool \mbox{\hyperlink{classostk_1_1physics_1_1_environment_af83819fdcd1586e185ce21e92ce574ed}{has\+Object\+With\+Name}} (const String \&a\+Name) const
 \begin{DoxyCompactList}\small\item\em Returns true if environment contains objects with a given name. \end{DoxyCompactList}\item 
-bool \hyperlink{classostk_1_1physics_1_1_environment_a9a720fa8e7f4b2a30721280a0081716c}{intersects} (const \hyperlink{classostk_1_1physics_1_1env_1_1_object_a66e44a65aefb23a184a6de531e96935d}{Object\+::\+Geometry} \&a\+Geometry, const Array$<$ Shared$<$ const \hyperlink{classostk_1_1physics_1_1env_1_1_object}{Object} $>$$>$ \&an\+Object\+To\+Ignore\+Array=Array$<$ Shared$<$ const \hyperlink{classostk_1_1physics_1_1env_1_1_object}{Object} $>$$>$\+::Empty()) const
+bool \mbox{\hyperlink{classostk_1_1physics_1_1_environment_a9a720fa8e7f4b2a30721280a0081716c}{intersects}} (const \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1_object_a66e44a65aefb23a184a6de531e96935d}{Object\+::\+Geometry}} \&a\+Geometry, const Array$<$ Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1_object}{Object}} $>$$>$ \&an\+Object\+To\+Ignore\+Array=Array$<$ Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1_object}{Object}} $>$$>$\+::Empty()) const
 \begin{DoxyCompactList}\small\item\em Returns true if a given geometry intersects any of the environment objects. \end{DoxyCompactList}\item 
-Array$<$ Shared$<$ const \hyperlink{classostk_1_1physics_1_1env_1_1_object}{Object} $>$ $>$ \hyperlink{classostk_1_1physics_1_1_environment_a1dde23abaa5abd815eef4d4fbd5355ed}{access\+Objects} () const
+Array$<$ Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1_object}{Object}} $>$ $>$ \mbox{\hyperlink{classostk_1_1physics_1_1_environment_a1dde23abaa5abd815eef4d4fbd5355ed}{access\+Objects}} () const
 \begin{DoxyCompactList}\small\item\em Access objects. \end{DoxyCompactList}\item 
-Shared$<$ const \hyperlink{classostk_1_1physics_1_1env_1_1_object}{Object} $>$ \hyperlink{classostk_1_1physics_1_1_environment_a4e616b93d403fffa2ed69bedad6b8b99}{access\+Object\+With\+Name} (const String \&a\+Name) const
+Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1_object}{Object}} $>$ \mbox{\hyperlink{classostk_1_1physics_1_1_environment_a4e616b93d403fffa2ed69bedad6b8b99}{access\+Object\+With\+Name}} (const String \&a\+Name) const
 \begin{DoxyCompactList}\small\item\em Access object with a given name. \end{DoxyCompactList}\item 
-Shared$<$ const \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1_celestial}{Celestial} $>$ \hyperlink{classostk_1_1physics_1_1_environment_a3430014a088dfa3cb52840431d0e0fe8}{access\+Celestial\+Object\+With\+Name} (const String \&a\+Name) const
+Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1_celestial}{Celestial}} $>$ \mbox{\hyperlink{classostk_1_1physics_1_1_environment_a3430014a088dfa3cb52840431d0e0fe8}{access\+Celestial\+Object\+With\+Name}} (const String \&a\+Name) const
 \begin{DoxyCompactList}\small\item\em Access celestial object with a given name. \end{DoxyCompactList}\item 
-\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \hyperlink{classostk_1_1physics_1_1_environment_a13c55249f309570bb9559191435c4a39}{get\+Instant} () const
+\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \mbox{\hyperlink{classostk_1_1physics_1_1_environment_a13c55249f309570bb9559191435c4a39}{get\+Instant}} () const
 \begin{DoxyCompactList}\small\item\em Get instant. \end{DoxyCompactList}\item 
-Array$<$ String $>$ \hyperlink{classostk_1_1physics_1_1_environment_aaa1e5f8c43b809d9b0d91ecf58c549b5}{get\+Object\+Names} () const
+Array$<$ String $>$ \mbox{\hyperlink{classostk_1_1physics_1_1_environment_aaa1e5f8c43b809d9b0d91ecf58c549b5}{get\+Object\+Names}} () const
 \begin{DoxyCompactList}\small\item\em Get names of objects. \end{DoxyCompactList}\item 
-void \hyperlink{classostk_1_1physics_1_1_environment_aeb00f7751b4c1435ddc584da7b3b22e7}{set\+Instant} (const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&an\+Instant)
+void \mbox{\hyperlink{classostk_1_1physics_1_1_environment_aeb00f7751b4c1435ddc584da7b3b22e7}{set\+Instant}} (const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant)
 \begin{DoxyCompactList}\small\item\em Set instant. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Static Public Member Functions}
+\doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \hyperlink{classostk_1_1physics_1_1_environment}{Environment} \hyperlink{classostk_1_1physics_1_1_environment_a0a6b08b9a19de02e9eeacdb0fcc0c588}{Undefined} ()
+static \mbox{\hyperlink{classostk_1_1physics_1_1_environment}{Environment}} \mbox{\hyperlink{classostk_1_1physics_1_1_environment_a0a6b08b9a19de02e9eeacdb0fcc0c588}{Undefined}} ()
 \begin{DoxyCompactList}\small\item\em Get gravitational field at position. \end{DoxyCompactList}\item 
-static \hyperlink{classostk_1_1physics_1_1_environment}{Environment} \hyperlink{classostk_1_1physics_1_1_environment_af713ff358f251bedc1c837e3efac59a4}{Default} ()
+static \mbox{\hyperlink{classostk_1_1physics_1_1_environment}{Environment}} \mbox{\hyperlink{classostk_1_1physics_1_1_environment_af713ff358f251bedc1c837e3efac59a4}{Default}} ()
 \begin{DoxyCompactList}\small\item\em Constructs a default environment. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Friends}
+\doxysubsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
-std\+::ostream \& \hyperlink{classostk_1_1physics_1_1_environment_a7bc4b39898452fbe5ce3a8de75ad2596}{operator$<$$<$} (std\+::ostream \&an\+Output\+Stream, const \hyperlink{classostk_1_1physics_1_1_environment}{Environment} \&an\+Environment)
+std\+::ostream \& \mbox{\hyperlink{classostk_1_1physics_1_1_environment_a7bc4b39898452fbe5ce3a8de75ad2596}{operator$<$$<$}} (std\+::ostream \&an\+Output\+Stream, const \mbox{\hyperlink{classostk_1_1physics_1_1_environment}{Environment}} \&an\+Environment)
 \begin{DoxyCompactList}\small\item\em Output stream operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
-\hyperlink{classostk_1_1physics_1_1_environment}{Environment} modeling. 
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classostk_1_1physics_1_1_environment}{Environment}} modeling. 
 
-\subsection{Constructor \& Destructor Documentation}
+\doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classostk_1_1physics_1_1_environment_a9c721c6c5eba3608b2225922ab498c95}\label{classostk_1_1physics_1_1_environment_a9c721c6c5eba3608b2225922ab498c95}} 
-\index{ostk\+::physics\+::\+Environment@{ostk\+::physics\+::\+Environment}!Environment@{Environment}}
-\index{Environment@{Environment}!ostk\+::physics\+::\+Environment@{ostk\+::physics\+::\+Environment}}
-\subsubsection{\texorpdfstring{Environment()}{Environment()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily ostk\+::physics\+::\+Environment\+::\+Environment (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant,  }\item[{const Array$<$ Shared$<$ \hyperlink{classostk_1_1physics_1_1env_1_1_object}{Object} $>$$>$ \&}]{an\+Object\+Array }\end{DoxyParamCaption})}
+\index{ostk::physics::Environment@{ostk::physics::Environment}!Environment@{Environment}}
+\index{Environment@{Environment}!ostk::physics::Environment@{ostk::physics::Environment}}
+\doxysubsubsection{\texorpdfstring{Environment()}{Environment()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily ostk\+::physics\+::\+Environment\+::\+Environment (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&}]{an\+Instant,  }\item[{const Array$<$ Shared$<$ \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1_object}{Object}} $>$$>$ \&}]{an\+Object\+Array }\end{DoxyParamCaption})}
 
 
 
@@ -66,16 +66,16 @@ Constructor.
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em an\+Instant} & An instant \\
+\mbox{\texttt{ in}}  & {\em an\+Instant} & An instant \\
 \hline
-\mbox{\tt in}  & {\em An} & array of shared pointers to objects \\
+\mbox{\texttt{ in}}  & {\em An} & array of shared pointers to objects \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classostk_1_1physics_1_1_environment_ae2fa360cd4bd59f8af1b6c7874be3e2c}\label{classostk_1_1physics_1_1_environment_ae2fa360cd4bd59f8af1b6c7874be3e2c}} 
-\index{ostk\+::physics\+::\+Environment@{ostk\+::physics\+::\+Environment}!Environment@{Environment}}
-\index{Environment@{Environment}!ostk\+::physics\+::\+Environment@{ostk\+::physics\+::\+Environment}}
-\subsubsection{\texorpdfstring{Environment()}{Environment()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily ostk\+::physics\+::\+Environment\+::\+Environment (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1_environment}{Environment} \&}]{an\+Environment }\end{DoxyParamCaption})}
+\index{ostk::physics::Environment@{ostk::physics::Environment}!Environment@{Environment}}
+\index{Environment@{Environment}!ostk::physics::Environment@{ostk::physics::Environment}}
+\doxysubsubsection{\texorpdfstring{Environment()}{Environment()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily ostk\+::physics\+::\+Environment\+::\+Environment (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1_environment}{Environment}} \&}]{an\+Environment }\end{DoxyParamCaption})}
 
 
 
@@ -83,17 +83,17 @@ Copy constructor.
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em an\+Environment} & An environment \\
+\mbox{\texttt{ in}}  & {\em an\+Environment} & An environment \\
 \hline
 \end{DoxyParams}
 
 
-\subsection{Member Function Documentation}
+\doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classostk_1_1physics_1_1_environment_a3430014a088dfa3cb52840431d0e0fe8}\label{classostk_1_1physics_1_1_environment_a3430014a088dfa3cb52840431d0e0fe8}} 
-\index{ostk\+::physics\+::\+Environment@{ostk\+::physics\+::\+Environment}!access\+Celestial\+Object\+With\+Name@{access\+Celestial\+Object\+With\+Name}}
-\index{access\+Celestial\+Object\+With\+Name@{access\+Celestial\+Object\+With\+Name}!ostk\+::physics\+::\+Environment@{ostk\+::physics\+::\+Environment}}
-\subsubsection{\texorpdfstring{access\+Celestial\+Object\+With\+Name()}{accessCelestialObjectWithName()}}
-{\footnotesize\ttfamily Shared$<$ const \hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1_celestial}{Celestial} $>$ ostk\+::physics\+::\+Environment\+::access\+Celestial\+Object\+With\+Name (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Name }\end{DoxyParamCaption}) const}
+\index{ostk::physics::Environment@{ostk::physics::Environment}!accessCelestialObjectWithName@{accessCelestialObjectWithName}}
+\index{accessCelestialObjectWithName@{accessCelestialObjectWithName}!ostk::physics::Environment@{ostk::physics::Environment}}
+\doxysubsubsection{\texorpdfstring{accessCelestialObjectWithName()}{accessCelestialObjectWithName()}}
+{\footnotesize\ttfamily Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1_celestial}{Celestial}} $>$ ostk\+::physics\+::\+Environment\+::access\+Celestial\+Object\+With\+Name (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Name }\end{DoxyParamCaption}) const}
 
 
 
@@ -101,17 +101,17 @@ Access celestial object with a given name.
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em a\+Name} & A celestial object name \\
+\mbox{\texttt{ in}}  & {\em a\+Name} & A celestial object name \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Reference to shared pointer to celestial object 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1_environment_a1dde23abaa5abd815eef4d4fbd5355ed}\label{classostk_1_1physics_1_1_environment_a1dde23abaa5abd815eef4d4fbd5355ed}} 
-\index{ostk\+::physics\+::\+Environment@{ostk\+::physics\+::\+Environment}!access\+Objects@{access\+Objects}}
-\index{access\+Objects@{access\+Objects}!ostk\+::physics\+::\+Environment@{ostk\+::physics\+::\+Environment}}
-\subsubsection{\texorpdfstring{access\+Objects()}{accessObjects()}}
-{\footnotesize\ttfamily Array$<$ Shared$<$ const \hyperlink{classostk_1_1physics_1_1env_1_1_object}{Object} $>$ $>$ ostk\+::physics\+::\+Environment\+::access\+Objects (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+\index{ostk::physics::Environment@{ostk::physics::Environment}!accessObjects@{accessObjects}}
+\index{accessObjects@{accessObjects}!ostk::physics::Environment@{ostk::physics::Environment}}
+\doxysubsubsection{\texorpdfstring{accessObjects()}{accessObjects()}}
+{\footnotesize\ttfamily Array$<$ Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1_object}{Object}} $>$ $>$ ostk\+::physics\+::\+Environment\+::access\+Objects (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
@@ -121,10 +121,10 @@ Access objects.
 Reference to array of shared pointers to objects 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1_environment_a4e616b93d403fffa2ed69bedad6b8b99}\label{classostk_1_1physics_1_1_environment_a4e616b93d403fffa2ed69bedad6b8b99}} 
-\index{ostk\+::physics\+::\+Environment@{ostk\+::physics\+::\+Environment}!access\+Object\+With\+Name@{access\+Object\+With\+Name}}
-\index{access\+Object\+With\+Name@{access\+Object\+With\+Name}!ostk\+::physics\+::\+Environment@{ostk\+::physics\+::\+Environment}}
-\subsubsection{\texorpdfstring{access\+Object\+With\+Name()}{accessObjectWithName()}}
-{\footnotesize\ttfamily Shared$<$ const \hyperlink{classostk_1_1physics_1_1env_1_1_object}{Object} $>$ ostk\+::physics\+::\+Environment\+::access\+Object\+With\+Name (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Name }\end{DoxyParamCaption}) const}
+\index{ostk::physics::Environment@{ostk::physics::Environment}!accessObjectWithName@{accessObjectWithName}}
+\index{accessObjectWithName@{accessObjectWithName}!ostk::physics::Environment@{ostk::physics::Environment}}
+\doxysubsubsection{\texorpdfstring{accessObjectWithName()}{accessObjectWithName()}}
+{\footnotesize\ttfamily Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1_object}{Object}} $>$ ostk\+::physics\+::\+Environment\+::access\+Object\+With\+Name (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Name }\end{DoxyParamCaption}) const}
 
 
 
@@ -132,27 +132,29 @@ Access object with a given name.
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em a\+Name} & An object name \\
+\mbox{\texttt{ in}}  & {\em a\+Name} & An object name \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Reference to shared pointer to object 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1_environment_af713ff358f251bedc1c837e3efac59a4}\label{classostk_1_1physics_1_1_environment_af713ff358f251bedc1c837e3efac59a4}} 
-\index{ostk\+::physics\+::\+Environment@{ostk\+::physics\+::\+Environment}!Default@{Default}}
-\index{Default@{Default}!ostk\+::physics\+::\+Environment@{ostk\+::physics\+::\+Environment}}
-\subsubsection{\texorpdfstring{Default()}{Default()}}
-{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1_environment}{Environment} ostk\+::physics\+::\+Environment\+::\+Default (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+\index{ostk::physics::Environment@{ostk::physics::Environment}!Default@{Default}}
+\index{Default@{Default}!ostk::physics::Environment@{ostk::physics::Environment}}
+\doxysubsubsection{\texorpdfstring{Default()}{Default()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1_environment}{Environment}} ostk\+::physics\+::\+Environment\+::\+Default (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
 Constructs a default environment. 
 
-Contains Earth, Sun and Moon, with S\+P\+I\+C\+E-\/based ephemeris.
+\begin{DoxyVerb}                Contains Earth, Sun and Moon, with SPICE-based ephemeris.
+\end{DoxyVerb}
 
 
-\begin{DoxyCode}
-\hyperlink{classostk_1_1physics_1_1_environment_a9c721c6c5eba3608b2225922ab498c95}{Environment} environment = \hyperlink{classostk_1_1physics_1_1_environment_af713ff358f251bedc1c837e3efac59a4}{Environment::Default}() ;
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1physics_1_1_environment_a9c721c6c5eba3608b2225922ab498c95}{Environment}} environment = \mbox{\hyperlink{classostk_1_1physics_1_1_environment_af713ff358f251bedc1c837e3efac59a4}{Environment::Default}}() ;}
 \end{DoxyCode}
 
 
@@ -160,10 +162,10 @@ Contains Earth, Sun and Moon, with S\+P\+I\+C\+E-\/based ephemeris.
 Undefined environment 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1_environment_a13c55249f309570bb9559191435c4a39}\label{classostk_1_1physics_1_1_environment_a13c55249f309570bb9559191435c4a39}} 
-\index{ostk\+::physics\+::\+Environment@{ostk\+::physics\+::\+Environment}!get\+Instant@{get\+Instant}}
-\index{get\+Instant@{get\+Instant}!ostk\+::physics\+::\+Environment@{ostk\+::physics\+::\+Environment}}
-\subsubsection{\texorpdfstring{get\+Instant()}{getInstant()}}
-{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} ostk\+::physics\+::\+Environment\+::get\+Instant (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+\index{ostk::physics::Environment@{ostk::physics::Environment}!getInstant@{getInstant}}
+\index{getInstant@{getInstant}!ostk::physics::Environment@{ostk::physics::Environment}}
+\doxysubsubsection{\texorpdfstring{getInstant()}{getInstant()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} ostk\+::physics\+::\+Environment\+::get\+Instant (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
@@ -173,9 +175,9 @@ Get instant.
 Instant 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1_environment_aaa1e5f8c43b809d9b0d91ecf58c549b5}\label{classostk_1_1physics_1_1_environment_aaa1e5f8c43b809d9b0d91ecf58c549b5}} 
-\index{ostk\+::physics\+::\+Environment@{ostk\+::physics\+::\+Environment}!get\+Object\+Names@{get\+Object\+Names}}
-\index{get\+Object\+Names@{get\+Object\+Names}!ostk\+::physics\+::\+Environment@{ostk\+::physics\+::\+Environment}}
-\subsubsection{\texorpdfstring{get\+Object\+Names()}{getObjectNames()}}
+\index{ostk::physics::Environment@{ostk::physics::Environment}!getObjectNames@{getObjectNames}}
+\index{getObjectNames@{getObjectNames}!ostk::physics::Environment@{ostk::physics::Environment}}
+\doxysubsubsection{\texorpdfstring{getObjectNames()}{getObjectNames()}}
 {\footnotesize\ttfamily Array$<$ String $>$ ostk\+::physics\+::\+Environment\+::get\+Object\+Names (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
@@ -186,9 +188,9 @@ Get names of objects.
 Array of objects names 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1_environment_af83819fdcd1586e185ce21e92ce574ed}\label{classostk_1_1physics_1_1_environment_af83819fdcd1586e185ce21e92ce574ed}} 
-\index{ostk\+::physics\+::\+Environment@{ostk\+::physics\+::\+Environment}!has\+Object\+With\+Name@{has\+Object\+With\+Name}}
-\index{has\+Object\+With\+Name@{has\+Object\+With\+Name}!ostk\+::physics\+::\+Environment@{ostk\+::physics\+::\+Environment}}
-\subsubsection{\texorpdfstring{has\+Object\+With\+Name()}{hasObjectWithName()}}
+\index{ostk::physics::Environment@{ostk::physics::Environment}!hasObjectWithName@{hasObjectWithName}}
+\index{hasObjectWithName@{hasObjectWithName}!ostk::physics::Environment@{ostk::physics::Environment}}
+\doxysubsubsection{\texorpdfstring{hasObjectWithName()}{hasObjectWithName()}}
 {\footnotesize\ttfamily bool ostk\+::physics\+::\+Environment\+::has\+Object\+With\+Name (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Name }\end{DoxyParamCaption}) const}
 
 
@@ -197,17 +199,17 @@ Returns true if environment contains objects with a given name.
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em a\+Name} & An object name \\
+\mbox{\texttt{ in}}  & {\em a\+Name} & An object name \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 True if environment contains objects with a given name 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1_environment_a9a720fa8e7f4b2a30721280a0081716c}\label{classostk_1_1physics_1_1_environment_a9a720fa8e7f4b2a30721280a0081716c}} 
-\index{ostk\+::physics\+::\+Environment@{ostk\+::physics\+::\+Environment}!intersects@{intersects}}
-\index{intersects@{intersects}!ostk\+::physics\+::\+Environment@{ostk\+::physics\+::\+Environment}}
-\subsubsection{\texorpdfstring{intersects()}{intersects()}}
-{\footnotesize\ttfamily bool ostk\+::physics\+::\+Environment\+::intersects (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1env_1_1_object_a66e44a65aefb23a184a6de531e96935d}{Object\+::\+Geometry} \&}]{a\+Geometry,  }\item[{const Array$<$ Shared$<$ const \hyperlink{classostk_1_1physics_1_1env_1_1_object}{Object} $>$$>$ \&}]{an\+Object\+To\+Ignore\+Array = {\ttfamily Array$<$Shared$<$const~\hyperlink{classostk_1_1physics_1_1env_1_1_object}{Object}$>$$>$\+:\+:Empty()} }\end{DoxyParamCaption}) const}
+\index{ostk::physics::Environment@{ostk::physics::Environment}!intersects@{intersects}}
+\index{intersects@{intersects}!ostk::physics::Environment@{ostk::physics::Environment}}
+\doxysubsubsection{\texorpdfstring{intersects()}{intersects()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::\+Environment\+::intersects (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1_object_a66e44a65aefb23a184a6de531e96935d}{Object\+::\+Geometry}} \&}]{a\+Geometry,  }\item[{const Array$<$ Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1_object}{Object}} $>$$>$ \&}]{an\+Object\+To\+Ignore\+Array = {\ttfamily Array$<$Shared$<$const~\mbox{\hyperlink{classostk_1_1physics_1_1env_1_1_object}{Object}}$>$$>$\+:\+:Empty()} }\end{DoxyParamCaption}) const}
 
 
 
@@ -215,18 +217,18 @@ Returns true if a given geometry intersects any of the environment objects.
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em a\+Geometry} & A geometry \\
+\mbox{\texttt{ in}}  & {\em a\+Geometry} & A geometry \\
 \hline
-\mbox{\tt in}  & {\em (optional)} & an\+Object\+To\+Ignore\+Array An array of objects to ignore \\
+\mbox{\texttt{ in}}  & {\em (optional)} & an\+Object\+To\+Ignore\+Array An array of objects to ignore \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 True if a given geometry intersects any of the environment objects 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1_environment_ac597f4d54313d272bc24f62a9f2c0f5c}\label{classostk_1_1physics_1_1_environment_ac597f4d54313d272bc24f62a9f2c0f5c}} 
-\index{ostk\+::physics\+::\+Environment@{ostk\+::physics\+::\+Environment}!is\+Defined@{is\+Defined}}
-\index{is\+Defined@{is\+Defined}!ostk\+::physics\+::\+Environment@{ostk\+::physics\+::\+Environment}}
-\subsubsection{\texorpdfstring{is\+Defined()}{isDefined()}}
+\index{ostk::physics::Environment@{ostk::physics::Environment}!isDefined@{isDefined}}
+\index{isDefined@{isDefined}!ostk::physics::Environment@{ostk::physics::Environment}}
+\doxysubsubsection{\texorpdfstring{isDefined()}{isDefined()}}
 {\footnotesize\ttfamily bool ostk\+::physics\+::\+Environment\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
@@ -237,10 +239,10 @@ Check if environment is defined.
 True if environment is defined 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1_environment_ac0ddef2496b987f9780df94c9ec49990}\label{classostk_1_1physics_1_1_environment_ac0ddef2496b987f9780df94c9ec49990}} 
-\index{ostk\+::physics\+::\+Environment@{ostk\+::physics\+::\+Environment}!operator=@{operator=}}
-\index{operator=@{operator=}!ostk\+::physics\+::\+Environment@{ostk\+::physics\+::\+Environment}}
-\subsubsection{\texorpdfstring{operator=()}{operator=()}}
-{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1_environment}{Environment} \& ostk\+::physics\+::\+Environment\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1_environment}{Environment} \&}]{an\+Environment }\end{DoxyParamCaption})}
+\index{ostk::physics::Environment@{ostk::physics::Environment}!operator=@{operator=}}
+\index{operator=@{operator=}!ostk::physics::Environment@{ostk::physics::Environment}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1_environment}{Environment}} \& ostk\+::physics\+::\+Environment\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1_environment}{Environment}} \&}]{an\+Environment }\end{DoxyParamCaption})}
 
 
 
@@ -248,17 +250,17 @@ Copy assignment operator.
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em an\+Environment} & An environment \\
+\mbox{\texttt{ in}}  & {\em an\+Environment} & An environment \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Reference to environment 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1_environment_aeb00f7751b4c1435ddc584da7b3b22e7}\label{classostk_1_1physics_1_1_environment_aeb00f7751b4c1435ddc584da7b3b22e7}} 
-\index{ostk\+::physics\+::\+Environment@{ostk\+::physics\+::\+Environment}!set\+Instant@{set\+Instant}}
-\index{set\+Instant@{set\+Instant}!ostk\+::physics\+::\+Environment@{ostk\+::physics\+::\+Environment}}
-\subsubsection{\texorpdfstring{set\+Instant()}{setInstant()}}
-{\footnotesize\ttfamily void ostk\+::physics\+::\+Environment\+::set\+Instant (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant} \&}]{an\+Instant }\end{DoxyParamCaption})}
+\index{ostk::physics::Environment@{ostk::physics::Environment}!setInstant@{setInstant}}
+\index{setInstant@{setInstant}!ostk::physics::Environment@{ostk::physics::Environment}}
+\doxysubsubsection{\texorpdfstring{setInstant()}{setInstant()}}
+{\footnotesize\ttfamily void ostk\+::physics\+::\+Environment\+::set\+Instant (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&}]{an\+Instant }\end{DoxyParamCaption})}
 
 
 
@@ -266,14 +268,14 @@ Set instant.
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em an\+Instant} & An instant \\
+\mbox{\texttt{ in}}  & {\em an\+Instant} & An instant \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classostk_1_1physics_1_1_environment_a0a6b08b9a19de02e9eeacdb0fcc0c588}\label{classostk_1_1physics_1_1_environment_a0a6b08b9a19de02e9eeacdb0fcc0c588}} 
-\index{ostk\+::physics\+::\+Environment@{ostk\+::physics\+::\+Environment}!Undefined@{Undefined}}
-\index{Undefined@{Undefined}!ostk\+::physics\+::\+Environment@{ostk\+::physics\+::\+Environment}}
-\subsubsection{\texorpdfstring{Undefined()}{Undefined()}}
-{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1_environment}{Environment} ostk\+::physics\+::\+Environment\+::\+Undefined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+\index{ostk::physics::Environment@{ostk::physics::Environment}!Undefined@{Undefined}}
+\index{Undefined@{Undefined}!ostk::physics::Environment@{ostk::physics::Environment}}
+\doxysubsubsection{\texorpdfstring{Undefined()}{Undefined()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1_environment}{Environment}} ostk\+::physics\+::\+Environment\+::\+Undefined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -281,24 +283,28 @@ Get gravitational field at position.
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em a\+Position} & A position \\
+\mbox{\texttt{ in}}  & {\em a\+Position} & A position \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Gravitational field vector Get magnetic field at position
+Gravitational field vector
 \end{DoxyReturn}
+Get magnetic field at position
+
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em a\+Position} & A position \\
+\mbox{\texttt{ in}}  & {\em a\+Position} & A position \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Magnetic field vector Constructs an undefined environment
+Magnetic field vector
 \end{DoxyReturn}
+Constructs an undefined environment
 
-\begin{DoxyCode}
-\hyperlink{classostk_1_1physics_1_1_environment_a9c721c6c5eba3608b2225922ab498c95}{Environment} environment = \hyperlink{classostk_1_1physics_1_1_environment_a0a6b08b9a19de02e9eeacdb0fcc0c588}{Environment::Undefined}() ;
-environment.isDefined() ; \textcolor{comment}{// False}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1physics_1_1_environment_a9c721c6c5eba3608b2225922ab498c95}{Environment}} environment = \mbox{\hyperlink{classostk_1_1physics_1_1_environment_a0a6b08b9a19de02e9eeacdb0fcc0c588}{Environment::Undefined}}() ;}
+\DoxyCodeLine{environment.isDefined() ; \textcolor{comment}{// False}}
 \end{DoxyCode}
 
 
@@ -307,12 +313,12 @@ Undefined environment
 \end{DoxyReturn}
 
 
-\subsection{Friends And Related Function Documentation}
+\doxysubsection{Friends And Related Function Documentation}
 \mbox{\Hypertarget{classostk_1_1physics_1_1_environment_a7bc4b39898452fbe5ce3a8de75ad2596}\label{classostk_1_1physics_1_1_environment_a7bc4b39898452fbe5ce3a8de75ad2596}} 
-\index{ostk\+::physics\+::\+Environment@{ostk\+::physics\+::\+Environment}!operator$<$$<$@{operator$<$$<$}}
-\index{operator$<$$<$@{operator$<$$<$}!ostk\+::physics\+::\+Environment@{ostk\+::physics\+::\+Environment}}
-\subsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
-{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{an\+Output\+Stream,  }\item[{const \hyperlink{classostk_1_1physics_1_1_environment}{Environment} \&}]{an\+Environment }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+\index{ostk::physics::Environment@{ostk::physics::Environment}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!ostk::physics::Environment@{ostk::physics::Environment}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{an\+Output\+Stream,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1_environment}{Environment}} \&}]{an\+Environment }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
 
 
 
@@ -320,9 +326,9 @@ Output stream operator.
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em an\+Output\+Stream} & An output stream \\
+\mbox{\texttt{ in}}  & {\em an\+Output\+Stream} & An output stream \\
 \hline
-\mbox{\tt in}  & {\em an\+Environment} & An environment \\
+\mbox{\texttt{ in}}  & {\em an\+Environment} & An environment \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -332,5 +338,5 @@ A reference to output stream
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-include/\+Open\+Space\+Toolkit/\+Physics/\hyperlink{_environment_8hpp}{Environment.\+hpp}\item 
-src/\+Open\+Space\+Toolkit/\+Physics/\hyperlink{_environment_8cpp}{Environment.\+cpp}\end{DoxyCompactItemize}
+include/\+Open\+Space\+Toolkit/\+Physics/\mbox{\hyperlink{_environment_8hpp}{Environment.\+hpp}}\item 
+src/\+Open\+Space\+Toolkit/\+Physics/\mbox{\hyperlink{_environment_8cpp}{Environment.\+cpp}}\end{DoxyCompactItemize}

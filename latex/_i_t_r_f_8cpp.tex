@@ -1,5 +1,5 @@
-\hypertarget{_i_t_r_f_8cpp}{}\section{src/\+Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Providers/\+I\+T\+RF.cpp File Reference}
-\label{_i_t_r_f_8cpp}\index{src/\+Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Providers/\+I\+T\+R\+F.\+cpp@{src/\+Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Providers/\+I\+T\+R\+F.\+cpp}}
+\hypertarget{_i_t_r_f_8cpp}{}\doxysection{src/\+Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Providers/\+I\+T\+RF.cpp File Reference}
+\label{_i_t_r_f_8cpp}\index{src/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/ITRF.cpp@{src/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/ITRF.cpp}}
 {\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Providers/\+I\+E\+R\+S/\+Bulletin\+A.\+hpp$>$}\newline
 {\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Providers/\+I\+E\+R\+S/\+Manager.\+hpp$>$}\newline
 {\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Providers/\+I\+T\+R\+F.\+hpp$>$}\newline
@@ -10,52 +10,52 @@
 {\ttfamily \#include $<$Open\+Space\+Toolkit/\+Core/\+Error.\+hpp$>$}\newline
 {\ttfamily \#include $<$Open\+Space\+Toolkit/\+Core/\+Utilities.\+hpp$>$}\newline
 {\ttfamily \#include $<$sofa/sofa.\+h$>$}\newline
-\subsection*{Namespaces}
+\doxysubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
- \hyperlink{namespaceostk}{ostk}
+ \mbox{\hyperlink{namespaceostk}{ostk}}
 \item 
- \hyperlink{namespaceostk_1_1physics}{ostk\+::physics}
+ \mbox{\hyperlink{namespaceostk_1_1physics}{ostk\+::physics}}
 \item 
- \hyperlink{namespaceostk_1_1physics_1_1coord}{ostk\+::physics\+::coord}
+ \mbox{\hyperlink{namespaceostk_1_1physics_1_1coord}{ostk\+::physics\+::coord}}
 \item 
- \hyperlink{namespaceostk_1_1physics_1_1coord_1_1frame}{ostk\+::physics\+::coord\+::frame}
+ \mbox{\hyperlink{namespaceostk_1_1physics_1_1coord_1_1frame}{ostk\+::physics\+::coord\+::frame}}
 \item 
- \hyperlink{namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider}{ostk\+::physics\+::coord\+::frame\+::provider}
+ \mbox{\hyperlink{namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider}{ostk\+::physics\+::coord\+::frame\+::provider}}
 \end{DoxyCompactItemize}
-\subsection*{Macros}
+\doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \hyperlink{_i_t_r_f_8cpp_aaf777442176e851f4e522f4cf60d73d7}{D\+A\+S2R}~(4.\+848136811095359935899141e-\/6)
+\#define \mbox{\hyperlink{_i_t_r_f_8cpp_aaf777442176e851f4e522f4cf60d73d7}{D\+A\+S2R}}~(4.\+848136811095359935899141e-\/6)
 \end{DoxyCompactItemize}
-\subsection*{Typedefs}
+\doxysubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-using \hyperlink{_i_t_r_f_8cpp_af15130fc8f7fe288796d033a30dd8301}{Iers\+Manager} = \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager}{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}
+using \mbox{\hyperlink{_i_t_r_f_8cpp_af15130fc8f7fe288796d033a30dd8301}{Iers\+Manager}} = \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager}{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}}
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
-Open Space Toolkit ▸ Physics
+\doxysubsection{Detailed Description}
+@project Open Space Toolkit ▸ Physics
 
 \begin{DoxyAuthor}{Author}
-Lucas Brémond \href{mailto:lucas@loftorbital.com}{\tt lucas@loftorbital.\+com}  Apache License 2.\+0 
+Lucas Brémond \href{mailto:lucas@loftorbital.com}{\texttt{ lucas@loftorbital.\+com}} @license Apache License 2.\+0 
 \end{DoxyAuthor}
 
 
-\subsection{Macro Definition Documentation}
+\doxysubsection{Macro Definition Documentation}
 \mbox{\Hypertarget{_i_t_r_f_8cpp_aaf777442176e851f4e522f4cf60d73d7}\label{_i_t_r_f_8cpp_aaf777442176e851f4e522f4cf60d73d7}} 
-\index{I\+T\+R\+F.\+cpp@{I\+T\+R\+F.\+cpp}!D\+A\+S2R@{D\+A\+S2R}}
-\index{D\+A\+S2R@{D\+A\+S2R}!I\+T\+R\+F.\+cpp@{I\+T\+R\+F.\+cpp}}
-\subsubsection{\texorpdfstring{D\+A\+S2R}{DAS2R}}
+\index{ITRF.cpp@{ITRF.cpp}!DAS2R@{DAS2R}}
+\index{DAS2R@{DAS2R}!ITRF.cpp@{ITRF.cpp}}
+\doxysubsubsection{\texorpdfstring{DAS2R}{DAS2R}}
 {\footnotesize\ttfamily \#define D\+A\+S2R~(4.\+848136811095359935899141e-\/6)}
 
 
 
-\subsection{Typedef Documentation}
+\doxysubsection{Typedef Documentation}
 \mbox{\Hypertarget{_i_t_r_f_8cpp_af15130fc8f7fe288796d033a30dd8301}\label{_i_t_r_f_8cpp_af15130fc8f7fe288796d033a30dd8301}} 
-\index{I\+T\+R\+F.\+cpp@{I\+T\+R\+F.\+cpp}!Iers\+Manager@{Iers\+Manager}}
-\index{Iers\+Manager@{Iers\+Manager}!I\+T\+R\+F.\+cpp@{I\+T\+R\+F.\+cpp}}
-\subsubsection{\texorpdfstring{Iers\+Manager}{IersManager}}
-{\footnotesize\ttfamily using \hyperlink{_i_t_r_f_8cpp_af15130fc8f7fe288796d033a30dd8301}{Iers\+Manager} =  \hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager}{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}}
+\index{ITRF.cpp@{ITRF.cpp}!IersManager@{IersManager}}
+\index{IersManager@{IersManager}!ITRF.cpp@{ITRF.cpp}}
+\doxysubsubsection{\texorpdfstring{IersManager}{IersManager}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{_i_t_r_f_8cpp_af15130fc8f7fe288796d033a30dd8301}{Iers\+Manager}} =  \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager}{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}}}
 

@@ -1,136 +1,136 @@
-\hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{}\section{ostk\+:\+:physics\+:\+:env\+:\+:ephem\+:\+:spice\+:\+:Kernel Class Reference}
-\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}}
+\hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{}\doxysection{ostk\+::physics\+::env\+::ephem\+::spice\+::Kernel Class Reference}
+\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}\index{ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}}
 
 
-\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e}{S\+P\+I\+CE} Toolkit kernel.  
+\mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e}{S\+P\+I\+CE}} Toolkit kernel.  
 
 
 
 
 {\ttfamily \#include $<$Kernel.\+hpp$>$}
 
-\subsection*{Public Types}
+\doxysubsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-enum \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77}{Type} \{ \newline
-\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77aec0fc0100c4fc1ce4eea230c3dc10360}{Type\+::\+Undefined}, 
-\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77ae5ebe7b9d4b13b67cb85ac2febe4aca2}{Type\+::\+S\+C\+LK}, 
-\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a1352b10452a6331f4858173133cad49d}{Type\+::\+L\+SK}, 
-\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77abed028f19aa93adb7f45e064155e5278}{Type\+::\+P\+CK}, 
+enum \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77}{Type}} \{ \newline
+\mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77aec0fc0100c4fc1ce4eea230c3dc10360}{Type\+::\+Undefined}}, 
+\mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77ae5ebe7b9d4b13b67cb85ac2febe4aca2}{Type\+::\+S\+C\+LK}}, 
+\mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a1352b10452a6331f4858173133cad49d}{Type\+::\+L\+SK}}, 
+\mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77abed028f19aa93adb7f45e064155e5278}{Type\+::\+P\+CK}}, 
 \newline
-\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a7ab2200d24b19f1824cef3f53b5b69ca}{Type\+::\+IK}, 
-\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a8c8ba29dafd95af91e280d1e80b81773}{Type\+::\+FK}, 
-\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a6aa451b53d492a8f5a2fa1fa2855be8b}{Type\+::\+EK}, 
-\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77afbd1e7ba9564863b88d5c43cb833afaf}{Type\+::\+MK}, 
+\mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a7ab2200d24b19f1824cef3f53b5b69ca}{Type\+::\+IK}}, 
+\mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a8c8ba29dafd95af91e280d1e80b81773}{Type\+::\+FK}}, 
+\mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a6aa451b53d492a8f5a2fa1fa2855be8b}{Type\+::\+EK}}, 
+\mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77afbd1e7ba9564863b88d5c43cb833afaf}{Type\+::\+MK}}, 
 \newline
-\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77aa77fe9806504467c944718a3ce1ed5cb}{Type\+::\+S\+PK}, 
-\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a357e2ff99b2ce7d86f78fca1353088ec}{Type\+::\+B\+P\+CK}, 
-\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a534ac75c2e8ac3e3fe7bc32bb8c6e34a}{Type\+::\+CK}, 
-\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a23d71b8d68c6f4869b29ed158e97c88a}{Type\+::\+B\+EK}
+\mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77aa77fe9806504467c944718a3ce1ed5cb}{Type\+::\+S\+PK}}, 
+\mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a357e2ff99b2ce7d86f78fca1353088ec}{Type\+::\+B\+P\+CK}}, 
+\mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a534ac75c2e8ac3e3fe7bc32bb8c6e34a}{Type\+::\+CK}}, 
+\mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a23d71b8d68c6f4869b29ed158e97c88a}{Type\+::\+B\+EK}}
  \}
 \end{DoxyCompactItemize}
-\subsection*{Public Member Functions}
+\doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_afba440f0d5553591d9217c2a5e7035b5}{Kernel} (const \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77}{Kernel\+::\+Type} \&a\+Type, const fs\+::\+File \&a\+File)
+\mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_afba440f0d5553591d9217c2a5e7035b5}{Kernel}} (const \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77}{Kernel\+::\+Type}} \&a\+Type, const fs\+::\+File \&a\+File)
 \begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
-bool \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a4499b4c8a89b9aa99fe90bac124e89ef}{operator==} (const \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel} \&a\+Kernel) const
+bool \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a4499b4c8a89b9aa99fe90bac124e89ef}{operator==}} (const \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel}} \&a\+Kernel) const
 \begin{DoxyCompactList}\small\item\em Equal to operator. \end{DoxyCompactList}\item 
-bool \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a1b2d11521cac8056058e774eee8082ae}{operator!=} (const \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel} \&a\+Kernel) const
+bool \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a1b2d11521cac8056058e774eee8082ae}{operator!=}} (const \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel}} \&a\+Kernel) const
 \begin{DoxyCompactList}\small\item\em Not equal to operator. \end{DoxyCompactList}\item 
-bool \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a06668d90a8b74338de4863880d362239}{is\+Defined} () const
+bool \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a06668d90a8b74338de4863880d362239}{is\+Defined}} () const
 \begin{DoxyCompactList}\small\item\em Returns true if kernel is defined. \end{DoxyCompactList}\item 
-\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77}{Kernel\+::\+Type} \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a4b592a8ad9e7dd8c44807b53afafaf3b}{get\+Type} () const
+\mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77}{Kernel\+::\+Type}} \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a4b592a8ad9e7dd8c44807b53afafaf3b}{get\+Type}} () const
 \begin{DoxyCompactList}\small\item\em Get kernel type. \end{DoxyCompactList}\item 
-String \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_ab5029446586728c69fab3c3c6e53f5f9}{get\+Name} () const
+String \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_ab5029446586728c69fab3c3c6e53f5f9}{get\+Name}} () const
 \begin{DoxyCompactList}\small\item\em Get kernel name. \end{DoxyCompactList}\item 
-fs\+::\+File \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a8f923e5079064c8e1d79e9fe275f4b0c}{get\+File} () const
+fs\+::\+File \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a8f923e5079064c8e1d79e9fe275f4b0c}{get\+File}} () const
 \begin{DoxyCompactList}\small\item\em Get kernel file. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Static Public Member Functions}
+\doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel} \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_adbae01d9d825d6f3863300c19d4e9645}{Undefined} ()
+static \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel}} \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_adbae01d9d825d6f3863300c19d4e9645}{Undefined}} ()
 \begin{DoxyCompactList}\small\item\em Constructs an undefined kernel. \end{DoxyCompactList}\item 
-static \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel} \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_ac8fd10aa02653d50fb9eb32643172531}{File} (const fs\+::\+File \&a\+File)
+static \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel}} \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_ac8fd10aa02653d50fb9eb32643172531}{File}} (const fs\+::\+File \&a\+File)
 \begin{DoxyCompactList}\small\item\em Constructs a kernel from a file. \end{DoxyCompactList}\item 
-static \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77}{Kernel\+::\+Type} \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a95148b8d8a008742cb09c7c5fddde8f8}{Type\+From\+String} (const String \&a\+String)
+static \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77}{Kernel\+::\+Type}} \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a95148b8d8a008742cb09c7c5fddde8f8}{Type\+From\+String}} (const String \&a\+String)
 \begin{DoxyCompactList}\small\item\em Converts kernel type string to type. \end{DoxyCompactList}\item 
-static String \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a9774d27862bbc05354e30f093c666f7c}{String\+From\+Type} (const \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77}{Kernel\+::\+Type} \&a\+Type)
+static String \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a9774d27862bbc05354e30f093c666f7c}{String\+From\+Type}} (const \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77}{Kernel\+::\+Type}} \&a\+Type)
 \begin{DoxyCompactList}\small\item\em Converts kernel type to string. \end{DoxyCompactList}\item 
-static \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77}{Kernel\+::\+Type} \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a122e767d102358254cf73cfade4652fc}{Type\+From\+File\+Extension} (const String \&a\+File\+Extension)
+static \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77}{Kernel\+::\+Type}} \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a122e767d102358254cf73cfade4652fc}{Type\+From\+File\+Extension}} (const String \&a\+File\+Extension)
 \begin{DoxyCompactList}\small\item\em Converts file extension to kernel type. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
-\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e}{S\+P\+I\+CE} Toolkit kernel. 
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e}{S\+P\+I\+CE}} Toolkit kernel. 
 
-https\+://naif.jpl.\+nasa.\+gov/pub/naif/toolkit\+\_\+docs/\+C/info/intrdctn.html 
+\href{https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/C/info/intrdctn.html}{\texttt{ https\+://naif.\+jpl.\+nasa.\+gov/pub/naif/toolkit\+\_\+docs/\+C/info/intrdctn.\+html}} 
 
-\subsection{Member Enumeration Documentation}
+\doxysubsection{Member Enumeration Documentation}
 \mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77}} 
-\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}!Type@{Type}}
-\index{Type@{Type}!ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}}
-\subsubsection{\texorpdfstring{Type}{Type}}
-{\footnotesize\ttfamily enum \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77}{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel\+::\+Type}\hspace{0.3cm}{\ttfamily [strong]}}
+\index{ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}!Type@{Type}}
+\index{Type@{Type}!ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}}
+\doxysubsubsection{\texorpdfstring{Type}{Type}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77}{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel\+::\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
 
 \begin{DoxyEnumFields}{Enumerator}
-\raisebox{\heightof{T}}[0pt][0pt]{\index{Undefined@{Undefined}!ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}}\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}!Undefined@{Undefined}}}\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77aec0fc0100c4fc1ce4eea230c3dc10360}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77aec0fc0100c4fc1ce4eea230c3dc10360}} 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Undefined@{Undefined}!ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}}\index{ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}!Undefined@{Undefined}}}\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77aec0fc0100c4fc1ce4eea230c3dc10360}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77aec0fc0100c4fc1ce4eea230c3dc10360}} 
 Undefined&Undefined kernel. \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+C\+LK@{S\+C\+LK}!ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}}\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}!S\+C\+LK@{S\+C\+LK}}}\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77ae5ebe7b9d4b13b67cb85ac2febe4aca2}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77ae5ebe7b9d4b13b67cb85ac2febe4aca2}} 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SCLK@{SCLK}!ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}}\index{ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}!SCLK@{SCLK}}}\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77ae5ebe7b9d4b13b67cb85ac2febe4aca2}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77ae5ebe7b9d4b13b67cb85ac2febe4aca2}} 
 S\+C\+LK&Spacecraft clock kernels (text) \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{L\+SK@{L\+SK}!ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}}\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}!L\+SK@{L\+SK}}}\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a1352b10452a6331f4858173133cad49d}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a1352b10452a6331f4858173133cad49d}} 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LSK@{LSK}!ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}}\index{ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}!LSK@{LSK}}}\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a1352b10452a6331f4858173133cad49d}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a1352b10452a6331f4858173133cad49d}} 
 L\+SK&Leapseconds kernels (text) \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{P\+CK@{P\+CK}!ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}}\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}!P\+CK@{P\+CK}}}\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77abed028f19aa93adb7f45e064155e5278}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77abed028f19aa93adb7f45e064155e5278}} 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PCK@{PCK}!ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}}\index{ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}!PCK@{PCK}}}\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77abed028f19aa93adb7f45e064155e5278}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77abed028f19aa93adb7f45e064155e5278}} 
 P\+CK&Physical constants kernels (text) \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{IK@{IK}!ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}}\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}!IK@{IK}}}\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a7ab2200d24b19f1824cef3f53b5b69ca}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a7ab2200d24b19f1824cef3f53b5b69ca}} 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IK@{IK}!ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}}\index{ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}!IK@{IK}}}\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a7ab2200d24b19f1824cef3f53b5b69ca}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a7ab2200d24b19f1824cef3f53b5b69ca}} 
 IK&Instrument parameter kernels (text) \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{FK@{FK}!ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}}\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}!FK@{FK}}}\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a8c8ba29dafd95af91e280d1e80b81773}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a8c8ba29dafd95af91e280d1e80b81773}} 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FK@{FK}!ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}}\index{ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}!FK@{FK}}}\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a8c8ba29dafd95af91e280d1e80b81773}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a8c8ba29dafd95af91e280d1e80b81773}} 
 FK&Frame definition kernels (text) \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{EK@{EK}!ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}}\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}!EK@{EK}}}\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a6aa451b53d492a8f5a2fa1fa2855be8b}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a6aa451b53d492a8f5a2fa1fa2855be8b}} 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EK@{EK}!ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}}\index{ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}!EK@{EK}}}\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a6aa451b53d492a8f5a2fa1fa2855be8b}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a6aa451b53d492a8f5a2fa1fa2855be8b}} 
 EK&E-\/kernels (text) \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{MK@{MK}!ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}}\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}!MK@{MK}}}\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77afbd1e7ba9564863b88d5c43cb833afaf}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77afbd1e7ba9564863b88d5c43cb833afaf}} 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MK@{MK}!ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}}\index{ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}!MK@{MK}}}\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77afbd1e7ba9564863b88d5c43cb833afaf}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77afbd1e7ba9564863b88d5c43cb833afaf}} 
 MK&Meta-\/kernels (text) \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+PK@{S\+PK}!ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}}\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}!S\+PK@{S\+PK}}}\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77aa77fe9806504467c944718a3ce1ed5cb}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77aa77fe9806504467c944718a3ce1ed5cb}} 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SPK@{SPK}!ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}}\index{ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}!SPK@{SPK}}}\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77aa77fe9806504467c944718a3ce1ed5cb}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77aa77fe9806504467c944718a3ce1ed5cb}} 
 S\+PK&S\+P-\/kernels (binary) \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{B\+P\+CK@{B\+P\+CK}!ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}}\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}!B\+P\+CK@{B\+P\+CK}}}\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a357e2ff99b2ce7d86f78fca1353088ec}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a357e2ff99b2ce7d86f78fca1353088ec}} 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BPCK@{BPCK}!ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}}\index{ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}!BPCK@{BPCK}}}\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a357e2ff99b2ce7d86f78fca1353088ec}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a357e2ff99b2ce7d86f78fca1353088ec}} 
 B\+P\+CK&Physical constants kernels (binary) \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{CK@{CK}!ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}}\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}!CK@{CK}}}\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a534ac75c2e8ac3e3fe7bc32bb8c6e34a}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a534ac75c2e8ac3e3fe7bc32bb8c6e34a}} 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CK@{CK}!ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}}\index{ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}!CK@{CK}}}\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a534ac75c2e8ac3e3fe7bc32bb8c6e34a}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a534ac75c2e8ac3e3fe7bc32bb8c6e34a}} 
 CK&C-\/kernels (binary) \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{B\+EK@{B\+EK}!ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}}\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}!B\+EK@{B\+EK}}}\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a23d71b8d68c6f4869b29ed158e97c88a}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a23d71b8d68c6f4869b29ed158e97c88a}} 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BEK@{BEK}!ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}}\index{ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}!BEK@{BEK}}}\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a23d71b8d68c6f4869b29ed158e97c88a}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77a23d71b8d68c6f4869b29ed158e97c88a}} 
 B\+EK&Events kernels (binary) \\
 \hline
 
 \end{DoxyEnumFields}
 
 
-\subsection{Constructor \& Destructor Documentation}
+\doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_afba440f0d5553591d9217c2a5e7035b5}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_afba440f0d5553591d9217c2a5e7035b5}} 
-\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}!Kernel@{Kernel}}
-\index{Kernel@{Kernel}!ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}}
-\subsubsection{\texorpdfstring{Kernel()}{Kernel()}}
-{\footnotesize\ttfamily ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel\+::\+Kernel (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77}{Kernel\+::\+Type} \&}]{a\+Type,  }\item[{const fs\+::\+File \&}]{a\+File }\end{DoxyParamCaption})}
+\index{ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}!Kernel@{Kernel}}
+\index{Kernel@{Kernel}!ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}}
+\doxysubsubsection{\texorpdfstring{Kernel()}{Kernel()}}
+{\footnotesize\ttfamily ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel\+::\+Kernel (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77}{Kernel\+::\+Type}} \&}]{a\+Type,  }\item[{const fs\+::\+File \&}]{a\+File }\end{DoxyParamCaption})}
 
 
 
@@ -138,19 +138,19 @@ Constructor.
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em a\+Type} & A kernel type \\
+\mbox{\texttt{ in}}  & {\em a\+Type} & A kernel type \\
 \hline
-\mbox{\tt in}  & {\em a\+File} & A kernel file \\
+\mbox{\texttt{ in}}  & {\em a\+File} & A kernel file \\
 \hline
 \end{DoxyParams}
 
 
-\subsection{Member Function Documentation}
+\doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_ac8fd10aa02653d50fb9eb32643172531}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_ac8fd10aa02653d50fb9eb32643172531}} 
-\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}!File@{File}}
-\index{File@{File}!ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}}
-\subsubsection{\texorpdfstring{File()}{File()}}
-{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel} ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel\+::\+File (\begin{DoxyParamCaption}\item[{const fs\+::\+File \&}]{a\+File }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+\index{ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}!File@{File}}
+\index{File@{File}!ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}}
+\doxysubsubsection{\texorpdfstring{File()}{File()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel}} ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel\+::\+File (\begin{DoxyParamCaption}\item[{const fs\+::\+File \&}]{a\+File }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -158,16 +158,16 @@ Constructs a kernel from a file.
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em a\+File} & A kernel file \\
+\mbox{\texttt{ in}}  & {\em a\+File} & A kernel file \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel} 
+\mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel}} 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a8f923e5079064c8e1d79e9fe275f4b0c}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a8f923e5079064c8e1d79e9fe275f4b0c}} 
-\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}!get\+File@{get\+File}}
-\index{get\+File@{get\+File}!ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}}
-\subsubsection{\texorpdfstring{get\+File()}{getFile()}}
+\index{ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}!getFile@{getFile}}
+\index{getFile@{getFile}!ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}}
+\doxysubsubsection{\texorpdfstring{getFile()}{getFile()}}
 {\footnotesize\ttfamily fs\+::\+File ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel\+::get\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
@@ -175,12 +175,12 @@ Constructs a kernel from a file.
 Get kernel file. 
 
 \begin{DoxyReturn}{Returns}
-\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel} file 
+\mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel}} file 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_ab5029446586728c69fab3c3c6e53f5f9}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_ab5029446586728c69fab3c3c6e53f5f9}} 
-\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}!get\+Name@{get\+Name}}
-\index{get\+Name@{get\+Name}!ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}}
-\subsubsection{\texorpdfstring{get\+Name()}{getName()}}
+\index{ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}!getName@{getName}}
+\index{getName@{getName}!ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
 {\footnotesize\ttfamily String ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
@@ -188,25 +188,25 @@ Get kernel file.
 Get kernel name. 
 
 \begin{DoxyReturn}{Returns}
-\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel} name 
+\mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel}} name 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a4b592a8ad9e7dd8c44807b53afafaf3b}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a4b592a8ad9e7dd8c44807b53afafaf3b}} 
-\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}!get\+Type@{get\+Type}}
-\index{get\+Type@{get\+Type}!ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}}
-\subsubsection{\texorpdfstring{get\+Type()}{getType()}}
-{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77}{Kernel\+::\+Type} ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+\index{ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}!getType@{getType}}
+\index{getType@{getType}!ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77}{Kernel\+::\+Type}} ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
 Get kernel type. 
 
 \begin{DoxyReturn}{Returns}
-\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel} type 
+\mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel}} type 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a06668d90a8b74338de4863880d362239}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a06668d90a8b74338de4863880d362239}} 
-\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}!is\+Defined@{is\+Defined}}
-\index{is\+Defined@{is\+Defined}!ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}}
-\subsubsection{\texorpdfstring{is\+Defined()}{isDefined()}}
+\index{ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}!isDefined@{isDefined}}
+\index{isDefined@{isDefined}!ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}}
+\doxysubsubsection{\texorpdfstring{isDefined()}{isDefined()}}
 {\footnotesize\ttfamily bool ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
@@ -217,10 +217,10 @@ Returns true if kernel is defined.
 True if kernel is defined 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a1b2d11521cac8056058e774eee8082ae}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a1b2d11521cac8056058e774eee8082ae}} 
-\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}!operator"!=@{operator"!=}}
-\index{operator"!=@{operator"!=}!ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}}
-\subsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
-{\footnotesize\ttfamily bool ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel\+::operator!= (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel} \&}]{a\+Kernel }\end{DoxyParamCaption}) const}
+\index{ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel}} \&}]{a\+Kernel }\end{DoxyParamCaption}) const}
 
 
 
@@ -228,17 +228,17 @@ Not equal to operator.
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em a\+Kernel} & A kernel \\
+\mbox{\texttt{ in}}  & {\em a\+Kernel} & A kernel \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 True if kernels are not equal 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a4499b4c8a89b9aa99fe90bac124e89ef}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a4499b4c8a89b9aa99fe90bac124e89ef}} 
-\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}!operator==@{operator==}}
-\index{operator==@{operator==}!ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}}
-\subsubsection{\texorpdfstring{operator==()}{operator==()}}
-{\footnotesize\ttfamily bool ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel\+::operator== (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel} \&}]{a\+Kernel }\end{DoxyParamCaption}) const}
+\index{ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}!operator==@{operator==}}
+\index{operator==@{operator==}!ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel}} \&}]{a\+Kernel }\end{DoxyParamCaption}) const}
 
 
 
@@ -246,17 +246,17 @@ Equal to operator.
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em a\+Kernel} & A kernel \\
+\mbox{\texttt{ in}}  & {\em a\+Kernel} & A kernel \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 True if kernels are equal 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a9774d27862bbc05354e30f093c666f7c}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a9774d27862bbc05354e30f093c666f7c}} 
-\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}!String\+From\+Type@{String\+From\+Type}}
-\index{String\+From\+Type@{String\+From\+Type}!ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}}
-\subsubsection{\texorpdfstring{String\+From\+Type()}{StringFromType()}}
-{\footnotesize\ttfamily String ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel\+::\+String\+From\+Type (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77}{Kernel\+::\+Type} \&}]{a\+Type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+\index{ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}!StringFromType@{StringFromType}}
+\index{StringFromType@{StringFromType}!ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}}
+\doxysubsubsection{\texorpdfstring{StringFromType()}{StringFromType()}}
+{\footnotesize\ttfamily String ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel\+::\+String\+From\+Type (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77}{Kernel\+::\+Type}} \&}]{a\+Type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -264,17 +264,17 @@ Converts kernel type to string.
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em a\+Type} & A kernel type \\
+\mbox{\texttt{ in}}  & {\em a\+Type} & A kernel type \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 A string 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a122e767d102358254cf73cfade4652fc}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a122e767d102358254cf73cfade4652fc}} 
-\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}!Type\+From\+File\+Extension@{Type\+From\+File\+Extension}}
-\index{Type\+From\+File\+Extension@{Type\+From\+File\+Extension}!ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}}
-\subsubsection{\texorpdfstring{Type\+From\+File\+Extension()}{TypeFromFileExtension()}}
-{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77}{Kernel\+::\+Type} ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel\+::\+Type\+From\+File\+Extension (\begin{DoxyParamCaption}\item[{const String \&}]{a\+File\+Extension }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+\index{ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}!TypeFromFileExtension@{TypeFromFileExtension}}
+\index{TypeFromFileExtension@{TypeFromFileExtension}!ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}}
+\doxysubsubsection{\texorpdfstring{TypeFromFileExtension()}{TypeFromFileExtension()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77}{Kernel\+::\+Type}} ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel\+::\+Type\+From\+File\+Extension (\begin{DoxyParamCaption}\item[{const String \&}]{a\+File\+Extension }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -282,17 +282,17 @@ Converts file extension to kernel type.
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em a\+File\+Extension} & A file extension \\
+\mbox{\texttt{ in}}  & {\em a\+File\+Extension} & A file extension \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel} type 
+\mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel}} type 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a95148b8d8a008742cb09c7c5fddde8f8}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a95148b8d8a008742cb09c7c5fddde8f8}} 
-\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}!Type\+From\+String@{Type\+From\+String}}
-\index{Type\+From\+String@{Type\+From\+String}!ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}}
-\subsubsection{\texorpdfstring{Type\+From\+String()}{TypeFromString()}}
-{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77}{Kernel\+::\+Type} ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel\+::\+Type\+From\+String (\begin{DoxyParamCaption}\item[{const String \&}]{a\+String }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+\index{ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}!TypeFromString@{TypeFromString}}
+\index{TypeFromString@{TypeFromString}!ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}}
+\doxysubsubsection{\texorpdfstring{TypeFromString()}{TypeFromString()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_a76d560bbface15a0cb24cd82e9a93d77}{Kernel\+::\+Type}} ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel\+::\+Type\+From\+String (\begin{DoxyParamCaption}\item[{const String \&}]{a\+String }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -300,17 +300,17 @@ Converts kernel type string to type.
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em a\+Type} & A kernel type string \\
+\mbox{\texttt{ in}}  & {\em a\+Type} & A kernel type string \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 A kernel type 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_adbae01d9d825d6f3863300c19d4e9645}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel_adbae01d9d825d6f3863300c19d4e9645}} 
-\index{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}!Undefined@{Undefined}}
-\index{Undefined@{Undefined}!ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel@{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel}}
-\subsubsection{\texorpdfstring{Undefined()}{Undefined()}}
-{\footnotesize\ttfamily \hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel} ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel\+::\+Undefined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+\index{ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}!Undefined@{Undefined}}
+\index{Undefined@{Undefined}!ostk::physics::env::ephem::spice::Kernel@{ostk::physics::env::ephem::spice::Kernel}}
+\doxysubsubsection{\texorpdfstring{Undefined()}{Undefined()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel}} ostk\+::physics\+::env\+::ephem\+::spice\+::\+Kernel\+::\+Undefined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -323,5 +323,5 @@ Undefined kernel
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-include/\+Open\+Space\+Toolkit/\+Physics/\+Environment/\+Ephemerides/\+S\+P\+I\+C\+E/\hyperlink{_kernel_8hpp}{Kernel.\+hpp}\item 
-src/\+Open\+Space\+Toolkit/\+Physics/\+Environment/\+Ephemerides/\+S\+P\+I\+C\+E/\hyperlink{_kernel_8cpp}{Kernel.\+cpp}\end{DoxyCompactItemize}
+include/\+Open\+Space\+Toolkit/\+Physics/\+Environment/\+Ephemerides/\+S\+P\+I\+C\+E/\mbox{\hyperlink{_kernel_8hpp}{Kernel.\+hpp}}\item 
+src/\+Open\+Space\+Toolkit/\+Physics/\+Environment/\+Ephemerides/\+S\+P\+I\+C\+E/\mbox{\hyperlink{_kernel_8cpp}{Kernel.\+cpp}}\end{DoxyCompactItemize}
