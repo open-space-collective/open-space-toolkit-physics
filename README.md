@@ -86,14 +86,6 @@ After downloading the relevant `.deb` binary packages, install:
 apt install open-space-toolkit-physics-*.deb
 ```
 
-#### Fedora / CentOS
-
-After downloading the relevant `.rpm` binary packages, install:
-
-```bash
-dnf install open-space-toolkit-physics-*.rpm
-```
-
 ### Python
 
 Install from [PyPI](https://pypi.org/project/open-space-toolkit-physics/):
