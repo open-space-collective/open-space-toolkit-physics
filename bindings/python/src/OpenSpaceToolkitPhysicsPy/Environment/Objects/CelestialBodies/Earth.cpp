@@ -28,6 +28,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
     using ostk::physics::env::obj::celest::Earth ;
     using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth ;
     using EarthMagneticModel = ostk::physics::environment::magnetic::Earth ;
+    using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth ;
 
     {
 
@@ -35,7 +36,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
 
             .def
             (
-                init<const Derived&, const Length&, const Real&, const Real&, const Real&, const Shared<Ephemeris>&, const EarthGravitationalModel::Type&, const EarthMagneticModel::Type&, const Instant&>(),
+                init<const Derived&, const Length&, const Real&, const Real&, const Real&, const Shared<Ephemeris>&, const EarthGravitationalModel::Type&, const EarthMagneticModel::Type&, const EarthAtmosphericModel::Type&, const Instant&>(),
                 arg("gravitational_parameter"),
                 arg("equatorial_radius"),
                 arg("flattening"),
@@ -44,12 +45,13 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
                 arg("ephemeris"),
                 arg("gravitational_model_type"),
                 arg("magnetic_model_type"),
+                arg("atmospheric_model_type"),
                 arg("instant")
             )
 
             .def
             (
-                init<const Derived&, const Length&, const Real&, const Real&, const Real&, const Shared<Ephemeris>&, const EarthGravitationalModel::Type&, const Integer&, const Integer&, const EarthMagneticModel::Type&, const Instant&>(),
+                init<const Derived&, const Length&, const Real&, const Real&, const Real&, const Shared<Ephemeris>&, const EarthGravitationalModel::Type&, const Integer&, const Integer&, const EarthMagneticModel::Type&, const EarthAtmosphericModel::Type&, const Instant&>(),
                 arg("gravitational_parameter"),
                 arg("equatorial_radius"),
                 arg("flattening"),
@@ -60,6 +62,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
                 arg("gravitational_model_degree"),
                 arg("gravitational_model_order"),
                 arg("magnetic_model_type"),
+                arg("atmospheric_model_type"),
                 arg("instant")
             )
 
