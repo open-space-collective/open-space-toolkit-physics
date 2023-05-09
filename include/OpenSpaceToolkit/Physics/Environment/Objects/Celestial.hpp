@@ -20,11 +20,11 @@
 #include <OpenSpaceToolkit/Physics/Coordinate/Axes.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
-#include <OpenSpaceToolkit/Physics/Data/Scalar.hpp>
 #include <OpenSpaceToolkit/Physics/Data/Vector.hpp>
+#include <OpenSpaceToolkit/Physics/Data/Scalar.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Derived.hpp>
-#include <OpenSpaceToolkit/Physics/Units/Length.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Mass.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Length.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Objects/Vector.hpp>
@@ -56,8 +56,8 @@ using ostk::physics::time::Instant ;
 using ostk::physics::units::Length ;
 using ostk::physics::units::Mass ;
 using ostk::physics::units::Derived ;
-using ostk::physics::data::Vector ;
 using ostk::physics::data::Scalar ;
+using ostk::physics::data::Vector ;
 using ostk::physics::coord::Position ;
 using ostk::physics::coord::spherical::LLA ;
 using ostk::physics::coord::Axes ;
@@ -176,7 +176,7 @@ class Celestial : public Object
         Vector                  getGravitationalFieldAt                     (   const   Position&                   aPosition                                   ) const ;
 
         Vector                  getMagneticFieldAt                          (   const   Position&                   aPosition                                   ) const ;
-        
+
         Scalar                  getAtmosphericDensityAt                     (   const   Position&                   aPosition                                   ) const ;
 
         Shared<const Frame>     getFrameAt                                  (   const   LLA&                        aLla,

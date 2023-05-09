@@ -21,8 +21,8 @@
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Derived/Angle.hpp>
-#include <OpenSpaceToolkit/Physics/Units/Length.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Mass.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Length.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformations/Rotations/RotationVector.hpp>
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformations/Rotations/Quaternion.hpp>
@@ -253,7 +253,7 @@ TEST (OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetMagneticFieldAt
     }
 
 }
- 
+
 TEST (OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetAtmosphericDensityAt)
 {
 
@@ -295,7 +295,7 @@ TEST (OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetAtmosphericDens
             name,
             type,
             gravitationalParameter,
-            EarthCelestialBody::EquatorialRadius, 
+            EarthCelestialBody::EquatorialRadius,
             EarthCelestialBody::Flattening,
             j2,
             j4,
@@ -308,45 +308,54 @@ TEST (OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetAtmosphericDens
 
         {
 
-            const Position position = { 
-                LLA( Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(123.0) ).toCartesian(EarthCelestialBody::EquatorialRadius, EarthCelestialBody::Flattening), Position::Unit::Meter, Frame::ITRF() 
+            const Position position =
+            {
+                LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(123.0)).toCartesian(EarthCelestialBody::EquatorialRadius, EarthCelestialBody::Flattening),
+                Position::Unit::Meter,
+                Frame::ITRF()
             } ;
 
             const Scalar atmosphericDensityValue = celestial.getAtmosphericDensityAt(position) ;
 
             EXPECT_TRUE(atmosphericDensityValue.isDefined()) ;
 
-            EXPECT_TRUE(atmosphericDensityValue.getValue().isNear( 1.77622e-08, 1e-13 )) ;
+            EXPECT_TRUE(atmosphericDensityValue.getValue().isNear(1.77622e-08, 1e-13)) ;
             EXPECT_EQ(Unit::Derived(Derived::Unit::MassDensity(Mass::Unit::Kilogram, Length::Unit::Meter)), atmosphericDensityValue.getUnit()) ;
 
         }
 
         {
 
-            const Position position = { 
-                LLA( Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(499.0) ).toCartesian(EarthCelestialBody::EquatorialRadius, EarthCelestialBody::Flattening), Position::Unit::Meter, Frame::ITRF() 
+            const Position position =
+            {
+                LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(499.0)).toCartesian(EarthCelestialBody::EquatorialRadius, EarthCelestialBody::Flattening),
+                Position::Unit::Meter,
+                Frame::ITRF()
             } ;
 
             const Scalar atmosphericDensityValue = celestial.getAtmosphericDensityAt(position) ;
 
             EXPECT_TRUE(atmosphericDensityValue.isDefined()) ;
 
-            EXPECT_TRUE(atmosphericDensityValue.getValue().isNear( 7.08245e-13, 1e-15 )) ;
+            EXPECT_TRUE(atmosphericDensityValue.getValue().isNear(7.08245e-13, 1e-15)) ;
             EXPECT_EQ(Unit::Derived(Derived::Unit::MassDensity(Mass::Unit::Kilogram, Length::Unit::Meter)), atmosphericDensityValue.getUnit()) ;
 
         }
 
         {
 
-            const Position position = { 
-                LLA( Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(501.0) ).toCartesian(EarthCelestialBody::EquatorialRadius, EarthCelestialBody::Flattening), Position::Unit::Meter, Frame::ITRF() 
+            const Position position =
+            {
+                LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(501.0)).toCartesian(EarthCelestialBody::EquatorialRadius, EarthCelestialBody::Flattening),
+                Position::Unit::Meter,
+                Frame::ITRF()
             } ;
 
             const Scalar atmosphericDensityValue = celestial.getAtmosphericDensityAt(position) ;
 
             EXPECT_TRUE(atmosphericDensityValue.isDefined()) ;
 
-            EXPECT_TRUE(atmosphericDensityValue.getValue().isNear( 6.85869e-13, 1e-15 )) ;
+            EXPECT_TRUE(atmosphericDensityValue.getValue().isNear(6.85869e-13, 1e-15)) ;
             EXPECT_EQ(Unit::Derived(Derived::Unit::MassDensity(Mass::Unit::Kilogram, Length::Unit::Meter)), atmosphericDensityValue.getUnit()) ;
 
         }
