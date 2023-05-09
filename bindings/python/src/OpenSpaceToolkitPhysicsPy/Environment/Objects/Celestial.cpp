@@ -28,12 +28,13 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
     using ostk::physics::env::obj::Celestial ;
     using GravitationalModel = ostk::physics::environment::gravitational::Model ;
     using MagneticModel = ostk::physics::environment::magnetic::Model ;
+    using AtmosphericModel = ostk::physics::environment::atmospheric::Model ;
 
     class_<Celestial, Shared<Celestial>, Object> celestial_class(aModule, "Celestial") ;
 
-    celestial_class.def(init<const String&, const Celestial::Type&, const Derived& , const Length&, const Real&, const Real&, const Real&, const Shared<Ephemeris>&, const Shared<GravitationalModel>&, const Shared<MagneticModel>&, const Instant&>())
+    celestial_class.def(init<const String&, const Celestial::Type&, const Derived& , const Length&, const Real&, const Real&, const Real&, const Shared<Ephemeris>&, const Shared<GravitationalModel>&, const Shared<MagneticModel>&, const Shared<AtmosphericModel>&, const Instant&>())
 
-        .def(init<const String&, const Celestial::Type&, const Derived& , const Length&, const Real&, const Real&, const Real&, const Shared<Ephemeris>&, const Shared<GravitationalModel>&, const Shared<MagneticModel>&, const Instant&, const Object::Geometry&>())
+        .def(init<const String&, const Celestial::Type&, const Derived& , const Length&, const Real&, const Real&, const Real&, const Shared<Ephemeris>&, const Shared<GravitationalModel>&, const Shared<MagneticModel>&, const Shared<AtmosphericModel>&, const Instant&, const Object::Geometry&>())
 
         // Need to create corresponding operators in C++ source code for proper use of binding code below
         // .def(self == self)
@@ -62,6 +63,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
         .def("get_axes_in", &Celestial::getAxesIn)
         .def("get_gravitational_field_at", &Celestial::getGravitationalFieldAt)
         .def("get_magnetic_field_at", &Celestial::getMagneticFieldAt)
+        .def("get_atmospheric_density_at", &Celestial::getAtmosphericDensityAt)
         .def("get_frame_at", &Celestial::getFrameAt)
 
         .def_static("undefined", &Celestial::Undefined)
