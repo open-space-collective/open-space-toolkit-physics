@@ -858,7 +858,7 @@ TEST (OpenSpaceToolkit_Physics_Units_Derived_Unit, MassDensity)
 
     {
 
-        const Derived massDensity = Derived::Unit::MassDensity(Mass::Unit::Kilogram, Length::Unit::Meter) ;
+        const Derived::Unit massDensity = Derived::Unit::MassDensity(Mass::Unit::Kilogram, Length::Unit::Meter) ;
 
         EXPECT_TRUE(massDensity.isDefined()) ;
 
