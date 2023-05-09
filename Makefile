@@ -29,10 +29,6 @@ jupyter_project_name_python_shared_object := $(shell echo "OpenSpaceToolkit${pro
 
 ################################################################################################################################################################
 
-temp:
-	@ echo $(project_name_camel_case)
-	@ echo $(jupyter_project_name_python_shared_object)
-
 pull: ## Pull all images
 
 	@ echo "Pulling images..."
