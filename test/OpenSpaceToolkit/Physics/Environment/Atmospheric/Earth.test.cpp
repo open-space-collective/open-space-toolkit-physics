@@ -61,6 +61,22 @@ TEST (OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Clone)
 
 }
 
+TEST (OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, OperatorEquals)
+{
+
+    using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth ;
+
+    {
+
+        EarthAtmosphericModel earthAtmosphericModel = { EarthAtmosphericModel::Type::Exponential } ;
+        EarthAtmosphericModel earthAtmosphericModel2 = { EarthAtmosphericModel::Type::Exponential } ;
+
+        EXPECT_NO_THROW(earthAtmosphericModel2 = earthAtmosphericModel) ;
+
+    }
+
+}
+
 TEST (OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetType)
 {
 
@@ -68,6 +84,9 @@ TEST (OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetType)
 
     {
         EXPECT_EQ(EarthAtmosphericModel::Type::Exponential, EarthAtmosphericModel(EarthAtmosphericModel::Type::Exponential).getType()) ;
+    }
+    {
+        EXPECT_ANY_THROW(EarthAtmosphericModel(EarthAtmosphericModel::Type::NRLMSISE00).getType()) ;
     }
 
 }
@@ -172,22 +191,12 @@ TEST (OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_LLA)
 
     {
 
-        static const Array<Tuple<EarthAtmosphericModel::Type, LLA, Instant>> testCases =
-        {
-            { EarthAtmosphericModel::Type::Exponential, LLA( Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(1001.0) ), Instant::J2000() },
-        } ;
+        const EarthAtmosphericModel earthAtmosphericModel = { EarthAtmosphericModel::Type::Exponential } ;
 
-        for (const auto& testCase : testCases)
-        {
+        const LLA lla = LLA( Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(1001.0) ) ;
+        const Instant instant = Instant::J2000() ;
 
-            const EarthAtmosphericModel earthAtmosphericModel = { std::get<0>(testCase) } ;
-
-            const LLA lla = std::get<1>(testCase) ;
-            const Instant instant = std::get<2>(testCase) ;
-
-            EXPECT_ANY_THROW(earthAtmosphericModel.getDensityAt(lla, instant)) ;
-
-        }
+        EXPECT_ANY_THROW(earthAtmosphericModel.getDensityAt(lla, instant)) ;
 
     }
 

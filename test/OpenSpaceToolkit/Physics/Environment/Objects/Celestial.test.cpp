@@ -360,6 +360,14 @@ TEST (OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetAtmosphericDens
 
         }
 
+        {
+            EXPECT_ANY_THROW(celestial.getAtmosphericDensityAt(Position::Undefined())) ;
+        }
+
+        {
+            EXPECT_ANY_THROW(Celestial::Undefined().getAtmosphericDensityAt(Position::Undefined())) ;
+        }
+
     }
 
 }
