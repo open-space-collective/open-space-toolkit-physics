@@ -24,13 +24,27 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using ostk::core::types::Real ;
+using ostk::core::types::String ;
+using ostk::core::ctnr::Tuple ;
+using ostk::core::ctnr::Array ;
+using ostk::core::fs::Path ;
+using ostk::core::fs::Directory ;
+
+using ostk::physics::units::Length ;
+using ostk::physics::units::Angle ;
+using ostk::physics::time::Instant ;
+using ostk::physics::coord::Position ;
+using ostk::physics::coord::spherical::LLA ;
+using ostk::physics::coord::Frame ;
+
+using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth ;
+using EarthCelestialBody = ostk::physics::env::obj::celest::Earth ;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 TEST (OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Constructor)
 {
-
-    using ostk::core::fs::Path ;
-    using ostk::core::fs::Directory ;
-
-    using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth ;
 
     {
         EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(EarthAtmosphericModel::Type::Exponential)) ;
@@ -49,8 +63,6 @@ TEST (OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Constructor)
 TEST (OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Clone)
 {
 
-    using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth ;
-
     {
 
         const EarthAtmosphericModel earthAtmosphericModel = { EarthAtmosphericModel::Type::Exponential } ;
@@ -64,33 +76,18 @@ TEST (OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Clone)
 TEST (OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetType)
 {
 
-    using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth ;
-
     {
         EXPECT_EQ(EarthAtmosphericModel::Type::Exponential, EarthAtmosphericModel(EarthAtmosphericModel::Type::Exponential).getType()) ;
+    }
+
+    {
+        EXPECT_ANY_THROW(EarthAtmosphericModel(EarthAtmosphericModel::Type::NRLMSISE00).getType()) ;
     }
 
 }
 
 TEST (OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Position)
 {
-
-    using ostk::core::types::Real ;
-    using ostk::core::types::String ;
-    using ostk::core::ctnr::Tuple ;
-    using ostk::core::ctnr::Array ;
-    using ostk::core::fs::Path ;
-    using ostk::core::fs::Directory ;
-
-    using ostk::physics::units::Length ;
-    using ostk::physics::units::Angle ;
-    using ostk::physics::time::Instant ;
-    using ostk::physics::coord::Position ;
-    using ostk::physics::coord::spherical::LLA ;
-    using ostk::physics::coord::Frame ;
-
-    using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth ;
-    using EarthCelestialBody = ostk::physics::env::obj::celest::Earth ;
 
     {
 
@@ -127,21 +124,6 @@ TEST (OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Posit
 TEST (OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_LLA)
 {
 
-    using ostk::core::types::Real ;
-    using ostk::core::types::String ;
-    using ostk::core::ctnr::Tuple ;
-    using ostk::core::ctnr::Array ;
-    using ostk::core::fs::Path ;
-    using ostk::core::fs::Directory ;
-
-    using ostk::physics::units::Length ;
-    using ostk::physics::units::Angle ;
-    using ostk::physics::time::Instant ;
-    using ostk::physics::coord::spherical::LLA ;
-    using ostk::physics::coord::Frame ;
-
-    using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth ;
-
     {
 
         // Hand calculated values to validate
@@ -172,22 +154,12 @@ TEST (OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_LLA)
 
     {
 
-        static const Array<Tuple<EarthAtmosphericModel::Type, LLA, Instant>> testCases =
-        {
-            { EarthAtmosphericModel::Type::Exponential, LLA( Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(1001.0) ), Instant::J2000() },
-        } ;
+        const EarthAtmosphericModel earthAtmosphericModel = { EarthAtmosphericModel::Type::Exponential } ;
 
-        for (const auto& testCase : testCases)
-        {
+        const LLA lla = LLA( Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(1001.0) ) ;
+        const Instant instant = Instant::J2000() ;
 
-            const EarthAtmosphericModel earthAtmosphericModel = { std::get<0>(testCase) } ;
-
-            const LLA lla = std::get<1>(testCase) ;
-            const Instant instant = std::get<2>(testCase) ;
-
-            EXPECT_ANY_THROW(earthAtmosphericModel.getDensityAt(lla, instant)) ;
-
-        }
+        EXPECT_ANY_THROW(earthAtmosphericModel.getDensityAt(lla, instant)) ;
 
     }
 
