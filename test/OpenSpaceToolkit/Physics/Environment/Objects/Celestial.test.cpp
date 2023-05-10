@@ -360,6 +360,53 @@ TEST (OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetAtmosphericDens
 
         }
 
+
+        {
+            EXPECT_ANY_THROW(celestial.getAtmosphericDensityAt(Position::Undefined())) ;
+        }
+
+        {
+
+            const Position position =
+            {
+                LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(501.0)).toCartesian(EarthCelestialBody::EquatorialRadius, EarthCelestialBody::Flattening),
+                Position::Unit::Meter,
+                Frame::ITRF()
+            } ;
+
+            EXPECT_ANY_THROW(Celestial::Undefined().getAtmosphericDensityAt(position)) ;
+
+        }
+
+        {
+
+            const Position position =
+            {
+                LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(501.0)).toCartesian(EarthCelestialBody::EquatorialRadius, EarthCelestialBody::Flattening),
+                Position::Unit::Meter,
+                Frame::ITRF()
+            } ;
+
+            const Celestial celestialWithoutAtmospheric =
+            {
+                name,
+                type,
+                gravitationalParameter,
+                EarthCelestialBody::EquatorialRadius,
+                EarthCelestialBody::Flattening,
+                j2,
+                j4,
+                ephemeris,
+                nullptr,
+                nullptr,
+                nullptr,
+                instant
+            } ;
+
+            EXPECT_ANY_THROW(celestialWithoutAtmospheric.getAtmosphericDensityAt(position)) ;
+
+        }
+        
         {
             EXPECT_ANY_THROW(celestial.getAtmosphericDensityAt(Position::Undefined())) ;
         }
