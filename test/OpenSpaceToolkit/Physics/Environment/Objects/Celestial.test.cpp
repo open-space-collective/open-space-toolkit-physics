@@ -144,10 +144,10 @@ TEST (OpenSpaceToolkit_Physics_Environment_Objects_Celestial, accessModel)
             flattening,
             j2,
             j4,
-            nullptr,
-            nullptr,
-            nullptr,
-            nullptr,
+            ephemeris,
+            gravitationalModel,
+            magneticModel,
+            atmosphericModel,
             instant
         } ;
 
