@@ -80,7 +80,11 @@ TEST (OpenSpaceToolkit_Physics_Environment_Objects_Celestial, accessModel)
     using ostk::physics::env::Ephemeris ;
     using ostk::physics::env::ephem::Analytical ;
     using GravitationalModel = ostk::physics::environment::gravitational::Model ;
+    using MagneticModel = ostk::physics::environment::magnetic::Model ;
+    using AtmosphericModel = ostk::physics::environment::atmospheric::Model ;
     using ostk::physics::environment::gravitational::Spherical ;
+    using ostk::physics::environment::magnetic::Dipole ;
+    using ostk::physics::environment::atmospheric::Exponential ;
 
     {
 
