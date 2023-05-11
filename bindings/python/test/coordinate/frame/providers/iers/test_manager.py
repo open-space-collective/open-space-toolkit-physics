@@ -106,7 +106,7 @@ class TestManager:
         assert len(manager.get_bulletin_a_array()) == 0
         assert len(manager.get_finals_2000a_array()) == 0
 
-        assert manager.get_polar_motion_at(Instant.now() - Duration.days(7.0)) is not None
+        assert manager.get_polar_motion_at(Instant.now() - Duration.days(3.0)) is not None
 
         assert len(manager.get_bulletin_a_array()) == 1
         assert len(manager.get_finals_2000a_array()) == 0
