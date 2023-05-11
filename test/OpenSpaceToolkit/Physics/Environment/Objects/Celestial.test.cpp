@@ -58,6 +58,102 @@
 
 // }
 
+
+TEST (OpenSpaceToolkit_Physics_Environment_Objects_Celestial, accessModel)
+{
+
+    using ostk::core::types::Shared ;
+    using ostk::core::types::Real ;
+    using ostk::core::types::String ;
+
+    using ostk::math::obj::Vector3d ;
+
+    using ostk::physics::Unit ;
+    using ostk::physics::units::Length ;
+    using ostk::physics::units::Time ;
+    using ostk::physics::units::Derived ;
+    using ostk::physics::data::Vector ;
+    using ostk::physics::time::Instant ;
+    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::Position ;
+    using ostk::physics::env::obj::Celestial ;
+    using ostk::physics::env::Ephemeris ;
+    using ostk::physics::env::ephem::Analytical ;
+    using GravitationalModel = ostk::physics::environment::gravitational::Model ;
+    using ostk::physics::environment::gravitational::Spherical ;
+
+    {
+
+        const String name = "Some Planet" ;
+        const Celestial::Type type = Celestial::Type::Earth ;
+        const Derived gravitationalParameter = { 1.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second) } ;
+        const Length equatorialRadius = Length::Kilometers(1000.0) ;
+        const Real flattening = 0.0 ;
+        const Real j2 = 0.0 ;
+        const Real j4 = 0.0 ;
+        const Instant instant = Instant::J2000() ;
+
+        const Celestial celestial =
+        {
+            name,
+            type,
+            gravitationalParameter,
+            equatorialRadius,
+            flattening,
+            j2,
+            j4,
+            nullptr,
+            nullptr,
+            nullptr,
+            nullptr,
+            instant
+        } ;
+
+        EXPECT_ANY_THROW(celestial.accessGravitationalModel()) ;
+        EXPECT_ANY_THROW(celestial.accessMagneticModel()) ;
+        EXPECT_ANY_THROW(celestial.accessAtmosphericModel()) ;
+
+    }
+
+    {
+
+        const String name = "Some Planet" ;
+        const Celestial::Type type = Celestial::Type::Earth ;
+        const Derived gravitationalParameter = { 1.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second) } ;
+        const Length equatorialRadius = Length::Kilometers(1000.0) ;
+        const Real flattening = 0.0 ;
+        const Real j2 = 0.0 ;
+        const Real j4 = 0.0 ;
+
+        const Shared<Ephemeris> ephemeris = std::make_shared<Analytical>(Frame::ITRF()) ;
+        const Shared<GravitationalModel> gravitationalModel = std::make_shared<Spherical>(gravitationalParameter) ;
+        const Shared<MagneticModel> magneticModel = std::make_shared<Dipole>(Vector3d { 0.0, 0.0, 1.0 }) ;
+        const Shared<AtmosphericModel> atmosphericModel = std::make_shared<Exponential>() ;
+        const Instant instant = Instant::J2000() ;
+
+        const Celestial celestial =
+        {
+            name,
+            type,
+            gravitationalParameter,
+            equatorialRadius,
+            flattening,
+            j2,
+            j4,
+            nullptr,
+            nullptr,
+            nullptr,
+            nullptr,
+            instant
+        } ;
+
+        EXPECT_NO_THROW(celestial.accessGravitationalModel()) ;
+        EXPECT_NO_THROW(celestial.accessMagneticModel()) ;
+        EXPECT_NO_THROW(celestial.accessAtmosphericModel()) ;
+
+    }
+}
+
 TEST (OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetGravitationalFieldAt)
 {
 

@@ -216,7 +216,8 @@ TEST (OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, Spheri
 
     using ostk::physics::env::obj::celest::Earth ;
 
-    EXPECT_NO_THROW(Earth::Spherical()) ;
+    Earth earth = Earth::Spherical() ;
+    EXPECT_TRUE(earth.isDefined()) ;
 
 }
 
