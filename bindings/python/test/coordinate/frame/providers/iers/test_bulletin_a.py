@@ -36,7 +36,7 @@ class TestBulletinA:
         breakpoint()
         bulletin_a_file = '/usr/local/lib/python3.11/site-packages/ostk/physics/test/coordinate/frame/providers/iers/data/ser7.dat'
         with open(bulletin_a_file) as f:
-            assert f.readlines = ["fail"]
+            assert f.readlines == ["fail"]
         assert bulletin_a.is_defined() is True
 
     def test_access_release_date_success (self, bulletin_a: BulletinA):
