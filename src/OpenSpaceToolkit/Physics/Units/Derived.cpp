@@ -380,6 +380,12 @@ Derived::Unit                   Derived::Unit::AngularVelocity              (   
     return { Length::Unit::Undefined, { 0 }, Mass::Unit::Undefined, { 0 }, aTimeUnit, { -1 }, ElectricCurrent::Unit::Undefined, { 0 }, anAngleUnit, { 1 } } ;
 }
 
+Derived::Unit                   Derived::Unit::MassDensity                  (   const   Mass::Unit&                 aMassUnit,
+                                                                                const   Length::Unit&               aLengthUnit                                 )
+{
+    return { aLengthUnit, { -3 }, aMassUnit, { 1 }, Time::Unit::Undefined, { 0 }, ElectricCurrent::Unit::Undefined, { 0 }, Angle::Unit::Undefined, { 0 } } ;
+}
+
 // Derived::Unit                   Derived::Unit::Parse                        (   const   String&                     aString                                     )
 // {
 

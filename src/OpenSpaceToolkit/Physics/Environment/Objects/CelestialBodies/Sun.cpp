@@ -57,6 +57,7 @@ Real                            Sun::Flattening                                 
                                         anEphemeris,
                                         std::make_shared<SunGravitationalModel>(aGravitationalModelType),
                                         nullptr, // [TBI] Add Sun magnetic model
+                                        nullptr,
                                         anInstant,
                                         Sun::Geometry(anEphemeris->accessFrame())
                                     )

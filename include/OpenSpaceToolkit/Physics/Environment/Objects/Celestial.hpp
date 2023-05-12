@@ -10,6 +10,7 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Objects_Celestial__
 #define __OpenSpaceToolkit_Physics_Environment_Objects_Celestial__
 
+#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Magnetic/Model.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp>
@@ -20,7 +21,9 @@
 #include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
 #include <OpenSpaceToolkit/Physics/Data/Vector.hpp>
+#include <OpenSpaceToolkit/Physics/Data/Scalar.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Derived.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Mass.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Length.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
@@ -51,7 +54,9 @@ using ostk::math::obj::Vector3d ;
 
 using ostk::physics::time::Instant ;
 using ostk::physics::units::Length ;
+using ostk::physics::units::Mass ;
 using ostk::physics::units::Derived ;
+using ostk::physics::data::Scalar ;
 using ostk::physics::data::Vector ;
 using ostk::physics::coord::Position ;
 using ostk::physics::coord::spherical::LLA ;
@@ -62,6 +67,7 @@ using ostk::physics::env::Object ;
 using ostk::physics::env::Ephemeris ;
 using GravitationalModel = ostk::physics::environment::gravitational::Model ;
 using MagneticModel = ostk::physics::environment::magnetic::Model ;
+using AtmosphericModel = ostk::physics::environment::atmospheric::Model ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -114,6 +120,7 @@ class Celestial : public Object
                                                                                 const   Shared<Ephemeris>&          anEphemeris,
                                                                                 const   Shared<GravitationalModel>& aGravitationalModel,
                                                                                 const   Shared<MagneticModel>&      aMagneticModel,
+                                                                                const   Shared<AtmosphericModel>&   anAtmosphericModel,
                                                                                 const   Instant&                    anInstant                                   ) ;
 
                                 Celestial                                   (   const   String&                     aName,
@@ -126,6 +133,7 @@ class Celestial : public Object
                                                                                 const   Shared<Ephemeris>&          anEphemeris,
                                                                                 const   Shared<GravitationalModel>& aGravitationalModel,
                                                                                 const   Shared<MagneticModel>&      aMagneticModel,
+                                                                                const   Shared<AtmosphericModel>&   anAtmosphericModel,
                                                                                 const   Instant&                    anInstant,
                                                                                 const   Object::Geometry&           aGeometry                                   ) ;
 
@@ -141,9 +149,11 @@ class Celestial : public Object
 
         Shared<const MagneticModel> accessMagneticModel                     ( ) const ;
 
+        Shared<const AtmosphericModel> accessAtmosphericModel               ( ) const ;
+
         Celestial::Type         getType                                     ( ) const ;
 
-        Derived                 getGravitationalParameter                    ( ) const ;
+        Derived                 getGravitationalParameter                   ( ) const ;
 
         Length                  getEquatorialRadius                         ( ) const ;
 
@@ -167,6 +177,8 @@ class Celestial : public Object
 
         Vector                  getMagneticFieldAt                          (   const   Position&                   aPosition                                   ) const ;
 
+        Scalar                  getAtmosphericDensityAt                     (   const   Position&                   aPosition                                   ) const ;
+
         Shared<const Frame>     getFrameAt                                  (   const   LLA&                        aLla,
                                                                                 const   Celestial::FrameType&       aFrameType                                  ) const ;
 
@@ -187,6 +199,7 @@ class Celestial : public Object
         Shared<Ephemeris>       ephemeris_ ;
         Shared<GravitationalModel> gravitationalModelSPtr_ ;
         Shared<MagneticModel>   magneticModelSPtr_ ;
+        Shared<AtmosphericModel> atmosphericModelSPtr_ ;
 
 } ;
 

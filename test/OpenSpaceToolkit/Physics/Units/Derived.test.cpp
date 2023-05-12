@@ -849,4 +849,21 @@ TEST (OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 
 // }
 
+TEST (OpenSpaceToolkit_Physics_Units_Derived_Unit, MassDensity)
+{
+
+    using ostk::physics::units::Length ;
+    using ostk::physics::units::Mass ;
+    using ostk::physics::units::Derived ;
+
+    {
+
+        const Derived::Unit massDensity = Derived::Unit::MassDensity(Mass::Unit::Kilogram, Length::Unit::Meter) ;
+
+        EXPECT_TRUE(massDensity.isDefined()) ;
+
+    }
+
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

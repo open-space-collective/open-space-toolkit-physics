@@ -57,6 +57,7 @@ Real                            Moon::Flattening                                
                                         anEphemeris,
                                         std::make_shared<MoonGravitationalModel>(aGravitationalModelType),
                                         nullptr,
+                                        nullptr,
                                         anInstant,
                                         Moon::Geometry(anEphemeris->accessFrame())
                                     )
