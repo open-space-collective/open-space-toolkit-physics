@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['magneticmodel_1382',['MagneticModel',['../namespaceostk_1_1physics_1_1env_1_1obj.html#a11552c1290e2f6b4693ea00c2df2c80d',1,'ostk::physics::env::obj']]],
-  ['moongravitationalmodel_1383',['MoonGravitationalModel',['../namespaceostk_1_1physics_1_1env_1_1obj_1_1celest.html#afb39e52f5f405d447dae9362c9bdce04',1,'ostk::physics::env::obj::celest']]]
+  ['iersmanager_1405',['IersManager',['../_i_t_r_f_8cpp.html#af15130fc8f7fe288796d033a30dd8301',1,'IersManager():&#160;ITRF.cpp'],['../namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider.html#a4a4183a2547e2e41d722a832c7e1c137',1,'ostk::physics::coord::frame::provider::IersManager()'],['../_t_i_r_f_8cpp.html#af15130fc8f7fe288796d033a30dd8301',1,'IersManager():&#160;TIRF.cpp']]]
 ];
