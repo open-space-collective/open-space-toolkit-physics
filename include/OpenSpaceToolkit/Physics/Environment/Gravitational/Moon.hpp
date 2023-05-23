@@ -1,4 +1,4 @@
-/// Apache License 2.0 
+/// Apache License 2.0
 
 #ifndef __OpenSpaceToolkit_Physics_Environment_Gravitational_Moon__
 #define __OpenSpaceToolkit_Physics_Environment_Gravitational_Moon__

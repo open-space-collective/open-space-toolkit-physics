@@ -1,4 +1,4 @@
-/// Apache License 2.0 
+/// Apache License 2.0
 
 #include <OpenSpaceToolkitPhysicsPy/Environment/Gravitational/Earth.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Environment/Gravitational/Moon.cpp>

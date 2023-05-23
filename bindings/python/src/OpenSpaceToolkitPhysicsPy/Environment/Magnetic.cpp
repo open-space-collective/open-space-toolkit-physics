@@ -1,4 +1,4 @@
-/// Apache License 2.0 
+/// Apache License 2.0
 
 #include <OpenSpaceToolkitPhysicsPy/Environment/Magnetic/Earth.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Environment/Magnetic/Dipole.cpp>
