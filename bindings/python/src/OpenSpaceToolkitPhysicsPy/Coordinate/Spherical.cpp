@@ -1,4 +1,4 @@
-/// Apache License 2.0 
+/// Apache License 2.0
 
 #include <OpenSpaceToolkitPhysicsPy/Coordinate/Spherical/AER.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Coordinate/Spherical/LLA.cpp>

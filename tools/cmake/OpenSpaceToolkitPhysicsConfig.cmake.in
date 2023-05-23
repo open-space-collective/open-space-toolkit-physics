@@ -1,4 +1,4 @@
-/// Apache License 2.0 
+/// Apache License 2.0
 
 SET (OpenSpaceToolkitPhysics_ROOT_DIR ${OpenSpaceToolkitPhysics_ROOT_DIR} @CMAKE_INSTALL_PREFIX@)
 

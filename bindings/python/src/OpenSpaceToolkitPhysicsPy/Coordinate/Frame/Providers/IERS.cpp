@@ -1,4 +1,4 @@
-/// Apache License 2.0 
+/// Apache License 2.0
 
 #include <OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Providers/IERS/Manager.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Providers/IERS/BulletinA.cpp>

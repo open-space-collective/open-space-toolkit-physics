@@ -1,6 +1,6 @@
 #!/bin/bash
 
-/// Apache License 2.0 
+/// Apache License 2.0
 
 set -a
 set -e

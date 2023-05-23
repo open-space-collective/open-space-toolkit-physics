@@ -1,4 +1,4 @@
-/// Apache License 2.0 
+/// Apache License 2.0
 
 #include <OpenSpaceToolkit/Physics/Data/Direction.hpp>
 #include <OpenSpaceToolkit/Physics/Unit.hpp>

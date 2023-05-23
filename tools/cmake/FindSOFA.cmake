@@ -1,4 +1,4 @@
-/// Apache License 2.0 
+/// Apache License 2.0
 
 SET (SOFA_ROOT_DIR ${SOFA_ROOT_DIR} "/usr/local")
 

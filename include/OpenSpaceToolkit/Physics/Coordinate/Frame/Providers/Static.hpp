@@ -1,4 +1,4 @@
-/// Apache License 2.0 
+/// Apache License 2.0
 
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Static__
 #define __OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Static__

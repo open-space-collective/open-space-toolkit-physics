@@ -1,4 +1,4 @@
-/// Apache License 2.0 
+/// Apache License 2.0
 
 FROM jupyter/scipy-notebook:07eb788e5d10
 

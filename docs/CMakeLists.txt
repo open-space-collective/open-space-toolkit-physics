@@ -1,4 +1,4 @@
-/// Apache License 2.0 
+/// Apache License 2.0
 
 SET (DOCUMENTATION_TARGET "docs")
 

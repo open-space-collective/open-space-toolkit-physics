@@ -1,4 +1,4 @@
-/// Apache License 2.0 
+/// Apache License 2.0
 
 #include <OpenSpaceToolkitPhysicsPy/Time/Interval.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Time/Time.cpp>

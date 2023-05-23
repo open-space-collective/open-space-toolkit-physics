@@ -1,4 +1,4 @@
-/// Apache License 2.0 
+/// Apache License 2.0
 
 #include <OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Providers/Dynamic.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Providers/Static.cpp>
