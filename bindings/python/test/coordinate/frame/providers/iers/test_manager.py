@@ -1,11 +1,4 @@
-################################################################################################################################################################
-
-# @project        Open Space Toolkit ▸ Physics
-# @file           bindings/python/test/coordinate/frame/providers/iers/test_manager.py
-# @author         Lucas Brémond <lucas@loftorbital.com>
-# @license        Apache License 2.0
-
-################################################################################################################################################################
+/// Apache License 2.0 
 
 import pytest
 
