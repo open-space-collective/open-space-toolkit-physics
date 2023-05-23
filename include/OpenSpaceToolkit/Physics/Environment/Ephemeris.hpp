@@ -3,11 +3,11 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Ephemeris__
 #define __OpenSpaceToolkit_Physics_Environment_Ephemeris__
 
+#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
+
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
-
-#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -20,9 +20,9 @@ namespace env
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using ostk::core::types::Shared ;
+using ostk::core::types::Shared;
 
-using ostk::physics::coord::Frame ;
+using ostk::physics::coord::Frame;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -32,26 +32,23 @@ using ostk::physics::coord::Frame ;
 
 class Ephemeris
 {
+   public:
+    Ephemeris();
 
-    public:
+    virtual ~Ephemeris() = 0;
 
-                                Ephemeris                                   ( ) ;
+    virtual Ephemeris* clone() const = 0;
 
-        virtual                 ~Ephemeris                                  ( ) = 0 ;
+    virtual bool isDefined() const = 0;
 
-        virtual Ephemeris*      clone                                       ( ) const = 0 ;
-
-        virtual bool            isDefined                                   ( ) const = 0 ;
-
-        virtual Shared<const Frame> accessFrame                             ( ) const = 0 ;
-
-} ;
+    virtual Shared<const Frame> accessFrame() const = 0;
+};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}
-}
-}
+}  // namespace env
+}  // namespace physics
+}  // namespace ostk
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -3,11 +3,11 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Utilities_Eclipse__
 #define __OpenSpaceToolkit_Physics_Environment_Utilities_Eclipse__
 
-#include <OpenSpaceToolkit/Physics/Environment.hpp>
-#include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
-#include <OpenSpaceToolkit/Physics/Time/Interval.hpp>
-
 #include <OpenSpaceToolkit/Core/Containers/Array.hpp>
+
+#include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
+#include <OpenSpaceToolkit/Physics/Environment.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Interval.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -22,11 +22,11 @@ namespace utilities
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using ostk::core::ctnr::Array ;
+using ostk::core::ctnr::Array;
 
-using ostk::physics::coord::Position ;
-using ostk::physics::time::Interval ;
-using ostk::physics::Environment ;
+using ostk::physics::coord::Position;
+using ostk::physics::time::Interval;
+using ostk::physics::Environment;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -36,8 +36,7 @@ using ostk::physics::Environment ;
 /// @param                      [in] anEnvironment An environment
 /// @return                     True if position is in eclipse
 
-bool                            isPositionInEclipse                         (   const   Position&                   aPosition,
-                                                                                const   Environment&                anEnvironment                               ) ;
+bool isPositionInEclipse(const Position& aPosition, const Environment& anEnvironment);
 
 /// @brief                      Calculate eclipse intervals for a given position
 ///
@@ -46,16 +45,16 @@ bool                            isPositionInEclipse                         (   
 /// @param                      [in] anEnvironment An environment
 /// @return                     Array of eclipse intervals for a given position
 
-Array<Interval>                 eclipseIntervalsAtPosition                  (   const   Interval&                   anAnalysisInterval,
-                                                                                const   Position&                   aPosition,
-                                                                                const   Environment&                anEnvironment                               ) ;
+Array<Interval> eclipseIntervalsAtPosition(
+    const Interval& anAnalysisInterval, const Position& aPosition, const Environment& anEnvironment
+);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}
-}
-}
-}
+}  // namespace utilities
+}  // namespace env
+}  // namespace physics
+}  // namespace ostk
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

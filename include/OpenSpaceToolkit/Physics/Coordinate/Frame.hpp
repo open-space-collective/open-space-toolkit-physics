@@ -3,21 +3,21 @@
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Frame__
 #define __OpenSpaceToolkit_Physics_Coordinate_Frame__
 
-#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IAU/Theory.hpp>
-#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.hpp>
-#include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
-#include <OpenSpaceToolkit/Physics/Coordinate/Axes.hpp>
-#include <OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp>
-#include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
+#include <memory>
+
+#include <OpenSpaceToolkit/Core/Types/Integer.hpp>
+#include <OpenSpaceToolkit/Core/Types/Real.hpp>
+#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
+#include <OpenSpaceToolkit/Core/Types/String.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Objects/Vector.hpp>
 
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
-#include <OpenSpaceToolkit/Core/Types/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
-
-#include <memory>
+#include <OpenSpaceToolkit/Physics/Coordinate/Axes.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IAU/Theory.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -30,145 +30,143 @@ namespace coord
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace iau = ostk::physics::coord::frame::providers::iau ;
+namespace iau = ostk::physics::coord::frame::providers::iau;
 
-using ostk::core::types::Uint8 ;
-using ostk::core::types::Shared ;
-using ostk::core::types::Real ;
-using ostk::core::types::String ;
+using ostk::core::types::Uint8;
+using ostk::core::types::Shared;
+using ostk::core::types::Real;
+using ostk::core::types::String;
 
-using ostk::math::obj::Vector3d ;
+using ostk::math::obj::Vector3d;
 
-using ostk::physics::coord::Position ;
-using ostk::physics::coord::Velocity ;
-using ostk::physics::coord::Axes ;
-using ostk::physics::coord::Transform ;
-using ostk::physics::coord::frame::Provider ;
+using ostk::physics::coord::Position;
+using ostk::physics::coord::Velocity;
+using ostk::physics::coord::Axes;
+using ostk::physics::coord::Transform;
+using ostk::physics::coord::frame::Provider;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @brief                      Reference frame
 ///
 /// @ref                        https://en.wikipedia.org/wiki/Frame_of_reference
-/// @note                       Implementation heavily inspired by (the great!) https://www.orekit.org/static/architecture/frames.html
+/// @note                       Implementation heavily inspired by (the great!)
+/// https://www.orekit.org/static/architecture/frames.html
 
 class Frame : public std::enable_shared_from_this<Frame>
 {
+   public:
+    /// @brief              Destructor
 
-    public:
+    ~Frame();
 
-        /// @brief              Destructor
+    bool operator==(const Frame& aFrame) const;
 
-                                ~Frame                                      ( ) ;
+    bool operator!=(const Frame& aFrame) const;
 
-        bool                    operator ==                                 (   const   Frame&                      aFrame                                      ) const ;
+    friend std::ostream& operator<<(std::ostream& anOutputStream, const Frame& aFrame);
 
-        bool                    operator !=                                 (   const   Frame&                      aFrame                                      ) const ;
+    bool isDefined() const;
 
-        friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
-                                                                                const   Frame&                      aFrame                                      ) ;
+    bool isQuasiInertial() const;
 
-        bool                    isDefined                                   ( ) const ;
+    bool hasParent() const;
 
-        bool                    isQuasiInertial                             ( ) const ;
+    Shared<const Frame> accessParent() const;
 
-        bool                    hasParent                                   ( ) const ;
+    Shared<const Frame> accessAncestor(const Uint8 anAncestorDegree) const;
 
-        Shared<const Frame>     accessParent                                ( ) const ;
+    Shared<const Provider> accessProvider() const;
 
-        Shared<const Frame>     accessAncestor                              (   const   Uint8                       anAncestorDegree                            ) const ;
+    String getName() const;
 
-        Shared<const Provider>  accessProvider                              ( ) const ;
+    Position getOriginIn(const Shared<const Frame>& aFrame, const Instant& anInstant) const;
 
-        String                  getName                                     ( ) const ;
+    Velocity getVelocityIn(const Shared<const Frame>& aFrame, const Instant& anInstant) const;
 
-        Position                getOriginIn                                 (   const   Shared<const Frame>&        aFrame,
-                                                                                const   Instant&                    anInstant                                   ) const ;
+    Axes getAxesIn(const Shared<const Frame>& aFrame, const Instant& anInstant) const;
 
-        Velocity                getVelocityIn                               (   const   Shared<const Frame>&        aFrame,
-                                                                                const   Instant&                    anInstant                                   ) const ;
+    Transform getTransformTo(const Shared<const Frame>& aFrame, const Instant& anInstant) const;
 
-        Axes                    getAxesIn                                   (   const   Shared<const Frame>&        aFrame,
-                                                                                const   Instant&                    anInstant                                   ) const ;
+    static Shared<const Frame> Undefined();
 
-        Transform               getTransformTo                              (   const   Shared<const Frame>&        aFrame,
-                                                                                const   Instant&                    anInstant                                   ) const ;
+    static Shared<const Frame> ICRF();
 
-        static Shared<const Frame> Undefined                                ( ) ;
+    static Shared<const Frame> GCRF();
 
-        static Shared<const Frame> ICRF                                     ( ) ;
+    static Shared<const Frame> J2000(const iau::Theory& aTheory);
 
-        static Shared<const Frame> GCRF                                     ( ) ;
+    static Shared<const Frame> MOD(const Instant& anEpoch);
 
-        static Shared<const Frame> J2000                                    (   const   iau::Theory&                aTheory                                     ) ;
+    static Shared<const Frame> TOD(const Instant& anEpoch);
 
-        static Shared<const Frame> MOD                                      (   const   Instant&                    anEpoch                                     ) ;
+    static Shared<const Frame> TEME();
 
-        static Shared<const Frame> TOD                                      (   const   Instant&                    anEpoch                                     ) ;
+    static Shared<const Frame> TEMEOfEpoch(const Instant& anEpoch);
 
-        static Shared<const Frame> TEME                                     ( ) ;
+    static Shared<const Frame> CIRF();
 
-        static Shared<const Frame> TEMEOfEpoch                              (   const   Instant&                    anEpoch                                     ) ;
+    static Shared<const Frame> TIRF();
 
-        static Shared<const Frame> CIRF                                     ( ) ;
+    static Shared<const Frame> ITRF();
 
-        static Shared<const Frame> TIRF                                     ( ) ;
+    static Shared<const Frame> WithName(const String& aName);
 
-        static Shared<const Frame> ITRF                                     ( ) ;
+    static bool Exists(const String& aName);
 
-        static Shared<const Frame> WithName                                 (   const   String&                     aName                                       ) ;
+    /// @brief              Constructor
+    ///
+    /// @param              [in] aName A frame name
+    /// @param              [in] isQuasiInertialT True is frame is quasi-inertial
+    /// @param              [in] aParentFrame A shared pointer to the parent frame
+    /// @param              [in] aProvider A shared pointer to the transform provider
 
-        static bool             Exists                                      (   const   String&                     aName                                       ) ;
+    static Shared<const Frame> Construct(
+        const String& aName,
+        bool isQuasiInertial,
+        const Shared<const Frame>& aParentFrame,
+        const Shared<const Provider>& aProvider
+    );
 
-        /// @brief              Constructor
-        ///
-        /// @param              [in] aName A frame name
-        /// @param              [in] isQuasiInertialT True is frame is quasi-inertial
-        /// @param              [in] aParentFrame A shared pointer to the parent frame
-        /// @param              [in] aProvider A shared pointer to the transform provider
+    static void Destruct(const String& aName);
 
-        static Shared<const Frame> Construct                                (   const   String&                     aName,
-                                                                                        bool                        isQuasiInertial,
-                                                                                const   Shared<const Frame>&        aParentFrame,
-                                                                                const   Shared<const Provider>&     aProvider                                   ) ;
+   protected:
+    Frame(
+        const String& aName,
+        bool isQuasiInertial,
+        const Shared<const Frame>& aParentFrame,
+        const Shared<const Provider>& aProvider
+    );
 
-        static void             Destruct                                    (   const   String&                     aName                                       ) ;
+    Frame(const Frame& aFrame) = default;
 
-    protected:
+    Frame& operator=(const Frame& aFrame) = default;
 
-                                Frame                                       (   const   String&                     aName,
-                                                                                        bool                        isQuasiInertial,
-                                                                                const   Shared<const Frame>&        aParentFrame,
-                                                                                const   Shared<const Provider>&     aProvider                                   ) ;
+   private:
+    String name_;
+    bool quasiInertial_;
+    Shared<const Frame> parentFrameSPtr_;
+    Shared<const Provider> providerSPtr_;  // Provides transform from parent to instance -> Unique<> instead?
 
-                                Frame                                       (   const   Frame&                      aFrame                                      ) = default ;
+    Uint8 getDepth() const;
 
-        Frame&                  operator =                                  (   const   Frame&                      aFrame                                      ) = default ;
+    static Shared<const Frame> Emplace(
+        const String& aName,
+        bool isQuasiInertial,
+        const Shared<const Frame>& aParentFrame,
+        const Shared<const Provider>& aProvider
+    );
 
-    private:
-
-        String                  name_ ;
-        bool                    quasiInertial_ ;
-        Shared<const Frame>     parentFrameSPtr_ ;
-        Shared<const Provider>  providerSPtr_ ; // Provides transform from parent to instance -> Unique<> instead?
-
-        Uint8                   getDepth                                    ( ) const ;
-
-        static Shared<const Frame> Emplace                                  (   const   String&                     aName,
-                                                                                        bool                        isQuasiInertial,
-                                                                                const   Shared<const Frame>&        aParentFrame,
-                                                                                const   Shared<const Provider>&     aProvider                                   ) ;
-
-        static Shared<const Frame> FindCommonAncestor                       (   const   Shared<const Frame>&        aFirstFrameSPtr,
-                                                                                const   Shared<const Frame>&        aSecondFrameSPtr                            ) ;
-
-} ;
+    static Shared<const Frame> FindCommonAncestor(
+        const Shared<const Frame>& aFirstFrameSPtr, const Shared<const Frame>& aSecondFrameSPtr
+    );
+};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}
-}
-}
+}  // namespace coord
+}  // namespace physics
+}  // namespace ostk
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -19,8 +19,8 @@ namespace frame
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using ostk::physics::time::Instant ;
-using ostk::physics::coord::Transform ;
+using ostk::physics::time::Instant;
+using ostk::physics::coord::Transform;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -28,27 +28,24 @@ using ostk::physics::coord::Transform ;
 
 class Provider
 {
+   public:
+    Provider();
 
-    public:
+    virtual ~Provider() = 0;
 
-                                Provider                                    ( ) ;
+    virtual Provider* clone() const = 0;
 
-        virtual                 ~Provider                                   ( ) = 0 ;
+    virtual bool isDefined() const = 0;
 
-        virtual Provider*       clone                                       ( ) const = 0 ;
-
-        virtual bool            isDefined                                   ( ) const = 0 ;
-
-        virtual Transform       getTransformAt                              (   const   Instant&                    anInstant                                   ) const = 0 ;
-
-} ;
+    virtual Transform getTransformAt(const Instant& anInstant) const = 0;
+};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}
-}
-}
-}
+}  // namespace frame
+}  // namespace coord
+}  // namespace physics
+}  // namespace ostk
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

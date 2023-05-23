@@ -3,16 +3,16 @@
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Position__
 #define __OpenSpaceToolkit_Physics_Coordinate_Position__
 
-#include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
-#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
-#include <OpenSpaceToolkit/Physics/Units/Length.hpp>
+#include <OpenSpaceToolkit/Core/Types/Integer.hpp>
+#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
+#include <OpenSpaceToolkit/Core/Types/String.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/Point.hpp>
 #include <OpenSpaceToolkit/Mathematics/Objects/Vector.hpp>
 
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
-#include <OpenSpaceToolkit/Core/Types/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Length.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -25,23 +25,23 @@ namespace coord
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#define                         DEFAULT_PRECISION                               Integer::Undefined()
+#define DEFAULT_PRECISION Integer::Undefined()
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using ostk::core::types::Shared ;
-using ostk::core::types::Integer ;
-using ostk::core::types::String ;
+using ostk::core::types::Shared;
+using ostk::core::types::Integer;
+using ostk::core::types::String;
 
-using ostk::math::geom::d3::objects::Point ;
-using ostk::math::obj::Vector3d ;
+using ostk::math::geom::d3::objects::Point;
+using ostk::math::obj::Vector3d;
 
-using ostk::physics::units::Length ;
-using ostk::physics::time::Instant ;
+using ostk::physics::units::Length;
+using ostk::physics::time::Instant;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-class Frame ;
+class Frame;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -49,66 +49,60 @@ class Frame ;
 
 class Position
 {
+   public:
+    typedef Length::Unit Unit;
 
-    public:
+    Position(
+        const Vector3d& aCoordinateSet,  // [TBI] Replace w/ Point
+        const Position::Unit& aUnit,
+        const Shared<const Frame>& aFrameSPtr
+    );
 
-        typedef                 Length::Unit                                    Unit ;
+    Position(const Position& aPosition);
 
-                                Position                                    (   const   Vector3d&                   aCoordinateSet, // [TBI] Replace w/ Point
-                                                                                const   Position::Unit&             aUnit,
-                                                                                const   Shared<const Frame>&        aFrameSPtr                                  ) ;
+    Position& operator=(const Position& aPosition);
 
-                                Position                                    (   const   Position&                   aPosition                                   ) ;
+    bool operator==(const Position& aPosition) const;
 
-        Position&               operator =                                  (   const   Position&                   aPosition                                   ) ;
+    bool operator!=(const Position& aPosition) const;
 
-        bool                    operator ==                                 (   const   Position&                   aPosition                                   ) const ;
+    friend std::ostream& operator<<(std::ostream& anOutputStream, const Position& aPosition);
 
-        bool                    operator !=                                 (   const   Position&                   aPosition                                   ) const ;
+    bool isDefined() const;
 
-        friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
-                                                                                const   Position&                   aPosition                                   ) ;
+    bool isNear(const Position& aPosition, const Length& aTolerance) const;
 
-        bool                    isDefined                                   ( ) const ;
+    const Vector3d& accessCoordinates() const;
 
-        bool                    isNear                                      (   const   Position&                   aPosition,
-                                                                                const   Length&                     aTolerance                                  ) const ;
+    Shared<const Frame> accessFrame() const;
 
-        const Vector3d&         accessCoordinates                           ( ) const ;
+    Vector3d getCoordinates() const;
 
-        Shared<const Frame>     accessFrame                                 ( ) const ;
+    Position::Unit getUnit() const;
 
-        Vector3d                getCoordinates                              ( ) const ;
+    Position inUnit(const Position::Unit& aUnit) const;
 
-        Position::Unit          getUnit                                     ( ) const ;
+    Position inMeters() const;
 
-        Position                inUnit                                      (   const   Position::Unit&             aUnit                                       ) const ;
+    Position inFrame(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const;
 
-        Position                inMeters                                    ( ) const ;
+    String toString(const Integer& aPrecision = DEFAULT_PRECISION) const;
 
-        Position                inFrame                                     (   const   Shared<const Frame>&        aFrameSPtr,
-                                                                                const   Instant&                    anInstant                                   ) const ;
+    static Position Undefined();
 
-        String                  toString                                    (   const   Integer&                    aPrecision                                  =   DEFAULT_PRECISION ) const ;
+    static Position Meters(const Vector3d& aCoordinateSet, const Shared<const Frame>& aFrameSPtr);
 
-        static Position         Undefined                                   ( ) ;
-
-        static Position         Meters                                      (   const   Vector3d&                   aCoordinateSet,
-                                                                                const   Shared<const Frame>&        aFrameSPtr                                  ) ;
-
-    private:
-
-        Vector3d                coordinates_ ;
-        Position::Unit          unit_ ;
-        Shared<const Frame>     frameSPtr_ ; // [TBR] With Transform instead, as Frame is a function of time...
-
-} ;
+   private:
+    Vector3d coordinates_;
+    Position::Unit unit_;
+    Shared<const Frame> frameSPtr_;  // [TBR] With Transform instead, as Frame is a function of time...
+};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}
-}
-}
+}  // namespace coord
+}  // namespace physics
+}  // namespace ostk
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

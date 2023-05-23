@@ -1,10 +1,11 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkit/Physics/Units/Derived.hpp>
+#include <cmath>
+
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
 
-#include <cmath>
+#include <OpenSpaceToolkit/Physics/Units/Derived.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -17,522 +18,612 @@ namespace units
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                                Derived::Order::Order                       (           Int16                       aNumerator                                  )
-                                :   numerator_(aNumerator),
-                                    denominator_(1)
+Derived::Order::Order(Int16 aNumerator)
+    : numerator_(aNumerator),
+      denominator_(1)
 {
-
 }
 
-                                Derived::Order::Order                       (           Int16                       aNumerator,
-                                                                                        Int16                       aDenominator                                )
-                                :   numerator_(aNumerator),
-                                    denominator_(aDenominator)
+Derived::Order::Order(Int16 aNumerator, Int16 aDenominator)
+    : numerator_(aNumerator),
+      denominator_(aDenominator)
 {
-
     if (denominator_ == 0)
     {
-        throw ostk::core::error::runtime::Wrong("Denominator") ;
+        throw ostk::core::error::runtime::Wrong("Denominator");
     }
-
 }
 
-bool                            Derived::Order::operator ==                 (   const   Derived::Order&             anOrder                                     ) const
+bool Derived::Order::operator==(const Derived::Order& anOrder) const
 {
-    return (numerator_ == anOrder.numerator_) && (denominator_ == anOrder.denominator_) ;
+    return (numerator_ == anOrder.numerator_) && (denominator_ == anOrder.denominator_);
 }
 
-bool                            Derived::Order::operator !=                 (   const   Derived::Order&             anOrder                                     ) const
+bool Derived::Order::operator!=(const Derived::Order& anOrder) const
 {
-    return (numerator_ != anOrder.numerator_) || (denominator_ != anOrder.denominator_) ;
+    return (numerator_ != anOrder.numerator_) || (denominator_ != anOrder.denominator_);
 }
 
-bool                            Derived::Order::isZero                      ( ) const
+bool Derived::Order::isZero() const
 {
-    return numerator_ == 0 ;
+    return numerator_ == 0;
 }
 
-bool                            Derived::Order::isUnity                     ( ) const
+bool Derived::Order::isUnity() const
 {
-    return (numerator_ == 1) && (denominator_ == 1) ;
+    return (numerator_ == 1) && (denominator_ == 1);
 }
 
-Int16                           Derived::Order::getNumerator                ( ) const
+Int16 Derived::Order::getNumerator() const
 {
-    return numerator_ ;
+    return numerator_;
 }
 
-Int16                           Derived::Order::getDenominator              ( ) const
+Int16 Derived::Order::getDenominator() const
 {
-    return denominator_ ;
+    return denominator_;
 }
 
-Real                            Derived::Order::getValue                    ( ) const
+Real Derived::Order::getValue() const
 {
+    using ostk::core::types::Integer;
 
-    using ostk::core::types::Integer ;
-
-    return Real::Integer(Integer::Int16(numerator_)) / Real::Integer(Integer::Int16(denominator_)) ;
-
+    return Real::Integer(Integer::Int16(numerator_)) / Real::Integer(Integer::Int16(denominator_));
 }
 
-String                          Derived::Order::toString                    ( ) const
+String Derived::Order::toString() const
 {
-
-    using ostk::core::types::Integer ;
+    using ostk::core::types::Integer;
 
     if (denominator_ == 1)
     {
-        return Integer::Int16(numerator_).toString() ;
+        return Integer::Int16(numerator_).toString();
     }
 
     if (numerator_ == 1)
     {
-        return "-" + Integer::Int16(denominator_).toString() ;
+        return "-" + Integer::Int16(denominator_).toString();
     }
 
-    return Integer::Int16(numerator_).toString() + "/" + Integer::Int16(denominator_).toString() ;
-
+    return Integer::Int16(numerator_).toString() + "/" + Integer::Int16(denominator_).toString();
 }
 
-Derived::Order                  Derived::Order::Zero                        ( )
+Derived::Order Derived::Order::Zero()
 {
-    return { 0, 1 } ;
+    return {0, 1};
 }
 
-Derived::Order                  Derived::Order::One                         ( )
+Derived::Order Derived::Order::One()
 {
-    return { 1, 1 } ;
+    return {1, 1};
 }
 
-Derived::Order                  Derived::Order::Two                         ( )
+Derived::Order Derived::Order::Two()
 {
-    return { 2, 1 } ;
+    return {2, 1};
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                                Derived::Unit::Unit                         (   const   Length::Unit&               aLengthUnit,
-                                                                                const   Order&                      aLengthOrder,
-                                                                                const   Mass::Unit&                 aMassUnit,
-                                                                                const   Order&                      aMassOrder,
-                                                                                const   Time::Unit&                 aTimeUnit,
-                                                                                const   Order&                      aTimeOrder,
-                                                                                const   ElectricCurrent::Unit&      anElectricCurrentUnit,
-                                                                                const   Order&                      anElectricCurrentOrder,
-                                                                                const   Angle::Unit&                anAngleUnit,
-                                                                                const   Order&                      anAngleOrder                                )
-                                :   lengthUnit_(aLengthUnit),
-                                    lengthOrder_(aLengthOrder),
-                                    massUnit_(aMassUnit),
-                                    massOrder_(aMassOrder),
-                                    timeUnit_(aTimeUnit),
-                                    timeOrder_(aTimeOrder),
-                                    electricCurrentUnit_(anElectricCurrentUnit),
-                                    electricCurrentOrder_(anElectricCurrentOrder),
-                                    angleUnit_(anAngleUnit),
-                                    angleOrder_(anAngleOrder)
+Derived::Unit::Unit(
+    const Length::Unit& aLengthUnit,
+    const Order& aLengthOrder,
+    const Mass::Unit& aMassUnit,
+    const Order& aMassOrder,
+    const Time::Unit& aTimeUnit,
+    const Order& aTimeOrder,
+    const ElectricCurrent::Unit& anElectricCurrentUnit,
+    const Order& anElectricCurrentOrder,
+    const Angle::Unit& anAngleUnit,
+    const Order& anAngleOrder
+)
+    : lengthUnit_(aLengthUnit),
+      lengthOrder_(aLengthOrder),
+      massUnit_(aMassUnit),
+      massOrder_(aMassOrder),
+      timeUnit_(aTimeUnit),
+      timeOrder_(aTimeOrder),
+      electricCurrentUnit_(anElectricCurrentUnit),
+      electricCurrentOrder_(anElectricCurrentOrder),
+      angleUnit_(anAngleUnit),
+      angleOrder_(anAngleOrder)
 {
-
 }
 
-bool                            Derived::Unit::operator ==                  (   const   Derived::Unit&              aUnit                                       ) const
+bool Derived::Unit::operator==(const Derived::Unit& aUnit) const
 {
-
     if ((!this->isDefined()) || (!aUnit.isDefined()))
     {
-        return false ;
+        return false;
     }
 
-    return (lengthUnit_ == aUnit.lengthUnit_) && (lengthOrder_ == aUnit.lengthOrder_)
-        && (massUnit_ == aUnit.massUnit_) && (massOrder_ == aUnit.massOrder_)
-        && (timeUnit_ == aUnit.timeUnit_) && (timeOrder_ == aUnit.timeOrder_)
-        && (electricCurrentUnit_ == aUnit.electricCurrentUnit_) && (electricCurrentOrder_ == aUnit.electricCurrentOrder_)
-        && (angleUnit_ == aUnit.angleUnit_) && (angleOrder_ == aUnit.angleOrder_) ;
-
+    return (lengthUnit_ == aUnit.lengthUnit_) && (lengthOrder_ == aUnit.lengthOrder_) &&
+           (massUnit_ == aUnit.massUnit_) && (massOrder_ == aUnit.massOrder_) && (timeUnit_ == aUnit.timeUnit_) &&
+           (timeOrder_ == aUnit.timeOrder_) && (electricCurrentUnit_ == aUnit.electricCurrentUnit_) &&
+           (electricCurrentOrder_ == aUnit.electricCurrentOrder_) && (angleUnit_ == aUnit.angleUnit_) &&
+           (angleOrder_ == aUnit.angleOrder_);
 }
 
-bool                            Derived::Unit::operator !=                  (   const   Derived::Unit&              aUnit                                       ) const
+bool Derived::Unit::operator!=(const Derived::Unit& aUnit) const
 {
-    return !((*this) == aUnit) ;
+    return !((*this) == aUnit);
 }
 
-bool                            Derived::Unit::isDefined                    ( ) const
+bool Derived::Unit::isDefined() const
 {
-    return (lengthUnit_ != Length::Unit::Undefined)
-        || (massUnit_ != Mass::Unit::Undefined)
-        || (timeUnit_ != Time::Unit::Undefined)
-        || (electricCurrentUnit_ != ElectricCurrent::Unit::Undefined)
-        || (angleUnit_ != Angle::Unit::Undefined) ;
+    return (lengthUnit_ != Length::Unit::Undefined) || (massUnit_ != Mass::Unit::Undefined) ||
+           (timeUnit_ != Time::Unit::Undefined) || (electricCurrentUnit_ != ElectricCurrent::Unit::Undefined) ||
+           (angleUnit_ != Angle::Unit::Undefined);
 }
 
-bool                            Derived::Unit::isCompatibleWith             (   const   Unit&                       aUnit                                       ) const
+bool Derived::Unit::isCompatibleWith(const Unit& aUnit) const
 {
-
     if ((!this->isDefined()) || (!aUnit.isDefined()))
     {
-        return false ;
+        return false;
     }
 
-    return (lengthOrder_ == aUnit.lengthOrder_)
-        && (massOrder_ == aUnit.massOrder_)
-        && (timeOrder_ == aUnit.timeOrder_)
-        && (electricCurrentOrder_ == aUnit.electricCurrentOrder_)
-        && (angleOrder_ == aUnit.angleOrder_) ;
-
+    return (lengthOrder_ == aUnit.lengthOrder_) && (massOrder_ == aUnit.massOrder_) &&
+           (timeOrder_ == aUnit.timeOrder_) && (electricCurrentOrder_ == aUnit.electricCurrentOrder_) &&
+           (angleOrder_ == aUnit.angleOrder_);
 }
 
-const Length::Unit&             Derived::Unit::accessLengthUnit             ( ) const
+const Length::Unit& Derived::Unit::accessLengthUnit() const
 {
-    return lengthUnit_ ;
+    return lengthUnit_;
 }
 
-const Derived::Order&           Derived::Unit::accessLengthOrder            ( ) const
+const Derived::Order& Derived::Unit::accessLengthOrder() const
 {
-    return lengthOrder_ ;
+    return lengthOrder_;
 }
 
-const Mass::Unit&               Derived::Unit::accessMassUnit               ( ) const
+const Mass::Unit& Derived::Unit::accessMassUnit() const
 {
-    return massUnit_ ;
+    return massUnit_;
 }
 
-const Derived::Order&           Derived::Unit::accessMassOrder              ( ) const
+const Derived::Order& Derived::Unit::accessMassOrder() const
 {
-    return massOrder_ ;
+    return massOrder_;
 }
 
-const Time::Unit&               Derived::Unit::accessTimeUnit               ( ) const
+const Time::Unit& Derived::Unit::accessTimeUnit() const
 {
-    return timeUnit_ ;
+    return timeUnit_;
 }
 
-const Derived::Order&           Derived::Unit::accessTimeOrder              ( ) const
+const Derived::Order& Derived::Unit::accessTimeOrder() const
 {
-    return timeOrder_ ;
+    return timeOrder_;
 }
 
-const ElectricCurrent::Unit&    Derived::Unit::accessElectricCurrentUnit    ( ) const
+const ElectricCurrent::Unit& Derived::Unit::accessElectricCurrentUnit() const
 {
-    return electricCurrentUnit_ ;
+    return electricCurrentUnit_;
 }
 
-const Derived::Order&           Derived::Unit::accessElectricCurrentOrder   ( ) const
+const Derived::Order& Derived::Unit::accessElectricCurrentOrder() const
 {
-    return electricCurrentOrder_ ;
+    return electricCurrentOrder_;
 }
 
-const Angle::Unit&              Derived::Unit::accessAngleUnit              ( ) const
+const Angle::Unit& Derived::Unit::accessAngleUnit() const
 {
-    return angleUnit_ ;
+    return angleUnit_;
 }
 
-const Derived::Order&           Derived::Unit::accessAngleOrder             ( ) const
+const Derived::Order& Derived::Unit::accessAngleOrder() const
 {
-    return angleOrder_ ;
+    return angleOrder_;
 }
 
-String                          Derived::Unit::toString                     ( ) const
+String Derived::Unit::toString() const
 {
-
     if (!this->isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Unit") ;
+        throw ostk::core::error::runtime::Undefined("Unit");
     }
 
-    String symbol = "" ;
+    String symbol = "";
 
     if ((lengthUnit_ != Length::Unit::Undefined) && (!lengthOrder_.isZero()))
     {
-        symbol += ((!symbol.isEmpty()) ? "." : "") + Length::StringFromUnit(lengthUnit_) + ((!lengthOrder_.isUnity()) ? ("^" + lengthOrder_.toString()) : "") ;
+        symbol += ((!symbol.isEmpty()) ? "." : "") + Length::StringFromUnit(lengthUnit_) +
+                  ((!lengthOrder_.isUnity()) ? ("^" + lengthOrder_.toString()) : "");
     }
 
     if ((massUnit_ != Mass::Unit::Undefined) && (!massOrder_.isZero()))
     {
-        symbol += ((!symbol.isEmpty()) ? "." : "") + Mass::StringFromUnit(massUnit_) + ((!massOrder_.isUnity()) ? ("^" + massOrder_.toString()) : "") ;
+        symbol += ((!symbol.isEmpty()) ? "." : "") + Mass::StringFromUnit(massUnit_) +
+                  ((!massOrder_.isUnity()) ? ("^" + massOrder_.toString()) : "");
     }
 
     if ((electricCurrentUnit_ != ElectricCurrent::Unit::Undefined) && (!electricCurrentOrder_.isZero()))
     {
-        symbol += ((!symbol.isEmpty()) ? "." : "") + ElectricCurrent::StringFromUnit(electricCurrentUnit_) + ((!electricCurrentOrder_.isUnity()) ? ("^" + electricCurrentOrder_.toString()) : "") ;
+        symbol += ((!symbol.isEmpty()) ? "." : "") + ElectricCurrent::StringFromUnit(electricCurrentUnit_) +
+                  ((!electricCurrentOrder_.isUnity()) ? ("^" + electricCurrentOrder_.toString()) : "");
     }
 
     if ((angleUnit_ != Angle::Unit::Undefined) && (!angleOrder_.isZero()))
     {
-        symbol += ((!symbol.isEmpty()) ? "." : "") + Angle::StringFromUnit(angleUnit_) + ((!angleOrder_.isUnity()) ? ("^" + angleOrder_.toString()) : "") ;
+        symbol += ((!symbol.isEmpty()) ? "." : "") + Angle::StringFromUnit(angleUnit_) +
+                  ((!angleOrder_.isUnity()) ? ("^" + angleOrder_.toString()) : "");
     }
 
     if ((timeUnit_ != Time::Unit::Undefined) && (!timeOrder_.isZero()))
     {
-        symbol += ((!symbol.isEmpty()) ? "." : "") + Time::StringFromUnit(timeUnit_) + ((!timeOrder_.isUnity()) ? ("^" + timeOrder_.toString()) : "") ;
+        symbol += ((!symbol.isEmpty()) ? "." : "") + Time::StringFromUnit(timeUnit_) +
+                  ((!timeOrder_.isUnity()) ? ("^" + timeOrder_.toString()) : "");
     }
 
-    return symbol ;
-
+    return symbol;
 }
 
-String                          Derived::Unit::getSymbol                    ( ) const
+String Derived::Unit::getSymbol() const
 {
-
     if (!this->isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Unit") ;
+        throw ostk::core::error::runtime::Undefined("Unit");
     }
 
-    String symbol = "" ;
+    String symbol = "";
 
     if ((lengthUnit_ != Length::Unit::Undefined) && (!lengthOrder_.isZero()))
     {
-        symbol += ((!symbol.isEmpty()) ? "." : "") + Length::SymbolFromUnit(lengthUnit_) + ((!lengthOrder_.isUnity()) ? ("^" + lengthOrder_.toString()) : "") ;
+        symbol += ((!symbol.isEmpty()) ? "." : "") + Length::SymbolFromUnit(lengthUnit_) +
+                  ((!lengthOrder_.isUnity()) ? ("^" + lengthOrder_.toString()) : "");
     }
 
     if ((massUnit_ != Mass::Unit::Undefined) && (!massOrder_.isZero()))
     {
-        symbol += ((!symbol.isEmpty()) ? "." : "") + Mass::SymbolFromUnit(massUnit_) + ((!massOrder_.isUnity()) ? ("^" + massOrder_.toString()) : "") ;
+        symbol += ((!symbol.isEmpty()) ? "." : "") + Mass::SymbolFromUnit(massUnit_) +
+                  ((!massOrder_.isUnity()) ? ("^" + massOrder_.toString()) : "");
     }
 
     if ((electricCurrentUnit_ != ElectricCurrent::Unit::Undefined) && (!electricCurrentOrder_.isZero()))
     {
-        symbol += ((!symbol.isEmpty()) ? "." : "") + ElectricCurrent::SymbolFromUnit(electricCurrentUnit_) + ((!electricCurrentOrder_.isUnity()) ? ("^" + electricCurrentOrder_.toString()) : "") ;
+        symbol += ((!symbol.isEmpty()) ? "." : "") + ElectricCurrent::SymbolFromUnit(electricCurrentUnit_) +
+                  ((!electricCurrentOrder_.isUnity()) ? ("^" + electricCurrentOrder_.toString()) : "");
     }
 
     if ((angleUnit_ != Angle::Unit::Undefined) && (!angleOrder_.isZero()))
     {
-        symbol += ((!symbol.isEmpty()) ? "." : "") + Angle::SymbolFromUnit(angleUnit_) + ((!angleOrder_.isUnity()) ? ("^" + angleOrder_.toString()) : "") ;
+        symbol += ((!symbol.isEmpty()) ? "." : "") + Angle::SymbolFromUnit(angleUnit_) +
+                  ((!angleOrder_.isUnity()) ? ("^" + angleOrder_.toString()) : "");
     }
 
     if ((timeUnit_ != Time::Unit::Undefined) && (!timeOrder_.isZero()))
     {
-
-        if (timeOrder_.getValue() == -1.0) // Special case to support / time format
+        if (timeOrder_.getValue() == -1.0)  // Special case to support / time format
         {
-            symbol += ((!symbol.isEmpty()) ? "/" : "") + Time::SymbolFromUnit(timeUnit_) ;
+            symbol += ((!symbol.isEmpty()) ? "/" : "") + Time::SymbolFromUnit(timeUnit_);
         }
         else
         {
-            symbol += ((!symbol.isEmpty()) ? "." : "") + Time::SymbolFromUnit(timeUnit_) + ((!timeOrder_.isUnity()) ? ("^" + timeOrder_.toString()) : "") ;
+            symbol += ((!symbol.isEmpty()) ? "." : "") + Time::SymbolFromUnit(timeUnit_) +
+                      ((!timeOrder_.isUnity()) ? ("^" + timeOrder_.toString()) : "");
         }
-
     }
 
-    return symbol ;
-
+    return symbol;
 }
 
-Derived::Unit                   Derived::Unit::Undefined                    ( )
+Derived::Unit Derived::Unit::Undefined()
 {
-    return { Length::Unit::Undefined, { 0 }, Mass::Unit::Undefined, { 0 }, Time::Unit::Undefined, { 0 }, ElectricCurrent::Unit::Undefined, { 0 }, Angle::Unit::Undefined, { 0 } } ;
+    return {
+        Length::Unit::Undefined,
+        {0},
+        Mass::Unit::Undefined,
+        {0},
+        Time::Unit::Undefined,
+        {0},
+        ElectricCurrent::Unit::Undefined,
+        {0},
+        Angle::Unit::Undefined,
+        {0}};
 }
 
-Derived::Unit                   Derived::Unit::SquareMeter                  ( )
+Derived::Unit Derived::Unit::SquareMeter()
 {
-    return { Length::Unit::Meter, { 2 }, Mass::Unit::Undefined, { 0 }, Time::Unit::Undefined, { 0 }, ElectricCurrent::Unit::Undefined, { 0 }, Angle::Unit::Undefined, { 0 } } ;
+    return {
+        Length::Unit::Meter,
+        {2},
+        Mass::Unit::Undefined,
+        {0},
+        Time::Unit::Undefined,
+        {0},
+        ElectricCurrent::Unit::Undefined,
+        {0},
+        Angle::Unit::Undefined,
+        {0}};
 }
 
-Derived::Unit                   Derived::Unit::CubicMeter                   ( )
+Derived::Unit Derived::Unit::CubicMeter()
 {
-    return { Length::Unit::Meter, { 3 }, Mass::Unit::Undefined, { 0 }, Time::Unit::Undefined, { 0 }, ElectricCurrent::Unit::Undefined, { 0 }, Angle::Unit::Undefined, { 0 } } ;
+    return {
+        Length::Unit::Meter,
+        {3},
+        Mass::Unit::Undefined,
+        {0},
+        Time::Unit::Undefined,
+        {0},
+        ElectricCurrent::Unit::Undefined,
+        {0},
+        Angle::Unit::Undefined,
+        {0}};
 }
 
-Derived::Unit                   Derived::Unit::Hertz                        ( )
+Derived::Unit Derived::Unit::Hertz()
 {
-    return { Length::Unit::Undefined, { 0 }, Mass::Unit::Undefined, { 0 }, Time::Unit::Second, { -1 }, ElectricCurrent::Unit::Undefined, { 0 }, Angle::Unit::Undefined, { 0 } } ;
+    return {
+        Length::Unit::Undefined,
+        {0},
+        Mass::Unit::Undefined,
+        {0},
+        Time::Unit::Second,
+        {-1},
+        ElectricCurrent::Unit::Undefined,
+        {0},
+        Angle::Unit::Undefined,
+        {0}};
 }
 
-Derived::Unit                   Derived::Unit::Watt                         ( )
+Derived::Unit Derived::Unit::Watt()
 {
-    return { Length::Unit::Meter, { 2 }, Mass::Unit::Kilogram, { 1 }, Time::Unit::Second, { -3 }, ElectricCurrent::Unit::Undefined, { 0 }, Angle::Unit::Undefined, { 0 } } ;
+    return {
+        Length::Unit::Meter,
+        {2},
+        Mass::Unit::Kilogram,
+        {1},
+        Time::Unit::Second,
+        {-3},
+        ElectricCurrent::Unit::Undefined,
+        {0},
+        Angle::Unit::Undefined,
+        {0}};
 }
 
-Derived::Unit                   Derived::Unit::Tesla                        ( )
+Derived::Unit Derived::Unit::Tesla()
 {
-    return { Length::Unit::Undefined, { 0 }, Mass::Unit::Kilogram, { 1 }, Time::Unit::Second, { -2 }, ElectricCurrent::Unit::Ampere, { -1 }, Angle::Unit::Undefined, { 0 } } ;
+    return {
+        Length::Unit::Undefined,
+        {0},
+        Mass::Unit::Kilogram,
+        {1},
+        Time::Unit::Second,
+        {-2},
+        ElectricCurrent::Unit::Ampere,
+        {-1},
+        Angle::Unit::Undefined,
+        {0}};
 }
 
-Derived::Unit                   Derived::Unit::Velocity                     (   const   Length::Unit&               aLengthUnit,
-                                                                                const   Time::Unit&                 aTimeUnit                                   )
+Derived::Unit Derived::Unit::Velocity(const Length::Unit& aLengthUnit, const Time::Unit& aTimeUnit)
 {
-    return { aLengthUnit, { 1 }, Mass::Unit::Undefined, { 0 }, aTimeUnit, { -1 }, ElectricCurrent::Unit::Undefined, { 0 }, Angle::Unit::Undefined, { 0 } } ;
+    return {
+        aLengthUnit,
+        {1},
+        Mass::Unit::Undefined,
+        {0},
+        aTimeUnit,
+        {-1},
+        ElectricCurrent::Unit::Undefined,
+        {0},
+        Angle::Unit::Undefined,
+        {0}};
 }
 
-Derived::Unit                   Derived::Unit::Acceleration                 (   const   Length::Unit&               aLengthUnit,
-                                                                                const   Time::Unit&                 aTimeUnit                                   )
+Derived::Unit Derived::Unit::Acceleration(const Length::Unit& aLengthUnit, const Time::Unit& aTimeUnit)
 {
-    return { aLengthUnit, { 1 }, Mass::Unit::Undefined, { 0 }, aTimeUnit, { -2 }, ElectricCurrent::Unit::Undefined, { 0 }, Angle::Unit::Undefined, { 0 } } ;
+    return {
+        aLengthUnit,
+        {1},
+        Mass::Unit::Undefined,
+        {0},
+        aTimeUnit,
+        {-2},
+        ElectricCurrent::Unit::Undefined,
+        {0},
+        Angle::Unit::Undefined,
+        {0}};
 }
 
-Derived::Unit                   Derived::Unit::GravitationalParameter       (   const   Length::Unit&               aLengthUnit,
-                                                                                const   Time::Unit&                 aTimeUnit                                   )
+Derived::Unit Derived::Unit::GravitationalParameter(const Length::Unit& aLengthUnit, const Time::Unit& aTimeUnit)
 {
-    return { aLengthUnit, { 3 }, Mass::Unit::Undefined, { 0 }, aTimeUnit, { -2 }, ElectricCurrent::Unit::Undefined, { 0 }, Angle::Unit::Undefined, { 0 } } ;
+    return {
+        aLengthUnit,
+        {3},
+        Mass::Unit::Undefined,
+        {0},
+        aTimeUnit,
+        {-2},
+        ElectricCurrent::Unit::Undefined,
+        {0},
+        Angle::Unit::Undefined,
+        {0}};
 }
 
-Derived::Unit                   Derived::Unit::AngularVelocity              (   const   Angle::Unit&                anAngleUnit,
-                                                                                const   Time::Unit&                 aTimeUnit                                   )
+Derived::Unit Derived::Unit::AngularVelocity(const Angle::Unit& anAngleUnit, const Time::Unit& aTimeUnit)
 {
-    return { Length::Unit::Undefined, { 0 }, Mass::Unit::Undefined, { 0 }, aTimeUnit, { -1 }, ElectricCurrent::Unit::Undefined, { 0 }, anAngleUnit, { 1 } } ;
+    return {
+        Length::Unit::Undefined,
+        {0},
+        Mass::Unit::Undefined,
+        {0},
+        aTimeUnit,
+        {-1},
+        ElectricCurrent::Unit::Undefined,
+        {0},
+        anAngleUnit,
+        {1}};
 }
 
-Derived::Unit                   Derived::Unit::MassDensity                  (   const   Mass::Unit&                 aMassUnit,
-                                                                                const   Length::Unit&               aLengthUnit                                 )
+Derived::Unit Derived::Unit::MassDensity(const Mass::Unit& aMassUnit, const Length::Unit& aLengthUnit)
 {
-    return { aLengthUnit, { -3 }, aMassUnit, { 1 }, Time::Unit::Undefined, { 0 }, ElectricCurrent::Unit::Undefined, { 0 }, Angle::Unit::Undefined, { 0 } } ;
+    return {
+        aLengthUnit,
+        {-3},
+        aMassUnit,
+        {1},
+        Time::Unit::Undefined,
+        {0},
+        ElectricCurrent::Unit::Undefined,
+        {0},
+        Angle::Unit::Undefined,
+        {0}};
 }
 
-// Derived::Unit                   Derived::Unit::Parse                        (   const   String&                     aString                                     )
+// Derived::Unit                   Derived::Unit::Parse                        (   const   String& aString )
 // {
 
 // }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                                Derived::Derived                            (   const   Real&                       aValue,
-                                                                                const   Derived::Unit&              aUnit                                       )
-                                :   units::Unit(units::Unit::Type::Derived, aValue),
-                                    unit_(aUnit)
+Derived::Derived(const Real& aValue, const Derived::Unit& aUnit)
+    : units::Unit(units::Unit::Type::Derived, aValue),
+      unit_(aUnit)
 {
-
 }
 
-Derived*                        Derived::clone                              ( ) const
+Derived* Derived::clone() const
 {
-    return new Derived(*this) ;
+    return new Derived(*this);
 }
 
-bool                            Derived::operator ==                        (   const   Derived&                    aDerivedUnit                                ) const
+bool Derived::operator==(const Derived& aDerivedUnit) const
 {
-
     if ((!unit_.isDefined()) || (!aDerivedUnit.unit_.isDefined()))
     {
-        return false ;
+        return false;
     }
 
-    return this->accessValue() == ((unit_ == aDerivedUnit.unit_) ? aDerivedUnit.accessValue() : aDerivedUnit.in(unit_)) ;
-
+    return this->accessValue() == ((unit_ == aDerivedUnit.unit_) ? aDerivedUnit.accessValue() : aDerivedUnit.in(unit_));
 }
 
-bool                            Derived::operator !=                        (   const   Derived&                    aDerivedUnit                                ) const
+bool Derived::operator!=(const Derived& aDerivedUnit) const
 {
-    return !((*this) == aDerivedUnit) ;
+    return !((*this) == aDerivedUnit);
 }
 
-std::ostream&                   operator <<                                 (           std::ostream&               anOutputStream,
-                                                                                const   Derived&                     aDerivedUnit                                     )
+std::ostream& operator<<(std::ostream& anOutputStream, const Derived& aDerivedUnit)
 {
+    ostk::core::utils::Print::Header(anOutputStream, "Derived");
 
-    ostk::core::utils::Print::Header(anOutputStream, "Derived") ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Value:" << aDerivedUnit.accessValue();
+    ostk::core::utils::Print::Line(anOutputStream) << "Unit:" << aDerivedUnit.unit_.toString();
 
-    ostk::core::utils::Print::Line(anOutputStream) << "Value:" << aDerivedUnit.accessValue() ;
-    ostk::core::utils::Print::Line(anOutputStream) << "Unit:" << aDerivedUnit.unit_.toString() ;
+    ostk::core::utils::Print::Footer(anOutputStream);
 
-    ostk::core::utils::Print::Footer(anOutputStream) ;
-
-    return anOutputStream ;
-
+    return anOutputStream;
 }
 
-bool                            Derived::isDefined                          ( ) const
+bool Derived::isDefined() const
 {
-    return units::Unit::isDefined() && unit_.isDefined() ;
+    return units::Unit::isDefined() && unit_.isDefined();
 }
 
-Derived::Unit                   Derived::getUnit                            ( ) const
+Derived::Unit Derived::getUnit() const
 {
-    return unit_ ;
+    return unit_;
 }
 
-Real                            Derived::in                                 (   const   Derived::Unit&              aUnit                                       ) const
+Real Derived::in(const Derived::Unit& aUnit) const
 {
-
     if (!this->isDefined())
     {
-        return Real::Undefined() ;
+        return Real::Undefined();
     }
 
     if (unit_ == aUnit)
     {
-        return this->accessValue() ;
+        return this->accessValue();
     }
 
     if (!unit_.isCompatibleWith(aUnit))
     {
-        throw ostk::core::error::RuntimeError("Cannot convert unit [" + unit_.toString() + "] to [" + aUnit.toString() + "].") ;
+        throw ostk::core::error::RuntimeError(
+            "Cannot convert unit [" + unit_.toString() + "] to [" + aUnit.toString() + "]."
+        );
     }
 
-    return this->accessValue() * Derived::SIRatio(unit_) / Derived::SIRatio(aUnit) ;
-
+    return this->accessValue() * Derived::SIRatio(unit_) / Derived::SIRatio(aUnit);
 }
 
-String                          Derived::toString                           (   const   Integer&                    aPrecision                                  ) const
+String Derived::toString(const Integer& aPrecision) const
 {
-
     if (!this->isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Derived") ;
+        throw ostk::core::error::runtime::Undefined("Derived");
     }
 
-    return this->accessValue().toString(aPrecision) + " [" + unit_.getSymbol() + "]" ;
-
+    return this->accessValue().toString(aPrecision) + " [" + unit_.getSymbol() + "]";
 }
 
-Derived                         Derived::Undefined                          ( )
+Derived Derived::Undefined()
 {
-    return { Real::Undefined(), Derived::Unit::Undefined() } ;
+    return {Real::Undefined(), Derived::Unit::Undefined()};
 }
 
-// Derived                         Derived::Parse                               (   const   String&                     aString                                     )
+// Derived                         Derived::Parse                               (   const   String& aString )
 // {
 
 // }
 
-String                          Derived::StringFromUnit                     (   const   Derived::Unit&              aUnit                                       )
+String Derived::StringFromUnit(const Derived::Unit& aUnit)
 {
-    return aUnit.toString() ;
+    return aUnit.toString();
 }
 
-String                          Derived::SymbolFromUnit                     (   const   Derived::Unit&              aUnit                                       )
+String Derived::SymbolFromUnit(const Derived::Unit& aUnit)
 {
-    return aUnit.getSymbol() ;
+    return aUnit.getSymbol();
 }
 
-Real                            Derived::SIRatio                            (   const   Derived::Unit&              aUnit                                       )
+Real Derived::SIRatio(const Derived::Unit& aUnit)
 {
-
-    Real ratio = 1.0 ;
+    Real ratio = 1.0;
 
     if (!aUnit.accessLengthOrder().isZero())
     {
-        ratio *= std::pow(Length(1.0, aUnit.accessLengthUnit()).in(Length::Unit::Meter), aUnit.accessLengthOrder().getValue()) ;
+        ratio *= std::pow(
+            Length(1.0, aUnit.accessLengthUnit()).in(Length::Unit::Meter), aUnit.accessLengthOrder().getValue()
+        );
     }
 
     if (!aUnit.accessMassOrder().isZero())
     {
-        ratio *= std::pow(Mass(1.0, aUnit.accessMassUnit()).in(Mass::Unit::Kilogram), aUnit.accessMassOrder().getValue()) ;
+        ratio *=
+            std::pow(Mass(1.0, aUnit.accessMassUnit()).in(Mass::Unit::Kilogram), aUnit.accessMassOrder().getValue());
     }
 
     if (!aUnit.accessTimeOrder().isZero())
     {
-        ratio *= std::pow(Time(1.0, aUnit.accessTimeUnit()).in(Time::Unit::Second), aUnit.accessTimeOrder().getValue()) ;
+        ratio *= std::pow(Time(1.0, aUnit.accessTimeUnit()).in(Time::Unit::Second), aUnit.accessTimeOrder().getValue());
     }
 
     if (!aUnit.accessElectricCurrentOrder().isZero())
     {
-        ratio *= std::pow(ElectricCurrent(1.0, aUnit.accessElectricCurrentUnit()).in(ElectricCurrent::Unit::Ampere), aUnit.accessElectricCurrentOrder().getValue()) ;
+        ratio *= std::pow(
+            ElectricCurrent(1.0, aUnit.accessElectricCurrentUnit()).in(ElectricCurrent::Unit::Ampere),
+            aUnit.accessElectricCurrentOrder().getValue()
+        );
     }
 
     if (!aUnit.accessAngleOrder().isZero())
     {
-        ratio *= std::pow(Angle(1.0, aUnit.accessAngleUnit()).in(Angle::Unit::Radian), aUnit.accessAngleOrder().getValue()) ;
+        ratio *=
+            std::pow(Angle(1.0, aUnit.accessAngleUnit()).in(Angle::Unit::Radian), aUnit.accessAngleOrder().getValue());
     }
 
-    return ratio ;
-
+    return ratio;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}
-}
-}
+}  // namespace units
+}  // namespace physics
+}  // namespace ostk
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

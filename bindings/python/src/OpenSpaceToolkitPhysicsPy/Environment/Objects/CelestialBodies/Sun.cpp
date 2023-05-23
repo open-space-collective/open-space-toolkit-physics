@@ -4,25 +4,22 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Sun (        pybind11::module& aModule                            )
+inline void OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Sun(pybind11::module& aModule)
 {
+    using namespace pybind11;
 
-    using namespace pybind11 ;
+    using ostk::core::types::Shared;
 
-    using ostk::core::types::Shared ;
-
-    using ostk::physics::time::Instant ;
-    using ostk::physics::env::Ephemeris ;
-    using ostk::physics::env::obj::Celestial ;
-    using ostk::physics::env::obj::celest::Sun ;
-    using SunGravitationalModel = ostk::physics::environment::gravitational::Sun ;
+    using ostk::physics::time::Instant;
+    using ostk::physics::env::Ephemeris;
+    using ostk::physics::env::obj::Celestial;
+    using ostk::physics::env::obj::celest::Sun;
+    using SunGravitationalModel = ostk::physics::environment::gravitational::Sun;
 
     {
-
         class_<Sun, Shared<Sun>, Celestial>(aModule, "Sun")
 
-            .def
-            (
+            .def(
                 init<const Shared<Ephemeris>&, const SunGravitationalModel::Type&, const Instant&>(),
                 arg("ephemeris"),
                 arg("gravitational_model_type"),
@@ -39,20 +36,16 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
             .def_static("default", &Sun::Default)
             .def_static("spherical", &Sun::Spherical)
 
-        ;
-
+            ;
     }
 
     {
-
         // Create "sun" python submodule
-        auto sun = aModule.def_submodule("sun") ;
+        auto sun = aModule.def_submodule("sun");
 
         // Add __path__ attribute for "moon" submodule
-        sun.attr("__path__") = "ostk.physics.environment.objects.celestial_bodies.sun" ;
-
+        sun.attr("__path__") = "ostk.physics.environment.objects.celestial_bodies.sun";
     }
-
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

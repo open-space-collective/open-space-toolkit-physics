@@ -4,12 +4,11 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers_IAU_Theory ( pybind11::module& aModule                                     )
+inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers_IAU_Theory(pybind11::module& aModule)
 {
+    using namespace pybind11;
 
-    using namespace pybind11 ;
-
-    using ostk::physics::coord::frame::providers::iau::Theory ;
+    using ostk::physics::coord::frame::providers::iau::Theory;
 
     enum_<Theory>(aModule, "Theory")
 
@@ -17,8 +16,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provi
         .value("IAU_2000B", Theory::IAU_2000B)
         .value("IAU_2006", Theory::IAU_2006)
 
-    ;
-
+        ;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

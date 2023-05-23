@@ -3,8 +3,8 @@
 #ifndef __OpenSpaceToolkit_Physics_Time_Date__
 #define __OpenSpaceToolkit_Physics_Time_Date__
 
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
 #include <OpenSpaceToolkit/Core/Types/Integer.hpp>
+#include <OpenSpaceToolkit/Core/Types/String.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -17,9 +17,9 @@ namespace time
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using ostk::core::types::Uint8 ;
-using ostk::core::types::Uint16 ;
-using ostk::core::types::String ;
+using ostk::core::types::Uint8;
+using ostk::core::types::Uint16;
+using ostk::core::types::String;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -27,203 +27,193 @@ using ostk::core::types::String ;
 
 class Date
 {
+   public:
+    /// @brief              Date format
 
-    public:
+    enum class Format
+    {
 
-        /// @brief              Date format
+        Undefined,  ///< Undefined format
+        Standard,   ///< Standard format (YYYY:MM:DD)
+        STK         ///< STK format (d Mon YYYY)
 
-        enum class Format
-        {
+    };
 
-            Undefined,          ///< Undefined format
-            Standard,           ///< Standard format (YYYY:MM:DD)
-            STK                 ///< STK format (d Mon YYYY)
+    /// @brief              Constructor
+    ///
+    /// @code
+    ///                     Date date(2018, 1, 2) ; // 2018-01-02
+    /// @endcode
+    ///
+    /// @param              [in] aYear A year (1400 - 9999)
+    /// @param              [in] aMonth A month (1 - 12)
+    /// @param              [in] aDay A day (1 - 31)
 
-        } ;
+    Date(Uint16 aYear, Uint8 aMonth, Uint8 aDay);
 
-        /// @brief              Constructor
-        ///
-        /// @code
-        ///                     Date date(2018, 1, 2) ; // 2018-01-02
-        /// @endcode
-        ///
-        /// @param              [in] aYear A year (1400 - 9999)
-        /// @param              [in] aMonth A month (1 - 12)
-        /// @param              [in] aDay A day (1 - 31)
+    /// @brief              Equal to operator
+    ///
+    /// @code
+    ///                     Date(2018, 1, 2) == Date(2018, 1, 2) ; // True
+    /// @endcode
+    ///
+    /// @param              [in] aDate A date
+    /// @return             True if dates are equal
 
-                                Date                                        (           Uint16                      aYear,
-                                                                                        Uint8                       aMonth,
-                                                                                        Uint8                       aDay                                        ) ;
+    bool operator==(const Date& aDate) const;
 
-        /// @brief              Equal to operator
-        ///
-        /// @code
-        ///                     Date(2018, 1, 2) == Date(2018, 1, 2) ; // True
-        /// @endcode
-        ///
-        /// @param              [in] aDate A date
-        /// @return             True if dates are equal
+    /// @brief              Not equal to operator
+    ///
+    /// @code
+    ///                     Date(2018, 1, 2) != Date(2018, 1, 1) ; // True
+    /// @endcode
+    ///
+    /// @param              [in] aDate A date
+    /// @return             True if dates are not equal
 
-        bool                    operator ==                                 (   const   Date&                       aDate                                       ) const ;
+    bool operator!=(const Date& aDate) const;
 
-        /// @brief              Not equal to operator
-        ///
-        /// @code
-        ///                     Date(2018, 1, 2) != Date(2018, 1, 1) ; // True
-        /// @endcode
-        ///
-        /// @param              [in] aDate A date
-        /// @return             True if dates are not equal
+    /// @brief              Output stream operator
+    ///
+    /// @code
+    ///                     std::cout << Date(2018, 1, 2) ;
+    /// @endcode
+    ///
+    /// @param              [in] anOutputStream An output stream
+    /// @param              [in] aDate A date
+    /// @return             A reference to output stream
 
-        bool                    operator !=                                 (   const   Date&                       aDate                                       ) const ;
+    friend std::ostream& operator<<(std::ostream& anOutputStream, const Date& aDate);
 
-        /// @brief              Output stream operator
-        ///
-        /// @code
-        ///                     std::cout << Date(2018, 1, 2) ;
-        /// @endcode
-        ///
-        /// @param              [in] anOutputStream An output stream
-        /// @param              [in] aDate A date
-        /// @return             A reference to output stream
+    /// @brief              Check if date is defined
+    ///
+    /// @code
+    ///                     Date(2018, 1, 2).isDefined() ; // True
+    /// @endcode
+    ///
+    /// @return             True if date is defined
 
-        friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
-                                                                                const   Date&                       aDate                                       ) ;
+    bool isDefined() const;
 
-        /// @brief              Check if date is defined
-        ///
-        /// @code
-        ///                     Date(2018, 1, 2).isDefined() ; // True
-        /// @endcode
-        ///
-        /// @return             True if date is defined
+    /// @brief              Get year (1400 - 9999)
+    ///
+    /// @return             Year
 
-        bool                    isDefined                                   ( ) const ;
+    Uint16 getYear() const;
 
-        /// @brief              Get year (1400 - 9999)
-        ///
-        /// @return             Year
+    /// @brief              Get month (1 - 12)
+    ///
+    /// @return             Month
 
-        Uint16                  getYear                                     ( ) const ;
+    Uint8 getMonth() const;
 
-        /// @brief              Get month (1 - 12)
-        ///
-        /// @return             Month
+    /// @brief              Get day (1 - 31)
+    ///
+    /// @return             Day
 
-        Uint8                   getMonth                                    ( ) const ;
+    Uint8 getDay() const;
 
-        /// @brief              Get day (1 - 31)
-        ///
-        /// @return             Day
+    /// @brief              Get string representation of date
+    ///
+    /// @code
+    ///                     Date(2018, 1, 2).toString() ; // 2018-01-02
+    /// @endcode
+    ///
+    /// @param              [in] (optional) aFormat A date format
+    /// @return             Serialized date
 
-        Uint8                   getDay                                      ( ) const ;
+    String toString(const Date::Format& aFormat = Date::Format::Standard) const;
 
-        /// @brief              Get string representation of date
-        ///
-        /// @code
-        ///                     Date(2018, 1, 2).toString() ; // 2018-01-02
-        /// @endcode
-        ///
-        /// @param              [in] (optional) aFormat A date format
-        /// @return             Serialized date
+    /// @brief              Set year
+    ///
+    /// @param              [in] aYear A year (1400 - 9999)
 
-        String                  toString                                    (   const   Date::Format&               aFormat                                     =   Date::Format::Standard ) const ;
+    void setYear(Uint16 aYear);
 
-        /// @brief              Set year
-        ///
-        /// @param              [in] aYear A year (1400 - 9999)
+    /// @brief              Set month
+    ///
+    /// @param              [in] aMonth A month (1 - 12)
 
-        void                    setYear                                     (           Uint16                      aYear                                       ) ;
+    void setMonth(Uint8 aMonth);
 
-        /// @brief              Set month
-        ///
-        /// @param              [in] aMonth A month (1 - 12)
+    /// @brief              Set day
+    ///
+    /// @param              [in] aDay A day (1 - 31)
 
-        void                    setMonth                                    (           Uint8                       aMonth                                      ) ;
+    void setDay(Uint8 aDay);
 
-        /// @brief              Set day
-        ///
-        /// @param              [in] aDay A day (1 - 31)
+    /// @brief              Constructs an undefined date
+    ///
+    /// @code
+    ///                     Date date = Date::Undefined() ;
+    ///                     date.isDefined() ; // False
+    /// @endcode
+    ///
+    /// @return             Undefined date
 
-        void                    setDay                                      (           Uint8                       aDay                                        ) ;
+    static Date Undefined();
 
-        /// @brief              Constructs an undefined date
-        ///
-        /// @code
-        ///                     Date date = Date::Undefined() ;
-        ///                     date.isDefined() ; // False
-        /// @endcode
-        ///
-        /// @return             Undefined date
+    /// @brief              J2000 epoch (2000-01-01)
+    ///
+    /// @ref                https://en.wikipedia.org/wiki/Epoch_(astronomy)#Julian_years_and_J2000
+    ///
+    /// @return             Date at J2000 epoch
 
-        static Date             Undefined                                   ( ) ;
+    static Date J2000();
 
-        /// @brief              J2000 epoch (2000-01-01)
-        ///
-        /// @ref                https://en.wikipedia.org/wiki/Epoch_(astronomy)#Julian_years_and_J2000
-        ///
-        /// @return             Date at J2000 epoch
+    /// @brief              GPS epoch (1980-01-06)
+    ///
+    /// @ref                http://tycho.usno.navy.mil/gpstt.html
+    ///
+    /// @return             Date at GPS epoch
 
-        static Date             J2000                                       ( ) ;
+    static Date GPSEpoch();
 
-        /// @brief              GPS epoch (1980-01-06)
-        ///
-        /// @ref                http://tycho.usno.navy.mil/gpstt.html
-        ///
-        /// @return             Date at GPS epoch
+    /// @brief              Unix epoch (1970-01-01)
+    ///
+    /// @ref                https://en.wikipedia.org/wiki/Unix_time
+    ///
+    /// @return             Date at Unix epoch
 
-        static Date             GPSEpoch                                    ( ) ;
+    static Date UnixEpoch();
 
-        /// @brief              Unix epoch (1970-01-01)
-        ///
-        /// @ref                https://en.wikipedia.org/wiki/Unix_time
-        ///
-        /// @return             Date at Unix epoch
+    /// @brief              Modified julian dates epoch (1858-11-17)
+    ///
+    /// @ref                https://en.wikipedia.org/wiki/Julian_day
+    ///
+    /// @return             Date at Modified Julian epoch
 
-        static Date             UnixEpoch                                   ( ) ;
+    static Date ModifiedJulianDateEpoch();
 
-        /// @brief              Modified julian dates epoch (1858-11-17)
-        ///
-        /// @ref                https://en.wikipedia.org/wiki/Julian_day
-        ///
-        /// @return             Date at Modified Julian epoch
+    /// @brief              Constructs a date from a string representation
+    ///
+    /// @code
+    ///                     Date date = Date::Parse("2018-01-02") ; // 2018-01-02
+    /// @endcode
+    ///
+    /// @param              [in] aString A string
+    /// @param              [in] (optional) aFormat A date format
+    /// @return             Date
 
-        static Date             ModifiedJulianDateEpoch                     ( ) ;
+    static Date Parse(const String& aString, const Date::Format& aFormat = Date::Format::Undefined);
 
-        /// @brief              Constructs a date from a string representation
-        ///
-        /// @code
-        ///                     Date date = Date::Parse("2018-01-02") ; // 2018-01-02
-        /// @endcode
-        ///
-        /// @param              [in] aString A string
-        /// @param              [in] (optional) aFormat A date format
-        /// @return             Date
+   private:
+    bool defined_;
 
-        static Date             Parse                                       (   const   String&                     aString,
-                                                                                const   Date::Format&               aFormat                                     =   Date::Format::Undefined ) ;
+    Uint16 year_;
+    Uint8 month_;
+    Uint8 day_;
 
-    private:
+    Date();
 
-        bool                    defined_ ;
-
-        Uint16                  year_ ;
-        Uint8                   month_ ;
-        Uint8                   day_ ;
-
-                                Date                                        ( ) ;
-
-        static void             ValidateDate                                (           Uint16                      aYear,
-                                                                                        Uint8                       aMonth,
-                                                                                        Uint8                       aDay                                        ) ;
-
-} ;
+    static void ValidateDate(Uint16 aYear, Uint8 aMonth, Uint8 aDay);
+};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}
-}
-}
+}  // namespace time
+}  // namespace physics
+}  // namespace ostk
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

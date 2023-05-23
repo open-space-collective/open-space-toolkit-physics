@@ -4,9 +4,9 @@
 #define __OpenSpaceToolkit_Physics_Units_Unit__
 
 #include <OpenSpaceToolkit/Core/Containers/Pair.hpp>
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
 #include <OpenSpaceToolkit/Core/Types/Integer.hpp>
+#include <OpenSpaceToolkit/Core/Types/Real.hpp>
+#include <OpenSpaceToolkit/Core/Types/String.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -19,10 +19,10 @@ namespace units
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using ostk::core::types::Integer ;
-using ostk::core::types::Real ;
-using ostk::core::types::String ;
-using ostk::core::ctnr::Pair ;
+using ostk::core::types::Integer;
+using ostk::core::types::Real;
+using ostk::core::types::String;
+using ostk::core::ctnr::Pair;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -31,72 +31,66 @@ using ostk::core::ctnr::Pair ;
 /// @ref                        https://en.wikipedia.org/wiki/SI_base_unit
 ///
 /// @note                       Could be (greatly) improved using templating...
-/// @note                       https://benjaminjurke.com/content/articles/2015/compile-time-numerical-unit-dimension-checking/
+/// @note https://benjaminjurke.com/content/articles/2015/compile-time-numerical-unit-dimension-checking/
 /// @note                       https://github.com/nholthaus/units
 /// @note                       https://www.boost.org/doc/libs/1_67_0/doc/html/boost_units.html
 
 class Unit
 {
+   public:
+    enum class Type
+    {
 
-    public:
+        Undefined,
+        Length,
+        Mass,
+        Time,
+        Temperature,
+        ElectricCurrent,
+        LuminousIntensity,
+        Derived
 
-        enum class Type
-        {
+    };
 
-            Undefined,
-            Length,
-            Mass,
-            Time,
-            Temperature,
-            ElectricCurrent,
-            LuminousIntensity,
-            Derived
+    Unit(const Unit::Type& aType, const Real& aValue);
 
-        } ;
+    virtual ~Unit() = 0;
 
-                                Unit                                        (   const   Unit::Type&                 aType,
-                                                                                const   Real&                       aValue                                      ) ;
+    virtual Unit* clone() const = 0;
 
-        virtual                 ~Unit                                       ( ) = 0 ;
+    bool operator==(const Unit& aUnit) const;
 
-        virtual Unit*           clone                                       ( ) const = 0 ;
+    bool operator!=(const Unit& aUnit) const;
 
-        bool                    operator ==                                 (   const   Unit&                       aUnit                                       ) const ;
+    virtual bool isDefined() const;
 
-        bool                    operator !=                                 (   const   Unit&                       aUnit                                       ) const ;
+    bool isZero() const;
 
-        virtual bool            isDefined                                   ( ) const ;
+    const Real& accessValue() const;
 
-        bool                    isZero                                      ( ) const ;
+    Unit::Type getType() const;
 
-        const Real&             accessValue                                 ( ) const ;
+    Real getValue() const;
 
-        Unit::Type              getType                                     ( ) const ;
+    virtual String toString(const Integer& aPrecision = Integer::Undefined()) const = 0;
 
-        Real                    getValue                                    ( ) const ;
+    Real& accessValue();
 
-        virtual String          toString                                    (   const   Integer&                    aPrecision                                  =   Integer::Undefined() ) const = 0 ;
+    void setValue(const Real& aValue);
 
-        Real&                   accessValue                                 ( ) ;
+   protected:
+    static Pair<Real, String> ParseString(const String& aString);
 
-        void                    setValue                                    (   const   Real&                       aValue                                      ) ;
-
-    protected:
-
-        static Pair<Real, String> ParseString                               (   const   String&                     aString                                     ) ;
-
-    private:
-
-        Unit::Type              type_ ;
-        Real                    value_ ;
-
-} ;
+   private:
+    Unit::Type type_;
+    Real value_;
+};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}
-}
-}
+}  // namespace units
+}  // namespace physics
+}  // namespace ostk
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

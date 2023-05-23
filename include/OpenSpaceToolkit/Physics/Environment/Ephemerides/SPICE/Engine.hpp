@@ -3,24 +3,24 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Engine__
 #define __OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Engine__
 
-#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Kernel.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE.hpp>
-#include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
-#include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
-#include <OpenSpaceToolkit/Physics/Time/Interval.hpp>
-#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+#include <mutex>
+#include <unordered_set>
 
+#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
+#include <OpenSpaceToolkit/Core/Containers/Pair.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
-#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
-#include <OpenSpaceToolkit/Core/Containers/Pair.hpp>
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
 #include <OpenSpaceToolkit/Core/Types/Index.hpp>
 #include <OpenSpaceToolkit/Core/Types/Shared.hpp>
+#include <OpenSpaceToolkit/Core/Types/String.hpp>
 
-#include <mutex>
-#include <unordered_set>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Kernel.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Interval.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -41,21 +41,21 @@ namespace spice
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using ostk::core::types::Shared ;
-using ostk::core::types::Index ;
-using ostk::core::types::String ;
-using ostk::core::ctnr::Pair ;
-using ostk::core::ctnr::Array ;
-using ostk::core::fs::Path ;
-using ostk::core::fs::File ;
-using ostk::core::fs::Directory ;
+using ostk::core::types::Shared;
+using ostk::core::types::Index;
+using ostk::core::types::String;
+using ostk::core::ctnr::Pair;
+using ostk::core::ctnr::Array;
+using ostk::core::fs::Path;
+using ostk::core::fs::File;
+using ostk::core::fs::Directory;
 
-using ostk::physics::time::Instant ;
-using ostk::physics::time::Interval ;
-using ostk::physics::coord::Frame ;
-using ostk::physics::coord::Transform ;
-using ostk::physics::env::ephem::SPICE ;
-using ostk::physics::env::ephem::spice::Kernel ;
+using ostk::physics::time::Instant;
+using ostk::physics::time::Interval;
+using ostk::physics::coord::Frame;
+using ostk::physics::coord::Transform;
+using ostk::physics::env::ephem::SPICE;
+using ostk::physics::env::ephem::spice::Kernel;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -67,145 +67,137 @@ using ostk::physics::env::ephem::spice::Kernel ;
 
 class Engine
 {
+   public:
+    /// @brief              Engine mode
 
-    public:
+    enum class Mode
+    {
 
-        /// @brief              Engine mode
+        Manual,    ///< Manually load and unload kernels
+        Automatic  ///< Automatically fetch, load and unload kernels (from remote repositories)
 
-        enum class Mode
-        {
+    };
 
-            Manual,             ///< Manually load and unload kernels
-            Automatic           ///< Automatically fetch, load and unload kernels (from remote repositories)
+    /// @brief              Copy constructor (deleted)
 
-        } ;
+    Engine(const Engine& aSpiceEngine) = delete;
 
-        /// @brief              Copy constructor (deleted)
+    /// @brief              Copy assignment operator (deleted)
 
-                                Engine                                      (   const   Engine&                     aSpiceEngine                                ) = delete ;
+    Engine& operator=(const Engine& aSpiceEngine) = delete;
 
-        /// @brief              Copy assignment operator (deleted)
+    /// @brief              Output stream operator
+    ///
+    /// @param              [in] anOutputStream An output stream
+    /// @param              [in] anEngine A SPICE engine
+    /// @return             A reference to output stream
 
-        Engine&                 operator =                                  (   const   Engine&                     aSpiceEngine                                ) = delete ;
+    friend std::ostream& operator<<(std::ostream& anOutputStream, const Engine& anEngine);
 
-        /// @brief              Output stream operator
-        ///
-        /// @param              [in] anOutputStream An output stream
-        /// @param              [in] anEngine A SPICE engine
-        /// @return             A reference to output stream
+    /// @brief              Returns true if kernel is loaded
+    ///
+    /// @param              [in] aKernel A kernel
+    /// @return             True if kernel is loaded
 
-        friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
-                                                                                const   Engine&                     anEngine                                    ) ;
+    bool isKernelLoaded(const Kernel& aKernel) const;
 
-        /// @brief              Returns true if kernel is loaded
-        ///
-        /// @param              [in] aKernel A kernel
-        /// @return             True if kernel is loaded
+    /// @brief              Get engine mode
+    ///
+    /// @return             Engine mode
 
-        bool                    isKernelLoaded                              (   const   Kernel&                     aKernel                                     ) const ;
+    Engine::Mode getMode() const;
 
-        /// @brief              Get engine mode
-        ///
-        /// @return             Engine mode
+    /// @brief              Get frame of SPICE object
+    ///
+    /// @param              [in] A SPICE object
+    /// @return             Frame of SPICE object
 
-        Engine::Mode            getMode                                     ( ) const ;
+    Shared<const Frame> getFrameOf(const SPICE::Object& aSpiceObject) const;
 
-        /// @brief              Get frame of SPICE object
-        ///
-        /// @param              [in] A SPICE object
-        /// @return             Frame of SPICE object
+    /// @brief              Set engine mode
+    ///
+    /// @param              [in] aMode An engine mode
+    /// @return             Engine mode
 
-        Shared<const Frame>     getFrameOf                                  (   const   SPICE::Object&              aSpiceObject                                ) const ;
+    void setMode(const Engine::Mode& aMode);
 
-        /// @brief              Set engine mode
-        ///
-        /// @param              [in] aMode An engine mode
-        /// @return             Engine mode
+    /// @brief              Load kernel
+    ///
+    /// @param              [in] aKernel A kernel
 
-        void                    setMode                                     (   const   Engine::Mode&               aMode                                       ) ;
+    void loadKernel(const Kernel& aKernel);
 
-        /// @brief              Load kernel
-        ///
-        /// @param              [in] aKernel A kernel
+    /// @brief              Unload kernel
+    ///
+    /// @param              [in] aKernel
 
-        void                    loadKernel                                  (   const   Kernel&                     aKernel                                     ) ;
+    void unloadKernel(const Kernel& aKernel);
 
-        /// @brief              Unload kernel
-        ///
-        /// @param              [in] aKernel
+    /// @brief              Reset engine
+    ///
+    ///                     Unload all kernels and clear cache.
 
-        void                    unloadKernel                                (   const   Kernel&                     aKernel                                     ) ;
+    void reset();
 
-        /// @brief              Reset engine
-        ///
-        ///                     Unload all kernels and clear cache.
+    /// @brief              Get engine singleton
+    ///
+    /// @return             Reference to engine
 
-        void                    reset                                       ( ) ;
+    static Engine& Get();
 
-        /// @brief              Get engine singleton
-        ///
-        /// @return             Reference to engine
+    /// @brief              Get default engine mode
+    ///
+    ///                     Overriden by: OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_ENGINE_MODE
+    ///
+    /// @return             Default engine mode
 
-        static Engine&          Get                                         ( ) ;
+    static Engine::Mode DefaultMode();
 
-        /// @brief              Get default engine mode
-        ///
-        ///                     Overriden by: OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_ENGINE_MODE
-        ///
-        /// @return             Default engine mode
+    /// @brief              Get default kernels
+    ///
+    /// @param              [in] aLocalRepository A local repository
+    /// @return             Default kernels
 
-        static Engine::Mode     DefaultMode                                 ( ) ;
+    static Array<Kernel> DefaultKernels(const Directory& aLocalRepository);
 
-        /// @brief              Get default kernels
-        ///
-        /// @param              [in] aLocalRepository A local repository
-        /// @return             Default kernels
+   private:
+    Engine::Mode mode_;
 
-        static Array<Kernel>    DefaultKernels                              (   const   Directory&                  aLocalRepository                            ) ;
+    std::unordered_set<Kernel> kernelSet_;
 
-    private:
+    Array<Pair<Interval, const Kernel*>> earthKernelCache_;
+    mutable Index earthKernelCacheIndex_;
 
-        Engine::Mode            mode_ ;
+    mutable std::mutex mutex_;
 
-        std::unordered_set<Kernel> kernelSet_ ;
+    Engine(const Engine::Mode& aMode = Engine::DefaultMode());
 
-        Array<Pair<Interval, const Kernel*>> earthKernelCache_ ;
-        mutable Index           earthKernelCacheIndex_ ;
+    bool isKernelLoaded_(const Kernel& aKernel) const;
 
-        mutable std::mutex      mutex_ ;
+    Transform getTransformAt(const String& aSpiceIdentifier, const String& aFrameName, const Instant& anInstant) const;
 
-                                Engine                                      (   const   Engine::Mode&               aMode                                       =   Engine::DefaultMode() ) ;
+    void setup();
 
-        bool                    isKernelLoaded_                             (   const   Kernel&                     aKernel                                     ) const ;
+    void manageKernels(const String& aSpiceIdentifier, const Instant& anInstant) const;
 
-        Transform               getTransformAt                              (   const   String&                     aSpiceIdentifier,
-                                                                                const   String&                     aFrameName,
-                                                                                const   Instant&                    anInstant                                   ) const ;
+    void loadKernel_(const Kernel& aKernel);
 
-        void                    setup                                       ( ) ;
+    void unloadKernel_(const Kernel& aKernel);
 
-        void                    manageKernels                               (   const   String&                     aSpiceIdentifier,
-                                                                                const   Instant&                    anInstant                                   ) const ;
+    void updateEarthKernelCache();
 
-        void                    loadKernel_                                 (   const   Kernel&                     aKernel                                     ) ;
+    static String SpiceIdentifierFromSpiceObject(const SPICE::Object& aSpiceObject);
 
-        void                    unloadKernel_                               (   const   Kernel&                     aKernel                                     ) ;
-
-        void                    updateEarthKernelCache                      ( ) ;
-
-        static String           SpiceIdentifierFromSpiceObject              (   const   SPICE::Object&              aSpiceObject                                ) ;
-
-        static String           FrameNameFromSpiceObject                    (   const   SPICE::Object&              aSpiceObject                                ) ;
-
-} ;
+    static String FrameNameFromSpiceObject(const SPICE::Object& aSpiceObject);
+};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}
-}
-}
-}
-}
+}  // namespace spice
+}  // namespace ephem
+}  // namespace env
+}  // namespace physics
+}  // namespace ostk
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

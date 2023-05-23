@@ -4,14 +4,13 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA (        pybind11::module&       aModule                                     )
+inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module& aModule)
 {
+    using namespace pybind11;
 
-    using namespace pybind11 ;
-
-    using ostk::physics::units::Length ;
-    using ostk::physics::units::Angle ;
-    using ostk::physics::coord::spherical::LLA ;
+    using ostk::physics::units::Length;
+    using ostk::physics::units::Angle;
+    using ostk::physics::coord::spherical::LLA;
 
     class_<LLA>(aModule, "LLA")
 
@@ -34,10 +33,15 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_L
 
         .def_static("undefined", &LLA::Undefined)
         .def_static("vector", &LLA::Vector, arg("vector"))
-        .def_static("cartesian", &LLA::Cartesian, arg("cartesian_coordinates"), arg("ellipsoid_equatorial_radius"), arg("ellipsoid_flattening"))
+        .def_static(
+            "cartesian",
+            &LLA::Cartesian,
+            arg("cartesian_coordinates"),
+            arg("ellipsoid_equatorial_radius"),
+            arg("ellipsoid_flattening")
+        )
 
-    ;
-
+        ;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -3,11 +3,11 @@
 #ifndef __OpenSpaceToolkit_Physics_Units_ElectricCurrent__
 #define __OpenSpaceToolkit_Physics_Units_ElectricCurrent__
 
-#include <OpenSpaceToolkit/Physics/Units/Unit.hpp>
-
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
 #include <OpenSpaceToolkit/Core/Types/Integer.hpp>
+#include <OpenSpaceToolkit/Core/Types/Real.hpp>
+#include <OpenSpaceToolkit/Core/Types/String.hpp>
+
+#include <OpenSpaceToolkit/Physics/Units/Unit.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -20,9 +20,9 @@ namespace units
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using ostk::core::types::Integer ;
-using ostk::core::types::Real ;
-using ostk::core::types::String ;
+using ostk::core::types::Integer;
+using ostk::core::types::Real;
+using ostk::core::types::String;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -32,64 +32,59 @@ using ostk::core::types::String ;
 
 class ElectricCurrent : public Unit
 {
+   public:
+    enum class Unit
+    {
 
-    public:
+        Undefined,  ///< Undefined
+        Ampere      ///< Ampere (SI)
 
-        enum class Unit
-        {
+    };
 
-            Undefined,          ///< Undefined
-            Ampere              ///< Ampere (SI)
+    /// @brief              Constructor
+    ///
+    /// @code
+    ///                     ElectricCurrent electricCurrent { 1.0, ElectricCurrent::Unit::Ampere } ;
+    /// @endcode
+    ///
+    /// @param              [in] aValue A value
+    /// @param              [in] aUnit An electric current unit
 
-        } ;
+    ElectricCurrent(const Real& aValue, const ElectricCurrent::Unit& aUnit);
 
-        /// @brief              Constructor
-        ///
-        /// @code
-        ///                     ElectricCurrent electricCurrent { 1.0, ElectricCurrent::Unit::Ampere } ;
-        /// @endcode
-        ///
-        /// @param              [in] aValue A value
-        /// @param              [in] aUnit An electric current unit
+    virtual ElectricCurrent* clone() const override;
 
-                                ElectricCurrent                             (   const   Real&                       aValue,
-                                                                                const   ElectricCurrent::Unit&      aUnit                                       ) ;
+    virtual bool isDefined() const override;
 
-        virtual ElectricCurrent* clone                                      ( ) const override ;
+    ElectricCurrent::Unit getUnit() const;
 
-        virtual bool            isDefined                                   ( ) const override ;
+    Real in(const ElectricCurrent::Unit& aUnit) const;
 
-        ElectricCurrent::Unit   getUnit                                     ( ) const ;
+    Real inAmperes() const;
 
-        Real                    in                                          (   const   ElectricCurrent::Unit&      aUnit                                       ) const ;
+    virtual String toString(const Integer& aPrecision = Integer::Undefined()) const override;
 
-        Real                    inAmperes                                   ( ) const ;
+    static ElectricCurrent Undefined();
 
-        virtual String          toString                                    (   const   Integer&                    aPrecision                                  =   Integer::Undefined() ) const override ;
+    static ElectricCurrent Amperes(const Real& aValue);
 
-        static ElectricCurrent  Undefined                                   ( ) ;
+    static ElectricCurrent Parse(const String& aString);
 
-        static ElectricCurrent  Amperes                                     (   const   Real&                       aValue                                      ) ;
+    static String StringFromUnit(const ElectricCurrent::Unit& aUnit);
 
-        static ElectricCurrent  Parse                                       (   const   String&                     aString                                     ) ;
+    static String SymbolFromUnit(const ElectricCurrent::Unit& aUnit);
 
-        static String           StringFromUnit                              (   const   ElectricCurrent::Unit&      aUnit                                       ) ;
+   private:
+    ElectricCurrent::Unit unit_;
 
-        static String           SymbolFromUnit                              (   const   ElectricCurrent::Unit&      aUnit                                       ) ;
-
-    private:
-
-        ElectricCurrent::Unit   unit_ ;
-
-        static Real             SIRatio                                     (   const   ElectricCurrent::Unit&      aUnit                                       ) ;
-
-} ;
+    static Real SIRatio(const ElectricCurrent::Unit& aUnit);
+};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}
-}
-}
+}  // namespace units
+}  // namespace physics
+}  // namespace ostk
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -3,15 +3,15 @@
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Frame_Manager__
 #define __OpenSpaceToolkit_Physics_Coordinate_Frame_Manager__
 
-#include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
-#include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
-#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+#include <mutex>
 
 #include <OpenSpaceToolkit/Core/Containers/Map.hpp>
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
 #include <OpenSpaceToolkit/Core/Types/Shared.hpp>
+#include <OpenSpaceToolkit/Core/Types/String.hpp>
 
-#include <mutex>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -26,13 +26,13 @@ namespace frame
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using ostk::core::types::Shared ;
-using ostk::core::types::String ;
-using ostk::core::ctnr::Map ;
+using ostk::core::types::Shared;
+using ostk::core::types::String;
+using ostk::core::ctnr::Map;
 
-using ostk::physics::time::Instant ;
-using ostk::physics::coord::Frame ;
-using ostk::physics::coord::Transform ;
+using ostk::physics::time::Instant;
+using ostk::physics::coord::Frame;
+using ostk::physics::coord::Transform;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -40,50 +40,48 @@ using ostk::physics::coord::Transform ;
 
 class Manager
 {
+   public:
+    Manager(const Manager& aManager) = delete;
 
-    public:
+    Manager& operator=(const Manager& aManager) = delete;
 
-                                Manager                                     (   const   Manager&                    aManager                                    ) = delete ;
+    bool hasFrameWithName(const String& aFrameName) const;
 
-        Manager&                operator =                                  (   const   Manager&                    aManager                                    ) = delete ;
+    Shared<const Frame> accessFrameWithName(const String& aFrameName) const;
 
-        bool                    hasFrameWithName                            (   const   String&                     aFrameName                                  ) const ;
+    const Transform* accessCachedTransform(
+        const Shared<const Frame>& aFromFrameSPtr, const Shared<const Frame>& aToFrameSPtr, const Instant& anInstant
+    ) const;
 
-        Shared<const Frame>     accessFrameWithName                         (   const   String&                     aFrameName                                  ) const ;
+    void addFrame(const Shared<const Frame>& aFrameSPtr);
 
-        const Transform*        accessCachedTransform                       (   const   Shared<const Frame>&        aFromFrameSPtr,
-                                                                                const   Shared<const Frame>&        aToFrameSPtr,
-                                                                                const   Instant&                    anInstant                                   ) const ;
+    void removeFrameWithName(const String& aFrameName);
 
-        void                    addFrame                                    (   const   Shared<const Frame>&        aFrameSPtr                                  ) ;
+    void addCachedTransform(
+        const Shared<const Frame>& aFromFrameSPtr,
+        const Shared<const Frame>& aToFrameSPtr,
+        const Instant& anInstant,
+        const Transform& aTransform
+    );
 
-        void                    removeFrameWithName                         (   const   String&                     aFrameName                                  ) ;
+    static Manager& Get();
 
-        void                    addCachedTransform                          (   const   Shared<const Frame>&        aFromFrameSPtr,
-                                                                                const   Shared<const Frame>&        aToFrameSPtr,
-                                                                                const   Instant&                    anInstant,
-                                                                                const   Transform&                  aTransform                                  ) ;
+   private:
+    Map<String, Shared<const Frame>> frameMap_;
 
-        static Manager&         Get                                         ( ) ;
+    Map<const Frame*, Map<const Frame*, Map<Instant, Transform>>> transformCache_;
 
-    private:
+    mutable std::mutex mutex_;
 
-        Map<String, Shared<const Frame>> frameMap_ ;
-
-        Map<const Frame*, Map<const Frame*, Map<Instant, Transform>>> transformCache_ ;
-
-        mutable std::mutex      mutex_ ;
-
-                                Manager                                     ( ) = default ;
-
-} ;
+    Manager() = default;
+};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}
-}
-}
-}
+}  // namespace frame
+}  // namespace coord
+}  // namespace physics
+}  // namespace ostk
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

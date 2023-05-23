@@ -3,11 +3,11 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Gravitational_Spherical__
 #define __OpenSpaceToolkit_Physics_Environment_Gravitational_Spherical__
 
+#include <OpenSpaceToolkit/Core/Types/Real.hpp>
+
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Derived.hpp>
-
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -22,11 +22,11 @@ namespace gravitational
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using ostk::core::types::Real ;
+using ostk::core::types::Real;
 
-using ostk::physics::units::Derived ;
-using ostk::physics::time::Instant ;
-using ostk::physics::environment::gravitational::Model ;
+using ostk::physics::units::Derived;
+using ostk::physics::time::Instant;
+using ostk::physics::environment::gravitational::Model;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -34,42 +34,37 @@ using ostk::physics::environment::gravitational::Model ;
 
 class Spherical : public Model
 {
+   public:
+    /// @brief              Constructor
+    ///
+    /// @param              [in] aGravitationalParameter A gravitational parameter
 
-    public:
+    Spherical(const Derived& aGravitationalParameter);
 
-        /// @brief              Constructor
-        ///
-        /// @param              [in] aGravitationalParameter A gravitational parameter
+    /// @brief              Clone the spherical gravitational model
+    ///
+    /// @return             Pointer to spherical gravitational model
 
-                                Spherical                                   (   const   Derived&                    aGravitationalParameter                     ) ;
+    virtual Spherical* clone() const override;
 
-        /// @brief              Clone the spherical gravitational model
-        ///
-        /// @return             Pointer to spherical gravitational model
+    /// @brief              Get the gravitational field value at a given position and instant
+    ///
+    /// @param              [in] aPosition A position, expressed in the gravitational object frame [m]
+    /// @param              [in] anInstant An instant
+    /// @return             Gravitational field value, expressed in the gravitational object frame [m.s-2]
 
-        virtual Spherical*      clone                                       ( ) const override ;
+    virtual Vector3d getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const override;
 
-        /// @brief              Get the gravitational field value at a given position and instant
-        ///
-        /// @param              [in] aPosition A position, expressed in the gravitational object frame [m]
-        /// @param              [in] anInstant An instant
-        /// @return             Gravitational field value, expressed in the gravitational object frame [m.s-2]
-
-        virtual Vector3d        getFieldValueAt                             (   const   Vector3d&                   aPosition,
-                                                                                const   Instant&                    anInstant                                   ) const override ;
-
-    private:
-
-        Real                    gravitationalParameter_SI_ ;
-
-} ;
+   private:
+    Real gravitationalParameter_SI_;
+};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}
-}
-}
-}
+}  // namespace gravitational
+}  // namespace environment
+}  // namespace physics
+}  // namespace ostk
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

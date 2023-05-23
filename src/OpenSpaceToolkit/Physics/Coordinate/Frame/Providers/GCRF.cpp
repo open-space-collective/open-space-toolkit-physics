@@ -17,37 +17,31 @@ namespace provider
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                                GCRF::GCRF                                  ( )
-{
+GCRF::GCRF() {}
 
+GCRF::~GCRF() {}
+
+GCRF* GCRF::clone() const
+{
+    return new GCRF(*this);
 }
 
-                                GCRF::~GCRF                                 ( )
+bool GCRF::isDefined() const
 {
-
+    return true;
 }
 
-GCRF*                           GCRF::clone                                 ( ) const
+Transform GCRF::getTransformAt(const Instant& anInstant) const
 {
-    return new GCRF(*this) ;
-}
-
-bool                            GCRF::isDefined                             ( ) const
-{
-    return true ;
-}
-
-Transform                       GCRF::getTransformAt                        (   const   Instant&                    anInstant                                   ) const
-{
-    return Transform::Identity(anInstant) ;
+    return Transform::Identity(anInstant);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}
-}
-}
-}
-}
+}  // namespace provider
+}  // namespace frame
+}  // namespace coord
+}  // namespace physics
+}  // namespace ostk
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

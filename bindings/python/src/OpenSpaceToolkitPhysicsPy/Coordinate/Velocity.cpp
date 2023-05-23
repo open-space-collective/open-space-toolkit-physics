@@ -4,20 +4,19 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Velocity (          pybind11::module&          aModule                                     )
+inline void OpenSpaceToolkitPhysicsPy_Coordinate_Velocity(pybind11::module& aModule)
 {
+    using namespace pybind11;
 
-    using namespace pybind11 ;
+    using ostk::core::types::Integer;
+    using ostk::core::types::Shared;
 
-    using ostk::core::types::Integer ;
-    using ostk::core::types::Shared ;
+    using ostk::math::obj::Vector3d;
 
-    using ostk::math::obj::Vector3d ;
+    using ostk::physics::coord::Velocity;
+    using ostk::physics::coord::Frame;
 
-    using ostk::physics::coord::Velocity ;
-    using ostk::physics::coord::Frame ;
-
-    class_<Velocity> velocity(aModule, "Velocity") ;
+    class_<Velocity> velocity(aModule, "Velocity");
 
     velocity
 
@@ -43,15 +42,14 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Velocity ( 
         .def_static("meters_per_second", &Velocity::MetersPerSecond, arg("coordinates"), arg("frame"))
         .def_static("string_from_unit", &Velocity::StringFromUnit, arg("unit"))
 
-    ;
+        ;
 
     enum_<Velocity::Unit>(velocity, "Unit")
 
         .value("Undefined", Velocity::Unit::Undefined)
         .value("MeterPerSecond", Velocity::Unit::MeterPerSecond)
 
-    ;
-
+        ;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

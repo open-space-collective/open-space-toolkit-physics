@@ -1,11 +1,11 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Engine.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE.hpp>
-
 #include <OpenSpaceToolkit/Core/Containers/Map.hpp>
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
+
+#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Engine.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -20,65 +20,55 @@ namespace ephem
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                                SPICE::SPICE                                (   const   SPICE::Object&              anObject                                    )
-                                :   object_(anObject)
+SPICE::SPICE(const SPICE::Object& anObject)
+    : object_(anObject)
 {
-
 }
 
-                                SPICE::~SPICE                               ( )
-{
+SPICE::~SPICE() {}
 
+SPICE* SPICE::clone() const
+{
+    return new SPICE(*this);
 }
 
-SPICE*                          SPICE::clone                                ( ) const
+bool SPICE::isDefined() const
 {
-    return new SPICE(*this) ;
+    return object_ != SPICE::Object::Undefined;
 }
 
-bool                            SPICE::isDefined                            ( ) const
+Shared<const Frame> SPICE::accessFrame() const
 {
-    return object_ != SPICE::Object::Undefined ;
+    using ostk::physics::env::ephem::spice::Engine;
+
+    return Engine::Get().getFrameOf(object_);
 }
 
-Shared<const Frame>             SPICE::accessFrame                          ( ) const
+String SPICE::StringFromObject(const SPICE::Object& anObject)
 {
+    using ostk::core::ctnr::Map;
 
-    using ostk::physics::env::ephem::spice::Engine ;
+    static const Map<SPICE::Object, String> objectStringMap = {
+        {SPICE::Object::Undefined, "Undefined"},
+        {SPICE::Object::Sun, "Sun"},
+        {SPICE::Object::Mercury, "Mercury"},
+        {SPICE::Object::Venus, "Venus"},
+        {SPICE::Object::Earth, "Earth"},
+        {SPICE::Object::Moon, "Moon"},
+        {SPICE::Object::Mars, "Mars"},
+        {SPICE::Object::Jupiter, "Jupiter"},
+        {SPICE::Object::Saturn, "Saturn"},
+        {SPICE::Object::Uranus, "Uranus"},
+        {SPICE::Object::Neptune, "Neptune"}};
 
-    return Engine::Get().getFrameOf(object_) ;
-
-}
-
-String                          SPICE::StringFromObject                     (   const   SPICE::Object&              anObject                                    )
-{
-
-    using ostk::core::ctnr::Map ;
-
-    static const Map<SPICE::Object, String> objectStringMap =
-    {
-        { SPICE::Object::Undefined, "Undefined" },
-        { SPICE::Object::Sun,       "Sun" },
-        { SPICE::Object::Mercury,   "Mercury" },
-        { SPICE::Object::Venus,     "Venus" },
-        { SPICE::Object::Earth,     "Earth" },
-        { SPICE::Object::Moon,      "Moon" },
-        { SPICE::Object::Mars,      "Mars" },
-        { SPICE::Object::Jupiter,   "Jupiter" },
-        { SPICE::Object::Saturn,    "Saturn" },
-        { SPICE::Object::Uranus,    "Uranus" },
-        { SPICE::Object::Neptune,   "Neptune" }
-    } ;
-
-    return objectStringMap.at(anObject) ;
-
+    return objectStringMap.at(anObject);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}
-}
-}
-}
+}  // namespace ephem
+}  // namespace env
+}  // namespace physics
+}  // namespace ostk
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

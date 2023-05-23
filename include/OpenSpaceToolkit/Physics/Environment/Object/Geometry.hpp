@@ -3,17 +3,15 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Object_Geometry__
 #define __OpenSpaceToolkit_Physics_Environment_Object_Geometry__
 
-#include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
-#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Core/Error.hpp>
+#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
+#include <OpenSpaceToolkit/Core/Types/Unique.hpp>
+#include <OpenSpaceToolkit/Core/Utilities.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/Composite.hpp>
 
-#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
-#include <OpenSpaceToolkit/Core/Types/Unique.hpp>
-#include <OpenSpaceToolkit/Core/Types/Unique.hpp>
-
-#include <OpenSpaceToolkit/Core/Error.hpp>
-#include <OpenSpaceToolkit/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -28,146 +26,138 @@ namespace object
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using ostk::core::types::Unique ;
-using ostk::core::types::Shared ;
+using ostk::core::types::Unique;
+using ostk::core::types::Shared;
 
-using ostk::math::geom::d3::objects::Composite ;
+using ostk::math::geom::d3::objects::Composite;
 
-using ostk::physics::time::Instant ;
-using ostk::physics::coord::Frame ;
+using ostk::physics::time::Instant;
+using ostk::physics::coord::Frame;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 class Geometry
 {
+   public:
+    typedef math::geom::d3::Object Object;
 
-    public:
+    /// @brief              Constructor
+    ///
+    /// @param              [in] anObject An object
+    /// @param              [in] aFrameSPtr A shared pointer to frame
 
-        typedef math::geom::d3::Object Object ;
+    Geometry(const Geometry::Object& anObject, const Shared<const Frame>& aFrameSPtr);
 
-        /// @brief              Constructor
-        ///
-        /// @param              [in] anObject An object
-        /// @param              [in] aFrameSPtr A shared pointer to frame
+    /// @brief              Constructor
+    ///
+    /// @param              [in] aComposite A composite
+    /// @param              [in] aFrameSPtr A shared pointer to frame
 
-                                Geometry                                    (   const   Geometry::Object&           anObject,
-                                                                                const   Shared<const Frame>&        aFrameSPtr                                  ) ;
+    Geometry(const Composite& aComposite, const Shared<const Frame>& aFrameSPtr);
 
-        /// @brief              Constructor
-        ///
-        /// @param              [in] aComposite A composite
-        /// @param              [in] aFrameSPtr A shared pointer to frame
+    /// @brief              Copy constructor
+    ///
+    /// @param              [in] aGeometry A geometry
 
-                                Geometry                                    (   const   Composite&                  aComposite,
-                                                                                const   Shared<const Frame>&        aFrameSPtr                                  ) ;
+    Geometry(const Geometry& aGeometry);
 
-        /// @brief              Copy constructor
-        ///
-        /// @param              [in] aGeometry A geometry
+    /// @brief              Copy assignment operator
+    ///
+    /// @param              [in] aGeometry A geometry
+    /// @return             Reference to geometry
 
-                                Geometry                                    (   const   Geometry&                   aGeometry                                   ) ;
+    Geometry& operator=(const Geometry& aGeometry);
 
-        /// @brief              Copy assignment operator
-        ///
-        /// @param              [in] aGeometry A geometry
-        /// @return             Reference to geometry
+    /// @brief              Equal to operator
+    ///
+    /// @param              [in] aGeometry A geometry
+    /// @return             True if geometries are equal
 
-        Geometry&               operator =                                  (   const   Geometry&                   aGeometry                                   ) ;
+    bool operator==(const Geometry& aGeometry) const;
 
-        /// @brief              Equal to operator
-        ///
-        /// @param              [in] aGeometry A geometry
-        /// @return             True if geometries are equal
+    /// @brief              Not equal to operator
+    ///
+    /// @param              [in] aGeometry A geometry
+    /// @return             True if geometries are not equal
 
-        bool                    operator ==                                 (   const   Geometry&                   aGeometry                                   ) const ;
+    bool operator!=(const Geometry& aGeometry) const;
 
-        /// @brief              Not equal to operator
-        ///
-        /// @param              [in] aGeometry A geometry
-        /// @return             True if geometries are not equal
+    /// @brief              Output stream operator
+    ///
+    /// @param              [in] anOutputStream An output stream
+    /// @param              [in] aGeometry A geometry
+    /// @return             A reference to output stream
 
-        bool                    operator !=                                 (   const   Geometry&                   aGeometry                                   ) const ;
+    friend std::ostream& operator<<(std::ostream& anOutputStream, const Geometry& aGeometry);
 
-        /// @brief              Output stream operator
-        ///
-        /// @param              [in] anOutputStream An output stream
-        /// @param              [in] aGeometry A geometry
-        /// @return             A reference to output stream
+    /// @brief              Check if geometry is defined
+    ///
+    /// @return             True if geometry is defined
 
-        friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
-                                                                                const   Geometry&                   aGeometry                                   ) ;
+    bool isDefined() const;
 
-        /// @brief              Check if geometry is defined
-        ///
-        /// @return             True if geometry is defined
+    /// @brief              Check if geometry intersects another geometry
+    ///
+    /// @param              [in] aGeometry A geometry
+    /// @return             True if geometry intersects another geometry
 
-        bool                    isDefined                                   ( ) const ;
+    bool intersects(const Geometry& aGeometry) const;
 
-        /// @brief              Check if geometry intersects another geometry
-        ///
-        /// @param              [in] aGeometry A geometry
-        /// @return             True if geometry intersects another geometry
+    /// @brief              Check if geometry contains another geometry
+    ///
+    /// @param              [in] aGeometry A geometry
+    /// @return             True if geometry contains another geometry
 
-        bool                    intersects                                  (   const   Geometry&                   aGeometry                                   ) const ;
+    bool contains(const Geometry& aGeometry) const;
 
-        /// @brief              Check if geometry contains another geometry
-        ///
-        /// @param              [in] aGeometry A geometry
-        /// @return             True if geometry contains another geometry
+    /// @brief              Access composite
+    ///
+    /// @return             Reference to composite
 
-        bool                    contains                                    (   const   Geometry&                   aGeometry                                   ) const ;
+    const Composite& accessComposite() const;
 
-        /// @brief              Access composite
-        ///
-        /// @return             Reference to composite
+    /// @brief              Access frame
+    ///
+    /// @return             Shared pointer to frame
 
-        const Composite&        accessComposite                             ( ) const ;
+    Shared<const Frame> accessFrame() const;
 
-        /// @brief              Access frame
-        ///
-        /// @return             Shared pointer to frame
+    /// @brief              Get geometry expressed in a given frame
+    ///
+    /// @param              [in] aFrameSPtr A shared pointer to frame
+    /// @param              [in] anInstant An instant
+    /// @return             Geometry expressed in a given frame
 
-        Shared<const Frame>     accessFrame                                 ( ) const ;
+    Geometry in(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const;
 
-        /// @brief              Get geometry expressed in a given frame
-        ///
-        /// @param              [in] aFrameSPtr A shared pointer to frame
-        /// @param              [in] anInstant An instant
-        /// @return             Geometry expressed in a given frame
+    /// @brief              Compute intersection of geometry with another geometry
+    ///
+    /// @param              [in] aGeometry A geometry
+    /// @return             Intersection of geometry with another geometry
 
-        Geometry                in                                          (   const   Shared<const Frame>&        aFrameSPtr,
-                                                                                const   Instant&                    anInstant                                   ) const ;
+    Geometry intersectionWith(const Geometry& aGeometry) const;
 
-        /// @brief              Compute intersection of geometry with another geometry
-        ///
-        /// @param              [in] aGeometry A geometry
-        /// @return             Intersection of geometry with another geometry
+    /// @brief              Constructs an undefined geometry
+    ///
+    /// @code
+    ///                     Geometry geometry = Geometry::Undefined() ; // Undefined
+    /// @endcode
+    ///
+    /// @return             Undefined geometry
 
-        Geometry                intersectionWith                            (   const   Geometry&                   aGeometry                                   ) const ;
+    static Geometry Undefined();
 
-        /// @brief              Constructs an undefined geometry
-        ///
-        /// @code
-        ///                     Geometry geometry = Geometry::Undefined() ; // Undefined
-        /// @endcode
-        ///
-        /// @return             Undefined geometry
-
-        static Geometry         Undefined                                   ( ) ;
-
-    private:
-
-        Composite               composite_ ;
-        Shared<const Frame>     frameSPtr_ ;
-
-} ;
+   private:
+    Composite composite_;
+    Shared<const Frame> frameSPtr_;
+};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}
-}
-}
-}
+}  // namespace object
+}  // namespace env
+}  // namespace physics
+}  // namespace ostk
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

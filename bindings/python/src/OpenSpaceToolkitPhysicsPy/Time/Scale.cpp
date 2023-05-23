@@ -4,12 +4,11 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Time_Scale        (            pybind11::module&          aModule                                     )
+inline void OpenSpaceToolkitPhysicsPy_Time_Scale(pybind11::module& aModule)
 {
+    using namespace pybind11;
 
-    using namespace pybind11 ;
-
-    using ostk::physics::time::Scale ;
+    using ostk::physics::time::Scale;
 
     enum_<Scale>(aModule, "Scale")
 
@@ -29,8 +28,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Scale        (   
         .value("QZSST", Scale::QZSST)
         .value("IRNSST", Scale::IRNSST)
 
-    ;
-
+        ;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

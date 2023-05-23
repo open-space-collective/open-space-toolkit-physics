@@ -1,9 +1,9 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkit/Physics/Data/Scalar.hpp>
-
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
+
+#include <OpenSpaceToolkit/Physics/Data/Scalar.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -16,94 +16,85 @@ namespace data
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                                Scalar::Scalar                              (   const   Real&                       aValue,
-                                                                                const   Unit&                       aUnit                                       )
-                                :   value_(aValue),
-                                    unit_(aUnit)
+Scalar::Scalar(const Real& aValue, const Unit& aUnit)
+    : value_(aValue),
+      unit_(aUnit)
 {
-
 }
 
-bool                            Scalar::operator ==                         (   const   Scalar&                     aScalar                                     ) const
+bool Scalar::operator==(const Scalar& aScalar) const
 {
-
     if ((!this->isDefined()) || (!aScalar.isDefined()))
     {
-        return false ;
+        return false;
     }
 
-    return (value_ == aScalar.value_) && (unit_ == aScalar.unit_) ;
-
+    return (value_ == aScalar.value_) && (unit_ == aScalar.unit_);
 }
 
-bool                            Scalar::operator !=                         (   const   Scalar&                     aScalar                                     ) const
+bool Scalar::operator!=(const Scalar& aScalar) const
 {
-    return !((*this) == aScalar) ;
+    return !((*this) == aScalar);
 }
 
-std::ostream&                   operator <<                                 (           std::ostream&               anOutputStream,
-                                                                                const   Scalar&                     aScalar                                     )
+std::ostream& operator<<(std::ostream& anOutputStream, const Scalar& aScalar)
 {
+    ostk::core::utils::Print::Header(anOutputStream, "Scalar");
 
-    ostk::core::utils::Print::Header(anOutputStream, "Scalar") ;
+    ostk::core::utils::Print::Line(anOutputStream)
+        << "Value:" << (aScalar.value_.isDefined() ? aScalar.value_.toString() : "Undefined");
+    ostk::core::utils::Print::Line(anOutputStream)
+        << "Unit:" << (aScalar.unit_.isDefined() ? aScalar.unit_.toString() : "Undefined");
 
-    ostk::core::utils::Print::Line(anOutputStream) << "Value:"               << (aScalar.value_.isDefined() ? aScalar.value_.toString() : "Undefined") ;
-    ostk::core::utils::Print::Line(anOutputStream) << "Unit:"                << (aScalar.unit_.isDefined() ? aScalar.unit_.toString() : "Undefined") ;
+    ostk::core::utils::Print::Footer(anOutputStream);
 
-    ostk::core::utils::Print::Footer(anOutputStream) ;
-
-    return anOutputStream ;
-
+    return anOutputStream;
 }
 
-bool                            Scalar::isDefined                           ( ) const
+bool Scalar::isDefined() const
 {
-    return value_.isDefined() && unit_.isDefined() ;
+    return value_.isDefined() && unit_.isDefined();
 }
 
-Real                            Scalar::getValue                            ( ) const
+Real Scalar::getValue() const
 {
-    return value_ ;
+    return value_;
 }
 
-Unit                            Scalar::getUnit                             ( ) const
+Unit Scalar::getUnit() const
 {
-    return unit_ ;
+    return unit_;
 }
 
-Scalar                          Scalar::inUnit                              (   const   Unit&                       aUnit                                       ) const
+Scalar Scalar::inUnit(const Unit& aUnit) const
 {
-
     if (!this->isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Scalar") ;
+        throw ostk::core::error::runtime::Undefined("Scalar");
     }
 
-    return { value_ * unit_.ratioTo(aUnit), aUnit } ;
-
+    return {value_ * unit_.ratioTo(aUnit), aUnit};
 }
 
-String                          Scalar::toString                            (   const   Integer&                    aPrecision                                  ) const
+String Scalar::toString(const Integer& aPrecision) const
 {
-
     if (!this->isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Scalar") ;
+        throw ostk::core::error::runtime::Undefined("Scalar");
     }
 
-    return String::Format("{} [{}]", value_.toString(aPrecision), unit_.toString()) ;
-
+    return String::Format("{} [{}]", value_.toString(aPrecision), unit_.toString());
 }
 
-Scalar                          Scalar::Undefined                           ( )
+Scalar Scalar::Undefined()
 {
-    return { Real::Undefined(), Unit::Undefined() } ;
+    return {Real::Undefined(), Unit::Undefined()};
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}
-}
-}
+}  // namespace data
+}  // namespace physics
+}  // namespace ostk
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

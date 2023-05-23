@@ -3,16 +3,16 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment__
 #define __OpenSpaceToolkit_Physics_Environment__
 
-#include <OpenSpaceToolkit/Physics/Environment/Objects/Celestial.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Object.hpp>
-#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
+#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
+#include <OpenSpaceToolkit/Core/Types/String.hpp>
+#include <OpenSpaceToolkit/Core/Types/Unique.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Object.hpp>
 
-#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
-#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
-#include <OpenSpaceToolkit/Core/Types/Unique.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Object.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Objects/Celestial.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -23,16 +23,16 @@ namespace physics
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using ostk::core::types::Unique ;
-using ostk::core::types::Shared ;
-using ostk::core::types::String ;
-using ostk::core::ctnr::Array ;
+using ostk::core::types::Unique;
+using ostk::core::types::Shared;
+using ostk::core::types::String;
+using ostk::core::ctnr::Array;
 
-using GeometricalObject = ostk::math::geom::d3::Object ;
+using GeometricalObject = ostk::math::geom::d3::Object;
 
-using ostk::physics::time::Instant ;
-using ostk::physics::env::Object ;
-using ostk::physics::env::obj::Celestial ;
+using ostk::physics::time::Instant;
+using ostk::physics::env::Object;
+using ostk::physics::env::obj::Celestial;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -40,149 +40,147 @@ using ostk::physics::env::obj::Celestial ;
 
 class Environment
 {
+   public:
+    /// @brief              Constructor
+    ///
+    /// @param              [in] anInstant An instant
+    /// @param              [in] An array of shared pointers to objects
 
-    public:
+    Environment(const Instant& anInstant, const Array<Shared<Object>>& anObjectArray);
 
-        /// @brief              Constructor
-        ///
-        /// @param              [in] anInstant An instant
-        /// @param              [in] An array of shared pointers to objects
+    /// @brief              Copy constructor
+    ///
+    /// @param              [in] anEnvironment An environment
 
-                                Environment                                 (   const   Instant&                    anInstant,
-                                                                                const   Array<Shared<Object>>&      anObjectArray                               ) ;
+    Environment(const Environment& anEnvironment);
 
-        /// @brief              Copy constructor
-        ///
-        /// @param              [in] anEnvironment An environment
+    /// @brief              Copy assignment operator
+    ///
+    /// @param              [in] anEnvironment An environment
+    /// @return             Reference to environment
 
-                                Environment                                 (   const   Environment&                anEnvironment                               ) ;
+    Environment& operator=(const Environment& anEnvironment);
 
-        /// @brief              Copy assignment operator
-        ///
-        /// @param              [in] anEnvironment An environment
-        /// @return             Reference to environment
+    /// @brief              Output stream operator
+    ///
+    /// @param              [in] anOutputStream An output stream
+    /// @param              [in] anEnvironment An environment
+    /// @return             A reference to output stream
 
-        Environment&            operator =                                  (   const   Environment&                anEnvironment                               ) ;
+    friend std::ostream& operator<<(std::ostream& anOutputStream, const Environment& anEnvironment);
 
-        /// @brief              Output stream operator
-        ///
-        /// @param              [in] anOutputStream An output stream
-        /// @param              [in] anEnvironment An environment
-        /// @return             A reference to output stream
+    /// @brief              Check if environment is defined
+    ///
+    /// @return             True if environment is defined
 
-        friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
-                                                                                const   Environment&                anEnvironment                               ) ;
+    bool isDefined() const;
 
-        /// @brief              Check if environment is defined
-        ///
-        /// @return             True if environment is defined
+    /// @brief              Returns true if environment contains objects with a given name
+    ///
+    /// @param              [in] aName An object name
+    /// @return             True if environment contains objects with a given name
 
-        bool                    isDefined                                   ( ) const ;
+    bool hasObjectWithName(const String& aName) const;
 
-        /// @brief              Returns true if environment contains objects with a given name
-        ///
-        /// @param              [in] aName An object name
-        /// @return             True if environment contains objects with a given name
+    /// @brief              Returns true if a given geometry intersects any of the environment objects
+    ///
+    /// @param              [in] aGeometry A geometry
+    /// @param              [in] (optional) anObjectToIgnoreArray An array of objects to ignore
+    /// @return             True if a given geometry intersects any of the environment objects
 
-        bool                    hasObjectWithName                           (   const   String&                     aName                                       ) const ;
+    bool intersects(
+        const Object::Geometry& aGeometry,
+        const Array<Shared<const Object>>& anObjectToIgnoreArray = Array<Shared<const Object>>::Empty()
+    ) const;
 
-        /// @brief              Returns true if a given geometry intersects any of the environment objects
-        ///
-        /// @param              [in] aGeometry A geometry
-        /// @param              [in] (optional) anObjectToIgnoreArray An array of objects to ignore
-        /// @return             True if a given geometry intersects any of the environment objects
+    /// @brief              Access objects
+    ///
+    /// @return             Reference to array of shared pointers to objects
 
-        bool                    intersects                                  (   const   Object::Geometry&           aGeometry,
-                                                                                const   Array<Shared<const Object>>& anObjectToIgnoreArray                      =   Array<Shared<const Object>>::Empty() ) const ;
+    Array<Shared<const Object>> accessObjects() const;
 
-        /// @brief              Access objects
-        ///
-        /// @return             Reference to array of shared pointers to objects
+    /// @brief              Access object with a given name
+    ///
+    /// @param              [in] aName An object name
+    /// @return             Reference to shared pointer to object
 
-        Array<Shared<const Object>> accessObjects                           ( ) const ;
+    Shared<const Object> accessObjectWithName(const String& aName) const;
 
-        /// @brief              Access object with a given name
-        ///
-        /// @param              [in] aName An object name
-        /// @return             Reference to shared pointer to object
+    /// @brief              Access celestial object with a given name
+    ///
+    /// @param              [in] aName A celestial object name
+    /// @return             Reference to shared pointer to celestial object
 
-        Shared<const Object>    accessObjectWithName                        (   const   String&                     aName                                       ) const ;
+    Shared<const Celestial> accessCelestialObjectWithName(const String& aName) const;
 
-        /// @brief              Access celestial object with a given name
-        ///
-        /// @param              [in] aName A celestial object name
-        /// @return             Reference to shared pointer to celestial object
+    /// @brief              Get instant
+    ///
+    /// @return             Instant
 
-        Shared<const Celestial> accessCelestialObjectWithName               (   const   String&                     aName                                       ) const ;
+    Instant getInstant() const;
 
-        /// @brief              Get instant
-        ///
-        /// @return             Instant
+    /// @brief              Get names of objects
+    ///
+    /// @return             Array of objects names
 
-        Instant                 getInstant                                  ( ) const ;
+    Array<String> getObjectNames() const;
 
-        /// @brief              Get names of objects
-        ///
-        /// @return             Array of objects names
+    /// @brief              Set instant
+    ///
+    /// @param              [in] anInstant An instant
 
-        Array<String>           getObjectNames                              ( ) const ;
+    void setInstant(const Instant& anInstant);
 
-        /// @brief              Set instant
-        ///
-        /// @param              [in] anInstant An instant
+    /// @brief              Get gravitational field at position
+    ///
+    /// @param              [in] aPosition A position
+    /// @return             Gravitational field vector
 
-        void                    setInstant                                  (   const   Instant&                    anInstant                                   ) ;
+    // Vector                  getGravitationalFieldAt                     (   const   Position& aPosition ) const ;
+    // [TBI]
 
-        /// @brief              Get gravitational field at position
-        ///
-        /// @param              [in] aPosition A position
-        /// @return             Gravitational field vector
+    /// @brief              Get magnetic field at position
+    ///
+    /// @param              [in] aPosition A position
+    /// @return             Magnetic field vector
 
-        // Vector                  getGravitationalFieldAt                     (   const   Position&                   aPosition                                   ) const ; [TBI]
+    // Vector                  getMagneticFieldAt                          (   const   Position& aPosition ) const ;
+    // [TBI]
 
-        /// @brief              Get magnetic field at position
-        ///
-        /// @param              [in] aPosition A position
-        /// @return             Magnetic field vector
+    /// @brief              Constructs an undefined environment
+    ///
+    /// @code
+    ///                     Environment environment = Environment::Undefined() ;
+    ///                     environment.isDefined() ; // False
+    /// @endcode
+    ///
+    /// @return             Undefined environment
 
-        // Vector                  getMagneticFieldAt                          (   const   Position&                   aPosition                                   ) const ; [TBI]
+    static Environment Undefined();
 
-        /// @brief              Constructs an undefined environment
-        ///
-        /// @code
-        ///                     Environment environment = Environment::Undefined() ;
-        ///                     environment.isDefined() ; // False
-        /// @endcode
-        ///
-        /// @return             Undefined environment
+    /// @brief              Constructs a default environment
+    ///
+    ///                     Contains Earth, Sun and Moon, with SPICE-based ephemeris.
+    ///
+    /// @code
+    ///                     Environment environment = Environment::Default() ;
+    /// @endcode
+    ///
+    /// @return             Undefined environment
 
-        static Environment      Undefined                                   ( ) ;
+    static Environment Default();
 
-        /// @brief              Constructs a default environment
-        ///
-        ///                     Contains Earth, Sun and Moon, with SPICE-based ephemeris.
-        ///
-        /// @code
-        ///                     Environment environment = Environment::Default() ;
-        /// @endcode
-        ///
-        /// @return             Undefined environment
+   private:
+    Instant instant_;
+    Array<Shared<Object>> objects_;
 
-        static Environment      Default                                     ( ) ;
-
-    private:
-
-        Instant                 instant_ ;
-        Array<Shared<Object>>   objects_ ;
-
-        void                    updateObjects                               ( ) ;
-
-} ;
+    void updateObjects();
+};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}
-}
+}  // namespace physics
+}  // namespace ostk
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

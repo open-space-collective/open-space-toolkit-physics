@@ -1,9 +1,9 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Dynamic.hpp>
-
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
+
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Dynamic.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -20,50 +20,44 @@ namespace provider
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                                Dynamic::Dynamic                            (   const   Dynamic::Generator&         aGenerator                                  )
-                                :   generator_(aGenerator)
+Dynamic::Dynamic(const Dynamic::Generator& aGenerator)
+    : generator_(aGenerator)
 {
-
 }
 
-                                Dynamic::~Dynamic                           ( )
-{
+Dynamic::~Dynamic() {}
 
+Dynamic* Dynamic::clone() const
+{
+    return new Dynamic(*this);
 }
 
-Dynamic*                        Dynamic::clone                              ( ) const
+bool Dynamic::isDefined() const
 {
-    return new Dynamic(*this) ;
+    return !!generator_;
 }
 
-bool                            Dynamic::isDefined                          ( ) const
+Transform Dynamic::getTransformAt(const Instant& anInstant) const
 {
-    return !!generator_ ;
-}
-
-Transform                       Dynamic::getTransformAt                     (   const   Instant&                    anInstant                                   ) const
-{
-
     if (!this->isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Dynamic provider") ;
+        throw ostk::core::error::runtime::Undefined("Dynamic provider");
     }
 
-    return generator_(anInstant) ;
-
+    return generator_(anInstant);
 }
 
-Dynamic                         Dynamic::Undefined                          ( )
+Dynamic Dynamic::Undefined()
 {
-    return { {} } ;
+    return {{}};
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}
-}
-}
-}
-}
+}  // namespace provider
+}  // namespace frame
+}  // namespace coord
+}  // namespace physics
+}  // namespace ostk
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

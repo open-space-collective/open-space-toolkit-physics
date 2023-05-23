@@ -6,53 +6,40 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Time_Duration     (           pybind11::module&           aModule                                     )
+inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
 {
+    using namespace pybind11;
 
-    using namespace pybind11 ;
+    using ostk::core::types::String;
 
-    using ostk::core::types::String ;
+    using ostk::physics::time::Duration;
 
-    using ostk::physics::time::Duration ;
-
-    class_<Duration> duration_class(aModule, "Duration") ;
+    class_<Duration> duration_class(aModule, "Duration");
 
     duration_class
 
         .def(init<int>())
 
-        .def
-        (
-            init
-            (
-                [] (const float& aCount)
-                {
-                    return new Duration(aCount) ;
-                }
-            )
-        )
+        .def(init(
+            [](const float& aCount)
+            {
+                return new Duration(aCount);
+            }
+        ))
 
-        .def
-        (
-            init
-            (
-                [] (const double& aCount)
-                {
-                    return new Duration(aCount) ;
-                }
-            )
-        )
+        .def(init(
+            [](const double& aCount)
+            {
+                return new Duration(aCount);
+            }
+        ))
 
-        .def
-        (
-            init
-            (
-                [] (const std::chrono::microseconds& aCount)
-                {
-                    return new Duration(aCount.count() * 1000) ;
-                }
-            )
-        )
+        .def(init(
+            [](const std::chrono::microseconds& aCount)
+            {
+                return new Duration(aCount.count() * 1000);
+            }
+        ))
 
         .def(self == self)
         .def(self != self)
@@ -73,7 +60,13 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Duration     (   
         .def(self /= double())
 
         .def("__str__", &(shiftToString<Duration>))
-        .def("__repr__", +[] (const Duration& aDuration) -> std::string { return aDuration.toString() ; })
+        .def(
+            "__repr__",
+            +[](const Duration& aDuration) -> std::string
+            {
+                return aDuration.toString();
+            }
+        )
 
         .def("is_defined", &Duration::isDefined)
         .def("is_zero", &Duration::isZero)
@@ -99,9 +92,27 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Duration     (   
         .def("in_weeks", &Duration::inWeeks)
         .def("in_unit", &Duration::in)
         .def("get_absolute", &Duration::getAbsolute)
-        .def("to_string", +[] (const Duration& aDuration) -> String { return aDuration.toString() ; })
-        .def("to_string", +[] (const Duration& aDuration, const Duration::Format& aFormat) -> String { return aDuration.toString(aFormat) ; })
-        .def("to_timedelta", +[] (const Duration& aDuration) -> std::chrono::microseconds { return std::chrono::microseconds(aDuration.inMicroseconds()) ; })
+        .def(
+            "to_string",
+            +[](const Duration& aDuration) -> String
+            {
+                return aDuration.toString();
+            }
+        )
+        .def(
+            "to_string",
+            +[](const Duration& aDuration, const Duration::Format& aFormat) -> String
+            {
+                return aDuration.toString(aFormat);
+            }
+        )
+        .def(
+            "to_timedelta",
+            +[](const Duration& aDuration) -> std::chrono::microseconds
+            {
+                return std::chrono::microseconds(aDuration.inMicroseconds());
+            }
+        )
 
         .def_static("undefined", &Duration::Undefined)
         .def_static("zero", &Duration::Zero)
@@ -115,9 +126,9 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Duration     (   
         .def_static("weeks", &Duration::Weeks)
         .def_static("between", &Duration::Between)
 
-    ;
+        ;
 
-    implicitly_convertible<PyDateTime_Delta, Duration>() ;
+    implicitly_convertible<PyDateTime_Delta, Duration>();
 
     enum_<Duration::Format>(duration_class, "Format")
 
@@ -125,16 +136,9 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Duration     (   
         .value("Standard", Duration::Format::Standard)
         .value("ISO8601", Duration::Format::ISO8601)
 
-    ;
+        ;
 
-    duration_class.def_static
-    (
-        "parse",
-        &Duration::Parse,
-        arg("string"),
-        arg("format") = Duration::Format::Undefined
-    ) ;
-
+    duration_class.def_static("parse", &Duration::Parse, arg("string"), arg("format") = Duration::Format::Undefined);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

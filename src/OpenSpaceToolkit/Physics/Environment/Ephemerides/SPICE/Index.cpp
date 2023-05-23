@@ -1,11 +1,11 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Index.hpp>
-
 #include <OpenSpaceToolkit/Core/Containers/Dictionary.hpp>
 #include <OpenSpaceToolkit/Core/Containers/Object.hpp>
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
+
+#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Index.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -22,160 +22,138 @@ namespace spice
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-std::ostream&                   operator <<                                 (           std::ostream&               anOutputStream,
-                                                                                const   Index&                      anIndex                                     )
+std::ostream& operator<<(std::ostream& anOutputStream, const Index& anIndex)
 {
+    ostk::core::utils::Print::Header(anOutputStream, "Index");
 
-    ostk::core::utils::Print::Header(anOutputStream, "Index") ;
-
-    ostk::core::utils::Print::Line(anOutputStream) << "Timestamp:" << (anIndex.timestamp_.isDefined() ? anIndex.timestamp_.toString() : "Undefined") ;
+    ostk::core::utils::Print::Line(anOutputStream)
+        << "Timestamp:" << (anIndex.timestamp_.isDefined() ? anIndex.timestamp_.toString() : "Undefined");
 
     for (const auto& itemMapIt : anIndex.itemMap_)
     {
-
-        ostk::core::utils::Print::Separator(anOutputStream, Kernel::StringFromType(itemMapIt.first)) ;
+        ostk::core::utils::Print::Separator(anOutputStream, Kernel::StringFromType(itemMapIt.first));
 
         for (const auto& itemMapItIt : itemMapIt.second)
         {
-            ostk::core::utils::Print::Line(anOutputStream) << (itemMapItIt.first + ":") << itemMapItIt.second.toString() ;
+            ostk::core::utils::Print::Line(anOutputStream)
+                << (itemMapItIt.first + ":") << itemMapItIt.second.toString();
         }
-
     }
 
-    ostk::core::utils::Print::Footer(anOutputStream) ;
+    ostk::core::utils::Print::Footer(anOutputStream);
 
-    return anOutputStream ;
-
+    return anOutputStream;
 }
 
-bool                            Index::isEmpty                              ( ) const
+bool Index::isEmpty() const
 {
-    return itemMap_.empty() ;
+    return itemMap_.empty();
 }
 
-Instant                         Index::getTimestamp                         ( ) const
+Instant Index::getTimestamp() const
 {
-    return timestamp_ ;
+    return timestamp_;
 }
 
-URL                             Index::getRemoteUrlOfKernel                 (   const   Kernel&                     aKernel                                     ) const
+URL Index::getRemoteUrlOfKernel(const Kernel& aKernel) const
 {
-
     if (!aKernel.isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Kernel") ;
+        throw ostk::core::error::runtime::Undefined("Kernel");
     }
 
-    const auto itemMapIt = itemMap_.find(aKernel.getType()) ;
+    const auto itemMapIt = itemMap_.find(aKernel.getType());
 
     if (itemMapIt != itemMap_.end())
     {
-
-        const auto itemMapItIt = itemMapIt->second.find(aKernel.getName()) ;
+        const auto itemMapItIt = itemMapIt->second.find(aKernel.getName());
 
         if (itemMapItIt != itemMapIt->second.end())
         {
-            return itemMapItIt->second + aKernel.getName() ;
+            return itemMapItIt->second + aKernel.getName();
         }
-
     }
 
-    return URL::Undefined() ;
-
+    return URL::Undefined();
 }
 
-Array<URL>                      Index::findRemoteUrls                       (   const   std::regex&                 aKernelNameRegex                            ) const
+Array<URL> Index::findRemoteUrls(const std::regex& aKernelNameRegex) const
 {
-
-    Array<URL> urls = Array<URL>::Empty() ;
+    Array<URL> urls = Array<URL>::Empty();
 
     for (const auto& itemMapIt : itemMap_)
     {
-
         for (const auto& itemMapItIt : itemMapIt.second)
         {
-
             if (itemMapItIt.first.match(aKernelNameRegex))
             {
+                const URL url = itemMapItIt.second + itemMapItIt.first;
 
-                const URL url = itemMapItIt.second + itemMapItIt.first ;
-
-                urls.add(url) ;
-
+                urls.add(url);
             }
-
         }
-
     }
 
-    return urls ;
-
+    return urls;
 }
 
-Index                           Index::Empty                                ( )
+Index Index::Empty()
 {
-    return {} ;
+    return {};
 }
 
-Index                           Index::Load                                 (   const   File&                       aFile                                       )
+Index Index::Load(const File& aFile)
 {
-
-    using ostk::core::ctnr::Object ;
-    using ostk::core::ctnr::Dictionary ;
+    using ostk::core::ctnr::Object;
+    using ostk::core::ctnr::Dictionary;
 
     if (!aFile.exists())
     {
-        throw ostk::core::error::RuntimeError("File [{}] does not exist.", aFile.toString()) ;
+        throw ostk::core::error::RuntimeError("File [{}] does not exist.", aFile.toString());
     }
 
-    Index index ;
+    Index index;
 
-    index.timestamp_ = Instant::Now() ; // [TBM] This should be replaced with the index file creation time
+    index.timestamp_ = Instant::Now();  // [TBM] This should be replaced with the index file creation time
 
-    const Dictionary indexDictionary = Object::Load(aFile, Object::Format::JSON).getDictionary() ;
+    const Dictionary indexDictionary = Object::Load(aFile, Object::Format::JSON).getDictionary();
 
     for (const auto& indexDictionaryItem : indexDictionary)
     {
+        const String kernelTypeString = indexDictionaryItem.accessKey();
 
-        const String kernelTypeString = indexDictionaryItem.accessKey() ;
-
-        const Kernel::Type kernelType = Kernel::TypeFromString(kernelTypeString) ;
+        const Kernel::Type kernelType = Kernel::TypeFromString(kernelTypeString);
 
         for (const auto& kernelTypeItem : indexDictionaryItem.accessValue().getDictionary())
         {
-
-            const String kernelName = kernelTypeItem.accessKey() ;
-            const URL remoteUrl = URL::Parse(kernelTypeItem.accessValue().getString()) ;
+            const String kernelName = kernelTypeItem.accessKey();
+            const URL remoteUrl = URL::Parse(kernelTypeItem.accessValue().getString());
 
             if (index.itemMap_.find(kernelType) == index.itemMap_.end())
             {
-                index.itemMap_[kernelType] = Map<String, URL>() ;
+                index.itemMap_[kernelType] = Map<String, URL>();
             }
 
-            index.itemMap_[kernelType].emplace(kernelName, remoteUrl) ;
-
+            index.itemMap_[kernelType].emplace(kernelName, remoteUrl);
         }
-
     }
 
-    return index ;
-
+    return index;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                                Index::Index                                ( )
-                                :   timestamp_(Instant::Undefined())
+Index::Index()
+    : timestamp_(Instant::Undefined())
 {
-
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}
-}
-}
-}
-}
+}  // namespace spice
+}  // namespace ephem
+}  // namespace env
+}  // namespace physics
+}  // namespace ostk
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

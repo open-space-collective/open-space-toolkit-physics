@@ -3,8 +3,8 @@
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_GCRF__
 #define __OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_GCRF__
 
-#include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -22,9 +22,9 @@ namespace provider
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using ostk::physics::time::Instant ;
-using ostk::physics::coord::frame::Provider ;
-using ostk::physics::coord::Transform ;
+using ostk::physics::time::Instant;
+using ostk::physics::coord::frame::Provider;
+using ostk::physics::coord::Transform;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -34,28 +34,25 @@ using ostk::physics::coord::Transform ;
 
 class GCRF : public Provider
 {
+   public:
+    GCRF();
 
-    public:
+    virtual ~GCRF() override;
 
-                                GCRF                                        ( ) ;
+    virtual GCRF* clone() const override;
 
-        virtual                 ~GCRF                                       ( ) override ;
+    virtual bool isDefined() const override;
 
-        virtual GCRF*           clone                                       ( ) const override ;
-
-        virtual bool            isDefined                                   ( ) const override ;
-
-        virtual Transform       getTransformAt                              (   const   Instant&                    anInstant                                   ) const override ;
-
-} ;
+    virtual Transform getTransformAt(const Instant& anInstant) const override;
+};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}
-}
-}
-}
-}
+}  // namespace provider
+}  // namespace frame
+}  // namespace coord
+}  // namespace physics
+}  // namespace ostk
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

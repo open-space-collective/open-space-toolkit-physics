@@ -3,8 +3,8 @@
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_CIRF__
 #define __OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_CIRF__
 
-#include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -22,9 +22,9 @@ namespace provider
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using ostk::physics::time::Instant ;
-using ostk::physics::coord::frame::Provider ;
-using ostk::physics::coord::Transform ;
+using ostk::physics::time::Instant;
+using ostk::physics::coord::frame::Provider;
+using ostk::physics::coord::Transform;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -32,32 +32,30 @@ using ostk::physics::coord::Transform ;
 ///
 ///                             Bias, precession-nutation
 ///
-/// @ref                        https://www.iers.org/SharedDocs/Publikationen/EN/IERS/Publications/tn/TechnNote36/tn36_174.pdf?__blob=publicationFile&v=1
+/// @ref
+/// https://www.iers.org/SharedDocs/Publikationen/EN/IERS/Publications/tn/TechnNote36/tn36_174.pdf?__blob=publicationFile&v=1
 
 class CIRF : public Provider
 {
+   public:
+    CIRF();
 
-    public:
+    virtual ~CIRF() override;
 
-                                CIRF                                        ( ) ;
+    virtual CIRF* clone() const override;
 
-        virtual                 ~CIRF                                       ( ) override ;
+    virtual bool isDefined() const override;
 
-        virtual CIRF*           clone                                       ( ) const override ;
-
-        virtual bool            isDefined                                   ( ) const override ;
-
-        virtual Transform       getTransformAt                              (   const   Instant&                    anInstant                                   ) const override ;
-
-} ;
+    virtual Transform getTransformAt(const Instant& anInstant) const override;
+};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}
-}
-}
-}
-}
+}  // namespace provider
+}  // namespace frame
+}  // namespace coord
+}  // namespace physics
+}  // namespace ostk
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

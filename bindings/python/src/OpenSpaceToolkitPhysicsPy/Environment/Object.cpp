@@ -1,21 +1,20 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkitPhysicsPy/Environment/Object/Geometry.cpp>
-
 #include <OpenSpaceToolkit/Physics/Environment/Object.hpp>
+
+#include <OpenSpaceToolkitPhysicsPy/Environment/Object/Geometry.cpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Environment_Object (           pybind11::module&          aModule                                     )
+inline void OpenSpaceToolkitPhysicsPy_Environment_Object(pybind11::module& aModule)
 {
+    using namespace pybind11;
 
-    using namespace pybind11 ;
+    using ostk::core::types::Shared;
+    using ostk::core::types::String;
 
-    using ostk::core::types::Shared ;
-    using ostk::core::types::String ;
-
-    using ostk::physics::time::Instant ;
-    using ostk::physics::env::Object ;
+    using ostk::physics::time::Instant;
+    using ostk::physics::env::Object;
 
     // Binding class "Object"
     class_<Object, Shared<Object>>(aModule, "Object")
@@ -41,7 +40,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Object (  
         .def("get_geometry_in", &Object::getGeometryIn)
         .def("set_instant", &Object::setInstant)
 
-    ;
+        ;
 
     // register_ptr_to_python<Shared<const Object>>() ;
 
@@ -50,14 +49,13 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Object (  
     // Adding python submodule "object"
 
     // Create "object" python submodule
-    auto object = aModule.def_submodule("object") ;
+    auto object = aModule.def_submodule("object");
 
     // Add __path__ attribute for "object" submodule
-    object.attr("__path__") = "ostk.physics.environment.object" ;
+    object.attr("__path__") = "ostk.physics.environment.object";
 
     // Add elements to object
-    OpenSpaceToolkitPhysicsPy_Environment_Object_Geometry(object) ;
-
+    OpenSpaceToolkitPhysicsPy_Environment_Object_Geometry(object);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

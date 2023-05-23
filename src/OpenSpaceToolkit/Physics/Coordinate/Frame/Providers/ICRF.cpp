@@ -17,42 +17,34 @@ namespace provider
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                                ICRF::ICRF                                  ( )
-{
+ICRF::ICRF() {}
 
+ICRF::~ICRF() {}
+
+ICRF* ICRF::clone() const
+{
+    return new ICRF(*this);
 }
 
-                                ICRF::~ICRF                                 ( )
+bool ICRF::isDefined() const
 {
-
+    return true;
 }
 
-ICRF*                           ICRF::clone                                 ( ) const
+Transform ICRF::getTransformAt(const Instant& anInstant) const
 {
-    return new ICRF(*this) ;
-}
-
-bool                            ICRF::isDefined                             ( ) const
-{
-    return true ;
-}
-
-Transform                       ICRF::getTransformAt                        (   const   Instant&                    anInstant                                   ) const
-{
-
-    (void) anInstant ;
+    (void)anInstant;
 
     // return Transform(anInstant, Vector3d::Zero(), Vector3d::Zero()) ; // THIS IS WRONG
-    return Transform::Undefined() ;
-
+    return Transform::Undefined();
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}
-}
-}
-}
-}
+}  // namespace provider
+}  // namespace frame
+}  // namespace coord
+}  // namespace physics
+}  // namespace ostk
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

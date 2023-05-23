@@ -3,13 +3,13 @@
 #ifndef __OpenSpaceToolkit_Physics_Data_Vector__
 #define __OpenSpaceToolkit_Physics_Data_Vector__
 
-#include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
-#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
-#include <OpenSpaceToolkit/Physics/Unit.hpp>
+#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Objects/Vector.hpp>
 
-#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Physics/Unit.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -22,15 +22,15 @@ namespace data
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using ostk::core::types::Shared ;
-using ostk::core::types::Integer ;
-using ostk::core::types::String ;
+using ostk::core::types::Shared;
+using ostk::core::types::Integer;
+using ostk::core::types::String;
 
-using ostk::math::obj::Vector3d ;
+using ostk::math::obj::Vector3d;
 
-using ostk::physics::Unit ;
-using ostk::physics::time::Instant ;
-using ostk::physics::coord::Frame ;
+using ostk::physics::Unit;
+using ostk::physics::time::Instant;
+using ostk::physics::coord::Frame;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -38,50 +38,42 @@ using ostk::physics::coord::Frame ;
 
 class Vector
 {
+   public:
+    Vector(const Vector3d& aValue, const Unit& aUnit, const Shared<const Frame>& aFrameSPtr);
 
-    public:
+    bool operator==(const Vector& aVector) const;
 
-                                Vector                                      (   const   Vector3d&                   aValue,
-                                                                                const   Unit&                       aUnit,
-                                                                                const   Shared<const Frame>&        aFrameSPtr                                  ) ;
+    bool operator!=(const Vector& aVector) const;
 
-        bool                    operator ==                                 (   const   Vector&                     aVector                                     ) const ;
+    friend std::ostream& operator<<(std::ostream& anOutputStream, const Vector& aVector);
 
-        bool                    operator !=                                 (   const   Vector&                     aVector                                     ) const ;
+    bool isDefined() const;
 
-        friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
-                                                                                const   Vector&                     aVector                                     ) ;
+    Vector3d getValue() const;
 
-        bool                    isDefined                                   ( ) const ;
+    Unit getUnit() const;
 
-        Vector3d                getValue                                    ( ) const ;
+    Shared<const Frame> getFrame() const;
 
-        Unit                    getUnit                                     ( ) const ;
+    Vector inUnit(const Unit& aUnit) const;
 
-        Shared<const Frame>     getFrame                                    ( ) const ;
+    Vector inFrame(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const;
 
-        Vector                  inUnit                                      (   const   Unit&                       aUnit                                       ) const ;
+    String toString(const Integer& aPrecision = Integer::Undefined()) const;
 
-        Vector                  inFrame                                     (   const   Shared<const Frame>&        aFrameSPtr,
-                                                                                const   Instant&                    anInstant                                   ) const ;
+    static Vector Undefined();
 
-        String                  toString                                    (   const   Integer&                    aPrecision                                  =   Integer::Undefined() ) const ;
-
-        static Vector           Undefined                                   ( ) ;
-
-    private:
-
-        Vector3d                value_ ;
-        Unit                    unit_ ;
-        Shared<const Frame>     frameSPtr_ ;
-
-} ;
+   private:
+    Vector3d value_;
+    Unit unit_;
+    Shared<const Frame> frameSPtr_;
+};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}
-}
-}
+}  // namespace data
+}  // namespace physics
+}  // namespace ostk
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

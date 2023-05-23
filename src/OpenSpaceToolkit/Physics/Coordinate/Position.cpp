@@ -1,12 +1,12 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
-#include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
+#include <boost/stacktrace.hpp>
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
 
-#include <boost/stacktrace.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -19,230 +19,211 @@ namespace coord
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                                Position::Position                          (   const   Vector3d&                   aCoordinateSet,
-                                                                                const   Position::Unit&             aUnit,
-                                                                                const   Shared<const Frame>&        aFrameSPtr                                  )
-                                :   coordinates_(aCoordinateSet),
-                                    unit_(aUnit),
-                                    frameSPtr_(aFrameSPtr)
+Position::Position(const Vector3d& aCoordinateSet, const Position::Unit& aUnit, const Shared<const Frame>& aFrameSPtr)
+    : coordinates_(aCoordinateSet),
+      unit_(aUnit),
+      frameSPtr_(aFrameSPtr)
 {
-
 }
 
-                                Position::Position                          (   const   Position&                   aPosition                                   )
-                                :   coordinates_(aPosition.coordinates_),
-                                    unit_(aPosition.unit_),
-                                    frameSPtr_(aPosition.frameSPtr_)
+Position::Position(const Position& aPosition)
+    : coordinates_(aPosition.coordinates_),
+      unit_(aPosition.unit_),
+      frameSPtr_(aPosition.frameSPtr_)
 {
-
 }
 
-Position&                       Position::operator =                        (   const   Position&                   aPosition                                   )
+Position& Position::operator=(const Position& aPosition)
 {
-
     if (this != &aPosition)
     {
-
-        coordinates_ = aPosition.coordinates_ ;
-        unit_ = aPosition.unit_ ;
-        frameSPtr_ = aPosition.frameSPtr_ ;
-
+        coordinates_ = aPosition.coordinates_;
+        unit_ = aPosition.unit_;
+        frameSPtr_ = aPosition.frameSPtr_;
     }
 
-    return *this ;
-
+    return *this;
 }
 
-bool                            Position::operator ==                       (   const   Position&                   aPosition                                   ) const
+bool Position::operator==(const Position& aPosition) const
 {
-
     if ((!this->isDefined()) || (!aPosition.isDefined()))
     {
-        return false ;
+        return false;
     }
 
-    return (coordinates_ == aPosition.coordinates_) && (unit_ == aPosition.unit_) && ((*frameSPtr_) == (*aPosition.frameSPtr_)) ;
-
+    return (coordinates_ == aPosition.coordinates_) && (unit_ == aPosition.unit_) &&
+           ((*frameSPtr_) == (*aPosition.frameSPtr_));
 }
 
-bool                            Position::operator !=                       (   const   Position&                   aPosition                                   ) const
+bool Position::operator!=(const Position& aPosition) const
 {
-    return !((*this) == aPosition) ;
+    return !((*this) == aPosition);
 }
 
-std::ostream&                   operator <<                                 (           std::ostream&               anOutputStream,
-                                                                                const   Position&                   aPosition                                   )
+std::ostream& operator<<(std::ostream& anOutputStream, const Position& aPosition)
 {
+    ostk::core::utils::Print::Header(anOutputStream, "Position");
 
-    ostk::core::utils::Print::Header(anOutputStream, "Position") ;
+    ostk::core::utils::Print::Line(anOutputStream)
+        << "Coordinates:" << (aPosition.coordinates_.isDefined() ? aPosition.coordinates_.toString() : "Undefined");
+    ostk::core::utils::Print::Line(anOutputStream)
+        << "Unit:"
+        << ((aPosition.unit_ != Position::Unit::Undefined) ? Length::StringFromUnit(aPosition.unit_) : "Undefined");
+    ostk::core::utils::Print::Line(anOutputStream)
+        << "Frame:"
+        << (((aPosition.frameSPtr_ != nullptr) && aPosition.frameSPtr_->isDefined()) ? aPosition.frameSPtr_->getName()
+                                                                                     : "Undefined");
 
-    ostk::core::utils::Print::Line(anOutputStream) << "Coordinates:"         << (aPosition.coordinates_.isDefined() ? aPosition.coordinates_.toString() : "Undefined") ;
-    ostk::core::utils::Print::Line(anOutputStream) << "Unit:"                << ((aPosition.unit_ != Position::Unit::Undefined) ? Length::StringFromUnit(aPosition.unit_) : "Undefined") ;
-    ostk::core::utils::Print::Line(anOutputStream) << "Frame:"               << (((aPosition.frameSPtr_ != nullptr) && aPosition.frameSPtr_->isDefined()) ? aPosition.frameSPtr_->getName() : "Undefined") ;
+    ostk::core::utils::Print::Footer(anOutputStream);
 
-    ostk::core::utils::Print::Footer(anOutputStream) ;
-
-    return anOutputStream ;
-
+    return anOutputStream;
 }
 
-bool                            Position::isDefined                         ( ) const
+bool Position::isDefined() const
 {
-    return coordinates_.isDefined() && (unit_ != Position::Unit::Undefined) && (frameSPtr_ != nullptr) && frameSPtr_->isDefined() ;
+    return coordinates_.isDefined() && (unit_ != Position::Unit::Undefined) && (frameSPtr_ != nullptr) &&
+           frameSPtr_->isDefined();
 }
 
-bool                            Position::isNear                            (   const   Position&                   aPosition,
-                                                                                const   Length&                     aTolerance                                  ) const
+bool Position::isNear(const Position& aPosition, const Length& aTolerance) const
 {
-
     if (!aPosition.isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Position") ;
+        throw ostk::core::error::runtime::Undefined("Position");
     }
 
     if (!aTolerance.isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Length") ;
+        throw ostk::core::error::runtime::Undefined("Length");
     }
 
     if (!this->isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Position") ;
+        throw ostk::core::error::runtime::Undefined("Position");
     }
 
     if (frameSPtr_ != aPosition.frameSPtr_)
     {
-        throw ostk::core::error::RuntimeError("Position are expressed in different frames.") ;
+        throw ostk::core::error::RuntimeError("Position are expressed in different frames.");
     }
 
     if (unit_ == aPosition.unit_)
     {
-        return (coordinates_ - aPosition.coordinates_).norm() <= aTolerance.in(unit_) ;
+        return (coordinates_ - aPosition.coordinates_).norm() <= aTolerance.in(unit_);
     }
     else
     {
-        return (coordinates_ - aPosition.inUnit(unit_).coordinates_).norm() <= aTolerance.in(unit_) ;
+        return (coordinates_ - aPosition.inUnit(unit_).coordinates_).norm() <= aTolerance.in(unit_);
     }
 
-    return false ;
-
+    return false;
 }
 
-const Vector3d&                 Position::accessCoordinates                 ( ) const
+const Vector3d& Position::accessCoordinates() const
 {
-
     if (!this->isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Position") ;
+        throw ostk::core::error::runtime::Undefined("Position");
     }
 
-    return coordinates_ ;
-
+    return coordinates_;
 }
 
-Shared<const Frame>             Position::accessFrame                       ( ) const
+Shared<const Frame> Position::accessFrame() const
 {
-
     if (!this->isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Position") ;
+        throw ostk::core::error::runtime::Undefined("Position");
     }
 
-    return frameSPtr_ ;
-
+    return frameSPtr_;
 }
 
-Vector3d                        Position::getCoordinates                    ( ) const
+Vector3d Position::getCoordinates() const
 {
-
     if (!this->isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Position") ;
+        throw ostk::core::error::runtime::Undefined("Position");
     }
 
-    return coordinates_ ;
-
+    return coordinates_;
 }
 
-Position::Unit                  Position::getUnit                           ( ) const
+Position::Unit Position::getUnit() const
 {
-
     if (!this->isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Position") ;
+        throw ostk::core::error::runtime::Undefined("Position");
     }
 
-    return unit_ ;
-
+    return unit_;
 }
 
-Position                        Position::inUnit                            (   const   Position::Unit&             aUnit                                       ) const
+Position Position::inUnit(const Position::Unit& aUnit) const
 {
-
     if (aUnit == Position::Unit::Undefined)
     {
-        throw ostk::core::error::runtime::Undefined("Unit") ;
+        throw ostk::core::error::runtime::Undefined("Unit");
     }
 
     if (!this->isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Position") ;
+        throw ostk::core::error::runtime::Undefined("Position");
     }
 
-    return { coordinates_ * Length(1.0, unit_).in(aUnit), aUnit, frameSPtr_ } ;
-
+    return {coordinates_ * Length(1.0, unit_).in(aUnit), aUnit, frameSPtr_};
 }
 
-Position                        Position::inMeters                          ( ) const
+Position Position::inMeters() const
 {
-    return this->inUnit(Position::Unit::Meter) ;
+    return this->inUnit(Position::Unit::Meter);
 }
 
-Position                        Position::inFrame                           (   const   Shared<const Frame>&        aFrameSPtr,
-                                                                                const   Instant&                    anInstant                                   ) const
+Position Position::inFrame(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const
 {
-
     if ((aFrameSPtr == nullptr) || (!aFrameSPtr->isDefined()))
     {
-        throw ostk::core::error::runtime::Undefined("Frame") ;
+        throw ostk::core::error::runtime::Undefined("Frame");
     }
 
     if (!this->isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Position") ;
+        throw ostk::core::error::runtime::Undefined("Position");
     }
 
-    return { frameSPtr_->getTransformTo(aFrameSPtr, anInstant).applyToPosition(coordinates_), unit_, aFrameSPtr } ;
-
+    return {frameSPtr_->getTransformTo(aFrameSPtr, anInstant).applyToPosition(coordinates_), unit_, aFrameSPtr};
 }
 
-String                          Position::toString                          (   const   Integer&                    aPrecision                                  ) const
+String Position::toString(const Integer& aPrecision) const
 {
-
     if (!this->isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Position") ;
+        throw ostk::core::error::runtime::Undefined("Position");
     }
 
-    return String::Format("{} [{}] @ {}", (aPrecision.isDefined() ? coordinates_.toString(aPrecision) : coordinates_.toString()), Length::SymbolFromUnit(unit_), frameSPtr_->getName()) ;
-
+    return String::Format(
+        "{} [{}] @ {}",
+        (aPrecision.isDefined() ? coordinates_.toString(aPrecision) : coordinates_.toString()),
+        Length::SymbolFromUnit(unit_),
+        frameSPtr_->getName()
+    );
 }
 
-Position                        Position::Undefined                         ( )
+Position Position::Undefined()
 {
-    return { Vector3d::Undefined(), Position::Unit::Undefined, nullptr } ;
+    return {Vector3d::Undefined(), Position::Unit::Undefined, nullptr};
 }
 
-Position                        Position::Meters                            (   const   Vector3d&                   aCoordinateSet,
-                                                                                const   Shared<const Frame>&        aFrameSPtr                                  )
+Position Position::Meters(const Vector3d& aCoordinateSet, const Shared<const Frame>& aFrameSPtr)
 {
-    return { aCoordinateSet, Position::Unit::Meter, aFrameSPtr } ;
+    return {aCoordinateSet, Position::Unit::Meter, aFrameSPtr};
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}
-}
-}
+}  // namespace coord
+}  // namespace physics
+}  // namespace ostk
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

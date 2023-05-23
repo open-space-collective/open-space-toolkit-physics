@@ -3,10 +3,10 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Atmospheric_Model__
 #define __OpenSpaceToolkit_Physics_Environment_Atmospheric_Model__
 
+#include <OpenSpaceToolkit/Core/Types/Real.hpp>
+
 #include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
-
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -21,10 +21,10 @@ namespace atmospheric
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using ostk::core::types::Real ;
+using ostk::core::types::Real;
 
-using ostk::physics::time::Instant ;
-using ostk::physics::coord::Position ;
+using ostk::physics::time::Instant;
+using ostk::physics::coord::Position;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -32,40 +32,36 @@ using ostk::physics::coord::Position ;
 
 class Model
 {
+   public:
+    /// @brief              Constructor (default)
 
-    public:
+    Model();
 
-        /// @brief              Constructor (default)
+    /// @brief              Destructor (pure virtual)
 
-                                Model                                       ( ) ;
+    virtual ~Model() = 0;
 
-        /// @brief              Destructor (pure virtual)
+    /// @brief              Clone the atmospheric model (pure virtual)
+    ///
+    /// @return             Pointer to atmospheric model
 
-        virtual                 ~Model                                      ( ) = 0 ;
+    virtual Model* clone() const = 0;
 
-        /// @brief              Clone the atmospheric model (pure virtual)
-        ///
-        /// @return             Pointer to atmospheric model
+    /// @brief              Get the atmospheric density value at a given position and instant
+    ///
+    /// @param              [in] aPosition A Position
+    /// @param              [in] anInstant An Instant
+    /// @return             Atmospheric density value [kg.m^-3]
 
-        virtual Model*          clone                                       ( ) const = 0 ;
-
-        /// @brief              Get the atmospheric density value at a given position and instant
-        ///
-        /// @param              [in] aPosition A Position
-        /// @param              [in] anInstant An Instant
-        /// @return             Atmospheric density value [kg.m^-3]
-
-        virtual Real            getDensityAt                                (   const   Position&                   aPosition,
-                                                                                const   Instant&                    anInstant                                   ) const = 0 ;
-
-} ;
+    virtual Real getDensityAt(const Position& aPosition, const Instant& anInstant) const = 0;
+};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}
-}
-}
-}
+}  // namespace atmospheric
+}  // namespace environment
+}  // namespace physics
+}  // namespace ostk
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

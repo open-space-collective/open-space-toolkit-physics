@@ -3,17 +3,17 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Moon__
 #define __OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Moon__
 
-#include <OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Objects/Celestial.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Object.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp>
-#include <OpenSpaceToolkit/Physics/Units/Derived.hpp>
-#include <OpenSpaceToolkit/Physics/Units/Length.hpp>
+#include <OpenSpaceToolkit/Core/Types/Real.hpp>
+#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/Ellipsoid.hpp>
 
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
-#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Object.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Objects/Celestial.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Derived.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Length.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -30,74 +30,73 @@ namespace celest
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using ostk::core::types::Shared ;
-using ostk::core::types::Real ;
+using ostk::core::types::Shared;
+using ostk::core::types::Real;
 
-using ostk::math::geom::d3::objects::Ellipsoid ;
+using ostk::math::geom::d3::objects::Ellipsoid;
 
-using ostk::physics::units::Length ;
-using ostk::physics::units::Derived ;
-using ostk::physics::env::Ephemeris ;
-using ostk::physics::env::Object ;
-using ostk::physics::env::obj::Celestial ;
-using MoonGravitationalModel = ostk::physics::environment::gravitational::Moon ;
+using ostk::physics::units::Length;
+using ostk::physics::units::Derived;
+using ostk::physics::env::Ephemeris;
+using ostk::physics::env::Object;
+using ostk::physics::env::obj::Celestial;
+using MoonGravitationalModel = ostk::physics::environment::gravitational::Moon;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 class Moon : public Celestial
 {
+   public:
+    static Derived GravitationalParameter;
+    static Length EquatorialRadius;
+    static Real Flattening;
 
-    public:
+    /// @brief              Constructor
+    ///
+    /// @param              [in] anEphemeris An ephemeris for the Moon celestial object
+    /// @param              [in] aGravitationalModelType A gravitational model type for the Moon celestial object
+    /// (Spherical model only)
+    /// @param              [in] anInstant An instant
 
-        static Derived          GravitationalParameter ;
-        static Length           EquatorialRadius ;
-        static Real             Flattening ;
+    Moon(
+        const Shared<Ephemeris>& anEphemeris,
+        const MoonGravitationalModel::Type& aGravitationalModelType,
+        const Instant& anInstant
+    );
 
-        /// @brief              Constructor
-        ///
-        /// @param              [in] anEphemeris An ephemeris for the Moon celestial object
-        /// @param              [in] aGravitationalModelType A gravitational model type for the Moon celestial object (Spherical model only)
-        /// @param              [in] anInstant An instant
+    /// @brief              Destructor
 
-                                Moon                                        (   const   Shared<Ephemeris>&          anEphemeris,
-                                                                                const   MoonGravitationalModel::Type& aGravitationalModelType,
-                                                                                const   Instant&                    anInstant                                   ) ;
+    virtual ~Moon() override;
 
-        /// @brief              Destructor
+    /// @brief              Clone the Moon celestial object
+    ///
+    /// @return             Pointer to Moon celestial object
 
-        virtual                 ~Moon                                       ( ) override ;
+    virtual Moon* clone() const override;
 
-        /// @brief              Clone the Moon celestial object
-        ///
-        /// @return             Pointer to Moon celestial object
+    /// @brief              Default Moon model (Spherical)
+    ///
+    /// @return             Moon
 
-        virtual Moon*           clone                                       ( ) const override ;
+    static Moon Default();
 
-        /// @brief              Default Moon model (Spherical)
-        ///
-        /// @return             Moon
+    /// @brief              Spherical model
+    ///
+    /// @return             Moon
 
-        static Moon             Default                                     ( ) ;
+    static Moon Spherical();
 
-        /// @brief              Spherical model
-        ///
-        /// @return             Moon
-
-        static Moon             Spherical                                   ( ) ;
-
-    private:
-
-        static Object::Geometry Geometry                                    (   const   Shared<const Frame>&        aFrameSPtr                                  ) ;
-
-} ;
+   private:
+    static Object::Geometry Geometry(const Shared<const Frame>& aFrameSPtr);
+};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}
-}
-}
-}
-}
+}  // namespace celest
+}  // namespace obj
+}  // namespace env
+}  // namespace physics
+}  // namespace ostk
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

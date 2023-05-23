@@ -3,14 +3,14 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth__
 #define __OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth__
 
-#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp>
-#include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
-#include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
-#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
-
 #include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
 #include <OpenSpaceToolkit/Core/Types/Real.hpp>
 #include <OpenSpaceToolkit/Core/Types/Unique.hpp>
+
+#include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -25,14 +25,14 @@ namespace atmospheric
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using ostk::core::types::Unique ;
-using ostk::core::types::Real ;
-using ostk::core::fs::Directory ;
+using ostk::core::types::Unique;
+using ostk::core::types::Real;
+using ostk::core::fs::Directory;
 
-using ostk::physics::time::Instant ;
-using ostk::physics::coord::Position ;
-using ostk::physics::coord::spherical::LLA ;
-using ostk::physics::environment::atmospheric::Model ;
+using ostk::physics::time::Instant;
+using ostk::physics::coord::Position;
+using ostk::physics::coord::spherical::LLA;
+using ostk::physics::environment::atmospheric::Model;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -40,89 +40,80 @@ using ostk::physics::environment::atmospheric::Model ;
 
 class Earth : public Model
 {
+   public:
+    enum class Type
+    {
+        Exponential,
+        NRLMSISE00
+    };
 
-    public:
+    /// @brief              Constructor
+    ///
+    /// @param              [in] aType An atmospheric model type
+    /// @param              [in] (optional) aDataDirectory An atmospheric model data directory
 
-        enum class Type
-        {
-            Exponential,
-            NRLMSISE00
-        } ;
+    Earth(const Earth::Type& aType, const Directory& aDataDirectory = Directory::Undefined());
 
-        /// @brief              Constructor
-        ///
-        /// @param              [in] aType An atmospheric model type
-        /// @param              [in] (optional) aDataDirectory An atmospheric model data directory
+    /// @brief              Copy constructor
+    ///
+    /// @param              [in] anEarthAtmosphericModel An Earth atmospheric model
 
-                                Earth                                       (   const   Earth::Type&                aType,
-                                                                                const   Directory&                  aDataDirectory                              =   Directory::Undefined() ) ;
+    Earth(const Earth& anEarthAtmosphericModel);
 
-        /// @brief              Copy constructor
-        ///
-        /// @param              [in] anEarthAtmosphericModel An Earth atmospheric model
+    /// @brief              Copy assignment operator
+    ///
+    /// @param              [in] anEarthAtmosphericModel An Earth atmospheric model
+    /// @return             Reference to Earth atmospheric model
 
-                                Earth                                       (   const   Earth&                      anEarthAtmosphericModel                     ) ;
+    Earth& operator=(const Earth& anEarthAtmosphericModel);
 
-        /// @brief              Copy assignment operator
-        ///
-        /// @param              [in] anEarthAtmosphericModel An Earth atmospheric model
-        /// @return             Reference to Earth atmospheric model
+    /// @brief              Destructor
 
-        Earth&                  operator =                                  (   const   Earth&                      anEarthAtmosphericModel                     ) ;
+    ~Earth();
 
-        /// @brief              Destructor
+    /// @brief              Clone the Earth atmospheric model
+    ///
+    /// @return             Pointer to Earth atmospheric model
 
-                                ~Earth                                      ( ) ;
+    virtual Earth* clone() const override;
 
-        /// @brief              Clone the Earth atmospheric model
-        ///
-        /// @return             Pointer to Earth atmospheric model
+    /// @brief              Get atmospheric model type
+    ///
+    /// @return             Atmospheric model type
 
-        virtual Earth*          clone                                       ( ) const override ;
+    Earth::Type getType() const;
 
-        /// @brief              Get atmospheric model type
-        ///
-        /// @return             Atmospheric model type
+    /// @brief              Get the atmospheric density value at a given position and instant
+    ///
+    /// @param              [in] aPosition A Position
+    /// @param              [in] anInstant An Instant
+    /// @return             Atmospheric density value [kg.m^-3]
 
-        Earth::Type             getType                                     ( ) const ;
+    Real getDensityAt(const Position& aPosition, const Instant& anInstant) const override;
 
-        /// @brief              Get the atmospheric density value at a given position and instant
-        ///
-        /// @param              [in] aPosition A Position
-        /// @param              [in] anInstant An Instant
-        /// @return             Atmospheric density value [kg.m^-3]
+    /// @brief              Get the atmospheric density value at a given position and instant
+    ///
+    /// @param              [in] aLLA A position, expressed as latitude, longitude, altitude [deg, deg, m]
+    /// @param              [in] anInstant An instant
+    /// @return             Atmospheric density value [kg.m^-3]
 
-        Real                    getDensityAt                                (   const   Position&                   aPosition,
-                                                                                const   Instant&                    anInstant                                   ) const override ;
+    Real getDensityAt(const LLA& aLLA, const Instant& anInstant) const;
 
-        /// @brief              Get the atmospheric density value at a given position and instant
-        ///
-        /// @param              [in] aLLA A position, expressed as latitude, longitude, altitude [deg, deg, m]
-        /// @param              [in] anInstant An instant
-        /// @return             Atmospheric density value [kg.m^-3]
+   private:
+    class Impl;
+    class ExponentialImpl;
 
-        Real                    getDensityAt                                (   const   LLA&                        aLLA,
-                                                                                const   Instant&                    anInstant                                   ) const ;
+    Unique<Impl> implUPtr_;
 
-
-
-    private:
-
-        class Impl ;
-        class ExponentialImpl ;
-
-        Unique<Impl>            implUPtr_ ;
-
-        static Unique<Impl>     ImplFromType                                (   const   Type&                       aType,
-                                                                                const   Directory&                  aDataDirectory                              = Directory::Undefined() ) ;
-} ;
+    static Unique<Impl> ImplFromType(const Type& aType, const Directory& aDataDirectory = Directory::Undefined());
+};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}
-}
-}
-}
+}  // namespace atmospheric
+}  // namespace environment
+}  // namespace physics
+}  // namespace ostk
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

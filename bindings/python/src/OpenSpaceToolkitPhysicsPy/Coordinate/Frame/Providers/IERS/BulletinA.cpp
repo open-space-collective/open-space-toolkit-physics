@@ -4,16 +4,15 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers_IERS_BulletinA ( pybind11::module& aModule                                 )
+inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers_IERS_BulletinA(pybind11::module& aModule)
 {
+    using namespace pybind11;
 
-    using namespace pybind11 ;
+    using ostk::core::types::Shared;
 
-    using ostk::core::types::Shared ;
+    using ostk::physics::coord::frame::provider::iers::BulletinA;
 
-    using ostk::physics::coord::frame::provider::iers::BulletinA ;
-
-    class_<BulletinA> bulletinA(aModule, "BulletinA") ;
+    class_<BulletinA> bulletinA(aModule, "BulletinA");
 
     bulletinA
 
@@ -39,7 +38,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provi
         .def_static("undefined", &BulletinA::Undefined)
         .def_static("load", &BulletinA::Load, arg("file"))
 
-    ;
+        ;
 
     class_<BulletinA::Observation>(bulletinA, "Observation")
 
@@ -54,7 +53,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provi
         .def_readonly("ut1_minus_utc", &BulletinA::Observation::ut1MinusUtc)
         .def_readonly("ut1_minus_utc_error", &BulletinA::Observation::ut1MinusUtcError)
 
-    ;
+        ;
 
     class_<BulletinA::Prediction>(bulletinA, "Prediction")
 
@@ -66,8 +65,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provi
         .def_readonly("y", &BulletinA::Prediction::y)
         .def_readonly("ut1_minus_utc", &BulletinA::Prediction::ut1MinusUtc)
 
-    ;
-
+        ;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
