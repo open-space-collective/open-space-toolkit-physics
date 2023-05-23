@@ -1,11 +1,4 @@
-################################################################################################################################################################
-
-# @project        Open Space Toolkit ▸ Physics
-# @file           bindings/python/test/environment/gravitational/earth/test_manager.py
-# @author         Antoine Paletta <antoine.paletta@loftorbital.com>
-# @license        Apache License 2.0
-
-################################################################################################################################################################
+# Apache License 2.0
 
 import pytest
 

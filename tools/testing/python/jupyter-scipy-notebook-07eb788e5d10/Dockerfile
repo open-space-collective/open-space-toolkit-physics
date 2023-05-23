@@ -1,11 +1,4 @@
-################################################################################################################################################################
-
-# @project        Open Space Toolkit ▸ Physics
-# @file           tools/testing/python/jupyter-scipy-notebook-07eb788e5d10/Dockerfile
-# @author         Lucas Brémond <lucas@loftorbital.com>
-# @license        Apache License 2.0
-
-################################################################################################################################################################
+# Apache License 2.0
 
 FROM jupyter/scipy-notebook:07eb788e5d10
 

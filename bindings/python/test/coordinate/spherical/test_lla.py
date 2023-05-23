@@ -1,11 +1,4 @@
-################################################################################################################################################################
-
-# @project        Open Space Toolkit ▸ Physics
-# @file           bindings/python/test/coordinate/spherical/test_lla.py
-# @author         Remy Derollez <remy@loftorbital.com>
-# @license        Apache License 2.0
-
-################################################################################################################################################################
+# Apache License 2.0
 
 import pytest
 import numpy as np

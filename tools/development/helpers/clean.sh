@@ -1,13 +1,6 @@
 #!/bin/bash
 
-################################################################################################################################################################
-
-# @project        Open Space Toolkit ▸ Physics
-# @file           tools/development/helpers/clean.sh
-# @author         Lucas Brémond <lucas@loftorbital.com>
-# @license        Apache License 2.0
-
-################################################################################################################################################################
+# Apache License 2.0
 
 project_directory="$(git rev-parse --show-toplevel)"
 
