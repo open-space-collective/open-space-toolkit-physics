@@ -19,6 +19,8 @@ jupyter_python_version := 3.8
 project_name_camel_case := $(shell echo $(project_name) | sed -r 's/(^|-)([a-z])/\U\2/g')
 jupyter_project_name_python_shared_object := $(shell echo "OpenSpaceToolkit${project_name_camel_case}.cpython-38-x86_64-linux-gnu")
 
+clang_format_sources_path ?= $(shell find ~+ src/ include/ test/ bindings/python/src/ -name '*.cpp' -o -name '*.cxx' -o -name '*.hpp' -o -name '*.tpp')
+
 
 ################################################################################################################################################################
 
@@ -295,6 +297,30 @@ debug-python-release: build-release-image-python ## Debug Python release environ
 		--rm \
 		--entrypoint=/bin/bash \
 		$(docker_release_image_python_repository):$(docker_image_version)
+
+format: build-development-image ## Format all of the source code with the rules in .clang-format
+
+	docker run \
+		--rm \
+		--volume="$(CURDIR):/app" \
+		--workdir=/app \
+		--user="$(shell id -u):$(shell id -g)" \
+		$(docker_development_image_repository):$(docker_image_version) \
+		clang-format -i -style=file:thirdparty/clang/.clang-format ${clang_format_sources_path}
+
+.PHONY: format
+
+format-check: build-development-image ## Runs the clang-format tool to check the code against rules and formatting
+
+	docker run \
+		--rm \
+		--volume="$(CURDIR):/app" \
+		--workdir=/app \
+		--user="$(shell id -u):$(shell id -g)" \
+		$(docker_development_image_repository):$(docker_image_version) \
+		clang-format -Werror --dry-run -style=file:thirdparty/clang/.clang-format ${clang_format_sources_path}
+
+.PHONY: format-check
 
 ################################################################################################################################################################
 
