@@ -1,4 +1,4 @@
-/// Apache License 2.0
+/// Apache License 2.0 
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/TOD.hpp>

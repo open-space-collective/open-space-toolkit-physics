@@ -1,4 +1,11 @@
-/// Apache License 2.0
+################################################################################################################################################################
+
+# @project        Open Space Toolkit ▸ Physics
+# @file           docker/jupyter/Dockerfile
+# @author         Lucas Brémond <lucas@loftorbital.com>
+# @license        Apache License 2.0
+
+################################################################################################################################################################
 
 ARG JUPYTER_NOTEBOOK_IMAGE_REPOSITORY="jupyter/scipy-notebook:python-3.8.8"
 

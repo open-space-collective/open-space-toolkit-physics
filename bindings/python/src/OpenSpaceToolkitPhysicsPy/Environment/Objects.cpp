@@ -1,4 +1,4 @@
-/// Apache License 2.0
+/// Apache License 2.0 
 
 #include <OpenSpaceToolkitPhysicsPy/Environment/Objects/CelestialBodies.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Environment/Objects/Celestial.cpp>

@@ -1,4 +1,4 @@
-/// Apache License 2.0
+/// Apache License 2.0 
 
 #include <OpenSpaceToolkitPhysicsPy/Units/Derived/Angle.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Units/Derived.cpp>

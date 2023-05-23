@@ -1,4 +1,11 @@
-/// Apache License 2.0
+################################################################################################################################################################
+
+# @project        Open Space Toolkit ▸ Physics
+# @file           Makefile
+# @author         Lucas Brémond <lucas@loftorbital.com>
+# @license        Apache License 2.0
+
+################################################################################################################################################################
 
 project_name := physics
 project_version := $(shell git describe --tags --always)

@@ -1,4 +1,11 @@
-/// Apache License 2.0
+################################################################################################################################################################
+
+# @project        Open Space Toolkit ▸ Physics
+# @file           bindings/python/test/environment/objects/celestial/test_sun.py
+# @author         Antoine Paletta <antoine.paletta@loftorbital.com>
+# @license        Apache License 2.0
+
+################################################################################################################################################################
 
 from ostk.physics.environment.objects.celestial_bodies import Sun
 

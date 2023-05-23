@@ -1,4 +1,4 @@
-/// Apache License 2.0
+/// Apache License 2.0 
 
 #include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Sun.hpp>
 #include <OpenSpaceToolkit/Physics/Environment.hpp>

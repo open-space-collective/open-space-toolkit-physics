@@ -1,6 +1,13 @@
 #!/bin/bash
 
-/// Apache License 2.0
+################################################################################################################################################################
+
+# @project        Open Space Toolkit ▸ Physics
+# @file           tools/testing/python/jupyter-scipy-notebook-07eb788e5d10/build.sh
+# @author         Lucas Brémond <lucas@loftorbital.com>
+# @license        Apache License 2.0
+
+################################################################################################################################################################
 
 set -a
 set -e

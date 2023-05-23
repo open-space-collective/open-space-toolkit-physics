@@ -1,4 +1,11 @@
-/// Apache License 2.0
+################################################################################################################################################################
+
+# @project        Open Space Toolkit ▸ Physics
+# @file           tools/cmake/OpenSpaceToolkitPhysicsConfigVersion.cmake.in
+# @author         Lucas Brémond <lucas@loftorbital.com>
+# @license        Apache License 2.0
+
+################################################################################################################################################################
 
 SET (PACKAGE_VERSION "@PROJECT_VERSION@")
 SET (PACKAGE_VERSION_MAJOR "@PROJECT_VERSION_MAJOR@")

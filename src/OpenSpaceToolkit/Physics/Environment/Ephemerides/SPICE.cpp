@@ -1,4 +1,4 @@
-/// Apache License 2.0
+/// Apache License 2.0 
 
 #include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Engine.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE.hpp>

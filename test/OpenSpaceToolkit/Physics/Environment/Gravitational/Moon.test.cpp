@@ -1,4 +1,4 @@
-/// Apache License 2.0
+/// Apache License 2.0 
 
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>

@@ -1,4 +1,4 @@
-/// Apache License 2.0
+/// Apache License 2.0 
 
 #ifndef __OpenSpaceToolkit_Physics_Units_Derived_Angle__
 #define __OpenSpaceToolkit_Physics_Units_Derived_Angle__

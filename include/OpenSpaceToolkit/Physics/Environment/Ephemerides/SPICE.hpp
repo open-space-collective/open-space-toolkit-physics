@@ -1,4 +1,4 @@
-/// Apache License 2.0
+/// Apache License 2.0 
 
 #ifndef __OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE__
 #define __OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE__

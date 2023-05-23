@@ -1,4 +1,4 @@
-/// Apache License 2.0
+/// Apache License 2.0 
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/MOD.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Derived/Angle.hpp>

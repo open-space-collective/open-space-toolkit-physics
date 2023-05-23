@@ -1,4 +1,4 @@
-/// Apache License 2.0
+/// Apache License 2.0 
 
 #ifndef __OpenSpaceToolkit_Physics_Time_Interval__
 #define __OpenSpaceToolkit_Physics_Time_Interval__

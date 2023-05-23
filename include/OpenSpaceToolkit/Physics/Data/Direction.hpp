@@ -1,4 +1,4 @@
-/// Apache License 2.0
+/// Apache License 2.0 
 
 #ifndef __OpenSpaceToolkit_Physics_Data_Direction__
 #define __OpenSpaceToolkit_Physics_Data_Direction__
