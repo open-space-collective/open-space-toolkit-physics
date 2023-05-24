@@ -10,8 +10,9 @@
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformations/Rotations/RotationVector.hpp>
 
 #include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Engine.hpp>
+// Include Manager.hpp before Engine.hpp to avoid name conflict for "ostk::core::types::Index" 
 #include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Manager.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Engine.hpp>
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
