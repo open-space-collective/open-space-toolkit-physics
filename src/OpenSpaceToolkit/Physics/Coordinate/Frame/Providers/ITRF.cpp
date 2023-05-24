@@ -1,7 +1,5 @@
 /// Apache License 2.0
 
-#include <sofa/sofa.h>
-
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Types/Real.hpp>
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
@@ -13,6 +11,9 @@
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/ITRF.hpp>
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
+
+// Include sofa last to avoid type errors in underlying Eigen lib
+#include <sofa/sofa.h>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -1,7 +1,5 @@
 /// Apache License 2.0
 
-#include <sofa/sofa.h>
-
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
 
@@ -11,6 +9,8 @@
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Derived/Angle.hpp>
+
+#include <sofa/sofa.h>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -1,13 +1,14 @@
 /// Apache License 2.0
 
-#include <sofa/sofa.h>
-
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformations/Rotations/RotationMatrix.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/J2000.hpp>
+
+// Include sofa last to avoid type errors in underlying Eigen lib
+#include <sofa/sofa.h>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
