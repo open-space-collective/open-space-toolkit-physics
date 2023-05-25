@@ -6,13 +6,9 @@ from ostk.core.types import Real, String
 
 import ostk.physics as physics
 
-################################################################################################################################################################
-
 Length = physics.units.Length
 Unit = Length.Unit
 Interval = physics.units.Interval
-
-################################################################################################################################################################
 
 
 def test_units_length_unit():
@@ -39,9 +35,6 @@ def test_units_length_unit():
     assert enum_members is not None
     assert list(enum_members.keys()) == list_keys
     assert list(enum_members.values()) == list_values
-
-
-################################################################################################################################################################
 
 
 def test_units_length_constructors():
@@ -88,9 +81,6 @@ def test_units_length_constructors():
     assert length.is_defined() is True
 
 
-################################################################################################################################################################
-
-
 def test_units_length_comparators():
     length_1: Length = Length(4.0, Unit.Meter)
     length_2: Length = Length(3.5, Unit.Meter)
@@ -108,9 +98,6 @@ def test_units_length_comparators():
     assert length_1 >= length_2
     assert length_2 >= length_2
     assert length_1 > length_2
-
-
-################################################################################################################################################################
 
 
 def test_units_length_operators():
@@ -171,17 +158,11 @@ def test_units_length_operators():
     assert length_1 == Length(4.0, Unit.Meter)
 
 
-################################################################################################################################################################
-
-
 def test_units_length_is_defined():
     length: Length = Length(4.0, Unit.Meter)
 
     assert length.is_defined() is True
     assert length.undefined().is_defined() is False
-
-
-################################################################################################################################################################
 
 
 def test_units_length_get_unit():
@@ -221,9 +202,6 @@ def test_units_length_get_unit():
     assert unit == Unit.AstronomicalUnit
 
 
-################################################################################################################################################################
-
-
 def test_units_length_in_unit():
     length: Length = Length(4.0, Unit.Meter)
 
@@ -243,9 +221,6 @@ def test_units_length_in_unit():
     # assert length.in_unit(Unit.AstronomicalUnit) == 4.0
 
 
-################################################################################################################################################################
-
-
 def test_units_length_in_meters():
     length: Length = Length(4000.0, Unit.Meter)
 
@@ -254,8 +229,6 @@ def test_units_length_in_meters():
     assert length.in_meters() == 4000.0
 
 
-################################################################################################################################################################
-
 # def test_units_length_millimeters ():
 
 #     length: Length = Length(4000.0, Unit.Meter)
@@ -263,8 +236,6 @@ def test_units_length_in_meters():
 #     assert length.in_millimeters() is not None
 #     assert isinstance(length.in_millimeters(), Real)
 #     assert length.in_millimeters() == 4000000.0
-
-################################################################################################################################################################
 
 
 def test_units_length_kilometers():
@@ -275,9 +246,6 @@ def test_units_length_kilometers():
     assert length.in_kilometers() == 4.0
 
 
-################################################################################################################################################################
-
-
 def test_units_length_to_string():
     length: Length = Length(4000.0, Unit.Meter)
 
@@ -286,11 +254,7 @@ def test_units_length_to_string():
     assert length.to_string() == "4000.0 [m]"
 
 
-################################################################################################################################################################
-
 # def test_units_length_parse ():
-
-################################################################################################################################################################
 
 
 def test_units_length_string_from_unit():
@@ -313,9 +277,6 @@ def test_units_length_string_from_unit():
     assert string_4 == "Astronomical Unit"
 
 
-################################################################################################################################################################
-
-
 def test_units_length_symbol_from_unit():
     unit_0: Unit = Length.symbol_from_unit(Unit.Meter)
     unit_1: Unit = Length.symbol_from_unit(Unit.Foot)
@@ -334,6 +295,3 @@ def test_units_length_symbol_from_unit():
     assert unit_2 == "mi"
     assert unit_3 == "nmi"
     assert unit_4 == "AU"
-
-
-################################################################################################################################################################

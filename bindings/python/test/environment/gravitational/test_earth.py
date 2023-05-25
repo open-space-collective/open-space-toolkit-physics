@@ -9,15 +9,10 @@ from ostk.core.filesystem import Directory
 from ostk.physics.time import Instant
 from ostk.physics.environment.gravitational import Earth as EarthGravitationalModel
 
-################################################################################################################################################################
-
 
 @pytest.fixture
 def earth_gravitational_model() -> EarthGravitationalModel:
     return EarthGravitationalModel(EarthGravitationalModel.EarthType.EGM2008)
-
-
-################################################################################################################################################################
 
 
 class TestEarth:
@@ -78,6 +73,3 @@ class TestEarth:
                 for i in range(0, len(grav_acceleration_ref))
             ]
         )
-
-
-################################################################################################################################################################

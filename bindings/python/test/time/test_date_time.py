@@ -8,8 +8,6 @@ from ostk.physics.time import Date
 from ostk.physics.time import Time
 from ostk.physics.time import DateTime
 
-################################################################################################################################################################
-
 
 class TestDateTime:
     def test_constructor_success_full(self):
@@ -230,6 +228,3 @@ class TestDateTime:
         assert date_time == DateTime(2018, 1, 1, 0, 0, 0)
 
         assert (datetime.datetime.now() + datetime.timedelta(days=1)) is not None
-
-
-################################################################################################################################################################

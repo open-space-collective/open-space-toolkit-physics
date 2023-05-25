@@ -8,8 +8,6 @@ from ostk.physics.units import Time
 from ostk.physics.time import Instant
 from ostk.physics.time import Duration
 
-################################################################################################################################################################
-
 
 class TestDuration:
     def test_constructor_success_int(self):
@@ -222,6 +220,3 @@ class TestDuration:
         assert duration is not None
         assert isinstance(duration, Duration)
         assert duration.is_defined() is True
-
-
-################################################################################################################################################################

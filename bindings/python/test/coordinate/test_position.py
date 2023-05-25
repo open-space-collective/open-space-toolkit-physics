@@ -6,16 +6,12 @@ import numpy as np
 from ostk.core.types import String
 import ostk.physics as physics
 
-################################################################################################################################################################
-
 Scale = physics.time.Scale
 DateTime = physics.time.DateTime
 Instant = physics.time.Instant
 Frame = physics.coordinate.Frame
 Position = physics.coordinate.Position
 Unit = physics.units.Length.Unit
-
-################################################################################################################################################################
 
 
 def test_coordinate_position_constructors():
@@ -65,9 +61,6 @@ def test_coordinate_position_constructors():
     assert position.is_defined() is False
 
 
-################################################################################################################################################################
-
-
 def test_coordinate_position_comparators():
     frame: Frame = Frame.GCRF()
     unit: Unit = Unit.Meter
@@ -82,9 +75,6 @@ def test_coordinate_position_comparators():
     assert position_1 != position_2
 
 
-################################################################################################################################################################
-
-
 def test_coordinate_position_is_defined():
     frame: Frame = Frame.GCRF()
     unit: Unit = Unit.Meter
@@ -93,9 +83,6 @@ def test_coordinate_position_is_defined():
 
     assert position.is_defined()
     assert Position.undefined().is_defined() is False
-
-
-################################################################################################################################################################
 
 
 @pytest.mark.skip
@@ -113,9 +100,6 @@ def test_coordinate_position_is_near():
     assert position_2.is_near(position_1, Unit.Meter)
 
 
-################################################################################################################################################################
-
-
 def test_coordinate_position_access_frame():
     frame: Frame = Frame.GCRF()
     unit: Unit = Unit.Meter
@@ -128,9 +112,6 @@ def test_coordinate_position_access_frame():
     assert ans_frame is not None
     assert isinstance(ans_frame, Frame)
     assert ans_frame == frame
-
-
-################################################################################################################################################################
 
 
 def test_coordinate_position_get_coordinates():
@@ -147,9 +128,6 @@ def test_coordinate_position_get_coordinates():
     assert np.array_equal(coordinates, vector)
 
 
-################################################################################################################################################################
-
-
 def test_coordinate_position_get_unit():
     frame: Frame = Frame.GCRF()
     unit: Unit = Unit.Meter
@@ -162,9 +140,6 @@ def test_coordinate_position_get_unit():
     assert ans_unit is not None
     assert isinstance(ans_unit, Unit)
     assert ans_unit == unit
-
-
-################################################################################################################################################################
 
 
 def test_coordinate_position_in_unit():
@@ -187,9 +162,6 @@ def test_coordinate_position_in_unit():
     # assert new_position == position
 
 
-################################################################################################################################################################
-
-
 def test_coordinate_position_in_meters():
     frame: Frame = Frame.GCRF()
     unit: Unit = Unit.Meter
@@ -202,9 +174,6 @@ def test_coordinate_position_in_meters():
     assert new_position is not None
     assert isinstance(new_position, Position)
     assert new_position == position
-
-
-################################################################################################################################################################
 
 
 def test_coordinate_position_in_frame():
@@ -223,9 +192,6 @@ def test_coordinate_position_in_frame():
     assert new_position == position
 
 
-################################################################################################################################################################
-
-
 def test_coordinate_position_to_string():
     frame: Frame = Frame.GCRF()
     unit: Unit = Unit.Meter
@@ -238,6 +204,3 @@ def test_coordinate_position_to_string():
     assert string is not None
     assert isinstance(string, String)
     assert string == "[1000.0, 0.0, 0.0] [m] @ GCRF"
-
-
-################################################################################################################################################################

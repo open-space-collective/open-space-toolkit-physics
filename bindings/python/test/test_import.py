@@ -5,8 +5,6 @@ import pytest
 import ostk.mathematics as mathematics
 import ostk.physics as physics
 
-################################################################################################################################################################
-
 
 def test_import():
     Point = mathematics.geometry.d3.objects.Point
@@ -25,6 +23,3 @@ def test_import():
     Geometry = physics.environment.object.Geometry
     Celestial = physics.environment.objects.Celestial
     Earth = physics.environment.objects.celestial_bodies.Earth
-
-
-################################################################################################################################################################

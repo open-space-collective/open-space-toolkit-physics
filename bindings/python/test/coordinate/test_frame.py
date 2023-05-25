@@ -11,8 +11,6 @@ from ostk.physics.coordinate import Frame
 from ostk.physics.coordinate.frame.providers import iau
 from ostk.physics.coordinate.frame.providers import Dynamic
 
-################################################################################################################################################################
-
 
 @pytest.fixture
 def epoch() -> Instant:
@@ -22,9 +20,6 @@ def epoch() -> Instant:
 @pytest.fixture
 def frame() -> Frame:
     return Frame.ITRF()
-
-
-################################################################################################################################################################
 
 
 class TestFrame:
@@ -110,6 +105,3 @@ class TestFrame:
         Frame.destruct(custom_frame.get_name())
 
         assert Frame.exists(name="Custom Frame") is False
-
-
-################################################################################################################################################################

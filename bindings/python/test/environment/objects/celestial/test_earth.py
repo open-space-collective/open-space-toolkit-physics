@@ -9,8 +9,6 @@ from ostk.physics.environment.objects.celestial_bodies.earth.models import EGM84
 from ostk.physics.environment.objects.celestial_bodies.earth.models import WGS84
 from ostk.physics.environment.objects.celestial_bodies.earth.models import Spherical
 
-################################################################################################################################################################
-
 
 class TestEarth:
     def test_properties_EGM2008(self):
@@ -141,6 +139,3 @@ class TestEarth:
 
         assert earth is not None
         assert isinstance(earth, Earth)
-
-
-################################################################################################################################################################

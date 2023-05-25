@@ -9,12 +9,8 @@ from ostk.core.filesystem import File
 
 import ostk.physics as physics
 
-################################################################################################################################################################
-
 BulletinA = physics.coordinate.frame.providers.iers.BulletinA
 Finals2000A = physics.coordinate.frame.providers.iers.Finals2000A
-
-################################################################################################################################################################
 
 
 @pytest.fixture
@@ -40,6 +36,3 @@ def finals_2000a_file(data_directory_path: str) -> File:
 @pytest.fixture
 def finals_2000a(finals_2000a_file: File) -> Finals2000A:
     return Finals2000A.load(finals_2000a_file)
-
-
-################################################################################################################################################################

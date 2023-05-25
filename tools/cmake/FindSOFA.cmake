@@ -13,5 +13,3 @@ INCLUDE (FindPackageHandleStandardArgs)
 FIND_PACKAGE_HANDLE_STANDARD_ARGS (SOFA DEFAULT_MSG SOFA_LIBRARY SOFA_INCLUDE_DIR)
 
 MARK_AS_ADVANCED (SOFA_INCLUDE_DIR SOFA_LIBRARY)
-
-################################################################################################################################################################

@@ -9,15 +9,10 @@ from ostk.core.filesystem import Directory
 from ostk.physics.time import Instant
 from ostk.physics.environment.gravitational import Moon as MoonGravitationalModel
 
-################################################################################################################################################################
-
 
 @pytest.fixture
 def moon_gravitational_model() -> MoonGravitationalModel:
     return MoonGravitationalModel(MoonGravitationalModel.MoonType.Spherical)
-
-
-################################################################################################################################################################
 
 
 class TestMoon:
@@ -53,6 +48,3 @@ class TestMoon:
                 for i in range(0, len(grav_acceleration_ref))
             ]
         )
-
-
-################################################################################################################################################################

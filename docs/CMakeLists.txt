@@ -41,5 +41,3 @@ ELSE ()
 ENDIF ()
 
 INSTALL (DIRECTORY "${DOCS_OUTPUT_PATH}/html/" DESTINATION ${INSTALL_DOC} COMPONENT "documentation")
-
-################################################################################################################################################################

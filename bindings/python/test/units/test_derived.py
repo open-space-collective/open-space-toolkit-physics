@@ -4,14 +4,10 @@ import pytest
 
 import ostk.physics as physics
 
-################################################################################################################################################################
-
 Length = physics.units.Length
 Time = physics.units.Time
 Angle = physics.units.Angle
 Derived = physics.units.Derived
-
-################################################################################################################################################################
 
 
 def test_units_derived_unit_constructors():
@@ -78,18 +74,12 @@ def test_units_derived_unit_constructors():
     assert isinstance(derived_unit, Derived.Unit)
 
 
-################################################################################################################################################################
-
-
 def test_units_derived_unit_undefined():
     derived_unit: Derived.Unit = Derived.Unit.undefined()
 
     assert derived_unit is not None
     assert isinstance(derived_unit, Derived.Unit)
     assert derived_unit.is_defined() is False
-
-
-################################################################################################################################################################
 
 
 def test_units_derived_unit_comparators():
@@ -99,25 +89,13 @@ def test_units_derived_unit_comparators():
     assert (derived_unit != derived_unit) is False
 
 
-################################################################################################################################################################
-
-
 def test_units_derived_unit_is_compatible_with():
     pass
-
-
-################################################################################################################################################################
 
 
 def test_units_derived_unit_to_string():
     pass
 
 
-################################################################################################################################################################
-
-
 def test_units_derived_unit_get_symbol():
     pass
-
-
-################################################################################################################################################################

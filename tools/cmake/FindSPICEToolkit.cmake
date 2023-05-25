@@ -13,5 +13,3 @@ INCLUDE (FindPackageHandleStandardArgs)
 FIND_PACKAGE_HANDLE_STANDARD_ARGS (SPICEToolkit DEFAULT_MSG SPICEToolkit_LIBRARY SPICEToolkit_INCLUDE_DIR)
 
 MARK_AS_ADVANCED (SPICEToolkit_INCLUDE_DIR SPICEToolkit_LIBRARY)
-
-################################################################################################################################################################

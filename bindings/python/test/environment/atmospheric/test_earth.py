@@ -15,15 +15,10 @@ from ostk.physics.coordinate.spherical import LLA
 from ostk.physics.environment.atmospheric import Earth as EarthAtmosphericModel
 from ostk.physics.environment.objects.celestial_bodies import Earth
 
-################################################################################################################################################################
-
 
 @pytest.fixture
 def earth_atmospheric_model() -> EarthAtmosphericModel:
     return EarthAtmosphericModel(EarthAtmosphericModel.Type.Exponential)
-
-
-################################################################################################################################################################
 
 
 class TestEarth:
@@ -64,6 +59,3 @@ class TestEarth:
         )
 
         assert density is not None
-
-
-################################################################################################################################################################

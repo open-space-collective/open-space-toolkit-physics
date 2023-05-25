@@ -9,15 +9,10 @@ from ostk.core.filesystem import Directory
 from ostk.physics.time import Instant
 from ostk.physics.environment.gravitational import Sun as SunGravitationalModel
 
-################################################################################################################################################################
-
 
 @pytest.fixture
 def sun_gravitational_model() -> SunGravitationalModel:
     return SunGravitationalModel(SunGravitationalModel.SunType.Spherical)
-
-
-################################################################################################################################################################
 
 
 class TestSun:
@@ -52,6 +47,3 @@ class TestSun:
                 for i in range(0, len(grav_acceleration_ref))
             ]
         )
-
-
-################################################################################################################################################################

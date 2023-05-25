@@ -14,8 +14,6 @@ SET (PROJECT_VENDOR_NAME "Lucas Brémond")
 SET (PROJECT_VENDOR_CONTACT "lucas.bremond@gmail.com")
 SET (PROJECT_VENDOR_URL "lucas.bremond.info")
 
-################################################################################################################################################################
-
 ## Setup
 
 ### Compatibility Check
@@ -34,13 +32,9 @@ CMAKE_POLICY (SET "CMP0048" NEW)
 
 OPTION (BUILD_WHEELS_IN_CMAKE "Build python wheels with cmake." ON)
 
-################################################################################################################################################################
-
 ## Project Configuration
 
 PROJECT (${PROJECT_NAME} VERSION ${PROJECT_VERSION_STRING} LANGUAGES "C" "CXX")
-
-################################################################################################################################################################
 
 ## Helper Functions
 
@@ -174,8 +168,6 @@ FUNCTION (PY_ADD_PACKAGE_DIRECTORY NAME)
     ADD_DEPENDENCIES (${NAME} "${LIBRARY_TARGET}_${PYTHON_VERSION}")
 ENDFUNCTION ()
 
-################################################################################################################################################################
-
 ## Dependencies
 
 ### Pybind11
@@ -211,8 +203,6 @@ ENDFOREACH ()
 
 # SET (EIGEN_NUMPY_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/thirdparty/boost_numpy_eigen")
 
-################################################################################################################################################################
-
 ## Target
 
 SET (LIBRARY_NAME ${PROJECT_PACKAGE_NAME})
@@ -236,8 +226,6 @@ FOREACH (PYTHON_VERSION ${PYTHON_VERSIONS})
     INSTALL (FILES "${PROJECT_SOURCE_DIR}/tools/python/${PROJECT_PATH}/__init__.py" DESTINATION "${INSTALL_LIB}/${PROJECT_PATH}" COMPONENT "python")
 ENDFOREACH ()
 
-################################################################################################################################################################
-
 ## Generate python package directory/wheels
 
 # Generate a python-package target for each of the python versions that are considered here
@@ -249,5 +237,3 @@ FOREACH (PYTHON_VERSION ${PYTHON_VERSIONS})
     MESSAGE (STATUS "Building package directory for python ${PYTHON_VERSION}...")
     PY_ADD_PACKAGE_DIRECTORY ("${PACKAGE_TARGET}-${PYTHON_VERSION}" PYTHON_VERSION ${PYTHON_VERSION})
 ENDFOREACH ()
-
-################################################################################################################################################################

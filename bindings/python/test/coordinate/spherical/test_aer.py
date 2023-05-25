@@ -7,13 +7,9 @@ from ostk.core.types import String
 
 import ostk.physics as physics
 
-################################################################################################################################################################
-
 Angle = physics.units.Angle
 Length = physics.units.Length
 AER = physics.coordinate.spherical.AER
-
-################################################################################################################################################################
 
 
 def test_coordinate_spherical_aer_constructors():
@@ -65,9 +61,6 @@ def test_coordinate_spherical_aer_constructors():
         aer: AER = AER.vector((1.0, 2.0, -1.0))
 
 
-################################################################################################################################################################
-
-
 def test_coordinate_spherical_aer_comparators():
     # Main Constructor
     azimuth: Angle = Angle(30.0, Angle.Unit.Degree)
@@ -83,9 +76,6 @@ def test_coordinate_spherical_aer_comparators():
     assert aer_1 != aer_2
 
 
-################################################################################################################################################################
-
-
 def test_coordinate_spherical_aer_is_defined():
     # Main Constructor
     azimuth: Angle = Angle(30.0, Angle.Unit.Degree)
@@ -97,9 +87,6 @@ def test_coordinate_spherical_aer_is_defined():
 
     assert aer.is_defined()
     assert AER.undefined().is_defined() is False
-
-
-################################################################################################################################################################
 
 
 def test_coordinate_spherical_aer_getters():
@@ -130,9 +117,6 @@ def test_coordinate_spherical_aer_getters():
     assert isinstance(alt, Length)
 
 
-################################################################################################################################################################
-
-
 def test_coordinate_spherical_aer_conversions():
     # Main Constructor
     azimuth: Angle = Angle(30.0, Angle.Unit.Degree)
@@ -156,8 +140,4 @@ def test_coordinate_spherical_aer_conversions():
     assert string == "[30.0 [deg], 30.0 [deg], 1000.0 [m]]"
 
 
-################################################################################################################################################################
-
 # def test_coordinate_spherical_aer_from_position_to_position ():
-
-################################################################################################################################################################

@@ -7,13 +7,9 @@ from ostk.core.types import String
 
 import ostk.physics as physics
 
-################################################################################################################################################################
-
 Angle = physics.units.Angle
 Length = physics.units.Length
 LLA = physics.coordinate.spherical.LLA
-
-################################################################################################################################################################
 
 
 def test_coordinate_spherical_lla_constructors():
@@ -74,9 +70,6 @@ def test_coordinate_spherical_lla_constructors():
     assert isinstance(lla, LLA)
 
 
-################################################################################################################################################################
-
-
 def test_coordinate_spherical_lla_comparators():
     # Main Constructor
     latitude: Angle = Angle(30.0, Angle.Unit.Degree)
@@ -92,9 +85,6 @@ def test_coordinate_spherical_lla_comparators():
     assert lla_1 != lla_2
 
 
-################################################################################################################################################################
-
-
 def test_coordinate_spherical_lla_is_defined():
     # Main Constructor
     latitude: Angle = Angle(30.0, Angle.Unit.Degree)
@@ -106,9 +96,6 @@ def test_coordinate_spherical_lla_is_defined():
 
     assert lla.is_defined()
     assert LLA.undefined().is_defined() is False
-
-
-################################################################################################################################################################
 
 
 def test_coordinate_spherical_lla_getters():
@@ -139,9 +126,6 @@ def test_coordinate_spherical_lla_getters():
     assert isinstance(alt, Length)
 
 
-################################################################################################################################################################
-
-
 def test_coordinate_spherical_lla_conversions():
     # Main Constructor
     latitude: Angle = Angle(30.0, Angle.Unit.Degree)
@@ -169,6 +153,3 @@ def test_coordinate_spherical_lla_conversions():
     assert string is not None
     assert isinstance(string, String)
     assert string == "[30.0 [deg], 30.0 [deg], 1000.0 [m]]"
-
-
-################################################################################################################################################################

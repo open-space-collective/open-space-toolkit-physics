@@ -21,5 +21,3 @@ RUN mkdir -p /home/jovyan/open-space-toolkit \
 WORKDIR /home/jovyan/open-space-toolkit/physics/test
 
 CMD [ "pytest", "-sv" ]
-
-################################################################################################################################################################

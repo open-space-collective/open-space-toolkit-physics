@@ -6,12 +6,8 @@ from ostk.core.types import Real, String
 
 import ostk.physics as physics
 
-################################################################################################################################################################
-
 Mass = physics.units.Mass
 Unit = Mass.Unit
-
-################################################################################################################################################################
 
 
 def test_units_mass_unit():
@@ -24,9 +20,6 @@ def test_units_mass_unit():
     assert enum_members is not None
     assert list(enum_members.keys()) == list_keys
     assert list(enum_members.values()) == list_values
-
-
-################################################################################################################################################################
 
 
 def test_units_mass_constructors():
@@ -49,9 +42,6 @@ def test_units_mass_constructors():
     assert mass.is_defined()
 
 
-################################################################################################################################################################
-
-
 def test_units_mass_comparators():
     mass_1: Mass = Mass(4.0, Unit.Kilogram)
     mass_2: Mass = Mass(3.5, Unit.Kilogram)
@@ -61,17 +51,11 @@ def test_units_mass_comparators():
     assert mass_1 != mass_2
 
 
-################################################################################################################################################################
-
-
 def test_units_mass_is_defined():
     mass: Mass = Mass(4.0, Unit.Kilogram)
 
     assert mass.is_defined() is True
     assert mass.undefined().is_defined() is False
-
-
-################################################################################################################################################################
 
 
 def test_units_mass_get_unit():
@@ -97,9 +81,6 @@ def test_units_mass_get_unit():
     assert unit == Unit.Tonne
 
 
-################################################################################################################################################################
-
-
 def test_units_mass_in_unit():
     mass: Mass = Mass(4.0, Unit.Kilogram)
 
@@ -111,18 +92,12 @@ def test_units_mass_in_unit():
     assert mass.in_unit(Unit.Tonne) is not None
 
 
-################################################################################################################################################################
-
-
 def test_units_mass_in_kilograms():
     mass: Mass = Mass(4000.0, Unit.Kilogram)
 
     assert mass.in_kilograms() is not None
     assert isinstance(mass.in_kilograms(), Real)
     assert mass.in_kilograms() == 4000.0
-
-
-################################################################################################################################################################
 
 
 def test_units_mass_to_string():
@@ -133,15 +108,9 @@ def test_units_mass_to_string():
     assert mass.to_string() == "4000.0 [kg]"
 
 
-################################################################################################################################################################
-
-
 @pytest.mark.skip(reason="TBI")
 def test_units_mass_parse():
     pass
-
-
-################################################################################################################################################################
 
 
 def test_units_mass_string_from_unit():
@@ -158,9 +127,6 @@ def test_units_mass_string_from_unit():
     assert string_2 == "Tonne"
 
 
-################################################################################################################################################################
-
-
 def test_units_mass_symbol_from_unit():
     unit_0: Unit = Mass.symbol_from_unit(Unit.Kilogram)
     unit_1: Unit = Mass.symbol_from_unit(Unit.Pound)
@@ -173,6 +139,3 @@ def test_units_mass_symbol_from_unit():
     assert unit_0 == "kg"
     assert unit_1 == "lb"
     assert unit_2 == "t"
-
-
-################################################################################################################################################################

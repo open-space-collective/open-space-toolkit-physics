@@ -20,8 +20,6 @@ from ostk.physics.coordinate.frame.providers.iers import Manager
 from ostk.physics.coordinate.frame.providers.iers import BulletinA
 from ostk.physics.coordinate.frame.providers.iers import Finals2000A
 
-################################################################################################################################################################
-
 
 @pytest.fixture
 def manager() -> Manager:
@@ -34,9 +32,6 @@ def manager() -> Manager:
 
     manager.reset()
     manager.clear_local_repository()
-
-
-################################################################################################################################################################
 
 
 class TestManager:
@@ -280,6 +275,3 @@ class TestManager:
         assert (
             manager.default_remote_url().to_string() == "https://maia.usno.navy.mil/ser7/"
         )
-
-
-################################################################################################################################################################

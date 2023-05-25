@@ -114,5 +114,3 @@ docker run \
 --workdir="/app/build" \
 ${docker_development_image_repository}:${docker_image_version}-${target} \
 /bin/bash -c "${command}"
-
-################################################################################################################################################################

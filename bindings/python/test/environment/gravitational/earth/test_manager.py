@@ -14,8 +14,6 @@ from ostk.physics.environment.gravitational.earth import (
     Manager as EarthGravitationalModelManager,
 )
 
-################################################################################################################################################################
-
 
 @pytest.fixture
 def manager() -> EarthGravitationalModelManager:
@@ -35,9 +33,6 @@ def manager() -> EarthGravitationalModelManager:
     )
 
     return manager
-
-
-################################################################################################################################################################
 
 
 class TestManager:
@@ -136,6 +131,3 @@ class TestManager:
             manager.default_remote_url().to_string()
             == "https://sourceforge.net/projects/geographiclib/files/gravity-distrib/"
         )
-
-
-################################################################################################################################################################

@@ -8,16 +8,12 @@ import ostk.physics as physics
 
 import ostk.mathematics as mathematics
 
-################################################################################################################################################################
-
 Scale = physics.time.Scale
 DateTime = physics.time.DateTime
 Instant = physics.time.Instant
 Quaternion = mathematics.geometry.d3.transformations.rotations.Quaternion
 Transform = physics.coordinate.Transform
 Type = Transform.Type
-
-################################################################################################################################################################
 
 
 def test_coordinate_transform_type():
@@ -28,9 +24,6 @@ def test_coordinate_transform_type():
 
     assert list(enum_members.keys()) == list_keys
     assert list(enum_members.values()) == list_values
-
-
-################################################################################################################################################################
 
 
 def test_coordinate_transform_constructors():
@@ -105,9 +98,6 @@ def test_coordinate_transform_constructors():
     assert isinstance(transform, Transform)
 
 
-################################################################################################################################################################
-
-
 def test_coordinate_transform_comparators():
     # Construct arbitrary Instant
     instant: Instant = Instant.date_time(DateTime(2020, 1, 1, 0, 0, 0), Scale.UTC)
@@ -134,9 +124,6 @@ def test_coordinate_transform_comparators():
     assert transform_1 == transform_1
     assert transform_2 == transform_2
     assert transform_1 != transform_2
-
-
-################################################################################################################################################################
 
 
 def test_coordinate_transform_operators():
@@ -171,9 +158,6 @@ def test_coordinate_transform_operators():
     assert transform.is_defined()
 
 
-################################################################################################################################################################
-
-
 def test_coordinate_transform_is_defined():
     # Construct arbitrary Instant
     instant: Instant = Instant.date_time(DateTime(2020, 1, 1, 0, 0, 0), Scale.UTC)
@@ -195,9 +179,6 @@ def test_coordinate_transform_is_defined():
 
     assert transform.is_defined()
     assert transform.undefined().is_defined() is False
-
-
-################################################################################################################################################################
 
 
 def test_coordinate_transform_is_identity():
@@ -224,8 +205,6 @@ def test_coordinate_transform_is_identity():
     assert transform.identity(instant).is_identity()
 
 
-################################################################################################################################################################
-
 # def test_coordinate_transform_accesses ():
 
 # access_instant
@@ -241,8 +220,6 @@ def test_coordinate_transform_is_identity():
 
 
 # access_angular_velocity
-
-################################################################################################################################################################
 
 
 def test_coordinate_transform_getters():
@@ -306,8 +283,6 @@ def test_coordinate_transform_getters():
     assert isinstance(inverse, Transform)
 
 
-################################################################################################################################################################
-
 # def test_coordinate_transform_apply_to_position ():
 
 # ################################################################################################################################################################
@@ -317,5 +292,3 @@ def test_coordinate_transform_getters():
 # ################################################################################################################################################################
 
 # def test_coordinate_transform_apply_to_vector ():
-
-################################################################################################################################################################

@@ -9,8 +9,6 @@ from ostk.physics.time import Instant
 from ostk.physics.time import Duration
 from ostk.physics.time import Interval
 
-################################################################################################################################################################
-
 
 @pytest.fixture
 def closed_interval() -> Interval:
@@ -90,9 +88,6 @@ def instant_2() -> Interval:
 @pytest.fixture
 def instant_3() -> Interval:
     return Instant.J2000() + Duration.minutes(3.0)
-
-
-################################################################################################################################################################
 
 
 class TestInterval:
@@ -268,6 +263,3 @@ class TestInterval:
         assert isinstance(grid, list)
         assert isinstance(grid[0], Instant)
         assert len(grid) == 61
-
-
-################################################################################################################################################################
