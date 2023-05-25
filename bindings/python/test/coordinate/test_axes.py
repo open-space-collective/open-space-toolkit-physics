@@ -15,8 +15,8 @@ Axes = physics.coordinate.Axes
 
 ################################################################################################################################################################
 
-def test_coordinate_axes_constructors ():
 
+def test_coordinate_axes_constructors():
     # Construct arbitrary Frame
     frame: Frame = Frame.GCRF()
 
@@ -61,10 +61,11 @@ def test_coordinate_axes_constructors ():
     assert isinstance(axes, Axes)
     assert axes.is_defined() is False
 
+
 ################################################################################################################################################################
 
-def test_coordinate_axes_xyz ():
 
+def test_coordinate_axes_xyz():
     frame: Frame = Frame.GCRF()
     vector_1 = [1.0, 0.0, 0.0]
     vector_2 = [0.0, 1.0, 0.0]
@@ -88,10 +89,11 @@ def test_coordinate_axes_xyz ():
     assert isinstance(z, np.ndarray)
     assert np.array_equal(z, vector_3)
 
+
 ################################################################################################################################################################
 
-def test_coordinate_axes_get_frame ():
 
+def test_coordinate_axes_get_frame():
     frame: Frame = Frame.GCRF()
     vector_1 = [1.0, 0.0, 0.0]
     vector_2 = [0.0, 1.0, 0.0]
@@ -103,11 +105,12 @@ def test_coordinate_axes_get_frame ():
     assert isinstance(axes.get_frame(), Frame)
     assert axes.get_frame() == frame
 
+
 ################################################################################################################################################################
 
-@pytest.mark.skip
-def test_coordinate_axes_in_frame ():
 
+@pytest.mark.skip
+def test_coordinate_axes_in_frame():
     frame: Frame = Frame.GCRF()
     vector_1 = [1.0, 0.0, 0.0]
     vector_2 = [0.0, 1.0, 0.0]
@@ -124,5 +127,6 @@ def test_coordinate_axes_in_frame ():
     assert axes.in_frame(Frame.TEME(), instant) is not None
     assert isinstance(axes.in_frame(Frame.TEME(), instant), Axes)
     assert axes.in_frame(Frame.TEME(), instant) != axes
+
 
 ################################################################################################################################################################

@@ -17,53 +17,53 @@ from ostk.physics.environment.objects.celestial_bodies import Earth
 
 ################################################################################################################################################################
 
-@pytest.fixture
-def earth_atmospheric_model () -> EarthAtmosphericModel:
 
+@pytest.fixture
+def earth_atmospheric_model() -> EarthAtmosphericModel:
     return EarthAtmosphericModel(EarthAtmosphericModel.Type.Exponential)
+
 
 ################################################################################################################################################################
 
+
 class TestEarth:
-
-    def test_constructor_success_with_type (self):
-
+    def test_constructor_success_with_type(self):
         earth_atmospheric_model = EarthAtmosphericModel(
-            type = EarthAtmosphericModel.Type.Exponential,
+            type=EarthAtmosphericModel.Type.Exponential,
         )
 
         assert isinstance(earth_atmospheric_model, EarthAtmosphericModel)
 
-    def test_constructor_success_with_directory (self):
-
+    def test_constructor_success_with_directory(self):
         earth_atmospheric_model = EarthAtmosphericModel(
-            type = EarthAtmosphericModel.Type.Exponential,
-            directory = Directory.undefined(),
+            type=EarthAtmosphericModel.Type.Exponential,
+            directory=Directory.undefined(),
         )
 
         assert isinstance(earth_atmospheric_model, EarthAtmosphericModel)
 
-    def test_get_type_success (self, earth_atmospheric_model: EarthAtmosphericModel):
+    def test_get_type_success(self, earth_atmospheric_model: EarthAtmosphericModel):
+        assert (
+            earth_atmospheric_model.get_type() == EarthAtmosphericModel.Type.Exponential
+        )
 
-        assert earth_atmospheric_model.get_type() == EarthAtmosphericModel.Type.Exponential
-
-    def test_get_density_at_success (self, earth_atmospheric_model: EarthAtmosphericModel):
-
+    def test_get_density_at_success(self, earth_atmospheric_model: EarthAtmosphericModel):
         latitude = Angle.degrees(30.0)
         longitude = Angle.degrees(40.0)
         altitude = Length.kilometers(500.0)
 
         density = earth_atmospheric_model.get_density_at(
-            position = Position.meters(
-                coordinates = LLA(latitude, longitude, altitude).to_cartesian(
-                    ellipsoid_equatorial_radius = Earth.equatorial_radius,
-                    ellipsoid_flattening = Earth.flattening,
+            position=Position.meters(
+                coordinates=LLA(latitude, longitude, altitude).to_cartesian(
+                    ellipsoid_equatorial_radius=Earth.equatorial_radius,
+                    ellipsoid_flattening=Earth.flattening,
                 ),
-                frame = Frame.ITRF(),
+                frame=Frame.ITRF(),
             ),
-            instant = Instant.J2000(),
+            instant=Instant.J2000(),
         )
 
         assert density is not None
+
 
 ################################################################################################################################################################

@@ -15,8 +15,8 @@ AER = physics.coordinate.spherical.AER
 
 ################################################################################################################################################################
 
-def test_coordinate_spherical_aer_constructors ():
 
+def test_coordinate_spherical_aer_constructors():
     # Main Constructor
     azimuth: Angle = Angle(30.0, Angle.Unit.Degree)
     elevation: Angle = Angle(30.0, Angle.Unit.Degree)
@@ -52,25 +52,23 @@ def test_coordinate_spherical_aer_constructors ():
     # Invalid azimuth
 
     with pytest.raises(RuntimeError):
-
         aer: AER = AER.vector((400.0, 1.0, 1.0))
 
     # Invalid elevation
 
     with pytest.raises(RuntimeError):
-
         aer: AER = AER.vector((1.0, 181.0, 1.0))
 
     # Negative Range
 
     with pytest.raises(RuntimeError):
-
         aer: AER = AER.vector((1.0, 2.0, -1.0))
+
 
 ################################################################################################################################################################
 
-def test_coordinate_spherical_aer_comparators ():
 
+def test_coordinate_spherical_aer_comparators():
     # Main Constructor
     azimuth: Angle = Angle(30.0, Angle.Unit.Degree)
     elevation: Angle = Angle(30.0, Angle.Unit.Degree)
@@ -84,10 +82,11 @@ def test_coordinate_spherical_aer_comparators ():
     assert aer_2 == aer_2
     assert aer_1 != aer_2
 
+
 ################################################################################################################################################################
 
-def test_coordinate_spherical_aer_is_defined ():
 
+def test_coordinate_spherical_aer_is_defined():
     # Main Constructor
     azimuth: Angle = Angle(30.0, Angle.Unit.Degree)
     elevation: Angle = Angle(30.0, Angle.Unit.Degree)
@@ -99,10 +98,11 @@ def test_coordinate_spherical_aer_is_defined ():
     assert aer.is_defined()
     assert AER.undefined().is_defined() is False
 
+
 ################################################################################################################################################################
 
-def test_coordinate_spherical_aer_getters ():
 
+def test_coordinate_spherical_aer_getters():
     # Main Constructor
     azimuth: Angle = Angle(30.0, Angle.Unit.Degree)
     elevation: Angle = Angle(30.0, Angle.Unit.Degree)
@@ -129,10 +129,11 @@ def test_coordinate_spherical_aer_getters ():
     assert alt is not None
     assert isinstance(alt, Length)
 
+
 ################################################################################################################################################################
 
-def test_coordinate_spherical_aer_conversions ():
 
+def test_coordinate_spherical_aer_conversions():
     # Main Constructor
     azimuth: Angle = Angle(30.0, Angle.Unit.Degree)
     elevation: Angle = Angle(30.0, Angle.Unit.Degree)
@@ -152,7 +153,8 @@ def test_coordinate_spherical_aer_conversions ():
 
     assert string is not None
     assert isinstance(string, String)
-    assert string == '[30.0 [deg], 30.0 [deg], 1000.0 [m]]'
+    assert string == "[30.0 [deg], 30.0 [deg], 1000.0 [m]]"
+
 
 ################################################################################################################################################################
 

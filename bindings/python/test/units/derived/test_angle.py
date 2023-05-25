@@ -7,13 +7,16 @@ from ostk.physics.units import Angle as AnglePhysics
 
 ################################################################################################################################################################
 
-def test_angle_conversion ():
 
+def test_angle_conversion():
     angle_physics: AnglePhysics = AnglePhysics(30.0, AnglePhysics.Unit.Degree)
-    angle_mathematics: AngleMathematics = AngleMathematics(30.0, AngleMathematics.Unit.Degree)
+    angle_mathematics: AngleMathematics = AngleMathematics(
+        30.0, AngleMathematics.Unit.Degree
+    )
 
     assert angle_physics is not None
     assert angle_mathematics is not None
     # assert angle_physics == angle_mathematics
+
 
 ################################################################################################################################################################

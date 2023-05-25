@@ -11,8 +11,8 @@ Unit = Time.Unit
 
 ################################################################################################################################################################
 
-def test_units_time_unit ():
 
+def test_units_time_unit():
     enum_members = Unit.__members__
 
     list_keys = [
@@ -24,29 +24,30 @@ def test_units_time_unit ():
         "Minute",
         "Hour",
         "Day",
-        "Week"
+        "Week",
     ]
 
     list_values = [
-       Unit.Undefined,
-       Unit.Nanosecond,
-       Unit.Microsecond,
-       Unit.Millisecond,
-       Unit.Second,
-       Unit.Minute,
-       Unit.Hour,
-       Unit.Day,
-       Unit.Week
+        Unit.Undefined,
+        Unit.Nanosecond,
+        Unit.Microsecond,
+        Unit.Millisecond,
+        Unit.Second,
+        Unit.Minute,
+        Unit.Hour,
+        Unit.Day,
+        Unit.Week,
     ]
 
     assert enum_members is not None
     assert list(enum_members.keys()) == list_keys
     assert list(enum_members.values()) == list_values
 
+
 ################################################################################################################################################################
 
-def test_units_time_constructors ():
 
+def test_units_time_constructors():
     time: Time = Time(3.2, Unit.Nanosecond)
 
     assert time is not None
@@ -101,11 +102,13 @@ def test_units_time_constructors ():
     assert isinstance(time, Time)
     assert time.is_defined() is False
 
+
 ################################################################################################################################################################
 
-def test_units_time_is_defined():
 
+def test_units_time_is_defined():
     assert Time(2.0, Unit.Second).is_defined()
     assert Time.undefined().is_defined() is False
+
 
 ################################################################################################################################################################

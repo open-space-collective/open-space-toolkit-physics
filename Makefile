@@ -322,6 +322,17 @@ format-check: build-development-image ## Runs the clang-format tool to check the
 
 .PHONY: format-check
 
+format-python: build-development-image  ## Runs the black format tool against python code
+
+	docker run \
+		--rm \
+		--volume="$(CURDIR):/app" \
+		--workdir=/app \
+		$(docker_development_image_repository):$(docker_image_version) \
+		/bin/bash -c "python3.11 -m black --line-length=90 bindings/python/"
+
+.PHONY: format-python
+
 ################################################################################################################################################################
 
 test: ## Run tests
