@@ -9,8 +9,10 @@
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformations/Rotations/RotationMatrix.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Dynamic.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Engine.hpp>
+
+// Include Manager.hpp before Engine.hpp to avoid name conflict for "ostk::core::types::Index" 
 #include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Manager.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Engine.hpp>
 
 extern "C"
 {
