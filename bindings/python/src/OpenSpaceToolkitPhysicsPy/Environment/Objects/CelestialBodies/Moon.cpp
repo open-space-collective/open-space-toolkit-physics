@@ -2,8 +2,6 @@
 
 #include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Moon.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 inline void OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Moon(pybind11::module& aModule)
 {
     using namespace pybind11;

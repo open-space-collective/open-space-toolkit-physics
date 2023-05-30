@@ -3,8 +3,6 @@
 #include <OpenSpaceToolkitPhysicsPy/Environment/Magnetic/Dipole.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Environment/Magnetic/Earth.cpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic(pybind11::module& aModule)
 {
     // Create "magnetic" python submodule

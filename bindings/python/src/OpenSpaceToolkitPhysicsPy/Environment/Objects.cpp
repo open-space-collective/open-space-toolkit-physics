@@ -3,8 +3,6 @@
 #include <OpenSpaceToolkitPhysicsPy/Environment/Objects/Celestial.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Environment/Objects/CelestialBodies.cpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 inline void OpenSpaceToolkitPhysicsPy_Environment_Objects(pybind11::module& aModule)
 {
     // Create "objects" python submodule

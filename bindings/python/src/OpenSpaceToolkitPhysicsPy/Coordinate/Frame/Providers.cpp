@@ -5,8 +5,6 @@
 #include <OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Providers/IERS.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Providers/Static.cpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers(pybind11::module& aModule)
 {
     // Create "providers" python submodule

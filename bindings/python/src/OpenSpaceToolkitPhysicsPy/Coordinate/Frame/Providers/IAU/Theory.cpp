@@ -2,8 +2,6 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IAU/Theory.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers_IAU_Theory(pybind11::module& aModule)
 {
     using namespace pybind11;

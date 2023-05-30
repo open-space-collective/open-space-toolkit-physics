@@ -2,8 +2,6 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/BulletinA.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers_IERS_BulletinA(pybind11::module& aModule)
 {
     using namespace pybind11;

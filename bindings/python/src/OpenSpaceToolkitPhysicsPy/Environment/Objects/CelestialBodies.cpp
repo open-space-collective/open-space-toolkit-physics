@@ -4,8 +4,6 @@
 #include <OpenSpaceToolkitPhysicsPy/Environment/Objects/CelestialBodies/Moon.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Environment/Objects/CelestialBodies/Sun.cpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 inline void OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies(pybind11::module& aModule)
 {
     // Create "celestial_bodies" python submodule

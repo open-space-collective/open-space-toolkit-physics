@@ -4,8 +4,6 @@
 #include <OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Providers/IERS/Finals2000A.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Providers/IERS/Manager.cpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers_IERS(pybind11::module& aModule)
 {
     // Create "iers" python submodule

@@ -5,8 +5,6 @@
 #include <OpenSpaceToolkitPhysicsPy/Environment/Gravitational/Spherical.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Environment/Gravitational/Sun.cpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational(pybind11::module& aModule)
 {
     // Create "gravitational" python submodule

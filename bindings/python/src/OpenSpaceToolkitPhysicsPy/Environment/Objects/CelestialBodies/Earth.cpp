@@ -2,8 +2,6 @@
 
 #include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 inline void OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Earth(pybind11::module& aModule)
 {
     using namespace pybind11;

@@ -5,8 +5,6 @@
 #include <OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Provider.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Providers.cpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame(pybind11::module& aModule)
 {
     using namespace pybind11;

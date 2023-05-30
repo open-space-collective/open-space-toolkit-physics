@@ -7,8 +7,6 @@
 #include <OpenSpaceToolkit/Physics/Environment/Ephemerides/Analytical.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 namespace ostk
 {
 namespace physics
@@ -20,18 +18,12 @@ namespace obj
 namespace celest
 {
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 using ostk::physics::units::Mass;
 using ostk::physics::units::Time;
 using ostk::physics::units::Angle;
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 static const Derived::Unit GravitationalParameterSIUnit =
     Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second);
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Coefficients taken from https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84#tab_egm2008
 // http://jules.unavco.org/Voyager/Anc/Earth/egm96_geoid_diff
@@ -102,8 +94,6 @@ const Real Earth::Models::Spherical::C40 = 0.0;
 const Real Earth::Models::Spherical::J2 = 0.0;
 const Real Earth::Models::Spherical::J4 = 0.0;
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 const Derived Earth::GravitationalParameter = Earth::Models::EGM2008::GravitationalParameter;  // [TBR]
 const Length Earth::EquatorialRadius = Earth::Models::EGM2008::EquatorialRadius;               // [TBR]
 const Real Earth::Flattening = Earth::Models::EGM2008::Flattening;                             // [TBR]
@@ -111,8 +101,6 @@ const Real Earth::C20 = Earth::Models::EGM2008::C20;                            
 const Real Earth::C40 = Earth::Models::EGM2008::C40;                                           // [TBR]
 const Real Earth::J2 = Earth::Models::EGM2008::J2;                                             // [TBR]
 const Real Earth::J4 = Earth::Models::EGM2008::J4;                                             // [TBR]
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Earth::Earth(
     const Derived& aGravitationalParameter,
@@ -320,8 +308,6 @@ Earth Earth::Spherical()
         Instant::J2000()};
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 Object::Geometry Earth::Geometry(
     const Length& anEquatorialRadius, const Real& aFlattening, const Shared<const Frame>& aFrameSPtr
 )
@@ -337,8 +323,6 @@ Object::Geometry Earth::Geometry(
 
     return {ellipsoid, aFrameSPtr};
 }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }  // namespace celest
 }  // namespace obj

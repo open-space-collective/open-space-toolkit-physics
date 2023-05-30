@@ -8,8 +8,6 @@
 #include <OpenSpaceToolkitPhysicsPy/Environment/Object.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Environment/Objects.cpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
 {
     using namespace pybind11;
