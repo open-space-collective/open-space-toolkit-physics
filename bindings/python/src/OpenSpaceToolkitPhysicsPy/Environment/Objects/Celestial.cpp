@@ -1,40 +1,56 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/// @project        Open Space Toolkit ▸ Physics
-/// @file           bindings/python/src/OpenSpaceToolkitPhysicsPy/Environment/Objects/Celestial.cpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>
-/// @license        Apache License 2.0
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Apache License 2.0
 
 #include <OpenSpaceToolkit/Physics/Environment/Objects/Celestial.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Celestial (        pybind11::module&  aModule                                     )
+inline void OpenSpaceToolkitPhysicsPy_Environment_Objects_Celestial(pybind11::module& aModule)
 {
+    using namespace pybind11;
 
-    using namespace pybind11 ;
+    using ostk::core::types::Shared;
+    using ostk::core::types::Real;
+    using ostk::core::types::String;
 
-    using ostk::core::types::Shared ;
-    using ostk::core::types::Real ;
-    using ostk::core::types::String ;
+    using ostk::physics::time::Instant;
+    using ostk::physics::units::Length;
+    using ostk::physics::units::Derived;
+    using ostk::physics::env::Ephemeris;
+    using ostk::physics::env::Object;
+    using ostk::physics::env::obj::Celestial;
+    using GravitationalModel = ostk::physics::environment::gravitational::Model;
+    using MagneticModel = ostk::physics::environment::magnetic::Model;
+    using AtmosphericModel = ostk::physics::environment::atmospheric::Model;
 
-    using ostk::physics::time::Instant ;
-    using ostk::physics::units::Length ;
-    using ostk::physics::units::Derived ;
-    using ostk::physics::env::Ephemeris ;
-    using ostk::physics::env::Object ;
-    using ostk::physics::env::obj::Celestial ;
-    using GravitationalModel = ostk::physics::environment::gravitational::Model ;
-    using MagneticModel = ostk::physics::environment::magnetic::Model ;
-    using AtmosphericModel = ostk::physics::environment::atmospheric::Model ;
+    class_<Celestial, Shared<Celestial>, Object> celestial_class(aModule, "Celestial");
 
-    class_<Celestial, Shared<Celestial>, Object> celestial_class(aModule, "Celestial") ;
+    celestial_class
+        .def(init<
+             const String&,
+             const Celestial::Type&,
+             const Derived&,
+             const Length&,
+             const Real&,
+             const Real&,
+             const Real&,
+             const Shared<Ephemeris>&,
+             const Shared<GravitationalModel>&,
+             const Shared<MagneticModel>&,
+             const Shared<AtmosphericModel>&,
+             const Instant&>())
 
-    celestial_class.def(init<const String&, const Celestial::Type&, const Derived& , const Length&, const Real&, const Real&, const Real&, const Shared<Ephemeris>&, const Shared<GravitationalModel>&, const Shared<MagneticModel>&, const Shared<AtmosphericModel>&, const Instant&>())
-
-        .def(init<const String&, const Celestial::Type&, const Derived& , const Length&, const Real&, const Real&, const Real&, const Shared<Ephemeris>&, const Shared<GravitationalModel>&, const Shared<MagneticModel>&, const Shared<AtmosphericModel>&, const Instant&, const Object::Geometry&>())
+        .def(init<
+             const String&,
+             const Celestial::Type&,
+             const Derived&,
+             const Length&,
+             const Real&,
+             const Real&,
+             const Real&,
+             const Shared<Ephemeris>&,
+             const Shared<GravitationalModel>&,
+             const Shared<MagneticModel>&,
+             const Shared<AtmosphericModel>&,
+             const Instant&,
+             const Object::Geometry&>())
 
         // Need to create corresponding operators in C++ source code for proper use of binding code below
         // .def(self == self)
@@ -70,7 +86,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
 
         .def_static("string_from_frame_type", &Celestial::StringFromFrameType)
 
-    ;
+        ;
 
     enum_<Celestial::Type>(celestial_class, "CelestialType")
 
@@ -82,19 +98,16 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Objects_Ce
         .value("Moon", Celestial::Type::Moon)
         .value("Mars", Celestial::Type::Mars)
 
-    ;
+        ;
 
     enum_<Celestial::FrameType>(celestial_class, "FrameType")
 
         .value("Undefined", Celestial::FrameType::Undefined)
         .value("NED", Celestial::FrameType::NED)
 
-    ;
+        ;
 
     // register_ptr_to_python<Shared<const Celestial>>() ;
 
     // implicitly_convertible<Shared<Celestial>, Shared<const Celestial>>() ;
-
 }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

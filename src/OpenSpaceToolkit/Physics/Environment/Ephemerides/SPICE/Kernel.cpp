@@ -1,21 +1,12 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Apache License 2.0
 
-/// @project        Open Space Toolkit ▸ Physics
-/// @file           OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Kernel.cpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>
-/// @license        Apache License 2.0
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Kernel.hpp>
+#include <boost/algorithm/string/predicate.hpp>
 
 #include <OpenSpaceToolkit/Core/Containers/Map.hpp>
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
 
-#include <boost/algorithm/string/predicate.hpp>
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Kernel.hpp>
 
 namespace ostk
 {
@@ -28,174 +19,151 @@ namespace ephem
 namespace spice
 {
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-                                Kernel::Kernel                              (   const   Kernel::Type&               aType,
-                                                                                const   fs::File&                   aFile                                       )
-                                :   type_(aType),
-                                    file_(aFile)
+Kernel::Kernel(const Kernel::Type& aType, const fs::File& aFile)
+    : type_(aType),
+      file_(aFile)
 {
-
 }
 
-bool                            Kernel::operator ==                         (   const   Kernel&                     aKernel                                     ) const
+bool Kernel::operator==(const Kernel& aKernel) const
 {
-
     if ((!this->isDefined()) || (!aKernel.isDefined()))
     {
-        return false ;
+        return false;
     }
 
-    return (type_ == aKernel.type_) && (file_ == aKernel.file_) ;
-
+    return (type_ == aKernel.type_) && (file_ == aKernel.file_);
 }
 
-bool                            Kernel::operator !=                         (   const   Kernel&                     aKernel                                     ) const
+bool Kernel::operator!=(const Kernel& aKernel) const
 {
-    return !((*this) == aKernel) ;
+    return !((*this) == aKernel);
 }
 
-bool                            Kernel::isDefined                           ( ) const
+bool Kernel::isDefined() const
 {
-    return (type_ != Kernel::Type::Undefined) && file_.isDefined() ;
+    return (type_ != Kernel::Type::Undefined) && file_.isDefined();
 }
 
-Kernel::Type                    Kernel::getType                             ( ) const
+Kernel::Type Kernel::getType() const
 {
-
     if (!this->isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Kernel") ;
+        throw ostk::core::error::runtime::Undefined("Kernel");
     }
 
-    return type_ ;
-
+    return type_;
 }
 
-String                          Kernel::getName                             ( ) const
+String Kernel::getName() const
 {
-
     if (!this->isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Kernel") ;
+        throw ostk::core::error::runtime::Undefined("Kernel");
     }
 
-    return file_.getName() ;
-
+    return file_.getName();
 }
 
-fs::File                        Kernel::getFile                             ( ) const
+fs::File Kernel::getFile() const
 {
-
     if (!this->isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Kernel") ;
+        throw ostk::core::error::runtime::Undefined("Kernel");
     }
 
-    return file_ ;
-
+    return file_;
 }
 
-Kernel                          Kernel::Undefined                           ( )
+Kernel Kernel::Undefined()
 {
-    return { Kernel::Type::Undefined, fs::File::Undefined() } ;
+    return {Kernel::Type::Undefined, fs::File::Undefined()};
 }
 
-Kernel                          Kernel::File                                (   const   fs::File&                   aFile                                       )
+Kernel Kernel::File(const fs::File& aFile)
 {
-
     if (!aFile.isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("File") ;
+        throw ostk::core::error::runtime::Undefined("File");
     }
 
-    return { Kernel::TypeFromFileExtension(aFile.getExtension()), aFile } ;
-
+    return {Kernel::TypeFromFileExtension(aFile.getExtension()), aFile};
 }
 
-Kernel::Type                    Kernel::TypeFromString                      (   const   String&                     aString                                     )
+Kernel::Type Kernel::TypeFromString(const String& aString)
 {
+    using ostk::core::ctnr::Map;
 
-    using ostk::core::ctnr::Map ;
+    static const Map<String, Kernel::Type> stringTypeMap = {
+        {"Undefined", Kernel::Type::Undefined},
+        {"SCLK", Kernel::Type::SCLK},
+        {"LSK", Kernel::Type::LSK},
+        {"PCK", Kernel::Type::PCK},
+        {"IK", Kernel::Type::IK},
+        {"FK", Kernel::Type::FK},
+        {"EK", Kernel::Type::EK},
+        {"MK", Kernel::Type::MK},
+        {"SPK", Kernel::Type::SPK},
+        {"BPCK", Kernel::Type::BPCK},
+        {"CK", Kernel::Type::CK},
+        {"BEK", Kernel::Type::BEK}};
 
-    static const Map<String, Kernel::Type> stringTypeMap =
-    {
-        { "Undefined",              Kernel::Type::Undefined },
-        { "SCLK",                   Kernel::Type::SCLK },
-        { "LSK",                    Kernel::Type::LSK },
-        { "PCK",                    Kernel::Type::PCK },
-        { "IK",                     Kernel::Type::IK },
-        { "FK",                     Kernel::Type::FK },
-        { "EK",                     Kernel::Type::EK },
-        { "MK",                     Kernel::Type::MK },
-        { "SPK",                    Kernel::Type::SPK },
-        { "BPCK",                   Kernel::Type::BPCK },
-        { "CK",                     Kernel::Type::CK },
-        { "BEK",                    Kernel::Type::BEK }
-    } ;
-
-    return stringTypeMap.at(aString) ;
-
+    return stringTypeMap.at(aString);
 }
 
-String                          Kernel::StringFromType                      (   const   Kernel::Type&               aType                                       )
+String Kernel::StringFromType(const Kernel::Type& aType)
 {
+    using ostk::core::ctnr::Map;
 
-    using ostk::core::ctnr::Map ;
+    static const Map<Kernel::Type, String> typeStringMap = {
+        {Kernel::Type::Undefined, "Undefined"},
+        {Kernel::Type::SCLK, "SCLK"},
+        {Kernel::Type::LSK, "LSK"},
+        {Kernel::Type::PCK, "PCK"},
+        {Kernel::Type::IK, "IK"},
+        {Kernel::Type::FK, "FK"},
+        {Kernel::Type::EK, "EK"},
+        {Kernel::Type::MK, "MK"},
+        {Kernel::Type::SPK, "SPK"},
+        {Kernel::Type::BPCK, "BPCK"},
+        {Kernel::Type::CK, "CK"},
+        {Kernel::Type::BEK, "BEK"}};
 
-    static const Map<Kernel::Type, String> typeStringMap =
-    {
-        { Kernel::Type::Undefined,  "Undefined" },
-        { Kernel::Type::SCLK,       "SCLK" },
-        { Kernel::Type::LSK,        "LSK" },
-        { Kernel::Type::PCK,        "PCK" },
-        { Kernel::Type::IK,         "IK" },
-        { Kernel::Type::FK,         "FK" },
-        { Kernel::Type::EK,         "EK" },
-        { Kernel::Type::MK,         "MK" },
-        { Kernel::Type::SPK,        "SPK" },
-        { Kernel::Type::BPCK,       "BPCK" },
-        { Kernel::Type::CK,         "CK" },
-        { Kernel::Type::BEK,        "BEK" }
-    } ;
-
-    return typeStringMap.at(aType) ;
-
+    return typeStringMap.at(aType);
 }
 
-Kernel::Type                    Kernel::TypeFromFileExtension               (   const   String&                     aFileExtension                              )
+Kernel::Type Kernel::TypeFromFileExtension(const String& aFileExtension)
 {
-
     // https://naif.jpl.nasa.gov/pub/naif/self_training/individual_docs/03_conventions.pdf
 
     if (aFileExtension.isEmpty())
     {
-        throw ostk::core::error::runtime::Undefined("File extension") ;
+        throw ostk::core::error::runtime::Undefined("File extension");
     }
 
     if (boost::iequals(aFileExtension, "tsc"))
     {
-        return Kernel::Type::SCLK ;
+        return Kernel::Type::SCLK;
     }
 
     if (boost::iequals(aFileExtension, "tls"))
     {
-        return Kernel::Type::LSK ;
+        return Kernel::Type::LSK;
     }
 
     if (boost::iequals(aFileExtension, "tpc"))
     {
-        return Kernel::Type::PCK ;
+        return Kernel::Type::PCK;
     }
 
     if (boost::iequals(aFileExtension, "ti"))
     {
-        return Kernel::Type::IK ;
+        return Kernel::Type::IK;
     }
 
     if (boost::iequals(aFileExtension, "tf"))
     {
-        return Kernel::Type::FK ;
+        return Kernel::Type::FK;
     }
 
     // [TBI]
@@ -207,39 +175,34 @@ Kernel::Type                    Kernel::TypeFromFileExtension               (   
 
     if (boost::iequals(aFileExtension, "tm"))
     {
-        return Kernel::Type::MK ;
+        return Kernel::Type::MK;
     }
 
     if (boost::iequals(aFileExtension, "bsp"))
     {
-        return Kernel::Type::SPK ;
+        return Kernel::Type::SPK;
     }
 
     if (boost::iequals(aFileExtension, "bpc"))
     {
-        return Kernel::Type::BPCK ;
+        return Kernel::Type::BPCK;
     }
 
     if (boost::iequals(aFileExtension, "bc"))
     {
-        return Kernel::Type::CK ;
+        return Kernel::Type::CK;
     }
 
     if (boost::iequals(aFileExtension, "bes"))
     {
-        return Kernel::Type::BEK ;
+        return Kernel::Type::BEK;
     }
 
-    return Kernel::Type::Undefined ;
-
+    return Kernel::Type::Undefined;
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-}
-}
-}
-}
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}  // namespace spice
+}  // namespace ephem
+}  // namespace env
+}  // namespace physics
+}  // namespace ostk

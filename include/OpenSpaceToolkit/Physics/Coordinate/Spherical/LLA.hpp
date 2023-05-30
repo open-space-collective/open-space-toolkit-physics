@@ -1,22 +1,13 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/// @project        Open Space Toolkit ▸ Physics
-/// @file           OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>
-/// @license        Apache License 2.0
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Apache License 2.0
 
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA__
 #define __OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA__
 
+#include <OpenSpaceToolkit/Core/Types/Real.hpp>
+#include <OpenSpaceToolkit/Core/Types/String.hpp>
+
 #include <OpenSpaceToolkit/Physics/Units/Derived/Angle.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Length.hpp>
-
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 namespace ostk
 {
@@ -27,17 +18,13 @@ namespace coord
 namespace spherical
 {
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+using ostk::core::types::Real;
+using ostk::core::types::String;
 
-using ostk::core::types::Real ;
-using ostk::core::types::String ;
+using ostk::math::obj::Vector3d;
 
-using ostk::math::obj::Vector3d ;
-
-using ostk::physics::units::Length ;
-using ostk::physics::units::Angle ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+using ostk::physics::units::Length;
+using ostk::physics::units::Angle;
 
 /// @brief                      Geodetic Latitude - Longitude - Altitude (LLA)
 ///
@@ -46,60 +33,48 @@ using ostk::physics::units::Angle ;
 
 class LLA
 {
+   public:
+    LLA(const Angle& aLatitude, const Angle& aLongitude, const Length& anAltitude);
 
-    public:
+    bool operator==(const LLA& aLLA) const;
 
-                                LLA                                         (   const   Angle&                      aLatitude,
-                                                                                const   Angle&                      aLongitude,
-                                                                                const   Length&                     anAltitude                                  ) ;
+    bool operator!=(const LLA& aLLA) const;
 
-        bool                    operator ==                                 (   const   LLA&                        aLLA                                        ) const ;
+    friend std::ostream& operator<<(std::ostream& anOutputStream, const LLA& aLLA);
 
-        bool                    operator !=                                 (   const   LLA&                        aLLA                                        ) const ;
+    bool isDefined() const;
 
-        friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
-                                                                                const   LLA&                        aLLA                                        ) ;
+    Angle getLatitude() const;
 
-        bool                    isDefined                                   ( ) const ;
+    Angle getLongitude() const;
 
-        Angle                   getLatitude                                 ( ) const ;
+    Length getAltitude() const;
 
-        Angle                   getLongitude                                ( ) const ;
+    Vector3d toVector() const;
 
-        Length                  getAltitude                                 ( ) const ;
+    Vector3d toCartesian(const Length& anEllipsoidEquatorialRadius, const Real& anEllipsoidFlattening) const;
 
-        Vector3d                toVector                                    ( ) const ;
+    String toString() const;
 
-        Vector3d                toCartesian                                 (   const   Length&                     anEllipsoidEquatorialRadius,
-                                                                                const   Real&                       anEllipsoidFlattening                       ) const ;
+    static LLA Undefined();
 
-        String                  toString                                    ( ) const ;
+    static LLA Vector(const Vector3d& aVector);
 
-        static LLA              Undefined                                   ( ) ;
+    static LLA Cartesian(
+        const Vector3d& aCartesianCoordinateSet,
+        const Length& anEllipsoidEquatorialRadius,
+        const Real& anEllipsoidFlattening
+    );
 
-        static LLA              Vector                                      (   const   Vector3d&                   aVector                                     ) ;
+   private:
+    Angle latitude_;
+    Angle longitude_;
+    Length altitude_;
+};
 
-        static LLA              Cartesian                                   (   const   Vector3d&                   aCartesianCoordinateSet,
-                                                                                const   Length&                     anEllipsoidEquatorialRadius,
-                                                                                const   Real&                       anEllipsoidFlattening                       ) ;
-
-    private:
-
-        Angle                   latitude_ ;
-        Angle                   longitude_ ;
-        Length                  altitude_ ;
-
-} ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-}
-}
-}
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}  // namespace spherical
+}  // namespace coord
+}  // namespace physics
+}  // namespace ostk
 
 #endif
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

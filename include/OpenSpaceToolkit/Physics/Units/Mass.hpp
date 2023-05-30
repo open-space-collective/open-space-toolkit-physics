@@ -1,22 +1,13 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/// @project        Open Space Toolkit ▸ Physics
-/// @file           OpenSpaceToolkit/Physics/Units/Mass.hpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>
-/// @license        Apache License 2.0
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Apache License 2.0
 
 #ifndef __OpenSpaceToolkit_Physics_Units_Mass__
 #define __OpenSpaceToolkit_Physics_Units_Mass__
 
-#include <OpenSpaceToolkit/Physics/Units/Unit.hpp>
-
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
 #include <OpenSpaceToolkit/Core/Types/Integer.hpp>
+#include <OpenSpaceToolkit/Core/Types/Real.hpp>
+#include <OpenSpaceToolkit/Core/Types/String.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#include <OpenSpaceToolkit/Physics/Units/Unit.hpp>
 
 namespace ostk
 {
@@ -25,13 +16,9 @@ namespace physics
 namespace units
 {
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-using ostk::core::types::Integer ;
-using ostk::core::types::Real ;
-using ostk::core::types::String ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+using ostk::core::types::Integer;
+using ostk::core::types::Real;
+using ostk::core::types::String;
 
 /// @brief                      Mass
 ///
@@ -39,69 +26,58 @@ using ostk::core::types::String ;
 
 class Mass : public Unit
 {
+   public:
+    enum class Unit
+    {
 
-    public:
+        Undefined,  ///< Undefined
+        Kilogram,   ///< Kilogram (SI)
+        Tonne,      ///< Tonne
+        Pound       ///< Pound
 
-        enum class Unit
-        {
+    };
 
-            Undefined,          ///< Undefined
-            Kilogram,           ///< Kilogram (SI)
-            Tonne,              ///< Tonne
-            Pound               ///< Pound
+    /// @brief              Constructor
+    ///
+    /// @code
+    ///                     Mass mass(1.0, Mass::Unit::Kilogram) ;
+    /// @endcode
+    ///
+    /// @param              [in] aValue A value
+    /// @param              [in] aUnit A mass unit
 
-        } ;
+    Mass(const Real& aValue, const Mass::Unit& aUnit);
 
-        /// @brief              Constructor
-        ///
-        /// @code
-        ///                     Mass mass(1.0, Mass::Unit::Kilogram) ;
-        /// @endcode
-        ///
-        /// @param              [in] aValue A value
-        /// @param              [in] aUnit A mass unit
+    virtual Mass* clone() const override;
 
-                                Mass                                        (   const   Real&                       aValue,
-                                                                                const   Mass::Unit&                 aUnit                                       ) ;
+    virtual bool isDefined() const override;
 
-        virtual Mass*           clone                                       ( ) const override ;
+    Mass::Unit getUnit() const;
 
-        virtual bool            isDefined                                   ( ) const override ;
+    Real in(const Mass::Unit& aUnit) const;
 
-        Mass::Unit              getUnit                                     ( ) const ;
+    Real inKilograms() const;
 
-        Real                    in                                          (   const   Mass::Unit&                 aUnit                                       ) const ;
+    virtual String toString(const Integer& aPrecision = Integer::Undefined()) const override;
 
-        Real                    inKilograms                                 ( ) const ;
+    static Mass Undefined();
 
-        virtual String          toString                                    (   const   Integer&                    aPrecision                                  =   Integer::Undefined() ) const override ;
+    static Mass Kilograms(const Real& aValue);
 
-        static Mass             Undefined                                   ( ) ;
+    static Mass Parse(const String& aString);
 
-        static Mass             Kilograms                                   (   const   Real&                       aValue                                      ) ;
+    static String StringFromUnit(const Mass::Unit& aUnit);
 
-        static Mass             Parse                                       (   const   String&                     aString                                     ) ;
+    static String SymbolFromUnit(const Mass::Unit& aUnit);
 
-        static String           StringFromUnit                              (   const   Mass::Unit&                 aUnit                                       ) ;
+   private:
+    Mass::Unit unit_;
 
-        static String           SymbolFromUnit                              (   const   Mass::Unit&                 aUnit                                       ) ;
+    static Real SIRatio(const Mass::Unit& aUnit);
+};
 
-    private:
-
-        Mass::Unit              unit_ ;
-
-        static Real             SIRatio                                     (   const   Mass::Unit&                 aUnit                                       ) ;
-
-} ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-}
-}
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}  // namespace units
+}  // namespace physics
+}  // namespace ostk
 
 #endif
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

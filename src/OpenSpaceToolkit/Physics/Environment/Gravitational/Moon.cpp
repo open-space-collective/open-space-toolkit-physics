@@ -1,20 +1,11 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/// @project        Open Space Toolkit ▸ Physics
-/// @file           OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.cpp
-/// @author         Antoine Paletta <antoine.paletta@loftorbital.com>
-/// @license        Apache License 2.0
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-#include <OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Moon.hpp>
+/// Apache License 2.0
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#include <OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Moon.hpp>
 
 namespace ostk
 {
@@ -25,171 +16,126 @@ namespace environment
 namespace gravitational
 {
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 class Moon::Impl
 {
+   public:
+    Impl(const Moon::Type& aType);
 
-    public:
+    virtual ~Impl() = 0;
 
-                                Impl                                        (   const   Moon::Type&                 aType                                       ) ;
+    virtual Impl* clone() const = 0;
 
-        virtual                 ~Impl                                       ( ) = 0 ;
+    Moon::Type getType() const;
 
-        virtual Impl*           clone                                       ( ) const = 0 ;
+    virtual Vector3d getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const = 0;
 
-        Moon::Type              getType                                     ( ) const ;
+   private:
+    Moon::Type type_;
+};
 
-        virtual Vector3d        getFieldValueAt                             (   const   Vector3d&                   aPosition,
-                                                                                const   Instant&                    anInstant                                   ) const = 0 ;
+Moon::Impl::Impl(const Moon::Type& aType)
 
-    private:
-
-        Moon::Type              type_ ;
-
-} ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-                                Moon::Impl::Impl                            (   const   Moon::Type&                 aType                                       )
-
-                                :   type_(aType)
+    : type_(aType)
 {
-
 }
 
-                                Moon::Impl::~Impl                           ( )
+Moon::Impl::~Impl() {}
+
+Moon::Type Moon::Impl::getType() const
 {
-
+    return type_;
 }
-
-Moon::Type                      Moon::Impl::getType                         ( ) const
-{
-    return type_ ;
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 class Moon::SphericalImpl : public Moon::Impl
 {
+   public:
+    SphericalImpl(const Moon::Type& aType);
 
-    public:
+    ~SphericalImpl();
 
-                                SphericalImpl                               (   const   Moon::Type&                 aType                                       ) ;
+    virtual SphericalImpl* clone() const override;
 
-                                ~SphericalImpl                              ( ) ;
+    virtual Vector3d getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const override;
 
-        virtual SphericalImpl*  clone                                       ( ) const override ;
+   private:
+    Spherical sphericalModel_;
+};
 
-        virtual Vector3d        getFieldValueAt                             (   const   Vector3d&                   aPosition,
-                                                                                const   Instant&                    anInstant                                   ) const override ;
+Moon::SphericalImpl::SphericalImpl(const Moon::Type& aType)
 
-    private:
-
-        Spherical               sphericalModel_ ;
-
-} ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-                                Moon::SphericalImpl::SphericalImpl          (   const   Moon::Type&                 aType                                       )
-
-                                :   Moon::Impl(aType),
-                                    sphericalModel_(ostk::physics::env::obj::celest::Moon::GravitationalParameter)
+    : Moon::Impl(aType),
+      sphericalModel_(ostk::physics::env::obj::celest::Moon::GravitationalParameter)
 {
-
 }
 
-                                Moon::SphericalImpl::~SphericalImpl         ( )
-{
+Moon::SphericalImpl::~SphericalImpl() {}
 
+Moon::SphericalImpl* Moon::SphericalImpl::clone() const
+{
+    return new Moon::SphericalImpl(*this);
 }
 
-Moon::SphericalImpl*            Moon::SphericalImpl::clone                  ( ) const
+Vector3d Moon::SphericalImpl::getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const
 {
-    return new Moon::SphericalImpl(*this) ;
+    return sphericalModel_.getFieldValueAt(aPosition, anInstant);
 }
 
-Vector3d                        Moon::SphericalImpl::getFieldValueAt        (   const   Vector3d&                   aPosition,
-                                                                                const   Instant&                    anInstant                                   ) const
+Moon::Moon(const Moon::Type& aType, const Directory& aDataDirectory)
+    : Model(),
+      implUPtr_(Moon::ImplFromType(aType, aDataDirectory))
 {
-    return sphericalModel_.getFieldValueAt(aPosition, anInstant) ;
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-                                Moon::Moon                                  (   const   Moon::Type&                 aType,
-                                                                                const   Directory&                  aDataDirectory                              )
-                                :   Model(),
-                                    implUPtr_(Moon::ImplFromType(aType, aDataDirectory))
+Moon::Moon(const Moon& aMoonGravitationalModel)
+    : Model(aMoonGravitationalModel),
+      implUPtr_((aMoonGravitationalModel.implUPtr_ != nullptr) ? aMoonGravitationalModel.implUPtr_->clone() : nullptr)
 {
-
 }
 
-                                Moon::Moon                                  (   const   Moon&                       aMoonGravitationalModel                     )
-                                :   Model(aMoonGravitationalModel),
-                                    implUPtr_((aMoonGravitationalModel.implUPtr_ != nullptr) ? aMoonGravitationalModel.implUPtr_->clone() : nullptr)
+Moon& Moon::operator=(const Moon& aMoonGravitationalModel)
 {
-
-}
-
-Moon&                           Moon::operator =                            (   const   Moon&                       aMoonGravitationalModel                     )
-{
-
     if (this != &aMoonGravitationalModel)
     {
+        Model::operator=(aMoonGravitationalModel);
 
-        Model::operator = (aMoonGravitationalModel) ;
-
-        implUPtr_.reset((aMoonGravitationalModel.implUPtr_ != nullptr) ? aMoonGravitationalModel.implUPtr_->clone() : nullptr) ;
-
+        implUPtr_.reset(
+            (aMoonGravitationalModel.implUPtr_ != nullptr) ? aMoonGravitationalModel.implUPtr_->clone() : nullptr
+        );
     }
 
-    return *this ;
-
+    return *this;
 }
 
-                                Moon::~Moon                                  ( )
-{
+Moon::~Moon() {}
 
+Moon* Moon::clone() const
+{
+    return new Moon(*this);
 }
 
-Moon*                           Moon::clone                                 ( ) const
+Moon::Type Moon::getType() const
 {
-    return new Moon(*this) ;
+    return implUPtr_->getType();
 }
 
-Moon::Type                      Moon::getType                               ( ) const
+Vector3d Moon::getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const
 {
-    return implUPtr_->getType() ;
+    return implUPtr_->getFieldValueAt(aPosition, anInstant);
 }
 
-Vector3d                        Moon::getFieldValueAt                       (   const   Vector3d&                   aPosition,
-                                                                                const   Instant&                    anInstant                                   ) const
+Unique<Moon::Impl> Moon::ImplFromType(const Moon::Type& aType, const Directory& aDataDirectory)
 {
-    return implUPtr_->getFieldValueAt(aPosition, anInstant) ;
-}
-
-Unique<Moon::Impl>              Moon::ImplFromType                          (   const   Moon::Type&                 aType,
-                                                                                const   Directory&                  aDataDirectory                              )
-{
-
-    (void) aDataDirectory ;  // Temporary
+    (void)aDataDirectory;  // Temporary
 
     if (aType == Moon::Type::Spherical)
     {
-        return std::make_unique<Moon::SphericalImpl>(aType) ;
+        return std::make_unique<Moon::SphericalImpl>(aType);
     }
 
-    throw ostk::core::error::runtime::ToBeImplemented("Non spherical Moon gravity field type") ;
-
+    throw ostk::core::error::runtime::ToBeImplemented("Non spherical Moon gravity field type");
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-}
-}
-}
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}  // namespace gravitational
+}  // namespace environment
+}  // namespace physics
+}  // namespace ostk

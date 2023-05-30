@@ -1,26 +1,16 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/// @project        Open Space Toolkit ▸ Physics
-/// @file           bindings/python/src/OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Providers/IERS/Finals2000A.cpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>
-/// @license        Apache License 2.0
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Apache License 2.0
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Finals2000A.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers_IERS_Finals2000A ( pybind11::module& aModule                               )
+inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers_IERS_Finals2000A(pybind11::module& aModule)
 {
+    using namespace pybind11;
 
-    using namespace pybind11 ;
+    using ostk::core::types::Shared;
 
-    using ostk::core::types::Shared ;
+    using ostk::physics::coord::frame::provider::iers::Finals2000A;
 
-    using ostk::physics::coord::frame::provider::iers::Finals2000A ;
-
-    class_<Finals2000A> finals2000A(aModule, "Finals2000A") ;
+    class_<Finals2000A> finals2000A(aModule, "Finals2000A");
 
     finals2000A
 
@@ -38,7 +28,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provi
         .def_static("undefined", &Finals2000A::Undefined)
         .def_static("load", &Finals2000A::Load, arg("file"))
 
-    ;
+        ;
 
     class_<Finals2000A::Data>(finals2000A, "Data")
 
@@ -67,8 +57,5 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provi
         .def_readonly("dx_b", &Finals2000A::Data::dx_B)
         .def_readonly("dy_b", &Finals2000A::Data::dy_B)
 
-    ;
-
+        ;
 }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

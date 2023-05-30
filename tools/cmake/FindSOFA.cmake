@@ -1,11 +1,4 @@
-################################################################################################################################################################
-
-# @project        Open Space Toolkit ▸ Physics
-# @file           tools/cmake/FindSOFA.cmake.in
-# @author         Lucas Brémond <lucas@loftorbital.com>
-# @license        Apache License 2.0
-
-################################################################################################################################################################
+# Apache License 2.0
 
 SET (SOFA_ROOT_DIR ${SOFA_ROOT_DIR} "/usr/local")
 
@@ -20,5 +13,3 @@ INCLUDE (FindPackageHandleStandardArgs)
 FIND_PACKAGE_HANDLE_STANDARD_ARGS (SOFA DEFAULT_MSG SOFA_LIBRARY SOFA_INCLUDE_DIR)
 
 MARK_AS_ADVANCED (SOFA_INCLUDE_DIR SOFA_LIBRARY)
-
-################################################################################################################################################################

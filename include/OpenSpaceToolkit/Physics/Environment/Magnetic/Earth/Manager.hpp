@@ -1,31 +1,24 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/// @project        Open Space Toolkit ▸ Physics
-/// @file           OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>
-/// @license        Apache License 2.0
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Apache License 2.0
 
 #ifndef __OpenSpaceToolkit_Physics_Environment_Magnetic_Earth_Manager__
 #define __OpenSpaceToolkit_Physics_Environment_Magnetic_Earth_Manager__
 
-#include <OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp>
-
-#include <OpenSpaceToolkit/IO/URL.hpp>
+#include <mutex>
 
 #include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
 #include <OpenSpaceToolkit/Core/Types/String.hpp>
 
-#include <mutex>
+#include <OpenSpaceToolkit/IO/URL.hpp>
+
+#include <OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp>
 
 #define OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_ENABLED true
-#define OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY "./.open-space-toolkit/physics/environment/magnetic/earth"
-#define OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_REMOTE_URL "https://sourceforge.net/projects/geographiclib/files/magnetic-distrib/"
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#define OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY \
+    "./.open-space-toolkit/physics/environment/magnetic/earth"
+#define OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_REMOTE_URL \
+    "https://sourceforge.net/projects/geographiclib/files/magnetic-distrib/"
 
 namespace ostk
 {
@@ -38,18 +31,14 @@ namespace magnetic
 namespace earth
 {
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+using ostk::core::types::String;
+using ostk::core::fs::Path;
+using ostk::core::fs::File;
+using ostk::core::fs::Directory;
 
-using ostk::core::types::String ;
-using ostk::core::fs::Path ;
-using ostk::core::fs::File ;
-using ostk::core::fs::Directory ;
+using ostk::io::URL;
 
-using ostk::io::URL ;
-
-using EarthMagneticModel = ostk::physics::environment::magnetic::Earth ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+using EarthMagneticModel = ostk::physics::environment::magnetic::Earth;
 
 /// @brief                      Earth magnetic model data manager
 ///
@@ -57,138 +46,131 @@ using EarthMagneticModel = ostk::physics::environment::magnetic::Earth ;
 ///
 ///                             The following environment variables can be defined:
 ///
-///                             - "OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_ENABLED" will override "DefaultEnabled"
-///                             - "OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY" will override "DefaultLocalRepository"
-///                             - "OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_REMOTE_URL" will override "DefaultRemoteUrl"
+///                             - "OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_ENABLED" will override
+///                             "DefaultEnabled"
+///                             - "OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY" will override
+///                             "DefaultLocalRepository"
+///                             - "OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_REMOTE_URL" will override
+///                             "DefaultRemoteUrl"
 
 class Manager
 {
+   public:
+    /// @brief              Copy constructor (deleted)
 
-    public:
+    Manager(const Manager& aManager) = delete;
 
-        /// @brief              Copy constructor (deleted)
+    /// @brief              Copy assignment operator (deleted)
 
-                                Manager                                     (   const   Manager&                    aManager                                    ) = delete ;
+    Manager& operator=(const Manager& aManager) = delete;
 
-        /// @brief              Copy assignment operator (deleted)
+    /// @brief              Returns true is manager is enabled
+    ///
+    /// @return             True is manager is enabled
 
-        Manager&                operator =                                  (   const   Manager&                    aManager                                    ) = delete ;
+    bool isEnabled() const;
 
-        /// @brief              Returns true is manager is enabled
-        ///
-        /// @return             True is manager is enabled
+    /// @brief              Returns true if manager has data file for the given model type
+    ///
+    /// @param              [in] aModelType A model type
+    /// @return             True if manager has data file for the given model type
 
-        bool                    isEnabled                                   ( ) const ;
+    bool hasDataFileForType(const EarthMagneticModel::Type& aModelType) const;
 
-        /// @brief              Returns true if manager has data file for the given model type
-        ///
-        /// @param              [in] aModelType A model type
-        /// @return             True if manager has data file for the given model type
+    /// @brief              Get local repository
+    ///
+    /// @return             Local repository
 
-        bool                    hasDataFileForType                          (   const   EarthMagneticModel::Type&   aModelType                                  ) const ;
+    Directory getLocalRepository() const;
 
-        /// @brief              Get local repository
-        ///
-        /// @return             Local repository
+    /// @brief              Get remote URL
+    ///
+    /// @return             Remote URL
 
-        Directory               getLocalRepository                          ( ) const ;
+    URL getRemoteUrl() const;
 
-        /// @brief              Get remote URL
-        ///
-        /// @return             Remote URL
+    /// @brief              Fetch data file from remote
+    ///
+    /// @param              [in] aModelType A model type
 
-        URL                     getRemoteUrl                                ( ) const ;
+    void fetchDataFileForType(const EarthMagneticModel::Type& aModelType) const;
 
-        /// @brief              Fetch data file from remote
-        ///
-        /// @param              [in] aModelType A model type
+    /// @brief              Set local repository
+    ///
+    /// @param              [in] aDirectory A repository directory
 
-        void                    fetchDataFileForType                        (   const   EarthMagneticModel::Type&   aModelType                                  ) const ;
+    void setLocalRepository(const Directory& aDirectory);
 
-        /// @brief              Set local repository
-        ///
-        /// @param              [in] aDirectory A repository directory
+    /// @brief              Set remote URL
+    ///
+    /// @param              [in] aRemoteUrl A remote URL
 
-        void                    setLocalRepository                          (   const   Directory&                  aDirectory                                  ) ;
+    void setRemoteUrl(const URL& aRemoteUrl);
 
-        /// @brief              Set remote URL
-        ///
-        /// @param              [in] aRemoteUrl A remote URL
+    /// @brief              Enable manager
 
-        void                    setRemoteUrl                                (   const   URL&                        aRemoteUrl                                  ) ;
+    void enable();
 
-        /// @brief              Enable manager
+    /// @brief              Disable manager
 
-        void                    enable                                      ( ) ;
+    void disable();
 
-        /// @brief              Disable manager
+    /// @brief              Set enabled flag
+    ///
+    /// @param              [in] aBoolean An enabled flag
 
-        void                    disable                                     ( ) ;
+    void setEnabled(const bool aBoolean);
 
-        /// @brief              Set enabled flag
-        ///
-        /// @param              [in] aBoolean An enabled flag
+    /// @brief              Get manager singleton
+    ///
+    /// @return             Reference to manager
 
-        void                    setEnabled                                  (   const   bool                        aBoolean                                    ) ;
+    static Manager& Get();
 
-        /// @brief              Get manager singleton
-        ///
-        /// @return             Reference to manager
+    /// @brief              Get default enabled flag
+    ///
+    ///                     Overriden by: OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_ENABLED
+    ///
+    /// @return             Default enabled flag
 
-        static Manager&         Get                                         ( ) ;
+    static bool DefaultEnabled();
 
-        /// @brief              Get default enabled flag
-        ///
-        ///                     Overriden by: OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_ENABLED
-        ///
-        /// @return             Default enabled flag
+    /// @brief              Get default local repository
+    ///
+    ///                     Overriden by: OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY
+    ///
+    /// @return             Default local repository
 
-        static bool             DefaultEnabled                              ( ) ;
+    static Directory DefaultLocalRepository();
 
-        /// @brief              Get default local repository
-        ///
-        ///                     Overriden by: OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY
-        ///
-        /// @return             Default local repository
+    /// @brief              Get default remote URL
+    ///
+    ///                     Overriden by: OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_REMOTE_URL
+    ///
+    /// @return             Default remote URL
 
-        static Directory        DefaultLocalRepository                      ( ) ;
+    static URL DefaultRemoteUrl();
 
-        /// @brief              Get default remote URL
-        ///
-        ///                     Overriden by: OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_REMOTE_URL
-        ///
-        /// @return             Default remote URL
+   private:
+    Directory localRepository_;
 
-        static URL              DefaultRemoteUrl                            ( ) ;
+    URL remoteUrl_;
 
-    private:
+    bool enabled_;
 
-        Directory               localRepository_ ;
+    mutable std::mutex mutex_;
 
-        URL                     remoteUrl_ ;
+    Manager();
 
-        bool                    enabled_ ;
+    URL getDataFileUrlForType(const EarthMagneticModel::Type& aModelType) const;
 
-        mutable std::mutex      mutex_ ;
+    static String DataFileNameFromType(const EarthMagneticModel::Type& aModelType);
+};
 
-                                Manager                                     ( ) ;
-
-        URL                     getDataFileUrlForType                       (   const   EarthMagneticModel::Type&   aModelType                                  ) const ;
-
-        static String           DataFileNameFromType                        (   const   EarthMagneticModel::Type&   aModelType                                  ) ;
-
-} ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-}
-}
-}
-}
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}  // namespace earth
+}  // namespace magnetic
+}  // namespace environment
+}  // namespace physics
+}  // namespace ostk
 
 #endif
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

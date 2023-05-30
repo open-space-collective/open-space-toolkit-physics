@@ -1,29 +1,19 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/// @project        Open Space Toolkit ▸ Physics
-/// @file           bindings/python/src/OpenSpaceToolkitPhysicsPy/Coordinate/Frame.cpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>
-/// @license        Apache License 2.0
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-#include <OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Providers.cpp>
-#include <OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Provider.cpp>
+/// Apache License 2.0
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#include <OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Provider.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Providers.cpp>
 
-inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame  (           pybind11::module&           aModule                                     )
+inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame(pybind11::module& aModule)
 {
+    using namespace pybind11;
 
-    using namespace pybind11 ;
+    using ostk::core::types::Shared;
+    using ostk::core::types::String;
 
-    using ostk::core::types::Shared ;
-    using ostk::core::types::String ;
-
-    using ostk::physics::coord::Frame ;
-    using ostk::physics::coord::frame::Provider ;
+    using ostk::physics::coord::Frame;
+    using ostk::physics::coord::frame::Provider;
 
     class_<Frame, Shared<Frame>>(aModule, "Frame")
 
@@ -59,10 +49,12 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame  (   
         .def_static("ITRF", &Frame::ITRF)
         .def_static("with_name", &Frame::WithName, arg("name"))
         .def_static("exists", &Frame::Exists, arg("name"))
-        .def_static("construct", &Frame::Construct, arg("name"), arg("is_quasi_inertial"), arg("parent_frame"), arg("provider"))
+        .def_static(
+            "construct", &Frame::Construct, arg("name"), arg("is_quasi_inertial"), arg("parent_frame"), arg("provider")
+        )
         .def_static("destruct", &Frame::Destruct, arg("name"))
 
-    ;
+        ;
 
     // register_ptr_to_python<Shared<Frame>>() ;
     // register_ptr_to_python<Shared<const Frame>>() ;
@@ -70,14 +62,11 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame  (   
     // implicitly_convertible<Shared<Frame>, Shared<const Frame>>() ;
 
     // Create "frame" python submodule
-    auto frame = aModule.def_submodule("frame") ;
+    auto frame = aModule.def_submodule("frame");
 
     // Add __path__ attribute for "frame" submodule
-    frame.attr("__path__") = "ostk.physics.coordinate.frame" ;
+    frame.attr("__path__") = "ostk.physics.coordinate.frame";
 
-    OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider(frame) ;
-    OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers(frame) ;
-
+    OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider(frame);
+    OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers(frame);
 }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -1,27 +1,18 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/// @project        Open Space Toolkit ▸ Physics
-/// @file           OpenSpaceToolkit/Physics/Units/Derived.hpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>
-/// @license        Apache License 2.0
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Apache License 2.0
 
 #ifndef __OpenSpaceToolkit_Physics_Units_Derived__
 #define __OpenSpaceToolkit_Physics_Units_Derived__
 
+#include <OpenSpaceToolkit/Core/Types/Integer.hpp>
+#include <OpenSpaceToolkit/Core/Types/Real.hpp>
+#include <OpenSpaceToolkit/Core/Types/String.hpp>
+
 #include <OpenSpaceToolkit/Physics/Units/Derived/Angle.hpp>
 #include <OpenSpaceToolkit/Physics/Units/ElectricCurrent.hpp>
-#include <OpenSpaceToolkit/Physics/Units/Time.hpp>
-#include <OpenSpaceToolkit/Physics/Units/Mass.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Length.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Mass.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Time.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Unit.hpp>
-
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
-#include <OpenSpaceToolkit/Core/Types/Integer.hpp>
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 namespace ostk
 {
@@ -30,14 +21,10 @@ namespace physics
 namespace units
 {
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-using ostk::core::types::Int16 ;
-using ostk::core::types::Integer ;
-using ostk::core::types::Real ;
-using ostk::core::types::String ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+using ostk::core::types::Int16;
+using ostk::core::types::Integer;
+using ostk::core::types::Real;
+using ostk::core::types::String;
 
 /// @brief                      Derived unit
 ///
@@ -45,212 +32,187 @@ using ostk::core::types::String ;
 
 class Derived : public Unit
 {
+   public:
+    /// @brief              SI unit order
 
-    public:
+    class Order
+    {
+       public:
+        Order(Int16 aNumerator);
 
-        /// @brief              SI unit order
+        Order(Int16 aNumerator, Int16 aDenominator);
 
-        class Order
-        {
+        bool operator==(const Order& anOrder) const;
 
-            public:
+        bool operator!=(const Order& anOrder) const;
 
-                                Order                                       (           Int16                       aNumerator                                  ) ;
+        bool isZero() const;
 
-                                Order                                       (           Int16                       aNumerator,
-                                                                                        Int16                       aDenominator                                ) ;
+        bool isUnity() const;
 
-                bool            operator ==                                 (   const   Order&                      anOrder                                     ) const ;
+        Int16 getNumerator() const;
 
-                bool            operator !=                                 (   const   Order&                      anOrder                                     ) const ;
+        Int16 getDenominator() const;
 
-                bool            isZero                                      ( ) const ;
+        Real getValue() const;
 
-                bool            isUnity                                     ( ) const ;
+        String toString() const;
 
-                Int16           getNumerator                                ( ) const ;
+        static Order Zero();
 
-                Int16           getDenominator                              ( ) const ;
+        static Order One();
 
-                Real            getValue                                    ( ) const ;
+        static Order Two();
 
-                String          toString                                    ( ) const ;
+       private:
+        Int16 numerator_;
+        Int16 denominator_;
+    };
 
-                static Order    Zero                                        ( ) ;
+    /// @brief              Unit
 
-                static Order    One                                         ( ) ;
+    class Unit
+    {
+       public:
+        Unit(
+            const Length::Unit& aLengthUnit,
+            const Order& aLengthOrder,
+            const Mass::Unit& aMassUnit,
+            const Order& aMassOrder,
+            const Time::Unit& aTimeUnit,
+            const Order& aTimeOrder,
+            const ElectricCurrent::Unit& anElectricCurrentUnit,
+            const Order& anElectricCurrentOrder,
+            const Angle::Unit& anAngleUnit,
+            const Order& anAngleOrder
+        );  // [TBI]
 
-                static Order    Two                                         ( ) ;
+        bool operator==(const Unit& aUnit) const;
 
-            private:
+        bool operator!=(const Unit& aUnit) const;
 
-                Int16           numerator_ ;
-                Int16           denominator_ ;
+        bool isDefined() const;
 
-        } ;
+        bool isCompatibleWith(const Unit& aUnit) const;
 
+        const Length::Unit& accessLengthUnit() const;
 
-        /// @brief              Unit
+        const Order& accessLengthOrder() const;
 
-        class Unit
-        {
+        const Mass::Unit& accessMassUnit() const;
 
-            public:
+        const Derived::Order& accessMassOrder() const;
 
-                                Unit                                        (   const   Length::Unit&               aLengthUnit,
-                                                                                const   Order&                      aLengthOrder,
-                                                                                const   Mass::Unit&                 aMassUnit,
-                                                                                const   Order&                      aMassOrder,
-                                                                                const   Time::Unit&                 aTimeUnit,
-                                                                                const   Order&                      aTimeOrder,
-                                                                                const   ElectricCurrent::Unit&      anElectricCurrentUnit,
-                                                                                const   Order&                      anElectricCurrentOrder,
-                                                                                const   Angle::Unit&                anAngleUnit,
-                                                                                const   Order&                      anAngleOrder                                ) ; // [TBI]
+        const Time::Unit& accessTimeUnit() const;
 
-                bool            operator ==                                 (   const   Unit&                       aUnit                                       ) const ;
+        const Derived::Order& accessTimeOrder() const;
 
-                bool            operator !=                                 (   const   Unit&                       aUnit                                       ) const ;
+        const ElectricCurrent::Unit& accessElectricCurrentUnit() const;
 
-                bool            isDefined                                   ( ) const ;
+        const Derived::Order& accessElectricCurrentOrder() const;
 
-                bool            isCompatibleWith                            (   const   Unit&                       aUnit                                       ) const ;
+        const Angle::Unit& accessAngleUnit() const;
 
-                const Length::Unit& accessLengthUnit                        ( ) const ;
+        const Derived::Order& accessAngleOrder() const;
 
-                const Order&    accessLengthOrder                           ( ) const ;
+        String toString() const;
 
-                const Mass::Unit& accessMassUnit                            ( ) const ;
+        String getSymbol() const;
 
-                const Derived::Order& accessMassOrder                       ( ) const ;
+        static Unit Undefined();
 
-                const Time::Unit& accessTimeUnit                            ( ) const ;
+        static Unit SquareMeter();
 
-                const Derived::Order& accessTimeOrder                       ( ) const ;
+        static Unit CubicMeter();
 
-                const ElectricCurrent::Unit& accessElectricCurrentUnit      ( ) const ;
+        static Unit Hertz();
 
-                const Derived::Order& accessElectricCurrentOrder            ( ) const ;
+        static Unit Watt();
 
-                const Angle::Unit& accessAngleUnit                          ( ) const ;
+        static Unit Tesla();
 
-                const Derived::Order& accessAngleOrder                      ( ) const ;
+        static Unit Velocity(const Length::Unit& aLengthUnit, const Time::Unit& aTimeUnit);
 
-                String          toString                                    ( ) const ;
+        static Unit Acceleration(const Length::Unit& aLengthUnit, const Time::Unit& aTimeUnit);
 
-                String          getSymbol                                   ( ) const ;
+        static Unit AngularVelocity(const Angle::Unit& anAngleUnit, const Time::Unit& aTimeUnit);
 
-                static Unit     Undefined                                   ( ) ;
+        static Unit GravitationalParameter(const Length::Unit& aLengthUnit, const Time::Unit& aTimeUnit);
 
-                static Unit     SquareMeter                                 ( ) ;
+        static Unit MassDensity(const Mass::Unit& aMassUnit, const Length::Unit& aLengthUnit);
 
-                static Unit     CubicMeter                                  ( ) ;
+        static Unit Parse(const String& aString);
 
-                static Unit     Hertz                                       ( ) ;
+       private:
+        // S.I.
 
-                static Unit     Watt                                        ( ) ;
+        Length::Unit lengthUnit_;
+        Order lengthOrder_;
 
-                static Unit     Tesla                                       ( ) ;
+        Mass::Unit massUnit_;
+        Order massOrder_;
 
-                static Unit     Velocity                                    (   const   Length::Unit&               aLengthUnit,
-                                                                                const   Time::Unit&                 aTimeUnit                                   ) ;
+        Time::Unit timeUnit_;
+        Order timeOrder_;
 
-                static Unit     Acceleration                                (   const   Length::Unit&               aLengthUnit,
-                                                                                const   Time::Unit&                 aTimeUnit                                   ) ;
+        // Temperature::Unit temperatureUnit_ ;
+        // Order           temperatureOrder_ ;
 
-                static Unit     AngularVelocity                             (   const   Angle::Unit&                anAngleUnit,
-                                                                                const   Time::Unit&                 aTimeUnit                                   ) ;
+        ElectricCurrent::Unit electricCurrentUnit_;
+        Order electricCurrentOrder_;
 
-                static Unit     GravitationalParameter                      (   const   Length::Unit&               aLengthUnit,
-                                                                                const   Time::Unit&                 aTimeUnit                                   ) ;
+        // LuminousIntensity::Unit luminousIntensityUnit_ ;
+        // Order           luminousIntensityOrder_ ;
 
-                static Unit     MassDensity                                 (   const   Mass::Unit&                 aMassUnit,
-                                                                                const   Length::Unit&               aLengthUnit                                 ) ;
+        // Derived
 
-                static Unit     Parse                                       (   const   String&                     aString                                     ) ;
+        Angle::Unit angleUnit_;
+        Order angleOrder_;
+    };
 
-            private:
+    /// @brief              Constructor
+    ////
+    /// @code
+    ///
+    /// @endcode
+    ///
+    /// @param              [in]
+    /// @param              [in]
 
-                // S.I.
+    Derived(const Real& aValue, const Derived::Unit& aUnit);
 
-                Length::Unit    lengthUnit_ ;
-                Order           lengthOrder_ ;
+    virtual Derived* clone() const override;
 
-                Mass::Unit      massUnit_ ;
-                Order           massOrder_ ;
+    bool operator==(const Derived& aDerivedUnit) const;
 
-                Time::Unit      timeUnit_ ;
-                Order           timeOrder_ ;
+    bool operator!=(const Derived& aDerivedUnit) const;
 
-                // Temperature::Unit temperatureUnit_ ;
-                // Order           temperatureOrder_ ;
+    friend std::ostream& operator<<(std::ostream& anOutputStream, const Derived& aDerivedUnit);
 
-                ElectricCurrent::Unit electricCurrentUnit_ ;
-                Order           electricCurrentOrder_ ;
+    virtual bool isDefined() const override;
 
-                // LuminousIntensity::Unit luminousIntensityUnit_ ;
-                // Order           luminousIntensityOrder_ ;
+    Derived::Unit getUnit() const;
 
-                // Derived
+    Real in(const Derived::Unit& aUnit) const;
 
-                Angle::Unit     angleUnit_ ;
-                Order           angleOrder_ ;
+    virtual String toString(const Integer& aPrecision = Integer::Undefined()) const override;
 
-        } ;
+    static Derived Undefined();
 
-        /// @brief              Constructor
-        ////
-        /// @code
-        ///
-        /// @endcode
-        ///
-        /// @param              [in]
-        /// @param              [in]
+    static Derived Parse(const String& aString);
 
-                                Derived                                     (   const   Real&                       aValue,
-                                                                                const   Derived::Unit&              aUnit                                       ) ;
+    static String StringFromUnit(const Derived::Unit& aUnit);
 
-        virtual Derived*        clone                                       ( ) const override ;
+    static String SymbolFromUnit(const Derived::Unit& aUnit);
 
-        bool                    operator ==                                 (   const   Derived&                    aDerivedUnit                                ) const ;
+   private:
+    Derived::Unit unit_;
 
-        bool                    operator !=                                 (   const   Derived&                    aDerivedUnit                                ) const ;
+    static Real SIRatio(const Derived::Unit& aUnit);
+};
 
-        friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
-                                                                                const   Derived&                    aDerivedUnit                                ) ;
-
-        virtual bool            isDefined                                   ( ) const override ;
-
-        Derived::Unit           getUnit                                     ( ) const ;
-
-        Real                    in                                          (   const   Derived::Unit&              aUnit                                       ) const ;
-
-        virtual String          toString                                    (   const   Integer&                    aPrecision                                  =   Integer::Undefined() ) const override ;
-
-        static Derived          Undefined                                   ( ) ;
-
-        static Derived          Parse                                       (   const   String&                     aString                                     ) ;
-
-        static String           StringFromUnit                              (   const   Derived::Unit&              aUnit                                       ) ;
-
-        static String           SymbolFromUnit                              (   const   Derived::Unit&              aUnit                                       ) ;
-
-    private:
-
-        Derived::Unit           unit_ ;
-
-        static Real             SIRatio                                     (   const   Derived::Unit&              aUnit                                       ) ;
-
-} ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-}
-}
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}  // namespace units
+}  // namespace physics
+}  // namespace ostk
 
 #endif
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

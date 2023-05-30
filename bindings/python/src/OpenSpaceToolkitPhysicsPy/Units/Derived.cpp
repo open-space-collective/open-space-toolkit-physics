@@ -1,53 +1,50 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/// @project        Open Space Toolkit ▸ Physics
-/// @file           bindings/python/src/OpenSpaceToolkitPhysicsPy/Units/Derived.cpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>
-/// @license        Apache License 2.0
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Apache License 2.0
 
 #include <OpenSpaceToolkit/Physics/Units/Derived.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-inline void                     OpenSpaceToolkitPhysicsPy_Units_Derived     (           pybind11::module&           aModule                                     )
+inline void OpenSpaceToolkitPhysicsPy_Units_Derived(pybind11::module& aModule)
 {
+    using namespace pybind11;
 
-    using namespace pybind11 ;
+    using ostk::core::types::Integer;
+    using ostk::core::types::Real;
 
-    using ostk::core::types::Integer ;
-    using ostk::core::types::Real ;
+    using ostk::physics::units::Length;
+    using ostk::physics::units::Mass;
+    using ostk::physics::units::Time;
+    using ostk::physics::units::ElectricCurrent;
+    using ostk::physics::units::Angle;
+    using ostk::physics::units::Derived;
 
-    using ostk::physics::units::Length ;
-    using ostk::physics::units::Mass ;
-    using ostk::physics::units::Time ;
-    using ostk::physics::units::ElectricCurrent ;
-    using ostk::physics::units::Angle ;
-    using ostk::physics::units::Derived ;
+    class_<Derived> derived_class(aModule, "Derived");
 
-    class_<Derived> derived_class(aModule, "Derived") ;
-
-    derived_class.def(init<Real, Derived::Unit>())
+    derived_class
+        .def(init<Real, Derived::Unit>())
 
         .def(self == self)
         .def(self != self)
 
         .def("__str__", &(shiftToString<Derived>))
-        .def("__repr__", +[] (const Derived& aDerived) -> std::string { return aDerived.toString() ; })
+        .def(
+            "__repr__",
+            +[](const Derived& aDerived) -> std::string
+            {
+                return aDerived.toString();
+            }
+        )
 
         .def("is_defined", &Derived::isDefined)
 
         .def("get_unit", &Derived::getUnit)
         .def("in_unit", &Derived::in)
-        .def("to_string", &Derived::toString, "aPrecision"_a=Integer::Undefined())
+        .def("to_string", &Derived::toString, "aPrecision"_a = Integer::Undefined())
 
         .def_static("undefined", &Derived::Undefined)
         // .def_static("parse", &Derived::Parse)
         .def_static("string_from_unit", &Derived::StringFromUnit)
         .def_static("symbol_from_unit", &Derived::SymbolFromUnit)
 
-    ;
+        ;
 
     class_<Derived::Order>(derived_class, "Order")
 
@@ -70,11 +67,21 @@ inline void                     OpenSpaceToolkitPhysicsPy_Units_Derived     (   
         .def_static("one", &Derived::Order::One)
         .def_static("two", &Derived::Order::Two)
 
-    ;
+        ;
 
     class_<Derived::Unit>(derived_class, "Unit")
 
-        .def(init<const Length::Unit&, const Derived::Order&, const Mass::Unit&, const Derived::Order&, const Time::Unit&, const Derived::Order&, const ElectricCurrent::Unit&, const Derived::Order&, const Angle::Unit&, const Derived::Order&>())
+        .def(init<
+             const Length::Unit&,
+             const Derived::Order&,
+             const Mass::Unit&,
+             const Derived::Order&,
+             const Time::Unit&,
+             const Derived::Order&,
+             const ElectricCurrent::Unit&,
+             const Derived::Order&,
+             const Angle::Unit&,
+             const Derived::Order&>())
 
         .def(self == self)
         .def(self != self)
@@ -105,8 +112,5 @@ inline void                     OpenSpaceToolkitPhysicsPy_Units_Derived     (   
         .def_static("angular_velocity", &Derived::Unit::AngularVelocity)
         // .def_static("parse", &Derived::Unit::Parse)
 
-    ;
-
+        ;
 }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

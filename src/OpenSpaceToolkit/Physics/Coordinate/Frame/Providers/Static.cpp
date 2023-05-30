@@ -1,18 +1,9 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/// @project        Open Space Toolkit ▸ Physics
-/// @file           OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Static.cpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>
-/// @license        Apache License 2.0
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Static.hpp>
+/// Apache License 2.0
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Static.hpp>
 
 namespace ostk
 {
@@ -25,47 +16,41 @@ namespace frame
 namespace provider
 {
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-                                Static::Static                              (   const   Transform&                  aTransform                                  )
-                                :   transform_(aTransform)
+Static::Static(const Transform& aTransform)
+    : transform_(aTransform)
 {
-
 }
 
-                                Static::~Static                             ( )
-{
+Static::~Static() {}
 
+Static* Static::clone() const
+{
+    return new Static(*this);
 }
 
-Static*                         Static::clone                               ( ) const
+bool Static::isDefined() const
 {
-    return new Static(*this) ;
+    return transform_.isDefined();
 }
 
-bool                            Static::isDefined                           ( ) const
+Transform Static::getTransformAt(const Instant& anInstant) const
 {
-    return transform_.isDefined() ;
-}
-
-Transform                       Static::getTransformAt                      (   const   Instant&                    anInstant                                   ) const
-{
-
     if (!this->isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Static provider") ;
+        throw ostk::core::error::runtime::Undefined("Static provider");
     }
 
-    return { anInstant, transform_.accessTranslation(), transform_.accessVelocity(), transform_.accessOrientation(), transform_.accessAngularVelocity(), Transform::Type::Passive } ;
-
+    return {
+        anInstant,
+        transform_.accessTranslation(),
+        transform_.accessVelocity(),
+        transform_.accessOrientation(),
+        transform_.accessAngularVelocity(),
+        Transform::Type::Passive};
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-}
-}
-}
-}
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}  // namespace provider
+}  // namespace frame
+}  // namespace coord
+}  // namespace physics
+}  // namespace ostk

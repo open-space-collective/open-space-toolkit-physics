@@ -1,22 +1,13 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/// @project        Open Space Toolkit ▸ Physics
-/// @file           OpenSpaceToolkit/Physics/Coordinate/Axes.hpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>
-/// @license        Apache License 2.0
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Apache License 2.0
 
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Axes__
 #define __OpenSpaceToolkit_Physics_Coordinate_Axes__
 
-#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Objects/Vector.hpp>
 
-#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
 namespace ostk
 {
@@ -25,72 +16,51 @@ namespace physics
 namespace coord
 {
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+using ostk::core::types::Shared;
 
-using ostk::core::types::Shared ;
+using ostk::math::obj::Vector3d;
 
-using ostk::math::obj::Vector3d ;
+using ostk::physics::time::Instant;
 
-using ostk::physics::time::Instant ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-class Frame ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class Frame;
 
 /// @brief                      Axes
 
 class Axes
 {
+   public:
+    Axes(const Vector3d& aXAxis, const Vector3d& aYAxis, const Vector3d& aZAxis, const Shared<const Frame>& aFrameSPtr);
 
-    public:
+    bool operator==(const Axes& anAxes) const;
 
-                                Axes                                        (   const   Vector3d&                   aXAxis,
-                                                                                const   Vector3d&                   aYAxis,
-                                                                                const   Vector3d&                   aZAxis,
-                                                                                const   Shared<const Frame>&        aFrameSPtr                                  ) ;
+    bool operator!=(const Axes& anAxes) const;
 
-        bool                    operator ==                                 (   const   Axes&                       anAxes                                      ) const ;
+    friend std::ostream& operator<<(std::ostream& anOutputStream, const Axes& anAxes);
 
-        bool                    operator !=                                 (   const   Axes&                       anAxes                                      ) const ;
+    bool isDefined() const;
 
-        friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
-                                                                                const   Axes&                       anAxes                                      ) ;
+    const Vector3d& x() const;
 
-        bool                    isDefined                                   ( ) const ;
+    const Vector3d& y() const;
 
-        const Vector3d&         x                                           ( ) const ;
+    const Vector3d& z() const;
 
-        const Vector3d&         y                                           ( ) const ;
+    Shared<const Frame> getFrame() const;
 
-        const Vector3d&         z                                           ( ) const ;
+    Axes inFrame(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const;
 
-        Shared<const Frame>     getFrame                                    ( ) const ;
+    static Axes Undefined();
 
-        Axes                    inFrame                                     (   const   Shared<const Frame>&        aFrameSPtr,
-                                                                                const   Instant&                    anInstant                                   ) const ;
+   private:
+    Vector3d x_;
+    Vector3d y_;
+    Vector3d z_;
 
-        static Axes             Undefined                                   ( ) ;
+    Shared<const Frame> frameSPtr_;
+};
 
-    private:
-
-        Vector3d                x_ ;
-        Vector3d                y_ ;
-        Vector3d                z_ ;
-
-        Shared<const Frame>     frameSPtr_ ;
-
-} ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-}
-}
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}  // namespace coord
+}  // namespace physics
+}  // namespace ostk
 
 #endif
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

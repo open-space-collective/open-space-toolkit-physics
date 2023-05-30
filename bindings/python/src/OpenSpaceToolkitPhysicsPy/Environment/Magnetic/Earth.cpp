@@ -1,38 +1,29 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Apache License 2.0
 
-/// @project        Open Space Toolkit ▸ Physics
-/// @file           bindings/python/src/OpenSpaceToolkitPhysicsPy/Environment/Magnetic/Earth.cpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>
-/// @license        Apache License 2.0
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-#include <OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-inline void                     OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth (        pybind11::module&     aModule                                     )
+inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth(pybind11::module& aModule)
 {
+    using namespace pybind11;
 
-    using namespace pybind11 ;
+    using ostk::core::fs::Directory;
 
-    using ostk::core::fs::Directory ;
+    using ostk::physics::units::Derived;
+    using ostk::physics::environment::magnetic::Earth;
+    using ostk::physics::environment::magnetic::earth::Manager;
 
-    using ostk::physics::units::Derived ;
-    using ostk::physics::environment::magnetic::Earth ;
-    using ostk::physics::environment::magnetic::earth::Manager ;
+    class_<Earth> earth_magnetic_class(aModule, "Earth");
 
-    class_<Earth> earth_magnetic_class(aModule, "Earth") ;
-
-    earth_magnetic_class.def(init<const Earth::Type&, const Directory&>())
+    earth_magnetic_class
+        .def(init<const Earth::Type&, const Directory&>())
 
         .def(init<const Earth::Type&>())
 
         .def("get_type", &Earth::getType)
         .def("get_field_value_at", &Earth::getFieldValueAt)
 
-    ;
+        ;
 
     enum_<Earth::Type>(earth_magnetic_class, "EarthMagneticType")
 
@@ -45,7 +36,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Magnetic_E
         .value("WMM2010", Earth::Type::WMM2010)
         .value("WMM2015", Earth::Type::WMM2015)
 
-    ;
+        ;
 
     class_<Manager>(aModule, "Manager")
 
@@ -65,8 +56,5 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Magnetic_E
         .def_static("default_local_repository", &Manager::DefaultLocalRepository)
         .def_static("default_remote_url", &Manager::DefaultRemoteUrl)
 
-    ;
-
+        ;
 }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

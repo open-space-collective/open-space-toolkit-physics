@@ -1,26 +1,17 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/// @project        Open Space Toolkit ▸ Physics
-/// @file           OpenSpaceToolkit/Physics/Time/Interval.hpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>
-/// @license        Apache License 2.0
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Apache License 2.0
 
 #ifndef __OpenSpaceToolkit_Physics_Time_Interval__
 #define __OpenSpaceToolkit_Physics_Time_Interval__
 
-#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
-#include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
+#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
+#include <OpenSpaceToolkit/Core/Types/Integer.hpp>
+#include <OpenSpaceToolkit/Core/Types/Real.hpp>
+#include <OpenSpaceToolkit/Core/Types/String.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Objects/Interval.hpp>
 
-#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
-#include <OpenSpaceToolkit/Core/Types/Integer.hpp>
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
 
 namespace ostk
 {
@@ -29,99 +20,82 @@ namespace physics
 namespace time
 {
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+using ostk::core::types::Real;
+using ostk::core::types::String;
+using ostk::core::ctnr::Array;
 
-using ostk::core::types::Real ;
-using ostk::core::types::String ;
-using ostk::core::ctnr::Array ;
-
-using ostk::physics::time::Scale ;
-using ostk::physics::time::Instant ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+using ostk::physics::time::Scale;
+using ostk::physics::time::Instant;
 
 /// @brief                      Interval
 
 class Interval : public math::obj::Interval<Instant>
 {
+   public:
+    typedef math::obj::Interval<Instant>::Type Type;
 
-    public:
+    /// @brief              Constructor
+    ///
+    /// @code
+    ///                     Interval interval(Instant::J2000(), Instant::Now(), Interval::Type::Closed) ;
+    /// @endcode
+    ///
+    /// @param              [in] aLowerBound A lower bound
+    /// @param              [in] anUpperBound An upper bound
+    /// @param              [in] anIntervalType An interval type
 
-        typedef math::obj::Interval<Instant>::Type Type ;
+    Interval(const Instant& aLowerBound, const Instant& anUpperBound, const Interval::Type& anIntervalType);
 
-        /// @brief              Constructor
-        ///
-        /// @code
-        ///                     Interval interval(Instant::J2000(), Instant::Now(), Interval::Type::Closed) ;
-        /// @endcode
-        ///
-        /// @param              [in] aLowerBound A lower bound
-        /// @param              [in] anUpperBound An upper bound
-        /// @param              [in] anIntervalType An interval type
+    friend std::ostream& operator<<(std::ostream& anOutputStream, const Interval& anInterval);
 
-                                Interval                                    (   const   Instant&                    aLowerBound,
-                                                                                const   Instant&                    anUpperBound,
-                                                                                const   Interval::Type&             anIntervalType                              ) ;
+    bool isDefined() const;
 
-        friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
-                                                                                const   Interval&                   anInterval                                  ) ;
+    const Instant& accessStart() const;
 
-        bool                    isDefined                                   ( ) const ;
+    const Instant& accessEnd() const;
 
-        const Instant&          accessStart                                 ( ) const ;
+    Instant getStart() const;
 
-        const Instant&          accessEnd                                   ( ) const ;
+    Instant getEnd() const;
 
-        Instant                 getStart                                    ( ) const ;
+    Duration getDuration() const;
 
-        Instant                 getEnd                                      ( ) const ;
+    Instant getCenter() const;
 
-        Duration                getDuration                                 ( ) const ;
+    String toString(const Scale& aTimeScale = Scale::UTC) const;
 
-        Instant                 getCenter                                   ( ) const ;
+    Array<Instant> generateGrid(const Duration& aTimeStep) const;
 
-        String                  toString                                    (   const   Scale&                      aTimeScale                                  =   Scale::UTC ) const ;
+    static Interval Undefined();
 
-        Array<Instant>          generateGrid                                (   const   Duration&                   aTimeStep                                   ) const ;
+    /// @brief              Constructs a closed interval
+    ///
+    /// @code
+    ///                     Interval interval = Interval::Closed(Instant::J2000(), Instant::Now()) ; // [J2000, Now]
+    /// @endcode
+    ///
+    /// @return             Closed interval
 
-        static Interval         Undefined                                   ( ) ;
+    static Interval Closed(const Instant& aLowerBound, const Instant& anUpperBound);
 
-        /// @brief              Constructs a closed interval
-        ///
-        /// @code
-        ///                     Interval interval = Interval::Closed(Instant::J2000(), Instant::Now()) ; // [J2000, Now]
-        /// @endcode
-        ///
-        /// @return             Closed interval
+    static Interval Centered(
+        const Instant& aCentralInstant, const Duration& aDuration, const Interval::Type& anIntervalType
+    );
 
-        static Interval         Closed                                      (   const   Instant&                    aLowerBound,
-                                                                                const   Instant&                    anUpperBound                                ) ;
+    /// @brief              Constructs an interval from a string representation
+    ///
+    /// @code
+    ///                     ...
+    /// @endcode
+    ///
+    /// @param              [in] aString A string
+    /// @return             Interval
 
-        static Interval         Centered                                    (   const   Instant&                    aCentralInstant,
-                                                                                const   Duration&                   aDuration,
-                                                                                const   Interval::Type&             anIntervalType                              ) ;
+    static Interval Parse(const String& aString);
+};
 
-        /// @brief              Constructs an interval from a string representation
-        ///
-        /// @code
-        ///                     ...
-        /// @endcode
-        ///
-        /// @param              [in] aString A string
-        /// @return             Interval
-
-        static Interval         Parse                                       (   const   String&                     aString                                     ) ;
-
-} ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-}
-}
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}  // namespace time
+}  // namespace physics
+}  // namespace ostk
 
 #endif
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

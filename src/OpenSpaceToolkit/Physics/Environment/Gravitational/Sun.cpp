@@ -1,20 +1,11 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/// @project        Open Space Toolkit ▸ Physics
-/// @file           OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.cpp
-/// @author         Antoine Paletta <antoine.paletta@loftorbital.com>
-/// @license        Apache License 2.0
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-#include <OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Sun.hpp>
+/// Apache License 2.0
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#include <OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Sun.hpp>
 
 namespace ostk
 {
@@ -25,171 +16,126 @@ namespace environment
 namespace gravitational
 {
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 class Sun::Impl
 {
+   public:
+    Impl(const Sun::Type& aType);
 
-    public:
+    virtual ~Impl() = 0;
 
-                                Impl                                        (   const   Sun::Type&                  aType                                       ) ;
+    virtual Impl* clone() const = 0;
 
-        virtual                 ~Impl                                       ( ) = 0 ;
+    Sun::Type getType() const;
 
-        virtual Impl*           clone                                       ( ) const = 0 ;
+    virtual Vector3d getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const = 0;
 
-        Sun::Type               getType                                     ( ) const ;
+   private:
+    Sun::Type type_;
+};
 
-        virtual Vector3d        getFieldValueAt                             (   const   Vector3d&                   aPosition,
-                                                                                const   Instant&                    anInstant                                   ) const = 0 ;
+Sun::Impl::Impl(const Sun::Type& aType)
 
-    private:
-
-        Sun::Type               type_ ;
-
-} ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-                                Sun::Impl::Impl                             (   const   Sun::Type&                aType                                       )
-
-                                :   type_(aType)
+    : type_(aType)
 {
-
 }
 
-                                Sun::Impl::~Impl                            ( )
+Sun::Impl::~Impl() {}
+
+Sun::Type Sun::Impl::getType() const
 {
-
+    return type_;
 }
-
-Sun::Type                       Sun::Impl::getType                          ( ) const
-{
-    return type_ ;
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 class Sun::SphericalImpl : public Sun::Impl
 {
+   public:
+    SphericalImpl(const Sun::Type& aType);
 
-    public:
+    ~SphericalImpl();
 
-                                SphericalImpl                               (   const   Sun::Type&                  aType                                       ) ;
+    virtual SphericalImpl* clone() const override;
 
-                                ~SphericalImpl                              ( ) ;
+    virtual Vector3d getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const override;
 
-        virtual SphericalImpl*  clone                                       ( ) const override ;
+   private:
+    Spherical sphericalModel_;
+};
 
-        virtual Vector3d        getFieldValueAt                             (   const   Vector3d&                   aPosition,
-                                                                                const   Instant&                    anInstant                                   ) const override ;
+Sun::SphericalImpl::SphericalImpl(const Sun::Type& aType)
 
-    private:
-
-        Spherical               sphericalModel_ ;
-
-} ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-                                Sun::SphericalImpl::SphericalImpl           (   const   Sun::Type&                  aType                                       )
-
-                                :   Sun::Impl(aType),
-                                    sphericalModel_(ostk::physics::env::obj::celest::Sun::GravitationalParameter)
+    : Sun::Impl(aType),
+      sphericalModel_(ostk::physics::env::obj::celest::Sun::GravitationalParameter)
 {
-
 }
 
-                                Sun::SphericalImpl::~SphericalImpl          ( )
-{
+Sun::SphericalImpl::~SphericalImpl() {}
 
+Sun::SphericalImpl* Sun::SphericalImpl::clone() const
+{
+    return new Sun::SphericalImpl(*this);
 }
 
-Sun::SphericalImpl*             Sun::SphericalImpl::clone                   ( ) const
+Vector3d Sun::SphericalImpl::getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const
 {
-    return new Sun::SphericalImpl(*this) ;
+    return sphericalModel_.getFieldValueAt(aPosition, anInstant);
 }
 
-Vector3d                        Sun::SphericalImpl::getFieldValueAt         (   const   Vector3d&                   aPosition,
-                                                                                const   Instant&                    anInstant                                   ) const
+Sun::Sun(const Sun::Type& aType, const Directory& aDataDirectory)
+    : Model(),
+      implUPtr_(Sun::ImplFromType(aType, aDataDirectory))
 {
-    return sphericalModel_.getFieldValueAt(aPosition, anInstant) ;
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-                                Sun::Sun                                    (   const   Sun::Type&                  aType,
-                                                                                const   Directory&                  aDataDirectory                              )
-                                :   Model(),
-                                    implUPtr_(Sun::ImplFromType(aType, aDataDirectory))
+Sun::Sun(const Sun& aSunGravitationalModel)
+    : Model(aSunGravitationalModel),
+      implUPtr_((aSunGravitationalModel.implUPtr_ != nullptr) ? aSunGravitationalModel.implUPtr_->clone() : nullptr)
 {
-
 }
 
-                                Sun::Sun                                    (   const   Sun&                        aSunGravitationalModel                      )
-                                :   Model(aSunGravitationalModel),
-                                    implUPtr_((aSunGravitationalModel.implUPtr_ != nullptr) ? aSunGravitationalModel.implUPtr_->clone() : nullptr)
+Sun& Sun::operator=(const Sun& aSunGravitationalModel)
 {
-
-}
-
-Sun&                            Sun::operator =                             (   const   Sun&                        aSunGravitationalModel                      )
-{
-
     if (this != &aSunGravitationalModel)
     {
+        Model::operator=(aSunGravitationalModel);
 
-        Model::operator = (aSunGravitationalModel) ;
-
-        implUPtr_.reset((aSunGravitationalModel.implUPtr_ != nullptr) ? aSunGravitationalModel.implUPtr_->clone() : nullptr) ;
-
+        implUPtr_.reset(
+            (aSunGravitationalModel.implUPtr_ != nullptr) ? aSunGravitationalModel.implUPtr_->clone() : nullptr
+        );
     }
 
-    return *this ;
-
+    return *this;
 }
 
-                                Sun::~Sun                                   ( )
-{
+Sun::~Sun() {}
 
+Sun* Sun::clone() const
+{
+    return new Sun(*this);
 }
 
-Sun*                            Sun::clone                                  ( ) const
+Sun::Type Sun::getType() const
 {
-    return new Sun(*this) ;
+    return implUPtr_->getType();
 }
 
-Sun::Type                       Sun::getType                                ( ) const
+Vector3d Sun::getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const
 {
-    return implUPtr_->getType() ;
+    return implUPtr_->getFieldValueAt(aPosition, anInstant);
 }
 
-Vector3d                        Sun::getFieldValueAt                        (   const   Vector3d&                   aPosition,
-                                                                                const   Instant&                    anInstant                                   ) const
+Unique<Sun::Impl> Sun::ImplFromType(const Sun::Type& aType, const Directory& aDataDirectory)
 {
-    return implUPtr_->getFieldValueAt(aPosition, anInstant) ;
-}
-
-Unique<Sun::Impl>               Sun::ImplFromType                           (   const   Sun::Type&                  aType,
-                                                                                const   Directory&                  aDataDirectory                              )
-{
-
-    (void) aDataDirectory ;  // Temporary
+    (void)aDataDirectory;  // Temporary
 
     if (aType == Sun::Type::Spherical)
     {
-        return std::make_unique<Sun::SphericalImpl>(aType) ;
+        return std::make_unique<Sun::SphericalImpl>(aType);
     }
 
-    throw ostk::core::error::runtime::ToBeImplemented("Non spherical Sun gravity field type") ;
-
+    throw ostk::core::error::runtime::ToBeImplemented("Non spherical Sun gravity field type");
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-}
-}
-}
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}  // namespace gravitational
+}  // namespace environment
+}  // namespace physics
+}  // namespace ostk

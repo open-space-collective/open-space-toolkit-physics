@@ -1,37 +1,26 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/// @project        Open Space Toolkit ▸ Physics
-/// @file           bindings/python/src/OpenSpaceToolkitPhysicsPy/Coordinate/Transform.cpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>
-/// @license        Apache License 2.0
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Apache License 2.0
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Transform (         pybind11::module&          aModule                                     )
+inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(pybind11::module& aModule)
 {
+    using namespace pybind11;
 
-    using namespace pybind11 ;
+    using ostk::core::types::Real;
 
-    using ostk::core::types::Real ;
+    using ostk::math::obj::Vector3d;
+    using ostk::math::geom::d3::trf::rot::Quaternion;
+    using ostk::math::geom::d3::trf::rot::RotationVector;
 
-    using ostk::math::obj::Vector3d ;
-    using ostk::math::geom::d3::trf::rot::Quaternion ;
-    using ostk::math::geom::d3::trf::rot::RotationVector ;
+    using ostk::physics::time::Instant;
 
-    using ostk::physics::time::Instant ;
+    using ostk::physics::coord::Transform;
 
-    using ostk::physics::coord::Transform ;
-
-    class_<Transform> transform_class(aModule, "Transform") ;
+    class_<Transform> transform_class(aModule, "Transform");
 
     transform_class
 
-        .def
-        (
+        .def(
             init<Instant, Vector3d, Vector3d, Quaternion, Vector3d, Transform::Type>(),
             arg("instant"),
             arg("translation"),
@@ -73,8 +62,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Transform (
         .def_static("undefined", &Transform::Undefined)
         .def_static("identity", &Transform::Identity)
 
-        .def_static
-        (
+        .def_static(
             "active",
             &Transform::Active,
             arg("instant"),
@@ -84,8 +72,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Transform (
             arg("angular_velocity")
         )
 
-        .def_static
-        (
+        .def_static(
             "passive",
             &Transform::Passive,
             arg("instant"),
@@ -95,7 +82,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Transform (
             arg("angular_velocity")
         )
 
-    ;
+        ;
 
     enum_<Transform::Type>(transform_class, "Type")
 
@@ -103,8 +90,5 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Transform (
         .value("Active", Transform::Type::Active)
         .value("Passive", Transform::Type::Passive)
 
-    ;
-
+        ;
 }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -1,23 +1,14 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/// @project        Open Space Toolkit ▸ Physics
-/// @file           OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE.hpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>
-/// @license        Apache License 2.0
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Apache License 2.0
 
 #ifndef __OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE__
 #define __OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE__
 
-#include <OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp>
-#include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
-#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
-
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
 #include <OpenSpaceToolkit/Core/Types/Shared.hpp>
+#include <OpenSpaceToolkit/Core/Types/String.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
 namespace ostk
 {
@@ -28,16 +19,12 @@ namespace env
 namespace ephem
 {
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+using ostk::core::types::Shared;
+using ostk::core::types::String;
 
-using ostk::core::types::Shared ;
-using ostk::core::types::String ;
-
-using ostk::physics::time::Instant ;
-using ostk::physics::coord::Frame ;
-using ostk::physics::env::Ephemeris ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+using ostk::physics::time::Instant;
+using ostk::physics::coord::Frame;
+using ostk::physics::env::Ephemeris;
 
 /// @brief                      SPICE Toolkit ephemeris
 ///
@@ -45,78 +32,68 @@ using ostk::physics::env::Ephemeris ;
 
 class SPICE : public Ephemeris
 {
+   public:
+    /// @brief              SPICE object
 
-    public:
+    enum class Object
+    {
 
-        /// @brief              SPICE object
+        Undefined,
+        Sun,
+        Mercury,
+        Venus,
+        Earth,
+        Moon,
+        Mars,
+        Jupiter,
+        Saturn,
+        Uranus,
+        Neptune
 
-        enum class Object
-        {
+    };
 
-            Undefined,
-            Sun,
-            Mercury,
-            Venus,
-            Earth,
-            Moon,
-            Mars,
-            Jupiter,
-            Saturn,
-            Uranus,
-            Neptune
+    /// @brief              Constructor
+    ///
+    /// @param              [in] anObject A SPICE object
 
-        } ;
+    SPICE(const SPICE::Object& anObject);
 
-        /// @brief              Constructor
-        ///
-        /// @param              [in] anObject A SPICE object
+    /// @brief              Destructor
 
-                                SPICE                                       (   const   SPICE::Object&              anObject                                    ) ;
+    virtual ~SPICE() override;
 
-        /// @brief              Destructor
+    /// @brief              Clone
+    ///
+    /// @return             Pointer to SPICE
 
-        virtual                 ~SPICE                                      ( ) override ;
+    virtual SPICE* clone() const override;
 
-        /// @brief              Clone
-        ///
-        /// @return             Pointer to SPICE
+    /// @brief              Returns true if SPICE is defined
+    ///
+    /// @return             True if SPICE is defined
 
-        virtual SPICE*          clone                                       ( ) const override ;
+    virtual bool isDefined() const override;
 
-        /// @brief              Returns true if SPICE is defined
-        ///
-        /// @return             True if SPICE is defined
+    /// @brief              Access frame of SPICE object
+    ///
+    /// @return             Shared pointer to frame
 
-        virtual bool            isDefined                                   ( ) const override ;
+    virtual Shared<const Frame> accessFrame() const override;
 
-        /// @brief              Access frame of SPICE object
-        ///
-        /// @return             Shared pointer to frame
+    /// @brief              Convert SPICE object to string
+    ///
+    /// @param              [in] anObject A SPICE object
+    /// @return             String representation of SPICE object
 
-        virtual Shared<const Frame> accessFrame                             ( ) const override ;
+    static String StringFromObject(const SPICE::Object& anObject);
 
-        /// @brief              Convert SPICE object to string
-        ///
-        /// @param              [in] anObject A SPICE object
-        /// @return             String representation of SPICE object
+   private:
+    SPICE::Object object_;
+};
 
-        static String           StringFromObject                            (   const   SPICE::Object&              anObject                                    ) ;
-
-    private:
-
-        SPICE::Object           object_ ;
-
-} ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-}
-}
-}
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}  // namespace ephem
+}  // namespace env
+}  // namespace physics
+}  // namespace ostk
 
 #endif
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

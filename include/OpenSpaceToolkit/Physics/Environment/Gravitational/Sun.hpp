@@ -1,26 +1,17 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/// @project        Open Space Toolkit ▸ Physics
-/// @file           OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp
-/// @author         Antoine Paletta <antoine.paletta@loftorbital.com>
-/// @license        Apache License 2.0
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Apache License 2.0
 
 #ifndef __OpenSpaceToolkit_Physics_Environment_Gravitational_Sun__
 #define __OpenSpaceToolkit_Physics_Environment_Gravitational_Sun__
-
-#include <OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp>
-#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
-#include <OpenSpaceToolkit/Physics/Units/Derived.hpp>
-
-#include <OpenSpaceToolkit/IO/URL.hpp>
 
 #include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
 #include <OpenSpaceToolkit/Core/Types/Real.hpp>
 #include <OpenSpaceToolkit/Core/Types/Unique.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#include <OpenSpaceToolkit/IO/URL.hpp>
+
+#include <OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Derived.hpp>
 
 namespace ostk
 {
@@ -31,20 +22,16 @@ namespace environment
 namespace gravitational
 {
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+using ostk::core::types::Unique;
+using ostk::core::types::Integer;
+using ostk::core::types::Real;
+using ostk::core::fs::Directory;
 
-using ostk::core::types::Unique ;
-using ostk::core::types::Integer ;
-using ostk::core::types::Real ;
-using ostk::core::fs::Directory ;
+using ostk::io::URL;
 
-using ostk::io::URL ;
-
-using ostk::physics::units::Derived ;
-using ostk::physics::time::Instant ;
-using ostk::physics::environment::gravitational::Model ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+using ostk::physics::units::Derived;
+using ostk::physics::time::Instant;
+using ostk::physics::environment::gravitational::Model;
 
 /// @brief                      Sun gravitational model
 ///
@@ -52,81 +39,68 @@ using ostk::physics::environment::gravitational::Model ;
 
 class Sun : public Model
 {
+   public:
+    enum class Type
+    {
+        Spherical  /// The spherical gravity originating from a point source at the center of the Sun
+    };
 
-    public:
+    /// @brief              Constructor
+    ///
+    /// @param              [in] aType A gravitational model type
+    /// @param              [in] (optional) aDataDirectory A gravitational model data directory
 
-        enum class Type
-        {
-            Spherical           /// The spherical gravity originating from a point source at the center of the Sun
-        } ;
+    Sun(const Sun::Type& aType, const Directory& aDataDirectory = Directory::Undefined());
 
-        /// @brief              Constructor
-        ///
-        /// @param              [in] aType A gravitational model type
-        /// @param              [in] (optional) aDataDirectory A gravitational model data directory
+    /// @brief              Copy constructor
+    ///
+    /// @param              [in] aSunGravitationalModel A Sun model
 
-                                Sun                                         (   const   Sun::Type&                  aType,
-                                                                                const   Directory&                  aDataDirectory                              =   Directory::Undefined()  ) ;
+    Sun(const Sun& aSunGravitationalModel);
 
-        /// @brief              Copy constructor
-        ///
-        /// @param              [in] aSunGravitationalModel A Sun model
+    /// @brief              Copy assignment operator
+    ///
+    /// @param              [in] aSunGravitationalModel A Sun model
+    /// @return             Reference to Sun model
 
-                                Sun                                         (   const   Sun&                        aSunGravitationalModel                      ) ;
+    Sun& operator=(const Sun& aSunGravitationalModel);
 
-        /// @brief              Copy assignment operator
-        ///
-        /// @param              [in] aSunGravitationalModel A Sun model
-        /// @return             Reference to Sun model
+    /// @brief              Destructor
 
-        Sun&                    operator =                                  (   const   Sun&                        aSunGravitationalModel                      ) ;
+    ~Sun();
 
-        /// @brief              Destructor
+    /// @brief              Clone the Sun gravitational model
+    ///
+    /// @return             Pointer to Sun gravitational model
 
-                                ~Sun                                        ( ) ;
+    virtual Sun* clone() const override;
 
-        /// @brief              Clone the Sun gravitational model
-        ///
-        /// @return             Pointer to Sun gravitational model
+    /// @brief              Get gravitational model type
+    ///
+    /// @return             Gravitational model type
 
-        virtual Sun*            clone                                       ( ) const override ;
+    Sun::Type getType() const;
 
-        /// @brief              Get gravitational model type
-        ///
-        /// @return             Gravitational model type
+    /// @brief              Get the gravitational field value at a given position and instant
+    ///
+    /// @param              [in] aPosition A position, expressed in the gravitational object frame [m]
+    /// @param              [in] anInstant An instant
+    /// @return             Gravitational field value, expressed in the gravitational object frame [m.s-2]
 
-        Sun::Type               getType                                     ( ) const ;
+    virtual Vector3d getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const override;
 
-        /// @brief              Get the gravitational field value at a given position and instant
-        ///
-        /// @param              [in] aPosition A position, expressed in the gravitational object frame [m]
-        /// @param              [in] anInstant An instant
-        /// @return             Gravitational field value, expressed in the gravitational object frame [m.s-2]
+   private:
+    class Impl;
+    class SphericalImpl;
 
-        virtual Vector3d        getFieldValueAt                             (   const   Vector3d&                   aPosition,
-                                                                                const   Instant&                    anInstant                                   ) const override ;
+    Unique<Impl> implUPtr_;
 
-    private:
+    static Unique<Impl> ImplFromType(const Sun::Type& aType, const Directory& aDataDirectory);
+};
 
-        class Impl ;
-        class SphericalImpl ;
-
-        Unique<Impl>            implUPtr_ ;
-
-        static Unique<Impl>     ImplFromType                                (   const   Sun::Type&                  aType,
-                                                                                const   Directory&                  aDataDirectory                              ) ;
-
-} ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-}
-}
-}
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}  // namespace gravitational
+}  // namespace environment
+}  // namespace physics
+}  // namespace ostk
 
 #endif
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

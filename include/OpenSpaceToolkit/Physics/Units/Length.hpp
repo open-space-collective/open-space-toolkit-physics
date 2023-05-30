@@ -1,22 +1,13 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/// @project        Open Space Toolkit ▸ Physics
-/// @file           OpenSpaceToolkit/Physics/Units/Length.hpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>
-/// @license        Apache License 2.0
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Apache License 2.0
 
 #ifndef __OpenSpaceToolkit_Physics_Units_Length__
 #define __OpenSpaceToolkit_Physics_Units_Length__
 
-#include <OpenSpaceToolkit/Physics/Units/Unit.hpp>
-
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
 #include <OpenSpaceToolkit/Core/Types/Integer.hpp>
+#include <OpenSpaceToolkit/Core/Types/Real.hpp>
+#include <OpenSpaceToolkit/Core/Types/String.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#include <OpenSpaceToolkit/Physics/Units/Unit.hpp>
 
 namespace ostk
 {
@@ -25,13 +16,9 @@ namespace physics
 namespace units
 {
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-using ostk::core::types::Integer ;
-using ostk::core::types::Real ;
-using ostk::core::types::String ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+using ostk::core::types::Integer;
+using ostk::core::types::Real;
+using ostk::core::types::String;
 
 /// @brief                      Length
 ///
@@ -39,119 +26,106 @@ using ostk::core::types::String ;
 
 class Length : public Unit
 {
+   public:
+    enum class Unit
+    {
 
-    public:
+        Undefined,        ///< Undefined
+        Meter,            ///< Meter (SI)
+        Foot,             ///< Foot
+        TerrestrialMile,  ///< Terrestrial mile
+        NauticalMile,     ///< Nautical mile
+        AstronomicalUnit  ///< Astronomical Unit
 
-        enum class Unit
-        {
+    };
 
-            Undefined,          ///< Undefined
-            Meter,              ///< Meter (SI)
-            Foot,               ///< Foot
-            TerrestrialMile,    ///< Terrestrial mile
-            NauticalMile,       ///< Nautical mile
-            AstronomicalUnit    ///< Astronomical Unit
+    /// @brief              Constructor
+    ///
+    /// @code
+    ///                     Length length(1.0, Length::Unit::Meter) ;
+    /// @endcode
+    ///
+    /// @param              [in] aValue A value
+    /// @param              [in] aUnit A length unit
 
-        } ;
+    Length(const Real& aValue, const Length::Unit& aUnit);
 
-        /// @brief              Constructor
-        ///
-        /// @code
-        ///                     Length length(1.0, Length::Unit::Meter) ;
-        /// @endcode
-        ///
-        /// @param              [in] aValue A value
-        /// @param              [in] aUnit A length unit
+    virtual Length* clone() const override;
 
-                                Length                                      (   const   Real&                       aValue,
-                                                                                const   Length::Unit&               aUnit                                       ) ;
+    bool operator==(const Length& aLength) const;
 
-        virtual Length*         clone                                       ( ) const override ;
+    bool operator!=(const Length& aLength) const;
 
-        bool                    operator ==                                 (   const   Length&                     aLength                                     ) const ;
+    bool operator<(const Length& aLength) const;
 
-        bool                    operator !=                                 (   const   Length&                     aLength                                     ) const ;
+    bool operator<=(const Length& aLength) const;
 
-        bool                    operator <                                  (   const   Length&                     aLength                                     ) const ;
+    bool operator>(const Length& aLength) const;
 
-        bool                    operator <=                                 (   const   Length&                     aLength                                     ) const ;
+    bool operator>=(const Length& aLength) const;
 
-        bool                    operator >                                  (   const   Length&                     aLength                                     ) const ;
+    Length operator+(const Length& aLength) const;
 
-        bool                    operator >=                                 (   const   Length&                     aLength                                     ) const ;
+    Length operator-(const Length& aLength) const;
 
-        Length                  operator +                                  (   const   Length&                     aLength                                     ) const ;
+    Length operator*(const Real& aReal) const;
 
-        Length                  operator -                                  (   const   Length&                     aLength                                     ) const ;
+    Length operator/(const Real& aReal) const;
 
-        Length                  operator *                                  (   const   Real&                       aReal                                       ) const ;
+    Length& operator+=(const Length& aLength);
 
-        Length                  operator /                                  (   const   Real&                       aReal                                       ) const ;
+    Length& operator-=(const Length& aLength);
 
-        Length&                 operator +=                                 (   const   Length&                     aLength                                     ) ;
+    Length& operator*=(const Real& aReal);
 
-        Length&                 operator -=                                 (   const   Length&                     aLength                                     ) ;
+    Length& operator/=(const Real& aReal);
 
-        Length&                 operator *=                                 (   const   Real&                       aReal                                       ) ;
+    friend Length operator*(const Real& aReal, const Length& aLength);
 
-        Length&                 operator /=                                 (   const   Real&                       aReal                                       ) ;
+    Length operator+() const;
 
-        friend Length           operator *                                  (   const   Real&                       aReal,
-                                                                                const   Length&                     aLength                                     ) ;
+    Length operator-() const;
 
-        Length                  operator +                                  ( ) const ;
+    friend std::ostream& operator<<(std::ostream& anOutputStream, const Length& aLength);
 
-        Length                  operator -                                  ( ) const ;
+    virtual bool isDefined() const override;
 
-        friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
-                                                                                const   Length&                     aLength                                     ) ;
+    bool isZero() const;
 
-        virtual bool            isDefined                                   ( ) const override ;
+    Length::Unit getUnit() const;
 
-        bool                    isZero                                      ( ) const ;
+    Real in(const Length::Unit& aUnit) const;
 
-        Length::Unit            getUnit                                     ( ) const ;
+    Real inMeters() const;
 
-        Real                    in                                          (   const   Length::Unit&               aUnit                                       ) const ;
+    Real inKilometers() const;
 
-        Real                    inMeters                                    ( ) const ;
+    virtual String toString(const Integer& aPrecision = Integer::Undefined()) const override;
 
-        Real                    inKilometers                                ( ) const ;
+    static Length Undefined();
 
-        virtual String          toString                                    (   const   Integer&                    aPrecision                                  =   Integer::Undefined() ) const override ;
+    static Length Millimeters(const Real& aValue);
 
-        static Length           Undefined                                   ( ) ;
+    static Length Meters(const Real& aValue);
 
-        static Length           Millimeters                                 (   const   Real&                       aValue                                      ) ;
+    static Length Kilometers(const Real& aValue);
 
-        static Length           Meters                                      (   const   Real&                       aValue                                      ) ;
+    static Length Parse(const String& aString);
 
-        static Length           Kilometers                                  (   const   Real&                       aValue                                      ) ;
+    static String StringFromUnit(const Length::Unit& aUnit);
 
-        static Length           Parse                                       (   const   String&                     aString                                     ) ;
+    static String SymbolFromUnit(const Length::Unit& aUnit);
 
-        static String           StringFromUnit                              (   const   Length::Unit&               aUnit                                       ) ;
+    static Length::Unit UnitFromSymbol(const String& aSymbol);
 
-        static String           SymbolFromUnit                              (   const   Length::Unit&               aUnit                                       ) ;
+   private:
+    Length::Unit unit_;
 
-        static Length::Unit     UnitFromSymbol                              (   const   String&                     aSymbol                                     ) ;
+    static Real SIRatio(const Length::Unit& aUnit);
+};
 
-    private:
-
-        Length::Unit            unit_ ;
-
-        static Real             SIRatio                                     (   const   Length::Unit&               aUnit                                       ) ;
-
-} ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-}
-}
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}  // namespace units
+}  // namespace physics
+}  // namespace ostk
 
 #endif
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

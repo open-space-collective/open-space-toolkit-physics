@@ -1,38 +1,22 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/// @project        Open Space Toolkit ▸ Physics
-/// @file           bindings/python/src/OpenSpaceToolkitPhysicsPy/Coordinate/Position.cpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>
-/// @license        Apache License 2.0
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Apache License 2.0
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Position (         pybind11::module&           aModule                                     )
+inline void OpenSpaceToolkitPhysicsPy_Coordinate_Position(pybind11::module& aModule)
 {
+    using namespace pybind11;
 
-    using namespace pybind11 ;
+    using ostk::core::types::Integer;
+    using ostk::core::types::Shared;
 
-    using ostk::core::types::Integer ;
-    using ostk::core::types::Shared ;
+    using ostk::math::obj::Vector3d;
 
-    using ostk::math::obj::Vector3d ;
-
-    using ostk::physics::coord::Position ;
-    using ostk::physics::coord::Frame ;
+    using ostk::physics::coord::Position;
+    using ostk::physics::coord::Frame;
 
     class_<Position>(aModule, "Position")
 
-        .def
-        (
-            init<Vector3d, Position::Unit, Shared<const Frame>&>(),
-            arg("coordinates"),
-            arg("unit"),
-            arg("frame")
-        )
+        .def(init<Vector3d, Position::Unit, Shared<const Frame>&>(), arg("coordinates"), arg("unit"), arg("frame"))
 
         .def(self == self)
         .def(self != self)
@@ -54,8 +38,5 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Position ( 
         .def_static("undefined", &Position::Undefined)
         .def_static("meters", &Position::Meters, arg("coordinates"), arg("frame"))
 
-    ;
-
+        ;
 }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

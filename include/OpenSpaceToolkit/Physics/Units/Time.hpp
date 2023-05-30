@@ -1,22 +1,13 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/// @project        Open Space Toolkit ▸ Physics
-/// @file           OpenSpaceToolkit/Physics/Units/Time.hpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>
-/// @license        Apache License 2.0
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Apache License 2.0
 
 #ifndef __OpenSpaceToolkit_Physics_Units_Time__
 #define __OpenSpaceToolkit_Physics_Units_Time__
 
-#include <OpenSpaceToolkit/Physics/Units/Unit.hpp>
-
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
 #include <OpenSpaceToolkit/Core/Types/Integer.hpp>
+#include <OpenSpaceToolkit/Core/Types/Real.hpp>
+#include <OpenSpaceToolkit/Core/Types/String.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#include <OpenSpaceToolkit/Physics/Units/Unit.hpp>
 
 namespace ostk
 {
@@ -25,13 +16,9 @@ namespace physics
 namespace units
 {
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-using ostk::core::types::Integer ;
-using ostk::core::types::Real ;
-using ostk::core::types::String ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+using ostk::core::types::Integer;
+using ostk::core::types::Real;
+using ostk::core::types::String;
 
 /// @brief                      Time
 ///
@@ -39,72 +26,61 @@ using ostk::core::types::String ;
 
 class Time : public Unit
 {
+   public:
+    enum class Unit
+    {
 
-    public:
+        Undefined,    ///< Undefined
+        Nanosecond,   ///< Nanosecond
+        Microsecond,  ///< Microsecond
+        Millisecond,  ///< Millisecond
+        Second,       ///< Second (SI)
+        Minute,       ///< Minute
+        Hour,         ///< Hour
+        Day,          ///< Day
+        Week          ///< Week
 
-        enum class Unit
-        {
+    };
 
-            Undefined,          ///< Undefined
-            Nanosecond,         ///< Nanosecond
-            Microsecond,        ///< Microsecond
-            Millisecond,        ///< Millisecond
-            Second,             ///< Second (SI)
-            Minute,             ///< Minute
-            Hour,               ///< Hour
-            Day,                ///< Day
-            Week                ///< Week
+    /// @brief              Constructor
+    ///
+    /// @code
+    ///                     Time time(1.0, Time::Unit::Second) ;
+    /// @endcode
+    ///
+    /// @param              [in] aValue A value
+    /// @param              [in] aUnit A time unit
 
-        } ;
+    Time(const Real& aValue, const Time::Unit& aUnit);
 
-        /// @brief              Constructor
-        ///
-        /// @code
-        ///                     Time time(1.0, Time::Unit::Second) ;
-        /// @endcode
-        ///
-        /// @param              [in] aValue A value
-        /// @param              [in] aUnit A time unit
+    virtual Time* clone() const override;
 
-                                Time                                        (   const   Real&                       aValue,
-                                                                                const   Time::Unit&                 aUnit                                       ) ;
+    virtual bool isDefined() const override;
 
-        virtual Time*           clone                                       ( ) const override ;
+    Time::Unit getUnit() const;
 
-        virtual bool            isDefined                                   ( ) const override ;
+    Real in(const Time::Unit& aUnit) const;
 
-        Time::Unit              getUnit                                     ( ) const ;
+    Real inSeconds() const;
 
-        Real                    in                                          (   const   Time::Unit&                 aUnit                                       ) const ;
+    virtual String toString(const Integer& aPrecision = Integer::Undefined()) const override;
 
-        Real                    inSeconds                                   ( ) const ;
+    static Time Undefined();
 
-        virtual String          toString                                    (   const   Integer&                    aPrecision                                  =   Integer::Undefined() ) const override ;
+    static Time Seconds(const Real& aValue);
 
-        static Time             Undefined                                   ( ) ;
+    static String StringFromUnit(const Time::Unit& aUnit);
 
-        static Time             Seconds                                     (   const   Real&                       aValue                                      ) ;
+    static String SymbolFromUnit(const Time::Unit& aUnit);
 
-        static String           StringFromUnit                              (   const   Time::Unit&                 aUnit                                       ) ;
+   private:
+    Time::Unit unit_;
 
-        static String           SymbolFromUnit                              (   const   Time::Unit&                 aUnit                                       ) ;
+    static Real SIRatio(const Time::Unit& aUnit);
+};
 
-    private:
-
-        Time::Unit              unit_ ;
-
-        static Real             SIRatio                                     (   const   Time::Unit&                 aUnit                                       ) ;
-
-} ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-}
-}
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}  // namespace units
+}  // namespace physics
+}  // namespace ostk
 
 #endif
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

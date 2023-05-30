@@ -1,18 +1,9 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/// @project        Open Space Toolkit ▸ Physics
-/// @file           OpenSpaceToolkit/Physics/Time/Scale.hpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>
-/// @license        Apache License 2.0
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Apache License 2.0
 
 #ifndef __OpenSpaceToolkit_Physics_Time_Scale__
 #define __OpenSpaceToolkit_Physics_Time_Scale__
 
 #include <OpenSpaceToolkit/Core/Types/String.hpp>
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 namespace ostk
 {
@@ -21,11 +12,7 @@ namespace physics
 namespace time
 {
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-using ostk::core::types::String ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+using ostk::core::types::String;
 
 /// @brief                      Time scale
 ///
@@ -38,28 +25,26 @@ using ostk::core::types::String ;
 enum class Scale
 {
 
-    Undefined,                  ///< Undefined time
+    Undefined,  ///< Undefined time
 
-    UTC,                        ///< Coordinated Universal Time
-    TT,                         ///< Terrestial Time (a.k.a. TDT)
-    TAI,                        ///< International Atomic Time
+    UTC,  ///< Coordinated Universal Time
+    TT,   ///< Terrestial Time (a.k.a. TDT)
+    TAI,  ///< International Atomic Time
 
-    UT1,                        ///< Universal Time
-    TCG,                        ///< Geocentric Coordinate Time
-    TCB,                        ///< Barycentric Coordinate Time
-    TDB,                        ///< Barycentric Dynamic Time
-    GMST,                       ///< Greenwich Mean Sidereal Time
+    UT1,   ///< Universal Time
+    TCG,   ///< Geocentric Coordinate Time
+    TCB,   ///< Barycentric Coordinate Time
+    TDB,   ///< Barycentric Dynamic Time
+    GMST,  ///< Greenwich Mean Sidereal Time
 
-    GPST,                       ///< Global Positioning System (GPS) Time
-    GST,                        ///< Galileo System Time
-    GLST,                       ///< GLONASS Time
-    BDT,                        ///< BeiDou Time
-    QZSST,                      ///< Quasi-Zenith Satellite System (QZSS) Time
-    IRNSST                      ///< Indian Regional Navigation Satellite System (IRNSS) Time
+    GPST,   ///< Global Positioning System (GPS) Time
+    GST,    ///< Galileo System Time
+    GLST,   ///< GLONASS Time
+    BDT,    ///< BeiDou Time
+    QZSST,  ///< Quasi-Zenith Satellite System (QZSS) Time
+    IRNSST  ///< Indian Regional Navigation Satellite System (IRNSS) Time
 
-} ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+};
 
 /// @brief                      Convert a time scale to its string representation
 ///
@@ -70,7 +55,7 @@ enum class Scale
 /// @param                      [in] aScale A time scale
 /// @return                     String representation of time scale
 
-String                          StringFromScale                             (   const   Scale&                      aScale                                      ) ;
+String StringFromScale(const Scale& aScale);
 
 /// @brief                      Parse a string representation to its corresponding time scale
 ///
@@ -81,16 +66,10 @@ String                          StringFromScale                             (   
 /// @param                      [in] aString A string
 /// @return                     Time scale
 
-Scale                           ScaleFromString                             (   const   String&                     aString                                     ) ;
+Scale ScaleFromString(const String& aString);
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-}
-}
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}  // namespace time
+}  // namespace physics
+}  // namespace ostk
 
 #endif
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

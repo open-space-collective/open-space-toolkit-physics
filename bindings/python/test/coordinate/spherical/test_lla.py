@@ -1,11 +1,4 @@
-################################################################################################################################################################
-
-# @project        Open Space Toolkit ▸ Physics
-# @file           bindings/python/test/coordinate/spherical/test_lla.py
-# @author         Remy Derollez <remy@loftorbital.com>
-# @license        Apache License 2.0
-
-################################################################################################################################################################
+# Apache License 2.0
 
 import pytest
 import numpy as np
@@ -14,16 +7,12 @@ from ostk.core.types import String
 
 import ostk.physics as physics
 
-################################################################################################################################################################
-
 Angle = physics.units.Angle
 Length = physics.units.Length
 LLA = physics.coordinate.spherical.LLA
 
-################################################################################################################################################################
 
-def test_coordinate_spherical_lla_constructors ():
-
+def test_coordinate_spherical_lla_constructors():
     # Main Constructor
     latitude: Angle = Angle(30.0, Angle.Unit.Degree)
     longitude: Angle = Angle(30.0, Angle.Unit.Degree)
@@ -66,13 +55,11 @@ def test_coordinate_spherical_lla_constructors ():
     # Invalid latitude
 
     with pytest.raises(RuntimeError):
-
         lla: LLA = LLA.vector((95.0, 1.0, 1.0))
 
     # Invalid longitude
 
     with pytest.raises(RuntimeError):
-
         lla: LLA = LLA.vector((1.0, -181.0, 1.0))
 
     # Negative Altitude (Allowed)
@@ -82,10 +69,8 @@ def test_coordinate_spherical_lla_constructors ():
     assert lla is not None
     assert isinstance(lla, LLA)
 
-################################################################################################################################################################
 
-def test_coordinate_spherical_lla_comparators ():
-
+def test_coordinate_spherical_lla_comparators():
     # Main Constructor
     latitude: Angle = Angle(30.0, Angle.Unit.Degree)
     longitude: Angle = Angle(30.0, Angle.Unit.Degree)
@@ -99,10 +84,8 @@ def test_coordinate_spherical_lla_comparators ():
     assert lla_2 == lla_2
     assert lla_1 != lla_2
 
-################################################################################################################################################################
 
-def test_coordinate_spherical_lla_is_defined ():
-
+def test_coordinate_spherical_lla_is_defined():
     # Main Constructor
     latitude: Angle = Angle(30.0, Angle.Unit.Degree)
     longitude: Angle = Angle(30.0, Angle.Unit.Degree)
@@ -114,10 +97,8 @@ def test_coordinate_spherical_lla_is_defined ():
     assert lla.is_defined()
     assert LLA.undefined().is_defined() is False
 
-################################################################################################################################################################
 
-def test_coordinate_spherical_lla_getters ():
-
+def test_coordinate_spherical_lla_getters():
     # Main Constructor
     latitude: Angle = Angle(30.0, Angle.Unit.Degree)
     longitude: Angle = Angle(30.0, Angle.Unit.Degree)
@@ -144,10 +125,8 @@ def test_coordinate_spherical_lla_getters ():
     assert alt is not None
     assert isinstance(alt, Length)
 
-################################################################################################################################################################
 
-def test_coordinate_spherical_lla_conversions ():
-
+def test_coordinate_spherical_lla_conversions():
     # Main Constructor
     latitude: Angle = Angle(30.0, Angle.Unit.Degree)
     longitude: Angle = Angle(30.0, Angle.Unit.Degree)
@@ -173,6 +152,4 @@ def test_coordinate_spherical_lla_conversions ():
 
     assert string is not None
     assert isinstance(string, String)
-    assert string == '[30.0 [deg], 30.0 [deg], 1000.0 [m]]'
-
-################################################################################################################################################################
+    assert string == "[30.0 [deg], 30.0 [deg], 1000.0 [m]]"

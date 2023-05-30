@@ -1,11 +1,4 @@
-################################################################################################################################################################
-
-# @project        Open Space Toolkit ▸ Physics
-# @file           tools/cmake/FindSPICEToolkit.cmake.in
-# @author         Lucas Brémond <lucas@loftorbital.com>
-# @license        Apache License 2.0
-
-################################################################################################################################################################
+# Apache License 2.0
 
 SET (SPICEToolkit_ROOT_DIR ${SPICEToolkit_ROOT_DIR} "/usr/local")
 
@@ -20,5 +13,3 @@ INCLUDE (FindPackageHandleStandardArgs)
 FIND_PACKAGE_HANDLE_STANDARD_ARGS (SPICEToolkit DEFAULT_MSG SPICEToolkit_LIBRARY SPICEToolkit_INCLUDE_DIR)
 
 MARK_AS_ADVANCED (SPICEToolkit_INCLUDE_DIR SPICEToolkit_LIBRARY)
-
-################################################################################################################################################################

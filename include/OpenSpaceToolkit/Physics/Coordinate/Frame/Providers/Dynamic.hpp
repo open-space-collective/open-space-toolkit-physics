@@ -1,20 +1,11 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/// @project        Open Space Toolkit ▸ Physics
-/// @file           OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Dynamic.hpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>
-/// @license        Apache License 2.0
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Apache License 2.0
 
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Dynamic__
 #define __OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Dynamic__
 
-#include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 namespace ostk
 {
@@ -27,51 +18,37 @@ namespace frame
 namespace provider
 {
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-using ostk::physics::time::Instant ;
-using ostk::physics::coord::frame::Provider ;
-using ostk::physics::coord::Transform ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+using ostk::physics::time::Instant;
+using ostk::physics::coord::frame::Provider;
+using ostk::physics::coord::Transform;
 
 /// @brief                      Dynamic provider
 
 class Dynamic : public Provider
 {
+   public:
+    typedef std::function<Transform(const Instant&)> Generator;
 
-    public:
+    Dynamic(const Dynamic::Generator& aGenerator);
 
-        typedef                 std::function<Transform (const Instant&)>       Generator ;
+    virtual ~Dynamic() override;
 
-                                Dynamic                                     (   const   Dynamic::Generator&         aGenerator                                  ) ;
+    virtual Dynamic* clone() const override;
 
-        virtual                 ~Dynamic                                    ( ) override ;
+    virtual bool isDefined() const override;
 
-        virtual Dynamic*        clone                                       ( ) const override ;
+    virtual Transform getTransformAt(const Instant& anInstant) const override;
 
-        virtual bool            isDefined                                   ( ) const override ;
+    static Dynamic Undefined();
 
-        virtual Transform       getTransformAt                              (   const   Instant&                    anInstant                                   ) const override ;
+   private:
+    Dynamic::Generator generator_;
+};
 
-        static Dynamic          Undefined                                   ( ) ;
-
-    private:
-
-        Dynamic::Generator      generator_ ;
-
-} ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-}
-}
-}
-}
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}  // namespace provider
+}  // namespace frame
+}  // namespace coord
+}  // namespace physics
+}  // namespace ostk
 
 #endif
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

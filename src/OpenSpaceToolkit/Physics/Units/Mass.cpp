@@ -1,17 +1,9 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Apache License 2.0
 
-/// @project        Open Space Toolkit ▸ Physics
-/// @file           OpenSpaceToolkit/Physics/Units/Mass.cpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>
-/// @license        Apache License 2.0
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-#include <OpenSpaceToolkit/Physics/Units/Mass.hpp>
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#include <OpenSpaceToolkit/Physics/Units/Mass.hpp>
 
 namespace ostk
 {
@@ -20,166 +12,138 @@ namespace physics
 namespace units
 {
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-                                Mass::Mass                                  (   const   Real&                       aValue,
-                                                                                const   Mass::Unit&                 aUnit                                       )
-                                :   units::Unit(units::Unit::Type::Mass, aValue),
-                                    unit_(aUnit)
+Mass::Mass(const Real& aValue, const Mass::Unit& aUnit)
+    : units::Unit(units::Unit::Type::Mass, aValue),
+      unit_(aUnit)
 {
-
 }
 
-Mass*                           Mass::clone                                 ( ) const
+Mass* Mass::clone() const
 {
-    return new Mass(*this) ;
+    return new Mass(*this);
 }
 
-bool                            Mass::isDefined                             ( ) const
+bool Mass::isDefined() const
 {
-    return units::Unit::isDefined() && (unit_ != Mass::Unit::Undefined) ;
+    return units::Unit::isDefined() && (unit_ != Mass::Unit::Undefined);
 }
 
-Mass::Unit                      Mass::getUnit                               ( ) const
+Mass::Unit Mass::getUnit() const
 {
-    return unit_ ;
+    return unit_;
 }
 
-Real                            Mass::in                                    (   const   Mass::Unit&                 aUnit                                       ) const
+Real Mass::in(const Mass::Unit& aUnit) const
 {
-
     if (!this->isDefined())
     {
-        return Real::Undefined() ;
+        return Real::Undefined();
     }
 
     if (unit_ == aUnit)
     {
-        return this->accessValue() ;
+        return this->accessValue();
     }
 
-    return this->accessValue() * Mass::SIRatio(unit_) / Mass::SIRatio(aUnit) ;
-
+    return this->accessValue() * Mass::SIRatio(unit_) / Mass::SIRatio(aUnit);
 }
 
-Real                            Mass::inKilograms                           ( ) const
+Real Mass::inKilograms() const
 {
-    return this->in(Mass::Unit::Kilogram) ;
+    return this->in(Mass::Unit::Kilogram);
 }
 
-String                          Mass::toString                              (   const   Integer&                    aPrecision                                  ) const
+String Mass::toString(const Integer& aPrecision) const
 {
-
     if (!this->isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Mass") ;
+        throw ostk::core::error::runtime::Undefined("Mass");
     }
 
-    return this->accessValue().toString(aPrecision) + " [" + Mass::SymbolFromUnit(unit_) + "]" ;
-
+    return this->accessValue().toString(aPrecision) + " [" + Mass::SymbolFromUnit(unit_) + "]";
 }
 
-Mass                            Mass::Undefined                             ( )
+Mass Mass::Undefined()
 {
-    return { Real::Undefined(), Mass::Unit::Undefined } ;
+    return {Real::Undefined(), Mass::Unit::Undefined};
 }
 
-Mass                            Mass::Kilograms                             (   const   Real&                       aValue                                      )
+Mass Mass::Kilograms(const Real& aValue)
 {
-    return { aValue, Mass::Unit::Kilogram } ;
+    return {aValue, Mass::Unit::Kilogram};
 }
 
-Mass                            Mass::Parse                                 (   const   String&                     aString                                     )
+Mass Mass::Parse(const String& aString)
 {
+    (void)aString;
 
-    (void) aString ;
-
-    throw ostk::core::error::runtime::ToBeImplemented("Mass :: Parse") ;
-
+    throw ostk::core::error::runtime::ToBeImplemented("Mass :: Parse");
 }
 
-String                          Mass::StringFromUnit                        (   const   Mass::Unit&                 aUnit                                       )
+String Mass::StringFromUnit(const Mass::Unit& aUnit)
 {
-
     switch (aUnit)
     {
-
         case Mass::Unit::Undefined:
-            return "Undefined" ;
+            return "Undefined";
 
         case Mass::Unit::Kilogram:
-            return "Kilogram" ;
+            return "Kilogram";
 
         case Mass::Unit::Tonne:
-            return "Tonne" ;
+            return "Tonne";
 
         case Mass::Unit::Pound:
-            return "Pound" ;
+            return "Pound";
 
         default:
-            throw ostk::core::error::runtime::Wrong("Unit") ;
-            break ;
-
+            throw ostk::core::error::runtime::Wrong("Unit");
+            break;
     }
 
-    return String::Empty() ;
-
+    return String::Empty();
 }
 
-String                          Mass::SymbolFromUnit                        (   const   Mass::Unit&                 aUnit                                       )
+String Mass::SymbolFromUnit(const Mass::Unit& aUnit)
 {
-
     switch (aUnit)
     {
-
         case Mass::Unit::Kilogram:
-            return "kg" ;
+            return "kg";
 
         case Mass::Unit::Tonne:
-            return "t" ;
+            return "t";
 
         case Mass::Unit::Pound:
-            return "lb" ;
+            return "lb";
 
         default:
-            throw ostk::core::error::runtime::Wrong("Unit") ;
-            break ;
-
+            throw ostk::core::error::runtime::Wrong("Unit");
+            break;
     }
 
-    return String::Empty() ;
-
+    return String::Empty();
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-Real                            Mass::SIRatio                               (   const   Mass::Unit&                 aUnit                                       )
+Real Mass::SIRatio(const Mass::Unit& aUnit)
 {
-
     switch (aUnit)
     {
-
         case Mass::Unit::Kilogram:
-            return 1.0 ;
+            return 1.0;
         case Mass::Unit::Pound:
-            return 2.20462 ;
+            return 2.20462;
         case Mass::Unit::Tonne:
-            return 1016.047 ;
+            return 1016.047;
 
         default:
-            throw ostk::core::error::runtime::Wrong("Unit") ;
-            break ;
-
+            throw ostk::core::error::runtime::Wrong("Unit");
+            break;
     }
 
-    return Real::Undefined() ;
-
+    return Real::Undefined();
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-}
-}
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}  // namespace units
+}  // namespace physics
+}  // namespace ostk

@@ -1,26 +1,16 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/// @project        Open Space Toolkit ▸ Physics
-/// @file           bindings/python/src/OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Providers/IERS/Manager.cpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>
-/// @license        Apache License 2.0
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Apache License 2.0
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Manager.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers_IERS_Manager ( pybind11::module& aModule                                   )
+inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers_IERS_Manager(pybind11::module& aModule)
 {
+    using namespace pybind11;
 
-    using namespace pybind11 ;
+    using ostk::core::types::Shared;
 
-    using ostk::core::types::Shared ;
+    using ostk::physics::coord::frame::provider::iers::Manager;
 
-    using ostk::physics::coord::frame::provider::iers::Manager ;
-
-    class_<Manager> manager(aModule, "Manager") ;
+    class_<Manager> manager(aModule, "Manager");
 
     manager
 
@@ -56,15 +46,12 @@ inline void                     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provi
         .def_static("default_local_repository_lock_timeout", &Manager::DefaultLocalRepositoryLockTimeout)
         .def_static("default_remote_url", &Manager::DefaultRemoteUrl)
 
-    ;
+        ;
 
     enum_<Manager::Mode>(manager, "Mode")
 
         .value("Manual", Manager::Mode::Manual)
         .value("Automatic", Manager::Mode::Automatic)
 
-    ;
-
+        ;
 }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -1,18 +1,9 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/// @project        Open Space Toolkit ▸ Physics
-/// @file           OpenSpaceToolkit/Physics/Environment/Ephemerides/Analytical.cpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>
-/// @license        Apache License 2.0
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/Analytical.hpp>
+/// Apache License 2.0
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/Analytical.hpp>
 
 namespace ostk
 {
@@ -23,39 +14,29 @@ namespace env
 namespace ephem
 {
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-                                Analytical::Analytical                      (   const   Shared<const Frame>&        aFrameSPtr                                  )
-                                :   frameSPtr_(aFrameSPtr)
+Analytical::Analytical(const Shared<const Frame>& aFrameSPtr)
+    : frameSPtr_(aFrameSPtr)
 {
-
 }
 
-                                Analytical::~Analytical                     ( )
+Analytical::~Analytical() {}
+
+Analytical* Analytical::clone() const
 {
-
+    return new Analytical(*this);
 }
 
-Analytical*                     Analytical::clone                           ( ) const
+bool Analytical::isDefined() const
 {
-    return new Analytical(*this) ;
+    return (frameSPtr_ != nullptr) && frameSPtr_->isDefined();
 }
 
-bool                            Analytical::isDefined                       ( ) const
+Shared<const Frame> Analytical::accessFrame() const
 {
-    return (frameSPtr_ != nullptr) && frameSPtr_->isDefined() ;
+    return frameSPtr_;
 }
 
-Shared<const Frame>             Analytical::accessFrame                     ( ) const
-{
-    return frameSPtr_ ;
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-}
-}
-}
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}  // namespace ephem
+}  // namespace env
+}  // namespace physics
+}  // namespace ostk

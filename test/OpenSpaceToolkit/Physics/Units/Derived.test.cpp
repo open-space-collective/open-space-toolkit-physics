@@ -1,158 +1,178 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Apache License 2.0
 
-/// @project        Open Space Toolkit ▸ Physics
-/// @file           OpenSpaceToolkit/Physics/Units/Derived.test.cpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>
-/// @license        Apache License 2.0
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#include <OpenSpaceToolkit/Core/Types/Real.hpp>
 
 #include <OpenSpaceToolkit/Physics/Units/Derived.hpp>
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
 
 #include <Global.test.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-TEST (OpenSpaceToolkit_Physics_Units_Derived, Constructor)
+TEST(OpenSpaceToolkit_Physics_Units_Derived, Constructor)
 {
-
-    using ostk::core::types::Real ;
-    using ostk::physics::units::Length ;
-    using ostk::physics::units::Mass ;
-    using ostk::physics::units::Time ;
-    using ostk::physics::units::ElectricCurrent ;
-    using ostk::physics::units::Angle ;
-    using ostk::physics::units::Derived ;
+    using ostk::core::types::Real;
+    using ostk::physics::units::Length;
+    using ostk::physics::units::Mass;
+    using ostk::physics::units::Time;
+    using ostk::physics::units::ElectricCurrent;
+    using ostk::physics::units::Angle;
+    using ostk::physics::units::Derived;
 
     {
+        const Real value = 123.456;
+        const Derived::Unit unit = {
+            Length::Unit::Meter,
+            Derived::Order::One(),
+            Mass::Unit::Kilogram,
+            Derived::Order::One(),
+            Time::Unit::Second,
+            Derived::Order::One(),
+            ElectricCurrent::Unit::Ampere,
+            Derived::Order::One(),
+            Angle::Unit::Radian,
+            Derived::Order::One()};
 
-        const Real value = 123.456 ;
-        const Derived::Unit unit = { Length::Unit::Meter, Derived::Order::One(), Mass::Unit::Kilogram, Derived::Order::One(), Time::Unit::Second, Derived::Order::One(), ElectricCurrent::Unit::Ampere, Derived::Order::One(), Angle::Unit::Radian, Derived::Order::One() } ;
-
-        EXPECT_NO_THROW(Derived(value, unit)) ;
-
+        EXPECT_NO_THROW(Derived(value, unit));
     }
 
     {
+        const Real value = 123.456;
+        const Derived::Unit unit = {
+            Length::Unit::Meter,
+            Derived::Order::Two(),
+            Mass::Unit::Kilogram,
+            {1},
+            Time::Unit::Second,
+            {3, 2},
+            ElectricCurrent::Unit::Ampere,
+            {0},
+            Angle::Unit::Undefined,
+            {0}};
 
-        const Real value = 123.456 ;
-        const Derived::Unit unit = { Length::Unit::Meter, Derived::Order::Two(), Mass::Unit::Kilogram, { 1 }, Time::Unit::Second, { 3, 2 }, ElectricCurrent::Unit::Ampere, { 0 }, Angle::Unit::Undefined, { 0 } } ;
-
-        EXPECT_NO_THROW(Derived(value, unit)) ;
-
+        EXPECT_NO_THROW(Derived(value, unit));
     }
 
     {
+        const Real value = 123.456;
+        const Derived::Unit unit = {
+            Length::Unit::Meter,
+            {1, 2},
+            Mass::Unit::Kilogram,
+            {1},
+            Time::Unit::Second,
+            {3, 2},
+            ElectricCurrent::Unit::Undefined,
+            {0},
+            Angle::Unit::Undefined,
+            {0}};
 
-        const Real value = 123.456 ;
-        const Derived::Unit unit = { Length::Unit::Meter, { 1, 2 }, Mass::Unit::Kilogram, { 1 }, Time::Unit::Second, { 3, 2 }, ElectricCurrent::Unit::Undefined, { 0 }, Angle::Unit::Undefined, { 0 } } ;
-
-        EXPECT_NO_THROW(Derived(value, unit)) ;
-
+        EXPECT_NO_THROW(Derived(value, unit));
     }
 
     {
+        const Real value = Real::Undefined();
+        const Derived::Unit unit = Derived::Unit::Undefined();
 
-        const Real value = Real::Undefined() ;
-        const Derived::Unit unit = Derived::Unit::Undefined() ;
-
-        EXPECT_NO_THROW(Derived(value, unit)) ;
-
+        EXPECT_NO_THROW(Derived(value, unit));
     }
-
 }
 
-TEST (OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
+TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 {
-
-    using ostk::core::types::Real ;
-    using ostk::physics::units::Length ;
-    using ostk::physics::units::Mass ;
-    using ostk::physics::units::Time ;
-    using ostk::physics::units::ElectricCurrent ;
-    using ostk::physics::units::Angle ;
-    using ostk::physics::units::Derived ;
+    using ostk::core::types::Real;
+    using ostk::physics::units::Length;
+    using ostk::physics::units::Mass;
+    using ostk::physics::units::Time;
+    using ostk::physics::units::ElectricCurrent;
+    using ostk::physics::units::Angle;
+    using ostk::physics::units::Derived;
 
     {
+        const Derived::Unit unit = {
+            Length::Unit::Meter,
+            Derived::Order::One(),
+            Mass::Unit::Kilogram,
+            Derived::Order::One(),
+            Time::Unit::Second,
+            Derived::Order::One(),
+            ElectricCurrent::Unit::Ampere,
+            Derived::Order::One(),
+            Angle::Unit::Radian,
+            Derived::Order::One()};
 
-        const Derived::Unit unit =
-        {
-            Length::Unit::Meter,           Derived::Order::One(),
-            Mass::Unit::Kilogram,          Derived::Order::One(),
-            Time::Unit::Second,            Derived::Order::One(),
-            ElectricCurrent::Unit::Ampere, Derived::Order::One(),
-            Angle::Unit::Radian,           Derived::Order::One()
-        } ;
-
-        EXPECT_TRUE(Derived(1.0, unit) == Derived(1.0, unit)) ;
-        EXPECT_TRUE(Derived(1.0, unit) == Derived(+1.0, unit)) ;
-
+        EXPECT_TRUE(Derived(1.0, unit) == Derived(1.0, unit));
+        EXPECT_TRUE(Derived(1.0, unit) == Derived(+1.0, unit));
     }
 
     {
+        const Derived::Unit firstUnit = {
+            Length::Unit::Foot,
+            Derived::Order::One(),
+            Mass::Unit::Kilogram,
+            Derived::Order::One(),
+            Time::Unit::Second,
+            Derived::Order::One(),
+            ElectricCurrent::Unit::Ampere,
+            Derived::Order::One(),
+            Angle::Unit::Radian,
+            Derived::Order::One()};
 
-        const Derived::Unit firstUnit =
-        {
-            Length::Unit::Foot,            Derived::Order::One(),
-            Mass::Unit::Kilogram,          Derived::Order::One(),
-            Time::Unit::Second,            Derived::Order::One(),
-            ElectricCurrent::Unit::Ampere, Derived::Order::One(),
-            Angle::Unit::Radian,           Derived::Order::One()
-        } ;
+        const Derived::Unit secondUnit = {
+            Length::Unit::Meter,
+            Derived::Order::One(),
+            Mass::Unit::Kilogram,
+            Derived::Order::One(),
+            Time::Unit::Second,
+            Derived::Order::One(),
+            ElectricCurrent::Unit::Ampere,
+            Derived::Order::One(),
+            Angle::Unit::Radian,
+            Derived::Order::One()};
 
-        const Derived::Unit secondUnit =
-        {
-            Length::Unit::Meter,           Derived::Order::One(),
-            Mass::Unit::Kilogram,          Derived::Order::One(),
-            Time::Unit::Second,            Derived::Order::One(),
-            ElectricCurrent::Unit::Ampere, Derived::Order::One(),
-            Angle::Unit::Radian,           Derived::Order::One()
-        } ;
-
-        EXPECT_TRUE(Derived(1.0, firstUnit) == Derived(0.3048, secondUnit)) ;
-
+        EXPECT_TRUE(Derived(1.0, firstUnit) == Derived(0.3048, secondUnit));
     }
 
     {
+        const Derived::Unit unit = {
+            Length::Unit::Meter,
+            Derived::Order::One(),
+            Mass::Unit::Kilogram,
+            Derived::Order::One(),
+            Time::Unit::Second,
+            Derived::Order::One(),
+            ElectricCurrent::Unit::Ampere,
+            Derived::Order::One(),
+            Angle::Unit::Radian,
+            Derived::Order::One()};
 
-        const Derived::Unit unit =
-        {
-            Length::Unit::Meter,           Derived::Order::One(),
-            Mass::Unit::Kilogram,          Derived::Order::One(),
-            Time::Unit::Second,            Derived::Order::One(),
-            ElectricCurrent::Unit::Ampere, Derived::Order::One(),
-            Angle::Unit::Radian,           Derived::Order::One()
-        } ;
-
-        EXPECT_FALSE(Derived(1.0, unit) == Derived(2.0, unit)) ;
-
+        EXPECT_FALSE(Derived(1.0, unit) == Derived(2.0, unit));
     }
 
     {
+        const Derived::Unit firstUnit = {
+            Length::Unit::Meter,
+            Derived::Order::One(),
+            Mass::Unit::Kilogram,
+            Derived::Order::One(),
+            Time::Unit::Second,
+            Derived::Order::One(),
+            ElectricCurrent::Unit::Ampere,
+            Derived::Order::One(),
+            Angle::Unit::Radian,
+            Derived::Order::One()};
 
-        const Derived::Unit firstUnit =
-        {
-            Length::Unit::Meter,           Derived::Order::One(),
-            Mass::Unit::Kilogram,          Derived::Order::One(),
-            Time::Unit::Second,            Derived::Order::One(),
-            ElectricCurrent::Unit::Ampere, Derived::Order::One(),
-            Angle::Unit::Radian,           Derived::Order::One()
-        } ;
+        const Derived::Unit secondUnit = {
+            Length::Unit::Meter,
+            Derived::Order::One(),
+            Mass::Unit::Kilogram,
+            Derived::Order::One(),
+            Time::Unit::Second,
+            Derived::Order::One(),
+            ElectricCurrent::Unit::Ampere,
+            Derived::Order::One(),
+            Angle::Unit::Radian,
+            Derived::Order::Zero()};
 
-        const Derived::Unit secondUnit =
-        {
-            Length::Unit::Meter,           Derived::Order::One(),
-            Mass::Unit::Kilogram,          Derived::Order::One(),
-            Time::Unit::Second,            Derived::Order::One(),
-            ElectricCurrent::Unit::Ampere, Derived::Order::One(),
-            Angle::Unit::Radian,           Derived::Order::Zero()
-        } ;
-
-        EXPECT_ANY_THROW(Derived(1.0, firstUnit) == Derived(1.0, secondUnit)) ;
-
+        EXPECT_ANY_THROW(Derived(1.0, firstUnit) == Derived(1.0, secondUnit));
     }
-
 }
 
 // TEST (OpenSpaceToolkit_Physics_Units_Derived, NotEqualToOperator)
@@ -318,17 +338,20 @@ TEST (OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 
 //     {
 
-//         EXPECT_EQ(Derived(2.0, Derived::Unit::Meter), Derived(1.0, Derived::Unit::Meter) + Derived(1.0, Derived::Unit::Meter)) ;
-//         EXPECT_EQ(Derived(0.0, Derived::Unit::Meter), Derived(-1.0, Derived::Unit::Meter) + Derived(+1.0, Derived::Unit::Meter)) ;
+//         EXPECT_EQ(Derived(2.0, Derived::Unit::Meter), Derived(1.0, Derived::Unit::Meter) + Derived(1.0,
+//         Derived::Unit::Meter)) ; EXPECT_EQ(Derived(0.0, Derived::Unit::Meter), Derived(-1.0, Derived::Unit::Meter) +
+//         Derived(+1.0, Derived::Unit::Meter)) ;
 
 //     }
 
 //     {
 
-//         EXPECT_EQ(Derived(1.3048, Derived::Unit::Meter), Derived(1.0, Derived::Unit::Meter) + Derived(1.0, Derived::Unit::Foot)) ;
-//         EXPECT_EQ(Derived(1610.344, Derived::Unit::Meter), Derived(1.0, Derived::Unit::Meter) + Derived(1.0, Derived::Unit::TerrestrialMile)) ;
-//         EXPECT_EQ(Derived(1853.0, Derived::Unit::Meter), Derived(1.0, Derived::Unit::Meter) + Derived(1.0, Derived::Unit::NauticalMile)) ;
-//         EXPECT_EQ(Derived(149597870701.0, Derived::Unit::Meter), Derived(1.0, Derived::Unit::Meter) + Derived(1.0, Derived::Unit::AstronomicalUnit)) ;
+//         EXPECT_EQ(Derived(1.3048, Derived::Unit::Meter), Derived(1.0, Derived::Unit::Meter) + Derived(1.0,
+//         Derived::Unit::Foot)) ; EXPECT_EQ(Derived(1610.344, Derived::Unit::Meter), Derived(1.0, Derived::Unit::Meter)
+//         + Derived(1.0, Derived::Unit::TerrestrialMile)) ; EXPECT_EQ(Derived(1853.0, Derived::Unit::Meter),
+//         Derived(1.0, Derived::Unit::Meter) + Derived(1.0, Derived::Unit::NauticalMile)) ;
+//         EXPECT_EQ(Derived(149597870701.0, Derived::Unit::Meter), Derived(1.0, Derived::Unit::Meter) + Derived(1.0,
+//         Derived::Unit::AstronomicalUnit)) ;
 
 //     }
 
@@ -349,17 +372,20 @@ TEST (OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 
 //     {
 
-//         EXPECT_EQ(Derived(0.0, Derived::Unit::Meter), Derived(1.0, Derived::Unit::Meter) - Derived(1.0, Derived::Unit::Meter)) ;
-//         EXPECT_EQ(Derived(-2.0, Derived::Unit::Meter), Derived(-1.0, Derived::Unit::Meter) - Derived(+1.0, Derived::Unit::Meter)) ;
+//         EXPECT_EQ(Derived(0.0, Derived::Unit::Meter), Derived(1.0, Derived::Unit::Meter) - Derived(1.0,
+//         Derived::Unit::Meter)) ; EXPECT_EQ(Derived(-2.0, Derived::Unit::Meter), Derived(-1.0, Derived::Unit::Meter) -
+//         Derived(+1.0, Derived::Unit::Meter)) ;
 
 //     }
 
 //     {
 
-//         EXPECT_EQ(Derived(1.0 - 0.3048, Derived::Unit::Meter), Derived(1.0, Derived::Unit::Meter) - Derived(1.0, Derived::Unit::Foot)) ;
-//         EXPECT_EQ(Derived(-1608.344, Derived::Unit::Meter), Derived(1.0, Derived::Unit::Meter) - Derived(1.0, Derived::Unit::TerrestrialMile)) ;
-//         EXPECT_EQ(Derived(-1851.0, Derived::Unit::Meter), Derived(1.0, Derived::Unit::Meter) - Derived(1.0, Derived::Unit::NauticalMile)) ;
-//         EXPECT_EQ(Derived(-149597870699.0, Derived::Unit::Meter), Derived(1.0, Derived::Unit::Meter) - Derived(1.0, Derived::Unit::AstronomicalUnit)) ;
+//         EXPECT_EQ(Derived(1.0 - 0.3048, Derived::Unit::Meter), Derived(1.0, Derived::Unit::Meter) - Derived(1.0,
+//         Derived::Unit::Foot)) ; EXPECT_EQ(Derived(-1608.344, Derived::Unit::Meter), Derived(1.0,
+//         Derived::Unit::Meter) - Derived(1.0, Derived::Unit::TerrestrialMile)) ; EXPECT_EQ(Derived(-1851.0,
+//         Derived::Unit::Meter), Derived(1.0, Derived::Unit::Meter) - Derived(1.0, Derived::Unit::NauticalMile)) ;
+//         EXPECT_EQ(Derived(-149597870699.0, Derived::Unit::Meter), Derived(1.0, Derived::Unit::Meter) - Derived(1.0,
+//         Derived::Unit::AstronomicalUnit)) ;
 
 //     }
 
@@ -412,12 +438,14 @@ TEST (OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 //         EXPECT_EQ(Derived(6.0, Derived::Unit::Foot), Derived(3.0, Derived::Unit::Foot) * 2.0) ;
 //         EXPECT_EQ(Derived(6.0, Derived::Unit::TerrestrialMile), Derived(3.0, Derived::Unit::TerrestrialMile) * 2.0) ;
 //         EXPECT_EQ(Derived(6.0, Derived::Unit::NauticalMile), Derived(3.0, Derived::Unit::NauticalMile) * 2.0) ;
-//         EXPECT_EQ(Derived(6.0, Derived::Unit::AstronomicalUnit), Derived(3.0, Derived::Unit::AstronomicalUnit) * 2.0) ;
+//         EXPECT_EQ(Derived(6.0, Derived::Unit::AstronomicalUnit), Derived(3.0, Derived::Unit::AstronomicalUnit) * 2.0)
+//         ;
 
 //         EXPECT_EQ(Derived(6.0, Derived::Unit::Foot), 2.0 * Derived(3.0, Derived::Unit::Foot)) ;
 //         EXPECT_EQ(Derived(6.0, Derived::Unit::TerrestrialMile), 2.0 * Derived(3.0, Derived::Unit::TerrestrialMile)) ;
 //         EXPECT_EQ(Derived(6.0, Derived::Unit::NauticalMile), 2.0 * Derived(3.0, Derived::Unit::NauticalMile)) ;
-//         EXPECT_EQ(Derived(6.0, Derived::Unit::AstronomicalUnit), 2.0 * Derived(3.0, Derived::Unit::AstronomicalUnit)) ;
+//         EXPECT_EQ(Derived(6.0, Derived::Unit::AstronomicalUnit), 2.0 * Derived(3.0, Derived::Unit::AstronomicalUnit))
+//         ;
 
 //     }
 
@@ -457,7 +485,8 @@ TEST (OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 //         EXPECT_EQ(Derived(0.5, Derived::Unit::Foot), Derived(1.0, Derived::Unit::Foot) / 2.0) ;
 //         EXPECT_EQ(Derived(0.5, Derived::Unit::TerrestrialMile), Derived(1.0, Derived::Unit::TerrestrialMile) / 2.0) ;
 //         EXPECT_EQ(Derived(0.5, Derived::Unit::NauticalMile), Derived(1.0, Derived::Unit::NauticalMile) / 2.0) ;
-//         EXPECT_EQ(Derived(0.5, Derived::Unit::AstronomicalUnit), Derived(1.0, Derived::Unit::AstronomicalUnit) / 2.0) ;
+//         EXPECT_EQ(Derived(0.5, Derived::Unit::AstronomicalUnit), Derived(1.0, Derived::Unit::AstronomicalUnit) / 2.0)
+//         ;
 
 //     }
 
@@ -477,17 +506,20 @@ TEST (OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 
 //     {
 
-//         EXPECT_EQ(Derived(2.0, Derived::Unit::Meter), Derived(1.0, Derived::Unit::Meter) += Derived(1.0, Derived::Unit::Meter)) ;
-//         EXPECT_EQ(Derived(0.0, Derived::Unit::Meter), Derived(-1.0, Derived::Unit::Meter) += Derived(+1.0, Derived::Unit::Meter)) ;
+//         EXPECT_EQ(Derived(2.0, Derived::Unit::Meter), Derived(1.0, Derived::Unit::Meter) += Derived(1.0,
+//         Derived::Unit::Meter)) ; EXPECT_EQ(Derived(0.0, Derived::Unit::Meter), Derived(-1.0, Derived::Unit::Meter) +=
+//         Derived(+1.0, Derived::Unit::Meter)) ;
 
 //     }
 
 //     {
 
-//         EXPECT_EQ(Derived(1.3048, Derived::Unit::Meter), Derived(1.0, Derived::Unit::Meter) += Derived(1.0, Derived::Unit::Foot)) ;
-//         EXPECT_EQ(Derived(1610.344, Derived::Unit::Meter), Derived(1.0, Derived::Unit::Meter) += Derived(1.0, Derived::Unit::TerrestrialMile)) ;
-//         EXPECT_EQ(Derived(1853.0, Derived::Unit::Meter), Derived(1.0, Derived::Unit::Meter) += Derived(1.0, Derived::Unit::NauticalMile)) ;
-//         EXPECT_EQ(Derived(149597870701.0, Derived::Unit::Meter), Derived(1.0, Derived::Unit::Meter) += Derived(1.0, Derived::Unit::AstronomicalUnit)) ;
+//         EXPECT_EQ(Derived(1.3048, Derived::Unit::Meter), Derived(1.0, Derived::Unit::Meter) += Derived(1.0,
+//         Derived::Unit::Foot)) ; EXPECT_EQ(Derived(1610.344, Derived::Unit::Meter), Derived(1.0, Derived::Unit::Meter)
+//         += Derived(1.0, Derived::Unit::TerrestrialMile)) ; EXPECT_EQ(Derived(1853.0, Derived::Unit::Meter),
+//         Derived(1.0, Derived::Unit::Meter) += Derived(1.0, Derived::Unit::NauticalMile)) ;
+//         EXPECT_EQ(Derived(149597870701.0, Derived::Unit::Meter), Derived(1.0, Derived::Unit::Meter) += Derived(1.0,
+//         Derived::Unit::AstronomicalUnit)) ;
 
 //     }
 
@@ -508,17 +540,20 @@ TEST (OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 
 //     {
 
-//         EXPECT_EQ(Derived(0.0, Derived::Unit::Meter), Derived(1.0, Derived::Unit::Meter) -= Derived(1.0, Derived::Unit::Meter)) ;
-//         EXPECT_EQ(Derived(-2.0, Derived::Unit::Meter), Derived(-1.0, Derived::Unit::Meter) -= Derived(+1.0, Derived::Unit::Meter)) ;
+//         EXPECT_EQ(Derived(0.0, Derived::Unit::Meter), Derived(1.0, Derived::Unit::Meter) -= Derived(1.0,
+//         Derived::Unit::Meter)) ; EXPECT_EQ(Derived(-2.0, Derived::Unit::Meter), Derived(-1.0, Derived::Unit::Meter)
+//         -= Derived(+1.0, Derived::Unit::Meter)) ;
 
 //     }
 
 //     {
 
-//         EXPECT_EQ(Derived(1.0 - 0.3048, Derived::Unit::Meter), Derived(1.0, Derived::Unit::Meter) -= Derived(1.0, Derived::Unit::Foot)) ;
-//         EXPECT_EQ(Derived(-1608.344, Derived::Unit::Meter), Derived(1.0, Derived::Unit::Meter) -= Derived(1.0, Derived::Unit::TerrestrialMile)) ;
-//         EXPECT_EQ(Derived(-1851.0, Derived::Unit::Meter), Derived(1.0, Derived::Unit::Meter) -= Derived(1.0, Derived::Unit::NauticalMile)) ;
-//         EXPECT_EQ(Derived(-149597870699.0, Derived::Unit::Meter), Derived(1.0, Derived::Unit::Meter) -= Derived(1.0, Derived::Unit::AstronomicalUnit)) ;
+//         EXPECT_EQ(Derived(1.0 - 0.3048, Derived::Unit::Meter), Derived(1.0, Derived::Unit::Meter) -= Derived(1.0,
+//         Derived::Unit::Foot)) ; EXPECT_EQ(Derived(-1608.344, Derived::Unit::Meter), Derived(1.0,
+//         Derived::Unit::Meter) -= Derived(1.0, Derived::Unit::TerrestrialMile)) ; EXPECT_EQ(Derived(-1851.0,
+//         Derived::Unit::Meter), Derived(1.0, Derived::Unit::Meter) -= Derived(1.0, Derived::Unit::NauticalMile)) ;
+//         EXPECT_EQ(Derived(-149597870699.0, Derived::Unit::Meter), Derived(1.0, Derived::Unit::Meter) -= Derived(1.0,
+//         Derived::Unit::AstronomicalUnit)) ;
 
 //     }
 
@@ -557,9 +592,10 @@ TEST (OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 //     {
 
 //         EXPECT_EQ(Derived(6.0, Derived::Unit::Foot), Derived(3.0, Derived::Unit::Foot) *= 2.0) ;
-//         EXPECT_EQ(Derived(6.0, Derived::Unit::TerrestrialMile), Derived(3.0, Derived::Unit::TerrestrialMile) *= 2.0) ;
-//         EXPECT_EQ(Derived(6.0, Derived::Unit::NauticalMile), Derived(3.0, Derived::Unit::NauticalMile) *= 2.0) ;
-//         EXPECT_EQ(Derived(6.0, Derived::Unit::AstronomicalUnit), Derived(3.0, Derived::Unit::AstronomicalUnit) *= 2.0) ;
+//         EXPECT_EQ(Derived(6.0, Derived::Unit::TerrestrialMile), Derived(3.0, Derived::Unit::TerrestrialMile) *= 2.0)
+//         ; EXPECT_EQ(Derived(6.0, Derived::Unit::NauticalMile), Derived(3.0, Derived::Unit::NauticalMile) *= 2.0) ;
+//         EXPECT_EQ(Derived(6.0, Derived::Unit::AstronomicalUnit), Derived(3.0, Derived::Unit::AstronomicalUnit)
+//         *= 2.0) ;
 
 //     }
 
@@ -596,9 +632,10 @@ TEST (OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 //     {
 
 //         EXPECT_EQ(Derived(0.5, Derived::Unit::Foot), Derived(1.0, Derived::Unit::Foot) /= 2.0) ;
-//         EXPECT_EQ(Derived(0.5, Derived::Unit::TerrestrialMile), Derived(1.0, Derived::Unit::TerrestrialMile) /= 2.0) ;
-//         EXPECT_EQ(Derived(0.5, Derived::Unit::NauticalMile), Derived(1.0, Derived::Unit::NauticalMile) /= 2.0) ;
-//         EXPECT_EQ(Derived(0.5, Derived::Unit::AstronomicalUnit), Derived(1.0, Derived::Unit::AstronomicalUnit) /= 2.0) ;
+//         EXPECT_EQ(Derived(0.5, Derived::Unit::TerrestrialMile), Derived(1.0, Derived::Unit::TerrestrialMile) /= 2.0)
+//         ; EXPECT_EQ(Derived(0.5, Derived::Unit::NauticalMile), Derived(1.0, Derived::Unit::NauticalMile) /= 2.0) ;
+//         EXPECT_EQ(Derived(0.5, Derived::Unit::AstronomicalUnit), Derived(1.0, Derived::Unit::AstronomicalUnit)
+//         /= 2.0) ;
 
 //     }
 
@@ -849,21 +886,15 @@ TEST (OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-TEST (OpenSpaceToolkit_Physics_Units_Derived_Unit, MassDensity)
+TEST(OpenSpaceToolkit_Physics_Units_Derived_Unit, MassDensity)
 {
-
-    using ostk::physics::units::Length ;
-    using ostk::physics::units::Mass ;
-    using ostk::physics::units::Derived ;
+    using ostk::physics::units::Length;
+    using ostk::physics::units::Mass;
+    using ostk::physics::units::Derived;
 
     {
+        const Derived::Unit massDensity = Derived::Unit::MassDensity(Mass::Unit::Kilogram, Length::Unit::Meter);
 
-        const Derived::Unit massDensity = Derived::Unit::MassDensity(Mass::Unit::Kilogram, Length::Unit::Meter) ;
-
-        EXPECT_TRUE(massDensity.isDefined()) ;
-
+        EXPECT_TRUE(massDensity.isDefined());
     }
-
 }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

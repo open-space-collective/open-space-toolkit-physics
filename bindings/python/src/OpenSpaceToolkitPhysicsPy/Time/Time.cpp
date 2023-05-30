@@ -1,28 +1,19 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/// @project        Open Space Toolkit ▸ Physics
-/// @file           bindings/python/src/OpenSpaceToolkitPhysicsPy/Time/Time.cpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>
-/// @license        Apache License 2.0
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Apache License 2.0
 
 #include <OpenSpaceToolkit/Physics/Time/Time.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-inline void                     OpenSpaceToolkitPhysicsPy_Time_Time         (            pybind11::module&          aModule                                     )
+inline void OpenSpaceToolkitPhysicsPy_Time_Time(pybind11::module& aModule)
 {
+    using namespace pybind11;
 
-    using namespace pybind11 ;
+    using ostk::core::types::String;
 
-    using ostk::core::types::String ;
+    using ostk::physics::time::Time;
 
-    using ostk::physics::time::Time ;
+    class_<Time> time_class(aModule, "Time");
 
-    class_<Time> time_class(aModule, "Time") ;
-
-    time_class.def(init<int, int, int, int, int, int>())
+    time_class
+        .def(init<int, int, int, int, int, int>())
 
         .def(init<int, int, int>())
 
@@ -30,7 +21,13 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Time         (   
         .def(self != self)
 
         .def("__str__", &(shiftToString<Time>))
-        .def("__repr__", +[] (const Time& aTime) -> std::string { return aTime.toString() ; })
+        .def(
+            "__repr__",
+            +[](const Time& aTime) -> std::string
+            {
+                return aTime.toString();
+            }
+        )
 
         .def("is_defined", &Time::isDefined)
 
@@ -48,14 +45,26 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Time         (   
         .def("set_millisecond", &Time::setMillisecond)
         .def("set_microsecond", &Time::setMicrosecond)
         .def("set_nanosecond", &Time::setNanosecond)
-        .def("to_string", +[] (const Time& aTime) -> String { return aTime.toString() ; })
-        .def("to_string", +[] (const Time& aTime, const Time::Format& aFormat) -> String { return aTime.toString(aFormat) ; })
+        .def(
+            "to_string",
+            +[](const Time& aTime) -> String
+            {
+                return aTime.toString();
+            }
+        )
+        .def(
+            "to_string",
+            +[](const Time& aTime, const Time::Format& aFormat) -> String
+            {
+                return aTime.toString(aFormat);
+            }
+        )
 
         .def_static("undefined", &Time::Undefined)
         .def_static("midnight", &Time::Midnight)
         .def_static("noon", &Time::Noon)
 
-    ;
+        ;
 
     enum_<Time::Format>(time_class, "Format")
 
@@ -63,10 +72,7 @@ inline void                     OpenSpaceToolkitPhysicsPy_Time_Time         (   
         .value("Standard", Time::Format::Standard)
         .value("ISO8601", Time::Format::ISO8601)
 
-    ;
+        ;
 
-    time_class.def_static("parse", &Time::Parse, "aString"_a, "aFormat"_a=Time::Format::Undefined) ;
-
+    time_class.def_static("parse", &Time::Parse, "aString"_a, "aFormat"_a = Time::Format::Undefined);
 }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

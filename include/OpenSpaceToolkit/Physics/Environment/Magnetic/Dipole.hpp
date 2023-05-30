@@ -1,22 +1,13 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/// @project        Open Space Toolkit ▸ Physics
-/// @file           OpenSpaceToolkit/Physics/Environment/Magnetic/Dipole.hpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>
-/// @license        Apache License 2.0
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Apache License 2.0
 
 #ifndef __OpenSpaceToolkit_Physics_Environment_Magnetic_Dipole__
 #define __OpenSpaceToolkit_Physics_Environment_Magnetic_Dipole__
 
+#include <OpenSpaceToolkit/Core/Types/Real.hpp>
+
 #include <OpenSpaceToolkit/Physics/Environment/Magnetic/Model.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Derived.hpp>
-
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 namespace ostk
 {
@@ -27,15 +18,11 @@ namespace environment
 namespace magnetic
 {
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+using ostk::core::types::Real;
 
-using ostk::core::types::Real ;
-
-using ostk::physics::units::Derived ;
-using ostk::physics::time::Instant ;
-using ostk::physics::environment::magnetic::Model ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+using ostk::physics::units::Derived;
+using ostk::physics::time::Instant;
+using ostk::physics::environment::magnetic::Model;
 
 /// @brief						Magnetic dipole model
 ///
@@ -46,45 +33,34 @@ using ostk::physics::environment::magnetic::Model ;
 
 class Dipole : public Model
 {
+   public:
+    /// @brief              Constructor
+    ///
+    /// @param              [in] aMagneticMoment A magnetic moment [A⋅m2]
 
-    public:
+    Dipole(const Vector3d& aMagneticMoment);
 
-        /// @brief              Constructor
-        ///
-        /// @param              [in] aMagneticMoment A magnetic moment [A⋅m2]
+    /// @brief              Clone the dipole magnetic model
+    ///
+    /// @return             Pointer to dipole magnetic model
 
-                                Dipole                                      (   const   Vector3d&                   aMagneticMoment                             ) ;
+    virtual Dipole* clone() const override;
 
-        /// @brief              Clone the dipole magnetic model
-        ///
-        /// @return             Pointer to dipole magnetic model
+    /// @brief              Get the magnetic field value at a given position and instant
+    ///
+    /// @param              [in] aPosition A position, expressed in the magnetic object frame [m]
+    /// @param              [in] anInstant An instant
+    /// @return             Magnetic field value, expressed in the magnetic object frame [T]
 
-        virtual Dipole*         clone                                       ( ) const override ;
+    virtual Vector3d getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const override;
 
-        /// @brief              Get the magnetic field value at a given position and instant
-        ///
-        /// @param              [in] aPosition A position, expressed in the magnetic object frame [m]
-        /// @param              [in] anInstant An instant
-        /// @return             Magnetic field value, expressed in the magnetic object frame [T]
+   private:
+    Vector3d magneticMoment_SI_;
+};
 
-        virtual Vector3d        getFieldValueAt                             (   const   Vector3d&                   aPosition,
-                                                                                const   Instant&                    anInstant                                   ) const override ;
-
-    private:
-
-        Vector3d                magneticMoment_SI_ ;
-
-} ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-}
-}
-}
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}  // namespace magnetic
+}  // namespace environment
+}  // namespace physics
+}  // namespace ostk
 
 #endif
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

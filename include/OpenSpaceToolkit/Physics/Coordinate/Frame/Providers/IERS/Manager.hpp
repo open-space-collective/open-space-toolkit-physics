@@ -1,39 +1,29 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/// @project        Open Space Toolkit ▸ Physics
-/// @file           OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Manager.hpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>
-/// @license        Apache License 2.0
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Apache License 2.0
 
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager__
 #define __OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager__
 
-#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Finals2000A.hpp>
-#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/BulletinA.hpp>
-#include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
-#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+#include <mutex>
 
-#include <OpenSpaceToolkit/Mathematics/Objects/Vector.hpp>
+#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
+#include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
+#include <OpenSpaceToolkit/Core/Types/Index.hpp>
+#include <OpenSpaceToolkit/Core/Types/Real.hpp>
 
 #include <OpenSpaceToolkit/IO/URL.hpp>
 
-#include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
-#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
-#include <OpenSpaceToolkit/Core/Types/Index.hpp>
+#include <OpenSpaceToolkit/Mathematics/Objects/Vector.hpp>
 
-#include <mutex>
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/BulletinA.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Finals2000A.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
 #define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE Manager::Mode::Automatic
-#define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY "./.open-space-toolkit/physics/coordinate/frame/providers/iers"
+#define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY \
+    "./.open-space-toolkit/physics/coordinate/frame/providers/iers"
 #define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT 60
 #define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL "https://maia.usno.navy.mil/ser7/"
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 namespace ostk
 {
@@ -48,278 +38,269 @@ namespace provider
 namespace iers
 {
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+using ostk::core::types::Index;
+using ostk::core::types::Real;
+using ostk::core::ctnr::Array;
+using ostk::core::fs::Directory;
 
-using ostk::core::types::Index ;
-using ostk::core::types::Real ;
-using ostk::core::ctnr::Array ;
-using ostk::core::fs::Directory ;
+using ostk::io::URL;
 
-using ostk::io::URL ;
+using ostk::math::obj::Vector2d;
 
-using ostk::math::obj::Vector2d ;
-
-using ostk::physics::time::Instant ;
-using ostk::physics::time::Duration ;
-using ostk::physics::coord::frame::provider::iers::BulletinA ;
-using ostk::physics::coord::frame::provider::iers::Finals2000A ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+using ostk::physics::time::Instant;
+using ostk::physics::time::Duration;
+using ostk::physics::coord::frame::provider::iers::BulletinA;
+using ostk::physics::coord::frame::provider::iers::Finals2000A;
 
 /// @brief                      IERS bulletins manager (thread-safe)
 ///
 ///                             The following environment variables can be defined:
 ///
-///                             - "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE" will override "DefaultMode"
-///                             - "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY" will override "DefaultLocalRepository"
-///                             - "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT" will override "DefaultLocalRepositoryLockTimeout"
-///                             - "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL" will override "DefaultRemoteUrl"
+///                             - "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE" will override
+///                             "DefaultMode"
+///                             - "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY" will override
+///                             "DefaultLocalRepository"
+///                             - "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT"
+///                             will override "DefaultLocalRepositoryLockTimeout"
+///                             - "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL" will override
+///                             "DefaultRemoteUrl"
 ///
 /// @ref                        https://www.iers.org/IERS/EN/DataProducts/EarthOrientationData/eop.html
 
 class Manager
 {
+   public:
+    enum class Mode
+    {
 
-    public:
+        Manual,    ///< Manually load and unload bulletins
+        Automatic  ///< Automatically fetch, load and unload bulletins (from remote repositories)
 
-        enum class Mode
-        {
+    };
 
-            Manual,             ///< Manually load and unload bulletins
-            Automatic           ///< Automatically fetch, load and unload bulletins (from remote repositories)
+    /// @brief              Get manager mode
+    ///
+    /// @return             Manager mode
 
-        } ;
+    Manager::Mode getMode() const;
 
-        /// @brief              Get manager mode
-        ///
-        /// @return             Manager mode
+    /// @brief              Get local repository
+    ///
+    /// @return             Local repository
 
-        Manager::Mode           getMode                                     ( ) const ;
+    Directory getLocalRepository() const;
 
-        /// @brief              Get local repository
-        ///
-        /// @return             Local repository
+    /// @brief              Get Bulletin A directory
+    ///
+    /// @return             Bulletin A directory
 
-        Directory               getLocalRepository                          ( ) const ;
+    Directory getBulletinADirectory() const;
 
-        /// @brief              Get Bulletin A directory
-        ///
-        /// @return             Bulletin A directory
+    /// @brief              Get Finals 2000A directory
+    ///
+    /// @return             Finals 2000A directory
 
-        Directory               getBulletinADirectory                       ( ) const ;
+    Directory getFinals2000ADirectory() const;
 
-        /// @brief              Get Finals 2000A directory
-        ///
-        /// @return             Finals 2000A directory
+    /// @brief              Get remote URL
+    ///
+    /// @return             Remote URL
 
-        Directory               getFinals2000ADirectory                     ( ) const ;
+    URL getRemoteUrl() const;
 
-        /// @brief              Get remote URL
-        ///
-        /// @return             Remote URL
+    /// @brief              Get array of Bulletin A
+    ///
+    /// @return             Array of Bulletin A
 
-        URL                     getRemoteUrl                                ( ) const ;
+    Array<BulletinA> getBulletinAArray() const;
 
-        /// @brief              Get array of Bulletin A
-        ///
-        /// @return             Array of Bulletin A
+    /// @brief              Get Bulletin A at instant
+    ///
+    /// @param              [in] anInstant An instant
+    /// @return             Bulletin A
 
-        Array<BulletinA>        getBulletinAArray                           ( ) const ;
+    BulletinA getBulletinAAt(const Instant& anInstant) const;
 
-        /// @brief              Get Bulletin A at instant
-        ///
-        /// @param              [in] anInstant An instant
-        /// @return             Bulletin A
+    /// @brief              Get array of Finals 2000A
+    ///
+    /// @return             Array of Finals 2000A
 
-        BulletinA               getBulletinAAt                              (   const   Instant&                    anInstant                                   ) const ;
+    Array<Finals2000A> getFinals2000AArray() const;
 
-        /// @brief              Get array of Finals 2000A
-        ///
-        /// @return             Array of Finals 2000A
+    /// @brief              Get Finals 2000A at instant
+    ///
+    /// @param              [in] anInstant An instant
+    /// @return             Finals 2000A
 
-        Array<Finals2000A>      getFinals2000AArray                         ( ) const ;
+    Finals2000A getFinals2000AAt(const Instant& anInstant) const;
 
-        /// @brief              Get Finals 2000A at instant
-        ///
-        /// @param              [in] anInstant An instant
-        /// @return             Finals 2000A
+    /// @brief              Get polar motion at instant
+    ///
+    /// @param              [in] anInstant An instant
+    /// @return             [asec] Polar motion
 
-        Finals2000A             getFinals2000AAt                            (   const   Instant&                    anInstant                                   ) const ;
+    Vector2d getPolarMotionAt(const Instant& anInstant) const;
 
-        /// @brief              Get polar motion at instant
-        ///
-        /// @param              [in] anInstant An instant
-        /// @return             [asec] Polar motion
+    /// @brief              Get UT1 - UTC at instant
+    ///
+    /// @param              [in] anInstant An instant
+    /// @return             [sec] UT1 - UTC
 
-        Vector2d                getPolarMotionAt                            (   const   Instant&                    anInstant                                   ) const ;
+    Real getUt1MinusUtcAt(const Instant& anInstant) const;
 
-        /// @brief              Get UT1 - UTC at instant
-        ///
-        /// @param              [in] anInstant An instant
-        /// @return             [sec] UT1 - UTC
+    /// @brief              Get length of day at instant
+    ///
+    /// @param              [in] anInstant An instant
+    /// @return             [ms] Length of day
 
-        Real                    getUt1MinusUtcAt                            (   const   Instant&                    anInstant                                   ) const ;
+    Real getLodAt(const Instant& anInstant) const;
 
-        /// @brief              Get length of day at instant
-        ///
-        /// @param              [in] anInstant An instant
-        /// @return             [ms] Length of day
+    /// @brief              Set manager mode
+    ///
+    /// @param              [in] aMode A manager mode
 
-        Real                    getLodAt                                    (   const   Instant&                    anInstant                                   ) const ;
+    void setMode(const Manager::Mode& aMode);
 
-        /// @brief              Set manager mode
-        ///
-        /// @param              [in] aMode A manager mode
+    /// @brief              Set local repository
+    ///
+    /// @param              [in] aDirectory A repository directory
 
-        void                    setMode                                     (   const   Manager::Mode&              aMode                                       ) ;
+    void setLocalRepository(const Directory& aDirectory);
 
-        /// @brief              Set local repository
-        ///
-        /// @param              [in] aDirectory A repository directory
+    /// @brief              Set remote URL
+    ///
+    /// @param              [in] aRemoteUrl A remote URL
 
-        void                    setLocalRepository                          (   const   Directory&                  aDirectory                                  ) ;
+    void setRemoteUrl(const URL& aRemoteUrl);
 
-        /// @brief              Set remote URL
-        ///
-        /// @param              [in] aRemoteUrl A remote URL
+    /// @brief              Load Bulletin A
+    ///
+    /// @param              [in] aBulletinA A Bulletin A
 
-        void                    setRemoteUrl                                (   const   URL&                        aRemoteUrl                                  ) ;
+    void loadBulletinA(const BulletinA& aBulletinA);
 
-        /// @brief              Load Bulletin A
-        ///
-        /// @param              [in] aBulletinA A Bulletin A
+    /// @brief              Load Finals 2000A
+    ///
+    /// @param              [in] aFinals2000A A Finals 2000A
 
-        void                    loadBulletinA                               (   const   BulletinA&                  aBulletinA                                  ) ;
+    void loadFinals2000A(const Finals2000A& aFinals2000A);
 
-        /// @brief              Load Finals 2000A
-        ///
-        /// @param              [in] aFinals2000A A Finals 2000A
+    /// @brief              Fetch latest Bulletin A file
+    ///
+    /// @return             Latest Bulletin A file
 
-        void                    loadFinals2000A                             (   const   Finals2000A&                aFinals2000A                                ) ;
+    File fetchLatestBulletinA();
 
-        /// @brief              Fetch latest Bulletin A file
-        ///
-        /// @return             Latest Bulletin A file
+    /// @brief              Fetch latest Finals 2000A file
+    ///
+    /// @return             Latest Finals 2000A file
 
-        File                    fetchLatestBulletinA                        ( ) ;
+    File fetchLatestFinals2000A();
 
-        /// @brief              Fetch latest Finals 2000A file
-        ///
-        /// @return             Latest Finals 2000A file
+    /// @brief              Reset manager
+    ///
+    ///                     Unload all bulletins and clear cache.
 
-        File                    fetchLatestFinals2000A                      ( ) ;
+    void reset();
 
-        /// @brief              Reset manager
-        ///
-        ///                     Unload all bulletins and clear cache.
+    /// @brief              Clear local repository
+    ///
+    ///                     Delete all files in local repository.
 
-        void                    reset                                       ( ) ;
+    void clearLocalRepository();
 
-        /// @brief              Clear local repository
-        ///
-        ///                     Delete all files in local repository.
+    /// @brief              Get manager singleton
+    ///
+    /// @return             Reference to manager
 
-        void                    clearLocalRepository                        ( ) ;
+    static Manager& Get();
 
-        /// @brief              Get manager singleton
-        ///
-        /// @return             Reference to manager
+    /// @brief              Get default manager mode
+    ///
+    ///                     Overriden by: OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE
+    ///
+    /// @return             Default manager mode
 
-        static Manager&         Get                                         ( ) ;
+    static Manager::Mode DefaultMode();
 
-        /// @brief              Get default manager mode
-        ///
-        ///                     Overriden by: OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE
-        ///
-        /// @return             Default manager mode
+    /// @brief              Get default local repository
+    ///
+    ///                     Overriden by: OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY
+    ///
+    /// @return             Default local repository
 
-        static Manager::Mode    DefaultMode                                 ( ) ;
+    static Directory DefaultLocalRepository();
 
-        /// @brief              Get default local repository
-        ///
-        ///                     Overriden by: OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY
-        ///
-        /// @return             Default local repository
+    /// @brief              Get default local repository lock timeout
+    ///
+    ///                     Overriden by:
+    ///                     OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT
+    ///
+    /// @return             Default local repository lock timeout
 
-        static Directory        DefaultLocalRepository                      ( ) ;
+    static Duration DefaultLocalRepositoryLockTimeout();
 
-        /// @brief              Get default local repository lock timeout
-        ///
-        ///                     Overriden by: OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT
-        ///
-        /// @return             Default local repository lock timeout
+    /// @brief              Get default remote URL
+    ///
+    ///                     Overriden by: OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL
+    ///
+    /// @return             Default remote URL
 
-        static Duration         DefaultLocalRepositoryLockTimeout           ( ) ;
+    static URL DefaultRemoteUrl();
 
-        /// @brief              Get default remote URL
-        ///
-        ///                     Overriden by: OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL
-        ///
-        /// @return             Default remote URL
+   private:
+    Manager::Mode mode_;
 
-        static URL              DefaultRemoteUrl                            ( ) ;
+    Directory localRepository_;
+    Duration localRepositoryLockTimeout_;
 
-    private:
+    URL remoteUrl_;
 
-        Manager::Mode           mode_ ;
+    Array<BulletinA> aBulletins_;
+    Array<Finals2000A> finals2000aArray_;
 
-        Directory               localRepository_ ;
-        Duration                localRepositoryLockTimeout_ ;
+    mutable std::mutex mutex_;
 
-        URL                     remoteUrl_ ;
+    mutable Index aBulletinIndex_;
+    mutable Index finals2000aIndex_;
 
-        Array<BulletinA>        aBulletins_ ;
-        Array<Finals2000A>      finals2000aArray_ ;
+    mutable Instant bulletinAUpdateTimestamp_;
+    mutable Instant finals2000AUpdateTimestamp_;
 
-        mutable std::mutex      mutex_ ;
+    Manager(const Manager::Mode& aMode = Manager::DefaultMode());
 
-        mutable Index           aBulletinIndex_ ;
-        mutable Index           finals2000aIndex_ ;
+    bool isLocalRepositoryLocked() const;
 
-        mutable Instant         bulletinAUpdateTimestamp_ ;
-        mutable Instant         finals2000AUpdateTimestamp_ ;
+    File getLocalRepositoryLockFile() const;
 
-                                Manager                                     (   const   Manager::Mode&              aMode                                       =   Manager::DefaultMode() ) ;
+    const BulletinA* accessBulletinAAt(const Instant& anInstant) const;
 
-        bool                    isLocalRepositoryLocked                     ( ) const ;
+    const Finals2000A* accessFinals2000AAt(const Instant& anInstant) const;
 
-        File                    getLocalRepositoryLockFile                  ( ) const ;
+    File getLatestBulletinAFile() const;
 
-        const BulletinA*        accessBulletinAAt                           (   const   Instant&                    anInstant                                   ) const ;
+    File getLatestFinals2000AFile() const;
 
-        const Finals2000A*      accessFinals2000AAt                         (   const   Instant&                    anInstant                                   ) const ;
+    void setup();
 
-        File                    getLatestBulletinAFile                      ( ) const ;
+    void loadBulletinA_(const BulletinA& aBulletinA);
 
-        File                    getLatestFinals2000AFile                    ( ) const ;
+    void loadFinals2000A_(const Finals2000A& aFinals2000A);
 
-        void                    setup                                       ( ) ;
+    File fetchLatestBulletinA_();
 
-        void                    loadBulletinA_                              (   const   BulletinA&                  aBulletinA                                  ) ;
+    File fetchLatestFinals2000A_();
 
-        void                    loadFinals2000A_                            (   const   Finals2000A&                aFinals2000A                                ) ;
+    void lockLocalRepository(const Duration& aTimeout);
 
-        File                    fetchLatestBulletinA_                       ( ) ;
+    void unlockLocalRepository();
+};
 
-        File                    fetchLatestFinals2000A_                     ( ) ;
-
-        void                    lockLocalRepository                         (   const   Duration&                   aTimeout                                    ) ;
-
-        void                    unlockLocalRepository                       ( ) ;
-
-} ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-}
-}
-}
-}
-}
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}  // namespace iers
+}  // namespace provider
+}  // namespace frame
+}  // namespace coord
+}  // namespace physics
+}  // namespace ostk
 
 #endif
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

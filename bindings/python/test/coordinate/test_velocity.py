@@ -1,19 +1,10 @@
-################################################################################################################################################################
-
-# @project        Open Space Toolkit ▸ Physics
-# @file           bindings/python/test/coordinate/test_velocity.py
-# @author         Remy Derollez <remy@loftorbital.com>
-# @license        Apache License 2.0
-
-################################################################################################################################################################
+# Apache License 2.0
 
 import pytest
 import numpy as np
 
 from ostk.core.types import String
 import ostk.physics as physics
-
-################################################################################################################################################################
 
 Scale = physics.time.Scale
 DateTime = physics.time.DateTime
@@ -22,10 +13,8 @@ Frame = physics.coordinate.Frame
 Velocity = physics.coordinate.Velocity
 Unit = Velocity.Unit
 
-################################################################################################################################################################
 
-def test_coordinate_position_constructors ():
-
+def test_coordinate_position_constructors():
     # Construct arbitrary frame
     frame: Frame = Frame.GCRF()
     unit: Unit = Unit.MeterPerSecond
@@ -71,10 +60,8 @@ def test_coordinate_position_constructors ():
     assert isinstance(velocity, Velocity)
     assert velocity.is_defined() is False
 
-################################################################################################################################################################
 
-def test_coordinate_velocity_comparators ():
-
+def test_coordinate_velocity_comparators():
     frame: Frame = Frame.GCRF()
     unit: Unit = Unit.MeterPerSecond
     vector_1 = [1000.0, 0.0, 0.0]
@@ -87,10 +74,8 @@ def test_coordinate_velocity_comparators ():
     assert velocity_2 == velocity_2
     assert velocity_1 != velocity_2
 
-################################################################################################################################################################
 
-def test_coordinate_velocity_is_defined ():
-
+def test_coordinate_velocity_is_defined():
     frame: Frame = Frame.GCRF()
     unit: Unit = Unit.MeterPerSecond
     vector = [1000.0, 0.0, 0.0]
@@ -99,10 +84,8 @@ def test_coordinate_velocity_is_defined ():
     assert velocity.is_defined()
     assert Velocity.undefined().is_defined() is False
 
-################################################################################################################################################################
 
-def test_coordinate_velocity_access_frame ():
-
+def test_coordinate_velocity_access_frame():
     frame: Frame = Frame.GCRF()
     unit: Unit = Unit.MeterPerSecond
     vector = [1000.0, 0.0, 0.0]
@@ -115,10 +98,8 @@ def test_coordinate_velocity_access_frame ():
     assert isinstance(ans_frame, Frame)
     assert ans_frame == frame
 
-################################################################################################################################################################
 
-def test_coordinate_velocity_get_coordinates ():
-
+def test_coordinate_velocity_get_coordinates():
     frame: Frame = Frame.GCRF()
     unit: Unit = Unit.MeterPerSecond
     vector = [1000.0, 0.0, 0.0]
@@ -131,10 +112,8 @@ def test_coordinate_velocity_get_coordinates ():
     assert isinstance(coordinates, np.ndarray)
     assert np.array_equal(coordinates, vector)
 
-################################################################################################################################################################
 
-def test_coordinate_velocity_get_unit ():
-
+def test_coordinate_velocity_get_unit():
     frame: Frame = Frame.GCRF()
     unit: Unit = Unit.MeterPerSecond
     vector = [1000.0, 0.0, 0.0]
@@ -147,10 +126,8 @@ def test_coordinate_velocity_get_unit ():
     assert isinstance(ans_unit, Unit)
     assert ans_unit == unit
 
-################################################################################################################################################################
 
-def test_coordinate_velocity_in_unit ():
-
+def test_coordinate_velocity_in_unit():
     frame: Frame = Frame.GCRF()
     unit: Unit = Unit.MeterPerSecond
     vector = [1000.0, 0.0, 0.0]
@@ -163,11 +140,9 @@ def test_coordinate_velocity_in_unit ():
     assert isinstance(new_velocity, Velocity)
     assert new_velocity == velocity
 
-################################################################################################################################################################
 
 @pytest.mark.skip
-def test_coordinate_velocity_in_frame ():
-
+def test_coordinate_velocity_in_frame():
     frame: Frame = Frame.GCRF()
     unit: Unit = Unit.MeterPerSecond
     vector = [1000.0, 0.0, 0.0]
@@ -182,10 +157,8 @@ def test_coordinate_velocity_in_frame ():
     assert isinstance(new_velocity, Velocity)
     assert new_velocity == velocity
 
-################################################################################################################################################################
 
-def test_coordinate_velocity_to_string ():
-
+def test_coordinate_velocity_to_string():
     frame: Frame = Frame.GCRF()
     unit: Unit = Unit.MeterPerSecond
     vector = [1000.0, 0.0, 0.0]
@@ -196,16 +169,12 @@ def test_coordinate_velocity_to_string ():
 
     assert string is not None
     assert isinstance(string, String)
-    assert string == '[1000.0, 0.0, 0.0] [m/s] @ GCRF'
+    assert string == "[1000.0, 0.0, 0.0] [m/s] @ GCRF"
 
-################################################################################################################################################################
 
-def test_coordinate_velocity_string_from_unit ():
-
+def test_coordinate_velocity_string_from_unit():
     string: String = Velocity.string_from_unit(Unit.MeterPerSecond)
 
     assert string is not None
     assert isinstance(string, String)
-    assert string == 'm/s'
-
-################################################################################################################################################################
+    assert string == "m/s"

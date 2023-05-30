@@ -1,24 +1,14 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/// @project        Open Space Toolkit ▸ Physics
-/// @file           bindings/python/src/OpenSpaceToolkitPhysicsPy/Environment/Magnetic/Dipole.cpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>
-/// @license        Apache License 2.0
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Apache License 2.0
 
 #include <OpenSpaceToolkit/Physics/Environment/Magnetic/Dipole.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-inline void                     OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Dipole (        pybind11::module&    aModule                                     )
+inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Dipole(pybind11::module& aModule)
 {
+    using namespace pybind11;
 
-    using namespace pybind11 ;
+    using ostk::math::obj::Vector3d;
 
-    using ostk::math::obj::Vector3d ;
-
-    using ostk::physics::environment::magnetic::Dipole ;
+    using ostk::physics::environment::magnetic::Dipole;
 
     class_<Dipole>(aModule, "Dipole")
 
@@ -26,8 +16,5 @@ inline void                     OpenSpaceToolkitPhysicsPy_Environment_Magnetic_D
 
         .def("get_field_value_at", &Dipole::getFieldValueAt)
 
-    ;
-
+        ;
 }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

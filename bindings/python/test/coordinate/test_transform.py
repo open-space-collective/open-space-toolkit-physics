@@ -1,11 +1,4 @@
-################################################################################################################################################################
-
-# @project        Open Space Toolkit ▸ Physics
-# @file           bindings/python/test/coordinate/test_transform.py
-# @author         Remy Derollez <remy@loftorbital.com>
-# @license        Apache License 2.0
-
-################################################################################################################################################################
+# Apache License 2.0
 
 import pytest
 import numpy as np
@@ -15,8 +8,6 @@ import ostk.physics as physics
 
 import ostk.mathematics as mathematics
 
-################################################################################################################################################################
-
 Scale = physics.time.Scale
 DateTime = physics.time.DateTime
 Instant = physics.time.Instant
@@ -24,10 +15,8 @@ Quaternion = mathematics.geometry.d3.transformations.rotations.Quaternion
 Transform = physics.coordinate.Transform
 Type = Transform.Type
 
-################################################################################################################################################################
 
-def test_coordinate_transform_type ():
-
+def test_coordinate_transform_type():
     enum_members = Type.__members__
 
     list_keys = ["Undefined", "Active", "Passive"]
@@ -36,10 +25,8 @@ def test_coordinate_transform_type ():
     assert list(enum_members.keys()) == list_keys
     assert list(enum_members.values()) == list_values
 
-################################################################################################################################################################
 
-def test_coordinate_transform_constructors ():
-
+def test_coordinate_transform_constructors():
     # Construct arbitrary Instant
     instant: Instant = Instant.date_time(DateTime(2020, 1, 1, 0, 0, 0), Scale.UTC)
 
@@ -54,7 +41,9 @@ def test_coordinate_transform_constructors ():
     velocity = [0.01, 0.0, 0.0]
     angular_velocity = [0.01, 0.01, 0.01]
 
-    transform: Transform = Transform(instant, translation, velocity, quaternion, angular_velocity, transform_type)
+    transform: Transform = Transform(
+        instant, translation, velocity, quaternion, angular_velocity, transform_type
+    )
 
     assert transform is not None
     assert isinstance(transform, Transform)
@@ -64,7 +53,9 @@ def test_coordinate_transform_constructors ():
     velocity = (0.01, 0.0, 0.0)
     angular_velocity = (0.01, 0.01, 0.01)
 
-    transform: Transform = Transform(instant, translation, velocity, quaternion, angular_velocity, transform_type)
+    transform: Transform = Transform(
+        instant, translation, velocity, quaternion, angular_velocity, transform_type
+    )
 
     assert transform is not None
     assert isinstance(transform, Transform)
@@ -74,7 +65,9 @@ def test_coordinate_transform_constructors ():
     velocity = np.array(velocity)
     angular_velocity = np.array(angular_velocity)
 
-    transform: Transform = Transform(instant, translation, velocity, quaternion, angular_velocity, transform_type)
+    transform: Transform = Transform(
+        instant, translation, velocity, quaternion, angular_velocity, transform_type
+    )
 
     assert transform is not None
     assert isinstance(transform, Transform)
@@ -88,22 +81,24 @@ def test_coordinate_transform_constructors ():
 
     # Construct using active static constructor
 
-    transform: Transform = Transform.active(instant, translation, velocity, quaternion, angular_velocity)
+    transform: Transform = Transform.active(
+        instant, translation, velocity, quaternion, angular_velocity
+    )
 
     assert transform is not None
     assert isinstance(transform, Transform)
 
     # Construct using passive static constructor
 
-    transform: Transform = Transform.passive(instant, translation, velocity, quaternion, angular_velocity)
+    transform: Transform = Transform.passive(
+        instant, translation, velocity, quaternion, angular_velocity
+    )
 
     assert transform is not None
     assert isinstance(transform, Transform)
 
-################################################################################################################################################################
 
-def test_coordinate_transform_comparators ():
-
+def test_coordinate_transform_comparators():
     # Construct arbitrary Instant
     instant: Instant = Instant.date_time(DateTime(2020, 1, 1, 0, 0, 0), Scale.UTC)
 
@@ -119,17 +114,19 @@ def test_coordinate_transform_comparators ():
     velocity = [0.01, 0.0, 0.0]
     angular_velocity = [0.01, 0.01, 0.01]
 
-    transform_1: Transform = Transform(instant, translation_1, velocity, quaternion, angular_velocity, transform_type)
-    transform_2: Transform = Transform(instant, translation_2, velocity, quaternion, angular_velocity, transform_type)
+    transform_1: Transform = Transform(
+        instant, translation_1, velocity, quaternion, angular_velocity, transform_type
+    )
+    transform_2: Transform = Transform(
+        instant, translation_2, velocity, quaternion, angular_velocity, transform_type
+    )
 
     assert transform_1 == transform_1
     assert transform_2 == transform_2
     assert transform_1 != transform_2
 
-################################################################################################################################################################
 
-def test_coordinate_transform_operators ():
-
+def test_coordinate_transform_operators():
     # Construct arbitrary Instant
     instant: Instant = Instant.date_time(DateTime(2020, 1, 1, 0, 0, 0), Scale.UTC)
 
@@ -144,7 +141,9 @@ def test_coordinate_transform_operators ():
     velocity = [0.01, 0.0, 0.0]
     angular_velocity = [0.01, 0.01, 0.01]
 
-    transform: Transform = Transform(instant, translation, velocity, quaternion, angular_velocity, transform_type)
+    transform: Transform = Transform(
+        instant, translation, velocity, quaternion, angular_velocity, transform_type
+    )
 
     mul_transform = transform * transform
 
@@ -158,10 +157,8 @@ def test_coordinate_transform_operators ():
     assert isinstance(transform, Transform)
     assert transform.is_defined()
 
-################################################################################################################################################################
 
-def test_coordinate_transform_is_defined ():
-
+def test_coordinate_transform_is_defined():
     # Construct arbitrary Instant
     instant: Instant = Instant.date_time(DateTime(2020, 1, 1, 0, 0, 0), Scale.UTC)
 
@@ -176,15 +173,15 @@ def test_coordinate_transform_is_defined ():
     velocity = [0.01, 0.0, 0.0]
     angular_velocity = [0.01, 0.01, 0.01]
 
-    transform: Transform = Transform(instant, translation, velocity, quaternion, angular_velocity, transform_type)
+    transform: Transform = Transform(
+        instant, translation, velocity, quaternion, angular_velocity, transform_type
+    )
 
     assert transform.is_defined()
     assert transform.undefined().is_defined() is False
 
-################################################################################################################################################################
 
-def test_coordinate_transform_is_identity ():
-
+def test_coordinate_transform_is_identity():
     # Construct arbitrary Instant
     instant: Instant = Instant.date_time(DateTime(2020, 1, 1, 0, 0, 0), Scale.UTC)
 
@@ -199,34 +196,33 @@ def test_coordinate_transform_is_identity ():
     velocity = [0.00, 0.0, 0.0]
     angular_velocity = [0.00, 0.00, 0.00]
 
-    transform: Transform = Transform(instant, translation, velocity, quaternion, angular_velocity, transform_type)
+    transform: Transform = Transform(
+        instant, translation, velocity, quaternion, angular_velocity, transform_type
+    )
 
     assert transform.is_defined()
     assert transform.is_identity()
     assert transform.identity(instant).is_identity()
 
-################################################################################################################################################################
 
 # def test_coordinate_transform_accesses ():
 
-    # access_instant
+# access_instant
 
 
-    # access_translation
+# access_translation
 
 
-    # access_velocity
+# access_velocity
 
 
-    # access_orientation
+# access_orientation
 
 
-    # access_angular_velocity
+# access_angular_velocity
 
-################################################################################################################################################################
 
-def test_coordinate_transform_getters ():
-
+def test_coordinate_transform_getters():
     # Construct arbitrary Instant
     instant: Instant = Instant.date_time(DateTime(2020, 1, 1, 0, 0, 0), Scale.UTC)
 
@@ -241,7 +237,9 @@ def test_coordinate_transform_getters ():
     velocity = [0.01, 0.0, 0.0]
     angular_velocity = [0.01, 0.01, 0.01]
 
-    transform: Transform = Transform(instant, translation, velocity, quaternion, angular_velocity, transform_type)
+    transform: Transform = Transform(
+        instant, translation, velocity, quaternion, angular_velocity, transform_type
+    )
 
     # get_instant
     ans_instant: Instant = transform.get_instant()
@@ -284,7 +282,6 @@ def test_coordinate_transform_getters ():
     assert inverse is not None
     assert isinstance(inverse, Transform)
 
-################################################################################################################################################################
 
 # def test_coordinate_transform_apply_to_position ():
 
@@ -295,5 +292,3 @@ def test_coordinate_transform_getters ():
 # ################################################################################################################################################################
 
 # def test_coordinate_transform_apply_to_vector ():
-
-################################################################################################################################################################

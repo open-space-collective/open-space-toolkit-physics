@@ -1,23 +1,14 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/// @project        Open Space Toolkit ▸ Physics
-/// @file           OpenSpaceToolkit/Physics/Time/DateTime.hpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>
-/// @license        Apache License 2.0
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Apache License 2.0
 
 #ifndef __OpenSpaceToolkit_Physics_Time_DateTime__
 #define __OpenSpaceToolkit_Physics_Time_DateTime__
 
+#include <OpenSpaceToolkit/Core/Types/Integer.hpp>
+#include <OpenSpaceToolkit/Core/Types/Real.hpp>
+#include <OpenSpaceToolkit/Core/Types/String.hpp>
+
 #include <OpenSpaceToolkit/Physics/Time/Date.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Time.hpp>
-
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
-#include <OpenSpaceToolkit/Core/Types/Integer.hpp>
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 namespace ostk
 {
@@ -26,276 +17,265 @@ namespace physics
 namespace time
 {
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+using ostk::core::types::Real;
+using ostk::core::types::String;
+using ostk::physics::time::Date;
+using ostk::physics::time::Time;
 
-using ostk::core::types::Real ;
-using ostk::core::types::String ;
-using ostk::physics::time::Date ;
-using ostk::physics::time::Time ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-#define                         DEFAULT_HOUR                                    0
-#define                         DEFAULT_MINUTE                                  0
-#define                         DEFAULT_SECOND                                  0
-#define                         DEFAULT_MILLISECOND                             0
-#define                         DEFAULT_MICROSECOND                             0
-#define                         DEFAULT_NANOSECOND                              0
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#define DEFAULT_HOUR 0
+#define DEFAULT_MINUTE 0
+#define DEFAULT_SECOND 0
+#define DEFAULT_MILLISECOND 0
+#define DEFAULT_MICROSECOND 0
+#define DEFAULT_NANOSECOND 0
 
 /// @brief                      Date-time
 
 class DateTime
 {
+   public:
+    /// @brief              Date-time format
 
-    public:
+    enum class Format
+    {
 
-        /// @brief              Date-time format
+        Undefined,  ///< Undefined format
+        Standard,   ///< Standard format (YYYY:MM:DD hh:mm:ss.sss.sss.sss)
+        ISO8601,    ///< ISO 8601 format (YYYY:MM:DDThh:mm:ss.sssssssss)
+        STK         ///< STK format (d Mon YYYY hh:mm:ss.sssssssss)
 
-        enum class Format
-        {
+    };
 
-            Undefined,          ///< Undefined format
-            Standard,           ///< Standard format (YYYY:MM:DD hh:mm:ss.sss.sss.sss)
-            ISO8601,            ///< ISO 8601 format (YYYY:MM:DDThh:mm:ss.sssssssss)
-            STK                 ///< STK format (d Mon YYYY hh:mm:ss.sssssssss)
+    /// @brief              Constructor
+    ///
+    /// @code
+    ///                     DateTime dateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456, 789)) ; // 2018-01-02
+    ///                     12:34:56.123.456.789
+    /// @endcode
+    ///
+    /// @param              [in] aDate A date
+    /// @param              [in] aTime A time
 
-        } ;
+    DateTime(const Date& aDate, const Time& aTime);
 
-        /// @brief              Constructor
-        ///
-        /// @code
-        ///                     DateTime dateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456, 789)) ; // 2018-01-02 12:34:56.123.456.789
-        /// @endcode
-        ///
-        /// @param              [in] aDate A date
-        /// @param              [in] aTime A time
+    /// @brief              Constructor
+    ///
+    /// @code
+    ///                     DateTime dateTime(2018, 1, 2) ; // 2018-01-02 00:00:00.000.000.000
+    ///                     DateTime dateTime(2018, 1, 2, 12, 34, 56) ; // 2018-01-02 12:34:56.000.000.000
+    ///                     DateTime dateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789) ; // 2018-01-02
+    ///                     12:34:56.123.456.789
+    /// @endcode
+    ///
+    /// @param              [in] aYear aYear A year
+    /// @param              [in] aMonth aMonth A month (1 - 12)
+    /// @param              [in] aDay aDay A day (1 - 31)
+    /// @param              [in] (optional) anHour An hour (0 - 23)
+    /// @param              [in] (optional) aMinute A minute (0 - 59)
+    /// @param              [in] (optional) aSecond A second (0 - 60)
+    /// @param              [in] (optional) aMillisecond A millisecond (0 - 999)
+    /// @param              [in] (optional) aMicrosecond A microsecond (0 - 999)
+    /// @param              [in] (optional) aNanosecond A nanosecond (0 - 999)
 
-                                DateTime                                    (   const   Date&                       aDate,
-                                                                                const   Time&                       aTime                                       ) ;
+    DateTime(
+        Uint16 aYear,
+        Uint8 aMonth,
+        Uint8 aDay,
+        Uint8 anHour = DEFAULT_HOUR,
+        Uint8 aMinute = DEFAULT_MINUTE,
+        Uint8 aSecond = DEFAULT_SECOND,
+        Uint16 aMillisecond = DEFAULT_MILLISECOND,
+        Uint16 aMicrosecond = DEFAULT_MICROSECOND,
+        Uint16 aNanosecond = DEFAULT_NANOSECOND
+    );
 
-        /// @brief              Constructor
-        ///
-        /// @code
-        ///                     DateTime dateTime(2018, 1, 2) ; // 2018-01-02 00:00:00.000.000.000
-        ///                     DateTime dateTime(2018, 1, 2, 12, 34, 56) ; // 2018-01-02 12:34:56.000.000.000
-        ///                     DateTime dateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789) ; // 2018-01-02 12:34:56.123.456.789
-        /// @endcode
-        ///
-        /// @param              [in] aYear aYear A year
-        /// @param              [in] aMonth aMonth A month (1 - 12)
-        /// @param              [in] aDay aDay A day (1 - 31)
-        /// @param              [in] (optional) anHour An hour (0 - 23)
-        /// @param              [in] (optional) aMinute A minute (0 - 59)
-        /// @param              [in] (optional) aSecond A second (0 - 60)
-        /// @param              [in] (optional) aMillisecond A millisecond (0 - 999)
-        /// @param              [in] (optional) aMicrosecond A microsecond (0 - 999)
-        /// @param              [in] (optional) aNanosecond A nanosecond (0 - 999)
+    /// @brief              Equal to operator
+    ///
+    /// @code
+    ///                     DateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456, 789)) == DateTime(Date(2018, 1, 2),
+    ///                     Time(12, 34, 56, 123, 456, 789)) ; // True
+    /// @endcode
+    ///
+    /// @param              [in] aDateTime A date-time
+    /// @return             True if date-times are equal
 
-                                DateTime                                    (           Uint16                      aYear,
-                                                                                        Uint8                       aMonth,
-                                                                                        Uint8                       aDay,
-                                                                                        Uint8                       anHour                                      =   DEFAULT_HOUR,
-                                                                                        Uint8                       aMinute                                     =   DEFAULT_MINUTE,
-                                                                                        Uint8                       aSecond                                     =   DEFAULT_SECOND,
-                                                                                        Uint16                      aMillisecond                                =   DEFAULT_MILLISECOND,
-                                                                                        Uint16                      aMicrosecond                                =   DEFAULT_MICROSECOND,
-                                                                                        Uint16                      aNanosecond                                 =   DEFAULT_NANOSECOND ) ;
+    bool operator==(const DateTime& aDateTime) const;
 
-        /// @brief              Equal to operator
-        ///
-        /// @code
-        ///                     DateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456, 789)) == DateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456, 789)) ; // True
-        /// @endcode
-        ///
-        /// @param              [in] aDateTime A date-time
-        /// @return             True if date-times are equal
+    /// @brief              Not equal to operator
+    ///
+    /// @code
+    ///                     DateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456, 789)) != DateTime(Date(2018, 1, 3),
+    ///                     Time(12, 34, 56, 123, 456, 789)) ; // True
+    /// @endcode
+    ///
+    /// @param              [in] aDateTime A date-time
+    /// @return             True if date-times are not equal
 
-        bool                    operator ==                                 (   const   DateTime&                   aDateTime                                   ) const ;
+    bool operator!=(const DateTime& aDateTime) const;
 
-        /// @brief              Not equal to operator
-        ///
-        /// @code
-        ///                     DateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456, 789)) != DateTime(Date(2018, 1, 3), Time(12, 34, 56, 123, 456, 789)) ; // True
-        /// @endcode
-        ///
-        /// @param              [in] aDateTime A date-time
-        /// @return             True if date-times are not equal
+    /// @brief              Output stream operator
+    ///
+    /// @code
+    ///                     std::cout << DateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456, 789)) ;
+    /// @endcode
+    ///
+    /// @param              [in] anOutputStream An output stream
+    /// @param              [in] aDateTime A date-time
+    /// @return             A reference to output stream
 
-        bool                    operator !=                                 (   const   DateTime&                   aDateTime                                   ) const ;
+    friend std::ostream& operator<<(std::ostream& anOutputStream, const DateTime& aDateTime);
 
-        /// @brief              Output stream operator
-        ///
-        /// @code
-        ///                     std::cout << DateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456, 789)) ;
-        /// @endcode
-        ///
-        /// @param              [in] anOutputStream An output stream
-        /// @param              [in] aDateTime A date-time
-        /// @return             A reference to output stream
+    /// @brief              Check if date-time is defined
+    ///
+    /// @code
+    ///                     DateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456, 789)).isDefined() ; // True
+    /// @endcode
+    ///
+    /// @return             True if date-time is defined
 
-        friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
-                                                                                const   DateTime&                   aDateTime                                   ) ;
+    bool isDefined() const;
 
-        /// @brief              Check if date-time is defined
-        ///
-        /// @code
-        ///                     DateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456, 789)).isDefined() ; // True
-        /// @endcode
-        ///
-        /// @return             True if date-time is defined
+    /// @brief              Get reference to date
+    ///
+    /// @return             Reference to date
 
-        bool                    isDefined                                   ( ) const ;
+    const Date& accessDate() const;
 
-        /// @brief              Get reference to date
-        ///
-        /// @return             Reference to date
+    /// @brief              Get reference to time
+    ///
+    /// @return             Reference to time
 
-        const Date&             accessDate                                  ( ) const ;
+    const Time& accessTime() const;
 
-        /// @brief              Get reference to time
-        ///
-        /// @return             Reference to time
+    /// @brief              Get date
+    ///
+    /// @return             Date
 
-        const Time&             accessTime                                  ( ) const ;
+    Date getDate() const;
 
-        /// @brief              Get date
-        ///
-        /// @return             Date
+    /// @brief              Get time
+    ///
+    /// @return             Time
 
-        Date                    getDate                                     ( ) const ;
+    Time getTime() const;
 
-        /// @brief              Get time
-        ///
-        /// @return             Time
+    /// @brief              Get Julian Date
+    ///
+    /// @code
+    ///                     DateTime(AAA).getJulianDate() ; // XXX.X
+    /// @endcode
+    ///
+    /// @return             Julian Date
 
-        Time                    getTime                                     ( ) const ;
+    Real getJulianDate() const;
 
-        /// @brief              Get Julian Date
-        ///
-        /// @code
-        ///                     DateTime(AAA).getJulianDate() ; // XXX.X
-        /// @endcode
-        ///
-        /// @return             Julian Date
+    /// @brief              Get Modified Julian Date
+    ///
+    /// @code
+    ///                     DateTime(AAA).getModifiedJulianDate() ; // XXX.X
+    /// @endcode
+    ///
+    /// @return             Modified Julian Date
 
-        Real                    getJulianDate                               ( ) const ;
+    Real getModifiedJulianDate() const;
 
-        /// @brief              Get Modified Julian Date
-        ///
-        /// @code
-        ///                     DateTime(AAA).getModifiedJulianDate() ; // XXX.X
-        /// @endcode
-        ///
-        /// @return             Modified Julian Date
+    /// @brief              Get string representation of date-time
+    ///
+    /// @code
+    ///                     DateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456,
+    ///                     789)).toString(DateTime::Format::Standard) ; // 2018-01-02 12:34:56.123.456.789
+    ///                     DateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456,
+    ///                     789)).toString(DateTime::Format::ISO8601) ; // 2018-01-02T12:34:56.123.456.789
+    /// @endcode
+    ///
+    /// @return             Serialized date-time
 
-        Real                    getModifiedJulianDate                       ( ) const ;
+    String toString(const DateTime::Format& aFormat = DateTime::Format::Standard) const;
 
-        /// @brief              Get string representation of date-time
-        ///
-        /// @code
-        ///                     DateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456, 789)).toString(DateTime::Format::Standard) ; // 2018-01-02 12:34:56.123.456.789
-        ///                     DateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456, 789)).toString(DateTime::Format::ISO8601) ; // 2018-01-02T12:34:56.123.456.789
-        /// @endcode
-        ///
-        /// @return             Serialized date-time
+    /// @brief              Constructs an undefined date-time
+    ///
+    /// @code
+    ///                     DateTime dateTime = DateTime::Undefined() ;
+    ///                     dateTime.isDefined() ; // False
+    /// @endcode
+    ///
+    /// @return             Undefined date-time
 
-        String                  toString                                    (   const   DateTime::Format&           aFormat                                     =   DateTime::Format::Standard ) const ;
+    static DateTime Undefined();
 
-        /// @brief              Constructs an undefined date-time
-        ///
-        /// @code
-        ///                     DateTime dateTime = DateTime::Undefined() ;
-        ///                     dateTime.isDefined() ; // False
-        /// @endcode
-        ///
-        /// @return             Undefined date-time
+    /// @brief              J2000 epoch (2000-01-01 12:00:00.000.000.00)
+    ///
+    /// @ref                https://en.wikipedia.org/wiki/Epoch_(astronomy)#Julian_years_and_J2000
+    ///
+    /// @return             Date-time at J2000 epoch
 
-        static DateTime         Undefined                                   ( ) ;
+    static DateTime J2000();
 
-        /// @brief              J2000 epoch (2000-01-01 12:00:00.000.000.00)
-        ///
-        /// @ref                https://en.wikipedia.org/wiki/Epoch_(astronomy)#Julian_years_and_J2000
-        ///
-        /// @return             Date-time at J2000 epoch
+    /// @brief              GPS epoch (1980-01-06 00:00:00.000.000.000)
+    ///
+    /// @ref                http://tycho.usno.navy.mil/gpstt.html
+    ///
+    /// @return             Date-time at GPS epoch
 
-        static DateTime         J2000                                       ( ) ;
+    static DateTime GPSEpoch();
 
-        /// @brief              GPS epoch (1980-01-06 00:00:00.000.000.000)
-        ///
-        /// @ref                http://tycho.usno.navy.mil/gpstt.html
-        ///
-        /// @return             Date-time at GPS epoch
+    /// @brief              Unix epoch (1970-01-01 00:00:00.000.000.000)
+    ///
+    /// @ref                https://en.wikipedia.org/wiki/Unix_time
+    ///
+    /// @return             Date-time at Unix epoch
 
-        static DateTime         GPSEpoch                                    ( ) ;
+    static DateTime UnixEpoch();
 
-        /// @brief              Unix epoch (1970-01-01 00:00:00.000.000.000)
-        ///
-        /// @ref                https://en.wikipedia.org/wiki/Unix_time
-        ///
-        /// @return             Date-time at Unix epoch
+    /// @brief              Modified Julian Date epoch (1858-11-17 00:00:00.000.000.000)
+    ///
+    /// @ref                https://en.wikipedia.org/wiki/Julian_day
+    ///
+    /// @return             Date-time
 
-        static DateTime         UnixEpoch                                   ( ) ;
+    static DateTime ModifiedJulianDateEpoch();
 
-        /// @brief              Modified Julian Date epoch (1858-11-17 00:00:00.000.000.000)
-        ///
-        /// @ref                https://en.wikipedia.org/wiki/Julian_day
-        ///
-        /// @return             Date-time
+    /// @brief              Date-time from Julian Date
+    ///
+    /// @ref                https://en.wikipedia.org/wiki/Julian_day
+    ///
+    /// @input              [in] aJulianDate A Julian Date
+    /// @return             Date-time
 
-        static DateTime         ModifiedJulianDateEpoch                     ( ) ;
+    static DateTime JulianDate(const Real& aJulianDate);
 
-        /// @brief              Date-time from Julian Date
-        ///
-        /// @ref                https://en.wikipedia.org/wiki/Julian_day
-        ///
-        /// @input              [in] aJulianDate A Julian Date
-        /// @return             Date-time
+    /// @brief              Date-time from Modified Julian Date
+    ///
+    /// @ref                https://en.wikipedia.org/wiki/Julian_day
+    ///
+    /// @input              [in] aModifiedJulianDate A Modified Julian Date
+    /// @return             Date-time
 
-        static DateTime         JulianDate                                  (   const   Real&                       aJulianDate                                 ) ;
+    static DateTime ModifiedJulianDate(const Real& aModifiedJulianDate);
 
-        /// @brief              Date-time from Modified Julian Date
-        ///
-        /// @ref                https://en.wikipedia.org/wiki/Julian_day
-        ///
-        /// @input              [in] aModifiedJulianDate A Modified Julian Date
-        /// @return             Date-time
+    /// @brief              Constructs a date-time from a string representation
+    ///
+    /// @code
+    ///                     DateTime dateTime = DateTime::Parse("2018-01-02 12:34:56.123.456.789") ; // 2018-01-02
+    /// @endcode
+    ///
+    /// @param              [in] aString A string
+    /// @param              [in] (optional) aFormat A date-time format (automatic detection if Undefined)
+    /// @return             Date-time
 
-        static DateTime         ModifiedJulianDate                          (   const   Real&                       aModifiedJulianDate                         ) ;
+    static DateTime Parse(const String& aString, const DateTime::Format& aFormat = DateTime::Format::Undefined);
 
-        /// @brief              Constructs a date-time from a string representation
-        ///
-        /// @code
-        ///                     DateTime dateTime = DateTime::Parse("2018-01-02 12:34:56.123.456.789") ; // 2018-01-02
-        /// @endcode
-        ///
-        /// @param              [in] aString A string
-        /// @param              [in] (optional) aFormat A date-time format (automatic detection if Undefined)
-        /// @return             Date-time
+   private:
+    Date date_;
+    Time time_;
 
-        static DateTime         Parse                                       (   const   String&                     aString,
-                                                                                const   DateTime::Format&           aFormat                                     =   DateTime::Format::Undefined ) ;
+    static Real ModifiedJulianDateFromJulianDate(const Real& aJulianDate);
 
-    private:
+    static Real JulianDateFromModifiedJulianDate(const Real& aModifiedJulianDate);
+};
 
-        Date                    date_ ;
-        Time                    time_ ;
-
-        static Real             ModifiedJulianDateFromJulianDate            (   const   Real&                       aJulianDate                                 ) ;
-
-        static Real             JulianDateFromModifiedJulianDate            (   const   Real&                       aModifiedJulianDate                         ) ;
-
-} ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-}
-}
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}  // namespace time
+}  // namespace physics
+}  // namespace ostk
 
 #endif
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
