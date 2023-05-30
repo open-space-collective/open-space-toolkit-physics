@@ -15,5 +15,3 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic(pybind11::module& aMo
     OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Dipole(magnetic);
     OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth(magnetic);
 }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

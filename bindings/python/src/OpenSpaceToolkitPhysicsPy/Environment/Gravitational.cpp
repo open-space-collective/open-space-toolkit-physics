@@ -19,5 +19,3 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational(pybind11::module
     OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Moon(gravitational);
     OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(gravitational);
 }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

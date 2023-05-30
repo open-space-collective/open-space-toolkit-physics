@@ -153,5 +153,3 @@ inline void OpenSpaceToolkitPhysicsPy_Units_Derived_Angle(pybind11::module& aMod
     implicitly_convertible<ostk::physics::units::Angle, ostk::math::geom::Angle>();
     implicitly_convertible<ostk::math::geom::Angle, ostk::physics::units::Angle>();
 }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

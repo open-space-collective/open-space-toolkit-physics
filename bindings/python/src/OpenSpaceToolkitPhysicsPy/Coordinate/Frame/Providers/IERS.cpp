@@ -17,5 +17,3 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers_IERS(pybind11::
     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers_IERS_BulletinA(iers);
     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers_IERS_Finals2000A(iers);
 }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

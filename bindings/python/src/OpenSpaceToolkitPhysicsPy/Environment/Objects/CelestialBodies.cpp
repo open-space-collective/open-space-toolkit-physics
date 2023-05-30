@@ -17,5 +17,3 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies(pybind
     OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Moon(celestial_bodies);
     OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Sun(celestial_bodies);
 }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

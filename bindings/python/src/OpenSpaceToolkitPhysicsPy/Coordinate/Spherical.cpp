@@ -15,5 +15,3 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical(pybind11::module& aMo
     OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(spherical);
     OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_AER(spherical);
 }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

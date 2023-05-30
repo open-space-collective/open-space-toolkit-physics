@@ -92,5 +92,3 @@ inline void OpenSpaceToolkitPhysicsPy_Time_DateTime(pybind11::module& aModule)
     // The following parsing function requires DateTime::Format to be binded for proper declaration
     datetime_class.def_static("parse", &DateTime::Parse, arg("string"), arg("format") = DateTime::Format::Undefined);
 }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

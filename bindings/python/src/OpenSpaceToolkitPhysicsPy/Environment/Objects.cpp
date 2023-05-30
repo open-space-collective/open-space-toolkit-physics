@@ -15,5 +15,3 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Objects(pybind11::module& aMod
     OpenSpaceToolkitPhysicsPy_Environment_Objects_Celestial(objects);
     OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies(objects);
 }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
