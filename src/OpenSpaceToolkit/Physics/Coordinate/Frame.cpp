@@ -329,7 +329,8 @@ Shared<const Frame> Frame::TOD(const Instant& anEpoch, const iau::Theory& aTheor
 {
     using Scale = ostk::physics::time::Scale;
 
-    const String frameName = String::Format("TOD @ {}", anEpoch.toString(Scale::TT), iau::StringFromTheory(aTheory));
+    const String frameName =
+        String::Format("TOD ({}) @ {}", iau::StringFromTheory(aTheory), anEpoch.toString(Scale::TT));
 
     using TODProvider = ostk::physics::coord::frame::provider::TOD;
 

@@ -20,7 +20,8 @@ namespace frame
 namespace provider
 {
 
-using ostk::physics::units::Angle;
+namespace iau = ostk::physics::coord::frame::providers::iau;
+
 using ostk::physics::time::Instant;
 using ostk::physics::coord::frame::Provider;
 using ostk::physics::coord::Transform;

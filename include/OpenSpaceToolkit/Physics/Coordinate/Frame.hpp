@@ -84,8 +84,6 @@ class Frame : public std::enable_shared_from_this<Frame>
 
     static Shared<const Frame> Undefined();
 
-    static Shared<const Frame> ICRF();
-
     static Shared<const Frame> GCRF();
 
     static Shared<const Frame> J2000(const iau::Theory& aTheory);
