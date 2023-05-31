@@ -1,12 +1,12 @@
 \hypertarget{_environment_2_gravitational_2_earth_2_manager_8hpp}{}\doxysection{include/\+Open\+Space\+Toolkit/\+Physics/\+Environment/\+Gravitational/\+Earth/\+Manager.hpp File Reference}
 \label{_environment_2_gravitational_2_earth_2_manager_8hpp}\index{include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp@{include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp}}
-{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Environment/\+Gravitational/\+Earth.\+hpp$>$}\newline
-{\ttfamily \#include $<$Open\+Space\+Toolkit/\+I\+O/\+U\+R\+L.\+hpp$>$}\newline
+{\ttfamily \#include $<$mutex$>$}\newline
 {\ttfamily \#include $<$Open\+Space\+Toolkit/\+Core/\+File\+System/\+Directory.\+hpp$>$}\newline
 {\ttfamily \#include $<$Open\+Space\+Toolkit/\+Core/\+File\+System/\+File.\+hpp$>$}\newline
 {\ttfamily \#include $<$Open\+Space\+Toolkit/\+Core/\+File\+System/\+Path.\+hpp$>$}\newline
 {\ttfamily \#include $<$Open\+Space\+Toolkit/\+Core/\+Types/\+String.\+hpp$>$}\newline
-{\ttfamily \#include $<$mutex$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+I\+O/\+U\+R\+L.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Environment/\+Gravitational/\+Earth.\+hpp$>$}\newline
 \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
@@ -16,7 +16,7 @@ class \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1e
 \begin{DoxyCompactItemize}
 \item 
  \mbox{\hyperlink{namespaceostk}{ostk}}
-\item 
+\begin{DoxyCompactList}\small\item\em Apache License 2.\+0. \end{DoxyCompactList}\item 
  \mbox{\hyperlink{namespaceostk_1_1physics}{ostk\+::physics}}
 \item 
  \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment}{ostk\+::physics\+::environment}}
@@ -29,7 +29,7 @@ class \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1e
 \begin{DoxyCompactItemize}
 \item 
 \#define \mbox{\hyperlink{_environment_2_gravitational_2_earth_2_manager_8hpp_a14f2d1ecb0f1473d5a0daa945fa280f8}{O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+G\+R\+A\+V\+I\+T\+A\+T\+I\+O\+N\+A\+L\+\_\+\+E\+A\+R\+T\+H\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+E\+N\+A\+B\+L\+ED}}~true
-\item 
+\begin{DoxyCompactList}\small\item\em Apache License 2.\+0. \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{_environment_2_gravitational_2_earth_2_manager_8hpp_a3e91bfc068af91ffee46c1f24805fcc6}{O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+G\+R\+A\+V\+I\+T\+A\+T\+I\+O\+N\+A\+L\+\_\+\+E\+A\+R\+T\+H\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+RY}}~\char`\"{}./.open-\/space-\/toolkit/physics/environment/gravitational/earth\char`\"{}
 \item 
 \#define \mbox{\hyperlink{_environment_2_gravitational_2_earth_2_manager_8hpp_a287cedd286d9a4dd54e1d54b381fbba2}{O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+G\+R\+A\+V\+I\+T\+A\+T\+I\+O\+N\+A\+L\+\_\+\+E\+A\+R\+T\+H\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+R\+E\+M\+O\+T\+E\+\_\+\+U\+RL}}~\char`\"{}https\+://sourceforge.\+net/projects/geographiclib/files/gravity-\/distrib/\char`\"{}
@@ -41,20 +41,16 @@ using \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1gravitational_
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
-@project Open Space Toolkit ▸ Physics
-
-\begin{DoxyAuthor}{Author}
-Lucas Brémond \href{mailto:lucas@loftorbital.com}{\texttt{ lucas@loftorbital.\+com}} @license Apache License 2.\+0 
-\end{DoxyAuthor}
-
-
 \doxysubsection{Macro Definition Documentation}
 \mbox{\Hypertarget{_environment_2_gravitational_2_earth_2_manager_8hpp_a14f2d1ecb0f1473d5a0daa945fa280f8}\label{_environment_2_gravitational_2_earth_2_manager_8hpp_a14f2d1ecb0f1473d5a0daa945fa280f8}} 
 \index{Manager.hpp@{Manager.hpp}!OSTK\_PHYSICS\_ENVIRONMENT\_GRAVITATIONAL\_EARTH\_MANAGER\_ENABLED@{OSTK\_PHYSICS\_ENVIRONMENT\_GRAVITATIONAL\_EARTH\_MANAGER\_ENABLED}}
 \index{OSTK\_PHYSICS\_ENVIRONMENT\_GRAVITATIONAL\_EARTH\_MANAGER\_ENABLED@{OSTK\_PHYSICS\_ENVIRONMENT\_GRAVITATIONAL\_EARTH\_MANAGER\_ENABLED}!Manager.hpp@{Manager.hpp}}
 \doxysubsubsection{\texorpdfstring{OSTK\_PHYSICS\_ENVIRONMENT\_GRAVITATIONAL\_EARTH\_MANAGER\_ENABLED}{OSTK\_PHYSICS\_ENVIRONMENT\_GRAVITATIONAL\_EARTH\_MANAGER\_ENABLED}}
 {\footnotesize\ttfamily \#define O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+G\+R\+A\+V\+I\+T\+A\+T\+I\+O\+N\+A\+L\+\_\+\+E\+A\+R\+T\+H\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+E\+N\+A\+B\+L\+ED~true}
+
+
+
+Apache License 2.\+0. 
 
 \mbox{\Hypertarget{_environment_2_gravitational_2_earth_2_manager_8hpp_a3e91bfc068af91ffee46c1f24805fcc6}\label{_environment_2_gravitational_2_earth_2_manager_8hpp_a3e91bfc068af91ffee46c1f24805fcc6}} 
 \index{Manager.hpp@{Manager.hpp}!OSTK\_PHYSICS\_ENVIRONMENT\_GRAVITATIONAL\_EARTH\_MANAGER\_LOCAL\_REPOSITORY@{OSTK\_PHYSICS\_ENVIRONMENT\_GRAVITATIONAL\_EARTH\_MANAGER\_LOCAL\_REPOSITORY}}

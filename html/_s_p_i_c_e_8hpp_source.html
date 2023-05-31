@@ -85,122 +85,110 @@ $(document).ready(function(){initNavTree('_s_p_i_c_e_8hpp_source.html',''); init
 </div><!--header-->
 <div class="contents">
 <a href="_s_p_i_c_e_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#ifndef __OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE__</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#define __OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE__</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#ifndef __OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE__</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#define __OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE__</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;OpenSpaceToolkit/Core/Types/Shared.hpp&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;OpenSpaceToolkit/Core/Types/String.hpp&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_frame_8hpp.html">OpenSpaceToolkit/Physics/Coordinate/Frame.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_ephemeris_8hpp.html">OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_instant_8hpp.html">OpenSpaceToolkit/Physics/Time/Instant.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_ephemeris_8hpp.html">OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_frame_8hpp.html">OpenSpaceToolkit/Physics/Coordinate/Frame.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_instant_8hpp.html">OpenSpaceToolkit/Physics/Time/Instant.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;OpenSpaceToolkit/Core/Types/String.hpp&gt;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;OpenSpaceToolkit/Core/Types/Shared.hpp&gt;</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceostk.html">ostk</a></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span>physics</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">namespace </span>env</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">namespace </span>ephem</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceostk.html">ostk</a></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">namespace </span>physics</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">namespace </span>env</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">namespace </span>ephem</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;{</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">using</span> ostk::core::types::Shared;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">using</span> ostk::core::types::String;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">using</span> <a class="code" href="classostk_1_1physics_1_1time_1_1_instant.html">ostk::physics::time::Instant</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">using</span> <a class="code" href="classostk_1_1physics_1_1coord_1_1_frame.html">ostk::physics::coord::Frame</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">using</span> <a class="code" href="classostk_1_1physics_1_1env_1_1_ephemeris.html">ostk::physics::env::Ephemeris</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">using</span> ostk::core::types::Shared ;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">using</span> ostk::core::types::String ;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">using</span> <a class="code" href="classostk_1_1physics_1_1time_1_1_instant.html">ostk::physics::time::Instant</a> ;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">using</span> <a class="code" href="classostk_1_1physics_1_1coord_1_1_frame.html">ostk::physics::coord::Frame</a> ;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">using</span> <a class="code" href="classostk_1_1physics_1_1env_1_1_ephemeris.html">ostk::physics::env::Ephemeris</a> ;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html">   46</a></span>&#160;<span class="keyword">class </span><a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html">SPICE</a> : <span class="keyword">public</span> <a class="code" href="classostk_1_1physics_1_1env_1_1_ephemeris.html">Ephemeris</a></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;{</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html">   33</a></span>&#160;<span class="keyword">class </span><a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html">SPICE</a> : <span class="keyword">public</span> <a class="code" href="classostk_1_1physics_1_1env_1_1_ephemeris.html">Ephemeris</a></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1f">   38</a></span>&#160;    <span class="keyword">enum class</span> <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1f">Object</a></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1faec0fc0100c4fc1ce4eea230c3dc10360">Undefined</a>,</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1faef6572e4cd58bb39a3f4e82fc64fe9f0">Sun</a>,</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1fa34dae487e31f37aa74633258b7774d4f">Mercury</a>,</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1fa0bdc508a17811a3a860d32749ad44e4b">Venus</a>,</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1fa5cdd21c97f86686cc505e02fd32a7523">Earth</a>,</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1fad502a50ed945d5fca74e0105575b5b34">Moon</a>,</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1fa671f028142280b556a85ffdd90e0a43d">Mars</a>,</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1fa89c5c30498c2989611f9044be006197c">Jupiter</a>,</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1fa233ea1805dab5120a0ecc49b71a48063">Saturn</a>,</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1fa76b840d32f33267ad812507b47e3a1b5">Uranus</a>,</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1faf8d3b65d8479a31ebf67cb18dd0a4641">Neptune</a></div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1f">   53</a></span>&#160;        <span class="keyword">enum class</span> <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1f">Object</a></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1faec0fc0100c4fc1ce4eea230c3dc10360">Undefined</a>,</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1faef6572e4cd58bb39a3f4e82fc64fe9f0">Sun</a>,</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1fa34dae487e31f37aa74633258b7774d4f">Mercury</a>,</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1fa0bdc508a17811a3a860d32749ad44e4b">Venus</a>,</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1fa5cdd21c97f86686cc505e02fd32a7523">Earth</a>,</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1fad502a50ed945d5fca74e0105575b5b34">Moon</a>,</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1fa671f028142280b556a85ffdd90e0a43d">Mars</a>,</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1fa89c5c30498c2989611f9044be006197c">Jupiter</a>,</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1fa233ea1805dab5120a0ecc49b71a48063">Saturn</a>,</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1fa76b840d32f33267ad812507b47e3a1b5">Uranus</a>,</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1faf8d3b65d8479a31ebf67cb18dd0a4641">Neptune</a></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        } ;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                                <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#a47224d4625f6574ed2b9681f7bfa9c31">SPICE</a>                                       (   <span class="keyword">const</span>   <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1f">SPICE::Object</a>&amp;              anObject                                    ) ;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keyword">virtual</span>                 <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#abd2e7f60841f6600b4bca015dd50df3d">~SPICE</a>                                      ( ) <span class="keyword">override</span> ;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keyword">virtual</span> <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html">SPICE</a>*          <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#af9155765c2546bd8707b56ed86f77c2d">clone</a>                                       ( ) <span class="keyword">const override</span> ;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    };</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#a47224d4625f6574ed2b9681f7bfa9c31">SPICE</a>(<span class="keyword">const</span> <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1f">SPICE::Object</a>&amp; anObject);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#abd2e7f60841f6600b4bca015dd50df3d">~SPICE</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html">SPICE</a>* <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#af9155765c2546bd8707b56ed86f77c2d">clone</a>() <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#a2e5350a46c5efe938998b760ee783f77">isDefined</a>() <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keyword">virtual</span> Shared&lt;const Frame&gt; <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#abf9dee32d47dbb1308af0c9783c84854">accessFrame</a>() <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keyword">static</span> String <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#a97570f88c117786553614fc42d1ac5ff">StringFromObject</a>(<span class="keyword">const</span> <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1f">SPICE::Object</a>&amp; anObject);</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">bool</span>            <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#a2e5350a46c5efe938998b760ee783f77">isDefined</a>                                   ( ) <span class="keyword">const override</span> ;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keyword">virtual</span> Shared&lt;const Frame&gt; <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#abf9dee32d47dbb1308af0c9783c84854">accessFrame</a>                             ( ) <span class="keyword">const override</span> ;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keyword">static</span> String           <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#a97570f88c117786553614fc42d1ac5ff">StringFromObject</a>                            (   <span class="keyword">const</span>   <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1f">SPICE::Object</a>&amp;              anObject                                    ) ;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1f">SPICE::Object</a>           object_ ;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;} ;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;}</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;}</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;}</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1f">SPICE::Object</a> object_;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;};</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}  <span class="comment">// namespace ephem</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}  <span class="comment">// namespace env</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;}  <span class="comment">// namespace physics</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}  <span class="comment">// namespace ostk</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e_html_ae84db78d858cdd0a1dc3ff53090f4a1faef6572e4cd58bb39a3f4e82fc64fe9f0"><div class="ttname"><a href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1faef6572e4cd58bb39a3f4e82fc64fe9f0">ostk::physics::env::ephem::SPICE::Object::Sun</a></div><div class="ttdeci">@ Sun</div></div>
-<div class="ttc" id="aclassostk_1_1physics_1_1env_1_1_ephemeris_html"><div class="ttname"><a href="classostk_1_1physics_1_1env_1_1_ephemeris.html">ostk::physics::env::Ephemeris</a></div><div class="ttdoc">https://en.wikipedia.org/wiki/Fundamental_ephemeris</div><div class="ttdef"><b>Definition:</b> Ephemeris.hpp:40</div></div>
-<div class="ttc" id="aclassostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e_html_a47224d4625f6574ed2b9681f7bfa9c31"><div class="ttname"><a href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#a47224d4625f6574ed2b9681f7bfa9c31">ostk::physics::env::ephem::SPICE::SPICE</a></div><div class="ttdeci">SPICE(const SPICE::Object &amp;anObject)</div><div class="ttdoc">Constructor.</div><div class="ttdef"><b>Definition:</b> SPICE.cpp:30</div></div>
+<div class="ttc" id="aclassostk_1_1physics_1_1env_1_1_ephemeris_html"><div class="ttname"><a href="classostk_1_1physics_1_1env_1_1_ephemeris.html">ostk::physics::env::Ephemeris</a></div><div class="ttdoc">https://en.wikipedia.org/wiki/Fundamental_ephemeris</div><div class="ttdef"><b>Definition:</b> Ephemeris.hpp:27</div></div>
+<div class="ttc" id="aclassostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e_html_a47224d4625f6574ed2b9681f7bfa9c31"><div class="ttname"><a href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#a47224d4625f6574ed2b9681f7bfa9c31">ostk::physics::env::ephem::SPICE::SPICE</a></div><div class="ttdeci">SPICE(const SPICE::Object &amp;anObject)</div><div class="ttdoc">Constructor.</div><div class="ttdef"><b>Definition:</b> SPICE.cpp:19</div></div>
 <div class="ttc" id="aclassostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e_html_ae84db78d858cdd0a1dc3ff53090f4a1fa233ea1805dab5120a0ecc49b71a48063"><div class="ttname"><a href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1fa233ea1805dab5120a0ecc49b71a48063">ostk::physics::env::ephem::SPICE::Object::Saturn</a></div><div class="ttdeci">@ Saturn</div></div>
-<div class="ttc" id="aclassostk_1_1physics_1_1time_1_1_instant_html"><div class="ttname"><a href="classostk_1_1physics_1_1time_1_1_instant.html">ostk::physics::time::Instant</a></div><div class="ttdoc">Point in time.</div><div class="ttdef"><b>Definition:</b> Instant.hpp:55</div></div>
+<div class="ttc" id="aclassostk_1_1physics_1_1time_1_1_instant_html"><div class="ttname"><a href="classostk_1_1physics_1_1time_1_1_instant.html">ostk::physics::time::Instant</a></div><div class="ttdoc">Point in time.</div><div class="ttdef"><b>Definition:</b> Instant.hpp:40</div></div>
 <div class="ttc" id="aclassostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e_html_ae84db78d858cdd0a1dc3ff53090f4a1fa34dae487e31f37aa74633258b7774d4f"><div class="ttname"><a href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1fa34dae487e31f37aa74633258b7774d4f">ostk::physics::env::ephem::SPICE::Object::Mercury</a></div><div class="ttdeci">@ Mercury</div></div>
 <div class="ttc" id="aclassostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e_html_ae84db78d858cdd0a1dc3ff53090f4a1fa89c5c30498c2989611f9044be006197c"><div class="ttname"><a href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1fa89c5c30498c2989611f9044be006197c">ostk::physics::env::ephem::SPICE::Object::Jupiter</a></div><div class="ttdeci">@ Jupiter</div></div>
-<div class="ttc" id="aclassostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e_html_ae84db78d858cdd0a1dc3ff53090f4a1f"><div class="ttname"><a href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1f">ostk::physics::env::ephem::SPICE::Object</a></div><div class="ttdeci">Object</div><div class="ttdoc">SPICE object.</div><div class="ttdef"><b>Definition:</b> SPICE.hpp:53</div></div>
-<div class="ttc" id="aclassostk_1_1physics_1_1coord_1_1_frame_html"><div class="ttname"><a href="classostk_1_1physics_1_1coord_1_1_frame.html">ostk::physics::coord::Frame</a></div><div class="ttdoc">Reference frame.</div><div class="ttdef"><b>Definition:</b> Frame.hpp:62</div></div>
-<div class="ttc" id="anamespaceostk_html"><div class="ttname"><a href="namespaceostk.html">ostk</a></div><div class="ttdef"><b>Definition:</b> Axes.hpp:21</div></div>
+<div class="ttc" id="aclassostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e_html_ae84db78d858cdd0a1dc3ff53090f4a1f"><div class="ttname"><a href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1f">ostk::physics::env::ephem::SPICE::Object</a></div><div class="ttdeci">Object</div><div class="ttdoc">SPICE object.</div><div class="ttdef"><b>Definition:</b> SPICE.hpp:38</div></div>
+<div class="ttc" id="aclassostk_1_1physics_1_1coord_1_1_frame_html"><div class="ttname"><a href="classostk_1_1physics_1_1coord_1_1_frame.html">ostk::physics::coord::Frame</a></div><div class="ttdoc">Reference frame.</div><div class="ttdef"><b>Definition:</b> Frame.hpp:50</div></div>
+<div class="ttc" id="anamespaceostk_html"><div class="ttname"><a href="namespaceostk.html">ostk</a></div><div class="ttdoc">Apache License 2.0.</div><div class="ttdef"><b>Definition:</b> Axes.hpp:12</div></div>
 <div class="ttc" id="a_frame_8hpp_html"><div class="ttname"><a href="_frame_8hpp.html">Frame.hpp</a></div></div>
 <div class="ttc" id="aclassostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e_html_ae84db78d858cdd0a1dc3ff53090f4a1fad502a50ed945d5fca74e0105575b5b34"><div class="ttname"><a href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1fad502a50ed945d5fca74e0105575b5b34">ostk::physics::env::ephem::SPICE::Object::Moon</a></div><div class="ttdeci">@ Moon</div></div>
 <div class="ttc" id="a_ephemeris_8hpp_html"><div class="ttname"><a href="_ephemeris_8hpp.html">Ephemeris.hpp</a></div></div>
 <div class="ttc" id="aclassostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e_html_ae84db78d858cdd0a1dc3ff53090f4a1faec0fc0100c4fc1ce4eea230c3dc10360"><div class="ttname"><a href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1faec0fc0100c4fc1ce4eea230c3dc10360">ostk::physics::env::ephem::SPICE::Object::Undefined</a></div><div class="ttdeci">@ Undefined</div></div>
 <div class="ttc" id="aclassostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e_html_ae84db78d858cdd0a1dc3ff53090f4a1fa671f028142280b556a85ffdd90e0a43d"><div class="ttname"><a href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1fa671f028142280b556a85ffdd90e0a43d">ostk::physics::env::ephem::SPICE::Object::Mars</a></div><div class="ttdeci">@ Mars</div></div>
-<div class="ttc" id="aclassostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e_html_a2e5350a46c5efe938998b760ee783f77"><div class="ttname"><a href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#a2e5350a46c5efe938998b760ee783f77">ostk::physics::env::ephem::SPICE::isDefined</a></div><div class="ttdeci">virtual bool isDefined() const override</div><div class="ttdoc">Returns true if SPICE is defined.</div><div class="ttdef"><b>Definition:</b> SPICE.cpp:46</div></div>
+<div class="ttc" id="aclassostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e_html_a2e5350a46c5efe938998b760ee783f77"><div class="ttname"><a href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#a2e5350a46c5efe938998b760ee783f77">ostk::physics::env::ephem::SPICE::isDefined</a></div><div class="ttdeci">virtual bool isDefined() const override</div><div class="ttdoc">Returns true if SPICE is defined.</div><div class="ttdef"><b>Definition:</b> SPICE.cpp:31</div></div>
 <div class="ttc" id="a_instant_8hpp_html"><div class="ttname"><a href="_instant_8hpp.html">Instant.hpp</a></div></div>
-<div class="ttc" id="aclassostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e_html_abd2e7f60841f6600b4bca015dd50df3d"><div class="ttname"><a href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#abd2e7f60841f6600b4bca015dd50df3d">ostk::physics::env::ephem::SPICE::~SPICE</a></div><div class="ttdeci">virtual ~SPICE() override</div><div class="ttdoc">Destructor.</div><div class="ttdef"><b>Definition:</b> SPICE.cpp:36</div></div>
+<div class="ttc" id="aclassostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e_html_abd2e7f60841f6600b4bca015dd50df3d"><div class="ttname"><a href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#abd2e7f60841f6600b4bca015dd50df3d">ostk::physics::env::ephem::SPICE::~SPICE</a></div><div class="ttdeci">virtual ~SPICE() override</div><div class="ttdoc">Destructor.</div><div class="ttdef"><b>Definition:</b> SPICE.cpp:24</div></div>
 <div class="ttc" id="aclassostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e_html_ae84db78d858cdd0a1dc3ff53090f4a1faf8d3b65d8479a31ebf67cb18dd0a4641"><div class="ttname"><a href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1faf8d3b65d8479a31ebf67cb18dd0a4641">ostk::physics::env::ephem::SPICE::Object::Neptune</a></div><div class="ttdeci">@ Neptune</div></div>
 <div class="ttc" id="aclassostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e_html_ae84db78d858cdd0a1dc3ff53090f4a1fa5cdd21c97f86686cc505e02fd32a7523"><div class="ttname"><a href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1fa5cdd21c97f86686cc505e02fd32a7523">ostk::physics::env::ephem::SPICE::Object::Earth</a></div><div class="ttdeci">@ Earth</div></div>
-<div class="ttc" id="aclassostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e_html_af9155765c2546bd8707b56ed86f77c2d"><div class="ttname"><a href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#af9155765c2546bd8707b56ed86f77c2d">ostk::physics::env::ephem::SPICE::clone</a></div><div class="ttdeci">virtual SPICE * clone() const override</div><div class="ttdoc">Clone.</div><div class="ttdef"><b>Definition:</b> SPICE.cpp:41</div></div>
-<div class="ttc" id="aclassostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e_html_a97570f88c117786553614fc42d1ac5ff"><div class="ttname"><a href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#a97570f88c117786553614fc42d1ac5ff">ostk::physics::env::ephem::SPICE::StringFromObject</a></div><div class="ttdeci">static String StringFromObject(const SPICE::Object &amp;anObject)</div><div class="ttdoc">Convert SPICE object to string.</div><div class="ttdef"><b>Definition:</b> SPICE.cpp:60</div></div>
+<div class="ttc" id="aclassostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e_html_af9155765c2546bd8707b56ed86f77c2d"><div class="ttname"><a href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#af9155765c2546bd8707b56ed86f77c2d">ostk::physics::env::ephem::SPICE::clone</a></div><div class="ttdeci">virtual SPICE * clone() const override</div><div class="ttdoc">Clone.</div><div class="ttdef"><b>Definition:</b> SPICE.cpp:26</div></div>
+<div class="ttc" id="aclassostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e_html_a97570f88c117786553614fc42d1ac5ff"><div class="ttname"><a href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#a97570f88c117786553614fc42d1ac5ff">ostk::physics::env::ephem::SPICE::StringFromObject</a></div><div class="ttdeci">static String StringFromObject(const SPICE::Object &amp;anObject)</div><div class="ttdoc">Convert SPICE object to string.</div><div class="ttdef"><b>Definition:</b> SPICE.cpp:43</div></div>
 <div class="ttc" id="aclassostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e_html_ae84db78d858cdd0a1dc3ff53090f4a1fa0bdc508a17811a3a860d32749ad44e4b"><div class="ttname"><a href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1fa0bdc508a17811a3a860d32749ad44e4b">ostk::physics::env::ephem::SPICE::Object::Venus</a></div><div class="ttdeci">@ Venus</div></div>
-<div class="ttc" id="aclassostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e_html_abf9dee32d47dbb1308af0c9783c84854"><div class="ttname"><a href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#abf9dee32d47dbb1308af0c9783c84854">ostk::physics::env::ephem::SPICE::accessFrame</a></div><div class="ttdeci">virtual Shared&lt; const Frame &gt; accessFrame() const override</div><div class="ttdoc">Access frame of SPICE object.</div><div class="ttdef"><b>Definition:</b> SPICE.cpp:51</div></div>
+<div class="ttc" id="aclassostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e_html_abf9dee32d47dbb1308af0c9783c84854"><div class="ttname"><a href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#abf9dee32d47dbb1308af0c9783c84854">ostk::physics::env::ephem::SPICE::accessFrame</a></div><div class="ttdeci">virtual Shared&lt; const Frame &gt; accessFrame() const override</div><div class="ttdoc">Access frame of SPICE object.</div><div class="ttdef"><b>Definition:</b> SPICE.cpp:36</div></div>
 <div class="ttc" id="aclassostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e_html_ae84db78d858cdd0a1dc3ff53090f4a1fa76b840d32f33267ad812507b47e3a1b5"><div class="ttname"><a href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1fa76b840d32f33267ad812507b47e3a1b5">ostk::physics::env::ephem::SPICE::Object::Uranus</a></div><div class="ttdeci">@ Uranus</div></div>
-<div class="ttc" id="aclassostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e_html"><div class="ttname"><a href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html">ostk::physics::env::ephem::SPICE</a></div><div class="ttdoc">SPICE Toolkit ephemeris.</div><div class="ttdef"><b>Definition:</b> SPICE.hpp:46</div></div>
+<div class="ttc" id="aclassostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e_html"><div class="ttname"><a href="classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html">ostk::physics::env::ephem::SPICE</a></div><div class="ttdoc">SPICE Toolkit ephemeris.</div><div class="ttdef"><b>Definition:</b> SPICE.hpp:33</div></div>
 <!-- HTML footer for doxygen 1.8.7-->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

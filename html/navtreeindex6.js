@@ -1,6 +1,5 @@
 var NAVTREEINDEX6 =
 {
-"structostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction.html#a9e58b755cd9f257e79313f3d72d63109":[4,0,0,0,0,0,0,0,0,1,2],
 "structostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction.html#acf3ab00ef756fa94b951a4cb77a6332d":[4,0,0,0,0,0,0,0,0,1,6],
 "structostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction.html#afbc940dafef779a0d29603782aa93d36":[4,0,0,0,0,0,0,0,0,1,3],
 "structostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data.html":[4,0,0,0,0,0,0,0,2,0],

@@ -105,7 +105,8 @@ Constructs instant from date-\/time.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_a132c1e4b2fe9a9a671109206e297bd5d}{Instant}} instant = \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{Instant::DateTime}}(\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{DateTime}}(2000, 1, 1, 12, 0, 0), \mbox{\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b}{Scale::TT}}) ; \textcolor{comment}{// 2000-\/01-\/01 12:00:00 [TT]}}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_a132c1e4b2fe9a9a671109206e297bd5d}{Instant}} instant = \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{Instant::DateTime}}(\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{DateTime}}(2000, 1, 1, 12, 0, 0), \mbox{\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b}{Scale::TT}}) ; \textcolor{comment}{//}}
+\DoxyCodeLine{2000-\/01-\/01 12:00:00 [\mbox{\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b}{TT}}]}
 \end{DoxyCode}
 
 
@@ -281,7 +282,8 @@ True if instant is post-\/epoch
 
 Constructs instant at J2000 epoch. 
 
-\begin{DoxyVerb}                The currently-used standard epoch "J2000" is defined by international agreement to be equivalent to:
+\begin{DoxyVerb}                The currently-used standard epoch "J2000" is defined by international agreement to be
+                equivalent to:
                 - The Gregorian date January 1, 2000 at 12:00 TT (Terrestrial Time).
                 - The Julian date 2451545.0 TT (Terrestrial Time).
                 - January 1, 2000, 11:59:27.816 TAI (International Atomic Time).
@@ -327,7 +329,8 @@ Constructs instant from Modified Julian \mbox{\hyperlink{classostk_1_1physics_1_
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_a132c1e4b2fe9a9a671109206e297bd5d}{Instant}} instant = \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_af515c6d0547e40a337efb865a71c2558}{Instant::ModifiedJulianDate}}(51544.0, \mbox{\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b}{Scale::TT}}) ; \textcolor{comment}{// 2000-\/01-\/01 12:00:00 [TT]}}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_a132c1e4b2fe9a9a671109206e297bd5d}{Instant}} instant = \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_af515c6d0547e40a337efb865a71c2558}{Instant::ModifiedJulianDate}}(51544.0, \mbox{\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b}{Scale::TT}}) ; \textcolor{comment}{// 2000-\/01-\/01 12:00:00}}
+\DoxyCodeLine{[\mbox{\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b}{TT}}]}
 \end{DoxyCode}
 
 
@@ -367,7 +370,8 @@ Not equal to operator.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{Instant::DateTime}}(\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{DateTime}}(2018, 1, 2, 0, 0, 0), \mbox{\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b}{Scale::TT}}) != \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{Instant::DateTime}}(\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{DateTime}}(2018, 1, 1, 0, 0, 0), \mbox{\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b}{Scale::TT}}) ; \textcolor{comment}{// True}}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{Instant::DateTime}}(\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{DateTime}}(2018, 1, 2, 0, 0, 0), \mbox{\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b}{Scale::TT}}) !=}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{Instant::DateTime}}(\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{DateTime}}(2018, 1, 1, 0, 0, 0), \mbox{\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b}{Scale::TT}}) ; \textcolor{comment}{// True}}
 \end{DoxyCode}
 
 
@@ -391,7 +395,8 @@ Addition operator.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{Instant::DateTime}}(\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{DateTime}}(2018, 1, 1, 0, 0, 0), \mbox{\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b}{Scale::TT}}) + \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_duration_aefb4abc87c6957d00650228d069fa1e1}{Duration::Days}}(1.0) ; \textcolor{comment}{// 2018-\/01-\/02 00:00:00}}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{Instant::DateTime}}(\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{DateTime}}(2018, 1, 1, 0, 0, 0), \mbox{\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b}{Scale::TT}}) + \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_duration_aefb4abc87c6957d00650228d069fa1e1}{Duration::Days}}(1.0) ; \textcolor{comment}{//}}
+\DoxyCodeLine{2018-\/01-\/02 00:00:00}
 \end{DoxyCode}
 
 
@@ -440,7 +445,8 @@ Subtraction operator.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{Instant::DateTime}}(\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{DateTime}}(2018, 1, 2, 0, 0, 0), \mbox{\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b}{Scale::TT}}) -\/ \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_duration_aefb4abc87c6957d00650228d069fa1e1}{Duration::Days}}(1.0) ; \textcolor{comment}{// 2018-\/01-\/01 00:00:00}}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{Instant::DateTime}}(\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{DateTime}}(2018, 1, 2, 0, 0, 0), \mbox{\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b}{Scale::TT}}) -\/ \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_duration_aefb4abc87c6957d00650228d069fa1e1}{Duration::Days}}(1.0) ; \textcolor{comment}{//}}
+\DoxyCodeLine{2018-\/01-\/01 00:00:00}
 \end{DoxyCode}
 
 
@@ -464,7 +470,8 @@ Subtraction operator.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{Instant::DateTime}}(\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{DateTime}}(2018, 1, 2, 0, 0, 0), \mbox{\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b}{Scale::TT}}) -\/ \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{Instant::DateTime}}(\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{DateTime}}(2018, 1, 1, 0, 0, 0), \mbox{\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b}{Scale::TT}}) ; \textcolor{comment}{// 1.0 [day]}}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{Instant::DateTime}}(\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{DateTime}}(2018, 1, 2, 0, 0, 0), \mbox{\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b}{Scale::TT}}) -\/}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{Instant::DateTime}}(\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{DateTime}}(2018, 1, 1, 0, 0, 0), \mbox{\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b}{Scale::TT}}) ; \textcolor{comment}{// 1.0 [day]}}
 \end{DoxyCode}
 
 
@@ -513,7 +520,8 @@ Less than operator.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{Instant::DateTime}}(\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{DateTime}}(2018, 1, 1, 0, 0, 0), \mbox{\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b}{Scale::TT}}) < \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{Instant::DateTime}}(\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{DateTime}}(2018, 1, 2, 0, 0, 0), \mbox{\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b}{Scale::TT}}) ; \textcolor{comment}{// True}}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{Instant::DateTime}}(\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{DateTime}}(2018, 1, 1, 0, 0, 0), \mbox{\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b}{Scale::TT}}) <}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{Instant::DateTime}}(\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{DateTime}}(2018, 1, 2, 0, 0, 0), \mbox{\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b}{Scale::TT}}) ; \textcolor{comment}{// True}}
 \end{DoxyCode}
 
 
@@ -537,7 +545,8 @@ Less than or equal to operator.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{Instant::DateTime}}(\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{DateTime}}(2018, 1, 1, 0, 0, 0), \mbox{\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b}{Scale::TT}}) <= \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{Instant::DateTime}}(\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{DateTime}}(2018, 1, 2, 0, 0, 0), \mbox{\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b}{Scale::TT}}) ; \textcolor{comment}{// True}}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{Instant::DateTime}}(\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{DateTime}}(2018, 1, 1, 0, 0, 0), \mbox{\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b}{Scale::TT}}) <=}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{Instant::DateTime}}(\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{DateTime}}(2018, 1, 2, 0, 0, 0), \mbox{\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b}{Scale::TT}}) ; \textcolor{comment}{// True}}
 \end{DoxyCode}
 
 
@@ -561,7 +570,8 @@ Equal to operator.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{Instant::DateTime}}(\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{DateTime}}(2018, 1, 2, 0, 0, 0), \mbox{\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b}{Scale::TT}}) == \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{Instant::DateTime}}(\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{DateTime}}(2018, 1, 2, 0, 0, 0), \mbox{\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b}{Scale::TT}}) ; \textcolor{comment}{// True}}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{Instant::DateTime}}(\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{DateTime}}(2018, 1, 2, 0, 0, 0), \mbox{\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b}{Scale::TT}}) ==}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{Instant::DateTime}}(\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{DateTime}}(2018, 1, 2, 0, 0, 0), \mbox{\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b}{Scale::TT}}) ; \textcolor{comment}{// True}}
 \end{DoxyCode}
 
 
@@ -585,7 +595,8 @@ Greater than operator.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{Instant::DateTime}}(\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{DateTime}}(2018, 1, 2, 0, 0, 0), \mbox{\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b}{Scale::TT}}) > \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{Instant::DateTime}}(\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{DateTime}}(2018, 1, 1, 0, 0, 0), \mbox{\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b}{Scale::TT}}) ; \textcolor{comment}{// True}}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{Instant::DateTime}}(\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{DateTime}}(2018, 1, 2, 0, 0, 0), \mbox{\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b}{Scale::TT}}) >}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{Instant::DateTime}}(\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{DateTime}}(2018, 1, 1, 0, 0, 0), \mbox{\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b}{Scale::TT}}) ; \textcolor{comment}{// True}}
 \end{DoxyCode}
 
 
@@ -609,7 +620,8 @@ Greater than operator.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{Instant::DateTime}}(\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{DateTime}}(2018, 1, 2, 0, 0, 0), \mbox{\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b}{Scale::TT}}) >= \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{Instant::DateTime}}(\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{DateTime}}(2018, 1, 1, 0, 0, 0), \mbox{\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b}{Scale::TT}}) ; \textcolor{comment}{// True}}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{Instant::DateTime}}(\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{DateTime}}(2018, 1, 2, 0, 0, 0), \mbox{\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b}{Scale::TT}}) >=}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{Instant::DateTime}}(\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant_afd5725574a02389b80fad4baff313c8a}{DateTime}}(2018, 1, 1, 0, 0, 0), \mbox{\hyperlink{namespaceostk_1_1physics_1_1time_adf23d37bd8641fb76a0e98ab46a70df7adf1f3edb9115acb0a1e04209b7a9937b}{Scale::TT}}) ; \textcolor{comment}{// True}}
 \end{DoxyCode}
 
 

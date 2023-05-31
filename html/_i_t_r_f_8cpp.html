@@ -88,20 +88,21 @@ $(document).ready(function(){initNavTree('_i_t_r_f_8cpp.html',''); initResizable
 <div class="title">ITRF.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="_bulletin_a_8hpp_source.html">OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/BulletinA.hpp</a>&gt;</code><br />
+<div class="textblock"><code>#include &lt;OpenSpaceToolkit/Core/Error.hpp&gt;</code><br />
+<code>#include &lt;OpenSpaceToolkit/Core/Types/Real.hpp&gt;</code><br />
+<code>#include &lt;OpenSpaceToolkit/Core/Utilities.hpp&gt;</code><br />
+<code>#include &lt;OpenSpaceToolkit/Mathematics/Geometry/3D/Transformations/Rotations/RotationMatrix.hpp&gt;</code><br />
+<code>#include &lt;<a class="el" href="_bulletin_a_8hpp_source.html">OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/BulletinA.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="_coordinate_2_frame_2_providers_2_i_e_r_s_2_manager_8hpp_source.html">OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Manager.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="_i_t_r_f_8hpp_source.html">OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/ITRF.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="_date_time_8hpp_source.html">OpenSpaceToolkit/Physics/Time/DateTime.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="_scale_8hpp_source.html">OpenSpaceToolkit/Physics/Time/Scale.hpp</a>&gt;</code><br />
-<code>#include &lt;OpenSpaceToolkit/Mathematics/Geometry/3D/Transformations/Rotations/RotationMatrix.hpp&gt;</code><br />
-<code>#include &lt;OpenSpaceToolkit/Core/Types/Real.hpp&gt;</code><br />
-<code>#include &lt;OpenSpaceToolkit/Core/Error.hpp&gt;</code><br />
-<code>#include &lt;OpenSpaceToolkit/Core/Utilities.hpp&gt;</code><br />
 <code>#include &lt;sofa/sofa.h&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespaceostk"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceostk.html">ostk</a></td></tr>
+<tr class="memdesc:namespaceostk"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apache License 2.0. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespaceostk_1_1physics"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceostk_1_1physics.html">ostk::physics</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -115,6 +116,7 @@ Namespaces</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:aaf777442176e851f4e522f4cf60d73d7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_t_r_f_8cpp.html#aaf777442176e851f4e522f4cf60d73d7">DAS2R</a>&#160;&#160;&#160;(4.848136811095359935899141e-6)</td></tr>
+<tr class="memdesc:aaf777442176e851f4e522f4cf60d73d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apache License 2.0.  <a href="_i_t_r_f_8cpp.html#aaf777442176e851f4e522f4cf60d73d7">More...</a><br /></td></tr>
 <tr class="separator:aaf777442176e851f4e522f4cf60d73d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
@@ -122,10 +124,7 @@ Typedefs</h2></td></tr>
 <tr class="memitem:af15130fc8f7fe288796d033a30dd8301"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_t_r_f_8cpp.html#af15130fc8f7fe288796d033a30dd8301">IersManager</a> = <a class="el" href="classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager.html">ostk::physics::coord::frame::provider::iers::Manager</a></td></tr>
 <tr class="separator:af15130fc8f7fe288796d033a30dd8301"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>@project Open Space Toolkit ▸ Physics</p>
-<dl class="section author"><dt>Author</dt><dd>Lucas Brémond <a href="#" onclick="location.href='mai'+'lto:'+'luc'+'as'+'@lo'+'ft'+'orb'+'it'+'al.'+'co'+'m'; return false;">lucas<span style="display: none;">.nosp@m.</span>@lof<span style="display: none;">.nosp@m.</span>torbi<span style="display: none;">.nosp@m.</span>tal.<span style="display: none;">.nosp@m.</span>com</a> @license Apache License 2.0 </dd></dl>
-</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="aaf777442176e851f4e522f4cf60d73d7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aaf777442176e851f4e522f4cf60d73d7">&#9670;&nbsp;</a></span>DAS2R</h2>
 
@@ -137,6 +136,8 @@ Typedefs</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Apache License 2.0. </p>
 
 </div>
 </div>

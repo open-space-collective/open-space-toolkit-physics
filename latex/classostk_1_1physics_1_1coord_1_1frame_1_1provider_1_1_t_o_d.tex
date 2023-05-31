@@ -18,7 +18,7 @@ Inheritance diagram for ostk\+::physics\+::coord\+::frame\+::provider\+::T\+OD\+
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_a457cb11c5a20ea3b575aa6c3887bd085}{T\+OD}} (const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Epoch, const \mbox{\hyperlink{classostk_1_1physics_1_1units_1_1_angle}{Angle}} \&an\+Obliquity\+Correction=\mbox{\hyperlink{classostk_1_1physics_1_1units_1_1_angle_a4454975f87e5d3532cf8b819819207e7}{Angle\+::\+Zero}}(), const \mbox{\hyperlink{classostk_1_1physics_1_1units_1_1_angle}{Angle}} \&a\+Longitude\+Correction=\mbox{\hyperlink{classostk_1_1physics_1_1units_1_1_angle_a4454975f87e5d3532cf8b819819207e7}{Angle\+::\+Zero}}())
+\mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_a0bccf6dd1fab402032e711861e3b8a0f}{T\+OD}} (const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Epoch, const \mbox{\hyperlink{namespaceostk_1_1physics_1_1coord_1_1frame_1_1providers_1_1iau_ae5e299153ae66dd034c8427dabfaff05}{iau\+::\+Theory}} \&a\+Theory)
 \item 
 virtual \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_a1e59c3f3d3d31e768deb99abb502b577}{$\sim$\+T\+OD}} () override
 \item 
@@ -28,6 +28,8 @@ virtual bool \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider
 \item 
 \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_aa57fb466a29c74c0f7e79087a7b90d91}{get\+Epoch}} () const
 \item 
+\mbox{\hyperlink{namespaceostk_1_1physics_1_1coord_1_1frame_1_1providers_1_1iau_ae5e299153ae66dd034c8427dabfaff05}{iau\+::\+Theory}} \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_a986c83cb9c96b8670345934beebaa2a7}{get\+Theory}} () const
+\item 
 virtual \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_transform}{Transform}} \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_adc74a9cba68df62bf135f5ee775bd4a1}{get\+Transform\+At}} (const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const override
 \end{DoxyCompactItemize}
 
@@ -35,21 +37,19 @@ virtual \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_transform}{Transform}
 \doxysubsection{Detailed Description}
 True of Date (\mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d}{T\+OD}}) frame provider. 
 
-\begin{DoxyVerb}                        Transformation from the Mean of Date (MOD) frame to the True of Date (TOD) frame.
-                        This algorithm uses the IAU-76/FK5 theory.
-                        Notice that one can provide corrections for the nutation in obliquity and in longitude
-                        that are usually obtained from IERS EOP Data.
+\begin{DoxyVerb}                        Form the matrix of precession-nutation for a given date (including frame bias), IAU 2006
+                        precession and IAU 2000A nutation models.
 \end{DoxyVerb}
 
 
-\href{https://en.wikipedia.org/wiki/Earth-centered_inertial}{\texttt{ https\+://en.\+wikipedia.\+org/wiki/\+Earth-\/centered\+\_\+inertial}} \href{https://github.com/JuliaSpace/SatelliteToolbox.jl/blob/master/src/transformations/fk5/fk5.jl\#L296}{\texttt{ https\+://github.\+com/\+Julia\+Space/\+Satellite\+Toolbox.\+jl/blob/master/src/transformations/fk5/fk5.\+jl\#\+L296}} 
+\href{https://en.wikipedia.org/wiki/Earth-centered_inertial}{\texttt{ https\+://en.\+wikipedia.\+org/wiki/\+Earth-\/centered\+\_\+inertial}} \href{https://www2.mpia-hd.mpg.de}{\texttt{ https\+://www2.\+mpia-\/hd.\+mpg.\+de}}/$\sim$mathar/progs/sofa\+\_\+api/group\+\_\+\+\_\+\+SF.html 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_a457cb11c5a20ea3b575aa6c3887bd085}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_a457cb11c5a20ea3b575aa6c3887bd085}} 
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_a0bccf6dd1fab402032e711861e3b8a0f}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_a0bccf6dd1fab402032e711861e3b8a0f}} 
 \index{ostk::physics::coord::frame::provider::TOD@{ostk::physics::coord::frame::provider::TOD}!TOD@{TOD}}
 \index{TOD@{TOD}!ostk::physics::coord::frame::provider::TOD@{ostk::physics::coord::frame::provider::TOD}}
 \doxysubsubsection{\texorpdfstring{TOD()}{TOD()}}
-{\footnotesize\ttfamily ostk\+::physics\+::coord\+::frame\+::provider\+::\+T\+O\+D\+::\+T\+OD (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&}]{an\+Epoch,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1units_1_1_angle}{Angle}} \&}]{an\+Obliquity\+Correction = {\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1units_1_1_angle_a4454975f87e5d3532cf8b819819207e7}{Angle\+::\+Zero}}()},  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1units_1_1_angle}{Angle}} \&}]{a\+Longitude\+Correction = {\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1units_1_1_angle_a4454975f87e5d3532cf8b819819207e7}{Angle\+::\+Zero}}()} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily ostk\+::physics\+::coord\+::frame\+::provider\+::\+T\+O\+D\+::\+T\+OD (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&}]{an\+Epoch,  }\item[{const \mbox{\hyperlink{namespaceostk_1_1physics_1_1coord_1_1frame_1_1providers_1_1iau_ae5e299153ae66dd034c8427dabfaff05}{iau\+::\+Theory}} \&}]{a\+Theory }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_a1e59c3f3d3d31e768deb99abb502b577}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_a1e59c3f3d3d31e768deb99abb502b577}} 
 \index{ostk::physics::coord::frame::provider::TOD@{ostk::physics::coord::frame::provider::TOD}!````~TOD@{$\sim$TOD}}
@@ -75,6 +75,12 @@ Implements \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_provider_
 \index{getEpoch@{getEpoch}!ostk::physics::coord::frame::provider::TOD@{ostk::physics::coord::frame::provider::TOD}}
 \doxysubsubsection{\texorpdfstring{getEpoch()}{getEpoch()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} ostk\+::physics\+::coord\+::frame\+::provider\+::\+T\+O\+D\+::get\+Epoch (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_a986c83cb9c96b8670345934beebaa2a7}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_a986c83cb9c96b8670345934beebaa2a7}} 
+\index{ostk::physics::coord::frame::provider::TOD@{ostk::physics::coord::frame::provider::TOD}!getTheory@{getTheory}}
+\index{getTheory@{getTheory}!ostk::physics::coord::frame::provider::TOD@{ostk::physics::coord::frame::provider::TOD}}
+\doxysubsubsection{\texorpdfstring{getTheory()}{getTheory()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceostk_1_1physics_1_1coord_1_1frame_1_1providers_1_1iau_ae5e299153ae66dd034c8427dabfaff05}{iau\+::\+Theory}} ostk\+::physics\+::coord\+::frame\+::provider\+::\+T\+O\+D\+::get\+Theory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 \mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_adc74a9cba68df62bf135f5ee775bd4a1}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_t_o_d_adc74a9cba68df62bf135f5ee775bd4a1}} 
 \index{ostk::physics::coord::frame::provider::TOD@{ostk::physics::coord::frame::provider::TOD}!getTransformAt@{getTransformAt}}
