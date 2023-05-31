@@ -69,7 +69,7 @@ class TestFrame:
         assert Frame.MOD(epoch=epoch) is not None
 
     def test_TOD(self, epoch: Instant):
-        assert Frame.TOD(epoch=epoch) is not None
+        assert Frame.TOD(epoch=epoch, theory=iau.Theory.IAU_2006) is not None
 
     def test_TEME(self):
         assert Frame.TEME() is not None

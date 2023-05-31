@@ -12,6 +12,7 @@
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/GCRF.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/TOD.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Derived/Angle.hpp>
 
 #include <Global.test.hpp>
@@ -26,6 +27,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_TOD, GetTransformAt)
     using ostk::core::fs::File;
 
     using ostk::math::obj::Vector3d;
+    using ostk::math::obj::Vector4d;
     using ostk::math::geom::d3::trf::rot::Quaternion;
     using ostk::math::geom::d3::trf::rot::RotationVector;
 
@@ -36,58 +38,42 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_TOD, GetTransformAt)
     using ostk::physics::coord::Frame;
     using ostk::physics::coord::frame::Transform;
     using ostk::physics::coord::frame::provider::TOD;
+    using ostk::physics::coord::frame::providers::iau::Theory;
+    using ostk::physics::env::obj::celest::Earth;
 
     {
-        // https://github.com/JuliaSpace/SatelliteToolbox.jl/blob/master/test/transformations/fk5/fk5.jl#L443
-
-        const Instant epoch = Instant::JulianDate(2453101.82815474, Scale::TT);
         const Instant instant = Instant::DateTime(DateTime(2020, 1, 1, 0, 0, 0), Scale::UTC);
 
-        const Transform transform_TOD_MOD = TOD(epoch).getTransformAt(instant);
+        const Transform transform_TOD_GCRF = TOD(instant, Theory::IAU_2000A).getTransformAt(instant);
 
-        EXPECT_EQ(instant, transform_TOD_MOD.getInstant());
+        EXPECT_EQ(instant, transform_TOD_GCRF.getInstant());
 
-        const Quaternion q_MOD_TOD = transform_TOD_MOD.getOrientation().toConjugate();
-
-        const Vector3d x_TOD = {5094.51478040, 6127.36646120, 6380.34453270};
-        const Vector3d v_TOD = {-4.7460885670, 0.7860772220, 5.5319312880};
-
-        const Vector3d x_MOD = q_MOD_TOD * x_TOD;
-        const Vector3d v_MOD = q_MOD_TOD * v_TOD;
-
-        const Vector3d x_MOD_REF = {+5094.02901670, +6127.87093630, +6380.24788850};
-        const Vector3d v_MOD_REF = {-4.7462630520, +0.7860140450, +5.5317905620};
-
-        EXPECT_GT(1e-6, (x_MOD - x_MOD_REF).norm());
-        EXPECT_GT(1e-6, (v_MOD - v_MOD_REF).norm());
+        EXPECT_EQ(Vector3d(0.0, 0.0, 0.0), transform_TOD_GCRF.getTranslation());
+        EXPECT_EQ(Vector3d(0.0, 0.0, 0.0), transform_TOD_GCRF.getVelocity());
+        EXPECT_EQ(Vector3d(0.0, 0.0, 0.0), transform_TOD_GCRF.getAngularVelocity());
     }
 
     {
-        // https://github.com/JuliaSpace/SatelliteToolbox.jl/blob/master/test/transformations/fk5/fk5.jl#L421
+        const Instant instant = Instant::DateTime(DateTime(2023, 1, 1, 0, 0, 0), Scale::UTC);
 
-        const Instant epoch = Instant::JulianDate(2453101.828154745, Scale::TT);
-        const Instant instant = Instant::DateTime(DateTime(2020, 1, 1, 0, 0, 0), Scale::UTC);
+        const Quaternion ref_q_J2000_TOD =
+            Quaternion::XYZS(1.58621719623e-05, -1.10716940847e-03, 2.54801869031e-03, 9.99996140755e-01)
+                .toNormalized();
 
-        const Angle obliquityCorrection = Angle::Radians(-0.003875 * M_PI / (180 * 3600));
-        const Angle longitudeCorrection = Angle::Radians(-0.052195 * M_PI / (180 * 3600));
+        const Quaternion q_J2000_TOD_IAU_2000 = Frame::TOD(instant, Theory::IAU_2000B)
+                                                    ->getTransformTo(Frame::J2000(Theory::IAU_2000A), instant)
+                                                    .getOrientation();
+        const Quaternion q_J2000_TOD_IAU_2006 = Frame::TOD(instant, Theory::IAU_2006)
+                                                    ->getTransformTo(Frame::J2000(Theory::IAU_2006), instant)
+                                                    .getOrientation();
 
-        const Transform transform_TOD_MOD =
-            TOD(epoch, obliquityCorrection, longitudeCorrection).getTransformAt(instant);
-
-        EXPECT_EQ(instant, transform_TOD_MOD.getInstant());
-
-        const Quaternion q_MOD_TOD = transform_TOD_MOD.getOrientation().toConjugate();
-
-        const Vector3d x_TOD = {5094.51620300, 6127.36527840, 6380.34453270};
-        const Vector3d v_TOD = {-4.7460883850, 0.7860783240, 5.5319312880};
-
-        const Vector3d x_MOD = q_MOD_TOD * x_TOD;
-        const Vector3d v_MOD = q_MOD_TOD * v_TOD;
-
-        const Vector3d x_MOD_REF = {+5094.02837450, +6127.87081640, +6380.24851640};
-        const Vector3d v_MOD_REF = {-4.7462630520, +0.7860140450, +5.5317905620};
-
-        EXPECT_GT(1e-6, (x_MOD - x_MOD_REF).norm());
-        EXPECT_GT(1e-6, (v_MOD - v_MOD_REF).norm());
+        EXPECT_GT(
+            1.0,
+            q_J2000_TOD_IAU_2000.angularDifferenceWith(ref_q_J2000_TOD).inRadians() * Earth::EquatorialRadius.inMeters()
+        );
+        EXPECT_GT(
+            1.0,
+            q_J2000_TOD_IAU_2006.angularDifferenceWith(ref_q_J2000_TOD).inRadians() * Earth::EquatorialRadius.inMeters()
+        );
     }
 }
