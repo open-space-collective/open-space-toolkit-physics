@@ -13,23 +13,23 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame, EqualToOperator)
 {
     namespace iau = ostk::physics::coord::frame::providers::iau;
 
-    using ostk::core::types::Shared;
     using ostk::core::types::Real;
+    using ostk::core::types::Shared;
     using ostk::core::types::String;
 
-    using ostk::math::obj::Vector3d;
     using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
     using ostk::math::geom::d3::trf::rot::RotationMatrix;
+    using ostk::math::geom::d3::trf::rot::RotationVector;
+    using ostk::math::obj::Vector3d;
 
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::coord::Transform;
     using ostk::physics::coord::Frame;
+    using ostk::physics::coord::Transform;
     using ostk::physics::coord::frame::Provider;
     using ostk::physics::coord::frame::provider::Static;
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+    using ostk::physics::units::Angle;
 
     {
         const String name = "Custom";
@@ -169,23 +169,23 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame, EqualToOperator)
 
 TEST(OpenSpaceToolkit_Physics_Coordinate_Frame, NotEqualToOperator)
 {
-    using ostk::core::types::Shared;
     using ostk::core::types::Real;
+    using ostk::core::types::Shared;
     using ostk::core::types::String;
 
-    using ostk::math::obj::Vector3d;
     using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
     using ostk::math::geom::d3::trf::rot::RotationMatrix;
+    using ostk::math::geom::d3::trf::rot::RotationVector;
+    using ostk::math::obj::Vector3d;
 
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::coord::Transform;
     using ostk::physics::coord::Frame;
+    using ostk::physics::coord::Transform;
     using ostk::physics::coord::frame::Provider;
     using ostk::physics::coord::frame::provider::Static;
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+    using ostk::physics::units::Angle;
 
     {
         const String name = "Custom";
@@ -324,23 +324,23 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame, NotEqualToOperator)
 
 TEST(OpenSpaceToolkit_Physics_Coordinate_Frame, StreamOperator)
 {
-    using ostk::core::types::Shared;
     using ostk::core::types::Real;
+    using ostk::core::types::Shared;
     using ostk::core::types::String;
 
-    using ostk::math::obj::Vector3d;
     using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
     using ostk::math::geom::d3::trf::rot::RotationMatrix;
+    using ostk::math::geom::d3::trf::rot::RotationVector;
+    using ostk::math::obj::Vector3d;
 
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::coord::Transform;
     using ostk::physics::coord::Frame;
+    using ostk::physics::coord::Transform;
     using ostk::physics::coord::frame::Provider;
     using ostk::physics::coord::frame::provider::Static;
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+    using ostk::physics::units::Angle;
 
     {
         const String name = "Custom";
@@ -371,23 +371,23 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame, IsDefined)
 {
     namespace iau = ostk::physics::coord::frame::providers::iau;
 
-    using ostk::core::types::Shared;
     using ostk::core::types::Real;
+    using ostk::core::types::Shared;
     using ostk::core::types::String;
 
-    using ostk::math::obj::Vector3d;
     using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
     using ostk::math::geom::d3::trf::rot::RotationMatrix;
+    using ostk::math::geom::d3::trf::rot::RotationVector;
+    using ostk::math::obj::Vector3d;
 
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::coord::Transform;
     using ostk::physics::coord::Frame;
+    using ostk::physics::coord::Transform;
     using ostk::physics::coord::frame::Provider;
     using ostk::physics::coord::frame::provider::Static;
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+    using ostk::physics::units::Angle;
 
     {
         const String name = "Custom";
@@ -430,23 +430,23 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame, IsQuasiInertial)
 {
     namespace iau = ostk::physics::coord::frame::providers::iau;
 
-    using ostk::core::types::Shared;
     using ostk::core::types::Real;
+    using ostk::core::types::Shared;
     using ostk::core::types::String;
 
-    using ostk::math::obj::Vector3d;
     using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
     using ostk::math::geom::d3::trf::rot::RotationMatrix;
+    using ostk::math::geom::d3::trf::rot::RotationVector;
+    using ostk::math::obj::Vector3d;
 
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::coord::Transform;
     using ostk::physics::coord::Frame;
+    using ostk::physics::coord::Transform;
     using ostk::physics::coord::frame::Provider;
     using ostk::physics::coord::frame::provider::Static;
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+    using ostk::physics::units::Angle;
 
     {
         const String name = "Custom";
@@ -489,23 +489,23 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame, HasParent)
 {
     namespace iau = ostk::physics::coord::frame::providers::iau;
 
-    using ostk::core::types::Shared;
     using ostk::core::types::Real;
+    using ostk::core::types::Shared;
     using ostk::core::types::String;
 
-    using ostk::math::obj::Vector3d;
     using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
     using ostk::math::geom::d3::trf::rot::RotationMatrix;
+    using ostk::math::geom::d3::trf::rot::RotationVector;
+    using ostk::math::obj::Vector3d;
 
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::coord::Transform;
     using ostk::physics::coord::Frame;
+    using ostk::physics::coord::Transform;
     using ostk::physics::coord::frame::Provider;
     using ostk::physics::coord::frame::provider::Static;
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+    using ostk::physics::units::Angle;
 
     {
         const String name = "Custom";
@@ -548,23 +548,23 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame, AccessParent)
 {
     namespace iau = ostk::physics::coord::frame::providers::iau;
 
-    using ostk::core::types::Shared;
     using ostk::core::types::Real;
+    using ostk::core::types::Shared;
     using ostk::core::types::String;
 
-    using ostk::math::obj::Vector3d;
     using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
     using ostk::math::geom::d3::trf::rot::RotationMatrix;
+    using ostk::math::geom::d3::trf::rot::RotationVector;
+    using ostk::math::obj::Vector3d;
 
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::coord::Transform;
     using ostk::physics::coord::Frame;
+    using ostk::physics::coord::Transform;
     using ostk::physics::coord::frame::Provider;
     using ostk::physics::coord::frame::provider::Static;
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+    using ostk::physics::units::Angle;
 
     {
         const String name = "Custom";
@@ -607,23 +607,23 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame, GetName)
 {
     namespace iau = ostk::physics::coord::frame::providers::iau;
 
-    using ostk::core::types::Shared;
     using ostk::core::types::Real;
+    using ostk::core::types::Shared;
     using ostk::core::types::String;
 
-    using ostk::math::obj::Vector3d;
     using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
     using ostk::math::geom::d3::trf::rot::RotationMatrix;
+    using ostk::math::geom::d3::trf::rot::RotationVector;
+    using ostk::math::obj::Vector3d;
 
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::coord::Transform;
     using ostk::physics::coord::Frame;
+    using ostk::physics::coord::Transform;
     using ostk::physics::coord::frame::Provider;
     using ostk::physics::coord::frame::provider::Static;
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+    using ostk::physics::units::Angle;
 
     {
         const String name = "Custom";
@@ -666,26 +666,26 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame, GetName)
 
 TEST(OpenSpaceToolkit_Physics_Coordinate_Frame, GetOriginIn)
 {
-    using ostk::core::types::Shared;
     using ostk::core::types::Real;
+    using ostk::core::types::Shared;
     using ostk::core::types::String;
 
-    using ostk::math::obj::Vector3d;
     using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
     using ostk::math::geom::d3::trf::rot::RotationMatrix;
+    using ostk::math::geom::d3::trf::rot::RotationVector;
+    using ostk::math::obj::Vector3d;
 
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::coord::Transform;
-    using ostk::physics::coord::Position;
     using ostk::physics::coord::Axes;
     using ostk::physics::coord::Frame;
+    using ostk::physics::coord::Position;
+    using ostk::physics::coord::Transform;
     using ostk::physics::coord::frame::Provider;
     using ostk::physics::coord::frame::provider::Static;
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+    using ostk::physics::units::Angle;
+    using ostk::physics::units::Length;
 
     {
         const Position referenceOrigin = Position::Meters({0.0, 0.0, 0.0}, Frame::GCRF());
@@ -761,26 +761,26 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame, GetOriginIn)
 
 TEST(OpenSpaceToolkit_Physics_Coordinate_Frame, GetVelocityIn)
 {
-    using ostk::core::types::Shared;
     using ostk::core::types::Real;
+    using ostk::core::types::Shared;
     using ostk::core::types::String;
 
-    using ostk::math::obj::Vector3d;
     using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
     using ostk::math::geom::d3::trf::rot::RotationMatrix;
+    using ostk::math::geom::d3::trf::rot::RotationVector;
+    using ostk::math::obj::Vector3d;
 
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::coord::Transform;
-    using ostk::physics::coord::Velocity;
     using ostk::physics::coord::Axes;
     using ostk::physics::coord::Frame;
+    using ostk::physics::coord::Transform;
+    using ostk::physics::coord::Velocity;
     using ostk::physics::coord::frame::Provider;
     using ostk::physics::coord::frame::provider::Static;
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+    using ostk::physics::units::Angle;
+    using ostk::physics::units::Length;
 
     {
         const Velocity referenceVelocity = Velocity::MetersPerSecond({0.0, 0.0, 0.0}, Frame::GCRF());
@@ -858,26 +858,26 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame, GetVelocityIn)
 
 TEST(OpenSpaceToolkit_Physics_Coordinate_Frame, GetAxesIn)
 {
-    using ostk::core::types::Shared;
     using ostk::core::types::Real;
+    using ostk::core::types::Shared;
     using ostk::core::types::String;
 
-    using ostk::math::obj::Vector3d;
     using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
     using ostk::math::geom::d3::trf::rot::RotationMatrix;
+    using ostk::math::geom::d3::trf::rot::RotationVector;
+    using ostk::math::obj::Vector3d;
 
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::coord::Transform;
-    using ostk::physics::coord::Position;
     using ostk::physics::coord::Axes;
     using ostk::physics::coord::Frame;
+    using ostk::physics::coord::Position;
+    using ostk::physics::coord::Transform;
     using ostk::physics::coord::frame::Provider;
     using ostk::physics::coord::frame::provider::Static;
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+    using ostk::physics::units::Angle;
+    using ostk::physics::units::Length;
 
     {
         const Instant epoch = Instant::J2000();
@@ -947,16 +947,16 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame, GetAxesIn)
 
 TEST(OpenSpaceToolkit_Physics_Coordinate_Frame, GetTransformTo)
 {
-    using ostk::core::types::Shared;
     using ostk::core::types::Real;
+    using ostk::core::types::Shared;
 
-    using ostk::math::obj::Vector3d;
     using ostk::math::geom::d3::trf::rot::Quaternion;
+    using ostk::math::obj::Vector3d;
 
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Instant;
-    using ostk::physics::coord::Transform;
     using ostk::physics::coord::Frame;
+    using ostk::physics::coord::Transform;
+    using ostk::physics::time::Instant;
+    using ostk::physics::units::Angle;
 
     {
         const Transform transform = Frame::GCRF()->getTransformTo(Frame::GCRF(), Instant::J2000());
@@ -1024,8 +1024,8 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame, J2000)
 
 TEST(OpenSpaceToolkit_Physics_Coordinate_Frame, MOD)
 {
-    using ostk::physics::time::Instant;
     using ostk::physics::coord::Frame;
+    using ostk::physics::time::Instant;
 
     {
         EXPECT_TRUE(Frame::MOD(Instant::J2000())->isDefined());
@@ -1036,8 +1036,8 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame, TOD)
 {
     namespace iau = ostk::physics::coord::frame::providers::iau;
 
-    using ostk::physics::time::Instant;
     using ostk::physics::coord::Frame;
+    using ostk::physics::time::Instant;
 
     {
         EXPECT_TRUE(Frame::TOD(Instant::J2000(), iau::Theory::IAU_2000A)->isDefined());
@@ -1055,8 +1055,8 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame, TEME)
 
 TEST(OpenSpaceToolkit_Physics_Coordinate_Frame, TEMEOfEpoch)
 {
-    using ostk::physics::time::Instant;
     using ostk::physics::coord::Frame;
+    using ostk::physics::time::Instant;
 
     {
         EXPECT_TRUE(Frame::TEMEOfEpoch(Instant::J2000())->isDefined());
@@ -1106,23 +1106,23 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame, WithName)
 
 TEST(OpenSpaceToolkit_Physics_Coordinate_Frame, Exists)
 {
-    using ostk::core::types::Shared;
     using ostk::core::types::Real;
+    using ostk::core::types::Shared;
     using ostk::core::types::String;
 
-    using ostk::math::obj::Vector3d;
     using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
     using ostk::math::geom::d3::trf::rot::RotationMatrix;
+    using ostk::math::geom::d3::trf::rot::RotationVector;
+    using ostk::math::obj::Vector3d;
 
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::coord::Transform;
     using ostk::physics::coord::Frame;
+    using ostk::physics::coord::Transform;
     using ostk::physics::coord::frame::Provider;
     using ostk::physics::coord::frame::provider::Static;
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+    using ostk::physics::units::Angle;
 
     {
         const String name = "Custom";
@@ -1154,23 +1154,23 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame, Exists)
 
 TEST(OpenSpaceToolkit_Physics_Coordinate_Frame, Construct)
 {
-    using ostk::core::types::Shared;
     using ostk::core::types::Real;
+    using ostk::core::types::Shared;
     using ostk::core::types::String;
 
-    using ostk::math::obj::Vector3d;
     using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
     using ostk::math::geom::d3::trf::rot::RotationMatrix;
+    using ostk::math::geom::d3::trf::rot::RotationVector;
+    using ostk::math::obj::Vector3d;
 
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::coord::Transform;
     using ostk::physics::coord::Frame;
+    using ostk::physics::coord::Transform;
     using ostk::physics::coord::frame::Provider;
     using ostk::physics::coord::frame::provider::Static;
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+    using ostk::physics::units::Angle;
 
     {
         const String name = "Custom";
@@ -1208,23 +1208,23 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame, Construct)
 
 TEST(OpenSpaceToolkit_Physics_Coordinate_Frame, Destruct)
 {
-    using ostk::core::types::Shared;
     using ostk::core::types::Real;
+    using ostk::core::types::Shared;
     using ostk::core::types::String;
 
-    using ostk::math::obj::Vector3d;
     using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
     using ostk::math::geom::d3::trf::rot::RotationMatrix;
+    using ostk::math::geom::d3::trf::rot::RotationVector;
+    using ostk::math::obj::Vector3d;
 
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::coord::Transform;
     using ostk::physics::coord::Frame;
+    using ostk::physics::coord::Transform;
     using ostk::physics::coord::frame::Provider;
     using ostk::physics::coord::frame::provider::Static;
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+    using ostk::physics::units::Angle;
 
     {
         const String name = "Custom";
@@ -1252,21 +1252,21 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame, Destruct)
 
 TEST(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
 {
-    using ostk::core::types::Shared;
     using ostk::core::types::Real;
+    using ostk::core::types::Shared;
     using ostk::core::types::String;
 
-    using ostk::math::obj::Vector3d;
     using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
     using ostk::math::geom::d3::trf::rot::RotationMatrix;
+    using ostk::math::geom::d3::trf::rot::RotationVector;
+    using ostk::math::obj::Vector3d;
 
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Instant;
-    using ostk::physics::coord::Transform;
     using ostk::physics::coord::Frame;
+    using ostk::physics::coord::Transform;
     using ostk::physics::coord::frame::Provider;
     using ostk::physics::coord::frame::provider::Static;
+    using ostk::physics::time::Instant;
+    using ostk::physics::units::Angle;
 
     // Pure static translation
 
