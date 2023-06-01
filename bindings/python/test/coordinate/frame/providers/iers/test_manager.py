@@ -50,8 +50,8 @@ def manager(local_file_server) -> Manager:
 
     # setup manager
     manager.set_mode(Manager.Mode.Automatic)
+
     #manager.set_remote_url(URL.parse("https://maia.usno.navy.mil/ser7/"))
-    
     manager.set_remote_url(URL.parse("http://localhost:80/"))
 
     yield manager
@@ -139,7 +139,6 @@ class TestManager:
         assert len(manager.get_finals_2000a_array()) == 0
 
         assert manager.get_polar_motion_at(Instant.now() - Duration.days(7.0)) is not None
-        breakpoint()
         assert len(manager.get_bulletin_a_array()) == 1
         assert len(manager.get_finals_2000a_array()) == 0
 
