@@ -20,13 +20,39 @@ from ostk.physics.coordinate.frame.providers.iers import Manager
 from ostk.physics.coordinate.frame.providers.iers import BulletinA
 from ostk.physics.coordinate.frame.providers.iers import Finals2000A
 
+import os
+from http.server import HTTPServer, CGIHTTPRequestHandler
+
+import multiprocessing
+import time
+
+@pytest.fixture(scope="module")
+def local_file_server():
+    # simple server to serve cached data files
+    os.chdir('test/coordinate/frame/providers/iers/test_archive')
+    server_object = HTTPServer(server_address=('', 80), RequestHandlerClass=CGIHTTPRequestHandler)
+
+    # start server
+    p = multiprocessing.Process(target=server_object.serve_forever)
+    
+    p.start()
+
+    # Give the server time to start
+    yield time.sleep(3)
+
+    p.terminate()
+
 
 @pytest.fixture
-def manager() -> Manager:
+def manager(local_file_server) -> Manager:
+
     manager = Manager.get()
 
+    # setup manager
     manager.set_mode(Manager.Mode.Automatic)
-    manager.set_remote_url(URL.parse("https://maia.usno.navy.mil/ser7/"))
+    #manager.set_remote_url(URL.parse("https://maia.usno.navy.mil/ser7/"))
+    
+    manager.set_remote_url(URL.parse("http://localhost:80/"))
 
     yield manager
 
@@ -113,7 +139,7 @@ class TestManager:
         assert len(manager.get_finals_2000a_array()) == 0
 
         assert manager.get_polar_motion_at(Instant.now() - Duration.days(7.0)) is not None
-
+        breakpoint()
         assert len(manager.get_bulletin_a_array()) == 1
         assert len(manager.get_finals_2000a_array()) == 0
 
