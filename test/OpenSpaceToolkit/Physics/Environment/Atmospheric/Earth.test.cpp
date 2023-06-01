@@ -146,6 +146,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Positi
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_LLA)
 {
+    using ostk::core::error::RuntimeError;
     using ostk::core::types::Real;
     using ostk::core::types::String;
     using ostk::core::ctnr::Tuple;
@@ -207,6 +208,23 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_LLA)
         const LLA lla = LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(1001.0));
         const Instant instant = Instant::J2000();
 
-        EXPECT_ANY_THROW(earthAtmosphericModel.getDensityAt(lla, instant));
+        const String expectedString =
+            "Exponential density model is not valid for altitudes above 1000 km. Altitude = 1001000.0 [m]";
+
+        // Test the throw and the message that is thrown
+        EXPECT_THROW(
+            {
+                try
+                {
+                    earthAtmosphericModel.getDensityAt(lla, instant);
+                }
+                catch (const RuntimeError& e)
+                {
+                    EXPECT_EQ(expectedString, e.what());
+                    throw;
+                }
+            },
+            RuntimeError
+        );
     }
 }
