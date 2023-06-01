@@ -112,7 +112,7 @@ Tuple<Real, Real, Real> Exponential::DensityBandValues(const Length& anAltitude)
         }
     }
 
-    if (bandIndex == Integer::Undefined())
+    if (!bandIndex.isDefined())
     {
         throw ostk::core::error::RuntimeError(String::Format(
             "Exponential density model is not valid for altitudes above 1000 km. Altitude = {}", anAltitude.toString()
