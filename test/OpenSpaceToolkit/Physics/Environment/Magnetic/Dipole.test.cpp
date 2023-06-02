@@ -39,6 +39,21 @@ TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Dipole, Clone)
     }
 }
 
+TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Dipole, IsDefined)
+{
+    using ostk::math::obj::Vector3d;
+
+    using ostk::physics::environment::magnetic::Dipole;
+
+    {
+        const Vector3d magneticMoment = {0.0, 0.0, 1.0};
+
+        const Dipole dipole = {magneticMoment};
+
+        EXPECT_TRUE(dipole.isDefined());
+    }
+}
+
 TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Dipole, GetFieldValueAt)
 {
     using ostk::math::obj::Vector3d;
