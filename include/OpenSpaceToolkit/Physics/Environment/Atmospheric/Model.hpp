@@ -44,6 +44,7 @@ class Model
     /// @brief              Check if the atmospheric model is defined (pure virtual)
     ///
     /// @return             True if the atmospheric model is defined
+
     virtual bool isDefined() const = 0;
 
     /// @brief              Get the atmospheric density value at a given position and instant

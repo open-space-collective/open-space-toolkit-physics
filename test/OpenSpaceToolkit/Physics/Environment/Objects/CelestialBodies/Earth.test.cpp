@@ -191,7 +191,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, StaticM
 
     EXPECT_NO_THROW(Earth::Default());
 
-    Earth earth = Earth::Default();
+    const Earth earth = Earth::Default();
 
     EXPECT_FALSE(earth.accessAtmosphericModel()->isDefined());
     EXPECT_FALSE(earth.accessMagneticModel()->isDefined());
@@ -214,7 +214,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, EGM96)
     EXPECT_NO_THROW(Earth::EGM96(360, 360));
     EXPECT_ANY_THROW(Earth::EGM96(3000, 3000));
 
-    Earth earth = Earth::EGM96();
+    const Earth earth = Earth::EGM96();
 
     EXPECT_FALSE(earth.accessAtmosphericModel()->isDefined());
     EXPECT_FALSE(earth.accessMagneticModel()->isDefined());
@@ -228,7 +228,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, EGM84)
     EXPECT_NO_THROW(Earth::EGM84(180, 180));
     EXPECT_ANY_THROW(Earth::EGM84(3000, 3000));
 
-    Earth earth = Earth::EGM84();
+    const Earth earth = Earth::EGM84();
 
     EXPECT_FALSE(earth.accessAtmosphericModel()->isDefined());
     EXPECT_FALSE(earth.accessMagneticModel()->isDefined());
@@ -242,7 +242,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, WGS84_E
     EXPECT_NO_THROW(Earth::WGS84_EGM96(360, 360));
     EXPECT_ANY_THROW(Earth::WGS84_EGM96(3000, 3000));
 
-    Earth earth = Earth::WGS84_EGM96();
+    const Earth earth = Earth::WGS84_EGM96();
 
     EXPECT_FALSE(earth.accessAtmosphericModel()->isDefined());
     EXPECT_FALSE(earth.accessMagneticModel()->isDefined());
@@ -256,7 +256,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, WGS84)
     EXPECT_NO_THROW(Earth::WGS84(20, 0));
     EXPECT_ANY_THROW(Earth::WGS84(3000, 3000));
 
-    Earth earth = Earth::WGS84();
+    const Earth earth = Earth::WGS84();
 
     EXPECT_FALSE(earth.accessAtmosphericModel()->isDefined());
     EXPECT_FALSE(earth.accessMagneticModel()->isDefined());
@@ -266,7 +266,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, Spheric
 {
     using ostk::physics::env::obj::celest::Earth;
 
-    Earth earth = Earth::Spherical();
+    const Earth earth = Earth::Spherical();
     EXPECT_TRUE(earth.isDefined());
 
     EXPECT_FALSE(earth.accessAtmosphericModel()->isDefined());

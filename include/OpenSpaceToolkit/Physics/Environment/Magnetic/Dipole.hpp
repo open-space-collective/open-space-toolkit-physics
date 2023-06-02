@@ -49,6 +49,7 @@ class Dipole : public Model
     /// @brief              Check if the dipole magnetic model is defined
     ///
     /// @return             True if the dipole magnetic model is defined
+
     bool isDefined() const;
 
     /// @brief              Get the magnetic field value at a given position and instant
