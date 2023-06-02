@@ -28,6 +28,8 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
 
             .def("get_type", &Earth::getType)
 
+            .def("is_defined", &Earth::isDefined)
+
             .def(
                 "get_density_at",
                 pybind11::overload_cast<const Position&, const Instant&>(&Earth::getDensityAt, pybind11::const_),

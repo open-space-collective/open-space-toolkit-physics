@@ -21,6 +21,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth(pybind11::modul
         .def(init<const Earth::Type&>())
 
         .def("get_type", &Earth::getType)
+
+        .def("is_defined", &Earth::isDefined)
+
         .def("get_field_value_at", &Earth::getFieldValueAt)
 
         ;
