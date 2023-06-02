@@ -66,6 +66,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Objects_Celestial(pybind11::mo
         .def("access_ephemeris", &Celestial::accessEphemeris)
         .def("access_gravitational_model", &Celestial::accessGravitationalModel)
         .def("access_magnetic_model", &Celestial::accessMagneticModel)
+        .def("access_atmospheric_model", &Celestial::accessAtmosphericModel)
 
         .def("get_type", &Celestial::getType)
         .def("get_gravitational_parameter", &Celestial::getGravitationalParameter)
