@@ -116,6 +116,11 @@ Earth* Earth::clone() const
     return new Earth(*this);
 }
 
+bool Earth::isDefined() const
+{
+    return implUPtr_ != nullptr;
+}
+
 Earth::Type Earth::getType() const
 {
     return implUPtr_->getType();
@@ -145,6 +150,10 @@ Unique<Earth::Impl> Earth::ImplFromType(const Earth::Type& aType, const Director
     if (aType == Earth::Type::Exponential)
     {
         return std::make_unique<ExponentialImpl>(aType);
+    }
+    else if (aType == Earth::Type::Undefined)
+    {
+        return nullptr;
     }
 
     throw ostk::core::error::runtime::Wrong("Type");

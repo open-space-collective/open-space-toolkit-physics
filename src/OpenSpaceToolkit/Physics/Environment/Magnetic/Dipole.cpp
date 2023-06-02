@@ -34,6 +34,11 @@ Dipole* Dipole::clone() const
     return new Dipole(*this);
 }
 
+bool Dipole::isDefined() const
+{
+    return true;
+}
+
 Vector3d Dipole::getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const
 {
     (void)anInstant;  // Temporal invariance

@@ -51,6 +51,11 @@ class Exponential : public Model
 
     virtual Exponential* clone() const override;
 
+    /// @brief              Check if the exponential atmospheric model is defined
+    ///
+    /// @return             True if the exponential atmospheric model is defined
+    bool isDefined() const;
+
     /// @brief              Get the atmospheric density value at a given position and instant
     ///
     /// @param              [in] aPosition A Position

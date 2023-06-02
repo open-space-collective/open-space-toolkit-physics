@@ -31,6 +31,11 @@ Exponential* Exponential::clone() const
     return new Exponential(*this);
 }
 
+bool Exponential::isDefined() const
+{
+    return true;
+}
+
 Real Exponential::getDensityAt(const Position& aPosition, const Instant& anInstant) const
 {
     return this->getDensityAt(
