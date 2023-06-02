@@ -257,7 +257,6 @@ bool Earth::isDefined() const
     }
 
     return implUPtr_->isDefined();
-
 }
 
 Earth::Type Earth::getType() const
