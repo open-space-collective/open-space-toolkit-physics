@@ -152,6 +152,7 @@ MagneticModel* Earth::Impl::MagneticModelFromType(const Earth::Type& aType, cons
 
     using ostk::physics::environment::magnetic::earth::Manager;
 
+    // TBI: move dipole to an implementation class to align with other models
     if (aType == Earth::Type::Undefined || aType == Earth::Type::Dipole)
     {
         return nullptr;

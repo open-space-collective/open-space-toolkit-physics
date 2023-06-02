@@ -133,8 +133,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, accessModel)
             nullptr,
             nullptr,
             nullptr,
-            instant
-        };
+            instant};
 
         EXPECT_EQ(celestial.accessGravitationalModel(), nullptr);
         EXPECT_EQ(celestial.accessMagneticModel(), nullptr);
