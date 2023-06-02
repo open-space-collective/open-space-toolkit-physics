@@ -41,6 +41,11 @@ class TestEarth:
         assert (
             earth_atmospheric_model.get_type() == EarthAtmosphericModel.Type.Exponential
         )
+    
+    def test_is_defined_success(self, earth_atmospheric_model: EarthAtmosphericModel):
+        assert (
+            earth_atmospheric_model.is_defined() == True
+        )
 
     def test_get_density_at_success(self, earth_atmospheric_model: EarthAtmosphericModel):
         latitude = Angle.degrees(30.0)

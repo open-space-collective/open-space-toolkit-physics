@@ -79,6 +79,17 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetType)
     }
 }
 
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, IsDefined)
+{
+    using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
+
+    {
+        EXPECT_FALSE(EarthAtmosphericModel(EarthAtmosphericModel::Type::Undefined).isDefined());
+        
+        EXPECT_TRUE(EarthAtmosphericModel(EarthAtmosphericModel::Type::Exponential).isDefined());
+    }
+}
+
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Position)
 {
     using ostk::core::types::Real;
