@@ -188,7 +188,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, IsDefined)
         EXPECT_TRUE(EarthMagneticModel(EarthMagneticModel::Type::IGRF11).isDefined());
         EXPECT_TRUE(EarthMagneticModel(EarthMagneticModel::Type::IGRF12).isDefined());
         EXPECT_TRUE(EarthMagneticModel(EarthMagneticModel::Type::WMM2010).isDefined());
-        EXPECT_TRUE(EarthMagneticModel(EarthMagneticModel::Type::WMM2015).isDefined()); 
+        EXPECT_TRUE(EarthMagneticModel(EarthMagneticModel::Type::WMM2015).isDefined());
     }
 }
 

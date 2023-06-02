@@ -85,7 +85,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, IsDefined)
 
     {
         EXPECT_FALSE(EarthAtmosphericModel(EarthAtmosphericModel::Type::Undefined).isDefined());
-        
+
         EXPECT_TRUE(EarthAtmosphericModel(EarthAtmosphericModel::Type::Exponential).isDefined());
     }
 }
