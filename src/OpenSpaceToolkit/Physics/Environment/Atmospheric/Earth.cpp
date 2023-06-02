@@ -147,13 +147,13 @@ Unique<Earth::Impl> Earth::ImplFromType(const Earth::Type& aType, const Director
 {
     (void)aDataDirectory;  // Not yet used
 
-    if (aType == Earth::Type::Exponential)
-    {
-        return std::make_unique<ExponentialImpl>(aType);
-    }
-    else if (aType == Earth::Type::Undefined)
+    if (aType == Earth::Type::Undefined)
     {
         return nullptr;
+    }
+    else if (aType == Earth::Type::Exponential)
+    {
+        return std::make_unique<ExponentialImpl>(aType);
     }
 
     throw ostk::core::error::runtime::Wrong("Type");
