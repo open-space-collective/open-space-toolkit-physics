@@ -18,20 +18,20 @@ from ostk.physics.environment.objects.celestial_bodies import Earth
 
 @pytest.fixture
 def earth_atmospheric_model() -> EarthAtmosphericModel:
-    return EarthAtmosphericModel(EarthAtmosphericModel.Type.Exponential)
+    return EarthAtmosphericModel(EarthAtmosphericModel.EarthAtmosphericType.Exponential)
 
 
 class TestEarth:
     def test_constructor_success_with_type(self):
         earth_atmospheric_model = EarthAtmosphericModel(
-            type=EarthAtmosphericModel.Type.Exponential,
+            type=EarthAtmosphericModel.EarthAtmosphericType.Exponential,
         )
 
         assert isinstance(earth_atmospheric_model, EarthAtmosphericModel)
 
     def test_constructor_success_with_directory(self):
         earth_atmospheric_model = EarthAtmosphericModel(
-            type=EarthAtmosphericModel.Type.Exponential,
+            type=EarthAtmosphericModel.EarthAtmosphericType.Exponential,
             directory=Directory.undefined(),
         )
 
@@ -39,7 +39,7 @@ class TestEarth:
 
     def test_get_type_success(self, earth_atmospheric_model: EarthAtmosphericModel):
         assert (
-            earth_atmospheric_model.get_type() == EarthAtmosphericModel.Type.Exponential
+            earth_atmospheric_model.get_type() == EarthAtmosphericModel.EarthAtmosphericType.Exponential
         )
     
     def test_is_defined_success(self, earth_atmospheric_model: EarthAtmosphericModel):

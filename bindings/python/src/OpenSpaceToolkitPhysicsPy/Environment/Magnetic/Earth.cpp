@@ -28,7 +28,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth(pybind11::modul
 
         ;
 
-    enum_<Earth::Type>(earth_magnetic_class, "Type")
+    enum_<Earth::Type>(earth_magnetic_class, "EarthMagneticType")
 
         .value("Undefined", Earth::Type::Undefined)
         .value("Dipole", Earth::Type::Dipole)
