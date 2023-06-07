@@ -231,36 +231,35 @@ Engine::Mode Engine::DefaultMode()
 
 Array<Kernel> Engine::DefaultKernels(const Directory& aLocalRepository)
 {
-
     // Use regex to pull Earth orientation and leap second kernels, as the file name is often updated.
     using iterator = std::filesystem::directory_iterator;
 
-    auto findKernels = [&aLocalRepository]( const std::regex& aRegex ) -> Array<Path>
+    auto findKernels = [&aLocalRepository](const std::regex& aRegex) -> Array<Path>
     {
-        Array<Path> result ;
-        std::filesystem::path directory = std::string(aLocalRepository.getPath().toString()) ;
+        Array<Path> result;
+        std::filesystem::path directory = std::string(aLocalRepository.getPath().toString());
 
-        const iterator end ;
-        for( iterator iter { directory } ; iter != end ; ++iter )
+        const iterator end;
+        for (iterator iter {directory}; iter != end; ++iter)
         {
-            const String filename = iter->path().filename().string() ;
-            if( std::filesystem::is_regular_file(*iter) && std::regex_match( filename, aRegex ) ) {
-                result.add( Path::Parse( iter->path().string() ) ) ;
+            const String filename = iter->path().filename().string();
+            if (std::filesystem::is_regular_file(*iter) && std::regex_match(filename, aRegex))
+            {
+                result.add(Path::Parse(iter->path().string()));
             }
         }
-        return result ;
+        return result;
     };
-
 
     static const Array<Kernel> defaultKernels = {
 
-        Kernel::File(File::Path(findKernels(std::regex( "naif[0-9]*.tls" )).accessFirst())),  // Leap seconds
-        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("de430.bsp"))),     // Ephemeris
-        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("pck00011.tpc"))
+        Kernel::File(File::Path(findKernels(std::regex("naif[0-9]*.tls")).accessFirst())),  // Leap seconds
+        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("de430.bsp"))),    // Ephemeris
+        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("pck00010.tpc"))
         ),  // System body shape and orientation constants
 
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("earth_assoc_itrf93.tf"))),
-        Kernel::File(File::Path(findKernels(std::regex( "earth\\_200101\\_[0-9]*\\_predict\\.bpc" )).accessFirst())),
+        Kernel::File(File::Path(findKernels(std::regex("earth\\_200101\\_[0-9]*\\_predict\\.bpc")).accessFirst())),
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("moon_080317.tf"))),
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("moon_assoc_me.tf"))),
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("moon_pa_de421_1900-2050.bpc")))
