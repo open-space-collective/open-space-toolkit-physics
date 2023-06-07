@@ -1,14 +1,7 @@
 /// Apache License 2.0
 
-#include <experimental/filesystem>
 #include <filesystem>
 #include <regex>
-
-#include <type_traits>
-#include <vector>
-#include <iostream>
-#include <string>
-
 
 #include <OpenSpaceToolkit/Core/Containers/Array.hpp>
 #include <OpenSpaceToolkit/Core/Containers/Map.hpp>
@@ -238,6 +231,8 @@ Engine::Mode Engine::DefaultMode()
 
 Array<Kernel> Engine::DefaultKernels(const Directory& aLocalRepository)
 {
+
+    // Use regex to pull Earth orientation and leap second kernels, as the file name is often updated.
     using iterator = std::filesystem::directory_iterator;
 
     auto findKernels = [&aLocalRepository]( const std::regex& aRegex ) -> Array<Path>
