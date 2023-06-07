@@ -1,5 +1,15 @@
 /// Apache License 2.0
 
+#include <experimental/filesystem>
+#include <filesystem>
+#include <regex>
+
+#include <type_traits>
+#include <vector>
+#include <iostream>
+#include <string>
+
+
 #include <OpenSpaceToolkit/Core/Containers/Array.hpp>
 #include <OpenSpaceToolkit/Core/Containers/Map.hpp>
 #include <OpenSpaceToolkit/Core/Error.hpp>
@@ -228,16 +238,34 @@ Engine::Mode Engine::DefaultMode()
 
 Array<Kernel> Engine::DefaultKernels(const Directory& aLocalRepository)
 {
+    using iterator = std::filesystem::directory_iterator;
+
+    auto findKernels = [&aLocalRepository]( const std::regex& aRegex ) -> Array<Path>
+    {
+        Array<Path> result ;
+        std::filesystem::path directory = std::string(aLocalRepository.getPath().toString()) ;
+
+        const iterator end ;
+        for( iterator iter { directory } ; iter != end ; ++iter )
+        {
+            const String filename = iter->path().filename().string() ;
+            if( std::filesystem::is_regular_file(*iter) && std::regex_match( filename, aRegex ) ) {
+                result.add( Path::Parse( iter->path().string() ) ) ;
+            }
+        }
+        return result ;
+    };
+
+
     static const Array<Kernel> defaultKernels = {
 
-        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("naif0012.tls"))),  // Leap seconds
+        Kernel::File(File::Path(findKernels(std::regex( "naif[0-9]*.tls" )).accessFirst())),  // Leap seconds
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("de430.bsp"))),     // Ephemeris
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("pck00011.tpc"))
         ),  // System body shape and orientation constants
 
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("earth_assoc_itrf93.tf"))),
-        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("earth_200101_990825_predict.bpc"))),
-
+        Kernel::File(File::Path(findKernels(std::regex( "earth\\_200101\\_[0-9]*\\_predict\\.bpc" )).accessFirst())),
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("moon_080317.tf"))),
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("moon_assoc_me.tf"))),
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("moon_pa_de421_1900-2050.bpc")))
