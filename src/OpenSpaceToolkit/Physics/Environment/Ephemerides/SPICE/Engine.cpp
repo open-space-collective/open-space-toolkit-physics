@@ -232,11 +232,11 @@ Array<Kernel> Engine::DefaultKernels(const Directory& aLocalRepository)
 
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("naif0012.tls"))),  // Leap seconds
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("de430.bsp"))),     // Ephemeris
-        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("pck00010.tpc"))
+        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("pck00011.tpc"))
         ),  // System body shape and orientation constants
 
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("earth_assoc_itrf93.tf"))),
-        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("earth_200101_990628_predict.bpc"))),
+        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("earth_200101_990825_predict.bpc"))),
 
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("moon_080317.tf"))),
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("moon_assoc_me.tf"))),
