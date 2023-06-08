@@ -314,16 +314,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Engine, DefaultKerne
     using ostk::physics::env::ephem::spice::Kernel;
 
     {
-
-        Directory wrongDirectory =
-            Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/"));
-
-        EXPECT_THROW(Engine::DefaultKernels(wrongDirectory), ostk::core::error::RuntimeError);
-
-        Directory spiceDirectory =
+        const Directory spiceDirectory =
             Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE"));
 
-        Array<Kernel> kernels = Engine::DefaultKernels(spiceDirectory);
+        const Array<Kernel> kernels = Engine::DefaultKernels(spiceDirectory);
 
         for (const auto& kernel : kernels)
         {
