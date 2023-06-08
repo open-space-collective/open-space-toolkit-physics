@@ -114,6 +114,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7e4acfd959afea71c12aeba665a66c17"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model.html">Model</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model.html#a7e4acfd959afea71c12aeba665a66c17">clone</a> () const =0</td></tr>
 <tr class="memdesc:a7e4acfd959afea71c12aeba665a66c17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clone the atmospheric model (pure virtual)  <a href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model.html#a7e4acfd959afea71c12aeba665a66c17">More...</a><br /></td></tr>
 <tr class="separator:a7e4acfd959afea71c12aeba665a66c17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac79efc08d6bae1464944174ef1c26b98"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model.html#ac79efc08d6bae1464944174ef1c26b98">isDefined</a> () const =0</td></tr>
+<tr class="memdesc:ac79efc08d6bae1464944174ef1c26b98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the atmospheric model is defined (pure virtual)  <a href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model.html#ac79efc08d6bae1464944174ef1c26b98">More...</a><br /></td></tr>
+<tr class="separator:ac79efc08d6bae1464944174ef1c26b98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a981d47a2368daf1b9d81c63e17db7d09"><td class="memItemLeft" align="right" valign="top">virtual Real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model.html#a981d47a2368daf1b9d81c63e17db7d09">getDensityAt</a> (const <a class="el" href="classostk_1_1physics_1_1coord_1_1_position.html">Position</a> &amp;aPosition, const <a class="el" href="classostk_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;anInstant) const =0</td></tr>
 <tr class="memdesc:a981d47a2368daf1b9d81c63e17db7d09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the atmospheric density value at a given position and instant.  <a href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model.html#a981d47a2368daf1b9d81c63e17db7d09">More...</a><br /></td></tr>
 <tr class="separator:a981d47a2368daf1b9d81c63e17db7d09"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -243,6 +246,36 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Atmospheric density value [kg.m^-3] </dd></dl>
 
 <p>Implemented in <a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth.html#af07312f16bc60d0bae6368daf08ed978">ostk::physics::environment::atmospheric::Earth</a>, and <a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential.html#a4aa6394d4f6e735beaa37cbfa57c5ca1">ostk::physics::environment::atmospheric::earth::Exponential</a>.</p>
+
+</div>
+</div>
+<a id="ac79efc08d6bae1464944174ef1c26b98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac79efc08d6bae1464944174ef1c26b98">&#9670;&nbsp;</a></span>isDefined()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool ostk::physics::environment::atmospheric::Model::isDefined </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if the atmospheric model is defined (pure virtual) </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the atmospheric model is defined </dd></dl>
+
+<p>Implemented in <a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth.html#a1d16a61abd21e39d8d2eaec3f07ba4a9">ostk::physics::environment::atmospheric::Earth</a>, and <a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential.html#acc039008e0cec1fd79082b300bee205b">ostk::physics::environment::atmospheric::earth::Exponential</a>.</p>
 
 </div>
 </div>

@@ -114,6 +114,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af357908c151a7809bbbc8fc676bd07b6"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model.html">Model</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model.html#af357908c151a7809bbbc8fc676bd07b6">clone</a> () const =0</td></tr>
 <tr class="memdesc:af357908c151a7809bbbc8fc676bd07b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clone the magnetic model (pure virtual)  <a href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model.html#af357908c151a7809bbbc8fc676bd07b6">More...</a><br /></td></tr>
 <tr class="separator:af357908c151a7809bbbc8fc676bd07b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad272cd7b1f326266c03f996a239a1c6e"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model.html#ad272cd7b1f326266c03f996a239a1c6e">isDefined</a> () const =0</td></tr>
+<tr class="memdesc:ad272cd7b1f326266c03f996a239a1c6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the magnetic model is defined (pure virtual)  <a href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model.html#ad272cd7b1f326266c03f996a239a1c6e">More...</a><br /></td></tr>
+<tr class="separator:ad272cd7b1f326266c03f996a239a1c6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf0510f9be2c196ea3c0586d02979b0f"><td class="memItemLeft" align="right" valign="top">virtual Vector3d&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model.html#abf0510f9be2c196ea3c0586d02979b0f">getFieldValueAt</a> (const Vector3d &amp;aPosition, const <a class="el" href="classostk_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;anInstant) const =0</td></tr>
 <tr class="memdesc:abf0510f9be2c196ea3c0586d02979b0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the magnetic field value at a given position and instant (pure virtual)  <a href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model.html#abf0510f9be2c196ea3c0586d02979b0f">More...</a><br /></td></tr>
 <tr class="separator:abf0510f9be2c196ea3c0586d02979b0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -243,6 +246,36 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Magnetic field value, expressed in the magnetic object frame [T] </dd></dl>
 
 <p>Implemented in <a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#a2f39ff75c4a674b6720b27c2c6a0b930">ostk::physics::environment::magnetic::Earth</a>, and <a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole.html#ae2c65e41445c91b3efec455fb5077ab1">ostk::physics::environment::magnetic::Dipole</a>.</p>
+
+</div>
+</div>
+<a id="ad272cd7b1f326266c03f996a239a1c6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad272cd7b1f326266c03f996a239a1c6e">&#9670;&nbsp;</a></span>isDefined()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool ostk::physics::environment::magnetic::Model::isDefined </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if the magnetic model is defined (pure virtual) </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the magnetic model is defined </dd></dl>
+
+<p>Implemented in <a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#a3a5080990cbd2b4204c59f10cd58271d">ostk::physics::environment::magnetic::Earth</a>, and <a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole.html#a0e8ec00a64950ad684929591c5c6bcb4">ostk::physics::environment::magnetic::Dipole</a>.</p>
 
 </div>
 </div>

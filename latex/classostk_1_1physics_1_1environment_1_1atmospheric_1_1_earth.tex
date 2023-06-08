@@ -18,7 +18,8 @@ Inheritance diagram for ostk\+::physics\+::environment\+::atmospheric\+::Earth\+
 \doxysubsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-enum \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_a1df841508cb5d989c11b033f49365c2f}{Type}} \{ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_a1df841508cb5d989c11b033f49365c2fac1e19c09f700938f0ff7f1fd4722a3ac}{Type\+::\+Exponential}}, 
+enum \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_a1df841508cb5d989c11b033f49365c2f}{Type}} \{ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_a1df841508cb5d989c11b033f49365c2faec0fc0100c4fc1ce4eea230c3dc10360}{Type\+::\+Undefined}}, 
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_a1df841508cb5d989c11b033f49365c2fac1e19c09f700938f0ff7f1fd4722a3ac}{Type\+::\+Exponential}}, 
 \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_a1df841508cb5d989c11b033f49365c2faa69b0ac8ebd3625dbc1cc489e7e11ecc}{Type\+::\+N\+R\+L\+M\+S\+I\+S\+E00}}
  \}
 \end{DoxyCompactItemize}
@@ -35,6 +36,8 @@ enum \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_ear
 \begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth}{Earth}} $\ast$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_a9be90efb873e548b1e6ffb2533c0e79c}{clone}} () const override
 \begin{DoxyCompactList}\small\item\em Clone the \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth}{Earth}} atmospheric model. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_a1d16a61abd21e39d8d2eaec3f07ba4a9}{is\+Defined}} () const
+\begin{DoxyCompactList}\small\item\em Check if the \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth}{Earth}} atmospheric model is defined. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_a1df841508cb5d989c11b033f49365c2f}{Earth\+::\+Type}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_acfaaed7032dbf0e76f608c37281cf7de}{get\+Type}} () const
 \begin{DoxyCompactList}\small\item\em Get atmospheric model type. \end{DoxyCompactList}\item 
 Real \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_af07312f16bc60d0bae6368daf08ed978}{get\+Density\+At}} (const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_position}{Position}} \&a\+Position, const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const override
@@ -54,6 +57,10 @@ Real \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_ear
 {\footnotesize\ttfamily enum \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_a1df841508cb5d989c11b033f49365c2f}{ostk\+::physics\+::environment\+::atmospheric\+::\+Earth\+::\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
 
 \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Undefined@{Undefined}!ostk::physics::environment::atmospheric::Earth@{ostk::physics::environment::atmospheric::Earth}}\index{ostk::physics::environment::atmospheric::Earth@{ostk::physics::environment::atmospheric::Earth}!Undefined@{Undefined}}}\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_a1df841508cb5d989c11b033f49365c2faec0fc0100c4fc1ce4eea230c3dc10360}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_a1df841508cb5d989c11b033f49365c2faec0fc0100c4fc1ce4eea230c3dc10360}} 
+Undefined&\\
+\hline
+
 \raisebox{\heightof{T}}[0pt][0pt]{\index{Exponential@{Exponential}!ostk::physics::environment::atmospheric::Earth@{ostk::physics::environment::atmospheric::Earth}}\index{ostk::physics::environment::atmospheric::Earth@{ostk::physics::environment::atmospheric::Earth}!Exponential@{Exponential}}}\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_a1df841508cb5d989c11b033f49365c2fac1e19c09f700938f0ff7f1fd4722a3ac}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_a1df841508cb5d989c11b033f49365c2fac1e19c09f700938f0ff7f1fd4722a3ac}} 
 Exponential&\\
 \hline
@@ -185,6 +192,23 @@ Get atmospheric model type.
 \begin{DoxyReturn}{Returns}
 Atmospheric model type 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_a1d16a61abd21e39d8d2eaec3f07ba4a9}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_a1d16a61abd21e39d8d2eaec3f07ba4a9}} 
+\index{ostk::physics::environment::atmospheric::Earth@{ostk::physics::environment::atmospheric::Earth}!isDefined@{isDefined}}
+\index{isDefined@{isDefined}!ostk::physics::environment::atmospheric::Earth@{ostk::physics::environment::atmospheric::Earth}}
+\doxysubsubsection{\texorpdfstring{isDefined()}{isDefined()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::environment\+::atmospheric\+::\+Earth\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Check if the \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth}{Earth}} atmospheric model is defined. 
+
+\begin{DoxyReturn}{Returns}
+True if the \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth}{Earth}} atmospheric model is defined 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model_ac79efc08d6bae1464944174ef1c26b98}{ostk\+::physics\+::environment\+::atmospheric\+::\+Model}}.
+
 \mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_a2b00fa92a4d1765307a5bf159581719f}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_a2b00fa92a4d1765307a5bf159581719f}} 
 \index{ostk::physics::environment::atmospheric::Earth@{ostk::physics::environment::atmospheric::Earth}!operator=@{operator=}}
 \index{operator=@{operator=}!ostk::physics::environment::atmospheric::Earth@{ostk::physics::environment::atmospheric::Earth}}

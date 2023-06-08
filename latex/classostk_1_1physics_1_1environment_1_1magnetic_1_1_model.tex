@@ -24,6 +24,8 @@ virtual \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_mod
 \begin{DoxyCompactList}\small\item\em Destructor (pure virtual) \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_model}{Model}} $\ast$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_model_af357908c151a7809bbbc8fc676bd07b6}{clone}} () const =0
 \begin{DoxyCompactList}\small\item\em Clone the magnetic model (pure virtual) \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_model_ad272cd7b1f326266c03f996a239a1c6e}{is\+Defined}} () const =0
+\begin{DoxyCompactList}\small\item\em Check if the magnetic model is defined (pure virtual) \end{DoxyCompactList}\item 
 virtual Vector3d \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_model_abf0510f9be2c196ea3c0586d02979b0f}{get\+Field\+Value\+At}} (const Vector3d \&a\+Position, const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const =0
 \begin{DoxyCompactList}\small\item\em Get the magnetic field value at a given position and instant (pure virtual) \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -95,6 +97,23 @@ Magnetic field value, expressed in the magnetic object frame \mbox{[}T\mbox{]}
 
 
 Implemented in \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a2f39ff75c4a674b6720b27c2c6a0b930}{ostk\+::physics\+::environment\+::magnetic\+::\+Earth}}, and \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole_ae2c65e41445c91b3efec455fb5077ab1}{ostk\+::physics\+::environment\+::magnetic\+::\+Dipole}}.
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1magnetic_1_1_model_ad272cd7b1f326266c03f996a239a1c6e}\label{classostk_1_1physics_1_1environment_1_1magnetic_1_1_model_ad272cd7b1f326266c03f996a239a1c6e}} 
+\index{ostk::physics::environment::magnetic::Model@{ostk::physics::environment::magnetic::Model}!isDefined@{isDefined}}
+\index{isDefined@{isDefined}!ostk::physics::environment::magnetic::Model@{ostk::physics::environment::magnetic::Model}}
+\doxysubsubsection{\texorpdfstring{isDefined()}{isDefined()}}
+{\footnotesize\ttfamily virtual bool ostk\+::physics\+::environment\+::magnetic\+::\+Model\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Check if the magnetic model is defined (pure virtual) 
+
+\begin{DoxyReturn}{Returns}
+True if the magnetic model is defined 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_a3a5080990cbd2b4204c59f10cd58271d}{ostk\+::physics\+::environment\+::magnetic\+::\+Earth}}, and \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole_a0e8ec00a64950ad684929591c5c6bcb4}{ostk\+::physics\+::environment\+::magnetic\+::\+Dipole}}.
 
 
 

@@ -24,6 +24,8 @@ virtual \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_
 \begin{DoxyCompactList}\small\item\em Destructor (pure virtual) \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model}{Model}} $\ast$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model_a7e4acfd959afea71c12aeba665a66c17}{clone}} () const =0
 \begin{DoxyCompactList}\small\item\em Clone the atmospheric model (pure virtual) \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model_ac79efc08d6bae1464944174ef1c26b98}{is\+Defined}} () const =0
+\begin{DoxyCompactList}\small\item\em Check if the atmospheric model is defined (pure virtual) \end{DoxyCompactList}\item 
 virtual Real \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model_a981d47a2368daf1b9d81c63e17db7d09}{get\+Density\+At}} (const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_position}{Position}} \&a\+Position, const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const =0
 \begin{DoxyCompactList}\small\item\em Get the atmospheric density value at a given position and instant. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -95,6 +97,23 @@ Atmospheric density value \mbox{[}kg.\+m$^\wedge$-\/3\mbox{]}
 
 
 Implemented in \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_af07312f16bc60d0bae6368daf08ed978}{ostk\+::physics\+::environment\+::atmospheric\+::\+Earth}}, and \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential_a4aa6394d4f6e735beaa37cbfa57c5ca1}{ostk\+::physics\+::environment\+::atmospheric\+::earth\+::\+Exponential}}.
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model_ac79efc08d6bae1464944174ef1c26b98}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model_ac79efc08d6bae1464944174ef1c26b98}} 
+\index{ostk::physics::environment::atmospheric::Model@{ostk::physics::environment::atmospheric::Model}!isDefined@{isDefined}}
+\index{isDefined@{isDefined}!ostk::physics::environment::atmospheric::Model@{ostk::physics::environment::atmospheric::Model}}
+\doxysubsubsection{\texorpdfstring{isDefined()}{isDefined()}}
+{\footnotesize\ttfamily virtual bool ostk\+::physics\+::environment\+::atmospheric\+::\+Model\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Check if the atmospheric model is defined (pure virtual) 
+
+\begin{DoxyReturn}{Returns}
+True if the atmospheric model is defined 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_a1d16a61abd21e39d8d2eaec3f07ba4a9}{ostk\+::physics\+::environment\+::atmospheric\+::\+Earth}}, and \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential_acc039008e0cec1fd79082b300bee205b}{ostk\+::physics\+::environment\+::atmospheric\+::earth\+::\+Exponential}}.
 
 
 

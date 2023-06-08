@@ -105,7 +105,8 @@ Inheritance diagram for ostk::physics::environment::atmospheric::Earth:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a1df841508cb5d989c11b033f49365c2f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth.html#a1df841508cb5d989c11b033f49365c2f">Type</a> { <a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth.html#a1df841508cb5d989c11b033f49365c2fac1e19c09f700938f0ff7f1fd4722a3ac">Type::Exponential</a>, 
+<tr class="memitem:a1df841508cb5d989c11b033f49365c2f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth.html#a1df841508cb5d989c11b033f49365c2f">Type</a> { <a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth.html#a1df841508cb5d989c11b033f49365c2faec0fc0100c4fc1ce4eea230c3dc10360">Type::Undefined</a>, 
+<a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth.html#a1df841508cb5d989c11b033f49365c2fac1e19c09f700938f0ff7f1fd4722a3ac">Type::Exponential</a>, 
 <a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth.html#a1df841508cb5d989c11b033f49365c2faa69b0ac8ebd3625dbc1cc489e7e11ecc">Type::NRLMSISE00</a>
  }</td></tr>
 <tr class="separator:a1df841508cb5d989c11b033f49365c2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -127,6 +128,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9be90efb873e548b1e6ffb2533c0e79c"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth.html">Earth</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth.html#a9be90efb873e548b1e6ffb2533c0e79c">clone</a> () const override</td></tr>
 <tr class="memdesc:a9be90efb873e548b1e6ffb2533c0e79c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clone the <a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth.html" title="Earth atmospheric model.">Earth</a> atmospheric model.  <a href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth.html#a9be90efb873e548b1e6ffb2533c0e79c">More...</a><br /></td></tr>
 <tr class="separator:a9be90efb873e548b1e6ffb2533c0e79c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d16a61abd21e39d8d2eaec3f07ba4a9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth.html#a1d16a61abd21e39d8d2eaec3f07ba4a9">isDefined</a> () const</td></tr>
+<tr class="memdesc:a1d16a61abd21e39d8d2eaec3f07ba4a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the <a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth.html" title="Earth atmospheric model.">Earth</a> atmospheric model is defined.  <a href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth.html#a1d16a61abd21e39d8d2eaec3f07ba4a9">More...</a><br /></td></tr>
+<tr class="separator:a1d16a61abd21e39d8d2eaec3f07ba4a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acfaaed7032dbf0e76f608c37281cf7de"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth.html#a1df841508cb5d989c11b033f49365c2f">Earth::Type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth.html#acfaaed7032dbf0e76f608c37281cf7de">getType</a> () const</td></tr>
 <tr class="memdesc:acfaaed7032dbf0e76f608c37281cf7de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get atmospheric model type.  <a href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth.html#acfaaed7032dbf0e76f608c37281cf7de">More...</a><br /></td></tr>
 <tr class="separator:acfaaed7032dbf0e76f608c37281cf7de"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -167,7 +171,8 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a1df841508cb5d989c11b033f49365c2fac1e19c09f700938f0ff7f1fd4722a3ac"></a>Exponential&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a1df841508cb5d989c11b033f49365c2faec0fc0100c4fc1ce4eea230c3dc10360"></a>Undefined&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a1df841508cb5d989c11b033f49365c2fac1e19c09f700938f0ff7f1fd4722a3ac"></a>Exponential&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a1df841508cb5d989c11b033f49365c2faa69b0ac8ebd3625dbc1cc489e7e11ecc"></a>NRLMSISE00&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
@@ -390,6 +395,36 @@ Public Member Functions</h2></td></tr>
 
 <p>Get atmospheric model type. </p>
 <dl class="section return"><dt>Returns</dt><dd>Atmospheric model type </dd></dl>
+
+</div>
+</div>
+<a id="a1d16a61abd21e39d8d2eaec3f07ba4a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d16a61abd21e39d8d2eaec3f07ba4a9">&#9670;&nbsp;</a></span>isDefined()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ostk::physics::environment::atmospheric::Earth::isDefined </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if the <a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth.html" title="Earth atmospheric model.">Earth</a> atmospheric model is defined. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the <a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth.html" title="Earth atmospheric model.">Earth</a> atmospheric model is defined </dd></dl>
+
+<p>Implements <a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model.html#ac79efc08d6bae1464944174ef1c26b98">ostk::physics::environment::atmospheric::Model</a>.</p>
 
 </div>
 </div>

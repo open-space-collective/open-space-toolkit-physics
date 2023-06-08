@@ -1,6 +1,7 @@
 var classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth =
 [
     [ "Type", "classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#a30a064d87b6fce338e76aebd3043b6b6", [
+      [ "Undefined", "classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#a30a064d87b6fce338e76aebd3043b6b6aec0fc0100c4fc1ce4eea230c3dc10360", null ],
       [ "Dipole", "classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#a30a064d87b6fce338e76aebd3043b6b6a7627ce84eadbc3098e818fa89b368c2c", null ],
       [ "EMM2010", "classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#a30a064d87b6fce338e76aebd3043b6b6aed2fcd927feb1858e659c2278acc9b04", null ],
       [ "EMM2015", "classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#a30a064d87b6fce338e76aebd3043b6b6abeb005aa2afa040561e58b462da8583d", null ],
@@ -16,5 +17,6 @@ var classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth =
     [ "clone", "classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#ac4b57f94304595595fc3eebb0dd0d050", null ],
     [ "getFieldValueAt", "classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#a2f39ff75c4a674b6720b27c2c6a0b930", null ],
     [ "getType", "classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#a20952c06c726e4f89f2f8184653ea74e", null ],
+    [ "isDefined", "classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#a3a5080990cbd2b4204c59f10cd58271d", null ],
     [ "operator=", "classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#ad7ce781762b59980fb255b3b2a3f6aca", null ]
 ];

@@ -22,6 +22,8 @@ Inheritance diagram for ostk\+::physics\+::environment\+::magnetic\+::Dipole\+:\
 \begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole}{Dipole}} $\ast$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole_ad4255ff1007a339c9f0bdbda321c0ab2}{clone}} () const override
 \begin{DoxyCompactList}\small\item\em Clone the dipole magnetic model. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole_a0e8ec00a64950ad684929591c5c6bcb4}{is\+Defined}} () const
+\begin{DoxyCompactList}\small\item\em Check if the dipole magnetic model is defined. \end{DoxyCompactList}\item 
 virtual Vector3d \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole_ae2c65e41445c91b3efec455fb5077ab1}{get\+Field\+Value\+At}} (const Vector3d \&a\+Position, const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const override
 \begin{DoxyCompactList}\small\item\em Get the magnetic field value at a given position and instant. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -90,6 +92,23 @@ Magnetic field value, expressed in the magnetic object frame \mbox{[}T\mbox{]}
 
 
 Implements \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_model_abf0510f9be2c196ea3c0586d02979b0f}{ostk\+::physics\+::environment\+::magnetic\+::\+Model}}.
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole_a0e8ec00a64950ad684929591c5c6bcb4}\label{classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole_a0e8ec00a64950ad684929591c5c6bcb4}} 
+\index{ostk::physics::environment::magnetic::Dipole@{ostk::physics::environment::magnetic::Dipole}!isDefined@{isDefined}}
+\index{isDefined@{isDefined}!ostk::physics::environment::magnetic::Dipole@{ostk::physics::environment::magnetic::Dipole}}
+\doxysubsubsection{\texorpdfstring{isDefined()}{isDefined()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::environment\+::magnetic\+::\+Dipole\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Check if the dipole magnetic model is defined. 
+
+\begin{DoxyReturn}{Returns}
+True if the dipole magnetic model is defined 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1magnetic_1_1_model_ad272cd7b1f326266c03f996a239a1c6e}{ostk\+::physics\+::environment\+::magnetic\+::\+Model}}.
 
 
 

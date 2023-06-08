@@ -110,6 +110,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad4255ff1007a339c9f0bdbda321c0ab2"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole.html">Dipole</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole.html#ad4255ff1007a339c9f0bdbda321c0ab2">clone</a> () const override</td></tr>
 <tr class="memdesc:ad4255ff1007a339c9f0bdbda321c0ab2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clone the dipole magnetic model.  <a href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole.html#ad4255ff1007a339c9f0bdbda321c0ab2">More...</a><br /></td></tr>
 <tr class="separator:ad4255ff1007a339c9f0bdbda321c0ab2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e8ec00a64950ad684929591c5c6bcb4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole.html#a0e8ec00a64950ad684929591c5c6bcb4">isDefined</a> () const</td></tr>
+<tr class="memdesc:a0e8ec00a64950ad684929591c5c6bcb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the dipole magnetic model is defined.  <a href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole.html#a0e8ec00a64950ad684929591c5c6bcb4">More...</a><br /></td></tr>
+<tr class="separator:a0e8ec00a64950ad684929591c5c6bcb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae2c65e41445c91b3efec455fb5077ab1"><td class="memItemLeft" align="right" valign="top">virtual Vector3d&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole.html#ae2c65e41445c91b3efec455fb5077ab1">getFieldValueAt</a> (const Vector3d &amp;aPosition, const <a class="el" href="classostk_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;anInstant) const override</td></tr>
 <tr class="memdesc:ae2c65e41445c91b3efec455fb5077ab1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the magnetic field value at a given position and instant.  <a href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole.html#ae2c65e41445c91b3efec455fb5077ab1">More...</a><br /></td></tr>
 <tr class="separator:ae2c65e41445c91b3efec455fb5077ab1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -227,6 +230,36 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Magnetic field value, expressed in the magnetic object frame [T] </dd></dl>
 
 <p>Implements <a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model.html#abf0510f9be2c196ea3c0586d02979b0f">ostk::physics::environment::magnetic::Model</a>.</p>
+
+</div>
+</div>
+<a id="a0e8ec00a64950ad684929591c5c6bcb4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e8ec00a64950ad684929591c5c6bcb4">&#9670;&nbsp;</a></span>isDefined()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ostk::physics::environment::magnetic::Dipole::isDefined </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if the dipole magnetic model is defined. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the dipole magnetic model is defined </dd></dl>
+
+<p>Implements <a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model.html#ad272cd7b1f326266c03f996a239a1c6e">ostk::physics::environment::magnetic::Model</a>.</p>
 
 </div>
 </div>

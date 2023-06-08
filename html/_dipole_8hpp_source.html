@@ -119,19 +119,22 @@ $(document).ready(function(){initNavTree('_dipole_8hpp_source.html',''); initRes
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole.html">Dipole</a>* <a class="code" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole.html#ad4255ff1007a339c9f0bdbda321c0ab2">clone</a>() <span class="keyword">const override</span>;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole.html#a0e8ec00a64950ad684929591c5c6bcb4">isDefined</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">virtual</span> Vector3d <a class="code" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole.html#ae2c65e41445c91b3efec455fb5077ab1">getFieldValueAt</a>(<span class="keyword">const</span> Vector3d&amp; aPosition, <span class="keyword">const</span> <a class="code" href="classostk_1_1physics_1_1time_1_1_instant.html">Instant</a>&amp; anInstant) <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    Vector3d magneticMoment_SI_;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;};</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}  <span class="comment">// namespace magnetic</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}  <span class="comment">// namespace environment</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}  <span class="comment">// namespace physics</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}  <span class="comment">// namespace ostk</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keyword">virtual</span> Vector3d <a class="code" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole.html#ae2c65e41445c91b3efec455fb5077ab1">getFieldValueAt</a>(<span class="keyword">const</span> Vector3d&amp; aPosition, <span class="keyword">const</span> <a class="code" href="classostk_1_1physics_1_1time_1_1_instant.html">Instant</a>&amp; anInstant) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    Vector3d magneticMoment_SI_;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;};</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}  <span class="comment">// namespace magnetic</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}  <span class="comment">// namespace environment</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}  <span class="comment">// namespace physics</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;}  <span class="comment">// namespace ostk</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole_html_a974e9a8c1062516d6c872b96d5573779"><div class="ttname"><a href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole.html#a974e9a8c1062516d6c872b96d5573779">ostk::physics::environment::magnetic::Dipole::Dipole</a></div><div class="ttdeci">Dipole(const Vector3d &amp;aMagneticMoment)</div><div class="ttdoc">Constructor.</div><div class="ttdef"><b>Definition:</b> Dipole.cpp:22</div></div>
@@ -143,7 +146,8 @@ $(document).ready(function(){initNavTree('_dipole_8hpp_source.html',''); initRes
 <div class="ttc" id="anamespaceostk_html"><div class="ttname"><a href="namespaceostk.html">ostk</a></div><div class="ttdoc">Apache License 2.0.</div><div class="ttdef"><b>Definition:</b> Axes.hpp:12</div></div>
 <div class="ttc" id="a_magnetic_2_model_8hpp_html"><div class="ttname"><a href="_magnetic_2_model_8hpp.html">Model.hpp</a></div></div>
 <div class="ttc" id="a_instant_8hpp_html"><div class="ttname"><a href="_instant_8hpp.html">Instant.hpp</a></div></div>
-<div class="ttc" id="aclassostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole_html_ae2c65e41445c91b3efec455fb5077ab1"><div class="ttname"><a href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole.html#ae2c65e41445c91b3efec455fb5077ab1">ostk::physics::environment::magnetic::Dipole::getFieldValueAt</a></div><div class="ttdeci">virtual Vector3d getFieldValueAt(const Vector3d &amp;aPosition, const Instant &amp;anInstant) const override</div><div class="ttdoc">Get the magnetic field value at a given position and instant.</div><div class="ttdef"><b>Definition:</b> Dipole.cpp:37</div></div>
+<div class="ttc" id="aclassostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole_html_ae2c65e41445c91b3efec455fb5077ab1"><div class="ttname"><a href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole.html#ae2c65e41445c91b3efec455fb5077ab1">ostk::physics::environment::magnetic::Dipole::getFieldValueAt</a></div><div class="ttdeci">virtual Vector3d getFieldValueAt(const Vector3d &amp;aPosition, const Instant &amp;anInstant) const override</div><div class="ttdoc">Get the magnetic field value at a given position and instant.</div><div class="ttdef"><b>Definition:</b> Dipole.cpp:42</div></div>
+<div class="ttc" id="aclassostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole_html_a0e8ec00a64950ad684929591c5c6bcb4"><div class="ttname"><a href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole.html#a0e8ec00a64950ad684929591c5c6bcb4">ostk::physics::environment::magnetic::Dipole::isDefined</a></div><div class="ttdeci">bool isDefined() const</div><div class="ttdoc">Check if the dipole magnetic model is defined.</div><div class="ttdef"><b>Definition:</b> Dipole.cpp:37</div></div>
 <div class="ttc" id="aclassostk_1_1physics_1_1environment_1_1magnetic_1_1_model_html"><div class="ttname"><a href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model.html">ostk::physics::environment::magnetic::Model</a></div><div class="ttdoc">Magnetic model (interface)</div><div class="ttdef"><b>Definition:</b> Model.hpp:25</div></div>
 <!-- HTML footer for doxygen 1.8.7-->
 <!-- start footer part -->

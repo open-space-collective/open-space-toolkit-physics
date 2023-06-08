@@ -118,21 +118,25 @@ $(document).ready(function(){initNavTree('_magnetic_2_model_8hpp_source.html',''
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model.html">Model</a>* <a class="code" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model.html#af357908c151a7809bbbc8fc676bd07b6">clone</a>() <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model.html#ad272cd7b1f326266c03f996a239a1c6e">isDefined</a>() <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">virtual</span> Vector3d <a class="code" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model.html#abf0510f9be2c196ea3c0586d02979b0f">getFieldValueAt</a>(<span class="keyword">const</span> Vector3d&amp; aPosition, <span class="keyword">const</span> <a class="code" href="classostk_1_1physics_1_1time_1_1_instant.html">Instant</a>&amp; anInstant) <span class="keyword">const</span> = 0;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;};</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}  <span class="comment">// namespace magnetic</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}  <span class="comment">// namespace environment</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}  <span class="comment">// namespace physics</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}  <span class="comment">// namespace ostk</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">virtual</span> Vector3d <a class="code" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model.html#abf0510f9be2c196ea3c0586d02979b0f">getFieldValueAt</a>(<span class="keyword">const</span> Vector3d&amp; aPosition, <span class="keyword">const</span> <a class="code" href="classostk_1_1physics_1_1time_1_1_instant.html">Instant</a>&amp; anInstant) <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;};</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}  <span class="comment">// namespace magnetic</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}  <span class="comment">// namespace environment</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}  <span class="comment">// namespace physics</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}  <span class="comment">// namespace ostk</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassostk_1_1physics_1_1environment_1_1magnetic_1_1_model_html_a50d6421402d4f67aa9c45e9be5f27d30"><div class="ttname"><a href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model.html#a50d6421402d4f67aa9c45e9be5f27d30">ostk::physics::environment::magnetic::Model::Model</a></div><div class="ttdeci">Model()</div><div class="ttdoc">Constructor (default)</div><div class="ttdef"><b>Definition:</b> Model.cpp:17</div></div>
 <div class="ttc" id="aclassostk_1_1physics_1_1environment_1_1magnetic_1_1_model_html_a6fe1b73447dc65989d31db636fa73953"><div class="ttname"><a href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model.html#a6fe1b73447dc65989d31db636fa73953">ostk::physics::environment::magnetic::Model::~Model</a></div><div class="ttdeci">virtual ~Model()=0</div><div class="ttdoc">Destructor (pure virtual)</div><div class="ttdef"><b>Definition:</b> Model.cpp:19</div></div>
 <div class="ttc" id="aclassostk_1_1physics_1_1time_1_1_instant_html"><div class="ttname"><a href="classostk_1_1physics_1_1time_1_1_instant.html">ostk::physics::time::Instant</a></div><div class="ttdoc">Point in time.</div><div class="ttdef"><b>Definition:</b> Instant.hpp:40</div></div>
+<div class="ttc" id="aclassostk_1_1physics_1_1environment_1_1magnetic_1_1_model_html_ad272cd7b1f326266c03f996a239a1c6e"><div class="ttname"><a href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model.html#ad272cd7b1f326266c03f996a239a1c6e">ostk::physics::environment::magnetic::Model::isDefined</a></div><div class="ttdeci">virtual bool isDefined() const =0</div><div class="ttdoc">Check if the magnetic model is defined (pure virtual)</div></div>
 <div class="ttc" id="aclassostk_1_1physics_1_1environment_1_1magnetic_1_1_model_html_abf0510f9be2c196ea3c0586d02979b0f"><div class="ttname"><a href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model.html#abf0510f9be2c196ea3c0586d02979b0f">ostk::physics::environment::magnetic::Model::getFieldValueAt</a></div><div class="ttdeci">virtual Vector3d getFieldValueAt(const Vector3d &amp;aPosition, const Instant &amp;anInstant) const =0</div><div class="ttdoc">Get the magnetic field value at a given position and instant (pure virtual)</div></div>
 <div class="ttc" id="anamespaceostk_html"><div class="ttname"><a href="namespaceostk.html">ostk</a></div><div class="ttdoc">Apache License 2.0.</div><div class="ttdef"><b>Definition:</b> Axes.hpp:12</div></div>
 <div class="ttc" id="a_instant_8hpp_html"><div class="ttname"><a href="_instant_8hpp.html">Instant.hpp</a></div></div>

@@ -106,15 +106,17 @@ Inheritance diagram for ostk::physics::environment::magnetic::Earth:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr class="memitem:a30a064d87b6fce338e76aebd3043b6b6"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#a30a064d87b6fce338e76aebd3043b6b6">Type</a> { <br />
-&#160;&#160;<a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#a30a064d87b6fce338e76aebd3043b6b6a7627ce84eadbc3098e818fa89b368c2c">Type::Dipole</a>, 
+&#160;&#160;<a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#a30a064d87b6fce338e76aebd3043b6b6aec0fc0100c4fc1ce4eea230c3dc10360">Type::Undefined</a>, 
+<a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#a30a064d87b6fce338e76aebd3043b6b6a7627ce84eadbc3098e818fa89b368c2c">Type::Dipole</a>, 
 <a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#a30a064d87b6fce338e76aebd3043b6b6aed2fcd927feb1858e659c2278acc9b04">Type::EMM2010</a>, 
 <a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#a30a064d87b6fce338e76aebd3043b6b6abeb005aa2afa040561e58b462da8583d">Type::EMM2015</a>, 
-<a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#a30a064d87b6fce338e76aebd3043b6b6a19d30648df1be691437893aae34fcf62">Type::EMM2017</a>, 
 <br />
-&#160;&#160;<a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#a30a064d87b6fce338e76aebd3043b6b6aa2ad57512dc0d08c7e8937152ebec747">Type::IGRF11</a>, 
+&#160;&#160;<a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#a30a064d87b6fce338e76aebd3043b6b6a19d30648df1be691437893aae34fcf62">Type::EMM2017</a>, 
+<a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#a30a064d87b6fce338e76aebd3043b6b6aa2ad57512dc0d08c7e8937152ebec747">Type::IGRF11</a>, 
 <a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#a30a064d87b6fce338e76aebd3043b6b6a9a61c68f57fc5ed7927cfcec00291c11">Type::IGRF12</a>, 
 <a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#a30a064d87b6fce338e76aebd3043b6b6acf25da7a5a5ba3ab08e4c26071ed0b20">Type::WMM2010</a>, 
-<a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#a30a064d87b6fce338e76aebd3043b6b6a164a99cca8995f690571ed8f964e6166">Type::WMM2015</a>
+<br />
+&#160;&#160;<a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#a30a064d87b6fce338e76aebd3043b6b6a164a99cca8995f690571ed8f964e6166">Type::WMM2015</a>
 <br />
  }</td></tr>
 <tr class="separator:a30a064d87b6fce338e76aebd3043b6b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -136,6 +138,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac4b57f94304595595fc3eebb0dd0d050"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html">Earth</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#ac4b57f94304595595fc3eebb0dd0d050">clone</a> () const override</td></tr>
 <tr class="memdesc:ac4b57f94304595595fc3eebb0dd0d050"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clone the <a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html" title="Earth magnetic model.">Earth</a> magnetic model.  <a href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#ac4b57f94304595595fc3eebb0dd0d050">More...</a><br /></td></tr>
 <tr class="separator:ac4b57f94304595595fc3eebb0dd0d050"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a5080990cbd2b4204c59f10cd58271d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#a3a5080990cbd2b4204c59f10cd58271d">isDefined</a> () const</td></tr>
+<tr class="memdesc:a3a5080990cbd2b4204c59f10cd58271d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the <a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html" title="Earth magnetic model.">Earth</a> magnetic model is defined.  <a href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#a3a5080990cbd2b4204c59f10cd58271d">More...</a><br /></td></tr>
+<tr class="separator:a3a5080990cbd2b4204c59f10cd58271d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a20952c06c726e4f89f2f8184653ea74e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#a30a064d87b6fce338e76aebd3043b6b6">Earth::Type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#a20952c06c726e4f89f2f8184653ea74e">getType</a> () const</td></tr>
 <tr class="memdesc:a20952c06c726e4f89f2f8184653ea74e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get magnetic model type.  <a href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#a20952c06c726e4f89f2f8184653ea74e">More...</a><br /></td></tr>
 <tr class="separator:a20952c06c726e4f89f2f8184653ea74e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -174,7 +179,8 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a30a064d87b6fce338e76aebd3043b6b6a7627ce84eadbc3098e818fa89b368c2c"></a>Dipole&#160;</td><td class="fielddoc"><p><a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole.html" title="Magnetic dipole model.">Dipole</a> <a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model.html" title="Magnetic model (interface)">Model</a>. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a30a064d87b6fce338e76aebd3043b6b6aec0fc0100c4fc1ce4eea230c3dc10360"></a>Undefined&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a30a064d87b6fce338e76aebd3043b6b6a7627ce84eadbc3098e818fa89b368c2c"></a>Dipole&#160;</td><td class="fielddoc"><p><a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole.html" title="Magnetic dipole model.">Dipole</a> <a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model.html" title="Magnetic model (interface)">Model</a>. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a30a064d87b6fce338e76aebd3043b6b6aed2fcd927feb1858e659c2278acc9b04"></a>EMM2010&#160;</td><td class="fielddoc"><p>Enhanced Magnetic <a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model.html" title="Magnetic model (interface)">Model</a> 2010: approximates the main and crustal magnetic fields for the period 2010–2015. </p>
 </td></tr>
@@ -373,6 +379,36 @@ Public Member Functions</h2></td></tr>
 
 <p>Get magnetic model type. </p>
 <dl class="section return"><dt>Returns</dt><dd>Magnetic model type </dd></dl>
+
+</div>
+</div>
+<a id="a3a5080990cbd2b4204c59f10cd58271d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a5080990cbd2b4204c59f10cd58271d">&#9670;&nbsp;</a></span>isDefined()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ostk::physics::environment::magnetic::Earth::isDefined </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if the <a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html" title="Earth magnetic model.">Earth</a> magnetic model is defined. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the <a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html" title="Earth magnetic model.">Earth</a> magnetic model is defined </dd></dl>
+
+<p>Implements <a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model.html#ad272cd7b1f326266c03f996a239a1c6e">ostk::physics::environment::magnetic::Model</a>.</p>
 
 </div>
 </div>
