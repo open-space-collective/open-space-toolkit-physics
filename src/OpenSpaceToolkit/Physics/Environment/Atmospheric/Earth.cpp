@@ -116,6 +116,11 @@ Earth* Earth::clone() const
     return new Earth(*this);
 }
 
+bool Earth::isDefined() const
+{
+    return implUPtr_ != nullptr;
+}
+
 Earth::Type Earth::getType() const
 {
     return implUPtr_->getType();
@@ -142,7 +147,11 @@ Unique<Earth::Impl> Earth::ImplFromType(const Earth::Type& aType, const Director
 {
     (void)aDataDirectory;  // Not yet used
 
-    if (aType == Earth::Type::Exponential)
+    if (aType == Earth::Type::Undefined)
+    {
+        return nullptr;
+    }
+    else if (aType == Earth::Type::Exponential)
     {
         return std::make_unique<ExponentialImpl>(aType);
     }

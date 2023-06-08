@@ -46,6 +46,12 @@ class Dipole : public Model
 
     virtual Dipole* clone() const override;
 
+    /// @brief              Check if the dipole magnetic model is defined
+    ///
+    /// @return             True if the dipole magnetic model is defined
+
+    bool isDefined() const;
+
     /// @brief              Get the magnetic field value at a given position and instant
     ///
     /// @param              [in] aPosition A position, expressed in the magnetic object frame [m]

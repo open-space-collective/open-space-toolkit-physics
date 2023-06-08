@@ -42,6 +42,7 @@ class Earth : public Model
     enum class Type
     {
 
+        Undefined,
         Dipole,   ///< Dipole Model
         EMM2010,  ///< Enhanced Magnetic Model 2010: approximates the main and crustal magnetic fields for the period
                   ///< 2010–2015.
@@ -87,6 +88,12 @@ class Earth : public Model
     /// @return             Pointer to Earth magnetic model
 
     virtual Earth* clone() const override;
+
+    /// @brief              Check if the Earth magnetic model is defined
+    ///
+    /// @return             True if the Earth magnetic model is defined
+
+    bool isDefined() const;
 
     /// @brief              Get magnetic model type
     ///

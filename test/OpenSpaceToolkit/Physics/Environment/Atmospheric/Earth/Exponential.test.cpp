@@ -30,6 +30,17 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Exponential, Clone)
     }
 }
 
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Exponential, IsDefined)
+{
+    using ostk::physics::environment::atmospheric::earth::Exponential;
+
+    {
+        const Exponential exponential = {};
+
+        EXPECT_TRUE(exponential.isDefined());
+    }
+}
+
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Exponential, getDensityAt)
 {
     using ostk::core::types::String;
