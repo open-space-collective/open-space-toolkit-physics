@@ -7,13 +7,16 @@
 
 #include <Global.test.hpp>
 
+using ostk::math::obj::Vector3d;
+
+using ostk::physics::units::Length;
+using ostk::physics::units::Time;
+using ostk::physics::units::Derived;
+using ostk::physics::time::Instant;
+using ostk::physics::environment::gravitational::Spherical;
+
 TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Spherical, Constructor)
 {
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Time;
-    using ostk::physics::units::Derived;
-    using ostk::physics::environment::gravitational::Spherical;
-
     {
         const Derived gravitationalParameter = {
             1.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)};
@@ -28,11 +31,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Spherical, Constructor)
 
 TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Spherical, Clone)
 {
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Time;
-    using ostk::physics::units::Derived;
-    using ostk::physics::environment::gravitational::Spherical;
-
     {
         const Derived gravitationalParameter = {
             1.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)};
@@ -45,14 +43,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Spherical, Clone)
 
 TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Spherical, GetFieldValueAt)
 {
-    using ostk::math::obj::Vector3d;
-
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Time;
-    using ostk::physics::units::Derived;
-    using ostk::physics::time::Instant;
-    using ostk::physics::environment::gravitational::Spherical;
-
     {
         const Derived gravitationalParameter = {
             1.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)};

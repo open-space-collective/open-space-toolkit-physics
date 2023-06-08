@@ -4,17 +4,17 @@
 
 #include <Global.test.hpp>
 
+using ostk::math::obj::Vector3d;
+
+using ostk::physics::coord::Position;
+using ostk::physics::coord::Frame;
+using ostk::physics::Environment;
+using ostk::physics::env::obj::Celestial;
+using ostk::physics::data::Direction;
+using ostk::physics::data::providers::Nadir;
+
 TEST(OpenSpaceToolkit_Physics_Data_Providers_Nadir, Nadir)
 {
-    using ostk::math::obj::Vector3d;
-
-    using ostk::physics::coord::Position;
-    using ostk::physics::coord::Frame;
-    using ostk::physics::Environment;
-    using ostk::physics::env::obj::Celestial;
-    using ostk::physics::data::Direction;
-    using ostk::physics::data::providers::Nadir;
-
     {
         const Environment environment = Environment::Default();
         const Celestial celestialObject = *environment.accessCelestialObjectWithName("Earth");

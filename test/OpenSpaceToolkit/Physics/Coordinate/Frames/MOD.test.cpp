@@ -4,15 +4,15 @@
 
 #include <Global.test.hpp>
 
+using ostk::math::geom::d3::trf::rot::Quaternion;
+
+using ostk::physics::time::Scale;
+using ostk::physics::time::Instant;
+using ostk::physics::time::DateTime;
+using ostk::physics::coord::Frame;
+
 TEST(OpenSpaceToolkit_Physics_Coordinate_Frames_MOD, NoCaching)
 {
-    using ostk::math::geom::d3::trf::rot::Quaternion;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::coord::Frame;
-
     const auto GCRF = Frame::GCRF();
 
     const Instant epoch_1 = Instant::DateTime(DateTime(2020, 1, 1, 0, 0, 0), Scale::UTC);

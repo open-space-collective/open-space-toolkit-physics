@@ -6,10 +6,17 @@
 
 #include <Global.test.hpp>
 
+using ostk::core::types::Real;
+
+using ostk::core::types::Int64;
+using ostk::physics::time::Duration;
+using ostk::physics::time::Scale;
+using ostk::physics::time::DateTime;
+using ostk::physics::time::Instant;
+using ostk::physics::units::Time;
+
 TEST(OpenSpaceToolkit_Physics_Time_Duration, Constructor)
 {
-    using ostk::core::types::Int64;
-    using ostk::physics::time::Duration;
 
     {
         const Int64 nanosecondCount = 123456;
@@ -32,7 +39,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, Constructor)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, EqualToOperator)
 {
-    using ostk::physics::time::Duration;
 
     {
         EXPECT_TRUE(Duration(0) == Duration(0));
@@ -57,7 +63,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, EqualToOperator)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, NoEqualToOperator)
 {
-    using ostk::physics::time::Duration;
 
     {
         EXPECT_TRUE(Duration(-1) != Duration(0));
@@ -82,7 +87,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, NoEqualToOperator)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, LessThanOperator)
 {
-    using ostk::physics::time::Duration;
 
     {
         EXPECT_TRUE(Duration(-1) < Duration(0));
@@ -106,7 +110,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, LessThanOperator)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, LessThanOrEqualToOperator)
 {
-    using ostk::physics::time::Duration;
 
     {
         EXPECT_TRUE(Duration(-1) <= Duration(0));
@@ -131,7 +134,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, LessThanOrEqualToOperator)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, GreaterThanOperator)
 {
-    using ostk::physics::time::Duration;
 
     {
         EXPECT_TRUE(Duration(+1) > Duration(0));
@@ -156,7 +158,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, GreaterThanOperator)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, GreaterThanOrEqualToOperator)
 {
-    using ostk::physics::time::Duration;
 
     {
         EXPECT_TRUE(Duration(+1) >= Duration(0));
@@ -181,7 +182,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, GreaterThanOrEqualToOperator)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, AdditionOperator)
 {
-    using ostk::physics::time::Duration;
 
     {
         EXPECT_EQ(Duration(0), Duration(0) + Duration(0));
@@ -203,7 +203,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, AdditionOperator)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, SubtractionOperator)
 {
-    using ostk::physics::time::Duration;
 
     {
         EXPECT_EQ(Duration(0), Duration(0) - Duration(0));
@@ -225,8 +224,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, SubtractionOperator)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, MultiplicationOperator)
 {
-    using ostk::core::types::Real;
-    using ostk::physics::time::Duration;
 
     {
         EXPECT_EQ(Duration(0), Duration(0) * 0);
@@ -296,8 +293,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, MultiplicationOperator)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, DivisionOperator)
 {
-    using ostk::core::types::Real;
-    using ostk::physics::time::Duration;
 
     {
         EXPECT_EQ(Duration(0), Duration(0) / 1);
@@ -342,7 +337,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, DivisionOperator)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, AdditionAssignementOperator)
 {
-    using ostk::physics::time::Duration;
 
     {
         EXPECT_EQ(Duration(0), Duration(0) += Duration(0));
@@ -364,7 +358,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, AdditionAssignementOperator)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, SubtractionAssignementOperator)
 {
-    using ostk::physics::time::Duration;
 
     {
         EXPECT_EQ(Duration(0), Duration(0) -= Duration(0));
@@ -386,8 +379,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, SubtractionAssignementOperator)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, MultiplicationAssignementOperator)
 {
-    using ostk::core::types::Real;
-    using ostk::physics::time::Duration;
 
     {
         EXPECT_EQ(Duration(0), Duration(0) *= 0);
@@ -429,8 +420,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, MultiplicationAssignementOperator)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, DivisionAssignementOperator)
 {
-    using ostk::core::types::Real;
-    using ostk::physics::time::Duration;
 
     {
         EXPECT_EQ(Duration(0), Duration(0) /= 1);
@@ -475,7 +464,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, DivisionAssignementOperator)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, StreamOperator)
 {
-    using ostk::physics::time::Duration;
 
     {
         testing::internal::CaptureStdout();
@@ -488,7 +476,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, StreamOperator)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, IsDefined)
 {
-    using ostk::physics::time::Duration;
 
     {
         EXPECT_TRUE(Duration(0).isDefined());
@@ -504,7 +491,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, IsDefined)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, IsZero)
 {
-    using ostk::physics::time::Duration;
 
     {
         EXPECT_TRUE(Duration(0).isZero());
@@ -522,7 +508,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, IsZero)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, IsPositive)
 {
-    using ostk::physics::time::Duration;
 
     {
         EXPECT_TRUE(Duration(0).isPositive());
@@ -540,7 +525,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, IsPositive)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, IsStrictlyPositive)
 {
-    using ostk::physics::time::Duration;
 
     {
         EXPECT_TRUE(Duration(+1).isStrictlyPositive());
@@ -558,7 +542,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, IsStrictlyPositive)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, IsNear)
 {
-    using ostk::physics::time::Duration;
 
     {
         EXPECT_TRUE(Duration::Seconds(+0.0).isNear(Duration::Seconds(+0.0), Duration::Seconds(0.0)));
@@ -591,7 +574,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, IsNear)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, GetNanoseconds)
 {
-    using ostk::physics::time::Duration;
 
     {
         EXPECT_EQ(0, Duration(0).getNanoseconds());
@@ -641,7 +623,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, GetNanoseconds)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, GetMicroseconds)
 {
-    using ostk::physics::time::Duration;
 
     {
         EXPECT_EQ(0, Duration(0).getMicroseconds());
@@ -701,7 +682,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, GetMicroseconds)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, GetMilliseconds)
 {
-    using ostk::physics::time::Duration;
 
     {
         EXPECT_EQ(0, Duration(0).getMilliseconds());
@@ -769,7 +749,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, GetMilliseconds)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, GetSeconds)
 {
-    using ostk::physics::time::Duration;
 
     {
         EXPECT_EQ(0, Duration(0).getSeconds());
@@ -853,7 +832,7 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, GetSeconds)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, GetMinutes)
 {
-    using ostk::physics::time::Duration;
+
 
     {
         EXPECT_EQ(0, Duration(0).getMinutes());
@@ -903,7 +882,7 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, GetMinutes)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, GetHours)
 {
-    using ostk::physics::time::Duration;
+
 
     {
         EXPECT_EQ(0, Duration(0).getHours());
@@ -953,7 +932,7 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, GetHours)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, GetDays)
 {
-    using ostk::physics::time::Duration;
+
 
     {
         EXPECT_EQ(0, Duration(0).getDays());
@@ -1002,7 +981,7 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, GetDays)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, GetWeeks)
 {
-    using ostk::physics::time::Duration;
+
 
     {
         EXPECT_EQ(0, Duration(0).getWeeks());
@@ -1051,8 +1030,8 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, GetWeeks)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, InNanoseconds)
 {
-    using ostk::core::types::Int64;
-    using ostk::physics::time::Duration;
+
+
 
     {
         EXPECT_NEAR(0.0, Duration(0).inNanoseconds(), 1e-15);
@@ -1085,8 +1064,8 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, InNanoseconds)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, InMicroseconds)
 {
-    using ostk::core::types::Int64;
-    using ostk::physics::time::Duration;
+
+
 
     {
         EXPECT_NEAR(0.0, Duration(0).inMicroseconds(), 1e-15);
@@ -1119,8 +1098,8 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, InMicroseconds)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, InMilliseconds)
 {
-    using ostk::core::types::Int64;
-    using ostk::physics::time::Duration;
+
+
 
     {
         EXPECT_NEAR(0.0, Duration(0).inMilliseconds(), 1e-15);
@@ -1149,8 +1128,8 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, InMilliseconds)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, InSeconds)
 {
-    using ostk::core::types::Int64;
-    using ostk::physics::time::Duration;
+
+
 
     {
         EXPECT_NEAR(0.0, Duration(0).inSeconds(), 1e-15);
@@ -1177,8 +1156,8 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, InSeconds)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, InMinutes)
 {
-    using ostk::core::types::Int64;
-    using ostk::physics::time::Duration;
+
+
 
     {
         EXPECT_NEAR(0.0, Duration(0).inMinutes(), 1e-15);
@@ -1203,8 +1182,8 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, InMinutes)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, InHours)
 {
-    using ostk::core::types::Int64;
-    using ostk::physics::time::Duration;
+
+
 
     {
         EXPECT_NEAR(0.0, Duration(0).inHours(), 1e-15);
@@ -1227,8 +1206,8 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, InHours)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, InDays)
 {
-    using ostk::core::types::Int64;
-    using ostk::physics::time::Duration;
+
+
 
     {
         EXPECT_NEAR(0.0, Duration(0).inDays(), 1e-15);
@@ -1251,8 +1230,8 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, InDays)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, InWeeks)
 {
-    using ostk::core::types::Int64;
-    using ostk::physics::time::Duration;
+
+
 
     {
         EXPECT_NEAR(0.0, Duration(0).inWeeks(), 1e-15);
@@ -1275,9 +1254,9 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, InWeeks)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, In)
 {
-    using ostk::core::types::Int64;
-    using ostk::physics::units::Time;
-    using ostk::physics::time::Duration;
+
+
+
 
     {
         EXPECT_NEAR(
@@ -1321,7 +1300,7 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, In)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, GetAbsolute)
 {
-    using ostk::physics::time::Duration;
+
 
     {
         EXPECT_EQ(Duration(0), Duration(0).getAbsolute());
@@ -1336,7 +1315,7 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, GetAbsolute)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, ToString)
 {
-    using ostk::physics::time::Duration;
+
 
     // Standard
 
@@ -1648,7 +1627,7 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, ToString)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, Undefined)
 {
-    using ostk::physics::time::Duration;
+
 
     {
         EXPECT_NO_THROW(Duration::Undefined());
@@ -1658,7 +1637,7 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, Undefined)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, Zero)
 {
-    using ostk::physics::time::Duration;
+
 
     {
         EXPECT_NO_THROW(Duration::Zero());
@@ -1670,7 +1649,7 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, Zero)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, Nanoseconds)
 {
-    using ostk::physics::time::Duration;
+
 
     {
         EXPECT_NO_THROW(Duration::Nanoseconds(0));
@@ -1683,7 +1662,7 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, Nanoseconds)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, Microseconds)
 {
-    using ostk::physics::time::Duration;
+
 
     {
         EXPECT_NO_THROW(Duration::Microseconds(0));
@@ -1696,7 +1675,7 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, Microseconds)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, Milliseconds)
 {
-    using ostk::physics::time::Duration;
+
 
     {
         EXPECT_NO_THROW(Duration::Milliseconds(0));
@@ -1709,7 +1688,7 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, Milliseconds)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, Seconds)
 {
-    using ostk::physics::time::Duration;
+
 
     {
         EXPECT_NO_THROW(Duration::Seconds(0));
@@ -1722,7 +1701,7 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, Seconds)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, Minutes)
 {
-    using ostk::physics::time::Duration;
+
 
     {
         EXPECT_NO_THROW(Duration::Minutes(0));
@@ -1735,7 +1714,7 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, Minutes)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, Hours)
 {
-    using ostk::physics::time::Duration;
+
 
     {
         EXPECT_NO_THROW(Duration::Hours(0));
@@ -1748,7 +1727,7 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, Hours)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, Days)
 {
-    using ostk::physics::time::Duration;
+
 
     {
         EXPECT_NO_THROW(Duration::Days(0));
@@ -1761,7 +1740,7 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, Days)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, Weeks)
 {
-    using ostk::physics::time::Duration;
+
 
     {
         EXPECT_NO_THROW(Duration::Weeks(0));
@@ -1774,10 +1753,10 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, Weeks)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, Between)
 {
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::Duration;
+
+
+
+
 
     {
         for (const auto year : {1981, 2000, 2030})
@@ -1994,7 +1973,7 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, Between)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, Parse)
 {
-    using ostk::physics::time::Duration;
+
 
     // Undefined (automatic format detection)
 

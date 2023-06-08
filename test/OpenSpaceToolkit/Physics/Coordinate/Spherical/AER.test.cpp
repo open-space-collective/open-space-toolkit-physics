@@ -15,21 +15,45 @@
 
 #include <Global.test.hpp>
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, Constructor)
+using ostk::core::types::Shared;
+using ostk::core::types::Real;
+using ostk::core::types::String;
+using ostk::core::ctnr::Tuple;
+using ostk::core::ctnr::Array;
+using ostk::core::ctnr::Table;
+using ostk::core::fs::Path;
+using ostk::core::fs::File;
+
+using ostk::math::obj::Vector3d;
+
+using ostk::physics::time::Scale;
+using ostk::physics::time::Instant;
+using ostk::physics::time::DateTime;
+using ostk::physics::units::Length;
+using ostk::physics::units::Angle;
+using ostk::physics::coord::Position;
+using ostk::physics::coord::spherical::AER;
+using ostk::physics::coord::spherical::LLA;
+using ostk::physics::coord::Frame;
+using ostk::physics::env::obj::celest::Earth;
+
+class OpenSpaceToolkit_Physics_Coordinate_Spherical_AER : public ::testing::Test
 {
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Angle;
-    using ostk::physics::coord::Position;
-    using ostk::physics::coord::spherical::AER;
-
+   protected:
+    void SetUp() override
     {
-        const Angle azimuth = Angle::Degrees(10.0);
-        const Angle elevation = Angle::Degrees(20.0);
-        const Length range = Length::Meters(30.0);
-
-        EXPECT_NO_THROW(AER aer(azimuth, elevation, range););
+        aer_ = AER(azimuth_, elevation_, range_);
     }
 
+    const Angle azimuth_ = Angle::Degrees(10.0);
+    const Angle elevation_ = Angle::Degrees(20.0);
+    const Length range_ = Length::Meters(30.0);
+
+    AER aer_ = AER::Undefined();
+};
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, Constructor)
+{
     {
         EXPECT_ANY_THROW(AER aer(Angle::Degrees(-1.0), Angle::Degrees(20.0), Length::Meters(30.0)););
         EXPECT_ANY_THROW(AER aer(Angle::Degrees(+361.0), Angle::Degrees(20.0), Length::Meters(30.0)););
@@ -41,21 +65,10 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, Constructor)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, EqualToOperator)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, EqualToOperator)
 {
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Angle;
-    using ostk::physics::coord::Position;
-    using ostk::physics::coord::spherical::AER;
-
     {
-        const Angle azimuth = Angle::Degrees(10.0);
-        const Angle elevation = Angle::Degrees(20.0);
-        const Length range = Length::Meters(30.0);
-
-        const AER aer = {azimuth, elevation, range};
-
-        EXPECT_TRUE(aer == aer);
+        EXPECT_TRUE(aer_ == aer_);
     }
 
     {
@@ -66,33 +79,16 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, EqualToOperator)
     }
 
     {
-        const Angle azimuth = Angle::Degrees(10.0);
-        const Angle elevation = Angle::Degrees(20.0);
-        const Length range = Length::Meters(30.0);
-
-        const AER aer = {azimuth, elevation, range};
-
         EXPECT_FALSE(AER::Undefined() == AER::Undefined());
-        EXPECT_FALSE(aer == AER::Undefined());
-        EXPECT_FALSE(AER::Undefined() == aer);
+        EXPECT_FALSE(aer_ == AER::Undefined());
+        EXPECT_FALSE(AER::Undefined() == aer_);
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, NotEqualToOperator)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, NotEqualToOperator)
 {
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Angle;
-    using ostk::physics::coord::Position;
-    using ostk::physics::coord::spherical::AER;
-
     {
-        const Angle azimuth = Angle::Degrees(10.0);
-        const Angle elevation = Angle::Degrees(20.0);
-        const Length range = Length::Meters(30.0);
-
-        const AER aer = {azimuth, elevation, range};
-
-        EXPECT_FALSE(aer != aer);
+        EXPECT_FALSE(aer_ != aer_);
     }
 
     {
@@ -103,55 +99,27 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, NotEqualToOperator)
     }
 
     {
-        const Angle azimuth = Angle::Degrees(10.0);
-        const Angle elevation = Angle::Degrees(20.0);
-        const Length range = Length::Meters(30.0);
-
-        const AER aer = {azimuth, elevation, range};
-
         EXPECT_TRUE(AER::Undefined() != AER::Undefined());
-        EXPECT_TRUE(aer != AER::Undefined());
-        EXPECT_TRUE(AER::Undefined() != aer);
+        EXPECT_TRUE(aer_ != AER::Undefined());
+        EXPECT_TRUE(AER::Undefined() != aer_);
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, StreamOperator)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, StreamOperator)
 {
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Angle;
-    using ostk::physics::coord::Position;
-    using ostk::physics::coord::spherical::AER;
-
     {
-        const Angle azimuth = Angle::Degrees(10.0);
-        const Angle elevation = Angle::Degrees(20.0);
-        const Length range = Length::Meters(30.0);
-
-        const AER aer = {azimuth, elevation, range};
-
         testing::internal::CaptureStdout();
 
-        EXPECT_NO_THROW(std::cout << aer << std::endl);
+        EXPECT_NO_THROW(std::cout << aer_ << std::endl);
 
         EXPECT_FALSE(testing::internal::GetCapturedStdout().empty());
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, IsDefined)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, IsDefined)
 {
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Angle;
-    using ostk::physics::coord::Position;
-    using ostk::physics::coord::spherical::AER;
-
     {
-        const Angle azimuth = Angle::Degrees(10.0);
-        const Angle elevation = Angle::Degrees(20.0);
-        const Length range = Length::Meters(30.0);
-
-        const AER aer = {azimuth, elevation, range};
-
-        EXPECT_TRUE(aer.isDefined());
+        EXPECT_TRUE(aer_.isDefined());
     }
 
     {
@@ -159,21 +127,10 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, IsDefined)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, GetAzimuth)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, GetAzimuth)
 {
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Angle;
-    using ostk::physics::coord::Position;
-    using ostk::physics::coord::spherical::AER;
-
     {
-        const Angle azimuth = Angle::Degrees(10.0);
-        const Angle elevation = Angle::Degrees(20.0);
-        const Length range = Length::Meters(30.0);
-
-        const AER aer = {azimuth, elevation, range};
-
-        EXPECT_EQ(azimuth, aer.getAzimuth());
+        EXPECT_EQ(azimuth_, aer_.getAzimuth());
     }
 
     {
@@ -181,21 +138,10 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, GetAzimuth)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, GetElevation)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, GetElevation)
 {
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Angle;
-    using ostk::physics::coord::Position;
-    using ostk::physics::coord::spherical::AER;
-
     {
-        const Angle azimuth = Angle::Degrees(10.0);
-        const Angle elevation = Angle::Degrees(20.0);
-        const Length range = Length::Meters(30.0);
-
-        const AER aer = {azimuth, elevation, range};
-
-        EXPECT_EQ(elevation, aer.getElevation());
+        EXPECT_EQ(elevation_, aer_.getElevation());
     }
 
     {
@@ -203,21 +149,10 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, GetElevation)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, GetRange)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, GetRange)
 {
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Angle;
-    using ostk::physics::coord::Position;
-    using ostk::physics::coord::spherical::AER;
-
     {
-        const Angle azimuth = Angle::Degrees(10.0);
-        const Angle elevation = Angle::Degrees(20.0);
-        const Length range = Length::Meters(30.0);
-
-        const AER aer = {azimuth, elevation, range};
-
-        EXPECT_EQ(range, aer.getRange());
+        EXPECT_EQ(range_, aer_.getRange());
     }
 
     {
@@ -225,23 +160,12 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, GetRange)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, ToVector)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, ToVector)
 {
     using ostk::math::obj::Vector3d;
 
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Angle;
-    using ostk::physics::coord::Position;
-    using ostk::physics::coord::spherical::AER;
-
     {
-        const Angle azimuth = Angle::Degrees(10.0);
-        const Angle elevation = Angle::Degrees(20.0);
-        const Length range = Length::Meters(30.0);
-
-        const AER aer = {azimuth, elevation, range};
-
-        EXPECT_EQ(Vector3d(10.0, 20.0, 30.0), aer.toVector());
+        EXPECT_EQ(Vector3d(10.0, 20.0, 30.0), aer_.toVector());
     }
 
     {
@@ -249,7 +173,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, ToVector)
     }
 }
 
-// TEST (OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, ToCartesian)
+// TEST_F (OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, ToCartesian)
 // {
 
 //     using ostk::physics::units::Length ;
@@ -263,7 +187,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, ToVector)
 //         const Angle elevation = Angle::Degrees(20.0) ;
 //         const Length range = Length::Meters(30.0) ;
 
-//         const AER aer = { azimuth, elevation, range } ;
+//         const AER aer_ = { azimuth, elevation, range } ;
 
 //         FAIL() ;
 
@@ -277,21 +201,10 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, ToVector)
 
 // }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, ToString)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, ToString)
 {
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Angle;
-    using ostk::physics::coord::Position;
-    using ostk::physics::coord::spherical::AER;
-
     {
-        const Angle azimuth = Angle::Degrees(10.0);
-        const Angle elevation = Angle::Degrees(20.0);
-        const Length range = Length::Meters(30.0);
-
-        const AER aer = {azimuth, elevation, range};
-
-        EXPECT_EQ("[10.0 [deg], 20.0 [deg], 30.0 [m]]", aer.toString());
+        EXPECT_EQ("[10.0 [deg], 20.0 [deg], 30.0 [m]]", aer_.toString());
     }
 
     {
@@ -299,34 +212,19 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, ToString)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, Undefined)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, Undefined)
 {
-    using ostk::physics::coord::spherical::AER;
-
     {
         EXPECT_NO_THROW(AER::Undefined());
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, Vector)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, Vector)
 {
-    using ostk::math::obj::Vector3d;
-
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Angle;
-    using ostk::physics::coord::Position;
-    using ostk::physics::coord::spherical::AER;
-
     {
         const Vector3d vector = {10.0, 20.0, 30.0};
 
-        const Angle azimuth = Angle::Degrees(10.0);
-        const Angle elevation = Angle::Degrees(20.0);
-        const Length range = Length::Meters(30.0);
-
-        const AER aer = {azimuth, elevation, range};
-
-        EXPECT_EQ(aer, AER::Vector(vector));
+        EXPECT_EQ(aer_, AER::Vector(vector));
     }
 
     {
@@ -334,30 +232,8 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, Vector)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, FromPositionToPosition)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, FromPositionToPosition)
 {
-    using ostk::core::types::Shared;
-    using ostk::core::types::Real;
-    using ostk::core::types::String;
-    using ostk::core::ctnr::Tuple;
-    using ostk::core::ctnr::Array;
-    using ostk::core::ctnr::Table;
-    using ostk::core::fs::Path;
-    using ostk::core::fs::File;
-
-    using ostk::math::obj::Vector3d;
-
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::coord::Position;
-    using ostk::physics::coord::spherical::LLA;
-    using ostk::physics::coord::spherical::AER;
-    using ostk::physics::coord::Frame;
-    using ostk::physics::env::obj::celest::Earth;
-
     {
         const Array<Tuple<File, Angle, Length>> referenceScenarios = {
             {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER/"

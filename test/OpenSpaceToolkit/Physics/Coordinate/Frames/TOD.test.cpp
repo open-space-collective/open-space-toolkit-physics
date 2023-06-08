@@ -4,17 +4,17 @@
 
 #include <Global.test.hpp>
 
+namespace iau = ostk::physics::coord::frame::providers::iau;
+
+using ostk::math::geom::d3::trf::rot::Quaternion;
+
+using ostk::physics::time::Scale;
+using ostk::physics::time::Instant;
+using ostk::physics::time::DateTime;
+using ostk::physics::coord::Frame;
+
 TEST(OpenSpaceToolkit_Physics_Coordinate_Frames_TOD, NoCaching)
 {
-    namespace iau = ostk::physics::coord::frame::providers::iau;
-
-    using ostk::math::geom::d3::trf::rot::Quaternion;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::coord::Frame;
-
     {
         const auto GCRF = Frame::GCRF();
 

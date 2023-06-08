@@ -5,117 +5,85 @@
 
 #include <Global.test.hpp>
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Position, Constructor)
+using ostk::core::types::Shared;
+using ostk::core::types::Real;
+
+using ostk::math::obj::Vector3d;
+
+using ostk::physics::coord::Frame;
+using ostk::physics::coord::Position;
+using ostk::physics::units::Length;
+
+class OpenSpaceToolkit_Physics_Coordinate_Position : public ::testing::Test
 {
-    using ostk::physics::coord::Frame;
-    using ostk::physics::coord::Position;
-
+   protected:
+    void SetUp() override
     {
-        EXPECT_NO_THROW(Position position({0.0, 0.0, 0.0}, Position::Unit::Meter, Frame::GCRF()));
-    }
-}
-
-TEST(OpenSpaceToolkit_Physics_Coordinate_Position, EqualToOperator)
-{
-    using ostk::physics::coord::Frame;
-    using ostk::physics::coord::Position;
-
-    {
-        EXPECT_TRUE(
-            Position({0.0, 0.0, 0.0}, Position::Unit::Meter, Frame::GCRF()) ==
-            Position({0.0, 0.0, 0.0}, Position::Unit::Meter, Frame::GCRF())
-        );
-        EXPECT_TRUE(
-            Position({0.0, 0.0, 0.0}, Position::Unit::Meter, Frame::ITRF()) ==
-            Position({0.0, 0.0, 0.0}, Position::Unit::Meter, Frame::ITRF())
-        );
+        positionGCRF_ = {vector_, Position::Unit::Meter, Frame::GCRF()};
+        positionITRF_ = {vector_, Position::Unit::Meter, Frame::ITRF()};
     }
 
+    const Vector3d vector_ = {0.0, 0.0, 0.0};
+
+    Position positionGCRF_ = Position::Undefined();
+    Position positionITRF_ = Position::Undefined();
+};
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, EqualToOperator)
+{
     {
-        EXPECT_FALSE(
-            Position({0.0, 0.0, 0.0}, Position::Unit::Meter, Frame::GCRF()) ==
-            Position({1.0, 0.0, 0.0}, Position::Unit::Meter, Frame::GCRF())
-        );
-        EXPECT_FALSE(
-            Position({0.0, 0.0, 0.0}, Position::Unit::Meter, Frame::GCRF()) ==
-            Position({0.0, 0.0, 0.0}, Position::Unit::Foot, Frame::GCRF())
-        );
-        EXPECT_FALSE(
-            Position({0.0, 0.0, 0.0}, Position::Unit::Meter, Frame::GCRF()) ==
-            Position({0.0, 0.0, 0.0}, Position::Unit::Meter, Frame::ITRF())
-        );
+        EXPECT_TRUE(positionGCRF_ == positionGCRF_);
+        EXPECT_TRUE(positionITRF_ == positionITRF_);
+    }
+
+    {
+        EXPECT_FALSE(positionGCRF_ == Position({1.0, 0.0, 0.0}, Position::Unit::Meter, Frame::GCRF()));
+        EXPECT_FALSE(positionGCRF_ == Position({0.0, 0.0, 0.0}, Position::Unit::Foot, Frame::GCRF()));
+        EXPECT_FALSE(positionGCRF_ == positionITRF_);
     }
 
     {
         EXPECT_FALSE(Position::Undefined() == Position::Undefined());
-        EXPECT_FALSE(Position({0.0, 0.0, 0.0}, Position::Unit::Meter, Frame::GCRF()) == Position::Undefined());
-        EXPECT_FALSE(Position::Undefined() == Position({0.0, 0.0, 0.0}, Position::Unit::Meter, Frame::GCRF()));
+        EXPECT_FALSE(positionGCRF_ == Position::Undefined());
+        EXPECT_FALSE(Position::Undefined() == positionGCRF_);
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Position, NotEqualToOperator)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, NotEqualToOperator)
 {
-    using ostk::physics::coord::Frame;
-    using ostk::physics::coord::Position;
-
     {
-        EXPECT_FALSE(
-            Position({0.0, 0.0, 0.0}, Position::Unit::Meter, Frame::GCRF()) !=
-            Position({0.0, 0.0, 0.0}, Position::Unit::Meter, Frame::GCRF())
-        );
-        EXPECT_FALSE(
-            Position({0.0, 0.0, 0.0}, Position::Unit::Meter, Frame::ITRF()) !=
-            Position({0.0, 0.0, 0.0}, Position::Unit::Meter, Frame::ITRF())
-        );
+        EXPECT_FALSE(positionGCRF_ != positionGCRF_);
+        EXPECT_FALSE(positionITRF_ != positionITRF_);
     }
 
     {
-        EXPECT_TRUE(
-            Position({0.0, 0.0, 0.0}, Position::Unit::Meter, Frame::GCRF()) !=
-            Position({1.0, 0.0, 0.0}, Position::Unit::Meter, Frame::GCRF())
-        );
-        EXPECT_TRUE(
-            Position({0.0, 0.0, 0.0}, Position::Unit::Meter, Frame::GCRF()) !=
-            Position({0.0, 0.0, 0.0}, Position::Unit::Foot, Frame::GCRF())
-        );
-        EXPECT_TRUE(
-            Position({0.0, 0.0, 0.0}, Position::Unit::Meter, Frame::GCRF()) !=
-            Position({0.0, 0.0, 0.0}, Position::Unit::Meter, Frame::ITRF())
-        );
+        EXPECT_TRUE(positionGCRF_ != Position({1.0, 0.0, 0.0}, Position::Unit::Meter, Frame::GCRF()));
+        EXPECT_TRUE(positionGCRF_ != Position({0.0, 0.0, 0.0}, Position::Unit::Foot, Frame::GCRF()));
+        EXPECT_TRUE(positionGCRF_ != positionITRF_);
     }
 
     {
         EXPECT_TRUE(Position::Undefined() != Position::Undefined());
-        EXPECT_TRUE(Position({0.0, 0.0, 0.0}, Position::Unit::Meter, Frame::GCRF()) != Position::Undefined());
-        EXPECT_TRUE(Position::Undefined() != Position({0.0, 0.0, 0.0}, Position::Unit::Meter, Frame::GCRF()));
+        EXPECT_TRUE(positionGCRF_ != Position::Undefined());
+        EXPECT_TRUE(Position::Undefined() != positionGCRF_);
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Position, StreamOperator)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, StreamOperator)
 {
-    using ostk::physics::coord::Frame;
-    using ostk::physics::coord::Position;
-
     {
-        const Position position = {{0.0, 0.0, 0.0}, Position::Unit::Meter, Frame::GCRF()};
-
         testing::internal::CaptureStdout();
 
-        EXPECT_NO_THROW(std::cout << position << std::endl);
+        EXPECT_NO_THROW(std::cout << positionGCRF_ << std::endl);
 
         EXPECT_FALSE(testing::internal::GetCapturedStdout().empty());
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Position, IsDefined)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, IsDefined)
 {
-    using ostk::physics::coord::Frame;
-    using ostk::physics::coord::Position;
-
     {
-        const Position position = {{0.0, 0.0, 0.0}, Position::Unit::Meter, Frame::GCRF()};
-
-        EXPECT_TRUE(position.isDefined());
+        EXPECT_TRUE(positionGCRF_.isDefined());
     }
 
     {
@@ -123,16 +91,10 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Position, IsDefined)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Position, IsNear)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, IsNear)
 {
-    using ostk::physics::units::Length;
-    using ostk::physics::coord::Frame;
-    using ostk::physics::coord::Position;
-
     {
-        const Position position = {{0.0, 0.0, 0.0}, Position::Unit::Meter, Frame::GCRF()};
-
-        EXPECT_TRUE(position.isNear(position, Length::Meters(0.0)));
+        EXPECT_TRUE(positionGCRF_.isNear(positionGCRF_, Length::Meters(0.0)));
     }
 
     {
@@ -144,27 +106,17 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Position, IsNear)
     }
 
     {
-        const Position position = {{0.0, 0.0, 0.0}, Position::Unit::Meter, Frame::GCRF()};
-
         EXPECT_ANY_THROW(Position::Undefined().isNear(Position::Undefined(), Length::Undefined()));
-        EXPECT_ANY_THROW(position.isNear(Position::Undefined(), Length::Meters(0.0)));
-        EXPECT_ANY_THROW(Position::Undefined().isNear(position, Length::Meters(0.0)));
-        EXPECT_ANY_THROW(position.isNear(position, Length::Undefined()));
+        EXPECT_ANY_THROW(positionGCRF_.isNear(Position::Undefined(), Length::Meters(0.0)));
+        EXPECT_ANY_THROW(Position::Undefined().isNear(positionGCRF_, Length::Meters(0.0)));
+        EXPECT_ANY_THROW(positionGCRF_.isNear(positionGCRF_, Length::Undefined()));
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Position, AccessCoordinates)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, AccessCoordinates)
 {
-    using ostk::math::obj::Vector3d;
-
-    using ostk::physics::units::Length;
-    using ostk::physics::coord::Frame;
-    using ostk::physics::coord::Position;
-
     {
-        const Position position = {{0.0, 0.0, 0.0}, Position::Unit::Meter, Frame::GCRF()};
-
-        EXPECT_EQ(Vector3d(0.0, 0.0, 0.0), position.accessCoordinates());
+        EXPECT_EQ(Vector3d(0.0, 0.0, 0.0), positionGCRF_.accessCoordinates());
     }
 
     {
@@ -172,22 +124,14 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Position, AccessCoordinates)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Position, AccessFrame)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, AccessFrame)
 {
-    using ostk::physics::units::Length;
-    using ostk::physics::coord::Frame;
-    using ostk::physics::coord::Position;
-
     {
-        const Position position = {{0.0, 0.0, 0.0}, Position::Unit::Meter, Frame::GCRF()};
-
-        EXPECT_EQ(Frame::GCRF(), position.accessFrame());
+        EXPECT_EQ(Frame::GCRF(), positionGCRF_.accessFrame());
     }
 
     {
-        const Position position = {{0.0, 0.0, 0.0}, Position::Unit::Meter, Frame::ITRF()};
-
-        EXPECT_EQ(Frame::ITRF(), position.accessFrame());
+        EXPECT_EQ(Frame::ITRF(), positionITRF_.accessFrame());
     }
 
     {
@@ -195,18 +139,10 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Position, AccessFrame)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Position, GetCoordinates)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, GetCoordinates)
 {
-    using ostk::math::obj::Vector3d;
-
-    using ostk::physics::units::Length;
-    using ostk::physics::coord::Frame;
-    using ostk::physics::coord::Position;
-
     {
-        const Position position = {{0.0, 0.0, 0.0}, Position::Unit::Meter, Frame::GCRF()};
-
-        EXPECT_EQ(Vector3d(0.0, 0.0, 0.0), position.getCoordinates());
+        EXPECT_EQ(vector_, positionGCRF_.getCoordinates());
     }
 
     {
@@ -214,15 +150,10 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Position, GetCoordinates)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Position, GetUnit)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, GetUnit)
 {
-    using ostk::physics::coord::Frame;
-    using ostk::physics::coord::Position;
-
     {
-        const Position position = {{0.0, 0.0, 0.0}, Position::Unit::Meter, Frame::GCRF()};
-
-        EXPECT_EQ(Position::Unit::Meter, position.getUnit());
+        EXPECT_EQ(Position::Unit::Meter, positionGCRF_.getUnit());
     }
 
     {
@@ -230,15 +161,8 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Position, GetUnit)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Position, InUnit)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, InUnit)
 {
-    using ostk::core::types::Real;
-
-    using ostk::math::obj::Vector3d;
-
-    using ostk::physics::coord::Frame;
-    using ostk::physics::coord::Position;
-
     {
         const Position position = {{1.0, 0.0, 0.0}, Position::Unit::Meter, Frame::GCRF()};
 
@@ -250,22 +174,13 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Position, InUnit)
     }
 
     {
-        const Position position = {{0.0, 0.0, 0.0}, Position::Unit::Meter, Frame::GCRF()};
-
         EXPECT_ANY_THROW(Position::Undefined().inUnit(Position::Unit::Meter));
-        EXPECT_ANY_THROW(position.inUnit(Position::Unit::Undefined));
+        EXPECT_ANY_THROW(positionGCRF_.inUnit(Position::Unit::Undefined));
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Position, InMeters)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, InMeters)
 {
-    using ostk::core::types::Real;
-
-    using ostk::math::obj::Vector3d;
-
-    using ostk::physics::coord::Frame;
-    using ostk::physics::coord::Position;
-
     {
         const Position position = {{1.0, 0.0, 0.0}, Position::Unit::Meter, Frame::GCRF()};
 
@@ -279,16 +194,9 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Position, InMeters)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Position, InFrame)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, InFrame)
 {
-    using ostk::core::types::Real;
-
-    using ostk::math::obj::Vector3d;
-
-    using ostk::physics::units::Length;
     using ostk::physics::time::Instant;
-    using ostk::physics::coord::Frame;
-    using ostk::physics::coord::Position;
 
     {
         const Position position_GCRF = {{7000e3, 1000e3, 500e3}, Position::Unit::Meter, Frame::GCRF()};
@@ -303,19 +211,14 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Position, InFrame)
     }
 
     {
-        const Position position = {{0.0, 0.0, 0.0}, Position::Unit::Meter, Frame::GCRF()};
-
         EXPECT_ANY_THROW(Position::Undefined().inFrame(Frame::ITRF(), Instant::J2000()));
-        EXPECT_ANY_THROW(position.inFrame(Frame::Undefined(), Instant::J2000()));
-        EXPECT_ANY_THROW(position.inFrame(Frame::ITRF(), Instant::Undefined()));
+        EXPECT_ANY_THROW(positionGCRF_.inFrame(Frame::Undefined(), Instant::J2000()));
+        EXPECT_ANY_THROW(positionGCRF_.inFrame(Frame::ITRF(), Instant::Undefined()));
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Position, ToString)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, ToString)
 {
-    using ostk::physics::coord::Frame;
-    using ostk::physics::coord::Position;
-
     {
         const Position position = {{1.0, 2.0, 3.0}, Position::Unit::Meter, Frame::GCRF()};
 
@@ -327,10 +230,8 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Position, ToString)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Position, Undefined)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, Undefined)
 {
-    using ostk::physics::coord::Position;
-
     {
         EXPECT_NO_THROW(Position::Undefined());
 
@@ -338,13 +239,8 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Position, Undefined)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Position, Meters)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, Meters)
 {
-    using ostk::core::types::Shared;
-
-    using ostk::physics::coord::Frame;
-    using ostk::physics::coord::Position;
-
     {
         const Shared<const Frame> gcrfSPtr = Frame::GCRF();
 

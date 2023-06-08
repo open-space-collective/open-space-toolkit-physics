@@ -32,6 +32,28 @@
 
 #include <Global.test.hpp>
 
+using ostk::core::types::Shared;
+using ostk::core::types::String;
+using ostk::core::ctnr::Triple;
+using ostk::core::ctnr::Array;
+using ostk::core::ctnr::Table;
+using ostk::core::fs::Path;
+using ostk::core::fs::File;
+
+using ostk::math::obj::Vector3d;
+using ostk::math::geom::d3::trf::rot::Quaternion;
+using ostk::math::geom::d3::trf::rot::RotationVector;
+
+using ostk::physics::units::Length;
+using ostk::physics::units::Angle;
+using ostk::physics::time::Scale;
+using ostk::physics::time::Instant;
+using ostk::physics::time::DateTime;
+using ostk::physics::time::Duration;
+using ostk::physics::coord::spherical::LLA;
+using ostk::physics::coord::Frame;
+using ostk::physics::env::obj::celest::Earth;
+
 // TEST (OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, Constructor)
 // {
 
@@ -47,28 +69,6 @@
 
 TEST(OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, GetFrameAt)
 {
-    using ostk::core::types::Shared;
-    using ostk::core::types::String;
-    using ostk::core::ctnr::Triple;
-    using ostk::core::ctnr::Array;
-    using ostk::core::ctnr::Table;
-    using ostk::core::fs::Path;
-    using ostk::core::fs::File;
-
-    using ostk::math::obj::Vector3d;
-    using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
-
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::time::Duration;
-    using ostk::physics::coord::spherical::LLA;
-    using ostk::physics::coord::Frame;
-    using ostk::physics::env::obj::celest::Earth;
-
     {
         const Earth earth = Earth::Default();
 
@@ -187,8 +187,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, GetFram
 
 TEST(OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, StaticMethods)
 {
-    using ostk::physics::env::obj::celest::Earth;
-
     EXPECT_NO_THROW(Earth::Default());
 
     const Earth earth = Earth::Default();
@@ -199,8 +197,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, StaticM
 
 TEST(OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, EGM2008)
 {
-    using ostk::physics::env::obj::celest::Earth;
-
     EXPECT_NO_THROW(Earth::EGM2008());
     EXPECT_NO_THROW(Earth::EGM2008(2190, 2160));
     EXPECT_ANY_THROW(Earth::EGM2008(3000, 3000));
@@ -208,8 +204,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, EGM2008
 
 TEST(OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, EGM96)
 {
-    using ostk::physics::env::obj::celest::Earth;
-
     EXPECT_NO_THROW(Earth::EGM96());
     EXPECT_NO_THROW(Earth::EGM96(360, 360));
     EXPECT_ANY_THROW(Earth::EGM96(3000, 3000));
@@ -222,8 +216,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, EGM96)
 
 TEST(OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, EGM84)
 {
-    using ostk::physics::env::obj::celest::Earth;
-
     EXPECT_NO_THROW(Earth::EGM84());
     EXPECT_NO_THROW(Earth::EGM84(180, 180));
     EXPECT_ANY_THROW(Earth::EGM84(3000, 3000));
@@ -236,8 +228,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, EGM84)
 
 TEST(OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, WGS84_EGM96)
 {
-    using ostk::physics::env::obj::celest::Earth;
-
     EXPECT_NO_THROW(Earth::WGS84_EGM96());
     EXPECT_NO_THROW(Earth::WGS84_EGM96(360, 360));
     EXPECT_ANY_THROW(Earth::WGS84_EGM96(3000, 3000));
@@ -250,8 +240,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, WGS84_E
 
 TEST(OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, WGS84)
 {
-    using ostk::physics::env::obj::celest::Earth;
-
     EXPECT_NO_THROW(Earth::WGS84());
     EXPECT_NO_THROW(Earth::WGS84(20, 0));
     EXPECT_ANY_THROW(Earth::WGS84(3000, 3000));
@@ -264,8 +252,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, WGS84)
 
 TEST(OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, Spherical)
 {
-    using ostk::physics::env::obj::celest::Earth;
-
     const Earth earth = Earth::Spherical();
     EXPECT_TRUE(earth.isDefined());
 

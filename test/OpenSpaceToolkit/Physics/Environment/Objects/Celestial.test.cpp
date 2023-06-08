@@ -36,6 +36,35 @@
 
 #include <Global.test.hpp>
 
+using ostk::core::types::Shared;
+using ostk::core::types::Real;
+using ostk::core::types::String;
+
+using ostk::math::obj::Vector3d;
+
+using ostk::physics::Unit;
+using ostk::physics::units::Angle;
+using ostk::physics::units::Length;
+using ostk::physics::units::Time;
+using ostk::physics::units::Mass;
+using ostk::physics::units::Derived;
+using ostk::physics::data::Vector;
+using ostk::physics::data::Scalar;
+using ostk::physics::time::Instant;
+using ostk::physics::coord::Frame;
+using ostk::physics::coord::Position;
+using ostk::physics::coord::spherical::LLA;
+using ostk::physics::env::obj::Celestial;
+using ostk::physics::env::Ephemeris;
+using ostk::physics::env::ephem::Analytical;
+using GravitationalModel = ostk::physics::environment::gravitational::Model;
+using MagneticModel = ostk::physics::environment::magnetic::Model;
+using AtmosphericModel = ostk::physics::environment::atmospheric::Model;
+using ostk::physics::environment::gravitational::Spherical;
+using ostk::physics::environment::magnetic::Dipole;
+using ostk::physics::environment::atmospheric::earth::Exponential;
+using EarthCelestialBody = ostk::physics::env::obj::celest::Earth;
+
 // TEST (OpenSpaceToolkit_Physics_Environment_Objects_Celestial, Constructor)
 // {
 
@@ -51,30 +80,6 @@
 
 TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, accessModel)
 {
-    using ostk::core::types::Shared;
-    using ostk::core::types::Real;
-    using ostk::core::types::String;
-
-    using ostk::math::obj::Vector3d;
-
-    using ostk::physics::Unit;
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Time;
-    using ostk::physics::units::Derived;
-    using ostk::physics::data::Vector;
-    using ostk::physics::time::Instant;
-    using ostk::physics::coord::Frame;
-    using ostk::physics::coord::Position;
-    using ostk::physics::env::obj::Celestial;
-    using ostk::physics::env::Ephemeris;
-    using ostk::physics::env::ephem::Analytical;
-    using GravitationalModel = ostk::physics::environment::gravitational::Model;
-    using MagneticModel = ostk::physics::environment::magnetic::Model;
-    using AtmosphericModel = ostk::physics::environment::atmospheric::Model;
-    using ostk::physics::environment::gravitational::Spherical;
-    using ostk::physics::environment::magnetic::Dipole;
-    using ostk::physics::environment::atmospheric::earth::Exponential;
-
     {
         const String name = "Some Planet";
         const Celestial::Type type = Celestial::Type::Earth;
@@ -178,26 +183,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, accessModel)
 
 TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetGravitationalFieldAt)
 {
-    using ostk::core::types::Shared;
-    using ostk::core::types::Real;
-    using ostk::core::types::String;
-
-    using ostk::math::obj::Vector3d;
-
-    using ostk::physics::Unit;
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Time;
-    using ostk::physics::units::Derived;
-    using ostk::physics::data::Vector;
-    using ostk::physics::time::Instant;
-    using ostk::physics::coord::Frame;
-    using ostk::physics::coord::Position;
-    using ostk::physics::env::obj::Celestial;
-    using ostk::physics::env::Ephemeris;
-    using ostk::physics::env::ephem::Analytical;
-    using GravitationalModel = ostk::physics::environment::gravitational::Model;
-    using ostk::physics::environment::gravitational::Spherical;
-
     {
         const String name = "Some Planet";
         const Celestial::Type type = Celestial::Type::Earth;
@@ -274,26 +259,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetGravitationalFie
 
 TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetMagneticFieldAt)
 {
-    using ostk::core::types::Shared;
-    using ostk::core::types::Real;
-    using ostk::core::types::String;
-
-    using ostk::math::obj::Vector3d;
-
-    using ostk::physics::Unit;
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Time;
-    using ostk::physics::units::Derived;
-    using ostk::physics::data::Vector;
-    using ostk::physics::time::Instant;
-    using ostk::physics::coord::Frame;
-    using ostk::physics::coord::Position;
-    using ostk::physics::env::obj::Celestial;
-    using ostk::physics::env::Ephemeris;
-    using ostk::physics::env::ephem::Analytical;
-    using MagneticModel = ostk::physics::environment::magnetic::Model;
-    using ostk::physics::environment::magnetic::Dipole;
-
     {
         const String name = "Some Planet";
         const Celestial::Type type = Celestial::Type::Earth;
@@ -361,28 +326,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetMagneticFieldAt)
 
 TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetAtmosphericDensityAt)
 {
-    using ostk::core::types::Shared;
-    using ostk::core::types::Real;
-    using ostk::core::types::String;
-
-    using ostk::physics::Unit;
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Mass;
-    using ostk::physics::units::Time;
-    using ostk::physics::units::Derived;
-    using ostk::physics::units::Angle;
-    using ostk::physics::data::Scalar;
-    using ostk::physics::time::Instant;
-    using ostk::physics::coord::spherical::LLA;
-    using ostk::physics::coord::Frame;
-    using ostk::physics::coord::Position;
-    using ostk::physics::env::obj::Celestial;
-    using ostk::physics::env::Ephemeris;
-    using EarthCelestialBody = ostk::physics::env::obj::celest::Earth;
-    using ostk::physics::env::ephem::Analytical;
-    using AtmosphericModel = ostk::physics::environment::atmospheric::Model;
-    using ostk::physics::environment::atmospheric::earth::Exponential;
-
     {
         const String name = "Some Planet";
         const Celestial::Type type = Celestial::Type::Earth;

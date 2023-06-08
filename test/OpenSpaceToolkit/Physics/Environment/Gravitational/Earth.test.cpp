@@ -14,14 +14,30 @@
 
 #include <Global.test.hpp>
 
+using ostk::core::types::Real;
+using ostk::core::types::String;
+using ostk::core::types::Integer;
+using ostk::core::ctnr::Tuple;
+using ostk::core::ctnr::Array;
+using ostk::core::fs::Path;
+using ostk::core::fs::Directory;
+
+using ostk::math::obj::Vector3d;
+
+using ostk::physics::coord::Frame;
+using ostk::physics::data::Vector;
+using ostk::physics::time::DateTime;
+using ostk::physics::time::Instant;
+using ostk::physics::time::Scale;
+using ostk::physics::Unit;
+using ostk::physics::units::Length;
+using ostk::physics::units::Derived;
+using ostk::physics::units::Time;
+using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
+using EarthGravitationalModelManager = ostk::physics::environment::gravitational::earth::Manager;
+
 TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Constructor)
 {
-    using ostk::core::fs::Path;
-    using ostk::core::fs::Directory;
-
-    using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
-    using EarthGravitationalModelManager = ostk::physics::environment::gravitational::earth::Manager;
-
     {
         EarthGravitationalModelManager::Get().setLocalRepository(
             Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth"))
@@ -191,12 +207,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, IsDefined)
 
 TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetType)
 {
-    using ostk::core::fs::Path;
-    using ostk::core::fs::Directory;
-
-    using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
-    using EarthGravitationalModelManager = ostk::physics::environment::gravitational::earth::Manager;
-
     {
         EarthGravitationalModelManager::Get().setLocalRepository(
             Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth"))
@@ -234,19 +244,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetType)
 
 TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAtNoTruncation)
 {
-    using ostk::core::types::Real;
-    using ostk::core::types::String;
-    using ostk::core::ctnr::Tuple;
-    using ostk::core::ctnr::Array;
-    using ostk::core::fs::Path;
-    using ostk::core::fs::Directory;
-
-    using ostk::math::obj::Vector3d;
-
-    using ostk::physics::time::Instant;
-    using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
-    using EarthGravitationalModelManager = ostk::physics::environment::gravitational::earth::Manager;
-
     {
         EarthGravitationalModelManager::Get().setLocalRepository(
             Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth"))
@@ -391,20 +388,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAtNo
 
 TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAtWithTruncation)
 {
-    using ostk::core::types::Real;
-    using ostk::core::types::Integer;
-    using ostk::core::types::String;
-    using ostk::core::ctnr::Tuple;
-    using ostk::core::ctnr::Array;
-    using ostk::core::fs::Path;
-    using ostk::core::fs::Directory;
-
-    using ostk::math::obj::Vector3d;
-
-    using ostk::physics::time::Instant;
-    using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
-    using EarthGravitationalModelManager = ostk::physics::environment::gravitational::earth::Manager;
-
     {
         EarthGravitationalModelManager::Get().setLocalRepository(
             Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth"))
@@ -534,28 +517,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAtWi
 
 TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAtSTKBenchmark)
 {
-    using ostk::core::types::Real;
-    using ostk::core::types::Integer;
-    using ostk::core::types::String;
-    using ostk::core::ctnr::Tuple;
-    using ostk::core::ctnr::Array;
-    using ostk::core::fs::Path;
-    using ostk::core::fs::Directory;
-
-    using ostk::math::obj::Vector3d;
-
-    using ostk::physics::coord::Frame;
-    using ostk::physics::data::Vector;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::Scale;
-    using ostk::physics::Unit;
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Derived;
-    using ostk::physics::units::Time;
-    using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
-    using EarthGravitationalModelManager = ostk::physics::environment::gravitational::earth::Manager;
-
     {
         EarthGravitationalModelManager::Get().setLocalRepository(
             Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth"))

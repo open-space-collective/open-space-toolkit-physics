@@ -31,6 +31,8 @@
 
 #include <Global.test.hpp>
 
+using ostk::physics::env::obj::celest::Moon;
+
 // TEST (OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Moon, Constructor)
 // {
 
@@ -46,8 +48,6 @@
 
 TEST(OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Moon, Spherical)
 {
-    using ostk::physics::env::obj::celest::Moon;
-
     {
         EXPECT_NO_THROW(Moon::Spherical());
     }

@@ -13,14 +13,23 @@
 
 #include <Global.test.hpp>
 
+using ostk::core::types::Real;
+using ostk::core::types::String;
+using ostk::core::ctnr::Tuple;
+using ostk::core::ctnr::Array;
+using ostk::core::fs::Path;
+using ostk::core::fs::Directory;
+
+using ostk::math::obj::Vector3d;
+
+using ostk::physics::time::Scale;
+using ostk::physics::time::Instant;
+using ostk::physics::time::DateTime;
+using EarthMagneticModel = ostk::physics::environment::magnetic::Earth;
+using EarthMagneticModelManager = ostk::physics::environment::magnetic::earth::Manager;
+
 TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, Constructor)
 {
-    using ostk::core::fs::Path;
-    using ostk::core::fs::Directory;
-
-    using EarthMagneticModel = ostk::physics::environment::magnetic::Earth;
-    using EarthMagneticModelManager = ostk::physics::environment::magnetic::earth::Manager;
-
     {
         EarthMagneticModelManager::Get().setLocalRepository(
             Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth"))
@@ -136,12 +145,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, Constructor)
 
 TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, GetType)
 {
-    using ostk::core::fs::Path;
-    using ostk::core::fs::Directory;
-
-    using EarthMagneticModel = ostk::physics::environment::magnetic::Earth;
-    using EarthMagneticModelManager = ostk::physics::environment::magnetic::earth::Manager;
-
     {
         EarthMagneticModelManager::Get().setLocalRepository(
             Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth"))
@@ -194,21 +197,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, IsDefined)
 
 TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, GetFieldValueAt)
 {
-    using ostk::core::types::Real;
-    using ostk::core::types::String;
-    using ostk::core::ctnr::Tuple;
-    using ostk::core::ctnr::Array;
-    using ostk::core::fs::Path;
-    using ostk::core::fs::Directory;
-
-    using ostk::math::obj::Vector3d;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using EarthMagneticModel = ostk::physics::environment::magnetic::Earth;
-    using EarthMagneticModelManager = ostk::physics::environment::magnetic::earth::Manager;
-
     {
         EarthMagneticModelManager::Get().setLocalRepository(
             Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth"))

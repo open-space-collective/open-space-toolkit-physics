@@ -11,21 +11,21 @@
 
 #include <Global.test.hpp>
 
+using ostk::math::obj::Vector3d;
+using ostk::math::geom::d3::trf::rot::Quaternion;
+using ostk::math::geom::d3::trf::rot::RotationVector;
+
+using ostk::physics::time::Scale;
+using ostk::physics::time::Instant;
+using ostk::physics::time::DateTime;
+using ostk::physics::coord::Frame;
+using ostk::physics::coord::frame::Transform;
+using ostk::physics::coord::frame::provider::J2000;
+using ostk::physics::coord::frame::providers::iau::Theory;
+using ostk::physics::env::obj::celest::Earth;
+
 TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_J2000, GetTransformAt)
 {
-    using ostk::math::obj::Vector3d;
-    using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::coord::Frame;
-    using ostk::physics::coord::frame::Transform;
-    using ostk::physics::coord::frame::provider::J2000;
-    using ostk::physics::coord::frame::providers::iau::Theory;
-    using ostk::physics::env::obj::celest::Earth;
-
     // IAU 2000A
 
     {

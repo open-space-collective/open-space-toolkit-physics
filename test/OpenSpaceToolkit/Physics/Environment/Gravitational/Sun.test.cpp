@@ -12,12 +12,20 @@
 
 #include <Global.test.hpp>
 
+using ostk::core::types::Real;
+using ostk::core::types::String;
+using ostk::core::ctnr::Tuple;
+using ostk::core::ctnr::Array;
+using ostk::core::fs::Path;
+using ostk::core::fs::Directory;
+
+using ostk::math::obj::Vector3d;
+
+using ostk::physics::time::Instant;
+using SunGravitationalModel = ostk::physics::environment::gravitational::Sun;
+
 TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Sun, Constructor)
 {
-    using ostk::core::fs::Directory;
-
-    using SunGravitationalModel = ostk::physics::environment::gravitational::Sun;
-
     {
         EXPECT_NO_THROW(SunGravitationalModel sunGravitationalModel(SunGravitationalModel::Type::Spherical));
         EXPECT_NO_THROW(
@@ -39,11 +47,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Sun, IsDefined)
 
 TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Sun, GetType)
 {
-    using ostk::core::fs::Path;
-    using ostk::core::fs::Directory;
-
-    using SunGravitationalModel = ostk::physics::environment::gravitational::Sun;
-
     {
         EXPECT_EQ(
             SunGravitationalModel::Type::Spherical,
@@ -54,18 +57,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Sun, GetType)
 
 TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Sun, GetFieldValueAt)
 {
-    using ostk::core::types::Real;
-    using ostk::core::types::String;
-    using ostk::core::ctnr::Tuple;
-    using ostk::core::ctnr::Array;
-    using ostk::core::fs::Path;
-    using ostk::core::fs::Directory;
-
-    using ostk::math::obj::Vector3d;
-
-    using ostk::physics::time::Instant;
-    using SunGravitationalModel = ostk::physics::environment::gravitational::Sun;
-
     {
         static const Array<Tuple<SunGravitationalModel::Type, Vector3d, Instant, Vector3d, Real>> testCases = {
 

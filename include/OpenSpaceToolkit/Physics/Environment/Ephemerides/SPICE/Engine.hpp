@@ -36,7 +36,7 @@ namespace spice
 {
 
 using ostk::core::types::Shared;
-using ostk::core::types::Index;
+using IndexType = ostk::core::types::Index;
 using ostk::core::types::String;
 using ostk::core::ctnr::Pair;
 using ostk::core::ctnr::Array;
@@ -158,7 +158,7 @@ class Engine
     std::unordered_set<Kernel> kernelSet_;
 
     Array<Pair<Interval, const Kernel*>> earthKernelCache_;
-    mutable Index earthKernelCacheIndex_;
+    mutable IndexType earthKernelCacheIndex_;
 
     mutable std::mutex mutex_;
 

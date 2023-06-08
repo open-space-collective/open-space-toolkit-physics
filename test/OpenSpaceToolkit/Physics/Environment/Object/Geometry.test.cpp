@@ -29,56 +29,56 @@
 
 #include <Global.test.hpp>
 
-TEST(OpenSpaceToolkit_Physics_Environment_Object_Geometry, Constructor)
+using ostk::core::types::Shared;
+using ostk::core::types::Real;
+
+using ostk::math::geom::d3::objects::Point;
+using ostk::math::geom::d3::objects::LineString;
+using ostk::math::geom::d3::objects::Polygon;
+using ostk::math::geom::d3::objects::Pyramid;
+using ostk::math::geom::d3::objects::Composite;
+
+using ostk::physics::units::Length;
+using ostk::physics::units::Angle;
+using ostk::physics::time::Instant;
+using ostk::physics::coord::spherical::LLA;
+using ostk::physics::coord::Frame;
+using ostk::physics::Environment;
+using ostk::physics::env::object::Geometry;
+using ostk::physics::env::obj::Celestial;
+
+class OpenSpaceToolkit_Physics_Environment_Object_Geometry : public ::testing::Test
 {
-    using ostk::math::geom::d3::objects::Point;
-    using ostk::math::geom::d3::objects::Polygon;
-    using ostk::math::geom::d3::objects::Pyramid;
-
-    using ostk::physics::coord::Frame;
-    using ostk::physics::env::object::Geometry;
-
+   protected:
+    void SetUp() override
     {
-        const Polygon base = {
-            {{{0.0, 0.0}, {1.0, 0.0}, {1.0, 1.0}, {0.0, 1.0}}}, {0.0, 0.0, 2.0}, {1.0, 0.0, 0.0}, {0.0, 1.0, 0.0}};
-        const Point apex = {0.0, 0.0, 1.0};
+        pyramid_ = {base_, apex_};
+        geometry_ = {pyramid_, Frame::GCRF()};
+    }
 
-        const Pyramid pyramid = {base, apex};
+    const Polygon base_ = {
+        {{{0.0, 0.0}, {1.0, 0.0}, {1.0, 1.0}, {0.0, 1.0}}}, {0.0, 0.0, 2.0}, {1.0, 0.0, 0.0}, {0.0, 1.0, 0.0}};
+    const Point apex_ = {0.0, 0.0, 1.0};
+    Pyramid pyramid_ = Pyramid::Undefined();
+    Geometry geometry_ = Geometry::Undefined();
+};
 
-        EXPECT_NO_THROW(Geometry geometry(pyramid, Frame::GCRF()););
+TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, Constructor)
+{
+    {
+        EXPECT_NO_THROW(Geometry geometry(pyramid_, Frame::GCRF()););
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Object_Geometry, EqualToOperator)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, EqualToOperator)
 {
-    using ostk::math::geom::d3::objects::Point;
-    using ostk::math::geom::d3::objects::Polygon;
-    using ostk::math::geom::d3::objects::Pyramid;
-
-    using ostk::physics::coord::Frame;
-    using ostk::physics::env::object::Geometry;
-
     {
-        const Polygon base = {
-            {{{0.0, 0.0}, {1.0, 0.0}, {1.0, 1.0}, {0.0, 1.0}}}, {0.0, 0.0, 2.0}, {1.0, 0.0, 0.0}, {0.0, 1.0, 0.0}};
-        const Point apex = {0.0, 0.0, 1.0};
-
-        const Pyramid pyramid = {base, apex};
-
-        const Geometry geometry = {pyramid, Frame::GCRF()};
-
-        EXPECT_TRUE(geometry == geometry);
+        EXPECT_TRUE(geometry_ == geometry_);
     }
 
     {
-        const Polygon base = {
-            {{{0.0, 0.0}, {1.0, 0.0}, {1.0, 1.0}, {0.0, 1.0}}}, {0.0, 0.0, 2.0}, {1.0, 0.0, 0.0}, {0.0, 1.0, 0.0}};
-        const Point apex = {0.0, 0.0, 1.0};
-
-        const Pyramid pyramid = {base, apex};
-
-        const Geometry firstGeometry = {pyramid, Frame::GCRF()};
-        const Geometry secondGeometry = {pyramid, Frame::ITRF()};
+        const Geometry firstGeometry = {pyramid_, Frame::GCRF()};
+        const Geometry secondGeometry = {pyramid_, Frame::ITRF()};
 
         EXPECT_FALSE(firstGeometry == secondGeometry);
 
@@ -91,36 +91,15 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Geometry, EqualToOperator)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Object_Geometry, NotEqualToOperator)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, NotEqualToOperator)
 {
-    using ostk::math::geom::d3::objects::Point;
-    using ostk::math::geom::d3::objects::Polygon;
-    using ostk::math::geom::d3::objects::Pyramid;
-
-    using ostk::physics::coord::Frame;
-    using ostk::physics::env::object::Geometry;
-
     {
-        const Polygon base = {
-            {{{0.0, 0.0}, {1.0, 0.0}, {1.0, 1.0}, {0.0, 1.0}}}, {0.0, 0.0, 2.0}, {1.0, 0.0, 0.0}, {0.0, 1.0, 0.0}};
-        const Point apex = {0.0, 0.0, 1.0};
-
-        const Pyramid pyramid = {base, apex};
-
-        const Geometry geometry = {pyramid, Frame::GCRF()};
-
-        EXPECT_FALSE(geometry != geometry);
+        EXPECT_FALSE(geometry_ != geometry_);
     }
 
     {
-        const Polygon base = {
-            {{{0.0, 0.0}, {1.0, 0.0}, {1.0, 1.0}, {0.0, 1.0}}}, {0.0, 0.0, 2.0}, {1.0, 0.0, 0.0}, {0.0, 1.0, 0.0}};
-        const Point apex = {0.0, 0.0, 1.0};
-
-        const Pyramid pyramid = {base, apex};
-
-        const Geometry firstGeometry = {pyramid, Frame::GCRF()};
-        const Geometry secondGeometry = {pyramid, Frame::ITRF()};
+        const Geometry firstGeometry = {pyramid_, Frame::GCRF()};
+        const Geometry secondGeometry = {pyramid_, Frame::ITRF()};
 
         EXPECT_TRUE(firstGeometry != secondGeometry);
 
@@ -133,51 +112,21 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Geometry, NotEqualToOperator)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Object_Geometry, StreamOperator)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, StreamOperator)
 {
-    using ostk::math::geom::d3::objects::Point;
-    using ostk::math::geom::d3::objects::Polygon;
-    using ostk::math::geom::d3::objects::Pyramid;
-
-    using ostk::physics::coord::Frame;
-    using ostk::physics::env::object::Geometry;
-
     {
-        const Polygon base = {
-            {{{0.0, 0.0}, {1.0, 0.0}, {1.0, 1.0}, {0.0, 1.0}}}, {0.0, 0.0, 2.0}, {1.0, 0.0, 0.0}, {0.0, 1.0, 0.0}};
-        const Point apex = {0.0, 0.0, 1.0};
-
-        const Pyramid pyramid = {base, apex};
-
-        const Geometry geometry = {pyramid, Frame::GCRF()};
-
         testing::internal::CaptureStdout();
 
-        EXPECT_NO_THROW(std::cout << geometry << std::endl);
+        EXPECT_NO_THROW(std::cout << geometry_ << std::endl);
 
         EXPECT_FALSE(testing::internal::GetCapturedStdout().empty());
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Object_Geometry, IsDefined)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, IsDefined)
 {
-    using ostk::math::geom::d3::objects::Point;
-    using ostk::math::geom::d3::objects::Polygon;
-    using ostk::math::geom::d3::objects::Pyramid;
-
-    using ostk::physics::coord::Frame;
-    using ostk::physics::env::object::Geometry;
-
     {
-        const Polygon base = {
-            {{{0.0, 0.0}, {1.0, 0.0}, {1.0, 1.0}, {0.0, 1.0}}}, {0.0, 0.0, 2.0}, {1.0, 0.0, 0.0}, {0.0, 1.0, 0.0}};
-        const Point apex = {0.0, 0.0, 1.0};
-
-        const Pyramid pyramid = {base, apex};
-
-        const Geometry geometry = {pyramid, Frame::GCRF()};
-
-        EXPECT_TRUE(geometry.isDefined());
+        EXPECT_TRUE(geometry_.isDefined());
     }
 
     {
@@ -238,26 +187,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Geometry, IsDefined)
 
 // }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Object_Geometry, AccessComposite)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, AccessComposite)
 {
-    using ostk::math::geom::d3::objects::Point;
-    using ostk::math::geom::d3::objects::Polygon;
-    using ostk::math::geom::d3::objects::Pyramid;
-    using ostk::math::geom::d3::objects::Composite;
-
-    using ostk::physics::coord::Frame;
-    using ostk::physics::env::object::Geometry;
-
     {
-        const Polygon base = {
-            {{{0.0, 0.0}, {1.0, 0.0}, {1.0, 1.0}, {0.0, 1.0}}}, {0.0, 0.0, 2.0}, {1.0, 0.0, 0.0}, {0.0, 1.0, 0.0}};
-        const Point apex = {0.0, 0.0, 1.0};
-
-        const Pyramid pyramid = {base, apex};
-
-        const Geometry geometry = {pyramid, Frame::GCRF()};
-
-        EXPECT_EQ(Composite(pyramid), geometry.accessComposite());
+        EXPECT_EQ(Composite(pyramid_), geometry_.accessComposite());
     }
 
     {
@@ -265,25 +198,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Geometry, AccessComposite)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Object_Geometry, AccessFrame)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, AccessFrame)
 {
-    using ostk::math::geom::d3::objects::Point;
-    using ostk::math::geom::d3::objects::Polygon;
-    using ostk::math::geom::d3::objects::Pyramid;
-
-    using ostk::physics::coord::Frame;
-    using ostk::physics::env::object::Geometry;
-
     {
-        const Polygon base = {
-            {{{0.0, 0.0}, {1.0, 0.0}, {1.0, 1.0}, {0.0, 1.0}}}, {0.0, 0.0, 2.0}, {1.0, 0.0, 0.0}, {0.0, 1.0, 0.0}};
-        const Point apex = {0.0, 0.0, 1.0};
-
-        const Pyramid pyramid = {base, apex};
-
-        const Geometry geometry = {pyramid, Frame::GCRF()};
-
-        EXPECT_EQ(Frame::GCRF(), geometry.accessFrame());
+        EXPECT_EQ(Frame::GCRF(), geometry_.accessFrame());
     }
 
     {
@@ -291,24 +209,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Geometry, AccessFrame)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Object_Geometry, In)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, In)
 {
-    using ostk::core::types::Shared;
-    using ostk::core::types::Real;
-
-    using ostk::math::geom::d3::objects::Point;
-    using ostk::math::geom::d3::objects::Polygon;
-    using ostk::math::geom::d3::objects::Pyramid;
-
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Instant;
-    using ostk::physics::coord::spherical::LLA;
-    using ostk::physics::coord::Frame;
-    using ostk::physics::Environment;
-    using ostk::physics::env::object::Geometry;
-    using ostk::physics::env::obj::Celestial;
-
     {
         const Environment environment = Environment::Default();
 
@@ -435,25 +337,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Geometry, In)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Object_Geometry, IntersectionWith)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, IntersectionWith)
 {
-    using ostk::core::types::Shared;
-    using ostk::core::types::Real;
-
-    using ostk::math::geom::d3::objects::Point;
-    using ostk::math::geom::d3::objects::LineString;
-    using ostk::math::geom::d3::objects::Polygon;
-    using ostk::math::geom::d3::objects::Pyramid;
-
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Instant;
-    using ostk::physics::coord::spherical::LLA;
-    using ostk::physics::coord::Frame;
-    using ostk::physics::Environment;
-    using ostk::physics::env::object::Geometry;
-    using ostk::physics::env::obj::Celestial;
-
     {
         const Environment environment = Environment::Default();
 
@@ -687,10 +572,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Geometry, IntersectionWith)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Object_Geometry, Undefined)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, Undefined)
 {
-    using ostk::physics::env::object::Geometry;
-
     {
         EXPECT_NO_THROW(Geometry::Undefined());
     }
