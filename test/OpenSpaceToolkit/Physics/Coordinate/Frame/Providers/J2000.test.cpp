@@ -23,6 +23,7 @@ using ostk::physics::coord::frame::Transform;
 using ostk::physics::coord::frame::provider::J2000;
 using ostk::physics::coord::frame::providers::iau::Theory;
 using ostk::physics::env::obj::celest::Earth;
+using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 
 TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_J2000, GetTransformAt)
 {
@@ -132,14 +133,14 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_J2000, GetTransformAt)
             RotationVector::Quaternion(J2000(Theory::IAU_2000A).getTransformAt(instant).getOrientation())
                     .getAngle()
                     .inRadians() *
-                Earth::EquatorialRadius.inMeters()
+                EarthGravitationalModel::EGM2008Parameters.equatorialRadius_.inMeters()
         );
         EXPECT_GT(
             1.0,
             RotationVector::Quaternion(J2000(Theory::IAU_2006).getTransformAt(instant).getOrientation())
                     .getAngle()
                     .inRadians() *
-                Earth::EquatorialRadius.inMeters()
+                EarthGravitationalModel::EGM2008Parameters.equatorialRadius_.inMeters()
         );
     }
 }

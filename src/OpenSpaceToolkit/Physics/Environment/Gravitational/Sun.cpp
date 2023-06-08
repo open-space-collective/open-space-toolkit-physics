@@ -16,6 +16,9 @@ namespace environment
 namespace gravitational
 {
 
+const Model::Parameters Sun::SphericalParameters = {
+    {132712440018e9, GravitationalParameterSIUnit}, Length::Meters(6.955e8), 0.0, 0.0, 0.0};
+
 class Sun::Impl
 {
    public:
@@ -64,7 +67,7 @@ class Sun::SphericalImpl : public Sun::Impl
 Sun::SphericalImpl::SphericalImpl(const Sun::Type& aType)
 
     : Sun::Impl(aType),
-      sphericalModel_(ostk::physics::env::obj::celest::Sun::GravitationalParameter)
+      sphericalModel_(Sun::SphericalParameters)
 {
 }
 
@@ -81,7 +84,7 @@ Vector3d Sun::SphericalImpl::getFieldValueAt(const Vector3d& aPosition, const In
 }
 
 Sun::Sun(const Sun::Type& aType, const Directory& aDataDirectory)
-    : Model(),
+    : Model(Sun::ParametersFromType(aType)),
       implUPtr_(Sun::ImplFromType(aType, aDataDirectory))
 {
 }
@@ -126,6 +129,21 @@ Sun::Type Sun::getType() const
 Vector3d Sun::getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const
 {
     return implUPtr_->getFieldValueAt(aPosition, anInstant);
+}
+
+Model::Parameters Sun::ParametersFromType(const Sun::Type& aType)
+{
+    switch (aType)
+    {
+        case (Sun::Type::Spherical):
+            return Sun::SphericalParameters;
+
+        case (Sun::Type::Undefined):
+            return Sun::Parameters::Undefined();
+
+        default:
+            throw ostk::core::error::runtime::Wrong("Type");
+    }
 }
 
 Unique<Sun::Impl> Sun::ImplFromType(const Sun::Type& aType, const Directory& aDataDirectory)

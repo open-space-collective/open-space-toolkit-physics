@@ -31,9 +31,9 @@ class Spherical : public Model
    public:
     /// @brief              Constructor
     ///
-    /// @param              [in] aGravitationalParameter A gravitational parameter
+    /// @param              [in] parameters A struct of parameters
 
-    Spherical(const Derived& aGravitationalParameter);
+    Spherical(const Model::Parameters& parameters);
 
     /// @brief              Clone the spherical gravitational model
     ///

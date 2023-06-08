@@ -34,7 +34,7 @@ using ostk::physics::coord::spherical::LLA;
 using ostk::physics::coord::Frame;
 
 using EarthCelestialBody = ostk::physics::env::obj::celest::Earth;
-
+using EarthGravitational = ostk::physics::environment::gravitational::Earth;
 using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Constructor)
@@ -130,7 +130,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Positi
             const LLA lla = std::get<1>(testCase);
 
             const Position position = {
-                lla.toCartesian(EarthCelestialBody::EquatorialRadius, EarthCelestialBody::Flattening),
+                lla.toCartesian(
+                    EarthGravitational::EGM2008Parameters.equatorialRadius_,
+                    EarthGravitational::EGM2008Parameters.flattening_
+                ),
                 Position::Unit::Meter,
                 Frame::ITRF()};
 

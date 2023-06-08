@@ -70,6 +70,7 @@ using ostk::physics::env::obj::celest::Earth;
 using ostk::physics::env::obj::celest::Moon;
 using ostk::physics::env::ephem::spice::Engine;
 using ostk::physics::units::Length;
+using EarthGravitational = ostk::physics::environment::gravitational::Earth;
 
 using ostk::core::types::Shared;
 using ostk::core::types::Weak;
@@ -133,7 +134,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Intersects)
         // +Earth::EquatorialRadius.inMeters()).generateArrayWithStep(Real(1000.0)))
         for (const auto& y_ECI :
              Interval<Real>::Closed(
-                 -Earth::EquatorialRadius.inMeters() + 1.0, +Earth::EquatorialRadius.inMeters() - 1.0
+                 -EarthGravitational::EGM2008Parameters.equatorialRadius_.inMeters() + 1.0,
+                 +EarthGravitational::EGM2008Parameters.equatorialRadius_.inMeters() - 1.0
              )
                  .generateArrayWithStep(Real(1000.0)))  // [TBI] Precision issues are preventing the tangential rays to
                                                         // be recognised as intersecting, hence the 1.0 [m] offset
@@ -372,8 +374,11 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Test_2)
 
     for (const auto& intersectionPoint : intersectionLineString)  // Implement segment and point iterators...
     {
-        const LLA intersectionLla =
-            LLA::Cartesian(intersectionPoint.asVector(), Earth::EquatorialRadius, Earth::Flattening);
+        const LLA intersectionLla = LLA::Cartesian(
+            intersectionPoint.asVector(),
+            EarthGravitational::EGM2008Parameters.equatorialRadius_,
+            EarthGravitational::EGM2008Parameters.flattening_
+        );
 
         const Point2d intersectionPoint2d = {
             intersectionLla.getLongitude().inDegrees(), intersectionLla.getLatitude().inDegrees()};
@@ -454,7 +459,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Test_3)
 
         const Length earthEquatorialRadius = earthSPtr->getEquatorialRadius();
 
-        EXPECT_EQ(Earth::EquatorialRadius, earthEquatorialRadius);
+        EXPECT_EQ(EarthGravitational::EGM2008Parameters.equatorialRadius_, earthEquatorialRadius);
 
         for (const auto& instant : TimeInterval::Closed(startInstant, endInstant).generateGrid(stepDuration))
         {

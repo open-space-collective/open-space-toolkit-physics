@@ -23,6 +23,58 @@ namespace gravitational
 
 using GeographicLib::GravityModel;
 
+using ostk::physics::units::Derived;
+using ostk::physics::units::Length;
+using ostk::physics::units::Time;
+
+const Model::Parameters Earth::EGM2008Parameters = {
+    {398600441500000.0, GravitationalParameterSIUnit},
+    Length::Meters(6378137.0),
+    1.0 / 298.257223563,
+    -4.84169317366974e-04,
+    5.39965866638991e-07};
+
+// EGM96 + WGS84
+
+const Model::Parameters Earth::WGS84_EGM96Parameters = {
+    {398600441800000.0, GravitationalParameterSIUnit},
+    Length::Meters(6378137.0),
+    1.0 / 298.257223563,
+    -4.841653717360e-04,
+    5.398738637890e-07};
+
+// EGM96
+
+const Model::Parameters Earth::EGM96Parameters = {
+    {398600441500000.0, GravitationalParameterSIUnit},
+    Length::Meters(6378136.3),
+    1.0 / 298.257223563,
+    -4.841653717360e-04,
+    5.398738637890e-07};
+
+// EGM84
+
+const Model::Parameters Earth::EGM84Parameters = {
+    {398600441800000.0, GravitationalParameterSIUnit},
+    Length::Meters(6378137.0),
+    1.0 / 298.257223563,
+    -4.841668500000e-04,
+    5.369958670000e-07};
+
+// WGS84
+
+const Model::Parameters Earth::WGS84Parameters = {
+    {398600441800000.0, GravitationalParameterSIUnit},
+    Length::Meters(6378137.0),
+    1.0 / 298.257223563,
+    -4.841668500000e-04,
+    5.369958670000e-07};
+
+// Spherical
+
+const Model::Parameters Earth::SphericalParameters = {
+    {398600441500000.0, GravitationalParameterSIUnit}, Length::Meters(6378137.0), 0.0, 0.0, 0.0};
+
 class Earth::Impl
 {
    public:
@@ -72,7 +124,7 @@ class Earth::SphericalImpl : public Earth::Impl
 Earth::SphericalImpl::SphericalImpl(const Earth::Type& aType)
 
     : Earth::Impl(aType),
-      sphericalModel_(ostk::physics::env::obj::celest::Earth::Models::Spherical::GravitationalParameter)
+      sphericalModel_(Earth::SphericalParameters)
 
 {
 }
@@ -229,6 +281,7 @@ GravityModel* Earth::ExternalImpl::GravityModelFromType(
             return new GeographicLib::GravityModel("egm84", dataPath, gravityModelDegree, gravityModelOrder);
         }
 
+        case Earth::Type::WGS84_EGM96:
         case Earth::Type::EGM96:
         {
             if (gravityModelDegree > 360)
@@ -272,7 +325,7 @@ Earth::Earth(
     const Integer& aGravityModelDegree,
     const Integer& aGravityModelOrder
 )
-    : Model(),
+    : Model(Earth::ParametersFromType(aType)),
       implUPtr_(Earth::ImplFromType(aType, aDataDirectory, aGravityModelDegree, aGravityModelOrder))
 {
 }
@@ -338,6 +391,36 @@ Unique<Earth::Impl> Earth::ImplFromType(
     }
 
     return std::make_unique<Earth::ExternalImpl>(aType, aDataDirectory, aGravityModelDegree, aGravityModelOrder);
+}
+
+Model::Parameters Earth::ParametersFromType(const Earth::Type& aType)
+{
+    switch (aType)
+    {
+        case Earth::Type::Spherical:
+            return Earth::SphericalParameters;
+
+        case Earth::Type::WGS84:
+            return Earth::WGS84Parameters;
+
+        case Earth::Type::EGM84:
+            return Earth::EGM84Parameters;
+
+        case Earth::Type::EGM96:
+            return Earth::EGM96Parameters;
+
+        case Earth::Type::WGS84_EGM96:
+            return Earth::WGS84_EGM96Parameters;
+
+        case Earth::Type::EGM2008:
+            return Earth::EGM2008Parameters;
+
+        case Earth::Type::Undefined:
+            return Earth::Parameters::Undefined();
+
+        default:
+            throw ostk::core::error::runtime::Wrong("Type");
+    }
 }
 
 }  // namespace gravitational

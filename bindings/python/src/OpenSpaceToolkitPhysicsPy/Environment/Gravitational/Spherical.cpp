@@ -6,14 +6,18 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Spherical(pybind
 {
     using namespace pybind11;
 
-    using ostk::physics::units::Derived;
+    using ostk::physics::environment::gravitational::Model;
     using ostk::physics::environment::gravitational::Spherical;
 
     class_<Spherical>(aModule, "Spherical")
 
-        .def(init<const Derived&>(), arg("gravitational_parameter"))
+        .def(init<const Model::Parameters&>(), arg("gravitational_parameters"))
 
         .def("get_field_value_at", &Spherical::getFieldValueAt, arg("position"), arg("instant"))
+
+        .def("is_defined", &Spherical::isDefined)
+
+        .def("get_parameters", &Spherical::getParameters)
 
         ;
 }

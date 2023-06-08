@@ -3,9 +3,13 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Gravitational_Model__
 #define __OpenSpaceToolkit_Physics_Environment_Gravitational_Model__
 
+#include <OpenSpaceToolkit/Core/Types/Real.hpp>
+
 #include <OpenSpaceToolkit/Mathematics/Objects/Vector.hpp>
 
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Derived.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Length.hpp>
 
 namespace ostk
 {
@@ -16,18 +20,57 @@ namespace environment
 namespace gravitational
 {
 
+using ostk::core::types::Real;
+
 using ostk::math::obj::Vector3d;
 
 using ostk::physics::time::Instant;
+using ostk::physics::units::Derived;
+using ostk::physics::units::Length;
+using ostk::physics::units::Time;
 
 /// @brief                      Gravitational model (interface)
+
+static const Derived::Unit GravitationalParameterSIUnit =
+    Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second);
 
 class Model
 {
    public:
+    struct Parameters
+    {
+        Parameters(
+            const Derived& gravitationalParameter,
+            const Length& equatorialRadius,
+            const Real& flattening,
+            const Real& J2,
+            const Real& J4
+        )
+            : gravitationalParameter_(gravitationalParameter),
+              equatorialRadius_(equatorialRadius),
+              flattening_(flattening),
+              J2_(J2),
+              J4_(J4),
+              C20_(J2.isDefined() ? J2 * std::sqrt(5.0) : Real::Undefined()),
+              C40_(J4.isDefined() ? J4 * std::sqrt(9.0) : Real::Undefined()) {};
+
+        static Parameters Undefined()
+        {
+            return {Derived::Undefined(), Length::Undefined(), Real::Undefined(), Real::Undefined(), Real::Undefined()};
+        }
+
+        Derived gravitationalParameter_;
+        Length equatorialRadius_;
+        Real flattening_;
+        Real J2_;
+        Real J4_;
+        Real C20_;
+        Real C40_;
+    };
+
     /// @brief              Constructor (default)
 
-    Model();
+    Model(const Parameters& aSetOfParameters);
 
     /// @brief              Destructor (pure virtual)
 
@@ -52,6 +95,11 @@ class Model
     /// @return             Gravitational field value, expressed in the gravitational object frame [m.s-2]
 
     virtual Vector3d getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const = 0;
+
+    Parameters getParameters() const;
+
+   private:
+    Model::Parameters parameters_;
 };
 
 }  // namespace gravitational

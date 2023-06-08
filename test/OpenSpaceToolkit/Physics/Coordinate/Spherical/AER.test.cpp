@@ -36,6 +36,7 @@ using ostk::physics::coord::spherical::AER;
 using ostk::physics::coord::spherical::LLA;
 using ostk::physics::coord::Frame;
 using ostk::physics::env::obj::celest::Earth;
+using EarthGravitational = ostk::physics::environment::gravitational::Earth;
 
 class OpenSpaceToolkit_Physics_Coordinate_Spherical_AER : public ::testing::Test
 {
@@ -283,8 +284,11 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, FromPositionToPosition
                 const Position fromPosition_ITRF = Position::Meters(reference_fromPosition_ITRF, Frame::ITRF());
                 const Position toPosition_ITRF = Position::Meters(reference_toPosition_ITRF, Frame::ITRF());
 
-                const LLA fromLla =
-                    LLA::Cartesian(fromPosition_ITRF.getCoordinates(), Earth::EquatorialRadius, Earth::Flattening);
+                const LLA fromLla = LLA::Cartesian(
+                    fromPosition_ITRF.getCoordinates(),
+                    EarthGravitational::EGM2008Parameters.equatorialRadius_,
+                    EarthGravitational::EGM2008Parameters.flattening_
+                );
 
                 const Shared<const Frame> nedFrameSPtr = earth.getFrameAt(fromLla, Earth::FrameType::NED);
 

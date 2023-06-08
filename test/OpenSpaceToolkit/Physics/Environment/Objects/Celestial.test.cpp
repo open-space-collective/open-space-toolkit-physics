@@ -64,9 +64,9 @@ using ostk::physics::environment::gravitational::Spherical;
 using ostk::physics::environment::magnetic::Dipole;
 using ostk::physics::environment::atmospheric::earth::Exponential;
 using EarthCelestialBody = ostk::physics::env::obj::celest::Earth;
-using earthGravitationalModel = ostk::physics::environment::gravitational::Earth;
-using earthMagneticModel = ostk::physics::environment::magnetic::Earth;
-using earthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
+using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
+using EarthMagneticModel = ostk::physics::environment::magnetic::Earth;
+using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
 
 // TEST (OpenSpaceToolkit_Physics_Environment_Objects_Celestial, Constructor)
 // {
@@ -92,9 +92,11 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, accessModel)
     const Real j2 = 0.0;
     const Real j4 = 0.0;
 
+    const EarthGravitationalModel::Parameters gravitationalModelParameters = {
+        gravitationalParameter, equatorialRadius, flattening, j2, j4};
+
     const Shared<Ephemeris> ephemeris = std::make_shared<Analytical>(Frame::ITRF());
     {
-
         const Celestial celestial = {
             name,
             type,
@@ -133,7 +135,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, accessModel)
     }
 
     {
-        const Shared<GravitationalModel> gravitationalModel = std::make_shared<Spherical>(gravitationalParameter);
+        const Shared<GravitationalModel> gravitationalModel = std::make_shared<Spherical>(gravitationalModelParameters);
         const Shared<MagneticModel> magneticModel = std::make_shared<Dipole>(Vector3d {0.0, 0.0, 1.0});
         const Shared<AtmosphericModel> atmosphericModel = std::make_shared<Exponential>();
 
@@ -167,10 +169,13 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, modelIsDefined)
     const Real j2 = 0.0;
     const Real j4 = 0.0;
 
+    const EarthGravitationalModel::Parameters gravitationalModelParameters = {
+        gravitationalParameter, equatorialRadius, flattening, j2, j4};
+
     const Shared<Ephemeris> ephemeris = std::make_shared<Analytical>(Frame::ITRF());
 
     {
-        const Shared<GravitationalModel> gravitationalModel = std::make_shared<Spherical>(gravitationalParameter);
+        const Shared<GravitationalModel> gravitationalModel = std::make_shared<Spherical>(gravitationalModelParameters);
         const Shared<MagneticModel> magneticModel = std::make_shared<Dipole>(Vector3d {0.0, 0.0, 1.0});
         const Shared<AtmosphericModel> atmosphericModel = std::make_shared<Exponential>();
 
@@ -194,11 +199,11 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, modelIsDefined)
 
     {
         const Shared<GravitationalModel> undefinedGravitationalModel =
-            std::make_shared<earthGravitationalModel>(earthGravitationalModel::Type::Undefined);
+            std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::Undefined);
         const Shared<MagneticModel> undefinedMagneticModel =
-            std::make_shared<earthMagneticModel>(earthMagneticModel::Type::Undefined);
+            std::make_shared<EarthMagneticModel>(EarthMagneticModel::Type::Undefined);
         const Shared<AtmosphericModel> undefinedAtmosphericModel =
-            std::make_shared<earthAtmosphericModel>(earthAtmosphericModel::Type::Undefined);
+            std::make_shared<EarthAtmosphericModel>(EarthAtmosphericModel::Type::Undefined);
 
         const Celestial celestial = {
             name,
@@ -219,7 +224,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, modelIsDefined)
     }
 
     {
-        const Shared<GravitationalModel> gravitationalModel = std::make_shared<Spherical>(gravitationalParameter);
+        const Shared<GravitationalModel> gravitationalModel = std::make_shared<Spherical>(gravitationalModelParameters);
         const Shared<MagneticModel> magneticModel = std::make_shared<Dipole>(Vector3d {0.0, 0.0, 1.0});
         const Shared<AtmosphericModel> atmosphericModel = std::make_shared<Exponential>();
 
@@ -242,7 +247,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, modelIsDefined)
     }
 
     {
-        const Shared<GravitationalModel> gravitationalModel = std::make_shared<Spherical>(gravitationalParameter);
+        const Shared<GravitationalModel> gravitationalModel = std::make_shared<Spherical>(gravitationalModelParameters);
         const Shared<MagneticModel> magneticModel = std::make_shared<Dipole>(Vector3d {0.0, 0.0, 1.0});
         const Shared<AtmosphericModel> atmosphericModel = std::make_shared<Exponential>();
 
@@ -276,8 +281,12 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetGravitationalFie
         const Real flattening = 0.0;
         const Real j2 = 0.0;
         const Real j4 = 0.0;
+
+        const EarthGravitationalModel::Parameters gravitationalModelParameters = {
+            gravitationalParameter, equatorialRadius, flattening, j2, j4};
+
         const Shared<Ephemeris> ephemeris = std::make_shared<Analytical>(Frame::ITRF());
-        const Shared<GravitationalModel> gravitationalModel = std::make_shared<Spherical>(gravitationalParameter);
+        const Shared<GravitationalModel> gravitationalModel = std::make_shared<Spherical>(gravitationalModelParameters);
         const Instant instant = Instant::J2000();
 
         const Celestial celestial = {
@@ -423,8 +432,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetAtmosphericDensi
             name,
             type,
             gravitationalParameter,
-            EarthCelestialBody::EquatorialRadius,
-            EarthCelestialBody::Flattening,
+            EarthGravitationalModel::EGM2008Parameters.equatorialRadius_,
+            EarthGravitationalModel::EGM2008Parameters.flattening_,
             j2,
             j4,
             ephemeris,
@@ -435,7 +444,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetAtmosphericDensi
         {
             const Position position = {
                 LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(123.0))
-                    .toCartesian(EarthCelestialBody::EquatorialRadius, EarthCelestialBody::Flattening),
+                    .toCartesian(
+                        EarthGravitationalModel::EGM2008Parameters.equatorialRadius_,
+                        EarthGravitationalModel::EGM2008Parameters.flattening_
+                    ),
                 Position::Unit::Meter,
                 Frame::ITRF()};
 
@@ -453,7 +465,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetAtmosphericDensi
         {
             const Position position = {
                 LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(499.0))
-                    .toCartesian(EarthCelestialBody::EquatorialRadius, EarthCelestialBody::Flattening),
+                    .toCartesian(
+                        EarthGravitationalModel::EGM2008Parameters.equatorialRadius_,
+                        EarthGravitationalModel::EGM2008Parameters.flattening_
+                    ),
                 Position::Unit::Meter,
                 Frame::ITRF()};
 
@@ -471,7 +486,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetAtmosphericDensi
         {
             const Position position = {
                 LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(501.0))
-                    .toCartesian(EarthCelestialBody::EquatorialRadius, EarthCelestialBody::Flattening),
+                    .toCartesian(
+                        EarthGravitationalModel::EGM2008Parameters.equatorialRadius_,
+                        EarthGravitationalModel::EGM2008Parameters.flattening_
+                    ),
                 Position::Unit::Meter,
                 Frame::ITRF()};
 
@@ -493,7 +511,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetAtmosphericDensi
         {
             const Position position = {
                 LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(501.0))
-                    .toCartesian(EarthCelestialBody::EquatorialRadius, EarthCelestialBody::Flattening),
+                    .toCartesian(
+                        EarthGravitationalModel::EGM2008Parameters.equatorialRadius_,
+                        EarthGravitationalModel::EGM2008Parameters.flattening_
+                    ),
                 Position::Unit::Meter,
                 Frame::ITRF()};
 
@@ -503,7 +524,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetAtmosphericDensi
         {
             const Position position = {
                 LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(501.0))
-                    .toCartesian(EarthCelestialBody::EquatorialRadius, EarthCelestialBody::Flattening),
+                    .toCartesian(
+                        EarthGravitationalModel::EGM2008Parameters.equatorialRadius_,
+                        EarthGravitationalModel::EGM2008Parameters.flattening_
+                    ),
                 Position::Unit::Meter,
                 Frame::ITRF()};
 
@@ -511,8 +535,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetAtmosphericDensi
                 name,
                 type,
                 gravitationalParameter,
-                EarthCelestialBody::EquatorialRadius,
-                EarthCelestialBody::Flattening,
+                EarthGravitationalModel::EGM2008Parameters.equatorialRadius_,
+                EarthGravitationalModel::EGM2008Parameters.flattening_,
                 j2,
                 j4,
                 ephemeris,

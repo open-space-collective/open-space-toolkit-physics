@@ -21,6 +21,7 @@ using ostk::physics::coord::spherical::LLA;
 using ostk::physics::coord::Frame;
 using ostk::physics::environment::atmospheric::earth::Exponential;
 using EarthCelestialBody = ostk::physics::env::obj::celest::Earth;
+using EarthGravitational = ostk::physics::environment::gravitational::Earth;
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Exponential, Constructor)
 {
@@ -57,7 +58,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Exponential, getDens
         const LLA lla = LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(123.0));
 
         const Position position = {
-            lla.toCartesian(EarthCelestialBody::EquatorialRadius, EarthCelestialBody::Flattening),
+            lla.toCartesian(
+                EarthGravitational::EGM2008Parameters.equatorialRadius_,
+                EarthGravitational::EGM2008Parameters.flattening_
+            ),
             Position::Unit::Meter,
             Frame::ITRF()};
 

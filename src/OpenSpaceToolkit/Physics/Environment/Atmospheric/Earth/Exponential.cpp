@@ -20,6 +20,7 @@ namespace earth
 
 using ostk::physics::coord::Frame;
 using EarthCelestialBody = ostk::physics::env::obj::celest::Earth;
+using EarthGravitational = ostk::physics::environment::gravitational::Earth;
 
 Exponential::Exponential()
     : Model()
@@ -41,8 +42,8 @@ Real Exponential::getDensityAt(const Position& aPosition, const Instant& anInsta
     return this->getDensityAt(
         LLA::Cartesian(
             aPosition.inFrame(Frame::ITRF(), anInstant).accessCoordinates(),
-            EarthCelestialBody::EquatorialRadius,
-            EarthCelestialBody::Flattening
+            EarthGravitational::EGM2008Parameters.equatorialRadius_,
+            EarthGravitational::EGM2008Parameters.flattening_
         ),
         anInstant
     );

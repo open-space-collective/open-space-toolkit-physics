@@ -16,6 +16,9 @@ namespace environment
 namespace gravitational
 {
 
+const Model::Parameters Moon::SphericalParameters = {
+    {4902.8000e9, GravitationalParameterSIUnit}, Length::Meters(1738.14e3), 0.00125, 0.0, 0.0};
+
 class Moon::Impl
 {
    public:
@@ -64,7 +67,7 @@ class Moon::SphericalImpl : public Moon::Impl
 Moon::SphericalImpl::SphericalImpl(const Moon::Type& aType)
 
     : Moon::Impl(aType),
-      sphericalModel_(ostk::physics::env::obj::celest::Moon::GravitationalParameter)
+      sphericalModel_(Moon::SphericalParameters)
 {
 }
 
@@ -81,7 +84,7 @@ Vector3d Moon::SphericalImpl::getFieldValueAt(const Vector3d& aPosition, const I
 }
 
 Moon::Moon(const Moon::Type& aType, const Directory& aDataDirectory)
-    : Model(),
+    : Model(Moon::ParametersFromType(aType)),
       implUPtr_(Moon::ImplFromType(aType, aDataDirectory))
 {
 }
@@ -126,6 +129,21 @@ Moon::Type Moon::getType() const
 Vector3d Moon::getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const
 {
     return implUPtr_->getFieldValueAt(aPosition, anInstant);
+}
+
+Model::Parameters Moon::ParametersFromType(const Moon::Type& aType)
+{
+    switch (aType)
+    {
+        case (Moon::Type::Spherical):
+            return Moon::SphericalParameters;
+
+        case (Moon::Type::Undefined):
+            return Moon::Parameters::Undefined();
+
+        default:
+            throw ostk::core::error::runtime::Wrong("Type");
+    }
 }
 
 Unique<Moon::Impl> Moon::ImplFromType(const Moon::Type& aType, const Directory& aDataDirectory)

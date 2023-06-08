@@ -20,6 +20,7 @@ namespace atmospheric
 using ostk::physics::coord::Frame;
 using ostk::physics::environment::atmospheric::earth::Exponential;
 using EarthCelestialBody = ostk::physics::env::obj::celest::Earth;
+using EarthGravitational = ostk::physics::environment::gravitational::Earth;
 
 class Earth::Impl
 {
@@ -131,8 +132,8 @@ Real Earth::getDensityAt(const Position& aPosition, const Instant& anInstant) co
     return this->getDensityAt(
         LLA::Cartesian(
             aPosition.inFrame(Frame::ITRF(), anInstant).accessCoordinates(),
-            EarthCelestialBody::EquatorialRadius,
-            EarthCelestialBody::Flattening
+            EarthGravitational::EGM2008Parameters.equatorialRadius_,
+            EarthGravitational::EGM2008Parameters.flattening_
         ),
         anInstant
     );

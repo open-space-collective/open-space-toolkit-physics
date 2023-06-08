@@ -41,6 +41,7 @@ using ostk::physics::Environment;
 using ostk::physics::env::obj::celest::Earth;
 using ostk::physics::env::utilities::eclipseIntervalsAtPosition;
 using ostk::physics::env::utilities::isPositionInEclipse;
+using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 
 TEST(OpenSpaceToolkit_Physics_Environment_Utilities_Eclipse, IsPositionInEclipse)
 {
@@ -143,8 +144,13 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utilities_Eclipse, EclipseIntervalsAtP
             const File referenceDataFile = std::get<2>(referenceScenario);
             const Duration durationTolerance = std::get<3>(referenceScenario);
 
-            const Position position_ITRF =
-                Position::Meters(lla.toCartesian(Earth::EquatorialRadius, Earth::Flattening), Frame::ITRF());
+            const Position position_ITRF = Position::Meters(
+                lla.toCartesian(
+                    EarthGravitationalModel::EGM2008Parameters.equatorialRadius_,
+                    EarthGravitationalModel::EGM2008Parameters.flattening_
+                ),
+                Frame::ITRF()
+            );
             const Environment environment = Environment::Default();
 
             const Array<Interval> eclipseIntervals =

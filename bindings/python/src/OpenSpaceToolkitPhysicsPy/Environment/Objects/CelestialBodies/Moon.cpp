@@ -18,14 +18,10 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Moon(p
         class_<Moon, Shared<Moon>, Celestial>(aModule, "Moon")
 
             .def(
-                init<const Shared<Ephemeris>&, const MoonGravitationalModel::Type&>(),
+                init<const Shared<Ephemeris>&, const Shared<MoonGravitationalModel>&>(),
                 arg("ephemeris"),
-                arg("gravitational_model_type")
+                arg("gravitational_model")
             )
-
-            .def_readonly_static("gravitational_parameter", &Moon::GravitationalParameter)
-            .def_readonly_static("equatorial_radius", &Moon::EquatorialRadius)
-            .def_readonly_static("flattening", &Moon::Flattening)
 
             .def("__str__", &(shiftToString<Moon>))
             .def("__repr__", &(shiftToString<Moon>))

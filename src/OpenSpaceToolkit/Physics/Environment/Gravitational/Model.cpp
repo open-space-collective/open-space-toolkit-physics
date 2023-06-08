@@ -14,7 +14,15 @@ namespace environment
 namespace gravitational
 {
 
-Model::Model() {}
+Model::Model(const Parameters& aSetOfParameters)
+    : parameters_(aSetOfParameters)
+{
+}
+
+Model::Parameters Model::getParameters() const
+{
+    return parameters_;
+}
 
 Model::~Model() {}
 

@@ -41,18 +41,13 @@ using MoonGravitationalModel = ostk::physics::environment::gravitational::Moon;
 class Moon : public Celestial
 {
    public:
-    static Derived GravitationalParameter;
-    static Length EquatorialRadius;
-    static Real Flattening;
-
     /// @brief              Constructor
     ///
     /// @param              [in] anEphemeris An ephemeris for the Moon celestial object
-    /// @param              [in] aGravitationalModelType A gravitational model type for the Moon celestial object
+    /// @param              [in] aGravitationalModel A gravitational model for the Moon celestial object
     /// (Spherical model only)
-    /// @param              [in] anInstant An instant
 
-    Moon(const Shared<Ephemeris>& anEphemeris, const MoonGravitationalModel::Type& aGravitationalModelType);
+    Moon(const Shared<Ephemeris>& anEphemeris, const Shared<MoonGravitationalModel>& aGravitationalModel);
 
     /// @brief              Destructor
 

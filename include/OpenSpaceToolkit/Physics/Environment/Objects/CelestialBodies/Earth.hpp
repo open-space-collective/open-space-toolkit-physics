@@ -48,83 +48,6 @@ using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
 class Earth : public Celestial
 {
    public:
-    struct Models
-    {
-        struct EGM2008
-        {
-            static const Derived GravitationalParameter;
-            static const Length EquatorialRadius;
-            static const Real Flattening;
-            static const Real C20;
-            static const Real C40;
-            static const Real J2;
-            static const Real J4;
-        };
-
-        struct WGS84_EGM96
-        {
-            static const Derived GravitationalParameter;
-            static const Length EquatorialRadius;
-            static const Real Flattening;
-            static const Real C20;
-            static const Real C40;
-            static const Real J2;
-            static const Real J4;
-        };
-
-        struct EGM96
-        {
-            static const Derived GravitationalParameter;
-            static const Length EquatorialRadius;
-            static const Real Flattening;
-            static const Real C20;
-            static const Real C40;
-            static const Real J2;
-            static const Real J4;
-        };
-
-        struct EGM84
-        {
-            static const Derived GravitationalParameter;
-            static const Length EquatorialRadius;
-            static const Real Flattening;
-            static const Real C20;
-            static const Real C40;
-            static const Real J2;
-            static const Real J4;
-        };
-
-        struct WGS84
-        {
-            static const Derived GravitationalParameter;
-            static const Length EquatorialRadius;
-            static const Real Flattening;
-            static const Real C20;
-            static const Real C40;
-            static const Real J2;
-            static const Real J4;
-        };
-
-        struct Spherical
-        {
-            static const Derived GravitationalParameter;
-            static const Length EquatorialRadius;
-            static const Real Flattening;
-            static const Real C20;
-            static const Real C40;
-            static const Real J2;
-            static const Real J4;
-        };
-    };
-
-    static const Derived GravitationalParameter;  // [TBR]
-    static const Length EquatorialRadius;         // [TBR]
-    static const Real Flattening;                 // [TBR]
-    static const Real C20;                        // [TBR]
-    static const Real C40;                        // [TBR]
-    static const Real J2;                         // [TBR]
-    static const Real J4;                         // [TBR]
-
     Earth(
         const Derived& aGravitationalParameter,
         const Length& anEquatorialRadius,
@@ -132,23 +55,16 @@ class Earth : public Celestial
         const Real& aJ2,
         const Real& aJ4,
         const Shared<Ephemeris>& anEphemeris,
-        const EarthGravitationalModel::Type& aGravitationalModelType,
-        const EarthMagneticModel::Type& aMagneticModelType,
-        const EarthAtmosphericModel::Type& aAtmosphericModelType
+        const Shared<EarthGravitationalModel>& aGravitationalModel,
+        const Shared<EarthMagneticModel>& aMagneticModel,
+        const Shared<EarthAtmosphericModel>& aAtmosphericModel
     );
 
     Earth(
-        const Derived& aGravitationalParameter,
-        const Length& anEquatorialRadius,
-        const Real& aFlattening,
-        const Real& aJ2,
-        const Real& aJ4,
         const Shared<Ephemeris>& anEphemeris,
-        const EarthGravitationalModel::Type& aGravitationalModelType,
-        const Integer& aGravityModelDegree,
-        const Integer& aGravityModelOrder,
-        const EarthMagneticModel::Type& aMagneticModelType,
-        const EarthAtmosphericModel::Type& aAtmosphericModelType
+        const Shared<EarthGravitationalModel>& aGravitationalModel = nullptr,
+        const Shared<EarthMagneticModel>& aMagneticModel = nullptr,
+        const Shared<EarthAtmosphericModel>& aAtmosphericModel = nullptr
     );
 
     virtual ~Earth() override;
