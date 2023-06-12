@@ -234,15 +234,10 @@ Array<Kernel> Engine::DefaultKernels(const Directory& aLocalRepository)
     // Use regex to pull Earth body shape, orientation and leap second kernels, as the file name is often updated.
     using iterator = std::filesystem::directory_iterator;
 
-    auto findKernel = [&aLocalRepository](const String aRegexString) -> Path
+    auto findKernel = [&aLocalRepository](const String aRegexString) -> Kernel
     {
-        if (!aLocalRepository.exists())
-        {
-            return Path::Undefined();
-        }
-
         std::regex aRegex(aRegexString);
-        Array<Path> result;
+        Array<Path> kernelPaths;
 
         std::filesystem::path directory = std::string(aLocalRepository.getPath().toString());
 
@@ -252,25 +247,25 @@ Array<Kernel> Engine::DefaultKernels(const Directory& aLocalRepository)
             const String filename = iter->path().filename().string();
             if (std::filesystem::is_regular_file(*iter) && std::regex_match(filename, aRegex))
             {
-                result.add(Path::Parse(iter->path().string()));
+                kernelPaths.add(Path::Parse(iter->path().string()));
             }
         }
 
-        if (result.isEmpty())
+        if (kernelPaths.isEmpty())
         {
-            throw ostk::core::error::RuntimeError("No SPICE kernel found matching regex [{}] in search path [{}].", aRegexString, aLocalRepository.getPath().toString());
+            return Manager::Get().fetchMatchingKernels(aRegex).accessFirst();
         }
 
-        return result.accessFirst();
+        return Kernel::File(File::Path(kernelPaths.accessFirst()));
     };
 
     static const Array<Kernel> defaultKernels = {
 
-        Kernel::File(File::Path(findKernel("naif[0-9]*.tls"))),  // Leap seconds
+        findKernel("naif[0-9]*.tls"),  // Leap seconds
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("de430.bsp"))),    // Ephemeris
-        Kernel::File(File::Path(findKernel("pck[0-9]*\\.tpc"))),  // System body shape and orientation constants
+        findKernel("pck[0-9]*\\.tpc"),  // System body shape and orientation constants
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("earth_assoc_itrf93.tf"))),
-        Kernel::File(File::Path(findKernel("earth\\_200101\\_[0-9]*\\_predict\\.bpc"))),
+        findKernel("earth\\_200101\\_[0-9]*\\_predict\\.bpc"),
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("moon_080317.tf"))),
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("moon_assoc_me.tf"))),
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("moon_pa_de421_1900-2050.bpc")))
@@ -387,9 +382,15 @@ void Engine::setup()
 
     if (mode_ == Engine::Mode::Automatic)
     {
+        Directory kernelsDirectory = Manager::Get().getLocalRepository();
+        if (!kernelsDirectory.exists())
+        {
+            kernelsDirectory.create();
+        }
+
         // Load default kernels
 
-        for (const auto& kernel : Engine::DefaultKernels(Manager::Get().getLocalRepository()))
+        for (const auto& kernel : Engine::DefaultKernels(kernelsDirectory))
         {
             this->loadKernel_(kernel);
         }
