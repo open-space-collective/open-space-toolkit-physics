@@ -236,14 +236,15 @@ Array<Kernel> Engine::DefaultKernels(const Directory& aLocalRepository)
 
     auto findKernel = [&aLocalRepository](const String aRegexString) -> Path
     {
-        std::regex aRegex(aRegexString);
-        Array<Path> result;
-        std::filesystem::path directory = std::string(aLocalRepository.getPath().toString());
-
         if (!aLocalRepository.isDefined())
         {
             return Path::Undefined();
         }
+
+        std::regex aRegex(aRegexString);
+        Array<Path> result;
+
+        std::filesystem::path directory = std::string(aLocalRepository.getPath().toString());
 
         const iterator end;
         for (iterator iter {directory}; iter != end; ++iter)
