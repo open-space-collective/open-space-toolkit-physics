@@ -236,7 +236,7 @@ Array<Kernel> Engine::DefaultKernels(const Directory& aLocalRepository)
 
     auto findKernel = [&aLocalRepository](const String aRegexString) -> Path
     {
-        if (!aLocalRepository.isDefined())
+        if (!aLocalRepository.exists())
         {
             return Path::Undefined();
         }
