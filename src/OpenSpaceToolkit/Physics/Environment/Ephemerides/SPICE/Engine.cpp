@@ -234,11 +234,16 @@ Array<Kernel> Engine::DefaultKernels(const Directory& aLocalRepository)
     // Use regex to pull Earth body shape, orientation and leap second kernels, as the file name is often updated.
     using iterator = std::filesystem::directory_iterator;
 
-    auto findKernels = [&aLocalRepository](const String aRegexString) -> Array<Path>
+    auto findKernel = [&aLocalRepository](const String aRegexString) -> Path
     {
         std::regex aRegex(aRegexString);
         Array<Path> result;
         std::filesystem::path directory = std::string(aLocalRepository.getPath().toString());
+
+        if (!aLocalRepository.isDefined())
+        {
+            return Path::Undefined();
+        }
 
         const iterator end;
         for (iterator iter {directory}; iter != end; ++iter)
@@ -255,16 +260,16 @@ Array<Kernel> Engine::DefaultKernels(const Directory& aLocalRepository)
             throw ostk::core::error::RuntimeError("No SPICE kernel found matching regex [{}] in search path [{}].", aRegexString, aLocalRepository.getPath().toString());
         }
 
-        return result;
+        return result.accessFirst();
     };
 
     static const Array<Kernel> defaultKernels = {
 
-        Kernel::File(File::Path(findKernels("naif[0-9]*.tls").accessFirst())),  // Leap seconds
+        Kernel::File(File::Path(findKernel("naif[0-9]*.tls"))),  // Leap seconds
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("de430.bsp"))),    // Ephemeris
-        Kernel::File(File::Path(findKernels("pck[0-9]*\\.tpc").accessFirst())),  // System body shape and orientation constants
+        Kernel::File(File::Path(findKernel("pck[0-9]*\\.tpc"))),  // System body shape and orientation constants
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("earth_assoc_itrf93.tf"))),
-        Kernel::File(File::Path(findKernels("earth\\_200101\\_[0-9]*\\_predict\\.bpc").accessFirst())),
+        Kernel::File(File::Path(findKernel("earth\\_200101\\_[0-9]*\\_predict\\.bpc"))),
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("moon_080317.tf"))),
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("moon_assoc_me.tf"))),
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("moon_pa_de421_1900-2050.bpc")))
