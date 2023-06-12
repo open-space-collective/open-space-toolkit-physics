@@ -37,6 +37,7 @@ class Earth : public Model
    public:
     enum class Type
     {
+        Undefined,
         Exponential,
         NRLMSISE00
     };
@@ -70,6 +71,12 @@ class Earth : public Model
     /// @return             Pointer to Earth atmospheric model
 
     virtual Earth* clone() const override;
+
+    /// @brief              Check if the Earth atmospheric model is defined
+    ///
+    /// @return             True if the Earth atmospheric model is defined
+
+    bool isDefined() const;
 
     /// @brief              Get atmospheric model type
     ///

@@ -195,8 +195,8 @@ Earth Earth::EGM2008(const Integer& aGravityModelDegree, const Integer& aGravity
         EarthGravitationalModel::Type::EGM2008,
         aGravityModelDegree,
         aGravityModelOrder,
-        EarthMagneticModel::Type::Dipole,
-        EarthAtmosphericModel::Type::Exponential,
+        EarthMagneticModel::Type::Undefined,
+        EarthAtmosphericModel::Type::Undefined,
         Instant::J2000()};
 }
 
@@ -217,8 +217,8 @@ Earth Earth::WGS84_EGM96(const Integer& aGravityModelDegree, const Integer& aGra
         EarthGravitationalModel::Type::EGM96,
         aGravityModelDegree,
         aGravityModelOrder,
-        EarthMagneticModel::Type::Dipole,
-        EarthAtmosphericModel::Type::Exponential,
+        EarthMagneticModel::Type::Undefined,
+        EarthAtmosphericModel::Type::Undefined,
         Instant::J2000()};
 }
 
@@ -239,8 +239,8 @@ Earth Earth::EGM96(const Integer& aGravityModelDegree, const Integer& aGravityMo
         EarthGravitationalModel::Type::EGM96,
         aGravityModelDegree,
         aGravityModelOrder,
-        EarthMagneticModel::Type::Dipole,
-        EarthAtmosphericModel::Type::Exponential,
+        EarthMagneticModel::Type::Undefined,
+        EarthAtmosphericModel::Type::Undefined,
         Instant::J2000()};
 }
 
@@ -261,8 +261,8 @@ Earth Earth::EGM84(const Integer& aGravityModelDegree, const Integer& aGravityMo
         EarthGravitationalModel::Type::EGM84,
         aGravityModelDegree,
         aGravityModelOrder,
-        EarthMagneticModel::Type::Dipole,
-        EarthAtmosphericModel::Type::Exponential,
+        EarthMagneticModel::Type::Undefined,
+        EarthAtmosphericModel::Type::Undefined,
         Instant::J2000()};
 }
 
@@ -283,8 +283,8 @@ Earth Earth::WGS84(const Integer& aGravityModelDegree, const Integer& aGravityMo
         EarthGravitationalModel::Type::WGS84,
         aGravityModelDegree,
         aGravityModelOrder,
-        EarthMagneticModel::Type::Dipole,
-        EarthAtmosphericModel::Type::Exponential,
+        EarthMagneticModel::Type::Undefined,
+        EarthAtmosphericModel::Type::Undefined,
         Instant::J2000()};
 }
 
@@ -303,8 +303,8 @@ Earth Earth::Spherical()
         Earth::Models::Spherical::J4,
         std::make_shared<Analytical>(earthFrameSPtr),
         EarthGravitationalModel::Type::Spherical,
-        EarthMagneticModel::Type::Dipole,
-        EarthAtmosphericModel::Type::Exponential,
+        EarthMagneticModel::Type::Undefined,
+        EarthAtmosphericModel::Type::Undefined,
         Instant::J2000()};
 }
 

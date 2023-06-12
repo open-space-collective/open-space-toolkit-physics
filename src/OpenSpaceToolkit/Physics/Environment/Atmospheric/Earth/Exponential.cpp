@@ -31,6 +31,11 @@ Exponential* Exponential::clone() const
     return new Exponential(*this);
 }
 
+bool Exponential::isDefined() const
+{
+    return true;
+}
+
 Real Exponential::getDensityAt(const Position& aPosition, const Instant& anInstant) const
 {
     return this->getDensityAt(
@@ -112,7 +117,7 @@ Tuple<Real, Real, Real> Exponential::DensityBandValues(const Length& anAltitude)
         }
     }
 
-    if (bandIndex == Integer::Undefined())
+    if (!bandIndex.isDefined())
     {
         throw ostk::core::error::RuntimeError(String::Format(
             "Exponential density model is not valid for altitudes above 1000 km. Altitude = {}", anAltitude.toString()
