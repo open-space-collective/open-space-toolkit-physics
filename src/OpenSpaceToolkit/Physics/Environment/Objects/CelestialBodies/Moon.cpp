@@ -6,6 +6,8 @@
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Static.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Magnetic/Undefined.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Undefined.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Moon.hpp>
 
 namespace ostk
@@ -22,6 +24,8 @@ namespace celest
 using ostk::physics::units::Mass;
 using ostk::physics::units::Time;
 using ostk::physics::units::Angle;
+using undefinedMagneticModel = ostk::physics::environment::magnetic::Undefined;
+using undefinedAtmosphericModel = ostk::physics::environment::atmospheric::Undefined;
 
 Derived Moon::GravitationalParameter = {
     4902.8000e9, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)};
@@ -43,8 +47,8 @@ Moon::Moon(
           0.0,
           anEphemeris,
           std::make_shared<MoonGravitationalModel>(aGravitationalModelType),
-          nullptr,
-          nullptr,
+          std::make_shared<undefinedMagneticModel>(),
+          std::make_shared<undefinedAtmosphericModel>(),
           anInstant,
           Moon::Geometry(anEphemeris->accessFrame())
       )
