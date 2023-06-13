@@ -138,6 +138,12 @@ class Celestial : public Object
 
     Shared<const AtmosphericModel> accessAtmosphericModel() const;
 
+    bool gravitationalModelIsDefined() const;
+
+    bool magneticModelIsDefined() const;
+
+    bool atmosphericModelIsDefined() const;
+
     Celestial::Type getType() const;
 
     Derived getGravitationalParameter() const;
