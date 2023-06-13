@@ -113,6 +113,11 @@ Sun* Sun::clone() const
     return new Sun(*this);
 }
 
+bool Sun::isDefined() const
+{
+    return implUPtr_ != nullptr;
+}
+
 Sun::Type Sun::getType() const
 {
     return implUPtr_->getType();
@@ -127,6 +132,10 @@ Unique<Sun::Impl> Sun::ImplFromType(const Sun::Type& aType, const Directory& aDa
 {
     (void)aDataDirectory;  // Temporary
 
+    if (aType == Sun::Type::Undefined)
+    {
+        return nullptr;
+    }
     if (aType == Sun::Type::Spherical)
     {
         return std::make_unique<Sun::SphericalImpl>(aType);

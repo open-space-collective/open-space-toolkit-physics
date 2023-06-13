@@ -113,6 +113,11 @@ Moon* Moon::clone() const
     return new Moon(*this);
 }
 
+bool Moon::isDefined() const
+{
+    return implUPtr_ != nullptr;
+}
+
 Moon::Type Moon::getType() const
 {
     return implUPtr_->getType();
@@ -127,6 +132,10 @@ Unique<Moon::Impl> Moon::ImplFromType(const Moon::Type& aType, const Directory& 
 {
     (void)aDataDirectory;  // Temporary
 
+    if (aType == Moon::Type::Undefined)
+    {
+        return nullptr;
+    }
     if (aType == Moon::Type::Spherical)
     {
         return std::make_unique<Moon::SphericalImpl>(aType);

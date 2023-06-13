@@ -306,6 +306,11 @@ Earth* Earth::clone() const
     return new Earth(*this);
 }
 
+bool Earth::isDefined() const
+{
+    return implUPtr_ != nullptr;
+}
+
 Earth::Type Earth::getType() const
 {
     return implUPtr_->getType();
@@ -323,6 +328,10 @@ Unique<Earth::Impl> Earth::ImplFromType(
     const Integer& aGravityModelOrder
 )
 {
+    if (aType == Earth::Type::Undefined)
+    {
+        return nullptr;
+    }
     if (aType == Earth::Type::Spherical)
     {
         return std::make_unique<Earth::SphericalImpl>(aType);

@@ -41,6 +41,12 @@ class Spherical : public Model
 
     virtual Spherical* clone() const override;
 
+    /// @brief              Check if the spherical gravitational model is defined
+    ///
+    /// @return             True if the spherical gravitational model is defined
+
+    virtual bool isDefined() const override;
+
     /// @brief              Get the gravitational field value at a given position and instant
     ///
     /// @param              [in] aPosition A position, expressed in the gravitational object frame [m]
