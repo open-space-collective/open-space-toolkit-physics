@@ -61,6 +61,33 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Test)
                  1e-6,  // Orientation angle tolerance [rad]
                  0.0},  // Angular velocity tolerance [rad/s]
 
+                // GCRF <> ITRF
+
+                {File::Path(Path::Parse(
+                     "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_ITRF_IERS_2010_orekit.csv"
+                 )),
+                 Frame::GCRF(),
+                 Frame::ITRF(),
+                 0.0,   // Position tolerance [m]
+                 0.0,   // Velocity tolerance [m/s]
+                 1e-3,  // Orientation axis tolerance []
+                 1e-6,  // Orientation angle tolerance [rad]
+                 1e-6},  // Angular velocity tolerance [rad/s]
+
+
+                // GCRF <> TEME
+
+                {File::Path(Path::Parse(
+                     "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TEME_orekit.csv"
+                 )),
+                 Frame::GCRF(),
+                 Frame::TEME(),
+                 0.0,   // Position tolerance [m]
+                 0.0,   // Velocity tolerance [m/s]
+                 1e-3,  // Orientation axis tolerance []
+                 1e-6,  // Orientation angle tolerance [rad]
+                 1e-6},  // Angular velocity tolerance [rad/s]
+
                 // GCRF <> TOD IAU_2000A @2020-01-01T00:00:00.000 TAI
 
                 {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/"
@@ -178,7 +205,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Test)
                     const Vector3d toFrame1 = transformToFrame1.getTranslation();
 
                     ASSERT_TRUE(referenceToFrame2.isNear(toFrame2, translationTolerance)) << String::Format(
-                        "{} @ {} - {} [m] vs. {} [m] above {} [m] tolerance",
+                        "{} @ {} Translation: {} [m] vs. {} [m] above {} [m] tolerance",
                         scenario,
                         instant.toString(Scale::TAI),
                         referenceToFrame2.toString(),
@@ -187,7 +214,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Test)
                     );
 
                     ASSERT_TRUE(referenceToFrame1.isNear(toFrame1, translationTolerance)) << String::Format(
-                        "{} @ {} - {} [m] vs. {} [m] above {} [m] tolerance",
+                        "{} @ {} Translation: {} [m] vs. {} [m] above {} [m] tolerance",
                         scenario,
                         instant.toString(Scale::TAI),
                         referenceToFrame1.toString(),
@@ -207,7 +234,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Test)
                     const Vector3d toFrame1 = transformToFrame1.getVelocity();
 
                     ASSERT_TRUE(referenceToFrame2.isNear(toFrame2, velocityTolerance)) << String::Format(
-                        "{} @ {} - {} [m/s] vs. {} [m/s] above {} [m/s] tolerance",
+                        "{} @ {} Velocity: {} [m/s] vs. {} [m/s] above {} [m/s] tolerance",
                         scenario,
                         instant.toString(Scale::TAI),
                         referenceToFrame2.toString(),
@@ -216,7 +243,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Test)
                     );
 
                     ASSERT_TRUE(referenceToFrame1.isNear(toFrame1, velocityTolerance)) << String::Format(
-                        "{} @ {} - {} [m/s] vs. {} [m/s] above {} [m/s] tolerance",
+                        "{} @ {} Velocity: {} [m/s] vs. {} [m/s] above {} [m/s] tolerance",
                         scenario,
                         instant.toString(Scale::TAI),
                         referenceToFrame1.toString(),
@@ -238,32 +265,11 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Test)
 
                     const RotationVector referenceToFrame2 = RotationVector::Quaternion(referenceQuaterion);
                     const RotationVector referenceToFrame1 =
-                        RotationVector::Quaternion(referenceQuaterion.toConjugate());
+                        RotationVector::Quaternion(referenceQuaterion.toConjugate());\
 
                     const RotationVector toFrame2 = RotationVector::Quaternion(transformToFrame2.getOrientation());
                     const RotationVector toFrame1 = RotationVector::Quaternion(transformToFrame1.getOrientation());
 
-                    // Axis
-
-                    ASSERT_TRUE(referenceToFrame2.getAxis().isNear(toFrame2.getAxis(), orientationAxisTolerance))
-                        << String::Format(
-                               "{} @ {} - {} [] vs. {} [] above {} [] tolerance",
-                               scenario,
-                               instant.toString(Scale::TAI),
-                               referenceToFrame2.getAxis().toString(),
-                               toFrame2.getAxis().toString(),
-                               orientationAxisTolerance.toString()
-                           );
-
-                    ASSERT_TRUE(referenceToFrame1.getAxis().isNear(toFrame1.getAxis(), orientationAxisTolerance))
-                        << String::Format(
-                               "{} @ {} - {} [] vs. {} [] above {} [] tolerance",
-                               scenario,
-                               instant.toString(Scale::TAI),
-                               referenceToFrame1.getAxis().toString(),
-                               toFrame1.getAxis().toString(),
-                               orientationAxisTolerance.toString()
-                           );
 
                     // Angle
 
@@ -272,7 +278,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Test)
                         std::abs((referenceToFrame2.getAngle() - toFrame2.getAngle()).inRadians())
                     )
                         << String::Format(
-                               "{} @ {} - {} [rad] vs. {} [rad] above {} [rad] tolerance",
+                               "{} @ {} Rotation Angle: {} [rad] vs. {} [rad] above {} [rad] tolerance",
                                scenario,
                                instant.toString(Scale::TAI),
                                referenceToFrame2.getAngle().inRadians().toString(),
@@ -285,12 +291,38 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Test)
                         std::abs((referenceToFrame1.getAngle() - toFrame1.getAngle()).inRadians())
                     )
                         << String::Format(
-                               "{} @ {} - {} [rad] vs. {} [rad] above {} [rad] tolerance",
+                               "{} @ {} Rotation Angle: {} [rad] vs. {} [rad] above {} [rad] tolerance",
                                scenario,
                                instant.toString(Scale::TAI),
                                referenceToFrame1.getAngle().inRadians().toString(),
                                toFrame1.getAngle().inRadians().toString(),
                                orientationAngleTolerance.toString()
+                           );
+
+                    // Axis
+
+                    ASSERT_TRUE(referenceToFrame2.getAxis().isNear(toFrame2.getAxis(), orientationAxisTolerance))
+                        << String::Format(
+                               "{} @ {} Rotation Axis: {} [] vs. {} [] above {} [] tolerance | Rotation Angle: {} [rad] vs {} [rad]",
+                               scenario,
+                               instant.toString(Scale::TAI),
+                               referenceToFrame2.getAxis().toString(),
+                               toFrame2.getAxis().toString(),
+                               orientationAxisTolerance.toString(),
+                               referenceToFrame2.getAngle().inRadians(),
+                               toFrame2.getAngle().inRadians()
+                           );
+
+                    ASSERT_TRUE(referenceToFrame1.getAxis().isNear(toFrame1.getAxis(), orientationAxisTolerance))
+                        << String::Format(
+                               "{} @ {} Rotation Axis: {} [] vs. {} [] above {} [] tolerance | Rotation Angle: {} [rad] vs {} [rad]",
+                               scenario,
+                               instant.toString(Scale::TAI),
+                               referenceToFrame1.getAxis().toString(),
+                               toFrame1.getAxis().toString(),
+                               orientationAxisTolerance.toString(),
+                               referenceToFrame1.getAngle().inRadians(),
+                               toFrame1.getAngle().inRadians()
                            );
                 }
 
@@ -305,7 +337,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Test)
                     const Vector3d toFrame1 = transformToFrame1.getAngularVelocity();
 
                     ASSERT_TRUE(referenceToFrame2.isNear(toFrame2, angularVelocityTolerance)) << String::Format(
-                        "{} @ {} - {} [rad/s] vs. {} [rad/s] above {} [rad/s] tolerance",
+                        "{} @ {} Angular Velocity: {} [rad/s] vs. {} [rad/s] above {} [rad/s] tolerance",
                         scenario,
                         instant.toString(Scale::TAI),
                         referenceToFrame2.toString(),
@@ -314,7 +346,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Test)
                     );
 
                     ASSERT_TRUE(referenceToFrame1.isNear(toFrame1, angularVelocityTolerance)) << String::Format(
-                        "{} @ {} - {} [rad/s] vs. {} [rad/s] above {} [rad/s] tolerance",
+                        "{} @ {} Angular Velocity: {} [rad/s] vs. {} [rad/s] above {} [rad/s] tolerance",
                         scenario,
                         instant.toString(Scale::TAI),
                         referenceToFrame1.toString(),
