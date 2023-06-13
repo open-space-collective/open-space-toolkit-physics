@@ -116,6 +116,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a399257ac86e7f0112a702141e0e2e4a7"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model.html">Model</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model.html#a399257ac86e7f0112a702141e0e2e4a7">clone</a> () const =0</td></tr>
 <tr class="memdesc:a399257ac86e7f0112a702141e0e2e4a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clone the gravitational model (pure virtual)  <a href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model.html#a399257ac86e7f0112a702141e0e2e4a7">More...</a><br /></td></tr>
 <tr class="separator:a399257ac86e7f0112a702141e0e2e4a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3db912ed98ddebf5baee717ef75197c"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model.html#ae3db912ed98ddebf5baee717ef75197c">isDefined</a> () const =0</td></tr>
+<tr class="memdesc:ae3db912ed98ddebf5baee717ef75197c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the gravitational model is defined (pure virtual)  <a href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model.html#ae3db912ed98ddebf5baee717ef75197c">More...</a><br /></td></tr>
+<tr class="separator:ae3db912ed98ddebf5baee717ef75197c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5ef3b4ddf4240e8a26553294fe392581"><td class="memItemLeft" align="right" valign="top">virtual Vector3d&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model.html#a5ef3b4ddf4240e8a26553294fe392581">getFieldValueAt</a> (const Vector3d &amp;aPosition, const <a class="el" href="classostk_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;anInstant) const =0</td></tr>
 <tr class="memdesc:a5ef3b4ddf4240e8a26553294fe392581"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the gravitational field value at a given position and instant (pure virtual)  <a href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model.html#a5ef3b4ddf4240e8a26553294fe392581">More...</a><br /></td></tr>
 <tr class="separator:a5ef3b4ddf4240e8a26553294fe392581"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -245,6 +248,36 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Gravitational field value, expressed in the gravitational object frame [m.s-2] </dd></dl>
 
 <p>Implemented in <a class="el" href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#a9e536649566761f4bdd467993abfcedd">ostk::physics::environment::gravitational::Earth</a>, <a class="el" href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon.html#a4771ff76d04a7f850b1bd29b146696ae">ostk::physics::environment::gravitational::Moon</a>, <a class="el" href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun.html#ac8aac491e31bde1690f5d85c7c5fe590">ostk::physics::environment::gravitational::Sun</a>, and <a class="el" href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical.html#a37243cf671418b0cb9eff229101b5e96">ostk::physics::environment::gravitational::Spherical</a>.</p>
+
+</div>
+</div>
+<a id="ae3db912ed98ddebf5baee717ef75197c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3db912ed98ddebf5baee717ef75197c">&#9670;&nbsp;</a></span>isDefined()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool ostk::physics::environment::gravitational::Model::isDefined </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if the gravitational model is defined (pure virtual) </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the gravitational model is defined </dd></dl>
+
+<p>Implemented in <a class="el" href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#abbe5c7a3e6fc2639c902ef9453d1435b">ostk::physics::environment::gravitational::Earth</a>, <a class="el" href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon.html#a5de9cc287bc744b58b0070415523c9f2">ostk::physics::environment::gravitational::Moon</a>, <a class="el" href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun.html#ac45193bd4e61dbf93d38319f4d7842dc">ostk::physics::environment::gravitational::Sun</a>, and <a class="el" href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical.html#a2cae24e92b19dbba581cfd53c80996a2">ostk::physics::environment::gravitational::Spherical</a>.</p>
 
 </div>
 </div>

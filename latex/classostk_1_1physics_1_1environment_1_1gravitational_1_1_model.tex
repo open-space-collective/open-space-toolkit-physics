@@ -24,6 +24,8 @@ virtual \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_
 \begin{DoxyCompactList}\small\item\em Destructor (pure virtual) \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_model}{Model}} $\ast$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_a399257ac86e7f0112a702141e0e2e4a7}{clone}} () const =0
 \begin{DoxyCompactList}\small\item\em Clone the gravitational model (pure virtual) \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_ae3db912ed98ddebf5baee717ef75197c}{is\+Defined}} () const =0
+\begin{DoxyCompactList}\small\item\em Check if the gravitational model is defined (pure virtual) \end{DoxyCompactList}\item 
 virtual Vector3d \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_a5ef3b4ddf4240e8a26553294fe392581}{get\+Field\+Value\+At}} (const Vector3d \&a\+Position, const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const =0
 \begin{DoxyCompactList}\small\item\em Get the gravitational field value at a given position and instant (pure virtual) \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -95,6 +97,23 @@ Gravitational field value, expressed in the gravitational object frame \mbox{[}m
 
 
 Implemented in \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9e536649566761f4bdd467993abfcedd}{ostk\+::physics\+::environment\+::gravitational\+::\+Earth}}, \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_a4771ff76d04a7f850b1bd29b146696ae}{ostk\+::physics\+::environment\+::gravitational\+::\+Moon}}, \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_ac8aac491e31bde1690f5d85c7c5fe590}{ostk\+::physics\+::environment\+::gravitational\+::\+Sun}}, and \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical_a37243cf671418b0cb9eff229101b5e96}{ostk\+::physics\+::environment\+::gravitational\+::\+Spherical}}.
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_ae3db912ed98ddebf5baee717ef75197c}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_ae3db912ed98ddebf5baee717ef75197c}} 
+\index{ostk::physics::environment::gravitational::Model@{ostk::physics::environment::gravitational::Model}!isDefined@{isDefined}}
+\index{isDefined@{isDefined}!ostk::physics::environment::gravitational::Model@{ostk::physics::environment::gravitational::Model}}
+\doxysubsubsection{\texorpdfstring{isDefined()}{isDefined()}}
+{\footnotesize\ttfamily virtual bool ostk\+::physics\+::environment\+::gravitational\+::\+Model\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Check if the gravitational model is defined (pure virtual) 
+
+\begin{DoxyReturn}{Returns}
+True if the gravitational model is defined 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_abbe5c7a3e6fc2639c902ef9453d1435b}{ostk\+::physics\+::environment\+::gravitational\+::\+Earth}}, \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_a5de9cc287bc744b58b0070415523c9f2}{ostk\+::physics\+::environment\+::gravitational\+::\+Moon}}, \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_ac45193bd4e61dbf93d38319f4d7842dc}{ostk\+::physics\+::environment\+::gravitational\+::\+Sun}}, and \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical_a2cae24e92b19dbba581cfd53c80996a2}{ostk\+::physics\+::environment\+::gravitational\+::\+Spherical}}.
 
 
 

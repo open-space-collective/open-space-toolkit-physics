@@ -118,16 +118,19 @@ $(document).ready(function(){initNavTree('_gravitational_2_model_8hpp_source.htm
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model.html">Model</a>* <a class="code" href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model.html#a399257ac86e7f0112a702141e0e2e4a7">clone</a>() <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model.html#ae3db912ed98ddebf5baee717ef75197c">isDefined</a>() <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">virtual</span> Vector3d <a class="code" href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model.html#a5ef3b4ddf4240e8a26553294fe392581">getFieldValueAt</a>(<span class="keyword">const</span> Vector3d&amp; aPosition, <span class="keyword">const</span> <a class="code" href="classostk_1_1physics_1_1time_1_1_instant.html">Instant</a>&amp; anInstant) <span class="keyword">const</span> = 0;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;};</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}  <span class="comment">// namespace gravitational</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}  <span class="comment">// namespace environment</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}  <span class="comment">// namespace physics</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}  <span class="comment">// namespace ostk</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">virtual</span> Vector3d <a class="code" href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model.html#a5ef3b4ddf4240e8a26553294fe392581">getFieldValueAt</a>(<span class="keyword">const</span> Vector3d&amp; aPosition, <span class="keyword">const</span> <a class="code" href="classostk_1_1physics_1_1time_1_1_instant.html">Instant</a>&amp; anInstant) <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;};</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}  <span class="comment">// namespace gravitational</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}  <span class="comment">// namespace environment</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}  <span class="comment">// namespace physics</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}  <span class="comment">// namespace ostk</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassostk_1_1physics_1_1environment_1_1gravitational_1_1_model_html_ad588a72265bacd216b6d3b19d4736ae9"><div class="ttname"><a href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model.html#ad588a72265bacd216b6d3b19d4736ae9">ostk::physics::environment::gravitational::Model::Model</a></div><div class="ttdeci">Model()</div><div class="ttdoc">Constructor (default)</div><div class="ttdef"><b>Definition:</b> Model.cpp:17</div></div>
@@ -135,6 +138,7 @@ $(document).ready(function(){initNavTree('_gravitational_2_model_8hpp_source.htm
 <div class="ttc" id="aclassostk_1_1physics_1_1time_1_1_instant_html"><div class="ttname"><a href="classostk_1_1physics_1_1time_1_1_instant.html">ostk::physics::time::Instant</a></div><div class="ttdoc">Point in time.</div><div class="ttdef"><b>Definition:</b> Instant.hpp:40</div></div>
 <div class="ttc" id="anamespaceostk_html"><div class="ttname"><a href="namespaceostk.html">ostk</a></div><div class="ttdoc">Apache License 2.0.</div><div class="ttdef"><b>Definition:</b> Axes.hpp:12</div></div>
 <div class="ttc" id="a_instant_8hpp_html"><div class="ttname"><a href="_instant_8hpp.html">Instant.hpp</a></div></div>
+<div class="ttc" id="aclassostk_1_1physics_1_1environment_1_1gravitational_1_1_model_html_ae3db912ed98ddebf5baee717ef75197c"><div class="ttname"><a href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model.html#ae3db912ed98ddebf5baee717ef75197c">ostk::physics::environment::gravitational::Model::isDefined</a></div><div class="ttdeci">virtual bool isDefined() const =0</div><div class="ttdoc">Check if the gravitational model is defined (pure virtual)</div></div>
 <div class="ttc" id="aclassostk_1_1physics_1_1environment_1_1gravitational_1_1_model_html_ab44f53d6e046fb5d436b90128aff0850"><div class="ttname"><a href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model.html#ab44f53d6e046fb5d436b90128aff0850">ostk::physics::environment::gravitational::Model::~Model</a></div><div class="ttdeci">virtual ~Model()=0</div><div class="ttdoc">Destructor (pure virtual)</div><div class="ttdef"><b>Definition:</b> Model.cpp:19</div></div>
 <div class="ttc" id="aclassostk_1_1physics_1_1environment_1_1gravitational_1_1_model_html_a399257ac86e7f0112a702141e0e2e4a7"><div class="ttname"><a href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model.html#a399257ac86e7f0112a702141e0e2e4a7">ostk::physics::environment::gravitational::Model::clone</a></div><div class="ttdeci">virtual Model * clone() const =0</div><div class="ttdoc">Clone the gravitational model (pure virtual)</div></div>
 <div class="ttc" id="aclassostk_1_1physics_1_1environment_1_1gravitational_1_1_model_html"><div class="ttname"><a href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model.html">ostk::physics::environment::gravitational::Model</a></div><div class="ttdoc">Gravitational model (interface)</div><div class="ttdef"><b>Definition:</b> Model.hpp:25</div></div>

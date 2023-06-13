@@ -22,6 +22,8 @@ Inheritance diagram for ostk\+::physics\+::environment\+::gravitational\+::Spher
 \begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical}{Spherical}} $\ast$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical_ac9f63de9656589a27a77e7a8d48836bd}{clone}} () const override
 \begin{DoxyCompactList}\small\item\em Clone the spherical gravitational model. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical_a2cae24e92b19dbba581cfd53c80996a2}{is\+Defined}} () const override
+\begin{DoxyCompactList}\small\item\em Check if the spherical gravitational model is defined. \end{DoxyCompactList}\item 
 virtual Vector3d \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical_a37243cf671418b0cb9eff229101b5e96}{get\+Field\+Value\+At}} (const Vector3d \&a\+Position, const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const override
 \begin{DoxyCompactList}\small\item\em Get the gravitational field value at a given position and instant. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -88,6 +90,23 @@ Gravitational field value, expressed in the gravitational object frame \mbox{[}m
 
 
 Implements \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_a5ef3b4ddf4240e8a26553294fe392581}{ostk\+::physics\+::environment\+::gravitational\+::\+Model}}.
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical_a2cae24e92b19dbba581cfd53c80996a2}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical_a2cae24e92b19dbba581cfd53c80996a2}} 
+\index{ostk::physics::environment::gravitational::Spherical@{ostk::physics::environment::gravitational::Spherical}!isDefined@{isDefined}}
+\index{isDefined@{isDefined}!ostk::physics::environment::gravitational::Spherical@{ostk::physics::environment::gravitational::Spherical}}
+\doxysubsubsection{\texorpdfstring{isDefined()}{isDefined()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::environment\+::gravitational\+::\+Spherical\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Check if the spherical gravitational model is defined. 
+
+\begin{DoxyReturn}{Returns}
+True if the spherical gravitational model is defined 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_ae3db912ed98ddebf5baee717ef75197c}{ostk\+::physics\+::environment\+::gravitational\+::\+Model}}.
 
 
 

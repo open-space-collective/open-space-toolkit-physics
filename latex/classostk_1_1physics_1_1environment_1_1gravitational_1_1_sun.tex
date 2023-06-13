@@ -18,7 +18,8 @@ Inheritance diagram for ostk\+::physics\+::environment\+::gravitational\+::Sun\+
 \doxysubsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-enum \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_ae567145f71c7750a9e4e43a309bd19db}{Type}} \{ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_ae567145f71c7750a9e4e43a309bd19dba24e5c24fabd1c081d4c729094df0b947}{Type\+::\+Spherical}}
+enum \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_ae567145f71c7750a9e4e43a309bd19db}{Type}} \{ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_ae567145f71c7750a9e4e43a309bd19dbaec0fc0100c4fc1ce4eea230c3dc10360}{Type\+::\+Undefined}}, 
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_ae567145f71c7750a9e4e43a309bd19dba24e5c24fabd1c081d4c729094df0b947}{Type\+::\+Spherical}}
  \}
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions}
@@ -34,6 +35,8 @@ enum \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_s
 \begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun}{Sun}} $\ast$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_aa884bdf367fcbe7aa81289cc077c9dad}{clone}} () const override
 \begin{DoxyCompactList}\small\item\em Clone the \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun}{Sun}} gravitational model. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_ac45193bd4e61dbf93d38319f4d7842dc}{is\+Defined}} () const override
+\begin{DoxyCompactList}\small\item\em Check if the \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun}{Sun}} gravitational model is defined. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_ae567145f71c7750a9e4e43a309bd19db}{Sun\+::\+Type}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_ac79af34fa7adcb7340b86a059b7585e8}{get\+Type}} () const
 \begin{DoxyCompactList}\small\item\em Get gravitational model type. \end{DoxyCompactList}\item 
 virtual Vector3d \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_ac8aac491e31bde1690f5d85c7c5fe590}{get\+Field\+Value\+At}} (const Vector3d \&a\+Position, const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const override
@@ -55,8 +58,12 @@ virtual Vector3d \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravita
 {\footnotesize\ttfamily enum \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_ae567145f71c7750a9e4e43a309bd19db}{ostk\+::physics\+::environment\+::gravitational\+::\+Sun\+::\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
 
 \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Undefined@{Undefined}!ostk::physics::environment::gravitational::Sun@{ostk::physics::environment::gravitational::Sun}}\index{ostk::physics::environment::gravitational::Sun@{ostk::physics::environment::gravitational::Sun}!Undefined@{Undefined}}}\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_ae567145f71c7750a9e4e43a309bd19dbaec0fc0100c4fc1ce4eea230c3dc10360}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_ae567145f71c7750a9e4e43a309bd19dbaec0fc0100c4fc1ce4eea230c3dc10360}} 
+Undefined&\\
+\hline
+
 \raisebox{\heightof{T}}[0pt][0pt]{\index{Spherical@{Spherical}!ostk::physics::environment::gravitational::Sun@{ostk::physics::environment::gravitational::Sun}}\index{ostk::physics::environment::gravitational::Sun@{ostk::physics::environment::gravitational::Sun}!Spherical@{Spherical}}}\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_ae567145f71c7750a9e4e43a309bd19dba24e5c24fabd1c081d4c729094df0b947}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_ae567145f71c7750a9e4e43a309bd19dba24e5c24fabd1c081d4c729094df0b947}} 
-Spherical&The spherical gravity originating from a point source at the center of the \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun}{Sun}}. \\
+Spherical&Undefined. The spherical gravity originating from a point source at the center of the \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun}{Sun}} \\
 \hline
 
 \end{DoxyEnumFields}
@@ -162,6 +169,23 @@ Get gravitational model type.
 \begin{DoxyReturn}{Returns}
 Gravitational model type 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_ac45193bd4e61dbf93d38319f4d7842dc}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_ac45193bd4e61dbf93d38319f4d7842dc}} 
+\index{ostk::physics::environment::gravitational::Sun@{ostk::physics::environment::gravitational::Sun}!isDefined@{isDefined}}
+\index{isDefined@{isDefined}!ostk::physics::environment::gravitational::Sun@{ostk::physics::environment::gravitational::Sun}}
+\doxysubsubsection{\texorpdfstring{isDefined()}{isDefined()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::environment\+::gravitational\+::\+Sun\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Check if the \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun}{Sun}} gravitational model is defined. 
+
+\begin{DoxyReturn}{Returns}
+True if the \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun}{Sun}} gravitational model is defined 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_ae3db912ed98ddebf5baee717ef75197c}{ostk\+::physics\+::environment\+::gravitational\+::\+Model}}.
+
 \mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_a9eb14731759cdb1a8ab4b92c5e193111}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_a9eb14731759cdb1a8ab4b92c5e193111}} 
 \index{ostk::physics::environment::gravitational::Sun@{ostk::physics::environment::gravitational::Sun}!operator=@{operator=}}
 \index{operator=@{operator=}!ostk::physics::environment::gravitational::Sun@{ostk::physics::environment::gravitational::Sun}}

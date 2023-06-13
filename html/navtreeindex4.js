@@ -1,5 +1,13 @@
 var NAVTREEINDEX4 =
 {
+"classostk_1_1physics_1_1time_1_1_duration.html":[4,0,0,0,4,2],
+"classostk_1_1physics_1_1time_1_1_duration.html#a00148c707cda4dc7b93aab5280200cd5":[4,0,0,0,4,2,17],
+"classostk_1_1physics_1_1time_1_1_duration.html#a022d05824638f8288e84131d6b5e07be":[4,0,0,0,4,2,5],
+"classostk_1_1physics_1_1time_1_1_duration.html#a03f34bc3528d1e33efdc9da44df157f4":[4,0,0,0,4,2,11],
+"classostk_1_1physics_1_1time_1_1_duration.html#a172bf36df42a169ecf5893daa3f7d7b2":[4,0,0,0,4,2,28],
+"classostk_1_1physics_1_1time_1_1_duration.html#a20ef00f7f5889c3e815800bb72920482":[4,0,0,0,4,2,41],
+"classostk_1_1physics_1_1time_1_1_duration.html#a211f0f909d453c61aad6677409507698":[4,0,0,0,4,2,32],
+"classostk_1_1physics_1_1time_1_1_duration.html#a2400f4ac59f56e2a73090cff9404c67c":[4,0,0,0,4,2,34],
 "classostk_1_1physics_1_1time_1_1_duration.html#a24026d219798a960db5482f4cda808c3":[4,0,0,0,4,2,13],
 "classostk_1_1physics_1_1time_1_1_duration.html#a262e3e2ea8f8c82f81028ef055114add":[4,0,0,0,4,2,44],
 "classostk_1_1physics_1_1time_1_1_duration.html#a26a68103c9ee563c99257590fbc60079":[4,0,0,0,4,2,29],
@@ -241,13 +249,5 @@ var NAVTREEINDEX4 =
 "classostk_1_1physics_1_1units_1_1_time.html":[4,0,0,0,5,5],
 "classostk_1_1physics_1_1units_1_1_time.html#a1b89925067e81636fa80f6e73eed3625":[4,0,0,0,5,5,6],
 "classostk_1_1physics_1_1units_1_1_time.html#a222edb0c7de6cfbc5ae29632261bc829":[4,0,0,0,5,5,4],
-"classostk_1_1physics_1_1units_1_1_time.html#a2e6a342d3c8b7ee85764223855056fb0":[4,0,0,0,5,5,3],
-"classostk_1_1physics_1_1units_1_1_time.html#a6805d7d9b298d1ba9f219294e11a363c":[4,0,0,0,5,5,7],
-"classostk_1_1physics_1_1units_1_1_time.html#a731e1f09af9f9e95cac914cc189cbbad":[4,0,0,0,5,5,1],
-"classostk_1_1physics_1_1units_1_1_time.html#aa961f0dbca7ec297e19e15e0dfa3bb4a":[4,0,0,0,5,5,0],
-"classostk_1_1physics_1_1units_1_1_time.html#aa961f0dbca7ec297e19e15e0dfa3bb4aa03727ac48595a24daed975559c944a44":[4,0,0,0,5,5,0,7],
-"classostk_1_1physics_1_1units_1_1_time.html#aa961f0dbca7ec297e19e15e0dfa3bb4aa1f14b3811ca5de688daa740d8471249e":[4,0,0,0,5,5,0,2],
-"classostk_1_1physics_1_1units_1_1_time.html#aa961f0dbca7ec297e19e15e0dfa3bb4aa4146c294bcc82b1723c65bdc64b55089":[4,0,0,0,5,5,0,1],
-"classostk_1_1physics_1_1units_1_1_time.html#aa961f0dbca7ec297e19e15e0dfa3bb4aa62902641c38f3a4a8eb3212454360e24":[4,0,0,0,5,5,0,5],
-"classostk_1_1physics_1_1units_1_1_time.html#aa961f0dbca7ec297e19e15e0dfa3bb4aa988bbeeb80e7e0a6b4651aab5a76b413":[4,0,0,0,5,5,0,3]
+"classostk_1_1physics_1_1units_1_1_time.html#a2e6a342d3c8b7ee85764223855056fb0":[4,0,0,0,5,5,3]
 };

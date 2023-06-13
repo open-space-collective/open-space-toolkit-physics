@@ -119,22 +119,26 @@ $(document).ready(function(){initNavTree('_spherical_8hpp_source.html',''); init
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical.html">Spherical</a>* <a class="code" href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical.html#ac9f63de9656589a27a77e7a8d48836bd">clone</a>() <span class="keyword">const override</span>;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical.html#a2cae24e92b19dbba581cfd53c80996a2">isDefined</a>() <span class="keyword">const override</span>;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">virtual</span> Vector3d <a class="code" href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical.html#a37243cf671418b0cb9eff229101b5e96">getFieldValueAt</a>(<span class="keyword">const</span> Vector3d&amp; aPosition, <span class="keyword">const</span> <a class="code" href="classostk_1_1physics_1_1time_1_1_instant.html">Instant</a>&amp; anInstant) <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    Real gravitationalParameter_SI_;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;};</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}  <span class="comment">// namespace gravitational</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}  <span class="comment">// namespace environment</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}  <span class="comment">// namespace physics</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}  <span class="comment">// namespace ostk</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">virtual</span> Vector3d <a class="code" href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical.html#a37243cf671418b0cb9eff229101b5e96">getFieldValueAt</a>(<span class="keyword">const</span> Vector3d&amp; aPosition, <span class="keyword">const</span> <a class="code" href="classostk_1_1physics_1_1time_1_1_instant.html">Instant</a>&amp; anInstant) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    Real gravitationalParameter_SI_;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;};</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}  <span class="comment">// namespace gravitational</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}  <span class="comment">// namespace environment</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}  <span class="comment">// namespace physics</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}  <span class="comment">// namespace ostk</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical_html_a37243cf671418b0cb9eff229101b5e96"><div class="ttname"><a href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical.html#a37243cf671418b0cb9eff229101b5e96">ostk::physics::environment::gravitational::Spherical::getFieldValueAt</a></div><div class="ttdeci">virtual Vector3d getFieldValueAt(const Vector3d &amp;aPosition, const Instant &amp;anInstant) const override</div><div class="ttdoc">Get the gravitational field value at a given position and instant.</div><div class="ttdef"><b>Definition:</b> Spherical.cpp:40</div></div>
+<div class="ttc" id="aclassostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical_html_a2cae24e92b19dbba581cfd53c80996a2"><div class="ttname"><a href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical.html#a2cae24e92b19dbba581cfd53c80996a2">ostk::physics::environment::gravitational::Spherical::isDefined</a></div><div class="ttdeci">virtual bool isDefined() const override</div><div class="ttdoc">Check if the spherical gravitational model is defined.</div><div class="ttdef"><b>Definition:</b> Spherical.cpp:40</div></div>
+<div class="ttc" id="aclassostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical_html_a37243cf671418b0cb9eff229101b5e96"><div class="ttname"><a href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical.html#a37243cf671418b0cb9eff229101b5e96">ostk::physics::environment::gravitational::Spherical::getFieldValueAt</a></div><div class="ttdeci">virtual Vector3d getFieldValueAt(const Vector3d &amp;aPosition, const Instant &amp;anInstant) const override</div><div class="ttdoc">Get the gravitational field value at a given position and instant.</div><div class="ttdef"><b>Definition:</b> Spherical.cpp:45</div></div>
 <div class="ttc" id="aclassostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical_html_aa0181210c54a42a0b6e808d6e6811d6b"><div class="ttname"><a href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical.html#aa0181210c54a42a0b6e808d6e6811d6b">ostk::physics::environment::gravitational::Spherical::Spherical</a></div><div class="ttdeci">Spherical(const Derived &amp;aGravitationalParameter)</div><div class="ttdoc">Constructor.</div><div class="ttdef"><b>Definition:</b> Spherical.cpp:25</div></div>
 <div class="ttc" id="a_derived_8hpp_html"><div class="ttname"><a href="_derived_8hpp.html">Derived.hpp</a></div></div>
 <div class="ttc" id="aclassostk_1_1physics_1_1units_1_1_derived_html"><div class="ttname"><a href="classostk_1_1physics_1_1units_1_1_derived.html">ostk::physics::units::Derived</a></div><div class="ttdoc">Derived unit.</div><div class="ttdef"><b>Definition:</b> Derived.hpp:33</div></div>
