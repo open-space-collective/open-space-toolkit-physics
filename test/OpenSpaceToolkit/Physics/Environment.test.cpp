@@ -31,55 +31,81 @@
 
 #include <Global.test.hpp>
 
-TEST(OpenSpaceToolkit_Physics_Environment, Constructor)
+using ostk::core::types::Shared;
+using ostk::core::types::Weak;
+using ostk::core::types::String;
+using ostk::core::types::Real;
+using ostk::core::ctnr::Array;
+using ostk::core::ctnr::Map;
+
+using ostk::math::obj::Interval;
+using ostk::math::obj::Vector3d;
+using ostk::math::geom::d3::objects::Segment;
+using ostk::math::geom::d3::trf::rot::Quaternion;
+using ostk::math::geom::d3::trf::rot::RotationVector;
+using ostk::math::geom::d3::objects::Point;
+using ostk::math::geom::d3::objects::LineString;
+using ostk::math::geom::d3::objects::Polygon;
+using ostk::math::geom::d3::objects::Ellipsoid;
+using ostk::math::geom::d3::objects::Pyramid;
+using ostk::math::geom::d3::Intersection;
+using Point2d = ostk::math::geom::d2::objects::Point;
+using Polygon2d = ostk::math::geom::d2::objects::Polygon;
+
+using ostk::physics::Environment;
+using ostk::physics::time::Scale;
+using ostk::physics::time::Instant;
+using ostk::physics::time::DateTime;
+using ostk::physics::time::Duration;
+using TimeInterval = ostk::physics::time::Interval;
+using ostk::physics::coord::Frame;
+using ostk::physics::coord::Position;
+using ostk::physics::coord::Velocity;
+using ostk::physics::coord::Transform;
+using ostk::physics::coord::Axes;
+using ostk::physics::coord::spherical::LLA;
+using ostk::physics::Environment;
+using ostk::physics::env::Object;
+using ostk::physics::env::obj::celest::Earth;
+using ostk::physics::env::obj::celest::Moon;
+using ostk::physics::env::ephem::spice::Engine;
+using ostk::physics::units::Length;
+
+using ostk::core::types::Shared;
+using ostk::core::types::Weak;
+using ostk::core::types::String;
+using ostk::core::ctnr::Array;
+
+class OpenSpaceToolkit_Physics_Environment : public ::testing::Test
 {
-    using ostk::core::types::Shared;
-    using ostk::core::ctnr::Array;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::Environment;
-    using ostk::physics::env::Object;
-    using ostk::physics::env::obj::celest::Earth;
-
+   protected:
+    void SetUp() override
     {
-        const Instant instant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC);
+        environment_ = {instant_, objects_};
+    }
 
-        const Array<Shared<Object>> objects = {std::make_shared<Earth>(Earth::Default())};
+    const Instant instant_ = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC);
+    const Array<Shared<Object>> objects_ = {std::make_shared<Earth>(Earth::Default())};
+    Environment environment_ = Environment::Undefined();
+};
 
-        EXPECT_NO_THROW(Environment environment(instant, objects););
+TEST_F(OpenSpaceToolkit_Physics_Environment, Constructor)
+{
+    {
+        EXPECT_NO_THROW(Environment environment(instant_, objects_););
     }
 
     {
-        const Instant instant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC);
-
         const Array<Shared<Object>> objects = {std::make_shared<Earth>(Earth::EGM2008(2190, 2160))};
 
-        EXPECT_NO_THROW(Environment environment(instant, objects););
+        EXPECT_NO_THROW(Environment environment(instant_, objects););
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment, IsDefined)
+TEST_F(OpenSpaceToolkit_Physics_Environment, IsDefined)
 {
-    using ostk::core::types::Shared;
-    using ostk::core::ctnr::Array;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::Environment;
-    using ostk::physics::env::Object;
-    using ostk::physics::env::obj::celest::Earth;
-
     {
-        const Instant instant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC);
-
-        const Array<Shared<Object>> objects = {std::make_shared<Earth>(Earth::Default())};
-
-        const Environment environment = {instant, objects};
-
-        EXPECT_TRUE(environment.isDefined());
+        EXPECT_TRUE(environment_.isDefined());
     }
 
     {
@@ -87,27 +113,11 @@ TEST(OpenSpaceToolkit_Physics_Environment, IsDefined)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment, HasObjectWithName)
+TEST_F(OpenSpaceToolkit_Physics_Environment, HasObjectWithName)
 {
-    using ostk::core::types::Shared;
-    using ostk::core::ctnr::Array;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::Environment;
-    using ostk::physics::env::Object;
-    using ostk::physics::env::obj::celest::Earth;
-
     {
-        const Instant instant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC);
-
-        const Array<Shared<Object>> objects = {std::make_shared<Earth>(Earth::Default())};
-
-        const Environment environment = {instant, objects};
-
-        EXPECT_TRUE(environment.hasObjectWithName("Earth"));
-        EXPECT_FALSE(environment.hasObjectWithName("Moon"));
+        EXPECT_TRUE(environment_.hasObjectWithName("Earth"));
+        EXPECT_FALSE(environment_.hasObjectWithName("Moon"));
     }
 
     {
@@ -116,30 +126,9 @@ TEST(OpenSpaceToolkit_Physics_Environment, HasObjectWithName)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment, Intersects)
+TEST_F(OpenSpaceToolkit_Physics_Environment, Intersects)
 {
-    using ostk::core::types::Shared;
-    using ostk::core::types::Real;
-    using ostk::core::ctnr::Array;
-
-    using ostk::math::obj::Interval;
-    using ostk::math::geom::d3::objects::Segment;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::coord::Frame;
-    using ostk::physics::Environment;
-    using ostk::physics::env::Object;
-    using ostk::physics::env::obj::celest::Earth;
-
     {
-        const Instant instant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC);
-
-        const Array<Shared<Object>> objects = {std::make_shared<Earth>(Earth::Default())};
-
-        const Environment environment = {instant, objects};
-
         // for (const auto& y_ECI : Interval<Real>::Closed(-Earth::EquatorialRadius.inMeters(),
         // +Earth::EquatorialRadius.inMeters()).generateArrayWithStep(Real(1000.0)))
         for (const auto& y_ECI :
@@ -153,43 +142,26 @@ TEST(OpenSpaceToolkit_Physics_Environment, Intersects)
 
             const Object::Geometry segmentGeometry = {segment, Frame::GCRF()};
 
-            ASSERT_TRUE(environment.intersects(segmentGeometry)) << segmentGeometry;
+            ASSERT_TRUE(environment_.intersects(segmentGeometry)) << segmentGeometry;
         }
     }
 
     {
-        const Environment environment = Environment::Default();
         const Segment segment = {{-7000e3, 0.0, 0.0}, {+7000e3, 0.0, 0.0}};
         const Object::Geometry geometry = {segment, Frame::GCRF()};
 
         EXPECT_ANY_THROW(Environment::Undefined().intersects(Object::Geometry::Undefined()));
         EXPECT_ANY_THROW(Environment::Undefined().intersects(geometry));
-        EXPECT_ANY_THROW(environment.intersects(Object::Geometry::Undefined()));
+        EXPECT_ANY_THROW(environment_.intersects(Object::Geometry::Undefined()));
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment, AccessObjects)
+TEST_F(OpenSpaceToolkit_Physics_Environment, AccessObjects)
 {
-    using ostk::core::types::Shared;
-    using ostk::core::ctnr::Array;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::Environment;
-    using ostk::physics::env::Object;
-    using ostk::physics::env::obj::celest::Earth;
-
     {
-        const Instant instant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC);
+        ASSERT_EQ(1, environment_.accessObjects().getSize());
 
-        const Array<Shared<Object>> objects = {std::make_shared<Earth>(Earth::Default())};
-
-        const Environment environment = {instant, objects};
-
-        ASSERT_EQ(1, environment.accessObjects().getSize());
-
-        EXPECT_EQ("Earth", environment.accessObjects()[0]->getName());
+        EXPECT_EQ("Earth", environment_.accessObjects()[0]->getName());
     }
 
     {
@@ -197,28 +169,12 @@ TEST(OpenSpaceToolkit_Physics_Environment, AccessObjects)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment, AccessObjectWithName)
+TEST_F(OpenSpaceToolkit_Physics_Environment, AccessObjectWithName)
 {
-    using ostk::core::types::Shared;
-    using ostk::core::ctnr::Array;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::Environment;
-    using ostk::physics::env::Object;
-    using ostk::physics::env::obj::celest::Earth;
-
     {
-        const Instant instant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC);
+        EXPECT_NO_THROW(environment_.accessObjectWithName("Earth"));
 
-        const Array<Shared<Object>> objects = {std::make_shared<Earth>(Earth::Default())};
-
-        const Environment environment = {instant, objects};
-
-        EXPECT_NO_THROW(environment.accessObjectWithName("Earth"));
-
-        const Shared<const Object> objectSPtr = environment.accessObjectWithName("Earth");
+        const Shared<const Object> objectSPtr = environment_.accessObjectWithName("Earth");
 
         EXPECT_TRUE(objectSPtr);
 
@@ -231,28 +187,12 @@ TEST(OpenSpaceToolkit_Physics_Environment, AccessObjectWithName)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment, AccessCelestialObjectWithName)
+TEST_F(OpenSpaceToolkit_Physics_Environment, AccessCelestialObjectWithName)
 {
-    using ostk::core::types::Shared;
-    using ostk::core::ctnr::Array;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::Environment;
-    using ostk::physics::env::Object;
-    using ostk::physics::env::obj::celest::Earth;
-
     {
-        const Instant instant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC);
+        EXPECT_NO_THROW(environment_.accessCelestialObjectWithName("Earth"));
 
-        const Array<Shared<Object>> objects = {std::make_shared<Earth>(Earth::Default())};
-
-        const Environment environment = {instant, objects};
-
-        EXPECT_NO_THROW(environment.accessCelestialObjectWithName("Earth"));
-
-        const Shared<const Object> objectSPtr = environment.accessCelestialObjectWithName("Earth");
+        const Shared<const Object> objectSPtr = environment_.accessCelestialObjectWithName("Earth");
 
         EXPECT_TRUE(objectSPtr);
 
@@ -265,26 +205,10 @@ TEST(OpenSpaceToolkit_Physics_Environment, AccessCelestialObjectWithName)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment, GetInstant)
+TEST_F(OpenSpaceToolkit_Physics_Environment, GetInstant)
 {
-    using ostk::core::types::Shared;
-    using ostk::core::ctnr::Array;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::Environment;
-    using ostk::physics::env::Object;
-    using ostk::physics::env::obj::celest::Earth;
-
     {
-        const Instant instant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC);
-
-        const Array<Shared<Object>> objects = {std::make_shared<Earth>(Earth::Default())};
-
-        const Environment environment = {instant, objects};
-
-        EXPECT_EQ(instant, environment.getInstant());
+        EXPECT_EQ(instant_, environment_.getInstant());
     }
 
     {
@@ -292,27 +216,10 @@ TEST(OpenSpaceToolkit_Physics_Environment, GetInstant)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment, GetObjectNames)
+TEST_F(OpenSpaceToolkit_Physics_Environment, GetObjectNames)
 {
-    using ostk::core::types::Shared;
-    using ostk::core::types::String;
-    using ostk::core::ctnr::Array;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::Environment;
-    using ostk::physics::env::Object;
-    using ostk::physics::env::obj::celest::Earth;
-
     {
-        const Instant instant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC);
-
-        const Array<Shared<Object>> objects = {std::make_shared<Earth>(Earth::Default())};
-
-        const Environment environment = {instant, objects};
-
-        EXPECT_EQ(Array<String>({"Earth"}), environment.getObjectNames());
+        EXPECT_EQ(Array<String>({"Earth"}), environment_.getObjectNames());
     }
 
     {
@@ -320,34 +227,18 @@ TEST(OpenSpaceToolkit_Physics_Environment, GetObjectNames)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment, SetInstant)
+TEST_F(OpenSpaceToolkit_Physics_Environment, SetInstant)
 {
-    using ostk::core::types::Shared;
-    using ostk::core::ctnr::Array;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::Environment;
-    using ostk::physics::env::Object;
-    using ostk::physics::env::obj::celest::Earth;
-
     {
-        const Instant firstInstant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC);
-
-        const Array<Shared<Object>> objects = {std::make_shared<Earth>(Earth::Default())};
-
-        Environment environment = {firstInstant, objects};
-
-        EXPECT_EQ(firstInstant, environment.getInstant());
+        EXPECT_EQ(instant_, environment_.getInstant());
 
         const Instant secondInstant = Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC);
 
-        environment.setInstant(secondInstant);
+        environment_.setInstant(secondInstant);
 
-        EXPECT_EQ(secondInstant, environment.getInstant());
+        EXPECT_EQ(secondInstant, environment_.getInstant());
 
-        EXPECT_ANY_THROW(environment.setInstant(Instant::Undefined()));
+        EXPECT_ANY_THROW(environment_.setInstant(Instant::Undefined()));
     }
 
     {
@@ -355,10 +246,8 @@ TEST(OpenSpaceToolkit_Physics_Environment, SetInstant)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment, Undefined)
+TEST_F(OpenSpaceToolkit_Physics_Environment, Undefined)
 {
-    using ostk::physics::Environment;
-
     {
         EXPECT_NO_THROW(Environment::Undefined());
 
@@ -366,10 +255,8 @@ TEST(OpenSpaceToolkit_Physics_Environment, Undefined)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment, Default)
+TEST_F(OpenSpaceToolkit_Physics_Environment, Default)
 {
-    using ostk::physics::Environment;
-
     {
         EXPECT_NO_THROW(Environment::Default());
 
@@ -381,32 +268,8 @@ TEST(OpenSpaceToolkit_Physics_Environment, Default)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment, Test_1)
+TEST_F(OpenSpaceToolkit_Physics_Environment, Test_1)
 {
-    using ostk::core::types::Shared;
-    using ostk::core::types::Weak;
-    using ostk::core::types::String;
-    using ostk::core::ctnr::Array;
-
-    using ostk::math::geom::d3::trf::rot::Quaternion;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::Duration;
-    using ostk::physics::time::Interval;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::coord::Position;
-    using ostk::physics::coord::Velocity;
-    using ostk::physics::coord::Transform;
-    using ostk::physics::coord::Frame;
-    using ostk::physics::coord::Axes;
-    using ostk::physics::Environment;
-    using ostk::physics::env::Object;
-    using ostk::physics::env::obj::celest::Earth;
-    using ostk::physics::env::obj::celest::Moon;
-
-    using ostk::physics::env::ephem::spice::Engine;
-
     const Instant startInstant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC);
     const Instant endInstant = Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC);
     const Duration step = Duration::Minutes(1.0);
@@ -420,7 +283,7 @@ TEST(OpenSpaceToolkit_Physics_Environment, Test_1)
         std::dynamic_pointer_cast<const Earth>(environment.accessObjectWithName("Earth"));
     const Shared<const Moon> moonSPtr = std::dynamic_pointer_cast<const Moon>(environment.accessObjectWithName("Moon"));
 
-    for (const auto& instant : Interval::Closed(startInstant, endInstant).generateGrid(step))
+    for (const auto& instant : TimeInterval::Closed(startInstant, endInstant).generateGrid(step))
     {
         environment.setInstant(instant);
 
@@ -466,40 +329,8 @@ TEST(OpenSpaceToolkit_Physics_Environment, Test_1)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment, Test_2)
+TEST_F(OpenSpaceToolkit_Physics_Environment, Test_2)
 {
-    using ostk::core::types::Shared;
-    using ostk::core::types::Weak;
-    using ostk::core::types::String;
-    using ostk::core::ctnr::Array;
-
-    using ostk::math::obj::Vector3d;
-    using Point2d = ostk::math::geom::d2::objects::Point;
-    using Polygon2d = ostk::math::geom::d2::objects::Polygon;
-    using ostk::math::geom::d3::objects::Point;
-    using ostk::math::geom::d3::objects::LineString;
-    using ostk::math::geom::d3::objects::Polygon;
-    using ostk::math::geom::d3::objects::Ellipsoid;
-    using ostk::math::geom::d3::objects::Pyramid;
-    using ostk::math::geom::d3::Intersection;
-    using ostk::math::geom::d3::trf::rot::Quaternion;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::Duration;
-    using ostk::physics::time::Interval;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::coord::Position;
-    using ostk::physics::coord::Velocity;
-    using ostk::physics::coord::Transform;
-    using ostk::physics::coord::Frame;
-    using ostk::physics::coord::Axes;
-    using ostk::physics::coord::spherical::LLA;
-    using ostk::physics::Environment;
-    using ostk::physics::env::Object;
-    using ostk::physics::env::obj::celest::Earth;
-    using ostk::physics::env::obj::celest::Moon;
-
     // Setup scene
 
     const Instant startInstant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC);
@@ -555,27 +386,8 @@ TEST(OpenSpaceToolkit_Physics_Environment, Test_2)
     EXPECT_TRUE(intersectionPolygon2d.isDefined()) << intersectionPolygon2d;
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment, Test_3)
+TEST_F(OpenSpaceToolkit_Physics_Environment, Test_3)
 {
-    using ostk::core::types::Shared;
-    using ostk::core::types::Weak;
-    using ostk::core::types::String;
-    using ostk::core::ctnr::Map;
-
-    using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
-
-    using ostk::physics::units::Length;
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::Duration;
-    using ostk::physics::time::Interval;
-    using ostk::physics::coord::Frame;
-    using ostk::physics::Environment;
-    using ostk::physics::env::Object;
-    using ostk::physics::env::obj::celest::Earth;
-
     {
         const Map<Instant, Quaternion> referenceData = {
             {Instant::DateTime(DateTime::Parse("2018-06-25 00:00:00.000"), Scale::UTC),
@@ -644,7 +456,7 @@ TEST(OpenSpaceToolkit_Physics_Environment, Test_3)
 
         EXPECT_EQ(Earth::EquatorialRadius, earthEquatorialRadius);
 
-        for (const auto& instant : Interval::Closed(startInstant, endInstant).generateGrid(stepDuration))
+        for (const auto& instant : TimeInterval::Closed(startInstant, endInstant).generateGrid(stepDuration))
         {
             environment.setInstant(instant);
 

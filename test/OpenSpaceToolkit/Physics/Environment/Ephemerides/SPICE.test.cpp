@@ -10,21 +10,44 @@
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformations/Rotations/RotationVector.hpp>
 
 #include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE.hpp>
-// clang-format off
-// Include Manager.hpp before Engine.hpp to avoid name conflict for "ostk::core::types::Index" 
-#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Engine.hpp>
-// clang-format on
+#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
 
 #include <Global.test.hpp>
 
+using ostk::physics::env::ephem::SPICE;
+
+using ostk::core::types::Shared;
+using ostk::core::types::Real;
+using ostk::core::types::String;
+using ostk::core::ctnr::Tuple;
+using ostk::core::ctnr::Array;
+using ostk::core::ctnr::Table;
+using ostk::core::fs::Path;
+using ostk::core::fs::File;
+using ostk::core::fs::Directory;
+
+using ostk::math::obj::Vector3d;
+using ostk::math::geom::d3::trf::rot::Quaternion;
+using ostk::math::geom::d3::trf::rot::RotationVector;
+
+using ostk::physics::units::Angle;
+using ostk::physics::time::Scale;
+using ostk::physics::time::Instant;
+using ostk::physics::time::DateTime;
+using ostk::physics::coord::Frame;
+using ostk::physics::coord::Position;
+using ostk::physics::coord::Transform;
+
+using ostk::physics::env::ephem::spice::Engine;
+using ostk::physics::env::ephem::spice::Manager;
+using ostk::physics::env::ephem::spice::Kernel;
+
 TEST(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, Constructor)
 {
-    using ostk::physics::env::ephem::SPICE;
-
     {
         EXPECT_NO_THROW(SPICE spice {SPICE::Object::Earth});
     }
@@ -32,8 +55,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, Constructor)
 
 TEST(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, IsDefined)
 {
-    using ostk::physics::env::ephem::SPICE;
-
     {
         const SPICE spice = {SPICE::Object::Earth};
 
@@ -43,30 +64,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, IsDefined)
 
 TEST(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, AccessFrame)
 {
-    using ostk::core::types::Shared;
-    using ostk::core::types::Real;
-    using ostk::core::types::String;
-    using ostk::core::ctnr::Tuple;
-    using ostk::core::ctnr::Array;
-    using ostk::core::ctnr::Table;
-    using ostk::core::fs::Path;
-    using ostk::core::fs::File;
-    using ostk::core::fs::Directory;
-
-    using ostk::math::obj::Vector3d;
-    using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
-
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::coord::Frame;
-    using ostk::physics::coord::Transform;
-    using ostk::physics::env::ephem::SPICE;
-    using ostk::physics::env::ephem::spice::Engine;
-    using ostk::physics::env::ephem::spice::Kernel;
-
     {
         const Directory spiceLocalRepository =
             Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE"));
@@ -217,8 +214,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, AccessFrame)
 
 TEST(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, StringFromObject)
 {
-    using ostk::physics::env::ephem::SPICE;
-
     {
         EXPECT_EQ("Sun", SPICE::StringFromObject(SPICE::Object::Sun));
         EXPECT_EQ("Mercury", SPICE::StringFromObject(SPICE::Object::Mercury));
@@ -235,22 +230,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, StringFromObject)
 
 TEST(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, ManualMode)
 {
-    using ostk::core::types::Shared;
-    using ostk::core::types::Real;
-    using ostk::core::types::String;
-    using ostk::core::fs::Path;
-    using ostk::core::fs::File;
-    using ostk::core::fs::Directory;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::coord::Position;
-    using ostk::physics::coord::Frame;
-    using ostk::physics::env::ephem::SPICE;
-    using ostk::physics::env::ephem::spice::Engine;
-    using ostk::physics::env::ephem::spice::Kernel;
-
     {
         const Directory spiceLocalRepository =
             Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE"));
@@ -291,22 +270,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, ManualMode)
 
 TEST(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, AutomaticMode)
 {
-    using ostk::core::types::Shared;
-    using ostk::core::types::Real;
-    using ostk::core::types::String;
-    using ostk::core::fs::Path;
-    using ostk::core::fs::File;
-    using ostk::core::fs::Directory;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::coord::Position;
-    using ostk::physics::coord::Frame;
-    using ostk::physics::env::ephem::SPICE;
-    using ostk::physics::env::ephem::spice::Engine;
-    using ostk::physics::env::ephem::spice::Manager;
-
     {
         Manager::Get().setLocalRepository(
             Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE"))

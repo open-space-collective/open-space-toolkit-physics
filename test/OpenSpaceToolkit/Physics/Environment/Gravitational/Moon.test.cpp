@@ -12,12 +12,20 @@
 
 #include <Global.test.hpp>
 
+using ostk::core::types::Real;
+using ostk::core::types::String;
+using ostk::core::ctnr::Tuple;
+using ostk::core::ctnr::Array;
+using ostk::core::fs::Path;
+using ostk::core::fs::Directory;
+
+using ostk::math::obj::Vector3d;
+
+using ostk::physics::time::Instant;
+using MoonGravitationalModel = ostk::physics::environment::gravitational::Moon;
+
 TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Moon, Constructor)
 {
-    using ostk::core::fs::Directory;
-
-    using MoonGravitationalModel = ostk::physics::environment::gravitational::Moon;
-
     {
         EXPECT_NO_THROW(MoonGravitationalModel moonGravitationalModel(MoonGravitationalModel::Type::Spherical));
         EXPECT_NO_THROW(
@@ -28,8 +36,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Moon, Constructor)
 
 TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Moon, IsDefined)
 {
-    using MoonGravitationalModel = ostk::physics::environment::gravitational::Moon;
-
     {
         EXPECT_FALSE(MoonGravitationalModel(MoonGravitationalModel::Type::Undefined).isDefined());
 
@@ -39,11 +45,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Moon, IsDefined)
 
 TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Moon, GetType)
 {
-    using ostk::core::fs::Path;
-    using ostk::core::fs::Directory;
-
-    using MoonGravitationalModel = ostk::physics::environment::gravitational::Moon;
-
     {
         EXPECT_EQ(
             MoonGravitationalModel::Type::Spherical,
@@ -54,18 +55,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Moon, GetType)
 
 TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Moon, GetFieldValueAt)
 {
-    using ostk::core::types::Real;
-    using ostk::core::types::String;
-    using ostk::core::ctnr::Tuple;
-    using ostk::core::ctnr::Array;
-    using ostk::core::fs::Path;
-    using ostk::core::fs::Directory;
-
-    using ostk::math::obj::Vector3d;
-
-    using ostk::physics::time::Instant;
-    using MoonGravitationalModel = ostk::physics::environment::gravitational::Moon;
-
     {
         static const Array<Tuple<MoonGravitationalModel::Type, Vector3d, Instant, Vector3d, Real>> testCases = {
 

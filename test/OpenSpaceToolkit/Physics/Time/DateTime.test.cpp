@@ -4,12 +4,14 @@
 
 #include <Global.test.hpp>
 
+using ostk::core::types::Real;
+
+using ostk::physics::time::Date;
+using ostk::physics::time::Time;
+using ostk::physics::time::DateTime;
+
 TEST(OpenSpaceToolkit_Physics_Time_DateTime, Constructor)
 {
-    using ostk::physics::time::Date;
-    using ostk::physics::time::Time;
-    using ostk::physics::time::DateTime;
-
     {
         EXPECT_NO_THROW(DateTime(Date(2018, 1, 1), Time(1, 2, 3)));
 
@@ -79,8 +81,6 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, Constructor)
 
 TEST(OpenSpaceToolkit_Physics_Time_DateTime, EqualToOperator)
 {
-    using ostk::physics::time::DateTime;
-
     {
         EXPECT_TRUE(DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789) == DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789));
 
@@ -125,8 +125,6 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, EqualToOperator)
 
 TEST(OpenSpaceToolkit_Physics_Time_DateTime, NotEqualToOperator)
 {
-    using ostk::physics::time::DateTime;
-
     {
         EXPECT_TRUE(DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789) != DateTime(2019, 1, 2, 12, 34, 56, 123, 456, 789));
         EXPECT_TRUE(DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789) != DateTime(2018, 2, 2, 12, 34, 56, 123, 456, 789));
@@ -159,8 +157,6 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, NotEqualToOperator)
 
 TEST(OpenSpaceToolkit_Physics_Time_DateTime, StreamOperator)
 {
-    using ostk::physics::time::DateTime;
-
     {
         testing::internal::CaptureStdout();
 
@@ -172,8 +168,6 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, StreamOperator)
 
 TEST(OpenSpaceToolkit_Physics_Time_DateTime, IsDefined)
 {
-    using ostk::physics::time::DateTime;
-
     {
         EXPECT_TRUE(DateTime(2018, 1, 2, 12, 34, 56).isDefined());
         EXPECT_TRUE(DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789).isDefined());
@@ -186,9 +180,6 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, IsDefined)
 
 TEST(OpenSpaceToolkit_Physics_Time_DateTime, AccessDate)
 {
-    using ostk::physics::time::Date;
-    using ostk::physics::time::DateTime;
-
     {
         EXPECT_EQ(Date(2018, 1, 2), DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789).accessDate());
     }
@@ -200,9 +191,6 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, AccessDate)
 
 TEST(OpenSpaceToolkit_Physics_Time_DateTime, AccessTime)
 {
-    using ostk::physics::time::Time;
-    using ostk::physics::time::DateTime;
-
     {
         EXPECT_EQ(Time(12, 34, 56, 123, 456, 789), DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789).accessTime());
     }
@@ -214,9 +202,6 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, AccessTime)
 
 TEST(OpenSpaceToolkit_Physics_Time_DateTime, GetDate)
 {
-    using ostk::physics::time::Date;
-    using ostk::physics::time::DateTime;
-
     {
         EXPECT_EQ(Date(2018, 1, 2), DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789).getDate());
     }
@@ -228,9 +213,6 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, GetDate)
 
 TEST(OpenSpaceToolkit_Physics_Time_DateTime, GetTime)
 {
-    using ostk::physics::time::Time;
-    using ostk::physics::time::DateTime;
-
     {
         EXPECT_EQ(Time(12, 34, 56, 123, 456, 789), DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789).getTime());
     }
@@ -242,8 +224,6 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, GetTime)
 
 TEST(OpenSpaceToolkit_Physics_Time_DateTime, GetJulianDate)
 {
-    using ostk::physics::time::DateTime;
-
     {
         EXPECT_EQ(2451545.0, DateTime(2000, 1, 1, 12, 0, 0).getJulianDate());
         EXPECT_EQ(2451545.25, DateTime(2000, 1, 1, 18, 0, 0).getJulianDate());
@@ -259,8 +239,6 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, GetJulianDate)
 
 TEST(OpenSpaceToolkit_Physics_Time_DateTime, GetModifiedJulianDate)
 {
-    using ostk::physics::time::DateTime;
-
     {
         EXPECT_EQ(0.0, DateTime(1858, 11, 17, 0, 0, 0).getModifiedJulianDate());
         EXPECT_EQ(54000.0, DateTime(2006, 9, 22, 0, 0, 0).getModifiedJulianDate());
@@ -274,8 +252,6 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, GetModifiedJulianDate)
 
 TEST(OpenSpaceToolkit_Physics_Time_DateTime, ToString)
 {
-    using ostk::physics::time::DateTime;
-
     {
         EXPECT_EQ("2018-01-02 12:34:56.123.456.789", DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789).toString());
 
@@ -364,8 +340,6 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, ToString)
 
 TEST(OpenSpaceToolkit_Physics_Time_DateTime, Undefined)
 {
-    using ostk::physics::time::DateTime;
-
     {
         EXPECT_NO_THROW(DateTime::Undefined());
 
@@ -375,8 +349,6 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, Undefined)
 
 TEST(OpenSpaceToolkit_Physics_Time_DateTime, J2000)
 {
-    using ostk::physics::time::DateTime;
-
     {
         EXPECT_EQ(DateTime(2000, 1, 1, 12, 0, 0), DateTime::J2000());
     }
@@ -384,8 +356,6 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, J2000)
 
 TEST(OpenSpaceToolkit_Physics_Time_DateTime, GPSEpoch)
 {
-    using ostk::physics::time::DateTime;
-
     {
         EXPECT_EQ(DateTime(1980, 1, 6, 0, 0, 0), DateTime::GPSEpoch());
     }
@@ -393,8 +363,6 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, GPSEpoch)
 
 TEST(OpenSpaceToolkit_Physics_Time_DateTime, UnixEpoch)
 {
-    using ostk::physics::time::DateTime;
-
     {
         EXPECT_EQ(DateTime(1970, 1, 1, 0, 0, 0), DateTime::UnixEpoch());
     }
@@ -402,8 +370,6 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, UnixEpoch)
 
 TEST(OpenSpaceToolkit_Physics_Time_DateTime, ModifiedJulianDateEpoch)
 {
-    using ostk::physics::time::DateTime;
-
     {
         EXPECT_EQ(DateTime(1858, 11, 17, 0, 0, 0), DateTime::ModifiedJulianDateEpoch());
     }
@@ -411,9 +377,6 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, ModifiedJulianDateEpoch)
 
 TEST(OpenSpaceToolkit_Physics_Time_DateTime, JulianDate)
 {
-    using ostk::core::types::Real;
-    using ostk::physics::time::DateTime;
-
     {
         EXPECT_EQ(DateTime(2000, 1, 1, 12, 0, 0), DateTime::JulianDate(2451545.0));
         EXPECT_EQ(DateTime(2000, 1, 1, 18, 0, 0), DateTime::JulianDate(2451545.25));
@@ -439,9 +402,6 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, JulianDate)
 
 TEST(OpenSpaceToolkit_Physics_Time_DateTime, ModifiedJulianDate)
 {
-    using ostk::core::types::Real;
-    using ostk::physics::time::DateTime;
-
     {
         EXPECT_EQ(DateTime(1858, 11, 17, 0, 0, 0), DateTime::ModifiedJulianDate(0.0));
 
@@ -457,8 +417,6 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, ModifiedJulianDate)
 
 TEST(OpenSpaceToolkit_Physics_Time_DateTime, Parse)
 {
-    using ostk::physics::time::DateTime;
-
     // Undefined (automatic format detection)
 
     {

@@ -14,21 +14,44 @@
 
 #include <Global.test.hpp>
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Constructor)
+using ostk::core::types::Shared;
+using ostk::core::types::Real;
+using ostk::core::types::String;
+using ostk::core::ctnr::Tuple;
+using ostk::core::ctnr::Array;
+using ostk::core::ctnr::Table;
+using ostk::core::fs::Path;
+using ostk::core::fs::File;
+
+using ostk::math::obj::Vector3d;
+
+using ostk::physics::units::Length;
+using ostk::physics::units::Angle;
+using ostk::physics::coord::Position;
+using ostk::physics::coord::spherical::LLA;
+using ostk::physics::time::Scale;
+using ostk::physics::time::Instant;
+using ostk::physics::time::DateTime;
+using ostk::physics::coord::Frame;
+using ostk::physics::env::obj::celest::Earth;
+
+class OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA : public ::testing::Test
 {
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Angle;
-    using ostk::physics::coord::Position;
-    using ostk::physics::coord::spherical::LLA;
-
+   protected:
+    void SetUp() override
     {
-        const Angle latitude = Angle::Degrees(10.0);
-        const Angle longitude = Angle::Degrees(20.0);
-        const Length altitude = Length::Meters(30.0);
-
-        EXPECT_NO_THROW(LLA lla(latitude, longitude, altitude););
+        this->lla_ = LLA(latitude_, longitude_, altitude_);
     }
 
+    const Angle latitude_ = Angle::Degrees(10.0);
+    const Angle longitude_ = Angle::Degrees(20.0);
+    const Length altitude_ = Length::Meters(30.0);
+
+    LLA lla_ = LLA::Undefined();
+};
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Constructor)
+{
     {
         EXPECT_ANY_THROW(LLA lla(Angle::Degrees(-91.0), Angle::Degrees(20.0), Length::Meters(30.0)););
         EXPECT_ANY_THROW(LLA lla(Angle::Degrees(+91.0), Angle::Degrees(20.0), Length::Meters(30.0)););
@@ -38,21 +61,10 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Constructor)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, EqualToOperator)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, EqualToOperator)
 {
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Angle;
-    using ostk::physics::coord::Position;
-    using ostk::physics::coord::spherical::LLA;
-
     {
-        const Angle latitude = Angle::Degrees(10.0);
-        const Angle longitude = Angle::Degrees(20.0);
-        const Length altitude = Length::Meters(30.0);
-
-        const LLA lla = {latitude, longitude, altitude};
-
-        EXPECT_TRUE(lla == lla);
+        EXPECT_TRUE(lla_ == lla_);
     }
 
     {
@@ -63,33 +75,18 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, EqualToOperator)
     }
 
     {
-        const Angle latitude = Angle::Degrees(10.0);
-        const Angle longitude = Angle::Degrees(20.0);
-        const Length altitude = Length::Meters(30.0);
-
-        const LLA lla = {latitude, longitude, altitude};
+        const LLA lla = {latitude_, longitude_, altitude_};
 
         EXPECT_FALSE(LLA::Undefined() == LLA::Undefined());
-        EXPECT_FALSE(lla == LLA::Undefined());
-        EXPECT_FALSE(LLA::Undefined() == lla);
+        EXPECT_FALSE(lla_ == LLA::Undefined());
+        EXPECT_FALSE(LLA::Undefined() == lla_);
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, NotEqualToOperator)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, NotEqualToOperator)
 {
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Angle;
-    using ostk::physics::coord::Position;
-    using ostk::physics::coord::spherical::LLA;
-
     {
-        const Angle latitude = Angle::Degrees(10.0);
-        const Angle longitude = Angle::Degrees(20.0);
-        const Length altitude = Length::Meters(30.0);
-
-        const LLA lla = {latitude, longitude, altitude};
-
-        EXPECT_FALSE(lla != lla);
+        EXPECT_FALSE(lla_ != lla_);
     }
 
     {
@@ -100,55 +97,27 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, NotEqualToOperator)
     }
 
     {
-        const Angle latitude = Angle::Degrees(10.0);
-        const Angle longitude = Angle::Degrees(20.0);
-        const Length altitude = Length::Meters(30.0);
-
-        const LLA lla = {latitude, longitude, altitude};
-
         EXPECT_TRUE(LLA::Undefined() != LLA::Undefined());
-        EXPECT_TRUE(lla != LLA::Undefined());
-        EXPECT_TRUE(LLA::Undefined() != lla);
+        EXPECT_TRUE(lla_ != LLA::Undefined());
+        EXPECT_TRUE(LLA::Undefined() != lla_);
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, StreamOperator)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, StreamOperator)
 {
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Angle;
-    using ostk::physics::coord::Position;
-    using ostk::physics::coord::spherical::LLA;
-
     {
-        const Angle latitude = Angle::Degrees(10.0);
-        const Angle longitude = Angle::Degrees(20.0);
-        const Length altitude = Length::Meters(30.0);
-
-        const LLA lla = {latitude, longitude, altitude};
-
         testing::internal::CaptureStdout();
 
-        EXPECT_NO_THROW(std::cout << lla << std::endl);
+        EXPECT_NO_THROW(std::cout << lla_ << std::endl);
 
         EXPECT_FALSE(testing::internal::GetCapturedStdout().empty());
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, IsDefined)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, IsDefined)
 {
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Angle;
-    using ostk::physics::coord::Position;
-    using ostk::physics::coord::spherical::LLA;
-
     {
-        const Angle latitude = Angle::Degrees(10.0);
-        const Angle longitude = Angle::Degrees(20.0);
-        const Length altitude = Length::Meters(30.0);
-
-        const LLA lla = {latitude, longitude, altitude};
-
-        EXPECT_TRUE(lla.isDefined());
+        EXPECT_TRUE(lla_.isDefined());
     }
 
     {
@@ -156,21 +125,10 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, IsDefined)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, GetLatitude)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, GetLatitude)
 {
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Angle;
-    using ostk::physics::coord::Position;
-    using ostk::physics::coord::spherical::LLA;
-
     {
-        const Angle latitude = Angle::Degrees(10.0);
-        const Angle longitude = Angle::Degrees(20.0);
-        const Length altitude = Length::Meters(30.0);
-
-        const LLA lla = {latitude, longitude, altitude};
-
-        EXPECT_EQ(latitude, lla.getLatitude());
+        EXPECT_EQ(latitude_, lla_.getLatitude());
     }
 
     {
@@ -178,21 +136,10 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, GetLatitude)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, GetLongitude)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, GetLongitude)
 {
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Angle;
-    using ostk::physics::coord::Position;
-    using ostk::physics::coord::spherical::LLA;
-
     {
-        const Angle latitude = Angle::Degrees(10.0);
-        const Angle longitude = Angle::Degrees(20.0);
-        const Length altitude = Length::Meters(30.0);
-
-        const LLA lla = {latitude, longitude, altitude};
-
-        EXPECT_EQ(longitude, lla.getLongitude());
+        EXPECT_EQ(longitude_, lla_.getLongitude());
     }
 
     {
@@ -200,21 +147,10 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, GetLongitude)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, GetAltitude)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, GetAltitude)
 {
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Angle;
-    using ostk::physics::coord::Position;
-    using ostk::physics::coord::spherical::LLA;
-
     {
-        const Angle latitude = Angle::Degrees(10.0);
-        const Angle longitude = Angle::Degrees(20.0);
-        const Length altitude = Length::Meters(30.0);
-
-        const LLA lla = {latitude, longitude, altitude};
-
-        EXPECT_EQ(altitude, lla.getAltitude());
+        EXPECT_EQ(altitude_, lla_.getAltitude());
     }
 
     {
@@ -222,23 +158,10 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, GetAltitude)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToVector)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToVector)
 {
-    using ostk::math::obj::Vector3d;
-
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Angle;
-    using ostk::physics::coord::Position;
-    using ostk::physics::coord::spherical::LLA;
-
     {
-        const Angle latitude = Angle::Degrees(10.0);
-        const Angle longitude = Angle::Degrees(20.0);
-        const Length altitude = Length::Meters(30.0);
-
-        const LLA lla = {latitude, longitude, altitude};
-
-        EXPECT_EQ(Vector3d(10.0, 20.0, 30.0), lla.toVector());
+        EXPECT_EQ(Vector3d(10.0, 20.0, 30.0), lla_.toVector());
     }
 
     {
@@ -246,34 +169,8 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToVector)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToCartesian)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToCartesian)
 {
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Angle;
-    using ostk::physics::coord::Position;
-    using ostk::physics::coord::spherical::LLA;
-
-    using ostk::core::types::Shared;
-    using ostk::core::types::Real;
-    using ostk::core::types::String;
-    using ostk::core::ctnr::Tuple;
-    using ostk::core::ctnr::Array;
-    using ostk::core::ctnr::Table;
-    using ostk::core::fs::Path;
-    using ostk::core::fs::File;
-
-    using ostk::math::obj::Vector3d;
-
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::coord::Position;
-    using ostk::physics::coord::spherical::LLA;
-    using ostk::physics::coord::Frame;
-    using ostk::physics::env::obj::celest::Earth;
-
     {
         const Array<Tuple<File, Length>> referenceScenarios = {
             {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA/ToCartesian/LLA 1.csv")
@@ -329,21 +226,10 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToCartesian)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToString)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToString)
 {
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Angle;
-    using ostk::physics::coord::Position;
-    using ostk::physics::coord::spherical::LLA;
-
     {
-        const Angle latitude = Angle::Degrees(10.0);
-        const Angle longitude = Angle::Degrees(20.0);
-        const Length altitude = Length::Meters(30.0);
-
-        const LLA lla = {latitude, longitude, altitude};
-
-        EXPECT_EQ("[10.0 [deg], 20.0 [deg], 30.0 [m]]", lla.toString());
+        EXPECT_EQ("[10.0 [deg], 20.0 [deg], 30.0 [m]]", lla_.toString());
     }
 
     {
@@ -351,34 +237,19 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToString)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Undefined)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Undefined)
 {
-    using ostk::physics::coord::spherical::LLA;
-
     {
         EXPECT_NO_THROW(LLA::Undefined());
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Vector)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Vector)
 {
-    using ostk::math::obj::Vector3d;
-
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Angle;
-    using ostk::physics::coord::Position;
-    using ostk::physics::coord::spherical::LLA;
-
     {
         const Vector3d vector = {10.0, 20.0, 30.0};
 
-        const Angle latitude = Angle::Degrees(10.0);
-        const Angle longitude = Angle::Degrees(20.0);
-        const Length altitude = Length::Meters(30.0);
-
-        const LLA lla = {latitude, longitude, altitude};
-
-        EXPECT_EQ(lla, LLA::Vector(vector));
+        EXPECT_EQ(lla_, LLA::Vector(vector));
     }
 
     {
@@ -386,29 +257,8 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Vector)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Cartesian)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Cartesian)
 {
-    using ostk::core::types::Shared;
-    using ostk::core::types::Real;
-    using ostk::core::types::String;
-    using ostk::core::ctnr::Tuple;
-    using ostk::core::ctnr::Array;
-    using ostk::core::ctnr::Table;
-    using ostk::core::fs::Path;
-    using ostk::core::fs::File;
-
-    using ostk::math::obj::Vector3d;
-
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::coord::Position;
-    using ostk::physics::coord::spherical::LLA;
-    using ostk::physics::coord::Frame;
-    using ostk::physics::env::obj::celest::Earth;
-
     {
         const Array<Tuple<File, Angle, Length>> referenceScenarios = {
             {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA/Cartesian/LLA 1.csv")),

@@ -31,6 +31,8 @@
 
 #include <Global.test.hpp>
 
+using ostk::physics::env::obj::celest::Sun;
+
 // TEST (OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Sun, Constructor)
 // {
 
@@ -46,8 +48,6 @@
 
 TEST(OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Sun, Spherical)
 {
-    using ostk::physics::env::obj::celest::Sun;
-
     {
         EXPECT_NO_THROW(Sun::Spherical());
     }

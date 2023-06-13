@@ -10,114 +10,94 @@
 
 #include <Global.test.hpp>
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, Constructor)
+using ostk::core::types::Real;
+
+using ostk::math::obj::Vector3d;
+using ostk::math::geom::d3::trf::rot::Quaternion;
+using ostk::math::geom::d3::trf::rot::RotationVector;
+
+using ostk::physics::units::Angle;
+using ostk::physics::time::Scale;
+using ostk::physics::time::Instant;
+using ostk::physics::time::DateTime;
+using ostk::physics::coord::Transform;
+
+class OpenSpaceToolkit_Physics_Coordinate_Transform : public ::testing::Test
 {
-    using ostk::math::obj::Vector3d;
-    using ostk::math::geom::d3::trf::rot::Quaternion;
-
-    using ostk::physics::time::Instant;
-    using ostk::physics::coord::Transform;
-
+   protected:
+    void SetUp() override
     {
-        const Instant instant = Instant::J2000();
+        transformActive_ = {instant_, t_B_A_, v_B_A_, q_B_A_, w_B_A_in_B_, Transform::Type::Active};
+        transformPassive_ = {instant_, t_B_A_, v_B_A_, q_B_A_, w_B_A_in_B_, Transform::Type::Passive};
+    }
 
-        const Vector3d t_B_A = {+0.0, +0.0, +0.0};
-        const Vector3d v_B_A = {+0.0, +0.0, +0.0};
+    const Vector3d t_B_A_ = {+0.0, +0.0, +0.0};
+    const Vector3d v_B_A_ = {+0.0, +0.0, +0.0};
 
-        const Quaternion q_B_A = Quaternion::Unit();
-        const Vector3d w_B_A_in_B = {+0.0, +0.0, +0.0};
+    const Quaternion q_B_A_ = Quaternion::Unit();
+    const Vector3d w_B_A_in_B_ = {+0.0, +0.0, +0.0};
 
-        EXPECT_NO_THROW(Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active));
+    const Instant instant_ = Instant::J2000();
+
+    Transform transformActive_ = Transform::Undefined();
+    Transform transformPassive_ = Transform::Undefined();
+};
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, Constructor)
+{
+    {
+        EXPECT_NO_THROW(Transform(instant_, t_B_A_, v_B_A_, q_B_A_, w_B_A_in_B_, Transform::Type::Active));
     }
 
     {
-        const Instant instant = Instant::J2000();
-
-        const Vector3d t_B_A = {+0.0, +0.0, +0.0};
-        const Vector3d v_B_A = {+0.0, +0.0, +0.0};
-
-        const Quaternion q_B_A = Quaternion::Unit();
-        const Vector3d w_B_A_in_B = {+0.0, +0.0, +0.0};
-
-        EXPECT_NO_THROW(Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Passive));
+        EXPECT_NO_THROW(Transform(instant_, t_B_A_, v_B_A_, q_B_A_, w_B_A_in_B_, Transform::Type::Passive));
     }
 
     {
-        const Instant instant = Instant::J2000();
-
-        const Vector3d t_B_A = {+0.0, +0.0, +0.0};
-        const Vector3d v_B_A = {+0.0, +0.0, +0.0};
-
-        const Quaternion q_B_A = Quaternion::Unit();
-        const Vector3d w_B_A_in_B = {+0.0, +0.0, +0.0};
-
-        EXPECT_NO_THROW(Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Undefined));
+        EXPECT_NO_THROW(Transform(instant_, t_B_A_, v_B_A_, q_B_A_, w_B_A_in_B_, Transform::Type::Undefined));
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, EqualToOperator)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, EqualToOperator)
 {
-    using ostk::math::obj::Vector3d;
-    using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
-
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::coord::Transform;
-
     {
-        const Instant instant = Instant::J2000();
-
-        const Vector3d t_B_A = {+0.0, +0.0, +0.0};
-        const Vector3d v_B_A = {+0.0, +0.0, +0.0};
-
-        const Quaternion q_B_A = Quaternion::Unit();
-        const Vector3d w_B_A_in_B = {+0.0, +0.0, +0.0};
-
-        EXPECT_TRUE(
-            Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active) ==
-            Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active)
-        );
+        EXPECT_TRUE(transformActive_ == transformActive_);
 
         EXPECT_FALSE(
-            Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active) ==
+            transformActive_ == Transform(
+                                    Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC),
+                                    t_B_A_,
+                                    v_B_A_,
+                                    q_B_A_,
+                                    w_B_A_in_B_,
+                                    Transform::Type::Active
+                                )
+        );
+        EXPECT_FALSE(
+            transformActive_ ==
+            Transform(instant_, {+0.0, +0.0, +1.0}, v_B_A_, q_B_A_, w_B_A_in_B_, Transform::Type::Active)
+        );
+        EXPECT_FALSE(
+            transformActive_ ==
+            Transform(instant_, t_B_A_, {+0.0, +0.0, +1.0}, q_B_A_, w_B_A_in_B_, Transform::Type::Active)
+        );
+        EXPECT_FALSE(
+            transformActive_ ==
             Transform(
-                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC),
-                t_B_A,
-                v_B_A,
-                q_B_A,
-                w_B_A_in_B,
-                Transform::Type::Active
-            )
-        );
-        EXPECT_FALSE(
-            Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active) ==
-            Transform(instant, {+0.0, +0.0, +1.0}, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active)
-        );
-        EXPECT_FALSE(
-            Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active) ==
-            Transform(instant, t_B_A, {+0.0, +0.0, +1.0}, q_B_A, w_B_A_in_B, Transform::Type::Active)
-        );
-        EXPECT_FALSE(
-            Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active) ==
-            Transform(
-                instant,
-                t_B_A,
-                v_B_A,
+                instant_,
+                t_B_A_,
+                v_B_A_,
                 Quaternion::RotationVector(RotationVector({+0.0, +0.0, +1.0}, Angle::Degrees(+1.0))),
-                w_B_A_in_B,
+                w_B_A_in_B_,
                 Transform::Type::Active
             )
         );
         EXPECT_FALSE(
-            Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active) ==
-            Transform(instant, t_B_A, v_B_A, q_B_A, {+0.0, +0.0, +1.0}, Transform::Type::Active)
+            transformActive_ == Transform(instant_, t_B_A_, v_B_A_, q_B_A_, {+0.0, +0.0, +1.0}, Transform::Type::Active)
         );
         EXPECT_FALSE(
             Transform(
-                instant,
+                instant_,
                 {+0.0, +0.0, +1.0},
                 {+0.0, +0.0, +1.0},
                 Quaternion::RotationVector(RotationVector({+0.0, +0.0, +1.0}, Angle::Degrees(+1.0))),
@@ -125,7 +105,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, EqualToOperator)
                 Transform::Type::Active
             ) ==
             Transform(
-                instant,
+                instant_,
                 {+0.0, +0.0, +1.0},
                 {+0.0, +0.0, +1.0},
                 Quaternion::RotationVector(RotationVector({+0.0, +0.0, +1.0}, Angle::Degrees(+1.0))),
@@ -134,12 +114,8 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, EqualToOperator)
             )
         );
 
-        EXPECT_FALSE(
-            Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active) == Transform::Undefined()
-        );
-        EXPECT_FALSE(
-            Transform::Undefined() == Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active)
-        );
+        EXPECT_FALSE(transformActive_ == Transform::Undefined());
+        EXPECT_FALSE(Transform::Undefined() == transformActive_);
     }
 
     {
@@ -147,69 +123,46 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, EqualToOperator)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, NotEqualToOperator)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, NotEqualToOperator)
 {
-    using ostk::math::obj::Vector3d;
-    using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
-
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::coord::Transform;
-
     {
-        const Instant instant = Instant::J2000();
-
-        const Vector3d t_B_A = {+0.0, +0.0, +0.0};
-        const Vector3d v_B_A = {+0.0, +0.0, +0.0};
-
-        const Quaternion q_B_A = Quaternion::Unit();
-        const Vector3d w_B_A_in_B = {+0.0, +0.0, +0.0};
-
-        EXPECT_FALSE(
-            Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active) !=
-            Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active)
-        );
+        EXPECT_FALSE(transformActive_ != transformActive_);
 
         EXPECT_TRUE(
-            Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active) !=
+            transformActive_ != Transform(
+                                    Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC),
+                                    t_B_A_,
+                                    v_B_A_,
+                                    q_B_A_,
+                                    w_B_A_in_B_,
+                                    Transform::Type::Active
+                                )
+        );
+        EXPECT_TRUE(
+            transformActive_ !=
+            Transform(instant_, {+0.0, +0.0, +1.0}, v_B_A_, q_B_A_, w_B_A_in_B_, Transform::Type::Active)
+        );
+        EXPECT_TRUE(
+            transformActive_ !=
+            Transform(instant_, t_B_A_, {+0.0, +0.0, +1.0}, q_B_A_, w_B_A_in_B_, Transform::Type::Active)
+        );
+        EXPECT_TRUE(
+            transformActive_ !=
             Transform(
-                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC),
-                t_B_A,
-                v_B_A,
-                q_B_A,
-                w_B_A_in_B,
-                Transform::Type::Active
-            )
-        );
-        EXPECT_TRUE(
-            Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active) !=
-            Transform(instant, {+0.0, +0.0, +1.0}, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active)
-        );
-        EXPECT_TRUE(
-            Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active) !=
-            Transform(instant, t_B_A, {+0.0, +0.0, +1.0}, q_B_A, w_B_A_in_B, Transform::Type::Active)
-        );
-        EXPECT_TRUE(
-            Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active) !=
-            Transform(
-                instant,
-                t_B_A,
-                v_B_A,
+                instant_,
+                t_B_A_,
+                v_B_A_,
                 Quaternion::RotationVector(RotationVector({+0.0, +0.0, +1.0}, Angle::Degrees(+1.0))),
-                w_B_A_in_B,
+                w_B_A_in_B_,
                 Transform::Type::Active
             )
         );
         EXPECT_TRUE(
-            Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active) !=
-            Transform(instant, t_B_A, v_B_A, q_B_A, {+0.0, +0.0, +1.0}, Transform::Type::Active)
+            transformActive_ != Transform(instant_, t_B_A_, v_B_A_, q_B_A_, {+0.0, +0.0, +1.0}, Transform::Type::Active)
         );
         EXPECT_TRUE(
             Transform(
-                instant,
+                instant_,
                 {+0.0, +0.0, +1.0},
                 {+0.0, +0.0, +1.0},
                 Quaternion::RotationVector(RotationVector({+0.0, +0.0, +1.0}, Angle::Degrees(+1.0))),
@@ -217,7 +170,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, NotEqualToOperator)
                 Transform::Type::Active
             ) !=
             Transform(
-                instant,
+                instant_,
                 {+0.0, +0.0, +1.0},
                 {+0.0, +0.0, +1.0},
                 Quaternion::RotationVector(RotationVector({+0.0, +0.0, +1.0}, Angle::Degrees(+1.0))),
@@ -226,12 +179,8 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, NotEqualToOperator)
             )
         );
 
-        EXPECT_TRUE(
-            Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active) != Transform::Undefined()
-        );
-        EXPECT_TRUE(
-            Transform::Undefined() != Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active)
-        );
+        EXPECT_TRUE(transformActive_ != Transform::Undefined());
+        EXPECT_TRUE(Transform::Undefined() != transformActive_);
     }
 
     {
@@ -239,23 +188,11 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, NotEqualToOperator)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, MultiplicationOperator)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, MultiplicationOperator)
 {
-    using ostk::core::types::Real;
-
-    using ostk::math::obj::Vector3d;
-    using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
-
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Instant;
-    using ostk::physics::coord::Transform;
-
     // Translation + Velocity + Rotation
 
     {
-        const Instant instant = Instant::J2000();
-
         // A to B
 
         const Vector3d t_B_A = {+0.0, -1.0, +0.0};
@@ -264,7 +201,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, MultiplicationOperator)
         const Quaternion q_B_A = Quaternion::RotationVector(RotationVector({+0.0, +0.0, +1.0}, Angle::Degrees(+90.0)));
         const Vector3d w_B_A_in_B = Vector3d::Zero();
 
-        const Transform transform_B_A = Transform::Passive(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
+        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
 
         // B to C
 
@@ -274,7 +211,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, MultiplicationOperator)
         const Quaternion q_C_B = Quaternion::RotationVector(RotationVector({+0.0, +1.0, +0.0}, Angle::Degrees(-90.0)));
         const Vector3d w_C_B_in_C = Vector3d::Zero();
 
-        const Transform transform_C_B = Transform::Passive(instant, t_C_B, v_C_B, q_C_B, w_C_B_in_C);
+        const Transform transform_C_B = Transform::Passive(instant_, t_C_B, v_C_B, q_C_B, w_C_B_in_C);
 
         // A to C
 
@@ -284,7 +221,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, MultiplicationOperator)
         const Quaternion q_C_A = q_C_B * q_B_A;
         const Vector3d w_C_A_in_C = Vector3d::Zero();
 
-        const Transform transform_C_A = Transform::Passive(instant, t_C_A, v_C_A, q_C_A, w_C_A_in_C);
+        const Transform transform_C_A = Transform::Passive(instant_, t_C_A, v_C_A, q_C_A, w_C_A_in_C);
 
         // Comparison
 
@@ -302,55 +239,21 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, MultiplicationOperator)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, StreamOperator)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, StreamOperator)
 {
-    using ostk::math::obj::Vector3d;
-    using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
-
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Instant;
-    using ostk::physics::coord::Transform;
-
     {
-        const Instant instant = Instant::J2000();
-
-        const Vector3d t_B_A = {+0.0, +0.0, +0.0};
-        const Vector3d v_B_A = {+0.0, +0.0, +0.0};
-
-        const Quaternion q_B_A = Quaternion::Unit();
-        const Vector3d w_B_A_in_B = {+0.0, +0.0, +0.0};
-
         testing::internal::CaptureStdout();
 
-        EXPECT_NO_THROW(
-            std::cout << Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active) << std::endl
-        );
+        EXPECT_NO_THROW(std::cout << transformActive_ << std::endl);
 
         EXPECT_FALSE(testing::internal::GetCapturedStdout().empty());
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, IsDefined)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, IsDefined)
 {
-    using ostk::math::obj::Vector3d;
-    using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
-
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Instant;
-    using ostk::physics::coord::Transform;
-
     {
-        const Instant instant = Instant::J2000();
-
-        const Vector3d t_B_A = {+0.0, +0.0, +0.0};
-        const Vector3d v_B_A = {+0.0, +0.0, +0.0};
-
-        const Quaternion q_B_A = Quaternion::Unit();
-        const Vector3d w_B_A_in_B = {+0.0, +0.0, +0.0};
-
-        EXPECT_TRUE(Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active).isDefined());
+        EXPECT_TRUE(transformActive_.isDefined());
     }
 
     {
@@ -358,40 +261,28 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, IsDefined)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, IsIdentity)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, IsIdentity)
 {
-    using ostk::math::obj::Vector3d;
-    using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
-
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Instant;
-    using ostk::physics::coord::Transform;
-
     {
-        const Instant instant = Instant::J2000();
-
         const Vector3d t_B_A = Vector3d::Zero();
         const Vector3d v_B_A = Vector3d::Zero();
 
         const Quaternion q_B_A = Quaternion::Unit();
         const Vector3d w_B_A_in_B = Vector3d::Zero();
 
-        EXPECT_TRUE(Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active).isIdentity());
-        EXPECT_TRUE(Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Passive).isIdentity());
+        EXPECT_TRUE(Transform(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Passive).isIdentity());
+        EXPECT_TRUE(Transform(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Passive).isIdentity());
     }
 
     {
-        const Instant instant = Instant::J2000();
-
         const Vector3d t_B_A = {0.0, 0.0, 1.0};
         const Vector3d v_B_A = Vector3d::Zero();
 
         const Quaternion q_B_A = Quaternion::Unit();
         const Vector3d w_B_A_in_B = Vector3d::Zero();
 
-        EXPECT_FALSE(Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active).isIdentity());
-        EXPECT_FALSE(Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Passive).isIdentity());
+        EXPECT_FALSE(Transform(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Passive).isIdentity());
+        EXPECT_FALSE(Transform(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Passive).isIdentity());
     }
 
     {
@@ -399,28 +290,10 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, IsIdentity)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, AccessInstant)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, AccessInstant)
 {
-    using ostk::math::obj::Vector3d;
-    using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
-
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Instant;
-    using ostk::physics::coord::Transform;
-
     {
-        const Instant instant = Instant::J2000();
-
-        const Vector3d t_B_A = {+1.0, +2.0, +3.0};
-        const Vector3d v_B_A = {+4.0, +5.0, +6.0};
-
-        const Quaternion q_B_A = Quaternion::Unit();
-        const Vector3d w_B_A_in_B = {+7.0, +8.0, +9.0};
-
-        EXPECT_EQ(
-            instant, Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Passive).accessInstant()
-        );
+        EXPECT_EQ(instant_, transformPassive_.accessInstant());
     }
 
     {
@@ -428,28 +301,10 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, AccessInstant)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, AccessTranslation)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, AccessTranslation)
 {
-    using ostk::math::obj::Vector3d;
-    using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
-
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Instant;
-    using ostk::physics::coord::Transform;
-
     {
-        const Instant instant = Instant::J2000();
-
-        const Vector3d t_B_A = {+1.0, +2.0, +3.0};
-        const Vector3d v_B_A = {+4.0, +5.0, +6.0};
-
-        const Quaternion q_B_A = Quaternion::Unit();
-        const Vector3d w_B_A_in_B = {+7.0, +8.0, +9.0};
-
-        EXPECT_EQ(
-            t_B_A, Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Passive).accessTranslation()
-        );
+        EXPECT_EQ(t_B_A_, transformPassive_.accessTranslation());
     }
 
     {
@@ -457,28 +312,10 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, AccessTranslation)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, AccessVelocity)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, AccessVelocity)
 {
-    using ostk::math::obj::Vector3d;
-    using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
-
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Instant;
-    using ostk::physics::coord::Transform;
-
     {
-        const Instant instant = Instant::J2000();
-
-        const Vector3d t_B_A = {+1.0, +2.0, +3.0};
-        const Vector3d v_B_A = {+4.0, +5.0, +6.0};
-
-        const Quaternion q_B_A = Quaternion::Unit();
-        const Vector3d w_B_A_in_B = {+7.0, +8.0, +9.0};
-
-        EXPECT_EQ(
-            v_B_A, Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Passive).accessVelocity()
-        );
+        EXPECT_EQ(v_B_A_, transformPassive_.accessVelocity());
     }
 
     {
@@ -486,28 +323,10 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, AccessVelocity)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, AccessOrientation)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, AccessOrientation)
 {
-    using ostk::math::obj::Vector3d;
-    using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
-
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Instant;
-    using ostk::physics::coord::Transform;
-
     {
-        const Instant instant = Instant::J2000();
-
-        const Vector3d t_B_A = {+1.0, +2.0, +3.0};
-        const Vector3d v_B_A = {+4.0, +5.0, +6.0};
-
-        const Quaternion q_B_A = Quaternion::Unit();
-        const Vector3d w_B_A_in_B = {+7.0, +8.0, +9.0};
-
-        EXPECT_EQ(
-            q_B_A, Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Passive).accessOrientation()
-        );
+        EXPECT_EQ(q_B_A_, transformPassive_.accessOrientation());
     }
 
     {
@@ -515,29 +334,10 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, AccessOrientation)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, AccessAngularVelocity)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, AccessAngularVelocity)
 {
-    using ostk::math::obj::Vector3d;
-    using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
-
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Instant;
-    using ostk::physics::coord::Transform;
-
     {
-        const Instant instant = Instant::J2000();
-
-        const Vector3d t_B_A = {+1.0, +2.0, +3.0};
-        const Vector3d v_B_A = {+4.0, +5.0, +6.0};
-
-        const Quaternion q_B_A = Quaternion::Unit();
-        const Vector3d w_B_A_in_B = {+7.0, +8.0, +9.0};
-
-        EXPECT_EQ(
-            w_B_A_in_B,
-            Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Passive).accessAngularVelocity()
-        );
+        EXPECT_EQ(w_B_A_in_B_, transformPassive_.accessAngularVelocity());
     }
 
     {
@@ -545,26 +345,10 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, AccessAngularVelocity)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, GetInstant)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, GetInstant)
 {
-    using ostk::math::obj::Vector3d;
-    using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
-
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Instant;
-    using ostk::physics::coord::Transform;
-
     {
-        const Instant instant = Instant::J2000();
-
-        const Vector3d t_B_A = {+1.0, +2.0, +3.0};
-        const Vector3d v_B_A = {+4.0, +5.0, +6.0};
-
-        const Quaternion q_B_A = Quaternion::Unit();
-        const Vector3d w_B_A_in_B = {+7.0, +8.0, +9.0};
-
-        EXPECT_EQ(instant, Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Passive).getInstant());
+        EXPECT_EQ(instant_, transformPassive_.getInstant());
     }
 
     {
@@ -572,28 +356,10 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, GetInstant)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, GetTranslation)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, GetTranslation)
 {
-    using ostk::math::obj::Vector3d;
-    using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
-
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Instant;
-    using ostk::physics::coord::Transform;
-
     {
-        const Instant instant = Instant::J2000();
-
-        const Vector3d t_B_A = {+1.0, +2.0, +3.0};
-        const Vector3d v_B_A = {+4.0, +5.0, +6.0};
-
-        const Quaternion q_B_A = Quaternion::Unit();
-        const Vector3d w_B_A_in_B = {+7.0, +8.0, +9.0};
-
-        EXPECT_EQ(
-            t_B_A, Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Passive).getTranslation()
-        );
+        EXPECT_EQ(t_B_A_, transformPassive_.getTranslation());
     }
 
     {
@@ -601,26 +367,10 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, GetTranslation)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, GetVelocity)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, GetVelocity)
 {
-    using ostk::math::obj::Vector3d;
-    using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
-
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Instant;
-    using ostk::physics::coord::Transform;
-
     {
-        const Instant instant = Instant::J2000();
-
-        const Vector3d t_B_A = {+1.0, +2.0, +3.0};
-        const Vector3d v_B_A = {+4.0, +5.0, +6.0};
-
-        const Quaternion q_B_A = Quaternion::Unit();
-        const Vector3d w_B_A_in_B = {+7.0, +8.0, +9.0};
-
-        EXPECT_EQ(v_B_A, Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Passive).getVelocity());
+        EXPECT_EQ(v_B_A_, transformPassive_.getVelocity());
     }
 
     {
@@ -628,28 +378,10 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, GetVelocity)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, GetOrientation)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, GetOrientation)
 {
-    using ostk::math::obj::Vector3d;
-    using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
-
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Instant;
-    using ostk::physics::coord::Transform;
-
     {
-        const Instant instant = Instant::J2000();
-
-        const Vector3d t_B_A = {+1.0, +2.0, +3.0};
-        const Vector3d v_B_A = {+4.0, +5.0, +6.0};
-
-        const Quaternion q_B_A = Quaternion::Unit();
-        const Vector3d w_B_A_in_B = {+7.0, +8.0, +9.0};
-
-        EXPECT_EQ(
-            q_B_A, Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Passive).getOrientation()
-        );
+        EXPECT_EQ(q_B_A_, transformPassive_.getOrientation());
     }
 
     {
@@ -657,29 +389,10 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, GetOrientation)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, GetAngularVelocity)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, GetAngularVelocity)
 {
-    using ostk::math::obj::Vector3d;
-    using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
-
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Instant;
-    using ostk::physics::coord::Transform;
-
     {
-        const Instant instant = Instant::J2000();
-
-        const Vector3d t_B_A = {+1.0, +2.0, +3.0};
-        const Vector3d v_B_A = {+4.0, +5.0, +6.0};
-
-        const Quaternion q_B_A = Quaternion::Unit();
-        const Vector3d w_B_A_in_B = {+7.0, +8.0, +9.0};
-
-        EXPECT_EQ(
-            w_B_A_in_B,
-            Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Passive).getAngularVelocity()
-        );
+        EXPECT_EQ(w_B_A_in_B_, transformPassive_.getAngularVelocity());
     }
 
     {
@@ -687,18 +400,8 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, GetAngularVelocity)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, GetInverse)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, GetInverse)
 {
-    using ostk::core::types::Real;
-
-    using ostk::math::obj::Vector3d;
-    using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
-
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Instant;
-    using ostk::physics::coord::Transform;
-
     {
         for (auto idx = 1; idx < 10000; ++idx)
         {
@@ -736,24 +439,12 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, GetInverse)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, ApplyToPosition)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, ApplyToPosition)
 {
-    using ostk::core::types::Real;
-
-    using ostk::math::obj::Vector3d;
-    using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
-
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Instant;
-    using ostk::physics::coord::Transform;
-
     // Identity
 
     {
-        const Instant instant = Instant::J2000();
-
-        const Transform transform_B_A = Transform::Identity(instant);
+        const Transform transform_B_A = Transform::Identity(instant_);
 
         const Vector3d x_A = {+0.0, +0.0, +0.0};
 
@@ -765,15 +456,13 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, ApplyToPosition)
     // Translation
 
     {
-        const Instant instant = Instant::J2000();
-
         const Vector3d t_B_A = {+0.0, -1.0, +0.0};
         const Vector3d v_B_A = Vector3d::Zero();
 
         const Quaternion q_B_A = Quaternion::Unit();
         const Vector3d w_B_A_in_B = Vector3d::Zero();
 
-        const Transform transform_B_A = Transform::Passive(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
+        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
 
         const Vector3d x_A = {+0.0, +1.0, +0.0};
 
@@ -785,15 +474,13 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, ApplyToPosition)
     // Rotation
 
     {
-        const Instant instant = Instant::J2000();
-
         const Vector3d t_B_A = Vector3d::Zero();
         const Vector3d v_B_A = Vector3d::Zero();
 
         const Quaternion q_B_A = Quaternion::RotationVector(RotationVector({+0.0, +0.0, +1.0}, Angle::Degrees(+90.0)));
         const Vector3d w_B_A_in_B = Vector3d::Zero();
 
-        const Transform transform_B_A = Transform::Passive(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
+        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
 
         const Vector3d x_A = {+0.0, +1.0, +0.0};
 
@@ -805,15 +492,13 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, ApplyToPosition)
     // Translation + Rotation
 
     {
-        const Instant instant = Instant::J2000();
-
         const Vector3d t_B_A = {+0.0, -1.0, +0.0};
         const Vector3d v_B_A = Vector3d::Zero();
 
         const Quaternion q_B_A = Quaternion::RotationVector(RotationVector({+0.0, +0.0, +1.0}, Angle::Degrees(+90.0)));
         const Vector3d w_B_A_in_B = Vector3d::Zero();
 
-        const Transform transform_B_A = Transform::Passive(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
+        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
 
         const Vector3d x_A = {+0.0, +2.0, +0.0};
 
@@ -825,15 +510,13 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, ApplyToPosition)
     // Translation + Velocity
 
     {
-        const Instant instant = Instant::J2000();
-
         const Vector3d t_B_A = {+0.0, -1.0, +0.0};
         const Vector3d v_B_A = {+0.0, -1.0, +0.0};
 
         const Quaternion q_B_A = Quaternion::Unit();
         const Vector3d w_B_A_in_B = Vector3d::Zero();
 
-        const Transform transform_B_A = Transform::Passive(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
+        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
 
         const Vector3d x_A = {+0.0, +1.0, +0.0};
 
@@ -845,15 +528,13 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, ApplyToPosition)
     // Translation + Velocity + Rotation
 
     {
-        const Instant instant = Instant::J2000();
-
         const Vector3d t_B_A = {+0.0, -1.0, +0.0};
         const Vector3d v_B_A = {+0.0, -1.0, +0.0};
 
         const Quaternion q_B_A = Quaternion::RotationVector(RotationVector({+0.0, +0.0, +1.0}, Angle::Degrees(+90.0)));
         const Vector3d w_B_A_in_B = Vector3d::Zero();
 
-        const Transform transform_B_A = Transform::Passive(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
+        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
 
         const Vector3d x_A = {+0.0, +2.0, +0.0};
 
@@ -865,15 +546,13 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, ApplyToPosition)
     // Translation + Velocity + Rotation + Angular Velocity
 
     {
-        const Instant instant = Instant::J2000();
-
         const Vector3d t_B_A = {+0.0, -1.0, +0.0};
         const Vector3d v_B_A = {+0.0, -1.0, +0.0};
 
         const Quaternion q_B_A = Quaternion::RotationVector(RotationVector({+0.0, +0.0, +1.0}, Angle::Degrees(+90.0)));
         const Vector3d w_B_A_in_B = {+0.0, +0.0, +1.0};
 
-        const Transform transform_B_A = Transform::Passive(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
+        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
 
         const Vector3d x_A = {+0.0, +2.0, +0.0};
 
@@ -883,24 +562,12 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, ApplyToPosition)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, ApplyToVelocity)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, ApplyToVelocity)
 {
-    using ostk::core::types::Real;
-
-    using ostk::math::obj::Vector3d;
-    using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
-
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Instant;
-    using ostk::physics::coord::Transform;
-
     // Identity
 
     {
-        const Instant instant = Instant::J2000();
-
-        const Transform transform_B_A = Transform::Identity(instant);
+        const Transform transform_B_A = Transform::Identity(instant_);
 
         const Vector3d x_A = {+0.0, +0.0, +0.0};
         const Vector3d v_A = {+0.0, +0.0, +0.0};
@@ -913,15 +580,13 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, ApplyToVelocity)
     // Translation
 
     {
-        const Instant instant = Instant::J2000();
-
         const Vector3d t_B_A = {+0.0, -1.0, +0.0};
         const Vector3d v_B_A = Vector3d::Zero();
 
         const Quaternion q_B_A = Quaternion::Unit();
         const Vector3d w_B_A_in_B = Vector3d::Zero();
 
-        const Transform transform_B_A = Transform::Passive(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
+        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
 
         const Vector3d x_A = {+0.0, +0.0, +0.0};
         const Vector3d v_A = {+0.0, +1.0, +0.0};
@@ -934,15 +599,13 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, ApplyToVelocity)
     // Rotation
 
     {
-        const Instant instant = Instant::J2000();
-
         const Vector3d t_B_A = Vector3d::Zero();
         const Vector3d v_B_A = Vector3d::Zero();
 
         const Quaternion q_B_A = Quaternion::RotationVector(RotationVector({+0.0, +0.0, +1.0}, Angle::Degrees(+90.0)));
         const Vector3d w_B_A_in_B = Vector3d::Zero();
 
-        const Transform transform_B_A = Transform::Passive(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
+        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
 
         const Vector3d x_A = {+0.0, +0.0, +0.0};
         const Vector3d v_A = {+0.0, +1.0, +0.0};
@@ -955,15 +618,13 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, ApplyToVelocity)
     // Translation + Rotation
 
     {
-        const Instant instant = Instant::J2000();
-
         const Vector3d t_B_A = {+0.0, -1.0, +0.0};
         const Vector3d v_B_A = Vector3d::Zero();
 
         const Quaternion q_B_A = Quaternion::RotationVector(RotationVector({+0.0, +0.0, +1.0}, Angle::Degrees(+90.0)));
         const Vector3d w_B_A_in_B = Vector3d::Zero();
 
-        const Transform transform_B_A = Transform::Passive(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
+        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
 
         const Vector3d x_A = {+0.0, +2.0, +0.0};
         const Vector3d v_A = {+0.0, +1.0, +0.0};
@@ -976,15 +637,13 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, ApplyToVelocity)
     // Translation + Velocity
 
     {
-        const Instant instant = Instant::J2000();
-
         const Vector3d t_B_A = {+0.0, -1.0, +0.0};
         const Vector3d v_B_A = {+0.0, -1.0, +0.0};
 
         const Quaternion q_B_A = Quaternion::Unit();
         const Vector3d w_B_A_in_B = Vector3d::Zero();
 
-        const Transform transform_B_A = Transform::Passive(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
+        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
 
         const Vector3d x_A = {+0.0, +2.0, +0.0};
         const Vector3d v_A = {+0.0, +2.0, +0.0};
@@ -997,15 +656,13 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, ApplyToVelocity)
     // Translation + Velocity + Rotation
 
     {
-        const Instant instant = Instant::J2000();
-
         const Vector3d t_B_A = {+0.0, -1.0, +0.0};
         const Vector3d v_B_A = {+0.0, -1.0, +0.0};
 
         const Quaternion q_B_A = Quaternion::RotationVector(RotationVector({+0.0, +0.0, +1.0}, Angle::Degrees(+90.0)));
         const Vector3d w_B_A_in_B = Vector3d::Zero();
 
-        const Transform transform_B_A = Transform::Passive(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
+        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
 
         const Vector3d x_A = {+0.0, +2.0, +0.0};
         const Vector3d v_A = {+0.0, +2.0, +0.0};
@@ -1018,15 +675,13 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, ApplyToVelocity)
     // Translation + Velocity + Rotation + Angular Velocity
 
     {
-        const Instant instant = Instant::J2000();
-
         const Vector3d t_B_A = {+0.0, -1.0, +0.0};
         const Vector3d v_B_A = {+0.0, -1.0, +0.0};
 
         const Quaternion q_B_A = Quaternion::RotationVector(RotationVector({+0.0, +0.0, +1.0}, Angle::Degrees(+90.0)));
         const Vector3d w_B_A_in_B = {+0.0, +0.0, +1.0};
 
-        const Transform transform_B_A = Transform::Passive(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
+        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
 
         const Vector3d x_A = {+0.0, +2.0, +0.0};
         const Vector3d v_A = {+0.0, +2.0, +0.0};
@@ -1037,24 +692,12 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, ApplyToVelocity)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, ApplyToVector)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, ApplyToVector)
 {
-    using ostk::core::types::Real;
-
-    using ostk::math::obj::Vector3d;
-    using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
-
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Instant;
-    using ostk::physics::coord::Transform;
-
     // Identity
 
     {
-        const Instant instant = Instant::J2000();
-
-        const Transform transform_B_A = Transform::Identity(instant);
+        const Transform transform_B_A = Transform::Identity(instant_);
 
         const Vector3d v_A = {+0.0, +0.0, +0.0};
 
@@ -1066,15 +709,13 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, ApplyToVector)
     // Translation
 
     {
-        const Instant instant = Instant::J2000();
-
         const Vector3d t_B_A = {+0.0, -1.0, +0.0};
         const Vector3d v_B_A = Vector3d::Zero();
 
         const Quaternion q_B_A = Quaternion::Unit();
         const Vector3d w_B_A_in_B = Vector3d::Zero();
 
-        const Transform transform_B_A = Transform::Passive(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
+        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
 
         const Vector3d v_A = {+0.0, +1.0, +0.0};
 
@@ -1086,15 +727,13 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, ApplyToVector)
     // Rotation
 
     {
-        const Instant instant = Instant::J2000();
-
         const Vector3d t_B_A = Vector3d::Zero();
         const Vector3d v_B_A = Vector3d::Zero();
 
         const Quaternion q_B_A = Quaternion::RotationVector(RotationVector({+0.0, +0.0, +1.0}, Angle::Degrees(+90.0)));
         const Vector3d w_B_A_in_B = Vector3d::Zero();
 
-        const Transform transform_B_A = Transform::Passive(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
+        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
 
         const Vector3d v_A = {+0.0, +1.0, +0.0};
 
@@ -1106,15 +745,13 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, ApplyToVector)
     // Translation + Rotation
 
     {
-        const Instant instant = Instant::J2000();
-
         const Vector3d t_B_A = {+0.0, -1.0, +0.0};
         const Vector3d v_B_A = Vector3d::Zero();
 
         const Quaternion q_B_A = Quaternion::RotationVector(RotationVector({+0.0, +0.0, +1.0}, Angle::Degrees(+90.0)));
         const Vector3d w_B_A_in_B = Vector3d::Zero();
 
-        const Transform transform_B_A = Transform::Passive(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
+        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
 
         const Vector3d v_A = {+0.0, +1.0, +0.0};
 
@@ -1126,15 +763,13 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, ApplyToVector)
     // Translation + Velocity
 
     {
-        const Instant instant = Instant::J2000();
-
         const Vector3d t_B_A = {+0.0, -1.0, +0.0};
         const Vector3d v_B_A = {+0.0, -1.0, +0.0};
 
         const Quaternion q_B_A = Quaternion::Unit();
         const Vector3d w_B_A_in_B = Vector3d::Zero();
 
-        const Transform transform_B_A = Transform::Passive(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
+        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
 
         const Vector3d v_A = {+0.0, +2.0, +0.0};
 
@@ -1146,15 +781,13 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, ApplyToVector)
     // Translation + Velocity + Rotation
 
     {
-        const Instant instant = Instant::J2000();
-
         const Vector3d t_B_A = {+0.0, -1.0, +0.0};
         const Vector3d v_B_A = {+0.0, -1.0, +0.0};
 
         const Quaternion q_B_A = Quaternion::RotationVector(RotationVector({+0.0, +0.0, +1.0}, Angle::Degrees(+90.0)));
         const Vector3d w_B_A_in_B = Vector3d::Zero();
 
-        const Transform transform_B_A = Transform::Passive(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
+        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
 
         const Vector3d v_A = {+0.0, +2.0, +0.0};
 
@@ -1166,15 +799,13 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, ApplyToVector)
     // Translation + Velocity + Rotation + Angular Velocity
 
     {
-        const Instant instant = Instant::J2000();
-
         const Vector3d t_B_A = {+0.0, -1.0, +0.0};
         const Vector3d v_B_A = {+0.0, -1.0, +0.0};
 
         const Quaternion q_B_A = Quaternion::RotationVector(RotationVector({+0.0, +0.0, +1.0}, Angle::Degrees(+90.0)));
         const Vector3d w_B_A_in_B = {+0.0, +0.0, +1.0};
 
-        const Transform transform_B_A = Transform::Passive(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
+        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
 
         const Vector3d v_A = {+0.0, +2.0, +0.0};
 
@@ -1184,10 +815,8 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, ApplyToVector)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, Undefined)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, Undefined)
 {
-    using ostk::physics::coord::Transform;
-
     {
         EXPECT_NO_THROW(Transform::Undefined());
 
@@ -1195,88 +824,42 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, Undefined)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, Identity)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, Identity)
 {
-    using ostk::physics::time::Instant;
-    using ostk::physics::coord::Transform;
-
     {
-        const Instant instant = Instant::J2000();
+        EXPECT_NO_THROW(Transform::Identity(instant_));
 
-        EXPECT_NO_THROW(Transform::Identity(instant));
-
-        EXPECT_EQ(Transform::Identity(instant), Transform::Identity(instant).getInverse());
+        EXPECT_EQ(Transform::Identity(instant_), Transform::Identity(instant_).getInverse());
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, Active)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, Active)
 {
-    using ostk::math::obj::Vector3d;
-    using ostk::math::geom::d3::trf::rot::Quaternion;
-
-    using ostk::physics::time::Instant;
-    using ostk::physics::coord::Transform;
-
     {
-        const Instant instant = Instant::J2000();
+        EXPECT_EQ(transformActive_, Transform::Active(instant_, t_B_A_, v_B_A_, q_B_A_, w_B_A_in_B_));
+    }
+}
 
-        const Vector3d t_B_A = {+0.0, +0.0, +0.0};
-        const Vector3d v_B_A = {+0.0, +0.0, +0.0};
-
-        const Quaternion q_B_A = Quaternion::Unit();
-        const Vector3d w_B_A_in_B = {+0.0, +0.0, +0.0};
-
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, Passive)
+{
+    {
         EXPECT_EQ(
-            Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Active),
-            Transform::Active(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B)
+            Transform(instant_, t_B_A_, v_B_A_, q_B_A_, w_B_A_in_B_, Transform::Type::Passive),
+            Transform::Passive(instant_, t_B_A_, v_B_A_, q_B_A_, w_B_A_in_B_)
         );
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, Passive)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, Test_1)
 {
-    using ostk::math::obj::Vector3d;
-    using ostk::math::geom::d3::trf::rot::Quaternion;
-
-    using ostk::physics::time::Instant;
-    using ostk::physics::coord::Transform;
-
     {
-        const Instant instant = Instant::J2000();
-
-        const Vector3d t_B_A = {+0.0, +0.0, +0.0};
-        const Vector3d v_B_A = {+0.0, +0.0, +0.0};
-
-        const Quaternion q_B_A = Quaternion::Unit();
-        const Vector3d w_B_A_in_B = {+0.0, +0.0, +0.0};
-
-        EXPECT_EQ(
-            Transform(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Passive),
-            Transform::Passive(instant, t_B_A, v_B_A, q_B_A, w_B_A_in_B)
-        );
-    }
-}
-
-TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, Test_1)
-{
-    using ostk::core::types::Real;
-
-    using ostk::math::obj::Vector3d;
-    using ostk::math::geom::d3::trf::rot::Quaternion;
-
-    using ostk::physics::time::Instant;
-    using ostk::physics::coord::Transform;
-
-    {
-        const Instant instant = Instant::J2000();
-
         const Vector3d t_A_G = {+0.0, -1.0, +0.0};
         const Vector3d v_A_G = {+0.0, +0.0, +0.0};
 
         const Quaternion q_A_G = Quaternion::XYZS(0.0, 0.0, 0.707106781186547, 0.707106781186548).toNormalized();
         const Vector3d w_A_G_in_A = {+0.0, +0.0, +0.0};
 
-        const Transform transform_A_G = {instant, t_A_G, v_A_G, q_A_G, w_A_G_in_A, Transform::Type::Passive};
+        const Transform transform_A_G = {instant_, t_A_G, v_A_G, q_A_G, w_A_G_in_A, Transform::Type::Passive};
 
         {
             const Vector3d x_G = {+0.0, +1.0, +0.0};
@@ -1298,7 +881,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Transform, Test_1)
         const Quaternion q_B_G = Quaternion::XYZS(0.0, 0.0, -0.707106781186547, 0.707106781186548).toNormalized();
         const Vector3d w_B_G_in_B = {+0.0, +0.0, +0.0};
 
-        const Transform transform_B_G = {instant, t_B_G, v_B_G, q_B_G, w_B_G_in_B, Transform::Type::Passive};
+        const Transform transform_B_G = {instant_, t_B_G, v_B_G, q_B_G, w_B_G_in_B, Transform::Type::Passive};
 
         {
             const Vector3d x_G = {+1.0, +0.0, +0.0};

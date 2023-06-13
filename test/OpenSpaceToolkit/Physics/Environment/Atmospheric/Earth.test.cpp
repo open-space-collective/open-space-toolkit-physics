@@ -15,13 +15,30 @@
 
 #include <Global.test.hpp>
 
+using ostk::core::fs::Path;
+using ostk::core::fs::Directory;
+
+using ostk::core::error::RuntimeError;
+using ostk::core::types::Real;
+using ostk::core::types::String;
+using ostk::core::ctnr::Tuple;
+using ostk::core::ctnr::Array;
+using ostk::core::fs::Path;
+using ostk::core::fs::Directory;
+
+using ostk::physics::units::Length;
+using ostk::physics::units::Angle;
+using ostk::physics::time::Instant;
+using ostk::physics::coord::Position;
+using ostk::physics::coord::spherical::LLA;
+using ostk::physics::coord::Frame;
+
+using EarthCelestialBody = ostk::physics::env::obj::celest::Earth;
+
+using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
+
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Constructor)
 {
-    using ostk::core::fs::Path;
-    using ostk::core::fs::Directory;
-
-    using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
-
     {
         EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(EarthAtmosphericModel::Type::Exponential));
     }
@@ -42,8 +59,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Constructor)
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Clone)
 {
-    using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
-
     {
         const EarthAtmosphericModel earthAtmosphericModel = {EarthAtmosphericModel::Type::Exponential};
 
@@ -54,8 +69,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Clone)
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, OperatorEquals)
 {
-    using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
-
     {
         EarthAtmosphericModel earthAtmosphericModel = {EarthAtmosphericModel::Type::Exponential};
         EarthAtmosphericModel earthAtmosphericModel2 = {EarthAtmosphericModel::Type::Exponential};
@@ -66,8 +79,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, OperatorEquals)
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetType)
 {
-    using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
-
     {
         EXPECT_EQ(
             EarthAtmosphericModel::Type::Exponential,
@@ -81,8 +92,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetType)
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, IsDefined)
 {
-    using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
-
     {
         EXPECT_FALSE(EarthAtmosphericModel(EarthAtmosphericModel::Type::Undefined).isDefined());
 
@@ -92,23 +101,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, IsDefined)
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Position)
 {
-    using ostk::core::types::Real;
-    using ostk::core::types::String;
-    using ostk::core::ctnr::Tuple;
-    using ostk::core::ctnr::Array;
-    using ostk::core::fs::Path;
-    using ostk::core::fs::Directory;
-
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Instant;
-    using ostk::physics::coord::Position;
-    using ostk::physics::coord::spherical::LLA;
-    using ostk::physics::coord::Frame;
-
-    using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
-    using EarthCelestialBody = ostk::physics::env::obj::celest::Earth;
-
     {
         static const Array<Tuple<EarthAtmosphericModel::Type, LLA, Instant, Real, Real>> testCases = {
             {EarthAtmosphericModel::Type::Exponential,
@@ -157,22 +149,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Positi
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_LLA)
 {
-    using ostk::core::error::RuntimeError;
-    using ostk::core::types::Real;
-    using ostk::core::types::String;
-    using ostk::core::ctnr::Tuple;
-    using ostk::core::ctnr::Array;
-    using ostk::core::fs::Path;
-    using ostk::core::fs::Directory;
-
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Instant;
-    using ostk::physics::coord::spherical::LLA;
-    using ostk::physics::coord::Frame;
-
-    using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
-
     {
         // Hand calculated values to validate
         static const Array<Tuple<EarthAtmosphericModel::Type, LLA, Instant, Real, Real>> testCases = {

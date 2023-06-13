@@ -4,11 +4,11 @@
 
 #include <Global.test.hpp>
 
+using ostk::physics::Unit;
+using ostk::physics::units::Length;
+
 TEST(OpenSpaceToolkit_Physics_Unit, EqualToOperator)
 {
-    using ostk::physics::Unit;
-    using ostk::physics::units::Length;
-
     {
         const Unit unit = Unit::Length(Length::Unit::Meter);
 
@@ -40,9 +40,6 @@ TEST(OpenSpaceToolkit_Physics_Unit, EqualToOperator)
 
 TEST(OpenSpaceToolkit_Physics_Unit, NotEqualToOperator)
 {
-    using ostk::physics::Unit;
-    using ostk::physics::units::Length;
-
     {
         const Unit unit = Unit::Length(Length::Unit::Meter);
 
@@ -74,9 +71,6 @@ TEST(OpenSpaceToolkit_Physics_Unit, NotEqualToOperator)
 
 TEST(OpenSpaceToolkit_Physics_Unit, StreamOperator)
 {
-    using ostk::physics::Unit;
-    using ostk::physics::units::Length;
-
     {
         const Unit unit = Unit::Length(Length::Unit::Meter);
 
@@ -90,9 +84,6 @@ TEST(OpenSpaceToolkit_Physics_Unit, StreamOperator)
 
 TEST(OpenSpaceToolkit_Physics_Unit, IsDefined)
 {
-    using ostk::physics::Unit;
-    using ostk::physics::units::Length;
-
     {
         EXPECT_FALSE(Unit::Undefined().isDefined());
 
@@ -103,9 +94,6 @@ TEST(OpenSpaceToolkit_Physics_Unit, IsDefined)
 
 TEST(OpenSpaceToolkit_Physics_Unit, IsNone)
 {
-    using ostk::physics::Unit;
-    using ostk::physics::units::Length;
-
     {
         EXPECT_TRUE(Unit::None().isNone());
         EXPECT_FALSE(Unit::Length(Length::Unit::Meter).isNone());
@@ -118,9 +106,6 @@ TEST(OpenSpaceToolkit_Physics_Unit, IsNone)
 
 TEST(OpenSpaceToolkit_Physics_Unit, GetType)
 {
-    using ostk::physics::Unit;
-    using ostk::physics::units::Length;
-
     {
         EXPECT_EQ(Unit::Type::None, Unit::None().getType());
         EXPECT_EQ(Unit::Type::Length, Unit::Length(Length::Unit::Meter).getType());
@@ -133,9 +118,6 @@ TEST(OpenSpaceToolkit_Physics_Unit, GetType)
 
 TEST(OpenSpaceToolkit_Physics_Unit, RatioTo)
 {
-    using ostk::physics::Unit;
-    using ostk::physics::units::Length;
-
     {
         const Unit unit = Unit::None();
 
@@ -166,9 +148,6 @@ TEST(OpenSpaceToolkit_Physics_Unit, RatioTo)
 
 TEST(OpenSpaceToolkit_Physics_Unit, ToString)
 {
-    using ostk::physics::Unit;
-    using ostk::physics::units::Length;
-
     {
         EXPECT_EQ("-", Unit::None().toString());
     }
@@ -185,8 +164,6 @@ TEST(OpenSpaceToolkit_Physics_Unit, ToString)
 
 TEST(OpenSpaceToolkit_Physics_Unit, Undefined)
 {
-    using ostk::physics::Unit;
-
     {
         EXPECT_NO_THROW(Unit::Undefined());
 
@@ -196,8 +173,6 @@ TEST(OpenSpaceToolkit_Physics_Unit, Undefined)
 
 TEST(OpenSpaceToolkit_Physics_Unit, None)
 {
-    using ostk::physics::Unit;
-
     {
         EXPECT_NO_THROW(Unit::None());
 
@@ -207,9 +182,6 @@ TEST(OpenSpaceToolkit_Physics_Unit, None)
 
 TEST(OpenSpaceToolkit_Physics_Unit, Length)
 {
-    using ostk::physics::Unit;
-    using ostk::physics::units::Length;
-
     {
         EXPECT_NO_THROW(Unit::Length(Length::Unit::Meter));
 
@@ -219,8 +191,6 @@ TEST(OpenSpaceToolkit_Physics_Unit, Length)
 
 TEST(OpenSpaceToolkit_Physics_Unit, StringFromType)
 {
-    using ostk::physics::Unit;
-
     {
         EXPECT_EQ("Undefined", Unit::StringFromType(Unit::Type::Undefined));
         EXPECT_EQ("None", Unit::StringFromType(Unit::Type::None));

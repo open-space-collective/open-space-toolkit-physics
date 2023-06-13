@@ -16,27 +16,27 @@
 
 #include <Global.test.hpp>
 
+using ostk::core::types::Real;
+using ostk::core::ctnr::Triple;
+using ostk::core::ctnr::Array;
+using ostk::core::ctnr::Table;
+using ostk::core::fs::Path;
+using ostk::core::fs::File;
+
+using ostk::math::obj::Vector3d;
+using ostk::math::geom::d3::trf::rot::Quaternion;
+using ostk::math::geom::d3::trf::rot::RotationVector;
+
+using ostk::physics::units::Angle;
+using ostk::physics::time::Scale;
+using ostk::physics::time::Instant;
+using ostk::physics::time::DateTime;
+using ostk::physics::coord::Frame;
+using ostk::physics::coord::frame::Transform;
+using ostk::physics::coord::frame::provider::MOD;
+
 TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_MOD, GetTransformAt)
 {
-    using ostk::core::types::Real;
-    using ostk::core::ctnr::Triple;
-    using ostk::core::ctnr::Array;
-    using ostk::core::ctnr::Table;
-    using ostk::core::fs::Path;
-    using ostk::core::fs::File;
-
-    using ostk::math::obj::Vector3d;
-    using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
-
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::coord::Frame;
-    using ostk::physics::coord::frame::Transform;
-    using ostk::physics::coord::frame::provider::MOD;
-
     {
         // https://github.com/JuliaSpace/SatelliteToolbox.jl/blob/master/test/transformations/fk5/fk5.jl#L635
 

@@ -10,10 +10,20 @@
 
 #include <Global.test.hpp>
 
+using ostk::core::types::String;
+using ostk::core::types::Real;
+
+using ostk::physics::units::Length;
+using ostk::physics::units::Angle;
+using ostk::physics::time::Instant;
+using ostk::physics::coord::Position;
+using ostk::physics::coord::spherical::LLA;
+using ostk::physics::coord::Frame;
+using ostk::physics::environment::atmospheric::earth::Exponential;
+using EarthCelestialBody = ostk::physics::env::obj::celest::Earth;
+
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Exponential, Constructor)
 {
-    using ostk::physics::environment::atmospheric::earth::Exponential;
-
     {
         EXPECT_NO_THROW(Exponential exponential = {});
     }
@@ -21,8 +31,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Exponential, Constru
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Exponential, Clone)
 {
-    using ostk::physics::environment::atmospheric::earth::Exponential;
-
     {
         const Exponential exponential = {};
 
@@ -43,18 +51,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Exponential, IsDefin
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Exponential, getDensityAt)
 {
-    using ostk::core::types::String;
-    using ostk::core::types::Real;
-
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Instant;
-    using ostk::physics::coord::Position;
-    using ostk::physics::coord::spherical::LLA;
-    using ostk::physics::coord::Frame;
-    using ostk::physics::environment::atmospheric::earth::Exponential;
-    using EarthCelestialBody = ostk::physics::env::obj::celest::Earth;
-
     {
         const Exponential exponential = {};
 

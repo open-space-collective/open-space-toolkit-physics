@@ -42,8 +42,8 @@ class Sun : public Model
    public:
     enum class Type
     {
-        Undefined, /// Undefined
-        Spherical  /// The spherical gravity originating from a point source at the center of the Sun
+        Undefined,  /// Undefined
+        Spherical   /// The spherical gravity originating from a point source at the center of the Sun
     };
 
     /// @brief              Constructor

@@ -17,31 +17,31 @@
 
 #include <Global.test.hpp>
 
+using ostk::core::types::Shared;
+using ostk::core::types::Real;
+using ostk::core::types::String;
+using ostk::core::ctnr::Tuple;
+using ostk::core::ctnr::Array;
+using ostk::core::ctnr::Table;
+using ostk::core::fs::Path;
+using ostk::core::fs::File;
+
+using ostk::math::obj::Vector3d;
+using ostk::math::geom::d3::trf::rot::Quaternion;
+using ostk::math::geom::d3::trf::rot::RotationVector;
+using ostk::math::geom::d3::trf::rot::RotationMatrix;
+
+using ostk::physics::units::Length;
+using ostk::physics::units::Angle;
+using ostk::physics::time::Scale;
+using ostk::physics::time::Instant;
+using ostk::physics::time::DateTime;
+using ostk::physics::coord::Transform;
+using ostk::physics::coord::Frame;
+using ostk::physics::env::obj::celest::Earth;
+
 TEST(OpenSpaceToolkit_Physics_Coordinate_Frames_ITRF, Test)
 {
-    using ostk::core::types::Shared;
-    using ostk::core::types::Real;
-    using ostk::core::types::String;
-    using ostk::core::ctnr::Tuple;
-    using ostk::core::ctnr::Array;
-    using ostk::core::ctnr::Table;
-    using ostk::core::fs::Path;
-    using ostk::core::fs::File;
-
-    using ostk::math::obj::Vector3d;
-    using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
-    using ostk::math::geom::d3::trf::rot::RotationMatrix;
-
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::coord::Transform;
-    using ostk::physics::coord::Frame;
-    using ostk::physics::env::obj::celest::Earth;
-
     {
         const Array<Tuple<File, Angle, Length, Length, Real>> referenceScenarios = {
             {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frames/ITRF/Test/ITRF_GCRF 1.csv")),

@@ -4,43 +4,46 @@
 
 #include <Global.test.hpp>
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, StreamOperator)
+using ostk::core::fs::Path;
+using ostk::core::fs::File;
+
+using ostk::physics::time::Date;
+using ostk::physics::time::Scale;
+using ostk::physics::time::Instant;
+using ostk::physics::time::DateTime;
+using ostk::physics::time::Interval;
+using ostk::physics::time::Duration;
+using ostk::physics::coord::frame::provider::iers::BulletinA;
+
+class OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA : public ::testing::Test
 {
-    using ostk::core::fs::Path;
-    using ostk::core::fs::File;
-
-    using ostk::physics::coord::frame::provider::iers::BulletinA;
-
+   protected:
+    void SetUp() override
     {
         const File file = File::Path(
             Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/BulletinA/ser7.dat")
         );
+        this->bulletinA_ = BulletinA::Load(file);
+    }
 
-        const BulletinA bulletinA = BulletinA::Load(file);
+    BulletinA bulletinA_ = BulletinA::Undefined();
+};
 
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, StreamOperator)
+{
+    {
         testing::internal::CaptureStdout();
 
-        EXPECT_NO_THROW(std::cout << bulletinA << std::endl);
+        EXPECT_NO_THROW(std::cout << bulletinA_ << std::endl);
 
         EXPECT_FALSE(testing::internal::GetCapturedStdout().empty());
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, IsDefined)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, IsDefined)
 {
-    using ostk::core::fs::Path;
-    using ostk::core::fs::File;
-
-    using ostk::physics::coord::frame::provider::iers::BulletinA;
-
     {
-        const File file = File::Path(
-            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/BulletinA/ser7.dat")
-        );
-
-        const BulletinA bulletinA = BulletinA::Load(file);
-
-        EXPECT_TRUE(bulletinA.isDefined());
+        EXPECT_TRUE(bulletinA_.isDefined());
     }
 
     {
@@ -48,57 +51,35 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, IsDefin
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessReleaseDate)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessReleaseDate)
 {
-    using ostk::physics::coord::frame::provider::iers::BulletinA;
-
     SUCCEED();  // See: GetReleaseDate
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessTAIMinusUTC)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessTAIMinusUTC)
 {
-    using ostk::physics::coord::frame::provider::iers::BulletinA;
-
     SUCCEED();  // See: GetTAIMinusUTC
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessTAIMinusUTCEpoch)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessTAIMinusUTCEpoch)
 {
-    using ostk::physics::coord::frame::provider::iers::BulletinA;
-
     SUCCEED();  // See: GetTAIMinusUTCEpoch
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessObservationInterval)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessObservationInterval)
 {
-    using ostk::physics::coord::frame::provider::iers::BulletinA;
-
     SUCCEED();  // See: GetObservationInterval
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessPredictionInterval)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessPredictionInterval)
 {
-    using ostk::physics::coord::frame::provider::iers::BulletinA;
-
     SUCCEED();  // See: GetPredictionInterval
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetReleaseDate)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetReleaseDate)
 {
-    using ostk::core::fs::Path;
-    using ostk::core::fs::File;
-
-    using ostk::physics::time::Date;
-    using ostk::physics::coord::frame::provider::iers::BulletinA;
-
     {
-        const File file = File::Path(
-            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/BulletinA/ser7.dat")
-        );
-
-        const BulletinA bulletinA = BulletinA::Load(file);
-
-        EXPECT_EQ(Date(2018, 6, 28), bulletinA.getReleaseDate());
+        EXPECT_EQ(Date(2018, 6, 28), bulletinA_.getReleaseDate());
     }
 
     {
@@ -106,22 +87,10 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetRele
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetTAIMinusUTC)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetTAIMinusUTC)
 {
-    using ostk::core::fs::Path;
-    using ostk::core::fs::File;
-
-    using ostk::physics::time::Duration;
-    using ostk::physics::coord::frame::provider::iers::BulletinA;
-
     {
-        const File file = File::Path(
-            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/BulletinA/ser7.dat")
-        );
-
-        const BulletinA bulletinA = BulletinA::Load(file);
-
-        EXPECT_EQ(Duration::Seconds(37.0), bulletinA.getTAIMinusUTC());
+        EXPECT_EQ(Duration::Seconds(37.0), bulletinA_.getTAIMinusUTC());
     }
 
     {
@@ -129,25 +98,11 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetTAIM
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetTAIMinusUTCEpoch)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetTAIMinusUTCEpoch)
 {
-    using ostk::core::fs::Path;
-    using ostk::core::fs::File;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::coord::frame::provider::iers::BulletinA;
-
     {
-        const File file = File::Path(
-            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/BulletinA/ser7.dat")
-        );
-
-        const BulletinA bulletinA = BulletinA::Load(file);
-
         EXPECT_EQ(
-            Instant::DateTime(DateTime::Parse("2017-01-01 00:00:00"), Scale::UTC), bulletinA.getTAIMinusUTCEpoch()
+            Instant::DateTime(DateTime::Parse("2017-01-01 00:00:00"), Scale::UTC), bulletinA_.getTAIMinusUTCEpoch()
         );
     }
 
@@ -156,30 +111,15 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetTAIM
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetObservationInterval)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetObservationInterval)
 {
-    using ostk::core::fs::Path;
-    using ostk::core::fs::File;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::Interval;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::coord::frame::provider::iers::BulletinA;
-
     {
-        const File file = File::Path(
-            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/BulletinA/ser7.dat")
-        );
-
-        const BulletinA bulletinA = BulletinA::Load(file);
-
         EXPECT_EQ(
             Interval::Closed(
                 Instant::DateTime(DateTime::Parse("2018-06-22 00:00:00"), Scale::UTC),
                 Instant::DateTime(DateTime::Parse("2018-06-28 00:00:00"), Scale::UTC)
             ),
-            bulletinA.getObservationInterval()
+            bulletinA_.getObservationInterval()
         );
     }
 
@@ -188,38 +128,22 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetObse
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetObservationAt)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetObservationAt)
 {
-    using ostk::core::fs::Path;
-    using ostk::core::fs::File;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::coord::frame::provider::iers::BulletinA;
-
     {
-        const File file = File::Path(
-            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/BulletinA/ser7.dat")
-        );
+        const BulletinA::Observation firstObservation =
+            bulletinA_.getObservationAt(Instant::DateTime(DateTime::Parse("2018-06-22 00:00:00"), Scale::UTC));
 
-        const BulletinA bulletinA = BulletinA::Load(file);
-
-        {
-            const BulletinA::Observation firstObservation =
-                bulletinA.getObservationAt(Instant::DateTime(DateTime::Parse("2018-06-22 00:00:00"), Scale::UTC));
-
-            EXPECT_EQ(2018, firstObservation.year);
-            EXPECT_EQ(6, firstObservation.month);
-            EXPECT_EQ(22, firstObservation.day);
-            EXPECT_NEAR(58291.0, firstObservation.mjd, 1e-1);
-            EXPECT_NEAR(0.14461, firstObservation.x, 1e-5);
-            EXPECT_NEAR(0.00009, firstObservation.xError, 1e-5);
-            EXPECT_NEAR(0.43734, firstObservation.y, 1e-5);
-            EXPECT_NEAR(0.00009, firstObservation.yError, 1e-5);
-            EXPECT_NEAR(0.067056, firstObservation.ut1MinusUtc, 1e-6);
-            EXPECT_NEAR(0.000031, firstObservation.ut1MinusUtcError, 1e-6);
-        }
+        EXPECT_EQ(2018, firstObservation.year);
+        EXPECT_EQ(6, firstObservation.month);
+        EXPECT_EQ(22, firstObservation.day);
+        EXPECT_NEAR(58291.0, firstObservation.mjd, 1e-1);
+        EXPECT_NEAR(0.14461, firstObservation.x, 1e-5);
+        EXPECT_NEAR(0.00009, firstObservation.xError, 1e-5);
+        EXPECT_NEAR(0.43734, firstObservation.y, 1e-5);
+        EXPECT_NEAR(0.00009, firstObservation.yError, 1e-5);
+        EXPECT_NEAR(0.067056, firstObservation.ut1MinusUtc, 1e-6);
+        EXPECT_NEAR(0.000031, firstObservation.ut1MinusUtcError, 1e-6);
     }
 
     {
@@ -229,30 +153,15 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetObse
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetPredictionInterval)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetPredictionInterval)
 {
-    using ostk::core::fs::Path;
-    using ostk::core::fs::File;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::Interval;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::coord::frame::provider::iers::BulletinA;
-
     {
-        const File file = File::Path(
-            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/BulletinA/ser7.dat")
-        );
-
-        const BulletinA bulletinA = BulletinA::Load(file);
-
         EXPECT_EQ(
             Interval::Closed(
                 Instant::DateTime(DateTime::Parse("2018-06-29 00:00:00"), Scale::UTC),
                 Instant::DateTime(DateTime::Parse("2019-06-28 00:00:00"), Scale::UTC)
             ),
-            bulletinA.getPredictionInterval()
+            bulletinA_.getPredictionInterval()
         );
     }
 
@@ -261,35 +170,19 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetPred
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetPredictionAt)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetPredictionAt)
 {
-    using ostk::core::fs::Path;
-    using ostk::core::fs::File;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::coord::frame::provider::iers::BulletinA;
-
     {
-        const File file = File::Path(
-            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/BulletinA/ser7.dat")
-        );
+        const BulletinA::Prediction firstPrediction =
+            bulletinA_.getPredictionAt(Instant::DateTime(DateTime::Parse("2018-06-29 00:00:00"), Scale::UTC));
 
-        const BulletinA bulletinA = BulletinA::Load(file);
-
-        {
-            const BulletinA::Prediction firstPrediction =
-                bulletinA.getPredictionAt(Instant::DateTime(DateTime::Parse("2018-06-29 00:00:00"), Scale::UTC));
-
-            EXPECT_EQ(2018, firstPrediction.year);
-            EXPECT_EQ(6, firstPrediction.month);
-            EXPECT_EQ(29, firstPrediction.day);
-            EXPECT_NEAR(58298.0, firstPrediction.mjd, 1e-1);
-            EXPECT_NEAR(0.1580, firstPrediction.x, 1e-5);
-            EXPECT_NEAR(0.4308, firstPrediction.y, 1e-5);
-            EXPECT_NEAR(0.06934, firstPrediction.ut1MinusUtc, 1e-6);
-        }
+        EXPECT_EQ(2018, firstPrediction.year);
+        EXPECT_EQ(6, firstPrediction.month);
+        EXPECT_EQ(29, firstPrediction.day);
+        EXPECT_NEAR(58298.0, firstPrediction.mjd, 1e-1);
+        EXPECT_NEAR(0.1580, firstPrediction.x, 1e-5);
+        EXPECT_NEAR(0.4308, firstPrediction.y, 1e-5);
+        EXPECT_NEAR(0.06934, firstPrediction.ut1MinusUtc, 1e-6);
     }
 
     {
@@ -299,33 +192,16 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetPred
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, Load)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, Load)
 {
-    using ostk::core::fs::Path;
-    using ostk::core::fs::File;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::Duration;
-    using ostk::physics::time::Interval;
-    using ostk::physics::time::Date;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::coord::frame::provider::iers::BulletinA;
-
     {
-        const File file = File::Path(
-            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/BulletinA/ser7.dat")
-        );
+        EXPECT_TRUE(bulletinA_.isDefined());
 
-        const BulletinA bulletinA = BulletinA::Load(file);
+        EXPECT_EQ(Date(2018, 6, 28), bulletinA_.getReleaseDate());
 
-        EXPECT_TRUE(bulletinA.isDefined());
-
-        EXPECT_EQ(Date(2018, 6, 28), bulletinA.getReleaseDate());
-
-        EXPECT_EQ(Duration::Seconds(37.0), bulletinA.getTAIMinusUTC());
+        EXPECT_EQ(Duration::Seconds(37.0), bulletinA_.getTAIMinusUTC());
         EXPECT_EQ(
-            Instant::DateTime(DateTime::Parse("2017-01-01 00:00:00"), Scale::UTC), bulletinA.getTAIMinusUTCEpoch()
+            Instant::DateTime(DateTime::Parse("2017-01-01 00:00:00"), Scale::UTC), bulletinA_.getTAIMinusUTCEpoch()
         );
 
         EXPECT_EQ(
@@ -333,12 +209,12 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, Load)
                 Instant::DateTime(DateTime::Parse("2018-06-22 00:00:00"), Scale::UTC),
                 Instant::DateTime(DateTime::Parse("2018-06-28 00:00:00"), Scale::UTC)
             ),
-            bulletinA.getObservationInterval()
+            bulletinA_.getObservationInterval()
         );
 
         {
             const BulletinA::Observation firstObservation =
-                bulletinA.getObservationAt(Instant::DateTime(DateTime::Parse("2018-06-22 00:00:00"), Scale::UTC));
+                bulletinA_.getObservationAt(Instant::DateTime(DateTime::Parse("2018-06-22 00:00:00"), Scale::UTC));
 
             EXPECT_EQ(2018, firstObservation.year);
             EXPECT_EQ(6, firstObservation.month);
@@ -354,7 +230,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, Load)
 
         {
             const BulletinA::Observation lastObservation =
-                bulletinA.getObservationAt(Instant::DateTime(DateTime::Parse("2018-06-28 00:00:00"), Scale::UTC));
+                bulletinA_.getObservationAt(Instant::DateTime(DateTime::Parse("2018-06-28 00:00:00"), Scale::UTC));
 
             EXPECT_EQ(2018, lastObservation.year);
             EXPECT_EQ(6, lastObservation.month);
@@ -370,7 +246,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, Load)
 
         {
             const BulletinA::Observation interpolatedObservation =
-                bulletinA.getObservationAt(Instant::DateTime(DateTime::Parse("2018-06-22 12:00:00"), Scale::UTC));
+                bulletinA_.getObservationAt(Instant::DateTime(DateTime::Parse("2018-06-22 12:00:00"), Scale::UTC));
 
             EXPECT_EQ(2018, interpolatedObservation.year);
             EXPECT_EQ(6, interpolatedObservation.month);
@@ -389,12 +265,12 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, Load)
                 Instant::DateTime(DateTime::Parse("2018-06-29 00:00:00"), Scale::UTC),
                 Instant::DateTime(DateTime::Parse("2019-06-28 00:00:00"), Scale::UTC)
             ),
-            bulletinA.getPredictionInterval()
+            bulletinA_.getPredictionInterval()
         );
 
         {
             const BulletinA::Prediction firstPrediction =
-                bulletinA.getPredictionAt(Instant::DateTime(DateTime::Parse("2018-06-29 00:00:00"), Scale::UTC));
+                bulletinA_.getPredictionAt(Instant::DateTime(DateTime::Parse("2018-06-29 00:00:00"), Scale::UTC));
 
             EXPECT_EQ(2018, firstPrediction.year);
             EXPECT_EQ(6, firstPrediction.month);
@@ -407,7 +283,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, Load)
 
         {
             const BulletinA::Prediction lastPrediction =
-                bulletinA.getPredictionAt(Instant::DateTime(DateTime::Parse("2019-06-28 00:00:00"), Scale::UTC));
+                bulletinA_.getPredictionAt(Instant::DateTime(DateTime::Parse("2019-06-28 00:00:00"), Scale::UTC));
 
             EXPECT_EQ(2019, lastPrediction.year);
             EXPECT_EQ(6, lastPrediction.month);
@@ -420,7 +296,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, Load)
 
         {
             const BulletinA::Prediction interpolatedPrediction =
-                bulletinA.getPredictionAt(Instant::DateTime(DateTime::Parse("2018-06-29 12:00:00"), Scale::UTC));
+                bulletinA_.getPredictionAt(Instant::DateTime(DateTime::Parse("2018-06-29 12:00:00"), Scale::UTC));
 
             EXPECT_EQ(2018, interpolatedPrediction.year);
             EXPECT_EQ(6, interpolatedPrediction.month);
