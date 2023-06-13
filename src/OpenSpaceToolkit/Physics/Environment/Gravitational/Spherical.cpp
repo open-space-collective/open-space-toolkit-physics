@@ -37,6 +37,11 @@ Spherical* Spherical::clone() const
     return new Spherical(*this);
 }
 
+bool Spherical::isDefined() const
+{
+    return gravitationalParameter_SI_.isDefined();
+}
+
 Vector3d Spherical::getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const
 {
     (void)anInstant;  // Temporal invariance

@@ -178,6 +178,17 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Constructor)
 
 // }
 
+TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, IsDefined)
+{
+    using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
+
+    {
+        EXPECT_FALSE(EarthGravitationalModel(EarthGravitationalModel::Type::Undefined).isDefined());
+
+        EXPECT_TRUE(EarthGravitationalModel(EarthGravitationalModel::Type::EGM96).isDefined());
+    }
+}
+
 TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetType)
 {
     using ostk::core::fs::Path;
