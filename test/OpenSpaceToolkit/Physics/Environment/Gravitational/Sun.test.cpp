@@ -26,6 +26,17 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Sun, Constructor)
     }
 }
 
+TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Sun, IsDefined)
+{
+    using SunGravitationalModel = ostk::physics::environment::gravitational::Sun;
+
+    {
+        EXPECT_FALSE(SunGravitationalModel(SunGravitationalModel::Type::Undefined).isDefined());
+
+        EXPECT_TRUE(SunGravitationalModel(SunGravitationalModel::Type::Spherical).isDefined());
+    }
+}
+
 TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Sun, GetType)
 {
     using ostk::core::fs::Path;

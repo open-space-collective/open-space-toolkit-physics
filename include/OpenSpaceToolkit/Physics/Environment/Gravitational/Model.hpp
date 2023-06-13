@@ -39,6 +39,12 @@ class Model
 
     virtual Model* clone() const = 0;
 
+    /// @brief              Check if the gravitational model is defined (pure virtual)
+    ///
+    /// @return             True if the gravitational model is defined
+
+    virtual bool isDefined() const = 0;
+
     /// @brief              Get the gravitational field value at a given position and instant (pure virtual)
     ///
     /// @param              [in] aPosition A position, expressed in the gravitational object frame [m]

@@ -45,7 +45,7 @@ class Earth : public Model
    public:
     enum class Type
     {
-
+        Undefined,  ///< Undefined
         Spherical,  ///< The spherical gravity originating from a point source at the center of the Earth
         WGS84,  ///< The normal gravitational field for the reference ellipsoid. This includes the zonal coefficients up
                 ///< to order 20.
@@ -91,6 +91,12 @@ class Earth : public Model
     /// @return             Pointer to Earth gravitational model
 
     virtual Earth* clone() const override;
+
+    /// @brief              Check if the Earth gravitational model is defined
+    ///
+    /// @return             True if the Earth gravitational model is defined
+
+    virtual bool isDefined() const override;
 
     /// @brief              Get gravitational model type
     ///
