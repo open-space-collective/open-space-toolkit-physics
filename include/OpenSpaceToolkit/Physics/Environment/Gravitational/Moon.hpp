@@ -43,7 +43,7 @@ class Moon : public Model
     enum class Type
     {
         Undefined,  /// Undefined
-        Spherical  /// The spherical gravity originating from a point source at the center of the Moon
+        Spherical   /// The spherical gravity originating from a point source at the center of the Moon
     };
 
     /// @brief              Constructor

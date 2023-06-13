@@ -196,8 +196,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Constructor)
 
 TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, IsDefined)
 {
-    using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
-
     {
         EXPECT_FALSE(EarthGravitationalModel(EarthGravitationalModel::Type::Undefined).isDefined());
 

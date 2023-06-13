@@ -36,8 +36,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Moon, Constructor)
 
 TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Moon, IsDefined)
 {
-    using MoonGravitationalModel = ostk::physics::environment::gravitational::Moon;
-
     {
         EXPECT_FALSE(MoonGravitationalModel(MoonGravitationalModel::Type::Undefined).isDefined());
 

@@ -92,8 +92,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetType)
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, IsDefined)
 {
-    using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
-
     {
         EXPECT_FALSE(EarthAtmosphericModel(EarthAtmosphericModel::Type::Undefined).isDefined());
 
