@@ -8,6 +8,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(pybind11::
     using namespace pybind11;
 
     using ostk::core::types::Integer;
+    using ostk::core::types::Shared;
     using ostk::core::fs::Directory;
 
     using ostk::physics::environment::gravitational::Model;
@@ -15,7 +16,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(pybind11::
     using ostk::physics::environment::gravitational::earth::Manager;
 
     {
-        class_<Earth, Model> earth_class(aModule, "Earth");
+        class_<Earth, Model, Shared<Earth>> earth_class(aModule, "Earth");
 
         earth_class
 
@@ -54,9 +55,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(pybind11::
             .value("Spherical", Earth::Type::Spherical)
             .value("WGS84", Earth::Type::WGS84)
             .value("EGM84", Earth::Type::EGM84)
+            .value("WGS84_EGM96", Earth::Type::WGS84_EGM96)
             .value("EGM96", Earth::Type::EGM96)
             .value("EGM2008", Earth::Type::EGM2008)
-
             ;
     }
 

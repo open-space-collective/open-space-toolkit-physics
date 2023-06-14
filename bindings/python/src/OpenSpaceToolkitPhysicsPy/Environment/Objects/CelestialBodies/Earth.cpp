@@ -23,7 +23,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Earth(
     using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
 
     {
-        class_<Earth, Shared<Earth>, Celestial>(aModule, "Earth")
+        class_<Earth, Celestial, Shared<Earth>>(aModule, "Earth")
 
             .def(
                 init<
@@ -84,14 +84,14 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Earth(
             )
             .def_static("spherical", &Earth::Spherical)
 
+            .def_static("gravity_only", &Earth::GravityOnly, arg("gravity_model"))
+            .def_static("magnetic_only", &Earth::MagneticOnly, arg("magnetic_model"))
+            .def_static("atmospheric_only", &Earth::AtmosphereOnly, arg("atmospheric_model"))
+            .def_static(
+                "from_models", &Earth::FromModels, arg("gravity_model"), arg("magnetic_model"), arg("atmospheric_model")
+            )
+
             ;
     }
 
-    {
-        // Create "earth" python submodule
-        auto earth = aModule.def_submodule("earth");
-
-        // Add __path__ attribute for "earth" submodule
-        earth.attr("__path__") = "ostk.physics.environment.objects.celestial_bodies.earth";
-    }
 }

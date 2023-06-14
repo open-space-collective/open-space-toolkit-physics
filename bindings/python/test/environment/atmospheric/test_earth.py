@@ -13,7 +13,7 @@ from ostk.physics.coordinate import Position
 from ostk.physics.coordinate import Frame
 from ostk.physics.coordinate.spherical import LLA
 from ostk.physics.environment.atmospheric import Earth as EarthAtmosphericModel
-from ostk.physics.environment.objects.celestial_bodies import Earth
+from ostk.physics.environment.gravitational import Earth as EarthGravitationalModel
 
 
 @pytest.fixture
@@ -54,8 +54,8 @@ class TestEarth:
         density = earth_atmospheric_model.get_density_at(
             position=Position.meters(
                 coordinates=LLA(latitude, longitude, altitude).to_cartesian(
-                    ellipsoid_equatorial_radius=Earth.equatorial_radius,
-                    ellipsoid_flattening=Earth.flattening,
+                    ellipsoid_equatorial_radius=EarthGravitationalModel.EGM2008.equatorial_radius,
+                    ellipsoid_flattening=EarthGravitationalModel.EGM2008.flattening,
                 ),
                 frame=Frame.ITRF(),
             ),

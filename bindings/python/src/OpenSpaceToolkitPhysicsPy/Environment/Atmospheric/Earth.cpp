@@ -11,6 +11,8 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
 
     using ostk::core::fs::Directory;
 
+    using ostk::core::types::Shared;
+
     using ostk::physics::environment::atmospheric::Earth;
     using ostk::physics::time::Instant;
     using ostk::physics::coord::Position;
@@ -18,7 +20,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
     using ostk::physics::coord::spherical::LLA;
 
     {
-        class_<Earth> earth_class(aModule, "Earth");
+        class_<Earth, Shared<Earth>> earth_class(aModule, "Earth");
 
         earth_class
 

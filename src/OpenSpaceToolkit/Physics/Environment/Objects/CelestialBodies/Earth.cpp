@@ -4,7 +4,6 @@
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/Analytical.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
 
 namespace ostk
@@ -19,7 +18,6 @@ namespace celest
 {
 
 using ostk::physics::coord::Frame;
-using ostk::physics::env::ephem::Analytical;
 
 Earth::Earth(
     const Derived& aGravitationalParameter,
@@ -81,6 +79,50 @@ Earth::~Earth() {}
 Earth* Earth::clone() const
 {
     return new Earth(*this);
+}
+
+Earth Earth::GravityOnly(const Shared<EarthGravitationalModel>& aGravitatationalModel)
+{
+    return Earth::FromModels(
+        aGravitatationalModel,
+        std::make_shared<EarthMagneticModel>(EarthMagneticModel::Type::Undefined),
+        std::make_shared<EarthAtmosphericModel>(EarthAtmosphericModel::Type::Undefined)
+    );
+}
+
+Earth Earth::MagneticOnly(const Shared<EarthMagneticModel>& aMagneticModel)
+{
+    return Earth::FromModels(
+        std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::Undefined),
+        aMagneticModel,
+        std::make_shared<EarthAtmosphericModel>(EarthAtmosphericModel::Type::Undefined)
+    );
+}
+
+Earth Earth::AtmosphereOnly(const Shared<EarthAtmosphericModel>& anAtmosphericModel)
+{
+    return Earth::FromModels(
+        std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::Undefined),
+        std::make_shared<EarthMagneticModel>(EarthMagneticModel::Type::Undefined),
+        anAtmosphericModel
+    );
+}
+
+Earth Earth::FromModels(
+    const Shared<EarthGravitationalModel>& aGravitationalModel,
+    const Shared<EarthMagneticModel>& aMagneticModel,
+    const Shared<EarthAtmosphericModel>& aAtmosphericModel
+)
+{
+    const Shared<const Frame> earthFrameSPtr = Frame::ITRF();
+
+    return {
+        Instant::J2000(),
+        std::make_shared<Analytical>(earthFrameSPtr),
+        aGravitationalModel,
+        aMagneticModel,
+        aAtmosphericModel,
+    };
 }
 
 Earth Earth::Default()

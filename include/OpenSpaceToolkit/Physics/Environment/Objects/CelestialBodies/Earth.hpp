@@ -101,6 +101,41 @@ class Earth : public Celestial
 
     static Earth Default();
 
+    /// @brief              Just gravity model
+    ///
+    /// @param              [in] aGravitationalModel A gravitational model
+    /// @return             Earth
+
+    static Earth GravityOnly(const Shared<EarthGravitationalModel>& aGravitationalModel);
+
+    /// @brief              Just atmospheric model
+    ///
+    /// @param              [in] aAtmosphericModel An atmospheric model
+    /// @return             Earth
+
+    static Earth AtmosphereOnly(const Shared<EarthAtmosphericModel>& anAtmosphericModel);
+
+    /// @brief              Just magnetic model
+    ///
+    /// @param`             [in] aMagneticModel A magnetic model
+    /// @return             Earth
+
+    static Earth MagneticOnly(const Shared<EarthMagneticModel>& aMagneticModel);
+
+    /// @brief              Create earth from specified models
+    ///
+    /// @param              [in] aGravitationalModel A gravitational model
+    /// @param              [in] aMagneticModel A magnetic model
+    /// @param              [in] aAtmosphericModel An atmospheric model
+    ///
+    /// @return             Earth
+
+    static Earth FromModels(
+        const Shared<EarthGravitationalModel>& aGravitationalModel,
+        const Shared<EarthMagneticModel>& aMagneticModel,
+        const Shared<EarthAtmosphericModel>& aAtmosphericModel
+    );
+
     /// @brief              Earth Gravity Model 2008 model (EGM2008)
     ///
     /// @return             Earth
