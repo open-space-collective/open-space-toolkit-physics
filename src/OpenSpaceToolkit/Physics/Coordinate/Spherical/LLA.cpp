@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <GeographicLib/Geodesic.hpp>
+
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
 
@@ -97,6 +99,13 @@ Length LLA::getAltitude() const
     }
 
     return altitude_;
+}
+
+Length LLA::calculateDistanceTo(
+    const LLA& aLLA, const Length& anEllipsoidEquatorialRadius, const Real& anEllipsoidFlattening
+) const
+{
+    return LLA::DistanceBetween(*this, aLLA, anEllipsoidEquatorialRadius, anEllipsoidFlattening);
 }
 
 Vector3d LLA::toVector() const
@@ -218,6 +227,28 @@ LLA LLA::Cartesian(
     const Length altitude = Length::Meters(altitude_m);
 
     return {latitude, longitude, altitude};
+}
+
+Length LLA::DistanceBetween(
+    const LLA& aFirstLLA,
+    const LLA& aSecondLLA,
+    const Length& anEllipsoidEquatorialRadius,
+    const Real& anEllipsoidFlattening
+)
+{
+    const GeographicLib::Geodesic& geodesic =
+        GeographicLib::Geodesic(anEllipsoidEquatorialRadius.inMeters(), anEllipsoidFlattening);
+
+    GeographicLib::Math::real distance_m;
+    geodesic.Inverse(
+        aFirstLLA.getLatitude().inDegrees(),
+        aFirstLLA.getLongitude().inDegrees(),
+        aSecondLLA.getLatitude().inDegrees(),
+        aSecondLLA.getLongitude().inDegrees(),
+        distance_m
+    );
+
+    return Length::Meters(distance_m);
 }
 
 }  // namespace spherical

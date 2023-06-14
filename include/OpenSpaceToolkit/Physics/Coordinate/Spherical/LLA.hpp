@@ -50,6 +50,17 @@ class LLA
 
     Length getAltitude() const;
 
+    /// @brief                  Calculate the distance between this LLA coordinate and another LLA coordinate
+    ///
+    /// @param                  [in] aLLA A LLA coordinate
+    /// @param                  [in] anEllipsoidEquatorialRadius An ellipsoid equatorial radius
+    /// @param                  [in] anEllipsoidFlattening An ellipsoid flattening
+    /// @return                 Distance between the two LLA coordinates
+
+    Length calculateDistanceTo(
+        const LLA& aLLA, const Length& anEllipsoidEquatorialRadius, const Real& anEllipsoidFlattening
+    ) const;
+
     Vector3d toVector() const;
 
     Vector3d toCartesian(const Length& anEllipsoidEquatorialRadius, const Real& anEllipsoidFlattening) const;
@@ -62,6 +73,21 @@ class LLA
 
     static LLA Cartesian(
         const Vector3d& aCartesianCoordinateSet,
+        const Length& anEllipsoidEquatorialRadius,
+        const Real& anEllipsoidFlattening
+    );
+
+    /// @brief                  Calculate the distance between two LLA coordinates
+    ///
+    /// @param                  [in] aFirstLLA A first LLA coordinate
+    /// @param                  [in] aSecondLLA A second LLA coordinate
+    /// @param                  [in] anEllipsoidEquatorialRadius An ellipsoid equatorial radius
+    /// @param                  [in] anEllipsoidFlattening An ellipsoid flattening
+    /// @return                 Distance between the two LLA coordinates
+
+    static Length DistanceBetween(
+        const LLA& aFirstLLA,
+        const LLA& aSecondLLA,
         const Length& anEllipsoidEquatorialRadius,
         const Real& anEllipsoidFlattening
     );

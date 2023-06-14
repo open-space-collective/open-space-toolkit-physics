@@ -25,6 +25,15 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
         .def("get_latitude", &LLA::getLatitude)
         .def("get_longitude", &LLA::getLongitude)
         .def("get_altitude", &LLA::getAltitude)
+
+        .def(
+            "calculate_distance_to",
+            &LLA::calculateDistanceTo,
+            arg("lla"),
+            arg("ellipsoid_equatorial_radius"),
+            arg("ellipsoid_flattening")
+        )
+
         .def("to_vector", &LLA::toVector)
         .def("to_cartesian", &LLA::toCartesian, arg("ellipsoid_equatorial_radius"), arg("ellipsoid_flattening"))
         .def("to_string", &LLA::toString)
@@ -35,6 +44,14 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             "cartesian",
             &LLA::Cartesian,
             arg("cartesian_coordinates"),
+            arg("ellipsoid_equatorial_radius"),
+            arg("ellipsoid_flattening")
+        )
+        .def_static(
+            "distance_between",
+            &LLA::DistanceBetween,
+            arg("lla_1"),
+            arg("lla_2"),
             arg("ellipsoid_equatorial_radius"),
             arg("ellipsoid_flattening")
         )
