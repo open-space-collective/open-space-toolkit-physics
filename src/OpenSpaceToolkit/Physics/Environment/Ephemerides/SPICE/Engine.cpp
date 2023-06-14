@@ -1,6 +1,5 @@
 /// Apache License 2.0
 
-#include <filesystem>
 #include <regex>
 
 #include <OpenSpaceToolkit/Core/Containers/Array.hpp>
@@ -232,40 +231,14 @@ Engine::Mode Engine::DefaultMode()
 Array<Kernel> Engine::DefaultKernels(const Directory& aLocalRepository)
 {
     // Use regex to pull Earth body shape, orientation and leap second kernels, as the file name is often updated.
-    using iterator = std::filesystem::directory_iterator;
-
-    auto findKernel = [&aLocalRepository](const String aRegexString) -> Kernel
-    {
-        std::regex aRegex(aRegexString);
-        Array<Path> kernelPaths;
-
-        std::filesystem::path directory = std::string(aLocalRepository.getPath().toString());
-
-        const iterator end;
-        for (iterator iter {directory}; iter != end; ++iter)
-        {
-            const String filename = iter->path().filename().string();
-            if (std::filesystem::is_regular_file(*iter) && std::regex_match(filename, aRegex))
-            {
-                kernelPaths.add(Path::Parse(iter->path().string()));
-            }
-        }
-
-        if (kernelPaths.isEmpty())
-        {
-            return Manager::Get().fetchMatchingKernels(aRegex).accessFirst();
-        }
-
-        return Kernel::File(File::Path(kernelPaths.accessFirst()));
-    };
-
+   
     static const Array<Kernel> defaultKernels = {
 
-        findKernel("naif[0-9]*.tls"),  // Leap seconds
+        Manager::Get().findKernel("naif[0-9]*.tls"),  // Leap seconds
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("de430.bsp"))),    // Ephemeris
-        findKernel("pck[0-9]*\\.tpc"),  // System body shape and orientation constants
+        Manager::Get().findKernel("pck[0-9]*\\.tpc"),  // System body shape and orientation constants
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("earth_assoc_itrf93.tf"))),
-        findKernel("earth\\_200101\\_[0-9]*\\_predict\\.bpc"),
+        Manager::Get().findKernel("earth\\_200101\\_[0-9]*\\_predict\\.bpc"),
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("moon_080317.tf"))),
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("moon_assoc_me.tf"))),
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("moon_pa_de421_1900-2050.bpc")))
@@ -382,15 +355,15 @@ void Engine::setup()
 
     if (mode_ == Engine::Mode::Automatic)
     {
-        Directory kernelsDirectory = Manager::Get().getLocalRepository();
-        if (!kernelsDirectory.exists())
+        Directory kernelDirectory = Manager::Get().getLocalRepository();
+        if (!kernelDirectory.exists())
         {
-            kernelsDirectory.create();
+            kernelDirectory.create();
         }
 
         // Load default kernels
 
-        for (const auto& kernel : Engine::DefaultKernels(kernelsDirectory))
+        for (const auto& kernel : Engine::DefaultKernels(kernelDirectory))
         {
             this->loadKernel_(kernel);
         }
