@@ -126,6 +126,51 @@ Shared<const AtmosphericModel> Celestial::accessAtmosphericModel() const
     return atmosphericModelSPtr_;
 }
 
+bool Celestial::gravitationalModelIsDefined() const
+{
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Celestial");
+    }
+
+    if (gravitationalModelSPtr_ == nullptr)
+    {
+        return false;
+    }
+
+    return gravitationalModelSPtr_->isDefined();
+}
+
+bool Celestial::magneticModelIsDefined() const
+{
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Celestial");
+    }
+
+    if (magneticModelSPtr_ == nullptr)
+    {
+        return false;
+    }
+
+    return magneticModelSPtr_->isDefined();
+}
+
+bool Celestial::atmosphericModelIsDefined() const
+{
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Celestial");
+    }
+
+    if (atmosphericModelSPtr_ == nullptr)
+    {
+        return false;
+    }
+
+    return atmosphericModelSPtr_->isDefined();
+}
+
 Celestial::Type Celestial::getType() const
 {
     if (!this->isDefined())
