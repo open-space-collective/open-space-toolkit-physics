@@ -1,7 +1,6 @@
 # Apache License 2.0
 
-from ostk.physics.environment.objects.celestial_bodies.earth.models import Spherical
-
+from ostk.physics.environment.objects.celestial_bodies import Earth
 
 class TestCelestial:
 
