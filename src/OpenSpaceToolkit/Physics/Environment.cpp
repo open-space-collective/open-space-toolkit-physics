@@ -16,25 +16,25 @@ namespace physics
 
 Environment::Environment(const Instant& anInstant, const Array<Shared<Object>>& anObjectArray)
     : instant_(anInstant),
-      objects_(Array<Shared<Object>>::Empty())
+      objects_(Array<Shared<const Object>>::Empty())
 {
     objects_.reserve(anObjectArray.getSize());
 
     for (const auto& objectSPtr : anObjectArray)
     {
-        objects_.add(Shared<Object>(objectSPtr->clone()));
+        objects_.add(Shared<const Object>(objectSPtr->clone()));
     }
 }
 
 Environment::Environment(const Environment& anEnvironment)
     : instant_(anEnvironment.instant_),
-      objects_(Array<Shared<Object>>::Empty())
+      objects_(Array<Shared<const Object>>::Empty())
 {
     objects_.reserve(anEnvironment.objects_.getSize());
 
     for (const auto& objectSPtr : anEnvironment.objects_)
     {
-        objects_.add(Shared<Object>(objectSPtr->clone()));
+        objects_.add(Shared<const Object>(objectSPtr->clone()));
     }
 }
 
