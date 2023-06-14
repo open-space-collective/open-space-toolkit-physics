@@ -231,11 +231,11 @@ Engine::Mode Engine::DefaultMode()
 Array<Kernel> Engine::DefaultKernels(const Directory& aLocalRepository)
 {
     // Use regex to pull Earth body shape, orientation and leap second kernels, as the file name is often updated.
-   
+
     static const Array<Kernel> defaultKernels = {
 
-        Manager::Get().findKernel("naif[0-9]*.tls"),  // Leap seconds
-        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("de430.bsp"))),    // Ephemeris
+        Manager::Get().findKernel("naif[0-9]*.tls"),                                      // Leap seconds
+        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("de430.bsp"))),  // Ephemeris
         Manager::Get().findKernel("pck[0-9]*\\.tpc"),  // System body shape and orientation constants
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("earth_assoc_itrf93.tf"))),
         Manager::Get().findKernel("earth\\_200101\\_[0-9]*\\_predict\\.bpc"),

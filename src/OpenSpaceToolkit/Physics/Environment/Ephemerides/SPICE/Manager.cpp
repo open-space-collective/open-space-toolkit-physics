@@ -1,9 +1,9 @@
 /// Apache License 2.0
 
 #include <cstdlib>
+#include <filesystem>
 #include <fstream>
 #include <numeric>
-#include <filesystem>
 
 #include <OpenSpaceToolkit/Core/Containers/Array.hpp>
 #include <OpenSpaceToolkit/Core/Containers/Dictionary.hpp>
@@ -170,7 +170,7 @@ Kernel Manager::findKernel(const String& aRegexString) const
     using iterator = std::filesystem::directory_iterator;
 
     const std::regex aRegex {aRegexString};
-    
+
     Array<Path> kernelPaths;
 
     // Try to find kernel in local repository
