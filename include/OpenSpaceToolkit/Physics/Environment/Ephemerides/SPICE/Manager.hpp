@@ -103,6 +103,13 @@ class Manager
 
     Array<Kernel> fetchMatchingKernels(const std::regex& aRegex) const;
 
+    /// @brief              Find kernels matching regular expression. Search locally first, then remotely.
+    ///                     Always return the first found.
+    ///
+    /// @param              [in] aRegex A regular expression
+    /// @return             An array of kernels
+    Kernel findKernel(const String& aRegexString) const;
+
     /// @brief              Set local repository
     ///
     /// @param              [in] aDirectory A repository directory

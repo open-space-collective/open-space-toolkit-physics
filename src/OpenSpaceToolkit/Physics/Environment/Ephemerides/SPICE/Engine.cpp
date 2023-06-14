@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <regex>
+
 #include <OpenSpaceToolkit/Core/Containers/Array.hpp>
 #include <OpenSpaceToolkit/Core/Containers/Map.hpp>
 #include <OpenSpaceToolkit/Core/Error.hpp>
@@ -228,16 +230,15 @@ Engine::Mode Engine::DefaultMode()
 
 Array<Kernel> Engine::DefaultKernels(const Directory& aLocalRepository)
 {
+    // Use regex to pull Earth body shape, orientation and leap second kernels, as the file name is often updated.
+
     static const Array<Kernel> defaultKernels = {
 
-        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("naif0012.tls"))),  // Leap seconds
-        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("de430.bsp"))),     // Ephemeris
-        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("pck00011.tpc"))
-        ),  // System body shape and orientation constants
-
+        Manager::Get().findKernel("naif[0-9]*.tls"),                                      // Leap seconds
+        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("de430.bsp"))),  // Ephemeris
+        Manager::Get().findKernel("pck[0-9]*\\.tpc"),  // System body shape and orientation constants
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("earth_assoc_itrf93.tf"))),
-        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("earth_200101_990825_predict.bpc"))),
-
+        Manager::Get().findKernel("earth\\_200101\\_[0-9]*\\_predict\\.bpc"),
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("moon_080317.tf"))),
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("moon_assoc_me.tf"))),
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("moon_pa_de421_1900-2050.bpc")))
@@ -354,9 +355,15 @@ void Engine::setup()
 
     if (mode_ == Engine::Mode::Automatic)
     {
+        Directory kernelDirectory = Manager::Get().getLocalRepository();
+        if (!kernelDirectory.exists())
+        {
+            kernelDirectory.create();
+        }
+
         // Load default kernels
 
-        for (const auto& kernel : Engine::DefaultKernels(Manager::Get().getLocalRepository()))
+        for (const auto& kernel : Engine::DefaultKernels(kernelDirectory))
         {
             this->loadKernel_(kernel);
         }

@@ -1,6 +1,7 @@
 /// Apache License 2.0
 
 #include <cstdlib>
+#include <filesystem>
 #include <fstream>
 #include <numeric>
 
@@ -162,6 +163,43 @@ Array<Kernel> Manager::fetchMatchingKernels(const std::regex& aRegex) const
     }
 
     return fetch();
+}
+
+Kernel Manager::findKernel(const String& aRegexString) const
+{
+    using iterator = std::filesystem::directory_iterator;
+
+    const std::regex aRegex {aRegexString};
+
+    Array<Path> kernelPaths;
+
+    // Try to find kernel in local repository
+    std::filesystem::path directory = std::string(localRepository_.getPath().toString());
+
+    const iterator end;
+    for (iterator iter {directory}; iter != end; ++iter)
+    {
+        const String filename = iter->path().filename().string();
+        if (std::filesystem::is_regular_file(*iter) && std::regex_match(filename, aRegex))
+        {
+            kernelPaths.add(Path::Parse(iter->path().string()));
+        }
+    }
+
+    // If none found, fall back to fetching from remote
+    if (kernelPaths.isEmpty())
+    {
+        Array<Kernel> fetchedKernels = const_cast<Manager*>(this)->fetchMatchingKernels(aRegex);
+
+        if (fetchedKernels.isEmpty())
+        {
+            throw ostk::core::error::RuntimeError("Failed to find or fetch SPICE Kernel matching [{}].", aRegexString);
+        }
+
+        return fetchedKernels.accessFirst();
+    }
+
+    return Kernel::File(File::Path(kernelPaths.accessFirst()));
 }
 
 void Manager::setLocalRepository(const Directory& aDirectory)
