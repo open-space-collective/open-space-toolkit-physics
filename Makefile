@@ -209,7 +209,7 @@ build-packages-cpp-standalone: ## Build C++ packages (standalone)
 .PHONY: build-packages-cpp-standalone
 
 build-packages-python: build-development-image ## Build Python packages
-	
+
 	@ $(MAKE) build-packages-python-standalone
 
 .PHONY: build-packages-python
@@ -399,7 +399,7 @@ test-unit: ## Run unit tests
 .PHONY: test-unit
 
 test-unit-cpp: build-development-image ## Run C++ unit tests
-	
+
 	@ $(MAKE) test-unit-cpp-standalone
 
 .PHONY: test-unit-cpp
@@ -440,7 +440,7 @@ test-unit-python-standalone: ## Run Python unit tests (standalone)
 		--entrypoint="" \
 		$(docker_development_image_repository):$(docker_image_version) \
 		/bin/bash -c "cmake -DBUILD_PYTHON_BINDINGS=ON -DBUILD_UNIT_TESTS=OFF .. \
-		&& $(MAKE) -j 4 && pip install bindings/python/dist/*311*.whl \
+		&& $(MAKE) -j 4 && python3.11 -m pip install --root-user-action=ignore bindings/python/dist/*311*.whl \
 		&& cd /usr/local/lib/python3.11/site-packages/ostk/$(project_name)/ \
 		&& python3.11 -m pytest -sv ."
 
