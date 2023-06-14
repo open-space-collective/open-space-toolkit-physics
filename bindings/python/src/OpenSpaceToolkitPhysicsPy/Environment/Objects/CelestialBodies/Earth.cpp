@@ -12,8 +12,10 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Earth(
 
     using ostk::physics::units::Length;
     using ostk::physics::units::Derived;
+    using ostk::physics::coord::Frame;
     using ostk::physics::time::Instant;
     using ostk::physics::env::Ephemeris;
+    using ostk::physics::env::ephem::Analytical;
     using ostk::physics::env::obj::Celestial;
     using ostk::physics::env::obj::celest::Earth;
     using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
@@ -51,10 +53,11 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Earth(
                     const Shared<EarthGravitationalModel>&,
                     const Shared<EarthMagneticModel>&,
                     const Shared<EarthAtmosphericModel>&>(),
+                arg("instant"),
                 arg("ephemeris"),
-                arg("gravitational_model"),
-                arg("magnetic_model"),
-                arg("atmospheric_model")
+                arg("gravitational_model") = nullptr,
+                arg("magnetic_model") = nullptr,
+                arg("atmospheric_model") = nullptr
             )
 
             .def("__str__", &(shiftToString<Earth>))

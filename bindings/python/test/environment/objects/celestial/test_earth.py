@@ -1,5 +1,7 @@
 # Apache License 2.0
 
+from ostk.core.filesystem import Directory
+
 from ostk.physics.environment.objects.celestial_bodies import Earth
 
 from ostk.physics.environment.objects.celestial_bodies.earth.models import EGM2008
@@ -8,6 +10,10 @@ from ostk.physics.environment.objects.celestial_bodies.earth.models import WGS84
 from ostk.physics.environment.objects.celestial_bodies.earth.models import EGM84
 from ostk.physics.environment.objects.celestial_bodies.earth.models import WGS84
 from ostk.physics.environment.objects.celestial_bodies.earth.models import Spherical
+
+from ostk.physics.environment.gravitational import Earth as EarthGravitationalModel
+from ostk.physics.environment.atmospheric import Earth as EarthAtmosphericModel
+from ostk.physics.environment.magnetic import Earth as EarthMagneticModel
 
 
 class TestEarth:
@@ -139,3 +145,17 @@ class TestEarth:
 
         assert earth is not None
         assert isinstance(earth, Earth)
+
+    @pytest.mark.parametrize(
+        "grav_model_parameters,atmos_model_parameters,mag_model_parameters",
+        (
+            ((EarthGravitationalModel.EarthType.EGM2008, Directory.undefined(), 100, 100), EarthAtmosphericModel.EarthAtmosphericType.Exponential, EarthMagneticModel.EarthMagneticType.Dipole),
+            ((EarthGravitationalModel.EarthType.EGM96, Directory.undefined(), 100, 100), EarthAtmosphericModel.EarthAtmosphericType.Exponential, EarthMagneticModel.EarthMagneticType.Dipole),
+            ((EarthGravitationalModel.EarthType.EGM84, Directory.undefined(), 100, 100), EarthAtmosphericModel.EarthAtmosphericType.Exponential, EarthMagneticModel.EarthMagneticType.Dipole),
+            ((EarthGravitationalModel.EarthType.WGS84_EGM96, Directory.undefined(), 100, 100), EarthAtmosphericModel.EarthAtmosphericType.Exponential, EarthMagneticModel.EarthMagneticType.Dipole),
+            ((EarthGravitationalModel.EarthType.WGS84, Directory.undefined(), 100, 100), EarthAtmosphericModel.EarthAtmosphericType.Exponential, EarthMagneticModel.EarthMagneticType.Dipole),
+            ((EarthGravitationalModel.EarthType.Spherical, Directory.undefined()), EarthAtmosphericModel.EarthAtmosphericType.Exponential, EarthMagneticModel.EarthMagneticType.Dipole),
+        )
+    )
+    def test_custom_earth(self, grav_model_parameters, atmos_model_parameters, mag_model_parameters):
+        earth = Earth()
