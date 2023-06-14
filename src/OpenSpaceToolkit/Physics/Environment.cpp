@@ -122,7 +122,7 @@ bool Environment::intersects(
     {
         if (!anObjectToIgnoreArray.contains(objectSPtr))
         {
-            if (objectSPtr->getGeometryIn(aGeometry.accessFrame()).intersects(aGeometry))
+            if (objectSPtr->getGeometryIn(aGeometry.accessFrame(), instant_).intersects(aGeometry))
             {
                 return true;
             }
@@ -233,8 +233,6 @@ void Environment::setInstant(const Instant& anInstant)
     }
 
     instant_ = anInstant;
-
-    this->updateObjects();
 }
 
 Environment Environment::Undefined()
@@ -256,14 +254,6 @@ Environment Environment::Default()
         std::make_shared<Moon>(Moon::Default())};
 
     return {instant, objects};
-}
-
-void Environment::updateObjects()
-{
-    for (auto& objectSPtr : objects_)
-    {
-        objectSPtr->setInstant(instant_);
-    }
 }
 
 }  // namespace physics

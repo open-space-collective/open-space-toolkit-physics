@@ -23,34 +23,59 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Objects_Celestial(pybind11::mo
     class_<Celestial, Shared<Celestial>, Object> celestial_class(aModule, "Celestial");
 
     celestial_class
-        .def(init<
-             const String&,
-             const Celestial::Type&,
-             const Derived&,
-             const Length&,
-             const Real&,
-             const Real&,
-             const Real&,
-             const Shared<Ephemeris>&,
-             const Shared<GravitationalModel>&,
-             const Shared<MagneticModel>&,
-             const Shared<AtmosphericModel>&,
-             const Instant&>())
+        .def(
+            init<
+                const String&,
+                const Celestial::Type&,
+                const Derived&,
+                const Length&,
+                const Real&,
+                const Real&,
+                const Real&,
+                const Shared<Ephemeris>&,
+                const Shared<GravitationalModel>&,
+                const Shared<MagneticModel>&,
+                const Shared<AtmosphericModel>&>(),
+            arg("name"),
+            arg("type"),
+            arg("gravitational_parameter"),
+            arg("equatorial_radius"),
+            arg("flattening"),
+            arg("J2_parameter_value"),
+            arg("J4_parameter_value"),
+            arg("ephemeris"),
+            arg("gravitational_model"),
+            arg("magnetic_model"),
+            arg("atmospheric_model")
+        )
 
-        .def(init<
-             const String&,
-             const Celestial::Type&,
-             const Derived&,
-             const Length&,
-             const Real&,
-             const Real&,
-             const Real&,
-             const Shared<Ephemeris>&,
-             const Shared<GravitationalModel>&,
-             const Shared<MagneticModel>&,
-             const Shared<AtmosphericModel>&,
-             const Instant&,
-             const Object::Geometry&>())
+        .def(
+            init<
+                const String&,
+                const Celestial::Type&,
+                const Derived&,
+                const Length&,
+                const Real&,
+                const Real&,
+                const Real&,
+                const Shared<Ephemeris>&,
+                const Shared<GravitationalModel>&,
+                const Shared<MagneticModel>&,
+                const Shared<AtmosphericModel>&,
+                const Object::Geometry&>(),
+            arg("name"),
+            arg("type"),
+            arg("gravitational_parameter"),
+            arg("equatorial_radius"),
+            arg("flattening"),
+            arg("J2_parameter_value"),
+            arg("J4_parameter_value"),
+            arg("ephemeris"),
+            arg("gravitational_model"),
+            arg("magnetic_model"),
+            arg("atmospheric_model"),
+            arg("geometry")
+        )
 
         // Need to create corresponding operators in C++ source code for proper use of binding code below
         // .def(self == self)
@@ -75,17 +100,17 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Objects_Celestial(pybind11::mo
         .def("get_j2", &Celestial::getJ2)
         .def("get_j4", &Celestial::getJ4)
         // .def("access_frame", &Celestial::accessFrame)
-        .def("get_position_in", &Celestial::getPositionIn)
-        .def("get_transform_to", &Celestial::getTransformTo)
-        .def("get_axes_in", &Celestial::getAxesIn)
-        .def("get_gravitational_field_at", &Celestial::getGravitationalFieldAt)
-        .def("get_magnetic_field_at", &Celestial::getMagneticFieldAt)
-        .def("get_atmospheric_density_at", &Celestial::getAtmosphericDensityAt)
-        .def("get_frame_at", &Celestial::getFrameAt)
+        .def("get_position_in", &Celestial::getPositionIn, arg("frame"), arg("instant"))
+        .def("get_transform_to", &Celestial::getTransformTo, arg("frame"), arg("instant"))
+        .def("get_axes_in", &Celestial::getAxesIn, arg("frame"), arg("instant"))
+        .def("get_gravitational_field_at", &Celestial::getGravitationalFieldAt, arg("position"), arg("instant"))
+        .def("get_magnetic_field_at", &Celestial::getMagneticFieldAt, arg("position"), arg("instant"))
+        .def("get_atmospheric_density_at", &Celestial::getAtmosphericDensityAt, arg("position"), arg("instant"))
+        .def("get_frame_at", &Celestial::getFrameAt, arg("lla"), arg("frame_type"))
 
         .def_static("undefined", &Celestial::Undefined)
 
-        .def_static("string_from_frame_type", &Celestial::StringFromFrameType)
+        .def_static("string_from_frame_type", &Celestial::StringFromFrameType, arg("frame_type"))
 
         ;
 

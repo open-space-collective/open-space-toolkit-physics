@@ -54,8 +54,7 @@ class Moon : public Celestial
 
     Moon(
         const Shared<Ephemeris>& anEphemeris,
-        const MoonGravitationalModel::Type& aGravitationalModelType,
-        const Instant& anInstant
+        const MoonGravitationalModel::Type& aGravitationalModelType
     );
 
     /// @brief              Destructor

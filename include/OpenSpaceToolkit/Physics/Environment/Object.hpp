@@ -40,9 +40,9 @@ class Object
    public:
     typedef object::Geometry Geometry;
 
-    Object(const String& aName, const Instant& anInstant);
+    Object(const String& aName);
 
-    Object(const String& aName, const Instant& anInstant, const Object::Geometry& aGeometry);
+    Object(const String& aName, const Object::Geometry& aGeometry);
 
     Object(const Object& anObject);
 
@@ -58,33 +58,26 @@ class Object
 
     const String& accessName() const;
 
-    const Instant& accessInstant() const;
-
     virtual Shared<const Frame> accessFrame() const = 0;
 
     const Object::Geometry& accessGeometry() const;
 
     String getName() const;
 
-    Instant getInstant() const;
-
     Object::Geometry getGeometry() const;
 
-    virtual Position getPositionIn(const Shared<const Frame>& aFrameSPtr) const = 0;
+    virtual Position getPositionIn(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const = 0;
 
-    virtual Velocity getVelocityIn(const Shared<const Frame>& aFrameSPtr) const = 0;
+    virtual Velocity getVelocityIn(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const = 0;
 
-    virtual Transform getTransformTo(const Shared<const Frame>& aFrameSPtr) const = 0;
+    virtual Transform getTransformTo(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const = 0;
 
-    virtual Axes getAxesIn(const Shared<const Frame>& aFrameSPtr) const = 0;
+    virtual Axes getAxesIn(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const = 0;
 
-    Object::Geometry getGeometryIn(const Shared<const Frame>& aFrameSPtr) const;
-
-    void setInstant(const Instant& anInstant);
+    Object::Geometry getGeometryIn(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const;
 
    private:
     String name_;
-    Instant instant_;
 
     Object::Geometry geometry_;
 };

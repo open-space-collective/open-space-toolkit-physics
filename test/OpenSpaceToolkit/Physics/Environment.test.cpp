@@ -289,41 +289,41 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Test_1)
 
         // Earth
 
-        const Transform earthFrameTransform = earthSPtr->getTransformTo(Frame::GCRF());
+        const Transform earthFrameTransform = earthSPtr->getTransformTo(Frame::GCRF(), instant);
 
         EXPECT_TRUE(earthFrameTransform.isDefined());
 
-        const Position earthPosition = earthSPtr->getPositionIn(Frame::GCRF());
-        const Velocity earthVelocity = earthSPtr->getVelocityIn(Frame::GCRF());
+        const Position earthPosition = earthSPtr->getPositionIn(Frame::GCRF(), instant);
+        const Velocity earthVelocity = earthSPtr->getVelocityIn(Frame::GCRF(), instant);
 
         EXPECT_TRUE(earthPosition.isDefined());
         EXPECT_TRUE(earthVelocity.isDefined());
 
-        const Quaternion earthOrientation = earthSPtr->getTransformTo(Frame::GCRF()).getOrientation();
+        const Quaternion earthOrientation = earthSPtr->getTransformTo(Frame::GCRF(), instant).getOrientation();
 
         EXPECT_TRUE(earthOrientation.isDefined());
 
-        const Axes earthAxes = earthSPtr->getAxesIn(Frame::GCRF());
+        const Axes earthAxes = earthSPtr->getAxesIn(Frame::GCRF(), instant);
 
         EXPECT_TRUE(earthAxes.isDefined());
 
         // Moon
 
-        const Transform moonFrameTransform = moonSPtr->getTransformTo(Frame::GCRF());
+        const Transform moonFrameTransform = moonSPtr->getTransformTo(Frame::GCRF(), instant);
 
         EXPECT_TRUE(moonFrameTransform.isDefined());
 
-        const Position moonPosition = moonSPtr->getPositionIn(Frame::GCRF());
-        const Velocity moonVelocity = moonSPtr->getVelocityIn(Frame::GCRF());
+        const Position moonPosition = moonSPtr->getPositionIn(Frame::GCRF(), instant);
+        const Velocity moonVelocity = moonSPtr->getVelocityIn(Frame::GCRF(), instant);
 
         EXPECT_TRUE(moonPosition.isDefined());
         EXPECT_TRUE(moonVelocity.isDefined());
 
-        const Quaternion moonOrientation = moonSPtr->getTransformTo(Frame::GCRF()).getOrientation();
+        const Quaternion moonOrientation = moonSPtr->getTransformTo(Frame::GCRF(), instant).getOrientation();
 
         EXPECT_TRUE(moonOrientation.isDefined());
 
-        const Axes moonAxes = moonSPtr->getAxesIn(Frame::GCRF());
+        const Axes moonAxes = moonSPtr->getAxesIn(Frame::GCRF(), instant);
 
         EXPECT_TRUE(moonAxes.isDefined());
     }
@@ -342,7 +342,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Test_2)
     const Shared<const Earth> earthSPtr =
         std::dynamic_pointer_cast<const Earth>(environment.accessObjectWithName("Earth"));
 
-    const Object::Geometry earthGeometry = earthSPtr->getGeometryIn(Frame::ITRF());
+    const Object::Geometry earthGeometry = earthSPtr->getGeometryIn(Frame::ITRF(), startInstant);
 
     const Ellipsoid& ellipsoid = earthGeometry.accessComposite().as<Ellipsoid>();
 

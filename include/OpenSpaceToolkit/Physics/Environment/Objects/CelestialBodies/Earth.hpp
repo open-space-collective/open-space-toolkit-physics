@@ -134,8 +134,7 @@ class Earth : public Celestial
         const Shared<Ephemeris>& anEphemeris,
         const EarthGravitationalModel::Type& aGravitationalModelType,
         const EarthMagneticModel::Type& aMagneticModelType,
-        const EarthAtmosphericModel::Type& aAtmosphericModelType,
-        const Instant& anInstant
+        const EarthAtmosphericModel::Type& aAtmosphericModelType
     );
 
     Earth(
@@ -149,8 +148,7 @@ class Earth : public Celestial
         const Integer& aGravityModelDegree,
         const Integer& aGravityModelOrder,
         const EarthMagneticModel::Type& aMagneticModelType,
-        const EarthAtmosphericModel::Type& aAtmosphericModelType,
-        const Instant& anInstant
+        const EarthAtmosphericModel::Type& aAtmosphericModelType
     );
 
     virtual ~Earth() override;

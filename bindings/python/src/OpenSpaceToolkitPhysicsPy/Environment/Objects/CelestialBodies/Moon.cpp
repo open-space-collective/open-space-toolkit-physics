@@ -18,10 +18,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Moon(p
         class_<Moon, Shared<Moon>, Celestial>(aModule, "Moon")
 
             .def(
-                init<const Shared<Ephemeris>&, const MoonGravitationalModel::Type&, const Instant&>(),
+                init<const Shared<Ephemeris>&, const MoonGravitationalModel::Type&>(),
                 arg("ephemeris"),
-                arg("gravitational_model_type"),
-                arg("instant")
+                arg("gravitational_model_type")
             )
 
             .def_readonly_static("gravitational_parameter", &Moon::GravitationalParameter)

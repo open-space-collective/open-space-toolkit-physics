@@ -18,10 +18,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Sun(py
         class_<Sun, Shared<Sun>, Celestial>(aModule, "Sun")
 
             .def(
-                init<const Shared<Ephemeris>&, const SunGravitationalModel::Type&, const Instant&>(),
+                init<const Shared<Ephemeris>&, const SunGravitationalModel::Type&>(),
                 arg("ephemeris"),
-                arg("gravitational_model_type"),
-                arg("instant")
+                arg("gravitational_model_type")
             )
 
             .def_readonly_static("gravitational_parameter", &Sun::GravitationalParameter)
