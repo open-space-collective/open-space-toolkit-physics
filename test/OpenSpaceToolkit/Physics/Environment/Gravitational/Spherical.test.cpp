@@ -29,9 +29,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Spherical, Constructor)
     }
 
     {
-        const Model::Parameters parameters = {
-            Derived::Undefined(), Length::Undefined(), Real::Undefined(), Real::Undefined(), Real::Undefined()};
-        EXPECT_ANY_THROW(Spherical spherical(parameters));
+        EXPECT_ANY_THROW(Spherical spherical(Model::Parameters::Undefined()));
     }
 }
 

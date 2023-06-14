@@ -45,19 +45,9 @@ class Model
             const Real& flattening,
             const Real& J2,
             const Real& J4
-        )
-            : gravitationalParameter_(gravitationalParameter),
-              equatorialRadius_(equatorialRadius),
-              flattening_(flattening),
-              J2_(J2),
-              J4_(J4),
-              C20_(J2.isDefined() ? J2 * std::sqrt(5.0) : Real::Undefined()),
-              C40_(J4.isDefined() ? J4 * std::sqrt(9.0) : Real::Undefined()) {};
+        );
 
-        static Parameters Undefined()
-        {
-            return {Derived::Undefined(), Length::Undefined(), Real::Undefined(), Real::Undefined(), Real::Undefined()};
-        }
+        static Parameters Undefined();
 
         Derived gravitationalParameter_;
         Length equatorialRadius_;
