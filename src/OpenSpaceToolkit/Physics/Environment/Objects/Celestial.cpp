@@ -266,11 +266,9 @@ Vector Celestial::getGravitationalFieldAt(const Position& aPosition, const Insta
         throw ostk::core::error::runtime::Undefined("Gravitational model");
     }
 
-    const Vector3d positionInBodyFrame =
-        aPosition.inFrame(ephemeris_->accessFrame(), anInstant).getCoordinates();
+    const Vector3d positionInBodyFrame = aPosition.inFrame(ephemeris_->accessFrame(), anInstant).getCoordinates();
 
-    const Vector3d gravitationalFieldValue =
-        gravitationalModelSPtr_->getFieldValueAt(positionInBodyFrame, anInstant);
+    const Vector3d gravitationalFieldValue = gravitationalModelSPtr_->getFieldValueAt(positionInBodyFrame, anInstant);
 
     const static Unit gravitationalFieldUnit =
         Unit::Derived(Derived::Unit::Acceleration(Length::Unit::Meter, Time::Unit::Second));
@@ -298,8 +296,7 @@ Vector Celestial::getMagneticFieldAt(const Position& aPosition, const Instant& a
         throw ostk::core::error::runtime::Undefined("Magnetic model");
     }
 
-    const Vector3d positionInBodyFrame =
-        aPosition.inFrame(ephemeris_->accessFrame(), anInstant).getCoordinates();
+    const Vector3d positionInBodyFrame = aPosition.inFrame(ephemeris_->accessFrame(), anInstant).getCoordinates();
 
     const Vector3d magneticFieldValue = magneticModelSPtr_->getFieldValueAt(positionInBodyFrame, anInstant);
 

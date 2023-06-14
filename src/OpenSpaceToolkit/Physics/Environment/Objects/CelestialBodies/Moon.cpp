@@ -28,10 +28,7 @@ Derived Moon::GravitationalParameter = {
 Length Moon::EquatorialRadius = Length::Meters(1738.14e3);
 Real Moon::Flattening = 0.00125;
 
-Moon::Moon(
-    const Shared<Ephemeris>& anEphemeris,
-    const MoonGravitationalModel::Type& aGravitationalModelType
-)
+Moon::Moon(const Shared<Ephemeris>& anEphemeris, const MoonGravitationalModel::Type& aGravitationalModelType)
     : Celestial(
           "Moon",
           Celestial::Type::Moon,

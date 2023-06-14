@@ -28,10 +28,7 @@ Derived Sun::GravitationalParameter = {
 Length Sun::EquatorialRadius = Length::Meters(6.955e8);
 Real Sun::Flattening = 0.0;
 
-Sun::Sun(
-    const Shared<Ephemeris>& anEphemeris,
-    const SunGravitationalModel::Type& aGravitationalModelType
-)
+Sun::Sun(const Shared<Ephemeris>& anEphemeris, const SunGravitationalModel::Type& aGravitationalModelType)
     : Celestial(
           "Sun",
           Celestial::Type::Sun,
