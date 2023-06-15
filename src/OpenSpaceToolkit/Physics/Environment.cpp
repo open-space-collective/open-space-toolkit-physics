@@ -16,25 +16,25 @@ namespace physics
 
 Environment::Environment(const Instant& anInstant, const Array<Shared<Object>>& anObjectArray)
     : instant_(anInstant),
-      objects_(Array<Shared<Object>>::Empty())
+      objects_(Array<Shared<const Object>>::Empty())
 {
     objects_.reserve(anObjectArray.getSize());
 
     for (const auto& objectSPtr : anObjectArray)
     {
-        objects_.add(Shared<Object>(objectSPtr->clone()));
+        objects_.add(Shared<const Object>(objectSPtr->clone()));
     }
 }
 
 Environment::Environment(const Environment& anEnvironment)
     : instant_(anEnvironment.instant_),
-      objects_(Array<Shared<Object>>::Empty())
+      objects_(Array<Shared<const Object>>::Empty())
 {
     objects_.reserve(anEnvironment.objects_.getSize());
 
     for (const auto& objectSPtr : anEnvironment.objects_)
     {
-        objects_.add(Shared<Object>(objectSPtr->clone()));
+        objects_.add(Shared<const Object>(objectSPtr->clone()));
     }
 }
 
@@ -122,7 +122,7 @@ bool Environment::intersects(
     {
         if (!anObjectToIgnoreArray.contains(objectSPtr))
         {
-            if (objectSPtr->getGeometryIn(aGeometry.accessFrame()).intersects(aGeometry))
+            if (objectSPtr->getGeometryIn(aGeometry.accessFrame(), instant_).intersects(aGeometry))
             {
                 return true;
             }
@@ -233,8 +233,6 @@ void Environment::setInstant(const Instant& anInstant)
     }
 
     instant_ = anInstant;
-
-    this->updateObjects();
 }
 
 Environment Environment::Undefined()
@@ -256,14 +254,6 @@ Environment Environment::Default()
         std::make_shared<Moon>(Moon::Default())};
 
     return {instant, objects};
-}
-
-void Environment::updateObjects()
-{
-    for (auto& objectSPtr : objects_)
-    {
-        objectSPtr->setInstant(instant_);
-    }
 }
 
 }  // namespace physics

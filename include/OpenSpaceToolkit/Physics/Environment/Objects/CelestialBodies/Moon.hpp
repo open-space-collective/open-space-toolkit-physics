@@ -52,11 +52,7 @@ class Moon : public Celestial
     /// (Spherical model only)
     /// @param              [in] anInstant An instant
 
-    Moon(
-        const Shared<Ephemeris>& anEphemeris,
-        const MoonGravitationalModel::Type& aGravitationalModelType,
-        const Instant& anInstant
-    );
+    Moon(const Shared<Ephemeris>& anEphemeris, const MoonGravitationalModel::Type& aGravitationalModelType);
 
     /// @brief              Destructor
 

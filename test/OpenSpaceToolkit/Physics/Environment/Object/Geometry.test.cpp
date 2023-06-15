@@ -364,7 +364,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, IntersectionWith)
 
         const Geometry observerGeometry_ITRF = observerGeometry_NED.in(itrfFrameSPtr, instant);
 
-        const Geometry earthGeometry_ITRF = earthSPtr->getGeometryIn(itrfFrameSPtr);
+        const Geometry earthGeometry_ITRF = earthSPtr->getGeometryIn(itrfFrameSPtr, instant);
 
         const Geometry intersectionGeometry_ITRF = observerGeometry_ITRF.intersectionWith(earthGeometry_ITRF);
 

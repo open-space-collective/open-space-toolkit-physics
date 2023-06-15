@@ -64,6 +64,9 @@ using ostk::physics::environment::gravitational::Spherical;
 using ostk::physics::environment::magnetic::Dipole;
 using ostk::physics::environment::atmospheric::earth::Exponential;
 using EarthCelestialBody = ostk::physics::env::obj::celest::Earth;
+using earthGravitationalModel = ostk::physics::environment::gravitational::Earth;
+using earthMagneticModel = ostk::physics::environment::magnetic::Earth;
+using earthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
 
 // TEST (OpenSpaceToolkit_Physics_Environment_Objects_Celestial, Constructor)
 // {
@@ -80,16 +83,17 @@ using EarthCelestialBody = ostk::physics::env::obj::celest::Earth;
 
 TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, accessModel)
 {
+    const String name = "Some Planet";
+    const Celestial::Type type = Celestial::Type::Earth;
+    const Derived gravitationalParameter = {
+        1.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)};
+    const Length equatorialRadius = Length::Kilometers(1000.0);
+    const Real flattening = 0.0;
+    const Real j2 = 0.0;
+    const Real j4 = 0.0;
+
+    const Shared<Ephemeris> ephemeris = std::make_shared<Analytical>(Frame::ITRF());
     {
-        const String name = "Some Planet";
-        const Celestial::Type type = Celestial::Type::Earth;
-        const Derived gravitationalParameter = {
-            1.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)};
-        const Length equatorialRadius = Length::Kilometers(1000.0);
-        const Real flattening = 0.0;
-        const Real j2 = 0.0;
-        const Real j4 = 0.0;
-        const Instant instant = Instant::J2000();
 
         const Celestial celestial = {
             name,
@@ -102,8 +106,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, accessModel)
             nullptr,
             nullptr,
             nullptr,
-            nullptr,
-            instant};
+            nullptr};
 
         EXPECT_ANY_THROW(celestial.accessGravitationalModel());
         EXPECT_ANY_THROW(celestial.accessMagneticModel());
@@ -111,21 +114,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, accessModel)
     }
 
     {
-        const String name = "Some Planet";
-        const Celestial::Type type = Celestial::Type::Earth;
-        const Derived gravitationalParameter = {
-            1.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)};
-        const Length equatorialRadius = Length::Kilometers(1000.0);
-        const Real flattening = 0.0;
-        const Real j2 = 0.0;
-        const Real j4 = 0.0;
-
-        const Shared<Ephemeris> ephemeris = std::make_shared<Analytical>(Frame::ITRF());
-        const Shared<GravitationalModel> gravitationalModel = std::make_shared<Spherical>(gravitationalParameter);
-        const Shared<MagneticModel> magneticModel = std::make_shared<Dipole>(Vector3d {0.0, 0.0, 1.0});
-        const Shared<AtmosphericModel> atmosphericModel = std::make_shared<Exponential>();
-        const Instant instant = Instant::J2000();
-
         const Celestial celestial = {
             name,
             type,
@@ -137,8 +125,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, accessModel)
             ephemeris,
             nullptr,
             nullptr,
-            nullptr,
-            instant};
+            nullptr};
 
         EXPECT_EQ(celestial.accessGravitationalModel(), nullptr);
         EXPECT_EQ(celestial.accessMagneticModel(), nullptr);
@@ -146,20 +133,9 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, accessModel)
     }
 
     {
-        const String name = "Some Planet";
-        const Celestial::Type type = Celestial::Type::Earth;
-        const Derived gravitationalParameter = {
-            1.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)};
-        const Length equatorialRadius = Length::Kilometers(1000.0);
-        const Real flattening = 0.0;
-        const Real j2 = 0.0;
-        const Real j4 = 0.0;
-
-        const Shared<Ephemeris> ephemeris = std::make_shared<Analytical>(Frame::ITRF());
         const Shared<GravitationalModel> gravitationalModel = std::make_shared<Spherical>(gravitationalParameter);
         const Shared<MagneticModel> magneticModel = std::make_shared<Dipole>(Vector3d {0.0, 0.0, 1.0});
         const Shared<AtmosphericModel> atmosphericModel = std::make_shared<Exponential>();
-        const Instant instant = Instant::J2000();
 
         const Celestial celestial = {
             name,
@@ -172,8 +148,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, accessModel)
             ephemeris,
             gravitationalModel,
             magneticModel,
-            atmosphericModel,
-            instant};
+            atmosphericModel};
 
         EXPECT_NO_THROW(celestial.accessGravitationalModel());
         EXPECT_NO_THROW(celestial.accessMagneticModel());
@@ -183,48 +158,21 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, accessModel)
 
 TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, modelIsDefined)
 {
-    using ostk::core::types::Shared;
-    using ostk::core::types::Real;
-    using ostk::core::types::String;
+    const String name = "Some Planet";
+    const Celestial::Type type = Celestial::Type::Earth;
+    const Derived gravitationalParameter = {
+        1.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)};
+    const Length equatorialRadius = Length::Kilometers(1000.0);
+    const Real flattening = 0.0;
+    const Real j2 = 0.0;
+    const Real j4 = 0.0;
 
-    using ostk::math::obj::Vector3d;
-
-    using ostk::physics::Unit;
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Time;
-    using ostk::physics::units::Derived;
-    using ostk::physics::data::Vector;
-    using ostk::physics::time::Instant;
-    using ostk::physics::coord::Frame;
-    using ostk::physics::coord::Position;
-    using ostk::physics::env::obj::Celestial;
-    using ostk::physics::env::Ephemeris;
-    using ostk::physics::env::ephem::Analytical;
-    using GravitationalModel = ostk::physics::environment::gravitational::Model;
-    using MagneticModel = ostk::physics::environment::magnetic::Model;
-    using AtmosphericModel = ostk::physics::environment::atmospheric::Model;
-    using ostk::physics::environment::gravitational::Spherical;
-    using ostk::physics::environment::magnetic::Dipole;
-    using earthGravitationalModel = ostk::physics::environment::gravitational::Earth;
-    using earthMagneticModel = ostk::physics::environment::magnetic::Earth;
-    using earthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
-    using ostk::physics::environment::atmospheric::earth::Exponential;
+    const Shared<Ephemeris> ephemeris = std::make_shared<Analytical>(Frame::ITRF());
 
     {
-        const String name = "Some Planet";
-        const Celestial::Type type = Celestial::Type::Earth;
-        const Derived gravitationalParameter = {
-            1.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)};
-        const Length equatorialRadius = Length::Kilometers(1000.0);
-        const Real flattening = 0.0;
-        const Real j2 = 0.0;
-        const Real j4 = 0.0;
-
-        const Shared<Ephemeris> ephemeris = std::make_shared<Analytical>(Frame::ITRF());
         const Shared<GravitationalModel> gravitationalModel = std::make_shared<Spherical>(gravitationalParameter);
         const Shared<MagneticModel> magneticModel = std::make_shared<Dipole>(Vector3d {0.0, 0.0, 1.0});
         const Shared<AtmosphericModel> atmosphericModel = std::make_shared<Exponential>();
-        const Instant instant = Instant::J2000();
 
         const Celestial celestial = {
             name,
@@ -237,8 +185,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, modelIsDefined)
             ephemeris,
             nullptr,
             nullptr,
-            nullptr,
-            instant};
+            nullptr};
 
         EXPECT_FALSE(celestial.gravitationalModelIsDefined());
         EXPECT_FALSE(celestial.magneticModelIsDefined());
@@ -246,20 +193,12 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, modelIsDefined)
     }
 
     {
-        const String name = "Some Planet";
-        const Celestial::Type type = Celestial::Type::Earth;
-        const Derived gravitationalParameter = {
-            1.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)};
-        const Length equatorialRadius = Length::Kilometers(1000.0);
-        const Real flattening = 0.0;
-        const Real j2 = 0.0;
-        const Real j4 = 0.0;
-
-        const Shared<Ephemeris> ephemeris = std::make_shared<Analytical>(Frame::ITRF());
-        const Shared<GravitationalModel> undefinedGravitationalModel = std::make_shared<earthGravitationalModel>(earthGravitationalModel::Type::Undefined);
-        const Shared<MagneticModel> undefinedMagneticModel = std::make_shared<earthMagneticModel>(earthMagneticModel::Type::Undefined);
-        const Shared<AtmosphericModel> undefinedAtmosphericModel = std::make_shared<earthAtmosphericModel>(earthAtmosphericModel::Type::Undefined);
-        const Instant instant = Instant::J2000();
+        const Shared<GravitationalModel> undefinedGravitationalModel =
+            std::make_shared<earthGravitationalModel>(earthGravitationalModel::Type::Undefined);
+        const Shared<MagneticModel> undefinedMagneticModel =
+            std::make_shared<earthMagneticModel>(earthMagneticModel::Type::Undefined);
+        const Shared<AtmosphericModel> undefinedAtmosphericModel =
+            std::make_shared<earthAtmosphericModel>(earthAtmosphericModel::Type::Undefined);
 
         const Celestial celestial = {
             name,
@@ -272,8 +211,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, modelIsDefined)
             ephemeris,
             undefinedGravitationalModel,
             undefinedMagneticModel,
-            undefinedAtmosphericModel,
-            instant};
+            undefinedAtmosphericModel};
 
         EXPECT_FALSE(celestial.gravitationalModelIsDefined());
         EXPECT_FALSE(celestial.magneticModelIsDefined());
@@ -281,20 +219,9 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, modelIsDefined)
     }
 
     {
-        const String name = "Some Planet";
-        const Celestial::Type type = Celestial::Type::Earth;
-        const Derived gravitationalParameter = {
-            1.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)};
-        const Length equatorialRadius = Length::Kilometers(1000.0);
-        const Real flattening = 0.0;
-        const Real j2 = 0.0;
-        const Real j4 = 0.0;
-
-        const Shared<Ephemeris> ephemeris = std::make_shared<Analytical>(Frame::ITRF());
         const Shared<GravitationalModel> gravitationalModel = std::make_shared<Spherical>(gravitationalParameter);
         const Shared<MagneticModel> magneticModel = std::make_shared<Dipole>(Vector3d {0.0, 0.0, 1.0});
         const Shared<AtmosphericModel> atmosphericModel = std::make_shared<Exponential>();
-        const Instant instant = Instant::J2000();
 
         const Celestial celestial = {
             name,
@@ -307,8 +234,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, modelIsDefined)
             ephemeris,
             gravitationalModel,
             magneticModel,
-            atmosphericModel,
-            instant};
+            atmosphericModel};
 
         EXPECT_TRUE(celestial.gravitationalModelIsDefined());
         EXPECT_TRUE(celestial.magneticModelIsDefined());
@@ -316,20 +242,9 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, modelIsDefined)
     }
 
     {
-        const String name = "Some Planet";
-        const Celestial::Type type = Celestial::Type::Earth;
-        const Derived gravitationalParameter = {
-            1.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)};
-        const Length equatorialRadius = Length::Kilometers(1000.0);
-        const Real flattening = 0.0;
-        const Real j2 = 0.0;
-        const Real j4 = 0.0;
-
-        const Shared<Ephemeris> ephemeris = std::make_shared<Analytical>(Frame::ITRF());
         const Shared<GravitationalModel> gravitationalModel = std::make_shared<Spherical>(gravitationalParameter);
         const Shared<MagneticModel> magneticModel = std::make_shared<Dipole>(Vector3d {0.0, 0.0, 1.0});
         const Shared<AtmosphericModel> atmosphericModel = std::make_shared<Exponential>();
-        const Instant instant = Instant::J2000();
 
         const Celestial celestial = {
             name,
@@ -342,8 +257,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, modelIsDefined)
             nullptr,
             gravitationalModel,
             magneticModel,
-            atmosphericModel,
-            instant};
+            atmosphericModel};
 
         EXPECT_ANY_THROW(celestial.gravitationalModelIsDefined());
         EXPECT_ANY_THROW(celestial.magneticModelIsDefined());
@@ -377,13 +291,12 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetGravitationalFie
             ephemeris,
             gravitationalModel,
             nullptr,
-            nullptr,
-            instant};
+            nullptr};
 
         {
             const Position position = {{1.0, 0.0, 0.0}, Length::Unit::Meter, celestial.accessFrame()};
 
-            const Vector gravitationalFieldValue = celestial.getGravitationalFieldAt(position);
+            const Vector gravitationalFieldValue = celestial.getGravitationalFieldAt(position, instant);
 
             EXPECT_TRUE(gravitationalFieldValue.isDefined());
 
@@ -398,7 +311,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetGravitationalFie
         {
             const Position position = {{0.0, 0.0, 1.0}, Length::Unit::Meter, celestial.accessFrame()};
 
-            const Vector gravitationalFieldValue = celestial.getGravitationalFieldAt(position);
+            const Vector gravitationalFieldValue = celestial.getGravitationalFieldAt(position, instant);
 
             EXPECT_TRUE(gravitationalFieldValue.isDefined());
 
@@ -413,7 +326,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetGravitationalFie
         {
             const Position position = {{2.0, 0.0, 0.0}, Length::Unit::Meter, celestial.accessFrame()};
 
-            const Vector gravitationalFieldValue = celestial.getGravitationalFieldAt(position);
+            const Vector gravitationalFieldValue = celestial.getGravitationalFieldAt(position, instant);
 
             EXPECT_TRUE(gravitationalFieldValue.isDefined());
 
@@ -453,13 +366,12 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetMagneticFieldAt)
             ephemeris,
             nullptr,
             magneticModel,
-            nullptr,
-            instant};
+            nullptr};
 
         {
             const Position position = {{1.0, 0.0, 0.0}, Length::Unit::Meter, celestial.accessFrame()};
 
-            const Vector magneticFieldValue = celestial.getMagneticFieldAt(position);
+            const Vector magneticFieldValue = celestial.getMagneticFieldAt(position, instant);
 
             EXPECT_TRUE(magneticFieldValue.isDefined());
 
@@ -471,7 +383,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetMagneticFieldAt)
         {
             const Position position = {{0.0, 0.0, 1.0}, Length::Unit::Meter, celestial.accessFrame()};
 
-            const Vector magneticFieldValue = celestial.getMagneticFieldAt(position);
+            const Vector magneticFieldValue = celestial.getMagneticFieldAt(position, instant);
 
             EXPECT_TRUE(magneticFieldValue.isDefined());
 
@@ -483,7 +395,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetMagneticFieldAt)
         {
             const Position position = {{2.0, 0.0, 0.0}, Length::Unit::Meter, celestial.accessFrame()};
 
-            const Vector magneticFieldValue = celestial.getMagneticFieldAt(position);
+            const Vector magneticFieldValue = celestial.getMagneticFieldAt(position, instant);
 
             EXPECT_TRUE(magneticFieldValue.isDefined());
 
@@ -518,8 +430,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetAtmosphericDensi
             ephemeris,
             nullptr,
             nullptr,
-            atmosphericModel,
-            instant};
+            atmosphericModel};
 
         {
             const Position position = {
@@ -528,7 +439,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetAtmosphericDensi
                 Position::Unit::Meter,
                 Frame::ITRF()};
 
-            const Scalar atmosphericDensityValue = celestial.getAtmosphericDensityAt(position);
+            const Scalar atmosphericDensityValue = celestial.getAtmosphericDensityAt(position, instant);
 
             EXPECT_TRUE(atmosphericDensityValue.isDefined());
 
@@ -546,7 +457,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetAtmosphericDensi
                 Position::Unit::Meter,
                 Frame::ITRF()};
 
-            const Scalar atmosphericDensityValue = celestial.getAtmosphericDensityAt(position);
+            const Scalar atmosphericDensityValue = celestial.getAtmosphericDensityAt(position, instant);
 
             EXPECT_TRUE(atmosphericDensityValue.isDefined());
 
@@ -564,7 +475,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetAtmosphericDensi
                 Position::Unit::Meter,
                 Frame::ITRF()};
 
-            const Scalar atmosphericDensityValue = celestial.getAtmosphericDensityAt(position);
+            const Scalar atmosphericDensityValue = celestial.getAtmosphericDensityAt(position, instant);
 
             EXPECT_TRUE(atmosphericDensityValue.isDefined());
 
@@ -576,7 +487,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetAtmosphericDensi
         }
 
         {
-            EXPECT_ANY_THROW(celestial.getAtmosphericDensityAt(Position::Undefined()));
+            EXPECT_ANY_THROW(celestial.getAtmosphericDensityAt(Position::Undefined(), instant));
         }
 
         {
@@ -586,7 +497,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetAtmosphericDensi
                 Position::Unit::Meter,
                 Frame::ITRF()};
 
-            EXPECT_ANY_THROW(Celestial::Undefined().getAtmosphericDensityAt(position));
+            EXPECT_ANY_THROW(Celestial::Undefined().getAtmosphericDensityAt(position, instant));
         }
 
         {
@@ -607,18 +518,17 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetAtmosphericDensi
                 ephemeris,
                 nullptr,
                 nullptr,
-                nullptr,
-                instant};
+                nullptr};
 
-            EXPECT_ANY_THROW(celestialWithoutAtmospheric.getAtmosphericDensityAt(position));
+            EXPECT_ANY_THROW(celestialWithoutAtmospheric.getAtmosphericDensityAt(position, instant));
         }
 
         {
-            EXPECT_ANY_THROW(celestial.getAtmosphericDensityAt(Position::Undefined()));
+            EXPECT_ANY_THROW(celestial.getAtmosphericDensityAt(Position::Undefined(), instant));
         }
 
         {
-            EXPECT_ANY_THROW(Celestial::Undefined().getAtmosphericDensityAt(Position::Undefined()));
+            EXPECT_ANY_THROW(Celestial::Undefined().getAtmosphericDensityAt(Position::Undefined(), instant));
         }
     }
 }

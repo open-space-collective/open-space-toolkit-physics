@@ -169,12 +169,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, GetType)
 
 TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, IsDefined)
 {
-    using ostk::core::fs::Path;
-    using ostk::core::fs::Directory;
-
-    using EarthMagneticModel = ostk::physics::environment::magnetic::Earth;
-    using EarthMagneticModelManager = ostk::physics::environment::magnetic::earth::Manager;
-
     {
         EarthMagneticModelManager::Get().setLocalRepository(
             Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth"))

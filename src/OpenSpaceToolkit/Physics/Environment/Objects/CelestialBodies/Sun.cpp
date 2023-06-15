@@ -28,11 +28,7 @@ Derived Sun::GravitationalParameter = {
 Length Sun::EquatorialRadius = Length::Meters(6.955e8);
 Real Sun::Flattening = 0.0;
 
-Sun::Sun(
-    const Shared<Ephemeris>& anEphemeris,
-    const SunGravitationalModel::Type& aGravitationalModelType,
-    const Instant& anInstant
-)
+Sun::Sun(const Shared<Ephemeris>& anEphemeris, const SunGravitationalModel::Type& aGravitationalModelType)
     : Celestial(
           "Sun",
           Celestial::Type::Sun,
@@ -45,7 +41,6 @@ Sun::Sun(
           std::make_shared<SunGravitationalModel>(aGravitationalModelType),
           nullptr,  // [TBI] Add Sun magnetic model
           nullptr,
-          anInstant,
           Sun::Geometry(anEphemeris->accessFrame())
       )
 {
@@ -67,7 +62,7 @@ Sun Sun::Spherical()
 {
     using ostk::physics::env::ephem::SPICE;
 
-    return {std::make_shared<SPICE>(SPICE::Object::Sun), SunGravitationalModel::Type::Spherical, Instant::J2000()};
+    return {std::make_shared<SPICE>(SPICE::Object::Sun), SunGravitationalModel::Type::Spherical};
 }
 
 Object::Geometry Sun::Geometry(const Shared<const Frame>& aFrame)

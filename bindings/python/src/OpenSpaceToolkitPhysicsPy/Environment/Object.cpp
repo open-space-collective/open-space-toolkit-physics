@@ -25,18 +25,14 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object(pybind11::module& aModu
         .def("is_defined", &Object::isDefined)
 
         // .def("access_name", &Object::accessName, return_value_policy<reference_existing_object>())
-        // .def("access_instant", &Object::accessInstant, return_value_policy<reference_existing_object>())
         .def("access_name", &Object::accessName, return_value_policy::reference)
-        .def("access_instant", &Object::accessInstant, return_value_policy::reference)
         .def("access_frame", &Object::accessFrame)
         .def("get_name", &Object::getName)
-        .def("get_instant", &Object::getInstant)
         .def("get_geometry", &Object::getGeometry)
         .def("get_position_in", &Object::getPositionIn)
         .def("get_transform_to", &Object::getTransformTo)
         .def("get_axes_in", &Object::getAxesIn)
         .def("get_geometry_in", &Object::getGeometryIn)
-        .def("set_instant", &Object::setInstant)
 
         ;
 

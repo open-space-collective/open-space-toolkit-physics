@@ -104,8 +104,7 @@ class Celestial : public Object
         const Shared<Ephemeris>& anEphemeris,
         const Shared<GravitationalModel>& aGravitationalModel,
         const Shared<MagneticModel>& aMagneticModel,
-        const Shared<AtmosphericModel>& anAtmosphericModel,
-        const Instant& anInstant
+        const Shared<AtmosphericModel>& anAtmosphericModel
     );
 
     Celestial(
@@ -120,7 +119,6 @@ class Celestial : public Object
         const Shared<GravitationalModel>& aGravitationalModel,
         const Shared<MagneticModel>& aMagneticModel,
         const Shared<AtmosphericModel>& anAtmosphericModel,
-        const Instant& anInstant,
         const Object::Geometry& aGeometry
     );
 
@@ -158,19 +156,19 @@ class Celestial : public Object
 
     virtual Shared<const Frame> accessFrame() const override;
 
-    virtual Position getPositionIn(const Shared<const Frame>& aFrameSPtr) const override;
+    virtual Position getPositionIn(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const override;
 
-    virtual Velocity getVelocityIn(const Shared<const Frame>& aFrameSPtr) const override;
+    virtual Velocity getVelocityIn(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const override;
 
-    virtual Transform getTransformTo(const Shared<const Frame>& aFrameSPtr) const override;
+    virtual Transform getTransformTo(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const override;
 
-    virtual Axes getAxesIn(const Shared<const Frame>& aFrameSPtr) const override;
+    virtual Axes getAxesIn(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const override;
 
-    Vector getGravitationalFieldAt(const Position& aPosition) const;
+    Vector getGravitationalFieldAt(const Position& aPosition, const Instant& anInstant) const;
 
-    Vector getMagneticFieldAt(const Position& aPosition) const;
+    Vector getMagneticFieldAt(const Position& aPosition, const Instant& anInstant) const;
 
-    Scalar getAtmosphericDensityAt(const Position& aPosition) const;
+    Scalar getAtmosphericDensityAt(const Position& aPosition, const Instant& anInstant) const;
 
     Shared<const Frame> getFrameAt(const LLA& aLla, const Celestial::FrameType& aFrameType) const;
 

@@ -166,9 +166,7 @@ class Environment
 
    private:
     Instant instant_;
-    Array<Shared<Object>> objects_;
-
-    void updateObjects();
+    Array<Shared<const Object>> objects_;
 };
 
 }  // namespace physics

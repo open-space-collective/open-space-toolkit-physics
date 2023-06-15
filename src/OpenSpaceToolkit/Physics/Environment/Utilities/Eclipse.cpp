@@ -45,7 +45,7 @@ bool isPositionInEclipse(const Position& aPosition, const Environment& anEnviron
 
     const Segment sunToObjectSegment_GCRF = {
         Point::Vector(aPosition.getCoordinates()),
-        Point::Vector(sunSPtr->getPositionIn(Frame::GCRF()).getCoordinates())};
+        Point::Vector(sunSPtr->getPositionIn(Frame::GCRF(), anEnvironment.getInstant()).getCoordinates())};
 
     const Object::Geometry sunToObjectGeometry = {sunToObjectSegment_GCRF, Frame::GCRF()};
 

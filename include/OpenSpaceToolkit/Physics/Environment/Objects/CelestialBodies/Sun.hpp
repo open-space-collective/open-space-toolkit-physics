@@ -52,9 +52,7 @@ class Sun : public Celestial
     /// (Spherical model only)
     /// @param              [in] anInstant An instant
 
-    Sun(const Shared<Ephemeris>& anEphemeris,
-        const SunGravitationalModel::Type& aGravitationalModelType,
-        const Instant& anInstant);
+    Sun(const Shared<Ephemeris>& anEphemeris, const SunGravitationalModel::Type& aGravitationalModelType);
 
     /// @brief              Destructor
 

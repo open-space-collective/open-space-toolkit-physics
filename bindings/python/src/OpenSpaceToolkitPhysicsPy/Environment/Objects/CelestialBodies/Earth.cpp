@@ -33,8 +33,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Earth(
                     const Shared<Ephemeris>&,
                     const EarthGravitationalModel::Type&,
                     const EarthMagneticModel::Type&,
-                    const EarthAtmosphericModel::Type&,
-                    const Instant&>(),
+                    const EarthAtmosphericModel::Type&>(),
                 arg("gravitational_parameter"),
                 arg("equatorial_radius"),
                 arg("flattening"),
@@ -43,8 +42,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Earth(
                 arg("ephemeris"),
                 arg("gravitational_model_type"),
                 arg("magnetic_model_type"),
-                arg("atmospheric_model_type"),
-                arg("instant")
+                arg("atmospheric_model_type")
             )
 
             .def(
@@ -59,8 +57,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Earth(
                     const Integer&,
                     const Integer&,
                     const EarthMagneticModel::Type&,
-                    const EarthAtmosphericModel::Type&,
-                    const Instant&>(),
+                    const EarthAtmosphericModel::Type&>(),
                 arg("gravitational_parameter"),
                 arg("equatorial_radius"),
                 arg("flattening"),
@@ -71,8 +68,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Earth(
                 arg("gravitational_model_degree"),
                 arg("gravitational_model_order"),
                 arg("magnetic_model_type"),
-                arg("atmospheric_model_type"),
-                arg("instant")
+                arg("atmospheric_model_type")
             )
 
             .def_readonly_static("gravitational_parameter", &Earth::GravitationalParameter)

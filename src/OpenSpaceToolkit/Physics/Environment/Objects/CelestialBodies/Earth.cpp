@@ -111,8 +111,7 @@ Earth::Earth(
     const Shared<Ephemeris>& anEphemeris,
     const EarthGravitationalModel::Type& aGravitationalModelType,
     const EarthMagneticModel::Type& aMagneticModelType,
-    const EarthAtmosphericModel::Type& anAtmosphericModelType,
-    const Instant& anInstant
+    const EarthAtmosphericModel::Type& anAtmosphericModelType
 )
     : Celestial(
           "Earth",
@@ -126,7 +125,6 @@ Earth::Earth(
           std::make_shared<EarthGravitationalModel>(aGravitationalModelType),
           std::make_shared<EarthMagneticModel>(aMagneticModelType),
           std::make_shared<EarthAtmosphericModel>(anAtmosphericModelType),
-          anInstant,
           Earth::Geometry(anEquatorialRadius, aFlattening, anEphemeris->accessFrame())
       )
 {
@@ -143,8 +141,7 @@ Earth::Earth(
     const Integer& aGravityModelDegree,
     const Integer& aGravityModelOrder,
     const EarthMagneticModel::Type& aMagneticModelType,
-    const EarthAtmosphericModel::Type& anAtmosphericModelType,
-    const Instant& anInstant
+    const EarthAtmosphericModel::Type& anAtmosphericModelType
 )
     : Celestial(
           "Earth",
@@ -160,7 +157,6 @@ Earth::Earth(
           ),
           std::make_shared<EarthMagneticModel>(aMagneticModelType),
           std::make_shared<EarthAtmosphericModel>(anAtmosphericModelType),
-          anInstant,
           Earth::Geometry(anEquatorialRadius, aFlattening, anEphemeris->accessFrame())
       )
 {
@@ -196,8 +192,7 @@ Earth Earth::EGM2008(const Integer& aGravityModelDegree, const Integer& aGravity
         aGravityModelDegree,
         aGravityModelOrder,
         EarthMagneticModel::Type::Undefined,
-        EarthAtmosphericModel::Type::Undefined,
-        Instant::J2000()};
+        EarthAtmosphericModel::Type::Undefined};
 }
 
 Earth Earth::WGS84_EGM96(const Integer& aGravityModelDegree, const Integer& aGravityModelOrder)
@@ -218,8 +213,7 @@ Earth Earth::WGS84_EGM96(const Integer& aGravityModelDegree, const Integer& aGra
         aGravityModelDegree,
         aGravityModelOrder,
         EarthMagneticModel::Type::Undefined,
-        EarthAtmosphericModel::Type::Undefined,
-        Instant::J2000()};
+        EarthAtmosphericModel::Type::Undefined};
 }
 
 Earth Earth::EGM96(const Integer& aGravityModelDegree, const Integer& aGravityModelOrder)
@@ -240,8 +234,7 @@ Earth Earth::EGM96(const Integer& aGravityModelDegree, const Integer& aGravityMo
         aGravityModelDegree,
         aGravityModelOrder,
         EarthMagneticModel::Type::Undefined,
-        EarthAtmosphericModel::Type::Undefined,
-        Instant::J2000()};
+        EarthAtmosphericModel::Type::Undefined};
 }
 
 Earth Earth::EGM84(const Integer& aGravityModelDegree, const Integer& aGravityModelOrder)
@@ -262,8 +255,7 @@ Earth Earth::EGM84(const Integer& aGravityModelDegree, const Integer& aGravityMo
         aGravityModelDegree,
         aGravityModelOrder,
         EarthMagneticModel::Type::Undefined,
-        EarthAtmosphericModel::Type::Undefined,
-        Instant::J2000()};
+        EarthAtmosphericModel::Type::Undefined};
 }
 
 Earth Earth::WGS84(const Integer& aGravityModelDegree, const Integer& aGravityModelOrder)
@@ -284,8 +276,7 @@ Earth Earth::WGS84(const Integer& aGravityModelDegree, const Integer& aGravityMo
         aGravityModelDegree,
         aGravityModelOrder,
         EarthMagneticModel::Type::Undefined,
-        EarthAtmosphericModel::Type::Undefined,
-        Instant::J2000()};
+        EarthAtmosphericModel::Type::Undefined};
 }
 
 Earth Earth::Spherical()
@@ -304,8 +295,7 @@ Earth Earth::Spherical()
         std::make_shared<Analytical>(earthFrameSPtr),
         EarthGravitationalModel::Type::Spherical,
         EarthMagneticModel::Type::Undefined,
-        EarthAtmosphericModel::Type::Undefined,
-        Instant::J2000()};
+        EarthAtmosphericModel::Type::Undefined};
 }
 
 Object::Geometry Earth::Geometry(

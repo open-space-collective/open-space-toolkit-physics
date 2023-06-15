@@ -39,13 +39,12 @@ class TestEarth:
 
     def test_get_type_success(self, earth_atmospheric_model: EarthAtmosphericModel):
         assert (
-            earth_atmospheric_model.get_type() == EarthAtmosphericModel.EarthAtmosphericType.Exponential
+            earth_atmospheric_model.get_type()
+            == EarthAtmosphericModel.EarthAtmosphericType.Exponential
         )
-    
+
     def test_is_defined_success(self, earth_atmospheric_model: EarthAtmosphericModel):
-        assert (
-            earth_atmospheric_model.is_defined() == True
-        )
+        assert earth_atmospheric_model.is_defined() == True
 
     def test_get_density_at_success(self, earth_atmospheric_model: EarthAtmosphericModel):
         latitude = Angle.degrees(30.0)
