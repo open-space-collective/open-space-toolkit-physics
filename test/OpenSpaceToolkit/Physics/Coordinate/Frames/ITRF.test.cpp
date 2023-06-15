@@ -158,7 +158,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frames_ITRF, Test)
 
                 {
                     const Length positionalDelta =
-                        EarthGravitationalModel::EGM2008Parameters.equatorialRadius_ *
+                        EarthGravitationalModel::EGM2008.equatorialRadius_ *
                         (q_GCRF_ITRF * Vector3d::X() - (reference_q_ITRF_GCRF.toConjugate() * Vector3d::X())).norm();
 
                     ASSERT_GT(positionalToleranceAtSurface, positionalDelta) << String::Format(
@@ -171,7 +171,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frames_ITRF, Test)
 
                 {
                     const Length positionalDelta =
-                        (EarthGravitationalModel::EGM2008Parameters.equatorialRadius_ + Length::Kilometers(1000.0)) *
+                        (EarthGravitationalModel::EGM2008.equatorialRadius_ + Length::Kilometers(1000.0)) *
                         (q_GCRF_ITRF * Vector3d::X() - (reference_q_ITRF_GCRF.toConjugate() * Vector3d::X())).norm();
 
                     ASSERT_GT(positionalToleranceAt1000km, positionalDelta) << String::Format(

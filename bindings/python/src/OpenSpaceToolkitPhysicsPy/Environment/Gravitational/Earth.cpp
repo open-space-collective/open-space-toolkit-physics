@@ -38,16 +38,16 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(pybind11::
 
             .def("get_field_value_at", &Earth::getFieldValueAt, arg("position"), arg("instant"))
 
-            .def_readonly_static("EGM2008", &Earth::EGM2008Parameters)
-            .def_readonly_static("EGM96", &Earth::EGM96Parameters)
-            .def_readonly_static("EGM84", &Earth::EGM84Parameters)
-            .def_readonly_static("WGS84_EGM96", &Earth::WGS84_EGM96Parameters)
-            .def_readonly_static("WGS84", &Earth::WGS84Parameters)
-            .def_readonly_static("spherical", &Earth::SphericalParameters)
+            .def_readonly_static("EGM2008", &Earth::EGM2008)
+            .def_readonly_static("EGM96", &Earth::EGM96)
+            .def_readonly_static("EGM84", &Earth::EGM84)
+            .def_readonly_static("WGS84_EGM96", &Earth::WGS84_EGM96)
+            .def_readonly_static("WGS84", &Earth::WGS84)
+            .def_readonly_static("spherical", &Earth::Spherical)
 
             ;
 
-        enum_<Earth::Type>(earth_class, "EarthType")
+        enum_<Earth::Type>(earth_class, "Type")
 
             .value("Undefined", Earth::Type::Undefined)
             .value("Spherical", Earth::Type::Spherical)

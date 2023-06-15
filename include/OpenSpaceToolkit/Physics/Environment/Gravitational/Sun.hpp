@@ -40,7 +40,7 @@ using ostk::physics::environment::gravitational::Model;
 class Sun : public Model
 {
    public:
-    static const Parameters SphericalParameters;
+    static const Parameters Spherical;
 
     enum class Type
     {

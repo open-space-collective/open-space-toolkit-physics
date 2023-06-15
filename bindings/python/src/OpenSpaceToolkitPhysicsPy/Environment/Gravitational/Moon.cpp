@@ -27,11 +27,11 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Moon(pybind11::m
 
             .def("get_field_value_at", &Moon::getFieldValueAt, arg("position"), arg("instant"))
 
-            .def_readonly_static("spherical", &Moon::SphericalParameters)
+            .def_readonly_static("spherical", &Moon::Spherical)
 
             ;
 
-        enum_<Moon::Type>(moon_class, "MoonType")
+        enum_<Moon::Type>(moon_class, "Type")
 
             .value("Undefined", Moon::Type::Undefined)
             .value("Spherical", Moon::Type::Spherical)

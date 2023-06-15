@@ -16,7 +16,9 @@ namespace environment
 namespace gravitational
 {
 
-const Model::Parameters Moon::SphericalParameters = {
+using SphericalGravitationalModel = ostk::physics::environment::gravitational::Spherical;
+
+const Model::Parameters Moon::Spherical = {
     {4902.8000e9, GravitationalParameterSIUnit}, Length::Meters(1738.14e3), 0.00125, 0.0, 0.0};
 
 class Moon::Impl
@@ -61,13 +63,13 @@ class Moon::SphericalImpl : public Moon::Impl
     virtual Vector3d getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const override;
 
    private:
-    Spherical sphericalModel_;
+    SphericalGravitationalModel sphericalModel_;
 };
 
 Moon::SphericalImpl::SphericalImpl(const Moon::Type& aType)
 
     : Moon::Impl(aType),
-      sphericalModel_(Moon::SphericalParameters)
+      sphericalModel_(Moon::Spherical)
 {
 }
 
@@ -136,7 +138,7 @@ Model::Parameters Moon::ParametersFromType(const Moon::Type& aType)
     switch (aType)
     {
         case (Moon::Type::Spherical):
-            return Moon::SphericalParameters;
+            return Moon::Spherical;
 
         case (Moon::Type::Undefined):
             return Moon::Parameters::Undefined();

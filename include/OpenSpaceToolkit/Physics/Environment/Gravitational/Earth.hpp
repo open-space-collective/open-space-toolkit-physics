@@ -42,12 +42,12 @@ class Earth : public Model
 {
    public:
     // Declare static gravitational model parameters
-    static const Parameters EGM2008Parameters;
-    static const Parameters WGS84_EGM96Parameters;
-    static const Parameters EGM96Parameters;
-    static const Parameters EGM84Parameters;
-    static const Parameters WGS84Parameters;
-    static const Parameters SphericalParameters;
+    static const Parameters EGM2008;
+    static const Parameters WGS84_EGM96;
+    static const Parameters EGM96;
+    static const Parameters EGM84;
+    static const Parameters WGS84;
+    static const Parameters Spherical;
 
     enum class Type
     {

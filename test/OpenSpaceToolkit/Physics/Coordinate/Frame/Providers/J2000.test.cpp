@@ -133,14 +133,14 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_J2000, GetTransformAt)
             RotationVector::Quaternion(J2000(Theory::IAU_2000A).getTransformAt(instant).getOrientation())
                     .getAngle()
                     .inRadians() *
-                EarthGravitationalModel::EGM2008Parameters.equatorialRadius_.inMeters()
+                EarthGravitationalModel::EGM2008.equatorialRadius_.inMeters()
         );
         EXPECT_GT(
             1.0,
             RotationVector::Quaternion(J2000(Theory::IAU_2006).getTransformAt(instant).getOrientation())
                     .getAngle()
                     .inRadians() *
-                EarthGravitationalModel::EGM2008Parameters.equatorialRadius_.inMeters()
+                EarthGravitationalModel::EGM2008.equatorialRadius_.inMeters()
         );
     }
 }

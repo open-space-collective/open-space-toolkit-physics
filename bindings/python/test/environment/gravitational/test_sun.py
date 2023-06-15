@@ -13,23 +13,23 @@ from ostk.physics.environment.gravitational import Sun as SunGravitationalModel
 
 @pytest.fixture
 def sun_gravitational_model() -> SunGravitationalModel:
-    return SunGravitationalModel(SunGravitationalModel.SunType.Spherical)
+    return SunGravitationalModel(SunGravitationalModel.Type.Spherical)
 
 
 class TestSun:
     def test_constructor_success_with_type(self):
         assert isinstance(
-            SunGravitationalModel(SunGravitationalModel.SunType.Spherical),
+            SunGravitationalModel(SunGravitationalModel.Type.Spherical),
             SunGravitationalModel,
         )
         assert isinstance(
-            SunGravitationalModel(SunGravitationalModel.SunType.Spherical),
+            SunGravitationalModel(SunGravitationalModel.Type.Spherical),
             GravitationalModel,
         )
 
     def test_constructor_success_with_directory(self):
         sun_gravitational_model = SunGravitationalModel(
-            SunGravitationalModel.SunType.Spherical, Directory.undefined()
+            SunGravitationalModel.Type.Spherical, Directory.undefined()
         )
 
         assert isinstance(sun_gravitational_model, SunGravitationalModel)
@@ -37,7 +37,7 @@ class TestSun:
 
     def test_get_type_success(self, sun_gravitational_model: SunGravitationalModel):
         assert (
-            sun_gravitational_model.get_type() == SunGravitationalModel.SunType.Spherical
+            sun_gravitational_model.get_type() == SunGravitationalModel.Type.Spherical
         )
 
     def test_get_field_value_at_success(

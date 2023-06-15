@@ -13,35 +13,35 @@ from ostk.physics.environment.gravitational import Earth as EarthGravitationalMo
 
 @pytest.fixture
 def earth_gravitational_model() -> EarthGravitationalModel:
-    return EarthGravitationalModel(EarthGravitationalModel.EarthType.EGM2008)
+    return EarthGravitationalModel(EarthGravitationalModel.Type.EGM2008)
 
 
 class TestEarth:
     def test_constructor_success_with_type(self):
         assert isinstance(
-            EarthGravitationalModel(EarthGravitationalModel.EarthType.Spherical),
+            EarthGravitationalModel(EarthGravitationalModel.Type.Spherical),
             EarthGravitationalModel,
         )
         assert isinstance(
-            EarthGravitationalModel(EarthGravitationalModel.EarthType.WGS84),
+            EarthGravitationalModel(EarthGravitationalModel.Type.WGS84),
             EarthGravitationalModel,
         )
         assert isinstance(
-            EarthGravitationalModel(EarthGravitationalModel.EarthType.EGM96),
+            EarthGravitationalModel(EarthGravitationalModel.Type.EGM96),
             EarthGravitationalModel,
         )
         assert isinstance(
-            EarthGravitationalModel(EarthGravitationalModel.EarthType.EGM84),
+            EarthGravitationalModel(EarthGravitationalModel.Type.EGM84),
             EarthGravitationalModel,
         )
         assert isinstance(
-            EarthGravitationalModel(EarthGravitationalModel.EarthType.EGM2008),
+            EarthGravitationalModel(EarthGravitationalModel.Type.EGM2008),
             EarthGravitationalModel,
         )
 
     def test_constructor_success_with_directory(self):
         earth_gravitational_model = EarthGravitationalModel(
-            EarthGravitationalModel.EarthType.EGM2008, Directory.undefined()
+            EarthGravitationalModel.Type.EGM2008, Directory.undefined()
         )
 
         assert isinstance(earth_gravitational_model, EarthGravitationalModel)
@@ -49,7 +49,7 @@ class TestEarth:
 
     def test_constructor_success_with_degree_and_order(self):
         earth_gravitational_model = EarthGravitationalModel(
-            EarthGravitationalModel.EarthType.EGM2008, Directory.undefined(), 2, 2
+            EarthGravitationalModel.Type.EGM2008, Directory.undefined(), 2, 2
         )
 
         assert isinstance(earth_gravitational_model, EarthGravitationalModel)
@@ -58,7 +58,7 @@ class TestEarth:
     def test_get_type_success(self, earth_gravitational_model: EarthGravitationalModel):
         assert (
             earth_gravitational_model.get_type()
-            == EarthGravitationalModel.EarthType.EGM2008
+            == EarthGravitationalModel.Type.EGM2008
         )
 
     def test_get_field_value_at_success(

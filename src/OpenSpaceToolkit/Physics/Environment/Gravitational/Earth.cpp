@@ -26,10 +26,11 @@ using GeographicLib::GravityModel;
 using ostk::physics::units::Derived;
 using ostk::physics::units::Length;
 using ostk::physics::units::Time;
+using SphericalGravitationalModel = ostk::physics::environment::gravitational::Spherical;
 
 // EGM2008
 
-const Model::Parameters Earth::EGM2008Parameters = {
+const Model::Parameters Earth::EGM2008 = {
     {398600441500000.0, GravitationalParameterSIUnit},
     Length::Meters(6378137.0),
     1.0 / 298.257223563,
@@ -38,7 +39,7 @@ const Model::Parameters Earth::EGM2008Parameters = {
 
 // EGM96 + WGS84
 
-const Model::Parameters Earth::WGS84_EGM96Parameters = {
+const Model::Parameters Earth::WGS84_EGM96 = {
     {398600441800000.0, GravitationalParameterSIUnit},
     Length::Meters(6378137.0),
     1.0 / 298.257223563,
@@ -47,7 +48,7 @@ const Model::Parameters Earth::WGS84_EGM96Parameters = {
 
 // EGM96
 
-const Model::Parameters Earth::EGM96Parameters = {
+const Model::Parameters Earth::EGM96 = {
     {398600441500000.0, GravitationalParameterSIUnit},
     Length::Meters(6378136.3),
     1.0 / 298.257223563,
@@ -56,7 +57,7 @@ const Model::Parameters Earth::EGM96Parameters = {
 
 // EGM84
 
-const Model::Parameters Earth::EGM84Parameters = {
+const Model::Parameters Earth::EGM84 = {
     {398600441800000.0, GravitationalParameterSIUnit},
     Length::Meters(6378137.0),
     1.0 / 298.257223563,
@@ -65,7 +66,7 @@ const Model::Parameters Earth::EGM84Parameters = {
 
 // WGS84
 
-const Model::Parameters Earth::WGS84Parameters = {
+const Model::Parameters Earth::WGS84 = {
     {398600441800000.0, GravitationalParameterSIUnit},
     Length::Meters(6378137.0),
     1.0 / 298.257223563,
@@ -74,7 +75,7 @@ const Model::Parameters Earth::WGS84Parameters = {
 
 // Spherical
 
-const Model::Parameters Earth::SphericalParameters = {
+const Model::Parameters Earth::Spherical = {
     {398600441500000.0, GravitationalParameterSIUnit}, Length::Meters(6378137.0), 0.0, 0.0, 0.0};
 
 class Earth::Impl
@@ -120,13 +121,13 @@ class Earth::SphericalImpl : public Earth::Impl
     virtual Vector3d getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const override;
 
    private:
-    Spherical sphericalModel_;
+    SphericalGravitationalModel sphericalModel_;
 };
 
 Earth::SphericalImpl::SphericalImpl(const Earth::Type& aType)
 
     : Earth::Impl(aType),
-      sphericalModel_(Earth::SphericalParameters)
+      sphericalModel_(Earth::Spherical)
 
 {
 }
@@ -400,22 +401,22 @@ Model::Parameters Earth::ParametersFromType(const Earth::Type& aType)
     switch (aType)
     {
         case Earth::Type::Spherical:
-            return Earth::SphericalParameters;
+            return Earth::Spherical;
 
         case Earth::Type::WGS84:
-            return Earth::WGS84Parameters;
+            return Earth::WGS84;
 
         case Earth::Type::EGM84:
-            return Earth::EGM84Parameters;
+            return Earth::EGM84;
 
         case Earth::Type::EGM96:
-            return Earth::EGM96Parameters;
+            return Earth::EGM96;
 
         case Earth::Type::WGS84_EGM96:
-            return Earth::WGS84_EGM96Parameters;
+            return Earth::WGS84_EGM96;
 
         case Earth::Type::EGM2008:
-            return Earth::EGM2008Parameters;
+            return Earth::EGM2008;
 
         case Earth::Type::Undefined:
             return Earth::Parameters::Undefined();

@@ -13,23 +13,23 @@ from ostk.physics.environment.gravitational import Moon as MoonGravitationalMode
 
 @pytest.fixture
 def moon_gravitational_model() -> MoonGravitationalModel:
-    return MoonGravitationalModel(MoonGravitationalModel.MoonType.Spherical)
+    return MoonGravitationalModel(MoonGravitationalModel.Type.Spherical)
 
 
 class TestMoon:
     def test_constructor_success_with_type(self):
         assert isinstance(
-            MoonGravitationalModel(MoonGravitationalModel.MoonType.Spherical),
+            MoonGravitationalModel(MoonGravitationalModel.Type.Spherical),
             MoonGravitationalModel,
         )
         assert isinstance(
-            MoonGravitationalModel(MoonGravitationalModel.MoonType.Spherical),
+            MoonGravitationalModel(MoonGravitationalModel.Type.Spherical),
             GravitationalModel,
         )
 
     def test_constructor_success_with_directory(self):
         moon_gravitational_model = MoonGravitationalModel(
-            MoonGravitationalModel.MoonType.Spherical, Directory.undefined()
+            MoonGravitationalModel.Type.Spherical, Directory.undefined()
         )
 
         assert isinstance(moon_gravitational_model, MoonGravitationalModel)
@@ -38,7 +38,7 @@ class TestMoon:
     def test_get_type_success(self, moon_gravitational_model: MoonGravitationalModel):
         assert (
             moon_gravitational_model.get_type()
-            == MoonGravitationalModel.MoonType.Spherical
+            == MoonGravitationalModel.Type.Spherical
         )
 
     def test_get_field_value_at_success(

@@ -71,12 +71,12 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_TOD, GetTransformAt)
         EXPECT_GT(
             1.0,
             q_J2000_TOD_IAU_2000.angularDifferenceWith(ref_q_J2000_TOD).inRadians() *
-                EarthGravitationalModel::EGM2008Parameters.equatorialRadius_.inMeters()
+                EarthGravitationalModel::EGM2008.equatorialRadius_.inMeters()
         );
         EXPECT_GT(
             1.0,
             q_J2000_TOD_IAU_2006.angularDifferenceWith(ref_q_J2000_TOD).inRadians() *
-                EarthGravitationalModel::EGM2008Parameters.equatorialRadius_.inMeters()
+                EarthGravitationalModel::EGM2008.equatorialRadius_.inMeters()
         );
     }
 }

@@ -43,19 +43,19 @@ class TestManager:
         self, manager: EarthGravitationalModelManager
     ):
         assert (
-            manager.has_data_file_for_type(EarthGravitationalModel.EarthType.WGS84)
+            manager.has_data_file_for_type(EarthGravitationalModel.Type.WGS84)
             == True
         )
         assert (
-            manager.has_data_file_for_type(EarthGravitationalModel.EarthType.EGM84)
+            manager.has_data_file_for_type(EarthGravitationalModel.Type.EGM84)
             == True
         )
         assert (
-            manager.has_data_file_for_type(EarthGravitationalModel.EarthType.EGM96)
+            manager.has_data_file_for_type(EarthGravitationalModel.Type.EGM96)
             == True
         )
         assert (
-            manager.has_data_file_for_type(EarthGravitationalModel.EarthType.EGM2008)
+            manager.has_data_file_for_type(EarthGravitationalModel.Type.EGM2008)
             == True
         )
 
@@ -75,10 +75,10 @@ class TestManager:
     def test_fetch_data_file_for_type_success(
         self, manager: EarthGravitationalModelManager
     ):
-        manager.fetch_data_file_for_type(EarthGravitationalModel.EarthType.WGS84)
-        manager.fetch_data_file_for_type(EarthGravitationalModel.EarthType.EGM84)
-        manager.fetch_data_file_for_type(EarthGravitationalModel.EarthType.EGM96)
-        manager.fetch_data_file_for_type(EarthGravitationalModel.EarthType.EGM2008)
+        manager.fetch_data_file_for_type(EarthGravitationalModel.Type.WGS84)
+        manager.fetch_data_file_for_type(EarthGravitationalModel.Type.EGM84)
+        manager.fetch_data_file_for_type(EarthGravitationalModel.Type.EGM96)
+        manager.fetch_data_file_for_type(EarthGravitationalModel.Type.EGM2008)
 
     def test_set_local_repository_success(self, manager: EarthGravitationalModelManager):
         manager.set_local_repository(

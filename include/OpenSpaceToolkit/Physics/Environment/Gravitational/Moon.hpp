@@ -41,7 +41,7 @@ class Moon : public Model
 {
    public:
     // Declare static gravitational model parameters
-    static const Parameters SphericalParameters;
+    static const Parameters Spherical;
 
     enum class Type
     {

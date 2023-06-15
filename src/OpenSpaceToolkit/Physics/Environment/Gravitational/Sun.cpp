@@ -16,7 +16,9 @@ namespace environment
 namespace gravitational
 {
 
-const Model::Parameters Sun::SphericalParameters = {
+using SphericalGravitationalModel = ostk::physics::environment::gravitational::Spherical;
+
+const Model::Parameters Sun::Spherical = {
     {132712440018e9, GravitationalParameterSIUnit}, Length::Meters(6.955e8), 0.0, 0.0, 0.0};
 
 class Sun::Impl
@@ -61,13 +63,13 @@ class Sun::SphericalImpl : public Sun::Impl
     virtual Vector3d getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const override;
 
    private:
-    Spherical sphericalModel_;
+    SphericalGravitationalModel sphericalModel_;
 };
 
 Sun::SphericalImpl::SphericalImpl(const Sun::Type& aType)
 
     : Sun::Impl(aType),
-      sphericalModel_(Sun::SphericalParameters)
+      sphericalModel_(Sun::Spherical)
 {
 }
 
@@ -136,7 +138,7 @@ Model::Parameters Sun::ParametersFromType(const Sun::Type& aType)
     switch (aType)
     {
         case (Sun::Type::Spherical):
-            return Sun::SphericalParameters;
+            return Sun::Spherical;
 
         case (Sun::Type::Undefined):
             return Sun::Parameters::Undefined();

@@ -27,11 +27,11 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Sun(pybind11::mo
 
             .def("get_field_value_at", &Sun::getFieldValueAt, arg("position"), arg("instant"))
 
-            .def_readonly_static("spherical", &Sun::SphericalParameters)
+            .def_readonly_static("spherical", &Sun::Spherical)
 
             ;
 
-        enum_<Sun::Type>(sun_class, "SunType")
+        enum_<Sun::Type>(sun_class, "Type")
 
             .value("Undefined", Sun::Type::Undefined)
             .value("Spherical", Sun::Type::Spherical)
