@@ -3,10 +3,11 @@
 import numpy as np
 
 from ostk.physics.time import Instant
-from ostk.physics.environment.objects.celestial_bodies.earth.models import EGM2008
+from ostk.physics.environment.gravitational import Model as GravitationalModel
 from ostk.physics.environment.gravitational import (
     Spherical as SphericalGravitationalModel,
 )
+from ostk.physics.environment.objects.celestial_bodies.earth.models import EGM2008
 
 
 class TestSpherical:
@@ -16,6 +17,7 @@ class TestSpherical:
         )
 
         assert isinstance(spherical_gravitational_model, SphericalGravitationalModel)
+        assert isinstance(spherical_gravitational_model, GravitationalModel)
 
     def test_get_field_value_at_success(self):
         spherical_gravitational_model = SphericalGravitationalModel(

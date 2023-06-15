@@ -7,6 +7,7 @@ import numpy as np
 from ostk.core.filesystem import Directory
 
 from ostk.physics.time import Instant
+from ostk.physics.environment.gravitational import Model as GravitationalModel
 from ostk.physics.environment.gravitational import Moon as MoonGravitationalModel
 
 
@@ -21,6 +22,10 @@ class TestMoon:
             MoonGravitationalModel(MoonGravitationalModel.MoonType.Spherical),
             MoonGravitationalModel,
         )
+        assert isinstance(
+            MoonGravitationalModel(MoonGravitationalModel.MoonType.Spherical),
+            GravitationalModel,
+        )
 
     def test_constructor_success_with_directory(self):
         moon_gravitational_model = MoonGravitationalModel(
@@ -28,6 +33,7 @@ class TestMoon:
         )
 
         assert isinstance(moon_gravitational_model, MoonGravitationalModel)
+        assert isinstance(moon_gravitational_model, GravitationalModel)
 
     def test_get_type_success(self, moon_gravitational_model: MoonGravitationalModel):
         assert (

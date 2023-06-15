@@ -27,6 +27,8 @@ using ostk::physics::units::Derived;
 using ostk::physics::units::Length;
 using ostk::physics::units::Time;
 
+// EGM2008
+
 const Model::Parameters Earth::EGM2008Parameters = {
     {398600441500000.0, GravitationalParameterSIUnit},
     Length::Meters(6378137.0),

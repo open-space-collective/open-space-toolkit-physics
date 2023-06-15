@@ -55,9 +55,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Earth(
                     const Shared<EarthAtmosphericModel>&>(),
                 arg("instant"),
                 arg("ephemeris"),
-                arg("gravitational_model") = nullptr,
-                arg("magnetic_model") = nullptr,
-                arg("atmospheric_model") = nullptr
+                arg("gravitational_model") = pybind11::none(),
+                arg("magnetic_model") = pybind11::none(),
+                arg("atmospheric_model") = pybind11::none()
             )
 
             .def("__str__", &(shiftToString<Earth>))

@@ -7,6 +7,7 @@ import numpy as np
 from ostk.core.filesystem import Directory
 
 from ostk.physics.time import Instant
+from ostk.physics.environment.gravitational import Model as GravitationalModel
 from ostk.physics.environment.gravitational import Earth as EarthGravitationalModel
 
 
@@ -44,6 +45,7 @@ class TestEarth:
         )
 
         assert isinstance(earth_gravitational_model, EarthGravitationalModel)
+        assert isinstance(earth_gravitational_model, GravitationalModel)
 
     def test_constructor_success_with_degree_and_order(self):
         earth_gravitational_model = EarthGravitationalModel(
@@ -51,6 +53,7 @@ class TestEarth:
         )
 
         assert isinstance(earth_gravitational_model, EarthGravitationalModel)
+        assert isinstance(earth_gravitational_model, GravitationalModel)
 
     def test_get_type_success(self, earth_gravitational_model: EarthGravitationalModel):
         assert (

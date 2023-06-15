@@ -7,6 +7,7 @@ import numpy as np
 from ostk.core.filesystem import Directory
 
 from ostk.physics.time import Instant
+from ostk.physics.environment.gravitational import Model as GravitationalModel
 from ostk.physics.environment.gravitational import Sun as SunGravitationalModel
 
 
@@ -21,6 +22,10 @@ class TestSun:
             SunGravitationalModel(SunGravitationalModel.SunType.Spherical),
             SunGravitationalModel,
         )
+        assert isinstance(
+            SunGravitationalModel(SunGravitationalModel.SunType.Spherical),
+            GravitationalModel,
+        )
 
     def test_constructor_success_with_directory(self):
         sun_gravitational_model = SunGravitationalModel(
@@ -28,6 +33,7 @@ class TestSun:
         )
 
         assert isinstance(sun_gravitational_model, SunGravitationalModel)
+        assert isinstance(sun_gravitational_model, GravitationalModel)
 
     def test_get_type_success(self, sun_gravitational_model: SunGravitationalModel):
         assert (

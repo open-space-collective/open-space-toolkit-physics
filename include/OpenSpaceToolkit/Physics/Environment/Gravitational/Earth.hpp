@@ -60,7 +60,6 @@ class Earth : public Model
                       ///< which includes terms up to degree 360.
         EGM96,        ///< The Earth Gravity Model 1996, which includes terms up to degree 360.
         EGM2008       ///< The Earth Gravity Model 2008, which includes terms up to degree 2190.
-
     };
 
     /// @brief              Constructor with max degree and order variables

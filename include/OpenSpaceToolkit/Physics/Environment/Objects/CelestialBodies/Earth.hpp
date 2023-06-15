@@ -50,6 +50,20 @@ using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
 class Earth : public Celestial
 {
    public:
+    /// @brief              Constructor
+    ///
+
+    /// @param              [in] anInstant An instant for the Earth celestial object
+    /// @param              [in] aGravitationalParameter A gravitational parameter for the Earth celestial object
+    /// @param              [in] anEquatorialRadius An equatorial radius for the Earth celestial object
+    /// @param              [in] aFlattening A flattening for the Earth celestial object
+    /// @param              [in] aJ2 A J2 coefficient for the Earth celestial object
+    /// @param              [in] aJ4 A J4 coefficient for the Earth celestial object
+    /// @param              [in] anEphemeris An ephemeris for the Earth celestial object
+    /// @param              [in] aGravitationalModel A gravitational model for the Earth celestial object
+    /// @param              [in] aMagneticModel A magnetic model for the Earth celestial object
+    /// @param              [in] aAtmosphericModel An atmospheric model for the Earth celestial object
+
     Earth(
         const Derived& aGravitationalParameter,
         const Length& anEquatorialRadius,
@@ -61,6 +75,14 @@ class Earth : public Celestial
         const Shared<EarthMagneticModel>& aMagneticModel,
         const Shared<EarthAtmosphericModel>& aAtmosphericModel
     );
+
+    /// @brief              Constructor
+    ///
+    /// @param              [in] anInstant An instant for the Earth celestial object
+    /// @param              [in] anEphemeris An ephemeris for the Earth celestial object
+    /// @param              [in] aGravitationalModel A gravitational model for the Earth celestial object
+    /// @param              [in] aMagneticModel A magnetic model for the Earth celestial object
+    /// @param              [in] aAtmosphericModel An atmospheric model for the Earth celestial object
 
     Earth(
         const Shared<Ephemeris>& anEphemeris,

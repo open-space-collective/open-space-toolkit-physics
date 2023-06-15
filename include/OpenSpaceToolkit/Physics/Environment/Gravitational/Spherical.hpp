@@ -31,7 +31,7 @@ class Spherical : public Model
    public:
     /// @brief              Constructor
     ///
-    /// @param              [in] parameters A struct of parameters
+    /// @param              [in] parameters A set of gravitational parameters
 
     Spherical(const Model::Parameters& parameters);
 

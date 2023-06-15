@@ -8,10 +8,11 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Sun(pybind11::mo
 
     using ostk::core::fs::Directory;
 
+    using ostk::physics::environment::gravitational::Model;
     using ostk::physics::environment::gravitational::Sun;
 
     {
-        class_<Sun> sun_class(aModule, "Sun");
+        class_<Sun, Model> sun_class(aModule, "Sun");
 
         sun_class
 

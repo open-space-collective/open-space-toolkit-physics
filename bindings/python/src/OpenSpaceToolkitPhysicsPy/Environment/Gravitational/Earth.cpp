@@ -10,11 +10,12 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(pybind11::
     using ostk::core::types::Integer;
     using ostk::core::fs::Directory;
 
+    using ostk::physics::environment::gravitational::Model;
     using ostk::physics::environment::gravitational::Earth;
     using ostk::physics::environment::gravitational::earth::Manager;
 
     {
-        class_<Earth> earth_class(aModule, "Earth");
+        class_<Earth, Model> earth_class(aModule, "Earth");
 
         earth_class
 
