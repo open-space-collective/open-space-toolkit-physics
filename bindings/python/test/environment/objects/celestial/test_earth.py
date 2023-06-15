@@ -95,56 +95,54 @@ class TestEarth:
                 (
                     EarthGravitationalModel.EarthType.EGM2008,
                     Directory.undefined(),
-                    100,
-                    100,
+                    20,
+                    20,
                 ),
-                (EarthAtmosphericModel.EarthAtmosphericType.Exponential),
-                (EarthMagneticModel.EarthMagneticType.Dipole),
+                (EarthAtmosphericModel.EarthAtmosphericType.Exponential,),
+                (EarthMagneticModel.EarthMagneticType.Dipole,),
             ),
             (
                 (
                     EarthGravitationalModel.EarthType.EGM96,
                     Directory.undefined(),
-                    100,
-                    100,
+                    20,
+                    20,
                 ),
-                (EarthAtmosphericModel.EarthAtmosphericType.Exponential),
-                (EarthMagneticModel.EarthMagneticType.Dipole),
+                (EarthAtmosphericModel.EarthAtmosphericType.Exponential,),
+                (EarthMagneticModel.EarthMagneticType.Dipole,),
             ),
             (
                 (
                     EarthGravitationalModel.EarthType.EGM84,
                     Directory.undefined(),
-                    100,
-                    100,
+                    20,
+                    20,
                 ),
-                (EarthAtmosphericModel.EarthAtmosphericType.Exponential),
-                (EarthMagneticModel.EarthMagneticType.Dipole),
+                (EarthAtmosphericModel.EarthAtmosphericType.Exponential,),
+                (EarthMagneticModel.EarthMagneticType.Dipole,),
             ),
             (
                 (
                     EarthGravitationalModel.EarthType.WGS84_EGM96,
                     Directory.undefined(),
-                    100,
-                    100,
+                    20,
+                    20,
                 ),
-                (EarthAtmosphericModel.EarthAtmosphericType.Exponential),
-                (EarthMagneticModel.EarthMagneticType.Dipole),
+                (EarthAtmosphericModel.EarthAtmosphericType.Exponential,),
+                (EarthMagneticModel.EarthMagneticType.Dipole,),
             ),
             (
                 (
                     EarthGravitationalModel.EarthType.WGS84,
                     Directory.undefined(),
-                    100,
-                    100,
                 ),
-                (EarthAtmosphericModel.EarthAtmosphericType.Exponential),
-                (EarthMagneticModel.EarthMagneticType.Dipole),
+                (EarthAtmosphericModel.EarthAtmosphericType.Exponential,),
+                (EarthMagneticModel.EarthMagneticType.Dipole,),
             ),
             (
                 (EarthGravitationalModel.EarthType.Spherical, Directory.undefined()),
-                (EarthAtmosphericModel.EarthAtmosphericType.Exponential),
-                (EarthMagneticModel.EarthMagneticType.Dipole),
+                (EarthAtmosphericModel.EarthAtmosphericType.Exponential,),
+                (EarthMagneticModel.EarthMagneticType.Dipole,),
             ),
         ),
     )
@@ -152,8 +150,8 @@ class TestEarth:
         self, grav_model_parameters: tuple, atmos_model_parameters, mag_model_parameters
     ):
         earth = Earth.from_models(
-            EarthGravitationalModel(grav_model_parameters),
-            EarthAtmosphericModel(atmos_model_parameters),
-            EarthMagneticModel(mag_model_parameters),
+            EarthGravitationalModel(*grav_model_parameters),
+            EarthMagneticModel(*mag_model_parameters),
+            EarthAtmosphericModel(*atmos_model_parameters),
         )
         assert earth.is_defined()

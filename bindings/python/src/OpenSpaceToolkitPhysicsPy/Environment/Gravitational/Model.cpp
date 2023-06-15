@@ -6,15 +6,18 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Model(pybind11::
 {
     using namespace pybind11;
 
-    {
-        class_<Model> (aModule, "Model");
-    }
     using ostk::core::types::Real;
+    using ostk::core::types::Shared;
 
-    using ostk::physics::environment::gravitational::Model;
     using ostk::physics::units::Derived;
     using ostk::physics::units::Length;
+    using ostk::physics::environment::gravitational::Model;
 
+    {
+        class_<Model, Shared<Model>> (aModule, "Model");
+    }
+
+    {
     class_<Model::Parameters>(aModule, "GravitationalParameters")
 
         .def(
@@ -37,4 +40,5 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Model(pybind11::
         .def_static("undefined", &Model::Parameters::Undefined)
 
         ;
+    }
 }

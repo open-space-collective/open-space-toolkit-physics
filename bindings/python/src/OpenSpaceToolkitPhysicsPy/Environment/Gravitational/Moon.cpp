@@ -7,12 +7,13 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Moon(pybind11::m
     using namespace pybind11;
 
     using ostk::core::fs::Directory;
+    using ostk::core::types::Shared;
 
     using ostk::physics::environment::gravitational::Model;
     using ostk::physics::environment::gravitational::Moon;
 
     {
-        class_<Moon, Model> moon_class(aModule, "Moon");
+        class_<Moon, Shared<Moon>, Model> moon_class(aModule, "Moon");
 
         moon_class
 
