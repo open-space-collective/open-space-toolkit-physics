@@ -53,7 +53,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Earth(
                     const Shared<EarthGravitationalModel>&,
                     const Shared<EarthMagneticModel>&,
                     const Shared<EarthAtmosphericModel>&>(),
-                arg("instant"),
                 arg("ephemeris"),
                 arg("gravitational_model") = pybind11::none(),
                 arg("magnetic_model") = pybind11::none(),

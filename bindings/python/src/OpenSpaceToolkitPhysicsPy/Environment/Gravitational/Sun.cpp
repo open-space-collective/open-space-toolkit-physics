@@ -23,8 +23,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Sun(pybind11::mo
 
             .def("is_defined", &Sun::isDefined)
 
-            .def("get_parameters", &Sun::getParameters)
-
             .def("get_type", &Sun::getType)
 
             .def("get_field_value_at", &Sun::getFieldValueAt, arg("position"), arg("instant"))

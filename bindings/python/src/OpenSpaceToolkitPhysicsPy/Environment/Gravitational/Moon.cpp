@@ -23,8 +23,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Moon(pybind11::m
 
             .def("is_defined", &Moon::isDefined)
 
-            .def("get_parameters", &Moon::getParameters)
-
             .def("get_type", &Moon::getType)
 
             .def("get_field_value_at", &Moon::getFieldValueAt, arg("position"), arg("instant"))

@@ -19,7 +19,5 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Spherical(pybind
 
         .def("is_defined", &Spherical::isDefined)
 
-        .def("get_parameters", &Spherical::getParameters)
-
         ;
 }

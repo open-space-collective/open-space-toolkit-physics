@@ -34,8 +34,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(pybind11::
 
             .def("is_defined", &Earth::isDefined)
 
-            .def("get_parameters", &Earth::getParameters)
-
             .def("get_type", &Earth::getType)
 
             .def("get_field_value_at", &Earth::getFieldValueAt, arg("position"), arg("instant"))

@@ -14,7 +14,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Model(pybind11::
     using ostk::physics::environment::gravitational::Model;
 
     {
-        class_<Model, Shared<Model>> (aModule, "Model");
+        class_<Model, Shared<Model>>(aModule, "Model").def("get_parameters", &Model::getParameters);
     }
 
     {
