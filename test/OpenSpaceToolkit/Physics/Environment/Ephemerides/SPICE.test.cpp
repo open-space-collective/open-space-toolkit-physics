@@ -1,5 +1,6 @@
 /// Apache License 2.0
 
+#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
 #include <OpenSpaceToolkit/Core/Containers/Table.hpp>
 #include <OpenSpaceToolkit/Core/Containers/Tuple.hpp>
 #include <OpenSpaceToolkit/Core/Types/Real.hpp>
@@ -300,5 +301,27 @@ TEST(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, AutomaticMode)
         Engine::Get().setMode(Engine::DefaultMode());
 
         Engine::Get().reset();
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Engine, DefaultKernels)
+{
+    using ostk::core::ctnr::Array;
+    using ostk::core::fs::Path;
+    using ostk::core::fs::Directory;
+
+    using ostk::physics::env::ephem::spice::Engine;
+    using ostk::physics::env::ephem::spice::Kernel;
+
+    {
+        const Directory spiceDirectory =
+            Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE"));
+
+        const Array<Kernel> kernels = Engine::DefaultKernels(spiceDirectory);
+
+        for (const auto& kernel : kernels)
+        {
+            EXPECT_TRUE(kernel.isDefined());
+        }
     }
 }

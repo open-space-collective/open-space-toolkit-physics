@@ -106,6 +106,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Objects_Celestial(pybind11::mo
         .def("get_gravitational_field_at", &Celestial::getGravitationalFieldAt, arg("position"), arg("instant"))
         .def("get_magnetic_field_at", &Celestial::getMagneticFieldAt, arg("position"), arg("instant"))
         .def("get_atmospheric_density_at", &Celestial::getAtmosphericDensityAt, arg("position"), arg("instant"))
+        .def("gravitational_model_is_defined", &Celestial::gravitationalModelIsDefined)
+        .def("magnetic_model_is_defined", &Celestial::magneticModelIsDefined)
+        .def("atmospheric_model_is_defined", &Celestial::atmosphericModelIsDefined)
         .def("get_frame_at", &Celestial::getFrameAt, arg("lla"), arg("frame_type"))
 
         .def_static("undefined", &Celestial::Undefined)
