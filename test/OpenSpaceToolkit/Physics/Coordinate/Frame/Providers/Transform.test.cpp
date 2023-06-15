@@ -48,7 +48,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Test)
         const Array<Tuple<File, Shared<const Frame>, Shared<const Frame>, Real, Real, Real, Real, Real>>
             referenceScenarios = {
 
-                // GCRF <> J2000
+                // GCRF <> J2000 (Orekit)
 
                 {File::Path(Path::Parse(
                      "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_J2000_orekit.csv"
@@ -61,19 +61,30 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Test)
                  1e-6,  // Orientation angle tolerance [rad]
                  0.0},  // Angular velocity tolerance [rad/s]
 
-                // GCRF <> ITRF
+                // GCRF <> ITRF (STK)
 
                 {File::Path(Path::Parse(
-                     "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_ITRF_IERS_2010_orekit.csv"
+                     "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_ITRF_stk.csv"
                  )),
                  Frame::GCRF(),
                  Frame::ITRF(),
-                 0.0,   // Position tolerance [m]
-                 0.0,   // Velocity tolerance [m/s]
-                 1e-3,  // Orientation axis tolerance []
-                 1e-6,  // Orientation angle tolerance [rad]
+                 0.0,    // Position tolerance [m]
+                 0.0,    // Velocity tolerance [m/s]
+                 1e-3,   // Orientation axis tolerance []
+                 1e-6,   // Orientation angle tolerance [rad]
                  1e-6},  // Angular velocity tolerance [rad/s]
 
+                // GCRF <> ITRF (Orekit)
+
+                {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/"
+                                        "GCRF_ITRF_IERS_2010_orekit.csv")),
+                 Frame::GCRF(),
+                 Frame::ITRF(),
+                 0.0,    // Position tolerance [m]
+                 0.0,    // Velocity tolerance [m/s]
+                 1e-3,   // Orientation axis tolerance []
+                 1e-6,   // Orientation angle tolerance [rad]
+                 1e-6},  // Angular velocity tolerance [rad/s]
 
                 // GCRF <> TEME
 
@@ -82,10 +93,10 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Test)
                  )),
                  Frame::GCRF(),
                  Frame::TEME(),
-                 0.0,   // Position tolerance [m]
-                 0.0,   // Velocity tolerance [m/s]
-                 1e-3,  // Orientation axis tolerance []
-                 1e-6,  // Orientation angle tolerance [rad]
+                 0.0,    // Position tolerance [m]
+                 0.0,    // Velocity tolerance [m/s]
+                 1e-3,   // Orientation axis tolerance []
+                 1e-6,   // Orientation angle tolerance [rad]
                  1e-6},  // Angular velocity tolerance [rad/s]
 
                 // GCRF <> TOD IAU_2000A @2020-01-01T00:00:00.000 TAI
@@ -265,11 +276,10 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Test)
 
                     const RotationVector referenceToFrame2 = RotationVector::Quaternion(referenceQuaterion);
                     const RotationVector referenceToFrame1 =
-                        RotationVector::Quaternion(referenceQuaterion.toConjugate());\
+                        RotationVector::Quaternion(referenceQuaterion.toConjugate());
 
                     const RotationVector toFrame2 = RotationVector::Quaternion(transformToFrame2.getOrientation());
                     const RotationVector toFrame1 = RotationVector::Quaternion(transformToFrame1.getOrientation());
-
 
                     // Angle
 
@@ -303,7 +313,8 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Test)
 
                     ASSERT_TRUE(referenceToFrame2.getAxis().isNear(toFrame2.getAxis(), orientationAxisTolerance))
                         << String::Format(
-                               "{} @ {} Rotation Axis: {} [] vs. {} [] above {} [] tolerance | Rotation Angle: {} [rad] vs {} [rad]",
+                               "{} @ {} Rotation Axis: {} [] vs. {} [] above {} [] tolerance | Rotation Angle: {} "
+                               "[rad] vs {} [rad]",
                                scenario,
                                instant.toString(Scale::TAI),
                                referenceToFrame2.getAxis().toString(),
@@ -315,7 +326,8 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Test)
 
                     ASSERT_TRUE(referenceToFrame1.getAxis().isNear(toFrame1.getAxis(), orientationAxisTolerance))
                         << String::Format(
-                               "{} @ {} Rotation Axis: {} [] vs. {} [] above {} [] tolerance | Rotation Angle: {} [rad] vs {} [rad]",
+                               "{} @ {} Rotation Axis: {} [] vs. {} [] above {} [] tolerance | Rotation Angle: {} "
+                               "[rad] vs {} [rad]",
                                scenario,
                                instant.toString(Scale::TAI),
                                referenceToFrame1.getAxis().toString(),
