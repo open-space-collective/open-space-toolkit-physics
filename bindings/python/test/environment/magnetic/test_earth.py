@@ -32,10 +32,7 @@ class TestEarth:
         assert isinstance(earth_magnetic_model, EarthMagneticModel)
 
     def test_get_type_success(self, earth_magnetic_model: EarthMagneticModel):
-        assert (
-            earth_magnetic_model.get_type()
-            == EarthMagneticModel.Type.EMM2010
-        )
+        assert earth_magnetic_model.get_type() == EarthMagneticModel.Type.EMM2010
 
     def test_is_defined_success(self, earth_magnetic_model: EarthMagneticModel):
         assert earth_magnetic_model.is_defined() == True

@@ -55,8 +55,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(pybind11::
             .value("EGM84", Earth::Type::EGM84)
             .value("WGS84_EGM96", Earth::Type::WGS84_EGM96)
             .value("EGM96", Earth::Type::EGM96)
-            .value("EGM2008", Earth::Type::EGM2008)
-            ;
+            .value("EGM2008", Earth::Type::EGM2008);
     }
 
     // Create "earth" python submodule

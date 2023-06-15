@@ -146,8 +146,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utilities_Eclipse, EclipseIntervalsAtP
 
             const Position position_ITRF = Position::Meters(
                 lla.toCartesian(
-                    EarthGravitationalModel::EGM2008.equatorialRadius_,
-                    EarthGravitationalModel::EGM2008.flattening_
+                    EarthGravitationalModel::EGM2008.equatorialRadius_, EarthGravitationalModel::EGM2008.flattening_
                 ),
                 Frame::ITRF()
             );

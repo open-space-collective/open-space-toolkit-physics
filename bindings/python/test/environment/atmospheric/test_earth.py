@@ -39,8 +39,7 @@ class TestEarth:
 
     def test_get_type_success(self, earth_atmospheric_model: EarthAtmosphericModel):
         assert (
-            earth_atmospheric_model.get_type()
-            == EarthAtmosphericModel.Type.Exponential
+            earth_atmospheric_model.get_type() == EarthAtmosphericModel.Type.Exponential
         )
 
     def test_is_defined_success(self, earth_atmospheric_model: EarthAtmosphericModel):

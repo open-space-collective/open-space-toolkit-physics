@@ -92,5 +92,4 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Earth(
 
             ;
     }
-
 }

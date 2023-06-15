@@ -1,7 +1,7 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkitPhysicsPy/Environment/Gravitational/Model.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Environment/Gravitational/Earth.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Environment/Gravitational/Model.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Environment/Gravitational/Moon.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Environment/Gravitational/Spherical.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Environment/Gravitational/Sun.cpp>

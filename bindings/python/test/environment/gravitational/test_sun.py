@@ -36,9 +36,7 @@ class TestSun:
         assert isinstance(sun_gravitational_model, GravitationalModel)
 
     def test_get_type_success(self, sun_gravitational_model: SunGravitationalModel):
-        assert (
-            sun_gravitational_model.get_type() == SunGravitationalModel.Type.Spherical
-        )
+        assert sun_gravitational_model.get_type() == SunGravitationalModel.Type.Spherical
 
     def test_get_field_value_at_success(
         self, sun_gravitational_model: SunGravitationalModel

@@ -10,9 +10,11 @@ from ostk.physics.environment.gravitational import Earth as EarthGravitationalMo
 from ostk.physics.environment.atmospheric import Earth as EarthAtmosphericModel
 from ostk.physics.environment.magnetic import Earth as EarthMagneticModel
 
+
 @pytest.fixture
 def earth():
     return Earth.default()
+
 
 class TestEarth:
     def test_properties(self, earth):
@@ -21,7 +23,6 @@ class TestEarth:
         assert earth.get_flattening() is not None
         assert earth.get_j2() is not None
         assert earth.get_j4() is not None
-
 
     def test_default_success(self, earth):
         assert earth is not None

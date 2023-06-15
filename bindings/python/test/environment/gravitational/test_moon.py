@@ -37,8 +37,7 @@ class TestMoon:
 
     def test_get_type_success(self, moon_gravitational_model: MoonGravitationalModel):
         assert (
-            moon_gravitational_model.get_type()
-            == MoonGravitationalModel.Type.Spherical
+            moon_gravitational_model.get_type() == MoonGravitationalModel.Type.Spherical
         )
 
     def test_get_field_value_at_success(

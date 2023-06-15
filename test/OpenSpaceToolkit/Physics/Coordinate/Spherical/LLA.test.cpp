@@ -267,8 +267,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToCartesian)
                 const LLA lla = {reference_latitude, reference_longitude, reference_altitude};
 
                 const Vector3d position_ITRF = lla.toCartesian(
-                    EarthGravitationalModel::EGM2008.equatorialRadius_,
-                    EarthGravitationalModel::EGM2008.flattening_
+                    EarthGravitationalModel::EGM2008.equatorialRadius_, EarthGravitationalModel::EGM2008.flattening_
                 );
 
                 {

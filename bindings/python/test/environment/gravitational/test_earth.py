@@ -57,8 +57,7 @@ class TestEarth:
 
     def test_get_type_success(self, earth_gravitational_model: EarthGravitationalModel):
         assert (
-            earth_gravitational_model.get_type()
-            == EarthGravitationalModel.Type.EGM2008
+            earth_gravitational_model.get_type() == EarthGravitationalModel.Type.EGM2008
         )
 
     def test_get_field_value_at_success(

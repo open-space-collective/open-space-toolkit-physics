@@ -445,8 +445,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetAtmosphericDensi
             const Position position = {
                 LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(123.0))
                     .toCartesian(
-                        EarthGravitationalModel::EGM2008.equatorialRadius_,
-                        EarthGravitationalModel::EGM2008.flattening_
+                        EarthGravitationalModel::EGM2008.equatorialRadius_, EarthGravitationalModel::EGM2008.flattening_
                     ),
                 Position::Unit::Meter,
                 Frame::ITRF()};
@@ -466,8 +465,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetAtmosphericDensi
             const Position position = {
                 LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(499.0))
                     .toCartesian(
-                        EarthGravitationalModel::EGM2008.equatorialRadius_,
-                        EarthGravitationalModel::EGM2008.flattening_
+                        EarthGravitationalModel::EGM2008.equatorialRadius_, EarthGravitationalModel::EGM2008.flattening_
                     ),
                 Position::Unit::Meter,
                 Frame::ITRF()};
@@ -487,8 +485,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetAtmosphericDensi
             const Position position = {
                 LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(501.0))
                     .toCartesian(
-                        EarthGravitationalModel::EGM2008.equatorialRadius_,
-                        EarthGravitationalModel::EGM2008.flattening_
+                        EarthGravitationalModel::EGM2008.equatorialRadius_, EarthGravitationalModel::EGM2008.flattening_
                     ),
                 Position::Unit::Meter,
                 Frame::ITRF()};
@@ -512,8 +509,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetAtmosphericDensi
             const Position position = {
                 LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(501.0))
                     .toCartesian(
-                        EarthGravitationalModel::EGM2008.equatorialRadius_,
-                        EarthGravitationalModel::EGM2008.flattening_
+                        EarthGravitationalModel::EGM2008.equatorialRadius_, EarthGravitationalModel::EGM2008.flattening_
                     ),
                 Position::Unit::Meter,
                 Frame::ITRF()};
@@ -525,8 +521,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetAtmosphericDensi
             const Position position = {
                 LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(501.0))
                     .toCartesian(
-                        EarthGravitationalModel::EGM2008.equatorialRadius_,
-                        EarthGravitationalModel::EGM2008.flattening_
+                        EarthGravitationalModel::EGM2008.equatorialRadius_, EarthGravitationalModel::EGM2008.flattening_
                     ),
                 Position::Unit::Meter,
                 Frame::ITRF()};

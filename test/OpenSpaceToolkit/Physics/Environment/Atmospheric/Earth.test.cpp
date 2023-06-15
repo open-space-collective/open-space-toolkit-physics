@@ -131,8 +131,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Positi
 
             const Position position = {
                 lla.toCartesian(
-                    EarthGravitationalModel::EGM2008.equatorialRadius_,
-                    EarthGravitationalModel::EGM2008.flattening_
+                    EarthGravitationalModel::EGM2008.equatorialRadius_, EarthGravitationalModel::EGM2008.flattening_
                 ),
                 Position::Unit::Meter,
                 Frame::ITRF()};

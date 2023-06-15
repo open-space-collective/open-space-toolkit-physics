@@ -42,21 +42,11 @@ class TestManager:
     def test_has_data_file_for_type_success(
         self, manager: EarthGravitationalModelManager
     ):
+        assert manager.has_data_file_for_type(EarthGravitationalModel.Type.WGS84) == True
+        assert manager.has_data_file_for_type(EarthGravitationalModel.Type.EGM84) == True
+        assert manager.has_data_file_for_type(EarthGravitationalModel.Type.EGM96) == True
         assert (
-            manager.has_data_file_for_type(EarthGravitationalModel.Type.WGS84)
-            == True
-        )
-        assert (
-            manager.has_data_file_for_type(EarthGravitationalModel.Type.EGM84)
-            == True
-        )
-        assert (
-            manager.has_data_file_for_type(EarthGravitationalModel.Type.EGM96)
-            == True
-        )
-        assert (
-            manager.has_data_file_for_type(EarthGravitationalModel.Type.EGM2008)
-            == True
+            manager.has_data_file_for_type(EarthGravitationalModel.Type.EGM2008) == True
         )
 
     def test_get_local_repository_success(self, manager: EarthGravitationalModelManager):
