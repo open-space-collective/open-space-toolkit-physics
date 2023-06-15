@@ -53,6 +53,14 @@ def lla_point_equator_1() -> LLA:
 def lla_point_equator_2() -> LLA:
     return LLA(
         Angle(0.0, Angle.Unit.Degree),
+        Angle(90.0, Angle.Unit.Degree),
+        Length(1.0, Length.Unit.Meter)
+    )
+
+@pytest.fixture
+def lla_point_equator_3() -> LLA:
+    return LLA(
+        Angle(0.0, Angle.Unit.Degree),
         Angle(180.0, Angle.Unit.Degree),
         Length(1.0, Length.Unit.Meter)
     )
@@ -176,6 +184,7 @@ class TestLLA:
     def test_distance_between(self,
                               lla_point_equator_1: LLA,
                               lla_point_equator_2: LLA,
+                              lla_point_equator_3: LLA,
                               lla_north_pole: LLA,
                               lla_south_pole: LLA):
 
@@ -183,16 +192,30 @@ class TestLLA:
         assert zero_distance_spherical is not None
         assert zero_distance_spherical.in_meters() == 0.0
 
-        distance_spherical: Length = LLA.distance_between(lla_point_equator_1, lla_point_equator_2, Spherical.equatorial_radius, Spherical.flattening)
-        assert distance_spherical is not None
-        assert distance_spherical.in_meters() == Spherical.equatorial_radius.in_meters() * np.pi
+        distance_spherical_equatorial_1_2: Length = LLA.distance_between(lla_point_equator_1, lla_point_equator_2, Spherical.equatorial_radius, Spherical.flattening)
+        distance_spherical_equatorial_2_1: Length = LLA.distance_between(lla_point_equator_2, lla_point_equator_1, Spherical.equatorial_radius, Spherical.flattening)
+        assert distance_spherical_equatorial_1_2.in_meters() == Spherical.equatorial_radius.in_meters() * np.pi / 2
+        assert distance_spherical_equatorial_2_1.in_meters() == Spherical.equatorial_radius.in_meters() * np.pi / 2
+
+        distance_spherical_equatorial_1_3: Length = LLA.distance_between(lla_point_equator_1, lla_point_equator_3, Spherical.equatorial_radius, Spherical.flattening)
+        distance_spherical_equatorial_3_1: Length = LLA.distance_between(lla_point_equator_3, lla_point_equator_1, Spherical.equatorial_radius, Spherical.flattening)
+        assert distance_spherical_equatorial_1_3.in_meters() == Spherical.equatorial_radius.in_meters() * np.pi
+        assert distance_spherical_equatorial_3_1.in_meters() == Spherical.equatorial_radius.in_meters() * np.pi
 
         distance_spherical_poles: Length = LLA.distance_between(lla_north_pole, lla_south_pole, Spherical.equatorial_radius, Spherical.flattening)
-        assert distance_spherical_poles == distance_spherical
+        assert distance_spherical_poles == distance_spherical_equatorial_1_3
 
         distance_wgs84_poles: Length = LLA.distance_between(lla_north_pole, lla_south_pole, WGS84_EGM96.equatorial_radius, WGS84_EGM96.flattening)
-        distance_wgs84_equatorial: Length = LLA.distance_between(lla_point_equator_1, lla_point_equator_2, WGS84_EGM96.equatorial_radius, WGS84_EGM96.flattening)
+        distance_wgs84_equatorial_1_2: Length = LLA.distance_between(lla_point_equator_1, lla_point_equator_2, WGS84_EGM96.equatorial_radius, WGS84_EGM96.flattening)
+        assert distance_wgs84_equatorial_1_2 == distance_spherical_equatorial_1_2  # on equator
 
-        assert distance_wgs84_poles < distance_wgs84_equatorial
+        distance_wgs84_equatorial_1_3: Length = LLA.distance_between(lla_point_equator_1, lla_point_equator_3, WGS84_EGM96.equatorial_radius, WGS84_EGM96.flattening)  # through the poles
+        distance_wgs84_equatorial_3_1: Length = LLA.distance_between(lla_point_equator_3, lla_point_equator_1, WGS84_EGM96.equatorial_radius, WGS84_EGM96.flattening)  # through the poles
+        distance_wgs84_equatorial_2_3: Length = LLA.distance_between(lla_point_equator_2, lla_point_equator_3, WGS84_EGM96.equatorial_radius, WGS84_EGM96.flattening)
 
-        assert 1 == 0
+        assert distance_wgs84_equatorial_3_1 == distance_wgs84_equatorial_1_3
+        assert distance_wgs84_equatorial_1_3 < distance_wgs84_equatorial_1_2 + distance_wgs84_equatorial_2_3
+
+        distance_wgs84_1_north_pole: Length = LLA.distance_between(lla_point_equator_1, lla_north_pole, WGS84_EGM96.equatorial_radius, WGS84_EGM96.flattening)
+        assert distance_wgs84_1_north_pole < distance_wgs84_equatorial_1_2  # flattened surface at poles
+        assert distance_wgs84_1_north_pole < distance_spherical_equatorial_1_2
