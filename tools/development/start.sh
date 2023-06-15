@@ -58,7 +58,7 @@ if [[ ! -z ${1} ]] && [[ ${1} == "--link" ]]; then
             cp -as /mnt/open-space-toolkit-core/include/OpenSpaceToolkit/Core /usr/local/include/OpenSpaceToolkit/Core; \
             cp -as /mnt/open-space-toolkit-core/src/OpenSpaceToolkit/Core/* /usr/local/include/OpenSpaceToolkit/Core/; \
             ln -s /mnt/open-space-toolkit-core/lib/libopen-space-toolkit-core.so /usr/local/lib/; \
-            ln -s /mnt/open-space-toolkit-core/lib/libopen-space-toolkit-core.so.0 /usr/local/lib/;"
+            ln -s /mnt/open-space-toolkit-core/lib/libopen-space-toolkit-core.so.1 /usr/local/lib/;"
 
         fi
 
@@ -75,7 +75,7 @@ if [[ ! -z ${1} ]] && [[ ${1} == "--link" ]]; then
             cp -as /mnt/open-space-toolkit-io/include/OpenSpaceToolkit/IO /usr/local/include/OpenSpaceToolkit/IO; \
             cp -as /mnt/open-space-toolkit-io/src/OpenSpaceToolkit/IO/* /usr/local/include/OpenSpaceToolkit/IO/; \
             ln -s /mnt/open-space-toolkit-io/lib/libopen-space-toolkit-io.so /usr/local/lib/; \
-            ln -s /mnt/open-space-toolkit-io/lib/libopen-space-toolkit-io.so.0 /usr/local/lib/;"
+            ln -s /mnt/open-space-toolkit-io/lib/libopen-space-toolkit-io.so.1 /usr/local/lib/;"
 
         fi
 
@@ -92,7 +92,7 @@ if [[ ! -z ${1} ]] && [[ ${1} == "--link" ]]; then
             cp -as /mnt/open-space-toolkit-mathematics/include/OpenSpaceToolkit/Mathematics /usr/local/include/OpenSpaceToolkit/Mathematics; \
             cp -as /mnt/open-space-toolkit-mathematics/src/OpenSpaceToolkit/Mathematics/* /usr/local/include/OpenSpaceToolkit/Mathematics/; \
             ln -s /mnt/open-space-toolkit-mathematics/lib/libopen-space-toolkit-mathematics.so /usr/local/lib/; \
-            ln -s /mnt/open-space-toolkit-mathematics/lib/libopen-space-toolkit-mathematics.so.0 /usr/local/lib/;"
+            ln -s /mnt/open-space-toolkit-mathematics/lib/libopen-space-toolkit-mathematics.so.1 /usr/local/lib/;"
 
         fi
 

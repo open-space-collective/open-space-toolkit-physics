@@ -74,7 +74,7 @@ run_container ()
     --rm \
     --env-file="${script_directory}/.env" \
     --volume="${project_directory}/lib/libopen-space-toolkit-physics.so:/opt/conda/lib/python3.6/site-packages/OpenSpaceToolkit/Physics/libopen-space-toolkit-physics.so:ro" \
-    --volume="${project_directory}/lib/libopen-space-toolkit-physics.so.0:/opt/conda/lib/python3.6/site-packages/OpenSpaceToolkit/Physics/libopen-space-toolkit-physics.so.0:ro" \
+    --volume="${project_directory}/lib/libopen-space-toolkit-physics.so.1:/opt/conda/lib/python3.6/site-packages/OpenSpaceToolkit/Physics/libopen-space-toolkit-physics.so.1:ro" \
     --volume="${project_directory}/lib/OpenSpaceToolkitPhysicsPy.so:/opt/conda/lib/python3.6/site-packages/OpenSpaceToolkit/Physics/OpenSpaceToolkitPhysicsPy.so:ro" \
     --volume="${project_directory}/bindings/python/docs:/home/jovyan/open-space-toolkit/physics/docs:ro" \
     --volume="${project_directory}/bindings/python/test:/home/jovyan/open-space-toolkit/physics/test:ro" \
