@@ -158,6 +158,67 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, GetAltitude)
     }
 }
 
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, CalculateDistanceTo_Spherical)
+{
+    const Earth sphericalEarth = Earth::Spherical();
+
+    const Length sphericalEarthEquatorialRadius = sphericalEarth.getEquatorialRadius();
+    const Real sphericalEarthFlattening = sphericalEarth.getFlattening();
+
+    const double pi = 3.14159265358979323846;
+
+    {
+        const Length distance = lla_.calculateDistanceTo(lla_, sphericalEarthEquatorialRadius, sphericalEarthFlattening);
+
+        EXPECT_EQ(distance.inMeters(), 0.0);
+    }
+
+    {
+        const LLA llaEquatorial0 = LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Meters(1.0));
+        const LLA llaEquatorial90 = LLA(Angle::Degrees(0.0), Angle::Degrees(90.0), Length::Meters(1.0));
+
+        const Length distanceQuarterEquatorialOneDirection = llaEquatorial0.calculateDistanceTo(
+            llaEquatorial90, sphericalEarthEquatorialRadius, sphericalEarthFlattening
+        );
+        const Length distanceQuarterEquatorialOtherDirection = llaEquatorial90.calculateDistanceTo(
+            llaEquatorial0, sphericalEarthEquatorialRadius, sphericalEarthFlattening
+        );
+
+        EXPECT_EQ(distanceQuarterEquatorialOneDirection, distanceQuarterEquatorialOtherDirection);
+        EXPECT_EQ(
+            distanceQuarterEquatorialOneDirection.inMeters(), pi * sphericalEarthEquatorialRadius.inMeters() / 2.0
+        );
+    }
+
+    {
+        const LLA llaEquatorial0 = LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Meters(1.0));
+        const LLA llaEquatorial180 = LLA(Angle::Degrees(0.0), Angle::Degrees(180.0), Length::Meters(1.0));
+
+        const Length distanceSemiEquatorialOneDirection = llaEquatorial0.calculateDistanceTo(
+            llaEquatorial180, sphericalEarthEquatorialRadius, sphericalEarthFlattening
+        );
+        const Length distanceSemiEquatorialOtherDirection = llaEquatorial180.calculateDistanceTo(
+            llaEquatorial0, sphericalEarthEquatorialRadius, sphericalEarthFlattening
+        );
+
+        EXPECT_EQ(distanceSemiEquatorialOneDirection, distanceSemiEquatorialOtherDirection);
+        EXPECT_EQ(distanceSemiEquatorialOneDirection.inMeters(), pi * sphericalEarthEquatorialRadius.inMeters());
+    }
+
+    {
+        const LLA llaNorthPole = LLA(Angle::Degrees(90.0), Angle::Degrees(15.0), Length::Meters(1.0));
+        const LLA llaSouthPole = LLA(Angle::Degrees(-90.0), Angle::Degrees(15.0), Length::Meters(1.0));
+
+        const Length distanceSemiPolesOneDirection =
+            llaNorthPole.calculateDistanceTo(llaSouthPole, sphericalEarthEquatorialRadius, sphericalEarthFlattening);
+        const Length distanceSemiPolesOtherDirection =
+            llaSouthPole.calculateDistanceTo(llaNorthPole, sphericalEarthEquatorialRadius, sphericalEarthFlattening);
+
+        EXPECT_EQ(distanceSemiPolesOneDirection, distanceSemiPolesOtherDirection);
+        EXPECT_EQ(distanceSemiPolesOneDirection.inMeters(), pi * sphericalEarthEquatorialRadius.inMeters());
+    }
+}
+
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToVector)
 {
     {
@@ -348,16 +409,12 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Cartesian)
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, DistanceBetween)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, DistanceBetween_Spherical)
 {
     const Earth sphericalEarth = Earth::Spherical();
-    const Earth wgs84Earth = Earth::WGS84();
 
     const Length sphericalEarthEquatorialRadius = sphericalEarth.getEquatorialRadius();
     const Real sphericalEarthFlattening = sphericalEarth.getFlattening();
-
-    const Length wgs84EarthEquatorialRadius = wgs84Earth.getEquatorialRadius();
-    const Real wgs84EarthFlattening = wgs84Earth.getFlattening();
 
     const double pi = 3.14159265358979323846;
 
@@ -412,15 +469,36 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, DistanceBetween)
         EXPECT_EQ(distanceSemiPolesOneDirection, distanceSemiPolesOtherDirection);
         EXPECT_EQ(distanceSemiPolesOneDirection.inMeters(), pi * sphericalEarthEquatorialRadius.inMeters());
     }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, DistanceBetween_WGS84)
+{
+    const Earth WGS84Earth = Earth::WGS84();
+    const Earth sphericalEarth = Earth::Spherical();
+
+    const Length sphericalEarthEquatorialRadius = sphericalEarth.getEquatorialRadius();
+    const Real sphericalEarthFlattening = sphericalEarth.getFlattening();
+
+    const Length WGS84EarthEquatorialRadius = WGS84Earth.getEquatorialRadius();
+    const Real WGS84EarthFlattening = WGS84Earth.getFlattening();
+
+    const double pi = 3.14159265358979323846;
+
+    {
+        const Length distance =
+            LLA::DistanceBetween(lla_, lla_, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
+
+        EXPECT_EQ(distance.inMeters(), 0.0);
+    }
 
     {
         const LLA llaNorthPole = LLA(Angle::Degrees(90.0), Angle::Degrees(15.0), Length::Meters(1.0));
         const LLA llaSouthPole = LLA(Angle::Degrees(-90.0), Angle::Degrees(15.0), Length::Meters(1.0));
 
         const Length distanceSemiPolesOneDirection =
-            LLA::DistanceBetween(llaNorthPole, llaSouthPole, wgs84EarthEquatorialRadius, wgs84EarthFlattening);
+            LLA::DistanceBetween(llaNorthPole, llaSouthPole, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
         const Length distanceSemiPolesOtherDirection =
-            LLA::DistanceBetween(llaSouthPole, llaNorthPole, wgs84EarthEquatorialRadius, wgs84EarthFlattening);
+            LLA::DistanceBetween(llaSouthPole, llaNorthPole, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
 
         EXPECT_EQ(distanceSemiPolesOneDirection, distanceSemiPolesOtherDirection);
         ASSERT_GT(pi * sphericalEarthEquatorialRadius.inMeters(), distanceSemiPolesOneDirection.inMeters());
@@ -432,12 +510,12 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, DistanceBetween)
         const LLA llaEquatorial180 = LLA(Angle::Degrees(0.0), Angle::Degrees(180.0), Length::Meters(1.0));
 
         const Length distanceFirstQuarterEquatorial =
-            LLA::DistanceBetween(llaEquatorial0, llaEquatorial90, wgs84EarthEquatorialRadius, wgs84EarthFlattening);
+            LLA::DistanceBetween(llaEquatorial0, llaEquatorial90, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
         const Length distanceSecondQuarterEquatorial =
-            LLA::DistanceBetween(llaEquatorial90, llaEquatorial180, wgs84EarthEquatorialRadius, wgs84EarthFlattening);
+            LLA::DistanceBetween(llaEquatorial90, llaEquatorial180, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
 
         const Length distanceSemiEquatorial =
-            LLA::DistanceBetween(llaEquatorial0, llaEquatorial180, wgs84EarthEquatorialRadius, wgs84EarthFlattening);
+            LLA::DistanceBetween(llaEquatorial0, llaEquatorial180, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
 
         ASSERT_GT(distanceFirstQuarterEquatorial + distanceSecondQuarterEquatorial, distanceSemiEquatorial);
     }
@@ -450,9 +528,9 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, DistanceBetween)
         const LLA llaSouthPole = LLA(Angle::Degrees(-90.0), Angle::Degrees(15.0), Length::Meters(1.0));
 
         const Length distanceSemiEquatorial =
-            LLA::DistanceBetween(llaEquatorial0, llaEquatorial180, wgs84EarthEquatorialRadius, wgs84EarthFlattening);
+            LLA::DistanceBetween(llaEquatorial0, llaEquatorial180, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
         const Length distanceSemiPoles =
-            LLA::DistanceBetween(llaNorthPole, llaSouthPole, wgs84EarthEquatorialRadius, wgs84EarthFlattening);
+            LLA::DistanceBetween(llaNorthPole, llaSouthPole, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
 
         EXPECT_EQ(distanceSemiEquatorial, distanceSemiPoles);
     }
@@ -465,7 +543,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, DistanceBetween)
             llaEquatorial0, llaNorthPole, sphericalEarthEquatorialRadius, sphericalEarthFlattening
         );
         const Length distanceQuarterNorthWGS84 =
-            LLA::DistanceBetween(llaEquatorial0, llaNorthPole, wgs84EarthEquatorialRadius, wgs84EarthFlattening);
+            LLA::DistanceBetween(llaEquatorial0, llaNorthPole, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
 
         ASSERT_GT(distanceQuarterNorthSpherical, distanceQuarterNorthWGS84);
     }

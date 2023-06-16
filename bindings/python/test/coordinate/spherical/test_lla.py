@@ -15,37 +15,41 @@ WGS84_EGM96 = physics.environment.objects.celestial_bodies.earth.models.WGS84_EG
 
 
 @pytest.fixture
-def latitude_float() -> float:
+def latitude_deg() -> float:
     return 30.0
 
 
 @pytest.fixture
-def longitude_float() -> float:
+def longitude_deg() -> float:
     return 30.0
 
 
 @pytest.fixture
-def altitude_float() -> float:
+def altitude_deg() -> float:
     return 1000.0
 
 
 @pytest.fixture
-def latitude(latitude_float: float) -> Angle:
-    return Angle(latitude_float, Angle.Unit.Degree)
+def latitude(latitude_deg: float) -> Angle:
+    return Angle(latitude_deg, Angle.Unit.Degree)
 
 
 @pytest.fixture
-def longitude(longitude_float: float) -> Angle:
-    return Angle(longitude_float, Angle.Unit.Degree)
+def longitude(longitude_deg: float) -> Angle:
+    return Angle(longitude_deg, Angle.Unit.Degree)
 
 
 @pytest.fixture
-def altitude(altitude_float: float) -> Length:
-    return Length(altitude_float, Length.Unit.Meter)
+def altitude(altitude_deg: float) -> Length:
+    return Length(altitude_deg, Length.Unit.Meter)
 
 
 @pytest.fixture
-def lla(latitude: Angle, longitude: Angle, altitude: Length) -> LLA:
+def lla(
+    latitude: Angle,
+    longitude: Angle,
+    altitude: Length,
+) -> LLA:
     return LLA(latitude, longitude, altitude)
 
 
@@ -96,21 +100,30 @@ def lla_south_pole() -> LLA:
 
 class TestLLA:
     def test_constructor_list_success(
-        self, latitude_float: float, longitude_float: float, altitude_float: float
+        self,
+        latitude_deg: float,
+        longitude_deg: float,
+        altitude_deg: float,
     ):
-        lla: LLA = LLA.vector([latitude_float, longitude_float, altitude_float])
+        lla: LLA = LLA.vector([latitude_deg, longitude_deg, altitude_deg])
         assert lla is not None
 
     def test_constructor_tuple_success(
-        self, latitude_float: float, longitude_float: float, altitude_float: float
+        self,
+        latitude_deg: float,
+        longitude_deg: float,
+        altitude_deg: float,
     ):
-        lla: LLA = LLA.vector((latitude_float, longitude_float, altitude_float))
+        lla: LLA = LLA.vector((latitude_deg, longitude_deg, altitude_deg))
         assert lla is not None
 
     def test_constructor_numpy_array_success(
-        self, latitude_float: float, longitude_float: float, altitude_float: float
+        self,
+        latitude_deg: float,
+        longitude_deg: float,
+        altitude_deg: float,
     ):
-        lla: LLA = LLA.vector(np.array((latitude_float, longitude_float, altitude_float)))
+        lla: LLA = LLA.vector(np.array((latitude_deg, longitude_deg, altitude_deg)))
         assert lla is not None
 
     def test_constructor_vector_failure_latitude(self):
@@ -129,42 +142,78 @@ class TestLLA:
         lla: LLA = LLA.cartesian([1.0, 1.0, 1.0], Length(1.0, Length.Unit.Meter), 0.001)
         assert lla is not None
 
-    def test_comparator(self, lla_point_equator_1: LLA, lla_point_equator_2: LLA):
+    def test_comparator(
+        self,
+        lla_point_equator_1: LLA,
+        lla_point_equator_2: LLA,
+    ):
         assert lla_point_equator_1 == lla_point_equator_1
         assert lla_point_equator_2 == lla_point_equator_2
         assert lla_point_equator_1 != lla_point_equator_2
 
-    def test_is_defined(self, lla: LLA):
+    def test_is_defined(
+        self,
+        lla: LLA,
+    ):
         assert lla.is_defined()
         assert lla.undefined().is_defined() is False
 
-    def test_getters(self, latitude: Angle, longitude: Angle, altitude: Length, lla: LLA):
+    def test_getters(
+        self,
+        latitude: Angle,
+        longitude: Angle,
+        altitude: Length,
+        lla: LLA,
+    ):
         assert lla.get_latitude() == latitude
         assert lla.get_longitude() == longitude
         assert lla.get_altitude() == altitude
 
+    def test_calculate_distance_to(
+        self,
+        lla_north_pole: LLA,
+        lla_south_pole: LLA,
+    ):
+        zero_distance_spherical: Length = lla_north_pole.calculate_distance_to(
+            lla_north_pole,
+            Spherical.equatorial_radius,
+            Spherical.flattening,
+        )
+        assert zero_distance_spherical is not None
+        assert zero_distance_spherical.in_meters() == 0.0
+
+        distance_spherical_poles: Length = lla_south_pole.calculate_distance_to(
+            lla_north_pole,
+            Spherical.equatorial_radius,
+            Spherical.flattening,
+        )
+        assert distance_spherical_poles.in_meters() == Spherical.equatorial_radius.in_meters() * np.pi
+
     def test_conversion_vector(
         self,
-        latitude_float: float,
-        longitude_float: float,
-        altitude_float: float,
+        latitude_deg: float,
+        longitude_deg: float,
+        altitude_deg: float,
         lla: LLA,
     ):
         vector: np.ndarray = lla.to_vector()
 
-        assert vector[0] == latitude_float
-        assert vector[1] == longitude_float
-        assert vector[2] == altitude_float
+        assert vector[0] == latitude_deg
+        assert vector[1] == longitude_deg
+        assert vector[2] == altitude_deg
 
-    def test_conversion_cartesian(self, lla: LLA):
+    def test_conversion_cartesian(
+        self,
+        lla: LLA,
+    ):
         cartesian: np.ndarray = LLA.to_cartesian(lla, Length(3.0, Length.Unit.Meter), 3.0)
         assert cartesian is not None
 
     def test_conversion_string(
         self,
-        latitude_float: float,
-        longitude_float: float,
-        altitude_float: float,
+        latitude_deg: float,
+        longitude_deg: float,
+        altitude_deg: float,
         lla: LLA,
     ):
         lla_string: String = lla.to_string()
@@ -173,7 +222,7 @@ class TestLLA:
         assert isinstance(lla_string, String)
         assert (
             lla_string
-            == f"[{latitude_float} [deg], {longitude_float} [deg], {altitude_float} [m]]"
+            == f"[{latitude_deg} [deg], {longitude_deg} [deg], {altitude_deg} [m]]"
         )
 
     def test_distance_between(
