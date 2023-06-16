@@ -81,7 +81,7 @@ Earth* Earth::clone() const
     return new Earth(*this);
 }
 
-Earth Earth::GravityOnly(const Shared<EarthGravitationalModel>& aGravitatationalModel)
+Earth Earth::GravitationalOnly(const Shared<EarthGravitationalModel>& aGravitatationalModel)
 {
     return Earth::FromModels(
         aGravitatationalModel,
@@ -99,7 +99,7 @@ Earth Earth::MagneticOnly(const Shared<EarthMagneticModel>& aMagneticModel)
     );
 }
 
-Earth Earth::AtmosphereOnly(const Shared<EarthAtmosphericModel>& anAtmosphericModel)
+Earth Earth::AtmosphericOnly(const Shared<EarthAtmosphericModel>& anAtmosphericModel)
 {
     return Earth::FromModels(
         std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::Undefined),

@@ -42,6 +42,7 @@ Real Exponential::getDensityAt(const Position& aPosition, const Instant& anInsta
     return this->getDensityAt(
         LLA::Cartesian(
             aPosition.inFrame(Frame::ITRF(), anInstant).accessCoordinates(),
+            // [TBI] inherit this from correct gravitational model, if present
             EarthGravitationalModel::EGM2008.equatorialRadius_,
             EarthGravitationalModel::EGM2008.flattening_
         ),

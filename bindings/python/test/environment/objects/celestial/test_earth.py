@@ -148,7 +148,7 @@ class TestEarth:
         ),
     )
     def test_from_models(
-        self, grav_model_parameters: tuple, atmos_model_parameters, mag_model_parameters
+        self, grav_model_parameters: tuple, atmos_model_parameters: tuple, mag_model_parameters: tuple
     ):
         earth = Earth.from_models(
             EarthGravitationalModel(*grav_model_parameters),
