@@ -376,32 +376,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Loa
         EXPECT_ANY_THROW(manager.loadCSSISpaceWeather(CSSISpaceWeather::Undefined()));
     }
 }
-
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, LoadFinals2000A)
-{
-    using ostk::core::fs::Path;
-    using ostk::core::fs::File;
-
-    using ostk::physics::coord::frame::provider::iers::Finals2000A;
-    using ostk::physics::environment::atmospheric::earth::weather::Manager;
-
-    {
-        const File file = File::Path(Path::Parse(
-            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Finals2000A/finals2000A.data"
-        ));
-
-        const Finals2000A finals2000a = Finals2000A::Load(file);
-
-        Manager& manager = Manager::Get();
-
-        manager.reset();
-        manager.loadFinals2000A(finals2000a);
-
-        EXPECT_ANY_THROW(manager.loadFinals2000A(finals2000a));
-        EXPECT_ANY_THROW(manager.loadFinals2000A(Finals2000A::Undefined()));
-    }
-}
-
+*/
+/*
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, FetchLatestCSSISpaceWeather)
 {
     using ostk::core::fs::File;

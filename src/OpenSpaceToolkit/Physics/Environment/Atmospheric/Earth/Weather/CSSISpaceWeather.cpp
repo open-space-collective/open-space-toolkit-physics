@@ -24,24 +24,18 @@ namespace earth
 {
 namespace weather
 {
-
+/*
 std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& aCSSISpaceWeather)
 {
     using ostk::core::types::String;
 
     using ostk::physics::time::Scale;
 
-    ostk::core::utils::Print::Header(anOutputStream, "Bulletin A");
+    ostk::core::utils::Print::Header(anOutputStream, "CSSI Space Weather");
 
     ostk::core::utils::Print::Line(anOutputStream)
         << "Release date:" << (aCSSISpaceWeather.releaseDate_.isDefined() ? aCSSISpaceWeather.releaseDate_.toString() : "Undefined");
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "TAI - UTC:"
-        << (aCSSISpaceWeather.taiMinusUtc_.isDefined()
-                ? String::Format(
-                      "{} @ {}", aCSSISpaceWeather.taiMinusUtc_.toString(), aCSSISpaceWeather.taiMinusUtcEpoch_.toString(Scale::UTC)
-                  )
-                : "Undefined");
+    
     ostk::core::utils::Print::Line(anOutputStream)
         << "Observation interval:"
         << (aCSSISpaceWeather.observationInterval_.isDefined() ? aCSSISpaceWeather.observationInterval_.toString(Scale::UTC)
@@ -50,7 +44,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& a
         << "Predictiom interval:"
         << (aCSSISpaceWeather.predictionInterval_.isDefined() ? aCSSISpaceWeather.predictionInterval_.toString(Scale::UTC)
                                                        : "Undefined");
-
+    
     ostk::core::utils::Print::Separator(anOutputStream, "Observation");
 
     for (const auto& observationIt : aCSSISpaceWeather.observations_)
@@ -94,44 +88,26 @@ std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& a
 
     return anOutputStream;
 }
-
+*/
 bool CSSISpaceWeather::isDefined() const
 {
-    return releaseDate_.isDefined() && taiMinusUtc_.isDefined() && taiMinusUtcEpoch_.isDefined() &&
-           observationInterval_.isDefined() && (!observations_.empty()) && predictionInterval_.isDefined() &&
-           (!predictions_.empty());
+    //return releaseDate_.isDefined() && 
+    //       observationInterval_.isDefined() && (!observations_.empty()) && dailyPredictionInterval_.isDefined() &&
+    //       (!dailyPredictions_.empty()) && monthlyPredictionInterval_.isDefined() && (!monthlyPredictions_.empty());
+    return releaseDate_.isDefined();
 }
 
 const Date& CSSISpaceWeather::accessReleaseDate() const
 {
     if (!this->isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Bulletin A");
+        throw ostk::core::error::runtime::Undefined("CSSI Space Weather");
     }
 
     return releaseDate_;
 }
 
-const Duration& CSSISpaceWeather::accessTAIMinusUTC() const
-{
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Bulletin A");
-    }
-
-    return taiMinusUtc_;
-}
-
-const Instant& CSSISpaceWeather::accessTAIMinusUTCEpoch() const
-{
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Bulletin A");
-    }
-
-    return taiMinusUtcEpoch_;
-}
-
+/*
 const Interval& CSSISpaceWeather::accessObservationInterval() const
 {
     if (!this->isDefined())
@@ -151,22 +127,12 @@ const Interval& CSSISpaceWeather::accessPredictionInterval() const
 
     return predictionInterval_;
 }
-
+*/
 Date CSSISpaceWeather::getReleaseDate() const
 {
     return this->accessReleaseDate();
 }
-
-Duration CSSISpaceWeather::getTAIMinusUTC() const
-{
-    return this->accessTAIMinusUTC();
-}
-
-Instant CSSISpaceWeather::getTAIMinusUTCEpoch() const
-{
-    return this->accessTAIMinusUTCEpoch();
-}
-
+/*
 Interval CSSISpaceWeather::getObservationInterval() const
 {
     return this->accessObservationInterval();
@@ -340,7 +306,7 @@ CSSISpaceWeather::Prediction CSSISpaceWeather::getPredictionAt(const Instant& an
         throw ostk::core::error::RuntimeError("Cannot find prediction at [{}].", anInstant.toString(Scale::UTC));
     }
 }
-
+*/
 CSSISpaceWeather CSSISpaceWeather::Undefined()
 {
     return CSSISpaceWeather();
@@ -370,22 +336,22 @@ CSSISpaceWeather CSSISpaceWeather::Load(const fs::File& aFile)
 
     const auto monthFromString = [](const String& aMonthString) -> Uint8
     {
-        if (aMonthString == "January")
+        if (aMonthString == "Jan")
         {
             return 1;
         }
 
-        if (aMonthString == "February")
+        if (aMonthString == "Feb")
         {
             return 2;
         }
 
-        if (aMonthString == "March")
+        if (aMonthString == "Mar")
         {
             return 3;
         }
 
-        if (aMonthString == "April")
+        if (aMonthString == "Apr")
         {
             return 4;
         }
@@ -395,37 +361,37 @@ CSSISpaceWeather CSSISpaceWeather::Load(const fs::File& aFile)
             return 5;
         }
 
-        if (aMonthString == "June")
+        if (aMonthString == "Jun")
         {
             return 6;
         }
 
-        if (aMonthString == "July")
+        if (aMonthString == "Jul")
         {
             return 7;
         }
 
-        if (aMonthString == "August")
+        if (aMonthString == "Aug")
         {
             return 8;
         }
 
-        if (aMonthString == "September")
+        if (aMonthString == "Sep")
         {
             return 9;
         }
 
-        if (aMonthString == "October")
+        if (aMonthString == "Oct")
         {
             return 10;
         }
 
-        if (aMonthString == "November")
+        if (aMonthString == "Nov")
         {
             return 11;
         }
 
-        if (aMonthString == "December")
+        if (aMonthString == "Dec")
         {
             return 12;
         }
@@ -435,53 +401,146 @@ CSSISpaceWeather CSSISpaceWeather::Load(const fs::File& aFile)
         return 0;
     };
 
-    CSSISpaceWeather bulletin;
+    CSSISpaceWeather spaceWeather;
 
     std::ifstream fileStream {aFile.getPath().toString()};
 
-    Index lineIndex = 0;
+    bool readingObserved = false;
+    //bool readingDailyPredicted = false;
+    //bool readingMonthlyPredicted = false;
+
     String line;
 
-    static const std::regex releaseDateRegex = std::regex("^[ ]+([\\d]+) ([\\w]+) ([\\d]+)[ ]+Vol\\.[\\d\\w\\. ]+$");
-    static const std::regex taiMinusUtcEpochRegex = std::regex("^[ ]+Beginning ([\\d]+) ([\\w]+) ([\\d]+):[ ]+$");
-    static const std::regex taiMinusUtcRegex = std::regex("^[ ]+TAI-UTC = ([-]?[\\d.]+) ([\\d]+) seconds[ ]+$");
-    static const std::regex observationRegex = std::regex(
-        "^[ ]+([\\d]+)[ ]+([\\d]+)[ ]+([\\d]+)[ ]+([\\d]+)[ ]+([-]?[\\d.]+)[ ]+([\\d.]+)[ ]+([-]?[\\d.]+)[ "
-        "]+([\\d.]+)[ ]+([-]?[\\d.]+)[ ]+([\\d.]+)[ ]+$"
-    );
-    static const std::regex predictionRegex = std::regex(
-        "^[ ]+([\\d]+)[ ]+([\\d]+)[ ]+([\\d]+)[ ]+([\\d]+)[ ]+([-]?[\\d.]+)[ ]+([-]?[\\d.]+)[ ]+([-]?[\\d.]+)[ ]+$"
-    );
+    auto split = [] ( std::string s, std::string delimiter ) -> Array<String>
+    {
+        Array<String> results;
 
-    // Quick and dirty implementation.
-    // The part below can be greatly improved:
-    // - If Bulletin A has constant line count, using line index based parsing will be much faster
-    // - Use flags to identify sections, to avoid regex'ing each line
-
-    std::smatch match;
-
+        size_t last = 0; 
+        size_t next = 0; 
+        while ((next = s.find(delimiter, last)) != std::string::npos) 
+        {   
+            // account for multiple consecutive delimiters
+            const String token = s.substr(last, next-last);
+            if (token != delimiter)
+            {
+                results.add(token);
+            }
+            last = next + 1; 
+        } 
+        results.add(s.substr(last));
+        return results;
+    };
+    
     while (std::getline(fileStream, line))
     {
-        if ((lineIndex < 10) && (!bulletin.releaseDate_.isDefined()) && std::regex_match(line, match, releaseDateRegex))
-        {
-            const Uint8 day = static_cast<Uint8>(boost::lexical_cast<Uint16>(match[1]));
-            const Uint8 month = monthFromString(String(match[2]));
-            const Uint16 year = boost::lexical_cast<Uint16>(match[3]);
 
-            bulletin.releaseDate_ = Date(year, month, day);
+        Array<String> lineParts = split(line, " ");
+
+        if (lineParts.empty())
+        {
+            continue;
+        }
+        
+        if (lineParts[0] == "UPDATED") 
+        {
+            const Array<String> releaseDateParts = split(line, " ");
+
+            const Uint16 year = boost::lexical_cast<Uint16>(releaseDateParts[1]);
+            const Uint8 month = monthFromString(releaseDateParts[2]);
+            const Uint8 day = static_cast<Uint8>(boost::lexical_cast<Uint16>(releaseDateParts[3]));
+
+            spaceWeather.releaseDate_ = Date(year, month, day);
+        }
+        
+        if ( lineParts.getSize() >= 2 && lineParts[0] == "BEGIN" && lineParts[1] == "OBSERVED") 
+        {
+            readingObserved = true;
+            continue;
         }
 
-        if ((lineIndex < 30) && (!bulletin.taiMinusUtcEpoch_.isDefined()) &&
-            std::regex_match(line, match, taiMinusUtcEpochRegex))
+        if ( readingObserved )
         {
-            const Uint8 day = static_cast<Uint8>(boost::lexical_cast<Uint16>(match[1]));
-            const Uint8 month = monthFromString(String(match[2]));
-            const Uint16 year = boost::lexical_cast<Uint16>(match[3]);
+            Integer DATE_YEAR = boost::lexical_cast<int>(lineParts[0]);
+            Integer DATE_MONT = boost::lexical_cast<int>(lineParts[1]);
+            Integer DATE_DA = boost::lexical_cast<int>(lineParts[2]);
+            Integer BSRN = boost::lexical_cast<int>(lineParts[3]);
+            Integer ND = boost::lexical_cast<int>(lineParts[4]);
+            Integer KP1 = boost::lexical_cast<int>(lineParts[5]);
+            Integer KP2 = boost::lexical_cast<int>(lineParts[6]);
+            Integer KP3 = boost::lexical_cast<int>(lineParts[7]);
+            Integer KP4 = boost::lexical_cast<int>(lineParts[8]);
+            Integer KP5 = boost::lexical_cast<int>(lineParts[9]);
+            Integer KP6 = boost::lexical_cast<int>(lineParts[10]);
+            Integer KP7 = boost::lexical_cast<int>(lineParts[11]);
+            Integer KP8 = boost::lexical_cast<int>(lineParts[12]);
+            Integer KP_SUM = boost::lexical_cast<int>(lineParts[13]);
+            Integer Kp = boost::lexical_cast<int>(lineParts[14]);
+            Integer AP1 = boost::lexical_cast<int>(lineParts[15]);
+            Integer AP2 = boost::lexical_cast<int>(lineParts[16]);
+            Integer AP3 = boost::lexical_cast<int>(lineParts[17]);
+            Integer AP4 = boost::lexical_cast<int>(lineParts[18]);
+            Integer AP5 = boost::lexical_cast<int>(lineParts[19]);
+            Integer AP6 = boost::lexical_cast<int>(lineParts[20]);
+            Integer AP7 = boost::lexical_cast<int>(lineParts[21]);
+            Integer AP8 = boost::lexical_cast<int>(lineParts[22]);
+            Integer AP_AVG = boost::lexical_cast<int>(lineParts[23]);
+            Real CP = boost::lexical_cast<double>(lineParts[24]);
+            Integer C9 = boost::lexical_cast<int>(lineParts[25]);
+            Integer ISN = boost::lexical_cast<int>(lineParts[26]);
+            Real F107_OBS = boost::lexical_cast<double>(lineParts[27]);
+            Real F107_ADJ = boost::lexical_cast<double>(lineParts[28]);
+            Real F107_DATA_TYPE = boost::lexical_cast<double>(lineParts[29]);
+            Real F107_OBS_CENTER81 = boost::lexical_cast<double>(lineParts[30]);
+            Real F107_OBS_LAST81 = boost::lexical_cast<double>(lineParts[31]);
+            Real F107_ADJ_CENTER81 = boost::lexical_cast<double>(lineParts[32]);
+            Real F107_ADJ_LAST81 = boost::lexical_cast<double>(lineParts[33]);
 
-            bulletin.taiMinusUtcEpoch_ =
-                Instant::DateTime(DateTime(Date(year, month, day), Time::Midnight()), Scale::UTC);  // [TBC] UTC?
+            const CSSISpaceWeather::Observation observation = {
+                DATE_YEAR,
+                DATE_MONT,
+                DATE_DA,
+                BSRN,
+                ND,
+                KP1,
+                KP2,
+                KP3,
+                KP4,
+                KP5,
+                KP6,
+                KP7,
+                KP8,
+                KP_SUM,
+                Kp,
+                AP1,
+                AP2,
+                AP3,
+                AP4,
+                AP5,
+                AP6,
+                AP7,
+                AP8,
+                AP_AVG,
+                CP,
+                C9,
+                ISN,
+                F107_OBS,
+                F107_ADJ,
+                F107_DATA_TYPE,
+                F107_OBS_CENTER81,
+                F107_OBS_LAST81,
+                F107_ADJ_CENTER81,
+                F107_ADJ_LAST81,
+            };
+
+            spaceWeather.observations_.add(observation);
         }
 
+        if ( lineParts.getSize() >= 2 && lineParts[0] == "BEGIN" && lineParts[1] == "OBSERVED")
+        {
+            readingObserved = false;
+            continue;
+        }
+        /*
         if ((lineIndex < 30) && (!bulletin.taiMinusUtc_.isDefined()) && std::regex_match(line, match, taiMinusUtcRegex))
         {
             const Real seconds = boost::lexical_cast<double>(match[1]) + boost::lexical_cast<double>(match[2]) / 1e6;
@@ -536,8 +595,10 @@ CSSISpaceWeather CSSISpaceWeather::Load(const fs::File& aFile)
         }
 
         lineIndex++;
+        */
     }
 
+    /*
     if (!bulletin.observations_.empty())
     {
         const Instant observationStartInstant =
@@ -557,18 +618,25 @@ CSSISpaceWeather CSSISpaceWeather::Load(const fs::File& aFile)
 
         bulletin.predictionInterval_ = Interval::Closed(predictionStartInstant, predictionEndInstant);
     }
+    */
 
-    return bulletin;
+    return spaceWeather;
 }
 
 CSSISpaceWeather::CSSISpaceWeather()
     : releaseDate_(Date::Undefined()),
-      taiMinusUtc_(Duration::Undefined()),
-      taiMinusUtcEpoch_(Instant::Undefined()),
+
+      //numObservedData_(Integer::Undefined()),
       observationInterval_(Interval::Undefined()),
-      observations_(Map<Integer, CSSISpaceWeather::Observation>()),
-      predictionInterval_(Interval::Undefined()),
-      predictions_(Map<Integer, CSSISpaceWeather::Prediction>())
+      observations_(Array<CSSISpaceWeather::Observation>()),
+
+      //numDailyPredictionData_(Integer::Undefined()),
+      dailyPredictionInterval_(Interval::Undefined()),
+      dailyPredictions_(Array<CSSISpaceWeather::DailyPrediction>()),
+
+      //numMonthlyPredictionData_(Integer::Undefined()),
+      monthlyPredictionInterval_(Interval::Undefined()),
+      monthlyPredictions_(Array<CSSISpaceWeather::MonthlyPrediction>())
 {
 }
 
