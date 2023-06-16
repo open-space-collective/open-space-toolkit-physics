@@ -111,7 +111,7 @@ Earth Earth::AtmosphereOnly(const Shared<EarthAtmosphericModel>& anAtmosphericMo
 Earth Earth::FromModels(
     const Shared<EarthGravitationalModel>& aGravitationalModel,
     const Shared<EarthMagneticModel>& aMagneticModel,
-    const Shared<EarthAtmosphericModel>& aAtmosphericModel
+    const Shared<EarthAtmosphericModel>& anAtmosphericModel
 )
 {
     const Shared<const Frame> earthFrameSPtr = Frame::ITRF();
@@ -120,7 +120,7 @@ Earth Earth::FromModels(
         std::make_shared<Analytical>(earthFrameSPtr),
         aGravitationalModel,
         aMagneticModel,
-        aAtmosphericModel,
+        anAtmosphericModel,
     };
 }
 

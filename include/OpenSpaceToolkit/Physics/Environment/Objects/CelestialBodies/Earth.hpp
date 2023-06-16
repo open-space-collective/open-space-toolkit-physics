@@ -62,7 +62,7 @@ class Earth : public Celestial
     /// @param              [in] anEphemeris An ephemeris for the Earth celestial object
     /// @param              [in] aGravitationalModel A gravitational model for the Earth celestial object
     /// @param              [in] aMagneticModel A magnetic model for the Earth celestial object
-    /// @param              [in] aAtmosphericModel An atmospheric model for the Earth celestial object
+    /// @param              [in] anAtmosphericModel An atmospheric model for the Earth celestial object
 
     Earth(
         const Derived& aGravitationalParameter,
@@ -73,7 +73,7 @@ class Earth : public Celestial
         const Shared<Ephemeris>& anEphemeris,
         const Shared<EarthGravitationalModel>& aGravitationalModel,
         const Shared<EarthMagneticModel>& aMagneticModel,
-        const Shared<EarthAtmosphericModel>& aAtmosphericModel
+        const Shared<EarthAtmosphericModel>& anAtmosphericModel
     );
 
     /// @brief              Constructor
@@ -82,13 +82,13 @@ class Earth : public Celestial
     /// @param              [in] anEphemeris An ephemeris for the Earth celestial object
     /// @param              [in] aGravitationalModel A gravitational model for the Earth celestial object
     /// @param              [in] aMagneticModel A magnetic model for the Earth celestial object
-    /// @param              [in] aAtmosphericModel An atmospheric model for the Earth celestial object
+    /// @param              [in] anAtmosphericModel An atmospheric model for the Earth celestial object
 
     Earth(
         const Shared<Ephemeris>& anEphemeris,
         const Shared<EarthGravitationalModel>& aGravitationalModel = nullptr,
         const Shared<EarthMagneticModel>& aMagneticModel = nullptr,
-        const Shared<EarthAtmosphericModel>& aAtmosphericModel = nullptr
+        const Shared<EarthAtmosphericModel>& anAtmosphericModel = nullptr
     );
 
     virtual ~Earth() override;
@@ -110,7 +110,7 @@ class Earth : public Celestial
 
     /// @brief              Just atmospheric model
     ///
-    /// @param              [in] aAtmosphericModel An atmospheric model
+    /// @param              [in] anAtmosphericModel An atmospheric model
     /// @return             Earth
 
     static Earth AtmosphereOnly(const Shared<EarthAtmosphericModel>& anAtmosphericModel);
@@ -126,14 +126,14 @@ class Earth : public Celestial
     ///
     /// @param              [in] aGravitationalModel A gravitational model
     /// @param              [in] aMagneticModel A magnetic model
-    /// @param              [in] aAtmosphericModel An atmospheric model
+    /// @param              [in] anAtmosphericModel An atmospheric model
     ///
     /// @return             Earth
 
     static Earth FromModels(
         const Shared<EarthGravitationalModel>& aGravitationalModel,
         const Shared<EarthMagneticModel>& aMagneticModel,
-        const Shared<EarthAtmosphericModel>& aAtmosphericModel
+        const Shared<EarthAtmosphericModel>& anAtmosphericModel
     );
 
     /// @brief              Earth Gravity Model 2008 model (EGM2008)

@@ -35,7 +35,8 @@ const Model::Parameters Earth::EGM2008 = {
     Length::Meters(6378137.0),
     1.0 / 298.257223563,
     -4.84169317366974e-04,
-    5.39965866638991e-07};
+    5.39965866638991e-07,
+};
 
 // EGM96 + WGS84
 
@@ -44,7 +45,8 @@ const Model::Parameters Earth::WGS84_EGM96 = {
     Length::Meters(6378137.0),
     1.0 / 298.257223563,
     -4.841653717360e-04,
-    5.398738637890e-07};
+    5.398738637890e-07,
+};
 
 // EGM96
 
@@ -53,7 +55,8 @@ const Model::Parameters Earth::EGM96 = {
     Length::Meters(6378136.3),
     1.0 / 298.257223563,
     -4.841653717360e-04,
-    5.398738637890e-07};
+    5.398738637890e-07,
+};
 
 // EGM84
 
@@ -62,7 +65,8 @@ const Model::Parameters Earth::EGM84 = {
     Length::Meters(6378137.0),
     1.0 / 298.257223563,
     -4.841668500000e-04,
-    5.369958670000e-07};
+    5.369958670000e-07,
+};
 
 // WGS84
 
@@ -71,12 +75,18 @@ const Model::Parameters Earth::WGS84 = {
     Length::Meters(6378137.0),
     1.0 / 298.257223563,
     -4.841668500000e-04,
-    5.369958670000e-07};
+    5.369958670000e-07,
+};
 
 // Spherical
 
 const Model::Parameters Earth::Spherical = {
-    {398600441500000.0, GravitationalParameterSIUnit}, Length::Meters(6378137.0), 0.0, 0.0, 0.0};
+    {398600441500000.0, GravitationalParameterSIUnit},
+    Length::Meters(6378137.0),
+    0.0,
+    0.0,
+    0.0,
+};
 
 class Earth::Impl
 {

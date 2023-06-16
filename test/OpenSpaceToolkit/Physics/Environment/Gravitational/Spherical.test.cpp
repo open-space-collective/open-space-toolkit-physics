@@ -24,8 +24,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Spherical, Constructor)
         const Derived gravitationalParameter = {
             1.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)};
 
-        const Model::Parameters parameters(gravitationalParameter, Length::Meters(1.0), 0.0, 0.0, 0.0);
-        EXPECT_NO_THROW(Spherical spherical(parameters));
+        const Model::Parameters parameterSet(gravitationalParameter, Length::Meters(1.0), 0.0, 0.0, 0.0);
+        EXPECT_NO_THROW(Spherical spherical(parameterSet));
     }
 
     {
@@ -39,8 +39,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Spherical, Clone)
         const Derived gravitationalParameter = {
             1.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)};
 
-        const Model::Parameters parameters(gravitationalParameter, Length::Meters(1.0), 0.0, 0.0, 0.0);
-        const Spherical spherical = {parameters};
+        const Model::Parameters parameterSet(gravitationalParameter, Length::Meters(1.0), 0.0, 0.0, 0.0);
+        const Spherical spherical = {parameterSet};
 
         EXPECT_NO_THROW(const Spherical* sphericalPtr = spherical.clone(); delete sphericalPtr;);
     }
@@ -52,9 +52,9 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Spherical, GetFieldValue
         const Derived gravitationalParameter = {
             1.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)};
 
-        const Model::Parameters parameters(gravitationalParameter, Length::Meters(1.0), 0.0, 0.0, 0.0);
+        const Model::Parameters parameterSet(gravitationalParameter, Length::Meters(1.0), 0.0, 0.0, 0.0);
 
-        const Spherical spherical = {parameters};
+        const Spherical spherical = {parameterSet};
 
         const Vector3d fieldValue = spherical.getFieldValueAt({1.0, 0.0, 0.0}, Instant::J2000());
 

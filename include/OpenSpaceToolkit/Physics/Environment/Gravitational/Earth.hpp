@@ -51,11 +51,11 @@ class Earth : public Model
 
     enum class Type
     {
-        Undefined,  ///< Undefined
-        Spherical,  ///< The spherical gravity originating from a point source at the center of the Earth
-        WGS84,  ///< The normal gravitational field for the reference ellipsoid. This includes the zonal coefficients up
-                ///< to order 20.
-        EGM84,  ///< The Earth Gravity Model 1984, which includes terms up to degree 180.
+        Undefined,    ///< Undefined
+        Spherical,    ///< The spherical gravity originating from a point source at the center of the Earth
+        WGS84,        ///< The normal gravitational field for the reference ellipsoid. This includes the zonal coefficients up
+                      ///< to order 20.
+        EGM84,        ///< The Earth Gravity Model 1984, which includes terms up to degree 180.
         WGS84_EGM96,  ///< The normal gravitational field for the reference ellipsoid plus the Earth Gravity Model 1996,
                       ///< which includes terms up to degree 360.
         EGM96,        ///< The Earth Gravity Model 1996, which includes terms up to degree 360.
