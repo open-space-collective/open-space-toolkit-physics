@@ -27,5 +27,5 @@ python_requires = ==${PYTHON_VERSION}.*
 install_requires = file: requirements.txt
 
 [options.package_data]
-ostk.physics=libopen-space-toolkit-physics.so.*, ${LIBRARY_TARGET}.*${EXTENSION}*.so
+ostk.physics=${SHARED_LIBRARY_TARGET}.${PROJECT_VERSION_MAJOR}, ${LIBRARY_TARGET}.*${EXTENSION}*.so
 *=*/data/*
