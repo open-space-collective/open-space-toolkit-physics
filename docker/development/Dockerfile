@@ -128,7 +128,7 @@ RUN mkdir -p /tmp/open-space-toolkit-io \
 
 ## Open Space Toolkit ▸ Mathematics
 
-ARG OSTK_MATHEMATICS_VERSION="0.7.1"
+ARG OSTK_MATHEMATICS_VERSION="0.7.3"
 
 RUN mkdir -p /tmp/open-space-toolkit-mathematics \
  && cd /tmp/open-space-toolkit-mathematics \
