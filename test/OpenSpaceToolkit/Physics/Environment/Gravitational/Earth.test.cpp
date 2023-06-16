@@ -203,6 +203,26 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, IsDefined)
     }
 }
 
+TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, ParametersFromType)
+{
+    const Array<Tuple<EarthGravitationalModel::Type, EarthGravitationalModel::Parameters>> testCases =
+    {
+        { EarthGravitationalModel::Type::Spherical, EarthGravitationalModel::Spherical },
+        { EarthGravitationalModel::Type::WGS84, EarthGravitationalModel::WGS84 },
+        { EarthGravitationalModel::Type::EGM84, EarthGravitationalModel::EGM84 },
+        { EarthGravitationalModel::Type::EGM96, EarthGravitationalModel::EGM96 },
+        { EarthGravitationalModel::Type::EGM2008, EarthGravitationalModel::EGM2008 },
+    };
+
+    for (const auto& testCase : testCases)
+    {
+        const EarthGravitationalModel::Type type = std::get<0>(testCase);
+        const EarthGravitationalModel::Parameters parameters = std::get<1>(testCase);
+
+        EXPECT_TRUE(parameters == EarthGravitationalModel::ParametersFromType(type));
+    }
+}
+
 TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetType)
 {
     {

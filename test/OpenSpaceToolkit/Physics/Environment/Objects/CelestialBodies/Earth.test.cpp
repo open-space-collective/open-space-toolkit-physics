@@ -53,6 +53,9 @@ using ostk::physics::time::Duration;
 using ostk::physics::coord::spherical::LLA;
 using ostk::physics::coord::Frame;
 using ostk::physics::env::obj::celest::Earth;
+using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
+using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
+using EarthMagneticModel = ostk::physics::environment::magnetic::Earth;
 
 // TEST (OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, Constructor)
 // {
@@ -257,4 +260,50 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, Spheric
 
     EXPECT_FALSE(earth.accessAtmosphericModel()->isDefined());
     EXPECT_FALSE(earth.accessMagneticModel()->isDefined());
+}
+
+TEST(OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, GravitationalOnly)
+{
+    const Earth earth = Earth::GravitationalOnly(std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::EGM2008));
+    EXPECT_TRUE(earth.isDefined());
+
+    EXPECT_TRUE(earth.gravitationalModelIsDefined());
+    EXPECT_FALSE(earth.magneticModelIsDefined());
+    EXPECT_FALSE(earth.atmosphericModelIsDefined());
+}
+
+TEST(OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, MagneticOnly)
+{
+    const Earth earth = Earth::MagneticOnly(std::make_shared<EarthMagneticModel>(EarthMagneticModel::Type::EMM2017));
+    EXPECT_TRUE(earth.isDefined());
+
+    EXPECT_FALSE(earth.gravitationalModelIsDefined());
+    EXPECT_TRUE(earth.magneticModelIsDefined());
+    EXPECT_FALSE(earth.atmosphericModelIsDefined());
+}
+
+TEST(OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, AtmosphericOnly)
+{
+    const Earth earth =
+        Earth::AtmosphericOnly(std::make_shared<EarthAtmosphericModel>(EarthAtmosphericModel::Type::Exponential));
+    EXPECT_TRUE(earth.isDefined());
+
+    EXPECT_FALSE(earth.gravitationalModelIsDefined());
+    EXPECT_FALSE(earth.magneticModelIsDefined());
+    EXPECT_TRUE(earth.atmosphericModelIsDefined());
+}
+
+
+TEST(OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, FromModels)
+{
+    const Earth earth = Earth::FromModels(
+        std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::EGM2008),
+        std::make_shared<EarthMagneticModel>(EarthMagneticModel::Type::EMM2017),
+        std::make_shared<EarthAtmosphericModel>(EarthAtmosphericModel::Type::Exponential)
+    );
+    EXPECT_TRUE(earth.isDefined());
+
+    EXPECT_TRUE(earth.gravitationalModelIsDefined());
+    EXPECT_TRUE(earth.magneticModelIsDefined());
+    EXPECT_TRUE(earth.atmosphericModelIsDefined());
 }

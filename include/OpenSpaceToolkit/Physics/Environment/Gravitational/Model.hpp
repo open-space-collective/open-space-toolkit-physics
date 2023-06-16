@@ -37,6 +37,8 @@ static const Derived::Unit GravitationalParameterSIUnit =
 class Model
 {
    public:
+
+    // @brief                  Gravitational model parameters
     struct Parameters
     {
         Parameters(
@@ -48,6 +50,14 @@ class Model
         );
 
         static Parameters Undefined();
+
+        bool isDefined() const;
+
+        bool operator==(const Parameters& aParameterSet) const;
+
+        bool operator!=(const Parameters& aParameterSet) const;
+
+        friend std::ostream& operator<<(std::ostream& anOutputStream, const Parameters& aParameterSet);
 
         Derived gravitationalParameter_;
         Length equatorialRadius_;

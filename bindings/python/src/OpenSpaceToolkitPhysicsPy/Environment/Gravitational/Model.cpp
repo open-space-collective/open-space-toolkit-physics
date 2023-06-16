@@ -29,6 +29,14 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Model(pybind11::
                 arg("J4")
             )
 
+            .def(self == self)
+            .def(self != self)
+
+            .def("__str__", &(shiftToString<Model::Parameters>))
+            .def("__repr__", &(shiftToString<Model::Parameters>))
+
+            .def("is_defined", &Model::Parameters::isDefined)
+
             .def_readwrite("gravitational_parameter", &Model::Parameters::gravitationalParameter_)
             .def_readwrite("equatorial_radius", &Model::Parameters::equatorialRadius_)
             .def_readwrite("flattening", &Model::Parameters::flattening_)
