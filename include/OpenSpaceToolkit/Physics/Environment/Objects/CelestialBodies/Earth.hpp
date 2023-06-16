@@ -106,14 +106,14 @@ class Earth : public Celestial
     /// @param              [in] aGravitationalModel A gravitational model
     /// @return             Earth
 
-    static Earth GravityOnly(const Shared<EarthGravitationalModel>& aGravitationalModel);
+    static Earth GravitationalOnly(const Shared<EarthGravitationalModel>& aGravitationalModel);
 
     /// @brief              Just atmospheric model
     ///
     /// @param              [in] anAtmosphericModel An atmospheric model
     /// @return             Earth
 
-    static Earth AtmosphereOnly(const Shared<EarthAtmosphericModel>& anAtmosphericModel);
+    static Earth AtmosphericOnly(const Shared<EarthAtmosphericModel>& anAtmosphericModel);
 
     /// @brief              Just magnetic model
     ///

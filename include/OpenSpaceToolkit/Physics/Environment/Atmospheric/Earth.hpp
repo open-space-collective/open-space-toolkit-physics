@@ -37,9 +37,9 @@ class Earth : public Model
    public:
     enum class Type
     {
-        Undefined,   ///< Undefined
-        Exponential, ///< Exponential atmospheric density model, valid up to 1000 km
-        NRLMSISE00   ///< Navy Research Lab Mass Spectrometer and Incoherent Scatter Radar Exosphere 2000
+        Undefined,    ///< Undefined
+        Exponential,  ///< Exponential atmospheric density model, valid up to 1000 km
+        NRLMSISE00    ///< Navy Research Lab Mass Spectrometer and Incoherent Scatter Radar Exosphere 2000
     };
 
     /// @brief              Constructor

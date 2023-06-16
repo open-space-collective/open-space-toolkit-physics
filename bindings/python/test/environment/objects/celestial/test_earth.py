@@ -148,7 +148,10 @@ class TestEarth:
         ),
     )
     def test_from_models(
-        self, grav_model_parameters: tuple, atmos_model_parameters: tuple, mag_model_parameters: tuple
+        self,
+        grav_model_parameters: tuple,
+        atmos_model_parameters: tuple,
+        mag_model_parameters: tuple,
     ):
         earth = Earth.from_models(
             EarthGravitationalModel(*grav_model_parameters),
@@ -156,3 +159,14 @@ class TestEarth:
             EarthAtmosphericModel(*atmos_model_parameters),
         )
         assert earth.is_defined()
+
+    def test_singular_model_static_constructors(self):
+        assert Earth.gravitational_only(
+            EarthGravitationalModel(EarthGravitationalModel.Type.EGM2008)
+        ).is_defined()
+        assert Earth.atmospheric_only(
+            EarthAtmosphericModel(EarthAtmosphericModel.Type.Exponential)
+        ).is_defined()
+        assert Earth.magnetic_only(
+            EarthMagneticModel(EarthMagneticModel.Type.WMM2010)
+        ).is_defined()

@@ -83,9 +83,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Earth(
             )
             .def_static("spherical", &Earth::Spherical)
 
-            .def_static("gravity_only", &Earth::GravityOnly, arg("gravity_model"))
+            .def_static("gravitational_only", &Earth::GravitationalOnly, arg("gravity_model"))
             .def_static("magnetic_only", &Earth::MagneticOnly, arg("magnetic_model"))
-            .def_static("atmospheric_only", &Earth::AtmosphereOnly, arg("atmospheric_model"))
+            .def_static("atmospheric_only", &Earth::AtmosphericOnly, arg("atmospheric_model"))
             .def_static(
                 "from_models", &Earth::FromModels, arg("gravity_model"), arg("magnetic_model"), arg("atmospheric_model")
             )
