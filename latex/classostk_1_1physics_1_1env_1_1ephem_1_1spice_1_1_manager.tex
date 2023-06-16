@@ -26,6 +26,8 @@ void \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_
 \begin{DoxyCompactList}\small\item\em Fetch kernel from remote. \end{DoxyCompactList}\item 
 Array$<$ \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel}} $>$ \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a5a539eb56558f1a0d6dfe1389760459f}{fetch\+Matching\+Kernels}} (const std\+::regex \&a\+Regex) const
 \begin{DoxyCompactList}\small\item\em Fetch kernels matching regular expression. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel}} \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a503ce578696267c90cfdb39b199b41c2}{find\+Kernel}} (const String \&a\+Regex\+String) const
+\begin{DoxyCompactList}\small\item\em Find kernels matching regular expression. Search locally first, then remotely. Always return the first found. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a6a3b6a49dfc44fc7f5545e55e8ef4e19}{set\+Local\+Repository}} (const Directory \&a\+Directory)
 \begin{DoxyCompactList}\small\item\em Set local repository. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_aa5a020cb2245b5583086bb788428f5a6}{set\+Remote\+Url}} (const U\+RL \&a\+Remote\+Url)
@@ -129,6 +131,24 @@ Fetch kernel from remote.
 
 
 Fetch kernels matching regular expression. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+Regex} & A regular expression \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An array of kernels 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a503ce578696267c90cfdb39b199b41c2}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a503ce578696267c90cfdb39b199b41c2}} 
+\index{ostk::physics::env::ephem::spice::Manager@{ostk::physics::env::ephem::spice::Manager}!findKernel@{findKernel}}
+\index{findKernel@{findKernel}!ostk::physics::env::ephem::spice::Manager@{ostk::physics::env::ephem::spice::Manager}}
+\doxysubsubsection{\texorpdfstring{findKernel()}{findKernel()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel}} ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager\+::find\+Kernel (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Regex\+String }\end{DoxyParamCaption}) const}
+
+
+
+Find kernels matching regular expression. Search locally first, then remotely. Always return the first found. 
 
 
 \begin{DoxyParams}[1]{Parameters}

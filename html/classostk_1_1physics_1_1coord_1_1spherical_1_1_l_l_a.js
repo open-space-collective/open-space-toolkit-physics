@@ -1,6 +1,7 @@
 var classostk_1_1physics_1_1coord_1_1spherical_1_1_l_l_a =
 [
     [ "LLA", "classostk_1_1physics_1_1coord_1_1spherical_1_1_l_l_a.html#a5a168b8087f0cfabca76b82870f6324a", null ],
+    [ "calculateDistanceTo", "classostk_1_1physics_1_1coord_1_1spherical_1_1_l_l_a.html#ada1948f0b5064f5368ac9b7fdcea9ae1", null ],
     [ "getAltitude", "classostk_1_1physics_1_1coord_1_1spherical_1_1_l_l_a.html#a69214fc582c7d81ed8ddfbb28e7392a1", null ],
     [ "getLatitude", "classostk_1_1physics_1_1coord_1_1spherical_1_1_l_l_a.html#a0b6d5f7409e1efbff0f01a9c00a876e8", null ],
     [ "getLongitude", "classostk_1_1physics_1_1coord_1_1spherical_1_1_l_l_a.html#aa031e4c4f1078cec374f0d4b0cc6e20d", null ],

@@ -19,7 +19,7 @@ var searchData=
   ['accessframewithname_16',['accessFrameWithName',['../classostk_1_1physics_1_1coord_1_1frame_1_1_manager.html#abe8ac950d9f04b01a7c1165a6acb2a65',1,'ostk::physics::coord::frame::Manager']]],
   ['accessgeometry_17',['accessGeometry',['../classostk_1_1physics_1_1env_1_1_object.html#af5556cdc8db2a35e8549b79d481ceada',1,'ostk::physics::env::Object']]],
   ['accessgravitationalmodel_18',['accessGravitationalModel',['../classostk_1_1physics_1_1env_1_1obj_1_1_celestial.html#ad498343cdb085c4bb626442e69c583b0',1,'ostk::physics::env::obj::Celestial']]],
-  ['accessinstant_19',['accessInstant',['../classostk_1_1physics_1_1coord_1_1_transform.html#a3b7d5279c94c3ff0cd324fc929eae533',1,'ostk::physics::coord::Transform::accessInstant()'],['../classostk_1_1physics_1_1env_1_1_object.html#ae0a8b4a06e5dce1c295911f0f81f0ac0',1,'ostk::physics::env::Object::accessInstant()']]],
+  ['accessinstant_19',['accessInstant',['../classostk_1_1physics_1_1coord_1_1_transform.html#a3b7d5279c94c3ff0cd324fc929eae533',1,'ostk::physics::coord::Transform']]],
   ['accesslengthorder_20',['accessLengthOrder',['../classostk_1_1physics_1_1units_1_1_derived_1_1_unit.html#a8a5cfc4bc99fd666134b95fcabe41db0',1,'ostk::physics::units::Derived::Unit']]],
   ['accesslengthunit_21',['accessLengthUnit',['../classostk_1_1physics_1_1units_1_1_derived_1_1_unit.html#a925301080673e1eb527ea6dc1340b1bb',1,'ostk::physics::units::Derived::Unit']]],
   ['accessmagneticmodel_22',['accessMagneticModel',['../classostk_1_1physics_1_1env_1_1obj_1_1_celestial.html#a3bf6a51759025bf14f1d766348548b22',1,'ostk::physics::env::obj::Celestial']]],
@@ -67,8 +67,9 @@ var searchData=
   ['arcseconds_64',['Arcseconds',['../classostk_1_1physics_1_1units_1_1_angle.html#ac5817629ffd63aa9df93f0ee8b61af3a',1,'ostk::physics::units::Angle']]],
   ['astronomicalunit_65',['AstronomicalUnit',['../classostk_1_1physics_1_1units_1_1_length.html#a2664470a7eedf5d45c88861fe69badeaaa05a35804c7e4fff8e02f5a58782f133',1,'ostk::physics::units::Length']]],
   ['atmosphericmodel_66',['AtmosphericModel',['../namespaceostk_1_1physics_1_1env_1_1obj.html#a7d579dfb8bff4aeabd8e2a22882b8ab2',1,'ostk::physics::env::obj']]],
-  ['automatic_67',['Automatic',['../classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager.html#a3a8dd1081d1094069417687b4a3f16baa086247a9b57fde6eefee2a0c4752242d',1,'ostk::physics::coord::frame::provider::iers::Manager::Automatic()'],['../classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#a803b82d8f41c81e861852098b6b75ae2a086247a9b57fde6eefee2a0c4752242d',1,'ostk::physics::env::ephem::spice::Engine::Automatic()']]],
-  ['axes_68',['Axes',['../classostk_1_1physics_1_1coord_1_1_axes.html',1,'ostk::physics::coord::Axes'],['../classostk_1_1physics_1_1coord_1_1_axes.html#abed0f87ab7a6a493f3576a8fa7426051',1,'ostk::physics::coord::Axes::Axes()']]],
-  ['axes_2ecpp_69',['Axes.cpp',['../_axes_8cpp.html',1,'']]],
-  ['axes_2ehpp_70',['Axes.hpp',['../_axes_8hpp.html',1,'']]]
+  ['atmosphericmodelisdefined_67',['atmosphericModelIsDefined',['../classostk_1_1physics_1_1env_1_1obj_1_1_celestial.html#a9f31486d3615531cc9bad85e81b8aa7b',1,'ostk::physics::env::obj::Celestial']]],
+  ['automatic_68',['Automatic',['../classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager.html#a3a8dd1081d1094069417687b4a3f16baa086247a9b57fde6eefee2a0c4752242d',1,'ostk::physics::coord::frame::provider::iers::Manager::Automatic()'],['../classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#a803b82d8f41c81e861852098b6b75ae2a086247a9b57fde6eefee2a0c4752242d',1,'ostk::physics::env::ephem::spice::Engine::Automatic()']]],
+  ['axes_69',['Axes',['../classostk_1_1physics_1_1coord_1_1_axes.html',1,'ostk::physics::coord::Axes'],['../classostk_1_1physics_1_1coord_1_1_axes.html#abed0f87ab7a6a493f3576a8fa7426051',1,'ostk::physics::coord::Axes::Axes()']]],
+  ['axes_2ecpp_70',['Axes.cpp',['../_axes_8cpp.html',1,'']]],
+  ['axes_2ehpp_71',['Axes.hpp',['../_axes_8hpp.html',1,'']]]
 ];

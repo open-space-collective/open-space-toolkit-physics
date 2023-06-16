@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"_scalar_8cpp.html":[5,0,2,0,0,1,2],
 "_scalar_8cpp.html#a702ce7315b53edd862a42b5f2c980e71":[5,0,2,0,0,1,2,0],
 "_scalar_8hpp.html":[5,0,1,0,0,1,2],
 "_scalar_8hpp_source.html":[5,0,1,0,0,1,2],
@@ -248,6 +249,5 @@ var NAVTREEINDEX1 =
 "classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_dynamic.html#a37623142581671606ea45ca3bda0d0c8":[4,0,0,0,0,0,0,2,3],
 "classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_dynamic.html#a4a2d8961bc1ed12a2eafdf0c099a254f":[4,0,0,0,0,0,0,2,1],
 "classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_dynamic.html#a7b7bfc8957fd84d90d0479944a427005":[4,0,0,0,0,0,0,2,4],
-"classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_dynamic.html#ab01d8d9a09df8e46680eb1acb830a86c":[4,0,0,0,0,0,0,2,5],
-"classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_g_c_r_f.html":[4,0,0,0,0,0,0,3]
+"classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_dynamic.html#ab01d8d9a09df8e46680eb1acb830a86c":[4,0,0,0,0,0,0,2,5]
 };
