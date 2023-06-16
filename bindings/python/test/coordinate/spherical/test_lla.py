@@ -187,7 +187,10 @@ class TestLLA:
             Spherical.equatorial_radius,
             Spherical.flattening,
         )
-        assert distance_spherical_poles.in_meters() == Spherical.equatorial_radius.in_meters() * np.pi
+        assert (
+            distance_spherical_poles.in_meters()
+            == Spherical.equatorial_radius.in_meters() * np.pi
+        )
 
     def test_conversion_vector(
         self,

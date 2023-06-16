@@ -168,7 +168,8 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, CalculateDistanceTo_Sp
     const double pi = 3.14159265358979323846;
 
     {
-        const Length distance = lla_.calculateDistanceTo(lla_, sphericalEarthEquatorialRadius, sphericalEarthFlattening);
+        const Length distance =
+            lla_.calculateDistanceTo(lla_, sphericalEarthEquatorialRadius, sphericalEarthFlattening);
 
         EXPECT_EQ(distance.inMeters(), 0.0);
     }
@@ -485,8 +486,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, DistanceBetween_WGS84)
     const double pi = 3.14159265358979323846;
 
     {
-        const Length distance =
-            LLA::DistanceBetween(lla_, lla_, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
+        const Length distance = LLA::DistanceBetween(lla_, lla_, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
 
         EXPECT_EQ(distance.inMeters(), 0.0);
     }
