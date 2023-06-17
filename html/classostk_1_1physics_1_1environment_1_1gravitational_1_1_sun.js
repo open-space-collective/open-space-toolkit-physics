@@ -11,5 +11,6 @@ var classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun =
     [ "getFieldValueAt", "classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun.html#ac8aac491e31bde1690f5d85c7c5fe590", null ],
     [ "getType", "classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun.html#ac79af34fa7adcb7340b86a059b7585e8", null ],
     [ "isDefined", "classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun.html#ac45193bd4e61dbf93d38319f4d7842dc", null ],
-    [ "operator=", "classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun.html#a9eb14731759cdb1a8ab4b92c5e193111", null ]
+    [ "operator=", "classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun.html#a9eb14731759cdb1a8ab4b92c5e193111", null ],
+    [ "ParametersFromType", "classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun.html#a5b9dbd2aecf758f6d960db3b7821bc31", null ]
 ];

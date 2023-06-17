@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['kernel_414',['Kernel',['../classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel.html',1,'ostk::physics::env::ephem::spice::Kernel'],['../classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel.html#afba440f0d5553591d9217c2a5e7035b5',1,'ostk::physics::env::ephem::spice::Kernel::Kernel()']]],
-  ['kernel_2ecpp_415',['Kernel.cpp',['../_kernel_8cpp.html',1,'']]],
-  ['kernel_2ehpp_416',['Kernel.hpp',['../_kernel_8hpp.html',1,'']]],
-  ['kilogram_417',['Kilogram',['../classostk_1_1physics_1_1units_1_1_mass.html#aa8994892478fdbe6dc78d4bca08db0faa9d71f8d145c74f11bf9b02047645bcf4',1,'ostk::physics::units::Mass']]],
-  ['kilograms_418',['Kilograms',['../classostk_1_1physics_1_1units_1_1_mass.html#aefe67261b5decb72bb9d753799aebc40',1,'ostk::physics::units::Mass']]],
-  ['kilometers_419',['Kilometers',['../classostk_1_1physics_1_1units_1_1_length.html#accc55f3532825355cb54ab8e6bf970b9',1,'ostk::physics::units::Length']]]
+  ['kernel_425',['Kernel',['../classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel.html',1,'ostk::physics::env::ephem::spice::Kernel'],['../classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel.html#afba440f0d5553591d9217c2a5e7035b5',1,'ostk::physics::env::ephem::spice::Kernel::Kernel()']]],
+  ['kernel_2ecpp_426',['Kernel.cpp',['../_kernel_8cpp.html',1,'']]],
+  ['kernel_2ehpp_427',['Kernel.hpp',['../_kernel_8hpp.html',1,'']]],
+  ['kilogram_428',['Kilogram',['../classostk_1_1physics_1_1units_1_1_mass.html#aa8994892478fdbe6dc78d4bca08db0faa9d71f8d145c74f11bf9b02047645bcf4',1,'ostk::physics::units::Mass']]],
+  ['kilograms_429',['Kilograms',['../classostk_1_1physics_1_1units_1_1_mass.html#aefe67261b5decb72bb9d753799aebc40',1,'ostk::physics::units::Mass']]],
+  ['kilometers_430',['Kilometers',['../classostk_1_1physics_1_1units_1_1_length.html#accc55f3532825355cb54ab8e6bf970b9',1,'ostk::physics::units::Length']]]
 ];

@@ -68,8 +68,9 @@ var searchData=
   ['astronomicalunit_65',['AstronomicalUnit',['../classostk_1_1physics_1_1units_1_1_length.html#a2664470a7eedf5d45c88861fe69badeaaa05a35804c7e4fff8e02f5a58782f133',1,'ostk::physics::units::Length']]],
   ['atmosphericmodel_66',['AtmosphericModel',['../namespaceostk_1_1physics_1_1env_1_1obj.html#a7d579dfb8bff4aeabd8e2a22882b8ab2',1,'ostk::physics::env::obj']]],
   ['atmosphericmodelisdefined_67',['atmosphericModelIsDefined',['../classostk_1_1physics_1_1env_1_1obj_1_1_celestial.html#a9f31486d3615531cc9bad85e81b8aa7b',1,'ostk::physics::env::obj::Celestial']]],
-  ['automatic_68',['Automatic',['../classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager.html#a3a8dd1081d1094069417687b4a3f16baa086247a9b57fde6eefee2a0c4752242d',1,'ostk::physics::coord::frame::provider::iers::Manager::Automatic()'],['../classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#a803b82d8f41c81e861852098b6b75ae2a086247a9b57fde6eefee2a0c4752242d',1,'ostk::physics::env::ephem::spice::Engine::Automatic()']]],
-  ['axes_69',['Axes',['../classostk_1_1physics_1_1coord_1_1_axes.html',1,'ostk::physics::coord::Axes'],['../classostk_1_1physics_1_1coord_1_1_axes.html#abed0f87ab7a6a493f3576a8fa7426051',1,'ostk::physics::coord::Axes::Axes()']]],
-  ['axes_2ecpp_70',['Axes.cpp',['../_axes_8cpp.html',1,'']]],
-  ['axes_2ehpp_71',['Axes.hpp',['../_axes_8hpp.html',1,'']]]
+  ['atmosphericonly_68',['AtmosphericOnly',['../classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth.html#a96c035bf932700f283e0e7d856721dd8',1,'ostk::physics::env::obj::celest::Earth']]],
+  ['automatic_69',['Automatic',['../classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager.html#a3a8dd1081d1094069417687b4a3f16baa086247a9b57fde6eefee2a0c4752242d',1,'ostk::physics::coord::frame::provider::iers::Manager::Automatic()'],['../classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#a803b82d8f41c81e861852098b6b75ae2a086247a9b57fde6eefee2a0c4752242d',1,'ostk::physics::env::ephem::spice::Engine::Automatic()']]],
+  ['axes_70',['Axes',['../classostk_1_1physics_1_1coord_1_1_axes.html',1,'ostk::physics::coord::Axes'],['../classostk_1_1physics_1_1coord_1_1_axes.html#abed0f87ab7a6a493f3576a8fa7426051',1,'ostk::physics::coord::Axes::Axes()']]],
+  ['axes_2ecpp_71',['Axes.cpp',['../_axes_8cpp.html',1,'']]],
+  ['axes_2ehpp_72',['Axes.hpp',['../_axes_8hpp.html',1,'']]]
 ];

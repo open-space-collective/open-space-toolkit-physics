@@ -1,5 +1,11 @@
 var NAVTREEINDEX6 =
 {
+"namespaceostk_1_1physics_1_1environment_1_1magnetic_1_1earth.html":[4,0,0,0,3,2,0],
+"namespaceostk_1_1physics_1_1environment_1_1magnetic_1_1earth.html":[3,0,0,0,3,2,0],
+"namespaceostk_1_1physics_1_1time.html":[4,0,0,0,4],
+"namespaceostk_1_1physics_1_1time.html":[3,0,0,0,4],
+"namespaceostk_1_1physics_1_1units.html":[4,0,0,0,5],
+"namespaceostk_1_1physics_1_1units.html":[3,0,0,0,5],
 "namespaces.html":[3,0],
 "pages.html":[],
 "structostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_observation.html":[4,0,0,0,0,0,0,0,0,0],
@@ -47,11 +53,17 @@ var NAVTREEINDEX6 =
 "structostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data.html#ae68ef2453941d562eb9f1fefa7b0feed":[4,0,0,0,0,0,0,0,2,0,14],
 "structostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data.html#aee1674860e371f2d5b7387fd4d1a7951":[4,0,0,0,0,0,0,0,2,0,17],
 "structostk_1_1physics_1_1env_1_1obj_1_1_celestial_1_1_model_base.html":[4,0,0,0,2,1,1,0],
-"structostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_1_1_models.html":[4,0,0,0,2,1,0,0,0],
-"structostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_1_1_models_1_1_e_g_m2008.html":[4,0,0,0,2,1,0,0,0,0],
-"structostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_1_1_models_1_1_e_g_m84.html":[4,0,0,0,2,1,0,0,0,1],
-"structostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_1_1_models_1_1_e_g_m96.html":[4,0,0,0,2,1,0,0,0,2],
-"structostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_1_1_models_1_1_spherical.html":[4,0,0,0,2,1,0,0,0,3],
-"structostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_1_1_models_1_1_w_g_s84.html":[4,0,0,0,2,1,0,0,0,4],
-"structostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth_1_1_models_1_1_w_g_s84___e_g_m96.html":[4,0,0,0,2,1,0,0,0,5]
+"structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters.html":[4,0,0,0,3,1,2,0],
+"structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters.html#a009dc0a6e1a70bc33b0b84681956afda":[4,0,0,0,3,1,2,0,1],
+"structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters.html#a1a672d1648cad03c07206f8a8f30bc81":[4,0,0,0,3,1,2,0,5],
+"structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters.html#a1c1542d64ab9772d446ee872461c9b64":[4,0,0,0,3,1,2,0,10],
+"structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters.html#a31302156aaac7c6971b1fe9e5894ccfd":[4,0,0,0,3,1,2,0,11],
+"structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters.html#a3ae586e6682117ddec1c997d6079cad3":[4,0,0,0,3,1,2,0,7],
+"structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters.html#a3d830259ac209e96bfe191ff740ea4db":[4,0,0,0,3,1,2,0,3],
+"structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters.html#a4233436ab768a991d225e4d297262aec":[4,0,0,0,3,1,2,0,8],
+"structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters.html#a631efd48ff3b07e1c9cb256f1c1f78c9":[4,0,0,0,3,1,2,0,0],
+"structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters.html#a81743b4a6c96cda7ed9ac301e4c7232f":[4,0,0,0,3,1,2,0,9],
+"structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters.html#a86c7c1687d6900ec95457341bf57212e":[4,0,0,0,3,1,2,0,2],
+"structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters.html#a8d8c7aa55c0a63c53419e3e0e5db3d98":[4,0,0,0,3,1,2,0,6],
+"structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters.html#aef4e5bed7f24814bae4cc88b57479d0b":[4,0,0,0,3,1,2,0,4]
 };

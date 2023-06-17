@@ -2,11 +2,6 @@
 \label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_model}\index{ostk::physics::environment::gravitational::Model@{ostk::physics::environment::gravitational::Model}}
 
 
-Gravitational model (interface)  
-
-
-
-
 {\ttfamily \#include $<$Model.\+hpp$>$}
 
 Inheritance diagram for ostk\+::physics\+::environment\+::gravitational\+::Model\+:\begin{figure}[H]
@@ -15,10 +10,15 @@ Inheritance diagram for ostk\+::physics\+::environment\+::gravitational\+::Model
 \includegraphics[height=0.930233cm]{classostk_1_1physics_1_1environment_1_1gravitational_1_1_model}
 \end{center}
 \end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters}{Parameters}}
+\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_ad588a72265bacd216b6d3b19d4736ae9}{Model}} ()
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_a9d98958336517d512355d7d02b03a731}{Model}} (const \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters}{Parameters}} \&a\+Set\+Of\+Parameters)
 \begin{DoxyCompactList}\small\item\em Constructor (default) \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_ab44f53d6e046fb5d436b90128aff0850}{$\sim$\+Model}} ()=0
 \begin{DoxyCompactList}\small\item\em Destructor (pure virtual) \end{DoxyCompactList}\item 
@@ -27,18 +27,17 @@ virtual \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_
 virtual bool \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_ae3db912ed98ddebf5baee717ef75197c}{is\+Defined}} () const =0
 \begin{DoxyCompactList}\small\item\em Check if the gravitational model is defined (pure virtual) \end{DoxyCompactList}\item 
 virtual Vector3d \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_a5ef3b4ddf4240e8a26553294fe392581}{get\+Field\+Value\+At}} (const Vector3d \&a\+Position, const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const =0
-\begin{DoxyCompactList}\small\item\em Get the gravitational field value at a given position and instant (pure virtual) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Get the gravitational field value at a given position and instant (pure virtual) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters}{Parameters}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_a8427bc33c74fec9fb5f2e8e8d90951ae}{get\+Parameters}} () const
+\end{DoxyCompactItemize}
 
-
-\doxysubsection{Detailed Description}
-Gravitational model (interface) 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_ad588a72265bacd216b6d3b19d4736ae9}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_ad588a72265bacd216b6d3b19d4736ae9}} 
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_a9d98958336517d512355d7d02b03a731}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_a9d98958336517d512355d7d02b03a731}} 
 \index{ostk::physics::environment::gravitational::Model@{ostk::physics::environment::gravitational::Model}!Model@{Model}}
 \index{Model@{Model}!ostk::physics::environment::gravitational::Model@{ostk::physics::environment::gravitational::Model}}
 \doxysubsubsection{\texorpdfstring{Model()}{Model()}}
-{\footnotesize\ttfamily ostk\+::physics\+::environment\+::gravitational\+::\+Model\+::\+Model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily ostk\+::physics\+::environment\+::gravitational\+::\+Model\+::\+Model (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters}{Parameters}} \&}]{a\+Set\+Of\+Parameters }\end{DoxyParamCaption})}
 
 
 
@@ -97,6 +96,12 @@ Gravitational field value, expressed in the gravitational object frame \mbox{[}m
 
 
 Implemented in \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9e536649566761f4bdd467993abfcedd}{ostk\+::physics\+::environment\+::gravitational\+::\+Earth}}, \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_a4771ff76d04a7f850b1bd29b146696ae}{ostk\+::physics\+::environment\+::gravitational\+::\+Moon}}, \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_ac8aac491e31bde1690f5d85c7c5fe590}{ostk\+::physics\+::environment\+::gravitational\+::\+Sun}}, and \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical_a37243cf671418b0cb9eff229101b5e96}{ostk\+::physics\+::environment\+::gravitational\+::\+Spherical}}.
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_a8427bc33c74fec9fb5f2e8e8d90951ae}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_a8427bc33c74fec9fb5f2e8e8d90951ae}} 
+\index{ostk::physics::environment::gravitational::Model@{ostk::physics::environment::gravitational::Model}!getParameters@{getParameters}}
+\index{getParameters@{getParameters}!ostk::physics::environment::gravitational::Model@{ostk::physics::environment::gravitational::Model}}
+\doxysubsubsection{\texorpdfstring{getParameters()}{getParameters()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters}{Model\+::\+Parameters}} ostk\+::physics\+::environment\+::gravitational\+::\+Model\+::get\+Parameters (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 \mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_ae3db912ed98ddebf5baee717ef75197c}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_ae3db912ed98ddebf5baee717ef75197c}} 
 \index{ostk::physics::environment::gravitational::Model@{ostk::physics::environment::gravitational::Model}!isDefined@{isDefined}}

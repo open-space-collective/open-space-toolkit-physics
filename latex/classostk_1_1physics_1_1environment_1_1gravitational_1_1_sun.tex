@@ -40,7 +40,14 @@ virtual bool \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitation
 \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_ae567145f71c7750a9e4e43a309bd19db}{Sun\+::\+Type}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_ac79af34fa7adcb7340b86a059b7585e8}{get\+Type}} () const
 \begin{DoxyCompactList}\small\item\em Get gravitational model type. \end{DoxyCompactList}\item 
 virtual Vector3d \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_ac8aac491e31bde1690f5d85c7c5fe590}{get\+Field\+Value\+At}} (const Vector3d \&a\+Position, const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const override
-\begin{DoxyCompactList}\small\item\em Get the gravitational field value at a given position and instant. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Get the gravitational field value at a given position and instant. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters}{Model\+::\+Parameters}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_a5b9dbd2aecf758f6d960db3b7821bc31}{Parameters\+From\+Type}} (const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_ae567145f71c7750a9e4e43a309bd19db}{Sun\+::\+Type}} \&a\+Type)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters}{Parameters}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_a5c3b01caef75def5d58cb6b50a7c976f}{Spherical}}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -204,6 +211,27 @@ Copy assignment operator.
 \begin{DoxyReturn}{Returns}
 Reference to \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun}{Sun}} model 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_a5b9dbd2aecf758f6d960db3b7821bc31}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_a5b9dbd2aecf758f6d960db3b7821bc31}} 
+\index{ostk::physics::environment::gravitational::Sun@{ostk::physics::environment::gravitational::Sun}!ParametersFromType@{ParametersFromType}}
+\index{ParametersFromType@{ParametersFromType}!ostk::physics::environment::gravitational::Sun@{ostk::physics::environment::gravitational::Sun}}
+\doxysubsubsection{\texorpdfstring{ParametersFromType()}{ParametersFromType()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters}{Model\+::\+Parameters}} ostk\+::physics\+::environment\+::gravitational\+::\+Sun\+::\+Parameters\+From\+Type (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_ae567145f71c7750a9e4e43a309bd19db}{Sun\+::\+Type}} \&}]{a\+Type }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_a5c3b01caef75def5d58cb6b50a7c976f}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_a5c3b01caef75def5d58cb6b50a7c976f}} 
+\index{ostk::physics::environment::gravitational::Sun@{ostk::physics::environment::gravitational::Sun}!Spherical@{Spherical}}
+\index{Spherical@{Spherical}!ostk::physics::environment::gravitational::Sun@{ostk::physics::environment::gravitational::Sun}}
+\doxysubsubsection{\texorpdfstring{Spherical}{Spherical}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters}{Model\+::\+Parameters}} ostk\+::physics\+::environment\+::gravitational\+::\+Sun\+::\+Spherical\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{    \{132712440018e9, GravitationalParameterSIUnit\}, \mbox{\hyperlink{classostk_1_1physics_1_1units_1_1_length_ad227977ce00756791595796a0dd5ddd7}{Length::Meters}}(6.955e8), 0.0, 0.0, 0.0\}}
+
+\end{DoxyCode}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
