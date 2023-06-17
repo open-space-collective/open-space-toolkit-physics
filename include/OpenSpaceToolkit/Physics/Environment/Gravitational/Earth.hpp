@@ -11,7 +11,6 @@
 
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
-#include <OpenSpaceToolkit/Physics/Units/Derived.hpp>
 
 namespace ostk
 {
@@ -29,7 +28,6 @@ using ostk::core::fs::Directory;
 
 using ostk::io::URL;
 
-using ostk::physics::units::Derived;
 using ostk::physics::time::Instant;
 using ostk::physics::environment::gravitational::Model;
 
@@ -43,6 +41,14 @@ using ostk::physics::environment::gravitational::Model;
 class Earth : public Model
 {
    public:
+    // Declare static gravitational model parameters
+    static const Parameters EGM2008;
+    static const Parameters WGS84_EGM96;
+    static const Parameters EGM96;
+    static const Parameters EGM84;
+    static const Parameters WGS84;
+    static const Parameters Spherical;
+
     enum class Type
     {
         Undefined,  ///< Undefined
@@ -50,9 +56,10 @@ class Earth : public Model
         WGS84,  ///< The normal gravitational field for the reference ellipsoid. This includes the zonal coefficients up
                 ///< to order 20.
         EGM84,  ///< The Earth Gravity Model 1984, which includes terms up to degree 180.
-        EGM96,  ///< The Earth Gravity Model 1996, which includes terms up to degree 360.
-        EGM2008  ///< The Earth Gravity Model 2008, which includes terms up to degree 2190.
-
+        WGS84_EGM96,  ///< The normal gravitational field for the reference ellipsoid plus the Earth Gravity Model 1996,
+                      ///< which includes terms up to degree 360.
+        EGM96,        ///< The Earth Gravity Model 1996, which includes terms up to degree 360.
+        EGM2008       ///< The Earth Gravity Model 2008, which includes terms up to degree 2190.
     };
 
     /// @brief              Constructor with max degree and order variables
@@ -111,6 +118,10 @@ class Earth : public Model
     /// @return             Gravitational field value, expressed in the gravitational object frame [m.s-2]
 
     virtual Vector3d getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const override;
+
+    static Model::Parameters ParametersFromType(const Earth::Type& aType);
+
+    static constexpr double gravityConstant = 9.80665;  /// Standard gravity [m.s-2]
 
    private:
     class Impl;

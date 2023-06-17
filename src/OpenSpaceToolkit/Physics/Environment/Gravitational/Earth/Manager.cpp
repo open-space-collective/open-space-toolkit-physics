@@ -302,6 +302,7 @@ String Manager::DataFileNameFromType(const EarthGravitationalModel::Type& aModel
         case EarthGravitationalModel::Type::EGM84:
             return "egm84";
 
+        case EarthGravitationalModel::Type::WGS84_EGM96:
         case EarthGravitationalModel::Type::EGM96:
             return "egm96";
 

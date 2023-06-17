@@ -34,6 +34,7 @@ using ostk::physics::time::Instant;
 using ostk::physics::time::DateTime;
 using ostk::physics::coord::Frame;
 using ostk::physics::env::obj::celest::Earth;
+using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 
 class OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA : public ::testing::Test
 {
@@ -265,7 +266,9 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToCartesian)
 
                 const LLA lla = {reference_latitude, reference_longitude, reference_altitude};
 
-                const Vector3d position_ITRF = lla.toCartesian(Earth::EquatorialRadius, Earth::Flattening);
+                const Vector3d position_ITRF = lla.toCartesian(
+                    EarthGravitationalModel::EGM2008.equatorialRadius_, EarthGravitationalModel::EGM2008.flattening_
+                );
 
                 {
                     const Real error_m = (position_ITRF - reference_position_ITRF).norm();
@@ -352,7 +355,11 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Cartesian)
                 const Angle reference_longitude = Angle::Degrees(referenceRow[5].accessReal());
                 const Length reference_altitude = Length::Meters(referenceRow[6].accessReal());
 
-                const LLA lla = LLA::Cartesian(reference_position_ITRF, Earth::EquatorialRadius, Earth::Flattening);
+                const LLA lla = LLA::Cartesian(
+                    reference_position_ITRF,
+                    EarthGravitationalModel::EGM2008.equatorialRadius_,
+                    EarthGravitationalModel::EGM2008.flattening_
+                );
 
                 {
                     const Real reference_latitude_deg = reference_latitude.inDegrees();

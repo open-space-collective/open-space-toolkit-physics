@@ -39,6 +39,7 @@ using ostk::physics::time::DateTime;
 using ostk::physics::coord::Transform;
 using ostk::physics::coord::Frame;
 using ostk::physics::env::obj::celest::Earth;
+using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 
 TEST(OpenSpaceToolkit_Physics_Coordinate_Frames_ITRF, Test)
 {
@@ -157,7 +158,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frames_ITRF, Test)
 
                 {
                     const Length positionalDelta =
-                        Earth::EquatorialRadius *
+                        EarthGravitationalModel::EGM2008.equatorialRadius_ *
                         (q_GCRF_ITRF * Vector3d::X() - (reference_q_ITRF_GCRF.toConjugate() * Vector3d::X())).norm();
 
                     ASSERT_GT(positionalToleranceAtSurface, positionalDelta) << String::Format(
@@ -170,7 +171,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frames_ITRF, Test)
 
                 {
                     const Length positionalDelta =
-                        (Earth::EquatorialRadius + Length::Kilometers(1000.0)) *
+                        (EarthGravitationalModel::EGM2008.equatorialRadius_ + Length::Kilometers(1000.0)) *
                         (q_GCRF_ITRF * Vector3d::X() - (reference_q_ITRF_GCRF.toConjugate() * Vector3d::X())).norm();
 
                     ASSERT_GT(positionalToleranceAt1000km, positionalDelta) << String::Format(

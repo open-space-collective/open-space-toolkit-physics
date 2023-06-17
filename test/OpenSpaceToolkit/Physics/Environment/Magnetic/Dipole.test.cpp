@@ -22,7 +22,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Dipole, Constructor)
     }
 
     {
-        EXPECT_ANY_THROW(Dipole(Vector3d::Undefined()));
+        EXPECT_ANY_THROW(Dipole dipole(Vector3d::Undefined()));
     }
 }
 

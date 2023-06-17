@@ -40,6 +40,9 @@ using ostk::physics::environment::gravitational::Model;
 class Moon : public Model
 {
    public:
+    // Declare static gravitational model parameters
+    static const Parameters Spherical;
+
     enum class Type
     {
         Undefined,  /// Undefined
@@ -95,6 +98,8 @@ class Moon : public Model
     /// @return             Gravitational field value, expressed in the gravitational object frame [m.s-2]
 
     virtual Vector3d getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const override;
+
+    static Model::Parameters ParametersFromType(const Moon::Type& aType);
 
    private:
     class Impl;

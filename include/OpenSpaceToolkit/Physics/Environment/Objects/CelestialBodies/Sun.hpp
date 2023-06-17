@@ -41,18 +41,13 @@ using SunGravitationalModel = ostk::physics::environment::gravitational::Sun;
 class Sun : public Celestial
 {
    public:
-    static Derived GravitationalParameter;
-    static Length EquatorialRadius;
-    static Real Flattening;
-
     /// @brief              Constructor
     ///
     /// @param              [in] anEphemeris An ephemeris for the Sun celestial object
-    /// @param              [in] aGravitationalModelType A gravitational model type for the Sun celestial object
-    /// (Spherical model only)
-    /// @param              [in] anInstant An instant
+    /// @param              [in] aGravitationalModel A shared pointer to a gravitational model for the Sun celestial
+    /// object
 
-    Sun(const Shared<Ephemeris>& anEphemeris, const SunGravitationalModel::Type& aGravitationalModelType);
+    Sun(const Shared<Ephemeris>& anEphemeris, const Shared<SunGravitationalModel>& aGravitationalModel);
 
     /// @brief              Destructor
 

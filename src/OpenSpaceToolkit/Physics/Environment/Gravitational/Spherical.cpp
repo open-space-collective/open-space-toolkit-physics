@@ -19,12 +19,9 @@ using ostk::physics::units::Mass;
 using ostk::physics::units::Time;
 using ostk::physics::units::Angle;
 
-static const Derived::Unit GravitationParameterSIUnit =
-    Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second);
-
-Spherical::Spherical(const Derived& aGravitationalParameter)
-    : Model(),
-      gravitationalParameter_SI_(aGravitationalParameter.in(GravitationParameterSIUnit))
+Spherical::Spherical(const Model::Parameters& aParameterSet)
+    : Model(aParameterSet),
+      gravitationalParameter_SI_(aParameterSet.gravitationalParameter_.in(GravitationalParameterSIUnit))
 {
     if (!gravitationalParameter_SI_.isDefined())
     {

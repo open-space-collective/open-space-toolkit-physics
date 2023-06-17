@@ -9,6 +9,7 @@
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/Ellipsoid.hpp>
 
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/Analytical.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp>
@@ -41,6 +42,7 @@ using ostk::physics::units::Derived;
 using ostk::physics::env::Ephemeris;
 using ostk::physics::env::Object;
 using ostk::physics::env::obj::Celestial;
+using ostk::physics::env::ephem::Analytical;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 using EarthMagneticModel = ostk::physics::environment::magnetic::Earth;
 using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
@@ -48,82 +50,19 @@ using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
 class Earth : public Celestial
 {
    public:
-    struct Models
-    {
-        struct EGM2008
-        {
-            static const Derived GravitationalParameter;
-            static const Length EquatorialRadius;
-            static const Real Flattening;
-            static const Real C20;
-            static const Real C40;
-            static const Real J2;
-            static const Real J4;
-        };
+    /// @brief              Constructor
+    ///
 
-        struct WGS84_EGM96
-        {
-            static const Derived GravitationalParameter;
-            static const Length EquatorialRadius;
-            static const Real Flattening;
-            static const Real C20;
-            static const Real C40;
-            static const Real J2;
-            static const Real J4;
-        };
-
-        struct EGM96
-        {
-            static const Derived GravitationalParameter;
-            static const Length EquatorialRadius;
-            static const Real Flattening;
-            static const Real C20;
-            static const Real C40;
-            static const Real J2;
-            static const Real J4;
-        };
-
-        struct EGM84
-        {
-            static const Derived GravitationalParameter;
-            static const Length EquatorialRadius;
-            static const Real Flattening;
-            static const Real C20;
-            static const Real C40;
-            static const Real J2;
-            static const Real J4;
-        };
-
-        struct WGS84
-        {
-            static const Derived GravitationalParameter;
-            static const Length EquatorialRadius;
-            static const Real Flattening;
-            static const Real C20;
-            static const Real C40;
-            static const Real J2;
-            static const Real J4;
-        };
-
-        struct Spherical
-        {
-            static const Derived GravitationalParameter;
-            static const Length EquatorialRadius;
-            static const Real Flattening;
-            static const Real C20;
-            static const Real C40;
-            static const Real J2;
-            static const Real J4;
-        };
-    };
-
-    static const Derived GravitationalParameter;  // [TBR]
-    static const Length EquatorialRadius;         // [TBR]
-    static const Real Flattening;                 // [TBR]
-    static const Real C20;                        // [TBR]
-    static const Real C40;                        // [TBR]
-    static const Real J2;                         // [TBR]
-    static const Real J4;                         // [TBR]
+    /// @param              [in] anInstant An instant for the Earth celestial object
+    /// @param              [in] aGravitationalParameter A gravitational parameter for the Earth celestial object
+    /// @param              [in] anEquatorialRadius An equatorial radius for the Earth celestial object
+    /// @param              [in] aFlattening A flattening for the Earth celestial object
+    /// @param              [in] aJ2 A J2 coefficient for the Earth celestial object
+    /// @param              [in] aJ4 A J4 coefficient for the Earth celestial object
+    /// @param              [in] anEphemeris An ephemeris for the Earth celestial object
+    /// @param              [in] aGravitationalModel A gravitational model for the Earth celestial object
+    /// @param              [in] aMagneticModel A magnetic model for the Earth celestial object
+    /// @param              [in] anAtmosphericModel An atmospheric model for the Earth celestial object
 
     Earth(
         const Derived& aGravitationalParameter,
@@ -132,23 +71,24 @@ class Earth : public Celestial
         const Real& aJ2,
         const Real& aJ4,
         const Shared<Ephemeris>& anEphemeris,
-        const EarthGravitationalModel::Type& aGravitationalModelType,
-        const EarthMagneticModel::Type& aMagneticModelType,
-        const EarthAtmosphericModel::Type& aAtmosphericModelType
+        const Shared<EarthGravitationalModel>& aGravitationalModel,
+        const Shared<EarthMagneticModel>& aMagneticModel,
+        const Shared<EarthAtmosphericModel>& anAtmosphericModel
     );
 
+    /// @brief              Constructor
+    ///
+    /// @param              [in] anInstant An instant for the Earth celestial object
+    /// @param              [in] anEphemeris An ephemeris for the Earth celestial object
+    /// @param              [in] aGravitationalModel A gravitational model for the Earth celestial object
+    /// @param              [in] aMagneticModel A magnetic model for the Earth celestial object
+    /// @param              [in] anAtmosphericModel An atmospheric model for the Earth celestial object
+
     Earth(
-        const Derived& aGravitationalParameter,
-        const Length& anEquatorialRadius,
-        const Real& aFlattening,
-        const Real& aJ2,
-        const Real& aJ4,
         const Shared<Ephemeris>& anEphemeris,
-        const EarthGravitationalModel::Type& aGravitationalModelType,
-        const Integer& aGravityModelDegree,
-        const Integer& aGravityModelOrder,
-        const EarthMagneticModel::Type& aMagneticModelType,
-        const EarthAtmosphericModel::Type& aAtmosphericModelType
+        const Shared<EarthGravitationalModel>& aGravitationalModel = nullptr,
+        const Shared<EarthMagneticModel>& aMagneticModel = nullptr,
+        const Shared<EarthAtmosphericModel>& anAtmosphericModel = nullptr
     );
 
     virtual ~Earth() override;
@@ -160,6 +100,41 @@ class Earth : public Celestial
     /// @return             Earth
 
     static Earth Default();
+
+    /// @brief              Just gravity model
+    ///
+    /// @param              [in] aGravitationalModel A gravitational model
+    /// @return             Earth
+
+    static Earth GravitationalOnly(const Shared<EarthGravitationalModel>& aGravitationalModel);
+
+    /// @brief              Just atmospheric model
+    ///
+    /// @param              [in] anAtmosphericModel An atmospheric model
+    /// @return             Earth
+
+    static Earth AtmosphericOnly(const Shared<EarthAtmosphericModel>& anAtmosphericModel);
+
+    /// @brief              Just magnetic model
+    ///
+    /// @param`             [in] aMagneticModel A magnetic model
+    /// @return             Earth
+
+    static Earth MagneticOnly(const Shared<EarthMagneticModel>& aMagneticModel);
+
+    /// @brief              Create earth from specified models
+    ///
+    /// @param              [in] aGravitationalModel A gravitational model
+    /// @param              [in] aMagneticModel A magnetic model
+    /// @param              [in] anAtmosphericModel An atmospheric model
+    ///
+    /// @return             Earth
+
+    static Earth FromModels(
+        const Shared<EarthGravitationalModel>& aGravitationalModel,
+        const Shared<EarthMagneticModel>& aMagneticModel,
+        const Shared<EarthAtmosphericModel>& anAtmosphericModel
+    );
 
     /// @brief              Earth Gravity Model 2008 model (EGM2008)
     ///

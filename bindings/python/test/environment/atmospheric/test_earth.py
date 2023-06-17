@@ -13,25 +13,25 @@ from ostk.physics.coordinate import Position
 from ostk.physics.coordinate import Frame
 from ostk.physics.coordinate.spherical import LLA
 from ostk.physics.environment.atmospheric import Earth as EarthAtmosphericModel
-from ostk.physics.environment.objects.celestial_bodies import Earth
+from ostk.physics.environment.gravitational import Earth as EarthGravitationalModel
 
 
 @pytest.fixture
 def earth_atmospheric_model() -> EarthAtmosphericModel:
-    return EarthAtmosphericModel(EarthAtmosphericModel.EarthAtmosphericType.Exponential)
+    return EarthAtmosphericModel(EarthAtmosphericModel.Type.Exponential)
 
 
 class TestEarth:
     def test_constructor_success_with_type(self):
         earth_atmospheric_model = EarthAtmosphericModel(
-            type=EarthAtmosphericModel.EarthAtmosphericType.Exponential,
+            type=EarthAtmosphericModel.Type.Exponential,
         )
 
         assert isinstance(earth_atmospheric_model, EarthAtmosphericModel)
 
     def test_constructor_success_with_directory(self):
         earth_atmospheric_model = EarthAtmosphericModel(
-            type=EarthAtmosphericModel.EarthAtmosphericType.Exponential,
+            type=EarthAtmosphericModel.Type.Exponential,
             directory=Directory.undefined(),
         )
 
@@ -39,8 +39,7 @@ class TestEarth:
 
     def test_get_type_success(self, earth_atmospheric_model: EarthAtmosphericModel):
         assert (
-            earth_atmospheric_model.get_type()
-            == EarthAtmosphericModel.EarthAtmosphericType.Exponential
+            earth_atmospheric_model.get_type() == EarthAtmosphericModel.Type.Exponential
         )
 
     def test_is_defined_success(self, earth_atmospheric_model: EarthAtmosphericModel):
@@ -54,8 +53,8 @@ class TestEarth:
         density = earth_atmospheric_model.get_density_at(
             position=Position.meters(
                 coordinates=LLA(latitude, longitude, altitude).to_cartesian(
-                    ellipsoid_equatorial_radius=Earth.equatorial_radius,
-                    ellipsoid_flattening=Earth.flattening,
+                    ellipsoid_equatorial_radius=EarthGravitationalModel.EGM2008.equatorial_radius,
+                    ellipsoid_flattening=EarthGravitationalModel.EGM2008.flattening,
                 ),
                 frame=Frame.ITRF(),
             ),

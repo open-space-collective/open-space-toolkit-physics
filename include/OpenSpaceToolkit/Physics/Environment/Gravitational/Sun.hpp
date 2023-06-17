@@ -40,6 +40,8 @@ using ostk::physics::environment::gravitational::Model;
 class Sun : public Model
 {
    public:
+    static const Parameters Spherical;
+
     enum class Type
     {
         Undefined,  /// Undefined
@@ -95,6 +97,8 @@ class Sun : public Model
     /// @return             Gravitational field value, expressed in the gravitational object frame [m.s-2]
 
     virtual Vector3d getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const override;
+
+    Model::Parameters ParametersFromType(const Sun::Type& aType);
 
    private:
     class Impl;

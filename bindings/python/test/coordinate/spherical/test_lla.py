@@ -5,13 +5,12 @@ import numpy as np
 
 from ostk.core.types import String
 
-import ostk.physics as physics
+from ostk.physics.units import Angle, Length
+from ostk.physics.coordinate.spherical import LLA
+from ostk.physics.environment.gravitational import Earth as EarthGravitationalModel
 
-Angle = physics.units.Angle
-Length = physics.units.Length
-LLA = physics.coordinate.spherical.LLA
-Spherical = physics.environment.objects.celestial_bodies.earth.models.Spherical
-WGS84_EGM96 = physics.environment.objects.celestial_bodies.earth.models.WGS84_EGM96
+Spherical = EarthGravitationalModel.spherical
+WGS84_EGM96 = EarthGravitationalModel.WGS84_EGM96
 
 
 @pytest.fixture

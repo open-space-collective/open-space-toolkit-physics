@@ -1,81 +1,30 @@
 # Apache License 2.0
 
+import pytest
+
+from ostk.core.filesystem import Directory
+
 from ostk.physics.environment.objects.celestial_bodies import Earth
 
-from ostk.physics.environment.objects.celestial_bodies.earth.models import EGM2008
-from ostk.physics.environment.objects.celestial_bodies.earth.models import EGM96
-from ostk.physics.environment.objects.celestial_bodies.earth.models import WGS84_EGM96
-from ostk.physics.environment.objects.celestial_bodies.earth.models import EGM84
-from ostk.physics.environment.objects.celestial_bodies.earth.models import WGS84
-from ostk.physics.environment.objects.celestial_bodies.earth.models import Spherical
+from ostk.physics.environment.gravitational import Earth as EarthGravitationalModel
+from ostk.physics.environment.atmospheric import Earth as EarthAtmosphericModel
+from ostk.physics.environment.magnetic import Earth as EarthMagneticModel
+
+
+@pytest.fixture
+def earth():
+    return Earth.default()
 
 
 class TestEarth:
-    def test_properties_EGM2008(self):
-        assert EGM2008.gravitational_parameter is not None
-        assert EGM2008.equatorial_radius is not None
-        assert EGM2008.flattening is not None
-        assert EGM2008.C20 is not None
-        assert EGM2008.C40 is not None
-        assert EGM2008.J2 is not None
-        assert EGM2008.J4 is not None
+    def test_properties(self, earth):
+        assert earth.get_gravitational_parameter() is not None
+        assert earth.get_equatorial_radius() is not None
+        assert earth.get_flattening() is not None
+        assert earth.get_j2() is not None
+        assert earth.get_j4() is not None
 
-        assert EGM2008.gravitational_parameter == Earth.gravitational_parameter
-        assert EGM2008.equatorial_radius == Earth.equatorial_radius
-        assert EGM2008.flattening == Earth.flattening
-        assert EGM2008.C20 == Earth.C20
-        assert EGM2008.C40 == Earth.C40
-        assert EGM2008.J2 == Earth.J2
-        assert EGM2008.J4 == Earth.J4
-
-    def test_properties_WGS84_EGM96(self):
-        assert WGS84_EGM96.gravitational_parameter is not None
-        assert WGS84_EGM96.equatorial_radius is not None
-        assert WGS84_EGM96.flattening is not None
-        assert WGS84_EGM96.C20 is not None
-        assert WGS84_EGM96.C40 is not None
-        assert WGS84_EGM96.J2 is not None
-        assert WGS84_EGM96.J4 is not None
-
-    def test_properties_EGM96(self):
-        assert EGM96.gravitational_parameter is not None
-        assert EGM96.equatorial_radius is not None
-        assert EGM96.flattening is not None
-        assert EGM96.C20 is not None
-        assert EGM96.C40 is not None
-        assert EGM96.J2 is not None
-        assert EGM96.J4 is not None
-
-    def test_properties_EGM84(self):
-        assert EGM84.gravitational_parameter is not None
-        assert EGM84.equatorial_radius is not None
-        assert EGM84.flattening is not None
-        assert EGM84.C20 is not None
-        assert EGM84.C40 is not None
-        assert EGM84.J2 is not None
-        assert EGM84.J4 is not None
-
-    def test_properties_WGS84(self):
-        assert WGS84.gravitational_parameter is not None
-        assert WGS84.equatorial_radius is not None
-        assert WGS84.flattening is not None
-        assert WGS84.C20 is not None
-        assert WGS84.C40 is not None
-        assert WGS84.J2 is not None
-        assert WGS84.J4 is not None
-
-    def test_properties_spherical(self):
-        assert Spherical.gravitational_parameter is not None
-        assert Spherical.equatorial_radius is not None
-        assert Spherical.flattening is not None
-        assert Spherical.C20 is not None
-        assert Spherical.C40 is not None
-        assert Spherical.J2 is not None
-        assert Spherical.J4 is not None
-
-    def test_default_success(self):
-        earth = Earth.default()
-
+    def test_default_success(self, earth):
         assert earth is not None
         assert isinstance(earth, Earth)
 
@@ -139,3 +88,85 @@ class TestEarth:
 
         assert earth is not None
         assert isinstance(earth, Earth)
+
+    @pytest.mark.parametrize(
+        "grav_model_parameters,atmos_model_parameters,mag_model_parameters",
+        (
+            (
+                (
+                    EarthGravitationalModel.Type.EGM2008,
+                    Directory.undefined(),
+                    20,
+                    20,
+                ),
+                (EarthAtmosphericModel.Type.Exponential,),
+                (EarthMagneticModel.Type.Dipole,),
+            ),
+            (
+                (
+                    EarthGravitationalModel.Type.EGM96,
+                    Directory.undefined(),
+                    20,
+                    20,
+                ),
+                (EarthAtmosphericModel.Type.Exponential,),
+                (EarthMagneticModel.Type.Dipole,),
+            ),
+            (
+                (
+                    EarthGravitationalModel.Type.EGM84,
+                    Directory.undefined(),
+                    20,
+                    20,
+                ),
+                (EarthAtmosphericModel.Type.Exponential,),
+                (EarthMagneticModel.Type.Dipole,),
+            ),
+            (
+                (
+                    EarthGravitationalModel.Type.WGS84_EGM96,
+                    Directory.undefined(),
+                    20,
+                    20,
+                ),
+                (EarthAtmosphericModel.Type.Exponential,),
+                (EarthMagneticModel.Type.Dipole,),
+            ),
+            (
+                (
+                    EarthGravitationalModel.Type.WGS84,
+                    Directory.undefined(),
+                ),
+                (EarthAtmosphericModel.Type.Exponential,),
+                (EarthMagneticModel.Type.Dipole,),
+            ),
+            (
+                (EarthGravitationalModel.Type.Spherical, Directory.undefined()),
+                (EarthAtmosphericModel.Type.Exponential,),
+                (EarthMagneticModel.Type.Dipole,),
+            ),
+        ),
+    )
+    def test_from_models(
+        self,
+        grav_model_parameters: tuple,
+        atmos_model_parameters: tuple,
+        mag_model_parameters: tuple,
+    ):
+        earth = Earth.from_models(
+            EarthGravitationalModel(*grav_model_parameters),
+            EarthMagneticModel(*mag_model_parameters),
+            EarthAtmosphericModel(*atmos_model_parameters),
+        )
+        assert earth.is_defined()
+
+    def test_singular_model_static_constructors(self):
+        assert Earth.gravitational_only(
+            EarthGravitationalModel(EarthGravitationalModel.Type.EGM2008)
+        ).is_defined()
+        assert Earth.atmospheric_only(
+            EarthAtmosphericModel(EarthAtmosphericModel.Type.Exponential)
+        ).is_defined()
+        assert Earth.magnetic_only(
+            EarthMagneticModel(EarthMagneticModel.Type.WMM2010)
+        ).is_defined()

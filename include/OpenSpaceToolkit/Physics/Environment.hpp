@@ -8,8 +8,6 @@
 #include <OpenSpaceToolkit/Core/Types/String.hpp>
 #include <OpenSpaceToolkit/Core/Types/Unique.hpp>
 
-#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Object.hpp>
-
 #include <OpenSpaceToolkit/Physics/Environment/Object.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Objects/Celestial.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
@@ -23,8 +21,6 @@ using ostk::core::types::Unique;
 using ostk::core::types::Shared;
 using ostk::core::types::String;
 using ostk::core::ctnr::Array;
-
-using GeometricalObject = ostk::math::geom::d3::Object;
 
 using ostk::physics::time::Instant;
 using ostk::physics::env::Object;

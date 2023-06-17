@@ -19,26 +19,17 @@ namespace obj
 namespace celest
 {
 
-using ostk::physics::units::Mass;
-using ostk::physics::units::Time;
-using ostk::physics::units::Angle;
-
-Derived Sun::GravitationalParameter = {
-    132712440018e9, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)};
-Length Sun::EquatorialRadius = Length::Meters(6.955e8);
-Real Sun::Flattening = 0.0;
-
-Sun::Sun(const Shared<Ephemeris>& anEphemeris, const SunGravitationalModel::Type& aGravitationalModelType)
+Sun::Sun(const Shared<Ephemeris>& anEphemeris, const Shared<SunGravitationalModel>& aGravitationalModel)
     : Celestial(
           "Sun",
           Celestial::Type::Sun,
-          Sun::GravitationalParameter,
-          Sun::EquatorialRadius,
-          Sun::Flattening,
-          0.0,
-          0.0,
+          aGravitationalModel->getParameters().gravitationalParameter_,
+          aGravitationalModel->getParameters().equatorialRadius_,
+          aGravitationalModel->getParameters().flattening_,
+          aGravitationalModel->getParameters().J2_,
+          aGravitationalModel->getParameters().J4_,
           anEphemeris,
-          std::make_shared<SunGravitationalModel>(aGravitationalModelType),
+          aGravitationalModel,
           nullptr,  // [TBI] Add Sun magnetic model
           nullptr,
           Sun::Geometry(anEphemeris->accessFrame())
@@ -62,14 +53,18 @@ Sun Sun::Spherical()
 {
     using ostk::physics::env::ephem::SPICE;
 
-    return {std::make_shared<SPICE>(SPICE::Object::Sun), SunGravitationalModel::Type::Spherical};
+    return {
+        std::make_shared<SPICE>(SPICE::Object::Sun),
+        std::make_shared<SunGravitationalModel>(SunGravitationalModel::Type::Spherical),
+    };
 }
 
 Object::Geometry Sun::Geometry(const Shared<const Frame>& aFrame)
 {
     using ostk::math::geom::d3::objects::Point;
 
-    const Real equatorialRadius_m = Sun::EquatorialRadius.inMeters();
+    // [TBI] inherit from actual gravitational model if present
+    const Real equatorialRadius_m = SunGravitationalModel::Spherical.equatorialRadius_.inMeters();
 
     const Sphere sphere = {Point::Origin(), equatorialRadius_m};
 

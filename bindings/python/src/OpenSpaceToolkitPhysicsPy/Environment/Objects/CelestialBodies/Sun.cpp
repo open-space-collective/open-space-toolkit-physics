@@ -18,14 +18,10 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Sun(py
         class_<Sun, Shared<Sun>, Celestial>(aModule, "Sun")
 
             .def(
-                init<const Shared<Ephemeris>&, const SunGravitationalModel::Type&>(),
+                init<const Shared<Ephemeris>&, const Shared<SunGravitationalModel>&>(),
                 arg("ephemeris"),
-                arg("gravitational_model_type")
+                arg("gravitational_model")
             )
-
-            .def_readonly_static("gravitational_parameter", &Sun::GravitationalParameter)
-            .def_readonly_static("equatorial_radius", &Sun::EquatorialRadius)
-            .def_readonly_static("flattening", &Sun::Flattening)
 
             .def("__str__", &(shiftToString<Sun>))
             .def("__repr__", &(shiftToString<Sun>))
