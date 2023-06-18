@@ -7,13 +7,13 @@
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_a631efd48ff3b07e1c9cb256f1c1f78c9}{Parameters}} (const \mbox{\hyperlink{classostk_1_1physics_1_1units_1_1_derived}{Derived}} \&gravitational\+Parameter, const \mbox{\hyperlink{classostk_1_1physics_1_1units_1_1_length}{Length}} \&equatorial\+Radius, const Real \&flattening, const Real \&J2, const Real \&J4)
-\item 
-bool \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_a009dc0a6e1a70bc33b0b84681956afda}{is\+Defined}} () const
+\mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_aca2864e4765759426e6f7996a0da9010}{Parameters}} (const \mbox{\hyperlink{classostk_1_1physics_1_1units_1_1_derived}{Derived}} \&a\+Gravitational\+Parameter, const \mbox{\hyperlink{classostk_1_1physics_1_1units_1_1_length}{Length}} \&an\+Equatorial\+Radius, const Real \&a\+Flattening, const Real \&a\+C20, const Real \&a\+C40)
 \item 
 bool \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_a3d830259ac209e96bfe191ff740ea4db}{operator==}} (const \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters}{Parameters}} \&a\+Parameter\+Set) const
 \item 
 bool \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_a86c7c1687d6900ec95457341bf57212e}{operator!=}} (const \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters}{Parameters}} \&a\+Parameter\+Set) const
+\item 
+bool \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_a009dc0a6e1a70bc33b0b84681956afda}{is\+Defined}} () const
 \end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -29,13 +29,13 @@ static \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1gravitational_1_
 \item 
 Real \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_a4233436ab768a991d225e4d297262aec}{flattening\+\_\+}}
 \item 
-Real \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_a1c1542d64ab9772d446ee872461c9b64}{J2\+\_\+}}
-\item 
-Real \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_a31302156aaac7c6971b1fe9e5894ccfd}{J4\+\_\+}}
-\item 
 Real \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_a1a672d1648cad03c07206f8a8f30bc81}{C20\+\_\+}}
 \item 
 Real \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_a8d8c7aa55c0a63c53419e3e0e5db3d98}{C40\+\_\+}}
+\item 
+Real \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_a1c1542d64ab9772d446ee872461c9b64}{J2\+\_\+}}
+\item 
+Real \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_a31302156aaac7c6971b1fe9e5894ccfd}{J4\+\_\+}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Friends}
 \begin{DoxyCompactItemize}
@@ -45,11 +45,11 @@ std\+::ostream \& \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1gravi
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_a631efd48ff3b07e1c9cb256f1c1f78c9}\label{structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_a631efd48ff3b07e1c9cb256f1c1f78c9}} 
+\mbox{\Hypertarget{structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_aca2864e4765759426e6f7996a0da9010}\label{structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_aca2864e4765759426e6f7996a0da9010}} 
 \index{ostk::physics::environment::gravitational::Model::Parameters@{ostk::physics::environment::gravitational::Model::Parameters}!Parameters@{Parameters}}
 \index{Parameters@{Parameters}!ostk::physics::environment::gravitational::Model::Parameters@{ostk::physics::environment::gravitational::Model::Parameters}}
 \doxysubsubsection{\texorpdfstring{Parameters()}{Parameters()}}
-{\footnotesize\ttfamily ostk\+::physics\+::environment\+::gravitational\+::\+Model\+::\+Parameters\+::\+Parameters (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1units_1_1_derived}{Derived}} \&}]{gravitational\+Parameter,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1units_1_1_length}{Length}} \&}]{equatorial\+Radius,  }\item[{const Real \&}]{flattening,  }\item[{const Real \&}]{J2,  }\item[{const Real \&}]{J4 }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily ostk\+::physics\+::environment\+::gravitational\+::\+Model\+::\+Parameters\+::\+Parameters (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1units_1_1_derived}{Derived}} \&}]{a\+Gravitational\+Parameter,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1units_1_1_length}{Length}} \&}]{an\+Equatorial\+Radius,  }\item[{const Real \&}]{a\+Flattening,  }\item[{const Real \&}]{a\+C20,  }\item[{const Real \&}]{a\+C40 }\end{DoxyParamCaption})}
 
 
 
