@@ -26,8 +26,8 @@ Model::Parameters::Parameters(
       flattening_(aFlattening),
       C20_(aC20),
       C40_(aC40),
-      J2_(aC20.isDefined() ? aC20 * std::sqrt(5.0) : Real::Undefined()),
-      J4_(aC40.isDefined() ? aC40 * std::sqrt(9.0) : Real::Undefined())
+      J2_(aC20.isDefined() ? -aC20 * std::sqrt(5.0) : Real::Undefined()),
+      J4_(aC40.isDefined() ? -aC40 * std::sqrt(9.0) : Real::Undefined())
 {
 }
 
@@ -82,7 +82,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Model::Parameters& 
     ostk::core::utils::Print::Line(anOutputStream) << "C20:" << (aParameterSet.C20_.isDefined() ? aParameterSet.C20_.toString() : "Undefined");
     ostk::core::utils::Print::Line(anOutputStream) << "C40:" << (aParameterSet.C40_.isDefined() ? aParameterSet.C40_.toString() : "Undefined");
     ostk::core::utils::Print::Line(anOutputStream) << "J2:" << (aParameterSet.J2_.isDefined() ? aParameterSet.J2_.toString() : "Undefined");
-    ostk::core::utils::Print::Line(anOutputStream) << "J4:" << (aParameterSet.J2_.isDefined() ? aParameterSet.J2_.toString() : "Undefined");
+    ostk::core::utils::Print::Line(anOutputStream) << "J4:" << (aParameterSet.J4_.isDefined() ? aParameterSet.J4_.toString() : "Undefined");
 
     ostk::core::utils::Print::Footer(anOutputStream);
 

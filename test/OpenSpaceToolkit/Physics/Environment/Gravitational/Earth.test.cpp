@@ -255,8 +255,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Parameters)
         EXPECT_GT(1e-15, parameters.flattening_ - 1.0 / 298.257223563);
         EXPECT_GT(1e-15, parameters.C20_ - -4.841668500000e-04);
         EXPECT_GT(1e-15, parameters.C40_ - 5.369958670000e-07);
-        EXPECT_GT(1e-15, parameters.J2_ - -0.001082629989051944);
-        EXPECT_GT(1e-15, parameters.J4_ - 1.6109876010000001e-06);
+        EXPECT_GT(1e-15, parameters.J2_ - 0.001082629989051944);
+        EXPECT_GT(1e-15, parameters.J4_ - -1.6109876010000001e-06);
     }
 
     // EGM84
@@ -268,8 +268,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Parameters)
         EXPECT_GT(1e-15, parameters.flattening_ - 1.0 / 298.257223563);
         EXPECT_GT(1e-15, parameters.C20_ - -4.841668500000e-04);
         EXPECT_GT(1e-15, parameters.C40_ - 5.369958670000e-07);
-        EXPECT_GT(1e-15, parameters.J2_ - -0.001082629989051944);
-        EXPECT_GT(1e-15, parameters.J4_ - 1.6109876010000001e-06);
+        EXPECT_GT(1e-15, parameters.J2_ - 0.001082629989051944);
+        EXPECT_GT(1e-15, parameters.J4_ - -1.6109876010000001e-06);
     }
 
     // EGM96
@@ -281,8 +281,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Parameters)
         EXPECT_GT(1e-15, parameters.flattening_ - 1.0 / 298.257223563);
         EXPECT_GT(1e-15, parameters.C20_ - -4.841653717360e-04);
         EXPECT_GT(1e-15, parameters.C40_ - 5.398738637890e-07);
-        EXPECT_GT(1e-15, parameters.J2_ - -0.0010826266835531513);
-        EXPECT_GT(1e-15, parameters.J4_ - 1.619621591367e-06);
+        EXPECT_GT(1e-15, parameters.J2_ - 0.0010826266835531513);
+        EXPECT_GT(1e-15, parameters.J4_ - -1.619621591367e-06);
     }
 
     // EGM96 + WGS84
@@ -294,8 +294,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Parameters)
         EXPECT_GT(1e-15, parameters.flattening_ - 1.0 / 298.257223563);
         EXPECT_GT(1e-15, parameters.C20_ - -4.841653717360e-04);
         EXPECT_GT(1e-15, parameters.C40_ - 5.398738637890e-07);
-        EXPECT_GT(1e-15, parameters.J2_ - -0.0010826266835531513);
-        EXPECT_GT(1e-15, parameters.J4_ - 1.619621591367e-06);
+        EXPECT_GT(1e-15, parameters.J2_ - 0.0010826266835531513);
+        EXPECT_GT(1e-15, parameters.J4_ - -1.619621591367e-06);
     }
 
     // EGM2008
@@ -307,8 +307,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Parameters)
         EXPECT_GT(1e-15, parameters.flattening_ - 1.0 / 298.257223563);
         EXPECT_GT(1e-15, parameters.C20_ - -4.84169317366974e-04);
         EXPECT_GT(1e-15, parameters.C40_ - 5.39965866638991e-07);
-        EXPECT_GT(1e-15, parameters.J2_ - -0.0010826355062522235);
-        EXPECT_GT(1e-15, parameters.J4_ - 1.6198975999169731e-06);
+        EXPECT_GT(1e-15, parameters.J2_ - 0.0010826355062522235);
+        EXPECT_GT(1e-15, parameters.J4_ - -1.6198975999169731e-06);
     }
 }
 
