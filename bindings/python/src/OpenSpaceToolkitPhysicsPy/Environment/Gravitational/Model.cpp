@@ -25,8 +25,8 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Model(pybind11::
                 arg("gravitational_parameter"),
                 arg("equatorial_radius"),
                 arg("flattening"),
-                arg("J2"),
-                arg("J4")
+                arg("C20"),
+                arg("C40")
             )
 
             .def(self == self)

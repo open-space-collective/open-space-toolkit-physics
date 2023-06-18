@@ -41,31 +41,64 @@ class Model
     // @brief                  Gravitational model parameters
     struct Parameters
     {
+
+        // @brief              Constructor
+
+        // @param              [in] aGravitationalParameter A gravitational parameter [m^3/s^2]
+        // @param              [in] anEquatorialRadius An equatorial radius [m]
+        // @param              [in] aFlattening A flattening
+        // @param              [in] aC20 C20
+        // @param              [in] aC40 C40
+
         Parameters(
-            const Derived& gravitationalParameter,
-            const Length& equatorialRadius,
-            const Real& flattening,
-            const Real& J2,
-            const Real& J4
+            const Derived& aGravitationalParameter,
+            const Length& anEquatorialRadius,
+            const Real& aFlattening,
+            const Real& aC20,
+            const Real& aC40
         );
 
-        static Parameters Undefined();
-
-        bool isDefined() const;
+        // @brief              Equal to operator
+        //
+        // @param              [in] aParameterSet A parameter set
+        // @return             True if the parameter set are equal
 
         bool operator==(const Parameters& aParameterSet) const;
 
+        // @brief              Not equal to operator
+        //
+        // @param              [in] aParameterSet A parameter set
+        // @return             True if the parameter set are not equal
+
         bool operator!=(const Parameters& aParameterSet) const;
 
+        // @brief              Output stream operator
+        //
+        // @param              [in] anOutputStream An output stream
+        // @param              [in] aParameterSet A parameter set
+        // @return             A reference to output stream
+
         friend std::ostream& operator<<(std::ostream& anOutputStream, const Parameters& aParameterSet);
+
+        // @brief              Check if the parameter set is defined
+        //
+        // @return             True if the parameter set is defined
+
+        bool isDefined() const;
+
+        // @brief              Undefined parameter set
+        //
+        // @return             An undefined parameter set
+
+        static Parameters Undefined();
 
         Derived gravitationalParameter_;
         Length equatorialRadius_;
         Real flattening_;
-        Real J2_;
-        Real J4_;
         Real C20_;
         Real C40_;
+        Real J2_;
+        Real J4_;
     };
 
     /// @brief              Constructor (default)

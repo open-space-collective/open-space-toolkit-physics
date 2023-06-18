@@ -15,19 +15,19 @@ namespace gravitational
 {
 
 Model::Parameters::Parameters(
-    const Derived& gravitationalParameter,
-    const Length& equatorialRadius,
-    const Real& flattening,
-    const Real& J2,
-    const Real& J4
+    const Derived& aGravitationalParameter,
+    const Length& anEquatorialRadius,
+    const Real& aFlattening,
+    const Real& aC20,
+    const Real& aC40
 )
-    : gravitationalParameter_(gravitationalParameter),
-      equatorialRadius_(equatorialRadius),
-      flattening_(flattening),
-      J2_(J2),
-      J4_(J4),
-      C20_(J2.isDefined() ? J2 * std::sqrt(5.0) : Real::Undefined()),
-      C40_(J4.isDefined() ? J4 * std::sqrt(9.0) : Real::Undefined())
+    : gravitationalParameter_(aGravitationalParameter),
+      equatorialRadius_(anEquatorialRadius),
+      flattening_(aFlattening),
+      C20_(aC20),
+      C40_(aC40),
+      J2_(aC20.isDefined() ? aC20 * std::sqrt(5.0) : Real::Undefined()),
+      J4_(aC40.isDefined() ? aC40 * std::sqrt(9.0) : Real::Undefined())
 {
 }
 
@@ -79,10 +79,10 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Model::Parameters& 
     ostk::core::utils::Print::Line(anOutputStream)
         << "Equatorial Radius:" << (aParameterSet.equatorialRadius_.isDefined() ? aParameterSet.equatorialRadius_.toString() : "Undefined");
     ostk::core::utils::Print::Line(anOutputStream) << "Flattening:" << (aParameterSet.flattening_.isDefined() ? aParameterSet.flattening_.toString() : "Undefined");
-    ostk::core::utils::Print::Line(anOutputStream) << "J2:" << (aParameterSet.J2_.isDefined() ? aParameterSet.J2_.toString() : "Undefined");
-    ostk::core::utils::Print::Line(anOutputStream) << "J4:" << (aParameterSet.J2_.isDefined() ? aParameterSet.J2_.toString() : "Undefined");
     ostk::core::utils::Print::Line(anOutputStream) << "C20:" << (aParameterSet.C20_.isDefined() ? aParameterSet.C20_.toString() : "Undefined");
     ostk::core::utils::Print::Line(anOutputStream) << "C40:" << (aParameterSet.C40_.isDefined() ? aParameterSet.C40_.toString() : "Undefined");
+    ostk::core::utils::Print::Line(anOutputStream) << "J2:" << (aParameterSet.J2_.isDefined() ? aParameterSet.J2_.toString() : "Undefined");
+    ostk::core::utils::Print::Line(anOutputStream) << "J4:" << (aParameterSet.J2_.isDefined() ? aParameterSet.J2_.toString() : "Undefined");
 
     ostk::core::utils::Print::Footer(anOutputStream);
 
