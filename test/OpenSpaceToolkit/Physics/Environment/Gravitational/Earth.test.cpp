@@ -223,6 +223,95 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, ParametersFromTyp
     }
 }
 
+TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Parameters)
+{
+    {
+        EXPECT_EQ(EarthGravitationalModel::Spherical, EarthGravitationalModel(EarthGravitationalModel::Type::Spherical).getParameters());
+        EXPECT_EQ(EarthGravitationalModel::WGS84, EarthGravitationalModel(EarthGravitationalModel::Type::WGS84).getParameters());
+        EXPECT_EQ(EarthGravitationalModel::EGM84, EarthGravitationalModel(EarthGravitationalModel::Type::EGM84).getParameters());
+        EXPECT_EQ(EarthGravitationalModel::EGM96, EarthGravitationalModel(EarthGravitationalModel::Type::EGM96).getParameters());
+        EXPECT_EQ(EarthGravitationalModel::EGM2008, EarthGravitationalModel(EarthGravitationalModel::Type::EGM2008).getParameters());
+    }
+
+    // Spherical
+    {
+        const EarthGravitationalModel::Parameters parameters = EarthGravitationalModel::Spherical;
+
+        EXPECT_GT(1e-15, parameters.gravitationalParameter_.getValue() - 398600441500000.0);
+        EXPECT_GT(1e-15, parameters.equatorialRadius_.inMeters() - 6378137.0);
+        EXPECT_GT(1e-15, parameters.flattening_ - 0.0);
+        EXPECT_GT(1e-15, parameters.C20_ - 0.0);
+        EXPECT_GT(1e-15, parameters.C40_ - 0.0);
+        EXPECT_GT(1e-15, parameters.J2_ - 0.0);
+        EXPECT_GT(1e-15, parameters.J4_ - 0.0);
+    }
+
+    // WGS84
+    {
+        const EarthGravitationalModel::Parameters parameters = EarthGravitationalModel::WGS84;
+
+        EXPECT_GT(1e-15, parameters.gravitationalParameter_.getValue() - 398600441800000.0);
+        EXPECT_GT(1e-15, parameters.equatorialRadius_.inMeters() - 6378137.0);
+        EXPECT_GT(1e-15, parameters.flattening_ - 1.0 / 298.257223563);
+        EXPECT_GT(1e-15, parameters.C20_ - -4.841668500000e-04);
+        EXPECT_GT(1e-15, parameters.C40_ - 5.369958670000e-07);
+        EXPECT_GT(1e-15, parameters.J2_ - -0.001082629989051944);
+        EXPECT_GT(1e-15, parameters.J4_ - 1.6109876010000001e-06);
+    }
+
+    // EGM84
+    {
+        const EarthGravitationalModel::Parameters parameters = EarthGravitationalModel::EGM84;
+
+        EXPECT_GT(1e-15, parameters.gravitationalParameter_.getValue() - 398600441800000.0);
+        EXPECT_GT(1e-15, parameters.equatorialRadius_.inMeters() - 6378137.0);
+        EXPECT_GT(1e-15, parameters.flattening_ - 1.0 / 298.257223563);
+        EXPECT_GT(1e-15, parameters.C20_ - -4.841668500000e-04);
+        EXPECT_GT(1e-15, parameters.C40_ - 5.369958670000e-07);
+        EXPECT_GT(1e-15, parameters.J2_ - -0.001082629989051944);
+        EXPECT_GT(1e-15, parameters.J4_ - 1.6109876010000001e-06);
+    }
+
+    // EGM96
+    {
+        const EarthGravitationalModel::Parameters parameters = EarthGravitationalModel::EGM96;
+
+        EXPECT_GT(1e-15, parameters.gravitationalParameter_.getValue() - 398600441500000.0);
+        EXPECT_GT(1e-15, parameters.equatorialRadius_.inMeters() - 6378136.3);
+        EXPECT_GT(1e-15, parameters.flattening_ - 1.0 / 298.257223563);
+        EXPECT_GT(1e-15, parameters.C20_ - -4.841653717360e-04);
+        EXPECT_GT(1e-15, parameters.C40_ - 5.398738637890e-07);
+        EXPECT_GT(1e-15, parameters.J2_ - -0.0010826266835531513);
+        EXPECT_GT(1e-15, parameters.J4_ - 1.619621591367e-06);
+    }
+
+    // EGM96 + WGS84
+    {
+        const EarthGravitationalModel::Parameters parameters = EarthGravitationalModel::WGS84_EGM96;
+
+        EXPECT_GT(1e-15, parameters.gravitationalParameter_.getValue() - 398600441800000.0);
+        EXPECT_GT(1e-15, parameters.equatorialRadius_.inMeters() - 6378137.0);
+        EXPECT_GT(1e-15, parameters.flattening_ - 1.0 / 298.257223563);
+        EXPECT_GT(1e-15, parameters.C20_ - -4.841653717360e-04);
+        EXPECT_GT(1e-15, parameters.C40_ - 5.398738637890e-07);
+        EXPECT_GT(1e-15, parameters.J2_ - -0.0010826266835531513);
+        EXPECT_GT(1e-15, parameters.J4_ - 1.619621591367e-06);
+    }
+
+    // EGM2008
+    {
+        const EarthGravitationalModel::Parameters parameters = EarthGravitationalModel::EGM2008;
+
+        EXPECT_GT(1e-15, parameters.gravitationalParameter_.getValue() - 398600441500000.0);
+        EXPECT_GT(1e-15, parameters.equatorialRadius_.inMeters() - 6378137.0);
+        EXPECT_GT(1e-15, parameters.flattening_ - 1.0 / 298.257223563);
+        EXPECT_GT(1e-15, parameters.C20_ - -4.84169317366974e-04);
+        EXPECT_GT(1e-15, parameters.C40_ - 5.39965866638991e-07);
+        EXPECT_GT(1e-15, parameters.J2_ - -0.0010826355062522235);
+        EXPECT_GT(1e-15, parameters.J4_ - 1.6198975999169731e-06);
+    }
+}
+
 TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetType)
 {
     {
