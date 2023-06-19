@@ -35,11 +35,37 @@ using ostk::physics::coord::frame::provider::Static;
 
 class OpenSpaceToolkit_Physics_Coordinate_Frame : public ::testing::Test
 {
-   protected:
-    void SetUp() override
+    namespace iau = ostk::physics::coord::frame::providers::iau;
+
+    using ostk::core::types::Real;
+    using ostk::core::types::Shared;
+    using ostk::core::types::String;
+
+    using ostk::math::geom::d3::trf::rot::Quaternion;
+    using ostk::math::geom::d3::trf::rot::RotationMatrix;
+    using ostk::math::geom::d3::trf::rot::RotationVector;
+    using ostk::math::obj::Vector3d;
+
+    using ostk::physics::coord::Frame;
+    using ostk::physics::coord::Transform;
+    using ostk::physics::coord::frame::Provider;
+    using ostk::physics::coord::frame::provider::Static;
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+    using ostk::physics::units::Angle;
+
     {
-        customFrameSPtr_ = Frame::Construct(name_, isQuasiInertial_, Frame::GCRF(), providerSPtr_);
-    }
+        const String name = "Custom";
+        const bool isQuasiInertial = true;
+        const Shared<const Frame> parentFrameSPtr = Frame::GCRF();
+        const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(
+            Instant::J2000(),
+            Vector3d(0.0, 0.0, 0.0),
+            Vector3d::Zero(),
+            Quaternion::RotationVector(RotationVector({0.0, 0.0, 1.0}, Angle::Degrees(-90.0))),
+            Vector3d(0.0, 0.0, +2.0)
+        )));
 
     void TearDown() override
     {
@@ -155,8 +181,42 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, EqualToOperator)
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, NotEqualToOperator)
 {
+    using ostk::core::types::Real;
+    using ostk::core::types::Shared;
+    using ostk::core::types::String;
+
+    using ostk::math::geom::d3::trf::rot::Quaternion;
+    using ostk::math::geom::d3::trf::rot::RotationMatrix;
+    using ostk::math::geom::d3::trf::rot::RotationVector;
+    using ostk::math::obj::Vector3d;
+
+    using ostk::physics::coord::Frame;
+    using ostk::physics::coord::Transform;
+    using ostk::physics::coord::frame::Provider;
+    using ostk::physics::coord::frame::provider::Static;
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+    using ostk::physics::units::Angle;
+
     {
-        EXPECT_FALSE(customFrameSPtr_ != customFrameSPtr_);
+        const String name = "Custom";
+        const bool isQuasiInertial = true;
+        const Shared<const Frame> parentFrameSPtr = Frame::GCRF();
+        const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(
+            Instant::J2000(),
+            Vector3d(0.0, 0.0, 0.0),
+            Vector3d::Zero(),
+            Quaternion::RotationVector(RotationVector({0.0, 0.0, 1.0}, Angle::Degrees(-90.0))),
+            Vector3d(0.0, 0.0, +2.0)
+        )));
+
+        const Shared<const Frame> customFrameSPtr =
+            Frame::Construct(name, isQuasiInertial, parentFrameSPtr, providerSPtr);
+
+        EXPECT_FALSE(customFrameSPtr != customFrameSPtr);
+
+        Frame::Destruct("Custom");
     }
 
     {
@@ -249,7 +309,39 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, NotEqualToOperator)
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, StreamOperator)
 {
+    using ostk::core::types::Real;
+    using ostk::core::types::Shared;
+    using ostk::core::types::String;
+
+    using ostk::math::geom::d3::trf::rot::Quaternion;
+    using ostk::math::geom::d3::trf::rot::RotationMatrix;
+    using ostk::math::geom::d3::trf::rot::RotationVector;
+    using ostk::math::obj::Vector3d;
+
+    using ostk::physics::coord::Frame;
+    using ostk::physics::coord::Transform;
+    using ostk::physics::coord::frame::Provider;
+    using ostk::physics::coord::frame::provider::Static;
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+    using ostk::physics::units::Angle;
+
     {
+        const String name = "Custom";
+        const bool isQuasiInertial = true;
+        const Shared<const Frame> parentFrameSPtr = Frame::GCRF();
+        const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(
+            Instant::J2000(),
+            Vector3d(0.0, 0.0, 0.0),
+            Vector3d::Zero(),
+            Quaternion::RotationVector(RotationVector({0.0, 0.0, 1.0}, Angle::Degrees(-90.0))),
+            Vector3d(0.0, 0.0, +2.0)
+        )));
+
+        const Shared<const Frame> customFrameSPtr =
+            Frame::Construct(name, isQuasiInertial, parentFrameSPtr, providerSPtr);
+
         testing::internal::CaptureStdout();
 
         EXPECT_NO_THROW(std::cout << (*customFrameSPtr_) << std::endl);
@@ -260,8 +352,44 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, StreamOperator)
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, IsDefined)
 {
+    namespace iau = ostk::physics::coord::frame::providers::iau;
+
+    using ostk::core::types::Real;
+    using ostk::core::types::Shared;
+    using ostk::core::types::String;
+
+    using ostk::math::geom::d3::trf::rot::Quaternion;
+    using ostk::math::geom::d3::trf::rot::RotationMatrix;
+    using ostk::math::geom::d3::trf::rot::RotationVector;
+    using ostk::math::obj::Vector3d;
+
+    using ostk::physics::coord::Frame;
+    using ostk::physics::coord::Transform;
+    using ostk::physics::coord::frame::Provider;
+    using ostk::physics::coord::frame::provider::Static;
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+    using ostk::physics::units::Angle;
+
     {
-        EXPECT_TRUE(customFrameSPtr_->isDefined());
+        const String name = "Custom";
+        const bool isQuasiInertial = true;
+        const Shared<const Frame> parentFrameSPtr = Frame::GCRF();
+        const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(
+            Instant::J2000(),
+            Vector3d(0.0, 0.0, 0.0),
+            Vector3d::Zero(),
+            Quaternion::RotationVector(RotationVector({0.0, 0.0, 1.0}, Angle::Degrees(-90.0))),
+            Vector3d(0.0, 0.0, +2.0)
+        )));
+
+        const Shared<const Frame> customFrameSPtr =
+            Frame::Construct(name, isQuasiInertial, parentFrameSPtr, providerSPtr);
+
+        EXPECT_TRUE(customFrameSPtr->isDefined());
+
+        Frame::Destruct("Custom");
     }
 
     {
@@ -283,8 +411,44 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, IsDefined)
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, IsQuasiInertial)
 {
+    namespace iau = ostk::physics::coord::frame::providers::iau;
+
+    using ostk::core::types::Real;
+    using ostk::core::types::Shared;
+    using ostk::core::types::String;
+
+    using ostk::math::geom::d3::trf::rot::Quaternion;
+    using ostk::math::geom::d3::trf::rot::RotationMatrix;
+    using ostk::math::geom::d3::trf::rot::RotationVector;
+    using ostk::math::obj::Vector3d;
+
+    using ostk::physics::coord::Frame;
+    using ostk::physics::coord::Transform;
+    using ostk::physics::coord::frame::Provider;
+    using ostk::physics::coord::frame::provider::Static;
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+    using ostk::physics::units::Angle;
+
     {
-        EXPECT_TRUE(customFrameSPtr_->isQuasiInertial());
+        const String name = "Custom";
+        const bool isQuasiInertial = true;
+        const Shared<const Frame> parentFrameSPtr = Frame::GCRF();
+        const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(
+            Instant::J2000(),
+            Vector3d(0.0, 0.0, 0.0),
+            Vector3d::Zero(),
+            Quaternion::RotationVector(RotationVector({0.0, 0.0, 1.0}, Angle::Degrees(-90.0))),
+            Vector3d(0.0, 0.0, +2.0)
+        )));
+
+        const Shared<const Frame> customFrameSPtr =
+            Frame::Construct(name, isQuasiInertial, parentFrameSPtr, providerSPtr);
+
+        EXPECT_TRUE(customFrameSPtr->isQuasiInertial());
+
+        Frame::Destruct("Custom");
     }
 
     {
@@ -306,8 +470,44 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, IsQuasiInertial)
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, HasParent)
 {
+    namespace iau = ostk::physics::coord::frame::providers::iau;
+
+    using ostk::core::types::Real;
+    using ostk::core::types::Shared;
+    using ostk::core::types::String;
+
+    using ostk::math::geom::d3::trf::rot::Quaternion;
+    using ostk::math::geom::d3::trf::rot::RotationMatrix;
+    using ostk::math::geom::d3::trf::rot::RotationVector;
+    using ostk::math::obj::Vector3d;
+
+    using ostk::physics::coord::Frame;
+    using ostk::physics::coord::Transform;
+    using ostk::physics::coord::frame::Provider;
+    using ostk::physics::coord::frame::provider::Static;
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+    using ostk::physics::units::Angle;
+
     {
-        EXPECT_TRUE(customFrameSPtr_->hasParent());
+        const String name = "Custom";
+        const bool isQuasiInertial = true;
+        const Shared<const Frame> parentFrameSPtr = Frame::GCRF();
+        const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(
+            Instant::J2000(),
+            Vector3d(0.0, 0.0, 0.0),
+            Vector3d::Zero(),
+            Quaternion::RotationVector(RotationVector({0.0, 0.0, 1.0}, Angle::Degrees(-90.0))),
+            Vector3d(0.0, 0.0, +2.0)
+        )));
+
+        const Shared<const Frame> customFrameSPtr =
+            Frame::Construct(name, isQuasiInertial, parentFrameSPtr, providerSPtr);
+
+        EXPECT_TRUE(customFrameSPtr->hasParent());
+
+        Frame::Destruct("Custom");
     }
 
     {
@@ -329,8 +529,44 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, HasParent)
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, AccessParent)
 {
+    namespace iau = ostk::physics::coord::frame::providers::iau;
+
+    using ostk::core::types::Real;
+    using ostk::core::types::Shared;
+    using ostk::core::types::String;
+
+    using ostk::math::geom::d3::trf::rot::Quaternion;
+    using ostk::math::geom::d3::trf::rot::RotationMatrix;
+    using ostk::math::geom::d3::trf::rot::RotationVector;
+    using ostk::math::obj::Vector3d;
+
+    using ostk::physics::coord::Frame;
+    using ostk::physics::coord::Transform;
+    using ostk::physics::coord::frame::Provider;
+    using ostk::physics::coord::frame::provider::Static;
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+    using ostk::physics::units::Angle;
+
     {
-        EXPECT_EQ(Frame::GCRF(), customFrameSPtr_->accessParent());
+        const String name = "Custom";
+        const bool isQuasiInertial = true;
+        const Shared<const Frame> parentFrameSPtr = Frame::GCRF();
+        const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(
+            Instant::J2000(),
+            Vector3d(0.0, 0.0, 0.0),
+            Vector3d::Zero(),
+            Quaternion::RotationVector(RotationVector({0.0, 0.0, 1.0}, Angle::Degrees(-90.0))),
+            Vector3d(0.0, 0.0, +2.0)
+        )));
+
+        const Shared<const Frame> customFrameSPtr =
+            Frame::Construct(name, isQuasiInertial, parentFrameSPtr, providerSPtr);
+
+        EXPECT_EQ(parentFrameSPtr, customFrameSPtr->accessParent());
+
+        Frame::Destruct("Custom");
     }
 
     {
@@ -352,8 +588,44 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, AccessParent)
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GetName)
 {
+    namespace iau = ostk::physics::coord::frame::providers::iau;
+
+    using ostk::core::types::Real;
+    using ostk::core::types::Shared;
+    using ostk::core::types::String;
+
+    using ostk::math::geom::d3::trf::rot::Quaternion;
+    using ostk::math::geom::d3::trf::rot::RotationMatrix;
+    using ostk::math::geom::d3::trf::rot::RotationVector;
+    using ostk::math::obj::Vector3d;
+
+    using ostk::physics::coord::Frame;
+    using ostk::physics::coord::Transform;
+    using ostk::physics::coord::frame::Provider;
+    using ostk::physics::coord::frame::provider::Static;
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+    using ostk::physics::units::Angle;
+
     {
-        EXPECT_EQ(name_, customFrameSPtr_->getName());
+        const String name = "Custom";
+        const bool isQuasiInertial = true;
+        const Shared<const Frame> parentFrameSPtr = Frame::GCRF();
+        const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(
+            Instant::J2000(),
+            Vector3d(0.0, 0.0, 0.0),
+            Vector3d::Zero(),
+            Quaternion::RotationVector(RotationVector({0.0, 0.0, 1.0}, Angle::Degrees(-90.0))),
+            Vector3d(0.0, 0.0, +2.0)
+        )));
+
+        const Shared<const Frame> customFrameSPtr =
+            Frame::Construct(name, isQuasiInertial, parentFrameSPtr, providerSPtr);
+
+        EXPECT_EQ(name, customFrameSPtr->getName());
+
+        Frame::Destruct("Custom");
     }
 
     {
@@ -377,6 +649,27 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GetName)
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GetOriginIn)
 {
+    using ostk::core::types::Real;
+    using ostk::core::types::Shared;
+    using ostk::core::types::String;
+
+    using ostk::math::geom::d3::trf::rot::Quaternion;
+    using ostk::math::geom::d3::trf::rot::RotationMatrix;
+    using ostk::math::geom::d3::trf::rot::RotationVector;
+    using ostk::math::obj::Vector3d;
+
+    using ostk::physics::coord::Axes;
+    using ostk::physics::coord::Frame;
+    using ostk::physics::coord::Position;
+    using ostk::physics::coord::Transform;
+    using ostk::physics::coord::frame::Provider;
+    using ostk::physics::coord::frame::provider::Static;
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+    using ostk::physics::units::Angle;
+    using ostk::physics::units::Length;
+
     {
         const Position referenceOrigin = Position::Meters({0.0, 0.0, 0.0}, Frame::GCRF());
 
@@ -448,6 +741,27 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GetOriginIn)
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GetVelocityIn)
 {
+    using ostk::core::types::Real;
+    using ostk::core::types::Shared;
+    using ostk::core::types::String;
+
+    using ostk::math::geom::d3::trf::rot::Quaternion;
+    using ostk::math::geom::d3::trf::rot::RotationMatrix;
+    using ostk::math::geom::d3::trf::rot::RotationVector;
+    using ostk::math::obj::Vector3d;
+
+    using ostk::physics::coord::Axes;
+    using ostk::physics::coord::Frame;
+    using ostk::physics::coord::Transform;
+    using ostk::physics::coord::Velocity;
+    using ostk::physics::coord::frame::Provider;
+    using ostk::physics::coord::frame::provider::Static;
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+    using ostk::physics::units::Angle;
+    using ostk::physics::units::Length;
+
     {
         const Velocity referenceVelocity = Velocity::MetersPerSecond({0.0, 0.0, 0.0}, Frame::GCRF());
 
@@ -522,6 +836,27 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GetVelocityIn)
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GetAxesIn)
 {
+    using ostk::core::types::Real;
+    using ostk::core::types::Shared;
+    using ostk::core::types::String;
+
+    using ostk::math::geom::d3::trf::rot::Quaternion;
+    using ostk::math::geom::d3::trf::rot::RotationMatrix;
+    using ostk::math::geom::d3::trf::rot::RotationVector;
+    using ostk::math::obj::Vector3d;
+
+    using ostk::physics::coord::Axes;
+    using ostk::physics::coord::Frame;
+    using ostk::physics::coord::Position;
+    using ostk::physics::coord::Transform;
+    using ostk::physics::coord::frame::Provider;
+    using ostk::physics::coord::frame::provider::Static;
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+    using ostk::physics::units::Angle;
+    using ostk::physics::units::Length;
+
     {
         const Instant epoch = Instant::J2000();
 
@@ -588,6 +923,17 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GetAxesIn)
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GetTransformTo)
 {
+    using ostk::core::types::Real;
+    using ostk::core::types::Shared;
+
+    using ostk::math::geom::d3::trf::rot::Quaternion;
+    using ostk::math::obj::Vector3d;
+
+    using ostk::physics::coord::Frame;
+    using ostk::physics::coord::Transform;
+    using ostk::physics::time::Instant;
+    using ostk::physics::units::Angle;
+
     {
         const Transform transform = Frame::GCRF()->getTransformTo(Frame::GCRF(), Instant::J2000());
 
@@ -646,6 +992,9 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, J2000)
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, MOD)
 {
+    using ostk::physics::coord::Frame;
+    using ostk::physics::time::Instant;
+
     {
         EXPECT_TRUE(Frame::MOD(Instant::J2000())->isDefined());
     }
@@ -653,6 +1002,11 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, MOD)
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, TOD)
 {
+    namespace iau = ostk::physics::coord::frame::providers::iau;
+
+    using ostk::physics::coord::Frame;
+    using ostk::physics::time::Instant;
+
     {
         EXPECT_TRUE(Frame::TOD(Instant::J2000(), iau::Theory::IAU_2000A)->isDefined());
     }
@@ -667,6 +1021,9 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, TEME)
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, TEMEOfEpoch)
 {
+    using ostk::physics::coord::Frame;
+    using ostk::physics::time::Instant;
+
     {
         EXPECT_TRUE(Frame::TEMEOfEpoch(Instant::J2000())->isDefined());
     }
@@ -707,8 +1064,35 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, WithName)
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Exists)
 {
+    using ostk::core::types::Real;
+    using ostk::core::types::Shared;
+    using ostk::core::types::String;
+
+    using ostk::math::geom::d3::trf::rot::Quaternion;
+    using ostk::math::geom::d3::trf::rot::RotationMatrix;
+    using ostk::math::geom::d3::trf::rot::RotationVector;
+    using ostk::math::obj::Vector3d;
+
+    using ostk::physics::coord::Frame;
+    using ostk::physics::coord::Transform;
+    using ostk::physics::coord::frame::Provider;
+    using ostk::physics::coord::frame::provider::Static;
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+    using ostk::physics::units::Angle;
+
     {
-        const String name = "Custom A";
+        const String name = "Custom";
+        const bool isQuasiInertial = true;
+        const Shared<const Frame> parentFrameSPtr = Frame::GCRF();
+        const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(
+            Instant::J2000(),
+            Vector3d(0.0, 0.0, 0.0),
+            Vector3d::Zero(),
+            Quaternion::RotationVector(RotationVector({0.0, 0.0, 1.0}, Angle::Degrees(-90.0))),
+            Vector3d(0.0, 0.0, +2.0)
+        )));
 
         EXPECT_FALSE(Frame::Exists("Custom A"));
 
@@ -728,8 +1112,35 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Exists)
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Construct)
 {
+    using ostk::core::types::Real;
+    using ostk::core::types::Shared;
+    using ostk::core::types::String;
+
+    using ostk::math::geom::d3::trf::rot::Quaternion;
+    using ostk::math::geom::d3::trf::rot::RotationMatrix;
+    using ostk::math::geom::d3::trf::rot::RotationVector;
+    using ostk::math::obj::Vector3d;
+
+    using ostk::physics::coord::Frame;
+    using ostk::physics::coord::Transform;
+    using ostk::physics::coord::frame::Provider;
+    using ostk::physics::coord::frame::provider::Static;
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+    using ostk::physics::units::Angle;
+
     {
-        const String name = "Custom A";
+        const String name = "Custom";
+        const bool isQuasiInertial = true;
+        const Shared<const Frame> parentFrameSPtr = Frame::GCRF();
+        const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(
+            Instant::J2000(),
+            Vector3d(0.0, 0.0, 0.0),
+            Vector3d::Zero(),
+            Quaternion::RotationVector(RotationVector({0.0, 0.0, 1.0}, Angle::Degrees(-90.0))),
+            Vector3d(0.0, 0.0, +2.0)
+        )));
 
         EXPECT_NO_THROW(Frame::Construct(name, isQuasiInertial_, Frame::GCRF(), providerSPtr_));
         EXPECT_ANY_THROW(Frame::Construct(name, isQuasiInertial_, Frame::GCRF(), providerSPtr_));
@@ -746,8 +1157,35 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Construct)
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Destruct)
 {
+    using ostk::core::types::Real;
+    using ostk::core::types::Shared;
+    using ostk::core::types::String;
+
+    using ostk::math::geom::d3::trf::rot::Quaternion;
+    using ostk::math::geom::d3::trf::rot::RotationMatrix;
+    using ostk::math::geom::d3::trf::rot::RotationVector;
+    using ostk::math::obj::Vector3d;
+
+    using ostk::physics::coord::Frame;
+    using ostk::physics::coord::Transform;
+    using ostk::physics::coord::frame::Provider;
+    using ostk::physics::coord::frame::provider::Static;
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+    using ostk::physics::units::Angle;
+
     {
-        const String name = "Custom A";
+        const String name = "Custom";
+        const bool isQuasiInertial = true;
+        const Shared<const Frame> parentFrameSPtr = Frame::GCRF();
+        const Shared<const Provider> providerSPtr = std::make_shared<Static>(Static(Transform::Passive(
+            Instant::J2000(),
+            Vector3d(0.0, 0.0, 0.0),
+            Vector3d::Zero(),
+            Quaternion::RotationVector(RotationVector({0.0, 0.0, 1.0}, Angle::Degrees(-90.0))),
+            Vector3d(0.0, 0.0, +2.0)
+        )));
 
         const Shared<const Frame> customFrameSPtr =
             Frame::Construct(name, isQuasiInertial_, Frame::GCRF(), providerSPtr_);
@@ -763,7 +1201,21 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Destruct)
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
 {
-    const String name = "Custom A";
+    using ostk::core::types::Real;
+    using ostk::core::types::Shared;
+    using ostk::core::types::String;
+
+    using ostk::math::geom::d3::trf::rot::Quaternion;
+    using ostk::math::geom::d3::trf::rot::RotationMatrix;
+    using ostk::math::geom::d3::trf::rot::RotationVector;
+    using ostk::math::obj::Vector3d;
+
+    using ostk::physics::coord::Frame;
+    using ostk::physics::coord::Transform;
+    using ostk::physics::coord::frame::Provider;
+    using ostk::physics::coord::frame::provider::Static;
+    using ostk::physics::time::Instant;
+    using ostk::physics::units::Angle;
 
     // Pure static translation
 
