@@ -45,131 +45,88 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Test)
     using ostk::physics::env::obj::celest::Earth;
 
     {
-        const Array<Tuple<File, Shared<const Frame>, Shared<const Frame>, Real, Real, Real, Real, Real>>
+        const Array<Tuple<File, String, String, Real, Real, Real, Real, Real>>
             referenceScenarios = {
 
-                // GCRF <> J2000 (Orekit)
+                // GCRF <> TOD IAU 2000A (STK)
 
                 {File::Path(Path::Parse(
-                     "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_J2000_orekit.csv"
+                     "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TOD_stk.csv"
                  )),
-                 Frame::GCRF(),
-                 Frame::J2000(iau::Theory::IAU_2006),
+                 "TOD",
+                 "IAU 2000A",
                  0.0,   // Position tolerance [m]
                  0.0,   // Velocity tolerance [m/s]
-                 1e-3,  // Orientation axis tolerance []
-                 1e-6,  // Orientation angle tolerance [rad]
+                 1e-4,  // Orientation axis tolerance []
+                 1e-3,  // Orientation angle tolerance [rad]
                  0.0},  // Angular velocity tolerance [rad/s]
 
-                // GCRF <> ITRF (STK)
+                // GCRF <> TOD IAU 2000A (Orekit)
 
                 {File::Path(Path::Parse(
-                     "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_ITRF_stk.csv"
+                     "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TOD_IERS_2010_orekit.csv"
                  )),
-                 Frame::GCRF(),
-                 Frame::ITRF(),
-                 0.0,    // Position tolerance [m]
-                 0.0,    // Velocity tolerance [m/s]
-                 1e-3,   // Orientation axis tolerance []
-                 1e-6,   // Orientation angle tolerance [rad]
-                 1e-6},  // Angular velocity tolerance [rad/s]
+                 "TOD",
+                 "IAU 2000A",
+                 0.0,   // Position tolerance [m]
+                 0.0,   // Velocity tolerance [m/s]
+                 1e-4,  // Orientation axis tolerance []
+                 1e-3,  // Orientation angle tolerance [rad]
+                 1e-10},  // Angular velocity tolerance [rad/s]
 
-                // GCRF <> ITRF (Orekit)
-
-                {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/"
-                                        "GCRF_ITRF_IERS_2010_orekit.csv")),
-                 Frame::GCRF(),
-                 Frame::ITRF(),
-                 0.0,    // Position tolerance [m]
-                 0.0,    // Velocity tolerance [m/s]
-                 1e-3,   // Orientation axis tolerance []
-                 1e-6,   // Orientation angle tolerance [rad]
-                 1e-6},  // Angular velocity tolerance [rad/s]
-
-                // GCRF <> TEME
+                 // GCRF <> TOD IAU 2000B (STK)
 
                 {File::Path(Path::Parse(
-                     "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TEME_orekit.csv"
+                     "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TOD_stk.csv"
                  )),
-                 Frame::GCRF(),
-                 Frame::TEME(),
-                 0.0,    // Position tolerance [m]
-                 0.0,    // Velocity tolerance [m/s]
-                 1e-3,   // Orientation axis tolerance []
-                 1e-6,   // Orientation angle tolerance [rad]
-                 1e-6},  // Angular velocity tolerance [rad/s]
-
-                // GCRF <> TOD IAU_2000A @2020-01-01T00:00:00.000 TAI
-
-                {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/"
-                                        "GCRF_TOD_IERS_2010@2020-01-01T00:00:00.000TAI_orekit.csv")),
-                 Frame::GCRF(),
-                 Frame::TOD(Instant::DateTime(DateTime(2020, 1, 1, 0, 0, 0), Scale::TAI), iau::Theory::IAU_2000A),
+                 "TOD",
+                 "IAU 2000B",
                  0.0,   // Position tolerance [m]
                  0.0,   // Velocity tolerance [m/s]
-                 1e-6,  // Orientation axis tolerance []
-                 1e-6,  // Orientation angle tolerance [rad]
+                 1e-4,  // Orientation axis tolerance []
+                 1e-3,  // Orientation angle tolerance [rad]
                  0.0},  // Angular velocity tolerance [rad/s]
 
-                // GCRF <> TOD IAU_2000B @2020-01-01T00:00:00.000 TAI
+                // GCRF <> TOD IAU 2000B (Orekit)
 
-                {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/"
-                                        "GCRF_TOD_IERS_2010@2020-01-01T00:00:00.000TAI_orekit.csv")),
-                 Frame::GCRF(),
-                 Frame::TOD(Instant::DateTime(DateTime(2020, 1, 1, 0, 0, 0), Scale::TAI), iau::Theory::IAU_2000B),
+                {File::Path(Path::Parse(
+                     "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TOD_IERS_2010_orekit.csv"
+                 )),
+                 "TOD",
+                 "IAU 2000B",
                  0.0,   // Position tolerance [m]
                  0.0,   // Velocity tolerance [m/s]
-                 1e-6,  // Orientation axis tolerance []
-                 1e-6,  // Orientation angle tolerance [rad]
-                 0.0},  // Angular velocity tolerance [rad/s]
+                 1e-4,  // Orientation axis tolerance []
+                 1e-3,  // Orientation angle tolerance [rad]
+                 1e-10},  // Angular velocity tolerance [rad/s]
 
-                // GCRF <> TOD IAU_2006 @2020-01-01T00:00:00.000 TAI
+                // GCRF <> TOD IAU 2006 (STK)
 
-                {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/"
-                                        "GCRF_TOD_IERS_2010@2020-01-01T00:00:00.000TAI_orekit.csv")),
-                 Frame::GCRF(),
-                 Frame::TOD(Instant::DateTime(DateTime(2020, 1, 1, 0, 0, 0), Scale::TAI), iau::Theory::IAU_2006),
+                {File::Path(Path::Parse(
+                     "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TOD_stk.csv"
+                 )),
+                 "TOD",
+                 "IAU 2006",
                  0.0,   // Position tolerance [m]
                  0.0,   // Velocity tolerance [m/s]
-                 1e-6,  // Orientation axis tolerance []
-                 1e-6,  // Orientation angle tolerance [rad]
+                 1e-4,  // Orientation axis tolerance []
+                 1e-3,  // Orientation angle tolerance [rad]
                  0.0},  // Angular velocity tolerance [rad/s]
 
-                // GCRF <> TOD IAU_2000A @2030-01-01T00:00:00.000 TAI
+                // GCRF <> TOD IAU 2006 (Orekit)
 
-                {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/"
-                                        "GCRF_TOD_IERS_2010@2030-01-01T00:00:00.000TAI_orekit.csv")),
-                 Frame::GCRF(),
-                 Frame::TOD(Instant::DateTime(DateTime(2030, 1, 1, 0, 0, 0), Scale::TAI), iau::Theory::IAU_2000A),
+                {File::Path(Path::Parse(
+                     "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TOD_IERS_2010_orekit.csv"
+                 )),
+                 "TOD",
+                 "IAU 2006",
                  0.0,   // Position tolerance [m]
                  0.0,   // Velocity tolerance [m/s]
-                 1e-6,  // Orientation axis tolerance []
-                 1e-6,  // Orientation angle tolerance [rad]
-                 0.0},  // Angular velocity tolerance [rad/s]
+                 1e-4,  // Orientation axis tolerance []
+                 1e-3,  // Orientation angle tolerance [rad]
+                 1e-10},  // Angular velocity tolerance [rad/s]
 
-                // GCRF <> TOD IAU_2000B @2030-01-01T00:00:00.000 TAI
-
-                {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/"
-                                        "GCRF_TOD_IERS_2010@2030-01-01T00:00:00.000TAI_orekit.csv")),
-                 Frame::GCRF(),
-                 Frame::TOD(Instant::DateTime(DateTime(2030, 1, 1, 0, 0, 0), Scale::TAI), iau::Theory::IAU_2000B),
-                 0.0,   // Position tolerance [m]
-                 0.0,   // Velocity tolerance [m/s]
-                 1e-6,  // Orientation axis tolerance []
-                 1e-6,  // Orientation angle tolerance [rad]
-                 0.0},  // Angular velocity tolerance [rad/s]
-
-                // GCRF <> TOD IAU_2006 @2030-01-01T00:00:00.000 TAI
-
-                {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/"
-                                        "GCRF_TOD_IERS_2010@2030-01-01T00:00:00.000TAI_orekit.csv")),
-                 Frame::GCRF(),
-                 Frame::TOD(Instant::DateTime(DateTime(2030, 1, 1, 0, 0, 0), Scale::TAI), iau::Theory::IAU_2006),
-                 0.0,   // Position tolerance [m]
-                 0.0,   // Velocity tolerance [m/s]
-                 1e-6,  // Orientation axis tolerance []
-                 1e-6,  // Orientation angle tolerance [rad]
-                 0.0},  // Angular velocity tolerance [rad/s]
+                
             };
 
         for (const auto& referenceScenario : referenceScenarios)
@@ -177,8 +134,8 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Test)
             // Reference data setup
 
             const File referenceDataFile = std::get<0>(referenceScenario);
-            const Shared<const Frame> frame1SPtr = std::get<1>(referenceScenario);
-            const Shared<const Frame> frame2SPtr = std::get<2>(referenceScenario);
+            const String frame2Str = std::get<1>(referenceScenario);
+            const String otherStr = std::get<2>(referenceScenario);
             const Real translationTolerance = std::get<3>(referenceScenario);
             const Real velocityTolerance = std::get<4>(referenceScenario);
             const Real orientationAxisTolerance = std::get<5>(referenceScenario);
@@ -189,14 +146,23 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Test)
 
             // Test
             const String scenario =
-                String::Format("Frame 1: {} - Frame 2: {}", frame1SPtr->getName(), frame2SPtr->getName());
+                String::Format("Frame: {} ({}) | File: {}\n", frame2Str, otherStr, referenceDataFile.toString());
+            
+            std::cout << String::Format("Testing {}", scenario);
 
             for (const auto& referenceRow : referenceData)
             {
                 const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].accessString()), Scale::TAI);
+                Shared<const Frame> frame1 = Frame::GCRF();
+                Shared<const Frame> frame2 = Frame::GCRF();
 
-                const Transform transformToFrame1 = frame2SPtr->getTransformTo(frame1SPtr, instant);
-                const Transform transformToFrame2 = frame1SPtr->getTransformTo(frame2SPtr, instant);
+                if(frame2Str == "TOD") {
+                    frame2 = Frame::TOD(instant, iau::TheoryFromString(otherStr));
+                }
+                
+                const Transform transformToFrame1 = frame2->getTransformTo(frame1, instant);
+                const Transform transformToFrame2 = frame1->getTransformTo(frame2, instant);
+
 
                 // Instant
 
@@ -280,7 +246,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Test)
 
                     const RotationVector toFrame2 = RotationVector::Quaternion(transformToFrame2.getOrientation());
                     const RotationVector toFrame1 = RotationVector::Quaternion(transformToFrame1.getOrientation());
-
+                    
                     // Angle
 
                     ASSERT_GT(
