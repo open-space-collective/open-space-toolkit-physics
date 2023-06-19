@@ -143,8 +143,6 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Test)
             const String scenario =
                 String::Format("Frame: {} ({}) | File: {}\n", frame2Str, otherStr, referenceDataFile.toString());
 
-            std::cout << String::Format("Testing {}", scenario);
-
             for (const auto& referenceRow : referenceData)
             {
                 const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].accessString()), Scale::TAI);
