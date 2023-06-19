@@ -39,7 +39,25 @@ enum class Theory
 
 };
 
+/// @brief                      Parse a theory representation to its corresponding string
+///
+/// @code
+///                             String string = StringFromTheory(Theory::IAU_2000A) ; // "IAU 2000A"
+/// @endcode
+///
+/// @param                      [in] aTheory A string
+/// @return                     String
+
 String StringFromTheory(const Theory& aTheory);
+
+/// @brief                      Parse a string representation to its corresponding theory
+///
+/// @code
+///                             Theory theory = TheoryFromString("IAU 2000A") ; // Theory::IAU_2000A
+/// @endcode
+///
+/// @param                      [in] aString A string
+/// @return                     Theory
 
 Theory TheoryFromString(const String& aString);
 

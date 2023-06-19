@@ -17,38 +17,37 @@
 
 #include <Global.test.hpp>
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Test)
+namespace iau = ostk::physics::coord::frame::providers::iau;
+
+using ostk::core::types::Shared;
+using ostk::core::types::Real;
+using ostk::core::types::String;
+using ostk::core::ctnr::Tuple;
+using ostk::core::ctnr::Array;
+using ostk::core::ctnr::Table;
+using ostk::core::fs::Path;
+using ostk::core::fs::File;
+
+using ostk::math::obj::Vector3d;
+using ostk::math::geom::d3::trf::rot::Quaternion;
+using ostk::math::geom::d3::trf::rot::RotationVector;
+using ostk::math::geom::d3::trf::rot::RotationMatrix;
+
+using ostk::physics::units::Length;
+using ostk::physics::units::Angle;
+using ostk::physics::time::Scale;
+using ostk::physics::time::Instant;
+using ostk::physics::time::DateTime;
+using ostk::physics::coord::Transform;
+using ostk::physics::coord::Frame;
+using ostk::physics::env::obj::celest::Earth;
+
+TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Validation)
 {
-    namespace iau = ostk::physics::coord::frame::providers::iau;
-
-    using ostk::core::types::Shared;
-    using ostk::core::types::Real;
-    using ostk::core::types::String;
-    using ostk::core::ctnr::Tuple;
-    using ostk::core::ctnr::Array;
-    using ostk::core::ctnr::Table;
-    using ostk::core::fs::Path;
-    using ostk::core::fs::File;
-
-    using ostk::math::obj::Vector3d;
-    using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationVector;
-    using ostk::math::geom::d3::trf::rot::RotationMatrix;
-
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Angle;
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::coord::Transform;
-    using ostk::physics::coord::Frame;
-    using ostk::physics::env::obj::celest::Earth;
-
     {
         const Array<Tuple<File, String, String, Real, Real, Real, Real, Real>> referenceScenarios = {
 
             // GCRF <> TOD IAU 2000A (STK)
-
             {File::Path(Path::Parse(
                  "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TOD_stk.csv"
              )),
@@ -61,7 +60,6 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Test)
              0.0},  // Angular velocity tolerance [rad/s]
 
             // GCRF <> TOD IAU 2000A (Orekit)
-
             {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/"
                                     "GCRF_TOD_IERS_2010_orekit.csv")),
              "TOD",
@@ -73,7 +71,6 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Test)
              1e-10},  // Angular velocity tolerance [rad/s]
 
             // GCRF <> TOD IAU 2000B (STK)
-
             {File::Path(Path::Parse(
                  "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TOD_stk.csv"
              )),
@@ -86,7 +83,6 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Test)
              0.0},  // Angular velocity tolerance [rad/s]
 
             // GCRF <> TOD IAU 2000B (Orekit)
-
             {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/"
                                     "GCRF_TOD_IERS_2010_orekit.csv")),
              "TOD",
@@ -98,7 +94,6 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Test)
              1e-10},  // Angular velocity tolerance [rad/s]
 
             // GCRF <> TOD IAU 2006 (STK)
-
             {File::Path(Path::Parse(
                  "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TOD_stk.csv"
              )),
@@ -111,7 +106,6 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Test)
              0.0},  // Angular velocity tolerance [rad/s]
 
             // GCRF <> TOD IAU 2006 (Orekit)
-
             {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/"
                                     "GCRF_TOD_IERS_2010_orekit.csv")),
              "TOD",
@@ -193,7 +187,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Test)
                     );
                 }
 
-                // Velocity
+                // Relative velocity
 
                 {
                     const Vector3d referenceToFrame2 = {
@@ -222,7 +216,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Test)
                     );
                 }
 
-                // Orientation
+                // Relative orientation
 
                 {
                     const Quaternion referenceQuaterion = Quaternion::XYZS(
@@ -297,7 +291,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Test)
                            );
                 }
 
-                // Angular velocity
+                // Relative angular velocity
 
                 {
                     const Vector3d referenceToFrame2 = {
