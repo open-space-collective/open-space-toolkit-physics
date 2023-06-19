@@ -133,7 +133,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Validation)
 
             const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
 
-            // Test
+            // Comparison test scenario
             const String scenario =
                 String::Format("Frame: {} ({}) | File: {}\n", frame2Str, otherStr, referenceDataFile.toString());
 
@@ -158,7 +158,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Validation)
                     EXPECT_EQ(instant, transformToFrame2.getInstant());
                 }
 
-                // Translation
+                // Relative Position
 
                 {
                     const Vector3d referenceToFrame2 = {
