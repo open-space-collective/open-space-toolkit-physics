@@ -264,7 +264,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, Spheric
 
 TEST(OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, GravitationalOnly)
 {
-    const Earth earth = Earth::GravitationalOnly(std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::EGM2008));
+    const Earth earth =
+        Earth::GravitationalOnly(std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::EGM2008));
     EXPECT_TRUE(earth.isDefined());
 
     EXPECT_TRUE(earth.gravitationalModelIsDefined());
@@ -292,7 +293,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, Atmosph
     EXPECT_FALSE(earth.magneticModelIsDefined());
     EXPECT_TRUE(earth.atmosphericModelIsDefined());
 }
-
 
 TEST(OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, FromModels)
 {

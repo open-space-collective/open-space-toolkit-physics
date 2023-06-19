@@ -40,17 +40,21 @@ String StringFromTheory(const Theory& aTheory)
 
 Theory TheoryFromString(const String& aString)
 {
-   if (aString == "IAU 2000A") {
+    if (aString == "IAU 2000A")
+    {
         return Theory::IAU_2000A;
-   } else if (aString == "IAU 2000B") {
+    }
+    else if (aString == "IAU 2000B")
+    {
         return Theory::IAU_2000B;
-   } else if (aString == "IAU 2006") {
+    }
+    else if (aString == "IAU 2006")
+    {
         return Theory::IAU_2006;
-   }
+    }
 
     throw ostk::core::error::runtime::Wrong("String");
 }
-
 
 }  // namespace iau
 }  // namespace providers

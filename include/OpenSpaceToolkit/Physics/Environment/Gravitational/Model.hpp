@@ -37,11 +37,9 @@ static const Derived::Unit GravitationalParameterSIUnit =
 class Model
 {
    public:
-
     // @brief                  Gravitational model parameters
     struct Parameters
     {
-
         // @brief              Constructor
 
         // @param              [in] aGravitationalParameter A gravitational parameter [m^3/s^2]

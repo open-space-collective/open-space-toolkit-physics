@@ -45,89 +45,84 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Test)
     using ostk::physics::env::obj::celest::Earth;
 
     {
-        const Array<Tuple<File, String, String, Real, Real, Real, Real, Real>>
-            referenceScenarios = {
+        const Array<Tuple<File, String, String, Real, Real, Real, Real, Real>> referenceScenarios = {
 
-                // GCRF <> TOD IAU 2000A (STK)
+            // GCRF <> TOD IAU 2000A (STK)
 
-                {File::Path(Path::Parse(
-                     "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TOD_stk.csv"
-                 )),
-                 "TOD",
-                 "IAU 2000A",
-                 0.0,   // Position tolerance [m]
-                 0.0,   // Velocity tolerance [m/s]
-                 1e-4,  // Orientation axis tolerance []
-                 1e-3,  // Orientation angle tolerance [rad]
-                 0.0},  // Angular velocity tolerance [rad/s]
+            {File::Path(Path::Parse(
+                 "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TOD_stk.csv"
+             )),
+             "TOD",
+             "IAU 2000A",
+             0.0,   // Position tolerance [m]
+             0.0,   // Velocity tolerance [m/s]
+             1e-4,  // Orientation axis tolerance []
+             1e-3,  // Orientation angle tolerance [rad]
+             0.0},  // Angular velocity tolerance [rad/s]
 
-                // GCRF <> TOD IAU 2000A (Orekit)
+            // GCRF <> TOD IAU 2000A (Orekit)
 
-                {File::Path(Path::Parse(
-                     "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TOD_IERS_2010_orekit.csv"
-                 )),
-                 "TOD",
-                 "IAU 2000A",
-                 0.0,   // Position tolerance [m]
-                 0.0,   // Velocity tolerance [m/s]
-                 1e-4,  // Orientation axis tolerance []
-                 1e-3,  // Orientation angle tolerance [rad]
-                 1e-10},  // Angular velocity tolerance [rad/s]
+            {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/"
+                                    "GCRF_TOD_IERS_2010_orekit.csv")),
+             "TOD",
+             "IAU 2000A",
+             0.0,     // Position tolerance [m]
+             0.0,     // Velocity tolerance [m/s]
+             1e-4,    // Orientation axis tolerance []
+             1e-3,    // Orientation angle tolerance [rad]
+             1e-10},  // Angular velocity tolerance [rad/s]
 
-                 // GCRF <> TOD IAU 2000B (STK)
+            // GCRF <> TOD IAU 2000B (STK)
 
-                {File::Path(Path::Parse(
-                     "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TOD_stk.csv"
-                 )),
-                 "TOD",
-                 "IAU 2000B",
-                 0.0,   // Position tolerance [m]
-                 0.0,   // Velocity tolerance [m/s]
-                 1e-4,  // Orientation axis tolerance []
-                 1e-3,  // Orientation angle tolerance [rad]
-                 0.0},  // Angular velocity tolerance [rad/s]
+            {File::Path(Path::Parse(
+                 "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TOD_stk.csv"
+             )),
+             "TOD",
+             "IAU 2000B",
+             0.0,   // Position tolerance [m]
+             0.0,   // Velocity tolerance [m/s]
+             1e-4,  // Orientation axis tolerance []
+             1e-3,  // Orientation angle tolerance [rad]
+             0.0},  // Angular velocity tolerance [rad/s]
 
-                // GCRF <> TOD IAU 2000B (Orekit)
+            // GCRF <> TOD IAU 2000B (Orekit)
 
-                {File::Path(Path::Parse(
-                     "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TOD_IERS_2010_orekit.csv"
-                 )),
-                 "TOD",
-                 "IAU 2000B",
-                 0.0,   // Position tolerance [m]
-                 0.0,   // Velocity tolerance [m/s]
-                 1e-4,  // Orientation axis tolerance []
-                 1e-3,  // Orientation angle tolerance [rad]
-                 1e-10},  // Angular velocity tolerance [rad/s]
+            {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/"
+                                    "GCRF_TOD_IERS_2010_orekit.csv")),
+             "TOD",
+             "IAU 2000B",
+             0.0,     // Position tolerance [m]
+             0.0,     // Velocity tolerance [m/s]
+             1e-4,    // Orientation axis tolerance []
+             1e-3,    // Orientation angle tolerance [rad]
+             1e-10},  // Angular velocity tolerance [rad/s]
 
-                // GCRF <> TOD IAU 2006 (STK)
+            // GCRF <> TOD IAU 2006 (STK)
 
-                {File::Path(Path::Parse(
-                     "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TOD_stk.csv"
-                 )),
-                 "TOD",
-                 "IAU 2006",
-                 0.0,   // Position tolerance [m]
-                 0.0,   // Velocity tolerance [m/s]
-                 1e-4,  // Orientation axis tolerance []
-                 1e-3,  // Orientation angle tolerance [rad]
-                 0.0},  // Angular velocity tolerance [rad/s]
+            {File::Path(Path::Parse(
+                 "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TOD_stk.csv"
+             )),
+             "TOD",
+             "IAU 2006",
+             0.0,   // Position tolerance [m]
+             0.0,   // Velocity tolerance [m/s]
+             1e-4,  // Orientation axis tolerance []
+             1e-3,  // Orientation angle tolerance [rad]
+             0.0},  // Angular velocity tolerance [rad/s]
 
-                // GCRF <> TOD IAU 2006 (Orekit)
+            // GCRF <> TOD IAU 2006 (Orekit)
 
-                {File::Path(Path::Parse(
-                     "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TOD_IERS_2010_orekit.csv"
-                 )),
-                 "TOD",
-                 "IAU 2006",
-                 0.0,   // Position tolerance [m]
-                 0.0,   // Velocity tolerance [m/s]
-                 1e-4,  // Orientation axis tolerance []
-                 1e-3,  // Orientation angle tolerance [rad]
-                 1e-10},  // Angular velocity tolerance [rad/s]
+            {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/"
+                                    "GCRF_TOD_IERS_2010_orekit.csv")),
+             "TOD",
+             "IAU 2006",
+             0.0,     // Position tolerance [m]
+             0.0,     // Velocity tolerance [m/s]
+             1e-4,    // Orientation axis tolerance []
+             1e-3,    // Orientation angle tolerance [rad]
+             1e-10},  // Angular velocity tolerance [rad/s]
 
-                
-            };
+        };
 
         for (const auto& referenceScenario : referenceScenarios)
         {
@@ -147,7 +142,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Test)
             // Test
             const String scenario =
                 String::Format("Frame: {} ({}) | File: {}\n", frame2Str, otherStr, referenceDataFile.toString());
-            
+
             std::cout << String::Format("Testing {}", scenario);
 
             for (const auto& referenceRow : referenceData)
@@ -156,13 +151,13 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Test)
                 Shared<const Frame> frame1 = Frame::GCRF();
                 Shared<const Frame> frame2 = Frame::GCRF();
 
-                if(frame2Str == "TOD") {
+                if (frame2Str == "TOD")
+                {
                     frame2 = Frame::TOD(instant, iau::TheoryFromString(otherStr));
                 }
-                
+
                 const Transform transformToFrame1 = frame2->getTransformTo(frame1, instant);
                 const Transform transformToFrame2 = frame1->getTransformTo(frame2, instant);
-
 
                 // Instant
 
@@ -246,7 +241,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Test)
 
                     const RotationVector toFrame2 = RotationVector::Quaternion(transformToFrame2.getOrientation());
                     const RotationVector toFrame1 = RotationVector::Quaternion(transformToFrame1.getOrientation());
-                    
+
                     // Angle
 
                     ASSERT_GT(
