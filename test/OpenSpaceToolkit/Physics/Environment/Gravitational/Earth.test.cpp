@@ -205,13 +205,12 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, IsDefined)
 
 TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, ParametersFromType)
 {
-    const Array<Tuple<EarthGravitationalModel::Type, EarthGravitationalModel::Parameters>> testCases =
-    {
-        { EarthGravitationalModel::Type::Spherical, EarthGravitationalModel::Spherical },
-        { EarthGravitationalModel::Type::WGS84, EarthGravitationalModel::WGS84 },
-        { EarthGravitationalModel::Type::EGM84, EarthGravitationalModel::EGM84 },
-        { EarthGravitationalModel::Type::EGM96, EarthGravitationalModel::EGM96 },
-        { EarthGravitationalModel::Type::EGM2008, EarthGravitationalModel::EGM2008 },
+    const Array<Tuple<EarthGravitationalModel::Type, EarthGravitationalModel::Parameters>> testCases = {
+        {EarthGravitationalModel::Type::Spherical, EarthGravitationalModel::Spherical},
+        {EarthGravitationalModel::Type::WGS84, EarthGravitationalModel::WGS84},
+        {EarthGravitationalModel::Type::EGM84, EarthGravitationalModel::EGM84},
+        {EarthGravitationalModel::Type::EGM96, EarthGravitationalModel::EGM96},
+        {EarthGravitationalModel::Type::EGM2008, EarthGravitationalModel::EGM2008},
     };
 
     for (const auto& testCase : testCases)
@@ -226,11 +225,26 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, ParametersFromTyp
 TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Parameters)
 {
     {
-        EXPECT_EQ(EarthGravitationalModel::Spherical, EarthGravitationalModel(EarthGravitationalModel::Type::Spherical).getParameters());
-        EXPECT_EQ(EarthGravitationalModel::WGS84, EarthGravitationalModel(EarthGravitationalModel::Type::WGS84).getParameters());
-        EXPECT_EQ(EarthGravitationalModel::EGM84, EarthGravitationalModel(EarthGravitationalModel::Type::EGM84).getParameters());
-        EXPECT_EQ(EarthGravitationalModel::EGM96, EarthGravitationalModel(EarthGravitationalModel::Type::EGM96).getParameters());
-        EXPECT_EQ(EarthGravitationalModel::EGM2008, EarthGravitationalModel(EarthGravitationalModel::Type::EGM2008).getParameters());
+        EXPECT_EQ(
+            EarthGravitationalModel::Spherical,
+            EarthGravitationalModel(EarthGravitationalModel::Type::Spherical).getParameters()
+        );
+        EXPECT_EQ(
+            EarthGravitationalModel::WGS84,
+            EarthGravitationalModel(EarthGravitationalModel::Type::WGS84).getParameters()
+        );
+        EXPECT_EQ(
+            EarthGravitationalModel::EGM84,
+            EarthGravitationalModel(EarthGravitationalModel::Type::EGM84).getParameters()
+        );
+        EXPECT_EQ(
+            EarthGravitationalModel::EGM96,
+            EarthGravitationalModel(EarthGravitationalModel::Type::EGM96).getParameters()
+        );
+        EXPECT_EQ(
+            EarthGravitationalModel::EGM2008,
+            EarthGravitationalModel(EarthGravitationalModel::Type::EGM2008).getParameters()
+        );
     }
 
     // Spherical
