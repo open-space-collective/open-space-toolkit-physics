@@ -41,6 +41,8 @@ enum class Theory
 
 String StringFromTheory(const Theory& aTheory);
 
+Theory TheoryFromString(const String& aString);
+
 }  // namespace iau
 }  // namespace providers
 }  // namespace frame
