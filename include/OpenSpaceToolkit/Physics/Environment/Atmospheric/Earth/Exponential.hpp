@@ -55,7 +55,7 @@ class Exponential : public Model
     ///
     /// @return             True if the exponential atmospheric model is defined
 
-    bool isDefined() const;
+    bool isDefined() const override;
 
     /// @brief              Get the atmospheric density value at a given position and instant
     ///

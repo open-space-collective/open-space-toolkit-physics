@@ -50,7 +50,7 @@ class Dipole : public Model
     ///
     /// @return             True if the dipole magnetic model is defined
 
-    bool isDefined() const;
+    bool isDefined() const override;
 
     /// @brief              Get the magnetic field value at a given position and instant
     ///

@@ -93,7 +93,7 @@ class Earth : public Model
     ///
     /// @return             True if the Earth magnetic model is defined
 
-    bool isDefined() const;
+    bool isDefined() const override;
 
     /// @brief              Get magnetic model type
     ///

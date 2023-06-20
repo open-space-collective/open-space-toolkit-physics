@@ -107,7 +107,7 @@ String Date::toString(const Date::Format& aFormat) const
     {
         case Date::Format::Standard:
         {
-            if (std::abs(year_) < 1000)
+            if (year_ < 1000)
             {
                 return String::Format("{0:04d}-{1:02d}-{2:02d}", year_, month_, day_);
             }

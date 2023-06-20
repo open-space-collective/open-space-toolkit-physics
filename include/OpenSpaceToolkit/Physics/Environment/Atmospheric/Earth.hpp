@@ -76,7 +76,7 @@ class Earth : public Model
     ///
     /// @return             True if the Earth atmospheric model is defined
 
-    bool isDefined() const;
+    bool isDefined() const override;
 
     /// @brief              Get atmospheric model type
     ///
