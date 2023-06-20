@@ -39,7 +39,8 @@ if [[ ! -z ${1} ]] && [[ ${1} == "--link" ]]; then
 
         # Extract last part of the path
 
-        dep=${link##*/}
+        link_without_trailing_slash=${link%/}
+        dep=${link_without_trailing_slash##*/}
 
         # Log the linking step
 
