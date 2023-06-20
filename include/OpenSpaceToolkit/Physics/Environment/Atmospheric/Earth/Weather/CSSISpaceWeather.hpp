@@ -67,7 +67,6 @@ class CSSISpaceWeather
         Integer KP7;	/// Planetary 3-hour Range Index (Kp) for 1800-2100 UT.
         Integer KP8;	/// Planetary 3-hour Range Index (Kp) for 2100-0000 UT.
         Integer KP_SUM;	/// Sum of the 8 Kp indices for the day.
-        Integer Kp; /// has values of 0o, 0+, 1-, 1o, 1+, 2-, 2o, 2+, ... , 8o, 8+, 9-, 9o, which are expressed in steps of one third unit. These values are multiplied by 10 and rounded to an integer value.
         Integer AP1;	/// Planetary Equivalent Amplitude (Ap) for 0000-0300 UT.
         Integer AP2;	/// Planetary Equivalent Amplitude (Ap) for 0300-0600 UT.
         Integer AP3;	/// Planetary Equivalent Amplitude (Ap) for 0600-0900 UT.
@@ -96,7 +95,6 @@ class CSSISpaceWeather
     // Note: daily prediction contains idential values to observations
     using DailyPrediction = Observation;
 
-    // Note: monthly prediction is a strict subset of daily prediction/observation
     struct MonthlyPrediction {
         Integer DATE_YEAR;	/// Year-Month-Day (ISO 8601)
         Integer DATE_MONTH;
@@ -123,19 +121,19 @@ class CSSISpaceWeather
     
     const Date& accessReleaseDate() const;
 
-    //const Interval& accessObservationInterval() const;
+    const Interval& accessObservationInterval() const;
 
-    //const Interval& accessPredictionInterval() const;
+    const Interval& accessDailyPredictionInterval() const;
 
     Date getReleaseDate() const;
 
-    //Interval getObservationInterval() const;
+    Interval getObservationInterval() const;
 
     //CSSISpaceWeather::Observation getObservationAt(const Instant& anInstant) const;
 
-    //Interval getPredictionInterval() const;
+    Interval getDailyPredictionInterval() const;
 
-    //CSSISpaceWeather::Prediction getPredictionAt(const Instant& anInstant) const;
+    //CSSISpaceWeather::Prediction getDailyPredictionAt(const Instant& anInstant) const;
     
     static CSSISpaceWeather Undefined();
 
@@ -144,17 +142,14 @@ class CSSISpaceWeather
    private:
     Date releaseDate_;
 
-    //Integer numObservedData_;
     Interval observationInterval_;
-    Array<CSSISpaceWeather::Observation> observations_;
+    Map<Integer, CSSISpaceWeather::Observation> observations_;
 
-    //Integer numDailyPredictionData_;
     Interval dailyPredictionInterval_;
-    Array<CSSISpaceWeather::DailyPrediction> dailyPredictions_;
+    Map<Integer, CSSISpaceWeather::DailyPrediction> dailyPredictions_;
 
-    //Integer numMonthlyPredictionData_;
     Interval monthlyPredictionInterval_;
-    Array<CSSISpaceWeather::MonthlyPrediction> monthlyPredictions_;
+    Map<Integer, CSSISpaceWeather::MonthlyPrediction> monthlyPredictions_;
 
     CSSISpaceWeather();
 };

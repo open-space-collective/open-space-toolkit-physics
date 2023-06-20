@@ -107,37 +107,43 @@ const Date& CSSISpaceWeather::accessReleaseDate() const
     return releaseDate_;
 }
 
-/*
+
 const Interval& CSSISpaceWeather::accessObservationInterval() const
 {
     if (!this->isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Bulletin A");
+        throw ostk::core::error::runtime::Undefined("CSSI Space Weather");
     }
 
     return observationInterval_;
 }
 
-const Interval& CSSISpaceWeather::accessPredictionInterval() const
+const Interval& CSSISpaceWeather::accessDailyPredictionInterval() const
 {
     if (!this->isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Bulletin A");
+        throw ostk::core::error::runtime::Undefined("CSSI Space Weather");
     }
 
-    return predictionInterval_;
+    return dailyPredictionInterval_;
 }
-*/
+
 Date CSSISpaceWeather::getReleaseDate() const
 {
     return this->accessReleaseDate();
 }
-/*
+
 Interval CSSISpaceWeather::getObservationInterval() const
 {
     return this->accessObservationInterval();
 }
 
+Interval CSSISpaceWeather::getDailyPredictionInterval() const
+{
+    return this->accessDailyPredictionInterval();
+}
+
+/*
 CSSISpaceWeather::Observation CSSISpaceWeather::getObservationAt(const Instant& anInstant) const
 {
     using ostk::physics::time::Scale;
@@ -149,7 +155,7 @@ CSSISpaceWeather::Observation CSSISpaceWeather::getObservationAt(const Instant& 
 
     if (!this->isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Bulletin A");
+        throw ostk::core::error::runtime::Undefined("CSSI Space Weather");
     }
 
     if (!observationInterval_.contains(anInstant))
@@ -222,7 +228,9 @@ CSSISpaceWeather::Observation CSSISpaceWeather::getObservationAt(const Instant& 
         throw ostk::core::error::RuntimeError("Cannot find observation at [{}].", anInstant.toString(Scale::UTC));
     }
 }
+*/
 
+/*
 Interval CSSISpaceWeather::getPredictionInterval() const
 {
     return this->accessPredictionInterval();
@@ -241,7 +249,7 @@ CSSISpaceWeather::Prediction CSSISpaceWeather::getPredictionAt(const Instant& an
 
     if (!this->isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Bulletin A");
+        throw ostk::core::error::runtime::Undefined("spaceWeather A");
     }
 
     if (!predictionInterval_.contains(anInstant))
@@ -406,7 +414,7 @@ CSSISpaceWeather CSSISpaceWeather::Load(const fs::File& aFile)
     std::ifstream fileStream {aFile.getPath().toString()};
 
     bool readingObserved = false;
-    //bool readingDailyPredicted = false;
+    bool readingDailyPredicted = false;
     //bool readingMonthlyPredicted = false;
 
     String line;
@@ -419,22 +427,24 @@ CSSISpaceWeather CSSISpaceWeather::Load(const fs::File& aFile)
         size_t next = 0; 
         while ((next = s.find(delimiter, last)) != std::string::npos) 
         {   
-            // account for multiple consecutive delimiters
-            const String token = s.substr(last, next-last);
-            if (token != delimiter)
+            if (next-last > 0)
             {
+                const String token = String(s.substr(last, next-last));
                 results.add(token);
             }
             last = next + 1; 
-        } 
-        results.add(s.substr(last));
+        }
+
+        // Trim to eliminate trailing newline
+        const String lastToken = String(s.substr(last)).trim();
+        results.add(lastToken);
         return results;
     };
     
     while (std::getline(fileStream, line))
     {
 
-        Array<String> lineParts = split(line, " ");
+        Array<String> lineParts = split(line, ",");
 
         if (lineParts.empty())
         {
@@ -443,62 +453,78 @@ CSSISpaceWeather CSSISpaceWeather::Load(const fs::File& aFile)
         
         if (lineParts[0] == "UPDATED") 
         {
-            const Array<String> releaseDateParts = split(line, " ");
-
-            const Uint16 year = boost::lexical_cast<Uint16>(releaseDateParts[1]);
-            const Uint8 month = monthFromString(releaseDateParts[2]);
-            const Uint8 day = static_cast<Uint8>(boost::lexical_cast<Uint16>(releaseDateParts[3]));
+            std::cout << "UPDATED" << std::endl;
+            const Uint16 year = boost::lexical_cast<Uint16>(lineParts[1]);
+            const Uint8 month = monthFromString(lineParts[2]);
+            const Uint8 day = static_cast<Uint8>(boost::lexical_cast<Uint16>(lineParts[3]));
 
             spaceWeather.releaseDate_ = Date(year, month, day);
+            continue;
         }
-        
-        if ( lineParts.getSize() >= 2 && lineParts[0] == "BEGIN" && lineParts[1] == "OBSERVED") 
+
+        if ( lineParts.getSize() >= 2 && (std::string(lineParts[0]) == "BEGIN") && (std::string(lineParts[1]) == "OBSERVED")) 
         {
+            std::cout << "BEGIN OBSERVED" << std::endl;
             readingObserved = true;
+            continue;
+        }
+
+        if ( lineParts.getSize() >= 2 && lineParts[0] == "END" && lineParts[1] == "OBSERVED")
+        {
+            readingObserved = false;
+            std::cout << "END OBSERVED" << std::endl;
+            // save observation interval
+            const Instant observationStartInstant =
+                Instant::ModifiedJulianDate(Real::Integer(spaceWeather.observations_.begin()->first), Scale::UTC);
+            const Instant observationEndInstant =
+                Instant::ModifiedJulianDate(Real::Integer(spaceWeather.observations_.rbegin()->first), Scale::UTC);
+
+            spaceWeather.observationInterval_ = Interval::Closed(observationStartInstant, observationEndInstant);
+
             continue;
         }
 
         if ( readingObserved )
         {
-            Integer DATE_YEAR = boost::lexical_cast<int>(lineParts[0]);
-            Integer DATE_MONT = boost::lexical_cast<int>(lineParts[1]);
-            Integer DATE_DA = boost::lexical_cast<int>(lineParts[2]);
-            Integer BSRN = boost::lexical_cast<int>(lineParts[3]);
-            Integer ND = boost::lexical_cast<int>(lineParts[4]);
-            Integer KP1 = boost::lexical_cast<int>(lineParts[5]);
-            Integer KP2 = boost::lexical_cast<int>(lineParts[6]);
-            Integer KP3 = boost::lexical_cast<int>(lineParts[7]);
-            Integer KP4 = boost::lexical_cast<int>(lineParts[8]);
-            Integer KP5 = boost::lexical_cast<int>(lineParts[9]);
-            Integer KP6 = boost::lexical_cast<int>(lineParts[10]);
-            Integer KP7 = boost::lexical_cast<int>(lineParts[11]);
-            Integer KP8 = boost::lexical_cast<int>(lineParts[12]);
-            Integer KP_SUM = boost::lexical_cast<int>(lineParts[13]);
-            Integer Kp = boost::lexical_cast<int>(lineParts[14]);
-            Integer AP1 = boost::lexical_cast<int>(lineParts[15]);
-            Integer AP2 = boost::lexical_cast<int>(lineParts[16]);
-            Integer AP3 = boost::lexical_cast<int>(lineParts[17]);
-            Integer AP4 = boost::lexical_cast<int>(lineParts[18]);
-            Integer AP5 = boost::lexical_cast<int>(lineParts[19]);
-            Integer AP6 = boost::lexical_cast<int>(lineParts[20]);
-            Integer AP7 = boost::lexical_cast<int>(lineParts[21]);
-            Integer AP8 = boost::lexical_cast<int>(lineParts[22]);
-            Integer AP_AVG = boost::lexical_cast<int>(lineParts[23]);
-            Real CP = boost::lexical_cast<double>(lineParts[24]);
-            Integer C9 = boost::lexical_cast<int>(lineParts[25]);
-            Integer ISN = boost::lexical_cast<int>(lineParts[26]);
-            Real F107_OBS = boost::lexical_cast<double>(lineParts[27]);
-            Real F107_ADJ = boost::lexical_cast<double>(lineParts[28]);
-            Real F107_DATA_TYPE = boost::lexical_cast<double>(lineParts[29]);
-            Real F107_OBS_CENTER81 = boost::lexical_cast<double>(lineParts[30]);
-            Real F107_OBS_LAST81 = boost::lexical_cast<double>(lineParts[31]);
-            Real F107_ADJ_CENTER81 = boost::lexical_cast<double>(lineParts[32]);
-            Real F107_ADJ_LAST81 = boost::lexical_cast<double>(lineParts[33]);
+            std::cout << "readingObserved" << std::endl;
+            const Integer DATE_YEAR = boost::lexical_cast<int>(lineParts[0]);
+            const Integer DATE_MONTH = boost::lexical_cast<int>(lineParts[1]);
+            const Integer DATE_DAY = boost::lexical_cast<int>(lineParts[2]);
+            const Integer BSRN = boost::lexical_cast<int>(lineParts[3]);
+            const Integer ND = boost::lexical_cast<int>(lineParts[4]);
+            const Integer KP1 = boost::lexical_cast<int>(lineParts[5]);
+            const Integer KP2 = boost::lexical_cast<int>(lineParts[6]);
+            const Integer KP3 = boost::lexical_cast<int>(lineParts[7]);
+            const Integer KP4 = boost::lexical_cast<int>(lineParts[8]);
+            const Integer KP5 = boost::lexical_cast<int>(lineParts[9]);
+            const Integer KP6 = boost::lexical_cast<int>(lineParts[10]);
+            const Integer KP7 = boost::lexical_cast<int>(lineParts[11]);
+            const Integer KP8 = boost::lexical_cast<int>(lineParts[12]);
+            const Integer KP_SUM = boost::lexical_cast<int>(lineParts[13]);
+            const Integer AP1 = boost::lexical_cast<int>(lineParts[14]);
+            const Integer AP2 = boost::lexical_cast<int>(lineParts[15]);
+            const Integer AP3 = boost::lexical_cast<int>(lineParts[16]);
+            const Integer AP4 = boost::lexical_cast<int>(lineParts[17]);
+            const Integer AP5 = boost::lexical_cast<int>(lineParts[18]);
+            const Integer AP6 = boost::lexical_cast<int>(lineParts[19]);
+            const Integer AP7 = boost::lexical_cast<int>(lineParts[20]);
+            const Integer AP8 = boost::lexical_cast<int>(lineParts[21]);
+            const Integer AP_AVG = boost::lexical_cast<int>(lineParts[22]);
+            const Real CP = boost::lexical_cast<double>(lineParts[23]);
+            const Integer C9 = boost::lexical_cast<int>(lineParts[24]);
+            const Integer ISN = boost::lexical_cast<int>(lineParts[25]);
+            const Real F107_OBS = boost::lexical_cast<double>(lineParts[26]);
+            const Real F107_ADJ = boost::lexical_cast<double>(lineParts[27]);
+            const Real F107_DATA_TYPE = boost::lexical_cast<double>(lineParts[28]);
+            const Real F107_OBS_CENTER81 = boost::lexical_cast<double>(lineParts[29]);
+            const Real F107_OBS_LAST81 = boost::lexical_cast<double>(lineParts[30]);
+            const Real F107_ADJ_CENTER81 = boost::lexical_cast<double>(lineParts[31]);
+            const Real F107_ADJ_LAST81 = boost::lexical_cast<double>(String(lineParts[32]).trim());
 
             const CSSISpaceWeather::Observation observation = {
                 DATE_YEAR,
-                DATE_MONT,
-                DATE_DA,
+                DATE_MONTH,
+                DATE_DAY,
                 BSRN,
                 ND,
                 KP1,
@@ -510,7 +536,6 @@ CSSISpaceWeather CSSISpaceWeather::Load(const fs::File& aFile)
                 KP7,
                 KP8,
                 KP_SUM,
-                Kp,
                 AP1,
                 AP2,
                 AP3,
@@ -532,20 +557,120 @@ CSSISpaceWeather CSSISpaceWeather::Load(const fs::File& aFile)
                 F107_ADJ_LAST81,
             };
 
-            spaceWeather.observations_.add(observation);
-        }
+            const Integer mjd = DateTime(DATE_YEAR, DATE_MONTH, DATE_DAY).getModifiedJulianDate().floor();
 
-        if ( lineParts.getSize() >= 2 && lineParts[0] == "BEGIN" && lineParts[1] == "OBSERVED")
-        {
-            readingObserved = false;
+            spaceWeather.observations_.insert({mjd, observation});
             continue;
         }
+
+        // DAILY PREDICTED
+        if ( lineParts.getSize() >= 2 && (std::string(lineParts[0]) == "BEGIN") && (std::string(lineParts[1]) == "DAILY_PREDICTED")) 
+        {
+            std::cout << "BEGIN DAILY_PREDICTED" << std::endl;
+            readingDailyPredicted = true;
+            continue;
+        }
+
+        if ( lineParts.getSize() >= 2 && lineParts[0] == "END" && lineParts[1] == "DAILY_PREDICTED")
+        {
+            readingDailyPredicted = false;
+            std::cout << "END DAILY_PREDICTED" << std::endl;
+            // save dailyPrediction interval
+            const Instant dailyPredictionStartInstant =
+                Instant::ModifiedJulianDate(Real::Integer(spaceWeather.dailyPredictions_.begin()->first), Scale::UTC);
+            const Instant dailyPredictionEndInstant =
+                Instant::ModifiedJulianDate(Real::Integer(spaceWeather.dailyPredictions_.rbegin()->first), Scale::UTC);
+
+            spaceWeather.dailyPredictionInterval_ = Interval::Closed(dailyPredictionStartInstant, dailyPredictionEndInstant);
+
+            continue;
+        }
+
+        if ( readingDailyPredicted )
+        {
+            std::cout << "readingDailyPredicted" << std::endl;
+            const Integer DATE_YEAR = boost::lexical_cast<int>(lineParts[0]);
+            const Integer DATE_MONTH = boost::lexical_cast<int>(lineParts[1]);
+            const Integer DATE_DAY = boost::lexical_cast<int>(lineParts[2]);
+            const Integer BSRN = boost::lexical_cast<int>(lineParts[3]);
+            const Integer ND = boost::lexical_cast<int>(lineParts[4]);
+            const Integer KP1 = boost::lexical_cast<int>(lineParts[5]);
+            const Integer KP2 = boost::lexical_cast<int>(lineParts[6]);
+            const Integer KP3 = boost::lexical_cast<int>(lineParts[7]);
+            const Integer KP4 = boost::lexical_cast<int>(lineParts[8]);
+            const Integer KP5 = boost::lexical_cast<int>(lineParts[9]);
+            const Integer KP6 = boost::lexical_cast<int>(lineParts[10]);
+            const Integer KP7 = boost::lexical_cast<int>(lineParts[11]);
+            const Integer KP8 = boost::lexical_cast<int>(lineParts[12]);
+            const Integer KP_SUM = boost::lexical_cast<int>(lineParts[13]);
+            const Integer AP1 = boost::lexical_cast<int>(lineParts[14]);
+            const Integer AP2 = boost::lexical_cast<int>(lineParts[15]);
+            const Integer AP3 = boost::lexical_cast<int>(lineParts[16]);
+            const Integer AP4 = boost::lexical_cast<int>(lineParts[17]);
+            const Integer AP5 = boost::lexical_cast<int>(lineParts[18]);
+            const Integer AP6 = boost::lexical_cast<int>(lineParts[19]);
+            const Integer AP7 = boost::lexical_cast<int>(lineParts[20]);
+            const Integer AP8 = boost::lexical_cast<int>(lineParts[21]);
+            const Integer AP_AVG = boost::lexical_cast<int>(lineParts[22]);
+            const Real CP = boost::lexical_cast<double>(lineParts[23]);
+            const Integer C9 = boost::lexical_cast<int>(lineParts[24]);
+            const Integer ISN = boost::lexical_cast<int>(lineParts[25]);
+            const Real F107_OBS = boost::lexical_cast<double>(lineParts[26]);
+            const Real F107_ADJ = boost::lexical_cast<double>(lineParts[27]);
+            const Real F107_DATA_TYPE = boost::lexical_cast<double>(lineParts[28]);
+            const Real F107_OBS_CENTER81 = boost::lexical_cast<double>(lineParts[29]);
+            const Real F107_OBS_LAST81 = boost::lexical_cast<double>(lineParts[30]);
+            const Real F107_ADJ_CENTER81 = boost::lexical_cast<double>(lineParts[31]);
+            const Real F107_ADJ_LAST81 = boost::lexical_cast<double>(String(lineParts[32]).trim());
+
+            const CSSISpaceWeather::Observation dailyPrediction = {
+                DATE_YEAR,
+                DATE_MONTH,
+                DATE_DAY,
+                BSRN,
+                ND,
+                KP1,
+                KP2,
+                KP3,
+                KP4,
+                KP5,
+                KP6,
+                KP7,
+                KP8,
+                KP_SUM,
+                AP1,
+                AP2,
+                AP3,
+                AP4,
+                AP5,
+                AP6,
+                AP7,
+                AP8,
+                AP_AVG,
+                CP,
+                C9,
+                ISN,
+                F107_OBS,
+                F107_ADJ,
+                F107_DATA_TYPE,
+                F107_OBS_CENTER81,
+                F107_OBS_LAST81,
+                F107_ADJ_CENTER81,
+                F107_ADJ_LAST81,
+            };
+
+            const Integer mjd = DateTime(DATE_YEAR, DATE_MONTH, DATE_DAY).getModifiedJulianDate().floor();
+
+            spaceWeather.dailyPredictions_.insert({mjd, dailyPrediction});
+            continue;
+        }
+
         /*
-        if ((lineIndex < 30) && (!bulletin.taiMinusUtc_.isDefined()) && std::regex_match(line, match, taiMinusUtcRegex))
+        if ((lineIndex < 30) && (!spaceWeather.taiMinusUtc_.isDefined()) && std::regex_match(line, match, taiMinusUtcRegex))
         {
             const Real seconds = boost::lexical_cast<double>(match[1]) + boost::lexical_cast<double>(match[2]) / 1e6;
 
-            bulletin.taiMinusUtc_ = Duration::Seconds(seconds);
+            spaceWeather.taiMinusUtc_ = Duration::Seconds(seconds);
         }
 
         if (std::regex_match(line, match, observationRegex))
@@ -566,7 +691,7 @@ CSSISpaceWeather CSSISpaceWeather::Load(const fs::File& aFile)
             const CSSISpaceWeather::Observation observation = {
                 year, month, day, Real::Integer(mjd), x, xError, y, yError, ut1MinusUtc, ut1MinusUtcError};
 
-            bulletin.observations_.insert({mjd, observation});
+            spaceWeather.observations_.insert({mjd, observation});
         }
 
         if (std::regex_match(line, match, predictionRegex))
@@ -591,7 +716,7 @@ CSSISpaceWeather CSSISpaceWeather::Load(const fs::File& aFile)
                 ut1MinusUtc,
             };
 
-            bulletin.predictions_.insert({mjd, prediction});
+            spaceWeather.predictions_.insert({mjd, prediction});
         }
 
         lineIndex++;
@@ -599,24 +724,16 @@ CSSISpaceWeather CSSISpaceWeather::Load(const fs::File& aFile)
     }
 
     /*
-    if (!bulletin.observations_.empty())
-    {
-        const Instant observationStartInstant =
-            Instant::ModifiedJulianDate(Real::Integer(bulletin.observations_.begin()->first), Scale::UTC);
-        const Instant observationEndInstant =
-            Instant::ModifiedJulianDate(Real::Integer(bulletin.observations_.rbegin()->first), Scale::UTC);
 
-        bulletin.observationInterval_ = Interval::Closed(observationStartInstant, observationEndInstant);
-    }
 
-    if (!bulletin.predictions_.empty())
+    if (!spaceWeather.predictions_.empty())
     {
         const Instant predictionStartInstant =
-            Instant::ModifiedJulianDate(Real::Integer(bulletin.predictions_.begin()->first), Scale::UTC);
+            Instant::ModifiedJulianDate(Real::Integer(spaceWeather.predictions_.begin()->first), Scale::UTC);
         const Instant predictionEndInstant =
-            Instant::ModifiedJulianDate(Real::Integer(bulletin.predictions_.rbegin()->first), Scale::UTC);
+            Instant::ModifiedJulianDate(Real::Integer(spaceWeather.predictions_.rbegin()->first), Scale::UTC);
 
-        bulletin.predictionInterval_ = Interval::Closed(predictionStartInstant, predictionEndInstant);
+        spaceWeather.predictionInterval_ = Interval::Closed(predictionStartInstant, predictionEndInstant);
     }
     */
 
@@ -628,15 +745,15 @@ CSSISpaceWeather::CSSISpaceWeather()
 
       //numObservedData_(Integer::Undefined()),
       observationInterval_(Interval::Undefined()),
-      observations_(Array<CSSISpaceWeather::Observation>()),
+      observations_(Map<Integer, CSSISpaceWeather::Observation>()),
 
       //numDailyPredictionData_(Integer::Undefined()),
       dailyPredictionInterval_(Interval::Undefined()),
-      dailyPredictions_(Array<CSSISpaceWeather::DailyPrediction>()),
+      dailyPredictions_(Map<Integer, CSSISpaceWeather::DailyPrediction>()),
 
       //numMonthlyPredictionData_(Integer::Undefined()),
       monthlyPredictionInterval_(Interval::Undefined()),
-      monthlyPredictions_(Array<CSSISpaceWeather::MonthlyPrediction>())
+      monthlyPredictions_(Map<Integer, CSSISpaceWeather::MonthlyPrediction>())
 {
 }
 

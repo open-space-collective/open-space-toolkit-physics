@@ -21,7 +21,7 @@ class OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWe
     void SetUp() override
     {
         const File file = File::Path(
-            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Weather/CSSISpaceWeather/SW-Last5Years.txt")
+            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Weather/CSSISpaceWeather/SW-Last5Years.csv")
         );
         this->CSSISpaceWeather_ = CSSISpaceWeather::Load(file);
     }
@@ -160,6 +160,46 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceW
     }
 }
 */
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWeather, split)
+{
+    using ostk::core::ctnr::Array ;
+    using ostk::core::types::String ;
+    auto split = [] ( std::string s, std::string delimiter ) -> Array<String>
+    {
+        Array<String> results;
+
+        size_t last = 0; 
+        size_t next = 0; 
+        while ((next = s.find(delimiter, last)) != std::string::npos) 
+        {   
+            // account for multiple consecutive delimiters
+
+            if (next-last > 0)
+            {
+
+                const String token = String(s.substr(last, next-last));//.trim();
+                std::cout << "token: " << token << " && delimiter: " << delimiter << std::endl;
+
+                //if (!token.empty())
+                //{
+                    //std::cout << "\"" << token << "\" " << std::endl;
+                results.add(token);
+                //}
+            }
+            last = next + 1; 
+        }
+
+        const String lastToken = String(s.substr(last));
+        if (!lastToken.empty())
+        {
+            results.add(lastToken);
+        }
+        return results;
+    };
+
+    //std::cout << split(",a,,arst,,b,,,,c,", ",") << std::endl;
+    std::cout << split("BEGIN OBSERVED", " ") << std::endl;
+}
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWeather, Load)
 {
@@ -167,17 +207,17 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceW
         
         EXPECT_TRUE(CSSISpaceWeather_.isDefined());
 
-        EXPECT_EQ(Date(2018, 6, 28), CSSISpaceWeather_.getReleaseDate());
+        EXPECT_EQ(Date(2023, 6, 5), CSSISpaceWeather_.getReleaseDate());
 
-        /*
         EXPECT_EQ(
             Interval::Closed(
-                Instant::DateTime(DateTime::Parse("2018-06-22 00:00:00"), Scale::UTC),
-                Instant::DateTime(DateTime::Parse("2018-06-28 00:00:00"), Scale::UTC)
+                Instant::DateTime(DateTime::Parse("2018-01-01 00:00:00"), Scale::UTC),
+                Instant::DateTime(DateTime::Parse("2023-06-04 00:00:00"), Scale::UTC)
             ),
             CSSISpaceWeather_.getObservationInterval()
         );
         
+        /*
         {
             const CSSISpaceWeather::Observation firstObservation =
                 CSSISpaceWeather_.getObservationAt(Instant::DateTime(DateTime::Parse("2018-06-22 00:00:00"), Scale::UTC));
@@ -225,15 +265,15 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceW
             EXPECT_NEAR(0.067056 + (0.066865 - 0.067056) / 2.0, interpolatedObservation.ut1MinusUtc, 1e-6);
             EXPECT_NEAR(0.000031 + (0.000030 - 0.000031) / 2.0, interpolatedObservation.ut1MinusUtcError, 1e-6);
         }
-
+        */
         EXPECT_EQ(
             Interval::Closed(
-                Instant::DateTime(DateTime::Parse("2018-06-29 00:00:00"), Scale::UTC),
-                Instant::DateTime(DateTime::Parse("2019-06-28 00:00:00"), Scale::UTC)
+                Instant::DateTime(DateTime::Parse("2023-06-05 00:00:00"), Scale::UTC),
+                Instant::DateTime(DateTime::Parse("2023-07-19 00:00:00"), Scale::UTC)
             ),
-            CSSISpaceWeather_.getPredictionInterval()
+            CSSISpaceWeather_.getDailyPredictionInterval()
         );
-
+        /*
         {
             const CSSISpaceWeather::Prediction firstPrediction =
                 CSSISpaceWeather_.getPredictionAt(Instant::DateTime(DateTime::Parse("2018-06-29 00:00:00"), Scale::UTC));
