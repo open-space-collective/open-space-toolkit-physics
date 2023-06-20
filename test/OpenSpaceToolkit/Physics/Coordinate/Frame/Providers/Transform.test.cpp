@@ -47,14 +47,36 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Validation)
     {
         const Array<Tuple<File, String, String, Real, Real, Real, Real>> referenceScenarios = {
 
+            // GCRF <> J2000 IAU 2000A (Orekit)
+            {File::Path(Path::Parse(
+                 "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_J2000_orekit.csv"
+             )),
+             "J2000",
+             "IAU 2000A",
+             0.0,   // Translation tolerance [m]
+             0.0,   // Relative velocity tolerance [m/s]
+             1e-5,  // Orientation tolerance at Earth Surface [m]
+             0.0},  // Angular velocity tolerance [rad/s]
+
+            // GCRF <> J2000 IAU 2006 (Orekit)
+            {File::Path(Path::Parse(
+                 "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_J2000_orekit.csv"
+             )),
+             "J2000",
+             "IAU 2006",
+             0.0,   // Translation tolerance [m]
+             0.0,   // Relative velocity tolerance [m/s]
+             1e-4,  // Orientation tolerance at Earth Surface [m]
+             0.0},  // Angular velocity tolerance [rad/s]
+
             // GCRF <> TOD IAU 2000A (STK)
             {File::Path(Path::Parse(
                  "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TOD_stk.csv"
              )),
              "TOD",
              "IAU 2000A",
-             0.0,   // Position tolerance [m]
-             0.0,   // Velocity tolerance [m/s]
+             0.0,   // Translation tolerance [m]
+             0.0,   // Relative velocity tolerance [m/s]
              3.0,   // Orientation tolerance at Earth Surface [m]
              0.0},  // Angular velocity tolerance [rad/s]
 
@@ -63,8 +85,8 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Validation)
                                     "GCRF_TOD_IERS_2010_orekit.csv")),
              "TOD",
              "IAU 2000A",
-             0.0,     // Position tolerance [m]
-             0.0,     // Velocity tolerance [m/s]
+             0.0,     // Translation tolerance [m]
+             0.0,     // Relative velocity tolerance [m/s]
              3.0,     // Orientation tolerance at Earth Surface [m]
              1e-10},  // Angular velocity tolerance [rad/s]
 
@@ -74,8 +96,8 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Validation)
              )),
              "TOD",
              "IAU 2000B",
-             0.0,   // Position tolerance [m]
-             0.0,   // Velocity tolerance [m/s]
+             0.0,   // Translation tolerance [m]
+             0.0,   // Relative velocity tolerance [m/s]
              3.0,   // Orientation tolerance at Earth Surface [m]
              0.0},  // Angular velocity tolerance [rad/s]
 
@@ -84,8 +106,8 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Validation)
                                     "GCRF_TOD_IERS_2010_orekit.csv")),
              "TOD",
              "IAU 2000B",
-             0.0,     // Position tolerance [m]
-             0.0,     // Velocity tolerance [m/s]
+             0.0,     // Translation tolerance [m]
+             0.0,     // Relative velocity tolerance [m/s]
              3.0,     // Orientation tolerance at Earth Surface [m]
              1e-10},  // Angular velocity tolerance [rad/s]
 
@@ -95,8 +117,8 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Validation)
              )),
              "TOD",
              "IAU 2006",
-             0.0,   // Position tolerance [m]
-             0.0,   // Velocity tolerance [m/s]
+             0.0,   // Translation tolerance [m]
+             0.0,   // Relative velocity tolerance [m/s]
              3.0,   // Orientation tolerance at Earth Surface [m]
              0.0},  // Angular velocity tolerance [rad/s]
 
@@ -105,11 +127,50 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Validation)
                                     "GCRF_TOD_IERS_2010_orekit.csv")),
              "TOD",
              "IAU 2006",
-             0.0,     // Position tolerance [m]
-             0.0,     // Velocity tolerance [m/s]
+             0.0,     // Translation tolerance [m]
+             0.0,     // Relative velocity tolerance [m/s]
              3.0,     // Orientation tolerance at Earth Surface [m]
              1e-10},  // Angular velocity tolerance [rad/s]
 
+            // GCRF <> TEME (STK)
+            {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/"
+                                    "GCRF_TEME_stk.csv")),
+             "TEME",
+             "",
+             0.0,     // Translation tolerance [m]
+             0.0,     // Relative velocity tolerance [m/s]
+             1.0,     // Orientation tolerance at Earth Surface [m]
+             1e-11},  // Angular velocity tolerance [rad/s]
+
+            // GCRF <> TEME (Orekit)
+            {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/"
+                                    "GCRF_TEME_orekit.csv")),
+             "TEME",
+             "",
+             0.0,     // Translation tolerance [m]
+             0.0,     // Relative velocity tolerance [m/s]
+             2.0,     // Orientation tolerance at Earth Surface [m]
+             1e-11},  // Angular velocity tolerance [rad/s]
+
+            // GCRF <> ITRF (STK)
+            {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/"
+                                    "GCRF_ITRF_stk.csv")),
+             "ITRF",
+             "",
+             0.0,    // Translation tolerance [m]
+             0.0,    // Relative velocity tolerance [m/s]
+             50.0,   // Orientation tolerance at Earth Surface [m]
+             1e-6},  // Angular velocity tolerance [rad/s]
+
+            // GCRF <> ITRF (Orekit)
+            {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/"
+                                    "GCRF_ITRF_IERS_2010_orekit.csv")),
+             "ITRF",
+             "",
+             0.0,    // Translation tolerance [m]
+             0.0,    // Relative velocity tolerance [m/s]
+             25.0,   // Orientation tolerance at Earth Surface [m]
+             1e-6},  // Angular velocity tolerance [rad/s]
         };
 
         for (const auto& referenceScenario : referenceScenarios)
@@ -145,6 +206,18 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Validation)
                 {
                     frame2 = Frame::TOD(instant, iau::TheoryFromString(otherStr));
                 }
+                else if (frame2Str == "TEME")
+                {
+                    frame2 = Frame::TEME();
+                }
+                else if (frame2Str == "ITRF")
+                {
+                    frame2 = Frame::ITRF();
+                }
+                else if (frame2Str == "J2000")
+                {
+                    frame2 = Frame::J2000(iau::TheoryFromString(otherStr));
+                }
 
                 const Transform transformToFrame1 = frame2->getTransformTo(frame1, instant);
                 const Transform transformToFrame2 = frame1->getTransformTo(frame2, instant);
@@ -156,7 +229,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Validation)
                     EXPECT_EQ(instant, transformToFrame2.getInstant());
                 }
 
-                // Relative Position
+                // Translation
 
                 {
                     const Vector3d referenceToFrame2 = {
