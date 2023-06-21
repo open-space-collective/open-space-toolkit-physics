@@ -39,7 +39,7 @@ namespace weather
 
 using ostk::core::types::String;
 
-const String CSSISpaceWeatherFileName = "SW-Last5Years.txt";
+const String CSSISpaceWeatherFileName = "SW-Last5Years.csv";
 
 const String temporaryDirectoryName = "tmp";
 
@@ -70,7 +70,7 @@ URL Manager::getRemoteUrl() const
 
     return remoteUrl_;
 }
-/*
+
 Array<CSSISpaceWeather> Manager::getCSSISpaceWeatherArray() const
 {
     return CSSISpaceWeatherArray_;
@@ -95,7 +95,7 @@ CSSISpaceWeather Manager::getCSSISpaceWeatherAt(const Instant& anInstant) const
     throw ostk::core::error::RuntimeError("Cannot obtain CSSI Space Weather File at [{}].", anInstant.toString());
 }
 
-Vector2d Manager::getPolarMotionAt(const Instant& anInstant) const
+Array<Integer> Manager::getKp3HourSolarIndicesAt(const Instant& anInstant) const
 {
     if (!anInstant.isDefined())
     {
@@ -110,102 +110,41 @@ Vector2d Manager::getPolarMotionAt(const Instant& anInstant) const
     {
         if (CSSISpaceWeatherPtr->accessObservationInterval().contains(anInstant))
         {
-            const CSSISpaceWeather::Observation observation = CSSISpaceWeatherPtr->getObservationAt(anInstant);
+            const CSSISpaceWeather::Observation observation = CSSISpaceWeatherPtr->accessObservationAt(anInstant);
 
-            return {observation.x, observation.y};
+            return Array<Integer> { 
+                observation.KP1,
+                observation.KP2,
+                observation.KP3,
+                observation.KP4,
+                observation.KP5,
+                observation.KP6,
+                observation.KP7,
+                observation.KP8
+            };
         }
-        else if (CSSISpaceWeatherPtr->accessPredictionInterval().contains(anInstant))
+        else if (CSSISpaceWeatherPtr->accessDailyPredictionInterval().contains(anInstant))
         {
-            const CSSISpaceWeather::Prediction prediction = CSSISpaceWeatherPtr->getPredictionAt(anInstant);
+            const CSSISpaceWeather::Observation prediction = CSSISpaceWeatherPtr->accessObservationAt(anInstant);
 
-            return {prediction.x, prediction.y};
+            return Array<Integer> { 
+                prediction.KP1,
+                prediction.KP2,
+                prediction.KP3,
+                prediction.KP4,
+                prediction.KP5,
+                prediction.KP6,
+                prediction.KP7,
+                prediction.KP8
+            };
         }
-        else
-        {
-            throw ostk::core::error::RuntimeError(
-                "Cannot obtain polar motion from CSSI Space Weather at [{}].", anInstant.toString()
-            );
-        }
+
     }
 
-    const Finals2000A* finals2000aPtr = this->accessFinals2000AAt(anInstant);
-
-    if (finals2000aPtr != nullptr)
-    {
-        return finals2000aPtr->getPolarMotionAt(anInstant);
-    }
-
-    throw ostk::core::error::RuntimeError("Cannot obtain polar motion at [{}].", anInstant.toString());
-
-    return Vector2d::Undefined();
+    
+    throw ostk::core::error::RuntimeError("Cannot obtain Kp Solar Indices at [{}].", anInstant.toString());
 }
 
-Real Manager::getUt1MinusUtcAt(const Instant& anInstant) const
-{
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
-    std::lock_guard<std::mutex> lock {mutex_};
-
-    const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt(anInstant);
-
-    if (CSSISpaceWeatherPtr != nullptr)
-    {
-        if (CSSISpaceWeatherPtr->accessObservationInterval().contains(anInstant))
-        {
-            const CSSISpaceWeather::Observation observation = CSSISpaceWeatherPtr->getObservationAt(anInstant);
-
-            return observation.ut1MinusUtc;
-        }
-        else if (CSSISpaceWeatherPtr->accessPredictionInterval().contains(anInstant))
-        {
-            const CSSISpaceWeather::Prediction prediction = CSSISpaceWeatherPtr->getPredictionAt(anInstant);
-
-            return prediction.ut1MinusUtc;
-        }
-        else
-        {
-            throw ostk::core::error::RuntimeError(
-                "Cannot obtain UT1 - UTC from CSSI Space Weather at [{}].", anInstant.toString()
-            );
-        }
-    }
-
-    const Finals2000A* finals2000aPtr = this->accessFinals2000AAt(anInstant);
-
-    if (finals2000aPtr != nullptr)
-    {
-        return finals2000aPtr->getUt1MinusUtcAt(anInstant);
-    }
-
-    throw ostk::core::error::RuntimeError("Cannot obtain UT1 - UTC at [{}].", anInstant.toString());
-
-    return Real::Undefined();
-}
-
-Real Manager::getLodAt(const Instant& anInstant) const
-{
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
-    std::lock_guard<std::mutex> lock {mutex_};
-
-    const Finals2000A* finals2000aPtr = this->accessFinals2000AAt(anInstant);
-
-    if (finals2000aPtr != nullptr)
-    {
-        return finals2000aPtr->getLodAt(anInstant);
-    }
-
-    throw ostk::core::error::RuntimeError("Cannot obtain LOD at [{}].", anInstant.toString());
-
-    return Real::Undefined();
-}
-*/
 void Manager::setMode(const Manager::Mode& aMode)
 {
     std::lock_guard<std::mutex> lock {mutex_};
@@ -241,7 +180,7 @@ void Manager::setRemoteUrl(const URL& aRemoteUrl)
 
     remoteUrl_ = aRemoteUrl;
 }
-/*
+
 void Manager::loadCSSISpaceWeather(const CSSISpaceWeather& aCSSISpaceWeather)
 {
     if (!aCSSISpaceWeather.isDefined())
@@ -260,7 +199,7 @@ File Manager::fetchLatestCSSISpaceWeather()
 
     return this->fetchLatestCSSISpaceWeather_();
 }
-*/
+
 void Manager::reset()
 {
     std::lock_guard<std::mutex> lock {mutex_};
@@ -367,7 +306,7 @@ bool Manager::isLocalRepositoryLocked() const
 {
     return this->getLocalRepositoryLockFile().exists();
 }
-/*
+
 const CSSISpaceWeather* Manager::accessCSSISpaceWeatherAt(const Instant& anInstant) const
 {
     // Try cache
@@ -377,14 +316,14 @@ const CSSISpaceWeather* Manager::accessCSSISpaceWeatherAt(const Instant& anInsta
         const CSSISpaceWeather& CSSISpaceWeather = CSSISpaceWeatherArray_.at(CSSISpaceWeatherIndex_);
 
         if (CSSISpaceWeather.accessObservationInterval().contains(anInstant) ||
-            CSSISpaceWeather.accessPredictionInterval().contains(anInstant
-            ))  // [TBI] Check that next observation bulletin available first
+            CSSISpaceWeather.accessDailyPredictionInterval().contains(anInstant) ||
+            CSSISpaceWeather.accessMonthlyPredictionInterval().contains(anInstant))
         {
             return &CSSISpaceWeather;
         }
     }
 
-    // Try observation span of loaded bulletins
+    // Try observation span of loaded space weather files
 
     {
         CSSISpaceWeatherIndex_ = 0;
@@ -429,14 +368,30 @@ const CSSISpaceWeather* Manager::accessCSSISpaceWeatherAt(const Instant& anInsta
         }
     }
 
-    // Try prediction span of loaded bulletins
+    // Try daily prediction span of loaded space weather files
 
     {
         CSSISpaceWeatherIndex_ = 0;
 
         for (const auto& CSSISpaceWeather : CSSISpaceWeatherArray_)
         {
-            if (CSSISpaceWeather.accessPredictionInterval().contains(anInstant))
+            if (CSSISpaceWeather.accessDailyPredictionInterval().contains(anInstant))
+            {
+                return &CSSISpaceWeather;
+            }
+
+            CSSISpaceWeatherIndex_++;
+        }
+    }
+
+    // Try monthly prediction span of loaded space weather files
+
+    {
+        CSSISpaceWeatherIndex_ = 0;
+
+        for (const auto& CSSISpaceWeather : CSSISpaceWeatherArray_)
+        {
+            if (CSSISpaceWeather.accessMonthlyPredictionInterval().contains(anInstant))
             {
                 return &CSSISpaceWeather;
             }
@@ -453,18 +408,18 @@ const CSSISpaceWeather* Manager::accessCSSISpaceWeatherAt(const Instant& anInsta
         return nullptr;
     }
 }
-*/
+
 File Manager::getLocalRepositoryLockFile() const
 {
     using ostk::core::fs::Path;
 
     return File::Path(localRepository_.getPath() + Path::Parse(".lock"));
 }
-/*
+
 File Manager::getLatestCSSISpaceWeatherFile() const
 {
     // Parse CSSI Space Weather Directories, e.g.,
-    // `.open-space-toolkit/physics/coordinate/frame/providers/iers/CSSI-Space-Weather/2022-05-19/`, and find the latest one.
+    // `.open-space-toolkit/physics/environment/atmospheric/earth/weather/CSSI-Space-Weather/2022-05-19/`, and find the latest one.
 
     using ostk::core::ctnr::Map;
     using ostk::core::fs::Path;
@@ -493,12 +448,12 @@ File Manager::getLatestCSSISpaceWeatherFile() const
 
     if (!CSSISpaceWeatherMap.empty())
     {
-        return CSSISpaceWeatherMap.rbegin()->second;  // Latest bulletin
+        return CSSISpaceWeatherMap.rbegin()->second;
     }
 
     return const_cast<Manager*>(this)->fetchLatestCSSISpaceWeather_();
 }
-*/
+
 void Manager::setup()
 {
     using ostk::core::fs::Path;
@@ -514,12 +469,12 @@ void Manager::setup()
         this->getCSSISpaceWeatherDirectory().create();
     }
 }
-/*
+
 void Manager::loadCSSISpaceWeather_(const CSSISpaceWeather& aCSSISpaceWeather)
 {
     for (const auto& CSSISpaceWeather : CSSISpaceWeatherArray_)
     {
-        if (CSSISpaceWeather.accessReleaseDate() == aCSSISpaceWeather.accessReleaseDate())
+        if (CSSISpaceWeather.accessLastObservationDate() == aCSSISpaceWeather.accessLastObservationDate())
         {
             throw ostk::core::error::RuntimeError("CSSI Space Weather already added.");
         }
@@ -529,6 +484,45 @@ void Manager::loadCSSISpaceWeather_(const CSSISpaceWeather& aCSSISpaceWeather)
 
     CSSISpaceWeatherIndex_ = 0;
 }
+
+/*
+CSSISpaceWeather::Observation* Manager::getObservationOrDailyPredictionAt_(const Instant& anInstant) const
+{
+    const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt(anInstant);
+
+    if (CSSISpaceWeatherPtr != nullptr)
+    {
+        if (CSSISpaceWeatherPtr->accessObservationInterval().contains(anInstant))
+        {
+            return (CSSISpaceWeatherPtr->accessObservationAt(anInstant));
+        }
+        else if (CSSISpaceWeatherPtr->accessDailyPredictionInterval().contains(anInstant))
+        {
+            return (CSSISpaceWeatherPtr->accessDailyPredictionAt(anInstant));
+        }
+        else
+        {
+            return nullptr;
+        }
+    }
+}
+
+CSSISpaceWeather::MonthlyPrediction* Manager::getMonthlyPredictionAt_(const Instant& anInstant) const
+{
+    const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt(anInstant);
+
+    if (CSSISpaceWeatherPtr != nullptr)
+    {
+        if (CSSISpaceWeatherPtr->accessMonthlyPredictionInterval().contains(anInstant))
+        {
+            return (CSSISpaceWeatherPtr->accessMonthlyPredictionAt(anInstant));
+        }
+        else
+        {
+            return nullptr;
+        }
+    }
+}*/
 
 File Manager::fetchLatestCSSISpaceWeather_()
 {
@@ -555,7 +549,7 @@ File Manager::fetchLatestCSSISpaceWeather_()
     this->lockLocalRepository(localRepositoryLockTimeout_);
 
     const URL latestCSSISpaceWeatherUrl = remoteUrl_ + CSSISpaceWeatherFileName;
-
+    std::cout << latestCSSISpaceWeatherUrl.toString() << std::endl;
     File latestCSSISpaceWeatherFile = File::Undefined();
     Directory destinationDirectory = Directory::Undefined();
 
@@ -606,7 +600,7 @@ File Manager::fetchLatestCSSISpaceWeather_()
         // e.g., `.open-space-toolkit/physics/enviroment/atmospheric/earth/weather/cssi-space-weather/2022-05-19/`.
 
         destinationDirectory = Directory::Path(
-            this->getCSSISpaceWeatherDirectory().getPath() + Path::Parse(latestCSSISpaceWeather.accessReleaseDate().toString())
+            this->getCSSISpaceWeatherDirectory().getPath() + Path::Parse(latestCSSISpaceWeather.accessLastObservationDate().toString())
         );
 
         if (destinationDirectory.exists())
@@ -656,7 +650,7 @@ File Manager::fetchLatestCSSISpaceWeather_()
 
     return latestCSSISpaceWeatherFile;
 }
-*/
+
 void Manager::lockLocalRepository(const Duration& aTimeout)
 {
     std::cout << String::Format("Locking local repository [{}]...", localRepository_.toString()) << std::endl;

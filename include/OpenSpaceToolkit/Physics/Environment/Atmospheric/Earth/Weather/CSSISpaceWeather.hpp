@@ -119,29 +119,41 @@ class CSSISpaceWeather
 
     bool isDefined() const;
 
+    const Date& accessLastObservationDate() const;
+
     const Interval& accessObservationInterval() const;
+
+    const Observation& accessObservationAt(const Instant& anInstant) const;
 
     const Interval& accessDailyPredictionInterval() const;
 
+    const DailyPrediction& accessDailyPredictionAt(const Instant& anInstant) const;
+
     const Interval& accessMonthlyPredictionInterval() const;
+
+    const MonthlyPrediction& accessMonthlyPredictionAt(const Instant& anInstant) const;
+
+    Date getLastObservationDate() const;
 
     Interval getObservationInterval() const;
 
-    CSSISpaceWeather::Observation getObservationAt(const Instant& anInstant) const;
+    Observation getObservationAt(const Instant& anInstant) const;
 
     Interval getDailyPredictionInterval() const;
 
-    CSSISpaceWeather::DailyPrediction getDailyPredictionAt(const Instant& anInstant) const;
+    DailyPrediction getDailyPredictionAt(const Instant& anInstant) const;
 
     Interval getMonthlyPredictionInterval() const;
 
-    CSSISpaceWeather::MonthlyPrediction getMonthlyPredictionAt(const Instant& anInstant) const;
+    MonthlyPrediction getMonthlyPredictionAt(const Instant& anInstant) const;
     
     static CSSISpaceWeather Undefined();
 
     static CSSISpaceWeather Load(const fs::File& aFile);
 
    private:
+    Date lastObservationDate_;
+    
     Interval observationInterval_;
     Map<Integer, CSSISpaceWeather::Observation> observations_;
 

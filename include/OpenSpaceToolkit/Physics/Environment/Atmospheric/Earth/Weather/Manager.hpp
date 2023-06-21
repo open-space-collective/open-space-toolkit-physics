@@ -22,7 +22,7 @@
 #define OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_LOCAL_REPOSITORY \
     "./.open-space-toolkit/physics/environment/atmospheric/earth/weather"
 #define OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT 60
-#define OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_REMOTE_URL "https://celestrak.org/SpaceData/SW-Last5Years.txt"
+#define OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_REMOTE_URL "https://celestrak.org/SpaceData/"
 
 namespace ostk
 {
@@ -88,9 +88,9 @@ class Manager
 
     Directory getLocalRepository() const;
 
-    /// @brief              Get Bulletin A directory
+    /// @brief              Get CSSI Space Weather directory
     ///
-    /// @return             Bulletin A directory
+    /// @return             CSSI Space Weather directory
 
     Directory getCSSISpaceWeatherDirectory() const;
 
@@ -100,26 +100,25 @@ class Manager
 
     URL getRemoteUrl() const;
 
-    /// @brief              Get array of Bulletin A
+    /// @brief              Get array of CSSI Space Weather
     ///
-    /// @return             Array of Bulletin A
+    /// @return             Array of CSSI Space Weather
 
-//    Array<CSSISpaceWeather> getCSSISpaceWeatherArray() const;
+    Array<CSSISpaceWeather> getCSSISpaceWeatherArray() const;
 
-    /// @brief              Get Bulletin A at instant
-    ///
-    /// @param              [in] anInstant An instant
-    /// @return             Bulletin A
-
-//    CSSISpaceWeather getCSSISpaceWeatherAt(const Instant& anInstant) const;
-
-
-    /// @brief              Get length of day at instant
+    /// @brief              Get CSSI Space Weather at instant
     ///
     /// @param              [in] anInstant An instant
-    /// @return             [ms] Length of day
+    /// @return             CSSI Space Weather
 
-//    Real getLodAt(const Instant& anInstant) const;
+    CSSISpaceWeather getCSSISpaceWeatherAt(const Instant& anInstant) const;
+
+    /// @brief              Get an Array of 8 3-hourly Kp solar indices for the day containing instant.
+    ///
+    /// @param              [in] anInstant An instant
+    /// @return             Array of 3-hourly Kp solar indices
+
+    Array<Integer> getKp3HourSolarIndicesAt(const Instant& anInstant) const;
 
     /// @brief              Set manager mode
     ///
@@ -139,17 +138,17 @@ class Manager
 
     void setRemoteUrl(const URL& aRemoteUrl);
 
-    /// @brief              Load Bulletin A
+    /// @brief              Load CSSI Space Weather
     ///
     /// @param              [in] aCSSISpaceWeather A CSSI Space Weather
 
-//    void loadCSSISpaceWeather(const CSSISpaceWeather& aCSSISpaceWeather);
+    void loadCSSISpaceWeather(const CSSISpaceWeather& aCSSISpaceWeather);
 
-    /// @brief              Fetch latest Bulletin A file
+    /// @brief              Fetch latest CSSI Space Weather file
     ///
-    /// @return             Latest Bulletin A file
+    /// @return             Latest CSSI Space Weather file
 
-//    File fetchLatestCSSISpaceWeather();
+    File fetchLatestCSSISpaceWeather();
 
     /// @brief              Reset manager
     ///
@@ -224,15 +223,19 @@ class Manager
 
     File getLocalRepositoryLockFile() const;
 
-//    const CSSISpaceWeather* accessCSSISpaceWeatherAt(const Instant& anInstant) const;
+    const CSSISpaceWeather* accessCSSISpaceWeatherAt(const Instant& anInstant) const;
 
-//    File getLatestCSSISpaceWeatherFile() const;
+    File getLatestCSSISpaceWeatherFile() const;
 
     void setup();
 
-//    void loadCSSISpaceWeather_(const CSSISpaceWeather& aCSSISpaceWeather);
+    void loadCSSISpaceWeather_(const CSSISpaceWeather& aCSSISpaceWeather);
 
-//    File fetchLatestCSSISpaceWeather_();
+    //CSSISpaceWeather::Observation* getObservationOrDailyPredictionAt_(const Instant& anInstant) const;
+
+    //CSSISpaceWeather::MonthlyPrediction* getMonthlyPredictionAt_(const Instant& anInstant) const;
+
+    File fetchLatestCSSISpaceWeather_();
 
     void lockLocalRepository(const Duration& aTimeout);
 

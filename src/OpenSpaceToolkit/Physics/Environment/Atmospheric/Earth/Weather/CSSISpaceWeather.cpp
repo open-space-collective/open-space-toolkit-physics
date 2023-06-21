@@ -173,6 +173,16 @@ bool CSSISpaceWeather::isDefined() const
 
 }
 
+const Date& CSSISpaceWeather::accessLastObservationDate() const
+{
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("CSSI Space Weather");
+    }
+
+    return lastObservationDate_;
+}   
+
 const Interval& CSSISpaceWeather::accessObservationInterval() const
 {
     if (!this->isDefined())
@@ -183,32 +193,7 @@ const Interval& CSSISpaceWeather::accessObservationInterval() const
     return observationInterval_;
 }
 
-const Interval& CSSISpaceWeather::accessDailyPredictionInterval() const
-{
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("CSSI Space Weather");
-    }
-
-    return dailyPredictionInterval_;
-}
-
-const Interval& CSSISpaceWeather::accessMonthlyPredictionInterval() const
-{
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("CSSI Space Weather");
-    }
-
-    return monthlyPredictionInterval_;
-}
-
-Interval CSSISpaceWeather::getObservationInterval() const
-{
-    return this->accessObservationInterval();
-}
-
-CSSISpaceWeather::Observation CSSISpaceWeather::getObservationAt(const Instant& anInstant) const
+const CSSISpaceWeather::Observation& CSSISpaceWeather::accessObservationAt(const Instant& anInstant) const
 {
     if (!anInstant.isDefined())
     {
@@ -244,12 +229,17 @@ CSSISpaceWeather::Observation CSSISpaceWeather::getObservationAt(const Instant& 
     }
 }
 
-Interval CSSISpaceWeather::getDailyPredictionInterval() const
+const Interval& CSSISpaceWeather::accessDailyPredictionInterval() const
 {
-    return this->accessDailyPredictionInterval();
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("CSSI Space Weather");
+    }
+
+    return dailyPredictionInterval_;
 }
 
-CSSISpaceWeather::DailyPrediction CSSISpaceWeather::getDailyPredictionAt(const Instant& anInstant) const
+const CSSISpaceWeather::DailyPrediction& CSSISpaceWeather::accessDailyPredictionAt(const Instant& anInstant) const
 {
     if (!anInstant.isDefined())
     {
@@ -285,12 +275,17 @@ CSSISpaceWeather::DailyPrediction CSSISpaceWeather::getDailyPredictionAt(const I
     }
 }
 
-Interval CSSISpaceWeather::getMonthlyPredictionInterval() const
+const Interval& CSSISpaceWeather::accessMonthlyPredictionInterval() const
 {
-    return this->accessMonthlyPredictionInterval();
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("CSSI Space Weather");
+    }
+
+    return monthlyPredictionInterval_;
 }
 
-CSSISpaceWeather::MonthlyPrediction CSSISpaceWeather::getMonthlyPredictionAt(const Instant& anInstant) const
+const CSSISpaceWeather::MonthlyPrediction& CSSISpaceWeather::accessMonthlyPredictionAt(const Instant& anInstant) const
 {
     if (!anInstant.isDefined())
     {
@@ -327,6 +322,41 @@ CSSISpaceWeather::MonthlyPrediction CSSISpaceWeather::getMonthlyPredictionAt(con
     {
         throw ostk::core::error::RuntimeError("Cannot find prediction at [{}].", anInstant.toString(Scale::UTC));
     }
+}
+
+Date CSSISpaceWeather::getLastObservationDate() const
+{
+    return this->accessLastObservationDate();
+}
+
+Interval CSSISpaceWeather::getObservationInterval() const
+{
+    return this->accessObservationInterval();
+}
+
+CSSISpaceWeather::Observation CSSISpaceWeather::getObservationAt(const Instant& anInstant) const
+{
+    return this->accessObservationAt(anInstant);
+}
+
+Interval CSSISpaceWeather::getDailyPredictionInterval() const
+{
+    return this->accessDailyPredictionInterval();
+}
+
+CSSISpaceWeather::DailyPrediction CSSISpaceWeather::getDailyPredictionAt(const Instant& anInstant) const
+{
+    return this->accessDailyPredictionAt(anInstant);
+}
+
+Interval CSSISpaceWeather::getMonthlyPredictionInterval() const
+{
+    return this->accessMonthlyPredictionInterval();
+}
+
+CSSISpaceWeather::MonthlyPrediction CSSISpaceWeather::getMonthlyPredictionAt(const Instant& anInstant) const
+{
+    return this->accessMonthlyPredictionAt(anInstant);
 }
 
 CSSISpaceWeather CSSISpaceWeather::Undefined()
@@ -412,7 +442,7 @@ CSSISpaceWeather CSSISpaceWeather::Load(const fs::File& aFile)
         const Integer mjd = DateTime(date, Time(0,0,0)).getModifiedJulianDate().floor();
 
         // observed and daily predicted readings
-        if (F107_DATA_TYPE == "OBS" || F107_DATA_TYPE == "PRD")
+        if (F107_DATA_TYPE == "OBS" || F107_DATA_TYPE == "INT" || F107_DATA_TYPE == "PRD")
         {
             // Data points that exist for observed and daily predicted readings
             const Integer KP1 = boost::lexical_cast<int>(lineParts[3]);
@@ -470,8 +500,7 @@ CSSISpaceWeather CSSISpaceWeather::Load(const fs::File& aFile)
                 F107_ADJ_LAST81,
             };
 
-            
-            if (F107_DATA_TYPE == "OBS")
+            if (F107_DATA_TYPE == "OBS" || F107_DATA_TYPE == "INT")
             {
                 spaceWeather.observations_.insert({mjd, reading});
             } else {
@@ -499,14 +528,12 @@ CSSISpaceWeather CSSISpaceWeather::Load(const fs::File& aFile)
 
             spaceWeather.monthlyPredictions_.insert({mjd, reading});
         }
-
-        if (F107_DATA_TYPE == "INT"){
-            throw ostk::core::error::RuntimeError("Parse interpolated data");
-        }
     }
 
     if ( !spaceWeather.observations_.empty() )
     {
+        spaceWeather.lastObservationDate_ = spaceWeather.observations_.rbegin()->second.date;
+
         const Instant observationStartInstant =
             Instant::ModifiedJulianDate(Real::Integer(spaceWeather.observations_.begin()->first), Scale::UTC);
         const Instant observationEndInstant =
@@ -539,7 +566,8 @@ CSSISpaceWeather CSSISpaceWeather::Load(const fs::File& aFile)
 }
 
 CSSISpaceWeather::CSSISpaceWeather()
-    : observationInterval_(Interval::Undefined()),
+    : lastObservationDate_(Date::Undefined()),
+      observationInterval_(Interval::Undefined()),
       observations_(Map<Integer, CSSISpaceWeather::Observation>()),
 
       dailyPredictionInterval_(Interval::Undefined()),
