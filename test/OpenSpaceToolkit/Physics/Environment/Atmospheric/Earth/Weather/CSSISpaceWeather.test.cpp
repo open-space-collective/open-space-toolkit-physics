@@ -21,7 +21,7 @@ class OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWe
     void SetUp() override
     {
         const File file = File::Path(
-            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Weather/CSSISpaceWeather/SW-Last5Years.csv")
+            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Weather/CSSISpaceWeather/SW-Last5Years.test.csv")
         );
         this->CSSISpaceWeather_ = CSSISpaceWeather::Load(file);
     }
@@ -52,11 +52,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceW
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWeather, AccessReleaseDate)
-{
-    SUCCEED();  // See: GetReleaseDate
-}
-
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWeather, AccessObservationInterval)
 {
     SUCCEED();  // See: GetObservationInterval
@@ -67,25 +62,13 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceW
     SUCCEED();  // See: GetPredictionInterval
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWeather, GetReleaseDate)
-{
-    {
-        EXPECT_EQ(Date(2018, 6, 28), CSSISpaceWeather_.getReleaseDate());
-    }
-
-    {
-        EXPECT_ANY_THROW(CSSISpaceWeather::Undefined().getReleaseDate());
-    }
-}
-/*
-
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWeather, GetObservationInterval)
 {
     {
         EXPECT_EQ(
             Interval::Closed(
-                Instant::DateTime(DateTime::Parse("2018-06-22 00:00:00"), Scale::UTC),
-                Instant::DateTime(DateTime::Parse("2018-06-28 00:00:00"), Scale::UTC)
+                Instant::DateTime(DateTime::Parse("2018-01-01 00:00:00"), Scale::UTC),
+                Instant::DateTime(DateTime::Parse("2023-06-19 00:00:00"), Scale::UTC)
             ),
             CSSISpaceWeather_.getObservationInterval()
         );
@@ -95,7 +78,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceW
         EXPECT_ANY_THROW(CSSISpaceWeather::Undefined().getObservationInterval());
     }
 }
-
+/*
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWeather, GetObservationAt)
 {
     {
@@ -120,24 +103,41 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceW
         ));
     }
 }
-
-TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWeather, GetPredictionInterval)
+*/
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWeather, GetDailyPredictionInterval)
 {
     {
         EXPECT_EQ(
             Interval::Closed(
-                Instant::DateTime(DateTime::Parse("2018-06-29 00:00:00"), Scale::UTC),
-                Instant::DateTime(DateTime::Parse("2019-06-28 00:00:00"), Scale::UTC)
+                Instant::DateTime(DateTime::Parse("2023-06-20 00:00:00"), Scale::UTC),
+                Instant::DateTime(DateTime::Parse("2023-08-03 00:00:00"), Scale::UTC)
             ),
-            CSSISpaceWeather_.getPredictionInterval()
+            CSSISpaceWeather_.getDailyPredictionInterval()
         );
     }
 
     {
-        EXPECT_ANY_THROW(CSSISpaceWeather::Undefined().getPredictionInterval());
+        EXPECT_ANY_THROW(CSSISpaceWeather::Undefined().getDailyPredictionInterval());
     }
 }
 
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWeather, GetMonthlyPredictionInterval)
+{
+    {
+        EXPECT_EQ(
+            Interval::Closed(
+                Instant::DateTime(DateTime::Parse("2023-09-01 00:00:00"), Scale::UTC),
+                Instant::DateTime(DateTime::Parse("2029-01-01 00:00:00"), Scale::UTC)
+            ),
+            CSSISpaceWeather_.getMonthlyPredictionInterval()
+        );
+    }
+
+    {
+        EXPECT_ANY_THROW(CSSISpaceWeather::Undefined().getMonthlyPredictionInterval());
+    }
+}
+/*
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWeather, GetPredictionAt)
 {
     {
@@ -160,62 +160,12 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceW
     }
 }
 */
-TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWeather, split)
-{
-    using ostk::core::ctnr::Array ;
-    using ostk::core::types::String ;
-    auto split = [] ( std::string s, std::string delimiter ) -> Array<String>
-    {
-        Array<String> results;
-
-        size_t last = 0; 
-        size_t next = 0; 
-        while ((next = s.find(delimiter, last)) != std::string::npos) 
-        {   
-            // account for multiple consecutive delimiters
-
-            if (next-last > 0)
-            {
-
-                const String token = String(s.substr(last, next-last));//.trim();
-                std::cout << "token: " << token << " && delimiter: " << delimiter << std::endl;
-
-                //if (!token.empty())
-                //{
-                    //std::cout << "\"" << token << "\" " << std::endl;
-                results.add(token);
-                //}
-            }
-            last = next + 1; 
-        }
-
-        const String lastToken = String(s.substr(last));
-        if (!lastToken.empty())
-        {
-            results.add(lastToken);
-        }
-        return results;
-    };
-
-    //std::cout << split(",a,,arst,,b,,,,c,", ",") << std::endl;
-    std::cout << split("BEGIN OBSERVED", " ") << std::endl;
-}
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWeather, Load)
 {
     {
         
         EXPECT_TRUE(CSSISpaceWeather_.isDefined());
-
-        EXPECT_EQ(Date(2023, 6, 5), CSSISpaceWeather_.getReleaseDate());
-
-        EXPECT_EQ(
-            Interval::Closed(
-                Instant::DateTime(DateTime::Parse("2018-01-01 00:00:00"), Scale::UTC),
-                Instant::DateTime(DateTime::Parse("2023-06-04 00:00:00"), Scale::UTC)
-            ),
-            CSSISpaceWeather_.getObservationInterval()
-        );
         
         /*
         {
@@ -266,13 +216,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceW
             EXPECT_NEAR(0.000031 + (0.000030 - 0.000031) / 2.0, interpolatedObservation.ut1MinusUtcError, 1e-6);
         }
         */
-        EXPECT_EQ(
-            Interval::Closed(
-                Instant::DateTime(DateTime::Parse("2023-06-05 00:00:00"), Scale::UTC),
-                Instant::DateTime(DateTime::Parse("2023-07-19 00:00:00"), Scale::UTC)
-            ),
-            CSSISpaceWeather_.getDailyPredictionInterval()
-        );
+
         /*
         {
             const CSSISpaceWeather::Prediction firstPrediction =

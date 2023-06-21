@@ -31,6 +31,7 @@ namespace fs = ostk::core::fs;
 
 using ostk::core::types::Integer;
 using ostk::core::types::Real;
+using ostk::core::types::String;
 using ostk::core::ctnr::Map;
 using ostk::core::ctnr::Array;
 using ostk::core::fs::File;
@@ -53,9 +54,7 @@ class CSSISpaceWeather
    public:
     struct Observation
     {
-        Integer DATE_YEAR;	/// Year-Month-Day (ISO 8601)
-        Integer DATE_MONTH;
-        Integer DATE_DAY;
+        Date date;
         Integer BSRN;	/// Bartels Solar Rotation Number. A sequence of 27-day intervals counted continuously from 1832 Feb 8.
         Integer ND;	/// Number of Day within the Bartels 27-day cycle (01-27).
         Integer KP1;	/// Planetary 3-hour Range Index (Kp) for 0000-0300 UT.
@@ -81,7 +80,7 @@ class CSSISpaceWeather
         Integer ISN;	/// International Sunspot Number. Records contain the Zurich number through 1980 Dec 31 and the International Brussels number thereafter.
         Real F107_OBS;	/// Observed 10.7-cm Solar Radio Flux (F10.7). Measured at Ottawa at 1700 UT daily from 1947 Feb 14 until 1991 May 31 and measured at Penticton at 2000 UT from 1991 Jun 01 on. Expressed in units of 10-22 W/m2/Hz.
         Real F107_ADJ;	/// 10.7-cm Solar Radio Flux (F10.7) adjusted to 1 AU.
-        Real F107_DATA_TYPE;	/// Flux Qualifier.
+        String F107_DATA_TYPE;	/// Flux Qualifier.
                         /// OBS: Observed flux measurement
                         /// INT: CelesTrak linear interpolation of missing data
                         /// PRD: 45-Day predicted flux
@@ -96,14 +95,12 @@ class CSSISpaceWeather
     using DailyPrediction = Observation;
 
     struct MonthlyPrediction {
-        Integer DATE_YEAR;	/// Year-Month-Day (ISO 8601)
-        Integer DATE_MONTH;
-        Integer DATE_DAY;
+        Date date;
         Integer BSRN;	/// Bartels Solar Rotation Number. A sequence of 27-day intervals counted continuously from 1832 Feb 8.
         Integer ND;	/// Number of Day within the Bartels 27-day cycle (01-27).
         Real F107_OBS;	/// Observed 10.7-cm Solar Radio Flux (F10.7). Measured at Ottawa at 1700 UT daily from 1947 Feb 14 until 1991 May 31 and measured at Penticton at 2000 UT from 1991 Jun 01 on. Expressed in units of 10-22 W/m2/Hz.
         Real F107_ADJ;	/// 10.7-cm Solar Radio Flux (F10.7) adjusted to 1 AU.
-        Real F107_DATA_TYPE;	/// Flux Qualifier.
+        String F107_DATA_TYPE;	/// Flux Qualifier.
                         /// OBS: Observed flux measurement
                         /// INT: CelesTrak linear interpolation of missing data
                         /// PRD: 45-Day predicted flux
@@ -118,14 +115,13 @@ class CSSISpaceWeather
     //friend std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& aCSSISpaceWeather);
 
     bool isDefined() const;
-    
-    const Date& accessReleaseDate() const;
 
     const Interval& accessObservationInterval() const;
 
     const Interval& accessDailyPredictionInterval() const;
 
-    Date getReleaseDate() const;
+    const Interval& accessMonthlyPredictionInterval() const;
+
 
     Interval getObservationInterval() const;
 
@@ -134,14 +130,16 @@ class CSSISpaceWeather
     Interval getDailyPredictionInterval() const;
 
     //CSSISpaceWeather::Prediction getDailyPredictionAt(const Instant& anInstant) const;
+
+    Interval getMonthlyPredictionInterval() const;
+
+    //CSSISpaceWeather::Prediction getMonthlyPredictionAt(const Instant& anInstant) const;
     
     static CSSISpaceWeather Undefined();
 
     static CSSISpaceWeather Load(const fs::File& aFile);
 
    private:
-    Date releaseDate_;
-
     Interval observationInterval_;
     Map<Integer, CSSISpaceWeather::Observation> observations_;
 
