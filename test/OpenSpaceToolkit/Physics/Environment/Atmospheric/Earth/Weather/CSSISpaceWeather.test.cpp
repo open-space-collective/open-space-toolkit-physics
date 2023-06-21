@@ -32,7 +32,7 @@ class OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWe
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWeather, StreamOperator)
 {
     {
-        //testing::internal::CaptureStdout();
+        testing::internal::CaptureStdout();
 
         EXPECT_NO_THROW(std::cout << CSSISpaceWeather_ << std::endl);
 

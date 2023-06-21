@@ -100,6 +100,7 @@ class CSSISpaceWeather
         Date date;
         Integer BSRN;	/// Bartels Solar Rotation Number. A sequence of 27-day intervals counted continuously from 1832 Feb 8.
         Integer ND;	/// Number of Day within the Bartels 27-day cycle (01-27).
+        Integer ISN;	/// International Sunspot Number. Records contain the Zurich number through 1980 Dec 31 and the International Brussels number thereafter.
         Real F107_OBS;	/// Observed 10.7-cm Solar Radio Flux (F10.7). Measured at Ottawa at 1700 UT daily from 1947 Feb 14 until 1991 May 31 and measured at Penticton at 2000 UT from 1991 Jun 01 on. Expressed in units of 10-22 W/m2/Hz.
         Real F107_ADJ;	/// 10.7-cm Solar Radio Flux (F10.7) adjusted to 1 AU.
         String F107_DATA_TYPE;	/// Flux Qualifier.

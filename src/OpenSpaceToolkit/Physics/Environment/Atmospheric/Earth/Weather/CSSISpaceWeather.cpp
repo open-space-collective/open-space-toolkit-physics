@@ -27,9 +27,6 @@ namespace weather
 
 std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& aCSSISpaceWeather)
 {
-    using ostk::core::types::String;
-
-    using ostk::physics::time::Scale;
 
     ostk::core::utils::Print::Header(anOutputStream, "CSSI Space Weather");
 
@@ -47,70 +44,125 @@ std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& a
         << (aCSSISpaceWeather.monthlyPredictionInterval_.isDefined() ? aCSSISpaceWeather.monthlyPredictionInterval_.toString(Scale::UTC)
                                                        : "Undefined");
     
-    ostk::core::utils::Print::Separator(anOutputStream, "Observation");
+    const String dataHeader = String("DATE,BSRN,ND,KP1,KP2,KP3,KP4,KP5,KP6,KP7,KP8,KP_SUM,AP1,AP2,AP3,AP4,AP5,AP6,AP7,AP8,AP_AVG,CP,C9,ISN,F10.7_OBS,F10.7_ADJ,F10.7_DATA_TYPE,F10.7_OBS_CENTER81,F10.7_OBS_LAST81,F10.7_ADJ_CENTER81,F10.7_ADJ_LAST81");
 
+    ostk::core::utils::Print::Separator(anOutputStream, "Observations");
+    ostk::core::utils::Print::Line(anOutputStream) << dataHeader;
     for (const auto& observationIt : aCSSISpaceWeather.observations_)
     {
         const CSSISpaceWeather::Observation& observation = observationIt.second;
 
         ostk::core::utils::Print::Line(anOutputStream) << String::Format(
-            "{:>4d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>5d}  {:f}  {:>2d}  {:>2d}  {:f}  {:f}  {:s}  {:f}  {:f}  {:f}  {:f}",
-            //observation.date,
-            static_cast<int>(observation.BSRN),
-            static_cast<int>(observation.ND),
-            static_cast<int>(observation.KP1),
-            static_cast<int>(observation.KP2),
-            static_cast<int>(observation.KP3),
-            static_cast<int>(observation.KP4),
-            static_cast<int>(observation.KP5),
-            static_cast<int>(observation.KP6),
-            static_cast<int>(observation.KP7),
-            static_cast<int>(observation.KP8),
-            static_cast<int>(observation.KP_SUM),
-            static_cast<int>(observation.AP1),
-            static_cast<int>(observation.AP2),
-            static_cast<int>(observation.AP3),
-            static_cast<int>(observation.AP4),
-            static_cast<int>(observation.AP5),
-            static_cast<int>(observation.AP6),
-            static_cast<int>(observation.AP7),
-            static_cast<int>(observation.AP8),
-            static_cast<int>(observation.AP_AVG),
-            static_cast<double>(observation.CP),
-            static_cast<int>(observation.C9),
-            static_cast<int>(observation.ISN),
-            static_cast<double>(observation.F107_OBS),
-            static_cast<double>(observation.F107_ADJ),
+            "{:04}-{:02}-{:02}  {:>4d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>4d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:.2f}  {:>2d}  {:>4d}  {:6.2f}  {:6.2f}  {:s}  {:6.2f}  {:6.2f}  {:6.2f}  {:6.2f}",
+            observation.date.getYear(),
+            observation.date.getMonth(),
+            observation.date.getDay(),
+            observation.BSRN,
+            observation.ND,
+            observation.KP1,
+            observation.KP2,
+            observation.KP3,
+            observation.KP4,
+            observation.KP5,
+            observation.KP6,
+            observation.KP7,
+            observation.KP8,
+            observation.KP_SUM,
+            observation.AP1,
+            observation.AP2,
+            observation.AP3,
+            observation.AP4,
+            observation.AP5,
+            observation.AP6,
+            observation.AP7,
+            observation.AP8,
+            observation.AP_AVG,
+            observation.CP,
+            observation.C9,
+            observation.ISN,
+            observation.F107_OBS,
+            observation.F107_ADJ,
             observation.F107_DATA_TYPE,
-            static_cast<double>(observation.F107_OBS_CENTER81),
-            static_cast<double>(observation.F107_OBS_LAST81),
-            static_cast<double>(observation.F107_ADJ_CENTER81),
-            static_cast<double>(observation.F107_ADJ_LAST81)
+            observation.F107_OBS_CENTER81,
+            observation.F107_OBS_LAST81,
+            observation.F107_ADJ_CENTER81,
+            observation.F107_ADJ_LAST81
         );
-
-
     }
-    /*
-    ostk::core::utils::Print::Separator(anOutputStream, "Prediction");
 
-    for (const auto& predictionIt : aCSSISpaceWeather.predictions_)
+    ostk::core::utils::Print::Separator(anOutputStream, "Daily Predictions");
+    ostk::core::utils::Print::Line(anOutputStream) << dataHeader;
+
+    for (const auto& dailyPredictionIt : aCSSISpaceWeather.dailyPredictions_)
     {
-        const CSSISpaceWeather::Prediction& prediction = predictionIt.second;
+        const CSSISpaceWeather::DailyPrediction& dailyPrediction = dailyPredictionIt.second;
 
         ostk::core::utils::Print::Line(anOutputStream) << String::Format(
-            "{:>4d}  {:>2d}  {:>2d}  {:>5d}  {:f}  {:f}  {:f}",
-            static_cast<int>(prediction.year),
-            static_cast<int>(prediction.month),
-            static_cast<int>(prediction.day),
-            static_cast<int>(prediction.mjd),
-            static_cast<double>(prediction.x),
-            static_cast<double>(prediction.y),
-            static_cast<double>(prediction.ut1MinusUtc)
+            "{:04}-{:02}-{:02}  {:>4d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>4d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:.2f}  {:>2d}  {:>4d}  {:6.2f}  {:6.2f}  {:s}  {:6.2f}  {:6.2f}  {:6.2f}  {:6.2f}",
+            dailyPrediction.date.getYear(),
+            dailyPrediction.date.getMonth(),
+            dailyPrediction.date.getDay(),
+            dailyPrediction.BSRN,
+            dailyPrediction.ND,
+            dailyPrediction.KP1,
+            dailyPrediction.KP2,
+            dailyPrediction.KP3,
+            dailyPrediction.KP4,
+            dailyPrediction.KP5,
+            dailyPrediction.KP6,
+            dailyPrediction.KP7,
+            dailyPrediction.KP8,
+            dailyPrediction.KP_SUM,
+            dailyPrediction.AP1,
+            dailyPrediction.AP2,
+            dailyPrediction.AP3,
+            dailyPrediction.AP4,
+            dailyPrediction.AP5,
+            dailyPrediction.AP6,
+            dailyPrediction.AP7,
+            dailyPrediction.AP8,
+            dailyPrediction.AP_AVG,
+            dailyPrediction.CP,
+            dailyPrediction.C9,
+            dailyPrediction.ISN,
+            dailyPrediction.F107_OBS,
+            dailyPrediction.F107_ADJ,
+            dailyPrediction.F107_DATA_TYPE,
+            dailyPrediction.F107_OBS_CENTER81,
+            dailyPrediction.F107_OBS_LAST81,
+            dailyPrediction.F107_ADJ_CENTER81,
+            dailyPrediction.F107_ADJ_LAST81
+        );
+    }
+    
+    ostk::core::utils::Print::Separator(anOutputStream, "Monthly Predictions");
+    ostk::core::utils::Print::Line(anOutputStream) << 
+        String("DATE,BSRN,ND,ISN,F10.7_OBS,F10.7_ADJ,F10.7_DATA_TYPE,F10.7_OBS_CENTER81,F10.7_OBS_LAST81,F10.7_ADJ_CENTER81,F10.7_ADJ_LAST81");
+
+    for (const auto& monthlyPredictionIt : aCSSISpaceWeather.monthlyPredictions_)
+    {
+        const CSSISpaceWeather::MonthlyPrediction& monthlyPrediction = monthlyPredictionIt.second;
+
+        ostk::core::utils::Print::Line(anOutputStream) << String::Format(
+            "{:04}-{:02}-{:02}  {:>4d}  {:>2d}  {:>4d}  {:6.2f}  {:6.2f}  {:s}  {:6.2f}  {:6.2f}  {:6.2f}  {:6.2f}",
+            monthlyPrediction.date.getYear(),
+            monthlyPrediction.date.getMonth(),
+            monthlyPrediction.date.getDay(),
+            monthlyPrediction.BSRN,
+            monthlyPrediction.ND,
+            monthlyPrediction.ISN,
+            monthlyPrediction.F107_OBS,
+            monthlyPrediction.F107_ADJ,
+            monthlyPrediction.F107_DATA_TYPE,
+            monthlyPrediction.F107_OBS_CENTER81,
+            monthlyPrediction.F107_OBS_LAST81,
+            monthlyPrediction.F107_ADJ_CENTER81,
+            monthlyPrediction.F107_ADJ_LAST81
         );
     }
 
     ostk::core::utils::Print::Footer(anOutputStream);
-    */
+    
     return anOutputStream;
 }
 
@@ -435,6 +487,7 @@ CSSISpaceWeather CSSISpaceWeather::Load(const fs::File& aFile)
                 date,
                 BSRN,
                 ND,
+                ISN,
                 F107_OBS,
                 F107_ADJ,
                 F107_DATA_TYPE,
