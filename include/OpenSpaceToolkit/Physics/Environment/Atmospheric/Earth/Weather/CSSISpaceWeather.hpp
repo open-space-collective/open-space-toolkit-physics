@@ -37,9 +37,11 @@ using ostk::core::ctnr::Array;
 using ostk::core::fs::File;
 
 using ostk::physics::time::Date;
+using ostk::physics::time::DateTime;
 using ostk::physics::time::Instant;
 using ostk::physics::time::Duration;
 using ostk::physics::time::Interval;
+using ostk::physics::time::Scale;
 
 /// @brief                      Center for Space Weather and Innovation (CSSI) Space Weather data file.
 ///
@@ -125,15 +127,15 @@ class CSSISpaceWeather
 
     Interval getObservationInterval() const;
 
-    //CSSISpaceWeather::Observation getObservationAt(const Instant& anInstant) const;
+    CSSISpaceWeather::Observation getObservationAt(const Instant& anInstant) const;
 
     Interval getDailyPredictionInterval() const;
 
-    //CSSISpaceWeather::Prediction getDailyPredictionAt(const Instant& anInstant) const;
+    CSSISpaceWeather::DailyPrediction getDailyPredictionAt(const Instant& anInstant) const;
 
     Interval getMonthlyPredictionInterval() const;
 
-    //CSSISpaceWeather::Prediction getMonthlyPredictionAt(const Instant& anInstant) const;
+    CSSISpaceWeather::MonthlyPrediction getMonthlyPredictionAt(const Instant& anInstant) const;
     
     static CSSISpaceWeather Undefined();
 

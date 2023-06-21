@@ -131,11 +131,8 @@ Interval CSSISpaceWeather::getObservationInterval() const
     return this->accessObservationInterval();
 }
 
-/*
 CSSISpaceWeather::Observation CSSISpaceWeather::getObservationAt(const Instant& anInstant) const
 {
-    using ostk::physics::time::Scale;
-
     if (!anInstant.isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Instant");
@@ -162,73 +159,21 @@ CSSISpaceWeather::Observation CSSISpaceWeather::getObservationAt(const Instant& 
 
     if (observationIt != observations_.end())
     {
-        if (instantMjd.isInteger())
-        {
-            return observationIt->second;
-        }
-        else
-        {
-            const auto nextObservationIt = std::next(observationIt);
-
-            if (nextObservationIt != observations_.end())
-            {
-                // [TBI] IERS gazette #13 for more precise interpolation and correction for tidal effects
-
-                const CSSISpaceWeather::Observation& previousObservation = observationIt->second;
-                const CSSISpaceWeather::Observation& nextObservation = nextObservationIt->second;
-
-                const Real ratio =
-                    (instantMjd - previousObservation.mjd) / (nextObservation.mjd - previousObservation.mjd);
-
-                const Integer year = previousObservation.year;
-                const Integer month = previousObservation.month;
-                const Integer day = previousObservation.day;
-
-                const Real mjd = previousObservation.mjd + ratio * (nextObservation.mjd - previousObservation.mjd);
-
-                const Real x = previousObservation.x + ratio * (nextObservation.x - previousObservation.x);
-                const Real xError =
-                    previousObservation.xError + ratio * (nextObservation.xError - previousObservation.xError);
-                const Real y = previousObservation.y + ratio * (nextObservation.y - previousObservation.y);
-                const Real yError =
-                    previousObservation.yError + ratio * (nextObservation.yError - previousObservation.yError);
-                const Real ut1MinusUtc = previousObservation.ut1MinusUtc +
-                                         ratio * (nextObservation.ut1MinusUtc - previousObservation.ut1MinusUtc);
-                const Real ut1MinusUtcError =
-                    previousObservation.ut1MinusUtcError +
-                    ratio * (nextObservation.ut1MinusUtcError - previousObservation.ut1MinusUtcError);
-
-                const CSSISpaceWeather::Observation observation = {
-                    year, month, day, mjd, x, xError, y, yError, ut1MinusUtc, ut1MinusUtcError};
-
-                return observation;
-            }
-            else
-            {
-                throw ostk::core::error::RuntimeError(
-                    "Cannot find observation at [{}].", anInstant.toString(Scale::UTC)
-                );
-            }
-        }
+        return observationIt->second;
     }
     else
     {
         throw ostk::core::error::RuntimeError("Cannot find observation at [{}].", anInstant.toString(Scale::UTC));
     }
 }
-*/
 
 Interval CSSISpaceWeather::getDailyPredictionInterval() const
 {
     return this->accessDailyPredictionInterval();
 }
-/*
-CSSISpaceWeather::Prediction CSSISpaceWeather::getDailyPredictionAt(const Instant& anInstant) const
+
+CSSISpaceWeather::DailyPrediction CSSISpaceWeather::getDailyPredictionAt(const Instant& anInstant) const
 {
-    using ostk::core::types::Real;
-
-    using ostk::physics::time::Scale;
-
     if (!anInstant.isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Instant");
@@ -236,84 +181,40 @@ CSSISpaceWeather::Prediction CSSISpaceWeather::getDailyPredictionAt(const Instan
 
     if (!this->isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("spaceWeather A");
+        throw ostk::core::error::runtime::Undefined("CSSI Space Weather");
     }
 
-    if (!predictionInterval_.contains(anInstant))
+    if (!dailyPredictionInterval_.contains(anInstant))
     {
         throw ostk::core::error::RuntimeError(
             "Instant [{}] out of prediction range [{} - {}].",
             anInstant.toString(Scale::UTC),
-            predictionInterval_.accessStart().toString(Scale::UTC),
-            predictionInterval_.accessEnd().toString(Scale::UTC)
+            dailyPredictionInterval_.accessStart().toString(Scale::UTC),
+            dailyPredictionInterval_.accessEnd().toString(Scale::UTC)
         );
     }
 
     const Real instantMjd = anInstant.getModifiedJulianDate(Scale::UTC);
 
-    const auto predictionIt = predictions_.find(instantMjd.floor());
+    const auto predictionIt = dailyPredictions_.find(instantMjd.floor());
 
-    if (predictionIt != predictions_.end())
+    if (predictionIt != dailyPredictions_.end())
     {
-        if (instantMjd.isInteger())
-        {
-            return predictionIt->second;
-        }
-        else
-        {
-            const auto nextPredictionIt = std::next(predictionIt);
-
-            if (nextPredictionIt != predictions_.end())
-            {
-                // [TBI] IERS gazette #13 for more precise interpolation and correction for tidal effects
-
-                const CSSISpaceWeather::Prediction& previousPrediction = predictionIt->second;
-                const CSSISpaceWeather::Prediction& nextPrediction = nextPredictionIt->second;
-
-                const Real ratio =
-                    (instantMjd - previousPrediction.mjd) / (nextPrediction.mjd - previousPrediction.mjd);
-
-                const Integer year = previousPrediction.year;
-                const Integer month = previousPrediction.month;
-                const Integer day = previousPrediction.day;
-
-                const Real mjd = previousPrediction.mjd + ratio * (nextPrediction.mjd - previousPrediction.mjd);
-
-                const Real x = previousPrediction.x + ratio * (nextPrediction.x - previousPrediction.x);
-                const Real y = previousPrediction.y + ratio * (nextPrediction.y - previousPrediction.y);
-                const Real ut1MinusUtc = previousPrediction.ut1MinusUtc +
-                                         ratio * (nextPrediction.ut1MinusUtc - previousPrediction.ut1MinusUtc);
-
-                const CSSISpaceWeather::Prediction prediction = {year, month, day, mjd, x, y, ut1MinusUtc};
-
-                return prediction;
-            }
-            else
-            {
-                throw ostk::core::error::RuntimeError(
-                    "Cannot find prediction at [{}].", anInstant.toString(Scale::UTC)
-                );
-            }
-        }
+        return predictionIt->second;
     }
     else
     {
         throw ostk::core::error::RuntimeError("Cannot find prediction at [{}].", anInstant.toString(Scale::UTC));
     }
 }
-*/
 
 Interval CSSISpaceWeather::getMonthlyPredictionInterval() const
 {
     return this->accessMonthlyPredictionInterval();
 }
-/*
-CSSISpaceWeather::Prediction CSSISpaceWeather::getMonthlyPredictionAt(const Instant& anInstant) const
+
+CSSISpaceWeather::MonthlyPrediction CSSISpaceWeather::getMonthlyPredictionAt(const Instant& anInstant) const
 {
-    using ostk::core::types::Real;
-
-    using ostk::physics::time::Scale;
-
     if (!anInstant.isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Instant");
@@ -321,73 +222,35 @@ CSSISpaceWeather::Prediction CSSISpaceWeather::getMonthlyPredictionAt(const Inst
 
     if (!this->isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("spaceWeather A");
+        throw ostk::core::error::runtime::Undefined("CSSI Space Weather");
     }
 
-    if (!predictionInterval_.contains(anInstant))
+    if (!monthlyPredictionInterval_.contains(anInstant))
     {
         throw ostk::core::error::RuntimeError(
             "Instant [{}] out of prediction range [{} - {}].",
             anInstant.toString(Scale::UTC),
-            predictionInterval_.accessStart().toString(Scale::UTC),
-            predictionInterval_.accessEnd().toString(Scale::UTC)
+            monthlyPredictionInterval_.accessStart().toString(Scale::UTC),
+            monthlyPredictionInterval_.accessEnd().toString(Scale::UTC)
         );
     }
 
-    const Real instantMjd = anInstant.getModifiedJulianDate(Scale::UTC);
+    const Integer year = anInstant.getDateTime(Scale::UTC).getDate().getYear();
+    const Integer month = anInstant.getDateTime(Scale::UTC).getDate().getMonth();
 
-    const auto predictionIt = predictions_.find(instantMjd.floor());
+    const Real monthMjd = DateTime(year, month, 1).getModifiedJulianDate();
 
-    if (predictionIt != predictions_.end())
+    const auto predictionIt = monthlyPredictions_.find(monthMjd.floor());
+
+    if (predictionIt != monthlyPredictions_.end())
     {
-        if (instantMjd.isInteger())
-        {
-            return predictionIt->second;
-        }
-        else
-        {
-            const auto nextPredictionIt = std::next(predictionIt);
-
-            if (nextPredictionIt != predictions_.end())
-            {
-                // [TBI] IERS gazette #13 for more precise interpolation and correction for tidal effects
-
-                const CSSISpaceWeather::Prediction& previousPrediction = predictionIt->second;
-                const CSSISpaceWeather::Prediction& nextPrediction = nextPredictionIt->second;
-
-                const Real ratio =
-                    (instantMjd - previousPrediction.mjd) / (nextPrediction.mjd - previousPrediction.mjd);
-
-                const Integer year = previousPrediction.year;
-                const Integer month = previousPrediction.month;
-                const Integer day = previousPrediction.day;
-
-                const Real mjd = previousPrediction.mjd + ratio * (nextPrediction.mjd - previousPrediction.mjd);
-
-                const Real x = previousPrediction.x + ratio * (nextPrediction.x - previousPrediction.x);
-                const Real y = previousPrediction.y + ratio * (nextPrediction.y - previousPrediction.y);
-                const Real ut1MinusUtc = previousPrediction.ut1MinusUtc +
-                                         ratio * (nextPrediction.ut1MinusUtc - previousPrediction.ut1MinusUtc);
-
-                const CSSISpaceWeather::Prediction prediction = {year, month, day, mjd, x, y, ut1MinusUtc};
-
-                return prediction;
-            }
-            else
-            {
-                throw ostk::core::error::RuntimeError(
-                    "Cannot find prediction at [{}].", anInstant.toString(Scale::UTC)
-                );
-            }
-        }
+        return predictionIt->second;
     }
     else
     {
         throw ostk::core::error::RuntimeError("Cannot find prediction at [{}].", anInstant.toString(Scale::UTC));
     }
 }
-*/
-
 
 CSSISpaceWeather CSSISpaceWeather::Undefined()
 {

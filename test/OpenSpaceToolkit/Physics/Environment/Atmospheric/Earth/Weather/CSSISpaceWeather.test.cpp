@@ -78,23 +78,22 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceW
         EXPECT_ANY_THROW(CSSISpaceWeather::Undefined().getObservationInterval());
     }
 }
-/*
+
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWeather, GetObservationAt)
 {
     {
         const CSSISpaceWeather::Observation firstObservation =
-            CSSISpaceWeather_.getObservationAt(Instant::DateTime(DateTime::Parse("2018-06-22 00:00:00"), Scale::UTC));
+            CSSISpaceWeather_.getObservationAt(Instant::DateTime(DateTime::Parse("2018-01-01 12:00:00"), Scale::UTC));
 
-        EXPECT_EQ(2018, firstObservation.year);
-        EXPECT_EQ(6, firstObservation.month);
-        EXPECT_EQ(22, firstObservation.day);
-        EXPECT_NEAR(58291.0, firstObservation.mjd, 1e-1);
-        EXPECT_NEAR(0.14461, firstObservation.x, 1e-5);
-        EXPECT_NEAR(0.00009, firstObservation.xError, 1e-5);
-        EXPECT_NEAR(0.43734, firstObservation.y, 1e-5);
-        EXPECT_NEAR(0.00009, firstObservation.yError, 1e-5);
-        EXPECT_NEAR(0.067056, firstObservation.ut1MinusUtc, 1e-6);
-        EXPECT_NEAR(0.000031, firstObservation.ut1MinusUtcError, 1e-6);
+        EXPECT_EQ(Date::Parse("2018-01-01", Date::Format::Standard), firstObservation.date);
+
+        EXPECT_EQ(2515, firstObservation.BSRN);
+        EXPECT_EQ(177, firstObservation.KP_SUM);
+        EXPECT_EQ(10, firstObservation.AP_AVG);
+        EXPECT_EQ("OBS", firstObservation.F107_DATA_TYPE);
+
+        EXPECT_NEAR(69.1, firstObservation.F107_OBS, 1e-15);
+        EXPECT_NEAR(71.4, firstObservation.F107_OBS_CENTER81, 1e-15);
     }
 
     {
@@ -103,7 +102,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceW
         ));
     }
 }
-*/
+
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWeather, GetDailyPredictionInterval)
 {
     {
@@ -118,6 +117,30 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceW
 
     {
         EXPECT_ANY_THROW(CSSISpaceWeather::Undefined().getDailyPredictionInterval());
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWeather, GetDailyPredictionAt)
+{
+    {
+        const CSSISpaceWeather::DailyPrediction firstDailyPrediction =
+            CSSISpaceWeather_.getDailyPredictionAt(Instant::DateTime(DateTime::Parse("2023-06-20 12:00:00"), Scale::UTC));
+
+        EXPECT_EQ(Date::Parse("2023-06-20", Date::Format::Standard), firstDailyPrediction.date);
+
+        EXPECT_EQ(2589, firstDailyPrediction.BSRN);
+        EXPECT_EQ(167, firstDailyPrediction.KP_SUM);
+        EXPECT_EQ(9, firstDailyPrediction.AP_AVG);
+        EXPECT_EQ("PRD", firstDailyPrediction.F107_DATA_TYPE);
+
+        EXPECT_NEAR(164.6, firstDailyPrediction.F107_OBS, 1e-15);
+        EXPECT_NEAR(160.2, firstDailyPrediction.F107_OBS_CENTER81, 1e-15);
+    }
+
+    {
+        EXPECT_ANY_THROW(CSSISpaceWeather::Undefined().getDailyPredictionAt(
+            Instant::DateTime(DateTime::Parse("2018-06-29 00:00:00"), Scale::UTC)
+        ));
     }
 }
 
@@ -137,29 +160,28 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceW
         EXPECT_ANY_THROW(CSSISpaceWeather::Undefined().getMonthlyPredictionInterval());
     }
 }
-/*
-TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWeather, GetPredictionAt)
+
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWeather, GetMonthlyPredictionAt)
 {
     {
-        const CSSISpaceWeather::Prediction firstPrediction =
-            CSSISpaceWeather_.getPredictionAt(Instant::DateTime(DateTime::Parse("2018-06-29 00:00:00"), Scale::UTC));
+        const CSSISpaceWeather::MonthlyPrediction firstMonthlyPrediction =
+            CSSISpaceWeather_.getMonthlyPredictionAt(Instant::DateTime(DateTime::Parse("2023-09-15 12:00:00"), Scale::UTC));
 
-        EXPECT_EQ(2018, firstPrediction.year);
-        EXPECT_EQ(6, firstPrediction.month);
-        EXPECT_EQ(29, firstPrediction.day);
-        EXPECT_NEAR(58298.0, firstPrediction.mjd, 1e-1);
-        EXPECT_NEAR(0.1580, firstPrediction.x, 1e-5);
-        EXPECT_NEAR(0.4308, firstPrediction.y, 1e-5);
-        EXPECT_NEAR(0.06934, firstPrediction.ut1MinusUtc, 1e-6);
+        EXPECT_EQ(Date::Parse("2023-09-01", Date::Format::Standard), firstMonthlyPrediction.date);
+
+        EXPECT_EQ(11, firstMonthlyPrediction.ND);
+        EXPECT_EQ("PRM", firstMonthlyPrediction.F107_DATA_TYPE);
+
+        EXPECT_NEAR(151.3, firstMonthlyPrediction.F107_OBS, 1e-15);
+        EXPECT_NEAR(154.2, firstMonthlyPrediction.F107_OBS_CENTER81, 1e-15);
     }
 
     {
-        EXPECT_ANY_THROW(CSSISpaceWeather::Undefined().getPredictionAt(
+        EXPECT_ANY_THROW(CSSISpaceWeather::Undefined().getMonthlyPredictionAt(
             Instant::DateTime(DateTime::Parse("2018-06-29 00:00:00"), Scale::UTC)
         ));
     }
 }
-*/
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWeather, Load)
 {
