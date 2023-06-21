@@ -20,9 +20,9 @@ class OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWe
    protected:
     void SetUp() override
     {
-        const File file = File::Path(
-            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Weather/CSSISpaceWeather/SW-Last5Years.test.csv")
-        );
+        const File file =
+            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Weather/"
+                                   "CSSISpaceWeather/SW-Last5Years.test.csv"));
         this->CSSISpaceWeather_ = CSSISpaceWeather::Load(file);
     }
 
@@ -123,7 +123,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceW
 {
     {
         const CSSISpaceWeather::DailyPrediction firstDailyPrediction =
-            CSSISpaceWeather_.getDailyPredictionAt(Instant::DateTime(DateTime::Parse("2023-06-20 12:00:00"), Scale::UTC));
+            CSSISpaceWeather_.getDailyPredictionAt(Instant::DateTime(DateTime::Parse("2023-06-20 12:00:00"), Scale::UTC)
+            );
 
         EXPECT_EQ(Date::Parse("2023-06-20", Date::Format::Standard), firstDailyPrediction.date);
 
@@ -163,8 +164,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceW
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWeather, GetMonthlyPredictionAt)
 {
     {
-        const CSSISpaceWeather::MonthlyPrediction firstMonthlyPrediction =
-            CSSISpaceWeather_.getMonthlyPredictionAt(Instant::DateTime(DateTime::Parse("2023-09-15 12:00:00"), Scale::UTC));
+        const CSSISpaceWeather::MonthlyPrediction firstMonthlyPrediction = CSSISpaceWeather_.getMonthlyPredictionAt(
+            Instant::DateTime(DateTime::Parse("2023-09-15 12:00:00"), Scale::UTC)
+        );
 
         EXPECT_EQ(Date::Parse("2023-09-01", Date::Format::Standard), firstMonthlyPrediction.date);
 
@@ -193,4 +195,3 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceW
         EXPECT_ANY_THROW(CSSISpaceWeather::Load(File::Path(Path::Parse("/does/not/exist"))));
     }
 }
-

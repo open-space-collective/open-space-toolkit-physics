@@ -56,9 +56,10 @@ using ostk::physics::environment::atmospheric::earth::weather::CSSISpaceWeather;
 ///
 ///                             - "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_MODE" will override
 ///                             "DefaultMode"
-///                             - "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_LOCAL_REPOSITORY" will override
-///                             "DefaultLocalRepository"
-///                             - "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT"
+///                             - "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_LOCAL_REPOSITORY" will
+///                             override "DefaultLocalRepository"
+///                             -
+///                             "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT"
 ///                             will override "DefaultLocalRepositoryLockTimeout"
 ///                             - "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_REMOTE_URL" will override
 ///                             "DefaultRemoteUrl"
@@ -126,7 +127,7 @@ class Manager
     /// @return             Array of 3-hourly Ap solar indices
 
     Array<Integer> getAp3HourSolarIndicesAt(const Instant& anInstant) const;
-    
+
     /// @brief              Get the daily value for F10.7 solar flux at instant.
     ///
     /// @param              [in] anInstant An instant
@@ -253,9 +254,9 @@ class Manager
 
     void loadCSSISpaceWeather_(const CSSISpaceWeather& aCSSISpaceWeather);
 
-    //CSSISpaceWeather::Observation* getObservationOrDailyPredictionAt_(const Instant& anInstant) const;
+    // CSSISpaceWeather::Observation* getObservationOrDailyPredictionAt_(const Instant& anInstant) const;
 
-    //CSSISpaceWeather::MonthlyPrediction* getMonthlyPredictionAt_(const Instant& anInstant) const;
+    // CSSISpaceWeather::MonthlyPrediction* getMonthlyPredictionAt_(const Instant& anInstant) const;
 
     File fetchLatestCSSISpaceWeather_();
 
@@ -264,10 +265,10 @@ class Manager
     void unlockLocalRepository();
 };
 
-}  // namespace provider
-}
-}  // namespace frame
-}  // namespace coord
+}  // namespace weather
+}  // namespace earth
+}  // namespace atmospheric
+}  // namespace environment
 }  // namespace physics
 }  // namespace ostk
 

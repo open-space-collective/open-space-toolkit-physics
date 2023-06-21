@@ -7,8 +7,8 @@
 #include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
 #include <OpenSpaceToolkit/Core/Types/Real.hpp>
 
-#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Weather/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Weather/CSSISpaceWeather.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Weather/Manager.hpp>
 
 #include <Global.test.hpp>
 
@@ -69,9 +69,9 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Get
     using ostk::physics::environment::atmospheric::earth::weather::Manager;
 
     {
-        const File file = File::Path(
-            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Weather/CSSISpaceWeather/SW-Last5Years.test.csv")
-        );
+        const File file =
+            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Weather/"
+                                   "CSSISpaceWeather/SW-Last5Years.test.csv"));
 
         const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(file);
 
@@ -104,10 +104,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Get
 
     {
         const Array<Tuple<String, Array<Integer>>> referenceScenarios = {
-          {"2018-01-02 12:34:56", {17,7,3,7,17,10,20,10}},
-          {"2023-06-18 12:34:56", {27,20,13,20,17,17,27,20}},
-          {"2023-08-02 12:34:56", {13,13,13,13,13,13,13,13}},
-          {"2023-08-03 12:34:56", {13,13,13,13,13,13,13,13}},  
+            {"2018-01-02 12:34:56", {17, 7, 3, 7, 17, 10, 20, 10}},
+            {"2023-06-18 12:34:56", {27, 20, 13, 20, 17, 17, 27, 20}},
+            {"2023-08-02 12:34:56", {13, 13, 13, 13, 13, 13, 13, 13}},
+            {"2023-08-03 12:34:56", {13, 13, 13, 13, 13, 13, 13, 13}},
         };
 
         for (const auto& referenceScenario : referenceScenarios)
@@ -116,9 +116,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Get
 
             // Reference data setup
 
-            const Instant referenceInstant = Instant::DateTime(DateTime::Parse(std::get<0>(referenceScenario)), Scale::UTC);
+            const Instant referenceInstant =
+                Instant::DateTime(DateTime::Parse(std::get<0>(referenceScenario)), Scale::UTC);
             const Array<Integer> referenceIndices = std::get<1>(referenceScenario);
-            
+
             // Test
             EXPECT_EQ(referenceIndices, manager.getKp3HourSolarIndicesAt(referenceInstant));
         }
@@ -139,10 +140,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Get
 
     {
         const Array<Tuple<String, Array<Integer>>> referenceScenarios = {
-          {"2018-01-02 12:34:56", {6,3,2,3,6,4,7,4,4}},
-          {"2023-06-18 12:34:56", {12,7,5,7,6,6,12,7,8}},
-          {"2023-08-02 12:34:56", {5,5,5,5,5,5,5,5,5}},
-          {"2023-08-03 12:34:56", {5,5,5,5,5,5,5,5,5}},  
+            {"2018-01-02 12:34:56", {6, 3, 2, 3, 6, 4, 7, 4, 4}},
+            {"2023-06-18 12:34:56", {12, 7, 5, 7, 6, 6, 12, 7, 8}},
+            {"2023-08-02 12:34:56", {5, 5, 5, 5, 5, 5, 5, 5, 5}},
+            {"2023-08-03 12:34:56", {5, 5, 5, 5, 5, 5, 5, 5, 5}},
         };
 
         for (const auto& referenceScenario : referenceScenarios)
@@ -151,9 +152,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Get
 
             // Reference data setup
 
-            const Instant referenceInstant = Instant::DateTime(DateTime::Parse(std::get<0>(referenceScenario)), Scale::UTC);
+            const Instant referenceInstant =
+                Instant::DateTime(DateTime::Parse(std::get<0>(referenceScenario)), Scale::UTC);
             const Array<Integer> referenceIndices = std::get<1>(referenceScenario);
-            
+
             // Test
             EXPECT_EQ(referenceIndices, manager.getAp3HourSolarIndicesAt(referenceInstant));
         }
@@ -174,12 +176,12 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Get
 
     {
         const Array<Tuple<String, Real>> referenceScenarios = {
-          {"2018-01-02 12:34:56", 69.5}, // observation
-          {"2023-06-18 12:34:56", 164.1},
-          {"2023-08-02 12:34:56", 165.0}, // daily prediction
-          {"2023-08-03 12:34:56", 165.1},
-          {"2023-10-01 12:34:56", 154.0}, // monthly prediction
-          {"2028-09-01 12:34:56", 82.7},
+            {"2018-01-02 12:34:56", 69.5},  // observation
+            {"2023-06-18 12:34:56", 164.1},
+            {"2023-08-02 12:34:56", 165.0},  // daily prediction
+            {"2023-08-03 12:34:56", 165.1},
+            {"2023-10-01 12:34:56", 154.0},  // monthly prediction
+            {"2028-09-01 12:34:56", 82.7},
         };
 
         for (const auto& referenceScenario : referenceScenarios)
@@ -188,9 +190,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Get
 
             // Reference data setup
 
-            const Instant referenceInstant = Instant::DateTime(DateTime::Parse(std::get<0>(referenceScenario)), Scale::UTC);
+            const Instant referenceInstant =
+                Instant::DateTime(DateTime::Parse(std::get<0>(referenceScenario)), Scale::UTC);
             const Real referenceValue = std::get<1>(referenceScenario);
-            
+
             // Test
             EXPECT_EQ(referenceValue, manager.getF107SolarFluxAt(referenceInstant));
         }
@@ -211,12 +214,12 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Get
 
     {
         const Array<Tuple<String, Real>> referenceScenarios = {
-          {"2018-01-02 12:34:56", 71.5}, // observation
-          {"2023-06-18 12:34:56", 160.4},
-          {"2023-08-02 12:34:56", 157.5}, // daily prediction
-          {"2023-08-03 12:34:56", 157.4},
-          {"2023-10-01 12:34:56", 153.9}, // monthly prediction
-          {"2028-09-01 12:34:56", 83.2},
+            {"2018-01-02 12:34:56", 71.5},  // observation
+            {"2023-06-18 12:34:56", 160.4},
+            {"2023-08-02 12:34:56", 157.5},  // daily prediction
+            {"2023-08-03 12:34:56", 157.4},
+            {"2023-10-01 12:34:56", 153.9},  // monthly prediction
+            {"2028-09-01 12:34:56", 83.2},
         };
 
         for (const auto& referenceScenario : referenceScenarios)
@@ -225,9 +228,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Get
 
             // Reference data setup
 
-            const Instant referenceInstant = Instant::DateTime(DateTime::Parse(std::get<0>(referenceScenario)), Scale::UTC);
+            const Instant referenceInstant =
+                Instant::DateTime(DateTime::Parse(std::get<0>(referenceScenario)), Scale::UTC);
             const Real referenceValue = std::get<1>(referenceScenario);
-            
+
             // Test
             EXPECT_EQ(referenceValue, manager.getF107SolarFlux81DayAvgAt(referenceInstant));
         }
@@ -307,9 +311,9 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Loa
     using ostk::physics::environment::atmospheric::earth::weather::Manager;
 
     {
-        const File file = File::Path(
-            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Weather/CSSISpaceWeather/SW-Last5Years.test.csv")
-        );
+        const File file =
+            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Weather/"
+                                   "CSSISpaceWeather/SW-Last5Years.test.csv"));
 
         const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(file);
 
@@ -322,7 +326,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Loa
         EXPECT_ANY_THROW(manager.loadCSSISpaceWeather(CSSISpaceWeather::Undefined()));
     }
 }
-
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, FetchLatestCSSISpaceWeather)
 {
@@ -339,12 +342,18 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Fet
         const File latestCSSISpaceWeather = manager.fetchLatestCSSISpaceWeather();
 
         EXPECT_EQ("SW-Last5Years.csv", latestCSSISpaceWeather.getName());
-        EXPECT_EQ("weather", latestCSSISpaceWeather.getParentDirectory().getParentDirectory().getParentDirectory().getName());
+        EXPECT_EQ(
+            "weather", latestCSSISpaceWeather.getParentDirectory().getParentDirectory().getParentDirectory().getName()
+        );
         EXPECT_EQ("CSSISpaceWeather", latestCSSISpaceWeather.getParentDirectory().getParentDirectory().getName());
         EXPECT_EQ("2023-06-20", latestCSSISpaceWeather.getParentDirectory().getName());
         EXPECT_EQ(
             manager.getLocalRepository().getPath().getNormalizedPath(),
-            latestCSSISpaceWeather.getParentDirectory().getParentDirectory().getParentDirectory().getPath().getNormalizedPath()
+            latestCSSISpaceWeather.getParentDirectory()
+                .getParentDirectory()
+                .getParentDirectory()
+                .getPath()
+                .getNormalizedPath()
         );
     }
 }
@@ -425,4 +434,3 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Def
         EXPECT_EQ(URL::Parse("https://celestrak.org/SpaceData/"), Manager::DefaultRemoteUrl());
     }
 }
-

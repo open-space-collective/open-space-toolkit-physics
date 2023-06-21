@@ -27,24 +27,28 @@ namespace weather
 
 std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& aCSSISpaceWeather)
 {
-
     ostk::core::utils::Print::Header(anOutputStream, "CSSI Space Weather");
 
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Observation interval:"
-        << (aCSSISpaceWeather.observationInterval_.isDefined() ? aCSSISpaceWeather.observationInterval_.toString(Scale::UTC)
-                                                        : "Undefined");
+    ostk::core::utils::Print::Line(anOutputStream) << "Observation interval:"
+                                                   << (aCSSISpaceWeather.observationInterval_.isDefined()
+                                                           ? aCSSISpaceWeather.observationInterval_.toString(Scale::UTC)
+                                                           : "Undefined");
     ostk::core::utils::Print::Line(anOutputStream)
         << "Daily prediction interval:"
-        << (aCSSISpaceWeather.dailyPredictionInterval_.isDefined() ? aCSSISpaceWeather.dailyPredictionInterval_.toString(Scale::UTC)
-                                                       : "Undefined");
+        << (aCSSISpaceWeather.dailyPredictionInterval_.isDefined()
+                ? aCSSISpaceWeather.dailyPredictionInterval_.toString(Scale::UTC)
+                : "Undefined");
 
     ostk::core::utils::Print::Line(anOutputStream)
         << "Monthly prediction interval:"
-        << (aCSSISpaceWeather.monthlyPredictionInterval_.isDefined() ? aCSSISpaceWeather.monthlyPredictionInterval_.toString(Scale::UTC)
-                                                       : "Undefined");
-    
-    const String dataHeader = String("DATE,BSRN,ND,KP1,KP2,KP3,KP4,KP5,KP6,KP7,KP8,KP_SUM,AP1,AP2,AP3,AP4,AP5,AP6,AP7,AP8,AP_AVG,CP,C9,ISN,F10.7_OBS,F10.7_ADJ,F10.7_DATA_TYPE,F10.7_OBS_CENTER81,F10.7_OBS_LAST81,F10.7_ADJ_CENTER81,F10.7_ADJ_LAST81");
+        << (aCSSISpaceWeather.monthlyPredictionInterval_.isDefined()
+                ? aCSSISpaceWeather.monthlyPredictionInterval_.toString(Scale::UTC)
+                : "Undefined");
+
+    const String dataHeader = String(
+        "DATE,BSRN,ND,KP1,KP2,KP3,KP4,KP5,KP6,KP7,KP8,KP_SUM,AP1,AP2,AP3,AP4,AP5,AP6,AP7,AP8,AP_AVG,CP,C9,ISN,F10.7_"
+        "OBS,F10.7_ADJ,F10.7_DATA_TYPE,F10.7_OBS_CENTER81,F10.7_OBS_LAST81,F10.7_ADJ_CENTER81,F10.7_ADJ_LAST81"
+    );
 
     ostk::core::utils::Print::Separator(anOutputStream, "Observations");
     ostk::core::utils::Print::Line(anOutputStream) << dataHeader;
@@ -53,7 +57,9 @@ std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& a
         const CSSISpaceWeather::Observation& observation = observationIt.second;
 
         ostk::core::utils::Print::Line(anOutputStream) << String::Format(
-            "{:04}-{:02}-{:02}  {:>4d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>4d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:.2f}  {:>2d}  {:>4d}  {:6.2f}  {:6.2f}  {:s}  {:6.2f}  {:6.2f}  {:6.2f}  {:6.2f}",
+            "{:04}-{:02}-{:02}  {:>4d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>4d} "
+            " {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:.2f}  {:>2d}  {:>4d}  {:6.2f}  "
+            "{:6.2f}  {:s}  {:6.2f}  {:6.2f}  {:6.2f}  {:6.2f}",
             observation.date.getYear(),
             observation.date.getMonth(),
             observation.date.getDay(),
@@ -98,7 +104,9 @@ std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& a
         const CSSISpaceWeather::DailyPrediction& dailyPrediction = dailyPredictionIt.second;
 
         ostk::core::utils::Print::Line(anOutputStream) << String::Format(
-            "{:04}-{:02}-{:02}  {:>4d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>4d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:.2f}  {:>2d}  {:>4d}  {:6.2f}  {:6.2f}  {:s}  {:6.2f}  {:6.2f}  {:6.2f}  {:6.2f}",
+            "{:04}-{:02}-{:02}  {:>4d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>4d} "
+            " {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:.2f}  {:>2d}  {:>4d}  {:6.2f}  "
+            "{:6.2f}  {:s}  {:6.2f}  {:6.2f}  {:6.2f}  {:6.2f}",
             dailyPrediction.date.getYear(),
             dailyPrediction.date.getMonth(),
             dailyPrediction.date.getDay(),
@@ -134,10 +142,12 @@ std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& a
             dailyPrediction.F107_ADJ_LAST81
         );
     }
-    
+
     ostk::core::utils::Print::Separator(anOutputStream, "Monthly Predictions");
-    ostk::core::utils::Print::Line(anOutputStream) << 
-        String("DATE,BSRN,ND,ISN,F10.7_OBS,F10.7_ADJ,F10.7_DATA_TYPE,F10.7_OBS_CENTER81,F10.7_OBS_LAST81,F10.7_ADJ_CENTER81,F10.7_ADJ_LAST81");
+    ostk::core::utils::Print::Line(anOutputStream) << String(
+        "DATE,BSRN,ND,ISN,F10.7_OBS,F10.7_ADJ,F10.7_DATA_TYPE,F10.7_OBS_CENTER81,F10.7_OBS_LAST81,F10.7_ADJ_CENTER81,"
+        "F10.7_ADJ_LAST81"
+    );
 
     for (const auto& monthlyPredictionIt : aCSSISpaceWeather.monthlyPredictions_)
     {
@@ -162,15 +172,14 @@ std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& a
     }
 
     ostk::core::utils::Print::Footer(anOutputStream);
-    
+
     return anOutputStream;
 }
 
 bool CSSISpaceWeather::isDefined() const
 {
     return observationInterval_.isDefined() && (!observations_.empty()) && dailyPredictionInterval_.isDefined() &&
-          (!dailyPredictions_.empty()) && monthlyPredictionInterval_.isDefined() && (!monthlyPredictions_.empty());
-
+           (!dailyPredictions_.empty()) && monthlyPredictionInterval_.isDefined() && (!monthlyPredictions_.empty());
 }
 
 const Date& CSSISpaceWeather::accessLastObservationDate() const
@@ -181,7 +190,7 @@ const Date& CSSISpaceWeather::accessLastObservationDate() const
     }
 
     return lastObservationDate_;
-}   
+}
 
 const Interval& CSSISpaceWeather::accessObservationInterval() const
 {
@@ -391,24 +400,27 @@ CSSISpaceWeather CSSISpaceWeather::Load(const fs::File& aFile)
 
     String line;
 
-    auto split = [] ( String s, const String delimiter ) -> Array<String>
+    auto split = [](String s, const String delimiter) -> Array<String>
     {
         Array<String> results;
 
-        if (s.empty()) { return results; }
+        if (s.empty())
+        {
+            return results;
+        }
 
-        size_t last = 0; 
-        size_t next = 0; 
-        while ((next = s.find(delimiter, last)) != std::string::npos) 
-        {   
-            results.add(s.substr(last, next-last));
-            last = next + 1; 
+        size_t last = 0;
+        size_t next = 0;
+        while ((next = s.find(delimiter, last)) != std::string::npos)
+        {
+            results.add(s.substr(last, next - last));
+            last = next + 1;
         }
 
         results.add(s.substr(last));
         return results;
     };
-    
+
     while (std::getline(fileStream, line))
     {
         Array<String> lineParts = split(String(line).trim(), ",");
@@ -432,14 +444,13 @@ CSSISpaceWeather CSSISpaceWeather::Load(const fs::File& aFile)
         const Integer ISN = boost::lexical_cast<int>(lineParts[23]);
         const Real F107_OBS = boost::lexical_cast<double>(lineParts[24]);
         const Real F107_ADJ = boost::lexical_cast<double>(lineParts[25]);
-        const String F107_DATA_TYPE = lineParts[26] ;
+        const String F107_DATA_TYPE = lineParts[26];
         const Real F107_OBS_CENTER81 = boost::lexical_cast<double>(lineParts[27]);
         const Real F107_OBS_LAST81 = boost::lexical_cast<double>(lineParts[28]);
         const Real F107_ADJ_CENTER81 = boost::lexical_cast<double>(lineParts[29]);
         const Real F107_ADJ_LAST81 = boost::lexical_cast<double>(String(lineParts[30]));
 
-    
-        const Integer mjd = DateTime(date, Time(0,0,0)).getModifiedJulianDate().floor();
+        const Integer mjd = DateTime(date, Time(0, 0, 0)).getModifiedJulianDate().floor();
 
         // observed and daily predicted readings
         if (F107_DATA_TYPE == "OBS" || F107_DATA_TYPE == "INT" || F107_DATA_TYPE == "PRD")
@@ -503,7 +514,9 @@ CSSISpaceWeather CSSISpaceWeather::Load(const fs::File& aFile)
             if (F107_DATA_TYPE == "OBS" || F107_DATA_TYPE == "INT")
             {
                 spaceWeather.observations_.insert({mjd, reading});
-            } else {
+            }
+            else
+            {
                 spaceWeather.dailyPredictions_.insert({mjd, reading});
             }
         }
@@ -511,7 +524,6 @@ CSSISpaceWeather CSSISpaceWeather::Load(const fs::File& aFile)
         // monthly predicted readings
         if (F107_DATA_TYPE == "PRM")
         {
-
             const CSSISpaceWeather::MonthlyPrediction reading = {
                 date,
                 BSRN,
@@ -530,7 +542,7 @@ CSSISpaceWeather CSSISpaceWeather::Load(const fs::File& aFile)
         }
     }
 
-    if ( !spaceWeather.observations_.empty() )
+    if (!spaceWeather.observations_.empty())
     {
         spaceWeather.lastObservationDate_ = spaceWeather.observations_.rbegin()->second.date;
 
@@ -549,7 +561,8 @@ CSSISpaceWeather CSSISpaceWeather::Load(const fs::File& aFile)
         const Instant dailyPredictionEndInstant =
             Instant::ModifiedJulianDate(Real::Integer(spaceWeather.dailyPredictions_.rbegin()->first), Scale::UTC);
 
-        spaceWeather.dailyPredictionInterval_ = Interval::Closed(dailyPredictionStartInstant, dailyPredictionEndInstant);
+        spaceWeather.dailyPredictionInterval_ =
+            Interval::Closed(dailyPredictionStartInstant, dailyPredictionEndInstant);
     }
 
     if (!spaceWeather.monthlyPredictions_.empty())
@@ -559,7 +572,8 @@ CSSISpaceWeather CSSISpaceWeather::Load(const fs::File& aFile)
         const Instant monthlyPredictionEndInstant =
             Instant::ModifiedJulianDate(Real::Integer(spaceWeather.monthlyPredictions_.rbegin()->first), Scale::UTC);
 
-        spaceWeather.monthlyPredictionInterval_ = Interval::Closed(monthlyPredictionStartInstant, monthlyPredictionEndInstant);
+        spaceWeather.monthlyPredictionInterval_ =
+            Interval::Closed(monthlyPredictionStartInstant, monthlyPredictionEndInstant);
     }
 
     return spaceWeather;
@@ -578,9 +592,9 @@ CSSISpaceWeather::CSSISpaceWeather()
 {
 }
 
-}  // namespace iers
-}  // namespace provider
-}  // namespace frame
-}  // namespace coord
+}  // namespace weather
+}  // namespace earth
+}  // namespace atmospheric
+}  // namespace environment
 }  // namespace physics
 }  // namespace ostk

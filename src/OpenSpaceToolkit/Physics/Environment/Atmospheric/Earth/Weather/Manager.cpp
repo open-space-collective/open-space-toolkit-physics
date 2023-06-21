@@ -111,7 +111,7 @@ Array<Integer> Manager::getKp3HourSolarIndicesAt(const Instant& anInstant) const
         {
             const CSSISpaceWeather::Observation observation = CSSISpaceWeatherPtr->accessObservationAt(anInstant);
 
-            return Array<Integer> { 
+            return Array<Integer> {
                 observation.KP1,
                 observation.KP2,
                 observation.KP3,
@@ -119,14 +119,13 @@ Array<Integer> Manager::getKp3HourSolarIndicesAt(const Instant& anInstant) const
                 observation.KP5,
                 observation.KP6,
                 observation.KP7,
-                observation.KP8
-            };
+                observation.KP8};
         }
         else if (CSSISpaceWeatherPtr->accessDailyPredictionInterval().contains(anInstant))
         {
             const CSSISpaceWeather::Observation prediction = CSSISpaceWeatherPtr->accessDailyPredictionAt(anInstant);
 
-            return Array<Integer> { 
+            return Array<Integer> {
                 prediction.KP1,
                 prediction.KP2,
                 prediction.KP3,
@@ -134,10 +133,8 @@ Array<Integer> Manager::getKp3HourSolarIndicesAt(const Instant& anInstant) const
                 prediction.KP5,
                 prediction.KP6,
                 prediction.KP7,
-                prediction.KP8
-            };
+                prediction.KP8};
         }
-
     }
 
     throw ostk::core::error::RuntimeError("Cannot obtain Kp Solar Indices at [{}].", anInstant.toString());
@@ -152,14 +149,14 @@ Array<Integer> Manager::getAp3HourSolarIndicesAt(const Instant& anInstant) const
 
     std::lock_guard<std::mutex> lock {mutex_};
     const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt(anInstant);
-    
+
     if (CSSISpaceWeatherPtr != nullptr)
     {
         if (CSSISpaceWeatherPtr->accessObservationInterval().contains(anInstant))
         {
             const CSSISpaceWeather::Observation observation = CSSISpaceWeatherPtr->accessObservationAt(anInstant);
 
-            return Array<Integer> { 
+            return Array<Integer> {
                 observation.AP1,
                 observation.AP2,
                 observation.AP3,
@@ -168,14 +165,13 @@ Array<Integer> Manager::getAp3HourSolarIndicesAt(const Instant& anInstant) const
                 observation.AP6,
                 observation.AP7,
                 observation.AP8,
-                observation.AP_AVG
-            };
+                observation.AP_AVG};
         }
         else if (CSSISpaceWeatherPtr->accessDailyPredictionInterval().contains(anInstant))
         {
             const CSSISpaceWeather::Observation prediction = CSSISpaceWeatherPtr->accessDailyPredictionAt(anInstant);
 
-            return Array<Integer> { 
+            return Array<Integer> {
                 prediction.AP1,
                 prediction.AP2,
                 prediction.AP3,
@@ -184,10 +180,8 @@ Array<Integer> Manager::getAp3HourSolarIndicesAt(const Instant& anInstant) const
                 prediction.AP6,
                 prediction.AP7,
                 prediction.AP8,
-                prediction.AP_AVG
-            };
+                prediction.AP_AVG};
         }
-
     }
 
     throw ostk::core::error::RuntimeError("Cannot obtain Ap Solar Indices at [{}].", anInstant.toString());
@@ -202,7 +196,7 @@ Real Manager::getF107SolarFluxAt(const Instant& anInstant) const
 
     std::lock_guard<std::mutex> lock {mutex_};
     const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt(anInstant);
-    
+
     if (CSSISpaceWeatherPtr != nullptr)
     {
         if (CSSISpaceWeatherPtr->accessObservationInterval().contains(anInstant))
@@ -217,7 +211,6 @@ Real Manager::getF107SolarFluxAt(const Instant& anInstant) const
         {
             return CSSISpaceWeatherPtr->accessMonthlyPredictionAt(anInstant).F107_OBS;
         }
-
     }
 
     throw ostk::core::error::RuntimeError("Cannot obtain F10.7 Solar Flux at [{}].", anInstant.toString());
@@ -232,7 +225,7 @@ Real Manager::getF107SolarFlux81DayAvgAt(const Instant& anInstant) const
 
     std::lock_guard<std::mutex> lock {mutex_};
     const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt(anInstant);
-    
+
     if (CSSISpaceWeatherPtr != nullptr)
     {
         if (CSSISpaceWeatherPtr->accessObservationInterval().contains(anInstant))
@@ -247,10 +240,11 @@ Real Manager::getF107SolarFlux81DayAvgAt(const Instant& anInstant) const
         {
             return CSSISpaceWeatherPtr->accessMonthlyPredictionAt(anInstant).F107_OBS_CENTER81;
         }
-
     }
 
-    throw ostk::core::error::RuntimeError("Cannot obtain F10.7 Solar Flux 81 Day Avereage at [{}].", anInstant.toString());
+    throw ostk::core::error::RuntimeError(
+        "Cannot obtain F10.7 Solar Flux 81 Day Avereage at [{}].", anInstant.toString()
+    );
 }
 
 void Manager::setMode(const Manager::Mode& aMode)
@@ -388,7 +382,8 @@ Duration Manager::DefaultLocalRepositoryLockTimeout()
 
 URL Manager::DefaultRemoteUrl()
 {
-    static const URL defaultRemoteUrl = URL::Parse(OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_REMOTE_URL);
+    static const URL defaultRemoteUrl =
+        URL::Parse(OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_REMOTE_URL);
 
     if (const char* remoteUrl = std::getenv("OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_REMOTE_URL"))
     {
@@ -527,7 +522,8 @@ File Manager::getLocalRepositoryLockFile() const
 File Manager::getLatestCSSISpaceWeatherFile() const
 {
     // Parse CSSI Space Weather Directories, e.g.,
-    // `.open-space-toolkit/physics/environment/atmospheric/earth/weather/CSSI-Space-Weather/2022-05-19/`, and find the latest one.
+    // `.open-space-toolkit/physics/environment/atmospheric/earth/weather/CSSI-Space-Weather/2022-05-19/`, and find the
+    // latest one.
 
     using ostk::core::ctnr::Map;
     using ostk::core::fs::Path;
@@ -679,13 +675,16 @@ File Manager::fetchLatestCSSISpaceWeather_()
 
         // Download latest CSSI Space Weather File into temporary Directory
 
-        std::cout << String::Format("Fetching CSSI Space Weather from [{}]...", latestCSSISpaceWeatherUrl.toString()) << std::endl;
+        std::cout << String::Format("Fetching CSSI Space Weather from [{}]...", latestCSSISpaceWeatherUrl.toString())
+                  << std::endl;
 
         latestCSSISpaceWeatherFile = Client::Fetch(latestCSSISpaceWeatherUrl, temporaryDirectory);
 
         if (!latestCSSISpaceWeatherFile.exists())
         {
-            throw ostk::core::error::RuntimeError("Cannot fetch CSSI Space Weather from [{}].", latestCSSISpaceWeatherUrl.toString());
+            throw ostk::core::error::RuntimeError(
+                "Cannot fetch CSSI Space Weather from [{}].", latestCSSISpaceWeatherUrl.toString()
+            );
         }
 
         // Check that CSSI Space Weather File size is not zero
@@ -708,7 +707,8 @@ File Manager::fetchLatestCSSISpaceWeather_()
         // e.g., `.open-space-toolkit/physics/enviroment/atmospheric/earth/weather/cssi-space-weather/2022-05-19/`.
 
         destinationDirectory = Directory::Path(
-            this->getCSSISpaceWeatherDirectory().getPath() + Path::Parse(latestCSSISpaceWeather.accessLastObservationDate().toString())
+            this->getCSSISpaceWeatherDirectory().getPath() +
+            Path::Parse(latestCSSISpaceWeather.accessLastObservationDate().toString())
         );
 
         if (destinationDirectory.exists())
@@ -811,9 +811,9 @@ void Manager::unlockLocalRepository()
     this->getLocalRepositoryLockFile().remove();
 }
 
-}  // namespace iers
-}  // namespace provider
-}  // namespace frame
-}  // namespace coord
+}  // namespace weather
+}  // namespace earth
+}  // namespace atmospheric
+}  // namespace environment
 }  // namespace physics
 }  // namespace ostk
