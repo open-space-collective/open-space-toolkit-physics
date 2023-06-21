@@ -19,11 +19,6 @@ if [[ -z ${docker_image_version} ]]; then
     exit 1
 fi
 
-if [[ -z ${target} ]]; then
-    echo "Variable [target] is undefined."
-    exit 1
-fi
-
 # Initialize variables
 
 options=()
@@ -39,7 +34,8 @@ if [[ ! -z ${1} ]] && [[ ${1} == "--link" ]]; then
 
         # Extract last part of the path
 
-        dep=${link##*/}
+        link_without_trailing_slash=${link%/}
+        dep=${link_without_trailing_slash##*/}
 
         # Log the linking step
 
@@ -58,7 +54,7 @@ if [[ ! -z ${1} ]] && [[ ${1} == "--link" ]]; then
             cp -as /mnt/open-space-toolkit-core/include/OpenSpaceToolkit/Core /usr/local/include/OpenSpaceToolkit/Core; \
             cp -as /mnt/open-space-toolkit-core/src/OpenSpaceToolkit/Core/* /usr/local/include/OpenSpaceToolkit/Core/; \
             ln -s /mnt/open-space-toolkit-core/lib/libopen-space-toolkit-core.so /usr/local/lib/; \
-            ln -s /mnt/open-space-toolkit-core/lib/libopen-space-toolkit-core.so.0 /usr/local/lib/;"
+            ln -s /mnt/open-space-toolkit-core/lib/libopen-space-toolkit-core.so.* /usr/local/lib/;"
 
         fi
 
@@ -75,7 +71,7 @@ if [[ ! -z ${1} ]] && [[ ${1} == "--link" ]]; then
             cp -as /mnt/open-space-toolkit-io/include/OpenSpaceToolkit/IO /usr/local/include/OpenSpaceToolkit/IO; \
             cp -as /mnt/open-space-toolkit-io/src/OpenSpaceToolkit/IO/* /usr/local/include/OpenSpaceToolkit/IO/; \
             ln -s /mnt/open-space-toolkit-io/lib/libopen-space-toolkit-io.so /usr/local/lib/; \
-            ln -s /mnt/open-space-toolkit-io/lib/libopen-space-toolkit-io.so.0 /usr/local/lib/;"
+            ln -s /mnt/open-space-toolkit-io/lib/libopen-space-toolkit-io.so.* /usr/local/lib/;"
 
         fi
 
@@ -92,7 +88,7 @@ if [[ ! -z ${1} ]] && [[ ${1} == "--link" ]]; then
             cp -as /mnt/open-space-toolkit-mathematics/include/OpenSpaceToolkit/Mathematics /usr/local/include/OpenSpaceToolkit/Mathematics; \
             cp -as /mnt/open-space-toolkit-mathematics/src/OpenSpaceToolkit/Mathematics/* /usr/local/include/OpenSpaceToolkit/Mathematics/; \
             ln -s /mnt/open-space-toolkit-mathematics/lib/libopen-space-toolkit-mathematics.so /usr/local/lib/; \
-            ln -s /mnt/open-space-toolkit-mathematics/lib/libopen-space-toolkit-mathematics.so.0 /usr/local/lib/;"
+            ln -s /mnt/open-space-toolkit-mathematics/lib/libopen-space-toolkit-mathematics.so.* /usr/local/lib/;"
 
         fi
 
