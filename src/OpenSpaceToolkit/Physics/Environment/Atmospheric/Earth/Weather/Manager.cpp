@@ -190,7 +190,67 @@ Array<Integer> Manager::getAp3HourSolarIndicesAt(const Instant& anInstant) const
 
     }
 
-    throw ostk::core::error::RuntimeError("Cannot obtain Kp Solar Indices at [{}].", anInstant.toString());
+    throw ostk::core::error::RuntimeError("Cannot obtain Ap Solar Indices at [{}].", anInstant.toString());
+}
+
+Real Manager::getF107SolarFluxAt(const Instant& anInstant) const
+{
+    if (!anInstant.isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Instant");
+    }
+
+    std::lock_guard<std::mutex> lock {mutex_};
+    const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt(anInstant);
+    
+    if (CSSISpaceWeatherPtr != nullptr)
+    {
+        if (CSSISpaceWeatherPtr->accessObservationInterval().contains(anInstant))
+        {
+            return CSSISpaceWeatherPtr->accessObservationAt(anInstant).F107_OBS;
+        }
+        else if (CSSISpaceWeatherPtr->accessDailyPredictionInterval().contains(anInstant))
+        {
+            return CSSISpaceWeatherPtr->accessDailyPredictionAt(anInstant).F107_OBS;
+        }
+        else if (CSSISpaceWeatherPtr->accessMonthlyPredictionInterval().contains(anInstant))
+        {
+            return CSSISpaceWeatherPtr->accessMonthlyPredictionAt(anInstant).F107_OBS;
+        }
+
+    }
+
+    throw ostk::core::error::RuntimeError("Cannot obtain F10.7 Solar Flux at [{}].", anInstant.toString());
+}
+
+Real Manager::getF107SolarFlux81DayAvgAt(const Instant& anInstant) const
+{
+    if (!anInstant.isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Instant");
+    }
+
+    std::lock_guard<std::mutex> lock {mutex_};
+    const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt(anInstant);
+    
+    if (CSSISpaceWeatherPtr != nullptr)
+    {
+        if (CSSISpaceWeatherPtr->accessObservationInterval().contains(anInstant))
+        {
+            return CSSISpaceWeatherPtr->accessObservationAt(anInstant).F107_OBS_CENTER81;
+        }
+        else if (CSSISpaceWeatherPtr->accessDailyPredictionInterval().contains(anInstant))
+        {
+            return CSSISpaceWeatherPtr->accessDailyPredictionAt(anInstant).F107_OBS_CENTER81;
+        }
+        else if (CSSISpaceWeatherPtr->accessMonthlyPredictionInterval().contains(anInstant))
+        {
+            return CSSISpaceWeatherPtr->accessMonthlyPredictionAt(anInstant).F107_OBS_CENTER81;
+        }
+
+    }
+
+    throw ostk::core::error::RuntimeError("Cannot obtain F10.7 Solar Flux 81 Day Avereage at [{}].", anInstant.toString());
 }
 
 void Manager::setMode(const Manager::Mode& aMode)

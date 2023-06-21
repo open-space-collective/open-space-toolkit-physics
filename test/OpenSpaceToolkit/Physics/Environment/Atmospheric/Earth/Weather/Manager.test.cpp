@@ -90,7 +90,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Get
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, getKp3HourSolarIndicesAt)
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, GetKp3HourSolarIndicesAt)
 {
     using ostk::core::types::Integer;
     using ostk::core::types::String;
@@ -125,7 +125,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, get
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, getAp3HourSolarIndicesAt)
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, GetAp3HourSolarIndicesAt)
 {
     using ostk::core::types::Integer;
     using ostk::core::types::String;
@@ -156,6 +156,80 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, get
             
             // Test
             EXPECT_EQ(referenceIndices, manager.getAp3HourSolarIndicesAt(referenceInstant));
+        }
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, GetF107SolarFluxAt)
+{
+    using ostk::core::types::Real;
+    using ostk::core::types::String;
+    using ostk::core::ctnr::Tuple;
+    using ostk::core::ctnr::Array;
+
+    using ostk::physics::time::Scale;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::DateTime;
+    using ostk::physics::environment::atmospheric::earth::weather::Manager;
+
+    {
+        const Array<Tuple<String, Real>> referenceScenarios = {
+          {"2018-01-02 12:34:56", 69.5}, // observation
+          {"2023-06-18 12:34:56", 164.1},
+          {"2023-08-02 12:34:56", 165.0}, // daily prediction
+          {"2023-08-03 12:34:56", 165.1},
+          {"2023-10-01 12:34:56", 154.0}, // monthly prediction
+          {"2028-09-01 12:34:56", 82.7},
+        };
+
+        for (const auto& referenceScenario : referenceScenarios)
+        {
+            const Manager& manager = Manager::Get();
+
+            // Reference data setup
+
+            const Instant referenceInstant = Instant::DateTime(DateTime::Parse(std::get<0>(referenceScenario)), Scale::UTC);
+            const Real referenceValue = std::get<1>(referenceScenario);
+            
+            // Test
+            EXPECT_EQ(referenceValue, manager.getF107SolarFluxAt(referenceInstant));
+        }
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, GetF107SolarFlux81DayAvgAt)
+{
+    using ostk::core::types::Real;
+    using ostk::core::types::String;
+    using ostk::core::ctnr::Tuple;
+    using ostk::core::ctnr::Array;
+
+    using ostk::physics::time::Scale;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::DateTime;
+    using ostk::physics::environment::atmospheric::earth::weather::Manager;
+
+    {
+        const Array<Tuple<String, Real>> referenceScenarios = {
+          {"2018-01-02 12:34:56", 71.5}, // observation
+          {"2023-06-18 12:34:56", 160.4},
+          {"2023-08-02 12:34:56", 157.5}, // daily prediction
+          {"2023-08-03 12:34:56", 157.4},
+          {"2023-10-01 12:34:56", 153.9}, // monthly prediction
+          {"2028-09-01 12:34:56", 83.2},
+        };
+
+        for (const auto& referenceScenario : referenceScenarios)
+        {
+            const Manager& manager = Manager::Get();
+
+            // Reference data setup
+
+            const Instant referenceInstant = Instant::DateTime(DateTime::Parse(std::get<0>(referenceScenario)), Scale::UTC);
+            const Real referenceValue = std::get<1>(referenceScenario);
+            
+            // Test
+            EXPECT_EQ(referenceValue, manager.getF107SolarFlux81DayAvgAt(referenceInstant));
         }
     }
 }

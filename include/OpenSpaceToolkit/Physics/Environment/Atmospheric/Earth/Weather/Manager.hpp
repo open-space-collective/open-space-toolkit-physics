@@ -126,6 +126,21 @@ class Manager
     /// @return             Array of 3-hourly Ap solar indices
 
     Array<Integer> getAp3HourSolarIndicesAt(const Instant& anInstant) const;
+    
+    /// @brief              Get the daily value for F10.7 solar flux at instant.
+    ///
+    /// @param              [in] anInstant An instant
+    /// @return             Daily value for F10.7 solar flux
+
+    Real getF107SolarFluxAt(const Instant& anInstant) const;
+
+    /// @brief              Get the 81-day average value for F10.7 solar flux
+    ///                     centered on instant.
+    ///
+    /// @param              [in] anInstant An instant
+    /// @return             Centered 81-day average value for F10.7 solar flux
+
+    Real getF107SolarFlux81DayAvgAt(const Instant& anInstant) const;
 
     /// @brief              Set manager mode
     ///
