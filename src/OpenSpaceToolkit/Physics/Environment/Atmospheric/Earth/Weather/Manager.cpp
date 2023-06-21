@@ -103,9 +103,8 @@ Array<Integer> Manager::getKp3HourSolarIndicesAt(const Instant& anInstant) const
     }
 
     std::lock_guard<std::mutex> lock {mutex_};
-
     const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt(anInstant);
-
+    
     if (CSSISpaceWeatherPtr != nullptr)
     {
         if (CSSISpaceWeatherPtr->accessObservationInterval().contains(anInstant))
@@ -125,7 +124,7 @@ Array<Integer> Manager::getKp3HourSolarIndicesAt(const Instant& anInstant) const
         }
         else if (CSSISpaceWeatherPtr->accessDailyPredictionInterval().contains(anInstant))
         {
-            const CSSISpaceWeather::Observation prediction = CSSISpaceWeatherPtr->accessObservationAt(anInstant);
+            const CSSISpaceWeather::Observation prediction = CSSISpaceWeatherPtr->accessDailyPredictionAt(anInstant);
 
             return Array<Integer> { 
                 prediction.KP1,
@@ -141,7 +140,6 @@ Array<Integer> Manager::getKp3HourSolarIndicesAt(const Instant& anInstant) const
 
     }
 
-    
     throw ostk::core::error::RuntimeError("Cannot obtain Kp Solar Indices at [{}].", anInstant.toString());
 }
 
