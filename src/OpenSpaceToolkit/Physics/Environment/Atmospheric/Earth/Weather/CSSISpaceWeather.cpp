@@ -24,7 +24,7 @@ namespace earth
 {
 namespace weather
 {
-/*
+
 std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& aCSSISpaceWeather)
 {
     using ostk::core::types::String;
@@ -34,15 +34,17 @@ std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& a
     ostk::core::utils::Print::Header(anOutputStream, "CSSI Space Weather");
 
     ostk::core::utils::Print::Line(anOutputStream)
-        << "LastObservation date:" << (aCSSISpaceWeather.lastObservationInstant_.isDefined() ? aCSSISpaceWeather.lastObservationInstant_.toString() : "Undefined");
-    
-    ostk::core::utils::Print::Line(anOutputStream)
         << "Observation interval:"
         << (aCSSISpaceWeather.observationInterval_.isDefined() ? aCSSISpaceWeather.observationInterval_.toString(Scale::UTC)
                                                         : "Undefined");
     ostk::core::utils::Print::Line(anOutputStream)
-        << "Predictiom interval:"
-        << (aCSSISpaceWeather.predictionInterval_.isDefined() ? aCSSISpaceWeather.predictionInterval_.toString(Scale::UTC)
+        << "Daily prediction interval:"
+        << (aCSSISpaceWeather.dailyPredictionInterval_.isDefined() ? aCSSISpaceWeather.dailyPredictionInterval_.toString(Scale::UTC)
+                                                       : "Undefined");
+
+    ostk::core::utils::Print::Line(anOutputStream)
+        << "Monthly prediction interval:"
+        << (aCSSISpaceWeather.monthlyPredictionInterval_.isDefined() ? aCSSISpaceWeather.monthlyPredictionInterval_.toString(Scale::UTC)
                                                        : "Undefined");
     
     ostk::core::utils::Print::Separator(anOutputStream, "Observation");
@@ -52,20 +54,43 @@ std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& a
         const CSSISpaceWeather::Observation& observation = observationIt.second;
 
         ostk::core::utils::Print::Line(anOutputStream) << String::Format(
-            "{:>4d}  {:>2d}  {:>2d}  {:>5d}  {:f}  {:f}  {:f}  {:f}  {:f}  {:f}",
-            static_cast<int>(observation.year),
-            static_cast<int>(observation.month),
-            static_cast<int>(observation.day),
-            static_cast<int>(observation.mjd),
-            static_cast<double>(observation.x),
-            static_cast<double>(observation.xError),
-            static_cast<double>(observation.y),
-            static_cast<double>(observation.yError),
-            static_cast<double>(observation.ut1MinusUtc),
-            static_cast<double>(observation.ut1MinusUtcError)
+            "{:>4d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>5d}  {:f}  {:>2d}  {:>2d}  {:f}  {:f}  {:s}  {:f}  {:f}  {:f}  {:f}",
+            //observation.date,
+            static_cast<int>(observation.BSRN),
+            static_cast<int>(observation.ND),
+            static_cast<int>(observation.KP1),
+            static_cast<int>(observation.KP2),
+            static_cast<int>(observation.KP3),
+            static_cast<int>(observation.KP4),
+            static_cast<int>(observation.KP5),
+            static_cast<int>(observation.KP6),
+            static_cast<int>(observation.KP7),
+            static_cast<int>(observation.KP8),
+            static_cast<int>(observation.KP_SUM),
+            static_cast<int>(observation.AP1),
+            static_cast<int>(observation.AP2),
+            static_cast<int>(observation.AP3),
+            static_cast<int>(observation.AP4),
+            static_cast<int>(observation.AP5),
+            static_cast<int>(observation.AP6),
+            static_cast<int>(observation.AP7),
+            static_cast<int>(observation.AP8),
+            static_cast<int>(observation.AP_AVG),
+            static_cast<double>(observation.CP),
+            static_cast<int>(observation.C9),
+            static_cast<int>(observation.ISN),
+            static_cast<double>(observation.F107_OBS),
+            static_cast<double>(observation.F107_ADJ),
+            observation.F107_DATA_TYPE,
+            static_cast<double>(observation.F107_OBS_CENTER81),
+            static_cast<double>(observation.F107_OBS_LAST81),
+            static_cast<double>(observation.F107_ADJ_CENTER81),
+            static_cast<double>(observation.F107_ADJ_LAST81)
         );
-    }
 
+
+    }
+    /*
     ostk::core::utils::Print::Separator(anOutputStream, "Prediction");
 
     for (const auto& predictionIt : aCSSISpaceWeather.predictions_)
@@ -85,10 +110,10 @@ std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& a
     }
 
     ostk::core::utils::Print::Footer(anOutputStream);
-
+    */
     return anOutputStream;
 }
-*/
+
 bool CSSISpaceWeather::isDefined() const
 {
     return observationInterval_.isDefined() && (!observations_.empty()) && dailyPredictionInterval_.isDefined() &&

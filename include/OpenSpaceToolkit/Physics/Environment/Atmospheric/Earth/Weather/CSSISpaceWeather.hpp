@@ -114,7 +114,7 @@ class CSSISpaceWeather
     };
 
 
-    //friend std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& aCSSISpaceWeather);
+    friend std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& aCSSISpaceWeather);
 
     bool isDefined() const;
 
@@ -123,7 +123,6 @@ class CSSISpaceWeather
     const Interval& accessDailyPredictionInterval() const;
 
     const Interval& accessMonthlyPredictionInterval() const;
-
 
     Interval getObservationInterval() const;
 
