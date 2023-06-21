@@ -124,43 +124,13 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, get
         }
     }
 }
-/*
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, GetPolarMotionAt_Future)
+
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, getAp3HourSolarIndicesAt)
 {
-    using ostk::core::types::Real;
+    using ostk::core::types::Integer;
     using ostk::core::types::String;
     using ostk::core::ctnr::Tuple;
     using ostk::core::ctnr::Array;
-    using ostk::core::ctnr::Table;
-    using ostk::core::fs::Path;
-    using ostk::core::fs::File;
-
-    using ostk::math::obj::Vector2d;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::time::Duration;
-    using ostk::physics::environment::atmospheric::earth::weather::Manager;
-
-    {
-        const Manager& manager = Manager::Get();
-
-        const Instant instant = Instant::Now() + Duration::Weeks(12.0);
-
-        manager.getPolarMotionAt(instant);
-    }
-}
-
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, GetUt1MinusUtcAt)
-{
-    using ostk::core::types::Real;
-    using ostk::core::types::String;
-    using ostk::core::ctnr::Tuple;
-    using ostk::core::ctnr::Array;
-    using ostk::core::ctnr::Table;
-    using ostk::core::fs::Path;
-    using ostk::core::fs::File;
 
     using ostk::physics::time::Scale;
     using ostk::physics::time::Instant;
@@ -168,16 +138,11 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Get
     using ostk::physics::environment::atmospheric::earth::weather::Manager;
 
     {
-        const Array<Tuple<File, Real>> referenceScenarios = {
-            {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Manager/"
-                                    "GetUt1MinusUtcAt/DUT1 1.csv")),
-             1e-4},
-            {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Manager/"
-                                    "GetUt1MinusUtcAt/DUT1 2.csv")),
-             1e-4},
-            // {
-            // File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Manager/GetUt1MinusUtcAt/DUT1
-            // 3.csv")), 1e-4 } // [TBI] Discrepancy with STK at leap second crossing
+        const Array<Tuple<String, Array<Integer>>> referenceScenarios = {
+          {"2018-01-02 12:34:56", {6,3,2,3,6,4,7,4,4}},
+          {"2023-06-18 12:34:56", {12,7,5,7,6,6,12,7,8}},
+          {"2023-08-02 12:34:56", {5,5,5,5,5,5,5,5,5}},
+          {"2023-08-03 12:34:56", {5,5,5,5,5,5,5,5,5}},  
         };
 
         for (const auto& referenceScenario : referenceScenarios)
@@ -186,36 +151,15 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Get
 
             // Reference data setup
 
-            const File referenceDataFile = std::get<0>(referenceScenario);
-            const Real tolerance = std::get<1>(referenceScenario);
-
-            const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
-
+            const Instant referenceInstant = Instant::DateTime(DateTime::Parse(std::get<0>(referenceScenario)), Scale::UTC);
+            const Array<Integer> referenceIndices = std::get<1>(referenceScenario);
+            
             // Test
-
-            for (const auto& referenceRow : referenceData)
-            {
-                const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].accessString()), Scale::TAI);
-
-                const Real referenceDUT1 = {referenceRow[3].accessReal()};
-
-                const Real dUT1 = manager.getUt1MinusUtcAt(instant);
-
-                EXPECT_NEAR(referenceDUT1, dUT1, tolerance)
-                    << String::Format("{} - {} ~ {}", instant.toString(Scale::TAI), referenceDUT1, dUT1);
-            }
+            EXPECT_EQ(referenceIndices, manager.getAp3HourSolarIndicesAt(referenceInstant));
         }
     }
-
-    {
-        const Manager& manager = Manager::Get();
-
-        const Instant instant = Instant::DateTime(DateTime(2018, 10, 10, 0, 0, 0), Scale::UTC);
-
-        EXPECT_NO_THROW(manager.getUt1MinusUtcAt(instant));
-    }
 }
-*/
+
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, SetMode)
 {
     using ostk::physics::environment::atmospheric::earth::weather::Manager;

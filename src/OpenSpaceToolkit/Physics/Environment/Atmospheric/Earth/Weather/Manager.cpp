@@ -104,7 +104,7 @@ Array<Integer> Manager::getKp3HourSolarIndicesAt(const Instant& anInstant) const
 
     std::lock_guard<std::mutex> lock {mutex_};
     const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt(anInstant);
-    
+
     if (CSSISpaceWeatherPtr != nullptr)
     {
         if (CSSISpaceWeatherPtr->accessObservationInterval().contains(anInstant))
@@ -135,6 +135,56 @@ Array<Integer> Manager::getKp3HourSolarIndicesAt(const Instant& anInstant) const
                 prediction.KP6,
                 prediction.KP7,
                 prediction.KP8
+            };
+        }
+
+    }
+
+    throw ostk::core::error::RuntimeError("Cannot obtain Kp Solar Indices at [{}].", anInstant.toString());
+}
+
+Array<Integer> Manager::getAp3HourSolarIndicesAt(const Instant& anInstant) const
+{
+    if (!anInstant.isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Instant");
+    }
+
+    std::lock_guard<std::mutex> lock {mutex_};
+    const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt(anInstant);
+    
+    if (CSSISpaceWeatherPtr != nullptr)
+    {
+        if (CSSISpaceWeatherPtr->accessObservationInterval().contains(anInstant))
+        {
+            const CSSISpaceWeather::Observation observation = CSSISpaceWeatherPtr->accessObservationAt(anInstant);
+
+            return Array<Integer> { 
+                observation.AP1,
+                observation.AP2,
+                observation.AP3,
+                observation.AP4,
+                observation.AP5,
+                observation.AP6,
+                observation.AP7,
+                observation.AP8,
+                observation.AP_AVG
+            };
+        }
+        else if (CSSISpaceWeatherPtr->accessDailyPredictionInterval().contains(anInstant))
+        {
+            const CSSISpaceWeather::Observation prediction = CSSISpaceWeatherPtr->accessDailyPredictionAt(anInstant);
+
+            return Array<Integer> { 
+                prediction.AP1,
+                prediction.AP2,
+                prediction.AP3,
+                prediction.AP4,
+                prediction.AP5,
+                prediction.AP6,
+                prediction.AP7,
+                prediction.AP8,
+                prediction.AP_AVG
             };
         }
 

@@ -120,6 +120,13 @@ class Manager
 
     Array<Integer> getKp3HourSolarIndicesAt(const Instant& anInstant) const;
 
+    /// @brief              Get an Array of 8 3-hourly Ap solar indices for the day containing instant.
+    ///
+    /// @param              [in] anInstant An instant
+    /// @return             Array of 3-hourly Ap solar indices
+
+    Array<Integer> getAp3HourSolarIndicesAt(const Instant& anInstant) const;
+
     /// @brief              Set manager mode
     ///
     /// @param              [in] aMode A manager mode
