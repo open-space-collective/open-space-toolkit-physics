@@ -56,7 +56,7 @@ class CSSISpaceWeather
    public:
     struct Observation
     {
-        Date date;
+        Date date;     /// UTC day of reading.
         Integer BSRN;  /// Bartels Solar Rotation Number. A sequence of 27-day intervals counted continuously from 1832
                        /// Feb 8.
         Integer ND;    /// Number of Day within the Bartels 27-day cycle (01-27).
@@ -104,7 +104,7 @@ class CSSISpaceWeather
 
     struct MonthlyPrediction
     {
-        Date date;
+        Date date;      /// UTC day of reading.
         Integer BSRN;   /// Bartels Solar Rotation Number. A sequence of 27-day intervals counted continuously from 1832
                         /// Feb 8.
         Integer ND;     /// Number of Day within the Bartels 27-day cycle (01-27).
