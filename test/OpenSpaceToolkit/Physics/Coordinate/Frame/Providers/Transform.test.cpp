@@ -91,6 +91,17 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Validation)
              3.0,   // Orientation tolerance at Earth Surface [m]
              0.0},  // Angular velocity tolerance [rad/s]
 
+            // GCRF <> J2000 IAU 2000A (STK)
+            {File::Path(Path::Parse(
+                 "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_J2000_stk.csv"
+             )),
+             "J2000",
+             "IAU 2000A",
+             0.0,   // Translation tolerance [m]
+             0.0,   // Relative velocity tolerance [m/s]
+             1.5,   // Orientation tolerance at Earth Surface [m]
+             0.0},  // Angular velocity tolerance [rad/s]
+
             // GCRF <> J2000 IAU 2000A (Orekit)
             {File::Path(Path::Parse(
                  "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_J2000_orekit.csv"
@@ -100,6 +111,17 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Validation)
              0.0,   // Translation tolerance [m]
              0.0,   // Relative velocity tolerance [m/s]
              1e-5,  // Orientation tolerance at Earth Surface [m]
+             0.0},  // Angular velocity tolerance [rad/s]
+
+            // GCRF <> J2000 IAU 2006 (STK)
+            {File::Path(Path::Parse(
+                 "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_J2000_stk.csv"
+             )),
+             "J2000",
+             "IAU 2006",
+             0.0,   // Translation tolerance [m]
+             0.0,   // Relative velocity tolerance [m/s]
+             1.5,   // Orientation tolerance at Earth Surface [m]
              0.0},  // Angular velocity tolerance [rad/s]
 
             // GCRF <> J2000 IAU 2006 (Orekit)
