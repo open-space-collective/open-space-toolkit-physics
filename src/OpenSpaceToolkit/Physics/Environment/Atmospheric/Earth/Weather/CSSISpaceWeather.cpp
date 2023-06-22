@@ -333,41 +333,6 @@ const CSSISpaceWeather::MonthlyPrediction& CSSISpaceWeather::accessMonthlyPredic
     }
 }
 
-Date CSSISpaceWeather::getLastObservationDate() const
-{
-    return this->accessLastObservationDate();
-}
-
-Interval CSSISpaceWeather::getObservationInterval() const
-{
-    return this->accessObservationInterval();
-}
-
-CSSISpaceWeather::Observation CSSISpaceWeather::getObservationAt(const Instant& anInstant) const
-{
-    return this->accessObservationAt(anInstant);
-}
-
-Interval CSSISpaceWeather::getDailyPredictionInterval() const
-{
-    return this->accessDailyPredictionInterval();
-}
-
-CSSISpaceWeather::DailyPrediction CSSISpaceWeather::getDailyPredictionAt(const Instant& anInstant) const
-{
-    return this->accessDailyPredictionAt(anInstant);
-}
-
-Interval CSSISpaceWeather::getMonthlyPredictionInterval() const
-{
-    return this->accessMonthlyPredictionInterval();
-}
-
-CSSISpaceWeather::MonthlyPrediction CSSISpaceWeather::getMonthlyPredictionAt(const Instant& anInstant) const
-{
-    return this->accessMonthlyPredictionAt(anInstant);
-}
-
 CSSISpaceWeather CSSISpaceWeather::Undefined()
 {
     return CSSISpaceWeather();

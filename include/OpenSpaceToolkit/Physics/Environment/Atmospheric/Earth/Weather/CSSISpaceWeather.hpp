@@ -143,20 +143,6 @@ class CSSISpaceWeather
 
     const MonthlyPrediction& accessMonthlyPredictionAt(const Instant& anInstant) const;
 
-    Date getLastObservationDate() const;
-
-    Interval getObservationInterval() const;
-
-    Observation getObservationAt(const Instant& anInstant) const;
-
-    Interval getDailyPredictionInterval() const;
-
-    DailyPrediction getDailyPredictionAt(const Instant& anInstant) const;
-
-    Interval getMonthlyPredictionInterval() const;
-
-    MonthlyPrediction getMonthlyPredictionAt(const Instant& anInstant) const;
-
     static CSSISpaceWeather Undefined();
 
     static CSSISpaceWeather Load(const fs::File& aFile);

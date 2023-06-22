@@ -12,10 +12,26 @@
 
 #include <Global.test.hpp>
 
+using ostk::core::types::Integer;
+using ostk::core::types::Real;
+using ostk::core::types::String;
+using ostk::core::ctnr::Tuple;
+using ostk::core::ctnr::Array;
+using ostk::core::fs::Path;
+using ostk::core::fs::File;
+using ostk::core::fs::Directory;
+
+using ostk::io::URL;
+
+using ostk::physics::time::Scale;
+using ostk::physics::time::Instant;
+using ostk::physics::time::Duration;
+using ostk::physics::time::DateTime;
+using ostk::physics::environment::atmospheric::earth::weather::Manager;
+using ostk::physics::environment::atmospheric::earth::weather::CSSISpaceWeather;
+
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, GetMode)
 {
-    using ostk::physics::environment::atmospheric::earth::weather::Manager;
-
     {
         const Manager& manager = Manager::Get();
 
@@ -25,11 +41,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Get
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, GetLocalRepository)
 {
-    using ostk::core::fs::Path;
-    using ostk::core::fs::Directory;
-
-    using ostk::physics::environment::atmospheric::earth::weather::Manager;
-
     {
         const Manager& manager = Manager::Get();
 
@@ -39,10 +50,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Get
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, GetRemoteUrl)
 {
-    using ostk::io::URL;
-
-    using ostk::physics::environment::atmospheric::earth::weather::Manager;
-
     {
         const Manager& manager = Manager::Get();
         EXPECT_EQ(URL::Parse("https://celestrak.org/SpaceData/"), manager.getRemoteUrl());
@@ -51,8 +58,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Get
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, GetCSSISpaceWeatherArray)
 {
-    using ostk::physics::environment::atmospheric::earth::weather::Manager;
-
     {
         const Manager& manager = Manager::Get();
 
@@ -62,12 +67,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Get
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, GetCSSISpaceWeatherAt)
 {
-    using ostk::core::fs::Path;
-    using ostk::core::fs::File;
-
-    using ostk::physics::environment::atmospheric::earth::weather::CSSISpaceWeather;
-    using ostk::physics::environment::atmospheric::earth::weather::Manager;
-
     {
         const File file =
             File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Weather/"
@@ -79,29 +78,19 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Get
 
         manager.loadCSSISpaceWeather(spaceWeather);
 
-        EXPECT_NO_THROW(manager.getCSSISpaceWeatherAt(spaceWeather.getObservationInterval().accessStart()));
-        EXPECT_NO_THROW(manager.getCSSISpaceWeatherAt(spaceWeather.getObservationInterval().accessEnd()));
+        EXPECT_NO_THROW(manager.getCSSISpaceWeatherAt(spaceWeather.accessObservationInterval().accessStart()));
+        EXPECT_NO_THROW(manager.getCSSISpaceWeatherAt(spaceWeather.accessObservationInterval().accessEnd()));
 
-        EXPECT_NO_THROW(manager.getCSSISpaceWeatherAt(spaceWeather.getDailyPredictionInterval().accessStart()));
-        EXPECT_NO_THROW(manager.getCSSISpaceWeatherAt(spaceWeather.getDailyPredictionInterval().accessEnd()));
+        EXPECT_NO_THROW(manager.getCSSISpaceWeatherAt(spaceWeather.accessDailyPredictionInterval().accessStart()));
+        EXPECT_NO_THROW(manager.getCSSISpaceWeatherAt(spaceWeather.accessDailyPredictionInterval().accessEnd()));
 
-        EXPECT_NO_THROW(manager.getCSSISpaceWeatherAt(spaceWeather.getMonthlyPredictionInterval().accessStart()));
-        EXPECT_NO_THROW(manager.getCSSISpaceWeatherAt(spaceWeather.getMonthlyPredictionInterval().accessEnd()));
+        EXPECT_NO_THROW(manager.getCSSISpaceWeatherAt(spaceWeather.accessMonthlyPredictionInterval().accessStart()));
+        EXPECT_NO_THROW(manager.getCSSISpaceWeatherAt(spaceWeather.accessMonthlyPredictionInterval().accessEnd()));
     }
 }
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, GetKp3HourSolarIndicesAt)
 {
-    using ostk::core::types::Integer;
-    using ostk::core::types::String;
-    using ostk::core::ctnr::Tuple;
-    using ostk::core::ctnr::Array;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::environment::atmospheric::earth::weather::Manager;
-
     {
         const Array<Tuple<String, Array<Integer>>> referenceScenarios = {
             {"2018-01-02 12:34:56", {17, 7, 3, 7, 17, 10, 20, 10}},
@@ -128,16 +117,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Get
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, GetAp3HourSolarIndicesAt)
 {
-    using ostk::core::types::Integer;
-    using ostk::core::types::String;
-    using ostk::core::ctnr::Tuple;
-    using ostk::core::ctnr::Array;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::environment::atmospheric::earth::weather::Manager;
-
     {
         const Array<Tuple<String, Array<Integer>>> referenceScenarios = {
             {"2018-01-02 12:34:56", {6, 3, 2, 3, 6, 4, 7, 4, 4}},
@@ -164,16 +143,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Get
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, GetF107SolarFluxAt)
 {
-    using ostk::core::types::Real;
-    using ostk::core::types::String;
-    using ostk::core::ctnr::Tuple;
-    using ostk::core::ctnr::Array;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::environment::atmospheric::earth::weather::Manager;
-
     {
         const Array<Tuple<String, Real>> referenceScenarios = {
             {"2018-01-02 12:34:56", 69.5},  // observation
@@ -202,16 +171,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Get
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, GetF107SolarFlux81DayAvgAt)
 {
-    using ostk::core::types::Real;
-    using ostk::core::types::String;
-    using ostk::core::ctnr::Tuple;
-    using ostk::core::ctnr::Array;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::environment::atmospheric::earth::weather::Manager;
-
     {
         const Array<Tuple<String, Real>> referenceScenarios = {
             {"2018-01-02 12:34:56", 71.5},  // observation
@@ -240,8 +199,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Get
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, SetMode)
 {
-    using ostk::physics::environment::atmospheric::earth::weather::Manager;
-
     {
         Manager& manager = Manager::Get();
 
@@ -259,11 +216,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Set
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, SetLocalRepository)
 {
-    using ostk::core::fs::Path;
-    using ostk::core::fs::Directory;
-
-    using ostk::physics::environment::atmospheric::earth::weather::Manager;
-
     {
         Manager& manager = Manager::Get();
 
@@ -283,10 +235,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Set
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, SetRemoteUrl)
 {
-    using ostk::io::URL;
-
-    using ostk::physics::environment::atmospheric::earth::weather::Manager;
-
     {
         Manager& manager = Manager::Get();
 
@@ -304,12 +252,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Set
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, LoadCSSISpaceWeather)
 {
-    using ostk::core::fs::Path;
-    using ostk::core::fs::File;
-
-    using ostk::physics::environment::atmospheric::earth::weather::CSSISpaceWeather;
-    using ostk::physics::environment::atmospheric::earth::weather::Manager;
-
     {
         const File file =
             File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Weather/"
@@ -329,10 +271,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Loa
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, FetchLatestCSSISpaceWeather)
 {
-    using ostk::core::fs::File;
-
-    using ostk::physics::environment::atmospheric::earth::weather::Manager;
-
     {
         Manager& manager = Manager::Get();
 
@@ -360,8 +298,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Fet
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Reset)
 {
-    using ostk::physics::environment::atmospheric::earth::weather::Manager;
-
     {
         Manager& manager = Manager::Get();
 
@@ -373,8 +309,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Res
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, ClearLocalRepository)
 {
-    using ostk::physics::environment::atmospheric::earth::weather::Manager;
-
     {
         Manager& manager = Manager::Get();
 
@@ -386,8 +320,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Cle
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Get)
 {
-    using ostk::physics::environment::atmospheric::earth::weather::Manager;
-
     {
         EXPECT_NO_THROW(Manager::Get());
     }
@@ -395,8 +327,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Get
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, DefaultMode)
 {
-    using ostk::physics::environment::atmospheric::earth::weather::Manager;
-
     {
         EXPECT_EQ(Manager::Mode::Automatic, Manager::DefaultMode());
     }
@@ -404,11 +334,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Def
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, DefaultLocalRepository)
 {
-    using ostk::core::fs::Path;
-    using ostk::core::fs::Directory;
-
-    using ostk::physics::environment::atmospheric::earth::weather::Manager;
-
     {
         EXPECT_EQ("weather", Manager::DefaultLocalRepository().getName());
     }
@@ -416,9 +341,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Def
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, DefaultLocalRepositoryLockTimeout)
 {
-    using ostk::physics::time::Duration;
-    using ostk::physics::environment::atmospheric::earth::weather::Manager;
-
     {
         EXPECT_EQ(Duration::Seconds(60.0), Manager::DefaultLocalRepositoryLockTimeout());
     }
@@ -426,10 +348,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Def
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, DefaultRemoteUrl)
 {
-    using ostk::io::URL;
-
-    using ostk::physics::environment::atmospheric::earth::weather::Manager;
-
     {
         EXPECT_EQ(URL::Parse("https://celestrak.org/SpaceData/"), Manager::DefaultRemoteUrl());
     }
