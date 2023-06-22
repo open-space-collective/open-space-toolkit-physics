@@ -42,6 +42,9 @@ using ostk::physics::coord::Transform;
 using ostk::physics::coord::Frame;
 using ostk::physics::env::obj::celest::Earth;
 
+// This will test transformation translation, relative velocity, oreintation and
+// angular velocity against 3rd party generated files. The files can be found in
+// the folder 'Transforms', together with a README.md containing context.
 TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Validation)
 {
     {
