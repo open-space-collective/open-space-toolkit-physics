@@ -72,7 +72,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceW
 {
     {
         const CSSISpaceWeather::Observation firstObservation =
-            CSSISpaceWeather_.accessObservationAt(Instant::DateTime(DateTime::Parse("2018-01-01 12:00:00"), Scale::UTC));
+            CSSISpaceWeather_.accessObservationAt(Instant::DateTime(DateTime::Parse("2018-01-01 12:00:00"), Scale::UTC)
+            );
 
         EXPECT_EQ(Date::Parse("2018-01-01", Date::Format::Standard), firstObservation.date);
 
@@ -112,9 +113,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceW
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWeather, AccessDailyPredictionAt)
 {
     {
-        const CSSISpaceWeather::DailyPrediction firstDailyPrediction =
-            CSSISpaceWeather_.accessDailyPredictionAt(Instant::DateTime(DateTime::Parse("2023-06-20 12:00:00"), Scale::UTC)
-            );
+        const CSSISpaceWeather::DailyPrediction firstDailyPrediction = CSSISpaceWeather_.accessDailyPredictionAt(
+            Instant::DateTime(DateTime::Parse("2023-06-20 12:00:00"), Scale::UTC)
+        );
 
         EXPECT_EQ(Date::Parse("2023-06-20", Date::Format::Standard), firstDailyPrediction.date);
 
