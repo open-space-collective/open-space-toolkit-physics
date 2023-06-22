@@ -612,6 +612,7 @@ File Manager::fetchLatestCSSISpaceWeather_()
 
     const URL latestCSSISpaceWeatherUrl = remoteUrl_ + CSSISpaceWeatherFileName;
     std::cout << latestCSSISpaceWeatherUrl.toString() << std::endl;
+
     File latestCSSISpaceWeatherFile = File::Undefined();
     Directory destinationDirectory = Directory::Undefined();
 
