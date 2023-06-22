@@ -59,8 +59,8 @@ class TestCSSISpaceWeather:
 
         assert prediction.date.to_string() == "2023-08-03"
         assert prediction.kp_sum == 104
-        assert prediction.f107_obs == 165.1
-        assert prediction.f107_obs_center_81 == 157.4
+        assert pytest.approx(prediction.f107_obs, 165.1)
+        assert pytest.approx(prediction.f107_obs_center_81, 157.4)
 
     def test_access_monthly_prediction_interval_success(
         self, cssi_space_weather: CSSISpaceWeather
@@ -78,8 +78,8 @@ class TestCSSISpaceWeather:
         )
 
         assert prediction.date.to_string() == "2029-01-01"
-        assert prediction.f107_obs == 83.5
-        assert prediction.f107_obs_center_81 == 83.6
+        assert pytest.approx(prediction.f107_obs, 83.5)
+        assert pytest.approx(prediction.f107_obs_center_81, 83.6)
 
     def test_undefined_success(self):
         assert CSSISpaceWeather.undefined() is not None

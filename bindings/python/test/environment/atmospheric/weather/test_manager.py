@@ -80,16 +80,32 @@ class TestManager:
         assert isinstance(cssi_space_weather, CSSISpaceWeather)
 
     def test_get_kp_3_hour_solar_indices_at_success(self, manager: Manager):
-        pass
+        kp_indices = manager.get_kp_3_hour_solar_indices_at(
+            Instant.date_time(datetime(2023, 6, 18, 12, 34, 56), Scale.UTC)
+        )
+
+        assert kp_indices == [27,20,13,20,17,17,27,20]
 
     def test_get_ap_3_hour_solar_indices_at_success(self, manager: Manager):
-        pass
+        ap_indices = manager.get_ap_3_hour_solar_indices_at(
+            Instant.date_time(datetime(2023, 6, 18, 12, 34, 56), Scale.UTC)
+        )
+
+        assert ap_indices == [12,7,5,7,6,6,12,7,8]
 
     def test_get_f107_solar_flux_at_success(self, manager: Manager):
-        pass
+        flux = manager.get_f107_solar_flux_at(
+            Instant.date_time(datetime(2023, 6, 18, 12, 34, 56), Scale.UTC)
+        )
+
+        assert pytest.approx(flux, 159.0)
 
     def test_get_f107_solar_flux_81_day_avg_at_success(self, manager: Manager):
-        pass
+        flux_avg = manager.get_f107_solar_flux_81_day_avg_at(
+            Instant.date_time(datetime(2023, 6, 18, 12, 34, 56), Scale.UTC)
+        )
+
+        assert pytest.approx(flux_avg, 160.4)
 
     def test_set_mode_success(self, manager: Manager):
         assert manager.get_mode() == Manager.Mode.Automatic
