@@ -46,8 +46,8 @@ std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& a
                 : "Undefined");
 
     const String dataHeader = String(
-        "DATE,BSRN,ND,KP1,KP2,KP3,KP4,KP5,KP6,KP7,KP8,KP_SUM,AP1,AP2,AP3,AP4,AP5,AP6,AP7,AP8,AP_AVG,CP,C9,ISN,F10.7_"
-        "OBS,F10.7_ADJ,F10.7_DATA_TYPE,F10.7_OBS_CENTER81,F10.7_OBS_LAST81,F10.7_ADJ_CENTER81,F10.7_ADJ_LAST81"
+        "DATE,BSRN,ND,Kp1,Kp2,Kp3,Kp4,Kp5,Kp6,Kp7,Kp8,KpSum,Ap1,Ap2,Ap3,Ap4,Ap5,Ap6,Ap7,Ap8,ApAvg,Cp,C9,ISN,F10.7_"
+        "OBS,F10.7Adj,F10.7DataType,F10.7ObsCenter81,F10.7ObsLast81,F10.7AdjCenter81,F10.7AdjLast81"
     );
 
     ostk::core::utils::Print::Separator(anOutputStream, "Observations");
@@ -65,34 +65,34 @@ std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& a
             observation.date.getDay(),
             observation.BSRN,
             observation.ND,
-            observation.KP1,
-            observation.KP2,
-            observation.KP3,
-            observation.KP4,
-            observation.KP5,
-            observation.KP6,
-            observation.KP7,
-            observation.KP8,
-            observation.KP_SUM,
-            observation.AP1,
-            observation.AP2,
-            observation.AP3,
-            observation.AP4,
-            observation.AP5,
-            observation.AP6,
-            observation.AP7,
-            observation.AP8,
-            observation.AP_AVG,
-            observation.CP,
+            observation.Kp1,
+            observation.Kp2,
+            observation.Kp3,
+            observation.Kp4,
+            observation.Kp5,
+            observation.Kp6,
+            observation.Kp7,
+            observation.Kp8,
+            observation.KpSum,
+            observation.Ap1,
+            observation.Ap2,
+            observation.Ap3,
+            observation.Ap4,
+            observation.Ap5,
+            observation.Ap6,
+            observation.Ap7,
+            observation.Ap8,
+            observation.ApAvg,
+            observation.Cp,
             observation.C9,
             observation.ISN,
-            observation.F107_OBS,
-            observation.F107_ADJ,
-            observation.F107_DATA_TYPE,
-            observation.F107_OBS_CENTER81,
-            observation.F107_OBS_LAST81,
-            observation.F107_ADJ_CENTER81,
-            observation.F107_ADJ_LAST81
+            observation.F107Obs,
+            observation.F107Adj,
+            observation.F107DataType,
+            observation.F107ObsCenter81,
+            observation.F107ObsLast81,
+            observation.F107AdjCenter81,
+            observation.F107AdjLast81
         );
     }
 
@@ -112,41 +112,41 @@ std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& a
             dailyPrediction.date.getDay(),
             dailyPrediction.BSRN,
             dailyPrediction.ND,
-            dailyPrediction.KP1,
-            dailyPrediction.KP2,
-            dailyPrediction.KP3,
-            dailyPrediction.KP4,
-            dailyPrediction.KP5,
-            dailyPrediction.KP6,
-            dailyPrediction.KP7,
-            dailyPrediction.KP8,
-            dailyPrediction.KP_SUM,
-            dailyPrediction.AP1,
-            dailyPrediction.AP2,
-            dailyPrediction.AP3,
-            dailyPrediction.AP4,
-            dailyPrediction.AP5,
-            dailyPrediction.AP6,
-            dailyPrediction.AP7,
-            dailyPrediction.AP8,
-            dailyPrediction.AP_AVG,
-            dailyPrediction.CP,
+            dailyPrediction.Kp1,
+            dailyPrediction.Kp2,
+            dailyPrediction.Kp3,
+            dailyPrediction.Kp4,
+            dailyPrediction.Kp5,
+            dailyPrediction.Kp6,
+            dailyPrediction.Kp7,
+            dailyPrediction.Kp8,
+            dailyPrediction.KpSum,
+            dailyPrediction.Ap1,
+            dailyPrediction.Ap2,
+            dailyPrediction.Ap3,
+            dailyPrediction.Ap4,
+            dailyPrediction.Ap5,
+            dailyPrediction.Ap6,
+            dailyPrediction.Ap7,
+            dailyPrediction.Ap8,
+            dailyPrediction.ApAvg,
+            dailyPrediction.Cp,
             dailyPrediction.C9,
             dailyPrediction.ISN,
-            dailyPrediction.F107_OBS,
-            dailyPrediction.F107_ADJ,
-            dailyPrediction.F107_DATA_TYPE,
-            dailyPrediction.F107_OBS_CENTER81,
-            dailyPrediction.F107_OBS_LAST81,
-            dailyPrediction.F107_ADJ_CENTER81,
-            dailyPrediction.F107_ADJ_LAST81
+            dailyPrediction.F107Obs,
+            dailyPrediction.F107Adj,
+            dailyPrediction.F107DataType,
+            dailyPrediction.F107ObsCenter81,
+            dailyPrediction.F107ObsLast81,
+            dailyPrediction.F107AdjCenter81,
+            dailyPrediction.F107AdjLast81
         );
     }
 
     ostk::core::utils::Print::Separator(anOutputStream, "Monthly Predictions");
     ostk::core::utils::Print::Line(anOutputStream) << String(
-        "DATE,BSRN,ND,ISN,F10.7_OBS,F10.7_ADJ,F10.7_DATA_TYPE,F10.7_OBS_CENTER81,F10.7_OBS_LAST81,F10.7_ADJ_CENTER81,"
-        "F10.7_ADJ_LAST81"
+        "DATE,BSRN,ND,ISN,F10.7Obs,F10.7Adj,F10.7DataType,F10.7ObsCenter81,F10.7ObsLast81,F10.7AdjCenter81,"
+        "F10.7AdjLast81"
     );
 
     for (const auto& monthlyPredictionIt : aCSSISpaceWeather.monthlyPredictions_)
@@ -161,13 +161,13 @@ std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& a
             monthlyPrediction.BSRN,
             monthlyPrediction.ND,
             monthlyPrediction.ISN,
-            monthlyPrediction.F107_OBS,
-            monthlyPrediction.F107_ADJ,
-            monthlyPrediction.F107_DATA_TYPE,
-            monthlyPrediction.F107_OBS_CENTER81,
-            monthlyPrediction.F107_OBS_LAST81,
-            monthlyPrediction.F107_ADJ_CENTER81,
-            monthlyPrediction.F107_ADJ_LAST81
+            monthlyPrediction.F107Obs,
+            monthlyPrediction.F107Adj,
+            monthlyPrediction.F107DataType,
+            monthlyPrediction.F107ObsCenter81,
+            monthlyPrediction.F107ObsLast81,
+            monthlyPrediction.F107AdjCenter81,
+            monthlyPrediction.F107AdjLast81
         );
     }
 
@@ -338,7 +338,7 @@ CSSISpaceWeather CSSISpaceWeather::Undefined()
     return CSSISpaceWeather();
 }
 
-CSSISpaceWeather CSSISpaceWeather::Load(const fs::File& aFile)
+CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
 {
     using ostk::core::types::Index;
     using ostk::core::types::Uint8;
@@ -407,76 +407,76 @@ CSSISpaceWeather CSSISpaceWeather::Load(const fs::File& aFile)
         const Integer BSRN = boost::lexical_cast<int>(lineParts[1]);
         const Integer ND = boost::lexical_cast<int>(lineParts[2]);
         const Integer ISN = boost::lexical_cast<int>(lineParts[23]);
-        const Real F107_OBS = boost::lexical_cast<double>(lineParts[24]);
-        const Real F107_ADJ = boost::lexical_cast<double>(lineParts[25]);
-        const String F107_DATA_TYPE = lineParts[26];
-        const Real F107_OBS_CENTER81 = boost::lexical_cast<double>(lineParts[27]);
-        const Real F107_OBS_LAST81 = boost::lexical_cast<double>(lineParts[28]);
-        const Real F107_ADJ_CENTER81 = boost::lexical_cast<double>(lineParts[29]);
-        const Real F107_ADJ_LAST81 = boost::lexical_cast<double>(String(lineParts[30]));
+        const Real F107Obs = boost::lexical_cast<double>(lineParts[24]);
+        const Real F107Adj = boost::lexical_cast<double>(lineParts[25]);
+        const String F107DataType = lineParts[26];
+        const Real F107ObsCenter81 = boost::lexical_cast<double>(lineParts[27]);
+        const Real F107ObsLast81 = boost::lexical_cast<double>(lineParts[28]);
+        const Real F107AdjCenter81 = boost::lexical_cast<double>(lineParts[29]);
+        const Real F107AdjLast81 = boost::lexical_cast<double>(String(lineParts[30]));
 
         const Integer mjd = DateTime(date, Time(0, 0, 0)).getModifiedJulianDate().floor();
 
         // observed and daily predicted readings
-        if (F107_DATA_TYPE == "OBS" || F107_DATA_TYPE == "INT" || F107_DATA_TYPE == "PRD")
+        if (F107DataType == "OBS" || F107DataType == "INT" || F107DataType == "PRD")
         {
             // Data points that exist for observed and daily predicted readings
-            const Integer KP1 = boost::lexical_cast<int>(lineParts[3]);
-            const Integer KP2 = boost::lexical_cast<int>(lineParts[4]);
-            const Integer KP3 = boost::lexical_cast<int>(lineParts[5]);
-            const Integer KP4 = boost::lexical_cast<int>(lineParts[6]);
-            const Integer KP5 = boost::lexical_cast<int>(lineParts[7]);
-            const Integer KP6 = boost::lexical_cast<int>(lineParts[8]);
-            const Integer KP7 = boost::lexical_cast<int>(lineParts[9]);
-            const Integer KP8 = boost::lexical_cast<int>(lineParts[10]);
-            const Integer KP_SUM = boost::lexical_cast<int>(lineParts[11]);
-            const Integer AP1 = boost::lexical_cast<int>(lineParts[12]);
-            const Integer AP2 = boost::lexical_cast<int>(lineParts[13]);
-            const Integer AP3 = boost::lexical_cast<int>(lineParts[14]);
-            const Integer AP4 = boost::lexical_cast<int>(lineParts[15]);
-            const Integer AP5 = boost::lexical_cast<int>(lineParts[16]);
-            const Integer AP6 = boost::lexical_cast<int>(lineParts[17]);
-            const Integer AP7 = boost::lexical_cast<int>(lineParts[18]);
-            const Integer AP8 = boost::lexical_cast<int>(lineParts[19]);
-            const Integer AP_AVG = boost::lexical_cast<int>(lineParts[20]);
-            const Real CP = boost::lexical_cast<double>(lineParts[21]);
+            const Integer Kp1 = boost::lexical_cast<int>(lineParts[3]);
+            const Integer Kp2 = boost::lexical_cast<int>(lineParts[4]);
+            const Integer Kp3 = boost::lexical_cast<int>(lineParts[5]);
+            const Integer Kp4 = boost::lexical_cast<int>(lineParts[6]);
+            const Integer Kp5 = boost::lexical_cast<int>(lineParts[7]);
+            const Integer Kp6 = boost::lexical_cast<int>(lineParts[8]);
+            const Integer Kp7 = boost::lexical_cast<int>(lineParts[9]);
+            const Integer Kp8 = boost::lexical_cast<int>(lineParts[10]);
+            const Integer KpSum = boost::lexical_cast<int>(lineParts[11]);
+            const Integer Ap1 = boost::lexical_cast<int>(lineParts[12]);
+            const Integer Ap2 = boost::lexical_cast<int>(lineParts[13]);
+            const Integer Ap3 = boost::lexical_cast<int>(lineParts[14]);
+            const Integer Ap4 = boost::lexical_cast<int>(lineParts[15]);
+            const Integer Ap5 = boost::lexical_cast<int>(lineParts[16]);
+            const Integer Ap6 = boost::lexical_cast<int>(lineParts[17]);
+            const Integer Ap7 = boost::lexical_cast<int>(lineParts[18]);
+            const Integer Ap8 = boost::lexical_cast<int>(lineParts[19]);
+            const Integer ApAvg = boost::lexical_cast<int>(lineParts[20]);
+            const Real Cp = boost::lexical_cast<double>(lineParts[21]);
             const Integer C9 = boost::lexical_cast<int>(lineParts[22]);
 
             const CSSISpaceWeather::Observation reading = {
                 date,
                 BSRN,
                 ND,
-                KP1,
-                KP2,
-                KP3,
-                KP4,
-                KP5,
-                KP6,
-                KP7,
-                KP8,
-                KP_SUM,
-                AP1,
-                AP2,
-                AP3,
-                AP4,
-                AP5,
-                AP6,
-                AP7,
-                AP8,
-                AP_AVG,
-                CP,
+                Kp1,
+                Kp2,
+                Kp3,
+                Kp4,
+                Kp5,
+                Kp6,
+                Kp7,
+                Kp8,
+                KpSum,
+                Ap1,
+                Ap2,
+                Ap3,
+                Ap4,
+                Ap5,
+                Ap6,
+                Ap7,
+                Ap8,
+                ApAvg,
+                Cp,
                 C9,
                 ISN,
-                F107_OBS,
-                F107_ADJ,
-                F107_DATA_TYPE,
-                F107_OBS_CENTER81,
-                F107_OBS_LAST81,
-                F107_ADJ_CENTER81,
-                F107_ADJ_LAST81,
+                F107Obs,
+                F107Adj,
+                F107DataType,
+                F107ObsCenter81,
+                F107ObsLast81,
+                F107AdjCenter81,
+                F107AdjLast81,
             };
 
-            if (F107_DATA_TYPE == "OBS" || F107_DATA_TYPE == "INT")
+            if (F107DataType == "OBS" || F107DataType == "INT")
             {
                 spaceWeather.observations_.insert({mjd, reading});
             }
@@ -487,20 +487,20 @@ CSSISpaceWeather CSSISpaceWeather::Load(const fs::File& aFile)
         }
 
         // monthly predicted readings
-        if (F107_DATA_TYPE == "PRM")
+        if (F107DataType == "PRM")
         {
             const CSSISpaceWeather::MonthlyPrediction reading = {
                 date,
                 BSRN,
                 ND,
                 ISN,
-                F107_OBS,
-                F107_ADJ,
-                F107_DATA_TYPE,
-                F107_OBS_CENTER81,
-                F107_OBS_LAST81,
-                F107_ADJ_CENTER81,
-                F107_ADJ_LAST81,
+                F107Obs,
+                F107Adj,
+                F107DataType,
+                F107ObsCenter81,
+                F107ObsLast81,
+                F107AdjCenter81,
+                F107AdjLast81,
             };
 
             spaceWeather.monthlyPredictions_.insert({mjd, reading});
@@ -541,13 +541,13 @@ CSSISpaceWeather CSSISpaceWeather::Load(const fs::File& aFile)
             lastDailyPrediction.BSRN,
             lastDailyPrediction.ND,
             lastDailyPrediction.ISN,
-            lastDailyPrediction.F107_OBS,
-            lastDailyPrediction.F107_ADJ,
-            lastDailyPrediction.F107_DATA_TYPE,
-            lastDailyPrediction.F107_OBS_CENTER81,
-            lastDailyPrediction.F107_OBS_LAST81,
-            lastDailyPrediction.F107_ADJ_CENTER81,
-            lastDailyPrediction.F107_ADJ_LAST81,
+            lastDailyPrediction.F107Obs,
+            lastDailyPrediction.F107Adj,
+            lastDailyPrediction.F107DataType,
+            lastDailyPrediction.F107ObsCenter81,
+            lastDailyPrediction.F107ObsLast81,
+            lastDailyPrediction.F107AdjCenter81,
+            lastDailyPrediction.F107AdjLast81,
         };
         const Integer monthMjd = DateTime(monthBeginningDate, Time::Midnight()).getModifiedJulianDate().floor();
         spaceWeather.monthlyPredictions_.insert({monthMjd, overlapMonthlyReading});

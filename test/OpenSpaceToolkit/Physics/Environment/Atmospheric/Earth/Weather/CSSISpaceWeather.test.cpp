@@ -78,12 +78,12 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceW
         EXPECT_EQ(Date::Parse("2018-01-01", Date::Format::Standard), firstObservation.date);
 
         EXPECT_EQ(2515, firstObservation.BSRN);
-        EXPECT_EQ(177, firstObservation.KP_SUM);
-        EXPECT_EQ(10, firstObservation.AP_AVG);
-        EXPECT_EQ("OBS", firstObservation.F107_DATA_TYPE);
+        EXPECT_EQ(177, firstObservation.KpSum);
+        EXPECT_EQ(10, firstObservation.ApAvg);
+        EXPECT_EQ("OBS", firstObservation.F107DataType);
 
-        EXPECT_NEAR(69.1, firstObservation.F107_OBS, 1e-15);
-        EXPECT_NEAR(71.4, firstObservation.F107_OBS_CENTER81, 1e-15);
+        EXPECT_NEAR(69.1, firstObservation.F107Obs, 1e-15);
+        EXPECT_NEAR(71.4, firstObservation.F107ObsCenter81, 1e-15);
     }
 
     {
@@ -120,12 +120,12 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceW
         EXPECT_EQ(Date::Parse("2023-06-20", Date::Format::Standard), firstDailyPrediction.date);
 
         EXPECT_EQ(2589, firstDailyPrediction.BSRN);
-        EXPECT_EQ(167, firstDailyPrediction.KP_SUM);
-        EXPECT_EQ(9, firstDailyPrediction.AP_AVG);
-        EXPECT_EQ("PRD", firstDailyPrediction.F107_DATA_TYPE);
+        EXPECT_EQ(167, firstDailyPrediction.KpSum);
+        EXPECT_EQ(9, firstDailyPrediction.ApAvg);
+        EXPECT_EQ("PRD", firstDailyPrediction.F107DataType);
 
-        EXPECT_NEAR(164.6, firstDailyPrediction.F107_OBS, 1e-15);
-        EXPECT_NEAR(160.2, firstDailyPrediction.F107_OBS_CENTER81, 1e-15);
+        EXPECT_NEAR(164.6, firstDailyPrediction.F107Obs, 1e-15);
+        EXPECT_NEAR(160.2, firstDailyPrediction.F107ObsCenter81, 1e-15);
     }
 
     {
@@ -162,10 +162,10 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceW
         EXPECT_EQ(Date::Parse("2023-09-01", Date::Format::Standard), firstMonthlyPrediction.date);
 
         EXPECT_EQ(11, firstMonthlyPrediction.ND);
-        EXPECT_EQ("PRM", firstMonthlyPrediction.F107_DATA_TYPE);
+        EXPECT_EQ("PRM", firstMonthlyPrediction.F107DataType);
 
-        EXPECT_NEAR(151.3, firstMonthlyPrediction.F107_OBS, 1e-15);
-        EXPECT_NEAR(154.2, firstMonthlyPrediction.F107_OBS_CENTER81, 1e-15);
+        EXPECT_NEAR(151.3, firstMonthlyPrediction.F107Obs, 1e-15);
+        EXPECT_NEAR(154.2, firstMonthlyPrediction.F107ObsCenter81, 1e-15);
     }
 
     {

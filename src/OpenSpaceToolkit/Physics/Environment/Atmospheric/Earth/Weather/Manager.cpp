@@ -123,28 +123,28 @@ Array<Integer> Manager::getKp3HourSolarIndicesAt(const Instant& anInstant) const
             const CSSISpaceWeather::Observation observation = CSSISpaceWeatherPtr->accessObservationAt(dayInstant);
 
             return Array<Integer> {
-                observation.KP1,
-                observation.KP2,
-                observation.KP3,
-                observation.KP4,
-                observation.KP5,
-                observation.KP6,
-                observation.KP7,
-                observation.KP8};
+                observation.Kp1,
+                observation.Kp2,
+                observation.Kp3,
+                observation.Kp4,
+                observation.Kp5,
+                observation.Kp6,
+                observation.Kp7,
+                observation.Kp8};
         }
         else if (CSSISpaceWeatherPtr->accessDailyPredictionInterval().contains(dayInstant))
         {
             const CSSISpaceWeather::Observation prediction = CSSISpaceWeatherPtr->accessDailyPredictionAt(dayInstant);
 
             return Array<Integer> {
-                prediction.KP1,
-                prediction.KP2,
-                prediction.KP3,
-                prediction.KP4,
-                prediction.KP5,
-                prediction.KP6,
-                prediction.KP7,
-                prediction.KP8};
+                prediction.Kp1,
+                prediction.Kp2,
+                prediction.Kp3,
+                prediction.Kp4,
+                prediction.Kp5,
+                prediction.Kp6,
+                prediction.Kp7,
+                prediction.Kp8};
         }
     }
 
@@ -171,30 +171,30 @@ Array<Integer> Manager::getAp3HourSolarIndicesAt(const Instant& anInstant) const
             const CSSISpaceWeather::Observation observation = CSSISpaceWeatherPtr->accessObservationAt(dayInstant);
 
             return Array<Integer> {
-                observation.AP1,
-                observation.AP2,
-                observation.AP3,
-                observation.AP4,
-                observation.AP5,
-                observation.AP6,
-                observation.AP7,
-                observation.AP8,
-                observation.AP_AVG};
+                observation.Ap1,
+                observation.Ap2,
+                observation.Ap3,
+                observation.Ap4,
+                observation.Ap5,
+                observation.Ap6,
+                observation.Ap7,
+                observation.Ap8,
+                observation.ApAvg};
         }
         else if (CSSISpaceWeatherPtr->accessDailyPredictionInterval().contains(dayInstant))
         {
             const CSSISpaceWeather::Observation prediction = CSSISpaceWeatherPtr->accessDailyPredictionAt(dayInstant);
 
             return Array<Integer> {
-                prediction.AP1,
-                prediction.AP2,
-                prediction.AP3,
-                prediction.AP4,
-                prediction.AP5,
-                prediction.AP6,
-                prediction.AP7,
-                prediction.AP8,
-                prediction.AP_AVG};
+                prediction.Ap1,
+                prediction.Ap2,
+                prediction.Ap3,
+                prediction.Ap4,
+                prediction.Ap5,
+                prediction.Ap6,
+                prediction.Ap7,
+                prediction.Ap8,
+                prediction.ApAvg};
         }
     }
 
@@ -218,15 +218,15 @@ Real Manager::getF107SolarFluxAt(const Instant& anInstant) const
     {
         if (CSSISpaceWeatherPtr->accessObservationInterval().contains(dayInstant))
         {
-            return CSSISpaceWeatherPtr->accessObservationAt(dayInstant).F107_OBS;
+            return CSSISpaceWeatherPtr->accessObservationAt(dayInstant).F107Obs;
         }
         else if (CSSISpaceWeatherPtr->accessDailyPredictionInterval().contains(dayInstant))
         {
-            return CSSISpaceWeatherPtr->accessDailyPredictionAt(dayInstant).F107_OBS;
+            return CSSISpaceWeatherPtr->accessDailyPredictionAt(dayInstant).F107Obs;
         }
         else if (CSSISpaceWeatherPtr->accessMonthlyPredictionInterval().contains(dayInstant))
         {
-            return CSSISpaceWeatherPtr->accessMonthlyPredictionAt(dayInstant).F107_OBS;
+            return CSSISpaceWeatherPtr->accessMonthlyPredictionAt(dayInstant).F107Obs;
         }
     }
 
@@ -250,15 +250,15 @@ Real Manager::getF107SolarFlux81DayAvgAt(const Instant& anInstant) const
     {
         if (CSSISpaceWeatherPtr->accessObservationInterval().contains(dayInstant))
         {
-            return CSSISpaceWeatherPtr->accessObservationAt(dayInstant).F107_OBS_CENTER81;
+            return CSSISpaceWeatherPtr->accessObservationAt(dayInstant).F107ObsCenter81;
         }
         else if (CSSISpaceWeatherPtr->accessDailyPredictionInterval().contains(dayInstant))
         {
-            return CSSISpaceWeatherPtr->accessDailyPredictionAt(dayInstant).F107_OBS_CENTER81;
+            return CSSISpaceWeatherPtr->accessDailyPredictionAt(dayInstant).F107ObsCenter81;
         }
         else if (CSSISpaceWeatherPtr->accessMonthlyPredictionInterval().contains(dayInstant))
         {
-            return CSSISpaceWeatherPtr->accessMonthlyPredictionAt(dayInstant).F107_OBS_CENTER81;
+            return CSSISpaceWeatherPtr->accessMonthlyPredictionAt(dayInstant).F107ObsCenter81;
         }
     }
 
