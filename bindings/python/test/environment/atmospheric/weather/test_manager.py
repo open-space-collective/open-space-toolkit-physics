@@ -84,14 +84,14 @@ class TestManager:
             Instant.date_time(datetime(2023, 6, 18, 12, 34, 56), Scale.UTC)
         )
 
-        assert kp_indices == [27,20,13,20,17,17,27,20]
+        assert kp_indices == [27, 20, 13, 20, 17, 17, 27, 20]
 
     def test_get_ap_3_hour_solar_indices_at_success(self, manager: Manager):
         ap_indices = manager.get_ap_3_hour_solar_indices_at(
             Instant.date_time(datetime(2023, 6, 18, 12, 34, 56), Scale.UTC)
         )
 
-        assert ap_indices == [12,7,5,7,6,6,12,7,8]
+        assert ap_indices == [12, 7, 5, 7, 6, 6, 12, 7, 8]
 
     def test_get_f107_solar_flux_at_success(self, manager: Manager):
         flux = manager.get_f107_solar_flux_at(
