@@ -52,7 +52,7 @@ class TestManager:
                     "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_LOCAL_REPOSITORY"
                 )
             )
-            + "/bulletin-A"  # TBI
+            + "/CSSISpaceWeather"  # TBI
         )
 
     def test_get_remote_url_success(self, manager: Manager):
@@ -105,7 +105,7 @@ class TestManager:
         manager.set_local_repository(
             Directory.path(
                 Path.parse(
-                    "./.open-space-toolkit/physics/environment/atmospheric/earth/weather2"
+                    "./.open-space-toolkit/physics/environment/atmospheric/earth/weather"
                 )
             )
         )
@@ -113,17 +113,17 @@ class TestManager:
         assert isinstance(manager.get_local_repository(), Directory)
         assert (
             manager.get_local_repository().to_string()
-            == "./.open-space-toolkit/physics/environment/atmospheric/earth/weather2"
+            == "./.open-space-toolkit/physics/environment/atmospheric/earth/weather"
         )
 
     def test_set_remote_url_success(self, manager: Manager):
         assert isinstance(manager.get_remote_url(), URL)
         assert manager.get_remote_url().to_string() == "https://celestrak.org/SpaceData/"
 
-        manager.set_remote_url(URL.parse("https://celestrak.org/SpaceData/2"))
+        manager.set_remote_url(URL.parse("https://celestrak.org/SpaceData/"))
 
         assert isinstance(manager.get_remote_url(), URL)
-        assert manager.get_remote_url().to_string() == "https://celestrak.org/SpaceData/2"
+        assert manager.get_remote_url().to_string() == "https://celestrak.org/SpaceData/"
 
     def test_load_cssi_space_weather_success(self, manager: Manager, cssi_space_weather: CSSISpaceWeather):
         assert len(manager.get_cssi_space_weather_array()) == 0
@@ -152,12 +152,8 @@ class TestManager:
     def test_clear_local_repository_success(self, manager: Manager):
         assert manager.get_local_repository().exists()
         assert manager.get_cssi_space_weather_directory().exists()
-        assert manager.get_finals_2000a_directory().exists()
         pathlib.Path(
             str(manager.get_cssi_space_weather_directory().get_path().to_string()) + "/toto"
-        ).touch()
-        pathlib.Path(
-            str(manager.get_finals_2000a_directory().get_path().to_string()) + "/toto"
         ).touch()
         assert not manager.get_local_repository().is_empty()
 
@@ -165,7 +161,6 @@ class TestManager:
 
         assert manager.get_local_repository().exists()
         assert manager.get_cssi_space_weather_directory().is_empty()
-        assert manager.get_finals_2000a_directory().is_empty()
 
     def test_get_success(self):
         assert isinstance(Manager.get(), Manager)
