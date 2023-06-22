@@ -528,6 +528,31 @@ CSSISpaceWeather CSSISpaceWeather::Load(const fs::File& aFile)
 
         spaceWeather.dailyPredictionInterval_ =
             Interval::Closed(dailyPredictionStartInstant, dailyPredictionEndInstant);
+
+        // Use the last daily prediction to make an artificial first monthly prediction
+        // so that the data overlaps
+        const CSSISpaceWeather::DailyPrediction& lastDailyPrediction =
+            spaceWeather.dailyPredictions_.rbegin()->second;
+
+        Date monthBeginningDate = lastDailyPrediction.date;
+        monthBeginningDate.setDay(1);
+
+        const CSSISpaceWeather::MonthlyPrediction overlapMonthlyReading = {
+            monthBeginningDate,
+            lastDailyPrediction.BSRN,
+            lastDailyPrediction.ND,
+            lastDailyPrediction.ISN,
+            lastDailyPrediction.F107_OBS,
+            lastDailyPrediction.F107_ADJ,
+            lastDailyPrediction.F107_DATA_TYPE,
+            lastDailyPrediction.F107_OBS_CENTER81,
+            lastDailyPrediction.F107_OBS_LAST81,
+            lastDailyPrediction.F107_ADJ_CENTER81,
+            lastDailyPrediction.F107_ADJ_LAST81,
+        };
+        const Integer monthMjd = DateTime(monthBeginningDate, Time::Midnight()).getModifiedJulianDate().floor();
+        spaceWeather.monthlyPredictions_.insert({monthMjd, overlapMonthlyReading});
+
     }
 
     if (!spaceWeather.monthlyPredictions_.empty())

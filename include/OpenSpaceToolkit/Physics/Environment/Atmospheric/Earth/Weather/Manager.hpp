@@ -72,8 +72,8 @@ class Manager
     enum class Mode
     {
 
-        Manual,    ///< Manually load and unload bulletins
-        Automatic  ///< Automatically fetch, load and unload bulletins (from remote repositories)
+        Manual,    ///< Manually load and unload space weather files
+        Automatic  ///< Automatically fetch, load and unload space weather files (from remote repositories)
 
     };
 
@@ -175,7 +175,7 @@ class Manager
 
     /// @brief              Reset manager
     ///
-    ///                     Unload all bulletins and clear cache.
+    ///                     Unload all space weather files and clear cache.
 
     void reset();
 
