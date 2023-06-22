@@ -41,20 +41,18 @@ std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& a
     Print::Header(anOutputStream, "CSSI Space Weather");
 
     Print::Line(anOutputStream) << "Observation interval:"
-                                                   << (aCSSISpaceWeather.observationInterval_.isDefined()
-                                                           ? aCSSISpaceWeather.observationInterval_.toString(Scale::UTC)
-                                                           : "Undefined");
-    Print::Line(anOutputStream)
-        << "Daily prediction interval:"
-        << (aCSSISpaceWeather.dailyPredictionInterval_.isDefined()
-                ? aCSSISpaceWeather.dailyPredictionInterval_.toString(Scale::UTC)
-                : "Undefined");
+                                << (aCSSISpaceWeather.observationInterval_.isDefined()
+                                        ? aCSSISpaceWeather.observationInterval_.toString(Scale::UTC)
+                                        : "Undefined");
+    Print::Line(anOutputStream) << "Daily prediction interval:"
+                                << (aCSSISpaceWeather.dailyPredictionInterval_.isDefined()
+                                        ? aCSSISpaceWeather.dailyPredictionInterval_.toString(Scale::UTC)
+                                        : "Undefined");
 
-    Print::Line(anOutputStream)
-        << "Monthly prediction interval:"
-        << (aCSSISpaceWeather.monthlyPredictionInterval_.isDefined()
-                ? aCSSISpaceWeather.monthlyPredictionInterval_.toString(Scale::UTC)
-                : "Undefined");
+    Print::Line(anOutputStream) << "Monthly prediction interval:"
+                                << (aCSSISpaceWeather.monthlyPredictionInterval_.isDefined()
+                                        ? aCSSISpaceWeather.monthlyPredictionInterval_.toString(Scale::UTC)
+                                        : "Undefined");
 
     const String dataHeader = String(
         "DATE,BSRN,ND,Kp1,Kp2,Kp3,Kp4,Kp5,Kp6,Kp7,Kp8,KpSum,Ap1,Ap2,Ap3,Ap4,Ap5,Ap6,Ap7,Ap8,ApAvg,Cp,C9,ISN,F10.7_"

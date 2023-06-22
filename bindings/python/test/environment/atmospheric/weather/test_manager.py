@@ -25,7 +25,9 @@ def manager() -> Manager:
     manager = Manager.get()
 
     manager.set_mode(Manager.Mode.Automatic)
-    manager.set_remote_url(URL.parse("https://celestrak.org/SpaceData/"))  # SW-Last5Years.csv
+    manager.set_remote_url(
+        URL.parse("https://celestrak.org/SpaceData/")
+    )  # SW-Last5Years.csv
 
     yield manager
 
@@ -125,7 +127,9 @@ class TestManager:
         assert isinstance(manager.get_remote_url(), URL)
         assert manager.get_remote_url().to_string() == "https://celestrak.org/SpaceData/"
 
-    def test_load_cssi_space_weather_success(self, manager: Manager, cssi_space_weather: CSSISpaceWeather):
+    def test_load_cssi_space_weather_success(
+        self, manager: Manager, cssi_space_weather: CSSISpaceWeather
+    ):
         assert len(manager.get_cssi_space_weather_array()) == 0
 
         manager.load_cssi_space_weather(cssi_space_weather)
@@ -153,7 +157,8 @@ class TestManager:
         assert manager.get_local_repository().exists()
         assert manager.get_cssi_space_weather_directory().exists()
         pathlib.Path(
-            str(manager.get_cssi_space_weather_directory().get_path().to_string()) + "/toto"
+            str(manager.get_cssi_space_weather_directory().get_path().to_string())
+            + "/toto"
         ).touch()
         assert not manager.get_local_repository().is_empty()
 

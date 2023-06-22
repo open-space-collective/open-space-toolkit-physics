@@ -62,5 +62,5 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
     // Add __path__ attribute for "earth" submodule
     earth.attr("__path__") = "ostk.physics.environment.atmospheric.earth";
 
-    OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_Weather(earth); // TBI
+    OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_Weather(earth);  // TBI
 }
