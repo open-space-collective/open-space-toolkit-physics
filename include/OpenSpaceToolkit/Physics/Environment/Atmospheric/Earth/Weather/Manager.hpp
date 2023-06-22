@@ -254,10 +254,6 @@ class Manager
 
     void loadCSSISpaceWeather_(const CSSISpaceWeather& aCSSISpaceWeather);
 
-    // CSSISpaceWeather::Observation* getObservationOrDailyPredictionAt_(const Instant& anInstant) const;
-
-    // CSSISpaceWeather::MonthlyPrediction* getMonthlyPredictionAt_(const Instant& anInstant) const;
-
     File fetchLatestCSSISpaceWeather_();
 
     void lockLocalRepository(const Duration& aTimeout);

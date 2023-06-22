@@ -589,45 +589,6 @@ void Manager::loadCSSISpaceWeather_(const CSSISpaceWeather& aCSSISpaceWeather)
     CSSISpaceWeatherIndex_ = 0;
 }
 
-/*
-CSSISpaceWeather::Observation* Manager::getObservationOrDailyPredictionAt_(const Instant& anInstant) const
-{
-    const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt(anInstant);
-
-    if (CSSISpaceWeatherPtr != nullptr)
-    {
-        if (CSSISpaceWeatherPtr->accessObservationInterval().contains(anInstant))
-        {
-            return (CSSISpaceWeatherPtr->accessObservationAt(anInstant));
-        }
-        else if (CSSISpaceWeatherPtr->accessDailyPredictionInterval().contains(anInstant))
-        {
-            return (CSSISpaceWeatherPtr->accessDailyPredictionAt(anInstant));
-        }
-        else
-        {
-            return nullptr;
-        }
-    }
-}
-
-CSSISpaceWeather::MonthlyPrediction* Manager::getMonthlyPredictionAt_(const Instant& anInstant) const
-{
-    const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt(anInstant);
-
-    if (CSSISpaceWeatherPtr != nullptr)
-    {
-        if (CSSISpaceWeatherPtr->accessMonthlyPredictionInterval().contains(anInstant))
-        {
-            return (CSSISpaceWeatherPtr->accessMonthlyPredictionAt(anInstant));
-        }
-        else
-        {
-            return nullptr;
-        }
-    }
-}*/
-
 File Manager::fetchLatestCSSISpaceWeather_()
 {
     using ostk::core::types::Uint8;
