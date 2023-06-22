@@ -18,7 +18,6 @@
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Weather/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Date.hpp>
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
-#include <OpenSpaceToolkit/Physics/Time/Time.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Time.hpp>
@@ -119,7 +118,6 @@ Array<Integer> Manager::getKp3HourSolarIndicesAt(const Instant& anInstant) const
 
     if (CSSISpaceWeatherPtr != nullptr)
     {
-
         if (CSSISpaceWeatherPtr->accessObservationInterval().contains(dayInstant))
         {
             const CSSISpaceWeather::Observation observation = CSSISpaceWeatherPtr->accessObservationAt(dayInstant);
@@ -437,7 +435,6 @@ const CSSISpaceWeather* Manager::accessCSSISpaceWeatherAt(const Instant& anInsta
     // Try cache
     if (!CSSISpaceWeatherArray_.isEmpty())
     {
-
         const CSSISpaceWeather& CSSISpaceWeather = CSSISpaceWeatherArray_.at(CSSISpaceWeatherIndex_);
 
         if (CSSISpaceWeather.accessObservationInterval().contains(anInstant) ||
