@@ -27,7 +27,6 @@ namespace earth
 namespace weather
 {
 
-namespace fs = ostk::core::fs;
 
 using ostk::core::types::Integer;
 using ostk::core::types::Real;
@@ -145,7 +144,7 @@ class CSSISpaceWeather
 
     static CSSISpaceWeather Undefined();
 
-    static CSSISpaceWeather Load(const fs::File& aFile);
+    static CSSISpaceWeather Load(const File& aFile);
 
    private:
     Date lastObservationDate_;
