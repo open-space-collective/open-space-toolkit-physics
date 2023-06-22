@@ -37,9 +37,14 @@ namespace earth
 namespace weather
 {
 
+using ostk::core::types::Uint8;
+using ostk::core::types::Uint16;
+using ostk::core::types::Integer;
 using ostk::core::types::String;
 using ostk::core::ctnr::Map;
 using ostk::core::fs::Path;
+
+using ostk::io::ip::tcp::http::Client;
 
 using ostk::physics::time::Scale;
 using ostk::physics::time::Date;
@@ -130,7 +135,8 @@ Array<Integer> Manager::getKp3HourSolarIndicesAt(const Instant& anInstant) const
                 observation.Kp5,
                 observation.Kp6,
                 observation.Kp7,
-                observation.Kp8};
+                observation.Kp8,
+            };
         }
         else if (CSSISpaceWeatherPtr->accessDailyPredictionInterval().contains(dayInstant))
         {
@@ -144,7 +150,8 @@ Array<Integer> Manager::getKp3HourSolarIndicesAt(const Instant& anInstant) const
                 prediction.Kp5,
                 prediction.Kp6,
                 prediction.Kp7,
-                prediction.Kp8};
+                prediction.Kp8,
+            };
         }
     }
 
@@ -179,7 +186,8 @@ Array<Integer> Manager::getAp3HourSolarIndicesAt(const Instant& anInstant) const
                 observation.Ap6,
                 observation.Ap7,
                 observation.Ap8,
-                observation.ApAvg};
+                observation.ApAvg,
+            };
         }
         else if (CSSISpaceWeatherPtr->accessDailyPredictionInterval().contains(dayInstant))
         {
@@ -194,7 +202,8 @@ Array<Integer> Manager::getAp3HourSolarIndicesAt(const Instant& anInstant) const
                 prediction.Ap6,
                 prediction.Ap7,
                 prediction.Ap8,
-                prediction.ApAvg};
+                prediction.ApAvg,
+            };
         }
     }
 
@@ -372,8 +381,6 @@ Manager::Mode Manager::DefaultMode()
 
 Directory Manager::DefaultLocalRepository()
 {
-    using ostk::core::fs::Path;
-
     static const Directory defaultLocalRepository =
         Directory::Path(Path::Parse(OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_LOCAL_REPOSITORY));
 
@@ -533,8 +540,6 @@ const CSSISpaceWeather* Manager::accessCSSISpaceWeatherAt(const Instant& anInsta
 
 File Manager::getLocalRepositoryLockFile() const
 {
-    using ostk::core::fs::Path;
-
     return File::Path(localRepository_.getPath() + Path::Parse(".lock"));
 }
 
@@ -570,9 +575,6 @@ File Manager::getLatestCSSISpaceWeatherFile() const
 
 void Manager::setup()
 {
-    using ostk::core::fs::Path;
-    using ostk::core::fs::File;
-
     if (!localRepository_.exists())
     {
         localRepository_.create();
@@ -601,21 +603,6 @@ void Manager::loadCSSISpaceWeather_(const CSSISpaceWeather& aCSSISpaceWeather)
 
 File Manager::fetchLatestCSSISpaceWeather_()
 {
-    using ostk::core::types::Uint8;
-    using ostk::core::types::Uint16;
-    using ostk::core::types::Integer;
-    using ostk::core::types::String;
-    using ostk::core::ctnr::Map;
-    using ostk::core::fs::Path;
-
-    using ostk::io::ip::tcp::http::Client;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Date;
-    using ostk::physics::time::Time;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::time::Instant;
-
     std::cout << "Fetching latest CSSI Space Weather..." << std::endl;
 
     Directory temporaryDirectory =

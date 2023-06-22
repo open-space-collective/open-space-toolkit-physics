@@ -25,21 +25,32 @@ namespace earth
 namespace weather
 {
 
+using ostk::core::types::Index;
+using ostk::core::types::Uint8;
+using ostk::core::types::Uint16;
+using ostk::core::types::Real;
+using ostk::core::types::String;
+using ostk::core::utils::Print;
+
+using ostk::physics::time::Scale;
+using ostk::physics::time::Time;
+using ostk::physics::time::DateTime;
+
 std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& aCSSISpaceWeather)
 {
-    ostk::core::utils::Print::Header(anOutputStream, "CSSI Space Weather");
+    Print::Header(anOutputStream, "CSSI Space Weather");
 
-    ostk::core::utils::Print::Line(anOutputStream) << "Observation interval:"
+    Print::Line(anOutputStream) << "Observation interval:"
                                                    << (aCSSISpaceWeather.observationInterval_.isDefined()
                                                            ? aCSSISpaceWeather.observationInterval_.toString(Scale::UTC)
                                                            : "Undefined");
-    ostk::core::utils::Print::Line(anOutputStream)
+    Print::Line(anOutputStream)
         << "Daily prediction interval:"
         << (aCSSISpaceWeather.dailyPredictionInterval_.isDefined()
                 ? aCSSISpaceWeather.dailyPredictionInterval_.toString(Scale::UTC)
                 : "Undefined");
 
-    ostk::core::utils::Print::Line(anOutputStream)
+    Print::Line(anOutputStream)
         << "Monthly prediction interval:"
         << (aCSSISpaceWeather.monthlyPredictionInterval_.isDefined()
                 ? aCSSISpaceWeather.monthlyPredictionInterval_.toString(Scale::UTC)
@@ -50,13 +61,13 @@ std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& a
         "OBS,F10.7Adj,F10.7DataType,F10.7ObsCenter81,F10.7ObsLast81,F10.7AdjCenter81,F10.7AdjLast81"
     );
 
-    ostk::core::utils::Print::Separator(anOutputStream, "Observations");
-    ostk::core::utils::Print::Line(anOutputStream) << dataHeader;
+    Print::Separator(anOutputStream, "Observations");
+    Print::Line(anOutputStream) << dataHeader;
     for (const auto& observationIt : aCSSISpaceWeather.observations_)
     {
         const CSSISpaceWeather::Observation& observation = observationIt.second;
 
-        ostk::core::utils::Print::Line(anOutputStream) << String::Format(
+        Print::Line(anOutputStream) << String::Format(
             "{:04}-{:02}-{:02}  {:>4d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>4d} "
             " {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:.2f}  {:>2d}  {:>4d}  {:6.2f}  "
             "{:6.2f}  {:s}  {:6.2f}  {:6.2f}  {:6.2f}  {:6.2f}",
@@ -96,14 +107,14 @@ std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& a
         );
     }
 
-    ostk::core::utils::Print::Separator(anOutputStream, "Daily Predictions");
-    ostk::core::utils::Print::Line(anOutputStream) << dataHeader;
+    Print::Separator(anOutputStream, "Daily Predictions");
+    Print::Line(anOutputStream) << dataHeader;
 
     for (const auto& dailyPredictionIt : aCSSISpaceWeather.dailyPredictions_)
     {
         const CSSISpaceWeather::DailyPrediction& dailyPrediction = dailyPredictionIt.second;
 
-        ostk::core::utils::Print::Line(anOutputStream) << String::Format(
+        Print::Line(anOutputStream) << String::Format(
             "{:04}-{:02}-{:02}  {:>4d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>4d} "
             " {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:.2f}  {:>2d}  {:>4d}  {:6.2f}  "
             "{:6.2f}  {:s}  {:6.2f}  {:6.2f}  {:6.2f}  {:6.2f}",
@@ -143,8 +154,8 @@ std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& a
         );
     }
 
-    ostk::core::utils::Print::Separator(anOutputStream, "Monthly Predictions");
-    ostk::core::utils::Print::Line(anOutputStream) << String(
+    Print::Separator(anOutputStream, "Monthly Predictions");
+    Print::Line(anOutputStream) << String(
         "DATE,BSRN,ND,ISN,F10.7Obs,F10.7Adj,F10.7DataType,F10.7ObsCenter81,F10.7ObsLast81,F10.7AdjCenter81,"
         "F10.7AdjLast81"
     );
@@ -153,7 +164,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& a
     {
         const CSSISpaceWeather::MonthlyPrediction& monthlyPrediction = monthlyPredictionIt.second;
 
-        ostk::core::utils::Print::Line(anOutputStream) << String::Format(
+        Print::Line(anOutputStream) << String::Format(
             "{:04}-{:02}-{:02}  {:>4d}  {:>2d}  {:>4d}  {:6.2f}  {:6.2f}  {:s}  {:6.2f}  {:6.2f}  {:6.2f}  {:6.2f}",
             monthlyPrediction.date.getYear(),
             monthlyPrediction.date.getMonth(),
@@ -171,7 +182,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& a
         );
     }
 
-    ostk::core::utils::Print::Footer(anOutputStream);
+    Print::Footer(anOutputStream);
 
     return anOutputStream;
 }
@@ -340,16 +351,6 @@ CSSISpaceWeather CSSISpaceWeather::Undefined()
 
 CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
 {
-    using ostk::core::types::Index;
-    using ostk::core::types::Uint8;
-    using ostk::core::types::Uint16;
-    using ostk::core::types::Real;
-    using ostk::core::types::String;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Time;
-    using ostk::physics::time::DateTime;
-
     if (!aFile.isDefined())
     {
         throw ostk::core::error::runtime::Undefined("File");
