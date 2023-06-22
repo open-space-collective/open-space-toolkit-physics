@@ -21,38 +21,51 @@ class TestCSSISpaceWeather:
         assert cssi_space_weather.is_defined() is True
 
     def test_access_last_observation_date_success(self, cssi_space_weather: CSSISpaceWeather):
-        assert cssi_space_weather.access_last_observation_date().to_string() == "2020-10-29"
+        assert cssi_space_weather.access_last_observation_date().to_string() == "2023-06-19"
 
     def test_access_observation_interval_success(self, cssi_space_weather: CSSISpaceWeather):
         assert cssi_space_weather.access_observation_interval().to_string()
 
     def test_access_observation_at_success(self, cssi_space_weather: CSSISpaceWeather):
-        assert cssi_space_weather.access_observation_at() == Instant.date_time(
-            datetime(2017, 1, 1, 0, 0, 0), Scale.UTC
-        )
+        observation: Observation = cssi_space_weather.access_observation_at(Instant.date_time(
+            datetime(2023, 6, 19, 0, 0, 0), Scale.UTC
+        ))
+
+        assert observation.date.to_string() == "2023-06-19"
+        assert observation.kp_sum == 177
+        assert observation.f107_obs == 168.8
+        assert observation.f107_obs_center_81 == 160.1
 
     def test_access_daily_prediction_interval_success(self, cssi_space_weather: CSSISpaceWeather):
         assert (
             cssi_space_weather.access_daily_prediction_interval().to_string()
-            == "[2020-10-23 00:00:00 - 2020-10-29 00:00:00] [UTC]"
+            == "[2023-06-20 00:00:00 - 2023-08-03 00:00:00] [UTC]"
         )
 
     def test_access_daily_prediction_at_success(self, cssi_space_weather: CSSISpaceWeather):
-        assert (
-            cssi_space_weather.access_daily_prediction_at().to_string()
-            == "[2020-10-30 00:00:00 - 2021-10-29 00:00:00] [UTC]"
-        )
+        prediction: DailyPrediction = cssi_space_weather.access_daily_prediction_at(Instant.date_time(
+            datetime(2023, 8, 3, 0, 0, 0), Scale.UTC
+        ))
+
+        assert prediction.date.to_string() == "2023-08-03"
+        assert prediction.kp_sum == 104
+        assert prediction.f107_obs == 165.1
+        assert prediction.f107_obs_center_81 == 157.4
 
     def test_access_monthly_prediction_interval_success(self, cssi_space_weather: CSSISpaceWeather):
         assert (
-            cssi_space_weather.access_daily_prediction_interval().to_string()
-            == "[2020-10-23 00:00:00 - 2020-10-29 00:00:00] [UTC]"
+            cssi_space_weather.access_monthly_prediction_interval().to_string()
+            == "[2023-08-01 00:00:00 - 2029-01-01 00:00:00] [UTC]"
         )
 
     def test_access_monthly_prediction_at_success(self, cssi_space_weather: CSSISpaceWeather):
-        assert cssi_space_weather.access_monthly_prediction_at() == Instant.date_time(
-            datetime(2017, 1, 1, 0, 0, 0), Scale.UTC
-        )
+        prediction: MonthlyPrediction = cssi_space_weather.access_monthly_prediction_at(Instant.date_time(
+            datetime(2029, 1, 1, 0, 0, 0), Scale.UTC
+        ))
+
+        assert prediction.date.to_string() == "2029-01-01"
+        assert prediction.f107_obs == 83.5
+        assert prediction.f107_obs_center_81 == 83.6
 
     def test_undefined_success(self):
         assert CSSISpaceWeather.undefined() is not None

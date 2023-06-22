@@ -69,7 +69,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_Weather_CSSI
 
         ;
 
-    class_<CSSISpaceWeather::DailyPrediction>(CSSISpaceWeatherClass, "DailyPrediction"); // TBI: Add attributes
+    //class_<CSSISpaceWeather::DailyPrediction>(CSSISpaceWeatherClass, "DailyPrediction"); // TBI: Add attributes
 
     class_<CSSISpaceWeather::MonthlyPrediction>(CSSISpaceWeatherClass, "MonthlyPrediction")
 

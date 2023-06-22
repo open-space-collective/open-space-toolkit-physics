@@ -44,9 +44,9 @@ class TestManager:
         )
 
     def test_get_cssi_space_weather_directory_success(self, manager: Manager):
-        assert isinstance(manager.test_get_cssi_space_weather_directory_success(), Directory)
+        assert isinstance(manager.get_cssi_space_weather_directory(), Directory)
         assert (
-            manager.test_get_cssi_space_weather_directory_success().to_string()
+            manager.get_cssi_space_weather_directory().to_string()
             == str(
                 os.environ.get(
                     "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_LOCAL_REPOSITORY"
