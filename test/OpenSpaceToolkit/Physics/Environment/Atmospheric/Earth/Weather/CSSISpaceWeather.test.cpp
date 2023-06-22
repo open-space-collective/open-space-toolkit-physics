@@ -140,7 +140,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceW
     {
         EXPECT_EQ(
             Interval::Closed(
-                Instant::DateTime(DateTime::Parse("2023-09-01 00:00:00"), Scale::UTC),
+                Instant::DateTime(DateTime::Parse("2023-08-01 00:00:00"), Scale::UTC),
                 Instant::DateTime(DateTime::Parse("2029-01-01 00:00:00"), Scale::UTC)
             ),
             CSSISpaceWeather_.accessMonthlyPredictionInterval()
