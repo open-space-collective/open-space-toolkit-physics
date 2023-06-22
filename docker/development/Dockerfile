@@ -106,7 +106,7 @@ RUN git clone https://github.com/geographiclib/geographiclib /tmp/geographiclib 
 
 ## Open Space Toolkit ▸ Core
 
-ARG OSTK_CORE_VERSION="0.7.0"
+ARG OSTK_CORE_VERSION="0.6.0"
 
 RUN mkdir -p /tmp/open-space-toolkit-core \
  && cd /tmp/open-space-toolkit-core \

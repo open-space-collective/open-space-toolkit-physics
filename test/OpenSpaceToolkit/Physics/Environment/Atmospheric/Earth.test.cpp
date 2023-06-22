@@ -209,7 +209,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_LLA)
                 }
                 catch (const RuntimeError& e)
                 {
-                    EXPECT_EQ(expectedString, e.getMessage());
+                    EXPECT_EQ(expectedString, e.what());
                     throw;
                 }
             },
