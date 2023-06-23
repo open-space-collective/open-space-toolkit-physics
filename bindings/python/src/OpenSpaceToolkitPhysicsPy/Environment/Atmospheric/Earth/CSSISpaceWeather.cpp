@@ -1,14 +1,14 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Weather/CSSISpaceWeather.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_Weather_CSSISpaceWeather(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_CSSISpaceWeather(pybind11::module& aModule)
 {
     using namespace pybind11;
 
     using ostk::core::types::Shared;
 
-    using ostk::physics::environment::atmospheric::earth::weather::CSSISpaceWeather;
+    using ostk::physics::environment::atmospheric::earth::CSSISpaceWeather;
 
     class_<CSSISpaceWeather> CSSISpaceWeatherClass(aModule, "CSSISpaceWeather");
 

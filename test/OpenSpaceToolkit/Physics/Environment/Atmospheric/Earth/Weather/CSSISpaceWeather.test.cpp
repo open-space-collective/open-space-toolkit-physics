@@ -1,6 +1,6 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Weather/CSSISpaceWeather.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp>
 
 #include <Global.test.hpp>
 
@@ -13,15 +13,15 @@ using ostk::physics::time::Instant;
 using ostk::physics::time::DateTime;
 using ostk::physics::time::Interval;
 using ostk::physics::time::Duration;
-using ostk::physics::environment::atmospheric::earth::weather::CSSISpaceWeather;
+using ostk::physics::environment::atmospheric::earth::CSSISpaceWeather;
 
-class OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWeather : public ::testing::Test
+class OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather : public ::testing::Test
 {
    protected:
     void SetUp() override
     {
         const File file =
-            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Weather/"
+            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
                                    "CSSISpaceWeather/SW-Last5Years.test.csv"));
         this->CSSISpaceWeather_ = CSSISpaceWeather::Load(file);
     }
@@ -29,7 +29,7 @@ class OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWe
     CSSISpaceWeather CSSISpaceWeather_ = CSSISpaceWeather::Undefined();
 };
 
-TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWeather, StreamOperator)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, StreamOperator)
 {
     {
         testing::internal::CaptureStdout();
@@ -40,7 +40,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceW
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWeather, IsDefined)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, IsDefined)
 {
     {
         EXPECT_TRUE(CSSISpaceWeather_.isDefined());
@@ -51,7 +51,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceW
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWeather, AccessObservationInterval)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, AccessObservationInterval)
 {
     {
         EXPECT_EQ(
@@ -68,7 +68,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceW
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWeather, AccessObservationAt)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, AccessObservationAt)
 {
     {
         const CSSISpaceWeather::Observation firstObservation =
@@ -93,7 +93,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceW
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWeather, AccessDailyPredictionInterval)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, AccessDailyPredictionInterval)
 {
     {
         EXPECT_EQ(
@@ -110,7 +110,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceW
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWeather, AccessDailyPredictionAt)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, AccessDailyPredictionAt)
 {
     {
         const CSSISpaceWeather::DailyPrediction firstDailyPrediction = CSSISpaceWeather_.accessDailyPredictionAt(
@@ -135,7 +135,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceW
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWeather, AccessMonthlyPredictionInterval)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, AccessMonthlyPredictionInterval)
 {
     {
         EXPECT_EQ(
@@ -152,7 +152,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceW
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWeather, AccessMonthlyPredictionAt)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, AccessMonthlyPredictionAt)
 {
     {
         const CSSISpaceWeather::MonthlyPrediction firstMonthlyPrediction = CSSISpaceWeather_.accessMonthlyPredictionAt(
@@ -175,7 +175,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceW
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWeather, Load)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, Load)
 {
     {
         EXPECT_TRUE(CSSISpaceWeather_.isDefined());

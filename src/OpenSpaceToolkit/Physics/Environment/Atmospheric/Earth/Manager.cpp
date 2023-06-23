@@ -15,7 +15,7 @@
 
 #include <OpenSpaceToolkit/IO/IP/TCP/HTTP/Client.hpp>
 
-#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Weather/Manager.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Date.hpp>
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
@@ -33,8 +33,6 @@ namespace environment
 namespace atmospheric
 {
 namespace earth
-{
-namespace weather
 {
 
 using ostk::core::types::Uint8;
@@ -358,9 +356,9 @@ Manager& Manager::Get()
 
 Manager::Mode Manager::DefaultMode()
 {
-    static const Manager::Mode defaultMode = OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_MODE;
+    static const Manager::Mode defaultMode = OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_MODE;
 
-    if (const char* modeString = std::getenv("OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_MODE"))
+    if (const char* modeString = std::getenv("OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_MODE"))
     {
         if (strcmp(modeString, "Manual") == 0)
         {
@@ -382,10 +380,10 @@ Manager::Mode Manager::DefaultMode()
 Directory Manager::DefaultLocalRepository()
 {
     static const Directory defaultLocalRepository =
-        Directory::Path(Path::Parse(OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_LOCAL_REPOSITORY));
+        Directory::Path(Path::Parse(OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY));
 
     if (const char* localRepositoryPath =
-            std::getenv("OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_LOCAL_REPOSITORY"))
+            std::getenv("OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY"))
     {
         return Directory::Path(Path::Parse(localRepositoryPath));
     }
@@ -396,10 +394,10 @@ Directory Manager::DefaultLocalRepository()
 Duration Manager::DefaultLocalRepositoryLockTimeout()
 {
     static const Duration defaultLocalRepositoryLockTimeout =
-        Duration::Seconds(OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT);
+        Duration::Seconds(OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT);
 
     if (const char* localRepositoryLockTimeoutString =
-            std::getenv("OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT"))
+            std::getenv("OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT"))
     {
         return Duration::Parse(localRepositoryLockTimeoutString);
     }
@@ -410,9 +408,9 @@ Duration Manager::DefaultLocalRepositoryLockTimeout()
 URL Manager::DefaultRemoteUrl()
 {
     static const URL defaultRemoteUrl =
-        URL::Parse(OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_REMOTE_URL);
+        URL::Parse(OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_REMOTE_URL);
 
-    if (const char* remoteUrl = std::getenv("OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_REMOTE_URL"))
+    if (const char* remoteUrl = std::getenv("OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_REMOTE_URL"))
     {
         return URL::Parse(remoteUrl);
     }
@@ -546,7 +544,7 @@ File Manager::getLocalRepositoryLockFile() const
 File Manager::getLatestCSSISpaceWeatherFile() const
 {
     // Parse CSSI Space Weather Directories, e.g.,
-    // `.open-space-toolkit/physics/environment/atmospheric/earth/weather/CSSI-Space-Weather/2022-05-19/`, and find the
+    // `.open-space-toolkit/physics/environment/atmospheric/earth/CSSI-Space-Weather/2022-05-19/`, and find the
     // latest one.
 
     Map<Instant, File> CSSISpaceWeatherMap = {};
@@ -619,7 +617,7 @@ File Manager::fetchLatestCSSISpaceWeather_()
     try
     {
         // Create temporary Directory,
-        // e.g., `.open-space-toolkit/physics/enviroment/atmospheric/earth/weather/cssi-space-weather/tmp/`.
+        // e.g., `.open-space-toolkit/physics/enviroment/atmospheric/earth/cssi-space-weather/tmp/`.
 
         if (temporaryDirectory.exists())
         {
@@ -663,7 +661,7 @@ File Manager::fetchLatestCSSISpaceWeather_()
         const CSSISpaceWeather latestCSSISpaceWeather = CSSISpaceWeather::Load(latestCSSISpaceWeatherFile);
 
         // Move CSSI Space Weather File into destination Directory,
-        // e.g., `.open-space-toolkit/physics/enviroment/atmospheric/earth/weather/cssi-space-weather/2022-05-19/`.
+        // e.g., `.open-space-toolkit/physics/enviroment/atmospheric/earth/cssi-space-weather/2022-05-19/`.
 
         destinationDirectory = Directory::Path(
             this->getCSSISpaceWeatherDirectory().getPath() +
@@ -770,7 +768,6 @@ void Manager::unlockLocalRepository()
     this->getLocalRepositoryLockFile().remove();
 }
 
-}  // namespace weather
 }  // namespace earth
 }  // namespace atmospheric
 }  // namespace environment

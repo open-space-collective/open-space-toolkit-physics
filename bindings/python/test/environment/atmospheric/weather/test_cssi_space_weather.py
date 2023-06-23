@@ -9,7 +9,7 @@ from ostk.core.filesystem import File
 from ostk.physics.time import Scale
 from ostk.physics.time import Instant
 
-from ostk.physics.environment.atmospheric.earth.weather import CSSISpaceWeather
+from ostk.physics.environment.atmospheric.earth import CSSISpaceWeather
 
 
 class TestCSSISpaceWeather:

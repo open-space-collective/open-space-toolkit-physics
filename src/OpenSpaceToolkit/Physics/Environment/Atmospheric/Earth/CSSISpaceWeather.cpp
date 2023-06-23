@@ -10,7 +10,7 @@
 #include <OpenSpaceToolkit/Core/Types/String.hpp>
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
 
-#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Weather/CSSISpaceWeather.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp>
 
 namespace ostk
 {
@@ -21,8 +21,6 @@ namespace environment
 namespace atmospheric
 {
 namespace earth
-{
-namespace weather
 {
 
 using ostk::core::types::Index;
@@ -566,20 +564,6 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
     return spaceWeather;
 }
 
-CSSISpaceWeather::CSSISpaceWeather()
-    : lastObservationDate_(Date::Undefined()),
-      observationInterval_(Interval::Undefined()),
-      observations_(Map<Integer, CSSISpaceWeather::Observation>()),
-
-      dailyPredictionInterval_(Interval::Undefined()),
-      dailyPredictions_(Map<Integer, CSSISpaceWeather::DailyPrediction>()),
-
-      monthlyPredictionInterval_(Interval::Undefined()),
-      monthlyPredictions_(Map<Integer, CSSISpaceWeather::MonthlyPrediction>())
-{
-}
-
-}  // namespace weather
 }  // namespace earth
 }  // namespace atmospheric
 }  // namespace environment

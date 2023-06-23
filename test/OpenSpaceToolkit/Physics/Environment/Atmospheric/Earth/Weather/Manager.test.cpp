@@ -7,8 +7,8 @@
 #include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
 #include <OpenSpaceToolkit/Core/Types/Real.hpp>
 
-#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Weather/CSSISpaceWeather.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Weather/Manager.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.hpp>
 
 #include <Global.test.hpp>
 
@@ -27,10 +27,10 @@ using ostk::physics::time::Scale;
 using ostk::physics::time::Instant;
 using ostk::physics::time::Duration;
 using ostk::physics::time::DateTime;
-using ostk::physics::environment::atmospheric::earth::weather::Manager;
-using ostk::physics::environment::atmospheric::earth::weather::CSSISpaceWeather;
+using ostk::physics::environment::atmospheric::earth::Manager;
+using ostk::physics::environment::atmospheric::earth::CSSISpaceWeather;
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, GetMode)
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetMode)
 {
     {
         const Manager& manager = Manager::Get();
@@ -39,16 +39,16 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Get
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, GetLocalRepository)
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetLocalRepository)
 {
     {
         const Manager& manager = Manager::Get();
 
-        EXPECT_EQ("weather", manager.getLocalRepository().getName());
+        EXPECT_EQ("earth", manager.getLocalRepository().getName());
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, GetRemoteUrl)
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetRemoteUrl)
 {
     {
         const Manager& manager = Manager::Get();
@@ -56,7 +56,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Get
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, GetCSSISpaceWeatherArray)
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetCSSISpaceWeatherArray)
 {
     {
         const Manager& manager = Manager::Get();
@@ -65,11 +65,11 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Get
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, GetCSSISpaceWeatherAt)
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetCSSISpaceWeatherAt)
 {
     {
         const File file =
-            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Weather/"
+            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
                                    "CSSISpaceWeather/SW-Last5Years.test.csv"));
 
         const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(file);
@@ -89,7 +89,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Get
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, GetKp3HourSolarIndicesAt)
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetKp3HourSolarIndicesAt)
 {
     {
         const Array<Tuple<String, Array<Integer>>> referenceScenarios = {
@@ -100,7 +100,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Get
         };
 
         const File file =
-            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Weather/"
+            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
                                    "CSSISpaceWeather/SW-Last5Years.test.csv"));
 
         const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(file);
@@ -123,7 +123,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Get
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, GetAp3HourSolarIndicesAt)
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetAp3HourSolarIndicesAt)
 {
     {
         const Array<Tuple<String, Array<Integer>>> referenceScenarios = {
@@ -149,7 +149,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Get
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, GetF107SolarFluxAt)
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetF107SolarFluxAt)
 {
     {
         const Array<Tuple<String, Real>> referenceScenarios = {
@@ -177,7 +177,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Get
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, GetF107SolarFlux81DayAvgAt)
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetF107SolarFlux81DayAvgAt)
 {
     {
         const Array<Tuple<String, Real>> referenceScenarios = {
@@ -205,7 +205,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Get
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, SetMode)
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, SetMode)
 {
     {
         Manager& manager = Manager::Get();
@@ -222,26 +222,26 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Set
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, SetLocalRepository)
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, SetLocalRepository)
 {
     {
         Manager& manager = Manager::Get();
 
-        EXPECT_EQ("weather", manager.getLocalRepository().getName());
+        EXPECT_EQ("earth", manager.getLocalRepository().getName());
 
         manager.setLocalRepository(Directory::Path(Path::Parse("/tmp")));
 
         EXPECT_EQ("tmp", manager.getLocalRepository().getName());
 
         manager.setLocalRepository(
-            Directory::Path(Path::Parse("./.open-space-toolkit/physics/environment/atmospheric/earth/weather"))
+            Directory::Path(Path::Parse("./.open-space-toolkit/physics/environment/atmospheric/earth"))
         );
 
-        EXPECT_EQ("weather", manager.getLocalRepository().getName());
+        EXPECT_EQ("earth", manager.getLocalRepository().getName());
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, SetRemoteUrl)
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, SetRemoteUrl)
 {
     {
         Manager& manager = Manager::Get();
@@ -258,11 +258,11 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Set
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, LoadCSSISpaceWeather)
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, LoadCSSISpaceWeather)
 {
     {
         const File file =
-            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Weather/"
+            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
                                    "CSSISpaceWeather/SW-Last5Years.test.csv"));
 
         const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(file);
@@ -277,7 +277,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Loa
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, FetchLatestCSSISpaceWeather)
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, FetchLatestCSSISpaceWeather)
 {
     {
         Manager& manager = Manager::Get();
@@ -289,7 +289,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Fet
 
         EXPECT_EQ("SW-Last5Years.csv", latestCSSISpaceWeather.getName());
         EXPECT_EQ(
-            "weather", latestCSSISpaceWeather.getParentDirectory().getParentDirectory().getParentDirectory().getName()
+            "earth", latestCSSISpaceWeather.getParentDirectory().getParentDirectory().getParentDirectory().getName()
         );
         EXPECT_EQ("CSSISpaceWeather", latestCSSISpaceWeather.getParentDirectory().getParentDirectory().getName());
         EXPECT_EQ(
@@ -303,7 +303,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Fet
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Reset)
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, Reset)
 {
     {
         Manager& manager = Manager::Get();
@@ -314,7 +314,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Res
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, ClearLocalRepository)
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, ClearLocalRepository)
 {
     {
         Manager& manager = Manager::Get();
@@ -325,35 +325,35 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Cle
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, Get)
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, Get)
 {
     {
         EXPECT_NO_THROW(Manager::Get());
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, DefaultMode)
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, DefaultMode)
 {
     {
         EXPECT_EQ(Manager::Mode::Automatic, Manager::DefaultMode());
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, DefaultLocalRepository)
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, DefaultLocalRepository)
 {
     {
-        EXPECT_EQ("weather", Manager::DefaultLocalRepository().getName());
+        EXPECT_EQ("earth", Manager::DefaultLocalRepository().getName());
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, DefaultLocalRepositoryLockTimeout)
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, DefaultLocalRepositoryLockTimeout)
 {
     {
         EXPECT_EQ(Duration::Seconds(60.0), Manager::DefaultLocalRepositoryLockTimeout());
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager, DefaultRemoteUrl)
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, DefaultRemoteUrl)
 {
     {
         EXPECT_EQ(URL::Parse("https://celestrak.org/SpaceData/"), Manager::DefaultRemoteUrl());

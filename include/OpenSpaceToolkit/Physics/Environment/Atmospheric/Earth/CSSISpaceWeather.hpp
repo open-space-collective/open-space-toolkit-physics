@@ -1,7 +1,7 @@
 /// Apache License 2.0
 
-#ifndef __OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWeather__
-#define __OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_CSSISpaceWeather__
+#ifndef __OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather__
+#define __OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather__
 
 #include <OpenSpaceToolkit/Core/Containers/Array.hpp>
 #include <OpenSpaceToolkit/Core/Containers/Map.hpp>
@@ -23,8 +23,6 @@ namespace environment
 namespace atmospheric
 {
 namespace earth
-{
-namespace weather
 {
 
 using ostk::core::types::Integer;
@@ -160,7 +158,6 @@ class CSSISpaceWeather
     CSSISpaceWeather();
 };
 
-}  // namespace weather
 }  // namespace earth
 }  // namespace atmospheric
 }  // namespace environment

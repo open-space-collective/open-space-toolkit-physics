@@ -16,8 +16,8 @@ from ostk.physics.time import Scale
 from ostk.physics.time import Instant
 from ostk.physics.time import Duration
 
-from ostk.physics.environment.atmospheric.earth.weather import Manager
-from ostk.physics.environment.atmospheric.earth.weather import CSSISpaceWeather
+from ostk.physics.environment.atmospheric.earth import Manager
+from ostk.physics.environment.atmospheric.earth import CSSISpaceWeather
 
 
 @pytest.fixture
@@ -42,7 +42,7 @@ class TestManager:
     def test_get_local_repository_success(self, manager: Manager):
         assert isinstance(manager.get_local_repository(), Directory)
         assert manager.get_local_repository().to_string() == os.environ.get(
-            "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_LOCAL_REPOSITORY"
+            "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY"
         )
 
     def test_get_cssi_space_weather_directory_success(self, manager: Manager):
@@ -51,7 +51,7 @@ class TestManager:
             manager.get_cssi_space_weather_directory().to_string()
             == str(
                 os.environ.get(
-                    "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_LOCAL_REPOSITORY"
+                    "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY"
                 )
             )
             + "/CSSISpaceWeather"  # TBI
@@ -117,13 +117,13 @@ class TestManager:
     def test_set_local_repository_success(self, manager: Manager):
         assert isinstance(manager.get_local_repository(), Directory)
         assert manager.get_local_repository().to_string() == os.environ.get(
-            "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_LOCAL_REPOSITORY"
+            "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY"
         )
 
         manager.set_local_repository(
             Directory.path(
                 Path.parse(
-                    "./.open-space-toolkit/physics/environment/atmospheric/earth/weather"
+                    "./.open-space-toolkit/physics/environment/atmospheric/earth"
                 )
             )
         )
@@ -131,7 +131,7 @@ class TestManager:
         assert isinstance(manager.get_local_repository(), Directory)
         assert (
             manager.get_local_repository().to_string()
-            == "./.open-space-toolkit/physics/environment/atmospheric/earth/weather"
+            == "./.open-space-toolkit/physics/environment/atmospheric/earth"
         )
 
     def test_set_remote_url_success(self, manager: Manager):
@@ -192,7 +192,7 @@ class TestManager:
     def test_default_local_repository_success(self, manager: Manager):
         assert isinstance(manager.default_local_repository(), Directory)
         assert manager.default_local_repository().to_string() == os.environ.get(
-            "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_LOCAL_REPOSITORY"
+            "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY"
         )
 
     def test_default_local_repository_lock_timeout_success(self, manager: Manager):

@@ -1,7 +1,7 @@
 /// Apache License 2.0
 
-#ifndef __OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager__
-#define __OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Weather_Manager__
+#ifndef __OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager__
+#define __OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager__
 
 #include <mutex>
 
@@ -14,15 +14,15 @@
 
 #include <OpenSpaceToolkit/Mathematics/Objects/Vector.hpp>
 
-#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Weather/CSSISpaceWeather.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
-#define OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_MODE Manager::Mode::Automatic
-#define OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_LOCAL_REPOSITORY \
-    "./.open-space-toolkit/physics/environment/atmospheric/earth/weather"
-#define OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT 60
-#define OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_REMOTE_URL "https://celestrak.org/SpaceData/"
+#define OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_MODE Manager::Mode::Automatic
+#define OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY \
+    "./.open-space-toolkit/physics/environment/atmospheric/earth"
+#define OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT 60
+#define OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_REMOTE_URL "https://celestrak.org/SpaceData/"
 
 namespace ostk
 {
@@ -33,8 +33,6 @@ namespace environment
 namespace atmospheric
 {
 namespace earth
-{
-namespace weather
 {
 
 using ostk::core::types::Index;
@@ -48,20 +46,20 @@ using ostk::math::obj::Vector2d;
 
 using ostk::physics::time::Instant;
 using ostk::physics::time::Duration;
-using ostk::physics::environment::atmospheric::earth::weather::CSSISpaceWeather;
+using ostk::physics::environment::atmospheric::earth::CSSISpaceWeather;
 
 /// @brief                      CSSI space weather manager (thread-safe)
 ///
 ///                             The following environment variables can be defined:
 ///
-///                             - "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_MODE" will override
+///                             - "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_MODE" will override
 ///                             "DefaultMode"
-///                             - "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_LOCAL_REPOSITORY" will
+///                             - "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY" will
 ///                             override "DefaultLocalRepository"
 ///                             -
-///                             "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT"
+///                             "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT"
 ///                             will override "DefaultLocalRepositoryLockTimeout"
-///                             - "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_REMOTE_URL" will override
+///                             - "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_REMOTE_URL" will override
 ///                             "DefaultRemoteUrl"
 ///
 /// @ref                        https://ai-solutions.com/_help_Files/cssi_space_weather_file.htm
@@ -193,7 +191,7 @@ class Manager
 
     /// @brief              Get default manager mode
     ///
-    ///                     Overriden by: OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_MODE
+    ///                     Overriden by: OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_MODE
     ///
     /// @return             Default manager mode
 
@@ -201,7 +199,7 @@ class Manager
 
     /// @brief              Get default local repository
     ///
-    ///                     Overriden by: OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_LOCAL_REPOSITORY
+    ///                     Overriden by: OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY
     ///
     /// @return             Default local repository
 
@@ -210,7 +208,7 @@ class Manager
     /// @brief              Get default local repository lock timeout
     ///
     ///                     Overriden by:
-    ///                     OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT
+    ///                     OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT
     ///
     /// @return             Default local repository lock timeout
 
@@ -218,7 +216,7 @@ class Manager
 
     /// @brief              Get default remote URL
     ///
-    ///                     Overriden by: OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_WEATHER_MANAGER_REMOTE_URL
+    ///                     Overriden by: OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_REMOTE_URL
     ///
     /// @return             Default remote URL
 
@@ -261,7 +259,6 @@ class Manager
     void unlockLocalRepository();
 };
 
-}  // namespace weather
 }  // namespace earth
 }  // namespace atmospheric
 }  // namespace environment

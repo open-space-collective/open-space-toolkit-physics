@@ -1,14 +1,14 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Weather/Manager.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_Weather_Manager(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_Manager(pybind11::module& aModule)
 {
     using namespace pybind11;
 
     using ostk::core::types::Shared;
 
-    using ostk::physics::environment::atmospheric::earth::weather::Manager;
+    using ostk::physics::environment::atmospheric::earth::Manager;
 
     class_<Manager> manager(aModule, "Manager");
 

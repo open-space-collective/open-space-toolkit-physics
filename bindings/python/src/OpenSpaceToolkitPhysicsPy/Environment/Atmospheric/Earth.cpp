@@ -5,8 +5,6 @@
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
-#include <OpenSpaceToolkitPhysicsPy/Environment/Atmospheric/Earth/Weather.cpp>
-
 inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::module& aModule)
 {
     using namespace pybind11;
@@ -62,5 +60,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
     // Add __path__ attribute for "earth" submodule
     earth.attr("__path__") = "ostk.physics.environment.atmospheric.earth";
 
-    OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_Weather(earth);  // TBI
+    OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_CSSISpaceWeather(earth);
+    OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_Manager(earth);
+}
 }
