@@ -67,5 +67,4 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_CSSISpaceWea
         .def_readonly("f107_adj_last_81", &CSSISpaceWeather::Reading::F107AdjLast81)
 
         ;
-
 }
