@@ -398,43 +398,45 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
             continue;
         }
 
-        const Integer BSRN = boost::lexical_cast<int>(lineParts[1]);
-        const Integer ND = boost::lexical_cast<int>(lineParts[2]);
-        const Integer ISN = boost::lexical_cast<int>(lineParts[23]);
-        const Real F107Obs = boost::lexical_cast<double>(lineParts[24]);
-        const Real F107Adj = boost::lexical_cast<double>(lineParts[25]);
+        try{
+        const Integer BSRN =  !lineParts[1].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[1])) : Integer::Undefined();
+        const Integer ND =  !lineParts[2].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[2])) : Integer::Undefined();
+        const Integer ISN =  !lineParts[23].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[23])) : Integer::Undefined();
+        const Real F107Obs =  !lineParts[24].isEmpty() ? Real(boost::lexical_cast<double>(lineParts[24])) : Real::Undefined();
+        const Real F107Adj =  !lineParts[25].isEmpty() ? Real(boost::lexical_cast<double>(lineParts[25])) : Real::Undefined();
         const String F107DataType = lineParts[26];
-        const Real F107ObsCenter81 = boost::lexical_cast<double>(lineParts[27]);
-        const Real F107ObsLast81 = boost::lexical_cast<double>(lineParts[28]);
-        const Real F107AdjCenter81 = boost::lexical_cast<double>(lineParts[29]);
-        const Real F107AdjLast81 = boost::lexical_cast<double>(String(lineParts[30]));
+        const Real F107ObsCenter81 =  !lineParts[27].isEmpty() ? Real(boost::lexical_cast<double>(lineParts[27])) : Real::Undefined();
+        const Real F107ObsLast81 =  !lineParts[28].isEmpty() ? Real(boost::lexical_cast<double>(lineParts[28])) : Real::Undefined();
+        const Real F107AdjCenter81 =  !lineParts[29].isEmpty() ? Real(boost::lexical_cast<double>(lineParts[29])) : Real::Undefined();
+        const Real F107AdjLast81 =  !lineParts[30].isEmpty() ? Real(boost::lexical_cast<double>(String(lineParts[30]))) : Real::Undefined();
 
         const Integer mjd = DateTime(date, Time(0, 0, 0)).getModifiedJulianDate().floor();
 
         // observed and daily predicted readings
         if (F107DataType == "OBS" || F107DataType == "INT" || F107DataType == "PRD")
         {
+            
             // Data points that exist for observed and daily predicted readings
-            const Integer Kp1 = boost::lexical_cast<int>(lineParts[3]);
-            const Integer Kp2 = boost::lexical_cast<int>(lineParts[4]);
-            const Integer Kp3 = boost::lexical_cast<int>(lineParts[5]);
-            const Integer Kp4 = boost::lexical_cast<int>(lineParts[6]);
-            const Integer Kp5 = boost::lexical_cast<int>(lineParts[7]);
-            const Integer Kp6 = boost::lexical_cast<int>(lineParts[8]);
-            const Integer Kp7 = boost::lexical_cast<int>(lineParts[9]);
-            const Integer Kp8 = boost::lexical_cast<int>(lineParts[10]);
-            const Integer KpSum = boost::lexical_cast<int>(lineParts[11]);
-            const Integer Ap1 = boost::lexical_cast<int>(lineParts[12]);
-            const Integer Ap2 = boost::lexical_cast<int>(lineParts[13]);
-            const Integer Ap3 = boost::lexical_cast<int>(lineParts[14]);
-            const Integer Ap4 = boost::lexical_cast<int>(lineParts[15]);
-            const Integer Ap5 = boost::lexical_cast<int>(lineParts[16]);
-            const Integer Ap6 = boost::lexical_cast<int>(lineParts[17]);
-            const Integer Ap7 = boost::lexical_cast<int>(lineParts[18]);
-            const Integer Ap8 = boost::lexical_cast<int>(lineParts[19]);
-            const Integer ApAvg = boost::lexical_cast<int>(lineParts[20]);
-            const Real Cp = boost::lexical_cast<double>(lineParts[21]);
-            const Integer C9 = boost::lexical_cast<int>(lineParts[22]);
+            const Integer Kp1 = !lineParts[3].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[3])) : Integer::Undefined();
+            const Integer Kp2 = !lineParts[4].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[4])) : Integer::Undefined();
+            const Integer Kp3 = !lineParts[5].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[5])) : Integer::Undefined();
+            const Integer Kp4 = !lineParts[6].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[6])) : Integer::Undefined();
+            const Integer Kp5 = !lineParts[7].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[7])) : Integer::Undefined();
+            const Integer Kp6 = !lineParts[8].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[8])) : Integer::Undefined();
+            const Integer Kp7 = !lineParts[9].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[9])) : Integer::Undefined();
+            const Integer Kp8 = !lineParts[10].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[10])) : Integer::Undefined();
+            const Integer KpSum = !lineParts[11].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[11])) : Integer::Undefined();
+            const Integer Ap1 = !lineParts[12].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[12])) : Integer::Undefined();
+            const Integer Ap2 = !lineParts[13].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[13])) : Integer::Undefined();
+            const Integer Ap3 = !lineParts[14].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[14])) : Integer::Undefined();
+            const Integer Ap4 = !lineParts[15].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[15])) : Integer::Undefined();
+            const Integer Ap5 = !lineParts[16].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[16])) : Integer::Undefined();
+            const Integer Ap6 = !lineParts[17].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[17])) : Integer::Undefined();
+            const Integer Ap7 = !lineParts[18].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[18])) : Integer::Undefined();
+            const Integer Ap8 = !lineParts[19].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[19])) : Integer::Undefined();
+            const Integer ApAvg = !lineParts[20].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[20])) : Integer::Undefined();
+            const Real Cp = !lineParts[21].isEmpty() ? Real(boost::lexical_cast<double>(lineParts[21])) : Real::Undefined();
+            const Integer C9 = !lineParts[22].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[22])) : Integer::Undefined();
 
             const CSSISpaceWeather::Observation reading = {
                 date,
@@ -498,6 +500,11 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
             };
 
             spaceWeather.monthlyPredictions_.insert({mjd, reading});
+        }
+
+        } catch (boost::bad_lexical_cast& e) {
+            std::cout << "Error parsing line: " << line << std::endl;
+            throw e;
         }
     }
 
