@@ -1,5 +1,7 @@
 # Apache License 2.0
 
+import pytest
+
 from datetime import datetime
 
 from ostk.core.filesystem import File
@@ -39,8 +41,8 @@ class TestCSSISpaceWeather:
 
         assert observation.date.to_string() == "2023-06-19"
         assert observation.kp_sum == 177
-        assert observation.f107_obs == 168.8
-        assert observation.f107_obs_center_81 == 160.1
+        assert observation.f107_obs == pytest.approx(168.8)
+        assert observation.f107_obs_center_81 == pytest.approx(160.1)
 
     def test_access_daily_prediction_interval_success(
         self, cssi_space_weather: CSSISpaceWeather
@@ -59,8 +61,8 @@ class TestCSSISpaceWeather:
 
         assert prediction.date.to_string() == "2023-08-03"
         assert prediction.kp_sum == 104
-        assert pytest.approx(prediction.f107_obs, 165.1)
-        assert pytest.approx(prediction.f107_obs_center_81, 157.4)
+        assert prediction.f107_obs == pytest.approx(165.1)
+        assert prediction.f107_obs_center_81 == pytest.approx(157.4)
 
     def test_access_monthly_prediction_interval_success(
         self, cssi_space_weather: CSSISpaceWeather
@@ -78,8 +80,8 @@ class TestCSSISpaceWeather:
         )
 
         assert prediction.date.to_string() == "2029-01-01"
-        assert pytest.approx(prediction.f107_obs, 83.5)
-        assert pytest.approx(prediction.f107_obs_center_81, 83.6)
+        assert prediction.f107_obs == pytest.approx(83.5)
+        assert prediction.f107_obs_center_81 == pytest.approx(83.6)
 
     def test_undefined_success(self):
         assert CSSISpaceWeather.undefined() is not None

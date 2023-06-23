@@ -98,14 +98,14 @@ class TestManager:
             Instant.date_time(datetime(2023, 6, 18, 12, 34, 56), Scale.UTC)
         )
 
-        assert pytest.approx(flux, 159.0)
+        assert flux == pytest.approx(164.1)
 
     def test_get_f107_solar_flux_81_day_avg_at_success(self, manager: Manager):
         flux_avg = manager.get_f107_solar_flux_81_day_avg_at(
-            Instant.date_time(datetime(2023, 6, 18, 12, 34, 56), Scale.UTC)
+            Instant.date_time(datetime(2018, 1, 1, 12, 34, 56), Scale.UTC)
         )
 
-        assert pytest.approx(flux_avg, 160.4)
+        assert flux_avg == pytest.approx(71.4)
 
     def test_set_mode_success(self, manager: Manager):
         assert manager.get_mode() == Manager.Mode.Automatic
