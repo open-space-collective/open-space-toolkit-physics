@@ -122,9 +122,7 @@ class TestManager:
 
         manager.set_local_repository(
             Directory.path(
-                Path.parse(
-                    "./.open-space-toolkit/physics/environment/atmospheric/earth"
-                )
+                Path.parse("./.open-space-toolkit/physics/environment/atmospheric/earth")
             )
         )
 

@@ -407,8 +407,7 @@ Duration Manager::DefaultLocalRepositoryLockTimeout()
 
 URL Manager::DefaultRemoteUrl()
 {
-    static const URL defaultRemoteUrl =
-        URL::Parse(OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_REMOTE_URL);
+    static const URL defaultRemoteUrl = URL::Parse(OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_REMOTE_URL);
 
     if (const char* remoteUrl = std::getenv("OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_REMOTE_URL"))
     {
