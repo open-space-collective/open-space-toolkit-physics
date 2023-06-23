@@ -6,23 +6,24 @@
 #include <numeric>
 #include <thread>
 
-#include <OpenSpaceToolkit/Core/Containers/Map.hpp>
 #include <OpenSpaceToolkit/Core/Error.hpp>
-#include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
+
+#include <OpenSpaceToolkit/Core/Utilities.hpp>
 #include <OpenSpaceToolkit/Core/Types/Integer.hpp>
 #include <OpenSpaceToolkit/Core/Types/String.hpp>
-#include <OpenSpaceToolkit/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Containers/Map.hpp>
+#include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
 
 #include <OpenSpaceToolkit/IO/IP/TCP/HTTP/Client.hpp>
 
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Date.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Time.hpp>
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
-#include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
-#include <OpenSpaceToolkit/Physics/Time/Time.hpp>
 
-#include <experimental/filesystem>
+#include <filesystem>
 
 namespace ostk
 {
@@ -644,7 +645,7 @@ File Manager::fetchLatestCSSISpaceWeather_()
         // Check that CSSI Space Weather File size is not zero
 
         std::uintmax_t latestCSSISpaceWeatherFileSize =
-            std::experimental::filesystem::file_size(std::string(latestCSSISpaceWeatherFile.getPath().toString()));
+            std::filesystem::file_size(std::string(latestCSSISpaceWeatherFile.getPath().toString()));
 
         if (latestCSSISpaceWeatherFileSize == 0)
         {

@@ -7,6 +7,7 @@
 #include <boost/lexical_cast.hpp>
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
+#include <OpenSpaceToolkit/Core/Types/Size.hpp>
 #include <OpenSpaceToolkit/Core/Types/String.hpp>
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
 
@@ -26,6 +27,7 @@ namespace earth
 using ostk::core::types::Index;
 using ostk::core::types::Uint8;
 using ostk::core::types::Uint16;
+using ostk::core::types::Size;
 using ostk::core::types::Real;
 using ostk::core::types::String;
 using ostk::core::utils::Print;
@@ -239,10 +241,8 @@ const CSSISpaceWeather::Observation& CSSISpaceWeather::accessObservationAt(const
     {
         return observationIt->second;
     }
-    else
-    {
-        throw ostk::core::error::RuntimeError("Cannot find observation at [{}].", anInstant.toString(Scale::UTC));
-    }
+
+    throw ostk::core::error::RuntimeError("Cannot find observation at [{}].", anInstant.toString(Scale::UTC));
 }
 
 const Interval& CSSISpaceWeather::accessDailyPredictionInterval() const
@@ -285,10 +285,8 @@ const CSSISpaceWeather::DailyPrediction& CSSISpaceWeather::accessDailyPrediction
     {
         return predictionIt->second;
     }
-    else
-    {
-        throw ostk::core::error::RuntimeError("Cannot find prediction at [{}].", anInstant.toString(Scale::UTC));
-    }
+
+    throw ostk::core::error::RuntimeError("Cannot find prediction at [{}].", anInstant.toString(Scale::UTC));
 }
 
 const Interval& CSSISpaceWeather::accessMonthlyPredictionInterval() const
@@ -334,10 +332,8 @@ const CSSISpaceWeather::MonthlyPrediction& CSSISpaceWeather::accessMonthlyPredic
     {
         return predictionIt->second;
     }
-    else
-    {
-        throw ostk::core::error::RuntimeError("Cannot find prediction at [{}].", anInstant.toString(Scale::UTC));
-    }
+
+    throw ostk::core::error::RuntimeError("Cannot find prediction at [{}].", anInstant.toString(Scale::UTC));
 }
 
 CSSISpaceWeather CSSISpaceWeather::Undefined()
@@ -362,6 +358,7 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
 
     String line;
 
+    // TBI: Use split from string type once new OSTk Core released
     auto split = [](String s, const String delimiter) -> Array<String>
     {
         Array<String> results;
@@ -371,8 +368,8 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
             return results;
         }
 
-        size_t last = 0;
-        size_t next = 0;
+        Size last = 0;
+        Size next = 0;
         while ((next = s.find(delimiter, last)) != std::string::npos)
         {
             results.add(s.substr(last, next - last));
