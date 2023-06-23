@@ -56,7 +56,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_CSSISpaceWea
         .def_readonly("ap_8", &CSSISpaceWeather::Reading::Ap8)
         .def_readonly("ap_avg", &CSSISpaceWeather::Reading::ApAvg)
         .def_readonly("cp", &CSSISpaceWeather::Reading::Cp)
-
         .def_readonly("c9", &CSSISpaceWeather::Reading::C9)
         .def_readonly("isn", &CSSISpaceWeather::Reading::ISN)
         .def_readonly("f107_obs", &CSSISpaceWeather::Reading::F107Obs)
@@ -69,19 +68,4 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_CSSISpaceWea
 
         ;
 
-    class_<CSSISpaceWeather::Reading>(CSSISpaceWeatherClass, "MonthlyPrediction")
-
-        .def_readonly("date", &CSSISpaceWeather::Reading::date)
-        .def_readonly("bsrn", &CSSISpaceWeather::Reading::BSRN)
-        .def_readonly("nd", &CSSISpaceWeather::Reading::ND)
-        .def_readonly("isn", &CSSISpaceWeather::Reading::ISN)
-        .def_readonly("f107_obs", &CSSISpaceWeather::Reading::F107Obs)
-        .def_readonly("f107_adj", &CSSISpaceWeather::Reading::F107Adj)
-        .def_readonly("f107_data_type", &CSSISpaceWeather::Reading::F107DataType)
-        .def_readonly("f107_obs_center_81", &CSSISpaceWeather::Reading::F107ObsCenter81)
-        .def_readonly("f107_obs_last_81", &CSSISpaceWeather::Reading::F107ObsLast81)
-        .def_readonly("f107_adj_center_81", &CSSISpaceWeather::Reading::F107AdjCenter81)
-        .def_readonly("f107_adj_last_81", &CSSISpaceWeather::Reading::F107AdjLast81)
-
-        ;
 }
