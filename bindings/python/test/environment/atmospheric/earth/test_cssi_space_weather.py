@@ -55,7 +55,7 @@ class TestCSSISpaceWeather:
     def test_access_daily_prediction_at_success(
         self, cssi_space_weather: CSSISpaceWeather
     ):
-        prediction: DailyPrediction = cssi_space_weather.access_daily_prediction_at(
+        prediction: Reading = cssi_space_weather.access_daily_prediction_at(
             Instant.date_time(datetime(2023, 8, 3, 0, 0, 0), Scale.UTC)
         )
 

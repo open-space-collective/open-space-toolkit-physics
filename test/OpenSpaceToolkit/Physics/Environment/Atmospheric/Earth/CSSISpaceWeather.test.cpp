@@ -71,7 +71,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, AccessObservationAt)
 {
     {
-        const CSSISpaceWeather::Observation firstObservation =
+        const CSSISpaceWeather::Reading firstObservation =
             CSSISpaceWeather_.accessObservationAt(Instant::DateTime(DateTime::Parse("2018-01-01 12:00:00"), Scale::UTC)
             );
 
@@ -113,7 +113,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, AccessDailyPredictionAt)
 {
     {
-        const CSSISpaceWeather::DailyPrediction firstDailyPrediction = CSSISpaceWeather_.accessDailyPredictionAt(
+        const CSSISpaceWeather::Reading firstDailyPrediction = CSSISpaceWeather_.accessDailyPredictionAt(
             Instant::DateTime(DateTime::Parse("2023-06-20 12:00:00"), Scale::UTC)
         );
 
@@ -155,7 +155,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, AccessMonthlyPredictionAt)
 {
     {
-        const CSSISpaceWeather::MonthlyPrediction firstMonthlyPrediction = CSSISpaceWeather_.accessMonthlyPredictionAt(
+        const CSSISpaceWeather::Reading firstMonthlyPrediction = CSSISpaceWeather_.accessMonthlyPredictionAt(
             Instant::DateTime(DateTime::Parse("2023-09-15 12:00:00"), Scale::UTC)
         );
 

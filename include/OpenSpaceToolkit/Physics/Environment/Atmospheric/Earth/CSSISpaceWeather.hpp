@@ -50,7 +50,7 @@ using ostk::physics::time::Scale;
 class CSSISpaceWeather
 {
    public:
-    struct Observation
+    struct Reading
     {
         Date date;      /// UTC day of reading.
         Integer BSRN;   /// Bartels Solar Rotation Number. A sequence of 27-day intervals counted continuously from 1832
@@ -95,32 +95,6 @@ class CSSISpaceWeather
         Real F107AdjLast81;    /// Last 81-day arithmetic average of F10.7 (adjusted)
     };
 
-    // Note: daily prediction contains idential values to observations
-    using DailyPrediction = Observation;
-
-    struct MonthlyPrediction
-    {
-        Date date;     /// UTC day of reading.
-        Integer BSRN;  /// Bartels Solar Rotation Number. A sequence of 27-day intervals counted continuously from 1832
-                       /// Feb 8.
-        Integer ND;    /// Number of Day within the Bartels 27-day cycle (01-27).
-        Integer ISN;   /// International Sunspot Number. Records contain the Zurich number through 1980 Dec 31 and the
-                       /// International Brussels number thereafter.
-        Real F107Obs;  /// Observed 10.7-cm Solar Radio Flux (F10.7). Measured at Ottawa at 1700 UT daily from 1947 Feb
-                       /// 14 until 1991 May 31 and measured at Penticton at 2000 UT from 1991 Jun 01 on. Expressed in
-                       /// units of 10-22 W/m2/Hz.
-        Real F107Adj;  /// 10.7-cm Solar Radio Flux (F10.7) adjusted to 1 AU.
-        String F107DataType;   /// Flux Qualifier.
-                               /// OBS: Observed flux measurement
-                               /// INT: CelesTrak linear interpolation of missing data
-                               /// PRD: 45-Day predicted flux
-                               /// PRM: Monthly predicted flux
-        Real F107ObsCenter81;  /// Centered 81-day arithmetic average of F10.7 (observed).
-        Real F107ObsLast81;    /// Last 81-day arithmetic average of F10.7 (observed).
-        Real F107AdjCenter81;  /// Centered 81-day arithmetic average of F10.7 (adjusted).
-        Real F107AdjLast81;    /// Last 81-day arithmetic average of F10.7 (adjusted)
-    };
-
     friend std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& aCSSISpaceWeather);
 
     bool isDefined() const;
@@ -129,15 +103,15 @@ class CSSISpaceWeather
 
     const Interval& accessObservationInterval() const;
 
-    const Observation& accessObservationAt(const Instant& anInstant) const;
+    const Reading& accessObservationAt(const Instant& anInstant) const;
 
     const Interval& accessDailyPredictionInterval() const;
 
-    const DailyPrediction& accessDailyPredictionAt(const Instant& anInstant) const;
+    const Reading& accessDailyPredictionAt(const Instant& anInstant) const;
 
     const Interval& accessMonthlyPredictionInterval() const;
 
-    const MonthlyPrediction& accessMonthlyPredictionAt(const Instant& anInstant) const;
+    const Reading& accessMonthlyPredictionAt(const Instant& anInstant) const;
 
     static CSSISpaceWeather Undefined();
 
@@ -147,13 +121,13 @@ class CSSISpaceWeather
     Date lastObservationDate_;
 
     Interval observationInterval_;
-    Map<Integer, CSSISpaceWeather::Observation> observations_;
+    Map<Integer, CSSISpaceWeather::Reading> observations_;
 
     Interval dailyPredictionInterval_;
-    Map<Integer, CSSISpaceWeather::DailyPrediction> dailyPredictions_;
+    Map<Integer, CSSISpaceWeather::Reading> dailyPredictions_;
 
     Interval monthlyPredictionInterval_;
-    Map<Integer, CSSISpaceWeather::MonthlyPrediction> monthlyPredictions_;
+    Map<Integer, CSSISpaceWeather::Reading> monthlyPredictions_;
 
     CSSISpaceWeather();
 };

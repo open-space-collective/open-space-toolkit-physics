@@ -23,7 +23,7 @@
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
-#include <filesystem>
+#include <experimental/filesystem>
 
 namespace ostk
 {
@@ -122,7 +122,7 @@ Array<Integer> Manager::getKp3HourSolarIndicesAt(const Instant& anInstant) const
     {
         if (CSSISpaceWeatherPtr->accessObservationInterval().contains(dayInstant))
         {
-            const CSSISpaceWeather::Observation observation = CSSISpaceWeatherPtr->accessObservationAt(dayInstant);
+            const CSSISpaceWeather::Reading observation = CSSISpaceWeatherPtr->accessObservationAt(dayInstant);
 
             return Array<Integer> {
                 observation.Kp1,
@@ -137,7 +137,7 @@ Array<Integer> Manager::getKp3HourSolarIndicesAt(const Instant& anInstant) const
         }
         else if (CSSISpaceWeatherPtr->accessDailyPredictionInterval().contains(dayInstant))
         {
-            const CSSISpaceWeather::Observation prediction = CSSISpaceWeatherPtr->accessDailyPredictionAt(dayInstant);
+            const CSSISpaceWeather::Reading prediction = CSSISpaceWeatherPtr->accessDailyPredictionAt(dayInstant);
 
             return Array<Integer> {
                 prediction.Kp1,
@@ -172,7 +172,7 @@ Array<Integer> Manager::getAp3HourSolarIndicesAt(const Instant& anInstant) const
     {
         if (CSSISpaceWeatherPtr->accessObservationInterval().contains(dayInstant))
         {
-            const CSSISpaceWeather::Observation observation = CSSISpaceWeatherPtr->accessObservationAt(dayInstant);
+            const CSSISpaceWeather::Reading observation = CSSISpaceWeatherPtr->accessObservationAt(dayInstant);
 
             return Array<Integer> {
                 observation.Ap1,
@@ -188,7 +188,7 @@ Array<Integer> Manager::getAp3HourSolarIndicesAt(const Instant& anInstant) const
         }
         else if (CSSISpaceWeatherPtr->accessDailyPredictionInterval().contains(dayInstant))
         {
-            const CSSISpaceWeather::Observation prediction = CSSISpaceWeatherPtr->accessDailyPredictionAt(dayInstant);
+            const CSSISpaceWeather::Reading prediction = CSSISpaceWeatherPtr->accessDailyPredictionAt(dayInstant);
 
             return Array<Integer> {
                 prediction.Ap1,
@@ -645,7 +645,7 @@ File Manager::fetchLatestCSSISpaceWeather_()
         // Check that CSSI Space Weather File size is not zero
 
         std::uintmax_t latestCSSISpaceWeatherFileSize =
-            std::filesystem::file_size(std::string(latestCSSISpaceWeatherFile.getPath().toString()));
+            std::experimental::filesystem::file_size(std::string(latestCSSISpaceWeatherFile.getPath().toString()));
 
         if (latestCSSISpaceWeatherFileSize == 0)
         {
