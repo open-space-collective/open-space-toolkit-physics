@@ -54,7 +54,7 @@ class TestManager:
                     "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY"
                 )
             )
-            + "/CSSISpaceWeather"  # TBI
+            + "/CSSISpaceWeather"
         )
 
     def test_get_remote_url_success(self, manager: Manager):

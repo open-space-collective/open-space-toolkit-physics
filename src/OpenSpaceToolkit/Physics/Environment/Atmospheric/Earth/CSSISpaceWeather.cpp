@@ -561,6 +561,19 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
     return spaceWeather;
 }
 
+CSSISpaceWeather::CSSISpaceWeather()
+    : lastObservationDate_(Date::Undefined()),
+      observationInterval_(Interval::Undefined()),
+      observations_(Map<Integer, CSSISpaceWeather::Observation>()),
+
+      dailyPredictionInterval_(Interval::Undefined()),
+      dailyPredictions_(Map<Integer, CSSISpaceWeather::DailyPrediction>()),
+
+      monthlyPredictionInterval_(Interval::Undefined()),
+      monthlyPredictions_(Map<Integer, CSSISpaceWeather::MonthlyPrediction>())
+{
+}
+
 }  // namespace earth
 }  // namespace atmospheric
 }  // namespace environment
