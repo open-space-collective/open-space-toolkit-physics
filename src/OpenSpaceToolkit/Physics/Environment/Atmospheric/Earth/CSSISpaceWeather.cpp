@@ -34,6 +34,75 @@ using ostk::physics::time::Scale;
 using ostk::physics::time::Time;
 using ostk::physics::time::DateTime;
 
+CSSISpaceWeather::CSSISpaceWeather(
+    const Map<Integer, CSSISpaceWeather::Observation>& observations,
+    const Map<Integer, CSSISpaceWeather::DailyPrediction>& dailyPredictions,
+    const Map<Integer, CSSISpaceWeather::MonthlyPrediction>& monthlyPredictions
+)
+    : observations_(observations),
+      dailyPredictions_(dailyPredictions),
+      monthlyPredictions_(monthlyPredictions),
+      lastObservationDate_(Date::Undefined()),
+      observationInterval_(Interval::Undefined()),
+      dailyPredictionInterval_(Interval::Undefined()),
+      monthlyPredictionInterval_(Interval::Undefined())
+{
+    if (!observations_.empty())
+    {
+        lastObservationDate_ = observations_.rbegin()->second.date;
+
+        const Instant observationStartInstant =
+            Instant::ModifiedJulianDate(Real::Integer(observations_.begin()->first), Scale::UTC);
+        const Instant observationEndInstant =
+            Instant::ModifiedJulianDate(Real::Integer(observations_.rbegin()->first), Scale::UTC);
+
+        observationInterval_ = Interval::Closed(observationStartInstant, observationEndInstant);
+    }
+
+    if (!dailyPredictions_.empty())
+    {
+        const Instant dailyPredictionStartInstant =
+            Instant::ModifiedJulianDate(Real::Integer(dailyPredictions_.begin()->first), Scale::UTC);
+        const Instant dailyPredictionEndInstant =
+            Instant::ModifiedJulianDate(Real::Integer(dailyPredictions_.rbegin()->first), Scale::UTC);
+
+        dailyPredictionInterval_ = Interval::Closed(dailyPredictionStartInstant, dailyPredictionEndInstant);
+
+        // Use the last daily prediction to make an artificial first monthly prediction
+        // so that the data overlaps
+        const CSSISpaceWeather::DailyPrediction& lastDailyPrediction = dailyPredictions_.rbegin()->second;
+
+        Date monthBeginningDate = lastDailyPrediction.date;
+        monthBeginningDate.setDay(1);
+
+        const CSSISpaceWeather::MonthlyPrediction overlapMonthlyReading = {
+            monthBeginningDate,
+            lastDailyPrediction.BSRN,
+            lastDailyPrediction.ND,
+            lastDailyPrediction.ISN,
+            lastDailyPrediction.F107Obs,
+            lastDailyPrediction.F107Adj,
+            lastDailyPrediction.F107DataType,
+            lastDailyPrediction.F107ObsCenter81,
+            lastDailyPrediction.F107ObsLast81,
+            lastDailyPrediction.F107AdjCenter81,
+            lastDailyPrediction.F107AdjLast81,
+        };
+        const Integer monthMjd = DateTime(monthBeginningDate, Time::Midnight()).getModifiedJulianDate().floor();
+        monthlyPredictions_.insert({monthMjd, overlapMonthlyReading});
+    }
+
+    if (!monthlyPredictions_.empty())
+    {
+        const Instant monthlyPredictionStartInstant =
+            Instant::ModifiedJulianDate(Real::Integer(monthlyPredictions_.begin()->first), Scale::UTC);
+        const Instant monthlyPredictionEndInstant =
+            Instant::ModifiedJulianDate(Real::Integer(monthlyPredictions_.rbegin()->first), Scale::UTC);
+
+        monthlyPredictionInterval_ = Interval::Closed(monthlyPredictionStartInstant, monthlyPredictionEndInstant);
+    }
+}
+
 std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& aCSSISpaceWeather)
 {
     Print::Header(anOutputStream, "CSSI Space Weather");
@@ -342,7 +411,11 @@ const CSSISpaceWeather::MonthlyPrediction& CSSISpaceWeather::accessMonthlyPredic
 
 CSSISpaceWeather CSSISpaceWeather::Undefined()
 {
-    return CSSISpaceWeather();
+    return CSSISpaceWeather(
+        {},
+        {},
+        {}
+    );
 }
 
 CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
@@ -357,7 +430,10 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
         throw ostk::core::error::RuntimeError("File [{}] does not exist.", aFile.toString());
     }
 
-    CSSISpaceWeather spaceWeather;
+    Map<Integer, CSSISpaceWeather::Observation> observations;
+    Map<Integer, CSSISpaceWeather::DailyPrediction> dailyPredictions;
+    Map<Integer, CSSISpaceWeather::MonthlyPrediction> monthlyPredictions;
+
     std::ifstream fileStream {aFile.getPath().toString()};
 
     String line;
@@ -475,11 +551,11 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
 
             if (F107DataType == "OBS" || F107DataType == "INT")
             {
-                spaceWeather.observations_.insert({mjd, reading});
+                observations.insert({mjd, reading});
             }
             else
             {
-                spaceWeather.dailyPredictions_.insert({mjd, reading});
+                dailyPredictions.insert({mjd, reading});
             }
         }
 
@@ -500,68 +576,11 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
                 F107AdjLast81,
             };
 
-            spaceWeather.monthlyPredictions_.insert({mjd, reading});
+            monthlyPredictions.insert({mjd, reading});
         }
     }
 
-    if (!spaceWeather.observations_.empty())
-    {
-        spaceWeather.lastObservationDate_ = spaceWeather.observations_.rbegin()->second.date;
-
-        const Instant observationStartInstant =
-            Instant::ModifiedJulianDate(Real::Integer(spaceWeather.observations_.begin()->first), Scale::UTC);
-        const Instant observationEndInstant =
-            Instant::ModifiedJulianDate(Real::Integer(spaceWeather.observations_.rbegin()->first), Scale::UTC);
-
-        spaceWeather.observationInterval_ = Interval::Closed(observationStartInstant, observationEndInstant);
-    }
-
-    if (!spaceWeather.dailyPredictions_.empty())
-    {
-        const Instant dailyPredictionStartInstant =
-            Instant::ModifiedJulianDate(Real::Integer(spaceWeather.dailyPredictions_.begin()->first), Scale::UTC);
-        const Instant dailyPredictionEndInstant =
-            Instant::ModifiedJulianDate(Real::Integer(spaceWeather.dailyPredictions_.rbegin()->first), Scale::UTC);
-
-        spaceWeather.dailyPredictionInterval_ =
-            Interval::Closed(dailyPredictionStartInstant, dailyPredictionEndInstant);
-
-        // Use the last daily prediction to make an artificial first monthly prediction
-        // so that the data overlaps
-        const CSSISpaceWeather::DailyPrediction& lastDailyPrediction = spaceWeather.dailyPredictions_.rbegin()->second;
-
-        Date monthBeginningDate = lastDailyPrediction.date;
-        monthBeginningDate.setDay(1);
-
-        const CSSISpaceWeather::MonthlyPrediction overlapMonthlyReading = {
-            monthBeginningDate,
-            lastDailyPrediction.BSRN,
-            lastDailyPrediction.ND,
-            lastDailyPrediction.ISN,
-            lastDailyPrediction.F107Obs,
-            lastDailyPrediction.F107Adj,
-            lastDailyPrediction.F107DataType,
-            lastDailyPrediction.F107ObsCenter81,
-            lastDailyPrediction.F107ObsLast81,
-            lastDailyPrediction.F107AdjCenter81,
-            lastDailyPrediction.F107AdjLast81,
-        };
-        const Integer monthMjd = DateTime(monthBeginningDate, Time::Midnight()).getModifiedJulianDate().floor();
-        spaceWeather.monthlyPredictions_.insert({monthMjd, overlapMonthlyReading});
-    }
-
-    if (!spaceWeather.monthlyPredictions_.empty())
-    {
-        const Instant monthlyPredictionStartInstant =
-            Instant::ModifiedJulianDate(Real::Integer(spaceWeather.monthlyPredictions_.begin()->first), Scale::UTC);
-        const Instant monthlyPredictionEndInstant =
-            Instant::ModifiedJulianDate(Real::Integer(spaceWeather.monthlyPredictions_.rbegin()->first), Scale::UTC);
-
-        spaceWeather.monthlyPredictionInterval_ =
-            Interval::Closed(monthlyPredictionStartInstant, monthlyPredictionEndInstant);
-    }
-
-    return spaceWeather;
+    return {observations, dailyPredictions, monthlyPredictions};
 }
 
 }  // namespace earth

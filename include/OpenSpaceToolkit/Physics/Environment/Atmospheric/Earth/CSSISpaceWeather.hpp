@@ -121,6 +121,12 @@ class CSSISpaceWeather
         Real F107AdjLast81;    /// Last 81-day arithmetic average of F10.7 (adjusted)
     };
 
+    CSSISpaceWeather(
+        const Map<Integer, CSSISpaceWeather::Observation>& observations,
+        const Map<Integer, CSSISpaceWeather::DailyPrediction>& dailyPredictions,
+        const Map<Integer, CSSISpaceWeather::MonthlyPrediction>& monthlyPredictions
+    );
+
     friend std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& aCSSISpaceWeather);
 
     bool isDefined() const;
@@ -146,16 +152,13 @@ class CSSISpaceWeather
    private:
     Date lastObservationDate_;
 
-    Interval observationInterval_;
     Map<Integer, CSSISpaceWeather::Observation> observations_;
-
-    Interval dailyPredictionInterval_;
     Map<Integer, CSSISpaceWeather::DailyPrediction> dailyPredictions_;
-
-    Interval monthlyPredictionInterval_;
     Map<Integer, CSSISpaceWeather::MonthlyPrediction> monthlyPredictions_;
 
-    CSSISpaceWeather();
+    Interval observationInterval_;
+    Interval dailyPredictionInterval_;
+    Interval monthlyPredictionInterval_;
 };
 
 }  // namespace earth
