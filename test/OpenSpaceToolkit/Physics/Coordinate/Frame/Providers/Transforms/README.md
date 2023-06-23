@@ -1,6 +1,6 @@
 # Transformation Validation Files
 
-This folder contains reference frame transformation validation files. They are name following the pattern:
+This folder contains reference frame transformation validation files. Their name is following the pattern:
 
 `Frame1_Frame1_generator.csv`
 
@@ -16,7 +16,7 @@ Each row in the file represents a transformation in time:
 
 ## STK
 
-STK file have been generated following these steps:
+STK files have been generated following these steps:
 
 1. Create a scenario (make sure it covers the time window that includes the transformation period you want to generate)
 2. Right click on the scenario -> `Report & Graph Manager`
