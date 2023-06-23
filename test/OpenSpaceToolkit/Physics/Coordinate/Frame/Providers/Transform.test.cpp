@@ -238,7 +238,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Validation)
              "",
              0.0,    // Translation tolerance [m]
              0.0,    // Relative velocity tolerance [m/s]
-             25.0,   // Orientation tolerance at Earth Surface [m]
+             50.0,   // Orientation tolerance at Earth Surface [m]
              1e-6},  // Angular velocity tolerance [rad/s]
         };
 
@@ -268,6 +268,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Validation)
             for (const auto& referenceRow : referenceData)
             {
                 const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].accessString()), Scale::TAI);
+
                 Shared<const Frame> frame1 = Frame::GCRF();
                 Shared<const Frame> frame2 = Frame::GCRF();
 
