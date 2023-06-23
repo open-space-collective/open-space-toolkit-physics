@@ -70,8 +70,6 @@ Directory Manager::getLocalRepository() const
 
 Directory Manager::getCSSISpaceWeatherDirectory() const
 {
-    using ostk::core::fs::Path;
-
     return Directory::Path(localRepository_.getPath() + Path::Parse("CSSISpaceWeather"));
 }
 
