@@ -19,14 +19,7 @@ RUN conda install ipympl=0.4.0
 
 # Install JupyterLab extensions
 
-RUN jupyter labextension install --no-build \
-        @jupyterlab/shortcuts-extension \
-        @jupyter-widgets/jupyterlab-manager \
-        jupyter-matplotlib \
-        plotlywidget \
-        jupyterlab-plotly \
- && jupyter lab build \
- && jupyter labextension update --all
+RUN pip install "plotly>=5" "ipywidgets>=7.6" "matplotlib>=3"
 
 COPY ./shortcuts-extension /home/jovyan/.jupyter/lab/user-settings/@jupyterlab/shortcuts-extension
 
