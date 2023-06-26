@@ -51,6 +51,17 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
     }
 }
 
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, AccessLastObservationDate)
+{
+    {
+        EXPECT_EQ(Date::Parse("2023-06-19", Date::Format::Standard), CSSISpaceWeather_.accessLastObservationDate());
+    }
+
+    {
+        EXPECT_THROW(CSSISpaceWeather::Undefined().accessLastObservationDate(), ostk::core::error::runtime::Undefined);
+    }
+}
+
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, AccessObservationInterval)
 {
     {
@@ -64,7 +75,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
     }
 
     {
-        EXPECT_ANY_THROW(CSSISpaceWeather::Undefined().accessObservationInterval());
+        EXPECT_THROW(CSSISpaceWeather::Undefined().accessObservationInterval(), ostk::core::error::runtime::Undefined);
     }
 }
 
@@ -87,9 +98,31 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
     }
 
     {
-        EXPECT_ANY_THROW(CSSISpaceWeather::Undefined().accessObservationAt(
+        // calling Undefined Space Weather
+        EXPECT_THROW(CSSISpaceWeather::Undefined().accessObservationAt(
             Instant::DateTime(DateTime::Parse("2018-06-29 00:00:00"), Scale::UTC)
-        ));
+        ),
+        ostk::core::error::runtime::Undefined);
+    }
+
+    {
+        // calling Space Weather with Undefined Instant
+        EXPECT_THROW(CSSISpaceWeather::Undefined().accessObservationAt(
+            Instant::Undefined()
+        ),
+        ostk::core::error::runtime::Undefined);
+    }
+
+    {
+        // access reading outside of interval
+        EXPECT_THROW(CSSISpaceWeather_.accessObservationAt(Instant::DateTime(DateTime::Parse("2000-01-01 00:00:00"), Scale::UTC)),
+        ostk::core::error::RuntimeError);
+    }
+
+    {
+        // access reading inside of interval, but with no data present
+        EXPECT_THROW(CSSISpaceWeather_.accessObservationAt(Instant::DateTime(DateTime::Parse("2019-01-01 00:00:00"), Scale::UTC)),
+        ostk::core::error::RuntimeError);
     }
 }
 
@@ -129,9 +162,31 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
     }
 
     {
-        EXPECT_ANY_THROW(CSSISpaceWeather::Undefined().accessDailyPredictionAt(
-            Instant::DateTime(DateTime::Parse("2018-06-29 00:00:00"), Scale::UTC)
-        ));
+        // calling Undefined Space Weather
+        EXPECT_THROW(CSSISpaceWeather::Undefined().accessDailyPredictionAt(
+            Instant::DateTime(DateTime::Parse("2023-06-29 00:00:00"), Scale::UTC)
+        ),
+        ostk::core::error::runtime::Undefined);
+    }
+
+    {
+        // calling Space Weather with Undefined Instant
+        EXPECT_THROW(CSSISpaceWeather::Undefined().accessDailyPredictionAt(
+            Instant::Undefined()
+        ),
+        ostk::core::error::runtime::Undefined);
+    }
+
+    {
+        // access reading outside of interval
+        EXPECT_THROW(CSSISpaceWeather_.accessDailyPredictionAt(Instant::DateTime(DateTime::Parse("2020-07-15 00:00:00"), Scale::UTC)),
+        ostk::core::error::RuntimeError);
+    }
+
+    {
+        // access reading inside of interval, but with no data present
+        EXPECT_THROW(CSSISpaceWeather_.accessDailyPredictionAt(Instant::DateTime(DateTime::Parse("2023-07-15 00:00:00"), Scale::UTC)),
+        ostk::core::error::RuntimeError);
     }
 }
 
@@ -169,9 +224,31 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
     }
 
     {
-        EXPECT_ANY_THROW(CSSISpaceWeather::Undefined().accessMonthlyPredictionAt(
-            Instant::DateTime(DateTime::Parse("2018-06-29 00:00:00"), Scale::UTC)
-        ));
+        // calling Undefined Space Weather
+        EXPECT_THROW(CSSISpaceWeather::Undefined().accessMonthlyPredictionAt(
+            Instant::DateTime(DateTime::Parse("2023-06-29 00:00:00"), Scale::UTC)
+        ),
+        ostk::core::error::runtime::Undefined);
+    }
+
+    {
+        // calling Space Weather with Undefined Instant
+        EXPECT_THROW(CSSISpaceWeather::Undefined().accessMonthlyPredictionAt(
+            Instant::Undefined()
+        ),
+        ostk::core::error::runtime::Undefined);
+    }
+
+    {
+        // access reading outside of interval
+        EXPECT_THROW(CSSISpaceWeather_.accessMonthlyPredictionAt(Instant::DateTime(DateTime::Parse("2020-07-15 00:00:00"), Scale::UTC)),
+        ostk::core::error::RuntimeError);
+    }
+
+    {
+        // access reading inside of interval, but with no data present
+        EXPECT_THROW(CSSISpaceWeather_.accessMonthlyPredictionAt(Instant::DateTime(DateTime::Parse("2025-07-15 00:00:00"), Scale::UTC)),
+        ostk::core::error::RuntimeError);
     }
 }
 
