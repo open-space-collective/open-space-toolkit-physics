@@ -7,6 +7,7 @@ import pathlib
 from ostk.core.filesystem import Path
 from ostk.core.filesystem import File
 
+from ostk.physics.environment.atmospheric.earth import Manager
 from ostk.physics.environment.atmospheric.earth import CSSISpaceWeather
 
 
