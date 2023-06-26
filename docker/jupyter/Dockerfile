@@ -14,19 +14,16 @@ USER root
 
 # Install Python utilities
 
-RUN pip install --quiet numpy pandas plotly
-RUN conda install ipympl=0.4.0
+RUN pip install --quiet "numpy" "pandas" "plotly" "ipywidgets>=7.6" "ipympl>=0.9.0"
 
 # Install JupyterLab extensions
 
-RUN pip install "plotly>=5" "ipywidgets>=7.6" "matplotlib>=3"
+RUN jupyter labextension install --no-build \
+        @jupyterlab/shortcuts-extension
 
 COPY ./shortcuts-extension /home/jovyan/.jupyter/lab/user-settings/@jupyterlab/shortcuts-extension
 
 RUN chown -R ${NB_UID}:${NB_UID} /home/jovyan/.jupyter
-
-ENV LD_LIBRARY_PATH="/usr/local/lib:/usr/lib/x86_64-linux-gnu:/opt/conda/lib/python3.8/site-packages:/home/jovyan/lib:/opt/conda/lib"
-ENV PYTHONPATH="/opt/conda/lib/python3.8/site-packages:/home/jovyan/lib"
 
 # Install Open Space Toolkit
 
