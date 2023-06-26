@@ -20,21 +20,6 @@ from ostk.physics.environment.atmospheric.earth import Manager
 from ostk.physics.environment.atmospheric.earth import CSSISpaceWeather
 
 
-@pytest.fixture
-def manager() -> Manager:
-    manager = Manager.get()
-
-    manager.set_mode(Manager.Mode.Automatic)
-    manager.set_remote_url(
-        URL.parse("https://celestrak.org/SpaceData/")
-    )  # SW-Last5Years.csv
-
-    yield manager
-
-    manager.reset()
-    manager.clear_local_repository()
-
-
 class TestManager:
     def test_get_mode_success(self, manager: Manager):
         assert manager.get_mode() == Manager.Mode.Automatic

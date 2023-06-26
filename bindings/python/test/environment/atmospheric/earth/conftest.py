@@ -23,3 +23,18 @@ def cssi_space_weather_file(data_directory_path: str) -> File:
 @pytest.fixture
 def cssi_space_weather(cssi_space_weather_file: File) -> CSSISpaceWeather:
     return CSSISpaceWeather.load(cssi_space_weather_file)
+
+
+@pytest.fixture
+def manager() -> Manager:
+    manager = Manager.get()
+
+    manager.set_mode(Manager.Mode.Automatic)
+    manager.set_remote_url(
+        URL.parse("https://celestrak.org/SpaceData/")
+    )  # SW-Last5Years.csv
+
+    yield manager
+
+    manager.reset()
+    manager.clear_local_repository()

@@ -97,23 +97,65 @@ class CSSISpaceWeather
 
     friend std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& aCSSISpaceWeather);
 
+    /// @brief                  true if defined
+    ///
+    /// @return                 True if defined.
+
     bool isDefined() const;
+
+    /// @brief                  Access last observation Date. File publication date is the day following the last
+    /// observation.
+    ///
+    /// @return                 Last observation Date.
 
     const Date& accessLastObservationDate() const;
 
+    /// @brief                  Access observation Interval.
+    ///
+    /// @return                 Observation Interval of Instants.
+
     const Interval& accessObservationInterval() const;
+
+    /// @brief                  Access daily prediction Interval.
+    ///
+    /// @return                 Daily prediction Interval of Instants.
 
     const Reading& accessObservationAt(const Instant& anInstant) const;
 
+    /// @brief                  Access daily prediction Interval.
+    ///
+    /// @return                 Daily prediction Interval of Instants.
+
     const Interval& accessDailyPredictionInterval() const;
+
+    /// @brief                  Access daily prediction at Instant.
+    ///
+    /// @return                 Daily prediction at Instant.
 
     const Reading& accessDailyPredictionAt(const Instant& anInstant) const;
 
+    /// @brief                  Access monthly prediction Interval.
+    ///
+    /// @return                 Monthly prediction Interval of Instants.
+
     const Interval& accessMonthlyPredictionInterval() const;
+
+    /// @brief                  Access monthly prediction at Instant.
+    ///
+    /// @return                 Monthly prediction at Instant.
 
     const Reading& accessMonthlyPredictionAt(const Instant& anInstant) const;
 
+    /// @brief                  Undefined factory function
+    ///
+    /// @return                 Undefined CSSI Space Weather object.
+
     static CSSISpaceWeather Undefined();
+
+    /// @brief                  Load CSSI Space Weather file.
+    ///
+    /// @param                  [in] aFile A CSSI Space Weather file.
+    /// @return                 CSSI Space Weather object.
 
     static CSSISpaceWeather Load(const File& aFile);
 
