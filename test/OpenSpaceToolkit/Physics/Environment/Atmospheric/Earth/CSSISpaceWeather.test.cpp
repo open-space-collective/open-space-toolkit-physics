@@ -118,12 +118,12 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
     {
         // access reading outside of interval
         EXPECT_THROW(
-            CSSISpaceWeather_.accessObservationAt(Instant::DateTime(DateTime::Parse("2000-01-01 00:00:00"), Scale::UTC)
-            ),
-            ostk::core::error::RuntimeError
+           CSSISpaceWeather_.accessObservationAt(Instant::DateTime(DateTime::Parse("2000-01-01 00:00:00"), Scale::UTC)
+           ),
+           ostk::core::error::RuntimeError
         );
     }
-
+    
     {
         // access reading inside of interval, but with no data present
         EXPECT_THROW(

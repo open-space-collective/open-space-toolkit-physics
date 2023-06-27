@@ -6,6 +6,7 @@
 
 #include <boost/lexical_cast.hpp>
 
+#include <OpenSpaceToolkit/Core/Containers/Table.hpp>
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Types/Size.hpp>
 #include <OpenSpaceToolkit/Core/Types/String.hpp>
@@ -31,6 +32,7 @@ using ostk::core::types::Size;
 using ostk::core::types::Real;
 using ostk::core::types::String;
 using ostk::core::utils::Print;
+using ostk::core::ctnr::Table;
 
 using ostk::physics::time::Scale;
 using ostk::physics::time::Time;
@@ -234,7 +236,7 @@ const CSSISpaceWeather::Reading& CSSISpaceWeather::accessObservationAt(const Ins
     }
 
     const Real instantMjd = anInstant.getModifiedJulianDate(Scale::UTC);
-
+    
     const auto observationIt = observations_.find(instantMjd.floor());
 
     if (observationIt != observations_.end())
@@ -354,42 +356,17 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
     }
 
     CSSISpaceWeather spaceWeather;
-    std::ifstream fileStream {aFile.getPath().toString()};
 
-    String line;
+    Table spaceWeatherTable = Table::Load(aFile, Table::Format::CSV, true);
 
-    // TBI: Use split from string type once new OSTk Core released
-    auto split = [](String s, const String delimiter) -> Array<String>
+    for (const auto& row : spaceWeatherTable)
     {
-        Array<String> results;
-
-        if (s.empty())
-        {
-            return results;
-        }
-
-        Size last = 0;
-        Size next = 0;
-        while ((next = s.find(delimiter, last)) != std::string::npos)
-        {
-            results.add(s.substr(last, next - last));
-            last = next + 1;
-        }
-
-        results.add(s.substr(last));
-        return results;
-    };
-
-    while (std::getline(fileStream, line))
-    {
-        Array<String> lineParts = split(String(line).trim(), ",");
-
-        if (lineParts.empty() || lineParts[0] == "DATE")
+        if (row.isEmpty() || !row[0].isDefined())
         {
             continue;
         }
 
-        const Date date = Date::Parse(lineParts[0], Date::Format::Standard);
+        const Date date = Date::Parse(row[0].getString(), Date::Format::Standard);
 
         // [TBR] Toss data past 2030 due to this restriction in the Instant class
         if (date.getYear() > 2030)
@@ -399,64 +376,36 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
 
         const Integer mjd = DateTime(date, Time(0, 0, 0)).getModifiedJulianDate().floor();
 
-        const Integer BSRN =
-            !lineParts[1].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[1])) : Integer::Undefined();
-        const Integer ND =
-            !lineParts[2].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[2])) : Integer::Undefined();
-        const Integer Kp1 =
-            !lineParts[3].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[3])) : Integer::Undefined();
-        const Integer Kp2 =
-            !lineParts[4].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[4])) : Integer::Undefined();
-        const Integer Kp3 =
-            !lineParts[5].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[5])) : Integer::Undefined();
-        const Integer Kp4 =
-            !lineParts[6].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[6])) : Integer::Undefined();
-        const Integer Kp5 =
-            !lineParts[7].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[7])) : Integer::Undefined();
-        const Integer Kp6 =
-            !lineParts[8].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[8])) : Integer::Undefined();
-        const Integer Kp7 =
-            !lineParts[9].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[9])) : Integer::Undefined();
-        const Integer Kp8 =
-            !lineParts[10].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[10])) : Integer::Undefined();
-        const Integer KpSum =
-            !lineParts[11].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[11])) : Integer::Undefined();
-        const Integer Ap1 =
-            !lineParts[12].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[12])) : Integer::Undefined();
-        const Integer Ap2 =
-            !lineParts[13].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[13])) : Integer::Undefined();
-        const Integer Ap3 =
-            !lineParts[14].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[14])) : Integer::Undefined();
-        const Integer Ap4 =
-            !lineParts[15].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[15])) : Integer::Undefined();
-        const Integer Ap5 =
-            !lineParts[16].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[16])) : Integer::Undefined();
-        const Integer Ap6 =
-            !lineParts[17].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[17])) : Integer::Undefined();
-        const Integer Ap7 =
-            !lineParts[18].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[18])) : Integer::Undefined();
-        const Integer Ap8 =
-            !lineParts[19].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[19])) : Integer::Undefined();
-        const Integer ApAvg =
-            !lineParts[20].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[20])) : Integer::Undefined();
-        const Real Cp = !lineParts[21].isEmpty() ? Real(boost::lexical_cast<double>(lineParts[21])) : Real::Undefined();
-        const Integer C9 =
-            !lineParts[22].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[22])) : Integer::Undefined();
-        const Integer ISN =
-            !lineParts[23].isEmpty() ? Integer(boost::lexical_cast<int>(lineParts[23])) : Integer::Undefined();
-        const Real F107Obs =
-            !lineParts[24].isEmpty() ? Real(boost::lexical_cast<double>(lineParts[24])) : Real::Undefined();
-        const Real F107Adj =
-            !lineParts[25].isEmpty() ? Real(boost::lexical_cast<double>(lineParts[25])) : Real::Undefined();
-        const String F107DataType = lineParts[26];
-        const Real F107ObsCenter81 =
-            !lineParts[27].isEmpty() ? Real(boost::lexical_cast<double>(lineParts[27])) : Real::Undefined();
-        const Real F107ObsLast81 =
-            !lineParts[28].isEmpty() ? Real(boost::lexical_cast<double>(lineParts[28])) : Real::Undefined();
-        const Real F107AdjCenter81 =
-            !lineParts[29].isEmpty() ? Real(boost::lexical_cast<double>(lineParts[29])) : Real::Undefined();
-        const Real F107AdjLast81 =
-            !lineParts[30].isEmpty() ? Real(boost::lexical_cast<double>(String(lineParts[30]))) : Real::Undefined();
+        const Integer BSRN = row[1].isDefined() ? row[1].getInteger() : Integer::Undefined();
+        const Integer ND = row[2].isDefined() ? row[2].getInteger() : Integer::Undefined();
+        const Integer Kp1 = row[3].isDefined() ? row[3].getInteger() : Integer::Undefined();
+        const Integer Kp2 = row[4].isDefined() ? row[4].getInteger() : Integer::Undefined();
+        const Integer Kp3 = row[5].isDefined() ? row[5].getInteger() : Integer::Undefined();
+        const Integer Kp4 = row[6].isDefined() ? row[6].getInteger() : Integer::Undefined();
+        const Integer Kp5 = row[7].isDefined() ? row[7].getInteger() : Integer::Undefined();
+        const Integer Kp6 = row[8].isDefined() ? row[8].getInteger() : Integer::Undefined();
+        const Integer Kp7 = row[9].isDefined() ? row[9].getInteger() : Integer::Undefined();
+        const Integer Kp8 = row[10].isDefined() ? row[10].getInteger() : Integer::Undefined();
+        const Integer KpSum = row[11].isDefined() ? row[11].getInteger() : Integer::Undefined();
+        const Integer Ap1 = row[12].isDefined() ? row[12].getInteger() : Integer::Undefined();
+        const Integer Ap2 = row[13].isDefined() ? row[13].getInteger() : Integer::Undefined();
+        const Integer Ap3 = row[14].isDefined() ? row[14].getInteger() : Integer::Undefined();
+        const Integer Ap4 = row[15].isDefined() ? row[15].getInteger() : Integer::Undefined();
+        const Integer Ap5 = row[16].isDefined() ? row[16].getInteger() : Integer::Undefined();
+        const Integer Ap6 = row[17].isDefined() ? row[17].getInteger() : Integer::Undefined();
+        const Integer Ap7 = row[18].isDefined() ? row[18].getInteger() : Integer::Undefined();
+        const Integer Ap8 = row[19].isDefined() ? row[19].getInteger() : Integer::Undefined();
+        const Integer ApAvg = row[20].isDefined() ? row[20].getInteger() : Integer::Undefined();
+        const Real Cp = row[21].isDefined() ? row[21].getReal() : Real::Undefined();
+        const Integer C9 = row[22].isDefined() ? row[22].getInteger() : Integer::Undefined();
+        const Integer ISN = row[23].isDefined() ? row[23].getInteger() : Integer::Undefined();
+        const Real F107Obs = row[24].isDefined() ? row[24].getReal() : Real::Undefined();
+        const Real F107Adj = row[25].isDefined() ? row[25].getReal() : Real::Undefined();
+        const String F107DataType = row[26].getString();
+        const Real F107ObsCenter81 = row[27].isDefined() ? row[27].getReal() : Real::Undefined();
+        const Real F107ObsLast81 = row[28].isDefined() ? row[28].getReal() : Real::Undefined();
+        const Real F107AdjCenter81 = row[29].isDefined() ? row[29].getReal() : Real::Undefined();
+        const Real F107AdjLast81 = row[30].isDefined() ? row[30].getReal() : Real::Undefined();
 
         const CSSISpaceWeather::Reading reading = {
             date,
