@@ -4,11 +4,6 @@
 
 # Check input arguments
 
-if [[ -z ${project_directory} ]]; then
-    echo "Variable [project_directory] is undefined."
-    exit 1
-fi
-
 if [[ -z ${docker_development_image_repository} ]]; then
     echo "Variable [docker_development_image_repository] is undefined."
     exit 1
@@ -19,10 +14,13 @@ if [[ -z ${docker_image_version} ]]; then
     exit 1
 fi
 
+project_directory=$(git rev-parse --show-toplevel)
+
 # Initialize variables
 
 options=()
 command=""
+deps=""
 
 # Setup linked mode
 
@@ -34,63 +32,35 @@ if [[ ! -z ${1} ]] && [[ ${1} == "--link" ]]; then
 
         # Extract last part of the path
 
-        link_without_trailing_slash=${link%/}
-        dep=${link_without_trailing_slash##*/}
+        dep=$(basename ${link})
+
+        deps+=" ${dep}"
 
         # Log the linking step
 
         echo "Linking with ${dep} at ${link}..."
 
-        # Open Space Toolkit ▸ Core
+        # Open Space Toolkit ▸ Dep
 
-        if [[ ${dep} == "open-space-toolkit-core" ]]; then
+        project_name=$(echo ${dep} | cut -d "-" -f 4)
 
-            options+=( "-v" )
-            options+=( "${link}:/mnt/open-space-toolkit-core:ro" )
-
-            command="${command} \
-            rm -rf /usr/local/include/OpenSpaceToolkit/Core; \
-            rm -f /usr/local/lib/libopen-space-toolkit-core.so*; \
-            cp -as /mnt/open-space-toolkit-core/include/OpenSpaceToolkit/Core /usr/local/include/OpenSpaceToolkit/Core; \
-            cp -as /mnt/open-space-toolkit-core/src/OpenSpaceToolkit/Core/* /usr/local/include/OpenSpaceToolkit/Core/; \
-            ln -s /mnt/open-space-toolkit-core/lib/libopen-space-toolkit-core.so /usr/local/lib/; \
-            ln -s /mnt/open-space-toolkit-core/lib/libopen-space-toolkit-core.so.* /usr/local/lib/;"
-
+        if [ ${project_name} = "io" ]; then
+            project_name_capitalized="IO"
+        else
+            project_name_capitalized=${project_name^}
         fi
 
-        # Open Space Toolkit ▸ IO
+        options+=( "-v" )
+        options+=( "${link}:/mnt/${dep}:ro" )
 
-        if [[ ${dep} == "open-space-toolkit-io" ]]; then
-
-            options+=( "-v" )
-            options+=( "${link}:/mnt/open-space-toolkit-io:ro" )
-
-            command="${command} \
-            rm -rf /usr/local/include/OpenSpaceToolkit/IO; \
-            rm -f /usr/local/lib/libopen-space-toolkit-io.so*; \
-            cp -as /mnt/open-space-toolkit-io/include/OpenSpaceToolkit/IO /usr/local/include/OpenSpaceToolkit/IO; \
-            cp -as /mnt/open-space-toolkit-io/src/OpenSpaceToolkit/IO/* /usr/local/include/OpenSpaceToolkit/IO/; \
-            ln -s /mnt/open-space-toolkit-io/lib/libopen-space-toolkit-io.so /usr/local/lib/; \
-            ln -s /mnt/open-space-toolkit-io/lib/libopen-space-toolkit-io.so.* /usr/local/lib/;"
-
-        fi
-
-        # Open Space Toolkit ▸ Mathematics
-
-        if [[ ${dep} == "open-space-toolkit-mathematics" ]]; then
-
-            options+=( "-v" )
-            options+=( "${link}:/mnt/open-space-toolkit-mathematics:ro" )
-
-            command="${command} \
-            rm -rf /usr/local/include/OpenSpaceToolkit/Mathematics; \
-            rm -f /usr/local/lib/libopen-space-toolkit-mathematics.so*; \
-            cp -as /mnt/open-space-toolkit-mathematics/include/OpenSpaceToolkit/Mathematics /usr/local/include/OpenSpaceToolkit/Mathematics; \
-            cp -as /mnt/open-space-toolkit-mathematics/src/OpenSpaceToolkit/Mathematics/* /usr/local/include/OpenSpaceToolkit/Mathematics/; \
-            ln -s /mnt/open-space-toolkit-mathematics/lib/libopen-space-toolkit-mathematics.so /usr/local/lib/; \
-            ln -s /mnt/open-space-toolkit-mathematics/lib/libopen-space-toolkit-mathematics.so.* /usr/local/lib/;"
-
-        fi
+        command="${command} \
+        rm -rf /usr/local/include/OpenSpaceToolkit/${project_name_capitalized}; \
+        rm -f /usr/local/lib/lib${dep}.so*; \
+        cp -as /mnt/${dep}/include/OpenSpaceToolkit/${project_name_capitalized} /usr/local/include/OpenSpaceToolkit/${project_name_capitalized}; \
+        cp -as /mnt/${dep}/src/OpenSpaceToolkit/${project_name_capitalized}/* /usr/local/include/OpenSpaceToolkit/${project_name_capitalized}/; \
+        ln -s /mnt/${dep}/lib/lib${dep}.so /usr/local/lib/; \
+        ln -s /mnt/${dep}/lib/lib${dep}.so.* /usr/local/lib/; \
+        cp -as /mnt/${dep}/build/bindings/python/dist/* /usr/local/share;"
 
     done
 
@@ -101,12 +71,13 @@ fi
 # Run Docker container
 
 docker run \
--it \
---rm \
---privileged \
-"${options[@]}" \
--v "${project_directory}:/app:delegated" \
--v "${project_directory}/tools/development/helpers:/app/build/helpers:ro,delegated" \
---workdir="/app/build" \
-${docker_development_image_repository}:${docker_image_version} \
-/bin/bash -c "${command}"
+    -it \
+    --rm \
+    --privileged \
+    "${options[@]}" \
+    --volume="${project_directory}:/app:delegated" \
+    --volume="${project_directory}/tools/development/helpers:/app/build/helpers:ro,delegated" \
+    --env="deps=${deps}" \
+    --workdir="/app/build" \
+    ${docker_development_image_repository}:${docker_image_version} \
+    /bin/bash -c "${command}"
