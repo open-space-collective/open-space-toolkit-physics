@@ -236,7 +236,7 @@ const CSSISpaceWeather::Reading& CSSISpaceWeather::accessObservationAt(const Ins
     }
 
     const Real instantMjd = anInstant.getModifiedJulianDate(Scale::UTC);
-    
+
     const auto observationIt = observations_.find(instantMjd.floor());
 
     if (observationIt != observations_.end())
