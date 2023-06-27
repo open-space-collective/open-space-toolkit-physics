@@ -42,10 +42,101 @@ using ostk::physics::coord::Transform;
 using ostk::physics::coord::Frame;
 using ostk::physics::env::obj::celest::Earth;
 
+// This will test transformation translation, relative velocity, oreintation and
+// angular velocity against 3rd party generated files. The files can be found in
+// the folder 'Transforms', together with a README.md containing context.
 TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Validation)
 {
     {
-        const Array<Tuple<File, String, String, Real, Real, Real, Real, Real>> referenceScenarios = {
+        const Array<Tuple<File, String, String, Real, Real, Real, Real>> referenceScenarios = {
+
+            // GCRF <> TIRF (Orekit)
+            {File::Path(Path::Parse(
+                 "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TIRF_orekit.csv"
+             )),
+             "TIRF",
+             "",
+             0.0,    // Translation tolerance [m]
+             0.0,    // Relative velocity tolerance [m/s]
+             50.0,   // Orientation tolerance at Earth Surface [m]
+             1e-6},  // Angular velocity tolerance [rad/s]
+
+            // GCRF <> CIRF (Orekit)
+            {File::Path(Path::Parse(
+                 "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_CIRF_orekit.csv"
+             )),
+             "CIRF",
+             "",
+             0.0,     // Translation tolerance [m]
+             0.0,     // Relative velocity tolerance [m/s]
+             1e-1,    // Orientation tolerance at Earth Surface [m]
+             1e-11},  // Angular velocity tolerance [rad/s]
+
+            // GCRF <> MOD (STK)
+            {File::Path(Path::Parse(
+                 "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_MOD_stk.csv"
+             )),
+             "MOD",
+             "",
+             0.0,   // Translation tolerance [m]
+             0.0,   // Relative velocity tolerance [m/s]
+             2.0,   // Orientation tolerance at Earth Surface [m]
+             0.0},  // Angular velocity tolerance [rad/s]
+
+            // GCRF <> MOD (Orekit)
+            {File::Path(Path::Parse(
+                 "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_MOD_orekit.csv"
+             )),
+             "MOD",
+             "",
+             0.0,   // Translation tolerance [m]
+             0.0,   // Relative velocity tolerance [m/s]
+             3.0,   // Orientation tolerance at Earth Surface [m]
+             0.0},  // Angular velocity tolerance [rad/s]
+
+            // GCRF <> J2000 IAU 2000A (STK)
+            {File::Path(Path::Parse(
+                 "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_J2000_stk.csv"
+             )),
+             "J2000",
+             "IAU 2000A",
+             0.0,   // Translation tolerance [m]
+             0.0,   // Relative velocity tolerance [m/s]
+             1.5,   // Orientation tolerance at Earth Surface [m]
+             0.0},  // Angular velocity tolerance [rad/s]
+
+            // GCRF <> J2000 IAU 2000A (Orekit)
+            {File::Path(Path::Parse(
+                 "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_J2000_orekit.csv"
+             )),
+             "J2000",
+             "IAU 2000A",
+             0.0,   // Translation tolerance [m]
+             0.0,   // Relative velocity tolerance [m/s]
+             1e-5,  // Orientation tolerance at Earth Surface [m]
+             0.0},  // Angular velocity tolerance [rad/s]
+
+            // GCRF <> J2000 IAU 2006 (STK)
+            {File::Path(Path::Parse(
+                 "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_J2000_stk.csv"
+             )),
+             "J2000",
+             "IAU 2006",
+             0.0,   // Translation tolerance [m]
+             0.0,   // Relative velocity tolerance [m/s]
+             1.5,   // Orientation tolerance at Earth Surface [m]
+             0.0},  // Angular velocity tolerance [rad/s]
+
+            // GCRF <> J2000 IAU 2006 (Orekit)
+            {File::Path(Path::Parse(
+                 "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_J2000_orekit.csv"
+             )),
+             "J2000",
+             "IAU 2006",
+             0.0,   // Translation tolerance [m]
+             0.0,   // Relative velocity tolerance [m/s]
+             1e-4,  // Orientation tolerance at Earth Surface [m]
+             0.0},  // Angular velocity tolerance [rad/s]
 
             // GCRF <> TOD IAU 2000A (STK)
             {File::Path(Path::Parse(
@@ -53,21 +144,19 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Validation)
              )),
              "TOD",
              "IAU 2000A",
-             0.0,   // Position tolerance [m]
-             0.0,   // Velocity tolerance [m/s]
-             1e-4,  // Orientation axis tolerance []
-             1e-3,  // Orientation angle tolerance [rad]
+             0.0,   // Translation tolerance [m]
+             0.0,   // Relative velocity tolerance [m/s]
+             3.0,   // Orientation tolerance at Earth Surface [m]
              0.0},  // Angular velocity tolerance [rad/s]
 
             // GCRF <> TOD IAU 2000A (Orekit)
             {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/"
-                                    "GCRF_TOD_IERS_2010_orekit.csv")),
+                                    "GCRF_TOD_orekit.csv")),
              "TOD",
              "IAU 2000A",
-             0.0,     // Position tolerance [m]
-             0.0,     // Velocity tolerance [m/s]
-             1e-4,    // Orientation axis tolerance []
-             1e-3,    // Orientation angle tolerance [rad]
+             0.0,     // Translation tolerance [m]
+             0.0,     // Relative velocity tolerance [m/s]
+             3.0,     // Orientation tolerance at Earth Surface [m]
              1e-10},  // Angular velocity tolerance [rad/s]
 
             // GCRF <> TOD IAU 2000B (STK)
@@ -76,21 +165,19 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Validation)
              )),
              "TOD",
              "IAU 2000B",
-             0.0,   // Position tolerance [m]
-             0.0,   // Velocity tolerance [m/s]
-             1e-4,  // Orientation axis tolerance []
-             1e-3,  // Orientation angle tolerance [rad]
+             0.0,   // Translation tolerance [m]
+             0.0,   // Relative velocity tolerance [m/s]
+             3.0,   // Orientation tolerance at Earth Surface [m]
              0.0},  // Angular velocity tolerance [rad/s]
 
             // GCRF <> TOD IAU 2000B (Orekit)
             {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/"
-                                    "GCRF_TOD_IERS_2010_orekit.csv")),
+                                    "GCRF_TOD_orekit.csv")),
              "TOD",
              "IAU 2000B",
-             0.0,     // Position tolerance [m]
-             0.0,     // Velocity tolerance [m/s]
-             1e-4,    // Orientation axis tolerance []
-             1e-3,    // Orientation angle tolerance [rad]
+             0.0,     // Translation tolerance [m]
+             0.0,     // Relative velocity tolerance [m/s]
+             3.0,     // Orientation tolerance at Earth Surface [m]
              1e-10},  // Angular velocity tolerance [rad/s]
 
             // GCRF <> TOD IAU 2006 (STK)
@@ -99,23 +186,60 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Validation)
              )),
              "TOD",
              "IAU 2006",
-             0.0,   // Position tolerance [m]
-             0.0,   // Velocity tolerance [m/s]
-             1e-4,  // Orientation axis tolerance []
-             1e-3,  // Orientation angle tolerance [rad]
+             0.0,   // Translation tolerance [m]
+             0.0,   // Relative velocity tolerance [m/s]
+             3.0,   // Orientation tolerance at Earth Surface [m]
              0.0},  // Angular velocity tolerance [rad/s]
 
             // GCRF <> TOD IAU 2006 (Orekit)
             {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/"
-                                    "GCRF_TOD_IERS_2010_orekit.csv")),
+                                    "GCRF_TOD_orekit.csv")),
              "TOD",
              "IAU 2006",
-             0.0,     // Position tolerance [m]
-             0.0,     // Velocity tolerance [m/s]
-             1e-4,    // Orientation axis tolerance []
-             1e-3,    // Orientation angle tolerance [rad]
+             0.0,     // Translation tolerance [m]
+             0.0,     // Relative velocity tolerance [m/s]
+             3.0,     // Orientation tolerance at Earth Surface [m]
              1e-10},  // Angular velocity tolerance [rad/s]
 
+            // GCRF <> TEME (STK)
+            {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/"
+                                    "GCRF_TEME_stk.csv")),
+             "TEME",
+             "",
+             0.0,     // Translation tolerance [m]
+             0.0,     // Relative velocity tolerance [m/s]
+             1.0,     // Orientation tolerance at Earth Surface [m]
+             1e-11},  // Angular velocity tolerance [rad/s]
+
+            // GCRF <> TEME (Orekit)
+            {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/"
+                                    "GCRF_TEME_orekit.csv")),
+             "TEME",
+             "",
+             0.0,     // Translation tolerance [m]
+             0.0,     // Relative velocity tolerance [m/s]
+             2.0,     // Orientation tolerance at Earth Surface [m]
+             1e-11},  // Angular velocity tolerance [rad/s]
+
+            // GCRF <> ITRF (STK)
+            {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/"
+                                    "GCRF_ITRF_stk.csv")),
+             "ITRF",
+             "",
+             0.0,    // Translation tolerance [m]
+             0.0,    // Relative velocity tolerance [m/s]
+             50.0,   // Orientation tolerance at Earth Surface [m]
+             1e-6},  // Angular velocity tolerance [rad/s]
+
+            // GCRF <> ITRF (Orekit)
+            {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/"
+                                    "GCRF_ITRF_orekit.csv")),
+             "ITRF",
+             "",
+             0.0,    // Translation tolerance [m]
+             0.0,    // Relative velocity tolerance [m/s]
+             50.0,   // Orientation tolerance at Earth Surface [m]
+             1e-6},  // Angular velocity tolerance [rad/s]
         };
 
         for (const auto& referenceScenario : referenceScenarios)
@@ -127,9 +251,13 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Validation)
             const String otherStr = std::get<2>(referenceScenario);
             const Real translationTolerance = std::get<3>(referenceScenario);
             const Real velocityTolerance = std::get<4>(referenceScenario);
-            const Real orientationAxisTolerance = std::get<5>(referenceScenario);
-            const Real orientationAngleTolerance = std::get<6>(referenceScenario);
-            const Real angularVelocityTolerance = std::get<7>(referenceScenario);
+            const Real orientationToleranceAtEarthSurface = std::get<5>(referenceScenario);
+            const Real angularVelocityTolerance = std::get<6>(referenceScenario);
+
+            const double earthRadius = 6370000;
+            const Vector3d earthSurfaceX = earthRadius * Vector3d::X();
+            const Vector3d earthSurfaceY = earthRadius * Vector3d::Y();
+            const Vector3d earthSurfaceZ = earthRadius * Vector3d::Z();
 
             const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
 
@@ -140,12 +268,37 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Validation)
             for (const auto& referenceRow : referenceData)
             {
                 const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].accessString()), Scale::TAI);
+
                 Shared<const Frame> frame1 = Frame::GCRF();
                 Shared<const Frame> frame2 = Frame::GCRF();
 
                 if (frame2Str == "TOD")
                 {
                     frame2 = Frame::TOD(instant, iau::TheoryFromString(otherStr));
+                }
+                else if (frame2Str == "TEME")
+                {
+                    frame2 = Frame::TEME();
+                }
+                else if (frame2Str == "ITRF")
+                {
+                    frame2 = Frame::ITRF();
+                }
+                else if (frame2Str == "J2000")
+                {
+                    frame2 = Frame::J2000(iau::TheoryFromString(otherStr));
+                }
+                else if (frame2Str == "MOD")
+                {
+                    frame2 = Frame::MOD(instant);
+                }
+                else if (frame2Str == "CIRF")
+                {
+                    frame2 = Frame::CIRF();
+                }
+                else if (frame2Str == "TIRF")
+                {
+                    frame2 = Frame::TIRF();
                 }
 
                 const Transform transformToFrame1 = frame2->getTransformTo(frame1, instant);
@@ -158,7 +311,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Validation)
                     EXPECT_EQ(instant, transformToFrame2.getInstant());
                 }
 
-                // Relative Position
+                // Translation
 
                 {
                     const Vector3d referenceToFrame2 = {
@@ -219,75 +372,90 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Validation)
                 // Relative orientation
 
                 {
-                    const Quaternion referenceQuaterion = Quaternion::XYZS(
-                                                              referenceRow[7].accessReal(),
-                                                              referenceRow[8].accessReal(),
-                                                              referenceRow[9].accessReal(),
-                                                              referenceRow[10].accessReal()
+                    const Quaternion referenceOrientationToFrame2 = Quaternion::XYZS(
+                                                                        referenceRow[7].accessReal(),
+                                                                        referenceRow[8].accessReal(),
+                                                                        referenceRow[9].accessReal(),
+                                                                        referenceRow[10].accessReal()
                     )
-                                                              .normalize();
+                                                                        .normalize();
 
-                    const RotationVector referenceToFrame2 = RotationVector::Quaternion(referenceQuaterion);
-                    const RotationVector referenceToFrame1 =
-                        RotationVector::Quaternion(referenceQuaterion.toConjugate());
+                    // Orientation to Frame 2
+                    const Vector3d referenceToFrame2X = referenceOrientationToFrame2 * earthSurfaceX;
+                    const Vector3d toFrame2X = transformToFrame2.applyToVector(earthSurfaceX);
+                    const Vector3d referenceToFrame2Y = referenceOrientationToFrame2 * earthSurfaceY;
+                    const Vector3d toFrame2Y = transformToFrame2.applyToVector(earthSurfaceY);
+                    const Vector3d referenceToFrame2Z = referenceOrientationToFrame2 * earthSurfaceZ;
+                    const Vector3d toFrame2Z = transformToFrame2.applyToVector(earthSurfaceZ);
 
-                    const RotationVector toFrame2 = RotationVector::Quaternion(transformToFrame2.getOrientation());
-                    const RotationVector toFrame1 = RotationVector::Quaternion(transformToFrame1.getOrientation());
-
-                    // Angle
-
-                    ASSERT_GT(
-                        orientationAngleTolerance,
-                        std::abs((referenceToFrame2.getAngle() - toFrame2.getAngle()).inRadians())
-                    )
+                    ASSERT_TRUE(referenceToFrame2X.isNear(toFrame2X, orientationToleranceAtEarthSurface))
                         << String::Format(
-                               "{} @ {} Rotation Angle: {} [rad] vs. {} [rad] above {} [rad] tolerance",
+                               "{} @ {} Orientation at Earth Surface +X: {} [m] vs. {} [m] above {} [m] tolerance",
                                scenario,
                                instant.toString(Scale::TAI),
-                               referenceToFrame2.getAngle().inRadians().toString(),
-                               toFrame2.getAngle().inRadians().toString(),
-                               orientationAngleTolerance.toString()
+                               referenceToFrame2X.toString(),
+                               toFrame2X.toString(),
+                               orientationToleranceAtEarthSurface.toString()
                            );
 
-                    ASSERT_GT(
-                        orientationAngleTolerance,
-                        std::abs((referenceToFrame1.getAngle() - toFrame1.getAngle()).inRadians())
-                    )
+                    ASSERT_TRUE(referenceToFrame2Y.isNear(toFrame2Y, orientationToleranceAtEarthSurface))
                         << String::Format(
-                               "{} @ {} Rotation Angle: {} [rad] vs. {} [rad] above {} [rad] tolerance",
+                               "{} @ {} Orientation at Earth Surface +Y: {} [m] vs. {} [m] above {} [m] tolerance",
                                scenario,
                                instant.toString(Scale::TAI),
-                               referenceToFrame1.getAngle().inRadians().toString(),
-                               toFrame1.getAngle().inRadians().toString(),
-                               orientationAngleTolerance.toString()
+                               referenceToFrame2Y.toString(),
+                               toFrame2Y.toString(),
+                               orientationToleranceAtEarthSurface.toString()
                            );
 
-                    // Axis
-
-                    ASSERT_TRUE(referenceToFrame2.getAxis().isNear(toFrame2.getAxis(), orientationAxisTolerance))
+                    ASSERT_TRUE(referenceToFrame2Z.isNear(toFrame2Z, orientationToleranceAtEarthSurface))
                         << String::Format(
-                               "{} @ {} Rotation Axis: {} [] vs. {} [] above {} [] tolerance | Rotation Angle: {} "
-                               "[rad] vs {} [rad]",
+                               "{} @ {} Orientation at Earth Surface +Z: {} [m] vs. {} [m] above {} [m] tolerance",
                                scenario,
                                instant.toString(Scale::TAI),
-                               referenceToFrame2.getAxis().toString(),
-                               toFrame2.getAxis().toString(),
-                               orientationAxisTolerance.toString(),
-                               referenceToFrame2.getAngle().inRadians(),
-                               toFrame2.getAngle().inRadians()
+                               referenceToFrame2Z.toString(),
+                               toFrame2Z.toString(),
+                               orientationToleranceAtEarthSurface.toString()
                            );
 
-                    ASSERT_TRUE(referenceToFrame1.getAxis().isNear(toFrame1.getAxis(), orientationAxisTolerance))
+                    // Orientation to Frame 1
+                    const Quaternion referenceOrientationToFrame1 = referenceOrientationToFrame2.toConjugate();
+
+                    const Vector3d referenceToFrame1X = referenceOrientationToFrame1 * earthSurfaceX;
+                    const Vector3d toFrame1X = transformToFrame1.applyToVector(earthSurfaceX);
+                    const Vector3d referenceToFrame1Y = referenceOrientationToFrame1 * earthSurfaceY;
+                    const Vector3d toFrame1Y = transformToFrame1.applyToVector(earthSurfaceY);
+                    const Vector3d referenceToFrame1Z = referenceOrientationToFrame1 * earthSurfaceZ;
+                    const Vector3d toFrame1Z = transformToFrame1.applyToVector(earthSurfaceZ);
+
+                    ASSERT_TRUE(referenceToFrame1X.isNear(toFrame1X, orientationToleranceAtEarthSurface))
                         << String::Format(
-                               "{} @ {} Rotation Axis: {} [] vs. {} [] above {} [] tolerance | Rotation Angle: {} "
-                               "[rad] vs {} [rad]",
+                               "{} @ {} Orientation at Earth Surface +X: {} [m] vs. {} [m] above {} [m] tolerance",
                                scenario,
                                instant.toString(Scale::TAI),
-                               referenceToFrame1.getAxis().toString(),
-                               toFrame1.getAxis().toString(),
-                               orientationAxisTolerance.toString(),
-                               referenceToFrame1.getAngle().inRadians(),
-                               toFrame1.getAngle().inRadians()
+                               referenceToFrame1X.toString(),
+                               toFrame1X.toString(),
+                               orientationToleranceAtEarthSurface.toString()
+                           );
+
+                    ASSERT_TRUE(referenceToFrame1Y.isNear(toFrame1Y, orientationToleranceAtEarthSurface))
+                        << String::Format(
+                               "{} @ {} Orientation at Earth Surface +Y: {} [m] vs. {} [m] above {} [m] tolerance",
+                               scenario,
+                               instant.toString(Scale::TAI),
+                               referenceToFrame1Y.toString(),
+                               toFrame1Y.toString(),
+                               orientationToleranceAtEarthSurface.toString()
+                           );
+
+                    ASSERT_TRUE(referenceToFrame1Z.isNear(toFrame1Z, orientationToleranceAtEarthSurface))
+                        << String::Format(
+                               "{} @ {} Orientation at Earth Surface +Z: {} [m] vs. {} [m] above {} [m] tolerance",
+                               scenario,
+                               instant.toString(Scale::TAI),
+                               referenceToFrame1Z.toString(),
+                               toFrame1Z.toString(),
+                               orientationToleranceAtEarthSurface.toString()
                            );
                 }
 

@@ -415,7 +415,7 @@ void Manager::fetchIndexAt(const URL& aUrl)
     catch (const ostk::core::error::RuntimeError& anException)
     {
         throw ostk::core::error::RuntimeError(
-            "Error when fetching index at [{}]: [{}].", aUrl.toString(), anException.what()
+            "Error when fetching index at [{}]: [{}].", aUrl.toString(), anException.getMessage()
         );
     }
 
