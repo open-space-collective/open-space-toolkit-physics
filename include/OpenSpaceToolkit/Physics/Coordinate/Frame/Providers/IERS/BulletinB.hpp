@@ -69,9 +69,22 @@ class BulletinB
    public:
     friend std::ostream& operator<<(std::ostream& anOutputStream, const BulletinB& aBulletinB);
 
+    /// @brief              true if defined
+    ///
+    /// @return             True if defined.
+
     bool isDefined() const;
 
+    /// @brief              Undefined factory function
+    ///
+    /// @return             Undefined Bulletin B object.
+
     static BulletinB Undefined();
+
+    /// @brief              Load Bulletin B from file
+    ///
+    /// @param              [in] aFile A file.
+    /// @return             Bulletin B object.
 
     static BulletinB Load(const fs::File& aFile);
 

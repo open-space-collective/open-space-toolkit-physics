@@ -93,19 +93,56 @@ class Finals2000A
 
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Finals2000A& aFinals2000A);
 
+    /// @brief                  true if defined
+    ///
+    /// @return                 True if defined
+
     bool isDefined() const;
+
+    /// @brief                  Get data interval
+    ///
+    /// @return                 Data Intervalt of Instants
 
     Interval getInterval() const;
 
+    /// @brief                  Get polar motion at Instant
+    ///
+    /// @param                  [in] anInstant An Instant
+    /// @return                 Polar motion
+
     Vector2d getPolarMotionAt(const Instant& anInstant) const;
+
+    /// @brief                  Get UT1-UTC at Instant
+    ///
+    /// @param                  [in] anInstant An Instant
+    /// @return                 UT1-UTC
 
     Real getUt1MinusUtcAt(const Instant& anInstant) const;
 
+    /// @brief                  Get LOD (Length Of Day) at Instant
+    ///
+    /// @param                  [in] anInstant An Instant
+    /// @return                 LOD
+
     Real getLodAt(const Instant& anInstant) const;
+
+    /// @brief                  Get Data reading at instant
+    ///
+    /// @param                  [in] anInstant An Instant
+    /// @return                 Data reading
 
     Finals2000A::Data getDataAt(const Instant& anInstant) const;
 
+    /// @brief                  Undefined factory function
+    ///
+    /// @return                 Undefined Finals2000A object
+
     static Finals2000A Undefined();
+
+    /// @brief                  Load Finals2000A from file
+    ///
+    /// @param                  [in] aFile A file
+    /// @return                 Finals2000A object
 
     static Finals2000A Load(const fs::File& aFile);
 
