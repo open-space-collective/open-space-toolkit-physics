@@ -202,6 +202,9 @@ The following environment variables can be set:
 | `OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_ENABLED`                            | `false`                                                                  |
 | `OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY`                   | `./.open-space-toolkit/physics/environment/magnetic/earth`               |
 | `OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_REMOTE_URL`                         | `https://sourceforge.net/projects/geographiclib/files/magnetic-distrib/` |
+| `OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_MODE`                            | `Automatic`                                                              |
+| `OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY`                | `./.open-space-toolkit/physics/environment/atmospheric/earth`               |
+| `OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_REMOTE_URL`                      | `http://celestrak.org/SpaceData/` |
 
 ## Setup
 
