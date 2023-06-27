@@ -1,7 +1,9 @@
 var NAVTREEINDEX6 =
 {
-"namespaceostk_1_1physics_1_1environment_1_1magnetic_1_1earth.html":[4,0,0,0,3,2,0],
+"namespaceostk_1_1physics_1_1environment_1_1magnetic.html":[4,0,0,0,3,2],
+"namespaceostk_1_1physics_1_1environment_1_1magnetic.html":[3,0,0,0,3,2],
 "namespaceostk_1_1physics_1_1environment_1_1magnetic_1_1earth.html":[3,0,0,0,3,2,0],
+"namespaceostk_1_1physics_1_1environment_1_1magnetic_1_1earth.html":[4,0,0,0,3,2,0],
 "namespaceostk_1_1physics_1_1time.html":[4,0,0,0,4],
 "namespaceostk_1_1physics_1_1time.html":[3,0,0,0,4],
 "namespaceostk_1_1physics_1_1units.html":[4,0,0,0,5],

@@ -12,7 +12,9 @@ enum \mbox{\hyperlink{namespaceostk_1_1physics_1_1coord_1_1frame_1_1providers_1_
 \begin{DoxyCompactItemize}
 \item 
 String \mbox{\hyperlink{namespaceostk_1_1physics_1_1coord_1_1frame_1_1providers_1_1iau_a524fd2ca87a91eeb334015fdc2717920}{String\+From\+Theory}} (const \mbox{\hyperlink{namespaceostk_1_1physics_1_1coord_1_1frame_1_1providers_1_1iau_ae5e299153ae66dd034c8427dabfaff05}{Theory}} \&a\+Theory)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Parse a theory representation to its corresponding string. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceostk_1_1physics_1_1coord_1_1frame_1_1providers_1_1iau_ae5e299153ae66dd034c8427dabfaff05}{Theory}} \mbox{\hyperlink{namespaceostk_1_1physics_1_1coord_1_1frame_1_1providers_1_1iau_a1f68cc87360166c94ef403ab15a5b074}{Theory\+From\+String}} (const String \&a\+String)
+\begin{DoxyCompactList}\small\item\em Parse a string representation to its corresponding theory. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Enumeration Type Documentation}
@@ -56,3 +58,45 @@ I\+A\+U\+\_\+2006&I\+AU 2006 theory. \\
 \doxysubsubsection{\texorpdfstring{StringFromTheory()}{StringFromTheory()}}
 {\footnotesize\ttfamily String ostk\+::physics\+::coord\+::frame\+::providers\+::iau\+::\+String\+From\+Theory (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceostk_1_1physics_1_1coord_1_1frame_1_1providers_1_1iau_ae5e299153ae66dd034c8427dabfaff05}{Theory}} \&}]{a\+Theory }\end{DoxyParamCaption})}
 
+
+
+Parse a theory representation to its corresponding string. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{String \textcolor{keywordtype}{string} = \mbox{\hyperlink{namespaceostk_1_1physics_1_1coord_1_1frame_1_1providers_1_1iau_a524fd2ca87a91eeb334015fdc2717920}{StringFromTheory}}(\mbox{\hyperlink{namespaceostk_1_1physics_1_1coord_1_1frame_1_1providers_1_1iau_ae5e299153ae66dd034c8427dabfaff05a60f3efd7d208a933f2b423155cd9ebb1}{Theory::IAU\_2000A}}) ; \textcolor{comment}{// "IAU 2000A"}}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+Theory} & A string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespaceostk_1_1physics_1_1coord_1_1frame_1_1providers_1_1iau_a1f68cc87360166c94ef403ab15a5b074}\label{namespaceostk_1_1physics_1_1coord_1_1frame_1_1providers_1_1iau_a1f68cc87360166c94ef403ab15a5b074}} 
+\index{ostk::physics::coord::frame::providers::iau@{ostk::physics::coord::frame::providers::iau}!TheoryFromString@{TheoryFromString}}
+\index{TheoryFromString@{TheoryFromString}!ostk::physics::coord::frame::providers::iau@{ostk::physics::coord::frame::providers::iau}}
+\doxysubsubsection{\texorpdfstring{TheoryFromString()}{TheoryFromString()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceostk_1_1physics_1_1coord_1_1frame_1_1providers_1_1iau_ae5e299153ae66dd034c8427dabfaff05}{Theory}} ostk\+::physics\+::coord\+::frame\+::providers\+::iau\+::\+Theory\+From\+String (\begin{DoxyParamCaption}\item[{const String \&}]{a\+String }\end{DoxyParamCaption})}
+
+
+
+Parse a string representation to its corresponding theory. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{namespaceostk_1_1physics_1_1coord_1_1frame_1_1providers_1_1iau_ae5e299153ae66dd034c8427dabfaff05}{Theory}} theory = \mbox{\hyperlink{namespaceostk_1_1physics_1_1coord_1_1frame_1_1providers_1_1iau_a1f68cc87360166c94ef403ab15a5b074}{TheoryFromString}}(\textcolor{stringliteral}{"IAU 2000A"}) ; \textcolor{comment}{// Theory::IAU\_2000A}}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+String} & A string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Theory 
+\end{DoxyReturn}
