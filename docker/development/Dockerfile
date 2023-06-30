@@ -36,6 +36,22 @@ RUN git clone --branch v${ORDERED_MAP_VERSION} --depth 1 https://github.com/Tess
  && cp -r ./include/tsl /usr/local/include \
  && rm -rf /tmp/ordered-map
 
+# NRLMSISE00 Model
+
+ARG NRLMSISE00_MODEL_COMMIT="a5f81be"
+
+RUN git clone https://github.com/magnific0/nrlmsise-00.git /tmp/nrlmsise \
+ && cd /tmp/nrlmsise \
+ && git checkout ${NRLMSISE00_MODEL_COMMIT} \
+ && mkdir build \
+ && cd build \
+ && cmake -DNRLMSISE00_WITH_TESTS="OFF" -DCMAKE_C_FLAGS="-fPIC" .. \
+ && make -j $(nproc) \
+ && mkdir /usr/local/include/NRLMSISE-00 \
+ && cp ../nrlmsise-00.h /usr/local/include/NRLMSISE-00 \
+ && cp ../lib/libnrlmsise00.a /usr/local/lib \
+ && rm -rf /tmp/nrlmsise
+
 ## Eigen
 
 ARG EIGEN_VERSION="3.3.7"

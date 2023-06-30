@@ -182,7 +182,6 @@ Array<Integer> Manager::getAp3HourSolarIndicesAt(const Instant& anInstant) const
                 observation.Ap6,
                 observation.Ap7,
                 observation.Ap8,
-                observation.ApAvg,
             };
         }
         else if (CSSISpaceWeatherPtr->accessDailyPredictionInterval().contains(dayInstant))
@@ -198,7 +197,6 @@ Array<Integer> Manager::getAp3HourSolarIndicesAt(const Instant& anInstant) const
                 prediction.Ap6,
                 prediction.Ap7,
                 prediction.Ap8,
-                prediction.ApAvg,
             };
         }
     }
