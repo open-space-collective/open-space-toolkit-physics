@@ -63,7 +63,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, IsDefined)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, e)
+TEST(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, AccessFrame)
 {
     {
         const Directory spiceLocalRepository =
