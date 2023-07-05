@@ -72,6 +72,98 @@ Real NRLMSISE00::getDensityAt(const Position& aPosition, const Instant& anInstan
     );
 }
 
+void NRLMSISE00::computeAPArray(double* outputArray, const Instant& anInstant) const
+{
+    const Manager& spaceWeatherManager = Manager::Get();
+    
+    // Fetch AP parameters for each day up to 57 hours ago
+    const Instant instant57HrPrevious = anInstant - Duration::Hours(57);
+    const Instant instant33HrPrevious = anInstant - Duration::Hours(33);
+    const Instant instant9HrPrevious = anInstant - Duration::Hours(9);
+    //std::cout << "instant57HrPrevious: " << instant57HrPrevious.toString(Scale::UTC) << std::endl;
+    // Fetch daily AP array for each day and stack end-to-end
+    Array<Instant> fetchDays = {instant57HrPrevious, instant33HrPrevious, instant9HrPrevious};
+
+    // add today if not already covered by instant9HrPrevious
+    // std::cout << "fetching days" << std::endl;
+    // std::cout << instant57HrPrevious.toString(Scale::UTC) << std::endl;
+    // std::cout << instant33HrPrevious.toString(Scale::UTC) << std::endl;
+    // std::cout << instant9HrPrevious.toString(Scale::UTC) << std::endl;
+
+    if (instant9HrPrevious.getDateTime(Scale::UTC).getDate().getDay() != anInstant.getDateTime(Scale::UTC).getDate().getDay())
+    {
+        fetchDays.add(anInstant);
+        // std::cout << anInstant.toString(Scale::UTC) << std::endl;
+    }
+
+    // Fetch AP indices for all days. Stack them into one continuous array.
+    Array<Integer> apMultiDayArray = Array<Integer>::Empty();
+
+    for (const Instant& fetchDay : fetchDays)
+    {
+        apMultiDayArray.add(spaceWeatherManager.getAp3HourSolarIndicesAt(fetchDay));
+        //std::cout << "0   3   6   9   12  15  18  21  ";
+    }
+    //std::cout << std::endl;
+    // Find correct index to start at based on time of day of the first day
+    // [00:00 - 03:00) == 0, [03:00 - 06:00) == 1, etc.
+    // const DateTime startDatetime = instant57HrPrevious.getDateTime(Scale::UTC);
+    // std::cout << "start datetime: " << startDatetime << std::endl;
+    const Time startTime = instant57HrPrevious.getDateTime(Scale::UTC).getTime();
+    // std::cout << "start time: " << startTime << std::endl;
+    const Size startIndex = (startTime.getHour() / 3);
+
+    for (Size j = 0; j < startIndex; ++j)
+    {
+        //std::cout << apMultiDayArray[j] << "_ ";
+        //if (apMultiDayArray[j]<10) std::cout << " ";
+    }
+    for (Size i = startIndex; i < apMultiDayArray.getSize(); ++i)
+    {
+        //std::cout << apMultiDayArray[i] << "  ";
+
+       // if (apMultiDayArray[i]<10) std::cout << " ";
+    }
+    //std::cout << std::endl;
+    // std::cout << "ap array size: " << apMultiDayArray.getSize() << std::endl;
+    // std::cout << "which is: " << apMultiDayArray.getSize() / 8 << " days" << std::endl;
+
+    // std::cout << "start index is: " << startIndex << std::endl;
+
+    const Array<Integer>::ConstIterator startIterator = apMultiDayArray.begin() + startIndex;
+
+    // Average of 8 AP values from 57 hours ago to 36 hours ago
+    const Real apAvg3657 = Real(Array<Integer>(startIterator, startIterator+8).reduce(std::plus<Integer>())) / 8.0;
+
+    // Average of 8 AP values from 36 hours ago to 12 hours ago
+    const Real apAvg1236 = Real(Array<Integer>(startIterator+8, startIterator+16).reduce(std::plus<Integer>())) / 8.0;
+
+    // Get daily average AP for current day
+    //const Real apAvgCurrentDay = Real(Array<Integer>(apMultiDayArray.end()-8, apMultiDayArray.end()).reduce(std::plus<Integer>())) / 8.0;
+
+    outputArray[0] = spaceWeatherManager.getApDailyIndexAt(anInstant);
+    outputArray[1] = apMultiDayArray[startIndex+19]; // now
+    outputArray[2] = apMultiDayArray[startIndex+18]; // now - 3 hours
+    outputArray[3] = apMultiDayArray[startIndex+17]; // now - 6 hours
+    outputArray[4] = apMultiDayArray[startIndex+16]; // now - 9 hours
+    outputArray[5] = apAvg1236;
+    outputArray[6] = apAvg3657;
+
+    //std::cout << "ap multi day: " << apMultiDayArray << std::endl;
+    Array<Real> apArrayReal = Array<Real>(outputArray, outputArray+7);
+    //std::cout << "ap multi day: " << apMultiDayArray << std::endl;
+
+    // std::cout << "ap daily" << apAvgCurrentDay << std::endl;
+    // std::cout << "start time: " << startTime << std::endl;
+
+     //
+     // 0_  2_  5_  6_  15_ 18  12  22  39  27  27  18  32  39  32  15  15  15  12  6   15  12  18  27  9   15  7   12  6   12  22  27
+
+
+     // 15  15  12   6  15  12  18  27   9  15   7  12   6  12  22  27  7   7   4   6   5   5   7   15  5   2   3   2   4   7   9   12 
+     // 15_ 15_ 12_  6_ 15_ 12  18  27   9   15  7  12   6  12  22  27  7   7   4   6   5   5   7   15  5   2   3   2   4   7   9   12 
+}
+
 Real NRLMSISE00::getDensityAt(const LLA& aLLA, const Instant& anInstant) const
 {
     // Input reference in the NRLMSISE header file
@@ -90,93 +182,35 @@ Real NRLMSISE00::getDensityAt(const LLA& aLLA, const Instant& anInstant) const
 
     const Manager& spaceWeatherManager = Manager::Get();
 
-    // Normal non-annoying parameters
     const DateTime currentDateTime = anInstant.getDateTime(Scale::UTC);
     const Date currentDate = anInstant.getDateTime(Scale::UTC).getDate();
 
+    // current year/day of year/sec
     const Integer year = currentDate.getYear();
 
     const Instant startOfYear = Instant::DateTime(DateTime(Date(year, 1, 1), Time::Midnight()), Scale::UTC);
     const Integer dayOfYear = (anInstant - startOfYear).getDays();
 
-    const Integer secondsInDay = currentDateTime.getTime().getSecond();
+    const Time timeOfDay = currentDateTime.getTime();
+    const Integer secondsInDay = timeOfDay.getHour() * 3600 + timeOfDay.getMinute() * 60 + timeOfDay.getSecond();
 
+    // Solar flux values
     const Real f107 = spaceWeatherManager.getF107SolarFluxAt(anInstant);
     const Real f107Average = spaceWeatherManager.getF107SolarFlux81DayAvgAt(anInstant);
 
-    // Annoying AP parameters -------------------------------------------------
-    const Array<Integer> apArray = spaceWeatherManager.getAp3HourSolarIndicesAt(anInstant);
-
-    // 58 hours to catch edge cases
-    const Instant instant58HrPrevious = anInstant - Duration::Hours(58);
-
-    // Get all days between now and 58 hours ago
-    Array<Instant> fetchDays = {instant58HrPrevious};
-
-    while (fetchDays.accessLast() < anInstant)
-    {
-        fetchDays.add(fetchDays.accessLast() + Duration::Days(1));
-    }
-
-    // Fetch AP array for each day
-    Array<Integer> apMultiDayArray = Array<Integer>::Empty();
-
-    for (const Instant& fetchDay : fetchDays)
-    {
-        const Array<Integer> apMultiDayArrayFetch = spaceWeatherManager.getAp3HourSolarIndicesAt(fetchDay);
-
-        apMultiDayArray.add(apMultiDayArrayFetch);
-    }
-
-    // Find correct index to start at based on time of day
-    const Time startTime = instant58HrPrevious.getDateTime(Scale::UTC).getTime();
-
-    const Size startIndex = (startTime.getHour() / 3);
-    const Array<Integer>::ConstIterator startIterator = apMultiDayArray.begin() + startIndex;
-
-    // Average of 8 AP values from 57 hours ago to 36 hours ago
-    Real apAvg3657 = Real(Array<Integer>(startIterator, startIterator+8).reduce(std::plus<Integer>())) / 8.0;
-
-    // Average of 8 AP values from 36 hours ago to 12 hours ago
-    Real apAvg1236 = Real(Array<Integer>(startIterator+8, startIterator+16).reduce(std::plus<Integer>())) / 8.0;
-
-    aph.a[0] = 4;
-    aph.a[1] = apMultiDayArray[startIndex+20];
-    aph.a[2] = apMultiDayArray[startIndex+19];
-    aph.a[3] = apMultiDayArray[startIndex+18];
-    aph.a[4] = apMultiDayArray[startIndex+17];
-    aph.a[5] = apAvg1236;
-    aph.a[6] = apAvg3657;
-
-    std::cout << "ap array" << aph.a << std::endl;
-    std::cout << "start time: " << startTime << std::endl;
-    std::cout << Array<Integer>(startIterator, startIterator+8) << std::endl;
-    std::cout << Array<Integer>(startIterator, startIterator+8).reduce(std::plus<Integer>()) << std::endl;
-    std::cout << "apAvg3657: " << apAvg3657 << std::endl;
-
-
-    /* Array containing the following magnetic values:
-    *   0 : daily AP
-    *   1 : 3 hr AP index for current time
-    *   2 : 3 hr AP index for 3 hrs before current time
-    *   3 : 3 hr AP index for 6 hrs before current time
-    *   4 : 3 hr AP index for 9 hrs before current time
-    *   5 : Average of eight 3 hr AP indices from 12 to 33 hrs 
-    *           prior to current time
-    *   6 : Average of eight 3 hr AP indices from 36 to 57 hrs 
-    *           prior to current time 
-    */
-
+    // Ap solar indices array
+    this->computeAPArray(aph.a, anInstant);
+    
     input.doy=dayOfYear;
     input.year=year;
     input.sec=secondsInDay;
     input.alt=aLLA.getAltitude().inKilometers();
     input.g_lat=aLLA.getLatitude().inDegrees();
     input.g_long=aLLA.getLongitude().inDegrees();
-    input.lst=input.sec/3600 + input.g_long/15;
+    input.lst=input.sec/3600 + input.g_long/15; // https://github.com/magnific0/nrlmsise-00/blob/master/nrlmsise-00.h#L103
     input.f107A=f107Average;
     input.f107=f107;
-    input.ap=4; // <- ap avg I think
+    input.ap=aph.a[0];
     input.ap_a = &aph;
 
     gtd7d(&input, &flags, &output) ;

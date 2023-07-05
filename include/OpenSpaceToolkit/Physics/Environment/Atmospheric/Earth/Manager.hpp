@@ -126,6 +126,13 @@ class Manager
 
     Array<Integer> getAp3HourSolarIndicesAt(const Instant& anInstant) const;
 
+    /// @brief              Get daily Ap index for the day containing instant.
+    ///
+    /// @param              [in] anInstant An instant
+    /// @return             daily Ap index
+
+    Integer getApDailyIndexAt(const Instant& anInstant) const;
+
     /// @brief              Get the daily value for F10.7 solar flux at instant.
     ///
     /// @param              [in] anInstant An instant

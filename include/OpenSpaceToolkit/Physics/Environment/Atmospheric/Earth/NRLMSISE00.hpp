@@ -57,6 +57,25 @@ class NRLMSISE00 : public Model
 
     bool isDefined() const;
 
+    /// @brief              Fill the provided array with AP values needed for the NRLMSISE model.
+    ///                     The output array is filled like so:
+    ///
+    ///                     0 : daily AP [average of current day AP values]
+    ///                     1 : 3 hr AP index for instant
+    ///                     2 : 3 hr AP index for 3 hrs before instant
+    ///                     3 : 3 hr AP index for 6 hrs before instant
+    ///                     4 : 3 hr AP index for 9 hrs before instant
+    ///                     5 : Average of eight 3 hr AP indices from 12 to 33 hrs 
+    ///                             prior to instant
+    ///                     6 : Average of eight 3 hr AP indices from 36 to 57 hrs 
+    ///                             prior to instant 
+    ///
+    /// @param              [in] outputArray C-style array to be filled with AP values.
+    /// @param              [in] anInstant An Instant
+    /// @return             Atmospheric density value [kg.m^-3]
+
+    void computeAPArray(double* outputArray, const Instant& anInstant) const;
+
     /// @brief              Get the atmospheric density value at a given position and instant
     ///
     /// @param              [in] aPosition A Position
