@@ -449,9 +449,7 @@ test-unit-cpp-standalone: ## Run C++ unit tests (standalone)
 		$(docker_development_image_repository):$(docker_image_version) \
 		/bin/bash -c "cmake -DBUILD_PYTHON_BINDINGS=OFF -DBUILD_UNIT_TESTS=ON .. \
 		&& $(MAKE) -j 4 \
-		&& /bin/bash"
-
-## --volume="$(CURDIR)/share/OpenSpaceToolkit:/usr/local/share/OpenSpaceToolkit:delegated" \
+		&& $(MAKE) test"
 
 .PHONY: test-unit-cpp-standalone
 
@@ -468,7 +466,6 @@ test-unit-python-standalone: ## Run Python unit tests (standalone)
 	docker run \
 		--rm \
 		--volume="$(CURDIR):/app:delegated" \
-		--volume="$(CURDIR)/share/OpenSpaceToolkit:/usr/local/share/OpenSpaceToolkit:delegated" \
 		--volume="/app/build" \
 		--workdir=/app/build \
 		--entrypoint="" \
@@ -510,7 +507,6 @@ test-coverage-cpp-standalone: ## Run C++ tests with coverage (standalone)
 		&& (rm -rf /app/coverage || true) \
 		&& mkdir /app/coverage \
 		&& mv /app/build/coverage* /app/coverage"
-## --volume="$(CURDIR)/share/OpenSpaceToolkit:/usr/local/share/OpenSpaceToolkit:delegated" \
 
 .PHONY: test-coverage-cpp-standalone
 
