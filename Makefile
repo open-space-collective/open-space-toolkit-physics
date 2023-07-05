@@ -442,14 +442,16 @@ test-unit-cpp-standalone: ## Run C++ unit tests (standalone)
 
 	docker run \
 		--rm \
+		-it \
 		--volume="$(CURDIR):/app:delegated" \
-		--volume="$(CURDIR)/share/OpenSpaceToolkit:/usr/local/share/OpenSpaceToolkit:delegated" \
 		--volume="/app/build" \
 		--workdir=/app/build \
 		$(docker_development_image_repository):$(docker_image_version) \
 		/bin/bash -c "cmake -DBUILD_PYTHON_BINDINGS=OFF -DBUILD_UNIT_TESTS=ON .. \
 		&& $(MAKE) -j 4 \
-		&& $(MAKE) test"
+		&& /bin/bash"
+
+## --volume="$(CURDIR)/share/OpenSpaceToolkit:/usr/local/share/OpenSpaceToolkit:delegated" \
 
 .PHONY: test-unit-cpp-standalone
 
