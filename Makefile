@@ -442,7 +442,6 @@ test-unit-cpp-standalone: ## Run C++ unit tests (standalone)
 
 	docker run \
 		--rm \
-		-it \
 		--volume="$(CURDIR):/app:delegated" \
 		--volume="/app/build" \
 		--workdir=/app/build \
