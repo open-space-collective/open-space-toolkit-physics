@@ -174,17 +174,17 @@ Kernel Manager::findKernel(const String& aRegexString) const
     Array<Path> kernelPaths;
 
     // Try to find kernel in local repository
-    std::filesystem::path directory = std::string(localRepository_.getPath().toString());
+    // std::filesystem::path directory = std::string(localRepository_.getPath().toString());
 
-    const iterator end;
-    for (iterator iter {directory}; iter != end; ++iter)
-    {
-        const String filename = iter->path().filename().string();
-        if (std::filesystem::is_regular_file(*iter) && std::regex_match(filename, aRegex))
-        {
-            kernelPaths.add(Path::Parse(iter->path().string()));
-        }
-    }
+    // const iterator end;
+    // for (iterator iter {directory}; iter != end; ++iter)
+    // {
+    //     const String filename = iter->path().filename().string();
+    //     if (std::filesystem::is_regular_file(*iter) && std::regex_match(filename, aRegex))
+    //     {
+    //         kernelPaths.add(Path::Parse(iter->path().string()));
+    //     }
+    // }
 
     // If none found, fall back to fetching from remote
     if (kernelPaths.isEmpty())
@@ -344,11 +344,11 @@ void Manager::fetchIndexAt(const URL& aUrl)
             listingFile.remove();
         }
 
-        URL ftpListingUrl = aListingUrl;  // [TBR]
+        URL httpsListingUrl = aListingUrl;  // [TBR]
 
-        ftpListingUrl.setScheme("ftp");
+        httpsListingUrl.setScheme("https");
 
-        Client::List(ftpListingUrl, listingFile, false);
+        Client::List(httpsListingUrl, listingFile, false);
 
         std::ifstream listingFileStream {listingFile.getPath().toString()};
 

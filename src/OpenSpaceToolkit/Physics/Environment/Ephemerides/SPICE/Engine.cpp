@@ -13,7 +13,7 @@
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Dynamic.hpp>
 
 // clang-format off
-// Include Manager.hpp before Engine.hpp to avoid name conflict for "ostk::core::types::Index" 
+// Include Manager.hpp before Engine.hpp to avoid name conflict for "ostk::core::types::Index"
 #include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Engine.hpp>
 // clang-format on
@@ -234,11 +234,12 @@ Array<Kernel> Engine::DefaultKernels(const Directory& aLocalRepository)
 
     static const Array<Kernel> defaultKernels = {
 
-        Manager::Get().findKernel("naif[0-9]*\\.tls"),                                    // Leap seconds
+        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("naif0012.tls"))),  // Leap seconds
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("de430.bsp"))),  // Ephemeris
-        Manager::Get().findKernel("pck[0-9]*\\.tpc"),  // System body shape and orientation constants
+        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("pck00010.tpc"))),  // System body shape and orientation constants
+        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("pck00011.tpc"))),  // System body shape and orientation constants
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("earth_assoc_itrf93.tf"))),
-        Manager::Get().findKernel("earth\\_200101\\_[0-9]*\\_predict\\.bpc"),
+        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("earth_200101_990825_predict.bpc"))),
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("moon_080317.tf"))),
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("moon_assoc_me.tf"))),
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("moon_pa_de421_1900-2050.bpc")))
