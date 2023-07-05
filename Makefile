@@ -501,7 +501,6 @@ test-coverage-cpp-standalone: ## Run C++ tests with coverage (standalone)
 	docker run \
 		--rm \
 		--volume="$(CURDIR):/app:delegated" \
-		--volume="$(CURDIR)/share/OpenSpaceToolkit:/usr/local/share/OpenSpaceToolkit:delegated" \
 		--volume="/app/build" \
 		--workdir=/app/build \
 		$(docker_development_image_repository):$(docker_image_version) \
@@ -511,6 +510,7 @@ test-coverage-cpp-standalone: ## Run C++ tests with coverage (standalone)
 		&& (rm -rf /app/coverage || true) \
 		&& mkdir /app/coverage \
 		&& mv /app/build/coverage* /app/coverage"
+## --volume="$(CURDIR)/share/OpenSpaceToolkit:/usr/local/share/OpenSpaceToolkit:delegated" \
 
 .PHONY: test-coverage-cpp-standalone
 
