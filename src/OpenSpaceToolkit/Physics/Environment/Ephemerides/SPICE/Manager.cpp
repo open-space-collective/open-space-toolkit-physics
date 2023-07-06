@@ -173,22 +173,27 @@ Kernel Manager::findKernel(const String& aRegexString) const
 
     Array<Path> kernelPaths;
 
-    // Try to find kernel in local repository
-    std::filesystem::path directory = std::string(localRepository_.getPath().toString());
+    std::cout << "TRY LOCALLY" << std::endl ;
 
-    const iterator end;
-    for (iterator iter {directory}; iter != end; ++iter)
-    {
-        const String filename = iter->path().filename().string();
-        if (std::filesystem::is_regular_file(*iter) && std::regex_match(filename, aRegex))
-        {
-            kernelPaths.add(Path::Parse(iter->path().string()));
-        }
-    }
+    // Try to find kernel in local repository
+    // std::filesystem::path directory = std::string(localRepository_.getPath().toString());
+
+    // const iterator end;
+    // for (iterator iter {directory}; iter != end; ++iter)
+    // {
+    //     const String filename = iter->path().filename().string();
+    //     if (std::filesystem::is_regular_file(*iter) && std::regex_match(filename, aRegex))
+    //     {
+    //         kernelPaths.add(Path::Parse(iter->path().string()));
+    //     }
+    // }
 
     // If none found, fall back to fetching from remote
     if (kernelPaths.isEmpty())
     {
+
+        std::cout << "FETCHING REMOTE" << std::endl;
+
         Array<Kernel> fetchedKernels = const_cast<Manager*>(this)->fetchMatchingKernels(aRegex);
 
         if (fetchedKernels.isEmpty())

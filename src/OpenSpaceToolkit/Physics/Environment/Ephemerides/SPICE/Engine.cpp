@@ -232,6 +232,8 @@ Array<Kernel> Engine::DefaultKernels(const Directory& aLocalRepository)
 {
     // Use regex to pull Earth body shape, orientation and leap second kernels, as the file name is often updated.
 
+    std::cout << "DEFAULT KERNELS START" << std::endl ;
+
     static const Array<Kernel> defaultKernels = {
 
         Manager::Get().findKernel("naif[0-9]*\\.tls"),                                    // Leap seconds
@@ -244,6 +246,8 @@ Array<Kernel> Engine::DefaultKernels(const Directory& aLocalRepository)
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("moon_pa_de421_1900-2050.bpc")))
 
     };
+
+    std::cout << "DEFAULT KERNELS END" << std::endl;
 
     return defaultKernels;
 }
