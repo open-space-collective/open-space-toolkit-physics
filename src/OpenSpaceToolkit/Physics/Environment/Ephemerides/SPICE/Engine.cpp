@@ -13,7 +13,7 @@
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Dynamic.hpp>
 
 // clang-format off
-// Include Manager.hpp before Engine.hpp to avoid name conflict for "ostk::core::types::Index" 
+// Include Manager.hpp before Engine.hpp to avoid name conflict for "ostk::core::types::Index"
 #include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Engine.hpp>
 // clang-format on

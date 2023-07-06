@@ -344,11 +344,11 @@ void Manager::fetchIndexAt(const URL& aUrl)
             listingFile.remove();
         }
 
-        URL ftpListingUrl = aListingUrl;  // [TBR]
+        URL httpsListingUrl = aListingUrl;  // [TBR]
 
-        ftpListingUrl.setScheme("ftp");
+        httpsListingUrl.setScheme("https");
 
-        Client::List(ftpListingUrl, listingFile, false);
+        Client::List(httpsListingUrl, listingFile, false);
 
         std::ifstream listingFileStream {listingFile.getPath().toString()};
 
