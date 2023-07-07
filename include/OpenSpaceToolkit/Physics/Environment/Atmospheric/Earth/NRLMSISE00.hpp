@@ -14,6 +14,11 @@
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Length.hpp>
 
+// TBR: don't include this in the header
+// extern "C"{
+//     #include <NRLMSISE-00/nrlmsise-00.h>
+// }
+
 namespace ostk
 {
 namespace physics
@@ -40,7 +45,27 @@ using ostk::physics::environment::atmospheric::Model;
 
 class NRLMSISE00 : public Model
 {
-   public:
+    public:
+
+    // redefine input structs from NRLMSISE-00.h to avoid including it in this header
+    struct ap_array {
+        double a[7];   
+    };
+
+    struct nrlmsise_input {
+        int year;
+        int doy;
+        double sec;
+        double alt;
+        double g_lat;
+        double g_long;
+        double lst; 
+        double f107A; 
+        double f107;  
+        double ap;   
+        struct ap_array *ap_a;
+    };
+
     /// @brief              Constructor
 
     NRLMSISE00();
@@ -76,21 +101,45 @@ class NRLMSISE00 : public Model
 
     void computeAPArray(double* outputArray, const Instant& anInstant) const;
 
+    /// @brief              Compute the NRLMSISE00 input and populate into the given struct
+    ///                     Optionally use provided sun position to calculate local solar time.
+    ///
+    /// @param              [out] input NRLMSISE00 input struct to be populated
+    /// @param              [in] aph Struct to holp AP values
+    /// @param              [in] aLLA A position, expressed as latitude, longitude, altitude [deg, deg, m]
+    /// @param              [in] anInstant An instant
+
+    void computeNRLMSISE00Input(nrlmsise_input& input, ap_array& aph, const LLA& aLLA, const Instant& anInstant, const Position& sunPosition = Position::Undefined()) const;
+
+    /// @brief              Get the atmospheric density value at a given position and instant.
+    ///                     Optionally use provided sun position to calculate local solar time.
+    ///
+    /// @param              [in] aLLA A position, expressed as latitude, longitude, altitude [deg, deg, m]
+    /// @param              [in] anInstant An instant
+    /// @param              [in] sunPosition Position of the sun
+    /// @return             Atmospheric density value [kg.m^-3]
+
+    Real getDensityAt(const LLA& aLLA, const Instant& anInstant, const Position& sunPosition = Position::Undefined()) const;
+
+
     /// @brief              Get the atmospheric density value at a given position and instant
+    ///                     Use provided sun position to calculate local solar time.
     ///
     /// @param              [in] aPosition A Position
     /// @param              [in] anInstant An Instant
+    /// @param              [in] sunPosition Position of the sun
     /// @return             Atmospheric density value [kg.m^-3]
 
-    virtual Real getDensityAt(const Position& aPosition, const Instant& anInstant) const override;
+    Real getDensityAt(const Position& aPosition, const Instant& anInstant, const Position& sunPosition) const;
 
-    /// @brief              Get the atmospheric density value at a given position and instant
+    /// @brief              Get the atmospheric density value at a given position and instant.
+    ///                     Use lst = secondsInDay/3600.0 + aLLA.getLongitude().inDegrees()/15.0 to calculate local solar time.
     ///
     /// @param              [in] aLLA A position, expressed as latitude, longitude, altitude [deg, deg, m]
     /// @param              [in] anInstant An instant
     /// @return             Atmospheric density value [kg.m^-3]
 
-    Real getDensityAt(const LLA& aLLA, const Instant& anInstant) const;
+    virtual Real getDensityAt(const Position& aPosition, const Instant& anInstant) const override;
 
 };
 
