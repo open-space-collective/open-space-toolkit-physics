@@ -142,7 +142,7 @@ void NRLMSISE00::computeNRLMSISE00Input(
     // Ap solar indices array
     this->computeAPArray(aph.a, anInstant);
 
-    const Position position = {
+    const Position positionITRF = {
         aLLA.toCartesian(EarthGravitationalModel::WGS84.equatorialRadius_, EarthGravitationalModel::WGS84.flattening_),
         Position::Unit::Meter,
         Frame::ITRF()};
@@ -152,11 +152,13 @@ void NRLMSISE00::computeNRLMSISE00Input(
     // Use actual sun position to compute local solar time if provided
     if (sunPosition.isDefined())
     {
+        const Position sunPositionITRF = sunPosition.inFrame(Frame::ITRF(), anInstant);
+
         lst = (Real::Pi() + std::atan2(
-                                sunPosition.accessCoordinates()[0] * position.accessCoordinates()[1] -
-                                    sunPosition.accessCoordinates()[1] * position.accessCoordinates()[0],
-                                sunPosition.accessCoordinates()[0] * position.accessCoordinates()[0] +
-                                    sunPosition.accessCoordinates()[1] * position.accessCoordinates()[1]
+                                sunPositionITRF.accessCoordinates()[0] * positionITRF.accessCoordinates()[1] -
+                                    sunPositionITRF.accessCoordinates()[1] * positionITRF.accessCoordinates()[0],
+                                sunPositionITRF.accessCoordinates()[0] * positionITRF.accessCoordinates()[0] +
+                                    sunPositionITRF.accessCoordinates()[1] * positionITRF.accessCoordinates()[1]
                             )) *
               12.0 / Real::Pi();
     }
