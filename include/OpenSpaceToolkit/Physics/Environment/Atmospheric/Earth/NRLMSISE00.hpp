@@ -45,25 +45,26 @@ using ostk::physics::environment::atmospheric::Model;
 
 class NRLMSISE00 : public Model
 {
-    public:
-
+   public:
     // redefine input structs from NRLMSISE-00.h to avoid including it in this header
-    struct ap_array {
-        double a[7];   
+    struct ap_array
+    {
+        double a[7];
     };
 
-    struct nrlmsise_input {
+    struct nrlmsise_input
+    {
         int year;
         int doy;
         double sec;
         double alt;
         double g_lat;
         double g_long;
-        double lst; 
-        double f107A; 
-        double f107;  
-        double ap;   
-        struct ap_array *ap_a;
+        double lst;
+        double f107A;
+        double f107;
+        double ap;
+        struct ap_array* ap_a;
     };
 
     /// @brief              Constructor
@@ -90,10 +91,10 @@ class NRLMSISE00 : public Model
     ///                     2 : 3 hr AP index for 3 hrs before instant
     ///                     3 : 3 hr AP index for 6 hrs before instant
     ///                     4 : 3 hr AP index for 9 hrs before instant
-    ///                     5 : Average of eight 3 hr AP indices from 12 to 33 hrs 
+    ///                     5 : Average of eight 3 hr AP indices from 12 to 33 hrs
     ///                             prior to instant
-    ///                     6 : Average of eight 3 hr AP indices from 36 to 57 hrs 
-    ///                             prior to instant 
+    ///                     6 : Average of eight 3 hr AP indices from 36 to 57 hrs
+    ///                             prior to instant
     ///
     /// @param              [in] outputArray C-style array to be filled with AP values.
     /// @param              [in] anInstant An Instant
@@ -109,7 +110,13 @@ class NRLMSISE00 : public Model
     /// @param              [in] aLLA A position, expressed as latitude, longitude, altitude [deg, deg, m]
     /// @param              [in] anInstant An instant
 
-    void computeNRLMSISE00Input(nrlmsise_input& input, ap_array& aph, const LLA& aLLA, const Instant& anInstant, const Position& sunPosition = Position::Undefined()) const;
+    void computeNRLMSISE00Input(
+        nrlmsise_input& input,
+        ap_array& aph,
+        const LLA& aLLA,
+        const Instant& anInstant,
+        const Position& sunPosition = Position::Undefined()
+    ) const;
 
     /// @brief              Get the atmospheric density value at a given position and instant.
     ///                     Optionally use provided sun position to calculate local solar time.
@@ -119,8 +126,8 @@ class NRLMSISE00 : public Model
     /// @param              [in] sunPosition Position of the sun
     /// @return             Atmospheric density value [kg.m^-3]
 
-    Real getDensityAt(const LLA& aLLA, const Instant& anInstant, const Position& sunPosition = Position::Undefined()) const;
-
+    Real getDensityAt(const LLA& aLLA, const Instant& anInstant, const Position& sunPosition = Position::Undefined())
+        const;
 
     /// @brief              Get the atmospheric density value at a given position and instant
     ///                     Use provided sun position to calculate local solar time.
@@ -133,14 +140,14 @@ class NRLMSISE00 : public Model
     Real getDensityAt(const Position& aPosition, const Instant& anInstant, const Position& sunPosition) const;
 
     /// @brief              Get the atmospheric density value at a given position and instant.
-    ///                     Use lst = secondsInDay/3600.0 + aLLA.getLongitude().inDegrees()/15.0 to calculate local solar time.
+    ///                     Use lst = secondsInDay/3600.0 + aLLA.getLongitude().inDegrees()/15.0 to calculate local
+    ///                     solar time.
     ///
     /// @param              [in] aLLA A position, expressed as latitude, longitude, altitude [deg, deg, m]
     /// @param              [in] anInstant An instant
     /// @return             Atmospheric density value [kg.m^-3]
 
     virtual Real getDensityAt(const Position& aPosition, const Instant& anInstant) const override;
-
 };
 
 }  // namespace earth
