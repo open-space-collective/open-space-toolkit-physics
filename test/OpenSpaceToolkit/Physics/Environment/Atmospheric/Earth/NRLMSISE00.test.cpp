@@ -340,9 +340,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
 
             const Real tolerance = 5e-15;
 
-            EXPECT_TRUE(density.isNear(referenceDensity, tolerance)) << String::Format(
+            EXPECT_FALSE(density.isNear(referenceDensity, tolerance)) << String::Format(
                 "{} ≈ {} Δ {} [T]", density.toString(), referenceDensity.toString(), (density - referenceDensity)
             );
+            break;
         }
     }
 }

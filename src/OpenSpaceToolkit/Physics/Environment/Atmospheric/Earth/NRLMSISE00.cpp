@@ -152,7 +152,7 @@ void NRLMSISE00::computeNRLMSISE00Input(
             Position::Unit::Meter,
             Frame::ITRF()};
 
-        const Position sunPositionITRF = sunPosition.inFrame(Frame::ITRF(), anInstant);
+        const Position sunPositionITRF = aSunPosition.inFrame(Frame::ITRF(), anInstant);
 
         lst = (Real::Pi() + std::atan2(
                                 sunPositionITRF.accessCoordinates()[0] * positionITRF.accessCoordinates()[1] -

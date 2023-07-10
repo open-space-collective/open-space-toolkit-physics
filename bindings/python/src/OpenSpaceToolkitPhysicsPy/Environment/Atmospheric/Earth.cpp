@@ -56,7 +56,8 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
         enum_<Earth::Type>(earth_class, "Type")
 
             .value("Undefined", Earth::Type::Undefined)
-            .value("Exponential", Earth::Type::Exponential);
+            .value("Exponential", Earth::Type::Exponential)
+            .value("NRLMSISE00", Earth::Type::NRLMSISE00);
     }
 
     // Create "earth" python submodule

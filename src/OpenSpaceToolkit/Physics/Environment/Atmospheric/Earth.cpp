@@ -6,6 +6,7 @@
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
 
 namespace ostk
@@ -19,6 +20,7 @@ namespace atmospheric
 
 using ostk::physics::coord::Frame;
 using ostk::physics::environment::atmospheric::earth::Exponential;
+using ostk::physics::environment::atmospheric::earth::NRLMSISE00;
 using EarthCelestialBody = ostk::physics::env::obj::celest::Earth;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 
@@ -82,6 +84,38 @@ Earth::ExponentialImpl* Earth::ExponentialImpl::clone() const
 Real Earth::ExponentialImpl::getDensityAt(const LLA& aLLA, const Instant& anInstant) const
 {
     return this->exponentialModel_.getDensityAt(aLLA, anInstant);
+}
+
+class Earth::NRLMSISE00Impl : public Earth::Impl
+{
+   public:
+    NRLMSISE00Impl(const Earth::Type& aType);
+
+    ~NRLMSISE00Impl();
+
+    virtual NRLMSISE00Impl* clone() const override;
+
+    virtual Real getDensityAt(const LLA& aLLA, const Instant& anInstant) const override;
+
+   private:
+    NRLMSISE00 NRLMSISE00Model_;
+};
+
+Earth::NRLMSISE00Impl::NRLMSISE00Impl(const Earth::Type& aType)
+    : Earth::Impl(aType)
+{
+}
+
+Earth::NRLMSISE00Impl::~NRLMSISE00Impl() {}
+
+Earth::NRLMSISE00Impl* Earth::NRLMSISE00Impl::clone() const
+{
+    return new Earth::NRLMSISE00Impl(*this);
+}
+
+Real Earth::NRLMSISE00Impl::getDensityAt(const LLA& aLLA, const Instant& anInstant) const
+{
+    return this->NRLMSISE00Model_.getDensityAt(aLLA, anInstant);
 }
 
 Earth::Earth(const Earth::Type& aType, const Directory& aDataDirectory)
@@ -156,6 +190,10 @@ Unique<Earth::Impl> Earth::ImplFromType(const Earth::Type& aType, const Director
     else if (aType == Earth::Type::Exponential)
     {
         return std::make_unique<ExponentialImpl>(aType);
+    }
+    else if (aType == Earth::Type::NRLMSISE00)
+    {
+        return std::make_unique<NRLMSISE00Impl>(aType);
     }
 
     throw ostk::core::error::runtime::Wrong("Type");
