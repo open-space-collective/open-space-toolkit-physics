@@ -80,7 +80,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, IsDefine
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeAPArrayOrekit3HourMarksShifted)
 {
     const File referenceDataFile = File::Path(Path::Parse(
-        "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/OreKitCSSIParameters3HourMarksShifted.csv"
+        "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/OreKitCSSIParameters3HourMarksShifted.csv"
     ));
 
     const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
@@ -131,7 +131,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeA
 // {
 
 //     const File referenceDataFile = File::Path(Path::Parse(
-//                  "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/OreKitCSSIParameters3HourMarks.csv"
+//                  "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/OreKitCSSIParameters3HourMarks.csv"
 //              ));
 
 //     const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
@@ -183,7 +183,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeA
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeNRLMISE00InputOrekit)
 {
     const File referenceDataFile = File::Path(Path::Parse(
-        "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/OreKitCSSIParameters3HourMarksShifted.csv"
+        "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/OreKitCSSIParameters3HourMarksShifted.csv"
     ));
 
     const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
@@ -219,7 +219,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeN
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensityAtOrekit3HrMarksPreciseLST)
 {
     const File referenceDataFile = File::Path(Path::Parse(
-        "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/OreKitNRLMSISE500km3HourMarks.csv"
+        "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/OreKitNRLMSISE500km3HourMarks.csv"
     ));
 
     const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
@@ -268,7 +268,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensityAtOrekit3HrMarkShiftedPreciseLST)
 {
     const File referenceDataFile = File::Path(Path::Parse(
-        "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/OreKitNRLMSISE500km3HourMarksShifted.csv"
+        "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/OreKitNRLMSISE500km3HourMarksShifted.csv"
     ));
 
     const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
@@ -317,7 +317,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensityAtOrekit3HrMarkShiftedStandardLST)
 {
     const File referenceDataFile = File::Path(Path::Parse(
-        "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/OreKitNRLMSISE500km3HourMarksShifted.csv"
+        "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/OreKitNRLMSISE500km3HourMarksShifted.csv"
     ));
 
     const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);

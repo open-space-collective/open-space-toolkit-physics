@@ -45,15 +45,15 @@ class NRLMSISE00 : public Model
 
     NRLMSISE00();
 
-    /// @brief              Clone the exponential atmospheric model
+    /// @brief              Clone the NRLMSISE00 atmospheric model
     ///
-    /// @return             Pointer to exponential atmospheric model
+    /// @return             Pointer to NRLMSISE00 atmospheric model
 
     virtual NRLMSISE00* clone() const override;
 
-    /// @brief              Check if the exponential atmospheric model is defined
+    /// @brief              Check if the NRLMSISE00 atmospheric model is defined
     ///
-    /// @return             True if the exponential atmospheric model is defined
+    /// @return             True if the NRLMSISE00 atmospheric model is defined
 
     bool isDefined() const;
 

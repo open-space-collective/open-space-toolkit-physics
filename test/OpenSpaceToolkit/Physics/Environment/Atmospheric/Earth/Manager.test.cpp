@@ -146,10 +146,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetAp3HourS
 {
     {
         const Array<Tuple<String, Array<Integer>>> referenceScenarios = {
-            {"2018-01-02 12:34:56", {6, 3, 2, 3, 6, 4, 7, 4, 4}},
-            {"2023-06-18 12:34:56", {12, 7, 5, 7, 6, 6, 12, 7, 8}},
-            {"2023-08-02 12:34:56", {5, 5, 5, 5, 5, 5, 5, 5, 5}},
-            {"2023-08-03 12:34:56", {5, 5, 5, 5, 5, 5, 5, 5, 5}},
+            {"2018-01-02 12:34:56", {6, 3, 2, 3, 6, 4, 7, 4}},
+            {"2023-06-18 12:34:56", {12, 7, 5, 7, 6, 6, 12, 7}},
+            {"2023-08-02 12:34:56", {5, 5, 5, 5, 5, 5, 5, 5}},
+            {"2023-08-03 12:34:56", {5, 5, 5, 5, 5, 5, 5, 5}},
         };
 
         const File file =
@@ -172,6 +172,49 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetAp3HourS
 
             // Test
             EXPECT_EQ(referenceIndices, manager.getAp3HourSolarIndicesAt(referenceInstant));
+        }
+
+        manager.setMode(Manager::Mode::Manual);
+        EXPECT_THROW(manager.getAp3HourSolarIndicesAt(Instant::Undefined()), ostk::core::error::runtime::Undefined);
+        EXPECT_THROW(
+            manager.getAp3HourSolarIndicesAt(Instant::DateTime(DateTime::Parse("2010-01-01 00:00:00"), Scale::UTC)),
+            ostk::core::error::RuntimeError
+        );
+
+        manager.setMode(Manager::Mode::Automatic);
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetApDailySolarIndexAt)
+{
+    {
+        const Array<Tuple<String, Integer>> referenceScenarios = {
+            {"2018-01-02 12:34:56", 4},
+            {"2023-06-18 12:34:56", 8},
+            {"2023-08-02 12:34:56", 5},
+            {"2023-08-03 12:34:56", 5},
+        };
+
+        const File file =
+            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
+                                   "CSSISpaceWeather/SW-Last5Years.test.csv"));
+
+        const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(file);
+
+        Manager& manager = Manager::Get();
+        manager.reset();
+        manager.loadCSSISpaceWeather(spaceWeather);
+
+        for (const auto& referenceScenario : referenceScenarios)
+        {
+            // Reference data setup
+
+            const Instant referenceInstant =
+                Instant::DateTime(DateTime::Parse(std::get<0>(referenceScenario)), Scale::UTC);
+            const Integer referenceIndex = std::get<1>(referenceScenario);
+
+            // Test
+            EXPECT_EQ(referenceIndex, manager.getApDailyIndexAt(referenceInstant));
         }
 
         manager.setMode(Manager::Mode::Manual);
