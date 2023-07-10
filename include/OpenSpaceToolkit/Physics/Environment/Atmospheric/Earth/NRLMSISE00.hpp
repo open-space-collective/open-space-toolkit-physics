@@ -14,11 +14,6 @@
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Length.hpp>
 
-// TBR: don't include this in the header
-// extern "C"{
-//     #include <NRLMSISE-00/nrlmsise-00.h>
-// }
-
 namespace ostk
 {
 namespace physics

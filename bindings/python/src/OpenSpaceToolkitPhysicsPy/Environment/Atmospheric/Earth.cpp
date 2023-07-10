@@ -6,7 +6,9 @@
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
 #include <OpenSpaceToolkitPhysicsPy/Environment/Atmospheric/Earth/CSSISpaceWeather.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Environment/Atmospheric/Earth/Exponential.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Environment/Atmospheric/Earth/Manager.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Environment/Atmospheric/Earth/NRLMSISE00.cpp>
 
 inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::module& aModule)
 {
@@ -65,4 +67,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
 
     OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_CSSISpaceWeather(earth);
     OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_Manager(earth);
+    OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_Exponential(earth);
+    OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_NRLMSISE00(earth);
 }

@@ -76,7 +76,14 @@ class TestManager:
             Instant.date_time(datetime(2023, 6, 18, 12, 34, 56), Scale.UTC)
         )
 
-        assert ap_indices == [12, 7, 5, 7, 6, 6, 12, 7, 8]
+        assert ap_indices == [12, 7, 5, 7, 6, 6, 12, 7]
+
+    def test_get_ap_daily_index_at_success(self, manager: Manager):
+        ap_index = manager.get_ap_daily_index_at(
+            Instant.date_time(datetime(2023, 6, 18, 12, 34, 56), Scale.UTC)
+        )
+
+        assert ap_index == 8
 
     def test_get_f107_solar_flux_at_success(self, manager: Manager):
         flux = manager.get_f107_solar_flux_at(
