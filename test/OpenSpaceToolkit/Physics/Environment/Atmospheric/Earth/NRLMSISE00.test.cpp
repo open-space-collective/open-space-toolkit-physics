@@ -79,9 +79,9 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, IsDefine
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeAPArrayOrekit3HourMarksShifted)
 {
-    const File referenceDataFile = File::Path(Path::Parse(
-        "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/OreKitCSSIParameters3HourMarksShifted.csv"
-    ));
+    const File referenceDataFile =
+        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
+                               "OreKitCSSIParameters3HourMarksShifted.csv"));
 
     const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
     Size rowCount = referenceData.getRowCount();
@@ -182,9 +182,9 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeA
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeNRLMISE00InputOrekit)
 {
-    const File referenceDataFile = File::Path(Path::Parse(
-        "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/OreKitCSSIParameters3HourMarksShifted.csv"
-    ));
+    const File referenceDataFile =
+        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
+                               "OreKitCSSIParameters3HourMarksShifted.csv"));
 
     const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
     Size rowCount = referenceData.getRowCount();
@@ -267,9 +267,9 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensityAtOrekit3HrMarkShiftedPreciseLST)
 {
-    const File referenceDataFile = File::Path(Path::Parse(
-        "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/OreKitNRLMSISE500km3HourMarksShifted.csv"
-    ));
+    const File referenceDataFile =
+        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
+                               "OreKitNRLMSISE500km3HourMarksShifted.csv"));
 
     const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
     Size rowCount = referenceData.getRowCount();
@@ -316,9 +316,9 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensityAtOrekit3HrMarkShiftedStandardLST)
 {
-    const File referenceDataFile = File::Path(Path::Parse(
-        "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/OreKitNRLMSISE500km3HourMarksShifted.csv"
-    ));
+    const File referenceDataFile =
+        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
+                               "OreKitNRLMSISE500km3HourMarksShifted.csv"));
 
     const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
     Size rowCount = referenceData.getRowCount();
