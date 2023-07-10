@@ -110,7 +110,7 @@ class NRLMSISE00 : public Model
         ap_array& aph,
         const LLA& aLLA,
         const Instant& anInstant,
-        const Position& sunPosition = Position::Undefined()
+        const Position& aSunPosition = Position::Undefined()
     ) const;
 
     /// @brief              Get the atmospheric density value at a given position and instant.
@@ -118,10 +118,10 @@ class NRLMSISE00 : public Model
     ///
     /// @param              [in] aLLA A position, expressed as latitude, longitude, altitude [deg, deg, m]
     /// @param              [in] anInstant An instant
-    /// @param              [in] sunPosition Position of the sun
+    /// @param              [in] aSunPosition Position of the sun
     /// @return             Atmospheric density value [kg.m^-3]
 
-    Real getDensityAt(const LLA& aLLA, const Instant& anInstant, const Position& sunPosition = Position::Undefined())
+    Real getDensityAt(const LLA& aLLA, const Instant& anInstant, const Position& aSunPosition = Position::Undefined())
         const;
 
     /// @brief              Get the atmospheric density value at a given position and instant
@@ -129,10 +129,10 @@ class NRLMSISE00 : public Model
     ///
     /// @param              [in] aPosition A Position
     /// @param              [in] anInstant An Instant
-    /// @param              [in] sunPosition Position of the sun
+    /// @param              [in] aSunPosition Position of the sun
     /// @return             Atmospheric density value [kg.m^-3]
 
-    Real getDensityAt(const Position& aPosition, const Instant& anInstant, const Position& sunPosition) const;
+    Real getDensityAt(const Position& aPosition, const Instant& anInstant, const Position& aSunPosition) const;
 
     /// @brief              Get the atmospheric density value at a given position and instant.
     ///                     Use lst = secondsInDay/3600.0 + aLLA.getLongitude().inDegrees()/15.0 to calculate local

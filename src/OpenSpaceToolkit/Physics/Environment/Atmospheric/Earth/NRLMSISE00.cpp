@@ -116,7 +116,7 @@ void NRLMSISE00::computeAPArray(double* outputArray, const Instant& anInstant) c
 }
 
 void NRLMSISE00::computeNRLMSISE00Input(
-    nrlmsise_input& input, ap_array& aph, const LLA& aLLA, const Instant& anInstant, const Position& sunPosition
+    nrlmsise_input& input, ap_array& aph, const LLA& aLLA, const Instant& anInstant, const Position& aSunPosition
 ) const
 {
     // Input reference is in the NRLMSISE header file
@@ -142,16 +142,16 @@ void NRLMSISE00::computeNRLMSISE00Input(
     // Ap solar indices array
     this->computeAPArray(aph.a, anInstant);
 
-    const Position positionITRF = {
-        aLLA.toCartesian(EarthGravitationalModel::WGS84.equatorialRadius_, EarthGravitationalModel::WGS84.flattening_),
-        Position::Unit::Meter,
-        Frame::ITRF()};
-
     Real lst = Real::Undefined();
 
     // Use actual sun position to compute local solar time if provided
-    if (sunPosition.isDefined())
+    if (aSunPosition.isDefined())
     {
+        const Position positionITRF = {
+            aLLA.toCartesian(EarthGravitationalModel::WGS84.equatorialRadius_, EarthGravitationalModel::WGS84.flattening_),
+            Position::Unit::Meter,
+            Frame::ITRF()};
+
         const Position sunPositionITRF = sunPosition.inFrame(Frame::ITRF(), anInstant);
 
         lst = (Real::Pi() + std::atan2(
@@ -164,6 +164,7 @@ void NRLMSISE00::computeNRLMSISE00Input(
     }
     else
     {
+        // This is the preferred method per the NRLMSISE documentation
         // https://github.com/magnific0/nrlmsise-00/blob/master/nrlmsise-00.h#L103
         lst = Real::Integer(secondsInDay) / 3600.0 + aLLA.getLongitude().inDegrees() / 15.0;
     }
@@ -181,7 +182,7 @@ void NRLMSISE00::computeNRLMSISE00Input(
     input.ap_a = &aph;
 }
 
-Real NRLMSISE00::getDensityAt(const LLA& aLLA, const Instant& anInstant, const Position& sunPosition) const
+Real NRLMSISE00::getDensityAt(const LLA& aLLA, const Instant& anInstant, const Position& aSunPosition) const
 {
     // Included from NRLMSISE-00.h
     NRLMSISE00_c::ap_array ap_values_c;
@@ -201,7 +202,7 @@ Real NRLMSISE00::getDensityAt(const LLA& aLLA, const Instant& anInstant, const P
         flags.switches[i] = 1;
     }
 
-    this->computeNRLMSISE00Input(input, ap_values, aLLA, anInstant, sunPosition);
+    this->computeNRLMSISE00Input(input, ap_values, aLLA, anInstant, aSunPosition);
 
     std::copy(std::begin(ap_values.a), std::end(ap_values.a), std::begin(ap_values_c.a));
 
@@ -222,7 +223,7 @@ Real NRLMSISE00::getDensityAt(const LLA& aLLA, const Instant& anInstant, const P
     return output.d[5];
 }
 
-Real NRLMSISE00::getDensityAt(const Position& aPosition, const Instant& anInstant, const Position& sunPosition) const
+Real NRLMSISE00::getDensityAt(const Position& aPosition, const Instant& anInstant, const Position& aSunPosition) const
 {
     return this->getDensityAt(
         LLA::Cartesian(
@@ -232,7 +233,7 @@ Real NRLMSISE00::getDensityAt(const Position& aPosition, const Instant& anInstan
             EarthGravitationalModel::EGM2008.flattening_
         ),
         anInstant,
-        sunPosition
+        aSunPosition
     );
 }
 
