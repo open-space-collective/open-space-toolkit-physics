@@ -22,9 +22,11 @@ from ostk.physics.environment.gravitational import Earth as EarthGravitationalMo
 def earth_atmospheric_model_exponential() -> EarthAtmosphericModel:
     return EarthAtmosphericModel(EarthAtmosphericModel.Type.Exponential)
 
+
 @pytest.fixture
 def earth_atmospheric_model_nrlmsise() -> EarthAtmosphericModel:
     return EarthAtmosphericModel(EarthAtmosphericModel.Type.NRLMSISE00)
+
 
 class TestEarth:
     def test_constructor_success_with_type(self):
@@ -42,15 +44,22 @@ class TestEarth:
 
         assert isinstance(earth_atmospheric_model, EarthAtmosphericModel)
 
-    def test_get_type_success(self, earth_atmospheric_model_exponential: EarthAtmosphericModel):
+    def test_get_type_success(
+        self, earth_atmospheric_model_exponential: EarthAtmosphericModel
+    ):
         assert (
-            earth_atmospheric_model_exponential.get_type() == EarthAtmosphericModel.Type.Exponential
+            earth_atmospheric_model_exponential.get_type()
+            == EarthAtmosphericModel.Type.Exponential
         )
 
-    def test_is_defined_success(self, earth_atmospheric_model_exponential: EarthAtmosphericModel):
+    def test_is_defined_success(
+        self, earth_atmospheric_model_exponential: EarthAtmosphericModel
+    ):
         assert earth_atmospheric_model_exponential.is_defined() == True
 
-    def test_get_density_at_exponential_success(self, earth_atmospheric_model_exponential: EarthAtmosphericModel):
+    def test_get_density_at_exponential_success(
+        self, earth_atmospheric_model_exponential: EarthAtmosphericModel
+    ):
         latitude = Angle.degrees(30.0)
         longitude = Angle.degrees(40.0)
         altitude = Length.kilometers(500.0)
@@ -68,7 +77,9 @@ class TestEarth:
 
         assert density is not None
 
-    def test_get_density_at_nrlmsise_success(self, earth_atmospheric_model_nrlmsise: EarthAtmosphericModel):
+    def test_get_density_at_nrlmsise_success(
+        self, earth_atmospheric_model_nrlmsise: EarthAtmosphericModel
+    ):
         latitude = Angle.degrees(30.0)
         longitude = Angle.degrees(40.0)
         altitude = Length.kilometers(500.0)
@@ -85,5 +96,3 @@ class TestEarth:
         )
 
         assert density is not None
-
-        

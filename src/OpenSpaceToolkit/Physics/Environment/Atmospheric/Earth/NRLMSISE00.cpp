@@ -148,7 +148,9 @@ void NRLMSISE00::computeNRLMSISE00Input(
     if (aSunPosition.isDefined())
     {
         const Position positionITRF = {
-            aLLA.toCartesian(EarthGravitationalModel::WGS84.equatorialRadius_, EarthGravitationalModel::WGS84.flattening_),
+            aLLA.toCartesian(
+                EarthGravitationalModel::WGS84.equatorialRadius_, EarthGravitationalModel::WGS84.flattening_
+            ),
             Position::Unit::Meter,
             Frame::ITRF()};
 

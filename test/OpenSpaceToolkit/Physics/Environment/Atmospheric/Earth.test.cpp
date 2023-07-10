@@ -9,8 +9,8 @@
 #include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
-#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Derived/Angle.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Length.hpp>
@@ -113,7 +113,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetType)
         EXPECT_EQ(
             EarthAtmosphericModel::Type::NRLMSISE00,
             EarthAtmosphericModel(EarthAtmosphericModel::Type::NRLMSISE00).getType()
-        );    
+        );
     }
 }
 

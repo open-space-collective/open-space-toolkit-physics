@@ -42,6 +42,16 @@ using ostk::physics::environment::atmospheric::earth::NRLMSISE00;
 using ostk::physics::env::ephem::SPICE;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 
+// Expose protected members for testing
+class NRLMSISE00Public : public NRLMSISE00
+{
+   public:
+    using NRLMSISE00::computeAPArray;
+    using NRLMSISE00::computeNRLMSISE00Input;
+    using NRLMSISE00::nrlmsise_input;
+    using NRLMSISE00::ap_array;
+};
+
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Constructor)
 {
     {
@@ -77,7 +87,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeA
     Size rowCount = referenceData.getRowCount();
 
     {
-        const NRLMSISE00 nrlmsise = {};
+        const NRLMSISE00Public nrlmsise = {};
 
         for (Index i = 0; i < rowCount; i++)
         {
@@ -180,7 +190,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeN
     Size rowCount = referenceData.getRowCount();
 
     {
-        const NRLMSISE00 nrlmsise = {};
+        const NRLMSISE00Public nrlmsise = {};
 
         for (Index i = 0; i < rowCount; i++)
         {
@@ -191,8 +201,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeN
 
             const LLA lla = LLA(Angle::Degrees(0), Angle::Degrees(0), Length::Meters(500000));
 
-            NRLMSISE00::nrlmsise_input input;
-            NRLMSISE00::ap_array aph;
+            NRLMSISE00Public::nrlmsise_input input;
+            NRLMSISE00Public::ap_array aph;
 
             nrlmsise.computeNRLMSISE00Input(input, aph, lla, instant);
 
@@ -340,10 +350,9 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
 
             const Real tolerance = 5e-15;
 
-            EXPECT_FALSE(density.isNear(referenceDensity, tolerance)) << String::Format(
+            EXPECT_TRUE(density.isNear(referenceDensity, tolerance)) << String::Format(
                 "{} ≈ {} Δ {} [T]", density.toString(), referenceDensity.toString(), (density - referenceDensity)
             );
-            break;
         }
     }
 }
