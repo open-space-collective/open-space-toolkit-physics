@@ -73,7 +73,7 @@ void NRLMSISE00::computeApArray(double* outputArray, const Instant& anInstant) c
     // We first create a timestamp in each day for which we will need data.
     // Sometimes "now" and "now-9hr" land on the same day.
     //
-    //  now-56hr                 now
+    //  now-57hr                 now
     //     v                      v
     //     *        *        *    *
     //     |--------|--------|----|
@@ -86,10 +86,10 @@ void NRLMSISE00::computeApArray(double* outputArray, const Instant& anInstant) c
     //     *        *        *    *
     //     |--------|--------|----|
     //|........|........|........|........|
-    //   day1     day2    day3      day4
+    //   day1     day2     day3     day4
     //
     // We stack the data into a single array then find which data point 
-    // on day 1 lines up with the "now-56hr" timestamp
+    // on day 1 lines up with the "now-57hr" timestamp
     //
     //     *        *        *    *
     //     |--------|--------|----|
@@ -219,7 +219,7 @@ void NRLMSISE00::computeNRLMSISE00Input(
 
 Real NRLMSISE00::getDensityAt(const LLA& aLLA, const Instant& anInstant, const Position& aSunPosition) const
 {
-    // Included from NRLMSISE-00.h
+    // Included from https://github.com/magnific0/nrlmsise-00/blob/master/nrlmsise-00.h
     NRLMSISE00_c::ap_array ap_values_c;
     NRLMSISE00_c::nrlmsise_input input_c;
 
@@ -231,7 +231,6 @@ Real NRLMSISE00::getDensityAt(const LLA& aLLA, const Instant& anInstant, const P
     NRLMSISE00::ap_array ap_values;
 
     // Set model behavior flags. Their meaning is defined in the NRLMSISE-00 header file.
-    // https://github.com/magnific0/nrlmsise-00/blob/master/nrlmsise-00.h
     for (int i = 0; i < 24; i++)
     {
         flags.switches[i] = 1;
