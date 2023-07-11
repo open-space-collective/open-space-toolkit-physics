@@ -65,8 +65,40 @@ bool NRLMSISE00::isDefined() const
     return true;
 }
 
-void NRLMSISE00::computeAPArray(double* outputArray, const Instant& anInstant) const
-{
+void NRLMSISE00::computeApArray(double* outputArray, const Instant& anInstant) const
+{   
+    // Algorithm:
+    //
+    // Ap readings are given on a daily basis.
+    // We first create a timestamp in each day for which we will need data.
+    // Sometimes "now" and "now-9hr" land on the same day.
+    //
+    //  now-56hr                 now
+    //     v                      v
+    //     *        *        *    *
+    //     |--------|--------|----|
+    //        24hr     24hr   9hr
+    //
+    // Then, we fetch the Ap data for each of those days
+    // For each day, we get 8 3-hourly readings, starting at 00:00 UTC.
+    // They usually do not line up with the 24-hour periods.
+    //
+    //     *        *        *    *
+    //     |--------|--------|----|
+    //|........|........|........|........|
+    //   day1     day2    day3      day4
+    //
+    // We stack the data into a single array then find which data point 
+    // on day 1 lines up with the "now-56hr" timestamp
+    //
+    //     *        *        *    *
+    //     |--------|--------|----|
+    //|........|........|........|........|
+    //     ^
+    //  this one
+    // 
+    // Then use that as a starting index to find the correct data points and averages.
+
     const Manager& spaceWeatherManager = Manager::Get();
 
     // Fetch AP parameters for each day up to 57 hours ago
@@ -140,7 +172,7 @@ void NRLMSISE00::computeNRLMSISE00Input(
     const Real f107Average = spaceWeatherManager.getF107SolarFlux81DayAvgAt(anInstant);
 
     // Ap solar indices array
-    this->computeAPArray(aph.a, anInstant);
+    this->computeApArray(aph.a, anInstant);
 
     Real lst = Real::Undefined();
 

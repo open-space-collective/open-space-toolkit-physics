@@ -107,7 +107,7 @@ class NRLMSISE00 : public Model
         double f107A;           // 81 day average of F10.7 flux (centered on doy)
         double f107;            // daily F10.7 flux for previous day
         double ap;              // AP magnetic index(daily)
-        struct ap_array* ap_a;  // array of 6 values of AP. [see computeAPArray below]
+        struct ap_array* ap_a;  // array of 6 values of AP. [see computeApArray below]
     };
 
     /// @brief              Fill the provided array with AP values needed for the NRLMSISE model.
@@ -127,7 +127,7 @@ class NRLMSISE00 : public Model
     /// @param              [in] anInstant An Instant
     /// @return             Atmospheric density value [kg.m^-3]
 
-    void computeAPArray(double* outputArray, const Instant& anInstant) const;
+    void computeApArray(double* outputArray, const Instant& anInstant) const;
 
     /// @brief              Compute the NRLMSISE00 input and populate into the given struct
     ///                     Optionally use provided sun position to calculate local solar time.

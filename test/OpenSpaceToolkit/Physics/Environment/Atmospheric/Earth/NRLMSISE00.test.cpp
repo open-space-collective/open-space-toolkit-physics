@@ -46,7 +46,7 @@ using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth
 class NRLMSISE00Public : public NRLMSISE00
 {
    public:
-    using NRLMSISE00::computeAPArray;
+    using NRLMSISE00::computeApArray;
     using NRLMSISE00::computeNRLMSISE00Input;
     using NRLMSISE00::nrlmsise_input;
     using NRLMSISE00::ap_array;
@@ -97,7 +97,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeA
             Instant instant = Instant::DateTime(datetime, Scale::UTC);
 
             double apArray[7];
-            nrlmsise.computeAPArray(apArray, instant);
+            nrlmsise.computeApArray(apArray, instant);
 
             Array<Real> apArrayReal = Array<Real>(apArray, apArray + 7);
 
@@ -148,7 +148,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeA
 //             Instant instant = Instant::DateTime(datetime, Scale::UTC);
 //             std::cout << "instant: " << instant.toString(Scale::UTC) << std::endl;
 //             double apArray[7];
-//             nrlmsise.computeAPArray(apArray, instant);
+//             nrlmsise.computeApArray(apArray, instant);
 
 //             Array<Real> apArrayReal = Array<Real>(apArray, apArray+7);
 
