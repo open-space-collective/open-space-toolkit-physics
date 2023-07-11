@@ -118,6 +118,7 @@ void NRLMSISE00::computeApArray(double* outputArray, const Instant& anInstant) c
 
     // Fetch AP indices for all days. Stack them into one continuous array.
     Array<Integer> apMultiDayArray = Array<Integer>::Empty();
+    apMultiDayArray.reserve(fetchDays.getSize());
 
     for (const Instant& fetchDay : fetchDays)
     {
@@ -132,10 +133,10 @@ void NRLMSISE00::computeApArray(double* outputArray, const Instant& anInstant) c
     const Array<Integer>::ConstIterator startIterator = apMultiDayArray.begin() + startIndex;
 
     // Average of 8 AP values from 57 hours ago to 36 hours ago
-    const Real apAvg3657 = Real(Array<Integer>(startIterator, startIterator + 8).reduce(std::plus<Integer>())) / 8.0;
+    const Real apAvg36HrTo57Hr = Real(Array<Integer>(startIterator, startIterator + 8).reduce(std::plus<Integer>())) / 8.0;
 
     // Average of 8 AP values from 36 hours ago to 12 hours ago
-    const Real apAvg1236 =
+    const Real apAvg12HrTo36Hr =
         Real(Array<Integer>(startIterator + 8, startIterator + 16).reduce(std::plus<Integer>())) / 8.0;
 
     outputArray[0] = spaceWeatherManager.getApDailyIndexAt(anInstant);
@@ -143,8 +144,8 @@ void NRLMSISE00::computeApArray(double* outputArray, const Instant& anInstant) c
     outputArray[2] = apMultiDayArray[startIndex + 18];  // now - 3 hours
     outputArray[3] = apMultiDayArray[startIndex + 17];  // now - 6 hours
     outputArray[4] = apMultiDayArray[startIndex + 16];  // now - 9 hours
-    outputArray[5] = apAvg1236;
-    outputArray[6] = apAvg3657;
+    outputArray[5] = apAvg12HrTo36Hr;
+    outputArray[6] = apAvg36HrTo57Hr;
 }
 
 void NRLMSISE00::computeNRLMSISE00Input(
