@@ -133,7 +133,7 @@ class NRLMSISE00 : public Model
     ///                     Optionally use provided sun position to calculate local solar time.
     ///
     /// @param              [out] input NRLMSISE00 input struct to be populated
-    /// @param              [in] aph Struct to holp AP values
+    /// @param              [out] ap Struct to hold AP values
     /// @param              [in] aLLA A position, expressed as latitude, longitude, altitude [deg, deg, m]
     /// @param              [in] anInstant An instant
 
