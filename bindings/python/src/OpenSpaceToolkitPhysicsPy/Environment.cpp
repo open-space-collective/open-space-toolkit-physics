@@ -49,6 +49,8 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
 
         .def("set_instant", &Environment::setInstant, arg("instant"))
 
+        .def("is_position_in_eclipse", &Environment::isPositionInEclipse, arg("position"))
+
         .def_static("undefined", &Environment::Undefined)
         .def_static("default", &Environment::Default)
 

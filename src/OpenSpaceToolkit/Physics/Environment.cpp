@@ -3,6 +3,8 @@
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
 
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/Segment.hpp>
+
 #include <OpenSpaceToolkit/Physics/Environment.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Objects/Celestial.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
@@ -233,6 +235,40 @@ void Environment::setInstant(const Instant& anInstant)
     }
 
     instant_ = anInstant;
+}
+
+bool Environment::isPositionInEclipse(const Position& aPosition) const
+{
+    using ostk::math::geom::d3::objects::Point;
+    using ostk::math::geom::d3::objects::Segment;
+
+    using ostk::physics::coord::Frame;
+    using ostk::physics::env::Object;
+
+    if (!aPosition.isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Position");
+    }
+
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Environment");
+    }
+
+    const Instant instant = this->getInstant();
+
+    const Shared<const Frame> gcrfSPtr = Frame::GCRF();
+
+    const Shared<const Object> sunSPtr = this->accessObjectWithName("Sun");
+
+    const Segment sunToObjectSegment_GCRF = {
+        Point::Vector(aPosition.inFrame(gcrfSPtr, instant).getCoordinates()),
+        Point::Vector(sunSPtr->getPositionIn(gcrfSPtr, instant).getCoordinates()),
+    };
+
+    const Object::Geometry sunToObjectGeometry = {sunToObjectSegment_GCRF, gcrfSPtr};
+
+    return this->intersects(sunToObjectGeometry, {sunSPtr});
 }
 
 Environment Environment::Undefined()

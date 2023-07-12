@@ -40,47 +40,7 @@ using ostk::physics::coord::spherical::LLA;
 using ostk::physics::Environment;
 using ostk::physics::env::obj::celest::Earth;
 using ostk::physics::env::utilities::eclipseIntervalsAtPosition;
-using ostk::physics::env::utilities::isPositionInEclipse;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
-
-TEST(OpenSpaceToolkit_Physics_Environment_Utilities_Eclipse, IsPositionInEclipse)
-{
-    {
-        const Position position_ITRF = Position::Meters({7000e3, 0.0, 0.0}, Frame::ITRF());
-
-        Environment environment = Environment::Default();
-
-        {
-            const Instant instant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC);
-
-            environment.setInstant(instant);
-
-            const Position position_GCRF = position_ITRF.inFrame(Frame::GCRF(), instant);
-
-            EXPECT_TRUE(isPositionInEclipse(position_GCRF, environment));
-        }
-
-        {
-            const Instant instant = Instant::DateTime(DateTime(2018, 1, 1, 12, 0, 0), Scale::UTC);
-
-            environment.setInstant(instant);
-
-            const Position position_GCRF = position_ITRF.inFrame(Frame::GCRF(), instant);
-
-            EXPECT_FALSE(isPositionInEclipse(position_GCRF, environment));
-        }
-
-        {
-            const Instant instant = Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC);
-
-            environment.setInstant(instant);
-
-            const Position position_GCRF = position_ITRF.inFrame(Frame::GCRF(), instant);
-
-            EXPECT_TRUE(isPositionInEclipse(position_GCRF, environment));
-        }
-    }
-}
 
 TEST(OpenSpaceToolkit_Physics_Environment_Utilities_Eclipse, EclipseIntervalsAtPosition)
 {
