@@ -6,6 +6,7 @@ from ostk.physics.time import Instant, DateTime, Scale
 from ostk.physics.coordinate import Frame, Position
 from ostk.physics import Environment
 
+
 @pytest.fixture
 def environment() -> Environment:
     return Environment.default()
@@ -70,7 +71,13 @@ def test_environment_getObjectNames(environment: Environment):
 def test_environment_setInstant(environment: Environment):
     environment.set_instant(Instant.date_time(DateTime(2019, 1, 1, 0, 0, 0), Scale.UTC))
 
-def test_environment_isPositionInEclipse(environment: Environment):
-    environment.set_instant(Instant.date_time(DateTime(2018,1,1,0,0,0), Scale.UTC))
 
-    assert environment.is_position_in_eclipse(Position.meters([7000e3, 0.0, 0.0], Frame.ITRF()))
+def test_environment_isPositionInEclipse(environment: Environment):
+    environment.set_instant(Instant.date_time(DateTime(2018, 1, 1, 0, 0, 0), Scale.UTC))
+
+    assert environment.is_position_in_eclipse(
+        Position.meters(
+            [7000e3, 0.0, 0.0],
+            Frame.ITRF(),
+        )
+    )
