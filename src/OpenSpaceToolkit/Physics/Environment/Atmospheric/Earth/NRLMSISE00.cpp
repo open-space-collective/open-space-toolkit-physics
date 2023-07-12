@@ -5,6 +5,7 @@
 #include <OpenSpaceToolkit/Core/Types/Integer.hpp>
 #include <OpenSpaceToolkit/Core/Types/Real.hpp>
 #include <OpenSpaceToolkit/Core/Types/Size.hpp>
+#include <OpenSpaceToolkit/Core/Types/Unique.hpp>
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
@@ -37,6 +38,7 @@ namespace earth
 using ostk::core::types::Integer;
 using ostk::core::types::Real;
 using ostk::core::types::Size;
+using ostk::core::types::Unique;
 using ostk::core::ctnr::Array;
 
 using ostk::physics::coord::Frame;
@@ -65,7 +67,7 @@ bool NRLMSISE00::isDefined() const
     return true;
 }
 
-void NRLMSISE00::computeApArray(double* outputArray, const Instant& anInstant) const
+Unique<NRLMSISE00::ap_array> NRLMSISE00::computeApArray(const Instant& anInstant) const
 {   
     // Algorithm:
     //
@@ -139,17 +141,21 @@ void NRLMSISE00::computeApArray(double* outputArray, const Instant& anInstant) c
     const Real apAvg12HrTo36Hr =
         Real(Array<Integer>(startIterator + 8, startIterator + 16).reduce(std::plus<Integer>())) / 8.0;
 
-    outputArray[0] = spaceWeatherManager.getApDailyIndexAt(anInstant);
-    outputArray[1] = apMultiDayArray[startIndex + 19];  // now
-    outputArray[2] = apMultiDayArray[startIndex + 18];  // now - 3 hours
-    outputArray[3] = apMultiDayArray[startIndex + 17];  // now - 6 hours
-    outputArray[4] = apMultiDayArray[startIndex + 16];  // now - 9 hours
-    outputArray[5] = apAvg12HrTo36Hr;
-    outputArray[6] = apAvg36HrTo57Hr;
+    Unique<NRLMSISE00::ap_array> outputStruct = std::make_unique<NRLMSISE00::ap_array>();
+
+    outputStruct->a[0] = spaceWeatherManager.getApDailyIndexAt(anInstant);
+    outputStruct->a[1] = apMultiDayArray[startIndex + 19];  // now
+    outputStruct->a[2] = apMultiDayArray[startIndex + 18];  // now - 3 hours
+    outputStruct->a[3] = apMultiDayArray[startIndex + 17];  // now - 6 hours
+    outputStruct->a[4] = apMultiDayArray[startIndex + 16];  // now - 9 hours
+    outputStruct->a[5] = apAvg12HrTo36Hr;
+    outputStruct->a[6] = apAvg36HrTo57Hr;
+
+    return outputStruct;
 }
 
-void NRLMSISE00::computeNRLMSISE00Input(
-    nrlmsise_input& input, ap_array& aph, const LLA& aLLA, const Instant& anInstant, const Position& aSunPosition
+Unique<NRLMSISE00::nrlmsise_input> NRLMSISE00::computeNRLMSISE00Input(
+            const Unique<NRLMSISE00::ap_array>& apValues, const LLA& aLLA, const Instant& anInstant, const Position& aSunPosition
 ) const
 {
     // Input reference is in the NRLMSISE header file
@@ -171,9 +177,6 @@ void NRLMSISE00::computeNRLMSISE00Input(
     // Solar flux values
     const Real f107Previous = spaceWeatherManager.getF107SolarFluxAt(anInstant - Duration::Days(1));
     const Real f107Average = spaceWeatherManager.getF107SolarFlux81DayAvgAt(anInstant);
-
-    // Ap solar indices array
-    this->computeApArray(aph.a, anInstant);
 
     Real lst = Real::Undefined();
 
@@ -204,31 +207,28 @@ void NRLMSISE00::computeNRLMSISE00Input(
         lst = Real::Integer(secondsInDay) / 3600.0 + aLLA.getLongitude().inDegrees() / 15.0;
     }
 
-    input.doy = dayOfYear;
-    input.year = year;
-    input.sec = secondsInDay;
-    input.alt = aLLA.getAltitude().inKilometers();
-    input.g_lat = aLLA.getLatitude().inDegrees();
-    input.g_long = aLLA.getLongitude().inDegrees();
-    input.lst = lst;
-    input.f107A = f107Average;
-    input.f107 = f107Previous;
-    input.ap = aph.a[0];
-    input.ap_a = &aph;
+    Unique<NRLMSISE00::nrlmsise_input> input = std::make_unique<NRLMSISE00::nrlmsise_input>();
+
+    input->doy = dayOfYear;
+    input->year = year;
+    input->sec = secondsInDay;
+    input->alt = aLLA.getAltitude().inKilometers();
+    input->g_lat = aLLA.getLatitude().inDegrees();
+    input->g_long = aLLA.getLongitude().inDegrees();
+    input->lst = lst;
+    input->f107A = f107Average;
+    input->f107 = f107Previous;
+    input->ap = apValues->a[0];
+    input->ap_a = apValues.get();
+
+    return input;
 }
 
 Real NRLMSISE00::getDensityAt(const LLA& aLLA, const Instant& anInstant, const Position& aSunPosition) const
 {
     // Included from https://github.com/magnific0/nrlmsise-00/blob/master/nrlmsise-00.h
-    NRLMSISE00_c::ap_array ap_values_c;
-    NRLMSISE00_c::nrlmsise_input input_c;
-
     NRLMSISE00_c::nrlmsise_output output;
     NRLMSISE00_c::nrlmsise_flags flags;
-
-    // Redefined from NRLMSISE00.hpp
-    NRLMSISE00::nrlmsise_input input;
-    NRLMSISE00::ap_array ap_values;
 
     // Set model behavior flags. Their meaning is defined in the NRLMSISE-00 header file.
     for (int i = 0; i < 24; i++)
@@ -236,23 +236,11 @@ Real NRLMSISE00::getDensityAt(const LLA& aLLA, const Instant& anInstant, const P
         flags.switches[i] = 1;
     }
 
-    this->computeNRLMSISE00Input(input, ap_values, aLLA, anInstant, aSunPosition);
-
-    std::copy(std::begin(ap_values.a), std::end(ap_values.a), std::begin(ap_values_c.a));
-
-    input_c.doy = input.doy;
-    input_c.year = input.year;
-    input_c.sec = input.sec;
-    input_c.alt = input.alt;
-    input_c.g_lat = input.g_lat;
-    input_c.g_long = input.g_long;
-    input_c.lst = input.lst;
-    input_c.f107A = input.f107A;
-    input_c.f107 = input.f107;
-    input_c.ap = input.ap;
-    input_c.ap_a = &ap_values_c;
-
-    NRLMSISE00_c::gtd7d(&input_c, &flags, &output);
+    const Unique<NRLMSISE00::ap_array> apValues = this->computeApArray(anInstant);
+    const Unique<NRLMSISE00::nrlmsise_input> input = this->computeNRLMSISE00Input(apValues, aLLA, anInstant, aSunPosition);
+  
+    NRLMSISE00_c::nrlmsise_input* input_c = reinterpret_cast<NRLMSISE00_c::nrlmsise_input*>(input.get());
+    NRLMSISE00_c::gtd7d(input_c, &flags, &output);
 
     return output.d[5];
 }

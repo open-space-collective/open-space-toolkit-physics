@@ -8,6 +8,7 @@
 #include <OpenSpaceToolkit/Core/Types/Real.hpp>
 #include <OpenSpaceToolkit/Core/Types/Shared.hpp>
 #include <OpenSpaceToolkit/Core/Types/String.hpp>
+#include <OpenSpaceToolkit/Core/Types/Unique.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
@@ -25,6 +26,7 @@ using ostk::core::types::Real;
 using ostk::core::types::Shared;
 using ostk::core::types::Index;
 using ostk::core::types::Size;
+using ostk::core::types::Unique;
 using ostk::core::ctnr::Table;
 using ostk::core::ctnr::Array;
 using ostk::core::fs::File;
@@ -96,31 +98,28 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeA
 
             Instant instant = Instant::DateTime(datetime, Scale::UTC);
 
-            double apArray[7];
-            nrlmsise.computeApArray(apArray, instant);
+            Unique<NRLMSISE00Public::ap_array> apArray = nrlmsise.computeApArray(instant);
 
-            Array<Real> apArrayReal = Array<Real>(apArray, apArray + 7);
-
-            EXPECT_TRUE(referenceData(i, "AP_0").accessReal().isNear(apArray[0], 0.001)) << String::Format(
-                "{} != {} on {}", referenceData(i, "AP_0").accessReal(), apArray[0], datetime.toString()
+            EXPECT_TRUE(referenceData(i, "AP_0").accessReal().isNear(apArray->a[0], 0.001)) << String::Format(
+                "{} != {} on {}", referenceData(i, "AP_0").accessReal(), apArray->a[0], datetime.toString()
             );
-            EXPECT_TRUE(referenceData(i, "AP_1").accessReal().isNear(apArray[1], 0.001)) << String::Format(
-                "{} != {} on {}", referenceData(i, "AP_1").accessReal(), apArray[1], datetime.toString()
+            EXPECT_TRUE(referenceData(i, "AP_1").accessReal().isNear(apArray->a[1], 0.001)) << String::Format(
+                "{} != {} on {}", referenceData(i, "AP_1").accessReal(), apArray->a[1], datetime.toString()
             );
-            EXPECT_TRUE(referenceData(i, "AP_2").accessReal().isNear(apArray[2], 0.001)) << String::Format(
-                "{} != {} on {}", referenceData(i, "AP_2").accessReal(), apArray[2], datetime.toString()
+            EXPECT_TRUE(referenceData(i, "AP_2").accessReal().isNear(apArray->a[2], 0.001)) << String::Format(
+                "{} != {} on {}", referenceData(i, "AP_2").accessReal(), apArray->a[2], datetime.toString()
             );
-            EXPECT_TRUE(referenceData(i, "AP_3").accessReal().isNear(apArray[3], 0.001)) << String::Format(
-                "{} != {} on {}", referenceData(i, "AP_3").accessReal(), apArray[3], datetime.toString()
+            EXPECT_TRUE(referenceData(i, "AP_3").accessReal().isNear(apArray->a[3], 0.001)) << String::Format(
+                "{} != {} on {}", referenceData(i, "AP_3").accessReal(), apArray->a[3], datetime.toString()
             );
-            EXPECT_TRUE(referenceData(i, "AP_4").accessReal().isNear(apArray[4], 0.001)) << String::Format(
-                "{} != {} on {}", referenceData(i, "AP_4").accessReal(), apArray[4], datetime.toString()
+            EXPECT_TRUE(referenceData(i, "AP_4").accessReal().isNear(apArray->a[4], 0.001)) << String::Format(
+                "{} != {} on {}", referenceData(i, "AP_4").accessReal(), apArray->a[4], datetime.toString()
             );
-            EXPECT_TRUE(referenceData(i, "AP_5").accessReal().isNear(apArray[5], 0.001)) << String::Format(
-                "{} != {} on {}", referenceData(i, "AP_5").accessReal(), apArray[5], datetime.toString()
+            EXPECT_TRUE(referenceData(i, "AP_5").accessReal().isNear(apArray->a[5], 0.001)) << String::Format(
+                "{} != {} on {}", referenceData(i, "AP_5").accessReal(), apArray->a[5], datetime.toString()
             );
-            EXPECT_TRUE(referenceData(i, "AP_6").accessReal().isNear(apArray[6], 0.001)) << String::Format(
-                "{} != {} on {}", referenceData(i, "AP_6").accessReal(), apArray[6], datetime.toString()
+            EXPECT_TRUE(referenceData(i, "AP_6").accessReal().isNear(apArray->a[6], 0.001)) << String::Format(
+                "{} != {} on {}", referenceData(i, "AP_6").accessReal(), apArray->a[6], datetime.toString()
             );
         }
     }
@@ -201,16 +200,13 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeN
 
             const LLA lla = LLA(Angle::Degrees(0), Angle::Degrees(0), Length::Meters(500000));
 
-            NRLMSISE00Public::nrlmsise_input input;
-            NRLMSISE00Public::ap_array aph;
+            Unique<NRLMSISE00Public::nrlmsise_input> input = nrlmsise.computeNRLMSISE00Input(nrlmsise.computeApArray(instant), lla, instant);
 
-            nrlmsise.computeNRLMSISE00Input(input, aph, lla, instant);
-
-            EXPECT_TRUE(referenceData(i, "DAILY_FLUX").accessReal().isNear(input.f107, 0.001)) << String::Format(
-                "{} != {} on {}", referenceData(i, "DAILY_FLUX").accessReal(), input.f107, datetime.toString()
+            EXPECT_TRUE(referenceData(i, "DAILY_FLUX").accessReal().isNear(input->f107, 0.001)) << String::Format(
+                "{} != {} on {}", referenceData(i, "DAILY_FLUX").accessReal(), input->f107, datetime.toString()
             );
-            EXPECT_TRUE(referenceData(i, "AVG_FLUX").accessReal().isNear(input.f107A, 0.001)) << String::Format(
-                "{} != {} on {}", referenceData(i, "AVG_FLUX").accessReal(), input.f107A, datetime.toString()
+            EXPECT_TRUE(referenceData(i, "AVG_FLUX").accessReal().isNear(input->f107A, 0.001)) << String::Format(
+                "{} != {} on {}", referenceData(i, "AVG_FLUX").accessReal(), input->f107A, datetime.toString()
             );
         }
     }

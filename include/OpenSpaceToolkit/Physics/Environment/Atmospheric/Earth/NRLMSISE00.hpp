@@ -8,6 +8,7 @@
 #include <OpenSpaceToolkit/Core/Types/Integer.hpp>
 #include <OpenSpaceToolkit/Core/Types/Real.hpp>
 #include <OpenSpaceToolkit/Core/Types/String.hpp>
+#include <OpenSpaceToolkit/Core/Types/Unique.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp>
@@ -28,8 +29,10 @@ namespace earth
 using ostk::core::types::Integer;
 using ostk::core::types::Real;
 using ostk::core::types::String;
+using ostk::core::types::Unique;
 using ostk::core::ctnr::Tuple;
 using ostk::core::ctnr::Array;
+
 
 using ostk::physics::time::Instant;
 using ostk::physics::units::Length;
@@ -90,6 +93,7 @@ class NRLMSISE00 : public Model
 
    protected:
     // redefine input structs from NRLMSISE-00.h to avoid including it in this header
+
     struct ap_array
     {
         double a[7];
@@ -107,7 +111,7 @@ class NRLMSISE00 : public Model
         double f107A;           // 81 day average of F10.7 flux (centered on doy)
         double f107;            // daily F10.7 flux for previous day
         double ap;              // AP magnetic index(daily)
-        struct ap_array* ap_a;  // array of 6 values of AP. [see computeApArray below]
+        struct ap_array* ap_a;  // array of 7 values of AP. [see computeApArray below]
     };
 
     /// @brief              Fill the provided array with AP values needed for the NRLMSISE model.
@@ -123,23 +127,20 @@ class NRLMSISE00 : public Model
     ///                     6 : Average of eight 3 hr AP indices from 36 to 57 hrs
     ///                             prior to instant
     ///
-    /// @param              [in] outputArray C-style array to be filled with AP values.
     /// @param              [in] anInstant An Instant
-    /// @return             Atmospheric density value [kg.m^-3]
+    /// @return             Pointer to AP array struct
 
-    void computeApArray(double* outputArray, const Instant& anInstant) const;
+    Unique<NRLMSISE00::ap_array> computeApArray(const Instant& anInstant) const;
 
     /// @brief              Compute the NRLMSISE00 input and populate into the given struct
     ///                     Optionally use provided sun position to calculate local solar time.
     ///
-    /// @param              [out] input NRLMSISE00 input struct to be populated
-    /// @param              [out] ap Struct to hold AP values
+    /// @param              [in] apValues Pointer to AP values struct
     /// @param              [in] aLLA A position, expressed as latitude, longitude, altitude [deg, deg, m]
     /// @param              [in] anInstant An instant
 
-    void computeNRLMSISE00Input(
-        nrlmsise_input& input,
-        ap_array& aph,
+    Unique<NRLMSISE00::nrlmsise_input> computeNRLMSISE00Input(
+        const Unique<NRLMSISE00::ap_array>& apValues,
         const LLA& aLLA,
         const Instant& anInstant,
         const Position& aSunPosition = Position::Undefined()
