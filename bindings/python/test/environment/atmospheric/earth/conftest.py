@@ -15,7 +15,6 @@ from ostk.physics.environment.atmospheric.earth import Exponential
 from ostk.physics.environment.atmospheric.earth import NRLMSISE00
 
 
-
 @pytest.fixture
 def data_directory_path() -> str:
     return f"{pathlib.Path(__file__).parent.absolute()}/data"
@@ -45,9 +44,11 @@ def manager() -> Manager:
     manager.reset()
     manager.clear_local_repository()
 
+
 @pytest.fixture
 def exponential_model() -> Exponential:
     return Exponential()
+
 
 @pytest.fixture
 def nrlmsise00_model() -> NRLMSISE00:

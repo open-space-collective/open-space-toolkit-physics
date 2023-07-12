@@ -18,15 +18,12 @@ from ostk.physics.environment.atmospheric.earth import Exponential
 
 class TestExponential:
     def test_constructor_success(self, exponential_model):
-
         assert isinstance(exponential_model, Exponential)
 
     def test_is_defined_success(self, exponential_model):
-
         assert exponential_model.is_defined() is True
 
     def test_get_density_at_lla_success(self, exponential_model):
-
         lla = LLA(Angle.degrees(0.0), Angle.degrees(0.0), Length.meters(500e3))
 
         density = exponential_model.get_density_at(
@@ -37,7 +34,6 @@ class TestExponential:
         assert 1.0e-15 < density < 1.0e-12
 
     def test_get_density_at_position_success(self, exponential_model):
-
         position = Position.meters(np.array([6878.1e3, 0, 0]), Frame.ITRF())
 
         density = exponential_model.get_density_at(

@@ -200,7 +200,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeN
 
             const LLA lla = LLA(Angle::Degrees(0), Angle::Degrees(0), Length::Meters(500000));
 
-            Unique<NRLMSISE00Public::nrlmsise_input> input = nrlmsise.computeNRLMSISE00Input(nrlmsise.computeApArray(instant), lla, instant);
+            Unique<NRLMSISE00Public::nrlmsise_input> input =
+                nrlmsise.computeNRLMSISE00Input(nrlmsise.computeApArray(instant), lla, instant);
 
             EXPECT_TRUE(referenceData(i, "DAILY_FLUX").accessReal().isNear(input->f107, 0.001)) << String::Format(
                 "{} != {} on {}", referenceData(i, "DAILY_FLUX").accessReal(), input->f107, datetime.toString()

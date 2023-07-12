@@ -33,7 +33,6 @@ using ostk::core::types::Unique;
 using ostk::core::ctnr::Tuple;
 using ostk::core::ctnr::Array;
 
-
 using ostk::physics::time::Instant;
 using ostk::physics::units::Length;
 using ostk::physics::coord::spherical::LLA;

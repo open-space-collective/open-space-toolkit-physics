@@ -68,7 +68,7 @@ bool NRLMSISE00::isDefined() const
 }
 
 Unique<NRLMSISE00::ap_array> NRLMSISE00::computeApArray(const Instant& anInstant) const
-{   
+{
     // Algorithm:
     //
     // Ap readings are given on a daily basis.
@@ -90,7 +90,7 @@ Unique<NRLMSISE00::ap_array> NRLMSISE00::computeApArray(const Instant& anInstant
     //|........|........|........|........|
     //   day1     day2     day3     day4
     //
-    // We stack the data into a single array then find which data point 
+    // We stack the data into a single array then find which data point
     // on day 1 lines up with the "now-57hr" timestamp
     //
     //     *        *        *    *
@@ -98,7 +98,7 @@ Unique<NRLMSISE00::ap_array> NRLMSISE00::computeApArray(const Instant& anInstant
     //|........|........|........|........|
     //     ^
     //  this one
-    // 
+    //
     // Then use that as a starting index to find the correct data points and averages.
 
     const Manager& spaceWeatherManager = Manager::Get();
@@ -135,7 +135,8 @@ Unique<NRLMSISE00::ap_array> NRLMSISE00::computeApArray(const Instant& anInstant
     const Array<Integer>::ConstIterator startIterator = apMultiDayArray.begin() + startIndex;
 
     // Average of 8 AP values from 57 hours ago to 36 hours ago
-    const Real apAvg36HrTo57Hr = Real(Array<Integer>(startIterator, startIterator + 8).reduce(std::plus<Integer>())) / 8.0;
+    const Real apAvg36HrTo57Hr =
+        Real(Array<Integer>(startIterator, startIterator + 8).reduce(std::plus<Integer>())) / 8.0;
 
     // Average of 8 AP values from 36 hours ago to 12 hours ago
     const Real apAvg12HrTo36Hr =
@@ -155,7 +156,10 @@ Unique<NRLMSISE00::ap_array> NRLMSISE00::computeApArray(const Instant& anInstant
 }
 
 Unique<NRLMSISE00::nrlmsise_input> NRLMSISE00::computeNRLMSISE00Input(
-            const Unique<NRLMSISE00::ap_array>& apValues, const LLA& aLLA, const Instant& anInstant, const Position& aSunPosition
+    const Unique<NRLMSISE00::ap_array>& apValues,
+    const LLA& aLLA,
+    const Instant& anInstant,
+    const Position& aSunPosition
 ) const
 {
     // Input reference is in the NRLMSISE header file
@@ -237,8 +241,9 @@ Real NRLMSISE00::getDensityAt(const LLA& aLLA, const Instant& anInstant, const P
     }
 
     const Unique<NRLMSISE00::ap_array> apValues = this->computeApArray(anInstant);
-    const Unique<NRLMSISE00::nrlmsise_input> input = this->computeNRLMSISE00Input(apValues, aLLA, anInstant, aSunPosition);
-  
+    const Unique<NRLMSISE00::nrlmsise_input> input =
+        this->computeNRLMSISE00Input(apValues, aLLA, anInstant, aSunPosition);
+
     NRLMSISE00_c::nrlmsise_input* input_c = reinterpret_cast<NRLMSISE00_c::nrlmsise_input*>(input.get());
     NRLMSISE00_c::gtd7d(input_c, &flags, &output);
 
