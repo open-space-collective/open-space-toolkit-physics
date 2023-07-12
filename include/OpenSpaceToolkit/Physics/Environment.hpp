@@ -122,8 +122,9 @@ class Environment
 
     void setInstant(const Instant& anInstant);
 
-    /// @brief              Return true if the position is in eclipse
+    /// @brief              Is position in eclipse
     ///
+    /// @param              [in] aPosition A position
     /// @return             True if the position is in eclipse
 
     bool isPositionInEclipse(const Position& aPosition) const;
