@@ -9,7 +9,9 @@
 #include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
+#include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Derived/Angle.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Length.hpp>
 
@@ -29,6 +31,8 @@ using ostk::core::fs::Directory;
 using ostk::physics::units::Length;
 using ostk::physics::units::Angle;
 using ostk::physics::time::Instant;
+using ostk::physics::time::DateTime;
+using ostk::physics::time::Scale;
 using ostk::physics::coord::Position;
 using ostk::physics::coord::spherical::LLA;
 using ostk::physics::coord::Frame;
@@ -55,12 +59,25 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Constructor)
             EarthAtmosphericModel::Type::Exponential, Directory::Path(Path::Parse("/does/not/exist"))
         ));
     }
+
+    {
+        EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(
+            EarthAtmosphericModel::Type::NRLMSISE00, Directory::Path(Path::Parse("/does/not/exist"))
+        ));
+    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Clone)
 {
     {
         const EarthAtmosphericModel earthAtmosphericModel = {EarthAtmosphericModel::Type::Exponential};
+
+        EXPECT_NO_THROW(const EarthAtmosphericModel* earthAtmosphericModelPtr = earthAtmosphericModel.clone();
+                        delete earthAtmosphericModelPtr;);
+    }
+
+    {
+        const EarthAtmosphericModel earthAtmosphericModel = {EarthAtmosphericModel::Type::NRLMSISE00};
 
         EXPECT_NO_THROW(const EarthAtmosphericModel* earthAtmosphericModelPtr = earthAtmosphericModel.clone();
                         delete earthAtmosphericModelPtr;);
@@ -75,6 +92,13 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, OperatorEquals)
 
         EXPECT_NO_THROW(earthAtmosphericModel2 = earthAtmosphericModel);
     }
+
+    {
+        EarthAtmosphericModel earthAtmosphericModel = {EarthAtmosphericModel::Type::NRLMSISE00};
+        EarthAtmosphericModel earthAtmosphericModel2 = {EarthAtmosphericModel::Type::NRLMSISE00};
+
+        EXPECT_NO_THROW(earthAtmosphericModel2 = earthAtmosphericModel);
+    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetType)
@@ -86,7 +110,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetType)
         );
     }
     {
-        EXPECT_ANY_THROW(EarthAtmosphericModel(EarthAtmosphericModel::Type::NRLMSISE00).getType());
+        EXPECT_EQ(
+            EarthAtmosphericModel::Type::NRLMSISE00,
+            EarthAtmosphericModel(EarthAtmosphericModel::Type::NRLMSISE00).getType()
+        );
     }
 }
 
@@ -96,6 +123,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, IsDefined)
         EXPECT_FALSE(EarthAtmosphericModel(EarthAtmosphericModel::Type::Undefined).isDefined());
 
         EXPECT_TRUE(EarthAtmosphericModel(EarthAtmosphericModel::Type::Exponential).isDefined());
+
+        EXPECT_TRUE(EarthAtmosphericModel(EarthAtmosphericModel::Type::NRLMSISE00).isDefined());
     }
 }
 
@@ -122,6 +151,11 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Positi
              LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(550.0)),
              Instant::J2000(),
              3.18278e-13,
+             1e-15},
+            {EarthAtmosphericModel::Type::NRLMSISE00,
+             LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Kilometers(500.0)),
+             Instant::DateTime(DateTime::Parse("2021-01-01 00:00:00"), Scale::UTC),
+             6.7647e-14,
              1e-15}};
 
         for (const auto& testCase : testCases)
@@ -173,6 +207,11 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_LLA)
              LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(550.0)),
              Instant::J2000(),
              3.18278e-13,
+             1e-15},
+            {EarthAtmosphericModel::Type::NRLMSISE00,
+             LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Kilometers(500.0)),
+             Instant::DateTime(DateTime::Parse("2021-01-01 00:00:00"), Scale::UTC),
+             6.7647e-14,
              1e-15}};
 
         for (const auto& testCase : testCases)

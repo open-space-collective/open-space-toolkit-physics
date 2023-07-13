@@ -11,6 +11,8 @@ from ostk.io import URL
 
 from ostk.physics.environment.atmospheric.earth import Manager
 from ostk.physics.environment.atmospheric.earth import CSSISpaceWeather
+from ostk.physics.environment.atmospheric.earth import Exponential
+from ostk.physics.environment.atmospheric.earth import NRLMSISE00
 
 
 @pytest.fixture
@@ -41,3 +43,13 @@ def manager() -> Manager:
 
     manager.reset()
     manager.clear_local_repository()
+
+
+@pytest.fixture
+def exponential_model() -> Exponential:
+    return Exponential()
+
+
+@pytest.fixture
+def nrlmsise00_model() -> NRLMSISE00:
+    return NRLMSISE00()

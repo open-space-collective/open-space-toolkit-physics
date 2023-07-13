@@ -22,6 +22,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_Manager(pybi
         .def("get_cssi_space_weather_at", &Manager::getCSSISpaceWeatherAt, arg("instant"))
         .def("get_kp_3_hour_solar_indices_at", &Manager::getKp3HourSolarIndicesAt, arg("instant"))
         .def("get_ap_3_hour_solar_indices_at", &Manager::getAp3HourSolarIndicesAt, arg("instant"))
+        .def("get_ap_daily_index_at", &Manager::getApDailyIndexAt, arg("instant"))
         .def("get_f107_solar_flux_at", &Manager::getF107SolarFluxAt, arg("instant"))
         .def("get_f107_solar_flux_81_day_avg_at", &Manager::getF107SolarFlux81DayAvgAt, arg("instant"))
 

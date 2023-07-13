@@ -182,7 +182,6 @@ Array<Integer> Manager::getAp3HourSolarIndicesAt(const Instant& anInstant) const
                 observation.Ap6,
                 observation.Ap7,
                 observation.Ap8,
-                observation.ApAvg,
             };
         }
         else if (CSSISpaceWeatherPtr->accessDailyPredictionInterval().contains(dayInstant))
@@ -198,12 +197,39 @@ Array<Integer> Manager::getAp3HourSolarIndicesAt(const Instant& anInstant) const
                 prediction.Ap6,
                 prediction.Ap7,
                 prediction.Ap8,
-                prediction.ApAvg,
             };
         }
     }
 
     throw ostk::core::error::RuntimeError("Cannot obtain Ap Solar Indices at [{}].", anInstant.toString());
+}
+
+Integer Manager::getApDailyIndexAt(const Instant& anInstant) const
+{
+    if (!anInstant.isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Instant");
+    }
+
+    const Date day = anInstant.getDateTime(Scale::UTC).getDate();
+    const Instant dayInstant = Instant::DateTime(DateTime(day, Time::Midnight()), Scale::UTC);
+
+    std::lock_guard<std::mutex> lock {mutex_};
+    const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt(dayInstant);
+
+    if (CSSISpaceWeatherPtr != nullptr)
+    {
+        if (CSSISpaceWeatherPtr->accessObservationInterval().contains(dayInstant))
+        {
+            return CSSISpaceWeatherPtr->accessObservationAt(dayInstant).ApAvg;
+        }
+        else if (CSSISpaceWeatherPtr->accessDailyPredictionInterval().contains(dayInstant))
+        {
+            return CSSISpaceWeatherPtr->accessDailyPredictionAt(dayInstant).ApAvg;
+        }
+    }
+
+    throw ostk::core::error::RuntimeError("Cannot obtain Ap Daily Index at [{}].", anInstant.toString());
 }
 
 Real Manager::getF107SolarFluxAt(const Instant& anInstant) const

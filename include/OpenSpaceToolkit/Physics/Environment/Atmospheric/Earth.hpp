@@ -103,6 +103,7 @@ class Earth : public Model
    private:
     class Impl;
     class ExponentialImpl;
+    class NRLMSISE00Impl;
 
     Unique<Impl> implUPtr_;
 
