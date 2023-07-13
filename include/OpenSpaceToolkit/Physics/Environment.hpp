@@ -23,6 +23,7 @@ using ostk::core::types::String;
 using ostk::core::ctnr::Array;
 
 using ostk::physics::time::Instant;
+using ostk::physics::coord::Position;
 using ostk::physics::env::Object;
 using ostk::physics::env::obj::Celestial;
 
@@ -120,6 +121,13 @@ class Environment
     /// @param              [in] anInstant An instant
 
     void setInstant(const Instant& anInstant);
+
+    /// @brief              Is position in eclipse
+    ///
+    /// @param              [in] aPosition A position
+    /// @return             True if the position is in eclipse
+
+    bool isPositionInEclipse(const Position& aPosition) const;
 
     /// @brief              Get gravitational field at position
     ///

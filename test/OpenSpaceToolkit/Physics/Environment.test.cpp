@@ -248,6 +248,39 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, SetInstant)
     }
 }
 
+TEST_F(OpenSpaceToolkit_Physics_Environment, IsPositionInEclipse)
+{
+    {
+        const Position position = Position::Meters({7000e3, 0.0, 0.0}, Frame::ITRF());
+
+        Environment environment = Environment::Default();
+
+        {
+            const Instant instant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC);
+
+            environment.setInstant(instant);
+
+            EXPECT_TRUE(environment.isPositionInEclipse(position));
+        }
+
+        {
+            const Instant instant = Instant::DateTime(DateTime(2018, 1, 1, 12, 0, 0), Scale::UTC);
+
+            environment.setInstant(instant);
+
+            EXPECT_FALSE(environment.isPositionInEclipse(position));
+        }
+
+        {
+            const Instant instant = Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC);
+
+            environment.setInstant(instant);
+
+            EXPECT_TRUE(environment.isPositionInEclipse(position));
+        }
+    }
+}
+
 TEST_F(OpenSpaceToolkit_Physics_Environment, Undefined)
 {
     {

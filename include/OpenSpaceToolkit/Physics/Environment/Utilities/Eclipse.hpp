@@ -24,14 +24,6 @@ using ostk::physics::coord::Position;
 using ostk::physics::time::Interval;
 using ostk::physics::Environment;
 
-/// @brief                      Is position in eclipse
-///
-/// @param                      [in] aPosition A position (in GCRF)
-/// @param                      [in] anEnvironment An environment
-/// @return                     True if position is in eclipse
-
-bool isPositionInEclipse(const Position& aPosition, const Environment& anEnvironment);
-
 /// @brief                      Calculate eclipse intervals for a given position
 ///
 /// @param                      [in] anAnalysisInterval An analysis interval
