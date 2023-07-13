@@ -133,6 +133,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aeb00f7751b4c1435ddc584da7b3b22e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1_environment.html#aeb00f7751b4c1435ddc584da7b3b22e7">setInstant</a> (const <a class="el" href="classostk_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;anInstant)</td></tr>
 <tr class="memdesc:aeb00f7751b4c1435ddc584da7b3b22e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set instant.  <a href="classostk_1_1physics_1_1_environment.html#aeb00f7751b4c1435ddc584da7b3b22e7">More...</a><br /></td></tr>
 <tr class="separator:aeb00f7751b4c1435ddc584da7b3b22e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c668cd8540a678442ea81d99f4410ab"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1_environment.html#a7c668cd8540a678442ea81d99f4410ab">isPositionInEclipse</a> (const <a class="el" href="classostk_1_1physics_1_1coord_1_1_position.html">Position</a> &amp;aPosition) const</td></tr>
+<tr class="memdesc:a7c668cd8540a678442ea81d99f4410ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is position in eclipse.  <a href="classostk_1_1physics_1_1_environment.html#a7c668cd8540a678442ea81d99f4410ab">More...</a><br /></td></tr>
+<tr class="separator:a7c668cd8540a678442ea81d99f4410ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -445,6 +448,33 @@ Friends</h2></td></tr>
 
 </div>
 </div>
+<a id="a7c668cd8540a678442ea81d99f4410ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c668cd8540a678442ea81d99f4410ab">&#9670;&nbsp;</a></span>isPositionInEclipse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ostk::physics::Environment::isPositionInEclipse </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classostk_1_1physics_1_1coord_1_1_position.html">Position</a> &amp;&#160;</td>
+          <td class="paramname"><em>aPosition</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Is position in eclipse. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">aPosition</td><td>A position </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the position is in eclipse </dd></dl>
+
+</div>
+</div>
 <a id="ac0ddef2496b987f9780df94c9ec49990"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac0ddef2496b987f9780df94c9ec49990">&#9670;&nbsp;</a></span>operator=()</h2>
 
@@ -597,9 +627,9 @@ Friends</h2></td></tr>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassostk_1_1physics_1_1_environment_html_a0a6b08b9a19de02e9eeacdb0fcc0c588"><div class="ttname"><a href="classostk_1_1physics_1_1_environment.html#a0a6b08b9a19de02e9eeacdb0fcc0c588">ostk::physics::Environment::Undefined</a></div><div class="ttdeci">static Environment Undefined()</div><div class="ttdoc">Get gravitational field at position.</div><div class="ttdef"><b>Definition:</b> Environment.cpp:238</div></div>
-<div class="ttc" id="aclassostk_1_1physics_1_1_environment_html_af713ff358f251bedc1c837e3efac59a4"><div class="ttname"><a href="classostk_1_1physics_1_1_environment.html#af713ff358f251bedc1c837e3efac59a4">ostk::physics::Environment::Default</a></div><div class="ttdeci">static Environment Default()</div><div class="ttdoc">Constructs a default environment.</div><div class="ttdef"><b>Definition:</b> Environment.cpp:243</div></div>
-<div class="ttc" id="aclassostk_1_1physics_1_1_environment_html_a9c721c6c5eba3608b2225922ab498c95"><div class="ttname"><a href="classostk_1_1physics_1_1_environment.html#a9c721c6c5eba3608b2225922ab498c95">ostk::physics::Environment::Environment</a></div><div class="ttdeci">Environment(const Instant &amp;anInstant, const Array&lt; Shared&lt; Object &gt;&gt; &amp;anObjectArray)</div><div class="ttdoc">Constructor.</div><div class="ttdef"><b>Definition:</b> Environment.cpp:17</div></div>
+<div class="ttc" id="aclassostk_1_1physics_1_1_environment_html_a0a6b08b9a19de02e9eeacdb0fcc0c588"><div class="ttname"><a href="classostk_1_1physics_1_1_environment.html#a0a6b08b9a19de02e9eeacdb0fcc0c588">ostk::physics::Environment::Undefined</a></div><div class="ttdeci">static Environment Undefined()</div><div class="ttdoc">Get gravitational field at position.</div><div class="ttdef"><b>Definition:</b> Environment.cpp:274</div></div>
+<div class="ttc" id="aclassostk_1_1physics_1_1_environment_html_af713ff358f251bedc1c837e3efac59a4"><div class="ttname"><a href="classostk_1_1physics_1_1_environment.html#af713ff358f251bedc1c837e3efac59a4">ostk::physics::Environment::Default</a></div><div class="ttdeci">static Environment Default()</div><div class="ttdoc">Constructs a default environment.</div><div class="ttdef"><b>Definition:</b> Environment.cpp:279</div></div>
+<div class="ttc" id="aclassostk_1_1physics_1_1_environment_html_a9c721c6c5eba3608b2225922ab498c95"><div class="ttname"><a href="classostk_1_1physics_1_1_environment.html#a9c721c6c5eba3608b2225922ab498c95">ostk::physics::Environment::Environment</a></div><div class="ttdeci">Environment(const Instant &amp;anInstant, const Array&lt; Shared&lt; Object &gt;&gt; &amp;anObjectArray)</div><div class="ttdoc">Constructor.</div><div class="ttdef"><b>Definition:</b> Environment.cpp:19</div></div>
 <!-- HTML footer for doxygen 1.8.7-->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

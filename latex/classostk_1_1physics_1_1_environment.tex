@@ -35,7 +35,9 @@ Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1_celestia
 Array$<$ String $>$ \mbox{\hyperlink{classostk_1_1physics_1_1_environment_aaa1e5f8c43b809d9b0d91ecf58c549b5}{get\+Object\+Names}} () const
 \begin{DoxyCompactList}\small\item\em Get names of objects. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classostk_1_1physics_1_1_environment_aeb00f7751b4c1435ddc584da7b3b22e7}{set\+Instant}} (const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant)
-\begin{DoxyCompactList}\small\item\em Set instant. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Set instant. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classostk_1_1physics_1_1_environment_a7c668cd8540a678442ea81d99f4410ab}{is\+Position\+In\+Eclipse}} (const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_position}{Position}} \&a\+Position) const
+\begin{DoxyCompactList}\small\item\em Is position in eclipse. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -237,6 +239,24 @@ Check if environment is defined.
 
 \begin{DoxyReturn}{Returns}
 True if environment is defined 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1_environment_a7c668cd8540a678442ea81d99f4410ab}\label{classostk_1_1physics_1_1_environment_a7c668cd8540a678442ea81d99f4410ab}} 
+\index{ostk::physics::Environment@{ostk::physics::Environment}!isPositionInEclipse@{isPositionInEclipse}}
+\index{isPositionInEclipse@{isPositionInEclipse}!ostk::physics::Environment@{ostk::physics::Environment}}
+\doxysubsubsection{\texorpdfstring{isPositionInEclipse()}{isPositionInEclipse()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::\+Environment\+::is\+Position\+In\+Eclipse (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_position}{Position}} \&}]{a\+Position }\end{DoxyParamCaption}) const}
+
+
+
+Is position in eclipse. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+Position} & A position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the position is in eclipse 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1_environment_ac0ddef2496b987f9780df94c9ec49990}\label{classostk_1_1physics_1_1_environment_ac0ddef2496b987f9780df94c9ec49990}} 
 \index{ostk::physics::Environment@{ostk::physics::Environment}!operator=@{operator=}}

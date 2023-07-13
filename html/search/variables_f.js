@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['wgs84_1423',['WGS84',['../classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#aa80e59367da181f3d2e07b41c8644911',1,'ostk::physics::environment::gravitational::Earth']]],
-  ['wgs84_5fegm96_1424',['WGS84_EGM96',['../classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#a173b9e634b696714acaaad185479906b',1,'ostk::physics::environment::gravitational::Earth']]]
+  ['temporarydirectoryname_1521',['temporaryDirectoryName',['../namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers.html#adf91c1c8fbc2cd95d50b48f2a5cc03f2',1,'ostk::physics::coord::frame::provider::iers::temporaryDirectoryName()'],['../namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth.html#a6278334fad443af51f946c823cb579ee',1,'ostk::physics::environment::atmospheric::earth::temporaryDirectoryName()'],['../namespaceostk_1_1physics_1_1env_1_1ephem_1_1spice.html#a5dc442cab9fa3b72a12ffb2e194dbf8d',1,'ostk::physics::env::ephem::spice::temporaryDirectoryName()']]]
 ];

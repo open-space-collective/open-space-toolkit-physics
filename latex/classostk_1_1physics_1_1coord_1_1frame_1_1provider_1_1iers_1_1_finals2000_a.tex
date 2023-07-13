@@ -18,24 +18,24 @@ struct \mbox{\hyperlink{structostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1i
 \begin{DoxyCompactItemize}
 \item 
 bool \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_ac1214bb5570078e02ff8dc56bc846e9c}{is\+Defined}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em true if defined \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_interval}{Interval}} \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_a80c02efda876c2359d5f26a5804dff2d}{get\+Interval}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Get data interval. \end{DoxyCompactList}\item 
 Vector2d \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_acbe4bbe907144a93e2746b482e7d1e99}{get\+Polar\+Motion\+At}} (const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const
-\item 
+\begin{DoxyCompactList}\small\item\em Get polar motion at Instant. \end{DoxyCompactList}\item 
 Real \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_af466fab804c2eed95804a0670e90e3dd}{get\+Ut1\+Minus\+Utc\+At}} (const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const
-\item 
+\begin{DoxyCompactList}\small\item\em Get U\+T1-\/\+U\+TC at Instant. \end{DoxyCompactList}\item 
 Real \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_a3c0b965e872a454f69cf7dbcf4fb61d8}{get\+Lod\+At}} (const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const
-\item 
+\begin{DoxyCompactList}\small\item\em Get L\+OD (Length Of Day) at Instant. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data}{Finals2000\+A\+::\+Data}} \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_ae945e5caae2390991db7eae67ba34016}{get\+Data\+At}} (const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Get \mbox{\hyperlink{structostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data}{Data}} reading at instant. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 static \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a}{Finals2000A}} \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_a78af6630d9b4b0cac43e41b0da25a54f}{Undefined}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Undefined factory function. \end{DoxyCompactList}\item 
 static \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a}{Finals2000A}} \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_a914784bcc11e8eb6c2feedd288433a8f}{Load}} (const fs\+::\+File \&a\+File)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Load \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a}{Finals2000A}} from file. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
@@ -61,48 +61,129 @@ Standard Rapid E\+OP \mbox{\hyperlink{structostk_1_1physics_1_1coord_1_1frame_1_
 \doxysubsubsection{\texorpdfstring{getDataAt()}{getDataAt()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data}{Finals2000\+A\+::\+Data}} ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Finals2000\+A\+::get\+Data\+At (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&}]{an\+Instant }\end{DoxyParamCaption}) const}
 
+
+
+Get \mbox{\hyperlink{structostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data}{Data}} reading at instant. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em an\+Instant} & An Instant \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data}{Data}} reading 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_a80c02efda876c2359d5f26a5804dff2d}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_a80c02efda876c2359d5f26a5804dff2d}} 
 \index{ostk::physics::coord::frame::provider::iers::Finals2000A@{ostk::physics::coord::frame::provider::iers::Finals2000A}!getInterval@{getInterval}}
 \index{getInterval@{getInterval}!ostk::physics::coord::frame::provider::iers::Finals2000A@{ostk::physics::coord::frame::provider::iers::Finals2000A}}
 \doxysubsubsection{\texorpdfstring{getInterval()}{getInterval()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_interval}{Interval}} ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Finals2000\+A\+::get\+Interval (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
+
+
+Get data interval. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data}{Data}} Intervalt of Instants 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_a3c0b965e872a454f69cf7dbcf4fb61d8}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_a3c0b965e872a454f69cf7dbcf4fb61d8}} 
 \index{ostk::physics::coord::frame::provider::iers::Finals2000A@{ostk::physics::coord::frame::provider::iers::Finals2000A}!getLodAt@{getLodAt}}
 \index{getLodAt@{getLodAt}!ostk::physics::coord::frame::provider::iers::Finals2000A@{ostk::physics::coord::frame::provider::iers::Finals2000A}}
 \doxysubsubsection{\texorpdfstring{getLodAt()}{getLodAt()}}
 {\footnotesize\ttfamily Real ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Finals2000\+A\+::get\+Lod\+At (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&}]{an\+Instant }\end{DoxyParamCaption}) const}
 
+
+
+Get L\+OD (Length Of Day) at Instant. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em an\+Instant} & An Instant \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+L\+OD 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_acbe4bbe907144a93e2746b482e7d1e99}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_acbe4bbe907144a93e2746b482e7d1e99}} 
 \index{ostk::physics::coord::frame::provider::iers::Finals2000A@{ostk::physics::coord::frame::provider::iers::Finals2000A}!getPolarMotionAt@{getPolarMotionAt}}
 \index{getPolarMotionAt@{getPolarMotionAt}!ostk::physics::coord::frame::provider::iers::Finals2000A@{ostk::physics::coord::frame::provider::iers::Finals2000A}}
 \doxysubsubsection{\texorpdfstring{getPolarMotionAt()}{getPolarMotionAt()}}
 {\footnotesize\ttfamily Vector2d ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Finals2000\+A\+::get\+Polar\+Motion\+At (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&}]{an\+Instant }\end{DoxyParamCaption}) const}
 
+
+
+Get polar motion at Instant. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em an\+Instant} & An Instant \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Polar motion 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_af466fab804c2eed95804a0670e90e3dd}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_af466fab804c2eed95804a0670e90e3dd}} 
 \index{ostk::physics::coord::frame::provider::iers::Finals2000A@{ostk::physics::coord::frame::provider::iers::Finals2000A}!getUt1MinusUtcAt@{getUt1MinusUtcAt}}
 \index{getUt1MinusUtcAt@{getUt1MinusUtcAt}!ostk::physics::coord::frame::provider::iers::Finals2000A@{ostk::physics::coord::frame::provider::iers::Finals2000A}}
 \doxysubsubsection{\texorpdfstring{getUt1MinusUtcAt()}{getUt1MinusUtcAt()}}
 {\footnotesize\ttfamily Real ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Finals2000\+A\+::get\+Ut1\+Minus\+Utc\+At (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&}]{an\+Instant }\end{DoxyParamCaption}) const}
 
+
+
+Get U\+T1-\/\+U\+TC at Instant. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em an\+Instant} & An Instant \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+U\+T1-\/\+U\+TC 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_ac1214bb5570078e02ff8dc56bc846e9c}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_ac1214bb5570078e02ff8dc56bc846e9c}} 
 \index{ostk::physics::coord::frame::provider::iers::Finals2000A@{ostk::physics::coord::frame::provider::iers::Finals2000A}!isDefined@{isDefined}}
 \index{isDefined@{isDefined}!ostk::physics::coord::frame::provider::iers::Finals2000A@{ostk::physics::coord::frame::provider::iers::Finals2000A}}
 \doxysubsubsection{\texorpdfstring{isDefined()}{isDefined()}}
 {\footnotesize\ttfamily bool ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Finals2000\+A\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
+
+
+true if defined 
+
+\begin{DoxyReturn}{Returns}
+True if defined 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_a914784bcc11e8eb6c2feedd288433a8f}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_a914784bcc11e8eb6c2feedd288433a8f}} 
 \index{ostk::physics::coord::frame::provider::iers::Finals2000A@{ostk::physics::coord::frame::provider::iers::Finals2000A}!Load@{Load}}
 \index{Load@{Load}!ostk::physics::coord::frame::provider::iers::Finals2000A@{ostk::physics::coord::frame::provider::iers::Finals2000A}}
 \doxysubsubsection{\texorpdfstring{Load()}{Load()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a}{Finals2000A}} ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Finals2000\+A\+::\+Load (\begin{DoxyParamCaption}\item[{const fs\+::\+File \&}]{a\+File }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+
+
+Load \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a}{Finals2000A}} from file. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+File} & A file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a}{Finals2000A}} object 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_a78af6630d9b4b0cac43e41b0da25a54f}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_a78af6630d9b4b0cac43e41b0da25a54f}} 
 \index{ostk::physics::coord::frame::provider::iers::Finals2000A@{ostk::physics::coord::frame::provider::iers::Finals2000A}!Undefined@{Undefined}}
 \index{Undefined@{Undefined}!ostk::physics::coord::frame::provider::iers::Finals2000A@{ostk::physics::coord::frame::provider::iers::Finals2000A}}
 \doxysubsubsection{\texorpdfstring{Undefined()}{Undefined()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a}{Finals2000A}} ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Finals2000\+A\+::\+Undefined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+
+
+Undefined factory function. 
+
+\begin{DoxyReturn}{Returns}
+Undefined \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a}{Finals2000A}} object 
+\end{DoxyReturn}
 
 
 \doxysubsection{Friends And Related Function Documentation}

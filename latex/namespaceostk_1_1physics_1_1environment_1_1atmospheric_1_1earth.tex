@@ -3,14 +3,30 @@
 \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
+class \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather}{C\+S\+S\+I\+Space\+Weather}}
+\begin{DoxyCompactList}\small\item\em Center for Space Weather and Innovation (C\+S\+SI) Space Weather data file. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential}{Exponential}}
-\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential}{Exponential}} atmospheric model. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential}{Exponential}} atmospheric model. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager}{Manager}}
+\begin{DoxyCompactList}\small\item\em C\+S\+SI space weather manager (thread-\/safe) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
 using \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_a79671fdfe56abcc7ee70fb5d25eb9323}{Earth\+Celestial\+Body}} = \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth}{ostk\+::physics\+::env\+::obj\+::celest\+::\+Earth}}
 \item 
 using \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_aacf55e8f9a4df0ad5cd9cbbf7540d1e7}{Earth\+Gravitational\+Model}} = \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth}{ostk\+::physics\+::environment\+::gravitational\+::\+Earth}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_a682b70a4b287bff40d9efacdb5ef3fc0}{operator$<$$<$}} (std\+::ostream \&an\+Output\+Stream, const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather}{C\+S\+S\+I\+Space\+Weather}} \&a\+C\+S\+S\+I\+Space\+Weather)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const String \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_a1484ec6564a2ab2f9dc850fe463ee593}{C\+S\+S\+I\+Space\+Weather\+File\+Name}} = \char`\"{}SW-\/Last5\+Years.\+csv\char`\"{}
+\item 
+const String \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_a6278334fad443af51f946c823cb579ee}{temporary\+Directory\+Name}} = \char`\"{}tmp\char`\"{}
 \end{DoxyCompactItemize}
 
 
@@ -26,4 +42,28 @@ using \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_
 \index{EarthGravitationalModel@{EarthGravitationalModel}!ostk::physics::environment::atmospheric::earth@{ostk::physics::environment::atmospheric::earth}}
 \doxysubsubsection{\texorpdfstring{EarthGravitationalModel}{EarthGravitationalModel}}
 {\footnotesize\ttfamily using \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_aacf55e8f9a4df0ad5cd9cbbf7540d1e7}{ostk\+::physics\+::environment\+::atmospheric\+::earth\+::\+Earth\+Gravitational\+Model}} = typedef \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth}{ostk\+::physics\+::environment\+::gravitational\+::\+Earth}}}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_a682b70a4b287bff40d9efacdb5ef3fc0}\label{namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_a682b70a4b287bff40d9efacdb5ef3fc0}} 
+\index{ostk::physics::environment::atmospheric::earth@{ostk::physics::environment::atmospheric::earth}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!ostk::physics::environment::atmospheric::earth@{ostk::physics::environment::atmospheric::earth}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}}
+{\footnotesize\ttfamily std\+::ostream\& ostk\+::physics\+::environment\+::atmospheric\+::earth\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{an\+Output\+Stream,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather}{C\+S\+S\+I\+Space\+Weather}} \&}]{a\+C\+S\+S\+I\+Space\+Weather }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_a1484ec6564a2ab2f9dc850fe463ee593}\label{namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_a1484ec6564a2ab2f9dc850fe463ee593}} 
+\index{ostk::physics::environment::atmospheric::earth@{ostk::physics::environment::atmospheric::earth}!CSSISpaceWeatherFileName@{CSSISpaceWeatherFileName}}
+\index{CSSISpaceWeatherFileName@{CSSISpaceWeatherFileName}!ostk::physics::environment::atmospheric::earth@{ostk::physics::environment::atmospheric::earth}}
+\doxysubsubsection{\texorpdfstring{CSSISpaceWeatherFileName}{CSSISpaceWeatherFileName}}
+{\footnotesize\ttfamily const String ostk\+::physics\+::environment\+::atmospheric\+::earth\+::\+C\+S\+S\+I\+Space\+Weather\+File\+Name = \char`\"{}SW-\/Last5\+Years.\+csv\char`\"{}}
+
+\mbox{\Hypertarget{namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_a6278334fad443af51f946c823cb579ee}\label{namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_a6278334fad443af51f946c823cb579ee}} 
+\index{ostk::physics::environment::atmospheric::earth@{ostk::physics::environment::atmospheric::earth}!temporaryDirectoryName@{temporaryDirectoryName}}
+\index{temporaryDirectoryName@{temporaryDirectoryName}!ostk::physics::environment::atmospheric::earth@{ostk::physics::environment::atmospheric::earth}}
+\doxysubsubsection{\texorpdfstring{temporaryDirectoryName}{temporaryDirectoryName}}
+{\footnotesize\ttfamily const String ostk\+::physics\+::environment\+::atmospheric\+::earth\+::temporary\+Directory\+Name = \char`\"{}tmp\char`\"{}}
 

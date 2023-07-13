@@ -10,6 +10,7 @@ var classostk_1_1physics_1_1_environment =
     [ "hasObjectWithName", "classostk_1_1physics_1_1_environment.html#af83819fdcd1586e185ce21e92ce574ed", null ],
     [ "intersects", "classostk_1_1physics_1_1_environment.html#a9a720fa8e7f4b2a30721280a0081716c", null ],
     [ "isDefined", "classostk_1_1physics_1_1_environment.html#ac597f4d54313d272bc24f62a9f2c0f5c", null ],
+    [ "isPositionInEclipse", "classostk_1_1physics_1_1_environment.html#a7c668cd8540a678442ea81d99f4410ab", null ],
     [ "operator=", "classostk_1_1physics_1_1_environment.html#ac0ddef2496b987f9780df94c9ec49990", null ],
     [ "setInstant", "classostk_1_1physics_1_1_environment.html#aeb00f7751b4c1435ddc584da7b3b22e7", null ],
     [ "operator<<", "classostk_1_1physics_1_1_environment.html#a7bc4b39898452fbe5ce3a8de75ad2596", null ]

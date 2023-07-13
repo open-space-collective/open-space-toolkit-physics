@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['j2_1405',['J2',['../structostk_1_1physics_1_1env_1_1obj_1_1_celestial_1_1_model_base.html#a80c4de90c9b3c463dc194382fa2c028c',1,'ostk::physics::env::obj::Celestial::ModelBase']]],
-  ['j2_5f_1406',['J2_',['../structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters.html#a1c1542d64ab9772d446ee872461c9b64',1,'ostk::physics::environment::gravitational::Model::Parameters']]],
-  ['j4_1407',['J4',['../structostk_1_1physics_1_1env_1_1obj_1_1_celestial_1_1_model_base.html#aafdd2f39db08c9f0a5240d3bac68ed52',1,'ostk::physics::env::obj::Celestial::ModelBase']]],
-  ['j4_5f_1408',['J4_',['../structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters.html#a31302156aaac7c6971b1fe9e5894ccfd',1,'ostk::physics::environment::gravitational::Model::Parameters']]]
+  ['instant_1498',['Instant',['../classostk_1_1physics_1_1time_1_1_duration.html#a262e3e2ea8f8c82f81028ef055114add',1,'ostk::physics::time::Duration']]],
+  ['isn_1499',['ISN',['../structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1_1_reading.html#ae95a6c25043dc01bd26cee003630000f',1,'ostk::physics::environment::atmospheric::earth::CSSISpaceWeather::Reading']]]
 ];
