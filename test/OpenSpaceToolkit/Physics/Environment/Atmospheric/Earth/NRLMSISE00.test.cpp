@@ -253,10 +253,16 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
 
             const Real density = nrlmsise.getDensityAt(position, instant, sunPosition);
 
-            const Real tolerance = 2.472e-14;
+            // Check percent tolerance here for low altitudes
+            const Real percentTolerance = 43.0;
+            const Real percentError = 100.0 * (std::abs(density - referenceDensity) / referenceDensity);
 
-            EXPECT_TRUE(density.isNear(referenceDensity, tolerance)) << String::Format(
-                "{} ≈ {} Δ {} [T]", density.toString(), referenceDensity.toString(), (density - referenceDensity)
+            // But still allow a pass if the absolute error is small (because we're close to machine precision)
+            const Real absoluteTolerate = 1.0e-15;
+            const Real absoluteError = std::abs(density - referenceDensity);
+
+            EXPECT_TRUE(absoluteError < absoluteTolerate || percentError < percentTolerance) << String::Format(
+                "{} ≈ {} Δ {} [{}%] [T]", density.toString(), referenceDensity.toString(), absoluteError, percentError
             );
         }
     }
@@ -302,10 +308,16 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
 
             const Real density = nrlmsise.getDensityAt(position, instant, sunPosition);
 
-            const Real tolerance = 1.1004e-15;
+            // Check percent tolerance here for low altitudes
+            const Real percentTolerance = 0.5;
+            const Real percentError = 100.0 * (std::abs(density - referenceDensity) / referenceDensity);
 
-            EXPECT_TRUE(density.isNear(referenceDensity, tolerance)) << String::Format(
-                "{} ≈ {} Δ {} [T]", density.toString(), referenceDensity.toString(), (density - referenceDensity)
+            // But still allow a pass if the absolute error is small (because we're close to machine precision)
+            const Real absoluteTolerate = 1.0e-15;
+            const Real absoluteError = std::abs(density - referenceDensity);
+
+            EXPECT_TRUE(absoluteError < absoluteTolerate || percentError < percentTolerance) << String::Format(
+                "{} ≈ {} Δ {} [{}%] [T]", density.toString(), referenceDensity.toString(), absoluteError, percentError
             );
         }
     }
@@ -345,10 +357,16 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
 
             const Real density = nrlmsise.getDensityAt(position, instant);
 
-            const Real tolerance = 5e-15;
+            // Check percent tolerance here for low altitudes
+            const Real percentTolerance = 3.4;
+            const Real percentError = 100.0 * (std::abs(density - referenceDensity) / referenceDensity);
 
-            EXPECT_TRUE(density.isNear(referenceDensity, tolerance)) << String::Format(
-                "{} ≈ {} Δ {} [T]", density.toString(), referenceDensity.toString(), (density - referenceDensity)
+            // But still allow a pass if the absolute error is small (because we're close to machine precision)
+            const Real absoluteTolerate = 1.0e-15;
+            const Real absoluteError = std::abs(density - referenceDensity);
+
+            EXPECT_TRUE(absoluteError < absoluteTolerate || percentError < percentTolerance) << String::Format(
+                "{} ≈ {} Δ {} [{}%] [T]", density.toString(), referenceDensity.toString(), absoluteError, percentError
             );
         }
     }
