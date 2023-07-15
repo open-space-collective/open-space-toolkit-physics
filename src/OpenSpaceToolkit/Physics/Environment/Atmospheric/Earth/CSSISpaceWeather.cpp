@@ -338,6 +338,93 @@ const CSSISpaceWeather::Reading& CSSISpaceWeather::accessMonthlyPredictionAt(con
     throw ostk::core::error::RuntimeError("Cannot find prediction at [{}].", anInstant.toString(Scale::UTC));
 }
 
+const CSSISpaceWeather::Reading& CSSISpaceWeather::accessReadingAt(const Instant& anInstant) const
+{
+    if (observationInterval_.contains(anInstant))
+    {
+        return this->accessObservationAt(anInstant);
+    }
+    else if (dailyPredictionInterval_.contains(anInstant))
+    {
+        return this->accessDailyPredictionAt(anInstant);
+        ;
+    }
+    else if (monthlyPredictionInterval_.contains(anInstant))
+    {
+        return this->accessMonthlyPredictionAt(anInstant);
+        ;
+    }
+
+    throw ostk::core::error::RuntimeError(
+        "Instant [{}] out of range [{} - {}].",
+        anInstant.toString(Scale::UTC),
+        observationInterval_.accessStart().toString(Scale::UTC),
+        monthlyPredictionInterval_.accessEnd().toString(Scale::UTC)
+    );
+}
+
+const CSSISpaceWeather::Reading& CSSISpaceWeather::accessLastReadingWhere(
+    const std::function<bool(const Reading&)>& aPredicate, const Instant& anInstant
+) const
+{
+    if (!anInstant.isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Instant");
+    }
+
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("CSSI Space Weather");
+    }
+
+    Instant searchInstant = anInstant - Duration::Days(1);
+
+    // Search monthly data backwards, skips if not relevant
+    while (monthlyPredictionInterval_.contains(searchInstant))
+    {
+        const CSSISpaceWeather::Reading& reading = this->accessMonthlyPredictionAt(searchInstant);
+
+        if (aPredicate(reading))
+        {
+            return reading;
+        }
+
+        // Go back in time by approximately 1 month at a time, but not past the last daily prediction
+        searchInstant =
+            std::max(searchInstant - Duration::Days(30), monthlyPredictionInterval_.accessStart() - Duration::Days(1));
+    }
+
+    // Search daily predicton data backwards, skips if not relevant
+    while (dailyPredictionInterval_.contains(searchInstant))
+    {
+        const CSSISpaceWeather::Reading& reading = this->accessDailyPredictionAt(searchInstant);
+
+        if (aPredicate(reading))
+        {
+            return reading;
+        }
+
+        searchInstant -= Duration::Days(1);
+    }
+
+    // Search observation data backwards, skips if not relevant
+    while (observationInterval_.contains(searchInstant))
+    {
+        const CSSISpaceWeather::Reading& reading = this->accessObservationAt(searchInstant);
+
+        if (aPredicate(reading))
+        {
+            return reading;
+        }
+
+        searchInstant -= Duration::Days(1);
+    }
+
+    throw ostk::core::error::RuntimeError(
+        "Failed to extrapolate CSSI Space Weather Data to [{}].", anInstant.toString(Scale::UTC)
+    );
+}
+
 CSSISpaceWeather CSSISpaceWeather::Undefined()
 {
     return CSSISpaceWeather();
@@ -461,8 +548,11 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
 
         const Instant observationStartInstant =
             Instant::ModifiedJulianDate(Real::Integer(spaceWeather.observations_.begin()->first), Scale::UTC);
+
+        // End at the end of the day
         const Instant observationEndInstant =
-            Instant::ModifiedJulianDate(Real::Integer(spaceWeather.observations_.rbegin()->first), Scale::UTC);
+            Instant::ModifiedJulianDate(Real::Integer(spaceWeather.observations_.rbegin()->first), Scale::UTC) +
+            Duration::Hours(23) + Duration::Minutes(59) + Duration::Seconds(59);
 
         spaceWeather.observationInterval_ = Interval::Closed(observationStartInstant, observationEndInstant);
     }
@@ -471,8 +561,11 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
     {
         const Instant dailyPredictionStartInstant =
             Instant::ModifiedJulianDate(Real::Integer(spaceWeather.dailyPredictions_.begin()->first), Scale::UTC);
+
+        // End at the end of the day
         const Instant dailyPredictionEndInstant =
-            Instant::ModifiedJulianDate(Real::Integer(spaceWeather.dailyPredictions_.rbegin()->first), Scale::UTC);
+            Instant::ModifiedJulianDate(Real::Integer(spaceWeather.dailyPredictions_.rbegin()->first), Scale::UTC) +
+            Duration::Hours(23) + Duration::Minutes(59) + Duration::Seconds(59);
 
         spaceWeather.dailyPredictionInterval_ =
             Interval::Closed(dailyPredictionStartInstant, dailyPredictionEndInstant);
@@ -496,8 +589,11 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
     {
         const Instant monthlyPredictionStartInstant =
             Instant::ModifiedJulianDate(Real::Integer(spaceWeather.monthlyPredictions_.begin()->first), Scale::UTC);
+
+        // End at the end of the day
         const Instant monthlyPredictionEndInstant =
-            Instant::ModifiedJulianDate(Real::Integer(spaceWeather.monthlyPredictions_.rbegin()->first), Scale::UTC);
+            Instant::ModifiedJulianDate(Real::Integer(spaceWeather.monthlyPredictions_.rbegin()->first), Scale::UTC) +
+            Duration::Hours(23) + Duration::Minutes(59) + Duration::Seconds(59);
 
         spaceWeather.monthlyPredictionInterval_ =
             Interval::Closed(monthlyPredictionStartInstant, monthlyPredictionEndInstant);

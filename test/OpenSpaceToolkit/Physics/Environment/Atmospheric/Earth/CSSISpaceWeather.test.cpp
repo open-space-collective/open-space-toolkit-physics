@@ -280,6 +280,134 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
     }
 }
 
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, AccessReadingAt)
+{
+    {
+        const CSSISpaceWeather::Reading reading =
+            CSSISpaceWeather_.accessReadingAt(Instant::DateTime(DateTime::Parse("2018-01-01 12:00:00"), Scale::UTC));
+
+        EXPECT_EQ(Date::Parse("2018-01-01", Date::Format::Standard), reading.date);
+
+        EXPECT_EQ(2515, reading.BSRN);
+        EXPECT_EQ(177, reading.KpSum);
+        EXPECT_EQ(10, reading.ApAvg);
+        EXPECT_EQ("OBS", reading.F107DataType);
+
+        EXPECT_NEAR(69.1, reading.F107Obs, 1e-15);
+        EXPECT_NEAR(71.4, reading.F107ObsCenter81, 1e-15);
+    }
+
+    {
+        const CSSISpaceWeather::Reading reading =
+            CSSISpaceWeather_.accessReadingAt(Instant::DateTime(DateTime::Parse("2023-06-20 12:00:00"), Scale::UTC));
+
+        EXPECT_EQ(Date::Parse("2023-06-20", Date::Format::Standard), reading.date);
+
+        EXPECT_EQ(2589, reading.BSRN);
+        EXPECT_EQ(167, reading.KpSum);
+        EXPECT_EQ(9, reading.ApAvg);
+        EXPECT_EQ("PRD", reading.F107DataType);
+
+        EXPECT_NEAR(164.6, reading.F107Obs, 1e-15);
+        EXPECT_NEAR(160.2, reading.F107ObsCenter81, 1e-15);
+    }
+
+    {
+        const CSSISpaceWeather::Reading reading =
+            CSSISpaceWeather_.accessReadingAt(Instant::DateTime(DateTime::Parse("2023-09-15 12:00:00"), Scale::UTC));
+
+        EXPECT_EQ(Date::Parse("2023-09-01", Date::Format::Standard), reading.date);
+
+        EXPECT_EQ(11, reading.ND);
+        EXPECT_EQ("PRM", reading.F107DataType);
+
+        EXPECT_NEAR(151.3, reading.F107Obs, 1e-15);
+        EXPECT_NEAR(154.2, reading.F107ObsCenter81, 1e-15);
+    }
+
+    {
+        EXPECT_THROW(
+            CSSISpaceWeather_.accessReadingAt(Instant::DateTime(DateTime::Parse("2050-09-15 12:00:00"), Scale::UTC)),
+            ostk::core::error::RuntimeError
+        );
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, AccessLastReadingWhere)
+{
+    const File file =
+        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
+                               "CSSISpaceWeather/SW-Last5Years_missing_data.test.csv"));
+    this->CSSISpaceWeather_ = CSSISpaceWeather::Load(file);
+
+    {
+        // calling Undefined Space Weather
+        EXPECT_THROW(
+            CSSISpaceWeather::Undefined().accessMonthlyPredictionAt(
+                Instant::DateTime(DateTime::Parse("2023-06-29 00:00:00"), Scale::UTC)
+            ),
+            ostk::core::error::runtime::Undefined
+        );
+    }
+
+    {
+        // calling Space Weather with Undefined Instant
+        EXPECT_THROW(
+            CSSISpaceWeather::Undefined().accessMonthlyPredictionAt(Instant::Undefined()),
+            ostk::core::error::runtime::Undefined
+        );
+    }
+
+    {
+        // calling with Instant that starts before observations
+        EXPECT_THROW(
+            CSSISpaceWeather::Undefined().accessMonthlyPredictionAt(
+                Instant::DateTime(DateTime::Parse("2018-06-29 00:00:00"), Scale::UTC)
+            ),
+            ostk::core::error::RuntimeError
+        );
+    }
+
+    {
+        const CSSISpaceWeather::Reading lastGoodReading = CSSISpaceWeather_.accessLastReadingWhere(
+            [](const CSSISpaceWeather::Reading& reading) -> bool
+            {
+                return reading.Ap1.isDefined();
+            },
+            Instant::DateTime(DateTime::Parse("2023-12-01 00:00:00"), Scale::UTC)
+        );
+
+        // The last reading with Ap1 defined is the virtual monthly reading created on 2023-08-01
+        EXPECT_EQ(Date::Parse("2023-08-01", Date::Format::Standard), lastGoodReading.date);
+    }
+
+    {
+        const CSSISpaceWeather::Reading lastGoodReading = CSSISpaceWeather_.accessLastReadingWhere(
+            [](const CSSISpaceWeather::Reading& reading) -> bool
+            {
+                return reading.Kp1.isDefined();
+            },
+            Instant::DateTime(DateTime::Parse("2023-06-20 00:00:00"), Scale::UTC)
+        );
+
+        // The last reading with Kp1 defined is the previous observation
+        EXPECT_EQ(Date::Parse("2023-06-19", Date::Format::Standard), lastGoodReading.date);
+    }
+
+    {
+        const CSSISpaceWeather::Reading lastGoodReading = CSSISpaceWeather_.accessLastReadingWhere(
+            [](const CSSISpaceWeather::Reading& reading) -> bool
+            {
+                return reading.F107Obs.isDefined();
+            },
+            Instant::DateTime(DateTime::Parse("2018-01-03 00:00:00"), Scale::UTC)
+        );
+
+        // The last reading with F107Obs defined is two observations ago
+        EXPECT_EQ(Date::Parse("2018-01-01", Date::Format::Standard), lastGoodReading.date);
+    }
+}
+
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, Load)
 {
     {

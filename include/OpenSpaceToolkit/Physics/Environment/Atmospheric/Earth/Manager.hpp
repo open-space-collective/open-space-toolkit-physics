@@ -6,6 +6,7 @@
 #include <mutex>
 
 #include <OpenSpaceToolkit/Core/Containers/Array.hpp>
+#include <OpenSpaceToolkit/Core/Containers/Object.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
 #include <OpenSpaceToolkit/Core/Types/Index.hpp>
 #include <OpenSpaceToolkit/Core/Types/Real.hpp>
@@ -38,6 +39,7 @@ namespace earth
 using ostk::core::types::Index;
 using ostk::core::types::Real;
 using ostk::core::ctnr::Array;
+using ostk::core::ctnr::Object;
 using ostk::core::fs::Directory;
 
 using ostk::io::URL;
