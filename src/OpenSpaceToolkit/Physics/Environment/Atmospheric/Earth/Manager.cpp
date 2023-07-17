@@ -104,7 +104,7 @@ Array<Integer> Manager::getKp3HourSolarIndicesAt(const Instant& anInstant) const
     std::lock_guard<std::mutex> lock {mutex_};
     const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt(anInstant);
 
-    static auto dataFilter = [](const CSSISpaceWeather::Reading& aReading) -> Array<Integer>
+    static auto getKpArray = [](const CSSISpaceWeather::Reading& aReading) -> Array<Integer>
     {
         return Array<Integer> {
             aReading.Kp1,
@@ -120,7 +120,7 @@ Array<Integer> Manager::getKp3HourSolarIndicesAt(const Instant& anInstant) const
 
     static auto outputIsDefined = [](const CSSISpaceWeather::Reading& reading) -> bool
     {
-        const Array<Integer>& array = dataFilter(reading);
+        const Array<Integer>& array = getKpArray(reading);
         return std::all_of(
             array.begin(),
             array.end(),
@@ -135,11 +135,11 @@ Array<Integer> Manager::getKp3HourSolarIndicesAt(const Instant& anInstant) const
 
     if (outputIsDefined(reading))
     {
-        return dataFilter(reading);
+        return getKpArray(reading);
     }
     else
     {
-        return dataFilter(CSSISpaceWeatherPtr->accessLastReadingWhere(outputIsDefined, anInstant));
+        return getKpArray(CSSISpaceWeatherPtr->accessLastReadingWhere(outputIsDefined, anInstant));
     }
 }
 
@@ -148,7 +148,7 @@ Array<Integer> Manager::getAp3HourSolarIndicesAt(const Instant& anInstant) const
     std::lock_guard<std::mutex> lock {mutex_};
     const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt(anInstant);
 
-    static auto dataFilter = [](const CSSISpaceWeather::Reading& aReading) -> Array<Integer>
+    static auto getApArray = [](const CSSISpaceWeather::Reading& aReading) -> Array<Integer>
     {
         return Array<Integer> {
             aReading.Ap1,
@@ -164,7 +164,7 @@ Array<Integer> Manager::getAp3HourSolarIndicesAt(const Instant& anInstant) const
 
     static auto outputIsDefined = [](const CSSISpaceWeather::Reading& aReading) -> bool
     {
-        const Array<Integer>& array = dataFilter(aReading);
+        const Array<Integer>& array = getApArray(aReading);
         return std::all_of(
             array.begin(),
             array.end(),
@@ -179,11 +179,11 @@ Array<Integer> Manager::getAp3HourSolarIndicesAt(const Instant& anInstant) const
 
     if (outputIsDefined(reading))
     {
-        return dataFilter(reading);
+        return getApArray(reading);
     }
     else
     {
-        return dataFilter(CSSISpaceWeatherPtr->accessLastReadingWhere(outputIsDefined, anInstant));
+        return getApArray(CSSISpaceWeatherPtr->accessLastReadingWhere(outputIsDefined, anInstant));
     }
 }
 
@@ -192,7 +192,7 @@ Integer Manager::getApDailyIndexAt(const Instant& anInstant) const
     std::lock_guard<std::mutex> lock {mutex_};
     const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt(anInstant);
 
-    static auto dataFilter = [](const CSSISpaceWeather::Reading& aReading) -> Integer
+    static auto getApDaily = [](const CSSISpaceWeather::Reading& aReading) -> Integer
     {
         return aReading.ApAvg;
     };
@@ -206,11 +206,11 @@ Integer Manager::getApDailyIndexAt(const Instant& anInstant) const
 
     if (outputIsDefined(reading))
     {
-        return dataFilter(reading);
+        return getApDaily(reading);
     }
     else
     {
-        return dataFilter(CSSISpaceWeatherPtr->accessLastReadingWhere(outputIsDefined, anInstant));
+        return getApDaily(CSSISpaceWeatherPtr->accessLastReadingWhere(outputIsDefined, anInstant));
     }
 }
 
@@ -219,7 +219,7 @@ Real Manager::getF107SolarFluxAt(const Instant& anInstant) const
     std::lock_guard<std::mutex> lock {mutex_};
     const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt(anInstant);
 
-    static auto dataFilter = [](const CSSISpaceWeather::Reading& aReading) -> Real
+    static auto getF107Obs = [](const CSSISpaceWeather::Reading& aReading) -> Real
     {
         return aReading.F107Obs;
     };
@@ -233,11 +233,11 @@ Real Manager::getF107SolarFluxAt(const Instant& anInstant) const
 
     if (outputIsDefined(reading))
     {
-        return dataFilter(reading);
+        return getF107Obs(reading);
     }
     else
     {
-        return dataFilter(CSSISpaceWeatherPtr->accessLastReadingWhere(outputIsDefined, anInstant));
+        return getF107Obs(CSSISpaceWeatherPtr->accessLastReadingWhere(outputIsDefined, anInstant));
     }
 }
 
@@ -246,7 +246,7 @@ Real Manager::getF107SolarFlux81DayAvgAt(const Instant& anInstant) const
     std::lock_guard<std::mutex> lock {mutex_};
     const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt(anInstant);
 
-    static auto dataFilter = [](const CSSISpaceWeather::Reading& aReading) -> Real
+    static auto getF107ObsCenter81 = [](const CSSISpaceWeather::Reading& aReading) -> Real
     {
         return aReading.F107ObsCenter81;
     };
@@ -260,11 +260,11 @@ Real Manager::getF107SolarFlux81DayAvgAt(const Instant& anInstant) const
 
     if (outputIsDefined(reading))
     {
-        return dataFilter(reading);
+        return getF107ObsCenter81(reading);
     }
     else
     {
-        return dataFilter(CSSISpaceWeatherPtr->accessLastReadingWhere(outputIsDefined, anInstant));
+        return getF107ObsCenter81(CSSISpaceWeatherPtr->accessLastReadingWhere(outputIsDefined, anInstant));
     }
 }
 
