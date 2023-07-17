@@ -344,14 +344,13 @@ const CSSISpaceWeather::Reading& CSSISpaceWeather::accessReadingAt(const Instant
     {
         return this->accessObservationAt(anInstant);
     }
-    else if (dailyPredictionInterval_.contains(anInstant))
+    if (dailyPredictionInterval_.contains(anInstant))
     {
         return this->accessDailyPredictionAt(anInstant);
     }
-    else if (monthlyPredictionInterval_.contains(anInstant))
+   if (monthlyPredictionInterval_.contains(anInstant))
     {
         return this->accessMonthlyPredictionAt(anInstant);
-        ;
     }
 
     throw ostk::core::error::RuntimeError(
