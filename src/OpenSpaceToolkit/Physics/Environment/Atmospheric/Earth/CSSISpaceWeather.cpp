@@ -347,7 +347,6 @@ const CSSISpaceWeather::Reading& CSSISpaceWeather::accessReadingAt(const Instant
     else if (dailyPredictionInterval_.contains(anInstant))
     {
         return this->accessDailyPredictionAt(anInstant);
-        ;
     }
     else if (monthlyPredictionInterval_.contains(anInstant))
     {
