@@ -118,7 +118,7 @@ Array<Integer> Manager::getKp3HourSolarIndicesAt(const Instant& anInstant) const
         };
     };
 
-    static auto outputIsDefined = [](CSSISpaceWeather::Reading reading) -> bool
+    static auto outputIsDefined = [](const CSSISpaceWeather::Reading& reading) -> bool
     {
         const Array<Integer>& array = dataFilter(reading);
         return std::all_of(
@@ -162,7 +162,7 @@ Array<Integer> Manager::getAp3HourSolarIndicesAt(const Instant& anInstant) const
         };
     };
 
-    static auto outputIsDefined = [](CSSISpaceWeather::Reading aReading) -> bool
+    static auto outputIsDefined = [](const CSSISpaceWeather::Reading& aReading) -> bool
     {
         const Array<Integer>& array = dataFilter(aReading);
         return std::all_of(
@@ -197,7 +197,7 @@ Integer Manager::getApDailyIndexAt(const Instant& anInstant) const
         return aReading.ApAvg;
     };
 
-    static auto outputIsDefined = [](CSSISpaceWeather::Reading aReading) -> bool
+    static auto outputIsDefined = [](const CSSISpaceWeather::Reading& aReading) -> bool
     {
         return aReading.ApAvg.isDefined();
     };
@@ -224,7 +224,7 @@ Real Manager::getF107SolarFluxAt(const Instant& anInstant) const
         return aReading.F107Obs;
     };
 
-    static auto outputIsDefined = [](CSSISpaceWeather::Reading aReading) -> bool
+    static auto outputIsDefined = [](const CSSISpaceWeather::Reading& aReading) -> bool
     {
         return aReading.F107Obs.isDefined();
     };
@@ -251,7 +251,7 @@ Real Manager::getF107SolarFlux81DayAvgAt(const Instant& anInstant) const
         return aReading.F107ObsCenter81;
     };
 
-    static auto outputIsDefined = [](CSSISpaceWeather::Reading aReading) -> bool
+    static auto outputIsDefined = [](const CSSISpaceWeather::Reading& aReading) -> bool
     {
         return aReading.F107ObsCenter81.isDefined();
     };
