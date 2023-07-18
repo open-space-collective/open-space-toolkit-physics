@@ -340,16 +340,6 @@ const CSSISpaceWeather::Reading& CSSISpaceWeather::accessMonthlyPredictionAt(con
 
 const CSSISpaceWeather::Reading& CSSISpaceWeather::accessReadingAt(const Instant& anInstant) const
 {
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("CSSI Space Weather");
-    }
-
     if (observationInterval_.contains(anInstant))
     {
         return this->accessObservationAt(anInstant);

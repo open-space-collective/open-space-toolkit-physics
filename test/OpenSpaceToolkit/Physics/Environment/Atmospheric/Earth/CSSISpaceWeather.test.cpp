@@ -68,7 +68,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         EXPECT_EQ(
             Interval::Closed(
                 Instant::DateTime(DateTime::Parse("2018-01-01 00:00:00"), Scale::UTC),
-                Instant::DateTime(DateTime::Parse("2023-06-19 00:00:00"), Scale::UTC)
+                Instant::DateTime(DateTime::Parse("2023-06-19 23:59:59"), Scale::UTC)
             ),
             CSSISpaceWeather_.accessObservationInterval()
         );
@@ -140,7 +140,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         EXPECT_EQ(
             Interval::Closed(
                 Instant::DateTime(DateTime::Parse("2023-06-20 00:00:00"), Scale::UTC),
-                Instant::DateTime(DateTime::Parse("2023-08-03 00:00:00"), Scale::UTC)
+                Instant::DateTime(DateTime::Parse("2023-08-03 23:59:59"), Scale::UTC)
             ),
             CSSISpaceWeather_.accessDailyPredictionInterval()
         );
@@ -214,7 +214,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         EXPECT_EQ(
             Interval::Closed(
                 Instant::DateTime(DateTime::Parse("2023-08-01 00:00:00"), Scale::UTC),
-                Instant::DateTime(DateTime::Parse("2029-01-01 00:00:00"), Scale::UTC)
+                Instant::DateTime(DateTime::Parse("2029-01-01 23:59:59"), Scale::UTC)
             ),
             CSSISpaceWeather_.accessMonthlyPredictionInterval()
         );
