@@ -362,7 +362,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
                 {
                     return reading.date.isDefined();
                 },
-                Instant::Undefined()),
+                Instant::Undefined()
+            ),
             ostk::core::error::runtime::Undefined
         );
     }
@@ -432,13 +433,13 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         // The last reading with Kp8>30 was two days ago
         EXPECT_EQ(Date::Parse("2023-06-20", Date::Format::Standard), lastGoodReading.date);
     }
-        
+
     {
         EXPECT_THROW(
             CSSISpaceWeather_.accessLastReadingWhere(
                 [](const CSSISpaceWeather::Reading& reading) -> bool
                 {
-                    return reading.Kp8 > 3000; // this is silly and will never happen
+                    return reading.Kp8 > 3000;  // this is silly and will never happen
                 },
                 Instant::DateTime(DateTime::Parse("2023-06-22 00:00:00"), Scale::UTC)
             ),
