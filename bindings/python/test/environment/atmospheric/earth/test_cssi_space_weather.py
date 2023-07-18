@@ -5,6 +5,7 @@ import pytest
 from datetime import datetime
 
 from ostk.core.filesystem import File
+from ostk.core.error import RuntimeError as OstkRuntimeError
 
 from ostk.physics.time import Scale
 from ostk.physics.time import Instant
@@ -110,7 +111,7 @@ class TestCSSISpaceWeather:
     def test_access_last_reading_where_failure(
         self, cssi_space_weather: CSSISpaceWeather
     ):
-        with pytest.raises(ostk.core.error.Runtime):
+        with pytest.raises(OstkRuntimeError):
             cssi_space_weather.access_last_reading_where(
                 lambda reading: reading.f107_data_type == "FAKE",
                 Instant.date_time(datetime(2029, 1, 1, 0, 0, 0), Scale.UTC),
