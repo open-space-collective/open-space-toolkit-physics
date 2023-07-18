@@ -85,10 +85,8 @@ class TestCSSISpaceWeather:
         assert prediction.date.to_string() == "2029-01-01"
         assert prediction.f107_obs == pytest.approx(83.5)
         assert prediction.f107_obs_center_81 == pytest.approx(83.6)
-    
-    def test_access_reading_at_success(
-        self, cssi_space_weather: CSSISpaceWeather
-    ):
+
+    def test_access_reading_at_success(self, cssi_space_weather: CSSISpaceWeather):
         reading: Reading = cssi_space_weather.access_reading_at(
             Instant.date_time(datetime(2029, 1, 1, 0, 0, 0), Scale.UTC)
         )
@@ -117,7 +115,6 @@ class TestCSSISpaceWeather:
                 lambda reading: reading.f107_data_type == "FAKE",
                 Instant.date_time(datetime(2029, 1, 1, 0, 0, 0), Scale.UTC),
             )
-        
 
     def test_undefined_success(self):
         assert CSSISpaceWeather.undefined() is not None
