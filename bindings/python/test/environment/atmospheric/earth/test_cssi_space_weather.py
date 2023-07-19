@@ -32,7 +32,10 @@ class TestCSSISpaceWeather:
     def test_access_observation_interval_success(
         self, cssi_space_weather: CSSISpaceWeather
     ):
-        assert cssi_space_weather.access_observation_interval().to_string()
+        assert (
+            cssi_space_weather.access_observation_interval().to_string()
+            == "[2018-01-01 00:00:00 - 2023-06-19 23:59:59] [UTC]"
+        )
 
     def test_access_observation_at_success(self, cssi_space_weather: CSSISpaceWeather):
         observation: Observation = cssi_space_weather.access_observation_at(
@@ -49,7 +52,7 @@ class TestCSSISpaceWeather:
     ):
         assert (
             cssi_space_weather.access_daily_prediction_interval().to_string()
-            == "[2023-06-20 00:00:00 - 2023-08-03 00:00:00] [UTC]"
+            == "[2023-06-20 00:00:00 - 2023-08-03 23:59:59] [UTC]"
         )
 
     def test_access_daily_prediction_at_success(
@@ -69,7 +72,7 @@ class TestCSSISpaceWeather:
     ):
         assert (
             cssi_space_weather.access_monthly_prediction_interval().to_string()
-            == "[2023-08-01 00:00:00 - 2029-01-01 00:00:00] [UTC]"
+            == "[2023-08-01 00:00:00 - 2029-01-01 23:59:59] [UTC]"
         )
 
     def test_access_monthly_prediction_at_success(
@@ -82,6 +85,36 @@ class TestCSSISpaceWeather:
         assert prediction.date.to_string() == "2029-01-01"
         assert prediction.f107_obs == pytest.approx(83.5)
         assert prediction.f107_obs_center_81 == pytest.approx(83.6)
+
+    def test_access_reading_at_success(self, cssi_space_weather: CSSISpaceWeather):
+        reading: Reading = cssi_space_weather.access_reading_at(
+            Instant.date_time(datetime(2029, 1, 1, 0, 0, 0), Scale.UTC)
+        )
+
+        assert reading.date.to_string() == "2029-01-01"
+        assert reading.f107_obs == pytest.approx(83.5)
+        assert reading.f107_obs_center_81 == pytest.approx(83.6)
+        assert reading.f107_data_type == "PRM"
+
+    def test_access_last_reading_where_success(
+        self, cssi_space_weather: CSSISpaceWeather
+    ):
+        reading: Reading = cssi_space_weather.access_last_reading_where(
+            lambda reading: reading.f107_data_type == "PRD",
+            Instant.date_time(datetime(2023, 12, 1, 0, 0, 0), Scale.UTC),
+        )
+
+        assert reading.date.to_string() == "2023-08-03"
+        assert reading.f107_data_type == "PRD"
+
+    def test_access_last_reading_where_failure(
+        self, cssi_space_weather: CSSISpaceWeather
+    ):
+        with pytest.raises(RuntimeError):
+            cssi_space_weather.access_last_reading_where(
+                lambda reading: reading.f107_data_type == "FAKE",
+                Instant.date_time(datetime(2029, 1, 1, 0, 0, 0), Scale.UTC),
+            )
 
     def test_undefined_success(self):
         assert CSSISpaceWeather.undefined() is not None

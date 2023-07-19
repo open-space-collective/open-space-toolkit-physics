@@ -146,6 +146,23 @@ class CSSISpaceWeather
 
     const Reading& accessMonthlyPredictionAt(const Instant& anInstant) const;
 
+    /// @brief                  Access reading at Instant.
+    ///                         Look first in observations, then in daily predictions, then monthly predictions.
+    ///
+    /// @return                 Reading prediction at Instant.
+
+    const Reading& accessReadingAt(const Instant& anInstant) const;
+
+    /// @brief                  Access last reading before anInstant where aPredicate is true.
+    ///
+    /// @param                  [in] aPredicate A predicate.
+    /// @param                  [in] anInstant An Instant.
+    /// @return                 Last Reading satisfying predicate.
+
+    const Reading& accessLastReadingWhere(
+        const std::function<bool(const Reading&)>& aPredicate, const Instant& anInstant
+    ) const;
+
     /// @brief                  Undefined factory function
     ///
     /// @return                 Undefined CSSI Space Weather object.

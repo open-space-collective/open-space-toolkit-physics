@@ -140,6 +140,28 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetKp3HourS
 
         manager.setMode(Manager::Mode::Automatic);
     }
+
+    {
+        // Test data extrapolation
+
+        const File file =
+            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
+                                   "CSSISpaceWeather/SW-Last5Years_missing_data.test.csv"));
+
+        const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(file);
+
+        Manager& manager = Manager::Get();
+        manager.reset();
+        manager.loadCSSISpaceWeather(spaceWeather);
+
+        // Reference data setup
+
+        const Instant referenceInstant = Instant::DateTime(DateTime::Parse("2023-06-20 12:34:56"), Scale::UTC);
+        const Array<Integer> referenceIndices {23, 17, 17, 13, 20, 27, 30, 30};
+
+        // Test
+        EXPECT_EQ(referenceIndices, manager.getKp3HourSolarIndicesAt(referenceInstant));
+    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetAp3HourSolarIndicesAt)
@@ -183,6 +205,28 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetAp3HourS
 
         manager.setMode(Manager::Mode::Automatic);
     }
+
+    {
+        // Test data extrapolation
+
+        const File file =
+            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
+                                   "CSSISpaceWeather/SW-Last5Years_missing_data.test.csv"));
+
+        const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(file);
+
+        Manager& manager = Manager::Get();
+        manager.reset();
+        manager.loadCSSISpaceWeather(spaceWeather);
+
+        // Reference data setup
+
+        const Instant referenceInstant = Instant::DateTime(DateTime::Parse("2023-06-21 12:34:56"), Scale::UTC);
+        const Array<Integer> referenceIndices {12, 7, 4, 6, 7, 9, 4, 27};
+
+        // Test
+        EXPECT_EQ(referenceIndices, manager.getAp3HourSolarIndicesAt(referenceInstant));
+    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetApDailySolarIndexAt)
@@ -218,13 +262,35 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetApDailyS
         }
 
         manager.setMode(Manager::Mode::Manual);
-        EXPECT_THROW(manager.getAp3HourSolarIndicesAt(Instant::Undefined()), ostk::core::error::runtime::Undefined);
+        EXPECT_THROW(manager.getApDailyIndexAt(Instant::Undefined()), ostk::core::error::runtime::Undefined);
         EXPECT_THROW(
-            manager.getAp3HourSolarIndicesAt(Instant::DateTime(DateTime::Parse("2010-01-01 00:00:00"), Scale::UTC)),
+            manager.getApDailyIndexAt(Instant::DateTime(DateTime::Parse("2010-01-01 00:00:00"), Scale::UTC)),
             ostk::core::error::RuntimeError
         );
 
         manager.setMode(Manager::Mode::Automatic);
+    }
+
+    {
+        // Test data extrapolation
+
+        const File file =
+            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
+                                   "CSSISpaceWeather/SW-Last5Years_missing_data.test.csv"));
+
+        const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(file);
+
+        Manager& manager = Manager::Get();
+        manager.reset();
+        manager.loadCSSISpaceWeather(spaceWeather);
+
+        // Reference data setup
+
+        const Instant referenceInstant = Instant::DateTime(DateTime::Parse("2023-06-21 12:34:56"), Scale::UTC);
+        const Integer referenceIndex = 9;
+
+        // Test
+        EXPECT_EQ(referenceIndex, manager.getApDailyIndexAt(referenceInstant));
     }
 }
 
@@ -271,6 +337,28 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetF107Sola
 
         manager.setMode(Manager::Mode::Automatic);
     }
+
+    {
+        // Test data extrapolation
+
+        const File file =
+            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
+                                   "CSSISpaceWeather/SW-Last5Years_missing_data.test.csv"));
+
+        const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(file);
+
+        Manager& manager = Manager::Get();
+        manager.reset();
+        manager.loadCSSISpaceWeather(spaceWeather);
+
+        // Reference data setup
+
+        const Instant referenceInstant = Instant::DateTime(DateTime::Parse("2018-01-03 12:34:56"), Scale::UTC);
+        const Real referenceValue = 69.1;
+
+        // Test
+        EXPECT_EQ(referenceValue, manager.getF107SolarFluxAt(referenceInstant));
+    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetF107SolarFlux81DayAvgAt)
@@ -315,6 +403,28 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetF107Sola
         );
 
         manager.setMode(Manager::Mode::Automatic);
+    }
+
+    {
+        // Test data extrapolation
+
+        const File file =
+            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
+                                   "CSSISpaceWeather/SW-Last5Years_missing_data.test.csv"));
+
+        const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(file);
+
+        Manager& manager = Manager::Get();
+        manager.reset();
+        manager.loadCSSISpaceWeather(spaceWeather);
+
+        // Reference data setup
+
+        const Instant referenceInstant = Instant::DateTime(DateTime::Parse("2018-01-03 12:34:56"), Scale::UTC);
+        const Real referenceValue = 71.5;
+
+        // Test
+        EXPECT_EQ(referenceValue, manager.getF107SolarFlux81DayAvgAt(referenceInstant));
     }
 }
 

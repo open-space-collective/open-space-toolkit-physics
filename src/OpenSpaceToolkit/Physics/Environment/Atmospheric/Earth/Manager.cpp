@@ -87,11 +87,6 @@ Array<CSSISpaceWeather> Manager::getCSSISpaceWeatherArray() const
 
 CSSISpaceWeather Manager::getCSSISpaceWeatherAt(const Instant& anInstant) const
 {
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
     std::lock_guard<std::mutex> lock {mutex_};
 
     const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt(anInstant);
@@ -106,196 +101,173 @@ CSSISpaceWeather Manager::getCSSISpaceWeatherAt(const Instant& anInstant) const
 
 Array<Integer> Manager::getKp3HourSolarIndicesAt(const Instant& anInstant) const
 {
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
-    const Date day = anInstant.getDateTime(Scale::UTC).getDate();
-    const Instant dayInstant = Instant::DateTime(DateTime(day, Time::Midnight()), Scale::UTC);
-
     std::lock_guard<std::mutex> lock {mutex_};
-    const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt(dayInstant);
+    const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt(anInstant);
 
-    if (CSSISpaceWeatherPtr != nullptr)
+    static auto getKpArray = [](const CSSISpaceWeather::Reading& aReading) -> Array<Integer>
     {
-        if (CSSISpaceWeatherPtr->accessObservationInterval().contains(dayInstant))
-        {
-            const CSSISpaceWeather::Reading observation = CSSISpaceWeatherPtr->accessObservationAt(dayInstant);
+        return Array<Integer> {
+            aReading.Kp1,
+            aReading.Kp2,
+            aReading.Kp3,
+            aReading.Kp4,
+            aReading.Kp5,
+            aReading.Kp6,
+            aReading.Kp7,
+            aReading.Kp8,
+        };
+    };
 
-            return Array<Integer> {
-                observation.Kp1,
-                observation.Kp2,
-                observation.Kp3,
-                observation.Kp4,
-                observation.Kp5,
-                observation.Kp6,
-                observation.Kp7,
-                observation.Kp8,
-            };
-        }
-        else if (CSSISpaceWeatherPtr->accessDailyPredictionInterval().contains(dayInstant))
-        {
-            const CSSISpaceWeather::Reading prediction = CSSISpaceWeatherPtr->accessDailyPredictionAt(dayInstant);
+    static auto outputIsDefined = [](const CSSISpaceWeather::Reading& reading) -> bool
+    {
+        const Array<Integer>& array = getKpArray(reading);
+        return std::all_of(
+            array.begin(),
+            array.end(),
+            [](const Integer& val)
+            {
+                return val.isDefined();
+            }
+        );
+    };
 
-            return Array<Integer> {
-                prediction.Kp1,
-                prediction.Kp2,
-                prediction.Kp3,
-                prediction.Kp4,
-                prediction.Kp5,
-                prediction.Kp6,
-                prediction.Kp7,
-                prediction.Kp8,
-            };
-        }
+    const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->accessReadingAt(anInstant);
+
+    if (outputIsDefined(reading))
+    {
+        return getKpArray(reading);
     }
-
-    throw ostk::core::error::RuntimeError("Cannot obtain Kp Solar Indices at [{}].", anInstant.toString());
+    else
+    {
+        return getKpArray(CSSISpaceWeatherPtr->accessLastReadingWhere(outputIsDefined, anInstant));
+    }
 }
 
 Array<Integer> Manager::getAp3HourSolarIndicesAt(const Instant& anInstant) const
 {
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
-    const Date day = anInstant.getDateTime(Scale::UTC).getDate();
-    const Instant dayInstant = Instant::DateTime(DateTime(day, Time::Midnight()), Scale::UTC);
-
     std::lock_guard<std::mutex> lock {mutex_};
-    const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt(dayInstant);
+    const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt(anInstant);
 
-    if (CSSISpaceWeatherPtr != nullptr)
+    static auto getApArray = [](const CSSISpaceWeather::Reading& aReading) -> Array<Integer>
     {
-        if (CSSISpaceWeatherPtr->accessObservationInterval().contains(dayInstant))
-        {
-            const CSSISpaceWeather::Reading observation = CSSISpaceWeatherPtr->accessObservationAt(dayInstant);
+        return Array<Integer> {
+            aReading.Ap1,
+            aReading.Ap2,
+            aReading.Ap3,
+            aReading.Ap4,
+            aReading.Ap5,
+            aReading.Ap6,
+            aReading.Ap7,
+            aReading.Ap8,
+        };
+    };
 
-            return Array<Integer> {
-                observation.Ap1,
-                observation.Ap2,
-                observation.Ap3,
-                observation.Ap4,
-                observation.Ap5,
-                observation.Ap6,
-                observation.Ap7,
-                observation.Ap8,
-            };
-        }
-        else if (CSSISpaceWeatherPtr->accessDailyPredictionInterval().contains(dayInstant))
-        {
-            const CSSISpaceWeather::Reading prediction = CSSISpaceWeatherPtr->accessDailyPredictionAt(dayInstant);
+    static auto outputIsDefined = [](const CSSISpaceWeather::Reading& aReading) -> bool
+    {
+        const Array<Integer>& array = getApArray(aReading);
+        return std::all_of(
+            array.begin(),
+            array.end(),
+            [](const Integer& val)
+            {
+                return val.isDefined();
+            }
+        );
+    };
 
-            return Array<Integer> {
-                prediction.Ap1,
-                prediction.Ap2,
-                prediction.Ap3,
-                prediction.Ap4,
-                prediction.Ap5,
-                prediction.Ap6,
-                prediction.Ap7,
-                prediction.Ap8,
-            };
-        }
+    const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->accessReadingAt(anInstant);
+
+    if (outputIsDefined(reading))
+    {
+        return getApArray(reading);
     }
-
-    throw ostk::core::error::RuntimeError("Cannot obtain Ap Solar Indices at [{}].", anInstant.toString());
+    else
+    {
+        return getApArray(CSSISpaceWeatherPtr->accessLastReadingWhere(outputIsDefined, anInstant));
+    }
 }
 
 Integer Manager::getApDailyIndexAt(const Instant& anInstant) const
 {
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
-    const Date day = anInstant.getDateTime(Scale::UTC).getDate();
-    const Instant dayInstant = Instant::DateTime(DateTime(day, Time::Midnight()), Scale::UTC);
-
     std::lock_guard<std::mutex> lock {mutex_};
-    const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt(dayInstant);
+    const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt(anInstant);
 
-    if (CSSISpaceWeatherPtr != nullptr)
+    static auto getApDaily = [](const CSSISpaceWeather::Reading& aReading) -> Integer
     {
-        if (CSSISpaceWeatherPtr->accessObservationInterval().contains(dayInstant))
-        {
-            return CSSISpaceWeatherPtr->accessObservationAt(dayInstant).ApAvg;
-        }
-        else if (CSSISpaceWeatherPtr->accessDailyPredictionInterval().contains(dayInstant))
-        {
-            return CSSISpaceWeatherPtr->accessDailyPredictionAt(dayInstant).ApAvg;
-        }
-    }
+        return aReading.ApAvg;
+    };
 
-    throw ostk::core::error::RuntimeError("Cannot obtain Ap Daily Index at [{}].", anInstant.toString());
+    static auto outputIsDefined = [](const CSSISpaceWeather::Reading& aReading) -> bool
+    {
+        return aReading.ApAvg.isDefined();
+    };
+
+    const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->accessReadingAt(anInstant);
+
+    if (outputIsDefined(reading))
+    {
+        std::cout << "Data point is defined" << std::endl;
+        return getApDaily(reading);
+    }
+    else
+    {
+        std::cout << "Need to search past data points" << std::endl;
+        return getApDaily(CSSISpaceWeatherPtr->accessLastReadingWhere(outputIsDefined, anInstant));
+    }
 }
 
 Real Manager::getF107SolarFluxAt(const Instant& anInstant) const
 {
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
-    const Date day = anInstant.getDateTime(Scale::UTC).getDate();
-    const Instant dayInstant = Instant::DateTime(DateTime(day, Time::Midnight()), Scale::UTC);
-
     std::lock_guard<std::mutex> lock {mutex_};
-    const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt(dayInstant);
+    const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt(anInstant);
 
-    if (CSSISpaceWeatherPtr != nullptr)
+    static auto getF107Obs = [](const CSSISpaceWeather::Reading& aReading) -> Real
     {
-        if (CSSISpaceWeatherPtr->accessObservationInterval().contains(dayInstant))
-        {
-            return CSSISpaceWeatherPtr->accessObservationAt(dayInstant).F107Obs;
-        }
-        else if (CSSISpaceWeatherPtr->accessDailyPredictionInterval().contains(dayInstant))
-        {
-            return CSSISpaceWeatherPtr->accessDailyPredictionAt(dayInstant).F107Obs;
-        }
-        else if (CSSISpaceWeatherPtr->accessMonthlyPredictionInterval().contains(dayInstant))
-        {
-            return CSSISpaceWeatherPtr->accessMonthlyPredictionAt(dayInstant).F107Obs;
-        }
-    }
+        return aReading.F107Obs;
+    };
 
-    throw ostk::core::error::RuntimeError("Cannot obtain F10.7 Solar Flux at [{}].", anInstant.toString());
+    static auto outputIsDefined = [](const CSSISpaceWeather::Reading& aReading) -> bool
+    {
+        return aReading.F107Obs.isDefined();
+    };
+
+    const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->accessReadingAt(anInstant);
+
+    if (outputIsDefined(reading))
+    {
+        return getF107Obs(reading);
+    }
+    else
+    {
+        return getF107Obs(CSSISpaceWeatherPtr->accessLastReadingWhere(outputIsDefined, anInstant));
+    }
 }
 
 Real Manager::getF107SolarFlux81DayAvgAt(const Instant& anInstant) const
 {
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
-    const Date day = anInstant.getDateTime(Scale::UTC).getDate();
-    const Instant dayInstant = Instant::DateTime(DateTime(day, Time::Midnight()), Scale::UTC);
-
     std::lock_guard<std::mutex> lock {mutex_};
-    const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt(dayInstant);
+    const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt(anInstant);
 
-    if (CSSISpaceWeatherPtr != nullptr)
+    static auto getF107ObsCenter81 = [](const CSSISpaceWeather::Reading& aReading) -> Real
     {
-        if (CSSISpaceWeatherPtr->accessObservationInterval().contains(dayInstant))
-        {
-            return CSSISpaceWeatherPtr->accessObservationAt(dayInstant).F107ObsCenter81;
-        }
-        else if (CSSISpaceWeatherPtr->accessDailyPredictionInterval().contains(dayInstant))
-        {
-            return CSSISpaceWeatherPtr->accessDailyPredictionAt(dayInstant).F107ObsCenter81;
-        }
-        else if (CSSISpaceWeatherPtr->accessMonthlyPredictionInterval().contains(dayInstant))
-        {
-            return CSSISpaceWeatherPtr->accessMonthlyPredictionAt(dayInstant).F107ObsCenter81;
-        }
-    }
+        return aReading.F107ObsCenter81;
+    };
 
-    throw ostk::core::error::RuntimeError(
-        "Cannot obtain F10.7 Solar Flux 81 Day Avereage at [{}].", anInstant.toString()
-    );
+    static auto outputIsDefined = [](const CSSISpaceWeather::Reading& aReading) -> bool
+    {
+        return aReading.F107ObsCenter81.isDefined();
+    };
+
+    const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->accessReadingAt(anInstant);
+
+    if (outputIsDefined(reading))
+    {
+        return getF107ObsCenter81(reading);
+    }
+    else
+    {
+        return getF107ObsCenter81(CSSISpaceWeatherPtr->accessLastReadingWhere(outputIsDefined, anInstant));
+    }
 }
 
 void Manager::setMode(const Manager::Mode& aMode)
@@ -460,6 +432,11 @@ bool Manager::isLocalRepositoryLocked() const
 
 const CSSISpaceWeather* Manager::accessCSSISpaceWeatherAt(const Instant& anInstant) const
 {
+    if (!anInstant.isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Instant");
+    }
+
     // Try cache
     if (!CSSISpaceWeatherArray_.isEmpty())
     {
@@ -551,12 +528,8 @@ const CSSISpaceWeather* Manager::accessCSSISpaceWeatherAt(const Instant& anInsta
     }
 
     // No space weather data found
-
-    {
-        CSSISpaceWeatherIndex_ = 0;
-
-        return nullptr;
-    }
+    CSSISpaceWeatherIndex_ = 0;
+    throw ostk::core::error::RuntimeError("Cannot obtain CSSI Space Weather at [{}].", anInstant.toString());
 }
 
 File Manager::getLocalRepositoryLockFile() const
