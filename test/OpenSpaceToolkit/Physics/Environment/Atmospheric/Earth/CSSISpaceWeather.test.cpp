@@ -391,8 +391,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
             Instant::DateTime(DateTime::Parse("2023-12-01 00:00:00"), Scale::UTC)
         );
 
-        // The last reading with Ap1 defined is the virtual monthly reading created on 2023-08-01
-        EXPECT_EQ(Date::Parse("2023-08-01", Date::Format::Standard), lastGoodReading.date);
+        // The last reading with Ap1 defined is the final daily reading
+        EXPECT_EQ(Date::Parse("2023-08-03", Date::Format::Standard), lastGoodReading.date);
     }
 
     {
@@ -445,6 +445,19 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
             ),
             ostk::core::error::RuntimeError
         );
+    }
+    {
+        const CSSISpaceWeather::Reading lastGoodReading = CSSISpaceWeather_.accessLastReadingWhere(
+            [](const CSSISpaceWeather::Reading& reading) -> bool
+            {
+                return reading.F107DataType == "PRD";
+            },
+            Instant::DateTime(DateTime::Parse("2023-12-01 00:00:00"), Scale::UTC)
+        );
+
+        // The last reading with Kp8>30 was two days ago
+        EXPECT_EQ(Date::Parse("2023-08-03", Date::Format::Standard), lastGoodReading.date);
+        EXPECT_EQ("PRD", lastGoodReading.F107DataType);
     }
 }
 
