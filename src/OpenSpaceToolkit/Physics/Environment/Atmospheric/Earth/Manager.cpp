@@ -124,14 +124,14 @@ Array<Integer> Manager::getKp3HourSolarIndicesAt(const Instant& anInstant) const
         return std::all_of(
             array.begin(),
             array.end(),
-            [](Integer val)
+            [](const Integer& val)
             {
                 return val.isDefined();
             }
         );
     };
 
-    const CSSISpaceWeather::Reading reading = CSSISpaceWeatherPtr->accessReadingAt(anInstant);
+    const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->accessReadingAt(anInstant);
 
     if (outputIsDefined(reading))
     {
@@ -168,14 +168,14 @@ Array<Integer> Manager::getAp3HourSolarIndicesAt(const Instant& anInstant) const
         return std::all_of(
             array.begin(),
             array.end(),
-            [](Integer val)
+            [](const Integer& val)
             {
                 return val.isDefined();
             }
         );
     };
 
-    const CSSISpaceWeather::Reading reading = CSSISpaceWeatherPtr->accessReadingAt(anInstant);
+    const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->accessReadingAt(anInstant);
 
     if (outputIsDefined(reading))
     {
@@ -202,14 +202,16 @@ Integer Manager::getApDailyIndexAt(const Instant& anInstant) const
         return aReading.ApAvg.isDefined();
     };
 
-    const CSSISpaceWeather::Reading reading = CSSISpaceWeatherPtr->accessReadingAt(anInstant);
+    const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->accessReadingAt(anInstant);
 
     if (outputIsDefined(reading))
     {
+        std::cout << "Data point is defined" << std::endl;
         return getApDaily(reading);
     }
     else
     {
+        std::cout << "Need to search past data points" << std::endl;
         return getApDaily(CSSISpaceWeatherPtr->accessLastReadingWhere(outputIsDefined, anInstant));
     }
 }
@@ -229,7 +231,7 @@ Real Manager::getF107SolarFluxAt(const Instant& anInstant) const
         return aReading.F107Obs.isDefined();
     };
 
-    const CSSISpaceWeather::Reading reading = CSSISpaceWeatherPtr->accessReadingAt(anInstant);
+    const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->accessReadingAt(anInstant);
 
     if (outputIsDefined(reading))
     {
@@ -256,7 +258,7 @@ Real Manager::getF107SolarFlux81DayAvgAt(const Instant& anInstant) const
         return aReading.F107ObsCenter81.isDefined();
     };
 
-    const CSSISpaceWeather::Reading reading = CSSISpaceWeatherPtr->accessReadingAt(anInstant);
+    const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->accessReadingAt(anInstant);
 
     if (outputIsDefined(reading))
     {
