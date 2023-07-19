@@ -388,8 +388,7 @@ const CSSISpaceWeather::Reading& CSSISpaceWeather::accessLastReadingWhere(
         }
 
         // Go back in time by approximately 1 month at a time, but not past the last daily prediction
-        searchInstant =
-            std::max(searchInstant - Duration::Days(30), dailyPredictionInterval_.accessEnd());
+        searchInstant = std::max(searchInstant - Duration::Days(30), dailyPredictionInterval_.accessEnd());
     }
 
     // Search daily predicton data backwards, skips if not relevant
