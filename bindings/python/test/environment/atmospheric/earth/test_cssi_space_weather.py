@@ -110,7 +110,7 @@ class TestCSSISpaceWeather:
     def test_access_last_reading_where_failure(
         self, cssi_space_weather: CSSISpaceWeather
     ):
-        with pytest.raises():
+        with pytest.raises(RuntimeError):
             cssi_space_weather.access_last_reading_where(
                 lambda reading: reading.f107_data_type == "FAKE",
                 Instant.date_time(datetime(2029, 1, 1, 0, 0, 0), Scale.UTC),
