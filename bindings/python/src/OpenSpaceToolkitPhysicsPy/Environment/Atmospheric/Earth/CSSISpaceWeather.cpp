@@ -32,7 +32,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_CSSISpaceWea
         .def("access_last_reading_where", &CSSISpaceWeather::accessLastReadingWhere, arg("predicate"), arg("instant"))
 
         .def_static("undefined", &CSSISpaceWeather::Undefined)
-        .def_static("load", &CSSISpaceWeather::Load, arg("file"));
+        .def_static("load", &CSSISpaceWeather::Load, arg("file"))
+
+        ;
 
     class_<CSSISpaceWeather::Reading>(CSSISpaceWeatherClass, "Reading")
 
