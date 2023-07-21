@@ -32,7 +32,11 @@ const \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1atmospheric_1_1ea
 const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_interval}{Interval}} \& \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_a87b68924e9604b722acac594d4455c6e}{access\+Monthly\+Prediction\+Interval}} () const
 \begin{DoxyCompactList}\small\item\em Access monthly prediction Interval. \end{DoxyCompactList}\item 
 const \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1_1_reading}{Reading}} \& \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_ad03cbba023a777e1a45eccb08ee26d1d}{access\+Monthly\+Prediction\+At}} (const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const
-\begin{DoxyCompactList}\small\item\em Access monthly prediction at Instant. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Access monthly prediction at Instant. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1_1_reading}{Reading}} \& \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_a059be3a70af530a7619026816f22c6f5}{access\+Reading\+At}} (const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const
+\begin{DoxyCompactList}\small\item\em Access reading at Instant. Look first in observations, then in daily predictions, then monthly predictions. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1_1_reading}{Reading}} \& \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_abfcf697a5a975e70d739a23c2b5a0a81}{access\+Last\+Reading\+Where}} (const std\+::function$<$ bool(const \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1_1_reading}{Reading}} \&)$>$ \&a\+Predicate, const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const
+\begin{DoxyCompactList}\small\item\em Access last reading before an\+Instant where a\+Predicate is true. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -98,6 +102,26 @@ Access last observation Date. File publication date is the day following the las
 \begin{DoxyReturn}{Returns}
 Last observation Date. 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_abfcf697a5a975e70d739a23c2b5a0a81}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_abfcf697a5a975e70d739a23c2b5a0a81}} 
+\index{ostk::physics::environment::atmospheric::earth::CSSISpaceWeather@{ostk::physics::environment::atmospheric::earth::CSSISpaceWeather}!accessLastReadingWhere@{accessLastReadingWhere}}
+\index{accessLastReadingWhere@{accessLastReadingWhere}!ostk::physics::environment::atmospheric::earth::CSSISpaceWeather@{ostk::physics::environment::atmospheric::earth::CSSISpaceWeather}}
+\doxysubsubsection{\texorpdfstring{accessLastReadingWhere()}{accessLastReadingWhere()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1_1_reading}{C\+S\+S\+I\+Space\+Weather\+::\+Reading}} \& ostk\+::physics\+::environment\+::atmospheric\+::earth\+::\+C\+S\+S\+I\+Space\+Weather\+::access\+Last\+Reading\+Where (\begin{DoxyParamCaption}\item[{const std\+::function$<$ bool(const \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1_1_reading}{Reading}} \&)$>$ \&}]{a\+Predicate,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&}]{an\+Instant }\end{DoxyParamCaption}) const}
+
+
+
+Access last reading before an\+Instant where a\+Predicate is true. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+Predicate} & A predicate. \\
+\hline
+\mbox{\texttt{ in}}  & {\em an\+Instant} & An Instant. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Last \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1_1_reading}{Reading}} satisfying predicate. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_ad03cbba023a777e1a45eccb08ee26d1d}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_ad03cbba023a777e1a45eccb08ee26d1d}} 
 \index{ostk::physics::environment::atmospheric::earth::CSSISpaceWeather@{ostk::physics::environment::atmospheric::earth::CSSISpaceWeather}!accessMonthlyPredictionAt@{accessMonthlyPredictionAt}}
 \index{accessMonthlyPredictionAt@{accessMonthlyPredictionAt}!ostk::physics::environment::atmospheric::earth::CSSISpaceWeather@{ostk::physics::environment::atmospheric::earth::CSSISpaceWeather}}
@@ -149,6 +173,19 @@ Access observation Interval.
 
 \begin{DoxyReturn}{Returns}
 Observation Interval of Instants. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_a059be3a70af530a7619026816f22c6f5}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_a059be3a70af530a7619026816f22c6f5}} 
+\index{ostk::physics::environment::atmospheric::earth::CSSISpaceWeather@{ostk::physics::environment::atmospheric::earth::CSSISpaceWeather}!accessReadingAt@{accessReadingAt}}
+\index{accessReadingAt@{accessReadingAt}!ostk::physics::environment::atmospheric::earth::CSSISpaceWeather@{ostk::physics::environment::atmospheric::earth::CSSISpaceWeather}}
+\doxysubsubsection{\texorpdfstring{accessReadingAt()}{accessReadingAt()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1_1_reading}{C\+S\+S\+I\+Space\+Weather\+::\+Reading}} \& ostk\+::physics\+::environment\+::atmospheric\+::earth\+::\+C\+S\+S\+I\+Space\+Weather\+::access\+Reading\+At (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&}]{an\+Instant }\end{DoxyParamCaption}) const}
+
+
+
+Access reading at Instant. Look first in observations, then in daily predictions, then monthly predictions. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1_1_reading}{Reading}} prediction at Instant. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_a8e3a26ac31c945fa4d250a7cc376b00c}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_a8e3a26ac31c945fa4d250a7cc376b00c}} 
 \index{ostk::physics::environment::atmospheric::earth::CSSISpaceWeather@{ostk::physics::environment::atmospheric::earth::CSSISpaceWeather}!isDefined@{isDefined}}

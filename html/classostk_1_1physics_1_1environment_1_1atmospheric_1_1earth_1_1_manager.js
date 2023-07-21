@@ -7,6 +7,7 @@ var classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager =
     [ "clearLocalRepository", "classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager.html#ab777942feb326dcd032fd390c4a42f88", null ],
     [ "fetchLatestCSSISpaceWeather", "classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager.html#a7d95b96aa8425eb30868611fd1d33e2c", null ],
     [ "getAp3HourSolarIndicesAt", "classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager.html#a8f0775ae5fc4ee0a532c60d9964f149b", null ],
+    [ "getApDailyIndexAt", "classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager.html#a333ddc63ea4a6f2b6d070472702527c6", null ],
     [ "getCSSISpaceWeatherArray", "classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager.html#af916fed05efa49b8ca1f25b36d1715c7", null ],
     [ "getCSSISpaceWeatherAt", "classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager.html#af9322b786b15b85e9b9d31ffbee006a3", null ],
     [ "getCSSISpaceWeatherDirectory", "classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager.html#a041cc6df9f5bb2dff5a675a4245d295e", null ],

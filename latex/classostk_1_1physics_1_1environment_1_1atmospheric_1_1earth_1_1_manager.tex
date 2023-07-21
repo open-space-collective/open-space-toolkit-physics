@@ -35,6 +35,8 @@ Array$<$ Integer $>$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atm
 \begin{DoxyCompactList}\small\item\em Get an Array of 8 3-\/hourly Kp solar indices for the day containing instant. \end{DoxyCompactList}\item 
 Array$<$ Integer $>$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_a8f0775ae5fc4ee0a532c60d9964f149b}{get\+Ap3\+Hour\+Solar\+Indices\+At}} (const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const
 \begin{DoxyCompactList}\small\item\em Get an Array of 8 3-\/hourly Ap solar indices for the day containing instant. \end{DoxyCompactList}\item 
+Integer \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_a333ddc63ea4a6f2b6d070472702527c6}{get\+Ap\+Daily\+Index\+At}} (const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const
+\begin{DoxyCompactList}\small\item\em Get daily Ap index for the day containing instant. \end{DoxyCompactList}\item 
 Real \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_ab5c96b5549c11d9e9526e8d133c3d771}{get\+F107\+Solar\+Flux\+At}} (const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const
 \begin{DoxyCompactList}\small\item\em Get the daily value for F10.\+7 solar flux at instant. \end{DoxyCompactList}\item 
 Real \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_a1479f97fa51cec5b805f9fb92487cf17}{get\+F107\+Solar\+Flux81\+Day\+Avg\+At}} (const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const
@@ -231,6 +233,24 @@ Get an Array of 8 3-\/hourly Ap solar indices for the day containing instant.
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Array of 3-\/hourly Ap solar indices 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_a333ddc63ea4a6f2b6d070472702527c6}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_a333ddc63ea4a6f2b6d070472702527c6}} 
+\index{ostk::physics::environment::atmospheric::earth::Manager@{ostk::physics::environment::atmospheric::earth::Manager}!getApDailyIndexAt@{getApDailyIndexAt}}
+\index{getApDailyIndexAt@{getApDailyIndexAt}!ostk::physics::environment::atmospheric::earth::Manager@{ostk::physics::environment::atmospheric::earth::Manager}}
+\doxysubsubsection{\texorpdfstring{getApDailyIndexAt()}{getApDailyIndexAt()}}
+{\footnotesize\ttfamily Integer ostk\+::physics\+::environment\+::atmospheric\+::earth\+::\+Manager\+::get\+Ap\+Daily\+Index\+At (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&}]{an\+Instant }\end{DoxyParamCaption}) const}
+
+
+
+Get daily Ap index for the day containing instant. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em an\+Instant} & An instant \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+daily Ap index 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_af916fed05efa49b8ca1f25b36d1715c7}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_af916fed05efa49b8ca1f25b36d1715c7}} 
 \index{ostk::physics::environment::atmospheric::earth::Manager@{ostk::physics::environment::atmospheric::earth::Manager}!getCSSISpaceWeatherArray@{getCSSISpaceWeatherArray}}

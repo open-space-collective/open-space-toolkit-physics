@@ -1,27 +1,4 @@
 var searchData=
 [
-  ['atmospheric_865',['atmospheric',['../namespaceostk_1_1physics_1_1environment_1_1atmospheric.html',1,'ostk::physics::environment']]],
-  ['celest_866',['celest',['../namespaceostk_1_1physics_1_1env_1_1obj_1_1celest.html',1,'ostk::physics::env::obj']]],
-  ['coord_867',['coord',['../namespaceostk_1_1physics_1_1coord.html',1,'ostk::physics']]],
-  ['data_868',['data',['../namespaceostk_1_1physics_1_1data.html',1,'ostk::physics']]],
-  ['earth_869',['earth',['../namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth.html',1,'ostk::physics::environment::atmospheric::earth'],['../namespaceostk_1_1physics_1_1environment_1_1gravitational_1_1earth.html',1,'ostk::physics::environment::gravitational::earth'],['../namespaceostk_1_1physics_1_1environment_1_1magnetic_1_1earth.html',1,'ostk::physics::environment::magnetic::earth']]],
-  ['env_870',['env',['../namespaceostk_1_1physics_1_1env.html',1,'ostk::physics']]],
-  ['environment_871',['environment',['../namespaceostk_1_1physics_1_1environment.html',1,'ostk::physics']]],
-  ['ephem_872',['ephem',['../namespaceostk_1_1physics_1_1env_1_1ephem.html',1,'ostk::physics::env']]],
-  ['frame_873',['frame',['../namespaceostk_1_1physics_1_1coord_1_1frame.html',1,'ostk::physics::coord']]],
-  ['gravitational_874',['gravitational',['../namespaceostk_1_1physics_1_1environment_1_1gravitational.html',1,'ostk::physics::environment']]],
-  ['iau_875',['iau',['../namespaceostk_1_1physics_1_1coord_1_1frame_1_1providers_1_1iau.html',1,'ostk::physics::coord::frame::providers']]],
-  ['iers_876',['iers',['../namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers.html',1,'ostk::physics::coord::frame::provider']]],
-  ['magnetic_877',['magnetic',['../namespaceostk_1_1physics_1_1environment_1_1magnetic.html',1,'ostk::physics::environment']]],
-  ['obj_878',['obj',['../namespaceostk_1_1physics_1_1env_1_1obj.html',1,'ostk::physics::env']]],
-  ['object_879',['object',['../namespaceostk_1_1physics_1_1env_1_1object.html',1,'ostk::physics::env']]],
-  ['ostk_880',['ostk',['../namespaceostk.html',1,'']]],
-  ['physics_881',['physics',['../namespaceostk_1_1physics.html',1,'ostk']]],
-  ['provider_882',['provider',['../namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider.html',1,'ostk::physics::coord::frame']]],
-  ['providers_883',['providers',['../namespaceostk_1_1physics_1_1coord_1_1frame_1_1providers.html',1,'ostk::physics::coord::frame::providers'],['../namespaceostk_1_1physics_1_1data_1_1providers.html',1,'ostk::physics::data::providers']]],
-  ['spherical_884',['spherical',['../namespaceostk_1_1physics_1_1coord_1_1spherical.html',1,'ostk::physics::coord']]],
-  ['spice_885',['spice',['../namespaceostk_1_1physics_1_1env_1_1ephem_1_1spice.html',1,'ostk::physics::env::ephem']]],
-  ['time_886',['time',['../namespaceostk_1_1physics_1_1time.html',1,'ostk::physics']]],
-  ['units_887',['units',['../namespaceostk_1_1physics_1_1units.html',1,'ostk::physics']]],
-  ['utilities_888',['utilities',['../namespaceostk_1_1physics_1_1coord_1_1frame_1_1utilities.html',1,'ostk::physics::coord::frame::utilities'],['../namespaceostk_1_1physics_1_1env_1_1utilities.html',1,'ostk::physics::env::utilities']]]
+  ['nrlmsise00_5fc_889',['NRLMSISE00_c',['../namespace_n_r_l_m_s_i_s_e00__c.html',1,'']]]
 ];

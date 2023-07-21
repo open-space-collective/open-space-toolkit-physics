@@ -127,6 +127,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad03cbba023a777e1a45eccb08ee26d1d"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1_1_reading.html">Reading</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather.html#ad03cbba023a777e1a45eccb08ee26d1d">accessMonthlyPredictionAt</a> (const <a class="el" href="classostk_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;anInstant) const</td></tr>
 <tr class="memdesc:ad03cbba023a777e1a45eccb08ee26d1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access monthly prediction at Instant.  <a href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather.html#ad03cbba023a777e1a45eccb08ee26d1d">More...</a><br /></td></tr>
 <tr class="separator:ad03cbba023a777e1a45eccb08ee26d1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a059be3a70af530a7619026816f22c6f5"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1_1_reading.html">Reading</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather.html#a059be3a70af530a7619026816f22c6f5">accessReadingAt</a> (const <a class="el" href="classostk_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;anInstant) const</td></tr>
+<tr class="memdesc:a059be3a70af530a7619026816f22c6f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access reading at Instant. Look first in observations, then in daily predictions, then monthly predictions.  <a href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather.html#a059be3a70af530a7619026816f22c6f5">More...</a><br /></td></tr>
+<tr class="separator:a059be3a70af530a7619026816f22c6f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfcf697a5a975e70d739a23c2b5a0a81"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1_1_reading.html">Reading</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather.html#abfcf697a5a975e70d739a23c2b5a0a81">accessLastReadingWhere</a> (const std::function&lt; bool(const <a class="el" href="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1_1_reading.html">Reading</a> &amp;)&gt; &amp;aPredicate, const <a class="el" href="classostk_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;anInstant) const</td></tr>
+<tr class="memdesc:abfcf697a5a975e70d739a23c2b5a0a81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access last reading before anInstant where aPredicate is true.  <a href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather.html#abfcf697a5a975e70d739a23c2b5a0a81">More...</a><br /></td></tr>
+<tr class="separator:abfcf697a5a975e70d739a23c2b5a0a81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -210,6 +216,44 @@ Friends</h2></td></tr>
 
 </div>
 </div>
+<a id="abfcf697a5a975e70d739a23c2b5a0a81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfcf697a5a975e70d739a23c2b5a0a81">&#9670;&nbsp;</a></span>accessLastReadingWhere()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1_1_reading.html">CSSISpaceWeather::Reading</a> &amp; ostk::physics::environment::atmospheric::earth::CSSISpaceWeather::accessLastReadingWhere </td>
+          <td>(</td>
+          <td class="paramtype">const std::function&lt; bool(const <a class="el" href="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1_1_reading.html">Reading</a> &amp;)&gt; &amp;&#160;</td>
+          <td class="paramname"><em>aPredicate</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classostk_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;&#160;</td>
+          <td class="paramname"><em>anInstant</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Access last reading before anInstant where aPredicate is true. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">aPredicate</td><td>A predicate. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">anInstant</td><td>An Instant. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Last <a class="el" href="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1_1_reading.html">Reading</a> satisfying predicate. </dd></dl>
+
+</div>
+</div>
 <a id="ad03cbba023a777e1a45eccb08ee26d1d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad03cbba023a777e1a45eccb08ee26d1d">&#9670;&nbsp;</a></span>accessMonthlyPredictionAt()</h2>
 
@@ -289,6 +333,27 @@ Friends</h2></td></tr>
 
 <p>Access observation Interval. </p>
 <dl class="section return"><dt>Returns</dt><dd>Observation Interval of Instants. </dd></dl>
+
+</div>
+</div>
+<a id="a059be3a70af530a7619026816f22c6f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a059be3a70af530a7619026816f22c6f5">&#9670;&nbsp;</a></span>accessReadingAt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1_1_reading.html">CSSISpaceWeather::Reading</a> &amp; ostk::physics::environment::atmospheric::earth::CSSISpaceWeather::accessReadingAt </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classostk_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;&#160;</td>
+          <td class="paramname"><em>anInstant</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Access reading at Instant. Look first in observations, then in daily predictions, then monthly predictions. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1_1_reading.html">Reading</a> prediction at Instant. </dd></dl>
 
 </div>
 </div>

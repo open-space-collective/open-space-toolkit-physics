@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['object_844',['Object',['../classostk_1_1physics_1_1env_1_1_object.html',1,'ostk::physics::env']]],
-  ['observation_845',['Observation',['../structostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_observation.html',1,'ostk::physics::coord::frame::provider::iers::BulletinA']]],
-  ['order_846',['Order',['../classostk_1_1physics_1_1units_1_1_derived_1_1_order.html',1,'ostk::physics::units::Derived']]]
+  ['nrlmsise00_866',['NRLMSISE00',['../classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html',1,'ostk::physics::environment::atmospheric::earth']]],
+  ['nrlmsise_5finput_867',['nrlmsise_input',['../structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input.html',1,'ostk::physics::environment::atmospheric::earth::NRLMSISE00']]]
 ];
