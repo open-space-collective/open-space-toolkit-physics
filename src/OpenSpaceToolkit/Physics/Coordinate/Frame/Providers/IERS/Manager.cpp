@@ -72,11 +72,18 @@ Directory Manager::getFinals2000ADirectory() const
     return Directory::Path(localRepository_.getPath() + Path::Parse("finals-2000A"));
 }
 
-URL Manager::getRemoteUrl() const
+URL Manager::getBulletinARemoteUrl() const
 {
     const std::lock_guard<std::mutex> lock {mutex_};
 
-    return remoteUrl_;
+    return bulletinARemoteUrl_;
+}
+
+URL Manager::getFinals2000ARemoteUrl() const
+{
+    const std::lock_guard<std::mutex> lock {mutex_};
+
+    return finals2000ARemoteUrl_;
 }
 
 Array<BulletinA> Manager::getBulletinAArray() const
@@ -262,7 +269,7 @@ void Manager::setLocalRepository(const Directory& aDirectory)
     }
 }
 
-void Manager::setRemoteUrl(const URL& aRemoteUrl)
+void Manager::setBulletinARemoteUrl(const URL& aRemoteUrl)
 {
     if (!aRemoteUrl.isDefined())
     {
@@ -271,7 +278,19 @@ void Manager::setRemoteUrl(const URL& aRemoteUrl)
 
     const std::lock_guard<std::mutex> lock {mutex_};
 
-    remoteUrl_ = aRemoteUrl;
+    bulletinARemoteUrl_ = aRemoteUrl;
+}
+
+void Manager::setFinals2000ARemoteUrl(const URL& aRemoteUrl)
+{
+    if (!aRemoteUrl.isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Remote URL");
+    }
+
+    const std::lock_guard<std::mutex> lock {mutex_};
+
+    finals2000ARemoteUrl_ = aRemoteUrl;
 }
 
 void Manager::loadBulletinA(const BulletinA& aBulletinA)
@@ -393,9 +412,31 @@ Duration Manager::DefaultLocalRepositoryLockTimeout()
     return defaultLocalRepositoryLockTimeout;
 }
 
-URL Manager::DefaultRemoteUrl()
+URL Manager::DefaultBulletinARemoteUrl()
 {
-    static const URL defaultRemoteUrl = URL::Parse(OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL);
+    static const URL defaultRemoteUrl = URL::Parse(OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_BULLETIN_A_MANAGER_REMOTE_URL);
+
+    if (const char* bulletinARemoteUrl = std::getenv("OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_BULLETIN_A_MANAGER_REMOTE_URL"))
+    {
+        return URL::Parse(bulletinARemoteUrl);
+    }
+
+    if (const char* remoteUrl = std::getenv("OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL"))
+    {
+        return URL::Parse(remoteUrl);
+    }
+
+    return defaultRemoteUrl;
+}
+
+URL Manager::DefaultFinals2000ARemoteUrl()
+{
+    static const URL defaultRemoteUrl = URL::Parse(OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_FINALS_2000_A_MANAGER_REMOTE_URL);
+
+    if (const char* finals2000ARemoteUrl = std::getenv("OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_FINALS_2000_A_MANAGER_REMOTE_URL"))
+    {
+        return URL::Parse(finals2000ARemoteUrl);
+    }
 
     if (const char* remoteUrl = std::getenv("OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL"))
     {
@@ -409,7 +450,8 @@ Manager::Manager(const Manager::Mode& aMode)
     : mode_(aMode),
       localRepository_(Manager::DefaultLocalRepository()),
       localRepositoryLockTimeout_(Manager::DefaultLocalRepositoryLockTimeout()),
-      remoteUrl_(Manager::DefaultRemoteUrl()),
+      bulletinARemoteUrl_(Manager::DefaultBulletinARemoteUrl()),
+      finals2000ARemoteUrl_(Manager::DefaultFinals2000ARemoteUrl()),
       aBulletins_(Array<BulletinA>::Empty()),
       finals2000aArray_(Array<Finals2000A>::Empty()),
       aBulletinIndex_(0),
@@ -732,7 +774,7 @@ File Manager::fetchLatestBulletinA_()
 
     this->lockLocalRepository(localRepositoryLockTimeout_);
 
-    const URL latestBulletinAUrl = remoteUrl_ + bulletinAFileName;
+    const URL latestBulletinAUrl = bulletinARemoteUrl_ + bulletinAFileName;
 
     File latestBulletinAFile = File::Undefined();
     Directory destinationDirectory = Directory::Undefined();
@@ -857,7 +899,7 @@ File Manager::fetchLatestFinals2000A_()
 
     this->lockLocalRepository(localRepositoryLockTimeout_);
 
-    const URL latestFinals2000AUrl = remoteUrl_ + finals2000AFileName;
+    const URL latestFinals2000AUrl = finals2000ARemoteUrl_ + finals2000AFileName;
 
     File latestFinals2000AFile = File::Undefined();
     Directory destinationDirectory = Directory::Undefined();

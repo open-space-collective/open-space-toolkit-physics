@@ -23,7 +23,9 @@
 #define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY \
     "./.open-space-toolkit/physics/coordinate/frame/providers/iers"
 #define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT 60
-#define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL "https://maia.usno.navy.mil/ser7/"
+
+#define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_BULLETIN_A_MANAGER_REMOTE_URL "https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/data/coordinate/frame/providers/iers/bulletin-A/"
+#define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_FINALS_2000_A_MANAGER_REMOTE_URL "https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/data/coordinate/frame/providers/iers/finals-2000A/"
 
 namespace ostk
 {
@@ -102,11 +104,17 @@ class Manager
 
     Directory getFinals2000ADirectory() const;
 
-    /// @brief              Get remote URL
+    /// @brief              Get Bulletin A remote URL
     ///
     /// @return             Remote URL
 
-    URL getRemoteUrl() const;
+    URL getBulletinARemoteUrl() const;
+
+    /// @brief              Get Finals 2000A remote URL
+    ///
+    /// @return             Remote URL
+
+    URL getFinals2000ARemoteUrl() const;
 
     /// @brief              Get array of Bulletin A
     ///
@@ -167,11 +175,17 @@ class Manager
 
     void setLocalRepository(const Directory& aDirectory);
 
-    /// @brief              Set remote URL
+    /// @brief              Set Bulletin A remote URL
     ///
     /// @param              [in] aRemoteUrl A remote URL
 
-    void setRemoteUrl(const URL& aRemoteUrl);
+    void setBulletinARemoteUrl(const URL& aRemoteUrl);
+
+    /// @brief              Set Finals 2000A remote URL
+    ///
+    /// @param              [in] aRemoteUrl A remote URL
+
+    void setFinals2000ARemoteUrl(const URL& aRemoteUrl);
 
     /// @brief              Load Bulletin A
     ///
@@ -240,13 +254,21 @@ class Manager
 
     static Duration DefaultLocalRepositoryLockTimeout();
 
-    /// @brief              Get default remote URL
+    /// @brief              Get default Bulletin A remote URL
     ///
-    ///                     Overriden by: OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL
+    ///                     Overriden by: OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_BULLETIN_A_MANAGER_REMOTE_URL
     ///
     /// @return             Default remote URL
 
-    static URL DefaultRemoteUrl();
+    static URL DefaultBulletinARemoteUrl();
+
+    /// @brief              Get default Finals 2000A remote URL
+    ///
+    ///                     Overriden by: OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_FINALS_2000_A_MANAGER_REMOTE_URL
+    ///
+    /// @return             Default remote URL
+
+    static URL DefaultFinals2000ARemoteUrl();
 
    private:
     Manager::Mode mode_;
@@ -254,7 +276,8 @@ class Manager
     Directory localRepository_;
     Duration localRepositoryLockTimeout_;
 
-    URL remoteUrl_;
+    URL bulletinARemoteUrl_;
+    URL finals2000ARemoteUrl_;
 
     Array<BulletinA> aBulletins_;
     Array<Finals2000A> finals2000aArray_;
