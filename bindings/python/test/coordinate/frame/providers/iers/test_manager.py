@@ -22,7 +22,7 @@ from ostk.physics.coordinate.frame.providers.iers import Finals2000A
 
 
 @pytest.fixture
-def manager() -> Manager:
+def manager(bulletin_a) -> Manager:
     manager = Manager.get()
 
     manager.set_mode(Manager.Mode.Automatic)
@@ -36,6 +36,8 @@ def manager() -> Manager:
             "https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/data/coordinate/frame/providers/iers/finals-2000A/"
         )
     )
+
+    manager.load_bulletin_a(bulletin_a)
 
     yield manager
 
@@ -93,19 +95,12 @@ class TestManager:
 
     def test_get_bulletin_a_array_success(self, manager: Manager):
         assert isinstance(manager.get_bulletin_a_array(), list)
-        assert len(manager.get_bulletin_a_array()) == 0
+        assert len(manager.get_bulletin_a_array()) == 1
 
     def test_get_bulletin_a_at_success(self, manager: Manager):
-        try:
-            bulletin_a: BulletinA = manager.get_bulletin_a_at(
-                Instant.now() - Duration.days(8.0)
-            )
-        except RuntimeError:
-            manager.reset()
-            manager.clear_local_repository()
-            bulletin_a: BulletinA = manager.get_bulletin_a_at(
-                Instant.now() - Duration.days(5.0)
-            )
+        bulletin_a: BulletinA = manager.get_bulletin_a_at(
+            Instant.date_time(datetime(2020, 10, 24, 0, 0, 0), Scale.UTC)
+        )
 
         assert isinstance(bulletin_a, BulletinA)
 
@@ -241,6 +236,10 @@ class TestManager:
         )
 
     def test_load_bulletin_a_success(self, manager: Manager, bulletin_a: BulletinA):
+        assert len(manager.get_bulletin_a_array()) == 1
+
+        manager.reset()
+
         assert len(manager.get_bulletin_a_array()) == 0
 
         manager.load_bulletin_a(bulletin_a)
@@ -271,8 +270,6 @@ class TestManager:
         file.remove()
 
     def test_reset_success(self, manager: Manager, bulletin_a: BulletinA):
-        manager.load_bulletin_a(bulletin_a)
-
         assert len(manager.get_bulletin_a_array()) == 1
 
         manager.reset()

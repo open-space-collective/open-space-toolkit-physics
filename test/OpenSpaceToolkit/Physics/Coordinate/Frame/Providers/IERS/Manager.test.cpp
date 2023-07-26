@@ -110,6 +110,8 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetBull
     {
         manager_.loadBulletinA(bulletinA_);
 
+        EXPECT_NO_THROW(manager_.getBulletinAAt(Instant::Now() - Duration::Days(8.0)));
+
         EXPECT_NO_THROW(manager_.getBulletinAAt(bulletinA_.getObservationInterval().accessStart()));
         EXPECT_NO_THROW(manager_.getBulletinAAt(bulletinA_.getObservationInterval().accessEnd()));
 
