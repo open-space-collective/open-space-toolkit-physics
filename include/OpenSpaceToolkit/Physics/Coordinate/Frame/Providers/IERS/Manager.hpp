@@ -120,6 +120,12 @@ class Manager
 
     URL getFinals2000ARemoteUrl() const;
 
+    /// @brief              For backwards compatibility. Returns getBulletinARemoteUrl()
+    ///
+    /// @return             Remote URL
+
+    URL getRemoteUrl() const;
+
     /// @brief              Get array of Bulletin A
     ///
     /// @return             Array of Bulletin A
@@ -191,6 +197,12 @@ class Manager
 
     void setFinals2000ARemoteUrl(const URL& aRemoteUrl);
 
+    /// @brief              For backwards compatibility. Returns setBulletinARemoteUrl()
+    ///
+    /// @param              [in] aRemoteUrl A remote URL
+
+    void setRemoteUrl(const URL& aRemoteUrl);
+
     /// @brief              Load Bulletin A
     ///
     /// @param              [in] aBulletinA A Bulletin A
@@ -257,6 +269,12 @@ class Manager
     /// @return             Default local repository lock timeout
 
     static Duration DefaultLocalRepositoryLockTimeout();
+
+    /// @brief              For backwards compatibility. Return DefaultBulletinARemoteUrl()
+    ///
+    /// @return             Default remote URL
+
+    static URL DefaultRemoteUrl();
 
     /// @brief              Get default Bulletin A remote URL
     ///

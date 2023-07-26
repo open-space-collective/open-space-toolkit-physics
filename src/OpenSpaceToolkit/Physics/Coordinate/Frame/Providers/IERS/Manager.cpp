@@ -72,6 +72,11 @@ Directory Manager::getFinals2000ADirectory() const
     return Directory::Path(localRepository_.getPath() + Path::Parse("finals-2000A"));
 }
 
+URL Manager::getRemoteUrl() const
+{
+    return this->getBulletinARemoteUrl();
+}
+
 URL Manager::getBulletinARemoteUrl() const
 {
     const std::lock_guard<std::mutex> lock {mutex_};
@@ -269,6 +274,11 @@ void Manager::setLocalRepository(const Directory& aDirectory)
     }
 }
 
+void Manager::setRemoteUrl(const URL& aRemoteUrl)
+{
+    this->setBulletinARemoteUrl(aRemoteUrl);
+}
+
 void Manager::setBulletinARemoteUrl(const URL& aRemoteUrl)
 {
     if (!aRemoteUrl.isDefined())
@@ -410,6 +420,11 @@ Duration Manager::DefaultLocalRepositoryLockTimeout()
     }
 
     return defaultLocalRepositoryLockTimeout;
+}
+
+URL Manager::DefaultRemoteUrl()
+{
+    return DefaultBulletinARemoteUrl();
 }
 
 URL Manager::DefaultBulletinARemoteUrl()

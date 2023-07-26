@@ -76,6 +76,13 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetFina
     }
 }
 
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetRemoteUrl)
+{
+    {
+        EXPECT_EQ(manager_.getBulletinARemoteUrl(), manager_.getRemoteUrl());
+    }
+}
+
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetBulletinARemoteUrl)
 {
     {
@@ -312,6 +319,26 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, SetLoca
     }
 }
 
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, SetRemoteUrl)
+{
+    {
+        manager_.setRemoteUrl(Manager::DefaultRemoteUrl());
+
+        EXPECT_EQ(Manager::DefaultRemoteUrl(), manager_.getRemoteUrl());
+
+        manager_.setRemoteUrl(URL::Parse("http://example.com"));
+
+        EXPECT_EQ(URL::Parse("http://example.com"), manager_.getRemoteUrl());
+
+        manager_.setRemoteUrl(URL::Parse("https://maia.usno.navy.mil/ser7/"));
+
+        EXPECT_EQ(URL::Parse("https://maia.usno.navy.mil/ser7/"), manager_.getRemoteUrl());
+
+        // reset so that the next tests are not affected
+        manager_.setRemoteUrl(Manager::DefaultRemoteUrl());
+    }
+}
+
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, SetBulletinARemoteUrl)
 {
     {
@@ -471,6 +498,13 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, Default
 {
     {
         EXPECT_EQ(Duration::Seconds(60.0), Manager::DefaultLocalRepositoryLockTimeout());
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, DefaultRemoteUrl)
+{
+    {
+        EXPECT_EQ(Manager::DefaultRemoteUrl(), Manager::DefaultBulletinARemoteUrl());
     }
 }
 
