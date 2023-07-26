@@ -234,7 +234,7 @@ Array<Kernel> Engine::DefaultKernels(const Directory& aLocalRepository)
 
     static const Array<Kernel> defaultKernels = {
 
-        Manager::Get().findKernel("latest_leapseconds.tls"),                                    // Leap seconds
+        Manager::Get().findKernel("latest_leapseconds.tls"),                              // Leap seconds
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("de430.bsp"))),  // Ephemeris
         Manager::Get().findKernel("pck[0-9]*\\.tpc"),  // System body shape and orientation constants
         Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("earth_assoc_itrf93.tf"))),

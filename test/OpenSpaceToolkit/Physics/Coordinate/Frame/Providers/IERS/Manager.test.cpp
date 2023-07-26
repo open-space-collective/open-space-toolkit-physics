@@ -79,14 +79,22 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetFina
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetBulletinARemoteUrl)
 {
     {
-        EXPECT_EQ(URL::Parse("https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/data/coordinate/frame/providers/iers/bulletin-A/"), manager_.getBulletinARemoteUrl());
+        EXPECT_EQ(
+            URL::Parse("https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/"
+                       "data/coordinate/frame/providers/iers/bulletin-A/"),
+            manager_.getBulletinARemoteUrl()
+        );
     }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetFinals2000ARemoteUrl)
 {
     {
-        EXPECT_EQ(URL::Parse("https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/data/coordinate/frame/providers/iers/finals-2000A/"), manager_.getFinals2000ARemoteUrl());
+        EXPECT_EQ(
+            URL::Parse("https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/"
+                       "data/coordinate/frame/providers/iers/finals-2000A/"),
+            manager_.getFinals2000ARemoteUrl()
+        );
     }
 }
 
@@ -307,7 +315,11 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, SetBull
     {
         manager_.setBulletinARemoteUrl(Manager::DefaultBulletinARemoteUrl());
 
-        EXPECT_EQ(URL::Parse("https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/data/coordinate/frame/providers/iers/bulletin-A/"), manager_.getBulletinARemoteUrl());
+        EXPECT_EQ(
+            URL::Parse("https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/"
+                       "data/coordinate/frame/providers/iers/bulletin-A/"),
+            manager_.getBulletinARemoteUrl()
+        );
 
         manager_.setBulletinARemoteUrl(URL::Parse("http://example.com"));
 
@@ -327,7 +339,11 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, SetFina
     {
         manager_.setFinals2000ARemoteUrl(Manager::DefaultFinals2000ARemoteUrl());
 
-        EXPECT_EQ(URL::Parse("https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/data/coordinate/frame/providers/iers/finals-2000A/"), manager_.getFinals2000ARemoteUrl());
+        EXPECT_EQ(
+            URL::Parse("https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/"
+                       "data/coordinate/frame/providers/iers/finals-2000A/"),
+            manager_.getFinals2000ARemoteUrl()
+        );
 
         manager_.setFinals2000ARemoteUrl(URL::Parse("http://example.com"));
 
@@ -339,7 +355,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, SetFina
 
         // reset so that the next tests are not affected
         manager_.setFinals2000ARemoteUrl(Manager::DefaultFinals2000ARemoteUrl());
-
     }
 }
 
@@ -460,13 +475,21 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, Default
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, DefaultBulletinARemoteUrl)
 {
     {
-        EXPECT_EQ(URL::Parse("https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/data/coordinate/frame/providers/iers/bulletin-A/"), Manager::DefaultBulletinARemoteUrl());
+        EXPECT_EQ(
+            URL::Parse("https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/"
+                       "data/coordinate/frame/providers/iers/bulletin-A/"),
+            Manager::DefaultBulletinARemoteUrl()
+        );
     }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, DefaultFinals2000ARemoteUrl)
 {
     {
-        EXPECT_EQ(URL::Parse("https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/data/coordinate/frame/providers/iers/finals-2000A/"), Manager::DefaultFinals2000ARemoteUrl());
+        EXPECT_EQ(
+            URL::Parse("https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/"
+                       "data/coordinate/frame/providers/iers/finals-2000A/"),
+            Manager::DefaultFinals2000ARemoteUrl()
+        );
     }
 }

@@ -4,10 +4,10 @@
 #define __OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manifest__
 
 #include <OpenSpaceToolkit/Core/Containers/Array.hpp>
+#include <OpenSpaceToolkit/Core/Containers/Dictionary.hpp>
 #include <OpenSpaceToolkit/Core/Containers/Map.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
 #include <OpenSpaceToolkit/Core/Types/String.hpp>
-#include <OpenSpaceToolkit/Core/Containers/Dictionary.hpp>
 
 #include <OpenSpaceToolkit/IO/URL.hpp>
 
@@ -28,7 +28,6 @@ using ostk::core::fs::File;
 using ostk::core::ctnr::Dictionary;
 
 using ostk::physics::time::Instant;
-
 
 /// @brief                      Data class for the OSTk Data Manifest
 
@@ -54,7 +53,6 @@ class Manifest
     /// @return             Manifest timestamp
 
     Instant getTimestamp() const;
-
 
     /// @brief              Get last update timestamp for data
     ///

@@ -24,8 +24,12 @@
     "./.open-space-toolkit/physics/coordinate/frame/providers/iers"
 #define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT 60
 
-#define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_BULLETIN_A_MANAGER_REMOTE_URL "https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/data/coordinate/frame/providers/iers/bulletin-A/"
-#define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_FINALS_2000_A_MANAGER_REMOTE_URL "https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/data/coordinate/frame/providers/iers/finals-2000A/"
+#define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_BULLETIN_A_MANAGER_REMOTE_URL                                  \
+    "https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/data/coordinate/" \
+    "frame/providers/iers/bulletin-A/"
+#define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_FINALS_2000_A_MANAGER_REMOTE_URL                               \
+    "https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/data/coordinate/" \
+    "frame/providers/iers/finals-2000A/"
 
 namespace ostk
 {

@@ -414,9 +414,11 @@ Duration Manager::DefaultLocalRepositoryLockTimeout()
 
 URL Manager::DefaultBulletinARemoteUrl()
 {
-    static const URL defaultRemoteUrl = URL::Parse(OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_BULLETIN_A_MANAGER_REMOTE_URL);
+    static const URL defaultRemoteUrl =
+        URL::Parse(OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_BULLETIN_A_MANAGER_REMOTE_URL);
 
-    if (const char* bulletinARemoteUrl = std::getenv("OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_BULLETIN_A_MANAGER_REMOTE_URL"))
+    if (const char* bulletinARemoteUrl =
+            std::getenv("OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_BULLETIN_A_MANAGER_REMOTE_URL"))
     {
         return URL::Parse(bulletinARemoteUrl);
     }
@@ -431,9 +433,11 @@ URL Manager::DefaultBulletinARemoteUrl()
 
 URL Manager::DefaultFinals2000ARemoteUrl()
 {
-    static const URL defaultRemoteUrl = URL::Parse(OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_FINALS_2000_A_MANAGER_REMOTE_URL);
+    static const URL defaultRemoteUrl =
+        URL::Parse(OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_FINALS_2000_A_MANAGER_REMOTE_URL);
 
-    if (const char* finals2000ARemoteUrl = std::getenv("OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_FINALS_2000_A_MANAGER_REMOTE_URL"))
+    if (const char* finals2000ARemoteUrl =
+            std::getenv("OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_FINALS_2000_A_MANAGER_REMOTE_URL"))
     {
         return URL::Parse(finals2000ARemoteUrl);
     }
