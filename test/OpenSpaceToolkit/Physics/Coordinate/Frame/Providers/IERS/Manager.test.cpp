@@ -41,16 +41,10 @@ class OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager : public 
             Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/BulletinA/ser7.dat")
         );
 
-        const File finals2000AFile = File::Path(
-            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Finals2000A/finals2000A.data")
-        );
-
         this->bulletinA_ = BulletinA::Load(BulletinAFile);
-        this->finals2000A_ = Finals2000A::Load(finals2000AFile);
     }
 
     BulletinA bulletinA_ = BulletinA::Undefined();
-    Finals2000A finals2000A_ = Finals2000A::Undefined();
     Manager& manager_ = Manager::Get();
 };
 
@@ -311,6 +305,8 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, SetLoca
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, SetBulletinARemoteUrl)
 {
     {
+        manager_.setBulletinARemoteUrl(Manager::DefaultBulletinARemoteUrl());
+
         EXPECT_EQ(URL::Parse("https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/data/coordinate/frame/providers/iers/bulletin-A/"), manager_.getBulletinARemoteUrl());
 
         manager_.setBulletinARemoteUrl(URL::Parse("http://example.com"));
@@ -320,12 +316,17 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, SetBull
         manager_.setBulletinARemoteUrl(URL::Parse("https://maia.usno.navy.mil/ser7/"));
 
         EXPECT_EQ(URL::Parse("https://maia.usno.navy.mil/ser7/"), manager_.getBulletinARemoteUrl());
+
+        // reset so that the next tests are not affected
+        manager_.setBulletinARemoteUrl(Manager::DefaultBulletinARemoteUrl());
     }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, SetFinals2000ARemoteUrl)
 {
     {
+        manager_.setFinals2000ARemoteUrl(Manager::DefaultFinals2000ARemoteUrl());
+
         EXPECT_EQ(URL::Parse("https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/data/coordinate/frame/providers/iers/finals-2000A/"), manager_.getFinals2000ARemoteUrl());
 
         manager_.setFinals2000ARemoteUrl(URL::Parse("http://example.com"));
@@ -335,6 +336,10 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, SetFina
         manager_.setFinals2000ARemoteUrl(URL::Parse("https://maia.usno.navy.mil/ser7/"));
 
         EXPECT_EQ(URL::Parse("https://maia.usno.navy.mil/ser7/"), manager_.getFinals2000ARemoteUrl());
+
+        // reset so that the next tests are not affected
+        manager_.setFinals2000ARemoteUrl(Manager::DefaultFinals2000ARemoteUrl());
+
     }
 }
 
