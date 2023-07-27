@@ -21,6 +21,7 @@
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Time.hpp>
+#include <OpenSpaceToolkit/Physics/Data/Manifest.hpp>
 
 #include <experimental/filesystem>
 
@@ -41,6 +42,7 @@ using ostk::core::types::String;
 
 const String bulletinAFileName = "ser7.dat";
 const String finals2000AFileName = "finals2000A.data";
+const String dataManifestFileName = "manifest.json";
 
 const String temporaryDirectoryName = "tmp";
 
@@ -488,6 +490,12 @@ bool Manager::isLocalRepositoryLocked() const
 
 const BulletinA* Manager::accessBulletinAAt(const Instant& anInstant) const
 {
+    using ostk::core::fs::Path;
+
+    using ostk::physics::data::Manifest;
+    using ostk::physics::time::Scale;
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
     // Try cache
 
     if (!aBulletins_.isEmpty())
@@ -522,16 +530,26 @@ const BulletinA* Manager::accessBulletinAAt(const Instant& anInstant) const
 
     if (mode_ == Manager::Mode::Automatic)
     {
-        const Instant currentInstant = Instant::Now();
+        // TBM fetch manifest here every time
+        // In a follow up MR, the manifest will know it's own age
+        // and next update time so we can be smarter here.
+        // This should not be that slow, because if we're already here we're doing file IO anyway.
+        const File latestDataManifestFile = const_cast<Manager*>(this)->fetchLatestDataManifestFile_();
+        if (!latestDataManifestFile.isDefined()) {
+            return nullptr;
+        }
+
+        const Manifest manifest = Manifest::Load(latestDataManifestFile);
+        const Instant bulletinAManifestUpdateTimestamp = manifest.getLastUpdateTimestampFor("bulletin-A");
 
         if ((!bulletinAUpdateTimestamp_.isDefined()) ||
-            ((bulletinAUpdateTimestamp_ + Duration::Weeks(1.0)) < currentInstant))  // [TBM] Param
+            (bulletinAUpdateTimestamp_ < bulletinAManifestUpdateTimestamp))
         {
             const File latestBulletinAFile = this->getLatestBulletinAFile();
 
             if (latestBulletinAFile.isDefined())
             {
-                bulletinAUpdateTimestamp_ = currentInstant;
+                bulletinAUpdateTimestamp_ = bulletinAManifestUpdateTimestamp;
 
                 const BulletinA bulletinA = BulletinA::Load(latestBulletinAFile);
 
@@ -648,36 +666,13 @@ File Manager::getLocalRepositoryLockFile() const
 File Manager::getLatestBulletinAFile() const
 {
     // Parse Bulletin A Directories, e.g.,
-    // `.open-space-toolkit/physics/coordinate/frame/providers/iers/Bulletin-A/2022-05-19/`, and find the latest one.
+    // `.open-space-toolkit/physics/coordinate/frame/providers/iers/Bulletin-A`.
 
-    using ostk::core::ctnr::Map;
     using ostk::core::fs::Path;
 
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Date;
-    using ostk::physics::time::Time;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::time::Instant;
-
-    Map<Instant, File> bulletinAMap = {};
-
-    for (const auto& directory : this->getBulletinADirectory().getDirectories())
+    if (this->getBulletinADirectory().containsFileWithName(bulletinAFileName))
     {
-        if ((directory.getName() != temporaryDirectoryName) && directory.containsFileWithName(bulletinAFileName))
-        {
-            const Date date = Date::Parse(directory.getName());
-
-            const Instant instant = Instant::DateTime({date, Time::Midnight()}, Scale::UTC);
-
-            const File bulletinFile = File::Path(directory.getPath() + Path::Parse(bulletinAFileName));
-
-            bulletinAMap.insert({instant, bulletinFile});
-        }
-    }
-
-    if (!bulletinAMap.empty())
-    {
-        return bulletinAMap.rbegin()->second;  // Latest bulletin
+        return File::Path(this->getBulletinADirectory().getPath() + Path::Parse(bulletinAFileName));
     }
 
     return const_cast<Manager*>(this)->fetchLatestBulletinA_();
@@ -801,7 +796,7 @@ File Manager::fetchLatestBulletinA_()
     try
     {
         // Create temporary Directory,
-        // e.g., `.open-space-toolkit/physics/coordinate/frame/providers/iers/tmp/`.
+        // e.g., `.open-space-toolkit/physics/coordinate/frame/providers/iers/bulletin-a/tmp/`.
 
         if (temporaryDirectory.exists())
         {
@@ -842,18 +837,9 @@ File Manager::fetchLatestBulletinA_()
         const BulletinA latestBulletinA = BulletinA::Load(latestBulletinAFile);
 
         // Move Bulletin A File into destination Directory,
-        // e.g., `.open-space-toolkit/physics/coordinate/frame/providers/iers/bulletin-A/2022-05-19/`.
+        // e.g., `.open-space-toolkit/physics/coordinate/frame/providers/iers/bulletin-A/`.
 
-        destinationDirectory = Directory::Path(
-            this->getBulletinADirectory().getPath() + Path::Parse(latestBulletinA.accessReleaseDate().toString())
-        );
-
-        if (destinationDirectory.exists())
-        {
-            destinationDirectory.remove();
-        }
-
-        destinationDirectory.create();
+        destinationDirectory = Directory::Path(this->getBulletinADirectory().getPath());
 
         latestBulletinAFile.moveToDirectory(destinationDirectory);
 
@@ -1014,6 +1000,123 @@ File Manager::fetchLatestFinals2000A_()
     }
 
     return latestFinals2000AFile;
+}
+
+// TBM put this in a more general place
+File Manager::fetchLatestDataManifestFile_()
+{
+    using ostk::core::types::Uint8;
+    using ostk::core::types::Uint16;
+    using ostk::core::types::Integer;
+    using ostk::core::types::String;
+    using ostk::core::ctnr::Map;
+    using ostk::core::fs::Path;
+
+    using ostk::io::ip::tcp::http::Client;
+
+    using ostk::physics::time::Scale;
+    using ostk::physics::time::Date;
+    using ostk::physics::time::Time;
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+
+    Directory temporaryDirectory =
+        Directory::Path(Path::Parse(OSTK_PHYSICS_COORDINATE_DATA_MANIFEST_LOCAL_REPOSITORY) + Path::Parse(temporaryDirectoryName));
+
+    this->lockLocalRepository(localRepositoryLockTimeout_);
+
+    const URL latestDataManifestUrl = URL::Parse(OSTK_PHYSICS_COORDINATE_DATA_MANIFEST_MANAGER_REMOTE_URL) + dataManifestFileName;
+
+    File latestDataManifestFile = File::Undefined();
+    Directory destinationDirectory = Directory::Undefined();
+
+    try
+    {
+
+        destinationDirectory = Directory::Path(
+            Path::Parse(OSTK_PHYSICS_COORDINATE_DATA_MANIFEST_LOCAL_REPOSITORY)
+        );
+
+        if (!destinationDirectory.exists())
+        {
+            destinationDirectory.create();
+        }
+
+        if (temporaryDirectory.exists())
+        {
+            throw ostk::core::error::RuntimeError(
+                "Temporary directory [{}] already exists.", temporaryDirectory.toString()
+            );
+        }
+
+        temporaryDirectory.create();
+
+        std::cout << String::Format("Fetching Data Manifest from [{}]...", latestDataManifestUrl.toString()) << std::endl;
+
+        latestDataManifestFile = Client::Fetch(latestDataManifestUrl, temporaryDirectory);
+
+        if (!latestDataManifestFile.exists())
+        {
+            throw ostk::core::error::RuntimeError(
+                "Cannot fetch Data Manifest [{}] from [{}].",
+                latestDataManifestFile.toString(),
+                latestDataManifestUrl.toString()
+            );
+        }
+        else
+        {
+            // Check that file size is not zero
+
+            std::uintmax_t latestDataManifestFileSize =
+                std::experimental::filesystem::file_size(std::string(latestDataManifestFile.getPath().toString()));
+
+            if (latestDataManifestFileSize == 0)
+            {
+                throw ostk::core::error::RuntimeError(
+                    "Cannot fetch Data  Manifest from [{}]: file is empty.", latestDataManifestUrl.toString()
+                );
+            }
+        }
+
+        latestDataManifestFile.moveToDirectory(destinationDirectory);
+
+        temporaryDirectory.remove();
+
+        this->unlockLocalRepository();
+
+        std::cout << String::Format(
+                         "Data  Manifest [{}] has been successfully fetched from [{}].",
+                         latestDataManifestFile.toString(),
+                         latestDataManifestUrl.toString()
+                     )
+                  << std::endl;
+    }
+    catch (const ostk::core::error::Exception& anException)
+    {
+        std::cerr << String::Format(
+                         "Error caught while fetching latest Data  Manifest from [{}]: [{}].",
+                         latestDataManifestUrl.toString(),
+                         anException.what()
+                     )
+                  << std::endl;
+
+        if (latestDataManifestFile.isDefined() && latestDataManifestFile.exists())
+        {
+            latestDataManifestFile.remove();
+            latestDataManifestFile = File::Undefined();
+        }
+
+        if (temporaryDirectory.isDefined() && temporaryDirectory.exists())
+        {
+            temporaryDirectory.remove();
+        }
+
+        this->unlockLocalRepository();
+
+        throw;
+    }
+
+    return latestDataManifestFile;
 }
 
 void Manager::lockLocalRepository(const Duration& aTimeout)

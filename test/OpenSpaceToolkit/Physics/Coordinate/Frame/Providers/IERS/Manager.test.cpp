@@ -117,13 +117,24 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetBull
     {
         manager_.loadBulletinA(bulletinA_);
 
-        EXPECT_NO_THROW(manager_.getBulletinAAt(Instant::Now() - Duration::Days(8.0)));
-
         EXPECT_NO_THROW(manager_.getBulletinAAt(bulletinA_.getObservationInterval().accessStart()));
         EXPECT_NO_THROW(manager_.getBulletinAAt(bulletinA_.getObservationInterval().accessEnd()));
 
         EXPECT_NO_THROW(manager_.getBulletinAAt(bulletinA_.getPredictionInterval().accessStart()));
         EXPECT_NO_THROW(manager_.getBulletinAAt(bulletinA_.getPredictionInterval().accessEnd()));
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetBulletinAAtFetch)
+{
+    // This test is not deterministic, as it depends on the remote server
+    {
+        manager_.reset();
+        manager_.clearLocalRepository();
+
+        EXPECT_NO_THROW(manager_.getBulletinAAt(Instant::Now() - Duration::Days(8.0)));
+
+        manager_.loadBulletinA(bulletinA_);
     }
 }
 

@@ -31,6 +31,15 @@
     "https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/data/coordinate/" \
     "frame/providers/iers/finals-2000A/"
 
+// temporary, until I move to it's own file
+#define OSTK_PHYSICS_COORDINATE_DATA_MANIFEST_LOCAL_REPOSITORY \
+    "./.open-space-toolkit/physics/data/"
+#define OSTK_PHYSICS_COORDINATE_DATA_MANIFEST_LOCAL_REPOSITORY_LOCK_TIMEOUT 60
+
+#define OSTK_PHYSICS_COORDINATE_DATA_MANIFEST_MANAGER_REMOTE_URL                                  \
+    "https://raw.githubusercontent.com/open-space-collective/open-space-toolkit-data/main/"
+
+
 namespace ostk
 {
 namespace physics
@@ -335,6 +344,8 @@ class Manager
     File fetchLatestBulletinA_();
 
     File fetchLatestFinals2000A_();
+
+    File fetchLatestDataManifestFile_();
 
     void lockLocalRepository(const Duration& aTimeout);
 
