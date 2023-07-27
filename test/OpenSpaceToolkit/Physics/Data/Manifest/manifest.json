@@ -1,0 +1,30 @@
+{
+    "space_weather_CSSI": {
+        "path": "environment/atmospheric/earth/CSSISpaceWeather",
+        "filenames": "SW-Last5Years.csv",
+        "remote_sources": [
+            {
+                "url": "https://celestrak.org/SpaceData/SW-Last5Years.csv"
+            }
+        ],
+        "last_update": "2023-07-24T00:00:00.000",
+        "next_update_check": "2023-07-27T01:02:48.375049",
+        "check_frequency": "6 hours"
+    },
+    "bulletin-A": {
+        "path": "coordinate/frame/providers/iers/bulletin-A",
+        "filenames": "ser7.dat",
+        "remote_sources": [
+            {
+                "url": "https://maia.usno.navy.mil/ser7/ser7.dat"
+            },
+            {
+                "url": "https://storage.googleapis.com/loft-orbital-open-space-toolkit/physics/coordinate/frame/providers/iers/latest/ser7.dat",
+                "meta_": "not updated as often"
+            }
+        ],
+        "last_update": "2023-07-26T19:11:24.287073",
+        "next_update_check": "2023-07-27T19:11:24.287344",
+        "check_frequency": "1 day"
+    }
+}

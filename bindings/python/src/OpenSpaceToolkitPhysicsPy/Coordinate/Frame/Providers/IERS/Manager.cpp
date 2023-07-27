@@ -50,8 +50,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers_IERS_Manager(py
         .def_static("default_local_repository_lock_timeout", &Manager::DefaultLocalRepositoryLockTimeout)
         .def_static("default_bulletin_a_remote_url", &Manager::DefaultBulletinARemoteUrl)
         .def_static("default_finals_2000_a_remote_url", &Manager::DefaultFinals2000ARemoteUrl)
-        .def_static("default_remote_url", &Manager::DefaultRemoteUrl)
-        ;
+        .def_static("default_remote_url", &Manager::DefaultRemoteUrl);
 
     enum_<Manager::Mode>(manager, "Mode")
 

@@ -48,12 +48,6 @@ class Manifest
 
     bool isEmpty() const;
 
-    /// @brief              Get manifest timestamp
-    ///
-    /// @return             Manifest timestamp
-
-    Instant getTimestamp() const;
-
     /// @brief              Get last update timestamp for data
     ///
     /// @param              [in] dataName A data name
@@ -75,8 +69,6 @@ class Manifest
     static Manifest Load(const File& aFile);
 
    private:
-    Instant timestamp_;
-
     Dictionary dictionary_;
 
     Manifest();

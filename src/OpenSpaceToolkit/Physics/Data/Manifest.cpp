@@ -19,9 +19,6 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Manifest& aManifest
 {
     ostk::core::utils::Print::Header(anOutputStream, "Manifest");
 
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Timestamp:" << (aManifest.timestamp_.isDefined() ? aManifest.timestamp_.toString() : "Undefined");
-
     ostk::core::utils::Print::Line(anOutputStream) << aManifest.dictionary_;
 
     ostk::core::utils::Print::Footer(anOutputStream);
@@ -32,11 +29,6 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Manifest& aManifest
 bool Manifest::isEmpty() const
 {
     return dictionary_.isEmpty();
-}
-
-Instant Manifest::getTimestamp() const
-{
-    return timestamp_;
 }
 
 Instant Manifest::getLastUpdateTimestampFor(const String& dataName) const
@@ -67,16 +59,13 @@ Manifest Manifest::Load(const File& aFile)
 
     Manifest manifest;
 
-    manifest.timestamp_ = Instant::Now();  // [TBM] This should be replaced with the manifest file creation time
-
     manifest.dictionary_ = Object::Load(aFile, Object::Format::JSON).getDictionary();
 
     return manifest;
 }
 
 Manifest::Manifest()
-    : timestamp_(Instant::Undefined()),
-      dictionary_(Dictionary::Empty())
+    : dictionary_(Dictionary::Empty())
 {
 }
 
