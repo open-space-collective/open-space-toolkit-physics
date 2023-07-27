@@ -478,7 +478,8 @@ Manager::Manager(const Manager::Mode& aMode)
       aBulletinIndex_(0),
       finals2000aIndex_(0),
       bulletinAUpdateTimestamp_(Instant::Undefined()),
-      finals2000AUpdateTimestamp_(Instant::Undefined())
+      finals2000AUpdateTimestamp_(Instant::Undefined()),
+      manifestUpdateTimestamp_(Instant::Undefined())
 {
     this->setup();
 }
@@ -530,16 +531,8 @@ const BulletinA* Manager::accessBulletinAAt(const Instant& anInstant) const
 
     if (mode_ == Manager::Mode::Automatic)
     {
-        // TBM fetch manifest here every time
-        // In a follow up MR, the manifest will know it's own age
-        // and next update time so we can be smarter here.
-        // This should not be that slow, because if we're already here we're doing file IO anyway.
-        const File latestDataManifestFile = const_cast<Manager*>(this)->fetchLatestDataManifestFile_();
-        if (!latestDataManifestFile.isDefined()) {
-            return nullptr;
-        }
+        Manifest manifest = const_cast<Manager*>(this)->getUpdatedDataManifest_();
 
-        const Manifest manifest = Manifest::Load(latestDataManifestFile);
         const Instant bulletinAManifestUpdateTimestamp = manifest.getLastUpdateTimestampFor("bulletin-A");
 
         if ((!bulletinAUpdateTimestamp_.isDefined()) ||
@@ -1000,6 +993,21 @@ File Manager::fetchLatestFinals2000A_()
     }
 
     return latestFinals2000AFile;
+}
+
+Manifest Manager::getUpdatedDataManifest_() 
+{
+    using ostk::core::fs::Path;
+
+    File dataManifestFile  = File::Path(Path::Parse(OSTK_PHYSICS_COORDINATE_DATA_MANIFEST_LOCAL_REPOSITORY) + Path::Parse(dataManifestFileName));
+    
+    if (!manifestUpdateTimestamp_.isDefined() || !dataManifestFile.exists() || (manifestUpdateTimestamp_ + Duration::Days(1.0) < Instant::Now()))
+    {
+        dataManifestFile = const_cast<Manager*>(this)->fetchLatestDataManifestFile_();
+        manifestUpdateTimestamp_ = Instant::Now();
+    }
+
+    return Manifest::Load(dataManifestFile);
 }
 
 // TBM put this in a more general place

@@ -19,6 +19,8 @@
 #include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
+#include <OpenSpaceToolkit/Physics/Data/Manifest.hpp>
+
 #define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE Manager::Mode::Automatic
 #define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY \
     "./.open-space-toolkit/physics/coordinate/frame/providers/iers"
@@ -66,6 +68,8 @@ using ostk::physics::time::Instant;
 using ostk::physics::time::Duration;
 using ostk::physics::coord::frame::provider::iers::BulletinA;
 using ostk::physics::coord::frame::provider::iers::Finals2000A;
+
+using ostk::physics::data::Manifest;
 
 /// @brief                      IERS bulletins manager (thread-safe)
 ///
@@ -320,6 +324,7 @@ class Manager
 
     mutable Instant bulletinAUpdateTimestamp_;
     mutable Instant finals2000AUpdateTimestamp_;
+    mutable Instant manifestUpdateTimestamp_;
 
     Manager(const Manager::Mode& aMode = Manager::DefaultMode());
 
@@ -346,6 +351,8 @@ class Manager
     File fetchLatestFinals2000A_();
 
     File fetchLatestDataManifestFile_();
+
+    Manifest getUpdatedDataManifest_();
 
     void lockLocalRepository(const Duration& aTimeout);
 

@@ -435,10 +435,10 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, FetchLa
         const File latestBulletinA = manager_.fetchLatestBulletinA();
 
         EXPECT_EQ("ser7.dat", latestBulletinA.getName());
-        EXPECT_EQ("bulletin-A", latestBulletinA.getParentDirectory().getParentDirectory().getName());
+        EXPECT_EQ("bulletin-A", latestBulletinA.getParentDirectory().getName());
         EXPECT_EQ(
             manager_.getLocalRepository().getPath().getNormalizedPath(),
-            latestBulletinA.getParentDirectory().getParentDirectory().getParentDirectory().getPath().getNormalizedPath()
+            latestBulletinA.getParentDirectory().getParentDirectory().getPath().getNormalizedPath()
         );
     }
 }
