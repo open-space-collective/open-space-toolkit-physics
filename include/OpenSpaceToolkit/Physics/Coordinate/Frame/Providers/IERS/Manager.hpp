@@ -16,10 +16,9 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/BulletinA.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Finals2000A.hpp>
+#include <OpenSpaceToolkit/Physics/Data/Manifest.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
-
-#include <OpenSpaceToolkit/Physics/Data/Manifest.hpp>
 
 #define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE Manager::Mode::Automatic
 #define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY \
@@ -34,13 +33,11 @@
     "frame/providers/iers/finals-2000A/"
 
 // temporary, until I move to it's own file
-#define OSTK_PHYSICS_COORDINATE_DATA_MANIFEST_LOCAL_REPOSITORY \
-    "./.open-space-toolkit/physics/data/"
+#define OSTK_PHYSICS_COORDINATE_DATA_MANIFEST_LOCAL_REPOSITORY "./.open-space-toolkit/physics/data/"
 #define OSTK_PHYSICS_COORDINATE_DATA_MANIFEST_LOCAL_REPOSITORY_LOCK_TIMEOUT 60
 
-#define OSTK_PHYSICS_COORDINATE_DATA_MANIFEST_MANAGER_REMOTE_URL                                  \
+#define OSTK_PHYSICS_COORDINATE_DATA_MANIFEST_MANAGER_REMOTE_URL \
     "https://raw.githubusercontent.com/open-space-collective/open-space-toolkit-data/main/"
-
 
 namespace ostk
 {
@@ -324,7 +321,7 @@ class Manager
 
     mutable Instant bulletinAUpdateTimestamp_;
     mutable Instant finals2000AUpdateTimestamp_;
-    mutable Instant manifestUpdateTimestamp_;
+    mutable Instant manifestUpdateTimestamp_;  // TBR temporary until manifest is generalized
 
     Manager(const Manager::Mode& aMode = Manager::DefaultMode());
 
@@ -350,9 +347,9 @@ class Manager
 
     File fetchLatestFinals2000A_();
 
-    File fetchLatestDataManifestFile_();
+    File fetchLatestDataManifestFile_();  // TBR temporary until manifest is generalized
 
-    Manifest getUpdatedDataManifest_();
+    Manifest getUpdatedDataManifest_();  // TBR temporary until manifest is generalized
 
     void lockLocalRepository(const Duration& aTimeout);
 

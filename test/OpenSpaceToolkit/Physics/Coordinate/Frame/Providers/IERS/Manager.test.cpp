@@ -452,14 +452,10 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, FetchLa
         const File latestFinals2000A = manager_.fetchLatestFinals2000A();
 
         EXPECT_EQ("finals2000A.data", latestFinals2000A.getName());
-        EXPECT_EQ("finals-2000A", latestFinals2000A.getParentDirectory().getParentDirectory().getName());
+        EXPECT_EQ("finals-2000A", latestFinals2000A.getParentDirectory().getName());
         EXPECT_EQ(
             manager_.getLocalRepository().getPath().getNormalizedPath(),
-            latestFinals2000A.getParentDirectory()
-                .getParentDirectory()
-                .getParentDirectory()
-                .getPath()
-                .getNormalizedPath()
+            latestFinals2000A.getParentDirectory().getParentDirectory().getPath().getNormalizedPath()
         );
     }
 }
