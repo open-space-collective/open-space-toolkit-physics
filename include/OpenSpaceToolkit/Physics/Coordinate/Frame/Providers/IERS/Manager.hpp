@@ -32,7 +32,7 @@
     "https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/data/coordinate/" \
     "frame/providers/iers/finals-2000A/"
 
-// temporary, until I move to it's own file
+// TBR: info about manifest file. Will eventually live in it's own file.
 #define OSTK_PHYSICS_COORDINATE_DATA_MANIFEST_LOCAL_REPOSITORY "./.open-space-toolkit/physics/data/"
 #define OSTK_PHYSICS_COORDINATE_DATA_MANIFEST_LOCAL_REPOSITORY_LOCK_TIMEOUT 60
 

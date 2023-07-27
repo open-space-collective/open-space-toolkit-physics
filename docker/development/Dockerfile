@@ -8,10 +8,10 @@ LABEL maintainer="lucas@loftorbital.com"
 
 # Dependencies
 
-## Zip & jq
+## Zip, jq, and git-lfs
 
 RUN apt-get update \
- && apt-get install -y unzip jq \
+ && apt-get install -y unzip jq git-lfs \
  && rm -rf /var/lib/apt/lists/*
 
 ## {fmt}
@@ -169,13 +169,6 @@ RUN mkdir -p /tmp/open-space-toolkit-mathematics \
  && rm -rf /tmp/open-space-toolkit-mathematics
 
 # Install data
-
-# TODO: move these to the top:
-RUN apt-get update \
- && apt-get install -y git-lfs vim \
- && rm -rf /var/lib/apt/lists/*
-
-#COPY --from=us.gcr.io/loft-orbital-public/software/open-space-toolkit/data:0.3.0 /open-space-toolkit/physics /usr/local/share/open-space-toolkit-data
 
 RUN git clone --branch main --single-branch --depth=1 https://github.com/open-space-collective/open-space-toolkit-data.git /usr/local/share/open-space-toolkit-data
 
