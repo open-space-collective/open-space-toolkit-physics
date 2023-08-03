@@ -26,9 +26,9 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Manifest& aManifest
     return anOutputStream;
 }
 
-bool Manifest::isEmpty() const
+bool Manifest::isDefined() const
 {
-    return dictionary_.isEmpty();
+    return !dictionary_.isEmpty();
 }
 
 Instant Manifest::getLastUpdateTimestampFor(const String& dataName) const
@@ -42,7 +42,7 @@ Instant Manifest::getLastUpdateTimestampFor(const String& dataName) const
     );
 }
 
-Manifest Manifest::Empty()
+Manifest Manifest::Undefined()
 {
     return {};
 }

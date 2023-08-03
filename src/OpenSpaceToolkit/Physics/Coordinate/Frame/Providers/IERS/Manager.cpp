@@ -42,7 +42,9 @@ using ostk::core::types::String;
 
 const String bulletinAFileName = "ser7.dat";
 const String finals2000AFileName = "finals2000A.data";
-const String dataManifestFileName = "manifest.json";
+
+const String bulletinARemotePath = "coordinate/frame/providers/iers/bulletin-A/";
+const String finals2000ARemotePath = "coordinate/frame/providers/iers/finals-2000A/";
 
 const String temporaryDirectoryName = "tmp";
 
@@ -72,25 +74,6 @@ Directory Manager::getFinals2000ADirectory() const
     using ostk::core::fs::Path;
 
     return Directory::Path(localRepository_.getPath() + Path::Parse("finals-2000A"));
-}
-
-URL Manager::getRemoteUrl() const
-{
-    return this->getBulletinARemoteUrl();
-}
-
-URL Manager::getBulletinARemoteUrl() const
-{
-    const std::lock_guard<std::mutex> lock {mutex_};
-
-    return bulletinARemoteUrl_;
-}
-
-URL Manager::getFinals2000ARemoteUrl() const
-{
-    const std::lock_guard<std::mutex> lock {mutex_};
-
-    return finals2000ARemoteUrl_;
 }
 
 Array<BulletinA> Manager::getBulletinAArray() const
@@ -276,35 +259,6 @@ void Manager::setLocalRepository(const Directory& aDirectory)
     }
 }
 
-void Manager::setRemoteUrl(const URL& aRemoteUrl)
-{
-    this->setBulletinARemoteUrl(aRemoteUrl);
-}
-
-void Manager::setBulletinARemoteUrl(const URL& aRemoteUrl)
-{
-    if (!aRemoteUrl.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Remote URL");
-    }
-
-    const std::lock_guard<std::mutex> lock {mutex_};
-
-    bulletinARemoteUrl_ = aRemoteUrl;
-}
-
-void Manager::setFinals2000ARemoteUrl(const URL& aRemoteUrl)
-{
-    if (!aRemoteUrl.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Remote URL");
-    }
-
-    const std::lock_guard<std::mutex> lock {mutex_};
-
-    finals2000ARemoteUrl_ = aRemoteUrl;
-}
-
 void Manager::loadBulletinA(const BulletinA& aBulletinA)
 {
     if (!aBulletinA.isDefined())
@@ -424,62 +378,16 @@ Duration Manager::DefaultLocalRepositoryLockTimeout()
     return defaultLocalRepositoryLockTimeout;
 }
 
-URL Manager::DefaultRemoteUrl()
-{
-    return DefaultBulletinARemoteUrl();
-}
-
-URL Manager::DefaultBulletinARemoteUrl()
-{
-    static const URL defaultRemoteUrl =
-        URL::Parse(OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_BULLETIN_A_MANAGER_REMOTE_URL);
-
-    if (const char* bulletinARemoteUrl =
-            std::getenv("OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_BULLETIN_A_MANAGER_REMOTE_URL"))
-    {
-        return URL::Parse(bulletinARemoteUrl);
-    }
-
-    if (const char* remoteUrl = std::getenv("OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL"))
-    {
-        return URL::Parse(remoteUrl);
-    }
-
-    return defaultRemoteUrl;
-}
-
-URL Manager::DefaultFinals2000ARemoteUrl()
-{
-    static const URL defaultRemoteUrl =
-        URL::Parse(OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_FINALS_2000_A_MANAGER_REMOTE_URL);
-
-    if (const char* finals2000ARemoteUrl =
-            std::getenv("OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_FINALS_2000_A_MANAGER_REMOTE_URL"))
-    {
-        return URL::Parse(finals2000ARemoteUrl);
-    }
-
-    if (const char* remoteUrl = std::getenv("OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL"))
-    {
-        return URL::Parse(remoteUrl);
-    }
-
-    return defaultRemoteUrl;
-}
-
 Manager::Manager(const Manager::Mode& aMode)
     : mode_(aMode),
       localRepository_(Manager::DefaultLocalRepository()),
       localRepositoryLockTimeout_(Manager::DefaultLocalRepositoryLockTimeout()),
-      bulletinARemoteUrl_(Manager::DefaultBulletinARemoteUrl()),
-      finals2000ARemoteUrl_(Manager::DefaultFinals2000ARemoteUrl()),
       aBulletins_(Array<BulletinA>::Empty()),
       finals2000aArray_(Array<Finals2000A>::Empty()),
       aBulletinIndex_(0),
       finals2000aIndex_(0),
       bulletinAUpdateTimestamp_(Instant::Undefined()),
-      finals2000AUpdateTimestamp_(Instant::Undefined()),
-      manifestUpdateTimestamp_(Instant::Undefined())
+      finals2000AUpdateTimestamp_(Instant::Undefined())
 {
     this->setup();
 }
@@ -531,9 +439,7 @@ const BulletinA* Manager::accessBulletinAAt(const Instant& anInstant) const
 
     if (mode_ == Manager::Mode::Automatic)
     {
-        Manifest manifest = const_cast<Manager*>(this)->getUpdatedDataManifest_();
-
-        const Instant bulletinAManifestUpdateTimestamp = manifest.getLastUpdateTimestampFor("bulletin-A");
+        const Instant bulletinAManifestUpdateTimestamp = const_cast<Manager*>(this)->getLastUpdateTimestampFor("bulletin-A");
 
         if ((!bulletinAUpdateTimestamp_.isDefined()) || (bulletinAUpdateTimestamp_ < bulletinAManifestUpdateTimestamp))
         {
@@ -616,9 +522,7 @@ const Finals2000A* Manager::accessFinals2000AAt(const Instant& anInstant) const
 
     if (mode_ == Manager::Mode::Automatic)
     {
-        Manifest manifest = const_cast<Manager*>(this)->getUpdatedDataManifest_();
-
-        const Instant finals2000AManifestUpdateTimestamp = manifest.getLastUpdateTimestampFor("bulletin-A");
+        const Instant finals2000AManifestUpdateTimestamp = const_cast<Manager*>(this)->getLastUpdateTimestampFor("finals-2000A");
 
         if ((!finals2000AUpdateTimestamp_.isDefined()) ||
             (finals2000AUpdateTimestamp_ < finals2000AManifestUpdateTimestamp))
@@ -762,7 +666,7 @@ File Manager::fetchLatestBulletinA_()
 
     this->lockLocalRepository(localRepositoryLockTimeout_);
 
-    const URL latestBulletinAUrl = bulletinARemoteUrl_ + bulletinAFileName;
+    const URL latestBulletinAUrl = this->remoteUrl + bulletinARemotePath + bulletinAFileName;
 
     File latestBulletinAFile = File::Undefined();
     Directory destinationDirectory = Directory::Undefined();
@@ -878,7 +782,7 @@ File Manager::fetchLatestFinals2000A_()
 
     this->lockLocalRepository(localRepositoryLockTimeout_);
 
-    const URL latestFinals2000AUrl = finals2000ARemoteUrl_ + finals2000AFileName;
+    const URL latestFinals2000AUrl = this->remoteUrl + finals2000ARemotePath + finals2000AFileName;
 
     File latestFinals2000AFile = File::Undefined();
     Directory destinationDirectory = Directory::Undefined();
@@ -969,140 +873,6 @@ File Manager::fetchLatestFinals2000A_()
     }
 
     return latestFinals2000AFile;
-}
-
-Manifest Manager::getUpdatedDataManifest_()
-{
-    using ostk::core::fs::Path;
-
-    File dataManifestFile = File::Path(
-        Path::Parse(OSTK_PHYSICS_COORDINATE_DATA_MANIFEST_LOCAL_REPOSITORY) + Path::Parse(dataManifestFileName)
-    );
-
-    if (!manifestUpdateTimestamp_.isDefined() || !dataManifestFile.exists() ||
-        (manifestUpdateTimestamp_ + Duration::Days(1.0) < Instant::Now()))
-    {
-        dataManifestFile = const_cast<Manager*>(this)->fetchLatestDataManifestFile_();
-        manifestUpdateTimestamp_ = Instant::Now();
-    }
-
-    return Manifest::Load(dataManifestFile);
-}
-
-File Manager::fetchLatestDataManifestFile_()
-{
-    using ostk::core::types::Uint8;
-    using ostk::core::types::Uint16;
-    using ostk::core::types::Integer;
-    using ostk::core::types::String;
-    using ostk::core::ctnr::Map;
-    using ostk::core::fs::Path;
-
-    using ostk::io::ip::tcp::http::Client;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Date;
-    using ostk::physics::time::Time;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::time::Instant;
-
-    Directory temporaryDirectory = Directory::Path(
-        Path::Parse(OSTK_PHYSICS_COORDINATE_DATA_MANIFEST_LOCAL_REPOSITORY) + Path::Parse(temporaryDirectoryName)
-    );
-
-    this->lockLocalRepository(localRepositoryLockTimeout_);
-
-    const URL latestDataManifestUrl =
-        URL::Parse(OSTK_PHYSICS_COORDINATE_DATA_MANIFEST_MANAGER_REMOTE_URL) + dataManifestFileName;
-
-    File latestDataManifestFile = File::Undefined();
-    Directory destinationDirectory = Directory::Undefined();
-
-    try
-    {
-        destinationDirectory = Directory::Path(Path::Parse(OSTK_PHYSICS_COORDINATE_DATA_MANIFEST_LOCAL_REPOSITORY));
-
-        if (!destinationDirectory.exists())
-        {
-            destinationDirectory.create();
-        }
-
-        if (temporaryDirectory.exists())
-        {
-            throw ostk::core::error::RuntimeError(
-                "Temporary directory [{}] already exists.", temporaryDirectory.toString()
-            );
-        }
-
-        temporaryDirectory.create();
-
-        std::cout << String::Format("Fetching Data Manifest from [{}]...", latestDataManifestUrl.toString())
-                  << std::endl;
-
-        latestDataManifestFile = Client::Fetch(latestDataManifestUrl, temporaryDirectory);
-
-        if (!latestDataManifestFile.exists())
-        {
-            throw ostk::core::error::RuntimeError(
-                "Cannot fetch Data Manifest [{}] from [{}].",
-                latestDataManifestFile.toString(),
-                latestDataManifestUrl.toString()
-            );
-        }
-        else
-        {
-            // Check that file size is not zero
-
-            std::uintmax_t latestDataManifestFileSize =
-                std::experimental::filesystem::file_size(std::string(latestDataManifestFile.getPath().toString()));
-
-            if (latestDataManifestFileSize == 0)
-            {
-                throw ostk::core::error::RuntimeError(
-                    "Cannot fetch Data  Manifest from [{}]: file is empty.", latestDataManifestUrl.toString()
-                );
-            }
-        }
-
-        latestDataManifestFile.moveToDirectory(destinationDirectory);
-
-        temporaryDirectory.remove();
-
-        this->unlockLocalRepository();
-
-        std::cout << String::Format(
-                         "Data  Manifest [{}] has been successfully fetched from [{}].",
-                         latestDataManifestFile.toString(),
-                         latestDataManifestUrl.toString()
-                     )
-                  << std::endl;
-    }
-    catch (const ostk::core::error::Exception& anException)
-    {
-        std::cerr << String::Format(
-                         "Error caught while fetching latest Data  Manifest from [{}]: [{}].",
-                         latestDataManifestUrl.toString(),
-                         anException.what()
-                     )
-                  << std::endl;
-
-        if (latestDataManifestFile.isDefined() && latestDataManifestFile.exists())
-        {
-            latestDataManifestFile.remove();
-            latestDataManifestFile = File::Undefined();
-        }
-
-        if (temporaryDirectory.isDefined() && temporaryDirectory.exists())
-        {
-            temporaryDirectory.remove();
-        }
-
-        this->unlockLocalRepository();
-
-        throw;
-    }
-
-    return latestDataManifestFile;
 }
 
 void Manager::lockLocalRepository(const Duration& aTimeout)

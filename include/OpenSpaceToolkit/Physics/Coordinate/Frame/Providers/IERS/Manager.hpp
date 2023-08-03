@@ -16,28 +16,21 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/BulletinA.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Finals2000A.hpp>
-#include <OpenSpaceToolkit/Physics/Data/Manifest.hpp>
+
 #include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+
+#include <OpenSpaceToolkit/Physics/Data/ManagerBase.hpp>
 
 #define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE Manager::Mode::Automatic
 #define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY \
     "./.open-space-toolkit/physics/coordinate/frame/providers/iers"
 #define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT 60
 
-#define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_BULLETIN_A_MANAGER_REMOTE_URL                                  \
-    "https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/data/coordinate/" \
-    "frame/providers/iers/bulletin-A/"
-#define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_FINALS_2000_A_MANAGER_REMOTE_URL                               \
-    "https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/data/coordinate/" \
-    "frame/providers/iers/finals-2000A/"
 
 // TBR: info about manifest file. Will eventually live in it's own file.
 #define OSTK_PHYSICS_COORDINATE_DATA_MANIFEST_LOCAL_REPOSITORY "./.open-space-toolkit/physics/data/"
 #define OSTK_PHYSICS_COORDINATE_DATA_MANIFEST_LOCAL_REPOSITORY_LOCK_TIMEOUT 60
-
-#define OSTK_PHYSICS_COORDINATE_DATA_MANIFEST_MANAGER_REMOTE_URL \
-    "https://raw.githubusercontent.com/open-space-collective/open-space-toolkit-data/main/"
 
 namespace ostk
 {
@@ -66,7 +59,7 @@ using ostk::physics::time::Duration;
 using ostk::physics::coord::frame::provider::iers::BulletinA;
 using ostk::physics::coord::frame::provider::iers::Finals2000A;
 
-using ostk::physics::data::Manifest;
+using ostk::physics::data::ManagerBase;
 
 /// @brief                      IERS bulletins manager (thread-safe)
 ///
@@ -78,12 +71,10 @@ using ostk::physics::data::Manifest;
 ///                             "DefaultLocalRepository"
 ///                             - "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT"
 ///                             will override "DefaultLocalRepositoryLockTimeout"
-///                             - "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL" will override
-///                             "DefaultRemoteUrl"
 ///
 /// @ref                        https://www.iers.org/IERS/EN/DataProducts/EarthOrientationData/eop.html
 
-class Manager
+class Manager: ManagerBase
 {
    public:
     enum class Mode
@@ -117,24 +108,6 @@ class Manager
     /// @return             Finals 2000A directory
 
     Directory getFinals2000ADirectory() const;
-
-    /// @brief              Get Bulletin A remote URL
-    ///
-    /// @return             Remote URL
-
-    URL getBulletinARemoteUrl() const;
-
-    /// @brief              Get Finals 2000A remote URL
-    ///
-    /// @return             Remote URL
-
-    URL getFinals2000ARemoteUrl() const;
-
-    /// @brief              For backwards compatibility. Returns getBulletinARemoteUrl()
-    ///
-    /// @return             Remote URL
-
-    URL getRemoteUrl() const;
 
     /// @brief              Get array of Bulletin A
     ///
@@ -194,24 +167,6 @@ class Manager
     /// @param              [in] aDirectory A repository directory
 
     void setLocalRepository(const Directory& aDirectory);
-
-    /// @brief              Set Bulletin A remote URL
-    ///
-    /// @param              [in] aRemoteUrl A remote URL
-
-    void setBulletinARemoteUrl(const URL& aRemoteUrl);
-
-    /// @brief              Set Finals 2000A remote URL
-    ///
-    /// @param              [in] aRemoteUrl A remote URL
-
-    void setFinals2000ARemoteUrl(const URL& aRemoteUrl);
-
-    /// @brief              For backwards compatibility. Returns setBulletinARemoteUrl()
-    ///
-    /// @param              [in] aRemoteUrl A remote URL
-
-    void setRemoteUrl(const URL& aRemoteUrl);
 
     /// @brief              Load Bulletin A
     ///
@@ -280,48 +235,20 @@ class Manager
 
     static Duration DefaultLocalRepositoryLockTimeout();
 
-    /// @brief              For backwards compatibility. Return DefaultBulletinARemoteUrl()
-    ///
-    /// @return             Default remote URL
-
-    static URL DefaultRemoteUrl();
-
-    /// @brief              Get default Bulletin A remote URL
-    ///
-    ///                     Overriden by: OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_BULLETIN_A_MANAGER_REMOTE_URL
-    ///
-    /// @return             Default remote URL
-
-    static URL DefaultBulletinARemoteUrl();
-
-    /// @brief              Get default Finals 2000A remote URL
-    ///
-    ///                     Overriden by: OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_FINALS_2000_A_MANAGER_REMOTE_URL
-    ///
-    /// @return             Default remote URL
-
-    static URL DefaultFinals2000ARemoteUrl();
-
    private:
     Manager::Mode mode_;
 
     Directory localRepository_;
     Duration localRepositoryLockTimeout_;
 
-    URL bulletinARemoteUrl_;
-    URL finals2000ARemoteUrl_;
-
     Array<BulletinA> aBulletins_;
     Array<Finals2000A> finals2000aArray_;
-
-    mutable std::mutex mutex_;
 
     mutable Index aBulletinIndex_;
     mutable Index finals2000aIndex_;
 
     mutable Instant bulletinAUpdateTimestamp_;
     mutable Instant finals2000AUpdateTimestamp_;
-    mutable Instant manifestUpdateTimestamp_;  // TBR temporary until manifest is generalized
 
     Manager(const Manager::Mode& aMode = Manager::DefaultMode());
 
@@ -346,10 +273,6 @@ class Manager
     File fetchLatestBulletinA_();
 
     File fetchLatestFinals2000A_();
-
-    File fetchLatestDataManifestFile_();  // TBR temporary until manifest is generalized
-
-    Manifest getUpdatedDataManifest_();  // TBR temporary until manifest is generalized
 
     void lockLocalRepository(const Duration& aTimeout);
 

@@ -46,7 +46,7 @@ class Manifest
     ///
     /// @return             True if manifest is empty
 
-    bool isEmpty() const;
+    bool isDefined() const;
 
     /// @brief              Get last update timestamp for data
     ///
@@ -59,7 +59,7 @@ class Manifest
     ///
     /// @return             Empty manifest
 
-    static Manifest Empty();
+    static Manifest Undefined();
 
     /// @brief              Load manifest from file
     ///

@@ -30,7 +30,7 @@ class OpenSpaceToolkit_Physics_Data_Manifest : public ::testing::Test
         this->manifest_ = Manifest::Load(manifestFile);
     }
 
-    Manifest manifest_ = Manifest::Empty();
+    Manifest manifest_ = Manifest::Undefined();
 };
 
 TEST_F(OpenSpaceToolkit_Physics_Data_Manifest, StreamOperator)
@@ -44,10 +44,10 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manifest, StreamOperator)
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Data_Manifest, IsEmpty)
+TEST_F(OpenSpaceToolkit_Physics_Data_Manifest, IsDefined)
 {
     {
-        EXPECT_TRUE(Manifest::Empty().isEmpty());
+        EXPECT_FALSE(Manifest::Undefined().isDefined());
     }
 }
 
