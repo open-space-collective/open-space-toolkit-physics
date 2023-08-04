@@ -209,7 +209,7 @@ BulletinA::Observation BulletinA::getObservationAt(const Instant& anInstant) con
         else
         {
             const auto nextObservationIt = std::next(observationIt);
-            
+
             auto observation1It = observations_.begin();
             auto observation2It = observations_.begin();
 
@@ -230,27 +230,23 @@ BulletinA::Observation BulletinA::getObservationAt(const Instant& anInstant) con
             const Integer month = observationIt->second.month;
             const Integer day = observationIt->second.day;
 
-             // [TBI] IERS gazette #13 for more precise interpolation and correction for tidal effects
+            // [TBI] IERS gazette #13 for more precise interpolation and correction for tidal effects
 
             const Observation observation1 = observation1It->second;
             const Observation observation2 = observation2It->second;
 
-            const Real ratio =
-                (instantMjd - observation1.mjd) / (observation2.mjd - observation1.mjd);
+            const Real ratio = (instantMjd - observation1.mjd) / (observation2.mjd - observation1.mjd);
 
             const Real mjd = observation1.mjd + ratio * (observation2.mjd - observation1.mjd);
 
             const Real x = observation1.x + ratio * (observation2.x - observation1.x);
-            const Real xError =
-                observation1.xError + ratio * (observation2.xError - observation1.xError);
+            const Real xError = observation1.xError + ratio * (observation2.xError - observation1.xError);
             const Real y = observation1.y + ratio * (observation2.y - observation1.y);
-            const Real yError =
-                observation1.yError + ratio * (observation2.yError - observation1.yError);
-            const Real ut1MinusUtc = observation1.ut1MinusUtc +
-                                        ratio * (observation2.ut1MinusUtc - observation1.ut1MinusUtc);
+            const Real yError = observation1.yError + ratio * (observation2.yError - observation1.yError);
+            const Real ut1MinusUtc =
+                observation1.ut1MinusUtc + ratio * (observation2.ut1MinusUtc - observation1.ut1MinusUtc);
             const Real ut1MinusUtcError =
-                observation1.ut1MinusUtcError +
-                ratio * (observation2.ut1MinusUtcError - observation1.ut1MinusUtcError);
+                observation1.ut1MinusUtcError + ratio * (observation2.ut1MinusUtcError - observation1.ut1MinusUtcError);
 
             const BulletinA::Observation observation = {
                 year, month, day, mjd, x, xError, y, yError, ut1MinusUtc, ut1MinusUtcError};
@@ -553,7 +549,8 @@ BulletinA BulletinA::Load(const fs::File& aFile)
             Instant::ModifiedJulianDate(Real::Integer(bulletin.observations_.rbegin()->first), Scale::UTC) +
             Duration::Days(1);
 
-        bulletin.observationInterval_ = Interval(observationStartInstant, observationEndInstant, Interval::Type::HalfOpenRight);
+        bulletin.observationInterval_ =
+            Interval(observationStartInstant, observationEndInstant, Interval::Type::HalfOpenRight);
     }
 
     if (!bulletin.predictions_.empty())

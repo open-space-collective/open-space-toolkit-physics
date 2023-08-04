@@ -135,22 +135,15 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, Inter
     const Interval predictionInterval = bulletinA_.getPredictionInterval();
 
     {
-        EXPECT_EQ(
-            observationInterval.accessEnd(),
-            predictionInterval.accessStart()
-        );
-    }
-
-    {  
-        EXPECT_FALSE(
-            observationInterval.contains(predictionInterval.accessStart())
-        );
+        EXPECT_EQ(observationInterval.accessEnd(), predictionInterval.accessStart());
     }
 
     {
-        EXPECT_TRUE(
-            predictionInterval.contains(observationInterval.accessEnd())
-        );
+        EXPECT_FALSE(observationInterval.contains(predictionInterval.accessStart()));
+    }
+
+    {
+        EXPECT_TRUE(predictionInterval.contains(observationInterval.accessEnd()));
     }
 }
 
@@ -173,9 +166,9 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetOb
     }
 
     {
-        EXPECT_NO_THROW(bulletinA_.getObservationAt(
-            Instant::DateTime(DateTime::Parse("2018-06-28 12:00:00"), Scale::UTC)
-        ));
+        EXPECT_NO_THROW(
+            bulletinA_.getObservationAt(Instant::DateTime(DateTime::Parse("2018-06-28 12:00:00"), Scale::UTC))
+        );
     }
 
     {
