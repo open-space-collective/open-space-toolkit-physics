@@ -177,6 +177,7 @@ ENV OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY="/usr/lo
 ENV OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY="/usr/local/share/open-space-toolkit-data/data/environment/gravitational/earth"
 ENV OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY="/usr/local/share/open-space-toolkit-data/data/environment/magnetic/earth"
 ENV OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY="/usr/local/share/open-space-toolkit-data/data/environment/atmospheric/earth"
+ENV OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY="/usr/local/share/open-space-toolkit-data/data"
 
 # Labels
 

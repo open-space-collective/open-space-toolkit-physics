@@ -691,7 +691,7 @@ File Manager::fetchLatestBulletinA_()
 
         std::cout << String::Format("Fetching Bulletin A from [{}]...", latestBulletinAUrl.toString()) << std::endl;
 
-        latestBulletinAFile = Client::Fetch(latestBulletinAUrl, temporaryDirectory);
+        latestBulletinAFile = Client::Fetch(latestBulletinAUrl, temporaryDirectory, 2);
 
         if (!latestBulletinAFile.exists())
         {
@@ -777,6 +777,8 @@ File Manager::fetchLatestFinals2000A_()
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Instant;
 
+    std::cout << "Fetching latest Finals 2000A..." << std::endl;
+
     Directory temporaryDirectory =
         Directory::Path(this->getFinals2000ADirectory().getPath() + Path::Parse(temporaryDirectoryName));
 
@@ -807,7 +809,7 @@ File Manager::fetchLatestFinals2000A_()
 
         std::cout << String::Format("Fetching Finals 2000A from [{}]...", latestFinals2000AUrl.toString()) << std::endl;
 
-        latestFinals2000AFile = Client::Fetch(latestFinals2000AUrl, temporaryDirectory);
+        latestFinals2000AFile = Client::Fetch(latestFinals2000AUrl, temporaryDirectory, 2);
 
         const Finals2000A latestFinals2000A = Finals2000A::Load(latestFinals2000AFile);
 

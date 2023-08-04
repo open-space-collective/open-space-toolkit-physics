@@ -103,7 +103,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetBull
         manager_.reset();
         manager_.clearLocalRepository();
 
-        EXPECT_NO_THROW(manager_.getBulletinAAt(Instant::Now() - Duration::Days(8.0)));
+        EXPECT_NO_THROW(manager_.getBulletinAAt(Instant::Now() - Duration::Days(5.0)));
 
         manager_.loadBulletinA(bulletinA_);
     }

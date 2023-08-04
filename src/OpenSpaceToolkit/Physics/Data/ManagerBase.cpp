@@ -120,7 +120,7 @@ Manifest ManagerBase::getUpdatedManifest_()
     // Check if the local manifest is too old and fetch a new one if needed
 
     File dataManifestFile = File::Path(
-        Path::Parse(OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY) + Path::Parse(dataManifestFileName)
+        manifestRepository_.getPath() + Path::Parse(dataManifestFileName)
     );
 
     // TODO make max age overridable
@@ -152,22 +152,22 @@ File ManagerBase::fetchLatestManifestFile_()
     using ostk::physics::time::Instant;
 
     Directory temporaryDirectory = Directory::Path(
-        Path::Parse(OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY) + Path::Parse(temporaryDirectoryName)
+        manifestRepository_.getPath() + Path::Parse(temporaryDirectoryName)
     );
 
     this->lockManifestRepository_(manifestRepositoryLockTimeout_);
 
     // TBI: fix when IO::Client supports redirects
-    // const URL latestDataManifestUrl =
-    //    URL::Parse(OSTK_PHYSICS_DATA_REMOTE_URL) + dataManifestFileName;
+    const URL latestDataManifestUrl =
+       URL::Parse(OSTK_PHYSICS_DATA_REMOTE_URL) + dataManifestFileName;
 
-    const URL latestDataManifestUrl = URL::Parse("https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/data/manifest.json");
+    //const URL latestDataManifestUrl = URL::Parse("https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/data/manifest.json");
     File latestDataManifestFile = File::Undefined();
     Directory destinationDirectory = Directory::Undefined();
 
     try
     {
-        destinationDirectory = Directory::Path(Path::Parse(OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY));
+        destinationDirectory = manifestRepository_;
 
         if (!destinationDirectory.exists())
         {
@@ -186,7 +186,7 @@ File ManagerBase::fetchLatestManifestFile_()
         std::cout << String::Format("Fetching Data Manifest from [{}]...", latestDataManifestUrl.toString())
                   << std::endl;
 
-        latestDataManifestFile = Client::Fetch(latestDataManifestUrl, temporaryDirectory);
+        latestDataManifestFile = Client::Fetch(latestDataManifestUrl, temporaryDirectory, 2);
 
         if (!latestDataManifestFile.exists())
         {

@@ -21,7 +21,7 @@
 
 // Base remote URL for OSTk data files
 #define OSTK_PHYSICS_DATA_REMOTE_URL \
-    "https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/data/"
+    "https://github.com/open-space-collective/open-space-toolkit-data/raw/main/data/"
 
 
 #define OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY "./.open-space-toolkit/physics/data/"
