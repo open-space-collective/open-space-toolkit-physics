@@ -161,7 +161,7 @@ File ManagerBase::fetchLatestManifestFile_()
     // const URL latestDataManifestUrl =
     //    URL::Parse(OSTK_PHYSICS_DATA_REMOTE_URL) + dataManifestFileName;
 
-    const URL latestDataManifestUrl = URL::Parse("https://github.com/open-space-collective/open-space-toolkit-data/blob/main/data/manifest.json");
+    const URL latestDataManifestUrl = URL::Parse("https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/data/manifest.json");
     File latestDataManifestFile = File::Undefined();
     Directory destinationDirectory = Directory::Undefined();
 
