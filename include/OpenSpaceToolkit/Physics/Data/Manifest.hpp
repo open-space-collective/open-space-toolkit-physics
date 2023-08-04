@@ -1,7 +1,7 @@
 /// Apache License 2.0
 
-#ifndef __OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manifest__
-#define __OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manifest__
+#ifndef __OpenSpaceToolkit_Physics_Environment_Data_Manifest__
+#define __OpenSpaceToolkit_Physics_Environment_Data_Manifest__
 
 #include <OpenSpaceToolkit/Core/Containers/Array.hpp>
 #include <OpenSpaceToolkit/Core/Containers/Dictionary.hpp>
@@ -37,12 +37,12 @@ class Manifest
     /// @brief              Output stream operator
     ///
     /// @param              [in] anOutputStream An output stream
-    /// @param              [in] anManifest An manifest
+    /// @param              [in] aManifest A manifest
     /// @return             A reference to output stream
 
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Manifest& aManifest);
 
-    /// @brief              Returns true if manifest is empty
+    /// @brief              Return true if manifest is empty
     ///
     /// @return             True if manifest is empty
 
@@ -51,11 +51,11 @@ class Manifest
     /// @brief              Get last update timestamp for data
     ///
     /// @param              [in] dataName A data name
-    /// @return             Last update timestamp for data
+    /// @return             Last update instant for data
 
-    Instant getLastUpdateTimestampFor(const String& dataName) const;
+    Instant getLastUpdateTimestampFor(const String& aDataName) const;
 
-    /// @brief              Constructs an empty manifest
+    /// @brief              Construct an empty manifest
     ///
     /// @return             Empty manifest
 
@@ -63,7 +63,7 @@ class Manifest
 
     /// @brief              Load manifest from file
     ///
-    /// @param              [in] aFile An manifest file
+    /// @param              [in] aFile A manifest file
     /// @return             Manifest
 
     static Manifest Load(const File& aFile);
