@@ -147,6 +147,12 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetOb
     }
 
     {
+        EXPECT_NO_THROW(bulletinA_.getObservationAt(
+            Instant::DateTime(DateTime::Parse("2018-06-28 12:00:00"), Scale::UTC)
+        ));
+    }
+
+    {
         EXPECT_ANY_THROW(BulletinA::Undefined().getObservationAt(
             Instant::DateTime(DateTime::Parse("2018-06-29 00:00:00"), Scale::UTC)
         ));
