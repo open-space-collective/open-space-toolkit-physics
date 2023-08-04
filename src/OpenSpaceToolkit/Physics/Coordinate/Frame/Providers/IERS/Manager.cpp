@@ -439,7 +439,8 @@ const BulletinA* Manager::accessBulletinAAt(const Instant& anInstant) const
 
     if (mode_ == Manager::Mode::Automatic)
     {
-        const Instant bulletinAManifestUpdateTimestamp = const_cast<Manager*>(this)->getLastUpdateTimestampFor("bulletin-A");
+        const Instant bulletinAManifestUpdateTimestamp =
+            const_cast<Manager*>(this)->getLastUpdateTimestampFor("bulletin-A");
 
         if ((!bulletinAUpdateTimestamp_.isDefined()) || (bulletinAUpdateTimestamp_ < bulletinAManifestUpdateTimestamp))
         {
@@ -522,7 +523,8 @@ const Finals2000A* Manager::accessFinals2000AAt(const Instant& anInstant) const
 
     if (mode_ == Manager::Mode::Automatic)
     {
-        const Instant finals2000AManifestUpdateTimestamp = const_cast<Manager*>(this)->getLastUpdateTimestampFor("finals-2000A");
+        const Instant finals2000AManifestUpdateTimestamp =
+            const_cast<Manager*>(this)->getLastUpdateTimestampFor("finals-2000A");
 
         if ((!finals2000AUpdateTimestamp_.isDefined()) ||
             (finals2000AUpdateTimestamp_ < finals2000AManifestUpdateTimestamp))

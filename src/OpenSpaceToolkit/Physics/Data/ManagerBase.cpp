@@ -17,7 +17,6 @@
 
 #include <OpenSpaceToolkit/Physics/Data/ManagerBase.hpp>
 #include <OpenSpaceToolkit/Physics/Data/Manifest.hpp>
-
 #include <OpenSpaceToolkit/Physics/Time/Date.hpp>
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
@@ -40,11 +39,11 @@ const String dataManifestFileName = "manifest.json";
 
 const String temporaryDirectoryName = "tmp";
 
+Instant ManagerBase::getLastUpdateTimestampFor(const String& aDataName)
+{
+    this->manifest_ = this->getUpdatedManifest_();
 
-Instant ManagerBase::getLastUpdateTimestampFor(const String& aDataName) {
-        this->manifest_ = this->getUpdatedManifest_();
-
-        return manifest_.getLastUpdateTimestampFor(aDataName);
+    return manifest_.getLastUpdateTimestampFor(aDataName);
 }
 
 void ManagerBase::loadManifest_(const Manifest& aManifest)
@@ -119,9 +118,7 @@ Manifest ManagerBase::getUpdatedManifest_()
 {
     // Check if the local manifest is too old and fetch a new one if needed
 
-    File dataManifestFile = File::Path(
-        manifestRepository_.getPath() + Path::Parse(dataManifestFileName)
-    );
+    File dataManifestFile = File::Path(manifestRepository_.getPath() + Path::Parse(dataManifestFileName));
 
     // TODO make max age overridable
     if (!manifestUpdateTimestamp_.isDefined() || !dataManifestFile.exists() ||
@@ -151,17 +148,15 @@ File ManagerBase::fetchLatestManifestFile_()
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Instant;
 
-    Directory temporaryDirectory = Directory::Path(
-        manifestRepository_.getPath() + Path::Parse(temporaryDirectoryName)
-    );
+    Directory temporaryDirectory = Directory::Path(manifestRepository_.getPath() + Path::Parse(temporaryDirectoryName));
 
     this->lockManifestRepository_(manifestRepositoryLockTimeout_);
 
     // TBI: fix when IO::Client supports redirects
-    const URL latestDataManifestUrl =
-       URL::Parse(OSTK_PHYSICS_DATA_REMOTE_URL) + dataManifestFileName;
+    const URL latestDataManifestUrl = URL::Parse(OSTK_PHYSICS_DATA_REMOTE_URL) + dataManifestFileName;
 
-    //const URL latestDataManifestUrl = URL::Parse("https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/data/manifest.json");
+    // const URL latestDataManifestUrl =
+    // URL::Parse("https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/data/manifest.json");
     File latestDataManifestFile = File::Undefined();
     Directory destinationDirectory = Directory::Undefined();
 
@@ -311,8 +306,7 @@ Directory ManagerBase::DefaultManifestRepository_()
     static const Directory defaultLocalRepository =
         Directory::Path(Path::Parse(OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY));
 
-    if (const char* localRepositoryPath =
-            std::getenv("OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY"))
+    if (const char* localRepositoryPath = std::getenv("OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY"))
     {
         return Directory::Path(Path::Parse(localRepositoryPath));
     }

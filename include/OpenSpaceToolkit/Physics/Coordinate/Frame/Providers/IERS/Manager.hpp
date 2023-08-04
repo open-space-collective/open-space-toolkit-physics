@@ -16,17 +16,14 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/BulletinA.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Finals2000A.hpp>
-
+#include <OpenSpaceToolkit/Physics/Data/ManagerBase.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
-
-#include <OpenSpaceToolkit/Physics/Data/ManagerBase.hpp>
 
 #define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE Manager::Mode::Automatic
 #define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY \
     "./.open-space-toolkit/physics/coordinate/frame/providers/iers"
 #define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT 60
-
 
 // TBR: info about manifest file. Will eventually live in it's own file.
 #define OSTK_PHYSICS_COORDINATE_DATA_MANIFEST_LOCAL_REPOSITORY "./.open-space-toolkit/physics/data/"
@@ -74,7 +71,7 @@ using ostk::physics::data::ManagerBase;
 ///
 /// @ref                        https://www.iers.org/IERS/EN/DataProducts/EarthOrientationData/eop.html
 
-class Manager: ManagerBase
+class Manager : ManagerBase
 {
    public:
     enum class Mode
