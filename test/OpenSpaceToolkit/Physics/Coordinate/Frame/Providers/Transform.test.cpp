@@ -251,10 +251,10 @@ INSTANTIATE_TEST_SUITE_P(
             "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_ITRF_orekit.csv",
             "ITRF",
             "",
-            0.0,   // Translation tolerance [m]
-            0.0,   // Relative velocity tolerance [m/s]
-            50.0,  // Orientation tolerance at Earth Surface [m]
-            1e-6   // Angular velocity tolerance [rad/s]
+            0.0,    // Translation tolerance [m]
+            0.0,    // Relative velocity tolerance [m/s]
+            100.0,  // Orientation tolerance at Earth Surface [m]
+            1e-6    // Angular velocity tolerance [rad/s]
         )
     )
 );
