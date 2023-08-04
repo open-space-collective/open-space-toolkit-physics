@@ -139,7 +139,7 @@ RUN mkdir -p /tmp/open-space-toolkit-core \
  ## Open Space Toolkit ▸ I/O
 
 ARG OSTK_IO_MAJOR="0"
-ARG OSTK_IO_MINOR="6"
+ARG OSTK_IO_MINOR="7"
 
 ## Force an image rebuild when new IO patch versions are detected
 ADD https://api.github.com/repos/open-space-collective/open-space-toolkit-io/git/matching-refs/tags/${OSTK_IO_MAJOR}.${OSTK_IO_MINOR} /tmp/open-space-toolkit-io/versions.json
