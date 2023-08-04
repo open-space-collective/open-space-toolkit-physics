@@ -26,16 +26,6 @@ def manager(bulletin_a) -> Manager:
     manager = Manager.get()
 
     manager.set_mode(Manager.Mode.Automatic)
-    manager.set_bulletin_a_remote_url(
-        URL.parse(
-            "https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/data/coordinate/frame/providers/iers/bulletin-A/"
-        )
-    )
-    manager.set_finals_2000_a_remote_url(
-        URL.parse(
-            "https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/data/coordinate/frame/providers/iers/finals-2000A/"
-        )
-    )
 
     manager.load_bulletin_a(bulletin_a)
 
@@ -77,27 +67,6 @@ class TestManager:
                 )
             )
             + "/finals-2000A"
-        )
-
-    def test_get_remote_url_success(self, manager: Manager):
-        assert isinstance(manager.get_remote_url(), URL)
-        assert (
-            manager.get_remote_url().to_string()
-            == manager.get_bulletin_a_remote_url().to_string()
-        )
-
-    def test_get_bulletin_a_remote_url_success(self, manager: Manager):
-        assert isinstance(manager.get_bulletin_a_remote_url(), URL)
-        assert (
-            manager.get_bulletin_a_remote_url().to_string()
-            == "https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/data/coordinate/frame/providers/iers/bulletin-A/"
-        )
-
-    def test_get_finals_2000_a_remote_url_success(self, manager: Manager):
-        assert isinstance(manager.get_finals_2000_a_remote_url(), URL)
-        assert (
-            manager.get_finals_2000_a_remote_url().to_string()
-            == "https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/data/coordinate/frame/providers/iers/finals-2000A/"
         )
 
     def test_get_bulletin_a_array_success(self, manager: Manager):
@@ -210,50 +179,6 @@ class TestManager:
             == "./.open-space-toolkit/physics/coordinate/frame/providers/iers2"
         )
 
-    def test_set_remote_url_success(self, manager: Manager):
-        assert isinstance(manager.get_remote_url(), URL)
-        assert (
-            manager.get_remote_url().to_string()
-            == "https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/data/coordinate/frame/providers/iers/bulletin-A/"
-        )
-
-        manager.set_remote_url(URL.parse("https://maia.usno.navy.mil/ser7/2"))
-
-        assert isinstance(manager.get_remote_url(), URL)
-        assert manager.get_remote_url().to_string() == "https://maia.usno.navy.mil/ser7/2"
-
-    def test_set_bulletin_a_remote_url_success(self, manager: Manager):
-        assert isinstance(manager.get_bulletin_a_remote_url(), URL)
-        assert (
-            manager.get_bulletin_a_remote_url().to_string()
-            == "https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/data/coordinate/frame/providers/iers/bulletin-A/"
-        )
-
-        manager.set_bulletin_a_remote_url(URL.parse("https://maia.usno.navy.mil/ser7/2"))
-
-        assert isinstance(manager.get_bulletin_a_remote_url(), URL)
-        assert (
-            manager.get_bulletin_a_remote_url().to_string()
-            == "https://maia.usno.navy.mil/ser7/2"
-        )
-
-    def test_set_finals_2000_a_remote_url_success(self, manager: Manager):
-        assert isinstance(manager.get_finals_2000_a_remote_url(), URL)
-        assert (
-            manager.get_finals_2000_a_remote_url().to_string()
-            == "https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/data/coordinate/frame/providers/iers/finals-2000A/"
-        )
-
-        manager.set_finals_2000_a_remote_url(
-            URL.parse("https://maia.usno.navy.mil/ser7/2")
-        )
-
-        assert isinstance(manager.get_finals_2000_a_remote_url(), URL)
-        assert (
-            manager.get_finals_2000_a_remote_url().to_string()
-            == "https://maia.usno.navy.mil/ser7/2"
-        )
-
     def test_load_bulletin_a_success(self, manager: Manager, bulletin_a: BulletinA):
         assert len(manager.get_bulletin_a_array()) == 1
 
@@ -329,23 +254,3 @@ class TestManager:
         assert isinstance(manager.default_local_repository_lock_timeout(), Duration)
         assert manager.default_local_repository_lock_timeout().in_seconds() == 60.0
 
-    def test_default_remote_url_success(self, manager: Manager):
-        assert isinstance(manager.default_remote_url(), URL)
-        assert (
-            manager.default_remote_url().to_string()
-            == manager.default_bulletin_a_remote_url().to_string()
-        )
-
-    def test_default_bulletin_a_remote_url_success(self, manager: Manager):
-        assert isinstance(manager.default_bulletin_a_remote_url(), URL)
-        assert (
-            manager.default_bulletin_a_remote_url().to_string()
-            == "https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/data/coordinate/frame/providers/iers/bulletin-A/"
-        )
-
-    def test_default_finals_2000_a_remote_url_success(self, manager: Manager):
-        assert isinstance(manager.default_finals_2000_a_remote_url(), URL)
-        assert (
-            manager.default_finals_2000_a_remote_url().to_string()
-            == "https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/data/coordinate/frame/providers/iers/finals-2000A/"
-        )

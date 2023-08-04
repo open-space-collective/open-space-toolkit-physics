@@ -18,9 +18,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers_IERS_Manager(py
         .def("get_local_repository", &Manager::getLocalRepository)
         .def("get_bulletin_a_directory", &Manager::getBulletinADirectory)
         .def("get_finals_2000a_directory", &Manager::getFinals2000ADirectory)
-        .def("get_bulletin_a_remote_url", &Manager::getBulletinARemoteUrl)
-        .def("get_finals_2000_a_remote_url", &Manager::getFinals2000ARemoteUrl)
-        .def("get_remote_url", &Manager::getRemoteUrl)
         .def("get_bulletin_a_array", &Manager::getBulletinAArray)
         .def("get_bulletin_a_at", &Manager::getBulletinAAt, arg("instant"))
         .def("get_finals_2000a_array", &Manager::getFinals2000AArray)
@@ -31,9 +28,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers_IERS_Manager(py
 
         .def("set_mode", &Manager::setMode, arg("mode"))
         .def("set_local_repository", &Manager::setLocalRepository, arg("directory"))
-        .def("set_bulletin_a_remote_url", &Manager::setBulletinARemoteUrl, arg("url"))
-        .def("set_finals_2000_a_remote_url", &Manager::setFinals2000ARemoteUrl, arg("url"))
-        .def("set_remote_url", &Manager::setRemoteUrl, arg("url"))
 
         .def("load_bulletin_a", &Manager::loadBulletinA, arg("bulletin_1"))
         .def("load_finals_2000a", &Manager::loadFinals2000A, arg("finals_2000a"))
@@ -48,9 +42,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers_IERS_Manager(py
         .def_static("default_mode", &Manager::DefaultMode)
         .def_static("default_local_repository", &Manager::DefaultLocalRepository)
         .def_static("default_local_repository_lock_timeout", &Manager::DefaultLocalRepositoryLockTimeout)
-        .def_static("default_bulletin_a_remote_url", &Manager::DefaultBulletinARemoteUrl)
-        .def_static("default_finals_2000_a_remote_url", &Manager::DefaultFinals2000ARemoteUrl)
-        .def_static("default_remote_url", &Manager::DefaultRemoteUrl);
+
+        ;
 
     enum_<Manager::Mode>(manager, "Mode")
 
