@@ -36,7 +36,7 @@ class TestBulletinA:
     def test_access_observation_interval_success(self, bulletin_a: BulletinA):
         assert (
             bulletin_a.access_observation_interval().to_string()
-            == "[2020-10-23 00:00:00 - 2020-10-29 00:00:00] [UTC]"
+            == "[2020-10-23 00:00:00 - 2020-10-30 00:00:00] [UTC]"
         )
 
     def test_access_prediction_interval_success(self, bulletin_a: BulletinA):
@@ -59,7 +59,7 @@ class TestBulletinA:
     def test_get_observation_interval_success(self, bulletin_a: BulletinA):
         assert (
             bulletin_a.get_observation_interval().to_string()
-            == "[2020-10-23 00:00:00 - 2020-10-29 00:00:00] [UTC]"
+            == "[2020-10-23 00:00:00 - 2020-10-30 00:00:00] [UTC]"
         )
 
     def test_get_observation_at_success(self, bulletin_a: BulletinA):
