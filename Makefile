@@ -19,8 +19,6 @@ jupyter_python_version := 3.11
 
 project_name_camel_case := $(shell echo $(project_name) | sed -r 's/(^|-)([a-z])/\U\2/g')
 
-clang_format_sources_path ?= $(shell find ~+ src/ include/ test/ bindings/python/src/ -name '*.cpp' -o -name '*.cxx' -o -name '*.hpp' -o -name '*.tpp')
-
 pull: ## Pull all images
 
 	@ echo "Pulling images..."
@@ -51,7 +49,7 @@ pull-release-images: ## Pull release images
 
 .PHONY: pull-release-images
 
-pull-release-image-cpp:
+pull-release-image-cpp: ## Pull release image cpp
 
 	@ echo "Pull C++ release image..."
 
@@ -60,7 +58,7 @@ pull-release-image-cpp:
 
 .PHONY: pull-release-image-cpp
 
-pull-release-image-python:
+pull-release-image-python: ## Pull release image python
 
 	@ echo "Pulling Python release image..."
 
@@ -69,7 +67,7 @@ pull-release-image-python:
 
 .PHONY: pull-release-image-python
 
-pull-release-image-jupyter:
+pull-release-image-jupyter: ## Pull release image jupyter
 
 	@ echo "Pulling Jupyter Notebook release image..."
 
@@ -114,7 +112,7 @@ build-release-images: ## Build release images
 
 .PHONY: build-release-images
 
-build-release-image-cpp: build-development-image pull-release-image-cpp
+build-release-image-cpp: build-development-image pull-release-image-cpp ## Build release image cpp
 
 	@ echo "Building C++ release image..."
 
@@ -128,7 +126,7 @@ build-release-image-cpp: build-development-image pull-release-image-cpp
 
 .PHONY: build-release-image-cpp
 
-build-release-image-python: build-development-image pull-release-image-python
+build-release-image-python: build-development-image pull-release-image-python ## Build release image python
 
 	@ echo "Building Python release image..."
 
@@ -142,7 +140,7 @@ build-release-image-python: build-development-image pull-release-image-python
 
 .PHONY: build-release-image-python
 
-build-release-image-jupyter: pull-release-image-jupyter
+build-release-image-jupyter: pull-release-image-jupyter ## Build release image jupyter
 
 	@ echo "Building Jupyter Notebook release image..."
 
@@ -240,7 +238,6 @@ start-development-no-link: build-development-image ## Start development environm
 		--rm \
 		--privileged \
 		--volume="$(CURDIR):/app:delegated" \
-		--volume="$(CURDIR)/tools/development/helpers:/app/build/helpers:ro,delegated" \
 		--workdir=/app/build \
 		$(docker_development_image_repository):$(docker_image_version) \
 		/bin/bash
@@ -258,9 +255,9 @@ start-development-link: build-development-image ## Start linked development envi
 .PHONY: start-development-link
 
 ifndef link
-start-development: start-development-no-link
+start-development dev: start-development-no-link
 else
-start-development: start-development-link
+start-development dev: start-development-link
 endif
 
 .PHONY: start-development
@@ -276,7 +273,7 @@ start-python: build-release-image-python ## Start Python runtime environment
 
 .PHONY: start-python
 
-start-jupyter-notebook: build-release-image-jupyter ## Starting Jupyter Notebook environment
+start-jupyter-notebook: build-release-image-jupyter ## Start Jupyter Notebook environment
 
 	@ echo "Starting Jupyter Notebook environment..."
 
@@ -291,7 +288,7 @@ start-jupyter-notebook: build-release-image-jupyter ## Starting Jupyter Notebook
 
 .PHONY: start-jupyter-notebook
 
-debug-jupyter-notebook: build-release-image-jupyter ## Debug jupyter notebook using the ostk-astro package built from current source code, must have run make start-development and helpers/build.sh and helpers/install-python.sh to use this
+debug-jupyter-notebook: build-release-image-jupyter ## Debug jupyter notebook using the ostk-astro package built from current source code, must have run make start-development and ostk-build and ostk-install-python to use this
 
 	@ echo "Debugging Jupyter Notebook environment..."
 
@@ -302,7 +299,7 @@ debug-jupyter-notebook: build-release-image-jupyter ## Debug jupyter notebook us
 		--publish="$(jupyter_notebook_port):8888" \
 		--volume="$(CURDIR)/bindings/python/docs:/home/jovyan/docs" \
 		--volume="$(CURDIR)/tutorials/python/notebooks:/home/jovyan/tutorials" \
- 		--volume="$(CURDIR)/build/bindings/python/OpenSpaceToolkit${project_name_camel_case}Py-python-package-$(jupyter_python_version):/opt/conda/lib/python$(jupyter_python_version)/site-packages/ostk/$(project_name)" \
+		--volume="$(CURDIR)/build/bindings/python/OpenSpaceToolkit${project_name_camel_case}Py-python-package-$(jupyter_python_version):/opt/conda/lib/python$(jupyter_python_version)/site-packages/ostk/$(project_name)" \
 		--workdir="/home/jovyan" \
 		$(docker_release_image_jupyter_repository):$(docker_image_version) \
 		bash -c "chown -R jovyan:users /home/jovyan ; python$(jupyter_python_version) -m pip install /opt/conda/lib/python$(jupyter_python_version)/site-packages/ostk/$(project_name)/ --force-reinstall ; start-notebook.sh --ServerApp.token=''"
@@ -361,11 +358,11 @@ format-cpp: build-development-image ## Format all of the source code with the ru
 
 	docker run \
 		--rm \
+		--user="$(shell id -u):$(shell id -g)" \
 		--volume="$(CURDIR):/app" \
 		--workdir=/app \
-		--user="$(shell id -u):$(shell id -g)" \
 		$(docker_development_image_repository):$(docker_image_version) \
-		clang-format -i -style=file:thirdparty/clang/.clang-format ${clang_format_sources_path}
+		ostk-format-cpp
 
 .PHONY: format
 
@@ -373,11 +370,11 @@ format-python: build-development-image ## Run the black format tool against pyth
 
 	docker run \
 		--rm \
-		--privileged \
+		--user="$(shell id -u):$(shell id -g)" \
 		--volume="$(CURDIR):/app:delegated" \
 		--workdir=/app \
 		$(docker_development_image_repository):$(docker_image_version) \
-		/bin/bash -c "python3.11 -m black --line-length=90 bindings/python/"
+		ostk-format-python
 
 .PHONY: format-python
 
@@ -394,11 +391,11 @@ format-check-cpp: build-development-image ## Run the clang-format tool to check 
 
 	docker run \
 		--rm \
-		--volume="$(CURDIR):/app" \
+		--volume="$(CURDIR):/app:delegated" \
 		--workdir=/app \
 		--user="$(shell id -u):$(shell id -g)" \
-		"$(docker_development_image_repository):$(docker_image_version)" \
-		clang-format -Werror --dry-run -style=file:thirdparty/clang/.clang-format ${clang_format_sources_path}
+		$(docker_development_image_repository):$(docker_image_version) \
+		ostk-check-format-cpp
 
 .PHONY: format-check-cpp
 
@@ -406,11 +403,10 @@ format-check-python: build-development-image ## Run the black format tool agains
 
 	docker run \
 		--rm \
-		--privileged \
 		--volume="$(CURDIR):/app:delegated" \
 		--workdir=/app \
 		$(docker_development_image_repository):$(docker_image_version) \
-		/bin/bash -c "python3.11 -m black --line-length=90 --check --diff bindings/python/"
+		ostk-check-format-python
 
 .PHONY: format-check-python
 
@@ -454,7 +450,7 @@ test-unit-cpp-standalone: ## Run C++ unit tests (standalone)
 
 .PHONY: test-unit-cpp-standalone
 
-test-unit-python: build-development-image ## Run Python unit tests
+test-unit-python: build-release-image-python ## Run Python unit tests
 
 	@ $(MAKE) test-unit-python-standalone
 
