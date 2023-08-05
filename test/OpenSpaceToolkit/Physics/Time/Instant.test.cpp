@@ -62,7 +62,8 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, EqualToOperator)
                                                     second,
                                                     millisecond,
                                                     microsecond,
-                                                    nanosecond};
+                                                    nanosecond
+                                                };
 
                                                 EXPECT_TRUE(
                                                     Instant::DateTime(dateTime, scale) ==
@@ -110,7 +111,8 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, EqualToOperator)
                                                     second,
                                                     millisecond,
                                                     microsecond,
-                                                    nanosecond};
+                                                    nanosecond
+                                                };
 
                                                 if (nanosecond != 1)
                                                 {
@@ -189,7 +191,8 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, EqualToOperator)
                                                     second,
                                                     millisecond,
                                                     microsecond,
-                                                    nanosecond};
+                                                    nanosecond
+                                                };
 
                                                 EXPECT_FALSE(
                                                     Instant::DateTime(dateTime, scale) == Instant::Undefined()
@@ -246,7 +249,8 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, NotEqualToOperator)
                                                     second,
                                                     millisecond,
                                                     microsecond,
-                                                    nanosecond};
+                                                    nanosecond
+                                                };
 
                                                 if (nanosecond != 1)
                                                 {
@@ -325,7 +329,8 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, NotEqualToOperator)
                                                     second,
                                                     millisecond,
                                                     microsecond,
-                                                    nanosecond};
+                                                    nanosecond
+                                                };
 
                                                 EXPECT_TRUE(Instant::DateTime(dateTime, scale) != Instant::Undefined());
                                                 EXPECT_TRUE(Instant::Undefined() != Instant::DateTime(dateTime, scale));
@@ -371,7 +376,8 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, NotEqualToOperator)
                                                     second,
                                                     millisecond,
                                                     microsecond,
-                                                    nanosecond};
+                                                    nanosecond
+                                                };
 
                                                 EXPECT_FALSE(
                                                     Instant::DateTime(dateTime, scale) !=
@@ -1730,7 +1736,8 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, DateTime)
                                                     second,
                                                     millisecond,
                                                     microsecond,
-                                                    nanosecond};
+                                                    nanosecond
+                                                };
 
                                                 EXPECT_NO_THROW(Instant::DateTime(dateTime, scale));
                                                 EXPECT_TRUE(Instant::DateTime(dateTime, scale).isDefined());
@@ -1851,7 +1858,8 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, Test_1)
         Instant::DateTime(DateTime::Parse("1974-12-31 23:59:59"), Scale::UTC),
         Instant::DateTime(DateTime::Parse("1973-12-31 23:59:59"), Scale::UTC),
         Instant::DateTime(DateTime::Parse("1972-12-31 23:59:59"), Scale::UTC),
-        Instant::DateTime(DateTime::Parse("1972-06-30 23:59:59"), Scale::UTC)};
+        Instant::DateTime(DateTime::Parse("1972-06-30 23:59:59"), Scale::UTC)
+    };
 
     for (const auto& instant : instants)
     {

@@ -184,7 +184,8 @@ Object::Geometry Earth::Geometry(
     const Real polarRadius_m = equatorialRadius_m * (1.0 - aFlattening);
 
     const Ellipsoid ellipsoid = {
-        Point::Origin(), equatorialRadius_m, equatorialRadius_m, polarRadius_m, Quaternion::Unit()};
+        Point::Origin(), equatorialRadius_m, equatorialRadius_m, polarRadius_m, Quaternion::Unit()
+    };
 
     return {ellipsoid, aFrameSPtr};
 }

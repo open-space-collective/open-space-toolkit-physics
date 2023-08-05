@@ -19,7 +19,8 @@ namespace gravitational
 using SphericalGravitationalModel = ostk::physics::environment::gravitational::Spherical;
 
 const Model::Parameters Sun::Spherical = {
-    {132712440018e9, GravitationalParameterSIUnit}, Length::Meters(6.955e8), 0.0, 0.0, 0.0};
+    {132712440018e9, GravitationalParameterSIUnit}, Length::Meters(6.955e8), 0.0, 0.0, 0.0
+};
 
 class Sun::Impl
 {

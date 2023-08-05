@@ -28,7 +28,8 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, Constructor)
             ElectricCurrent::Unit::Ampere,
             Derived::Order::One(),
             Angle::Unit::Radian,
-            Derived::Order::One()};
+            Derived::Order::One()
+        };
 
         EXPECT_NO_THROW(Derived(value, unit));
     }
@@ -45,7 +46,8 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, Constructor)
             ElectricCurrent::Unit::Ampere,
             {0},
             Angle::Unit::Undefined,
-            {0}};
+            {0}
+        };
 
         EXPECT_NO_THROW(Derived(value, unit));
     }
@@ -62,7 +64,8 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, Constructor)
             ElectricCurrent::Unit::Undefined,
             {0},
             Angle::Unit::Undefined,
-            {0}};
+            {0}
+        };
 
         EXPECT_NO_THROW(Derived(value, unit));
     }
@@ -96,7 +99,8 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
             ElectricCurrent::Unit::Ampere,
             Derived::Order::One(),
             Angle::Unit::Radian,
-            Derived::Order::One()};
+            Derived::Order::One()
+        };
 
         EXPECT_TRUE(Derived(1.0, unit) == Derived(1.0, unit));
         EXPECT_TRUE(Derived(1.0, unit) == Derived(+1.0, unit));
@@ -113,7 +117,8 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
             ElectricCurrent::Unit::Ampere,
             Derived::Order::One(),
             Angle::Unit::Radian,
-            Derived::Order::One()};
+            Derived::Order::One()
+        };
 
         const Derived::Unit secondUnit = {
             Length::Unit::Meter,
@@ -125,7 +130,8 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
             ElectricCurrent::Unit::Ampere,
             Derived::Order::One(),
             Angle::Unit::Radian,
-            Derived::Order::One()};
+            Derived::Order::One()
+        };
 
         EXPECT_TRUE(Derived(1.0, firstUnit) == Derived(0.3048, secondUnit));
     }
@@ -141,7 +147,8 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
             ElectricCurrent::Unit::Ampere,
             Derived::Order::One(),
             Angle::Unit::Radian,
-            Derived::Order::One()};
+            Derived::Order::One()
+        };
 
         EXPECT_FALSE(Derived(1.0, unit) == Derived(2.0, unit));
     }
@@ -157,7 +164,8 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
             ElectricCurrent::Unit::Ampere,
             Derived::Order::One(),
             Angle::Unit::Radian,
-            Derived::Order::One()};
+            Derived::Order::One()
+        };
 
         const Derived::Unit secondUnit = {
             Length::Unit::Meter,
@@ -169,7 +177,8 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
             ElectricCurrent::Unit::Ampere,
             Derived::Order::One(),
             Angle::Unit::Radian,
-            Derived::Order::Zero()};
+            Derived::Order::Zero()
+        };
 
         EXPECT_ANY_THROW(Derived(1.0, firstUnit) == Derived(1.0, secondUnit));
     }

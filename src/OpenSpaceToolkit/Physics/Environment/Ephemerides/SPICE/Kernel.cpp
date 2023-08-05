@@ -106,7 +106,8 @@ Kernel::Type Kernel::TypeFromString(const String& aString)
         {"SPK", Kernel::Type::SPK},
         {"BPCK", Kernel::Type::BPCK},
         {"CK", Kernel::Type::CK},
-        {"BEK", Kernel::Type::BEK}};
+        {"BEK", Kernel::Type::BEK}
+    };
 
     return stringTypeMap.at(aString);
 }
@@ -127,7 +128,8 @@ String Kernel::StringFromType(const Kernel::Type& aType)
         {Kernel::Type::SPK, "SPK"},
         {Kernel::Type::BPCK, "BPCK"},
         {Kernel::Type::CK, "CK"},
-        {Kernel::Type::BEK, "BEK"}};
+        {Kernel::Type::BEK, "BEK"}
+    };
 
     return typeStringMap.at(aType);
 }

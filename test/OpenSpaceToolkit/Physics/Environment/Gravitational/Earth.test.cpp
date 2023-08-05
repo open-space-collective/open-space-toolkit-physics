@@ -611,7 +611,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAtWi
         for (const auto& testCase : testCases)
         {
             const EarthGravitationalModel earthGravitationalModel = {
-                std::get<0>(testCase), Directory::Undefined(), std::get<1>(testCase), std::get<2>(testCase)};
+                std::get<0>(testCase), Directory::Undefined(), std::get<1>(testCase), std::get<2>(testCase)
+            };
 
             const Vector3d position = std::get<3>(testCase);
             const Instant instant = std::get<4>(testCase);
@@ -683,7 +684,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAtST
         for (const auto& testCase : testCases)
         {
             const EarthGravitationalModel earthGravitationalModel = {
-                std::get<0>(testCase), Directory::Undefined(), std::get<1>(testCase), std::get<2>(testCase)};
+                std::get<0>(testCase), Directory::Undefined(), std::get<1>(testCase), std::get<2>(testCase)
+            };
 
             const Instant instant = Instant::DateTime(DateTime::Parse(std::get<3>(testCase)), Scale::UTC);
             const Vector3d position = std::get<4>(testCase);

@@ -200,7 +200,8 @@ Velocity Frame::getVelocityIn(const Shared<const Frame>& aFrameSPtr, const Insta
     return {
         this->getTransformTo(aFrameSPtr, anInstant).applyToVelocity(Vector3d::Zero(), Vector3d::Zero()),
         Velocity::Unit::MeterPerSecond,
-        aFrameSPtr};
+        aFrameSPtr
+    };
 }
 
 Axes Frame::getAxesIn(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const

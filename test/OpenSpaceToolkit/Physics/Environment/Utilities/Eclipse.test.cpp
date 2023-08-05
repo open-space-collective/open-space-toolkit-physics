@@ -95,7 +95,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utilities_Eclipse, EclipseIntervalsAtP
                 File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Utilities/Eclipse/"
                                        "EclipseIntervalsAtPosition/Target_5 Eclipse.csv")),
                 Duration::Minutes(2.0)  // [TBM] Should improve precision
-            }};
+            }
+        };
 
         for (const auto& referenceScenario : referenceScenarios)
         {

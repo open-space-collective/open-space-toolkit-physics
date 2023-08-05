@@ -55,7 +55,8 @@ String SPICE::StringFromObject(const SPICE::Object& anObject)
         {SPICE::Object::Jupiter, "Jupiter"},
         {SPICE::Object::Saturn, "Saturn"},
         {SPICE::Object::Uranus, "Uranus"},
-        {SPICE::Object::Neptune, "Neptune"}};
+        {SPICE::Object::Neptune, "Neptune"}
+    };
 
     return objectStringMap.at(anObject);
 }

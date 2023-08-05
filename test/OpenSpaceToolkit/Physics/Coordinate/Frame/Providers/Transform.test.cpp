@@ -333,7 +333,8 @@ TEST_P(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Validation
 
         {
             const Vector3d referenceToFrame2 = {
-                referenceRow[1].accessReal(), referenceRow[2].accessReal(), referenceRow[3].accessReal()};
+                referenceRow[1].accessReal(), referenceRow[2].accessReal(), referenceRow[3].accessReal()
+            };
             const Vector3d referenceToFrame1 = -1 * referenceToFrame2;
 
             const Vector3d toFrame2 = transformToFrame2.getTranslation();
@@ -362,7 +363,8 @@ TEST_P(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Validation
 
         {
             const Vector3d referenceToFrame2 = {
-                referenceRow[4].accessReal(), referenceRow[5].accessReal(), referenceRow[6].accessReal()};
+                referenceRow[4].accessReal(), referenceRow[5].accessReal(), referenceRow[6].accessReal()
+            };
             const Vector3d referenceToFrame1 = -1 * referenceToFrame2;
 
             const Vector3d toFrame2 = transformToFrame2.getVelocity();
@@ -475,7 +477,8 @@ TEST_P(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Validation
 
         {
             const Vector3d referenceToFrame2 = {
-                referenceRow[11].accessReal(), referenceRow[12].accessReal(), referenceRow[13].accessReal()};
+                referenceRow[11].accessReal(), referenceRow[12].accessReal(), referenceRow[13].accessReal()
+            };
             const Vector3d referenceToFrame1 = -1 * referenceToFrame2;
 
             const Vector3d toFrame2 = transformToFrame2.getAngularVelocity();

@@ -19,7 +19,8 @@ namespace gravitational
 using SphericalGravitationalModel = ostk::physics::environment::gravitational::Spherical;
 
 const Model::Parameters Moon::Spherical = {
-    {4902.8000e9, GravitationalParameterSIUnit}, Length::Meters(1738.14e3), 0.00125, 0.0, 0.0};
+    {4902.8000e9, GravitationalParameterSIUnit}, Length::Meters(1738.14e3), 0.00125, 0.0, 0.0
+};
 
 class Moon::Impl
 {

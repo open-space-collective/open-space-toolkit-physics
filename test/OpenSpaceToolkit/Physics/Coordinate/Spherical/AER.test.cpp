@@ -266,13 +266,17 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, FromPositionToPosition
                 const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].accessString()), Scale::UTC);
 
                 const Vector3d reference_fromPosition_ITRF = {
-                    referenceRow[1].accessReal(), referenceRow[2].accessReal(), referenceRow[3].accessReal()};
+                    referenceRow[1].accessReal(), referenceRow[2].accessReal(), referenceRow[3].accessReal()
+                };
                 const Vector3d reference_fromPosition_LLA = {
-                    referenceRow[4].accessReal(), referenceRow[5].accessReal(), referenceRow[6].accessReal()};
+                    referenceRow[4].accessReal(), referenceRow[5].accessReal(), referenceRow[6].accessReal()
+                };
                 const Vector3d reference_toPosition_ITRF = {
-                    referenceRow[7].accessReal(), referenceRow[8].accessReal(), referenceRow[9].accessReal()};
+                    referenceRow[7].accessReal(), referenceRow[8].accessReal(), referenceRow[9].accessReal()
+                };
                 const Vector3d reference_toPosition_LLA = {
-                    referenceRow[10].accessReal(), referenceRow[11].accessReal(), referenceRow[12].accessReal()};
+                    referenceRow[10].accessReal(), referenceRow[11].accessReal(), referenceRow[12].accessReal()
+                };
 
                 (void)reference_fromPosition_LLA;
                 (void)reference_toPosition_LLA;

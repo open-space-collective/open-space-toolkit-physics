@@ -126,7 +126,8 @@ Axes Axes::inFrame(const Shared<const Frame>& aFrameSPtr, const Instant& anInsta
         transform.applyToVector(x_).normalized(),
         transform.applyToVector(y_).normalized(),
         transform.applyToVector(z_).normalized(),
-        aFrameSPtr};
+        aFrameSPtr
+    };
 }
 
 Axes Axes::Undefined()

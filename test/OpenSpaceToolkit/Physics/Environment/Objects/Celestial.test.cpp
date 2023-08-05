@@ -86,29 +86,22 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, accessModel)
     const String name = "Some Planet";
     const Celestial::Type type = Celestial::Type::Earth;
     const Derived gravitationalParameter = {
-        1.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)};
+        1.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)
+    };
     const Length equatorialRadius = Length::Kilometers(1000.0);
     const Real flattening = 0.0;
     const Real j2 = 0.0;
     const Real j4 = 0.0;
 
     const EarthGravitationalModel::Parameters gravitationalModelParameters = {
-        gravitationalParameter, equatorialRadius, flattening, j2, j4};
+        gravitationalParameter, equatorialRadius, flattening, j2, j4
+    };
 
     const Shared<Ephemeris> ephemeris = std::make_shared<Analytical>(Frame::ITRF());
     {
         const Celestial celestial = {
-            name,
-            type,
-            gravitationalParameter,
-            equatorialRadius,
-            flattening,
-            j2,
-            j4,
-            nullptr,
-            nullptr,
-            nullptr,
-            nullptr};
+            name, type, gravitationalParameter, equatorialRadius, flattening, j2, j4, nullptr, nullptr, nullptr, nullptr
+        };
 
         EXPECT_ANY_THROW(celestial.accessGravitationalModel());
         EXPECT_ANY_THROW(celestial.accessMagneticModel());
@@ -127,7 +120,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, accessModel)
             ephemeris,
             nullptr,
             nullptr,
-            nullptr};
+            nullptr
+        };
 
         EXPECT_EQ(celestial.accessGravitationalModel(), nullptr);
         EXPECT_EQ(celestial.accessMagneticModel(), nullptr);
@@ -150,7 +144,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, accessModel)
             ephemeris,
             gravitationalModel,
             magneticModel,
-            atmosphericModel};
+            atmosphericModel
+        };
 
         EXPECT_NO_THROW(celestial.accessGravitationalModel());
         EXPECT_NO_THROW(celestial.accessMagneticModel());
@@ -163,14 +158,16 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, modelIsDefined)
     const String name = "Some Planet";
     const Celestial::Type type = Celestial::Type::Earth;
     const Derived gravitationalParameter = {
-        1.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)};
+        1.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)
+    };
     const Length equatorialRadius = Length::Kilometers(1000.0);
     const Real flattening = 0.0;
     const Real j2 = 0.0;
     const Real j4 = 0.0;
 
     const EarthGravitationalModel::Parameters gravitationalModelParameters = {
-        gravitationalParameter, equatorialRadius, flattening, j2, j4};
+        gravitationalParameter, equatorialRadius, flattening, j2, j4
+    };
 
     const Shared<Ephemeris> ephemeris = std::make_shared<Analytical>(Frame::ITRF());
 
@@ -190,7 +187,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, modelIsDefined)
             ephemeris,
             nullptr,
             nullptr,
-            nullptr};
+            nullptr
+        };
 
         EXPECT_FALSE(celestial.gravitationalModelIsDefined());
         EXPECT_FALSE(celestial.magneticModelIsDefined());
@@ -216,7 +214,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, modelIsDefined)
             ephemeris,
             undefinedGravitationalModel,
             undefinedMagneticModel,
-            undefinedAtmosphericModel};
+            undefinedAtmosphericModel
+        };
 
         EXPECT_FALSE(celestial.gravitationalModelIsDefined());
         EXPECT_FALSE(celestial.magneticModelIsDefined());
@@ -239,7 +238,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, modelIsDefined)
             ephemeris,
             gravitationalModel,
             magneticModel,
-            atmosphericModel};
+            atmosphericModel
+        };
 
         EXPECT_TRUE(celestial.gravitationalModelIsDefined());
         EXPECT_TRUE(celestial.magneticModelIsDefined());
@@ -262,7 +262,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, modelIsDefined)
             nullptr,
             gravitationalModel,
             magneticModel,
-            atmosphericModel};
+            atmosphericModel
+        };
 
         EXPECT_ANY_THROW(celestial.gravitationalModelIsDefined());
         EXPECT_ANY_THROW(celestial.magneticModelIsDefined());
@@ -276,14 +277,16 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetGravitationalFie
         const String name = "Some Planet";
         const Celestial::Type type = Celestial::Type::Earth;
         const Derived gravitationalParameter = {
-            1.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)};
+            1.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)
+        };
         const Length equatorialRadius = Length::Kilometers(1000.0);
         const Real flattening = 0.0;
         const Real j2 = 0.0;
         const Real j4 = 0.0;
 
         const EarthGravitationalModel::Parameters gravitationalModelParameters = {
-            gravitationalParameter, equatorialRadius, flattening, j2, j4};
+            gravitationalParameter, equatorialRadius, flattening, j2, j4
+        };
 
         const Shared<Ephemeris> ephemeris = std::make_shared<Analytical>(Frame::ITRF());
         const Shared<GravitationalModel> gravitationalModel = std::make_shared<Spherical>(gravitationalModelParameters);
@@ -300,7 +303,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetGravitationalFie
             ephemeris,
             gravitationalModel,
             nullptr,
-            nullptr};
+            nullptr
+        };
 
         {
             const Position position = {{1.0, 0.0, 0.0}, Length::Unit::Meter, celestial.accessFrame()};
@@ -355,7 +359,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetMagneticFieldAt)
         const String name = "Some Planet";
         const Celestial::Type type = Celestial::Type::Earth;
         const Derived gravitationalParameter = {
-            1.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)};
+            1.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)
+        };
         const Length equatorialRadius = Length::Kilometers(1000.0);
         const Real flattening = 0.0;
         const Real j2 = 0.0;
@@ -375,7 +380,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetMagneticFieldAt)
             ephemeris,
             nullptr,
             magneticModel,
-            nullptr};
+            nullptr
+        };
 
         {
             const Position position = {{1.0, 0.0, 0.0}, Length::Unit::Meter, celestial.accessFrame()};
@@ -421,7 +427,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetAtmosphericDensi
         const String name = "Some Planet";
         const Celestial::Type type = Celestial::Type::Earth;
         const Derived gravitationalParameter = {
-            1.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)};
+            1.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)
+        };
         const Real j2 = 0.0;
         const Real j4 = 0.0;
         const Shared<Ephemeris> ephemeris = std::make_shared<Analytical>(Frame::ITRF());
@@ -439,7 +446,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetAtmosphericDensi
             ephemeris,
             nullptr,
             nullptr,
-            atmosphericModel};
+            atmosphericModel
+        };
 
         {
             const Position position = {
@@ -448,7 +456,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetAtmosphericDensi
                         EarthGravitationalModel::EGM2008.equatorialRadius_, EarthGravitationalModel::EGM2008.flattening_
                     ),
                 Position::Unit::Meter,
-                Frame::ITRF()};
+                Frame::ITRF()
+            };
 
             const Scalar atmosphericDensityValue = celestial.getAtmosphericDensityAt(position, instant);
 
@@ -468,7 +477,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetAtmosphericDensi
                         EarthGravitationalModel::EGM2008.equatorialRadius_, EarthGravitationalModel::EGM2008.flattening_
                     ),
                 Position::Unit::Meter,
-                Frame::ITRF()};
+                Frame::ITRF()
+            };
 
             const Scalar atmosphericDensityValue = celestial.getAtmosphericDensityAt(position, instant);
 
@@ -488,7 +498,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetAtmosphericDensi
                         EarthGravitationalModel::EGM2008.equatorialRadius_, EarthGravitationalModel::EGM2008.flattening_
                     ),
                 Position::Unit::Meter,
-                Frame::ITRF()};
+                Frame::ITRF()
+            };
 
             const Scalar atmosphericDensityValue = celestial.getAtmosphericDensityAt(position, instant);
 
@@ -512,7 +523,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetAtmosphericDensi
                         EarthGravitationalModel::EGM2008.equatorialRadius_, EarthGravitationalModel::EGM2008.flattening_
                     ),
                 Position::Unit::Meter,
-                Frame::ITRF()};
+                Frame::ITRF()
+            };
 
             EXPECT_ANY_THROW(Celestial::Undefined().getAtmosphericDensityAt(position, instant));
         }
@@ -524,7 +536,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetAtmosphericDensi
                         EarthGravitationalModel::EGM2008.equatorialRadius_, EarthGravitationalModel::EGM2008.flattening_
                     ),
                 Position::Unit::Meter,
-                Frame::ITRF()};
+                Frame::ITRF()
+            };
 
             const Celestial celestialWithoutAtmospheric = {
                 name,
@@ -537,7 +550,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetAtmosphericDensi
                 ephemeris,
                 nullptr,
                 nullptr,
-                nullptr};
+                nullptr
+            };
 
             EXPECT_ANY_THROW(celestialWithoutAtmospheric.getAtmosphericDensityAt(position, instant));
         }

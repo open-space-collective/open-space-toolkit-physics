@@ -62,7 +62,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Exponential, getDens
                 EarthGravitationalModel::EGM2008.equatorialRadius_, EarthGravitationalModel::EGM2008.flattening_
             ),
             Position::Unit::Meter,
-            Frame::ITRF()};
+            Frame::ITRF()
+        };
 
         const Real density = exponential.getDensityAt(position, Instant::J2000());
 

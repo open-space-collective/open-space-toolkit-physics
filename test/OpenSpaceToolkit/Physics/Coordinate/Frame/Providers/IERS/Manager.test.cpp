@@ -138,7 +138,8 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetPola
              1e-8},
             {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Manager/"
                                     "GetPolarMotionAt/Pole Wander 3.csv")),
-             1e-8}};
+             1e-8}
+        };
 
         for (const auto& referenceScenario : referenceScenarios)
         {

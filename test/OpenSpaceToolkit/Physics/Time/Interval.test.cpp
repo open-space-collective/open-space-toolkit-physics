@@ -353,7 +353,8 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, GenerateGrid)
         const Interval interval = {
             Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT),
             Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT),
-            Interval::Type::Closed};
+            Interval::Type::Closed
+        };
         const Duration step = Duration::Minutes(0.5);
 
         const Array<Instant> grid = interval.generateGrid(step);
@@ -372,7 +373,8 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, GenerateGrid)
         const Interval interval = {
             Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT),
             Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT),
-            Interval::Type::Closed};
+            Interval::Type::Closed
+        };
         const Duration step = Duration::Minutes(1.0);
 
         const Array<Instant> grid = interval.generateGrid(step);
@@ -390,7 +392,8 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, GenerateGrid)
         const Interval interval = {
             Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT),
             Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT),
-            Interval::Type::Closed};
+            Interval::Type::Closed
+        };
         const Duration step = Duration::Minutes(0.5);
 
         const Array<Instant> grid = interval.generateGrid(step);
@@ -402,7 +405,8 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, GenerateGrid)
         const Interval interval = {
             Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT),
             Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT),
-            Interval::Type::Closed};
+            Interval::Type::Closed
+        };
         const Duration step = Duration::Minutes(2.0);
 
         const Array<Instant> grid = interval.generateGrid(step);
@@ -420,7 +424,8 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, GenerateGrid)
         const Interval interval = {
             Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT),
             Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT),
-            Interval::Type::Closed};
+            Interval::Type::Closed
+        };
         const Duration step = Duration::Minutes(0.6);
 
         const Array<Instant> grid = interval.generateGrid(step);
@@ -441,7 +446,8 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, GenerateGrid)
         const Interval interval = {
             Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT),
             Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT),
-            Interval::Type::Closed};
+            Interval::Type::Closed
+        };
         const Duration step = Duration::Minutes(-0.5);
 
         const Array<Instant> grid = interval.generateGrid(step);
@@ -460,7 +466,8 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, GenerateGrid)
         const Interval interval = {
             Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT),
             Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT),
-            Interval::Type::Closed};
+            Interval::Type::Closed
+        };
         const Duration step = Duration::Minutes(-1.0);
 
         const Array<Instant> grid = interval.generateGrid(step);
@@ -478,7 +485,8 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, GenerateGrid)
         const Interval interval = {
             Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT),
             Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT),
-            Interval::Type::Closed};
+            Interval::Type::Closed
+        };
         const Duration step = Duration::Minutes(-0.5);
 
         const Array<Instant> grid = interval.generateGrid(step);
@@ -490,7 +498,8 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, GenerateGrid)
         const Interval interval = {
             Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT),
             Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT),
-            Interval::Type::Closed};
+            Interval::Type::Closed
+        };
         const Duration step = Duration::Minutes(-2.0);
 
         const Array<Instant> grid = interval.generateGrid(step);
@@ -508,7 +517,8 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, GenerateGrid)
         const Interval interval = {
             Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT),
             Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT),
-            Interval::Type::Closed};
+            Interval::Type::Closed
+        };
         const Duration step = Duration::Minutes(-0.6);
 
         const Array<Instant> grid = interval.generateGrid(step);
@@ -539,7 +549,8 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, GenerateGrid)
         const Interval interval = {
             Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT),
             Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT),
-            Interval::Type::Closed};
+            Interval::Type::Closed
+        };
         const Duration step = Duration::Minutes(0.0);
 
         EXPECT_ANY_THROW(interval.generateGrid(step));

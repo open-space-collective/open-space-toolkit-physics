@@ -141,7 +141,8 @@ Array<Kernel> Manager::fetchMatchingKernels(const std::regex& aRegex) const
             }
 
             const Kernel fetchedKernel = {
-                Kernel::TypeFromFileExtension(fetchedKernelFile.getExtension()), fetchedKernelFile};
+                Kernel::TypeFromFileExtension(fetchedKernelFile.getExtension()), fetchedKernelFile
+            };
 
             matchingKernels.add(fetchedKernel);
         }
@@ -363,7 +364,8 @@ void Manager::fetchIndexAt(const URL& aUrl)
             std::istringstream iss {listingLine};
 
             std::vector<std::string> tokens {
-                std::istream_iterator<std::string> {iss}, std::istream_iterator<std::string> {}};
+                std::istream_iterator<std::string> {iss}, std::istream_iterator<std::string> {}
+            };
 
             if (tokens.size() >= 9)
             {

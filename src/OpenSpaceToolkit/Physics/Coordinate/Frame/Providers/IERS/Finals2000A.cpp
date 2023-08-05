@@ -283,7 +283,8 @@ Finals2000A::Data Finals2000A::getDataAt(const Instant& anInstant) const
             y_B,
             ut1MinusUtc_B,
             dx_B,
-            dy_B};
+            dy_B
+        };
 
         return data;
     }
@@ -429,7 +430,8 @@ Finals2000A Finals2000A::Load(const fs::File& aFile)
             y_B,
             ut1MinusUtc_B,
             dx_B,
-            dy_B};
+            dy_B
+        };
 
         finals2000a.data_.insert({mjd, data});
 

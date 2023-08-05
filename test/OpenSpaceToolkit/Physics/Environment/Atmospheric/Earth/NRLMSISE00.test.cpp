@@ -245,7 +245,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
                     EarthGravitationalModel::WGS84.equatorialRadius_, EarthGravitationalModel::WGS84.flattening_
                 ),
                 Position::Unit::Meter,
-                Frame::ITRF()};
+                Frame::ITRF()
+            };
 
             Instant instant = Instant::DateTime(datetime, Scale::UTC);
 
@@ -300,7 +301,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
                     EarthGravitationalModel::WGS84.equatorialRadius_, EarthGravitationalModel::WGS84.flattening_
                 ),
                 Position::Unit::Meter,
-                Frame::ITRF()};
+                Frame::ITRF()
+            };
 
             Instant instant = Instant::DateTime(datetime, Scale::UTC);
 
@@ -351,7 +353,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
                     EarthGravitationalModel::WGS84.equatorialRadius_, EarthGravitationalModel::WGS84.flattening_
                 ),
                 Position::Unit::Meter,
-                Frame::ITRF()};
+                Frame::ITRF()
+            };
 
             Instant instant = Instant::DateTime(datetime, Scale::UTC);
 
@@ -406,7 +409,8 @@ TEST(
                     EarthGravitationalModel::WGS84.equatorialRadius_, EarthGravitationalModel::WGS84.flattening_
                 ),
                 Position::Unit::Meter,
-                Frame::ITRF()};
+                Frame::ITRF()
+            };
 
             Instant instant = Instant::DateTime(datetime, Scale::UTC);
 

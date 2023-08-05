@@ -46,7 +46,8 @@ Transform Static::getTransformAt(const Instant& anInstant) const
         transform_.accessVelocity(),
         transform_.accessOrientation(),
         transform_.accessAngularVelocity(),
-        Transform::Type::Passive};
+        Transform::Type::Passive
+    };
 }
 
 }  // namespace provider

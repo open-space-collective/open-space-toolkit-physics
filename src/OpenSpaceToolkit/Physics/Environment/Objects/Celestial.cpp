@@ -447,7 +447,8 @@ Celestial Celestial::Undefined()
         nullptr,
         nullptr,
         nullptr,
-        nullptr};
+        nullptr
+    };
 }
 
 String Celestial::StringFromFrameType(const Celestial::FrameType& aFrameType)

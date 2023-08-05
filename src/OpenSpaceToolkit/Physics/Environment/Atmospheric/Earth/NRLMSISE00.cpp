@@ -192,7 +192,8 @@ Unique<NRLMSISE00::nrlmsise_input> NRLMSISE00::computeNRLMSISE00Input(
                 EarthGravitationalModel::WGS84.equatorialRadius_, EarthGravitationalModel::WGS84.flattening_
             ),
             Position::Unit::Meter,
-            Frame::ITRF()};
+            Frame::ITRF()
+        };
 
         const Position sunPositionITRF = aSunPosition.inFrame(Frame::ITRF(), anInstant);
 
