@@ -5,25 +5,19 @@
 #include <fstream>
 #include <numeric>
 #include <thread>
+#include <experimental/filesystem>
 
-#include <OpenSpaceToolkit/Core/Containers/Map.hpp>
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
-#include <OpenSpaceToolkit/Core/Types/Integer.hpp>
 #include <OpenSpaceToolkit/Core/Types/String.hpp>
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
 
 #include <OpenSpaceToolkit/IO/IP/TCP/HTTP/Client.hpp>
 
-#include <OpenSpaceToolkit/Physics/Data/ManagerBase.hpp>
-#include <OpenSpaceToolkit/Physics/Data/Manifest.hpp>
-#include <OpenSpaceToolkit/Physics/Time/Date.hpp>
-#include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
-#include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
-#include <OpenSpaceToolkit/Physics/Time/Time.hpp>
+#include <OpenSpaceToolkit/Physics/Data/Manifest.hpp>
 
-#include <experimental/filesystem>
+#include <OpenSpaceToolkit/Physics/Data/ManagerBase.hpp>
 
 namespace ostk
 {
@@ -34,6 +28,12 @@ namespace data
 
 using ostk::core::types::String;
 using ostk::core::fs::Path;
+using ostk::core::types::String;
+
+using ostk::io::ip::tcp::http::Client;
+
+using ostk::physics::time::Scale;
+using ostk::physics::time::Instant;
 
 const String dataManifestFileName = "manifest.json";
 
@@ -53,14 +53,14 @@ void ManagerBase::loadManifest_(const Manifest& aManifest)
         throw ostk::core::error::runtime::Undefined("Manifest");
     }
 
-    std::lock_guard<std::mutex> lock {mutex_};
+    std::lock_guard<std::mutex> lock {manifestMutex_};
 
     this->manifest_ = aManifest;
 }
 
 void ManagerBase::resetManifest_()
 {
-    std::lock_guard<std::mutex> lock {mutex_};
+    std::lock_guard<std::mutex> lock {manifestMutex_};
 
     manifestUpdateTimestamp_ = Instant::Undefined();
 
@@ -71,17 +71,17 @@ void ManagerBase::clearManifestRepository_()
 {
     manifestRepository_.remove();
 
-    this->setupBase();
+    this->setupBase_();
 }
 
 ManagerBase::ManagerBase()
-    : remoteUrl(URL::Undefined()),
+    : remoteUrl(DefaultRemoteUrl_()),
       manifest_(Manifest::Undefined()),
       manifestUpdateTimestamp_(Instant::Undefined()),
       manifestRepository_(ManagerBase::DefaultManifestRepository_()),
       manifestRepositoryLockTimeout_(ManagerBase::DefaultManifestRepositoryLockTimeout_())
 {
-    this->setupBase();
+    this->setupBase_();
 }
 
 bool ManagerBase::isManifestRepositoryLocked_() const
@@ -91,22 +91,17 @@ bool ManagerBase::isManifestRepositoryLocked_() const
 
 File ManagerBase::getManifestRepositoryLockFile_() const
 {
-    using ostk::core::fs::Path;
-
     return File::Path(manifestRepository_.getPath() + Path::Parse(".lock"));
 }
 
-void ManagerBase::setupBase()
+void ManagerBase::setupBase_()
 {
-    using ostk::core::fs::Path;
-    using ostk::core::fs::File;
-
     if (!manifestRepository_.exists())
     {
         manifestRepository_.create();
     }
 
-    remoteUrl = URL::Parse(OSTK_PHYSICS_DATA_REMOTE_URL);
+    remoteUrl = DefaultRemoteUrl_();
 
     if (!remoteUrl.isDefined())
     {
@@ -133,30 +128,13 @@ Manifest ManagerBase::getUpdatedManifest_()
 
 File ManagerBase::fetchLatestManifestFile_()
 {
-    using ostk::core::types::Uint8;
-    using ostk::core::types::Uint16;
-    using ostk::core::types::Integer;
-    using ostk::core::types::String;
-    using ostk::core::ctnr::Map;
-    using ostk::core::fs::Path;
-
-    using ostk::io::ip::tcp::http::Client;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Date;
-    using ostk::physics::time::Time;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::time::Instant;
 
     Directory temporaryDirectory = Directory::Path(manifestRepository_.getPath() + Path::Parse(temporaryDirectoryName));
 
     this->lockManifestRepository_(manifestRepositoryLockTimeout_);
 
-    // TBI: fix when IO::Client supports redirects
     const URL latestDataManifestUrl = URL::Parse(OSTK_PHYSICS_DATA_REMOTE_URL) + dataManifestFileName;
 
-    // const URL latestDataManifestUrl =
-    // URL::Parse("https://media.githubusercontent.com/media/open-space-collective/open-space-toolkit-data/main/data/manifest.json");
     File latestDataManifestFile = File::Undefined();
     Directory destinationDirectory = Directory::Undefined();
 
@@ -301,8 +279,6 @@ void ManagerBase::unlockManifestRepository_()
 
 Directory ManagerBase::DefaultManifestRepository_()
 {
-    using ostk::core::fs::Path;
-
     static const Directory defaultLocalRepository =
         Directory::Path(Path::Parse(OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY));
 
@@ -326,6 +302,20 @@ Duration ManagerBase::DefaultManifestRepositoryLockTimeout_()
     }
 
     return defaultLocalRepositoryLockTimeout;
+}
+
+URL ManagerBase::DefaultRemoteUrl_()
+{
+    static const URL defaultRemoteUrl =
+        URL::Parse(OSTK_PHYSICS_DATA_REMOTE_URL);
+
+    if (const char* remoteUrlString =
+            std::getenv("OSTK_PHYSICS_DATA_REMOTE_URL"))
+    {
+        return URL::Parse(remoteUrlString);
+    }
+
+    return defaultRemoteUrl;
 }
 
 }  // namespace data

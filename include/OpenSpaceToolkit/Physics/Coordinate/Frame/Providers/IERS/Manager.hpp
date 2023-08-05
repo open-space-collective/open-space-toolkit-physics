@@ -10,8 +10,6 @@
 #include <OpenSpaceToolkit/Core/Types/Index.hpp>
 #include <OpenSpaceToolkit/Core/Types/Real.hpp>
 
-#include <OpenSpaceToolkit/IO/URL.hpp>
-
 #include <OpenSpaceToolkit/Mathematics/Objects/Vector.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/BulletinA.hpp>
@@ -24,10 +22,6 @@
 #define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY \
     "./.open-space-toolkit/physics/coordinate/frame/providers/iers"
 #define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT 60
-
-// TBR: info about manifest file. Will eventually live in it's own file.
-#define OSTK_PHYSICS_COORDINATE_DATA_MANIFEST_LOCAL_REPOSITORY "./.open-space-toolkit/physics/data/"
-#define OSTK_PHYSICS_COORDINATE_DATA_MANIFEST_LOCAL_REPOSITORY_LOCK_TIMEOUT 60
 
 namespace ostk
 {
@@ -46,8 +40,6 @@ using ostk::core::types::Index;
 using ostk::core::types::Real;
 using ostk::core::ctnr::Array;
 using ostk::core::fs::Directory;
-
-using ostk::io::URL;
 
 using ostk::math::obj::Vector2d;
 
@@ -240,6 +232,8 @@ class Manager : ManagerBase
 
     Array<BulletinA> aBulletins_;
     Array<Finals2000A> finals2000aArray_;
+
+    mutable std::mutex mutex_;
 
     mutable Index aBulletinIndex_;
     mutable Index finals2000aIndex_;

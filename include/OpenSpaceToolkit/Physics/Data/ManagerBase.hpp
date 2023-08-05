@@ -5,18 +5,13 @@
 
 #include <mutex>
 
-#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
-#include <OpenSpaceToolkit/Core/Types/Index.hpp>
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
 
 #include <OpenSpaceToolkit/IO/URL.hpp>
 
-#include <OpenSpaceToolkit/Mathematics/Objects/Vector.hpp>
-
-#include <OpenSpaceToolkit/Physics/Data/Manifest.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Physics/Data/Manifest.hpp>
 
 // Base remote URL for OSTk data files
 #define OSTK_PHYSICS_DATA_REMOTE_URL "https://github.com/open-space-collective/open-space-toolkit-data/raw/main/data/"
@@ -26,6 +21,7 @@
 #define OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY_LOCK_TIMEOUT 60
 
 // Maximum age of the manifest file before it needs to be updated
+// TBI: This can be be made configurable
 #define OSTK_PHYSICS_DATA_MANAGER_MANIFEST_MAX_AGE_HOURS 24
 
 namespace ostk
@@ -35,18 +31,12 @@ namespace physics
 namespace data
 {
 
-using ostk::core::types::Index;
-using ostk::core::types::Real;
-using ostk::core::ctnr::Array;
 using ostk::core::fs::Directory;
 
 using ostk::io::URL;
 
-using ostk::math::obj::Vector2d;
-
 using ostk::physics::time::Instant;
 using ostk::physics::time::Duration;
-
 using ostk::physics::data::Manifest;
 
 /// @brief                      OSTk Data manager base class (thread-safe)
@@ -56,6 +46,7 @@ using ostk::physics::data::Manifest;
 class ManagerBase
 {
    protected:
+
     /// @brief              Check if there are updates for data of a certain name.
     Instant getLastUpdateTimestampFor(const String& aDataName);
 
@@ -63,16 +54,17 @@ class ManagerBase
 
     ManagerBase();
 
-    mutable std::mutex mutex_;
-
    private:
+
     Manifest manifest_;
     mutable Instant manifestUpdateTimestamp_;
 
     Directory manifestRepository_;
     Duration manifestRepositoryLockTimeout_;
 
-    void setupBase();
+    mutable std::mutex manifestMutex_;
+
+    void setupBase_();
 
     File fetchLatestManifestFile_();
 
@@ -94,6 +86,7 @@ class ManagerBase
 
     static Directory DefaultManifestRepository_();
     static Duration DefaultManifestRepositoryLockTimeout_();
+    static URL DefaultRemoteUrl_();
 };
 
 }  // namespace data

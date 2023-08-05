@@ -68,4 +68,8 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manifest, Load)
             File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Data/Manifest/manifest.json"));
         EXPECT_NO_THROW(Manifest::Load(manifestFile));
     }
+
+    {
+        EXPECT_ANY_THROW(File::Path(Path::Parse("/does/not/exist.json")));
+    }
 }

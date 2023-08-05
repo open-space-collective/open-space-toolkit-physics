@@ -18,7 +18,6 @@
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Data/Manifest.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Date.hpp>
-#include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Time.hpp>
@@ -39,6 +38,10 @@ namespace iers
 {
 
 using ostk::core::types::String;
+using ostk::core::fs::Path;
+
+using ostk::io::ip::tcp::http::Client;
+using ostk::io::URL;
 
 const String bulletinAFileName = "ser7.dat";
 const String finals2000AFileName = "finals2000A.data";
@@ -64,15 +67,11 @@ Directory Manager::getLocalRepository() const
 
 Directory Manager::getBulletinADirectory() const
 {
-    using ostk::core::fs::Path;
-
     return Directory::Path(localRepository_.getPath() + Path::Parse("bulletin-A"));
 }
 
 Directory Manager::getFinals2000ADirectory() const
 {
-    using ostk::core::fs::Path;
-
     return Directory::Path(localRepository_.getPath() + Path::Parse("finals-2000A"));
 }
 
@@ -399,12 +398,6 @@ bool Manager::isLocalRepositoryLocked() const
 
 const BulletinA* Manager::accessBulletinAAt(const Instant& anInstant) const
 {
-    using ostk::core::fs::Path;
-
-    using ostk::physics::data::Manifest;
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::time::Instant;
     // Try cache
 
     if (!aBulletins_.isEmpty())
@@ -558,8 +551,6 @@ const Finals2000A* Manager::accessFinals2000AAt(const Instant& anInstant) const
 
 File Manager::getLocalRepositoryLockFile() const
 {
-    using ostk::core::fs::Path;
-
     return File::Path(localRepository_.getPath() + Path::Parse(".lock"));
 }
 
@@ -567,8 +558,6 @@ File Manager::getLatestBulletinAFile() const
 {
     // Parse Bulletin A Directories, e.g.,
     // `.open-space-toolkit/physics/coordinate/frame/providers/iers/Bulletin-A`.
-
-    using ostk::core::fs::Path;
 
     if (this->getBulletinADirectory().containsFileWithName(bulletinAFileName))
     {
@@ -583,8 +572,6 @@ File Manager::getLatestFinals2000AFile() const
     // Parse Bulletin A Directories, e.g.,
     // `.open-space-toolkit/physics/coordinate/frame/providers/iers/Bulletin-A`.
 
-    using ostk::core::fs::Path;
-
     if (this->getFinals2000ADirectory().containsFileWithName(finals2000AFileName))
     {
         return File::Path(this->getFinals2000ADirectory().getPath() + Path::Parse(finals2000AFileName));
@@ -595,9 +582,6 @@ File Manager::getLatestFinals2000AFile() const
 
 void Manager::setup()
 {
-    using ostk::core::fs::Path;
-    using ostk::core::fs::File;
-
     if (!localRepository_.exists())
     {
         localRepository_.create();
@@ -646,20 +630,6 @@ void Manager::loadFinals2000A_(const Finals2000A& aFinals2000A)
 
 File Manager::fetchLatestBulletinA_()
 {
-    using ostk::core::types::Uint8;
-    using ostk::core::types::Uint16;
-    using ostk::core::types::Integer;
-    using ostk::core::types::String;
-    using ostk::core::ctnr::Map;
-    using ostk::core::fs::Path;
-
-    using ostk::io::ip::tcp::http::Client;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Date;
-    using ostk::physics::time::Time;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::time::Instant;
 
     std::cout << "Fetching latest Bulletin A..." << std::endl;
 
@@ -764,20 +734,6 @@ File Manager::fetchLatestBulletinA_()
 
 File Manager::fetchLatestFinals2000A_()
 {
-    using ostk::core::types::Uint8;
-    using ostk::core::types::Uint16;
-    using ostk::core::types::Integer;
-    using ostk::core::types::String;
-    using ostk::core::ctnr::Map;
-    using ostk::core::fs::Path;
-
-    using ostk::io::ip::tcp::http::Client;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Date;
-    using ostk::physics::time::Time;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::time::Instant;
 
     std::cout << "Fetching latest Finals 2000A..." << std::endl;
 
