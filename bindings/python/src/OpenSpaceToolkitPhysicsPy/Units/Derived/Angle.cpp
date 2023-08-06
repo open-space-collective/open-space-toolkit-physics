@@ -6,7 +6,6 @@ inline void OpenSpaceToolkitPhysicsPy_Units_Derived_Angle(pybind11::module& aMod
 {
     using namespace pybind11;
 
-    using ostk::core::types::Integer;
     using ostk::core::types::Real;
 
     using ostk::math::obj::Vector2d;
@@ -16,17 +15,16 @@ inline void OpenSpaceToolkitPhysicsPy_Units_Derived_Angle(pybind11::module& aMod
 
     class_<Angle> angle(aModule, "Angle");
 
+    // Define constructor
     angle
-        .def(init<Real, Angle::Unit>())
+        .def(init<Real, Angle::Unit>(), arg("value"), arg("unit"))
 
+        // Define methods
         .def(self == self)
         .def(self != self)
 
         .def(self + self)
         .def(self - self)
-
-        .def(self += self)
-        .def(self -= self)
 
         .def(+self)
         .def(-self)
@@ -64,6 +62,9 @@ inline void OpenSpaceToolkitPhysicsPy_Units_Derived_Angle(pybind11::module& aMod
             is_operator()
         )
 
+        .def(self += self)
+        .def(self -= self)
+
         .def("__str__", &(shiftToString<Angle>))
         .def(
             "__repr__",
@@ -77,70 +78,69 @@ inline void OpenSpaceToolkitPhysicsPy_Units_Derived_Angle(pybind11::module& aMod
         .def("is_zero", &Angle::isZero)
 
         .def("get_unit", &Angle::getUnit)
-        .def("in_unit", &Angle::in)
+        .def("in_unit", &Angle::in, arg("unit"))
+        .def("in_radians", overload_cast<>(&Angle::inRadians, const_))
         .def(
             "in_radians",
-            +[](const Angle& anAngle) -> Real
-            {
-                return anAngle.inRadians();
-            }
+            overload_cast<const Real&, const Real&>(&Angle::inRadians, const_),
+            arg("lower_bound"),
+            arg("upper_bound")
         )
+        .def("in_degrees", overload_cast<>(&Angle::inDegrees, const_))
         .def(
             "in_degrees",
-            +[](const Angle& anAngle) -> Real
-            {
-                return anAngle.inDegrees();
-            }
+            overload_cast<const Real&, const Real&>(&Angle::inDegrees, const_),
+            arg("lower_bound"),
+            arg("upper_bound")
         )
+        .def("in_arcminutes", overload_cast<>(&Angle::inArcminutes, const_))
         .def(
             "in_arcminutes",
-            +[](const Angle& anAngle) -> Real
-            {
-                return anAngle.inArcminutes();
-            }
+            overload_cast<const Real&, const Real&>(&Angle::inArcminutes, const_),
+            arg("lower_bound"),
+            arg("upper_bound")
         )
+        .def("in_arcseconds", overload_cast<>(&Angle::inArcseconds, const_))
         .def(
             "in_arcseconds",
-            +[](const Angle& anAngle) -> Real
-            {
-                return anAngle.inArcseconds();
-            }
+            overload_cast<const Real&, const Real&>(&Angle::inArcseconds, const_),
+            arg("lower_bound"),
+            arg("upper_bound")
         )
         .def("in_revolutions", &Angle::inRevolutions)
-        .def("to_string", &Angle::toString, "aPrecision"_a = Integer::Undefined())
+        .def("to_string", &Angle::toString, arg("do_sanitize") = false)
 
+        // Define static methods
         .def_static("undefined", &Angle::Undefined)
         .def_static("zero", &Angle::Zero)
         .def_static("half_pi", &Angle::HalfPi)
         .def_static("pi", &Angle::Pi)
         .def_static("two_pi", &Angle::TwoPi)
-        .def_static("radians", &Angle::Radians)
-        .def_static("degrees", &Angle::Degrees)
-        .def_static("arcminutes", &Angle::Arcminutes)
-        .def_static("arcseconds", &Angle::Arcseconds)
-        .def_static("revolutions", &Angle::Revolutions)
-        .def(
-            "between_vector2d",
-            +[](const Vector2d& aFirstVector, const Vector2d& aSecondVector) -> Angle
-            {
-                return Angle::Between(aFirstVector, aSecondVector);
-            }
+        .def_static("radians", &Angle::Radians, arg("value"))
+        .def_static("degrees", &Angle::Degrees, arg("value"))
+        .def_static("arcminutes", &Angle::Arcminutes, arg("value"))
+        .def_static("arcseconds", &Angle::Arcseconds, arg("value"))
+        .def_static("revolutions", &Angle::Revolutions, arg("value"))
+        .def_static(
+            "between",
+            overload_cast<const Vector2d&, const Vector2d&>(&Angle::Between),
+            arg("first_vector"),
+            arg("second_vector")
         )
-        .def(
-            "between_vector3d",
-            +[](const Vector3d& aFirstVector, const Vector3d& aSecondVector) -> Angle
-            {
-                return Angle::Between(aFirstVector, aSecondVector);
-            }
+        .def_static(
+            "between",
+            overload_cast<const Vector3d&, const Vector3d&>(&Angle::Between),
+            arg("first_vector"),
+            arg("second_vector")
         )
-        .def_static("parse", &Angle::Parse)
-        .def_static("string_from_unit", &Angle::StringFromUnit)
-        .def_static("symbol_from_unit", &Angle::SymbolFromUnit)
+
+        .def_static("string_from_unit", &Angle::StringFromUnit, arg("unit"))
+        .def_static("symbol_from_unit", &Angle::SymbolFromUnit, arg("unit"))
 
         ;
 
+    // Define emuneration unit for "angle"
     enum_<Angle::Unit>(angle, "Unit")
-
         .value("Undefined", Angle::Unit::Undefined)
         .value("Radian", Angle::Unit::Radian)
         .value("Degree", Angle::Unit::Degree)
