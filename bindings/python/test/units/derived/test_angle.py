@@ -266,13 +266,6 @@ def test_angle_operators():
     assert angle.in_degrees() == 90.0
 
 
-# def test_angle_between_vector2d ():
-
-# def test_angle_between_vector3d ():
-
-# def test_angle_to_string ():
-
-
 def test_angle_string_from_unit():
     assert AnglePhysics.string_from_unit(Unit.Degree) == "Degree"
     assert AnglePhysics.string_from_unit(Unit.Radian) == "Radian"
