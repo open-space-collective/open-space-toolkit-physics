@@ -6,6 +6,7 @@ inline void OpenSpaceToolkitPhysicsPy_Units_Derived_Angle(pybind11::module& aMod
 {
     using namespace pybind11;
 
+    using ostk::core::types::Integer;
     using ostk::core::types::Real;
 
     using ostk::math::obj::Vector2d;
@@ -108,7 +109,7 @@ inline void OpenSpaceToolkitPhysicsPy_Units_Derived_Angle(pybind11::module& aMod
             arg("upper_bound")
         )
         .def("in_revolutions", &Angle::inRevolutions)
-        .def("to_string", &Angle::toString, arg("do_sanitize") = false)
+        .def("to_string", &Angle::toString, "aPrecision"_a = Integer::Undefined())
 
         // Define static methods
         .def_static("undefined", &Angle::Undefined)
