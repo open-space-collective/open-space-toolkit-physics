@@ -91,7 +91,8 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frames_ITRF, Test)
                 )
                                                              .normalize();
                 const Vector3d reference_w_ITRF_GCRF_in_ITRF = {
-                    referenceRow[5].accessReal(), referenceRow[6].accessReal(), referenceRow[7].accessReal()};
+                    referenceRow[5].accessReal(), referenceRow[6].accessReal(), referenceRow[7].accessReal()
+                };
 
                 // ITRF -> GCRF
 

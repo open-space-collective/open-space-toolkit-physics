@@ -329,7 +329,8 @@ Transform Engine::getTransformAt(const String& aSpiceIdentifier, const String& a
         rotationMatrix[1][2],
         rotationMatrix[2][0],
         rotationMatrix[2][1],
-        rotationMatrix[2][2]};
+        rotationMatrix[2][2]
+    };
 
     const Quaternion q_BODY_GCRF = Quaternion::RotationMatrix(dcm_GCRF_BODY).toConjugate().toNormalized().rectify();
 
@@ -563,7 +564,8 @@ void Engine::updateEarthKernelCache()
                 const Integer endDay = Integer::Parse(endDateString.getSubstring(4, 2));
 
                 const Date endDate = {
-                    static_cast<Uint16>(2000 + endYear), static_cast<Uint8>(endMonth), static_cast<Uint8>(endDay)};
+                    static_cast<Uint16>(2000 + endYear), static_cast<Uint8>(endMonth), static_cast<Uint8>(endDay)
+                };
 
                 const Instant endInstant = Instant::DateTime(DateTime(endDate, Time::Midnight()), Scale::UTC);
 
@@ -589,7 +591,8 @@ String Engine::SpiceIdentifierFromSpiceObject(const SPICE::Object& aSpiceObject)
         {SPICE::Object::Jupiter, "5"},
         {SPICE::Object::Saturn, "6"},
         {SPICE::Object::Uranus, "7"},
-        {SPICE::Object::Neptune, "8"}};
+        {SPICE::Object::Neptune, "8"}
+    };
 
     return identifierMap.at(aSpiceObject);
 }
@@ -611,7 +614,8 @@ String Engine::FrameNameFromSpiceObject(const SPICE::Object& aSpiceObject)
         {SPICE::Object::Jupiter, "IAU_JUPITER"},
         {SPICE::Object::Saturn, "IAU_SATURN"},
         {SPICE::Object::Uranus, "IAU_URANUS"},
-        {SPICE::Object::Neptune, "IAU_NEPTUNE"}};
+        {SPICE::Object::Neptune, "IAU_NEPTUNE"}
+    };
 
     return frameNameMap.at(aSpiceObject);
 }

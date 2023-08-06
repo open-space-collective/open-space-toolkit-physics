@@ -235,7 +235,8 @@ String Unit::StringFromType(const Unit::Type& aType)
         {Unit::Type::Temperature, "Temperature"},
         {Unit::Type::ElectricCurrent, "ElectricCurrent"},
         {Unit::Type::LuminousIntensity, "LuminousIntensity"},
-        {Unit::Type::Derived, "Derived"}};
+        {Unit::Type::Derived, "Derived"}
+    };
 
     return typeStringMap.at(aType);
 }

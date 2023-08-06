@@ -57,7 +57,8 @@ class OpenSpaceToolkit_Physics_Environment_Object_Geometry : public ::testing::T
     }
 
     const Polygon base_ = {
-        {{{0.0, 0.0}, {1.0, 0.0}, {1.0, 1.0}, {0.0, 1.0}}}, {0.0, 0.0, 2.0}, {1.0, 0.0, 0.0}, {0.0, 1.0, 0.0}};
+        {{{0.0, 0.0}, {1.0, 0.0}, {1.0, 1.0}, {0.0, 1.0}}}, {0.0, 0.0, 2.0}, {1.0, 0.0, 0.0}, {0.0, 1.0, 0.0}
+    };
     const Point apex_ = {0.0, 0.0, 1.0};
     Pyramid pyramid_ = Pyramid::Undefined();
     Geometry geometry_ = Geometry::Undefined();
@@ -256,7 +257,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, In)
         const Shared<const Frame> itrfFrameSPtr = Frame::ITRF();
 
         const Polygon base = {
-            {{{0.0, 0.0}, {1.0, 0.0}, {1.0, 1.0}, {0.0, 1.0}}}, {0.0, 0.0, 2.0}, {1.0, 0.0, 0.0}, {0.0, 1.0, 0.0}};
+            {{{0.0, 0.0}, {1.0, 0.0}, {1.0, 1.0}, {0.0, 1.0}}}, {0.0, 0.0, 2.0}, {1.0, 0.0, 0.0}, {0.0, 1.0, 0.0}
+        };
         const Point apex = {0.0, 0.0, 1.0};
 
         const Pyramid pyramid = {base, apex};
@@ -269,7 +271,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, In)
             {{{0.0, 0.0}, {1.0, 0.0}, {1.0, 1.0}, {0.0, 1.0}}},
             {earthSPtr->getEquatorialRadius().inMeters() - 2.0, 0.0, 0.0},
             {0.0, 0.0, 1.0},
-            {0.0, 1.0, 0.0}};
+            {0.0, 1.0, 0.0}
+        };
         const Point referenceApex = {earthSPtr->getEquatorialRadius().inMeters() - 1.0, 0.0, 0.0};
 
         const Pyramid referencePyramid = {referenceBase, referenceApex};
@@ -302,7 +305,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, In)
         const Shared<const Frame> itrfFrameSPtr = Frame::ITRF();
 
         const Polygon base = {
-            {{{0.0, 0.0}, {1.0, 0.0}, {1.0, 1.0}, {0.0, 1.0}}}, {0.0, 0.0, 2.0}, {1.0, 0.0, 0.0}, {0.0, 1.0, 0.0}};
+            {{{0.0, 0.0}, {1.0, 0.0}, {1.0, 1.0}, {0.0, 1.0}}}, {0.0, 0.0, 2.0}, {1.0, 0.0, 0.0}, {0.0, 1.0, 0.0}
+        };
         const Point apex = {0.0, 0.0, 1.0};
 
         const Pyramid pyramid = {base, apex};
@@ -315,7 +319,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, In)
             {{{0.0, 0.0}, {1.0, 0.0}, {1.0, 1.0}, {0.0, 1.0}}},
             {-(earthSPtr->getEquatorialRadius().inMeters() - 2.0), 0.0, 0.0},
             {0.0, 0.0, 1.0},
-            {0.0, -1.0, 0.0}};
+            {0.0, -1.0, 0.0}
+        };
         const Point referenceApex = {-(earthSPtr->getEquatorialRadius().inMeters() - 1.0), 0.0, 0.0};
 
         const Pyramid referencePyramid = {referenceBase, referenceApex};
@@ -355,7 +360,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, IntersectionWith)
             {{{-1.0, -1.0}, {+1.0, -1.0}, {+1.0, +1.0}, {-1.0, +1.0}}},
             {0.0, 0.0, 1.0},
             {1.0, 0.0, 0.0},
-            {0.0, 1.0, 0.0}};
+            {0.0, 1.0, 0.0}
+        };
         const Point apex = {0.0, 0.0, 0.0};
 
         const Pyramid observerGeometry = {base, apex};
@@ -425,7 +431,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, IntersectionWith)
              {6354747.17068938, -523389.829310627, -154023.347535918},
              {6350708.55048581, -527428.449514193, -265474.575748755},
              {6343481.65753117, -534655.342468828, -392400.28286948},
-             {6330840.93303221, -547296.066967795, -547296.066967795}}};
+             {6330840.93303221, -547296.066967795, -547296.066967795}}
+        };
 
         const LineString secondIntersectionLineString_ITRF_reference = {
             {{2850286.4621806, -4027850.5378194, -4027850.5378194},
@@ -467,7 +474,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, IntersectionWith)
              {810699.093852041, -6067437.90614796, -1785527.81299194},
              {1305374.22665045, -5572762.77334956, -2804981.10097418},
              {2001805.03997369, -4876331.96002631, -3578892.58460252},
-             {2850286.4621806, -4027850.5378194, -4027850.53781941}}};
+             {2850286.4621806, -4027850.5378194, -4027850.53781941}}
+        };
 
         // EGM96
 

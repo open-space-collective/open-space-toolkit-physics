@@ -115,9 +115,10 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetOb
 {
     {
         EXPECT_EQ(
-            Interval::Closed(
+            Interval(
                 Instant::DateTime(DateTime::Parse("2018-06-22 00:00:00"), Scale::UTC),
-                Instant::DateTime(DateTime::Parse("2018-06-28 00:00:00"), Scale::UTC)
+                Instant::DateTime(DateTime::Parse("2018-06-29 00:00:00"), Scale::UTC),
+                Interval::Type::HalfOpenRight
             ),
             bulletinA_.getObservationInterval()
         );
@@ -125,6 +126,24 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetOb
 
     {
         EXPECT_ANY_THROW(BulletinA::Undefined().getObservationInterval());
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, IntervalOverlap)
+{
+    const Interval observationInterval = bulletinA_.getObservationInterval();
+    const Interval predictionInterval = bulletinA_.getPredictionInterval();
+
+    {
+        EXPECT_EQ(observationInterval.accessEnd(), predictionInterval.accessStart());
+    }
+
+    {
+        EXPECT_FALSE(observationInterval.contains(predictionInterval.accessStart()));
+    }
+
+    {
+        EXPECT_TRUE(predictionInterval.contains(observationInterval.accessEnd()));
     }
 }
 
@@ -144,6 +163,12 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetOb
         EXPECT_NEAR(0.00009, firstObservation.yError, 1e-5);
         EXPECT_NEAR(0.067056, firstObservation.ut1MinusUtc, 1e-6);
         EXPECT_NEAR(0.000031, firstObservation.ut1MinusUtcError, 1e-6);
+    }
+
+    {
+        EXPECT_NO_THROW(
+            bulletinA_.getObservationAt(Instant::DateTime(DateTime::Parse("2018-06-28 12:00:00"), Scale::UTC))
+        );
     }
 
     {
@@ -205,9 +230,10 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, Load)
         );
 
         EXPECT_EQ(
-            Interval::Closed(
+            Interval(
                 Instant::DateTime(DateTime::Parse("2018-06-22 00:00:00"), Scale::UTC),
-                Instant::DateTime(DateTime::Parse("2018-06-28 00:00:00"), Scale::UTC)
+                Instant::DateTime(DateTime::Parse("2018-06-29 00:00:00"), Scale::UTC),
+                Interval::Type::HalfOpenRight
             ),
             bulletinA_.getObservationInterval()
         );
@@ -258,6 +284,22 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, Load)
             EXPECT_NEAR(0.00009 + (0.00009 - 0.00009) / 2.0, interpolatedObservation.yError, 1e-5);
             EXPECT_NEAR(0.067056 + (0.066865 - 0.067056) / 2.0, interpolatedObservation.ut1MinusUtc, 1e-6);
             EXPECT_NEAR(0.000031 + (0.000030 - 0.000031) / 2.0, interpolatedObservation.ut1MinusUtcError, 1e-6);
+        }
+
+        {
+            const BulletinA::Observation extrapolatedObservation =
+                bulletinA_.getObservationAt(Instant::DateTime(DateTime::Parse("2018-06-28 12:00:00"), Scale::UTC));
+
+            EXPECT_EQ(2018, extrapolatedObservation.year);
+            EXPECT_EQ(6, extrapolatedObservation.month);
+            EXPECT_EQ(28, extrapolatedObservation.day);
+            EXPECT_NEAR(58297.5, extrapolatedObservation.mjd, 1e-1);
+            EXPECT_NEAR(0.15407 + (0.15609 - 0.15407) * 1.5, extrapolatedObservation.x, 1e-5);
+            EXPECT_NEAR(0.00009 + (0.00009 - 0.00009) * 1.5, extrapolatedObservation.xError, 1e-5);
+            EXPECT_NEAR(0.43267 + (0.43164 - 0.43267) * 1.5, extrapolatedObservation.y, 1e-5);
+            EXPECT_NEAR(0.00009 + (0.00009 - 0.00009) * 1.5, extrapolatedObservation.yError, 1e-5);
+            EXPECT_NEAR(0.068107 + (0.068744 - 0.068107) * 1.5, extrapolatedObservation.ut1MinusUtc, 1e-6);
+            EXPECT_NEAR(0.000019 + (0.000018 - 0.000019) * 1.5, extrapolatedObservation.ut1MinusUtcError, 1e-6);
         }
 
         EXPECT_EQ(

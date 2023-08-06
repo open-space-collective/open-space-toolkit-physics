@@ -95,7 +95,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, GetFram
              File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth/"
                                     "GetFrameAt/NED_ITRF 4.csv")),
              File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth/"
-                                    "GetFrameAt/NED_GCRF 4.csv"))}};
+                                    "GetFrameAt/NED_GCRF 4.csv"))}
+        };
 
         for (const auto& referenceScenario : referenceScenarios)
         {
@@ -124,7 +125,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, GetFram
                 const Vector3d w_NED_ITRF_in_NED_ref = {
                     referenceNedItrfRow[5].accessReal(),
                     referenceNedItrfRow[6].accessReal(),
-                    referenceNedItrfRow[7].accessReal()};
+                    referenceNedItrfRow[7].accessReal()
+                };
 
                 const Quaternion q_ITRF_NED_ref = q_NED_ITRF_ref.toConjugate();
                 const Vector3d w_ITRF_NED_in_ITRF_ref = -(q_ITRF_NED_ref * w_NED_ITRF_in_NED_ref);
@@ -162,7 +164,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, GetFram
                 const Vector3d w_NED_GCRF_in_NED_ref = {
                     referenceNedGcrfRow[5].accessReal(),
                     referenceNedGcrfRow[6].accessReal(),
-                    referenceNedGcrfRow[7].accessReal()};
+                    referenceNedGcrfRow[7].accessReal()
+                };
 
                 const Quaternion q_GCRF_NED_ref = q_NED_GCRF_ref.toConjugate();
                 const Vector3d w_GCRF_NED_in_GCRF_ref = -(q_GCRF_NED_ref * w_NED_GCRF_in_NED_ref);

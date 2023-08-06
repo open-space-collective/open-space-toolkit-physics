@@ -310,7 +310,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Test_1)
     const Duration step = Duration::Minutes(1.0);
 
     const Array<Shared<Object>> objects = {
-        std::make_shared<Earth>(Earth::Default()), std::make_shared<Moon>(Moon::Default())};
+        std::make_shared<Earth>(Earth::Default()), std::make_shared<Moon>(Moon::Default())
+    };
 
     Environment environment = {startInstant, objects};
 
@@ -388,7 +389,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Test_2)
         {{{-1.0, -1.0}, {+1.0, -1.0}, {+1.0, +1.0}, {-1.0, +1.0}}},
         apex - Vector3d(1.0, 0.4, 0.4),
         {0.0, 1.0, 0.0},
-        {0.0, 0.0, 1.0}};
+        {0.0, 0.0, 1.0}
+    };
 
     const Pyramid pyramid = {base, apex};
 
@@ -414,7 +416,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Test_2)
         );
 
         const Point2d intersectionPoint2d = {
-            intersectionLla.getLongitude().inDegrees(), intersectionLla.getLatitude().inDegrees()};
+            intersectionLla.getLongitude().inDegrees(), intersectionLla.getLatitude().inDegrees()
+        };
 
         intersectionPoints2d.add(intersectionPoint2d);
     }
@@ -477,7 +480,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Test_3)
             {Instant::DateTime(DateTime::Parse("2018-06-25 23:00:00.000"), Scale::UTC),
              Quaternion::XYZS(-0.000673781895, 0.000575014693, -0.772757734708, 0.634700479616).normalize()},
             {Instant::DateTime(DateTime::Parse("2018-06-26 00:00:00.000"), Scale::UTC),
-             Quaternion::XYZS(-0.000592883226, 0.000658012030, -0.683039938936, 0.730380488053).normalize()}};
+             Quaternion::XYZS(-0.000592883226, 0.000658012030, -0.683039938936, 0.730380488053).normalize()}
+        };
 
         Environment environment = Environment::Default();
 

@@ -139,7 +139,8 @@ Vector3d Earth::Impl::getFieldValueAt(const Vector3d& aPosition, const Instant& 
         -cos_lat * sin_lon,
         +cos_lat,
         0.0,
-        -sin_lat};
+        -sin_lat
+    };
 
     const Vector3d magneticField = dcm_ECEF_NED * magneticField_NED;  // [T]
 

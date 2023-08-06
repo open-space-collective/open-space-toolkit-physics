@@ -83,8 +83,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, AccessFrame)
               Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("pck00010.tpc"))
               ),  // System body shape and orientation constants
               Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("earth_assoc_itrf93.tf"))),
-              Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("earth_000101_181204_180912.bpc"))
-              )}},
+              Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("earth_000101_181204_180912.bpc")))}
+            },
             {SPICE::Object::Sun,
              File::Path(Path::Parse(
                  "/app/test/OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/AccessFrame/Scenario_1 Sun.csv"
@@ -114,7 +114,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, AccessFrame)
               ),  // System body shape and orientation constants
               Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("moon_080317.tf"))),
               Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("moon_assoc_me.tf"))),
-              Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("moon_pa_de421_1900-2050.bpc")))}}};
+              Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("moon_pa_de421_1900-2050.bpc")))}}
+        };
 
         for (const auto& referenceScenario : referenceScenarios)
         {
@@ -146,13 +147,11 @@ TEST(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, AccessFrame)
                 const Instant instant_reference =
                     Instant::DateTime(DateTime::Parse(referenceDataRow[0].accessString()), Scale::UTC);
                 const Vector3d x_GCRF_reference = {
-                    referenceDataRow[1].accessReal(),
-                    referenceDataRow[2].accessReal(),
-                    referenceDataRow[3].accessReal()};
+                    referenceDataRow[1].accessReal(), referenceDataRow[2].accessReal(), referenceDataRow[3].accessReal()
+                };
                 const Vector3d v_GCRF_reference = {
-                    referenceDataRow[4].accessReal(),
-                    referenceDataRow[5].accessReal(),
-                    referenceDataRow[6].accessReal()};
+                    referenceDataRow[4].accessReal(), referenceDataRow[5].accessReal(), referenceDataRow[6].accessReal()
+                };
                 const Quaternion q_OBJECT_GCRF_reference = Quaternion::XYZS(
                                                                referenceDataRow[7].accessReal(),
                                                                referenceDataRow[8].accessReal(),
@@ -163,7 +162,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, AccessFrame)
                 const Vector3d w_OBJECT_GCRF_in_OBJECT_reference = {
                     referenceDataRow[11].accessReal(),
                     referenceDataRow[12].accessReal(),
-                    referenceDataRow[13].accessReal()};
+                    referenceDataRow[13].accessReal()
+                };
 
                 const Vector3d x_GCRF = frameSPtr->getOriginIn(Frame::GCRF(), instant_reference).getCoordinates();
                 const Vector3d v_GCRF = frameSPtr->getVelocityIn(Frame::GCRF(), instant_reference).getCoordinates();

@@ -156,7 +156,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Positi
              LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Kilometers(500.0)),
              Instant::DateTime(DateTime::Parse("2021-01-01 00:00:00"), Scale::UTC),
              6.7647e-14,
-             1e-15}};
+             1e-15}
+        };
 
         for (const auto& testCase : testCases)
         {
@@ -168,7 +169,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Positi
                     EarthGravitationalModel::EGM2008.equatorialRadius_, EarthGravitationalModel::EGM2008.flattening_
                 ),
                 Position::Unit::Meter,
-                Frame::ITRF()};
+                Frame::ITRF()
+            };
 
             const Instant instant = std::get<2>(testCase);
             const Real referenceDensity = std::get<3>(testCase);
@@ -212,7 +214,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_LLA)
              LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Kilometers(500.0)),
              Instant::DateTime(DateTime::Parse("2021-01-01 00:00:00"), Scale::UTC),
              6.7647e-14,
-             1e-15}};
+             1e-15}
+        };
 
         for (const auto& testCase : testCases)
         {

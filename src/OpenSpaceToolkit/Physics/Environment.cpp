@@ -287,7 +287,8 @@ Environment Environment::Default()
     const Array<Shared<Object>> objects = {
         std::make_shared<Earth>(Earth::Default()),
         std::make_shared<Sun>(Sun::Default()),
-        std::make_shared<Moon>(Moon::Default())};
+        std::make_shared<Moon>(Moon::Default())
+    };
 
     return {instant, objects};
 }

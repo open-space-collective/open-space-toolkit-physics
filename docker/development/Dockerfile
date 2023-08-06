@@ -186,4 +186,4 @@ LABEL VERSION="${VERSION}"
 
 # Execution
 
-CMD ["/bin/bash"]
+CMD [ "/bin/bash" ]
