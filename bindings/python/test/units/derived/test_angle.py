@@ -346,3 +346,17 @@ def test_angle_in_arcseconds_reduction():
 
     angle: AnglePhysics = AnglePhysics(180.0 * 3600.0, Unit.Arcsecond)
     assert angle.in_arcseconds(-180.0 * 3600.0, 180.0 * 3600.0) == -180.0 * 3600.0
+
+
+def test_parse():
+    angle: AnglePhysics = AnglePhysics.parse(string="3.14 [rad]")
+    assert angle == AnglePhysics(3.14, Unit.Radian)
+
+    angle: AnglePhysics = AnglePhysics.parse(string="60 [deg]")
+    assert angle == AnglePhysics(60.0, Unit.Degree)
+
+    angle: AnglePhysics = AnglePhysics.parse("60 [amin]")
+    assert angle == AnglePhysics(60.0, Unit.Arcminute)
+
+    angle: AnglePhysics = AnglePhysics.parse("3600 [asec]")
+    assert angle == AnglePhysics(3600.0, Unit.Arcsecond)

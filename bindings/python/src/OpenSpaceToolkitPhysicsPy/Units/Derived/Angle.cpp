@@ -133,7 +133,7 @@ inline void OpenSpaceToolkitPhysicsPy_Units_Derived_Angle(pybind11::module& aMod
             arg("first_vector"),
             arg("second_vector")
         )
-
+        .def_static("parse", &Angle::Parse, arg("string"))
         .def_static("string_from_unit", &Angle::StringFromUnit, arg("unit"))
         .def_static("symbol_from_unit", &Angle::SymbolFromUnit, arg("unit"))
 
