@@ -109,7 +109,7 @@ inline void OpenSpaceToolkitPhysicsPy_Units_Derived_Angle(pybind11::module& aMod
             arg("upper_bound")
         )
         .def("in_revolutions", &Angle::inRevolutions)
-        .def("to_string", &Angle::toString, "aPrecision"_a = Integer::Undefined())
+        .def("to_string", &Angle::toString, arg("precision") = Integer::Undefined())
 
         // Define static methods
         .def_static("undefined", &Angle::Undefined)

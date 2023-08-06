@@ -360,3 +360,9 @@ def test_parse():
 
     angle: AnglePhysics = AnglePhysics.parse("3600 [asec]")
     assert angle == AnglePhysics(3600.0, Unit.Arcsecond)
+
+
+def test_to_string():
+    angle: AnglePhysics = AnglePhysics(3.141592653589793, Unit.Radian)
+    assert angle.to_string() == "3.1415926535897931 [rad]"
+    assert angle.to_string(precision=1) == "3.1 [rad]"
