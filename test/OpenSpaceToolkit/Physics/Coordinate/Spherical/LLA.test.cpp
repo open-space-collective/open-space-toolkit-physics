@@ -238,7 +238,8 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToCartesian)
         const Array<Tuple<File, Length>> referenceScenarios = {
             {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA/ToCartesian/LLA 1.csv")
              ),
-             Length::Meters(1.0)}};
+             Length::Meters(1.0)}
+        };
 
         for (const auto& referenceScenario : referenceScenarios)
         {
@@ -258,7 +259,8 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToCartesian)
                 const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].accessString()), Scale::UTC);
 
                 const Vector3d reference_position_ITRF = {
-                    referenceRow[1].accessReal(), referenceRow[2].accessReal(), referenceRow[3].accessReal()};
+                    referenceRow[1].accessReal(), referenceRow[2].accessReal(), referenceRow[3].accessReal()
+                };
 
                 const Angle reference_latitude = Angle::Degrees(referenceRow[4].accessReal());
                 const Angle reference_longitude = Angle::Degrees(referenceRow[5].accessReal());
@@ -328,7 +330,8 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Cartesian)
         const Array<Tuple<File, Angle, Length>> referenceScenarios = {
             {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA/Cartesian/LLA 1.csv")),
              Angle::Arcseconds(0.01),
-             Length::Meters(1.0)}};
+             Length::Meters(1.0)}
+        };
 
         for (const auto& referenceScenario : referenceScenarios)
         {
@@ -349,7 +352,8 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Cartesian)
                 const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].accessString()), Scale::UTC);
 
                 const Vector3d reference_position_ITRF = {
-                    referenceRow[1].accessReal(), referenceRow[2].accessReal(), referenceRow[3].accessReal()};
+                    referenceRow[1].accessReal(), referenceRow[2].accessReal(), referenceRow[3].accessReal()
+                };
 
                 const Angle reference_latitude = Angle::Degrees(referenceRow[4].accessReal());
                 const Angle reference_longitude = Angle::Degrees(referenceRow[5].accessReal());

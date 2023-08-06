@@ -249,7 +249,8 @@ BulletinA::Observation BulletinA::getObservationAt(const Instant& anInstant) con
                 observation1.ut1MinusUtcError + ratio * (observation2.ut1MinusUtcError - observation1.ut1MinusUtcError);
 
             const BulletinA::Observation observation = {
-                year, month, day, mjd, x, xError, y, yError, ut1MinusUtc, ut1MinusUtcError};
+                year, month, day, mjd, x, xError, y, yError, ut1MinusUtc, ut1MinusUtcError
+            };
 
             return observation;
         }
@@ -508,7 +509,8 @@ BulletinA BulletinA::Load(const fs::File& aFile)
             const Real ut1MinusUtcError = boost::lexical_cast<double>(match[10]);
 
             const BulletinA::Observation observation = {
-                year, month, day, Real::Integer(mjd), x, xError, y, yError, ut1MinusUtc, ut1MinusUtcError};
+                year, month, day, Real::Integer(mjd), x, xError, y, yError, ut1MinusUtc, ut1MinusUtcError
+            };
 
             bulletin.observations_.insert({mjd, observation});
         }

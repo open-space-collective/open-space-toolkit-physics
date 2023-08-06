@@ -358,13 +358,15 @@ Transform Transform::Undefined()
         Vector3d::Undefined(),
         Quaternion::Undefined(),
         Vector3d::Undefined(),
-        Transform::Type::Undefined};
+        Transform::Type::Undefined
+    };
 }
 
 Transform Transform::Identity(const Instant& anInstant)
 {
     return {
-        anInstant, Vector3d::Zero(), Vector3d::Zero(), Quaternion::Unit(), Vector3d::Zero(), Transform::Type::Passive};
+        anInstant, Vector3d::Zero(), Vector3d::Zero(), Quaternion::Unit(), Vector3d::Zero(), Transform::Type::Passive
+    };
 }
 
 Transform Transform::Active(

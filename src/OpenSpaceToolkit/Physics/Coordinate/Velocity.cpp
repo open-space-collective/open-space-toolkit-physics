@@ -135,7 +135,8 @@ Velocity Velocity::inFrame(const Position& aPosition, const Shared<const Frame>&
         frameSPtr_->getTransformTo(aFrameSPtr, anInstant)
             .applyToVelocity(aPosition.inFrame(frameSPtr_, anInstant).accessCoordinates(), coordinates_),
         unit_,
-        aFrameSPtr};
+        aFrameSPtr
+    };
 }
 
 String Velocity::toString(const Integer& aPrecision) const

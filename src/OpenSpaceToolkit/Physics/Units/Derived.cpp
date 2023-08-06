@@ -315,7 +315,8 @@ Derived::Unit Derived::Unit::Undefined()
         ElectricCurrent::Unit::Undefined,
         {0},
         Angle::Unit::Undefined,
-        {0}};
+        {0}
+    };
 }
 
 Derived::Unit Derived::Unit::SquareMeter()
@@ -330,7 +331,8 @@ Derived::Unit Derived::Unit::SquareMeter()
         ElectricCurrent::Unit::Undefined,
         {0},
         Angle::Unit::Undefined,
-        {0}};
+        {0}
+    };
 }
 
 Derived::Unit Derived::Unit::CubicMeter()
@@ -345,7 +347,8 @@ Derived::Unit Derived::Unit::CubicMeter()
         ElectricCurrent::Unit::Undefined,
         {0},
         Angle::Unit::Undefined,
-        {0}};
+        {0}
+    };
 }
 
 Derived::Unit Derived::Unit::Hertz()
@@ -360,7 +363,8 @@ Derived::Unit Derived::Unit::Hertz()
         ElectricCurrent::Unit::Undefined,
         {0},
         Angle::Unit::Undefined,
-        {0}};
+        {0}
+    };
 }
 
 Derived::Unit Derived::Unit::Watt()
@@ -375,7 +379,8 @@ Derived::Unit Derived::Unit::Watt()
         ElectricCurrent::Unit::Undefined,
         {0},
         Angle::Unit::Undefined,
-        {0}};
+        {0}
+    };
 }
 
 Derived::Unit Derived::Unit::Tesla()
@@ -390,7 +395,8 @@ Derived::Unit Derived::Unit::Tesla()
         ElectricCurrent::Unit::Ampere,
         {-1},
         Angle::Unit::Undefined,
-        {0}};
+        {0}
+    };
 }
 
 Derived::Unit Derived::Unit::Velocity(const Length::Unit& aLengthUnit, const Time::Unit& aTimeUnit)
@@ -405,7 +411,8 @@ Derived::Unit Derived::Unit::Velocity(const Length::Unit& aLengthUnit, const Tim
         ElectricCurrent::Unit::Undefined,
         {0},
         Angle::Unit::Undefined,
-        {0}};
+        {0}
+    };
 }
 
 Derived::Unit Derived::Unit::Acceleration(const Length::Unit& aLengthUnit, const Time::Unit& aTimeUnit)
@@ -420,7 +427,8 @@ Derived::Unit Derived::Unit::Acceleration(const Length::Unit& aLengthUnit, const
         ElectricCurrent::Unit::Undefined,
         {0},
         Angle::Unit::Undefined,
-        {0}};
+        {0}
+    };
 }
 
 Derived::Unit Derived::Unit::GravitationalParameter(const Length::Unit& aLengthUnit, const Time::Unit& aTimeUnit)
@@ -435,7 +443,8 @@ Derived::Unit Derived::Unit::GravitationalParameter(const Length::Unit& aLengthU
         ElectricCurrent::Unit::Undefined,
         {0},
         Angle::Unit::Undefined,
-        {0}};
+        {0}
+    };
 }
 
 Derived::Unit Derived::Unit::AngularVelocity(const Angle::Unit& anAngleUnit, const Time::Unit& aTimeUnit)
@@ -450,7 +459,8 @@ Derived::Unit Derived::Unit::AngularVelocity(const Angle::Unit& anAngleUnit, con
         ElectricCurrent::Unit::Undefined,
         {0},
         anAngleUnit,
-        {1}};
+        {1}
+    };
 }
 
 Derived::Unit Derived::Unit::MassDensity(const Mass::Unit& aMassUnit, const Length::Unit& aLengthUnit)
@@ -465,7 +475,8 @@ Derived::Unit Derived::Unit::MassDensity(const Mass::Unit& aMassUnit, const Leng
         ElectricCurrent::Unit::Undefined,
         {0},
         Angle::Unit::Undefined,
-        {0}};
+        {0}
+    };
 }
 
 // Derived::Unit                   Derived::Unit::Parse                        (   const   String& aString )

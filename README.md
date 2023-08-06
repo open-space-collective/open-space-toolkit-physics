@@ -237,7 +237,7 @@ cmake ..
 make
 ```
 
-*Tip: `helpers/build.sh` simplifies building from within the development environment.*
+*Tip: The `ostk-build` command simplifies building from within the development environment.*
 
 ### Test
 
@@ -253,7 +253,7 @@ Or to run them manually:
 ./bin/open-space-toolkit-physics.test
 ```
 
-*Tip: `helpers/test.sh` simplifies running tests from within the development environment.*
+*Tip: The `ostk-test` command simplifies running tests from within the development environment.*
 
 ## Dependencies
 
