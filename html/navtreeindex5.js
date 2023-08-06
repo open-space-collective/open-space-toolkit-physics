@@ -247,7 +247,7 @@ var NAVTREEINDEX5 =
 "index.html#autotoc_md8":[0,1,0,0],
 "index.html#autotoc_md9":[0,1,1],
 "md__c_o_n_t_r_i_b_u_t_i_n_g.html":[1],
-"md__c_o_n_t_r_i_b_u_t_i_n_g.html#C":[1,1,0,0],
-"md__c_o_n_t_r_i_b_u_t_i_n_g.html#CodeOfConduct":[1,2],
-"md__c_o_n_t_r_i_b_u_t_i_n_g.html#Codebase":[1,1,0]
+"md_docs__tutorial.html":[2],
+"md_docs__tutorial.html#Examples":[2,1],
+"md_docs__tutorial.html#Setup":[2,0]
 };

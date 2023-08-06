@@ -51,20 +51,7 @@ var NAVTREE =
       [ "Special Thanks", "index.html#autotoc_md19", null ],
       [ "License", "index.html#autotoc_md20", null ]
     ] ],
-    [ "Contributing", "md__c_o_n_t_r_i_b_u_t_i_n_g.html", [
-      [ "Introduction", "md__c_o_n_t_r_i_b_u_t_i_n_g.html#Introduction", null ],
-      [ "Guidelines", "md__c_o_n_t_r_i_b_u_t_i_n_g.html#Guidelines", [
-        [ "Codebase", "md__c_o_n_t_r_i_b_u_t_i_n_g.html#Codebase", [
-          [ "C++", "md__c_o_n_t_r_i_b_u_t_i_n_g.html#C", null ],
-          [ "Python", "md__c_o_n_t_r_i_b_u_t_i_n_g.html#Python", null ]
-        ] ],
-        [ "Version Control", "md__c_o_n_t_r_i_b_u_t_i_n_g.html#Version", [
-          [ "Rules", "md__c_o_n_t_r_i_b_u_t_i_n_g.html#Rules", null ],
-          [ "Commit Messages", "md__c_o_n_t_r_i_b_u_t_i_n_g.html#Commit", null ]
-        ] ]
-      ] ],
-      [ "Code of Conduct", "md__c_o_n_t_r_i_b_u_t_i_n_g.html#CodeOfConduct", null ]
-    ] ],
+    [ "Contributing", "md__c_o_n_t_r_i_b_u_t_i_n_g.html", null ],
     [ "Tutorial", "md_docs__tutorial.html", [
       [ "Setup", "md_docs__tutorial.html#Setup", null ],
       [ "Examples", "md_docs__tutorial.html#Examples", null ]
@@ -110,7 +97,7 @@ var NAVTREEINDEX =
 "classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_index.html#aa2bc4acdf1f1d209cb0fbe0f9a49a3f4",
 "classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#a30a064d87b6fce338e76aebd3043b6b6a164a99cca8995f690571ed8f964e6166",
 "classostk_1_1physics_1_1units_1_1_derived_1_1_unit.html#a925301080673e1eb527ea6dc1340b1bb",
-"md__c_o_n_t_r_i_b_u_t_i_n_g.html#Commit"
+"namespace_n_r_l_m_s_i_s_e00__c.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
