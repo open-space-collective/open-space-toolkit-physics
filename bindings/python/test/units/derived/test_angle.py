@@ -1,8 +1,8 @@
 # Apache License 2.0
 
-import pytest
-
 import math
+
+import pytest
 
 from ostk.mathematics.geometry import Angle as AngleMathematics
 from ostk.physics.units import Angle as AnglePhysics
