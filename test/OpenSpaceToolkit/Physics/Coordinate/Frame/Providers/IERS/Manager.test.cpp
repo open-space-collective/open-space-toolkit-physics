@@ -44,9 +44,14 @@ class OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager : public 
         );
 
         this->bulletinA_ = BulletinA::Load(BulletinAFile);
+        this->finals2000A_ = Finals2000A::Load(File::Path(Path::Parse(
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Finals2000A/finals2000A.data"
+        )));
     }
 
     BulletinA bulletinA_ = BulletinA::Undefined();
+    Finals2000A finals2000A_ = Finals2000A::Undefined();
+
     Manager& manager_ = Manager::Get();
 };
 
@@ -131,6 +136,19 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetFina
 
         EXPECT_NO_THROW(manager_.getFinals2000AAt(finals2000a.getInterval().accessStart()));
         EXPECT_NO_THROW(manager_.getFinals2000AAt(finals2000a.getInterval().accessEnd()));
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetFinals2000AAtFetch)
+{
+    // This test is not deterministic, as it depends on the remote server
+    {
+        manager_.reset();
+        manager_.clearLocalRepository();
+
+        EXPECT_NO_THROW(manager_.getFinals2000AAt(Instant::Now() - Duration::Days(5.0)));
+
+        manager_.loadFinals2000A(finals2000A_);
     }
 }
 

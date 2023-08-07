@@ -42,9 +42,9 @@ class Manifest
 
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Manifest& aManifest);
 
-    /// @brief              Return true if manifest is empty
+    /// @brief              Return true if manifest is defined.
     ///
-    /// @return             True if manifest is empty
+    /// @return             True if manifest is defined.
 
     bool isDefined() const;
 
@@ -55,9 +55,9 @@ class Manifest
 
     Instant getLastUpdateTimestampFor(const String& aDataName) const;
 
-    /// @brief              Construct an empty manifest
+    /// @brief              Construct an undefined manifest
     ///
-    /// @return             Empty manifest
+    /// @return             Undefined manifest
 
     static Manifest Undefined();
 

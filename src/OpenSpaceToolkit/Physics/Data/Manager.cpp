@@ -46,11 +46,6 @@ Manager& Manager::Get()
     return manager;
 }
 
-URL Manager::getRemoteUrl() const
-{
-    return remoteUrl_;
-}
-
 Instant Manager::getLastUpdateTimestampFor(const String& aDataName)
 {
     this->manifest_ = this->getUpdatedManifest_();
@@ -58,28 +53,38 @@ Instant Manager::getLastUpdateTimestampFor(const String& aDataName)
     return manifest_.getLastUpdateTimestampFor(aDataName);
 }
 
-void Manager::loadManifest_(const Manifest& aManifest)
+URL Manager::getRemoteUrl() const
+{
+    return remoteUrl_;
+}
+
+Manifest Manager::getManifest() 
+{
+    return manifest_;
+}
+
+void Manager::loadManifest(const Manifest& aManifest)
 {
     if (!aManifest.isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Manifest");
     }
 
-    std::lock_guard<std::mutex> lock {manifestMutex_};
+    std::lock_guard<std::mutex> lock {mutex_};
 
     this->manifest_ = aManifest;
 }
 
-void Manager::resetManifest_()
+void Manager::reset()
 {
-    std::lock_guard<std::mutex> lock {manifestMutex_};
+    std::lock_guard<std::mutex> lock {mutex_};
 
     manifestUpdateTimestamp_ = Instant::Undefined();
 
     manifest_ = Manifest::Undefined();
 }
 
-void Manager::clearManifestRepository_()
+void Manager::clearManifestRepository()
 {
     manifestRepository_.remove();
 

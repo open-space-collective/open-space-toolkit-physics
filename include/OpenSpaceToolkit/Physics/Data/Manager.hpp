@@ -46,25 +46,45 @@ using ostk::physics::data::Manifest;
 class Manager
 {
    public:
-    /// @brief              Check if there are updates for data of a certain name.
-    ///
-    /// @param              [in] aDataName name of the data to query. This is the key for the data entry in the manifest file.
-    ///
-    /// @return             When the data was last updated on the remote, according to the manifest record.
-    Instant getLastUpdateTimestampFor(const String& aDataName);
-
-
     /// @brief              Get manager singleton
     ///
     /// @return             Reference to manager
     static Manager& Get();
+
+    /// @brief              Check if there are updates for data of a certain name.
+    ///
+    /// @param              [in] aDataName name of the data to query. This is the key for the data entry in the manifest file.
+    ///
+    /// @return             Instant indicating when the data was last updated on the remote, according to the manifest record.
+    Instant getLastUpdateTimestampFor(const String& aDataName);
 
     /// @brief              Get the remote URL. This points to the base URL for the OSTk input data.
     ///
     /// @return             Remote URL
     URL getRemoteUrl() const;
 
-   private:
+    /// @brief              Get a copy of the current manifest file.
+    ///
+    /// @return             Manifest file
+    Manifest getManifest();
+
+    /// @brief              Load a new manifest file.
+    ///
+    /// @param              [in] aManifest Manifest file to load
+    void loadManifest(const Manifest& aManifest);
+
+    /// @brief              Reset the manager.
+    ///
+    ///                     Unload the manifest file and forget manifest age.
+    void reset();
+
+    /// @brief              Clear the manifest repository.
+    ///
+    ///                     Delete the manifest repository directory and all its contents.
+    void clearManifestRepository();
+
+   protected:
+
     URL remoteUrl_;
 
     Manifest manifest_;
@@ -73,28 +93,21 @@ class Manager
     Directory manifestRepository_;
     Duration manifestRepositoryLockTimeout_;
 
-    mutable std::mutex manifestMutex_;
+    mutable std::mutex mutex_;
 
     Manager();
 
     void setup_();
 
-    File fetchLatestManifestFile_();
 
+    File fetchLatestManifestFile_();
     Manifest getUpdatedManifest_();
 
-    void loadManifest_(const Manifest& aManifest);
 
-    void resetManifest_();
-
-    void clearManifestRepository_();
 
     bool isManifestRepositoryLocked_() const;
-
     File getManifestRepositoryLockFile_() const;
-
     void lockManifestRepository_(const Duration& aTimeout);
-
     void unlockManifestRepository_();
 
     static Directory DefaultManifestRepository_();
