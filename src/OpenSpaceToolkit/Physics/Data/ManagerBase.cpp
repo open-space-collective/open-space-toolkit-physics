@@ -5,7 +5,6 @@
 #include <fstream>
 #include <numeric>
 #include <thread>
-#include <experimental/filesystem>
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
@@ -14,10 +13,11 @@
 
 #include <OpenSpaceToolkit/IO/IP/TCP/HTTP/Client.hpp>
 
-#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
-#include <OpenSpaceToolkit/Physics/Data/Manifest.hpp>
-
 #include <OpenSpaceToolkit/Physics/Data/ManagerBase.hpp>
+#include <OpenSpaceToolkit/Physics/Data/Manifest.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+
+#include <experimental/filesystem>
 
 namespace ostk
 {
@@ -128,7 +128,6 @@ Manifest ManagerBase::getUpdatedManifest_()
 
 File ManagerBase::fetchLatestManifestFile_()
 {
-
     Directory temporaryDirectory = Directory::Path(manifestRepository_.getPath() + Path::Parse(temporaryDirectoryName));
 
     this->lockManifestRepository_(manifestRepositoryLockTimeout_);
@@ -306,11 +305,9 @@ Duration ManagerBase::DefaultManifestRepositoryLockTimeout_()
 
 URL ManagerBase::DefaultRemoteUrl_()
 {
-    static const URL defaultRemoteUrl =
-        URL::Parse(OSTK_PHYSICS_DATA_REMOTE_URL);
+    static const URL defaultRemoteUrl = URL::Parse(OSTK_PHYSICS_DATA_REMOTE_URL);
 
-    if (const char* remoteUrlString =
-            std::getenv("OSTK_PHYSICS_DATA_REMOTE_URL"))
+    if (const char* remoteUrlString = std::getenv("OSTK_PHYSICS_DATA_REMOTE_URL"))
     {
         return URL::Parse(remoteUrlString);
     }

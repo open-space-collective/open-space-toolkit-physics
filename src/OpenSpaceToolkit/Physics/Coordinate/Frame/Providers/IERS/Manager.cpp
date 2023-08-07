@@ -630,7 +630,6 @@ void Manager::loadFinals2000A_(const Finals2000A& aFinals2000A)
 
 File Manager::fetchLatestBulletinA_()
 {
-
     std::cout << "Fetching latest Bulletin A..." << std::endl;
 
     Directory temporaryDirectory =
@@ -734,7 +733,6 @@ File Manager::fetchLatestBulletinA_()
 
 File Manager::fetchLatestFinals2000A_()
 {
-
     std::cout << "Fetching latest Finals 2000A..." << std::endl;
 
     Directory temporaryDirectory =

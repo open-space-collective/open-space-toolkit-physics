@@ -55,8 +55,8 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manifest, GetLastUpdateTimestampFor)
 {
     {
         EXPECT_EQ(
-            Instant::DateTime(DateTime::Parse("2023-07-24T00:00:00.000", DateTime::Format::ISO8601), Scale::UTC),
-            manifest_.getLastUpdateTimestampFor("space_weather_CSSI")
+            Instant::DateTime(DateTime::Parse("2023-08-03T00:03:15.288325", DateTime::Format::ISO8601), Scale::UTC),
+            manifest_.getLastUpdateTimestampFor("finals-2000A")
         );
     }
 }
@@ -70,6 +70,6 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manifest, Load)
     }
 
     {
-        EXPECT_ANY_THROW(File::Path(Path::Parse("/does/not/exist.json")));
+        EXPECT_ANY_THROW(Manifest::Load(File::Path(Path::Parse("/does/not/exist.json"))));
     }
 }

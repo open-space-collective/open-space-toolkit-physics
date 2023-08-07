@@ -9,9 +9,9 @@
 
 #include <OpenSpaceToolkit/IO/URL.hpp>
 
+#include <OpenSpaceToolkit/Physics/Data/Manifest.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
-#include <OpenSpaceToolkit/Physics/Data/Manifest.hpp>
 
 // Base remote URL for OSTk data files
 #define OSTK_PHYSICS_DATA_REMOTE_URL "https://github.com/open-space-collective/open-space-toolkit-data/raw/main/data/"
@@ -46,7 +46,6 @@ using ostk::physics::data::Manifest;
 class ManagerBase
 {
    protected:
-
     /// @brief              Check if there are updates for data of a certain name.
     Instant getLastUpdateTimestampFor(const String& aDataName);
 
@@ -55,7 +54,6 @@ class ManagerBase
     ManagerBase();
 
    private:
-
     Manifest manifest_;
     mutable Instant manifestUpdateTimestamp_;
 
