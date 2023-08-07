@@ -94,7 +94,8 @@ class Manager
     URL remoteUrl_;
 
     Manifest manifest_;
-    mutable Instant manifestUpdateTimestamp_;
+    mutable Instant manifestUpdateTimestamp_;  // TBI: instead of an update timestamp, track manifest updates within the
+                                               // manifest itself
 
     Directory manifestRepository_;
     Duration manifestRepositoryLockTimeout_;
@@ -106,7 +107,7 @@ class Manager
     void setup_();
 
     File fetchLatestManifestFile_();
-    Manifest getUpdatedManifest_();
+    void checkManifestAgeAndUpdate_();
 
     bool isManifestRepositoryLocked_() const;
     File getManifestRepositoryLockFile_() const;

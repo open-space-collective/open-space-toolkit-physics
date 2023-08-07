@@ -48,7 +48,7 @@ Manager& Manager::Get()
 
 const Instant Manager::getLastUpdateTimestampFor(const String& aDataName)
 {
-    this->manifest_ = this->getUpdatedManifest_();
+    this->checkManifestAgeAndUpdate_();
 
     return manifest_.getLastUpdateTimestampFor(aDataName);
 }
@@ -83,6 +83,7 @@ void Manager::loadManifest(const Manifest& aManifest)
     std::lock_guard<std::mutex> lock {mutex_};
 
     this->manifest_ = aManifest;
+    this->manifestUpdateTimestamp_ = Instant::Now();
 }
 
 void Manager::reset()
@@ -136,21 +137,16 @@ void Manager::setup_()
     }
 }
 
-Manifest Manager::getUpdatedManifest_()
+void Manager::checkManifestAgeAndUpdate_()
 {
     // Check if the local manifest is too old and fetch a new one if needed
-
-    File dataManifestFile = File::Path(manifestRepository_.getPath() + Path::Parse(dataManifestFileName));
-
     // TODO make max age overridable
-    if (!manifestUpdateTimestamp_.isDefined() || !dataManifestFile.exists() ||
+    if (!manifestUpdateTimestamp_.isDefined() ||
         (manifestUpdateTimestamp_ + Duration::Hours(OSTK_PHYSICS_DATA_MANAGER_MANIFEST_MAX_AGE_HOURS) < Instant::Now()))
     {
-        dataManifestFile = const_cast<Manager*>(this)->fetchLatestManifestFile_();
-        manifestUpdateTimestamp_ = Instant::Now();
+        File manifestFile = this->fetchLatestManifestFile_();
+        this->loadManifest(Manifest::Load(manifestFile));
     }
-
-    return Manifest::Load(dataManifestFile);
 }
 
 File Manager::fetchLatestManifestFile_()
