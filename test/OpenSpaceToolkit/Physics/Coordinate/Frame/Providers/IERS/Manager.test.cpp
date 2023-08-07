@@ -7,6 +7,8 @@
 #include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
 #include <OpenSpaceToolkit/Core/Types/Real.hpp>
 
+#include <OpenSpaceToolkit/IO/URL.hpp>
+
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Manager.hpp>
 
 #include <Global.test.hpp>

@@ -13,7 +13,7 @@
 
 #include <OpenSpaceToolkit/IO/IP/TCP/HTTP/Client.hpp>
 
-#include <OpenSpaceToolkit/Physics/Data/ManagerBase.hpp>
+#include <OpenSpaceToolkit/Physics/Data/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Data/Manifest.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
@@ -39,14 +39,26 @@ const String dataManifestFileName = "manifest.json";
 
 const String temporaryDirectoryName = "tmp";
 
-Instant ManagerBase::getLastUpdateTimestampFor(const String& aDataName)
+Manager& Manager::Get()
+{
+    static Manager manager;
+
+    return manager;
+}
+
+URL Manager::getRemoteUrl() const
+{
+    return remoteUrl_;
+}
+
+Instant Manager::getLastUpdateTimestampFor(const String& aDataName)
 {
     this->manifest_ = this->getUpdatedManifest_();
 
     return manifest_.getLastUpdateTimestampFor(aDataName);
 }
 
-void ManagerBase::loadManifest_(const Manifest& aManifest)
+void Manager::loadManifest_(const Manifest& aManifest)
 {
     if (!aManifest.isDefined())
     {
@@ -58,7 +70,7 @@ void ManagerBase::loadManifest_(const Manifest& aManifest)
     this->manifest_ = aManifest;
 }
 
-void ManagerBase::resetManifest_()
+void Manager::resetManifest_()
 {
     std::lock_guard<std::mutex> lock {manifestMutex_};
 
@@ -67,49 +79,49 @@ void ManagerBase::resetManifest_()
     manifest_ = Manifest::Undefined();
 }
 
-void ManagerBase::clearManifestRepository_()
+void Manager::clearManifestRepository_()
 {
     manifestRepository_.remove();
 
-    this->setupBase_();
+    this->setup_();
 }
 
-ManagerBase::ManagerBase()
-    : remoteUrl(DefaultRemoteUrl_()),
+Manager::Manager()
+    : remoteUrl_(DefaultRemoteUrl_()),
       manifest_(Manifest::Undefined()),
       manifestUpdateTimestamp_(Instant::Undefined()),
-      manifestRepository_(ManagerBase::DefaultManifestRepository_()),
-      manifestRepositoryLockTimeout_(ManagerBase::DefaultManifestRepositoryLockTimeout_())
+      manifestRepository_(Manager::DefaultManifestRepository_()),
+      manifestRepositoryLockTimeout_(Manager::DefaultManifestRepositoryLockTimeout_())
 {
-    this->setupBase_();
+    this->setup_();
 }
 
-bool ManagerBase::isManifestRepositoryLocked_() const
+bool Manager::isManifestRepositoryLocked_() const
 {
     return this->getManifestRepositoryLockFile_().exists();
 }
 
-File ManagerBase::getManifestRepositoryLockFile_() const
+File Manager::getManifestRepositoryLockFile_() const
 {
     return File::Path(manifestRepository_.getPath() + Path::Parse(".lock"));
 }
 
-void ManagerBase::setupBase_()
+void Manager::setup_()
 {
     if (!manifestRepository_.exists())
     {
         manifestRepository_.create();
     }
 
-    remoteUrl = DefaultRemoteUrl_();
+    remoteUrl_ = DefaultRemoteUrl_();
 
-    if (!remoteUrl.isDefined())
+    if (!remoteUrl_.isDefined())
     {
         throw ostk::core::error::RuntimeError("Cannot parse remote URL [{}].", OSTK_PHYSICS_DATA_REMOTE_URL);
     }
 }
 
-Manifest ManagerBase::getUpdatedManifest_()
+Manifest Manager::getUpdatedManifest_()
 {
     // Check if the local manifest is too old and fetch a new one if needed
 
@@ -119,14 +131,14 @@ Manifest ManagerBase::getUpdatedManifest_()
     if (!manifestUpdateTimestamp_.isDefined() || !dataManifestFile.exists() ||
         (manifestUpdateTimestamp_ + Duration::Hours(OSTK_PHYSICS_DATA_MANAGER_MANIFEST_MAX_AGE_HOURS) < Instant::Now()))
     {
-        dataManifestFile = const_cast<ManagerBase*>(this)->fetchLatestManifestFile_();
+        dataManifestFile = const_cast<Manager*>(this)->fetchLatestManifestFile_();
         manifestUpdateTimestamp_ = Instant::Now();
     }
 
     return Manifest::Load(dataManifestFile);
 }
 
-File ManagerBase::fetchLatestManifestFile_()
+File Manager::fetchLatestManifestFile_()
 {
     Directory temporaryDirectory = Directory::Path(manifestRepository_.getPath() + Path::Parse(temporaryDirectoryName));
 
@@ -224,7 +236,7 @@ File ManagerBase::fetchLatestManifestFile_()
     return latestDataManifestFile;
 }
 
-void ManagerBase::lockManifestRepository_(const Duration& aTimeout)
+void Manager::lockManifestRepository_(const Duration& aTimeout)
 {
     std::cout << String::Format("Locking local repository [{}]...", manifestRepository_.toString()) << std::endl;
 
@@ -264,7 +276,7 @@ void ManagerBase::lockManifestRepository_(const Duration& aTimeout)
     }
 }
 
-void ManagerBase::unlockManifestRepository_()
+void Manager::unlockManifestRepository_()
 {
     std::cout << String::Format("Unlocking local repository [{}]...", manifestRepository_.toString()) << std::endl;
 
@@ -276,7 +288,7 @@ void ManagerBase::unlockManifestRepository_()
     this->getManifestRepositoryLockFile_().remove();
 }
 
-Directory ManagerBase::DefaultManifestRepository_()
+Directory Manager::DefaultManifestRepository_()
 {
     static const Directory defaultLocalRepository =
         Directory::Path(Path::Parse(OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY));
@@ -289,7 +301,7 @@ Directory ManagerBase::DefaultManifestRepository_()
     return defaultLocalRepository;
 }
 
-Duration ManagerBase::DefaultManifestRepositoryLockTimeout_()
+Duration Manager::DefaultManifestRepositoryLockTimeout_()
 {
     static const Duration defaultLocalRepositoryLockTimeout =
         Duration::Seconds(OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY_LOCK_TIMEOUT);
@@ -303,7 +315,7 @@ Duration ManagerBase::DefaultManifestRepositoryLockTimeout_()
     return defaultLocalRepositoryLockTimeout;
 }
 
-URL ManagerBase::DefaultRemoteUrl_()
+URL Manager::DefaultRemoteUrl_()
 {
     static const URL defaultRemoteUrl = URL::Parse(OSTK_PHYSICS_DATA_REMOTE_URL);
 

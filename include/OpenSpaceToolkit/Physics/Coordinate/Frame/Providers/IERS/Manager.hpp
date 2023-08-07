@@ -14,7 +14,6 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/BulletinA.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Finals2000A.hpp>
-#include <OpenSpaceToolkit/Physics/Data/ManagerBase.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
@@ -48,8 +47,6 @@ using ostk::physics::time::Duration;
 using ostk::physics::coord::frame::provider::iers::BulletinA;
 using ostk::physics::coord::frame::provider::iers::Finals2000A;
 
-using ostk::physics::data::ManagerBase;
-
 /// @brief                      IERS bulletins manager (thread-safe)
 ///
 ///                             The following environment variables can be defined:
@@ -63,7 +60,7 @@ using ostk::physics::data::ManagerBase;
 ///
 /// @ref                        https://www.iers.org/IERS/EN/DataProducts/EarthOrientationData/eop.html
 
-class Manager : ManagerBase
+class Manager
 {
    public:
     enum class Mode

@@ -43,17 +43,30 @@ using ostk::physics::data::Manifest;
 ///
 ///                             The base manager defines methods for tracking and checking the manifest file.
 
-class ManagerBase
+class Manager
 {
-   protected:
+   public:
     /// @brief              Check if there are updates for data of a certain name.
+    ///
+    /// @param              [in] aDataName name of the data to query. This is the key for the data entry in the manifest file.
+    ///
+    /// @return             When the data was last updated on the remote, according to the manifest record.
     Instant getLastUpdateTimestampFor(const String& aDataName);
 
-    URL remoteUrl;
 
-    ManagerBase();
+    /// @brief              Get manager singleton
+    ///
+    /// @return             Reference to manager
+    static Manager& Get();
+
+    /// @brief              Get the remote URL. This points to the base URL for the OSTk input data.
+    ///
+    /// @return             Remote URL
+    URL getRemoteUrl() const;
 
    private:
+    URL remoteUrl_;
+
     Manifest manifest_;
     mutable Instant manifestUpdateTimestamp_;
 
@@ -62,7 +75,9 @@ class ManagerBase
 
     mutable std::mutex manifestMutex_;
 
-    void setupBase_();
+    Manager();
+
+    void setup_();
 
     File fetchLatestManifestFile_();
 

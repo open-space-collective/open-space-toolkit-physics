@@ -17,6 +17,7 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Data/Manifest.hpp>
+#include <OpenSpaceToolkit/Physics/Data/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Date.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
@@ -42,6 +43,8 @@ using ostk::core::fs::Path;
 
 using ostk::io::ip::tcp::http::Client;
 using ostk::io::URL;
+
+using ManifestManager = ostk::physics::data::Manager;
 
 const String bulletinAFileName = "ser7.dat";
 const String finals2000AFileName = "finals2000A.data";
@@ -398,7 +401,7 @@ bool Manager::isLocalRepositoryLocked() const
 
 const BulletinA* Manager::accessBulletinAAt(const Instant& anInstant) const
 {
-    // Try cache
+    // Try cached loaded file
 
     if (!aBulletins_.isEmpty())
     {
@@ -412,7 +415,7 @@ const BulletinA* Manager::accessBulletinAAt(const Instant& anInstant) const
         }
     }
 
-    // Try observation span of loaded bulletins
+    // Try observation span of all loaded bulletin files
 
     {
         aBulletinIndex_ = 0;
@@ -432,8 +435,10 @@ const BulletinA* Manager::accessBulletinAAt(const Instant& anInstant) const
 
     if (mode_ == Manager::Mode::Automatic)
     {
+        ManifestManager& manifestManager = ManifestManager::Get();
+
         const Instant bulletinAManifestUpdateTimestamp =
-            const_cast<Manager*>(this)->getLastUpdateTimestampFor("bulletin-A");
+            manifestManager.getLastUpdateTimestampFor("bulletin-A");
 
         if ((!bulletinAUpdateTimestamp_.isDefined()) || (bulletinAUpdateTimestamp_ < bulletinAManifestUpdateTimestamp))
         {
@@ -457,7 +462,7 @@ const BulletinA* Manager::accessBulletinAAt(const Instant& anInstant) const
         }
     }
 
-    // Try prediction span of loaded bulletins
+    // Try prediction span of loaded bulletin files
 
     {
         aBulletinIndex_ = 0;
@@ -484,7 +489,7 @@ const BulletinA* Manager::accessBulletinAAt(const Instant& anInstant) const
 
 const Finals2000A* Manager::accessFinals2000AAt(const Instant& anInstant) const
 {
-    // Try cache
+    // Try cached loaded file
 
     if (!finals2000aArray_.isEmpty())
     {
@@ -496,7 +501,7 @@ const Finals2000A* Manager::accessFinals2000AAt(const Instant& anInstant) const
         }
     }
 
-    // Try loaded files
+    // Try all loaded files
 
     {
         finals2000aIndex_ = 0;
@@ -512,12 +517,14 @@ const Finals2000A* Manager::accessFinals2000AAt(const Instant& anInstant) const
         }
     }
 
-    // Try getting latest file
+    // Try fetching latest file
 
     if (mode_ == Manager::Mode::Automatic)
     {
+        ManifestManager& manifestManager = ManifestManager::Get();
+
         const Instant finals2000AManifestUpdateTimestamp =
-            const_cast<Manager*>(this)->getLastUpdateTimestampFor("finals-2000A");
+            manifestManager.getLastUpdateTimestampFor("finals-2000A");
 
         if ((!finals2000AUpdateTimestamp_.isDefined()) ||
             (finals2000AUpdateTimestamp_ < finals2000AManifestUpdateTimestamp))
@@ -632,12 +639,14 @@ File Manager::fetchLatestBulletinA_()
 {
     std::cout << "Fetching latest Bulletin A..." << std::endl;
 
+    ManifestManager& manifestManager = ManifestManager::Get();
+
     Directory temporaryDirectory =
         Directory::Path(this->getBulletinADirectory().getPath() + Path::Parse(temporaryDirectoryName));
 
     this->lockLocalRepository(localRepositoryLockTimeout_);
 
-    const URL latestBulletinAUrl = this->remoteUrl + bulletinARemotePath + bulletinAFileName;
+    const URL latestBulletinAUrl = manifestManager.getRemoteUrl() + bulletinARemotePath + bulletinAFileName;
 
     File latestBulletinAFile = File::Undefined();
     Directory destinationDirectory = Directory::Undefined();
@@ -735,12 +744,14 @@ File Manager::fetchLatestFinals2000A_()
 {
     std::cout << "Fetching latest Finals 2000A..." << std::endl;
 
+    ManifestManager& manifestManager = ManifestManager::Get();
+
     Directory temporaryDirectory =
         Directory::Path(this->getFinals2000ADirectory().getPath() + Path::Parse(temporaryDirectoryName));
 
     this->lockLocalRepository(localRepositoryLockTimeout_);
 
-    const URL latestFinals2000AUrl = this->remoteUrl + finals2000ARemotePath + finals2000AFileName;
+    const URL latestFinals2000AUrl = manifestManager.getRemoteUrl() + finals2000ARemotePath + finals2000AFileName;
 
     File latestFinals2000AFile = File::Undefined();
     Directory destinationDirectory = Directory::Undefined();
