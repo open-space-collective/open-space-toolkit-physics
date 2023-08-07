@@ -16,8 +16,8 @@
 #include <OpenSpaceToolkit/IO/IP/TCP/HTTP/Client.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Manager.hpp>
-#include <OpenSpaceToolkit/Physics/Data/Manifest.hpp>
 #include <OpenSpaceToolkit/Physics/Data/Manager.hpp>
+#include <OpenSpaceToolkit/Physics/Data/Manifest.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Date.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
@@ -437,8 +437,7 @@ const BulletinA* Manager::accessBulletinAAt(const Instant& anInstant) const
     {
         ManifestManager& manifestManager = ManifestManager::Get();
 
-        const Instant bulletinAManifestUpdateTimestamp =
-            manifestManager.getLastUpdateTimestampFor("bulletin-A");
+        const Instant bulletinAManifestUpdateTimestamp = manifestManager.getLastUpdateTimestampFor("bulletin-A");
 
         if ((!bulletinAUpdateTimestamp_.isDefined()) || (bulletinAUpdateTimestamp_ < bulletinAManifestUpdateTimestamp))
         {
@@ -523,8 +522,7 @@ const Finals2000A* Manager::accessFinals2000AAt(const Instant& anInstant) const
     {
         ManifestManager& manifestManager = ManifestManager::Get();
 
-        const Instant finals2000AManifestUpdateTimestamp =
-            manifestManager.getLastUpdateTimestampFor("finals-2000A");
+        const Instant finals2000AManifestUpdateTimestamp = manifestManager.getLastUpdateTimestampFor("finals-2000A");
 
         if ((!finals2000AUpdateTimestamp_.isDefined()) ||
             (finals2000AUpdateTimestamp_ < finals2000AManifestUpdateTimestamp))

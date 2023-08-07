@@ -46,19 +46,29 @@ Manager& Manager::Get()
     return manager;
 }
 
-Instant Manager::getLastUpdateTimestampFor(const String& aDataName)
+const Instant Manager::getLastUpdateTimestampFor(const String& aDataName)
 {
     this->manifest_ = this->getUpdatedManifest_();
 
     return manifest_.getLastUpdateTimestampFor(aDataName);
 }
 
-URL Manager::getRemoteUrl() const
+const URL Manager::getRemoteUrl() const
 {
     return remoteUrl_;
 }
 
-Manifest Manager::getManifest() 
+void Manager::setRemoteUrl(const URL& aRemoteUrl)
+{
+    if (!aRemoteUrl.isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("URL");
+    }
+
+    remoteUrl_ = aRemoteUrl;
+}
+
+const Manifest Manager::getManifest() const
 {
     return manifest_;
 }

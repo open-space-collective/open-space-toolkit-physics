@@ -53,20 +53,27 @@ class Manager
 
     /// @brief              Check if there are updates for data of a certain name.
     ///
-    /// @param              [in] aDataName name of the data to query. This is the key for the data entry in the manifest file.
+    /// @param              [in] aDataName name of the data to query. This is the key for the data entry in the manifest
+    /// file.
     ///
-    /// @return             Instant indicating when the data was last updated on the remote, according to the manifest record.
-    Instant getLastUpdateTimestampFor(const String& aDataName);
+    /// @return             Instant indicating when the data was last updated on the remote, according to the manifest
+    /// record.
+    const Instant getLastUpdateTimestampFor(const String& aDataName);
 
     /// @brief              Get the remote URL. This points to the base URL for the OSTk input data.
     ///
     /// @return             Remote URL
-    URL getRemoteUrl() const;
+    const URL getRemoteUrl() const;
+
+    /// @brief              Set the remote URL.
+    ///
+    /// @return             Remote URL
+    void setRemoteUrl(const URL& aRemoteUrl);
 
     /// @brief              Get a copy of the current manifest file.
     ///
     /// @return             Manifest file
-    Manifest getManifest();
+    const Manifest getManifest() const;
 
     /// @brief              Load a new manifest file.
     ///
@@ -84,7 +91,6 @@ class Manager
     void clearManifestRepository();
 
    protected:
-
     URL remoteUrl_;
 
     Manifest manifest_;
@@ -99,11 +105,8 @@ class Manager
 
     void setup_();
 
-
     File fetchLatestManifestFile_();
     Manifest getUpdatedManifest_();
-
-
 
     bool isManifestRepositoryLocked_() const;
     File getManifestRepositoryLockFile_() const;

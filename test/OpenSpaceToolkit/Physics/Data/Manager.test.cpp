@@ -14,15 +14,13 @@ using ostk::physics::time::DateTime;
 using ostk::physics::data::Manager;
 using ostk::physics::data::Manifest;
 
-
 class OpenSpaceToolkit_Physics_Data_Manager : public ::testing::Test
 {
    protected:
     void SetUp() override
     {
-        const File manifestFile = File::Path(
-            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Data/Manifest/manifest.json")
-        );
+        const File manifestFile =
+            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Data/Manifest/manifest.json"));
 
         manifest_ = Manifest::Load(manifestFile);
     }
@@ -31,7 +29,6 @@ class OpenSpaceToolkit_Physics_Data_Manager : public ::testing::Test
 
     Manager& manager_ = Manager::Get();
 };
-
 
 TEST_F(OpenSpaceToolkit_Physics_Data_Manager, getLastUpdateTimestampFor)
 {
@@ -72,4 +69,3 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manager, loadManifest_)
         EXPECT_TRUE(manager_.getManifest().isDefined());
     }
 }
-
