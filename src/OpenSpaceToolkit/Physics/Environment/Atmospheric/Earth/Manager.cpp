@@ -15,6 +15,7 @@
 
 #include <OpenSpaceToolkit/IO/IP/TCP/HTTP/Client.hpp>
 
+#include <OpenSpaceToolkit/Physics/Data/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Date.hpp>
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
@@ -50,7 +51,13 @@ using ostk::physics::time::Time;
 using ostk::physics::time::DateTime;
 using ostk::physics::time::Instant;
 
+using ManifestManager = ostk::physics::data::Manager;
+
 const String CSSISpaceWeatherFileName = "SW-Last5Years.csv";
+const String CSSISpaceWeatherManifestName = "space-weather-CSSI";
+
+// [TBI]: this path can be obtained from the manifest
+const String CSSISpaceWeatherRemotePath = "environment/atmospheric/earth/CSSISpaceWeather/";
 
 const String temporaryDirectoryName = "tmp";
 
@@ -71,13 +78,6 @@ Directory Manager::getLocalRepository() const
 Directory Manager::getCSSISpaceWeatherDirectory() const
 {
     return Directory::Path(localRepository_.getPath() + Path::Parse("CSSISpaceWeather"));
-}
-
-URL Manager::getRemoteUrl() const
-{
-    const std::lock_guard<std::mutex> lock {mutex_};
-
-    return remoteUrl_;
 }
 
 Array<CSSISpaceWeather> Manager::getCSSISpaceWeatherArray() const
@@ -292,18 +292,6 @@ void Manager::setLocalRepository(const Directory& aDirectory)
     }
 }
 
-void Manager::setRemoteUrl(const URL& aRemoteUrl)
-{
-    if (!aRemoteUrl.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Remote URL");
-    }
-
-    const std::lock_guard<std::mutex> lock {mutex_};
-
-    remoteUrl_ = aRemoteUrl;
-}
-
 void Manager::loadCSSISpaceWeather(const CSSISpaceWeather& aCSSISpaceWeather)
 {
     if (!aCSSISpaceWeather.isDefined())
@@ -399,23 +387,10 @@ Duration Manager::DefaultLocalRepositoryLockTimeout()
     return defaultLocalRepositoryLockTimeout;
 }
 
-URL Manager::DefaultRemoteUrl()
-{
-    static const URL defaultRemoteUrl = URL::Parse(OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_REMOTE_URL);
-
-    if (const char* remoteUrl = std::getenv("OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_REMOTE_URL"))
-    {
-        return URL::Parse(remoteUrl);
-    }
-
-    return defaultRemoteUrl;
-}
-
 Manager::Manager(const Manager::Mode& aMode)
     : mode_(aMode),
       localRepository_(Manager::DefaultLocalRepository()),
       localRepositoryLockTimeout_(Manager::DefaultLocalRepositoryLockTimeout()),
-      remoteUrl_(Manager::DefaultRemoteUrl()),
       CSSISpaceWeatherArray_(Array<CSSISpaceWeather>::Empty()),
       CSSISpaceWeatherIndex_(0),
       CSSISpaceWeatherUpdateTimestamp_(Instant::Undefined())
@@ -468,16 +443,19 @@ const CSSISpaceWeather* Manager::accessCSSISpaceWeatherAt(const Instant& anInsta
 
     if (mode_ == Manager::Mode::Automatic)
     {
-        const Instant currentInstant = Instant::Now();
+        ManifestManager& manifestManager = ManifestManager::Get();
+
+        const Instant CSSIManifestUpdateTimestamp =
+            manifestManager.getLastUpdateTimestampFor(CSSISpaceWeatherManifestName);
 
         if ((!CSSISpaceWeatherUpdateTimestamp_.isDefined()) ||
-            ((CSSISpaceWeatherUpdateTimestamp_ + Duration::Weeks(1.0)) < currentInstant))  // [TBM] Param
+            (CSSISpaceWeatherUpdateTimestamp_ < CSSIManifestUpdateTimestamp))  // [TBM] Param
         {
             const File latestCSSISpaceWeatherFile = this->getLatestCSSISpaceWeatherFile();
 
             if (latestCSSISpaceWeatherFile.isDefined())
             {
-                CSSISpaceWeatherUpdateTimestamp_ = currentInstant;
+                CSSISpaceWeatherUpdateTimestamp_ = Instant::Now();
 
                 const CSSISpaceWeather CSSISpaceWeather = CSSISpaceWeather::Load(latestCSSISpaceWeatherFile);
 
@@ -597,13 +575,15 @@ File Manager::fetchLatestCSSISpaceWeather_()
 {
     std::cout << "Fetching latest CSSI Space Weather..." << std::endl;
 
+    ManifestManager& manifestManager = ManifestManager::Get();
+
     Directory temporaryDirectory =
         Directory::Path(this->getCSSISpaceWeatherDirectory().getPath() + Path::Parse(temporaryDirectoryName));
 
     this->lockLocalRepository(localRepositoryLockTimeout_);
 
-    const URL latestCSSISpaceWeatherUrl = remoteUrl_ + CSSISpaceWeatherFileName;
-    std::cout << latestCSSISpaceWeatherUrl.toString() << std::endl;
+    const URL latestCSSISpaceWeatherUrl =
+        manifestManager.getRemoteUrl() + CSSISpaceWeatherRemotePath + CSSISpaceWeatherFileName;
 
     File latestCSSISpaceWeatherFile = File::Undefined();
     Directory destinationDirectory = Directory::Undefined();
@@ -629,7 +609,7 @@ File Manager::fetchLatestCSSISpaceWeather_()
         std::cout << String::Format("Fetching CSSI Space Weather from [{}]...", latestCSSISpaceWeatherUrl.toString())
                   << std::endl;
 
-        latestCSSISpaceWeatherFile = Client::Fetch(latestCSSISpaceWeatherUrl, temporaryDirectory);
+        latestCSSISpaceWeatherFile = Client::Fetch(latestCSSISpaceWeatherUrl, temporaryDirectory, 2);
 
         if (!latestCSSISpaceWeatherFile.exists())
         {

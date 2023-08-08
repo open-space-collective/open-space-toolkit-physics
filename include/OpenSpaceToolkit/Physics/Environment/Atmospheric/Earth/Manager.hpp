@@ -22,7 +22,6 @@
 #define OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY \
     "./.open-space-toolkit/physics/environment/atmospheric/earth"
 #define OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT 60
-#define OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_REMOTE_URL "https://celestrak.org/SpaceData/"
 
 namespace ostk
 {
@@ -59,8 +58,6 @@ using ostk::physics::environment::atmospheric::earth::CSSISpaceWeather;
 ///                             -
 ///                             "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT"
 ///                             will override "DefaultLocalRepositoryLockTimeout"
-///                             - "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_REMOTE_URL" will override
-///                             "DefaultRemoteUrl"
 ///
 /// @ref                        https://ai-solutions.com/_help_Files/cssi_space_weather_file.htm
 
@@ -75,167 +72,145 @@ class Manager
 
     };
 
-    /// @brief              Get manager mode
+    /// @brief                  Get manager mode
     ///
-    /// @return             Manager mode
+    /// @return                 Manager mode
 
     Manager::Mode getMode() const;
 
-    /// @brief              Get local repository
+    /// @brief                  Get local repository
     ///
-    /// @return             Local repository
+    /// @return                 Local repository
 
     Directory getLocalRepository() const;
 
-    /// @brief              Get CSSI Space Weather directory
+    /// @brief                  Get CSSI Space Weather directory
     ///
-    /// @return             CSSI Space Weather directory
+    /// @return                 CSSI Space Weather directory
 
     Directory getCSSISpaceWeatherDirectory() const;
 
-    /// @brief              Get remote URL
+    /// @brief                  Get array of CSSI Space Weather
     ///
-    /// @return             Remote URL
-
-    URL getRemoteUrl() const;
-
-    /// @brief              Get array of CSSI Space Weather
-    ///
-    /// @return             Array of CSSI Space Weather
+    /// @return                 Array of CSSI Space Weather
 
     Array<CSSISpaceWeather> getCSSISpaceWeatherArray() const;
 
-    /// @brief              Get CSSI Space Weather at instant
+    /// @brief                  Get CSSI Space Weather at instant
     ///
-    /// @param              [in] anInstant An instant
-    /// @return             CSSI Space Weather
+    /// @param                  [in] anInstant An instant
+    /// @return                 CSSI Space Weather
 
     CSSISpaceWeather getCSSISpaceWeatherAt(const Instant& anInstant) const;
 
-    /// @brief              Get an Array of 8 3-hourly Kp solar indices for the day containing instant.
+    /// @brief                  Get an Array of 8 3-hourly Kp solar indices for the day containing instant.
     ///
-    /// @param              [in] anInstant An instant
-    /// @return             Array of 3-hourly Kp solar indices
+    /// @param                  [in] anInstant An instant
+    /// @return                 Array of 3-hourly Kp solar indices
 
     Array<Integer> getKp3HourSolarIndicesAt(const Instant& anInstant) const;
 
-    /// @brief              Get an Array of 8 3-hourly Ap solar indices for the day containing instant.
+    /// @brief                  Get an Array of 8 3-hourly Ap solar indices for the day containing instant.
     ///
-    /// @param              [in] anInstant An instant
-    /// @return             Array of 3-hourly Ap solar indices
+    /// @param                  [in] anInstant An instant
+    /// @return                 Array of 3-hourly Ap solar indices
 
     Array<Integer> getAp3HourSolarIndicesAt(const Instant& anInstant) const;
 
-    /// @brief              Get daily Ap index for the day containing instant.
+    /// @brief                  Get daily Ap index for the day containing instant.
     ///
-    /// @param              [in] anInstant An instant
-    /// @return             daily Ap index
+    /// @param                  [in] anInstant An instant
+    /// @return                 daily Ap index
 
     Integer getApDailyIndexAt(const Instant& anInstant) const;
 
-    /// @brief              Get the daily value for F10.7 solar flux at instant.
+    /// @brief                  Get the daily value for F10.7 solar flux at instant.
     ///
-    /// @param              [in] anInstant An instant
-    /// @return             Daily value for F10.7 solar flux
+    /// @param                  [in] anInstant An instant
+    /// @return                 Daily value for F10.7 solar flux
 
     Real getF107SolarFluxAt(const Instant& anInstant) const;
 
-    /// @brief              Get the 81-day average value for F10.7 solar flux
-    ///                     centered on instant.
+    /// @brief                  Get the 81-day average value for F10.7 solar flux
+    ///                         centered on instant.
     ///
-    /// @param              [in] anInstant An instant
-    /// @return             Centered 81-day average value for F10.7 solar flux
+    /// @param                  [in] anInstant An instant
+    /// @return                 Centered 81-day average value for F10.7 solar flux
 
     Real getF107SolarFlux81DayAvgAt(const Instant& anInstant) const;
 
-    /// @brief              Set manager mode
+    /// @brief                  Set manager mode
     ///
-    /// @param              [in] aMode A manager mode
+    /// @param                  [in] aMode A manager mode
 
     void setMode(const Manager::Mode& aMode);
 
-    /// @brief              Set local repository
+    /// @brief                  Set local repository
     ///
-    /// @param              [in] aDirectory A repository directory
+    /// @param                  [in] aDirectory A repository directory
 
     void setLocalRepository(const Directory& aDirectory);
 
-    /// @brief              Set remote URL
+    /// @brief                  Load CSSI Space Weather
     ///
-    /// @param              [in] aRemoteUrl A remote URL
-
-    void setRemoteUrl(const URL& aRemoteUrl);
-
-    /// @brief              Load CSSI Space Weather
-    ///
-    /// @param              [in] aCSSISpaceWeather A CSSI Space Weather
+    /// @param                  [in] aCSSISpaceWeather A CSSI Space Weather
 
     void loadCSSISpaceWeather(const CSSISpaceWeather& aCSSISpaceWeather);
 
-    /// @brief              Fetch latest CSSI Space Weather file
+    /// @brief                  Fetch latest CSSI Space Weather file
     ///
-    /// @return             Latest CSSI Space Weather file
+    /// @return                 Latest CSSI Space Weather file
 
     File fetchLatestCSSISpaceWeather();
 
-    /// @brief              Reset manager
+    /// @brief                  Reset manager
     ///
-    ///                     Unload all space weather files and clear cache.
+    ///                         Unload all space weather files and clear cache.
 
     void reset();
 
-    /// @brief              Clear local repository
+    /// @brief                  Clear local repository
     ///
-    ///                     Delete all files in local repository.
+    ///                         Delete all files in local repository.
 
     void clearLocalRepository();
 
-    /// @brief              Get manager singleton
+    /// @brief                  Get manager singleton
     ///
-    /// @return             Reference to manager
+    /// @return                 Reference to manager
 
     static Manager& Get();
 
-    /// @brief              Get default manager mode
+    /// @brief                  Get default manager mode
     ///
-    ///                     Overriden by: OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_MODE
+    ///                         Overriden by: OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_MODE
     ///
-    /// @return             Default manager mode
+    /// @return                 Default manager mode
 
     static Manager::Mode DefaultMode();
 
-    /// @brief              Get default local repository
+    /// @brief                  Get default local repository
     ///
-    ///                     Overriden by: OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY
+    ///                         Overriden by: OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY
     ///
-    /// @return             Default local repository
+    /// @return                 Default local repository
 
     static Directory DefaultLocalRepository();
 
-    /// @brief              Get default local repository lock timeout
+    /// @brief                  Get default local repository lock timeout
     ///
-    ///                     Overriden by:
-    ///                     OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT
+    ///                         Overriden by:
+    ///                         OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT
     ///
-    /// @return             Default local repository lock timeout
+    /// @return                 Default local repository lock timeout
 
     static Duration DefaultLocalRepositoryLockTimeout();
-
-    /// @brief              Get default remote URL
-    ///
-    ///                     Overriden by: OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_REMOTE_URL
-    ///
-    /// @return             Default remote URL
-
-    static URL DefaultRemoteUrl();
 
    private:
     Manager::Mode mode_;
 
     Directory localRepository_;
     Duration localRepositoryLockTimeout_;
-
-    URL remoteUrl_;
 
     Array<CSSISpaceWeather> CSSISpaceWeatherArray_;
 

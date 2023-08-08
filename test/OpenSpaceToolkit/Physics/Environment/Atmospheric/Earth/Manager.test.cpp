@@ -48,14 +48,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetLocalRep
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetRemoteUrl)
-{
-    {
-        const Manager& manager = Manager::Get();
-        EXPECT_EQ(URL::Parse("https://celestrak.org/SpaceData/"), manager.getRemoteUrl());
-    }
-}
-
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetCSSISpaceWeatherArray)
 {
     {
@@ -466,25 +458,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, SetLocalRep
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, SetRemoteUrl)
-{
-    {
-        Manager& manager = Manager::Get();
-
-        EXPECT_EQ(URL::Parse("https://celestrak.org/SpaceData/"), manager.getRemoteUrl());
-
-        manager.setRemoteUrl(URL::Parse("http://example.com"));
-
-        EXPECT_EQ(URL::Parse("http://example.com"), manager.getRemoteUrl());
-
-        manager.setRemoteUrl(URL::Parse("https://celestrak.org/SpaceData/"));
-
-        EXPECT_EQ(URL::Parse("https://celestrak.org/SpaceData/"), manager.getRemoteUrl());
-
-        EXPECT_THROW(manager.setRemoteUrl(URL::Undefined()), ostk::core::error::runtime::Undefined);
-    }
-}
-
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, LoadCSSISpaceWeather)
 {
     {
@@ -577,12 +550,5 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, DefaultLoca
 {
     {
         EXPECT_EQ(Duration::Seconds(60.0), Manager::DefaultLocalRepositoryLockTimeout());
-    }
-}
-
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, DefaultRemoteUrl)
-{
-    {
-        EXPECT_EQ(URL::Parse("https://celestrak.org/SpaceData/"), Manager::DefaultRemoteUrl());
     }
 }

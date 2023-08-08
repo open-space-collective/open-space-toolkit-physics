@@ -49,6 +49,10 @@ using ManifestManager = ostk::physics::data::Manager;
 const String bulletinAFileName = "ser7.dat";
 const String finals2000AFileName = "finals2000A.data";
 
+const String bulletinAManifestName = "bulletin-A";
+const String finals2000AManifestName = "finals-2000A";
+
+// TBI: this path can be obtained from the manifest
 const String bulletinARemotePath = "coordinate/frame/providers/iers/bulletin-A/";
 const String finals2000ARemotePath = "coordinate/frame/providers/iers/finals-2000A/";
 
@@ -437,7 +441,8 @@ const BulletinA* Manager::accessBulletinAAt(const Instant& anInstant) const
     {
         ManifestManager& manifestManager = ManifestManager::Get();
 
-        const Instant bulletinAManifestUpdateTimestamp = manifestManager.getLastUpdateTimestampFor("bulletin-A");
+        const Instant bulletinAManifestUpdateTimestamp =
+            manifestManager.getLastUpdateTimestampFor(bulletinAManifestName);
 
         if ((!bulletinAUpdateTimestamp_.isDefined()) || (bulletinAUpdateTimestamp_ < bulletinAManifestUpdateTimestamp))
         {
@@ -522,7 +527,8 @@ const Finals2000A* Manager::accessFinals2000AAt(const Instant& anInstant) const
     {
         ManifestManager& manifestManager = ManifestManager::Get();
 
-        const Instant finals2000AManifestUpdateTimestamp = manifestManager.getLastUpdateTimestampFor("finals-2000A");
+        const Instant finals2000AManifestUpdateTimestamp =
+            manifestManager.getLastUpdateTimestampFor(finals2000AManifestName);
 
         if ((!finals2000AUpdateTimestamp_.isDefined()) ||
             (finals2000AUpdateTimestamp_ < finals2000AManifestUpdateTimestamp))
