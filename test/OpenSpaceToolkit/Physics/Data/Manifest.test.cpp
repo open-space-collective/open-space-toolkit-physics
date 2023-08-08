@@ -95,7 +95,8 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manifest, FindRemoteDataUrls)
     {
         Array<URL> expectedUrls = {
             URL::Parse("https://fake.com/data/environment/gravitational/earth/egm2008.egm"),
-            URL::Parse("https://fake.com/data/environment/gravitational/earth/egm2008.egm.cof")};
+            URL::Parse("https://fake.com/data/environment/gravitational/earth/egm2008.egm.cof")
+        };
 
         EXPECT_EQ(expectedUrls, manifest_.findRemoteDataUrls(baseUrl, std::regex("earth-gravity-EGM2008")));
     }

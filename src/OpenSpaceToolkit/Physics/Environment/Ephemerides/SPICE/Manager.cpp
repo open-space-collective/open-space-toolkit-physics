@@ -155,11 +155,11 @@ Array<Kernel> Manager::fetchMatchingKernels(const std::regex& aRegex) const
                     "Cannot fetch kernel from [{}]: file is empty.", remoteUrl.toString()
                 );
             }
-
         }
 
         const Kernel fetchedKernel = {
-            Kernel::TypeFromFileExtension(fetchedKernelFile.getExtension()), fetchedKernelFile};
+            Kernel::TypeFromFileExtension(fetchedKernelFile.getExtension()), fetchedKernelFile
+        };
 
         matchingKernels.add(fetchedKernel);
     }

@@ -237,7 +237,8 @@ Array<Kernel> Engine::DefaultKernels(const Directory& aLocalRepository)
         Manager::Get().findKernel("earth\\_200101\\_[0-9]*\\_predict\\.bpc"),  // Earth orientation
         Manager::Get().findKernel("moon_080317.tf"),
         Manager::Get().findKernel("moon_assoc_me.tf"),
-        Manager::Get().findKernel("moon_pa_de421_1900-2050.bpc")};
+        Manager::Get().findKernel("moon_pa_de421_1900-2050.bpc")
+    };
 
     return defaultKernels;
 }
