@@ -68,6 +68,21 @@ void Manager::setRemoteUrl(const URL& aRemoteUrl)
     remoteUrl_ = aRemoteUrl;
 }
 
+const Directory Manager::getManifestRepository() const
+{
+    return manifestRepository_;
+}
+
+void Manager::setManifestRepository(const Directory& aManifestRepository)
+{
+    if (!aManifestRepository.isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Manifest repository");
+    }
+
+    manifestRepository_ = aManifestRepository;
+}
+
 const Manifest Manager::getManifest() const
 {
     return manifest_;
@@ -93,13 +108,6 @@ void Manager::reset()
     manifestUpdateTimestamp_ = Instant::Undefined();
 
     manifest_ = Manifest::Undefined();
-}
-
-void Manager::clearManifestRepository()
-{
-    manifestRepository_.remove();
-
-    this->setup_();
 }
 
 Manager::Manager()
@@ -130,11 +138,8 @@ void Manager::setup_()
     }
 
     remoteUrl_ = DefaultRemoteUrl_();
-
-    if (!remoteUrl_.isDefined())
-    {
-        throw ostk::core::error::RuntimeError("Cannot parse remote URL [{}].", OSTK_PHYSICS_DATA_REMOTE_URL);
-    }
+    manifestRepositoryLockTimeout_ = DefaultManifestRepositoryLockTimeout_();
+    manifestRepository_ = DefaultManifestRepository_();
 }
 
 void Manager::checkManifestAgeAndUpdate_()

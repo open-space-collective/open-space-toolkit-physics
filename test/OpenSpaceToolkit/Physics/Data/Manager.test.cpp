@@ -6,6 +6,9 @@
 
 using ostk::core::fs::File;
 using ostk::core::fs::Path;
+using ostk::core::fs::Directory;
+
+using ostk::io::URL;
 
 using ostk::physics::time::Scale;
 using ostk::physics::time::Instant;
@@ -30,7 +33,7 @@ class OpenSpaceToolkit_Physics_Data_Manager : public ::testing::Test
     Manager& manager_ = Manager::Get();
 };
 
-TEST_F(OpenSpaceToolkit_Physics_Data_Manager, getLastUpdateTimestampFor)
+TEST_F(OpenSpaceToolkit_Physics_Data_Manager, GetLastUpdateTimestampFor)
 {
     {
         EXPECT_EQ(
@@ -47,13 +50,49 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manager, getLastUpdateTimestampFor)
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Data_Manager, getRemoteUrl)
+TEST_F(OpenSpaceToolkit_Physics_Data_Manager, GetRemoteUrl)
 {
     {
         EXPECT_EQ(
             "https://github.com/open-space-collective/open-space-toolkit-data/raw/main/data/",
             manager_.getRemoteUrl().toString()
         );
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Data_Manager, setRemoteUrl)
+{
+    {
+        EXPECT_EQ(
+            "https://github.com/open-space-collective/open-space-toolkit-data/raw/main/data/",
+            manager_.getRemoteUrl().toString()
+        );
+
+        manager_.setRemoteUrl(URL::Parse("http://fake.com"));
+
+        EXPECT_EQ("http://fake.com", manager_.getRemoteUrl().toString());
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Data_Manager, GetManifestRepository)
+{
+    {
+        EXPECT_EQ("data", manager_.getManifestRepository().getName());
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Data_Manager, SetManifestRepository)
+{
+    {
+        EXPECT_EQ("data", manager_.getManifestRepository().getName());
+
+        manager_.setManifestRepository(Directory::Path(Path::Parse("/tmp")));
+
+        EXPECT_EQ("tmp", manager_.getManifestRepository().getName());
+
+        manager_.setManifestRepository(Directory::Path(Path::Parse("./.open-space-toolkit/physics/data")));
+
+        EXPECT_EQ("data", manager_.getManifestRepository().getName());
     }
 }
 
@@ -67,5 +106,7 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manager, loadManifest_)
         manager_.loadManifest(manifest_);
 
         EXPECT_TRUE(manager_.getManifest().isDefined());
+
+        EXPECT_ANY_THROW(manager_.loadManifest(Manifest::Undefined()));
     }
 }

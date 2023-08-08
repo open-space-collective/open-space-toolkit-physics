@@ -70,9 +70,20 @@ class Manager
     /// @return             Remote URL
     void setRemoteUrl(const URL& aRemoteUrl);
 
+    /// @brief              Get the manifest repository.
+    ///
+    /// @return            Manifest repository
+    const Directory getManifestRepository() const;
+
+    /// @brief              Set the manifest repository.
+    ///
+    /// @param              [in] aManifestRepository Manifest repository
+    void setManifestRepository(const Directory& aManifestRepository);
+
     /// @brief              Get a copy of the current manifest file.
     ///
     /// @return             Manifest file
+
     const Manifest getManifest() const;
 
     /// @brief              Load a new manifest file.
@@ -84,11 +95,6 @@ class Manager
     ///
     ///                     Unload the manifest file and forget manifest age.
     void reset();
-
-    /// @brief              Clear the manifest repository.
-    ///
-    ///                     Delete the manifest repository directory and all its contents.
-    void clearManifestRepository();
 
    protected:
     URL remoteUrl_;
