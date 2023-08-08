@@ -43,7 +43,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Constructor)
             Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth"))
         );
 
-        EarthGravitationalModelManager::Get().enable();
+        EarthGravitationalModelManager::Get().setMode(EarthGravitationalModelManager::Mode::Automatic);
 
         EXPECT_NO_THROW(EarthGravitationalModel earthGravitationalModel(EarthGravitationalModel::Type::Spherical));
         EXPECT_NO_THROW(EarthGravitationalModel earthGravitationalModel(EarthGravitationalModel::Type::WGS84));
@@ -53,8 +53,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Constructor)
 
         EarthGravitationalModelManager::Get().setLocalRepository(EarthGravitationalModelManager::DefaultLocalRepository(
         ));
-
-        EarthGravitationalModelManager::Get().setEnabled(EarthGravitationalModelManager::DefaultEnabled());
     }
 
     // Test correct model order and degree combinations
@@ -64,7 +62,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Constructor)
             Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth"))
         );
 
-        EarthGravitationalModelManager::Get().enable();
+        EarthGravitationalModelManager::Get().setMode(EarthGravitationalModelManager::Mode::Automatic);
 
         EXPECT_NO_THROW(
             std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::Spherical, Directory::Undefined())
@@ -85,7 +83,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Constructor)
         EarthGravitationalModelManager::Get().setLocalRepository(EarthGravitationalModelManager::DefaultLocalRepository(
         ));
 
-        EarthGravitationalModelManager::Get().setEnabled(EarthGravitationalModelManager::DefaultEnabled());
     }
 
     // Test incorrect model order and degree combinations
@@ -95,7 +92,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Constructor)
             Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth"))
         );
 
-        EarthGravitationalModelManager::Get().enable();
+        EarthGravitationalModelManager::Get().setMode(EarthGravitationalModelManager::Mode::Automatic);
 
         EXPECT_NO_THROW(std::make_shared<EarthGravitationalModel>(
             EarthGravitationalModel::Type::Spherical, Directory::Undefined(), 3000, 3000
@@ -117,7 +114,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Constructor)
         EarthGravitationalModelManager::Get().setLocalRepository(EarthGravitationalModelManager::DefaultLocalRepository(
         ));
 
-        EarthGravitationalModelManager::Get().setEnabled(EarthGravitationalModelManager::DefaultEnabled());
     }
 
     {
@@ -163,36 +159,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Constructor)
         ));
     }
 }
-
-// TEST (OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Clone)
-// {
-
-//     using ostk::core::fs::Path ;
-//     using ostk::core::fs::Directory ;
-
-//     using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth ;
-//     using EarthGravitationalModelManager = ostk::physics::environment::gravitational::earth::Manager ;
-
-//     {
-
-//         EarthGravitationalModelManager::Get().setLocalRepository(Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth")))
-//         ;
-
-//         EarthGravitationalModelManager::Get().enable() ;
-
-//         const EarthGravitationalModel earthGravitationalModel = { EarthGravitationalModel::Type::EGM96 } ;
-
-//         EXPECT_NO_THROW(const EarthGravitationalModel* earthGravitationalModelPtr = earthGravitationalModel.clone()
-//         ;) ;
-
-//         EarthGravitationalModelManager::Get().setLocalRepository(EarthGravitationalModelManager::DefaultLocalRepository())
-//         ;
-
-//         EarthGravitationalModelManager::Get().setEnabled(EarthGravitationalModelManager::DefaultEnabled()) ;
-
-//     }
-
-// }
 
 TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, IsDefined)
 {
@@ -333,7 +299,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetType)
             Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth"))
         );
 
-        EarthGravitationalModelManager::Get().enable();
+        EarthGravitationalModelManager::Get().setMode(EarthGravitationalModelManager::Mode::Automatic);
 
         EXPECT_EQ(
             EarthGravitationalModel::Type::Spherical,
@@ -359,7 +325,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetType)
         EarthGravitationalModelManager::Get().setLocalRepository(EarthGravitationalModelManager::DefaultLocalRepository(
         ));
 
-        EarthGravitationalModelManager::Get().setEnabled(EarthGravitationalModelManager::DefaultEnabled());
     }
 }
 
@@ -370,7 +335,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAtNo
             Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth"))
         );
 
-        EarthGravitationalModelManager::Get().enable();
+        EarthGravitationalModelManager::Get().setMode(EarthGravitationalModelManager::Mode::Automatic);
 
         static const Array<Tuple<EarthGravitationalModel::Type, Vector3d, Instant, Vector3d, Real>> testCases = {
 
@@ -503,7 +468,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAtNo
         EarthGravitationalModelManager::Get().setLocalRepository(EarthGravitationalModelManager::DefaultLocalRepository(
         ));
 
-        EarthGravitationalModelManager::Get().setEnabled(EarthGravitationalModelManager::DefaultEnabled());
     }
 }
 
@@ -514,7 +478,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAtWi
             Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth"))
         );
 
-        EarthGravitationalModelManager::Get().enable();
+        EarthGravitationalModelManager::Get().setMode(EarthGravitationalModelManager::Mode::Automatic);
 
         static const Array<Tuple<EarthGravitationalModel::Type, Integer, Integer, Vector3d, Instant, Vector3d, Real>>
             testCases = {
@@ -633,7 +597,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAtWi
         EarthGravitationalModelManager::Get().setLocalRepository(EarthGravitationalModelManager::DefaultLocalRepository(
         ));
 
-        EarthGravitationalModelManager::Get().setEnabled(EarthGravitationalModelManager::DefaultEnabled());
     }
 }
 
@@ -644,7 +607,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAtST
             Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth"))
         );
 
-        EarthGravitationalModelManager::Get().enable();
+        EarthGravitationalModelManager::Get().setMode(EarthGravitationalModelManager::Mode::Automatic);
 
         // These accelerations were computed in STK using HPOP for the respective model, degree and orders
         static const Array<Tuple<EarthGravitationalModel::Type, Integer, Integer, String, Vector3d, Vector3d, Real>>
@@ -709,6 +672,5 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAtST
         EarthGravitationalModelManager::Get().setLocalRepository(EarthGravitationalModelManager::DefaultLocalRepository(
         ));
 
-        EarthGravitationalModelManager::Get().setEnabled(EarthGravitationalModelManager::DefaultEnabled());
     }
 }

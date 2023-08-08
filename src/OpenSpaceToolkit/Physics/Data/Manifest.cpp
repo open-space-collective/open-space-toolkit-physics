@@ -44,6 +44,31 @@ Instant Manifest::getLastUpdateTimestampFor(const String& aDataName) const
     );
 }
 
+Array<URL> Manifest::getRemoteDataUrls(const URL& aBaseUrl, const String& aDataName) const
+{
+    Array<URL> urls = Array<URL>::Empty();
+
+    for (const auto& dictionaryIt : dictionary_)
+    {
+        if (dictionaryIt.accessKey() == aDataName)
+        {
+            Object filenamesDictValue = dictionaryIt.accessValue()["filenames"];
+
+            const Array<Object> filenames =
+                filenamesDictValue.isString() ? Array<Object>({filenamesDictValue}) : filenamesDictValue.accessArray();
+
+            for (const auto filename : filenames)
+            {
+                const URL url =
+                    aBaseUrl + "/" + dictionaryIt.accessValue()["path"].accessString() + "/" + filename.accessString();
+                urls.add(url);
+            }
+        }
+    }
+
+    return urls;
+}
+
 Array<URL> Manifest::findRemoteDataUrls(const URL& aBaseUrl, const String& aDataNameRegexString) const
 {
     Array<URL> urls = Array<URL>::Empty();

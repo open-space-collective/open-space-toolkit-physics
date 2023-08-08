@@ -83,6 +83,17 @@ void Manager::setManifestRepository(const Directory& aManifestRepository)
     manifestRepository_ = aManifestRepository;
 }
 
+Array<URL> Manager::getRemoteDataUrls(const String& aDataName) const
+{
+    if (!manifest_.isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Manifest");
+    }
+
+    const_cast<Manager*>(this)->checkManifestAgeAndUpdate();
+    return manifest_.getRemoteDataUrls(remoteUrl_, aDataName);
+}
+
 Array<URL> Manager::findRemoteDataUrls(const String& aDataNameRegex) const
 {
     const_cast<Manager*>(this)->checkManifestAgeAndUpdate();
