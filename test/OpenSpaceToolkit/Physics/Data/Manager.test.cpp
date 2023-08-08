@@ -71,6 +71,8 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manager, setRemoteUrl)
         manager_.setRemoteUrl(URL::Parse("http://fake.com"));
 
         EXPECT_EQ("http://fake.com", manager_.getRemoteUrl().toString());
+
+        EXPECT_ANY_THROW(manager_.setRemoteUrl(URL::Undefined()));
     }
 }
 
@@ -93,6 +95,8 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manager, SetManifestRepository)
         manager_.setManifestRepository(Directory::Path(Path::Parse("./.open-space-toolkit/physics/data")));
 
         EXPECT_EQ("data", manager_.getManifestRepository().getName());
+
+        EXPECT_ANY_THROW(manager_.setManifestRepository(Directory::Undefined()));
     }
 }
 

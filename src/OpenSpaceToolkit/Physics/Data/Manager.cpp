@@ -48,7 +48,7 @@ Manager& Manager::Get()
 
 const Instant Manager::getLastUpdateTimestampFor(const String& aDataName)
 {
-    this->checkManifestAgeAndUpdate_();
+    this->checkManifestAgeAndUpdate();
 
     return manifest_.getLastUpdateTimestampFor(aDataName);
 }
@@ -111,38 +111,38 @@ void Manager::reset()
 }
 
 Manager::Manager()
-    : remoteUrl_(DefaultRemoteUrl_()),
+    : remoteUrl_(DefaultRemoteUrl()),
       manifest_(Manifest::Undefined()),
       manifestUpdateTimestamp_(Instant::Undefined()),
-      manifestRepository_(Manager::DefaultManifestRepository_()),
-      manifestRepositoryLockTimeout_(Manager::DefaultManifestRepositoryLockTimeout_())
+      manifestRepository_(Manager::DefaultManifestRepository()),
+      manifestRepositoryLockTimeout_(Manager::DefaultManifestRepositoryLockTimeout())
 {
-    this->setup_();
+    this->setup();
 }
 
-bool Manager::isManifestRepositoryLocked_() const
+bool Manager::isManifestRepositoryLocked() const
 {
-    return this->getManifestRepositoryLockFile_().exists();
+    return this->getManifestRepositoryLockFile().exists();
 }
 
-File Manager::getManifestRepositoryLockFile_() const
+File Manager::getManifestRepositoryLockFile() const
 {
     return File::Path(manifestRepository_.getPath() + Path::Parse(".lock"));
 }
 
-void Manager::setup_()
+void Manager::setup()
 {
     if (!manifestRepository_.exists())
     {
         manifestRepository_.create();
     }
 
-    remoteUrl_ = DefaultRemoteUrl_();
-    manifestRepositoryLockTimeout_ = DefaultManifestRepositoryLockTimeout_();
-    manifestRepository_ = DefaultManifestRepository_();
+    remoteUrl_ = DefaultRemoteUrl();
+    manifestRepositoryLockTimeout_ = DefaultManifestRepositoryLockTimeout();
+    manifestRepository_ = DefaultManifestRepository();
 }
 
-void Manager::checkManifestAgeAndUpdate_()
+void Manager::checkManifestAgeAndUpdate()
 {
     // Check if the local manifest is too old and fetch a new one if needed
     // TODO make max age overridable
@@ -158,7 +158,7 @@ File Manager::fetchLatestManifestFile_()
 {
     Directory temporaryDirectory = Directory::Path(manifestRepository_.getPath() + Path::Parse(temporaryDirectoryName));
 
-    this->lockManifestRepository_(manifestRepositoryLockTimeout_);
+    this->lockManifestRepository(manifestRepositoryLockTimeout_);
 
     const URL latestDataManifestUrl = URL::Parse(OSTK_PHYSICS_DATA_REMOTE_URL) + dataManifestFileName;
 
@@ -215,7 +215,7 @@ File Manager::fetchLatestManifestFile_()
 
         temporaryDirectory.remove();
 
-        this->unlockManifestRepository_();
+        this->unlockManifestRepository();
 
         std::cout << String::Format(
                          "Data  Manifest [{}] has been successfully fetched from [{}].",
@@ -244,7 +244,7 @@ File Manager::fetchLatestManifestFile_()
             temporaryDirectory.remove();
         }
 
-        this->unlockManifestRepository_();
+        this->unlockManifestRepository();
 
         throw;
     }
@@ -252,7 +252,7 @@ File Manager::fetchLatestManifestFile_()
     return latestDataManifestFile;
 }
 
-void Manager::lockManifestRepository_(const Duration& aTimeout)
+void Manager::lockManifestRepository(const Duration& aTimeout)
 {
     std::cout << String::Format("Locking local repository [{}]...", manifestRepository_.toString()) << std::endl;
 
@@ -279,7 +279,7 @@ void Manager::lockManifestRepository_(const Duration& aTimeout)
 
     const Instant timeoutInstant = Instant::Now() + aTimeout;
 
-    File lockFile = this->getManifestRepositoryLockFile_();
+    File lockFile = this->getManifestRepositoryLockFile();
 
     while (!tryLock(lockFile))
     {
@@ -292,19 +292,19 @@ void Manager::lockManifestRepository_(const Duration& aTimeout)
     }
 }
 
-void Manager::unlockManifestRepository_()
+void Manager::unlockManifestRepository()
 {
     std::cout << String::Format("Unlocking local repository [{}]...", manifestRepository_.toString()) << std::endl;
 
-    if (!this->isManifestRepositoryLocked_())
+    if (!this->isManifestRepositoryLocked())
     {
         throw ostk::core::error::RuntimeError("Cannot unlock local repository: lock file does not exist.");
     }
 
-    this->getManifestRepositoryLockFile_().remove();
+    this->getManifestRepositoryLockFile().remove();
 }
 
-Directory Manager::DefaultManifestRepository_()
+Directory Manager::DefaultManifestRepository()
 {
     static const Directory defaultLocalRepository =
         Directory::Path(Path::Parse(OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY));
@@ -317,7 +317,7 @@ Directory Manager::DefaultManifestRepository_()
     return defaultLocalRepository;
 }
 
-Duration Manager::DefaultManifestRepositoryLockTimeout_()
+Duration Manager::DefaultManifestRepositoryLockTimeout()
 {
     static const Duration defaultLocalRepositoryLockTimeout =
         Duration::Seconds(OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY_LOCK_TIMEOUT);
@@ -331,7 +331,7 @@ Duration Manager::DefaultManifestRepositoryLockTimeout_()
     return defaultLocalRepositoryLockTimeout;
 }
 
-URL Manager::DefaultRemoteUrl_()
+URL Manager::DefaultRemoteUrl()
 {
     static const URL defaultRemoteUrl = URL::Parse(OSTK_PHYSICS_DATA_REMOTE_URL);
 

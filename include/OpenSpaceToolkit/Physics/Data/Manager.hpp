@@ -110,19 +110,19 @@ class Manager
 
     Manager();
 
-    void setup_();
+    void setup();
 
     File fetchLatestManifestFile_();
-    void checkManifestAgeAndUpdate_();
+    void checkManifestAgeAndUpdate();
 
-    bool isManifestRepositoryLocked_() const;
-    File getManifestRepositoryLockFile_() const;
-    void lockManifestRepository_(const Duration& aTimeout);
-    void unlockManifestRepository_();
+    bool isManifestRepositoryLocked() const;
+    File getManifestRepositoryLockFile() const;
+    void lockManifestRepository(const Duration& aTimeout);
+    void unlockManifestRepository();
 
-    static Directory DefaultManifestRepository_();
-    static Duration DefaultManifestRepositoryLockTimeout_();
-    static URL DefaultRemoteUrl_();
+    static Directory DefaultManifestRepository();
+    static Duration DefaultManifestRepositoryLockTimeout();
+    static URL DefaultRemoteUrl();
 };
 
 }  // namespace data
