@@ -90,7 +90,7 @@ Array<URL> Manager::findRemoteDataUrls(const std::regex& aDataNameRegex) const
         throw ostk::core::error::runtime::Undefined("Manifest");
     }
 
-    const_cast<Manager*>(this)->checkManifestAgeAndUpdate_();
+    const_cast<Manager*>(this)->checkManifestAgeAndUpdate();
     return manifest_.findRemoteDataUrls(remoteUrl_, aDataNameRegex);
 }
 
@@ -160,12 +160,12 @@ void Manager::checkManifestAgeAndUpdate()
     if (!manifestUpdateTimestamp_.isDefined() ||
         (manifestUpdateTimestamp_ + Duration::Hours(OSTK_PHYSICS_DATA_MANAGER_MANIFEST_MAX_AGE_HOURS) < Instant::Now()))
     {
-        File manifestFile = this->fetchLatestManifestFile_();
+        File manifestFile = this->fetchLatestManifestFile();
         this->loadManifest(Manifest::Load(manifestFile));
     }
 }
 
-File Manager::fetchLatestManifestFile_()
+File Manager::fetchLatestManifestFile()
 {
     Directory temporaryDirectory = Directory::Path(manifestRepository_.getPath() + Path::Parse(temporaryDirectoryName));
 

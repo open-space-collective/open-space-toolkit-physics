@@ -129,7 +129,7 @@ class Manager
 
     void setup();
 
-    File fetchLatestManifestFile_();
+    File fetchLatestManifestFile();
     void checkManifestAgeAndUpdate();
 
     bool isManifestRepositoryLocked() const;

@@ -147,10 +147,9 @@ class Engine
 
     /// @brief              Get default kernels
     ///
-    /// @param              [in] aLocalRepository A local repository
     /// @return             Default kernels
 
-    static Array<Kernel> DefaultKernels(const Directory& aLocalRepository);
+    static Array<Kernel> DefaultKernels();
 
    private:
     Engine::Mode mode_;

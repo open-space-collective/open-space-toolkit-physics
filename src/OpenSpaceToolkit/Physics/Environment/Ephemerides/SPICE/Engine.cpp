@@ -224,7 +224,7 @@ Engine::Mode Engine::DefaultMode()
     return defaultMode;
 }
 
-Array<Kernel> Engine::DefaultKernels(const Directory& aLocalRepository)
+Array<Kernel> Engine::DefaultKernels()
 {
     // Use regex to pull Earth body shape and orientation kernels, as the file name can be updated.
 
@@ -359,7 +359,7 @@ void Engine::setup()
 
         // Load default kernels
 
-        for (const auto& kernel : Engine::DefaultKernels(kernelDirectory))
+        for (const auto& kernel : Engine::DefaultKernels())
         {
             this->loadKernel_(kernel);
         }
