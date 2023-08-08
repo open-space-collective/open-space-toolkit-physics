@@ -314,10 +314,11 @@ TEST(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Engine, DefaultKerne
     using ostk::physics::env::ephem::spice::Kernel;
 
     {
-        const Directory spiceDirectory =
-            Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE"));
+        Manager::Get().setLocalRepository(
+            Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE"))
+        );
 
-        const Array<Kernel> kernels = Engine::DefaultKernels(spiceDirectory);
+        const Array<Kernel> kernels = Engine::DefaultKernels();
 
         for (const auto& kernel : kernels)
         {
