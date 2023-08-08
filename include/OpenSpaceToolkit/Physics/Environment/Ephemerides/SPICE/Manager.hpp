@@ -16,15 +16,13 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
+#include <OpenSpaceToolkit/Physics/Data/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Index.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Kernel.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
 #define OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY \
     "./.open-space-toolkit/physics/environment/ephemerides/spice"
-#define OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_REMOTE_URL \
-    "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/"
 
 namespace ostk
 {
@@ -48,7 +46,8 @@ using ostk::io::URL;
 
 using ostk::physics::time::Instant;
 using ostk::physics::env::ephem::spice::Kernel;
-using ostk::physics::env::ephem::spice::Index;
+
+using ManifestManager = ostk::physics::data::Manager;
 
 /// @brief                      SPICE Toolkit kernel manager
 ///
@@ -58,8 +57,6 @@ using ostk::physics::env::ephem::spice::Index;
 ///
 ///                             - "OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY" will override
 ///                             "DefaultLocalRepository"
-///                             - "OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_REMOTE_URL" will override
-///                             "DefaultRemoteUrl"
 
 class Manager
 {
@@ -72,23 +69,31 @@ class Manager
 
     Manager& operator=(const Manager& aSpiceManager) = delete;
 
+    /// @brief              Get manager singleton
+    ///
+    /// @return             Reference to manager
+
+    static Manager& Get();
+
     /// @brief              Get local repository
     ///
     /// @return             Local repository
 
     Directory getLocalRepository() const;
 
-    /// @brief              Get remote URL
+    /// @brief              Set local repository
     ///
-    /// @return             Remote URL
+    /// @param              [in] aDirectory A repository directory
 
-    URL getRemoteUrl() const;
+    void setLocalRepository(const Directory& aDirectory);
 
-    /// @brief              Get index file
+    /// @brief              Get default local repository
     ///
-    /// @return             Index file
+    ///                     Overriden by: OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY
+    ///
+    /// @return             Default local repository
 
-    File getIndexFile() const;
+    static Directory DefaultLocalRepository();
 
     /// @brief              Fetch kernel from remote
     ///
@@ -111,66 +116,18 @@ class Manager
 
     Kernel findKernel(const String& aRegexString) const;
 
-    /// @brief              Set local repository
-    ///
-    /// @param              [in] aDirectory A repository directory
-
-    void setLocalRepository(const Directory& aDirectory);
-
-    /// @brief              Set remote URL
-    ///
-    /// @param              [in] aRemoteUrl A remote URL
-
-    void setRemoteUrl(const URL& aRemoteUrl);
-
     /// @brief              Refresh manager
     ///
     ///                     This will re-fetch a new index.
 
     void refresh();
 
-    /// @brief              Get manager singleton
-    ///
-    /// @return             Reference to manager
-
-    static Manager& Get();
-
-    /// @brief              Get default local repository
-    ///
-    ///                     Overriden by: OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY
-    ///
-    /// @return             Default local repository
-
-    static Directory DefaultLocalRepository();
-
-    /// @brief              Get default remote URL
-    ///
-    ///                     Overriden by: OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_REMOTE_URL
-    ///
-    /// @return             Default remote URL
-
-    static URL DefaultRemoteUrl();
-
    private:
     Directory localRepository_;
-
-    URL remoteUrl_;
-
-    mutable Index index_;
 
     mutable std::mutex mutex_;
 
     Manager();
-
-    File getIndexFile_() const;
-
-    void updateIndex();
-
-    void fetchIndexAt(const URL& aUrl);
-
-    void loadIndex();
-
-    void flushIndex();
 };
 
 }  // namespace spice

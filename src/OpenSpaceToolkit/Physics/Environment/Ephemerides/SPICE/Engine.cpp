@@ -11,12 +11,8 @@
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformations/Rotations/RotationMatrix.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Dynamic.hpp>
-
-// clang-format off
-// Include Manager.hpp before Engine.hpp to avoid name conflict for "ostk::core::types::Index"
-#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Engine.hpp>
-// clang-format on
+#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Manager.hpp>
 
 extern "C"
 {
@@ -230,20 +226,18 @@ Engine::Mode Engine::DefaultMode()
 
 Array<Kernel> Engine::DefaultKernels(const Directory& aLocalRepository)
 {
-    // Use regex to pull Earth body shape, orientation and leap second kernels, as the file name is often updated.
+    // Use regex to pull Earth body shape and orientation kernels, as the file name can be updated.
 
     static const Array<Kernel> defaultKernels = {
 
-        Manager::Get().findKernel("latest_leapseconds.tls"),                              // Leap seconds
-        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("de430.bsp"))),  // Ephemeris
-        Manager::Get().findKernel("pck[0-9]*\\.tpc"),  // System body shape and orientation constants
-        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("earth_assoc_itrf93.tf"))),
-        Manager::Get().findKernel("earth\\_200101\\_[0-9]*\\_predict\\.bpc"),
-        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("moon_080317.tf"))),
-        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("moon_assoc_me.tf"))),
-        Kernel::File(File::Path(aLocalRepository.getPath() + Path::Parse("moon_pa_de421_1900-2050.bpc")))
-
-    };
+        Manager::Get().findKernel("latest_leapseconds.tls"),  // Leap seconds
+        Manager::Get().findKernel("de430.bsp"),               // Ephemeris
+        Manager::Get().findKernel("pck[0-9]*\\.tpc"),         // System body shape and orientation constants
+        Manager::Get().findKernel("earth_assoc_itrf93.tf"),   // Associates Earth to the ITRF93 frame
+        Manager::Get().findKernel("earth\\_200101\\_[0-9]*\\_predict\\.bpc"),  // Earth orientation
+        Manager::Get().findKernel("moon_080317.tf"),
+        Manager::Get().findKernel("moon_assoc_me.tf"),
+        Manager::Get().findKernel("moon_pa_de421_1900-2050.bpc")};
 
     return defaultKernels;
 }
@@ -408,9 +402,6 @@ void Engine::manageKernels(const String& aSpiceIdentifier, const Instant& anInst
                 {
                     (void)isFirstTime;
 
-                    // try
-                    // {
-
                     // List available Earth kernels
 
                     const Array<Kernel> earthKernels =
@@ -420,32 +411,6 @@ void Engine::manageKernels(const String& aSpiceIdentifier, const Instant& anInst
                     {
                         const_cast<Engine*>(this)->loadKernel_(earthKernels.accessFirst()
                         );  // [TBM] The first kernel is not necessarily the correct one
-
-                        // bool didLoadKernel = false ;
-
-                        // for (const auto& earthKernel : earthKernels)
-                        // {
-
-                        //     // [TBM] This is a temporary hack, should be improved
-
-                        //     const_cast<Engine*>(this)->loadKernel_(earthKernel) ; // [TBM] The order is not
-                        //     necessarily the correct one: should be ordered by ascending duration from kernel epoch to
-                        //     queried instant
-
-                        //     didLoadKernel = true ;
-
-                        //     break ;
-
-                        // }
-
-                        // if (isFirstTime && (!didLoadKernel)) // The index is probably too old: force refresh
-                        // {
-
-                        //     Manager::Get().refresh() ;
-
-                        //     loadEarthKernel(false) ;
-
-                        // }
                     }
                     else
                     {
@@ -453,12 +418,6 @@ void Engine::manageKernels(const String& aSpiceIdentifier, const Instant& anInst
                             "Cannot fetch BPC Earth kernel at [{}].", anInstant.toString()
                         );
                     }
-
-                    // }
-                    // catch (const ostk::core::error::Exception& anException)
-                    // {
-                    //     // Do nothing
-                    // }
                 };
 
                 loadEarthKernel(true);

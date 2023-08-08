@@ -88,6 +88,13 @@ class Manager
 
     void setManifestRepository(const Directory& aManifestRepository);
 
+    /// @brief                  Find remote URLs of data matching regular expression
+    ///
+    /// @param                  [in] aKernelNameRegex A regular expression
+    /// @return                 Array of URLs
+
+    Array<URL> findRemoteDataUrls(const std::regex& aDataNameRegex) const;
+
     /// @brief                  Get a copy of the current manifest file.
     ///
     /// @return                 Manifest file

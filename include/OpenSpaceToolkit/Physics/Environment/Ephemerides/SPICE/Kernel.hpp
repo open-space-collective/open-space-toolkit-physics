@@ -25,7 +25,7 @@ using ostk::core::types::String;
 
 using ostk::physics::time::Instant;
 
-/// @brief                      SPICE Toolkit kernel
+/// @brief                      SPICE Toolkit kernel. Generalized data class for every type of kernel.
 ///
 /// @ref                        https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/C/info/intrdctn.html
 

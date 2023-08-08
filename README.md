@@ -148,7 +148,6 @@ The library exhibits the following structure:
     ├── Ephemerides
     │   ├── Analytical
     │   ├── Tabulated
-    │   ├── SOFA
     │   └── SPICE (JPL)
     ├── Gravity
     │   ├── Barycentric
@@ -156,43 +155,40 @@ The library exhibits the following structure:
     │   └── Earth Gravitational Model 2008 (EGM2008)
     ├── Atmospheric
     │   ├── Exponential
-    │   ├── USSA1976
-    │   ├── Jacchia Roberts
     │   └── NRLMSISE00
-    ├── Magnetic
-    │   ├── Dipole
-    │   ├── World Magnetic Model 2010 (WMM2010)
-    │   ├── World Magnetic Model 2015 (WMM2015)
-    │   ├── Enhanced Magnetic Model 2010 (EMM2010)
-    │   ├── Enhanced Magnetic Model 2015 (EMM2015)
-    │   ├── International Geomagnetic Reference Field 11 (IGRF11)
-    │   └── International Geomagnetic Reference Field 12 (IGRF12)
-    ├── Radiation
-    │   └── Sun Static
-    └── Stars
-        └── Hipparcos
+    └── Magnetic
+        ├── Dipole
+        ├── World Magnetic Model 2010 (WMM2010)
+        ├── World Magnetic Model 2015 (WMM2015)
+        ├── Enhanced Magnetic Model 2010 (EMM2010)
+        ├── Enhanced Magnetic Model 2015 (EMM2015)
+        ├── International Geomagnetic Reference Field 11 (IGRF11)
+        └── International Geomagnetic Reference Field 12 (IGRF12)
 ```
 
 </p>
 </details>
 
-## Tutorials
+## Data Management
+OSTk Physics uses input data from various sources to determine the state of the space environment at any given time. The following input data is used:
 
-Tutorials are available here:
+| Data                        | Files                |
+| --------------------------- | ---------------------------- |
+| IERS Reference Frame Data     |   BulletinA, Finals2000A    |
+|  Solar Flux/Space Weather Data | SW-Last5Years.csv |
+| EGM2008 gravitational survey data |  "egm2008.egm", "egm2008.egm.cof" |
+|  WGS84 gravitational survey data |  "wgs84.egm", "wgs84.egm.cof"  |
+| SPICE Kernels | de430.bsp, earth_200101_990825_predict.bpc, earth_assoc_itrf93.tf, moon_080317.tf, moon_assoc_me.tf, moon_pa_de421_1900-2050.bpc, latest_leapseconds.tls, pck00010.tpc |
 
-- [C++](./tutorials/cpp)
-- [Python](./tutorials/python)
+None of these files are shipped with the source code of this library. OSTk Physics has the capability to fetch the required files at runtime if they are not present or if they are outdated. This is done using file Manager classes (see any file named `Manager.h`). Data for any use-case is queried through the Manager class rather than directly, which allows the Manager to handle file loading and fetching.
 
-## Settings
-
-The following environment variables can be set:
-
+The following table shows the availabe data source settings:
 | Environment Variable                                                                 | Default Value                                                            |
 | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE`                          | `Manual`                                                                 |
+| `OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE`                          | `Automatic`                                                                 |
 | `OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY`              | `./.open-space-toolkit/physics/coordinate/frame/providers/iers`          |
 | `OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT` | `60`                                                                     |
-| `OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_ENGINE_MODE`                             | `Manual`                                                                 |
+| `OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_ENGINE_MODE`                             | `Automatic`                                                                 |
 | `OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY`                | `./.open-space-toolkit/physics/environment/ephemerides/spice`            |
 | `OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_REMOTE_URL`                      | `https://naif.jpl.nasa.gov/pub/naif/generic_kernels/`                    |
 | `OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_ENABLED`                       | `false`                                                                  |
@@ -204,6 +200,14 @@ The following environment variables can be set:
 | `OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_MODE`                            | `Automatic`                                                              |
 | `OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY`                | `./.open-space-toolkit/physics/environment/atmospheric/earth`               |
 | `OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_REMOTE_URL`                      | `http://celestrak.org/SpaceData/` |
+
+
+## Tutorials
+
+Tutorials are available here:
+
+- [C++](./tutorials/cpp)
+- [Python](./tutorials/python)
 
 ## Setup
 

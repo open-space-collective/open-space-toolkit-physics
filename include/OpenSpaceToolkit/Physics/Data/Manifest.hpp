@@ -27,6 +27,8 @@ using ostk::core::ctnr::Map;
 using ostk::core::fs::File;
 using ostk::core::ctnr::Dictionary;
 
+using ostk::io::URL;
+
 using ostk::physics::time::Instant;
 
 /// @brief                      Data class for the OSTk Data Manifest
@@ -54,6 +56,14 @@ class Manifest
     /// @return                 Last update instant for data
 
     Instant getLastUpdateTimestampFor(const String& aDataName) const;
+
+    /// @brief                  Return remote data URLs the for data items matching the given name regex
+    ///
+    /// @param                  [in] aBaseUrl A base URL for remote data
+    /// @param                  [in] aDataNameRegex A data name regex
+    /// @return                 Array of remote data URLs
+
+    Array<URL> findRemoteDataUrls(const URL& aBaseUrl, const std::regex& aDataNameRegex) const;
 
     /// @brief                  Construct an undefined manifest
     ///
