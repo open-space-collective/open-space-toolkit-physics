@@ -34,37 +34,37 @@ using ostk::physics::time::Instant;
 class Manifest
 {
    public:
-    /// @brief              Output stream operator
+    /// @brief                  Output stream operator
     ///
-    /// @param              [in] anOutputStream An output stream
-    /// @param              [in] aManifest A manifest
-    /// @return             A reference to output stream
+    /// @param                  [in] anOutputStream An output stream
+    /// @param                  [in] aManifest A manifest
+    /// @return                 A reference to output stream
 
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Manifest& aManifest);
 
-    /// @brief              Return true if manifest is defined.
+    /// @brief                  Return true if manifest is defined.
     ///
-    /// @return             True if manifest is defined.
+    /// @return                 True if manifest is defined.
 
     bool isDefined() const;
 
-    /// @brief              Get last update timestamp for data
+    /// @brief                  Get last update timestamp for data
     ///
-    /// @param              [in] dataName A data name
-    /// @return             Last update instant for data
+    /// @param                  [in] dataName A data name
+    /// @return                 Last update instant for data
 
     Instant getLastUpdateTimestampFor(const String& aDataName) const;
 
-    /// @brief              Construct an undefined manifest
+    /// @brief                  Construct an undefined manifest
     ///
-    /// @return             Undefined manifest
+    /// @return                 Undefined manifest
 
     static Manifest Undefined();
 
-    /// @brief              Load manifest from file
+    /// @brief                  Load manifest from file
     ///
-    /// @param              [in] aFile A manifest file
-    /// @return             Manifest
+    /// @param                  [in] aFile A manifest file
+    /// @return                 Manifest
 
     static Manifest Load(const File& aFile);
 

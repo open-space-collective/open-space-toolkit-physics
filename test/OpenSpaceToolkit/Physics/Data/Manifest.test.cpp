@@ -24,12 +24,12 @@ class OpenSpaceToolkit_Physics_Data_Manifest : public ::testing::Test
    protected:
     void SetUp() override
     {
-        const File manifestFile =
-            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Data/Manifest/manifest.json"));
+        file_ = File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Data/Manifest/manifest.json"));
 
-        this->manifest_ = Manifest::Load(manifestFile);
+        this->manifest_ = Manifest::Load(file_);
     }
 
+    File file_ = File::Undefined();
     Manifest manifest_ = Manifest::Undefined();
 };
 
@@ -64,9 +64,7 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manifest, GetLastUpdateTimestampFor)
 TEST_F(OpenSpaceToolkit_Physics_Data_Manifest, Load)
 {
     {
-        const File manifestFile =
-            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Data/Manifest/manifest.json"));
-        EXPECT_NO_THROW(Manifest::Load(manifestFile));
+        EXPECT_NO_THROW(Manifest::Load(file_));
     }
 
     {

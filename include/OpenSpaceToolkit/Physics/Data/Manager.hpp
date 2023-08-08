@@ -46,54 +46,64 @@ using ostk::physics::data::Manifest;
 class Manager
 {
    public:
-    /// @brief              Get manager singleton
+    /// @brief                  Get manager singleton
     ///
-    /// @return             Reference to manager
+    /// @return                 Reference to manager
+
     static Manager& Get();
 
-    /// @brief              Check if there are updates for data of a certain name.
+    /// @brief                  Check if there are updates for data of a certain name.
     ///
-    /// @param              [in] aDataName name of the data to query. This is the key for the data entry in the manifest
-    /// file.
+    /// @param                  [in] aDataName name of the data to query. This is the key for the data entry in the
+    /// manifest
+    ///                         file.
     ///
-    /// @return             Instant indicating when the data was last updated on the remote, according to the manifest
-    /// record.
+    /// @return                 Instant indicating when the data was last updated on the remote, according to the
+    /// manifest
+    ///                         record.
+
     const Instant getLastUpdateTimestampFor(const String& aDataName);
 
-    /// @brief              Get the remote URL. This points to the base URL for the OSTk input data.
+    /// @brief                  Get the remote URL. This points to the base URL for the OSTk input data.
     ///
-    /// @return             Remote URL
+    /// @return                 Remote URL
+
     const URL getRemoteUrl() const;
 
-    /// @brief              Set the remote URL.
+    /// @brief                  Set the remote URL.
     ///
-    /// @return             Remote URL
+    /// @return                 Remote URL
+
     void setRemoteUrl(const URL& aRemoteUrl);
 
-    /// @brief              Get the manifest repository.
+    /// @brief                  Get the manifest repository.
     ///
-    /// @return            Manifest repository
+    /// @return                 Manifest repository
+
     const Directory getManifestRepository() const;
 
-    /// @brief              Set the manifest repository.
+    /// @brief                  Set the manifest repository.
     ///
-    /// @param              [in] aManifestRepository Manifest repository
+    /// @param                  [in] aManifestRepository Manifest repository
+
     void setManifestRepository(const Directory& aManifestRepository);
 
-    /// @brief              Get a copy of the current manifest file.
+    /// @brief                  Get a copy of the current manifest file.
     ///
-    /// @return             Manifest file
+    /// @return                 Manifest file
 
     const Manifest getManifest() const;
 
-    /// @brief              Load a new manifest file.
+    /// @brief                  Load a new manifest file.
     ///
-    /// @param              [in] aManifest Manifest file to load
+    /// @param                  [in] aManifest Manifest file to load
+
     void loadManifest(const Manifest& aManifest);
 
-    /// @brief              Reset the manager.
+    /// @brief                  Reset the manager.
     ///
-    ///                     Unload the manifest file and forget manifest age.
+    ///                         Unload the manifest file and forget manifest age.
+
     void reset();
 
    protected:
