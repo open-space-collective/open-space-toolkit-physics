@@ -449,7 +449,7 @@ const CSSISpaceWeather* Manager::accessCSSISpaceWeatherAt(const Instant& anInsta
             manifestManager.getLastUpdateTimestampFor(CSSISpaceWeatherManifestName);
 
         if ((!CSSISpaceWeatherUpdateTimestamp_.isDefined()) ||
-            (CSSISpaceWeatherUpdateTimestamp_ < CSSIManifestUpdateTimestamp))  // [TBM] Param
+            (CSSISpaceWeatherUpdateTimestamp_ < CSSIManifestUpdateTimestamp))
         {
             const File latestCSSISpaceWeatherFile = this->getLatestCSSISpaceWeatherFile();
 

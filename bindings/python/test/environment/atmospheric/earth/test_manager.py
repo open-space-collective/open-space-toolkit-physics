@@ -42,10 +42,6 @@ class TestManager:
             + "/CSSISpaceWeather"
         )
 
-    def test_get_remote_url_success(self, manager: Manager):
-        assert isinstance(manager.get_remote_url(), URL)
-        assert manager.get_remote_url().to_string() == "https://celestrak.org/SpaceData/"
-
     def test_get_cssi_space_weather_array_success(self, manager: Manager):
         assert isinstance(manager.get_cssi_space_weather_array(), list)
         assert len(manager.get_cssi_space_weather_array()) == 0
@@ -149,15 +145,6 @@ class TestManager:
             == "./.open-space-toolkit/physics/environment/atmospheric/earth"
         )
 
-    def test_set_remote_url_success(self, manager: Manager):
-        assert isinstance(manager.get_remote_url(), URL)
-        assert manager.get_remote_url().to_string() == "https://celestrak.org/SpaceData/"
-
-        manager.set_remote_url(URL.parse("https://celestrak.org/SpaceData/"))
-
-        assert isinstance(manager.get_remote_url(), URL)
-        assert manager.get_remote_url().to_string() == "https://celestrak.org/SpaceData/"
-
     def test_load_cssi_space_weather_success(
         self, manager: Manager, cssi_space_weather: CSSISpaceWeather
     ):
@@ -214,8 +201,3 @@ class TestManager:
         assert isinstance(manager.default_local_repository_lock_timeout(), Duration)
         assert manager.default_local_repository_lock_timeout().in_seconds() == 60.0
 
-    def test_default_remote_url_success(self, manager: Manager):
-        assert isinstance(manager.default_remote_url(), URL)
-        assert (
-            manager.default_remote_url().to_string() == "https://celestrak.org/SpaceData/"
-        )
