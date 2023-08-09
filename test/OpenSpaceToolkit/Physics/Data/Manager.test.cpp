@@ -7,6 +7,7 @@
 using ostk::core::fs::File;
 using ostk::core::fs::Path;
 using ostk::core::fs::Directory;
+using ostk::core::ctnr::Array;
 
 using ostk::io::URL;
 
@@ -22,11 +23,15 @@ class OpenSpaceToolkit_Physics_Data_Manager : public ::testing::Test
    protected:
     void SetUp() override
     {
-        const File manifestFile =
-            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Data/Manifest/manifest.json"));
+        manifest_ = Manifest::Load(manifestFile_);
 
-        manifest_ = Manifest::Load(manifestFile);
+        manager_.setRemoteUrl(
+            URL::Parse("https://github.com/open-space-collective/open-space-toolkit-data/raw/main/data")
+        );
     }
+
+    const File manifestFile_ =
+        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Data/Manifest/manifest.json"));
 
     Manifest manifest_ = Manifest::Undefined();
 
@@ -54,7 +59,7 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manager, GetRemoteUrl)
 {
     {
         EXPECT_EQ(
-            "https://github.com/open-space-collective/open-space-toolkit-data/raw/main/data/",
+            "https://github.com/open-space-collective/open-space-toolkit-data/raw/main/data",
             manager_.getRemoteUrl().toString()
         );
     }
@@ -64,7 +69,7 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manager, setRemoteUrl)
 {
     {
         EXPECT_EQ(
-            "https://github.com/open-space-collective/open-space-toolkit-data/raw/main/data/",
+            "https://github.com/open-space-collective/open-space-toolkit-data/raw/main/data",
             manager_.getRemoteUrl().toString()
         );
 
@@ -73,6 +78,24 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manager, setRemoteUrl)
         EXPECT_EQ("http://fake.com", manager_.getRemoteUrl().toString());
 
         EXPECT_ANY_THROW(manager_.setRemoteUrl(URL::Undefined()));
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Data_Manager, FindRemoteDataUrls)
+{
+    {
+        Array<URL> urls = manager_.findRemoteDataUrls(std::regex(".*EGM2008"));
+
+        EXPECT_EQ(
+            urls[0],
+            URL::Parse("https://github.com/open-space-collective/open-space-toolkit-data/raw/main/data/environment/"
+                       "gravitational/earth/egm2008.egm")
+        );
+        EXPECT_EQ(
+            urls[1],
+            URL::Parse("https://github.com/open-space-collective/open-space-toolkit-data/raw/main/data/environment/"
+                       "gravitational/earth/egm2008.egm.cof")
+        );
     }
 }
 

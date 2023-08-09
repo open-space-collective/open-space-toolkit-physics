@@ -98,7 +98,7 @@ void Manager::fetchKernel(const Kernel& aKernel) const
     ManifestManager& manifestManager = ManifestManager::Get();
     const URL kernelFileUrl = manifestManager.getRemoteUrl() + spiceFilesRemotePath + aKernel.getName();
 
-    File fetchedKernelFile = Client::Fetch(kernelFileUrl, localRepository_);
+    File fetchedKernelFile = Client::Fetch(kernelFileUrl, localRepository_, 2);
 
     if (!fetchedKernelFile.exists())
     {
@@ -132,7 +132,7 @@ Array<Kernel> Manager::fetchMatchingKernels(const std::regex& aRegex) const
 
     for (const auto& remoteUrl : manifestManager.findRemoteDataUrls(aRegex))
     {
-        File fetchedKernelFile = Client::Fetch(remoteUrl, localRepository_);
+        File fetchedKernelFile = Client::Fetch(remoteUrl, localRepository_, 2);
 
         if (!fetchedKernelFile.exists())
         {
