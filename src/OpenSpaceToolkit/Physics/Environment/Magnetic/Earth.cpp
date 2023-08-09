@@ -172,11 +172,11 @@ MagneticModel* Earth::Impl::MagneticModelFromType(const Earth::Type& aType, cons
     }
     else
     {
-        if (Manager::Get().isEnabled())
+        if (Manager::Get().getMode() == Manager::Mode::Automatic)
         {
-            if (!Manager::Get().hasDataFileForType(aType))
+            if (!Manager::Get().hasDataFilesForType(aType))
             {
-                Manager::Get().fetchDataFileForType(aType);
+                Manager::Get().fetchDataFilesForType(aType);
             }
 
             dataPath = Manager::Get().getLocalRepository().getPath().toString();

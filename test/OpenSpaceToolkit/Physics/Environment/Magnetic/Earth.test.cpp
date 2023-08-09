@@ -35,7 +35,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, Constructor)
             Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth"))
         );
 
-        EarthMagneticModelManager::Get().enable();
+        EarthMagneticModelManager::Get().setMode(EarthMagneticModelManager::Mode::Automatic);
 
         EXPECT_NO_THROW(EarthMagneticModel earthMagneticModel(EarthMagneticModel::Type::Dipole));
         EXPECT_NO_THROW(EarthMagneticModel earthMagneticModel(EarthMagneticModel::Type::EMM2010));
@@ -48,7 +48,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, Constructor)
 
         EarthMagneticModelManager::Get().setLocalRepository(EarthMagneticModelManager::DefaultLocalRepository());
 
-        EarthMagneticModelManager::Get().setEnabled(EarthMagneticModelManager::DefaultEnabled());
     }
 
     {
@@ -150,7 +149,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, GetType)
             Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth"))
         );
 
-        EarthMagneticModelManager::Get().enable();
+        EarthMagneticModelManager::Get().setMode(EarthMagneticModelManager::Mode::Automatic);
 
         EXPECT_EQ(EarthMagneticModel::Type::Dipole, EarthMagneticModel(EarthMagneticModel::Type::Dipole).getType());
         EXPECT_EQ(EarthMagneticModel::Type::EMM2010, EarthMagneticModel(EarthMagneticModel::Type::EMM2010).getType());
@@ -163,7 +162,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, GetType)
 
         EarthMagneticModelManager::Get().setLocalRepository(EarthMagneticModelManager::DefaultLocalRepository());
 
-        EarthMagneticModelManager::Get().setEnabled(EarthMagneticModelManager::DefaultEnabled());
     }
 }
 
@@ -174,7 +172,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, IsDefined)
             Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth"))
         );
 
-        EarthMagneticModelManager::Get().enable();
+        EarthMagneticModelManager::Get().setMode(EarthMagneticModelManager::Mode::Automatic);
 
         EXPECT_FALSE(EarthMagneticModel(EarthMagneticModel::Type::Undefined).isDefined());
         EXPECT_FALSE(EarthMagneticModel(EarthMagneticModel::Type::Dipole).isDefined());
@@ -196,7 +194,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, GetFieldValueAt)
             Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth"))
         );
 
-        EarthMagneticModelManager::Get().enable();
+        EarthMagneticModelManager::Get().setMode(EarthMagneticModelManager::Mode::Automatic);
 
         static const Array<Tuple<EarthMagneticModel::Type, Vector3d, Instant, Vector3d, Real>> testCases = {
 
@@ -388,6 +386,5 @@ TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, GetFieldValueAt)
 
         EarthMagneticModelManager::Get().setLocalRepository(EarthMagneticModelManager::DefaultLocalRepository());
 
-        EarthMagneticModelManager::Get().setEnabled(EarthMagneticModelManager::DefaultEnabled());
     }
 }
