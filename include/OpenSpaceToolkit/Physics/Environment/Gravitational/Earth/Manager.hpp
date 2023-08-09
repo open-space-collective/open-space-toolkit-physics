@@ -4,18 +4,19 @@
 #define __OpenSpaceToolkit_Physics_Environment_Gravitational_Earth_Manager__
 
 #include <mutex>
-#include <experimental/filesystem>
 
+#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
 #include <OpenSpaceToolkit/Core/Types/String.hpp>
-#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
 
 #include <OpenSpaceToolkit/IO/URL.hpp>
 
-#include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
+
+#include <experimental/filesystem>
 
 #define OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_MODE Manager::Mode::Automatic
 #define OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY \

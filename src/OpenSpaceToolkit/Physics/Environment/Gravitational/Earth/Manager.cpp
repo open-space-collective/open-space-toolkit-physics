@@ -1,9 +1,9 @@
 /// Apache License 2.0
 
-#include <chrono>
-#include <thread>
-#include <cstring>
 #include <algorithm>
+#include <chrono>
+#include <cstring>
+#include <thread>
 
 #include <OpenSpaceToolkit/Core/Containers/Array.hpp>
 #include <OpenSpaceToolkit/Core/Containers/Dictionary.hpp>
@@ -45,8 +45,8 @@ bool Manager::hasDataFilesForType(const EarthGravitationalModel::Type& aModelTyp
     const String dataFileName = Manager::DataFileNameFromType(aModelType);
 
     return (
-        localRepository_.containsFileWithName(String::Format("{}.egm", dataFileName))
-        && localRepository_.containsFileWithName(String::Format("{}.egm.cof", dataFileName))
+        localRepository_.containsFileWithName(String::Format("{}.egm", dataFileName)) &&
+        localRepository_.containsFileWithName(String::Format("{}.egm.cof", dataFileName))
     );
 }
 
@@ -67,6 +67,32 @@ Directory Manager::getLocalRepository() const
     const std::lock_guard<std::mutex> lock {mutex_};
 
     return localRepository_;
+}
+
+void Manager::setLocalRepository(const Directory& aDirectory)
+{
+    if (!aDirectory.isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Directory");
+    }
+
+    const std::lock_guard<std::mutex> lock {mutex_};
+
+    localRepository_ = aDirectory;
+}
+
+Directory Manager::DefaultLocalRepository()
+{
+    static const Directory defaultLocalRepository =
+        Directory::Path(Path::Parse(OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY));
+
+    if (const char* localRepositoryPath =
+            std::getenv("OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY"))
+    {
+        return Directory::Path(Path::Parse(localRepositoryPath));
+    }
+
+    return defaultLocalRepository;
 }
 
 void Manager::fetchDataFilesForType(const EarthGravitationalModel::Type& aModelType) const
@@ -90,7 +116,8 @@ void Manager::fetchDataFilesForType(const EarthGravitationalModel::Type& aModelT
     {
         if (dataFile.exists())
         {
-            std::cout << String::Format("Removing existing partial data file [{}]...", dataFile.toString()) << std::endl;
+            std::cout << String::Format("Removing existing partial data file [{}]...", dataFile.toString())
+                      << std::endl;
             dataFile.remove();
         }
     }
@@ -107,10 +134,9 @@ void Manager::fetchDataFilesForType(const EarthGravitationalModel::Type& aModelT
             remoteDataUrl = url;
 
             std::cout << String::Format("Fetching gravitational data file from [{}]...", remoteDataUrl.toString())
-                    << std::endl;
+                      << std::endl;
 
             gravityDataFile = Client::Fetch(remoteDataUrl, localRepository_, 2);
-
 
             if (!gravityDataFile.exists())
             {
@@ -132,12 +158,11 @@ void Manager::fetchDataFilesForType(const EarthGravitationalModel::Type& aModelT
             }
 
             std::cout << String::Format(
-                         "Gravity Data [{}] has been successfully fetched from [{}].",
-                         gravityDataFile.toString(),
-                         remoteDataUrl.toString()
-                     )
-                  << std::endl;
-
+                             "Gravity Data [{}] has been successfully fetched from [{}].",
+                             gravityDataFile.toString(),
+                             remoteDataUrl.toString()
+                         )
+                      << std::endl;
         }
 
         const_cast<Manager*>(this)->unlockLocalRepository();
@@ -157,12 +182,10 @@ void Manager::fetchDataFilesForType(const EarthGravitationalModel::Type& aModelT
             gravityDataFile = File::Undefined();
         }
 
-
         const_cast<Manager*>(this)->unlockLocalRepository();
 
         throw;
     }
-
 }
 
 void Manager::setMode(const Manager::Mode& aMode)
@@ -170,18 +193,6 @@ void Manager::setMode(const Manager::Mode& aMode)
     std::lock_guard<std::mutex> lock {mutex_};
 
     mode_ = aMode;
-}
-
-void Manager::setLocalRepository(const Directory& aDirectory)
-{
-    if (!aDirectory.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Directory");
-    }
-
-    const std::lock_guard<std::mutex> lock {mutex_};
-
-    localRepository_ = aDirectory;
 }
 
 bool Manager::isLocalRepositoryLocked() const
@@ -276,20 +287,6 @@ Manager::Mode Manager::DefaultMode()
     return defaultMode;
 }
 
-Directory Manager::DefaultLocalRepository()
-{
-    static const Directory defaultLocalRepository =
-        Directory::Path(Path::Parse(OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY));
-
-    if (const char* localRepositoryPath =
-            std::getenv("OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY"))
-    {
-        return Directory::Path(Path::Parse(localRepositoryPath));
-    }
-
-    return defaultLocalRepository;
-}
-
 Duration Manager::DefaultLocalRepositoryLockTimeout()
 {
     static const Duration defaultLocalRepositoryLockTimeout =
@@ -324,9 +321,9 @@ Array<URL> Manager::getDataFileUrlsForType(const EarthGravitationalModel::Type& 
     std::string dataFileNameUpper = dataFileName;
     transform(dataFileName.begin(), dataFileName.end(), dataFileNameUpper.begin(), ::toupper);
 
-    return manifestManager.getRemoteDataUrls(
-       const_cast<std::string&>(dataFileNameUpper)
-    );
+    const String manifestKey = static_cast<std::string>("earth-gravity-" + dataFileNameUpper);
+
+    return manifestManager.getRemoteDataUrls(manifestKey);
 }
 
 String Manager::DataFileNameFromType(const EarthGravitationalModel::Type& aModelType)

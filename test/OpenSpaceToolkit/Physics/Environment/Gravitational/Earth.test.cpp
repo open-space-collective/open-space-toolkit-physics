@@ -82,7 +82,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Constructor)
 
         EarthGravitationalModelManager::Get().setLocalRepository(EarthGravitationalModelManager::DefaultLocalRepository(
         ));
-
     }
 
     // Test incorrect model order and degree combinations
@@ -113,7 +112,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Constructor)
 
         EarthGravitationalModelManager::Get().setLocalRepository(EarthGravitationalModelManager::DefaultLocalRepository(
         ));
-
     }
 
     {
@@ -324,7 +322,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetType)
 
         EarthGravitationalModelManager::Get().setLocalRepository(EarthGravitationalModelManager::DefaultLocalRepository(
         ));
-
     }
 }
 
@@ -467,7 +464,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAtNo
 
         EarthGravitationalModelManager::Get().setLocalRepository(EarthGravitationalModelManager::DefaultLocalRepository(
         ));
-
     }
 }
 
@@ -596,7 +592,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAtWi
 
         EarthGravitationalModelManager::Get().setLocalRepository(EarthGravitationalModelManager::DefaultLocalRepository(
         ));
-
     }
 }
 
@@ -671,6 +666,5 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAtST
 
         EarthGravitationalModelManager::Get().setLocalRepository(EarthGravitationalModelManager::DefaultLocalRepository(
         ));
-
     }
 }

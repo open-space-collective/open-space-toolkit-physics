@@ -85,11 +85,6 @@ void Manager::setManifestRepository(const Directory& aManifestRepository)
 
 Array<URL> Manager::getRemoteDataUrls(const String& aDataName) const
 {
-    if (!manifest_.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Manifest");
-    }
-
     const_cast<Manager*>(this)->checkManifestAgeAndUpdate();
     return manifest_.getRemoteDataUrls(remoteUrl_, aDataName);
 }
@@ -167,7 +162,7 @@ void Manager::checkManifestAgeAndUpdate()
 {
     // Check if the local manifest is too old and fetch a new one if needed
     // TODO make max age overridable
-    if (!manifestUpdateTimestamp_.isDefined() ||
+    if (!manifestUpdateTimestamp_.isDefined() || !manifest_.isDefined() ||
         (manifestUpdateTimestamp_ + Duration::Hours(OSTK_PHYSICS_DATA_MANAGER_MANIFEST_MAX_AGE_HOURS) < Instant::Now()))
     {
         File manifestFile = this->fetchLatestManifestFile();
