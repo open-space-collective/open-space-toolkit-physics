@@ -34,6 +34,10 @@ class OpenSpaceToolkit_Physics_Data_Manager : public ::testing::Test
     void TearDown() override
     {
         manager_.setRemoteUrl(Manager::DefaultRemoteUrl());
+
+        // reset repository so other test suites do not use the test manifest
+        // in /app/test/OpenSpaceToolkit/Physics/Data/Manifest/
+        manager_.setManifestRepository(Manager::DefaultManifestRepository());
     }
 
     const File manifestFile_ =

@@ -98,8 +98,10 @@ void Manager::fetchKernel(const Kernel& aKernel) const
     ManifestManager& manifestManager = ManifestManager::Get();
     const URL kernelFileUrl = manifestManager.getRemoteUrl() + spiceFilesRemotePath + aKernel.getName();
 
-    std::cout << String::Format("Fetching SPICE Kernel [{}] from [{}]...", kernelFile.toString(), kernelFileUrl.toString())
-        << std::endl;
+    std::cout << String::Format(
+                     "Fetching SPICE Kernel [{}] from [{}]...", kernelFile.toString(), kernelFileUrl.toString()
+                 )
+              << std::endl;
 
     File fetchedKernelFile = Client::Fetch(kernelFileUrl, localRepository_, 2);
 
@@ -124,8 +126,12 @@ void Manager::fetchKernel(const Kernel& aKernel) const
         );
     }
 
-    std::cout << String::Format("Successfully fetched SPICE Kernel [{}] from [{}]...", kernelFile.toString(), kernelFileUrl.toString())
-        << std::endl;
+    std::cout << String::Format(
+                     "Successfully fetched SPICE Kernel [{}] from [{}]...",
+                     kernelFile.toString(),
+                     kernelFileUrl.toString()
+                 )
+              << std::endl;
 }
 
 Array<Kernel> Manager::fetchMatchingKernels(const std::regex& aRegex) const
@@ -138,9 +144,7 @@ Array<Kernel> Manager::fetchMatchingKernels(const std::regex& aRegex) const
 
     for (const auto& remoteUrl : manifestManager.findRemoteDataUrls(aRegex))
     {
-
-        std::cout << String::Format("Fetching SPICE Kernel from [{}]...", remoteUrl.toString())
-            << std::endl;
+        std::cout << String::Format("Fetching SPICE Kernel from [{}]...", remoteUrl.toString()) << std::endl;
 
         File fetchedKernelFile = Client::Fetch(remoteUrl, localRepository_, 2);
 
@@ -167,8 +171,12 @@ Array<Kernel> Manager::fetchMatchingKernels(const std::regex& aRegex) const
             }
         }
 
-        std::cout << String::Format("Successfully fetched SPICE Kernel [{}] from [{}]...", fetchedKernelFile.toString(), remoteUrl.toString())
-                << std::endl;
+        std::cout << String::Format(
+                         "Successfully fetched SPICE Kernel [{}] from [{}]...",
+                         fetchedKernelFile.toString(),
+                         remoteUrl.toString()
+                     )
+                  << std::endl;
 
         const Kernel fetchedKernel = {
             Kernel::TypeFromFileExtension(fetchedKernelFile.getExtension()), fetchedKernelFile

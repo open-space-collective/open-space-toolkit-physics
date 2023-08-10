@@ -94,6 +94,11 @@ class Manager
 
     void setManifestRepository(const Directory& aManifestRepository);
 
+    /// @brief                  Get the default manifest repository.
+    ///
+    /// @return                 Default manifest repository
+    static Directory DefaultManifestRepository();
+
     /// @brief                  Find remote URLs of data matching regular expression
     ///
     /// @param                  [in] aKernelNameRegex A regular expression
@@ -143,7 +148,6 @@ class Manager
     void lockManifestRepository(const Duration& aTimeout);
     void unlockManifestRepository();
 
-    static Directory DefaultManifestRepository();
     static Duration DefaultManifestRepositoryLockTimeout();
 };
 

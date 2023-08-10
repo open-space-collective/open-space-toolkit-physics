@@ -81,9 +81,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager, DefaultLo
 TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager, FetchKernel)
 {
     // make subdir for test
-    manager_.setLocalRepository(
-        Directory::Path(Path::Parse("/app/.open-space-toolkit/physics/environment/ephemerides/spice/") + Path::Parse("FetchKernelTest/"))
-    );
+    manager_.setLocalRepository(Directory::Path(
+        Path::Parse("/app/.open-space-toolkit/physics/environment/ephemerides/spice/") + Path::Parse("FetchKernelTest/")
+    ));
     manager_.getLocalRepository().create();
 
     {
@@ -107,9 +107,10 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager, FetchKern
 TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager, FetchMatchingKernels)
 {
     // make subdir for test
-    manager_.setLocalRepository(
-        Directory::Path(Path::Parse("/app/.open-space-toolkit/physics/environment/ephemerides/spice/") + Path::Parse("FetchMatchingKernelsTest/"))
-    );
+    manager_.setLocalRepository(Directory::Path(
+        Path::Parse("/app/.open-space-toolkit/physics/environment/ephemerides/spice/") +
+        Path::Parse("FetchMatchingKernelsTest/")
+    ));
     manager_.getLocalRepository().create();
 
     std::cout << manager_.getLocalRepository().getPath().toString() << std::endl;
@@ -131,9 +132,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager, FetchMatc
 TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager, FindKernel)
 {
     // make subdir for test
-    manager_.setLocalRepository(
-        Directory::Path(Path::Parse("/app/.open-space-toolkit/physics/environment/ephemerides/spice/") + Path::Parse("FindKernelTest/"))
-    );
+    manager_.setLocalRepository(Directory::Path(
+        Path::Parse("/app/.open-space-toolkit/physics/environment/ephemerides/spice/") + Path::Parse("FindKernelTest/")
+    ));
     manager_.getLocalRepository().create();
 
     std::cout << manager_.getLocalRepository().getPath().toString() << std::endl;
