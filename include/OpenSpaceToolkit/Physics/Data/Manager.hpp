@@ -99,12 +99,12 @@ class Manager
     /// @return                 Default manifest repository
     static Directory DefaultManifestRepository();
 
-    /// @brief                  Find remote URLs of data matching regular expression
+    /// @brief                  Find remote URLs of data matching regular expression string
     ///
-    /// @param                  [in] aKernelNameRegex A regular expression
+    /// @param                  [in] aKernelNameRegexString A regular expression string
     /// @return                 Array of URLs
 
-    Array<URL> findRemoteDataUrls(const std::regex& aDataNameRegex) const;
+    Array<URL> findRemoteDataUrls(const String& aDataNameRegex) const;
 
     /// @brief                  Get a copy of the current manifest file.
     ///

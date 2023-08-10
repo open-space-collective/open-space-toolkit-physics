@@ -33,11 +33,9 @@ class OpenSpaceToolkit_Physics_Data_Manager : public ::testing::Test
 
     void TearDown() override
     {
-        manager_.setRemoteUrl(Manager::DefaultRemoteUrl());
-
         // reset repository so other test suites do not use the test manifest
         // in /app/test/OpenSpaceToolkit/Physics/Data/Manifest/
-        manager_.setManifestRepository(Manager::DefaultManifestRepository());
+        manager_.reset();
     }
 
     const File manifestFile_ =
@@ -104,7 +102,7 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manager, DefaultRemoteUrl)
 TEST_F(OpenSpaceToolkit_Physics_Data_Manager, FindRemoteDataUrls)
 {
     {
-        Array<URL> urls = manager_.findRemoteDataUrls(std::regex(".*EGM2008"));
+        Array<URL> urls = manager_.findRemoteDataUrls(".*EGM2008");
 
         EXPECT_EQ(
             urls[0],
@@ -140,6 +138,13 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manager, SetManifestRepository)
         EXPECT_EQ("data", manager_.getManifestRepository().getName());
 
         EXPECT_ANY_THROW(manager_.setManifestRepository(Directory::Undefined()));
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Data_Manager, DefaultManifestRepository)
+{
+    {
+        EXPECT_EQ("data", Manager::DefaultManifestRepository().getName());
     }
 }
 

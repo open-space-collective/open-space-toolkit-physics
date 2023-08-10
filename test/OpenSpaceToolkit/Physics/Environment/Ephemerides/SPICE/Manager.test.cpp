@@ -111,9 +111,11 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager, FetchMatc
         Path::Parse("/app/.open-space-toolkit/physics/environment/ephemerides/spice/") +
         Path::Parse("FetchMatchingKernelsTest/")
     ));
+    if (manager_.getLocalRepository().exists())
+    {
+        manager_.getLocalRepository().remove();
+    }
     manager_.getLocalRepository().create();
-
-    std::cout << manager_.getLocalRepository().getPath().toString() << std::endl;
 
     {
         File expectedKernelFile =
@@ -121,7 +123,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager, FetchMatc
 
         EXPECT_FALSE(expectedKernelFile.exists());
 
-        EXPECT_NO_THROW(manager_.fetchMatchingKernels(std::regex(".*leapseconds.*")));
+        EXPECT_NO_THROW(manager_.fetchMatchingKernels(".*leapseconds.*"));
 
         EXPECT_TRUE(expectedKernelFile.exists());
     }
@@ -135,9 +137,11 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager, FindKerne
     manager_.setLocalRepository(Directory::Path(
         Path::Parse("/app/.open-space-toolkit/physics/environment/ephemerides/spice/") + Path::Parse("FindKernelTest/")
     ));
+    if (manager_.getLocalRepository().exists())
+    {
+        manager_.getLocalRepository().remove();
+    }
     manager_.getLocalRepository().create();
-
-    std::cout << manager_.getLocalRepository().getPath().toString() << std::endl;
 
     {
         File expectedKernelFile =

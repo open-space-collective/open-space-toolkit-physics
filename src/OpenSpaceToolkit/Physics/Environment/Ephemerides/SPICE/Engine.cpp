@@ -406,7 +406,7 @@ void Engine::manageKernels(const String& aSpiceIdentifier, const Instant& anInst
                     // List available Earth kernels
 
                     const Array<Kernel> earthKernels =
-                        Manager::Get().fetchMatchingKernels(std::regex("^earth_000101_[\\d]{6}_[\\d]{6}.bpc$"));
+                        Manager::Get().fetchMatchingKernels("^earth_000101_[\\d]{6}_[\\d]{6}.bpc$");
 
                     if (!earthKernels.isEmpty())
                     {

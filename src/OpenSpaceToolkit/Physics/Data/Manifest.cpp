@@ -44,9 +44,11 @@ Instant Manifest::getLastUpdateTimestampFor(const String& aDataName) const
     );
 }
 
-Array<URL> Manifest::findRemoteDataUrls(const URL& aBaseUrl, const std::regex& aDataNameRegex) const
+Array<URL> Manifest::findRemoteDataUrls(const URL& aBaseUrl, const String& aDataNameRegexString) const
 {
     Array<URL> urls = Array<URL>::Empty();
+
+    const std::regex aDataNameRegex(aDataNameRegexString);
 
     for (const auto& dictionaryIt : dictionary_)
     {
@@ -64,6 +66,11 @@ Array<URL> Manifest::findRemoteDataUrls(const URL& aBaseUrl, const std::regex& a
                 urls.add(url);
             }
         }
+    }
+
+    if (urls.isEmpty())
+    {
+        throw ostk::core::error::RuntimeError("No Manifest data entry found matching [{}].", aDataNameRegexString);
     }
 
     return urls;

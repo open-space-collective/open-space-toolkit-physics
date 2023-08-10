@@ -57,13 +57,13 @@ class Manifest
 
     Instant getLastUpdateTimestampFor(const String& aDataName) const;
 
-    /// @brief                  Return remote data URLs the for data items matching the given name regex
+    /// @brief                  Return remote data URLs the for data items matching the given name regex string
     ///
     /// @param                  [in] aBaseUrl A base URL for remote data
-    /// @param                  [in] aDataNameRegex A data name regex
+    /// @param                  [in] aDataNameRegexString A data name regex string
     /// @return                 Array of remote data URLs
 
-    Array<URL> findRemoteDataUrls(const URL& aBaseUrl, const std::regex& aDataNameRegex) const;
+    Array<URL> findRemoteDataUrls(const URL& aBaseUrl, const String& aDataNameRegexString) const;
 
     /// @brief                  Construct an undefined manifest
     ///

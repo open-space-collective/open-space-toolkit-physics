@@ -73,7 +73,7 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manifest, FindRemoteDataUrls)
             URL::Parse("https://fake.com/data/coordinate/frame/providers/iers/finals-2000A/finals2000A.data"),
         };
 
-        EXPECT_EQ(expectedUrls, manifest_.findRemoteDataUrls(baseUrl, std::regex("finals-2000A")));
+        EXPECT_EQ(expectedUrls, manifest_.findRemoteDataUrls(baseUrl, "finals-2000A"));
     }
 
     {
@@ -81,7 +81,7 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manifest, FindRemoteDataUrls)
             URL::Parse("https://fake.com/data/coordinate/frame/providers/iers/finals-2000A/finals2000A.data"),
         };
 
-        EXPECT_EQ(expectedUrls, manifest_.findRemoteDataUrls(baseUrl, std::regex("f.*A")));
+        EXPECT_EQ(expectedUrls, manifest_.findRemoteDataUrls(baseUrl, "f.*A"));
     }
 
     {
@@ -89,7 +89,7 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manifest, FindRemoteDataUrls)
             URL::Parse("https://fake.com/data/coordinate/frame/providers/iers/bulletin-A/ser7.dat"),
         };
 
-        EXPECT_EQ(expectedUrls, manifest_.findRemoteDataUrls(baseUrl, std::regex("bulletin-A")));
+        EXPECT_EQ(expectedUrls, manifest_.findRemoteDataUrls(baseUrl, "bulletin-A"));
     }
 
     {
@@ -98,7 +98,7 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manifest, FindRemoteDataUrls)
             URL::Parse("https://fake.com/data/environment/gravitational/earth/egm2008.egm.cof")
         };
 
-        EXPECT_EQ(expectedUrls, manifest_.findRemoteDataUrls(baseUrl, std::regex("earth-gravity-EGM2008")));
+        EXPECT_EQ(expectedUrls, manifest_.findRemoteDataUrls(baseUrl, "earth-gravity-EGM2008"));
     }
 }
 

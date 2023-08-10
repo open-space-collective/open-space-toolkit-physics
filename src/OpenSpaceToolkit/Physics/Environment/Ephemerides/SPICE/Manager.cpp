@@ -134,7 +134,7 @@ void Manager::fetchKernel(const Kernel& aKernel) const
               << std::endl;
 }
 
-Array<Kernel> Manager::fetchMatchingKernels(const std::regex& aRegex) const
+Array<Kernel> Manager::fetchMatchingKernels(const String& aRegexString) const
 {
     const std::lock_guard<std::mutex> lock {mutex_};
 
@@ -142,7 +142,7 @@ Array<Kernel> Manager::fetchMatchingKernels(const std::regex& aRegex) const
 
     Array<Kernel> matchingKernels = Array<Kernel>::Empty();
 
-    for (const auto& remoteUrl : manifestManager.findRemoteDataUrls(aRegex))
+    for (const auto& remoteUrl : manifestManager.findRemoteDataUrls(aRegexString))
     {
         std::cout << String::Format("Fetching SPICE Kernel from [{}]...", remoteUrl.toString()) << std::endl;
 
@@ -185,6 +185,7 @@ Array<Kernel> Manager::fetchMatchingKernels(const std::regex& aRegex) const
         matchingKernels.add(fetchedKernel);
     }
 
+
     return matchingKernels;
 }
 
@@ -212,7 +213,7 @@ Kernel Manager::findKernel(const String& aRegexString) const
     // If none found, fall back to fetching from remote
     if (kernelPaths.isEmpty())
     {
-        Array<Kernel> fetchedKernels = const_cast<Manager*>(this)->fetchMatchingKernels(aRegex);
+        Array<Kernel> fetchedKernels = const_cast<Manager*>(this)->fetchMatchingKernels(aRegexString);
 
         if (fetchedKernels.isEmpty())
         {

@@ -83,7 +83,7 @@ void Manager::setManifestRepository(const Directory& aManifestRepository)
     manifestRepository_ = aManifestRepository;
 }
 
-Array<URL> Manager::findRemoteDataUrls(const std::regex& aDataNameRegex) const
+Array<URL> Manager::findRemoteDataUrls(const String& aDataNameRegex) const
 {
     const_cast<Manager*>(this)->checkManifestAgeAndUpdate();
     return manifest_.findRemoteDataUrls(remoteUrl_, aDataNameRegex);
@@ -114,6 +114,10 @@ void Manager::reset()
     manifestUpdateTimestamp_ = Instant::Undefined();
 
     manifest_ = Manifest::Undefined();
+
+    remoteUrl_ = DefaultRemoteUrl();
+    manifestRepository_ = DefaultManifestRepository();
+    manifestRepositoryLockTimeout_ = DefaultManifestRepositoryLockTimeout();
 }
 
 Manager::Manager()
