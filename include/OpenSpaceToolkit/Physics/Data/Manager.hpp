@@ -76,6 +76,12 @@ class Manager
 
     void setRemoteUrl(const URL& aRemoteUrl);
 
+    /// @brief                  Get the default remote URL for data fetching.
+    ///
+    /// @return                 Default remote URL
+
+    static URL DefaultRemoteUrl();
+
     /// @brief                  Get the manifest repository.
     ///
     /// @return                 Manifest repository
@@ -139,7 +145,6 @@ class Manager
 
     static Directory DefaultManifestRepository();
     static Duration DefaultManifestRepositoryLockTimeout();
-    static URL DefaultRemoteUrl();
 };
 
 }  // namespace data

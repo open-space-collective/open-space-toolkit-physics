@@ -30,6 +30,11 @@ class OpenSpaceToolkit_Physics_Data_Manager : public ::testing::Test
         );
     }
 
+    void TearDown() override
+    {
+        manager_.setRemoteUrl(Manager::DefaultRemoteUrl());
+    }
+
     const File manifestFile_ =
         File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Data/Manifest/manifest.json"));
 
@@ -78,6 +83,16 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manager, setRemoteUrl)
         EXPECT_EQ("http://fake.com", manager_.getRemoteUrl().toString());
 
         EXPECT_ANY_THROW(manager_.setRemoteUrl(URL::Undefined()));
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Data_Manager, DefaultRemoteUrl)
+{
+    {
+        EXPECT_EQ(
+            "https://github.com/open-space-collective/open-space-toolkit-data/raw/main/data/",
+            Manager::DefaultRemoteUrl().toString()
+        );
     }
 }
 
