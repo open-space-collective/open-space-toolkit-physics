@@ -19,9 +19,6 @@ from ostk.physics.environment.gravitational.earth import (
 def manager() -> EarthGravitationalModelManager:
     manager = EarthGravitationalModelManager.get()
 
-    manager.set_remote_url(
-        URL.parse("https://sourceforge.net/projects/geographiclib/files/gravity-distrib/")
-    )
     manager.set_local_repository(
         Directory.path(
             Path.parse(
@@ -32,12 +29,12 @@ def manager() -> EarthGravitationalModelManager:
         )
     )
 
-    return manager
+    yield manager
 
 
 class TestManager:
-    def test_is_enabled_success(self, manager: EarthGravitationalModelManager):
-        assert manager.is_enabled() == True
+    def test_get_mode_success(self, manager: EarthGravitationalModelManager):
+        assert manager.get_mode() == Manager.Mode.Automatic
 
     def test_has_data_file_for_type_success(
         self, manager: EarthGravitationalModelManager
@@ -55,13 +52,6 @@ class TestManager:
             "OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY"
         )
 
-    def test_get_remote_url_success(self, manager: EarthGravitationalModelManager):
-        assert isinstance(manager.get_remote_url(), URL)
-        assert (
-            manager.get_remote_url().to_string()
-            == "https://sourceforge.net/projects/geographiclib/files/gravity-distrib/"
-        )
-
     def test_fetch_data_file_for_type_success(
         self, manager: EarthGravitationalModelManager
     ):
@@ -69,6 +59,13 @@ class TestManager:
         manager.fetch_data_file_for_type(EarthGravitationalModel.Type.EGM84)
         manager.fetch_data_file_for_type(EarthGravitationalModel.Type.EGM96)
         manager.fetch_data_file_for_type(EarthGravitationalModel.Type.EGM2008)
+
+    def test_set_mode_success(self, manager: EarthGravitationalModelManager):
+        assert manager.get_mode() == Manager.Mode.Automatic
+
+        manager.set_mode(Manager.Mode.Manual)
+
+        assert manager.get_mode() == Manager.Mode.Manual
 
     def test_set_local_repository_success(self, manager: EarthGravitationalModelManager):
         manager.set_local_repository(
@@ -85,26 +82,6 @@ class TestManager:
             == "./.open-space-toolkit/physics/environment/gravitational/earth2"
         )
 
-    def test_set_remote_url_success(self, manager: EarthGravitationalModelManager):
-        manager.set_remote_url(
-            URL.parse(
-                "https://sourceforge.net/projects/geographiclib/files/gravity-distrib/2"
-            )
-        )
-
-        assert isinstance(manager.get_remote_url(), URL)
-        assert (
-            manager.get_remote_url().to_string()
-            == "https://sourceforge.net/projects/geographiclib/files/gravity-distrib/2"
-        )
-
-    def test_enable_disable_success(self, manager: EarthGravitationalModelManager):
-        manager.disable()
-        assert manager.is_enabled() == False
-
-        manager.enable()
-        assert manager.is_enabled() == True
-
     def test_default_local_repository_success(
         self, manager: EarthGravitationalModelManager
     ):
@@ -115,9 +92,9 @@ class TestManager:
             "OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY"
         )
 
-    def test_default_remote_url_success(self, manager: EarthGravitationalModelManager):
-        assert isinstance(EarthGravitationalModelManager.default_remote_url(), URL)
-        assert (
-            manager.default_remote_url().to_string()
-            == "https://sourceforge.net/projects/geographiclib/files/gravity-distrib/"
-        )
+    def test_default_mode_success(self, manager: EarthGravitationalModelManager):
+        assert manager.default_mode() == Manager.Mode.Automatic
+
+    def test_default_local_repository_lock_timeout_success(self, manager: EarthGravitationalModelManager):
+        assert isinstance(manager.default_local_repository_lock_timeout(), Duration)
+        assert manager.default_local_repository_lock_timeout().in_seconds() == 60.0
