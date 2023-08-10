@@ -185,7 +185,6 @@ Array<Kernel> Manager::fetchMatchingKernels(const String& aRegexString) const
         matchingKernels.add(fetchedKernel);
     }
 
-
     return matchingKernels;
 }
 

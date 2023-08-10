@@ -1,909 +1,506 @@
 /// Apache License 2.0
 
+#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
+#include <OpenSpaceToolkit/Core/Containers/Table.hpp>
+#include <OpenSpaceToolkit/Core/Containers/Tuple.hpp>
+#include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
+#include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
+#include <OpenSpaceToolkit/Core/Types/Real.hpp>
+
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformations/Rotations/RotationMatrix.hpp>
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformations/Rotations/RotationVector.hpp>
 
-#include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
-#include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
-#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Derived/Angle.hpp>
+#include <OpenSpaceToolkit/Physics/Units/Length.hpp>
 
 #include <Global.test.hpp>
 
+namespace iau = ostk::physics::coord::frame::providers::iau;
+
+using ostk::core::types::Shared;
 using ostk::core::types::Real;
+using ostk::core::types::String;
+using ostk::core::ctnr::Tuple;
+using ostk::core::ctnr::Array;
+using ostk::core::ctnr::Table;
+using ostk::core::fs::Path;
+using ostk::core::fs::File;
 
 using ostk::math::obj::Vector3d;
 using ostk::math::geom::d3::trf::rot::Quaternion;
 using ostk::math::geom::d3::trf::rot::RotationVector;
+using ostk::math::geom::d3::trf::rot::RotationMatrix;
 
+using ostk::physics::units::Length;
 using ostk::physics::units::Angle;
 using ostk::physics::time::Scale;
 using ostk::physics::time::Instant;
 using ostk::physics::time::DateTime;
 using ostk::physics::coord::Transform;
+using ostk::physics::coord::Frame;
+using ostk::physics::env::obj::celest::Earth;
 
-class OpenSpaceToolkit_Physics_Coordinate_Transform : public ::testing::Test
+// This will test transformation translation, relative velocity, oreintation and
+// angular velocity against 3rd party generated files. The files can be found in
+// the folder 'Transforms', together with a README.md containing context.
+
+class OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform
+    : public ::testing::TestWithParam<Tuple<String, String, String, Real, Real, Real, Real>>
 {
-   protected:
-    void SetUp() override
-    {
-        transformActive_ = {instant_, t_B_A_, v_B_A_, q_B_A_, w_B_A_in_B_, Transform::Type::Active};
-        transformPassive_ = {instant_, t_B_A_, v_B_A_, q_B_A_, w_B_A_in_B_, Transform::Type::Passive};
-    }
-
-    const Vector3d t_B_A_ = {+0.0, +0.0, +0.0};
-    const Vector3d v_B_A_ = {+0.0, +0.0, +0.0};
-
-    const Quaternion q_B_A_ = Quaternion::Unit();
-    const Vector3d w_B_A_in_B_ = {+0.0, +0.0, +0.0};
-
-    const Instant instant_ = Instant::J2000();
-
-    Transform transformActive_ = Transform::Undefined();
-    Transform transformPassive_ = Transform::Undefined();
 };
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, Constructor)
+INSTANTIATE_TEST_SUITE_P(
+    Validation,
+    OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform,
+    ::testing::Values(
+        // GCRF <> TIRF (Orekit)
+        std::make_tuple(
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TIRF_orekit.csv",
+            "TIRF",
+            "",
+            0.0,    // Translation tolerance [m]
+            0.0,    // Relative velocity tolerance [m/s]
+            100.0,  // Orientation tolerance at Earth Surface [m]
+            1e-6    // Angular velocity tolerance [rad/s]
+        ),
+
+        // GCRF <> CIRF (Orekit)
+        std::make_tuple(
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_CIRF_orekit.csv",
+            "CIRF",
+            "",
+            0.0,   // Translation tolerance [m]
+            0.0,   // Relative velocity tolerance [m/s]
+            1e-1,  // Orientation tolerance at Earth Surface [m]
+            1e-11  // Angular velocity tolerance [rad/s]
+        ),
+
+        // GCRF <> MOD (STK)
+        std::make_tuple(
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_MOD_stk.csv",
+            "MOD",
+            "",
+            0.0,  // Translation tolerance [m]
+            0.0,  // Relative velocity tolerance [m/s]
+            2.0,  // Orientation tolerance at Earth Surface [m]
+            0.0   // Angular velocity tolerance [rad/s]
+        ),
+
+        // GCRF <> MOD (Orekit)
+        std::make_tuple(
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_MOD_orekit.csv",
+            "MOD",
+            "",
+            0.0,  // Translation tolerance [m]
+            0.0,  // Relative velocity tolerance [m/s]
+            3.0,  // Orientation tolerance at Earth Surface [m]
+            0.0   // Angular velocity tolerance [rad/s]
+        ),
+
+        // GCRF <> J2000 IAU 2000A (STK)
+        std::make_tuple(
+
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_J2000_stk.csv",
+            "J2000",
+            "IAU 2000A",
+            0.0,  // Translation tolerance [m]
+            0.0,  // Relative velocity tolerance [m/s]
+            1.5,  // Orientation tolerance at Earth Surface [m]
+            0.0   // Angular velocity tolerance [rad/s]
+        ),
+
+        // GCRF <> J2000 IAU 2000A (Orekit)
+        std::make_tuple(
+
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_J2000_orekit.csv",
+            "J2000",
+            "IAU 2000A",
+            0.0,   // Translation tolerance [m]
+            0.0,   // Relative velocity tolerance [m/s]
+            1e-5,  // Orientation tolerance at Earth Surface [m]
+            0.0    // Angular velocity tolerance [rad/s]
+        ),
+
+        // GCRF <> J2000 IAU 2006 (STK)
+        std::make_tuple(
+
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_J2000_stk.csv",
+            "J2000",
+            "IAU 2006",
+            0.0,  // Translation tolerance [m]
+            0.0,  // Relative velocity tolerance [m/s]
+            1.5,  // Orientation tolerance at Earth Surface [m]
+            0.0   // Angular velocity tolerance [rad/s]
+        ),
+
+        // GCRF <> J2000 IAU 2006 (Orekit)
+        std::make_tuple(
+
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_J2000_orekit.csv",
+            "J2000",
+            "IAU 2006",
+            0.0,   // Translation tolerance [m]
+            0.0,   // Relative velocity tolerance [m/s]
+            1e-4,  // Orientation tolerance at Earth Surface [m]
+            0.0    // Angular velocity tolerance [rad/s]
+        ),
+
+        // GCRF <> TOD IAU 2000A (STK)
+        std::make_tuple(
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TOD_stk.csv",
+            "TOD",
+            "IAU 2000A",
+            0.0,  // Translation tolerance [m]
+            0.0,  // Relative velocity tolerance [m/s]
+            3.0,  // Orientation tolerance at Earth Surface [m]
+            0.0   // Angular velocity tolerance [rad/s]
+        ),
+
+        // GCRF <> TOD IAU 2000A (Orekit)
+        std::make_tuple(
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TOD_orekit.csv",
+            "TOD",
+            "IAU 2000A",
+            0.0,   // Translation tolerance [m]
+            0.0,   // Relative velocity tolerance [m/s]
+            3.0,   // Orientation tolerance at Earth Surface [m]
+            1e-10  // Angular velocity tolerance [rad/s]
+        ),
+
+        // GCRF <> TOD IAU 2000B (STK)
+        std::make_tuple(
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TOD_stk.csv",
+            "TOD",
+            "IAU 2000B",
+            0.0,  // Translation tolerance [m]
+            0.0,  // Relative velocity tolerance [m/s]
+            3.0,  // Orientation tolerance at Earth Surface [m]
+            0.0   // Angular velocity tolerance [rad/s]
+        ),
+
+        // GCRF <> TOD IAU 2000B (Orekit)
+        std::make_tuple(
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TOD_orekit.csv",
+            "TOD",
+            "IAU 2000B",
+            0.0,   // Translation tolerance [m]
+            0.0,   // Relative velocity tolerance [m/s]
+            3.0,   // Orientation tolerance at Earth Surface [m]
+            1e-10  // Angular velocity tolerance [rad/s]
+        ),
+
+        // GCRF <> TOD IAU 2006 (STK)
+        std::make_tuple(
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TOD_stk.csv",
+            "TOD",
+            "IAU 2006",
+            0.0,  // Translation tolerance [m]
+            0.0,  // Relative velocity tolerance [m/s]
+            3.0,  // Orientation tolerance at Earth Surface [m]
+            0.0   // Angular velocity tolerance [rad/s]
+        ),
+
+        // GCRF <> TOD IAU 2006 (Orekit)
+        std::make_tuple(
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TOD_orekit.csv",
+            "TOD",
+            "IAU 2006",
+            0.0,   // Translation tolerance [m]
+            0.0,   // Relative velocity tolerance [m/s]
+            3.0,   // Orientation tolerance at Earth Surface [m]
+            1e-10  // Angular velocity tolerance [rad/s]
+        ),
+
+        // GCRF <> TEME (STK)
+        std::make_tuple(
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TEME_stk.csv",
+            "TEME",
+            "",
+            0.0,   // Translation tolerance [m]
+            0.0,   // Relative velocity tolerance [m/s]
+            1.0,   // Orientation tolerance at Earth Surface [m]
+            1e-11  // Angular velocity tolerance [rad/s]
+        ),
+
+        // GCRF <> TEME (Orekit)
+        std::make_tuple(
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TEME_orekit.csv",
+            "TEME",
+            "",
+            0.0,   // Translation tolerance [m]
+            0.0,   // Relative velocity tolerance [m/s]
+            2.0,   // Orientation tolerance at Earth Surface [m]
+            1e-11  // Angular velocity tolerance [rad/s]
+        ),
+
+        // GCRF <> ITRF (STK)
+        std::make_tuple(
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_ITRF_stk.csv",
+            "ITRF",
+            "",
+            0.0,    // Translation tolerance [m]
+            0.0,    // Relative velocity tolerance [m/s]
+            100.0,  // Orientation tolerance at Earth Surface [m]
+            1e-6    // Angular velocity tolerance [rad/s]
+        ),
+
+        // GCRF <> ITRF (Orekit)
+        std::make_tuple(
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_ITRF_orekit.csv",
+            "ITRF",
+            "",
+            0.0,    // Translation tolerance [m]
+            0.0,    // Relative velocity tolerance [m/s]
+            100.0,  // Orientation tolerance at Earth Surface [m]
+            1e-6    // Angular velocity tolerance [rad/s]
+        )
+    )
+);
+
+TEST_P(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Validation)
 {
+    const auto parameters = GetParam();
+    // Reference data setup
+
+    const File referenceDataFile = File::Path(Path::Parse(std::get<0>(parameters)));
+    const String frame2Str = std::get<1>(parameters);
+    const String otherStr = std::get<2>(parameters);
+    const Real translationTolerance = std::get<3>(parameters);
+    const Real velocityTolerance = std::get<4>(parameters);
+    const Real orientationToleranceAtEarthSurface = std::get<5>(parameters);
+    const Real angularVelocityTolerance = std::get<6>(parameters);
+
+    const double earthRadius = 6370000;
+    const Vector3d earthSurfaceX = earthRadius * Vector3d::X();
+    const Vector3d earthSurfaceY = earthRadius * Vector3d::Y();
+    const Vector3d earthSurfaceZ = earthRadius * Vector3d::Z();
+
+    const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
+
+    // Comparison test scenario
+    const String scenario =
+        String::Format("Frame: {} ({}) | File: {}\n", frame2Str, otherStr, referenceDataFile.toString());
+
+    for (const auto& referenceRow : referenceData)
     {
-        EXPECT_NO_THROW(Transform(instant_, t_B_A_, v_B_A_, q_B_A_, w_B_A_in_B_, Transform::Type::Active));
-    }
+        const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].accessString()), Scale::TAI);
 
-    {
-        EXPECT_NO_THROW(Transform(instant_, t_B_A_, v_B_A_, q_B_A_, w_B_A_in_B_, Transform::Type::Passive));
-    }
+        Shared<const Frame> frame1 = Frame::GCRF();
+        Shared<const Frame> frame2 = Frame::GCRF();
 
-    {
-        EXPECT_NO_THROW(Transform(instant_, t_B_A_, v_B_A_, q_B_A_, w_B_A_in_B_, Transform::Type::Undefined));
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, EqualToOperator)
-{
-    {
-        EXPECT_TRUE(transformActive_ == transformActive_);
-
-        EXPECT_FALSE(
-            transformActive_ == Transform(
-                                    Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC),
-                                    t_B_A_,
-                                    v_B_A_,
-                                    q_B_A_,
-                                    w_B_A_in_B_,
-                                    Transform::Type::Active
-                                )
-        );
-        EXPECT_FALSE(
-            transformActive_ ==
-            Transform(instant_, {+0.0, +0.0, +1.0}, v_B_A_, q_B_A_, w_B_A_in_B_, Transform::Type::Active)
-        );
-        EXPECT_FALSE(
-            transformActive_ ==
-            Transform(instant_, t_B_A_, {+0.0, +0.0, +1.0}, q_B_A_, w_B_A_in_B_, Transform::Type::Active)
-        );
-        EXPECT_FALSE(
-            transformActive_ ==
-            Transform(
-                instant_,
-                t_B_A_,
-                v_B_A_,
-                Quaternion::RotationVector(RotationVector({+0.0, +0.0, +1.0}, Angle::Degrees(+1.0))),
-                w_B_A_in_B_,
-                Transform::Type::Active
-            )
-        );
-        EXPECT_FALSE(
-            transformActive_ == Transform(instant_, t_B_A_, v_B_A_, q_B_A_, {+0.0, +0.0, +1.0}, Transform::Type::Active)
-        );
-        EXPECT_FALSE(
-            Transform(
-                instant_,
-                {+0.0, +0.0, +1.0},
-                {+0.0, +0.0, +1.0},
-                Quaternion::RotationVector(RotationVector({+0.0, +0.0, +1.0}, Angle::Degrees(+1.0))),
-                {+0.0, +0.0, +1.0},
-                Transform::Type::Active
-            ) ==
-            Transform(
-                instant_,
-                {+0.0, +0.0, +1.0},
-                {+0.0, +0.0, +1.0},
-                Quaternion::RotationVector(RotationVector({+0.0, +0.0, +1.0}, Angle::Degrees(+1.0))),
-                {+0.0, +0.0, +1.0},
-                Transform::Type::Passive
-            )
-        );
-
-        EXPECT_FALSE(transformActive_ == Transform::Undefined());
-        EXPECT_FALSE(Transform::Undefined() == transformActive_);
-    }
-
-    {
-        EXPECT_FALSE(Transform::Undefined() == Transform::Undefined());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, NotEqualToOperator)
-{
-    {
-        EXPECT_FALSE(transformActive_ != transformActive_);
-
-        EXPECT_TRUE(
-            transformActive_ != Transform(
-                                    Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC),
-                                    t_B_A_,
-                                    v_B_A_,
-                                    q_B_A_,
-                                    w_B_A_in_B_,
-                                    Transform::Type::Active
-                                )
-        );
-        EXPECT_TRUE(
-            transformActive_ !=
-            Transform(instant_, {+0.0, +0.0, +1.0}, v_B_A_, q_B_A_, w_B_A_in_B_, Transform::Type::Active)
-        );
-        EXPECT_TRUE(
-            transformActive_ !=
-            Transform(instant_, t_B_A_, {+0.0, +0.0, +1.0}, q_B_A_, w_B_A_in_B_, Transform::Type::Active)
-        );
-        EXPECT_TRUE(
-            transformActive_ !=
-            Transform(
-                instant_,
-                t_B_A_,
-                v_B_A_,
-                Quaternion::RotationVector(RotationVector({+0.0, +0.0, +1.0}, Angle::Degrees(+1.0))),
-                w_B_A_in_B_,
-                Transform::Type::Active
-            )
-        );
-        EXPECT_TRUE(
-            transformActive_ != Transform(instant_, t_B_A_, v_B_A_, q_B_A_, {+0.0, +0.0, +1.0}, Transform::Type::Active)
-        );
-        EXPECT_TRUE(
-            Transform(
-                instant_,
-                {+0.0, +0.0, +1.0},
-                {+0.0, +0.0, +1.0},
-                Quaternion::RotationVector(RotationVector({+0.0, +0.0, +1.0}, Angle::Degrees(+1.0))),
-                {+0.0, +0.0, +1.0},
-                Transform::Type::Active
-            ) !=
-            Transform(
-                instant_,
-                {+0.0, +0.0, +1.0},
-                {+0.0, +0.0, +1.0},
-                Quaternion::RotationVector(RotationVector({+0.0, +0.0, +1.0}, Angle::Degrees(+1.0))),
-                {+0.0, +0.0, +1.0},
-                Transform::Type::Passive
-            )
-        );
-
-        EXPECT_TRUE(transformActive_ != Transform::Undefined());
-        EXPECT_TRUE(Transform::Undefined() != transformActive_);
-    }
-
-    {
-        EXPECT_TRUE(Transform::Undefined() != Transform::Undefined());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, MultiplicationOperator)
-{
-    // Translation + Velocity + Rotation
-
-    {
-        // A to B
-
-        const Vector3d t_B_A = {+0.0, -1.0, +0.0};
-        const Vector3d v_B_A = {+0.0, -1.0, +0.0};
-
-        const Quaternion q_B_A = Quaternion::RotationVector(RotationVector({+0.0, +0.0, +1.0}, Angle::Degrees(+90.0)));
-        const Vector3d w_B_A_in_B = Vector3d::Zero();
-
-        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
-
-        // B to C
-
-        const Vector3d t_C_B = {+0.0, -1.0, +0.0};
-        const Vector3d v_C_B = {+1.0, +0.0, +0.0};
-
-        const Quaternion q_C_B = Quaternion::RotationVector(RotationVector({+0.0, +1.0, +0.0}, Angle::Degrees(-90.0)));
-        const Vector3d w_C_B_in_C = Vector3d::Zero();
-
-        const Transform transform_C_B = Transform::Passive(instant_, t_C_B, v_C_B, q_C_B, w_C_B_in_C);
-
-        // A to C
-
-        const Vector3d t_C_A = {+1.0, -1.0, +0.0};
-        const Vector3d v_C_A = {+0.0, +0.0, +0.0};
-
-        const Quaternion q_C_A = q_C_B * q_B_A;
-        const Vector3d w_C_A_in_C = Vector3d::Zero();
-
-        const Transform transform_C_A = Transform::Passive(instant_, t_C_A, v_C_A, q_C_A, w_C_A_in_C);
-
-        // Comparison
-
-        EXPECT_GT(
-            1e-14, ((transform_C_B * transform_B_A).accessTranslation() - transform_C_A.accessTranslation()).norm()
-        );
-        EXPECT_GT(1e-14, ((transform_C_B * transform_B_A).getVelocity() - transform_C_A.getVelocity()).norm());
-        EXPECT_TRUE((transform_C_B * transform_B_A)
-                        .accessOrientation()
-                        .isNear(transform_C_A.accessOrientation(), Angle::Degrees(1e-7)));
-        EXPECT_GT(
-            1e-14,
-            ((transform_C_B * transform_B_A).accessAngularVelocity() - transform_C_A.accessAngularVelocity()).norm()
-        );
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, StreamOperator)
-{
-    {
-        testing::internal::CaptureStdout();
-
-        EXPECT_NO_THROW(std::cout << transformActive_ << std::endl);
-
-        EXPECT_FALSE(testing::internal::GetCapturedStdout().empty());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, IsDefined)
-{
-    {
-        EXPECT_TRUE(transformActive_.isDefined());
-    }
-
-    {
-        EXPECT_FALSE(Transform::Undefined().isDefined());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, IsIdentity)
-{
-    {
-        const Vector3d t_B_A = Vector3d::Zero();
-        const Vector3d v_B_A = Vector3d::Zero();
-
-        const Quaternion q_B_A = Quaternion::Unit();
-        const Vector3d w_B_A_in_B = Vector3d::Zero();
-
-        EXPECT_TRUE(Transform(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Passive).isIdentity());
-        EXPECT_TRUE(Transform(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Passive).isIdentity());
-    }
-
-    {
-        const Vector3d t_B_A = {0.0, 0.0, 1.0};
-        const Vector3d v_B_A = Vector3d::Zero();
-
-        const Quaternion q_B_A = Quaternion::Unit();
-        const Vector3d w_B_A_in_B = Vector3d::Zero();
-
-        EXPECT_FALSE(Transform(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Passive).isIdentity());
-        EXPECT_FALSE(Transform(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Passive).isIdentity());
-    }
-
-    {
-        EXPECT_ANY_THROW(Transform::Undefined().isIdentity());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, AccessInstant)
-{
-    {
-        EXPECT_EQ(instant_, transformPassive_.accessInstant());
-    }
-
-    {
-        EXPECT_ANY_THROW(Transform::Undefined().accessInstant());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, AccessTranslation)
-{
-    {
-        EXPECT_EQ(t_B_A_, transformPassive_.accessTranslation());
-    }
-
-    {
-        EXPECT_ANY_THROW(Transform::Undefined().accessTranslation());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, AccessVelocity)
-{
-    {
-        EXPECT_EQ(v_B_A_, transformPassive_.accessVelocity());
-    }
-
-    {
-        EXPECT_ANY_THROW(Transform::Undefined().accessVelocity());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, AccessOrientation)
-{
-    {
-        EXPECT_EQ(q_B_A_, transformPassive_.accessOrientation());
-    }
-
-    {
-        EXPECT_ANY_THROW(Transform::Undefined().accessOrientation());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, AccessAngularVelocity)
-{
-    {
-        EXPECT_EQ(w_B_A_in_B_, transformPassive_.accessAngularVelocity());
-    }
-
-    {
-        EXPECT_ANY_THROW(Transform::Undefined().accessAngularVelocity());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, GetInstant)
-{
-    {
-        EXPECT_EQ(instant_, transformPassive_.getInstant());
-    }
-
-    {
-        EXPECT_ANY_THROW(Transform::Undefined().getInstant());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, GetTranslation)
-{
-    {
-        EXPECT_EQ(t_B_A_, transformPassive_.getTranslation());
-    }
-
-    {
-        EXPECT_ANY_THROW(Transform::Undefined().getTranslation());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, GetVelocity)
-{
-    {
-        EXPECT_EQ(v_B_A_, transformPassive_.getVelocity());
-    }
-
-    {
-        EXPECT_ANY_THROW(Transform::Undefined().getVelocity());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, GetOrientation)
-{
-    {
-        EXPECT_EQ(q_B_A_, transformPassive_.getOrientation());
-    }
-
-    {
-        EXPECT_ANY_THROW(Transform::Undefined().getOrientation());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, GetAngularVelocity)
-{
-    {
-        EXPECT_EQ(w_B_A_in_B_, transformPassive_.getAngularVelocity());
-    }
-
-    {
-        EXPECT_ANY_THROW(Transform::Undefined().getAngularVelocity());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, GetInverse)
-{
-    {
-        for (auto idx = 1; idx < 10000; ++idx)
+        if (frame2Str == "TOD")
         {
-            const Vector3d t_A_B = {std::cos(+1.0 * idx), std::cos(+2.0 * idx), std::cos(+3.0 * idx)};
-            const Vector3d v_A_B = {std::cos(+4.0 * idx), std::cos(+5.0 * idx), std::cos(+6.0 * idx)};
+            frame2 = Frame::TOD(instant, iau::TheoryFromString(otherStr));
+        }
+        else if (frame2Str == "TEME")
+        {
+            frame2 = Frame::TEME();
+        }
+        else if (frame2Str == "ITRF")
+        {
+            frame2 = Frame::ITRF();
+        }
+        else if (frame2Str == "J2000")
+        {
+            frame2 = Frame::J2000(iau::TheoryFromString(otherStr));
+        }
+        else if (frame2Str == "MOD")
+        {
+            frame2 = Frame::MOD(instant);
+        }
+        else if (frame2Str == "CIRF")
+        {
+            frame2 = Frame::CIRF();
+        }
+        else if (frame2Str == "TIRF")
+        {
+            frame2 = Frame::TIRF();
+        }
 
-            const Quaternion q_B_A = Quaternion::RotationVector(RotationVector(
-                Vector3d(
-                    std::cos(+0.1 * idx) * std::sin(+0.3 * idx),
-                    std::cos(+0.2 * idx) * std::sin(+0.2 * idx),
-                    std::cos(+0.3 * idx) * std::sin(+0.1 * idx)
-                )
-                    .normalized(),
-                Angle::Degrees(0.1 * idx)
-            ));
-            const Vector3d w_B_A_in_B = {std::cos(+7.0 * idx), std::cos(+8.0 * idx), std::cos(+9.0 * idx)};
+        const Transform transformToFrame1 = frame2->getTransformTo(frame1, instant);
+        const Transform transformToFrame2 = frame1->getTransformTo(frame2, instant);
 
-            const Transform transform = Transform::Passive(Instant::J2000(), t_A_B, v_A_B, q_B_A, w_B_A_in_B);
+        // Instant
 
-            EXPECT_TRUE(
-                transform.getInverse().getInverse().accessTranslation().isNear(transform.accessTranslation(), 1e-14)
+        {
+            EXPECT_EQ(instant, transformToFrame1.getInstant());
+            EXPECT_EQ(instant, transformToFrame2.getInstant());
+        }
+
+        // Translation
+
+        {
+            const Vector3d referenceToFrame2 = {
+                referenceRow[1].accessReal(), referenceRow[2].accessReal(), referenceRow[3].accessReal()
+            };
+            const Vector3d referenceToFrame1 = -1 * referenceToFrame2;
+
+            const Vector3d toFrame2 = transformToFrame2.getTranslation();
+            const Vector3d toFrame1 = transformToFrame1.getTranslation();
+
+            ASSERT_TRUE(referenceToFrame2.isNear(toFrame2, translationTolerance)) << String::Format(
+                "{} @ {} Translation: {} [m] vs. {} [m] above {} [m] tolerance",
+                scenario,
+                instant.toString(Scale::TAI),
+                referenceToFrame2.toString(),
+                toFrame2.toString(),
+                translationTolerance.toString()
             );
-            EXPECT_TRUE(transform.getInverse().getInverse().accessVelocity().isNear(transform.accessVelocity(), 1e-14));
-            EXPECT_TRUE(transform.getInverse().getInverse().accessOrientation().isNear(
-                transform.accessOrientation(), Angle::Radians(1e-7)
-            ));
-            EXPECT_TRUE(transform.getInverse().getInverse().accessAngularVelocity().isNear(
-                transform.accessAngularVelocity(), 1e-14
-            ));
-        }
-    }
 
-    {
-        EXPECT_ANY_THROW(Transform::Undefined().getInverse());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, ApplyToPosition)
-{
-    // Identity
-
-    {
-        const Transform transform_B_A = Transform::Identity(instant_);
-
-        const Vector3d x_A = {+0.0, +0.0, +0.0};
-
-        const Vector3d x_B = transform_B_A.applyToPosition(x_A);
-
-        EXPECT_TRUE(x_B.isNear(x_A, 1e-14));
-    }
-
-    // Translation
-
-    {
-        const Vector3d t_B_A = {+0.0, -1.0, +0.0};
-        const Vector3d v_B_A = Vector3d::Zero();
-
-        const Quaternion q_B_A = Quaternion::Unit();
-        const Vector3d w_B_A_in_B = Vector3d::Zero();
-
-        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
-
-        const Vector3d x_A = {+0.0, +1.0, +0.0};
-
-        const Vector3d x_B = transform_B_A.applyToPosition(x_A);
-
-        EXPECT_TRUE(x_B.isNear(Vector3d(+0.0, +0.0, +0.0), 1e-14));
-    }
-
-    // Rotation
-
-    {
-        const Vector3d t_B_A = Vector3d::Zero();
-        const Vector3d v_B_A = Vector3d::Zero();
-
-        const Quaternion q_B_A = Quaternion::RotationVector(RotationVector({+0.0, +0.0, +1.0}, Angle::Degrees(+90.0)));
-        const Vector3d w_B_A_in_B = Vector3d::Zero();
-
-        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
-
-        const Vector3d x_A = {+0.0, +1.0, +0.0};
-
-        const Vector3d x_B = transform_B_A.applyToPosition(x_A);
-
-        EXPECT_TRUE(x_B.isNear(Vector3d(+1.0, +0.0, +0.0), 1e-14));
-    }
-
-    // Translation + Rotation
-
-    {
-        const Vector3d t_B_A = {+0.0, -1.0, +0.0};
-        const Vector3d v_B_A = Vector3d::Zero();
-
-        const Quaternion q_B_A = Quaternion::RotationVector(RotationVector({+0.0, +0.0, +1.0}, Angle::Degrees(+90.0)));
-        const Vector3d w_B_A_in_B = Vector3d::Zero();
-
-        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
-
-        const Vector3d x_A = {+0.0, +2.0, +0.0};
-
-        const Vector3d x_B = transform_B_A.applyToPosition(x_A);
-
-        EXPECT_TRUE(x_B.isNear(Vector3d(+1.0, +0.0, +0.0), 1e-14));
-    }
-
-    // Translation + Velocity
-
-    {
-        const Vector3d t_B_A = {+0.0, -1.0, +0.0};
-        const Vector3d v_B_A = {+0.0, -1.0, +0.0};
-
-        const Quaternion q_B_A = Quaternion::Unit();
-        const Vector3d w_B_A_in_B = Vector3d::Zero();
-
-        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
-
-        const Vector3d x_A = {+0.0, +1.0, +0.0};
-
-        const Vector3d x_B = transform_B_A.applyToPosition(x_A);
-
-        EXPECT_TRUE(x_B.isNear(Vector3d(+0.0, +0.0, +0.0), 1e-14));
-    }
-
-    // Translation + Velocity + Rotation
-
-    {
-        const Vector3d t_B_A = {+0.0, -1.0, +0.0};
-        const Vector3d v_B_A = {+0.0, -1.0, +0.0};
-
-        const Quaternion q_B_A = Quaternion::RotationVector(RotationVector({+0.0, +0.0, +1.0}, Angle::Degrees(+90.0)));
-        const Vector3d w_B_A_in_B = Vector3d::Zero();
-
-        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
-
-        const Vector3d x_A = {+0.0, +2.0, +0.0};
-
-        const Vector3d x_B = transform_B_A.applyToPosition(x_A);
-
-        EXPECT_TRUE(x_B.isNear(Vector3d(+1.0, +0.0, +0.0), 1e-14));
-    }
-
-    // Translation + Velocity + Rotation + Angular Velocity
-
-    {
-        const Vector3d t_B_A = {+0.0, -1.0, +0.0};
-        const Vector3d v_B_A = {+0.0, -1.0, +0.0};
-
-        const Quaternion q_B_A = Quaternion::RotationVector(RotationVector({+0.0, +0.0, +1.0}, Angle::Degrees(+90.0)));
-        const Vector3d w_B_A_in_B = {+0.0, +0.0, +1.0};
-
-        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
-
-        const Vector3d x_A = {+0.0, +2.0, +0.0};
-
-        const Vector3d x_B = transform_B_A.applyToPosition(x_A);
-
-        EXPECT_TRUE(x_B.isNear(Vector3d(+1.0, +0.0, +0.0), 1e-14));
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, ApplyToVelocity)
-{
-    // Identity
-
-    {
-        const Transform transform_B_A = Transform::Identity(instant_);
-
-        const Vector3d x_A = {+0.0, +0.0, +0.0};
-        const Vector3d v_A = {+0.0, +0.0, +0.0};
-
-        const Vector3d v_B = transform_B_A.applyToVelocity(x_A, v_A);
-
-        EXPECT_TRUE(v_B.isNear(v_A, 1e-14));
-    }
-
-    // Translation
-
-    {
-        const Vector3d t_B_A = {+0.0, -1.0, +0.0};
-        const Vector3d v_B_A = Vector3d::Zero();
-
-        const Quaternion q_B_A = Quaternion::Unit();
-        const Vector3d w_B_A_in_B = Vector3d::Zero();
-
-        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
-
-        const Vector3d x_A = {+0.0, +0.0, +0.0};
-        const Vector3d v_A = {+0.0, +1.0, +0.0};
-
-        const Vector3d v_B = transform_B_A.applyToVelocity(x_A, v_A);
-
-        EXPECT_TRUE(v_B.isNear(Vector3d(+0.0, +1.0, +0.0), 1e-14));
-    }
-
-    // Rotation
-
-    {
-        const Vector3d t_B_A = Vector3d::Zero();
-        const Vector3d v_B_A = Vector3d::Zero();
-
-        const Quaternion q_B_A = Quaternion::RotationVector(RotationVector({+0.0, +0.0, +1.0}, Angle::Degrees(+90.0)));
-        const Vector3d w_B_A_in_B = Vector3d::Zero();
-
-        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
-
-        const Vector3d x_A = {+0.0, +0.0, +0.0};
-        const Vector3d v_A = {+0.0, +1.0, +0.0};
-
-        const Vector3d v_B = transform_B_A.applyToVelocity(x_A, v_A);
-
-        EXPECT_TRUE(v_B.isNear(Vector3d(+1.0, +0.0, +0.0), 1e-14));
-    }
-
-    // Translation + Rotation
-
-    {
-        const Vector3d t_B_A = {+0.0, -1.0, +0.0};
-        const Vector3d v_B_A = Vector3d::Zero();
-
-        const Quaternion q_B_A = Quaternion::RotationVector(RotationVector({+0.0, +0.0, +1.0}, Angle::Degrees(+90.0)));
-        const Vector3d w_B_A_in_B = Vector3d::Zero();
-
-        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
-
-        const Vector3d x_A = {+0.0, +2.0, +0.0};
-        const Vector3d v_A = {+0.0, +1.0, +0.0};
-
-        const Vector3d v_B = transform_B_A.applyToVelocity(x_A, v_A);
-
-        EXPECT_TRUE(v_B.isNear(Vector3d(+1.0, +0.0, +0.0), 1e-14));
-    }
-
-    // Translation + Velocity
-
-    {
-        const Vector3d t_B_A = {+0.0, -1.0, +0.0};
-        const Vector3d v_B_A = {+0.0, -1.0, +0.0};
-
-        const Quaternion q_B_A = Quaternion::Unit();
-        const Vector3d w_B_A_in_B = Vector3d::Zero();
-
-        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
-
-        const Vector3d x_A = {+0.0, +2.0, +0.0};
-        const Vector3d v_A = {+0.0, +2.0, +0.0};
-
-        const Vector3d v_B = transform_B_A.applyToVelocity(x_A, v_A);
-
-        EXPECT_TRUE(v_B.isNear(Vector3d(+0.0, +1.0, +0.0), 1e-14));
-    }
-
-    // Translation + Velocity + Rotation
-
-    {
-        const Vector3d t_B_A = {+0.0, -1.0, +0.0};
-        const Vector3d v_B_A = {+0.0, -1.0, +0.0};
-
-        const Quaternion q_B_A = Quaternion::RotationVector(RotationVector({+0.0, +0.0, +1.0}, Angle::Degrees(+90.0)));
-        const Vector3d w_B_A_in_B = Vector3d::Zero();
-
-        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
-
-        const Vector3d x_A = {+0.0, +2.0, +0.0};
-        const Vector3d v_A = {+0.0, +2.0, +0.0};
-
-        const Vector3d v_B = transform_B_A.applyToVelocity(x_A, v_A);
-
-        EXPECT_TRUE(v_B.isNear(Vector3d(+1.0, +0.0, +0.0), 1e-14));
-    }
-
-    // Translation + Velocity + Rotation + Angular Velocity
-
-    {
-        const Vector3d t_B_A = {+0.0, -1.0, +0.0};
-        const Vector3d v_B_A = {+0.0, -1.0, +0.0};
-
-        const Quaternion q_B_A = Quaternion::RotationVector(RotationVector({+0.0, +0.0, +1.0}, Angle::Degrees(+90.0)));
-        const Vector3d w_B_A_in_B = {+0.0, +0.0, +1.0};
-
-        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
-
-        const Vector3d x_A = {+0.0, +2.0, +0.0};
-        const Vector3d v_A = {+0.0, +2.0, +0.0};
-
-        const Vector3d v_B = transform_B_A.applyToVelocity(x_A, v_A);
-
-        EXPECT_TRUE(v_B.isNear(Vector3d(+1.0, -1.0, +0.0), 1e-14));
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, ApplyToVector)
-{
-    // Identity
-
-    {
-        const Transform transform_B_A = Transform::Identity(instant_);
-
-        const Vector3d v_A = {+0.0, +0.0, +0.0};
-
-        const Vector3d v_B = transform_B_A.applyToVector(v_A);
-
-        EXPECT_TRUE(v_B.isNear(v_A, 1e-14));
-    }
-
-    // Translation
-
-    {
-        const Vector3d t_B_A = {+0.0, -1.0, +0.0};
-        const Vector3d v_B_A = Vector3d::Zero();
-
-        const Quaternion q_B_A = Quaternion::Unit();
-        const Vector3d w_B_A_in_B = Vector3d::Zero();
-
-        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
-
-        const Vector3d v_A = {+0.0, +1.0, +0.0};
-
-        const Vector3d v_B = transform_B_A.applyToVector(v_A);
-
-        EXPECT_TRUE(v_B.isNear(v_A, 1e-14));
-    }
-
-    // Rotation
-
-    {
-        const Vector3d t_B_A = Vector3d::Zero();
-        const Vector3d v_B_A = Vector3d::Zero();
-
-        const Quaternion q_B_A = Quaternion::RotationVector(RotationVector({+0.0, +0.0, +1.0}, Angle::Degrees(+90.0)));
-        const Vector3d w_B_A_in_B = Vector3d::Zero();
-
-        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
-
-        const Vector3d v_A = {+0.0, +1.0, +0.0};
-
-        const Vector3d v_B = transform_B_A.applyToVector(v_A);
-
-        EXPECT_TRUE(v_B.isNear(Vector3d(+1.0, +0.0, +0.0), 1e-14));
-    }
-
-    // Translation + Rotation
-
-    {
-        const Vector3d t_B_A = {+0.0, -1.0, +0.0};
-        const Vector3d v_B_A = Vector3d::Zero();
-
-        const Quaternion q_B_A = Quaternion::RotationVector(RotationVector({+0.0, +0.0, +1.0}, Angle::Degrees(+90.0)));
-        const Vector3d w_B_A_in_B = Vector3d::Zero();
-
-        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
-
-        const Vector3d v_A = {+0.0, +1.0, +0.0};
-
-        const Vector3d v_B = transform_B_A.applyToVector(v_A);
-
-        EXPECT_TRUE(v_B.isNear(Vector3d(+1.0, +0.0, +0.0), 1e-14));
-    }
-
-    // Translation + Velocity
-
-    {
-        const Vector3d t_B_A = {+0.0, -1.0, +0.0};
-        const Vector3d v_B_A = {+0.0, -1.0, +0.0};
-
-        const Quaternion q_B_A = Quaternion::Unit();
-        const Vector3d w_B_A_in_B = Vector3d::Zero();
-
-        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
-
-        const Vector3d v_A = {+0.0, +2.0, +0.0};
-
-        const Vector3d v_B = transform_B_A.applyToVector(v_A);
-
-        EXPECT_TRUE(v_B.isNear(Vector3d(+0.0, +2.0, +0.0), 1e-14));
-    }
-
-    // Translation + Velocity + Rotation
-
-    {
-        const Vector3d t_B_A = {+0.0, -1.0, +0.0};
-        const Vector3d v_B_A = {+0.0, -1.0, +0.0};
-
-        const Quaternion q_B_A = Quaternion::RotationVector(RotationVector({+0.0, +0.0, +1.0}, Angle::Degrees(+90.0)));
-        const Vector3d w_B_A_in_B = Vector3d::Zero();
-
-        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
-
-        const Vector3d v_A = {+0.0, +2.0, +0.0};
-
-        const Vector3d v_B = transform_B_A.applyToVector(v_A);
-
-        EXPECT_TRUE(v_B.isNear(Vector3d(+2.0, +0.0, +0.0), 1e-14));
-    }
-
-    // Translation + Velocity + Rotation + Angular Velocity
-
-    {
-        const Vector3d t_B_A = {+0.0, -1.0, +0.0};
-        const Vector3d v_B_A = {+0.0, -1.0, +0.0};
-
-        const Quaternion q_B_A = Quaternion::RotationVector(RotationVector({+0.0, +0.0, +1.0}, Angle::Degrees(+90.0)));
-        const Vector3d w_B_A_in_B = {+0.0, +0.0, +1.0};
-
-        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
-
-        const Vector3d v_A = {+0.0, +2.0, +0.0};
-
-        const Vector3d v_B = transform_B_A.applyToVector(v_A);
-
-        EXPECT_TRUE(v_B.isNear(Vector3d(+2.0, +0.0, +0.0), 1e-14));
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, Undefined)
-{
-    {
-        EXPECT_NO_THROW(Transform::Undefined());
-
-        EXPECT_FALSE(Transform::Undefined().isDefined());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, Identity)
-{
-    {
-        EXPECT_NO_THROW(Transform::Identity(instant_));
-
-        EXPECT_EQ(Transform::Identity(instant_), Transform::Identity(instant_).getInverse());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, Active)
-{
-    {
-        EXPECT_EQ(transformActive_, Transform::Active(instant_, t_B_A_, v_B_A_, q_B_A_, w_B_A_in_B_));
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, Passive)
-{
-    {
-        EXPECT_EQ(
-            Transform(instant_, t_B_A_, v_B_A_, q_B_A_, w_B_A_in_B_, Transform::Type::Passive),
-            Transform::Passive(instant_, t_B_A_, v_B_A_, q_B_A_, w_B_A_in_B_)
-        );
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, Test_1)
-{
-    {
-        const Vector3d t_A_G = {+0.0, -1.0, +0.0};
-        const Vector3d v_A_G = {+0.0, +0.0, +0.0};
-
-        const Quaternion q_A_G = Quaternion::XYZS(0.0, 0.0, 0.707106781186547, 0.707106781186548).toNormalized();
-        const Vector3d w_A_G_in_A = {+0.0, +0.0, +0.0};
-
-        const Transform transform_A_G = {instant_, t_A_G, v_A_G, q_A_G, w_A_G_in_A, Transform::Type::Passive};
-
-        {
-            const Vector3d x_G = {+0.0, +1.0, +0.0};
-            const Vector3d x_A = transform_A_G.applyToPosition(x_G);
-
-            EXPECT_TRUE(x_A.isNear(Vector3d(+0.0, +0.0, +0.0), 1e-5)) << x_A.toString();
+            ASSERT_TRUE(referenceToFrame1.isNear(toFrame1, translationTolerance)) << String::Format(
+                "{} @ {} Translation: {} [m] vs. {} [m] above {} [m] tolerance",
+                scenario,
+                instant.toString(Scale::TAI),
+                referenceToFrame1.toString(),
+                toFrame1.toString(),
+                translationTolerance.toString()
+            );
         }
 
-        {
-            const Vector3d x_G = {+0.0, +2.0, +0.0};
-            const Vector3d x_A = transform_A_G.applyToPosition(x_G);
+        // Relative velocity
 
-            EXPECT_TRUE(x_A.isNear(Vector3d(+1.0, +0.0, +0.0), 1e-5)) << x_A.toString();
+        {
+            const Vector3d referenceToFrame2 = {
+                referenceRow[4].accessReal(), referenceRow[5].accessReal(), referenceRow[6].accessReal()
+            };
+            const Vector3d referenceToFrame1 = -1 * referenceToFrame2;
+
+            const Vector3d toFrame2 = transformToFrame2.getVelocity();
+            const Vector3d toFrame1 = transformToFrame1.getVelocity();
+
+            ASSERT_TRUE(referenceToFrame2.isNear(toFrame2, velocityTolerance)) << String::Format(
+                "{} @ {} Velocity: {} [m/s] vs. {} [m/s] above {} [m/s] tolerance",
+                scenario,
+                instant.toString(Scale::TAI),
+                referenceToFrame2.toString(),
+                toFrame2.toString(),
+                velocityTolerance.toString()
+            );
+
+            ASSERT_TRUE(referenceToFrame1.isNear(toFrame1, velocityTolerance)) << String::Format(
+                "{} @ {} Velocity: {} [m/s] vs. {} [m/s] above {} [m/s] tolerance",
+                scenario,
+                instant.toString(Scale::TAI),
+                referenceToFrame1.toString(),
+                toFrame1.toString(),
+                velocityTolerance.toString()
+            );
         }
 
-        const Vector3d t_B_G = {-1.0, +0.0, +0.0};
-        const Vector3d v_B_G = {+0.0, +0.0, +0.0};
-
-        const Quaternion q_B_G = Quaternion::XYZS(0.0, 0.0, -0.707106781186547, 0.707106781186548).toNormalized();
-        const Vector3d w_B_G_in_B = {+0.0, +0.0, +0.0};
-
-        const Transform transform_B_G = {instant_, t_B_G, v_B_G, q_B_G, w_B_G_in_B, Transform::Type::Passive};
+        // Relative orientation
 
         {
-            const Vector3d x_G = {+1.0, +0.0, +0.0};
-            const Vector3d x_B = transform_B_G.applyToPosition(x_G);
+            const Quaternion referenceOrientationToFrame2 = Quaternion::XYZS(
+                                                                referenceRow[7].accessReal(),
+                                                                referenceRow[8].accessReal(),
+                                                                referenceRow[9].accessReal(),
+                                                                referenceRow[10].accessReal()
+            )
+                                                                .normalize();
 
-            EXPECT_TRUE(x_B.isNear(Vector3d(+0.0, +0.0, +0.0), 1e-5)) << x_B.toString();
+            // Orientation to Frame 2
+            const Vector3d referenceToFrame2X = referenceOrientationToFrame2 * earthSurfaceX;
+            const Vector3d toFrame2X = transformToFrame2.applyToVector(earthSurfaceX);
+            const Vector3d referenceToFrame2Y = referenceOrientationToFrame2 * earthSurfaceY;
+            const Vector3d toFrame2Y = transformToFrame2.applyToVector(earthSurfaceY);
+            const Vector3d referenceToFrame2Z = referenceOrientationToFrame2 * earthSurfaceZ;
+            const Vector3d toFrame2Z = transformToFrame2.applyToVector(earthSurfaceZ);
+
+            ASSERT_TRUE(referenceToFrame2X.isNear(toFrame2X, orientationToleranceAtEarthSurface)) << String::Format(
+                "{} @ {} Orientation at Earth Surface +X: {} [m] vs. {} [m] above {} [m] tolerance",
+                scenario,
+                instant.toString(Scale::TAI),
+                referenceToFrame2X.toString(),
+                toFrame2X.toString(),
+                orientationToleranceAtEarthSurface.toString()
+            );
+
+            ASSERT_TRUE(referenceToFrame2Y.isNear(toFrame2Y, orientationToleranceAtEarthSurface)) << String::Format(
+                "{} @ {} Orientation at Earth Surface +Y: {} [m] vs. {} [m] above {} [m] tolerance",
+                scenario,
+                instant.toString(Scale::TAI),
+                referenceToFrame2Y.toString(),
+                toFrame2Y.toString(),
+                orientationToleranceAtEarthSurface.toString()
+            );
+
+            ASSERT_TRUE(referenceToFrame2Z.isNear(toFrame2Z, orientationToleranceAtEarthSurface)) << String::Format(
+                "{} @ {} Orientation at Earth Surface +Z: {} [m] vs. {} [m] above {} [m] tolerance",
+                scenario,
+                instant.toString(Scale::TAI),
+                referenceToFrame2Z.toString(),
+                toFrame2Z.toString(),
+                orientationToleranceAtEarthSurface.toString()
+            );
+
+            // Orientation to Frame 1
+            const Quaternion referenceOrientationToFrame1 = referenceOrientationToFrame2.toConjugate();
+
+            const Vector3d referenceToFrame1X = referenceOrientationToFrame1 * earthSurfaceX;
+            const Vector3d toFrame1X = transformToFrame1.applyToVector(earthSurfaceX);
+            const Vector3d referenceToFrame1Y = referenceOrientationToFrame1 * earthSurfaceY;
+            const Vector3d toFrame1Y = transformToFrame1.applyToVector(earthSurfaceY);
+            const Vector3d referenceToFrame1Z = referenceOrientationToFrame1 * earthSurfaceZ;
+            const Vector3d toFrame1Z = transformToFrame1.applyToVector(earthSurfaceZ);
+
+            ASSERT_TRUE(referenceToFrame1X.isNear(toFrame1X, orientationToleranceAtEarthSurface)) << String::Format(
+                "{} @ {} Orientation at Earth Surface +X: {} [m] vs. {} [m] above {} [m] tolerance",
+                scenario,
+                instant.toString(Scale::TAI),
+                referenceToFrame1X.toString(),
+                toFrame1X.toString(),
+                orientationToleranceAtEarthSurface.toString()
+            );
+
+            ASSERT_TRUE(referenceToFrame1Y.isNear(toFrame1Y, orientationToleranceAtEarthSurface)) << String::Format(
+                "{} @ {} Orientation at Earth Surface +Y: {} [m] vs. {} [m] above {} [m] tolerance",
+                scenario,
+                instant.toString(Scale::TAI),
+                referenceToFrame1Y.toString(),
+                toFrame1Y.toString(),
+                orientationToleranceAtEarthSurface.toString()
+            );
+
+            ASSERT_TRUE(referenceToFrame1Z.isNear(toFrame1Z, orientationToleranceAtEarthSurface)) << String::Format(
+                "{} @ {} Orientation at Earth Surface +Z: {} [m] vs. {} [m] above {} [m] tolerance",
+                scenario,
+                instant.toString(Scale::TAI),
+                referenceToFrame1Z.toString(),
+                toFrame1Z.toString(),
+                orientationToleranceAtEarthSurface.toString()
+            );
         }
 
-        {
-            const Vector3d x_G = {+2.0, +0.0, +0.0};
-            const Vector3d x_B = transform_B_G.applyToPosition(x_G);
-
-            EXPECT_TRUE(x_B.isNear(Vector3d(+0.0, +1.0, +0.0), 1e-5)) << x_B.toString();
-        }
-
-        const Transform transform_A_B = transform_A_G * transform_B_G.getInverse();
+        // Relative angular velocity
 
         {
-            const Vector3d x_B = {+0.0, +0.0, +0.0};
-            const Vector3d x_A = transform_A_B.applyToPosition(x_B);
+            const Vector3d referenceToFrame2 = {
+                referenceRow[11].accessReal(), referenceRow[12].accessReal(), referenceRow[13].accessReal()
+            };
+            const Vector3d referenceToFrame1 = -1 * referenceToFrame2;
 
-            EXPECT_TRUE(x_A.isNear(Vector3d(-1.0, -1.0, +0.0), 1e-5)) << x_A.toString();
+            const Vector3d toFrame2 = transformToFrame2.getAngularVelocity();
+            const Vector3d toFrame1 = transformToFrame1.getAngularVelocity();
+
+            ASSERT_TRUE(referenceToFrame2.isNear(toFrame2, angularVelocityTolerance)) << String::Format(
+                "{} @ {} Angular Velocity: {} [rad/s] vs. {} [rad/s] above {} [rad/s] tolerance",
+                scenario,
+                instant.toString(Scale::TAI),
+                referenceToFrame2.toString(),
+                toFrame2.toString(),
+                angularVelocityTolerance.toString()
+            );
+
+            ASSERT_TRUE(referenceToFrame1.isNear(toFrame1, angularVelocityTolerance)) << String::Format(
+                "{} @ {} Angular Velocity: {} [rad/s] vs. {} [rad/s] above {} [rad/s] tolerance",
+                scenario,
+                instant.toString(Scale::TAI),
+                referenceToFrame1.toString(),
+                toFrame1.toString(),
+                angularVelocityTolerance.toString()
+            );
         }
     }
 }
