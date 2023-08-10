@@ -43,9 +43,9 @@ class OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager : public 
         this->finals2000A_ = Finals2000A::Load(finals2000AFile_);
     }
 
-    const File bulletinAFile_ = File::Path(
-        Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/BulletinA/ser7.dat")
-    );
+    const File bulletinAFile_ =
+        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/BulletinA/ser7.dat")
+        );
 
     const File finals2000AFile_ = File::Path(
         Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Finals2000A/finals2000A.data")

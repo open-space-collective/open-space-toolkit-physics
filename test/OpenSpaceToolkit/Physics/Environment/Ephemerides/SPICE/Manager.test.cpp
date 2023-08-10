@@ -105,12 +105,11 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager, FetchKern
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager, FetchMatchingKernels)
 {
-    // clear all kernels to reset test
-    manager_.setLocalRepository(Manager::DefaultLocalRepository());
-    if (manager_.getLocalRepository().exists())
-    {
-        manager_.getLocalRepository().remove();
-    }
+    // make subdir for test
+    manager_.setLocalRepository(
+        Directory::Path(Manager::DefaultLocalRepository().getPath() + Path::Parse("FetchMatchingKernelsTest/"))
+    );
+    manager_.getLocalRepository().create();
 
     {
         File expectedKernelFile =
@@ -122,16 +121,17 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager, FetchMatc
 
         EXPECT_TRUE(expectedKernelFile.exists());
     }
+
+    manager_.getLocalRepository().remove();
+    manager_.setLocalRepository(Manager::DefaultLocalRepository());
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager, FindKernel)
 {
-    // clear all kernels to reset test
-    manager_.setLocalRepository(Manager::DefaultLocalRepository());
-    if (manager_.getLocalRepository().exists())
-    {
-        manager_.getLocalRepository().remove();
-    }
+    // make subdir for test
+    manager_.setLocalRepository(
+        Directory::Path(Manager::DefaultLocalRepository().getPath() + Path::Parse("FindKernelTest/"))
+    );
     manager_.getLocalRepository().create();
 
     {
@@ -162,6 +162,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager, FindKerne
             expectedKernelFile.getPath().getNormalizedPath(), foundKernel.getFile().getPath().getNormalizedPath()
         );
     }
+
+    manager_.getLocalRepository().remove();
+    manager_.setLocalRepository(Manager::DefaultLocalRepository());
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager, Get)
