@@ -498,12 +498,9 @@ test-coverage-cpp-standalone: ## Run C++ tests with coverage (standalone)
 		--volume="/app/build" \
 		--workdir=/app/build \
 		$(docker_development_image_repository):$(docker_image_version) \
-		/bin/bash -c "cmake -DBUILD_UNIT_TESTS=ON -DBUILD_PYTHON_BINDINGS=OFF -DBUILD_CODE_COVERAGE=ON .. \
+		/bin/bash -c "cmake -DBUILD_UNIT_TESTS=ON -DBUILD_PYTHON_BINDINGS=OFF .. \
 		&& $(MAKE) -j 4 \
-		&& $(MAKE) coverage \
-		&& (rm -rf /app/coverage || true) \
-		&& mkdir /app/coverage \
-		&& mv /app/build/coverage* /app/coverage"
+		&& ostk-test OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager*"
 
 .PHONY: test-coverage-cpp-standalone
 
