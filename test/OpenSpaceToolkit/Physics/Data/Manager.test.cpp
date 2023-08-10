@@ -24,6 +24,7 @@ class OpenSpaceToolkit_Physics_Data_Manager : public ::testing::Test
     void SetUp() override
     {
         manifest_ = Manifest::Load(manifestFile_);
+        manager_.loadManifest(manifest_);
 
         manager_.setRemoteUrl(
             URL::Parse("https://github.com/open-space-collective/open-space-toolkit-data/raw/main/data")
