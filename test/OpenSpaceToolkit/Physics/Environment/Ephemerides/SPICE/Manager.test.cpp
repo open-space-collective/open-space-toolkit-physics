@@ -80,12 +80,11 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager, DefaultLo
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager, FetchKernel)
 {
-    // clear all kernels to reset test
-    manager_.setLocalRepository(Manager::DefaultLocalRepository());
-    if (manager_.getLocalRepository().exists())
-    {
-        manager_.getLocalRepository().remove();
-    }
+    // make subdir for test
+    manager_.setLocalRepository(
+        Directory::Path(Path::Parse("/app/.open-space-toolkit/physics/environment/ephemerides/spice/") + Path::Parse("FetchKernelTest/"))
+    );
+    manager_.getLocalRepository().create();
 
     {
         File kernelFile = File::Path(manager_.getLocalRepository().getPath() + Path::Parse("latest_leapseconds.tls"));
@@ -101,15 +100,19 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager, FetchKern
         // already exists
         EXPECT_THROW(manager_.fetchKernel(kernel), ostk::core::error::RuntimeError);
     }
+
+    manager_.getLocalRepository().remove();
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager, FetchMatchingKernels)
 {
     // make subdir for test
     manager_.setLocalRepository(
-        Directory::Path(Manager::DefaultLocalRepository().getPath() + Path::Parse("FetchMatchingKernelsTest/"))
+        Directory::Path(Path::Parse("/app/.open-space-toolkit/physics/environment/ephemerides/spice/") + Path::Parse("FetchMatchingKernelsTest/"))
     );
     manager_.getLocalRepository().create();
+
+    std::cout << manager_.getLocalRepository().getPath().toString() << std::endl;
 
     {
         File expectedKernelFile =
@@ -123,16 +126,17 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager, FetchMatc
     }
 
     manager_.getLocalRepository().remove();
-    manager_.setLocalRepository(Manager::DefaultLocalRepository());
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager, FindKernel)
 {
     // make subdir for test
     manager_.setLocalRepository(
-        Directory::Path(Manager::DefaultLocalRepository().getPath() + Path::Parse("FindKernelTest/"))
+        Directory::Path(Path::Parse("/app/.open-space-toolkit/physics/environment/ephemerides/spice/") + Path::Parse("FindKernelTest/"))
     );
     manager_.getLocalRepository().create();
+
+    std::cout << manager_.getLocalRepository().getPath().toString() << std::endl;
 
     {
         File expectedKernelFile =
@@ -164,7 +168,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager, FindKerne
     }
 
     manager_.getLocalRepository().remove();
-    manager_.setLocalRepository(Manager::DefaultLocalRepository());
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager, Get)
