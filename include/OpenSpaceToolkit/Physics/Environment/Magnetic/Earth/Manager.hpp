@@ -63,8 +63,8 @@ class Manager
     enum class Mode
     {
 
-        Manual,    ///< Manually load and unload gravity files
-        Automatic  ///< Automatically fetch gravity files from remote repositories
+        Manual,    ///< Manually load and unload magnetic files
+        Automatic  ///< Automatically fetch magnetic files from remote repositories
 
     };
 
