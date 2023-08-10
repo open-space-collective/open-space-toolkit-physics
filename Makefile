@@ -500,7 +500,10 @@ test-coverage-cpp-standalone: ## Run C++ tests with coverage (standalone)
 		$(docker_development_image_repository):$(docker_image_version) \
 		/bin/bash -c "cmake -DBUILD_UNIT_TESTS=ON -DBUILD_PYTHON_BINDINGS=OFF .. \
 		&& $(MAKE) -j 4 \
-		&& ostk-test OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager*"
+		&& $(MAKE) coverage \
+		&& (rm -rf /app/coverage || true) \
+		&& mkdir /app/coverage \
+		&& mv /app/build/coverage* /app/coverage"
 
 .PHONY: test-coverage-cpp-standalone
 
