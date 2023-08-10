@@ -206,12 +206,10 @@ Integer Manager::getApDailyIndexAt(const Instant& anInstant) const
 
     if (outputIsDefined(reading))
     {
-        std::cout << "Data point is defined" << std::endl;
         return getApDaily(reading);
     }
     else
     {
-        std::cout << "Need to search past data points" << std::endl;
         return getApDaily(CSSISpaceWeatherPtr->accessLastReadingWhere(outputIsDefined, anInstant));
     }
 }

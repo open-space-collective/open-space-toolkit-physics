@@ -22,11 +22,12 @@ from ostk.physics.coordinate.frame.providers.iers import Finals2000A
 
 
 @pytest.fixture
-def manager() -> Manager:
+def manager(bulletin_a) -> Manager:
     manager = Manager.get()
 
     manager.set_mode(Manager.Mode.Automatic)
-    manager.set_remote_url(URL.parse("https://maia.usno.navy.mil/ser7/"))
+
+    manager.load_bulletin_a(bulletin_a)
 
     yield manager
 
@@ -68,25 +69,14 @@ class TestManager:
             + "/finals-2000A"
         )
 
-    def test_get_remote_url_success(self, manager: Manager):
-        assert isinstance(manager.get_remote_url(), URL)
-        assert manager.get_remote_url().to_string() == "https://maia.usno.navy.mil/ser7/"
-
     def test_get_bulletin_a_array_success(self, manager: Manager):
         assert isinstance(manager.get_bulletin_a_array(), list)
-        assert len(manager.get_bulletin_a_array()) == 0
+        assert len(manager.get_bulletin_a_array()) == 1
 
     def test_get_bulletin_a_at_success(self, manager: Manager):
-        try:
-            bulletin_a: BulletinA = manager.get_bulletin_a_at(
-                Instant.now() - Duration.days(8.0)
-            )
-        except RuntimeError:
-            manager.reset()
-            manager.clear_local_repository()
-            bulletin_a: BulletinA = manager.get_bulletin_a_at(
-                Instant.now() - Duration.days(5.0)
-            )
+        bulletin_a: BulletinA = manager.get_bulletin_a_at(
+            Instant.date_time(datetime(2020, 10, 24, 0, 0, 0), Scale.UTC)
+        )
 
         assert isinstance(bulletin_a, BulletinA)
 
@@ -189,16 +179,11 @@ class TestManager:
             == "./.open-space-toolkit/physics/coordinate/frame/providers/iers2"
         )
 
-    def test_set_remote_url_success(self, manager: Manager):
-        assert isinstance(manager.get_remote_url(), URL)
-        assert manager.get_remote_url().to_string() == "https://maia.usno.navy.mil/ser7/"
-
-        manager.set_remote_url(URL.parse("https://maia.usno.navy.mil/ser7/2"))
-
-        assert isinstance(manager.get_remote_url(), URL)
-        assert manager.get_remote_url().to_string() == "https://maia.usno.navy.mil/ser7/2"
-
     def test_load_bulletin_a_success(self, manager: Manager, bulletin_a: BulletinA):
+        assert len(manager.get_bulletin_a_array()) == 1
+
+        manager.reset()
+
         assert len(manager.get_bulletin_a_array()) == 0
 
         manager.load_bulletin_a(bulletin_a)
@@ -229,8 +214,6 @@ class TestManager:
         file.remove()
 
     def test_reset_success(self, manager: Manager, bulletin_a: BulletinA):
-        manager.load_bulletin_a(bulletin_a)
-
         assert len(manager.get_bulletin_a_array()) == 1
 
         manager.reset()
@@ -270,9 +253,3 @@ class TestManager:
     def test_default_local_repository_lock_timeout_success(self, manager: Manager):
         assert isinstance(manager.default_local_repository_lock_timeout(), Duration)
         assert manager.default_local_repository_lock_timeout().in_seconds() == 60.0
-
-    def test_default_remote_url_success(self, manager: Manager):
-        assert isinstance(manager.default_remote_url(), URL)
-        assert (
-            manager.default_remote_url().to_string() == "https://maia.usno.navy.mil/ser7/"
-        )

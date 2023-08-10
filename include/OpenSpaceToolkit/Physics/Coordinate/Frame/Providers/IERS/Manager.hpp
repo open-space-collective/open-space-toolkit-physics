@@ -10,8 +10,6 @@
 #include <OpenSpaceToolkit/Core/Types/Index.hpp>
 #include <OpenSpaceToolkit/Core/Types/Real.hpp>
 
-#include <OpenSpaceToolkit/IO/URL.hpp>
-
 #include <OpenSpaceToolkit/Mathematics/Objects/Vector.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/BulletinA.hpp>
@@ -23,7 +21,6 @@
 #define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY \
     "./.open-space-toolkit/physics/coordinate/frame/providers/iers"
 #define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT 60
-#define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL "https://maia.usno.navy.mil/ser7/"
 
 namespace ostk
 {
@@ -43,8 +40,6 @@ using ostk::core::types::Real;
 using ostk::core::ctnr::Array;
 using ostk::core::fs::Directory;
 
-using ostk::io::URL;
-
 using ostk::math::obj::Vector2d;
 
 using ostk::physics::time::Instant;
@@ -62,8 +57,6 @@ using ostk::physics::coord::frame::provider::iers::Finals2000A;
 ///                             "DefaultLocalRepository"
 ///                             - "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT"
 ///                             will override "DefaultLocalRepositoryLockTimeout"
-///                             - "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL" will override
-///                             "DefaultRemoteUrl"
 ///
 /// @ref                        https://www.iers.org/IERS/EN/DataProducts/EarthOrientationData/eop.html
 
@@ -101,12 +94,6 @@ class Manager
     /// @return             Finals 2000A directory
 
     Directory getFinals2000ADirectory() const;
-
-    /// @brief              Get remote URL
-    ///
-    /// @return             Remote URL
-
-    URL getRemoteUrl() const;
 
     /// @brief              Get array of Bulletin A
     ///
@@ -166,12 +153,6 @@ class Manager
     /// @param              [in] aDirectory A repository directory
 
     void setLocalRepository(const Directory& aDirectory);
-
-    /// @brief              Set remote URL
-    ///
-    /// @param              [in] aRemoteUrl A remote URL
-
-    void setRemoteUrl(const URL& aRemoteUrl);
 
     /// @brief              Load Bulletin A
     ///
@@ -240,21 +221,11 @@ class Manager
 
     static Duration DefaultLocalRepositoryLockTimeout();
 
-    /// @brief              Get default remote URL
-    ///
-    ///                     Overriden by: OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL
-    ///
-    /// @return             Default remote URL
-
-    static URL DefaultRemoteUrl();
-
    private:
     Manager::Mode mode_;
 
     Directory localRepository_;
     Duration localRepositoryLockTimeout_;
-
-    URL remoteUrl_;
 
     Array<BulletinA> aBulletins_;
     Array<Finals2000A> finals2000aArray_;

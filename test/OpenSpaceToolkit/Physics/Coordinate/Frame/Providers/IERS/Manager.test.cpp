@@ -7,6 +7,8 @@
 #include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
 #include <OpenSpaceToolkit/Core/Types/Real.hpp>
 
+#include <OpenSpaceToolkit/IO/URL.hpp>
+
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Manager.hpp>
 
 #include <Global.test.hpp>
@@ -37,14 +39,19 @@ class OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager : public 
    protected:
     void SetUp() override
     {
-        const File file = File::Path(
+        const File BulletinAFile = File::Path(
             Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/BulletinA/ser7.dat")
         );
 
-        this->bulletinA_ = BulletinA::Load(file);
+        this->bulletinA_ = BulletinA::Load(BulletinAFile);
+        this->finals2000A_ = Finals2000A::Load(File::Path(Path::Parse(
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Finals2000A/finals2000A.data"
+        )));
     }
 
     BulletinA bulletinA_ = BulletinA::Undefined();
+    Finals2000A finals2000A_ = Finals2000A::Undefined();
+
     Manager& manager_ = Manager::Get();
 };
 
@@ -76,13 +83,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetFina
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetRemoteUrl)
-{
-    {
-        EXPECT_EQ(URL::Parse("https://maia.usno.navy.mil/ser7/"), manager_.getRemoteUrl());
-    }
-}
-
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetBulletinAArray)
 {
     {
@@ -100,6 +100,19 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetBull
 
         EXPECT_NO_THROW(manager_.getBulletinAAt(bulletinA_.getPredictionInterval().accessStart()));
         EXPECT_NO_THROW(manager_.getBulletinAAt(bulletinA_.getPredictionInterval().accessEnd()));
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetBulletinAAtFetch)
+{
+    // This test is not deterministic, as it depends on the remote server
+    {
+        manager_.reset();
+        manager_.clearLocalRepository();
+
+        EXPECT_NO_THROW(manager_.getBulletinAAt(Instant::Now() - Duration::Days(5.0)));
+
+        manager_.loadBulletinA(bulletinA_);
     }
 }
 
@@ -123,6 +136,19 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetFina
 
         EXPECT_NO_THROW(manager_.getFinals2000AAt(finals2000a.getInterval().accessStart()));
         EXPECT_NO_THROW(manager_.getFinals2000AAt(finals2000a.getInterval().accessEnd()));
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetFinals2000AAtFetch)
+{
+    // This test is not deterministic, as it depends on the remote server
+    {
+        manager_.reset();
+        manager_.clearLocalRepository();
+
+        EXPECT_NO_THROW(manager_.getFinals2000AAt(Instant::Now() - Duration::Days(5.0)));
+
+        manager_.loadFinals2000A(finals2000A_);
     }
 }
 
@@ -295,21 +321,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, SetLoca
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, SetRemoteUrl)
-{
-    {
-        EXPECT_EQ(URL::Parse("https://maia.usno.navy.mil/ser7/"), manager_.getRemoteUrl());
-
-        manager_.setRemoteUrl(URL::Parse("http://example.com"));
-
-        EXPECT_EQ(URL::Parse("http://example.com"), manager_.getRemoteUrl());
-
-        manager_.setRemoteUrl(URL::Parse("https://maia.usno.navy.mil/ser7/"));
-
-        EXPECT_EQ(URL::Parse("https://maia.usno.navy.mil/ser7/"), manager_.getRemoteUrl());
-    }
-}
-
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, LoadBulletinA)
 {
     {
@@ -347,10 +358,10 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, FetchLa
         const File latestBulletinA = manager_.fetchLatestBulletinA();
 
         EXPECT_EQ("ser7.dat", latestBulletinA.getName());
-        EXPECT_EQ("bulletin-A", latestBulletinA.getParentDirectory().getParentDirectory().getName());
+        EXPECT_EQ("bulletin-A", latestBulletinA.getParentDirectory().getName());
         EXPECT_EQ(
             manager_.getLocalRepository().getPath().getNormalizedPath(),
-            latestBulletinA.getParentDirectory().getParentDirectory().getParentDirectory().getPath().getNormalizedPath()
+            latestBulletinA.getParentDirectory().getParentDirectory().getPath().getNormalizedPath()
         );
     }
 }
@@ -364,14 +375,10 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, FetchLa
         const File latestFinals2000A = manager_.fetchLatestFinals2000A();
 
         EXPECT_EQ("finals2000A.data", latestFinals2000A.getName());
-        EXPECT_EQ("finals-2000A", latestFinals2000A.getParentDirectory().getParentDirectory().getName());
+        EXPECT_EQ("finals-2000A", latestFinals2000A.getParentDirectory().getName());
         EXPECT_EQ(
             manager_.getLocalRepository().getPath().getNormalizedPath(),
-            latestFinals2000A.getParentDirectory()
-                .getParentDirectory()
-                .getParentDirectory()
-                .getPath()
-                .getNormalizedPath()
+            latestFinals2000A.getParentDirectory().getParentDirectory().getPath().getNormalizedPath()
         );
     }
 }
@@ -421,12 +428,5 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, Default
 {
     {
         EXPECT_EQ(Duration::Seconds(60.0), Manager::DefaultLocalRepositoryLockTimeout());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, DefaultRemoteUrl)
-{
-    {
-        EXPECT_EQ(URL::Parse("https://maia.usno.navy.mil/ser7/"), Manager::DefaultRemoteUrl());
     }
 }

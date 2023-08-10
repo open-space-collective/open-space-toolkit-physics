@@ -16,8 +16,9 @@
 #include <OpenSpaceToolkit/IO/IP/TCP/HTTP/Client.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Manager.hpp>
+#include <OpenSpaceToolkit/Physics/Data/Manager.hpp>
+#include <OpenSpaceToolkit/Physics/Data/Manifest.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Date.hpp>
-#include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Time.hpp>
@@ -38,9 +39,18 @@ namespace iers
 {
 
 using ostk::core::types::String;
+using ostk::core::fs::Path;
+
+using ostk::io::ip::tcp::http::Client;
+using ostk::io::URL;
+
+using ManifestManager = ostk::physics::data::Manager;
 
 const String bulletinAFileName = "ser7.dat";
 const String finals2000AFileName = "finals2000A.data";
+
+const String bulletinARemotePath = "coordinate/frame/providers/iers/bulletin-A/";
+const String finals2000ARemotePath = "coordinate/frame/providers/iers/finals-2000A/";
 
 const String temporaryDirectoryName = "tmp";
 
@@ -60,23 +70,12 @@ Directory Manager::getLocalRepository() const
 
 Directory Manager::getBulletinADirectory() const
 {
-    using ostk::core::fs::Path;
-
     return Directory::Path(localRepository_.getPath() + Path::Parse("bulletin-A"));
 }
 
 Directory Manager::getFinals2000ADirectory() const
 {
-    using ostk::core::fs::Path;
-
     return Directory::Path(localRepository_.getPath() + Path::Parse("finals-2000A"));
-}
-
-URL Manager::getRemoteUrl() const
-{
-    const std::lock_guard<std::mutex> lock {mutex_};
-
-    return remoteUrl_;
 }
 
 Array<BulletinA> Manager::getBulletinAArray() const
@@ -262,18 +261,6 @@ void Manager::setLocalRepository(const Directory& aDirectory)
     }
 }
 
-void Manager::setRemoteUrl(const URL& aRemoteUrl)
-{
-    if (!aRemoteUrl.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Remote URL");
-    }
-
-    const std::lock_guard<std::mutex> lock {mutex_};
-
-    remoteUrl_ = aRemoteUrl;
-}
-
 void Manager::loadBulletinA(const BulletinA& aBulletinA)
 {
     if (!aBulletinA.isDefined())
@@ -393,23 +380,10 @@ Duration Manager::DefaultLocalRepositoryLockTimeout()
     return defaultLocalRepositoryLockTimeout;
 }
 
-URL Manager::DefaultRemoteUrl()
-{
-    static const URL defaultRemoteUrl = URL::Parse(OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL);
-
-    if (const char* remoteUrl = std::getenv("OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL"))
-    {
-        return URL::Parse(remoteUrl);
-    }
-
-    return defaultRemoteUrl;
-}
-
 Manager::Manager(const Manager::Mode& aMode)
     : mode_(aMode),
       localRepository_(Manager::DefaultLocalRepository()),
       localRepositoryLockTimeout_(Manager::DefaultLocalRepositoryLockTimeout()),
-      remoteUrl_(Manager::DefaultRemoteUrl()),
       aBulletins_(Array<BulletinA>::Empty()),
       finals2000aArray_(Array<Finals2000A>::Empty()),
       aBulletinIndex_(0),
@@ -427,7 +401,7 @@ bool Manager::isLocalRepositoryLocked() const
 
 const BulletinA* Manager::accessBulletinAAt(const Instant& anInstant) const
 {
-    // Try cache
+    // Try cached loaded file
 
     if (!aBulletins_.isEmpty())
     {
@@ -441,7 +415,7 @@ const BulletinA* Manager::accessBulletinAAt(const Instant& anInstant) const
         }
     }
 
-    // Try observation span of loaded bulletins
+    // Try observation span of all loaded bulletin files
 
     {
         aBulletinIndex_ = 0;
@@ -461,16 +435,17 @@ const BulletinA* Manager::accessBulletinAAt(const Instant& anInstant) const
 
     if (mode_ == Manager::Mode::Automatic)
     {
-        const Instant currentInstant = Instant::Now();
+        ManifestManager& manifestManager = ManifestManager::Get();
 
-        if ((!bulletinAUpdateTimestamp_.isDefined()) ||
-            ((bulletinAUpdateTimestamp_ + Duration::Weeks(1.0)) < currentInstant))  // [TBM] Param
+        const Instant bulletinAManifestUpdateTimestamp = manifestManager.getLastUpdateTimestampFor("bulletin-A");
+
+        if ((!bulletinAUpdateTimestamp_.isDefined()) || (bulletinAUpdateTimestamp_ < bulletinAManifestUpdateTimestamp))
         {
             const File latestBulletinAFile = this->getLatestBulletinAFile();
 
             if (latestBulletinAFile.isDefined())
             {
-                bulletinAUpdateTimestamp_ = currentInstant;
+                bulletinAUpdateTimestamp_ = bulletinAManifestUpdateTimestamp;
 
                 const BulletinA bulletinA = BulletinA::Load(latestBulletinAFile);
 
@@ -486,7 +461,7 @@ const BulletinA* Manager::accessBulletinAAt(const Instant& anInstant) const
         }
     }
 
-    // Try prediction span of loaded bulletins
+    // Try prediction span of loaded bulletin files
 
     {
         aBulletinIndex_ = 0;
@@ -513,7 +488,7 @@ const BulletinA* Manager::accessBulletinAAt(const Instant& anInstant) const
 
 const Finals2000A* Manager::accessFinals2000AAt(const Instant& anInstant) const
 {
-    // Try cache
+    // Try cached loaded file
 
     if (!finals2000aArray_.isEmpty())
     {
@@ -525,7 +500,7 @@ const Finals2000A* Manager::accessFinals2000AAt(const Instant& anInstant) const
         }
     }
 
-    // Try loaded files
+    // Try all loaded files
 
     {
         finals2000aIndex_ = 0;
@@ -541,20 +516,22 @@ const Finals2000A* Manager::accessFinals2000AAt(const Instant& anInstant) const
         }
     }
 
-    // Try getting latest file
+    // Try fetching latest file
 
     if (mode_ == Manager::Mode::Automatic)
     {
-        const Instant currentInstant = Instant::Now();
+        ManifestManager& manifestManager = ManifestManager::Get();
+
+        const Instant finals2000AManifestUpdateTimestamp = manifestManager.getLastUpdateTimestampFor("finals-2000A");
 
         if ((!finals2000AUpdateTimestamp_.isDefined()) ||
-            ((finals2000AUpdateTimestamp_ + Duration::Weeks(1.0)) < currentInstant))
+            (finals2000AUpdateTimestamp_ < finals2000AManifestUpdateTimestamp))
         {
             const File latestFinals2000AFile = this->getLatestFinals2000AFile();
 
             if (latestFinals2000AFile.isDefined())
             {
-                finals2000AUpdateTimestamp_ = currentInstant;
+                finals2000AUpdateTimestamp_ = finals2000AManifestUpdateTimestamp;
 
                 const Finals2000A finals2000A = Finals2000A::Load(latestFinals2000AFile);
 
@@ -579,44 +556,17 @@ const Finals2000A* Manager::accessFinals2000AAt(const Instant& anInstant) const
 
 File Manager::getLocalRepositoryLockFile() const
 {
-    using ostk::core::fs::Path;
-
     return File::Path(localRepository_.getPath() + Path::Parse(".lock"));
 }
 
 File Manager::getLatestBulletinAFile() const
 {
     // Parse Bulletin A Directories, e.g.,
-    // `.open-space-toolkit/physics/coordinate/frame/providers/iers/Bulletin-A/2022-05-19/`, and find the latest one.
+    // `.open-space-toolkit/physics/coordinate/frame/providers/iers/Bulletin-A`.
 
-    using ostk::core::ctnr::Map;
-    using ostk::core::fs::Path;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Date;
-    using ostk::physics::time::Time;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::time::Instant;
-
-    Map<Instant, File> bulletinAMap = {};
-
-    for (const auto& directory : this->getBulletinADirectory().getDirectories())
+    if (this->getBulletinADirectory().containsFileWithName(bulletinAFileName))
     {
-        if ((directory.getName() != temporaryDirectoryName) && directory.containsFileWithName(bulletinAFileName))
-        {
-            const Date date = Date::Parse(directory.getName());
-
-            const Instant instant = Instant::DateTime({date, Time::Midnight()}, Scale::UTC);
-
-            const File bulletinFile = File::Path(directory.getPath() + Path::Parse(bulletinAFileName));
-
-            bulletinAMap.insert({instant, bulletinFile});
-        }
-    }
-
-    if (!bulletinAMap.empty())
-    {
-        return bulletinAMap.rbegin()->second;  // Latest bulletin
+        return File::Path(this->getBulletinADirectory().getPath() + Path::Parse(bulletinAFileName));
     }
 
     return const_cast<Manager*>(this)->fetchLatestBulletinA_();
@@ -624,34 +574,12 @@ File Manager::getLatestBulletinAFile() const
 
 File Manager::getLatestFinals2000AFile() const
 {
-    using ostk::core::ctnr::Map;
-    using ostk::core::fs::Path;
+    // Parse Bulletin A Directories, e.g.,
+    // `.open-space-toolkit/physics/coordinate/frame/providers/iers/Bulletin-A`.
 
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Date;
-    using ostk::physics::time::Time;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::time::Instant;
-
-    Map<Instant, File> finals2000AMap = {};
-
-    for (const auto& directory : this->getFinals2000ADirectory().getDirectories())
+    if (this->getFinals2000ADirectory().containsFileWithName(finals2000AFileName))
     {
-        if (directory.containsFileWithName(finals2000AFileName))
-        {
-            const Date date = Date::Parse(directory.getName());
-
-            const Instant instant = Instant::DateTime({date, Time::Midnight()}, Scale::UTC);
-
-            const File finals2000AFile = File::Path(directory.getPath() + Path::Parse(finals2000AFileName));
-
-            finals2000AMap.insert({instant, finals2000AFile});
-        }
-    }
-
-    if (!finals2000AMap.empty())
-    {
-        return finals2000AMap.rbegin()->second;  // Latest Finals 2000A
+        return File::Path(this->getFinals2000ADirectory().getPath() + Path::Parse(finals2000AFileName));
     }
 
     return const_cast<Manager*>(this)->fetchLatestFinals2000A_();
@@ -659,9 +587,6 @@ File Manager::getLatestFinals2000AFile() const
 
 void Manager::setup()
 {
-    using ostk::core::fs::Path;
-    using ostk::core::fs::File;
-
     if (!localRepository_.exists())
     {
         localRepository_.create();
@@ -710,29 +635,16 @@ void Manager::loadFinals2000A_(const Finals2000A& aFinals2000A)
 
 File Manager::fetchLatestBulletinA_()
 {
-    using ostk::core::types::Uint8;
-    using ostk::core::types::Uint16;
-    using ostk::core::types::Integer;
-    using ostk::core::types::String;
-    using ostk::core::ctnr::Map;
-    using ostk::core::fs::Path;
-
-    using ostk::io::ip::tcp::http::Client;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Date;
-    using ostk::physics::time::Time;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::time::Instant;
-
     std::cout << "Fetching latest Bulletin A..." << std::endl;
+
+    ManifestManager& manifestManager = ManifestManager::Get();
 
     Directory temporaryDirectory =
         Directory::Path(this->getBulletinADirectory().getPath() + Path::Parse(temporaryDirectoryName));
 
     this->lockLocalRepository(localRepositoryLockTimeout_);
 
-    const URL latestBulletinAUrl = remoteUrl_ + bulletinAFileName;
+    const URL latestBulletinAUrl = manifestManager.getRemoteUrl() + bulletinARemotePath + bulletinAFileName;
 
     File latestBulletinAFile = File::Undefined();
     Directory destinationDirectory = Directory::Undefined();
@@ -740,7 +652,7 @@ File Manager::fetchLatestBulletinA_()
     try
     {
         // Create temporary Directory,
-        // e.g., `.open-space-toolkit/physics/coordinate/frame/providers/iers/tmp/`.
+        // e.g., `.open-space-toolkit/physics/coordinate/frame/providers/iers/bulletin-a/tmp/`.
 
         if (temporaryDirectory.exists())
         {
@@ -757,7 +669,7 @@ File Manager::fetchLatestBulletinA_()
 
         std::cout << String::Format("Fetching Bulletin A from [{}]...", latestBulletinAUrl.toString()) << std::endl;
 
-        latestBulletinAFile = Client::Fetch(latestBulletinAUrl, temporaryDirectory);
+        latestBulletinAFile = Client::Fetch(latestBulletinAUrl, temporaryDirectory, 2);
 
         if (!latestBulletinAFile.exists())
         {
@@ -781,18 +693,9 @@ File Manager::fetchLatestBulletinA_()
         const BulletinA latestBulletinA = BulletinA::Load(latestBulletinAFile);
 
         // Move Bulletin A File into destination Directory,
-        // e.g., `.open-space-toolkit/physics/coordinate/frame/providers/iers/bulletin-A/2022-05-19/`.
+        // e.g., `.open-space-toolkit/physics/coordinate/frame/providers/iers/bulletin-A/`.
 
-        destinationDirectory = Directory::Path(
-            this->getBulletinADirectory().getPath() + Path::Parse(latestBulletinA.accessReleaseDate().toString())
-        );
-
-        if (destinationDirectory.exists())
-        {
-            destinationDirectory.remove();
-        }
-
-        destinationDirectory.create();
+        destinationDirectory = Directory::Path(this->getBulletinADirectory().getPath());
 
         latestBulletinAFile.moveToDirectory(destinationDirectory);
 
@@ -837,33 +740,29 @@ File Manager::fetchLatestBulletinA_()
 
 File Manager::fetchLatestFinals2000A_()
 {
-    using ostk::core::types::Uint8;
-    using ostk::core::types::Uint16;
-    using ostk::core::types::Integer;
-    using ostk::core::types::String;
-    using ostk::core::ctnr::Map;
-    using ostk::core::fs::Path;
+    std::cout << "Fetching latest Finals 2000A..." << std::endl;
 
-    using ostk::io::ip::tcp::http::Client;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Date;
-    using ostk::physics::time::Time;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::time::Instant;
+    ManifestManager& manifestManager = ManifestManager::Get();
 
     Directory temporaryDirectory =
         Directory::Path(this->getFinals2000ADirectory().getPath() + Path::Parse(temporaryDirectoryName));
 
     this->lockLocalRepository(localRepositoryLockTimeout_);
 
-    const URL latestFinals2000AUrl = remoteUrl_ + finals2000AFileName;
+    const URL latestFinals2000AUrl = manifestManager.getRemoteUrl() + finals2000ARemotePath + finals2000AFileName;
 
     File latestFinals2000AFile = File::Undefined();
     Directory destinationDirectory = Directory::Undefined();
 
     try
     {
+        destinationDirectory = Directory::Path(this->getFinals2000ADirectory().getPath());
+
+        if (!destinationDirectory.exists())
+        {
+            destinationDirectory.create();
+        }
+
         if (temporaryDirectory.exists())
         {
             throw ostk::core::error::RuntimeError(
@@ -875,7 +774,7 @@ File Manager::fetchLatestFinals2000A_()
 
         std::cout << String::Format("Fetching Finals 2000A from [{}]...", latestFinals2000AUrl.toString()) << std::endl;
 
-        latestFinals2000AFile = Client::Fetch(latestFinals2000AUrl, temporaryDirectory);
+        latestFinals2000AFile = Client::Fetch(latestFinals2000AUrl, temporaryDirectory, 2);
 
         const Finals2000A latestFinals2000A = Finals2000A::Load(latestFinals2000AFile);
 
@@ -901,18 +800,6 @@ File Manager::fetchLatestFinals2000A_()
                 );
             }
         }
-
-        destinationDirectory = Directory::Path(
-            this->getFinals2000ADirectory().getPath() +
-            Path::Parse(Instant::Now().getDateTime(Scale::UTC).getDate().toString())
-        );
-
-        if (destinationDirectory.exists())
-        {
-            destinationDirectory.remove();
-        }
-
-        destinationDirectory.create();
 
         latestFinals2000AFile.moveToDirectory(destinationDirectory);
 

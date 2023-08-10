@@ -108,6 +108,7 @@ class Manager
     ///
     /// @param              [in] aRegex A regular expression
     /// @return             An array of kernels
+
     Kernel findKernel(const String& aRegexString) const;
 
     /// @brief              Set local repository
