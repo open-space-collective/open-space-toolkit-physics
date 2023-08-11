@@ -6,8 +6,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_Manager(pybi
 {
     using namespace pybind11;
 
-    using ostk::core::types::Shared;
-
     using ostk::physics::environment::atmospheric::earth::Manager;
 
     class_<Manager> manager(aModule, "Manager");

@@ -99,6 +99,13 @@ class Manager
     /// @return                 Default manifest repository
     static Directory DefaultManifestRepository();
 
+    /// @brief                  Get the remote data URL for a given data name.
+    ///
+    /// @param                  [in] aDataName name of the data. i.e. the key for the data entry in the manifest
+    /// @return                 Array of URLs
+
+    Array<URL> getRemoteDataUrls(const String& aDataName) const;
+
     /// @brief                  Find remote URLs of data matching regular expression string
     ///
     /// @param                  [in] aKernelNameRegexString A regular expression string

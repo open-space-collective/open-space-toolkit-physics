@@ -57,6 +57,14 @@ class Manifest
 
     Instant getLastUpdateTimestampFor(const String& aDataName) const;
 
+    /// @brief                  Get the remote data URL for a given data name.
+    ///
+    /// @param                  [in] aBaseUrl A base URL for remote data
+    /// @param                  [in] aDataName name of the data. i.e. the key for the data entry in the manifest
+    /// @return                 Array of remote data URLs
+
+    Array<URL> getRemoteDataUrls(const URL& aBaseUrl, const String& aDataName) const;
+
     /// @brief                  Return remote data URLs the for data items matching the given name regex string
     ///
     /// @param                  [in] aBaseUrl A base URL for remote data
