@@ -74,8 +74,33 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth_Manager, SetMode
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth_Manager, DefaultMode)
 {
+    const char* varName = "OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_MODE";
+    const char* localRepositoryPathEnv = std::getenv(varName);
+
     {
+        unsetenv(varName);
         EXPECT_EQ(Manager::Mode::Automatic, Manager::DefaultMode());
+    }
+    {
+        setenv(varName, "SuperUltraAutomatic", true);
+        EXPECT_THROW(Manager::DefaultMode(), ostk::core::error::runtime::Wrong);
+    }
+    {
+        setenv(varName, "Automatic", true);
+        EXPECT_EQ(Manager::Mode::Automatic, Manager::DefaultMode());
+    }
+    {
+        setenv(varName, "Manual", true);
+        EXPECT_EQ(Manager::Mode::Manual, Manager::DefaultMode());
+    }
+
+    if (localRepositoryPathEnv)
+    {
+        setenv(varName, localRepositoryPathEnv, true);
+    }
+    else
+    {
+        unsetenv(varName);
     }
 }
 
