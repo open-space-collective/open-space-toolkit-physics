@@ -125,6 +125,14 @@ Directory Manager::DefaultLocalRepository()
     return defaultLocalRepository;
 }
 
+void Manager::reset()
+{
+    std::lock_guard<std::mutex> lock {mutex_};
+
+    localRepository_ = DefaultLocalRepository();
+    localRepositoryLockTimeout_ = DefaultLocalRepositoryLockTimeout();
+    mode_ = DefaultMode();
+}
 
 void Manager::fetchDataFilesForType(const EarthMagneticModel::Type& aModelType) const
 {

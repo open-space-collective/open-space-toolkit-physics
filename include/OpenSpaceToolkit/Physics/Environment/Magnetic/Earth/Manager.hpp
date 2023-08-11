@@ -6,7 +6,6 @@
 #include <mutex>
 
 #include <OpenSpaceToolkit/Core/Containers/Array.hpp>
-
 #include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
@@ -115,6 +114,12 @@ class Manager
     /// @return                 Local repository
 
     Directory getLocalRepository() const;
+
+    /// @brief                  Reset the manager.
+    ///
+    ///                         Reset path and mode to default values.
+
+    void reset();
 
     /// @brief                  Fetch data file from remote
     ///

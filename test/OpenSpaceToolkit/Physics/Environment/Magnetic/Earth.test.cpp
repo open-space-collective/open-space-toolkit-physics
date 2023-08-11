@@ -47,7 +47,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, Constructor)
         EXPECT_NO_THROW(EarthMagneticModel earthMagneticModel(EarthMagneticModel::Type::WMM2015));
 
         EarthMagneticModelManager::Get().setLocalRepository(EarthMagneticModelManager::DefaultLocalRepository());
-
     }
 
     {
@@ -114,34 +113,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, Constructor)
     }
 }
 
-// TEST (OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, Clone)
-// {
-
-//     using ostk::core::fs::Path ;
-//     using ostk::core::fs::Directory ;
-
-//     using EarthMagneticModel = ostk::physics::environment::magnetic::Earth ;
-//     using EarthMagneticModelManager = ostk::physics::environment::magnetic::earth::Manager ;
-
-//     {
-
-//         EarthMagneticModelManager::Get().setLocalRepository(Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth")))
-//         ;
-
-//         EarthMagneticModelManager::Get().enable() ;
-
-//         const EarthMagneticModel earthMagneticModel = { EarthMagneticModel::Type::EMM2017 } ;
-
-//         EXPECT_NO_THROW(const EarthMagneticModel* earthMagneticModelPtr = earthMagneticModel.clone() ;) ;
-
-//         EarthMagneticModelManager::Get().setLocalRepository(EarthMagneticModelManager::DefaultLocalRepository()) ;
-
-//         EarthMagneticModelManager::Get().setEnabled(EarthMagneticModelManager::DefaultEnabled()) ;
-
-//     }
-
-// }
-
 TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, GetType)
 {
     {
@@ -161,7 +132,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, GetType)
         EXPECT_EQ(EarthMagneticModel::Type::WMM2015, EarthMagneticModel(EarthMagneticModel::Type::WMM2015).getType());
 
         EarthMagneticModelManager::Get().setLocalRepository(EarthMagneticModelManager::DefaultLocalRepository());
-
     }
 }
 
@@ -385,6 +355,5 @@ TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, GetFieldValueAt)
         }
 
         EarthMagneticModelManager::Get().setLocalRepository(EarthMagneticModelManager::DefaultLocalRepository());
-
     }
 }

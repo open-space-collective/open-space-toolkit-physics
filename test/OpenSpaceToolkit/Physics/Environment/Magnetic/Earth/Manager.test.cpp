@@ -37,8 +37,14 @@ class OpenSpaceToolkit_Physics_Environment_Magnetic_Earth_Manager : public ::tes
     {
         manager_.setMode(Manager::Mode::Automatic);
         manager_.setLocalRepository(
-            Directory::Path(Path::Parse("test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/"))
+            Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/"))
         );
+    }
+
+    void TearDown() override
+    {
+        // reset repository so other test suites do not use the test data
+        manager_.reset();
     }
 
     Manager& manager_ = Manager::Get();
@@ -87,9 +93,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth_Manager, LocalDataFil
 {
     {
         Array<String> expectedFiles = {
-            File::Path(Path::Parse("test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/emm2010.wmm"))
+            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/emm2010.wmm"))
                 .toString(),
-            File::Path(Path::Parse("test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/emm2010.wmm.cof"))
+            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/emm2010.wmm.cof"))
                 .toString()
         };
 
@@ -123,6 +129,25 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth_Manager, SetLocalRepo
         EXPECT_EQ("earth", manager_.getLocalRepository().getName());
 
         EXPECT_THROW(manager_.setLocalRepository(Directory::Undefined()), ostk::core::error::runtime::Undefined);
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth_Manager, Reset)
+{
+    {
+        EXPECT_EQ("Earth", manager_.getLocalRepository().getName());
+        EXPECT_EQ(Manager::Mode::Automatic, manager_.getMode());
+
+        manager_.setLocalRepository(Directory::Path(Path::Parse("/tmp")));
+        manager_.setMode(Manager::Mode::Manual);
+
+        EXPECT_EQ("tmp", manager_.getLocalRepository().getName());
+        EXPECT_EQ(Manager::Mode::Manual, manager_.getMode());
+
+        manager_.reset();
+
+        EXPECT_EQ("earth", manager_.getLocalRepository().getName());
+        EXPECT_EQ(Manager::Mode::Automatic, manager_.getMode());
     }
 }
 
