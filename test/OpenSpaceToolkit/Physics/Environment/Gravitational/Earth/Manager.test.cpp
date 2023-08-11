@@ -37,7 +37,7 @@ class OpenSpaceToolkit_Physics_Environment_Gravitational_Earth_Manager : public 
     {
         manager_.setMode(Manager::Mode::Automatic);
         manager_.setLocalRepository(
-            Directory::Path(Path::Parse("test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/"))
+            Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/"))
         );
     }
 
