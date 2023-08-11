@@ -21,6 +21,8 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth_Manager(py
         .def_static("default_local_repository", &Manager::DefaultLocalRepository)
         .def_static("default_local_repository_lock_timeout", &Manager::DefaultLocalRepositoryLockTimeout)
 
+        .def("reset", &Manager::reset)
+
         .def("fetch_data_files_for_type", &Manager::fetchDataFilesForType, arg("model_type"))
         .def("has_data_files_for_type", &Manager::hasDataFilesForType, arg("model_type"))
         .def("local_data_files_for_type", &Manager::localDataFilesForType, arg("model_type"))

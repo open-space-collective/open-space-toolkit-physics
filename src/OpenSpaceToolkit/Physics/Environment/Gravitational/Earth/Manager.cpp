@@ -114,7 +114,9 @@ void Manager::fetchDataFilesForType(const EarthGravitationalModel::Type& aModelT
     if (this->hasDataFilesForType(aModelType))
     {
         throw ostk::core::error::RuntimeError(
-            "Cannot fetch data file for type [{}]: files already exist.", DataFileNameFromType(aModelType)
+            "Cannot fetch data file for type [{}]: files already exist in [{}].",
+            DataFileNameFromType(aModelType),
+            localRepository_.toString()
         );
     }
 

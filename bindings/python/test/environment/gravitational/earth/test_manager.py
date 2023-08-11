@@ -4,16 +4,15 @@ import pytest
 
 import os
 
-from ostk.core.filesystem import Path
-from ostk.core.filesystem import Directory
+from ostk.core.filesystem import Path, Directory, PermissionSet
 
 from ostk.io import URL
 
+from ostk.physics.time import Duration
 from ostk.physics.environment.gravitational import Earth as EarthGravitationalModel
 from ostk.physics.environment.gravitational.earth import (
     Manager as EarthGravitationalModelManager,
 )
-
 
 @pytest.fixture
 def manager() -> EarthGravitationalModelManager:
@@ -31,19 +30,22 @@ def manager() -> EarthGravitationalModelManager:
 
     yield manager
 
+    # This reset is important so that other test modules are not affected
+    manager.reset()
+
 
 class TestManager:
     def test_get_mode_success(self, manager: EarthGravitationalModelManager):
-        assert manager.get_mode() == Manager.Mode.Automatic
+        assert manager.get_mode() == EarthGravitationalModelManager.Mode.Automatic
 
-    def test_has_data_file_for_type_success(
+    def test_has_data_files_for_type_success(
         self, manager: EarthGravitationalModelManager
     ):
-        assert manager.has_data_file_for_type(EarthGravitationalModel.Type.WGS84) == True
-        assert manager.has_data_file_for_type(EarthGravitationalModel.Type.EGM84) == True
-        assert manager.has_data_file_for_type(EarthGravitationalModel.Type.EGM96) == True
+        assert manager.has_data_files_for_type(EarthGravitationalModel.Type.WGS84) == True
+        assert manager.has_data_files_for_type(EarthGravitationalModel.Type.EGM84) == True
+        assert manager.has_data_files_for_type(EarthGravitationalModel.Type.EGM96) == True
         assert (
-            manager.has_data_file_for_type(EarthGravitationalModel.Type.EGM2008) == True
+            manager.has_data_files_for_type(EarthGravitationalModel.Type.EGM2008) == True
         )
 
     def test_get_local_repository_success(self, manager: EarthGravitationalModelManager):
@@ -52,20 +54,24 @@ class TestManager:
             "OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY"
         )
 
-    def test_fetch_data_file_for_type_success(
+    def test_fetch_data_files_for_type_success(
         self, manager: EarthGravitationalModelManager
     ):
-        manager.fetch_data_file_for_type(EarthGravitationalModel.Type.WGS84)
-        manager.fetch_data_file_for_type(EarthGravitationalModel.Type.EGM84)
-        manager.fetch_data_file_for_type(EarthGravitationalModel.Type.EGM96)
-        manager.fetch_data_file_for_type(EarthGravitationalModel.Type.EGM2008)
+        test_directory = Directory.path(manager.get_local_repository().get_path() + Path.parse("/test"))
+        if test_directory.exists():
+            test_directory.remove()
+        
+        test_directory.create(PermissionSet.rw(), PermissionSet.r(), PermissionSet.r())
+        manager.set_local_repository(test_directory)
+
+        manager.fetch_data_files_for_type(EarthGravitationalModel.Type.WGS84)
 
     def test_set_mode_success(self, manager: EarthGravitationalModelManager):
-        assert manager.get_mode() == Manager.Mode.Automatic
+        assert manager.get_mode() == EarthGravitationalModelManager.Mode.Automatic
 
-        manager.set_mode(Manager.Mode.Manual)
+        manager.set_mode(EarthGravitationalModelManager.Mode.Manual)
 
-        assert manager.get_mode() == Manager.Mode.Manual
+        assert manager.get_mode() == EarthGravitationalModelManager.Mode.Manual
 
     def test_set_local_repository_success(self, manager: EarthGravitationalModelManager):
         manager.set_local_repository(
@@ -93,7 +99,7 @@ class TestManager:
         )
 
     def test_default_mode_success(self, manager: EarthGravitationalModelManager):
-        assert manager.default_mode() == Manager.Mode.Automatic
+        assert manager.default_mode() == EarthGravitationalModelManager.Mode.Automatic
 
     def test_default_local_repository_lock_timeout_success(self, manager: EarthGravitationalModelManager):
         assert isinstance(manager.default_local_repository_lock_timeout(), Duration)
