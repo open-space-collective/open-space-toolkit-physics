@@ -116,6 +116,12 @@ class Manager
 
     Directory getLocalRepository() const;
 
+    /// @brief                  Reset the manager.
+    ///
+    ///                         Reset path and mode to default values.
+
+    void reset();
+
     /// @brief                  Fetch data file from remote
     ///
     /// @param                  [in] aModelType A model type

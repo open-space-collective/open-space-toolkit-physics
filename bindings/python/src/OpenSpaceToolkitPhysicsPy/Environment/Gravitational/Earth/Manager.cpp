@@ -11,7 +11,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth_Manager(py
     class_<Manager> manager(aModule, "Manager");
 
     manager
-    
+
         .def("get_mode", &Manager::getMode)
         .def("set_mode", &Manager::setMode, arg("mode"))
         .def_static("default_mode", &Manager::DefaultMode)

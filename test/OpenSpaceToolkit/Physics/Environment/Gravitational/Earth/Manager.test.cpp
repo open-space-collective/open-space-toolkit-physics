@@ -41,6 +41,12 @@ class OpenSpaceToolkit_Physics_Environment_Gravitational_Earth_Manager : public 
         );
     }
 
+    void TearDown() override
+    {
+        // reset repository so other test suites do not use the test data
+        manager_.reset();
+    }
+
     Manager& manager_ = Manager::Get();
 };
 
@@ -87,9 +93,10 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth_Manager, LocalDa
 {
     {
         Array<String> expectedFiles = {
-            File::Path(Path::Parse("test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/egm2008.egm"))
+            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/egm2008.egm"))
                 .toString(),
-            File::Path(Path::Parse("test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/egm2008.egm.cof"))
+            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/egm2008.egm.cof")
+            )
                 .toString()
         };
 
@@ -123,6 +130,25 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth_Manager, SetLoca
         EXPECT_EQ("earth", manager_.getLocalRepository().getName());
 
         EXPECT_THROW(manager_.setLocalRepository(Directory::Undefined()), ostk::core::error::runtime::Undefined);
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth_Manager, Reset)
+{
+    {
+        EXPECT_EQ("Earth", manager_.getLocalRepository().getName());
+        EXPECT_EQ(Manager::Mode::Automatic, manager_.getMode());
+
+        manager_.setLocalRepository(Directory::Path(Path::Parse("/tmp")));
+        manager_.setMode(Manager::Mode::Manual);
+
+        EXPECT_EQ("tmp", manager_.getLocalRepository().getName());
+        EXPECT_EQ(Manager::Mode::Manual, manager_.getMode());
+
+        manager_.reset();
+
+        EXPECT_EQ("earth", manager_.getLocalRepository().getName());
+        EXPECT_EQ(Manager::Mode::Automatic, manager_.getMode());
     }
 }
 
