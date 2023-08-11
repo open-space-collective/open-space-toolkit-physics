@@ -86,18 +86,38 @@ class Engine
 
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Engine& anEngine);
 
-    /// @brief              Returns true if kernel is loaded
+    /// @brief              Get engine singleton
     ///
-    /// @param              [in] aKernel A kernel
-    /// @return             True if kernel is loaded
+    /// @return             Reference to engine
 
-    bool isKernelLoaded(const Kernel& aKernel) const;
+    static Engine& Get();
+
+    /// @brief              Reset engine
+    ///
+    ///                     Unload all kernels and clear cache.
+
+    void reset();
 
     /// @brief              Get engine mode
     ///
     /// @return             Engine mode
 
     Engine::Mode getMode() const;
+
+    /// @brief              Set engine mode
+    ///
+    /// @param              [in] aMode An engine mode
+    /// @return             Engine mode
+
+    void setMode(const Engine::Mode& aMode);
+
+    /// @brief              Get default engine mode
+    ///
+    ///                     Overriden by: OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_ENGINE_MODE
+    ///
+    /// @return             Default engine mode
+
+    static Engine::Mode DefaultMode();
 
     /// @brief              Get frame of SPICE object
     ///
@@ -106,12 +126,12 @@ class Engine
 
     Shared<const Frame> getFrameOf(const SPICE::Object& aSpiceObject) const;
 
-    /// @brief              Set engine mode
+    /// @brief              Returns true if kernel is loaded
     ///
-    /// @param              [in] aMode An engine mode
-    /// @return             Engine mode
+    /// @param              [in] aKernel A kernel
+    /// @return             True if kernel is loaded
 
-    void setMode(const Engine::Mode& aMode);
+    bool isKernelLoaded(const Kernel& aKernel) const;
 
     /// @brief              Load kernel
     ///
@@ -125,32 +145,11 @@ class Engine
 
     void unloadKernel(const Kernel& aKernel);
 
-    /// @brief              Reset engine
-    ///
-    ///                     Unload all kernels and clear cache.
-
-    void reset();
-
-    /// @brief              Get engine singleton
-    ///
-    /// @return             Reference to engine
-
-    static Engine& Get();
-
-    /// @brief              Get default engine mode
-    ///
-    ///                     Overriden by: OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_ENGINE_MODE
-    ///
-    /// @return             Default engine mode
-
-    static Engine::Mode DefaultMode();
-
     /// @brief              Get default kernels
     ///
-    /// @param              [in] aLocalRepository A local repository
     /// @return             Default kernels
 
-    static Array<Kernel> DefaultKernels(const Directory& aLocalRepository);
+    static Array<Kernel> DefaultKernels();
 
    private:
     Engine::Mode mode_;

@@ -12,6 +12,9 @@
 
 using ostk::core::fs::Path;
 using ostk::core::fs::File;
+using ostk::core::ctnr::Array;
+
+using ostk::io::URL;
 
 using ostk::physics::time::DateTime;
 using ostk::physics::time::Scale;
@@ -58,6 +61,44 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manifest, GetLastUpdateTimestampFor)
             Instant::DateTime(DateTime::Parse("2023-08-03T00:03:15.288325", DateTime::Format::ISO8601), Scale::UTC),
             manifest_.getLastUpdateTimestampFor("finals-2000A")
         );
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Data_Manifest, FindRemoteDataUrls)
+{
+    const URL baseUrl = URL::Parse("https://fake.com/data");
+
+    {
+        Array<URL> expectedUrls = {
+            URL::Parse("https://fake.com/data/coordinate/frame/providers/iers/finals-2000A/finals2000A.data"),
+        };
+
+        EXPECT_EQ(expectedUrls, manifest_.findRemoteDataUrls(baseUrl, "finals-2000A"));
+    }
+
+    {
+        Array<URL> expectedUrls = {
+            URL::Parse("https://fake.com/data/coordinate/frame/providers/iers/finals-2000A/finals2000A.data"),
+        };
+
+        EXPECT_EQ(expectedUrls, manifest_.findRemoteDataUrls(baseUrl, "f.*A"));
+    }
+
+    {
+        Array<URL> expectedUrls = {
+            URL::Parse("https://fake.com/data/coordinate/frame/providers/iers/bulletin-A/ser7.dat"),
+        };
+
+        EXPECT_EQ(expectedUrls, manifest_.findRemoteDataUrls(baseUrl, "bulletin-A"));
+    }
+
+    {
+        Array<URL> expectedUrls = {
+            URL::Parse("https://fake.com/data/environment/gravitational/earth/egm2008.egm"),
+            URL::Parse("https://fake.com/data/environment/gravitational/earth/egm2008.egm.cof")
+        };
+
+        EXPECT_EQ(expectedUrls, manifest_.findRemoteDataUrls(baseUrl, "earth-gravity-EGM2008"));
     }
 }
 

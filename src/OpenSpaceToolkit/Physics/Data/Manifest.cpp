@@ -14,6 +14,12 @@ namespace physics
 {
 namespace data
 {
+using ostk::core::ctnr::Object;
+using ostk::core::ctnr::Dictionary;
+
+using ostk::physics::time::Instant;
+using ostk::physics::time::DateTime;
+using ostk::physics::time::Scale;
 
 std::ostream& operator<<(std::ostream& anOutputStream, const Manifest& aManifest)
 {
@@ -31,15 +37,43 @@ bool Manifest::isDefined() const
     return !dictionary_.isEmpty();
 }
 
-Instant Manifest::getLastUpdateTimestampFor(const String& dataName) const
+Instant Manifest::getLastUpdateTimestampFor(const String& aDataName) const
 {
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::time::Scale;
-
     return Instant::DateTime(
-        DateTime::Parse(dictionary_[dataName]["last_update"].accessString(), DateTime::Format::ISO8601), Scale::UTC
+        DateTime::Parse(dictionary_[aDataName]["last_update"].accessString(), DateTime::Format::ISO8601), Scale::UTC
     );
+}
+
+Array<URL> Manifest::findRemoteDataUrls(const URL& aBaseUrl, const String& aDataNameRegexString) const
+{
+    Array<URL> urls = Array<URL>::Empty();
+
+    const std::regex aDataNameRegex(aDataNameRegexString);
+
+    for (const auto& dictionaryIt : dictionary_)
+    {
+        if (dictionaryIt.accessKey().match(aDataNameRegex))
+        {
+            Object filenamesDictValue = dictionaryIt.accessValue()["filenames"];
+
+            const Array<Object> filenames =
+                filenamesDictValue.isString() ? Array<Object>({filenamesDictValue}) : filenamesDictValue.accessArray();
+
+            for (const auto filename : filenames)
+            {
+                const URL url =
+                    aBaseUrl + "/" + dictionaryIt.accessValue()["path"].accessString() + "/" + filename.accessString();
+                urls.add(url);
+            }
+        }
+    }
+
+    if (urls.isEmpty())
+    {
+        throw ostk::core::error::RuntimeError("No Manifest data entry found matching [{}].", aDataNameRegexString);
+    }
+
+    return urls;
 }
 
 Manifest Manifest::Undefined()
@@ -49,9 +83,6 @@ Manifest Manifest::Undefined()
 
 Manifest Manifest::Load(const File& aFile)
 {
-    using ostk::core::ctnr::Object;
-    using ostk::core::ctnr::Dictionary;
-
     if (!aFile.exists())
     {
         throw ostk::core::error::RuntimeError("Manifest file [{}] does not exist.", aFile.toString());

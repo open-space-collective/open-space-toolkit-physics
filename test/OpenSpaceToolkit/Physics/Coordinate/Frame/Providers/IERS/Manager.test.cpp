@@ -39,15 +39,17 @@ class OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager : public 
    protected:
     void SetUp() override
     {
-        const File BulletinAFile = File::Path(
-            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/BulletinA/ser7.dat")
+        this->bulletinA_ = BulletinA::Load(bulletinAFile_);
+        this->finals2000A_ = Finals2000A::Load(finals2000AFile_);
+    }
+
+    const File bulletinAFile_ =
+        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/BulletinA/ser7.dat")
         );
 
-        this->bulletinA_ = BulletinA::Load(BulletinAFile);
-        this->finals2000A_ = Finals2000A::Load(File::Path(Path::Parse(
-            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Finals2000A/finals2000A.data"
-        )));
-    }
+    const File finals2000AFile_ = File::Path(
+        Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Finals2000A/finals2000A.data")
+    );
 
     BulletinA bulletinA_ = BulletinA::Undefined();
     Finals2000A finals2000A_ = Finals2000A::Undefined();
@@ -110,9 +112,16 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetBull
         manager_.reset();
         manager_.clearLocalRepository();
 
-        EXPECT_NO_THROW(manager_.getBulletinAAt(Instant::Now() - Duration::Days(5.0)));
+        File bulletinAFile = File::Undefined();
+        EXPECT_NO_THROW(bulletinAFile = manager_.fetchLatestBulletinA());
 
-        manager_.loadBulletinA(bulletinA_);
+        BulletinA bulletinA = BulletinA::Load(bulletinAFile);
+
+        const Instant fetchTime = bulletinA.getObservationInterval().accessEnd() - Duration::Days(1);
+
+        bulletinAFile.remove();
+
+        EXPECT_NO_THROW(manager_.getBulletinAAt(fetchTime));
     }
 }
 

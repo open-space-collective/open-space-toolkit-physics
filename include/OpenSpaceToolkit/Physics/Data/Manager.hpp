@@ -76,6 +76,12 @@ class Manager
 
     void setRemoteUrl(const URL& aRemoteUrl);
 
+    /// @brief                  Get the default remote URL for data fetching.
+    ///
+    /// @return                 Default remote URL
+
+    static URL DefaultRemoteUrl();
+
     /// @brief                  Get the manifest repository.
     ///
     /// @return                 Manifest repository
@@ -87,6 +93,18 @@ class Manager
     /// @param                  [in] aManifestRepository Manifest repository
 
     void setManifestRepository(const Directory& aManifestRepository);
+
+    /// @brief                  Get the default manifest repository.
+    ///
+    /// @return                 Default manifest repository
+    static Directory DefaultManifestRepository();
+
+    /// @brief                  Find remote URLs of data matching regular expression string
+    ///
+    /// @param                  [in] aKernelNameRegexString A regular expression string
+    /// @return                 Array of URLs
+
+    Array<URL> findRemoteDataUrls(const String& aDataNameRegex) const;
 
     /// @brief                  Get a copy of the current manifest file.
     ///
@@ -122,7 +140,7 @@ class Manager
 
     void setup();
 
-    File fetchLatestManifestFile_();
+    File fetchLatestManifestFile();
     void checkManifestAgeAndUpdate();
 
     bool isManifestRepositoryLocked() const;
@@ -130,9 +148,7 @@ class Manager
     void lockManifestRepository(const Duration& aTimeout);
     void unlockManifestRepository();
 
-    static Directory DefaultManifestRepository();
     static Duration DefaultManifestRepositoryLockTimeout();
-    static URL DefaultRemoteUrl();
 };
 
 }  // namespace data

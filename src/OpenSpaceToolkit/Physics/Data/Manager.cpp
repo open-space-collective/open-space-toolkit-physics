@@ -83,6 +83,12 @@ void Manager::setManifestRepository(const Directory& aManifestRepository)
     manifestRepository_ = aManifestRepository;
 }
 
+Array<URL> Manager::findRemoteDataUrls(const String& aDataNameRegex) const
+{
+    const_cast<Manager*>(this)->checkManifestAgeAndUpdate();
+    return manifest_.findRemoteDataUrls(remoteUrl_, aDataNameRegex);
+}
+
 const Manifest Manager::getManifest() const
 {
     return manifest_;
@@ -108,6 +114,10 @@ void Manager::reset()
     manifestUpdateTimestamp_ = Instant::Undefined();
 
     manifest_ = Manifest::Undefined();
+
+    remoteUrl_ = DefaultRemoteUrl();
+    manifestRepository_ = DefaultManifestRepository();
+    manifestRepositoryLockTimeout_ = DefaultManifestRepositoryLockTimeout();
 }
 
 Manager::Manager()
@@ -149,12 +159,12 @@ void Manager::checkManifestAgeAndUpdate()
     if (!manifestUpdateTimestamp_.isDefined() ||
         (manifestUpdateTimestamp_ + Duration::Hours(OSTK_PHYSICS_DATA_MANAGER_MANIFEST_MAX_AGE_HOURS) < Instant::Now()))
     {
-        File manifestFile = this->fetchLatestManifestFile_();
+        File manifestFile = this->fetchLatestManifestFile();
         this->loadManifest(Manifest::Load(manifestFile));
     }
 }
 
-File Manager::fetchLatestManifestFile_()
+File Manager::fetchLatestManifestFile()
 {
     Directory temporaryDirectory = Directory::Path(manifestRepository_.getPath() + Path::Parse(temporaryDirectoryName));
 
