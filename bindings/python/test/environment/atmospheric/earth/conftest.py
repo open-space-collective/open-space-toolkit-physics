@@ -34,11 +34,6 @@ def cssi_space_weather(cssi_space_weather_file: File) -> CSSISpaceWeather:
 def manager() -> Manager:
     manager = Manager.get()
 
-    manager.set_mode(Manager.Mode.Automatic)
-    manager.set_remote_url(
-        URL.parse("https://celestrak.org/SpaceData/")
-    )  # SW-Last5Years.csv
-
     yield manager
 
     manager.reset()

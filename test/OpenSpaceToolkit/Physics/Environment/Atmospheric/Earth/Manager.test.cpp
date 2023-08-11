@@ -30,76 +30,76 @@ using ostk::physics::time::DateTime;
 using ostk::physics::environment::atmospheric::earth::Manager;
 using ostk::physics::environment::atmospheric::earth::CSSISpaceWeather;
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetMode)
+class OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager : public ::testing::Test
+{
+   protected:
+    void SetUp() override
+    {
+        // Default all tests to use local testing file to avoid accidental remote requests
+        spaceWeather_ = CSSISpaceWeather::Load(spaceWeatherFile_);
+        manager_.loadCSSISpaceWeather(spaceWeather_);
+    }
+
+    void TearDown() override
+    {
+        // reset repository so other test suites do not use the test data
+        manager_.reset();
+    }
+
+    const File spaceWeatherFile_ = File::Path(Path::Parse(
+        "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather/SW-Last5Years.test.csv"
+    ));
+
+    CSSISpaceWeather spaceWeather_ = CSSISpaceWeather::Undefined();
+
+    Manager& manager_ = Manager::Get();
+};
+
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetMode)
 {
     {
-        const Manager& manager = Manager::Get();
-
-        EXPECT_EQ(Manager::Mode::Automatic, manager.getMode());
+        EXPECT_EQ(Manager::Mode::Automatic, manager_.getMode());
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetLocalRepository)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetLocalRepository)
 {
     {
-        const Manager& manager = Manager::Get();
-
-        EXPECT_EQ("earth", manager.getLocalRepository().getName());
+        EXPECT_EQ("earth", manager_.getLocalRepository().getName());
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetRemoteUrl)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetCSSISpaceWeatherArray)
 {
     {
-        const Manager& manager = Manager::Get();
-        EXPECT_EQ(URL::Parse("https://celestrak.org/SpaceData/"), manager.getRemoteUrl());
+        EXPECT_NO_THROW(manager_.getCSSISpaceWeatherArray());
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetCSSISpaceWeatherArray)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetCSSISpaceWeatherAt)
 {
     {
-        const Manager& manager = Manager::Get();
+        manager_.setMode(Manager::Mode::Manual);
 
-        EXPECT_NO_THROW(manager.getCSSISpaceWeatherArray());
-    }
-}
-
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetCSSISpaceWeatherAt)
-{
-    {
-        const File file =
-            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
-                                   "CSSISpaceWeather/SW-Last5Years.test.csv"));
-
-        const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(file);
-
-        Manager& manager = Manager::Get();
-        manager.setMode(Manager::Mode::Manual);
-
-        manager.loadCSSISpaceWeather(spaceWeather);
-
-        EXPECT_THROW(manager.getCSSISpaceWeatherAt(Instant::Undefined()), ostk::core::error::runtime::Undefined);
+        EXPECT_THROW(manager_.getCSSISpaceWeatherAt(Instant::Undefined()), ostk::core::error::runtime::Undefined);
 
         EXPECT_THROW(
-            manager.getCSSISpaceWeatherAt(Instant::DateTime(DateTime::Parse("2010-01-01 00:00:00"), Scale::UTC)),
+            manager_.getCSSISpaceWeatherAt(Instant::DateTime(DateTime::Parse("2010-01-01 00:00:00"), Scale::UTC)),
             ostk::core::error::RuntimeError
         );
 
-        EXPECT_NO_THROW(manager.getCSSISpaceWeatherAt(spaceWeather.accessObservationInterval().accessStart()));
-        EXPECT_NO_THROW(manager.getCSSISpaceWeatherAt(spaceWeather.accessObservationInterval().accessEnd()));
+        EXPECT_NO_THROW(manager_.getCSSISpaceWeatherAt(spaceWeather_.accessObservationInterval().accessStart()));
+        EXPECT_NO_THROW(manager_.getCSSISpaceWeatherAt(spaceWeather_.accessObservationInterval().accessEnd()));
 
-        EXPECT_NO_THROW(manager.getCSSISpaceWeatherAt(spaceWeather.accessDailyPredictionInterval().accessStart()));
-        EXPECT_NO_THROW(manager.getCSSISpaceWeatherAt(spaceWeather.accessDailyPredictionInterval().accessEnd()));
+        EXPECT_NO_THROW(manager_.getCSSISpaceWeatherAt(spaceWeather_.accessDailyPredictionInterval().accessStart()));
+        EXPECT_NO_THROW(manager_.getCSSISpaceWeatherAt(spaceWeather_.accessDailyPredictionInterval().accessEnd()));
 
-        EXPECT_NO_THROW(manager.getCSSISpaceWeatherAt(spaceWeather.accessMonthlyPredictionInterval().accessStart()));
-        EXPECT_NO_THROW(manager.getCSSISpaceWeatherAt(spaceWeather.accessMonthlyPredictionInterval().accessEnd()));
-
-        manager.reset();
+        EXPECT_NO_THROW(manager_.getCSSISpaceWeatherAt(spaceWeather_.accessMonthlyPredictionInterval().accessStart()));
+        EXPECT_NO_THROW(manager_.getCSSISpaceWeatherAt(spaceWeather_.accessMonthlyPredictionInterval().accessEnd()));
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetKp3HourSolarIndicesAt)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetKp3HourSolarIndicesAt)
 {
     {
         const Array<Tuple<String, Array<Integer>>> referenceScenarios = {
@@ -109,16 +109,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetKp3HourS
             {"2023-08-03 12:34:56", {13, 13, 13, 13, 13, 13, 13, 13}},
         };
 
-        const File file =
-            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
-                                   "CSSISpaceWeather/SW-Last5Years.test.csv"));
-
-        const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(file);
-
-        Manager& manager = Manager::Get();
-        manager.reset();
-        manager.loadCSSISpaceWeather(spaceWeather);
-
         for (const auto& referenceScenario : referenceScenarios)
         {
             // Reference data setup
@@ -128,17 +118,17 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetKp3HourS
             const Array<Integer> referenceIndices = std::get<1>(referenceScenario);
 
             // Test
-            EXPECT_EQ(referenceIndices, manager.getKp3HourSolarIndicesAt(referenceInstant));
+            EXPECT_EQ(referenceIndices, manager_.getKp3HourSolarIndicesAt(referenceInstant));
         }
 
-        manager.setMode(Manager::Mode::Manual);
-        EXPECT_THROW(manager.getKp3HourSolarIndicesAt(Instant::Undefined()), ostk::core::error::runtime::Undefined);
+        manager_.setMode(Manager::Mode::Manual);
+        EXPECT_THROW(manager_.getKp3HourSolarIndicesAt(Instant::Undefined()), ostk::core::error::runtime::Undefined);
         EXPECT_THROW(
-            manager.getKp3HourSolarIndicesAt(Instant::DateTime(DateTime::Parse("2010-01-01 00:00:00"), Scale::UTC)),
+            manager_.getKp3HourSolarIndicesAt(Instant::DateTime(DateTime::Parse("2010-01-01 00:00:00"), Scale::UTC)),
             ostk::core::error::RuntimeError
         );
 
-        manager.setMode(Manager::Mode::Automatic);
+        manager_.setMode(Manager::Mode::Automatic);
     }
 
     {
@@ -148,11 +138,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetKp3HourS
             File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
                                    "CSSISpaceWeather/SW-Last5Years_missing_data.test.csv"));
 
-        const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(file);
+        const CSSISpaceWeather spaceWeatherMissingData = CSSISpaceWeather::Load(file);
 
-        Manager& manager = Manager::Get();
-        manager.reset();
-        manager.loadCSSISpaceWeather(spaceWeather);
+        manager_.reset();
+        manager_.loadCSSISpaceWeather(spaceWeatherMissingData);
 
         // Reference data setup
 
@@ -160,11 +149,11 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetKp3HourS
         const Array<Integer> referenceIndices {23, 17, 17, 13, 20, 27, 30, 30};
 
         // Test
-        EXPECT_EQ(referenceIndices, manager.getKp3HourSolarIndicesAt(referenceInstant));
+        EXPECT_EQ(referenceIndices, manager_.getKp3HourSolarIndicesAt(referenceInstant));
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetAp3HourSolarIndicesAt)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetAp3HourSolarIndicesAt)
 {
     {
         const Array<Tuple<String, Array<Integer>>> referenceScenarios = {
@@ -174,16 +163,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetAp3HourS
             {"2023-08-03 12:34:56", {5, 5, 5, 5, 5, 5, 5, 5}},
         };
 
-        const File file =
-            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
-                                   "CSSISpaceWeather/SW-Last5Years.test.csv"));
-
-        const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(file);
-
-        Manager& manager = Manager::Get();
-        manager.reset();
-        manager.loadCSSISpaceWeather(spaceWeather);
-
         for (const auto& referenceScenario : referenceScenarios)
         {
             // Reference data setup
@@ -193,17 +172,17 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetAp3HourS
             const Array<Integer> referenceIndices = std::get<1>(referenceScenario);
 
             // Test
-            EXPECT_EQ(referenceIndices, manager.getAp3HourSolarIndicesAt(referenceInstant));
+            EXPECT_EQ(referenceIndices, manager_.getAp3HourSolarIndicesAt(referenceInstant));
         }
 
-        manager.setMode(Manager::Mode::Manual);
-        EXPECT_THROW(manager.getAp3HourSolarIndicesAt(Instant::Undefined()), ostk::core::error::runtime::Undefined);
+        manager_.setMode(Manager::Mode::Manual);
+        EXPECT_THROW(manager_.getAp3HourSolarIndicesAt(Instant::Undefined()), ostk::core::error::runtime::Undefined);
         EXPECT_THROW(
-            manager.getAp3HourSolarIndicesAt(Instant::DateTime(DateTime::Parse("2010-01-01 00:00:00"), Scale::UTC)),
+            manager_.getAp3HourSolarIndicesAt(Instant::DateTime(DateTime::Parse("2010-01-01 00:00:00"), Scale::UTC)),
             ostk::core::error::RuntimeError
         );
 
-        manager.setMode(Manager::Mode::Automatic);
+        manager_.setMode(Manager::Mode::Automatic);
     }
 
     {
@@ -213,11 +192,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetAp3HourS
             File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
                                    "CSSISpaceWeather/SW-Last5Years_missing_data.test.csv"));
 
-        const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(file);
+        const CSSISpaceWeather spaceWeatherMissingData = CSSISpaceWeather::Load(file);
 
-        Manager& manager = Manager::Get();
-        manager.reset();
-        manager.loadCSSISpaceWeather(spaceWeather);
+        manager_.reset();
+        manager_.loadCSSISpaceWeather(spaceWeatherMissingData);
 
         // Reference data setup
 
@@ -225,11 +203,11 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetAp3HourS
         const Array<Integer> referenceIndices {12, 7, 4, 6, 7, 9, 4, 27};
 
         // Test
-        EXPECT_EQ(referenceIndices, manager.getAp3HourSolarIndicesAt(referenceInstant));
+        EXPECT_EQ(referenceIndices, manager_.getAp3HourSolarIndicesAt(referenceInstant));
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetApDailySolarIndexAt)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetApDailySolarIndexAt)
 {
     {
         const Array<Tuple<String, Integer>> referenceScenarios = {
@@ -238,16 +216,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetApDailyS
             {"2023-08-02 12:34:56", 5},
             {"2023-08-03 12:34:56", 5},
         };
-
-        const File file =
-            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
-                                   "CSSISpaceWeather/SW-Last5Years.test.csv"));
-
-        const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(file);
-
-        Manager& manager = Manager::Get();
-        manager.reset();
-        manager.loadCSSISpaceWeather(spaceWeather);
 
         for (const auto& referenceScenario : referenceScenarios)
         {
@@ -258,17 +226,17 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetApDailyS
             const Integer referenceIndex = std::get<1>(referenceScenario);
 
             // Test
-            EXPECT_EQ(referenceIndex, manager.getApDailyIndexAt(referenceInstant));
+            EXPECT_EQ(referenceIndex, manager_.getApDailyIndexAt(referenceInstant));
         }
 
-        manager.setMode(Manager::Mode::Manual);
-        EXPECT_THROW(manager.getApDailyIndexAt(Instant::Undefined()), ostk::core::error::runtime::Undefined);
+        manager_.setMode(Manager::Mode::Manual);
+        EXPECT_THROW(manager_.getApDailyIndexAt(Instant::Undefined()), ostk::core::error::runtime::Undefined);
         EXPECT_THROW(
-            manager.getApDailyIndexAt(Instant::DateTime(DateTime::Parse("2010-01-01 00:00:00"), Scale::UTC)),
+            manager_.getApDailyIndexAt(Instant::DateTime(DateTime::Parse("2010-01-01 00:00:00"), Scale::UTC)),
             ostk::core::error::RuntimeError
         );
 
-        manager.setMode(Manager::Mode::Automatic);
+        manager_.setMode(Manager::Mode::Automatic);
     }
 
     {
@@ -278,11 +246,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetApDailyS
             File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
                                    "CSSISpaceWeather/SW-Last5Years_missing_data.test.csv"));
 
-        const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(file);
+        const CSSISpaceWeather spaceWeatherMissingData = CSSISpaceWeather::Load(file);
 
-        Manager& manager = Manager::Get();
-        manager.reset();
-        manager.loadCSSISpaceWeather(spaceWeather);
+        manager_.reset();
+        manager_.loadCSSISpaceWeather(spaceWeatherMissingData);
 
         // Reference data setup
 
@@ -290,11 +257,11 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetApDailyS
         const Integer referenceIndex = 9;
 
         // Test
-        EXPECT_EQ(referenceIndex, manager.getApDailyIndexAt(referenceInstant));
+        EXPECT_EQ(referenceIndex, manager_.getApDailyIndexAt(referenceInstant));
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetF107SolarFluxAt)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetF107SolarFluxAt)
 {
     {
         const Array<Tuple<String, Real>> referenceScenarios = {
@@ -306,16 +273,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetF107Sola
             {"2028-09-01 12:34:56", 82.7},
         };
 
-        const File file =
-            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
-                                   "CSSISpaceWeather/SW-Last5Years.test.csv"));
-
-        const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(file);
-
-        Manager& manager = Manager::Get();
-        manager.reset();
-        manager.loadCSSISpaceWeather(spaceWeather);
-
         for (const auto& referenceScenario : referenceScenarios)
         {
             // Reference data setup
@@ -325,17 +282,17 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetF107Sola
             const Real referenceValue = std::get<1>(referenceScenario);
 
             // Test
-            EXPECT_EQ(referenceValue, manager.getF107SolarFluxAt(referenceInstant));
+            EXPECT_EQ(referenceValue, manager_.getF107SolarFluxAt(referenceInstant));
         }
 
-        manager.setMode(Manager::Mode::Manual);
-        EXPECT_THROW(manager.getF107SolarFluxAt(Instant::Undefined()), ostk::core::error::runtime::Undefined);
+        manager_.setMode(Manager::Mode::Manual);
+        EXPECT_THROW(manager_.getF107SolarFluxAt(Instant::Undefined()), ostk::core::error::runtime::Undefined);
         EXPECT_THROW(
-            manager.getF107SolarFluxAt(Instant::DateTime(DateTime::Parse("2010-01-01 00:00:00"), Scale::UTC)),
+            manager_.getF107SolarFluxAt(Instant::DateTime(DateTime::Parse("2010-01-01 00:00:00"), Scale::UTC)),
             ostk::core::error::RuntimeError
         );
 
-        manager.setMode(Manager::Mode::Automatic);
+        manager_.setMode(Manager::Mode::Automatic);
     }
 
     {
@@ -345,11 +302,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetF107Sola
             File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
                                    "CSSISpaceWeather/SW-Last5Years_missing_data.test.csv"));
 
-        const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(file);
+        const CSSISpaceWeather spaceWeatherMissingData = CSSISpaceWeather::Load(file);
 
-        Manager& manager = Manager::Get();
-        manager.reset();
-        manager.loadCSSISpaceWeather(spaceWeather);
+        manager_.reset();
+        manager_.loadCSSISpaceWeather(spaceWeatherMissingData);
 
         // Reference data setup
 
@@ -357,11 +313,11 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetF107Sola
         const Real referenceValue = 69.1;
 
         // Test
-        EXPECT_EQ(referenceValue, manager.getF107SolarFluxAt(referenceInstant));
+        EXPECT_EQ(referenceValue, manager_.getF107SolarFluxAt(referenceInstant));
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetF107SolarFlux81DayAvgAt)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetF107SolarFlux81DayAvgAt)
 {
     {
         const Array<Tuple<String, Real>> referenceScenarios = {
@@ -373,16 +329,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetF107Sola
             {"2028-09-01 12:34:56", 83.2},
         };
 
-        const File file =
-            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
-                                   "CSSISpaceWeather/SW-Last5Years.test.csv"));
-
-        const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(file);
-
-        Manager& manager = Manager::Get();
-        manager.reset();
-        manager.loadCSSISpaceWeather(spaceWeather);
-
         for (const auto& referenceScenario : referenceScenarios)
         {
             // Reference data setup
@@ -392,17 +338,17 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetF107Sola
             const Real referenceValue = std::get<1>(referenceScenario);
 
             // Test
-            EXPECT_EQ(referenceValue, manager.getF107SolarFlux81DayAvgAt(referenceInstant));
+            EXPECT_EQ(referenceValue, manager_.getF107SolarFlux81DayAvgAt(referenceInstant));
         }
 
-        manager.setMode(Manager::Mode::Manual);
-        EXPECT_THROW(manager.getF107SolarFlux81DayAvgAt(Instant::Undefined()), ostk::core::error::runtime::Undefined);
+        manager_.setMode(Manager::Mode::Manual);
+        EXPECT_THROW(manager_.getF107SolarFlux81DayAvgAt(Instant::Undefined()), ostk::core::error::runtime::Undefined);
         EXPECT_THROW(
-            manager.getF107SolarFlux81DayAvgAt(Instant::DateTime(DateTime::Parse("2010-01-01 00:00:00"), Scale::UTC)),
+            manager_.getF107SolarFlux81DayAvgAt(Instant::DateTime(DateTime::Parse("2010-01-01 00:00:00"), Scale::UTC)),
             ostk::core::error::RuntimeError
         );
 
-        manager.setMode(Manager::Mode::Automatic);
+        manager_.setMode(Manager::Mode::Automatic);
     }
 
     {
@@ -412,11 +358,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetF107Sola
             File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
                                    "CSSISpaceWeather/SW-Last5Years_missing_data.test.csv"));
 
-        const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(file);
+        const CSSISpaceWeather spaceWeatherMissingData = CSSISpaceWeather::Load(file);
 
-        Manager& manager = Manager::Get();
-        manager.reset();
-        manager.loadCSSISpaceWeather(spaceWeather);
+        manager_.reset();
+        manager_.loadCSSISpaceWeather(spaceWeatherMissingData);
 
         // Reference data setup
 
@@ -424,68 +369,45 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetF107Sola
         const Real referenceValue = 71.5;
 
         // Test
-        EXPECT_EQ(referenceValue, manager.getF107SolarFlux81DayAvgAt(referenceInstant));
+        EXPECT_EQ(referenceValue, manager_.getF107SolarFlux81DayAvgAt(referenceInstant));
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, SetMode)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, SetMode)
 {
     {
-        Manager& manager = Manager::Get();
+        EXPECT_EQ(Manager::Mode::Automatic, manager_.getMode());
 
-        EXPECT_EQ(Manager::Mode::Automatic, manager.getMode());
+        manager_.setMode(Manager::Mode::Manual);
 
-        manager.setMode(Manager::Mode::Manual);
+        EXPECT_EQ(Manager::Mode::Manual, manager_.getMode());
 
-        EXPECT_EQ(Manager::Mode::Manual, manager.getMode());
+        manager_.setMode(Manager::Mode::Automatic);
 
-        manager.setMode(Manager::Mode::Automatic);
-
-        EXPECT_EQ(Manager::Mode::Automatic, manager.getMode());
+        EXPECT_EQ(Manager::Mode::Automatic, manager_.getMode());
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, SetLocalRepository)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, SetLocalRepository)
 {
     {
-        Manager& manager = Manager::Get();
+        EXPECT_EQ("earth", manager_.getLocalRepository().getName());
 
-        EXPECT_EQ("earth", manager.getLocalRepository().getName());
+        manager_.setLocalRepository(Directory::Path(Path::Parse("/tmp")));
 
-        manager.setLocalRepository(Directory::Path(Path::Parse("/tmp")));
+        EXPECT_EQ("tmp", manager_.getLocalRepository().getName());
 
-        EXPECT_EQ("tmp", manager.getLocalRepository().getName());
-
-        manager.setLocalRepository(
+        manager_.setLocalRepository(
             Directory::Path(Path::Parse("./.open-space-toolkit/physics/environment/atmospheric/earth"))
         );
 
-        EXPECT_EQ("earth", manager.getLocalRepository().getName());
+        EXPECT_EQ("earth", manager_.getLocalRepository().getName());
 
-        EXPECT_THROW(manager.setLocalRepository(Directory::Undefined()), ostk::core::error::runtime::Undefined);
+        EXPECT_THROW(manager_.setLocalRepository(Directory::Undefined()), ostk::core::error::runtime::Undefined);
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, SetRemoteUrl)
-{
-    {
-        Manager& manager = Manager::Get();
-
-        EXPECT_EQ(URL::Parse("https://celestrak.org/SpaceData/"), manager.getRemoteUrl());
-
-        manager.setRemoteUrl(URL::Parse("http://example.com"));
-
-        EXPECT_EQ(URL::Parse("http://example.com"), manager.getRemoteUrl());
-
-        manager.setRemoteUrl(URL::Parse("https://celestrak.org/SpaceData/"));
-
-        EXPECT_EQ(URL::Parse("https://celestrak.org/SpaceData/"), manager.getRemoteUrl());
-
-        EXPECT_THROW(manager.setRemoteUrl(URL::Undefined()), ostk::core::error::runtime::Undefined);
-    }
-}
-
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, LoadCSSISpaceWeather)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, LoadCSSISpaceWeather)
 {
     {
         const File file =
@@ -494,25 +416,17 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, LoadCSSISpa
 
         const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(file);
 
-        Manager& manager = Manager::Get();
-
-        manager.reset();
-        manager.loadCSSISpaceWeather(spaceWeather);
-
-        EXPECT_ANY_THROW(manager.loadCSSISpaceWeather(spaceWeather));
-        EXPECT_ANY_THROW(manager.loadCSSISpaceWeather(CSSISpaceWeather::Undefined()));
+        EXPECT_ANY_THROW(manager_.loadCSSISpaceWeather(spaceWeather));
+        EXPECT_ANY_THROW(manager_.loadCSSISpaceWeather(CSSISpaceWeather::Undefined()));
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, FetchLatestCSSISpaceWeather)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, FetchLatestCSSISpaceWeather)
 {
     {
-        Manager& manager = Manager::Get();
+        manager_.clearLocalRepository();
 
-        manager.reset();
-        manager.clearLocalRepository();
-
-        const File latestCSSISpaceWeather = manager.fetchLatestCSSISpaceWeather();
+        const File latestCSSISpaceWeather = manager_.fetchLatestCSSISpaceWeather();
 
         EXPECT_EQ("SW-Last5Years.csv", latestCSSISpaceWeather.getName());
         EXPECT_EQ(
@@ -520,7 +434,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, FetchLatest
         );
         EXPECT_EQ("CSSISpaceWeather", latestCSSISpaceWeather.getParentDirectory().getParentDirectory().getName());
         EXPECT_EQ(
-            manager.getLocalRepository().getPath().getNormalizedPath(),
+            manager_.getLocalRepository().getPath().getNormalizedPath(),
             latestCSSISpaceWeather.getParentDirectory()
                 .getParentDirectory()
                 .getParentDirectory()
@@ -530,59 +444,48 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, FetchLatest
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, Reset)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, Reset)
 {
     {
-        Manager& manager = Manager::Get();
+        manager_.reset();
 
-        manager.reset();
-
-        EXPECT_TRUE(manager.getCSSISpaceWeatherArray().isEmpty());
+        EXPECT_TRUE(manager_.getCSSISpaceWeatherArray().isEmpty());
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, ClearLocalRepository)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, ClearLocalRepository)
 {
     {
-        Manager& manager = Manager::Get();
+        manager_.clearLocalRepository();
 
-        manager.clearLocalRepository();
-
-        EXPECT_TRUE(manager.getCSSISpaceWeatherDirectory().isEmpty());
+        EXPECT_TRUE(manager_.getCSSISpaceWeatherDirectory().isEmpty());
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, Get)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, Get)
 {
     {
         EXPECT_NO_THROW(Manager::Get());
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, DefaultMode)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, DefaultMode)
 {
     {
         EXPECT_EQ(Manager::Mode::Automatic, Manager::DefaultMode());
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, DefaultLocalRepository)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, DefaultLocalRepository)
 {
     {
         EXPECT_EQ("earth", Manager::DefaultLocalRepository().getName());
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, DefaultLocalRepositoryLockTimeout)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, DefaultLocalRepositoryLockTimeout)
 {
     {
         EXPECT_EQ(Duration::Seconds(60.0), Manager::DefaultLocalRepositoryLockTimeout());
-    }
-}
-
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, DefaultRemoteUrl)
-{
-    {
-        EXPECT_EQ(URL::Parse("https://celestrak.org/SpaceData/"), Manager::DefaultRemoteUrl());
     }
 }

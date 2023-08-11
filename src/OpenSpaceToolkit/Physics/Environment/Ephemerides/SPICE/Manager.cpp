@@ -37,6 +37,7 @@ using ostk::io::ip::tcp::http::Client;
 
 const String temporaryDirectoryName = "tmp";
 
+// [TBI]: this path can be obtained from the manifest
 const String spiceFilesRemotePath = "environment/ephemerides/spice/";
 
 Manager& Manager::Get()
