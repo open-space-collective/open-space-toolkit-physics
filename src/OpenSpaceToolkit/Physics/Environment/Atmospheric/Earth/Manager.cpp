@@ -320,6 +320,10 @@ void Manager::reset()
     CSSISpaceWeatherUpdateTimestamp_ = Instant::Undefined();
 
     CSSISpaceWeatherArray_.clear();
+
+    localRepository_ = DefaultLocalRepository();
+    localRepositoryLockTimeout_ = DefaultLocalRepositoryLockTimeout();
+    mode_ = DefaultMode();
 }
 
 void Manager::clearLocalRepository()
