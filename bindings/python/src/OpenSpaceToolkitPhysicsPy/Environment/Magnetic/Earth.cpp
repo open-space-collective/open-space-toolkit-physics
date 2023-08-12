@@ -3,6 +3,8 @@
 #include <OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp>
 
+#include <OpenSpaceToolkitPhysicsPy/Environment/Magnetic/Earth/Manager.cpp>
+
 inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth(pybind11::module& aModule)
 {
     using namespace pybind11;
@@ -43,23 +45,11 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth(pybind11::modul
 
         ;
 
-    class_<Manager>(aModule, "Manager")
+    // Create "earth" python submodule
+    auto earth = aModule.def_submodule("earth");
 
-        .def("is_enabled", &Manager::isEnabled)
-        .def("has_data_file_for_type", &Manager::hasDataFileForType)
+    // Add __path__ attribute for "earth" submodule
+    earth.attr("__path__") = "ostk.physics.environment.magnetic.earth";
 
-        .def("get_local_repository", &Manager::getLocalRepository)
-        .def("get_remote_url", &Manager::getRemoteUrl)
-        .def("fetch_data_file_for_type", &Manager::fetchDataFileForType)
-        .def("set_local_repository", &Manager::setLocalRepository)
-        .def("set_remote_url", &Manager::setRemoteUrl)
-        .def("enable", &Manager::enable)
-        .def("disable", &Manager::disable)
-
-        // .def("get", &Manager::Get, return_value_policy<reference_existing_object>()).staticmethod("get")
-        .def_static("get", &Manager::Get, return_value_policy::reference)
-        .def_static("default_local_repository", &Manager::DefaultLocalRepository)
-        .def_static("default_remote_url", &Manager::DefaultRemoteUrl)
-
-        ;
+    OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth_Manager(earth);
 }
