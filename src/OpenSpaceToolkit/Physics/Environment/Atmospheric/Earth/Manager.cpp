@@ -88,7 +88,7 @@ Array<CSSISpaceWeather> Manager::getCSSISpaceWeatherArray() const
 CSSISpaceWeather Manager::getCSSISpaceWeatherAt(const Instant& anInstant) const
 {
     std::lock_guard<std::mutex> lock {mutex_};
-    std::cout << "fetching for instant: " << anInstant << std::endl;
+
     const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt(anInstant);
 
     if (CSSISpaceWeatherPtr != nullptr)
