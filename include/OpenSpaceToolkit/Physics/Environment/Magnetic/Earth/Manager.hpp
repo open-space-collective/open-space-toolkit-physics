@@ -20,7 +20,7 @@
 
 #define OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_MODE Manager::Mode::Automatic
 #define OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY \
-    "./.open-space-toolkit/physics/environment/magnetic/earth"
+    "./.open-space-toolkit/physics/data/environment/magnetic/earth"
 #define OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT 60
 
 namespace ostk

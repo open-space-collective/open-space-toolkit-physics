@@ -208,23 +208,16 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetPola
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetPolarMotionAt_Future)
 {
-    using ostk::core::types::Real;
-    using ostk::core::types::String;
-    using ostk::core::ctnr::Tuple;
-    using ostk::core::ctnr::Array;
-    using ostk::core::ctnr::Table;
-
-    using ostk::math::obj::Vector2d;
-
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::time::Duration;
-
     {
         const Instant instant = Instant::Now() + Duration::Weeks(12.0);
 
         manager_.getPolarMotionAt(instant);
+    }
+
+    {
+        const Instant instant = Instant::Now() + Duration::Weeks(53.0);
+
+        EXPECT_THROW(manager_.getPolarMotionAt(instant), ostk::core::error::RuntimeError);
     }
 }
 

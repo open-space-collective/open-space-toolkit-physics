@@ -167,7 +167,14 @@ Vector2d Manager::getPolarMotionAt(const Instant& anInstant) const
 
     if (finals2000aPtr != nullptr)
     {
-        return finals2000aPtr->getPolarMotionAt(anInstant);
+        const Vector2d polarMotion = finals2000aPtr->getPolarMotionAt(anInstant);
+        if (!polarMotion.isDefined())
+        {
+            throw ostk::core::error::RuntimeError(
+                "Cannot obtain polar motion from Finals2000a at [{}].", anInstant.toString()
+            );
+        }
+        return polarMotion;
     }
 
     throw ostk::core::error::RuntimeError("Cannot obtain polar motion at [{}].", anInstant.toString());

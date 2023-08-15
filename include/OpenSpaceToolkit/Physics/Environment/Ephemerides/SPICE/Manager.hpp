@@ -22,7 +22,7 @@
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
 #define OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY \
-    "./.open-space-toolkit/physics/environment/ephemerides/spice"
+    "./.open-space-toolkit/physics/data/environment/ephemerides/spice"
 
 namespace ostk
 {
