@@ -18,20 +18,14 @@
 \begin{DoxyCompactList}\small\item\em Copy assignment operator (deleted) \end{DoxyCompactList}\item 
 Directory \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a5b214027763ff5425dd488bb25c45d82}{get\+Local\+Repository}} () const
 \begin{DoxyCompactList}\small\item\em Get local repository. \end{DoxyCompactList}\item 
-U\+RL \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_ac8e69ec64b7f287eaded8bb10cdd5996}{get\+Remote\+Url}} () const
-\begin{DoxyCompactList}\small\item\em Get remote U\+RL. \end{DoxyCompactList}\item 
-File \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a64f056cb9d851c9cf0842db81d85d468}{get\+Index\+File}} () const
-\begin{DoxyCompactList}\small\item\em Get index file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a6a3b6a49dfc44fc7f5545e55e8ef4e19}{set\+Local\+Repository}} (const Directory \&a\+Directory)
+\begin{DoxyCompactList}\small\item\em Set local repository. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a7c32b7266846a0c0d0471bff27d7ce21}{fetch\+Kernel}} (const \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel}} \&a\+Kernel) const
 \begin{DoxyCompactList}\small\item\em Fetch kernel from remote. \end{DoxyCompactList}\item 
-Array$<$ \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel}} $>$ \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a5a539eb56558f1a0d6dfe1389760459f}{fetch\+Matching\+Kernels}} (const std\+::regex \&a\+Regex) const
+Array$<$ \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel}} $>$ \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_ac695fda790f6a254a8ca4169dba43eca}{fetch\+Matching\+Kernels}} (const String \&a\+Regex\+String) const
 \begin{DoxyCompactList}\small\item\em Fetch kernels matching regular expression. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel}} \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a503ce578696267c90cfdb39b199b41c2}{find\+Kernel}} (const String \&a\+Regex\+String) const
 \begin{DoxyCompactList}\small\item\em Find kernels matching regular expression. Search locally first, then remotely. Always return the first found. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a6a3b6a49dfc44fc7f5545e55e8ef4e19}{set\+Local\+Repository}} (const Directory \&a\+Directory)
-\begin{DoxyCompactList}\small\item\em Set local repository. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_aa5a020cb2245b5583086bb788428f5a6}{set\+Remote\+Url}} (const U\+RL \&a\+Remote\+Url)
-\begin{DoxyCompactList}\small\item\em Set remote U\+RL. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_ac8163df1e48cc4aa3cb21821e98d89f3}{refresh}} ()
 \begin{DoxyCompactList}\small\item\em Refresh manager. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
@@ -40,9 +34,7 @@ void \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_
 static \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager}{Manager}} \& \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a9662ac46fe23c562941b4ade980f30dd}{Get}} ()
 \begin{DoxyCompactList}\small\item\em Get manager singleton. \end{DoxyCompactList}\item 
 static Directory \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_ada263e74ec723c920f6a81ffb1fde181}{Default\+Local\+Repository}} ()
-\begin{DoxyCompactList}\small\item\em Get default local repository. \end{DoxyCompactList}\item 
-static U\+RL \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a7e30532e70e5e8fbbafc2e1dcdc411a8}{Default\+Remote\+Url}} ()
-\begin{DoxyCompactList}\small\item\em Get default remote U\+RL. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Get default local repository. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -53,9 +45,7 @@ static U\+RL \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_
                         The following environment variables can be defined:
 
                         - "OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY" will override
-                        "DefaultLocalRepository"
-                        - "OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_REMOTE_URL" will override
-                        "DefaultRemoteUrl" 
+                        "DefaultLocalRepository" 
 \end{DoxyVerb}
  
 
@@ -90,23 +80,6 @@ Get default local repository.
 \begin{DoxyReturn}{Returns}
 Default local repository 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a7e30532e70e5e8fbbafc2e1dcdc411a8}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a7e30532e70e5e8fbbafc2e1dcdc411a8}} 
-\index{ostk::physics::env::ephem::spice::Manager@{ostk::physics::env::ephem::spice::Manager}!DefaultRemoteUrl@{DefaultRemoteUrl}}
-\index{DefaultRemoteUrl@{DefaultRemoteUrl}!ostk::physics::env::ephem::spice::Manager@{ostk::physics::env::ephem::spice::Manager}}
-\doxysubsubsection{\texorpdfstring{DefaultRemoteUrl()}{DefaultRemoteUrl()}}
-{\footnotesize\ttfamily U\+RL ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager\+::\+Default\+Remote\+Url (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
-
-
-
-Get default remote U\+RL. 
-
-\begin{DoxyVerb}                Overriden by: OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_REMOTE_URL
-\end{DoxyVerb}
-
-
-\begin{DoxyReturn}{Returns}
-Default remote U\+RL 
-\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a7c32b7266846a0c0d0471bff27d7ce21}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a7c32b7266846a0c0d0471bff27d7ce21}} 
 \index{ostk::physics::env::ephem::spice::Manager@{ostk::physics::env::ephem::spice::Manager}!fetchKernel@{fetchKernel}}
 \index{fetchKernel@{fetchKernel}!ostk::physics::env::ephem::spice::Manager@{ostk::physics::env::ephem::spice::Manager}}
@@ -122,11 +95,11 @@ Fetch kernel from remote.
 \mbox{\texttt{ in}}  & {\em a\+Kernel} & A kernel \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a5a539eb56558f1a0d6dfe1389760459f}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a5a539eb56558f1a0d6dfe1389760459f}} 
+\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_ac695fda790f6a254a8ca4169dba43eca}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_ac695fda790f6a254a8ca4169dba43eca}} 
 \index{ostk::physics::env::ephem::spice::Manager@{ostk::physics::env::ephem::spice::Manager}!fetchMatchingKernels@{fetchMatchingKernels}}
 \index{fetchMatchingKernels@{fetchMatchingKernels}!ostk::physics::env::ephem::spice::Manager@{ostk::physics::env::ephem::spice::Manager}}
 \doxysubsubsection{\texorpdfstring{fetchMatchingKernels()}{fetchMatchingKernels()}}
-{\footnotesize\ttfamily Array$<$ \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel}} $>$ ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager\+::fetch\+Matching\+Kernels (\begin{DoxyParamCaption}\item[{const std\+::regex \&}]{a\+Regex }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily Array$<$ \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel}} $>$ ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager\+::fetch\+Matching\+Kernels (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Regex\+String }\end{DoxyParamCaption}) const}
 
 
 
@@ -134,7 +107,7 @@ Fetch kernels matching regular expression.
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em a\+Regex} & A regular expression \\
+\mbox{\texttt{ in}}  & {\em a\+Regex\+String} & A regular expression string \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -152,7 +125,7 @@ Find kernels matching regular expression. Search locally first, then remotely. A
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em a\+Regex} & A regular expression \\
+\mbox{\texttt{ in}}  & {\em a\+Regex\+String} & A regular expression \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -171,19 +144,6 @@ Get manager singleton.
 \begin{DoxyReturn}{Returns}
 Reference to manager 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a64f056cb9d851c9cf0842db81d85d468}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a64f056cb9d851c9cf0842db81d85d468}} 
-\index{ostk::physics::env::ephem::spice::Manager@{ostk::physics::env::ephem::spice::Manager}!getIndexFile@{getIndexFile}}
-\index{getIndexFile@{getIndexFile}!ostk::physics::env::ephem::spice::Manager@{ostk::physics::env::ephem::spice::Manager}}
-\doxysubsubsection{\texorpdfstring{getIndexFile()}{getIndexFile()}}
-{\footnotesize\ttfamily File ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager\+::get\+Index\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-
-
-Get index file. 
-
-\begin{DoxyReturn}{Returns}
-\mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_index}{Index}} file 
-\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a5b214027763ff5425dd488bb25c45d82}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a5b214027763ff5425dd488bb25c45d82}} 
 \index{ostk::physics::env::ephem::spice::Manager@{ostk::physics::env::ephem::spice::Manager}!getLocalRepository@{getLocalRepository}}
 \index{getLocalRepository@{getLocalRepository}!ostk::physics::env::ephem::spice::Manager@{ostk::physics::env::ephem::spice::Manager}}
@@ -196,19 +156,6 @@ Get local repository.
 
 \begin{DoxyReturn}{Returns}
 Local repository 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_ac8e69ec64b7f287eaded8bb10cdd5996}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_ac8e69ec64b7f287eaded8bb10cdd5996}} 
-\index{ostk::physics::env::ephem::spice::Manager@{ostk::physics::env::ephem::spice::Manager}!getRemoteUrl@{getRemoteUrl}}
-\index{getRemoteUrl@{getRemoteUrl}!ostk::physics::env::ephem::spice::Manager@{ostk::physics::env::ephem::spice::Manager}}
-\doxysubsubsection{\texorpdfstring{getRemoteUrl()}{getRemoteUrl()}}
-{\footnotesize\ttfamily U\+RL ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager\+::get\+Remote\+Url (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-
-
-Get remote U\+RL. 
-
-\begin{DoxyReturn}{Returns}
-Remote U\+RL 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a07113610331854fbf1b2376790703b48}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_a07113610331854fbf1b2376790703b48}} 
 \index{ostk::physics::env::ephem::spice::Manager@{ostk::physics::env::ephem::spice::Manager}!operator=@{operator=}}
@@ -245,21 +192,6 @@ Set local repository.
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\texttt{ in}}  & {\em a\+Directory} & A repository directory \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_aa5a020cb2245b5583086bb788428f5a6}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager_aa5a020cb2245b5583086bb788428f5a6}} 
-\index{ostk::physics::env::ephem::spice::Manager@{ostk::physics::env::ephem::spice::Manager}!setRemoteUrl@{setRemoteUrl}}
-\index{setRemoteUrl@{setRemoteUrl}!ostk::physics::env::ephem::spice::Manager@{ostk::physics::env::ephem::spice::Manager}}
-\doxysubsubsection{\texorpdfstring{setRemoteUrl()}{setRemoteUrl()}}
-{\footnotesize\ttfamily void ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manager\+::set\+Remote\+Url (\begin{DoxyParamCaption}\item[{const U\+RL \&}]{a\+Remote\+Url }\end{DoxyParamCaption})}
-
-
-
-Set remote U\+RL. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em a\+Remote\+Url} & A remote U\+RL \\
 \hline
 \end{DoxyParams}
 

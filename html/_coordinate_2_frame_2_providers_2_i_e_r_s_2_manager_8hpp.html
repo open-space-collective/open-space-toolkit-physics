@@ -93,7 +93,6 @@ $(document).ready(function(){initNavTree('_coordinate_2_frame_2_providers_2_i_e_
 <code>#include &lt;OpenSpaceToolkit/Core/FileSystem/Directory.hpp&gt;</code><br />
 <code>#include &lt;OpenSpaceToolkit/Core/Types/Index.hpp&gt;</code><br />
 <code>#include &lt;OpenSpaceToolkit/Core/Types/Real.hpp&gt;</code><br />
-<code>#include &lt;OpenSpaceToolkit/IO/URL.hpp&gt;</code><br />
 <code>#include &lt;OpenSpaceToolkit/Mathematics/Objects/Vector.hpp&gt;</code><br />
 <code>#include &lt;<a class="el" href="_bulletin_a_8hpp_source.html">OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/BulletinA.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="_finals2000_a_8hpp_source.html">OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Finals2000A.hpp</a>&gt;</code><br />
@@ -129,12 +128,10 @@ Macros</h2></td></tr>
 <tr class="memitem:a3171e673dc92ea353d731f7b892febad"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_coordinate_2_frame_2_providers_2_i_e_r_s_2_manager_8hpp.html#a3171e673dc92ea353d731f7b892febad">OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE</a>&#160;&#160;&#160;Manager::Mode::Automatic</td></tr>
 <tr class="memdesc:a3171e673dc92ea353d731f7b892febad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apache License 2.0.  <a href="_coordinate_2_frame_2_providers_2_i_e_r_s_2_manager_8hpp.html#a3171e673dc92ea353d731f7b892febad">More...</a><br /></td></tr>
 <tr class="separator:a3171e673dc92ea353d731f7b892febad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a960df0d68d8ce9293d7d0989feb74486"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_coordinate_2_frame_2_providers_2_i_e_r_s_2_manager_8hpp.html#a960df0d68d8ce9293d7d0989feb74486">OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY</a>&#160;&#160;&#160;&quot;./.open-space-toolkit/physics/coordinate/frame/providers/iers&quot;</td></tr>
+<tr class="memitem:a960df0d68d8ce9293d7d0989feb74486"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_coordinate_2_frame_2_providers_2_i_e_r_s_2_manager_8hpp.html#a960df0d68d8ce9293d7d0989feb74486">OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY</a>&#160;&#160;&#160;&quot;./.open-space-toolkit/physics/data/coordinate/frame/providers/iers&quot;</td></tr>
 <tr class="separator:a960df0d68d8ce9293d7d0989feb74486"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0228d6263bbd13e70fd17f3f1f269d67"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_coordinate_2_frame_2_providers_2_i_e_r_s_2_manager_8hpp.html#a0228d6263bbd13e70fd17f3f1f269d67">OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT</a>&#160;&#160;&#160;60</td></tr>
 <tr class="separator:a0228d6263bbd13e70fd17f3f1f269d67"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64a4f2d71925653b361114787bc5434c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_coordinate_2_frame_2_providers_2_i_e_r_s_2_manager_8hpp.html#a64a4f2d71925653b361114787bc5434c">OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL</a>&#160;&#160;&#160;&quot;https://maia.usno.navy.mil/ser7/&quot;</td></tr>
-<tr class="separator:a64a4f2d71925653b361114787bc5434c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a960df0d68d8ce9293d7d0989feb74486"></a>
@@ -144,7 +141,7 @@ Macros</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY&#160;&#160;&#160;&quot;./.open-space-toolkit/physics/coordinate/frame/providers/iers&quot;</td>
+          <td class="memname">#define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY&#160;&#160;&#160;&quot;./.open-space-toolkit/physics/data/coordinate/frame/providers/iers&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -178,20 +175,6 @@ Macros</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Apache License 2.0. </p>
-
-</div>
-</div>
-<a id="a64a4f2d71925653b361114787bc5434c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a64a4f2d71925653b361114787bc5434c">&#9670;&nbsp;</a></span>OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL&#160;&#160;&#160;&quot;https://maia.usno.navy.mil/ser7/&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
 
 </div>
 </div>

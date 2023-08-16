@@ -23,20 +23,20 @@ enum \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_a
 \begin{DoxyCompactList}\small\item\em Copy constructor (deleted) \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine}{Engine}} \& \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_a807af40bbe562341a66abb875fa3ab9f}{operator=}} (const \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine}{Engine}} \&a\+Spice\+Engine)=delete
 \begin{DoxyCompactList}\small\item\em Copy assignment operator (deleted) \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_aeb4efb8c50f73b90083ebd7d8a5e317f}{is\+Kernel\+Loaded}} (const \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel}} \&a\+Kernel) const
-\begin{DoxyCompactList}\small\item\em Returns true if kernel is loaded. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_ad459dacf25f4ba08089b5d1111ca7814}{reset}} ()
+\begin{DoxyCompactList}\small\item\em Reset engine. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_a803b82d8f41c81e861852098b6b75ae2}{Engine\+::\+Mode}} \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_af7d9d424721bc7bc9d634c00699c897c}{get\+Mode}} () const
 \begin{DoxyCompactList}\small\item\em Get engine mode. \end{DoxyCompactList}\item 
-Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_aeffd094033f2bd2c276b9d9a9840d7ea}{get\+Frame\+Of}} (const \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e_ae84db78d858cdd0a1dc3ff53090f4a1f}{S\+P\+I\+C\+E\+::\+Object}} \&a\+Spice\+Object) const
-\begin{DoxyCompactList}\small\item\em Get frame of \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e}{S\+P\+I\+CE}} object. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_a5927d9c72c81334dcb0d8fa9ba20158e}{set\+Mode}} (const \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_a803b82d8f41c81e861852098b6b75ae2}{Engine\+::\+Mode}} \&a\+Mode)
 \begin{DoxyCompactList}\small\item\em Set engine mode. \end{DoxyCompactList}\item 
+Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_aeffd094033f2bd2c276b9d9a9840d7ea}{get\+Frame\+Of}} (const \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e_ae84db78d858cdd0a1dc3ff53090f4a1f}{S\+P\+I\+C\+E\+::\+Object}} \&a\+Spice\+Object) const
+\begin{DoxyCompactList}\small\item\em Get frame of \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e}{S\+P\+I\+CE}} object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_aeb4efb8c50f73b90083ebd7d8a5e317f}{is\+Kernel\+Loaded}} (const \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel}} \&a\+Kernel) const
+\begin{DoxyCompactList}\small\item\em Returns true if kernel is loaded. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_aa1aa0d1e376b18899c603950a2d43589}{load\+Kernel}} (const \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel}} \&a\+Kernel)
 \begin{DoxyCompactList}\small\item\em Load kernel. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_a6aa17a14f23f01dddba741a55307b8f9}{unload\+Kernel}} (const \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel}} \&a\+Kernel)
-\begin{DoxyCompactList}\small\item\em Unload kernel. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_ad459dacf25f4ba08089b5d1111ca7814}{reset}} ()
-\begin{DoxyCompactList}\small\item\em Reset engine. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Unload kernel. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -44,7 +44,7 @@ static \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine
 \begin{DoxyCompactList}\small\item\em Get engine singleton. \end{DoxyCompactList}\item 
 static \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_a803b82d8f41c81e861852098b6b75ae2}{Engine\+::\+Mode}} \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_a6b8bdf7ead864216cd07fc9d81fab39b}{Default\+Mode}} ()
 \begin{DoxyCompactList}\small\item\em Get default engine mode. \end{DoxyCompactList}\item 
-static Array$<$ \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel}} $>$ \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_a719948b0aaa86f50f832db8488c5b1f2}{Default\+Kernels}} (const Directory \&a\+Local\+Repository)
+static Array$<$ \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel}} $>$ \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_a81311cb9ebd5c146b2991638152b226c}{Default\+Kernels}} ()
 \begin{DoxyCompactList}\small\item\em Get default kernels. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Friends}
 \begin{DoxyCompactItemize}
@@ -99,21 +99,16 @@ Copy constructor (deleted)
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_a719948b0aaa86f50f832db8488c5b1f2}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_a719948b0aaa86f50f832db8488c5b1f2}} 
+\mbox{\Hypertarget{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_a81311cb9ebd5c146b2991638152b226c}\label{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine_a81311cb9ebd5c146b2991638152b226c}} 
 \index{ostk::physics::env::ephem::spice::Engine@{ostk::physics::env::ephem::spice::Engine}!DefaultKernels@{DefaultKernels}}
 \index{DefaultKernels@{DefaultKernels}!ostk::physics::env::ephem::spice::Engine@{ostk::physics::env::ephem::spice::Engine}}
 \doxysubsubsection{\texorpdfstring{DefaultKernels()}{DefaultKernels()}}
-{\footnotesize\ttfamily Array$<$ \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel}} $>$ ostk\+::physics\+::env\+::ephem\+::spice\+::\+Engine\+::\+Default\+Kernels (\begin{DoxyParamCaption}\item[{const Directory \&}]{a\+Local\+Repository }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily Array$<$ \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel}{Kernel}} $>$ ostk\+::physics\+::env\+::ephem\+::spice\+::\+Engine\+::\+Default\+Kernels (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
 Get default kernels. 
 
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em a\+Local\+Repository} & A local repository \\
-\hline
-\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Default kernels 
 \end{DoxyReturn}

@@ -82,6 +82,7 @@ $(document).ready(function(){initNavTree('_coordinate_2_frame_2_providers_2_i_e_
 <div class="header">
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">Manager.cpp File Reference</div>  </div>
@@ -100,8 +101,9 @@ $(document).ready(function(){initNavTree('_coordinate_2_frame_2_providers_2_i_e_
 <code>#include &lt;OpenSpaceToolkit/Core/Utilities.hpp&gt;</code><br />
 <code>#include &lt;OpenSpaceToolkit/IO/IP/TCP/HTTP/Client.hpp&gt;</code><br />
 <code>#include &lt;<a class="el" href="_coordinate_2_frame_2_providers_2_i_e_r_s_2_manager_8hpp_source.html">OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Manager.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="_data_2_manager_8hpp_source.html">OpenSpaceToolkit/Physics/Data/Manager.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="_manifest_8hpp_source.html">OpenSpaceToolkit/Physics/Data/Manifest.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="_date_8hpp_source.html">OpenSpaceToolkit/Physics/Time/Date.hpp</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="_date_time_8hpp_source.html">OpenSpaceToolkit/Physics/Time/DateTime.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="_instant_8hpp_source.html">OpenSpaceToolkit/Physics/Time/Instant.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="_scale_8hpp_source.html">OpenSpaceToolkit/Physics/Time/Scale.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="_time_2_time_8hpp_source.html">OpenSpaceToolkit/Physics/Time/Time.hpp</a>&gt;</code><br />
@@ -123,12 +125,25 @@ Namespaces</h2></td></tr>
 <tr class="memitem:namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers.html">ostk::physics::coord::frame::provider::iers</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a117f5e0d2d79c3977bf301dcfd819d87"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers.html#a117f5e0d2d79c3977bf301dcfd819d87">ostk::physics::coord::frame::provider::iers::ManifestManager</a> = <a class="el" href="classostk_1_1physics_1_1data_1_1_manager.html">ostk::physics::data::Manager</a></td></tr>
+<tr class="separator:a117f5e0d2d79c3977bf301dcfd819d87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a5cb43c38a8bca47ff425a549b839ba52"><td class="memItemLeft" align="right" valign="top">const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers.html#a5cb43c38a8bca47ff425a549b839ba52">ostk::physics::coord::frame::provider::iers::bulletinAFileName</a> = &quot;ser7.dat&quot;</td></tr>
 <tr class="separator:a5cb43c38a8bca47ff425a549b839ba52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afaf60ac8fac4be315f2b944146314aab"><td class="memItemLeft" align="right" valign="top">const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers.html#afaf60ac8fac4be315f2b944146314aab">ostk::physics::coord::frame::provider::iers::finals2000AFileName</a> = &quot;finals2000A.data&quot;</td></tr>
 <tr class="separator:afaf60ac8fac4be315f2b944146314aab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2fd26895f959e661d82fcec5874ff63"><td class="memItemLeft" align="right" valign="top">const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers.html#ac2fd26895f959e661d82fcec5874ff63">ostk::physics::coord::frame::provider::iers::bulletinAManifestName</a> = &quot;bulletin-A&quot;</td></tr>
+<tr class="separator:ac2fd26895f959e661d82fcec5874ff63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb9aa3fd81706a5e7162d1909295c764"><td class="memItemLeft" align="right" valign="top">const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers.html#adb9aa3fd81706a5e7162d1909295c764">ostk::physics::coord::frame::provider::iers::finals2000AManifestName</a> = &quot;finals-2000A&quot;</td></tr>
+<tr class="separator:adb9aa3fd81706a5e7162d1909295c764"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acdc3a477dad23d8d24a1d5f23d14a976"><td class="memItemLeft" align="right" valign="top">const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers.html#acdc3a477dad23d8d24a1d5f23d14a976">ostk::physics::coord::frame::provider::iers::bulletinARemotePath</a> = &quot;coordinate/frame/providers/iers/bulletin-A/&quot;</td></tr>
+<tr class="separator:acdc3a477dad23d8d24a1d5f23d14a976"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7331706234317c8539ae76a0ce6ddca1"><td class="memItemLeft" align="right" valign="top">const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers.html#a7331706234317c8539ae76a0ce6ddca1">ostk::physics::coord::frame::provider::iers::finals2000ARemotePath</a> = &quot;coordinate/frame/providers/iers/finals-2000A/&quot;</td></tr>
+<tr class="separator:a7331706234317c8539ae76a0ce6ddca1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf91c1c8fbc2cd95d50b48f2a5cc03f2"><td class="memItemLeft" align="right" valign="top">const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers.html#adf91c1c8fbc2cd95d50b48f2a5cc03f2">ostk::physics::coord::frame::provider::iers::temporaryDirectoryName</a> = &quot;tmp&quot;</td></tr>
 <tr class="separator:adf91c1c8fbc2cd95d50b48f2a5cc03f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>

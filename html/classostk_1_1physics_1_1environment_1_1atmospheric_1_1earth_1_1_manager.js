@@ -16,10 +16,8 @@ var classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager =
     [ "getKp3HourSolarIndicesAt", "classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager.html#abdc9fe89857a527509bb8ffd735f21fb", null ],
     [ "getLocalRepository", "classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager.html#ae1c050b423dd38a377a9b9ba443196b2", null ],
     [ "getMode", "classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager.html#ac8bac4ffcd6033a245223fd4b5dbc133", null ],
-    [ "getRemoteUrl", "classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager.html#aeb8317450c41bcc20472a3b5265e854d", null ],
     [ "loadCSSISpaceWeather", "classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager.html#addd98227dfc221b1442a65f5130655f6", null ],
     [ "reset", "classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager.html#a410bf7e2e257ea8574b61b97f1b7ecc7", null ],
     [ "setLocalRepository", "classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager.html#aa44772191af633118e285df34ca19da4", null ],
-    [ "setMode", "classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager.html#a0d596978b0060e3735d86afe4e4c5d6d", null ],
-    [ "setRemoteUrl", "classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager.html#add965a969e22b48256e9d2143daeb66e", null ]
+    [ "setMode", "classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager.html#a0d596978b0060e3735d86afe4e4c5d6d", null ]
 ];

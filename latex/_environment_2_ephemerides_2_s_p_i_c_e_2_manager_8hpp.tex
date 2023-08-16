@@ -10,8 +10,8 @@
 {\ttfamily \#include $<$Open\+Space\+Toolkit/\+I\+O/\+U\+R\+L.\+hpp$>$}\newline
 {\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame.\+hpp$>$}\newline
 {\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Transform.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Data/\+Manager.\+hpp$>$}\newline
 {\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Environment/\+Ephemerides/\+S\+P\+I\+C\+E.\+hpp$>$}\newline
-{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Environment/\+Ephemerides/\+S\+P\+I\+C\+E/\+Index.\+hpp$>$}\newline
 {\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Environment/\+Ephemerides/\+S\+P\+I\+C\+E/\+Kernel.\+hpp$>$}\newline
 {\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Time/\+Instant.\+hpp$>$}\newline
 \doxysubsection*{Classes}
@@ -35,9 +35,12 @@ class \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager
 \doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \mbox{\hyperlink{_environment_2_ephemerides_2_s_p_i_c_e_2_manager_8hpp_a2e07c6f247fa39906bb24fdfd26264ee}{O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+E\+P\+H\+E\+M\+E\+R\+I\+D\+E\+S\+\_\+\+S\+P\+I\+C\+E\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+RY}}~\char`\"{}./.open-\/space-\/toolkit/physics/environment/ephemerides/spice\char`\"{}
-\begin{DoxyCompactList}\small\item\em Apache License 2.\+0. \end{DoxyCompactList}\item 
-\#define \mbox{\hyperlink{_environment_2_ephemerides_2_s_p_i_c_e_2_manager_8hpp_af6b7143dfa75a7dcc65f3e6ba3cd44f1}{O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+E\+P\+H\+E\+M\+E\+R\+I\+D\+E\+S\+\_\+\+S\+P\+I\+C\+E\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+R\+E\+M\+O\+T\+E\+\_\+\+U\+RL}}~\char`\"{}https\+://naif.\+jpl.\+nasa.\+gov/pub/naif/generic\+\_\+kernels/\char`\"{}
+\#define \mbox{\hyperlink{_environment_2_ephemerides_2_s_p_i_c_e_2_manager_8hpp_a2e07c6f247fa39906bb24fdfd26264ee}{O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+E\+P\+H\+E\+M\+E\+R\+I\+D\+E\+S\+\_\+\+S\+P\+I\+C\+E\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+RY}}~\char`\"{}./.open-\/space-\/toolkit/physics/data/environment/ephemerides/spice\char`\"{}
+\begin{DoxyCompactList}\small\item\em Apache License 2.\+0. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{namespaceostk_1_1physics_1_1env_1_1ephem_1_1spice_a3747a0ee25b52a95010737a238dde5bb}{ostk\+::physics\+::env\+::ephem\+::spice\+::\+Manifest\+Manager}} = \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manager}{ostk\+::physics\+::data\+::\+Manager}}
 \end{DoxyCompactItemize}
 
 
@@ -46,15 +49,9 @@ class \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager
 \index{Manager.hpp@{Manager.hpp}!OSTK\_PHYSICS\_ENVIRONMENT\_EPHEMERIDES\_SPICE\_MANAGER\_LOCAL\_REPOSITORY@{OSTK\_PHYSICS\_ENVIRONMENT\_EPHEMERIDES\_SPICE\_MANAGER\_LOCAL\_REPOSITORY}}
 \index{OSTK\_PHYSICS\_ENVIRONMENT\_EPHEMERIDES\_SPICE\_MANAGER\_LOCAL\_REPOSITORY@{OSTK\_PHYSICS\_ENVIRONMENT\_EPHEMERIDES\_SPICE\_MANAGER\_LOCAL\_REPOSITORY}!Manager.hpp@{Manager.hpp}}
 \doxysubsubsection{\texorpdfstring{OSTK\_PHYSICS\_ENVIRONMENT\_EPHEMERIDES\_SPICE\_MANAGER\_LOCAL\_REPOSITORY}{OSTK\_PHYSICS\_ENVIRONMENT\_EPHEMERIDES\_SPICE\_MANAGER\_LOCAL\_REPOSITORY}}
-{\footnotesize\ttfamily \#define O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+E\+P\+H\+E\+M\+E\+R\+I\+D\+E\+S\+\_\+\+S\+P\+I\+C\+E\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+RY~\char`\"{}./.open-\/space-\/toolkit/physics/environment/ephemerides/spice\char`\"{}}
+{\footnotesize\ttfamily \#define O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+E\+P\+H\+E\+M\+E\+R\+I\+D\+E\+S\+\_\+\+S\+P\+I\+C\+E\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+RY~\char`\"{}./.open-\/space-\/toolkit/physics/data/environment/ephemerides/spice\char`\"{}}
 
 
 
 Apache License 2.\+0. 
-
-\mbox{\Hypertarget{_environment_2_ephemerides_2_s_p_i_c_e_2_manager_8hpp_af6b7143dfa75a7dcc65f3e6ba3cd44f1}\label{_environment_2_ephemerides_2_s_p_i_c_e_2_manager_8hpp_af6b7143dfa75a7dcc65f3e6ba3cd44f1}} 
-\index{Manager.hpp@{Manager.hpp}!OSTK\_PHYSICS\_ENVIRONMENT\_EPHEMERIDES\_SPICE\_MANAGER\_REMOTE\_URL@{OSTK\_PHYSICS\_ENVIRONMENT\_EPHEMERIDES\_SPICE\_MANAGER\_REMOTE\_URL}}
-\index{OSTK\_PHYSICS\_ENVIRONMENT\_EPHEMERIDES\_SPICE\_MANAGER\_REMOTE\_URL@{OSTK\_PHYSICS\_ENVIRONMENT\_EPHEMERIDES\_SPICE\_MANAGER\_REMOTE\_URL}!Manager.hpp@{Manager.hpp}}
-\doxysubsubsection{\texorpdfstring{OSTK\_PHYSICS\_ENVIRONMENT\_EPHEMERIDES\_SPICE\_MANAGER\_REMOTE\_URL}{OSTK\_PHYSICS\_ENVIRONMENT\_EPHEMERIDES\_SPICE\_MANAGER\_REMOTE\_URL}}
-{\footnotesize\ttfamily \#define O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+E\+P\+H\+E\+M\+E\+R\+I\+D\+E\+S\+\_\+\+S\+P\+I\+C\+E\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+R\+E\+M\+O\+T\+E\+\_\+\+U\+RL~\char`\"{}https\+://naif.\+jpl.\+nasa.\+gov/pub/naif/generic\+\_\+kernels/\char`\"{}}
 

@@ -61,7 +61,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('_index_8cpp.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('_data_2_manager_8cpp.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -82,16 +82,25 @@ $(document).ready(function(){initNavTree('_index_8cpp.html',''); initResizable()
 <div class="header">
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
-<div class="title">Index.cpp File Reference</div>  </div>
+<div class="title">Manager.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;OpenSpaceToolkit/Core/Containers/Dictionary.hpp&gt;</code><br />
-<code>#include &lt;OpenSpaceToolkit/Core/Containers/Object.hpp&gt;</code><br />
+<div class="textblock"><code>#include &lt;chrono&gt;</code><br />
+<code>#include &lt;cstdlib&gt;</code><br />
+<code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;numeric&gt;</code><br />
+<code>#include &lt;thread&gt;</code><br />
 <code>#include &lt;OpenSpaceToolkit/Core/Error.hpp&gt;</code><br />
+<code>#include &lt;OpenSpaceToolkit/Core/FileSystem/Path.hpp&gt;</code><br />
+<code>#include &lt;OpenSpaceToolkit/Core/Types/String.hpp&gt;</code><br />
 <code>#include &lt;OpenSpaceToolkit/Core/Utilities.hpp&gt;</code><br />
-<code>#include &lt;<a class="el" href="_index_8hpp_source.html">OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Index.hpp</a>&gt;</code><br />
+<code>#include &lt;OpenSpaceToolkit/IO/IP/TCP/HTTP/Client.hpp&gt;</code><br />
+<code>#include &lt;<a class="el" href="_data_2_manager_8hpp_source.html">OpenSpaceToolkit/Physics/Data/Manager.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="_manifest_8hpp_source.html">OpenSpaceToolkit/Physics/Data/Manifest.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="_instant_8hpp_source.html">OpenSpaceToolkit/Physics/Time/Instant.hpp</a>&gt;</code><br />
+<code>#include &lt;experimental/filesystem&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
@@ -100,17 +109,15 @@ Namespaces</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespaceostk_1_1physics"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceostk_1_1physics.html">ostk::physics</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:namespaceostk_1_1physics_1_1env"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceostk_1_1physics_1_1env.html">ostk::physics::env</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:namespaceostk_1_1physics_1_1env_1_1ephem"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceostk_1_1physics_1_1env_1_1ephem.html">ostk::physics::env::ephem</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:namespaceostk_1_1physics_1_1env_1_1ephem_1_1spice"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceostk_1_1physics_1_1env_1_1ephem_1_1spice.html">ostk::physics::env::ephem::spice</a></td></tr>
+<tr class="memitem:namespaceostk_1_1physics_1_1data"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceostk_1_1physics_1_1data.html">ostk::physics::data</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a4e4a1cb140a04b637f793e1bfb03eb02"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceostk_1_1physics_1_1env_1_1ephem_1_1spice.html#a4e4a1cb140a04b637f793e1bfb03eb02">ostk::physics::env::ephem::spice::operator&lt;&lt;</a> (std::ostream &amp;anOutputStream, const Index &amp;anIndex)</td></tr>
-<tr class="separator:a4e4a1cb140a04b637f793e1bfb03eb02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a0355e8f1c1c169ddc5bf8157845f7485"><td class="memItemLeft" align="right" valign="top">const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceostk_1_1physics_1_1data.html#a0355e8f1c1c169ddc5bf8157845f7485">ostk::physics::data::dataManifestFileName</a> = &quot;manifest.json&quot;</td></tr>
+<tr class="separator:a0355e8f1c1c169ddc5bf8157845f7485"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65d22827513124fc4e2dd80f5e30beea"><td class="memItemLeft" align="right" valign="top">const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceostk_1_1physics_1_1data.html#a65d22827513124fc4e2dd80f5e30beea">ostk::physics::data::temporaryDirectoryName</a> = &quot;tmp&quot;</td></tr>
+<tr class="separator:a65d22827513124fc4e2dd80f5e30beea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -118,7 +125,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdc2ce6839bd9a3b87630c53f2ae038b.html">OpenSpaceToolkit</a></li><li class="navelem"><a class="el" href="dir_0c308b368590d0cd120aebf39fe12303.html">Physics</a></li><li class="navelem"><a class="el" href="dir_d8fe80ea0401c4012082f0126d48c117.html">Environment</a></li><li class="navelem"><a class="el" href="dir_6807878b94cda7fcee23f055c94f20eb.html">Ephemerides</a></li><li class="navelem"><a class="el" href="dir_468d5cf884b4923eeda2102cf655c454.html">SPICE</a></li><li class="navelem"><a class="el" href="_index_8cpp.html">Index.cpp</a></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdc2ce6839bd9a3b87630c53f2ae038b.html">OpenSpaceToolkit</a></li><li class="navelem"><a class="el" href="dir_0c308b368590d0cd120aebf39fe12303.html">Physics</a></li><li class="navelem"><a class="el" href="dir_36420ff2cfb2bb5df943d64f9aecd268.html">Data</a></li><li class="navelem"><a class="el" href="_data_2_manager_8cpp.html">Manager.cpp</a></li>
   </ul>
 </div>
 </body>

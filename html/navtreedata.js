@@ -39,8 +39,8 @@ var NAVTREE =
         [ "Python", "index.html#autotoc_md9", null ]
       ] ],
       [ "Documentation", "index.html#autotoc_md10", null ],
-      [ "Tutorials", "index.html#autotoc_md11", null ],
-      [ "Settings", "index.html#autotoc_md12", null ],
+      [ "Data Management", "index.html#autotoc_md11", null ],
+      [ "Tutorials", "index.html#autotoc_md12", null ],
       [ "Setup", "index.html#autotoc_md13", [
         [ "Development Environment", "index.html#autotoc_md14", null ],
         [ "Build", "index.html#autotoc_md15", null ],
@@ -92,12 +92,12 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_a_e_r_8cpp.html",
-"_objects_2_celestial_bodies_2_moon_8hpp.html#afb39e52f5f405d447dae9362c9bdce04",
-"classostk_1_1physics_1_1coord_1_1frame_1_1_manager.html#af000e1deebf0cf7f08ffa54d0e2aa854",
-"classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_index.html#aa2bc4acdf1f1d209cb0fbe0f9a49a3f4",
-"classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#a30a064d87b6fce338e76aebd3043b6b6a164a99cca8995f690571ed8f964e6166",
-"classostk_1_1physics_1_1units_1_1_derived_1_1_unit.html#a925301080673e1eb527ea6dc1340b1bb",
-"namespace_n_r_l_m_s_i_s_e00__c.html"
+"_n_r_l_m_s_i_s_e00_8hpp_source.html",
+"classostk_1_1physics_1_1coord_1_1_velocity.html#a2e45f5a6e1025cd21a2f5fa61c6a940a",
+"classostk_1_1physics_1_1env_1_1_object.html#ad25fa65f1c35f11517d9ee4edca1e3dc",
+"classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun.html",
+"classostk_1_1physics_1_1units_1_1_angle.html#aea1f8018b1d378b9dee56959d8eb9defaad09b2d48b2811c68e5a2bf421f7f2f2",
+"functions_u.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

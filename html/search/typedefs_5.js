@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['magneticmodel_1596',['MagneticModel',['../namespaceostk_1_1physics_1_1env_1_1obj.html#a11552c1290e2f6b4693ea00c2df2c80d',1,'ostk::physics::env::obj']]],
-  ['moongravitationalmodel_1597',['MoonGravitationalModel',['../namespaceostk_1_1physics_1_1env_1_1obj_1_1celest.html#afb39e52f5f405d447dae9362c9bdce04',1,'ostk::physics::env::obj::celest']]]
+  ['magneticmodel_1638',['MagneticModel',['../namespaceostk_1_1physics_1_1env_1_1obj.html#a11552c1290e2f6b4693ea00c2df2c80d',1,'ostk::physics::env::obj']]],
+  ['manifestmanager_1639',['ManifestManager',['../namespaceostk_1_1physics_1_1env_1_1ephem_1_1spice.html#a3747a0ee25b52a95010737a238dde5bb',1,'ostk::physics::env::ephem::spice::ManifestManager()'],['../namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers.html#a117f5e0d2d79c3977bf301dcfd819d87',1,'ostk::physics::coord::frame::provider::iers::ManifestManager()'],['../namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth.html#a4e603bd4478a36f9ba98e33af0a1c892',1,'ostk::physics::environment::atmospheric::earth::ManifestManager()'],['../namespaceostk_1_1physics_1_1environment_1_1gravitational_1_1earth.html#a2e13b2276c83c5afaef4e9f94beb34af',1,'ostk::physics::environment::gravitational::earth::ManifestManager()'],['../namespaceostk_1_1physics_1_1environment_1_1magnetic_1_1earth.html#a952db0fe1db1d1c4608b3172fc2326b4',1,'ostk::physics::environment::magnetic::earth::ManifestManager()']]],
+  ['moongravitationalmodel_1640',['MoonGravitationalModel',['../namespaceostk_1_1physics_1_1env_1_1obj_1_1celest.html#afb39e52f5f405d447dae9362c9bdce04',1,'ostk::physics::env::obj::celest']]]
 ];

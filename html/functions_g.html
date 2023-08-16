@@ -106,6 +106,7 @@ $(document).ready(function(){initNavTree('functions_g.html',''); initResizable()
 <li>Get()
 : <a class="el" href="classostk_1_1physics_1_1coord_1_1frame_1_1_manager.html#a58450dcde801cd274f45fd000e5e6bd7">ostk::physics::coord::frame::Manager</a>
 , <a class="el" href="classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager.html#a1ce6a052108fc9345997b61200d33a09">ostk::physics::coord::frame::provider::iers::Manager</a>
+, <a class="el" href="classostk_1_1physics_1_1data_1_1_manager.html#ab898ae11749b5b14734b94b7c1ffbb4c">ostk::physics::data::Manager</a>
 , <a class="el" href="classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#a98ce9249db18853920308c699fbca541">ostk::physics::env::ephem::spice::Engine</a>
 , <a class="el" href="classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager.html#a9662ac46fe23c562941b4ade980f30dd">ostk::physics::env::ephem::spice::Manager</a>
 , <a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager.html#a7191d76b36870885e52e4084d81a9239">ostk::physics::environment::atmospheric::earth::Manager</a>
@@ -266,9 +267,6 @@ $(document).ready(function(){initNavTree('functions_g.html',''); initResizable()
 <li>getHours()
 : <a class="el" href="classostk_1_1physics_1_1time_1_1_duration.html#ac33d36a6a043ad71b0203b02b9ff961b">ostk::physics::time::Duration</a>
 </li>
-<li>getIndexFile()
-: <a class="el" href="classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager.html#a64f056cb9d851c9cf0842db81d85d468">ostk::physics::env::ephem::spice::Manager</a>
-</li>
 <li>getInstant()
 : <a class="el" href="classostk_1_1physics_1_1coord_1_1_transform.html#a65a2cf0c24e5e2320b828d9bfb461d17">ostk::physics::coord::Transform</a>
 , <a class="el" href="classostk_1_1physics_1_1_environment.html#a13c55249f309570bb9559191435c4a39">ostk::physics::Environment</a>
@@ -291,6 +289,10 @@ $(document).ready(function(){initNavTree('functions_g.html',''); initResizable()
 </li>
 <li>getKp3HourSolarIndicesAt()
 : <a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager.html#abdc9fe89857a527509bb8ffd735f21fb">ostk::physics::environment::atmospheric::earth::Manager</a>
+</li>
+<li>getLastUpdateTimestampFor()
+: <a class="el" href="classostk_1_1physics_1_1data_1_1_manager.html#a83ab8533b086420ea0e1c4f074150d9c">ostk::physics::data::Manager</a>
+, <a class="el" href="classostk_1_1physics_1_1data_1_1_manifest.html#a7c6bde6de73febc329b22e5c598911d8">ostk::physics::data::Manifest</a>
 </li>
 <li>getLatitude()
 : <a class="el" href="classostk_1_1physics_1_1coord_1_1spherical_1_1_l_l_a.html#a0b6d5f7409e1efbff0f01a9c00a876e8">ostk::physics::coord::spherical::LLA</a>
@@ -315,6 +317,15 @@ $(document).ready(function(){initNavTree('functions_g.html',''); initResizable()
 <li>getMagneticFieldAt()
 : <a class="el" href="classostk_1_1physics_1_1env_1_1obj_1_1_celestial.html#a10059ed29b825b39209016c21107ce3a">ostk::physics::env::obj::Celestial</a>
 </li>
+<li>getManifest()
+: <a class="el" href="classostk_1_1physics_1_1data_1_1_manager.html#a7eede6a7696007449e80ef935e3535fc">ostk::physics::data::Manager</a>
+</li>
+<li>getManifestRepository()
+: <a class="el" href="classostk_1_1physics_1_1data_1_1_manager.html#a45b5fd7544dbca212759813719ff1119">ostk::physics::data::Manager</a>
+</li>
+<li>getManifestRepositoryLockFile()
+: <a class="el" href="classostk_1_1physics_1_1data_1_1_manager.html#a849a27ea380ad87c65d137f07823dcf2">ostk::physics::data::Manager</a>
+</li>
 <li>getMicrosecond()
 : <a class="el" href="classostk_1_1physics_1_1time_1_1_time.html#acb4915ca99f2065f6d777d96833337db">ostk::physics::time::Time</a>
 </li>
@@ -337,6 +348,8 @@ $(document).ready(function(){initNavTree('functions_g.html',''); initResizable()
 : <a class="el" href="classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager.html#a00d80d91459b7d0fdac3c2dfed99d447">ostk::physics::coord::frame::provider::iers::Manager</a>
 , <a class="el" href="classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#af7d9d424721bc7bc9d634c00699c897c">ostk::physics::env::ephem::spice::Engine</a>
 , <a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager.html#ac8bac4ffcd6033a245223fd4b5dbc133">ostk::physics::environment::atmospheric::earth::Manager</a>
+, <a class="el" href="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager.html#aa4d100f163a5efca86fb560989b98349">ostk::physics::environment::gravitational::earth::Manager</a>
+, <a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager.html#a3f5c5b6dfbd4ff1202fee6adf0fc403b">ostk::physics::environment::magnetic::earth::Manager</a>
 </li>
 <li>getModifiedJulianDate()
 : <a class="el" href="classostk_1_1physics_1_1time_1_1_date_time.html#a8f2ca8f9d2a8e1828c8f92827e1803ca">ostk::physics::time::DateTime</a>
@@ -397,15 +410,12 @@ $(document).ready(function(){initNavTree('functions_g.html',''); initResizable()
 <li>getReleaseDate()
 : <a class="el" href="classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_a.html#add1754f08534bf855e8a30a0e9a02644">ostk::physics::coord::frame::provider::iers::BulletinA</a>
 </li>
-<li>getRemoteUrl()
-: <a class="el" href="classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager.html#aee0fdfd01bea7d3cb6edf90d25536ca0">ostk::physics::coord::frame::provider::iers::Manager</a>
-, <a class="el" href="classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager.html#ac8e69ec64b7f287eaded8bb10cdd5996">ostk::physics::env::ephem::spice::Manager</a>
-, <a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager.html#aeb8317450c41bcc20472a3b5265e854d">ostk::physics::environment::atmospheric::earth::Manager</a>
-, <a class="el" href="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager.html#aceec32c652632d1d785d1dfbfd655c01">ostk::physics::environment::gravitational::earth::Manager</a>
-, <a class="el" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager.html#afb13ee2d8dc23d825960f0f2657f6df9">ostk::physics::environment::magnetic::earth::Manager</a>
+<li>getRemoteDataUrls()
+: <a class="el" href="classostk_1_1physics_1_1data_1_1_manager.html#a5906207482cf7feb7582e95495cee76a">ostk::physics::data::Manager</a>
+, <a class="el" href="classostk_1_1physics_1_1data_1_1_manifest.html#a4d5bf1c7b5ad8ad0c42214fe0e621d7b">ostk::physics::data::Manifest</a>
 </li>
-<li>getRemoteUrlOfKernel()
-: <a class="el" href="classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_index.html#a486ec6dad159dfdee2436be60ba5eb20">ostk::physics::env::ephem::spice::Index</a>
+<li>getRemoteUrl()
+: <a class="el" href="classostk_1_1physics_1_1data_1_1_manager.html#ab1b10729b3001f9ff6a54b5286e975f2">ostk::physics::data::Manager</a>
 </li>
 <li>getSecond()
 : <a class="el" href="classostk_1_1physics_1_1time_1_1_time.html#afe4041426b008059853110b13e2802de">ostk::physics::time::Time</a>
@@ -434,9 +444,6 @@ $(document).ready(function(){initNavTree('functions_g.html',''); initResizable()
 </li>
 <li>getTime()
 : <a class="el" href="classostk_1_1physics_1_1time_1_1_date_time.html#ae1460f38a9e41c5c7e42874de571d9f9">ostk::physics::time::DateTime</a>
-</li>
-<li>getTimestamp()
-: <a class="el" href="classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_index.html#ac9084f3d77dbe04d460ee335907fab83">ostk::physics::env::ephem::spice::Index</a>
 </li>
 <li>getTransformAt()
 : <a class="el" href="classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1_c_i_r_f.html#a9a9cdbec164d2f54cfdaa2a1a62c3250">ostk::physics::coord::frame::provider::CIRF</a>

@@ -1,9 +1,6 @@
 var dir_d7213c0b545724990c33240bf27cc5c1 =
 [
     [ "Engine.hpp", "_engine_8hpp.html", "_engine_8hpp" ],
-    [ "Index.hpp", "_index_8hpp.html", [
-      [ "Index", "classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_index.html", "classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_index" ]
-    ] ],
     [ "Kernel.hpp", "_kernel_8hpp.html", [
       [ "Kernel", "classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel.html", "classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel" ]
     ] ],

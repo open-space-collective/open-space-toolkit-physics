@@ -90,12 +90,15 @@ $(document).ready(function(){initNavTree('_environment_2_magnetic_2_earth_2_mana
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;mutex&gt;</code><br />
+<code>#include &lt;OpenSpaceToolkit/Core/Containers/Array.hpp&gt;</code><br />
 <code>#include &lt;OpenSpaceToolkit/Core/FileSystem/Directory.hpp&gt;</code><br />
 <code>#include &lt;OpenSpaceToolkit/Core/FileSystem/File.hpp&gt;</code><br />
 <code>#include &lt;OpenSpaceToolkit/Core/FileSystem/Path.hpp&gt;</code><br />
 <code>#include &lt;OpenSpaceToolkit/Core/Types/String.hpp&gt;</code><br />
 <code>#include &lt;OpenSpaceToolkit/IO/URL.hpp&gt;</code><br />
 <code>#include &lt;<a class="el" href="_magnetic_2_earth_8hpp_source.html">OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="_duration_8hpp_source.html">OpenSpaceToolkit/Physics/Time/Duration.hpp</a>&gt;</code><br />
+<code>#include &lt;experimental/filesystem&gt;</code><br />
 </div>
 <p><a href="_environment_2_magnetic_2_earth_2_manager_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -121,13 +124,13 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a56dd403286766a93ff947d0add33a53d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_environment_2_magnetic_2_earth_2_manager_8hpp.html#a56dd403286766a93ff947d0add33a53d">OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_ENABLED</a>&#160;&#160;&#160;true</td></tr>
-<tr class="memdesc:a56dd403286766a93ff947d0add33a53d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apache License 2.0.  <a href="_environment_2_magnetic_2_earth_2_manager_8hpp.html#a56dd403286766a93ff947d0add33a53d">More...</a><br /></td></tr>
-<tr class="separator:a56dd403286766a93ff947d0add33a53d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae67b2809367251edddae2ff3f9a3a28d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_environment_2_magnetic_2_earth_2_manager_8hpp.html#ae67b2809367251edddae2ff3f9a3a28d">OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY</a>&#160;&#160;&#160;&quot;./.open-space-toolkit/physics/environment/magnetic/earth&quot;</td></tr>
+<tr class="memitem:a2812f143423e27e85bdbdd8ed615ae9b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_environment_2_magnetic_2_earth_2_manager_8hpp.html#a2812f143423e27e85bdbdd8ed615ae9b">OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_MODE</a>&#160;&#160;&#160;Manager::Mode::Automatic</td></tr>
+<tr class="memdesc:a2812f143423e27e85bdbdd8ed615ae9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apache License 2.0.  <a href="_environment_2_magnetic_2_earth_2_manager_8hpp.html#a2812f143423e27e85bdbdd8ed615ae9b">More...</a><br /></td></tr>
+<tr class="separator:a2812f143423e27e85bdbdd8ed615ae9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae67b2809367251edddae2ff3f9a3a28d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_environment_2_magnetic_2_earth_2_manager_8hpp.html#ae67b2809367251edddae2ff3f9a3a28d">OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY</a>&#160;&#160;&#160;&quot;./.open-space-toolkit/physics/data/environment/magnetic/earth&quot;</td></tr>
 <tr class="separator:ae67b2809367251edddae2ff3f9a3a28d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9adffc8f09e3fa9e24b859fe3427e2ac"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_environment_2_magnetic_2_earth_2_manager_8hpp.html#a9adffc8f09e3fa9e24b859fe3427e2ac">OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_REMOTE_URL</a>&#160;&#160;&#160;&quot;https://sourceforge.net/projects/geographiclib/files/magnetic-distrib/&quot;</td></tr>
-<tr class="separator:a9adffc8f09e3fa9e24b859fe3427e2ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3926cea31d52c590ff0d50ca9d96703"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_environment_2_magnetic_2_earth_2_manager_8hpp.html#aa3926cea31d52c590ff0d50ca9d96703">OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT</a>&#160;&#160;&#160;60</td></tr>
+<tr class="separator:aa3926cea31d52c590ff0d50ca9d96703"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -135,22 +138,6 @@ Typedefs</h2></td></tr>
 <tr class="separator:aa5edfbbbb546cd7f4fb0e546d98c6e68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a56dd403286766a93ff947d0add33a53d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a56dd403286766a93ff947d0add33a53d">&#9670;&nbsp;</a></span>OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_ENABLED</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_ENABLED&#160;&#160;&#160;true</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Apache License 2.0. </p>
-
-</div>
-</div>
 <a id="ae67b2809367251edddae2ff3f9a3a28d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae67b2809367251edddae2ff3f9a3a28d">&#9670;&nbsp;</a></span>OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY</h2>
 
@@ -158,24 +145,40 @@ Typedefs</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY&#160;&#160;&#160;&quot;./.open-space-toolkit/physics/environment/magnetic/earth&quot;</td>
+          <td class="memname">#define OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY&#160;&#160;&#160;&quot;./.open-space-toolkit/physics/data/environment/magnetic/earth&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a9adffc8f09e3fa9e24b859fe3427e2ac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9adffc8f09e3fa9e24b859fe3427e2ac">&#9670;&nbsp;</a></span>OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_REMOTE_URL</h2>
+<a id="aa3926cea31d52c590ff0d50ca9d96703"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3926cea31d52c590ff0d50ca9d96703">&#9670;&nbsp;</a></span>OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_REMOTE_URL&#160;&#160;&#160;&quot;https://sourceforge.net/projects/geographiclib/files/magnetic-distrib/&quot;</td>
+          <td class="memname">#define OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT&#160;&#160;&#160;60</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2812f143423e27e85bdbdd8ed615ae9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2812f143423e27e85bdbdd8ed615ae9b">&#9670;&nbsp;</a></span>OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_MODE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_MODE&#160;&#160;&#160;Manager::Mode::Automatic</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Apache License 2.0. </p>
 
 </div>
 </div>

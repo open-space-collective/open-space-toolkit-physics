@@ -90,12 +90,15 @@ $(document).ready(function(){initNavTree('_environment_2_gravitational_2_earth_2
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;mutex&gt;</code><br />
+<code>#include &lt;OpenSpaceToolkit/Core/Containers/Array.hpp&gt;</code><br />
 <code>#include &lt;OpenSpaceToolkit/Core/FileSystem/Directory.hpp&gt;</code><br />
 <code>#include &lt;OpenSpaceToolkit/Core/FileSystem/File.hpp&gt;</code><br />
 <code>#include &lt;OpenSpaceToolkit/Core/FileSystem/Path.hpp&gt;</code><br />
 <code>#include &lt;OpenSpaceToolkit/Core/Types/String.hpp&gt;</code><br />
 <code>#include &lt;OpenSpaceToolkit/IO/URL.hpp&gt;</code><br />
 <code>#include &lt;<a class="el" href="_gravitational_2_earth_8hpp_source.html">OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="_duration_8hpp_source.html">OpenSpaceToolkit/Physics/Time/Duration.hpp</a>&gt;</code><br />
+<code>#include &lt;experimental/filesystem&gt;</code><br />
 </div>
 <p><a href="_environment_2_gravitational_2_earth_2_manager_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -121,13 +124,13 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a14f2d1ecb0f1473d5a0daa945fa280f8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_environment_2_gravitational_2_earth_2_manager_8hpp.html#a14f2d1ecb0f1473d5a0daa945fa280f8">OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_ENABLED</a>&#160;&#160;&#160;true</td></tr>
-<tr class="memdesc:a14f2d1ecb0f1473d5a0daa945fa280f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apache License 2.0.  <a href="_environment_2_gravitational_2_earth_2_manager_8hpp.html#a14f2d1ecb0f1473d5a0daa945fa280f8">More...</a><br /></td></tr>
-<tr class="separator:a14f2d1ecb0f1473d5a0daa945fa280f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e91bfc068af91ffee46c1f24805fcc6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_environment_2_gravitational_2_earth_2_manager_8hpp.html#a3e91bfc068af91ffee46c1f24805fcc6">OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY</a>&#160;&#160;&#160;&quot;./.open-space-toolkit/physics/environment/gravitational/earth&quot;</td></tr>
+<tr class="memitem:acb99d4a1a2c880246d47b28c5788632d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_environment_2_gravitational_2_earth_2_manager_8hpp.html#acb99d4a1a2c880246d47b28c5788632d">OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_MODE</a>&#160;&#160;&#160;Manager::Mode::Automatic</td></tr>
+<tr class="memdesc:acb99d4a1a2c880246d47b28c5788632d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apache License 2.0.  <a href="_environment_2_gravitational_2_earth_2_manager_8hpp.html#acb99d4a1a2c880246d47b28c5788632d">More...</a><br /></td></tr>
+<tr class="separator:acb99d4a1a2c880246d47b28c5788632d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e91bfc068af91ffee46c1f24805fcc6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_environment_2_gravitational_2_earth_2_manager_8hpp.html#a3e91bfc068af91ffee46c1f24805fcc6">OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY</a>&#160;&#160;&#160;&quot;./.open-space-toolkit/physics/data/environment/gravitational/earth&quot;</td></tr>
 <tr class="separator:a3e91bfc068af91ffee46c1f24805fcc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a287cedd286d9a4dd54e1d54b381fbba2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_environment_2_gravitational_2_earth_2_manager_8hpp.html#a287cedd286d9a4dd54e1d54b381fbba2">OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_REMOTE_URL</a>&#160;&#160;&#160;&quot;https://sourceforge.net/projects/geographiclib/files/gravity-distrib/&quot;</td></tr>
-<tr class="separator:a287cedd286d9a4dd54e1d54b381fbba2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1eafbc80c81ac08cb0f5883fbd2192fd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_environment_2_gravitational_2_earth_2_manager_8hpp.html#a1eafbc80c81ac08cb0f5883fbd2192fd">OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT</a>&#160;&#160;&#160;60</td></tr>
+<tr class="separator:a1eafbc80c81ac08cb0f5883fbd2192fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -135,22 +138,6 @@ Typedefs</h2></td></tr>
 <tr class="separator:a58cd447cbdfb525cde0bf7d94440990f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a14f2d1ecb0f1473d5a0daa945fa280f8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a14f2d1ecb0f1473d5a0daa945fa280f8">&#9670;&nbsp;</a></span>OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_ENABLED</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_ENABLED&#160;&#160;&#160;true</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Apache License 2.0. </p>
-
-</div>
-</div>
 <a id="a3e91bfc068af91ffee46c1f24805fcc6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3e91bfc068af91ffee46c1f24805fcc6">&#9670;&nbsp;</a></span>OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY</h2>
 
@@ -158,24 +145,40 @@ Typedefs</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY&#160;&#160;&#160;&quot;./.open-space-toolkit/physics/environment/gravitational/earth&quot;</td>
+          <td class="memname">#define OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY&#160;&#160;&#160;&quot;./.open-space-toolkit/physics/data/environment/gravitational/earth&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a287cedd286d9a4dd54e1d54b381fbba2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a287cedd286d9a4dd54e1d54b381fbba2">&#9670;&nbsp;</a></span>OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_REMOTE_URL</h2>
+<a id="a1eafbc80c81ac08cb0f5883fbd2192fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1eafbc80c81ac08cb0f5883fbd2192fd">&#9670;&nbsp;</a></span>OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_REMOTE_URL&#160;&#160;&#160;&quot;https://sourceforge.net/projects/geographiclib/files/gravity-distrib/&quot;</td>
+          <td class="memname">#define OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT&#160;&#160;&#160;60</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="acb99d4a1a2c880246d47b28c5788632d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb99d4a1a2c880246d47b28c5788632d">&#9670;&nbsp;</a></span>OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_MODE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_MODE&#160;&#160;&#160;Manager::Mode::Automatic</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Apache License 2.0. </p>
 
 </div>
 </div>

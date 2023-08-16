@@ -9,44 +9,47 @@
 
 {\ttfamily \#include $<$Manager.\+hpp$>$}
 
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a4144ef3897b43a0ce1710fed7b63afbb}{Mode}} \{ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a4144ef3897b43a0ce1710fed7b63afbbae1ba155a9f2e8c3be94020eef32a0301}{Mode\+::\+Manual}}, 
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a4144ef3897b43a0ce1710fed7b63afbba086247a9b57fde6eefee2a0c4752242d}{Mode\+::\+Automatic}}
+ \}
+\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a4144ef3897b43a0ce1710fed7b63afbb}{Manager\+::\+Mode}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_aa4d100f163a5efca86fb560989b98349}{get\+Mode}} () const
+\begin{DoxyCompactList}\small\item\em Get manager mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_acee5e4e119cfef63bcbfca3178e5be7a}{set\+Mode}} (const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a4144ef3897b43a0ce1710fed7b63afbb}{Manager\+::\+Mode}} \&a\+Mode)
+\begin{DoxyCompactList}\small\item\em Set manager mode. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_ac8ea6e08db0342132a14d071bd3f0107}{Manager}} (const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager}{Manager}} \&a\+Manager)=delete
 \begin{DoxyCompactList}\small\item\em Copy constructor (deleted) \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager}{Manager}} \& \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_aa95b426416d708cf4f769697d02d7d7d}{operator=}} (const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager}{Manager}} \&a\+Manager)=delete
 \begin{DoxyCompactList}\small\item\em Copy assignment operator (deleted) \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a81574e302c483b652a85ae79c73afdd2}{is\+Enabled}} () const
-\begin{DoxyCompactList}\small\item\em Returns true is manager is enabled. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a90e787fb914d34c7739ddd650bef471f}{has\+Data\+File\+For\+Type}} (const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05}{Earth\+Gravitational\+Model\+::\+Type}} \&a\+Model\+Type) const
+bool \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_adaee07fd7256d2c28be24403c4287d84}{has\+Data\+Files\+For\+Type}} (const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05}{Earth\+Gravitational\+Model\+::\+Type}} \&a\+Model\+Type) const
 \begin{DoxyCompactList}\small\item\em Returns true if manager has data file for the given model type. \end{DoxyCompactList}\item 
+Array$<$ File $>$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a5858796db9f601ec05e42e2e91508df7}{local\+Data\+Files\+For\+Type}} (const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05}{Earth\+Gravitational\+Model\+::\+Type}} \&a\+Model\+Type) const
+\begin{DoxyCompactList}\small\item\em Returns array of file objects for the given type. \end{DoxyCompactList}\item 
 Directory \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_aec5c97d1dc02e1f019c3a77f827d7da7}{get\+Local\+Repository}} () const
 \begin{DoxyCompactList}\small\item\em Get local repository. \end{DoxyCompactList}\item 
-U\+RL \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_aceec32c652632d1d785d1dfbfd655c01}{get\+Remote\+Url}} () const
-\begin{DoxyCompactList}\small\item\em Get remote U\+RL. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a71c371d5be3ea47f5332dce23bd410c6}{fetch\+Data\+File\+For\+Type}} (const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05}{Earth\+Gravitational\+Model\+::\+Type}} \&a\+Model\+Type) const
+void \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_afad3d8756063287d421596a9dc0c2c55}{reset}} ()
+\begin{DoxyCompactList}\small\item\em Reset the manager. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_ac52e42436593b14c37f92c453bd2af54}{fetch\+Data\+Files\+For\+Type}} (const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05}{Earth\+Gravitational\+Model\+::\+Type}} \&a\+Model\+Type) const
 \begin{DoxyCompactList}\small\item\em Fetch data file from remote. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_aaca1ee2d3cd65105ba5fb4bfb2987589}{set\+Local\+Repository}} (const Directory \&a\+Directory)
-\begin{DoxyCompactList}\small\item\em Set local repository. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a3b935a28445b47e23e59141e5d3f6f2e}{set\+Remote\+Url}} (const U\+RL \&a\+Remote\+Url)
-\begin{DoxyCompactList}\small\item\em Set remote U\+RL. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_ad2bcfa6c79e5db2c11044f9db028fefa}{enable}} ()
-\begin{DoxyCompactList}\small\item\em Enable manager. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_aa7da60f0a9f7a4482d834dfbf8af9801}{disable}} ()
-\begin{DoxyCompactList}\small\item\em Disable manager. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a6dd1b7abff1be04e56a8cc4edf55b840}{set\+Enabled}} (const bool a\+Boolean)
-\begin{DoxyCompactList}\small\item\em Set enabled flag. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Set local repository. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+static \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a4144ef3897b43a0ce1710fed7b63afbb}{Manager\+::\+Mode}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a47983a5721337035b21affcb28c0b108}{Default\+Mode}} ()
+\begin{DoxyCompactList}\small\item\em Get default manager mode. \end{DoxyCompactList}\item 
 static \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager}{Manager}} \& \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a8665dccf68085ce30fb0afcd8d6c71a3}{Get}} ()
 \begin{DoxyCompactList}\small\item\em Get manager singleton. \end{DoxyCompactList}\item 
-static bool \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a2f515eaf38d65e922ecbdfeea6c54fc3}{Default\+Enabled}} ()
-\begin{DoxyCompactList}\small\item\em Get default enabled flag. \end{DoxyCompactList}\item 
 static Directory \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_affbe1673e70ab9ad31e22982483f2fce}{Default\+Local\+Repository}} ()
 \begin{DoxyCompactList}\small\item\em Get default local repository. \end{DoxyCompactList}\item 
-static U\+RL \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_aa5a7e062dba707faaf9da092e011f23d}{Default\+Remote\+Url}} ()
-\begin{DoxyCompactList}\small\item\em Get default remote U\+RL. \end{DoxyCompactList}\end{DoxyCompactItemize}
+static \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_duration}{Duration}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a4f249b84c19b80b918866e61490f856c}{Default\+Local\+Repository\+Lock\+Timeout}} ()
+\begin{DoxyCompactList}\small\item\em Get default local repository lock timeout. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -56,14 +59,31 @@ static U\+RL \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitation
 
                         The following environment variables can be defined:
 
-                        - "OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_ENABLED" will override
-                        "DefaultEnabled"
+                        - "OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_MODE" will override
+                        "DefaultMode"
                         - "OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY" will override
-                        "DefaultLocalRepository"
-                        - "OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_REMOTE_URL" will override
-                        "DefaultRemoteUrl" 
+                        "DefaultLocalRepository" 
 \end{DoxyVerb}
  
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a4144ef3897b43a0ce1710fed7b63afbb}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a4144ef3897b43a0ce1710fed7b63afbb}} 
+\index{ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}!Mode@{Mode}}
+\index{Mode@{Mode}!ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}}
+\doxysubsubsection{\texorpdfstring{Mode}{Mode}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a4144ef3897b43a0ce1710fed7b63afbb}{ostk\+::physics\+::environment\+::gravitational\+::earth\+::\+Manager\+::\+Mode}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Manual@{Manual}!ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}}\index{ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}!Manual@{Manual}}}\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a4144ef3897b43a0ce1710fed7b63afbbae1ba155a9f2e8c3be94020eef32a0301}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a4144ef3897b43a0ce1710fed7b63afbbae1ba155a9f2e8c3be94020eef32a0301}} 
+Manual&Manually load and unload gravity files. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Automatic@{Automatic}!ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}}\index{ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}!Automatic@{Automatic}}}\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a4144ef3897b43a0ce1710fed7b63afbba086247a9b57fde6eefee2a0c4752242d}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a4144ef3897b43a0ce1710fed7b63afbba086247a9b57fde6eefee2a0c4752242d}} 
+Automatic&Automatically fetch gravity files from remote repositories. \\
+\hline
+
+\end{DoxyEnumFields}
+
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_ac8ea6e08db0342132a14d071bd3f0107}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_ac8ea6e08db0342132a14d071bd3f0107}} 
@@ -79,23 +99,6 @@ Copy constructor (deleted)
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a2f515eaf38d65e922ecbdfeea6c54fc3}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a2f515eaf38d65e922ecbdfeea6c54fc3}} 
-\index{ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}!DefaultEnabled@{DefaultEnabled}}
-\index{DefaultEnabled@{DefaultEnabled}!ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}}
-\doxysubsubsection{\texorpdfstring{DefaultEnabled()}{DefaultEnabled()}}
-{\footnotesize\ttfamily bool ostk\+::physics\+::environment\+::gravitational\+::earth\+::\+Manager\+::\+Default\+Enabled (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
-
-
-
-Get default enabled flag. 
-
-\begin{DoxyVerb}                Overriden by: OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_ENABLED
-\end{DoxyVerb}
-
-
-\begin{DoxyReturn}{Returns}
-Default enabled flag 
-\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_affbe1673e70ab9ad31e22982483f2fce}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_affbe1673e70ab9ad31e22982483f2fce}} 
 \index{ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}!DefaultLocalRepository@{DefaultLocalRepository}}
 \index{DefaultLocalRepository@{DefaultLocalRepository}!ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}}
@@ -106,55 +109,53 @@ Default enabled flag
 
 Get default local repository. 
 
-\begin{DoxyVerb}                Overriden by: OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY
+\begin{DoxyVerb}                    Overriden by: OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY
 \end{DoxyVerb}
 
 
 \begin{DoxyReturn}{Returns}
 Default local repository 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_aa5a7e062dba707faaf9da092e011f23d}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_aa5a7e062dba707faaf9da092e011f23d}} 
-\index{ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}!DefaultRemoteUrl@{DefaultRemoteUrl}}
-\index{DefaultRemoteUrl@{DefaultRemoteUrl}!ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}}
-\doxysubsubsection{\texorpdfstring{DefaultRemoteUrl()}{DefaultRemoteUrl()}}
-{\footnotesize\ttfamily U\+RL ostk\+::physics\+::environment\+::gravitational\+::earth\+::\+Manager\+::\+Default\+Remote\+Url (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a4f249b84c19b80b918866e61490f856c}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a4f249b84c19b80b918866e61490f856c}} 
+\index{ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}!DefaultLocalRepositoryLockTimeout@{DefaultLocalRepositoryLockTimeout}}
+\index{DefaultLocalRepositoryLockTimeout@{DefaultLocalRepositoryLockTimeout}!ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}}
+\doxysubsubsection{\texorpdfstring{DefaultLocalRepositoryLockTimeout()}{DefaultLocalRepositoryLockTimeout()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_duration}{Duration}} ostk\+::physics\+::environment\+::gravitational\+::earth\+::\+Manager\+::\+Default\+Local\+Repository\+Lock\+Timeout (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
-Get default remote U\+RL. 
+Get default local repository lock timeout. 
 
-\begin{DoxyVerb}                Overriden by: OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_REMOTE_URL
+\begin{DoxyVerb}                    Overriden by:
+                    OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT
 \end{DoxyVerb}
 
 
 \begin{DoxyReturn}{Returns}
-Default remote U\+RL 
+Default local repository lock timeout 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_aa7da60f0a9f7a4482d834dfbf8af9801}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_aa7da60f0a9f7a4482d834dfbf8af9801}} 
-\index{ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}!disable@{disable}}
-\index{disable@{disable}!ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}}
-\doxysubsubsection{\texorpdfstring{disable()}{disable()}}
-{\footnotesize\ttfamily void ostk\+::physics\+::environment\+::gravitational\+::earth\+::\+Manager\+::disable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a47983a5721337035b21affcb28c0b108}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a47983a5721337035b21affcb28c0b108}} 
+\index{ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}!DefaultMode@{DefaultMode}}
+\index{DefaultMode@{DefaultMode}!ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}}
+\doxysubsubsection{\texorpdfstring{DefaultMode()}{DefaultMode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a4144ef3897b43a0ce1710fed7b63afbb}{Manager\+::\+Mode}} ostk\+::physics\+::environment\+::gravitational\+::earth\+::\+Manager\+::\+Default\+Mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
-Disable manager. 
+Get default manager mode. 
 
-\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_ad2bcfa6c79e5db2c11044f9db028fefa}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_ad2bcfa6c79e5db2c11044f9db028fefa}} 
-\index{ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}!enable@{enable}}
-\index{enable@{enable}!ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}}
-\doxysubsubsection{\texorpdfstring{enable()}{enable()}}
-{\footnotesize\ttfamily void ostk\+::physics\+::environment\+::gravitational\+::earth\+::\+Manager\+::enable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\begin{DoxyVerb}                    Overriden by: OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_MODE
+\end{DoxyVerb}
 
 
-
-Enable manager. 
-
-\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a71c371d5be3ea47f5332dce23bd410c6}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a71c371d5be3ea47f5332dce23bd410c6}} 
-\index{ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}!fetchDataFileForType@{fetchDataFileForType}}
-\index{fetchDataFileForType@{fetchDataFileForType}!ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}}
-\doxysubsubsection{\texorpdfstring{fetchDataFileForType()}{fetchDataFileForType()}}
-{\footnotesize\ttfamily void ostk\+::physics\+::environment\+::gravitational\+::earth\+::\+Manager\+::fetch\+Data\+File\+For\+Type (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05}{Earth\+Gravitational\+Model\+::\+Type}} \&}]{a\+Model\+Type }\end{DoxyParamCaption}) const}
+\begin{DoxyReturn}{Returns}
+Default manager mode 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_ac52e42436593b14c37f92c453bd2af54}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_ac52e42436593b14c37f92c453bd2af54}} 
+\index{ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}!fetchDataFilesForType@{fetchDataFilesForType}}
+\index{fetchDataFilesForType@{fetchDataFilesForType}!ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}}
+\doxysubsubsection{\texorpdfstring{fetchDataFilesForType()}{fetchDataFilesForType()}}
+{\footnotesize\ttfamily void ostk\+::physics\+::environment\+::gravitational\+::earth\+::\+Manager\+::fetch\+Data\+Files\+For\+Type (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05}{Earth\+Gravitational\+Model\+::\+Type}} \&}]{a\+Model\+Type }\end{DoxyParamCaption}) const}
 
 
 
@@ -191,24 +192,24 @@ Get local repository.
 \begin{DoxyReturn}{Returns}
 Local repository 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_aceec32c652632d1d785d1dfbfd655c01}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_aceec32c652632d1d785d1dfbfd655c01}} 
-\index{ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}!getRemoteUrl@{getRemoteUrl}}
-\index{getRemoteUrl@{getRemoteUrl}!ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}}
-\doxysubsubsection{\texorpdfstring{getRemoteUrl()}{getRemoteUrl()}}
-{\footnotesize\ttfamily U\+RL ostk\+::physics\+::environment\+::gravitational\+::earth\+::\+Manager\+::get\+Remote\+Url (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_aa4d100f163a5efca86fb560989b98349}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_aa4d100f163a5efca86fb560989b98349}} 
+\index{ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}!getMode@{getMode}}
+\index{getMode@{getMode}!ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}}
+\doxysubsubsection{\texorpdfstring{getMode()}{getMode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a4144ef3897b43a0ce1710fed7b63afbb}{Manager\+::\+Mode}} ostk\+::physics\+::environment\+::gravitational\+::earth\+::\+Manager\+::get\+Mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
-Get remote U\+RL. 
+Get manager mode. 
 
 \begin{DoxyReturn}{Returns}
-Remote U\+RL 
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager}{Manager}} mode 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a90e787fb914d34c7739ddd650bef471f}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a90e787fb914d34c7739ddd650bef471f}} 
-\index{ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}!hasDataFileForType@{hasDataFileForType}}
-\index{hasDataFileForType@{hasDataFileForType}!ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}}
-\doxysubsubsection{\texorpdfstring{hasDataFileForType()}{hasDataFileForType()}}
-{\footnotesize\ttfamily bool ostk\+::physics\+::environment\+::gravitational\+::earth\+::\+Manager\+::has\+Data\+File\+For\+Type (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05}{Earth\+Gravitational\+Model\+::\+Type}} \&}]{a\+Model\+Type }\end{DoxyParamCaption}) const}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_adaee07fd7256d2c28be24403c4287d84}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_adaee07fd7256d2c28be24403c4287d84}} 
+\index{ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}!hasDataFilesForType@{hasDataFilesForType}}
+\index{hasDataFilesForType@{hasDataFilesForType}!ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}}
+\doxysubsubsection{\texorpdfstring{hasDataFilesForType()}{hasDataFilesForType()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::environment\+::gravitational\+::earth\+::\+Manager\+::has\+Data\+Files\+For\+Type (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05}{Earth\+Gravitational\+Model\+::\+Type}} \&}]{a\+Model\+Type }\end{DoxyParamCaption}) const}
 
 
 
@@ -222,18 +223,23 @@ Returns true if manager has data file for the given model type.
 \begin{DoxyReturn}{Returns}
 True if manager has data file for the given model type 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a81574e302c483b652a85ae79c73afdd2}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a81574e302c483b652a85ae79c73afdd2}} 
-\index{ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}!isEnabled@{isEnabled}}
-\index{isEnabled@{isEnabled}!ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}}
-\doxysubsubsection{\texorpdfstring{isEnabled()}{isEnabled()}}
-{\footnotesize\ttfamily bool ostk\+::physics\+::environment\+::gravitational\+::earth\+::\+Manager\+::is\+Enabled (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a5858796db9f601ec05e42e2e91508df7}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a5858796db9f601ec05e42e2e91508df7}} 
+\index{ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}!localDataFilesForType@{localDataFilesForType}}
+\index{localDataFilesForType@{localDataFilesForType}!ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}}
+\doxysubsubsection{\texorpdfstring{localDataFilesForType()}{localDataFilesForType()}}
+{\footnotesize\ttfamily Array$<$ File $>$ ostk\+::physics\+::environment\+::gravitational\+::earth\+::\+Manager\+::local\+Data\+Files\+For\+Type (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05}{Earth\+Gravitational\+Model\+::\+Type}} \&}]{a\+Model\+Type }\end{DoxyParamCaption}) const}
 
 
 
-Returns true is manager is enabled. 
+Returns array of file objects for the given type. 
 
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+Model\+Type} & A model type \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-True is manager is enabled 
+Array of Files 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_aa95b426416d708cf4f769697d02d7d7d}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_aa95b426416d708cf4f769697d02d7d7d}} 
 \index{ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}!operator=@{operator=}}
@@ -245,22 +251,19 @@ True is manager is enabled
 
 Copy assignment operator (deleted) 
 
-\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a6dd1b7abff1be04e56a8cc4edf55b840}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a6dd1b7abff1be04e56a8cc4edf55b840}} 
-\index{ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}!setEnabled@{setEnabled}}
-\index{setEnabled@{setEnabled}!ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}}
-\doxysubsubsection{\texorpdfstring{setEnabled()}{setEnabled()}}
-{\footnotesize\ttfamily void ostk\+::physics\+::environment\+::gravitational\+::earth\+::\+Manager\+::set\+Enabled (\begin{DoxyParamCaption}\item[{const bool}]{a\+Boolean }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_afad3d8756063287d421596a9dc0c2c55}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_afad3d8756063287d421596a9dc0c2c55}} 
+\index{ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}!reset@{reset}}
+\index{reset@{reset}!ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void ostk\+::physics\+::environment\+::gravitational\+::earth\+::\+Manager\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
-Set enabled flag. 
+Reset the manager. 
 
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em a\+Boolean} & An enabled flag \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_aaca1ee2d3cd65105ba5fb4bfb2987589}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_aaca1ee2d3cd65105ba5fb4bfb2987589}} 
+\begin{DoxyVerb}                    Reset path and mode to default values. 
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_aaca1ee2d3cd65105ba5fb4bfb2987589}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_aaca1ee2d3cd65105ba5fb4bfb2987589}} 
 \index{ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}!setLocalRepository@{setLocalRepository}}
 \index{setLocalRepository@{setLocalRepository}!ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}}
 \doxysubsubsection{\texorpdfstring{setLocalRepository()}{setLocalRepository()}}
@@ -275,19 +278,19 @@ Set local repository.
 \mbox{\texttt{ in}}  & {\em a\+Directory} & A repository directory \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a3b935a28445b47e23e59141e5d3f6f2e}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a3b935a28445b47e23e59141e5d3f6f2e}} 
-\index{ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}!setRemoteUrl@{setRemoteUrl}}
-\index{setRemoteUrl@{setRemoteUrl}!ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}}
-\doxysubsubsection{\texorpdfstring{setRemoteUrl()}{setRemoteUrl()}}
-{\footnotesize\ttfamily void ostk\+::physics\+::environment\+::gravitational\+::earth\+::\+Manager\+::set\+Remote\+Url (\begin{DoxyParamCaption}\item[{const U\+RL \&}]{a\+Remote\+Url }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_acee5e4e119cfef63bcbfca3178e5be7a}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_acee5e4e119cfef63bcbfca3178e5be7a}} 
+\index{ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}!setMode@{setMode}}
+\index{setMode@{setMode}!ostk::physics::environment::gravitational::earth::Manager@{ostk::physics::environment::gravitational::earth::Manager}}
+\doxysubsubsection{\texorpdfstring{setMode()}{setMode()}}
+{\footnotesize\ttfamily void ostk\+::physics\+::environment\+::gravitational\+::earth\+::\+Manager\+::set\+Mode (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_a4144ef3897b43a0ce1710fed7b63afbb}{Manager\+::\+Mode}} \&}]{a\+Mode }\end{DoxyParamCaption})}
 
 
 
-Set remote U\+RL. 
+Set manager mode. 
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em a\+Remote\+Url} & A remote U\+RL \\
+\mbox{\texttt{ in}}  & {\em a\+Mode} & A manager mode \\
 \hline
 \end{DoxyParams}
 

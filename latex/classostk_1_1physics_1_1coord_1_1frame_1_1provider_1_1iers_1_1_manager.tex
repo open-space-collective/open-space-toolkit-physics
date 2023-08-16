@@ -27,8 +27,6 @@ Directory \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_
 \begin{DoxyCompactList}\small\item\em Get Bulletin A directory. \end{DoxyCompactList}\item 
 Directory \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a2d77cfbd52870e1d593077826ea194bf}{get\+Finals2000\+A\+Directory}} () const
 \begin{DoxyCompactList}\small\item\em Get Finals 2000A directory. \end{DoxyCompactList}\item 
-U\+RL \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_aee0fdfd01bea7d3cb6edf90d25536ca0}{get\+Remote\+Url}} () const
-\begin{DoxyCompactList}\small\item\em Get remote U\+RL. \end{DoxyCompactList}\item 
 Array$<$ \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_a}{BulletinA}} $>$ \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a2388fb338a21c3cc707314e057323579}{get\+Bulletin\+A\+Array}} () const
 \begin{DoxyCompactList}\small\item\em Get array of Bulletin A. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_a}{BulletinA}} \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a50eef4d573db5ad33f6ce7ee13749ad9}{get\+Bulletin\+A\+At}} (const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const
@@ -47,8 +45,6 @@ void \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers
 \begin{DoxyCompactList}\small\item\em Set manager mode. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_abf2cc0416dae265af7d249526bb8f73d}{set\+Local\+Repository}} (const Directory \&a\+Directory)
 \begin{DoxyCompactList}\small\item\em Set local repository. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a4beb69ab9704ee45f06ec5cdf3df4dde}{set\+Remote\+Url}} (const U\+RL \&a\+Remote\+Url)
-\begin{DoxyCompactList}\small\item\em Set remote U\+RL. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a57d53edcf28bd7d02181384e9ea63dab}{load\+BulletinA}} (const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_a}{BulletinA}} \&a\+BulletinA)
 \begin{DoxyCompactList}\small\item\em Load Bulletin A. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_ad79ddb22cfd125d810840611c24a9f42}{load\+Finals2000A}} (const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a}{Finals2000A}} \&a\+Finals2000A)
@@ -71,9 +67,7 @@ static \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1ie
 static Directory \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a13ba1984f851041d69026b85e520c02d}{Default\+Local\+Repository}} ()
 \begin{DoxyCompactList}\small\item\em Get default local repository. \end{DoxyCompactList}\item 
 static \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_duration}{Duration}} \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a00b7a5114cd80fbff515dd7af9381519}{Default\+Local\+Repository\+Lock\+Timeout}} ()
-\begin{DoxyCompactList}\small\item\em Get default local repository lock timeout. \end{DoxyCompactList}\item 
-static U\+RL \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_aa1ca4334d5652c6533a9b8a093845836}{Default\+Remote\+Url}} ()
-\begin{DoxyCompactList}\small\item\em Get default remote U\+RL. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Get default local repository lock timeout. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -87,8 +81,6 @@ I\+E\+RS bulletins manager (thread-\/safe)
                         "DefaultLocalRepository"
                         - "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT"
                         will override "DefaultLocalRepositoryLockTimeout"
-                        - "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL" will override
-                        "DefaultRemoteUrl"
 \end{DoxyVerb}
 
 
@@ -177,23 +169,6 @@ Get default manager mode.
 
 \begin{DoxyReturn}{Returns}
 Default manager mode 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_aa1ca4334d5652c6533a9b8a093845836}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_aa1ca4334d5652c6533a9b8a093845836}} 
-\index{ostk::physics::coord::frame::provider::iers::Manager@{ostk::physics::coord::frame::provider::iers::Manager}!DefaultRemoteUrl@{DefaultRemoteUrl}}
-\index{DefaultRemoteUrl@{DefaultRemoteUrl}!ostk::physics::coord::frame::provider::iers::Manager@{ostk::physics::coord::frame::provider::iers::Manager}}
-\doxysubsubsection{\texorpdfstring{DefaultRemoteUrl()}{DefaultRemoteUrl()}}
-{\footnotesize\ttfamily U\+RL ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager\+::\+Default\+Remote\+Url (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
-
-
-
-Get default remote U\+RL. 
-
-\begin{DoxyVerb}                Overriden by: OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_REMOTE_URL
-\end{DoxyVerb}
-
-
-\begin{DoxyReturn}{Returns}
-Default remote U\+RL 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_acb6883a9760e0809627ff695d2586176}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_acb6883a9760e0809627ff695d2586176}} 
 \index{ostk::physics::coord::frame::provider::iers::Manager@{ostk::physics::coord::frame::provider::iers::Manager}!fetchLatestBulletinA@{fetchLatestBulletinA}}
@@ -384,19 +359,6 @@ Get polar motion at instant.
 \begin{DoxyReturn}{Returns}
 \mbox{[}asec\mbox{]} Polar motion 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_aee0fdfd01bea7d3cb6edf90d25536ca0}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_aee0fdfd01bea7d3cb6edf90d25536ca0}} 
-\index{ostk::physics::coord::frame::provider::iers::Manager@{ostk::physics::coord::frame::provider::iers::Manager}!getRemoteUrl@{getRemoteUrl}}
-\index{getRemoteUrl@{getRemoteUrl}!ostk::physics::coord::frame::provider::iers::Manager@{ostk::physics::coord::frame::provider::iers::Manager}}
-\doxysubsubsection{\texorpdfstring{getRemoteUrl()}{getRemoteUrl()}}
-{\footnotesize\ttfamily U\+RL ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager\+::get\+Remote\+Url (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-
-
-Get remote U\+RL. 
-
-\begin{DoxyReturn}{Returns}
-Remote U\+RL 
-\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_ac0670e062b624d5b1881a820275bb906}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_ac0670e062b624d5b1881a820275bb906}} 
 \index{ostk::physics::coord::frame::provider::iers::Manager@{ostk::physics::coord::frame::provider::iers::Manager}!getUt1MinusUtcAt@{getUt1MinusUtcAt}}
 \index{getUt1MinusUtcAt@{getUt1MinusUtcAt}!ostk::physics::coord::frame::provider::iers::Manager@{ostk::physics::coord::frame::provider::iers::Manager}}
@@ -485,21 +447,6 @@ Set manager mode.
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\texttt{ in}}  & {\em a\+Mode} & A manager mode \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a4beb69ab9704ee45f06ec5cdf3df4dde}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager_a4beb69ab9704ee45f06ec5cdf3df4dde}} 
-\index{ostk::physics::coord::frame::provider::iers::Manager@{ostk::physics::coord::frame::provider::iers::Manager}!setRemoteUrl@{setRemoteUrl}}
-\index{setRemoteUrl@{setRemoteUrl}!ostk::physics::coord::frame::provider::iers::Manager@{ostk::physics::coord::frame::provider::iers::Manager}}
-\doxysubsubsection{\texorpdfstring{setRemoteUrl()}{setRemoteUrl()}}
-{\footnotesize\ttfamily void ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager\+::set\+Remote\+Url (\begin{DoxyParamCaption}\item[{const U\+RL \&}]{a\+Remote\+Url }\end{DoxyParamCaption})}
-
-
-
-Set remote U\+RL. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em a\+Remote\+Url} & A remote U\+RL \\
 \hline
 \end{DoxyParams}
 

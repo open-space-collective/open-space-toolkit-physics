@@ -25,8 +25,6 @@ Directory \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_
 \begin{DoxyCompactList}\small\item\em Get local repository. \end{DoxyCompactList}\item 
 Directory \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_a041cc6df9f5bb2dff5a675a4245d295e}{get\+C\+S\+S\+I\+Space\+Weather\+Directory}} () const
 \begin{DoxyCompactList}\small\item\em Get C\+S\+SI Space Weather directory. \end{DoxyCompactList}\item 
-U\+RL \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_aeb8317450c41bcc20472a3b5265e854d}{get\+Remote\+Url}} () const
-\begin{DoxyCompactList}\small\item\em Get remote U\+RL. \end{DoxyCompactList}\item 
 Array$<$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather}{C\+S\+S\+I\+Space\+Weather}} $>$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_af916fed05efa49b8ca1f25b36d1715c7}{get\+C\+S\+S\+I\+Space\+Weather\+Array}} () const
 \begin{DoxyCompactList}\small\item\em Get array of C\+S\+SI Space Weather. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather}{C\+S\+S\+I\+Space\+Weather}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_af9322b786b15b85e9b9d31ffbee006a3}{get\+C\+S\+S\+I\+Space\+Weather\+At}} (const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const
@@ -45,8 +43,6 @@ void \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1eart
 \begin{DoxyCompactList}\small\item\em Set manager mode. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_aa44772191af633118e285df34ca19da4}{set\+Local\+Repository}} (const Directory \&a\+Directory)
 \begin{DoxyCompactList}\small\item\em Set local repository. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_add965a969e22b48256e9d2143daeb66e}{set\+Remote\+Url}} (const U\+RL \&a\+Remote\+Url)
-\begin{DoxyCompactList}\small\item\em Set remote U\+RL. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_addd98227dfc221b1442a65f5130655f6}{load\+C\+S\+S\+I\+Space\+Weather}} (const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather}{C\+S\+S\+I\+Space\+Weather}} \&a\+C\+S\+S\+I\+Space\+Weather)
 \begin{DoxyCompactList}\small\item\em Load C\+S\+SI Space Weather. \end{DoxyCompactList}\item 
 File \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_a7d95b96aa8425eb30868611fd1d33e2c}{fetch\+Latest\+C\+S\+S\+I\+Space\+Weather}} ()
@@ -65,9 +61,7 @@ static \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1ea
 static Directory \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_aeadd2dc51b043f61c2d731b993ee15a5}{Default\+Local\+Repository}} ()
 \begin{DoxyCompactList}\small\item\em Get default local repository. \end{DoxyCompactList}\item 
 static \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_duration}{Duration}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_aff3a8a401c0ef2029cc3cc7cf28ea8ef}{Default\+Local\+Repository\+Lock\+Timeout}} ()
-\begin{DoxyCompactList}\small\item\em Get default local repository lock timeout. \end{DoxyCompactList}\item 
-static U\+RL \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_a18b601ffe13a563a9fecdec74f64eb59}{Default\+Remote\+Url}} ()
-\begin{DoxyCompactList}\small\item\em Get default remote U\+RL. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Get default local repository lock timeout. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -82,8 +76,6 @@ C\+S\+SI space weather manager (thread-\/safe)
                         -
                         "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT"
                         will override "DefaultLocalRepositoryLockTimeout"
-                        - "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_REMOTE_URL" will override
-                        "DefaultRemoteUrl"
 \end{DoxyVerb}
 
 
@@ -119,7 +111,7 @@ Automatic&Automatically fetch, load and unload space weather files (from remote 
 
 Clear local repository. 
 
-\begin{DoxyVerb}                Delete all files in local repository. 
+\begin{DoxyVerb}                    Delete all files in local repository. 
 \end{DoxyVerb}
  \mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_aeadd2dc51b043f61c2d731b993ee15a5}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_aeadd2dc51b043f61c2d731b993ee15a5}} 
 \index{ostk::physics::environment::atmospheric::earth::Manager@{ostk::physics::environment::atmospheric::earth::Manager}!DefaultLocalRepository@{DefaultLocalRepository}}
@@ -131,7 +123,7 @@ Clear local repository.
 
 Get default local repository. 
 
-\begin{DoxyVerb}                Overriden by: OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY
+\begin{DoxyVerb}                    Overriden by: OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY
 \end{DoxyVerb}
 
 
@@ -148,8 +140,8 @@ Default local repository
 
 Get default local repository lock timeout. 
 
-\begin{DoxyVerb}                Overriden by:
-                OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT
+\begin{DoxyVerb}                    Overriden by:
+                    OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT
 \end{DoxyVerb}
 
 
@@ -166,29 +158,12 @@ Default local repository lock timeout
 
 Get default manager mode. 
 
-\begin{DoxyVerb}                Overriden by: OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_MODE
+\begin{DoxyVerb}                    Overriden by: OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_MODE
 \end{DoxyVerb}
 
 
 \begin{DoxyReturn}{Returns}
 Default manager mode 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_a18b601ffe13a563a9fecdec74f64eb59}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_a18b601ffe13a563a9fecdec74f64eb59}} 
-\index{ostk::physics::environment::atmospheric::earth::Manager@{ostk::physics::environment::atmospheric::earth::Manager}!DefaultRemoteUrl@{DefaultRemoteUrl}}
-\index{DefaultRemoteUrl@{DefaultRemoteUrl}!ostk::physics::environment::atmospheric::earth::Manager@{ostk::physics::environment::atmospheric::earth::Manager}}
-\doxysubsubsection{\texorpdfstring{DefaultRemoteUrl()}{DefaultRemoteUrl()}}
-{\footnotesize\ttfamily U\+RL ostk\+::physics\+::environment\+::atmospheric\+::earth\+::\+Manager\+::\+Default\+Remote\+Url (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
-
-
-
-Get default remote U\+RL. 
-
-\begin{DoxyVerb}                Overriden by: OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_REMOTE_URL
-\end{DoxyVerb}
-
-
-\begin{DoxyReturn}{Returns}
-Default remote U\+RL 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_a7d95b96aa8425eb30868611fd1d33e2c}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_a7d95b96aa8425eb30868611fd1d33e2c}} 
 \index{ostk::physics::environment::atmospheric::earth::Manager@{ostk::physics::environment::atmospheric::earth::Manager}!fetchLatestCSSISpaceWeather@{fetchLatestCSSISpaceWeather}}
@@ -376,19 +351,6 @@ Get manager mode.
 \begin{DoxyReturn}{Returns}
 \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager}{Manager}} mode 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_aeb8317450c41bcc20472a3b5265e854d}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_aeb8317450c41bcc20472a3b5265e854d}} 
-\index{ostk::physics::environment::atmospheric::earth::Manager@{ostk::physics::environment::atmospheric::earth::Manager}!getRemoteUrl@{getRemoteUrl}}
-\index{getRemoteUrl@{getRemoteUrl}!ostk::physics::environment::atmospheric::earth::Manager@{ostk::physics::environment::atmospheric::earth::Manager}}
-\doxysubsubsection{\texorpdfstring{getRemoteUrl()}{getRemoteUrl()}}
-{\footnotesize\ttfamily U\+RL ostk\+::physics\+::environment\+::atmospheric\+::earth\+::\+Manager\+::get\+Remote\+Url (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-
-
-Get remote U\+RL. 
-
-\begin{DoxyReturn}{Returns}
-Remote U\+RL 
-\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_addd98227dfc221b1442a65f5130655f6}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_addd98227dfc221b1442a65f5130655f6}} 
 \index{ostk::physics::environment::atmospheric::earth::Manager@{ostk::physics::environment::atmospheric::earth::Manager}!loadCSSISpaceWeather@{loadCSSISpaceWeather}}
 \index{loadCSSISpaceWeather@{loadCSSISpaceWeather}!ostk::physics::environment::atmospheric::earth::Manager@{ostk::physics::environment::atmospheric::earth::Manager}}
@@ -414,7 +376,7 @@ Load C\+S\+SI Space Weather.
 
 Reset manager. 
 
-\begin{DoxyVerb}                Unload all space weather files and clear cache. 
+\begin{DoxyVerb}                    Unload all space weather files and clear cache. 
 \end{DoxyVerb}
  \mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_aa44772191af633118e285df34ca19da4}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_aa44772191af633118e285df34ca19da4}} 
 \index{ostk::physics::environment::atmospheric::earth::Manager@{ostk::physics::environment::atmospheric::earth::Manager}!setLocalRepository@{setLocalRepository}}
@@ -444,21 +406,6 @@ Set manager mode.
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\texttt{ in}}  & {\em a\+Mode} & A manager mode \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_add965a969e22b48256e9d2143daeb66e}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_add965a969e22b48256e9d2143daeb66e}} 
-\index{ostk::physics::environment::atmospheric::earth::Manager@{ostk::physics::environment::atmospheric::earth::Manager}!setRemoteUrl@{setRemoteUrl}}
-\index{setRemoteUrl@{setRemoteUrl}!ostk::physics::environment::atmospheric::earth::Manager@{ostk::physics::environment::atmospheric::earth::Manager}}
-\doxysubsubsection{\texorpdfstring{setRemoteUrl()}{setRemoteUrl()}}
-{\footnotesize\ttfamily void ostk\+::physics\+::environment\+::atmospheric\+::earth\+::\+Manager\+::set\+Remote\+Url (\begin{DoxyParamCaption}\item[{const U\+RL \&}]{a\+Remote\+Url }\end{DoxyParamCaption})}
-
-
-
-Set remote U\+RL. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em a\+Remote\+Url} & A remote U\+RL \\
 \hline
 \end{DoxyParams}
 

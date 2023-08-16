@@ -9,6 +9,8 @@ var searchData=
   ['bulletina_2ecpp_101',['BulletinA.cpp',['../_bulletin_a_8cpp.html',1,'']]],
   ['bulletina_2ehpp_102',['BulletinA.hpp',['../_bulletin_a_8hpp.html',1,'']]],
   ['bulletinafilename_103',['bulletinAFileName',['../namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers.html#a5cb43c38a8bca47ff425a549b839ba52',1,'ostk::physics::coord::frame::provider::iers']]],
-  ['bulletinb_104',['BulletinB',['../classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_b.html',1,'ostk::physics::coord::frame::provider::iers']]],
-  ['bulletinb_2ehpp_105',['BulletinB.hpp',['../_bulletin_b_8hpp.html',1,'']]]
+  ['bulletinamanifestname_104',['bulletinAManifestName',['../namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers.html#ac2fd26895f959e661d82fcec5874ff63',1,'ostk::physics::coord::frame::provider::iers']]],
+  ['bulletinaremotepath_105',['bulletinARemotePath',['../namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers.html#acdc3a477dad23d8d24a1d5f23d14a976',1,'ostk::physics::coord::frame::provider::iers']]],
+  ['bulletinb_106',['BulletinB',['../classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_b.html',1,'ostk::physics::coord::frame::provider::iers']]],
+  ['bulletinb_2ehpp_107',['BulletinB.hpp',['../_bulletin_b_8hpp.html',1,'']]]
 ];
