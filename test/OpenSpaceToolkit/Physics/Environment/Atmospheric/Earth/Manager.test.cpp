@@ -430,13 +430,12 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, FetchLate
 
         EXPECT_EQ("SW-Last5Years.csv", latestCSSISpaceWeather.getName());
         EXPECT_EQ(
-            "earth", latestCSSISpaceWeather.getParentDirectory().getParentDirectory().getParentDirectory().getName()
+            "earth", latestCSSISpaceWeather.getParentDirectory().getParentDirectory().getName()
         );
-        EXPECT_EQ("CSSISpaceWeather", latestCSSISpaceWeather.getParentDirectory().getParentDirectory().getName());
+        EXPECT_EQ("CSSISpaceWeather", latestCSSISpaceWeather.getParentDirectory().getName());
         EXPECT_EQ(
             manager_.getLocalRepository().getPath().getNormalizedPath(),
             latestCSSISpaceWeather.getParentDirectory()
-                .getParentDirectory()
                 .getParentDirectory()
                 .getPath()
                 .getNormalizedPath()

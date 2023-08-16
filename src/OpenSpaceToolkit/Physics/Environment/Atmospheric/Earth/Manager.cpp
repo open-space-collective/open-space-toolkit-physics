@@ -523,25 +523,9 @@ File Manager::getLatestCSSISpaceWeatherFile() const
     // `.open-space-toolkit/physics/environment/atmospheric/earth/CSSI-Space-Weather/2022-05-19/`, and find the
     // latest one.
 
-    Map<Instant, File> CSSISpaceWeatherMap = {};
-
-    for (const auto& directory : this->getCSSISpaceWeatherDirectory().getDirectories())
+    if (this->getCSSISpaceWeatherDirectory().containsFileWithName(CSSISpaceWeatherFileName))
     {
-        if ((directory.getName() != temporaryDirectoryName) && directory.containsFileWithName(CSSISpaceWeatherFileName))
-        {
-            const Date date = Date::Parse(directory.getName());
-
-            const Instant instant = Instant::DateTime({date, Time::Midnight()}, Scale::UTC);
-
-            const File bulletinFile = File::Path(directory.getPath() + Path::Parse(CSSISpaceWeatherFileName));
-
-            CSSISpaceWeatherMap.insert({instant, bulletinFile});
-        }
-    }
-
-    if (!CSSISpaceWeatherMap.empty())
-    {
-        return CSSISpaceWeatherMap.rbegin()->second;
+        return File::Path(this->getCSSISpaceWeatherDirectory().getPath() + Path::Parse(CSSISpaceWeatherFileName));
     }
 
     return const_cast<Manager*>(this)->fetchLatestCSSISpaceWeather_();
@@ -639,19 +623,9 @@ File Manager::fetchLatestCSSISpaceWeather_()
         const CSSISpaceWeather latestCSSISpaceWeather = CSSISpaceWeather::Load(latestCSSISpaceWeatherFile);
 
         // Move CSSI Space Weather File into destination Directory,
-        // e.g., `.open-space-toolkit/physics/enviroment/atmospheric/earth/cssi-space-weather/2022-05-19/`.
+        // e.g., `.open-space-toolkit/physics/enviroment/atmospheric/earth/cssi-space-weather/`.
 
-        destinationDirectory = Directory::Path(
-            this->getCSSISpaceWeatherDirectory().getPath() +
-            Path::Parse(latestCSSISpaceWeather.accessLastObservationDate().toString())
-        );
-
-        if (destinationDirectory.exists())
-        {
-            destinationDirectory.remove();
-        }
-
-        destinationDirectory.create();
+        destinationDirectory = Directory::Path(this->getCSSISpaceWeatherDirectory().getPath());
 
         latestCSSISpaceWeatherFile.moveToDirectory(destinationDirectory);
 

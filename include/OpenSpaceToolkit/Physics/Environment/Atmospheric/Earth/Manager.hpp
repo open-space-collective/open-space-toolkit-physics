@@ -20,7 +20,7 @@
 
 #define OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_MODE Manager::Mode::Automatic
 #define OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY \
-    "./.open-space-toolkit/physics/environment/atmospheric/earth"
+    "./.open-space-toolkit/physics/data/environment/atmospheric/earth"
 #define OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT 60
 
 namespace ostk
