@@ -171,35 +171,41 @@ The library exhibits the following structure:
 
 ## Data Management
 OSTk Physics uses input data from various sources to determine the state of the space environment at any given time. The following input data is used:
+- IERS Reference Frame Data
+- CSSI Solar Flux/Space Weather Data
+- Gravitational Survey Data
+- Magnetic Survey Data
+- SPICE Kernels
 
-| Data                        | Files                |
-| --------------------------- | ---------------------------- |
-| IERS Reference Frame Data     |   BulletinA, Finals2000A    |
-|  Solar Flux/Space Weather Data | SW-Last5Years.csv |
-| EGM2008 gravitational survey data |  "egm2008.egm", "egm2008.egm.cof" |
-|  WGS84 gravitational survey data |  "wgs84.egm", "wgs84.egm.cof"  |
-| SPICE Kernels | de430.bsp, earth_200101_990825_predict.bpc, earth_assoc_itrf93.tf, moon_080317.tf, moon_assoc_me.tf, moon_pa_de421_1900-2050.bpc, latest_leapseconds.tls, pck00010.tpc |
-
-None of these files are shipped with the source code of this library. OSTk Physics has the capability to fetch the required files at runtime if they are not present or if they are outdated. This is done using file Manager classes (see any file named `Manager.h`). Data for any use-case is queried through the Manager class rather than directly, which allows the Manager to handle file loading and fetching.
+None of these files are shipped with the source code of this library. OSTk Physics has the capability to fetch the required files at runtime if they are not present or if they are outdated. This is done using file Manager classes (see any file named `Manager.hpp`). Data for any use-case is queried through the Manager class rather than directly, which allows the Manager to handle file loading and fetching.
 
 The following table shows the availabe data source settings:
 | Environment Variable                                                                 | Default Value                                                            |
 | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE`                          | `Automatic`                                                                 |
-| `OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY`              | `./.open-space-toolkit/physics/coordinate/frame/providers/iers`          |
+
+
+| `OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE`                          | `Automatic`                                                              |
+| `OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY`              | `./.open-space-toolkit/physics/data/coordinate/frame/providers/iers`          |
 | `OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT` | `60`                                                                     |
-| `OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_ENGINE_MODE`                             | `Automatic`                                                                 |
-| `OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY`                | `./.open-space-toolkit/physics/environment/ephemerides/spice`            |
-| `OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_REMOTE_URL`                      | `https://naif.jpl.nasa.gov/pub/naif/generic_kernels/`                    |
-| `OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_ENABLED`                       | `false`                                                                  |
-| `OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY`              | `./.open-space-toolkit/physics/environment/gravitational/earth`          |
-| `OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_REMOTE_URL`                    | `https://sourceforge.net/projects/geographiclib/files/gravity-distrib/`  |
-| `OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_ENABLED`                            | `false`                                                                  |
-| `OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY`                   | `./.open-space-toolkit/physics/environment/magnetic/earth`               |
-| `OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_REMOTE_URL`                         | `https://sourceforge.net/projects/geographiclib/files/magnetic-distrib/` |
+
+| `OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_ENGINE_MODE`                             | `Automatic`                                                              |
+| `OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY`                | `./.open-space-toolkit/physics/data/environment/ephemerides/spice`            |
+
+| `OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_MODE`                          | `Automatic`                                                                  |
+| `OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY`              | `./.open-space-toolkit/physics/data/environment/gravitational/earth`          |
+| `OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT` | `60`                                                                        |
+
+| `OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_MODE`                               | `Automatic`                                                                  |
+| `OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY`                   | `./.open-space-toolkit/physics/data/environment/magnetic/earth`               |
+| `OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT`      | `60`                                                                        |
+
 | `OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_MODE`                            | `Automatic`                                                              |
-| `OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY`                | `./.open-space-toolkit/physics/environment/atmospheric/earth`               |
-| `OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_REMOTE_URL`                      | `http://celestrak.org/SpaceData/` |
+| `OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY`                | `./.open-space-toolkit/physics/data/environment/atmospheric/earth`            |
+| `OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT`   | `60`                                                                        |
+
+| `OSTK_PHYSICS_DATA_REMOTE_URL`                                                       | `https://github.com/open-space-collective/open-space-toolkit-data/raw/main/data/` |
+| `OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY`                                        | `./.open-space-toolkit/physics/data/`                                       |
+| `OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY_LOCK_TIMEOUT`                           | `60`                                                                        |
 
 
 ## Tutorials
@@ -219,7 +225,7 @@ Instructions on how to install Docker are available [here](https://docs.docker.c
 To start the development environment:
 
 ```bash
-make start-development
+make dev
 ```
 
 This will:
