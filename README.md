@@ -182,27 +182,20 @@ None of these files are shipped with the source code of this library. OSTk Physi
 The following table shows the availabe data source settings:
 | Environment Variable                                                                 | Default Value                                                            |
 | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-
-
 | `OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE`                          | `Automatic`                                                              |
 | `OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY`              | `./.open-space-toolkit/physics/data/coordinate/frame/providers/iers`          |
 | `OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT` | `60`                                                                     |
-
 | `OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_ENGINE_MODE`                             | `Automatic`                                                              |
 | `OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY`                | `./.open-space-toolkit/physics/data/environment/ephemerides/spice`            |
-
 | `OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_MODE`                          | `Automatic`                                                                  |
 | `OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY`              | `./.open-space-toolkit/physics/data/environment/gravitational/earth`          |
 | `OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT` | `60`                                                                        |
-
 | `OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_MODE`                               | `Automatic`                                                                  |
 | `OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY`                   | `./.open-space-toolkit/physics/data/environment/magnetic/earth`               |
 | `OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT`      | `60`                                                                        |
-
 | `OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_MODE`                            | `Automatic`                                                              |
 | `OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY`                | `./.open-space-toolkit/physics/data/environment/atmospheric/earth`            |
 | `OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT`   | `60`                                                                        |
-
 | `OSTK_PHYSICS_DATA_REMOTE_URL`                                                       | `https://github.com/open-space-collective/open-space-toolkit-data/raw/main/data/` |
 | `OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY`                                        | `./.open-space-toolkit/physics/data/`                                       |
 | `OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY_LOCK_TIMEOUT`                           | `60`                                                                        |
