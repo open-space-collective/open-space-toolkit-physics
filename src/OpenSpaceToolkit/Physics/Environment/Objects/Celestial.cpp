@@ -350,7 +350,7 @@ Vector Celestial::getMagneticFieldAt(const Position& aPosition, const Instant& a
     return {magneticFieldValue, magneticFieldUnit, ephemeris_->accessFrame()};
 }
 
-Scalar Celestial::getAtmosphericDensityAt(const Position& aPosition, const Instant& anInstant) const
+Scalar Celestial::getAtmosphericDensityAt(const Position& aPosition, const Instant& anInstant, const Position& aSunPosition) const
 {
     using ostk::physics::Unit;
     using ostk::physics::units::Time;
@@ -370,7 +370,13 @@ Scalar Celestial::getAtmosphericDensityAt(const Position& aPosition, const Insta
         throw ostk::core::error::runtime::Undefined("Atmospheric model");
     }
 
-    const Real atmosphericDensityValue = atmosphericModelSPtr_->getDensityAt(aPosition, anInstant);
+    Real atmosphericDensityValue = Real::Undefined();
+
+    if (aSunPosition.isDefined()){
+        atmosphericDensityValue = atmosphericModelSPtr_->getDensityAt(aPosition, anInstant, aSunPosition);
+    } else {
+        atmosphericDensityValue = atmosphericModelSPtr_->getDensityAt(aPosition, anInstant);
+    }
 
     const static Unit atmosphericDensityUnit =
         Unit::Derived(Derived::Unit::MassDensity(Mass::Unit::Kilogram, Length::Unit::Meter));
