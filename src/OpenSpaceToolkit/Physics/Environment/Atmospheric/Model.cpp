@@ -15,6 +15,13 @@ Model::Model() {}
 
 Model::~Model() {}
 
+Real Model::getDensityAt(const Position& aPosition, const Instant& anInstant, const Position& aSunPosition) const{
+    (void)aPosition;
+    (void)anInstant;
+    (void)aSunPosition;
+    return 0.0;
+}
+
 }  // namespace atmospheric
 }  // namespace environment
 }  // namespace physics

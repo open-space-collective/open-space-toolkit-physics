@@ -91,14 +91,16 @@ class Earth : public Model
     /// @return             Atmospheric density value [kg.m^-3]
 
     Real getDensityAt(const Position& aPosition, const Instant& anInstant) const override;
-
+    
+    Real getDensityAt(const Position& aPosition, const Instant& anInstant, const Position& aSunPosition) const;
+    
     /// @brief              Get the atmospheric density value at a given position and instant
     ///
     /// @param              [in] aLLA A position, expressed as latitude, longitude, altitude [deg, deg, m]
     /// @param              [in] anInstant An instant
     /// @return             Atmospheric density value [kg.m^-3]
 
-    Real getDensityAt(const LLA& aLLA, const Instant& anInstant) const;
+    Real getDensityAt(const LLA& aLLA, const Instant& anInstant, const Position& aSunPosition = Position::Undefined()) const;
 
    private:
     class Impl;
