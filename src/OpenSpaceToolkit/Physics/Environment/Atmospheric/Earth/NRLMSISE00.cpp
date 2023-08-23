@@ -257,8 +257,8 @@ Real NRLMSISE00::getDensityAt(const Position& aPosition, const Instant& anInstan
         LLA::Cartesian(
             aPosition.inFrame(Frame::ITRF(), anInstant).accessCoordinates(),
             // [TBI] inherit this from correct gravitational model, if present
-            EarthGravitationalModel::EGM2008.equatorialRadius_,
-            EarthGravitationalModel::EGM2008.flattening_
+            EarthGravitationalModel::WGS84.equatorialRadius_,
+            0.0
         ),
         anInstant,
         aSunPosition
@@ -271,8 +271,8 @@ Real NRLMSISE00::getDensityAt(const Position& aPosition, const Instant& anInstan
         LLA::Cartesian(
             aPosition.inFrame(Frame::ITRF(), anInstant).accessCoordinates(),
             // [TBI] inherit this from correct gravitational model, if present
-            EarthGravitationalModel::EGM2008.equatorialRadius_,
-            EarthGravitationalModel::EGM2008.flattening_
+            EarthGravitationalModel::WGS84.equatorialRadius_,
+            0.0
         ),
         anInstant
     );
