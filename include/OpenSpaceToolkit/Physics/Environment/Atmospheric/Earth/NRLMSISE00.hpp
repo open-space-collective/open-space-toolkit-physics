@@ -9,11 +9,15 @@
 #include <OpenSpaceToolkit/Core/Types/Real.hpp>
 #include <OpenSpaceToolkit/Core/Types/String.hpp>
 #include <OpenSpaceToolkit/Core/Types/Unique.hpp>
+#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Length.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Objects/Celestial.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp>
+
 
 namespace ostk
 {
@@ -30,13 +34,17 @@ using ostk::core::types::Integer;
 using ostk::core::types::Real;
 using ostk::core::types::String;
 using ostk::core::types::Unique;
+using ostk::core::types::Shared;
 using ostk::core::ctnr::Tuple;
 using ostk::core::ctnr::Array;
 
 using ostk::physics::time::Instant;
 using ostk::physics::units::Length;
 using ostk::physics::coord::spherical::LLA;
+using ostk::physics::coord::Frame;
+using ostk::physics::env::obj::Celestial;
 using ostk::physics::environment::atmospheric::Model;
+using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 
 /// @brief                      NRLMSISE00 atmospheric model
 
@@ -45,7 +53,11 @@ class NRLMSISE00 : public Model
    public:
     /// @brief              Constructor
 
-    NRLMSISE00();
+    NRLMSISE00(Shared<const Frame> anEarthFrameSPtr = nullptr,
+        Length anEarthRadius = EarthGravitationalModel::WGS84.equatorialRadius_,
+        Real anEarthFlattening = EarthGravitationalModel::WGS84.flattening_,
+        Shared<Celestial> aSunCelestialSPtr = nullptr
+    );
 
     /// @brief              Clone the NRLMSISE00 atmospheric model
     ///
@@ -141,9 +153,15 @@ class NRLMSISE00 : public Model
     Unique<NRLMSISE00::nrlmsise_input> computeNRLMSISE00Input(
         const Unique<NRLMSISE00::ap_array>& apValues,
         const LLA& aLLA,
-        const Instant& anInstant,
-        const Position& aSunPosition = Position::Undefined()
+        const Instant& anInstant
     ) const;
+
+
+    private:
+    Shared<const Frame> earthFrameSPtr_;
+    Length earthRadius_;
+    Real earthFlattening_;
+    Shared<Celestial> sunCelestialSPtr_;
 };
 
 }  // namespace earth
