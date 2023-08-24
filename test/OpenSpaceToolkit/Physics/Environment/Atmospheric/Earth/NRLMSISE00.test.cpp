@@ -15,9 +15,13 @@
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Sun.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Objects/Celestial.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Derived/Angle.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Length.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp>
 
 #include <Global.test.hpp>
 
@@ -41,8 +45,13 @@ using ostk::physics::coord::Position;
 using ostk::physics::coord::spherical::LLA;
 using ostk::physics::coord::Frame;
 using ostk::physics::environment::atmospheric::earth::NRLMSISE00;
-using ostk::physics::env::ephem::SPICE;
+using ostk::physics::env::obj::Celestial;
+using ostk::physics::env::obj::celest::Sun;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
+
+using ostk::physics::environment::atmospheric::earth::CSSISpaceWeather;
+using ostk::physics::environment::atmospheric::earth::Manager;
+
 
 // Expose protected members for testing
 class NRLMSISE00Public : public NRLMSISE00
@@ -53,6 +62,7 @@ class NRLMSISE00Public : public NRLMSISE00
     using NRLMSISE00::nrlmsise_input;
     using NRLMSISE00::ap_array;
 };
+
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Constructor)
 {
@@ -222,10 +232,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
     const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
     Size rowCount = referenceData.getRowCount();
 
-    const SPICE spiceSun = {SPICE::Object::Sun};
-
-    const Shared<const Frame> sunFrameSPtr = spiceSun.accessFrame();
-
     {
         const NRLMSISE00 nrlmsise = {};
 
@@ -250,9 +256,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
 
             Instant instant = Instant::DateTime(datetime, Scale::UTC);
 
-            const Position sunPosition = sunFrameSPtr->getOriginIn(Frame::ITRF(), instant);
-
-            const Real density = nrlmsise.getDensityAt(position, instant, sunPosition);
+            const Real density = nrlmsise.getDensityAt(position, instant);
 
             // Check percent tolerance here for low altitudes
             const Real percentTolerance = 43.0;
@@ -278,12 +282,16 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
     const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
     Size rowCount = referenceData.getRowCount();
 
+
     {
-        const NRLMSISE00 nrlmsise = {};
+        Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
 
-        const SPICE spiceSun = {SPICE::Object::Sun};
-
-        const Shared<const Frame> sunFrameSPtr = spiceSun.accessFrame();
+        const NRLMSISE00 nrlmsise = {
+            Frame::ITRF(),
+            EarthGravitationalModel::WGS84.equatorialRadius_,
+            EarthGravitationalModel::WGS84.flattening_,
+            sun
+        };
 
         for (Index i = 0; i < rowCount; i++)
         {
@@ -306,12 +314,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
 
             Instant instant = Instant::DateTime(datetime, Scale::UTC);
 
-            const Position sunPosition = sunFrameSPtr->getOriginIn(Frame::ITRF(), instant);
-
-            const Real density = nrlmsise.getDensityAt(position, instant, sunPosition);
+            const Real density = nrlmsise.getDensityAt(position, instant);
 
             // Check percent tolerance here for low altitudes
-            const Real percentTolerance = 0.5;
+            const Real percentTolerance = 0.42;
             const Real percentError = 100.0 * (std::abs(density - referenceDensity) / referenceDensity);
 
             // But still allow a pass if the absolute error is small (because we're close to machine precision)
@@ -335,7 +341,11 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
     Size rowCount = referenceData.getRowCount();
 
     {
-        const NRLMSISE00 nrlmsise = {};
+        const NRLMSISE00 nrlmsise = {
+            Frame::ITRF(),
+            EarthGravitationalModel::WGS84.equatorialRadius_,
+            EarthGravitationalModel::WGS84.flattening_
+        };
 
         for (Index i = 0; i < rowCount; i++)
         {
@@ -387,11 +397,14 @@ TEST(
     Size rowCount = referenceData.getRowCount();
 
     {
-        const NRLMSISE00 nrlmsise = {};
+        Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
 
-        const SPICE spiceSun = {SPICE::Object::Sun};
-
-        const Shared<const Frame> sunFrameSPtr = spiceSun.accessFrame();
+        const NRLMSISE00 nrlmsise = {
+            Frame::ITRF(),
+            EarthGravitationalModel::WGS84.equatorialRadius_,
+            EarthGravitationalModel::WGS84.flattening_,
+            sun
+        };
 
         for (Index i = 0; i < rowCount; i++)
         {
@@ -414,9 +427,7 @@ TEST(
 
             Instant instant = Instant::DateTime(datetime, Scale::UTC);
 
-            const Position sunPosition = sunFrameSPtr->getOriginIn(Frame::ITRF(), instant);
-
-            const Real density = nrlmsise.getDensityAt(position, instant, sunPosition);
+            const Real density = nrlmsise.getDensityAt(position, instant);
 
             // Check percent tolerance here for low altitudes
             const Real percentTolerance = 0.6;
@@ -428,6 +439,120 @@ TEST(
 
             EXPECT_TRUE(absoluteError < absoluteTolerate || percentError < percentTolerance) << String::Format(
                 "{} ≈ {} Δ {} [{}%] [T]", density.toString(), referenceDensity.toString(), absoluteError, percentError
+            );
+        }
+    }
+}
+
+
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensityAtOrekit3HrMarkShiftedLSTSelfConsistency)
+{
+    const File referenceDataFile =
+        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
+                               "OreKitNRLMSISE500km3HourMarksShifted.csv")); // Just using for timestamps & latlonalt
+
+    const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
+    Size rowCount = referenceData.getRowCount();
+
+    {
+        Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
+
+        const NRLMSISE00 nrlmsise1 = {
+            Frame::ITRF(),
+            EarthGravitationalModel::WGS84.equatorialRadius_,
+            EarthGravitationalModel::WGS84.flattening_,
+            sun
+        };
+
+        const NRLMSISE00 nrlmsise2 = {
+            Frame::ITRF(),
+            EarthGravitationalModel::WGS84.equatorialRadius_,
+            EarthGravitationalModel::WGS84.flattening_,
+            sun
+        };
+
+        for (Index i = 0; i < rowCount; i++)
+        {
+            const Real latitude = referenceData(i, "LAT").accessReal();
+            const Real longitude = referenceData(i, "LON").accessReal();
+            const Real altitude = referenceData(i, "ALT").accessReal();
+            
+            const DateTime datetime =
+                DateTime::Parse(referenceData(i, "DATE").accessString(), DateTime::Format::Standard);
+
+            const LLA lla = LLA(Angle::Degrees(latitude), Angle::Degrees(longitude), Length::Meters(altitude));
+
+            const Position position = {
+                lla.toCartesian(
+                    EarthGravitationalModel::WGS84.equatorialRadius_, EarthGravitationalModel::WGS84.flattening_
+                ),
+                Position::Unit::Meter,
+                Frame::ITRF()
+            };
+
+            Instant instant = Instant::DateTime(datetime, Scale::UTC);
+
+            const Real density1 = nrlmsise1.getDensityAt(lla, instant);
+
+            const Real density2 = nrlmsise2.getDensityAt(lla, instant);
+
+            // Check percent tolerance here for low altitudes
+            const Real percentTolerance = 3.62;
+            const Real percentError = 100.0 * (std::abs(density1 - density2) / density2);
+
+            // But still allow a pass if the absolute error is small (because we're close to machine precision)
+            const Real absoluteTolerate = 1.0e-15;
+            const Real absoluteError = std::abs(density1 - density2);
+
+            EXPECT_TRUE(absoluteError < absoluteTolerate || percentError < percentTolerance) << String::Format(
+                "{} ≈ {} Δ {} [{}%] [T]", density1.toString(), density2.toString(), absoluteError, percentError
+            );
+        }
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensityAtOrekit3HrMarkShiftedLSTSelfConsistencyPosVsLLA)
+{
+    const File referenceDataFile =
+        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
+                               "OreKitNRLMSISE500km3HourMarksShifted.csv")); // Just using for timestamps & latlonalt
+
+    const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
+    Size rowCount = referenceData.getRowCount();
+
+    {
+        const NRLMSISE00 nrlmsise = {};
+
+        for (Index i = 0; i < rowCount; i++)
+        {
+            const Real latitude = referenceData(i, "LAT").accessReal();
+            const Real longitude = referenceData(i, "LON").accessReal();
+            const Real altitude = referenceData(i, "ALT").accessReal();
+            
+            const DateTime datetime =
+                DateTime::Parse(referenceData(i, "DATE").accessString(), DateTime::Format::Standard);
+
+            const LLA lla = LLA(Angle::Degrees(latitude), Angle::Degrees(longitude), Length::Meters(altitude));
+
+            const Position position = {
+                lla.toCartesian(
+                    EarthGravitationalModel::WGS84.equatorialRadius_, EarthGravitationalModel::WGS84.flattening_
+                ),
+                Position::Unit::Meter,
+                Frame::ITRF()
+            };
+
+            Instant instant = Instant::DateTime(datetime, Scale::UTC);
+
+            const Real density1 = nrlmsise.getDensityAt(lla, instant);
+            const Real density2 = nrlmsise.getDensityAt(position, instant);
+
+            // Error is less than machine precision
+            const Real absoluteTolerate = 1.0e-15;
+            const Real absoluteError = std::abs(density1 - density2);
+
+            EXPECT_TRUE(absoluteError < absoluteTolerate) << String::Format(
+                "{} ≈ {} Δ {} [T]", density1.toString(), density2.toString(), absoluteError
             );
         }
     }
