@@ -146,8 +146,6 @@ class Earth::NRLMSISE00Impl : public Earth::Impl
 
    private:
     NRLMSISE00 NRLMSISE00Model_;
-
-    Shared<Celestial> sunCelestialSPtr_;
 };
 
 Earth::NRLMSISE00Impl::NRLMSISE00Impl(
@@ -158,7 +156,7 @@ Earth::NRLMSISE00Impl::NRLMSISE00Impl(
     Shared<Celestial> aSunCelestialSPtr
 )
     : Earth::Impl(aType, anEarthFrameSPtr, anEarthRadius, anEarthFlattening),
-      sunCelestialSPtr_(aSunCelestialSPtr)
+      NRLMSISE00Model_(anEarthFrameSPtr, anEarthRadius, anEarthFlattening, aSunCelestialSPtr)
 {
     if (!earthFrameSPtr_)
     {
