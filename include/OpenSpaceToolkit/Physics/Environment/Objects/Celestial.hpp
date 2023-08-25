@@ -168,7 +168,7 @@ class Celestial : public Object
 
     Vector getMagneticFieldAt(const Position& aPosition, const Instant& anInstant) const;
 
-    Scalar getAtmosphericDensityAt(const Position& aPosition, const Instant& anInstant, const Position& aSunPosition = Position::Undefined()) const;
+    Scalar getAtmosphericDensityAt(const Position& aPosition, const Instant& anInstant) const;
 
     Shared<const Frame> getFrameAt(const LLA& aLla, const Celestial::FrameType& aFrameType) const;
 

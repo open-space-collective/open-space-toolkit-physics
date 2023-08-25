@@ -131,7 +131,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, accessModel)
     {
         const Shared<GravitationalModel> gravitationalModel = std::make_shared<Spherical>(gravitationalModelParameters);
         const Shared<MagneticModel> magneticModel = std::make_shared<Dipole>(Vector3d {0.0, 0.0, 1.0});
-        const Shared<AtmosphericModel> atmosphericModel = std::make_shared<Exponential>();
+        const Shared<AtmosphericModel> atmosphericModel = std::make_shared<EarthAtmosphericModel>(EarthAtmosphericModel::Type::Exponential);
 
         const Celestial celestial = {
             name,
@@ -174,7 +174,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, modelIsDefined)
     {
         const Shared<GravitationalModel> gravitationalModel = std::make_shared<Spherical>(gravitationalModelParameters);
         const Shared<MagneticModel> magneticModel = std::make_shared<Dipole>(Vector3d {0.0, 0.0, 1.0});
-        const Shared<AtmosphericModel> atmosphericModel = std::make_shared<Exponential>();
+        const Shared<AtmosphericModel> atmosphericModel = std::make_shared<EarthAtmosphericModel>(EarthAtmosphericModel::Type::Exponential);
 
         const Celestial celestial = {
             name,
@@ -225,7 +225,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, modelIsDefined)
     {
         const Shared<GravitationalModel> gravitationalModel = std::make_shared<Spherical>(gravitationalModelParameters);
         const Shared<MagneticModel> magneticModel = std::make_shared<Dipole>(Vector3d {0.0, 0.0, 1.0});
-        const Shared<AtmosphericModel> atmosphericModel = std::make_shared<Exponential>();
+        const Shared<AtmosphericModel> atmosphericModel = std::make_shared<EarthAtmosphericModel>(EarthAtmosphericModel::Type::Exponential);
 
         const Celestial celestial = {
             name,
@@ -249,7 +249,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, modelIsDefined)
     {
         const Shared<GravitationalModel> gravitationalModel = std::make_shared<Spherical>(gravitationalModelParameters);
         const Shared<MagneticModel> magneticModel = std::make_shared<Dipole>(Vector3d {0.0, 0.0, 1.0});
-        const Shared<AtmosphericModel> atmosphericModel = std::make_shared<Exponential>();
+        const Shared<AtmosphericModel> atmosphericModel = std::make_shared<EarthAtmosphericModel>(EarthAtmosphericModel::Type::Exponential);
 
         const Celestial celestial = {
             name,
@@ -432,7 +432,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Objects_Celestial, GetAtmosphericDensi
         const Real j2 = 0.0;
         const Real j4 = 0.0;
         const Shared<Ephemeris> ephemeris = std::make_shared<Analytical>(Frame::ITRF());
-        const Shared<AtmosphericModel> atmosphericModel = std::make_shared<Exponential>();
+        const Shared<AtmosphericModel> atmosphericModel = std::make_shared<EarthAtmosphericModel>(EarthAtmosphericModel::Type::Exponential);
         const Instant instant = Instant::J2000();
 
         const Celestial celestial = {

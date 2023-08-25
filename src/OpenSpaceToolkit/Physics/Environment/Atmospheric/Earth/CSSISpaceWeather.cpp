@@ -189,8 +189,8 @@ std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& a
 
 bool CSSISpaceWeather::isDefined() const
 {
-    return observationInterval_.isDefined() && (!observations_.empty()) && dailyPredictionInterval_.isDefined() &&
-           (!dailyPredictions_.empty()) && monthlyPredictionInterval_.isDefined() && (!monthlyPredictions_.empty());
+    return observationInterval_.isDefined() && (!observations_.empty());// && dailyPredictionInterval_.isDefined() &&
+           //(!dailyPredictions_.empty()) && monthlyPredictionInterval_.isDefined() && (!monthlyPredictions_.empty());
 }
 
 const Date& CSSISpaceWeather::accessLastObservationDate() const

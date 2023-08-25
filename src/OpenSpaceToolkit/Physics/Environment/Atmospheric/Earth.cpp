@@ -27,7 +27,7 @@ using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth
 class Earth::Impl
 {
    public:
-    Impl(const Earth::Type& aType, const Directory& aDataDirectory = Directory::Undefined());
+    Impl(const Earth::Type& aType);
 
     virtual ~Impl() = 0;
 
@@ -36,15 +36,13 @@ class Earth::Impl
     Earth::Type getType() const;
 
     virtual Real getDensityAt(const LLA& aLLA, const Instant& anInstant) const = 0;
-    virtual Real getDensityAt(const LLA& aLLA, const Instant& anInstant, const Position& aSunPosition) const;
    private:
     Earth::Type type_;
 };
 
-Earth::Impl::Impl(const Earth::Type& aType, const Directory& aDataDirectory)
+Earth::Impl::Impl(const Earth::Type& aType)
     : type_(aType)
 {
-    (void)aDataDirectory;  // Not yet used
 }
 
 Earth::Impl::~Impl() {}
@@ -52,14 +50,6 @@ Earth::Impl::~Impl() {}
 Earth::Type Earth::Impl::getType() const
 {
     return type_;
-}
-
-Real Earth::Impl::getDensityAt(const LLA& aLLA, const Instant& anInstant, const Position& aSunPosition) const{
-    (void)aLLA;
-    (void)anInstant;
-    (void)aSunPosition;
-
-    return 0.0;
 }
 
 class Earth::ExponentialImpl : public Earth::Impl
@@ -104,7 +94,6 @@ class Earth::NRLMSISE00Impl : public Earth::Impl
     virtual NRLMSISE00Impl* clone() const override;
 
     virtual Real getDensityAt(const LLA& aLLA, const Instant& anInstant) const override;
-    Real getDensityAt(const LLA& aLLA, const Instant& anInstant, const Position& aSunPosition) const;
 
    private:
     NRLMSISE00 NRLMSISE00Model_;
@@ -127,20 +116,33 @@ Real Earth::NRLMSISE00Impl::getDensityAt(const LLA& aLLA, const Instant& anInsta
     return this->NRLMSISE00Model_.getDensityAt(aLLA, anInstant);
 }
 
-Real Earth::NRLMSISE00Impl::getDensityAt(const LLA& aLLA, const Instant& anInstant, const Position& aSunPosition) const
-{
-    return this->NRLMSISE00Model_.getDensityAt(aLLA, anInstant, aSunPosition);
-}
 
-Earth::Earth(const Earth::Type& aType, const Directory& aDataDirectory)
+Earth::Earth(const Earth::Type& aType,
+    Shared<const Frame> anEarthFrameSPtr,
+    const Length anEarthRadius,
+    const Real anEarthFlattening,
+    Shared<Celestial> aSunCelestialSPtr
+)
     : Model(),
-      implUPtr_(Earth::ImplFromType(aType, aDataDirectory))
+    implUPtr_(Earth::ImplFromType(aType)),
+    earthFrameSPtr_(anEarthFrameSPtr),
+    earthRadius_(anEarthRadius),
+    earthFlattening_(anEarthFlattening),
+    sunCelestialSPtr_(aSunCelestialSPtr)
 {
+    if(!earthFrameSPtr_)
+    {
+        earthFrameSPtr_ = Shared<const Frame>(Frame::ITRF());
+    }
 }
 
 Earth::Earth(const Earth& anEarthAtmosphericModel)
-    : Model(anEarthAtmosphericModel),
-      implUPtr_((anEarthAtmosphericModel.implUPtr_ != nullptr) ? anEarthAtmosphericModel.implUPtr_->clone() : nullptr)
+      : Model(anEarthAtmosphericModel),
+      implUPtr_((anEarthAtmosphericModel.implUPtr_ != nullptr) ? anEarthAtmosphericModel.implUPtr_->clone() : nullptr),
+        earthFrameSPtr_(anEarthAtmosphericModel.earthFrameSPtr_),
+        earthRadius_(anEarthAtmosphericModel.earthRadius_),
+        earthFlattening_(anEarthAtmosphericModel.earthFlattening_),
+        sunCelestialSPtr_(anEarthAtmosphericModel.sunCelestialSPtr_)
 {
 }
 
@@ -177,46 +179,23 @@ Earth::Type Earth::getType() const
 
 Real Earth::getDensityAt(const Position& aPosition, const Instant& anInstant) const
 {
-    return this->getDensityAt(
+    return implUPtr_->getDensityAt(
         LLA::Cartesian(
             aPosition.inFrame(Frame::ITRF(), anInstant).accessCoordinates(),
-            // [TBI] inherit this from correct gravitational model, if present
-            EarthGravitationalModel::EGM2008.equatorialRadius_,
-            EarthGravitationalModel::EGM2008.flattening_
+            earthRadius_,
+            earthFlattening_
         ),
-        anInstant,
-        Position::Undefined()
+        anInstant
     );
 }
 
-Real Earth::getDensityAt(const Position& aPosition, const Instant& anInstant, const Position& aSunPosition) const
+Real Earth::getDensityAt(const LLA& aLLA, const Instant& anInstant) const
 {
-    return this->getDensityAt(
-        LLA::Cartesian(
-            aPosition.inFrame(Frame::ITRF(), anInstant).accessCoordinates(),
-            // [TBI] inherit this from correct gravitational model, if present
-            EarthGravitationalModel::EGM2008.equatorialRadius_,
-            EarthGravitationalModel::EGM2008.flattening_
-        ),
-        anInstant,
-        aSunPosition
-    );
-}
-
-Real Earth::getDensityAt(const LLA& aLLA, const Instant& anInstant, const Position& aSunPosition) const
-{
-    if (aSunPosition.isDefined())
-    {
-        return implUPtr_->getDensityAt(aLLA, anInstant, aSunPosition);
-    }
-
     return implUPtr_->getDensityAt(aLLA, anInstant);
 }
 
-Unique<Earth::Impl> Earth::ImplFromType(const Earth::Type& aType, const Directory& aDataDirectory)
+Unique<Earth::Impl> Earth::ImplFromType(const Earth::Type& aType)
 {
-    (void)aDataDirectory;  // Not yet used
-
     if (aType == Earth::Type::Undefined)
     {
         return nullptr;

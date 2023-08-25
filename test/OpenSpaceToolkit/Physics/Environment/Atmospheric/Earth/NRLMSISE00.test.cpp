@@ -76,7 +76,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Clone)
     {
         const NRLMSISE00 nrlmsise = {};
 
-        EXPECT_NO_THROW(const NRLMSISE00* nrlmsisePtr = nrlmsise.clone(); delete nrlmsisePtr;);
+        EXPECT_NO_THROW(nrlmsise.clone());
     }
 }
 
@@ -256,7 +256,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
 
             Instant instant = Instant::DateTime(datetime, Scale::UTC);
 
-            const Real density = nrlmsise.getDensityAt(position, instant);
+            const Real density = nrlmsise.getDensityAt(lla, instant);
 
             // Check percent tolerance here for low altitudes
             const Real percentTolerance = 43.0;
@@ -314,7 +314,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
 
             Instant instant = Instant::DateTime(datetime, Scale::UTC);
 
-            const Real density = nrlmsise.getDensityAt(position, instant);
+            const Real density = nrlmsise.getDensityAt(lla, instant);
 
             // Check percent tolerance here for low altitudes
             const Real percentTolerance = 0.42;
@@ -368,7 +368,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
 
             Instant instant = Instant::DateTime(datetime, Scale::UTC);
 
-            const Real density = nrlmsise.getDensityAt(position, instant);
+            const Real density = nrlmsise.getDensityAt(lla, instant);
 
             // Check percent tolerance here for low altitudes
             const Real percentTolerance = 3.4;
@@ -427,7 +427,7 @@ TEST(
 
             Instant instant = Instant::DateTime(datetime, Scale::UTC);
 
-            const Real density = nrlmsise.getDensityAt(position, instant);
+            const Real density = nrlmsise.getDensityAt(lla, instant);
 
             // Check percent tolerance here for low altitudes
             const Real percentTolerance = 0.6;
@@ -506,53 +506,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
 
             EXPECT_TRUE(absoluteError < absoluteTolerate || percentError < percentTolerance) << String::Format(
                 "{} ≈ {} Δ {} [{}%] [T]", density1.toString(), density2.toString(), absoluteError, percentError
-            );
-        }
-    }
-}
-
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensityAtOrekit3HrMarkShiftedLSTSelfConsistencyPosVsLLA)
-{
-    const File referenceDataFile =
-        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
-                               "OreKitNRLMSISE500km3HourMarksShifted.csv")); // Just using for timestamps & latlonalt
-
-    const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
-    Size rowCount = referenceData.getRowCount();
-
-    {
-        const NRLMSISE00 nrlmsise = {};
-
-        for (Index i = 0; i < rowCount; i++)
-        {
-            const Real latitude = referenceData(i, "LAT").accessReal();
-            const Real longitude = referenceData(i, "LON").accessReal();
-            const Real altitude = referenceData(i, "ALT").accessReal();
-            
-            const DateTime datetime =
-                DateTime::Parse(referenceData(i, "DATE").accessString(), DateTime::Format::Standard);
-
-            const LLA lla = LLA(Angle::Degrees(latitude), Angle::Degrees(longitude), Length::Meters(altitude));
-
-            const Position position = {
-                lla.toCartesian(
-                    EarthGravitationalModel::WGS84.equatorialRadius_, EarthGravitationalModel::WGS84.flattening_
-                ),
-                Position::Unit::Meter,
-                Frame::ITRF()
-            };
-
-            Instant instant = Instant::DateTime(datetime, Scale::UTC);
-
-            const Real density1 = nrlmsise.getDensityAt(lla, instant);
-            const Real density2 = nrlmsise.getDensityAt(position, instant);
-
-            // Error is less than machine precision
-            const Real absoluteTolerate = 1.0e-15;
-            const Real absoluteError = std::abs(density1 - density2);
-
-            EXPECT_TRUE(absoluteError < absoluteTolerate) << String::Format(
-                "{} ≈ {} Δ {} [T]", density1.toString(), density2.toString(), absoluteError
             );
         }
     }

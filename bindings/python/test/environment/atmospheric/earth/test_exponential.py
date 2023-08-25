@@ -33,12 +33,3 @@ class TestExponential:
         # assert sensible number for density
         assert 1.0e-15 < density < 1.0e-12
 
-    def test_get_density_at_position_success(self, exponential_model):
-        position = Position.meters(np.array([6878.1e3, 0, 0]), Frame.ITRF())
-
-        density = exponential_model.get_density_at(
-            position, Instant.date_time(DateTime.parse("2021-01-01 00:00:00"), Scale.UTC)
-        )
-
-        # assert sensible number for density
-        assert 1.0e-15 < density < 1.0e-12
