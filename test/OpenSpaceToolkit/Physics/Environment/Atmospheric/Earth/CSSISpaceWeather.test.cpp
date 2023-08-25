@@ -66,9 +66,10 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
 {
     {
         EXPECT_EQ(
-            Interval::Closed(
+            Interval(
                 Instant::DateTime(DateTime::Parse("2018-01-01 00:00:00"), Scale::UTC),
-                Instant::DateTime(DateTime::Parse("2023-06-19 23:59:59"), Scale::UTC)
+                Instant::DateTime(DateTime::Parse("2023-06-20 00:00:00"), Scale::UTC),
+                Interval::Type::HalfOpenRight
             ),
             CSSISpaceWeather_.accessObservationInterval()
         );
@@ -138,9 +139,10 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
 {
     {
         EXPECT_EQ(
-            Interval::Closed(
+            Interval(
                 Instant::DateTime(DateTime::Parse("2023-06-20 00:00:00"), Scale::UTC),
-                Instant::DateTime(DateTime::Parse("2023-08-03 23:59:59"), Scale::UTC)
+                Instant::DateTime(DateTime::Parse("2023-08-04 00:00:00"), Scale::UTC),
+                Interval::Type::HalfOpenRight
             ),
             CSSISpaceWeather_.accessDailyPredictionInterval()
         );
@@ -214,7 +216,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         EXPECT_EQ(
             Interval::Closed(
                 Instant::DateTime(DateTime::Parse("2023-08-01 00:00:00"), Scale::UTC),
-                Instant::DateTime(DateTime::Parse("2029-01-01 23:59:59"), Scale::UTC)
+                Instant::DateTime(DateTime::Parse("2029-01-01 00:00:00"), Scale::UTC)
             ),
             CSSISpaceWeather_.accessMonthlyPredictionInterval()
         );
@@ -485,9 +487,37 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
     }
 
     {
-        CSSISpaceWeather::LoadLegacy(
+        CSSISpaceWeather legacySpaceWeather = CSSISpaceWeather::LoadLegacy(
             File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
                                    "CSSISpaceWeather/SpaceWeather-All-v1.2.txt"))
+        );
+
+        EXPECT_TRUE(legacySpaceWeather.isDefined());
+
+        EXPECT_EQ(
+            Interval(
+                Instant::DateTime(DateTime::Parse("1970-01-01 00:00:00"), Scale::UTC),
+                Instant::DateTime(DateTime::Parse("2023-08-23 00:00:00"), Scale::UTC),
+                Interval::Type::HalfOpenRight
+            ),
+            legacySpaceWeather.accessObservationInterval()
+        );
+
+        EXPECT_EQ(
+            Interval(
+                Instant::DateTime(DateTime::Parse("2023-08-23 00:00:00"), Scale::UTC),
+                Instant::DateTime(DateTime::Parse("2023-10-06 00:00:00"), Scale::UTC),
+                Interval::Type::HalfOpenRight
+            ),
+            legacySpaceWeather.accessDailyPredictionInterval()
+        );
+
+        EXPECT_EQ(
+            Interval::Closed(
+                Instant::DateTime(DateTime::Parse("2023-10-01 00:00:00"), Scale::UTC),
+                Instant::DateTime(DateTime::Parse("2030-12-01 00:00:00"), Scale::UTC)
+            ),
+            legacySpaceWeather.accessMonthlyPredictionInterval()
         );
     }
 }

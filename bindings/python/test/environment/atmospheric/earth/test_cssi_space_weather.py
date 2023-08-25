@@ -121,3 +121,6 @@ class TestCSSISpaceWeather:
 
     def test_load_success(self, cssi_space_weather_file: File):
         assert CSSISpaceWeather.load(cssi_space_weather_file) is not None
+
+    def test_load_legacy_success(self, cssi_space_weather_legacy_file: File):
+        assert CSSISpaceWeather.load_legacy(cssi_space_weather_legacy_file) is not None
