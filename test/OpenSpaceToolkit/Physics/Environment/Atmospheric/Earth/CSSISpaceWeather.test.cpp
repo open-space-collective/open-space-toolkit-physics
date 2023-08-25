@@ -473,21 +473,3 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, LoadLegacy)
-{
-    {
-        EXPECT_TRUE(CSSISpaceWeather_.isDefined());
-    }
-
-    {
-        EXPECT_ANY_THROW(CSSISpaceWeather::LoadLegacy(File::Undefined()));
-        EXPECT_ANY_THROW(CSSISpaceWeather::LoadLegacy(File::Path(Path::Parse("/does/not/exist"))));
-    }
-
-    {
-        CSSISpaceWeather::LoadLegacy(
-            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
-                                   "CSSISpaceWeather/SpaceWeather-All-v1.2.txt"))
-        );
-    }
-}

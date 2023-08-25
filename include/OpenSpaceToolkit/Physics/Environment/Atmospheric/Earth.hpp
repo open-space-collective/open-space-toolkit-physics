@@ -59,10 +59,10 @@ class Earth : public Model
 
     Earth(
         const Earth::Type& aType,
-        Shared<const Frame> anEarthFrameSPtr = nullptr,
-        Length anEarthRadius = EarthGravitationalModel::WGS84.equatorialRadius_,
-        Real anEarthFlattening = EarthGravitationalModel::WGS84.flattening_,
-        Shared<Celestial> aSunCelestialSPtr = nullptr
+        const Shared<const Frame>& anEarthFrameSPtr = Frame::ITRF(),
+        const Length& anEarthRadius = EarthGravitationalModel::WGS84.equatorialRadius_,
+        const Real& anEarthFlattening = EarthGravitationalModel::WGS84.flattening_,
+        const Shared<Celestial>& aSunCelestialSPtr = nullptr
     );
 
     /// @brief              Copy constructor
@@ -124,10 +124,10 @@ class Earth : public Model
 
     static Unique<Impl> ImplFromType(
         const Type& aType,
-        Shared<const Frame> anEarthFrameSPtr,
-        Length anEarthRadius,
-        Real anEarthFlattening,
-        Shared<Celestial> aSunCelestialSPtr
+        const Shared<const Frame>& anEarthFrameSPtr,
+        const Length& anEarthRadius,
+        const Real& anEarthFlattening,
+        const Shared<Celestial>& aSunCelestialSPtr
     );
 };
 
