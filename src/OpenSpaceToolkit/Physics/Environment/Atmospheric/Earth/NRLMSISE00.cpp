@@ -57,13 +57,13 @@ NRLMSISE00::NRLMSISE00(
     const Length anEarthRadius,
     const Real anEarthFlattening,
     Shared<Celestial> aSunCelestialSPtr
-):
-    earthFrameSPtr_(anEarthFrameSPtr),
-    earthRadius_(anEarthRadius),
-    earthFlattening_(anEarthFlattening),
-    sunCelestialSPtr_(aSunCelestialSPtr)
+)
+    : earthFrameSPtr_(anEarthFrameSPtr),
+      earthRadius_(anEarthRadius),
+      earthFlattening_(anEarthFlattening),
+      sunCelestialSPtr_(aSunCelestialSPtr)
 {
-    if(!earthFrameSPtr_)
+    if (!earthFrameSPtr_)
     {
         earthFrameSPtr_ = Shared<const Frame>(Frame::ITRF());
     }
@@ -168,9 +168,7 @@ Unique<NRLMSISE00::ap_array> NRLMSISE00::computeApArray(const Instant& anInstant
 }
 
 Unique<NRLMSISE00::nrlmsise_input> NRLMSISE00::computeNRLMSISE00Input(
-    const Unique<NRLMSISE00::ap_array>& apValues,
-    const LLA& aLLA,
-    const Instant& anInstant
+    const Unique<NRLMSISE00::ap_array>& apValues, const LLA& aLLA, const Instant& anInstant
 ) const
 {
     // Input reference is in the NRLMSISE header file
@@ -199,18 +197,16 @@ Unique<NRLMSISE00::nrlmsise_input> NRLMSISE00::computeNRLMSISE00Input(
     if (sunCelestialSPtr_)
     {
         const Position position = {
-            aLLA.toCartesian(
-                earthRadius_, earthFlattening_
-            ),
-            Position::Unit::Meter,
-            earthFrameSPtr_
+            aLLA.toCartesian(earthRadius_, earthFlattening_), Position::Unit::Meter, earthFrameSPtr_
         };
 
         const Position sunPositionInFrame = sunCelestialSPtr_->getPositionIn(earthFrameSPtr_, anInstant);
 
         lst = (Real::Pi() + std::atan2(
-                                sunPositionInFrame.accessCoordinates()[0] * position.accessCoordinates()[1] - sunPositionInFrame.accessCoordinates()[1] * position.accessCoordinates()[0],
-                                sunPositionInFrame.accessCoordinates()[0] * position.accessCoordinates()[0] + sunPositionInFrame.accessCoordinates()[1] * position.accessCoordinates()[1]
+                                sunPositionInFrame.accessCoordinates()[0] * position.accessCoordinates()[1] -
+                                    sunPositionInFrame.accessCoordinates()[1] * position.accessCoordinates()[0],
+                                sunPositionInFrame.accessCoordinates()[0] * position.accessCoordinates()[0] +
+                                    sunPositionInFrame.accessCoordinates()[1] * position.accessCoordinates()[1]
                             )) *
               12.0 / Real::Pi();
     }
@@ -251,8 +247,7 @@ Real NRLMSISE00::getDensityAt(const LLA& aLLA, const Instant& anInstant) const
     }
 
     const Unique<NRLMSISE00::ap_array> apValues = this->computeApArray(anInstant);
-    const Unique<NRLMSISE00::nrlmsise_input> input =
-        this->computeNRLMSISE00Input(apValues, aLLA, anInstant);
+    const Unique<NRLMSISE00::nrlmsise_input> input = this->computeNRLMSISE00Input(apValues, aLLA, anInstant);
 
     NRLMSISE00_c::nrlmsise_input* input_c = reinterpret_cast<NRLMSISE00_c::nrlmsise_input*>(input.get());
     NRLMSISE00_c::gtd7d(input_c, &flags, &output);

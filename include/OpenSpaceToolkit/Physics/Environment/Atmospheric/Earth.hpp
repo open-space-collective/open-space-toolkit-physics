@@ -5,16 +5,16 @@
 
 #include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
 #include <OpenSpaceToolkit/Core/Types/Real.hpp>
-#include <OpenSpaceToolkit/Core/Types/Unique.hpp>
 #include <OpenSpaceToolkit/Core/Types/Shared.hpp>
+#include <OpenSpaceToolkit/Core/Types/Unique.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Objects/Celestial.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Length.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Objects/Celestial.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp>
 
 namespace ostk
 {
@@ -57,11 +57,13 @@ class Earth : public Model
     /// @param              [in] aType An atmospheric model type
     /// @param              [in] (optional) aDataDirectory An atmospheric model data directory
 
-    Earth(const Earth::Type& aType,
+    Earth(
+        const Earth::Type& aType,
         Shared<const Frame> anEarthFrameSPtr = nullptr,
         Length anEarthRadius = EarthGravitationalModel::WGS84.equatorialRadius_,
         Real anEarthFlattening = EarthGravitationalModel::WGS84.flattening_,
-        Shared<Celestial> aSunCelestialSPtr = nullptr);
+        Shared<Celestial> aSunCelestialSPtr = nullptr
+    );
 
     /// @brief              Copy constructor
     ///
@@ -106,7 +108,6 @@ class Earth : public Model
 
     Real getDensityAt(const Position& aPosition, const Instant& anInstant) const override;
 
-
     /// @brief              Get the atmospheric density value at a given position and instant
     ///
     /// @param              [in] aLLA A LLA
@@ -120,15 +121,14 @@ class Earth : public Model
     class NRLMSISE00Impl;
 
     Unique<Impl> implUPtr_;
-    Shared<const Frame> earthFrameSPtr_;
-    Length earthRadius_;
-    Real earthFlattening_;
-    Shared<Celestial> sunCelestialSPtr_;
 
-    static Unique<Impl> ImplFromType(const Type& aType);
-
-
-
+    static Unique<Impl> ImplFromType(
+        const Type& aType,
+        Shared<const Frame> anEarthFrameSPtr,
+        Length anEarthRadius,
+        Real anEarthFlattening,
+        Shared<Celestial> aSunCelestialSPtr
+    );
 };
 
 }  // namespace atmospheric

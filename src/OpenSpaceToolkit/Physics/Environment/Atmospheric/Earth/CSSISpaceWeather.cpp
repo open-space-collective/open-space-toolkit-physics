@@ -189,8 +189,10 @@ std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& a
 
 bool CSSISpaceWeather::isDefined() const
 {
-    return observationInterval_.isDefined() && (!observations_.empty());// && dailyPredictionInterval_.isDefined() &&
-           //(!dailyPredictions_.empty()) && monthlyPredictionInterval_.isDefined() && (!monthlyPredictions_.empty());
+    return observationInterval_.isDefined() &&
+           (!observations_.empty());  // && dailyPredictionInterval_.isDefined() &&
+                                      //(!dailyPredictions_.empty()) && monthlyPredictionInterval_.isDefined() &&
+                                      //(!monthlyPredictions_.empty());
 }
 
 const Date& CSSISpaceWeather::accessLastObservationDate() const
@@ -621,59 +623,56 @@ CSSISpaceWeather CSSISpaceWeather::LoadLegacy(const File& aFile)
         throw ostk::core::error::RuntimeError("File [{}] does not exist.", aFile.toString());
     }
 
-
     CSSISpaceWeather spaceWeather;
 
     std::ifstream fileStream {aFile.getPath().toString()};
 
     bool readingObserved = false;
-    //bool readingDailyPredicted = false;
-    //bool readingMonthlyPredicted = false;
+    // bool readingDailyPredicted = false;
+    // bool readingMonthlyPredicted = false;
 
     String line;
 
-    auto split = [] ( std::string s, std::string delimiter ) -> Array<String>
+    auto split = [](std::string s, std::string delimiter) -> Array<String>
     {
         Array<String> results;
 
-        size_t last = 0; 
-        size_t next = 0; 
-        while ((next = s.find(delimiter, last)) != std::string::npos) 
-        {   
+        size_t last = 0;
+        size_t next = 0;
+        while ((next = s.find(delimiter, last)) != std::string::npos)
+        {
             // account for multiple consecutive delimiters
-            const String token = s.substr(last, next-last);
-            if (token != delimiter && !token.match(std::regex("^\s*$"))) // TODO: this is a hack that makes it only work when space-delimited
+            const String token = s.substr(last, next - last);
+            if (token != delimiter &&
+                !token.match(std::regex("^\s*$")))  // TODO: this is a hack that makes it only work when space-delimited
             {
                 results.add(token);
             }
-            last = next + 1; 
-        } 
+            last = next + 1;
+        }
         results.add(s.substr(last));
         return results;
     };
-    
+
     while (std::getline(fileStream, line))
     {
-
         Array<String> lineParts = split(line, " ");
 
-        //std::cout << lineParts << std::endl;
+        // std::cout << lineParts << std::endl;
         if (lineParts.empty())
         {
             continue;
         }
-        
-        if ( lineParts.getSize() >= 2 && lineParts[0] == "BEGIN" && lineParts[1] == "OBSERVED") 
+
+        if (lineParts.getSize() >= 2 && lineParts[0] == "BEGIN" && lineParts[1] == "OBSERVED")
         {
             readingObserved = true;
             continue;
         }
 
-
-        if ( lineParts.getSize() >= 2 && lineParts[0] == "END" && lineParts[1] == "OBSERVED")
+        if (lineParts.getSize() >= 2 && lineParts[0] == "END" && lineParts[1] == "OBSERVED")
         {
             readingObserved = false;
-
 
             spaceWeather.lastObservationDate_ = spaceWeather.observations_.rbegin()->second.date;
 
@@ -687,7 +686,6 @@ CSSISpaceWeather CSSISpaceWeather::LoadLegacy(const File& aFile)
 
             spaceWeather.observationInterval_ = Interval::Closed(observationStartInstant, observationEndInstant);
 
-
             // TBI: just setting daily predict and monthly predict windows to nothing for now.
             spaceWeather.dailyPredictionInterval_ = Interval::Closed(observationEndInstant, observationEndInstant);
             spaceWeather.monthlyPredictionInterval_ = Interval::Closed(observationEndInstant, observationEndInstant);
@@ -695,7 +693,7 @@ CSSISpaceWeather CSSISpaceWeather::LoadLegacy(const File& aFile)
             continue;
         }
 
-        if ( readingObserved )
+        if (readingObserved)
         {
             Integer DATE_YEAR = boost::lexical_cast<int>(lineParts[0]);
             Integer DATE_MONT = boost::lexical_cast<int>(lineParts[1]);
@@ -727,25 +725,22 @@ CSSISpaceWeather CSSISpaceWeather::LoadLegacy(const File& aFile)
             Integer ISN = boost::lexical_cast<int>(lineParts[25]);
 
             Real F107Adj = boost::lexical_cast<double>(lineParts[26]);
-            //Real Q = boost::lexical_cast<double>(lineParts[27]);
+            // Real Q = boost::lexical_cast<double>(lineParts[27]);
             Real F107AdjCenter81 = boost::lexical_cast<double>(lineParts[28]);
             Real F107AdjLast81 = boost::lexical_cast<double>(lineParts[29]);
-            
+
             Real F107Obs = boost::lexical_cast<double>(lineParts[30]);
             Real F107ObsCenter81 = boost::lexical_cast<double>(lineParts[31]);
             Real F107ObsLast81 = boost::lexical_cast<double>(lineParts[32]);
 
-
-
             Date date = Date(DATE_YEAR, DATE_MONT, DATE_DAY);
-            
+
             if (date.getYear() < 1970 || date.getYear() > 2030)
             {
                 continue;
             }
 
             const Integer mjd = DateTime(date, Time(0, 0, 0)).getModifiedJulianDate().floor();
-
 
             const CSSISpaceWeather::Reading observation = {
                 date,
@@ -787,7 +782,6 @@ CSSISpaceWeather CSSISpaceWeather::LoadLegacy(const File& aFile)
 
     return spaceWeather;
 }
-
 
 CSSISpaceWeather::CSSISpaceWeather()
     : lastObservationDate_(Date::Undefined()),

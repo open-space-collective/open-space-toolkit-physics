@@ -12,16 +12,16 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Objects/Celestial.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Sun.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Objects/Celestial.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Derived/Angle.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Length.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp>
 
 #include <Global.test.hpp>
 
@@ -52,7 +52,6 @@ using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth
 using ostk::physics::environment::atmospheric::earth::CSSISpaceWeather;
 using ostk::physics::environment::atmospheric::earth::Manager;
 
-
 // Expose protected members for testing
 class NRLMSISE00Public : public NRLMSISE00
 {
@@ -62,7 +61,6 @@ class NRLMSISE00Public : public NRLMSISE00
     using NRLMSISE00::nrlmsise_input;
     using NRLMSISE00::ap_array;
 };
-
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Constructor)
 {
@@ -282,7 +280,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
     const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
     Size rowCount = referenceData.getRowCount();
 
-
     {
         Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
 
@@ -342,9 +339,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
 
     {
         const NRLMSISE00 nrlmsise = {
-            Frame::ITRF(),
-            EarthGravitationalModel::WGS84.equatorialRadius_,
-            EarthGravitationalModel::WGS84.flattening_
+            Frame::ITRF(), EarthGravitationalModel::WGS84.equatorialRadius_, EarthGravitationalModel::WGS84.flattening_
         };
 
         for (Index i = 0; i < rowCount; i++)
@@ -444,12 +439,14 @@ TEST(
     }
 }
 
-
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensityAtOrekit3HrMarkShiftedLSTSelfConsistency)
+TEST(
+    OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00,
+    GetDensityAtOrekit3HrMarkShiftedLSTSelfConsistency
+)
 {
     const File referenceDataFile =
         File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
-                               "OreKitNRLMSISE500km3HourMarksShifted.csv")); // Just using for timestamps & latlonalt
+                               "OreKitNRLMSISE500km3HourMarksShifted.csv"));  // Just using for timestamps & latlonalt
 
     const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
     Size rowCount = referenceData.getRowCount();
@@ -476,7 +473,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
             const Real latitude = referenceData(i, "LAT").accessReal();
             const Real longitude = referenceData(i, "LON").accessReal();
             const Real altitude = referenceData(i, "ALT").accessReal();
-            
+
             const DateTime datetime =
                 DateTime::Parse(referenceData(i, "DATE").accessString(), DateTime::Format::Standard);
 

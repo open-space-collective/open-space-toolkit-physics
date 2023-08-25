@@ -44,15 +44,11 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Constructor)
     }
 
     {
-        EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(
-            EarthAtmosphericModel::Type::Exponential
-        ));
+        EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(EarthAtmosphericModel::Type::Exponential));
     }
 
     {
-        EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(
-            EarthAtmosphericModel::Type::NRLMSISE00
-        ));
+        EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(EarthAtmosphericModel::Type::NRLMSISE00));
     }
 }
 
@@ -347,12 +343,12 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Solar)
             };
 
             const EarthAtmosphericModel earthAtmosphericModel = {
-                    std::get<0>(testCase), 
-                    Frame::ITRF(),
-                    EarthGravitationalModel::EGM2008.equatorialRadius_, 
-                    EarthGravitationalModel::EGM2008.flattening_,
-                    std::make_shared<Sun>(Sun::Default())
-                };
+                std::get<0>(testCase),
+                Frame::ITRF(),
+                EarthGravitationalModel::EGM2008.equatorialRadius_,
+                EarthGravitationalModel::EGM2008.flattening_,
+                std::make_shared<Sun>(Sun::Default())
+            };
 
             const Instant instant = std::get<2>(testCase);
             const Real referenceDensity = std::get<3>(testCase);
@@ -366,4 +362,3 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Solar)
         }
     }
 }
-
