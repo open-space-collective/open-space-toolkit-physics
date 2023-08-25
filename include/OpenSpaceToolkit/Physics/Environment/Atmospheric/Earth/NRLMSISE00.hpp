@@ -53,10 +53,10 @@ class NRLMSISE00
     /// @brief              Constructor
 
     NRLMSISE00(
-        Shared<const Frame> anEarthFrameSPtr = nullptr,
-        Length anEarthRadius = EarthGravitationalModel::WGS84.equatorialRadius_,
-        Real anEarthFlattening = EarthGravitationalModel::WGS84.flattening_,
-        Shared<Celestial> aSunCelestialSPtr = nullptr
+        const Shared<const Frame>& anEarthFrameSPtr = Frame::ITRF(),
+        const Length& anEarthRadius = EarthGravitationalModel::WGS84.equatorialRadius_,
+        const Real& anEarthFlattening = EarthGravitationalModel::WGS84.flattening_,
+        const Shared<Celestial>& aSunCelestialSPtr = nullptr
     );
 
     /// @brief              Clone the NRLMSISE00 atmospheric model

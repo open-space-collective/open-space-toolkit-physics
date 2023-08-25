@@ -53,20 +53,16 @@ using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth
 using ostk::physics::environment::atmospheric::earth::Manager;
 
 NRLMSISE00::NRLMSISE00(
-    Shared<const Frame> anEarthFrameSPtr,
-    const Length anEarthRadius,
-    const Real anEarthFlattening,
-    Shared<Celestial> aSunCelestialSPtr
+    const Shared<const Frame>& anEarthFrameSPtr,
+    const Length& anEarthRadius,
+    const Real& anEarthFlattening,
+    const Shared<Celestial>& aSunCelestialSPtr
 )
     : earthFrameSPtr_(anEarthFrameSPtr),
       earthRadius_(anEarthRadius),
       earthFlattening_(anEarthFlattening),
       sunCelestialSPtr_(aSunCelestialSPtr)
 {
-    if (!earthFrameSPtr_)
-    {
-        earthFrameSPtr_ = Shared<const Frame>(Frame::ITRF());
-    }
 }
 
 NRLMSISE00* NRLMSISE00::clone() const

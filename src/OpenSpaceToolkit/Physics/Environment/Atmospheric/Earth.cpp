@@ -29,9 +29,9 @@ class Earth::Impl
    public:
     Impl(
         const Earth::Type& aType,
-        Shared<const Frame> anEarthFrameSPtr,
-        const Length anEarthRadius,
-        const Real anEarthFlattening
+        const Shared<const Frame>& anEarthFrameSPtr,
+        const Length& anEarthRadius,
+        const Real& anEarthFlattening
     );
 
     virtual ~Impl() = 0;
@@ -55,9 +55,9 @@ class Earth::Impl
 
 Earth::Impl::Impl(
     const Earth::Type& aType,
-    Shared<const Frame> anEarthFrameSPtr,
-    const Length anEarthRadius,
-    const Real anEarthFlattening
+    const Shared<const Frame>& anEarthFrameSPtr,
+    const Length& anEarthRadius,
+    const Real& anEarthFlattening
 )
     : earthFrameSPtr_(anEarthFrameSPtr),
       earthRadius_(anEarthRadius),
@@ -78,9 +78,9 @@ class Earth::ExponentialImpl : public Earth::Impl
    public:
     ExponentialImpl(
         const Earth::Type& aType,
-        Shared<const Frame> anEarthFrameSPtr = nullptr,
-        const Length anEarthRadius = EarthGravitationalModel::WGS84.equatorialRadius_,
-        const Real anEarthFlattening = EarthGravitationalModel::WGS84.flattening_
+        const Shared<const Frame>& anEarthFrameSPtr,
+        const Length& anEarthRadius,
+        const Real& anEarthFlattening
     );
 
     ~ExponentialImpl();
@@ -97,9 +97,9 @@ class Earth::ExponentialImpl : public Earth::Impl
 
 Earth::ExponentialImpl::ExponentialImpl(
     const Earth::Type& aType,
-    Shared<const Frame> anEarthFrameSPtr,
-    const Length anEarthRadius,
-    const Real anEarthFlattening
+    const Shared<const Frame>& anEarthFrameSPtr,
+    const Length& anEarthRadius,
+    const Real& anEarthFlattening
 )
     : Earth::Impl(aType, anEarthFrameSPtr, anEarthRadius, anEarthFlattening)
 {
@@ -130,10 +130,10 @@ class Earth::NRLMSISE00Impl : public Earth::Impl
    public:
     NRLMSISE00Impl(
         const Earth::Type& aType,
-        Shared<const Frame> anEarthFrameSPtr = nullptr,
-        const Length anEarthRadius = EarthGravitationalModel::WGS84.equatorialRadius_,
-        const Real anEarthFlattening = EarthGravitationalModel::WGS84.flattening_,
-        Shared<Celestial> aSunCelestialSPtr = nullptr
+        const Shared<const Frame>& anEarthFrameSPtr,
+        const Length& anEarthRadius,
+        const Real& anEarthFlattening,
+        const Shared<Celestial>& aSunCelestialSPtr
     );
 
     ~NRLMSISE00Impl();
@@ -150,18 +150,14 @@ class Earth::NRLMSISE00Impl : public Earth::Impl
 
 Earth::NRLMSISE00Impl::NRLMSISE00Impl(
     const Earth::Type& aType,
-    Shared<const Frame> anEarthFrameSPtr,
-    const Length anEarthRadius,
-    const Real anEarthFlattening,
-    Shared<Celestial> aSunCelestialSPtr
+    const Shared<const Frame>& anEarthFrameSPtr,
+    const Length& anEarthRadius,
+    const Real& anEarthFlattening,
+    const Shared<Celestial>& aSunCelestialSPtr
 )
     : Earth::Impl(aType, anEarthFrameSPtr, anEarthRadius, anEarthFlattening),
       NRLMSISE00Model_(anEarthFrameSPtr, anEarthRadius, anEarthFlattening, aSunCelestialSPtr)
 {
-    if (!earthFrameSPtr_)
-    {
-        earthFrameSPtr_ = Shared<const Frame>(Frame::ITRF());
-    }
 }
 
 Earth::NRLMSISE00Impl::~NRLMSISE00Impl() {}
@@ -186,10 +182,10 @@ Real Earth::NRLMSISE00Impl::getDensityAt(const Position& aPosition, const Instan
 
 Earth::Earth(
     const Earth::Type& aType,
-    Shared<const Frame> anEarthFrameSPtr,
-    const Length anEarthRadius,
-    const Real anEarthFlattening,
-    Shared<Celestial> aSunCelestialSPtr
+    const Shared<const Frame>& anEarthFrameSPtr,
+    const Length& anEarthRadius,
+    const Real& anEarthFlattening,
+    const Shared<Celestial>& aSunCelestialSPtr
 )
     : Model(),
       implUPtr_(Earth::ImplFromType(aType, anEarthFrameSPtr, anEarthRadius, anEarthFlattening, aSunCelestialSPtr))
@@ -245,10 +241,10 @@ Real Earth::getDensityAt(const LLA& aLLA, const Instant& anInstant) const
 
 Unique<Earth::Impl> Earth::ImplFromType(
     const Earth::Type& aType,
-    Shared<const Frame> anEarthFrameSPtr,
-    const Length anEarthRadius,
-    const Real anEarthFlattening,
-    Shared<Celestial> aSunCelestialSPtr
+    const Shared<const Frame>& anEarthFrameSPtr,
+    const Length& anEarthRadius,
+    const Real& anEarthFlattening,
+    const Shared<Celestial>& aSunCelestialSPtr
 )
 {
     if (aType == Earth::Type::Undefined)
