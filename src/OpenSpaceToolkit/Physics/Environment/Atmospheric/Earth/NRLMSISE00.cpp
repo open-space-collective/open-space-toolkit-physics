@@ -57,8 +57,7 @@ NRLMSISE00::NRLMSISE00(
     const Length anEarthRadius,
     const Real anEarthFlattening,
     Shared<Celestial> aSunCelestialSPtr
-)
-    : Model(),
+):
     earthFrameSPtr_(anEarthFrameSPtr),
     earthRadius_(anEarthRadius),
     earthFlattening_(anEarthFlattening),
@@ -239,7 +238,7 @@ Unique<NRLMSISE00::nrlmsise_input> NRLMSISE00::computeNRLMSISE00Input(
     return input;
 }
 
-Real NRLMSISE00::getDensityAt(const LLA& aLLA, const Instant& anInstant, const Position& aSunPosition) const
+Real NRLMSISE00::getDensityAt(const LLA& aLLA, const Instant& anInstant) const
 {
     // Included from https://github.com/magnific0/nrlmsise-00/blob/master/nrlmsise-00.h
     NRLMSISE00_c::nrlmsise_output output;
@@ -259,31 +258,6 @@ Real NRLMSISE00::getDensityAt(const LLA& aLLA, const Instant& anInstant, const P
     NRLMSISE00_c::gtd7d(input_c, &flags, &output);
 
     return output.d[5];
-}
-
-Real NRLMSISE00::getDensityAt(const Position& aPosition, const Instant& anInstant, const Position& aSunPosition) const
-{
-    return this->getDensityAt(
-        LLA::Cartesian(
-            aPosition.inFrame(earthFrameSPtr_, anInstant).accessCoordinates(),
-            earthRadius_,
-            earthFlattening_
-        ),
-        anInstant,
-        aSunPosition
-    );
-}
-
-Real NRLMSISE00::getDensityAt(const Position& aPosition, const Instant& anInstant) const
-{
-    return this->getDensityAt(
-        LLA::Cartesian(
-            aPosition.inFrame(earthFrameSPtr_, anInstant).accessCoordinates(),
-            earthRadius_,
-            earthFlattening_
-        ),
-        anInstant
-    );
 }
 
 }  // namespace earth

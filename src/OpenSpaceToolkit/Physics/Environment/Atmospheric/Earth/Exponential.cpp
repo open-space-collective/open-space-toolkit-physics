@@ -23,7 +23,6 @@ using EarthCelestialBody = ostk::physics::env::obj::celest::Earth;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 
 Exponential::Exponential()
-    : Model()
 {
 }
 
@@ -35,19 +34,6 @@ Exponential* Exponential::clone() const
 bool Exponential::isDefined() const
 {
     return true;
-}
-
-Real Exponential::getDensityAt(const Position& aPosition, const Instant& anInstant) const
-{
-    return this->getDensityAt(
-        LLA::Cartesian(
-            aPosition.inFrame(Frame::ITRF(), anInstant).accessCoordinates(),
-            // [TBI] inherit this from correct gravitational model, if present
-            EarthGravitationalModel::EGM2008.equatorialRadius_,
-            EarthGravitationalModel::EGM2008.flattening_
-        ),
-        anInstant
-    );
 }
 
 Real Exponential::getDensityAt(const LLA& aLLA, const Instant& anInstant) const

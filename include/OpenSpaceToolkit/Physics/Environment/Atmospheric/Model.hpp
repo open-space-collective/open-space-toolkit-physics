@@ -55,7 +55,6 @@ class Model
 
     virtual Real getDensityAt(const Position& aPosition, const Instant& anInstant) const = 0;
 
-    virtual Real getDensityAt(const Position& aPosition, const Instant& anInstant, const Position& aSunPosition) const;
 };
 
 }  // namespace atmospheric
