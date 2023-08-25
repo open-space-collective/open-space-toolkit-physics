@@ -7,17 +7,16 @@
 #include <OpenSpaceToolkit/Core/Containers/Tuple.hpp>
 #include <OpenSpaceToolkit/Core/Types/Integer.hpp>
 #include <OpenSpaceToolkit/Core/Types/Real.hpp>
+#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
 #include <OpenSpaceToolkit/Core/Types/String.hpp>
 #include <OpenSpaceToolkit/Core/Types/Unique.hpp>
-#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Objects/Celestial.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Length.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Objects/Celestial.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp>
-
 
 namespace ostk
 {
@@ -53,7 +52,8 @@ class NRLMSISE00
    public:
     /// @brief              Constructor
 
-    NRLMSISE00(Shared<const Frame> anEarthFrameSPtr = nullptr,
+    NRLMSISE00(
+        Shared<const Frame> anEarthFrameSPtr = nullptr,
         Length anEarthRadius = EarthGravitationalModel::WGS84.equatorialRadius_,
         Real anEarthFlattening = EarthGravitationalModel::WGS84.flattening_,
         Shared<Celestial> aSunCelestialSPtr = nullptr
@@ -129,13 +129,10 @@ class NRLMSISE00
     /// @param              [in] anInstant An instant
 
     Unique<NRLMSISE00::nrlmsise_input> computeNRLMSISE00Input(
-        const Unique<NRLMSISE00::ap_array>& apValues,
-        const LLA& aLLA,
-        const Instant& anInstant
+        const Unique<NRLMSISE00::ap_array>& apValues, const LLA& aLLA, const Instant& anInstant
     ) const;
 
-
-    private:
+   private:
     Shared<const Frame> earthFrameSPtr_;
     Length earthRadius_;
     Real earthFlattening_;

@@ -22,9 +22,7 @@ using ostk::physics::coord::Frame;
 using EarthCelestialBody = ostk::physics::env::obj::celest::Earth;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 
-Exponential::Exponential()
-{
-}
+Exponential::Exponential() {}
 
 Exponential* Exponential::clone() const
 {

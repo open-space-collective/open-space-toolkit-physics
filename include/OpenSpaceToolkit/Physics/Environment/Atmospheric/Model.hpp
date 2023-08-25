@@ -54,7 +54,6 @@ class Model
     /// @return             Atmospheric density value [kg.m^-3]
 
     virtual Real getDensityAt(const Position& aPosition, const Instant& anInstant) const = 0;
-
 };
 
 }  // namespace atmospheric
