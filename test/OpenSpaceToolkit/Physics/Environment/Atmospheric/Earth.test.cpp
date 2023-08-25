@@ -8,6 +8,7 @@
 #include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Sun.hpp>
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
@@ -32,6 +33,7 @@ using ostk::physics::coord::spherical::LLA;
 using ostk::physics::coord::Frame;
 
 using EarthCelestialBody = ostk::physics::env::obj::celest::Earth;
+using ostk::physics::env::obj::celest::Sun;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
 
@@ -296,6 +298,70 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Frames
 
             EXPECT_TRUE(densityITRF.isNear(densityTEME, tolerance)) << String::Format(
                 "{} ≈ {} Δ {} [T]", densityITRF.toString(), densityTEME.toString(), (densityITRF - densityTEME)
+            );
+        }
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Solar)
+{
+    {
+        static const Array<Tuple<EarthAtmosphericModel::Type, LLA, Instant, Real, Real>> testCases = {
+            {EarthAtmosphericModel::Type::Exponential,
+             LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(123.0)),
+             Instant::J2000(),
+             1.77622e-08,
+             1e-13},
+            {EarthAtmosphericModel::Type::Exponential,
+             LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(499.0)),
+             Instant::J2000(),
+             7.08245e-13,
+             1e-15},
+            {EarthAtmosphericModel::Type::Exponential,
+             LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(501.0)),
+             Instant::J2000(),
+             6.85869e-13,
+             1e-15},
+            {EarthAtmosphericModel::Type::Exponential,
+             LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(550.0)),
+             Instant::J2000(),
+             3.18278e-13,
+             1e-15},
+            {EarthAtmosphericModel::Type::NRLMSISE00,
+             LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Kilometers(500.0)),
+             Instant::DateTime(DateTime::Parse("2021-01-01 00:00:00"), Scale::UTC),
+             6.7647e-14,
+             1e-15}
+        };
+
+        for (const auto& testCase : testCases)
+        {
+            const LLA lla = std::get<1>(testCase);
+
+            const Position position = {
+                lla.toCartesian(
+                    EarthGravitationalModel::EGM2008.equatorialRadius_, EarthGravitationalModel::EGM2008.flattening_
+                ),
+                Position::Unit::Meter,
+                Frame::ITRF()
+            };
+
+            const EarthAtmosphericModel earthAtmosphericModel = {
+                    std::get<0>(testCase), 
+                    Frame::ITRF(),
+                    EarthGravitationalModel::EGM2008.equatorialRadius_, 
+                    EarthGravitationalModel::EGM2008.flattening_,
+                    std::make_shared<Sun>(Sun::Default())
+                };
+
+            const Instant instant = std::get<2>(testCase);
+            const Real referenceDensity = std::get<3>(testCase);
+            const Real tolerance = std::get<4>(testCase);
+
+            const Real density = earthAtmosphericModel.getDensityAt(position, instant);
+
+            EXPECT_TRUE(density.isNear(referenceDensity, tolerance)) << String::Format(
+                "{} ≈ {} Δ {} [T]", density.toString(), referenceDensity.toString(), (density - referenceDensity)
             );
         }
     }
