@@ -176,8 +176,6 @@ class CSSISpaceWeather
 
     static CSSISpaceWeather Load(const File& aFile);
 
-    static CSSISpaceWeather LoadLegacy(const File& aFile);
-
    private:
     Date lastObservationDate_;
 
