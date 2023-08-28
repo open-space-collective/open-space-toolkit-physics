@@ -472,4 +472,3 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         EXPECT_ANY_THROW(CSSISpaceWeather::Load(File::Path(Path::Parse("/does/not/exist"))));
     }
 }
-
