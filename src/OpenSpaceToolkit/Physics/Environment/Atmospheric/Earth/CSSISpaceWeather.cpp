@@ -5,6 +5,7 @@
 #include <sstream>
 
 #include <boost/lexical_cast.hpp>
+#include <boost/algorithm/string/trim.hpp>
 
 #include <OpenSpaceToolkit/Core/Containers/Table.hpp>
 #include <OpenSpaceToolkit/Core/Error.hpp>
@@ -388,7 +389,7 @@ const CSSISpaceWeather::Reading& CSSISpaceWeather::accessLastReadingWhere(
         }
 
         // Go back in time by approximately 1 month at a time, but not past the last daily prediction
-        searchInstant = std::max(searchInstant - Duration::Days(30), dailyPredictionInterval_.accessEnd());
+        searchInstant = std::max(searchInstant - Duration::Days(30), dailyPredictionInterval_.accessEnd() - Duration::Days(1));
     }
 
     // Search daily predicton data backwards, skips if not relevant
@@ -549,9 +550,9 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
         // End at the end of the day
         const Instant observationEndInstant =
             Instant::ModifiedJulianDate(Real::Integer(spaceWeather.observations_.rbegin()->first), Scale::UTC) +
-            Duration::Hours(23) + Duration::Minutes(59) + Duration::Seconds(59);
+            Duration::Days(1);
 
-        spaceWeather.observationInterval_ = Interval::Closed(observationStartInstant, observationEndInstant);
+        spaceWeather.observationInterval_ = Interval(observationStartInstant, observationEndInstant, Interval::Type::HalfOpenRight);
     }
 
     if (!spaceWeather.dailyPredictions_.empty())
@@ -562,10 +563,10 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
         // End at the end of the day
         const Instant dailyPredictionEndInstant =
             Instant::ModifiedJulianDate(Real::Integer(spaceWeather.dailyPredictions_.rbegin()->first), Scale::UTC) +
-            Duration::Hours(23) + Duration::Minutes(59) + Duration::Seconds(59);
+            Duration::Days(1);
 
         spaceWeather.dailyPredictionInterval_ =
-            Interval::Closed(dailyPredictionStartInstant, dailyPredictionEndInstant);
+            Interval(dailyPredictionStartInstant, dailyPredictionEndInstant, Interval::Type::HalfOpenRight);
 
         // Use the last daily prediction to make an artificial first monthly prediction
         // so that the data Intervals overlap
@@ -589,11 +590,264 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
 
         // End at the end of the day
         const Instant monthlyPredictionEndInstant =
-            Instant::ModifiedJulianDate(Real::Integer(spaceWeather.monthlyPredictions_.rbegin()->first), Scale::UTC) +
-            Duration::Hours(23) + Duration::Minutes(59) + Duration::Seconds(59);
+            Instant::ModifiedJulianDate(Real::Integer(spaceWeather.monthlyPredictions_.rbegin()->first), Scale::UTC);
 
         spaceWeather.monthlyPredictionInterval_ =
             Interval::Closed(monthlyPredictionStartInstant, monthlyPredictionEndInstant);
+    }
+
+    return spaceWeather;
+}
+
+CSSISpaceWeather CSSISpaceWeather::LoadLegacy(const File& aFile)
+{
+    using ostk::core::types::Index;
+    using ostk::core::types::Uint8;
+    using ostk::core::types::Uint16;
+    using ostk::core::types::Real;
+    using ostk::core::types::String;
+
+    using ostk::physics::time::Scale;
+    using ostk::physics::time::Time;
+    using ostk::physics::time::DateTime;
+
+    if (!aFile.isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("File");
+    }
+
+    if (!aFile.exists())
+    {
+        throw ostk::core::error::RuntimeError("File [{}] does not exist.", aFile.toString());
+    }
+
+    CSSISpaceWeather spaceWeather;
+
+    std::ifstream fileStream {aFile.getPath().toString()};
+
+    bool readingObserved = false;
+    bool readingDailyPredicted = false;
+    bool readingMonthlyPredicted = false;
+
+    String line;
+
+    auto split_spaces = [](std::string s) -> Array<String>
+    {
+        Array<String> results;
+        const String delimiter = " ";
+
+        size_t last = 0;
+        size_t next = 0;
+        while ((next = s.find(delimiter, last)) != std::string::npos)
+        {
+            // account for multiple consecutive delimiters
+            String token = s.substr(last, next - last);
+            if (token != delimiter)
+            {
+                results.add(token);
+            }
+            last = next + 1;
+        }
+        results.add(s.substr(last));
+        return results;
+    };
+
+    while (std::getline(fileStream, line))
+    {
+        Array<String> lineParts = split_spaces(line);
+        
+        // TBI: this is hacky, removes any whitespace strings
+        lineParts.remove({"", " ", "  ", "   "});
+
+        if (lineParts.empty())
+        {
+            continue;
+        }
+
+        // Intepret BEGIN tags
+        if (lineParts.getSize() >= 2 && lineParts[0] == "BEGIN" && lineParts[1] == "OBSERVED")
+        {
+            readingObserved = true;
+            continue;
+        }
+
+        if (lineParts.getSize() >= 2 && lineParts[0] == "BEGIN" && lineParts[1] == "DAILY_PREDICTED")
+        {
+            readingDailyPredicted = true;
+            continue;
+        }
+
+        if (lineParts.getSize() >= 2 && lineParts[0] == "BEGIN" && lineParts[1] == "MONTHLY_PREDICTED")
+        {
+            readingMonthlyPredicted = true;
+            continue;
+        }
+
+        // Intepret END tags
+        if (lineParts.getSize() >= 2 && lineParts[0] == "END" && lineParts[1] == "OBSERVED")
+        {
+            readingObserved = false;
+
+            spaceWeather.lastObservationDate_ = spaceWeather.observations_.rbegin()->second.date;
+
+            const Instant observationStartInstant =
+                Instant::ModifiedJulianDate(Real::Integer(spaceWeather.observations_.begin()->first), Scale::UTC);
+
+            // End at the end of the day
+            const Instant observationEndInstant =
+                Instant::ModifiedJulianDate(Real::Integer(spaceWeather.observations_.rbegin()->first), Scale::UTC) +
+                Duration::Days(1);
+
+            spaceWeather.observationInterval_ = Interval(observationStartInstant, observationEndInstant, Interval::Type::HalfOpenRight);
+
+            continue;
+        }
+
+        if (lineParts.getSize() >= 2 && lineParts[0] == "END" && lineParts[1] == "DAILY_PREDICTED")
+        {
+
+            readingDailyPredicted = false;
+
+            const Instant dailyPredictionStartInstant =
+                Instant::ModifiedJulianDate(Real::Integer(spaceWeather.dailyPredictions_.begin()->first), Scale::UTC);
+
+            // End at the end of the day
+            const Instant dailyPredictionEndInstant =
+                Instant::ModifiedJulianDate(Real::Integer(spaceWeather.dailyPredictions_.rbegin()->first), Scale::UTC) +
+                Duration::Days(1);
+
+            spaceWeather.dailyPredictionInterval_ =
+                Interval(dailyPredictionStartInstant, dailyPredictionEndInstant, Interval::Type::HalfOpenRight);
+
+            // Use the last daily prediction to make an artificial first monthly prediction
+            // so that the data Intervals overlap
+            const CSSISpaceWeather::Reading& lastDailyPrediction = spaceWeather.dailyPredictions_.rbegin()->second;
+
+            Date monthBeginningDate = lastDailyPrediction.date;
+            monthBeginningDate.setDay(1);
+
+            CSSISpaceWeather::Reading overlapMonthlyReading = lastDailyPrediction;
+            overlapMonthlyReading.date = monthBeginningDate;
+            overlapMonthlyReading.F107DataType = "PRM";
+
+            const Integer monthMjd = DateTime(monthBeginningDate, Time::Midnight()).getModifiedJulianDate().floor();
+            spaceWeather.monthlyPredictions_.insert({monthMjd, overlapMonthlyReading});
+
+            continue;
+        }
+
+        if (lineParts.getSize() >= 2 && lineParts[0] == "END" && lineParts[1] == "MONTHLY_PREDICTED")
+        {
+            readingMonthlyPredicted = false;
+            
+            const Instant monthlyPredictionStartInstant =
+                Instant::ModifiedJulianDate(Real::Integer(spaceWeather.monthlyPredictions_.begin()->first), Scale::UTC);
+
+            const Instant monthlyPredictionEndInstant =
+                Instant::ModifiedJulianDate(Real::Integer(spaceWeather.monthlyPredictions_.rbegin()->first), Scale::UTC);
+
+            spaceWeather.monthlyPredictionInterval_ =
+                Interval::Closed(monthlyPredictionStartInstant, monthlyPredictionEndInstant);
+        }
+
+        if (readingObserved || readingDailyPredicted || readingMonthlyPredicted)
+        {   
+            // From docs:
+            // FORMAT(I4,I3,I3,I5,I3,8I3,I4,8I4,I4,F4.1,I2,I4,F6.1,I2,5F6.1)
+            try{
+            Integer DATE_YEAR = boost::lexical_cast<int>(lineParts[0]);
+            Integer DATE_MONT = boost::lexical_cast<int>(lineParts[1]);
+            Integer DATE_DAY = boost::lexical_cast<int>(lineParts[2]);
+            Integer BSRN = boost::lexical_cast<int>(lineParts[3]);
+            Integer ND = boost::lexical_cast<int>(lineParts[4]);
+            Integer Kp1 = boost::lexical_cast<int>(lineParts[5]);
+            Integer Kp2 = boost::lexical_cast<int>(lineParts[6]);
+            Integer Kp3 = boost::lexical_cast<int>(lineParts[7]);
+            Integer Kp4 = boost::lexical_cast<int>(lineParts[8]);
+            Integer Kp5 = boost::lexical_cast<int>(lineParts[9]);
+            Integer Kp6 = boost::lexical_cast<int>(lineParts[10]);
+            Integer Kp7 = boost::lexical_cast<int>(lineParts[11]);
+            Integer Kp8 = boost::lexical_cast<int>(lineParts[12]);
+            Integer KpSum = boost::lexical_cast<int>(lineParts[13]);
+            Integer Ap1 = boost::lexical_cast<int>(lineParts[14]);
+            Integer Ap2 = boost::lexical_cast<int>(lineParts[15]);
+            Integer Ap3 = boost::lexical_cast<int>(lineParts[16]);
+            Integer Ap4 = boost::lexical_cast<int>(lineParts[17]);
+            Integer Ap5 = boost::lexical_cast<int>(lineParts[18]);
+            Integer Ap6 = boost::lexical_cast<int>(lineParts[19]);
+            Integer Ap7 = boost::lexical_cast<int>(lineParts[20]);
+            Integer Ap8 = boost::lexical_cast<int>(lineParts[21]);
+            Integer ApAvg = boost::lexical_cast<int>(lineParts[22]);
+            Real Cp = boost::lexical_cast<double>(lineParts[23]);
+            Integer C9 = boost::lexical_cast<int>(lineParts[24]);
+            Integer ISN = boost::lexical_cast<int>(lineParts[25]);
+            Real F107Adj = boost::lexical_cast<double>(lineParts[26]);
+            // Real Q = boost::lexical_cast<double>(lineParts[27]); // This isn't in the CSV format, so let's ignore it
+            Real F107AdjCenter81 = boost::lexical_cast<double>(lineParts[28]);
+            Real F107AdjLast81 = boost::lexical_cast<double>(lineParts[29]);
+            Real F107Obs = boost::lexical_cast<double>(lineParts[30]);
+            Real F107ObsCenter81 = boost::lexical_cast<double>(lineParts[31]);
+            Real F107ObsLast81 = boost::lexical_cast<double>(lineParts[32]);
+
+            Date date = Date(DATE_YEAR, DATE_MONT, DATE_DAY);
+            
+            // [TBR] Toss data before 1970 and past 2030 due to this restriction in the Instant class
+            if (date.getYear() < 1970 || date.getYear() > 2030)
+            {
+                continue;
+            }
+
+            const Integer mjd = DateTime(date, Time(0, 0, 0)).getModifiedJulianDate().floor();
+
+            const CSSISpaceWeather::Reading reading = {
+                date,
+                BSRN,
+                ND,
+                Kp1,
+                Kp2,
+                Kp3,
+                Kp4,
+                Kp5,
+                Kp6,
+                Kp7,
+                Kp8,
+                KpSum,
+                Ap1,
+                Ap2,
+                Ap3,
+                Ap4,
+                Ap5,
+                Ap6,
+                Ap7,
+                Ap8,
+                ApAvg,
+                Cp,
+                C9,
+                ISN,
+                F107Obs,
+                F107Adj,
+                "OBS",
+                F107ObsCenter81,
+                F107ObsLast81,
+                F107AdjCenter81,
+                F107AdjLast81,
+            };
+
+            if (readingObserved){
+                spaceWeather.observations_.insert({mjd, reading});
+            } else if (readingDailyPredicted){
+                spaceWeather.dailyPredictions_.insert({mjd, reading});
+            } else if (readingMonthlyPredicted){
+                spaceWeather.monthlyPredictions_.insert({mjd, reading});
+            }
+
+            continue;
+
+            }catch (...){
+                std::cout << "Error parsing line: " << line << std::endl;
+                std::cout << lineParts << std::endl;
+            }
+        }
     }
 
     return spaceWeather;
