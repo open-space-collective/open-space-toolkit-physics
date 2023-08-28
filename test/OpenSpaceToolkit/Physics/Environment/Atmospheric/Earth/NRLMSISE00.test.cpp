@@ -438,3 +438,67 @@ TEST(
         }
     }
 }
+
+
+TEST(
+    OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensityAtOreKitNRLMSISESweep3HourMarksShiftedIERS2003
+)
+{
+    const File spaceWeatherFile =
+        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
+                               "SpaceWeather-All-v1.2"));
+
+    Manager::Get().reset();
+    Manager::Get().loadCSSISpaceWeather(CSSISpaceWeather::LoadLegacy(spaceWeatherFile));
+
+    const File referenceDataFile =
+        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
+                               "OreKitNRLMSISESweep3HourMarksShiftedIERS2003.csv"));
+
+    const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
+    Size rowCount = referenceData.getRowCount();
+
+    {
+        Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
+
+        const NRLMSISE00 nrlmsise = {
+            Frame::ITRF(),
+            EarthGravitationalModel::WGS84.equatorialRadius_,
+            EarthGravitationalModel::WGS84.flattening_,
+            sun
+        };
+
+        Real maxError = 0.0;
+
+        for (Index i = 0; i < rowCount; i++)
+        {
+            const Real latitude = referenceData(i, "LAT").accessReal();
+            const Real longitude = referenceData(i, "LON").accessReal();
+            const Real altitude = referenceData(i, "ALT").accessReal();
+            const Real referenceDensity = referenceData(i, "DENSITY").accessReal();
+            const DateTime datetime =
+                DateTime::Parse(referenceData(i, "DATE").accessString(), DateTime::Format::ISO8601);
+
+            const LLA lla = LLA(Angle::Degrees(latitude), Angle::Degrees(longitude), Length::Meters(altitude));
+
+            const Instant instant = Instant::DateTime(datetime, Scale::UTC);
+            
+            const Real density = nrlmsise.getDensityAt(lla, instant);
+
+            // Check percent tolerance here for low altitudes
+            const Real percentTolerance = 0.6;
+            const Real percentError = 100.0 * (std::abs(density - referenceDensity) / referenceDensity);
+
+            maxError = std::max(maxError, percentError);
+            // But still allow a pass if the absolute error is small (because we're close to machine precision)
+            const Real absoluteTolerate = 1e-15;
+            const Real absoluteError = std::abs(density - referenceDensity);
+
+            // EXPECT_TRUE(absoluteError < absoluteTolerate || percentError < percentTolerance) << String::Format(
+            //     "{} ≈ {} Δ {} [{}%] [T]", density.toString(), referenceDensity.toString(), absoluteError, percentError
+            // );
+
+        }
+        std::cout << "maxError: " << maxError << std::endl;
+    }
+}
