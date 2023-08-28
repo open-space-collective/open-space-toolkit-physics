@@ -282,6 +282,7 @@ start-jupyter-notebook: build-release-image-jupyter ## Start Jupyter Notebook en
 		--rm \
 		--publish="$(jupyter_notebook_port):8888" \
 		--volume="$(CURDIR)/bindings/python/docs:/home/jovyan/docs" \
+		--volume="$(CURDIR)/tutorials/python/notebooks:/home/jovyan/tutorials" \
 		--workdir="/home/jovyan" \
 		$(docker_release_image_jupyter_repository):$(docker_image_version) \
 		bash -c "start-notebook.sh --ServerApp.token=''"
@@ -364,14 +365,13 @@ format-cpp: build-development-image ## Format all of the source code with the ru
 		$(docker_development_image_repository):$(docker_image_version) \
 		ostk-format-cpp
 
-.PHONY: format
+.PHONY: format-cpp
 
 format-python: build-development-image ## Run the black format tool against python code
 
 	docker run \
 		--rm \
-		--user="$(shell id -u):$(shell id -g)" \
-		--volume="$(CURDIR):/app:delegated" \
+		--volume="$(CURDIR):/app" \
 		--workdir=/app \
 		$(docker_development_image_repository):$(docker_image_version) \
 		ostk-format-python
@@ -389,6 +389,12 @@ format-check: ## Run format checking
 
 format-check-cpp: build-development-image ## Run the clang-format tool to check the code against rules and formatting
 
+	@ $(MAKE) format-check-cpp-standalone
+
+.PHONY: format-check-cpp
+
+format-check-cpp-standalone:
+
 	docker run \
 		--rm \
 		--volume="$(CURDIR):/app:delegated" \
@@ -397,9 +403,15 @@ format-check-cpp: build-development-image ## Run the clang-format tool to check 
 		$(docker_development_image_repository):$(docker_image_version) \
 		ostk-check-format-cpp
 
-.PHONY: format-check-cpp
+.PHONY: format-check-cpp-standalone
 
 format-check-python: build-development-image ## Run the black format tool against python code
+
+	@ $(MAKE) format-check-python-standalone
+
+.PHONY: format-check-python
+
+format-check-python-standalone:
 
 	docker run \
 		--rm \
@@ -408,7 +420,7 @@ format-check-python: build-development-image ## Run the black format tool agains
 		$(docker_development_image_repository):$(docker_image_version) \
 		ostk-check-format-python
 
-.PHONY: format-check-python
+.PHONY: format-check-python-standalone
 
 test: ## Run tests
 
