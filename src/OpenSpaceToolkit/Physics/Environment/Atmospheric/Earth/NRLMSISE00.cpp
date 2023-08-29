@@ -178,7 +178,7 @@ Unique<NRLMSISE00::nrlmsise_input> NRLMSISE00::computeNRLMSISE00Input(
     const Integer year = currentDateTime.getDate().getYear();
 
     const Instant startOfYear = Instant::DateTime(DateTime(Date(year, 1, 1), Time::Midnight()), Scale::UTC);
-    const Integer dayOfYear = (anInstant - startOfYear).getDays();
+    const Integer dayOfYear = (anInstant - startOfYear).getDays() + 1;
 
     const Time timeOfDay = currentDateTime.getTime();
     const Integer secondsInDay = timeOfDay.getHour() * 3600 + timeOfDay.getMinute() * 60 + timeOfDay.getSecond();
@@ -246,6 +246,24 @@ Real NRLMSISE00::getDensityAt(const LLA& aLLA, const Instant& anInstant) const
     const Unique<NRLMSISE00::nrlmsise_input> input = this->computeNRLMSISE00Input(apValues, aLLA, anInstant);
 
     NRLMSISE00_c::nrlmsise_input* input_c = reinterpret_cast<NRLMSISE00_c::nrlmsise_input*>(input.get());
+    NRLMSISE00_c::gtd7d(input_c, &flags, &output);
+
+    return output.d[5];
+}
+
+Real NRLMSISE00::GetDensityAt(NRLMSISE00::nrlmsise_input input)
+{
+    // Included from https://github.com/magnific0/nrlmsise-00/blob/master/nrlmsise-00.h
+    NRLMSISE00_c::nrlmsise_output output;
+    NRLMSISE00_c::nrlmsise_flags flags;
+
+    // Set model behavior flags. Their meaning is defined in the NRLMSISE-00 header file.
+    for (int i = 0; i < 24; i++)
+    {
+        flags.switches[i] = 1;
+    }
+
+    NRLMSISE00_c::nrlmsise_input* input_c = reinterpret_cast<NRLMSISE00_c::nrlmsise_input*>(&input);
     NRLMSISE00_c::gtd7d(input_c, &flags, &output);
 
     return output.d[5];
