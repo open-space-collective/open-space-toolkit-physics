@@ -14,24 +14,38 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
 {
     using namespace pybind11;
 
-    using ostk::core::fs::Directory;
-
     using ostk::core::types::Shared;
+    using ostk::core::types::Real;
 
     using ostk::physics::environment::atmospheric::Earth;
+    using EarthGravityModel = ostk::physics::environment::gravitational::Earth;
+
+    using ostk::physics::env::obj::Celestial;
+    using ostk::physics::units::Length;
     using ostk::physics::time::Instant;
     using ostk::physics::coord::Position;
-    using ostk::physics::coord::Position;
     using ostk::physics::coord::spherical::LLA;
+    using ostk::physics::coord::Frame;
 
     {
         class_<Earth, Shared<Earth>> earth_class(aModule, "Earth");
 
         earth_class
 
-            .def(init<const Earth::Type&, const Directory&>(), arg("type"), arg("directory"))
-
-            .def(init<const Earth::Type&>(), arg("type"))
+            .def(
+            init<
+                const Earth::Type&,
+                const Shared<const Frame>&, 
+                const Length&, 
+                const Real&, 
+                const Shared<Celestial>&
+                >(),
+            arg("type"),
+            arg("earth_frame") = Frame::ITRF(),
+            arg("earth_radius") = EarthGravityModel::WGS84.equatorialRadius_,
+            arg("earth_flattening") = EarthGravityModel::WGS84.flattening_,
+            arg("sun_celestial") = nullptr
+            )
 
             .def("get_type", &Earth::getType)
 

@@ -16,6 +16,7 @@ from ostk.physics.coordinate import Frame
 from ostk.physics.coordinate.spherical import LLA
 from ostk.physics.environment.atmospheric import Earth as EarthAtmosphericModel
 from ostk.physics.environment.gravitational import Earth as EarthGravitationalModel
+from ostk.physics.environment.objects.celestial_bodies import Sun
 
 
 @pytest.fixture
@@ -36,10 +37,13 @@ class TestEarth:
 
         assert isinstance(earth_atmospheric_model, EarthAtmosphericModel)
 
-    def test_constructor_success_with_directory(self):
+    def test_constructor_success_with_params(self):
         earth_atmospheric_model = EarthAtmosphericModel(
             type=EarthAtmosphericModel.Type.Exponential,
-            directory=Directory.undefined(),
+            earth_frame=Frame.ITRF(),
+            earth_radius=EarthGravitationalModel.WGS84.equatorial_radius,
+            earth_flattening=EarthGravitationalModel.WGS84.flattening,
+            sun_celestial=Sun.default(),
         )
 
         assert isinstance(earth_atmospheric_model, EarthAtmosphericModel)

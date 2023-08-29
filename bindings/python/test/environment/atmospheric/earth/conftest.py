@@ -9,10 +9,13 @@ from ostk.core.filesystem import File
 
 from ostk.io import URL
 
+from ostk.physics.coordinate import Frame
+from ostk.physics.environment.objects.celestial_bodies import Sun
 from ostk.physics.environment.atmospheric.earth import Manager
 from ostk.physics.environment.atmospheric.earth import CSSISpaceWeather
 from ostk.physics.environment.atmospheric.earth import Exponential
 from ostk.physics.environment.atmospheric.earth import NRLMSISE00
+from ostk.physics.environment.gravitational import Earth as EarthGravityModel
 
 
 @pytest.fixture
@@ -50,4 +53,9 @@ def exponential_model() -> Exponential:
 
 @pytest.fixture
 def nrlmsise00_model() -> NRLMSISE00:
-    return NRLMSISE00()
+    return NRLMSISE00(
+        Frame.ITRF(),
+        EarthGravityModel.WGS84.equatorial_radius,
+        EarthGravityModel.WGS84.flattening,
+        Sun.spherical()
+    )
