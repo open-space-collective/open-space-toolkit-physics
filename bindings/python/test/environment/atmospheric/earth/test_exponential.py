@@ -32,4 +32,3 @@ class TestExponential:
 
         # assert sensible number for density
         assert 1.0e-15 < density < 1.0e-12
-

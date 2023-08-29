@@ -33,18 +33,17 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
         earth_class
 
             .def(
-            init<
-                const Earth::Type&,
-                const Shared<const Frame>&, 
-                const Length&, 
-                const Real&, 
-                const Shared<Celestial>&
-                >(),
-            arg("type"),
-            arg("earth_frame") = Frame::ITRF(),
-            arg("earth_radius") = EarthGravityModel::WGS84.equatorialRadius_,
-            arg("earth_flattening") = EarthGravityModel::WGS84.flattening_,
-            arg("sun_celestial") = nullptr
+                init<
+                    const Earth::Type&,
+                    const Shared<const Frame>&,
+                    const Length&,
+                    const Real&,
+                    const Shared<Celestial>&>(),
+                arg("type"),
+                arg("earth_frame") = Frame::ITRF(),
+                arg("earth_radius") = EarthGravityModel::WGS84.equatorialRadius_,
+                arg("earth_flattening") = EarthGravityModel::WGS84.flattening_,
+                arg("sun_celestial") = nullptr
             )
 
             .def("get_type", &Earth::getType)

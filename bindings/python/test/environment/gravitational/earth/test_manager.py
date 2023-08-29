@@ -14,6 +14,7 @@ from ostk.physics.environment.gravitational.earth import (
     Manager as EarthGravitationalModelManager,
 )
 
+
 @pytest.fixture
 def manager() -> EarthGravitationalModelManager:
     manager = EarthGravitationalModelManager.get()
@@ -57,10 +58,12 @@ class TestManager:
     def test_fetch_data_files_for_type_success(
         self, manager: EarthGravitationalModelManager
     ):
-        test_directory = Directory.path(manager.get_local_repository().get_path() + Path.parse("/test"))
+        test_directory = Directory.path(
+            manager.get_local_repository().get_path() + Path.parse("/test")
+        )
         if test_directory.exists():
             test_directory.remove()
-        
+
         test_directory.create(PermissionSet.rw(), PermissionSet.r(), PermissionSet.r())
         manager.set_local_repository(test_directory)
 
@@ -101,6 +104,8 @@ class TestManager:
     def test_default_mode_success(self, manager: EarthGravitationalModelManager):
         assert manager.default_mode() == EarthGravitationalModelManager.Mode.Automatic
 
-    def test_default_local_repository_lock_timeout_success(self, manager: EarthGravitationalModelManager):
+    def test_default_local_repository_lock_timeout_success(
+        self, manager: EarthGravitationalModelManager
+    ):
         assert isinstance(manager.default_local_repository_lock_timeout(), Duration)
         assert manager.default_local_repository_lock_timeout().in_seconds() == 60.0

@@ -27,9 +27,11 @@ def data_directory_path() -> str:
 def cssi_space_weather_file(data_directory_path: str) -> File:
     return File.path(Path.parse(f"{data_directory_path}/SW-Last5Years.test.csv"))
 
+
 @pytest.fixture
 def cssi_space_weather_legacy_file(data_directory_path: str) -> File:
     return File.path(Path.parse(f"{data_directory_path}/SpaceWeather-All-v1.2.test.txt"))
+
 
 @pytest.fixture
 def cssi_space_weather(cssi_space_weather_file: File) -> CSSISpaceWeather:
@@ -57,5 +59,5 @@ def nrlmsise00_model() -> NRLMSISE00:
         Frame.ITRF(),
         EarthGravityModel.WGS84.equatorial_radius,
         EarthGravityModel.WGS84.flattening,
-        Sun.spherical()
+        Sun.spherical(),
     )

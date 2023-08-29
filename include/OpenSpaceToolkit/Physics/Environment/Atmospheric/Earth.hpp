@@ -65,8 +65,6 @@ class Earth : public Model
         const Shared<Celestial>& aSunCelestialSPtr = nullptr
     );
 
-
-
     /// @brief              Copy constructor
     ///
     /// @param              [in] anEarthAtmosphericModel An Earth atmospheric model
@@ -118,9 +116,8 @@ class Earth : public Model
     Real getDensityAt(const LLA& aLLA, const Instant& anInstant) const;
 
    private:
-
     Earth();
-    
+
     class Impl;
     class ExponentialImpl;
     class NRLMSISE00Impl;
