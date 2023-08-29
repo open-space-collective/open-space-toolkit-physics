@@ -23,7 +23,6 @@
 #include <OpenSpaceToolkit/Physics/Units/Derived/Angle.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Length.hpp>
 
-
 #include <Global.test.hpp>
 
 using ostk::core::types::String;
@@ -54,27 +53,25 @@ using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth
 using ostk::physics::environment::atmospheric::earth::CSSISpaceWeather;
 using ostk::physics::environment::atmospheric::earth::Manager;
 
-
-
 // Expose protected members for testing
 class NRLMSISE00Public : public NRLMSISE00
 {
-    
    public:
     NRLMSISE00Public(
-    const Shared<const Frame>& anEarthFrameSPtr = Frame::ITRF(),
-    const Length& anEarthRadius = EarthGravitationalModel::WGS84.equatorialRadius_,
-    const Real& anEarthFlattening = EarthGravitationalModel::WGS84.flattening_,
-    const Shared<Celestial>& aSunCelestialSPtr = nullptr
-    ): NRLMSISE00(anEarthFrameSPtr, anEarthRadius, anEarthFlattening, aSunCelestialSPtr)
+        const Shared<const Frame>& anEarthFrameSPtr = Frame::ITRF(),
+        const Length& anEarthRadius = EarthGravitationalModel::WGS84.equatorialRadius_,
+        const Real& anEarthFlattening = EarthGravitationalModel::WGS84.flattening_,
+        const Shared<Celestial>& aSunCelestialSPtr = nullptr
+    )
+        : NRLMSISE00(anEarthFrameSPtr, anEarthRadius, anEarthFlattening, aSunCelestialSPtr)
     {
-
     }
 
     using NRLMSISE00::computeApArray;
     using NRLMSISE00::computeNRLMSISE00Input;
     using NRLMSISE00::nrlmsise_input;
     using NRLMSISE00::ap_array;
+    using NRLMSISE00::GetDensityAt;
 };
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Constructor)
@@ -105,8 +102,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, IsDefine
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeAPArrayOrekit3HourMarksShifted)
 {
     /*
-    * This test is to confirm that we compute the same AP solar index values as Orekit when not at 3hour marks.
-    */
+     * This test is to confirm that we compute the same AP solar index values as Orekit when not at 3hour marks.
+     */
     const File referenceDataFile =
         File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
                                "OreKitCSSIParameters3HourMarksShifted.csv"));
@@ -208,8 +205,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeA
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeNRLMISE00InputOrekit)
 {
     /*
-    * This test is to confirm that we compute the same Flux values as Orekit when not at 3hour marks.
-    */
+     * This test is to confirm that we compute the same Flux values as Orekit when not at 3hour marks.
+     */
     const File referenceDataFile =
         File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
                                "OreKitCSSIParameters3HourMarksShifted.csv"));
@@ -245,10 +242,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeN
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensityAtOrekit3HrMarksPreciseLST)
 {
     /*
-    * This test uses a precise local solar time just like Orekit. It doesn't match well for the following reasons:
-    * 1. There are know difference in how Orekit computes AP values at exact 3 hour marks
-    * 2. The orekit data was generated using their default UT1 time scale, rather than UTC
-    */
+     * This test uses a precise local solar time just like Orekit. It doesn't match well for the following reasons:
+     * 1. There are know difference in how Orekit computes AP values at exact 3 hour marks
+     * 2. The orekit data was generated using their default UT1 time scale, rather than UTC
+     */
     const File referenceDataFile = File::Path(Path::Parse(
         "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/OreKitNRLMSISE500km3HourMarks.csv"
     ));
@@ -300,12 +297,13 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensityAtOrekit3HrMarkShiftedPreciseLST)
 {
     /*
-    * This test uses a precise local solar time just like Orekit. It also avoids 3hour marks to show that we match quite well in this case.
-    * It matches very well because we're at 500km altitude and all of the differences are in the noise at 1e-15
-    * Some known differences:
-    * 1. The orekit data was generated using their default UT1 time scale, rather than UTC
-    * 2. There may be some differences due to the difference in the IERS convention used in frame transformations. They use IERS 2010, we use IERS 2003.
-    */
+     * This test uses a precise local solar time just like Orekit. It also avoids 3hour marks to show that we match
+     * quite well in this case. It matches very well because we're at 500km altitude and all of the differences are in
+     * the noise at 1e-15 Some known differences:
+     * 1. The orekit data was generated using their default UT1 time scale, rather than UTC
+     * 2. There may be some differences due to the difference in the IERS convention used in frame transformations. They
+     * use IERS 2010, we use IERS 2003.
+     */
     const File referenceDataFile =
         File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
                                "OreKitNRLMSISE500km3HourMarksShifted.csv"));
@@ -349,9 +347,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
             const Real absoluteTolerate = 1.0e-15;
             const Real absoluteError = std::abs(density - referenceDensity);
 
-            EXPECT_TRUE(absoluteError < absoluteTolerate) << String::Format(
-                "{} ≈ {} Δ {} [T]", density.toString(), referenceDensity.toString(), absoluteError
-            );
+            EXPECT_TRUE(absoluteError < absoluteTolerate)
+                << String::Format("{} ≈ {} Δ {} [T]", density.toString(), referenceDensity.toString(), absoluteError);
         }
     }
 }
@@ -359,13 +356,14 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensityAtOrekit3HrMarkShiftedStandardLST)
 {
     /*
-    * This test uses a rough local solar time calculation, which is reccomended by the NRLMSISE docs. This shows the effect vs. Orekit of using a rough LST calculation.
-    * This test is also at 500km altitude, but there is error >1e-15
-    * The known differences:
-    * 1. Using a rough LST calculation.
-    * 2. The orekit data was generated using their default UT1 time scale, rather than UTC
-    * 3. There may be some differences due to the difference in the IERS convention used in frame transformations. They use IERS 2010, we use IERS 2003.
-    */
+     * This test uses a rough local solar time calculation, which is reccomended by the NRLMSISE docs. This shows the
+     * effect vs. Orekit of using a rough LST calculation. This test is also at 500km altitude, but there is error
+     * >1e-15 The known differences:
+     * 1. Using a rough LST calculation.
+     * 2. The orekit data was generated using their default UT1 time scale, rather than UTC
+     * 3. There may be some differences due to the difference in the IERS convention used in frame transformations. They
+     * use IERS 2010, we use IERS 2003.
+     */
     const File referenceDataFile =
         File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
                                "OreKitNRLMSISE500km3HourMarksShifted.csv"));
@@ -421,12 +419,12 @@ TEST(
 )
 {
     /*
-    * This test uses a precise LST calculation, but sweeps various lat/lon/alt/time values to get a better sense of the error over the full range.
-    * All error is in the noise at 1e-15
-    * The known differences:
-    * 1. The orekit data was generated using their default UT1 time scale, rather than UTC
-    * 2. There may be some differences due to the difference in the IERS convention used in frame transformations. They use IERS 2010, we use IERS 2003.
-    */
+     * This test uses a precise LST calculation, but sweeps various lat/lon/alt/time values to get a better sense of the
+     * error over the full range. All error is in the noise at 1e-15 The known differences:
+     * 1. The orekit data was generated using their default UT1 time scale, rather than UTC
+     * 2. There may be some differences due to the difference in the IERS convention used in frame transformations. They
+     * use IERS 2010, we use IERS 2003.
+     */
     const File referenceDataFile =
         File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
                                "OreKitNRLMSISESweep3HourMarksShifted.csv"));
@@ -471,23 +469,22 @@ TEST(
             const Real absoluteTolerate = 1e-15;
             const Real absoluteError = std::abs(density - referenceDensity);
 
-            EXPECT_TRUE(absoluteError < absoluteTolerate) << String::Format(
-                "{} ≈ {} Δ {} [T]", density.toString(), referenceDensity.toString(), absoluteError
-            );
+            EXPECT_TRUE(absoluteError < absoluteTolerate)
+                << String::Format("{} ≈ {} Δ {} [T]", density.toString(), referenceDensity.toString(), absoluteError);
         }
     }
 }
 
-
 TEST(
-    OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensityAtOreKitNRLMSISESweep3HourMarksShiftedIERS2003
+    OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00,
+    GetDensityAtOreKitNRLMSISESweep3HourMarksShiftedIERS2003
 )
 {
     /*
-    * This test uses a precise LST calculation, sweeps various lat/lon/alt/time values, uses the IERS2003 convention in Orekit AND uses the legacy space weather input file in OSTk.
-    * The known differences:
-    * 1. The orekit data was generated using their default UT1 time scale, rather than UTC
-    */
+     * This test uses a precise LST calculation, sweeps various lat/lon/alt/time values, uses the IERS2003 convention in
+     * Orekit AND uses the legacy space weather input file in OSTk. The known differences:
+     * 1. The orekit data was generated using their default UT1 time scale, rather than UTC
+     */
     const File spaceWeatherFile =
         File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
                                "SpaceWeather-All-v1.2.txt"));
@@ -524,7 +521,7 @@ TEST(
             const LLA lla = LLA(Angle::Degrees(latitude), Angle::Degrees(longitude), Length::Meters(altitude));
 
             const Instant instant = Instant::DateTime(datetime, Scale::UTC);
-            
+
             const Real density = nrlmsise.getDensityAt(lla, instant);
 
             // Check percent tolerance here for low altitudes
@@ -538,18 +535,16 @@ TEST(
             EXPECT_TRUE(absoluteError < absoluteTolerate || percentError < percentTolerance) << String::Format(
                 "{} ≈ {} Δ {} [{}%] [T]", density.toString(), referenceDensity.toString(), absoluteError, percentError
             );
-
         }
     }
 }
 
-TEST(
-    OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensityAtNRLMSISEWithOrekitInputs
-)
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensityAtNRLMSISEWithOrekitInputs)
 {
     /*
-    * This test checks the density generated by OSTk when using the actual inputs that Orekit generates for itself. It was exported using some shenanigans in orekit_tooling. See `GenerateNRLMSISEDensityTestDataWithInputs`
-    */
+     * This test checks the density generated by OSTk when using the actual inputs that Orekit generates for itself. It
+     * was exported using some shenanigans in orekit_tooling. See `GenerateNRLMSISEDensityTestDataWithInputs`
+     */
     const File referenceDataFile =
         File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
                                "OreKitNRLMSISEInputsAndDensity.csv"));
@@ -577,7 +572,7 @@ TEST(
             const Real ap7 = referenceData(i, "AP7").accessReal();
             const Real referenceDensity = referenceData(i, "DENSITY").accessReal();
 
-            NRLMSISE00::ap_array apArray;
+            NRLMSISE00Public::ap_array apArray;
             apArray.a[0] = ap1;
             apArray.a[1] = ap2;
             apArray.a[2] = ap3;
@@ -586,11 +581,11 @@ TEST(
             apArray.a[5] = ap6;
             apArray.a[6] = ap7;
 
-            NRLMSISE00::nrlmsise_input input = {
+            NRLMSISE00Public::nrlmsise_input input = {
                 2022, doy, sec, altitude, latitude, longitude, lst, avgFlux, dailyFlux, ap1, &apArray
             };
 
-            const Real density = NRLMSISE00::GetDensityAt(input);
+            const Real density = NRLMSISE00Public::GetDensityAt(input);
 
             // Check percent tolerance here for low altitudes
             const Real percentTolerance = 0.0131;
@@ -603,21 +598,18 @@ TEST(
             EXPECT_TRUE(absoluteError < absoluteTolerate || percentError < percentTolerance) << String::Format(
                 "{} ≈ {} Δ {} [{}%] [T]", density.toString(), referenceDensity.toString(), absoluteError, percentError
             );
-
         }
     }
 }
 
-
-TEST(
-    OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, OrekitGenerateNRLMSISEInputs
-)
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, OrekitGenerateNRLMSISEInputs)
 {
     /*
-    * This test checks the input set generated by OSTk vs. Orekit. It was exported using some shenanigans in orekit_tooling. See `GenerateNRLMSISEDensityTestDataWithInputs`
-    *
-    * The default UT1 was used in Orekit, rather than UTC, so the `sec` and `lst` values are known not to match.
-    */
+     * This test checks the input set generated by OSTk vs. Orekit. It was exported using some shenanigans in
+     * orekit_tooling. See `GenerateNRLMSISEDensityTestDataWithInputs`
+     *
+     * The default UT1 was used in Orekit, rather than UTC, so the `sec` and `lst` values are known not to match.
+     */
     const File referenceDataFile =
         File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
                                "OreKitNRLMSISEInputsAndDensity.csv"));
@@ -634,7 +626,6 @@ TEST(
             sun
         };
 
-
         for (Index i = 0; i < rowCount; i++)
         {
             const Integer doy = referenceData(i, "DOY").accessInteger();
@@ -658,29 +649,25 @@ TEST(
             const LLA lla = LLA(Angle::Degrees(latitude), Angle::Degrees(longitude), Length::Kilometers(altitude));
             const Instant instant = Instant::DateTime(datetime, Scale::UTC);
 
-            const Unique<NRLMSISE00::ap_array> apValues = nrlmsise.computeApArray(instant);
-            const Unique<NRLMSISE00::nrlmsise_input> input = nrlmsise.computeNRLMSISE00Input(apValues, lla, instant);
+            const Unique<NRLMSISE00Public::ap_array> apValues = nrlmsise.computeApArray(instant);
+            const Unique<NRLMSISE00Public::nrlmsise_input> input =
+                nrlmsise.computeNRLMSISE00Input(apValues, lla, instant);
 
-            const Real secTolerance = 0.02; // does not match well
+            const Real secTolerance = 0.02;  // does not match well
             const Real altTolerance = 1e-15;
-            const Real lstTolerance = 1e-4; // does not match well
+            const Real lstTolerance = 1e-4;  // does not match well
 
             const Real secError = std::abs(sec - input->sec);
             const Real altError = std::abs(altitude - input->alt);
             const Real lstError = std::abs(lst - input->lst);
 
             EXPECT_EQ(doy, input->doy);
-            EXPECT_TRUE(secError < secTolerance) << String::Format(
-                "{} ≈ {} Δ {} [T]", sec, input->sec, secError
-            );
-            EXPECT_TRUE( altError < altTolerance) << String::Format(
-                "{} ≈ {} Δ {} [T]", altitude, input->alt, altTolerance
-            );
+            EXPECT_TRUE(secError < secTolerance) << String::Format("{} ≈ {} Δ {} [T]", sec, input->sec, secError);
+            EXPECT_TRUE(altError < altTolerance)
+                << String::Format("{} ≈ {} Δ {} [T]", altitude, input->alt, altTolerance);
             EXPECT_EQ(latitude, input->g_lat);
             EXPECT_EQ(longitude, input->g_long);
-            EXPECT_TRUE(lstError < lstTolerance) << String::Format(
-                "{} ≈ {} Δ {} [T]", lst, input->lst, lstError
-            );
+            EXPECT_TRUE(lstError < lstTolerance) << String::Format("{} ≈ {} Δ {} [T]", lst, input->lst, lstError);
             EXPECT_EQ(avgFlux, input->f107A);
             EXPECT_EQ(dailyFlux, input->f107);
             EXPECT_EQ(ap1, input->ap_a->a[0]);
@@ -694,16 +681,15 @@ TEST(
     }
 }
 
-
-TEST(
-    OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, OrekitGenerateNRLMSISEInputsUTC
-)
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, OrekitGenerateNRLMSISEInputsUTC)
 {
     /*
-    * This test checks the input set generated by OSTk vs. Orekit. It was exported using some shenanigans in orekit_tooling. See `GenerateNRLMSISEDensityTestDataWithInputsUTC`
-    *
-    * This test shows that differences in `sec` and `lst` values comes from the UT1/UTC difference. So unlike the previous test, those inputs match here.
-    */
+     * This test checks the input set generated by OSTk vs. Orekit. It was exported using some shenanigans in
+     * orekit_tooling. See `GenerateNRLMSISEDensityTestDataWithInputsUTC`
+     *
+     * This test shows that differences in `sec` and `lst` values comes from the UT1/UTC difference. So unlike the
+     * previous test, those inputs match here.
+     */
     const File referenceDataFile =
         File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
                                "OreKitNRLMSISEInputsAndDensityUTC.csv"));
@@ -720,7 +706,6 @@ TEST(
             sun
         };
 
-
         for (Index i = 0; i < rowCount; i++)
         {
             const Integer doy = referenceData(i, "DOY").accessInteger();
@@ -744,30 +729,25 @@ TEST(
             const LLA lla = LLA(Angle::Degrees(latitude), Angle::Degrees(longitude), Length::Kilometers(altitude));
             const Instant instant = Instant::DateTime(datetime, Scale::UTC);
 
-            const Unique<NRLMSISE00::ap_array> apValues = nrlmsise.computeApArray(instant);
-            const Unique<NRLMSISE00::nrlmsise_input> input = nrlmsise.computeNRLMSISE00Input(apValues, lla, instant);
+            const Unique<NRLMSISE00Public::ap_array> apValues = nrlmsise.computeApArray(instant);
+            const Unique<NRLMSISE00Public::nrlmsise_input> input =
+                nrlmsise.computeNRLMSISE00Input(apValues, lla, instant);
 
-
-            const Real secTolerance = 1e-15; // matches much better when accounting for UT1/UTC difference!
+            const Real secTolerance = 1e-15;  // matches much better when accounting for UT1/UTC difference!
             const Real altTolerance = 1e-15;
-            const Real lstTolerance = 2e-8; // matches much better when accounting for UT1/UTC difference!
+            const Real lstTolerance = 2e-8;  // matches much better when accounting for UT1/UTC difference!
 
             const Real secError = std::abs(sec - input->sec);
             const Real altError = std::abs(altitude - input->alt);
             const Real lstError = std::abs(lst - input->lst);
 
             EXPECT_EQ(doy, input->doy);
-            EXPECT_TRUE(secError < secTolerance) << String::Format(
-                "{} ≈ {} Δ {} [T]", sec, input->sec, secError
-            );
-            EXPECT_TRUE( altError < altTolerance) << String::Format(
-                "{} ≈ {} Δ {} [T]", altitude, input->alt, altTolerance
-            );
+            EXPECT_TRUE(secError < secTolerance) << String::Format("{} ≈ {} Δ {} [T]", sec, input->sec, secError);
+            EXPECT_TRUE(altError < altTolerance)
+                << String::Format("{} ≈ {} Δ {} [T]", altitude, input->alt, altTolerance);
             EXPECT_EQ(latitude, input->g_lat);
             EXPECT_EQ(longitude, input->g_long);
-            EXPECT_TRUE(lstError < lstTolerance) << String::Format(
-                "{} ≈ {} Δ {} [T]", lst, input->lst, lstError
-            );
+            EXPECT_TRUE(lstError < lstTolerance) << String::Format("{} ≈ {} Δ {} [T]", lst, input->lst, lstError);
             EXPECT_EQ(avgFlux, input->f107A);
             EXPECT_EQ(dailyFlux, input->f107);
             EXPECT_EQ(ap1, input->ap_a->a[0]);
@@ -781,13 +761,12 @@ TEST(
     }
 }
 
-TEST(
-    OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, OrekitGenerateNRLMSISEDensityUTC
-)
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, OrekitGenerateNRLMSISEDensityUTC)
 {
     /*
-    * This test compares the computed density when we theoretically have identical inputs as Orekit. It uses the same comparison file as the previous test, which shows that the inputs are nearly identical.
-    */
+     * This test compares the computed density when we theoretically have identical inputs as Orekit. It uses the same
+     * comparison file as the previous test, which shows that the inputs are nearly identical.
+     */
     const File referenceDataFile =
         File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
                                "OreKitNRLMSISEInputsAndDensityUTC.csv"));

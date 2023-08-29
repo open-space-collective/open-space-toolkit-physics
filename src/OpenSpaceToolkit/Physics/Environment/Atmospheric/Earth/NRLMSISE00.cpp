@@ -232,26 +232,13 @@ Unique<NRLMSISE00::nrlmsise_input> NRLMSISE00::computeNRLMSISE00Input(
 
 Real NRLMSISE00::getDensityAt(const LLA& aLLA, const Instant& anInstant) const
 {
-    // Included from https://github.com/magnific0/nrlmsise-00/blob/master/nrlmsise-00.h
-    NRLMSISE00_c::nrlmsise_output output;
-    NRLMSISE00_c::nrlmsise_flags flags;
-
-    // Set model behavior flags. Their meaning is defined in the NRLMSISE-00 header file.
-    for (int i = 0; i < 24; i++)
-    {
-        flags.switches[i] = 1;
-    }
-
     const Unique<NRLMSISE00::ap_array> apValues = this->computeApArray(anInstant);
     const Unique<NRLMSISE00::nrlmsise_input> input = this->computeNRLMSISE00Input(apValues, aLLA, anInstant);
 
-    NRLMSISE00_c::nrlmsise_input* input_c = reinterpret_cast<NRLMSISE00_c::nrlmsise_input*>(input.get());
-    NRLMSISE00_c::gtd7d(input_c, &flags, &output);
-
-    return output.d[5];
+    return NRLMSISE00::GetDensityAt(*input);
 }
 
-Real NRLMSISE00::GetDensityAt(NRLMSISE00::nrlmsise_input input)
+Real NRLMSISE00::GetDensityAt(NRLMSISE00::nrlmsise_input& input)
 {
     // Included from https://github.com/magnific0/nrlmsise-00/blob/master/nrlmsise-00.h
     NRLMSISE00_c::nrlmsise_output output;

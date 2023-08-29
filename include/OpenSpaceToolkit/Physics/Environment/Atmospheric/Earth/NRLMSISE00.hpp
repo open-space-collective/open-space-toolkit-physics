@@ -80,8 +80,7 @@ class NRLMSISE00
 
     Real getDensityAt(const LLA& aLLA, const Instant& anInstant) const;
 
-
-
+   protected:
     // redefine input structs from NRLMSISE-00.h to avoid including it in this header
 
     struct ap_array
@@ -104,10 +103,14 @@ class NRLMSISE00
         struct ap_array* ap_a;  // array of 7 values of AP. [see computeApArray below]
     };
 
-    static Real GetDensityAt(nrlmsise_input input);
+    /// @brief              Get the atmospheric density value by directly provided NRLMSISE input values.
+    ///
+    /// @param              [in] NRLMSISE input struct
 
+    /// @return             Atmospheric density value [kg.m^-3]
 
-protected:
+    static Real GetDensityAt(nrlmsise_input& input);
+
     /// @brief              Fill the provided array with AP values needed for the NRLMSISE model.
     ///                     The output array is filled like so:
     ///
