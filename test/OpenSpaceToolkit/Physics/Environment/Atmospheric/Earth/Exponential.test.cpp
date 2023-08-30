@@ -26,7 +26,7 @@ using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Exponential, Constructor)
 {
     {
-        EXPECT_NO_THROW(Exponential exponential = {});
+        EXPECT_NO_THROW(Exponential());
     }
 }
 
@@ -35,7 +35,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Exponential, Clone)
     {
         const Exponential exponential = {};
 
-        EXPECT_NO_THROW(const Exponential* exponentialPtr = exponential.clone(); delete exponentialPtr;);
+        EXPECT_NO_THROW(exponential.clone());
     }
 }
 
@@ -57,15 +57,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Exponential, getDens
 
         const LLA lla = LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(123.0));
 
-        const Position position = {
-            lla.toCartesian(
-                EarthGravitationalModel::EGM2008.equatorialRadius_, EarthGravitationalModel::EGM2008.flattening_
-            ),
-            Position::Unit::Meter,
-            Frame::ITRF()
-        };
-
-        const Real density = exponential.getDensityAt(position, Instant::J2000());
+        const Real density = exponential.getDensityAt(lla, Instant::J2000());
 
         const Real referenceDensity = 1.77622e-08;
         const Real tolerance = 1e-13;

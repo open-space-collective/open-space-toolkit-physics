@@ -52,8 +52,16 @@ using EarthCelestialBody = ostk::physics::env::obj::celest::Earth;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 using ostk::physics::environment::atmospheric::earth::Manager;
 
-NRLMSISE00::NRLMSISE00()
-    : Model()
+NRLMSISE00::NRLMSISE00(
+    const Shared<const Frame>& anEarthFrameSPtr,
+    const Length& anEarthRadius,
+    const Real& anEarthFlattening,
+    const Shared<Celestial>& aSunCelestialSPtr
+)
+    : earthFrameSPtr_(anEarthFrameSPtr),
+      earthRadius_(anEarthRadius),
+      earthFlattening_(anEarthFlattening),
+      sunCelestialSPtr_(aSunCelestialSPtr)
 {
 }
 
@@ -156,10 +164,7 @@ Unique<NRLMSISE00::ap_array> NRLMSISE00::computeApArray(const Instant& anInstant
 }
 
 Unique<NRLMSISE00::nrlmsise_input> NRLMSISE00::computeNRLMSISE00Input(
-    const Unique<NRLMSISE00::ap_array>& apValues,
-    const LLA& aLLA,
-    const Instant& anInstant,
-    const Position& aSunPosition
+    const Unique<NRLMSISE00::ap_array>& apValues, const LLA& aLLA, const Instant& anInstant
 ) const
 {
     // Input reference is in the NRLMSISE header file
@@ -173,7 +178,7 @@ Unique<NRLMSISE00::nrlmsise_input> NRLMSISE00::computeNRLMSISE00Input(
     const Integer year = currentDateTime.getDate().getYear();
 
     const Instant startOfYear = Instant::DateTime(DateTime(Date(year, 1, 1), Time::Midnight()), Scale::UTC);
-    const Integer dayOfYear = (anInstant - startOfYear).getDays();
+    const Integer dayOfYear = (anInstant - startOfYear).getDays() + 1;
 
     const Time timeOfDay = currentDateTime.getTime();
     const Integer secondsInDay = timeOfDay.getHour() * 3600 + timeOfDay.getMinute() * 60 + timeOfDay.getSecond();
@@ -185,23 +190,19 @@ Unique<NRLMSISE00::nrlmsise_input> NRLMSISE00::computeNRLMSISE00Input(
     Real lst = Real::Undefined();
 
     // Use actual sun position to compute local solar time if provided
-    if (aSunPosition.isDefined())
+    if (sunCelestialSPtr_)
     {
-        const Position positionITRF = {
-            aLLA.toCartesian(
-                EarthGravitationalModel::WGS84.equatorialRadius_, EarthGravitationalModel::WGS84.flattening_
-            ),
-            Position::Unit::Meter,
-            Frame::ITRF()
+        const Position position = {
+            aLLA.toCartesian(earthRadius_, earthFlattening_), Position::Unit::Meter, earthFrameSPtr_
         };
 
-        const Position sunPositionITRF = aSunPosition.inFrame(Frame::ITRF(), anInstant);
+        const Position sunPositionInFrame = sunCelestialSPtr_->getPositionIn(earthFrameSPtr_, anInstant);
 
         lst = (Real::Pi() + std::atan2(
-                                sunPositionITRF.accessCoordinates()[0] * positionITRF.accessCoordinates()[1] -
-                                    sunPositionITRF.accessCoordinates()[1] * positionITRF.accessCoordinates()[0],
-                                sunPositionITRF.accessCoordinates()[0] * positionITRF.accessCoordinates()[0] +
-                                    sunPositionITRF.accessCoordinates()[1] * positionITRF.accessCoordinates()[1]
+                                sunPositionInFrame.accessCoordinates()[0] * position.accessCoordinates()[1] -
+                                    sunPositionInFrame.accessCoordinates()[1] * position.accessCoordinates()[0],
+                                sunPositionInFrame.accessCoordinates()[0] * position.accessCoordinates()[0] +
+                                    sunPositionInFrame.accessCoordinates()[1] * position.accessCoordinates()[1]
                             )) *
               12.0 / Real::Pi();
     }
@@ -229,7 +230,15 @@ Unique<NRLMSISE00::nrlmsise_input> NRLMSISE00::computeNRLMSISE00Input(
     return input;
 }
 
-Real NRLMSISE00::getDensityAt(const LLA& aLLA, const Instant& anInstant, const Position& aSunPosition) const
+Real NRLMSISE00::getDensityAt(const LLA& aLLA, const Instant& anInstant) const
+{
+    const Unique<NRLMSISE00::ap_array> apValues = this->computeApArray(anInstant);
+    const Unique<NRLMSISE00::nrlmsise_input> input = this->computeNRLMSISE00Input(apValues, aLLA, anInstant);
+
+    return NRLMSISE00::GetDensityAt(*input);
+}
+
+Real NRLMSISE00::GetDensityAt(NRLMSISE00::nrlmsise_input& input)
 {
     // Included from https://github.com/magnific0/nrlmsise-00/blob/master/nrlmsise-00.h
     NRLMSISE00_c::nrlmsise_output output;
@@ -241,41 +250,10 @@ Real NRLMSISE00::getDensityAt(const LLA& aLLA, const Instant& anInstant, const P
         flags.switches[i] = 1;
     }
 
-    const Unique<NRLMSISE00::ap_array> apValues = this->computeApArray(anInstant);
-    const Unique<NRLMSISE00::nrlmsise_input> input =
-        this->computeNRLMSISE00Input(apValues, aLLA, anInstant, aSunPosition);
-
-    NRLMSISE00_c::nrlmsise_input* input_c = reinterpret_cast<NRLMSISE00_c::nrlmsise_input*>(input.get());
+    NRLMSISE00_c::nrlmsise_input* input_c = reinterpret_cast<NRLMSISE00_c::nrlmsise_input*>(&input);
     NRLMSISE00_c::gtd7d(input_c, &flags, &output);
 
     return output.d[5];
-}
-
-Real NRLMSISE00::getDensityAt(const Position& aPosition, const Instant& anInstant, const Position& aSunPosition) const
-{
-    return this->getDensityAt(
-        LLA::Cartesian(
-            aPosition.inFrame(Frame::ITRF(), anInstant).accessCoordinates(),
-            // [TBI] inherit this from correct gravitational model, if present
-            EarthGravitationalModel::EGM2008.equatorialRadius_,
-            EarthGravitationalModel::EGM2008.flattening_
-        ),
-        anInstant,
-        aSunPosition
-    );
-}
-
-Real NRLMSISE00::getDensityAt(const Position& aPosition, const Instant& anInstant) const
-{
-    return this->getDensityAt(
-        LLA::Cartesian(
-            aPosition.inFrame(Frame::ITRF(), anInstant).accessCoordinates(),
-            // [TBI] inherit this from correct gravitational model, if present
-            EarthGravitationalModel::EGM2008.equatorialRadius_,
-            EarthGravitationalModel::EGM2008.flattening_
-        ),
-        anInstant
-    );
 }
 
 }  // namespace earth

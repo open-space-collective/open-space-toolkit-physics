@@ -34,7 +34,7 @@ class TestCSSISpaceWeather:
     ):
         assert (
             cssi_space_weather.access_observation_interval().to_string()
-            == "[2018-01-01 00:00:00 - 2023-06-19 23:59:59] [UTC]"
+            == "[2018-01-01 00:00:00 - 2023-06-20 00:00:00[ [UTC]"
         )
 
     def test_access_observation_at_success(self, cssi_space_weather: CSSISpaceWeather):
@@ -52,7 +52,7 @@ class TestCSSISpaceWeather:
     ):
         assert (
             cssi_space_weather.access_daily_prediction_interval().to_string()
-            == "[2023-06-20 00:00:00 - 2023-08-03 23:59:59] [UTC]"
+            == "[2023-06-20 00:00:00 - 2023-08-04 00:00:00[ [UTC]"
         )
 
     def test_access_daily_prediction_at_success(
@@ -72,7 +72,7 @@ class TestCSSISpaceWeather:
     ):
         assert (
             cssi_space_weather.access_monthly_prediction_interval().to_string()
-            == "[2023-08-01 00:00:00 - 2029-01-01 23:59:59] [UTC]"
+            == "[2023-08-01 00:00:00 - 2029-01-01 00:00:00] [UTC]"
         )
 
     def test_access_monthly_prediction_at_success(
@@ -121,3 +121,6 @@ class TestCSSISpaceWeather:
 
     def test_load_success(self, cssi_space_weather_file: File):
         assert CSSISpaceWeather.load(cssi_space_weather_file) is not None
+
+    def test_load_legacy_success(self, cssi_space_weather_legacy_file: File):
+        assert CSSISpaceWeather.load_legacy(cssi_space_weather_legacy_file) is not None

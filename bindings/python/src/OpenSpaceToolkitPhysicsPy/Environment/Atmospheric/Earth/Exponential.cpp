@@ -26,12 +26,5 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_Exponential(
             arg("instant")
         )
 
-        .def(
-            "get_density_at",
-            pybind11::overload_cast<const Position&, const Instant&>(&Exponential::getDensityAt, pybind11::const_),
-            arg("position"),
-            arg("instant")
-        )
-
         ;
 }

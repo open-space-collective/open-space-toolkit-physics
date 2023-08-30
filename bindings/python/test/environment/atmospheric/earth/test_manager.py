@@ -200,4 +200,3 @@ class TestManager:
     def test_default_local_repository_lock_timeout_success(self, manager: Manager):
         assert isinstance(manager.default_local_repository_lock_timeout(), Duration)
         assert manager.default_local_repository_lock_timeout().in_seconds() == 60.0
-

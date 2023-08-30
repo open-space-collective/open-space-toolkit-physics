@@ -169,12 +169,19 @@ class CSSISpaceWeather
 
     static CSSISpaceWeather Undefined();
 
-    /// @brief                  Load CSSI Space Weather file.
+    /// @brief                  Load CSSI Space Weather file in csv format.
     ///
     /// @param                  [in] aFile A CSSI Space Weather file.
     /// @return                 CSSI Space Weather object.
 
     static CSSISpaceWeather Load(const File& aFile);
+
+    /// @brief                  Load CSSI Space Weather file in legacy .txt format.
+    ///
+    /// @param                  [in] aFile A CSSI Space Weather file.
+    /// @return                 CSSI Space Weather object.
+
+    static CSSISpaceWeather LoadLegacy(const File& aFile);
 
    private:
     Date lastObservationDate_;

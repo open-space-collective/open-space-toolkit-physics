@@ -38,7 +38,7 @@ using ostk::physics::environment::atmospheric::Model;
 
 /// @brief                      Exponential atmospheric model
 
-class Exponential : public Model
+class Exponential
 {
    public:
     /// @brief              Constructor
@@ -49,21 +49,13 @@ class Exponential : public Model
     ///
     /// @return             Pointer to exponential atmospheric model
 
-    virtual Exponential* clone() const override;
+    virtual Exponential* clone() const;
 
     /// @brief              Check if the exponential atmospheric model is defined
     ///
     /// @return             True if the exponential atmospheric model is defined
 
     bool isDefined() const;
-
-    /// @brief              Get the atmospheric density value at a given position and instant
-    ///
-    /// @param              [in] aPosition A Position
-    /// @param              [in] anInstant An Instant
-    /// @return             Atmospheric density value [kg.m^-3]
-
-    virtual Real getDensityAt(const Position& aPosition, const Instant& anInstant) const override;
 
     /// @brief              Get the atmospheric density value at a given position and instant
     ///

@@ -27,7 +27,12 @@ using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth
 class Earth::Impl
 {
    public:
-    Impl(const Earth::Type& aType, const Directory& aDataDirectory = Directory::Undefined());
+    Impl(
+        const Earth::Type& aType,
+        const Shared<const Frame>& anEarthFrameSPtr,
+        const Length& anEarthRadius,
+        const Real& anEarthFlattening
+    );
 
     virtual ~Impl() = 0;
 
@@ -37,14 +42,28 @@ class Earth::Impl
 
     virtual Real getDensityAt(const LLA& aLLA, const Instant& anInstant) const = 0;
 
+    virtual Real getDensityAt(const Position& aPosition, const Instant& anInstant) const = 0;
+
+   protected:
+    Shared<const Frame> earthFrameSPtr_;
+    Length earthRadius_;
+    Real earthFlattening_;
+
    private:
     Earth::Type type_;
 };
 
-Earth::Impl::Impl(const Earth::Type& aType, const Directory& aDataDirectory)
-    : type_(aType)
+Earth::Impl::Impl(
+    const Earth::Type& aType,
+    const Shared<const Frame>& anEarthFrameSPtr,
+    const Length& anEarthRadius,
+    const Real& anEarthFlattening
+)
+    : earthFrameSPtr_(anEarthFrameSPtr),
+      earthRadius_(anEarthRadius),
+      earthFlattening_(anEarthFlattening),
+      type_(aType)
 {
-    (void)aDataDirectory;  // Not yet used
 }
 
 Earth::Impl::~Impl() {}
@@ -57,7 +76,12 @@ Earth::Type Earth::Impl::getType() const
 class Earth::ExponentialImpl : public Earth::Impl
 {
    public:
-    ExponentialImpl(const Earth::Type& aType);
+    ExponentialImpl(
+        const Earth::Type& aType,
+        const Shared<const Frame>& anEarthFrameSPtr,
+        const Length& anEarthRadius,
+        const Real& anEarthFlattening
+    );
 
     ~ExponentialImpl();
 
@@ -65,12 +89,19 @@ class Earth::ExponentialImpl : public Earth::Impl
 
     virtual Real getDensityAt(const LLA& aLLA, const Instant& anInstant) const override;
 
+    virtual Real getDensityAt(const Position& aPosition, const Instant& anInstant) const override;
+
    private:
     Exponential exponentialModel_;
 };
 
-Earth::ExponentialImpl::ExponentialImpl(const Earth::Type& aType)
-    : Earth::Impl(aType)
+Earth::ExponentialImpl::ExponentialImpl(
+    const Earth::Type& aType,
+    const Shared<const Frame>& anEarthFrameSPtr,
+    const Length& anEarthRadius,
+    const Real& anEarthFlattening
+)
+    : Earth::Impl(aType, anEarthFrameSPtr, anEarthRadius, anEarthFlattening)
 {
 }
 
@@ -86,10 +117,24 @@ Real Earth::ExponentialImpl::getDensityAt(const LLA& aLLA, const Instant& anInst
     return this->exponentialModel_.getDensityAt(aLLA, anInstant);
 }
 
+Real Earth::ExponentialImpl::getDensityAt(const Position& aPosition, const Instant& anInstant) const
+{
+    return this->exponentialModel_.getDensityAt(
+        LLA::Cartesian(aPosition.inFrame(earthFrameSPtr_, anInstant).getCoordinates(), earthRadius_, earthFlattening_),
+        anInstant
+    );
+}
+
 class Earth::NRLMSISE00Impl : public Earth::Impl
 {
    public:
-    NRLMSISE00Impl(const Earth::Type& aType);
+    NRLMSISE00Impl(
+        const Earth::Type& aType,
+        const Shared<const Frame>& anEarthFrameSPtr,
+        const Length& anEarthRadius,
+        const Real& anEarthFlattening,
+        const Shared<Celestial>& aSunCelestialSPtr
+    );
 
     ~NRLMSISE00Impl();
 
@@ -97,12 +142,21 @@ class Earth::NRLMSISE00Impl : public Earth::Impl
 
     virtual Real getDensityAt(const LLA& aLLA, const Instant& anInstant) const override;
 
+    virtual Real getDensityAt(const Position& aPosition, const Instant& anInstant) const override;
+
    private:
     NRLMSISE00 NRLMSISE00Model_;
 };
 
-Earth::NRLMSISE00Impl::NRLMSISE00Impl(const Earth::Type& aType)
-    : Earth::Impl(aType)
+Earth::NRLMSISE00Impl::NRLMSISE00Impl(
+    const Earth::Type& aType,
+    const Shared<const Frame>& anEarthFrameSPtr,
+    const Length& anEarthRadius,
+    const Real& anEarthFlattening,
+    const Shared<Celestial>& aSunCelestialSPtr
+)
+    : Earth::Impl(aType, anEarthFrameSPtr, anEarthRadius, anEarthFlattening),
+      NRLMSISE00Model_(anEarthFrameSPtr, anEarthRadius, anEarthFlattening, aSunCelestialSPtr)
 {
 }
 
@@ -118,9 +172,23 @@ Real Earth::NRLMSISE00Impl::getDensityAt(const LLA& aLLA, const Instant& anInsta
     return this->NRLMSISE00Model_.getDensityAt(aLLA, anInstant);
 }
 
-Earth::Earth(const Earth::Type& aType, const Directory& aDataDirectory)
+Real Earth::NRLMSISE00Impl::getDensityAt(const Position& aPosition, const Instant& anInstant) const
+{
+    return this->NRLMSISE00Model_.getDensityAt(
+        LLA::Cartesian(aPosition.inFrame(earthFrameSPtr_, anInstant).getCoordinates(), earthRadius_, earthFlattening_),
+        anInstant
+    );
+}
+
+Earth::Earth(
+    const Earth::Type& aType,
+    const Shared<const Frame>& anEarthFrameSPtr,
+    const Length& anEarthRadius,
+    const Real& anEarthFlattening,
+    const Shared<Celestial>& aSunCelestialSPtr
+)
     : Model(),
-      implUPtr_(Earth::ImplFromType(aType, aDataDirectory))
+      implUPtr_(Earth::ImplFromType(aType, anEarthFrameSPtr, anEarthRadius, anEarthFlattening, aSunCelestialSPtr))
 {
 }
 
@@ -163,15 +231,7 @@ Earth::Type Earth::getType() const
 
 Real Earth::getDensityAt(const Position& aPosition, const Instant& anInstant) const
 {
-    return this->getDensityAt(
-        LLA::Cartesian(
-            aPosition.inFrame(Frame::ITRF(), anInstant).accessCoordinates(),
-            // [TBI] inherit this from correct gravitational model, if present
-            EarthGravitationalModel::EGM2008.equatorialRadius_,
-            EarthGravitationalModel::EGM2008.flattening_
-        ),
-        anInstant
-    );
+    return implUPtr_->getDensityAt(aPosition, anInstant);
 }
 
 Real Earth::getDensityAt(const LLA& aLLA, const Instant& anInstant) const
@@ -179,21 +239,27 @@ Real Earth::getDensityAt(const LLA& aLLA, const Instant& anInstant) const
     return implUPtr_->getDensityAt(aLLA, anInstant);
 }
 
-Unique<Earth::Impl> Earth::ImplFromType(const Earth::Type& aType, const Directory& aDataDirectory)
+Unique<Earth::Impl> Earth::ImplFromType(
+    const Earth::Type& aType,
+    const Shared<const Frame>& anEarthFrameSPtr,
+    const Length& anEarthRadius,
+    const Real& anEarthFlattening,
+    const Shared<Celestial>& aSunCelestialSPtr
+)
 {
-    (void)aDataDirectory;  // Not yet used
-
     if (aType == Earth::Type::Undefined)
     {
         return nullptr;
     }
     else if (aType == Earth::Type::Exponential)
     {
-        return std::make_unique<ExponentialImpl>(aType);
+        return std::make_unique<ExponentialImpl>(aType, anEarthFrameSPtr, anEarthRadius, anEarthFlattening);
     }
     else if (aType == Earth::Type::NRLMSISE00)
     {
-        return std::make_unique<NRLMSISE00Impl>(aType);
+        return std::make_unique<NRLMSISE00Impl>(
+            aType, anEarthFrameSPtr, anEarthRadius, anEarthFlattening, aSunCelestialSPtr
+        );
     }
 
     throw ostk::core::error::runtime::Wrong("Type");

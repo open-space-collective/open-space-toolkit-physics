@@ -33,6 +33,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_CSSISpaceWea
 
         .def_static("undefined", &CSSISpaceWeather::Undefined)
         .def_static("load", &CSSISpaceWeather::Load, arg("file"))
+        .def_static("load_legacy", &CSSISpaceWeather::LoadLegacy, arg("file"))
 
         ;
 
