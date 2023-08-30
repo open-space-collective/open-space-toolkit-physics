@@ -9,12 +9,6 @@
 
 {\ttfamily \#include $<$N\+R\+L\+M\+S\+I\+S\+E00.\+hpp$>$}
 
-Inheritance diagram for ostk\+::physics\+::environment\+::atmospheric\+::earth\+::N\+R\+L\+M\+S\+I\+S\+E00\+:\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[height=2.000000cm]{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00}
-\end{center}
-\end{figure}
 \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
@@ -25,36 +19,37 @@ struct \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1atmospheric_1_1e
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_acca340ad544b45dfce086c14f555b94b}{N\+R\+L\+M\+S\+I\+S\+E00}} ()
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_a2776d52d428c117896c5f9e846ee3ced}{N\+R\+L\+M\+S\+I\+S\+E00}} (const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \&an\+Earth\+Frame\+S\+Ptr=\mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame_ac1d0d50dc15982fbef3caba62a9ed507}{Frame\+::\+I\+T\+RF}}(), const \mbox{\hyperlink{classostk_1_1physics_1_1units_1_1_length}{Length}} \&an\+Earth\+Radius=Earth\+Gravitational\+Model\+::\+W\+G\+S84.\+equatorial\+Radius\+\_\+, const Real \&an\+Earth\+Flattening=Earth\+Gravitational\+Model\+::\+W\+G\+S84.\+flattening\+\_\+, const Shared$<$ \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1_celestial}{Celestial}} $>$ \&a\+Sun\+Celestial\+S\+Ptr=nullptr)
 \begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
-virtual \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00}{N\+R\+L\+M\+S\+I\+S\+E00}} $\ast$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_af36225e7311a3f8ace5879357a5167bc}{clone}} () const override
+virtual \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00}{N\+R\+L\+M\+S\+I\+S\+E00}} $\ast$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_a7116c623396b409568be82b421eb027f}{clone}} () const
 \begin{DoxyCompactList}\small\item\em Clone the \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00}{N\+R\+L\+M\+S\+I\+S\+E00}} atmospheric model. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_a0a1b679056412e4b3f7b86d038f442ef}{is\+Defined}} () const
 \begin{DoxyCompactList}\small\item\em Check if the \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00}{N\+R\+L\+M\+S\+I\+S\+E00}} atmospheric model is defined. \end{DoxyCompactList}\item 
-Real \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_a9a8cd46d559c524e66fdb7a28e39c695}{get\+Density\+At}} (const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1spherical_1_1_l_l_a}{L\+LA}} \&a\+L\+LA, const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant, const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_position}{Position}} \&a\+Sun\+Position=\mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_position_a9d9c2e5b2a72f978192eb9e3a7ce7d8b}{Position\+::\+Undefined}}()) const
-\begin{DoxyCompactList}\small\item\em Get the atmospheric density value at a given position and instant. Optionally use provided sun position to calculate local solar time. \end{DoxyCompactList}\item 
-Real \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_a2df12ed6f9f3956036d77f09c73e0aa6}{get\+Density\+At}} (const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_position}{Position}} \&a\+Position, const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant, const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_position}{Position}} \&a\+Sun\+Position) const
-\begin{DoxyCompactList}\small\item\em Get the atmospheric density value at a given position and instant Use provided sun position to calculate local solar time. \end{DoxyCompactList}\item 
-virtual Real \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_a6f43e2b0056b90082cdc015f6ddac889}{get\+Density\+At}} (const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_position}{Position}} \&a\+Position, const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const override
-\begin{DoxyCompactList}\small\item\em Get the atmospheric density value at a given position and instant. Use lst = seconds\+In\+Day/3600.\+0 + a\+L\+L\+A.\+get\+Longitude().in\+Degrees()/15.0 to calculate local solar time. \end{DoxyCompactList}\end{DoxyCompactItemize}
+Real \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_ad7ec217766c1ceb0c592cab9a78d13a9}{get\+Density\+At}} (const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1spherical_1_1_l_l_a}{L\+LA}} \&a\+L\+LA, const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const
+\begin{DoxyCompactList}\small\item\em Get the atmospheric density value at a given position and instant. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 Unique$<$ \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1ap__array}{N\+R\+L\+M\+S\+I\+S\+E00\+::ap\+\_\+array}} $>$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_a60dc2226aeca0a8b2efbc484b8e4c2fc}{compute\+Ap\+Array}} (const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const
 \begin{DoxyCompactList}\small\item\em Fill the provided array with AP values needed for the N\+R\+L\+M\+S\+I\+SE model. The output array is filled like so\+: \end{DoxyCompactList}\item 
-Unique$<$ \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input}{N\+R\+L\+M\+S\+I\+S\+E00\+::nrlmsise\+\_\+input}} $>$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_aaf8963d9bb3ab89813cb5551b93bfefc}{compute\+N\+R\+L\+M\+S\+I\+S\+E00\+Input}} (const Unique$<$ \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1ap__array}{N\+R\+L\+M\+S\+I\+S\+E00\+::ap\+\_\+array}} $>$ \&ap\+Values, const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1spherical_1_1_l_l_a}{L\+LA}} \&a\+L\+LA, const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant, const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_position}{Position}} \&a\+Sun\+Position=\mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_position_a9d9c2e5b2a72f978192eb9e3a7ce7d8b}{Position\+::\+Undefined}}()) const
+Unique$<$ \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input}{N\+R\+L\+M\+S\+I\+S\+E00\+::nrlmsise\+\_\+input}} $>$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_a49169b5e700962a383190062800180d1}{compute\+N\+R\+L\+M\+S\+I\+S\+E00\+Input}} (const Unique$<$ \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1ap__array}{N\+R\+L\+M\+S\+I\+S\+E00\+::ap\+\_\+array}} $>$ \&ap\+Values, const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1spherical_1_1_l_l_a}{L\+LA}} \&a\+L\+LA, const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const
 \begin{DoxyCompactList}\small\item\em Compute the \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00}{N\+R\+L\+M\+S\+I\+S\+E00}} input and populate into the given struct Optionally use provided sun position to calculate local solar time. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static Real \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_a6fbc2f3f0db894645b6151a944fa4a1c}{Get\+Density\+At}} (\mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input}{nrlmsise\+\_\+input}} \&input)
+\begin{DoxyCompactList}\small\item\em Get the atmospheric density value by directly provided N\+R\+L\+M\+S\+I\+SE input values. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00}{N\+R\+L\+M\+S\+I\+S\+E00}} atmospheric model. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_acca340ad544b45dfce086c14f555b94b}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_acca340ad544b45dfce086c14f555b94b}} 
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_a2776d52d428c117896c5f9e846ee3ced}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_a2776d52d428c117896c5f9e846ee3ced}} 
 \index{ostk::physics::environment::atmospheric::earth::NRLMSISE00@{ostk::physics::environment::atmospheric::earth::NRLMSISE00}!NRLMSISE00@{NRLMSISE00}}
 \index{NRLMSISE00@{NRLMSISE00}!ostk::physics::environment::atmospheric::earth::NRLMSISE00@{ostk::physics::environment::atmospheric::earth::NRLMSISE00}}
 \doxysubsubsection{\texorpdfstring{NRLMSISE00()}{NRLMSISE00()}}
-{\footnotesize\ttfamily ostk\+::physics\+::environment\+::atmospheric\+::earth\+::\+N\+R\+L\+M\+S\+I\+S\+E00\+::\+N\+R\+L\+M\+S\+I\+S\+E00 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily ostk\+::physics\+::environment\+::atmospheric\+::earth\+::\+N\+R\+L\+M\+S\+I\+S\+E00\+::\+N\+R\+L\+M\+S\+I\+S\+E00 (\begin{DoxyParamCaption}\item[{const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \&}]{an\+Earth\+Frame\+S\+Ptr = {\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame_ac1d0d50dc15982fbef3caba62a9ed507}{Frame\+::\+I\+T\+RF}}()},  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1units_1_1_length}{Length}} \&}]{an\+Earth\+Radius = {\ttfamily EarthGravitationalModel\+:\+:WGS84.equatorialRadius\+\_\+},  }\item[{const Real \&}]{an\+Earth\+Flattening = {\ttfamily EarthGravitationalModel\+:\+:WGS84.flattening\+\_\+},  }\item[{const Shared$<$ \mbox{\hyperlink{classostk_1_1physics_1_1env_1_1obj_1_1_celestial}{Celestial}} $>$ \&}]{a\+Sun\+Celestial\+S\+Ptr = {\ttfamily nullptr} }\end{DoxyParamCaption})}
 
 
 
@@ -63,11 +58,11 @@ Constructor.
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_af36225e7311a3f8ace5879357a5167bc}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_af36225e7311a3f8ace5879357a5167bc}} 
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_a7116c623396b409568be82b421eb027f}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_a7116c623396b409568be82b421eb027f}} 
 \index{ostk::physics::environment::atmospheric::earth::NRLMSISE00@{ostk::physics::environment::atmospheric::earth::NRLMSISE00}!clone@{clone}}
 \index{clone@{clone}!ostk::physics::environment::atmospheric::earth::NRLMSISE00@{ostk::physics::environment::atmospheric::earth::NRLMSISE00}}
 \doxysubsubsection{\texorpdfstring{clone()}{clone()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00}{N\+R\+L\+M\+S\+I\+S\+E00}} $\ast$ ostk\+::physics\+::environment\+::atmospheric\+::earth\+::\+N\+R\+L\+M\+S\+I\+S\+E00\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00}{N\+R\+L\+M\+S\+I\+S\+E00}} $\ast$ ostk\+::physics\+::environment\+::atmospheric\+::earth\+::\+N\+R\+L\+M\+S\+I\+S\+E00\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
@@ -76,10 +71,6 @@ Clone the \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_
 \begin{DoxyReturn}{Returns}
 Pointer to \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00}{N\+R\+L\+M\+S\+I\+S\+E00}} atmospheric model 
 \end{DoxyReturn}
-
-
-Implements \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model_a7e4acfd959afea71c12aeba665a66c17}{ostk\+::physics\+::environment\+::atmospheric\+::\+Model}}.
-
 \mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_a60dc2226aeca0a8b2efbc484b8e4c2fc}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_a60dc2226aeca0a8b2efbc484b8e4c2fc}} 
 \index{ostk::physics::environment::atmospheric::earth::NRLMSISE00@{ostk::physics::environment::atmospheric::earth::NRLMSISE00}!computeApArray@{computeApArray}}
 \index{computeApArray@{computeApArray}!ostk::physics::environment::atmospheric::earth::NRLMSISE00@{ostk::physics::environment::atmospheric::earth::NRLMSISE00}}
@@ -100,11 +91,11 @@ Fill the provided array with AP values needed for the N\+R\+L\+M\+S\+I\+SE model
 \begin{DoxyReturn}{Returns}
 Pointer to AP array struct 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_aaf8963d9bb3ab89813cb5551b93bfefc}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_aaf8963d9bb3ab89813cb5551b93bfefc}} 
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_a49169b5e700962a383190062800180d1}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_a49169b5e700962a383190062800180d1}} 
 \index{ostk::physics::environment::atmospheric::earth::NRLMSISE00@{ostk::physics::environment::atmospheric::earth::NRLMSISE00}!computeNRLMSISE00Input@{computeNRLMSISE00Input}}
 \index{computeNRLMSISE00Input@{computeNRLMSISE00Input}!ostk::physics::environment::atmospheric::earth::NRLMSISE00@{ostk::physics::environment::atmospheric::earth::NRLMSISE00}}
 \doxysubsubsection{\texorpdfstring{computeNRLMSISE00Input()}{computeNRLMSISE00Input()}}
-{\footnotesize\ttfamily Unique$<$ \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input}{N\+R\+L\+M\+S\+I\+S\+E00\+::nrlmsise\+\_\+input}} $>$ ostk\+::physics\+::environment\+::atmospheric\+::earth\+::\+N\+R\+L\+M\+S\+I\+S\+E00\+::compute\+N\+R\+L\+M\+S\+I\+S\+E00\+Input (\begin{DoxyParamCaption}\item[{const Unique$<$ \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1ap__array}{N\+R\+L\+M\+S\+I\+S\+E00\+::ap\+\_\+array}} $>$ \&}]{ap\+Values,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1spherical_1_1_l_l_a}{L\+LA}} \&}]{a\+L\+LA,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&}]{an\+Instant,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_position}{Position}} \&}]{a\+Sun\+Position = {\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_position_a9d9c2e5b2a72f978192eb9e3a7ce7d8b}{Position\+::\+Undefined}}()} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+{\footnotesize\ttfamily Unique$<$ \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input}{N\+R\+L\+M\+S\+I\+S\+E00\+::nrlmsise\+\_\+input}} $>$ ostk\+::physics\+::environment\+::atmospheric\+::earth\+::\+N\+R\+L\+M\+S\+I\+S\+E00\+::compute\+N\+R\+L\+M\+S\+I\+S\+E00\+Input (\begin{DoxyParamCaption}\item[{const Unique$<$ \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1ap__array}{N\+R\+L\+M\+S\+I\+S\+E00\+::ap\+\_\+array}} $>$ \&}]{ap\+Values,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1spherical_1_1_l_l_a}{L\+LA}} \&}]{a\+L\+LA,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&}]{an\+Instant }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -119,37 +110,15 @@ Compute the \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_
 \mbox{\texttt{ in}}  & {\em an\+Instant} & An instant \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_a9a8cd46d559c524e66fdb7a28e39c695}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_a9a8cd46d559c524e66fdb7a28e39c695}} 
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_ad7ec217766c1ceb0c592cab9a78d13a9}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_ad7ec217766c1ceb0c592cab9a78d13a9}} 
 \index{ostk::physics::environment::atmospheric::earth::NRLMSISE00@{ostk::physics::environment::atmospheric::earth::NRLMSISE00}!getDensityAt@{getDensityAt}}
 \index{getDensityAt@{getDensityAt}!ostk::physics::environment::atmospheric::earth::NRLMSISE00@{ostk::physics::environment::atmospheric::earth::NRLMSISE00}}
-\doxysubsubsection{\texorpdfstring{getDensityAt()}{getDensityAt()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
-{\footnotesize\ttfamily Real ostk\+::physics\+::environment\+::atmospheric\+::earth\+::\+N\+R\+L\+M\+S\+I\+S\+E00\+::get\+Density\+At (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1spherical_1_1_l_l_a}{L\+LA}} \&}]{a\+L\+LA,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&}]{an\+Instant,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_position}{Position}} \&}]{a\+Sun\+Position = {\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_position_a9d9c2e5b2a72f978192eb9e3a7ce7d8b}{Position\+::\+Undefined}}()} }\end{DoxyParamCaption}) const}
+\doxysubsubsection{\texorpdfstring{getDensityAt()}{getDensityAt()}}
+{\footnotesize\ttfamily Real ostk\+::physics\+::environment\+::atmospheric\+::earth\+::\+N\+R\+L\+M\+S\+I\+S\+E00\+::get\+Density\+At (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1spherical_1_1_l_l_a}{L\+LA}} \&}]{a\+L\+LA,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&}]{an\+Instant }\end{DoxyParamCaption}) const}
 
 
 
-Get the atmospheric density value at a given position and instant. Optionally use provided sun position to calculate local solar time. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em a\+L\+LA} & A position, expressed as latitude, longitude, altitude \mbox{[}deg, deg, m\mbox{]} \\
-\hline
-\mbox{\texttt{ in}}  & {\em an\+Instant} & An instant \\
-\hline
-\mbox{\texttt{ in}}  & {\em a\+Sun\+Position} & Position of the sun \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Atmospheric density value \mbox{[}kg.\+m$^\wedge$-\/3\mbox{]} 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_a6f43e2b0056b90082cdc015f6ddac889}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_a6f43e2b0056b90082cdc015f6ddac889}} 
-\index{ostk::physics::environment::atmospheric::earth::NRLMSISE00@{ostk::physics::environment::atmospheric::earth::NRLMSISE00}!getDensityAt@{getDensityAt}}
-\index{getDensityAt@{getDensityAt}!ostk::physics::environment::atmospheric::earth::NRLMSISE00@{ostk::physics::environment::atmospheric::earth::NRLMSISE00}}
-\doxysubsubsection{\texorpdfstring{getDensityAt()}{getDensityAt()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
-{\footnotesize\ttfamily Real ostk\+::physics\+::environment\+::atmospheric\+::earth\+::\+N\+R\+L\+M\+S\+I\+S\+E00\+::get\+Density\+At (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_position}{Position}} \&}]{a\+Position,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&}]{an\+Instant }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
-
-
-
-Get the atmospheric density value at a given position and instant. Use lst = seconds\+In\+Day/3600.\+0 + a\+L\+L\+A.\+get\+Longitude().in\+Degrees()/15.0 to calculate local solar time. 
+Get the atmospheric density value at a given position and instant. 
 
 
 \begin{DoxyParams}[1]{Parameters}
@@ -161,27 +130,19 @@ Get the atmospheric density value at a given position and instant. Use lst = sec
 \begin{DoxyReturn}{Returns}
 Atmospheric density value \mbox{[}kg.\+m$^\wedge$-\/3\mbox{]} 
 \end{DoxyReturn}
-
-
-Implements \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model_a981d47a2368daf1b9d81c63e17db7d09}{ostk\+::physics\+::environment\+::atmospheric\+::\+Model}}.
-
-\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_a2df12ed6f9f3956036d77f09c73e0aa6}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_a2df12ed6f9f3956036d77f09c73e0aa6}} 
-\index{ostk::physics::environment::atmospheric::earth::NRLMSISE00@{ostk::physics::environment::atmospheric::earth::NRLMSISE00}!getDensityAt@{getDensityAt}}
-\index{getDensityAt@{getDensityAt}!ostk::physics::environment::atmospheric::earth::NRLMSISE00@{ostk::physics::environment::atmospheric::earth::NRLMSISE00}}
-\doxysubsubsection{\texorpdfstring{getDensityAt()}{getDensityAt()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
-{\footnotesize\ttfamily Real ostk\+::physics\+::environment\+::atmospheric\+::earth\+::\+N\+R\+L\+M\+S\+I\+S\+E00\+::get\+Density\+At (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_position}{Position}} \&}]{a\+Position,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&}]{an\+Instant,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_position}{Position}} \&}]{a\+Sun\+Position }\end{DoxyParamCaption}) const}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_a6fbc2f3f0db894645b6151a944fa4a1c}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_a6fbc2f3f0db894645b6151a944fa4a1c}} 
+\index{ostk::physics::environment::atmospheric::earth::NRLMSISE00@{ostk::physics::environment::atmospheric::earth::NRLMSISE00}!GetDensityAt@{GetDensityAt}}
+\index{GetDensityAt@{GetDensityAt}!ostk::physics::environment::atmospheric::earth::NRLMSISE00@{ostk::physics::environment::atmospheric::earth::NRLMSISE00}}
+\doxysubsubsection{\texorpdfstring{GetDensityAt()}{GetDensityAt()}}
+{\footnotesize\ttfamily Real ostk\+::physics\+::environment\+::atmospheric\+::earth\+::\+N\+R\+L\+M\+S\+I\+S\+E00\+::\+Get\+Density\+At (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input}{N\+R\+L\+M\+S\+I\+S\+E00\+::nrlmsise\+\_\+input}} \&}]{input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
 
 
 
-Get the atmospheric density value at a given position and instant Use provided sun position to calculate local solar time. 
+Get the atmospheric density value by directly provided N\+R\+L\+M\+S\+I\+SE input values. 
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em a\+Position} & A Position \\
-\hline
-\mbox{\texttt{ in}}  & {\em an\+Instant} & An Instant \\
-\hline
-\mbox{\texttt{ in}}  & {\em a\+Sun\+Position} & Position of the sun \\
+\mbox{\texttt{ in}}  & {\em N\+R\+L\+M\+S\+I\+SE} & input struct \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -191,7 +152,7 @@ Atmospheric density value \mbox{[}kg.\+m$^\wedge$-\/3\mbox{]}
 \index{ostk::physics::environment::atmospheric::earth::NRLMSISE00@{ostk::physics::environment::atmospheric::earth::NRLMSISE00}!isDefined@{isDefined}}
 \index{isDefined@{isDefined}!ostk::physics::environment::atmospheric::earth::NRLMSISE00@{ostk::physics::environment::atmospheric::earth::NRLMSISE00}}
 \doxysubsubsection{\texorpdfstring{isDefined()}{isDefined()}}
-{\footnotesize\ttfamily bool ostk\+::physics\+::environment\+::atmospheric\+::earth\+::\+N\+R\+L\+M\+S\+I\+S\+E00\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::environment\+::atmospheric\+::earth\+::\+N\+R\+L\+M\+S\+I\+S\+E00\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
@@ -200,10 +161,6 @@ Check if the \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric
 \begin{DoxyReturn}{Returns}
 True if the \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00}{N\+R\+L\+M\+S\+I\+S\+E00}} atmospheric model is defined 
 \end{DoxyReturn}
-
-
-Implements \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model_ac79efc08d6bae1464944174ef1c26b98}{ostk\+::physics\+::environment\+::atmospheric\+::\+Model}}.
-
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

@@ -113,9 +113,9 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad2d120e3dfc401bfc8eab4939b49a749"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth.html#ad2d120e3dfc401bfc8eab4939b49a749">Earth</a> (const <a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth.html#a1df841508cb5d989c11b033f49365c2f">Earth::Type</a> &amp;aType, const Directory &amp;aDataDirectory=Directory::Undefined())</td></tr>
-<tr class="memdesc:ad2d120e3dfc401bfc8eab4939b49a749"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth.html#ad2d120e3dfc401bfc8eab4939b49a749">More...</a><br /></td></tr>
-<tr class="separator:ad2d120e3dfc401bfc8eab4939b49a749"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad863b729c1b430cb40611079d74ad541"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth.html#ad863b729c1b430cb40611079d74ad541">Earth</a> (const <a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth.html#a1df841508cb5d989c11b033f49365c2f">Earth::Type</a> &amp;aType, const Shared&lt; const <a class="el" href="classostk_1_1physics_1_1coord_1_1_frame.html">Frame</a> &gt; &amp;anEarthFrameSPtr=<a class="el" href="classostk_1_1physics_1_1coord_1_1_frame.html#ac1d0d50dc15982fbef3caba62a9ed507">Frame::ITRF</a>(), const <a class="el" href="classostk_1_1physics_1_1units_1_1_length.html">Length</a> &amp;anEarthRadius=EarthGravitationalModel::WGS84.equatorialRadius_, const Real &amp;anEarthFlattening=EarthGravitationalModel::WGS84.flattening_, const Shared&lt; <a class="el" href="classostk_1_1physics_1_1env_1_1obj_1_1_celestial.html">Celestial</a> &gt; &amp;aSunCelestialSPtr=nullptr)</td></tr>
+<tr class="memdesc:ad863b729c1b430cb40611079d74ad541"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth.html#ad863b729c1b430cb40611079d74ad541">More...</a><br /></td></tr>
+<tr class="separator:ad863b729c1b430cb40611079d74ad541"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7b73cdb654df9a3809240225e0387cb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth.html#af7b73cdb654df9a3809240225e0387cb">Earth</a> (const <a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth.html">Earth</a> &amp;anEarthAtmosphericModel)</td></tr>
 <tr class="memdesc:af7b73cdb654df9a3809240225e0387cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor.  <a href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth.html#af7b73cdb654df9a3809240225e0387cb">More...</a><br /></td></tr>
 <tr class="separator:af7b73cdb654df9a3809240225e0387cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -182,8 +182,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ad2d120e3dfc401bfc8eab4939b49a749"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad2d120e3dfc401bfc8eab4939b49a749">&#9670;&nbsp;</a></span>Earth() <span class="overload">[1/2]</span></h2>
+<a id="ad863b729c1b430cb40611079d74ad541"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad863b729c1b430cb40611079d74ad541">&#9670;&nbsp;</a></span>Earth() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -197,8 +197,26 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const Directory &amp;&#160;</td>
-          <td class="paramname"><em>aDataDirectory</em> = <code>Directory::Undefined()</code>&#160;</td>
+          <td class="paramtype">const Shared&lt; const <a class="el" href="classostk_1_1physics_1_1coord_1_1_frame.html">Frame</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>anEarthFrameSPtr</em> = <code><a class="el" href="classostk_1_1physics_1_1coord_1_1_frame.html#ac1d0d50dc15982fbef3caba62a9ed507">Frame::ITRF</a>()</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classostk_1_1physics_1_1units_1_1_length.html">Length</a> &amp;&#160;</td>
+          <td class="paramname"><em>anEarthRadius</em> = <code>EarthGravitationalModel::WGS84.equatorialRadius_</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Real &amp;&#160;</td>
+          <td class="paramname"><em>anEarthFlattening</em> = <code>EarthGravitationalModel::WGS84.flattening_</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Shared&lt; <a class="el" href="classostk_1_1physics_1_1env_1_1obj_1_1_celestial.html">Celestial</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>aSunCelestialSPtr</em> = <code>nullptr</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -324,8 +342,8 @@ Public Member Functions</h2></td></tr>
 <p>Get the atmospheric density value at a given position and instant. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">aLLA</td><td>A position, expressed as latitude, longitude, altitude [deg, deg, m] </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">anInstant</td><td>An instant </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">aLLA</td><td>A LLA </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">anInstant</td><td>An Instant </td></tr>
   </table>
   </dd>
 </dl>

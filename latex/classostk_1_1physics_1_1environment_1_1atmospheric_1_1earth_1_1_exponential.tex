@@ -9,23 +9,15 @@
 
 {\ttfamily \#include $<$Exponential.\+hpp$>$}
 
-Inheritance diagram for ostk\+::physics\+::environment\+::atmospheric\+::earth\+::Exponential\+:\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[height=2.000000cm]{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential}
-\end{center}
-\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential_a21b8801dd53ae70c4a20625d547b166e}{Exponential}} ()
 \begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
-virtual \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential}{Exponential}} $\ast$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential_a45f824c221e89a15069060e067d68912}{clone}} () const override
+virtual \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential}{Exponential}} $\ast$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential_a3552f4315a431f9a422a273f6b983098}{clone}} () const
 \begin{DoxyCompactList}\small\item\em Clone the exponential atmospheric model. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential_acc039008e0cec1fd79082b300bee205b}{is\+Defined}} () const
 \begin{DoxyCompactList}\small\item\em Check if the exponential atmospheric model is defined. \end{DoxyCompactList}\item 
-virtual Real \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential_a4aa6394d4f6e735beaa37cbfa57c5ca1}{get\+Density\+At}} (const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_position}{Position}} \&a\+Position, const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const override
-\begin{DoxyCompactList}\small\item\em Get the atmospheric density value at a given position and instant. \end{DoxyCompactList}\item 
 Real \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential_ab043dea461cc32e724bf4e2b12178ba0}{get\+Density\+At}} (const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1spherical_1_1_l_l_a}{L\+LA}} \&a\+L\+LA, const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const
 \begin{DoxyCompactList}\small\item\em Get the atmospheric density value at a given position and instant. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -47,11 +39,11 @@ Constructor.
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential_a45f824c221e89a15069060e067d68912}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential_a45f824c221e89a15069060e067d68912}} 
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential_a3552f4315a431f9a422a273f6b983098}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential_a3552f4315a431f9a422a273f6b983098}} 
 \index{ostk::physics::environment::atmospheric::earth::Exponential@{ostk::physics::environment::atmospheric::earth::Exponential}!clone@{clone}}
 \index{clone@{clone}!ostk::physics::environment::atmospheric::earth::Exponential@{ostk::physics::environment::atmospheric::earth::Exponential}}
 \doxysubsubsection{\texorpdfstring{clone()}{clone()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential}{Exponential}} $\ast$ ostk\+::physics\+::environment\+::atmospheric\+::earth\+::\+Exponential\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential}{Exponential}} $\ast$ ostk\+::physics\+::environment\+::atmospheric\+::earth\+::\+Exponential\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
@@ -60,14 +52,10 @@ Clone the exponential atmospheric model.
 \begin{DoxyReturn}{Returns}
 Pointer to exponential atmospheric model 
 \end{DoxyReturn}
-
-
-Implements \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model_a7e4acfd959afea71c12aeba665a66c17}{ostk\+::physics\+::environment\+::atmospheric\+::\+Model}}.
-
 \mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential_ab043dea461cc32e724bf4e2b12178ba0}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential_ab043dea461cc32e724bf4e2b12178ba0}} 
 \index{ostk::physics::environment::atmospheric::earth::Exponential@{ostk::physics::environment::atmospheric::earth::Exponential}!getDensityAt@{getDensityAt}}
 \index{getDensityAt@{getDensityAt}!ostk::physics::environment::atmospheric::earth::Exponential@{ostk::physics::environment::atmospheric::earth::Exponential}}
-\doxysubsubsection{\texorpdfstring{getDensityAt()}{getDensityAt()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{getDensityAt()}{getDensityAt()}}
 {\footnotesize\ttfamily Real ostk\+::physics\+::environment\+::atmospheric\+::earth\+::\+Exponential\+::get\+Density\+At (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1spherical_1_1_l_l_a}{L\+LA}} \&}]{a\+L\+LA,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&}]{an\+Instant }\end{DoxyParamCaption}) const}
 
 
@@ -84,35 +72,11 @@ Get the atmospheric density value at a given position and instant.
 \begin{DoxyReturn}{Returns}
 Atmospheric density value \mbox{[}kg.\+m$^\wedge$-\/3\mbox{]} 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential_a4aa6394d4f6e735beaa37cbfa57c5ca1}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential_a4aa6394d4f6e735beaa37cbfa57c5ca1}} 
-\index{ostk::physics::environment::atmospheric::earth::Exponential@{ostk::physics::environment::atmospheric::earth::Exponential}!getDensityAt@{getDensityAt}}
-\index{getDensityAt@{getDensityAt}!ostk::physics::environment::atmospheric::earth::Exponential@{ostk::physics::environment::atmospheric::earth::Exponential}}
-\doxysubsubsection{\texorpdfstring{getDensityAt()}{getDensityAt()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily Real ostk\+::physics\+::environment\+::atmospheric\+::earth\+::\+Exponential\+::get\+Density\+At (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_position}{Position}} \&}]{a\+Position,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&}]{an\+Instant }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
-
-
-
-Get the atmospheric density value at a given position and instant. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em a\+Position} & A Position \\
-\hline
-\mbox{\texttt{ in}}  & {\em an\+Instant} & An Instant \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Atmospheric density value \mbox{[}kg.\+m$^\wedge$-\/3\mbox{]} 
-\end{DoxyReturn}
-
-
-Implements \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model_a981d47a2368daf1b9d81c63e17db7d09}{ostk\+::physics\+::environment\+::atmospheric\+::\+Model}}.
-
 \mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential_acc039008e0cec1fd79082b300bee205b}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential_acc039008e0cec1fd79082b300bee205b}} 
 \index{ostk::physics::environment::atmospheric::earth::Exponential@{ostk::physics::environment::atmospheric::earth::Exponential}!isDefined@{isDefined}}
 \index{isDefined@{isDefined}!ostk::physics::environment::atmospheric::earth::Exponential@{ostk::physics::environment::atmospheric::earth::Exponential}}
 \doxysubsubsection{\texorpdfstring{isDefined()}{isDefined()}}
-{\footnotesize\ttfamily bool ostk\+::physics\+::environment\+::atmospheric\+::earth\+::\+Exponential\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::environment\+::atmospheric\+::earth\+::\+Exponential\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
@@ -121,10 +85,6 @@ Check if the exponential atmospheric model is defined.
 \begin{DoxyReturn}{Returns}
 True if the exponential atmospheric model is defined 
 \end{DoxyReturn}
-
-
-Implements \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model_ac79efc08d6bae1464944174ef1c26b98}{ostk\+::physics\+::environment\+::atmospheric\+::\+Model}}.
-
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

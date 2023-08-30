@@ -84,6 +84,7 @@ $(document).ready(function(){initNavTree('classostk_1_1physics_1_1environment_1_
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-static-methods">Static Protected Member Functions</a> &#124;
 <a href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">ostk::physics::environment::atmospheric::earth::NRLMSISE00 Class Reference</div>  </div>
@@ -94,15 +95,6 @@ $(document).ready(function(){initNavTree('classostk_1_1physics_1_1environment_1_
  <a href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_n_r_l_m_s_i_s_e00_8hpp_source.html">NRLMSISE00.hpp</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for ostk::physics::environment::atmospheric::earth::NRLMSISE00:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.png" usemap="#ostk::physics::environment::atmospheric::earth::NRLMSISE00_map" alt=""/>
-  <map id="ostk::physics::environment::atmospheric::earth::NRLMSISE00_map" name="ostk::physics::environment::atmospheric::earth::NRLMSISE00_map">
-<area href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model.html" title="Atmospheric model (interface)" alt="ostk::physics::environment::atmospheric::Model" shape="rect" coords="0,0,349,24"/>
-  </map>
-</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -113,46 +105,39 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:acca340ad544b45dfce086c14f555b94b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html#acca340ad544b45dfce086c14f555b94b">NRLMSISE00</a> ()</td></tr>
-<tr class="memdesc:acca340ad544b45dfce086c14f555b94b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html#acca340ad544b45dfce086c14f555b94b">More...</a><br /></td></tr>
-<tr class="separator:acca340ad544b45dfce086c14f555b94b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af36225e7311a3f8ace5879357a5167bc"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html">NRLMSISE00</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html#af36225e7311a3f8ace5879357a5167bc">clone</a> () const override</td></tr>
-<tr class="memdesc:af36225e7311a3f8ace5879357a5167bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clone the <a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html" title="NRLMSISE00 atmospheric model.">NRLMSISE00</a> atmospheric model.  <a href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html#af36225e7311a3f8ace5879357a5167bc">More...</a><br /></td></tr>
-<tr class="separator:af36225e7311a3f8ace5879357a5167bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2776d52d428c117896c5f9e846ee3ced"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html#a2776d52d428c117896c5f9e846ee3ced">NRLMSISE00</a> (const Shared&lt; const <a class="el" href="classostk_1_1physics_1_1coord_1_1_frame.html">Frame</a> &gt; &amp;anEarthFrameSPtr=<a class="el" href="classostk_1_1physics_1_1coord_1_1_frame.html#ac1d0d50dc15982fbef3caba62a9ed507">Frame::ITRF</a>(), const <a class="el" href="classostk_1_1physics_1_1units_1_1_length.html">Length</a> &amp;anEarthRadius=EarthGravitationalModel::WGS84.equatorialRadius_, const Real &amp;anEarthFlattening=EarthGravitationalModel::WGS84.flattening_, const Shared&lt; <a class="el" href="classostk_1_1physics_1_1env_1_1obj_1_1_celestial.html">Celestial</a> &gt; &amp;aSunCelestialSPtr=nullptr)</td></tr>
+<tr class="memdesc:a2776d52d428c117896c5f9e846ee3ced"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html#a2776d52d428c117896c5f9e846ee3ced">More...</a><br /></td></tr>
+<tr class="separator:a2776d52d428c117896c5f9e846ee3ced"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7116c623396b409568be82b421eb027f"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html">NRLMSISE00</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html#a7116c623396b409568be82b421eb027f">clone</a> () const</td></tr>
+<tr class="memdesc:a7116c623396b409568be82b421eb027f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clone the <a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html" title="NRLMSISE00 atmospheric model.">NRLMSISE00</a> atmospheric model.  <a href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html#a7116c623396b409568be82b421eb027f">More...</a><br /></td></tr>
+<tr class="separator:a7116c623396b409568be82b421eb027f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a1b679056412e4b3f7b86d038f442ef"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html#a0a1b679056412e4b3f7b86d038f442ef">isDefined</a> () const</td></tr>
 <tr class="memdesc:a0a1b679056412e4b3f7b86d038f442ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the <a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html" title="NRLMSISE00 atmospheric model.">NRLMSISE00</a> atmospheric model is defined.  <a href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html#a0a1b679056412e4b3f7b86d038f442ef">More...</a><br /></td></tr>
 <tr class="separator:a0a1b679056412e4b3f7b86d038f442ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a8cd46d559c524e66fdb7a28e39c695"><td class="memItemLeft" align="right" valign="top">Real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html#a9a8cd46d559c524e66fdb7a28e39c695">getDensityAt</a> (const <a class="el" href="classostk_1_1physics_1_1coord_1_1spherical_1_1_l_l_a.html">LLA</a> &amp;aLLA, const <a class="el" href="classostk_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;anInstant, const <a class="el" href="classostk_1_1physics_1_1coord_1_1_position.html">Position</a> &amp;aSunPosition=<a class="el" href="classostk_1_1physics_1_1coord_1_1_position.html#a9d9c2e5b2a72f978192eb9e3a7ce7d8b">Position::Undefined</a>()) const</td></tr>
-<tr class="memdesc:a9a8cd46d559c524e66fdb7a28e39c695"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the atmospheric density value at a given position and instant. Optionally use provided sun position to calculate local solar time.  <a href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html#a9a8cd46d559c524e66fdb7a28e39c695">More...</a><br /></td></tr>
-<tr class="separator:a9a8cd46d559c524e66fdb7a28e39c695"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2df12ed6f9f3956036d77f09c73e0aa6"><td class="memItemLeft" align="right" valign="top">Real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html#a2df12ed6f9f3956036d77f09c73e0aa6">getDensityAt</a> (const <a class="el" href="classostk_1_1physics_1_1coord_1_1_position.html">Position</a> &amp;aPosition, const <a class="el" href="classostk_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;anInstant, const <a class="el" href="classostk_1_1physics_1_1coord_1_1_position.html">Position</a> &amp;aSunPosition) const</td></tr>
-<tr class="memdesc:a2df12ed6f9f3956036d77f09c73e0aa6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the atmospheric density value at a given position and instant Use provided sun position to calculate local solar time.  <a href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html#a2df12ed6f9f3956036d77f09c73e0aa6">More...</a><br /></td></tr>
-<tr class="separator:a2df12ed6f9f3956036d77f09c73e0aa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f43e2b0056b90082cdc015f6ddac889"><td class="memItemLeft" align="right" valign="top">virtual Real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html#a6f43e2b0056b90082cdc015f6ddac889">getDensityAt</a> (const <a class="el" href="classostk_1_1physics_1_1coord_1_1_position.html">Position</a> &amp;aPosition, const <a class="el" href="classostk_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;anInstant) const override</td></tr>
-<tr class="memdesc:a6f43e2b0056b90082cdc015f6ddac889"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the atmospheric density value at a given position and instant. Use lst = secondsInDay/3600.0 + aLLA.getLongitude().inDegrees()/15.0 to calculate local solar time.  <a href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html#a6f43e2b0056b90082cdc015f6ddac889">More...</a><br /></td></tr>
-<tr class="separator:a6f43e2b0056b90082cdc015f6ddac889"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model.html">ostk::physics::environment::atmospheric::Model</a></td></tr>
-<tr class="memitem:ad47700055f55caa9b74be5e2ea2468d1 inherit pub_methods_classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model.html#ad47700055f55caa9b74be5e2ea2468d1">Model</a> ()</td></tr>
-<tr class="memdesc:ad47700055f55caa9b74be5e2ea2468d1 inherit pub_methods_classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor (default)  <a href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model.html#ad47700055f55caa9b74be5e2ea2468d1">More...</a><br /></td></tr>
-<tr class="separator:ad47700055f55caa9b74be5e2ea2468d1 inherit pub_methods_classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a06f6f87b472a1e5bcae7c43c38cfcd66 inherit pub_methods_classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model.html#a06f6f87b472a1e5bcae7c43c38cfcd66">~Model</a> ()=0</td></tr>
-<tr class="memdesc:a06f6f87b472a1e5bcae7c43c38cfcd66 inherit pub_methods_classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor (pure virtual)  <a href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model.html#a06f6f87b472a1e5bcae7c43c38cfcd66">More...</a><br /></td></tr>
-<tr class="separator:a06f6f87b472a1e5bcae7c43c38cfcd66 inherit pub_methods_classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7ec217766c1ceb0c592cab9a78d13a9"><td class="memItemLeft" align="right" valign="top">Real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html#ad7ec217766c1ceb0c592cab9a78d13a9">getDensityAt</a> (const <a class="el" href="classostk_1_1physics_1_1coord_1_1spherical_1_1_l_l_a.html">LLA</a> &amp;aLLA, const <a class="el" href="classostk_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;anInstant) const</td></tr>
+<tr class="memdesc:ad7ec217766c1ceb0c592cab9a78d13a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the atmospheric density value at a given position and instant.  <a href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html#ad7ec217766c1ceb0c592cab9a78d13a9">More...</a><br /></td></tr>
+<tr class="separator:ad7ec217766c1ceb0c592cab9a78d13a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a60dc2226aeca0a8b2efbc484b8e4c2fc"><td class="memItemLeft" align="right" valign="top">Unique&lt; <a class="el" href="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1ap__array.html">NRLMSISE00::ap_array</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html#a60dc2226aeca0a8b2efbc484b8e4c2fc">computeApArray</a> (const <a class="el" href="classostk_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;anInstant) const</td></tr>
 <tr class="memdesc:a60dc2226aeca0a8b2efbc484b8e4c2fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill the provided array with AP values needed for the NRLMSISE model. The output array is filled like so:  <a href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html#a60dc2226aeca0a8b2efbc484b8e4c2fc">More...</a><br /></td></tr>
 <tr class="separator:a60dc2226aeca0a8b2efbc484b8e4c2fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf8963d9bb3ab89813cb5551b93bfefc"><td class="memItemLeft" align="right" valign="top">Unique&lt; <a class="el" href="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input.html">NRLMSISE00::nrlmsise_input</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html#aaf8963d9bb3ab89813cb5551b93bfefc">computeNRLMSISE00Input</a> (const Unique&lt; <a class="el" href="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1ap__array.html">NRLMSISE00::ap_array</a> &gt; &amp;apValues, const <a class="el" href="classostk_1_1physics_1_1coord_1_1spherical_1_1_l_l_a.html">LLA</a> &amp;aLLA, const <a class="el" href="classostk_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;anInstant, const <a class="el" href="classostk_1_1physics_1_1coord_1_1_position.html">Position</a> &amp;aSunPosition=<a class="el" href="classostk_1_1physics_1_1coord_1_1_position.html#a9d9c2e5b2a72f978192eb9e3a7ce7d8b">Position::Undefined</a>()) const</td></tr>
-<tr class="memdesc:aaf8963d9bb3ab89813cb5551b93bfefc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the <a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html" title="NRLMSISE00 atmospheric model.">NRLMSISE00</a> input and populate into the given struct Optionally use provided sun position to calculate local solar time.  <a href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html#aaf8963d9bb3ab89813cb5551b93bfefc">More...</a><br /></td></tr>
-<tr class="separator:aaf8963d9bb3ab89813cb5551b93bfefc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49169b5e700962a383190062800180d1"><td class="memItemLeft" align="right" valign="top">Unique&lt; <a class="el" href="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input.html">NRLMSISE00::nrlmsise_input</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html#a49169b5e700962a383190062800180d1">computeNRLMSISE00Input</a> (const Unique&lt; <a class="el" href="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1ap__array.html">NRLMSISE00::ap_array</a> &gt; &amp;apValues, const <a class="el" href="classostk_1_1physics_1_1coord_1_1spherical_1_1_l_l_a.html">LLA</a> &amp;aLLA, const <a class="el" href="classostk_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;anInstant) const</td></tr>
+<tr class="memdesc:a49169b5e700962a383190062800180d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the <a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html" title="NRLMSISE00 atmospheric model.">NRLMSISE00</a> input and populate into the given struct Optionally use provided sun position to calculate local solar time.  <a href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html#a49169b5e700962a383190062800180d1">More...</a><br /></td></tr>
+<tr class="separator:a49169b5e700962a383190062800180d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-static-methods"></a>
+Static Protected Member Functions</h2></td></tr>
+<tr class="memitem:a6fbc2f3f0db894645b6151a944fa4a1c"><td class="memItemLeft" align="right" valign="top">static Real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html#a6fbc2f3f0db894645b6151a944fa4a1c">GetDensityAt</a> (<a class="el" href="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input.html">nrlmsise_input</a> &amp;input)</td></tr>
+<tr class="memdesc:a6fbc2f3f0db894645b6151a944fa4a1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the atmospheric density value by directly provided NRLMSISE input values.  <a href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html#a6fbc2f3f0db894645b6151a944fa4a1c">More...</a><br /></td></tr>
+<tr class="separator:a6fbc2f3f0db894645b6151a944fa4a1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html" title="NRLMSISE00 atmospheric model.">NRLMSISE00</a> atmospheric model. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="acca340ad544b45dfce086c14f555b94b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acca340ad544b45dfce086c14f555b94b">&#9670;&nbsp;</a></span>NRLMSISE00()</h2>
+<a id="a2776d52d428c117896c5f9e846ee3ced"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2776d52d428c117896c5f9e846ee3ced">&#9670;&nbsp;</a></span>NRLMSISE00()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -160,8 +145,31 @@ Protected Member Functions</h2></td></tr>
         <tr>
           <td class="memname">ostk::physics::environment::atmospheric::earth::NRLMSISE00::NRLMSISE00 </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">const Shared&lt; const <a class="el" href="classostk_1_1physics_1_1coord_1_1_frame.html">Frame</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>anEarthFrameSPtr</em> = <code><a class="el" href="classostk_1_1physics_1_1coord_1_1_frame.html#ac1d0d50dc15982fbef3caba62a9ed507">Frame::ITRF</a>()</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const <a class="el" href="classostk_1_1physics_1_1units_1_1_length.html">Length</a> &amp;&#160;</td>
+          <td class="paramname"><em>anEarthRadius</em> = <code>EarthGravitationalModel::WGS84.equatorialRadius_</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Real &amp;&#160;</td>
+          <td class="paramname"><em>anEarthFlattening</em> = <code>EarthGravitationalModel::WGS84.flattening_</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Shared&lt; <a class="el" href="classostk_1_1physics_1_1env_1_1obj_1_1_celestial.html">Celestial</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>aSunCelestialSPtr</em> = <code>nullptr</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -171,8 +179,8 @@ Protected Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="af36225e7311a3f8ace5879357a5167bc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af36225e7311a3f8ace5879357a5167bc">&#9670;&nbsp;</a></span>clone()</h2>
+<a id="a7116c623396b409568be82b421eb027f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7116c623396b409568be82b421eb027f">&#9670;&nbsp;</a></span>clone()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -189,15 +197,13 @@ Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>Clone the <a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html" title="NRLMSISE00 atmospheric model.">NRLMSISE00</a> atmospheric model. </p>
 <dl class="section return"><dt>Returns</dt><dd>Pointer to <a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html" title="NRLMSISE00 atmospheric model.">NRLMSISE00</a> atmospheric model </dd></dl>
-
-<p>Implements <a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model.html#a7e4acfd959afea71c12aeba665a66c17">ostk::physics::environment::atmospheric::Model</a>.</p>
 
 </div>
 </div>
@@ -237,8 +243,8 @@ Protected Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aaf8963d9bb3ab89813cb5551b93bfefc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaf8963d9bb3ab89813cb5551b93bfefc">&#9670;&nbsp;</a></span>computeNRLMSISE00Input()</h2>
+<a id="a49169b5e700962a383190062800180d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49169b5e700962a383190062800180d1">&#9670;&nbsp;</a></span>computeNRLMSISE00Input()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -262,13 +268,7 @@ Protected Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const <a class="el" href="classostk_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;&#160;</td>
-          <td class="paramname"><em>anInstant</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="classostk_1_1physics_1_1coord_1_1_position.html">Position</a> &amp;&#160;</td>
-          <td class="paramname"><em>aSunPosition</em> = <code><a class="el" href="classostk_1_1physics_1_1coord_1_1_position.html#a9d9c2e5b2a72f978192eb9e3a7ce7d8b">Position::Undefined</a>()</code>&#160;</td>
+          <td class="paramname"><em>anInstant</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -295,8 +295,8 @@ Protected Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a9a8cd46d559c524e66fdb7a28e39c695"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9a8cd46d559c524e66fdb7a28e39c695">&#9670;&nbsp;</a></span>getDensityAt() <span class="overload">[1/3]</span></h2>
+<a id="ad7ec217766c1ceb0c592cab9a78d13a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7ec217766c1ceb0c592cab9a78d13a9">&#9670;&nbsp;</a></span>getDensityAt()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -311,54 +311,6 @@ Protected Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const <a class="el" href="classostk_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;&#160;</td>
-          <td class="paramname"><em>anInstant</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="classostk_1_1physics_1_1coord_1_1_position.html">Position</a> &amp;&#160;</td>
-          <td class="paramname"><em>aSunPosition</em> = <code><a class="el" href="classostk_1_1physics_1_1coord_1_1_position.html#a9d9c2e5b2a72f978192eb9e3a7ce7d8b">Position::Undefined</a>()</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get the atmospheric density value at a given position and instant. Optionally use provided sun position to calculate local solar time. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">aLLA</td><td>A position, expressed as latitude, longitude, altitude [deg, deg, m] </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">anInstant</td><td>An instant </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">aSunPosition</td><td>Position of the sun </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Atmospheric density value [kg.m^-3] </dd></dl>
-
-</div>
-</div>
-<a id="a6f43e2b0056b90082cdc015f6ddac889"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6f43e2b0056b90082cdc015f6ddac889">&#9670;&nbsp;</a></span>getDensityAt() <span class="overload">[2/3]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Real ostk::physics::environment::atmospheric::earth::NRLMSISE00::getDensityAt </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classostk_1_1physics_1_1coord_1_1_position.html">Position</a> &amp;&#160;</td>
-          <td class="paramname"><em>aPosition</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="classostk_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;&#160;</td>
           <td class="paramname"><em>anInstant</em>&#160;</td>
         </tr>
         <tr>
@@ -367,14 +319,9 @@ Protected Member Functions</h2></td></tr>
           <td></td><td> const</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Get the atmospheric density value at a given position and instant. Use lst = secondsInDay/3600.0 + aLLA.getLongitude().inDegrees()/15.0 to calculate local solar time. </p>
+<p>Get the atmospheric density value at a given position and instant. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">aLLA</td><td>A position, expressed as latitude, longitude, altitude [deg, deg, m] </td></tr>
@@ -384,48 +331,36 @@ Protected Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Atmospheric density value [kg.m^-3] </dd></dl>
 
-<p>Implements <a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model.html#a981d47a2368daf1b9d81c63e17db7d09">ostk::physics::environment::atmospheric::Model</a>.</p>
-
 </div>
 </div>
-<a id="a2df12ed6f9f3956036d77f09c73e0aa6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2df12ed6f9f3956036d77f09c73e0aa6">&#9670;&nbsp;</a></span>getDensityAt() <span class="overload">[3/3]</span></h2>
+<a id="a6fbc2f3f0db894645b6151a944fa4a1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fbc2f3f0db894645b6151a944fa4a1c">&#9670;&nbsp;</a></span>GetDensityAt()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Real ostk::physics::environment::atmospheric::earth::NRLMSISE00::getDensityAt </td>
+          <td class="memname">Real ostk::physics::environment::atmospheric::earth::NRLMSISE00::GetDensityAt </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classostk_1_1physics_1_1coord_1_1_position.html">Position</a> &amp;&#160;</td>
-          <td class="paramname"><em>aPosition</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype"><a class="el" href="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input.html">NRLMSISE00::nrlmsise_input</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="classostk_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;&#160;</td>
-          <td class="paramname"><em>anInstant</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="classostk_1_1physics_1_1coord_1_1_position.html">Position</a> &amp;&#160;</td>
-          <td class="paramname"><em>aSunPosition</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p>Get the atmospheric density value at a given position and instant Use provided sun position to calculate local solar time. </p>
+<p>Get the atmospheric density value by directly provided NRLMSISE input values. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">aPosition</td><td>A Position </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">anInstant</td><td>An Instant </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">aSunPosition</td><td>Position of the sun </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">NRLMSISE</td><td>input struct </td></tr>
   </table>
   </dd>
 </dl>
@@ -438,9 +373,6 @@ Protected Member Functions</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool ostk::physics::environment::atmospheric::earth::NRLMSISE00::isDefined </td>
@@ -449,17 +381,10 @@ Protected Member Functions</h2></td></tr>
           <td> const</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Check if the <a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html" title="NRLMSISE00 atmospheric model.">NRLMSISE00</a> atmospheric model is defined. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if the <a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html" title="NRLMSISE00 atmospheric model.">NRLMSISE00</a> atmospheric model is defined </dd></dl>
-
-<p>Implements <a class="el" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model.html#ac79efc08d6bae1464944174ef1c26b98">ostk::physics::environment::atmospheric::Model</a>.</p>
 
 </div>
 </div>
