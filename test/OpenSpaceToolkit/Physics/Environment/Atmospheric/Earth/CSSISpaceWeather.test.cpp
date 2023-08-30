@@ -489,7 +489,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
     {
         CSSISpaceWeather legacySpaceWeather = CSSISpaceWeather::LoadLegacy(
             File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
-                                   "CSSISpaceWeather/SpaceWeather-All-v1.2.txt"))
+                                   "NRLMSISE00/SpaceWeather-All-v1.2.txt"))
         );
 
         EXPECT_TRUE(legacySpaceWeather.isDefined());
@@ -497,7 +497,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         EXPECT_EQ(
             Interval(
                 Instant::DateTime(DateTime::Parse("1970-01-01 00:00:00"), Scale::UTC),
-                Instant::DateTime(DateTime::Parse("2023-08-23 00:00:00"), Scale::UTC),
+                Instant::DateTime(DateTime::Parse("2023-08-28 00:00:00"), Scale::UTC),
                 Interval::Type::HalfOpenRight
             ),
             legacySpaceWeather.accessObservationInterval()
@@ -505,8 +505,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
 
         EXPECT_EQ(
             Interval(
-                Instant::DateTime(DateTime::Parse("2023-08-23 00:00:00"), Scale::UTC),
-                Instant::DateTime(DateTime::Parse("2023-10-06 00:00:00"), Scale::UTC),
+                Instant::DateTime(DateTime::Parse("2023-08-28 00:00:00"), Scale::UTC),
+                Instant::DateTime(DateTime::Parse("2023-10-11 00:00:00"), Scale::UTC),
                 Interval::Type::HalfOpenRight
             ),
             legacySpaceWeather.accessDailyPredictionInterval()

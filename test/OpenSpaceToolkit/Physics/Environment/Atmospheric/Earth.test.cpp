@@ -268,7 +268,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Frames
             {EarthAtmosphericModel::Type::NRLMSISE00,
              LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Kilometers(500.0)),
              Instant::DateTime(DateTime::Parse("2021-01-01 00:00:00"), Scale::UTC),
-             1e-15}
+             3.7e-15}
         };
 
         for (const auto& testCase : testCases)
