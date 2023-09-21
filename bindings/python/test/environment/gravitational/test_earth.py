@@ -76,5 +76,5 @@ class TestEarth:
             ]
         )
 
-    def test_gravity_constant():
+    def test_gravity_constant(self):
         assert EarthGravitationalModel.gravity_constant is not None
