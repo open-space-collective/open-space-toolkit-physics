@@ -75,3 +75,6 @@ class TestEarth:
                 for i in range(0, len(grav_acceleration_ref))
             ]
         )
+
+    def test_gravity_constant():
+        assert EarthGravitationalModel.gravity_constant is not None
