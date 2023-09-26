@@ -222,7 +222,7 @@ File Manager::fetchLatestManifestFile()
             if (latestDataManifestFileSize == 0)
             {
                 throw ostk::core::error::RuntimeError(
-                    "Cannot fetch Data  Manifest from [{}]: file is empty.", latestDataManifestUrl.toString()
+                    "Cannot fetch Data Manifest from [{}]: file is empty.", latestDataManifestUrl.toString()
                 );
             }
         }
@@ -234,7 +234,7 @@ File Manager::fetchLatestManifestFile()
         this->unlockManifestRepository();
 
         std::cout << String::Format(
-                         "Data  Manifest [{}] has been successfully fetched from [{}].",
+                         "Data Manifest [{}] has been successfully fetched from [{}].",
                          latestDataManifestFile.toString(),
                          latestDataManifestUrl.toString()
                      )
@@ -243,7 +243,7 @@ File Manager::fetchLatestManifestFile()
     catch (const ostk::core::error::Exception& anException)
     {
         std::cerr << String::Format(
-                         "Error caught while fetching latest Data  Manifest from [{}]: [{}].",
+                         "Error caught while fetching latest Data Manifest from [{}]: [{}].",
                          latestDataManifestUrl.toString(),
                          anException.what()
                      )
