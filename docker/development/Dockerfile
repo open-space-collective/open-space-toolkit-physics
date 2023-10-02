@@ -54,7 +54,7 @@ RUN git clone https://github.com/magnific0/nrlmsise-00.git /tmp/nrlmsise \
 
 ## Eigen
 
-ARG EIGEN_VERSION="3.3.7"
+ARG EIGEN_VERSION="3.4.0"
 
 RUN mkdir /tmp/eigen \
  && cd /tmp/eigen \
