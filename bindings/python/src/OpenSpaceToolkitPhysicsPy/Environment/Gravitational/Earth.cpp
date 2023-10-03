@@ -45,6 +45,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(pybind11::
             .def_readonly_static("WGS84_EGM96", &Earth::WGS84_EGM96)
             .def_readonly_static("WGS84", &Earth::WGS84)
             .def_readonly_static("spherical", &Earth::Spherical)
+            .def_readonly_static("gravity_constant", &Earth::gravityConstant)
 
             ;
 
