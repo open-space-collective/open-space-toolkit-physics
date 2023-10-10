@@ -1,5 +1,6 @@
 /// Apache License 2.0
 #include <cmath>
+
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
 
@@ -734,22 +735,17 @@ Real Angle::ReduceRange(const Real& aValue, const Real& aRangeLowerBound, const 
     }
 
     const Real excessValue = std::fmod(aValue - aRangeLowerBound, aRangeUpperBound - aRangeLowerBound);
-    const Real adjestedRangeValue = aRangeLowerBound + excessValue;
+    const Real adjustedRangeValue = aRangeLowerBound + excessValue;
 
-    if ((adjestedRangeValue >= aRangeLowerBound) && (adjestedRangeValue < aRangeUpperBound))
+    if ((adjustedRangeValue >= aRangeLowerBound) && (adjustedRangeValue < aRangeUpperBound))
     {
-        return adjestedRangeValue;
+        return adjustedRangeValue;
     }
-    else 
-    {
-        /*/
-            Addition here might seem unintuitive, but this edge case is specifically
-            to capture when excessValue is a different sign than the range (often
-            a negative value in a positive range) and we are actually adding a
-            negative number to the upper bound.
-        /*/
-        return aRangeUpperBound + excessValue;
-    }
+    // Addition here might seem unintuitive, but this edge case is specifically
+    // to capture when excessValue is a different sign than the range (often
+    // a negative value in a positive range) and we are actually adding a
+    // negative number to the upper bound.
+    return aRangeUpperBound + excessValue;
 }
 
 }  // namespace units
