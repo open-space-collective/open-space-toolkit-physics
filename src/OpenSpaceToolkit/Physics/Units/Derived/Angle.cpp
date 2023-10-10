@@ -62,7 +62,7 @@ bool Angle::operator==(const Angle& anAngle) const
     {
         return false;
     }
-
+    std::cout << "**: " << this->accessValue() << " " << anAngle.accessValue() << " "  <<std::endl;
     switch (unit_)
     {
         case Angle::Unit::Radian:
@@ -739,12 +739,15 @@ Real Angle::ReduceRange(const Real& aValue, const Real& aRangeLowerBound, const 
 
     if ((adjustedRangeValue >= aRangeLowerBound) && (adjustedRangeValue < aRangeUpperBound))
     {
+        std::cout << "1: " << aValue << " " << aRangeLowerBound << " " << aRangeUpperBound << " " << adjustedRangeValue <<std::endl;
         return adjustedRangeValue;
     }
     // Addition here might seem unintuitive, but this edge case is specifically
     // to capture when excessValue is a different sign than the range (often
     // a negative value in a positive range) and we are actually adding a
     // negative number to the upper bound.
+    std::cout.precision(16);
+    std::cout << " 2:" << aValue << " " << aRangeLowerBound << " " << aRangeUpperBound << " " << adjustedRangeValue << " " << " HERE " << adjustedRangeValue - aRangeLowerBound << " "<<(adjustedRangeValue >= aRangeLowerBound) << " " << aRangeUpperBound + excessValue <<std::endl;
     return aRangeUpperBound + excessValue;
 }
 
