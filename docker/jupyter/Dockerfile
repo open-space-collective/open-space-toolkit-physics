@@ -27,10 +27,6 @@ COPY ./shortcuts-extension /home/jovyan/.jupyter/lab/user-settings/@jupyterlab/s
 
 RUN chown -R ${NB_UID}:${NB_GID} /home/jovyan
 
-# Install Open Space Toolkit
-
-RUN pip install open-space-toolkit-physics
-
 # Install seed data
 
 RUN git clone --branch main --single-branch --depth=1 https://github.com/open-space-collective/open-space-toolkit-data.git /var/cache/open-space-toolkit-data
@@ -41,6 +37,12 @@ ENV OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY="/var/
 ENV OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY="/var/cache/open-space-toolkit-data/data/environment/magnetic/earth"
 ENV OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY="/var/cache/open-space-toolkit-data/data/environment/atmospheric/earth"
 ENV OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY="/var/cache/open-space-toolkit-data/data"
+
+RUN chown -R ${NB_UID}:${NB_GID} /var/cache/open-space-toolkit-data
+
+# Install Open Space Toolkit
+
+RUN pip install open-space-toolkit-physics
 
 # Restore user
 
