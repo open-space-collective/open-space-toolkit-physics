@@ -90,6 +90,10 @@ Directory Manager::DefaultLocalRepository()
             std::getenv("OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY"))
     {
         return Directory::Path(Path::Parse(localRepositoryPath));
+    } else if (
+        const char* dataPath = std::getenv("OSTK_PHYSICS_DATA_LOCAL_REPOSITORY")
+    ) {
+        return Directory::Path(Path::Parse(dataPath) + Path::Parse("environment/gravitational/earth"));
     }
 
     return defaultLocalRepository;

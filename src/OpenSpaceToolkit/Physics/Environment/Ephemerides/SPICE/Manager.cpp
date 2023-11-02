@@ -75,6 +75,10 @@ Directory Manager::DefaultLocalRepository()
             std::getenv("OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY"))
     {
         return Directory::Path(Path::Parse(localRepositoryPath));
+    } else if (
+        const char* dataPath = std::getenv("OSTK_PHYSICS_DATA_LOCAL_REPOSITORY")
+    ) {
+        return Directory::Path(Path::Parse(dataPath) + Path::Parse("environment/ephemerides/spice"));
     }
 
     return defaultLocalRepository;
