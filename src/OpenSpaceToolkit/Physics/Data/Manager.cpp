@@ -328,9 +328,9 @@ Directory Manager::DefaultManifestRepository()
     if (const char* localRepositoryPath = std::getenv("OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY"))
     {
         return Directory::Path(Path::Parse(localRepositoryPath));
-    } else if (
-        const char* dataPath = std::getenv("OSTK_PHYSICS_DATA_LOCAL_REPOSITORY")
-    ) {
+    }
+    else if (const char* dataPath = std::getenv("OSTK_PHYSICS_DATA_LOCAL_REPOSITORY"))
+    {
         return Directory::Path(Path::Parse(dataPath));
     }
 

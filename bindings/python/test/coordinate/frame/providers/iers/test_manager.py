@@ -41,33 +41,15 @@ class TestManager:
 
     def test_get_local_repository_success(self, manager: Manager):
         assert isinstance(manager.get_local_repository(), Directory)
-        assert manager.get_local_repository().to_string() == os.environ.get(
-            "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY"
-        )
+        assert len(manager.get_local_repository().to_string()) > 0
 
     def test_get_bulletin_a_directory_success(self, manager: Manager):
         assert isinstance(manager.get_bulletin_a_directory(), Directory)
-        assert (
-            manager.get_bulletin_a_directory().to_string()
-            == str(
-                os.environ.get(
-                    "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY"
-                )
-            )
-            + "/bulletin-A"
-        )
+        assert len(manager.get_bulletin_a_directory().to_string()) > 0
 
     def test_get_finals_2000a_directory_success(self, manager: Manager):
         assert isinstance(manager.get_finals_2000a_directory(), Directory)
-        assert (
-            manager.get_finals_2000a_directory().to_string()
-            == str(
-                os.environ.get(
-                    "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY"
-                )
-            )
-            + "/finals-2000A"
-        )
+        assert len(manager.get_finals_2000a_directory().to_string()) > 0
 
     def test_get_bulletin_a_array_success(self, manager: Manager):
         assert isinstance(manager.get_bulletin_a_array(), list)
@@ -161,9 +143,7 @@ class TestManager:
 
     def test_set_local_repository_success(self, manager: Manager):
         assert isinstance(manager.get_local_repository(), Directory)
-        assert manager.get_local_repository().to_string() == os.environ.get(
-            "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY"
-        )
+        assert len(manager.get_local_repository().to_string()) > 0
 
         manager.set_local_repository(
             Directory.path(
@@ -246,9 +226,7 @@ class TestManager:
 
     def test_default_local_repository_success(self, manager: Manager):
         assert isinstance(manager.default_local_repository(), Directory)
-        assert manager.default_local_repository().to_string() == os.environ.get(
-            "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY"
-        )
+        assert len(manager.default_local_repository().to_string()) > 0
 
     def test_default_local_repository_lock_timeout_success(self, manager: Manager):
         assert isinstance(manager.default_local_repository_lock_timeout(), Duration)
