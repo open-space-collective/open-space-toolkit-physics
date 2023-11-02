@@ -50,12 +50,25 @@ class Manifest
 
     bool isDefined() const;
 
+    /// @brief                  Get last update timestamp
+    ///
+    /// @return                 Instant indicating when the manifest was last updated based on file modification time
+
+    Instant getLastUpdateTimestamp() const;
+
     /// @brief                  Get last update timestamp for data
     ///
     /// @param                  [in] dataName A data name
     /// @return                 Last update instant for data
 
     Instant getLastUpdateTimestampFor(const String& aDataName) const;
+
+    /// @brief                  Get the next update check timestamp for data
+    ///
+    /// @param                  [in] dataName A data name
+    /// @return                 Next update check instant for data
+
+    Instant getNextUpdateCheckTimestampFor(const String& aDataName) const;
 
     /// @brief                  Get the remote data URL for a given data name.
     ///
@@ -88,6 +101,7 @@ class Manifest
 
    private:
     Dictionary dictionary_;
+    Instant lastModifiedTimestamp_;
 
     Manifest();
 };
