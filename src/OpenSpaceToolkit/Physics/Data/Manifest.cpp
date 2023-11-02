@@ -5,6 +5,7 @@
 #include <OpenSpaceToolkit/Core/Error.hpp>
 
 #include <OpenSpaceToolkit/Physics/Data/Manifest.hpp>
+#include <OpenSpaceToolkit/Physics/Data/Utilities.hpp>
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
 
@@ -17,6 +18,7 @@ namespace data
 using ostk::core::ctnr::Object;
 using ostk::core::ctnr::Dictionary;
 
+using ostk::physics::data::utilities::getFileModifiedInstant;
 using ostk::physics::time::Instant;
 using ostk::physics::time::DateTime;
 using ostk::physics::time::Scale;
@@ -37,10 +39,23 @@ bool Manifest::isDefined() const
     return !dictionary_.isEmpty();
 }
 
+Instant Manifest::getLastUpdateTimestamp() const
+{
+    return this->lastModifiedTimestamp_;
+}
+
 Instant Manifest::getLastUpdateTimestampFor(const String& aDataName) const
 {
     return Instant::DateTime(
         DateTime::Parse(dictionary_[aDataName]["last_update"].accessString(), DateTime::Format::ISO8601), Scale::UTC
+    );
+}
+
+Instant Manifest::getNextUpdateCheckTimestampFor(const String& aDataName) const
+{
+    return Instant::DateTime(
+        DateTime::Parse(dictionary_[aDataName]["next_update_check"].accessString(), DateTime::Format::ISO8601),
+        Scale::UTC
     );
 }
 
@@ -116,12 +131,14 @@ Manifest Manifest::Load(const File& aFile)
     Manifest manifest;
 
     manifest.dictionary_ = Object::Load(aFile, Object::Format::JSON).getDictionary();
+    manifest.lastModifiedTimestamp_ = getFileModifiedInstant(aFile);
 
     return manifest;
 }
 
 Manifest::Manifest()
-    : dictionary_(Dictionary::Empty())
+    : dictionary_(Dictionary::Empty()),
+      lastModifiedTimestamp_(Instant::Undefined())
 {
 }
 

@@ -97,6 +97,7 @@ class Manager
     /// @brief                  Get the default manifest repository.
     ///
     /// @return                 Default manifest repository
+
     static Directory DefaultManifestRepository();
 
     /// @brief                  Get the remote data URL for a given data name.
@@ -125,6 +126,12 @@ class Manager
 
     void loadManifest(const Manifest& aManifest);
 
+    /// @brief                  Return true if a manifest file already exists in the directory
+    ///
+    /// @return                 True if manifest file exists
+
+    bool manifestFileExists() const;
+
     /// @brief                  Reset the manager.
     ///
     ///                         Unload the manifest file and forget manifest age.
@@ -135,8 +142,6 @@ class Manager
     URL remoteUrl_;
 
     Manifest manifest_;
-    mutable Instant manifestUpdateTimestamp_;  // TBI: instead of an update timestamp, track manifest updates within the
-                                               // manifest itself
 
     Directory manifestRepository_;
     Duration manifestRepositoryLockTimeout_;
@@ -148,6 +153,14 @@ class Manager
     void setup();
 
     File fetchLatestManifestFile();
+
+    /// @brief                  Check the age of the manifest to determine if it should be updated before querying it
+    /// for other data files.
+    ///
+    ///                         We fetch the manifest file from the remote if:
+    ///                         - It does not exist locally
+    ///                         - We are past the next predicted update for the manifest based on its own "manifest"
+    ///                         entry.
     void checkManifestAgeAndUpdate();
 
     bool isManifestRepositoryLocked() const;

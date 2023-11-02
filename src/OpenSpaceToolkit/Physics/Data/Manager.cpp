@@ -15,6 +15,7 @@
 
 #include <OpenSpaceToolkit/Physics/Data/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Data/Manifest.hpp>
+#include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
 #include <experimental/filesystem>
@@ -34,6 +35,7 @@ using ostk::io::ip::tcp::http::Client;
 
 using ostk::physics::time::Scale;
 using ostk::physics::time::Instant;
+using ostk::physics::time::DateTime;
 
 const String dataManifestFileName = "manifest.json";
 
@@ -110,14 +112,11 @@ void Manager::loadManifest(const Manifest& aManifest)
     std::lock_guard<std::mutex> lock {mutex_};
 
     this->manifest_ = aManifest;
-    this->manifestUpdateTimestamp_ = Instant::Now();
 }
 
 void Manager::reset()
 {
     std::lock_guard<std::mutex> lock {mutex_};
-
-    manifestUpdateTimestamp_ = Instant::Undefined();
 
     manifest_ = Manifest::Undefined();
 
@@ -129,7 +128,6 @@ void Manager::reset()
 Manager::Manager()
     : remoteUrl_(DefaultRemoteUrl()),
       manifest_(Manifest::Undefined()),
-      manifestUpdateTimestamp_(Instant::Undefined()),
       manifestRepository_(Manager::DefaultManifestRepository()),
       manifestRepositoryLockTimeout_(Manager::DefaultManifestRepositoryLockTimeout())
 {
@@ -158,12 +156,41 @@ void Manager::setup()
     manifestRepository_ = DefaultManifestRepository();
 }
 
+bool Manager::manifestFileExists() const
+{
+    if (!manifestRepository_.exists())
+    {
+        return false;
+    }
+
+    return File::Path(manifestRepository_.getPath() + Path::Parse(dataManifestFileName)).exists();
+}
+
 void Manager::checkManifestAgeAndUpdate()
 {
-    // Check if the local manifest is too old and fetch a new one if needed
-    // TODO make max age overridable
-    if (!manifestUpdateTimestamp_.isDefined() || !manifest_.isDefined() ||
-        (manifestUpdateTimestamp_ + Duration::Hours(OSTK_PHYSICS_DATA_MANAGER_MANIFEST_MAX_AGE_HOURS) < Instant::Now()))
+    if (!manifest_.isDefined() && !manifestFileExists())
+    {
+        // There is no file loaded in memory or on the local filesystem. Fetch and load.
+        File manifestFile = this->fetchLatestManifestFile();
+        this->loadManifest(Manifest::Load(manifestFile));
+
+        return;
+    }
+
+    if (!manifest_.isDefined() && manifestFileExists())
+    {
+        // A manifest file exists but we haven't loaded it yet. Load it.
+        this->loadManifest(Manifest::Load(File::Path(manifestRepository_.getPath() + Path::Parse(dataManifestFileName)))
+        );
+    }
+
+    // Determine if we need to fetch a new manifest based on the loaded one.
+    // The next timestamp at which we expect the remote to update its data.
+    const Instant nextUpdateCheckTimestamp = Instant::Now() + manifest_.getNextUpdateCheckTimestampFor("manifest");
+
+    // If loaded manifest is too old, fetch a new one and load it.
+    // TBI: when a global throttle on the IO frequency is implemented, check that as well.
+    if (nextUpdateCheckTimestamp < manifest_.getLastUpdateTimestamp())
     {
         File manifestFile = this->fetchLatestManifestFile();
         this->loadManifest(Manifest::Load(manifestFile));
