@@ -161,6 +161,7 @@ class Manager
     ///                         - It does not exist locally
     ///                         - We are past the next predicted update for the manifest based on its own "manifest"
     ///                         entry.
+
     void checkManifestAgeAndUpdate();
 
     bool isManifestRepositoryLocked() const;
