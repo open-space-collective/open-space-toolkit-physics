@@ -186,7 +186,7 @@ void Manager::checkManifestAgeAndUpdate()
 
     // Determine if we need to fetch a new manifest based on the loaded one.
     // The next timestamp at which we expect the remote to update its data.
-    const Instant nextUpdateCheckTimestamp = Instant::Now() + manifest_.getNextUpdateCheckTimestampFor("manifest");
+    const Instant nextUpdateCheckTimestamp = manifest_.getNextUpdateCheckTimestampFor("manifest");
 
     // If loaded manifest is too old, fetch a new one and load it.
     // TBI: when a global throttle on the IO frequency is implemented, check that as well.
