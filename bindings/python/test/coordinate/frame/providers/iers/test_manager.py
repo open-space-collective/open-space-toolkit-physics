@@ -45,11 +45,11 @@ class TestManager:
 
     def test_get_bulletin_a_directory_success(self, manager: Manager):
         assert isinstance(manager.get_bulletin_a_directory(), Directory)
-        assert len(manager.get_bulletin_a_directory().to_string()) > 0
+        assert len(str(manager.get_bulletin_a_directory().to_string())) > 0
 
     def test_get_finals_2000a_directory_success(self, manager: Manager):
         assert isinstance(manager.get_finals_2000a_directory(), Directory)
-        assert len(manager.get_finals_2000a_directory().to_string()) > 0
+        assert len(str(manager.get_finals_2000a_directory().to_string())) > 0
 
     def test_get_bulletin_a_array_success(self, manager: Manager):
         assert isinstance(manager.get_bulletin_a_array(), list)

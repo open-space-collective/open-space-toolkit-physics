@@ -30,7 +30,7 @@ class TestManager:
 
     def test_get_cssi_space_weather_directory_success(self, manager: Manager):
         assert isinstance(manager.get_cssi_space_weather_directory(), Directory)
-        assert len(manager.get_cssi_space_weather_directory().to_string()) > 0
+        assert len(str(manager.get_cssi_space_weather_directory().to_string())) > 0
 
     def test_get_cssi_space_weather_array_success(self, manager: Manager):
         assert isinstance(manager.get_cssi_space_weather_array(), list)
