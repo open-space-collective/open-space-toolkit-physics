@@ -19,11 +19,7 @@ from ostk.physics.environment.magnetic.earth import (
 def manager() -> EarthMagneticModelManager:
     manager = EarthMagneticModelManager.get()
 
-    manager.set_local_repository(
-        Directory.path(
-            Path.parse("./.open-space-toolkit/physics/environment/magnetic/earth")
-        )
-    )
+    manager.set_local_repository(EarthMagneticModelManager.default_local_repository())
 
     yield manager
 
@@ -36,12 +32,11 @@ class TestManager:
         assert manager.get_mode() == EarthMagneticModelManager.Mode.Automatic
 
     def test_has_data_files_for_type_success(self, manager: EarthMagneticModelManager):
-        print(manager.get_local_repository().get_path().to_string())
         assert manager.has_data_files_for_type(EarthMagneticModel.Type.EMM2010) == True
 
     def test_get_local_repository_success(self, manager: EarthMagneticModelManager):
         assert isinstance(manager.get_local_repository(), Directory)
-        assert len(manager.get_local_repository().to_string()) > 0
+        assert len(str(manager.get_local_repository().to_string())) > 0
 
     def test_fetch_data_files_for_type_success(self, manager: EarthMagneticModelManager):
         test_directory = Directory.path(
@@ -77,7 +72,7 @@ class TestManager:
 
     def test_default_local_repository_success(self, manager: EarthMagneticModelManager):
         assert isinstance(EarthMagneticModelManager.default_local_repository(), Directory)
-        assert len(manager.default_local_repository().to_string()) > 0
+        assert len(str(manager.default_local_repository().to_string())) > 0
 
     def test_default_mode_success(self, manager: EarthMagneticModelManager):
         assert manager.default_mode() == EarthMagneticModelManager.Mode.Automatic

@@ -20,9 +20,7 @@ def manager() -> EarthGravitationalModelManager:
     manager = EarthGravitationalModelManager.get()
 
     manager.set_local_repository(
-        Directory.path(
-            Path.parse("./.open-space-toolkit/physics/environment/gravitational/earth")
-        )
+        EarthGravitationalModelManager.default_local_repository()
     )
 
     yield manager
@@ -47,7 +45,7 @@ class TestManager:
 
     def test_get_local_repository_success(self, manager: EarthGravitationalModelManager):
         assert isinstance(manager.get_local_repository(), Directory)
-        assert len(manager.get_local_repository().to_string()) > 0
+        assert len(str(manager.get_local_repository().to_string())) > 0
 
     def test_fetch_data_files_for_type_success(
         self, manager: EarthGravitationalModelManager
@@ -91,7 +89,7 @@ class TestManager:
         assert isinstance(
             EarthGravitationalModelManager.default_local_repository(), Directory
         )
-        assert len(manager.default_local_repository().to_string()) > 0
+        assert len(str(manager.default_local_repository().to_string())) > 0
 
     def test_default_mode_success(self, manager: EarthGravitationalModelManager):
         assert manager.default_mode() == EarthGravitationalModelManager.Mode.Automatic

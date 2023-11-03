@@ -26,7 +26,7 @@ class TestManager:
 
     def test_get_local_repository_success(self, manager: Manager):
         assert isinstance(manager.get_local_repository(), Directory)
-        assert len(manager.get_local_repository().to_string()) > 0
+        assert len(str(manager.get_local_repository().to_string())) > 0
 
     def test_get_cssi_space_weather_directory_success(self, manager: Manager):
         assert isinstance(manager.get_cssi_space_weather_directory(), Directory)
@@ -180,7 +180,7 @@ class TestManager:
 
     def test_default_local_repository_success(self, manager: Manager):
         assert isinstance(manager.default_local_repository(), Directory)
-        assert len(manager.default_local_repository().to_string()) > 0
+        assert len(str(manager.default_local_repository().to_string())) > 0
 
     def test_default_local_repository_lock_timeout_success(self, manager: Manager):
         assert isinstance(manager.default_local_repository_lock_timeout(), Duration)
