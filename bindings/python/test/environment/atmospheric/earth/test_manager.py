@@ -26,21 +26,11 @@ class TestManager:
 
     def test_get_local_repository_success(self, manager: Manager):
         assert isinstance(manager.get_local_repository(), Directory)
-        assert manager.get_local_repository().to_string() == os.environ.get(
-            "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY"
-        )
+        assert len(str(manager.get_local_repository().to_string())) > 0
 
     def test_get_cssi_space_weather_directory_success(self, manager: Manager):
         assert isinstance(manager.get_cssi_space_weather_directory(), Directory)
-        assert (
-            manager.get_cssi_space_weather_directory().to_string()
-            == str(
-                os.environ.get(
-                    "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY"
-                )
-            )
-            + "/CSSISpaceWeather"
-        )
+        assert len(str(manager.get_cssi_space_weather_directory().to_string())) > 0
 
     def test_get_cssi_space_weather_array_success(self, manager: Manager):
         assert isinstance(manager.get_cssi_space_weather_array(), list)
@@ -129,9 +119,6 @@ class TestManager:
 
     def test_set_local_repository_success(self, manager: Manager):
         assert isinstance(manager.get_local_repository(), Directory)
-        assert manager.get_local_repository().to_string() == os.environ.get(
-            "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY"
-        )
 
         manager.set_local_repository(
             Directory.path(
@@ -193,9 +180,7 @@ class TestManager:
 
     def test_default_local_repository_success(self, manager: Manager):
         assert isinstance(manager.default_local_repository(), Directory)
-        assert manager.default_local_repository().to_string() == os.environ.get(
-            "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY"
-        )
+        assert len(str(manager.default_local_repository().to_string())) > 0
 
     def test_default_local_repository_lock_timeout_success(self, manager: Manager):
         assert isinstance(manager.default_local_repository_lock_timeout(), Duration)

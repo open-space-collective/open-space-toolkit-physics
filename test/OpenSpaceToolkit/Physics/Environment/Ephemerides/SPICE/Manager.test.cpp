@@ -40,9 +40,41 @@ class OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager : public ::
         manager_.setLocalRepository(
             Directory::Path(Path::Parse("test/OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/"))
         );
+
+        // cache current directory environment variables
+        localRepositoryPath = std::getenv(localRepositoryVarName);
+        fullDataPath = std::getenv(fullDataVarName);
+    }
+
+    virtual void TearDown()
+    {
+        // reset cached environment variables
+        if (fullDataPath)
+        {
+            setenv(fullDataVarName, fullDataPath, true);
+        }
+        else
+        {
+            unsetenv(fullDataVarName);
+        }
+
+        if (localRepositoryPath)
+        {
+            setenv(localRepositoryVarName, localRepositoryPath, true);
+        }
+        else
+        {
+            unsetenv(localRepositoryVarName);
+        }
     }
 
     Manager& manager_ = Manager::Get();
+
+    const char* localRepositoryVarName = "OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY";
+    const char* fullDataVarName = "OSTK_PHYSICS_DATA_LOCAL_REPOSITORY";
+
+    char* localRepositoryPath;
+    char* fullDataPath;
 };
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager, GetLocalRepository)
@@ -74,7 +106,34 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager, SetLocalR
 TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager, DefaultLocalRepository)
 {
     {
-        EXPECT_EQ("spice", Manager::DefaultLocalRepository().getName());
+        unsetenv(localRepositoryVarName);
+        unsetenv(fullDataVarName);
+
+        EXPECT_EQ(
+            Manager::DefaultLocalRepository(),
+            Directory::Path(Path::Parse("./.open-space-toolkit/physics/data/environment/ephemerides/spice"))
+        );
+    }
+
+    {
+        unsetenv(localRepositoryVarName);
+        unsetenv(fullDataVarName);
+
+        setenv(fullDataVarName, "/tmp", true);
+
+        EXPECT_EQ(
+            Manager::DefaultLocalRepository(), Directory::Path(Path::Parse("/tmp/environment/ephemerides/spice"))
+        );
+    }
+
+    {
+        unsetenv(localRepositoryVarName);
+        unsetenv(fullDataVarName);
+
+        setenv(fullDataVarName, "/tmp", true);
+        setenv(localRepositoryVarName, "/local_override", true);
+
+        EXPECT_EQ(Manager::DefaultLocalRepository(), Directory::Path(Path::Parse("/local_override")));
     }
 }
 

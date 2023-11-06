@@ -182,6 +182,7 @@ None of these files are shipped with the source code of this library. OSTk Physi
 The following table shows the availabe data source settings:
 | Environment Variable                                                                 | Default Value                                                            |
 | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `OSTK_PHYSICS_DATA_LOCAL_REPOSITORY`                                                 | `./.open-space-toolkit/physics/data` [Bulk setting. Overridden by specific repository settings below.] |
 | `OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE`                          | `Automatic`                                                              |
 | `OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY`              | `./.open-space-toolkit/physics/data/coordinate/frame/providers/iers`          |
 | `OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT` | `60`                                                                     |
