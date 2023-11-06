@@ -41,6 +41,42 @@ class OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager : public 
     {
         this->bulletinA_ = BulletinA::Load(bulletinAFile_);
         this->finals2000A_ = Finals2000A::Load(finals2000AFile_);
+
+        // cache current directory environment variables
+        localRepositoryPath = std::getenv(localRepositoryVarName);
+        fullDataPath = std::getenv(fullDataVarName);
+        modeValue = std::getenv(modeVarName);
+    }
+
+    virtual void TearDown()
+    {
+        // reset cached environment variables
+        if (fullDataPath)
+        {
+            setenv(fullDataVarName, fullDataPath, true);
+        }
+        else
+        {
+            unsetenv(fullDataVarName);
+        }
+
+        if (localRepositoryPath)
+        {
+            setenv(localRepositoryVarName, localRepositoryPath, true);
+        }
+        else
+        {
+            unsetenv(localRepositoryVarName);
+        }
+
+        if (modeValue)
+        {
+            setenv(modeVarName, modeValue, true);
+        }
+        else
+        {
+            unsetenv(modeVarName);
+        }
     }
 
     const File bulletinAFile_ =
@@ -55,6 +91,14 @@ class OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager : public 
     Finals2000A finals2000A_ = Finals2000A::Undefined();
 
     Manager& manager_ = Manager::Get();
+
+    const char* localRepositoryVarName = "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY";
+    const char* fullDataVarName = "OSTK_PHYSICS_DATA_LOCAL_REPOSITORY";
+    const char* modeVarName = "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE";
+
+    char* localRepositoryPath;
+    char* fullDataPath;
+    char* modeValue;
 };
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetMode)
@@ -414,40 +458,55 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, Get)
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, DefaultMode)
 {
-    const char* varName = "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE";
-    const char* localRepositoryPathEnv = std::getenv(varName);
-
     {
-        unsetenv(varName);
+        unsetenv(modeVarName);
         EXPECT_EQ(Manager::Mode::Automatic, Manager::DefaultMode());
     }
     {
-        setenv(varName, "SuperUltraAutomatic", true);
+        setenv(modeVarName, "SuperUltraAutomatic", true);
         EXPECT_THROW(Manager::DefaultMode(), ostk::core::error::runtime::Wrong);
     }
     {
-        setenv(varName, "Automatic", true);
+        setenv(modeVarName, "Automatic", true);
         EXPECT_EQ(Manager::Mode::Automatic, Manager::DefaultMode());
     }
     {
-        setenv(varName, "Manual", true);
+        setenv(modeVarName, "Manual", true);
         EXPECT_EQ(Manager::Mode::Manual, Manager::DefaultMode());
-    }
-
-    if (localRepositoryPathEnv)
-    {
-        setenv(varName, localRepositoryPathEnv, true);
-    }
-    else
-    {
-        unsetenv(varName);
     }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, DefaultLocalRepository)
 {
     {
-        EXPECT_EQ("iers", Manager::DefaultLocalRepository().getName());
+        unsetenv(localRepositoryVarName);
+        unsetenv(fullDataVarName);
+
+        EXPECT_EQ(
+            Manager::DefaultLocalRepository(),
+            Directory::Path(Path::Parse("./.open-space-toolkit/physics/data/coordinate/frame/providers/iers"))
+        );
+    }
+
+    {
+        unsetenv(localRepositoryVarName);
+        unsetenv(fullDataVarName);
+
+        setenv(fullDataVarName, "/tmp", true);
+
+        EXPECT_EQ(
+            Manager::DefaultLocalRepository(), Directory::Path(Path::Parse("/tmp/coordinate/frame/providers/iers"))
+        );
+    }
+
+    {
+        unsetenv(localRepositoryVarName);
+        unsetenv(fullDataVarName);
+
+        setenv(fullDataVarName, "/tmp", true);
+        setenv(localRepositoryVarName, "/local_override", true);
+
+        EXPECT_EQ(Manager::DefaultLocalRepository(), Directory::Path(Path::Parse("/local_override")));
     }
 }
 

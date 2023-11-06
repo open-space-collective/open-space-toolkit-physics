@@ -29,10 +29,33 @@ class OpenSpaceToolkit_Physics_Data_Manager : public ::testing::Test
         manager_.setRemoteUrl(
             URL::Parse("https://github.com/open-space-collective/open-space-toolkit-data/raw/main/data")
         );
+
+        // cache current directory environment variables
+        localRepositoryPath = std::getenv(localRepositoryVarName);
+        fullDataPath = std::getenv(fullDataVarName);
     }
 
     void TearDown() override
     {
+        // reset cached environment variables
+        if (fullDataPath)
+        {
+            setenv(fullDataVarName, fullDataPath, true);
+        }
+        else
+        {
+            unsetenv(fullDataVarName);
+        }
+
+        if (localRepositoryPath)
+        {
+            setenv(localRepositoryVarName, localRepositoryPath, true);
+        }
+        else
+        {
+            unsetenv(localRepositoryVarName);
+        }
+
         // reset repository so other test suites do not use the test manifest
         // in /app/test/OpenSpaceToolkit/Physics/Data/Manifest/
         manager_.reset();
@@ -44,6 +67,12 @@ class OpenSpaceToolkit_Physics_Data_Manager : public ::testing::Test
     Manifest manifest_ = Manifest::Undefined();
 
     Manager& manager_ = Manager::Get();
+
+    const char* localRepositoryVarName = "OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY";
+    const char* fullDataVarName = "OSTK_PHYSICS_DATA_LOCAL_REPOSITORY";
+
+    char* localRepositoryPath;
+    char* fullDataPath;
 };
 
 TEST_F(OpenSpaceToolkit_Physics_Data_Manager, GetLastUpdateTimestampFor)
@@ -144,7 +173,31 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manager, SetManifestRepository)
 TEST_F(OpenSpaceToolkit_Physics_Data_Manager, DefaultManifestRepository)
 {
     {
-        EXPECT_EQ("data", Manager::DefaultManifestRepository().getName());
+        unsetenv(localRepositoryVarName);
+        unsetenv(fullDataVarName);
+
+        EXPECT_EQ(
+            Manager::DefaultManifestRepository(), Directory::Path(Path::Parse("./.open-space-toolkit/physics/data/"))
+        );
+    }
+
+    {
+        unsetenv(localRepositoryVarName);
+        unsetenv(fullDataVarName);
+
+        setenv(fullDataVarName, "/tmp", true);
+
+        EXPECT_EQ(Manager::DefaultManifestRepository(), Directory::Path(Path::Parse("/tmp")));
+    }
+
+    {
+        unsetenv(localRepositoryVarName);
+        unsetenv(fullDataVarName);
+
+        setenv(fullDataVarName, "/tmp", true);
+        setenv(localRepositoryVarName, "/local_override", true);
+
+        EXPECT_EQ(Manager::DefaultManifestRepository(), Directory::Path(Path::Parse("/local_override")));
     }
 }
 

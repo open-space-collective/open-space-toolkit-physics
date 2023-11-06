@@ -39,15 +39,56 @@ class OpenSpaceToolkit_Physics_Environment_Gravitational_Earth_Manager : public 
         manager_.setLocalRepository(
             Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/"))
         );
+
+        // cache current directory environment variables
+        localRepositoryPath = std::getenv(localRepositoryVarName);
+        fullDataPath = std::getenv(fullDataVarName);
+        modeValue = std::getenv(modeVarName);
     }
 
     void TearDown() override
     {
+        // reset cached environment variables
+        if (fullDataPath)
+        {
+            setenv(fullDataVarName, fullDataPath, true);
+        }
+        else
+        {
+            unsetenv(fullDataVarName);
+        }
+
+        if (localRepositoryPath)
+        {
+            setenv(localRepositoryVarName, localRepositoryPath, true);
+        }
+        else
+        {
+            unsetenv(localRepositoryVarName);
+        }
+
+        if (modeValue)
+        {
+            setenv(modeVarName, modeValue, true);
+        }
+        else
+        {
+            unsetenv(modeVarName);
+        }
+
         // reset repository so other test suites do not use the test data
         manager_.reset();
     }
 
     Manager& manager_ = Manager::Get();
+
+    const char* localRepositoryVarName = "OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY";
+    const char* fullDataVarName = "OSTK_PHYSICS_DATA_LOCAL_REPOSITORY";
+    const char* modeVarName = "OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_MODE";
+
+    char* localRepositoryPath;
+    char* fullDataPath;
+    char* modeValue;
 };
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth_Manager, GetMode)
@@ -74,33 +115,21 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth_Manager, SetMode
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth_Manager, DefaultMode)
 {
-    const char* varName = "OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_MODE";
-    const char* localRepositoryPathEnv = std::getenv(varName);
-
     {
-        unsetenv(varName);
+        unsetenv(modeVarName);
         EXPECT_EQ(Manager::Mode::Automatic, Manager::DefaultMode());
     }
     {
-        setenv(varName, "SuperUltraAutomatic", true);
+        setenv(modeVarName, "SuperUltraAutomatic", true);
         EXPECT_THROW(Manager::DefaultMode(), ostk::core::error::runtime::Wrong);
     }
     {
-        setenv(varName, "Automatic", true);
+        setenv(modeVarName, "Automatic", true);
         EXPECT_EQ(Manager::Mode::Automatic, Manager::DefaultMode());
     }
     {
-        setenv(varName, "Manual", true);
+        setenv(modeVarName, "Manual", true);
         EXPECT_EQ(Manager::Mode::Manual, Manager::DefaultMode());
-    }
-
-    if (localRepositoryPathEnv)
-    {
-        setenv(varName, localRepositoryPathEnv, true);
-    }
-    else
-    {
-        unsetenv(varName);
     }
 }
 
@@ -180,7 +209,34 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth_Manager, Reset)
 TEST_F(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth_Manager, DefaultLocalRepository)
 {
     {
-        EXPECT_EQ("earth", Manager::DefaultLocalRepository().getName());
+        unsetenv(localRepositoryVarName);
+        unsetenv(fullDataVarName);
+
+        EXPECT_EQ(
+            Manager::DefaultLocalRepository(),
+            Directory::Path(Path::Parse("./.open-space-toolkit/physics/data/environment/gravitational/earth"))
+        );
+    }
+
+    {
+        unsetenv(localRepositoryVarName);
+        unsetenv(fullDataVarName);
+
+        setenv(fullDataVarName, "/tmp", true);
+
+        EXPECT_EQ(
+            Manager::DefaultLocalRepository(), Directory::Path(Path::Parse("/tmp/environment/gravitational/earth"))
+        );
+    }
+
+    {
+        unsetenv(localRepositoryVarName);
+        unsetenv(fullDataVarName);
+
+        setenv(fullDataVarName, "/tmp", true);
+        setenv(localRepositoryVarName, "/local_override", true);
+
+        EXPECT_EQ(Manager::DefaultLocalRepository(), Directory::Path(Path::Parse("/local_override")));
     }
 }
 
