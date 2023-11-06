@@ -95,24 +95,12 @@ class Manager
 
     Directory getFinals2000ADirectory() const;
 
-    /// @brief              Get array of Bulletin A
-    ///
-    /// @return             Array of Bulletin A
-
-    Array<BulletinA> getBulletinAArray() const;
-
     /// @brief              Get Bulletin A at instant
     ///
     /// @param              [in] anInstant An instant
     /// @return             Bulletin A
 
     BulletinA getBulletinAAt(const Instant& anInstant) const;
-
-    /// @brief              Get array of Finals 2000A
-    ///
-    /// @return             Array of Finals 2000A
-
-    Array<Finals2000A> getFinals2000AArray() const;
 
     /// @brief              Get Finals 2000A at instant
     ///
@@ -227,16 +215,10 @@ class Manager
     Directory localRepository_;
     Duration localRepositoryLockTimeout_;
 
-    Array<BulletinA> aBulletins_;
-    Array<Finals2000A> finals2000aArray_;
+    BulletinA bulletinA_;
+    Finals2000A finals2000A_;
 
     mutable std::mutex mutex_;
-
-    mutable Index aBulletinIndex_;
-    mutable Index finals2000aIndex_;
-
-    mutable Instant bulletinAUpdateTimestamp_;
-    mutable Instant finals2000AUpdateTimestamp_;
 
     Manager(const Manager::Mode& aMode = Manager::DefaultMode());
 
@@ -244,9 +226,9 @@ class Manager
 
     File getLocalRepositoryLockFile() const;
 
-    const BulletinA* accessBulletinAAt(const Instant& anInstant) const;
+    const BulletinA* accessBulletinA();
 
-    const Finals2000A* accessFinals2000AAt(const Instant& anInstant) const;
+    const Finals2000A* accessFinals2000A();
 
     File getLatestBulletinAFile() const;
 

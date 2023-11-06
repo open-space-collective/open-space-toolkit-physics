@@ -11,6 +11,7 @@
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/BulletinA.hpp>
+#include <OpenSpaceToolkit/Physics/Data/Utilities.hpp>
 
 namespace ostk
 {
@@ -24,6 +25,8 @@ namespace provider
 {
 namespace iers
 {
+
+using ostk::physics::data::utilities::getFileModifiedInstant;
 
 std::ostream& operator<<(std::ostream& anOutputStream, const BulletinA& aBulletinA)
 {
@@ -110,6 +113,16 @@ const Date& BulletinA::accessReleaseDate() const
     }
 
     return releaseDate_;
+}
+
+const Instant& BulletinA::accessLastModifiedTimestamp() const
+{
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Bulletin A");
+    }
+
+    return lastModifiedTimestamp_;
 }
 
 const Duration& BulletinA::accessTAIMinusUTC() const
@@ -441,6 +454,8 @@ BulletinA BulletinA::Load(const fs::File& aFile)
 
     BulletinA bulletin;
 
+    bulletin.lastModifiedTimestamp_ = getFileModifiedInstant(aFile);
+
     std::ifstream fileStream {aFile.getPath().toString()};
 
     Index lineIndex = 0;
@@ -570,6 +585,7 @@ BulletinA BulletinA::Load(const fs::File& aFile)
 
 BulletinA::BulletinA()
     : releaseDate_(Date::Undefined()),
+      lastModifiedTimestamp_(Instant::Undefined()),
       taiMinusUtc_(Duration::Undefined()),
       taiMinusUtcEpoch_(Instant::Undefined()),
       observationInterval_(Interval::Undefined()),

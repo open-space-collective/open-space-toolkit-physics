@@ -188,9 +188,12 @@ void Manager::checkManifestAgeAndUpdate()
     // The next timestamp at which we expect the remote to update its data.
     const Instant nextUpdateCheckTimestamp = manifest_.getNextUpdateCheckTimestampFor("manifest");
 
+    // std::cout << "next update check timestamp: " << nextUpdateCheckTimestamp.toString() << std::endl;
+    // std::cout << "last update timestamp: " << manifest_.getLastModifiedTimestamp().toString() << std::endl;
+
     // If loaded manifest is too old, fetch a new one and load it.
     // TBI: when a global throttle on the IO frequency is implemented, check that as well.
-    if (nextUpdateCheckTimestamp < manifest_.getLastUpdateTimestamp())
+    if (nextUpdateCheckTimestamp < manifest_.getLastModifiedTimestamp())
     {
         File manifestFile = this->fetchLatestManifestFile();
         this->loadManifest(Manifest::Load(manifestFile));

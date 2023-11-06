@@ -85,13 +85,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetFina
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetBulletinAArray)
-{
-    {
-        EXPECT_NO_THROW(manager_.getBulletinAArray());
-    }
-}
-
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetBulletinAAt)
 {
     {
@@ -122,13 +115,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetBull
         bulletinAFile.remove();
 
         EXPECT_NO_THROW(manager_.getBulletinAAt(fetchTime));
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetFinals2000AArray)
-{
-    {
-        EXPECT_NO_THROW(manager_.getFinals2000AArray());
     }
 }
 
@@ -389,9 +375,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, Reset)
 {
     {
         manager_.reset();
-
-        EXPECT_TRUE(manager_.getBulletinAArray().isEmpty());
-        EXPECT_TRUE(manager_.getFinals2000AArray().isEmpty());
+        // TODO
     }
 }
 

@@ -39,7 +39,7 @@ bool Manifest::isDefined() const
     return !dictionary_.isEmpty();
 }
 
-Instant Manifest::getLastUpdateTimestamp() const
+Instant Manifest::getLastModifiedTimestamp() const
 {
     return this->lastModifiedTimestamp_;
 }
