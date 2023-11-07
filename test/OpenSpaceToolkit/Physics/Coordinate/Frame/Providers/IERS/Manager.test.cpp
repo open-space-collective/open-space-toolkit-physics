@@ -43,39 +43,39 @@ class OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager : public 
         this->finals2000A_ = Finals2000A::Load(finals2000AFile_);
 
         // cache current directory environment variables
-        localRepositoryPath = std::getenv(localRepositoryVarName);
-        fullDataPath = std::getenv(fullDataVarName);
-        modeValue = std::getenv(modeVarName);
+        localRepositoryPath = std::getenv(localRepositoryVarName_);
+        fullDataPath_ = std::getenv(fullDataVarName_);
+        modeValue_ = std::getenv(modeVarName_);
     }
 
     virtual void TearDown()
     {
         // reset cached environment variables
-        if (fullDataPath)
+        if (fullDataPath_)
         {
-            setenv(fullDataVarName, fullDataPath, true);
+            setenv(fullDataVarName_, fullDataPath_, true);
         }
         else
         {
-            unsetenv(fullDataVarName);
+            unsetenv(fullDataVarName_);
         }
 
         if (localRepositoryPath)
         {
-            setenv(localRepositoryVarName, localRepositoryPath, true);
+            setenv(localRepositoryVarName_, localRepositoryPath, true);
         }
         else
         {
-            unsetenv(localRepositoryVarName);
+            unsetenv(localRepositoryVarName_);
         }
 
-        if (modeValue)
+        if (modeValue_)
         {
-            setenv(modeVarName, modeValue, true);
+            setenv(modeVarName_, modeValue_, true);
         }
         else
         {
-            unsetenv(modeVarName);
+            unsetenv(modeVarName_);
         }
     }
 
@@ -92,13 +92,13 @@ class OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager : public 
 
     Manager& manager_ = Manager::Get();
 
-    const char* localRepositoryVarName = "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY";
-    const char* fullDataVarName = "OSTK_PHYSICS_DATA_LOCAL_REPOSITORY";
-    const char* modeVarName = "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE";
+    const char* localRepositoryVarName_ = "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY";
+    const char* fullDataVarName_ = "OSTK_PHYSICS_DATA_LOCAL_REPOSITORY";
+    const char* modeVarName_ = "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE";
 
     char* localRepositoryPath;
-    char* fullDataPath;
-    char* modeValue;
+    char* fullDataPath_;
+    char* modeValue_;
 };
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetMode)
@@ -459,19 +459,19 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, Get)
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, DefaultMode)
 {
     {
-        unsetenv(modeVarName);
+        unsetenv(modeVarName_);
         EXPECT_EQ(Manager::Mode::Automatic, Manager::DefaultMode());
     }
     {
-        setenv(modeVarName, "SuperUltraAutomatic", true);
+        setenv(modeVarName_, "SuperUltraAutomatic", true);
         EXPECT_THROW(Manager::DefaultMode(), ostk::core::error::runtime::Wrong);
     }
     {
-        setenv(modeVarName, "Automatic", true);
+        setenv(modeVarName_, "Automatic", true);
         EXPECT_EQ(Manager::Mode::Automatic, Manager::DefaultMode());
     }
     {
-        setenv(modeVarName, "Manual", true);
+        setenv(modeVarName_, "Manual", true);
         EXPECT_EQ(Manager::Mode::Manual, Manager::DefaultMode());
     }
 }
@@ -479,8 +479,8 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, Default
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, DefaultLocalRepository)
 {
     {
-        unsetenv(localRepositoryVarName);
-        unsetenv(fullDataVarName);
+        unsetenv(localRepositoryVarName_);
+        unsetenv(fullDataVarName_);
 
         EXPECT_EQ(
             Manager::DefaultLocalRepository(),
@@ -489,10 +489,10 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, Default
     }
 
     {
-        unsetenv(localRepositoryVarName);
-        unsetenv(fullDataVarName);
+        unsetenv(localRepositoryVarName_);
+        unsetenv(fullDataVarName_);
 
-        setenv(fullDataVarName, "/tmp", true);
+        setenv(fullDataVarName_, "/tmp", true);
 
         EXPECT_EQ(
             Manager::DefaultLocalRepository(), Directory::Path(Path::Parse("/tmp/coordinate/frame/providers/iers"))
@@ -500,11 +500,11 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, Default
     }
 
     {
-        unsetenv(localRepositoryVarName);
-        unsetenv(fullDataVarName);
+        unsetenv(localRepositoryVarName_);
+        unsetenv(fullDataVarName_);
 
-        setenv(fullDataVarName, "/tmp", true);
-        setenv(localRepositoryVarName, "/local_override", true);
+        setenv(fullDataVarName_, "/tmp", true);
+        setenv(localRepositoryVarName_, "/local_override", true);
 
         EXPECT_EQ(Manager::DefaultLocalRepository(), Directory::Path(Path::Parse("/local_override")));
     }

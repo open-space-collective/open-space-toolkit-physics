@@ -31,29 +31,29 @@ class OpenSpaceToolkit_Physics_Data_Manager : public ::testing::Test
         );
 
         // cache current directory environment variables
-        localRepositoryPath = std::getenv(localRepositoryVarName);
-        fullDataPath = std::getenv(fullDataVarName);
+        localRepositoryPath = std::getenv(localRepositoryVarName_);
+        fullDataPath_ = std::getenv(fullDataVarName_);
     }
 
     void TearDown() override
     {
         // reset cached environment variables
-        if (fullDataPath)
+        if (fullDataPath_)
         {
-            setenv(fullDataVarName, fullDataPath, true);
+            setenv(fullDataVarName_, fullDataPath_, true);
         }
         else
         {
-            unsetenv(fullDataVarName);
+            unsetenv(fullDataVarName_);
         }
 
         if (localRepositoryPath)
         {
-            setenv(localRepositoryVarName, localRepositoryPath, true);
+            setenv(localRepositoryVarName_, localRepositoryPath, true);
         }
         else
         {
-            unsetenv(localRepositoryVarName);
+            unsetenv(localRepositoryVarName_);
         }
 
         // reset repository so other test suites do not use the test manifest
@@ -68,11 +68,11 @@ class OpenSpaceToolkit_Physics_Data_Manager : public ::testing::Test
 
     Manager& manager_ = Manager::Get();
 
-    const char* localRepositoryVarName = "OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY";
-    const char* fullDataVarName = "OSTK_PHYSICS_DATA_LOCAL_REPOSITORY";
+    const char* localRepositoryVarName_ = "OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY";
+    const char* fullDataVarName_ = "OSTK_PHYSICS_DATA_LOCAL_REPOSITORY";
 
     char* localRepositoryPath;
-    char* fullDataPath;
+    char* fullDataPath_;
 };
 
 TEST_F(OpenSpaceToolkit_Physics_Data_Manager, GetLastUpdateTimestampFor)
@@ -173,8 +173,8 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manager, SetManifestRepository)
 TEST_F(OpenSpaceToolkit_Physics_Data_Manager, DefaultManifestRepository)
 {
     {
-        unsetenv(localRepositoryVarName);
-        unsetenv(fullDataVarName);
+        unsetenv(localRepositoryVarName_);
+        unsetenv(fullDataVarName_);
 
         EXPECT_EQ(
             Manager::DefaultManifestRepository(), Directory::Path(Path::Parse("./.open-space-toolkit/physics/data/"))
@@ -182,20 +182,20 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manager, DefaultManifestRepository)
     }
 
     {
-        unsetenv(localRepositoryVarName);
-        unsetenv(fullDataVarName);
+        unsetenv(localRepositoryVarName_);
+        unsetenv(fullDataVarName_);
 
-        setenv(fullDataVarName, "/tmp", true);
+        setenv(fullDataVarName_, "/tmp", true);
 
         EXPECT_EQ(Manager::DefaultManifestRepository(), Directory::Path(Path::Parse("/tmp")));
     }
 
     {
-        unsetenv(localRepositoryVarName);
-        unsetenv(fullDataVarName);
+        unsetenv(localRepositoryVarName_);
+        unsetenv(fullDataVarName_);
 
-        setenv(fullDataVarName, "/tmp", true);
-        setenv(localRepositoryVarName, "/local_override", true);
+        setenv(fullDataVarName_, "/tmp", true);
+        setenv(localRepositoryVarName_, "/local_override", true);
 
         EXPECT_EQ(Manager::DefaultManifestRepository(), Directory::Path(Path::Parse("/local_override")));
     }
