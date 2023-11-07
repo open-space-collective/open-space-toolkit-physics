@@ -313,9 +313,8 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, LoadBul
 {
     {
         manager_.reset();
-        manager_.loadBulletinA(bulletinA_);
 
-        EXPECT_ANY_THROW(manager_.loadBulletinA(bulletinA_));
+        EXPECT_NO_THROW(manager_.loadBulletinA(bulletinA_));
         EXPECT_ANY_THROW(manager_.loadBulletinA(BulletinA::Undefined()));
     }
 }
@@ -332,7 +331,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, LoadFin
         manager_.reset();
         manager_.loadFinals2000A(finals2000a);
 
-        EXPECT_ANY_THROW(manager_.loadFinals2000A(finals2000a));
+        EXPECT_NO_THROW(manager_.loadFinals2000A(finals2000a));
         EXPECT_ANY_THROW(manager_.loadFinals2000A(Finals2000A::Undefined()));
     }
 }
