@@ -152,7 +152,8 @@ class Manager
 
     void setup();
 
-    File fetchLatestManifestFile();
+    // virtual so we can mock in testing
+    virtual File fetchLatestManifestFile();
 
     /// @brief                  Check the age of the manifest to determine if it should be updated before querying it
     /// for other data files.

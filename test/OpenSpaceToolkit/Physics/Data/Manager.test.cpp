@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <gmock/gmock.h>
+
 #include <OpenSpaceToolkit/Physics/Data/Manager.hpp>
 
 #include <Global.test.hpp>
@@ -18,6 +20,13 @@ using ostk::physics::time::DateTime;
 using ostk::physics::data::Manager;
 using ostk::physics::data::Manifest;
 
+class TestManager : public Manager
+{
+    // Create a manager with no I/O so that we can force usage of the local testing manifest
+   public:
+    MOCK_METHOD(File, fetchLatestManifestFile, ());
+};
+
 class OpenSpaceToolkit_Physics_Data_Manager : public ::testing::Test
 {
    protected:
@@ -25,6 +34,7 @@ class OpenSpaceToolkit_Physics_Data_Manager : public ::testing::Test
     {
         manifest_ = Manifest::Load(manifestFile_);
         manager_.loadManifest(manifest_);
+        managerNoIO_.loadManifest(manifest_);
 
         manager_.setRemoteUrl(
             URL::Parse("https://github.com/open-space-collective/open-space-toolkit-data/raw/main/data")
@@ -44,21 +54,25 @@ class OpenSpaceToolkit_Physics_Data_Manager : public ::testing::Test
     Manifest manifest_ = Manifest::Undefined();
 
     Manager& manager_ = Manager::Get();
+    TestManager managerNoIO_ = TestManager();
 };
 
 TEST_F(OpenSpaceToolkit_Physics_Data_Manager, GetLastUpdateTimestampFor)
 {
+    // Mock the fetching function to do nothing and just return the test file
+    EXPECT_CALL(managerNoIO_, fetchLatestManifestFile()).WillRepeatedly(testing::Return(manifestFile_));
+
     {
         EXPECT_EQ(
             Instant::DateTime(DateTime::Parse("2023-08-04T12:02:17.028701"), Scale::UTC),
-            manager_.getLastUpdateTimestampFor("bulletin-A")
+            managerNoIO_.getLastUpdateTimestampFor("bulletin-A")
         );
     }
 
     {
         EXPECT_EQ(
             Instant::DateTime(DateTime::Parse("2023-08-03T00:03:15.288325"), Scale::UTC),
-            manager_.getLastUpdateTimestampFor("finals-2000A")
+            managerNoIO_.getLastUpdateTimestampFor("finals-2000A")
         );
     }
 }
@@ -73,7 +87,7 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manager, GetRemoteUrl)
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Data_Manager, setRemoteUrl)
+TEST_F(OpenSpaceToolkit_Physics_Data_Manager, SetRemoteUrl)
 {
     {
         EXPECT_EQ(
