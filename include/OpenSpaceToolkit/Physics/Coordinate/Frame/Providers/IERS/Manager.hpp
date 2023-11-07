@@ -95,19 +95,17 @@ class Manager
 
     Directory getFinals2000ADirectory() const;
 
-    /// @brief              Get Bulletin A at instant
+    /// @brief              Get Bulletin A
     ///
-    /// @param              [in] anInstant An instant
     /// @return             Bulletin A
 
-    BulletinA getBulletinAAt(const Instant& anInstant) const;
+    BulletinA getBulletinA() const;
 
-    /// @brief              Get Finals 2000A at instant
+    /// @brief              Get Finals 2000A
     ///
-    /// @param              [in] anInstant An instant
     /// @return             Finals 2000A
 
-    Finals2000A getFinals2000AAt(const Instant& anInstant) const;
+    Finals2000A getFinals2000A() const;
 
     /// @brief              Get polar motion at instant
     ///

@@ -82,13 +82,8 @@ Directory Manager::getFinals2000ADirectory() const
     return Directory::Path(localRepository_.getPath() + Path::Parse("finals-2000A"));
 }
 
-BulletinA Manager::getBulletinAAt(const Instant& anInstant) const
+BulletinA Manager::getBulletinA() const
 {
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
     std::lock_guard<std::mutex> lock {mutex_};
 
     const BulletinA* bulletinAPtr = const_cast<Manager*>(this)->accessBulletinA();
@@ -98,16 +93,11 @@ BulletinA Manager::getBulletinAAt(const Instant& anInstant) const
         return *bulletinAPtr;
     }
 
-    throw ostk::core::error::RuntimeError("Cannot obtain Bulletin A at [{}].", anInstant.toString());
+    throw ostk::core::error::RuntimeError("Cannot obtain Bulletin A.");
 }
 
-Finals2000A Manager::getFinals2000AAt(const Instant& anInstant) const
+Finals2000A Manager::getFinals2000A() const
 {
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
     std::lock_guard<std::mutex> lock {mutex_};
 
     const Finals2000A* finals2000aPtr = const_cast<Manager*>(this)->accessFinals2000A();
@@ -117,7 +107,7 @@ Finals2000A Manager::getFinals2000AAt(const Instant& anInstant) const
         return *finals2000aPtr;
     }
 
-    throw ostk::core::error::RuntimeError("Cannot obtain Finals 2000A at [{}].", anInstant.toString());
+    throw ostk::core::error::RuntimeError("Cannot obtain Finals 2000A.");
 }
 
 Vector2d Manager::getPolarMotionAt(const Instant& anInstant) const
