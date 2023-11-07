@@ -119,9 +119,15 @@ Vector2d Manager::getPolarMotionAt(const Instant& anInstant) const
 
     std::lock_guard<std::mutex> lock {mutex_};
 
+    // Try data in this order:
+    // 1. Bulletin A rapid service observations (released daily)
+    // 2. Bulletin A predictions (released daily)
+    // 3. Finals 2000A observations (released weekly)
+    //
+    // https://hpiers.obspm.fr/eoppc/bul/bulb/explanatory.html
+    
     const BulletinA* bulletinAPtr = const_cast<Manager*>(this)->accessBulletinA();
 
-    // use bulletin A data if possible
     if (bulletinAPtr != nullptr)
     {
         if (bulletinAPtr->accessObservationInterval().contains(anInstant))
@@ -165,6 +171,13 @@ Real Manager::getUt1MinusUtcAt(const Instant& anInstant) const
     }
 
     std::lock_guard<std::mutex> lock {mutex_};
+
+    // Try data in this order:
+    // 1. Bulletin A rapid service observations (released daily)
+    // 2. Bulletin A predictions (released daily)
+    // 3. Finals 2000A observations (released weekly)
+    //
+    // https://hpiers.obspm.fr/eoppc/bul/bulb/explanatory.html
 
     const BulletinA* bulletinAPtr = const_cast<Manager*>(this)->accessBulletinA();
 

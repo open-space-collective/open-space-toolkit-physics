@@ -469,7 +469,7 @@ BulletinA BulletinA::Load(const fs::File& aFile)
         "]+([\\d.]+)[ ]+([-]?[\\d.]+)[ ]+([\\d.]+)[ ]+$"
     );
     static const std::regex predictionRegex = std::regex(
-        "^[ ]+([\\d]+)[ ]+([\\d]+)[ ]+([\\d]+)[ ]+([\\d]+)[ ]+([-]?[\\d.]+)[ ]+([-]?[\\d.]+)[ ]+([-]?[\\d.]+)[ ]+$"
+        "^[ ]+([\\d]{4})[ ]+([\\d]+)[ ]+([\\d]+)[ ]+([\\d]+)[ ]+([-]?[\\d.]+)[ ]+([-]?[\\d.]+)[ ]+([-]?[\\d.]+)[ ]+$"
     );
 
     // Quick and dirty implementation.
