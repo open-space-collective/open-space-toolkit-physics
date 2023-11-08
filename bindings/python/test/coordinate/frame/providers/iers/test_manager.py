@@ -148,7 +148,6 @@ class TestManager:
         )
 
     def test_load_bulletin_a_success(self, manager: Manager, bulletin_a: BulletinA):
-
         manager.load_bulletin_a(bulletin_a)
 
         assert manager.get_bulletin_a().is_defined()

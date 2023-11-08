@@ -125,7 +125,7 @@ Vector2d Manager::getPolarMotionAt(const Instant& anInstant)
     // 3. Finals 2000A observations (released weekly)
     //
     // https://hpiers.obspm.fr/eoppc/bul/bulb/explanatory.html
-    
+
     const BulletinA* bulletinAPtr = this->accessBulletinA();
 
     if (bulletinAPtr != nullptr)
@@ -297,7 +297,7 @@ void Manager::reset()
     std::lock_guard<std::mutex> lock {mutex_};
 
     bulletinA_ = BulletinA::Undefined();
-    //std::cout << bulletinA_ << std::endl;
+    // std::cout << bulletinA_ << std::endl;
     finals2000A_ = Finals2000A::Undefined();
 }
 

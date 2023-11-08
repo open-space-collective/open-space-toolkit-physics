@@ -371,13 +371,12 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, Reset)
         EXPECT_TRUE(manager_.getBulletinA().isDefined());
 
         manager_.reset();
-        
+
         manager_.setMode(Manager::Mode::Manual);
 
         EXPECT_ANY_THROW(manager_.getBulletinA().isDefined());
 
         manager_.setMode(Manager::Mode::Automatic);
-
     }
 }
 

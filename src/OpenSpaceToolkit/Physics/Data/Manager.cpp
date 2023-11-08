@@ -187,10 +187,15 @@ void Manager::checkManifestAgeAndUpdate()
     // Determine if we need to fetch a new manifest based on the loaded one.
     // The next timestamp at which we expect the remote to update its data.
     Instant nextUpdateCheckTimestamp = Instant::Undefined();
-    try {
+    try
+    {
         nextUpdateCheckTimestamp = manifest_.getNextUpdateCheckTimestampFor("manifest");
-    } catch (ostk::core::error::RuntimeError& e) {
-        throw ostk::core::error::RuntimeError("Could not obtain key [manifest] from manifest file at {}", manifestRepository_.getPath().toString());
+    }
+    catch (ostk::core::error::RuntimeError& e)
+    {
+        throw ostk::core::error::RuntimeError(
+            "Could not obtain key [manifest] from manifest file at {}", manifestRepository_.getPath().toString()
+        );
     }
     // If loaded manifest is too old, fetch a new one and load it.
     // TBI: when a global throttle on the IO frequency is implemented, check that as well.
