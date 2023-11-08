@@ -24,7 +24,7 @@ class TestManager : public Manager
 {
     // Create a manager with no I/O so that we can force usage of the local testing manifest
    public:
-    MOCK_METHOD(File, fetchLatestManifestFile, ());
+    MOCK_METHOD(File, fetchLatestManifestFile_, (), (const));
 };
 
 class OpenSpaceToolkit_Physics_Data_Manager : public ::testing::Test
@@ -60,7 +60,7 @@ class OpenSpaceToolkit_Physics_Data_Manager : public ::testing::Test
 TEST_F(OpenSpaceToolkit_Physics_Data_Manager, GetLastUpdateTimestampFor)
 {
     // Mock the fetching function to do nothing and just return the test file
-    EXPECT_CALL(managerNoIO_, fetchLatestManifestFile()).WillRepeatedly(testing::Return(manifestFile_));
+    EXPECT_CALL(managerNoIO_, fetchLatestManifestFile_()).WillRepeatedly(testing::Return(manifestFile_));
 
     {
         EXPECT_EQ(
