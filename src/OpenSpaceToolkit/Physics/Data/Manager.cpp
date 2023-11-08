@@ -186,8 +186,8 @@ void Manager::checkManifestAgeAndUpdate_() const
     if (!manifest_.isDefined() && manifestFileExists())
     {
         // A manifest file exists but we haven't loaded it yet. Load it.
-        this->loadManifest_(Manifest::Load(File::Path(manifestRepository_.getPath() + Path::Parse(dataManifestFileName)))
-        );
+        this->loadManifest_(Manifest::Load(File::Path(manifestRepository_.getPath() + Path::Parse(dataManifestFileName))
+        ));
     }
 
     // Determine if we need to fetch a new manifest based on the loaded one.
