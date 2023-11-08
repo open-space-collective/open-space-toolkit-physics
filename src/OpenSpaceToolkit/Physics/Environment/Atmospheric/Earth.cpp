@@ -29,6 +29,7 @@ class Earth::Impl
    public:
     Impl(
         const Earth::Type& aType,
+        const Earth::InputDataSourceType& anInputDataSourceType,
         const Shared<const Frame>& anEarthFrameSPtr,
         const Length& anEarthRadius,
         const Real& anEarthFlattening
@@ -39,6 +40,8 @@ class Earth::Impl
     virtual Impl* clone() const = 0;
 
     Earth::Type getType() const;
+
+    Earth::InputDataSourceType getInputDataSourceType() const;
 
     virtual Real getDensityAt(const LLA& aLLA, const Instant& anInstant) const = 0;
 
@@ -51,10 +54,12 @@ class Earth::Impl
 
    private:
     Earth::Type type_;
+    Earth::InputDataSourceType inputDataSourceType_;
 };
 
 Earth::Impl::Impl(
     const Earth::Type& aType,
+    const Earth::InputDataSourceType& anInputDataSourceType,
     const Shared<const Frame>& anEarthFrameSPtr,
     const Length& anEarthRadius,
     const Real& anEarthFlattening
@@ -62,7 +67,8 @@ Earth::Impl::Impl(
     : earthFrameSPtr_(anEarthFrameSPtr),
       earthRadius_(anEarthRadius),
       earthFlattening_(anEarthFlattening),
-      type_(aType)
+      type_(aType),
+      inputDataSourceType_(anInputDataSourceType)
 {
 }
 
@@ -73,11 +79,17 @@ Earth::Type Earth::Impl::getType() const
     return type_;
 }
 
+Earth::InputDataSourceType Earth::Impl::getInputDataSourceType() const
+{
+    return inputDataSourceType_;
+}
+
 class Earth::ExponentialImpl : public Earth::Impl
 {
    public:
     ExponentialImpl(
         const Earth::Type& aType,
+        const Earth::InputDataSourceType& anInputDataSourceType,
         const Shared<const Frame>& anEarthFrameSPtr,
         const Length& anEarthRadius,
         const Real& anEarthFlattening
@@ -97,11 +109,12 @@ class Earth::ExponentialImpl : public Earth::Impl
 
 Earth::ExponentialImpl::ExponentialImpl(
     const Earth::Type& aType,
+    const Earth::InputDataSourceType& anInputDataSourceType,
     const Shared<const Frame>& anEarthFrameSPtr,
     const Length& anEarthRadius,
     const Real& anEarthFlattening
 )
-    : Earth::Impl(aType, anEarthFrameSPtr, anEarthRadius, anEarthFlattening)
+    : Earth::Impl(aType, anInputDataSourceType, anEarthFrameSPtr, anEarthRadius, anEarthFlattening)
 {
 }
 
@@ -130,6 +143,11 @@ class Earth::NRLMSISE00Impl : public Earth::Impl
    public:
     NRLMSISE00Impl(
         const Earth::Type& aType,
+        const Earth::InputDataSourceType& anEarthInputDataSourceType,
+        const NRLMSISE00::InputDataSourceType& anInputDataSourceType,
+        const Real& aF107ConstantValue,
+        const Real& aF107AConstantValue,
+        const Real& aKpConstantValue,
         const Shared<const Frame>& anEarthFrameSPtr,
         const Length& anEarthRadius,
         const Real& anEarthFlattening,
@@ -150,13 +168,17 @@ class Earth::NRLMSISE00Impl : public Earth::Impl
 
 Earth::NRLMSISE00Impl::NRLMSISE00Impl(
     const Earth::Type& aType,
+    const Earth::InputDataSourceType& anEarthInputDataSourceType,
+    const NRLMSISE00::InputDataSourceType& anInputDataSourceType,
+    const Real& aF107ConstantValue,
+    const Real& aF107AConstantValue,
+    const Real& aKpConstantValue,
     const Shared<const Frame>& anEarthFrameSPtr,
     const Length& anEarthRadius,
     const Real& anEarthFlattening,
     const Shared<Celestial>& aSunCelestialSPtr
-)
-    : Earth::Impl(aType, anEarthFrameSPtr, anEarthRadius, anEarthFlattening),
-      NRLMSISE00Model_(anEarthFrameSPtr, anEarthRadius, anEarthFlattening, aSunCelestialSPtr)
+) : Earth::Impl(aType, anEarthInputDataSourceType, anEarthFrameSPtr, anEarthRadius, anEarthFlattening),
+    NRLMSISE00Model_(anInputDataSourceType, aF107ConstantValue, aF107AConstantValue, aKpConstantValue, anEarthFrameSPtr, anEarthRadius, anEarthFlattening, aSunCelestialSPtr)
 {
 }
 
@@ -182,13 +204,17 @@ Real Earth::NRLMSISE00Impl::getDensityAt(const Position& aPosition, const Instan
 
 Earth::Earth(
     const Earth::Type& aType,
+    const Earth::InputDataSourceType& anInputDataSourceType,
+    const Real& aF107ConstantValue,
+    const Real& aF107AConstantValue,
+    const Real& aKpConstantValue,
     const Shared<const Frame>& anEarthFrameSPtr,
     const Length& anEarthRadius,
     const Real& anEarthFlattening,
     const Shared<Celestial>& aSunCelestialSPtr
 )
     : Model(),
-      implUPtr_(Earth::ImplFromType(aType, anEarthFrameSPtr, anEarthRadius, anEarthFlattening, aSunCelestialSPtr))
+      implUPtr_(Earth::ImplFromType(aType, anInputDataSourceType, aF107ConstantValue, aF107AConstantValue, aKpConstantValue, anEarthFrameSPtr, anEarthRadius, anEarthFlattening, aSunCelestialSPtr))
 {
 }
 
@@ -229,6 +255,11 @@ Earth::Type Earth::getType() const
     return implUPtr_->getType();
 }
 
+Earth::InputDataSourceType Earth::getInputDataSourceType() const
+{
+    return implUPtr_->getInputDataSourceType();
+}
+
 Real Earth::getDensityAt(const Position& aPosition, const Instant& anInstant) const
 {
     return implUPtr_->getDensityAt(aPosition, anInstant);
@@ -241,6 +272,10 @@ Real Earth::getDensityAt(const LLA& aLLA, const Instant& anInstant) const
 
 Unique<Earth::Impl> Earth::ImplFromType(
     const Earth::Type& aType,
+    const Earth::InputDataSourceType& anInputDataSourceType,
+    const Real& aF107ConstantValue,
+    const Real& aF107AConstantValue,
+    const Real& aKpConstantValue,
     const Shared<const Frame>& anEarthFrameSPtr,
     const Length& anEarthRadius,
     const Real& anEarthFlattening,
@@ -253,13 +288,39 @@ Unique<Earth::Impl> Earth::ImplFromType(
     }
     else if (aType == Earth::Type::Exponential)
     {
-        return std::make_unique<ExponentialImpl>(aType, anEarthFrameSPtr, anEarthRadius, anEarthFlattening);
+        return std::make_unique<ExponentialImpl>(aType, anInputDataSourceType, anEarthFrameSPtr, anEarthRadius, anEarthFlattening);
     }
     else if (aType == Earth::Type::NRLMSISE00)
     {
-        return std::make_unique<NRLMSISE00Impl>(
-            aType, anEarthFrameSPtr, anEarthRadius, anEarthFlattening, aSunCelestialSPtr
-        );
+        if (anInputDataSourceType == Earth::InputDataSourceType::Undefined)
+        {
+            throw ostk::core::error::runtime::Undefined("Input data source type");
+        }
+        else if (anInputDataSourceType == Earth::InputDataSourceType::ConstantFluxAndGeoMag)
+        {
+            if (!aF107ConstantValue.isDefined())
+            {
+                throw ostk::core::error::runtime::Undefined("F10.7 constant value");
+            }
+            else if (!aF107AConstantValue.isDefined())
+            {
+                throw ostk::core::error::runtime::Undefined("F10.7a constant value");
+            }
+            else if (!aKpConstantValue.isDefined())
+            {
+                throw ostk::core::error::runtime::Undefined("Kp constant value");
+            }
+
+            return std::make_unique<NRLMSISE00Impl>(
+                aType, anInputDataSourceType, NRLMSISE00::InputDataSourceType::ConstantFluxAndGeoMag, aF107ConstantValue, aF107AConstantValue, aKpConstantValue, anEarthFrameSPtr, anEarthRadius, anEarthFlattening, aSunCelestialSPtr
+            );
+        }
+        else if (anInputDataSourceType == Earth::InputDataSourceType::SpaceWeatherFile)
+        {
+            return std::make_unique<NRLMSISE00Impl>(
+                aType, anInputDataSourceType, NRLMSISE00::InputDataSourceType::SpaceWeatherFile, aF107ConstantValue, aF107AConstantValue, aKpConstantValue, anEarthFrameSPtr, anEarthRadius, anEarthFlattening, aSunCelestialSPtr
+            );
+        }
     }
 
     throw ostk::core::error::runtime::Wrong("Type");
