@@ -82,11 +82,11 @@ Directory Manager::getFinals2000ADirectory() const
     return Directory::Path(localRepository_.getPath() + Path::Parse("finals-2000A"));
 }
 
-BulletinA Manager::getBulletinA() const
+BulletinA Manager::getBulletinA()
 {
     std::lock_guard<std::mutex> lock {mutex_};
 
-    const BulletinA* bulletinAPtr = const_cast<Manager*>(this)->accessBulletinA();
+    const BulletinA* bulletinAPtr = this->accessBulletinA();
 
     if (bulletinAPtr != nullptr)
     {
@@ -96,11 +96,11 @@ BulletinA Manager::getBulletinA() const
     throw ostk::core::error::RuntimeError("Cannot obtain Bulletin A.");
 }
 
-Finals2000A Manager::getFinals2000A() const
+Finals2000A Manager::getFinals2000A()
 {
     std::lock_guard<std::mutex> lock {mutex_};
 
-    const Finals2000A* finals2000aPtr = const_cast<Manager*>(this)->accessFinals2000A();
+    const Finals2000A* finals2000aPtr = this->accessFinals2000A();
 
     if (finals2000aPtr != nullptr)
     {
@@ -110,7 +110,7 @@ Finals2000A Manager::getFinals2000A() const
     throw ostk::core::error::RuntimeError("Cannot obtain Finals 2000A.");
 }
 
-Vector2d Manager::getPolarMotionAt(const Instant& anInstant) const
+Vector2d Manager::getPolarMotionAt(const Instant& anInstant)
 {
     if (!anInstant.isDefined())
     {
@@ -126,7 +126,7 @@ Vector2d Manager::getPolarMotionAt(const Instant& anInstant) const
     //
     // https://hpiers.obspm.fr/eoppc/bul/bulb/explanatory.html
     
-    const BulletinA* bulletinAPtr = const_cast<Manager*>(this)->accessBulletinA();
+    const BulletinA* bulletinAPtr = this->accessBulletinA();
 
     if (bulletinAPtr != nullptr)
     {
@@ -144,7 +144,7 @@ Vector2d Manager::getPolarMotionAt(const Instant& anInstant) const
         }
     }
 
-    const Finals2000A* finals2000aPtr = const_cast<Manager*>(this)->accessFinals2000A();
+    const Finals2000A* finals2000aPtr = this->accessFinals2000A();
 
     if (finals2000aPtr != nullptr)
     {
@@ -163,7 +163,7 @@ Vector2d Manager::getPolarMotionAt(const Instant& anInstant) const
     return Vector2d::Undefined();
 }
 
-Real Manager::getUt1MinusUtcAt(const Instant& anInstant) const
+Real Manager::getUt1MinusUtcAt(const Instant& anInstant)
 {
     if (!anInstant.isDefined())
     {
@@ -179,7 +179,7 @@ Real Manager::getUt1MinusUtcAt(const Instant& anInstant) const
     //
     // https://hpiers.obspm.fr/eoppc/bul/bulb/explanatory.html
 
-    const BulletinA* bulletinAPtr = const_cast<Manager*>(this)->accessBulletinA();
+    const BulletinA* bulletinAPtr = this->accessBulletinA();
 
     if (bulletinAPtr)
     {
@@ -197,7 +197,7 @@ Real Manager::getUt1MinusUtcAt(const Instant& anInstant) const
         }
     }
 
-    const Finals2000A* finals2000aPtr = const_cast<Manager*>(this)->accessFinals2000A();
+    const Finals2000A* finals2000aPtr = this->accessFinals2000A();
 
     if (finals2000aPtr)
     {
@@ -209,7 +209,7 @@ Real Manager::getUt1MinusUtcAt(const Instant& anInstant) const
     return Real::Undefined();
 }
 
-Real Manager::getLodAt(const Instant& anInstant) const
+Real Manager::getLodAt(const Instant& anInstant)
 {
     if (!anInstant.isDefined())
     {
@@ -218,7 +218,7 @@ Real Manager::getLodAt(const Instant& anInstant) const
 
     std::lock_guard<std::mutex> lock {mutex_};
 
-    const Finals2000A* finals2000aPtr = const_cast<Manager*>(this)->accessFinals2000A();
+    const Finals2000A* finals2000aPtr = this->accessFinals2000A();
 
     if (finals2000aPtr != nullptr)
     {
@@ -297,6 +297,7 @@ void Manager::reset()
     std::lock_guard<std::mutex> lock {mutex_};
 
     bulletinA_ = BulletinA::Undefined();
+    //std::cout << bulletinA_ << std::endl;
     finals2000A_ = Finals2000A::Undefined();
 }
 
@@ -397,6 +398,7 @@ const BulletinA* Manager::accessBulletinA()
     // If set to automatic, try to load or fetch the latest file
     if (mode_ == Manager::Mode::Automatic)
     {
+        std::cout << "in auto load fetch fun" << std::endl;
         // Try from file
         File localBulletinAFile = File::Undefined();
 
@@ -419,16 +421,16 @@ const BulletinA* Manager::accessBulletinA()
             if (bulletinARemoteUpdateTimestamp > bulletinALocalUpdateTimestamp)
             {
                 // if the remote file is newer, fetch it
-                localBulletinAFile = const_cast<Manager*>(this)->fetchLatestBulletinA_();
+                localBulletinAFile = this->fetchLatestBulletinA_();
             }
         }
         else
         {
             // if it doesn't exist, fetch latest from remote
-            localBulletinAFile = const_cast<Manager*>(this)->fetchLatestBulletinA_();
+            localBulletinAFile = this->fetchLatestBulletinA_();
         }
 
-        const_cast<Manager*>(this)->loadBulletinA_(BulletinA::Load(localBulletinAFile));
+        this->loadBulletinA_(BulletinA::Load(localBulletinAFile));
 
         return &bulletinA_;
     }
@@ -474,16 +476,16 @@ const Finals2000A* Manager::accessFinals2000A()
             if (finals2000ARemoteUpdateTimestamp > finals2000ALocalUpdateTimestamp)
             {
                 // if the remote file is newer, fetch it
-                localFinals2000AFile = const_cast<Manager*>(this)->fetchLatestFinals2000A_();
+                localFinals2000AFile = this->fetchLatestFinals2000A_();
             }
         }
         else
         {
             // if it doesn't exist, fetch latest from remote
-            localFinals2000AFile = const_cast<Manager*>(this)->fetchLatestFinals2000A_();
+            localFinals2000AFile = this->fetchLatestFinals2000A_();
         }
 
-        const_cast<Manager*>(this)->loadFinals2000A_(Finals2000A::Load(localFinals2000AFile));
+        this->loadFinals2000A_(Finals2000A::Load(localFinals2000AFile));
 
         return &finals2000A_;
     }
