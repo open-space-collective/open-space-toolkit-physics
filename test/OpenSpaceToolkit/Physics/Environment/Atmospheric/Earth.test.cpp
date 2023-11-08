@@ -44,11 +44,31 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Constructor)
     }
 
     {
-        EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(EarthAtmosphericModel::Type::Exponential));
+        EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(EarthAtmosphericModel::Type::Exponential, EarthAtmosphericModel::InputDataSourceType::Undefined));
     }
 
     {
         EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(EarthAtmosphericModel::Type::NRLMSISE00));
+    }
+
+    {
+        EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(EarthAtmosphericModel::Type::NRLMSISE00, EarthAtmosphericModel::InputDataSourceType::SpaceWeatherFile));
+    }
+
+    {
+        EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(EarthAtmosphericModel::Type::NRLMSISE00, EarthAtmosphericModel::InputDataSourceType::ConstantFluxAndGeoMag, 150.0, 150.0, 3.0));
+    }
+
+    {
+        EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(EarthAtmosphericModel::Type::NRLMSISE00, EarthAtmosphericModel::InputDataSourceType::ConstantFluxAndGeoMag, 150.0, 150.0, 3.0, Frame::ITRF()));
+    }
+
+    {
+        EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(EarthAtmosphericModel::Type::NRLMSISE00, EarthAtmosphericModel::InputDataSourceType::ConstantFluxAndGeoMag));
+    }
+
+    {
+        EXPECT_ANY_THROW(EarthAtmosphericModel earthAtmosphericModel(EarthAtmosphericModel::Type::NRLMSISE00, EarthAtmosphericModel::InputDataSourceType::Undefined));
     }
 }
 
@@ -98,6 +118,30 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetType)
         EXPECT_EQ(
             EarthAtmosphericModel::Type::NRLMSISE00,
             EarthAtmosphericModel(EarthAtmosphericModel::Type::NRLMSISE00).getType()
+        );
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetInputDataSourceType)
+{
+    {
+        EXPECT_EQ(
+            EarthAtmosphericModel::InputDataSourceType::Undefined,
+            EarthAtmosphericModel(EarthAtmosphericModel::Type::Exponential, EarthAtmosphericModel::InputDataSourceType::Undefined).getInputDataSourceType()
+        );
+    }
+
+    {
+        EXPECT_EQ(
+            EarthAtmosphericModel::InputDataSourceType::SpaceWeatherFile,
+            EarthAtmosphericModel(EarthAtmosphericModel::Type::NRLMSISE00, EarthAtmosphericModel::InputDataSourceType::SpaceWeatherFile).getInputDataSourceType()
+        );
+    }
+
+    {
+        EXPECT_EQ(
+            EarthAtmosphericModel::InputDataSourceType::ConstantFluxAndGeoMag,
+            EarthAtmosphericModel(EarthAtmosphericModel::Type::NRLMSISE00, EarthAtmosphericModel::InputDataSourceType::ConstantFluxAndGeoMag).getInputDataSourceType()
         );
     }
 }
@@ -248,24 +292,29 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_LLA)
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Frames)
 {
     {
-        static const Array<Tuple<EarthAtmosphericModel::Type, LLA, Instant, Real>> testCases = {
+        static const Array<Tuple<EarthAtmosphericModel::Type, EarthAtmosphericModel::InputDataSourceType, LLA, Instant, Real>> testCases = {
             {EarthAtmosphericModel::Type::Exponential,
+             EarthAtmosphericModel::InputDataSourceType::Undefined,
              LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(123.0)),
              Instant::J2000(),
              1e-13},
             {EarthAtmosphericModel::Type::Exponential,
+             EarthAtmosphericModel::InputDataSourceType::Undefined,
              LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(499.0)),
              Instant::J2000(),
              1e-15},
             {EarthAtmosphericModel::Type::Exponential,
+             EarthAtmosphericModel::InputDataSourceType::Undefined,
              LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(501.0)),
              Instant::J2000(),
              1e-15},
             {EarthAtmosphericModel::Type::Exponential,
+             EarthAtmosphericModel::InputDataSourceType::Undefined,
              LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(550.0)),
              Instant::J2000(),
              1e-15},
             {EarthAtmosphericModel::Type::NRLMSISE00,
+             EarthAtmosphericModel::InputDataSourceType::SpaceWeatherFile,
              LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Kilometers(500.0)),
              Instant::DateTime(DateTime::Parse("2021-01-01 00:00:00"), Scale::UTC),
              3.7e-15}
@@ -273,7 +322,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Frames
 
         for (const auto& testCase : testCases)
         {
-            const LLA lla = std::get<1>(testCase);
+            const LLA lla = std::get<2>(testCase);
 
             const Position positionITRF = {
                 lla.toCartesian(
@@ -283,11 +332,25 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Frames
                 Frame::ITRF()
             };
 
-            const EarthAtmosphericModel earthAtmosphericModelITRF = {std::get<0>(testCase), Frame::ITRF()};
-            const EarthAtmosphericModel earthAtmosphericModelTEME = {std::get<0>(testCase), Frame::TEME()};
+            const EarthAtmosphericModel earthAtmosphericModelITRF = {
+                std::get<0>(testCase),
+                std::get<1>(testCase),
+                150.0,
+                150.0,
+                3.0,
+                Frame::ITRF()
+            };
+            const EarthAtmosphericModel earthAtmosphericModelTEME = {
+                std::get<0>(testCase),
+                std::get<1>(testCase),
+                150.0,
+                150.0,
+                3.0,
+                Frame::TEME()
+            };
 
-            const Instant instant = std::get<2>(testCase);
-            const Real tolerance = std::get<3>(testCase);
+            const Instant instant = std::get<3>(testCase);
+            const Real tolerance = std::get<4>(testCase);
 
             const Real densityITRF = earthAtmosphericModelITRF.getDensityAt(positionITRF, instant);
             const Real densityTEME = earthAtmosphericModelTEME.getDensityAt(positionITRF, instant);
@@ -302,12 +365,14 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Frames
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Solar)
 {
     {
-        static const Array<Tuple<EarthAtmosphericModel::Type, LLA, Instant, Real>> testCases = {
+        static const Array<Tuple<EarthAtmosphericModel::Type, EarthAtmosphericModel::InputDataSourceType, LLA, Instant, Real>> testCases = {
             {EarthAtmosphericModel::Type::NRLMSISE00,
+             EarthAtmosphericModel::InputDataSourceType::SpaceWeatherFile,
              LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(350.0)),
              Instant::DateTime(DateTime::Parse("2021-01-01 00:00:00"), Scale::UTC),
              1e-15},
             {EarthAtmosphericModel::Type::NRLMSISE00,
+             EarthAtmosphericModel::InputDataSourceType::SpaceWeatherFile,
              LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Kilometers(300.0)),
              Instant::DateTime(DateTime::Parse("2021-01-01 00:00:00"), Scale::UTC),
              1e-15}
@@ -315,7 +380,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Solar)
 
         for (const auto& testCase : testCases)
         {
-            const LLA lla = std::get<1>(testCase);
+            const LLA lla = std::get<2>(testCase);
 
             const Position position = {
                 lla.toCartesian(
@@ -327,6 +392,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Solar)
 
             const EarthAtmosphericModel earthAtmosphericModelSun = {
                 std::get<0>(testCase),
+                std::get<1>(testCase),
+                Real::Undefined(),
+                Real::Undefined(),
+                Real::Undefined(),
                 Frame::ITRF(),
                 EarthGravitationalModel::EGM2008.equatorialRadius_,
                 EarthGravitationalModel::EGM2008.flattening_,
@@ -335,13 +404,17 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Solar)
 
             const EarthAtmosphericModel earthAtmosphericModelNoSun = {
                 std::get<0>(testCase),
+                std::get<1>(testCase),
+                Real::Undefined(),
+                Real::Undefined(),
+                Real::Undefined(),
                 Frame::ITRF(),
                 EarthGravitationalModel::EGM2008.equatorialRadius_,
                 EarthGravitationalModel::EGM2008.flattening_
             };
 
-            const Instant instant = std::get<2>(testCase);
-            const Real tolerance = std::get<3>(testCase);
+            const Instant instant = std::get<3>(testCase);
+            const Real tolerance = std::get<4>(testCase);
 
             const Real densitySun = earthAtmosphericModelSun.getDensityAt(position, instant);
             const Real densityNoSun = earthAtmosphericModelNoSun.getDensityAt(position, instant);

@@ -12,6 +12,7 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp>
@@ -51,6 +52,7 @@ using ostk::physics::env::obj::celest::Sun;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 
 using ostk::physics::environment::atmospheric::earth::CSSISpaceWeather;
+using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
 using ostk::physics::environment::atmospheric::earth::Manager;
 
 // Expose protected members for testing
@@ -58,15 +60,20 @@ class NRLMSISE00Public : public NRLMSISE00
 {
    public:
     NRLMSISE00Public(
+        const NRLMSISE00::InputDataSourceType& anInputDataSourceType = NRLMSISE00::InputDataSourceType::SpaceWeatherFile,
+        const Real& aF107ConstantValue = Real::Undefined(),
+        const Real& aF107AConstantValue = Real::Undefined(),
+        const Real& aKpConstantValue = Real::Undefined(),
         const Shared<const Frame>& anEarthFrameSPtr = Frame::ITRF(),
         const Length& anEarthRadius = EarthGravitationalModel::WGS84.equatorialRadius_,
         const Real& anEarthFlattening = EarthGravitationalModel::WGS84.flattening_,
         const Shared<Celestial>& aSunCelestialSPtr = nullptr
     )
-        : NRLMSISE00(anEarthFrameSPtr, anEarthRadius, anEarthFlattening, aSunCelestialSPtr)
+        : NRLMSISE00(anInputDataSourceType, aF107ConstantValue, aF107AConstantValue, aKpConstantValue, anEarthFrameSPtr, anEarthRadius, anEarthFlattening, aSunCelestialSPtr)
     {
     }
 
+    using NRLMSISE00::convertKpToAp;
     using NRLMSISE00::computeApArray;
     using NRLMSISE00::computeNRLMSISE00Input;
     using NRLMSISE00::nrlmsise_input;
@@ -78,6 +85,14 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Construc
 {
     {
         EXPECT_NO_THROW(NRLMSISE00 nrlmsise = {});
+    }
+
+    {
+        EXPECT_NO_THROW(NRLMSISE00 nrlmsise = {NRLMSISE00::InputDataSourceType::SpaceWeatherFile});
+    }
+
+    {
+        EXPECT_NO_THROW(NRLMSISE00 nrlmsise = {NRLMSISE00::InputDataSourceType::ConstantFluxAndGeoMag});
     }
 }
 
@@ -96,6 +111,104 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, IsDefine
         const NRLMSISE00 nrlmsise = {};
 
         EXPECT_TRUE(nrlmsise.isDefined());
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Getters)
+{
+    {
+        NRLMSISE00::InputDataSourceType inputDataSourceType = NRLMSISE00::InputDataSourceType::ConstantFluxAndGeoMag;
+        Real f107ConstantValue = 200.0;
+        Real f107AConstantValue = 205.0;
+        Real kpConstantValue = 3.0;
+
+        NRLMSISE00 nrlmsise = {
+            inputDataSourceType,
+            f107ConstantValue,
+            f107AConstantValue,
+            kpConstantValue
+        };
+
+        EXPECT_EQ(inputDataSourceType, nrlmsise.getInputDataSourceType());
+        EXPECT_EQ(f107ConstantValue, nrlmsise.getF107ConstantValue());
+        EXPECT_EQ(f107AConstantValue, nrlmsise.getF107AConstantValue());
+        EXPECT_EQ(kpConstantValue, nrlmsise.getKpConstantValue());
+    }
+
+    {
+        NRLMSISE00::InputDataSourceType inputDataSourceType = NRLMSISE00::InputDataSourceType::SpaceWeatherFile;
+        Real f107ConstantValue = 200.0;
+        Real f107AConstantValue = 205.0;
+        Real kpConstantValue = 3.0;
+
+        NRLMSISE00 nrlmsise = {
+            inputDataSourceType,
+            f107ConstantValue,
+            f107AConstantValue,
+            kpConstantValue
+        };
+
+        EXPECT_EQ(inputDataSourceType, nrlmsise.getInputDataSourceType());
+        EXPECT_EQ(f107ConstantValue, nrlmsise.getF107ConstantValue());
+        EXPECT_EQ(f107AConstantValue, nrlmsise.getF107AConstantValue());
+        EXPECT_EQ(kpConstantValue, nrlmsise.getKpConstantValue());
+    }
+
+    {
+        NRLMSISE00::InputDataSourceType inputDataSourceType = NRLMSISE00::InputDataSourceType::SpaceWeatherFile;
+
+        NRLMSISE00 nrlmsise = {
+            inputDataSourceType
+        };
+
+        EXPECT_EQ(inputDataSourceType, nrlmsise.getInputDataSourceType());
+        EXPECT_EQ(EarthAtmosphericModel::defaultF107ConstantValue, nrlmsise.getF107ConstantValue());
+        EXPECT_EQ(EarthAtmosphericModel::defaultF107AConstantValue, nrlmsise.getF107AConstantValue());  // TBI: Make these static default var
+        EXPECT_EQ(EarthAtmosphericModel::defaultKpConstantValue, nrlmsise.getKpConstantValue());
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ConvertKpToAp)
+{
+    {
+        EXPECT_EQ(NRLMSISE00Public::convertKpToAp(-1.6), 1.0);
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeAPArrayConstantFluxAndGeoMag)
+{
+    /*
+     * This test is to confirm that we compute fixed values for AP solar index values when using constant flux input data source type.
+     */
+
+    {
+        NRLMSISE00Public::InputDataSourceType inputDataSourceType = NRLMSISE00Public::InputDataSourceType::ConstantFluxAndGeoMag;
+        Real f107ConstantValue = 200.0;
+        Real f107AConstantValue = 205.0;
+        Real kpConstantValue = -1.6;
+
+        NRLMSISE00Public nrlmsise = {
+            inputDataSourceType,
+            f107ConstantValue,
+            f107AConstantValue,
+            kpConstantValue
+        };
+
+        Array<Instant> instants = {
+            Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC),
+            Instant::DateTime(DateTime(2020, 1, 2, 0, 0, 0), Scale::UTC),
+            Instant::DateTime(DateTime(2024, 1, 2, 0, 0, 0), Scale::UTC),
+        };
+
+        for (const auto& instant: instants)
+        {
+            Unique<NRLMSISE00Public::ap_array> apArray = nrlmsise.computeApArray(instant);
+
+            for (Index i = 0; i < 7; i++)
+            {
+                EXPECT_EQ(apArray->a[i], 1.0);
+            }
+        }
     }
 }
 
@@ -315,6 +428,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
         Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
 
         const NRLMSISE00 nrlmsise = {
+            NRLMSISE00::InputDataSourceType::SpaceWeatherFile,
+            Real::Undefined(),
+            Real::Undefined(),
+            Real::Undefined(),
             Frame::ITRF(),
             EarthGravitationalModel::WGS84.equatorialRadius_,
             EarthGravitationalModel::WGS84.flattening_,
@@ -373,6 +490,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
 
     {
         const NRLMSISE00 nrlmsise = {
+            NRLMSISE00::InputDataSourceType::SpaceWeatherFile,
+            Real::Undefined(),
+            Real::Undefined(),
+            Real::Undefined(),
             Frame::ITRF(), EarthGravitationalModel::WGS84.equatorialRadius_, EarthGravitationalModel::WGS84.flattening_
         };
 
@@ -436,6 +557,10 @@ TEST(
         Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
 
         const NRLMSISE00 nrlmsise = {
+            NRLMSISE00::InputDataSourceType::SpaceWeatherFile,
+            Real::Undefined(),
+            Real::Undefined(),
+            Real::Undefined(),
             Frame::ITRF(),
             EarthGravitationalModel::WGS84.equatorialRadius_,
             EarthGravitationalModel::WGS84.flattening_,
@@ -503,6 +628,10 @@ TEST(
         Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
 
         const NRLMSISE00 nrlmsise = {
+            NRLMSISE00::InputDataSourceType::SpaceWeatherFile,
+            Real::Undefined(),
+            Real::Undefined(),
+            Real::Undefined(),
             Frame::ITRF(),
             EarthGravitationalModel::WGS84.equatorialRadius_,
             EarthGravitationalModel::WGS84.flattening_,
@@ -620,6 +749,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, OrekitGe
     {
         Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
         const NRLMSISE00Public nrlmsise = {
+            NRLMSISE00::InputDataSourceType::SpaceWeatherFile,
+            Real::Undefined(),
+            Real::Undefined(),
+            Real::Undefined(),
             Frame::ITRF(),
             EarthGravitationalModel::WGS84.equatorialRadius_,
             EarthGravitationalModel::WGS84.flattening_,
@@ -700,6 +833,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, OrekitGe
     {
         Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
         const NRLMSISE00Public nrlmsise = {
+            NRLMSISE00::InputDataSourceType::SpaceWeatherFile,
+            Real::Undefined(),
+            Real::Undefined(),
+            Real::Undefined(),
             Frame::ITRF(),
             EarthGravitationalModel::WGS84.equatorialRadius_,
             EarthGravitationalModel::WGS84.flattening_,
@@ -777,6 +914,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, OrekitGe
     {
         Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
         const NRLMSISE00Public nrlmsise = {
+            NRLMSISE00::InputDataSourceType::SpaceWeatherFile,
+            Real::Undefined(),
+            Real::Undefined(),
+            Real::Undefined(),
             Frame::ITRF(),
             EarthGravitationalModel::WGS84.equatorialRadius_,
             EarthGravitationalModel::WGS84.flattening_,
@@ -809,6 +950,40 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, OrekitGe
             EXPECT_TRUE(absoluteError < absoluteTolerate || percentError < percentTolerance) << String::Format(
                 "{} ≈ {} Δ {} [{}%] [T]", density.toString(), referenceDensity.toString(), absoluteError, percentError
             );
+        }
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensityConstantFluxAndGeoMagInputDataSourceType)
+{
+    /*
+     * This test verifies that for a given position the density is the same for all instants for ConstantFluxAndGeoMag Inpout Data Source Type.
+     */
+    {
+        NRLMSISE00::InputDataSourceType inputDataSourceType = NRLMSISE00::InputDataSourceType::ConstantFluxAndGeoMag;
+        Real f107ConstantValue = 200.0;
+        Real f107AConstantValue = 205.0;
+        Real kpConstantValue = -1.6;
+
+        NRLMSISE00 nrlmsise = {
+            inputDataSourceType,
+            f107ConstantValue,
+            f107AConstantValue,
+            kpConstantValue
+        };
+
+        Array<Instant> instants = {
+            Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC),
+            Instant::DateTime(DateTime(2020, 1, 2, 0, 0, 0), Scale::UTC),
+            Instant::DateTime(DateTime(2024, 1, 2, 0, 0, 0), Scale::UTC),
+        };
+
+        LLA lla = {Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(123.0)};
+
+        for (const auto& instant: instants)
+        {
+            Real density = nrlmsise.getDensityAt(lla, instant);
+            EXPECT_TRUE(1.16099e-08 - density <= 1e-12);  // Always the same value
         }
     }
 }
