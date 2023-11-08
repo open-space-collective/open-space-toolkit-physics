@@ -85,7 +85,6 @@ bool NRLMSISE00::isDefined() const
 
 Unique<NRLMSISE00::ap_array> NRLMSISE00::computeApArray(const Instant& anInstant) const
 {
-
     Unique<NRLMSISE00::ap_array> outputStruct = std::make_unique<NRLMSISE00::ap_array>();
 
     switch (this->inputDataSourceType_)
@@ -197,7 +196,6 @@ Unique<NRLMSISE00::nrlmsise_input> NRLMSISE00::computeNRLMSISE00Input(
     const Unique<NRLMSISE00::ap_array>& apValues, const LLA& aLLA, const Instant& anInstant
 ) const
 {
-
     Real f107Previous = Real::Undefined();
     Real f107Average = Real::Undefined();
 
@@ -301,7 +299,6 @@ NRLMSISE00::InputDataSourceType NRLMSISE00::getInputDataSourceType() const
 
 Real NRLMSISE00::getF107ConstantValue() const
 {
-
     return this->f107ConstantValue_;
 }
 

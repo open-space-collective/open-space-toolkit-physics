@@ -45,7 +45,6 @@ using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth
 class Earth : public Model
 {
    public:
-
     enum class Type
     {
         Undefined,    ///< Undefined
@@ -55,9 +54,9 @@ class Earth : public Model
 
     enum class InputDataSourceType
     {
-        Undefined,               ///< Undefined
-        ConstantFluxAndGeoMag,   ///< Use constant values for F10.7, F10.7a and Kp NRLMSISE00 input parameters
-        SpaceWeatherFile,        ///< Use historical and predicted values for F10.7, F10.7a and Kp NRLMSISE00 input parameters
+        Undefined,              ///< Undefined
+        ConstantFluxAndGeoMag,  ///< Use constant values for F10.7, F10.7a and Kp NRLMSISE00 input parameters
+        SpaceWeatherFile,  ///< Use historical and predicted values for F10.7, F10.7a and Kp NRLMSISE00 input parameters
     };
 
     /// @brief              Constructor
@@ -141,9 +140,9 @@ class Earth : public Model
 
     Real getDensityAt(const LLA& aLLA, const Instant& anInstant) const;
 
-    static constexpr double defaultF107ConstantValue = 150.0;  // 10⁻²² W⋅m⁻²⋅Hz⁻¹
+    static constexpr double defaultF107ConstantValue = 150.0;   // 10⁻²² W⋅m⁻²⋅Hz⁻¹
     static constexpr double defaultF107AConstantValue = 150.0;  // 10⁻²² W⋅m⁻²⋅Hz⁻¹
-    static constexpr double defaultKpConstantValue = 3.0;  // dimensionless
+    static constexpr double defaultKpConstantValue = 3.0;       // dimensionless
 
    private:
     Earth();
