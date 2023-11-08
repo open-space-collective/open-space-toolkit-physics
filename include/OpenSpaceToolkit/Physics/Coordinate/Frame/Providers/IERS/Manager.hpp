@@ -220,15 +220,15 @@ class Manager
 
     Manager(const Manager::Mode& aMode = Manager::DefaultMode());
 
-    bool isLocalRepositoryLocked() const;
+    bool isLocalRepositoryLocked_() const;
 
-    File getLocalRepositoryLockFile() const;
+    File getLocalRepositoryLockFile_() const;
 
-    const BulletinA* accessBulletinA() const;
+    const BulletinA* accessBulletinA_() const;
 
-    const Finals2000A* accessFinals2000A() const;
+    const Finals2000A* accessFinals2000A_() const;
 
-    void setup();
+    void setup_();
 
     void loadBulletinA_(const BulletinA& aBulletinA) const;
 
@@ -238,9 +238,9 @@ class Manager
 
     File fetchLatestFinals2000A_() const;
 
-    void lockLocalRepository(const Duration& aTimeout) const;
+    void lockLocalRepository_(const Duration& aTimeout) const;
 
-    void unlockLocalRepository() const;
+    void unlockLocalRepository_() const;
 };
 
 }  // namespace iers

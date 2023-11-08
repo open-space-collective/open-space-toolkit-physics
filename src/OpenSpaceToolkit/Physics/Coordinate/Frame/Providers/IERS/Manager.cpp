@@ -86,7 +86,7 @@ BulletinA Manager::getBulletinA() const
 {
     std::lock_guard<std::mutex> lock {mutex_};
 
-    const BulletinA* bulletinAPtr = accessBulletinA();
+    const BulletinA* bulletinAPtr = accessBulletinA_();
 
     if (bulletinAPtr != nullptr)
     {
@@ -100,7 +100,7 @@ Finals2000A Manager::getFinals2000A() const
 {
     std::lock_guard<std::mutex> lock {mutex_};
 
-    const Finals2000A* finals2000aPtr = accessFinals2000A();
+    const Finals2000A* finals2000aPtr = accessFinals2000A_();
 
     if (finals2000aPtr != nullptr)
     {
@@ -126,7 +126,7 @@ Vector2d Manager::getPolarMotionAt(const Instant& anInstant) const
     //
     // https://hpiers.obspm.fr/eoppc/bul/bulb/explanatory.html
 
-    const BulletinA* bulletinAPtr = this->accessBulletinA();
+    const BulletinA* bulletinAPtr = this->accessBulletinA_();
 
     if (bulletinAPtr != nullptr)
     {
@@ -144,7 +144,7 @@ Vector2d Manager::getPolarMotionAt(const Instant& anInstant) const
         }
     }
 
-    const Finals2000A* finals2000aPtr = this->accessFinals2000A();
+    const Finals2000A* finals2000aPtr = this->accessFinals2000A_();
 
     if (finals2000aPtr != nullptr)
     {
@@ -179,7 +179,7 @@ Real Manager::getUt1MinusUtcAt(const Instant& anInstant) const
     //
     // https://hpiers.obspm.fr/eoppc/bul/bulb/explanatory.html
 
-    const BulletinA* bulletinAPtr = this->accessBulletinA();
+    const BulletinA* bulletinAPtr = this->accessBulletinA_();
 
     if (bulletinAPtr)
     {
@@ -197,7 +197,7 @@ Real Manager::getUt1MinusUtcAt(const Instant& anInstant) const
         }
     }
 
-    const Finals2000A* finals2000aPtr = this->accessFinals2000A();
+    const Finals2000A* finals2000aPtr = this->accessFinals2000A_();
 
     if (finals2000aPtr)
     {
@@ -218,7 +218,7 @@ Real Manager::getLodAt(const Instant& anInstant) const
 
     std::lock_guard<std::mutex> lock {mutex_};
 
-    const Finals2000A* finals2000aPtr = this->accessFinals2000A();
+    const Finals2000A* finals2000aPtr = this->accessFinals2000A_();
 
     if (finals2000aPtr != nullptr)
     {
@@ -304,7 +304,7 @@ void Manager::clearLocalRepository()
 {
     localRepository_.remove();
 
-    this->setup();
+    this->setup_();
 }
 
 Manager& Manager::Get()
@@ -378,15 +378,15 @@ Manager::Manager(const Manager::Mode& aMode)
       bulletinA_(BulletinA::Undefined()),
       finals2000A_(Finals2000A::Undefined())
 {
-    this->setup();
+    this->setup_();
 }
 
-bool Manager::isLocalRepositoryLocked() const
+bool Manager::isLocalRepositoryLocked_() const
 {
-    return this->getLocalRepositoryLockFile().exists();
+    return this->getLocalRepositoryLockFile_().exists();
 }
 
-const BulletinA* Manager::accessBulletinA() const
+const BulletinA* Manager::accessBulletinA_() const
 {
     // If we've loaded a file, simply return it
     if (bulletinA_.isDefined())
@@ -440,7 +440,7 @@ const BulletinA* Manager::accessBulletinA() const
     }
 }
 
-const Finals2000A* Manager::accessFinals2000A() const
+const Finals2000A* Manager::accessFinals2000A_() const
 {
     // If we've loaded a file, simply return it
     if (finals2000A_.isDefined())
@@ -495,12 +495,12 @@ const Finals2000A* Manager::accessFinals2000A() const
     }
 }
 
-File Manager::getLocalRepositoryLockFile() const
+File Manager::getLocalRepositoryLockFile_() const
 {
     return File::Path(localRepository_.getPath() + Path::Parse(".lock"));
 }
 
-void Manager::setup()
+void Manager::setup_()
 {
     if (!localRepository_.exists())
     {
@@ -537,7 +537,7 @@ File Manager::fetchLatestBulletinA_() const
     Directory temporaryDirectory =
         Directory::Path(this->getBulletinADirectory().getPath() + Path::Parse(temporaryDirectoryName));
 
-    this->lockLocalRepository(localRepositoryLockTimeout_);
+    this->lockLocalRepository_(localRepositoryLockTimeout_);
 
     const URL latestBulletinAUrl = manifestManager.getRemoteUrl() + bulletinARemotePath + bulletinAFileName;
 
@@ -592,7 +592,7 @@ File Manager::fetchLatestBulletinA_() const
 
         temporaryDirectory.remove();
 
-        this->unlockLocalRepository();
+        this->unlockLocalRepository_();
 
         std::cout << String::Format(
                          "Bulletin A [{}] has been successfully fetched from [{}].",
@@ -621,7 +621,7 @@ File Manager::fetchLatestBulletinA_() const
             temporaryDirectory.remove();
         }
 
-        this->unlockLocalRepository();
+        this->unlockLocalRepository_();
 
         throw;
     }
@@ -638,7 +638,7 @@ File Manager::fetchLatestFinals2000A_() const
     Directory temporaryDirectory =
         Directory::Path(this->getFinals2000ADirectory().getPath() + Path::Parse(temporaryDirectoryName));
 
-    this->lockLocalRepository(localRepositoryLockTimeout_);
+    this->lockLocalRepository_(localRepositoryLockTimeout_);
 
     const URL latestFinals2000AUrl = manifestManager.getRemoteUrl() + finals2000ARemotePath + finals2000AFileName;
 
@@ -696,7 +696,7 @@ File Manager::fetchLatestFinals2000A_() const
 
         temporaryDirectory.remove();
 
-        this->unlockLocalRepository();
+        this->unlockLocalRepository_();
 
         std::cout << String::Format(
                          "Finals 2000A [{}] has been successfully fetched from [{}].",
@@ -725,7 +725,7 @@ File Manager::fetchLatestFinals2000A_() const
             temporaryDirectory.remove();
         }
 
-        this->unlockLocalRepository();
+        this->unlockLocalRepository_();
 
         throw;
     }
@@ -733,7 +733,7 @@ File Manager::fetchLatestFinals2000A_() const
     return latestFinals2000AFile;
 }
 
-void Manager::lockLocalRepository(const Duration& aTimeout) const
+void Manager::lockLocalRepository_(const Duration& aTimeout) const
 {
     std::cout << String::Format("Locking local repository [{}]...", localRepository_.toString()) << std::endl;
 
@@ -760,7 +760,7 @@ void Manager::lockLocalRepository(const Duration& aTimeout) const
 
     const Instant timeoutInstant = Instant::Now() + aTimeout;
 
-    File lockFile = this->getLocalRepositoryLockFile();
+    File lockFile = this->getLocalRepositoryLockFile_();
 
     while (!tryLock(lockFile))
     {
@@ -773,16 +773,16 @@ void Manager::lockLocalRepository(const Duration& aTimeout) const
     }
 }
 
-void Manager::unlockLocalRepository() const
+void Manager::unlockLocalRepository_() const
 {
     std::cout << String::Format("Unlocking local repository [{}]...", localRepository_.toString()) << std::endl;
 
-    if (!this->isLocalRepositoryLocked())
+    if (!this->isLocalRepositoryLocked_())
     {
         throw ostk::core::error::RuntimeError("Cannot unlock local repository: lock file does not exist.");
     }
 
-    this->getLocalRepositoryLockFile().remove();
+    this->getLocalRepositoryLockFile_().remove();
 }
 
 }  // namespace iers
