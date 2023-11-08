@@ -12,6 +12,7 @@
 #include <OpenSpaceToolkit/Core/Types/Unique.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Objects/Celestial.hpp>
@@ -43,6 +44,7 @@ using ostk::physics::coord::spherical::LLA;
 using ostk::physics::coord::Frame;
 using ostk::physics::env::obj::Celestial;
 using ostk::physics::environment::atmospheric::Model;
+using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 
 /// @brief                      NRLMSISE00 atmospheric model
@@ -50,9 +52,20 @@ using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth
 class NRLMSISE00
 {
    public:
+
+    enum class InputDataSourceType
+    {
+        ConstantFluxAndGeoMag,   ///< Use constant values for F10.7, F10.7a and Kp NRLMSISE00 input parameters
+        SpaceWeatherFile,        ///< Use historical and predicted values for F10.7, F10.7a and Kp NRLMSISE00 input parameters
+    };
+
     /// @brief              Constructor
 
     NRLMSISE00(
+        const InputDataSourceType& anInputDataSourceType = InputDataSourceType::SpaceWeatherFile,
+        const Real& aF107ConstantValue = EarthAtmosphericModel::defaultF107ConstantValue,
+        const Real& af107aConstantValue = EarthAtmosphericModel::defaultF107AConstantValue,
+        const Real& aKpConstantValue = EarthAtmosphericModel::defaultKpConstantValue,
         const Shared<const Frame>& anEarthFrameSPtr = Frame::ITRF(),
         const Length& anEarthRadius = EarthGravitationalModel::WGS84.equatorialRadius_,
         const Real& anEarthFlattening = EarthGravitationalModel::WGS84.flattening_,
@@ -70,6 +83,30 @@ class NRLMSISE00
     /// @return             True if the NRLMSISE00 atmospheric model is defined
 
     bool isDefined() const;
+
+    /// @brief              Get the input data source type used to construct the NRLMSISE00 atmospheric model
+    ///
+    /// @return             NRLMSISE00 input data source type
+
+    InputDataSourceType getInputDataSourceType() const;
+
+    /// @brief              Get the constant value for F10.7 input parameter used to construct the NRLMSISE00 atmospheric model
+    ///
+    /// @return             Constant value for F10.7 input parameter
+
+    Real getF107ConstantValue() const;
+
+    /// @brief              Get the constant value for F10.7a input parameter used to construct the NRLMSISE00 atmospheric model
+    ///
+    /// @return             Constant value for F10.7a input parameter
+
+    Real getF107AConstantValue() const;
+
+    /// @brief              Get the constant value for Kp input parameter used to construct the NRLMSISE00 atmospheric model
+    ///
+    /// @return             Constant value for Kp input parameter
+
+    Real getKpConstantValue() const;
 
     /// @brief              Get the atmospheric density value at a given position and instant.
     ///
@@ -140,7 +177,18 @@ class NRLMSISE00
         const Unique<NRLMSISE00::ap_array>& apValues, const LLA& aLLA, const Instant& anInstant
     ) const;
 
+    /// @brief            Convert Kp index to Ap index
+    ///
+    /// @param            [in] aKp Kp index
+    /// @return           Ap index
+
+    static Real convertKpToAp(const Real& aKp);
+
    private:
+    InputDataSourceType inputDataSourceType_;
+    Real f107ConstantValue_;
+    Real f107AConstantValue_;
+    Real kpConstantValue_;
     Shared<const Frame> earthFrameSPtr_;
     Length earthRadius_;
     Real earthFlattening_;
