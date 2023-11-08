@@ -1,5 +1,6 @@
 /// Apache License 2.0
 
+#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Objects/Celestial.hpp>
 
@@ -15,21 +16,44 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_NRLMSISE00(p
     using ostk::physics::coord::Frame;
     using ostk::physics::coord::spherical::LLA;
     using ostk::physics::env::obj::Celestial;
+    using EarthGravityModel = ostk::physics::environment::gravitational::Earth;
+    // using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
     using ostk::physics::environment::atmospheric::earth::NRLMSISE00;
 
-    class_<NRLMSISE00, Shared<NRLMSISE00>>(aModule, "NRLMSISE00")
+    class_<NRLMSISE00, Shared<NRLMSISE00>> nrlmsise(aModule, "NRLMSISE00");
+
+    nrlmsise
 
         .def(
-            init<const Shared<const Frame>&, const Length&, const Real&, const Shared<Celestial>&>(),
+            init<
+                const NRLMSISE00::InputDataSourceType&,
+                const Real&,
+                const Real&,
+                const Real&,
+                const Shared<const Frame>&,
+                const Length&,
+                const Real&,
+                const Shared<Celestial>&>(),
+            arg("input_data_source_type"),
+            arg("f107_constant_value"),
+            arg("f107_average_constant_value"),
+            arg("kp_constant_value"),
             arg("earth_frame"),
             arg("earth_radius"),
             arg("earth_flattening"),
-            arg("sun_celestial") = nullptr
+            arg("sun_celestial")
         )
 
         .def("is_defined", &NRLMSISE00::isDefined)
 
+        .def("get_input_data_source_type", &NRLMSISE00::getInputDataSourceType)
+
         .def("get_density_at", &NRLMSISE00::getDensityAt, arg("lla"), arg("instant"))
 
         ;
+
+    enum_<NRLMSISE00::InputDataSourceType>(nrlmsise, "InputDataSourceType")
+
+        .value("ConstantFluxAndGeoMag", NRLMSISE00::InputDataSourceType::ConstantFluxAndGeoMag)
+        .value("SpaceWeatherFile", NRLMSISE00::InputDataSourceType::SpaceWeatherFile);
 }

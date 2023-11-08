@@ -99,7 +99,10 @@ class TestEarth:
                     20,
                     20,
                 ),
-                (EarthAtmosphericModel.Type.Exponential,),
+                (
+                    EarthAtmosphericModel.Type.Exponential,
+                    EarthAtmosphericModel.InputDataSourceType.Undefined,
+                ),
                 (EarthMagneticModel.Type.Dipole,),
             ),
             (
@@ -109,7 +112,10 @@ class TestEarth:
                     20,
                     20,
                 ),
-                (EarthAtmosphericModel.Type.Exponential,),
+                (
+                    EarthAtmosphericModel.Type.Exponential,
+                    EarthAtmosphericModel.InputDataSourceType.Undefined,
+                ),
                 (EarthMagneticModel.Type.Dipole,),
             ),
             (
@@ -119,7 +125,10 @@ class TestEarth:
                     20,
                     20,
                 ),
-                (EarthAtmosphericModel.Type.Exponential,),
+                (
+                    EarthAtmosphericModel.Type.Exponential,
+                    EarthAtmosphericModel.InputDataSourceType.Undefined,
+                ),
                 (EarthMagneticModel.Type.Dipole,),
             ),
             (
@@ -129,7 +138,10 @@ class TestEarth:
                     20,
                     20,
                 ),
-                (EarthAtmosphericModel.Type.Exponential,),
+                (
+                    EarthAtmosphericModel.Type.Exponential,
+                    EarthAtmosphericModel.InputDataSourceType.Undefined,
+                ),
                 (EarthMagneticModel.Type.Dipole,),
             ),
             (
@@ -137,12 +149,18 @@ class TestEarth:
                     EarthGravitationalModel.Type.WGS84,
                     Directory.undefined(),
                 ),
-                (EarthAtmosphericModel.Type.Exponential,),
+                (
+                    EarthAtmosphericModel.Type.Exponential,
+                    EarthAtmosphericModel.InputDataSourceType.Undefined,
+                ),
                 (EarthMagneticModel.Type.Dipole,),
             ),
             (
                 (EarthGravitationalModel.Type.Spherical, Directory.undefined()),
-                (EarthAtmosphericModel.Type.Exponential,),
+                (
+                    EarthAtmosphericModel.Type.Exponential,
+                    EarthAtmosphericModel.InputDataSourceType.Undefined,
+                ),
                 (EarthMagneticModel.Type.Dipole,),
             ),
         ),
@@ -165,7 +183,8 @@ class TestEarth:
             EarthGravitationalModel(EarthGravitationalModel.Type.EGM2008)
         ).is_defined()
         assert Earth.atmospheric_only(
-            EarthAtmosphericModel(EarthAtmosphericModel.Type.Exponential)
+            EarthAtmosphericModel(EarthAtmosphericModel.Type.Exponential,
+            EarthAtmosphericModel.InputDataSourceType.Undefined)
         ).is_defined()
         assert Earth.magnetic_only(
             EarthMagneticModel(EarthMagneticModel.Type.WMM2010)

@@ -21,25 +21,56 @@ from ostk.physics.environment.objects.celestial_bodies import Sun
 
 @pytest.fixture
 def earth_atmospheric_model_exponential() -> EarthAtmosphericModel:
-    return EarthAtmosphericModel(EarthAtmosphericModel.Type.Exponential)
+    return EarthAtmosphericModel(EarthAtmosphericModel.Type.Exponential, EarthAtmosphericModel.InputDataSourceType.Undefined)
 
 
 @pytest.fixture
 def earth_atmospheric_model_nrlmsise() -> EarthAtmosphericModel:
-    return EarthAtmosphericModel(EarthAtmosphericModel.Type.NRLMSISE00)
+    return EarthAtmosphericModel(EarthAtmosphericModel.Type.NRLMSISE00, EarthAtmosphericModel.InputDataSourceType.SpaceWeatherFile)
 
 
 class TestEarth:
     def test_constructor_success_with_type(self):
         earth_atmospheric_model = EarthAtmosphericModel(
             type=EarthAtmosphericModel.Type.Exponential,
+            input_data_source_type=EarthAtmosphericModel.InputDataSourceType.Undefined,
         )
 
         assert isinstance(earth_atmospheric_model, EarthAtmosphericModel)
 
-    def test_constructor_success_with_params(self):
+    def test_constructor_success_exponential_with_params(self):
         earth_atmospheric_model = EarthAtmosphericModel(
             type=EarthAtmosphericModel.Type.Exponential,
+            input_data_source_type=EarthAtmosphericModel.InputDataSourceType.Undefined,
+            f107_constant_value=160.0,
+            f107_average_constant_value=160.0,
+            kp_constant_value=4.0,
+            earth_frame=Frame.ITRF(),
+            earth_radius=EarthGravitationalModel.WGS84.equatorial_radius,
+            earth_flattening=EarthGravitationalModel.WGS84.flattening,
+            sun_celestial=Sun.default(),
+        )
+
+        assert isinstance(earth_atmospheric_model, EarthAtmosphericModel)
+
+    def test_constructor_success_nrlmsise_file_with_params(self):
+        earth_atmospheric_model = EarthAtmosphericModel(
+            type=EarthAtmosphericModel.Type.NRLMSISE00,
+            input_data_source_type=EarthAtmosphericModel.InputDataSourceType.SpaceWeatherFile,
+            earth_frame=Frame.ITRF(),
+            earth_radius=EarthGravitationalModel.WGS84.equatorial_radius,
+            earth_flattening=EarthGravitationalModel.WGS84.flattening,
+        )
+
+        assert isinstance(earth_atmospheric_model, EarthAtmosphericModel)
+
+    def test_constructor_success_nrlmsise_constant_with_params(self):
+        earth_atmospheric_model = EarthAtmosphericModel(
+            type=EarthAtmosphericModel.Type.NRLMSISE00,
+            input_data_source_type=EarthAtmosphericModel.InputDataSourceType.ConstantFluxAndGeoMag,
+            f107_constant_value=160.0,
+            f107_average_constant_value=160.0,
+            kp_constant_value=4.0,
             earth_frame=Frame.ITRF(),
             earth_radius=EarthGravitationalModel.WGS84.equatorial_radius,
             earth_flattening=EarthGravitationalModel.WGS84.flattening,
@@ -54,6 +85,14 @@ class TestEarth:
         assert (
             earth_atmospheric_model_exponential.get_type()
             == EarthAtmosphericModel.Type.Exponential
+        )
+
+    def test_get_input_data_source_type_success(
+        self, earth_atmospheric_model_exponential: EarthAtmosphericModel
+    ):
+        assert (
+            earth_atmospheric_model_exponential.get_input_data_source_type()
+            == EarthAtmosphericModel.InputDataSourceType.Undefined
         )
 
     def test_is_defined_success(
