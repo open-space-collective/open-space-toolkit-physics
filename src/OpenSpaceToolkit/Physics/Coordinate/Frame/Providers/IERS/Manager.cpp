@@ -82,11 +82,11 @@ Directory Manager::getFinals2000ADirectory() const
     return Directory::Path(localRepository_.getPath() + Path::Parse("finals-2000A"));
 }
 
-BulletinA Manager::getBulletinA()
+BulletinA Manager::getBulletinA() const
 {
     std::lock_guard<std::mutex> lock {mutex_};
 
-    const BulletinA* bulletinAPtr = this->accessBulletinA();
+    const BulletinA* bulletinAPtr = accessBulletinA();
 
     if (bulletinAPtr != nullptr)
     {
@@ -96,11 +96,11 @@ BulletinA Manager::getBulletinA()
     throw ostk::core::error::RuntimeError("Cannot obtain Bulletin A.");
 }
 
-Finals2000A Manager::getFinals2000A()
+Finals2000A Manager::getFinals2000A() const
 {
     std::lock_guard<std::mutex> lock {mutex_};
 
-    const Finals2000A* finals2000aPtr = this->accessFinals2000A();
+    const Finals2000A* finals2000aPtr = accessFinals2000A();
 
     if (finals2000aPtr != nullptr)
     {
@@ -110,7 +110,7 @@ Finals2000A Manager::getFinals2000A()
     throw ostk::core::error::RuntimeError("Cannot obtain Finals 2000A.");
 }
 
-Vector2d Manager::getPolarMotionAt(const Instant& anInstant)
+Vector2d Manager::getPolarMotionAt(const Instant& anInstant) const
 {
     if (!anInstant.isDefined())
     {
@@ -163,7 +163,7 @@ Vector2d Manager::getPolarMotionAt(const Instant& anInstant)
     return Vector2d::Undefined();
 }
 
-Real Manager::getUt1MinusUtcAt(const Instant& anInstant)
+Real Manager::getUt1MinusUtcAt(const Instant& anInstant) const
 {
     if (!anInstant.isDefined())
     {
@@ -209,7 +209,7 @@ Real Manager::getUt1MinusUtcAt(const Instant& anInstant)
     return Real::Undefined();
 }
 
-Real Manager::getLodAt(const Instant& anInstant)
+Real Manager::getLodAt(const Instant& anInstant) const
 {
     if (!anInstant.isDefined())
     {
@@ -278,14 +278,14 @@ void Manager::loadFinals2000A(const Finals2000A& aFinals2000A)
     this->loadFinals2000A_(aFinals2000A);
 }
 
-File Manager::fetchLatestBulletinA()
+File Manager::fetchLatestBulletinA() const
 {
     std::lock_guard<std::mutex> lock {mutex_};
 
     return this->fetchLatestBulletinA_();
 }
 
-File Manager::fetchLatestFinals2000A()
+File Manager::fetchLatestFinals2000A() const
 {
     std::lock_guard<std::mutex> lock {mutex_};
 
@@ -297,7 +297,6 @@ void Manager::reset()
     std::lock_guard<std::mutex> lock {mutex_};
 
     bulletinA_ = BulletinA::Undefined();
-    // std::cout << bulletinA_ << std::endl;
     finals2000A_ = Finals2000A::Undefined();
 }
 
@@ -387,7 +386,7 @@ bool Manager::isLocalRepositoryLocked() const
     return this->getLocalRepositoryLockFile().exists();
 }
 
-const BulletinA* Manager::accessBulletinA()
+const BulletinA* Manager::accessBulletinA() const
 {
     // If we've loaded a file, simply return it
     if (bulletinA_.isDefined())
@@ -398,7 +397,6 @@ const BulletinA* Manager::accessBulletinA()
     // If set to automatic, try to load or fetch the latest file
     if (mode_ == Manager::Mode::Automatic)
     {
-        std::cout << "in auto load fetch fun" << std::endl;
         // Try from file
         File localBulletinAFile = File::Undefined();
 
@@ -442,7 +440,7 @@ const BulletinA* Manager::accessBulletinA()
     }
 }
 
-const Finals2000A* Manager::accessFinals2000A()
+const Finals2000A* Manager::accessFinals2000A() const
 {
     // If we've loaded a file, simply return it
     if (finals2000A_.isDefined())
@@ -502,32 +500,6 @@ File Manager::getLocalRepositoryLockFile() const
     return File::Path(localRepository_.getPath() + Path::Parse(".lock"));
 }
 
-File Manager::getLatestBulletinAFile() const
-{
-    // Parse Bulletin A Directories, e.g.,
-    // `.open-space-toolkit/physics/coordinate/frame/providers/iers/Bulletin-A`.
-
-    if (this->getBulletinADirectory().containsFileWithName(bulletinAFileName))
-    {
-        return File::Path(this->getBulletinADirectory().getPath() + Path::Parse(bulletinAFileName));
-    }
-
-    return const_cast<Manager*>(this)->fetchLatestBulletinA_();
-}
-
-File Manager::getLatestFinals2000AFile() const
-{
-    // Parse Bulletin A Directories, e.g.,
-    // `.open-space-toolkit/physics/coordinate/frame/providers/iers/Bulletin-A`.
-
-    if (this->getFinals2000ADirectory().containsFileWithName(finals2000AFileName))
-    {
-        return File::Path(this->getFinals2000ADirectory().getPath() + Path::Parse(finals2000AFileName));
-    }
-
-    return const_cast<Manager*>(this)->fetchLatestFinals2000A_();
-}
-
 void Manager::setup()
 {
     if (!localRepository_.exists())
@@ -546,17 +518,17 @@ void Manager::setup()
     }
 }
 
-void Manager::loadBulletinA_(const BulletinA& aBulletinA)
+void Manager::loadBulletinA_(const BulletinA& aBulletinA) const
 {
     bulletinA_ = aBulletinA;
 }
 
-void Manager::loadFinals2000A_(const Finals2000A& aFinals2000A)
+void Manager::loadFinals2000A_(const Finals2000A& aFinals2000A) const
 {
     finals2000A_ = aFinals2000A;
 }
 
-File Manager::fetchLatestBulletinA_()
+File Manager::fetchLatestBulletinA_() const
 {
     std::cout << "Fetching latest Bulletin A..." << std::endl;
 
@@ -657,7 +629,7 @@ File Manager::fetchLatestBulletinA_()
     return latestBulletinAFile;
 }
 
-File Manager::fetchLatestFinals2000A_()
+File Manager::fetchLatestFinals2000A_() const
 {
     std::cout << "Fetching latest Finals 2000A..." << std::endl;
 
@@ -761,7 +733,7 @@ File Manager::fetchLatestFinals2000A_()
     return latestFinals2000AFile;
 }
 
-void Manager::lockLocalRepository(const Duration& aTimeout)
+void Manager::lockLocalRepository(const Duration& aTimeout) const
 {
     std::cout << String::Format("Locking local repository [{}]...", localRepository_.toString()) << std::endl;
 
@@ -801,7 +773,7 @@ void Manager::lockLocalRepository(const Duration& aTimeout)
     }
 }
 
-void Manager::unlockLocalRepository()
+void Manager::unlockLocalRepository() const
 {
     std::cout << String::Format("Unlocking local repository [{}]...", localRepository_.toString()) << std::endl;
 

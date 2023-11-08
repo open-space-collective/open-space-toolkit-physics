@@ -99,34 +99,34 @@ class Manager
     ///
     /// @return             Bulletin A
 
-    BulletinA getBulletinA();
+    BulletinA getBulletinA() const;
 
     /// @brief              Get Finals 2000A
     ///
     /// @return             Finals 2000A
 
-    Finals2000A getFinals2000A();
+    Finals2000A getFinals2000A() const;
 
     /// @brief              Get polar motion at instant
     ///
     /// @param              [in] anInstant An instant
     /// @return             [asec] Polar motion
 
-    Vector2d getPolarMotionAt(const Instant& anInstant);
+    Vector2d getPolarMotionAt(const Instant& anInstant) const;
 
     /// @brief              Get UT1 - UTC at instant
     ///
     /// @param              [in] anInstant An instant
     /// @return             [sec] UT1 - UTC
 
-    Real getUt1MinusUtcAt(const Instant& anInstant);
+    Real getUt1MinusUtcAt(const Instant& anInstant) const;
 
     /// @brief              Get length of day at instant
     ///
     /// @param              [in] anInstant An instant
     /// @return             [ms] Length of day
 
-    Real getLodAt(const Instant& anInstant);
+    Real getLodAt(const Instant& anInstant) const;
 
     /// @brief              Set manager mode
     ///
@@ -156,13 +156,13 @@ class Manager
     ///
     /// @return             Latest Bulletin A file
 
-    File fetchLatestBulletinA();
+    File fetchLatestBulletinA() const;
 
     /// @brief              Fetch latest Finals 2000A file
     ///
     /// @return             Latest Finals 2000A file
 
-    File fetchLatestFinals2000A();
+    File fetchLatestFinals2000A() const;
 
     /// @brief              Reset manager
     ///
@@ -213,8 +213,8 @@ class Manager
     Directory localRepository_;
     Duration localRepositoryLockTimeout_;
 
-    BulletinA bulletinA_;
-    Finals2000A finals2000A_;
+    mutable BulletinA bulletinA_;
+    mutable Finals2000A finals2000A_;
 
     mutable std::mutex mutex_;
 
@@ -224,27 +224,23 @@ class Manager
 
     File getLocalRepositoryLockFile() const;
 
-    const BulletinA* accessBulletinA();
+    const BulletinA* accessBulletinA() const;
 
-    const Finals2000A* accessFinals2000A();
-
-    File getLatestBulletinAFile() const;
-
-    File getLatestFinals2000AFile() const;
+    const Finals2000A* accessFinals2000A() const;
 
     void setup();
 
-    void loadBulletinA_(const BulletinA& aBulletinA);
+    void loadBulletinA_(const BulletinA& aBulletinA) const;
 
-    void loadFinals2000A_(const Finals2000A& aFinals2000A);
+    void loadFinals2000A_(const Finals2000A& aFinals2000A) const;
 
-    File fetchLatestBulletinA_();
+    File fetchLatestBulletinA_() const;
 
-    File fetchLatestFinals2000A_();
+    File fetchLatestFinals2000A_() const;
 
-    void lockLocalRepository(const Duration& aTimeout);
+    void lockLocalRepository(const Duration& aTimeout) const;
 
-    void unlockLocalRepository();
+    void unlockLocalRepository() const;
 };
 
 }  // namespace iers
