@@ -220,27 +220,23 @@ class Manager
 
     Manager(const Manager::Mode& aMode = Manager::DefaultMode());
 
-    bool isLocalRepositoryLocked_() const;
-
-    File getLocalRepositoryLockFile_() const;
-
-    const BulletinA* accessBulletinA_() const;
-
-    const Finals2000A* accessFinals2000A_() const;
-
     void setup_();
 
-    void loadBulletinA_(const BulletinA& aBulletinA) const;
+    bool isLocalRepositoryLocked_() const;
+    File getLocalRepositoryLockFile_() const;
+    void lockLocalRepository_(const Duration& aTimeout) const;
+    void unlockLocalRepository_() const;
 
+    // const private methods that modify mutable members
+    // none of these are mutex-protected, but are called exclusively by methods that are
+    void loadBulletinA_(const BulletinA& aBulletinA) const;
     void loadFinals2000A_(const Finals2000A& aFinals2000A) const;
 
+    const BulletinA* accessBulletinA_() const;
+    const Finals2000A* accessFinals2000A_() const;
+
     File fetchLatestBulletinA_() const;
-
     File fetchLatestFinals2000A_() const;
-
-    void lockLocalRepository_(const Duration& aTimeout) const;
-
-    void unlockLocalRepository_() const;
 };
 
 }  // namespace iers

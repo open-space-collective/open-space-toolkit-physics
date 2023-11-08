@@ -381,9 +381,94 @@ Manager::Manager(const Manager::Mode& aMode)
     this->setup_();
 }
 
+void Manager::setup_()
+{
+    if (!localRepository_.exists())
+    {
+        localRepository_.create();
+    }
+
+    if (!this->getBulletinADirectory().exists())
+    {
+        this->getBulletinADirectory().create();
+    }
+
+    if (!this->getFinals2000ADirectory().exists())
+    {
+        this->getFinals2000ADirectory().create();
+    }
+}
+
 bool Manager::isLocalRepositoryLocked_() const
 {
     return this->getLocalRepositoryLockFile_().exists();
+}
+
+File Manager::getLocalRepositoryLockFile_() const
+{
+    return File::Path(localRepository_.getPath() + Path::Parse(".lock"));
+}
+
+void Manager::lockLocalRepository_(const Duration& aTimeout) const
+{
+    std::cout << String::Format("Locking local repository [{}]...", localRepository_.toString()) << std::endl;
+
+    const auto tryLock = [](File& aLockFile) -> bool
+    {
+        if (!aLockFile.exists())  // [TBM] Should use system-wide semaphore instead (race condition can still occur)
+        {
+            try
+            {
+                aLockFile.create();
+
+                return true;
+            }
+            catch (...)
+            {
+                // Do nothing
+            }
+
+            return false;
+        }
+
+        return false;
+    };
+
+    const Instant timeoutInstant = Instant::Now() + aTimeout;
+
+    File lockFile = this->getLocalRepositoryLockFile_();
+
+    while (!tryLock(lockFile))
+    {
+        if (Instant::Now() >= timeoutInstant)
+        {
+            throw ostk::core::error::RuntimeError("Cannot lock local repository: timeout reached.");
+        }
+
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+    }
+}
+
+void Manager::unlockLocalRepository_() const
+{
+    std::cout << String::Format("Unlocking local repository [{}]...", localRepository_.toString()) << std::endl;
+
+    if (!this->isLocalRepositoryLocked_())
+    {
+        throw ostk::core::error::RuntimeError("Cannot unlock local repository: lock file does not exist.");
+    }
+
+    this->getLocalRepositoryLockFile_().remove();
+}
+
+void Manager::loadBulletinA_(const BulletinA& aBulletinA) const
+{
+    bulletinA_ = aBulletinA;
+}
+
+void Manager::loadFinals2000A_(const Finals2000A& aFinals2000A) const
+{
+    finals2000A_ = aFinals2000A;
 }
 
 const BulletinA* Manager::accessBulletinA_() const
@@ -493,39 +578,6 @@ const Finals2000A* Manager::accessFinals2000A_() const
     {
         return nullptr;
     }
-}
-
-File Manager::getLocalRepositoryLockFile_() const
-{
-    return File::Path(localRepository_.getPath() + Path::Parse(".lock"));
-}
-
-void Manager::setup_()
-{
-    if (!localRepository_.exists())
-    {
-        localRepository_.create();
-    }
-
-    if (!this->getBulletinADirectory().exists())
-    {
-        this->getBulletinADirectory().create();
-    }
-
-    if (!this->getFinals2000ADirectory().exists())
-    {
-        this->getFinals2000ADirectory().create();
-    }
-}
-
-void Manager::loadBulletinA_(const BulletinA& aBulletinA) const
-{
-    bulletinA_ = aBulletinA;
-}
-
-void Manager::loadFinals2000A_(const Finals2000A& aFinals2000A) const
-{
-    finals2000A_ = aFinals2000A;
 }
 
 File Manager::fetchLatestBulletinA_() const
@@ -731,58 +783,6 @@ File Manager::fetchLatestFinals2000A_() const
     }
 
     return latestFinals2000AFile;
-}
-
-void Manager::lockLocalRepository_(const Duration& aTimeout) const
-{
-    std::cout << String::Format("Locking local repository [{}]...", localRepository_.toString()) << std::endl;
-
-    const auto tryLock = [](File& aLockFile) -> bool
-    {
-        if (!aLockFile.exists())  // [TBM] Should use system-wide semaphore instead (race condition can still occur)
-        {
-            try
-            {
-                aLockFile.create();
-
-                return true;
-            }
-            catch (...)
-            {
-                // Do nothing
-            }
-
-            return false;
-        }
-
-        return false;
-    };
-
-    const Instant timeoutInstant = Instant::Now() + aTimeout;
-
-    File lockFile = this->getLocalRepositoryLockFile_();
-
-    while (!tryLock(lockFile))
-    {
-        if (Instant::Now() >= timeoutInstant)
-        {
-            throw ostk::core::error::RuntimeError("Cannot lock local repository: timeout reached.");
-        }
-
-        std::this_thread::sleep_for(std::chrono::seconds(1));
-    }
-}
-
-void Manager::unlockLocalRepository_() const
-{
-    std::cout << String::Format("Unlocking local repository [{}]...", localRepository_.toString()) << std::endl;
-
-    if (!this->isLocalRepositoryLocked_())
-    {
-        throw ostk::core::error::RuntimeError("Cannot unlock local repository: lock file does not exist.");
-    }
-
-    this->getLocalRepositoryLockFile_().remove();
 }
 
 }  // namespace iers
