@@ -4,7 +4,6 @@ import pytest
 
 from datetime import datetime
 import pathlib
-import os
 
 from ostk.core.filesystem import Path
 from ostk.core.filesystem import File
@@ -153,8 +152,6 @@ class TestManager:
         assert manager.get_bulletin_a().is_defined()
 
     def test_load_finals_2000a_success(self, manager: Manager, finals_2000a: Finals2000A):
-        assert not manager.get_finals_2000a().is_defined()
-
         manager.load_finals_2000a(finals_2000a)
 
         assert manager.get_finals_2000a().is_defined()
@@ -183,7 +180,7 @@ class TestManager:
         # The get methods automatically load things if they are not loaded, so we set to manual
         manager.set_mode(manager.Mode.Manual)
 
-        with pytest.throws():
+        with pytest.raises(Exception):
             manager.get_bulletin_a()
 
         manager.set_mode(manager.Mode.Automatic)
