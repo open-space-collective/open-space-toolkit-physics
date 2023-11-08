@@ -35,11 +35,19 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
             .def(
                 init<
                     const Earth::Type&,
+                    const Earth::InputDataSourceType&,
+                    const Real&,
+                    const Real&,
+                    const Real&,
                     const Shared<const Frame>&,
                     const Length&,
                     const Real&,
                     const Shared<Celestial>&>(),
                 arg("type"),
+                arg("input_data_source_type"),
+                arg("f107_constant_value") = 150.0,
+                arg("f107_average_constant_value") = 150.0,
+                arg("kp_constant_value") = 3.0,
                 arg("earth_frame") = Frame::ITRF(),
                 arg("earth_radius") = EarthGravityModel::WGS84.equatorialRadius_,
                 arg("earth_flattening") = EarthGravityModel::WGS84.flattening_,
@@ -47,6 +55,8 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
             )
 
             .def("get_type", &Earth::getType)
+
+            .def("get_input_data_source_type", &Earth::getInputDataSourceType)
 
             .def("is_defined", &Earth::isDefined)
 
@@ -71,6 +81,12 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
             .value("Undefined", Earth::Type::Undefined)
             .value("Exponential", Earth::Type::Exponential)
             .value("NRLMSISE00", Earth::Type::NRLMSISE00);
+
+        enum_<Earth::InputDataSourceType>(earth_class, "InputDataSourceType")
+
+            .value("Undefined", Earth::InputDataSourceType::Undefined)
+            .value("ConstantFluxAndGeoMag", Earth::InputDataSourceType::ConstantFluxAndGeoMag)
+            .value("SpaceWeatherFile", Earth::InputDataSourceType::SpaceWeatherFile);
     }
 
     // Create "earth" python submodule
