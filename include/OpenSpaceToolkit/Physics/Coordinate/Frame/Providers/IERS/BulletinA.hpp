@@ -112,7 +112,7 @@ class BulletinA
 
     const Date& accessReleaseDate() const;
 
-    /// @brief                  Access last modified timestamp
+    /// @brief                  Access timestamp at which the BulletinA file was last modified
     ///
     /// @return                 Instant indicating when the file was last updated based on file modification time
 

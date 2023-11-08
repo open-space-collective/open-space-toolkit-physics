@@ -181,7 +181,7 @@ Real Manager::getUt1MinusUtcAt(const Instant& anInstant) const
 
     const BulletinA* bulletinAPtr = this->accessBulletinA_();
 
-    if (bulletinAPtr)
+    if (bulletinAPtr != nullptr)
     {
         if (bulletinAPtr->accessObservationInterval().contains(anInstant))
         {
@@ -199,7 +199,7 @@ Real Manager::getUt1MinusUtcAt(const Instant& anInstant) const
 
     const Finals2000A* finals2000aPtr = this->accessFinals2000A_();
 
-    if (finals2000aPtr)
+    if (finals2000aPtr != nullptr)
     {
         return finals2000aPtr->getUt1MinusUtcAt(anInstant);
     }
