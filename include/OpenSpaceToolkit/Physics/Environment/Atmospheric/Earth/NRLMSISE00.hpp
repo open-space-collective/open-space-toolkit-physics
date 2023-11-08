@@ -52,11 +52,10 @@ using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth
 class NRLMSISE00
 {
    public:
-
     enum class InputDataSourceType
     {
-        ConstantFluxAndGeoMag,   ///< Use constant values for F10.7, F10.7a and Kp NRLMSISE00 input parameters
-        SpaceWeatherFile,        ///< Use historical and predicted values for F10.7, F10.7a and Kp NRLMSISE00 input parameters
+        ConstantFluxAndGeoMag,  ///< Use constant values for F10.7, F10.7a and Kp NRLMSISE00 input parameters
+        SpaceWeatherFile,  ///< Use historical and predicted values for F10.7, F10.7a and Kp NRLMSISE00 input parameters
     };
 
     /// @brief              Constructor
@@ -90,19 +89,22 @@ class NRLMSISE00
 
     InputDataSourceType getInputDataSourceType() const;
 
-    /// @brief              Get the constant value for F10.7 input parameter used to construct the NRLMSISE00 atmospheric model
+    /// @brief              Get the constant value for F10.7 input parameter used to construct the NRLMSISE00
+    /// atmospheric model
     ///
     /// @return             Constant value for F10.7 input parameter
 
     Real getF107ConstantValue() const;
 
-    /// @brief              Get the constant value for F10.7a input parameter used to construct the NRLMSISE00 atmospheric model
+    /// @brief              Get the constant value for F10.7a input parameter used to construct the NRLMSISE00
+    /// atmospheric model
     ///
     /// @return             Constant value for F10.7a input parameter
 
     Real getF107AConstantValue() const;
 
-    /// @brief              Get the constant value for Kp input parameter used to construct the NRLMSISE00 atmospheric model
+    /// @brief              Get the constant value for Kp input parameter used to construct the NRLMSISE00 atmospheric
+    /// model
     ///
     /// @return             Constant value for Kp input parameter
 

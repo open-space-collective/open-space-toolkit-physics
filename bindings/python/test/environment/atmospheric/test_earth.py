@@ -21,12 +21,18 @@ from ostk.physics.environment.objects.celestial_bodies import Sun
 
 @pytest.fixture
 def earth_atmospheric_model_exponential() -> EarthAtmosphericModel:
-    return EarthAtmosphericModel(EarthAtmosphericModel.Type.Exponential, EarthAtmosphericModel.InputDataSourceType.Undefined)
+    return EarthAtmosphericModel(
+        EarthAtmosphericModel.Type.Exponential,
+        EarthAtmosphericModel.InputDataSourceType.Undefined,
+    )
 
 
 @pytest.fixture
 def earth_atmospheric_model_nrlmsise() -> EarthAtmosphericModel:
-    return EarthAtmosphericModel(EarthAtmosphericModel.Type.NRLMSISE00, EarthAtmosphericModel.InputDataSourceType.SpaceWeatherFile)
+    return EarthAtmosphericModel(
+        EarthAtmosphericModel.Type.NRLMSISE00,
+        EarthAtmosphericModel.InputDataSourceType.SpaceWeatherFile,
+    )
 
 
 class TestEarth:

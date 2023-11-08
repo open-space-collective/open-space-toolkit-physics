@@ -177,8 +177,18 @@ Earth::NRLMSISE00Impl::NRLMSISE00Impl(
     const Length& anEarthRadius,
     const Real& anEarthFlattening,
     const Shared<Celestial>& aSunCelestialSPtr
-) : Earth::Impl(aType, anEarthInputDataSourceType, anEarthFrameSPtr, anEarthRadius, anEarthFlattening),
-    NRLMSISE00Model_(anInputDataSourceType, aF107ConstantValue, aF107AConstantValue, aKpConstantValue, anEarthFrameSPtr, anEarthRadius, anEarthFlattening, aSunCelestialSPtr)
+)
+    : Earth::Impl(aType, anEarthInputDataSourceType, anEarthFrameSPtr, anEarthRadius, anEarthFlattening),
+      NRLMSISE00Model_(
+          anInputDataSourceType,
+          aF107ConstantValue,
+          aF107AConstantValue,
+          aKpConstantValue,
+          anEarthFrameSPtr,
+          anEarthRadius,
+          anEarthFlattening,
+          aSunCelestialSPtr
+      )
 {
 }
 
@@ -214,7 +224,17 @@ Earth::Earth(
     const Shared<Celestial>& aSunCelestialSPtr
 )
     : Model(),
-      implUPtr_(Earth::ImplFromType(aType, anInputDataSourceType, aF107ConstantValue, aF107AConstantValue, aKpConstantValue, anEarthFrameSPtr, anEarthRadius, anEarthFlattening, aSunCelestialSPtr))
+      implUPtr_(Earth::ImplFromType(
+          aType,
+          anInputDataSourceType,
+          aF107ConstantValue,
+          aF107AConstantValue,
+          aKpConstantValue,
+          anEarthFrameSPtr,
+          anEarthRadius,
+          anEarthFlattening,
+          aSunCelestialSPtr
+      ))
 {
 }
 
@@ -288,7 +308,9 @@ Unique<Earth::Impl> Earth::ImplFromType(
     }
     else if (aType == Earth::Type::Exponential)
     {
-        return std::make_unique<ExponentialImpl>(aType, anInputDataSourceType, anEarthFrameSPtr, anEarthRadius, anEarthFlattening);
+        return std::make_unique<ExponentialImpl>(
+            aType, anInputDataSourceType, anEarthFrameSPtr, anEarthRadius, anEarthFlattening
+        );
     }
     else if (aType == Earth::Type::NRLMSISE00)
     {
@@ -312,13 +334,31 @@ Unique<Earth::Impl> Earth::ImplFromType(
             }
 
             return std::make_unique<NRLMSISE00Impl>(
-                aType, anInputDataSourceType, NRLMSISE00::InputDataSourceType::ConstantFluxAndGeoMag, aF107ConstantValue, aF107AConstantValue, aKpConstantValue, anEarthFrameSPtr, anEarthRadius, anEarthFlattening, aSunCelestialSPtr
+                aType,
+                anInputDataSourceType,
+                NRLMSISE00::InputDataSourceType::ConstantFluxAndGeoMag,
+                aF107ConstantValue,
+                aF107AConstantValue,
+                aKpConstantValue,
+                anEarthFrameSPtr,
+                anEarthRadius,
+                anEarthFlattening,
+                aSunCelestialSPtr
             );
         }
         else if (anInputDataSourceType == Earth::InputDataSourceType::SpaceWeatherFile)
         {
             return std::make_unique<NRLMSISE00Impl>(
-                aType, anInputDataSourceType, NRLMSISE00::InputDataSourceType::SpaceWeatherFile, aF107ConstantValue, aF107AConstantValue, aKpConstantValue, anEarthFrameSPtr, anEarthRadius, anEarthFlattening, aSunCelestialSPtr
+                aType,
+                anInputDataSourceType,
+                NRLMSISE00::InputDataSourceType::SpaceWeatherFile,
+                aF107ConstantValue,
+                aF107AConstantValue,
+                aKpConstantValue,
+                anEarthFrameSPtr,
+                anEarthRadius,
+                anEarthFlattening,
+                aSunCelestialSPtr
             );
         }
     }
