@@ -178,7 +178,7 @@ void Manager::checkManifestAgeAndUpdate_() const
     if (!manifest_.isDefined() && !manifestFileExists())
     {
         // There is no file loaded in memory or on the local filesystem. Fetch and load.
-        File manifestFile = this->fetchLatestManifestFile_();
+        const File manifestFile = this->fetchLatestManifestFile_();
         this->loadManifest_(Manifest::Load(manifestFile));
 
         return;
@@ -200,9 +200,11 @@ void Manager::checkManifestAgeAndUpdate_() const
     }
     catch (ostk::core::error::RuntimeError& e)
     {
-        throw ostk::core::error::RuntimeError(
-            "Could not obtain key [manifest] from manifest file at {}", manifestRepository_.getPath().toString()
-        );
+        // If there is no "manifest", the file may be old or corrupted. Fetch a new one.
+        const File manifestFile = this->fetchLatestManifestFile_();
+        this->loadManifest_(Manifest::Load(manifestFile));
+
+        nextUpdateCheckTimestamp = manifest_.getNextUpdateCheckTimestampFor("manifest");
     }
 
     const Duration manifestAge = Instant::Now() - manifest_.getLastModifiedTimestamp();
