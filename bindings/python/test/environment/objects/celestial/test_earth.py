@@ -101,7 +101,6 @@ class TestEarth:
                 ),
                 (
                     EarthAtmosphericModel.Type.Exponential,
-                    EarthAtmosphericModel.InputDataType.Undefined,
                 ),
                 (EarthMagneticModel.Type.Dipole,),
             ),
@@ -114,7 +113,6 @@ class TestEarth:
                 ),
                 (
                     EarthAtmosphericModel.Type.Exponential,
-                    EarthAtmosphericModel.InputDataType.Undefined,
                 ),
                 (EarthMagneticModel.Type.Dipole,),
             ),
@@ -127,7 +125,6 @@ class TestEarth:
                 ),
                 (
                     EarthAtmosphericModel.Type.Exponential,
-                    EarthAtmosphericModel.InputDataType.Undefined,
                 ),
                 (EarthMagneticModel.Type.Dipole,),
             ),
@@ -140,7 +137,6 @@ class TestEarth:
                 ),
                 (
                     EarthAtmosphericModel.Type.Exponential,
-                    EarthAtmosphericModel.InputDataType.Undefined,
                 ),
                 (EarthMagneticModel.Type.Dipole,),
             ),
@@ -151,7 +147,6 @@ class TestEarth:
                 ),
                 (
                     EarthAtmosphericModel.Type.Exponential,
-                    EarthAtmosphericModel.InputDataType.Undefined,
                 ),
                 (EarthMagneticModel.Type.Dipole,),
             ),
@@ -159,7 +154,6 @@ class TestEarth:
                 (EarthGravitationalModel.Type.Spherical, Directory.undefined()),
                 (
                     EarthAtmosphericModel.Type.Exponential,
-                    EarthAtmosphericModel.InputDataType.Undefined,
                 ),
                 (EarthMagneticModel.Type.Dipole,),
             ),
@@ -185,7 +179,6 @@ class TestEarth:
         assert Earth.atmospheric_only(
             EarthAtmosphericModel(
                 EarthAtmosphericModel.Type.Exponential,
-                EarthAtmosphericModel.InputDataType.Undefined,
             )
         ).is_defined()
         assert Earth.magnetic_only(
