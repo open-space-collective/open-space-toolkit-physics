@@ -56,7 +56,7 @@ def exponential_model() -> Exponential:
 @pytest.fixture
 def nrlmsise00_model() -> NRLMSISE00:
     return NRLMSISE00(
-        NRLMSISE00.InputDataSourceType.SpaceWeatherFile,
+        NRLMSISE00.InputDataSourceType.CSSISpaceWeatherFile,
         160.0,
         160.0,
         3.0,

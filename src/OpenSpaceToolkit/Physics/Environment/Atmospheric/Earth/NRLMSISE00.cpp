@@ -100,7 +100,7 @@ Unique<NRLMSISE00::ap_array> NRLMSISE00::computeApArray(const Instant& anInstant
             break;
         }
 
-        case InputDataSourceType::SpaceWeatherFile:
+        case InputDataSourceType::CSSISpaceWeatherFile:
         {
             // Use historical and predicted values for F10.7, F10.7a and Kp NRLMSISE00 input parameters
             //
@@ -211,7 +211,7 @@ Unique<NRLMSISE00::nrlmsise_input> NRLMSISE00::computeNRLMSISE00Input(
             break;
         }
 
-        case InputDataSourceType::SpaceWeatherFile:
+        case InputDataSourceType::CSSISpaceWeatherFile:
         {
             // Use historical and predicted values for F10.7, F10.7a and Kp NRLMSISE00 input parameters
 

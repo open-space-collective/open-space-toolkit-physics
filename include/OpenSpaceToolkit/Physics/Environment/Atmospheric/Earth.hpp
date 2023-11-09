@@ -56,7 +56,7 @@ class Earth : public Model
     {
         Undefined,              ///< Undefined
         ConstantFluxAndGeoMag,  ///< Use constant values for F10.7, F10.7a and Kp NRLMSISE00 input parameters
-        SpaceWeatherFile,  ///< Use historical and predicted values for F10.7, F10.7a and Kp NRLMSISE00 input parameters
+        CSSISpaceWeatherFile,  ///< Use historical and predicted values for F10.7, F10.7a and Kp NRLMSISE00 input parameters
     };
 
     /// @brief              Constructor
@@ -73,7 +73,7 @@ class Earth : public Model
 
     Earth(
         const Earth::Type& aType,
-        const Earth::InputDataSourceType& anInputDataSourceType = Earth::InputDataSourceType::SpaceWeatherFile,
+        const Earth::InputDataSourceType& anInputDataSourceType = Earth::InputDataSourceType::CSSISpaceWeatherFile,
         const Real& aF107ConstantValue = defaultF107ConstantValue,
         const Real& aF107AConstantValue = defaultF107AConstantValue,
         const Real& aKpConstantValue = defaultKpConstantValue,

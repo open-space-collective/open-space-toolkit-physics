@@ -61,7 +61,7 @@ class NRLMSISE00Public : public NRLMSISE00
    public:
     NRLMSISE00Public(
         const NRLMSISE00::InputDataSourceType& anInputDataSourceType =
-            NRLMSISE00::InputDataSourceType::SpaceWeatherFile,
+            NRLMSISE00::InputDataSourceType::CSSISpaceWeatherFile,
         const Real& aF107ConstantValue = Real::Undefined(),
         const Real& aF107AConstantValue = Real::Undefined(),
         const Real& aKpConstantValue = Real::Undefined(),
@@ -98,7 +98,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Construc
     }
 
     {
-        EXPECT_NO_THROW(NRLMSISE00 nrlmsise = {NRLMSISE00::InputDataSourceType::SpaceWeatherFile});
+        EXPECT_NO_THROW(NRLMSISE00 nrlmsise = {NRLMSISE00::InputDataSourceType::CSSISpaceWeatherFile});
     }
 
     {
@@ -141,7 +141,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Getters)
     }
 
     {
-        NRLMSISE00::InputDataSourceType inputDataSourceType = NRLMSISE00::InputDataSourceType::SpaceWeatherFile;
+        NRLMSISE00::InputDataSourceType inputDataSourceType = NRLMSISE00::InputDataSourceType::CSSISpaceWeatherFile;
         Real f107ConstantValue = 200.0;
         Real f107AConstantValue = 205.0;
         Real kpConstantValue = 3.0;
@@ -155,7 +155,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Getters)
     }
 
     {
-        NRLMSISE00::InputDataSourceType inputDataSourceType = NRLMSISE00::InputDataSourceType::SpaceWeatherFile;
+        NRLMSISE00::InputDataSourceType inputDataSourceType = NRLMSISE00::InputDataSourceType::CSSISpaceWeatherFile;
 
         NRLMSISE00 nrlmsise = {inputDataSourceType};
 
@@ -425,7 +425,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
         Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
 
         const NRLMSISE00 nrlmsise = {
-            NRLMSISE00::InputDataSourceType::SpaceWeatherFile,
+            NRLMSISE00::InputDataSourceType::CSSISpaceWeatherFile,
             Real::Undefined(),
             Real::Undefined(),
             Real::Undefined(),
@@ -487,7 +487,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
 
     {
         const NRLMSISE00 nrlmsise = {
-            NRLMSISE00::InputDataSourceType::SpaceWeatherFile,
+            NRLMSISE00::InputDataSourceType::CSSISpaceWeatherFile,
             Real::Undefined(),
             Real::Undefined(),
             Real::Undefined(),
@@ -556,7 +556,7 @@ TEST(
         Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
 
         const NRLMSISE00 nrlmsise = {
-            NRLMSISE00::InputDataSourceType::SpaceWeatherFile,
+            NRLMSISE00::InputDataSourceType::CSSISpaceWeatherFile,
             Real::Undefined(),
             Real::Undefined(),
             Real::Undefined(),
@@ -627,7 +627,7 @@ TEST(
         Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
 
         const NRLMSISE00 nrlmsise = {
-            NRLMSISE00::InputDataSourceType::SpaceWeatherFile,
+            NRLMSISE00::InputDataSourceType::CSSISpaceWeatherFile,
             Real::Undefined(),
             Real::Undefined(),
             Real::Undefined(),
@@ -748,7 +748,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, OrekitGe
     {
         Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
         const NRLMSISE00Public nrlmsise = {
-            NRLMSISE00::InputDataSourceType::SpaceWeatherFile,
+            NRLMSISE00::InputDataSourceType::CSSISpaceWeatherFile,
             Real::Undefined(),
             Real::Undefined(),
             Real::Undefined(),
@@ -832,7 +832,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, OrekitGe
     {
         Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
         const NRLMSISE00Public nrlmsise = {
-            NRLMSISE00::InputDataSourceType::SpaceWeatherFile,
+            NRLMSISE00::InputDataSourceType::CSSISpaceWeatherFile,
             Real::Undefined(),
             Real::Undefined(),
             Real::Undefined(),
@@ -913,7 +913,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, OrekitGe
     {
         Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
         const NRLMSISE00Public nrlmsise = {
-            NRLMSISE00::InputDataSourceType::SpaceWeatherFile,
+            NRLMSISE00::InputDataSourceType::CSSISpaceWeatherFile,
             Real::Undefined(),
             Real::Undefined(),
             Real::Undefined(),

@@ -31,7 +31,7 @@ def earth_atmospheric_model_exponential() -> EarthAtmosphericModel:
 def earth_atmospheric_model_nrlmsise() -> EarthAtmosphericModel:
     return EarthAtmosphericModel(
         EarthAtmosphericModel.Type.NRLMSISE00,
-        EarthAtmosphericModel.InputDataSourceType.SpaceWeatherFile,
+        EarthAtmosphericModel.InputDataSourceType.CSSISpaceWeatherFile,
     )
 
 
@@ -62,7 +62,7 @@ class TestEarth:
     def test_constructor_success_nrlmsise_file_with_params(self):
         earth_atmospheric_model = EarthAtmosphericModel(
             type=EarthAtmosphericModel.Type.NRLMSISE00,
-            input_data_source_type=EarthAtmosphericModel.InputDataSourceType.SpaceWeatherFile,
+            input_data_source_type=EarthAtmosphericModel.InputDataSourceType.CSSISpaceWeatherFile,
             earth_frame=Frame.ITRF(),
             earth_radius=EarthGravitationalModel.WGS84.equatorial_radius,
             earth_flattening=EarthGravitationalModel.WGS84.flattening,
