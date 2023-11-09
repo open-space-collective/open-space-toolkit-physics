@@ -200,7 +200,7 @@ void Manager::checkManifestAgeAndUpdate_() const
     }
     catch (ostk::core::error::RuntimeError& e)
     {
-        // If there is no "manifest", the file may be old or corrupted. Fetch a new one.
+        // If there is no "manifest" entry, the file may be old or corrupted. Fetch a new one.
         const File manifestFile = this->fetchLatestManifestFile_();
         this->loadManifest_(Manifest::Load(manifestFile));
 

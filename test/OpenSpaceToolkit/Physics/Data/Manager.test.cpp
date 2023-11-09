@@ -78,7 +78,7 @@ class OpenSpaceToolkit_Physics_Data_Manager : public ::testing::Test
 
     Manager& manager_ = Manager::Get();
     TestManager managerNoIO_ = TestManager();
-    
+
     const char* localRepositoryVarName_ = "OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY";
     const char* fullDataVarName_ = "OSTK_PHYSICS_DATA_LOCAL_REPOSITORY";
 
