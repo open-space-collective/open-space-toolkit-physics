@@ -30,6 +30,18 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
     {
         class_<Earth, Shared<Earth>> earth_class(aModule, "Earth");
 
+        enum_<Earth::Type>(earth_class, "Type")
+
+            .value("Undefined", Earth::Type::Undefined)
+            .value("Exponential", Earth::Type::Exponential)
+            .value("NRLMSISE00", Earth::Type::NRLMSISE00);
+
+        enum_<Earth::InputDataType>(earth_class, "InputDataType")
+
+            .value("Undefined", Earth::InputDataType::Undefined)
+            .value("ConstantFluxAndGeoMag", Earth::InputDataType::ConstantFluxAndGeoMag)
+            .value("CSSISpaceWeatherFile", Earth::InputDataType::CSSISpaceWeatherFile);
+
         earth_class
 
             .def(
@@ -44,10 +56,10 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
                     const Real&,
                     const Shared<Celestial>&>(),
                 arg("type"),
-                arg("input_data_type"),
-                arg("f107_constant_value") = 150.0,
-                arg("f107_average_constant_value") = 150.0,
-                arg("kp_constant_value") = 3.0,
+                arg("input_data_type") = Earth::InputDataType::Undefined,
+                arg("f107_constant_value") = Earth::defaultF107ConstantValue,
+                arg("f107_average_constant_value") = Earth::defaultF107AConstantValue,
+                arg("kp_constant_value") = Earth::defaultKpConstantValue,
                 arg("earth_frame") = Frame::ITRF(),
                 arg("earth_radius") = EarthGravityModel::WGS84.equatorialRadius_,
                 arg("earth_flattening") = EarthGravityModel::WGS84.flattening_,
@@ -75,18 +87,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
             )
 
             ;
-
-        enum_<Earth::Type>(earth_class, "Type")
-
-            .value("Undefined", Earth::Type::Undefined)
-            .value("Exponential", Earth::Type::Exponential)
-            .value("NRLMSISE00", Earth::Type::NRLMSISE00);
-
-        enum_<Earth::InputDataType>(earth_class, "InputDataType")
-
-            .value("Undefined", Earth::InputDataType::Undefined)
-            .value("ConstantFluxAndGeoMag", Earth::InputDataType::ConstantFluxAndGeoMag)
-            .value("CSSISpaceWeatherFile", Earth::InputDataType::CSSISpaceWeatherFile);
     }
 
     // Create "earth" python submodule

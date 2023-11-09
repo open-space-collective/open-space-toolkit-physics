@@ -17,10 +17,15 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_NRLMSISE00(p
     using ostk::physics::coord::spherical::LLA;
     using ostk::physics::env::obj::Celestial;
     using EarthGravityModel = ostk::physics::environment::gravitational::Earth;
-    // using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
+    using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
     using ostk::physics::environment::atmospheric::earth::NRLMSISE00;
 
     class_<NRLMSISE00, Shared<NRLMSISE00>> nrlmsise(aModule, "NRLMSISE00");
+
+    enum_<NRLMSISE00::InputDataType>(nrlmsise, "InputDataType")
+
+        .value("ConstantFluxAndGeoMag", NRLMSISE00::InputDataType::ConstantFluxAndGeoMag)
+        .value("CSSISpaceWeatherFile", NRLMSISE00::InputDataType::CSSISpaceWeatherFile);
 
     nrlmsise
 
@@ -34,14 +39,14 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_NRLMSISE00(p
                 const Length&,
                 const Real&,
                 const Shared<Celestial>&>(),
-            arg("input_data_type"),
-            arg("f107_constant_value"),
-            arg("f107_average_constant_value"),
-            arg("kp_constant_value"),
-            arg("earth_frame"),
-            arg("earth_radius"),
-            arg("earth_flattening"),
-            arg("sun_celestial")
+                arg("input_data_type") = NRLMSISE00::InputDataType::CSSISpaceWeatherFile,
+                arg("f107_constant_value") = EarthAtmosphericModel::defaultF107ConstantValue,
+                arg("f107_average_constant_value") = EarthAtmosphericModel::defaultF107AConstantValue,
+                arg("kp_constant_value") = EarthAtmosphericModel::defaultKpConstantValue,
+                arg("earth_frame") = Frame::ITRF(),
+                arg("earth_radius") = EarthGravityModel::WGS84.equatorialRadius_,
+                arg("earth_flattening") = EarthGravityModel::WGS84.flattening_,
+                arg("sun_celestial") = nullptr
         )
 
         .def("is_defined", &NRLMSISE00::isDefined)
@@ -52,8 +57,4 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_NRLMSISE00(p
 
         ;
 
-    enum_<NRLMSISE00::InputDataType>(nrlmsise, "InputDataType")
-
-        .value("ConstantFluxAndGeoMag", NRLMSISE00::InputDataType::ConstantFluxAndGeoMag)
-        .value("CSSISpaceWeatherFile", NRLMSISE00::InputDataType::CSSISpaceWeatherFile);
 }
