@@ -86,7 +86,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
 
             .value("Undefined", Earth::InputDataSourceType::Undefined)
             .value("ConstantFluxAndGeoMag", Earth::InputDataSourceType::ConstantFluxAndGeoMag)
-            .value("SpaceWeatherFile", Earth::InputDataSourceType::SpaceWeatherFile);
+            .value("CSSISpaceWeatherFile", Earth::InputDataSourceType::CSSISpaceWeatherFile);
     }
 
     // Create "earth" python submodule

@@ -53,7 +53,7 @@ using ostk::physics::time::Instant;
 
 using ManifestManager = ostk::physics::data::Manager;
 
-const String CSSISpaceWeatherFileName = "SW-Last5Years.csv";
+const String CSSICSSISpaceWeatherFileName = "SW-Last5Years.csv";
 const String CSSISpaceWeatherManifestName = "space-weather-CSSI";
 
 // [TBI]: this path can be obtained from the manifest
@@ -459,13 +459,13 @@ const CSSISpaceWeather* Manager::accessCSSISpaceWeatherAt(const Instant& anInsta
         if ((!CSSISpaceWeatherUpdateTimestamp_.isDefined()) ||
             (CSSISpaceWeatherUpdateTimestamp_ < CSSIManifestUpdateTimestamp))
         {
-            const File latestCSSISpaceWeatherFile = this->getLatestCSSISpaceWeatherFile();
+            const File latestCSSICSSISpaceWeatherFile = this->getLatestCSSICSSISpaceWeatherFile();
 
-            if (latestCSSISpaceWeatherFile.isDefined())
+            if (latestCSSICSSISpaceWeatherFile.isDefined())
             {
                 CSSISpaceWeatherUpdateTimestamp_ = Instant::Now();
 
-                const CSSISpaceWeather CSSISpaceWeather = CSSISpaceWeather::Load(latestCSSISpaceWeatherFile);
+                const CSSISpaceWeather CSSISpaceWeather = CSSISpaceWeather::Load(latestCSSICSSISpaceWeatherFile);
 
                 if (CSSISpaceWeather.accessObservationInterval().contains(anInstant))
                 {
@@ -521,15 +521,15 @@ File Manager::getLocalRepositoryLockFile() const
     return File::Path(localRepository_.getPath() + Path::Parse(".lock"));
 }
 
-File Manager::getLatestCSSISpaceWeatherFile() const
+File Manager::getLatestCSSICSSISpaceWeatherFile() const
 {
     // Parse CSSI Space Weather Directories, e.g.,
     // `.open-space-toolkit/physics/environment/atmospheric/earth/CSSI-Space-Weather/2022-05-19/`, and find the
     // latest one.
 
-    if (this->getCSSISpaceWeatherDirectory().containsFileWithName(CSSISpaceWeatherFileName))
+    if (this->getCSSISpaceWeatherDirectory().containsFileWithName(CSSICSSISpaceWeatherFileName))
     {
-        return File::Path(this->getCSSISpaceWeatherDirectory().getPath() + Path::Parse(CSSISpaceWeatherFileName));
+        return File::Path(this->getCSSISpaceWeatherDirectory().getPath() + Path::Parse(CSSICSSISpaceWeatherFileName));
     }
 
     return const_cast<Manager*>(this)->fetchLatestCSSISpaceWeather_();
@@ -575,9 +575,9 @@ File Manager::fetchLatestCSSISpaceWeather_()
     this->lockLocalRepository(localRepositoryLockTimeout_);
 
     const URL latestCSSISpaceWeatherUrl =
-        manifestManager.getRemoteUrl() + CSSISpaceWeatherRemotePath + CSSISpaceWeatherFileName;
+        manifestManager.getRemoteUrl() + CSSISpaceWeatherRemotePath + CSSICSSISpaceWeatherFileName;
 
-    File latestCSSISpaceWeatherFile = File::Undefined();
+    File latestCSSICSSISpaceWeatherFile = File::Undefined();
     Directory destinationDirectory = Directory::Undefined();
 
     try
@@ -601,9 +601,9 @@ File Manager::fetchLatestCSSISpaceWeather_()
         std::cout << String::Format("Fetching CSSI Space Weather from [{}]...", latestCSSISpaceWeatherUrl.toString())
                   << std::endl;
 
-        latestCSSISpaceWeatherFile = Client::Fetch(latestCSSISpaceWeatherUrl, temporaryDirectory, 2);
+        latestCSSICSSISpaceWeatherFile = Client::Fetch(latestCSSISpaceWeatherUrl, temporaryDirectory, 2);
 
-        if (!latestCSSISpaceWeatherFile.exists())
+        if (!latestCSSICSSISpaceWeatherFile.exists())
         {
             throw ostk::core::error::RuntimeError(
                 "Cannot fetch CSSI Space Weather from [{}].", latestCSSISpaceWeatherUrl.toString()
@@ -612,10 +612,10 @@ File Manager::fetchLatestCSSISpaceWeather_()
 
         // Check that CSSI Space Weather File size is not zero
 
-        std::uintmax_t latestCSSISpaceWeatherFileSize =
-            std::experimental::filesystem::file_size(std::string(latestCSSISpaceWeatherFile.getPath().toString()));
+        std::uintmax_t latestCSSICSSISpaceWeatherFileSize =
+            std::experimental::filesystem::file_size(std::string(latestCSSICSSISpaceWeatherFile.getPath().toString()));
 
-        if (latestCSSISpaceWeatherFileSize == 0)
+        if (latestCSSICSSISpaceWeatherFileSize == 0)
         {
             throw ostk::core::error::RuntimeError(
                 "Cannot fetch CSSI Space Weather from [{}]: file is empty.", latestCSSISpaceWeatherUrl.toString()
@@ -624,14 +624,14 @@ File Manager::fetchLatestCSSISpaceWeather_()
 
         // Load CSSI Space Weather from File
 
-        const CSSISpaceWeather latestCSSISpaceWeather = CSSISpaceWeather::Load(latestCSSISpaceWeatherFile);
+        const CSSISpaceWeather latestCSSISpaceWeather = CSSISpaceWeather::Load(latestCSSICSSISpaceWeatherFile);
 
         // Move CSSI Space Weather File into destination Directory,
         // e.g., `.open-space-toolkit/physics/enviroment/atmospheric/earth/cssi-space-weather/`.
 
         destinationDirectory = Directory::Path(this->getCSSISpaceWeatherDirectory().getPath());
 
-        latestCSSISpaceWeatherFile.moveToDirectory(destinationDirectory);
+        latestCSSICSSISpaceWeatherFile.moveToDirectory(destinationDirectory);
 
         temporaryDirectory.remove();
 
@@ -639,7 +639,7 @@ File Manager::fetchLatestCSSISpaceWeather_()
 
         std::cout << String::Format(
                          "CSSI Space Weather [{}] has been successfully fetched from [{}].",
-                         latestCSSISpaceWeatherFile.toString(),
+                         latestCSSICSSISpaceWeatherFile.toString(),
                          latestCSSISpaceWeatherUrl.toString()
                      )
                   << std::endl;
@@ -653,10 +653,10 @@ File Manager::fetchLatestCSSISpaceWeather_()
                      )
                   << std::endl;
 
-        if (latestCSSISpaceWeatherFile.isDefined() && latestCSSISpaceWeatherFile.exists())
+        if (latestCSSICSSISpaceWeatherFile.isDefined() && latestCSSICSSISpaceWeatherFile.exists())
         {
-            latestCSSISpaceWeatherFile.remove();
-            latestCSSISpaceWeatherFile = File::Undefined();
+            latestCSSICSSISpaceWeatherFile.remove();
+            latestCSSICSSISpaceWeatherFile = File::Undefined();
         }
 
         if (temporaryDirectory.isDefined() && temporaryDirectory.exists())
@@ -669,7 +669,7 @@ File Manager::fetchLatestCSSISpaceWeather_()
         throw;
     }
 
-    return latestCSSISpaceWeatherFile;
+    return latestCSSICSSISpaceWeatherFile;
 }
 
 void Manager::lockLocalRepository(const Duration& aTimeout)

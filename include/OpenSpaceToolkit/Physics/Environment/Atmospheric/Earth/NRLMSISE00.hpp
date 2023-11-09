@@ -55,13 +55,13 @@ class NRLMSISE00
     enum class InputDataSourceType
     {
         ConstantFluxAndGeoMag,  ///< Use constant values for F10.7, F10.7a and Kp NRLMSISE00 input parameters
-        SpaceWeatherFile,  ///< Use historical and predicted values for F10.7, F10.7a and Kp NRLMSISE00 input parameters
+        CSSISpaceWeatherFile,  ///< Use historical and predicted values for F10.7, F10.7a and Kp NRLMSISE00 input parameters
     };
 
     /// @brief              Constructor
 
     NRLMSISE00(
-        const InputDataSourceType& anInputDataSourceType = InputDataSourceType::SpaceWeatherFile,
+        const InputDataSourceType& anInputDataSourceType = InputDataSourceType::CSSISpaceWeatherFile,
         const Real& aF107ConstantValue = EarthAtmosphericModel::defaultF107ConstantValue,
         const Real& af107aConstantValue = EarthAtmosphericModel::defaultF107AConstantValue,
         const Real& aKpConstantValue = EarthAtmosphericModel::defaultKpConstantValue,

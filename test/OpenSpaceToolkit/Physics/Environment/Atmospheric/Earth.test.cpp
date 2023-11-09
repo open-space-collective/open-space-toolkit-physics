@@ -55,7 +55,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Constructor)
 
     {
         EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(
-            EarthAtmosphericModel::Type::NRLMSISE00, EarthAtmosphericModel::InputDataSourceType::SpaceWeatherFile
+            EarthAtmosphericModel::Type::NRLMSISE00, EarthAtmosphericModel::InputDataSourceType::CSSISpaceWeatherFile
         ));
     }
 
@@ -157,9 +157,9 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetInputDataSourceT
 
     {
         EXPECT_EQ(
-            EarthAtmosphericModel::InputDataSourceType::SpaceWeatherFile,
+            EarthAtmosphericModel::InputDataSourceType::CSSISpaceWeatherFile,
             EarthAtmosphericModel(
-                EarthAtmosphericModel::Type::NRLMSISE00, EarthAtmosphericModel::InputDataSourceType::SpaceWeatherFile
+                EarthAtmosphericModel::Type::NRLMSISE00, EarthAtmosphericModel::InputDataSourceType::CSSISpaceWeatherFile
             )
                 .getInputDataSourceType()
         );
@@ -347,7 +347,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Frames
                  Instant::J2000(),
                  1e-15},
                 {EarthAtmosphericModel::Type::NRLMSISE00,
-                 EarthAtmosphericModel::InputDataSourceType::SpaceWeatherFile,
+                 EarthAtmosphericModel::InputDataSourceType::CSSISpaceWeatherFile,
                  LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Kilometers(500.0)),
                  Instant::DateTime(DateTime::Parse("2021-01-01 00:00:00"), Scale::UTC),
                  3.7e-15}
@@ -392,12 +392,12 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Solar)
             Tuple<EarthAtmosphericModel::Type, EarthAtmosphericModel::InputDataSourceType, LLA, Instant, Real>>
             testCases = {
                 {EarthAtmosphericModel::Type::NRLMSISE00,
-                 EarthAtmosphericModel::InputDataSourceType::SpaceWeatherFile,
+                 EarthAtmosphericModel::InputDataSourceType::CSSISpaceWeatherFile,
                  LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(350.0)),
                  Instant::DateTime(DateTime::Parse("2021-01-01 00:00:00"), Scale::UTC),
                  1e-15},
                 {EarthAtmosphericModel::Type::NRLMSISE00,
-                 EarthAtmosphericModel::InputDataSourceType::SpaceWeatherFile,
+                 EarthAtmosphericModel::InputDataSourceType::CSSISpaceWeatherFile,
                  LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Kilometers(300.0)),
                  Instant::DateTime(DateTime::Parse("2021-01-01 00:00:00"), Scale::UTC),
                  1e-15}

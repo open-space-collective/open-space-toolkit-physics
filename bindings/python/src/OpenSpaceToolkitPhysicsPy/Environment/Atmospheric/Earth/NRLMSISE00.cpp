@@ -55,5 +55,5 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_NRLMSISE00(p
     enum_<NRLMSISE00::InputDataSourceType>(nrlmsise, "InputDataSourceType")
 
         .value("ConstantFluxAndGeoMag", NRLMSISE00::InputDataSourceType::ConstantFluxAndGeoMag)
-        .value("SpaceWeatherFile", NRLMSISE00::InputDataSourceType::SpaceWeatherFile);
+        .value("CSSISpaceWeatherFile", NRLMSISE00::InputDataSourceType::CSSISpaceWeatherFile);
 }

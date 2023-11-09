@@ -346,12 +346,12 @@ Unique<Earth::Impl> Earth::ImplFromType(
                 aSunCelestialSPtr
             );
         }
-        else if (anInputDataSourceType == Earth::InputDataSourceType::SpaceWeatherFile)
+        else if (anInputDataSourceType == Earth::InputDataSourceType::CSSISpaceWeatherFile)
         {
             return std::make_unique<NRLMSISE00Impl>(
                 aType,
                 anInputDataSourceType,
-                NRLMSISE00::InputDataSourceType::SpaceWeatherFile,
+                NRLMSISE00::InputDataSourceType::CSSISpaceWeatherFile,
                 aF107ConstantValue,
                 aF107AConstantValue,
                 aKpConstantValue,
