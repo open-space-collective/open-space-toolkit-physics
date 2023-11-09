@@ -45,7 +45,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Constructor)
 
     {
         EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(
-            EarthAtmosphericModel::Type::Exponential, EarthAtmosphericModel::InputDataSourceType::Undefined
+            EarthAtmosphericModel::Type::Exponential, EarthAtmosphericModel::InputDataType::Undefined
         ));
     }
 
@@ -55,14 +55,14 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Constructor)
 
     {
         EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(
-            EarthAtmosphericModel::Type::NRLMSISE00, EarthAtmosphericModel::InputDataSourceType::CSSISpaceWeatherFile
+            EarthAtmosphericModel::Type::NRLMSISE00, EarthAtmosphericModel::InputDataType::CSSISpaceWeatherFile
         ));
     }
 
     {
         EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(
             EarthAtmosphericModel::Type::NRLMSISE00,
-            EarthAtmosphericModel::InputDataSourceType::ConstantFluxAndGeoMag,
+            EarthAtmosphericModel::InputDataType::ConstantFluxAndGeoMag,
             150.0,
             150.0,
             3.0
@@ -72,7 +72,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Constructor)
     {
         EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(
             EarthAtmosphericModel::Type::NRLMSISE00,
-            EarthAtmosphericModel::InputDataSourceType::ConstantFluxAndGeoMag,
+            EarthAtmosphericModel::InputDataType::ConstantFluxAndGeoMag,
             150.0,
             150.0,
             3.0,
@@ -82,13 +82,13 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Constructor)
 
     {
         EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(
-            EarthAtmosphericModel::Type::NRLMSISE00, EarthAtmosphericModel::InputDataSourceType::ConstantFluxAndGeoMag
+            EarthAtmosphericModel::Type::NRLMSISE00, EarthAtmosphericModel::InputDataType::ConstantFluxAndGeoMag
         ));
     }
 
     {
-        EXPECT_ANY_THROW(EarthAtmosphericModel earthAtmosphericModel(
-            EarthAtmosphericModel::Type::NRLMSISE00, EarthAtmosphericModel::InputDataSourceType::Undefined
+        EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(
+            EarthAtmosphericModel::Type::NRLMSISE00, EarthAtmosphericModel::InputDataType::Undefined  // Using default InputDataType
         ));
     }
 }
@@ -143,36 +143,36 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetType)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetInputDataSourceType)
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetInputDataType)
 {
     {
         EXPECT_EQ(
-            EarthAtmosphericModel::InputDataSourceType::Undefined,
+            EarthAtmosphericModel::InputDataType::Undefined,
             EarthAtmosphericModel(
-                EarthAtmosphericModel::Type::Exponential, EarthAtmosphericModel::InputDataSourceType::Undefined
+                EarthAtmosphericModel::Type::Exponential, EarthAtmosphericModel::InputDataType::Undefined
             )
-                .getInputDataSourceType()
+                .getInputDataType()
         );
     }
 
     {
         EXPECT_EQ(
-            EarthAtmosphericModel::InputDataSourceType::CSSISpaceWeatherFile,
+            EarthAtmosphericModel::InputDataType::CSSISpaceWeatherFile,
             EarthAtmosphericModel(
-                EarthAtmosphericModel::Type::NRLMSISE00, EarthAtmosphericModel::InputDataSourceType::CSSISpaceWeatherFile
+                EarthAtmosphericModel::Type::NRLMSISE00, EarthAtmosphericModel::InputDataType::CSSISpaceWeatherFile
             )
-                .getInputDataSourceType()
+                .getInputDataType()
         );
     }
 
     {
         EXPECT_EQ(
-            EarthAtmosphericModel::InputDataSourceType::ConstantFluxAndGeoMag,
+            EarthAtmosphericModel::InputDataType::ConstantFluxAndGeoMag,
             EarthAtmosphericModel(
                 EarthAtmosphericModel::Type::NRLMSISE00,
-                EarthAtmosphericModel::InputDataSourceType::ConstantFluxAndGeoMag
+                EarthAtmosphericModel::InputDataType::ConstantFluxAndGeoMag
             )
-                .getInputDataSourceType()
+                .getInputDataType()
         );
     }
 }
@@ -324,30 +324,30 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Frames
 {
     {
         static const Array<
-            Tuple<EarthAtmosphericModel::Type, EarthAtmosphericModel::InputDataSourceType, LLA, Instant, Real>>
+            Tuple<EarthAtmosphericModel::Type, EarthAtmosphericModel::InputDataType, LLA, Instant, Real>>
             testCases = {
                 {EarthAtmosphericModel::Type::Exponential,
-                 EarthAtmosphericModel::InputDataSourceType::Undefined,
+                 EarthAtmosphericModel::InputDataType::Undefined,
                  LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(123.0)),
                  Instant::J2000(),
                  1e-13},
                 {EarthAtmosphericModel::Type::Exponential,
-                 EarthAtmosphericModel::InputDataSourceType::Undefined,
+                 EarthAtmosphericModel::InputDataType::Undefined,
                  LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(499.0)),
                  Instant::J2000(),
                  1e-15},
                 {EarthAtmosphericModel::Type::Exponential,
-                 EarthAtmosphericModel::InputDataSourceType::Undefined,
+                 EarthAtmosphericModel::InputDataType::Undefined,
                  LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(501.0)),
                  Instant::J2000(),
                  1e-15},
                 {EarthAtmosphericModel::Type::Exponential,
-                 EarthAtmosphericModel::InputDataSourceType::Undefined,
+                 EarthAtmosphericModel::InputDataType::Undefined,
                  LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(550.0)),
                  Instant::J2000(),
                  1e-15},
                 {EarthAtmosphericModel::Type::NRLMSISE00,
-                 EarthAtmosphericModel::InputDataSourceType::CSSISpaceWeatherFile,
+                 EarthAtmosphericModel::InputDataType::CSSISpaceWeatherFile,
                  LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Kilometers(500.0)),
                  Instant::DateTime(DateTime::Parse("2021-01-01 00:00:00"), Scale::UTC),
                  3.7e-15}
@@ -389,15 +389,15 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Solar)
 {
     {
         static const Array<
-            Tuple<EarthAtmosphericModel::Type, EarthAtmosphericModel::InputDataSourceType, LLA, Instant, Real>>
+            Tuple<EarthAtmosphericModel::Type, EarthAtmosphericModel::InputDataType, LLA, Instant, Real>>
             testCases = {
                 {EarthAtmosphericModel::Type::NRLMSISE00,
-                 EarthAtmosphericModel::InputDataSourceType::CSSISpaceWeatherFile,
+                 EarthAtmosphericModel::InputDataType::CSSISpaceWeatherFile,
                  LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(350.0)),
                  Instant::DateTime(DateTime::Parse("2021-01-01 00:00:00"), Scale::UTC),
                  1e-15},
                 {EarthAtmosphericModel::Type::NRLMSISE00,
-                 EarthAtmosphericModel::InputDataSourceType::CSSISpaceWeatherFile,
+                 EarthAtmosphericModel::InputDataType::CSSISpaceWeatherFile,
                  LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Kilometers(300.0)),
                  Instant::DateTime(DateTime::Parse("2021-01-01 00:00:00"), Scale::UTC),
                  1e-15}

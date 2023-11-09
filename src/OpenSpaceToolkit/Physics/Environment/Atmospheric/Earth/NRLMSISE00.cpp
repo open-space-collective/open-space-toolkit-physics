@@ -53,7 +53,7 @@ using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth
 using ostk::physics::environment::atmospheric::earth::Manager;
 
 NRLMSISE00::NRLMSISE00(
-    const InputDataSourceType& anInputDataSourceType,
+    const InputDataType& anInputDataType,
     const Real& aF107ConstantValue,
     const Real& aF107AConstantValue,
     const Real& aKpConstantValue,
@@ -62,7 +62,7 @@ NRLMSISE00::NRLMSISE00(
     const Real& anEarthFlattening,
     const Shared<Celestial>& aSunCelestialSPtr
 )
-    : inputDataSourceType_(anInputDataSourceType),
+    : inputDataSourceType_(anInputDataType),
       f107ConstantValue_(aF107ConstantValue),
       f107AConstantValue_(aF107AConstantValue),
       kpConstantValue_(aKpConstantValue),
@@ -89,7 +89,7 @@ Unique<NRLMSISE00::ap_array> NRLMSISE00::computeApArray(const Instant& anInstant
 
     switch (this->inputDataSourceType_)
     {
-        case InputDataSourceType::ConstantFluxAndGeoMag:
+        case InputDataType::ConstantFluxAndGeoMag:
         {
             // Use constant values for F10.7, F10.7a and Kp NRLMSISE00 input parameters
 
@@ -100,7 +100,7 @@ Unique<NRLMSISE00::ap_array> NRLMSISE00::computeApArray(const Instant& anInstant
             break;
         }
 
-        case InputDataSourceType::CSSISpaceWeatherFile:
+        case InputDataType::CSSISpaceWeatherFile:
         {
             // Use historical and predicted values for F10.7, F10.7a and Kp NRLMSISE00 input parameters
             //
@@ -201,7 +201,7 @@ Unique<NRLMSISE00::nrlmsise_input> NRLMSISE00::computeNRLMSISE00Input(
 
     switch (this->inputDataSourceType_)
     {
-        case InputDataSourceType::ConstantFluxAndGeoMag:
+        case InputDataType::ConstantFluxAndGeoMag:
         {
             // Use constant values for F10.7, F10.7a and Kp NRLMSISE00 input parameters
 
@@ -211,7 +211,7 @@ Unique<NRLMSISE00::nrlmsise_input> NRLMSISE00::computeNRLMSISE00Input(
             break;
         }
 
-        case InputDataSourceType::CSSISpaceWeatherFile:
+        case InputDataType::CSSISpaceWeatherFile:
         {
             // Use historical and predicted values for F10.7, F10.7a and Kp NRLMSISE00 input parameters
 
@@ -292,7 +292,7 @@ Real NRLMSISE00::convertKpToAp(const Real& aKp)
     return exp((aKp + 1.6) / 1.75);  // Exponential approximation, Vallado, 2nd edition (eq 8-31).
 }
 
-NRLMSISE00::InputDataSourceType NRLMSISE00::getInputDataSourceType() const
+NRLMSISE00::InputDataType NRLMSISE00::getInputDataType() const
 {
     return this->inputDataSourceType_;
 }
