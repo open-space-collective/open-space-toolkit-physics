@@ -141,7 +141,7 @@ class Manager
    protected:
     URL remoteUrl_;
 
-    Manifest manifest_;
+    mutable Manifest manifest_;
 
     Directory manifestRepository_;
     Duration manifestRepositoryLockTimeout_;
@@ -150,9 +150,10 @@ class Manager
 
     Manager();
 
-    void setup();
+    void setup_();
 
-    File fetchLatestManifestFile();
+    // virtual so we can mock in testing
+    virtual File fetchLatestManifestFile_() const;
 
     /// @brief                  Check the age of the manifest to determine if it should be updated before querying it
     /// for other data files.
@@ -162,14 +163,16 @@ class Manager
     ///                         - We are past the next predicted update for the manifest based on its own "manifest"
     ///                         entry.
 
-    void checkManifestAgeAndUpdate();
+    void checkManifestAgeAndUpdate_() const;
 
-    bool isManifestRepositoryLocked() const;
-    File getManifestRepositoryLockFile() const;
-    void lockManifestRepository(const Duration& aTimeout);
-    void unlockManifestRepository();
+    void loadManifest_(const Manifest& aManifest) const;
 
-    static Duration DefaultManifestRepositoryLockTimeout();
+    bool isManifestRepositoryLocked_() const;
+    File getManifestRepositoryLockFile_() const;
+    void lockManifestRepository_(const Duration& aTimeout) const;
+    void unlockManifestRepository_() const;
+
+    static Duration DefaultManifestRepositoryLockTimeout_();
 };
 
 }  // namespace data

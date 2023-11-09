@@ -112,6 +112,12 @@ class BulletinA
 
     const Date& accessReleaseDate() const;
 
+    /// @brief                  Access timestamp at which the BulletinA file was last modified
+    ///
+    /// @return                 Instant indicating when the file was last updated based on file modification time
+
+    const Instant& accessLastModifiedTimestamp() const;
+
     /// @brief                  Access TAI-UTC
     ///
     /// @return                 TAI-UTC
@@ -195,6 +201,7 @@ class BulletinA
 
    private:
     Date releaseDate_;
+    Instant lastModifiedTimestamp_;
 
     Duration taiMinusUtc_;
     Instant taiMinusUtcEpoch_;

@@ -12,6 +12,7 @@
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Finals2000A.hpp>
+#include <OpenSpaceToolkit/Physics/Data/Utilities.hpp>
 
 namespace ostk
 {
@@ -25,6 +26,8 @@ namespace provider
 {
 namespace iers
 {
+
+using ostk::physics::data::utilities::getFileModifiedInstant;
 
 std::ostream& operator<<(std::ostream& anOutputStream, const Finals2000A& aFinals2000A)
 {
@@ -46,6 +49,16 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Finals2000A& aFinal
 bool Finals2000A::isDefined() const
 {
     return !data_.empty();
+}
+
+const Instant& Finals2000A::accessLastModifiedTimestamp() const
+{
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Finals 2000A");
+    }
+
+    return lastModifiedTimestamp_;
 }
 
 Interval Finals2000A::getInterval() const
@@ -322,33 +335,12 @@ Finals2000A Finals2000A::Load(const fs::File& aFile)
 
     Finals2000A finals2000a;
 
+    finals2000a.lastModifiedTimestamp_ = getFileModifiedInstant(aFile);
+
     std::ifstream fileStream(aFile.getPath().toString());
 
     Index lineIndex = 0;
     String line;
-
-    // auto splitString = [] (const String& aString, char aDelimiter) -> Array<String>
-    // {
-
-    //     Array<String> aStringArray = Array<String>::Empty() ;
-
-    //     std::stringstream stringStream(aString) ;
-
-    //     String item ;
-
-    //     while (std::getline(stringStream, item, aDelimiter))
-    //     {
-
-    //         if (!item.empty())
-    //         {
-    //             aStringArray.add(item) ;
-    //         }
-
-    //     }
-
-    //     return aStringArray ;
-
-    // } ;
 
     auto parseReal = [](const String& aLine, const Index& aStartColumnNumber, const Index& anEndColumnNumber) -> Real
     {
@@ -450,7 +442,8 @@ Finals2000A Finals2000A::Load(const fs::File& aFile)
 }
 
 Finals2000A::Finals2000A()
-    : span_(Interval::Undefined()),
+    : lastModifiedTimestamp_(Instant::Undefined()),
+      span_(Interval::Undefined()),
       data_(Map<Real, Finals2000A::Data>())
 {
 }

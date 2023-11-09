@@ -20,15 +20,8 @@ using ostk::physics::time::Instant;
 using ostk::physics::time::DateTime;
 using ostk::physics::time::Duration;
 
-TEST(OpenSpaceToolkit_Physics_Data_Utilities, GetFileModifiedInstant)
+String runCommand(String commandString)
 {
-    // File choice is arbitrary
-    const File manifestFile = File::Path(Path::Parse("test/OpenSpaceToolkit/Physics/Data/Manifest/manifest.json"));
-
-    // Run the GNU "stat" command to compare. Not portable, so not appropriate for implementation, but useful for
-    // testing.
-    std::string commandString =
-        String::Format("stat --format=%.19y {}", manifestFile.getPath().getAbsolutePath().toString());
     std::array<char, 128> buffer;
     std::string result;
     std::unique_ptr<FILE, decltype(&pclose)> pipe(popen(commandString.c_str(), "r"), pclose);
@@ -41,7 +34,25 @@ TEST(OpenSpaceToolkit_Physics_Data_Utilities, GetFileModifiedInstant)
         result += buffer.data();
     }
 
-    String resultString = String(result).trim();
+    return String(result).trim();
+}
+
+TEST(OpenSpaceToolkit_Physics_Data_Utilities, GetFileModifiedInstant)
+{
+    const String repoToplevelPath = runCommand("git rev-parse --show-toplevel");
+
+    // File choice is arbitrary
+    const File manifestFile = File::Path(
+        Path::Parse(repoToplevelPath) + Path::Parse("test/OpenSpaceToolkit/Physics/Data/Manifest/manifest.json")
+    );
+
+    // Run the GNU "stat" command to compare. Not portable, so not appropriate for implementation, but useful for
+    // testing.
+    std::string commandString =
+        String::Format("stat --format=%.19y {}", manifestFile.getPath().getAbsolutePath().toString());
+
+    const String resultString = runCommand(commandString);
+
     Instant expectedInstant = Instant::DateTime(DateTime::Parse(resultString, DateTime::Format::Standard), Scale::UTC);
 
     const Instant actualInstant = ostk::physics::data::utilities::getFileModifiedInstant(manifestFile);

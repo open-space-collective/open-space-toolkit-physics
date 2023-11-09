@@ -129,27 +129,16 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetFina
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetBulletinAArray)
-{
-    {
-        EXPECT_NO_THROW(manager_.getBulletinAArray());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetBulletinAAt)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetBulletinA)
 {
     {
         manager_.loadBulletinA(bulletinA_);
 
-        EXPECT_NO_THROW(manager_.getBulletinAAt(bulletinA_.getObservationInterval().accessStart()));
-        EXPECT_NO_THROW(manager_.getBulletinAAt(bulletinA_.getObservationInterval().accessEnd()));
-
-        EXPECT_NO_THROW(manager_.getBulletinAAt(bulletinA_.getPredictionInterval().accessStart()));
-        EXPECT_NO_THROW(manager_.getBulletinAAt(bulletinA_.getPredictionInterval().accessEnd()));
+        EXPECT_NO_THROW(manager_.getBulletinA());
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetBulletinAAtFetch)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetBulletinAFetch)
 {
     // This test is not deterministic, as it depends on the remote server
     {
@@ -161,22 +150,13 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetBull
 
         BulletinA bulletinA = BulletinA::Load(bulletinAFile);
 
-        const Instant fetchTime = bulletinA.getObservationInterval().accessEnd() - Duration::Days(1);
-
         bulletinAFile.remove();
 
-        EXPECT_NO_THROW(manager_.getBulletinAAt(fetchTime));
+        EXPECT_NO_THROW(manager_.getBulletinA());
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetFinals2000AArray)
-{
-    {
-        EXPECT_NO_THROW(manager_.getFinals2000AArray());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetFinals2000AAt)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetFinals2000A)
 {
     {
         const File file = File::Path(Path::Parse(
@@ -187,19 +167,18 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetFina
 
         manager_.loadFinals2000A(finals2000a);
 
-        EXPECT_NO_THROW(manager_.getFinals2000AAt(finals2000a.getInterval().accessStart()));
-        EXPECT_NO_THROW(manager_.getFinals2000AAt(finals2000a.getInterval().accessEnd()));
+        EXPECT_NO_THROW(manager_.getFinals2000A());
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetFinals2000AAtFetch)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetFinals2000AFetch)
 {
     // This test is not deterministic, as it depends on the remote server
     {
         manager_.reset();
         manager_.clearLocalRepository();
 
-        EXPECT_NO_THROW(manager_.getFinals2000AAt(Instant::Now() - Duration::Days(5.0)));
+        EXPECT_NO_THROW(manager_.getFinals2000A());
 
         manager_.loadFinals2000A(finals2000A_);
     }
@@ -371,9 +350,8 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, LoadBul
 {
     {
         manager_.reset();
-        manager_.loadBulletinA(bulletinA_);
 
-        EXPECT_ANY_THROW(manager_.loadBulletinA(bulletinA_));
+        EXPECT_NO_THROW(manager_.loadBulletinA(bulletinA_));
         EXPECT_ANY_THROW(manager_.loadBulletinA(BulletinA::Undefined()));
     }
 }
@@ -390,7 +368,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, LoadFin
         manager_.reset();
         manager_.loadFinals2000A(finals2000a);
 
-        EXPECT_ANY_THROW(manager_.loadFinals2000A(finals2000a));
+        EXPECT_NO_THROW(manager_.loadFinals2000A(finals2000a));
         EXPECT_ANY_THROW(manager_.loadFinals2000A(Finals2000A::Undefined()));
     }
 }
@@ -432,10 +410,17 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, FetchLa
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, Reset)
 {
     {
+        manager_.loadBulletinA(bulletinA_);
+
+        EXPECT_TRUE(manager_.getBulletinA().isDefined());
+
         manager_.reset();
 
-        EXPECT_TRUE(manager_.getBulletinAArray().isEmpty());
-        EXPECT_TRUE(manager_.getFinals2000AArray().isEmpty());
+        manager_.setMode(Manager::Mode::Manual);
+
+        EXPECT_ANY_THROW(manager_.getBulletinA().isDefined());
+
+        manager_.setMode(Manager::Mode::Automatic);
     }
 }
 

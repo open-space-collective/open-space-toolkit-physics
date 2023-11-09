@@ -18,10 +18,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers_IERS_Manager(py
         .def("get_local_repository", &Manager::getLocalRepository)
         .def("get_bulletin_a_directory", &Manager::getBulletinADirectory)
         .def("get_finals_2000a_directory", &Manager::getFinals2000ADirectory)
-        .def("get_bulletin_a_array", &Manager::getBulletinAArray)
-        .def("get_bulletin_a_at", &Manager::getBulletinAAt, arg("instant"))
-        .def("get_finals_2000a_array", &Manager::getFinals2000AArray)
-        .def("get_finals_2000a_at", &Manager::getFinals2000AAt, arg("instant"))
+        .def("get_bulletin_a", &Manager::getBulletinA)
+        .def("get_finals_2000a", &Manager::getFinals2000A)
         .def("get_polar_motion_at", &Manager::getPolarMotionAt, arg("instant"))
         .def("get_ut1_minus_utc_at", &Manager::getUt1MinusUtcAt, arg("instant"))
         .def("get_lod_at", &Manager::getLodAt)
@@ -29,7 +27,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers_IERS_Manager(py
         .def("set_mode", &Manager::setMode, arg("mode"))
         .def("set_local_repository", &Manager::setLocalRepository, arg("directory"))
 
-        .def("load_bulletin_a", &Manager::loadBulletinA, arg("bulletin_1"))
+        .def("load_bulletin_a", &Manager::loadBulletinA, arg("bulletin_a"))
         .def("load_finals_2000a", &Manager::loadFinals2000A, arg("finals_2000a"))
 
         .def("fetch_latest_bulletin_a", &Manager::fetchLatestBulletinA)

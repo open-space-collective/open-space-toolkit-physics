@@ -82,52 +82,32 @@ Directory Manager::getFinals2000ADirectory() const
     return Directory::Path(localRepository_.getPath() + Path::Parse("finals-2000A"));
 }
 
-Array<BulletinA> Manager::getBulletinAArray() const
+BulletinA Manager::getBulletinA() const
 {
-    return aBulletins_;
-}
-
-BulletinA Manager::getBulletinAAt(const Instant& anInstant) const
-{
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
     std::lock_guard<std::mutex> lock {mutex_};
 
-    const BulletinA* bulletinAPtr = this->accessBulletinAAt(anInstant);
+    const BulletinA* bulletinAPtr = accessBulletinA_();
 
     if (bulletinAPtr != nullptr)
     {
         return *bulletinAPtr;
     }
 
-    throw ostk::core::error::RuntimeError("Cannot obtain Bulletin A at [{}].", anInstant.toString());
+    throw ostk::core::error::RuntimeError("Cannot obtain Bulletin A.");
 }
 
-Array<Finals2000A> Manager::getFinals2000AArray() const
+Finals2000A Manager::getFinals2000A() const
 {
-    return finals2000aArray_;
-}
-
-Finals2000A Manager::getFinals2000AAt(const Instant& anInstant) const
-{
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
     std::lock_guard<std::mutex> lock {mutex_};
 
-    const Finals2000A* finals2000aPtr = this->accessFinals2000AAt(anInstant);
+    const Finals2000A* finals2000aPtr = accessFinals2000A_();
 
     if (finals2000aPtr != nullptr)
     {
         return *finals2000aPtr;
     }
 
-    throw ostk::core::error::RuntimeError("Cannot obtain Finals 2000A at [{}].", anInstant.toString());
+    throw ostk::core::error::RuntimeError("Cannot obtain Finals 2000A.");
 }
 
 Vector2d Manager::getPolarMotionAt(const Instant& anInstant) const
@@ -139,7 +119,14 @@ Vector2d Manager::getPolarMotionAt(const Instant& anInstant) const
 
     std::lock_guard<std::mutex> lock {mutex_};
 
-    const BulletinA* bulletinAPtr = this->accessBulletinAAt(anInstant);
+    // Try data in this order:
+    // 1. Bulletin A rapid service observations (released daily)
+    // 2. Bulletin A predictions (released daily)
+    // 3. Finals 2000A observations (released weekly)
+    //
+    // https://hpiers.obspm.fr/eoppc/bul/bulb/explanatory.html
+
+    const BulletinA* bulletinAPtr = this->accessBulletinA_();
 
     if (bulletinAPtr != nullptr)
     {
@@ -155,15 +142,9 @@ Vector2d Manager::getPolarMotionAt(const Instant& anInstant) const
 
             return {prediction.x, prediction.y};
         }
-        else
-        {
-            throw ostk::core::error::RuntimeError(
-                "Cannot obtain polar motion from Bulletin A at [{}].", anInstant.toString()
-            );
-        }
     }
 
-    const Finals2000A* finals2000aPtr = this->accessFinals2000AAt(anInstant);
+    const Finals2000A* finals2000aPtr = this->accessFinals2000A_();
 
     if (finals2000aPtr != nullptr)
     {
@@ -191,7 +172,14 @@ Real Manager::getUt1MinusUtcAt(const Instant& anInstant) const
 
     std::lock_guard<std::mutex> lock {mutex_};
 
-    const BulletinA* bulletinAPtr = this->accessBulletinAAt(anInstant);
+    // Try data in this order:
+    // 1. Bulletin A rapid service observations (released daily)
+    // 2. Bulletin A predictions (released daily)
+    // 3. Finals 2000A observations (released weekly)
+    //
+    // https://hpiers.obspm.fr/eoppc/bul/bulb/explanatory.html
+
+    const BulletinA* bulletinAPtr = this->accessBulletinA_();
 
     if (bulletinAPtr != nullptr)
     {
@@ -207,15 +195,9 @@ Real Manager::getUt1MinusUtcAt(const Instant& anInstant) const
 
             return prediction.ut1MinusUtc;
         }
-        else
-        {
-            throw ostk::core::error::RuntimeError(
-                "Cannot obtain UT1 - UTC from Bulletin A at [{}].", anInstant.toString()
-            );
-        }
     }
 
-    const Finals2000A* finals2000aPtr = this->accessFinals2000AAt(anInstant);
+    const Finals2000A* finals2000aPtr = this->accessFinals2000A_();
 
     if (finals2000aPtr != nullptr)
     {
@@ -236,7 +218,7 @@ Real Manager::getLodAt(const Instant& anInstant) const
 
     std::lock_guard<std::mutex> lock {mutex_};
 
-    const Finals2000A* finals2000aPtr = this->accessFinals2000AAt(anInstant);
+    const Finals2000A* finals2000aPtr = this->accessFinals2000A_();
 
     if (finals2000aPtr != nullptr)
     {
@@ -296,14 +278,14 @@ void Manager::loadFinals2000A(const Finals2000A& aFinals2000A)
     this->loadFinals2000A_(aFinals2000A);
 }
 
-File Manager::fetchLatestBulletinA()
+File Manager::fetchLatestBulletinA() const
 {
     std::lock_guard<std::mutex> lock {mutex_};
 
     return this->fetchLatestBulletinA_();
 }
 
-File Manager::fetchLatestFinals2000A()
+File Manager::fetchLatestFinals2000A() const
 {
     std::lock_guard<std::mutex> lock {mutex_};
 
@@ -314,21 +296,15 @@ void Manager::reset()
 {
     std::lock_guard<std::mutex> lock {mutex_};
 
-    aBulletinIndex_ = 0;
-    finals2000aIndex_ = 0;
-
-    bulletinAUpdateTimestamp_ = Instant::Undefined();
-    finals2000AUpdateTimestamp_ = Instant::Undefined();
-
-    aBulletins_.clear();
-    finals2000aArray_.clear();
+    bulletinA_ = BulletinA::Undefined();
+    finals2000A_ = Finals2000A::Undefined();
 }
 
 void Manager::clearLocalRepository()
 {
     localRepository_.remove();
 
-    this->setup();
+    this->setup_();
 }
 
 Manager& Manager::Get()
@@ -399,210 +375,13 @@ Manager::Manager(const Manager::Mode& aMode)
     : mode_(aMode),
       localRepository_(Manager::DefaultLocalRepository()),
       localRepositoryLockTimeout_(Manager::DefaultLocalRepositoryLockTimeout()),
-      aBulletins_(Array<BulletinA>::Empty()),
-      finals2000aArray_(Array<Finals2000A>::Empty()),
-      aBulletinIndex_(0),
-      finals2000aIndex_(0),
-      bulletinAUpdateTimestamp_(Instant::Undefined()),
-      finals2000AUpdateTimestamp_(Instant::Undefined())
+      bulletinA_(BulletinA::Undefined()),
+      finals2000A_(Finals2000A::Undefined())
 {
-    this->setup();
+    this->setup_();
 }
 
-bool Manager::isLocalRepositoryLocked() const
-{
-    return this->getLocalRepositoryLockFile().exists();
-}
-
-const BulletinA* Manager::accessBulletinAAt(const Instant& anInstant) const
-{
-    // Try cached loaded file
-
-    if (!aBulletins_.isEmpty())
-    {
-        const BulletinA& bulletinA = aBulletins_.at(aBulletinIndex_);
-
-        if (bulletinA.accessObservationInterval().contains(anInstant) ||
-            bulletinA.accessPredictionInterval().contains(anInstant
-            ))  // [TBI] Check that next observation bulletin available first
-        {
-            return &bulletinA;
-        }
-    }
-
-    // Try observation span of all loaded bulletin files
-
-    {
-        aBulletinIndex_ = 0;
-
-        for (const auto& bulletinA : aBulletins_)
-        {
-            if (bulletinA.accessObservationInterval().contains(anInstant))
-            {
-                return &bulletinA;
-            }
-
-            aBulletinIndex_++;
-        }
-    }
-
-    // Try fetching latest Bulletin A
-
-    if (mode_ == Manager::Mode::Automatic)
-    {
-        ManifestManager& manifestManager = ManifestManager::Get();
-
-        const Instant bulletinAManifestUpdateTimestamp =
-            manifestManager.getLastUpdateTimestampFor(bulletinAManifestName);
-
-        if ((!bulletinAUpdateTimestamp_.isDefined()) || (bulletinAUpdateTimestamp_ < bulletinAManifestUpdateTimestamp))
-        {
-            const File latestBulletinAFile = this->getLatestBulletinAFile();
-
-            if (latestBulletinAFile.isDefined())
-            {
-                bulletinAUpdateTimestamp_ = bulletinAManifestUpdateTimestamp;
-
-                const BulletinA bulletinA = BulletinA::Load(latestBulletinAFile);
-
-                if (bulletinA.accessObservationInterval().contains(anInstant))
-                {
-                    const_cast<Manager*>(this)->loadBulletinA_(bulletinA);
-
-                    aBulletinIndex_ = aBulletins_.getSize() - 1;
-
-                    return &aBulletins_.accessLast();
-                }
-            }
-        }
-    }
-
-    // Try prediction span of loaded bulletin files
-
-    {
-        aBulletinIndex_ = 0;
-
-        for (const auto& bulletinA : aBulletins_)
-        {
-            if (bulletinA.accessPredictionInterval().contains(anInstant))
-            {
-                return &bulletinA;
-            }
-
-            aBulletinIndex_++;
-        }
-    }
-
-    // No bulletin A found
-
-    {
-        aBulletinIndex_ = 0;
-
-        return nullptr;
-    }
-}
-
-const Finals2000A* Manager::accessFinals2000AAt(const Instant& anInstant) const
-{
-    // Try cached loaded file
-
-    if (!finals2000aArray_.isEmpty())
-    {
-        const Finals2000A& finals2000a = finals2000aArray_.at(finals2000aIndex_);
-
-        if (finals2000a.getInterval().contains(anInstant))
-        {
-            return &finals2000a;
-        }
-    }
-
-    // Try all loaded files
-
-    {
-        finals2000aIndex_ = 0;
-
-        for (const auto& finals2000a : finals2000aArray_)
-        {
-            if (finals2000a.getInterval().contains(anInstant))
-            {
-                return &finals2000a;
-            }
-
-            finals2000aIndex_++;
-        }
-    }
-
-    // Try fetching latest file
-
-    if (mode_ == Manager::Mode::Automatic)
-    {
-        ManifestManager& manifestManager = ManifestManager::Get();
-
-        const Instant finals2000AManifestUpdateTimestamp =
-            manifestManager.getLastUpdateTimestampFor(finals2000AManifestName);
-
-        if ((!finals2000AUpdateTimestamp_.isDefined()) ||
-            (finals2000AUpdateTimestamp_ < finals2000AManifestUpdateTimestamp))
-        {
-            const File latestFinals2000AFile = this->getLatestFinals2000AFile();
-
-            if (latestFinals2000AFile.isDefined())
-            {
-                finals2000AUpdateTimestamp_ = finals2000AManifestUpdateTimestamp;
-
-                const Finals2000A finals2000A = Finals2000A::Load(latestFinals2000AFile);
-
-                if (finals2000A.getInterval().contains(anInstant))
-                {
-                    const_cast<Manager*>(this)->loadFinals2000A_(finals2000A);
-
-                    finals2000aIndex_ = finals2000aArray_.getSize() - 1;
-
-                    return &finals2000aArray_.accessLast();
-                }
-            }
-        }
-    }
-
-    {
-        finals2000aIndex_ = 0;
-
-        return nullptr;
-    }
-}
-
-File Manager::getLocalRepositoryLockFile() const
-{
-    return File::Path(localRepository_.getPath() + Path::Parse(".lock"));
-}
-
-File Manager::getLatestBulletinAFile() const
-{
-    // Parse Bulletin A Directories, e.g.,
-    // `.open-space-toolkit/physics/coordinate/frame/providers/iers/Bulletin-A`.
-
-    if (this->getBulletinADirectory().containsFileWithName(bulletinAFileName))
-    {
-        return File::Path(this->getBulletinADirectory().getPath() + Path::Parse(bulletinAFileName));
-    }
-
-    return const_cast<Manager*>(this)->fetchLatestBulletinA_();
-}
-
-File Manager::getLatestFinals2000AFile() const
-{
-    // Parse Bulletin A Directories, e.g.,
-    // `.open-space-toolkit/physics/coordinate/frame/providers/iers/Bulletin-A`.
-
-    if (this->getFinals2000ADirectory().containsFileWithName(finals2000AFileName))
-    {
-        return File::Path(this->getFinals2000ADirectory().getPath() + Path::Parse(finals2000AFileName));
-    }
-
-    return const_cast<Manager*>(this)->fetchLatestFinals2000A_();
-}
-
-void Manager::setup()
+void Manager::setup_()
 {
     if (!localRepository_.exists())
     {
@@ -620,37 +399,188 @@ void Manager::setup()
     }
 }
 
-void Manager::loadBulletinA_(const BulletinA& aBulletinA)
+bool Manager::isLocalRepositoryLocked_() const
 {
-    for (const auto& bulletinA : aBulletins_)
-    {
-        if (bulletinA.accessReleaseDate() == aBulletinA.accessReleaseDate())
-        {
-            throw ostk::core::error::RuntimeError("Bulletin A already added.");
-        }
-    }
-
-    aBulletins_.add(aBulletinA);  // [TBI] Add in ascending time order
-
-    aBulletinIndex_ = 0;
+    return this->getLocalRepositoryLockFile_().exists();
 }
 
-void Manager::loadFinals2000A_(const Finals2000A& aFinals2000A)
+File Manager::getLocalRepositoryLockFile_() const
 {
-    for (const auto& finals2000a : finals2000aArray_)
-    {
-        if (finals2000a.getInterval() == aFinals2000A.getInterval())
-        {
-            throw ostk::core::error::RuntimeError("Finals 2000A already added.");
-        }
-    }
-
-    finals2000aArray_.add(aFinals2000A);  // [TBI] Add in ascending time order
-
-    finals2000aIndex_ = 0;
+    return File::Path(localRepository_.getPath() + Path::Parse(".lock"));
 }
 
-File Manager::fetchLatestBulletinA_()
+void Manager::lockLocalRepository_(const Duration& aTimeout) const
+{
+    std::cout << String::Format("Locking local repository [{}]...", localRepository_.toString()) << std::endl;
+
+    const auto tryLock = [](File& aLockFile) -> bool
+    {
+        if (!aLockFile.exists())  // [TBM] Should use system-wide semaphore instead (race condition can still occur)
+        {
+            try
+            {
+                aLockFile.create();
+
+                return true;
+            }
+            catch (...)
+            {
+                // Do nothing
+            }
+
+            return false;
+        }
+
+        return false;
+    };
+
+    const Instant timeoutInstant = Instant::Now() + aTimeout;
+
+    File lockFile = this->getLocalRepositoryLockFile_();
+
+    while (!tryLock(lockFile))
+    {
+        if (Instant::Now() >= timeoutInstant)
+        {
+            throw ostk::core::error::RuntimeError("Cannot lock local repository: timeout reached.");
+        }
+
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+    }
+}
+
+void Manager::unlockLocalRepository_() const
+{
+    std::cout << String::Format("Unlocking local repository [{}]...", localRepository_.toString()) << std::endl;
+
+    if (!this->isLocalRepositoryLocked_())
+    {
+        throw ostk::core::error::RuntimeError("Cannot unlock local repository: lock file does not exist.");
+    }
+
+    this->getLocalRepositoryLockFile_().remove();
+}
+
+void Manager::loadBulletinA_(const BulletinA& aBulletinA) const
+{
+    bulletinA_ = aBulletinA;
+}
+
+void Manager::loadFinals2000A_(const Finals2000A& aFinals2000A) const
+{
+    finals2000A_ = aFinals2000A;
+}
+
+const BulletinA* Manager::accessBulletinA_() const
+{
+    // If we've loaded a file, simply return it
+    if (bulletinA_.isDefined())
+    {
+        return &bulletinA_;
+    }
+
+    // If set to automatic, try to load or fetch the latest file
+    if (mode_ == Manager::Mode::Automatic)
+    {
+        // Try from file
+        File localBulletinAFile = File::Undefined();
+
+        if (this->getBulletinADirectory().containsFileWithName(bulletinAFileName))
+        {
+            localBulletinAFile = File::Path(this->getBulletinADirectory().getPath() + Path::Parse(bulletinAFileName));
+
+            // if the file exists locally, load and check timestamp against remote
+            const BulletinA bulletinA = BulletinA::Load(localBulletinAFile);
+
+            ManifestManager& manifestManager = ManifestManager::Get();
+
+            // When the file was last updated on the remote (this may trigger a manifest fetch)
+            const Instant bulletinARemoteUpdateTimestamp =
+                manifestManager.getLastUpdateTimestampFor(bulletinAManifestName);
+
+            // When the file was last updated locally
+            const Instant bulletinALocalUpdateTimestamp = bulletinA.accessLastModifiedTimestamp();
+
+            if (bulletinARemoteUpdateTimestamp > bulletinALocalUpdateTimestamp)
+            {
+                // if the remote file is newer, fetch it
+                localBulletinAFile = this->fetchLatestBulletinA_();
+            }
+        }
+        else
+        {
+            // if it doesn't exist, fetch latest from remote
+            localBulletinAFile = this->fetchLatestBulletinA_();
+        }
+
+        this->loadBulletinA_(BulletinA::Load(localBulletinAFile));
+
+        return &bulletinA_;
+    }
+
+    // No bulletin A found and unable to fetch
+
+    {
+        return nullptr;
+    }
+}
+
+const Finals2000A* Manager::accessFinals2000A_() const
+{
+    // If we've loaded a file, simply return it
+    if (finals2000A_.isDefined())
+    {
+        return &finals2000A_;
+    }
+
+    // If set to automatic, try to load or fetch the latest file
+    if (mode_ == Manager::Mode::Automatic)
+    {
+        // Try from file
+        File localFinals2000AFile = File::Undefined();
+
+        if (this->getFinals2000ADirectory().containsFileWithName(finals2000AFileName))
+        {
+            localFinals2000AFile =
+                File::Path(this->getFinals2000ADirectory().getPath() + Path::Parse(finals2000AFileName));
+
+            // if the file exists locally, load and check timestamp against remote
+            const Finals2000A finals2000A = Finals2000A::Load(localFinals2000AFile);
+
+            ManifestManager& manifestManager = ManifestManager::Get();
+
+            // When the file was last updated on the remote (this may trigger a manifest fetch)
+            const Instant finals2000ARemoteUpdateTimestamp =
+                manifestManager.getLastUpdateTimestampFor(finals2000AManifestName);
+
+            // When the file was last updated locally
+            const Instant finals2000ALocalUpdateTimestamp = finals2000A.accessLastModifiedTimestamp();
+
+            if (finals2000ARemoteUpdateTimestamp > finals2000ALocalUpdateTimestamp)
+            {
+                // if the remote file is newer, fetch it
+                localFinals2000AFile = this->fetchLatestFinals2000A_();
+            }
+        }
+        else
+        {
+            // if it doesn't exist, fetch latest from remote
+            localFinals2000AFile = this->fetchLatestFinals2000A_();
+        }
+
+        this->loadFinals2000A_(Finals2000A::Load(localFinals2000AFile));
+
+        return &finals2000A_;
+    }
+
+    // No finals 2000A found and unable to fetch
+
+    {
+        return nullptr;
+    }
+}
+
+File Manager::fetchLatestBulletinA_() const
 {
     std::cout << "Fetching latest Bulletin A..." << std::endl;
 
@@ -659,7 +589,7 @@ File Manager::fetchLatestBulletinA_()
     Directory temporaryDirectory =
         Directory::Path(this->getBulletinADirectory().getPath() + Path::Parse(temporaryDirectoryName));
 
-    this->lockLocalRepository(localRepositoryLockTimeout_);
+    this->lockLocalRepository_(localRepositoryLockTimeout_);
 
     const URL latestBulletinAUrl = manifestManager.getRemoteUrl() + bulletinARemotePath + bulletinAFileName;
 
@@ -705,10 +635,6 @@ File Manager::fetchLatestBulletinA_()
             );
         }
 
-        // Load Bulletin A from File
-
-        const BulletinA latestBulletinA = BulletinA::Load(latestBulletinAFile);
-
         // Move Bulletin A File into destination Directory,
         // e.g., `.open-space-toolkit/physics/coordinate/frame/providers/iers/bulletin-A/`.
 
@@ -718,7 +644,7 @@ File Manager::fetchLatestBulletinA_()
 
         temporaryDirectory.remove();
 
-        this->unlockLocalRepository();
+        this->unlockLocalRepository_();
 
         std::cout << String::Format(
                          "Bulletin A [{}] has been successfully fetched from [{}].",
@@ -747,7 +673,7 @@ File Manager::fetchLatestBulletinA_()
             temporaryDirectory.remove();
         }
 
-        this->unlockLocalRepository();
+        this->unlockLocalRepository_();
 
         throw;
     }
@@ -755,7 +681,7 @@ File Manager::fetchLatestBulletinA_()
     return latestBulletinAFile;
 }
 
-File Manager::fetchLatestFinals2000A_()
+File Manager::fetchLatestFinals2000A_() const
 {
     std::cout << "Fetching latest Finals 2000A..." << std::endl;
 
@@ -764,7 +690,7 @@ File Manager::fetchLatestFinals2000A_()
     Directory temporaryDirectory =
         Directory::Path(this->getFinals2000ADirectory().getPath() + Path::Parse(temporaryDirectoryName));
 
-    this->lockLocalRepository(localRepositoryLockTimeout_);
+    this->lockLocalRepository_(localRepositoryLockTimeout_);
 
     const URL latestFinals2000AUrl = manifestManager.getRemoteUrl() + finals2000ARemotePath + finals2000AFileName;
 
@@ -822,7 +748,7 @@ File Manager::fetchLatestFinals2000A_()
 
         temporaryDirectory.remove();
 
-        this->unlockLocalRepository();
+        this->unlockLocalRepository_();
 
         std::cout << String::Format(
                          "Finals 2000A [{}] has been successfully fetched from [{}].",
@@ -851,64 +777,12 @@ File Manager::fetchLatestFinals2000A_()
             temporaryDirectory.remove();
         }
 
-        this->unlockLocalRepository();
+        this->unlockLocalRepository_();
 
         throw;
     }
 
     return latestFinals2000AFile;
-}
-
-void Manager::lockLocalRepository(const Duration& aTimeout)
-{
-    std::cout << String::Format("Locking local repository [{}]...", localRepository_.toString()) << std::endl;
-
-    const auto tryLock = [](File& aLockFile) -> bool
-    {
-        if (!aLockFile.exists())  // [TBM] Should use system-wide semaphore instead (race condition can still occur)
-        {
-            try
-            {
-                aLockFile.create();
-
-                return true;
-            }
-            catch (...)
-            {
-                // Do nothing
-            }
-
-            return false;
-        }
-
-        return false;
-    };
-
-    const Instant timeoutInstant = Instant::Now() + aTimeout;
-
-    File lockFile = this->getLocalRepositoryLockFile();
-
-    while (!tryLock(lockFile))
-    {
-        if (Instant::Now() >= timeoutInstant)
-        {
-            throw ostk::core::error::RuntimeError("Cannot lock local repository: timeout reached.");
-        }
-
-        std::this_thread::sleep_for(std::chrono::seconds(1));
-    }
-}
-
-void Manager::unlockLocalRepository()
-{
-    std::cout << String::Format("Unlocking local repository [{}]...", localRepository_.toString()) << std::endl;
-
-    if (!this->isLocalRepositoryLocked())
-    {
-        throw ostk::core::error::RuntimeError("Cannot unlock local repository: lock file does not exist.");
-    }
-
-    this->getLocalRepositoryLockFile().remove();
 }
 
 }  // namespace iers

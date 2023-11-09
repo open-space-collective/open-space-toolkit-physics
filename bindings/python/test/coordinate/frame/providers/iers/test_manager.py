@@ -4,7 +4,6 @@ import pytest
 
 from datetime import datetime
 import pathlib
-import os
 
 from ostk.core.filesystem import Path
 from ostk.core.filesystem import File
@@ -51,25 +50,13 @@ class TestManager:
         assert isinstance(manager.get_finals_2000a_directory(), Directory)
         assert len(str(manager.get_finals_2000a_directory().to_string())) > 0
 
-    def test_get_bulletin_a_array_success(self, manager: Manager):
-        assert isinstance(manager.get_bulletin_a_array(), list)
-        assert len(manager.get_bulletin_a_array()) == 1
-
-    def test_get_bulletin_a_at_success(self, manager: Manager):
-        bulletin_a: BulletinA = manager.get_bulletin_a_at(
-            Instant.date_time(datetime(2020, 10, 24, 0, 0, 0), Scale.UTC)
-        )
+    def test_get_bulletin_a_success(self, manager: Manager):
+        bulletin_a: BulletinA = manager.get_bulletin_a()
 
         assert isinstance(bulletin_a, BulletinA)
 
-    def test_get_finals_2000a_array_success(self, manager: Manager):
-        assert isinstance(manager.get_finals_2000a_array(), list)
-        assert len(manager.get_finals_2000a_array()) == 0
-
-    def test_get_finals_2000a_at_success(self, manager: Manager):
-        finals_2000a: Finals2000A = manager.get_finals_2000a_at(
-            Instant.date_time(datetime(2020, 1, 1, 0, 0, 0), Scale.UTC)
-        )
+    def test_get_finals_2000a_success(self, manager: Manager):
+        finals_2000a: Finals2000A = manager.get_finals_2000a()
 
         assert isinstance(finals_2000a, Finals2000A)
 
@@ -160,22 +147,14 @@ class TestManager:
         )
 
     def test_load_bulletin_a_success(self, manager: Manager, bulletin_a: BulletinA):
-        assert len(manager.get_bulletin_a_array()) == 1
-
-        manager.reset()
-
-        assert len(manager.get_bulletin_a_array()) == 0
-
         manager.load_bulletin_a(bulletin_a)
 
-        assert len(manager.get_bulletin_a_array()) == 1
+        assert manager.get_bulletin_a().is_defined()
 
     def test_load_finals_2000a_success(self, manager: Manager, finals_2000a: Finals2000A):
-        assert len(manager.get_finals_2000a_array()) == 0
-
         manager.load_finals_2000a(finals_2000a)
 
-        assert len(manager.get_finals_2000a_array()) == 1
+        assert manager.get_finals_2000a().is_defined()
 
     def test_fetch_latest_bulletin_a_success(self, manager: Manager):
         file: File = manager.fetch_latest_bulletin_a()
@@ -194,11 +173,17 @@ class TestManager:
         file.remove()
 
     def test_reset_success(self, manager: Manager, bulletin_a: BulletinA):
-        assert len(manager.get_bulletin_a_array()) == 1
+        assert manager.get_bulletin_a().is_defined()
 
         manager.reset()
 
-        assert len(manager.get_bulletin_a_array()) == 0
+        # The get methods automatically load things if they are not loaded, so we set to manual
+        manager.set_mode(manager.Mode.Manual)
+
+        with pytest.raises(Exception):
+            manager.get_bulletin_a()
+
+        manager.set_mode(manager.Mode.Automatic)
 
     def test_clear_local_repository_success(self, manager: Manager):
         assert manager.get_local_repository().exists()
