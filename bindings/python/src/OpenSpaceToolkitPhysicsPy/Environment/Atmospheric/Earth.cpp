@@ -35,7 +35,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
             .def(
                 init<
                     const Earth::Type&,
-                    const Earth::InputDataSourceType&,
+                    const Earth::InputDataType&,
                     const Real&,
                     const Real&,
                     const Real&,
@@ -44,7 +44,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
                     const Real&,
                     const Shared<Celestial>&>(),
                 arg("type"),
-                arg("input_data_source_type"),
+                arg("input_data_type"),
                 arg("f107_constant_value") = 150.0,
                 arg("f107_average_constant_value") = 150.0,
                 arg("kp_constant_value") = 3.0,
@@ -56,7 +56,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
 
             .def("get_type", &Earth::getType)
 
-            .def("get_input_data_source_type", &Earth::getInputDataSourceType)
+            .def("get_input_data_type", &Earth::getInputDataType)
 
             .def("is_defined", &Earth::isDefined)
 
@@ -82,11 +82,11 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
             .value("Exponential", Earth::Type::Exponential)
             .value("NRLMSISE00", Earth::Type::NRLMSISE00);
 
-        enum_<Earth::InputDataSourceType>(earth_class, "InputDataSourceType")
+        enum_<Earth::InputDataType>(earth_class, "InputDataType")
 
-            .value("Undefined", Earth::InputDataSourceType::Undefined)
-            .value("ConstantFluxAndGeoMag", Earth::InputDataSourceType::ConstantFluxAndGeoMag)
-            .value("CSSISpaceWeatherFile", Earth::InputDataSourceType::CSSISpaceWeatherFile);
+            .value("Undefined", Earth::InputDataType::Undefined)
+            .value("ConstantFluxAndGeoMag", Earth::InputDataType::ConstantFluxAndGeoMag)
+            .value("CSSISpaceWeatherFile", Earth::InputDataType::CSSISpaceWeatherFile);
     }
 
     // Create "earth" python submodule

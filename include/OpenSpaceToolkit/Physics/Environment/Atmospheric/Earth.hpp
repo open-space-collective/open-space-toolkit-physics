@@ -52,7 +52,7 @@ class Earth : public Model
         NRLMSISE00,   ///< Navy Research Lab Mass Spectrometer and Incoherent Scatter Radar Exosphere 2000
     };
 
-    enum class InputDataSourceType
+    enum class InputDataType
     {
         Undefined,              ///< Undefined
         ConstantFluxAndGeoMag,  ///< Use constant values for F10.7, F10.7a and Kp NRLMSISE00 input parameters
@@ -62,7 +62,7 @@ class Earth : public Model
     /// @brief              Constructor
     ///
     /// @param              [in] aType An atmospheric model type
-    /// @param              [in] anInputDataSourceType An input data source type
+    /// @param              [in] anInputDataType An input data source type
     /// @param              [in] aF107ConstantValue A constant value for F10.7 input parameter
     /// @param              [in] aF107AConstantValue A constant value for F10.7a input parameter
     /// @param              [in] aKpConstantValue A constant value for Kp input parameter
@@ -73,7 +73,7 @@ class Earth : public Model
 
     Earth(
         const Earth::Type& aType,
-        const Earth::InputDataSourceType& anInputDataSourceType = Earth::InputDataSourceType::CSSISpaceWeatherFile,
+        const Earth::InputDataType& anInputDataType = Earth::InputDataType::CSSISpaceWeatherFile,
         const Real& aF107ConstantValue = defaultF107ConstantValue,
         const Real& aF107AConstantValue = defaultF107AConstantValue,
         const Real& aKpConstantValue = defaultKpConstantValue,
@@ -122,7 +122,7 @@ class Earth : public Model
     ///
     /// @return             Input data source type
 
-    Earth::InputDataSourceType getInputDataSourceType() const;
+    Earth::InputDataType getInputDataType() const;
 
     /// @brief              Get the atmospheric density value at a given position and instant
     ///
@@ -155,7 +155,7 @@ class Earth : public Model
 
     static Unique<Impl> ImplFromType(
         const Type& aType,
-        const InputDataSourceType& anInputDataSourceType,
+        const InputDataType& anInputDataType,
         const Real& aF107ConstantValue,
         const Real& aF107AConstantValue,
         const Real& aKpConstantValue,

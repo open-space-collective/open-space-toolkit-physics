@@ -23,7 +23,7 @@ from ostk.physics.environment.objects.celestial_bodies import Sun
 def earth_atmospheric_model_exponential() -> EarthAtmosphericModel:
     return EarthAtmosphericModel(
         EarthAtmosphericModel.Type.Exponential,
-        EarthAtmosphericModel.InputDataSourceType.Undefined,
+        EarthAtmosphericModel.InputDataType.Undefined,
     )
 
 
@@ -31,7 +31,7 @@ def earth_atmospheric_model_exponential() -> EarthAtmosphericModel:
 def earth_atmospheric_model_nrlmsise() -> EarthAtmosphericModel:
     return EarthAtmosphericModel(
         EarthAtmosphericModel.Type.NRLMSISE00,
-        EarthAtmosphericModel.InputDataSourceType.CSSISpaceWeatherFile,
+        EarthAtmosphericModel.InputDataType.CSSISpaceWeatherFile,
     )
 
 
@@ -39,7 +39,7 @@ class TestEarth:
     def test_constructor_success_with_type(self):
         earth_atmospheric_model = EarthAtmosphericModel(
             type=EarthAtmosphericModel.Type.Exponential,
-            input_data_source_type=EarthAtmosphericModel.InputDataSourceType.Undefined,
+            input_data_type=EarthAtmosphericModel.InputDataType.Undefined,
         )
 
         assert isinstance(earth_atmospheric_model, EarthAtmosphericModel)
@@ -47,7 +47,7 @@ class TestEarth:
     def test_constructor_success_exponential_with_params(self):
         earth_atmospheric_model = EarthAtmosphericModel(
             type=EarthAtmosphericModel.Type.Exponential,
-            input_data_source_type=EarthAtmosphericModel.InputDataSourceType.Undefined,
+            input_data_type=EarthAtmosphericModel.InputDataType.Undefined,
             f107_constant_value=160.0,
             f107_average_constant_value=160.0,
             kp_constant_value=4.0,
@@ -62,7 +62,7 @@ class TestEarth:
     def test_constructor_success_nrlmsise_file_with_params(self):
         earth_atmospheric_model = EarthAtmosphericModel(
             type=EarthAtmosphericModel.Type.NRLMSISE00,
-            input_data_source_type=EarthAtmosphericModel.InputDataSourceType.CSSISpaceWeatherFile,
+            input_data_type=EarthAtmosphericModel.InputDataType.CSSISpaceWeatherFile,
             earth_frame=Frame.ITRF(),
             earth_radius=EarthGravitationalModel.WGS84.equatorial_radius,
             earth_flattening=EarthGravitationalModel.WGS84.flattening,
@@ -73,7 +73,7 @@ class TestEarth:
     def test_constructor_success_nrlmsise_constant_with_params(self):
         earth_atmospheric_model = EarthAtmosphericModel(
             type=EarthAtmosphericModel.Type.NRLMSISE00,
-            input_data_source_type=EarthAtmosphericModel.InputDataSourceType.ConstantFluxAndGeoMag,
+            input_data_type=EarthAtmosphericModel.InputDataType.ConstantFluxAndGeoMag,
             f107_constant_value=160.0,
             f107_average_constant_value=160.0,
             kp_constant_value=4.0,
@@ -93,12 +93,12 @@ class TestEarth:
             == EarthAtmosphericModel.Type.Exponential
         )
 
-    def test_get_input_data_source_type_success(
+    def test_get_input_data_type_success(
         self, earth_atmospheric_model_exponential: EarthAtmosphericModel
     ):
         assert (
-            earth_atmospheric_model_exponential.get_input_data_source_type()
-            == EarthAtmosphericModel.InputDataSourceType.Undefined
+            earth_atmospheric_model_exponential.get_input_data_type()
+            == EarthAtmosphericModel.InputDataType.Undefined
         )
 
     def test_is_defined_success(

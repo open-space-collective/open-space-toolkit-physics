@@ -60,8 +60,8 @@ class NRLMSISE00Public : public NRLMSISE00
 {
    public:
     NRLMSISE00Public(
-        const NRLMSISE00::InputDataSourceType& anInputDataSourceType =
-            NRLMSISE00::InputDataSourceType::CSSISpaceWeatherFile,
+        const NRLMSISE00::InputDataType& anInputDataType =
+            NRLMSISE00::InputDataType::CSSISpaceWeatherFile,
         const Real& aF107ConstantValue = Real::Undefined(),
         const Real& aF107AConstantValue = Real::Undefined(),
         const Real& aKpConstantValue = Real::Undefined(),
@@ -71,7 +71,7 @@ class NRLMSISE00Public : public NRLMSISE00
         const Shared<Celestial>& aSunCelestialSPtr = nullptr
     )
         : NRLMSISE00(
-              anInputDataSourceType,
+              anInputDataType,
               aF107ConstantValue,
               aF107AConstantValue,
               aKpConstantValue,
@@ -98,11 +98,11 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Construc
     }
 
     {
-        EXPECT_NO_THROW(NRLMSISE00 nrlmsise = {NRLMSISE00::InputDataSourceType::CSSISpaceWeatherFile});
+        EXPECT_NO_THROW(NRLMSISE00 nrlmsise = {NRLMSISE00::InputDataType::CSSISpaceWeatherFile});
     }
 
     {
-        EXPECT_NO_THROW(NRLMSISE00 nrlmsise = {NRLMSISE00::InputDataSourceType::ConstantFluxAndGeoMag});
+        EXPECT_NO_THROW(NRLMSISE00 nrlmsise = {NRLMSISE00::InputDataType::ConstantFluxAndGeoMag});
     }
 }
 
@@ -127,39 +127,39 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, IsDefine
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Getters)
 {
     {
-        NRLMSISE00::InputDataSourceType inputDataSourceType = NRLMSISE00::InputDataSourceType::ConstantFluxAndGeoMag;
+        NRLMSISE00::InputDataType inputDataSourceType = NRLMSISE00::InputDataType::ConstantFluxAndGeoMag;
         Real f107ConstantValue = 200.0;
         Real f107AConstantValue = 205.0;
         Real kpConstantValue = 3.0;
 
         NRLMSISE00 nrlmsise = {inputDataSourceType, f107ConstantValue, f107AConstantValue, kpConstantValue};
 
-        EXPECT_EQ(inputDataSourceType, nrlmsise.getInputDataSourceType());
+        EXPECT_EQ(inputDataSourceType, nrlmsise.getInputDataType());
         EXPECT_EQ(f107ConstantValue, nrlmsise.getF107ConstantValue());
         EXPECT_EQ(f107AConstantValue, nrlmsise.getF107AConstantValue());
         EXPECT_EQ(kpConstantValue, nrlmsise.getKpConstantValue());
     }
 
     {
-        NRLMSISE00::InputDataSourceType inputDataSourceType = NRLMSISE00::InputDataSourceType::CSSISpaceWeatherFile;
+        NRLMSISE00::InputDataType inputDataSourceType = NRLMSISE00::InputDataType::CSSISpaceWeatherFile;
         Real f107ConstantValue = 200.0;
         Real f107AConstantValue = 205.0;
         Real kpConstantValue = 3.0;
 
         NRLMSISE00 nrlmsise = {inputDataSourceType, f107ConstantValue, f107AConstantValue, kpConstantValue};
 
-        EXPECT_EQ(inputDataSourceType, nrlmsise.getInputDataSourceType());
+        EXPECT_EQ(inputDataSourceType, nrlmsise.getInputDataType());
         EXPECT_EQ(f107ConstantValue, nrlmsise.getF107ConstantValue());
         EXPECT_EQ(f107AConstantValue, nrlmsise.getF107AConstantValue());
         EXPECT_EQ(kpConstantValue, nrlmsise.getKpConstantValue());
     }
 
     {
-        NRLMSISE00::InputDataSourceType inputDataSourceType = NRLMSISE00::InputDataSourceType::CSSISpaceWeatherFile;
+        NRLMSISE00::InputDataType inputDataSourceType = NRLMSISE00::InputDataType::CSSISpaceWeatherFile;
 
         NRLMSISE00 nrlmsise = {inputDataSourceType};
 
-        EXPECT_EQ(inputDataSourceType, nrlmsise.getInputDataSourceType());
+        EXPECT_EQ(inputDataSourceType, nrlmsise.getInputDataType());
         EXPECT_EQ(EarthAtmosphericModel::defaultF107ConstantValue, nrlmsise.getF107ConstantValue());
         EXPECT_EQ(
             EarthAtmosphericModel::defaultF107AConstantValue, nrlmsise.getF107AConstantValue()
@@ -183,8 +183,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeA
      */
 
     {
-        NRLMSISE00Public::InputDataSourceType inputDataSourceType =
-            NRLMSISE00Public::InputDataSourceType::ConstantFluxAndGeoMag;
+        NRLMSISE00Public::InputDataType inputDataSourceType =
+            NRLMSISE00Public::InputDataType::ConstantFluxAndGeoMag;
         Real f107ConstantValue = 200.0;
         Real f107AConstantValue = 205.0;
         Real kpConstantValue = -1.6;
@@ -425,7 +425,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
         Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
 
         const NRLMSISE00 nrlmsise = {
-            NRLMSISE00::InputDataSourceType::CSSISpaceWeatherFile,
+            NRLMSISE00::InputDataType::CSSISpaceWeatherFile,
             Real::Undefined(),
             Real::Undefined(),
             Real::Undefined(),
@@ -487,7 +487,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
 
     {
         const NRLMSISE00 nrlmsise = {
-            NRLMSISE00::InputDataSourceType::CSSISpaceWeatherFile,
+            NRLMSISE00::InputDataType::CSSISpaceWeatherFile,
             Real::Undefined(),
             Real::Undefined(),
             Real::Undefined(),
@@ -556,7 +556,7 @@ TEST(
         Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
 
         const NRLMSISE00 nrlmsise = {
-            NRLMSISE00::InputDataSourceType::CSSISpaceWeatherFile,
+            NRLMSISE00::InputDataType::CSSISpaceWeatherFile,
             Real::Undefined(),
             Real::Undefined(),
             Real::Undefined(),
@@ -627,7 +627,7 @@ TEST(
         Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
 
         const NRLMSISE00 nrlmsise = {
-            NRLMSISE00::InputDataSourceType::CSSISpaceWeatherFile,
+            NRLMSISE00::InputDataType::CSSISpaceWeatherFile,
             Real::Undefined(),
             Real::Undefined(),
             Real::Undefined(),
@@ -748,7 +748,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, OrekitGe
     {
         Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
         const NRLMSISE00Public nrlmsise = {
-            NRLMSISE00::InputDataSourceType::CSSISpaceWeatherFile,
+            NRLMSISE00::InputDataType::CSSISpaceWeatherFile,
             Real::Undefined(),
             Real::Undefined(),
             Real::Undefined(),
@@ -832,7 +832,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, OrekitGe
     {
         Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
         const NRLMSISE00Public nrlmsise = {
-            NRLMSISE00::InputDataSourceType::CSSISpaceWeatherFile,
+            NRLMSISE00::InputDataType::CSSISpaceWeatherFile,
             Real::Undefined(),
             Real::Undefined(),
             Real::Undefined(),
@@ -913,7 +913,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, OrekitGe
     {
         Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
         const NRLMSISE00Public nrlmsise = {
-            NRLMSISE00::InputDataSourceType::CSSISpaceWeatherFile,
+            NRLMSISE00::InputDataType::CSSISpaceWeatherFile,
             Real::Undefined(),
             Real::Undefined(),
             Real::Undefined(),
@@ -955,7 +955,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, OrekitGe
 
 TEST(
     OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00,
-    GetDensityConstantFluxAndGeoMagInputDataSourceType
+    GetDensityConstantFluxAndGeoMagInputDataType
 )
 {
     /*
@@ -963,7 +963,7 @@ TEST(
      * Inpout Data Source Type.
      */
     {
-        NRLMSISE00::InputDataSourceType inputDataSourceType = NRLMSISE00::InputDataSourceType::ConstantFluxAndGeoMag;
+        NRLMSISE00::InputDataType inputDataSourceType = NRLMSISE00::InputDataType::ConstantFluxAndGeoMag;
         Real f107ConstantValue = 200.0;
         Real f107AConstantValue = 205.0;
         Real kpConstantValue = -1.6;
