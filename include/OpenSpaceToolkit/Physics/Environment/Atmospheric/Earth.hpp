@@ -56,7 +56,7 @@ class Earth : public Model
     {
         Undefined,              ///< Undefined
         ConstantFluxAndGeoMag,  ///< Use constant values for F10.7, F10.7a and Kp NRLMSISE00 input parameters
-        CSSISpaceWeatherFile,  ///< Use historical and predicted values for F10.7, F10.7a and Kp NRLMSISE00 input parameters
+        CSSISpaceWeatherFile,   ///< Use historical and predicted values for F10.7, F10.7a and Kp NRLMSISE00 input parameters from CSSI
     };
 
     /// @brief              Constructor
