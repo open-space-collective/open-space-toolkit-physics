@@ -99,9 +99,7 @@ class TestEarth:
                     20,
                     20,
                 ),
-                (
-                    EarthAtmosphericModel.Type.Exponential,
-                ),
+                (EarthAtmosphericModel.Type.Exponential,),
                 (EarthMagneticModel.Type.Dipole,),
             ),
             (
@@ -111,9 +109,7 @@ class TestEarth:
                     20,
                     20,
                 ),
-                (
-                    EarthAtmosphericModel.Type.Exponential,
-                ),
+                (EarthAtmosphericModel.Type.Exponential,),
                 (EarthMagneticModel.Type.Dipole,),
             ),
             (
@@ -123,9 +119,7 @@ class TestEarth:
                     20,
                     20,
                 ),
-                (
-                    EarthAtmosphericModel.Type.Exponential,
-                ),
+                (EarthAtmosphericModel.Type.Exponential,),
                 (EarthMagneticModel.Type.Dipole,),
             ),
             (
@@ -135,9 +129,7 @@ class TestEarth:
                     20,
                     20,
                 ),
-                (
-                    EarthAtmosphericModel.Type.Exponential,
-                ),
+                (EarthAtmosphericModel.Type.Exponential,),
                 (EarthMagneticModel.Type.Dipole,),
             ),
             (
@@ -145,16 +137,12 @@ class TestEarth:
                     EarthGravitationalModel.Type.WGS84,
                     Directory.undefined(),
                 ),
-                (
-                    EarthAtmosphericModel.Type.Exponential,
-                ),
+                (EarthAtmosphericModel.Type.Exponential,),
                 (EarthMagneticModel.Type.Dipole,),
             ),
             (
                 (EarthGravitationalModel.Type.Spherical, Directory.undefined()),
-                (
-                    EarthAtmosphericModel.Type.Exponential,
-                ),
+                (EarthAtmosphericModel.Type.Exponential,),
                 (EarthMagneticModel.Type.Dipole,),
             ),
         ),

@@ -88,7 +88,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Constructor)
 
     {
         EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(
-            EarthAtmosphericModel::Type::NRLMSISE00, EarthAtmosphericModel::InputDataType::Undefined  // Using default InputDataType
+            EarthAtmosphericModel::Type::NRLMSISE00,
+            EarthAtmosphericModel::InputDataType::Undefined  // Using default InputDataType
         ));
     }
 }
@@ -169,8 +170,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetInputDataType)
         EXPECT_EQ(
             EarthAtmosphericModel::InputDataType::ConstantFluxAndGeoMag,
             EarthAtmosphericModel(
-                EarthAtmosphericModel::Type::NRLMSISE00,
-                EarthAtmosphericModel::InputDataType::ConstantFluxAndGeoMag
+                EarthAtmosphericModel::Type::NRLMSISE00, EarthAtmosphericModel::InputDataType::ConstantFluxAndGeoMag
             )
                 .getInputDataType()
         );
@@ -323,8 +323,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_LLA)
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Frames)
 {
     {
-        static const Array<
-            Tuple<EarthAtmosphericModel::Type, EarthAtmosphericModel::InputDataType, LLA, Instant, Real>>
+        static const Array<Tuple<EarthAtmosphericModel::Type, EarthAtmosphericModel::InputDataType, LLA, Instant, Real>>
             testCases = {
                 {EarthAtmosphericModel::Type::Exponential,
                  EarthAtmosphericModel::InputDataType::Undefined,
@@ -388,8 +387,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Frames
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Solar)
 {
     {
-        static const Array<
-            Tuple<EarthAtmosphericModel::Type, EarthAtmosphericModel::InputDataType, LLA, Instant, Real>>
+        static const Array<Tuple<EarthAtmosphericModel::Type, EarthAtmosphericModel::InputDataType, LLA, Instant, Real>>
             testCases = {
                 {EarthAtmosphericModel::Type::NRLMSISE00,
                  EarthAtmosphericModel::InputDataType::CSSISpaceWeatherFile,

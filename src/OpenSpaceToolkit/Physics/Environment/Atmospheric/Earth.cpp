@@ -314,7 +314,8 @@ Unique<Earth::Impl> Earth::ImplFromType(
     }
     else if (aType == Earth::Type::NRLMSISE00)
     {
-        if (anInputDataType == Earth::InputDataType::Undefined || anInputDataType == Earth::InputDataType::CSSISpaceWeatherFile)
+        if (anInputDataType == Earth::InputDataType::Undefined ||
+            anInputDataType == Earth::InputDataType::CSSISpaceWeatherFile)
         {
             return std::make_unique<NRLMSISE00Impl>(
                 aType,

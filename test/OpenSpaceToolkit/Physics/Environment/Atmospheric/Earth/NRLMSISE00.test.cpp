@@ -60,8 +60,7 @@ class NRLMSISE00Public : public NRLMSISE00
 {
    public:
     NRLMSISE00Public(
-        const NRLMSISE00::InputDataType& anInputDataType =
-            NRLMSISE00::InputDataType::CSSISpaceWeatherFile,
+        const NRLMSISE00::InputDataType& anInputDataType = NRLMSISE00::InputDataType::CSSISpaceWeatherFile,
         const Real& aF107ConstantValue = Real::Undefined(),
         const Real& aF107AConstantValue = Real::Undefined(),
         const Real& aKpConstantValue = Real::Undefined(),
@@ -183,8 +182,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeA
      */
 
     {
-        NRLMSISE00Public::InputDataType inputDataType =
-            NRLMSISE00Public::InputDataType::ConstantFluxAndGeoMag;
+        NRLMSISE00Public::InputDataType inputDataType = NRLMSISE00Public::InputDataType::ConstantFluxAndGeoMag;
         Real f107ConstantValue = 200.0;
         Real f107AConstantValue = 205.0;
         Real kpConstantValue = -1.6;
@@ -953,10 +951,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, OrekitGe
     }
 }
 
-TEST(
-    OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00,
-    GetDensityConstantFluxAndGeoMagInputDataType
-)
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensityConstantFluxAndGeoMagInputDataType)
 {
     /*
      * This test verifies that for a given position the density is the same for all instants for ConstantFluxAndGeoMag
