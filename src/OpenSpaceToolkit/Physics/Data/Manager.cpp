@@ -205,12 +205,12 @@ void Manager::checkManifestAgeAndUpdate_() const
         );
     }
 
-    Duration manifestAge = Instant::Now() - manifest_.getLastModifiedTimestamp();
+    const Duration manifestAge = Instant::Now() - manifest_.getLastModifiedTimestamp();
 
     // If loaded manifest is old enough, fetch a new one and load it.
-    if (nextUpdateCheckTimestamp < manifest_.getLastModifiedTimestamp() && manifestAge > DataRefreshRate())
+    if (nextUpdateCheckTimestamp < manifest_.getLastModifiedTimestamp() && manifestAge > DataRefreshRate_())
     {
-        File manifestFile = this->fetchLatestManifestFile_();
+        const File manifestFile = this->fetchLatestManifestFile_();
         this->loadManifest_(Manifest::Load(manifestFile));
     }
 }
@@ -401,7 +401,7 @@ Duration Manager::DefaultManifestRepositoryLockTimeout_()
     return defaultLocalRepositoryLockTimeout;
 }
 
-Duration Manager::DataRefreshRate()
+Duration Manager::DataRefreshRate_()
 {
     static const Duration defaultRefreshRate = Duration::Hours(OSTK_PHYSICS_DATA_REFRESH_RATE_H);
 
