@@ -276,8 +276,19 @@ Unique<NRLMSISE00::nrlmsise_input> NRLMSISE00::computeNRLMSISE00Input(
     input->lst = lst;
     input->f107A = f107Average;
     input->f107 = f107Previous;
-    input->ap = apValues->a[0];
-    input->ap_a = apValues.get();
+
+    if (apValues != nullptr)
+    {
+        input->ap = apValues->a[0];
+        input->ap_a = apValues.get();
+    }
+    else
+    {
+        const Real ap = this->convertKpToAp(this->kpConstantValue_);
+
+        input->ap = ap;
+        input->ap_a = nullptr;
+    }
 
     return input;
 }
@@ -314,7 +325,13 @@ Real NRLMSISE00::getKpConstantValue() const
 
 Real NRLMSISE00::getDensityAt(const LLA& aLLA, const Instant& anInstant) const
 {
-    const Unique<NRLMSISE00::ap_array> apValues = this->computeApArray(anInstant);
+    Unique<NRLMSISE00::ap_array> apValues = nullptr;
+
+    if (this->inputDataType_ == InputDataType::CSSISpaceWeatherFile)
+    {
+        apValues = this->computeApArray(anInstant);
+    }
+
     const Unique<NRLMSISE00::nrlmsise_input> input = this->computeNRLMSISE00Input(apValues, aLLA, anInstant);
 
     return NRLMSISE00::GetDensityAt(*input);
