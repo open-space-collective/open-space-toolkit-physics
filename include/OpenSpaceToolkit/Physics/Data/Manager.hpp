@@ -97,6 +97,7 @@ class Manager
     /// @brief                  Get the default manifest repository.
     ///
     /// @return                 Default manifest repository
+
     static Directory DefaultManifestRepository();
 
     /// @brief                  Get the remote data URL for a given data name.
@@ -125,6 +126,12 @@ class Manager
 
     void loadManifest(const Manifest& aManifest);
 
+    /// @brief                  Return true if a manifest file already exists in the directory
+    ///
+    /// @return                 True if manifest file exists
+
+    bool manifestFileExists() const;
+
     /// @brief                  Reset the manager.
     ///
     ///                         Unload the manifest file and forget manifest age.
@@ -134,9 +141,7 @@ class Manager
    protected:
     URL remoteUrl_;
 
-    Manifest manifest_;
-    mutable Instant manifestUpdateTimestamp_;  // TBI: instead of an update timestamp, track manifest updates within the
-                                               // manifest itself
+    mutable Manifest manifest_;
 
     Directory manifestRepository_;
     Duration manifestRepositoryLockTimeout_;
@@ -145,17 +150,29 @@ class Manager
 
     Manager();
 
-    void setup();
+    void setup_();
 
-    File fetchLatestManifestFile();
-    void checkManifestAgeAndUpdate();
+    // virtual so we can mock in testing
+    virtual File fetchLatestManifestFile_() const;
 
-    bool isManifestRepositoryLocked() const;
-    File getManifestRepositoryLockFile() const;
-    void lockManifestRepository(const Duration& aTimeout);
-    void unlockManifestRepository();
+    /// @brief                  Check the age of the manifest to determine if it should be updated before querying it
+    /// for other data files.
+    ///
+    ///                         We fetch the manifest file from the remote if:
+    ///                         - It does not exist locally
+    ///                         - We are past the next predicted update for the manifest based on its own "manifest"
+    ///                         entry.
 
-    static Duration DefaultManifestRepositoryLockTimeout();
+    void checkManifestAgeAndUpdate_() const;
+
+    void loadManifest_(const Manifest& aManifest) const;
+
+    bool isManifestRepositoryLocked_() const;
+    File getManifestRepositoryLockFile_() const;
+    void lockManifestRepository_(const Duration& aTimeout) const;
+    void unlockManifestRepository_() const;
+
+    static Duration DefaultManifestRepositoryLockTimeout_();
 };
 
 }  // namespace data

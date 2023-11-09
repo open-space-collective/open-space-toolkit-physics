@@ -95,31 +95,17 @@ class Manager
 
     Directory getFinals2000ADirectory() const;
 
-    /// @brief              Get array of Bulletin A
+    /// @brief              Get Bulletin A
     ///
-    /// @return             Array of Bulletin A
-
-    Array<BulletinA> getBulletinAArray() const;
-
-    /// @brief              Get Bulletin A at instant
-    ///
-    /// @param              [in] anInstant An instant
     /// @return             Bulletin A
 
-    BulletinA getBulletinAAt(const Instant& anInstant) const;
+    BulletinA getBulletinA() const;
 
-    /// @brief              Get array of Finals 2000A
+    /// @brief              Get Finals 2000A
     ///
-    /// @return             Array of Finals 2000A
-
-    Array<Finals2000A> getFinals2000AArray() const;
-
-    /// @brief              Get Finals 2000A at instant
-    ///
-    /// @param              [in] anInstant An instant
     /// @return             Finals 2000A
 
-    Finals2000A getFinals2000AAt(const Instant& anInstant) const;
+    Finals2000A getFinals2000A() const;
 
     /// @brief              Get polar motion at instant
     ///
@@ -170,17 +156,17 @@ class Manager
     ///
     /// @return             Latest Bulletin A file
 
-    File fetchLatestBulletinA();
+    File fetchLatestBulletinA() const;
 
     /// @brief              Fetch latest Finals 2000A file
     ///
     /// @return             Latest Finals 2000A file
 
-    File fetchLatestFinals2000A();
+    File fetchLatestFinals2000A() const;
 
     /// @brief              Reset manager
     ///
-    ///                     Unload all bulletins and clear cache.
+    ///                     Unload all bulletins.
 
     void reset();
 
@@ -227,44 +213,30 @@ class Manager
     Directory localRepository_;
     Duration localRepositoryLockTimeout_;
 
-    Array<BulletinA> aBulletins_;
-    Array<Finals2000A> finals2000aArray_;
+    mutable BulletinA bulletinA_;
+    mutable Finals2000A finals2000A_;
 
     mutable std::mutex mutex_;
 
-    mutable Index aBulletinIndex_;
-    mutable Index finals2000aIndex_;
-
-    mutable Instant bulletinAUpdateTimestamp_;
-    mutable Instant finals2000AUpdateTimestamp_;
-
     Manager(const Manager::Mode& aMode = Manager::DefaultMode());
 
-    bool isLocalRepositoryLocked() const;
+    void setup_();
 
-    File getLocalRepositoryLockFile() const;
+    bool isLocalRepositoryLocked_() const;
+    File getLocalRepositoryLockFile_() const;
+    void lockLocalRepository_(const Duration& aTimeout) const;
+    void unlockLocalRepository_() const;
 
-    const BulletinA* accessBulletinAAt(const Instant& anInstant) const;
+    // const private methods that modify mutable members
+    // none of these are mutex-protected, but are called exclusively by methods that are
+    void loadBulletinA_(const BulletinA& aBulletinA) const;
+    void loadFinals2000A_(const Finals2000A& aFinals2000A) const;
 
-    const Finals2000A* accessFinals2000AAt(const Instant& anInstant) const;
+    const BulletinA* accessBulletinA_() const;
+    const Finals2000A* accessFinals2000A_() const;
 
-    File getLatestBulletinAFile() const;
-
-    File getLatestFinals2000AFile() const;
-
-    void setup();
-
-    void loadBulletinA_(const BulletinA& aBulletinA);
-
-    void loadFinals2000A_(const Finals2000A& aFinals2000A);
-
-    File fetchLatestBulletinA_();
-
-    File fetchLatestFinals2000A_();
-
-    void lockLocalRepository(const Duration& aTimeout);
-
-    void unlockLocalRepository();
+    File fetchLatestBulletinA_() const;
+    File fetchLatestFinals2000A_() const;
 };
 
 }  // namespace iers

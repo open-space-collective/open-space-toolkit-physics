@@ -99,6 +99,12 @@ class Finals2000A
 
     bool isDefined() const;
 
+    /// @brief                  Access timestamp at which the BulletinA file was last modified
+    ///
+    /// @return                 Instant indicating when the file was last updated based on file modification time
+
+    const Instant& accessLastModifiedTimestamp() const;
+
     /// @brief                  Get data interval
     ///
     /// @return                 Data Intervalt of Instants
@@ -147,6 +153,7 @@ class Finals2000A
     static Finals2000A Load(const fs::File& aFile);
 
    private:
+    Instant lastModifiedTimestamp_;
     Interval span_;
     Map<Real, Finals2000A::Data> data_;
 
