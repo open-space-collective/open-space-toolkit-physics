@@ -41,6 +41,42 @@ class OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager : public 
     {
         this->bulletinA_ = BulletinA::Load(bulletinAFile_);
         this->finals2000A_ = Finals2000A::Load(finals2000AFile_);
+
+        // cache current directory environment variables
+        localRepositoryPath = std::getenv(localRepositoryVarName_);
+        fullDataPath_ = std::getenv(fullDataVarName_);
+        modeValue_ = std::getenv(modeVarName_);
+    }
+
+    virtual void TearDown()
+    {
+        // reset cached environment variables
+        if (fullDataPath_)
+        {
+            setenv(fullDataVarName_, fullDataPath_, true);
+        }
+        else
+        {
+            unsetenv(fullDataVarName_);
+        }
+
+        if (localRepositoryPath)
+        {
+            setenv(localRepositoryVarName_, localRepositoryPath, true);
+        }
+        else
+        {
+            unsetenv(localRepositoryVarName_);
+        }
+
+        if (modeValue_)
+        {
+            setenv(modeVarName_, modeValue_, true);
+        }
+        else
+        {
+            unsetenv(modeVarName_);
+        }
     }
 
     const File bulletinAFile_ =
@@ -55,6 +91,14 @@ class OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager : public 
     Finals2000A finals2000A_ = Finals2000A::Undefined();
 
     Manager& manager_ = Manager::Get();
+
+    const char* localRepositoryVarName_ = "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY";
+    const char* fullDataVarName_ = "OSTK_PHYSICS_DATA_LOCAL_REPOSITORY";
+    const char* modeVarName_ = "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE";
+
+    char* localRepositoryPath;
+    char* fullDataPath_;
+    char* modeValue_;
 };
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetMode)
@@ -399,40 +443,55 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, Get)
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, DefaultMode)
 {
-    const char* varName = "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE";
-    const char* localRepositoryPathEnv = std::getenv(varName);
-
     {
-        unsetenv(varName);
+        unsetenv(modeVarName_);
         EXPECT_EQ(Manager::Mode::Automatic, Manager::DefaultMode());
     }
     {
-        setenv(varName, "SuperUltraAutomatic", true);
+        setenv(modeVarName_, "SuperUltraAutomatic", true);
         EXPECT_THROW(Manager::DefaultMode(), ostk::core::error::runtime::Wrong);
     }
     {
-        setenv(varName, "Automatic", true);
+        setenv(modeVarName_, "Automatic", true);
         EXPECT_EQ(Manager::Mode::Automatic, Manager::DefaultMode());
     }
     {
-        setenv(varName, "Manual", true);
+        setenv(modeVarName_, "Manual", true);
         EXPECT_EQ(Manager::Mode::Manual, Manager::DefaultMode());
-    }
-
-    if (localRepositoryPathEnv)
-    {
-        setenv(varName, localRepositoryPathEnv, true);
-    }
-    else
-    {
-        unsetenv(varName);
     }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, DefaultLocalRepository)
 {
     {
-        EXPECT_EQ("iers", Manager::DefaultLocalRepository().getName());
+        unsetenv(localRepositoryVarName_);
+        unsetenv(fullDataVarName_);
+
+        EXPECT_EQ(
+            Manager::DefaultLocalRepository(),
+            Directory::Path(Path::Parse("./.open-space-toolkit/physics/data/coordinate/frame/providers/iers"))
+        );
+    }
+
+    {
+        unsetenv(localRepositoryVarName_);
+        unsetenv(fullDataVarName_);
+
+        setenv(fullDataVarName_, "/tmp", true);
+
+        EXPECT_EQ(
+            Manager::DefaultLocalRepository(), Directory::Path(Path::Parse("/tmp/coordinate/frame/providers/iers"))
+        );
+    }
+
+    {
+        unsetenv(localRepositoryVarName_);
+        unsetenv(fullDataVarName_);
+
+        setenv(fullDataVarName_, "/tmp", true);
+        setenv(localRepositoryVarName_, "/local_override", true);
+
+        EXPECT_EQ(Manager::DefaultLocalRepository(), Directory::Path(Path::Parse("/local_override")));
     }
 }
 

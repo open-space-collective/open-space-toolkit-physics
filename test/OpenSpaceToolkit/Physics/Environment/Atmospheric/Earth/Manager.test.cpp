@@ -38,10 +38,43 @@ class OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager : public ::
         // Default all tests to use local testing file to avoid accidental remote requests
         spaceWeather_ = CSSISpaceWeather::Load(spaceWeatherFile_);
         manager_.loadCSSISpaceWeather(spaceWeather_);
+
+        // cache current directory environment variables
+        localRepositoryPath = std::getenv(localRepositoryVarName_);
+        fullDataPath_ = std::getenv(fullDataVarName_);
+        modeValue_ = std::getenv(modeVarName_);
     }
 
-    void TearDown() override
+    virtual void TearDown()
     {
+        // reset cached environment variables
+        if (fullDataPath_)
+        {
+            setenv(fullDataVarName_, fullDataPath_, true);
+        }
+        else
+        {
+            unsetenv(fullDataVarName_);
+        }
+
+        if (localRepositoryPath)
+        {
+            setenv(localRepositoryVarName_, localRepositoryPath, true);
+        }
+        else
+        {
+            unsetenv(localRepositoryVarName_);
+        }
+
+        if (modeValue_)
+        {
+            setenv(modeVarName_, modeValue_, true);
+        }
+        else
+        {
+            unsetenv(modeVarName_);
+        }
+
         // reset repository so other test suites do not use the test data
         manager_.reset();
     }
@@ -53,6 +86,14 @@ class OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager : public ::
     CSSISpaceWeather spaceWeather_ = CSSISpaceWeather::Undefined();
 
     Manager& manager_ = Manager::Get();
+
+    const char* localRepositoryVarName_ = "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY";
+    const char* fullDataVarName_ = "OSTK_PHYSICS_DATA_LOCAL_REPOSITORY";
+    const char* modeVarName_ = "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_MODE";
+
+    char* localRepositoryPath;
+    char* fullDataPath_;
+    char* modeValue_;
 };
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetMode)
@@ -465,40 +506,55 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, Get)
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, DefaultMode)
 {
-    const char* varName = "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_MODE";
-    const char* localRepositoryPathEnv = std::getenv(varName);
-
     {
-        unsetenv(varName);
+        unsetenv(modeVarName_);
         EXPECT_EQ(Manager::Mode::Automatic, Manager::DefaultMode());
     }
     {
-        setenv(varName, "SuperUltraAutomatic", true);
+        setenv(modeVarName_, "SuperUltraAutomatic", true);
         EXPECT_THROW(Manager::DefaultMode(), ostk::core::error::runtime::Wrong);
     }
     {
-        setenv(varName, "Automatic", true);
+        setenv(modeVarName_, "Automatic", true);
         EXPECT_EQ(Manager::Mode::Automatic, Manager::DefaultMode());
     }
     {
-        setenv(varName, "Manual", true);
+        setenv(modeVarName_, "Manual", true);
         EXPECT_EQ(Manager::Mode::Manual, Manager::DefaultMode());
-    }
-
-    if (localRepositoryPathEnv)
-    {
-        setenv(varName, localRepositoryPathEnv, true);
-    }
-    else
-    {
-        unsetenv(varName);
     }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, DefaultLocalRepository)
 {
     {
-        EXPECT_EQ("earth", Manager::DefaultLocalRepository().getName());
+        unsetenv(localRepositoryVarName_);
+        unsetenv(fullDataVarName_);
+
+        EXPECT_EQ(
+            Manager::DefaultLocalRepository(),
+            Directory::Path(Path::Parse("./.open-space-toolkit/physics/data/environment/atmospheric/earth"))
+        );
+    }
+
+    {
+        unsetenv(localRepositoryVarName_);
+        unsetenv(fullDataVarName_);
+
+        setenv(fullDataVarName_, "/tmp", true);
+
+        EXPECT_EQ(
+            Manager::DefaultLocalRepository(), Directory::Path(Path::Parse("/tmp/environment/atmospheric/earth"))
+        );
+    }
+
+    {
+        unsetenv(localRepositoryVarName_);
+        unsetenv(fullDataVarName_);
+
+        setenv(fullDataVarName_, "/tmp", true);
+        setenv(localRepositoryVarName_, "/local_override", true);
+
+        EXPECT_EQ(Manager::DefaultLocalRepository(), Directory::Path(Path::Parse("/local_override")));
     }
 }
 

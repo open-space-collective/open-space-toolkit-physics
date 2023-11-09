@@ -165,7 +165,9 @@ class TestEarth:
             EarthGravitationalModel(EarthGravitationalModel.Type.EGM2008)
         ).is_defined()
         assert Earth.atmospheric_only(
-            EarthAtmosphericModel(EarthAtmosphericModel.Type.Exponential)
+            EarthAtmosphericModel(
+                EarthAtmosphericModel.Type.Exponential,
+            )
         ).is_defined()
         assert Earth.magnetic_only(
             EarthMagneticModel(EarthMagneticModel.Type.WMM2010)

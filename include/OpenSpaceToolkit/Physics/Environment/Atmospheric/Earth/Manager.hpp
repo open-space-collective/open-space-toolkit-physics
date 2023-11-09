@@ -228,7 +228,7 @@ class Manager
 
     const CSSISpaceWeather* accessCSSISpaceWeatherAt(const Instant& anInstant) const;
 
-    File getLatestCSSISpaceWeatherFile() const;
+    File getLatestCSSICSSISpaceWeatherFile() const;
 
     void setup();
 
