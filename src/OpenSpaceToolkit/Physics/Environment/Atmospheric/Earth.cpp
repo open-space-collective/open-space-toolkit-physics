@@ -54,7 +54,7 @@ class Earth::Impl
 
    private:
     Earth::Type type_;
-    Earth::InputDataType inputDataSourceType_;
+    Earth::InputDataType inputDataType_;
 };
 
 Earth::Impl::Impl(
@@ -68,7 +68,7 @@ Earth::Impl::Impl(
       earthRadius_(anEarthRadius),
       earthFlattening_(anEarthFlattening),
       type_(aType),
-      inputDataSourceType_(anInputDataType)
+      inputDataType_(anInputDataType)
 {
 }
 
@@ -81,7 +81,7 @@ Earth::Type Earth::Impl::getType() const
 
 Earth::InputDataType Earth::Impl::getInputDataType() const
 {
-    return inputDataSourceType_;
+    return inputDataType_;
 }
 
 class Earth::ExponentialImpl : public Earth::Impl
