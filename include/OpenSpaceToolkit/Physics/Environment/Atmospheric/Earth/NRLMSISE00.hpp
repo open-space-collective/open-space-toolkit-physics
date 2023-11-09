@@ -187,7 +187,7 @@ class NRLMSISE00
     static Real convertKpToAp(const Real& aKp);
 
    private:
-    InputDataType inputDataSourceType_;
+    InputDataType inputDataType_;
     Real f107ConstantValue_;
     Real f107AConstantValue_;
     Real kpConstantValue_;

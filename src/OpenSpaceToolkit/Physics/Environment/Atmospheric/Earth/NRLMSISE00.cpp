@@ -62,7 +62,7 @@ NRLMSISE00::NRLMSISE00(
     const Real& anEarthFlattening,
     const Shared<Celestial>& aSunCelestialSPtr
 )
-    : inputDataSourceType_(anInputDataType),
+    : inputDataType_(anInputDataType),
       f107ConstantValue_(aF107ConstantValue),
       f107AConstantValue_(aF107AConstantValue),
       kpConstantValue_(aKpConstantValue),
@@ -87,7 +87,7 @@ Unique<NRLMSISE00::ap_array> NRLMSISE00::computeApArray(const Instant& anInstant
 {
     Unique<NRLMSISE00::ap_array> outputStruct = std::make_unique<NRLMSISE00::ap_array>();
 
-    switch (this->inputDataSourceType_)
+    switch (this->inputDataType_)
     {
         case InputDataType::ConstantFluxAndGeoMag:
         {
@@ -199,7 +199,7 @@ Unique<NRLMSISE00::nrlmsise_input> NRLMSISE00::computeNRLMSISE00Input(
     Real f107Previous = Real::Undefined();
     Real f107Average = Real::Undefined();
 
-    switch (this->inputDataSourceType_)
+    switch (this->inputDataType_)
     {
         case InputDataType::ConstantFluxAndGeoMag:
         {
@@ -294,7 +294,7 @@ Real NRLMSISE00::convertKpToAp(const Real& aKp)
 
 NRLMSISE00::InputDataType NRLMSISE00::getInputDataType() const
 {
-    return this->inputDataSourceType_;
+    return this->inputDataType_;
 }
 
 Real NRLMSISE00::getF107ConstantValue() const

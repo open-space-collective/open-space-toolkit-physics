@@ -127,39 +127,39 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, IsDefine
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Getters)
 {
     {
-        NRLMSISE00::InputDataType inputDataSourceType = NRLMSISE00::InputDataType::ConstantFluxAndGeoMag;
+        NRLMSISE00::InputDataType inputDataType = NRLMSISE00::InputDataType::ConstantFluxAndGeoMag;
         Real f107ConstantValue = 200.0;
         Real f107AConstantValue = 205.0;
         Real kpConstantValue = 3.0;
 
-        NRLMSISE00 nrlmsise = {inputDataSourceType, f107ConstantValue, f107AConstantValue, kpConstantValue};
+        NRLMSISE00 nrlmsise = {inputDataType, f107ConstantValue, f107AConstantValue, kpConstantValue};
 
-        EXPECT_EQ(inputDataSourceType, nrlmsise.getInputDataType());
+        EXPECT_EQ(inputDataType, nrlmsise.getInputDataType());
         EXPECT_EQ(f107ConstantValue, nrlmsise.getF107ConstantValue());
         EXPECT_EQ(f107AConstantValue, nrlmsise.getF107AConstantValue());
         EXPECT_EQ(kpConstantValue, nrlmsise.getKpConstantValue());
     }
 
     {
-        NRLMSISE00::InputDataType inputDataSourceType = NRLMSISE00::InputDataType::CSSISpaceWeatherFile;
+        NRLMSISE00::InputDataType inputDataType = NRLMSISE00::InputDataType::CSSISpaceWeatherFile;
         Real f107ConstantValue = 200.0;
         Real f107AConstantValue = 205.0;
         Real kpConstantValue = 3.0;
 
-        NRLMSISE00 nrlmsise = {inputDataSourceType, f107ConstantValue, f107AConstantValue, kpConstantValue};
+        NRLMSISE00 nrlmsise = {inputDataType, f107ConstantValue, f107AConstantValue, kpConstantValue};
 
-        EXPECT_EQ(inputDataSourceType, nrlmsise.getInputDataType());
+        EXPECT_EQ(inputDataType, nrlmsise.getInputDataType());
         EXPECT_EQ(f107ConstantValue, nrlmsise.getF107ConstantValue());
         EXPECT_EQ(f107AConstantValue, nrlmsise.getF107AConstantValue());
         EXPECT_EQ(kpConstantValue, nrlmsise.getKpConstantValue());
     }
 
     {
-        NRLMSISE00::InputDataType inputDataSourceType = NRLMSISE00::InputDataType::CSSISpaceWeatherFile;
+        NRLMSISE00::InputDataType inputDataType = NRLMSISE00::InputDataType::CSSISpaceWeatherFile;
 
-        NRLMSISE00 nrlmsise = {inputDataSourceType};
+        NRLMSISE00 nrlmsise = {inputDataType};
 
-        EXPECT_EQ(inputDataSourceType, nrlmsise.getInputDataType());
+        EXPECT_EQ(inputDataType, nrlmsise.getInputDataType());
         EXPECT_EQ(EarthAtmosphericModel::defaultF107ConstantValue, nrlmsise.getF107ConstantValue());
         EXPECT_EQ(
             EarthAtmosphericModel::defaultF107AConstantValue, nrlmsise.getF107AConstantValue()
@@ -183,13 +183,13 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeA
      */
 
     {
-        NRLMSISE00Public::InputDataType inputDataSourceType =
+        NRLMSISE00Public::InputDataType inputDataType =
             NRLMSISE00Public::InputDataType::ConstantFluxAndGeoMag;
         Real f107ConstantValue = 200.0;
         Real f107AConstantValue = 205.0;
         Real kpConstantValue = -1.6;
 
-        NRLMSISE00Public nrlmsise = {inputDataSourceType, f107ConstantValue, f107AConstantValue, kpConstantValue};
+        NRLMSISE00Public nrlmsise = {inputDataType, f107ConstantValue, f107AConstantValue, kpConstantValue};
 
         Array<Instant> instants = {
             Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC),
@@ -963,12 +963,12 @@ TEST(
      * Inpout Data Source Type.
      */
     {
-        NRLMSISE00::InputDataType inputDataSourceType = NRLMSISE00::InputDataType::ConstantFluxAndGeoMag;
+        NRLMSISE00::InputDataType inputDataType = NRLMSISE00::InputDataType::ConstantFluxAndGeoMag;
         Real f107ConstantValue = 200.0;
         Real f107AConstantValue = 205.0;
         Real kpConstantValue = -1.6;
 
-        NRLMSISE00 nrlmsise = {inputDataSourceType, f107ConstantValue, f107AConstantValue, kpConstantValue};
+        NRLMSISE00 nrlmsise = {inputDataType, f107ConstantValue, f107AConstantValue, kpConstantValue};
 
         Array<Instant> instants = {
             Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC),
