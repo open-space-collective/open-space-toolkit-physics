@@ -172,11 +172,10 @@ class Manager
 
     static Duration DefaultManifestRepositoryLockTimeout();
 
-    /// @brief                  Determines how often OSTk should do non-critical IO to freshen its data.
+    /// @brief                  Determine how often OSTk should do non-critical IO to freshen its data.
     /// We limit this by limiting how frequently the manifest file is updated.
     ///
-    ///
-    /// @return                 Frequency in hours. Default is 24. Overriden by the OSTK_PHYSICS_DATA_REFRESH_RATE
+    /// @return                 Frequency as a duration. Default is 24 hours. Overriden by the OSTK_PHYSICS_DATA_REFRESH_RATE
     /// environment variable.
 
     static Duration DataRefreshRate();
