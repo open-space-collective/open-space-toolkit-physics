@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <fstream>
 #include <numeric>
+#include <string>
 #include <thread>
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
@@ -177,7 +178,7 @@ void Manager::checkManifestAgeAndUpdate_() const
     if (!manifest_.isDefined() && !manifestFileExists())
     {
         // There is no file loaded in memory or on the local filesystem. Fetch and load.
-        File manifestFile = this->fetchLatestManifestFile_();
+        const File manifestFile = this->fetchLatestManifestFile_();
         this->loadManifest_(Manifest::Load(manifestFile));
 
         return;
@@ -199,15 +200,19 @@ void Manager::checkManifestAgeAndUpdate_() const
     }
     catch (ostk::core::error::RuntimeError& e)
     {
-        throw ostk::core::error::RuntimeError(
-            "Could not obtain key [manifest] from manifest file at {}", manifestRepository_.getPath().toString()
-        );
+        // If there is no "manifest" entry, the file may be old or corrupted. Fetch a new one.
+        const File manifestFile = this->fetchLatestManifestFile_();
+        this->loadManifest_(Manifest::Load(manifestFile));
+
+        nextUpdateCheckTimestamp = manifest_.getNextUpdateCheckTimestampFor("manifest");
     }
-    // If loaded manifest is too old, fetch a new one and load it.
-    // TBI: when a global throttle on the IO frequency is implemented, check that as well.
-    if (nextUpdateCheckTimestamp < manifest_.getLastModifiedTimestamp())
+
+    const Duration manifestAge = Instant::Now() - manifest_.getLastModifiedTimestamp();
+
+    // If loaded manifest is old enough, fetch a new one and load it.
+    if (nextUpdateCheckTimestamp < manifest_.getLastModifiedTimestamp() && manifestAge > DataRefreshRate_())
     {
-        File manifestFile = this->fetchLatestManifestFile_();
+        const File manifestFile = this->fetchLatestManifestFile_();
         this->loadManifest_(Manifest::Load(manifestFile));
     }
 }
@@ -396,6 +401,18 @@ Duration Manager::DefaultManifestRepositoryLockTimeout_()
     }
 
     return defaultLocalRepositoryLockTimeout;
+}
+
+Duration Manager::DataRefreshRate_()
+{
+    static const Duration defaultRefreshRate = Duration::Hours(OSTK_PHYSICS_DATA_REFRESH_RATE_H);
+
+    if (const char* defaultRefreshRateString = std::getenv("OSTK_PHYSICS_DATA_REFRESH_RATE_H"))
+    {
+        return Duration::Hours(std::stod(std::string(defaultRefreshRateString)));
+    }
+
+    return defaultRefreshRate;
 }
 
 URL Manager::DefaultRemoteUrl()

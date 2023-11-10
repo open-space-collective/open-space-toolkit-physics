@@ -20,9 +20,9 @@
 
 #define OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY_LOCK_TIMEOUT 60
 
-// Maximum age of the manifest file before it needs to be updated
-// TBI: This can be be made configurable
-#define OSTK_PHYSICS_DATA_MANAGER_MANIFEST_MAX_AGE_HOURS 24
+// Maximum frequency at which OSTk tries to freshen its data
+// Note: necessary data fetches still occur (i.e. if a data file is missing)
+#define OSTK_PHYSICS_DATA_REFRESH_RATE_H 24
 
 namespace ostk
 {
@@ -173,6 +173,15 @@ class Manager
     void unlockManifestRepository_() const;
 
     static Duration DefaultManifestRepositoryLockTimeout_();
+
+    /// @brief                  Determines how often OSTk should do non-critical IO to freshen its data.
+    /// We limit this by limiting how frequently the manifest file is updated.
+    ///
+    ///
+    /// @return                 Frequency in hours. Default is 24. Overriden by the OSTK_PHYSICS_DATA_REFRESH_RATE
+    /// environment variable.
+
+    static Duration DataRefreshRate_();
 };
 
 }  // namespace data
