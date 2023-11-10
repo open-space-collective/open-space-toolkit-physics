@@ -30,6 +30,8 @@ const \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manifest}{Manifest}} \mb
 \begin{DoxyCompactList}\small\item\em Get a copy of the current manifest file. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manager_ad0b4a0867fd62d83a026b0a7318c3585}{load\+Manifest}} (const \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manifest}{Manifest}} \&a\+Manifest)
 \begin{DoxyCompactList}\small\item\em Load a new manifest file. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manager_ab414941611d56f96a99dc10e8c007887}{manifest\+File\+Exists}} () const
+\begin{DoxyCompactList}\small\item\em Return true if a manifest file already exists in the directory. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manager_ac3b200a17a62cd55401266715fee4800}{reset}} ()
 \begin{DoxyCompactList}\small\item\em Reset the manager. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
@@ -46,33 +48,35 @@ static Directory \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manager_ac8d2
 \item 
 \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manager_a907c7c11c7cf2610aedbb581b5a0246e}{Manager}} ()
 \item 
-void \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manager_a8b1c628a33c2361e5c235fe860ec6cf2}{setup}} ()
+void \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manager_a01435f6afe1ed4293aa038dd1f814873}{setup\+\_\+}} ()
 \item 
-File \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manager_a3443fd2a6302497692fdc54b49901994}{fetch\+Latest\+Manifest\+File}} ()
+virtual File \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manager_a88f6ff812498f2eb7da1b2ebbdf8355c}{fetch\+Latest\+Manifest\+File\+\_\+}} () const
 \item 
-void \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manager_ad307b118150993e3e1a976c081428f8c}{check\+Manifest\+Age\+And\+Update}} ()
+void \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manager_a09e3ba01c300997c05a6984ed595608d}{check\+Manifest\+Age\+And\+Update\+\_\+}} () const
+\begin{DoxyCompactList}\small\item\em Check the age of the manifest to determine if it should be updated before querying it for other data files. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manager_a4f78aff80d2037f4de16eea4a5d46f36}{load\+Manifest\+\_\+}} (const \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manifest}{Manifest}} \&a\+Manifest) const
 \item 
-bool \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manager_a53277ad3ac9c58ce9008db4b2ec267ac}{is\+Manifest\+Repository\+Locked}} () const
+bool \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manager_a2ce226a11b3943cb3da78fdd93c4b6bf}{is\+Manifest\+Repository\+Locked\+\_\+}} () const
 \item 
-File \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manager_a849a27ea380ad87c65d137f07823dcf2}{get\+Manifest\+Repository\+Lock\+File}} () const
+File \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manager_a31c3182d23a0ce5cd36458a65d77eada}{get\+Manifest\+Repository\+Lock\+File\+\_\+}} () const
 \item 
-void \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manager_a1449debb6a02284866959a6d85374b89}{lock\+Manifest\+Repository}} (const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_duration}{Duration}} \&a\+Timeout)
+void \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manager_a7cef4a2ee4c553f25a4f6b4f94808b76}{lock\+Manifest\+Repository\+\_\+}} (const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_duration}{Duration}} \&a\+Timeout) const
 \item 
-void \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manager_a26685ba908a7087865cf353149b3b1a9}{unlock\+Manifest\+Repository}} ()
+void \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manager_ad78085c85df5b3085cd588b1ccaa69d2}{unlock\+Manifest\+Repository\+\_\+}} () const
 \end{DoxyCompactItemize}
 \doxysubsection*{Static Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_duration}{Duration}} \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manager_ab228ae8f471ac4e19401ea69162083d0}{Default\+Manifest\+Repository\+Lock\+Timeout}} ()
-\end{DoxyCompactItemize}
+static \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_duration}{Duration}} \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manager_a3b5e93e567f5cedc16f05a85ed2b34f5}{Default\+Manifest\+Repository\+Lock\+Timeout\+\_\+}} ()
+\item 
+static \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_duration}{Duration}} \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manager_af684c12b3a4ab9b1bcb7debc87a8fc31}{Data\+Refresh\+Rate\+\_\+}} ()
+\begin{DoxyCompactList}\small\item\em Determines how often O\+S\+Tk should do non-\/critical IO to freshen its data. We limit this by limiting how frequently the manifest file is updated. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
 U\+RL \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manager_a0a7c8b2954a7be15301424a3fb49f493}{remote\+Url\+\_\+}}
 \item 
 \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manifest}{Manifest}} \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manager_a867d317f04fed27362131c1a731f0cc4}{manifest\+\_\+}}
-\item 
-\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manager_ad53b2c4839a00b729669af8f0ddf2c02}{manifest\+Update\+Timestamp\+\_\+}}
 \item 
 Directory \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manager_a4543175e18e52d6392269411915044c5}{manifest\+Repository\+\_\+}}
 \item 
@@ -99,12 +103,34 @@ O\+S\+Tk Data manager base class (thread-\/safe)
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classostk_1_1physics_1_1data_1_1_manager_ad307b118150993e3e1a976c081428f8c}\label{classostk_1_1physics_1_1data_1_1_manager_ad307b118150993e3e1a976c081428f8c}} 
-\index{ostk::physics::data::Manager@{ostk::physics::data::Manager}!checkManifestAgeAndUpdate@{checkManifestAgeAndUpdate}}
-\index{checkManifestAgeAndUpdate@{checkManifestAgeAndUpdate}!ostk::physics::data::Manager@{ostk::physics::data::Manager}}
-\doxysubsubsection{\texorpdfstring{checkManifestAgeAndUpdate()}{checkManifestAgeAndUpdate()}}
-{\footnotesize\ttfamily void ostk\+::physics\+::data\+::\+Manager\+::check\+Manifest\+Age\+And\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+\mbox{\Hypertarget{classostk_1_1physics_1_1data_1_1_manager_a09e3ba01c300997c05a6984ed595608d}\label{classostk_1_1physics_1_1data_1_1_manager_a09e3ba01c300997c05a6984ed595608d}} 
+\index{ostk::physics::data::Manager@{ostk::physics::data::Manager}!checkManifestAgeAndUpdate\_@{checkManifestAgeAndUpdate\_}}
+\index{checkManifestAgeAndUpdate\_@{checkManifestAgeAndUpdate\_}!ostk::physics::data::Manager@{ostk::physics::data::Manager}}
+\doxysubsubsection{\texorpdfstring{checkManifestAgeAndUpdate\_()}{checkManifestAgeAndUpdate\_()}}
+{\footnotesize\ttfamily void ostk\+::physics\+::data\+::\+Manager\+::check\+Manifest\+Age\+And\+Update\+\_\+ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
 
+
+
+Check the age of the manifest to determine if it should be updated before querying it for other data files. 
+
+\begin{DoxyVerb}                    We fetch the manifest file from the remote if:
+                    - It does not exist locally
+                    - We are past the next predicted update for the manifest based on its own "manifest"
+                    entry. 
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classostk_1_1physics_1_1data_1_1_manager_af684c12b3a4ab9b1bcb7debc87a8fc31}\label{classostk_1_1physics_1_1data_1_1_manager_af684c12b3a4ab9b1bcb7debc87a8fc31}} 
+\index{ostk::physics::data::Manager@{ostk::physics::data::Manager}!DataRefreshRate\_@{DataRefreshRate\_}}
+\index{DataRefreshRate\_@{DataRefreshRate\_}!ostk::physics::data::Manager@{ostk::physics::data::Manager}}
+\doxysubsubsection{\texorpdfstring{DataRefreshRate\_()}{DataRefreshRate\_()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_duration}{Duration}} ostk\+::physics\+::data\+::\+Manager\+::\+Data\+Refresh\+Rate\+\_\+ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Determines how often O\+S\+Tk should do non-\/critical IO to freshen its data. We limit this by limiting how frequently the manifest file is updated. 
+
+\begin{DoxyReturn}{Returns}
+Frequency in hours. Default is 24. Overriden by the O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+D\+A\+T\+A\+\_\+\+R\+E\+F\+R\+E\+S\+H\+\_\+\+R\+A\+TE environment variable. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1data_1_1_manager_ac8d24a9fa535223bf82dffbaf85f13d3}\label{classostk_1_1physics_1_1data_1_1_manager_ac8d24a9fa535223bf82dffbaf85f13d3}} 
 \index{ostk::physics::data::Manager@{ostk::physics::data::Manager}!DefaultManifestRepository@{DefaultManifestRepository}}
 \index{DefaultManifestRepository@{DefaultManifestRepository}!ostk::physics::data::Manager@{ostk::physics::data::Manager}}
@@ -118,11 +144,11 @@ Get the default manifest repository.
 \begin{DoxyReturn}{Returns}
 Default manifest repository 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classostk_1_1physics_1_1data_1_1_manager_ab228ae8f471ac4e19401ea69162083d0}\label{classostk_1_1physics_1_1data_1_1_manager_ab228ae8f471ac4e19401ea69162083d0}} 
-\index{ostk::physics::data::Manager@{ostk::physics::data::Manager}!DefaultManifestRepositoryLockTimeout@{DefaultManifestRepositoryLockTimeout}}
-\index{DefaultManifestRepositoryLockTimeout@{DefaultManifestRepositoryLockTimeout}!ostk::physics::data::Manager@{ostk::physics::data::Manager}}
-\doxysubsubsection{\texorpdfstring{DefaultManifestRepositoryLockTimeout()}{DefaultManifestRepositoryLockTimeout()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_duration}{Duration}} ostk\+::physics\+::data\+::\+Manager\+::\+Default\+Manifest\+Repository\+Lock\+Timeout (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+\mbox{\Hypertarget{classostk_1_1physics_1_1data_1_1_manager_a3b5e93e567f5cedc16f05a85ed2b34f5}\label{classostk_1_1physics_1_1data_1_1_manager_a3b5e93e567f5cedc16f05a85ed2b34f5}} 
+\index{ostk::physics::data::Manager@{ostk::physics::data::Manager}!DefaultManifestRepositoryLockTimeout\_@{DefaultManifestRepositoryLockTimeout\_}}
+\index{DefaultManifestRepositoryLockTimeout\_@{DefaultManifestRepositoryLockTimeout\_}!ostk::physics::data::Manager@{ostk::physics::data::Manager}}
+\doxysubsubsection{\texorpdfstring{DefaultManifestRepositoryLockTimeout\_()}{DefaultManifestRepositoryLockTimeout\_()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_duration}{Duration}} ostk\+::physics\+::data\+::\+Manager\+::\+Default\+Manifest\+Repository\+Lock\+Timeout\+\_\+ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
 
 \mbox{\Hypertarget{classostk_1_1physics_1_1data_1_1_manager_a618894aa7be96805d67d5a73f1c0e9c8}\label{classostk_1_1physics_1_1data_1_1_manager_a618894aa7be96805d67d5a73f1c0e9c8}} 
 \index{ostk::physics::data::Manager@{ostk::physics::data::Manager}!DefaultRemoteUrl@{DefaultRemoteUrl}}
@@ -137,11 +163,11 @@ Get the default remote U\+RL for data fetching.
 \begin{DoxyReturn}{Returns}
 Default remote U\+RL 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classostk_1_1physics_1_1data_1_1_manager_a3443fd2a6302497692fdc54b49901994}\label{classostk_1_1physics_1_1data_1_1_manager_a3443fd2a6302497692fdc54b49901994}} 
-\index{ostk::physics::data::Manager@{ostk::physics::data::Manager}!fetchLatestManifestFile@{fetchLatestManifestFile}}
-\index{fetchLatestManifestFile@{fetchLatestManifestFile}!ostk::physics::data::Manager@{ostk::physics::data::Manager}}
-\doxysubsubsection{\texorpdfstring{fetchLatestManifestFile()}{fetchLatestManifestFile()}}
-{\footnotesize\ttfamily File ostk\+::physics\+::data\+::\+Manager\+::fetch\+Latest\+Manifest\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+\mbox{\Hypertarget{classostk_1_1physics_1_1data_1_1_manager_a88f6ff812498f2eb7da1b2ebbdf8355c}\label{classostk_1_1physics_1_1data_1_1_manager_a88f6ff812498f2eb7da1b2ebbdf8355c}} 
+\index{ostk::physics::data::Manager@{ostk::physics::data::Manager}!fetchLatestManifestFile\_@{fetchLatestManifestFile\_}}
+\index{fetchLatestManifestFile\_@{fetchLatestManifestFile\_}!ostk::physics::data::Manager@{ostk::physics::data::Manager}}
+\doxysubsubsection{\texorpdfstring{fetchLatestManifestFile\_()}{fetchLatestManifestFile\_()}}
+{\footnotesize\ttfamily File ostk\+::physics\+::data\+::\+Manager\+::fetch\+Latest\+Manifest\+File\+\_\+ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
 
 \mbox{\Hypertarget{classostk_1_1physics_1_1data_1_1_manager_a2810947fb2c42ebd8096dd5ac8a1971f}\label{classostk_1_1physics_1_1data_1_1_manager_a2810947fb2c42ebd8096dd5ac8a1971f}} 
 \index{ostk::physics::data::Manager@{ostk::physics::data::Manager}!findRemoteDataUrls@{findRemoteDataUrls}}
@@ -218,11 +244,11 @@ Get the manifest repository.
 \begin{DoxyReturn}{Returns}
 \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manifest}{Manifest}} repository 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classostk_1_1physics_1_1data_1_1_manager_a849a27ea380ad87c65d137f07823dcf2}\label{classostk_1_1physics_1_1data_1_1_manager_a849a27ea380ad87c65d137f07823dcf2}} 
-\index{ostk::physics::data::Manager@{ostk::physics::data::Manager}!getManifestRepositoryLockFile@{getManifestRepositoryLockFile}}
-\index{getManifestRepositoryLockFile@{getManifestRepositoryLockFile}!ostk::physics::data::Manager@{ostk::physics::data::Manager}}
-\doxysubsubsection{\texorpdfstring{getManifestRepositoryLockFile()}{getManifestRepositoryLockFile()}}
-{\footnotesize\ttfamily File ostk\+::physics\+::data\+::\+Manager\+::get\+Manifest\+Repository\+Lock\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+\mbox{\Hypertarget{classostk_1_1physics_1_1data_1_1_manager_a31c3182d23a0ce5cd36458a65d77eada}\label{classostk_1_1physics_1_1data_1_1_manager_a31c3182d23a0ce5cd36458a65d77eada}} 
+\index{ostk::physics::data::Manager@{ostk::physics::data::Manager}!getManifestRepositoryLockFile\_@{getManifestRepositoryLockFile\_}}
+\index{getManifestRepositoryLockFile\_@{getManifestRepositoryLockFile\_}!ostk::physics::data::Manager@{ostk::physics::data::Manager}}
+\doxysubsubsection{\texorpdfstring{getManifestRepositoryLockFile\_()}{getManifestRepositoryLockFile\_()}}
+{\footnotesize\ttfamily File ostk\+::physics\+::data\+::\+Manager\+::get\+Manifest\+Repository\+Lock\+File\+\_\+ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
 
 \mbox{\Hypertarget{classostk_1_1physics_1_1data_1_1_manager_a5906207482cf7feb7582e95495cee76a}\label{classostk_1_1physics_1_1data_1_1_manager_a5906207482cf7feb7582e95495cee76a}} 
 \index{ostk::physics::data::Manager@{ostk::physics::data::Manager}!getRemoteDataUrls@{getRemoteDataUrls}}
@@ -255,11 +281,11 @@ Get the remote U\+RL. This points to the base U\+RL for the O\+S\+Tk input data.
 \begin{DoxyReturn}{Returns}
 Remote U\+RL 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classostk_1_1physics_1_1data_1_1_manager_a53277ad3ac9c58ce9008db4b2ec267ac}\label{classostk_1_1physics_1_1data_1_1_manager_a53277ad3ac9c58ce9008db4b2ec267ac}} 
-\index{ostk::physics::data::Manager@{ostk::physics::data::Manager}!isManifestRepositoryLocked@{isManifestRepositoryLocked}}
-\index{isManifestRepositoryLocked@{isManifestRepositoryLocked}!ostk::physics::data::Manager@{ostk::physics::data::Manager}}
-\doxysubsubsection{\texorpdfstring{isManifestRepositoryLocked()}{isManifestRepositoryLocked()}}
-{\footnotesize\ttfamily bool ostk\+::physics\+::data\+::\+Manager\+::is\+Manifest\+Repository\+Locked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+\mbox{\Hypertarget{classostk_1_1physics_1_1data_1_1_manager_a2ce226a11b3943cb3da78fdd93c4b6bf}\label{classostk_1_1physics_1_1data_1_1_manager_a2ce226a11b3943cb3da78fdd93c4b6bf}} 
+\index{ostk::physics::data::Manager@{ostk::physics::data::Manager}!isManifestRepositoryLocked\_@{isManifestRepositoryLocked\_}}
+\index{isManifestRepositoryLocked\_@{isManifestRepositoryLocked\_}!ostk::physics::data::Manager@{ostk::physics::data::Manager}}
+\doxysubsubsection{\texorpdfstring{isManifestRepositoryLocked\_()}{isManifestRepositoryLocked\_()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::data\+::\+Manager\+::is\+Manifest\+Repository\+Locked\+\_\+ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
 
 \mbox{\Hypertarget{classostk_1_1physics_1_1data_1_1_manager_ad0b4a0867fd62d83a026b0a7318c3585}\label{classostk_1_1physics_1_1data_1_1_manager_ad0b4a0867fd62d83a026b0a7318c3585}} 
 \index{ostk::physics::data::Manager@{ostk::physics::data::Manager}!loadManifest@{loadManifest}}
@@ -276,12 +302,31 @@ Load a new manifest file.
 \mbox{\texttt{ in}}  & {\em a\+Manifest} & \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manifest}{Manifest}} file to load \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classostk_1_1physics_1_1data_1_1_manager_a1449debb6a02284866959a6d85374b89}\label{classostk_1_1physics_1_1data_1_1_manager_a1449debb6a02284866959a6d85374b89}} 
-\index{ostk::physics::data::Manager@{ostk::physics::data::Manager}!lockManifestRepository@{lockManifestRepository}}
-\index{lockManifestRepository@{lockManifestRepository}!ostk::physics::data::Manager@{ostk::physics::data::Manager}}
-\doxysubsubsection{\texorpdfstring{lockManifestRepository()}{lockManifestRepository()}}
-{\footnotesize\ttfamily void ostk\+::physics\+::data\+::\+Manager\+::lock\+Manifest\+Repository (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_duration}{Duration}} \&}]{a\+Timeout }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+\mbox{\Hypertarget{classostk_1_1physics_1_1data_1_1_manager_a4f78aff80d2037f4de16eea4a5d46f36}\label{classostk_1_1physics_1_1data_1_1_manager_a4f78aff80d2037f4de16eea4a5d46f36}} 
+\index{ostk::physics::data::Manager@{ostk::physics::data::Manager}!loadManifest\_@{loadManifest\_}}
+\index{loadManifest\_@{loadManifest\_}!ostk::physics::data::Manager@{ostk::physics::data::Manager}}
+\doxysubsubsection{\texorpdfstring{loadManifest\_()}{loadManifest\_()}}
+{\footnotesize\ttfamily void ostk\+::physics\+::data\+::\+Manager\+::load\+Manifest\+\_\+ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manifest}{Manifest}} \&}]{a\+Manifest }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
 
+\mbox{\Hypertarget{classostk_1_1physics_1_1data_1_1_manager_a7cef4a2ee4c553f25a4f6b4f94808b76}\label{classostk_1_1physics_1_1data_1_1_manager_a7cef4a2ee4c553f25a4f6b4f94808b76}} 
+\index{ostk::physics::data::Manager@{ostk::physics::data::Manager}!lockManifestRepository\_@{lockManifestRepository\_}}
+\index{lockManifestRepository\_@{lockManifestRepository\_}!ostk::physics::data::Manager@{ostk::physics::data::Manager}}
+\doxysubsubsection{\texorpdfstring{lockManifestRepository\_()}{lockManifestRepository\_()}}
+{\footnotesize\ttfamily void ostk\+::physics\+::data\+::\+Manager\+::lock\+Manifest\+Repository\+\_\+ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_duration}{Duration}} \&}]{a\+Timeout }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1data_1_1_manager_ab414941611d56f96a99dc10e8c007887}\label{classostk_1_1physics_1_1data_1_1_manager_ab414941611d56f96a99dc10e8c007887}} 
+\index{ostk::physics::data::Manager@{ostk::physics::data::Manager}!manifestFileExists@{manifestFileExists}}
+\index{manifestFileExists@{manifestFileExists}!ostk::physics::data::Manager@{ostk::physics::data::Manager}}
+\doxysubsubsection{\texorpdfstring{manifestFileExists()}{manifestFileExists()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::data\+::\+Manager\+::manifest\+File\+Exists (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Return true if a manifest file already exists in the directory. 
+
+\begin{DoxyReturn}{Returns}
+True if manifest file exists 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1data_1_1_manager_ac3b200a17a62cd55401266715fee4800}\label{classostk_1_1physics_1_1data_1_1_manager_ac3b200a17a62cd55401266715fee4800}} 
 \index{ostk::physics::data::Manager@{ostk::physics::data::Manager}!reset@{reset}}
 \index{reset@{reset}!ostk::physics::data::Manager@{ostk::physics::data::Manager}}
@@ -322,17 +367,17 @@ Set the remote U\+RL.
 \begin{DoxyReturn}{Returns}
 Remote U\+RL 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classostk_1_1physics_1_1data_1_1_manager_a8b1c628a33c2361e5c235fe860ec6cf2}\label{classostk_1_1physics_1_1data_1_1_manager_a8b1c628a33c2361e5c235fe860ec6cf2}} 
-\index{ostk::physics::data::Manager@{ostk::physics::data::Manager}!setup@{setup}}
-\index{setup@{setup}!ostk::physics::data::Manager@{ostk::physics::data::Manager}}
-\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
-{\footnotesize\ttfamily void ostk\+::physics\+::data\+::\+Manager\+::setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+\mbox{\Hypertarget{classostk_1_1physics_1_1data_1_1_manager_a01435f6afe1ed4293aa038dd1f814873}\label{classostk_1_1physics_1_1data_1_1_manager_a01435f6afe1ed4293aa038dd1f814873}} 
+\index{ostk::physics::data::Manager@{ostk::physics::data::Manager}!setup\_@{setup\_}}
+\index{setup\_@{setup\_}!ostk::physics::data::Manager@{ostk::physics::data::Manager}}
+\doxysubsubsection{\texorpdfstring{setup\_()}{setup\_()}}
+{\footnotesize\ttfamily void ostk\+::physics\+::data\+::\+Manager\+::setup\+\_\+ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
-\mbox{\Hypertarget{classostk_1_1physics_1_1data_1_1_manager_a26685ba908a7087865cf353149b3b1a9}\label{classostk_1_1physics_1_1data_1_1_manager_a26685ba908a7087865cf353149b3b1a9}} 
-\index{ostk::physics::data::Manager@{ostk::physics::data::Manager}!unlockManifestRepository@{unlockManifestRepository}}
-\index{unlockManifestRepository@{unlockManifestRepository}!ostk::physics::data::Manager@{ostk::physics::data::Manager}}
-\doxysubsubsection{\texorpdfstring{unlockManifestRepository()}{unlockManifestRepository()}}
-{\footnotesize\ttfamily void ostk\+::physics\+::data\+::\+Manager\+::unlock\+Manifest\+Repository (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+\mbox{\Hypertarget{classostk_1_1physics_1_1data_1_1_manager_ad78085c85df5b3085cd588b1ccaa69d2}\label{classostk_1_1physics_1_1data_1_1_manager_ad78085c85df5b3085cd588b1ccaa69d2}} 
+\index{ostk::physics::data::Manager@{ostk::physics::data::Manager}!unlockManifestRepository\_@{unlockManifestRepository\_}}
+\index{unlockManifestRepository\_@{unlockManifestRepository\_}!ostk::physics::data::Manager@{ostk::physics::data::Manager}}
+\doxysubsubsection{\texorpdfstring{unlockManifestRepository\_()}{unlockManifestRepository\_()}}
+{\footnotesize\ttfamily void ostk\+::physics\+::data\+::\+Manager\+::unlock\+Manifest\+Repository\+\_\+ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -341,7 +386,7 @@ Remote U\+RL
 \index{ostk::physics::data::Manager@{ostk::physics::data::Manager}!manifest\_@{manifest\_}}
 \index{manifest\_@{manifest\_}!ostk::physics::data::Manager@{ostk::physics::data::Manager}}
 \doxysubsubsection{\texorpdfstring{manifest\_}{manifest\_}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manifest}{Manifest}} ostk\+::physics\+::data\+::\+Manager\+::manifest\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manifest}{Manifest}} ostk\+::physics\+::data\+::\+Manager\+::manifest\+\_\+\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [protected]}}
 
 \mbox{\Hypertarget{classostk_1_1physics_1_1data_1_1_manager_a4543175e18e52d6392269411915044c5}\label{classostk_1_1physics_1_1data_1_1_manager_a4543175e18e52d6392269411915044c5}} 
 \index{ostk::physics::data::Manager@{ostk::physics::data::Manager}!manifestRepository\_@{manifestRepository\_}}
@@ -354,12 +399,6 @@ Remote U\+RL
 \index{manifestRepositoryLockTimeout\_@{manifestRepositoryLockTimeout\_}!ostk::physics::data::Manager@{ostk::physics::data::Manager}}
 \doxysubsubsection{\texorpdfstring{manifestRepositoryLockTimeout\_}{manifestRepositoryLockTimeout\_}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_duration}{Duration}} ostk\+::physics\+::data\+::\+Manager\+::manifest\+Repository\+Lock\+Timeout\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{classostk_1_1physics_1_1data_1_1_manager_ad53b2c4839a00b729669af8f0ddf2c02}\label{classostk_1_1physics_1_1data_1_1_manager_ad53b2c4839a00b729669af8f0ddf2c02}} 
-\index{ostk::physics::data::Manager@{ostk::physics::data::Manager}!manifestUpdateTimestamp\_@{manifestUpdateTimestamp\_}}
-\index{manifestUpdateTimestamp\_@{manifestUpdateTimestamp\_}!ostk::physics::data::Manager@{ostk::physics::data::Manager}}
-\doxysubsubsection{\texorpdfstring{manifestUpdateTimestamp\_}{manifestUpdateTimestamp\_}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} ostk\+::physics\+::data\+::\+Manager\+::manifest\+Update\+Timestamp\+\_\+\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [protected]}}
 
 \mbox{\Hypertarget{classostk_1_1physics_1_1data_1_1_manager_a5157c32f85d3b6479c638d992f5d1e77}\label{classostk_1_1physics_1_1data_1_1_manager_a5157c32f85d3b6479c638d992f5d1e77}} 
 \index{ostk::physics::data::Manager@{ostk::physics::data::Manager}!mutex\_@{mutex\_}}

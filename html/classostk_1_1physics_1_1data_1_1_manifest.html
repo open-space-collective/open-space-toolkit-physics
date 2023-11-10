@@ -100,9 +100,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9e67111d3340dc709dafaad52fdae8d0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1data_1_1_manifest.html#a9e67111d3340dc709dafaad52fdae8d0">isDefined</a> () const</td></tr>
 <tr class="memdesc:a9e67111d3340dc709dafaad52fdae8d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if manifest is defined.  <a href="classostk_1_1physics_1_1data_1_1_manifest.html#a9e67111d3340dc709dafaad52fdae8d0">More...</a><br /></td></tr>
 <tr class="separator:a9e67111d3340dc709dafaad52fdae8d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae48a7367e7c0af23b626726a60b9ba03"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classostk_1_1physics_1_1time_1_1_instant.html">Instant</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1data_1_1_manifest.html#ae48a7367e7c0af23b626726a60b9ba03">getLastModifiedTimestamp</a> () const</td></tr>
+<tr class="memdesc:ae48a7367e7c0af23b626726a60b9ba03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get last update timestamp.  <a href="classostk_1_1physics_1_1data_1_1_manifest.html#ae48a7367e7c0af23b626726a60b9ba03">More...</a><br /></td></tr>
+<tr class="separator:ae48a7367e7c0af23b626726a60b9ba03"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c6bde6de73febc329b22e5c598911d8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classostk_1_1physics_1_1time_1_1_instant.html">Instant</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1data_1_1_manifest.html#a7c6bde6de73febc329b22e5c598911d8">getLastUpdateTimestampFor</a> (const String &amp;aDataName) const</td></tr>
 <tr class="memdesc:a7c6bde6de73febc329b22e5c598911d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get last update timestamp for data.  <a href="classostk_1_1physics_1_1data_1_1_manifest.html#a7c6bde6de73febc329b22e5c598911d8">More...</a><br /></td></tr>
 <tr class="separator:a7c6bde6de73febc329b22e5c598911d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0cb18f62d58be9e11b3b03947dd85a7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classostk_1_1physics_1_1time_1_1_instant.html">Instant</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1data_1_1_manifest.html#ad0cb18f62d58be9e11b3b03947dd85a7">getNextUpdateCheckTimestampFor</a> (const String &amp;aDataName) const</td></tr>
+<tr class="memdesc:ad0cb18f62d58be9e11b3b03947dd85a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the next update check timestamp for data.  <a href="classostk_1_1physics_1_1data_1_1_manifest.html#ad0cb18f62d58be9e11b3b03947dd85a7">More...</a><br /></td></tr>
+<tr class="separator:ad0cb18f62d58be9e11b3b03947dd85a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d5bf1c7b5ad8ad0c42214fe0e621d7b"><td class="memItemLeft" align="right" valign="top">Array&lt; URL &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1data_1_1_manifest.html#a4d5bf1c7b5ad8ad0c42214fe0e621d7b">getRemoteDataUrls</a> (const URL &amp;aBaseUrl, const String &amp;aDataName) const</td></tr>
 <tr class="memdesc:a4d5bf1c7b5ad8ad0c42214fe0e621d7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the remote data URL for a given data name.  <a href="classostk_1_1physics_1_1data_1_1_manifest.html#a4d5bf1c7b5ad8ad0c42214fe0e621d7b">More...</a><br /></td></tr>
 <tr class="separator:a4d5bf1c7b5ad8ad0c42214fe0e621d7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -166,6 +172,26 @@ Friends</h2></td></tr>
 
 </div>
 </div>
+<a id="ae48a7367e7c0af23b626726a60b9ba03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae48a7367e7c0af23b626726a60b9ba03">&#9670;&nbsp;</a></span>getLastModifiedTimestamp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classostk_1_1physics_1_1time_1_1_instant.html">Instant</a> ostk::physics::data::Manifest::getLastModifiedTimestamp </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get last update timestamp. </p>
+<dl class="section return"><dt>Returns</dt><dd>Instant indicating when the manifest was last updated based on file modification time </dd></dl>
+
+</div>
+</div>
 <a id="a7c6bde6de73febc329b22e5c598911d8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7c6bde6de73febc329b22e5c598911d8">&#9670;&nbsp;</a></span>getLastUpdateTimestampFor()</h2>
 
@@ -190,6 +216,33 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Last update instant for data </dd></dl>
+
+</div>
+</div>
+<a id="ad0cb18f62d58be9e11b3b03947dd85a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0cb18f62d58be9e11b3b03947dd85a7">&#9670;&nbsp;</a></span>getNextUpdateCheckTimestampFor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classostk_1_1physics_1_1time_1_1_instant.html">Instant</a> ostk::physics::data::Manifest::getNextUpdateCheckTimestampFor </td>
+          <td>(</td>
+          <td class="paramtype">const String &amp;&#160;</td>
+          <td class="paramname"><em>aDataName</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the next update check timestamp for data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">dataName</td><td>A data name </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Next update check instant for data </dd></dl>
 
 </div>
 </div>

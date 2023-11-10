@@ -81,8 +81,6 @@ var hierarchy =
     [ "ostk::physics::data::Scalar", "classostk_1_1physics_1_1data_1_1_scalar.html", null ],
     [ "ostk::physics::time::Time", "classostk_1_1physics_1_1time_1_1_time.html", null ],
     [ "ostk::physics::coord::Transform", "classostk_1_1physics_1_1coord_1_1_transform.html", null ],
-    [ "ostk::physics::units::Derived::Unit", "classostk_1_1physics_1_1units_1_1_derived_1_1_unit.html", null ],
-    [ "ostk::physics::Unit", "classostk_1_1physics_1_1_unit.html", null ],
     [ "ostk::physics::units::Unit", "classostk_1_1physics_1_1units_1_1_unit.html", [
       [ "ostk::physics::units::Angle", "classostk_1_1physics_1_1units_1_1_angle.html", null ],
       [ "ostk::physics::units::Derived", "classostk_1_1physics_1_1units_1_1_derived.html", null ],
@@ -91,6 +89,8 @@ var hierarchy =
       [ "ostk::physics::units::Mass", "classostk_1_1physics_1_1units_1_1_mass.html", null ],
       [ "ostk::physics::units::Time", "classostk_1_1physics_1_1units_1_1_time.html", null ]
     ] ],
+    [ "ostk::physics::Unit", "classostk_1_1physics_1_1_unit.html", null ],
+    [ "ostk::physics::units::Derived::Unit", "classostk_1_1physics_1_1units_1_1_derived_1_1_unit.html", null ],
     [ "ostk::physics::data::Vector", "classostk_1_1physics_1_1data_1_1_vector.html", [
       [ "ostk::physics::data::Direction", "classostk_1_1physics_1_1data_1_1_direction.html", null ]
     ] ],

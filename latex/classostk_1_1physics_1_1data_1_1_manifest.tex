@@ -14,8 +14,12 @@ Data class for the O\+S\+Tk Data \mbox{\hyperlink{classostk_1_1physics_1_1data_1
 \item 
 bool \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manifest_a9e67111d3340dc709dafaad52fdae8d0}{is\+Defined}} () const
 \begin{DoxyCompactList}\small\item\em Return true if manifest is defined. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manifest_ae48a7367e7c0af23b626726a60b9ba03}{get\+Last\+Modified\+Timestamp}} () const
+\begin{DoxyCompactList}\small\item\em Get last update timestamp. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manifest_a7c6bde6de73febc329b22e5c598911d8}{get\+Last\+Update\+Timestamp\+For}} (const String \&a\+Data\+Name) const
 \begin{DoxyCompactList}\small\item\em Get last update timestamp for data. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manifest_ad0cb18f62d58be9e11b3b03947dd85a7}{get\+Next\+Update\+Check\+Timestamp\+For}} (const String \&a\+Data\+Name) const
+\begin{DoxyCompactList}\small\item\em Get the next update check timestamp for data. \end{DoxyCompactList}\item 
 Array$<$ U\+RL $>$ \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manifest_a4d5bf1c7b5ad8ad0c42214fe0e621d7b}{get\+Remote\+Data\+Urls}} (const U\+RL \&a\+Base\+Url, const String \&a\+Data\+Name) const
 \begin{DoxyCompactList}\small\item\em Get the remote data U\+RL for a given data name. \end{DoxyCompactList}\item 
 Array$<$ U\+RL $>$ \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manifest_adf9efd880e6d49ad71f1a3ff1450a4e0}{find\+Remote\+Data\+Urls}} (const U\+RL \&a\+Base\+Url, const String \&a\+Data\+Name\+Regex\+String) const
@@ -58,6 +62,19 @@ Return remote data U\+R\+Ls the for data items matching the given name regex str
 \begin{DoxyReturn}{Returns}
 Array of remote data U\+R\+Ls 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1data_1_1_manifest_ae48a7367e7c0af23b626726a60b9ba03}\label{classostk_1_1physics_1_1data_1_1_manifest_ae48a7367e7c0af23b626726a60b9ba03}} 
+\index{ostk::physics::data::Manifest@{ostk::physics::data::Manifest}!getLastModifiedTimestamp@{getLastModifiedTimestamp}}
+\index{getLastModifiedTimestamp@{getLastModifiedTimestamp}!ostk::physics::data::Manifest@{ostk::physics::data::Manifest}}
+\doxysubsubsection{\texorpdfstring{getLastModifiedTimestamp()}{getLastModifiedTimestamp()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} ostk\+::physics\+::data\+::\+Manifest\+::get\+Last\+Modified\+Timestamp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get last update timestamp. 
+
+\begin{DoxyReturn}{Returns}
+Instant indicating when the manifest was last updated based on file modification time 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1data_1_1_manifest_a7c6bde6de73febc329b22e5c598911d8}\label{classostk_1_1physics_1_1data_1_1_manifest_a7c6bde6de73febc329b22e5c598911d8}} 
 \index{ostk::physics::data::Manifest@{ostk::physics::data::Manifest}!getLastUpdateTimestampFor@{getLastUpdateTimestampFor}}
 \index{getLastUpdateTimestampFor@{getLastUpdateTimestampFor}!ostk::physics::data::Manifest@{ostk::physics::data::Manifest}}
@@ -75,6 +92,24 @@ Get last update timestamp for data.
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Last update instant for data 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1data_1_1_manifest_ad0cb18f62d58be9e11b3b03947dd85a7}\label{classostk_1_1physics_1_1data_1_1_manifest_ad0cb18f62d58be9e11b3b03947dd85a7}} 
+\index{ostk::physics::data::Manifest@{ostk::physics::data::Manifest}!getNextUpdateCheckTimestampFor@{getNextUpdateCheckTimestampFor}}
+\index{getNextUpdateCheckTimestampFor@{getNextUpdateCheckTimestampFor}!ostk::physics::data::Manifest@{ostk::physics::data::Manifest}}
+\doxysubsubsection{\texorpdfstring{getNextUpdateCheckTimestampFor()}{getNextUpdateCheckTimestampFor()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} ostk\+::physics\+::data\+::\+Manifest\+::get\+Next\+Update\+Check\+Timestamp\+For (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Data\+Name }\end{DoxyParamCaption}) const}
+
+
+
+Get the next update check timestamp for data. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em data\+Name} & A data name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Next update check instant for data 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1data_1_1_manifest_a4d5bf1c7b5ad8ad0c42214fe0e621d7b}\label{classostk_1_1physics_1_1data_1_1_manifest_a4d5bf1c7b5ad8ad0c42214fe0e621d7b}} 
 \index{ostk::physics::data::Manifest@{ostk::physics::data::Manifest}!getRemoteDataUrls@{getRemoteDataUrls}}

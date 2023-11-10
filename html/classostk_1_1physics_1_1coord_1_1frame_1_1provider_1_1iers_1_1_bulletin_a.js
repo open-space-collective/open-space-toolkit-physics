@@ -2,6 +2,7 @@ var classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_a =
 [
     [ "Observation", "structostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_observation.html", "structostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_observation" ],
     [ "Prediction", "structostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction.html", "structostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction" ],
+    [ "accessLastModifiedTimestamp", "classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_a.html#a8979796cd8e98312c023a40cd17a018f", null ],
     [ "accessObservationInterval", "classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_a.html#aaef82b98b08ef2be421127ce3b8e2212", null ],
     [ "accessPredictionInterval", "classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_a.html#a37d538195a830e834f9021c7af608068", null ],
     [ "accessReleaseDate", "classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_a.html#af4ca9cf1618b762a58bdd164b3f79160", null ],

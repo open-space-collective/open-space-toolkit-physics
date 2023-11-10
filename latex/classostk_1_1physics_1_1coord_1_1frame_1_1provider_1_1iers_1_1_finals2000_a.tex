@@ -19,6 +19,8 @@ struct \mbox{\hyperlink{structostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1i
 \item 
 bool \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_ac1214bb5570078e02ff8dc56bc846e9c}{is\+Defined}} () const
 \begin{DoxyCompactList}\small\item\em true if defined \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \& \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_a836250cd70e7b1856088081e6bfe85cf}{access\+Last\+Modified\+Timestamp}} () const
+\begin{DoxyCompactList}\small\item\em Access timestamp at which the \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_a}{BulletinA}} file was last modified. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_interval}{Interval}} \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_a80c02efda876c2359d5f26a5804dff2d}{get\+Interval}} () const
 \begin{DoxyCompactList}\small\item\em Get data interval. \end{DoxyCompactList}\item 
 Vector2d \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_acbe4bbe907144a93e2746b482e7d1e99}{get\+Polar\+Motion\+At}} (const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const
@@ -55,6 +57,19 @@ Standard Rapid E\+OP \mbox{\hyperlink{structostk_1_1physics_1_1coord_1_1frame_1_
 \href{https://www.iers.org/IERS/EN/DataProducts/EarthOrientationData/eop.html}{\texttt{ https\+://www.\+iers.\+org/\+I\+E\+R\+S/\+E\+N/\+Data\+Products/\+Earth\+Orientation\+Data/eop.\+html}} -\/$>$ finals.\+data (I\+A\+U2000) 
 
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_a836250cd70e7b1856088081e6bfe85cf}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_a836250cd70e7b1856088081e6bfe85cf}} 
+\index{ostk::physics::coord::frame::provider::iers::Finals2000A@{ostk::physics::coord::frame::provider::iers::Finals2000A}!accessLastModifiedTimestamp@{accessLastModifiedTimestamp}}
+\index{accessLastModifiedTimestamp@{accessLastModifiedTimestamp}!ostk::physics::coord::frame::provider::iers::Finals2000A@{ostk::physics::coord::frame::provider::iers::Finals2000A}}
+\doxysubsubsection{\texorpdfstring{accessLastModifiedTimestamp()}{accessLastModifiedTimestamp()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \& ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Finals2000\+A\+::access\+Last\+Modified\+Timestamp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Access timestamp at which the \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_a}{BulletinA}} file was last modified. 
+
+\begin{DoxyReturn}{Returns}
+Instant indicating when the file was last updated based on file modification time 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_ae945e5caae2390991db7eae67ba34016}\label{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_ae945e5caae2390991db7eae67ba34016}} 
 \index{ostk::physics::coord::frame::provider::iers::Finals2000A@{ostk::physics::coord::frame::provider::iers::Finals2000A}!getDataAt@{getDataAt}}
 \index{getDataAt@{getDataAt}!ostk::physics::coord::frame::provider::iers::Finals2000A@{ostk::physics::coord::frame::provider::iers::Finals2000A}}

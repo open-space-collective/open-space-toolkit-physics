@@ -11,6 +11,7 @@ var dir_88a0b6c9a493e39462658b499f897617 =
     [ "Scalar.hpp", "_scalar_8hpp.html", [
       [ "Scalar", "classostk_1_1physics_1_1data_1_1_scalar.html", "classostk_1_1physics_1_1data_1_1_scalar" ]
     ] ],
+    [ "Utilities.hpp", "_data_2_utilities_8hpp.html", "_data_2_utilities_8hpp" ],
     [ "Vector.hpp", "_vector_8hpp.html", [
       [ "Vector", "classostk_1_1physics_1_1data_1_1_vector.html", "classostk_1_1physics_1_1data_1_1_vector" ]
     ] ]
