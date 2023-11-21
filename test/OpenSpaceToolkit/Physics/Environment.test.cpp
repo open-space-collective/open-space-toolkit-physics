@@ -65,10 +65,10 @@ using ostk::physics::coord::Transform;
 using ostk::physics::coord::Axes;
 using ostk::physics::coord::spherical::LLA;
 using ostk::physics::Environment;
-using ostk::physics::env::Object;
-using ostk::physics::env::obj::celest::Earth;
-using ostk::physics::env::obj::celest::Moon;
-using ostk::physics::env::ephem::spice::Engine;
+using ostk::physics::environment::Object;
+using ostk::physics::environment::object::celestial::Earth;
+using ostk::physics::environment::object::celestial::Moon;
+using ostk::physics::environment::ephemerides::spice::Engine;
 using ostk::physics::units::Length;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 

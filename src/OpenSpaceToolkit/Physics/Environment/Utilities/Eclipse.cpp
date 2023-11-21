@@ -12,7 +12,7 @@ namespace ostk
 {
 namespace physics
 {
-namespace env
+namespace environment
 {
 namespace utilities
 {
@@ -27,7 +27,7 @@ Array<Interval> eclipseIntervalsAtPosition(
 
     using ostk::physics::time::Instant;
     using ostk::physics::time::Duration;
-    using ostk::physics::env::Object;
+    using ostk::physics::environment::Object;
 
     if (!anAnalysisInterval.isDefined())
     {
@@ -83,6 +83,6 @@ Array<Interval> eclipseIntervalsAtPosition(
 }
 
 }  // namespace utilities
-}  // namespace env
+}  // namespace environment
 }  // namespace physics
 }  // namespace ostk

@@ -14,10 +14,10 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Earth(
     using ostk::physics::units::Derived;
     using ostk::physics::coord::Frame;
     using ostk::physics::time::Instant;
-    using ostk::physics::env::Ephemeris;
-    using ostk::physics::env::ephem::Analytical;
-    using ostk::physics::env::obj::Celestial;
-    using ostk::physics::env::obj::celest::Earth;
+    using ostk::physics::environment::Ephemeris;
+    using ostk::physics::environment::ephemerides::Analytical;
+    using ostk::physics::environment::object::Celestial;
+    using ostk::physics::environment::object::celestial::Earth;
     using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
     using EarthMagneticModel = ostk::physics::environment::magnetic::Earth;
     using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;

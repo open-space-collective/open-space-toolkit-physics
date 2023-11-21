@@ -35,7 +35,7 @@ using ostk::physics::coord::Position;
 using ostk::physics::coord::spherical::AER;
 using ostk::physics::coord::spherical::LLA;
 using ostk::physics::coord::Frame;
-using ostk::physics::env::obj::celest::Earth;
+using ostk::physics::environment::object::celestial::Earth;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 
 class OpenSpaceToolkit_Physics_Coordinate_Spherical_AER : public ::testing::Test

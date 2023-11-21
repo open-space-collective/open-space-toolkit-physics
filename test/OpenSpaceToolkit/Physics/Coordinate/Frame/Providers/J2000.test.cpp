@@ -22,7 +22,7 @@ using ostk::physics::coord::Frame;
 using ostk::physics::coord::frame::Transform;
 using ostk::physics::coord::frame::provider::J2000;
 using ostk::physics::coord::frame::providers::iau::Theory;
-using ostk::physics::env::obj::celest::Earth;
+using ostk::physics::environment::object::celestial::Earth;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 
 TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_J2000, GetTransformAt)

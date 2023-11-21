@@ -12,11 +12,11 @@ namespace ostk
 {
 namespace physics
 {
-namespace env
+namespace environment
 {
-namespace obj
+namespace object
 {
-namespace celest
+namespace celestial
 {
 
 Sun::Sun(const Shared<Ephemeris>& anEphemeris, const Shared<SunGravitationalModel>& aGravitationalModel)
@@ -51,7 +51,7 @@ Sun Sun::Default()
 
 Sun Sun::Spherical()
 {
-    using ostk::physics::env::ephem::SPICE;
+    using ostk::physics::environment::ephemerides::SPICE;
 
     return {
         std::make_shared<SPICE>(SPICE::Object::Sun),
@@ -71,8 +71,8 @@ Object::Geometry Sun::Geometry(const Shared<const Frame>& aFrame)
     return {sphere, aFrame};
 }
 
-}  // namespace celest
-}  // namespace obj
-}  // namespace env
+}  // namespace celestial
+}  // namespace object
+}  // namespace environment
 }  // namespace physics
 }  // namespace ostk

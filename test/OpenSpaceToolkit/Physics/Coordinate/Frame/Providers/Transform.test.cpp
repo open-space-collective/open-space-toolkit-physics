@@ -40,7 +40,7 @@ using ostk::physics::time::Instant;
 using ostk::physics::time::DateTime;
 using ostk::physics::coord::Transform;
 using ostk::physics::coord::Frame;
-using ostk::physics::env::obj::celest::Earth;
+using ostk::physics::environment::object::celestial::Earth;
 
 // This will test transformation translation, relative velocity, oreintation and
 // angular velocity against 3rd party generated files. The files can be found in

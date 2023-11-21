@@ -48,7 +48,7 @@ using ostk::physics::time::DateTime;
 using ostk::physics::time::Date;
 using ostk::physics::time::Time;
 
-using EarthCelestialBody = ostk::physics::env::obj::celest::Earth;
+using EarthCelestialBody = ostk::physics::environment::object::celestial::Earth;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 using ostk::physics::environment::atmospheric::earth::Manager;
 

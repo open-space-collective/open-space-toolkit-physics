@@ -243,7 +243,7 @@ bool Environment::isPositionInEclipse(const Position& aPosition) const
     using ostk::math::geom::d3::objects::Segment;
 
     using ostk::physics::coord::Frame;
-    using ostk::physics::env::Object;
+    using ostk::physics::environment::Object;
 
     if (!aPosition.isDefined())
     {
@@ -278,9 +278,9 @@ Environment Environment::Undefined()
 
 Environment Environment::Default()
 {
-    using ostk::physics::env::obj::celest::Earth;
-    using ostk::physics::env::obj::celest::Sun;
-    using ostk::physics::env::obj::celest::Moon;
+    using ostk::physics::environment::object::celestial::Earth;
+    using ostk::physics::environment::object::celestial::Sun;
+    using ostk::physics::environment::object::celestial::Moon;
 
     const Instant instant = Instant::J2000();
 

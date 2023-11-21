@@ -10,11 +10,11 @@ namespace ostk
 {
 namespace physics
 {
-namespace env
+namespace environment
 {
-namespace obj
+namespace object
 {
-namespace celest
+namespace celestial
 {
 
 using ostk::physics::coord::Frame;
@@ -190,8 +190,8 @@ Object::Geometry Earth::Geometry(
     return {ellipsoid, aFrameSPtr};
 }
 
-}  // namespace celest
-}  // namespace obj
-}  // namespace env
+}  // namespace celestial
+}  // namespace object
+}  // namespace environment
 }  // namespace physics
 }  // namespace ostk

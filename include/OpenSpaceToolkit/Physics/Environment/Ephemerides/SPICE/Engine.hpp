@@ -28,9 +28,9 @@ namespace ostk
 {
 namespace physics
 {
-namespace env
+namespace environment
 {
-namespace ephem
+namespace ephemerides
 {
 namespace spice
 {
@@ -48,8 +48,8 @@ using ostk::physics::time::Instant;
 using ostk::physics::time::Interval;
 using ostk::physics::coord::Frame;
 using ostk::physics::coord::Transform;
-using ostk::physics::env::ephem::SPICE;
-using ostk::physics::env::ephem::spice::Kernel;
+using ostk::physics::environment::ephemerides::SPICE;
+using ostk::physics::environment::ephemerides::spice::Kernel;
 
 /// @brief                      SPICE Toolkit engine
 ///
@@ -183,8 +183,8 @@ class Engine
 };
 
 }  // namespace spice
-}  // namespace ephem
-}  // namespace env
+}  // namespace ephemerides
+}  // namespace environment
 }  // namespace physics
 }  // namespace ostk
 

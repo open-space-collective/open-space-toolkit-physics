@@ -13,16 +13,16 @@ namespace ostk
 {
 namespace physics
 {
-namespace env
+namespace environment
 {
-namespace ephem
+namespace ephemerides
 {
 
 using ostk::core::types::Shared;
 
 using ostk::physics::time::Instant;
 using ostk::physics::coord::Frame;
-using ostk::physics::env::Ephemeris;
+using ostk::physics::environment::Ephemeris;
 
 class Analytical : public Ephemeris
 {
@@ -41,8 +41,8 @@ class Analytical : public Ephemeris
     Shared<const Frame> frameSPtr_;
 };
 
-}  // namespace ephem
-}  // namespace env
+}  // namespace ephemerides
+}  // namespace environment
 }  // namespace physics
 }  // namespace ostk
 

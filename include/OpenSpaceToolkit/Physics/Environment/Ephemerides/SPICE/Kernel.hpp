@@ -12,9 +12,9 @@ namespace ostk
 {
 namespace physics
 {
-namespace env
+namespace environment
 {
-namespace ephem
+namespace ephemerides
 {
 namespace spice
 {
@@ -135,15 +135,15 @@ class Kernel
 };
 
 }  // namespace spice
-}  // namespace ephem
-}  // namespace env
+}  // namespace ephemerides
+}  // namespace environment
 }  // namespace physics
 }  // namespace ostk
 
 namespace std
 {
 
-using ostk::physics::env::ephem::spice::Kernel;
+using ostk::physics::environment::ephemerides::spice::Kernel;
 
 template <>
 struct hash<Kernel>

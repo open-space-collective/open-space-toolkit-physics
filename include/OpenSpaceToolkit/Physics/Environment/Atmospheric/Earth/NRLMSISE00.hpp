@@ -42,7 +42,7 @@ using ostk::physics::time::Instant;
 using ostk::physics::units::Length;
 using ostk::physics::coord::spherical::LLA;
 using ostk::physics::coord::Frame;
-using ostk::physics::env::obj::Celestial;
+using ostk::physics::environment::object::Celestial;
 using ostk::physics::environment::atmospheric::Model;
 using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;

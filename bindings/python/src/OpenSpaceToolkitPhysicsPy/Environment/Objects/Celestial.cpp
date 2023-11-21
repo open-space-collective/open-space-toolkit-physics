@@ -13,9 +13,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Objects_Celestial(pybind11::mo
     using ostk::physics::time::Instant;
     using ostk::physics::units::Length;
     using ostk::physics::units::Derived;
-    using ostk::physics::env::Ephemeris;
-    using ostk::physics::env::Object;
-    using ostk::physics::env::obj::Celestial;
+    using ostk::physics::environment::Ephemeris;
+    using ostk::physics::environment::Object;
+    using ostk::physics::environment::object::Celestial;
     using GravitationalModel = ostk::physics::environment::gravitational::Model;
     using MagneticModel = ostk::physics::environment::magnetic::Model;
     using AtmosphericModel = ostk::physics::environment::atmospheric::Model;

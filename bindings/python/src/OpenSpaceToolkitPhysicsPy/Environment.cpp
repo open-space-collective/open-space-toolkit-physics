@@ -17,7 +17,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
 
     using ostk::physics::time::Instant;
     using ostk::physics::Environment;
-    using ostk::physics::env::Object;
+    using ostk::physics::environment::Object;
 
     class_<Environment>(aModule, "Environment")
 

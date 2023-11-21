@@ -17,7 +17,7 @@ namespace ostk
 {
 namespace physics
 {
-namespace env
+namespace environment
 {
 namespace object
 {
@@ -147,7 +147,7 @@ class Geometry
 };
 
 }  // namespace object
-}  // namespace env
+}  // namespace environment
 }  // namespace physics
 }  // namespace ostk
 

@@ -31,12 +31,12 @@
 
 #include <Global.test.hpp>
 
-using ostk::physics::env::obj::celest::Sun;
+using ostk::physics::environment::object::celestial::Sun;
 
 // TEST (OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Sun, Constructor)
 // {
 
-//     using ostk::physics::env::obj::celest::Sun ;
+//     using ostk::physics::environment::object::celestial::Sun ;
 
 //     {
 

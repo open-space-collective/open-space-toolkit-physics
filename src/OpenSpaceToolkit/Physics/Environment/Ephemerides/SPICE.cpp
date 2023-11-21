@@ -11,9 +11,9 @@ namespace ostk
 {
 namespace physics
 {
-namespace env
+namespace environment
 {
-namespace ephem
+namespace ephemerides
 {
 
 SPICE::SPICE(const SPICE::Object& anObject)
@@ -35,7 +35,7 @@ bool SPICE::isDefined() const
 
 Shared<const Frame> SPICE::accessFrame() const
 {
-    using ostk::physics::env::ephem::spice::Engine;
+    using ostk::physics::environment::ephemerides::spice::Engine;
 
     return Engine::Get().getFrameOf(object_);
 }
@@ -61,7 +61,7 @@ String SPICE::StringFromObject(const SPICE::Object& anObject)
     return objectStringMap.at(anObject);
 }
 
-}  // namespace ephem
-}  // namespace env
+}  // namespace ephemerides
+}  // namespace environment
 }  // namespace physics
 }  // namespace ostk

@@ -12,7 +12,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object(pybind11::module& aModu
     using ostk::core::types::String;
 
     using ostk::physics::time::Instant;
-    using ostk::physics::env::Object;
+    using ostk::physics::environment::Object;
 
     // Binding class "Object"
     class_<Object, Shared<Object>>(aModule, "Object")

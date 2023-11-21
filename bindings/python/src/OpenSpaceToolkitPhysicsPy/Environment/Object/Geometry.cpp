@@ -35,7 +35,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Geometry(pybind11::modu
     using ostk::math::geom::d3::objects::Composite;
 
     using ostk::physics::coord::Frame;
-    using ostk::physics::env::object::Geometry;
+    using ostk::physics::environment::object::Geometry;
 
     class_<Geometry>(aModule, "Geometry")
 
