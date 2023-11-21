@@ -1,0 +1,308 @@
+\hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{}\doxysection{ostk\+::physics\+::environment\+::object\+::celestial\+::Earth Class Reference}
+\label{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}\index{ostk::physics::environment::object::celestial::Earth@{ostk::physics::environment::object::celestial::Earth}}
+
+
+{\ttfamily \#include $<$Earth.\+hpp$>$}
+
+Inheritance diagram for ostk\+::physics\+::environment\+::object\+::celestial\+::Earth\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_aec4e4ddfc37a063f3aac920403fe627a}{Earth}} (const \mbox{\hyperlink{classostk_1_1physics_1_1units_1_1_derived}{Derived}} \&a\+Gravitational\+Parameter, const \mbox{\hyperlink{classostk_1_1physics_1_1units_1_1_length}{Length}} \&an\+Equatorial\+Radius, const Real \&a\+Flattening, const Real \&a\+J2, const Real \&a\+J4, const Shared$<$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_ephemeris}{Ephemeris}} $>$ \&an\+Ephemeris, const Shared$<$ \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_af782c25eafe767e0865804b058d2dcc6}{Earth\+Gravitational\+Model}} $>$ \&a\+Gravitational\+Model, const Shared$<$ \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_a696114cfd73f299553767f17778388e6}{Earth\+Magnetic\+Model}} $>$ \&a\+Magnetic\+Model, const Shared$<$ \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_a78c1b6b67cca28d0d08df57d57657342}{Earth\+Atmospheric\+Model}} $>$ \&an\+Atmospheric\+Model)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_a04a4cf746c8434fb47e61d5462008453}{Earth}} (const Shared$<$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_ephemeris}{Ephemeris}} $>$ \&an\+Ephemeris, const Shared$<$ \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_af782c25eafe767e0865804b058d2dcc6}{Earth\+Gravitational\+Model}} $>$ \&a\+Gravitational\+Model=nullptr, const Shared$<$ \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_a696114cfd73f299553767f17778388e6}{Earth\+Magnetic\+Model}} $>$ \&a\+Magnetic\+Model=nullptr, const Shared$<$ \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_a78c1b6b67cca28d0d08df57d57657342}{Earth\+Atmospheric\+Model}} $>$ \&an\+Atmospheric\+Model=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_a0a57b4939dd660610fa612aacc7a01c4}{$\sim$\+Earth}} () override
+\item 
+virtual \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} $\ast$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_a4ccdbfcb7d3ad42c87eaf7f1f5ca576c}{clone}} () const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_ae408597832deeaa3a141dc3001e39aa8}{Default}} ()
+\begin{DoxyCompactList}\small\item\em Default \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} model (E\+G\+M2008) \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_af4e38f0dcc47b0fb8b3295a1eb21e308}{Gravitational\+Only}} (const Shared$<$ \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_af782c25eafe767e0865804b058d2dcc6}{Earth\+Gravitational\+Model}} $>$ \&a\+Gravitational\+Model)
+\begin{DoxyCompactList}\small\item\em Just gravity model. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_a50c6a03684538b04041d202e1fa25c24}{Atmospheric\+Only}} (const Shared$<$ \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_a78c1b6b67cca28d0d08df57d57657342}{Earth\+Atmospheric\+Model}} $>$ \&an\+Atmospheric\+Model)
+\begin{DoxyCompactList}\small\item\em Just atmospheric model. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_ae75f36be563cd9cecec539c7b590d437}{Magnetic\+Only}} (const Shared$<$ \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_a696114cfd73f299553767f17778388e6}{Earth\+Magnetic\+Model}} $>$ \&a\+Magnetic\+Model)
+\begin{DoxyCompactList}\small\item\em Just magnetic model. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_a1375db175db4fbdc50af699b28c4e18b}{From\+Models}} (const Shared$<$ \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_af782c25eafe767e0865804b058d2dcc6}{Earth\+Gravitational\+Model}} $>$ \&a\+Gravitational\+Model, const Shared$<$ \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_a696114cfd73f299553767f17778388e6}{Earth\+Magnetic\+Model}} $>$ \&a\+Magnetic\+Model, const Shared$<$ \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_a78c1b6b67cca28d0d08df57d57657342}{Earth\+Atmospheric\+Model}} $>$ \&an\+Atmospheric\+Model)
+\begin{DoxyCompactList}\small\item\em Create earth from specified models. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_a10edb4ebdd46a4ae83e020c79d5866fa}{E\+G\+M2008}} (const Integer \&a\+Gravity\+Model\+Degree=Integer\+::\+Undefined(), const Integer \&a\+Gravity\+Model\+Order=Integer\+::\+Undefined())
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} Gravity Model 2008 model (E\+G\+M2008) \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_aa9586bbfa33e0130fbe499dd23748fe7}{W\+G\+S84\+\_\+\+E\+G\+M96}} (const Integer \&a\+Gravity\+Model\+Degree=Integer\+::\+Undefined(), const Integer \&a\+Gravity\+Model\+Order=Integer\+::\+Undefined())
+\begin{DoxyCompactList}\small\item\em World Geodetic System 1984 (W\+G\+S84) + \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} Gravity Model 1996 (E\+G\+M96) \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_a52d255251c6b6770c8bd86c9d187289a}{E\+G\+M96}} (const Integer \&a\+Gravity\+Model\+Degree=Integer\+::\+Undefined(), const Integer \&a\+Gravity\+Model\+Order=Integer\+::\+Undefined())
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} Gravity Model 1996 (E\+G\+M96) \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_ad63a8f55e77cad0b28524fdb3ef43b2c}{E\+G\+M84}} (const Integer \&a\+Gravity\+Model\+Degree=Integer\+::\+Undefined(), const Integer \&a\+Gravity\+Model\+Order=Integer\+::\+Undefined())
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} Gravity Model 1984 (E\+G\+M84) \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_abc5717390846fec03abe2935cccedd18}{W\+G\+S84}} (const Integer \&a\+Gravity\+Model\+Degree=Integer\+::\+Undefined(), const Integer \&a\+Gravity\+Model\+Order=Integer\+::\+Undefined())
+\begin{DoxyCompactList}\small\item\em World Geodetic System 1984 (W\+G\+S84) \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_a54f2070adf8e3fd2821650382957cb2c}{Spherical}} ()
+\begin{DoxyCompactList}\small\item\em Spherical model. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_aec4e4ddfc37a063f3aac920403fe627a}\label{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_aec4e4ddfc37a063f3aac920403fe627a}} 
+\index{ostk::physics::environment::object::celestial::Earth@{ostk::physics::environment::object::celestial::Earth}!Earth@{Earth}}
+\index{Earth@{Earth}!ostk::physics::environment::object::celestial::Earth@{ostk::physics::environment::object::celestial::Earth}}
+\doxysubsubsection{\texorpdfstring{Earth()}{Earth()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily ostk\+::physics\+::environment\+::object\+::celestial\+::\+Earth\+::\+Earth (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1units_1_1_derived}{Derived}} \&}]{a\+Gravitational\+Parameter,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1units_1_1_length}{Length}} \&}]{an\+Equatorial\+Radius,  }\item[{const Real \&}]{a\+Flattening,  }\item[{const Real \&}]{a\+J2,  }\item[{const Real \&}]{a\+J4,  }\item[{const Shared$<$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_ephemeris}{Ephemeris}} $>$ \&}]{an\+Ephemeris,  }\item[{const Shared$<$ \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_af782c25eafe767e0865804b058d2dcc6}{Earth\+Gravitational\+Model}} $>$ \&}]{a\+Gravitational\+Model,  }\item[{const Shared$<$ \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_a696114cfd73f299553767f17778388e6}{Earth\+Magnetic\+Model}} $>$ \&}]{a\+Magnetic\+Model,  }\item[{const Shared$<$ \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_a78c1b6b67cca28d0d08df57d57657342}{Earth\+Atmospheric\+Model}} $>$ \&}]{an\+Atmospheric\+Model }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em an\+Instant} & An instant for the \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} celestial object \\
+\hline
+\mbox{\texttt{ in}}  & {\em a\+Gravitational\+Parameter} & A gravitational parameter for the \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} celestial object \\
+\hline
+\mbox{\texttt{ in}}  & {\em an\+Equatorial\+Radius} & An equatorial radius for the \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} celestial object \\
+\hline
+\mbox{\texttt{ in}}  & {\em a\+Flattening} & A flattening for the \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} celestial object \\
+\hline
+\mbox{\texttt{ in}}  & {\em a\+J2} & A J2 coefficient for the \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} celestial object \\
+\hline
+\mbox{\texttt{ in}}  & {\em a\+J4} & A J4 coefficient for the \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} celestial object \\
+\hline
+\mbox{\texttt{ in}}  & {\em an\+Ephemeris} & An ephemeris for the \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} celestial object \\
+\hline
+\mbox{\texttt{ in}}  & {\em a\+Gravitational\+Model} & A gravitational model for the \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} celestial object \\
+\hline
+\mbox{\texttt{ in}}  & {\em a\+Magnetic\+Model} & A magnetic model for the \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} celestial object \\
+\hline
+\mbox{\texttt{ in}}  & {\em an\+Atmospheric\+Model} & An atmospheric model for the \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} celestial object \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_a04a4cf746c8434fb47e61d5462008453}\label{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_a04a4cf746c8434fb47e61d5462008453}} 
+\index{ostk::physics::environment::object::celestial::Earth@{ostk::physics::environment::object::celestial::Earth}!Earth@{Earth}}
+\index{Earth@{Earth}!ostk::physics::environment::object::celestial::Earth@{ostk::physics::environment::object::celestial::Earth}}
+\doxysubsubsection{\texorpdfstring{Earth()}{Earth()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily ostk\+::physics\+::environment\+::object\+::celestial\+::\+Earth\+::\+Earth (\begin{DoxyParamCaption}\item[{const Shared$<$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_ephemeris}{Ephemeris}} $>$ \&}]{an\+Ephemeris,  }\item[{const Shared$<$ \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_af782c25eafe767e0865804b058d2dcc6}{Earth\+Gravitational\+Model}} $>$ \&}]{a\+Gravitational\+Model = {\ttfamily nullptr},  }\item[{const Shared$<$ \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_a696114cfd73f299553767f17778388e6}{Earth\+Magnetic\+Model}} $>$ \&}]{a\+Magnetic\+Model = {\ttfamily nullptr},  }\item[{const Shared$<$ \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_a78c1b6b67cca28d0d08df57d57657342}{Earth\+Atmospheric\+Model}} $>$ \&}]{an\+Atmospheric\+Model = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em an\+Instant} & An instant for the \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} celestial object \\
+\hline
+\mbox{\texttt{ in}}  & {\em an\+Ephemeris} & An ephemeris for the \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} celestial object \\
+\hline
+\mbox{\texttt{ in}}  & {\em a\+Gravitational\+Model} & A gravitational model for the \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} celestial object \\
+\hline
+\mbox{\texttt{ in}}  & {\em a\+Magnetic\+Model} & A magnetic model for the \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} celestial object \\
+\hline
+\mbox{\texttt{ in}}  & {\em an\+Atmospheric\+Model} & An atmospheric model for the \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} celestial object \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_a0a57b4939dd660610fa612aacc7a01c4}\label{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_a0a57b4939dd660610fa612aacc7a01c4}} 
+\index{ostk::physics::environment::object::celestial::Earth@{ostk::physics::environment::object::celestial::Earth}!````~Earth@{$\sim$Earth}}
+\index{````~Earth@{$\sim$Earth}!ostk::physics::environment::object::celestial::Earth@{ostk::physics::environment::object::celestial::Earth}}
+\doxysubsubsection{\texorpdfstring{$\sim$Earth()}{~Earth()}}
+{\footnotesize\ttfamily ostk\+::physics\+::environment\+::object\+::celestial\+::\+Earth\+::$\sim$\+Earth (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_a50c6a03684538b04041d202e1fa25c24}\label{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_a50c6a03684538b04041d202e1fa25c24}} 
+\index{ostk::physics::environment::object::celestial::Earth@{ostk::physics::environment::object::celestial::Earth}!AtmosphericOnly@{AtmosphericOnly}}
+\index{AtmosphericOnly@{AtmosphericOnly}!ostk::physics::environment::object::celestial::Earth@{ostk::physics::environment::object::celestial::Earth}}
+\doxysubsubsection{\texorpdfstring{AtmosphericOnly()}{AtmosphericOnly()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} ostk\+::physics\+::environment\+::object\+::celestial\+::\+Earth\+::\+Atmospheric\+Only (\begin{DoxyParamCaption}\item[{const Shared$<$ \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_a78c1b6b67cca28d0d08df57d57657342}{Earth\+Atmospheric\+Model}} $>$ \&}]{an\+Atmospheric\+Model }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Just atmospheric model. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em an\+Atmospheric\+Model} & An atmospheric model \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_a4ccdbfcb7d3ad42c87eaf7f1f5ca576c}\label{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_a4ccdbfcb7d3ad42c87eaf7f1f5ca576c}} 
+\index{ostk::physics::environment::object::celestial::Earth@{ostk::physics::environment::object::celestial::Earth}!clone@{clone}}
+\index{clone@{clone}!ostk::physics::environment::object::celestial::Earth@{ostk::physics::environment::object::celestial::Earth}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} $\ast$ ostk\+::physics\+::environment\+::object\+::celestial\+::\+Earth\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_adbbbc6c86fdec5f6d24e7b64419b885c}{ostk\+::physics\+::environment\+::object\+::\+Celestial}}.
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_ae408597832deeaa3a141dc3001e39aa8}\label{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_ae408597832deeaa3a141dc3001e39aa8}} 
+\index{ostk::physics::environment::object::celestial::Earth@{ostk::physics::environment::object::celestial::Earth}!Default@{Default}}
+\index{Default@{Default}!ostk::physics::environment::object::celestial::Earth@{ostk::physics::environment::object::celestial::Earth}}
+\doxysubsubsection{\texorpdfstring{Default()}{Default()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} ostk\+::physics\+::environment\+::object\+::celestial\+::\+Earth\+::\+Default (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Default \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} model (E\+G\+M2008) 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_a10edb4ebdd46a4ae83e020c79d5866fa}\label{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_a10edb4ebdd46a4ae83e020c79d5866fa}} 
+\index{ostk::physics::environment::object::celestial::Earth@{ostk::physics::environment::object::celestial::Earth}!EGM2008@{EGM2008}}
+\index{EGM2008@{EGM2008}!ostk::physics::environment::object::celestial::Earth@{ostk::physics::environment::object::celestial::Earth}}
+\doxysubsubsection{\texorpdfstring{EGM2008()}{EGM2008()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} ostk\+::physics\+::environment\+::object\+::celestial\+::\+Earth\+::\+E\+G\+M2008 (\begin{DoxyParamCaption}\item[{const Integer \&}]{a\+Gravity\+Model\+Degree = {\ttfamily Integer\+:\+:Undefined()},  }\item[{const Integer \&}]{a\+Gravity\+Model\+Order = {\ttfamily Integer\+:\+:Undefined()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} Gravity Model 2008 model (E\+G\+M2008) 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_ad63a8f55e77cad0b28524fdb3ef43b2c}\label{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_ad63a8f55e77cad0b28524fdb3ef43b2c}} 
+\index{ostk::physics::environment::object::celestial::Earth@{ostk::physics::environment::object::celestial::Earth}!EGM84@{EGM84}}
+\index{EGM84@{EGM84}!ostk::physics::environment::object::celestial::Earth@{ostk::physics::environment::object::celestial::Earth}}
+\doxysubsubsection{\texorpdfstring{EGM84()}{EGM84()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} ostk\+::physics\+::environment\+::object\+::celestial\+::\+Earth\+::\+E\+G\+M84 (\begin{DoxyParamCaption}\item[{const Integer \&}]{a\+Gravity\+Model\+Degree = {\ttfamily Integer\+:\+:Undefined()},  }\item[{const Integer \&}]{a\+Gravity\+Model\+Order = {\ttfamily Integer\+:\+:Undefined()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} Gravity Model 1984 (E\+G\+M84) 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_a52d255251c6b6770c8bd86c9d187289a}\label{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_a52d255251c6b6770c8bd86c9d187289a}} 
+\index{ostk::physics::environment::object::celestial::Earth@{ostk::physics::environment::object::celestial::Earth}!EGM96@{EGM96}}
+\index{EGM96@{EGM96}!ostk::physics::environment::object::celestial::Earth@{ostk::physics::environment::object::celestial::Earth}}
+\doxysubsubsection{\texorpdfstring{EGM96()}{EGM96()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} ostk\+::physics\+::environment\+::object\+::celestial\+::\+Earth\+::\+E\+G\+M96 (\begin{DoxyParamCaption}\item[{const Integer \&}]{a\+Gravity\+Model\+Degree = {\ttfamily Integer\+:\+:Undefined()},  }\item[{const Integer \&}]{a\+Gravity\+Model\+Order = {\ttfamily Integer\+:\+:Undefined()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} Gravity Model 1996 (E\+G\+M96) 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_a1375db175db4fbdc50af699b28c4e18b}\label{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_a1375db175db4fbdc50af699b28c4e18b}} 
+\index{ostk::physics::environment::object::celestial::Earth@{ostk::physics::environment::object::celestial::Earth}!FromModels@{FromModels}}
+\index{FromModels@{FromModels}!ostk::physics::environment::object::celestial::Earth@{ostk::physics::environment::object::celestial::Earth}}
+\doxysubsubsection{\texorpdfstring{FromModels()}{FromModels()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} ostk\+::physics\+::environment\+::object\+::celestial\+::\+Earth\+::\+From\+Models (\begin{DoxyParamCaption}\item[{const Shared$<$ \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_af782c25eafe767e0865804b058d2dcc6}{Earth\+Gravitational\+Model}} $>$ \&}]{a\+Gravitational\+Model,  }\item[{const Shared$<$ \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_a696114cfd73f299553767f17778388e6}{Earth\+Magnetic\+Model}} $>$ \&}]{a\+Magnetic\+Model,  }\item[{const Shared$<$ \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_a78c1b6b67cca28d0d08df57d57657342}{Earth\+Atmospheric\+Model}} $>$ \&}]{an\+Atmospheric\+Model }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create earth from specified models. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+Gravitational\+Model} & A gravitational model \\
+\hline
+\mbox{\texttt{ in}}  & {\em a\+Magnetic\+Model} & A magnetic model \\
+\hline
+\mbox{\texttt{ in}}  & {\em an\+Atmospheric\+Model} & An atmospheric model\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_af4e38f0dcc47b0fb8b3295a1eb21e308}\label{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_af4e38f0dcc47b0fb8b3295a1eb21e308}} 
+\index{ostk::physics::environment::object::celestial::Earth@{ostk::physics::environment::object::celestial::Earth}!GravitationalOnly@{GravitationalOnly}}
+\index{GravitationalOnly@{GravitationalOnly}!ostk::physics::environment::object::celestial::Earth@{ostk::physics::environment::object::celestial::Earth}}
+\doxysubsubsection{\texorpdfstring{GravitationalOnly()}{GravitationalOnly()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} ostk\+::physics\+::environment\+::object\+::celestial\+::\+Earth\+::\+Gravitational\+Only (\begin{DoxyParamCaption}\item[{const Shared$<$ \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_af782c25eafe767e0865804b058d2dcc6}{Earth\+Gravitational\+Model}} $>$ \&}]{a\+Gravitational\+Model }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Just gravity model. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+Gravitational\+Model} & A gravitational model \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_ae75f36be563cd9cecec539c7b590d437}\label{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_ae75f36be563cd9cecec539c7b590d437}} 
+\index{ostk::physics::environment::object::celestial::Earth@{ostk::physics::environment::object::celestial::Earth}!MagneticOnly@{MagneticOnly}}
+\index{MagneticOnly@{MagneticOnly}!ostk::physics::environment::object::celestial::Earth@{ostk::physics::environment::object::celestial::Earth}}
+\doxysubsubsection{\texorpdfstring{MagneticOnly()}{MagneticOnly()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} ostk\+::physics\+::environment\+::object\+::celestial\+::\+Earth\+::\+Magnetic\+Only (\begin{DoxyParamCaption}\item[{const Shared$<$ \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_a696114cfd73f299553767f17778388e6}{Earth\+Magnetic\+Model}} $>$ \&}]{a\+Magnetic\+Model }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Just magnetic model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \`{}} & \mbox{[}in\mbox{]} a\+Magnetic\+Model A magnetic model \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_a54f2070adf8e3fd2821650382957cb2c}\label{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_a54f2070adf8e3fd2821650382957cb2c}} 
+\index{ostk::physics::environment::object::celestial::Earth@{ostk::physics::environment::object::celestial::Earth}!Spherical@{Spherical}}
+\index{Spherical@{Spherical}!ostk::physics::environment::object::celestial::Earth@{ostk::physics::environment::object::celestial::Earth}}
+\doxysubsubsection{\texorpdfstring{Spherical()}{Spherical()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} ostk\+::physics\+::environment\+::object\+::celestial\+::\+Earth\+::\+Spherical (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Spherical model. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_abc5717390846fec03abe2935cccedd18}\label{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_abc5717390846fec03abe2935cccedd18}} 
+\index{ostk::physics::environment::object::celestial::Earth@{ostk::physics::environment::object::celestial::Earth}!WGS84@{WGS84}}
+\index{WGS84@{WGS84}!ostk::physics::environment::object::celestial::Earth@{ostk::physics::environment::object::celestial::Earth}}
+\doxysubsubsection{\texorpdfstring{WGS84()}{WGS84()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} ostk\+::physics\+::environment\+::object\+::celestial\+::\+Earth\+::\+W\+G\+S84 (\begin{DoxyParamCaption}\item[{const Integer \&}]{a\+Gravity\+Model\+Degree = {\ttfamily Integer\+:\+:Undefined()},  }\item[{const Integer \&}]{a\+Gravity\+Model\+Order = {\ttfamily Integer\+:\+:Undefined()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+World Geodetic System 1984 (W\+G\+S84) 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_aa9586bbfa33e0130fbe499dd23748fe7}\label{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_aa9586bbfa33e0130fbe499dd23748fe7}} 
+\index{ostk::physics::environment::object::celestial::Earth@{ostk::physics::environment::object::celestial::Earth}!WGS84\_EGM96@{WGS84\_EGM96}}
+\index{WGS84\_EGM96@{WGS84\_EGM96}!ostk::physics::environment::object::celestial::Earth@{ostk::physics::environment::object::celestial::Earth}}
+\doxysubsubsection{\texorpdfstring{WGS84\_EGM96()}{WGS84\_EGM96()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} ostk\+::physics\+::environment\+::object\+::celestial\+::\+Earth\+::\+W\+G\+S84\+\_\+\+E\+G\+M96 (\begin{DoxyParamCaption}\item[{const Integer \&}]{a\+Gravity\+Model\+Degree = {\ttfamily Integer\+:\+:Undefined()},  }\item[{const Integer \&}]{a\+Gravity\+Model\+Order = {\ttfamily Integer\+:\+:Undefined()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+World Geodetic System 1984 (W\+G\+S84) + \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} Gravity Model 1996 (E\+G\+M96) 
+
+\begin{DoxyVerb}                EGM96 coefficients and WGS84 shape.
+                Gravitational parameter: 398600441800000 [m^3/s^2].
+                Equatorial radius: 6378137.0 [m].
+\end{DoxyVerb}
+
+
+N\+I\+MA T\+R8350.\+2, Third Edition, 4 July 1997.
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth}{Earth}} 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Open\+Space\+Toolkit/\+Physics/\+Environment/\+Objects/\+Celestial\+Bodies/\mbox{\hyperlink{_objects_2_celestial_bodies_2_earth_8hpp}{Earth.\+hpp}}\item 
+src/\+Open\+Space\+Toolkit/\+Physics/\+Environment/\+Objects/\+Celestial\+Bodies/\mbox{\hyperlink{_objects_2_celestial_bodies_2_earth_8cpp}{Earth.\+cpp}}\end{DoxyCompactItemize}

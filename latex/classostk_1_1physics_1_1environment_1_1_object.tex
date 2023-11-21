@@ -1,0 +1,219 @@
+\hypertarget{classostk_1_1physics_1_1environment_1_1_object}{}\doxysection{ostk\+::physics\+::environment\+::Object Class Reference}
+\label{classostk_1_1physics_1_1environment_1_1_object}\index{ostk::physics::environment::Object@{ostk::physics::environment::Object}}
+
+
+{\ttfamily \#include $<$Object.\+hpp$>$}
+
+Inheritance diagram for ostk\+::physics\+::environment\+::Object\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.891892cm]{classostk_1_1physics_1_1environment_1_1_object}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_geometry}{object\+::\+Geometry}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_aa7e729b9f9530a07e119ec75ab9506e5}{Geometry}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_ad0bd314e8ecd4c649dec47c734e7b837}{Object}} (const String \&a\+Name)
+\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_acfb94e72017a6f1d2a12771a6bcf1a3d}{Object}} (const String \&a\+Name, const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_aa7e729b9f9530a07e119ec75ab9506e5}{Object\+::\+Geometry}} \&a\+Geometry)
+\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_abf6aec0a61fb175f13f1eb0e7d43f93e}{Object}} (const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object}{Object}} \&an\+Object)
+\item 
+virtual \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_ab45ec0e1e0dfcadb6166079377ec3e37}{$\sim$\+Object}} ()=0
+\item 
+virtual \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object}{Object}} $\ast$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_a42ad5b71529e84b92e911ae87559a7d8}{clone}} () const =0
+\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object}{Object}} \& \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_ac5724ddaed5079713a8a7c62daba2b9b}{operator=}} (const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object}{Object}} \&an\+Object)
+\item 
+virtual bool \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_a67fbafdb148a3679c0b0adba35faa306}{is\+Defined}} () const
+\item 
+const String \& \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_a482a363b20f3111919b57d8b6ae4b626}{access\+Name}} () const
+\item 
+virtual Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_a23a879fa650480088529c440e1298306}{access\+Frame}} () const =0
+\item 
+const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_aa7e729b9f9530a07e119ec75ab9506e5}{Object\+::\+Geometry}} \& \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_ab306747a9a25bce149ac38e90ccf5996}{access\+Geometry}} () const
+\item 
+String \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_a6b5ae91472cae78ec3a1f71f92d012cf}{get\+Name}} () const
+\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_aa7e729b9f9530a07e119ec75ab9506e5}{Object\+::\+Geometry}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_a2fbf19c615439f945094330513a15d8e}{get\+Geometry}} () const
+\item 
+virtual \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_position}{Position}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_a7b2938a7de7a434a944b66163fc28076}{get\+Position\+In}} (const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \&a\+Frame\+S\+Ptr, const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const =0
+\item 
+virtual \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_velocity}{Velocity}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_a1c031d87287a476ad7e2aa8d0ac3f3a4}{get\+Velocity\+In}} (const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \&a\+Frame\+S\+Ptr, const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const =0
+\item 
+virtual \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_transform}{Transform}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_aab522bdca9b06fdd615238bacdaca423}{get\+Transform\+To}} (const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \&a\+Frame\+S\+Ptr, const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const =0
+\item 
+virtual \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_axes}{Axes}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_ab915996e65066fa946a31a362c5d874b}{get\+Axes\+In}} (const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \&a\+Frame\+S\+Ptr, const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const =0
+\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_aa7e729b9f9530a07e119ec75ab9506e5}{Object\+::\+Geometry}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_a7e71cbc82cacb97028dfec30b4d22615}{get\+Geometry\+In}} (const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \&a\+Frame\+S\+Ptr, const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_a418df9bf4a73078f3d494edef1743f8d}{operator$<$$<$}} (std\+::ostream \&an\+Output\+Stream, const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object}{Object}} \&an\+Object)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1_object_aa7e729b9f9530a07e119ec75ab9506e5}\label{classostk_1_1physics_1_1environment_1_1_object_aa7e729b9f9530a07e119ec75ab9506e5}} 
+\index{ostk::physics::environment::Object@{ostk::physics::environment::Object}!Geometry@{Geometry}}
+\index{Geometry@{Geometry}!ostk::physics::environment::Object@{ostk::physics::environment::Object}}
+\doxysubsubsection{\texorpdfstring{Geometry}{Geometry}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_geometry}{object\+::\+Geometry}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_aa7e729b9f9530a07e119ec75ab9506e5}{ostk\+::physics\+::environment\+::\+Object\+::\+Geometry}}}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1_object_ad0bd314e8ecd4c649dec47c734e7b837}\label{classostk_1_1physics_1_1environment_1_1_object_ad0bd314e8ecd4c649dec47c734e7b837}} 
+\index{ostk::physics::environment::Object@{ostk::physics::environment::Object}!Object@{Object}}
+\index{Object@{Object}!ostk::physics::environment::Object@{ostk::physics::environment::Object}}
+\doxysubsubsection{\texorpdfstring{Object()}{Object()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily ostk\+::physics\+::environment\+::\+Object\+::\+Object (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Name }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1_object_acfb94e72017a6f1d2a12771a6bcf1a3d}\label{classostk_1_1physics_1_1environment_1_1_object_acfb94e72017a6f1d2a12771a6bcf1a3d}} 
+\index{ostk::physics::environment::Object@{ostk::physics::environment::Object}!Object@{Object}}
+\index{Object@{Object}!ostk::physics::environment::Object@{ostk::physics::environment::Object}}
+\doxysubsubsection{\texorpdfstring{Object()}{Object()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily ostk\+::physics\+::environment\+::\+Object\+::\+Object (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Name,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_aa7e729b9f9530a07e119ec75ab9506e5}{Object\+::\+Geometry}} \&}]{a\+Geometry }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1_object_abf6aec0a61fb175f13f1eb0e7d43f93e}\label{classostk_1_1physics_1_1environment_1_1_object_abf6aec0a61fb175f13f1eb0e7d43f93e}} 
+\index{ostk::physics::environment::Object@{ostk::physics::environment::Object}!Object@{Object}}
+\index{Object@{Object}!ostk::physics::environment::Object@{ostk::physics::environment::Object}}
+\doxysubsubsection{\texorpdfstring{Object()}{Object()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily ostk\+::physics\+::environment\+::\+Object\+::\+Object (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object}{Object}} \&}]{an\+Object }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1_object_ab45ec0e1e0dfcadb6166079377ec3e37}\label{classostk_1_1physics_1_1environment_1_1_object_ab45ec0e1e0dfcadb6166079377ec3e37}} 
+\index{ostk::physics::environment::Object@{ostk::physics::environment::Object}!````~Object@{$\sim$Object}}
+\index{````~Object@{$\sim$Object}!ostk::physics::environment::Object@{ostk::physics::environment::Object}}
+\doxysubsubsection{\texorpdfstring{$\sim$Object()}{~Object()}}
+{\footnotesize\ttfamily ostk\+::physics\+::environment\+::\+Object\+::$\sim$\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1_object_a23a879fa650480088529c440e1298306}\label{classostk_1_1physics_1_1environment_1_1_object_a23a879fa650480088529c440e1298306}} 
+\index{ostk::physics::environment::Object@{ostk::physics::environment::Object}!accessFrame@{accessFrame}}
+\index{accessFrame@{accessFrame}!ostk::physics::environment::Object@{ostk::physics::environment::Object}}
+\doxysubsubsection{\texorpdfstring{accessFrame()}{accessFrame()}}
+{\footnotesize\ttfamily virtual Shared$<$const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}}$>$ ostk\+::physics\+::environment\+::\+Object\+::access\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a581cf2edc06dd50e3da2020af63223f1}{ostk\+::physics\+::environment\+::object\+::\+Celestial}}.
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1_object_ab306747a9a25bce149ac38e90ccf5996}\label{classostk_1_1physics_1_1environment_1_1_object_ab306747a9a25bce149ac38e90ccf5996}} 
+\index{ostk::physics::environment::Object@{ostk::physics::environment::Object}!accessGeometry@{accessGeometry}}
+\index{accessGeometry@{accessGeometry}!ostk::physics::environment::Object@{ostk::physics::environment::Object}}
+\doxysubsubsection{\texorpdfstring{accessGeometry()}{accessGeometry()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_aa7e729b9f9530a07e119ec75ab9506e5}{Object\+::\+Geometry}} \& ostk\+::physics\+::environment\+::\+Object\+::access\+Geometry (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1_object_a482a363b20f3111919b57d8b6ae4b626}\label{classostk_1_1physics_1_1environment_1_1_object_a482a363b20f3111919b57d8b6ae4b626}} 
+\index{ostk::physics::environment::Object@{ostk::physics::environment::Object}!accessName@{accessName}}
+\index{accessName@{accessName}!ostk::physics::environment::Object@{ostk::physics::environment::Object}}
+\doxysubsubsection{\texorpdfstring{accessName()}{accessName()}}
+{\footnotesize\ttfamily const String \& ostk\+::physics\+::environment\+::\+Object\+::access\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1_object_a42ad5b71529e84b92e911ae87559a7d8}\label{classostk_1_1physics_1_1environment_1_1_object_a42ad5b71529e84b92e911ae87559a7d8}} 
+\index{ostk::physics::environment::Object@{ostk::physics::environment::Object}!clone@{clone}}
+\index{clone@{clone}!ostk::physics::environment::Object@{ostk::physics::environment::Object}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object}{Object}}$\ast$ ostk\+::physics\+::environment\+::\+Object\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_adbbbc6c86fdec5f6d24e7b64419b885c}{ostk\+::physics\+::environment\+::object\+::\+Celestial}}, \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_a4ccdbfcb7d3ad42c87eaf7f1f5ca576c}{ostk\+::physics\+::environment\+::object\+::celestial\+::\+Earth}}, \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_moon_aab8fdc1a02c990987ea2bbf56896f484}{ostk\+::physics\+::environment\+::object\+::celestial\+::\+Moon}}, and \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_sun_a4df2778786316e6c279528b9248a3e9b}{ostk\+::physics\+::environment\+::object\+::celestial\+::\+Sun}}.
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1_object_ab915996e65066fa946a31a362c5d874b}\label{classostk_1_1physics_1_1environment_1_1_object_ab915996e65066fa946a31a362c5d874b}} 
+\index{ostk::physics::environment::Object@{ostk::physics::environment::Object}!getAxesIn@{getAxesIn}}
+\index{getAxesIn@{getAxesIn}!ostk::physics::environment::Object@{ostk::physics::environment::Object}}
+\doxysubsubsection{\texorpdfstring{getAxesIn()}{getAxesIn()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_axes}{Axes}} ostk\+::physics\+::environment\+::\+Object\+::get\+Axes\+In (\begin{DoxyParamCaption}\item[{const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \&}]{a\+Frame\+S\+Ptr,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&}]{an\+Instant }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_abe3a06f0125fc000299e2acabafc328b}{ostk\+::physics\+::environment\+::object\+::\+Celestial}}.
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1_object_a2fbf19c615439f945094330513a15d8e}\label{classostk_1_1physics_1_1environment_1_1_object_a2fbf19c615439f945094330513a15d8e}} 
+\index{ostk::physics::environment::Object@{ostk::physics::environment::Object}!getGeometry@{getGeometry}}
+\index{getGeometry@{getGeometry}!ostk::physics::environment::Object@{ostk::physics::environment::Object}}
+\doxysubsubsection{\texorpdfstring{getGeometry()}{getGeometry()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_aa7e729b9f9530a07e119ec75ab9506e5}{Object\+::\+Geometry}} ostk\+::physics\+::environment\+::\+Object\+::get\+Geometry (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1_object_a7e71cbc82cacb97028dfec30b4d22615}\label{classostk_1_1physics_1_1environment_1_1_object_a7e71cbc82cacb97028dfec30b4d22615}} 
+\index{ostk::physics::environment::Object@{ostk::physics::environment::Object}!getGeometryIn@{getGeometryIn}}
+\index{getGeometryIn@{getGeometryIn}!ostk::physics::environment::Object@{ostk::physics::environment::Object}}
+\doxysubsubsection{\texorpdfstring{getGeometryIn()}{getGeometryIn()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_aa7e729b9f9530a07e119ec75ab9506e5}{Object\+::\+Geometry}} ostk\+::physics\+::environment\+::\+Object\+::get\+Geometry\+In (\begin{DoxyParamCaption}\item[{const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \&}]{a\+Frame\+S\+Ptr,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&}]{an\+Instant }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1_object_a6b5ae91472cae78ec3a1f71f92d012cf}\label{classostk_1_1physics_1_1environment_1_1_object_a6b5ae91472cae78ec3a1f71f92d012cf}} 
+\index{ostk::physics::environment::Object@{ostk::physics::environment::Object}!getName@{getName}}
+\index{getName@{getName}!ostk::physics::environment::Object@{ostk::physics::environment::Object}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily String ostk\+::physics\+::environment\+::\+Object\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1_object_a7b2938a7de7a434a944b66163fc28076}\label{classostk_1_1physics_1_1environment_1_1_object_a7b2938a7de7a434a944b66163fc28076}} 
+\index{ostk::physics::environment::Object@{ostk::physics::environment::Object}!getPositionIn@{getPositionIn}}
+\index{getPositionIn@{getPositionIn}!ostk::physics::environment::Object@{ostk::physics::environment::Object}}
+\doxysubsubsection{\texorpdfstring{getPositionIn()}{getPositionIn()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_position}{Position}} ostk\+::physics\+::environment\+::\+Object\+::get\+Position\+In (\begin{DoxyParamCaption}\item[{const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \&}]{a\+Frame\+S\+Ptr,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&}]{an\+Instant }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_ac10d3092a427a05f79b90caec84847bb}{ostk\+::physics\+::environment\+::object\+::\+Celestial}}.
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1_object_aab522bdca9b06fdd615238bacdaca423}\label{classostk_1_1physics_1_1environment_1_1_object_aab522bdca9b06fdd615238bacdaca423}} 
+\index{ostk::physics::environment::Object@{ostk::physics::environment::Object}!getTransformTo@{getTransformTo}}
+\index{getTransformTo@{getTransformTo}!ostk::physics::environment::Object@{ostk::physics::environment::Object}}
+\doxysubsubsection{\texorpdfstring{getTransformTo()}{getTransformTo()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_transform}{Transform}} ostk\+::physics\+::environment\+::\+Object\+::get\+Transform\+To (\begin{DoxyParamCaption}\item[{const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \&}]{a\+Frame\+S\+Ptr,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&}]{an\+Instant }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_ac4ac447f2c9960ab25e024bb688d9505}{ostk\+::physics\+::environment\+::object\+::\+Celestial}}.
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1_object_a1c031d87287a476ad7e2aa8d0ac3f3a4}\label{classostk_1_1physics_1_1environment_1_1_object_a1c031d87287a476ad7e2aa8d0ac3f3a4}} 
+\index{ostk::physics::environment::Object@{ostk::physics::environment::Object}!getVelocityIn@{getVelocityIn}}
+\index{getVelocityIn@{getVelocityIn}!ostk::physics::environment::Object@{ostk::physics::environment::Object}}
+\doxysubsubsection{\texorpdfstring{getVelocityIn()}{getVelocityIn()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_velocity}{Velocity}} ostk\+::physics\+::environment\+::\+Object\+::get\+Velocity\+In (\begin{DoxyParamCaption}\item[{const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \&}]{a\+Frame\+S\+Ptr,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&}]{an\+Instant }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a23f4564311c6c70dc78070723c3fbab2}{ostk\+::physics\+::environment\+::object\+::\+Celestial}}.
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1_object_a67fbafdb148a3679c0b0adba35faa306}\label{classostk_1_1physics_1_1environment_1_1_object_a67fbafdb148a3679c0b0adba35faa306}} 
+\index{ostk::physics::environment::Object@{ostk::physics::environment::Object}!isDefined@{isDefined}}
+\index{isDefined@{isDefined}!ostk::physics::environment::Object@{ostk::physics::environment::Object}}
+\doxysubsubsection{\texorpdfstring{isDefined()}{isDefined()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::environment\+::\+Object\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a25746b47ed8da42de7fd256a72e59f56}{ostk\+::physics\+::environment\+::object\+::\+Celestial}}.
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1_object_ac5724ddaed5079713a8a7c62daba2b9b}\label{classostk_1_1physics_1_1environment_1_1_object_ac5724ddaed5079713a8a7c62daba2b9b}} 
+\index{ostk::physics::environment::Object@{ostk::physics::environment::Object}!operator=@{operator=}}
+\index{operator=@{operator=}!ostk::physics::environment::Object@{ostk::physics::environment::Object}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object}{Object}} \& ostk\+::physics\+::environment\+::\+Object\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object}{Object}} \&}]{an\+Object }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1_object_a418df9bf4a73078f3d494edef1743f8d}\label{classostk_1_1physics_1_1environment_1_1_object_a418df9bf4a73078f3d494edef1743f8d}} 
+\index{ostk::physics::environment::Object@{ostk::physics::environment::Object}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!ostk::physics::environment::Object@{ostk::physics::environment::Object}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{an\+Output\+Stream,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object}{Object}} \&}]{an\+Object }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Open\+Space\+Toolkit/\+Physics/\+Environment/\mbox{\hyperlink{_object_8hpp}{Object.\+hpp}}\item 
+src/\+Open\+Space\+Toolkit/\+Physics/\+Environment/\mbox{\hyperlink{_object_8cpp}{Object.\+cpp}}\end{DoxyCompactItemize}

@@ -13,22 +13,22 @@ var hierarchy =
     [ "enable_shared_from_this", null, [
       [ "ostk::physics::coord::Frame", "classostk_1_1physics_1_1coord_1_1_frame.html", null ]
     ] ],
-    [ "ostk::physics::env::ephem::spice::Engine", "classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html", null ],
+    [ "ostk::physics::environment::ephemerides::spice::Engine", "classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_engine.html", null ],
     [ "ostk::physics::Environment", "classostk_1_1physics_1_1_environment.html", null ],
-    [ "ostk::physics::env::Ephemeris", "classostk_1_1physics_1_1env_1_1_ephemeris.html", [
-      [ "ostk::physics::env::ephem::Analytical", "classostk_1_1physics_1_1env_1_1ephem_1_1_analytical.html", null ],
-      [ "ostk::physics::env::ephem::SPICE", "classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html", null ]
+    [ "ostk::physics::environment::Ephemeris", "classostk_1_1physics_1_1environment_1_1_ephemeris.html", [
+      [ "ostk::physics::environment::ephemerides::Analytical", "classostk_1_1physics_1_1environment_1_1ephemerides_1_1_analytical.html", null ],
+      [ "ostk::physics::environment::ephemerides::SPICE", "classostk_1_1physics_1_1environment_1_1ephemerides_1_1_s_p_i_c_e.html", null ]
     ] ],
     [ "ostk::physics::environment::atmospheric::earth::Exponential", "classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential.html", null ],
     [ "ostk::physics::coord::frame::provider::iers::Finals2000A", "classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a.html", null ],
-    [ "ostk::physics::env::object::Geometry", "classostk_1_1physics_1_1env_1_1object_1_1_geometry.html", null ],
+    [ "ostk::physics::environment::object::Geometry", "classostk_1_1physics_1_1environment_1_1object_1_1_geometry.html", null ],
     [ "ostk::physics::time::Instant", "classostk_1_1physics_1_1time_1_1_instant.html", null ],
     [ "Interval", null, [
       [ "ostk::physics::time::Interval", "classostk_1_1physics_1_1time_1_1_interval.html", null ]
     ] ],
-    [ "ostk::physics::env::ephem::spice::Kernel", "classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel.html", null ],
+    [ "ostk::physics::environment::ephemerides::spice::Kernel", "classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel.html", null ],
     [ "ostk::physics::coord::spherical::LLA", "classostk_1_1physics_1_1coord_1_1spherical_1_1_l_l_a.html", null ],
-    [ "ostk::physics::env::ephem::spice::Manager", "classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_manager.html", null ],
+    [ "ostk::physics::environment::ephemerides::spice::Manager", "classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_manager.html", null ],
     [ "ostk::physics::environment::magnetic::earth::Manager", "classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager.html", null ],
     [ "ostk::physics::coord::frame::Manager", "classostk_1_1physics_1_1coord_1_1frame_1_1_manager.html", null ],
     [ "ostk::physics::coord::frame::provider::iers::Manager", "classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager.html", null ],
@@ -49,14 +49,14 @@ var hierarchy =
     [ "ostk::physics::environment::atmospheric::Model", "classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model.html", [
       [ "ostk::physics::environment::atmospheric::Earth", "classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth.html", null ]
     ] ],
-    [ "ostk::physics::env::obj::Celestial::ModelBase", "structostk_1_1physics_1_1env_1_1obj_1_1_celestial_1_1_model_base.html", null ],
+    [ "ostk::physics::environment::object::Celestial::ModelBase", "structostk_1_1physics_1_1environment_1_1object_1_1_celestial_1_1_model_base.html", null ],
     [ "ostk::physics::environment::atmospheric::earth::NRLMSISE00", "classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00.html", null ],
     [ "ostk::physics::environment::atmospheric::earth::NRLMSISE00::nrlmsise_input", "structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input.html", null ],
-    [ "ostk::physics::env::Object", "classostk_1_1physics_1_1env_1_1_object.html", [
-      [ "ostk::physics::env::obj::Celestial", "classostk_1_1physics_1_1env_1_1obj_1_1_celestial.html", [
-        [ "ostk::physics::env::obj::celest::Earth", "classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_earth.html", null ],
-        [ "ostk::physics::env::obj::celest::Moon", "classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_moon.html", null ],
-        [ "ostk::physics::env::obj::celest::Sun", "classostk_1_1physics_1_1env_1_1obj_1_1celest_1_1_sun.html", null ]
+    [ "ostk::physics::environment::Object", "classostk_1_1physics_1_1environment_1_1_object.html", [
+      [ "ostk::physics::environment::object::Celestial", "classostk_1_1physics_1_1environment_1_1object_1_1_celestial.html", [
+        [ "ostk::physics::environment::object::celestial::Earth", "classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth.html", null ],
+        [ "ostk::physics::environment::object::celestial::Moon", "classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_moon.html", null ],
+        [ "ostk::physics::environment::object::celestial::Sun", "classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_sun.html", null ]
       ] ]
     ] ],
     [ "ostk::physics::coord::frame::provider::iers::BulletinA::Observation", "structostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_observation.html", null ],
@@ -81,6 +81,7 @@ var hierarchy =
     [ "ostk::physics::data::Scalar", "classostk_1_1physics_1_1data_1_1_scalar.html", null ],
     [ "ostk::physics::time::Time", "classostk_1_1physics_1_1time_1_1_time.html", null ],
     [ "ostk::physics::coord::Transform", "classostk_1_1physics_1_1coord_1_1_transform.html", null ],
+    [ "ostk::physics::units::Derived::Unit", "classostk_1_1physics_1_1units_1_1_derived_1_1_unit.html", null ],
     [ "ostk::physics::units::Unit", "classostk_1_1physics_1_1units_1_1_unit.html", [
       [ "ostk::physics::units::Angle", "classostk_1_1physics_1_1units_1_1_angle.html", null ],
       [ "ostk::physics::units::Derived", "classostk_1_1physics_1_1units_1_1_derived.html", null ],
@@ -90,7 +91,6 @@ var hierarchy =
       [ "ostk::physics::units::Time", "classostk_1_1physics_1_1units_1_1_time.html", null ]
     ] ],
     [ "ostk::physics::Unit", "classostk_1_1physics_1_1_unit.html", null ],
-    [ "ostk::physics::units::Derived::Unit", "classostk_1_1physics_1_1units_1_1_derived_1_1_unit.html", null ],
     [ "ostk::physics::data::Vector", "classostk_1_1physics_1_1data_1_1_vector.html", [
       [ "ostk::physics::data::Direction", "classostk_1_1physics_1_1data_1_1_direction.html", null ]
     ] ],

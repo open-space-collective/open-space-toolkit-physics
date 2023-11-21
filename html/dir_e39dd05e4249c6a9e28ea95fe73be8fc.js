@@ -9,9 +9,9 @@ var dir_e39dd05e4249c6a9e28ea95fe73be8fc =
     [ "Utilities", "dir_fafa3b18a87fe401f1a26033653cf1dd.html", "dir_fafa3b18a87fe401f1a26033653cf1dd" ],
     [ "Constants.hpp", "_constants_8hpp.html", null ],
     [ "Ephemeris.hpp", "_ephemeris_8hpp.html", [
-      [ "Ephemeris", "classostk_1_1physics_1_1env_1_1_ephemeris.html", "classostk_1_1physics_1_1env_1_1_ephemeris" ]
+      [ "Ephemeris", "classostk_1_1physics_1_1environment_1_1_ephemeris.html", "classostk_1_1physics_1_1environment_1_1_ephemeris" ]
     ] ],
     [ "Object.hpp", "_object_8hpp.html", [
-      [ "Object", "classostk_1_1physics_1_1env_1_1_object.html", "classostk_1_1physics_1_1env_1_1_object" ]
+      [ "Object", "classostk_1_1physics_1_1environment_1_1_object.html", "classostk_1_1physics_1_1environment_1_1_object" ]
     ] ]
 ];

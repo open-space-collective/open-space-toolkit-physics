@@ -10,7 +10,7 @@ var searchData=
   ['loadbulletina_519',['loadBulletinA',['../classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager.html#a57d53edcf28bd7d02181384e9ea63dab',1,'ostk::physics::coord::frame::provider::iers::Manager']]],
   ['loadcssispaceweather_520',['loadCSSISpaceWeather',['../classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager.html#addd98227dfc221b1442a65f5130655f6',1,'ostk::physics::environment::atmospheric::earth::Manager']]],
   ['loadfinals2000a_521',['loadFinals2000A',['../classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager.html#ad79ddb22cfd125d810840611c24a9f42',1,'ostk::physics::coord::frame::provider::iers::Manager']]],
-  ['loadkernel_522',['loadKernel',['../classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_engine.html#aa1aa0d1e376b18899c603950a2d43589',1,'ostk::physics::env::ephem::spice::Engine']]],
+  ['loadkernel_522',['loadKernel',['../classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_engine.html#a31a4a8bab312a26abbf261079ad3dfcd',1,'ostk::physics::environment::ephemerides::spice::Engine']]],
   ['loadlegacy_523',['LoadLegacy',['../classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather.html#ab10d0b298c9c7bbc9c9fe65316618003',1,'ostk::physics::environment::atmospheric::earth::CSSISpaceWeather']]],
   ['loadmanifest_524',['loadManifest',['../classostk_1_1physics_1_1data_1_1_manager.html#ad0b4a0867fd62d83a026b0a7318c3585',1,'ostk::physics::data::Manager']]],
   ['loadmanifest_5f_525',['loadManifest_',['../classostk_1_1physics_1_1data_1_1_manager.html#a4f78aff80d2037f4de16eea4a5d46f36',1,'ostk::physics::data::Manager']]],
@@ -18,7 +18,7 @@ var searchData=
   ['lockmanifestrepository_5f_527',['lockManifestRepository_',['../classostk_1_1physics_1_1data_1_1_manager.html#a7cef4a2ee4c553f25a4f6b4f94808b76',1,'ostk::physics::data::Manager']]],
   ['lod_5fa_528',['lod_A',['../structostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data.html#a1bcfc94f3b4e32ea39ec0e51f96a9e06',1,'ostk::physics::coord::frame::provider::iers::Finals2000A::Data']]],
   ['loderror_5fa_529',['lodError_A',['../structostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data.html#a7d04e269a3890bca4d44fbb2b06c58c0',1,'ostk::physics::coord::frame::provider::iers::Finals2000A::Data']]],
-  ['lsk_530',['LSK',['../classostk_1_1physics_1_1env_1_1ephem_1_1spice_1_1_kernel.html#a76d560bbface15a0cb24cd82e9a93d77a1352b10452a6331f4858173133cad49d',1,'ostk::physics::env::ephem::spice::Kernel']]],
+  ['lsk_530',['LSK',['../classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel.html#a668ec7f85e0769b81a8c0051e6d71f2ba1352b10452a6331f4858173133cad49d',1,'ostk::physics::environment::ephemerides::spice::Kernel']]],
   ['lst_531',['lst',['../structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input.html#a083f5448b04610a7b32c592bfe959397',1,'ostk::physics::environment::atmospheric::earth::NRLMSISE00::nrlmsise_input']]],
   ['luminousintensity_532',['LuminousIntensity',['../classostk_1_1physics_1_1_unit.html#a1c07d36cd02be8541eb972367e2b628fae91a9eb4f5dcc51ea18e180ea981d6ae',1,'ostk::physics::Unit::LuminousIntensity()'],['../classostk_1_1physics_1_1units_1_1_unit.html#a113924e2dd880bd0e95d4ee9646ea4caae91a9eb4f5dcc51ea18e180ea981d6ae',1,'ostk::physics::units::Unit::LuminousIntensity()']]]
 ];

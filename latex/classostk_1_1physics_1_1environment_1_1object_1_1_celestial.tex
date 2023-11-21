@@ -1,0 +1,380 @@
+\hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial}{}\doxysection{ostk\+::physics\+::environment\+::object\+::Celestial Class Reference}
+\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial}\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}
+
+
+{\ttfamily \#include $<$Celestial.\+hpp$>$}
+
+Inheritance diagram for ostk\+::physics\+::environment\+::object\+::Celestial\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.891892cm]{classostk_1_1physics_1_1environment_1_1object_1_1_celestial}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structostk_1_1physics_1_1environment_1_1object_1_1_celestial_1_1_model_base}{Model\+Base}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a22adef48147472c56a7ab3b5d8140661}{Type}} \{ \newline
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a22adef48147472c56a7ab3b5d8140661aec0fc0100c4fc1ce4eea230c3dc10360}{Type\+::\+Undefined}}, 
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a22adef48147472c56a7ab3b5d8140661aef6572e4cd58bb39a3f4e82fc64fe9f0}{Type\+::\+Sun}}, 
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a22adef48147472c56a7ab3b5d8140661a34dae487e31f37aa74633258b7774d4f}{Type\+::\+Mercury}}, 
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a22adef48147472c56a7ab3b5d8140661a0bdc508a17811a3a860d32749ad44e4b}{Type\+::\+Venus}}, 
+\newline
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a22adef48147472c56a7ab3b5d8140661a5cdd21c97f86686cc505e02fd32a7523}{Type\+::\+Earth}}, 
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a22adef48147472c56a7ab3b5d8140661ad502a50ed945d5fca74e0105575b5b34}{Type\+::\+Moon}}, 
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a22adef48147472c56a7ab3b5d8140661a671f028142280b556a85ffdd90e0a43d}{Type\+::\+Mars}}
+ \}
+\item 
+enum \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_abad46f3313eced8098e74365e77a7d16}{Frame\+Type}} \{ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_abad46f3313eced8098e74365e77a7d16aec0fc0100c4fc1ce4eea230c3dc10360}{Frame\+Type\+::\+Undefined}}, 
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_abad46f3313eced8098e74365e77a7d16acd3459b28418fa8fa75ffaba4f3e7c74}{Frame\+Type\+::\+N\+ED}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_abc307b5e79ebf68672c4fb34357d37c5}{Celestial}} (const String \&a\+Name, const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a22adef48147472c56a7ab3b5d8140661}{Celestial\+::\+Type}} \&a\+Type, const \mbox{\hyperlink{classostk_1_1physics_1_1units_1_1_derived}{Derived}} \&a\+Gravitational\+Parameter, const \mbox{\hyperlink{classostk_1_1physics_1_1units_1_1_length}{Length}} \&an\+Equatorial\+Radius, const Real \&a\+Flattening, const Real \&a\+J2, const Real \&a\+J4, const Shared$<$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_ephemeris}{Ephemeris}} $>$ \&an\+Ephemeris, const Shared$<$ \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_ac06894f4b93290f4caf18760a770323f}{Gravitational\+Model}} $>$ \&a\+Gravitational\+Model, const Shared$<$ \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_a1d67b80ef0221d026628123f2cdf14d8}{Magnetic\+Model}} $>$ \&a\+Magnetic\+Model, const Shared$<$ \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_a401a65695b0175405ca6cf49eda40b36}{Atmospheric\+Model}} $>$ \&an\+Atmospheric\+Model)
+\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a9acfc43094d2af339144f5e09fec33f0}{Celestial}} (const String \&a\+Name, const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a22adef48147472c56a7ab3b5d8140661}{Celestial\+::\+Type}} \&a\+Type, const \mbox{\hyperlink{classostk_1_1physics_1_1units_1_1_derived}{Derived}} \&a\+Gravitational\+Parameter, const \mbox{\hyperlink{classostk_1_1physics_1_1units_1_1_length}{Length}} \&an\+Equatorial\+Radius, const Real \&a\+Flattening, const Real \&a\+J2, const Real \&a\+J4, const Shared$<$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_ephemeris}{Ephemeris}} $>$ \&an\+Ephemeris, const Shared$<$ \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_ac06894f4b93290f4caf18760a770323f}{Gravitational\+Model}} $>$ \&a\+Gravitational\+Model, const Shared$<$ \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_a1d67b80ef0221d026628123f2cdf14d8}{Magnetic\+Model}} $>$ \&a\+Magnetic\+Model, const Shared$<$ \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_a401a65695b0175405ca6cf49eda40b36}{Atmospheric\+Model}} $>$ \&an\+Atmospheric\+Model, const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_aa7e729b9f9530a07e119ec75ab9506e5}{Object\+::\+Geometry}} \&a\+Geometry)
+\item 
+virtual \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_aed7b26bf9949f4737987f768f23a1f65}{$\sim$\+Celestial}} () override
+\item 
+virtual \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial}{Celestial}} $\ast$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_adbbbc6c86fdec5f6d24e7b64419b885c}{clone}} () const override
+\item 
+virtual bool \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a25746b47ed8da42de7fd256a72e59f56}{is\+Defined}} () const override
+\item 
+Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_ephemeris}{Ephemeris}} $>$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a0e365cdf7cddbe4aa38e68e8c10665d6}{access\+Ephemeris}} () const
+\item 
+Shared$<$ const \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_ac06894f4b93290f4caf18760a770323f}{Gravitational\+Model}} $>$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a976be059fe64457c0aefe555e4fba427}{access\+Gravitational\+Model}} () const
+\item 
+Shared$<$ const \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_a1d67b80ef0221d026628123f2cdf14d8}{Magnetic\+Model}} $>$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a98a5fe28212b33f5b3185185afa251a6}{access\+Magnetic\+Model}} () const
+\item 
+Shared$<$ const \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_a401a65695b0175405ca6cf49eda40b36}{Atmospheric\+Model}} $>$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a60d182194f5b3925d40878616fd12ec1}{access\+Atmospheric\+Model}} () const
+\item 
+bool \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_aacdd5f213ee4a373a5c8e2b98bef21f7}{gravitational\+Model\+Is\+Defined}} () const
+\item 
+bool \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a1d204aa21bc1115aa56252ca8bb064ed}{magnetic\+Model\+Is\+Defined}} () const
+\item 
+bool \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a948c09f0933c1029adb19b416cc16936}{atmospheric\+Model\+Is\+Defined}} () const
+\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a22adef48147472c56a7ab3b5d8140661}{Celestial\+::\+Type}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_ac422b7aad84424cf6918ce08b3d9c917}{get\+Type}} () const
+\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1units_1_1_derived}{Derived}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a3fe5abc4c6a24cfef67eb2bc76977523}{get\+Gravitational\+Parameter}} () const
+\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1units_1_1_length}{Length}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a0394a773909b012b3bf51ccc93cf2957}{get\+Equatorial\+Radius}} () const
+\item 
+Real \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a0ff89bef090afc044885e22ab114ec16}{get\+Flattening}} () const
+\item 
+Real \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a13dc27c6947635f52767f650b4f31620}{get\+J2}} () const
+\item 
+Real \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a3e0c4b3240fa1ccdf4b3e2c233992638}{get\+J4}} () const
+\item 
+virtual Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a581cf2edc06dd50e3da2020af63223f1}{access\+Frame}} () const override
+\item 
+virtual \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_position}{Position}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_ac10d3092a427a05f79b90caec84847bb}{get\+Position\+In}} (const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \&a\+Frame\+S\+Ptr, const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const override
+\item 
+virtual \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_velocity}{Velocity}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a23f4564311c6c70dc78070723c3fbab2}{get\+Velocity\+In}} (const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \&a\+Frame\+S\+Ptr, const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const override
+\item 
+virtual \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_transform}{Transform}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_ac4ac447f2c9960ab25e024bb688d9505}{get\+Transform\+To}} (const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \&a\+Frame\+S\+Ptr, const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const override
+\item 
+virtual \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_axes}{Axes}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_abe3a06f0125fc000299e2acabafc328b}{get\+Axes\+In}} (const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \&a\+Frame\+S\+Ptr, const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const override
+\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_vector}{Vector}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_af9bb0adb04d3276f56f0adba393e82c8}{get\+Gravitational\+Field\+At}} (const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_position}{Position}} \&a\+Position, const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const
+\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_vector}{Vector}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a4c2818f6f577f53512d8837b16c3dc32}{get\+Magnetic\+Field\+At}} (const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_position}{Position}} \&a\+Position, const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const
+\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_scalar}{Scalar}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a6a054ba2ae57b50fa33c00ecb2c19fdc}{get\+Atmospheric\+Density\+At}} (const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_position}{Position}} \&a\+Position, const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const
+\item 
+Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a5923fbf3b9d4ebb85f233cb39051471e}{get\+Frame\+At}} (const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1spherical_1_1_l_l_a}{L\+LA}} \&a\+Lla, const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_abad46f3313eced8098e74365e77a7d16}{Celestial\+::\+Frame\+Type}} \&a\+Frame\+Type) const
+\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_aa7e729b9f9530a07e119ec75ab9506e5}{Object\+::\+Geometry}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_acbfbeceb563694586693e8c41cb931be}{get\+Terminator\+Geometry}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial}{Celestial}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_ade773ad5a77a1a8e35f646b1e9bc1989}{Undefined}} ()
+\item 
+static String \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a9ca8ec080e46d3b5a439d3522daa5e08}{String\+From\+Frame\+Type}} (const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_abad46f3313eced8098e74365e77a7d16}{Celestial\+::\+Frame\+Type}} \&a\+Frame\+Type)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_abad46f3313eced8098e74365e77a7d16}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_abad46f3313eced8098e74365e77a7d16}} 
+\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!FrameType@{FrameType}}
+\index{FrameType@{FrameType}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}
+\doxysubsubsection{\texorpdfstring{FrameType}{FrameType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_abad46f3313eced8098e74365e77a7d16}{ostk\+::physics\+::environment\+::object\+::\+Celestial\+::\+Frame\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Undefined@{Undefined}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!Undefined@{Undefined}}}\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_abad46f3313eced8098e74365e77a7d16aec0fc0100c4fc1ce4eea230c3dc10360}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_abad46f3313eced8098e74365e77a7d16aec0fc0100c4fc1ce4eea230c3dc10360}} 
+Undefined&Undefined frame. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NED@{NED}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!NED@{NED}}}\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_abad46f3313eced8098e74365e77a7d16acd3459b28418fa8fa75ffaba4f3e7c74}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_abad46f3313eced8098e74365e77a7d16acd3459b28418fa8fa75ffaba4f3e7c74}} 
+N\+ED&North-\/\+East-\/\+Down (N\+ED) frame. \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a22adef48147472c56a7ab3b5d8140661}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a22adef48147472c56a7ab3b5d8140661}} 
+\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!Type@{Type}}
+\index{Type@{Type}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}
+\doxysubsubsection{\texorpdfstring{Type}{Type}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a22adef48147472c56a7ab3b5d8140661}{ostk\+::physics\+::environment\+::object\+::\+Celestial\+::\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Undefined@{Undefined}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!Undefined@{Undefined}}}\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a22adef48147472c56a7ab3b5d8140661aec0fc0100c4fc1ce4eea230c3dc10360}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a22adef48147472c56a7ab3b5d8140661aec0fc0100c4fc1ce4eea230c3dc10360}} 
+Undefined&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Sun@{Sun}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!Sun@{Sun}}}\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a22adef48147472c56a7ab3b5d8140661aef6572e4cd58bb39a3f4e82fc64fe9f0}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a22adef48147472c56a7ab3b5d8140661aef6572e4cd58bb39a3f4e82fc64fe9f0}} 
+Sun&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Mercury@{Mercury}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!Mercury@{Mercury}}}\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a22adef48147472c56a7ab3b5d8140661a34dae487e31f37aa74633258b7774d4f}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a22adef48147472c56a7ab3b5d8140661a34dae487e31f37aa74633258b7774d4f}} 
+Mercury&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Venus@{Venus}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!Venus@{Venus}}}\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a22adef48147472c56a7ab3b5d8140661a0bdc508a17811a3a860d32749ad44e4b}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a22adef48147472c56a7ab3b5d8140661a0bdc508a17811a3a860d32749ad44e4b}} 
+Venus&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Earth@{Earth}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!Earth@{Earth}}}\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a22adef48147472c56a7ab3b5d8140661a5cdd21c97f86686cc505e02fd32a7523}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a22adef48147472c56a7ab3b5d8140661a5cdd21c97f86686cc505e02fd32a7523}} 
+Earth&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Moon@{Moon}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!Moon@{Moon}}}\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a22adef48147472c56a7ab3b5d8140661ad502a50ed945d5fca74e0105575b5b34}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a22adef48147472c56a7ab3b5d8140661ad502a50ed945d5fca74e0105575b5b34}} 
+Moon&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Mars@{Mars}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!Mars@{Mars}}}\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a22adef48147472c56a7ab3b5d8140661a671f028142280b556a85ffdd90e0a43d}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a22adef48147472c56a7ab3b5d8140661a671f028142280b556a85ffdd90e0a43d}} 
+Mars&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_abc307b5e79ebf68672c4fb34357d37c5}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_abc307b5e79ebf68672c4fb34357d37c5}} 
+\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!Celestial@{Celestial}}
+\index{Celestial@{Celestial}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}
+\doxysubsubsection{\texorpdfstring{Celestial()}{Celestial()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily ostk\+::physics\+::environment\+::object\+::\+Celestial\+::\+Celestial (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Name,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a22adef48147472c56a7ab3b5d8140661}{Celestial\+::\+Type}} \&}]{a\+Type,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1units_1_1_derived}{Derived}} \&}]{a\+Gravitational\+Parameter,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1units_1_1_length}{Length}} \&}]{an\+Equatorial\+Radius,  }\item[{const Real \&}]{a\+Flattening,  }\item[{const Real \&}]{a\+J2,  }\item[{const Real \&}]{a\+J4,  }\item[{const Shared$<$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_ephemeris}{Ephemeris}} $>$ \&}]{an\+Ephemeris,  }\item[{const Shared$<$ \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_ac06894f4b93290f4caf18760a770323f}{Gravitational\+Model}} $>$ \&}]{a\+Gravitational\+Model,  }\item[{const Shared$<$ \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_a1d67b80ef0221d026628123f2cdf14d8}{Magnetic\+Model}} $>$ \&}]{a\+Magnetic\+Model,  }\item[{const Shared$<$ \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_a401a65695b0175405ca6cf49eda40b36}{Atmospheric\+Model}} $>$ \&}]{an\+Atmospheric\+Model }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a9acfc43094d2af339144f5e09fec33f0}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a9acfc43094d2af339144f5e09fec33f0}} 
+\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!Celestial@{Celestial}}
+\index{Celestial@{Celestial}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}
+\doxysubsubsection{\texorpdfstring{Celestial()}{Celestial()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily ostk\+::physics\+::environment\+::object\+::\+Celestial\+::\+Celestial (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Name,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a22adef48147472c56a7ab3b5d8140661}{Celestial\+::\+Type}} \&}]{a\+Type,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1units_1_1_derived}{Derived}} \&}]{a\+Gravitational\+Parameter,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1units_1_1_length}{Length}} \&}]{an\+Equatorial\+Radius,  }\item[{const Real \&}]{a\+Flattening,  }\item[{const Real \&}]{a\+J2,  }\item[{const Real \&}]{a\+J4,  }\item[{const Shared$<$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_ephemeris}{Ephemeris}} $>$ \&}]{an\+Ephemeris,  }\item[{const Shared$<$ \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_ac06894f4b93290f4caf18760a770323f}{Gravitational\+Model}} $>$ \&}]{a\+Gravitational\+Model,  }\item[{const Shared$<$ \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_a1d67b80ef0221d026628123f2cdf14d8}{Magnetic\+Model}} $>$ \&}]{a\+Magnetic\+Model,  }\item[{const Shared$<$ \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_a401a65695b0175405ca6cf49eda40b36}{Atmospheric\+Model}} $>$ \&}]{an\+Atmospheric\+Model,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_aa7e729b9f9530a07e119ec75ab9506e5}{Object\+::\+Geometry}} \&}]{a\+Geometry }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_aed7b26bf9949f4737987f768f23a1f65}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_aed7b26bf9949f4737987f768f23a1f65}} 
+\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!````~Celestial@{$\sim$Celestial}}
+\index{````~Celestial@{$\sim$Celestial}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}
+\doxysubsubsection{\texorpdfstring{$\sim$Celestial()}{~Celestial()}}
+{\footnotesize\ttfamily ostk\+::physics\+::environment\+::object\+::\+Celestial\+::$\sim$\+Celestial (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a60d182194f5b3925d40878616fd12ec1}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a60d182194f5b3925d40878616fd12ec1}} 
+\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!accessAtmosphericModel@{accessAtmosphericModel}}
+\index{accessAtmosphericModel@{accessAtmosphericModel}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}
+\doxysubsubsection{\texorpdfstring{accessAtmosphericModel()}{accessAtmosphericModel()}}
+{\footnotesize\ttfamily Shared$<$ const \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_a401a65695b0175405ca6cf49eda40b36}{Atmospheric\+Model}} $>$ ostk\+::physics\+::environment\+::object\+::\+Celestial\+::access\+Atmospheric\+Model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a0e365cdf7cddbe4aa38e68e8c10665d6}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a0e365cdf7cddbe4aa38e68e8c10665d6}} 
+\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!accessEphemeris@{accessEphemeris}}
+\index{accessEphemeris@{accessEphemeris}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}
+\doxysubsubsection{\texorpdfstring{accessEphemeris()}{accessEphemeris()}}
+{\footnotesize\ttfamily Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_ephemeris}{Ephemeris}} $>$ ostk\+::physics\+::environment\+::object\+::\+Celestial\+::access\+Ephemeris (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a581cf2edc06dd50e3da2020af63223f1}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a581cf2edc06dd50e3da2020af63223f1}} 
+\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!accessFrame@{accessFrame}}
+\index{accessFrame@{accessFrame}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}
+\doxysubsubsection{\texorpdfstring{accessFrame()}{accessFrame()}}
+{\footnotesize\ttfamily Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ ostk\+::physics\+::environment\+::object\+::\+Celestial\+::access\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_a23a879fa650480088529c440e1298306}{ostk\+::physics\+::environment\+::\+Object}}.
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a976be059fe64457c0aefe555e4fba427}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a976be059fe64457c0aefe555e4fba427}} 
+\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!accessGravitationalModel@{accessGravitationalModel}}
+\index{accessGravitationalModel@{accessGravitationalModel}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}
+\doxysubsubsection{\texorpdfstring{accessGravitationalModel()}{accessGravitationalModel()}}
+{\footnotesize\ttfamily Shared$<$ const \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_ac06894f4b93290f4caf18760a770323f}{Gravitational\+Model}} $>$ ostk\+::physics\+::environment\+::object\+::\+Celestial\+::access\+Gravitational\+Model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a98a5fe28212b33f5b3185185afa251a6}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a98a5fe28212b33f5b3185185afa251a6}} 
+\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!accessMagneticModel@{accessMagneticModel}}
+\index{accessMagneticModel@{accessMagneticModel}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}
+\doxysubsubsection{\texorpdfstring{accessMagneticModel()}{accessMagneticModel()}}
+{\footnotesize\ttfamily Shared$<$ const \mbox{\hyperlink{namespaceostk_1_1physics_1_1environment_1_1object_a1d67b80ef0221d026628123f2cdf14d8}{Magnetic\+Model}} $>$ ostk\+::physics\+::environment\+::object\+::\+Celestial\+::access\+Magnetic\+Model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a948c09f0933c1029adb19b416cc16936}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a948c09f0933c1029adb19b416cc16936}} 
+\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!atmosphericModelIsDefined@{atmosphericModelIsDefined}}
+\index{atmosphericModelIsDefined@{atmosphericModelIsDefined}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}
+\doxysubsubsection{\texorpdfstring{atmosphericModelIsDefined()}{atmosphericModelIsDefined()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::environment\+::object\+::\+Celestial\+::atmospheric\+Model\+Is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_adbbbc6c86fdec5f6d24e7b64419b885c}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_adbbbc6c86fdec5f6d24e7b64419b885c}} 
+\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!clone@{clone}}
+\index{clone@{clone}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial}{Celestial}} $\ast$ ostk\+::physics\+::environment\+::object\+::\+Celestial\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_a42ad5b71529e84b92e911ae87559a7d8}{ostk\+::physics\+::environment\+::\+Object}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_a4ccdbfcb7d3ad42c87eaf7f1f5ca576c}{ostk\+::physics\+::environment\+::object\+::celestial\+::\+Earth}}, \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_moon_aab8fdc1a02c990987ea2bbf56896f484}{ostk\+::physics\+::environment\+::object\+::celestial\+::\+Moon}}, and \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_sun_a4df2778786316e6c279528b9248a3e9b}{ostk\+::physics\+::environment\+::object\+::celestial\+::\+Sun}}.
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a6a054ba2ae57b50fa33c00ecb2c19fdc}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a6a054ba2ae57b50fa33c00ecb2c19fdc}} 
+\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!getAtmosphericDensityAt@{getAtmosphericDensityAt}}
+\index{getAtmosphericDensityAt@{getAtmosphericDensityAt}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}
+\doxysubsubsection{\texorpdfstring{getAtmosphericDensityAt()}{getAtmosphericDensityAt()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_scalar}{Scalar}} ostk\+::physics\+::environment\+::object\+::\+Celestial\+::get\+Atmospheric\+Density\+At (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_position}{Position}} \&}]{a\+Position,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&}]{an\+Instant }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_abe3a06f0125fc000299e2acabafc328b}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_abe3a06f0125fc000299e2acabafc328b}} 
+\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!getAxesIn@{getAxesIn}}
+\index{getAxesIn@{getAxesIn}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}
+\doxysubsubsection{\texorpdfstring{getAxesIn()}{getAxesIn()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_axes}{Axes}} ostk\+::physics\+::environment\+::object\+::\+Celestial\+::get\+Axes\+In (\begin{DoxyParamCaption}\item[{const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \&}]{a\+Frame\+S\+Ptr,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&}]{an\+Instant }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_ab915996e65066fa946a31a362c5d874b}{ostk\+::physics\+::environment\+::\+Object}}.
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a0394a773909b012b3bf51ccc93cf2957}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a0394a773909b012b3bf51ccc93cf2957}} 
+\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!getEquatorialRadius@{getEquatorialRadius}}
+\index{getEquatorialRadius@{getEquatorialRadius}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}
+\doxysubsubsection{\texorpdfstring{getEquatorialRadius()}{getEquatorialRadius()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1units_1_1_length}{Length}} ostk\+::physics\+::environment\+::object\+::\+Celestial\+::get\+Equatorial\+Radius (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a0ff89bef090afc044885e22ab114ec16}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a0ff89bef090afc044885e22ab114ec16}} 
+\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!getFlattening@{getFlattening}}
+\index{getFlattening@{getFlattening}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}
+\doxysubsubsection{\texorpdfstring{getFlattening()}{getFlattening()}}
+{\footnotesize\ttfamily Real ostk\+::physics\+::environment\+::object\+::\+Celestial\+::get\+Flattening (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a5923fbf3b9d4ebb85f233cb39051471e}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a5923fbf3b9d4ebb85f233cb39051471e}} 
+\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!getFrameAt@{getFrameAt}}
+\index{getFrameAt@{getFrameAt}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}
+\doxysubsubsection{\texorpdfstring{getFrameAt()}{getFrameAt()}}
+{\footnotesize\ttfamily Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ ostk\+::physics\+::environment\+::object\+::\+Celestial\+::get\+Frame\+At (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1spherical_1_1_l_l_a}{L\+LA}} \&}]{a\+Lla,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_abad46f3313eced8098e74365e77a7d16}{Celestial\+::\+Frame\+Type}} \&}]{a\+Frame\+Type }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_af9bb0adb04d3276f56f0adba393e82c8}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_af9bb0adb04d3276f56f0adba393e82c8}} 
+\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!getGravitationalFieldAt@{getGravitationalFieldAt}}
+\index{getGravitationalFieldAt@{getGravitationalFieldAt}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}
+\doxysubsubsection{\texorpdfstring{getGravitationalFieldAt()}{getGravitationalFieldAt()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_vector}{Vector}} ostk\+::physics\+::environment\+::object\+::\+Celestial\+::get\+Gravitational\+Field\+At (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_position}{Position}} \&}]{a\+Position,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&}]{an\+Instant }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a3fe5abc4c6a24cfef67eb2bc76977523}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a3fe5abc4c6a24cfef67eb2bc76977523}} 
+\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!getGravitationalParameter@{getGravitationalParameter}}
+\index{getGravitationalParameter@{getGravitationalParameter}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}
+\doxysubsubsection{\texorpdfstring{getGravitationalParameter()}{getGravitationalParameter()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1units_1_1_derived}{Derived}} ostk\+::physics\+::environment\+::object\+::\+Celestial\+::get\+Gravitational\+Parameter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a13dc27c6947635f52767f650b4f31620}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a13dc27c6947635f52767f650b4f31620}} 
+\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!getJ2@{getJ2}}
+\index{getJ2@{getJ2}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}
+\doxysubsubsection{\texorpdfstring{getJ2()}{getJ2()}}
+{\footnotesize\ttfamily Real ostk\+::physics\+::environment\+::object\+::\+Celestial\+::get\+J2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a3e0c4b3240fa1ccdf4b3e2c233992638}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a3e0c4b3240fa1ccdf4b3e2c233992638}} 
+\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!getJ4@{getJ4}}
+\index{getJ4@{getJ4}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}
+\doxysubsubsection{\texorpdfstring{getJ4()}{getJ4()}}
+{\footnotesize\ttfamily Real ostk\+::physics\+::environment\+::object\+::\+Celestial\+::get\+J4 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a4c2818f6f577f53512d8837b16c3dc32}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a4c2818f6f577f53512d8837b16c3dc32}} 
+\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!getMagneticFieldAt@{getMagneticFieldAt}}
+\index{getMagneticFieldAt@{getMagneticFieldAt}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}
+\doxysubsubsection{\texorpdfstring{getMagneticFieldAt()}{getMagneticFieldAt()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_vector}{Vector}} ostk\+::physics\+::environment\+::object\+::\+Celestial\+::get\+Magnetic\+Field\+At (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_position}{Position}} \&}]{a\+Position,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&}]{an\+Instant }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_ac10d3092a427a05f79b90caec84847bb}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_ac10d3092a427a05f79b90caec84847bb}} 
+\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!getPositionIn@{getPositionIn}}
+\index{getPositionIn@{getPositionIn}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}
+\doxysubsubsection{\texorpdfstring{getPositionIn()}{getPositionIn()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_position}{Position}} ostk\+::physics\+::environment\+::object\+::\+Celestial\+::get\+Position\+In (\begin{DoxyParamCaption}\item[{const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \&}]{a\+Frame\+S\+Ptr,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&}]{an\+Instant }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_a7b2938a7de7a434a944b66163fc28076}{ostk\+::physics\+::environment\+::\+Object}}.
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_acbfbeceb563694586693e8c41cb931be}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_acbfbeceb563694586693e8c41cb931be}} 
+\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!getTerminatorGeometry@{getTerminatorGeometry}}
+\index{getTerminatorGeometry@{getTerminatorGeometry}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}
+\doxysubsubsection{\texorpdfstring{getTerminatorGeometry()}{getTerminatorGeometry()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_aa7e729b9f9530a07e119ec75ab9506e5}{Object\+::\+Geometry}} ostk\+::physics\+::environment\+::object\+::\+Celestial\+::get\+Terminator\+Geometry (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_ac4ac447f2c9960ab25e024bb688d9505}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_ac4ac447f2c9960ab25e024bb688d9505}} 
+\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!getTransformTo@{getTransformTo}}
+\index{getTransformTo@{getTransformTo}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}
+\doxysubsubsection{\texorpdfstring{getTransformTo()}{getTransformTo()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_transform}{Transform}} ostk\+::physics\+::environment\+::object\+::\+Celestial\+::get\+Transform\+To (\begin{DoxyParamCaption}\item[{const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \&}]{a\+Frame\+S\+Ptr,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&}]{an\+Instant }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_aab522bdca9b06fdd615238bacdaca423}{ostk\+::physics\+::environment\+::\+Object}}.
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_ac422b7aad84424cf6918ce08b3d9c917}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_ac422b7aad84424cf6918ce08b3d9c917}} 
+\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!getType@{getType}}
+\index{getType@{getType}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a22adef48147472c56a7ab3b5d8140661}{Celestial\+::\+Type}} ostk\+::physics\+::environment\+::object\+::\+Celestial\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a23f4564311c6c70dc78070723c3fbab2}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a23f4564311c6c70dc78070723c3fbab2}} 
+\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!getVelocityIn@{getVelocityIn}}
+\index{getVelocityIn@{getVelocityIn}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}
+\doxysubsubsection{\texorpdfstring{getVelocityIn()}{getVelocityIn()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_velocity}{Velocity}} ostk\+::physics\+::environment\+::object\+::\+Celestial\+::get\+Velocity\+In (\begin{DoxyParamCaption}\item[{const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \&}]{a\+Frame\+S\+Ptr,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&}]{an\+Instant }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_a1c031d87287a476ad7e2aa8d0ac3f3a4}{ostk\+::physics\+::environment\+::\+Object}}.
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_aacdd5f213ee4a373a5c8e2b98bef21f7}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_aacdd5f213ee4a373a5c8e2b98bef21f7}} 
+\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!gravitationalModelIsDefined@{gravitationalModelIsDefined}}
+\index{gravitationalModelIsDefined@{gravitationalModelIsDefined}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}
+\doxysubsubsection{\texorpdfstring{gravitationalModelIsDefined()}{gravitationalModelIsDefined()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::environment\+::object\+::\+Celestial\+::gravitational\+Model\+Is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a25746b47ed8da42de7fd256a72e59f56}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a25746b47ed8da42de7fd256a72e59f56}} 
+\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!isDefined@{isDefined}}
+\index{isDefined@{isDefined}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}
+\doxysubsubsection{\texorpdfstring{isDefined()}{isDefined()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::environment\+::object\+::\+Celestial\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1_object_a67fbafdb148a3679c0b0adba35faa306}{ostk\+::physics\+::environment\+::\+Object}}.
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a1d204aa21bc1115aa56252ca8bb064ed}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a1d204aa21bc1115aa56252ca8bb064ed}} 
+\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!magneticModelIsDefined@{magneticModelIsDefined}}
+\index{magneticModelIsDefined@{magneticModelIsDefined}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}
+\doxysubsubsection{\texorpdfstring{magneticModelIsDefined()}{magneticModelIsDefined()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::environment\+::object\+::\+Celestial\+::magnetic\+Model\+Is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a9ca8ec080e46d3b5a439d3522daa5e08}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_a9ca8ec080e46d3b5a439d3522daa5e08}} 
+\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!StringFromFrameType@{StringFromFrameType}}
+\index{StringFromFrameType@{StringFromFrameType}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}
+\doxysubsubsection{\texorpdfstring{StringFromFrameType()}{StringFromFrameType()}}
+{\footnotesize\ttfamily String ostk\+::physics\+::environment\+::object\+::\+Celestial\+::\+String\+From\+Frame\+Type (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_abad46f3313eced8098e74365e77a7d16}{Celestial\+::\+Frame\+Type}} \&}]{a\+Frame\+Type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_ade773ad5a77a1a8e35f646b1e9bc1989}\label{classostk_1_1physics_1_1environment_1_1object_1_1_celestial_ade773ad5a77a1a8e35f646b1e9bc1989}} 
+\index{ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}!Undefined@{Undefined}}
+\index{Undefined@{Undefined}!ostk::physics::environment::object::Celestial@{ostk::physics::environment::object::Celestial}}
+\doxysubsubsection{\texorpdfstring{Undefined()}{Undefined()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1object_1_1_celestial}{Celestial}} ostk\+::physics\+::environment\+::object\+::\+Celestial\+::\+Undefined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Open\+Space\+Toolkit/\+Physics/\+Environment/\+Objects/\mbox{\hyperlink{_celestial_8hpp}{Celestial.\+hpp}}\item 
+src/\+Open\+Space\+Toolkit/\+Physics/\+Environment/\+Objects/\mbox{\hyperlink{_celestial_8cpp}{Celestial.\+cpp}}\end{DoxyCompactItemize}

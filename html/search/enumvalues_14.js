@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['venus_1774',['Venus',['../classostk_1_1physics_1_1env_1_1ephem_1_1_s_p_i_c_e.html#ae84db78d858cdd0a1dc3ff53090f4a1fa0bdc508a17811a3a860d32749ad44e4b',1,'ostk::physics::env::ephem::SPICE::Venus()'],['../classostk_1_1physics_1_1env_1_1obj_1_1_celestial.html#aa0711d887522b35b2b3630156d912779a0bdc508a17811a3a860d32749ad44e4b',1,'ostk::physics::env::obj::Celestial::Venus()']]]
+  ['venus_1770',['Venus',['../classostk_1_1physics_1_1environment_1_1ephemerides_1_1_s_p_i_c_e.html#af5a379cf9bded0199bf62b7ce72b01b0a0bdc508a17811a3a860d32749ad44e4b',1,'ostk::physics::environment::ephemerides::SPICE::Venus()'],['../classostk_1_1physics_1_1environment_1_1object_1_1_celestial.html#a22adef48147472c56a7ab3b5d8140661a0bdc508a17811a3a860d32749ad44e4b',1,'ostk::physics::environment::object::Celestial::Venus()']]]
 ];
