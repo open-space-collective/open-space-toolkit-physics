@@ -38,7 +38,7 @@ using ostk::physics::time::Instant;
 using ostk::physics::time::DateTime;
 using ostk::physics::coord::Transform;
 using ostk::physics::coord::Frame;
-using ostk::physics::env::obj::celest::Earth;
+using ostk::physics::environment::object::celestial::Earth;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 
 TEST(OpenSpaceToolkit_Physics_Coordinate_Frames_ITRF, Test)

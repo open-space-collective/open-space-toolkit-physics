@@ -38,8 +38,8 @@ using ostk::physics::coord::Position;
 using ostk::physics::coord::Frame;
 using ostk::physics::coord::spherical::LLA;
 using ostk::physics::Environment;
-using ostk::physics::env::obj::celest::Earth;
-using ostk::physics::env::utilities::eclipseIntervalsAtPosition;
+using ostk::physics::environment::object::celestial::Earth;
+using ostk::physics::environment::utilities::eclipseIntervalsAtPosition;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 
 TEST(OpenSpaceToolkit_Physics_Environment_Utilities_Eclipse, EclipseIntervalsAtPosition)

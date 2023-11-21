@@ -28,9 +28,9 @@ using ostk::physics::time::Scale;
 using ostk::physics::time::Instant;
 using ostk::physics::time::Duration;
 using ostk::physics::time::DateTime;
-using ostk::physics::env::ephem::spice::Kernel;
-using ostk::physics::env::ephem::spice::Engine;
-using ostk::physics::env::ephem::spice::Manager;
+using ostk::physics::environment::ephemerides::spice::Kernel;
+using ostk::physics::environment::ephemerides::spice::Engine;
+using ostk::physics::environment::ephemerides::spice::Manager;
 
 class OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager : public ::testing::Test
 {

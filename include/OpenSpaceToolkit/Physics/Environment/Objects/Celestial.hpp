@@ -30,9 +30,9 @@ namespace ostk
 {
 namespace physics
 {
-namespace env
+namespace environment
 {
-namespace obj
+namespace object
 {
 
 using ostk::core::types::Shared;
@@ -52,8 +52,8 @@ using ostk::physics::coord::spherical::LLA;
 using ostk::physics::coord::Axes;
 using ostk::physics::coord::Frame;
 using ostk::physics::coord::Transform;
-using ostk::physics::env::Object;
-using ostk::physics::env::Ephemeris;
+using ostk::physics::environment::Object;
+using ostk::physics::environment::Ephemeris;
 using GravitationalModel = ostk::physics::environment::gravitational::Model;
 using MagneticModel = ostk::physics::environment::magnetic::Model;
 using AtmosphericModel = ostk::physics::environment::atmospheric::Model;
@@ -191,8 +191,8 @@ class Celestial : public Object
     Shared<AtmosphericModel> atmosphericModelSPtr_;
 };
 
-}  // namespace obj
-}  // namespace env
+}  // namespace object
+}  // namespace environment
 }  // namespace physics
 }  // namespace ostk
 

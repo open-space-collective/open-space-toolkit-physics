@@ -52,7 +52,7 @@ using ostk::physics::time::DateTime;
 using ostk::physics::time::Duration;
 using ostk::physics::coord::spherical::LLA;
 using ostk::physics::coord::Frame;
-using ostk::physics::env::obj::celest::Earth;
+using ostk::physics::environment::object::celestial::Earth;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
 using EarthMagneticModel = ostk::physics::environment::magnetic::Earth;
@@ -60,7 +60,7 @@ using EarthMagneticModel = ostk::physics::environment::magnetic::Earth;
 // TEST (OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth, Constructor)
 // {
 
-//     using ostk::physics::env::obj::celest::Earth ;
+//     using ostk::physics::environment::object::celestial::Earth ;
 
 //     {
 

@@ -47,8 +47,8 @@ using ostk::physics::coord::Position;
 using ostk::physics::coord::spherical::LLA;
 using ostk::physics::coord::Frame;
 using ostk::physics::environment::atmospheric::earth::NRLMSISE00;
-using ostk::physics::env::obj::Celestial;
-using ostk::physics::env::obj::celest::Sun;
+using ostk::physics::environment::object::Celestial;
+using ostk::physics::environment::object::celestial::Sun;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 
 using ostk::physics::environment::atmospheric::earth::CSSISpaceWeather;

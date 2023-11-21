@@ -12,9 +12,9 @@ namespace ostk
 {
 namespace physics
 {
-namespace env
+namespace environment
 {
-namespace obj
+namespace object
 {
 
 Celestial::Celestial(
@@ -469,7 +469,7 @@ String Celestial::StringFromFrameType(const Celestial::FrameType& aFrameType)
     return String::Empty();
 }
 
-}  // namespace obj
-}  // namespace env
+}  // namespace object
+}  // namespace environment
 }  // namespace physics
 }  // namespace ostk

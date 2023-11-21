@@ -13,7 +13,7 @@ namespace ostk
 {
 namespace physics
 {
-namespace env
+namespace environment
 {
 
 using ostk::core::types::Shared;
@@ -38,7 +38,7 @@ class Ephemeris
     virtual Shared<const Frame> accessFrame() const = 0;
 };
 
-}  // namespace env
+}  // namespace environment
 }  // namespace physics
 }  // namespace ostk
 

@@ -20,7 +20,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
     using ostk::physics::environment::atmospheric::Earth;
     using EarthGravityModel = ostk::physics::environment::gravitational::Earth;
 
-    using ostk::physics::env::obj::Celestial;
+    using ostk::physics::environment::object::Celestial;
     using ostk::physics::units::Length;
     using ostk::physics::time::Instant;
     using ostk::physics::coord::Position;

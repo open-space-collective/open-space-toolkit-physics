@@ -13,7 +13,7 @@ namespace ostk
 {
 namespace physics
 {
-namespace env
+namespace environment
 {
 namespace utilities
 {
@@ -36,7 +36,7 @@ Array<Interval> eclipseIntervalsAtPosition(
 );
 
 }  // namespace utilities
-}  // namespace env
+}  // namespace environment
 }  // namespace physics
 }  // namespace ostk
 

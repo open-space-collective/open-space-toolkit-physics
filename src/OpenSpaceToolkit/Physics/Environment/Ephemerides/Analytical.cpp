@@ -9,9 +9,9 @@ namespace ostk
 {
 namespace physics
 {
-namespace env
+namespace environment
 {
-namespace ephem
+namespace ephemerides
 {
 
 Analytical::Analytical(const Shared<const Frame>& aFrameSPtr)
@@ -36,7 +36,7 @@ Shared<const Frame> Analytical::accessFrame() const
     return frameSPtr_;
 }
 
-}  // namespace ephem
-}  // namespace env
+}  // namespace ephemerides
+}  // namespace environment
 }  // namespace physics
 }  // namespace ostk

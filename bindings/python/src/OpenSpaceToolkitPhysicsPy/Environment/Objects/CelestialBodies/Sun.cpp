@@ -9,9 +9,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Sun(py
     using ostk::core::types::Shared;
 
     using ostk::physics::time::Instant;
-    using ostk::physics::env::Ephemeris;
-    using ostk::physics::env::obj::Celestial;
-    using ostk::physics::env::obj::celest::Sun;
+    using ostk::physics::environment::Ephemeris;
+    using ostk::physics::environment::object::Celestial;
+    using ostk::physics::environment::object::celestial::Sun;
     using SunGravitationalModel = ostk::physics::environment::gravitational::Sun;
 
     {

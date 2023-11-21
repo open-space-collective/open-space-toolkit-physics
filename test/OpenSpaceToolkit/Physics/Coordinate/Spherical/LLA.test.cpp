@@ -33,7 +33,7 @@ using ostk::physics::time::Scale;
 using ostk::physics::time::Instant;
 using ostk::physics::time::DateTime;
 using ostk::physics::coord::Frame;
-using ostk::physics::env::obj::celest::Earth;
+using ostk::physics::environment::object::celestial::Earth;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 
 class OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA : public ::testing::Test

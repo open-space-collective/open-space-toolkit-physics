@@ -9,7 +9,7 @@ namespace ostk
 {
 namespace physics
 {
-namespace env
+namespace environment
 {
 
 Object::Object(const String& aName)
@@ -95,6 +95,6 @@ Object::Geometry Object::getGeometryIn(const Shared<const Frame>& aFrameSPtr, co
     return this->accessGeometry().in(aFrameSPtr, anInstant);
 }
 
-}  // namespace env
+}  // namespace environment
 }  // namespace physics
 }  // namespace ostk

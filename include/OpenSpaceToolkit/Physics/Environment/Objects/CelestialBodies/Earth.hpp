@@ -22,11 +22,11 @@ namespace ostk
 {
 namespace physics
 {
-namespace env
+namespace environment
 {
-namespace obj
+namespace object
 {
-namespace celest
+namespace celestial
 {
 
 using ostk::core::types::Integer;
@@ -39,10 +39,10 @@ using ostk::math::geom::d3::objects::Ellipsoid;
 
 using ostk::physics::units::Length;
 using ostk::physics::units::Derived;
-using ostk::physics::env::Ephemeris;
-using ostk::physics::env::Object;
-using ostk::physics::env::obj::Celestial;
-using ostk::physics::env::ephem::Analytical;
+using ostk::physics::environment::Ephemeris;
+using ostk::physics::environment::Object;
+using ostk::physics::environment::object::Celestial;
+using ostk::physics::environment::ephemerides::Analytical;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 using EarthMagneticModel = ostk::physics::environment::magnetic::Earth;
 using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
@@ -199,9 +199,9 @@ class Earth : public Celestial
     );
 };
 
-}  // namespace celest
-}  // namespace obj
-}  // namespace env
+}  // namespace celestial
+}  // namespace object
+}  // namespace environment
 }  // namespace physics
 }  // namespace ostk
 

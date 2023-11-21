@@ -31,12 +31,12 @@
 
 #include <Global.test.hpp>
 
-using ostk::physics::env::obj::celest::Moon;
+using ostk::physics::environment::object::celestial::Moon;
 
 // TEST (OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Moon, Constructor)
 // {
 
-//     using ostk::physics::env::obj::celest::Moon ;
+//     using ostk::physics::environment::object::celestial::Moon ;
 
 //     {
 

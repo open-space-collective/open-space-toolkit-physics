@@ -20,7 +20,7 @@ namespace providers
 using ostk::physics::data::Direction;
 using ostk::physics::coord::Position;
 using ostk::physics::Environment;
-using ostk::physics::env::obj::Celestial;
+using ostk::physics::environment::object::Celestial;
 
 Direction Nadir(const Position& aPosition, const Celestial& aCelestialObject, const Environment& anEnvironment);
 

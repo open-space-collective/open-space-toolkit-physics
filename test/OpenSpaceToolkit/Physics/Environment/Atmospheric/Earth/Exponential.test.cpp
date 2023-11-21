@@ -20,7 +20,7 @@ using ostk::physics::coord::Position;
 using ostk::physics::coord::spherical::LLA;
 using ostk::physics::coord::Frame;
 using ostk::physics::environment::atmospheric::earth::Exponential;
-using EarthCelestialBody = ostk::physics::env::obj::celest::Earth;
+using EarthCelestialBody = ostk::physics::environment::object::celestial::Earth;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Exponential, Constructor)

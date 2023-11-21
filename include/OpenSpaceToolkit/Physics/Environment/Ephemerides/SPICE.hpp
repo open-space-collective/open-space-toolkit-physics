@@ -14,9 +14,9 @@ namespace ostk
 {
 namespace physics
 {
-namespace env
+namespace environment
 {
-namespace ephem
+namespace ephemerides
 {
 
 using ostk::core::types::Shared;
@@ -24,7 +24,7 @@ using ostk::core::types::String;
 
 using ostk::physics::time::Instant;
 using ostk::physics::coord::Frame;
-using ostk::physics::env::Ephemeris;
+using ostk::physics::environment::Ephemeris;
 
 /// @brief                      SPICE Toolkit ephemeris
 ///
@@ -91,8 +91,8 @@ class SPICE : public Ephemeris
     SPICE::Object object_;
 };
 
-}  // namespace ephem
-}  // namespace env
+}  // namespace ephemerides
+}  // namespace environment
 }  // namespace physics
 }  // namespace ostk
 

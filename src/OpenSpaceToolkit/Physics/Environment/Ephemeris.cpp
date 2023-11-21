@@ -9,13 +9,13 @@ namespace ostk
 {
 namespace physics
 {
-namespace env
+namespace environment
 {
 
 Ephemeris::Ephemeris() {}
 
 Ephemeris::~Ephemeris() {}
 
-}  // namespace env
+}  // namespace environment
 }  // namespace physics
 }  // namespace ostk

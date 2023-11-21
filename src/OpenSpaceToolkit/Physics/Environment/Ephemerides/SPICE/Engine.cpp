@@ -24,9 +24,9 @@ namespace ostk
 {
 namespace physics
 {
-namespace env
+namespace environment
 {
-namespace ephem
+namespace ephemerides
 {
 namespace spice
 {
@@ -581,7 +581,7 @@ String Engine::FrameNameFromSpiceObject(const SPICE::Object& aSpiceObject)
 }
 
 }  // namespace spice
-}  // namespace ephem
-}  // namespace env
+}  // namespace ephemerides
+}  // namespace environment
 }  // namespace physics
 }  // namespace ostk

@@ -44,8 +44,8 @@ using ostk::physics::time::Instant;
 using ostk::physics::coord::spherical::LLA;
 using ostk::physics::coord::Frame;
 using ostk::physics::Environment;
-using ostk::physics::env::object::Geometry;
-using ostk::physics::env::obj::Celestial;
+using ostk::physics::environment::object::Geometry;
+using ostk::physics::environment::object::Celestial;
 
 class OpenSpaceToolkit_Physics_Environment_Object_Geometry : public ::testing::Test
 {
@@ -143,7 +143,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, IsDefined)
 //     using ostk::math::geom::d3::objects::Pyramid ;
 
 //     using ostk::physics::coord::Frame ;
-//     using ostk::physics::env::object::Geometry ;
+//     using ostk::physics::environment::object::Geometry ;
 
 //     {
 
@@ -178,7 +178,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, IsDefined)
 // TEST (OpenSpaceToolkit_Physics_Environment_Object_Geometry, Contains)
 // {
 
-//     using ostk::physics::env::object::Geometry ;
+//     using ostk::physics::environment::object::Geometry ;
 
 //     {
 

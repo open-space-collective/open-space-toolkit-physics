@@ -21,7 +21,7 @@ namespace ostk
 {
 namespace physics
 {
-namespace env
+namespace environment
 {
 
 using ostk::core::types::Unique;
@@ -82,7 +82,7 @@ class Object
     Object::Geometry geometry_;
 };
 
-}  // namespace env
+}  // namespace environment
 }  // namespace physics
 }  // namespace ostk
 

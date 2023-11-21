@@ -19,7 +19,7 @@
 
 #include <Global.test.hpp>
 
-using ostk::physics::env::ephem::SPICE;
+using ostk::physics::environment::ephemerides::SPICE;
 
 using ostk::core::types::Shared;
 using ostk::core::types::Real;
@@ -43,9 +43,9 @@ using ostk::physics::coord::Frame;
 using ostk::physics::coord::Position;
 using ostk::physics::coord::Transform;
 
-using ostk::physics::env::ephem::spice::Engine;
-using ostk::physics::env::ephem::spice::Manager;
-using ostk::physics::env::ephem::spice::Kernel;
+using ostk::physics::environment::ephemerides::spice::Engine;
+using ostk::physics::environment::ephemerides::spice::Manager;
+using ostk::physics::environment::ephemerides::spice::Kernel;
 
 TEST(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, Constructor)
 {
@@ -310,8 +310,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Engine, DefaultKerne
     using ostk::core::fs::Path;
     using ostk::core::fs::Directory;
 
-    using ostk::physics::env::ephem::spice::Engine;
-    using ostk::physics::env::ephem::spice::Kernel;
+    using ostk::physics::environment::ephemerides::spice::Engine;
+    using ostk::physics::environment::ephemerides::spice::Kernel;
 
     {
         Manager::Get().setLocalRepository(

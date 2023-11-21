@@ -33,7 +33,7 @@
 // TEST (OpenSpaceToolkit_Physics_Environment_Object, Constructor)
 // {
 
-//     using ostk::physics::env::Object ;
+//     using ostk::physics::environment::Object ;
 
 //     {
 

@@ -12,11 +12,11 @@ namespace ostk
 {
 namespace physics
 {
-namespace env
+namespace environment
 {
-namespace obj
+namespace object
 {
-namespace celest
+namespace celestial
 {
 
 Moon::Moon(const Shared<Ephemeris>& anEphemeris, const Shared<MoonGravitationalModel>& aGravitationalModel)
@@ -51,7 +51,7 @@ Moon Moon::Default()
 
 Moon Moon::Spherical()
 {
-    using ostk::physics::env::ephem::SPICE;
+    using ostk::physics::environment::ephemerides::SPICE;
 
     return {
         std::make_shared<SPICE>(SPICE::Object::Moon),
@@ -78,8 +78,8 @@ Object::Geometry Moon::Geometry(const Shared<const Frame>& aFrame)
     return {ellipsoid, aFrame};
 }
 
-}  // namespace celest
-}  // namespace obj
-}  // namespace env
+}  // namespace celestial
+}  // namespace object
+}  // namespace environment
 }  // namespace physics
 }  // namespace ostk

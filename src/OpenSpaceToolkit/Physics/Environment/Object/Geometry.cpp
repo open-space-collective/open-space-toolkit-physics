@@ -26,7 +26,7 @@ namespace ostk
 {
 namespace physics
 {
-namespace env
+namespace environment
 {
 namespace object
 {
@@ -261,6 +261,6 @@ Geometry Geometry::Undefined()
 }
 
 }  // namespace object
-}  // namespace env
+}  // namespace environment
 }  // namespace physics
 }  // namespace ostk

@@ -24,8 +24,8 @@ using ostk::core::ctnr::Array;
 
 using ostk::physics::time::Instant;
 using ostk::physics::coord::Position;
-using ostk::physics::env::Object;
-using ostk::physics::env::obj::Celestial;
+using ostk::physics::environment::Object;
+using ostk::physics::environment::object::Celestial;
 
 /// @brief                      Environment modeling
 

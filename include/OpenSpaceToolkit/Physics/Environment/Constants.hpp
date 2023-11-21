@@ -10,12 +10,12 @@ namespace ostk
 {
 namespace physics
 {
-namespace env
+namespace environment
 {
 
 using ostk::core::types::Real;
 
-}  // namespace env
+}  // namespace environment
 }  // namespace physics
 }  // namespace ostk
 

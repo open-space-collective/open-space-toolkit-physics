@@ -54,16 +54,16 @@ using ostk::physics::time::Instant;
 using ostk::physics::coord::Frame;
 using ostk::physics::coord::Position;
 using ostk::physics::coord::spherical::LLA;
-using ostk::physics::env::obj::Celestial;
-using ostk::physics::env::Ephemeris;
-using ostk::physics::env::ephem::Analytical;
+using ostk::physics::environment::object::Celestial;
+using ostk::physics::environment::Ephemeris;
+using ostk::physics::environment::ephemerides::Analytical;
 using GravitationalModel = ostk::physics::environment::gravitational::Model;
 using MagneticModel = ostk::physics::environment::magnetic::Model;
 using AtmosphericModel = ostk::physics::environment::atmospheric::Model;
 using ostk::physics::environment::gravitational::Spherical;
 using ostk::physics::environment::magnetic::Dipole;
 using ostk::physics::environment::atmospheric::earth::Exponential;
-using EarthCelestialBody = ostk::physics::env::obj::celest::Earth;
+using EarthCelestialBody = ostk::physics::environment::object::celestial::Earth;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 using EarthMagneticModel = ostk::physics::environment::magnetic::Earth;
 using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
@@ -71,7 +71,7 @@ using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
 // TEST (OpenSpaceToolkit_Physics_Environment_Objects_Celestial, Constructor)
 // {
 
-//     using ostk::physics::env::Object ;
+//     using ostk::physics::environment::Object ;
 
 //     {
 

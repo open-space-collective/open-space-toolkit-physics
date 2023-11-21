@@ -19,7 +19,7 @@ namespace earth
 {
 
 using ostk::physics::coord::Frame;
-using EarthCelestialBody = ostk::physics::env::obj::celest::Earth;
+using EarthCelestialBody = ostk::physics::environment::object::celestial::Earth;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 
 Exponential::Exponential() {}

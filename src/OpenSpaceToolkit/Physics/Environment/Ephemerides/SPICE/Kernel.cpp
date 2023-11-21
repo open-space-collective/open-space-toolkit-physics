@@ -12,9 +12,9 @@ namespace ostk
 {
 namespace physics
 {
-namespace env
+namespace environment
 {
-namespace ephem
+namespace ephemerides
 {
 namespace spice
 {
@@ -204,7 +204,7 @@ Kernel::Type Kernel::TypeFromFileExtension(const String& aFileExtension)
 }
 
 }  // namespace spice
-}  // namespace ephem
-}  // namespace env
+}  // namespace ephemerides
+}  // namespace environment
 }  // namespace physics
 }  // namespace ostk

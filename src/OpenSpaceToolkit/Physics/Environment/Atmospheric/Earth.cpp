@@ -21,7 +21,7 @@ namespace atmospheric
 using ostk::physics::coord::Frame;
 using ostk::physics::environment::atmospheric::earth::Exponential;
 using ostk::physics::environment::atmospheric::earth::NRLMSISE00;
-using EarthCelestialBody = ostk::physics::env::obj::celest::Earth;
+using EarthCelestialBody = ostk::physics::environment::object::celestial::Earth;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 
 class Earth::Impl

@@ -28,9 +28,9 @@ namespace ostk
 {
 namespace physics
 {
-namespace env
+namespace environment
 {
-namespace ephem
+namespace ephemerides
 {
 namespace spice
 {
@@ -45,7 +45,7 @@ using ostk::core::fs::Directory;
 using ostk::io::URL;
 
 using ostk::physics::time::Instant;
-using ostk::physics::env::ephem::spice::Kernel;
+using ostk::physics::environment::ephemerides::spice::Kernel;
 
 using ManifestManager = ostk::physics::data::Manager;
 
@@ -131,8 +131,8 @@ class Manager
 };
 
 }  // namespace spice
-}  // namespace ephem
-}  // namespace env
+}  // namespace ephemerides
+}  // namespace environment
 }  // namespace physics
 }  // namespace ostk
 

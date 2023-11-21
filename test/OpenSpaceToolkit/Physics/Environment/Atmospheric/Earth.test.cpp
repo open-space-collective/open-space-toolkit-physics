@@ -32,8 +32,8 @@ using ostk::physics::coord::Position;
 using ostk::physics::coord::spherical::LLA;
 using ostk::physics::coord::Frame;
 
-using EarthCelestialBody = ostk::physics::env::obj::celest::Earth;
-using ostk::physics::env::obj::celest::Sun;
+using EarthCelestialBody = ostk::physics::environment::object::celestial::Earth;
+using ostk::physics::environment::object::celestial::Sun;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
 
