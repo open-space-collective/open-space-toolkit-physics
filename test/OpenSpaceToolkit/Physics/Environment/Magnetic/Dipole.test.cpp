@@ -7,7 +7,7 @@
 
 #include <Global.test.hpp>
 
-using ostk::math::obj::Vector3d;
+using ostk::math::object::Vector3d;
 
 using ostk::physics::time::Instant;
 
@@ -39,7 +39,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Dipole, Clone)
 
 TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Dipole, IsDefined)
 {
-    using ostk::math::obj::Vector3d;
+    using ostk::math::object::Vector3d;
 
     using ostk::physics::environment::magnetic::Dipole;
 

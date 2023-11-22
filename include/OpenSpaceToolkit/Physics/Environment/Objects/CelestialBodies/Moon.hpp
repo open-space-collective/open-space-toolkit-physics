@@ -29,7 +29,7 @@ namespace celestial
 using ostk::core::types::Shared;
 using ostk::core::types::Real;
 
-using ostk::math::geom::d3::objects::Ellipsoid;
+using ostk::math::geometry::d3::objects::Ellipsoid;
 
 using ostk::physics::units::Length;
 using ostk::physics::units::Derived;

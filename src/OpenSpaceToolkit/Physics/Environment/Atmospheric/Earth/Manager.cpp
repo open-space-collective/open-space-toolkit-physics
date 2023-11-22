@@ -41,7 +41,7 @@ using ostk::core::types::Uint16;
 using ostk::core::types::Integer;
 using ostk::core::types::String;
 using ostk::core::ctnr::Map;
-using ostk::core::fs::Path;
+using ostk::core::filesystem::Path;
 
 using ostk::io::ip::tcp::http::Client;
 

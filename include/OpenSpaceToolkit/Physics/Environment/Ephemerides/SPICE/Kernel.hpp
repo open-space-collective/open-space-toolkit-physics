@@ -19,7 +19,7 @@ namespace ephemerides
 namespace spice
 {
 
-namespace fs = ostk::core::fs;
+namespace filesystem = ostk::core::filesystem;
 
 using ostk::core::types::String;
 
@@ -55,7 +55,7 @@ class Kernel
     /// @param              [in] aType A kernel type
     /// @param              [in] aFile A kernel file
 
-    Kernel(const Kernel::Type& aType, const fs::File& aFile);
+    Kernel(const Kernel::Type& aType, const filesystem::File& aFile);
 
     /// @brief              Equal to operator
     ///
@@ -93,7 +93,7 @@ class Kernel
     ///
     /// @return             Kernel file
 
-    fs::File getFile() const;
+    filesystem::File getFile() const;
 
     /// @brief              Constructs an undefined kernel
     ///
@@ -106,7 +106,7 @@ class Kernel
     /// @param              [in] aFile A kernel file
     /// @return             Kernel
 
-    static Kernel File(const fs::File& aFile);
+    static Kernel File(const filesystem::File& aFile);
 
     /// @brief              Converts kernel type string to type
     ///
@@ -131,7 +131,7 @@ class Kernel
 
    private:
     Kernel::Type type_;
-    fs::File file_;
+    filesystem::File file_;
 };
 
 }  // namespace spice

@@ -39,7 +39,7 @@ namespace iers
 {
 
 using ostk::core::types::String;
-using ostk::core::fs::Path;
+using ostk::core::filesystem::Path;
 
 using ostk::io::ip::tcp::http::Client;
 using ostk::io::URL;
@@ -339,7 +339,7 @@ Manager::Mode Manager::DefaultMode()
 
 Directory Manager::DefaultLocalRepository()
 {
-    using ostk::core::fs::Path;
+    using ostk::core::filesystem::Path;
 
     static const Directory defaultLocalRepository =
         Directory::Path(Path::Parse(OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY));

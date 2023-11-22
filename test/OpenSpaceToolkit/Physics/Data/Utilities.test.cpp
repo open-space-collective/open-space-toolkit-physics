@@ -11,8 +11,8 @@
 
 #include <Global.test.hpp>
 
-using ostk::core::fs::File;
-using ostk::core::fs::Path;
+using ostk::core::filesystem::File;
+using ostk::core::filesystem::Path;
 using ostk::core::types::String;
 
 using ostk::physics::time::Scale;

@@ -21,10 +21,10 @@ using ostk::core::types::String;
 using ostk::core::ctnr::Tuple;
 using ostk::core::ctnr::Array;
 using ostk::core::ctnr::Table;
-using ostk::core::fs::Path;
-using ostk::core::fs::File;
+using ostk::core::filesystem::Path;
+using ostk::core::filesystem::File;
 
-using ostk::math::obj::Vector3d;
+using ostk::math::object::Vector3d;
 
 using ostk::physics::time::Scale;
 using ostk::physics::time::Instant;
@@ -163,7 +163,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, GetRange)
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, ToVector)
 {
-    using ostk::math::obj::Vector3d;
+    using ostk::math::object::Vector3d;
 
     {
         EXPECT_EQ(Vector3d(10.0, 20.0, 30.0), aer_.toVector());

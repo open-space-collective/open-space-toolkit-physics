@@ -16,10 +16,10 @@ using ostk::core::types::Real;
 using ostk::core::types::String;
 using ostk::core::ctnr::Tuple;
 using ostk::core::ctnr::Array;
-using ostk::core::fs::Path;
-using ostk::core::fs::Directory;
+using ostk::core::filesystem::Path;
+using ostk::core::filesystem::Directory;
 
-using ostk::math::obj::Vector3d;
+using ostk::math::object::Vector3d;
 
 using ostk::physics::time::Instant;
 using MoonGravitationalModel = ostk::physics::environment::gravitational::Moon;

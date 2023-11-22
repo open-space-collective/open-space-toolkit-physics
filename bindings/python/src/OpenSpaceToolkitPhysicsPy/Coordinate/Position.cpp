@@ -9,7 +9,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Position(pybind11::module& aMod
     using ostk::core::types::Integer;
     using ostk::core::types::Shared;
 
-    using ostk::math::obj::Vector3d;
+    using ostk::math::object::Vector3d;
 
     using ostk::physics::coord::Position;
     using ostk::physics::coord::Frame;

@@ -23,8 +23,8 @@ using ostk::core::types::Integer;
 using ostk::core::types::Real;
 using ostk::core::types::String;
 
-using ostk::math::obj::Vector2d;
-using ostk::math::obj::Vector3d;
+using ostk::math::object::Vector2d;
+using ostk::math::object::Vector3d;
 
 /// @brief                      Angle
 ///
@@ -59,7 +59,7 @@ class Angle : public Unit
 
     Angle(const Real& aValue, const Angle::Unit& aUnit);
 
-    Angle(const ostk::math::geom::Angle& anAngle);
+    Angle(const ostk::math::geometry::Angle& anAngle);
 
     virtual Angle* clone() const override;
 
@@ -89,7 +89,7 @@ class Angle : public Unit
 
     Angle operator-() const;
 
-    operator ostk::math::geom::Angle() const;
+    operator ostk::math::geometry::Angle() const;
 
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Angle& anAngle);
 
