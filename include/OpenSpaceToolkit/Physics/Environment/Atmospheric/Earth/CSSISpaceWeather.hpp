@@ -30,7 +30,7 @@ using ostk::core::types::Real;
 using ostk::core::types::String;
 using ostk::core::ctnr::Map;
 using ostk::core::ctnr::Array;
-using ostk::core::fs::File;
+using ostk::core::filesystem::File;
 
 using ostk::physics::time::Date;
 using ostk::physics::time::DateTime;

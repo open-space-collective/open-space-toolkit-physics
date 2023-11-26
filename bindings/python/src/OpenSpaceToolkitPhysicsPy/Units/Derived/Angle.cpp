@@ -9,8 +9,8 @@ inline void OpenSpaceToolkitPhysicsPy_Units_Derived_Angle(pybind11::module& aMod
     using ostk::core::types::Integer;
     using ostk::core::types::Real;
 
-    using ostk::math::obj::Vector2d;
-    using ostk::math::obj::Vector3d;
+    using ostk::math::object::Vector2d;
+    using ostk::math::object::Vector3d;
 
     using ostk::physics::units::Angle;
 
@@ -151,6 +151,6 @@ inline void OpenSpaceToolkitPhysicsPy_Units_Derived_Angle(pybind11::module& aMod
 
         ;
 
-    implicitly_convertible<ostk::physics::units::Angle, ostk::math::geom::Angle>();
-    implicitly_convertible<ostk::math::geom::Angle, ostk::physics::units::Angle>();
+    implicitly_convertible<ostk::physics::units::Angle, ostk::math::geometry::Angle>();
+    implicitly_convertible<ostk::math::geometry::Angle, ostk::physics::units::Angle>();
 }

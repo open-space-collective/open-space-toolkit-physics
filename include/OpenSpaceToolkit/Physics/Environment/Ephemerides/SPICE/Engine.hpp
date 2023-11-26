@@ -40,9 +40,9 @@ using IndexType = ostk::core::types::Index;
 using ostk::core::types::String;
 using ostk::core::ctnr::Pair;
 using ostk::core::ctnr::Array;
-using ostk::core::fs::Path;
-using ostk::core::fs::File;
-using ostk::core::fs::Directory;
+using ostk::core::filesystem::Path;
+using ostk::core::filesystem::File;
+using ostk::core::filesystem::Directory;
 
 using ostk::physics::time::Instant;
 using ostk::physics::time::Interval;

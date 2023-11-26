@@ -6,7 +6,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Moon(pybind11::m
 {
     using namespace pybind11;
 
-    using ostk::core::fs::Directory;
+    using ostk::core::filesystem::Directory;
     using ostk::core::types::Shared;
 
     using ostk::physics::environment::gravitational::Model;

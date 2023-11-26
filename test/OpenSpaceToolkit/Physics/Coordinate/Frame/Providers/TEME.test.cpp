@@ -20,12 +20,12 @@ using ostk::core::types::Real;
 using ostk::core::ctnr::Triple;
 using ostk::core::ctnr::Array;
 using ostk::core::ctnr::Table;
-using ostk::core::fs::Path;
-using ostk::core::fs::File;
+using ostk::core::filesystem::Path;
+using ostk::core::filesystem::File;
 
-using ostk::math::obj::Vector3d;
-using ostk::math::geom::d3::trf::rot::Quaternion;
-using ostk::math::geom::d3::trf::rot::RotationVector;
+using ostk::math::object::Vector3d;
+using ostk::math::geometry::d3::trf::rot::Quaternion;
+using ostk::math::geometry::d3::trf::rot::RotationVector;
 
 using ostk::physics::units::Angle;
 using ostk::physics::time::Scale;

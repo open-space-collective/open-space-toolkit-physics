@@ -27,8 +27,8 @@ using ostk::core::types::Shared;
 using ostk::core::types::Integer;
 using ostk::core::types::String;
 
-using ostk::math::geom::d3::objects::Point;
-using ostk::math::obj::Vector3d;
+using ostk::math::geometry::d3::objects::Point;
+using ostk::math::object::Vector3d;
 
 using ostk::physics::units::Length;
 using ostk::physics::time::Instant;

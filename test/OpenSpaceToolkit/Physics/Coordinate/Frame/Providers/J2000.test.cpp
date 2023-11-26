@@ -11,9 +11,9 @@
 
 #include <Global.test.hpp>
 
-using ostk::math::obj::Vector3d;
-using ostk::math::geom::d3::trf::rot::Quaternion;
-using ostk::math::geom::d3::trf::rot::RotationVector;
+using ostk::math::object::Vector3d;
+using ostk::math::geometry::d3::trf::rot::Quaternion;
+using ostk::math::geometry::d3::trf::rot::RotationVector;
 
 using ostk::physics::time::Scale;
 using ostk::physics::time::Instant;

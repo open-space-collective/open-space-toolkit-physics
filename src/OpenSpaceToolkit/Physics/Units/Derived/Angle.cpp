@@ -18,29 +18,29 @@ Angle::Angle(const Real& aValue, const Angle::Unit& aUnit)
 {
 }
 
-Angle::Angle(const ostk::math::geom::Angle& anAngle)
+Angle::Angle(const ostk::math::geometry::Angle& anAngle)
     : units::Unit(units::Unit::Type::Derived, anAngle.in(anAngle.getUnit())),
       unit_(Angle::Unit::Undefined)
 {
     switch (anAngle.getUnit())
     {
-        case ostk::math::geom::Angle::Unit::Radian:
+        case ostk::math::geometry::Angle::Unit::Radian:
             unit_ = Angle::Unit::Radian;
             break;
 
-        case ostk::math::geom::Angle::Unit::Degree:
+        case ostk::math::geometry::Angle::Unit::Degree:
             unit_ = Angle::Unit::Degree;
             break;
 
-        case ostk::math::geom::Angle::Unit::Arcminute:
+        case ostk::math::geometry::Angle::Unit::Arcminute:
             unit_ = Angle::Unit::Arcminute;
             break;
 
-        case ostk::math::geom::Angle::Unit::Arcsecond:
+        case ostk::math::geometry::Angle::Unit::Arcsecond:
             unit_ = Angle::Unit::Arcsecond;
             break;
 
-        case ostk::math::geom::Angle::Unit::Revolution:
+        case ostk::math::geometry::Angle::Unit::Revolution:
             unit_ = Angle::Unit::Revolution;
             break;
 
@@ -275,36 +275,36 @@ Angle Angle::operator-() const
     return Angle(-this->accessValue(), unit_);
 }
 
-Angle::operator ostk::math::geom::Angle() const
+Angle::operator ostk::math::geometry::Angle() const
 {
     if (!this->isDefined())
     {
-        return ostk::math::geom::Angle::Undefined();
+        return ostk::math::geometry::Angle::Undefined();
     }
 
     switch (unit_)
     {
         case Angle::Unit::Radian:
-            return ostk::math::geom::Angle(this->accessValue(), ostk::math::geom::Angle::Unit::Radian);
+            return ostk::math::geometry::Angle(this->accessValue(), ostk::math::geometry::Angle::Unit::Radian);
 
         case Angle::Unit::Degree:
-            return ostk::math::geom::Angle(this->accessValue(), ostk::math::geom::Angle::Unit::Degree);
+            return ostk::math::geometry::Angle(this->accessValue(), ostk::math::geometry::Angle::Unit::Degree);
 
         case Angle::Unit::Arcminute:
-            return ostk::math::geom::Angle(this->accessValue(), ostk::math::geom::Angle::Unit::Arcminute);
+            return ostk::math::geometry::Angle(this->accessValue(), ostk::math::geometry::Angle::Unit::Arcminute);
 
         case Angle::Unit::Arcsecond:
-            return ostk::math::geom::Angle(this->accessValue(), ostk::math::geom::Angle::Unit::Arcsecond);
+            return ostk::math::geometry::Angle(this->accessValue(), ostk::math::geometry::Angle::Unit::Arcsecond);
 
         case Angle::Unit::Revolution:
-            return ostk::math::geom::Angle(this->accessValue(), ostk::math::geom::Angle::Unit::Revolution);
+            return ostk::math::geometry::Angle(this->accessValue(), ostk::math::geometry::Angle::Unit::Revolution);
 
         default:
             throw ostk::core::error::runtime::Wrong("Unit");
             break;
     }
 
-    return ostk::math::geom::Angle::Undefined();
+    return ostk::math::geometry::Angle::Undefined();
 }
 
 std::ostream& operator<<(std::ostream& anOutputStream, const Angle& anAngle)

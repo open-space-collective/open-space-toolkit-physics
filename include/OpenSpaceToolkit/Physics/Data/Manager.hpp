@@ -31,7 +31,7 @@ namespace physics
 namespace data
 {
 
-using ostk::core::fs::Directory;
+using ostk::core::filesystem::Directory;
 
 using ostk::io::URL;
 

@@ -24,7 +24,7 @@ namespace magnetic
 
 using ostk::core::types::Unique;
 using ostk::core::types::Real;
-using ostk::core::fs::Directory;
+using ostk::core::filesystem::Directory;
 
 using ostk::io::URL;
 

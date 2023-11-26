@@ -363,7 +363,7 @@ BulletinA BulletinA::Undefined()
     return BulletinA();
 }
 
-BulletinA BulletinA::Load(const fs::File& aFile)
+BulletinA BulletinA::Load(const filesystem::File& aFile)
 {
     using ostk::core::types::Index;
     using ostk::core::types::Uint8;

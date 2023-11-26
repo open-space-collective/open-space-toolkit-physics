@@ -97,5 +97,5 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
 
         ;
 
-    implicitly_convertible<ostk::math::obj::Interval<ostk::physics::time::Instant>, Interval>();
+    implicitly_convertible<ostk::math::object::Interval<ostk::physics::time::Instant>, Interval>();
 }

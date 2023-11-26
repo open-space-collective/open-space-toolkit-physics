@@ -239,8 +239,8 @@ void Environment::setInstant(const Instant& anInstant)
 
 bool Environment::isPositionInEclipse(const Position& aPosition) const
 {
-    using ostk::math::geom::d3::objects::Point;
-    using ostk::math::geom::d3::objects::Segment;
+    using ostk::math::geometry::d3::objects::Point;
+    using ostk::math::geometry::d3::objects::Segment;
 
     using ostk::physics::coord::Frame;
     using ostk::physics::environment::Object;

@@ -19,7 +19,7 @@ namespace ephemerides
 namespace spice
 {
 
-Kernel::Kernel(const Kernel::Type& aType, const fs::File& aFile)
+Kernel::Kernel(const Kernel::Type& aType, const filesystem::File& aFile)
     : type_(aType),
       file_(aFile)
 {
@@ -65,7 +65,7 @@ String Kernel::getName() const
     return file_.getName();
 }
 
-fs::File Kernel::getFile() const
+filesystem::File Kernel::getFile() const
 {
     if (!this->isDefined())
     {
@@ -77,10 +77,10 @@ fs::File Kernel::getFile() const
 
 Kernel Kernel::Undefined()
 {
-    return {Kernel::Type::Undefined, fs::File::Undefined()};
+    return {Kernel::Type::Undefined, filesystem::File::Undefined()};
 }
 
-Kernel Kernel::File(const fs::File& aFile)
+Kernel Kernel::File(const filesystem::File& aFile)
 {
     if (!aFile.isDefined())
     {

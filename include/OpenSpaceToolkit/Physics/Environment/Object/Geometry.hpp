@@ -25,7 +25,7 @@ namespace object
 using ostk::core::types::Unique;
 using ostk::core::types::Shared;
 
-using ostk::math::geom::d3::objects::Composite;
+using ostk::math::geometry::d3::objects::Composite;
 
 using ostk::physics::time::Instant;
 using ostk::physics::coord::Frame;
@@ -33,7 +33,7 @@ using ostk::physics::coord::Frame;
 class Geometry
 {
    public:
-    typedef math::geom::d3::Object Object;
+    typedef math::geometry::d3::Object Object;
 
     /// @brief              Constructor
     ///

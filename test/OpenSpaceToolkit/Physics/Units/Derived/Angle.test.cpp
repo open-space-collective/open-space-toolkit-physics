@@ -682,12 +682,12 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived_Angle, AngleConversionOperator)
 
     {
         EXPECT_EQ(
-            ostk::math::geom::Angle(+1.0, ostk::math::geom::Angle::Unit::Radian), Angle(+1.0, Angle::Unit::Radian)
+            ostk::math::geometry::Angle(+1.0, ostk::math::geometry::Angle::Unit::Radian), Angle(+1.0, Angle::Unit::Radian)
         );
     }
 
     {
-        EXPECT_NO_THROW(ostk::math::geom::Angle angle = Angle::Undefined(); (void)angle;);
+        EXPECT_NO_THROW(ostk::math::geometry::Angle angle = Angle::Undefined(); (void)angle;);
     }
 }
 
