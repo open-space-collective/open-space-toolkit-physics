@@ -32,8 +32,8 @@ using ostk::core::filesystem::File;
 using ostk::core::filesystem::Directory;
 
 using ostk::math::object::Vector3d;
-using ostk::math::geometry::d3::trf::rot::Quaternion;
-using ostk::math::geometry::d3::trf::rot::RotationVector;
+using ostk::math::geometry::d3::transformations::rotations::Quaternion;
+using ostk::math::geometry::d3::transformations::rotations::RotationVector;
 
 using ostk::physics::units::Angle;
 using ostk::physics::time::Scale;

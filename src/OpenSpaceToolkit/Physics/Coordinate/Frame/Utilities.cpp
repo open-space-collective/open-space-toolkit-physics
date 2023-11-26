@@ -23,8 +23,8 @@ Transform NorthEastDownTransformAt(
 )
 {
     using ostk::math::object::Vector3d;
-    using ostk::math::geometry::d3::trf::rot::Quaternion;
-    using ostk::math::geometry::d3::trf::rot::RotationMatrix;
+    using ostk::math::geometry::d3::transformations::rotations::Quaternion;
+    using ostk::math::geometry::d3::transformations::rotations::RotationMatrix;
 
     const Vector3d x_NED_ECEF = aLLA.toCartesian(anEllipsoidEquatorialRadius, anEllipsoidFlattening);
     const Vector3d v_NED_ECEF = {0.0, 0.0, 0.0};

@@ -121,7 +121,7 @@ Transform& Transform::operator*=(const Transform& aTransform)
 
 std::ostream& operator<<(std::ostream& anOutputStream, const Transform& aTransform)
 {
-    using ostk::math::geometry::d3::trf::rot::RotationVector;
+    using ostk::math::geometry::d3::transformations::rotations::RotationVector;
 
     using ostk::physics::time::Scale;
 

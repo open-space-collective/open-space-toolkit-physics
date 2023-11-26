@@ -4,7 +4,7 @@
 
 #include <Global.test.hpp>
 
-using ostk::math::geometry::d3::trf::rot::Quaternion;
+using ostk::math::geometry::d3::transformations::rotations::Quaternion;
 
 using ostk::physics::time::Scale;
 using ostk::physics::time::Instant;
