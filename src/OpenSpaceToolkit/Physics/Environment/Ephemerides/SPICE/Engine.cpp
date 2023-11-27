@@ -259,10 +259,10 @@ bool Engine::isKernelLoaded_(const Kernel& aKernel) const
 Transform Engine::getTransformAt(const String& aSpiceIdentifier, const String& aFrameName, const Instant& anInstant)
     const
 {
-    using ostk::math::obj::Vector3d;
-    using ostk::math::obj::Matrix3d;
-    using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::trf::rot::RotationMatrix;
+    using ostk::math::object::Vector3d;
+    using ostk::math::object::Matrix3d;
+    using ostk::math::geometry::d3::transformation::rotation::Quaternion;
+    using ostk::math::geometry::d3::transformation::rotation::RotationMatrix;
 
     using ostk::physics::time::Scale;
 

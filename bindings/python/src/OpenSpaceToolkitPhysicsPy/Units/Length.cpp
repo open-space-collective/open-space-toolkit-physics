@@ -107,7 +107,7 @@ inline void OpenSpaceToolkitPhysicsPy_Units_Length(pybind11::module& aModule)
 
         ;
 
-    using ostk::math::obj::Interval;
+    using ostk::math::object::Interval;
 
     class_<Interval<Length>>(aModule, "Interval")
 

@@ -40,7 +40,7 @@ using ostk::core::types::Shared;
 using ostk::core::types::Real;
 using ostk::core::types::String;
 
-using ostk::math::obj::Vector3d;
+using ostk::math::object::Vector3d;
 
 using ostk::physics::Unit;
 using ostk::physics::units::Angle;

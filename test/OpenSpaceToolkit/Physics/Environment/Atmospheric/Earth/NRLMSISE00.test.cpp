@@ -35,8 +35,8 @@ using ostk::core::types::Size;
 using ostk::core::types::Unique;
 using ostk::core::ctnr::Table;
 using ostk::core::ctnr::Array;
-using ostk::core::fs::File;
-using ostk::core::fs::Path;
+using ostk::core::filesystem::File;
+using ostk::core::filesystem::Path;
 
 using ostk::physics::units::Length;
 using ostk::physics::units::Angle;

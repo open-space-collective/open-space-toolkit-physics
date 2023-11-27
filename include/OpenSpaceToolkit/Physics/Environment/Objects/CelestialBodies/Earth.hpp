@@ -33,9 +33,9 @@ using ostk::core::types::Integer;
 using ostk::core::types::Real;
 using ostk::core::types::String;
 using ostk::core::types::Shared;
-using ostk::core::fs::Directory;
+using ostk::core::filesystem::Directory;
 
-using ostk::math::geom::d3::objects::Ellipsoid;
+using ostk::math::geometry::d3::objects::Ellipsoid;
 
 using ostk::physics::units::Length;
 using ostk::physics::units::Derived;

@@ -310,7 +310,7 @@ Finals2000A Finals2000A::Undefined()
     return Finals2000A();
 }
 
-Finals2000A Finals2000A::Load(const fs::File& aFile)
+Finals2000A Finals2000A::Load(const filesystem::File& aFile)
 {
     using ostk::core::types::Index;
     using ostk::core::types::Uint8;

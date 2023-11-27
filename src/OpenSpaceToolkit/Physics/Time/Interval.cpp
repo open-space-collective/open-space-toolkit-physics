@@ -15,7 +15,7 @@ namespace time
 {
 
 Interval::Interval(const Instant& aLowerBound, const Instant& anUpperBound, const Interval::Type& anIntervalType)
-    : math::obj::Interval<Instant>(aLowerBound, anUpperBound, anIntervalType)
+    : math::object::Interval<Instant>(aLowerBound, anUpperBound, anIntervalType)
 {
 }
 
@@ -35,7 +35,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Interval& anInterva
 
 bool Interval::isDefined() const
 {
-    return math::obj::Interval<Instant>::isDefined() && (this->getType() != Interval::Type::Undefined);
+    return math::object::Interval<Instant>::isDefined() && (this->getType() != Interval::Type::Undefined);
 }
 
 const Instant& Interval::accessStart() const

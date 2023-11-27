@@ -21,8 +21,8 @@ namespace coord
 using ostk::core::types::Real;
 using ostk::core::types::String;
 
-using ostk::math::obj::Vector3d;
-using ostk::math::geom::d3::trf::rot::Quaternion;
+using ostk::math::object::Vector3d;
+using ostk::math::geometry::d3::transformation::rotation::Quaternion;
 
 using ostk::physics::time::Instant;
 

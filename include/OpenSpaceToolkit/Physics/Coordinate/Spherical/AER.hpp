@@ -22,7 +22,7 @@ namespace spherical
 
 using ostk::core::types::String;
 
-using ostk::math::obj::Vector3d;
+using ostk::math::object::Vector3d;
 
 using ostk::physics::units::Angle;
 using ostk::physics::units::Length;

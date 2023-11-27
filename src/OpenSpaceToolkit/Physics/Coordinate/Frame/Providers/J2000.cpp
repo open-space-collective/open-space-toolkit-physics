@@ -49,7 +49,7 @@ iau::Theory J2000::getTheory() const
 
 Transform J2000::getTransformAt(const Instant& anInstant) const
 {
-    using ostk::math::geom::d3::trf::rot::RotationMatrix;
+    using ostk::math::geometry::d3::transformation::rotation::RotationMatrix;
 
     if (!anInstant.isDefined())
     {

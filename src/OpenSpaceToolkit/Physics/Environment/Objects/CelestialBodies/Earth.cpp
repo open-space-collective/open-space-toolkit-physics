@@ -177,8 +177,8 @@ Object::Geometry Earth::Geometry(
     const Length& anEquatorialRadius, const Real& aFlattening, const Shared<const Frame>& aFrameSPtr
 )
 {
-    using ostk::math::geom::d3::objects::Point;
-    using ostk::math::geom::d3::trf::rot::Quaternion;
+    using ostk::math::geometry::d3::objects::Point;
+    using ostk::math::geometry::d3::transformation::rotation::Quaternion;
 
     const Real equatorialRadius_m = anEquatorialRadius.inMeters();
     const Real polarRadius_m = equatorialRadius_m * (1.0 - aFlattening);

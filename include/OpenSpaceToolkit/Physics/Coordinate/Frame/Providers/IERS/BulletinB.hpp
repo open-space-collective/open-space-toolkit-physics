@@ -26,12 +26,12 @@ namespace provider
 namespace iers
 {
 
-namespace fs = ostk::core::fs;
+namespace filesystem = ostk::core::filesystem;
 
 using ostk::core::types::Integer;
 using ostk::core::types::Real;
 using ostk::core::ctnr::Map;
-using ostk::core::fs::File;
+using ostk::core::filesystem::File;
 
 using ostk::physics::time::Date;
 using ostk::physics::time::Instant;
@@ -86,7 +86,7 @@ class BulletinB
     /// @param              [in] aFile A file.
     /// @return             Bulletin B object.
 
-    static BulletinB Load(const fs::File& aFile);
+    static BulletinB Load(const filesystem::File& aFile);
 
    private:
     Date releaseDate_;

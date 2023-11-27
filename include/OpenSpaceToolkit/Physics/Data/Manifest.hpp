@@ -24,7 +24,7 @@ namespace data
 using ostk::core::types::String;
 using ostk::core::ctnr::Array;
 using ostk::core::ctnr::Map;
-using ostk::core::fs::File;
+using ostk::core::filesystem::File;
 using ostk::core::ctnr::Dictionary;
 
 using ostk::io::URL;

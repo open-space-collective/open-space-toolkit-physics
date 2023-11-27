@@ -29,10 +29,10 @@ using ostk::physics::time::Instant;
 
 /// @brief                      Interval
 
-class Interval : public math::obj::Interval<Instant>
+class Interval : public math::object::Interval<Instant>
 {
    public:
-    typedef math::obj::Interval<Instant>::Type Type;
+    typedef math::object::Interval<Instant>::Type Type;
 
     /// @brief              Constructor
     ///

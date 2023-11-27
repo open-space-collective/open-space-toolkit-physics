@@ -32,11 +32,11 @@
 using ostk::core::types::Shared;
 using ostk::core::types::Real;
 
-using ostk::math::geom::d3::objects::Point;
-using ostk::math::geom::d3::objects::LineString;
-using ostk::math::geom::d3::objects::Polygon;
-using ostk::math::geom::d3::objects::Pyramid;
-using ostk::math::geom::d3::objects::Composite;
+using ostk::math::geometry::d3::objects::Point;
+using ostk::math::geometry::d3::objects::LineString;
+using ostk::math::geometry::d3::objects::Polygon;
+using ostk::math::geometry::d3::objects::Pyramid;
+using ostk::math::geometry::d3::objects::Composite;
 
 using ostk::physics::units::Length;
 using ostk::physics::units::Angle;
@@ -138,9 +138,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, IsDefined)
 // TEST (OpenSpaceToolkit_Physics_Environment_Object_Geometry, Intersects)
 // {
 
-//     using ostk::math::geom::d3::objects::Point ;
-//     using ostk::math::geom::d3::objects::Polygon ;
-//     using ostk::math::geom::d3::objects::Pyramid ;
+//     using ostk::math::geometry::d3::objects::Point ;
+//     using ostk::math::geometry::d3::objects::Polygon ;
+//     using ostk::math::geometry::d3::objects::Pyramid ;
 
 //     using ostk::physics::coord::Frame ;
 //     using ostk::physics::environment::object::Geometry ;

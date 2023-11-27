@@ -15,10 +15,10 @@ using ostk::core::types::Shared;
 using ostk::core::types::Real;
 using ostk::core::types::String;
 
-using ostk::math::obj::Vector3d;
-using ostk::math::geom::d3::trf::rot::Quaternion;
-using ostk::math::geom::d3::trf::rot::RotationVector;
-using ostk::math::geom::d3::trf::rot::RotationMatrix;
+using ostk::math::object::Vector3d;
+using ostk::math::geometry::d3::transformation::rotation::Quaternion;
+using ostk::math::geometry::d3::transformation::rotation::RotationVector;
+using ostk::math::geometry::d3::transformation::rotation::RotationMatrix;
 
 using ostk::physics::units::Angle;
 using ostk::physics::units::Length;

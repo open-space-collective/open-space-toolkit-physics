@@ -28,7 +28,7 @@ namespace atmospheric
 using ostk::core::types::Unique;
 using ostk::core::types::Real;
 using ostk::core::types::Shared;
-using ostk::core::fs::Directory;
+using ostk::core::filesystem::Directory;
 
 using ostk::physics::time::Instant;
 using ostk::physics::units::Length;

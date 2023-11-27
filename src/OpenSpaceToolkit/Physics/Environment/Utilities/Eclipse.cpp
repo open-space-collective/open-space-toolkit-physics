@@ -23,7 +23,7 @@ Array<Interval> eclipseIntervalsAtPosition(
 {
     using ostk::core::types::Shared;
 
-    using ostk::math::geom::d3::objects::Segment;
+    using ostk::math::geometry::d3::objects::Segment;
 
     using ostk::physics::time::Instant;
     using ostk::physics::time::Duration;

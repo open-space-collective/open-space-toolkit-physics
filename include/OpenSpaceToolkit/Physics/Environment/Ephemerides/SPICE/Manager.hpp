@@ -38,9 +38,9 @@ namespace spice
 using ostk::core::types::Shared;
 using ostk::core::types::String;
 using ostk::core::ctnr::Array;
-using ostk::core::fs::Path;
-using ostk::core::fs::File;
-using ostk::core::fs::Directory;
+using ostk::core::filesystem::Path;
+using ostk::core::filesystem::File;
+using ostk::core::filesystem::Directory;
 
 using ostk::io::URL;
 

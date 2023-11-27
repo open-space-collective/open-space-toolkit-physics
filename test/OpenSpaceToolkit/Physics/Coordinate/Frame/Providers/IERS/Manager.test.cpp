@@ -13,9 +13,9 @@
 
 #include <Global.test.hpp>
 
-using ostk::core::fs::Path;
-using ostk::core::fs::File;
-using ostk::core::fs::Directory;
+using ostk::core::filesystem::Path;
+using ostk::core::filesystem::File;
+using ostk::core::filesystem::Directory;
 using ostk::core::types::Real;
 using ostk::core::types::String;
 using ostk::core::ctnr::Tuple;
@@ -24,7 +24,7 @@ using ostk::core::ctnr::Table;
 
 using ostk::io::URL;
 
-using ostk::math::obj::Vector2d;
+using ostk::math::object::Vector2d;
 
 using ostk::physics::time::Duration;
 using ostk::physics::time::Scale;

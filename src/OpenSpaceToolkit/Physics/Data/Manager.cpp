@@ -29,7 +29,7 @@ namespace data
 {
 
 using ostk::core::types::String;
-using ostk::core::fs::Path;
+using ostk::core::filesystem::Path;
 using ostk::core::types::String;
 
 using ostk::io::ip::tcp::http::Client;

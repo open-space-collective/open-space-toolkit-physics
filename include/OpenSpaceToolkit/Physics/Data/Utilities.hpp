@@ -16,7 +16,7 @@ namespace data
 namespace utilities
 {
 
-using ostk::core::fs::File;
+using ostk::core::filesystem::File;
 
 using ostk::physics::time::Instant;
 
