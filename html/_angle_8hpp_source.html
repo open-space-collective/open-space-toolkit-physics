@@ -108,8 +108,8 @@ $(document).ready(function(){initNavTree('_angle_8hpp_source.html',''); initResi
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">using</span> ostk::core::types::Real;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">using</span> ostk::core::types::String;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">using</span> ostk::math::obj::Vector2d;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">using</span> ostk::math::obj::Vector3d;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">using</span> ostk::math::object::Vector2d;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">using</span> ostk::math::object::Vector3d;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
 <div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="classostk_1_1physics_1_1units_1_1_angle.html">   36</a></span>&#160;<span class="keyword">class </span><a class="code" href="classostk_1_1physics_1_1units_1_1_angle.html">Angle</a> : <span class="keyword">public</span> <a class="code" href="classostk_1_1physics_1_1units_1_1_angle.html#aea1f8018b1d378b9dee56959d8eb9def">Unit</a></div>
@@ -130,7 +130,7 @@ $(document).ready(function(){initNavTree('_angle_8hpp_source.html',''); initResi
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="classostk_1_1physics_1_1units_1_1_angle.html#a4892c7a7ed48adabf5c942dbda7ad848">Angle</a>(<span class="keyword">const</span> Real&amp; aValue, <span class="keyword">const</span> <a class="code" href="classostk_1_1physics_1_1units_1_1_angle.html#aea1f8018b1d378b9dee56959d8eb9def">Angle::Unit</a>&amp; aUnit);</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="classostk_1_1physics_1_1units_1_1_angle.html#a4892c7a7ed48adabf5c942dbda7ad848">Angle</a>(<span class="keyword">const</span> ostk::math::geom::Angle&amp; anAngle);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="classostk_1_1physics_1_1units_1_1_angle.html#a4892c7a7ed48adabf5c942dbda7ad848">Angle</a>(<span class="keyword">const</span> ostk::math::geometry::Angle&amp; anAngle);</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classostk_1_1physics_1_1units_1_1_angle.html">Angle</a>* <a class="code" href="classostk_1_1physics_1_1units_1_1_angle.html#af0d5d649b2a1310e6337663f7b9283bf">clone</a>() <span class="keyword">const override</span>;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
@@ -160,7 +160,7 @@ $(document).ready(function(){initNavTree('_angle_8hpp_source.html',''); initResi
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <a class="code" href="classostk_1_1physics_1_1units_1_1_angle.html">Angle</a> <a class="code" href="classostk_1_1physics_1_1units_1_1_angle.html#aa1453072b55bf475b8953cf1dc5bdda3">operator-</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keyword">operator</span> ostk::math::geom::Angle() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keyword">operator</span> ostk::math::geometry::Angle() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keyword">friend</span> std::ostream&amp; <a class="code" href="classostk_1_1physics_1_1units_1_1_angle.html#a0846b77ee3281e8a559197c3c3208eed">operator&lt;&lt;</a>(std::ostream&amp; anOutputStream, <span class="keyword">const</span> <a class="code" href="classostk_1_1physics_1_1units_1_1_angle.html">Angle</a>&amp; anAngle);</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>

@@ -32,7 +32,7 @@ enum \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemerides_1_1spic
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel_afb1507f3821dc1d6c2eb253f0da9073f}{Kernel}} (const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel_a668ec7f85e0769b81a8c0051e6d71f2b}{Kernel\+::\+Type}} \&a\+Type, const fs\+::\+File \&a\+File)
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel_a80ceccf8a5cf159c3d1709b06f12629d}{Kernel}} (const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel_a668ec7f85e0769b81a8c0051e6d71f2b}{Kernel\+::\+Type}} \&a\+Type, const filesystem\+::\+File \&a\+File)
 \begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel_af365b80b5a58bea38c782812465e5545}{operator==}} (const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel}{Kernel}} \&a\+Kernel) const
 \begin{DoxyCompactList}\small\item\em Equal to operator. \end{DoxyCompactList}\item 
@@ -44,14 +44,14 @@ bool \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemerides_1_1spic
 \begin{DoxyCompactList}\small\item\em Get kernel type. \end{DoxyCompactList}\item 
 String \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel_ab0c6a45f655e96aae010d04d3ea44bc7}{get\+Name}} () const
 \begin{DoxyCompactList}\small\item\em Get kernel name. \end{DoxyCompactList}\item 
-fs\+::\+File \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel_aa598a207cbecd495edfd295c996eef09}{get\+File}} () const
+filesystem\+::\+File \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel_a53df7aa48ae0b6315527df25004440a0}{get\+File}} () const
 \begin{DoxyCompactList}\small\item\em Get kernel file. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 static \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel}{Kernel}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel_a91fd4fbd23641b623ef479a8edeb3513}{Undefined}} ()
 \begin{DoxyCompactList}\small\item\em Constructs an undefined kernel. \end{DoxyCompactList}\item 
-static \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel}{Kernel}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel_a0a9c35ad4661b50082c5ac0dd60ac715}{File}} (const fs\+::\+File \&a\+File)
+static \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel}{Kernel}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel_a1c56d8a2ffc08524efe7028fb5184989}{File}} (const filesystem\+::\+File \&a\+File)
 \begin{DoxyCompactList}\small\item\em Constructs a kernel from a file. \end{DoxyCompactList}\item 
 static \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel_a668ec7f85e0769b81a8c0051e6d71f2b}{Kernel\+::\+Type}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel_a7cdd493ef9916abd71d5f7aef7969ba5}{Type\+From\+String}} (const String \&a\+String)
 \begin{DoxyCompactList}\small\item\em Converts kernel type string to type. \end{DoxyCompactList}\item 
@@ -126,11 +126,11 @@ B\+EK&Events kernels (binary) \\
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel_afb1507f3821dc1d6c2eb253f0da9073f}\label{classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel_afb1507f3821dc1d6c2eb253f0da9073f}} 
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel_a80ceccf8a5cf159c3d1709b06f12629d}\label{classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel_a80ceccf8a5cf159c3d1709b06f12629d}} 
 \index{ostk::physics::environment::ephemerides::spice::Kernel@{ostk::physics::environment::ephemerides::spice::Kernel}!Kernel@{Kernel}}
 \index{Kernel@{Kernel}!ostk::physics::environment::ephemerides::spice::Kernel@{ostk::physics::environment::ephemerides::spice::Kernel}}
 \doxysubsubsection{\texorpdfstring{Kernel()}{Kernel()}}
-{\footnotesize\ttfamily ostk\+::physics\+::environment\+::ephemerides\+::spice\+::\+Kernel\+::\+Kernel (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel_a668ec7f85e0769b81a8c0051e6d71f2b}{Kernel\+::\+Type}} \&}]{a\+Type,  }\item[{const fs\+::\+File \&}]{a\+File }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily ostk\+::physics\+::environment\+::ephemerides\+::spice\+::\+Kernel\+::\+Kernel (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel_a668ec7f85e0769b81a8c0051e6d71f2b}{Kernel\+::\+Type}} \&}]{a\+Type,  }\item[{const filesystem\+::\+File \&}]{a\+File }\end{DoxyParamCaption})}
 
 
 
@@ -146,11 +146,11 @@ Constructor.
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel_a0a9c35ad4661b50082c5ac0dd60ac715}\label{classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel_a0a9c35ad4661b50082c5ac0dd60ac715}} 
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel_a1c56d8a2ffc08524efe7028fb5184989}\label{classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel_a1c56d8a2ffc08524efe7028fb5184989}} 
 \index{ostk::physics::environment::ephemerides::spice::Kernel@{ostk::physics::environment::ephemerides::spice::Kernel}!File@{File}}
 \index{File@{File}!ostk::physics::environment::ephemerides::spice::Kernel@{ostk::physics::environment::ephemerides::spice::Kernel}}
 \doxysubsubsection{\texorpdfstring{File()}{File()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel}{Kernel}} ostk\+::physics\+::environment\+::ephemerides\+::spice\+::\+Kernel\+::\+File (\begin{DoxyParamCaption}\item[{const fs\+::\+File \&}]{a\+File }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel}{Kernel}} ostk\+::physics\+::environment\+::ephemerides\+::spice\+::\+Kernel\+::\+File (\begin{DoxyParamCaption}\item[{const filesystem\+::\+File \&}]{a\+File }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -164,11 +164,11 @@ Constructs a kernel from a file.
 \begin{DoxyReturn}{Returns}
 \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel}{Kernel}} 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel_aa598a207cbecd495edfd295c996eef09}\label{classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel_aa598a207cbecd495edfd295c996eef09}} 
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel_a53df7aa48ae0b6315527df25004440a0}\label{classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel_a53df7aa48ae0b6315527df25004440a0}} 
 \index{ostk::physics::environment::ephemerides::spice::Kernel@{ostk::physics::environment::ephemerides::spice::Kernel}!getFile@{getFile}}
 \index{getFile@{getFile}!ostk::physics::environment::ephemerides::spice::Kernel@{ostk::physics::environment::ephemerides::spice::Kernel}}
 \doxysubsubsection{\texorpdfstring{getFile()}{getFile()}}
-{\footnotesize\ttfamily fs\+::\+File ostk\+::physics\+::environment\+::ephemerides\+::spice\+::\+Kernel\+::get\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily filesystem\+::\+File ostk\+::physics\+::environment\+::ephemerides\+::spice\+::\+Kernel\+::get\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 

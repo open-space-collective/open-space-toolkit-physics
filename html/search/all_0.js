@@ -65,7 +65,7 @@ var searchData=
   ['analytical_62',['Analytical',['../classostk_1_1physics_1_1environment_1_1ephemerides_1_1_analytical.html',1,'ostk::physics::environment::ephemerides::Analytical'],['../classostk_1_1physics_1_1environment_1_1ephemerides_1_1_analytical.html#a891ccf13538a3aef55350e78b1ed5d98',1,'ostk::physics::environment::ephemerides::Analytical::Analytical()']]],
   ['analytical_2ecpp_63',['Analytical.cpp',['../_analytical_8cpp.html',1,'']]],
   ['analytical_2ehpp_64',['Analytical.hpp',['../_analytical_8hpp.html',1,'']]],
-  ['angle_65',['Angle',['../classostk_1_1physics_1_1units_1_1_angle.html',1,'ostk::physics::units::Angle'],['../classostk_1_1physics_1_1units_1_1_angle.html#a4892c7a7ed48adabf5c942dbda7ad848',1,'ostk::physics::units::Angle::Angle(const Real &amp;aValue, const Angle::Unit &amp;aUnit)'],['../classostk_1_1physics_1_1units_1_1_angle.html#a77a11a481467020f3bf965473dc37878',1,'ostk::physics::units::Angle::Angle(const ostk::math::geom::Angle &amp;anAngle)']]],
+  ['angle_65',['Angle',['../classostk_1_1physics_1_1units_1_1_angle.html',1,'ostk::physics::units::Angle'],['../classostk_1_1physics_1_1units_1_1_angle.html#a4892c7a7ed48adabf5c942dbda7ad848',1,'ostk::physics::units::Angle::Angle(const Real &amp;aValue, const Angle::Unit &amp;aUnit)'],['../classostk_1_1physics_1_1units_1_1_angle.html#aa456aa0f0e8f898764352b799b160b09',1,'ostk::physics::units::Angle::Angle(const ostk::math::geometry::Angle &amp;anAngle)']]],
   ['angle_2ecpp_66',['Angle.cpp',['../_angle_8cpp.html',1,'']]],
   ['angle_2ehpp_67',['Angle.hpp',['../_angle_8hpp.html',1,'']]],
   ['angularvelocity_68',['AngularVelocity',['../classostk_1_1physics_1_1units_1_1_derived_1_1_unit.html#ae6790769634dedf4d2406a6bc1818cd3',1,'ostk::physics::units::Derived::Unit']]],

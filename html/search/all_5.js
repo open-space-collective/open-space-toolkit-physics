@@ -16,7 +16,7 @@ var searchData=
   ['fetchlatestfinals2000a_258',['fetchLatestFinals2000A',['../classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager.html#a34f5650ec29d3ad3993e2de1bc9f100a',1,'ostk::physics::coord::frame::provider::iers::Manager']]],
   ['fetchlatestmanifestfile_5f_259',['fetchLatestManifestFile_',['../classostk_1_1physics_1_1data_1_1_manager.html#a88f6ff812498f2eb7da1b2ebbdf8355c',1,'ostk::physics::data::Manager']]],
   ['fetchmatchingkernels_260',['fetchMatchingKernels',['../classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_manager.html#a2a91d4f02276499b9b1ee7cf6f2ec9e4',1,'ostk::physics::environment::ephemerides::spice::Manager']]],
-  ['file_261',['File',['../classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel.html#a0a9c35ad4661b50082c5ac0dd60ac715',1,'ostk::physics::environment::ephemerides::spice::Kernel']]],
+  ['file_261',['File',['../classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel.html#a1c56d8a2ffc08524efe7028fb5184989',1,'ostk::physics::environment::ephemerides::spice::Kernel']]],
   ['finals2000a_262',['Finals2000A',['../classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_finals2000_a.html',1,'ostk::physics::coord::frame::provider::iers']]],
   ['finals2000a_2ecpp_263',['Finals2000A.cpp',['../_finals2000_a_8cpp.html',1,'']]],
   ['finals2000a_2ehpp_264',['Finals2000A.hpp',['../_finals2000_a_8hpp.html',1,'']]],

@@ -14,8 +14,8 @@ var classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel =
       [ "CK", "classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel.html#a668ec7f85e0769b81a8c0051e6d71f2ba534ac75c2e8ac3e3fe7bc32bb8c6e34a", null ],
       [ "BEK", "classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel.html#a668ec7f85e0769b81a8c0051e6d71f2ba23d71b8d68c6f4869b29ed158e97c88a", null ]
     ] ],
-    [ "Kernel", "classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel.html#afb1507f3821dc1d6c2eb253f0da9073f", null ],
-    [ "getFile", "classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel.html#aa598a207cbecd495edfd295c996eef09", null ],
+    [ "Kernel", "classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel.html#a80ceccf8a5cf159c3d1709b06f12629d", null ],
+    [ "getFile", "classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel.html#a53df7aa48ae0b6315527df25004440a0", null ],
     [ "getName", "classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel.html#ab0c6a45f655e96aae010d04d3ea44bc7", null ],
     [ "getType", "classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel.html#a9a3f4d8ea9fa5bf364eacd55ecac0774", null ],
     [ "isDefined", "classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel.html#ad3c8671e9de86c3849acce3f771acd9e", null ],

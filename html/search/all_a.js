@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['kernel_497',['Kernel',['../classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel.html',1,'ostk::physics::environment::ephemerides::spice::Kernel'],['../classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel.html#afb1507f3821dc1d6c2eb253f0da9073f',1,'ostk::physics::environment::ephemerides::spice::Kernel::Kernel()']]],
+  ['kernel_497',['Kernel',['../classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel.html',1,'ostk::physics::environment::ephemerides::spice::Kernel'],['../classostk_1_1physics_1_1environment_1_1ephemerides_1_1spice_1_1_kernel.html#a80ceccf8a5cf159c3d1709b06f12629d',1,'ostk::physics::environment::ephemerides::spice::Kernel::Kernel()']]],
   ['kernel_2ecpp_498',['Kernel.cpp',['../_kernel_8cpp.html',1,'']]],
   ['kernel_2ehpp_499',['Kernel.hpp',['../_kernel_8hpp.html',1,'']]],
   ['kilogram_500',['Kilogram',['../classostk_1_1physics_1_1units_1_1_mass.html#aa8994892478fdbe6dc78d4bca08db0faa9d71f8d145c74f11bf9b02047645bcf4',1,'ostk::physics::units::Mass']]],

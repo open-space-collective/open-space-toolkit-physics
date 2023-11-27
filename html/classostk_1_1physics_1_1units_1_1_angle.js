@@ -9,7 +9,7 @@ var classostk_1_1physics_1_1units_1_1_angle =
       [ "Revolution", "classostk_1_1physics_1_1units_1_1_angle.html#aea1f8018b1d378b9dee56959d8eb9defaad09b2d48b2811c68e5a2bf421f7f2f2", null ]
     ] ],
     [ "Angle", "classostk_1_1physics_1_1units_1_1_angle.html#a4892c7a7ed48adabf5c942dbda7ad848", null ],
-    [ "Angle", "classostk_1_1physics_1_1units_1_1_angle.html#a77a11a481467020f3bf965473dc37878", null ],
+    [ "Angle", "classostk_1_1physics_1_1units_1_1_angle.html#aa456aa0f0e8f898764352b799b160b09", null ],
     [ "clone", "classostk_1_1physics_1_1units_1_1_angle.html#af0d5d649b2a1310e6337663f7b9283bf", null ],
     [ "getUnit", "classostk_1_1physics_1_1units_1_1_angle.html#abe7e90d80d24d15464a6041569196ea3", null ],
     [ "in", "classostk_1_1physics_1_1units_1_1_angle.html#a80e7aa75986fc9b4644b6d0db4f3ba9c", null ],
@@ -24,7 +24,7 @@ var classostk_1_1physics_1_1units_1_1_angle =
     [ "inRevolutions", "classostk_1_1physics_1_1units_1_1_angle.html#a8e0d12ccfb07c08113f9f183272344c8", null ],
     [ "isDefined", "classostk_1_1physics_1_1units_1_1_angle.html#a912562d12513b2fcee56262208206b62", null ],
     [ "isZero", "classostk_1_1physics_1_1units_1_1_angle.html#afae7328cb579939eaaf8c631ac93e3ba", null ],
-    [ "operator ostk::math::geom::Angle", "classostk_1_1physics_1_1units_1_1_angle.html#ae92c124ae780a2c61747f343a6b3f773", null ],
+    [ "operator ostk::math::geometry::Angle", "classostk_1_1physics_1_1units_1_1_angle.html#a3032be8685482dd47d34307b6314d204", null ],
     [ "operator!=", "classostk_1_1physics_1_1units_1_1_angle.html#a7b920b7abe8e0fcc95a7a633f6240108", null ],
     [ "operator*", "classostk_1_1physics_1_1units_1_1_angle.html#abd90998581807fadf43720f558061115", null ],
     [ "operator*=", "classostk_1_1physics_1_1units_1_1_angle.html#aba01c2eb2166f1be5c5ff8d5b2cb6363", null ],
