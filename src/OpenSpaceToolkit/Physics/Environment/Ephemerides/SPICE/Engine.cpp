@@ -261,8 +261,8 @@ Transform Engine::getTransformAt(const String& aSpiceIdentifier, const String& a
 {
     using ostk::math::object::Vector3d;
     using ostk::math::object::Matrix3d;
-    using ostk::math::geometry::d3::transformations::rotations::Quaternion;
-    using ostk::math::geometry::d3::transformations::rotations::RotationMatrix;
+    using ostk::math::geometry::d3::transformation::rotation::Quaternion;
+    using ostk::math::geometry::d3::transformation::rotation::RotationMatrix;
 
     using ostk::physics::time::Scale;
 

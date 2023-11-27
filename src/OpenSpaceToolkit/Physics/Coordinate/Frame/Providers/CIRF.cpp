@@ -43,7 +43,7 @@ bool CIRF::isDefined() const
 
 Transform CIRF::getTransformAt(const Instant& anInstant) const
 {
-    using ostk::math::geometry::d3::transformations::rotations::RotationMatrix;
+    using ostk::math::geometry::d3::transformation::rotation::RotationMatrix;
 
     using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;

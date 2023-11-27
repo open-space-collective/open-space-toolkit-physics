@@ -11,7 +11,7 @@ import ostk.mathematics as mathematics
 Scale = physics.time.Scale
 DateTime = physics.time.DateTime
 Instant = physics.time.Instant
-Quaternion = mathematics.geometry.d3.transformations.rotations.Quaternion
+Quaternion = mathematics.geometry.d3.transformation.rotation.Quaternion
 Transform = physics.coordinate.Transform
 Type = Transform.Type
 

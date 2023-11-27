@@ -169,9 +169,9 @@ Geometry Geometry::in(const Shared<const Frame>& aFrameSPtr, const Instant& anIn
     using ostk::math::object::Vector3d;
     using ostk::math::geometry::d3::objects::Point;
     using ostk::math::geometry::d3::Transformation;
-    using ostk::math::geometry::d3::transformations::rotations::Quaternion;
-    using ostk::math::geometry::d3::transformations::rotations::RotationVector;
-    using ostk::math::geometry::d3::transformations::rotations::RotationMatrix;
+    using ostk::math::geometry::d3::transformation::rotation::Quaternion;
+    using ostk::math::geometry::d3::transformation::rotation::RotationVector;
+    using ostk::math::geometry::d3::transformation::rotation::RotationMatrix;
 
     using ostk::physics::coord::Transform;
 

@@ -63,7 +63,7 @@ iau::Theory TOD::getTheory() const
 
 Transform TOD::getTransformAt(const Instant& anInstant) const
 {
-    using ostk::math::geometry::d3::transformations::rotations::RotationMatrix;
+    using ostk::math::geometry::d3::transformation::rotation::RotationMatrix;
 
     if (!anInstant.isDefined())
     {

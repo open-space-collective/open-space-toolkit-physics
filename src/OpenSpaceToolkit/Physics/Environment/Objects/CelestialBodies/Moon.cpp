@@ -62,7 +62,7 @@ Moon Moon::Spherical()
 Object::Geometry Moon::Geometry(const Shared<const Frame>& aFrame)
 {
     using ostk::math::geometry::d3::objects::Point;
-    using ostk::math::geometry::d3::transformations::rotations::Quaternion;
+    using ostk::math::geometry::d3::transformation::rotation::Quaternion;
 
     const Real equatorialRadius_m = MoonGravitationalModel::Spherical.equatorialRadius_.inMeters();
     const Real polarRadius_m = equatorialRadius_m * (1.0 - MoonGravitationalModel::Spherical.flattening_);

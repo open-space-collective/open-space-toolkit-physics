@@ -16,9 +16,9 @@ using ostk::core::types::Real;
 using ostk::core::types::String;
 
 using ostk::math::object::Vector3d;
-using ostk::math::geometry::d3::transformations::rotations::Quaternion;
-using ostk::math::geometry::d3::transformations::rotations::RotationVector;
-using ostk::math::geometry::d3::transformations::rotations::RotationMatrix;
+using ostk::math::geometry::d3::transformation::rotation::Quaternion;
+using ostk::math::geometry::d3::transformation::rotation::RotationVector;
+using ostk::math::geometry::d3::transformation::rotation::RotationMatrix;
 
 using ostk::physics::units::Angle;
 using ostk::physics::units::Length;

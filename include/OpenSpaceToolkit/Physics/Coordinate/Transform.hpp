@@ -22,7 +22,7 @@ using ostk::core::types::Real;
 using ostk::core::types::String;
 
 using ostk::math::object::Vector3d;
-using ostk::math::geometry::d3::transformations::rotations::Quaternion;
+using ostk::math::geometry::d3::transformation::rotation::Quaternion;
 
 using ostk::physics::time::Instant;
 

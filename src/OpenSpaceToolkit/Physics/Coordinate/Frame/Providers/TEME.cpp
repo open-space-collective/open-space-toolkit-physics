@@ -50,7 +50,7 @@ Transform TEME::getTransformAt(const Instant& anInstant) const
     // http://www.dtic.mil/dtic/tr/fulltext/u2/a637370.pdf p.18
 
     using ostk::math::object::Vector2d;
-    using ostk::math::geometry::d3::transformations::rotations::RotationMatrix;
+    using ostk::math::geometry::d3::transformation::rotation::RotationMatrix;
 
     using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
