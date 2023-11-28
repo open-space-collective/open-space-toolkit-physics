@@ -49,13 +49,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame(pybind11::module& aModule
         .def_static("with_name", &Frame::WithName, arg("name"))
         .def_static("exists", &Frame::Exists, arg("name"))
         .def_static(
-            "construct",
-            &Frame::Construct,
-            arg("name"),
-            arg("is_quasi_inertial"),
-            arg("parent_frame"),
-            arg("provider"),
-            call_guard<gil_scoped_release>()
+            "construct", &Frame::Construct, arg("name"), arg("is_quasi_inertial"), arg("parent_frame"), arg("provider")
         )
         .def_static("destruct", &Frame::Destruct, arg("name"))
 
