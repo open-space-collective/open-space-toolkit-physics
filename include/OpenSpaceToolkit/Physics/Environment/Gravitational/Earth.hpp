@@ -111,6 +111,18 @@ class Earth : public Model
 
     Earth::Type getType() const;
 
+    /// @brief              Get gravitational model degree
+    ///
+    /// @return             Gravitational model degree
+
+    virtual Integer getDegree() const;
+
+    /// @brief              Get gravitational model order
+    ///
+    /// @return             Gravitational model order
+
+    virtual Integer getOrder() const;
+
     /// @brief              Get the gravitational field value at a given position and instant
     ///
     /// @param              [in] aPosition A position, expressed in the gravitational object frame [m]

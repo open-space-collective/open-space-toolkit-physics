@@ -37,6 +37,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(pybind11::
 
             .def("get_type", &Earth::getType)
 
+            .def("get_degree", &Earth::getDegree)
+            .def("get_order", &Earth::getOrder)
+
             .def("get_field_value_at", &Earth::getFieldValueAt, arg("position"), arg("instant"))
 
             .def_readonly_static("EGM2008", &Earth::EGM2008)

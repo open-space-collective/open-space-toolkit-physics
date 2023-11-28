@@ -60,6 +60,21 @@ class TestEarth:
             earth_gravitational_model.get_type() == EarthGravitationalModel.Type.EGM2008
         )
 
+    def test_get_degree_order_success(self):
+        egm_earth_gravitational_model = EarthGravitationalModel(
+            EarthGravitationalModel.Type.EGM2008, Directory.undefined(), 51, 50
+        )
+
+        assert egm_earth_gravitational_model.get_degree() == 51
+        assert egm_earth_gravitational_model.get_order() == 50
+
+        spherical_earth_gravitational_model = EarthGravitationalModel(
+            EarthGravitationalModel.Type.Spherical
+        )
+
+        assert spherical_earth_gravitational_model.get_degree().is_defined() is False
+        assert spherical_earth_gravitational_model.get_order().is_defined() is False
+
     def test_get_field_value_at_success(
         self, earth_gravitational_model: EarthGravitationalModel
     ):
