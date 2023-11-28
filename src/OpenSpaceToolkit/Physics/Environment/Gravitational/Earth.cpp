@@ -99,6 +99,10 @@ class Earth::Impl
 
     Earth::Type getType() const;
 
+    virtual Integer getDegree() const = 0;
+
+    virtual Integer getOrder() const = 0;
+
     virtual Vector3d getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const = 0;
 
    private:
@@ -128,6 +132,10 @@ class Earth::SphericalImpl : public Earth::Impl
 
     virtual SphericalImpl* clone() const override;
 
+    virtual Integer getDegree() const override;
+
+    virtual Integer getOrder() const override;
+
     virtual Vector3d getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const override;
 
    private:
@@ -149,6 +157,16 @@ Earth::SphericalImpl* Earth::SphericalImpl::clone() const
     return new Earth::SphericalImpl(*this);
 }
 
+Integer Earth::SphericalImpl::getDegree() const
+{
+    return Integer::Undefined();
+}
+
+Integer Earth::SphericalImpl::getOrder() const
+{
+    return Integer::Undefined();
+}
+
 Vector3d Earth::SphericalImpl::getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const
 {
     return sphericalModel_.getFieldValueAt(aPosition, anInstant);
@@ -168,9 +186,15 @@ class Earth::ExternalImpl : public Earth::Impl
 
     virtual ExternalImpl* clone() const override;
 
+    virtual Integer getDegree() const override;
+
+    virtual Integer getOrder() const override;
+
     virtual Vector3d getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const override;
 
    private:
+    Integer gravityModelDegree_;
+    Integer gravityModelOrder_;
     GravityModel* gravityModelPtr_;
 
     static GravityModel* GravityModelFromType(
@@ -189,6 +213,8 @@ Earth::ExternalImpl::ExternalImpl(
 )
 
     : Earth::Impl(aType),
+      gravityModelDegree_(aGravityModelDegree),
+      gravityModelOrder_(aGravityModelOrder),
       gravityModelPtr_(
           Earth::ExternalImpl::GravityModelFromType(aType, aDataDirectory, aGravityModelDegree, aGravityModelOrder)
       )
@@ -204,6 +230,16 @@ Earth::ExternalImpl::~ExternalImpl()
 Earth::ExternalImpl* Earth::ExternalImpl::clone() const
 {
     return new Earth::ExternalImpl(*this);
+}
+
+Integer Earth::ExternalImpl::getDegree() const
+{
+    return gravityModelDegree_;
+}
+
+Integer Earth::ExternalImpl::getOrder() const
+{
+    return gravityModelOrder_;
 }
 
 Vector3d Earth::ExternalImpl::getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const
@@ -380,6 +416,16 @@ bool Earth::isDefined() const
 Earth::Type Earth::getType() const
 {
     return implUPtr_->getType();
+}
+
+Integer Earth::getDegree() const
+{
+    return implUPtr_->getDegree();
+}
+
+Integer Earth::getOrder() const
+{
+    return implUPtr_->getOrder();
 }
 
 Vector3d Earth::getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const

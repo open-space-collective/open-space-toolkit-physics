@@ -325,6 +325,58 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetType)
     }
 }
 
+TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Getters)
+{
+    EarthGravitationalModelManager::Get().setLocalRepository(
+        Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth"))
+    );
+
+    EarthGravitationalModelManager::Get().setMode(EarthGravitationalModelManager::Mode::Automatic);
+
+    {
+        EarthGravitationalModel earthGravitationalModel =
+            EarthGravitationalModel(EarthGravitationalModel::Type::Spherical);
+
+        EXPECT_FALSE(earthGravitationalModel.getDegree().isDefined());
+        EXPECT_FALSE(earthGravitationalModel.getOrder().isDefined());
+    }
+
+    {
+        const Integer degree = 52;
+        const Integer order = 51;
+
+        EarthGravitationalModel earthGravitationalModel =
+            EarthGravitationalModel(EarthGravitationalModel::Type::EGM84, Directory::Undefined(), degree, order);
+
+        EXPECT_EQ(earthGravitationalModel.getDegree(), degree);
+        EXPECT_EQ(earthGravitationalModel.getOrder(), order);
+    }
+
+    {
+        const Integer degree = 52;
+        const Integer order = 51;
+
+        EarthGravitationalModel earthGravitationalModel =
+            EarthGravitationalModel(EarthGravitationalModel::Type::EGM96, Directory::Undefined(), degree, order);
+
+        EXPECT_EQ(earthGravitationalModel.getDegree(), degree);
+        EXPECT_EQ(earthGravitationalModel.getOrder(), order);
+    }
+
+    {
+        const Integer degree = 52;
+        const Integer order = 51;
+
+        EarthGravitationalModel earthGravitationalModel =
+            EarthGravitationalModel(EarthGravitationalModel::Type::EGM2008, Directory::Undefined(), degree, order);
+
+        EXPECT_EQ(earthGravitationalModel.getDegree(), degree);
+        EXPECT_EQ(earthGravitationalModel.getOrder(), order);
+    }
+
+    EarthGravitationalModelManager::Get().setLocalRepository(EarthGravitationalModelManager::DefaultLocalRepository());
+}
+
 TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAtNoTruncation)
 {
     {

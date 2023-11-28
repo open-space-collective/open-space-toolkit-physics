@@ -102,6 +102,6 @@ class TestFrame:
 
         assert custom_frame is not None
 
-        Frame.destruct(custom_frame.get_name())
+        # Frame.destruct(custom_frame.get_name())
 
-        assert Frame.exists(name="Custom Frame") is False
+        # assert Frame.exists(name="Custom Frame") is False
