@@ -143,6 +143,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa65dd2a5ce980e8a4f7f502387c1ff61"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#a9895df78b5c5aab5e981bf765f8c0f05">Earth::Type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#aa65dd2a5ce980e8a4f7f502387c1ff61">getType</a> () const</td></tr>
 <tr class="memdesc:aa65dd2a5ce980e8a4f7f502387c1ff61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get gravitational model type.  <a href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#aa65dd2a5ce980e8a4f7f502387c1ff61">More...</a><br /></td></tr>
 <tr class="separator:aa65dd2a5ce980e8a4f7f502387c1ff61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc1f91c9235cf7a27a69e731c5461b83"><td class="memItemLeft" align="right" valign="top">virtual Integer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#afc1f91c9235cf7a27a69e731c5461b83">getDegree</a> () const</td></tr>
+<tr class="memdesc:afc1f91c9235cf7a27a69e731c5461b83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get gravitational model degree.  <a href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#afc1f91c9235cf7a27a69e731c5461b83">More...</a><br /></td></tr>
+<tr class="separator:afc1f91c9235cf7a27a69e731c5461b83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9eb64a765ea67ac70990060220167ef"><td class="memItemLeft" align="right" valign="top">virtual Integer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#aa9eb64a765ea67ac70990060220167ef">getOrder</a> () const</td></tr>
+<tr class="memdesc:aa9eb64a765ea67ac70990060220167ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get gravitational model order.  <a href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#aa9eb64a765ea67ac70990060220167ef">More...</a><br /></td></tr>
+<tr class="separator:aa9eb64a765ea67ac70990060220167ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e536649566761f4bdd467993abfcedd"><td class="memItemLeft" align="right" valign="top">virtual Vector3d&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#a9e536649566761f4bdd467993abfcedd">getFieldValueAt</a> (const Vector3d &amp;aPosition, const <a class="el" href="classostk_1_1physics_1_1time_1_1_instant.html">Instant</a> &amp;anInstant) const override</td></tr>
 <tr class="memdesc:a9e536649566761f4bdd467993abfcedd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the gravitational field value at a given position and instant.  <a href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#a9e536649566761f4bdd467993abfcedd">More...</a><br /></td></tr>
 <tr class="separator:a9e536649566761f4bdd467993abfcedd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -349,6 +355,34 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="afc1f91c9235cf7a27a69e731c5461b83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc1f91c9235cf7a27a69e731c5461b83">&#9670;&nbsp;</a></span>getDegree()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Integer ostk::physics::environment::gravitational::Earth::getDegree </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get gravitational model degree. </p>
+<dl class="section return"><dt>Returns</dt><dd>Gravitational model degree </dd></dl>
+
+</div>
+</div>
 <a id="a9e536649566761f4bdd467993abfcedd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9e536649566761f4bdd467993abfcedd">&#9670;&nbsp;</a></span>getFieldValueAt()</h2>
 
@@ -394,6 +428,34 @@ Static Public Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Gravitational field value, expressed in the gravitational object frame [m.s-2] </dd></dl>
 
 <p>Implements <a class="el" href="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model.html#a5ef3b4ddf4240e8a26553294fe392581">ostk::physics::environment::gravitational::Model</a>.</p>
+
+</div>
+</div>
+<a id="aa9eb64a765ea67ac70990060220167ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9eb64a765ea67ac70990060220167ef">&#9670;&nbsp;</a></span>getOrder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Integer ostk::physics::environment::gravitational::Earth::getOrder </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get gravitational model order. </p>
+<dl class="section return"><dt>Returns</dt><dd>Gravitational model order </dd></dl>
 
 </div>
 </div>

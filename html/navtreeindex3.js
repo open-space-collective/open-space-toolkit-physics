@@ -171,10 +171,12 @@ var NAVTREEINDEX3 =
 "classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#a9895df78b5c5aab5e981bf765f8c0f05ab9e95fd38c6e9a8c62768d3a97e7382a":[4,0,0,0,2,2,1,0,4],
 "classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#a9895df78b5c5aab5e981bf765f8c0f05aec0fc0100c4fc1ce4eea230c3dc10360":[4,0,0,0,2,2,1,0,0],
 "classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#a9895df78b5c5aab5e981bf765f8c0f05af22fbbe07f6feeaa3d6446dabcd8b164":[4,0,0,0,2,2,1,0,6],
-"classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#a9e536649566761f4bdd467993abfcedd":[4,0,0,0,2,2,1,5],
-"classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#aa65dd2a5ce980e8a4f7f502387c1ff61":[4,0,0,0,2,2,1,6],
-"classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#abbe5c7a3e6fc2639c902ef9453d1435b":[4,0,0,0,2,2,1,7],
-"classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#accc913e0c0a5c7c8348c13217c5de4f3":[4,0,0,0,2,2,1,8],
+"classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#a9e536649566761f4bdd467993abfcedd":[4,0,0,0,2,2,1,6],
+"classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#aa65dd2a5ce980e8a4f7f502387c1ff61":[4,0,0,0,2,2,1,8],
+"classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#aa9eb64a765ea67ac70990060220167ef":[4,0,0,0,2,2,1,7],
+"classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#abbe5c7a3e6fc2639c902ef9453d1435b":[4,0,0,0,2,2,1,9],
+"classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#accc913e0c0a5c7c8348c13217c5de4f3":[4,0,0,0,2,2,1,10],
+"classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#afc1f91c9235cf7a27a69e731c5461b83":[4,0,0,0,2,2,1,5],
 "classostk_1_1physics_1_1environment_1_1gravitational_1_1_model.html":[4,0,0,0,2,2,2],
 "classostk_1_1physics_1_1environment_1_1gravitational_1_1_model.html#a399257ac86e7f0112a702141e0e2e4a7":[4,0,0,0,2,2,2,3],
 "classostk_1_1physics_1_1environment_1_1gravitational_1_1_model.html#a5ef3b4ddf4240e8a26553294fe392581":[4,0,0,0,2,2,2,4],
@@ -247,7 +249,5 @@ var NAVTREEINDEX3 =
 "classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#a30a064d87b6fce338e76aebd3043b6b6aed2fcd927feb1858e659c2278acc9b04":[4,0,0,0,2,3,2,0,2],
 "classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#a3a5080990cbd2b4204c59f10cd58271d":[4,0,0,0,2,3,2,7],
 "classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#a980e325b00a1dc56103d18c3199d0e33":[4,0,0,0,2,3,2,3],
-"classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#ac4b57f94304595595fc3eebb0dd0d050":[4,0,0,0,2,3,2,4],
-"classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#ad7ce781762b59980fb255b3b2a3f6aca":[4,0,0,0,2,3,2,8],
-"classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#ade6f1fc6f3a69543e2bb1921aa8168c5":[4,0,0,0,2,3,2,1]
+"classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#ac4b57f94304595595fc3eebb0dd0d050":[4,0,0,0,2,3,2,4]
 };

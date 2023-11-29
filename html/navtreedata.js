@@ -95,9 +95,9 @@ var NAVTREEINDEX =
 "_manifest_8cpp.html",
 "classostk_1_1physics_1_1coord_1_1_velocity.html",
 "classostk_1_1physics_1_1environment_1_1_object.html#a482a363b20f3111919b57d8b6ae4b626",
-"classostk_1_1physics_1_1environment_1_1magnetic_1_1_model.html",
-"classostk_1_1physics_1_1units_1_1_angle.html#aa1453072b55bf475b8953cf1dc5bdda3",
-"functions_func_y.html"
+"classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#ad7ce781762b59980fb255b3b2a3f6aca",
+"classostk_1_1physics_1_1units_1_1_angle.html#a912562d12513b2fcee56262208206b62",
+"functions_func_w.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

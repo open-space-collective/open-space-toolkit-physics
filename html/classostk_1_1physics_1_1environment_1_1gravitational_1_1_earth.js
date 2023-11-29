@@ -13,7 +13,9 @@ var classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth =
     [ "Earth", "classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#a821f98411c65f59e6a297c6bcc3de291", null ],
     [ "~Earth", "classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#a0bd1037605f6fb37fb6babc7bb8ae745", null ],
     [ "clone", "classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#a987c2df62d8fedb368acf37e71ba7a47", null ],
+    [ "getDegree", "classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#afc1f91c9235cf7a27a69e731c5461b83", null ],
     [ "getFieldValueAt", "classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#a9e536649566761f4bdd467993abfcedd", null ],
+    [ "getOrder", "classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#aa9eb64a765ea67ac70990060220167ef", null ],
     [ "getType", "classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#aa65dd2a5ce980e8a4f7f502387c1ff61", null ],
     [ "isDefined", "classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#abbe5c7a3e6fc2639c902ef9453d1435b", null ],
     [ "operator=", "classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth.html#accc913e0c0a5c7c8348c13217c5de4f3", null ]

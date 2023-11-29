@@ -46,6 +46,10 @@ virtual bool \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitation
 \begin{DoxyCompactList}\small\item\em Check if the \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth}{Earth}} gravitational model is defined. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9895df78b5c5aab5e981bf765f8c0f05}{Earth\+::\+Type}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_aa65dd2a5ce980e8a4f7f502387c1ff61}{get\+Type}} () const
 \begin{DoxyCompactList}\small\item\em Get gravitational model type. \end{DoxyCompactList}\item 
+virtual Integer \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_afc1f91c9235cf7a27a69e731c5461b83}{get\+Degree}} () const
+\begin{DoxyCompactList}\small\item\em Get gravitational model degree. \end{DoxyCompactList}\item 
+virtual Integer \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_aa9eb64a765ea67ac70990060220167ef}{get\+Order}} () const
+\begin{DoxyCompactList}\small\item\em Get gravitational model order. \end{DoxyCompactList}\item 
 virtual Vector3d \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9e536649566761f4bdd467993abfcedd}{get\+Field\+Value\+At}} (const Vector3d \&a\+Position, const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const override
 \begin{DoxyCompactList}\small\item\em Get the gravitational field value at a given position and instant. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
@@ -187,6 +191,19 @@ Pointer to \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational
 
 Implements \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_a399257ac86e7f0112a702141e0e2e4a7}{ostk\+::physics\+::environment\+::gravitational\+::\+Model}}.
 
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_afc1f91c9235cf7a27a69e731c5461b83}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_afc1f91c9235cf7a27a69e731c5461b83}} 
+\index{ostk::physics::environment::gravitational::Earth@{ostk::physics::environment::gravitational::Earth}!getDegree@{getDegree}}
+\index{getDegree@{getDegree}!ostk::physics::environment::gravitational::Earth@{ostk::physics::environment::gravitational::Earth}}
+\doxysubsubsection{\texorpdfstring{getDegree()}{getDegree()}}
+{\footnotesize\ttfamily Integer ostk\+::physics\+::environment\+::gravitational\+::\+Earth\+::get\+Degree (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get gravitational model degree. 
+
+\begin{DoxyReturn}{Returns}
+Gravitational model degree 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9e536649566761f4bdd467993abfcedd}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_a9e536649566761f4bdd467993abfcedd}} 
 \index{ostk::physics::environment::gravitational::Earth@{ostk::physics::environment::gravitational::Earth}!getFieldValueAt@{getFieldValueAt}}
 \index{getFieldValueAt@{getFieldValueAt}!ostk::physics::environment::gravitational::Earth@{ostk::physics::environment::gravitational::Earth}}
@@ -211,6 +228,19 @@ Gravitational field value, expressed in the gravitational object frame \mbox{[}m
 
 Implements \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_a5ef3b4ddf4240e8a26553294fe392581}{ostk\+::physics\+::environment\+::gravitational\+::\+Model}}.
 
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_aa9eb64a765ea67ac70990060220167ef}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_aa9eb64a765ea67ac70990060220167ef}} 
+\index{ostk::physics::environment::gravitational::Earth@{ostk::physics::environment::gravitational::Earth}!getOrder@{getOrder}}
+\index{getOrder@{getOrder}!ostk::physics::environment::gravitational::Earth@{ostk::physics::environment::gravitational::Earth}}
+\doxysubsubsection{\texorpdfstring{getOrder()}{getOrder()}}
+{\footnotesize\ttfamily Integer ostk\+::physics\+::environment\+::gravitational\+::\+Earth\+::get\+Order (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get gravitational model order. 
+
+\begin{DoxyReturn}{Returns}
+Gravitational model order 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_aa65dd2a5ce980e8a4f7f502387c1ff61}\label{classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_aa65dd2a5ce980e8a4f7f502387c1ff61}} 
 \index{ostk::physics::environment::gravitational::Earth@{ostk::physics::environment::gravitational::Earth}!getType@{getType}}
 \index{getType@{getType}!ostk::physics::environment::gravitational::Earth@{ostk::physics::environment::gravitational::Earth}}
