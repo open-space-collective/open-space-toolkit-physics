@@ -272,7 +272,7 @@ start-development-link: build-development-image ## Start linked development envi
 
 	@ echo "Starting development environment (linked)..."
 
-	@ mkdir -p $(CURDIR)/build
+	@ mkdir -p "$(CURDIR)/build"
 	@ docker_development_image_repository=$(docker_development_image_repository) docker_image_version=$(docker_image_version) "$(CURDIR)/tools/development/start.sh" --link $(links)
 	@ sudo chown -R $(shell id -u):$(shell id -g) $(CURDIR)
 
