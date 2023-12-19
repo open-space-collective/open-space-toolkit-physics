@@ -1,8 +1,8 @@
 # Apache License 2.0
 
 project_name := physics
+project_name_camel_case := $(shell echo $(project_name) | sed -r 's/(^|-)([a-z])/\U\2/g')
 project_version := $(shell git describe --tags --always)
-project_major_version := $(shell git describe --tags --always | cut -c 1)
 
 docker_registry_path := openspacecollective
 docker_image_repository := $(docker_registry_path)/open-space-toolkit-$(project_name)
@@ -14,10 +14,12 @@ docker_release_image_python_repository := $(docker_image_repository)-python
 docker_release_image_jupyter_repository := $(docker_image_repository)-jupyter
 
 jupyter_notebook_port := 9005
-jupyter_notebook_image_repository := jupyter/scipy-notebook:x86_64-python-3.11.3
 jupyter_python_version := 3.11
+jupyter_python_version_without_dot := $(shell echo $(jupyter_python_version) | sed 's/\.//')
+jupyter_notebook_image_repository := jupyter/scipy-notebook:x86_64-python-$(jupyter_python_version).3
+extract_python_package_version := $(shell echo $(project_version) | sed 's/-/./' | sed 's/-.*//')
 
-project_name_camel_case := $(shell echo $(project_name) | sed -r 's/(^|-)([a-z])/\U\2/g')
+dev_username := developer
 
 pull: ## Pull all images
 
@@ -89,16 +91,33 @@ build-images: ## Build development and release images
 
 build-development-image: pull-development-image ## Build development image
 
-	@ echo "Building development image..."
+	@ echo "Building development image with root user..."
 
 	docker build \
 		--file="$(CURDIR)/docker/development/Dockerfile" \
 		--tag=$(docker_development_image_repository):$(docker_image_version) \
 		--tag=$(docker_development_image_repository):latest \
 		--build-arg="VERSION=$(docker_image_version)" \
+		--target=root-user \
 		"$(CURDIR)"
 
 .PHONY: build-development-image
+
+build-development-image-non-root: pull-development-image ## Build development image for humans
+
+	@ echo "Building development image for humans with non-root user..."
+
+	docker build \
+		--file="$(CURDIR)/docker/development/Dockerfile" \
+		--tag=$(docker_development_image_repository)-non-root:$(docker_image_version) \
+		--tag=$(docker_development_image_repository)-non-root:latest \
+		--build-arg="VERSION=$(docker_image_version)" \
+		--build-arg="USER_UID=$(shell id -u)" \
+		--build-arg="USER_GID=$(shell id -g)" \
+		--target=non-root-user \
+		"$(CURDIR)"
+
+.PHONY: build-development-image-non-root
 
 build-release-images: ## Build release images
 
@@ -229,18 +248,21 @@ build-packages-python-standalone: ## Build Python packages (standalone)
 
 .PHONY: build-packages-python-standalone
 
-start-development-no-link: build-development-image ## Start development environment
+start-development-no-link: build-development-image-non-root ## Start development environment
 
 	@ echo "Starting development environment..."
+	@ mkdir -p "$(CURDIR)/build"
 
 	docker run \
+		--name=open-space-toolkit-$(project_name)-dev-non-root \
 		-it \
 		--rm \
-		--privileged \
 		--volume="$(CURDIR):/app:delegated" \
+		--volume="$(HOME)/.ssh:/home/$(dev_username)/.ssh:ro" \
+		--volume="$(HOME)/.gitconfig:/home/$(dev_username)/.gitconfig:ro" \
 		--workdir=/app/build \
-		$(docker_development_image_repository):$(docker_image_version) \
-		/bin/bash
+		$(docker_development_image_repository)-non-root:$(docker_image_version) \
+		/bin/zsh
 
 .PHONY: start-development-no-link
 
@@ -250,11 +272,13 @@ start-development-link: build-development-image ## Start linked development envi
 
 	@ echo "Starting development environment (linked)..."
 
+	@ mkdir -p "$(CURDIR)/build"
 	@ docker_development_image_repository=$(docker_development_image_repository) docker_image_version=$(docker_image_version) "$(CURDIR)/tools/development/start.sh" --link $(links)
+	@ sudo chown -R $(shell id -u):$(shell id -g) $(CURDIR)
 
 .PHONY: start-development-link
 
-ifndef link
+ifndef links
 start-development dev: start-development-no-link
 else
 start-development dev: start-development-link
@@ -273,7 +297,7 @@ start-python: build-release-image-python ## Start Python runtime environment
 
 .PHONY: start-python
 
-start-jupyter-notebook: build-release-image-jupyter ## Start Jupyter Notebook environment
+start-jupyter: build-release-image-jupyter ## Start Jupyter Notebook environment
 
 	@ echo "Starting Jupyter Notebook environment..."
 
@@ -285,11 +309,28 @@ start-jupyter-notebook: build-release-image-jupyter ## Start Jupyter Notebook en
 		--volume="$(CURDIR)/tutorials/python/notebooks:/home/jovyan/tutorials" \
 		--workdir="/home/jovyan" \
 		$(docker_release_image_jupyter_repository):$(docker_image_version) \
-		bash -c "start-notebook.sh --ServerApp.token=''"
+		/bin/bash -c "start-notebook.sh --ServerApp.token=''"
 
 .PHONY: start-jupyter-notebook
 
-debug-jupyter-notebook: build-release-image-jupyter ## Debug jupyter notebook using the ostk-astro package built from current source code, must have run make start-development and ostk-build and ostk-install-python to use this
+debug-jupyter-rebuild: build-development-image ## Debug jupyter notebook using the ostk-astro package built from current source code
+
+	@ echo "Building Python$(jupyter_python_version) packages..."
+
+	docker run \
+		-it \
+		--rm \
+		--volume="$(CURDIR):/app:delegated" \
+		--workdir=/app/build \
+		$(docker_development_image_repository):$(docker_image_version) \
+		/bin/bash -c "cmake -DBUILD_UNIT_TESTS=OFF -DBUILD_BENCHMARK=OFF -DBUILD_PYTHON_BINDINGS=ON -DPYTHON_SEARCH_VERSIONS="$(jupyter_python_version)" .. \
+		&& $(MAKE) -j $(shell nproc)"
+
+	@ $(MAKE) debug-jupyter
+
+.PHONY: debug-jupyter-rebuild
+
+debug-jupyter: build-release-image-jupyter ## Debug jupyter notebook using the ostk-astro package from pre-built wheels
 
 	@ echo "Debugging Jupyter Notebook environment..."
 
@@ -298,17 +339,16 @@ debug-jupyter-notebook: build-release-image-jupyter ## Debug jupyter notebook us
 		--rm \
 		--user=root \
 		--publish="$(jupyter_notebook_port):8888" \
-		--volume="$(CURDIR)/bindings/python/docs:/home/jovyan/docs" \
-		--volume="$(CURDIR)/tutorials/python/notebooks:/home/jovyan/tutorials" \
+		--volume="$(CURDIR)/bindings/python/docs:/home/jovyan/docs:delegated" \
+		--volume="$(CURDIR)/tutorials/python/notebooks:/home/jovyan/tutorials:delegated" \
 		--volume="$(CURDIR)/build/bindings/python/OpenSpaceToolkit${project_name_camel_case}Py-python-package-$(jupyter_python_version):/opt/conda/lib/python$(jupyter_python_version)/site-packages/ostk/$(project_name)" \
 		--workdir="/home/jovyan" \
 		$(docker_release_image_jupyter_repository):$(docker_image_version) \
-		bash -c "chown -R jovyan:users /home/jovyan ; python$(jupyter_python_version) -m pip install /opt/conda/lib/python$(jupyter_python_version)/site-packages/ostk/$(project_name)/ --force-reinstall ; start-notebook.sh --ServerApp.token=''"
+		/bin/bash -c "chown -R jovyan:users /home/jovyan ; python$(jupyter_python_version) -m pip install /opt/conda/lib/python$(jupyter_python_version)/site-packages/ostk/$(project_name)/ --force-reinstall ; start-notebook.sh --ServerApp.token=''"
 
-	bash -c "sudo chown -R $(shell id -u):$(shell id -g) $(CURDIR)/bindings/python/docs"
-	bash -c "sudo chown -R $(shell id -u):$(shell id -g) $(CURDIR)/tutorials/python/notebooks"
+	@ sudo chown -R $(shell id -u):$(shell id -g) $(CURDIR)
 
-.PHONY: debug-jupyter-notebook
+.PHONY: debug-jupyter
 
 debug-development: build-development-image ## Debug development environment
 
@@ -359,7 +399,6 @@ format-cpp: build-development-image ## Format all of the source code with the ru
 
 	docker run \
 		--rm \
-		--user="$(shell id -u):$(shell id -g)" \
 		--volume="$(CURDIR):/app" \
 		--workdir=/app \
 		$(docker_development_image_repository):$(docker_image_version) \
@@ -399,7 +438,6 @@ format-check-cpp-standalone:
 		--rm \
 		--volume="$(CURDIR):/app:delegated" \
 		--workdir=/app \
-		--user="$(shell id -u):$(shell id -g)" \
 		$(docker_development_image_repository):$(docker_image_version) \
 		ostk-check-format-cpp
 
@@ -477,10 +515,11 @@ test-unit-python-standalone: ## Run Python unit tests (standalone)
 		--volume="$(CURDIR):/app:delegated" \
 		--volume="/app/build" \
 		--workdir=/app/build \
-		--entrypoint="" \
 		$(docker_development_image_repository):$(docker_image_version) \
 		/bin/bash -c "cmake -DBUILD_PYTHON_BINDINGS=ON -DBUILD_UNIT_TESTS=OFF .. \
 		&& $(MAKE) -j 4 && python3.11 -m pip install --root-user-action=ignore bindings/python/dist/*311*.whl \
+		&& python3.11 -m pip install plotly pandas \
+		&& python3.11 -m pip install git+https://github.com/lucas-bremond/cesiumpy.git#egg=cesiumpy \
 		&& cd /usr/local/lib/python3.11/site-packages/ostk/$(project_name)/ \
 		&& python3.11 -m pytest -sv ."
 
@@ -524,10 +563,10 @@ clean: ## Clean
 	@ echo "Cleaning up..."
 
 	rm -rf "$(CURDIR)/build"
-	rm -rf "$(CURDIR)/bin/"*.test*
+	rm -rf "$(CURDIR)/bin"
 	rm -rf "$(CURDIR)/docs/html"
 	rm -rf "$(CURDIR)/docs/latex"
-	rm -rf "$(CURDIR)/lib/"*.so*
+	rm -rf "$(CURDIR)/lib"
 	rm -rf "$(CURDIR)/coverage"
 	rm -rf "$(CURDIR)/packages"
 	rm -rf "$(CURDIR)/.open-space-toolkit"
