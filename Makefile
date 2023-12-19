@@ -251,7 +251,7 @@ build-packages-python-standalone: ## Build Python packages (standalone)
 start-development-no-link: build-development-image-non-root ## Start development environment
 
 	@ echo "Starting development environment..."
-	@ mkdir -p $(CURDIR)/build
+	@ mkdir -p "$(CURDIR)/build"
 
 	docker run \
 		--name=open-space-toolkit-$(project_name)-dev-non-root \
