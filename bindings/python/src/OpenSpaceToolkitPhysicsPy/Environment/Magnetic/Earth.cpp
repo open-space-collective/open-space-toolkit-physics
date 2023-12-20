@@ -19,9 +19,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth(pybind11::modul
     class_<Earth, Shared<Earth>> earth_magnetic_class(aModule, "Earth");
 
     earth_magnetic_class
-        .def(init<const Earth::Type&, const Directory&>())
+        .def(init<const Earth::Type&, const Directory&>(), arg("type"), arg("directory"))
 
-        .def(init<const Earth::Type&>())
+        .def(init<const Earth::Type&>(), arg("type"))
 
         .def("get_type", &Earth::getType)
 
