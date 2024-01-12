@@ -9,7 +9,7 @@ namespace ostk
 {
 namespace physics
 {
-namespace coord
+namespace coordinate
 {
 namespace frame
 {
@@ -141,6 +141,6 @@ Manager& Manager::Get()
 }
 
 }  // namespace frame
-}  // namespace coord
+}  // namespace coordinate
 }  // namespace physics
 }  // namespace ostk

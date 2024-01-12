@@ -31,10 +31,10 @@ using ostk::physics::time::Instant;
 using ostk::physics::time::DateTime;
 using ostk::physics::unit::Length;
 using ostk::physics::unit::Angle;
-using ostk::physics::coord::Position;
-using ostk::physics::coord::spherical::AER;
-using ostk::physics::coord::spherical::LLA;
-using ostk::physics::coord::Frame;
+using ostk::physics::coordinate::Position;
+using ostk::physics::coordinate::spherical::AER;
+using ostk::physics::coordinate::spherical::LLA;
+using ostk::physics::coordinate::Frame;
 using ostk::physics::environment::object::celestial::Earth;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 
@@ -179,8 +179,8 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, ToVector)
 
 //     using ostk::physics::unit::Length ;
 //     using ostk::physics::unit::Angle ;
-//     using ostk::physics::coord::Position ;
-//     using ostk::physics::coord::spherical::AER ;
+//     using ostk::physics::coordinate::Position ;
+//     using ostk::physics::coordinate::spherical::AER ;
 
 //     {
 

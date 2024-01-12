@@ -29,7 +29,7 @@ namespace ostk
 {
 namespace physics
 {
-namespace coord
+namespace coordinate
 {
 namespace frame
 {
@@ -788,6 +788,6 @@ File Manager::fetchLatestFinals2000A_() const
 }  // namespace iers
 }  // namespace provider
 }  // namespace frame
-}  // namespace coord
+}  // namespace coordinate
 }  // namespace physics
 }  // namespace ostk

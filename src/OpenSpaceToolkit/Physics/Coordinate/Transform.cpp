@@ -11,7 +11,7 @@ namespace ostk
 {
 namespace physics
 {
-namespace coord
+namespace coordinate
 {
 
 Transform::Transform(
@@ -391,6 +391,6 @@ Transform Transform::Passive(
     return {anInstant, aTranslation, aVelocity, anOrientation, anAngularVelocity, Transform::Type::Passive};
 }
 
-}  // namespace coord
+}  // namespace coordinate
 }  // namespace physics
 }  // namespace ostk

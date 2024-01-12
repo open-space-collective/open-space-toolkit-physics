@@ -9,7 +9,7 @@
 
 #include <Global.test.hpp>
 
-namespace iau = ostk::physics::coord::frame::provider::iau;
+namespace iau = ostk::physics::coordinate::frame::provider::iau;
 
 using ostk::core::type::Shared;
 using ostk::core::type::Real;
@@ -25,13 +25,13 @@ using ostk::physics::unit::Length;
 using ostk::physics::time::Scale;
 using ostk::physics::time::Instant;
 using ostk::physics::time::DateTime;
-using ostk::physics::coord::Transform;
-using ostk::physics::coord::Frame;
-using ostk::physics::coord::Position;
-using ostk::physics::coord::Velocity;
-using ostk::physics::coord::Axes;
-using ostk::physics::coord::frame::Provider;
-using ostk::physics::coord::frame::provider::Static;
+using ostk::physics::coordinate::Transform;
+using ostk::physics::coordinate::Frame;
+using ostk::physics::coordinate::Position;
+using ostk::physics::coordinate::Velocity;
+using ostk::physics::coordinate::Axes;
+using ostk::physics::coordinate::frame::Provider;
+using ostk::physics::coordinate::frame::provider::Static;
 
 class OpenSpaceToolkit_Physics_Coordinate_Frame : public ::testing::Test
 {

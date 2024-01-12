@@ -40,8 +40,8 @@ using ostk::core::container::Array;
 
 using ostk::physics::time::Instant;
 using ostk::physics::unit::Length;
-using ostk::physics::coord::spherical::LLA;
-using ostk::physics::coord::Frame;
+using ostk::physics::coordinate::spherical::LLA;
+using ostk::physics::coordinate::Frame;
 using ostk::physics::environment::object::Celestial;
 using ostk::physics::environment::atmospheric::Model;
 using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;

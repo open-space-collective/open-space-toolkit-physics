@@ -15,7 +15,7 @@ namespace ostk
 {
 namespace physics
 {
-namespace coord
+namespace coordinate
 {
 
 using ostk::core::type::Real;
@@ -126,7 +126,7 @@ class Transform
     Vector3d angularVelocity_;
 };
 
-}  // namespace coord
+}  // namespace coordinate
 }  // namespace physics
 }  // namespace ostk
 

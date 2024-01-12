@@ -10,7 +10,7 @@ namespace ostk
 {
 namespace physics
 {
-namespace coord
+namespace coordinate
 {
 
 Velocity::Velocity(const Vector3d& aCoordinateSet, const Velocity::Unit& aUnit, const Shared<const Frame>& aFrameSPtr)
@@ -203,6 +203,6 @@ Derived::Unit Velocity::DerivedUnitFromVelocityUnit(const Velocity::Unit& aUnit)
     return Derived::Unit::Undefined();
 }
 
-}  // namespace coord
+}  // namespace coordinate
 }  // namespace physics
 }  // namespace ostk

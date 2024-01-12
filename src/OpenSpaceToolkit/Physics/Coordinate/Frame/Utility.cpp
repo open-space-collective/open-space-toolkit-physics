@@ -11,7 +11,7 @@ namespace ostk
 {
 namespace physics
 {
-namespace coord
+namespace coordinate
 {
 namespace frame
 {
@@ -72,6 +72,6 @@ Transform NorthEastDownTransformAt(
 
 }  // namespace utilities
 }  // namespace frame
-}  // namespace coord
+}  // namespace coordinate
 }  // namespace physics
 }  // namespace ostk

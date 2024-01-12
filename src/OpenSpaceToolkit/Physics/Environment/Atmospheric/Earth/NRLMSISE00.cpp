@@ -41,7 +41,7 @@ using ostk::core::type::Size;
 using ostk::core::type::Unique;
 using ostk::core::container::Array;
 
-using ostk::physics::coord::Frame;
+using ostk::physics::coordinate::Frame;
 using ostk::physics::time::Scale;
 using ostk::physics::time::Instant;
 using ostk::physics::time::DateTime;

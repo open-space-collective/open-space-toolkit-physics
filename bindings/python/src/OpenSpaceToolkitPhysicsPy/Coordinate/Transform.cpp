@@ -14,7 +14,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(pybind11::module& aMo
 
     using ostk::physics::time::Instant;
 
-    using ostk::physics::coord::Transform;
+    using ostk::physics::coordinate::Transform;
 
     class_<Transform> transform_class(aModule, "Transform");
 

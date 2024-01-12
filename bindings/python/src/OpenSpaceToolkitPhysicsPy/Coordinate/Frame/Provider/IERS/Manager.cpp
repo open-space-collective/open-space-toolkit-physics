@@ -8,7 +8,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_Manager(pyb
 
     using ostk::core::type::Shared;
 
-    using ostk::physics::coord::frame::provider::iers::Manager;
+    using ostk::physics::coordinate::frame::provider::iers::Manager;
 
     class_<Manager> manager(aModule, "Manager");
 

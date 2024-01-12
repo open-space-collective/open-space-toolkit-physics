@@ -8,7 +8,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_Finals2000A
 
     using ostk::core::type::Shared;
 
-    using ostk::physics::coord::frame::provider::iers::Finals2000A;
+    using ostk::physics::coordinate::frame::provider::iers::Finals2000A;
 
     class_<Finals2000A> finals2000A(aModule, "Finals2000A");
 

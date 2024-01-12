@@ -20,7 +20,7 @@ namespace ostk
 {
 namespace physics
 {
-namespace coord
+namespace coordinate
 {
 namespace frame
 {
@@ -165,7 +165,7 @@ class Finals2000A
 }  // namespace iers
 }  // namespace provider
 }  // namespace frame
-}  // namespace coord
+}  // namespace coordinate
 }  // namespace physics
 }  // namespace ostk
 

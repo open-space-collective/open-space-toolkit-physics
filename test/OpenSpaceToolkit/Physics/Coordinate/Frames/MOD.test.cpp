@@ -9,7 +9,7 @@ using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
 using ostk::physics::time::Scale;
 using ostk::physics::time::Instant;
 using ostk::physics::time::DateTime;
-using ostk::physics::coord::Frame;
+using ostk::physics::coordinate::Frame;
 
 TEST(OpenSpaceToolkit_Physics_Coordinate_Frames_MOD, NoCaching)
 {

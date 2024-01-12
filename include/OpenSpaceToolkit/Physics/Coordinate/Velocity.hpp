@@ -17,7 +17,7 @@ namespace ostk
 {
 namespace physics
 {
-namespace coord
+namespace coordinate
 {
 
 #define DEFAULT_PRECISION Integer::Undefined()
@@ -30,7 +30,7 @@ using ostk::mathematics::object::Vector3d;
 
 using ostk::physics::unit::Derived;
 using ostk::physics::time::Instant;
-using ostk::physics::coord::Position;
+using ostk::physics::coordinate::Position;
 
 class Frame;
 
@@ -85,7 +85,7 @@ class Velocity
     static Derived::Unit DerivedUnitFromVelocityUnit(const Velocity::Unit& aUnit);
 };
 
-}  // namespace coord
+}  // namespace coordinate
 }  // namespace physics
 }  // namespace ostk
 

@@ -28,9 +28,9 @@ using ostk::physics::unit::Angle;
 using ostk::physics::time::Instant;
 using ostk::physics::time::DateTime;
 using ostk::physics::time::Scale;
-using ostk::physics::coord::Position;
-using ostk::physics::coord::spherical::LLA;
-using ostk::physics::coord::Frame;
+using ostk::physics::coordinate::Position;
+using ostk::physics::coordinate::spherical::LLA;
+using ostk::physics::coordinate::Frame;
 
 using EarthCelestial = ostk::physics::environment::object::celestial::Earth;
 using ostk::physics::environment::object::celestial::Sun;

@@ -17,7 +17,7 @@ namespace ostk
 {
 namespace physics
 {
-namespace coord
+namespace coordinate
 {
 namespace frame
 {
@@ -27,8 +27,8 @@ using ostk::core::type::String;
 using ostk::core::container::Map;
 
 using ostk::physics::time::Instant;
-using ostk::physics::coord::Frame;
-using ostk::physics::coord::Transform;
+using ostk::physics::coordinate::Frame;
+using ostk::physics::coordinate::Transform;
 
 /// @brief                      Reference frame manager (thread-safe)
 
@@ -71,7 +71,7 @@ class Manager
 };
 
 }  // namespace frame
-}  // namespace coord
+}  // namespace coordinate
 }  // namespace physics
 }  // namespace ostk
 

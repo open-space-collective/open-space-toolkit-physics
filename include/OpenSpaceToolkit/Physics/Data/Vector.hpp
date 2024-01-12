@@ -26,7 +26,7 @@ using ostk::mathematics::object::Vector3d;
 
 using ostk::physics::Unit;
 using ostk::physics::time::Instant;
-using ostk::physics::coord::Frame;
+using ostk::physics::coordinate::Frame;
 
 /// @brief                      Vector quantity
 

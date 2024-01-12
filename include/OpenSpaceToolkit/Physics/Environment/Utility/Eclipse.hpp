@@ -20,7 +20,7 @@ namespace utilities
 
 using ostk::core::container::Array;
 
-using ostk::physics::coord::Position;
+using ostk::physics::coordinate::Position;
 using ostk::physics::time::Interval;
 using ostk::physics::Environment;
 

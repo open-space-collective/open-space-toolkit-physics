@@ -14,7 +14,7 @@ namespace ostk
 {
 namespace physics
 {
-namespace coord
+namespace coordinate
 {
 namespace spherical
 {
@@ -252,6 +252,6 @@ Length LLA::DistanceBetween(
 }
 
 }  // namespace spherical
-}  // namespace coord
+}  // namespace coordinate
 }  // namespace physics
 }  // namespace ostk

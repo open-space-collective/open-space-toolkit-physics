@@ -12,18 +12,18 @@ namespace ostk
 {
 namespace physics
 {
-namespace coord
+namespace coordinate
 {
 namespace frame
 {
 namespace provider
 {
 
-namespace iau = ostk::physics::coord::frame::provider::iau;
+namespace iau = ostk::physics::coordinate::frame::provider::iau;
 
 using ostk::physics::time::Instant;
-using ostk::physics::coord::frame::Provider;
-using ostk::physics::coord::Transform;
+using ostk::physics::coordinate::frame::Provider;
+using ostk::physics::coordinate::Transform;
 
 /// @brief                      J2000 frame provider.
 ///
@@ -55,7 +55,7 @@ class J2000 : public Provider
 
 }  // namespace provider
 }  // namespace frame
-}  // namespace coord
+}  // namespace coordinate
 }  // namespace physics
 }  // namespace ostk
 

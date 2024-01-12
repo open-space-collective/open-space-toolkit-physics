@@ -13,7 +13,7 @@ namespace ostk
 {
 namespace physics
 {
-namespace coord
+namespace coordinate
 {
 namespace frame
 {
@@ -23,8 +23,8 @@ namespace utilities
 using ostk::core::type::Real;
 
 using ostk::physics::unit::Length;
-using ostk::physics::coord::spherical::LLA;
-using ostk::physics::coord::Transform;
+using ostk::physics::coordinate::spherical::LLA;
+using ostk::physics::coordinate::Transform;
 
 /// @brief                      North-East-Down (NED) frame
 ///
@@ -36,7 +36,7 @@ Transform NorthEastDownTransformAt(
 
 }  // namespace utilities
 }  // namespace frame
-}  // namespace coord
+}  // namespace coordinate
 }  // namespace physics
 }  // namespace ostk
 

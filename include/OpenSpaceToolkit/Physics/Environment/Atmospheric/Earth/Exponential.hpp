@@ -33,7 +33,7 @@ using ostk::core::container::Array;
 
 using ostk::physics::time::Instant;
 using ostk::physics::unit::Length;
-using ostk::physics::coord::spherical::LLA;
+using ostk::physics::coordinate::spherical::LLA;
 using ostk::physics::environment::atmospheric::Model;
 
 /// @brief                      Exponential atmospheric model

@@ -24,7 +24,7 @@ using ostk::core::filesystem::Directory;
 
 using ostk::mathematics::object::Vector3d;
 
-using ostk::physics::coord::Frame;
+using ostk::physics::coordinate::Frame;
 using ostk::physics::data::Vector;
 using ostk::physics::time::DateTime;
 using ostk::physics::time::Instant;

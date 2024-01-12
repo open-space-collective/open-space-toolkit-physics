@@ -18,7 +18,7 @@ namespace provider
 {
 
 using ostk::physics::data::Direction;
-using ostk::physics::coord::Position;
+using ostk::physics::coordinate::Position;
 using ostk::physics::Environment;
 using ostk::physics::environment::object::Celestial;
 

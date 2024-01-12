@@ -125,7 +125,7 @@ Engine::Mode Engine::getMode() const
 
 Shared<const Frame> Engine::getFrameOf(const SPICE::Object& aSpiceObject) const
 {
-    using DynamicProvider = ostk::physics::coord::frame::provider::Dynamic;
+    using DynamicProvider = ostk::physics::coordinate::frame::provider::Dynamic;
 
     const String frameName = String::Format("{} (SPICE)", SPICE::StringFromObject(aSpiceObject));
     const String objectIdentifier = Engine::SpiceIdentifierFromSpiceObject(aSpiceObject);

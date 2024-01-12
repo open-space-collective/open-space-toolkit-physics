@@ -6,7 +6,7 @@ namespace ostk
 {
 namespace physics
 {
-namespace coord
+namespace coordinate
 {
 namespace frame
 {
@@ -34,6 +34,6 @@ Transform GCRF::getTransformAt(const Instant& anInstant) const
 
 }  // namespace provider
 }  // namespace frame
-}  // namespace coord
+}  // namespace coordinate
 }  // namespace physics
 }  // namespace ostk

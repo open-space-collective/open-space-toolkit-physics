@@ -380,7 +380,7 @@ Scalar Celestial::getAtmosphericDensityAt(const Position& aPosition, const Insta
 
 Shared<const Frame> Celestial::getFrameAt(const LLA& aLla, const Celestial::FrameType& aFrameType) const
 {
-    using StaticProvider = ostk::physics::coord::frame::provider::Static;
+    using StaticProvider = ostk::physics::coordinate::frame::provider::Static;
 
     if (!aLla.isDefined())
     {
@@ -403,7 +403,7 @@ Shared<const Frame> Celestial::getFrameAt(const LLA& aLla, const Celestial::Fram
                 return frameSPtr;
             }
 
-            const Transform transform = ostk::physics::coord::frame::utilities::NorthEastDownTransformAt(
+            const Transform transform = ostk::physics::coordinate::frame::utilities::NorthEastDownTransformAt(
                 aLla, this->getEquatorialRadius(), this->getFlattening()
             );
 

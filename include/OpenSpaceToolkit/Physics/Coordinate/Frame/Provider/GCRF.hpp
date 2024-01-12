@@ -11,7 +11,7 @@ namespace ostk
 {
 namespace physics
 {
-namespace coord
+namespace coordinate
 {
 namespace frame
 {
@@ -19,8 +19,8 @@ namespace provider
 {
 
 using ostk::physics::time::Instant;
-using ostk::physics::coord::frame::Provider;
-using ostk::physics::coord::Transform;
+using ostk::physics::coordinate::frame::Provider;
+using ostk::physics::coordinate::Transform;
 
 /// @brief                      Geocentric Celestial Reference Frame (GCRF) provider
 ///
@@ -42,7 +42,7 @@ class GCRF : public Provider
 
 }  // namespace provider
 }  // namespace frame
-}  // namespace coord
+}  // namespace coordinate
 }  // namespace physics
 }  // namespace ostk
 

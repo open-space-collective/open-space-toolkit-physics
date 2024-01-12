@@ -19,10 +19,10 @@ namespace ostk
 {
 namespace physics
 {
-namespace coord
+namespace coordinate
 {
 
-using FrameManager = ostk::physics::coord::frame::Manager;
+using FrameManager = ostk::physics::coordinate::frame::Manager;
 
 // https://stackoverflow.com/questions/8147027/how-do-i-call-stdmake-shared-on-a-class-with-only-protected-or-private-const
 
@@ -295,7 +295,7 @@ Shared<const Frame> Frame::Undefined()
 
 Shared<const Frame> Frame::GCRF()
 {
-    using GCRFProvider = ostk::physics::coord::frame::provider::GCRF;
+    using GCRFProvider = ostk::physics::coordinate::frame::provider::GCRF;
 
     static const Shared<const Provider> providerSPtr = std::make_shared<const GCRFProvider>();
 
@@ -304,7 +304,7 @@ Shared<const Frame> Frame::GCRF()
 
 Shared<const Frame> Frame::J2000(const iau::Theory& aTheory)
 {
-    using J2000Provider = ostk::physics::coord::frame::provider::J2000;
+    using J2000Provider = ostk::physics::coordinate::frame::provider::J2000;
 
     const Shared<const Provider> providerSPtr = std::make_shared<const J2000Provider>(aTheory);
 
@@ -319,7 +319,7 @@ Shared<const Frame> Frame::MOD(const Instant& anEpoch)
 
     const String frameName = String::Format("MOD @ {}", anEpoch.toString(Scale::TT));
 
-    using MODProvider = ostk::physics::coord::frame::provider::MOD;
+    using MODProvider = ostk::physics::coordinate::frame::provider::MOD;
 
     const Shared<const Provider> providerSPtr = std::make_shared<const MODProvider>(anEpoch);
 
@@ -333,7 +333,7 @@ Shared<const Frame> Frame::TOD(const Instant& anEpoch, const iau::Theory& aTheor
     const String frameName =
         String::Format("TOD ({}) @ {}", iau::StringFromTheory(aTheory), anEpoch.toString(Scale::TT));
 
-    using TODProvider = ostk::physics::coord::frame::provider::TOD;
+    using TODProvider = ostk::physics::coordinate::frame::provider::TOD;
 
     const Shared<const Provider> providerSPtr = std::make_shared<const TODProvider>(anEpoch, aTheory);
 
@@ -342,7 +342,7 @@ Shared<const Frame> Frame::TOD(const Instant& anEpoch, const iau::Theory& aTheor
 
 Shared<const Frame> Frame::TEME()
 {
-    using TEMEProvider = ostk::physics::coord::frame::provider::TEME;
+    using TEMEProvider = ostk::physics::coordinate::frame::provider::TEME;
 
     static const Shared<const Provider> providerSPtr = std::make_shared<const TEMEProvider>();
 
@@ -352,7 +352,7 @@ Shared<const Frame> Frame::TEME()
 Shared<const Frame> Frame::TEMEOfEpoch(const Instant& anEpoch)
 {
     using Scale = ostk::physics::time::Scale;
-    using StaticProvider = ostk::physics::coord::frame::provider::Static;
+    using StaticProvider = ostk::physics::coordinate::frame::provider::Static;
 
     const String temeOfEpochFrameName = String::Format("TEMEOfEpoch @ {}", anEpoch.toString(Scale::TT));
 
@@ -364,7 +364,7 @@ Shared<const Frame> Frame::TEMEOfEpoch(const Instant& anEpoch)
 
 Shared<const Frame> Frame::CIRF()
 {
-    using CIRFProvider = ostk::physics::coord::frame::provider::CIRF;
+    using CIRFProvider = ostk::physics::coordinate::frame::provider::CIRF;
 
     static const Shared<const Provider> providerSPtr = std::make_shared<const CIRFProvider>();
 
@@ -373,7 +373,7 @@ Shared<const Frame> Frame::CIRF()
 
 Shared<const Frame> Frame::TIRF()
 {
-    using TIRFProvider = ostk::physics::coord::frame::provider::TIRF;
+    using TIRFProvider = ostk::physics::coordinate::frame::provider::TIRF;
 
     static const Shared<const Provider> providerSPtr = std::make_shared<const TIRFProvider>();
 
@@ -382,7 +382,7 @@ Shared<const Frame> Frame::TIRF()
 
 Shared<const Frame> Frame::ITRF()
 {
-    using ITRFProvider = ostk::physics::coord::frame::provider::ITRF;
+    using ITRFProvider = ostk::physics::coordinate::frame::provider::ITRF;
 
     static const Shared<const Provider> providerSPtr = std::make_shared<const ITRFProvider>();
 
@@ -447,7 +447,7 @@ Frame::Frame(
     const Shared<const Frame>& aParentFrame,
     const Shared<const Provider>& aProvider
 )
-    : std::enable_shared_from_this<ostk::physics::coord::Frame>(),
+    : std::enable_shared_from_this<ostk::physics::coordinate::Frame>(),
       name_(aName),
       quasiInertial_(isQuasiInertial),
       parentFrameSPtr_(aParentFrame),
@@ -519,6 +519,6 @@ Shared<const Frame> Frame::FindCommonAncestor(
     return currentFSPtr;
 }
 
-}  // namespace coord
+}  // namespace coordinate
 }  // namespace physics
 }  // namespace ostk

@@ -10,7 +10,7 @@ namespace ostk
 {
 namespace physics
 {
-namespace coord
+namespace coordinate
 {
 namespace spherical
 {
@@ -185,6 +185,6 @@ AER AER::FromPositionToPosition(const Position& aFromPosition, const Position& a
 }
 
 }  // namespace spherical
-}  // namespace coord
+}  // namespace coordinate
 }  // namespace physics
 }  // namespace ostk

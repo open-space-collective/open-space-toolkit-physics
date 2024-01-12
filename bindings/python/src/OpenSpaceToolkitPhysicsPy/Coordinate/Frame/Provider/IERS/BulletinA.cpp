@@ -8,7 +8,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_BulletinA(p
 
     using ostk::core::type::Shared;
 
-    using ostk::physics::coord::frame::provider::iers::BulletinA;
+    using ostk::physics::coordinate::frame::provider::iers::BulletinA;
 
     class_<BulletinA> bulletinA(aModule, "BulletinA");
 

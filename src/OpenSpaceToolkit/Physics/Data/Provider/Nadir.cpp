@@ -17,7 +17,7 @@ namespace provider
 
 Direction Nadir(const Position& aPosition, const Celestial& aCelestialObject, const Environment& anEnvironment)
 {
-    using ostk::physics::coord::spherical::LLA;
+    using ostk::physics::coordinate::spherical::LLA;
 
     if (!aPosition.isDefined())
     {

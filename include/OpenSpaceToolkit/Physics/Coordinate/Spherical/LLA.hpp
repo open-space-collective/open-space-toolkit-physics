@@ -13,7 +13,7 @@ namespace ostk
 {
 namespace physics
 {
-namespace coord
+namespace coordinate
 {
 namespace spherical
 {
@@ -99,7 +99,7 @@ class LLA
 };
 
 }  // namespace spherical
-}  // namespace coord
+}  // namespace coordinate
 }  // namespace physics
 }  // namespace ostk
 

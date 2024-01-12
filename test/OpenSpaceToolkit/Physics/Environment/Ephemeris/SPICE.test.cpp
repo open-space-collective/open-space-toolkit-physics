@@ -39,9 +39,9 @@ using ostk::physics::unit::Angle;
 using ostk::physics::time::Scale;
 using ostk::physics::time::Instant;
 using ostk::physics::time::DateTime;
-using ostk::physics::coord::Frame;
-using ostk::physics::coord::Position;
-using ostk::physics::coord::Transform;
+using ostk::physics::coordinate::Frame;
+using ostk::physics::coordinate::Position;
+using ostk::physics::coordinate::Transform;
 
 using ostk::physics::environment::ephemeris::spice::Engine;
 using ostk::physics::environment::ephemeris::spice::Manager;

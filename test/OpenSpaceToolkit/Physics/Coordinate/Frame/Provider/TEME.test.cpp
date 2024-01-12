@@ -31,9 +31,9 @@ using ostk::physics::unit::Angle;
 using ostk::physics::time::Scale;
 using ostk::physics::time::Instant;
 using ostk::physics::time::DateTime;
-using ostk::physics::coord::Frame;
-using ostk::physics::coord::frame::Transform;
-using ostk::physics::coord::frame::provider::TEME;
+using ostk::physics::coordinate::Frame;
+using ostk::physics::coordinate::frame::Transform;
+using ostk::physics::coordinate::frame::provider::TEME;
 
 TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_TEME, GetTransformAt)
 {

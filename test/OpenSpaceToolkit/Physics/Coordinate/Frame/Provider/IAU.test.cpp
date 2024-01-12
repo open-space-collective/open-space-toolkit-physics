@@ -4,7 +4,7 @@
 
 #include <Global.test.hpp>
 
-namespace iau = ostk::physics::coord::frame::provider::iau;
+namespace iau = ostk::physics::coordinate::frame::provider::iau;
 
 TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IAU_Theory, StringFromTheory)
 {

@@ -10,13 +10,13 @@ namespace ostk
 {
 namespace physics
 {
-namespace coord
+namespace coordinate
 {
 namespace frame
 {
 
 using ostk::physics::time::Instant;
-using ostk::physics::coord::Transform;
+using ostk::physics::coordinate::Transform;
 
 /// @brief                      Frame provider
 
@@ -35,7 +35,7 @@ class Provider
 };
 
 }  // namespace frame
-}  // namespace coord
+}  // namespace coordinate
 }  // namespace physics
 }  // namespace ostk
 
