@@ -3,12 +3,12 @@
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Position__
 #define __OpenSpaceToolkit_Physics_Coordinate_Position__
 
-#include <OpenSpaceToolkit/Core/Types/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
+#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
+#include <OpenSpaceToolkit/Core/Type/Shared.hpp>
+#include <OpenSpaceToolkit/Core/Type/String.hpp>
 
-#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/Point.hpp>
-#include <OpenSpaceToolkit/Mathematics/Objects/Vector.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Object/Point.hpp>
+#include <OpenSpaceToolkit/Mathematics/Object/Vector.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
@@ -23,12 +23,12 @@ namespace coord
 
 #define DEFAULT_PRECISION Integer::Undefined()
 
-using ostk::core::types::Shared;
-using ostk::core::types::Integer;
-using ostk::core::types::String;
+using ostk::core::type::Shared;
+using ostk::core::type::Integer;
+using ostk::core::type::String;
 
-using ostk::math::geometry::d3::objects::Point;
-using ostk::math::object::Vector3d;
+using ostk::mathematics::geometry::d3::object::Point;
+using ostk::mathematics::object::Vector3d;
 
 using ostk::physics::units::Length;
 using ostk::physics::time::Instant;

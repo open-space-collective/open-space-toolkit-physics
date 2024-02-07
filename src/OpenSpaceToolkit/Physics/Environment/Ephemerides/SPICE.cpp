@@ -1,8 +1,8 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkit/Core/Containers/Map.hpp>
+#include <OpenSpaceToolkit/Core/Container/Map.hpp>
 #include <OpenSpaceToolkit/Core/Error.hpp>
-#include <OpenSpaceToolkit/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Engine.hpp>
@@ -42,7 +42,7 @@ Shared<const Frame> SPICE::accessFrame() const
 
 String SPICE::StringFromObject(const SPICE::Object& anObject)
 {
-    using ostk::core::ctnr::Map;
+    using ostk::core::container::Map;
 
     static const Map<SPICE::Object, String> objectStringMap = {
         {SPICE::Object::Undefined, "Undefined"},

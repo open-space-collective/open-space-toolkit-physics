@@ -2,7 +2,7 @@
 
 import pytest
 
-from ostk.core.types import String
+from ostk.core.type import String
 
 from ostk.physics.time import Date
 

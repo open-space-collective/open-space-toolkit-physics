@@ -3,9 +3,9 @@
 #ifndef __OpenSpaceToolkit_Physics_Units_Length__
 #define __OpenSpaceToolkit_Physics_Units_Length__
 
-#include <OpenSpaceToolkit/Core/Types/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
+#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
+#include <OpenSpaceToolkit/Core/Type/Real.hpp>
+#include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 #include <OpenSpaceToolkit/Physics/Units/Unit.hpp>
 
@@ -16,9 +16,9 @@ namespace physics
 namespace units
 {
 
-using ostk::core::types::Integer;
-using ostk::core::types::Real;
-using ostk::core::types::String;
+using ostk::core::type::Integer;
+using ostk::core::type::Real;
+using ostk::core::type::String;
 
 /// @brief                      Length
 ///

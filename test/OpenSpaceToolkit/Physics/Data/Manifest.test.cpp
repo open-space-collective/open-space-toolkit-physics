@@ -12,7 +12,7 @@
 
 using ostk::core::filesystem::Path;
 using ostk::core::filesystem::File;
-using ostk::core::ctnr::Array;
+using ostk::core::container::Array;
 
 using ostk::io::URL;
 

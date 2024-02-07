@@ -5,12 +5,12 @@
 
 #include <memory>
 
-#include <OpenSpaceToolkit/Core/Types/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
-#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
+#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
+#include <OpenSpaceToolkit/Core/Type/Real.hpp>
+#include <OpenSpaceToolkit/Core/Type/Shared.hpp>
+#include <OpenSpaceToolkit/Core/Type/String.hpp>
 
-#include <OpenSpaceToolkit/Mathematics/Objects/Vector.hpp>
+#include <OpenSpaceToolkit/Mathematics/Object/Vector.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Axes.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.hpp>
@@ -28,12 +28,12 @@ namespace coord
 
 namespace iau = ostk::physics::coord::frame::providers::iau;
 
-using ostk::core::types::Uint8;
-using ostk::core::types::Shared;
-using ostk::core::types::Real;
-using ostk::core::types::String;
+using ostk::core::type::Uint8;
+using ostk::core::type::Shared;
+using ostk::core::type::Real;
+using ostk::core::type::String;
 
-using ostk::math::object::Vector3d;
+using ostk::mathematics::object::Vector3d;
 
 using ostk::physics::coord::Position;
 using ostk::physics::coord::Velocity;

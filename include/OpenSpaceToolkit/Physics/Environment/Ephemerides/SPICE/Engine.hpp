@@ -6,14 +6,14 @@
 #include <mutex>
 #include <unordered_set>
 
-#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
-#include <OpenSpaceToolkit/Core/Containers/Pair.hpp>
+#include <OpenSpaceToolkit/Core/Container/Array.hpp>
+#include <OpenSpaceToolkit/Core/Container/Pair.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
-#include <OpenSpaceToolkit/Core/Types/Index.hpp>
-#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
+#include <OpenSpaceToolkit/Core/Type/Index.hpp>
+#include <OpenSpaceToolkit/Core/Type/Shared.hpp>
+#include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
@@ -35,11 +35,11 @@ namespace ephemerides
 namespace spice
 {
 
-using ostk::core::types::Shared;
-using IndexType = ostk::core::types::Index;
-using ostk::core::types::String;
-using ostk::core::ctnr::Pair;
-using ostk::core::ctnr::Array;
+using ostk::core::type::Shared;
+using IndexType = ostk::core::type::Index;
+using ostk::core::type::String;
+using ostk::core::container::Pair;
+using ostk::core::container::Array;
 using ostk::core::filesystem::Path;
 using ostk::core::filesystem::File;
 using ostk::core::filesystem::Directory;

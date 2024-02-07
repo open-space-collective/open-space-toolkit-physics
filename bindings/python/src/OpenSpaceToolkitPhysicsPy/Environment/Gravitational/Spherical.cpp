@@ -6,7 +6,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Spherical(pybind
 {
     using namespace pybind11;
 
-    using ostk::core::types::Shared;
+    using ostk::core::type::Shared;
 
     using ostk::physics::environment::gravitational::Model;
     using ostk::physics::environment::gravitational::Spherical;

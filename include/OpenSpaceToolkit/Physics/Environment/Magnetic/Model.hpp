@@ -3,7 +3,7 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Magnetic_Model__
 #define __OpenSpaceToolkit_Physics_Environment_Magnetic_Model__
 
-#include <OpenSpaceToolkit/Mathematics/Objects/Vector.hpp>
+#include <OpenSpaceToolkit/Mathematics/Object/Vector.hpp>
 
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
@@ -16,7 +16,7 @@ namespace environment
 namespace magnetic
 {
 
-using ostk::math::object::Vector3d;
+using ostk::mathematics::object::Vector3d;
 
 using ostk::physics::time::Instant;
 

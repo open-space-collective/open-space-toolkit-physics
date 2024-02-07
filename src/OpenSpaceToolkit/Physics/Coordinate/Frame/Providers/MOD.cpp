@@ -1,10 +1,10 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkit/Core/Containers/Triple.hpp>
+#include <OpenSpaceToolkit/Core/Container/Triple.hpp>
 #include <OpenSpaceToolkit/Core/Error.hpp>
-#include <OpenSpaceToolkit/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Utility.hpp>
 
-#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformations/Rotations/RotationMatrix.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/RotationMatrix.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/MOD.hpp>
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
@@ -22,7 +22,7 @@ namespace frame
 namespace provider
 {
 
-using ostk::core::ctnr::Triple;
+using ostk::core::container::Triple;
 
 using ostk::physics::units::Angle;
 using ostk::physics::time::Scale;
@@ -75,8 +75,8 @@ Instant MOD::getEpoch() const
 
 Transform MOD::getTransformAt(const Instant& anInstant) const
 {
-    using ostk::math::object::Vector2d;
-    using ostk::math::geometry::d3::transformation::rotation::RotationMatrix;
+    using ostk::mathematics::object::Vector2d;
+    using ostk::mathematics::geometry::d3::transformation::rotation::RotationMatrix;
 
     using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;

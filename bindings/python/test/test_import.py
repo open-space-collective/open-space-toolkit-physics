@@ -7,8 +7,8 @@ import ostk.physics as physics
 
 
 def test_import():
-    Point = mathematics.geometry.d3.objects.Point
-    Segment = mathematics.geometry.d3.objects.Segment
+    Point = mathematics.geometry.d3.object.Point
+    Segment = mathematics.geometry.d3.object.Segment
 
     Scale = physics.time.Scale
     Instant = physics.time.Instant

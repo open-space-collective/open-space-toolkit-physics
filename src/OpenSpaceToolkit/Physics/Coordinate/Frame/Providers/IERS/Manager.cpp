@@ -6,12 +6,12 @@
 #include <numeric>
 #include <thread>
 
-#include <OpenSpaceToolkit/Core/Containers/Map.hpp>
+#include <OpenSpaceToolkit/Core/Container/Map.hpp>
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
-#include <OpenSpaceToolkit/Core/Types/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
-#include <OpenSpaceToolkit/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
+#include <OpenSpaceToolkit/Core/Type/String.hpp>
+#include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/IO/IP/TCP/HTTP/Client.hpp>
 
@@ -38,7 +38,7 @@ namespace provider
 namespace iers
 {
 
-using ostk::core::types::String;
+using ostk::core::type::String;
 using ostk::core::filesystem::Path;
 
 using ostk::io::ip::tcp::http::Client;

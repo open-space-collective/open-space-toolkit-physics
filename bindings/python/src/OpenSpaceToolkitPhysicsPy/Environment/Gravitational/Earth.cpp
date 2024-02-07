@@ -8,8 +8,8 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(pybind11::
 {
     using namespace pybind11;
 
-    using ostk::core::types::Integer;
-    using ostk::core::types::Shared;
+    using ostk::core::type::Integer;
+    using ostk::core::type::Shared;
     using ostk::core::filesystem::Directory;
 
     using ostk::physics::environment::gravitational::Model;

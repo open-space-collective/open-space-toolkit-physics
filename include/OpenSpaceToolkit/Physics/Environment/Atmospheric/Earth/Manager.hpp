@@ -5,14 +5,14 @@
 
 #include <mutex>
 
-#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
+#include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
-#include <OpenSpaceToolkit/Core/Types/Index.hpp>
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
+#include <OpenSpaceToolkit/Core/Type/Index.hpp>
+#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
 #include <OpenSpaceToolkit/IO/URL.hpp>
 
-#include <OpenSpaceToolkit/Mathematics/Objects/Vector.hpp>
+#include <OpenSpaceToolkit/Mathematics/Object/Vector.hpp>
 
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
@@ -34,14 +34,14 @@ namespace atmospheric
 namespace earth
 {
 
-using ostk::core::types::Index;
-using ostk::core::types::Real;
-using ostk::core::ctnr::Array;
+using ostk::core::type::Index;
+using ostk::core::type::Real;
+using ostk::core::container::Array;
 using ostk::core::filesystem::Directory;
 
 using ostk::io::URL;
 
-using ostk::math::object::Vector2d;
+using ostk::mathematics::object::Vector2d;
 
 using ostk::physics::time::Instant;
 using ostk::physics::time::Duration;

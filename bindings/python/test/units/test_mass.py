@@ -2,7 +2,7 @@
 
 import pytest
 
-from ostk.core.types import Real, String
+from ostk.core.type import Real, String
 
 import ostk.physics as physics
 

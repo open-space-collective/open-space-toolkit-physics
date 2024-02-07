@@ -340,7 +340,7 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, ToString)
 
 TEST(OpenSpaceToolkit_Physics_Time_Interval, GenerateGrid)
 {
-    using ostk::core::ctnr::Array;
+    using ostk::core::container::Array;
     using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Instant;

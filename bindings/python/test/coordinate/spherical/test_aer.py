@@ -3,7 +3,7 @@
 import pytest
 import numpy as np
 
-from ostk.core.types import String
+from ostk.core.type import String
 
 import ostk.physics as physics
 

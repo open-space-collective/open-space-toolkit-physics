@@ -8,7 +8,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers_Dynamic(pybind1
 {
     using namespace pybind11;
 
-    using ostk::core::types::Shared;
+    using ostk::core::type::Shared;
 
     using ostk::physics::time::Instant;
     using ostk::physics::coord::Transform;

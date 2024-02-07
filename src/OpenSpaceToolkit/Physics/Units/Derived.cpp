@@ -3,7 +3,7 @@
 #include <cmath>
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
-#include <OpenSpaceToolkit/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Physics/Units/Derived.hpp>
 
@@ -62,14 +62,14 @@ Int16 Derived::Order::getDenominator() const
 
 Real Derived::Order::getValue() const
 {
-    using ostk::core::types::Integer;
+    using ostk::core::type::Integer;
 
     return Real::Integer(Integer::Int16(numerator_)) / Real::Integer(Integer::Int16(denominator_));
 }
 
 String Derived::Order::toString() const
 {
-    using ostk::core::types::Integer;
+    using ostk::core::type::Integer;
 
     if (denominator_ == 1)
     {

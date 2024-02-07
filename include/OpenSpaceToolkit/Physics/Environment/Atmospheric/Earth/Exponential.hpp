@@ -3,11 +3,11 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Exponential__
 #define __OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Exponential__
 
-#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
-#include <OpenSpaceToolkit/Core/Containers/Tuple.hpp>
-#include <OpenSpaceToolkit/Core/Types/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
+#include <OpenSpaceToolkit/Core/Container/Array.hpp>
+#include <OpenSpaceToolkit/Core/Container/Tuple.hpp>
+#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
+#include <OpenSpaceToolkit/Core/Type/Real.hpp>
+#include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp>
@@ -25,11 +25,11 @@ namespace atmospheric
 namespace earth
 {
 
-using ostk::core::types::Integer;
-using ostk::core::types::Real;
-using ostk::core::types::String;
-using ostk::core::ctnr::Tuple;
-using ostk::core::ctnr::Array;
+using ostk::core::type::Integer;
+using ostk::core::type::Real;
+using ostk::core::type::String;
+using ostk::core::container::Tuple;
+using ostk::core::container::Array;
 
 using ostk::physics::time::Instant;
 using ostk::physics::units::Length;

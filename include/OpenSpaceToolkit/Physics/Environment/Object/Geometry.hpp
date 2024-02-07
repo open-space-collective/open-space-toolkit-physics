@@ -4,11 +4,11 @@
 #define __OpenSpaceToolkit_Physics_Environment_Object_Geometry__
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
-#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
-#include <OpenSpaceToolkit/Core/Types/Unique.hpp>
-#include <OpenSpaceToolkit/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Type/Shared.hpp>
+#include <OpenSpaceToolkit/Core/Type/Unique.hpp>
+#include <OpenSpaceToolkit/Core/Utility.hpp>
 
-#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/Composite.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Object/Composite.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
@@ -22,10 +22,10 @@ namespace environment
 namespace object
 {
 
-using ostk::core::types::Unique;
-using ostk::core::types::Shared;
+using ostk::core::type::Unique;
+using ostk::core::type::Shared;
 
-using ostk::math::geometry::d3::objects::Composite;
+using ostk::mathematics::geometry::d3::object::Composite;
 
 using ostk::physics::time::Instant;
 using ostk::physics::coord::Frame;
@@ -33,7 +33,7 @@ using ostk::physics::coord::Frame;
 class Geometry
 {
    public:
-    typedef math::geometry::d3::Object Object;
+    typedef mathematics::geometry::d3::Object Object;
 
     /// @brief              Constructor
     ///

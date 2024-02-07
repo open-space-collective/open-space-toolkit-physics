@@ -3,10 +3,10 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Sun__
 #define __OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Sun__
 
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
-#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
+#include <OpenSpaceToolkit/Core/Type/Real.hpp>
+#include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 
-#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/Sphere.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Object/Sphere.hpp>
 
 #include <OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp>
@@ -26,10 +26,10 @@ namespace object
 namespace celestial
 {
 
-using ostk::core::types::Shared;
-using ostk::core::types::Real;
+using ostk::core::type::Shared;
+using ostk::core::type::Real;
 
-using ostk::math::geometry::d3::objects::Sphere;
+using ostk::mathematics::geometry::d3::object::Sphere;
 
 using ostk::physics::units::Length;
 using ostk::physics::units::Derived;

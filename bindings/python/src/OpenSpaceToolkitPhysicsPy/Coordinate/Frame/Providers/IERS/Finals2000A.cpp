@@ -6,7 +6,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers_IERS_Finals2000
 {
     using namespace pybind11;
 
-    using ostk::core::types::Shared;
+    using ostk::core::type::Shared;
 
     using ostk::physics::coord::frame::provider::iers::Finals2000A;
 

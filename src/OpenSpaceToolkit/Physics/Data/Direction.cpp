@@ -1,8 +1,8 @@
 /// Apache License 2.0
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
-#include <OpenSpaceToolkit/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Type/Real.hpp>
+#include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Physics/Data/Direction.hpp>
 #include <OpenSpaceToolkit/Physics/Unit.hpp>
@@ -14,7 +14,7 @@ namespace physics
 namespace data
 {
 
-using ostk::core::types::Real;
+using ostk::core::type::Real;
 
 using ostk::physics::Unit;
 

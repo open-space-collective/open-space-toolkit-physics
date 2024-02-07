@@ -1,9 +1,9 @@
 /// Apache License 2.0
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
-#include <OpenSpaceToolkit/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Utility.hpp>
 
-#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformations/Rotations/RotationMatrix.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/RotationMatrix.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Utilities.hpp>
 
@@ -22,9 +22,9 @@ Transform NorthEastDownTransformAt(
     const LLA& aLLA, const Length& anEllipsoidEquatorialRadius, const Real& anEllipsoidFlattening
 )
 {
-    using ostk::math::object::Vector3d;
-    using ostk::math::geometry::d3::transformation::rotation::Quaternion;
-    using ostk::math::geometry::d3::transformation::rotation::RotationMatrix;
+    using ostk::mathematics::object::Vector3d;
+    using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
+    using ostk::mathematics::geometry::d3::transformation::rotation::RotationMatrix;
 
     const Vector3d x_NED_ECEF = aLLA.toCartesian(anEllipsoidEquatorialRadius, anEllipsoidFlattening);
     const Vector3d v_NED_ECEF = {0.0, 0.0, 0.0};

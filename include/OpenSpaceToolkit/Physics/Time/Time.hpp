@@ -3,9 +3,9 @@
 #ifndef __OpenSpaceToolkit_Physics_Time_Time__
 #define __OpenSpaceToolkit_Physics_Time_Time__
 
-#include <OpenSpaceToolkit/Core/Types/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
+#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
+#include <OpenSpaceToolkit/Core/Type/Real.hpp>
+#include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 namespace ostk
 {
@@ -14,10 +14,10 @@ namespace physics
 namespace time
 {
 
-using ostk::core::types::Uint8;
-using ostk::core::types::Uint16;
-using ostk::core::types::Real;
-using ostk::core::types::String;
+using ostk::core::type::Uint8;
+using ostk::core::type::Uint16;
+using ostk::core::type::Real;
+using ostk::core::type::String;
 
 /// @brief                      Time as hour, minute, second, millisecond, microsecond and nanosecond
 

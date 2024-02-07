@@ -2,9 +2,9 @@
 
 #include <boost/algorithm/string/predicate.hpp>
 
-#include <OpenSpaceToolkit/Core/Containers/Map.hpp>
+#include <OpenSpaceToolkit/Core/Container/Map.hpp>
 #include <OpenSpaceToolkit/Core/Error.hpp>
-#include <OpenSpaceToolkit/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Kernel.hpp>
 
@@ -92,7 +92,7 @@ Kernel Kernel::File(const filesystem::File& aFile)
 
 Kernel::Type Kernel::TypeFromString(const String& aString)
 {
-    using ostk::core::ctnr::Map;
+    using ostk::core::container::Map;
 
     static const Map<String, Kernel::Type> stringTypeMap = {
         {"Undefined", Kernel::Type::Undefined},
@@ -114,7 +114,7 @@ Kernel::Type Kernel::TypeFromString(const String& aString)
 
 String Kernel::StringFromType(const Kernel::Type& aType)
 {
-    using ostk::core::ctnr::Map;
+    using ostk::core::container::Map;
 
     static const Map<Kernel::Type, String> typeStringMap = {
         {Kernel::Type::Undefined, "Undefined"},

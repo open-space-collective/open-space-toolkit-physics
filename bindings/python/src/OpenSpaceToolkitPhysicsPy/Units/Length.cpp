@@ -1,6 +1,6 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkit/Mathematics/Objects/Interval.hpp>
+#include <OpenSpaceToolkit/Mathematics/Object/Interval.hpp>
 
 #include <OpenSpaceToolkit/Physics/Units/Length.hpp>
 
@@ -8,8 +8,8 @@ inline void OpenSpaceToolkitPhysicsPy_Units_Length(pybind11::module& aModule)
 {
     using namespace pybind11;
 
-    using ostk::core::types::Integer;
-    using ostk::core::types::Real;
+    using ostk::core::type::Integer;
+    using ostk::core::type::Real;
 
     using ostk::physics::units::Length;
 
@@ -107,7 +107,7 @@ inline void OpenSpaceToolkitPhysicsPy_Units_Length(pybind11::module& aModule)
 
         ;
 
-    using ostk::math::object::Interval;
+    using ostk::mathematics::object::Interval;
 
     class_<Interval<Length>>(aModule, "Interval")
 

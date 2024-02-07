@@ -3,8 +3,8 @@
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA__
 #define __OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA__
 
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
+#include <OpenSpaceToolkit/Core/Type/Real.hpp>
+#include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 #include <OpenSpaceToolkit/Physics/Units/Derived/Angle.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Length.hpp>
@@ -18,10 +18,10 @@ namespace coord
 namespace spherical
 {
 
-using ostk::core::types::Real;
-using ostk::core::types::String;
+using ostk::core::type::Real;
+using ostk::core::type::String;
 
-using ostk::math::object::Vector3d;
+using ostk::mathematics::object::Vector3d;
 
 using ostk::physics::units::Length;
 using ostk::physics::units::Angle;

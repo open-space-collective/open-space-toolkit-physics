@@ -3,10 +3,10 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth__
 #define __OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Earth__
 
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
-#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
+#include <OpenSpaceToolkit/Core/Type/Real.hpp>
+#include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 
-#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/Ellipsoid.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Object/Ellipsoid.hpp>
 
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Ephemerides/Analytical.hpp>
@@ -29,13 +29,13 @@ namespace object
 namespace celestial
 {
 
-using ostk::core::types::Integer;
-using ostk::core::types::Real;
-using ostk::core::types::String;
-using ostk::core::types::Shared;
+using ostk::core::type::Integer;
+using ostk::core::type::Real;
+using ostk::core::type::String;
+using ostk::core::type::Shared;
 using ostk::core::filesystem::Directory;
 
-using ostk::math::geometry::d3::objects::Ellipsoid;
+using ostk::mathematics::geometry::d3::object::Ellipsoid;
 
 using ostk::physics::units::Length;
 using ostk::physics::units::Derived;

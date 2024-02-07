@@ -3,7 +3,7 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Utilities_Eclipse__
 #define __OpenSpaceToolkit_Physics_Environment_Utilities_Eclipse__
 
-#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
+#include <OpenSpaceToolkit/Core/Container/Array.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
 #include <OpenSpaceToolkit/Physics/Environment.hpp>
@@ -18,7 +18,7 @@ namespace environment
 namespace utilities
 {
 
-using ostk::core::ctnr::Array;
+using ostk::core::container::Array;
 
 using ostk::physics::coord::Position;
 using ostk::physics::time::Interval;

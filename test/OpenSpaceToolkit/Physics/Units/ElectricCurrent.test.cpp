@@ -1,6 +1,6 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
+#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
 #include <OpenSpaceToolkit/Physics/Units/ElectricCurrent.hpp>
 
@@ -8,7 +8,7 @@
 
 TEST(OpenSpaceToolkit_Physics_Units_ElectricCurrent, Constructor)
 {
-    using ostk::core::types::Real;
+    using ostk::core::type::Real;
     using ostk::physics::units::ElectricCurrent;
 
     {
@@ -28,7 +28,7 @@ TEST(OpenSpaceToolkit_Physics_Units_ElectricCurrent, Constructor)
 
 TEST(OpenSpaceToolkit_Physics_Units_ElectricCurrent, Clone)
 {
-    using ostk::core::types::Real;
+    using ostk::core::type::Real;
     using ostk::physics::units::ElectricCurrent;
 
     {
@@ -44,7 +44,7 @@ TEST(OpenSpaceToolkit_Physics_Units_ElectricCurrent, Clone)
 
 TEST(OpenSpaceToolkit_Physics_Units_ElectricCurrent, IsDefined)
 {
-    using ostk::core::types::Real;
+    using ostk::core::type::Real;
     using ostk::physics::units::ElectricCurrent;
 
     {

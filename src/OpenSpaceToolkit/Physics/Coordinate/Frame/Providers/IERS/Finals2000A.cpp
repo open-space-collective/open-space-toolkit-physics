@@ -8,8 +8,8 @@
 #include <boost/lexical_cast.hpp>
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
-#include <OpenSpaceToolkit/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Type/String.hpp>
+#include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Finals2000A.hpp>
 #include <OpenSpaceToolkit/Physics/Data/Utilities.hpp>
@@ -31,7 +31,7 @@ using ostk::physics::data::utilities::getFileModifiedInstant;
 
 std::ostream& operator<<(std::ostream& anOutputStream, const Finals2000A& aFinals2000A)
 {
-    using ostk::core::types::String;
+    using ostk::core::type::String;
 
     using ostk::physics::time::Scale;
 
@@ -312,12 +312,12 @@ Finals2000A Finals2000A::Undefined()
 
 Finals2000A Finals2000A::Load(const filesystem::File& aFile)
 {
-    using ostk::core::types::Index;
-    using ostk::core::types::Uint8;
-    using ostk::core::types::Uint16;
-    using ostk::core::types::Real;
-    using ostk::core::types::String;
-    using ostk::core::ctnr::Array;
+    using ostk::core::type::Index;
+    using ostk::core::type::Uint8;
+    using ostk::core::type::Uint16;
+    using ostk::core::type::Real;
+    using ostk::core::type::String;
+    using ostk::core::container::Array;
 
     using ostk::physics::time::Scale;
     using ostk::physics::time::Time;

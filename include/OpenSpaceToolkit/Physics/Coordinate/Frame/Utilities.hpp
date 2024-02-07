@@ -3,7 +3,7 @@
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Frame_Utilities__
 #define __OpenSpaceToolkit_Physics_Coordinate_Frame_Utilities__
 
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
+#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
@@ -20,7 +20,7 @@ namespace frame
 namespace utilities
 {
 
-using ostk::core::types::Real;
+using ostk::core::type::Real;
 
 using ostk::physics::units::Length;
 using ostk::physics::coord::spherical::LLA;

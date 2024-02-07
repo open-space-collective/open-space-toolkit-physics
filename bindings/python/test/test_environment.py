@@ -35,7 +35,7 @@ def test_environment_isDefined(environment: Environment):
     assert environment.is_defined() is not None
 
 
-def test_environment_hasObjectWithName(environment: Environment):
+def test_environment_has_object_with_name(environment: Environment):
     assert environment.has_object_with_name("Earth") is not None
 
 
@@ -44,18 +44,15 @@ def test_environment_intersects(environment: Environment):
     assert environment.intersects() is not None
 
 
-@pytest.mark.skip
-def test_environment_accessObjects(environment: Environment):
+def test_environment_access_objects(environment: Environment):
     assert environment.access_objects() is not None
 
 
-@pytest.mark.skip
-def test_environment_accessObjectWithName(environment: Environment):
+def test_environment_access_object_with_name(environment: Environment):
     assert environment.access_object_with_name("Earth") is not None
 
 
-@pytest.mark.skip
-def test_environment_accessCelestialObjectWithName(environment: Environment):
+def test_environment_access_celestial_object_with_name(environment: Environment):
     assert environment.access_celestial_object_with_name("Earth") is not None
 
 
@@ -63,16 +60,15 @@ def test_environment_getInstant(environment: Environment):
     assert environment.get_instant() is not None
 
 
-@pytest.mark.skip
-def test_environment_getObjectNames(environment: Environment):
+def test_environment_get_object_names(environment: Environment):
     assert environment.get_object_names() is not None
 
 
-def test_environment_setInstant(environment: Environment):
+def test_environment_set_instant(environment: Environment):
     environment.set_instant(Instant.date_time(DateTime(2019, 1, 1, 0, 0, 0), Scale.UTC))
 
 
-def test_environment_isPositionInEclipse(environment: Environment):
+def test_environment_is_position_in_eclipse(environment: Environment):
     environment.set_instant(Instant.date_time(DateTime(2018, 1, 1, 0, 0, 0), Scale.UTC))
 
     assert environment.is_position_in_eclipse(

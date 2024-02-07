@@ -3,10 +3,10 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment__
 #define __OpenSpaceToolkit_Physics_Environment__
 
-#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
-#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
-#include <OpenSpaceToolkit/Core/Types/Unique.hpp>
+#include <OpenSpaceToolkit/Core/Container/Array.hpp>
+#include <OpenSpaceToolkit/Core/Type/Shared.hpp>
+#include <OpenSpaceToolkit/Core/Type/String.hpp>
+#include <OpenSpaceToolkit/Core/Type/Unique.hpp>
 
 #include <OpenSpaceToolkit/Physics/Environment/Object.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Objects/Celestial.hpp>
@@ -17,10 +17,10 @@ namespace ostk
 namespace physics
 {
 
-using ostk::core::types::Unique;
-using ostk::core::types::Shared;
-using ostk::core::types::String;
-using ostk::core::ctnr::Array;
+using ostk::core::type::Unique;
+using ostk::core::type::Shared;
+using ostk::core::type::String;
+using ostk::core::container::Array;
 
 using ostk::physics::time::Instant;
 using ostk::physics::coord::Position;

@@ -3,12 +3,12 @@
 #ifndef __OpenSpaceToolkit_Physics_Units_Derived_Angle__
 #define __OpenSpaceToolkit_Physics_Units_Derived_Angle__
 
-#include <OpenSpaceToolkit/Core/Types/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
+#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
+#include <OpenSpaceToolkit/Core/Type/Real.hpp>
+#include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Geometry/Angle.hpp>
-#include <OpenSpaceToolkit/Mathematics/Objects/Vector.hpp>
+#include <OpenSpaceToolkit/Mathematics/Object/Vector.hpp>
 
 #include <OpenSpaceToolkit/Physics/Units/Unit.hpp>
 
@@ -19,12 +19,12 @@ namespace physics
 namespace units
 {
 
-using ostk::core::types::Integer;
-using ostk::core::types::Real;
-using ostk::core::types::String;
+using ostk::core::type::Integer;
+using ostk::core::type::Real;
+using ostk::core::type::String;
 
-using ostk::math::object::Vector2d;
-using ostk::math::object::Vector3d;
+using ostk::mathematics::object::Vector2d;
+using ostk::mathematics::object::Vector3d;
 
 /// @brief                      Angle
 ///
@@ -59,7 +59,7 @@ class Angle : public Unit
 
     Angle(const Real& aValue, const Angle::Unit& aUnit);
 
-    Angle(const ostk::math::geometry::Angle& anAngle);
+    Angle(const ostk::mathematics::geometry::Angle& anAngle);
 
     virtual Angle* clone() const override;
 
@@ -89,7 +89,7 @@ class Angle : public Unit
 
     Angle operator-() const;
 
-    operator ostk::math::geometry::Angle() const;
+    operator ostk::mathematics::geometry::Angle() const;
 
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Angle& anAngle);
 

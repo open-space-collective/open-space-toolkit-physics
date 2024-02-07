@@ -7,11 +7,11 @@
 #include <boost/algorithm/string/trim.hpp>
 #include <boost/lexical_cast.hpp>
 
-#include <OpenSpaceToolkit/Core/Containers/Table.hpp>
+#include <OpenSpaceToolkit/Core/Container/Table.hpp>
 #include <OpenSpaceToolkit/Core/Error.hpp>
-#include <OpenSpaceToolkit/Core/Types/Size.hpp>
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
-#include <OpenSpaceToolkit/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Type/Size.hpp>
+#include <OpenSpaceToolkit/Core/Type/String.hpp>
+#include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp>
 
@@ -26,14 +26,14 @@ namespace atmospheric
 namespace earth
 {
 
-using ostk::core::types::Index;
-using ostk::core::types::Uint8;
-using ostk::core::types::Uint16;
-using ostk::core::types::Size;
-using ostk::core::types::Real;
-using ostk::core::types::String;
+using ostk::core::type::Index;
+using ostk::core::type::Uint8;
+using ostk::core::type::Uint16;
+using ostk::core::type::Size;
+using ostk::core::type::Real;
+using ostk::core::type::String;
 using ostk::core::utils::Print;
-using ostk::core::ctnr::Table;
+using ostk::core::container::Table;
 
 using ostk::physics::time::Scale;
 using ostk::physics::time::Time;
@@ -603,11 +603,11 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
 
 CSSISpaceWeather CSSISpaceWeather::LoadLegacy(const File& aFile)
 {
-    using ostk::core::types::Index;
-    using ostk::core::types::Uint8;
-    using ostk::core::types::Uint16;
-    using ostk::core::types::Real;
-    using ostk::core::types::String;
+    using ostk::core::type::Index;
+    using ostk::core::type::Uint8;
+    using ostk::core::type::Uint16;
+    using ostk::core::type::Real;
+    using ostk::core::type::String;
 
     using ostk::physics::time::Scale;
     using ostk::physics::time::Time;

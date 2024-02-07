@@ -4,8 +4,8 @@
 #define __OpenSpaceToolkit_Physics_Environment_Gravitational_Moon__
 
 #include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
-#include <OpenSpaceToolkit/Core/Types/Unique.hpp>
+#include <OpenSpaceToolkit/Core/Type/Real.hpp>
+#include <OpenSpaceToolkit/Core/Type/Unique.hpp>
 
 #include <OpenSpaceToolkit/IO/URL.hpp>
 
@@ -22,9 +22,9 @@ namespace environment
 namespace gravitational
 {
 
-using ostk::core::types::Unique;
-using ostk::core::types::Integer;
-using ostk::core::types::Real;
+using ostk::core::type::Unique;
+using ostk::core::type::Integer;
+using ostk::core::type::Real;
 using ostk::core::filesystem::Directory;
 
 using ostk::io::URL;

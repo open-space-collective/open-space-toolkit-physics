@@ -9,8 +9,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame(pybind11::module& aModule
 {
     using namespace pybind11;
 
-    using ostk::core::types::Shared;
-    using ostk::core::types::String;
+    using ostk::core::type::Shared;
+    using ostk::core::type::String;
 
     using ostk::physics::coord::Frame;
     using ostk::physics::coord::frame::Provider;

@@ -6,7 +6,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers_Static(pybind11
 {
     using namespace pybind11;
 
-    using ostk::core::types::Shared;
+    using ostk::core::type::Shared;
 
     using ostk::physics::coord::Transform;
     using ostk::physics::coord::frame::Provider;

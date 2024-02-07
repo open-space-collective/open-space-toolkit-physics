@@ -6,8 +6,8 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Model(pybind11::
 {
     using namespace pybind11;
 
-    using ostk::core::types::Real;
-    using ostk::core::types::Shared;
+    using ostk::core::type::Real;
+    using ostk::core::type::Shared;
 
     using ostk::physics::units::Derived;
     using ostk::physics::units::Length;

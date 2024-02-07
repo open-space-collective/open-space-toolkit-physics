@@ -1,6 +1,6 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
+#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Geometry/Angle.hpp>
 
@@ -10,7 +10,7 @@
 
 TEST(OpenSpaceToolkit_Physics_Units_Derived_Angle, Constructor)
 {
-    using ostk::core::types::Real;
+    using ostk::core::type::Real;
     using ostk::physics::units::Angle;
 
     {
@@ -30,7 +30,7 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived_Angle, Constructor)
 
 TEST(OpenSpaceToolkit_Physics_Units_Derived_Angle, EqualToOperator)
 {
-    using ostk::core::types::Real;
+    using ostk::core::type::Real;
     using ostk::physics::units::Angle;
 
     {
@@ -86,7 +86,7 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived_Angle, EqualToOperator)
 
 TEST(OpenSpaceToolkit_Physics_Units_Derived_Angle, NotEqualToOperator)
 {
-    using ostk::core::types::Real;
+    using ostk::core::type::Real;
     using ostk::physics::units::Angle;
 
     {
@@ -302,7 +302,7 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived_Angle, SubtractionOperator)
 
 TEST(OpenSpaceToolkit_Physics_Units_Derived_Angle, MultiplicationOperator)
 {
-    using ostk::core::types::Real;
+    using ostk::core::type::Real;
     using ostk::physics::units::Angle;
 
     {
@@ -351,7 +351,7 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived_Angle, MultiplicationOperator)
 
 TEST(OpenSpaceToolkit_Physics_Units_Derived_Angle, DivisionOperator)
 {
-    using ostk::core::types::Real;
+    using ostk::core::type::Real;
     using ostk::physics::units::Angle;
 
     {
@@ -565,7 +565,7 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived_Angle, SubtractionAssignmentOperator
 
 TEST(OpenSpaceToolkit_Physics_Units_Derived_Angle, MultiplicationAssignmentOperator)
 {
-    using ostk::core::types::Real;
+    using ostk::core::type::Real;
     using ostk::physics::units::Angle;
 
     {
@@ -596,7 +596,7 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived_Angle, MultiplicationAssignmentOpera
 
 TEST(OpenSpaceToolkit_Physics_Units_Derived_Angle, DivisionAssignmentOperator)
 {
-    using ostk::core::types::Real;
+    using ostk::core::type::Real;
     using ostk::physics::units::Angle;
 
     {
@@ -682,13 +682,13 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived_Angle, AngleConversionOperator)
 
     {
         EXPECT_EQ(
-            ostk::math::geometry::Angle(+1.0, ostk::math::geometry::Angle::Unit::Radian),
+            ostk::mathematics::geometry::Angle(+1.0, ostk::mathematics::geometry::Angle::Unit::Radian),
             Angle(+1.0, Angle::Unit::Radian)
         );
     }
 
     {
-        EXPECT_NO_THROW(ostk::math::geometry::Angle angle = Angle::Undefined(); (void)angle;);
+        EXPECT_NO_THROW(ostk::mathematics::geometry::Angle angle = Angle::Undefined(); (void)angle;);
     }
 }
 
@@ -707,7 +707,7 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived_Angle, StreamOperator)
 
 TEST(OpenSpaceToolkit_Physics_Units_Derived_Angle, IsDefined)
 {
-    using ostk::core::types::Real;
+    using ostk::core::type::Real;
     using ostk::physics::units::Angle;
 
     {
@@ -729,7 +729,7 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived_Angle, IsDefined)
 
 TEST(OpenSpaceToolkit_Physics_Units_Derived_Angle, IsZero)
 {
-    using ostk::core::types::Real;
+    using ostk::core::type::Real;
     using ostk::physics::units::Angle;
 
     {
@@ -792,7 +792,7 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived_Angle, In)
 
 TEST(OpenSpaceToolkit_Physics_Units_Derived_Angle, InRadians)
 {
-    using ostk::core::types::Real;
+    using ostk::core::type::Real;
 
     using ostk::physics::units::Angle;
 
@@ -841,7 +841,7 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived_Angle, InRadians)
 
 TEST(OpenSpaceToolkit_Physics_Units_Derived_Angle, InDegrees)
 {
-    using ostk::core::types::Real;
+    using ostk::core::type::Real;
     using ostk::physics::units::Angle;
 
     {
@@ -889,7 +889,7 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived_Angle, InDegrees)
 
 TEST(OpenSpaceToolkit_Physics_Units_Derived_Angle, InArcminutes)
 {
-    using ostk::core::types::Real;
+    using ostk::core::type::Real;
     using ostk::physics::units::Angle;
 
     {
@@ -941,7 +941,7 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived_Angle, InArcminutes)
 
 TEST(OpenSpaceToolkit_Physics_Units_Derived_Angle, InArcseconds)
 {
-    using ostk::core::types::Real;
+    using ostk::core::type::Real;
     using ostk::physics::units::Angle;
 
     {
@@ -998,7 +998,7 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived_Angle, InArcseconds)
 
 TEST(OpenSpaceToolkit_Physics_Units_Derived_Angle, InRevolutions)
 {
-    using ostk::core::types::Real;
+    using ostk::core::type::Real;
     using ostk::physics::units::Angle;
 
     {

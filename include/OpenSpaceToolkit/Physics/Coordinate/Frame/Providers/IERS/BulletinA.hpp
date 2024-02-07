@@ -3,10 +3,10 @@
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA__
 #define __OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA__
 
-#include <OpenSpaceToolkit/Core/Containers/Map.hpp>
+#include <OpenSpaceToolkit/Core/Container/Map.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
-#include <OpenSpaceToolkit/Core/Types/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
+#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
+#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
 #include <OpenSpaceToolkit/Physics/Time/Date.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
@@ -28,9 +28,9 @@ namespace iers
 
 namespace filesystem = ostk::core::filesystem;
 
-using ostk::core::types::Integer;
-using ostk::core::types::Real;
-using ostk::core::ctnr::Map;
+using ostk::core::type::Integer;
+using ostk::core::type::Real;
+using ostk::core::container::Map;
 using ostk::core::filesystem::File;
 
 using ostk::physics::time::Date;

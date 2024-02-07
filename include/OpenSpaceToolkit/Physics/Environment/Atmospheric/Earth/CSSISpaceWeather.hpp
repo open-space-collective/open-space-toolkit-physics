@@ -3,11 +3,11 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather__
 #define __OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather__
 
-#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
-#include <OpenSpaceToolkit/Core/Containers/Map.hpp>
+#include <OpenSpaceToolkit/Core/Container/Array.hpp>
+#include <OpenSpaceToolkit/Core/Container/Map.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
-#include <OpenSpaceToolkit/Core/Types/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
+#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
+#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
 #include <OpenSpaceToolkit/Physics/Time/Date.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
@@ -25,11 +25,11 @@ namespace atmospheric
 namespace earth
 {
 
-using ostk::core::types::Integer;
-using ostk::core::types::Real;
-using ostk::core::types::String;
-using ostk::core::ctnr::Map;
-using ostk::core::ctnr::Array;
+using ostk::core::type::Integer;
+using ostk::core::type::Real;
+using ostk::core::type::String;
+using ostk::core::container::Map;
+using ostk::core::container::Array;
 using ostk::core::filesystem::File;
 
 using ostk::physics::time::Date;

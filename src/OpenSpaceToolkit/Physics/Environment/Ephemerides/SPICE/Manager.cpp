@@ -5,13 +5,13 @@
 #include <fstream>
 #include <numeric>
 
-#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
-#include <OpenSpaceToolkit/Core/Containers/Dictionary.hpp>
-#include <OpenSpaceToolkit/Core/Containers/Object.hpp>
-#include <OpenSpaceToolkit/Core/Containers/Pair.hpp>
+#include <OpenSpaceToolkit/Core/Container/Array.hpp>
+#include <OpenSpaceToolkit/Core/Container/Dictionary.hpp>
+#include <OpenSpaceToolkit/Core/Container/Object.hpp>
+#include <OpenSpaceToolkit/Core/Container/Pair.hpp>
 #include <OpenSpaceToolkit/Core/Error.hpp>
-#include <OpenSpaceToolkit/Core/Types/Index.hpp>
-#include <OpenSpaceToolkit/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Type/Index.hpp>
+#include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/IO/IP/TCP/HTTP/Client.hpp>
 
@@ -30,7 +30,7 @@ namespace ephemerides
 namespace spice
 {
 
-using ostk::core::types::String;
+using ostk::core::type::String;
 
 using ostk::io::URL;
 using ostk::io::ip::tcp::http::Client;

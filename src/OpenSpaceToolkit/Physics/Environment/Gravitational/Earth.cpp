@@ -5,7 +5,7 @@
 #include <GeographicLib/Utility.hpp>
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
-#include <OpenSpaceToolkit/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp>
@@ -262,7 +262,7 @@ GravityModel* Earth::ExternalImpl::GravityModelFromType(
     const Integer& aGravityModelOrder
 )
 {
-    using ostk::core::types::String;
+    using ostk::core::type::String;
 
     using ostk::physics::environment::gravitational::earth::Manager;
 

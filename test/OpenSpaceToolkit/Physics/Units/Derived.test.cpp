@@ -1,6 +1,6 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
+#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
 #include <OpenSpaceToolkit/Physics/Units/Derived.hpp>
 
@@ -8,7 +8,7 @@
 
 TEST(OpenSpaceToolkit_Physics_Units_Derived, Constructor)
 {
-    using ostk::core::types::Real;
+    using ostk::core::type::Real;
     using ostk::physics::units::Length;
     using ostk::physics::units::Mass;
     using ostk::physics::units::Time;
@@ -80,7 +80,7 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, Constructor)
 
 TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 {
-    using ostk::core::types::Real;
+    using ostk::core::type::Real;
     using ostk::physics::units::Length;
     using ostk::physics::units::Mass;
     using ostk::physics::units::Time;
@@ -411,7 +411,7 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 // TEST (OpenSpaceToolkit_Physics_Units_Derived, MultiplicationOperator)
 // {
 
-//     using ostk::core::types::Real ;
+//     using ostk::core::type::Real ;
 //     using ostk::physics::units::Derived ;
 
 //     {
@@ -470,7 +470,7 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 // TEST (OpenSpaceToolkit_Physics_Units_Derived, DivisionOperator)
 // {
 
-//     using ostk::core::types::Real ;
+//     using ostk::core::type::Real ;
 //     using ostk::physics::units::Derived ;
 
 //     {
@@ -579,7 +579,7 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 // TEST (OpenSpaceToolkit_Physics_Units_Derived, MultiplicationAssignmentOperator)
 // {
 
-//     using ostk::core::types::Real ;
+//     using ostk::core::type::Real ;
 //     using ostk::physics::units::Derived ;
 
 //     {
@@ -619,7 +619,7 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 // TEST (OpenSpaceToolkit_Physics_Units_Derived, DivisionAssignmentOperator)
 // {
 
-//     using ostk::core::types::Real ;
+//     using ostk::core::type::Real ;
 //     using ostk::physics::units::Derived ;
 
 //     {
@@ -677,7 +677,7 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 // TEST (OpenSpaceToolkit_Physics_Units_Derived, IsDefined)
 // {
 
-//     using ostk::core::types::Real ;
+//     using ostk::core::type::Real ;
 //     using ostk::physics::units::Derived ;
 
 //     {

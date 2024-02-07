@@ -2,13 +2,13 @@
 
 #include <regex>
 
-#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
-#include <OpenSpaceToolkit/Core/Containers/Map.hpp>
+#include <OpenSpaceToolkit/Core/Container/Array.hpp>
+#include <OpenSpaceToolkit/Core/Container/Map.hpp>
 #include <OpenSpaceToolkit/Core/Error.hpp>
-#include <OpenSpaceToolkit/Core/Types/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
+#include <OpenSpaceToolkit/Core/Utility.hpp>
 
-#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformations/Rotations/RotationMatrix.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/RotationMatrix.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Dynamic.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Engine.hpp>
@@ -259,10 +259,10 @@ bool Engine::isKernelLoaded_(const Kernel& aKernel) const
 Transform Engine::getTransformAt(const String& aSpiceIdentifier, const String& aFrameName, const Instant& anInstant)
     const
 {
-    using ostk::math::object::Vector3d;
-    using ostk::math::object::Matrix3d;
-    using ostk::math::geometry::d3::transformation::rotation::Quaternion;
-    using ostk::math::geometry::d3::transformation::rotation::RotationMatrix;
+    using ostk::mathematics::object::Vector3d;
+    using ostk::mathematics::object::Matrix3d;
+    using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
+    using ostk::mathematics::geometry::d3::transformation::rotation::RotationMatrix;
 
     using ostk::physics::time::Scale;
 
@@ -495,9 +495,9 @@ void Engine::unloadKernel_(const Kernel& aKernel)
 
 void Engine::updateEarthKernelCache()
 {
-    using ostk::core::types::Uint8;
-    using ostk::core::types::Uint16;
-    using ostk::core::types::Integer;
+    using ostk::core::type::Uint8;
+    using ostk::core::type::Uint16;
+    using ostk::core::type::Integer;
 
     using ostk::physics::time::Scale;
     using ostk::physics::time::Date;
@@ -539,7 +539,7 @@ void Engine::updateEarthKernelCache()
 
 String Engine::SpiceIdentifierFromSpiceObject(const SPICE::Object& aSpiceObject)
 {
-    using ostk::core::ctnr::Map;
+    using ostk::core::container::Map;
 
     static const Map<SPICE::Object, String> identifierMap = {
         {SPICE::Object::Sun, "10"},
@@ -562,7 +562,7 @@ String Engine::FrameNameFromSpiceObject(const SPICE::Object& aSpiceObject)
     // https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/C/req/frames.html#Appendix.%20%60%60Built%20in''%20PCK-Based%20IAU%20Body-Fixed%20Reference%20Frames
     // https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/Tutorials/pdf/individual_docs/23_lunar-earth_pck-fk.pdf
 
-    using ostk::core::ctnr::Map;
+    using ostk::core::container::Map;
 
     static const Map<SPICE::Object, String> frameNameMap = {
         {SPICE::Object::Sun, "IAU_SUN"},

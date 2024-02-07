@@ -6,9 +6,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Objects_CelestialBodies_Earth(
 {
     using namespace pybind11;
 
-    using ostk::core::types::Integer;
-    using ostk::core::types::Real;
-    using ostk::core::types::Shared;
+    using ostk::core::type::Integer;
+    using ostk::core::type::Real;
+    using ostk::core::type::Shared;
 
     using ostk::physics::units::Length;
     using ostk::physics::units::Derived;

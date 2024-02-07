@@ -1,6 +1,6 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkit/Mathematics/Objects/Interval.hpp>
+#include <OpenSpaceToolkit/Mathematics/Object/Interval.hpp>
 
 #include <OpenSpaceToolkit/Physics/Time/Interval.hpp>
 
@@ -8,7 +8,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
 {
     using namespace pybind11;
 
-    using ostk::core::types::String;
+    using ostk::core::type::String;
 
     using ostk::physics::time::Instant;
     using ostk::physics::time::Interval;
@@ -97,5 +97,5 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
 
         ;
 
-    implicitly_convertible<ostk::math::object::Interval<ostk::physics::time::Instant>, Interval>();
+    implicitly_convertible<ostk::mathematics::object::Interval<ostk::physics::time::Instant>, Interval>();
 }

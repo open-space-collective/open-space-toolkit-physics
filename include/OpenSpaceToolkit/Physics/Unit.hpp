@@ -3,9 +3,9 @@
 #ifndef __OpenSpaceToolkit_Physics_Unit__
 #define __OpenSpaceToolkit_Physics_Unit__
 
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
-#include <OpenSpaceToolkit/Core/Types/Unique.hpp>
+#include <OpenSpaceToolkit/Core/Type/Real.hpp>
+#include <OpenSpaceToolkit/Core/Type/String.hpp>
+#include <OpenSpaceToolkit/Core/Type/Unique.hpp>
 
 #include <OpenSpaceToolkit/Physics/Units/Derived.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Derived/Angle.hpp>
@@ -19,9 +19,9 @@ namespace ostk
 namespace physics
 {
 
-using ostk::core::types::Unique;
-using ostk::core::types::Real;
-using ostk::core::types::String;
+using ostk::core::type::Unique;
+using ostk::core::type::Real;
+using ostk::core::type::String;
 
 /// @brief                      Unit
 ///

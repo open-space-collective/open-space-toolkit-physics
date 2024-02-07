@@ -3,7 +3,7 @@
 #include <boost/regex.hpp>
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
-#include <OpenSpaceToolkit/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 
@@ -135,8 +135,8 @@ const Time& DateTime::accessTime() const
 
 Real DateTime::getJulianDate() const
 {
-    using ostk::core::types::Int16;
-    using ostk::core::types::Int32;
+    using ostk::core::type::Int16;
+    using ostk::core::type::Int32;
 
     if (!this->isDefined())
     {
@@ -228,10 +228,10 @@ DateTime DateTime::ModifiedJulianDateEpoch()
 
 DateTime DateTime::JulianDate(const Real& aJulianDate)
 {
-    using ostk::core::types::Int32;
-    using ostk::core::types::Int64;
-    using ostk::core::types::Uint32;
-    using ostk::core::types::Uint64;
+    using ostk::core::type::Int32;
+    using ostk::core::type::Int64;
+    using ostk::core::type::Uint32;
+    using ostk::core::type::Uint64;
 
     if (!aJulianDate.isDefined())
     {

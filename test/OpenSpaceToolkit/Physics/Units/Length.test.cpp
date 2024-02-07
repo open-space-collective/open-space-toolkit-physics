@@ -1,6 +1,6 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
+#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
 #include <OpenSpaceToolkit/Physics/Units/Length.hpp>
 
@@ -8,7 +8,7 @@
 
 TEST(OpenSpaceToolkit_Physics_Units_Length, Constructor)
 {
-    using ostk::core::types::Real;
+    using ostk::core::type::Real;
     using ostk::physics::units::Length;
 
     {
@@ -246,7 +246,7 @@ TEST(OpenSpaceToolkit_Physics_Units_Length, SubtractionOperator)
 
 TEST(OpenSpaceToolkit_Physics_Units_Length, MultiplicationOperator)
 {
-    using ostk::core::types::Real;
+    using ostk::core::type::Real;
     using ostk::physics::units::Length;
 
     {
@@ -295,7 +295,7 @@ TEST(OpenSpaceToolkit_Physics_Units_Length, MultiplicationOperator)
 
 TEST(OpenSpaceToolkit_Physics_Units_Length, DivisionOperator)
 {
-    using ostk::core::types::Real;
+    using ostk::core::type::Real;
     using ostk::physics::units::Length;
 
     {
@@ -404,7 +404,7 @@ TEST(OpenSpaceToolkit_Physics_Units_Length, SubtractionAssignmentOperator)
 
 TEST(OpenSpaceToolkit_Physics_Units_Length, MultiplicationAssignmentOperator)
 {
-    using ostk::core::types::Real;
+    using ostk::core::type::Real;
     using ostk::physics::units::Length;
 
     {
@@ -435,7 +435,7 @@ TEST(OpenSpaceToolkit_Physics_Units_Length, MultiplicationAssignmentOperator)
 
 TEST(OpenSpaceToolkit_Physics_Units_Length, DivisionAssignmentOperator)
 {
-    using ostk::core::types::Real;
+    using ostk::core::type::Real;
     using ostk::physics::units::Length;
 
     {
@@ -518,7 +518,7 @@ TEST(OpenSpaceToolkit_Physics_Units_Length, StreamOperator)
 
 TEST(OpenSpaceToolkit_Physics_Units_Length, IsDefined)
 {
-    using ostk::core::types::Real;
+    using ostk::core::type::Real;
     using ostk::physics::units::Length;
 
     {
@@ -540,7 +540,7 @@ TEST(OpenSpaceToolkit_Physics_Units_Length, IsDefined)
 
 TEST(OpenSpaceToolkit_Physics_Units_Length, IsZero)
 {
-    using ostk::core::types::Real;
+    using ostk::core::type::Real;
     using ostk::physics::units::Length;
 
     {

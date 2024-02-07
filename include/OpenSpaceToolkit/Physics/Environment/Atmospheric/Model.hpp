@@ -3,7 +3,7 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Atmospheric_Model__
 #define __OpenSpaceToolkit_Physics_Environment_Atmospheric_Model__
 
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
+#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
@@ -17,7 +17,7 @@ namespace environment
 namespace atmospheric
 {
 
-using ostk::core::types::Real;
+using ostk::core::type::Real;
 
 using ostk::physics::time::Instant;
 using ostk::physics::coord::Position;

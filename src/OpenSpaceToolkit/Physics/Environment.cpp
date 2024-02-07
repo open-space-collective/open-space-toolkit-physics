@@ -1,9 +1,9 @@
 /// Apache License 2.0
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
-#include <OpenSpaceToolkit/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Utility.hpp>
 
-#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/Segment.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Object/Segment.hpp>
 
 #include <OpenSpaceToolkit/Physics/Environment.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Objects/Celestial.hpp>
@@ -239,8 +239,8 @@ void Environment::setInstant(const Instant& anInstant)
 
 bool Environment::isPositionInEclipse(const Position& aPosition) const
 {
-    using ostk::math::geometry::d3::objects::Point;
-    using ostk::math::geometry::d3::objects::Segment;
+    using ostk::mathematics::geometry::d3::object::Point;
+    using ostk::mathematics::geometry::d3::object::Segment;
 
     using ostk::physics::coord::Frame;
     using ostk::physics::environment::Object;

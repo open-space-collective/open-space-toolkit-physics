@@ -6,7 +6,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Dipole(pybind11::modu
 {
     using namespace pybind11;
 
-    using ostk::math::object::Vector3d;
+    using ostk::mathematics::object::Vector3d;
 
     using ostk::physics::environment::magnetic::Dipole;
 

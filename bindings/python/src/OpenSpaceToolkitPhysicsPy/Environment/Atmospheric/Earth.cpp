@@ -14,8 +14,8 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
 {
     using namespace pybind11;
 
-    using ostk::core::types::Shared;
-    using ostk::core::types::Real;
+    using ostk::core::type::Shared;
+    using ostk::core::type::Real;
 
     using ostk::physics::environment::atmospheric::Earth;
     using EarthGravityModel = ostk::physics::environment::gravitational::Earth;

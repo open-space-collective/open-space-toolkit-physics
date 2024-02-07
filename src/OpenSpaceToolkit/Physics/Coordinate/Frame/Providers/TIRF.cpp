@@ -1,9 +1,9 @@
 /// Apache License 2.0
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
-#include <OpenSpaceToolkit/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Utility.hpp>
 
-#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformations/Rotations/RotationMatrix.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/RotationMatrix.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/TIRF.hpp>
@@ -44,7 +44,7 @@ bool TIRF::isDefined() const
 
 Transform TIRF::getTransformAt(const Instant& anInstant) const
 {
-    using ostk::math::geometry::d3::transformation::rotation::RotationMatrix;
+    using ostk::mathematics::geometry::d3::transformation::rotation::RotationMatrix;
 
     using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;

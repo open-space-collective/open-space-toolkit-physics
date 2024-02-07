@@ -8,8 +8,8 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object(pybind11::module& aModu
 {
     using namespace pybind11;
 
-    using ostk::core::types::Shared;
-    using ostk::core::types::String;
+    using ostk::core::type::Shared;
+    using ostk::core::type::String;
 
     using ostk::physics::time::Instant;
     using ostk::physics::environment::Object;

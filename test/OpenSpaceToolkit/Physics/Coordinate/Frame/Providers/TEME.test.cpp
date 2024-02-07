@@ -1,13 +1,13 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
-#include <OpenSpaceToolkit/Core/Containers/Table.hpp>
-#include <OpenSpaceToolkit/Core/Containers/Triple.hpp>
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
+#include <OpenSpaceToolkit/Core/Container/Array.hpp>
+#include <OpenSpaceToolkit/Core/Container/Table.hpp>
+#include <OpenSpaceToolkit/Core/Container/Triple.hpp>
+#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
-#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformations/Rotations/Quaternion.hpp>
-#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformations/Rotations/RotationVector.hpp>
-#include <OpenSpaceToolkit/Mathematics/Objects/Vector.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/Quaternion.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/RotationVector.hpp>
+#include <OpenSpaceToolkit/Mathematics/Object/Vector.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/ITRF.hpp>
@@ -16,16 +16,16 @@
 
 #include <Global.test.hpp>
 
-using ostk::core::types::Real;
-using ostk::core::ctnr::Triple;
-using ostk::core::ctnr::Array;
-using ostk::core::ctnr::Table;
+using ostk::core::type::Real;
+using ostk::core::container::Triple;
+using ostk::core::container::Array;
+using ostk::core::container::Table;
 using ostk::core::filesystem::Path;
 using ostk::core::filesystem::File;
 
-using ostk::math::object::Vector3d;
-using ostk::math::geometry::d3::transformation::rotation::Quaternion;
-using ostk::math::geometry::d3::transformation::rotation::RotationVector;
+using ostk::mathematics::object::Vector3d;
+using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
+using ostk::mathematics::geometry::d3::transformation::rotation::RotationVector;
 
 using ostk::physics::units::Angle;
 using ostk::physics::time::Scale;

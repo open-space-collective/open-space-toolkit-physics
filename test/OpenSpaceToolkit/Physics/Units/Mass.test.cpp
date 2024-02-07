@@ -1,6 +1,6 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
+#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
 #include <OpenSpaceToolkit/Physics/Units/Mass.hpp>
 
@@ -8,7 +8,7 @@
 
 TEST(OpenSpaceToolkit_Physics_Units_Mass, Constructor)
 {
-    using ostk::core::types::Real;
+    using ostk::core::type::Real;
     using ostk::physics::units::Mass;
 
     {
@@ -28,7 +28,7 @@ TEST(OpenSpaceToolkit_Physics_Units_Mass, Constructor)
 
 TEST(OpenSpaceToolkit_Physics_Units_Mass, IsDefined)
 {
-    using ostk::core::types::Real;
+    using ostk::core::type::Real;
     using ostk::physics::units::Mass;
 
     {

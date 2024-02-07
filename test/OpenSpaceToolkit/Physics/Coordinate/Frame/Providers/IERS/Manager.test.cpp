@@ -1,11 +1,11 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
-#include <OpenSpaceToolkit/Core/Containers/Table.hpp>
-#include <OpenSpaceToolkit/Core/Containers/Tuple.hpp>
+#include <OpenSpaceToolkit/Core/Container/Array.hpp>
+#include <OpenSpaceToolkit/Core/Container/Table.hpp>
+#include <OpenSpaceToolkit/Core/Container/Tuple.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
+#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
 #include <OpenSpaceToolkit/IO/URL.hpp>
 
@@ -16,15 +16,15 @@
 using ostk::core::filesystem::Path;
 using ostk::core::filesystem::File;
 using ostk::core::filesystem::Directory;
-using ostk::core::types::Real;
-using ostk::core::types::String;
-using ostk::core::ctnr::Tuple;
-using ostk::core::ctnr::Array;
-using ostk::core::ctnr::Table;
+using ostk::core::type::Real;
+using ostk::core::type::String;
+using ostk::core::container::Tuple;
+using ostk::core::container::Array;
+using ostk::core::container::Table;
 
 using ostk::io::URL;
 
-using ostk::math::object::Vector2d;
+using ostk::mathematics::object::Vector2d;
 
 using ostk::physics::time::Duration;
 using ostk::physics::time::Scale;
@@ -246,11 +246,11 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetPola
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetUt1MinusUtcAt)
 {
-    using ostk::core::types::Real;
-    using ostk::core::types::String;
-    using ostk::core::ctnr::Tuple;
-    using ostk::core::ctnr::Array;
-    using ostk::core::ctnr::Table;
+    using ostk::core::type::Real;
+    using ostk::core::type::String;
+    using ostk::core::container::Tuple;
+    using ostk::core::container::Array;
+    using ostk::core::container::Table;
 
     using ostk::physics::time::Scale;
     using ostk::physics::time::Instant;

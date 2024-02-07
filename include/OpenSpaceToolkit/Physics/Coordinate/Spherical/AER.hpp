@@ -3,7 +3,7 @@
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Spherical_AER__
 #define __OpenSpaceToolkit_Physics_Coordinate_Spherical_AER__
 
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
+#include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Derived/Angle.hpp>
@@ -20,9 +20,9 @@ namespace spherical
 
 #define DEFAULT_IS_Z_NEGATIVE true
 
-using ostk::core::types::String;
+using ostk::core::type::String;
 
-using ostk::math::object::Vector3d;
+using ostk::mathematics::object::Vector3d;
 
 using ostk::physics::units::Angle;
 using ostk::physics::units::Length;

@@ -6,7 +6,7 @@
 #include <boost/regex.hpp>
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
-#include <OpenSpaceToolkit/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>

@@ -6,9 +6,9 @@ inline void OpenSpaceToolkitPhysicsPy_Units_Mass(pybind11::module& aModule)
 {
     using namespace pybind11;
 
-    using ostk::core::types::Integer;
-    using ostk::core::types::Real;
-    using ostk::core::types::String;
+    using ostk::core::type::Integer;
+    using ostk::core::type::Real;
+    using ostk::core::type::String;
 
     using ostk::physics::units::Mass;
 
