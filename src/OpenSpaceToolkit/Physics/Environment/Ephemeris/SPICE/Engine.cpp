@@ -203,9 +203,9 @@ Engine& Engine::Get()
 
 Engine::Mode Engine::DefaultMode()
 {
-    static const Engine::Mode defaultMode = OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_ENGINE_MODE;
+    static const Engine::Mode defaultMode = OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_ENGINE_MODE;
 
-    if (const char* modeString = std::getenv("OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_ENGINE_MODE"))
+    if (const char* modeString = std::getenv("OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_ENGINE_MODE"))
     {
         if (strcmp(modeString, "Manual") == 0)
         {
