@@ -3,11 +3,11 @@
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Velocity__
 #define __OpenSpaceToolkit_Physics_Coordinate_Velocity__
 
-#include <OpenSpaceToolkit/Core/Types/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
+#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
+#include <OpenSpaceToolkit/Core/Type/Shared.hpp>
+#include <OpenSpaceToolkit/Core/Type/String.hpp>
 
-#include <OpenSpaceToolkit/Mathematics/Objects/Vector.hpp>
+#include <OpenSpaceToolkit/Mathematics/Object/Vector.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
@@ -22,11 +22,11 @@ namespace coord
 
 #define DEFAULT_PRECISION Integer::Undefined()
 
-using ostk::core::types::Shared;
-using ostk::core::types::Integer;
-using ostk::core::types::String;
+using ostk::core::type::Shared;
+using ostk::core::type::Integer;
+using ostk::core::type::String;
 
-using ostk::math::object::Vector3d;
+using ostk::mathematics::object::Vector3d;
 
 using ostk::physics::units::Derived;
 using ostk::physics::time::Instant;

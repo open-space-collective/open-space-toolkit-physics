@@ -1,7 +1,7 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
-#include <OpenSpaceToolkit/Core/Containers/Tuple.hpp>
+#include <OpenSpaceToolkit/Core/Container/Array.hpp>
+#include <OpenSpaceToolkit/Core/Container/Tuple.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
 
@@ -12,14 +12,14 @@
 
 #include <Global.test.hpp>
 
-using ostk::core::types::Real;
-using ostk::core::types::String;
-using ostk::core::ctnr::Tuple;
-using ostk::core::ctnr::Array;
+using ostk::core::type::Real;
+using ostk::core::type::String;
+using ostk::core::container::Tuple;
+using ostk::core::container::Array;
 using ostk::core::filesystem::Path;
 using ostk::core::filesystem::Directory;
 
-using ostk::math::object::Vector3d;
+using ostk::mathematics::object::Vector3d;
 
 using ostk::physics::time::Instant;
 using MoonGravitationalModel = ostk::physics::environment::gravitational::Moon;

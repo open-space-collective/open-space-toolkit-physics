@@ -6,7 +6,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_Exponential(
 {
     using namespace pybind11;
 
-    using ostk::core::types::Shared;
+    using ostk::core::type::Shared;
 
     using ostk::physics::time::Instant;
     using ostk::physics::coord::Position;

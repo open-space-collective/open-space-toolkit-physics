@@ -1,15 +1,15 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
-#include <OpenSpaceToolkit/Core/Types/Integer.hpp>
+#include <OpenSpaceToolkit/Core/Container/Array.hpp>
+#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
 
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
 #include <Global.test.hpp>
 
-using ostk::core::types::Uint8;
-using ostk::core::types::Uint16;
-using ostk::core::ctnr::Array;
+using ostk::core::type::Uint8;
+using ostk::core::type::Uint16;
+using ostk::core::container::Array;
 using ostk::physics::time::Scale;
 
 static const Array<Uint16> years = {1981, 2000, 2030};
@@ -1533,7 +1533,7 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, GetLeapSecondCount)
 
 TEST(OpenSpaceToolkit_Physics_Time_Instant, ToString)
 {
-    using ostk::core::types::String;
+    using ostk::core::type::String;
     using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Instant;
@@ -1769,7 +1769,7 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, DateTime)
 
 TEST(OpenSpaceToolkit_Physics_Time_Instant, JulianDate)
 {
-    using ostk::core::types::Real;
+    using ostk::core::type::Real;
     using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Instant;
@@ -1797,7 +1797,7 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, JulianDate)
 
 TEST(OpenSpaceToolkit_Physics_Time_Instant, ModifiedJulianDate)
 {
-    using ostk::core::types::Real;
+    using ostk::core::type::Real;
     using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Instant;
@@ -1824,7 +1824,7 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, Test_1)
 {
     // Test leap-second jump.
 
-    using ostk::core::ctnr::Array;
+    using ostk::core::container::Array;
 
     using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;

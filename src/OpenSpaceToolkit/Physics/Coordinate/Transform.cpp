@@ -1,9 +1,9 @@
 /// Apache License 2.0
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
-#include <OpenSpaceToolkit/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Utility.hpp>
 
-#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformations/Rotations/RotationVector.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/RotationVector.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
 
@@ -121,7 +121,7 @@ Transform& Transform::operator*=(const Transform& aTransform)
 
 std::ostream& operator<<(std::ostream& anOutputStream, const Transform& aTransform)
 {
-    using ostk::math::geometry::d3::transformation::rotation::RotationVector;
+    using ostk::mathematics::geometry::d3::transformation::rotation::RotationVector;
 
     using ostk::physics::time::Scale;
 

@@ -6,7 +6,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Instant(pybind11::module &aModule)
 {
     using namespace pybind11;
 
-    using ostk::core::types::String;
+    using ostk::core::type::String;
 
     using ostk::physics::time::Scale;
     using ostk::physics::time::Instant;

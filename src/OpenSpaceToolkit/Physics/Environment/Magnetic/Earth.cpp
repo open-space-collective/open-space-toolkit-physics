@@ -6,9 +6,9 @@
 #include <GeographicLib/Utility.hpp>
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
-#include <OpenSpaceToolkit/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Utility.hpp>
 
-#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformations/Rotations/RotationMatrix.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/RotationMatrix.hpp>
 
 #include <OpenSpaceToolkit/Physics/Environment/Magnetic/Dipole.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp>
@@ -84,9 +84,9 @@ Vector3d Earth::Impl::getFieldValueAt(const Vector3d& aPosition, const Instant& 
 {
     using GeographicLib::Geocentric;
 
-    using ostk::core::types::Integer;
+    using ostk::core::type::Integer;
 
-    using ostk::math::geometry::d3::transformation::rotation::RotationMatrix;
+    using ostk::mathematics::geometry::d3::transformation::rotation::RotationMatrix;
 
     using ostk::physics::time::Scale;
 
@@ -149,7 +149,7 @@ Vector3d Earth::Impl::getFieldValueAt(const Vector3d& aPosition, const Instant& 
 
 MagneticModel* Earth::Impl::MagneticModelFromType(const Earth::Type& aType, const Directory& aDataDirectory)
 {
-    using ostk::core::types::String;
+    using ostk::core::type::String;
 
     using ostk::physics::environment::magnetic::earth::Manager;
 

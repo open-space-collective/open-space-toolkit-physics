@@ -1,7 +1,7 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformations/Rotations/RotationMatrix.hpp>
-#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformations/Rotations/RotationVector.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/RotationMatrix.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/RotationVector.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Static.hpp>
@@ -11,14 +11,14 @@
 
 namespace iau = ostk::physics::coord::frame::providers::iau;
 
-using ostk::core::types::Shared;
-using ostk::core::types::Real;
-using ostk::core::types::String;
+using ostk::core::type::Shared;
+using ostk::core::type::Real;
+using ostk::core::type::String;
 
-using ostk::math::object::Vector3d;
-using ostk::math::geometry::d3::transformation::rotation::Quaternion;
-using ostk::math::geometry::d3::transformation::rotation::RotationVector;
-using ostk::math::geometry::d3::transformation::rotation::RotationMatrix;
+using ostk::mathematics::object::Vector3d;
+using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
+using ostk::mathematics::geometry::d3::transformation::rotation::RotationVector;
+using ostk::mathematics::geometry::d3::transformation::rotation::RotationMatrix;
 
 using ostk::physics::units::Angle;
 using ostk::physics::units::Length;

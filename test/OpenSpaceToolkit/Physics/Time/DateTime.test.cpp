@@ -4,7 +4,7 @@
 
 #include <Global.test.hpp>
 
-using ostk::core::types::Real;
+using ostk::core::type::Real;
 
 using ostk::physics::time::Date;
 using ostk::physics::time::Time;

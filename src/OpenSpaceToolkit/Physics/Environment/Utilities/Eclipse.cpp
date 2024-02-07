@@ -1,9 +1,9 @@
 /// Apache License 2.0
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
-#include <OpenSpaceToolkit/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Utility.hpp>
 
-#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/Segment.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Object/Segment.hpp>
 
 #include <OpenSpaceToolkit/Physics/Environment/Object.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Utilities/Eclipse.hpp>
@@ -21,9 +21,9 @@ Array<Interval> eclipseIntervalsAtPosition(
     const Interval& anAnalysisInterval, const Position& aPosition, const Environment& anEnvironment
 )
 {
-    using ostk::core::types::Shared;
+    using ostk::core::type::Shared;
 
-    using ostk::math::geometry::d3::objects::Segment;
+    using ostk::mathematics::geometry::d3::object::Segment;
 
     using ostk::physics::time::Instant;
     using ostk::physics::time::Duration;

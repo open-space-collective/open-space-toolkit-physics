@@ -9,8 +9,8 @@
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
-#include <OpenSpaceToolkit/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Type/String.hpp>
+#include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/IO/IP/TCP/HTTP/Client.hpp>
 
@@ -28,9 +28,9 @@ namespace physics
 namespace data
 {
 
-using ostk::core::types::String;
+using ostk::core::type::String;
 using ostk::core::filesystem::Path;
-using ostk::core::types::String;
+using ostk::core::type::String;
 
 using ostk::io::ip::tcp::http::Client;
 

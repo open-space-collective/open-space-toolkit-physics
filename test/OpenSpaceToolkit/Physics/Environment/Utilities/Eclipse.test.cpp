@@ -1,9 +1,9 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkit/Core/Containers/Table.hpp>
-#include <OpenSpaceToolkit/Core/Containers/Tuple.hpp>
-#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
+#include <OpenSpaceToolkit/Core/Container/Table.hpp>
+#include <OpenSpaceToolkit/Core/Container/Tuple.hpp>
+#include <OpenSpaceToolkit/Core/Type/Shared.hpp>
+#include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
@@ -18,12 +18,12 @@
 
 #include <Global.test.hpp>
 
-using ostk::core::types::Index;
-using ostk::core::types::Shared;
-using ostk::core::types::String;
-using ostk::core::ctnr::Tuple;
-using ostk::core::ctnr::Array;
-using ostk::core::ctnr::Table;
+using ostk::core::type::Index;
+using ostk::core::type::Shared;
+using ostk::core::type::String;
+using ostk::core::container::Tuple;
+using ostk::core::container::Array;
+using ostk::core::container::Table;
 using ostk::core::filesystem::Path;
 using ostk::core::filesystem::File;
 

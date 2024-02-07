@@ -3,9 +3,9 @@
 #ifndef __OpenSpaceToolkit_Physics_Time_Duration__
 #define __OpenSpaceToolkit_Physics_Time_Duration__
 
-#include <OpenSpaceToolkit/Core/Types/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
+#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
+#include <OpenSpaceToolkit/Core/Type/Real.hpp>
+#include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 #include <OpenSpaceToolkit/Physics/Units/Time.hpp>
 
@@ -16,10 +16,10 @@ namespace physics
 namespace time
 {
 
-using ostk::core::types::Int64;
-using ostk::core::types::Integer;
-using ostk::core::types::Real;
-using ostk::core::types::String;
+using ostk::core::type::Int64;
+using ostk::core::type::Integer;
+using ostk::core::type::Real;
+using ostk::core::type::String;
 
 class Instant;
 

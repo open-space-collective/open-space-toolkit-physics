@@ -4,7 +4,7 @@
 #define __OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Kernel__
 
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
+#include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
@@ -21,7 +21,7 @@ namespace spice
 
 namespace filesystem = ostk::core::filesystem;
 
-using ostk::core::types::String;
+using ostk::core::type::String;
 
 using ostk::physics::time::Instant;
 

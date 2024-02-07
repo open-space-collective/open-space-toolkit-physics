@@ -8,7 +8,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_DateTime(pybind11::module& aModule)
 {
     using namespace pybind11;
 
-    using ostk::core::types::String;
+    using ostk::core::type::String;
 
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Date;

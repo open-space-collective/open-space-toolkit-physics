@@ -5,9 +5,9 @@
 
 #include <mutex>
 
-#include <OpenSpaceToolkit/Core/Containers/Map.hpp>
-#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
+#include <OpenSpaceToolkit/Core/Container/Map.hpp>
+#include <OpenSpaceToolkit/Core/Type/Shared.hpp>
+#include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
@@ -22,9 +22,9 @@ namespace coord
 namespace frame
 {
 
-using ostk::core::types::Shared;
-using ostk::core::types::String;
-using ostk::core::ctnr::Map;
+using ostk::core::type::Shared;
+using ostk::core::type::String;
+using ostk::core::container::Map;
 
 using ostk::physics::time::Instant;
 using ostk::physics::coord::Frame;

@@ -6,9 +6,9 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Axes(pybind11::module& aModule)
 {
     using namespace pybind11;
 
-    using ostk::core::types::Shared;
+    using ostk::core::type::Shared;
 
-    using ostk::math::object::Vector3d;
+    using ostk::mathematics::object::Vector3d;
 
     using ostk::physics::coord::Axes;
     using ostk::physics::coord::Frame;

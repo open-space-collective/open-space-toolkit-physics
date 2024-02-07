@@ -5,12 +5,12 @@
 
 #include <mutex>
 
-#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
+#include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
-#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
+#include <OpenSpaceToolkit/Core/Type/Shared.hpp>
+#include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 #include <OpenSpaceToolkit/IO/URL.hpp>
 
@@ -35,9 +35,9 @@ namespace ephemerides
 namespace spice
 {
 
-using ostk::core::types::Shared;
-using ostk::core::types::String;
-using ostk::core::ctnr::Array;
+using ostk::core::type::Shared;
+using ostk::core::type::String;
+using ostk::core::container::Array;
 using ostk::core::filesystem::Path;
 using ostk::core::filesystem::File;
 using ostk::core::filesystem::Directory;

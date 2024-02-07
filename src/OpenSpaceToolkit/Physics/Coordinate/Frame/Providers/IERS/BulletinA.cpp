@@ -7,8 +7,8 @@
 #include <boost/lexical_cast.hpp>
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
-#include <OpenSpaceToolkit/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Type/String.hpp>
+#include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/BulletinA.hpp>
 #include <OpenSpaceToolkit/Physics/Data/Utilities.hpp>
@@ -30,7 +30,7 @@ using ostk::physics::data::utilities::getFileModifiedInstant;
 
 std::ostream& operator<<(std::ostream& anOutputStream, const BulletinA& aBulletinA)
 {
-    using ostk::core::types::String;
+    using ostk::core::type::String;
 
     using ostk::physics::time::Scale;
 
@@ -281,7 +281,7 @@ Interval BulletinA::getPredictionInterval() const
 
 BulletinA::Prediction BulletinA::getPredictionAt(const Instant& anInstant) const
 {
-    using ostk::core::types::Real;
+    using ostk::core::type::Real;
 
     using ostk::physics::time::Scale;
 
@@ -365,11 +365,11 @@ BulletinA BulletinA::Undefined()
 
 BulletinA BulletinA::Load(const filesystem::File& aFile)
 {
-    using ostk::core::types::Index;
-    using ostk::core::types::Uint8;
-    using ostk::core::types::Uint16;
-    using ostk::core::types::Real;
-    using ostk::core::types::String;
+    using ostk::core::type::Index;
+    using ostk::core::type::Uint8;
+    using ostk::core::type::Uint16;
+    using ostk::core::type::Real;
+    using ostk::core::type::String;
 
     using ostk::physics::time::Scale;
     using ostk::physics::time::Time;

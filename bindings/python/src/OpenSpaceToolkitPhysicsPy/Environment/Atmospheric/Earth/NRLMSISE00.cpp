@@ -8,8 +8,8 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_NRLMSISE00(p
 {
     using namespace pybind11;
 
-    using ostk::core::types::Shared;
-    using ostk::core::types::Real;
+    using ostk::core::type::Shared;
+    using ostk::core::type::Real;
 
     using ostk::physics::units::Length;
     using ostk::physics::time::Instant;

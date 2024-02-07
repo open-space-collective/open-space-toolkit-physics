@@ -3,9 +3,9 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Object__
 #define __OpenSpaceToolkit_Physics_Environment_Object__
 
-#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
-#include <OpenSpaceToolkit/Core/Types/Unique.hpp>
+#include <OpenSpaceToolkit/Core/Type/Shared.hpp>
+#include <OpenSpaceToolkit/Core/Type/String.hpp>
+#include <OpenSpaceToolkit/Core/Type/Unique.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Object.hpp>
 
@@ -24,9 +24,9 @@ namespace physics
 namespace environment
 {
 
-using ostk::core::types::Unique;
-using ostk::core::types::Shared;
-using ostk::core::types::String;
+using ostk::core::type::Unique;
+using ostk::core::type::Shared;
+using ostk::core::type::String;
 
 using ostk::physics::time::Instant;
 using ostk::physics::coord::Position;

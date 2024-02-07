@@ -5,13 +5,13 @@
 #include <cstring>
 #include <thread>
 
-#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
-#include <OpenSpaceToolkit/Core/Containers/Dictionary.hpp>
-#include <OpenSpaceToolkit/Core/Containers/Object.hpp>
-#include <OpenSpaceToolkit/Core/Containers/Pair.hpp>
+#include <OpenSpaceToolkit/Core/Container/Array.hpp>
+#include <OpenSpaceToolkit/Core/Container/Dictionary.hpp>
+#include <OpenSpaceToolkit/Core/Container/Object.hpp>
+#include <OpenSpaceToolkit/Core/Container/Pair.hpp>
 #include <OpenSpaceToolkit/Core/Error.hpp>
-#include <OpenSpaceToolkit/Core/Types/Index.hpp>
-#include <OpenSpaceToolkit/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Type/Index.hpp>
+#include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/IO/IP/TCP/HTTP/Client.hpp>
 
@@ -110,8 +110,8 @@ void Manager::reset()
 
 void Manager::fetchDataFilesForType(const EarthGravitationalModel::Type& aModelType) const
 {
-    using ostk::core::types::Index;
-    using ostk::core::types::Size;
+    using ostk::core::type::Index;
+    using ostk::core::type::Size;
 
     using ostk::io::ip::tcp::http::Client;
 

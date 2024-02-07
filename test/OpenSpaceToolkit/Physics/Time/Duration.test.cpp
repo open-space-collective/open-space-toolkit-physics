@@ -6,9 +6,9 @@
 
 #include <Global.test.hpp>
 
-using ostk::core::types::Real;
+using ostk::core::type::Real;
 
-using ostk::core::types::Int64;
+using ostk::core::type::Int64;
 using ostk::physics::time::Duration;
 using ostk::physics::time::Scale;
 using ostk::physics::time::DateTime;

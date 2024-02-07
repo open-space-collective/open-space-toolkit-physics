@@ -6,11 +6,11 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(pybind11::module& aMo
 {
     using namespace pybind11;
 
-    using ostk::core::types::Real;
+    using ostk::core::type::Real;
 
-    using ostk::math::object::Vector3d;
-    using ostk::math::geometry::d3::transformation::rotation::Quaternion;
-    using ostk::math::geometry::d3::transformation::rotation::RotationVector;
+    using ostk::mathematics::object::Vector3d;
+    using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
+    using ostk::mathematics::geometry::d3::transformation::rotation::RotationVector;
 
     using ostk::physics::time::Instant;
 

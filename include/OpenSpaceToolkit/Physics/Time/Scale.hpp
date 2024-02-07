@@ -3,7 +3,7 @@
 #ifndef __OpenSpaceToolkit_Physics_Time_Scale__
 #define __OpenSpaceToolkit_Physics_Time_Scale__
 
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
+#include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 namespace ostk
 {
@@ -12,7 +12,7 @@ namespace physics
 namespace time
 {
 
-using ostk::core::types::String;
+using ostk::core::type::String;
 
 /// @brief                      Time scale
 ///

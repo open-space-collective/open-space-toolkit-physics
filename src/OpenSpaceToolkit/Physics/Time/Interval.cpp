@@ -3,7 +3,7 @@
 #include <boost/regex.hpp>
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
-#include <OpenSpaceToolkit/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Physics/Time/Interval.hpp>
 
@@ -15,7 +15,7 @@ namespace time
 {
 
 Interval::Interval(const Instant& aLowerBound, const Instant& anUpperBound, const Interval::Type& anIntervalType)
-    : math::object::Interval<Instant>(aLowerBound, anUpperBound, anIntervalType)
+    : mathematics::object::Interval<Instant>(aLowerBound, anUpperBound, anIntervalType)
 {
 }
 
@@ -35,7 +35,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Interval& anInterva
 
 bool Interval::isDefined() const
 {
-    return math::object::Interval<Instant>::isDefined() && (this->getType() != Interval::Type::Undefined);
+    return mathematics::object::Interval<Instant>::isDefined() && (this->getType() != Interval::Type::Undefined);
 }
 
 const Instant& Interval::accessStart() const
@@ -154,8 +154,8 @@ Array<Instant> Interval::generateGrid(const Duration& aTimeStep) const
 {
     return this->generateArrayWithStep(aTimeStep);
 
-    // using ostk::core::types::Index ;
-    // using ostk::core::types::Size ;
+    // using ostk::core::type::Index ;
+    // using ostk::core::type::Size ;
 
     // if (!this->isDefined())
     // {

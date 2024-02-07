@@ -1,6 +1,6 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkit/Mathematics/Objects/Interval.hpp>
+#include <OpenSpaceToolkit/Mathematics/Object/Interval.hpp>
 
 #include <OpenSpaceToolkit/Physics/Units/ElectricCurrent.hpp>
 
@@ -8,8 +8,8 @@ inline void OpenSpaceToolkitPhysicsPy_Units_ElectricCurrent(pybind11::module& aM
 {
     using namespace pybind11;
 
-    using ostk::core::types::Integer;
-    using ostk::core::types::Real;
+    using ostk::core::type::Integer;
+    using ostk::core::type::Real;
 
     using ostk::physics::units::ElectricCurrent;
 

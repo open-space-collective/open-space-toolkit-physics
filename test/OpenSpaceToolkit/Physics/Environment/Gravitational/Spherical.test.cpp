@@ -7,9 +7,9 @@
 
 #include <Global.test.hpp>
 
-using ostk::core::types::Real;
+using ostk::core::type::Real;
 
-using ostk::math::object::Vector3d;
+using ostk::mathematics::object::Vector3d;
 
 using ostk::physics::units::Length;
 using ostk::physics::units::Time;

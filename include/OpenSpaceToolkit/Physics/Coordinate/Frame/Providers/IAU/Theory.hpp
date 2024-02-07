@@ -3,7 +3,7 @@
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IAU_Theory__
 #define __OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IAU_Theory__
 
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
+#include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 namespace ostk
 {
@@ -18,7 +18,7 @@ namespace providers
 namespace iau
 {
 
-using ostk::core::types::String;
+using ostk::core::type::String;
 
 /// @brief                      IAU theory.
 ///

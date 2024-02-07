@@ -6,8 +6,8 @@ inline void OpenSpaceToolkitPhysicsPy_Units_Derived(pybind11::module& aModule)
 {
     using namespace pybind11;
 
-    using ostk::core::types::Integer;
-    using ostk::core::types::Real;
+    using ostk::core::type::Integer;
+    using ostk::core::type::Real;
 
     using ostk::physics::units::Length;
     using ostk::physics::units::Mass;

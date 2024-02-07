@@ -4,9 +4,9 @@
 #define __OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth__
 
 #include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
-#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
-#include <OpenSpaceToolkit/Core/Types/Unique.hpp>
+#include <OpenSpaceToolkit/Core/Type/Real.hpp>
+#include <OpenSpaceToolkit/Core/Type/Shared.hpp>
+#include <OpenSpaceToolkit/Core/Type/Unique.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
@@ -25,9 +25,9 @@ namespace environment
 namespace atmospheric
 {
 
-using ostk::core::types::Unique;
-using ostk::core::types::Real;
-using ostk::core::types::Shared;
+using ostk::core::type::Unique;
+using ostk::core::type::Real;
+using ostk::core::type::Shared;
 using ostk::core::filesystem::Directory;
 
 using ostk::physics::time::Instant;

@@ -3,11 +3,11 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Data_Manifest__
 #define __OpenSpaceToolkit_Physics_Environment_Data_Manifest__
 
-#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
-#include <OpenSpaceToolkit/Core/Containers/Dictionary.hpp>
-#include <OpenSpaceToolkit/Core/Containers/Map.hpp>
+#include <OpenSpaceToolkit/Core/Container/Array.hpp>
+#include <OpenSpaceToolkit/Core/Container/Dictionary.hpp>
+#include <OpenSpaceToolkit/Core/Container/Map.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
+#include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 #include <OpenSpaceToolkit/IO/URL.hpp>
 
@@ -21,11 +21,11 @@ namespace physics
 namespace data
 {
 
-using ostk::core::types::String;
-using ostk::core::ctnr::Array;
-using ostk::core::ctnr::Map;
+using ostk::core::type::String;
+using ostk::core::container::Array;
+using ostk::core::container::Map;
 using ostk::core::filesystem::File;
-using ostk::core::ctnr::Dictionary;
+using ostk::core::container::Dictionary;
 
 using ostk::io::URL;
 

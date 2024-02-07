@@ -3,9 +3,9 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Gravitational_Model__
 #define __OpenSpaceToolkit_Physics_Environment_Gravitational_Model__
 
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
+#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
-#include <OpenSpaceToolkit/Mathematics/Objects/Vector.hpp>
+#include <OpenSpaceToolkit/Mathematics/Object/Vector.hpp>
 
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Units/Derived.hpp>
@@ -20,9 +20,9 @@ namespace environment
 namespace gravitational
 {
 
-using ostk::core::types::Real;
+using ostk::core::type::Real;
 
-using ostk::math::object::Vector3d;
+using ostk::mathematics::object::Vector3d;
 
 using ostk::physics::time::Instant;
 using ostk::physics::units::Derived;

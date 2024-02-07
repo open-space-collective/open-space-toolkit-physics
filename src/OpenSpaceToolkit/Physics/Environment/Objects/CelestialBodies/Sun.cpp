@@ -1,7 +1,7 @@
 /// Apache License 2.0
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
-#include <OpenSpaceToolkit/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Static.hpp>
@@ -61,7 +61,7 @@ Sun Sun::Spherical()
 
 Object::Geometry Sun::Geometry(const Shared<const Frame>& aFrame)
 {
-    using ostk::math::geometry::d3::objects::Point;
+    using ostk::mathematics::geometry::d3::object::Point;
 
     // [TBI] inherit from actual gravitational model if present
     const Real equatorialRadius_m = SunGravitationalModel::Spherical.equatorialRadius_.inMeters();

@@ -3,7 +3,7 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Ephemeris__
 #define __OpenSpaceToolkit_Physics_Environment_Ephemeris__
 
-#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
+#include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
@@ -16,7 +16,7 @@ namespace physics
 namespace environment
 {
 
-using ostk::core::types::Shared;
+using ostk::core::type::Shared;
 
 using ostk::physics::coord::Frame;
 

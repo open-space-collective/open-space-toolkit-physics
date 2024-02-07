@@ -10,8 +10,8 @@
 
 #include <Global.test.hpp>
 
-using ostk::core::types::String;
-using ostk::core::types::Real;
+using ostk::core::type::String;
+using ostk::core::type::Real;
 
 using ostk::physics::units::Length;
 using ostk::physics::units::Angle;

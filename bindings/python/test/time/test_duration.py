@@ -2,7 +2,7 @@
 
 from datetime import timedelta
 
-from ostk.core.types import String
+from ostk.core.type import String
 
 from ostk.physics.units import Time
 from ostk.physics.time import Instant

@@ -3,7 +3,7 @@
 #ifndef __OpenSpaceToolkit_Physics_Data_Direction__
 #define __OpenSpaceToolkit_Physics_Data_Direction__
 
-#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
+#include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Data/Vector.hpp>
@@ -15,11 +15,11 @@ namespace physics
 namespace data
 {
 
-using ostk::core::types::Shared;
-using ostk::core::types::Integer;
-using ostk::core::types::String;
+using ostk::core::type::Shared;
+using ostk::core::type::Integer;
+using ostk::core::type::String;
 
-using ostk::math::object::Vector3d;
+using ostk::mathematics::object::Vector3d;
 
 using ostk::physics::time::Instant;
 using ostk::physics::coord::Frame;

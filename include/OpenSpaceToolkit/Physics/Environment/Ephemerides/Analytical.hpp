@@ -3,7 +3,7 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Ephemerides_Analytical__
 #define __OpenSpaceToolkit_Physics_Environment_Ephemerides_Analytical__
 
-#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
+#include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp>
@@ -18,7 +18,7 @@ namespace environment
 namespace ephemerides
 {
 
-using ostk::core::types::Shared;
+using ostk::core::type::Shared;
 
 using ostk::physics::time::Instant;
 using ostk::physics::coord::Frame;

@@ -1,7 +1,7 @@
 /// Apache License 2.0
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
-#include <OpenSpaceToolkit/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
@@ -177,8 +177,8 @@ Object::Geometry Earth::Geometry(
     const Length& anEquatorialRadius, const Real& aFlattening, const Shared<const Frame>& aFrameSPtr
 )
 {
-    using ostk::math::geometry::d3::objects::Point;
-    using ostk::math::geometry::d3::transformation::rotation::Quaternion;
+    using ostk::mathematics::geometry::d3::object::Point;
+    using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
 
     const Real equatorialRadius_m = anEquatorialRadius.inMeters();
     const Real polarRadius_m = equatorialRadius_m * (1.0 - aFlattening);

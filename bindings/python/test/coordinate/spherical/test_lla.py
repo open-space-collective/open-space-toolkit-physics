@@ -3,7 +3,7 @@
 import pytest
 import numpy as np
 
-from ostk.core.types import String
+from ostk.core.type import String
 
 from ostk.physics.units import Angle, Length
 from ostk.physics.coordinate.spherical import LLA

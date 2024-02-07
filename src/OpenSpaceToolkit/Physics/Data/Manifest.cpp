@@ -1,7 +1,7 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkit/Core/Containers/Dictionary.hpp>
-#include <OpenSpaceToolkit/Core/Containers/Object.hpp>
+#include <OpenSpaceToolkit/Core/Container/Dictionary.hpp>
+#include <OpenSpaceToolkit/Core/Container/Object.hpp>
 #include <OpenSpaceToolkit/Core/Error.hpp>
 
 #include <OpenSpaceToolkit/Physics/Data/Manifest.hpp>
@@ -15,8 +15,8 @@ namespace physics
 {
 namespace data
 {
-using ostk::core::ctnr::Object;
-using ostk::core::ctnr::Dictionary;
+using ostk::core::container::Object;
+using ostk::core::container::Dictionary;
 
 using ostk::physics::data::utilities::getFileModifiedInstant;
 using ostk::physics::time::Instant;

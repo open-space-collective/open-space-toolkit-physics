@@ -5,10 +5,10 @@
 
 #include <Global.test.hpp>
 
-using ostk::core::types::Shared;
-using ostk::core::types::Real;
+using ostk::core::type::Shared;
+using ostk::core::type::Real;
 
-using ostk::math::object::Vector3d;
+using ostk::mathematics::object::Vector3d;
 
 using ostk::physics::coord::Frame;
 using ostk::physics::coord::Position;

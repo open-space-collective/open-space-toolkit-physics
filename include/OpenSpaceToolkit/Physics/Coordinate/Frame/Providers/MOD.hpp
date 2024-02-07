@@ -33,7 +33,7 @@ using ostk::physics::coord::Transform;
 ///                             this rotation is what is usually called the J2000 reference frame.
 ///
 /// @ref                        https://en.wikipedia.org/wiki/Earth-centered_inertial
-/// @ref https://github.com/JuliaSpace/SatelliteToolbox.jl/blob/master/src/transformations/fk5/fk5.jl#L396
+/// @ref https://github.com/JuliaSpace/SatelliteToolbox.jl/blob/master/src/Transformation/fk5/fk5.jl#L396
 
 class MOD : public Provider
 {

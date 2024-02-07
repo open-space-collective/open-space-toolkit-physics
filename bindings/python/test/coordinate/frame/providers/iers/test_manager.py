@@ -9,8 +9,6 @@ from ostk.core.filesystem import Path
 from ostk.core.filesystem import File
 from ostk.core.filesystem import Directory
 
-from ostk.io import URL
-
 from ostk.physics.time import Scale
 from ostk.physics.time import Instant
 from ostk.physics.time import Duration

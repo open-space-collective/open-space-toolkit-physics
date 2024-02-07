@@ -4,10 +4,10 @@
 #include <iomanip>
 #include <stdlib.h>
 
-#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
-#include <OpenSpaceToolkit/Core/Containers/Triple.hpp>
+#include <OpenSpaceToolkit/Core/Container/Array.hpp>
+#include <OpenSpaceToolkit/Core/Container/Triple.hpp>
 #include <OpenSpaceToolkit/Core/Error.hpp>
-#include <OpenSpaceToolkit/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
@@ -227,7 +227,7 @@ bool Instant::isNear(const Instant& anInstant, const Duration& aTolerance) const
 
 time::DateTime Instant::getDateTime(const Scale& aTimeScale) const
 {
-    using ostk::core::types::Uint8;
+    using ostk::core::type::Uint8;
 
     if (aTimeScale == Scale::Undefined)
     {
@@ -415,7 +415,7 @@ Instant Instant::J2000()
 
 Instant Instant::DateTime(const time::DateTime& aDateTime, const Scale& aTimeScale)
 {
-    using ostk::core::types::Int32;
+    using ostk::core::type::Int32;
 
     if (!aDateTime.isDefined())
     {
@@ -727,8 +727,8 @@ Int64 Instant::dAT_UTC(const Instant::Count& aCount_UTC)
 {
     // [TBI] Implement dAT automatic manager
 
-    using ostk::core::ctnr::Array;
-    using ostk::core::ctnr::Triple;
+    using ostk::core::container::Array;
+    using ostk::core::container::Triple;
 
     if (aCount_UTC.postEpoch_)
     {
@@ -829,8 +829,8 @@ Int64 Instant::dAT_TAI(const Instant::Count& aCount_TAI)
 {
     // [TBI] Implement dAT automatic manager
 
-    using ostk::core::ctnr::Array;
-    using ostk::core::ctnr::Triple;
+    using ostk::core::container::Array;
+    using ostk::core::container::Triple;
 
     if (aCount_TAI.postEpoch_)
     {
@@ -1064,7 +1064,7 @@ Instant::Count Instant::Count::operator-(Int64 aNanosecondDisplacement) const
 
 String Instant::Count::toString() const
 {
-    using ostk::core::types::Integer;
+    using ostk::core::type::Integer;
 
     return postEpoch_ ? ("+" + std::to_string(countFromEpoch_)) : ("-" + std::to_string(countFromEpoch_));
 }

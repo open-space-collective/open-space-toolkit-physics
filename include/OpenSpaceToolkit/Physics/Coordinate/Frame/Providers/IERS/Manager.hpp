@@ -5,12 +5,12 @@
 
 #include <mutex>
 
-#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
+#include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
-#include <OpenSpaceToolkit/Core/Types/Index.hpp>
-#include <OpenSpaceToolkit/Core/Types/Real.hpp>
+#include <OpenSpaceToolkit/Core/Type/Index.hpp>
+#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
-#include <OpenSpaceToolkit/Mathematics/Objects/Vector.hpp>
+#include <OpenSpaceToolkit/Mathematics/Object/Vector.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/BulletinA.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Finals2000A.hpp>
@@ -35,12 +35,12 @@ namespace provider
 namespace iers
 {
 
-using ostk::core::types::Index;
-using ostk::core::types::Real;
-using ostk::core::ctnr::Array;
+using ostk::core::type::Index;
+using ostk::core::type::Real;
+using ostk::core::container::Array;
 using ostk::core::filesystem::Directory;
 
-using ostk::math::object::Vector2d;
+using ostk::mathematics::object::Vector2d;
 
 using ostk::physics::time::Instant;
 using ostk::physics::time::Duration;

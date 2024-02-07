@@ -13,7 +13,7 @@
 
 using ostk::core::filesystem::File;
 using ostk::core::filesystem::Path;
-using ostk::core::types::String;
+using ostk::core::type::String;
 
 using ostk::physics::time::Scale;
 using ostk::physics::time::Instant;
