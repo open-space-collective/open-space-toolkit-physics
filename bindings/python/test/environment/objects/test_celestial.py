@@ -1,6 +1,6 @@
 # Apache License 2.0
 
-from ostk.physics.environment.objects.celestial import Earth
+from ostk.physics.environment.object.celestial import Earth
 
 
 class TestCelestial:

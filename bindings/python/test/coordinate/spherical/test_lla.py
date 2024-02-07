@@ -5,7 +5,7 @@ import numpy as np
 
 from ostk.core.type import String
 
-from ostk.physics.units import Angle, Length
+from ostk.physics.unit import Angle, Length
 from ostk.physics.coordinate.spherical import LLA
 from ostk.physics.environment.gravitational import Earth as EarthGravitationalModel
 

@@ -9,7 +9,7 @@ from ostk.physics.time import Instant
 
 import ostk.physics as physics
 
-Finals2000A = physics.coordinate.frame.providers.iers.Finals2000A
+Finals2000A = physics.coordinate.frame.provider.iers.Finals2000A
 
 
 class TestFinals2000A:

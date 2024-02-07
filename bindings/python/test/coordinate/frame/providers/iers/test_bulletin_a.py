@@ -9,7 +9,7 @@ from ostk.physics.time import Instant
 
 import ostk.physics as physics
 
-BulletinA = physics.coordinate.frame.providers.iers.BulletinA
+BulletinA = physics.coordinate.frame.provider.iers.BulletinA
 
 
 class TestBulletinA:

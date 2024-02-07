@@ -7,8 +7,8 @@ from ostk.core.type import String
 
 import ostk.physics as physics
 
-Angle = physics.units.Angle
-Length = physics.units.Length
+Angle = physics.unit.Angle
+Length = physics.unit.Length
 AER = physics.coordinate.spherical.AER
 
 

@@ -13,9 +13,9 @@ from ostk.physics.time import Scale
 from ostk.physics.time import Instant
 from ostk.physics.time import Duration
 
-from ostk.physics.coordinate.frame.providers.iers import Manager
-from ostk.physics.coordinate.frame.providers.iers import BulletinA
-from ostk.physics.coordinate.frame.providers.iers import Finals2000A
+from ostk.physics.coordinate.frame.provider.iers import Manager
+from ostk.physics.coordinate.frame.provider.iers import BulletinA
+from ostk.physics.coordinate.frame.provider.iers import Finals2000A
 
 
 @pytest.fixture

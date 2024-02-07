@@ -9,8 +9,8 @@ from ostk.core.filesystem import File
 
 import ostk.physics as physics
 
-BulletinA = physics.coordinate.frame.providers.iers.BulletinA
-Finals2000A = physics.coordinate.frame.providers.iers.Finals2000A
+BulletinA = physics.coordinate.frame.provider.iers.BulletinA
+Finals2000A = physics.coordinate.frame.provider.iers.Finals2000A
 
 
 @pytest.fixture

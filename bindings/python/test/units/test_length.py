@@ -6,9 +6,9 @@ from ostk.core.type import Real, String
 
 import ostk.physics as physics
 
-Length = physics.units.Length
+Length = physics.unit.Length
 Unit = Length.Unit
-Interval = physics.units.Interval
+Interval = physics.unit.Interval
 
 
 def test_units_length_unit():

@@ -7,7 +7,7 @@ import numpy as np
 from ostk.core.filesystem import Directory
 
 from ostk.physics.environment.magnetic import Earth as EarthMagneticModel
-from ostk.physics.environment.objects.celestial import Earth
+from ostk.physics.environment.object.celestial import Earth
 
 
 @pytest.fixture

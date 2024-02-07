@@ -2,4 +2,4 @@
 
 import pytest
 
-from ostk.physics.units import ElectricCurrent
+from ostk.physics.unit import ElectricCurrent

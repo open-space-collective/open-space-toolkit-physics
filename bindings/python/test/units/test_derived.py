@@ -4,10 +4,10 @@ import pytest
 
 import ostk.physics as physics
 
-Length = physics.units.Length
-Time = physics.units.Time
-Angle = physics.units.Angle
-Derived = physics.units.Derived
+Length = physics.unit.Length
+Time = physics.unit.Time
+Angle = physics.unit.Angle
+Derived = physics.unit.Derived
 
 
 def test_units_derived_unit_constructors():

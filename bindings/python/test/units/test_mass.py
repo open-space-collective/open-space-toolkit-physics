@@ -6,7 +6,7 @@ from ostk.core.type import Real, String
 
 import ostk.physics as physics
 
-Mass = physics.units.Mass
+Mass = physics.unit.Mass
 Unit = Mass.Unit
 
 

@@ -1,6 +1,6 @@
 # Apache License 2.0
 
-from ostk.physics.environment.objects.celestial import Sun
+from ostk.physics.environment.object.celestial import Sun
 
 
 class TestSun:

@@ -66,5 +66,4 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame(pybind11::module& aModule
     frame.attr("__path__") = "ostk.physics.coordinate.frame";
 
     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider(frame);
-    OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider(frame);
 }

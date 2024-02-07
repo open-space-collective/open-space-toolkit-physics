@@ -4,7 +4,7 @@ import pytest
 
 import ostk.physics as physics
 
-Time = physics.units.Time
+Time = physics.unit.Time
 Unit = Time.Unit
 
 

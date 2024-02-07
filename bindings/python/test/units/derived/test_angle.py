@@ -5,7 +5,7 @@ import math
 import pytest
 
 from ostk.mathematics.geometry import Angle as AngleMathematics
-from ostk.physics.units import Angle as AnglePhysics
+from ostk.physics.unit import Angle as AnglePhysics
 
 Unit = AnglePhysics.Unit
 
