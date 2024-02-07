@@ -10,9 +10,9 @@
 #include <OpenSpaceToolkit/Mathematics/Object/Vector.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
-#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/GCRF.hpp>
-#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/MOD.hpp>
-#include <OpenSpaceToolkit/Physics/Units/Derived/Angle.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/GCRF.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp>
+#include <OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp>
 
 #include <Global.test.hpp>
 
@@ -27,7 +27,7 @@ using ostk::mathematics::object::Vector3d;
 using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
 using ostk::mathematics::geometry::d3::transformation::rotation::RotationVector;
 
-using ostk::physics::units::Angle;
+using ostk::physics::unit::Angle;
 using ostk::physics::time::Scale;
 using ostk::physics::time::Instant;
 using ostk::physics::time::DateTime;
@@ -35,7 +35,7 @@ using ostk::physics::coord::Frame;
 using ostk::physics::coord::frame::Transform;
 using ostk::physics::coord::frame::provider::MOD;
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_MOD, GetTransformAt)
+TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_MOD, GetTransformAt)
 {
     {
         // https://github.com/JuliaSpace/SatelliteToolbox.jl/blob/master/test/Transformation/fk5/fk5.jl#L635

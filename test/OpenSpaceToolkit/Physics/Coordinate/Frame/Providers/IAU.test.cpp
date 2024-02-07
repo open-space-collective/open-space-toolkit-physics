@@ -4,9 +4,9 @@
 
 #include <Global.test.hpp>
 
-namespace iau = ostk::physics::coord::frame::providers::iau;
+namespace iau = ostk::physics::coord::frame::provider::iau;
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IAU_Theory, StringFromTheory)
+TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IAU_Theory, StringFromTheory)
 {
     {
         EXPECT_EQ("IAU 2000A", iau::StringFromTheory(iau::Theory::IAU_2000A));
@@ -15,7 +15,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IAU_Theory, StringFromT
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IAU_Theory, TheoryFromString)
+TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IAU_Theory, TheoryFromString)
 {
     {
         EXPECT_EQ(iau::Theory::IAU_2000A, iau::TheoryFromString("IAU 2000A"));

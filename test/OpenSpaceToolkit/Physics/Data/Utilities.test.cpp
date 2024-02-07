@@ -7,7 +7,7 @@
 #include <stdexcept>
 #include <string>
 
-#include <OpenSpaceToolkit/Physics/Data/Utilities.hpp>
+#include <OpenSpaceToolkit/Physics/Data/Utility.hpp>
 
 #include <Global.test.hpp>
 

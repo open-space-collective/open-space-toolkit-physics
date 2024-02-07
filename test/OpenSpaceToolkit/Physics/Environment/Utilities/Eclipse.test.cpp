@@ -8,8 +8,8 @@
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
 #include <OpenSpaceToolkit/Physics/Environment.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Utilities/Eclipse.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp>
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
@@ -32,8 +32,8 @@ using ostk::physics::time::Instant;
 using ostk::physics::time::Duration;
 using ostk::physics::time::Interval;
 using ostk::physics::time::DateTime;
-using ostk::physics::units::Length;
-using ostk::physics::units::Angle;
+using ostk::physics::unit::Length;
+using ostk::physics::unit::Angle;
 using ostk::physics::coord::Position;
 using ostk::physics::coord::Frame;
 using ostk::physics::coord::spherical::LLA;
@@ -42,7 +42,7 @@ using ostk::physics::environment::object::celestial::Earth;
 using ostk::physics::environment::utilities::eclipseIntervalsAtPosition;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 
-TEST(OpenSpaceToolkit_Physics_Environment_Utilities_Eclipse, EclipseIntervalsAtPosition)
+TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseIntervalsAtPosition)
 {
     {
         const Array<Tuple<Interval, LLA, File, Duration>> referenceScenarios = {
@@ -52,7 +52,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utilities_Eclipse, EclipseIntervalsAtP
                     Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC)
                 ),
                 LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Meters(10.0)),  // [TBM] Should be 0 [m]
-                File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Utilities/Eclipse/"
+                File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse/"
                                        "EclipseIntervalsAtPosition/Target_1 Eclipse.csv")),
                 Duration::Minutes(2.0)  // [TBM] Should improve precision
             },
@@ -62,7 +62,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utilities_Eclipse, EclipseIntervalsAtP
                     Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC)
                 ),
                 LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Kilometers(500.0)),
-                File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Utilities/Eclipse/"
+                File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse/"
                                        "EclipseIntervalsAtPosition/Target_2 Eclipse.csv")),
                 Duration::Minutes(2.0)  // [TBM] Should improve precision
             },
@@ -72,7 +72,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utilities_Eclipse, EclipseIntervalsAtP
                     Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC)
                 ),
                 LLA(Angle::Degrees(+90.0), Angle::Degrees(0.0), Length::Meters(10.0)),  // [TBM] Should be 0 [m]
-                File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Utilities/Eclipse/"
+                File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse/"
                                        "EclipseIntervalsAtPosition/Target_3 Eclipse.csv")),
                 Duration::Minutes(2.0)  // [TBM] Should improve precision
             },
@@ -82,7 +82,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utilities_Eclipse, EclipseIntervalsAtP
                     Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC)
                 ),
                 LLA(Angle::Degrees(-90.0), Angle::Degrees(0.0), Length::Meters(10.0)),  // [TBM] Should be 0 [m]
-                File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Utilities/Eclipse/"
+                File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse/"
                                        "EclipseIntervalsAtPosition/Target_4 Eclipse.csv")),
                 Duration::Minutes(2.0)  // [TBM] Should improve precision
             },
@@ -92,7 +92,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utilities_Eclipse, EclipseIntervalsAtP
                     Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC)
                 ),
                 LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Kilometers(5000.0)),
-                File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Utilities/Eclipse/"
+                File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse/"
                                        "EclipseIntervalsAtPosition/Target_5 Eclipse.csv")),
                 Duration::Minutes(2.0)  // [TBM] Should improve precision
             }

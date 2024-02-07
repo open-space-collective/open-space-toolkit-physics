@@ -2,14 +2,14 @@
 
 #include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
-#include <OpenSpaceToolkit/Physics/Units/ElectricCurrent.hpp>
+#include <OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp>
 
 #include <Global.test.hpp>
 
-TEST(OpenSpaceToolkit_Physics_Units_ElectricCurrent, Constructor)
+TEST(OpenSpaceToolkit_Physics_Unit_ElectricCurrent, Constructor)
 {
     using ostk::core::type::Real;
-    using ostk::physics::units::ElectricCurrent;
+    using ostk::physics::unit::ElectricCurrent;
 
     {
         const Real value = 123.456;
@@ -26,10 +26,10 @@ TEST(OpenSpaceToolkit_Physics_Units_ElectricCurrent, Constructor)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_ElectricCurrent, Clone)
+TEST(OpenSpaceToolkit_Physics_Unit_ElectricCurrent, Clone)
 {
     using ostk::core::type::Real;
-    using ostk::physics::units::ElectricCurrent;
+    using ostk::physics::unit::ElectricCurrent;
 
     {
         const Real value = 123.456;
@@ -42,10 +42,10 @@ TEST(OpenSpaceToolkit_Physics_Units_ElectricCurrent, Clone)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_ElectricCurrent, IsDefined)
+TEST(OpenSpaceToolkit_Physics_Unit_ElectricCurrent, IsDefined)
 {
     using ostk::core::type::Real;
-    using ostk::physics::units::ElectricCurrent;
+    using ostk::physics::unit::ElectricCurrent;
 
     {
         EXPECT_TRUE(ElectricCurrent(0.0, ElectricCurrent::Unit::Ampere).isDefined());
@@ -60,9 +60,9 @@ TEST(OpenSpaceToolkit_Physics_Units_ElectricCurrent, IsDefined)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_ElectricCurrent, GetUnit)
+TEST(OpenSpaceToolkit_Physics_Unit_ElectricCurrent, GetUnit)
 {
-    using ostk::physics::units::ElectricCurrent;
+    using ostk::physics::unit::ElectricCurrent;
 
     {
         EXPECT_EQ(ElectricCurrent::Unit::Undefined, ElectricCurrent(1.0, ElectricCurrent::Unit::Undefined).getUnit());
@@ -70,9 +70,9 @@ TEST(OpenSpaceToolkit_Physics_Units_ElectricCurrent, GetUnit)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_ElectricCurrent, In)
+TEST(OpenSpaceToolkit_Physics_Unit_ElectricCurrent, In)
 {
-    using ostk::physics::units::ElectricCurrent;
+    using ostk::physics::unit::ElectricCurrent;
 
     {
         EXPECT_EQ(1.0, ElectricCurrent(1.0, ElectricCurrent::Unit::Ampere).in(ElectricCurrent::Unit::Ampere));
@@ -83,9 +83,9 @@ TEST(OpenSpaceToolkit_Physics_Units_ElectricCurrent, In)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_ElectricCurrent, InAmperes)
+TEST(OpenSpaceToolkit_Physics_Unit_ElectricCurrent, InAmperes)
 {
-    using ostk::physics::units::ElectricCurrent;
+    using ostk::physics::unit::ElectricCurrent;
 
     {
         EXPECT_EQ(123.456, ElectricCurrent(123.456, ElectricCurrent::Unit::Ampere).inAmperes());
@@ -96,9 +96,9 @@ TEST(OpenSpaceToolkit_Physics_Units_ElectricCurrent, InAmperes)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_ElectricCurrent, ToString)
+TEST(OpenSpaceToolkit_Physics_Unit_ElectricCurrent, ToString)
 {
-    using ostk::physics::units::ElectricCurrent;
+    using ostk::physics::unit::ElectricCurrent;
 
     {
         EXPECT_EQ("1.0 [A]", ElectricCurrent(1.0, ElectricCurrent::Unit::Ampere).toString());
@@ -121,9 +121,9 @@ TEST(OpenSpaceToolkit_Physics_Units_ElectricCurrent, ToString)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_ElectricCurrent, Undefined)
+TEST(OpenSpaceToolkit_Physics_Unit_ElectricCurrent, Undefined)
 {
-    using ostk::physics::units::ElectricCurrent;
+    using ostk::physics::unit::ElectricCurrent;
 
     {
         EXPECT_NO_THROW(ElectricCurrent::Undefined());
@@ -133,9 +133,9 @@ TEST(OpenSpaceToolkit_Physics_Units_ElectricCurrent, Undefined)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_ElectricCurrent, Amperes)
+TEST(OpenSpaceToolkit_Physics_Unit_ElectricCurrent, Amperes)
 {
-    using ostk::physics::units::ElectricCurrent;
+    using ostk::physics::unit::ElectricCurrent;
 
     {
         EXPECT_NO_THROW(ElectricCurrent::Amperes(123.456));
@@ -145,9 +145,9 @@ TEST(OpenSpaceToolkit_Physics_Units_ElectricCurrent, Amperes)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_ElectricCurrent, StringFromUnit)
+TEST(OpenSpaceToolkit_Physics_Unit_ElectricCurrent, StringFromUnit)
 {
-    using ostk::physics::units::ElectricCurrent;
+    using ostk::physics::unit::ElectricCurrent;
 
     {
         EXPECT_EQ("Undefined", ElectricCurrent::StringFromUnit(ElectricCurrent::Unit::Undefined));
@@ -155,9 +155,9 @@ TEST(OpenSpaceToolkit_Physics_Units_ElectricCurrent, StringFromUnit)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_ElectricCurrent, SymbolFromUnit)
+TEST(OpenSpaceToolkit_Physics_Unit_ElectricCurrent, SymbolFromUnit)
 {
-    using ostk::physics::units::ElectricCurrent;
+    using ostk::physics::unit::ElectricCurrent;
 
     {
         EXPECT_EQ("A", ElectricCurrent::SymbolFromUnit(ElectricCurrent::Unit::Ampere));

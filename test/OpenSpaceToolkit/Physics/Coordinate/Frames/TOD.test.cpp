@@ -4,7 +4,7 @@
 
 #include <Global.test.hpp>
 
-namespace iau = ostk::physics::coord::frame::providers::iau;
+namespace iau = ostk::physics::coord::frame::provider::iau;
 
 using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
 

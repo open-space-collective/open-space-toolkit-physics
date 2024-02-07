@@ -14,10 +14,10 @@ namespace environment
 namespace magnetic
 {
 
-using ostk::physics::units::Length;
-using ostk::physics::units::Mass;
-using ostk::physics::units::Time;
-using ostk::physics::units::Angle;
+using ostk::physics::unit::Length;
+using ostk::physics::unit::Mass;
+using ostk::physics::unit::Time;
+using ostk::physics::unit::Angle;
 
 Dipole::Dipole(const Vector3d& aMagneticMoment)
     : Model(),

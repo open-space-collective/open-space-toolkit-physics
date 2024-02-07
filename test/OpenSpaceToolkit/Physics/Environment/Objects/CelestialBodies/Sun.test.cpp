@@ -21,19 +21,19 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
 #include <OpenSpaceToolkit/Physics/Environment.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Sun.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Sun.hpp>
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Interval.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
-#include <OpenSpaceToolkit/Physics/Units/Length.hpp>
+#include <OpenSpaceToolkit/Physics/Unit/Length.hpp>
 
 #include <Global.test.hpp>
 
 using ostk::physics::environment::object::celestial::Sun;
 
-// TEST (OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Sun, Constructor)
+// TEST (OpenSpaceToolkit_Physics_Environment_Object_Celestial_Sun, Constructor)
 // {
 
 //     using ostk::physics::environment::object::celestial::Sun ;
@@ -46,7 +46,7 @@ using ostk::physics::environment::object::celestial::Sun;
 
 // }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Objects_CelestialBodies_Sun, Spherical)
+TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Sun, Spherical)
 {
     {
         EXPECT_NO_THROW(Sun::Spherical());

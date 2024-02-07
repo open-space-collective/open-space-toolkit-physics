@@ -4,7 +4,7 @@ import pytest
 
 from ostk.core.filesystem import Directory
 
-from ostk.physics.environment.objects.celestial_bodies import Earth
+from ostk.physics.environment.objects.celestial import Earth
 
 from ostk.physics.environment.gravitational import Earth as EarthGravitationalModel
 from ostk.physics.environment.atmospheric import Earth as EarthAtmosphericModel

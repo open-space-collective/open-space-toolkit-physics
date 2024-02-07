@@ -4,12 +4,12 @@
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/RotationVector.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
-#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Static.hpp>
-#include <OpenSpaceToolkit/Physics/Units/Derived/Angle.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Static.hpp>
+#include <OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp>
 
 #include <Global.test.hpp>
 
-namespace iau = ostk::physics::coord::frame::providers::iau;
+namespace iau = ostk::physics::coord::frame::provider::iau;
 
 using ostk::core::type::Shared;
 using ostk::core::type::Real;
@@ -20,8 +20,8 @@ using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
 using ostk::mathematics::geometry::d3::transformation::rotation::RotationVector;
 using ostk::mathematics::geometry::d3::transformation::rotation::RotationMatrix;
 
-using ostk::physics::units::Angle;
-using ostk::physics::units::Length;
+using ostk::physics::unit::Angle;
+using ostk::physics::unit::Length;
 using ostk::physics::time::Scale;
 using ostk::physics::time::Instant;
 using ostk::physics::time::DateTime;

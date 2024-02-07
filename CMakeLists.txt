@@ -320,9 +320,9 @@ ENDIF ()
 
 ## Versioning
 
-IF (DEFINED PROJECT_VERSION_STRING AND EXISTS "${PROJECT_SOURCE_DIR}/src/${PROJECT_PATH}/Utilities/Version.cpp.in")
+IF (DEFINED PROJECT_VERSION_STRING AND EXISTS "${PROJECT_SOURCE_DIR}/src/${PROJECT_PATH}/Utility/Version.cpp.in")
 
-    CONFIGURE_FILE ("${PROJECT_SOURCE_DIR}/src/${PROJECT_PATH}/Utilities/Version.cpp.in" "${CMAKE_CURRENT_BINARY_DIR}/src/${PROJECT_PATH}/Utilities/Version.cpp" @ONLY)
+    CONFIGURE_FILE ("${PROJECT_SOURCE_DIR}/src/${PROJECT_PATH}/Utility/Version.cpp.in" "${CMAKE_CURRENT_BINARY_DIR}/src/${PROJECT_PATH}/Utility/Version.cpp" @ONLY)
 
 ENDIF ()
 

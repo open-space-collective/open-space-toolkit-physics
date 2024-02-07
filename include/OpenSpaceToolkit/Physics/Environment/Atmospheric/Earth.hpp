@@ -12,9 +12,9 @@
 #include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Objects/Celestial.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
-#include <OpenSpaceToolkit/Physics/Units/Length.hpp>
+#include <OpenSpaceToolkit/Physics/Unit/Length.hpp>
 
 namespace ostk
 {
@@ -31,10 +31,10 @@ using ostk::core::type::Shared;
 using ostk::core::filesystem::Directory;
 
 using ostk::physics::time::Instant;
-using ostk::physics::units::Length;
+using ostk::physics::unit::Length;
 using ostk::physics::coord::Position;
 using ostk::physics::coord::spherical::LLA;
-using ostk::physics::units::Length;
+using ostk::physics::unit::Length;
 using ostk::physics::coord::Frame;
 using ostk::physics::environment::object::Celestial;
 using ostk::physics::environment::atmospheric::Model;

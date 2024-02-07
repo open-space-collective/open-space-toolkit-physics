@@ -19,14 +19,14 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
 #include <OpenSpaceToolkit/Physics/Environment.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Moon.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Moon.hpp>
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Interval.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
-#include <OpenSpaceToolkit/Physics/Units/Length.hpp>
+#include <OpenSpaceToolkit/Physics/Unit/Length.hpp>
 
 #include <Global.test.hpp>
 

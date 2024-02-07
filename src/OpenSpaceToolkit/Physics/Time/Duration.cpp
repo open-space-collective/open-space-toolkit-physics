@@ -463,7 +463,7 @@ Real Duration::inWeeks() const
     return Real(count_ / 604800000000000.0);
 }
 
-Real Duration::in(const units::Time::Unit& aTimeUnit) const
+Real Duration::in(const unit::Time::Unit& aTimeUnit) const
 {
     if (!this->isDefined())
     {
@@ -472,28 +472,28 @@ Real Duration::in(const units::Time::Unit& aTimeUnit) const
 
     switch (aTimeUnit)
     {
-        case units::Time::Unit::Nanosecond:
+        case unit::Time::Unit::Nanosecond:
             return Real(count_);
 
-        case units::Time::Unit::Microsecond:
+        case unit::Time::Unit::Microsecond:
             return Real(count_ / 1e3);
 
-        case units::Time::Unit::Millisecond:
+        case unit::Time::Unit::Millisecond:
             return Real(count_ / 1e6);
 
-        case units::Time::Unit::Second:
+        case unit::Time::Unit::Second:
             return Real(count_ / 1e9);
 
-        case units::Time::Unit::Minute:
+        case unit::Time::Unit::Minute:
             return Real(count_ / 60000000000.0);
 
-        case units::Time::Unit::Hour:
+        case unit::Time::Unit::Hour:
             return Real(count_ / 3600000000000.0);
 
-        case units::Time::Unit::Day:
+        case unit::Time::Unit::Day:
             return Real(count_ / 86400000000000.0);
 
-        case units::Time::Unit::Week:
+        case unit::Time::Unit::Week:
             return Real(count_ / 604800000000000.0);
 
         default:

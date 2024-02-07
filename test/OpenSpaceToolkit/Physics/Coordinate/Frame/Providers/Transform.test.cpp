@@ -11,13 +11,13 @@
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/RotationVector.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
-#include <OpenSpaceToolkit/Physics/Units/Derived/Angle.hpp>
-#include <OpenSpaceToolkit/Physics/Units/Length.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp>
+#include <OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp>
+#include <OpenSpaceToolkit/Physics/Unit/Length.hpp>
 
 #include <Global.test.hpp>
 
-namespace iau = ostk::physics::coord::frame::providers::iau;
+namespace iau = ostk::physics::coord::frame::provider::iau;
 
 using ostk::core::type::Shared;
 using ostk::core::type::Real;
@@ -33,8 +33,8 @@ using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
 using ostk::mathematics::geometry::d3::transformation::rotation::RotationVector;
 using ostk::mathematics::geometry::d3::transformation::rotation::RotationMatrix;
 
-using ostk::physics::units::Length;
-using ostk::physics::units::Angle;
+using ostk::physics::unit::Length;
+using ostk::physics::unit::Angle;
 using ostk::physics::time::Scale;
 using ostk::physics::time::Instant;
 using ostk::physics::time::DateTime;
@@ -46,18 +46,18 @@ using ostk::physics::environment::object::celestial::Earth;
 // angular velocity against 3rd party generated files. The files can be found in
 // the folder 'Transforms', together with a README.md containing context.
 
-class OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform
+class OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_Transform
     : public ::testing::TestWithParam<Tuple<String, String, String, Real, Real, Real, Real>>
 {
 };
 
 INSTANTIATE_TEST_SUITE_P(
     Validation,
-    OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform,
+    OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_Transform,
     ::testing::Values(
         // GCRF <> TIRF (Orekit)
         std::make_tuple(
-            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TIRF_orekit.csv",
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Transforms/GCRF_TIRF_orekit.csv",
             "TIRF",
             "",
             0.0,    // Translation tolerance [m]
@@ -68,7 +68,7 @@ INSTANTIATE_TEST_SUITE_P(
 
         // GCRF <> CIRF (Orekit)
         std::make_tuple(
-            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_CIRF_orekit.csv",
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Transforms/GCRF_CIRF_orekit.csv",
             "CIRF",
             "",
             0.0,   // Translation tolerance [m]
@@ -79,7 +79,7 @@ INSTANTIATE_TEST_SUITE_P(
 
         // GCRF <> MOD (STK)
         std::make_tuple(
-            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_MOD_stk.csv",
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Transforms/GCRF_MOD_stk.csv",
             "MOD",
             "",
             0.0,  // Translation tolerance [m]
@@ -90,7 +90,7 @@ INSTANTIATE_TEST_SUITE_P(
 
         // GCRF <> MOD (Orekit)
         std::make_tuple(
-            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_MOD_orekit.csv",
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Transforms/GCRF_MOD_orekit.csv",
             "MOD",
             "",
             0.0,  // Translation tolerance [m]
@@ -102,7 +102,7 @@ INSTANTIATE_TEST_SUITE_P(
         // GCRF <> J2000 IAU 2000A (STK)
         std::make_tuple(
 
-            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_J2000_stk.csv",
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Transforms/GCRF_J2000_stk.csv",
             "J2000",
             "IAU 2000A",
             0.0,  // Translation tolerance [m]
@@ -114,7 +114,7 @@ INSTANTIATE_TEST_SUITE_P(
         // GCRF <> J2000 IAU 2000A (Orekit)
         std::make_tuple(
 
-            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_J2000_orekit.csv",
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Transforms/GCRF_J2000_orekit.csv",
             "J2000",
             "IAU 2000A",
             0.0,   // Translation tolerance [m]
@@ -126,7 +126,7 @@ INSTANTIATE_TEST_SUITE_P(
         // GCRF <> J2000 IAU 2006 (STK)
         std::make_tuple(
 
-            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_J2000_stk.csv",
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Transforms/GCRF_J2000_stk.csv",
             "J2000",
             "IAU 2006",
             0.0,  // Translation tolerance [m]
@@ -138,7 +138,7 @@ INSTANTIATE_TEST_SUITE_P(
         // GCRF <> J2000 IAU 2006 (Orekit)
         std::make_tuple(
 
-            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_J2000_orekit.csv",
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Transforms/GCRF_J2000_orekit.csv",
             "J2000",
             "IAU 2006",
             0.0,   // Translation tolerance [m]
@@ -149,7 +149,7 @@ INSTANTIATE_TEST_SUITE_P(
 
         // GCRF <> TOD IAU 2000A (STK)
         std::make_tuple(
-            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TOD_stk.csv",
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Transforms/GCRF_TOD_stk.csv",
             "TOD",
             "IAU 2000A",
             0.0,  // Translation tolerance [m]
@@ -160,7 +160,7 @@ INSTANTIATE_TEST_SUITE_P(
 
         // GCRF <> TOD IAU 2000A (Orekit)
         std::make_tuple(
-            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TOD_orekit.csv",
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Transforms/GCRF_TOD_orekit.csv",
             "TOD",
             "IAU 2000A",
             0.0,   // Translation tolerance [m]
@@ -171,7 +171,7 @@ INSTANTIATE_TEST_SUITE_P(
 
         // GCRF <> TOD IAU 2000B (STK)
         std::make_tuple(
-            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TOD_stk.csv",
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Transforms/GCRF_TOD_stk.csv",
             "TOD",
             "IAU 2000B",
             0.0,  // Translation tolerance [m]
@@ -182,7 +182,7 @@ INSTANTIATE_TEST_SUITE_P(
 
         // GCRF <> TOD IAU 2000B (Orekit)
         std::make_tuple(
-            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TOD_orekit.csv",
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Transforms/GCRF_TOD_orekit.csv",
             "TOD",
             "IAU 2000B",
             0.0,   // Translation tolerance [m]
@@ -193,7 +193,7 @@ INSTANTIATE_TEST_SUITE_P(
 
         // GCRF <> TOD IAU 2006 (STK)
         std::make_tuple(
-            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TOD_stk.csv",
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Transforms/GCRF_TOD_stk.csv",
             "TOD",
             "IAU 2006",
             0.0,  // Translation tolerance [m]
@@ -204,7 +204,7 @@ INSTANTIATE_TEST_SUITE_P(
 
         // GCRF <> TOD IAU 2006 (Orekit)
         std::make_tuple(
-            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TOD_orekit.csv",
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Transforms/GCRF_TOD_orekit.csv",
             "TOD",
             "IAU 2006",
             0.0,   // Translation tolerance [m]
@@ -215,7 +215,7 @@ INSTANTIATE_TEST_SUITE_P(
 
         // GCRF <> TEME (STK)
         std::make_tuple(
-            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TEME_stk.csv",
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Transforms/GCRF_TEME_stk.csv",
             "TEME",
             "",
             0.0,   // Translation tolerance [m]
@@ -226,7 +226,7 @@ INSTANTIATE_TEST_SUITE_P(
 
         // GCRF <> TEME (Orekit)
         std::make_tuple(
-            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_TEME_orekit.csv",
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Transforms/GCRF_TEME_orekit.csv",
             "TEME",
             "",
             0.0,   // Translation tolerance [m]
@@ -237,7 +237,7 @@ INSTANTIATE_TEST_SUITE_P(
 
         // GCRF <> ITRF (STK)
         std::make_tuple(
-            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_ITRF_stk.csv",
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Transforms/GCRF_ITRF_stk.csv",
             "ITRF",
             "",
             0.0,    // Translation tolerance [m]
@@ -248,7 +248,7 @@ INSTANTIATE_TEST_SUITE_P(
 
         // GCRF <> ITRF (Orekit)
         std::make_tuple(
-            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Transforms/GCRF_ITRF_orekit.csv",
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Transforms/GCRF_ITRF_orekit.csv",
             "ITRF",
             "",
             0.0,    // Translation tolerance [m]
@@ -259,7 +259,7 @@ INSTANTIATE_TEST_SUITE_P(
     )
 );
 
-TEST_P(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_Transform, Validation)
+TEST_P(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_Transform, Validation)
 {
     const auto parameters = GetParam();
     // Reference data setup

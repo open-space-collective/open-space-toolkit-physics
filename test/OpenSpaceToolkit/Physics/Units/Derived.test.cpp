@@ -2,19 +2,19 @@
 
 #include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
-#include <OpenSpaceToolkit/Physics/Units/Derived.hpp>
+#include <OpenSpaceToolkit/Physics/Unit/Derived.hpp>
 
 #include <Global.test.hpp>
 
-TEST(OpenSpaceToolkit_Physics_Units_Derived, Constructor)
+TEST(OpenSpaceToolkit_Physics_Unit_Derived, Constructor)
 {
     using ostk::core::type::Real;
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Mass;
-    using ostk::physics::units::Time;
-    using ostk::physics::units::ElectricCurrent;
-    using ostk::physics::units::Angle;
-    using ostk::physics::units::Derived;
+    using ostk::physics::unit::Length;
+    using ostk::physics::unit::Mass;
+    using ostk::physics::unit::Time;
+    using ostk::physics::unit::ElectricCurrent;
+    using ostk::physics::unit::Angle;
+    using ostk::physics::unit::Derived;
 
     {
         const Real value = 123.456;
@@ -78,15 +78,15 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, Constructor)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
+TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 {
     using ostk::core::type::Real;
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Mass;
-    using ostk::physics::units::Time;
-    using ostk::physics::units::ElectricCurrent;
-    using ostk::physics::units::Angle;
-    using ostk::physics::units::Derived;
+    using ostk::physics::unit::Length;
+    using ostk::physics::unit::Mass;
+    using ostk::physics::unit::Time;
+    using ostk::physics::unit::ElectricCurrent;
+    using ostk::physics::unit::Angle;
+    using ostk::physics::unit::Derived;
 
     {
         const Derived::Unit unit = {
@@ -184,10 +184,10 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
     }
 }
 
-// TEST (OpenSpaceToolkit_Physics_Units_Derived, NotEqualToOperator)
+// TEST (OpenSpaceToolkit_Physics_Unit_Derived, NotEqualToOperator)
 // {
 
-//     using ostk::physics::units::Derived ;
+//     using ostk::physics::unit::Derived ;
 
 //     {
 
@@ -214,10 +214,10 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (OpenSpaceToolkit_Physics_Units_Derived, LowerThanOperator)
+// TEST (OpenSpaceToolkit_Physics_Unit_Derived, LowerThanOperator)
 // {
 
-//     using ostk::physics::units::Derived ;
+//     using ostk::physics::unit::Derived ;
 
 //     {
 
@@ -246,10 +246,10 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (OpenSpaceToolkit_Physics_Units_Derived, LowerThanOrEqualToOperator)
+// TEST (OpenSpaceToolkit_Physics_Unit_Derived, LowerThanOrEqualToOperator)
 // {
 
-//     using ostk::physics::units::Derived ;
+//     using ostk::physics::unit::Derived ;
 
 //     {
 
@@ -277,10 +277,10 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (OpenSpaceToolkit_Physics_Units_Derived, GreaterThanOperator)
+// TEST (OpenSpaceToolkit_Physics_Unit_Derived, GreaterThanOperator)
 // {
 
-//     using ostk::physics::units::Derived ;
+//     using ostk::physics::unit::Derived ;
 
 //     {
 
@@ -309,10 +309,10 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (OpenSpaceToolkit_Physics_Units_Derived, GreaterThanOrEqualToOperator)
+// TEST (OpenSpaceToolkit_Physics_Unit_Derived, GreaterThanOrEqualToOperator)
 // {
 
-//     using ostk::physics::units::Derived ;
+//     using ostk::physics::unit::Derived ;
 
 //     {
 
@@ -340,10 +340,10 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (OpenSpaceToolkit_Physics_Units_Derived, AdditionOperator)
+// TEST (OpenSpaceToolkit_Physics_Unit_Derived, AdditionOperator)
 // {
 
-//     using ostk::physics::units::Derived ;
+//     using ostk::physics::unit::Derived ;
 
 //     {
 
@@ -374,10 +374,10 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (OpenSpaceToolkit_Physics_Units_Derived, SubtractionOperator)
+// TEST (OpenSpaceToolkit_Physics_Unit_Derived, SubtractionOperator)
 // {
 
-//     using ostk::physics::units::Derived ;
+//     using ostk::physics::unit::Derived ;
 
 //     {
 
@@ -408,11 +408,11 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (OpenSpaceToolkit_Physics_Units_Derived, MultiplicationOperator)
+// TEST (OpenSpaceToolkit_Physics_Unit_Derived, MultiplicationOperator)
 // {
 
 //     using ostk::core::type::Real ;
-//     using ostk::physics::units::Derived ;
+//     using ostk::physics::unit::Derived ;
 
 //     {
 
@@ -467,11 +467,11 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (OpenSpaceToolkit_Physics_Units_Derived, DivisionOperator)
+// TEST (OpenSpaceToolkit_Physics_Unit_Derived, DivisionOperator)
 // {
 
 //     using ostk::core::type::Real ;
-//     using ostk::physics::units::Derived ;
+//     using ostk::physics::unit::Derived ;
 
 //     {
 
@@ -508,10 +508,10 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (OpenSpaceToolkit_Physics_Units_Derived, AdditionAssignmentOperator)
+// TEST (OpenSpaceToolkit_Physics_Unit_Derived, AdditionAssignmentOperator)
 // {
 
-//     using ostk::physics::units::Derived ;
+//     using ostk::physics::unit::Derived ;
 
 //     {
 
@@ -542,10 +542,10 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (OpenSpaceToolkit_Physics_Units_Derived, SubtractionAssignmentOperator)
+// TEST (OpenSpaceToolkit_Physics_Unit_Derived, SubtractionAssignmentOperator)
 // {
 
-//     using ostk::physics::units::Derived ;
+//     using ostk::physics::unit::Derived ;
 
 //     {
 
@@ -576,11 +576,11 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (OpenSpaceToolkit_Physics_Units_Derived, MultiplicationAssignmentOperator)
+// TEST (OpenSpaceToolkit_Physics_Unit_Derived, MultiplicationAssignmentOperator)
 // {
 
 //     using ostk::core::type::Real ;
-//     using ostk::physics::units::Derived ;
+//     using ostk::physics::unit::Derived ;
 
 //     {
 
@@ -616,11 +616,11 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (OpenSpaceToolkit_Physics_Units_Derived, DivisionAssignmentOperator)
+// TEST (OpenSpaceToolkit_Physics_Unit_Derived, DivisionAssignmentOperator)
 // {
 
 //     using ostk::core::type::Real ;
-//     using ostk::physics::units::Derived ;
+//     using ostk::physics::unit::Derived ;
 
 //     {
 
@@ -657,10 +657,10 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (OpenSpaceToolkit_Physics_Units_Derived, StreamOperator)
+// TEST (OpenSpaceToolkit_Physics_Unit_Derived, StreamOperator)
 // {
 
-//     using ostk::physics::units::Derived ;
+//     using ostk::physics::unit::Derived ;
 
 //     {
 
@@ -674,11 +674,11 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (OpenSpaceToolkit_Physics_Units_Derived, IsDefined)
+// TEST (OpenSpaceToolkit_Physics_Unit_Derived, IsDefined)
 // {
 
 //     using ostk::core::type::Real ;
-//     using ostk::physics::units::Derived ;
+//     using ostk::physics::unit::Derived ;
 
 //     {
 
@@ -702,10 +702,10 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (OpenSpaceToolkit_Physics_Units_Derived, GetUnit)
+// TEST (OpenSpaceToolkit_Physics_Unit_Derived, GetUnit)
 // {
 
-//     using ostk::physics::units::Derived ;
+//     using ostk::physics::unit::Derived ;
 
 //     {
 
@@ -720,10 +720,10 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (OpenSpaceToolkit_Physics_Units_Derived, In)
+// TEST (OpenSpaceToolkit_Physics_Unit_Derived, In)
 // {
 
-//     using ostk::physics::units::Derived ;
+//     using ostk::physics::unit::Derived ;
 
 //     {
 
@@ -743,10 +743,10 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (OpenSpaceToolkit_Physics_Units_Derived, InMeters)
+// TEST (OpenSpaceToolkit_Physics_Unit_Derived, InMeters)
 // {
 
-//     using ostk::physics::units::Derived ;
+//     using ostk::physics::unit::Derived ;
 
 //     {
 
@@ -762,10 +762,10 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (OpenSpaceToolkit_Physics_Units_Derived, InKilometers)
+// TEST (OpenSpaceToolkit_Physics_Unit_Derived, InKilometers)
 // {
 
-//     using ostk::physics::units::Derived ;
+//     using ostk::physics::unit::Derived ;
 
 //     {
 
@@ -781,10 +781,10 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (OpenSpaceToolkit_Physics_Units_Derived, ToString)
+// TEST (OpenSpaceToolkit_Physics_Unit_Derived, ToString)
 // {
 
-//     using ostk::physics::units::Derived ;
+//     using ostk::physics::unit::Derived ;
 
 //     {
 
@@ -816,10 +816,10 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (OpenSpaceToolkit_Physics_Units_Derived, Undefined)
+// TEST (OpenSpaceToolkit_Physics_Unit_Derived, Undefined)
 // {
 
-//     using ostk::physics::units::Derived ;
+//     using ostk::physics::unit::Derived ;
 
 //     {
 
@@ -832,10 +832,10 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (OpenSpaceToolkit_Physics_Units_Derived, Meters)
+// TEST (OpenSpaceToolkit_Physics_Unit_Derived, Meters)
 // {
 
-//     using ostk::physics::units::Derived ;
+//     using ostk::physics::unit::Derived ;
 
 //     {
 
@@ -848,10 +848,10 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// TEST (OpenSpaceToolkit_Physics_Units_Derived, Kilometers)
+// TEST (OpenSpaceToolkit_Physics_Unit_Derived, Kilometers)
 // {
 
-//     using ostk::physics::units::Derived ;
+//     using ostk::physics::unit::Derived ;
 
 //     {
 
@@ -864,10 +864,10 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-// // TEST (OpenSpaceToolkit_Physics_Units_Derived, Parse)
+// // TEST (OpenSpaceToolkit_Physics_Unit_Derived, Parse)
 // // {
 
-// //     using ostk::physics::units::Derived ;
+// //     using ostk::physics::unit::Derived ;
 
 // //     {
 
@@ -877,10 +877,10 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 
 // // }
 
-// TEST (OpenSpaceToolkit_Physics_Units_Derived, StringFromUnit)
+// TEST (OpenSpaceToolkit_Physics_Unit_Derived, StringFromUnit)
 // {
 
-//     using ostk::physics::units::Derived ;
+//     using ostk::physics::unit::Derived ;
 
 //     {
 
@@ -895,11 +895,11 @@ TEST(OpenSpaceToolkit_Physics_Units_Derived, EqualToOperator)
 
 // }
 
-TEST(OpenSpaceToolkit_Physics_Units_Derived_Unit, MassDensity)
+TEST(OpenSpaceToolkit_Physics_Unit_Derived_Unit, MassDensity)
 {
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Mass;
-    using ostk::physics::units::Derived;
+    using ostk::physics::unit::Length;
+    using ostk::physics::unit::Mass;
+    using ostk::physics::unit::Derived;
 
     {
         const Derived::Unit massDensity = Derived::Unit::MassDensity(Mass::Unit::Kilogram, Length::Unit::Meter);

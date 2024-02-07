@@ -9,8 +9,8 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
-#include <OpenSpaceToolkit/Physics/Units/Derived/Angle.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp>
+#include <OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp>
 
 #include <Global.test.hpp>
 
@@ -25,8 +25,8 @@ using ostk::core::filesystem::File;
 
 using ostk::mathematics::object::Vector3d;
 
-using ostk::physics::units::Length;
-using ostk::physics::units::Angle;
+using ostk::physics::unit::Length;
+using ostk::physics::unit::Angle;
 using ostk::physics::coord::Position;
 using ostk::physics::coord::spherical::LLA;
 using ostk::physics::time::Scale;

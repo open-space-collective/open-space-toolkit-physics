@@ -1,6 +1,6 @@
 # Apache License 2.0
 
-from ostk.physics.environment.objects.celestial_bodies import Moon
+from ostk.physics.environment.objects.celestial import Moon
 
 
 class TestMoon:

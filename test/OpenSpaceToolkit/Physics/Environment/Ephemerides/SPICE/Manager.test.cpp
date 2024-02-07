@@ -7,9 +7,9 @@
 #include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
 #include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
-#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Engine.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Kernel.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Manager.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp>
 
 #include <Global.test.hpp>
 
@@ -28,17 +28,17 @@ using ostk::physics::time::Scale;
 using ostk::physics::time::Instant;
 using ostk::physics::time::Duration;
 using ostk::physics::time::DateTime;
-using ostk::physics::environment::ephemerides::spice::Kernel;
-using ostk::physics::environment::ephemerides::spice::Engine;
-using ostk::physics::environment::ephemerides::spice::Manager;
+using ostk::physics::environment::ephemeris::spice::Kernel;
+using ostk::physics::environment::ephemeris::spice::Engine;
+using ostk::physics::environment::ephemeris::spice::Manager;
 
-class OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager : public ::testing::Test
+class OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager : public ::testing::Test
 {
    protected:
     void SetUp() override
     {
         manager_.setLocalRepository(
-            Directory::Path(Path::Parse("test/OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/"))
+            Directory::Path(Path::Parse("test/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/"))
         );
 
         // cache current directory environment variables
@@ -77,14 +77,14 @@ class OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager : public ::
     char* fullDataPath_;
 };
 
-TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager, GetLocalRepository)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, GetLocalRepository)
 {
     {
         EXPECT_EQ("SPICE", manager_.getLocalRepository().getName());
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager, SetLocalRepository)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, SetLocalRepository)
 {
     {
         EXPECT_EQ("SPICE", manager_.getLocalRepository().getName());
@@ -103,7 +103,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager, SetLocalR
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager, DefaultLocalRepository)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, DefaultLocalRepository)
 {
     {
         unsetenv(localRepositoryVarName_);
@@ -137,7 +137,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager, DefaultLo
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager, FetchKernel)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, FetchKernel)
 {
     // make subdir for test
     manager_.setLocalRepository(Directory::Path(
@@ -163,7 +163,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager, FetchKern
     manager_.getLocalRepository().remove();
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager, FetchMatchingKernels)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, FetchMatchingKernels)
 {
     // make subdir for test
     manager_.setLocalRepository(Directory::Path(
@@ -190,7 +190,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager, FetchMatc
     manager_.getLocalRepository().remove();
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager, FindKernel)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, FindKernel)
 {
     // make subdir for test
     manager_.setLocalRepository(Directory::Path(
@@ -234,7 +234,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager, FindKerne
     manager_.getLocalRepository().remove();
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Manager, Get)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, Get)
 {
     {
         EXPECT_NO_THROW(Manager::Get());

@@ -5,7 +5,7 @@
 #include <Global.test.hpp>
 
 using ostk::physics::Unit;
-using ostk::physics::units::Length;
+using ostk::physics::unit::Length;
 
 TEST(OpenSpaceToolkit_Physics_Unit, EqualToOperator)
 {

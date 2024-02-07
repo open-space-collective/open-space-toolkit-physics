@@ -10,9 +10,9 @@
 #include <OpenSpaceToolkit/Mathematics/Object/Vector.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
-#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/ITRF.hpp>
-#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/TEME.hpp>
-#include <OpenSpaceToolkit/Physics/Units/Derived/Angle.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ITRF.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.hpp>
+#include <OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp>
 
 #include <Global.test.hpp>
 
@@ -27,7 +27,7 @@ using ostk::mathematics::object::Vector3d;
 using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
 using ostk::mathematics::geometry::d3::transformation::rotation::RotationVector;
 
-using ostk::physics::units::Angle;
+using ostk::physics::unit::Angle;
 using ostk::physics::time::Scale;
 using ostk::physics::time::Instant;
 using ostk::physics::time::DateTime;
@@ -35,17 +35,17 @@ using ostk::physics::coord::Frame;
 using ostk::physics::coord::frame::Transform;
 using ostk::physics::coord::frame::provider::TEME;
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_TEME, GetTransformAt)
+TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_TEME, GetTransformAt)
 {
     {
         const Array<Triple<File, Angle, Real>> referenceScenarios = {
             {File::Path(Path::Parse(
-                 "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/TEME/Scenario_A/Scenario ITRF_TEME.csv"
+                 "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME/Scenario_A/Scenario ITRF_TEME.csv"
              )),
              Angle::Arcseconds(1.0),
              1e-9},
             {File::Path(Path::Parse(
-                 "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/TEME/Scenario_B/Scenario ITRF_TEME.csv"
+                 "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME/Scenario_B/Scenario ITRF_TEME.csv"
              )),
              Angle::Arcseconds(20.0),
              1e-9}

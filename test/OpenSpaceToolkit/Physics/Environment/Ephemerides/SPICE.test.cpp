@@ -10,16 +10,16 @@
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/Quaternion.hpp>
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/RotationVector.hpp>
 
-#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Engine.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Manager.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
 
 #include <Global.test.hpp>
 
-using ostk::physics::environment::ephemerides::SPICE;
+using ostk::physics::environment::ephemeris::SPICE;
 
 using ostk::core::type::Shared;
 using ostk::core::type::Real;
@@ -35,7 +35,7 @@ using ostk::mathematics::object::Vector3d;
 using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
 using ostk::mathematics::geometry::d3::transformation::rotation::RotationVector;
 
-using ostk::physics::units::Angle;
+using ostk::physics::unit::Angle;
 using ostk::physics::time::Scale;
 using ostk::physics::time::Instant;
 using ostk::physics::time::DateTime;
@@ -43,18 +43,18 @@ using ostk::physics::coord::Frame;
 using ostk::physics::coord::Position;
 using ostk::physics::coord::Transform;
 
-using ostk::physics::environment::ephemerides::spice::Engine;
-using ostk::physics::environment::ephemerides::spice::Manager;
-using ostk::physics::environment::ephemerides::spice::Kernel;
+using ostk::physics::environment::ephemeris::spice::Engine;
+using ostk::physics::environment::ephemeris::spice::Manager;
+using ostk::physics::environment::ephemeris::spice::Kernel;
 
-TEST(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, Constructor)
+TEST(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, Constructor)
 {
     {
         EXPECT_NO_THROW(SPICE spice {SPICE::Object::Earth});
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, IsDefined)
+TEST(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, IsDefined)
 {
     {
         const SPICE spice = {SPICE::Object::Earth};
@@ -63,16 +63,16 @@ TEST(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, IsDefined)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, AccessFrame)
+TEST(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AccessFrame)
 {
     {
         const Directory spiceLocalRepository =
-            Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE"));
+            Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE"));
 
         const Array<Tuple<SPICE::Object, File, Real, Real, Real, Real, Array<Kernel>>> referenceScenarios = {
             {SPICE::Object::Earth,
              File::Path(Path::Parse(
-                 "/app/test/OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/AccessFrame/Scenario_1 Earth.csv"
+                 "/app/test/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/AccessFrame/Scenario_1 Earth.csv"
              )),
              0.0,
              0.0,
@@ -87,7 +87,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, AccessFrame)
             },
             {SPICE::Object::Sun,
              File::Path(Path::Parse(
-                 "/app/test/OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/AccessFrame/Scenario_1 Sun.csv"
+                 "/app/test/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/AccessFrame/Scenario_1 Sun.csv"
              )),
              100.0,
              1e-5,
@@ -102,7 +102,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, AccessFrame)
              }},
             {SPICE::Object::Moon,
              File::Path(Path::Parse(
-                 "/app/test/OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/AccessFrame/Scenario_1 Moon.csv"
+                 "/app/test/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/AccessFrame/Scenario_1 Moon.csv"
              )),
              10.0,
              1e-5,
@@ -213,7 +213,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, AccessFrame)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, StringFromObject)
+TEST(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, StringFromObject)
 {
     {
         EXPECT_EQ("Sun", SPICE::StringFromObject(SPICE::Object::Sun));
@@ -229,11 +229,11 @@ TEST(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, StringFromObject)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, ManualMode)
+TEST(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, ManualMode)
 {
     {
         const Directory spiceLocalRepository =
-            Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE"));
+            Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE"));
 
         Engine::Get().setMode(Engine::Mode::Manual);
 
@@ -269,11 +269,11 @@ TEST(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, ManualMode)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, AutomaticMode)
+TEST(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AutomaticMode)
 {
     {
         Manager::Get().setLocalRepository(
-            Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE"))
+            Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE"))
         );
 
         Engine::Get().setMode(Engine::Mode::Automatic);
@@ -304,18 +304,18 @@ TEST(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE, AutomaticMode)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Ephemerides_SPICE_Engine, DefaultKernels)
+TEST(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine, DefaultKernels)
 {
     using ostk::core::container::Array;
     using ostk::core::filesystem::Path;
     using ostk::core::filesystem::Directory;
 
-    using ostk::physics::environment::ephemerides::spice::Engine;
-    using ostk::physics::environment::ephemerides::spice::Kernel;
+    using ostk::physics::environment::ephemeris::spice::Engine;
+    using ostk::physics::environment::ephemeris::spice::Kernel;
 
     {
         Manager::Get().setLocalRepository(
-            Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE"))
+            Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE"))
         );
 
         const Array<Kernel> kernels = Engine::DefaultKernels();

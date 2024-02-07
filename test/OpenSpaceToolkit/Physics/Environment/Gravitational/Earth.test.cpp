@@ -30,9 +30,9 @@ using ostk::physics::time::DateTime;
 using ostk::physics::time::Instant;
 using ostk::physics::time::Scale;
 using ostk::physics::Unit;
-using ostk::physics::units::Length;
-using ostk::physics::units::Derived;
-using ostk::physics::units::Time;
+using ostk::physics::unit::Length;
+using ostk::physics::unit::Derived;
+using ostk::physics::unit::Time;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 using EarthGravitationalModelManager = ostk::physics::environment::gravitational::earth::Manager;
 

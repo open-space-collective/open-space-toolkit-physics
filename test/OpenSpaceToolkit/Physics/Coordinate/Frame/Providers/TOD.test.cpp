@@ -10,10 +10,10 @@
 #include <OpenSpaceToolkit/Mathematics/Object/Vector.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
-#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/GCRF.hpp>
-#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/TOD.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
-#include <OpenSpaceToolkit/Physics/Units/Derived/Angle.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/GCRF.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TOD.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp>
+#include <OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp>
 
 #include <Global.test.hpp>
 
@@ -29,18 +29,18 @@ using ostk::mathematics::object::Vector4d;
 using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
 using ostk::mathematics::geometry::d3::transformation::rotation::RotationVector;
 
-using ostk::physics::units::Angle;
+using ostk::physics::unit::Angle;
 using ostk::physics::time::Scale;
 using ostk::physics::time::Instant;
 using ostk::physics::time::DateTime;
 using ostk::physics::coord::Frame;
 using ostk::physics::coord::frame::Transform;
 using ostk::physics::coord::frame::provider::TOD;
-using ostk::physics::coord::frame::providers::iau::Theory;
+using ostk::physics::coord::frame::provider::iau::Theory;
 using ostk::physics::environment::object::celestial::Earth;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_TOD, GetTransformAt)
+TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_TOD, GetTransformAt)
 {
     {
         const Instant instant = Instant::DateTime(DateTime(2020, 1, 1, 0, 0, 0), Scale::UTC);

@@ -11,9 +11,9 @@
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/RotationVector.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
-#include <OpenSpaceToolkit/Physics/Units/Derived/Angle.hpp>
-#include <OpenSpaceToolkit/Physics/Units/Length.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp>
+#include <OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp>
+#include <OpenSpaceToolkit/Physics/Unit/Length.hpp>
 
 #include <Global.test.hpp>
 
@@ -31,8 +31,8 @@ using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
 using ostk::mathematics::geometry::d3::transformation::rotation::RotationVector;
 using ostk::mathematics::geometry::d3::transformation::rotation::RotationMatrix;
 
-using ostk::physics::units::Length;
-using ostk::physics::units::Angle;
+using ostk::physics::unit::Length;
+using ostk::physics::unit::Angle;
 using ostk::physics::time::Scale;
 using ostk::physics::time::Instant;
 using ostk::physics::time::DateTime;

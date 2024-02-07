@@ -9,7 +9,7 @@
 #include <OpenSpaceToolkit/Core/Type/Unique.hpp>
 
 #include <OpenSpaceToolkit/Physics/Environment/Object.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Objects/Celestial.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
 namespace ostk

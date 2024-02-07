@@ -2,6 +2,7 @@
 
 #include <OpenSpaceToolkit/Physics/Environment/Object.hpp>
 
+#include <OpenSpaceToolkitPhysicsPy/Environment/Object/Celestial.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Environment/Object/Geometry.cpp>
 
 inline void OpenSpaceToolkitPhysicsPy_Environment_Object(pybind11::module& aModule)
@@ -50,4 +51,5 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object(pybind11::module& aModu
 
     // Add elements to object
     OpenSpaceToolkitPhysicsPy_Environment_Object_Geometry(object);
+    OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(object);
 }

@@ -12,7 +12,7 @@
 #include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
-#include <OpenSpaceToolkit/Physics/Units/Length.hpp>
+#include <OpenSpaceToolkit/Physics/Unit/Length.hpp>
 
 namespace ostk
 {
@@ -32,7 +32,7 @@ using ostk::core::container::Tuple;
 using ostk::core::container::Array;
 
 using ostk::physics::time::Instant;
-using ostk::physics::units::Length;
+using ostk::physics::unit::Length;
 using ostk::physics::coord::spherical::LLA;
 using ostk::physics::environment::atmospheric::Model;
 

@@ -5,7 +5,7 @@
 
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Sun.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Sun.hpp>
 
 namespace ostk
 {

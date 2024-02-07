@@ -9,7 +9,7 @@
 
 #include <OpenSpaceToolkit/IO/URL.hpp>
 
-#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Manager.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp>
 
 #include <Global.test.hpp>
 
@@ -34,7 +34,7 @@ using ostk::physics::coord::frame::provider::iers::BulletinA;
 using ostk::physics::coord::frame::provider::iers::Manager;
 using ostk::physics::coord::frame::provider::iers::Finals2000A;
 
-class OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager : public ::testing::Test
+class OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager : public ::testing::Test
 {
    protected:
     void SetUp() override
@@ -80,11 +80,11 @@ class OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager : public 
     }
 
     const File bulletinAFile_ =
-        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/BulletinA/ser7.dat")
+        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA/ser7.dat")
         );
 
     const File finals2000AFile_ = File::Path(
-        Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Finals2000A/finals2000A.data")
+        Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A/finals2000A.data")
     );
 
     BulletinA bulletinA_ = BulletinA::Undefined();
@@ -101,35 +101,35 @@ class OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager : public 
     char* modeValue_;
 };
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetMode)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetMode)
 {
     {
         EXPECT_EQ(Manager::Mode::Automatic, manager_.getMode());
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetLocalRepository)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetLocalRepository)
 {
     {
         EXPECT_EQ("iers", manager_.getLocalRepository().getName());
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetBulletinADirectory)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetBulletinADirectory)
 {
     {
         EXPECT_EQ("bulletin-A", manager_.getBulletinADirectory().getName());
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetFinals2000ADirectory)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetFinals2000ADirectory)
 {
     {
         EXPECT_EQ("finals-2000A", manager_.getFinals2000ADirectory().getName());
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetBulletinA)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetBulletinA)
 {
     {
         manager_.loadBulletinA(bulletinA_);
@@ -138,7 +138,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetBull
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetBulletinAFetch)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetBulletinAFetch)
 {
     // This test is not deterministic, as it depends on the remote server
     {
@@ -156,11 +156,11 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetBull
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetFinals2000A)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetFinals2000A)
 {
     {
         const File file = File::Path(Path::Parse(
-            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Finals2000A/finals2000A.data"
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A/finals2000A.data"
         ));
 
         const Finals2000A finals2000a = Finals2000A::Load(file);
@@ -171,7 +171,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetFina
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetFinals2000AFetch)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetFinals2000AFetch)
 {
     // This test is not deterministic, as it depends on the remote server
     {
@@ -184,17 +184,17 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetFina
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetPolarMotionAt_Past)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetPolarMotionAt_Past)
 {
     {
         const Array<Tuple<File, Real>> referenceScenarios = {
-            {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Manager/"
+            {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager/"
                                     "GetPolarMotionAt/Pole Wander 1.csv")),
              1e-8},
-            {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Manager/"
+            {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager/"
                                     "GetPolarMotionAt/Pole Wander 2.csv")),
              1e-8},
-            {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Manager/"
+            {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager/"
                                     "GetPolarMotionAt/Pole Wander 3.csv")),
              1e-8}
         };
@@ -229,7 +229,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetPola
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetPolarMotionAt_Future)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetPolarMotionAt_Future)
 {
     {
         const Instant instant = Instant::Now() + Duration::Weeks(12.0);
@@ -244,7 +244,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetPola
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetUt1MinusUtcAt)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetUt1MinusUtcAt)
 {
     using ostk::core::type::Real;
     using ostk::core::type::String;
@@ -258,14 +258,14 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetUt1M
 
     {
         const Array<Tuple<File, Real>> referenceScenarios = {
-            {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Manager/"
+            {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager/"
                                     "GetUt1MinusUtcAt/DUT1 1.csv")),
              1e-4},
-            {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Manager/"
+            {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager/"
                                     "GetUt1MinusUtcAt/DUT1 2.csv")),
              1e-4},
             // {
-            // File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Manager/GetUt1MinusUtcAt/DUT1
+            // File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager/GetUt1MinusUtcAt/DUT1
             // 3.csv")), 1e-4 } // [TBI] Discrepancy with STK at leap second crossing
         };
 
@@ -301,7 +301,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetUt1M
     }
 }
 
-// TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetLodAt)
+// TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetLodAt)
 // {
 
 //     using ostk::physics::coord::frame::provider::iers::Manager ;
@@ -314,7 +314,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, GetUt1M
 
 // }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, SetMode)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, SetMode)
 {
     {
         EXPECT_EQ(Manager::Mode::Automatic, manager_.getMode());
@@ -329,7 +329,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, SetMode
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, SetLocalRepository)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, SetLocalRepository)
 {
     {
         EXPECT_EQ("iers", manager_.getLocalRepository().getName());
@@ -346,7 +346,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, SetLoca
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, LoadBulletinA)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, LoadBulletinA)
 {
     {
         manager_.reset();
@@ -356,11 +356,11 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, LoadBul
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, LoadFinals2000A)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, LoadFinals2000A)
 {
     {
         const File file = File::Path(Path::Parse(
-            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/Finals2000A/finals2000A.data"
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A/finals2000A.data"
         ));
 
         const Finals2000A finals2000a = Finals2000A::Load(file);
@@ -373,7 +373,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, LoadFin
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, FetchLatestBulletinA)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, FetchLatestBulletinA)
 {
     {
         manager_.reset();
@@ -390,7 +390,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, FetchLa
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, FetchLatestFinals2000A)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, FetchLatestFinals2000A)
 {
     {
         manager_.reset();
@@ -407,7 +407,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, FetchLa
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, Reset)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, Reset)
 {
     {
         manager_.loadBulletinA(bulletinA_);
@@ -424,7 +424,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, Reset)
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, ClearLocalRepository)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, ClearLocalRepository)
 {
     {
         manager_.clearLocalRepository();
@@ -434,14 +434,14 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, ClearLo
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, Get)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, Get)
 {
     {
         EXPECT_NO_THROW(Manager::Get());
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, DefaultMode)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, DefaultMode)
 {
     {
         unsetenv(modeVarName_);
@@ -461,7 +461,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, Default
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, DefaultLocalRepository)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, DefaultLocalRepository)
 {
     {
         unsetenv(localRepositoryVarName_);
@@ -495,7 +495,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, Default
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_Manager, DefaultLocalRepositoryLockTimeout)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, DefaultLocalRepositoryLockTimeout)
 {
     {
         EXPECT_EQ(Duration::Seconds(60.0), Manager::DefaultLocalRepositoryLockTimeout());

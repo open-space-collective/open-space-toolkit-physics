@@ -22,4 +22,4 @@ def test_import():
     Object = physics.environment.Object
     Geometry = physics.environment.object.Geometry
     Celestial = physics.environment.objects.Celestial
-    Earth = physics.environment.objects.celestial_bodies.Earth
+    Earth = physics.environment.objects.celestial.Earth

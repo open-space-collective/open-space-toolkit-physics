@@ -10,7 +10,7 @@ from ostk.core.filesystem import File
 from ostk.io import URL
 
 from ostk.physics.coordinate import Frame
-from ostk.physics.environment.objects.celestial_bodies import Sun
+from ostk.physics.environment.objects.celestial import Sun
 from ostk.physics.environment.atmospheric.earth import Manager
 from ostk.physics.environment.atmospheric.earth import CSSISpaceWeather
 from ostk.physics.environment.atmospheric.earth import Exponential

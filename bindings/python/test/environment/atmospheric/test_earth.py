@@ -16,7 +16,7 @@ from ostk.physics.coordinate import Frame
 from ostk.physics.coordinate.spherical import LLA
 from ostk.physics.environment.atmospheric import Earth as EarthAtmosphericModel
 from ostk.physics.environment.gravitational import Earth as EarthGravitationalModel
-from ostk.physics.environment.objects.celestial_bodies import Sun
+from ostk.physics.environment.objects.celestial import Sun
 
 
 @pytest.fixture

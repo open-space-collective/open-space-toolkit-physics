@@ -10,7 +10,7 @@
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
-#include <OpenSpaceToolkit/Physics/Units/Time.hpp>
+#include <OpenSpaceToolkit/Physics/Unit/Time.hpp>
 
 namespace ostk
 {

@@ -2,14 +2,14 @@
 
 #include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
-#include <OpenSpaceToolkit/Physics/Units/Length.hpp>
+#include <OpenSpaceToolkit/Physics/Unit/Length.hpp>
 
 #include <Global.test.hpp>
 
-TEST(OpenSpaceToolkit_Physics_Units_Length, Constructor)
+TEST(OpenSpaceToolkit_Physics_Unit_Length, Constructor)
 {
     using ostk::core::type::Real;
-    using ostk::physics::units::Length;
+    using ostk::physics::unit::Length;
 
     {
         const Real value = 123.456;
@@ -26,9 +26,9 @@ TEST(OpenSpaceToolkit_Physics_Units_Length, Constructor)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Length, EqualToOperator)
+TEST(OpenSpaceToolkit_Physics_Unit_Length, EqualToOperator)
 {
-    using ostk::physics::units::Length;
+    using ostk::physics::unit::Length;
 
     {
         EXPECT_TRUE(Length(1.0, Length::Unit::Meter) == Length(1.0, Length::Unit::Meter));
@@ -51,9 +51,9 @@ TEST(OpenSpaceToolkit_Physics_Units_Length, EqualToOperator)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Length, NotEqualToOperator)
+TEST(OpenSpaceToolkit_Physics_Unit_Length, NotEqualToOperator)
 {
-    using ostk::physics::units::Length;
+    using ostk::physics::unit::Length;
 
     {
         EXPECT_TRUE(Length(+1.0, Length::Unit::Meter) != Length(-1.0, Length::Unit::Meter));
@@ -73,9 +73,9 @@ TEST(OpenSpaceToolkit_Physics_Units_Length, NotEqualToOperator)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Length, LowerThanOperator)
+TEST(OpenSpaceToolkit_Physics_Unit_Length, LowerThanOperator)
 {
-    using ostk::physics::units::Length;
+    using ostk::physics::unit::Length;
 
     {
         EXPECT_TRUE(Length(1.0, Length::Unit::Meter) < Length(2.0, Length::Unit::Meter));
@@ -97,9 +97,9 @@ TEST(OpenSpaceToolkit_Physics_Units_Length, LowerThanOperator)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Length, LowerThanOrEqualToOperator)
+TEST(OpenSpaceToolkit_Physics_Unit_Length, LowerThanOrEqualToOperator)
 {
-    using ostk::physics::units::Length;
+    using ostk::physics::unit::Length;
 
     {
         EXPECT_TRUE(Length(1.0, Length::Unit::Meter) <= Length(1.0, Length::Unit::Meter));
@@ -120,9 +120,9 @@ TEST(OpenSpaceToolkit_Physics_Units_Length, LowerThanOrEqualToOperator)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Length, GreaterThanOperator)
+TEST(OpenSpaceToolkit_Physics_Unit_Length, GreaterThanOperator)
 {
-    using ostk::physics::units::Length;
+    using ostk::physics::unit::Length;
 
     {
         EXPECT_TRUE(Length(2.0, Length::Unit::Meter) > Length(1.0, Length::Unit::Meter));
@@ -144,9 +144,9 @@ TEST(OpenSpaceToolkit_Physics_Units_Length, GreaterThanOperator)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Length, GreaterThanOrEqualToOperator)
+TEST(OpenSpaceToolkit_Physics_Unit_Length, GreaterThanOrEqualToOperator)
 {
-    using ostk::physics::units::Length;
+    using ostk::physics::unit::Length;
 
     {
         EXPECT_TRUE(Length(1.0, Length::Unit::Meter) >= Length(1.0, Length::Unit::Meter));
@@ -167,9 +167,9 @@ TEST(OpenSpaceToolkit_Physics_Units_Length, GreaterThanOrEqualToOperator)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Length, AdditionOperator)
+TEST(OpenSpaceToolkit_Physics_Unit_Length, AdditionOperator)
 {
-    using ostk::physics::units::Length;
+    using ostk::physics::unit::Length;
 
     {
         EXPECT_EQ(
@@ -205,9 +205,9 @@ TEST(OpenSpaceToolkit_Physics_Units_Length, AdditionOperator)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Length, SubtractionOperator)
+TEST(OpenSpaceToolkit_Physics_Unit_Length, SubtractionOperator)
 {
-    using ostk::physics::units::Length;
+    using ostk::physics::unit::Length;
 
     {
         EXPECT_EQ(
@@ -244,10 +244,10 @@ TEST(OpenSpaceToolkit_Physics_Units_Length, SubtractionOperator)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Length, MultiplicationOperator)
+TEST(OpenSpaceToolkit_Physics_Unit_Length, MultiplicationOperator)
 {
     using ostk::core::type::Real;
-    using ostk::physics::units::Length;
+    using ostk::physics::unit::Length;
 
     {
         EXPECT_EQ(Length(+1.0, Length::Unit::Meter), Length(+1.0, Length::Unit::Meter) * +1.0);
@@ -293,10 +293,10 @@ TEST(OpenSpaceToolkit_Physics_Units_Length, MultiplicationOperator)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Length, DivisionOperator)
+TEST(OpenSpaceToolkit_Physics_Unit_Length, DivisionOperator)
 {
     using ostk::core::type::Real;
-    using ostk::physics::units::Length;
+    using ostk::physics::unit::Length;
 
     {
         EXPECT_EQ(Length(+1.0, Length::Unit::Meter), Length(+1.0, Length::Unit::Meter) / +1.0);
@@ -325,9 +325,9 @@ TEST(OpenSpaceToolkit_Physics_Units_Length, DivisionOperator)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Length, AdditionAssignmentOperator)
+TEST(OpenSpaceToolkit_Physics_Unit_Length, AdditionAssignmentOperator)
 {
-    using ostk::physics::units::Length;
+    using ostk::physics::unit::Length;
 
     {
         EXPECT_EQ(
@@ -363,9 +363,9 @@ TEST(OpenSpaceToolkit_Physics_Units_Length, AdditionAssignmentOperator)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Length, SubtractionAssignmentOperator)
+TEST(OpenSpaceToolkit_Physics_Unit_Length, SubtractionAssignmentOperator)
 {
-    using ostk::physics::units::Length;
+    using ostk::physics::unit::Length;
 
     {
         EXPECT_EQ(
@@ -402,10 +402,10 @@ TEST(OpenSpaceToolkit_Physics_Units_Length, SubtractionAssignmentOperator)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Length, MultiplicationAssignmentOperator)
+TEST(OpenSpaceToolkit_Physics_Unit_Length, MultiplicationAssignmentOperator)
 {
     using ostk::core::type::Real;
-    using ostk::physics::units::Length;
+    using ostk::physics::unit::Length;
 
     {
         EXPECT_EQ(Length(+1.0, Length::Unit::Meter), Length(+1.0, Length::Unit::Meter) *= +1.0);
@@ -433,10 +433,10 @@ TEST(OpenSpaceToolkit_Physics_Units_Length, MultiplicationAssignmentOperator)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Length, DivisionAssignmentOperator)
+TEST(OpenSpaceToolkit_Physics_Unit_Length, DivisionAssignmentOperator)
 {
     using ostk::core::type::Real;
-    using ostk::physics::units::Length;
+    using ostk::physics::unit::Length;
 
     {
         EXPECT_EQ(Length(+1.0, Length::Unit::Meter), Length(+1.0, Length::Unit::Meter) /= +1.0);
@@ -465,9 +465,9 @@ TEST(OpenSpaceToolkit_Physics_Units_Length, DivisionAssignmentOperator)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Length, UnaryAdditionOperator)
+TEST(OpenSpaceToolkit_Physics_Unit_Length, UnaryAdditionOperator)
 {
-    using ostk::physics::units::Length;
+    using ostk::physics::unit::Length;
 
     {
         EXPECT_EQ(Length(0.0, Length::Unit::Meter), +Length(0.0, Length::Unit::Foot));
@@ -484,9 +484,9 @@ TEST(OpenSpaceToolkit_Physics_Units_Length, UnaryAdditionOperator)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Length, UnarySubtractionOperator)
+TEST(OpenSpaceToolkit_Physics_Unit_Length, UnarySubtractionOperator)
 {
-    using ostk::physics::units::Length;
+    using ostk::physics::unit::Length;
 
     {
         EXPECT_EQ(Length(0.0, Length::Unit::Meter), -Length(0.0, Length::Unit::Foot));
@@ -503,9 +503,9 @@ TEST(OpenSpaceToolkit_Physics_Units_Length, UnarySubtractionOperator)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Length, StreamOperator)
+TEST(OpenSpaceToolkit_Physics_Unit_Length, StreamOperator)
 {
-    using ostk::physics::units::Length;
+    using ostk::physics::unit::Length;
 
     {
         testing::internal::CaptureStdout();
@@ -516,10 +516,10 @@ TEST(OpenSpaceToolkit_Physics_Units_Length, StreamOperator)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Length, IsDefined)
+TEST(OpenSpaceToolkit_Physics_Unit_Length, IsDefined)
 {
     using ostk::core::type::Real;
-    using ostk::physics::units::Length;
+    using ostk::physics::unit::Length;
 
     {
         EXPECT_TRUE(Length(0.0, Length::Unit::Meter).isDefined());
@@ -538,10 +538,10 @@ TEST(OpenSpaceToolkit_Physics_Units_Length, IsDefined)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Length, IsZero)
+TEST(OpenSpaceToolkit_Physics_Unit_Length, IsZero)
 {
     using ostk::core::type::Real;
-    using ostk::physics::units::Length;
+    using ostk::physics::unit::Length;
 
     {
         EXPECT_TRUE(Length(0.0, Length::Unit::Meter).isZero());
@@ -564,9 +564,9 @@ TEST(OpenSpaceToolkit_Physics_Units_Length, IsZero)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Length, GetUnit)
+TEST(OpenSpaceToolkit_Physics_Unit_Length, GetUnit)
 {
-    using ostk::physics::units::Length;
+    using ostk::physics::unit::Length;
 
     {
         EXPECT_EQ(Length::Unit::Undefined, Length(1.0, Length::Unit::Undefined).getUnit());
@@ -578,9 +578,9 @@ TEST(OpenSpaceToolkit_Physics_Units_Length, GetUnit)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Length, In)
+TEST(OpenSpaceToolkit_Physics_Unit_Length, In)
 {
-    using ostk::physics::units::Length;
+    using ostk::physics::unit::Length;
 
     {
         EXPECT_EQ(1.0, Length(1.0, Length::Unit::Meter).in(Length::Unit::Meter));
@@ -595,9 +595,9 @@ TEST(OpenSpaceToolkit_Physics_Units_Length, In)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Length, InMeters)
+TEST(OpenSpaceToolkit_Physics_Unit_Length, InMeters)
 {
-    using ostk::physics::units::Length;
+    using ostk::physics::unit::Length;
 
     {
         EXPECT_EQ(123.456, Length(123.456, Length::Unit::Meter).inMeters());
@@ -608,9 +608,9 @@ TEST(OpenSpaceToolkit_Physics_Units_Length, InMeters)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Length, InKilometers)
+TEST(OpenSpaceToolkit_Physics_Unit_Length, InKilometers)
 {
-    using ostk::physics::units::Length;
+    using ostk::physics::unit::Length;
 
     {
         EXPECT_EQ(123.456, Length(123456.0, Length::Unit::Meter).inKilometers());
@@ -621,9 +621,9 @@ TEST(OpenSpaceToolkit_Physics_Units_Length, InKilometers)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Length, ToString)
+TEST(OpenSpaceToolkit_Physics_Unit_Length, ToString)
 {
-    using ostk::physics::units::Length;
+    using ostk::physics::unit::Length;
 
     {
         EXPECT_EQ("1.0 [m]", Length(1.0, Length::Unit::Meter).toString());
@@ -670,9 +670,9 @@ TEST(OpenSpaceToolkit_Physics_Units_Length, ToString)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Length, Undefined)
+TEST(OpenSpaceToolkit_Physics_Unit_Length, Undefined)
 {
-    using ostk::physics::units::Length;
+    using ostk::physics::unit::Length;
 
     {
         EXPECT_NO_THROW(Length::Undefined());
@@ -682,9 +682,9 @@ TEST(OpenSpaceToolkit_Physics_Units_Length, Undefined)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Length, Millimeters)
+TEST(OpenSpaceToolkit_Physics_Unit_Length, Millimeters)
 {
-    using ostk::physics::units::Length;
+    using ostk::physics::unit::Length;
 
     {
         EXPECT_NO_THROW(Length::Millimeters(123.456));
@@ -694,9 +694,9 @@ TEST(OpenSpaceToolkit_Physics_Units_Length, Millimeters)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Length, Meters)
+TEST(OpenSpaceToolkit_Physics_Unit_Length, Meters)
 {
-    using ostk::physics::units::Length;
+    using ostk::physics::unit::Length;
 
     {
         EXPECT_NO_THROW(Length::Meters(123.456));
@@ -706,9 +706,9 @@ TEST(OpenSpaceToolkit_Physics_Units_Length, Meters)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Length, Kilometers)
+TEST(OpenSpaceToolkit_Physics_Unit_Length, Kilometers)
 {
-    using ostk::physics::units::Length;
+    using ostk::physics::unit::Length;
 
     {
         EXPECT_NO_THROW(Length::Kilometers(123.456));
@@ -718,9 +718,9 @@ TEST(OpenSpaceToolkit_Physics_Units_Length, Kilometers)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Length, Parse)
+TEST(OpenSpaceToolkit_Physics_Unit_Length, Parse)
 {
-    using ostk::physics::units::Length;
+    using ostk::physics::unit::Length;
 
     {
         EXPECT_EQ(Length::Meters(123.0), Length::Parse("123 [m]"));
@@ -756,9 +756,9 @@ TEST(OpenSpaceToolkit_Physics_Units_Length, Parse)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Length, StringFromUnit)
+TEST(OpenSpaceToolkit_Physics_Unit_Length, StringFromUnit)
 {
-    using ostk::physics::units::Length;
+    using ostk::physics::unit::Length;
 
     {
         EXPECT_EQ("Undefined", Length::StringFromUnit(Length::Unit::Undefined));
@@ -770,9 +770,9 @@ TEST(OpenSpaceToolkit_Physics_Units_Length, StringFromUnit)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Length, SymbolFromUnit)
+TEST(OpenSpaceToolkit_Physics_Unit_Length, SymbolFromUnit)
 {
-    using ostk::physics::units::Length;
+    using ostk::physics::unit::Length;
 
     {
         EXPECT_EQ("m", Length::SymbolFromUnit(Length::Unit::Meter));

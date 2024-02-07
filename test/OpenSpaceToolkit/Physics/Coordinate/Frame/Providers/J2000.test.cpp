@@ -5,9 +5,9 @@
 #include <OpenSpaceToolkit/Mathematics/Object/Vector.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
-#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/GCRF.hpp>
-#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/J2000.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/GCRF.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp>
 
 #include <Global.test.hpp>
 
@@ -21,11 +21,11 @@ using ostk::physics::time::DateTime;
 using ostk::physics::coord::Frame;
 using ostk::physics::coord::frame::Transform;
 using ostk::physics::coord::frame::provider::J2000;
-using ostk::physics::coord::frame::providers::iau::Theory;
+using ostk::physics::coord::frame::provider::iau::Theory;
 using ostk::physics::environment::object::celestial::Earth;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 
-TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_J2000, GetTransformAt)
+TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_J2000, GetTransformAt)
 {
     // IAU 2000A
 

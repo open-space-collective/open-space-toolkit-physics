@@ -14,7 +14,7 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Axes.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.hpp>
-#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IAU/Theory.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IAU/Theory.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp>
@@ -26,7 +26,7 @@ namespace physics
 namespace coord
 {
 
-namespace iau = ostk::physics::coord::frame::providers::iau;
+namespace iau = ostk::physics::coord::frame::provider::iau;
 
 using ostk::core::type::Uint8;
 using ostk::core::type::Shared;

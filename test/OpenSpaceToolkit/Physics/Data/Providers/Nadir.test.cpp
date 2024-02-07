@@ -1,6 +1,6 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkit/Physics/Data/Providers/Nadir.hpp>
+#include <OpenSpaceToolkit/Physics/Data/Provider/Nadir.hpp>
 
 #include <Global.test.hpp>
 
@@ -11,9 +11,9 @@ using ostk::physics::coord::Frame;
 using ostk::physics::Environment;
 using ostk::physics::environment::object::Celestial;
 using ostk::physics::data::Direction;
-using ostk::physics::data::providers::Nadir;
+using ostk::physics::data::provider::Nadir;
 
-TEST(OpenSpaceToolkit_Physics_Data_Providers_Nadir, Nadir)
+TEST(OpenSpaceToolkit_Physics_Data_Provider_Nadir, Nadir)
 {
     {
         const Environment environment = Environment::Default();

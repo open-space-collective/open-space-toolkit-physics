@@ -6,10 +6,10 @@
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Object/Segment.hpp>
 
 #include <OpenSpaceToolkit/Physics/Environment.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Objects/Celestial.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Moon.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Sun.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Moon.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Sun.hpp>
 
 namespace ostk
 {

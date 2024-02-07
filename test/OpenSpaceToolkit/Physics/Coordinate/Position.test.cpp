@@ -12,7 +12,7 @@ using ostk::mathematics::object::Vector3d;
 
 using ostk::physics::coord::Frame;
 using ostk::physics::coord::Position;
-using ostk::physics::units::Length;
+using ostk::physics::unit::Length;
 
 class OpenSpaceToolkit_Physics_Coordinate_Position : public ::testing::Test
 {

@@ -1,6 +1,6 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/BulletinA.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp>
 
 #include <Global.test.hpp>
 
@@ -15,13 +15,13 @@ using ostk::physics::time::Interval;
 using ostk::physics::time::Duration;
 using ostk::physics::coord::frame::provider::iers::BulletinA;
 
-class OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA : public ::testing::Test
+class OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA : public ::testing::Test
 {
    protected:
     void SetUp() override
     {
         const File file = File::Path(
-            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/IERS/BulletinA/ser7.dat")
+            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA/ser7.dat")
         );
         this->bulletinA_ = BulletinA::Load(file);
     }
@@ -29,7 +29,7 @@ class OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA : publi
     BulletinA bulletinA_ = BulletinA::Undefined();
 };
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, StreamOperator)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, StreamOperator)
 {
     {
         testing::internal::CaptureStdout();
@@ -40,7 +40,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, Strea
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, IsDefined)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, IsDefined)
 {
     {
         EXPECT_TRUE(bulletinA_.isDefined());
@@ -51,32 +51,32 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, IsDef
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessReleaseDate)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, AccessReleaseDate)
 {
     SUCCEED();  // See: GetReleaseDate
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessTAIMinusUTC)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, AccessTAIMinusUTC)
 {
     SUCCEED();  // See: GetTAIMinusUTC
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessTAIMinusUTCEpoch)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, AccessTAIMinusUTCEpoch)
 {
     SUCCEED();  // See: GetTAIMinusUTCEpoch
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessObservationInterval)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, AccessObservationInterval)
 {
     SUCCEED();  // See: GetObservationInterval
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, AccessPredictionInterval)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, AccessPredictionInterval)
 {
     SUCCEED();  // See: GetPredictionInterval
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetReleaseDate)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetReleaseDate)
 {
     {
         EXPECT_EQ(Date(2018, 6, 28), bulletinA_.getReleaseDate());
@@ -87,7 +87,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetRe
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetTAIMinusUTC)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetTAIMinusUTC)
 {
     {
         EXPECT_EQ(Duration::Seconds(37.0), bulletinA_.getTAIMinusUTC());
@@ -98,7 +98,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetTA
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetTAIMinusUTCEpoch)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetTAIMinusUTCEpoch)
 {
     {
         EXPECT_EQ(
@@ -111,7 +111,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetTA
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetObservationInterval)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetObservationInterval)
 {
     {
         EXPECT_EQ(
@@ -129,7 +129,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetOb
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, IntervalOverlap)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, IntervalOverlap)
 {
     const Interval observationInterval = bulletinA_.getObservationInterval();
     const Interval predictionInterval = bulletinA_.getPredictionInterval();
@@ -147,7 +147,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, Inter
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetObservationAt)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetObservationAt)
 {
     {
         const BulletinA::Observation firstObservation =
@@ -178,7 +178,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetOb
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetPredictionInterval)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetPredictionInterval)
 {
     {
         EXPECT_EQ(
@@ -195,7 +195,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetPr
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetPredictionAt)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetPredictionAt)
 {
     {
         const BulletinA::Prediction firstPrediction =
@@ -217,7 +217,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, GetPr
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Providers_IERS_BulletinA, Load)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, Load)
 {
     {
         EXPECT_TRUE(bulletinA_.isDefined());
