@@ -70,7 +70,7 @@ class OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager : public ::te
 
     Manager& manager_ = Manager::Get();
 
-    const char* localRepositoryVarName_ = "OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY";
+    const char* localRepositoryVarName_ = "OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_MANAGER_LOCAL_REPOSITORY";
     const char* fullDataVarName_ = "OSTK_PHYSICS_DATA_LOCAL_REPOSITORY";
 
     char* localRepositoryPath;
@@ -94,7 +94,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, SetLocalRep
         EXPECT_EQ("tmp", manager_.getLocalRepository().getName());
 
         manager_.setLocalRepository(
-            Directory::Path(Path::Parse("./.open-space-toolkit/physics/environment/ephemerides/spice"))
+            Directory::Path(Path::Parse("./.open-space-toolkit/physics/environment/ephemeris/spice"))
         );
 
         EXPECT_EQ("spice", manager_.getLocalRepository().getName());
@@ -111,7 +111,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, DefaultLoca
 
         EXPECT_EQ(
             Manager::DefaultLocalRepository(),
-            Directory::Path(Path::Parse("./.open-space-toolkit/physics/data/environment/ephemerides/spice"))
+            Directory::Path(Path::Parse("./.open-space-toolkit/physics/data/environment/ephemeris/spice"))
         );
     }
 
@@ -122,7 +122,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, DefaultLoca
         setenv(fullDataVarName_, "/tmp", true);
 
         EXPECT_EQ(
-            Manager::DefaultLocalRepository(), Directory::Path(Path::Parse("/tmp/environment/ephemerides/spice"))
+            Manager::DefaultLocalRepository(), Directory::Path(Path::Parse("/tmp/environment/ephemeris/spice"))
         );
     }
 
@@ -141,7 +141,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, FetchKernel
 {
     // make subdir for test
     manager_.setLocalRepository(Directory::Path(
-        Path::Parse("/app/.open-space-toolkit/physics/environment/ephemerides/spice/") + Path::Parse("FetchKernelTest/")
+        Path::Parse("/app/.open-space-toolkit/physics/environment/ephemeris/spice/") + Path::Parse("FetchKernelTest/")
     ));
     manager_.getLocalRepository().create();
 
@@ -167,7 +167,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, FetchMatchi
 {
     // make subdir for test
     manager_.setLocalRepository(Directory::Path(
-        Path::Parse("/app/.open-space-toolkit/physics/environment/ephemerides/spice/") +
+        Path::Parse("/app/.open-space-toolkit/physics/environment/ephemeris/spice/") +
         Path::Parse("FetchMatchingKernelsTest/")
     ));
     if (manager_.getLocalRepository().exists())
@@ -194,7 +194,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, FindKernel)
 {
     // make subdir for test
     manager_.setLocalRepository(Directory::Path(
-        Path::Parse("/app/.open-space-toolkit/physics/environment/ephemerides/spice/") + Path::Parse("FindKernelTest/")
+        Path::Parse("/app/.open-space-toolkit/physics/environment/ephemeris/spice/") + Path::Parse("FindKernelTest/")
     ));
     if (manager_.getLocalRepository().exists())
     {

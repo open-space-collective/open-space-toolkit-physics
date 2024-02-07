@@ -21,8 +21,8 @@
 #include <OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
-#define OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY \
-    "./.open-space-toolkit/physics/data/environment/ephemerides/spice"
+#define OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_MANAGER_LOCAL_REPOSITORY \
+    "./.open-space-toolkit/physics/data/environment/ephemeris/spice"
 
 namespace ostk
 {
@@ -55,7 +55,7 @@ using ManifestManager = ostk::physics::data::Manager;
 ///
 ///                             The following environment variables can be defined:
 ///
-///                             - "OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY" will override
+///                             - "OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_MANAGER_LOCAL_REPOSITORY" will override
 ///                             "DefaultLocalRepository"
 
 class Manager
@@ -89,7 +89,7 @@ class Manager
 
     /// @brief              Get default local repository
     ///
-    ///                     Overriden by: OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY
+    ///                     Overriden by: OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_MANAGER_LOCAL_REPOSITORY
     ///
     /// @return             Default local repository
 

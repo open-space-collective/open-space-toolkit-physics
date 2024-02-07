@@ -22,7 +22,7 @@
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Interval.hpp>
 
-#define OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_ENGINE_MODE Engine::Mode::Automatic
+#define OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_ENGINE_MODE Engine::Mode::Automatic
 
 namespace ostk
 {
@@ -55,7 +55,7 @@ using ostk::physics::environment::ephemeris::spice::Kernel;
 ///
 ///                             The following environment variables can be defined:
 ///
-///                             - "OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_ENGINE_MODE" will override "DefaultMode"
+///                             - "OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_ENGINE_MODE" will override "DefaultMode"
 
 class Engine
 {
@@ -113,7 +113,7 @@ class Engine
 
     /// @brief              Get default engine mode
     ///
-    ///                     Overriden by: OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_ENGINE_MODE
+    ///                     Overriden by: OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_ENGINE_MODE
     ///
     /// @return             Default engine mode
 

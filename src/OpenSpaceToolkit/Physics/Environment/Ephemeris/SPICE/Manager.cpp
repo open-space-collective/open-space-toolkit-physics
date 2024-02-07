@@ -69,16 +69,16 @@ void Manager::setLocalRepository(const Directory& aDirectory)
 Directory Manager::DefaultLocalRepository()
 {
     static const Directory defaultLocalRepository =
-        Directory::Path(Path::Parse(OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY));
+        Directory::Path(Path::Parse(OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_MANAGER_LOCAL_REPOSITORY));
 
     if (const char* localRepositoryPath =
-            std::getenv("OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY"))
+            std::getenv("OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_MANAGER_LOCAL_REPOSITORY"))
     {
         return Directory::Path(Path::Parse(localRepositoryPath));
     }
     else if (const char* dataPath = std::getenv("OSTK_PHYSICS_DATA_LOCAL_REPOSITORY"))
     {
-        return Directory::Path(Path::Parse(dataPath) + Path::Parse("environment/ephemerides/spice"));
+        return Directory::Path(Path::Parse(dataPath) + Path::Parse("environment/ephemeris/spice"));
     }
 
     return defaultLocalRepository;
