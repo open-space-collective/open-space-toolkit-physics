@@ -70,7 +70,7 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manifest, FindRemoteDataUrls)
 
     {
         Array<URL> expectedUrls = {
-            URL::Parse("https://fake.com/data/coordinate/frame/provider/iers/finals-2000A/finals2000A.data"),
+            URL::Parse("https://fake.com/data/coordinate/frame/providers/iers/finals-2000A/finals2000A.data"),
         };
 
         EXPECT_EQ(expectedUrls, manifest_.findRemoteDataUrls(baseUrl, "finals-2000A"));
@@ -78,7 +78,7 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manifest, FindRemoteDataUrls)
 
     {
         Array<URL> expectedUrls = {
-            URL::Parse("https://fake.com/data/coordinate/frame/provider/iers/finals-2000A/finals2000A.data"),
+            URL::Parse("https://fake.com/data/coordinate/frame/providers/iers/finals-2000A/finals2000A.data"),
         };
 
         EXPECT_EQ(expectedUrls, manifest_.findRemoteDataUrls(baseUrl, "f.*A"));
@@ -86,7 +86,7 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manifest, FindRemoteDataUrls)
 
     {
         Array<URL> expectedUrls = {
-            URL::Parse("https://fake.com/data/coordinate/frame/provider/iers/bulletin-A/ser7.dat"),
+            URL::Parse("https://fake.com/data/coordinate/frame/providers/iers/bulletin-A/ser7.dat"),
         };
 
         EXPECT_EQ(expectedUrls, manifest_.findRemoteDataUrls(baseUrl, "bulletin-A"));
