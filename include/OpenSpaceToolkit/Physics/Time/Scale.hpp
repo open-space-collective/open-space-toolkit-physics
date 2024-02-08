@@ -17,7 +17,7 @@ using ostk::core::type::String;
 /// @brief                      Time scale
 ///
 /// @ref                        http://www.iausofa.org/sofa_ts_c.pdf
-/// @ref                        https://www.cv.nrao.edu/~rfisher/Ephemeris/times.html
+/// @ref                        https://www.cv.nrao.edu/~rfisher/Ephemerides/times.html
 /// @ref                        http://stjarnhimlen.se/comp/time.html
 /// @ref                        http://www.navipedia.net/index.php/Time_References_in_GNSS
 /// @ref                        Springer Handbook of Global Navigation Satellite Systems
