@@ -133,7 +133,7 @@ class TestManager:
         manager.set_local_repository(
             Directory.path(
                 Path.parse(
-                    "./.open-space-toolkit/physics/coordinate/frame/providers/iers2"
+                    "./.open-space-toolkit/physics/coordinate/frame/provider/iers2"
                 )
             )
         )
@@ -141,7 +141,7 @@ class TestManager:
         assert isinstance(manager.get_local_repository(), Directory)
         assert (
             manager.get_local_repository().to_string()
-            == "./.open-space-toolkit/physics/coordinate/frame/providers/iers2"
+            == "./.open-space-toolkit/physics/coordinate/frame/provider/iers2"
         )
 
     def test_load_bulletin_a_success(self, manager: Manager, bulletin_a: BulletinA):

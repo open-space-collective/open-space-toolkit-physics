@@ -8,7 +8,7 @@ Time = physics.unit.Time
 Unit = Time.Unit
 
 
-def test_units_time_unit():
+def test_unit_time_unit():
     enum_members = Unit.__members__
 
     list_keys = [
@@ -40,7 +40,7 @@ def test_units_time_unit():
     assert list(enum_members.values()) == list_values
 
 
-def test_units_time_constructors():
+def test_unit_time_constructors():
     time: Time = Time(3.2, Unit.Nanosecond)
 
     assert time is not None
@@ -96,6 +96,6 @@ def test_units_time_constructors():
     assert time.is_defined() is False
 
 
-def test_units_time_is_defined():
+def test_unit_time_is_defined():
     assert Time(2.0, Unit.Second).is_defined()
     assert Time.undefined().is_defined() is False
