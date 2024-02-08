@@ -7,7 +7,7 @@
 #include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
-#include <OpenSpaceToolkit/Physics/Units/Time.hpp>
+#include <OpenSpaceToolkit/Physics/Unit/Time.hpp>
 
 namespace ostk
 {
@@ -477,7 +477,7 @@ class Duration
     /// @param              [in] aTimeUnit A time unit
     /// @return             Count in given time unit
 
-    Real in(const units::Time::Unit& aTimeUnit) const;
+    Real in(const unit::Time::Unit& aTimeUnit) const;
 
     /// @brief              Get absolute duration
     ///

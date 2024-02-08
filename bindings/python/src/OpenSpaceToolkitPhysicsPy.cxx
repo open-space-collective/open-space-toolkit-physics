@@ -1,8 +1,8 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkitPhysicsPy/Utilities/ArrayCasting.hpp>
-#include <OpenSpaceToolkitPhysicsPy/Utilities/DateTimeCasting.hpp>
-#include <OpenSpaceToolkitPhysicsPy/Utilities/ShiftToString.hpp>
+#include <OpenSpaceToolkitPhysicsPy/Utility/ArrayCasting.hpp>
+#include <OpenSpaceToolkitPhysicsPy/Utility/DateTimeCasting.hpp>
+#include <OpenSpaceToolkitPhysicsPy/Utility/ShiftToString.hpp>
 #include <pybind11/chrono.h>
 #include <pybind11/eigen.h>
 #include <pybind11/numpy.h>
@@ -12,7 +12,7 @@
 #include <OpenSpaceToolkitPhysicsPy/Coordinate.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Environment.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Time.cpp>
-#include <OpenSpaceToolkitPhysicsPy/Units.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Unit.cpp>
 
 PYBIND11_MODULE(OpenSpaceToolkitPhysicsPy, m)
 {
@@ -33,7 +33,7 @@ PYBIND11_MODULE(OpenSpaceToolkitPhysicsPy, m)
 #endif
 
     // Add python submodules to OpenSpaceToolkitPhysicsPy
-    OpenSpaceToolkitPhysicsPy_Units(m);
+    OpenSpaceToolkitPhysicsPy_Unit(m);
     OpenSpaceToolkitPhysicsPy_Time(m);
     OpenSpaceToolkitPhysicsPy_Coordinate(m);
     OpenSpaceToolkitPhysicsPy_Environment(m);

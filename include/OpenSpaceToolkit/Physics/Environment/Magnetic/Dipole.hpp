@@ -7,7 +7,7 @@
 
 #include <OpenSpaceToolkit/Physics/Environment/Magnetic/Model.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
-#include <OpenSpaceToolkit/Physics/Units/Derived.hpp>
+#include <OpenSpaceToolkit/Physics/Unit/Derived.hpp>
 
 namespace ostk
 {
@@ -20,7 +20,7 @@ namespace magnetic
 
 using ostk::core::type::Real;
 
-using ostk::physics::units::Derived;
+using ostk::physics::unit::Derived;
 using ostk::physics::time::Instant;
 using ostk::physics::environment::magnetic::Model;
 

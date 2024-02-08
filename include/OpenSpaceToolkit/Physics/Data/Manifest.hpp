@@ -11,7 +11,7 @@
 
 #include <OpenSpaceToolkit/IO/URL.hpp>
 
-#include <OpenSpaceToolkit/Physics/Environment/Ephemerides/SPICE/Kernel.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
 namespace ostk

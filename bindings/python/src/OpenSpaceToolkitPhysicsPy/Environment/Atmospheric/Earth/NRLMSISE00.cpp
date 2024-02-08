@@ -2,7 +2,7 @@
 
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Objects/Celestial.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp>
 
 inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_NRLMSISE00(pybind11::module& aModule)
 {
@@ -11,7 +11,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_NRLMSISE00(p
     using ostk::core::type::Shared;
     using ostk::core::type::Real;
 
-    using ostk::physics::units::Length;
+    using ostk::physics::unit::Length;
     using ostk::physics::time::Instant;
     using ostk::physics::coord::Frame;
     using ostk::physics::coord::spherical::LLA;

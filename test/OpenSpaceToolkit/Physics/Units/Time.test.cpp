@@ -2,14 +2,14 @@
 
 #include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
-#include <OpenSpaceToolkit/Physics/Units/Time.hpp>
+#include <OpenSpaceToolkit/Physics/Unit/Time.hpp>
 
 #include <Global.test.hpp>
 
-TEST(OpenSpaceToolkit_Physics_Units_Time, Constructor)
+TEST(OpenSpaceToolkit_Physics_Unit_Time, Constructor)
 {
     using ostk::core::type::Real;
-    using ostk::physics::units::Time;
+    using ostk::physics::unit::Time;
 
     {
         const Real value = 123.456;
@@ -26,10 +26,10 @@ TEST(OpenSpaceToolkit_Physics_Units_Time, Constructor)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Time, IsDefined)
+TEST(OpenSpaceToolkit_Physics_Unit_Time, IsDefined)
 {
     using ostk::core::type::Real;
-    using ostk::physics::units::Time;
+    using ostk::physics::unit::Time;
 
     {
         EXPECT_TRUE(Time(0.0, Time::Unit::Second).isDefined());
@@ -51,9 +51,9 @@ TEST(OpenSpaceToolkit_Physics_Units_Time, IsDefined)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Time, GetUnit)
+TEST(OpenSpaceToolkit_Physics_Unit_Time, GetUnit)
 {
-    using ostk::physics::units::Time;
+    using ostk::physics::unit::Time;
 
     {
         EXPECT_EQ(Time::Unit::Undefined, Time(1.0, Time::Unit::Undefined).getUnit());
@@ -68,9 +68,9 @@ TEST(OpenSpaceToolkit_Physics_Units_Time, GetUnit)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Time, In)
+TEST(OpenSpaceToolkit_Physics_Unit_Time, In)
 {
-    using ostk::physics::units::Time;
+    using ostk::physics::unit::Time;
 
     {
         EXPECT_EQ(1.0, Time(1.0, Time::Unit::Nanosecond).in(Time::Unit::Nanosecond));
@@ -106,9 +106,9 @@ TEST(OpenSpaceToolkit_Physics_Units_Time, In)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Time, InSeconds)
+TEST(OpenSpaceToolkit_Physics_Unit_Time, InSeconds)
 {
-    using ostk::physics::units::Time;
+    using ostk::physics::unit::Time;
 
     {
         EXPECT_EQ(123.456, Time(123.456, Time::Unit::Second).inSeconds());
@@ -119,9 +119,9 @@ TEST(OpenSpaceToolkit_Physics_Units_Time, InSeconds)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Time, ToString)
+TEST(OpenSpaceToolkit_Physics_Unit_Time, ToString)
 {
-    using ostk::physics::units::Time;
+    using ostk::physics::unit::Time;
 
     {
         EXPECT_EQ("1.0 [ns]", Time(1.0, Time::Unit::Nanosecond).toString());
@@ -186,9 +186,9 @@ TEST(OpenSpaceToolkit_Physics_Units_Time, ToString)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Time, Undefined)
+TEST(OpenSpaceToolkit_Physics_Unit_Time, Undefined)
 {
-    using ostk::physics::units::Time;
+    using ostk::physics::unit::Time;
 
     {
         EXPECT_NO_THROW(Time::Undefined());
@@ -198,9 +198,9 @@ TEST(OpenSpaceToolkit_Physics_Units_Time, Undefined)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Time, Seconds)
+TEST(OpenSpaceToolkit_Physics_Unit_Time, Seconds)
 {
-    using ostk::physics::units::Time;
+    using ostk::physics::unit::Time;
 
     {
         EXPECT_NO_THROW(Time::Seconds(123.456));
@@ -210,9 +210,9 @@ TEST(OpenSpaceToolkit_Physics_Units_Time, Seconds)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Time, StringFromUnit)
+TEST(OpenSpaceToolkit_Physics_Unit_Time, StringFromUnit)
 {
-    using ostk::physics::units::Time;
+    using ostk::physics::unit::Time;
 
     {
         EXPECT_EQ("Undefined", Time::StringFromUnit(Time::Unit::Undefined));
@@ -227,9 +227,9 @@ TEST(OpenSpaceToolkit_Physics_Units_Time, StringFromUnit)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Units_Time, SymbolFromUnit)
+TEST(OpenSpaceToolkit_Physics_Unit_Time, SymbolFromUnit)
 {
-    using ostk::physics::units::Time;
+    using ostk::physics::unit::Time;
 
     {
         EXPECT_EQ("ns", Time::SymbolFromUnit(Time::Unit::Nanosecond));

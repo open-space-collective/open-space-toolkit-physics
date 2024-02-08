@@ -6,7 +6,6 @@
 #include <OpenSpaceToolkitPhysicsPy/Environment/Gravitational.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Environment/Magnetic.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Environment/Object.cpp>
-#include <OpenSpaceToolkitPhysicsPy/Environment/Objects.cpp>
 
 inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
 {
@@ -63,7 +62,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
     environment.attr("__path__") = "ostk.physics.environment";
 
     OpenSpaceToolkitPhysicsPy_Environment_Object(environment);
-    OpenSpaceToolkitPhysicsPy_Environment_Objects(environment);
     OpenSpaceToolkitPhysicsPy_Environment_Gravitational(environment);
     OpenSpaceToolkitPhysicsPy_Environment_Magnetic(environment);
     OpenSpaceToolkitPhysicsPy_Environment_Atmospheric(environment);

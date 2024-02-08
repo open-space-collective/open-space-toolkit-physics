@@ -21,5 +21,5 @@ def test_import():
     Environment = physics.Environment
     Object = physics.environment.Object
     Geometry = physics.environment.object.Geometry
-    Celestial = physics.environment.objects.Celestial
-    Earth = physics.environment.objects.celestial_bodies.Earth
+    Celestial = physics.environment.object.Celestial
+    Earth = physics.environment.object.celestial.Earth

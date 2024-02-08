@@ -11,7 +11,7 @@
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
 
 namespace NRLMSISE00_c
@@ -48,7 +48,7 @@ using ostk::physics::time::DateTime;
 using ostk::physics::time::Date;
 using ostk::physics::time::Time;
 
-using EarthCelestialBody = ostk::physics::environment::object::celestial::Earth;
+using EarthCelestial = ostk::physics::environment::object::celestial::Earth;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 using ostk::physics::environment::atmospheric::earth::Manager;
 

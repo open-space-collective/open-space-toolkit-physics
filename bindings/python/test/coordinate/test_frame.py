@@ -8,8 +8,8 @@ from ostk.physics.time import Instant
 from ostk.physics.time import DateTime
 from ostk.physics.time import Scale
 from ostk.physics.coordinate import Frame
-from ostk.physics.coordinate.frame.providers import iau
-from ostk.physics.coordinate.frame.providers import Dynamic
+from ostk.physics.coordinate.frame.provider import iau
+from ostk.physics.coordinate.frame.provider import Dynamic
 
 
 @pytest.fixture

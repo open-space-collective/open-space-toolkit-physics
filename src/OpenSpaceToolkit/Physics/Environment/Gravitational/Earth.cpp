@@ -10,7 +10,7 @@
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp>
 
 namespace ostk
 {
@@ -23,9 +23,9 @@ namespace gravitational
 
 using GeographicLib::GravityModel;
 
-using ostk::physics::units::Derived;
-using ostk::physics::units::Length;
-using ostk::physics::units::Time;
+using ostk::physics::unit::Derived;
+using ostk::physics::unit::Length;
+using ostk::physics::unit::Time;
 using SphericalGravitationalModel = ostk::physics::environment::gravitational::Spherical;
 
 // EGM2008

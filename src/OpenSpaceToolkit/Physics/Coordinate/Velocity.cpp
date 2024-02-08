@@ -184,8 +184,8 @@ String Velocity::StringFromUnit(const Velocity::Unit& aUnit)
 
 Derived::Unit Velocity::DerivedUnitFromVelocityUnit(const Velocity::Unit& aUnit)
 {
-    using ostk::physics::units::Length;
-    using ostk::physics::units::Time;
+    using ostk::physics::unit::Length;
+    using ostk::physics::unit::Time;
 
     switch (aUnit)
     {

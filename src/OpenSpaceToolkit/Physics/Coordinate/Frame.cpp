@@ -5,15 +5,15 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp>
-#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/CIRF.hpp>
-#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/GCRF.hpp>
-#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/ITRF.hpp>
-#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/J2000.hpp>
-#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/MOD.hpp>
-#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Static.hpp>
-#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/TEME.hpp>
-#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/TIRF.hpp>
-#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/TOD.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/GCRF.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ITRF.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Static.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TIRF.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TOD.hpp>
 
 namespace ostk
 {

@@ -7,12 +7,12 @@
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 #include <OpenSpaceToolkit/Core/Type/Unique.hpp>
 
-#include <OpenSpaceToolkit/Physics/Units/Derived.hpp>
-#include <OpenSpaceToolkit/Physics/Units/Derived/Angle.hpp>
-#include <OpenSpaceToolkit/Physics/Units/Length.hpp>
-#include <OpenSpaceToolkit/Physics/Units/Mass.hpp>
-#include <OpenSpaceToolkit/Physics/Units/Time.hpp>
-#include <OpenSpaceToolkit/Physics/Units/Unit.hpp>
+#include <OpenSpaceToolkit/Physics/Unit/Derived.hpp>
+#include <OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp>
+#include <OpenSpaceToolkit/Physics/Unit/Length.hpp>
+#include <OpenSpaceToolkit/Physics/Unit/Mass.hpp>
+#include <OpenSpaceToolkit/Physics/Unit/Time.hpp>
+#include <OpenSpaceToolkit/Physics/Unit/Unit.hpp>
 
 namespace ostk
 {
@@ -76,17 +76,17 @@ class Unit
 
     static Unit None();
 
-    static Unit Length(const units::Length::Unit& aLengthUnit);
+    static Unit Length(const unit::Length::Unit& aLengthUnit);
 
-    static Unit Derived(const units::Derived::Unit& aDerivedUnit);
+    static Unit Derived(const unit::Derived::Unit& aDerivedUnit);
 
     static String StringFromType(const Unit::Type& aType);
 
    private:
     Unit::Type type_;
-    Unique<units::Unit> unitUPtr_;
+    Unique<unit::Unit> unitUPtr_;
 
-    Unit(const Unit::Type& aType, const Unique<units::Unit>& aUnitUPtr);
+    Unit(const Unit::Type& aType, const Unique<unit::Unit>& aUnitUPtr);
 };
 
 }  // namespace physics

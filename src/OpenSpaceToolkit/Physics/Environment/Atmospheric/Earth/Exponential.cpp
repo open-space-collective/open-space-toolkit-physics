@@ -5,7 +5,7 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Earth.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp>
 
 namespace ostk
 {
@@ -19,7 +19,7 @@ namespace earth
 {
 
 using ostk::physics::coord::Frame;
-using EarthCelestialBody = ostk::physics::environment::object::celestial::Earth;
+using EarthCelestial = ostk::physics::environment::object::celestial::Earth;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 
 Exponential::Exponential() {}

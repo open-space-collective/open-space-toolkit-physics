@@ -12,7 +12,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth(pybind11::modul
     using ostk::core::filesystem::Directory;
     using ostk::core::type::Shared;
 
-    using ostk::physics::units::Derived;
+    using ostk::physics::unit::Derived;
     using ostk::physics::environment::magnetic::Earth;
     using ostk::physics::environment::magnetic::earth::Manager;
 

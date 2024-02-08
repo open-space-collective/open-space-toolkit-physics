@@ -3,7 +3,6 @@
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 
 #include <OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Provider.cpp>
-#include <OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Providers.cpp>
 
 inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame(pybind11::module& aModule)
 {
@@ -67,5 +66,4 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame(pybind11::module& aModule
     frame.attr("__path__") = "ostk.physics.coordinate.frame";
 
     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider(frame);
-    OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Providers(frame);
 }

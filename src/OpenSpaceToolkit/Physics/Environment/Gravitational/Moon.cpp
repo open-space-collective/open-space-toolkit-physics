@@ -5,7 +5,7 @@
 
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Objects/CelestialBodies/Moon.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Moon.hpp>
 
 namespace ostk
 {

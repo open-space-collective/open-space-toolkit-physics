@@ -6,8 +6,8 @@ import numpy as np
 from ostk.physics.time import Instant
 from ostk.physics.time import DateTime
 from ostk.physics.time import Scale
-from ostk.physics.units import Length
-from ostk.physics.units import Angle
+from ostk.physics.unit import Length
+from ostk.physics.unit import Angle
 from ostk.physics.coordinate import Position
 from ostk.physics.coordinate import Frame
 from ostk.physics.coordinate.spherical import LLA

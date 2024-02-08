@@ -5,7 +5,7 @@
 #include <OpenSpaceToolkit/Core/Error.hpp>
 
 #include <OpenSpaceToolkit/Physics/Data/Manifest.hpp>
-#include <OpenSpaceToolkit/Physics/Data/Utilities.hpp>
+#include <OpenSpaceToolkit/Physics/Data/Utility.hpp>
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
 

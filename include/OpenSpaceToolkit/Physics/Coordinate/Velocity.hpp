@@ -11,7 +11,7 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
-#include <OpenSpaceToolkit/Physics/Units/Derived.hpp>
+#include <OpenSpaceToolkit/Physics/Unit/Derived.hpp>
 
 namespace ostk
 {
@@ -28,7 +28,7 @@ using ostk::core::type::String;
 
 using ostk::mathematics::object::Vector3d;
 
-using ostk::physics::units::Derived;
+using ostk::physics::unit::Derived;
 using ostk::physics::time::Instant;
 using ostk::physics::coord::Position;
 

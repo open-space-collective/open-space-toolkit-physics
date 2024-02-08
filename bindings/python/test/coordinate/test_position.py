@@ -11,7 +11,7 @@ DateTime = physics.time.DateTime
 Instant = physics.time.Instant
 Frame = physics.coordinate.Frame
 Position = physics.coordinate.Position
-Unit = physics.units.Length.Unit
+Unit = physics.unit.Length.Unit
 
 
 def test_coordinate_position_constructors():

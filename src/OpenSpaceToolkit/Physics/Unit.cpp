@@ -43,16 +43,16 @@ bool Unit::operator==(const Unit& aUnit) const
                 return true;
 
             case Unit::Type::Length:
-                return static_cast<const units::Length&>(*unitUPtr_.get()) ==
-                       static_cast<const units::Length&>(*aUnit.unitUPtr_.get());
+                return static_cast<const unit::Length&>(*unitUPtr_.get()) ==
+                       static_cast<const unit::Length&>(*aUnit.unitUPtr_.get());
 
             case Unit::Type::Mass:
-                return static_cast<const units::Mass&>(*unitUPtr_.get()) ==
-                       static_cast<const units::Mass&>(*aUnit.unitUPtr_.get());
+                return static_cast<const unit::Mass&>(*unitUPtr_.get()) ==
+                       static_cast<const unit::Mass&>(*aUnit.unitUPtr_.get());
 
             case Unit::Type::Time:
-                return static_cast<const units::Time&>(*unitUPtr_.get()) ==
-                       static_cast<const units::Time&>(*aUnit.unitUPtr_.get());
+                return static_cast<const unit::Time&>(*unitUPtr_.get()) ==
+                       static_cast<const unit::Time&>(*aUnit.unitUPtr_.get());
 
             case Unit::Type::Temperature:
             case Unit::Type::ElectricCurrent:
@@ -60,8 +60,8 @@ bool Unit::operator==(const Unit& aUnit) const
                 throw ostk::core::error::runtime::ToBeImplemented(Unit::StringFromType(type_));
 
             case Unit::Type::Derived:
-                return static_cast<const units::Derived&>(*unitUPtr_.get()) ==
-                       static_cast<const units::Derived&>(*aUnit.unitUPtr_.get());
+                return static_cast<const unit::Derived&>(*unitUPtr_.get()) ==
+                       static_cast<const unit::Derived&>(*aUnit.unitUPtr_.get());
 
             default:
                 throw ostk::core::error::runtime::Wrong("Type");
@@ -141,8 +141,8 @@ Real Unit::ratioTo(const Unit& aUnit) const
             return 1.0;
 
         case Unit::Type::Length:
-            return static_cast<const units::Length&>(*unitUPtr_.get())
-                .in(static_cast<const units::Length&>(*aUnit.unitUPtr_.get()).getUnit());
+            return static_cast<const unit::Length&>(*unitUPtr_.get())
+                .in(static_cast<const unit::Length&>(*aUnit.unitUPtr_.get()).getUnit());
 
         case Unit::Type::Mass:
         case Unit::Type::Time:
@@ -152,8 +152,8 @@ Real Unit::ratioTo(const Unit& aUnit) const
             throw ostk::core::error::runtime::ToBeImplemented(Unit::StringFromType(type_));
 
         case Unit::Type::Derived:
-            return static_cast<const units::Derived&>(*unitUPtr_.get())
-                .in(static_cast<const units::Derived&>(*aUnit.unitUPtr_.get()).getUnit());
+            return static_cast<const unit::Derived&>(*unitUPtr_.get())
+                .in(static_cast<const unit::Derived&>(*aUnit.unitUPtr_.get()).getUnit());
 
         default:
             throw ostk::core::error::runtime::Wrong("Type");
@@ -176,16 +176,16 @@ String Unit::toString() const
             return "-";
 
         case Unit::Type::Length:
-            return units::Length::SymbolFromUnit(static_cast<const units::Length&>(*unitUPtr_.get()).getUnit());
+            return unit::Length::SymbolFromUnit(static_cast<const unit::Length&>(*unitUPtr_.get()).getUnit());
 
             // case Unit::Type::Mass:
-            // return units::Mass::SymbolFromUnit(static_cast<const units::Mass&>(*unitUPtr_.get()).getUnit()) ;
+            // return unit::Mass::SymbolFromUnit(static_cast<const unit::Mass&>(*unitUPtr_.get()).getUnit()) ;
 
             // case Unit::Type::Time:
-            // return units::Time::SymbolFromUnit(static_cast<const units::Time&>(*unitUPtr_.get()).getUnit()) ;
+            // return unit::Time::SymbolFromUnit(static_cast<const unit::Time&>(*unitUPtr_.get()).getUnit()) ;
 
         case Unit::Type::Derived:
-            return units::Derived::SymbolFromUnit(static_cast<const units::Derived&>(*unitUPtr_.get()).getUnit());
+            return unit::Derived::SymbolFromUnit(static_cast<const unit::Derived&>(*unitUPtr_.get()).getUnit());
 
         case Unit::Type::Mass:
         case Unit::Type::Time:
@@ -212,14 +212,14 @@ Unit Unit::None()
     return {Unit::Type::None, nullptr};
 }
 
-Unit Unit::Length(const units::Length::Unit& aLengthUnit)
+Unit Unit::Length(const unit::Length::Unit& aLengthUnit)
 {
-    return {Unit::Type::Length, std::make_unique<units::Length>(1.0, aLengthUnit)};
+    return {Unit::Type::Length, std::make_unique<unit::Length>(1.0, aLengthUnit)};
 }
 
-Unit Unit::Derived(const units::Derived::Unit& aDerivedUnit)
+Unit Unit::Derived(const unit::Derived::Unit& aDerivedUnit)
 {
-    return {Unit::Type::Derived, std::make_unique<units::Derived>(1.0, aDerivedUnit)};
+    return {Unit::Type::Derived, std::make_unique<unit::Derived>(1.0, aDerivedUnit)};
 }
 
 String Unit::StringFromType(const Unit::Type& aType)
@@ -241,7 +241,7 @@ String Unit::StringFromType(const Unit::Type& aType)
     return typeStringMap.at(aType);
 }
 
-Unit::Unit(const Unit::Type& aType, const Unique<units::Unit>& aUnitUPtr)
+Unit::Unit(const Unit::Type& aType, const Unique<unit::Unit>& aUnitUPtr)
     : type_(aType),
       unitUPtr_((aUnitUPtr != nullptr) ? aUnitUPtr->clone() : nullptr)
 {
