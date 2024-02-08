@@ -53,8 +53,8 @@ const String bulletinAManifestName = "bulletin-A";
 const String finals2000AManifestName = "finals-2000A";
 
 // TBI: this path can be obtained from the manifest
-const String bulletinARemotePath = "coordinate/frame/provider/iers/bulletin-A/";
-const String finals2000ARemotePath = "coordinate/frame/provider/iers/finals-2000A/";
+const String bulletinARemotePath = "coordinate/frame/providers/iers/bulletin-A/";
+const String finals2000ARemotePath = "coordinate/frame/providers/iers/finals-2000A/";
 
 const String temporaryDirectoryName = "tmp";
 
