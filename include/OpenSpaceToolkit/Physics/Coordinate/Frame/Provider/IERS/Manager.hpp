@@ -17,10 +17,10 @@
 #include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
-#define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE Manager::Mode::Automatic
-#define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY \
-    "./.open-space-toolkit/physics/data/coordinate/frame/providers/iers"
-#define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT 60
+#define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_MODE Manager::Mode::Automatic
+#define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY \
+    "./.open-space-toolkit/physics/data/coordinate/frame/provider/iers"
+#define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT 60
 
 namespace ostk
 {
@@ -51,11 +51,11 @@ using ostk::physics::coord::frame::provider::iers::Finals2000A;
 ///
 ///                             The following environment variables can be defined:
 ///
-///                             - "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE" will override
+///                             - "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_MODE" will override
 ///                             "DefaultMode"
-///                             - "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY" will override
+///                             - "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY" will override
 ///                             "DefaultLocalRepository"
-///                             - "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT"
+///                             - "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT"
 ///                             will override "DefaultLocalRepositoryLockTimeout"
 ///
 /// @ref                        https://www.iers.org/IERS/EN/DataProducts/EarthOrientationData/eop.html
@@ -184,7 +184,7 @@ class Manager
 
     /// @brief              Get default manager mode
     ///
-    ///                     Overriden by: OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE
+    ///                     Overriden by: OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_MODE
     ///
     /// @return             Default manager mode
 
@@ -192,7 +192,7 @@ class Manager
 
     /// @brief              Get default local repository
     ///
-    ///                     Overriden by: OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY
+    ///                     Overriden by: OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY
     ///
     /// @return             Default local repository
 
@@ -201,7 +201,7 @@ class Manager
     /// @brief              Get default local repository lock timeout
     ///
     ///                     Overriden by:
-    ///                     OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT
+    ///                     OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT
     ///
     /// @return             Default local repository lock timeout
 

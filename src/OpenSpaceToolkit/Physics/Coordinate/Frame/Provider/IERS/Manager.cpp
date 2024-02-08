@@ -316,9 +316,9 @@ Manager& Manager::Get()
 
 Manager::Mode Manager::DefaultMode()
 {
-    static const Manager::Mode defaultMode = OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE;
+    static const Manager::Mode defaultMode = OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_MODE;
 
-    if (const char* modeString = std::getenv("OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE"))
+    if (const char* modeString = std::getenv("OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_MODE"))
     {
         if (strcmp(modeString, "Manual") == 0)
         {
@@ -342,16 +342,16 @@ Directory Manager::DefaultLocalRepository()
     using ostk::core::filesystem::Path;
 
     static const Directory defaultLocalRepository =
-        Directory::Path(Path::Parse(OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY));
+        Directory::Path(Path::Parse(OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY));
 
     if (const char* localRepositoryPath =
-            std::getenv("OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY"))
+            std::getenv("OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY"))
     {
         return Directory::Path(Path::Parse(localRepositoryPath));
     }
     else if (const char* dataPath = std::getenv("OSTK_PHYSICS_DATA_LOCAL_REPOSITORY"))
     {
-        return Directory::Path(Path::Parse(dataPath) + Path::Parse("coordinate/frame/providers/iers"));
+        return Directory::Path(Path::Parse(dataPath) + Path::Parse("coordinate/frame/provider/iers"));
     }
 
     return defaultLocalRepository;
@@ -360,10 +360,10 @@ Directory Manager::DefaultLocalRepository()
 Duration Manager::DefaultLocalRepositoryLockTimeout()
 {
     static const Duration defaultLocalRepositoryLockTimeout =
-        Duration::Seconds(OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT);
+        Duration::Seconds(OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT);
 
     if (const char* localRepositoryLockTimeoutString =
-            std::getenv("OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT"))
+            std::getenv("OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT"))
     {
         return Duration::Parse(localRepositoryLockTimeoutString);
     }
@@ -599,7 +599,7 @@ File Manager::fetchLatestBulletinA_() const
     try
     {
         // Create temporary Directory,
-        // e.g., `.open-space-toolkit/physics/coordinate/frame/providers/iers/bulletin-a/tmp/`.
+        // e.g., `.open-space-toolkit/physics/coordinate/frame/provider/iers/bulletin-a/tmp/`.
 
         if (temporaryDirectory.exists())
         {
@@ -636,7 +636,7 @@ File Manager::fetchLatestBulletinA_() const
         }
 
         // Move Bulletin A File into destination Directory,
-        // e.g., `.open-space-toolkit/physics/coordinate/frame/providers/iers/bulletin-A/`.
+        // e.g., `.open-space-toolkit/physics/coordinate/frame/provider/iers/bulletin-A/`.
 
         destinationDirectory = Directory::Path(this->getBulletinADirectory().getPath());
 

@@ -92,9 +92,9 @@ class OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager : public :
 
     Manager& manager_ = Manager::Get();
 
-    const char* localRepositoryVarName_ = "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY";
+    const char* localRepositoryVarName_ = "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY";
     const char* fullDataVarName_ = "OSTK_PHYSICS_DATA_LOCAL_REPOSITORY";
-    const char* modeVarName_ = "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE";
+    const char* modeVarName_ = "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_MODE";
 
     char* localRepositoryPath;
     char* fullDataPath_;
@@ -339,7 +339,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, SetLocal
         EXPECT_EQ("tmp", manager_.getLocalRepository().getName());
 
         manager_.setLocalRepository(
-            Directory::Path(Path::Parse("./.open-space-toolkit/physics/coordinate/frame/providers/iers"))
+            Directory::Path(Path::Parse("./.open-space-toolkit/physics/coordinate/frame/provider/iers"))
         );
 
         EXPECT_EQ("iers", manager_.getLocalRepository().getName());
@@ -469,7 +469,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, DefaultL
 
         EXPECT_EQ(
             Manager::DefaultLocalRepository(),
-            Directory::Path(Path::Parse("./.open-space-toolkit/physics/data/coordinate/frame/providers/iers"))
+            Directory::Path(Path::Parse("./.open-space-toolkit/physics/data/coordinate/frame/provider/iers"))
         );
     }
 
@@ -480,7 +480,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, DefaultL
         setenv(fullDataVarName_, "/tmp", true);
 
         EXPECT_EQ(
-            Manager::DefaultLocalRepository(), Directory::Path(Path::Parse("/tmp/coordinate/frame/providers/iers"))
+            Manager::DefaultLocalRepository(), Directory::Path(Path::Parse("/tmp/coordinate/frame/provider/iers"))
         );
     }
 

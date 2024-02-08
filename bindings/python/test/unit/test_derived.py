@@ -10,7 +10,7 @@ Angle = physics.unit.Angle
 Derived = physics.unit.Derived
 
 
-def test_units_derived_unit_constructors():
+def test_unit_derived_unit_constructors():
     # square_meter
     derived_unit: Derived.Unit = Derived.Unit.square_meter()
 
@@ -74,7 +74,7 @@ def test_units_derived_unit_constructors():
     assert isinstance(derived_unit, Derived.Unit)
 
 
-def test_units_derived_unit_undefined():
+def test_unit_derived_unit_undefined():
     derived_unit: Derived.Unit = Derived.Unit.undefined()
 
     assert derived_unit is not None
@@ -82,20 +82,20 @@ def test_units_derived_unit_undefined():
     assert derived_unit.is_defined() is False
 
 
-def test_units_derived_unit_comparators():
+def test_unit_derived_unit_comparators():
     derived_unit: Derived.Unit = Derived.Unit.square_meter()
 
     assert derived_unit == derived_unit
     assert (derived_unit != derived_unit) is False
 
 
-def test_units_derived_unit_is_compatible_with():
+def test_unit_derived_unit_is_compatible_with():
     pass
 
 
-def test_units_derived_unit_to_string():
+def test_unit_derived_unit_to_string():
     pass
 
 
-def test_units_derived_unit_get_symbol():
+def test_unit_derived_unit_get_symbol():
     pass

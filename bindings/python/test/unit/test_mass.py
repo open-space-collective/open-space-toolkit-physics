@@ -10,7 +10,7 @@ Mass = physics.unit.Mass
 Unit = Mass.Unit
 
 
-def test_units_mass_unit():
+def test_unit_mass_unit():
     enum_members = Unit.__members__
 
     list_keys = ["Undefined", "Kilogram", "Pound", "Tonne"]
@@ -22,7 +22,7 @@ def test_units_mass_unit():
     assert list(enum_members.values()) == list_values
 
 
-def test_units_mass_constructors():
+def test_unit_mass_constructors():
     mass: Mass = Mass(4.0, Unit.Kilogram)
 
     assert mass is not None
@@ -42,7 +42,7 @@ def test_units_mass_constructors():
     assert mass.is_defined()
 
 
-def test_units_mass_comparators():
+def test_unit_mass_comparators():
     mass_1: Mass = Mass(4.0, Unit.Kilogram)
     mass_2: Mass = Mass(3.5, Unit.Kilogram)
 
@@ -51,14 +51,14 @@ def test_units_mass_comparators():
     assert mass_1 != mass_2
 
 
-def test_units_mass_is_defined():
+def test_unit_mass_is_defined():
     mass: Mass = Mass(4.0, Unit.Kilogram)
 
     assert mass.is_defined() is True
     assert mass.undefined().is_defined() is False
 
 
-def test_units_mass_get_unit():
+def test_unit_mass_get_unit():
     mass: Mass = Mass(4.0, Unit.Kilogram)
     unit: Unit = mass.get_unit()
 
@@ -81,7 +81,7 @@ def test_units_mass_get_unit():
     assert unit == Unit.Tonne
 
 
-def test_units_mass_in_unit():
+def test_unit_mass_in_unit():
     mass: Mass = Mass(4.0, Unit.Kilogram)
 
     assert mass.in_unit(Unit.Kilogram) is not None
@@ -92,7 +92,7 @@ def test_units_mass_in_unit():
     assert mass.in_unit(Unit.Tonne) is not None
 
 
-def test_units_mass_in_kilograms():
+def test_unit_mass_in_kilograms():
     mass: Mass = Mass(4000.0, Unit.Kilogram)
 
     assert mass.in_kilograms() is not None
@@ -100,7 +100,7 @@ def test_units_mass_in_kilograms():
     assert mass.in_kilograms() == 4000.0
 
 
-def test_units_mass_to_string():
+def test_unit_mass_to_string():
     mass: Mass = Mass(4000.0, Unit.Kilogram)
 
     assert mass.to_string() is not None
@@ -109,11 +109,11 @@ def test_units_mass_to_string():
 
 
 @pytest.mark.skip(reason="TBI")
-def test_units_mass_parse():
+def test_unit_mass_parse():
     pass
 
 
-def test_units_mass_string_from_unit():
+def test_unit_mass_string_from_unit():
     string_0: Unit = Mass.string_from_unit(Unit.Kilogram)
     string_1: Unit = Mass.string_from_unit(Unit.Pound)
     string_2: Unit = Mass.string_from_unit(Unit.Tonne)
@@ -127,7 +127,7 @@ def test_units_mass_string_from_unit():
     assert string_2 == "Tonne"
 
 
-def test_units_mass_symbol_from_unit():
+def test_unit_mass_symbol_from_unit():
     unit_0: Unit = Mass.symbol_from_unit(Unit.Kilogram)
     unit_1: Unit = Mass.symbol_from_unit(Unit.Pound)
     unit_2: Unit = Mass.symbol_from_unit(Unit.Tonne)
