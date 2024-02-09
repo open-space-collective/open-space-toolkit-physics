@@ -10,8 +10,8 @@ using ostk::core::type::Real;
 
 using ostk::mathematics::object::Vector3d;
 
-using ostk::physics::coord::Frame;
-using ostk::physics::coord::Position;
+using ostk::physics::coordinate::Frame;
+using ostk::physics::coordinate::Position;
 using ostk::physics::unit::Length;
 
 class OpenSpaceToolkit_Physics_Coordinate_Position : public ::testing::Test

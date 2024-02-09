@@ -36,8 +36,8 @@ using ostk::physics::unit::Angle;
 using ostk::physics::time::Scale;
 using ostk::physics::time::Instant;
 using ostk::physics::time::DateTime;
-using ostk::physics::coord::Transform;
-using ostk::physics::coord::Frame;
+using ostk::physics::coordinate::Transform;
+using ostk::physics::coordinate::Frame;
 using ostk::physics::environment::object::celestial::Earth;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 

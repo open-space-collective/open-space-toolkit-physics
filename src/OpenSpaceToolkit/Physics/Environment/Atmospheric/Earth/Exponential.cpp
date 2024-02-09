@@ -18,8 +18,8 @@ namespace atmospheric
 namespace earth
 {
 
-using ostk::physics::coord::Frame;
-using EarthCelestial = ostk::physics::environment::object::celestial::Earth;
+using ostk::physics::coordinate::Frame;
+using EarthCelestialBody = ostk::physics::environment::object::celestial::Earth;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 
 Exponential::Exponential() {}

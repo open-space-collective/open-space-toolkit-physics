@@ -18,7 +18,7 @@ namespace environment
 
 using ostk::core::type::Shared;
 
-using ostk::physics::coord::Frame;
+using ostk::physics::coordinate::Frame;
 
 /// @brief
 ///

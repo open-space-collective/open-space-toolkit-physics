@@ -26,7 +26,7 @@ namespace ostk
 {
 namespace physics
 {
-namespace coord
+namespace coordinate
 {
 namespace frame
 {
@@ -44,8 +44,8 @@ using ostk::mathematics::object::Vector2d;
 
 using ostk::physics::time::Instant;
 using ostk::physics::time::Duration;
-using ostk::physics::coord::frame::provider::iers::BulletinA;
-using ostk::physics::coord::frame::provider::iers::Finals2000A;
+using ostk::physics::coordinate::frame::provider::iers::BulletinA;
+using ostk::physics::coordinate::frame::provider::iers::Finals2000A;
 
 /// @brief                      IERS bulletins manager (thread-safe)
 ///
@@ -242,7 +242,7 @@ class Manager
 }  // namespace iers
 }  // namespace provider
 }  // namespace frame
-}  // namespace coord
+}  // namespace coordinate
 }  // namespace physics
 }  // namespace ostk
 

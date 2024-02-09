@@ -13,7 +13,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider(pybind11::module
 
     using ostk::core::type::Shared;
 
-    using ostk::physics::coord::frame::Provider;
+    using ostk::physics::coordinate::frame::Provider;
 
     class_<Provider, Shared<Provider>>(aModule, "Provider")
 

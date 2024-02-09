@@ -13,8 +13,8 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_NRLMSISE00(p
 
     using ostk::physics::unit::Length;
     using ostk::physics::time::Instant;
-    using ostk::physics::coord::Frame;
-    using ostk::physics::coord::spherical::LLA;
+    using ostk::physics::coordinate::Frame;
+    using ostk::physics::coordinate::spherical::LLA;
     using ostk::physics::environment::object::Celestial;
     using EarthGravityModel = ostk::physics::environment::gravitational::Earth;
     using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;

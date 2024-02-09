@@ -13,7 +13,7 @@ namespace ostk
 {
 namespace physics
 {
-namespace coord
+namespace coordinate
 {
 
 using ostk::core::type::Shared;
@@ -59,7 +59,7 @@ class Axes
     Shared<const Frame> frameSPtr_;
 };
 
-}  // namespace coord
+}  // namespace coordinate
 }  // namespace physics
 }  // namespace ostk
 

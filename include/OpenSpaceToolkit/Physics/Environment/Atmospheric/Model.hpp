@@ -20,7 +20,7 @@ namespace atmospheric
 using ostk::core::type::Real;
 
 using ostk::physics::time::Instant;
-using ostk::physics::coord::Position;
+using ostk::physics::coordinate::Position;
 
 /// @brief                      Atmospheric model (interface)
 

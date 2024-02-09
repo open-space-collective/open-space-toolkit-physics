@@ -18,7 +18,7 @@ namespace ostk
 {
 namespace physics
 {
-namespace coord
+namespace coordinate
 {
 
 #define DEFAULT_PRECISION Integer::Undefined()
@@ -88,7 +88,7 @@ class Position
     Shared<const Frame> frameSPtr_;  // [TBR] With Transform instead, as Frame is a function of time...
 };
 
-}  // namespace coord
+}  // namespace coordinate
 }  // namespace physics
 }  // namespace ostk
 

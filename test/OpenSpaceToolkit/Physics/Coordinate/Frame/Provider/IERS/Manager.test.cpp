@@ -30,9 +30,9 @@ using ostk::physics::time::Duration;
 using ostk::physics::time::Scale;
 using ostk::physics::time::Instant;
 using ostk::physics::time::DateTime;
-using ostk::physics::coord::frame::provider::iers::BulletinA;
-using ostk::physics::coord::frame::provider::iers::Manager;
-using ostk::physics::coord::frame::provider::iers::Finals2000A;
+using ostk::physics::coordinate::frame::provider::iers::BulletinA;
+using ostk::physics::coordinate::frame::provider::iers::Manager;
+using ostk::physics::coordinate::frame::provider::iers::Finals2000A;
 
 class OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager : public ::testing::Test
 {
@@ -304,7 +304,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetUt1Mi
 // TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetLodAt)
 // {
 
-//     using ostk::physics::coord::frame::provider::iers::Manager ;
+//     using ostk::physics::coordinate::frame::provider::iers::Manager ;
 
 //     {
 

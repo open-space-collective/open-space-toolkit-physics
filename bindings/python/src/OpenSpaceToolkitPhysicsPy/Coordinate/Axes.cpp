@@ -10,8 +10,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Axes(pybind11::module& aModule)
 
     using ostk::mathematics::object::Vector3d;
 
-    using ostk::physics::coord::Axes;
-    using ostk::physics::coord::Frame;
+    using ostk::physics::coordinate::Axes;
+    using ostk::physics::coordinate::Frame;
 
     class_<Axes>(aModule, "Axes")
 

@@ -46,8 +46,8 @@ using ostk::core::filesystem::Directory;
 
 using ostk::physics::time::Instant;
 using ostk::physics::time::Interval;
-using ostk::physics::coord::Frame;
-using ostk::physics::coord::Transform;
+using ostk::physics::coordinate::Frame;
+using ostk::physics::coordinate::Transform;
 using ostk::physics::environment::ephemeris::SPICE;
 using ostk::physics::environment::ephemeris::spice::Kernel;
 

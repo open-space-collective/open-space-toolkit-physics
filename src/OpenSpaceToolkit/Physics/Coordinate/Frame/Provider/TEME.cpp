@@ -15,7 +15,7 @@ namespace ostk
 {
 namespace physics
 {
-namespace coord
+namespace coordinate
 {
 namespace frame
 {
@@ -27,7 +27,7 @@ namespace provider
 #define DAS2R (4.848136811095359935899141e-6)
 #define DS2R (7.272205216643039903848712e-5)
 
-using IersManager = ostk::physics::coord::frame::provider::iers::Manager;
+using IersManager = ostk::physics::coordinate::frame::provider::iers::Manager;
 
 TEME::TEME() {}
 
@@ -137,6 +137,6 @@ Transform TEME::getTransformAt(const Instant& anInstant) const
 
 }  // namespace provider
 }  // namespace frame
-}  // namespace coord
+}  // namespace coordinate
 }  // namespace physics
 }  // namespace ostk

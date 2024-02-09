@@ -18,7 +18,7 @@ namespace environment
 namespace atmospheric
 {
 
-using ostk::physics::coord::Frame;
+using ostk::physics::coordinate::Frame;
 using ostk::physics::environment::atmospheric::earth::Exponential;
 using ostk::physics::environment::atmospheric::earth::NRLMSISE00;
 using EarthCelestial = ostk::physics::environment::object::celestial::Earth;

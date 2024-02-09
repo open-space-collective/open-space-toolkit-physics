@@ -173,7 +173,7 @@ Geometry Geometry::in(const Shared<const Frame>& aFrameSPtr, const Instant& anIn
     using ostk::mathematics::geometry::d3::transformation::rotation::RotationVector;
     using ostk::mathematics::geometry::d3::transformation::rotation::RotationMatrix;
 
-    using ostk::physics::coord::Transform;
+    using ostk::physics::coordinate::Transform;
 
     if ((aFrameSPtr == nullptr) || (!aFrameSPtr->isDefined()))
     {

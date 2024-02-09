@@ -17,14 +17,14 @@
 
 #define DAS2R (4.848136811095359935899141e-6)
 
-using IersManager = ostk::physics::coord::frame::provider::iers::Manager;
-using ostk::physics::coord::frame::provider::iers::BulletinA;
+using IersManager = ostk::physics::coordinate::frame::provider::iers::Manager;
+using ostk::physics::coordinate::frame::provider::iers::BulletinA;
 
 namespace ostk
 {
 namespace physics
 {
-namespace coord
+namespace coordinate
 {
 namespace frame
 {
@@ -118,6 +118,6 @@ Transform ITRF::getTransformAt(const Instant& anInstant) const
 
 }  // namespace provider
 }  // namespace frame
-}  // namespace coord
+}  // namespace coordinate
 }  // namespace physics
 }  // namespace ostk

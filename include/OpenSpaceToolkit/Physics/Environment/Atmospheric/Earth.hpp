@@ -32,10 +32,9 @@ using ostk::core::filesystem::Directory;
 
 using ostk::physics::time::Instant;
 using ostk::physics::unit::Length;
-using ostk::physics::coord::Position;
-using ostk::physics::coord::spherical::LLA;
-using ostk::physics::unit::Length;
-using ostk::physics::coord::Frame;
+using ostk::physics::coordinate::Position;
+using ostk::physics::coordinate::spherical::LLA;
+using ostk::physics::coordinate::Frame;
 using ostk::physics::environment::object::Celestial;
 using ostk::physics::environment::atmospheric::Model;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;

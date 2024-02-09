@@ -8,8 +8,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_AER(pybind11::module&
 
     using ostk::physics::unit::Length;
     using ostk::physics::unit::Angle;
-    using ostk::physics::coord::Position;
-    using ostk::physics::coord::spherical::AER;
+    using ostk::physics::coordinate::Position;
+    using ostk::physics::coordinate::spherical::AER;
 
     class_<AER>(aModule, "AER")
 

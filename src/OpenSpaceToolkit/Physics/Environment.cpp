@@ -242,7 +242,7 @@ bool Environment::isPositionInEclipse(const Position& aPosition) const
     using ostk::mathematics::geometry::d3::object::Point;
     using ostk::mathematics::geometry::d3::object::Segment;
 
-    using ostk::physics::coord::Frame;
+    using ostk::physics::coordinate::Frame;
     using ostk::physics::environment::Object;
 
     if (!aPosition.isDefined())

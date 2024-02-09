@@ -23,7 +23,7 @@ using ostk::core::type::String;
 using ostk::core::container::Array;
 
 using ostk::physics::time::Instant;
-using ostk::physics::coord::Position;
+using ostk::physics::coordinate::Position;
 using ostk::physics::environment::Object;
 using ostk::physics::environment::object::Celestial;
 

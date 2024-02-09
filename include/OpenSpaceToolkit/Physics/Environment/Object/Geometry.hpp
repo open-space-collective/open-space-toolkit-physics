@@ -28,7 +28,7 @@ using ostk::core::type::Shared;
 using ostk::mathematics::geometry::d3::object::Composite;
 
 using ostk::physics::time::Instant;
-using ostk::physics::coord::Frame;
+using ostk::physics::coordinate::Frame;
 
 class Geometry
 {

@@ -18,7 +18,7 @@ namespace ostk
 {
 namespace physics
 {
-namespace coord
+namespace coordinate
 {
 namespace frame
 {
@@ -477,6 +477,6 @@ Pair<const Finals2000A::Data*, const Finals2000A::Data*> Finals2000A::accessData
 }  // namespace iers
 }  // namespace provider
 }  // namespace frame
-}  // namespace coord
+}  // namespace coordinate
 }  // namespace physics
 }  // namespace ostk

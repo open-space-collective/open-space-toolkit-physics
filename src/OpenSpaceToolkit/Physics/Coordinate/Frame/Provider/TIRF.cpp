@@ -15,13 +15,13 @@
 
 #define DAYSEC (86400.0)
 
-using IersManager = ostk::physics::coord::frame::provider::iers::Manager;
+using IersManager = ostk::physics::coordinate::frame::provider::iers::Manager;
 
 namespace ostk
 {
 namespace physics
 {
-namespace coord
+namespace coordinate
 {
 namespace frame
 {
@@ -113,6 +113,6 @@ Transform TIRF::getTransformAt(const Instant& anInstant) const
 
 }  // namespace provider
 }  // namespace frame
-}  // namespace coord
+}  // namespace coordinate
 }  // namespace physics
 }  // namespace ostk

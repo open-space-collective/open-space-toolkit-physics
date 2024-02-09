@@ -10,7 +10,7 @@ namespace ostk
 {
 namespace physics
 {
-namespace coord
+namespace coordinate
 {
 
 Axes::Axes(
@@ -103,7 +103,7 @@ Shared<const Frame> Axes::getFrame() const
 
 Axes Axes::inFrame(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const
 {
-    using ostk::physics::coord::Transform;
+    using ostk::physics::coordinate::Transform;
 
     if ((aFrameSPtr == nullptr) && (!aFrameSPtr->isDefined()))
     {
@@ -135,6 +135,6 @@ Axes Axes::Undefined()
     return {Vector3d::Undefined(), Vector3d::Undefined(), Vector3d::Undefined(), nullptr};
 }
 
-}  // namespace coord
+}  // namespace coordinate
 }  // namespace physics
 }  // namespace ostk

@@ -13,7 +13,7 @@ using ostk::physics::time::Instant;
 using ostk::physics::time::DateTime;
 using ostk::physics::time::Interval;
 using ostk::physics::time::Duration;
-using ostk::physics::coord::frame::provider::iers::BulletinA;
+using ostk::physics::coordinate::frame::provider::iers::BulletinA;
 
 class OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA : public ::testing::Test
 {

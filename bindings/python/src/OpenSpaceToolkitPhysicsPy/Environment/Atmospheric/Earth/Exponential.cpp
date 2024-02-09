@@ -9,8 +9,8 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_Exponential(
     using ostk::core::type::Shared;
 
     using ostk::physics::time::Instant;
-    using ostk::physics::coord::Position;
-    using ostk::physics::coord::spherical::LLA;
+    using ostk::physics::coordinate::Position;
+    using ostk::physics::coordinate::spherical::LLA;
     using ostk::physics::environment::atmospheric::earth::Exponential;
 
     class_<Exponential, Shared<Exponential>>(aModule, "Exponential")

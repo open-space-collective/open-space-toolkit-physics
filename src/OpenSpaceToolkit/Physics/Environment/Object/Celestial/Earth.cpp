@@ -17,7 +17,7 @@ namespace object
 namespace celestial
 {
 
-using ostk::physics::coord::Frame;
+using ostk::physics::coordinate::Frame;
 
 Earth::Earth(
     const Derived& aGravitationalParameter,

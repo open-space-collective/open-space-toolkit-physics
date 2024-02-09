@@ -8,7 +8,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
 
     using ostk::physics::unit::Length;
     using ostk::physics::unit::Angle;
-    using ostk::physics::coord::spherical::LLA;
+    using ostk::physics::coordinate::spherical::LLA;
 
     class_<LLA>(aModule, "LLA")
 

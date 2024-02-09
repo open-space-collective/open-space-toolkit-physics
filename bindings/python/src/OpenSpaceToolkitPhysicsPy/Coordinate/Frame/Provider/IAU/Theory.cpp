@@ -6,7 +6,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IAU_Theory(pybin
 {
     using namespace pybind11;
 
-    using ostk::physics::coord::frame::provider::iau::Theory;
+    using ostk::physics::coordinate::frame::provider::iau::Theory;
 
     enum_<Theory>(aModule, "Theory")
 

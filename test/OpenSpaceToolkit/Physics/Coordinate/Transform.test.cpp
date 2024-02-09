@@ -20,7 +20,7 @@ using ostk::physics::unit::Angle;
 using ostk::physics::time::Scale;
 using ostk::physics::time::Instant;
 using ostk::physics::time::DateTime;
-using ostk::physics::coord::Transform;
+using ostk::physics::coordinate::Transform;
 
 class OpenSpaceToolkit_Physics_Coordinate_Transform : public ::testing::Test
 {

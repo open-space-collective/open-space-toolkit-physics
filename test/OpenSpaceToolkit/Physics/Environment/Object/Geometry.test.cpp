@@ -41,8 +41,8 @@ using ostk::mathematics::geometry::d3::object::Composite;
 using ostk::physics::unit::Length;
 using ostk::physics::unit::Angle;
 using ostk::physics::time::Instant;
-using ostk::physics::coord::spherical::LLA;
-using ostk::physics::coord::Frame;
+using ostk::physics::coordinate::spherical::LLA;
+using ostk::physics::coordinate::Frame;
 using ostk::physics::Environment;
 using ostk::physics::environment::object::Geometry;
 using ostk::physics::environment::object::Celestial;
@@ -142,7 +142,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, IsDefined)
 //     using ostk::mathematics::geometry::d3::object::Polygon ;
 //     using ostk::mathematics::geometry::d3::object::Pyramid ;
 
-//     using ostk::physics::coord::Frame ;
+//     using ostk::physics::coordinate::Frame ;
 //     using ostk::physics::environment::object::Geometry ;
 
 //     {

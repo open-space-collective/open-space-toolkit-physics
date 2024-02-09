@@ -18,10 +18,10 @@ using ostk::mathematics::geometry::d3::transformation::rotation::RotationVector;
 using ostk::physics::time::Scale;
 using ostk::physics::time::Instant;
 using ostk::physics::time::DateTime;
-using ostk::physics::coord::Frame;
-using ostk::physics::coord::frame::Transform;
-using ostk::physics::coord::frame::provider::J2000;
-using ostk::physics::coord::frame::provider::iau::Theory;
+using ostk::physics::coordinate::Frame;
+using ostk::physics::coordinate::frame::Transform;
+using ostk::physics::coordinate::frame::provider::J2000;
+using ostk::physics::coordinate::frame::provider::iau::Theory;
 using ostk::physics::environment::object::celestial::Earth;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 

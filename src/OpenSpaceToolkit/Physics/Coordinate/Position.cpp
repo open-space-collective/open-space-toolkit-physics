@@ -12,7 +12,7 @@ namespace ostk
 {
 namespace physics
 {
-namespace coord
+namespace coordinate
 {
 
 Position::Position(const Vector3d& aCoordinateSet, const Position::Unit& aUnit, const Shared<const Frame>& aFrameSPtr)
@@ -216,6 +216,6 @@ Position Position::Meters(const Vector3d& aCoordinateSet, const Shared<const Fra
     return {aCoordinateSet, Position::Unit::Meter, aFrameSPtr};
 }
 
-}  // namespace coord
+}  // namespace coordinate
 }  // namespace physics
 }  // namespace ostk

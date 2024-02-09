@@ -13,7 +13,7 @@ namespace ostk
 {
 namespace physics
 {
-namespace coord
+namespace coordinate
 {
 namespace spherical
 {
@@ -26,7 +26,7 @@ using ostk::mathematics::object::Vector3d;
 
 using ostk::physics::unit::Angle;
 using ostk::physics::unit::Length;
-using ostk::physics::coord::Position;
+using ostk::physics::coordinate::Position;
 
 /// @brief                      Azimuth - Elevation - Range (AER)
 
@@ -76,7 +76,7 @@ class AER
 };
 
 }  // namespace spherical
-}  // namespace coord
+}  // namespace coordinate
 }  // namespace physics
 }  // namespace ostk
 
