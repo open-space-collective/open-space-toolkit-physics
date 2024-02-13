@@ -19,9 +19,6 @@ PYBIND11_MODULE(OpenSpaceToolkitPhysicsPy, m)
     // Add optional docstring for package OpenSpaceToolkitPhysicsPy
     m.doc() = "Physical units, time, reference frames, environment modeling for OpenSpaceToolkit";
 
-    // Add __path__ attribute to python package
-    m.attr("__path__") = "ostk.physics";
-
     // Change attribute __name__ to make OpenSpaceToolkitPhysicsPy invisible in modules path
     m.attr("__name__") = "ostk.physics";
 
