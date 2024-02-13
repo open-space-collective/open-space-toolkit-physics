@@ -13,8 +13,6 @@ inline void OpenSpaceToolkitPhysicsPy_Time(pybind11::module& aModule)
     // Create "time" python submodule
     auto time = aModule.def_submodule("time");
 
-    // Add __path__ attribute for "time" submodule
-    time.attr("__path__") = "ostk.physics.time";
 
     // Add objects to python "time" submodules
     OpenSpaceToolkitPhysicsPy_Time_Scale(time);

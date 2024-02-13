@@ -48,8 +48,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth(pybind11::modul
     // Create "earth" python submodule
     auto earth = aModule.def_submodule("earth");
 
-    // Add __path__ attribute for "earth" submodule
-    earth.attr("__path__") = "ostk.physics.environment.magnetic.earth";
 
     OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth_Manager(earth);
 }

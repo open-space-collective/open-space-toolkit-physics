@@ -26,8 +26,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider(pybind11::module
     // Create "provider" python submodule
     auto provider = aModule.def_submodule("provider");
 
-    // Add __path__ attribute for "provider" submodule
-    provider.attr("__path__") = "ostk.physics.coordinate.frame.provider";
 
     // Add objects to python "provider" submodules
     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_Static(provider);

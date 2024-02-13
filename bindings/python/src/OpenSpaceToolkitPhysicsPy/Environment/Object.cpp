@@ -46,8 +46,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object(pybind11::module& aModu
     // Create "object" python submodule
     auto object = aModule.def_submodule("object");
 
-    // Add __path__ attribute for "object" submodule
-    object.attr("__path__") = "ostk.physics.environment.object";
 
     // Add elements to object
     OpenSpaceToolkitPhysicsPy_Environment_Object_Geometry(object);

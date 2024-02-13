@@ -147,8 +147,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::mod
     // Create "celestial" python submodule
     auto celestial = aModule.def_submodule("celestial");
 
-    // Add __path__ attribute for "celestial" submodule
-    celestial.attr("__path__") = "ostk.physics.environment.object.celestial";
 
     // Add objects to python "celestial" submodules
     OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Earth(celestial);

@@ -36,7 +36,5 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Sun(pybind11:
         // Create "sun" python submodule
         auto sun = aModule.def_submodule("sun");
 
-        // Add __path__ attribute for "moon" submodule
-        sun.attr("__path__") = "ostk.physics.environment.object.celestial.sun";
     }
 }
