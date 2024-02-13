@@ -58,8 +58,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
     // Create "environment" python submodule
     auto environment = aModule.def_submodule("environment");
 
-    // Add __path__ attribute for "environment" submodule
-    environment.attr("__path__") = "ostk.physics.environment";
 
     OpenSpaceToolkitPhysicsPy_Environment_Object(environment);
     OpenSpaceToolkitPhysicsPy_Environment_Gravitational(environment);

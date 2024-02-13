@@ -12,8 +12,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate(pybind11::module& aModule)
     // Create "coordinate" python submodule
     auto coordinate = aModule.def_submodule("coordinate");
 
-    // Add __path__ attribute for "coordinate" submodule
-    coordinate.attr("__path__") = "ostk.physics.coordinate";
 
     // Add objects to python "coordinate" submodules
     OpenSpaceToolkitPhysicsPy_Coordinate_Spherical(coordinate);

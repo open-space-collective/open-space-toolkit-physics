@@ -11,8 +11,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational(pybind11::module
     // Create "gravitational" python submodule
     auto gravitational = aModule.def_submodule("gravitational");
 
-    // Add __path__ attribute for "gravitational" submodule
-    gravitational.attr("__path__") = "ostk.physics.environment.gravitational";
 
     // Add objects to python "gravitational" submodules
     OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Model(gravitational);

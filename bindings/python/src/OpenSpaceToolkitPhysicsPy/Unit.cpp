@@ -12,8 +12,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit(pybind11::module& aModule)
     // Create "unit" python submodule
     auto unit = aModule.def_submodule("unit");
 
-    // Add __path__ attribute for "unit" submodule
-    unit.attr("__path__") = "ostk.physics.unit";
 
     // Add objects to python "unit" submodules
     OpenSpaceToolkitPhysicsPy_Unit_Length(unit);

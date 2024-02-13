@@ -66,8 +66,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(pybind11::
     // Create "earth" python submodule
     auto earth = aModule.def_submodule("earth");
 
-    // Add __path__ attribute for "earth" submodule
-    earth.attr("__path__") = "ostk.physics.environment.gravitational.earth";
 
     OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth_Manager(earth);
 }
