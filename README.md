@@ -170,7 +170,9 @@ The library exhibits the following structure:
 </details>
 
 ## Data Management
+
 OSTk Physics uses input data from various sources to determine the state of the space environment at any given time. The following input data is used:
+
 - IERS Reference Frame Data
 - CSSI Solar Flux/Space Weather Data
 - Gravitational Survey Data
@@ -180,27 +182,27 @@ OSTk Physics uses input data from various sources to determine the state of the 
 None of these files are shipped with the source code of this library. OSTk Physics has the capability to fetch the required files at runtime if they are not present or if they are outdated. This is done using file Manager classes (see any file named `Manager.hpp`). Data for any use-case is queried through the Manager class rather than directly, which allows the Manager to handle file loading and fetching.
 
 The following table shows the availabe data source settings:
-| Environment Variable                                                                 | Default Value                                                            |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `OSTK_PHYSICS_DATA_LOCAL_REPOSITORY`                                                 | `./.open-space-toolkit/physics/data` [Bulk setting. Overridden by specific repository settings below.] |
-| `OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_MODE`                          | `Automatic`                                                              |
-| `OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY`              | `./.open-space-toolkit/physics/data/coordinate/frame/provider/iers`          |
-| `OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT` | `60`                                                                     |
-| `OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_ENGINE_MODE`                             | `Automatic`                                                              |
-| `OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_MANAGER_LOCAL_REPOSITORY`                | `./.open-space-toolkit/physics/data/environment/ephemeris/spice`            |
-| `OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_MODE`                          | `Automatic`                                                                  |
-| `OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY`              | `./.open-space-toolkit/physics/data/environment/gravitational/earth`          |
-| `OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT` | `60`                                                                        |
-| `OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_MODE`                               | `Automatic`                                                                  |
-| `OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY`                   | `./.open-space-toolkit/physics/data/environment/magnetic/earth`               |
-| `OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT`      | `60`                                                                        |
-| `OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_MODE`                            | `Automatic`                                                              |
-| `OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY`                | `./.open-space-toolkit/physics/data/environment/atmospheric/earth`            |
-| `OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT`   | `60`                                                                        |
-| `OSTK_PHYSICS_DATA_REMOTE_URL`                                                       | `https://github.com/open-space-collective/open-space-toolkit-data/raw/main/data/` |
-| `OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY`                                        | `./.open-space-toolkit/physics/data/`                                       |
-| `OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY_LOCK_TIMEOUT`                           | `60`                                                                        |
 
+| Environment Variable                                                                   | Default Value                                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `OSTK_PHYSICS_DATA_LOCAL_REPOSITORY`                                                 | `./.open-space-toolkit/physics/data` [Bulk setting. Overridden by specific repository settings below.] |
+| `OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_MODE`                           | `Automatic`                                                                                            |
+| `OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY`               | `./.open-space-toolkit/physics/data/coordinate/frame/provider/iers`                                    |
+| `OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT`  | `60`                                                                                                   |
+| `OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_ENGINE_MODE`                               | `Automatic`                                                                                            |
+| `OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_MANAGER_LOCAL_REPOSITORY`                  | `./.open-space-toolkit/physics/data/environment/ephemeris/spice`                                       |
+| `OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_MODE`                          | `Automatic`                                                                                            |
+| `OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY`              | `./.open-space-toolkit/physics/data/environment/gravitational/earth`                                   |
+| `OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT` | `60`                                                                                                   |
+| `OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_MODE`                               | `Automatic`                                                                                            |
+| `OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY`                   | `./.open-space-toolkit/physics/data/environment/magnetic/earth`                                        |
+| `OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT`      | `60`                                                                                                   |
+| `OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_MODE`                            | `Automatic`                                                                                            |
+| `OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY`                | `./.open-space-toolkit/physics/data/environment/atmospheric/earth`                                     |
+| `OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT`   | `60`                                                                                                   |
+| `OSTK_PHYSICS_DATA_REMOTE_URL`                                                       | `https://github.com/open-space-collective/open-space-toolkit-data/raw/v1/data/`                        |
+| `OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY`                                        | `./.open-space-toolkit/physics/data/`                                                                  |
+| `OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY_LOCK_TIMEOUT`                           | `60`                                                                                                   |
 
 ## Tutorials
 
@@ -260,18 +262,18 @@ Or to run them manually:
 
 ## Dependencies
 
-| Name          | Version      | License                                                    | Link                                                                                                                                       |
-| ------------- | ------------ | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| Pybind11      | `2.10.1`     | BSD-3-Clause                                               | [github.com/pybind/pybind11](https://github.com/pybind/pybind11)                                                                           |
-| {fmt}         | `5.2.0`      | BSD-2-Clause                                               | [github.com/fmtlib/fmt](https://github.com/fmtlib/fmt)                                                                                     |
-| ordered-map   | `0.6.0`      | MIT                                                        | [github.com/Tessil/ordered-map](https://github.com/Tessil/ordered-map)                                                                     |
-| Eigen         | `3.3.7`      | MPL2                                                       | [eigen.tuxfamily.org](http://eigen.tuxfamily.org/index.php)                                                                                |
+| Name          | Version        | License                                                 | Link                                                                                                                                    |
+| ------------- | -------------- | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| Pybind11      | `2.10.1`     | BSD-3-Clause                                            | [github.com/pybind/pybind11](https://github.com/pybind/pybind11)                                                                           |
+| {fmt}         | `5.2.0`      | BSD-2-Clause                                            | [github.com/fmtlib/fmt](https://github.com/fmtlib/fmt)                                                                                     |
+| ordered-map   | `0.6.0`      | MIT                                                     | [github.com/Tessil/ordered-map](https://github.com/Tessil/ordered-map)                                                                     |
+| Eigen         | `3.3.7`      | MPL2                                                    | [eigen.tuxfamily.org](http://eigen.tuxfamily.org/index.php)                                                                                |
 | IAU SOFA      | `2018-01-30` | [SOFA Software License](http://www.iausofa.org/tandc.html) | [www.iausofa.org](http://www.iausofa.org)                                                                                                  |
 | SPICE Toolkit | `N0067`      | [NAIF](https://naif.jpl.nasa.gov/naif/rules.html)          | [naif.jpl.nasa.gov/naif/toolkit.html](https://naif.jpl.nasa.gov/naif/toolkit.html)                                                         |
-| GeographicLib | `1.52`       | MIT                                                        | [geographiclib.sourceforge.io](https://geographiclib.sourceforge.io)                                                                       |
-| Core          | `main`       | Apache License 2.0                                        | [github.com/open-space-collective/open-space-toolkit-core](https://github.com/open-space-collective/open-space-toolkit-core)               |
-| I/O           | `main`       | Apache License 2.0                                        | [github.com/open-space-collective/open-space-toolkit-io](https://github.com/open-space-collective/open-space-toolkit-io)                   |
-| Mathematics   | `main`       | Apache License 2.0                                        | [github.com/open-space-collective/open-space-toolkit-mathematics](https://github.com/open-space-collective/open-space-toolkit-mathematics) |
+| GeographicLib | `1.52`       | MIT                                                     | [geographiclib.sourceforge.io](https://geographiclib.sourceforge.io)                                                                       |
+| Core          | `main`       | Apache License 2.0                                      | [github.com/open-space-collective/open-space-toolkit-core](https://github.com/open-space-collective/open-space-toolkit-core)               |
+| I/O           | `main`       | Apache License 2.0                                      | [github.com/open-space-collective/open-space-toolkit-io](https://github.com/open-space-collective/open-space-toolkit-io)                   |
+| Mathematics   | `main`       | Apache License 2.0                                      | [github.com/open-space-collective/open-space-toolkit-mathematics](https://github.com/open-space-collective/open-space-toolkit-mathematics) |
 
 ## Contribution
 

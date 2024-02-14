@@ -37,9 +37,6 @@ using ostk::io::ip::tcp::http::Client;
 
 const String temporaryDirectoryName = "tmp";
 
-// [TBI]: this path can be obtained from the manifest
-const String spiceFilesRemotePath = "environment/ephemerides/spice/";
-
 Manager& Manager::Get()
 {
     static Manager manager;
@@ -101,7 +98,11 @@ void Manager::fetchKernel(const Kernel& aKernel) const
     }
 
     ManifestManager& manifestManager = ManifestManager::Get();
-    const URL kernelFileUrl = manifestManager.getRemoteUrl() + spiceFilesRemotePath + aKernel.getName();
+
+    const Array<URL> kernelFileUrls = manifestManager.getRemoteDataUrls(aKernel.getName());
+
+    // Only one remote file for each kernel
+    const URL kernelFileUrl = kernelFileUrls.accessFirst();
 
     std::cout << String::Format(
                      "Fetching SPICE Kernel [{}] from [{}]...", kernelFile.toString(), kernelFileUrl.toString()
