@@ -56,9 +56,6 @@ using ManifestManager = ostk::physics::data::Manager;
 const String CSSICSSISpaceWeatherFileName = "SW-Last5Years.csv";
 const String CSSISpaceWeatherManifestName = "space-weather-CSSI";
 
-// [TBI]: this path can be obtained from the manifest
-const String CSSISpaceWeatherRemotePath = "environment/atmospheric/earth/CSSISpaceWeather/";
-
 const String temporaryDirectoryName = "tmp";
 
 Manager::Mode Manager::getMode() const
@@ -574,8 +571,10 @@ File Manager::fetchLatestCSSISpaceWeather_()
 
     this->lockLocalRepository(localRepositoryLockTimeout_);
 
-    const URL latestCSSISpaceWeatherUrl =
-        manifestManager.getRemoteUrl() + CSSISpaceWeatherRemotePath + CSSICSSISpaceWeatherFileName;
+    const Array<URL> CSSISpaceWeatherUrls = manifestManager.getRemoteDataUrls(CSSISpaceWeatherManifestName);
+
+    // Only one remote file for CSSI Space Weather
+    const URL CSSISpaceWeatherUrl = CSSISpaceWeatherUrls.accessFirst();
 
     File latestCSSICSSISpaceWeatherFile = File::Undefined();
     Directory destinationDirectory = Directory::Undefined();
@@ -598,15 +597,15 @@ File Manager::fetchLatestCSSISpaceWeather_()
 
         // Download latest CSSI Space Weather File into temporary Directory
 
-        std::cout << String::Format("Fetching CSSI Space Weather from [{}]...", latestCSSISpaceWeatherUrl.toString())
+        std::cout << String::Format("Fetching CSSI Space Weather from [{}]...", CSSISpaceWeatherUrl.toString())
                   << std::endl;
 
-        latestCSSICSSISpaceWeatherFile = Client::Fetch(latestCSSISpaceWeatherUrl, temporaryDirectory, 2);
+        latestCSSICSSISpaceWeatherFile = Client::Fetch(CSSISpaceWeatherUrl, temporaryDirectory, 2);
 
         if (!latestCSSICSSISpaceWeatherFile.exists())
         {
             throw ostk::core::error::RuntimeError(
-                "Cannot fetch CSSI Space Weather from [{}].", latestCSSISpaceWeatherUrl.toString()
+                "Cannot fetch CSSI Space Weather from [{}].", CSSISpaceWeatherUrl.toString()
             );
         }
 
@@ -618,7 +617,7 @@ File Manager::fetchLatestCSSISpaceWeather_()
         if (latestCSSICSSISpaceWeatherFileSize == 0)
         {
             throw ostk::core::error::RuntimeError(
-                "Cannot fetch CSSI Space Weather from [{}]: file is empty.", latestCSSISpaceWeatherUrl.toString()
+                "Cannot fetch CSSI Space Weather from [{}]: file is empty.", CSSISpaceWeatherUrl.toString()
             );
         }
 
@@ -640,7 +639,7 @@ File Manager::fetchLatestCSSISpaceWeather_()
         std::cout << String::Format(
                          "CSSI Space Weather [{}] has been successfully fetched from [{}].",
                          latestCSSICSSISpaceWeatherFile.toString(),
-                         latestCSSISpaceWeatherUrl.toString()
+                         CSSISpaceWeatherUrl.toString()
                      )
                   << std::endl;
     }
@@ -648,7 +647,7 @@ File Manager::fetchLatestCSSISpaceWeather_()
     {
         std::cerr << String::Format(
                          "Error caught while fetching latest CSSI Space Weather from [{}]: [{}].",
-                         latestCSSISpaceWeatherUrl.toString(),
+                         CSSISpaceWeatherUrl.toString(),
                          anException.what()
                      )
                   << std::endl;

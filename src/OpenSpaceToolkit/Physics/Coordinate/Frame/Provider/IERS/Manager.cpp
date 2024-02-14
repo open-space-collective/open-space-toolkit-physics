@@ -52,10 +52,6 @@ const String finals2000AFileName = "finals2000A.data";
 const String bulletinAManifestName = "bulletin-A";
 const String finals2000AManifestName = "finals-2000A";
 
-// TBI: this path can be obtained from the manifest
-const String bulletinARemotePath = "coordinate/frame/providers/iers/bulletin-A/";
-const String finals2000ARemotePath = "coordinate/frame/providers/iers/finals-2000A/";
-
 const String temporaryDirectoryName = "tmp";
 
 Manager::Mode Manager::getMode() const
@@ -591,7 +587,10 @@ File Manager::fetchLatestBulletinA_() const
 
     this->lockLocalRepository_(localRepositoryLockTimeout_);
 
-    const URL latestBulletinAUrl = manifestManager.getRemoteUrl() + bulletinARemotePath + bulletinAFileName;
+    const Array<URL> bulletinAUrls = manifestManager.getRemoteDataUrls(bulletinAManifestName);
+
+    // Only one remote file for Bulletin A
+    const URL bulletinAUrl = bulletinAUrls.accessFirst(); 
 
     File latestBulletinAFile = File::Undefined();
     Directory destinationDirectory = Directory::Undefined();
@@ -614,13 +613,13 @@ File Manager::fetchLatestBulletinA_() const
 
         // Download latest Bulletin A File into temporary Directory
 
-        std::cout << String::Format("Fetching Bulletin A from [{}]...", latestBulletinAUrl.toString()) << std::endl;
+        std::cout << String::Format("Fetching Bulletin A from [{}]...", bulletinAUrl.toString()) << std::endl;
 
-        latestBulletinAFile = Client::Fetch(latestBulletinAUrl, temporaryDirectory, 2);
+        latestBulletinAFile = Client::Fetch(bulletinAUrl, temporaryDirectory, 2);
 
         if (!latestBulletinAFile.exists())
         {
-            throw ostk::core::error::RuntimeError("Cannot fetch Bulletin A from [{}].", latestBulletinAUrl.toString());
+            throw ostk::core::error::RuntimeError("Cannot fetch Bulletin A from [{}].", bulletinAUrl.toString());
         }
 
         // Check that Bulletin A File size is not zero
@@ -631,7 +630,7 @@ File Manager::fetchLatestBulletinA_() const
         if (latestBulletinAFileSize == 0)
         {
             throw ostk::core::error::RuntimeError(
-                "Cannot fetch Bulletin A from [{}]: file is empty.", latestBulletinAUrl.toString()
+                "Cannot fetch Bulletin A from [{}]: file is empty.", bulletinAUrl.toString()
             );
         }
 
@@ -649,7 +648,7 @@ File Manager::fetchLatestBulletinA_() const
         std::cout << String::Format(
                          "Bulletin A [{}] has been successfully fetched from [{}].",
                          latestBulletinAFile.toString(),
-                         latestBulletinAUrl.toString()
+                         bulletinAUrl.toString()
                      )
                   << std::endl;
     }
@@ -657,7 +656,7 @@ File Manager::fetchLatestBulletinA_() const
     {
         std::cerr << String::Format(
                          "Error caught while fetching latest Bulletin A from [{}]: [{}].",
-                         latestBulletinAUrl.toString(),
+                         bulletinAUrl.toString(),
                          anException.what()
                      )
                   << std::endl;
@@ -692,7 +691,10 @@ File Manager::fetchLatestFinals2000A_() const
 
     this->lockLocalRepository_(localRepositoryLockTimeout_);
 
-    const URL latestFinals2000AUrl = manifestManager.getRemoteUrl() + finals2000ARemotePath + finals2000AFileName;
+    const Array<URL> finals2000AUrls = manifestManager.getRemoteDataUrls(finals2000AManifestName);
+
+    // Only one remote file for Finals 2000 A
+    const URL finals2000AUrl = finals2000AUrls.accessFirst(); 
 
     File latestFinals2000AFile = File::Undefined();
     Directory destinationDirectory = Directory::Undefined();
@@ -715,9 +717,9 @@ File Manager::fetchLatestFinals2000A_() const
 
         temporaryDirectory.create();
 
-        std::cout << String::Format("Fetching Finals 2000A from [{}]...", latestFinals2000AUrl.toString()) << std::endl;
+        std::cout << String::Format("Fetching Finals 2000A from [{}]...", finals2000AUrl.toString()) << std::endl;
 
-        latestFinals2000AFile = Client::Fetch(latestFinals2000AUrl, temporaryDirectory, 2);
+        latestFinals2000AFile = Client::Fetch(finals2000AUrl, temporaryDirectory, 2);
 
         const Finals2000A latestFinals2000A = Finals2000A::Load(latestFinals2000AFile);
 
@@ -726,7 +728,7 @@ File Manager::fetchLatestFinals2000A_() const
             throw ostk::core::error::RuntimeError(
                 "Cannot fetch Finals 2000A [{}] from [{}].",
                 latestFinals2000AFile.toString(),
-                latestFinals2000AUrl.toString()
+                finals2000AUrl.toString()
             );
         }
         else
@@ -739,7 +741,7 @@ File Manager::fetchLatestFinals2000A_() const
             if (latestFinals2000AFileSize == 0)
             {
                 throw ostk::core::error::RuntimeError(
-                    "Cannot fetch Finals 2000A from [{}]: file is empty.", latestFinals2000AUrl.toString()
+                    "Cannot fetch Finals 2000A from [{}]: file is empty.", finals2000AUrl.toString()
                 );
             }
         }
@@ -753,7 +755,7 @@ File Manager::fetchLatestFinals2000A_() const
         std::cout << String::Format(
                          "Finals 2000A [{}] has been successfully fetched from [{}].",
                          latestFinals2000AFile.toString(),
-                         latestFinals2000AUrl.toString()
+                         finals2000AUrl.toString()
                      )
                   << std::endl;
     }
@@ -761,7 +763,7 @@ File Manager::fetchLatestFinals2000A_() const
     {
         std::cerr << String::Format(
                          "Error caught while fetching latest Finals 2000A from [{}]: [{}].",
-                         latestFinals2000AUrl.toString(),
+                         finals2000AUrl.toString(),
                          anException.what()
                      )
                   << std::endl;
