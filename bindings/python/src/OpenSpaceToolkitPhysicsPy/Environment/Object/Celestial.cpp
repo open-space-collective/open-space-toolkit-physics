@@ -107,9 +107,12 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::mod
         .def("get_position_in", &Celestial::getPositionIn, arg("frame"), arg("instant"))
         .def("get_transform_to", &Celestial::getTransformTo, arg("frame"), arg("instant"))
         .def("get_axes_in", &Celestial::getAxesIn, arg("frame"), arg("instant"))
-        .def("get_gravitational_field_at", &Celestial::getGravitationalFieldAt, arg("position"), arg("instant"))
-        .def("get_magnetic_field_at", &Celestial::getMagneticFieldAt, arg("position"), arg("instant"))
-        .def("get_atmospheric_density_at", &Celestial::getAtmosphericDensityAt, arg("position"), arg("instant"))
+
+        // TBI: whenenver data::Vector and data::Scalar is supported in Python
+        // .def("get_gravitational_field_at", &Celestial::getGravitationalFieldAt, arg("position"), arg("instant"))
+        // .def("get_magnetic_field_at", &Celestial::getMagneticFieldAt, arg("position"), arg("instant"))
+        // .def("get_atmospheric_density_at", &Celestial::getAtmosphericDensityAt, arg("position"), arg("instant"))
+
         .def("gravitational_model_is_defined", &Celestial::gravitationalModelIsDefined)
         .def("magnetic_model_is_defined", &Celestial::magneticModelIsDefined)
         .def("atmospheric_model_is_defined", &Celestial::atmosphericModelIsDefined)
@@ -146,7 +149,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::mod
 
     // Create "celestial" python submodule
     auto celestial = aModule.def_submodule("celestial");
-
 
     // Add objects to python "celestial" submodules
     OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Earth(celestial);
