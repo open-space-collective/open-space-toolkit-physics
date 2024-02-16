@@ -70,15 +70,7 @@ using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
 
 // TEST (OpenSpaceToolkit_Physics_Environment_Object_Celestial, Constructor)
 // {
-
-//     using ostk::physics::environment::Object ;
-
-//     {
-
-//         FAIL() ;
-
-//     }
-
+// TBM: Constructor tested below, but should be refactored to this test case directly
 // }
 
 TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial, accessModel)
