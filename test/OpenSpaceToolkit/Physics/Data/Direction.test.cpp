@@ -15,27 +15,13 @@ using ostk::physics::coordinate::Frame;
 class OpenSpaceToolkit_Physics_Data_Direction : public ::testing::Test
 {
    protected:
-    const Vector3d value_ = {1.0, 2.0, 3.0};
+    const Vector3d value_ = {1.0, 0.0, 0.0};
     const Shared<const Frame> frameSPtr_ = Frame::GCRF();
     const Direction direction_ = {
         value_,
         frameSPtr_,
     };
 };
-
-TEST_F(OpenSpaceToolkit_Physics_Data_Direction, EqualToOperator)
-{
-    {
-        EXPECT_TRUE(direction_ == direction_);
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Data_Direction, NotEqualToOperator)
-{
-    {
-        EXPECT_FALSE(direction_ != direction_);
-    }
-}
 
 TEST_F(OpenSpaceToolkit_Physics_Data_Direction, StreamOperator)
 {

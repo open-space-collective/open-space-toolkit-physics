@@ -27,21 +27,6 @@ Direction::Direction(const Vector3d& aValue, const Shared<const Frame>& aFrameSP
     }
 }
 
-bool Direction::operator==(const Direction& aDirection) const
-{
-    if ((!this->isDefined()) || (!aDirection.isDefined()))
-    {
-        return false;
-    }
-
-    return Vector::operator==(aDirection);
-}
-
-bool Direction::operator!=(const Direction& aDirection) const
-{
-    return !((*this) == aDirection);
-}
-
 std::ostream& operator<<(std::ostream& anOutputStream, const Direction& aDirection)
 {
     ostk::core::utils::Print::Header(anOutputStream, "Direction");
