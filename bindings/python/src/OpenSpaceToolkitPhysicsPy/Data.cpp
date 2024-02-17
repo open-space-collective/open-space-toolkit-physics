@@ -2,6 +2,7 @@
 
 #include <OpenSpaceToolkitPhysicsPy/Data/Scalar.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Data/Vector.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Data/Direction.cpp>
 
 inline void OpenSpaceToolkitPhysicsPy_Data(pybind11::module& aModule)
 {
@@ -13,4 +14,5 @@ inline void OpenSpaceToolkitPhysicsPy_Data(pybind11::module& aModule)
     // Add objects to python "data" submodules
     OpenSpaceToolkitPhysicsPy_Data_Scalar(data);
     OpenSpaceToolkitPhysicsPy_Data_Vector(data);
+    OpenSpaceToolkitPhysicsPy_Data_Direction(data);
 }
