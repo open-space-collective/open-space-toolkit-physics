@@ -131,6 +131,10 @@ class Derived : public Unit
 
         static Unit Tesla();
 
+        static Unit Newton();
+
+        static Unit KilogramPerSecond();
+
         static Unit Velocity(const Length::Unit& aLengthUnit, const Time::Unit& aTimeUnit);
 
         static Unit Acceleration(const Length::Unit& aLengthUnit, const Time::Unit& aTimeUnit);
@@ -138,6 +142,10 @@ class Derived : public Unit
         static Unit AngularVelocity(const Angle::Unit& anAngleUnit, const Time::Unit& aTimeUnit);
 
         static Unit GravitationalParameter(const Length::Unit& aLengthUnit, const Time::Unit& aTimeUnit);
+
+        static Unit Force(const Mass::Unit& aMassUnit, const Length::Unit& aLengthUnit, const Time::Unit& aTimeUnit);
+
+        static Unit MassFlowRate(const Mass::Unit& aMassUnit, const Time::Unit& aTimeUnit);
 
         static Unit MassDensity(const Mass::Unit& aMassUnit, const Length::Unit& aLengthUnit);
 

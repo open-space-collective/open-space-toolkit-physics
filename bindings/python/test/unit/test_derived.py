@@ -1,101 +1,115 @@
 # Apache License 2.0
 
-import pytest
-
-import ostk.physics as physics
-
-Length = physics.unit.Length
-Time = physics.unit.Time
-Angle = physics.unit.Angle
-Derived = physics.unit.Derived
+from ostk.physics.unit import Length
+from ostk.physics.unit import Time
+from ostk.physics.unit import Angle
+from ostk.physics.unit import Mass
+from ostk.physics.unit import Derived
 
 
-def test_unit_derived_unit_constructors():
-    # square_meter
-    derived_unit: Derived.Unit = Derived.Unit.square_meter()
+class TestDerived:
+    def test_derived_square_meter(self):
+        derived_unit: Derived.Unit = Derived.Unit.square_meter()
 
-    assert derived_unit is not None
-    assert isinstance(derived_unit, Derived.Unit)
+        assert derived_unit is not None
+        assert isinstance(derived_unit, Derived.Unit)
 
-    # cubic_meter
-    derived_unit: Derived.Unit = Derived.Unit.cubic_meter()
+    def test_derived_cubic_meter(self):
+        derived_unit: Derived.Unit = Derived.Unit.cubic_meter()
 
-    assert derived_unit is not None
-    assert isinstance(derived_unit, Derived.Unit)
+        assert derived_unit is not None
+        assert isinstance(derived_unit, Derived.Unit)
 
-    # hertz
-    derived_unit: Derived.Unit = Derived.Unit.hertz()
+    def test_derived_hertz(self):
+        derived_unit: Derived.Unit = Derived.Unit.hertz()
 
-    assert derived_unit is not None
-    assert isinstance(derived_unit, Derived.Unit)
+        assert derived_unit is not None
+        assert isinstance(derived_unit, Derived.Unit)
 
-    # watt
-    derived_unit: Derived.Unit = Derived.Unit.watt()
+    def test_derived_watt(self):
+        derived_unit: Derived.Unit = Derived.Unit.watt()
 
-    assert derived_unit is not None
-    assert isinstance(derived_unit, Derived.Unit)
+        assert derived_unit is not None
+        assert isinstance(derived_unit, Derived.Unit)
 
-    # tesla
-    derived_unit: Derived.Unit = Derived.Unit.tesla()
+    def test_derived_tesla(self):
+        derived_unit: Derived.Unit = Derived.Unit.tesla()
 
-    assert derived_unit is not None
-    assert isinstance(derived_unit, Derived.Unit)
+        assert derived_unit is not None
+        assert isinstance(derived_unit, Derived.Unit)
 
-    # velocity
-    derived_unit: Derived.Unit = Derived.Unit.velocity(
-        Length.Unit.Meter, Time.Unit.Second
-    )
+    def test_newton(self):
+        derived_unit: Derived.Unit = Derived.Unit.newton()
 
-    assert derived_unit is not None
-    assert isinstance(derived_unit, Derived.Unit)
+        assert derived_unit is not None
+        assert isinstance(derived_unit, Derived.Unit)
 
-    # acceleration
-    derived_unit: Derived.Unit = Derived.Unit.acceleration(
-        Length.Unit.Meter, Time.Unit.Second
-    )
+    def test_derived_velocity(self):
+        derived_unit: Derived.Unit = Derived.Unit.velocity(
+            Length.Unit.Meter, Time.Unit.Second
+        )
 
-    assert derived_unit is not None
-    assert isinstance(derived_unit, Derived.Unit)
+        assert derived_unit is not None
+        assert isinstance(derived_unit, Derived.Unit)
 
-    # gravitational_parameter
-    derived_unit: Derived.Unit = Derived.Unit.gravitational_parameter(
-        Length.Unit.Meter, Time.Unit.Second
-    )
+    def test_derived_acceleration(self):
+        derived_unit: Derived.Unit = Derived.Unit.acceleration(
+            Length.Unit.Meter, Time.Unit.Second
+        )
 
-    assert derived_unit is not None
-    assert isinstance(derived_unit, Derived.Unit)
+        assert derived_unit is not None
+        assert isinstance(derived_unit, Derived.Unit)
 
-    # angular_velocity
-    derived_unit: Derived.Unit = Derived.Unit.angular_velocity(
-        Angle.Unit.Revolution, Time.Unit.Day
-    )
+    def test_derived_angular_velocity(self):
+        derived_unit: Derived.Unit = Derived.Unit.angular_velocity(
+            Angle.Unit.Revolution, Time.Unit.Day
+        )
 
-    assert derived_unit is not None
-    assert isinstance(derived_unit, Derived.Unit)
+        assert derived_unit is not None
+        assert isinstance(derived_unit, Derived.Unit)
 
+    def test_derived_gravitational_parameter(self):
+        derived_unit: Derived.Unit = Derived.Unit.gravitational_parameter(
+            Length.Unit.Meter, Time.Unit.Second
+        )
 
-def test_unit_derived_unit_undefined():
-    derived_unit: Derived.Unit = Derived.Unit.undefined()
+        assert derived_unit is not None
+        assert isinstance(derived_unit, Derived.Unit)
 
-    assert derived_unit is not None
-    assert isinstance(derived_unit, Derived.Unit)
-    assert derived_unit.is_defined() is False
+    def test_derived_force(self):
+        derived_unit: Derived.Unit = Derived.Unit.force(
+            Mass.Unit.Kilogram, Length.Unit.Meter, Time.Unit.Second
+        )
 
+        assert derived_unit is not None
+        assert isinstance(derived_unit, Derived.Unit)
 
-def test_unit_derived_unit_comparators():
-    derived_unit: Derived.Unit = Derived.Unit.square_meter()
+    def test_derived_mass_flow_rate(self):
+        derived_unit: Derived.Unit = Derived.Unit.mass_flow_rate(
+            Mass.Unit.Kilogram, Time.Unit.Second
+        )
 
-    assert derived_unit == derived_unit
-    assert (derived_unit != derived_unit) is False
+        assert derived_unit is not None
+        assert isinstance(derived_unit, Derived.Unit)
 
+    def test_unit_derived_unit_undefined(self):
+        derived_unit: Derived.Unit = Derived.Unit.undefined()
 
-def test_unit_derived_unit_is_compatible_with():
-    pass
+        assert derived_unit is not None
+        assert isinstance(derived_unit, Derived.Unit)
+        assert derived_unit.is_defined() is False
 
+    def test_unit_derived_unit_comparators(self):
+        derived_unit: Derived.Unit = Derived.Unit.square_meter()
 
-def test_unit_derived_unit_to_string():
-    pass
+        assert derived_unit == derived_unit
+        assert (derived_unit != derived_unit) is False
 
+    def test_unit_derived_unit_is_compatible_with(self):
+        pass
 
-def test_unit_derived_unit_get_symbol():
-    pass
+    def test_unit_derived_unit_to_string(self):
+        pass
+
+    def test_unit_derived_unit_get_symbol(self):
+        pass

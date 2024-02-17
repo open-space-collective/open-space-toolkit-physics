@@ -6,15 +6,18 @@
 
 #include <Global.test.hpp>
 
+using ostk::core::type::Real;
+
+using ostk::physics::unit::Length;
+using ostk::physics::unit::Mass;
+using ostk::physics::unit::Time;
+using ostk::physics::unit::ElectricCurrent;
+using ostk::physics::unit::Angle;
+using ostk::physics::unit::Derived;
+
 TEST(OpenSpaceToolkit_Physics_Unit_Derived, Constructor)
 {
-    using ostk::core::type::Real;
-    using ostk::physics::unit::Length;
-    using ostk::physics::unit::Mass;
-    using ostk::physics::unit::Time;
-    using ostk::physics::unit::ElectricCurrent;
-    using ostk::physics::unit::Angle;
-    using ostk::physics::unit::Derived;
+
 
     {
         const Real value = 123.456;
@@ -895,15 +898,48 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 
 // }
 
+TEST(OpenSpaceToolkit_Physics_Unit_Derived_Unit, Newton)
+{
+    {
+        const Derived::Unit newton = Derived::Unit::Newton();
+        
+        EXPECT_TRUE(newton.isDefined());
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Unit_Derived_Unit, KilogramPerSecond)
+{
+    {
+        const Derived::Unit kilogramPerSecond = Derived::Unit::KilogramPerSecond();
+        
+        EXPECT_TRUE(kilogramPerSecond.isDefined());
+    }
+}
+
+
 TEST(OpenSpaceToolkit_Physics_Unit_Derived_Unit, MassDensity)
 {
-    using ostk::physics::unit::Length;
-    using ostk::physics::unit::Mass;
-    using ostk::physics::unit::Derived;
-
     {
         const Derived::Unit massDensity = Derived::Unit::MassDensity(Mass::Unit::Kilogram, Length::Unit::Meter);
 
         EXPECT_TRUE(massDensity.isDefined());
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Unit_Derived_Unit, Force)
+{
+    {
+        const Derived::Unit newton = Derived::Unit::Force(Mass::Unit::Kilogram, Length::Unit::Meter, Time::Unit::Second);
+
+        EXPECT_TRUE(newton.isDefined());
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Unit_Derived_Unit, MassFlowRate)
+{
+    {
+        const Derived::Unit kilogramPerSecond = Derived::Unit::MassFlowRate(Mass::Unit::Kilogram, Time::Unit::Second);
+        
+        EXPECT_TRUE(kilogramPerSecond.isDefined());
     }
 }
