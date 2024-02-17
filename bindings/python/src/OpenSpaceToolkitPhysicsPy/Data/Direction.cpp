@@ -22,10 +22,10 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Direction(pybind11::module& aModule)
         .def(self == self)
         .def(self != self)
 
-        .def("__str__", &(shiftToString<Scalar>))
-        .def("__repr__", &(shiftToString<Scalar>))
+        .def("__str__", &(shiftToString<Direction>))
+        .def("__repr__", &(shiftToString<Direction>))
 
-        .def_static("undefined", &Scalar::Undefined)
+        .def_static("undefined", &Direction::Undefined)
 
         ;
 }
