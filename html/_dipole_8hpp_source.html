@@ -88,11 +88,11 @@ $(document).ready(function(){initNavTree('_dipole_8hpp_source.html',''); initRes
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#ifndef __OpenSpaceToolkit_Physics_Environment_Magnetic_Dipole__</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#define __OpenSpaceToolkit_Physics_Environment_Magnetic_Dipole__</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;OpenSpaceToolkit/Core/Types/Real.hpp&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;OpenSpaceToolkit/Core/Type/Real.hpp&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_magnetic_2_model_8hpp.html">OpenSpaceToolkit/Physics/Environment/Magnetic/Model.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_instant_8hpp.html">OpenSpaceToolkit/Physics/Time/Instant.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_derived_8hpp.html">OpenSpaceToolkit/Physics/Units/Derived.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_derived_8hpp.html">OpenSpaceToolkit/Physics/Unit/Derived.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceostk.html">ostk</a></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
@@ -103,9 +103,9 @@ $(document).ready(function(){initNavTree('_dipole_8hpp_source.html',''); initRes
 <div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="namespaceostk_1_1physics_1_1environment_1_1magnetic.html">   18</a></span>&#160;<span class="keyword">namespace </span>magnetic</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">using</span> ostk::core::types::Real;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">using</span> ostk::core::type::Real;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">using</span> <a class="code" href="classostk_1_1physics_1_1units_1_1_derived.html">ostk::physics::units::Derived</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">using</span> <a class="code" href="classostk_1_1physics_1_1unit_1_1_derived.html">ostk::physics::unit::Derived</a>;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">using</span> <a class="code" href="classostk_1_1physics_1_1time_1_1_instant.html">ostk::physics::time::Instant</a>;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">using</span> <a class="code" href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model.html">ostk::physics::environment::magnetic::Model</a>;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
@@ -140,8 +140,8 @@ $(document).ready(function(){initNavTree('_dipole_8hpp_source.html',''); initRes
 <div class="ttc" id="aclassostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole_html_a974e9a8c1062516d6c872b96d5573779"><div class="ttname"><a href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole.html#a974e9a8c1062516d6c872b96d5573779">ostk::physics::environment::magnetic::Dipole::Dipole</a></div><div class="ttdeci">Dipole(const Vector3d &amp;aMagneticMoment)</div><div class="ttdoc">Constructor.</div><div class="ttdef"><b>Definition:</b> Dipole.cpp:22</div></div>
 <div class="ttc" id="aclassostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole_html"><div class="ttname"><a href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole.html">ostk::physics::environment::magnetic::Dipole</a></div><div class="ttdoc">Magnetic dipole model.</div><div class="ttdef"><b>Definition:</b> Dipole.hpp:34</div></div>
 <div class="ttc" id="a_derived_8hpp_html"><div class="ttname"><a href="_derived_8hpp.html">Derived.hpp</a></div></div>
-<div class="ttc" id="aclassostk_1_1physics_1_1units_1_1_derived_html"><div class="ttname"><a href="classostk_1_1physics_1_1units_1_1_derived.html">ostk::physics::units::Derived</a></div><div class="ttdoc">Derived unit.</div><div class="ttdef"><b>Definition:</b> Derived.hpp:33</div></div>
 <div class="ttc" id="aclassostk_1_1physics_1_1time_1_1_instant_html"><div class="ttname"><a href="classostk_1_1physics_1_1time_1_1_instant.html">ostk::physics::time::Instant</a></div><div class="ttdoc">Point in time.</div><div class="ttdef"><b>Definition:</b> Instant.hpp:40</div></div>
+<div class="ttc" id="aclassostk_1_1physics_1_1unit_1_1_derived_html"><div class="ttname"><a href="classostk_1_1physics_1_1unit_1_1_derived.html">ostk::physics::unit::Derived</a></div><div class="ttdoc">Derived unit.</div><div class="ttdef"><b>Definition:</b> Derived.hpp:33</div></div>
 <div class="ttc" id="aclassostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole_html_ad4255ff1007a339c9f0bdbda321c0ab2"><div class="ttname"><a href="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole.html#ad4255ff1007a339c9f0bdbda321c0ab2">ostk::physics::environment::magnetic::Dipole::clone</a></div><div class="ttdeci">virtual Dipole * clone() const override</div><div class="ttdoc">Clone the dipole magnetic model.</div><div class="ttdef"><b>Definition:</b> Dipole.cpp:32</div></div>
 <div class="ttc" id="anamespaceostk_html"><div class="ttname"><a href="namespaceostk.html">ostk</a></div><div class="ttdoc">Apache License 2.0.</div><div class="ttdef"><b>Definition:</b> Axes.hpp:12</div></div>
 <div class="ttc" id="a_magnetic_2_model_8hpp_html"><div class="ttname"><a href="_magnetic_2_model_8hpp.html">Model.hpp</a></div></div>

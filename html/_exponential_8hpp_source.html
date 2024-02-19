@@ -88,16 +88,16 @@ $(document).ready(function(){initNavTree('_exponential_8hpp_source.html',''); in
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#ifndef __OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Exponential__</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#define __OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Exponential__</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;OpenSpaceToolkit/Core/Containers/Array.hpp&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;OpenSpaceToolkit/Core/Containers/Tuple.hpp&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;OpenSpaceToolkit/Core/Types/Integer.hpp&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;OpenSpaceToolkit/Core/Types/Real.hpp&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;OpenSpaceToolkit/Core/Types/String.hpp&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;OpenSpaceToolkit/Core/Container/Array.hpp&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;OpenSpaceToolkit/Core/Container/Tuple.hpp&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;OpenSpaceToolkit/Core/Type/Integer.hpp&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;OpenSpaceToolkit/Core/Type/Real.hpp&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;OpenSpaceToolkit/Core/Type/String.hpp&gt;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_l_l_a_8hpp.html">OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_atmospheric_2_model_8hpp.html">OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_instant_8hpp.html">OpenSpaceToolkit/Physics/Time/Instant.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_length_8hpp.html">OpenSpaceToolkit/Physics/Units/Length.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_length_8hpp.html">OpenSpaceToolkit/Physics/Unit/Length.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceostk.html">ostk</a></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{</div>
@@ -110,15 +110,15 @@ $(document).ready(function(){initNavTree('_exponential_8hpp_source.html',''); in
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">namespace </span>earth</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">using</span> ostk::core::types::Integer;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">using</span> ostk::core::types::Real;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">using</span> ostk::core::types::String;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">using</span> ostk::core::ctnr::Tuple;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">using</span> ostk::core::ctnr::Array;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">using</span> ostk::core::type::Integer;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">using</span> ostk::core::type::Real;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">using</span> ostk::core::type::String;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">using</span> ostk::core::container::Tuple;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">using</span> ostk::core::container::Array;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">using</span> <a class="code" href="classostk_1_1physics_1_1time_1_1_instant.html">ostk::physics::time::Instant</a>;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">using</span> <a class="code" href="classostk_1_1physics_1_1units_1_1_length.html">ostk::physics::units::Length</a>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">using</span> <a class="code" href="classostk_1_1physics_1_1coord_1_1spherical_1_1_l_l_a.html">ostk::physics::coord::spherical::LLA</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">using</span> <a class="code" href="classostk_1_1physics_1_1unit_1_1_length.html">ostk::physics::unit::Length</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">using</span> <a class="code" href="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a.html">ostk::physics::coordinate::spherical::LLA</a>;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">using</span> <a class="code" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model.html">ostk::physics::environment::atmospheric::Model</a>;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
@@ -135,10 +135,10 @@ $(document).ready(function(){initNavTree('_exponential_8hpp_source.html',''); in
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential.html#acc039008e0cec1fd79082b300bee205b">isDefined</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    Real <a class="code" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential.html#ab043dea461cc32e724bf4e2b12178ba0">getDensityAt</a>(<span class="keyword">const</span> <a class="code" href="classostk_1_1physics_1_1coord_1_1spherical_1_1_l_l_a.html">LLA</a>&amp; aLLA, <span class="keyword">const</span> <a class="code" href="classostk_1_1physics_1_1time_1_1_instant.html">Instant</a>&amp; anInstant) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    Real <a class="code" href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential.html#ab043dea461cc32e724bf4e2b12178ba0">getDensityAt</a>(<span class="keyword">const</span> <a class="code" href="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a.html">LLA</a>&amp; aLLA, <span class="keyword">const</span> <a class="code" href="classostk_1_1physics_1_1time_1_1_instant.html">Instant</a>&amp; anInstant) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">static</span> Tuple&lt;Real, Real, Real&gt; DensityBandValues(<span class="keyword">const</span> <a class="code" href="classostk_1_1physics_1_1units_1_1_length.html">Length</a>&amp; anAltitude);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">static</span> Tuple&lt;Real, Real, Real&gt; DensityBandValues(<span class="keyword">const</span> <a class="code" href="classostk_1_1physics_1_1unit_1_1_length.html">Length</a>&amp; anAltitude);</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;};</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}  <span class="comment">// namespace earth</span></div>
@@ -154,16 +154,16 @@ $(document).ready(function(){initNavTree('_exponential_8hpp_source.html',''); in
 <div class="ttc" id="aclassostk_1_1physics_1_1environment_1_1atmospheric_1_1_model_html"><div class="ttname"><a href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model.html">ostk::physics::environment::atmospheric::Model</a></div><div class="ttdoc">Atmospheric model (interface)</div><div class="ttdef"><b>Definition:</b> Model.hpp:27</div></div>
 <div class="ttc" id="a_atmospheric_2_model_8hpp_html"><div class="ttname"><a href="_atmospheric_2_model_8hpp.html">Model.hpp</a></div></div>
 <div class="ttc" id="aclassostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential_html_a3552f4315a431f9a422a273f6b983098"><div class="ttname"><a href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential.html#a3552f4315a431f9a422a273f6b983098">ostk::physics::environment::atmospheric::earth::Exponential::clone</a></div><div class="ttdeci">virtual Exponential * clone() const</div><div class="ttdoc">Clone the exponential atmospheric model.</div><div class="ttdef"><b>Definition:</b> Exponential.cpp:27</div></div>
+<div class="ttc" id="aclassostk_1_1physics_1_1unit_1_1_length_html"><div class="ttname"><a href="classostk_1_1physics_1_1unit_1_1_length.html">ostk::physics::unit::Length</a></div><div class="ttdoc">Length.</div><div class="ttdef"><b>Definition:</b> Length.hpp:27</div></div>
 <div class="ttc" id="aclassostk_1_1physics_1_1time_1_1_instant_html"><div class="ttname"><a href="classostk_1_1physics_1_1time_1_1_instant.html">ostk::physics::time::Instant</a></div><div class="ttdoc">Point in time.</div><div class="ttdef"><b>Definition:</b> Instant.hpp:40</div></div>
+<div class="ttc" id="aclassostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_html"><div class="ttname"><a href="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a.html">ostk::physics::coordinate::spherical::LLA</a></div><div class="ttdoc">Geodetic Latitude - Longitude - Altitude (LLA)</div><div class="ttdef"><b>Definition:</b> LLA.hpp:34</div></div>
 <div class="ttc" id="anamespaceostk_html"><div class="ttname"><a href="namespaceostk.html">ostk</a></div><div class="ttdoc">Apache License 2.0.</div><div class="ttdef"><b>Definition:</b> Axes.hpp:12</div></div>
 <div class="ttc" id="a_length_8hpp_html"><div class="ttname"><a href="_length_8hpp.html">Length.hpp</a></div></div>
 <div class="ttc" id="a_instant_8hpp_html"><div class="ttname"><a href="_instant_8hpp.html">Instant.hpp</a></div></div>
-<div class="ttc" id="aclassostk_1_1physics_1_1coord_1_1spherical_1_1_l_l_a_html"><div class="ttname"><a href="classostk_1_1physics_1_1coord_1_1spherical_1_1_l_l_a.html">ostk::physics::coord::spherical::LLA</a></div><div class="ttdoc">Geodetic Latitude - Longitude - Altitude (LLA)</div><div class="ttdef"><b>Definition:</b> LLA.hpp:34</div></div>
 <div class="ttc" id="aclassostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential_html_a21b8801dd53ae70c4a20625d547b166e"><div class="ttname"><a href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential.html#a21b8801dd53ae70c4a20625d547b166e">ostk::physics::environment::atmospheric::earth::Exponential::Exponential</a></div><div class="ttdeci">Exponential()</div><div class="ttdoc">Constructor.</div><div class="ttdef"><b>Definition:</b> Exponential.cpp:25</div></div>
 <div class="ttc" id="a_l_l_a_8hpp_html"><div class="ttname"><a href="_l_l_a_8hpp.html">LLA.hpp</a></div></div>
 <div class="ttc" id="aclassostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential_html_acc039008e0cec1fd79082b300bee205b"><div class="ttname"><a href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential.html#acc039008e0cec1fd79082b300bee205b">ostk::physics::environment::atmospheric::earth::Exponential::isDefined</a></div><div class="ttdeci">bool isDefined() const</div><div class="ttdoc">Check if the exponential atmospheric model is defined.</div><div class="ttdef"><b>Definition:</b> Exponential.cpp:32</div></div>
 <div class="ttc" id="aclassostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential_html_ab043dea461cc32e724bf4e2b12178ba0"><div class="ttname"><a href="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential.html#ab043dea461cc32e724bf4e2b12178ba0">ostk::physics::environment::atmospheric::earth::Exponential::getDensityAt</a></div><div class="ttdeci">Real getDensityAt(const LLA &amp;aLLA, const Instant &amp;anInstant) const</div><div class="ttdoc">Get the atmospheric density value at a given position and instant.</div><div class="ttdef"><b>Definition:</b> Exponential.cpp:37</div></div>
-<div class="ttc" id="aclassostk_1_1physics_1_1units_1_1_length_html"><div class="ttname"><a href="classostk_1_1physics_1_1units_1_1_length.html">ostk::physics::units::Length</a></div><div class="ttdoc">Length.</div><div class="ttdef"><b>Definition:</b> Length.hpp:27</div></div>
 <!-- HTML footer for doxygen 1.8.7-->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

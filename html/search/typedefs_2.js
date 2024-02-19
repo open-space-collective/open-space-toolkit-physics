@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['framemanager_1661',['FrameManager',['../namespaceostk_1_1physics_1_1coord.html#ab147ada31124a59de8f25da43781195b',1,'ostk::physics::coord']]]
+  ['framemanager_1651',['FrameManager',['../namespaceostk_1_1physics_1_1coordinate.html#ac6781d09e3e73b10d604af3adf735bb7',1,'ostk::physics::coordinate']]]
 ];

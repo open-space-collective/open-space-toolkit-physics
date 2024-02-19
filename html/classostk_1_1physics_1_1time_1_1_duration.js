@@ -15,7 +15,7 @@ var classostk_1_1physics_1_1time_1_1_duration =
     [ "getNanoseconds", "classostk_1_1physics_1_1time_1_1_duration.html#a6b5818c374c3535f7827f6970c563206", null ],
     [ "getSeconds", "classostk_1_1physics_1_1time_1_1_duration.html#aff2319bf58b7c3da9e87ccd88867ffe7", null ],
     [ "getWeeks", "classostk_1_1physics_1_1time_1_1_duration.html#af42d2314c9d99b87ff09cf8470a460cd", null ],
-    [ "in", "classostk_1_1physics_1_1time_1_1_duration.html#a03f34bc3528d1e33efdc9da44df157f4", null ],
+    [ "in", "classostk_1_1physics_1_1time_1_1_duration.html#aa89099508db5e3bc895790f665101360", null ],
     [ "inDays", "classostk_1_1physics_1_1time_1_1_duration.html#a2c8f2e97717d02ba4f8dc044fe4f0b1e", null ],
     [ "inHours", "classostk_1_1physics_1_1time_1_1_duration.html#a24026d219798a960db5482f4cda808c3", null ],
     [ "inMicroseconds", "classostk_1_1physics_1_1time_1_1_duration.html#a67a7723ff079f5a4404a5fa1b0fd2128", null ],

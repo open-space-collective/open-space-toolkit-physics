@@ -1,18 +1,18 @@
 \hypertarget{_frame_8cpp}{}\doxysection{src/\+Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame.cpp File Reference}
 \label{_frame_8cpp}\index{src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp@{src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp}}
 {\ttfamily \#include $<$Open\+Space\+Toolkit/\+Core/\+Error.\+hpp$>$}\newline
-{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Core/\+Utilities.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Core/\+Utility.\+hpp$>$}\newline
 {\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame.\+hpp$>$}\newline
 {\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Manager.\+hpp$>$}\newline
-{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Providers/\+C\+I\+R\+F.\+hpp$>$}\newline
-{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Providers/\+G\+C\+R\+F.\+hpp$>$}\newline
-{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Providers/\+I\+T\+R\+F.\+hpp$>$}\newline
-{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Providers/\+J2000.\+hpp$>$}\newline
-{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Providers/\+M\+O\+D.\+hpp$>$}\newline
-{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Providers/\+Static.\+hpp$>$}\newline
-{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Providers/\+T\+E\+M\+E.\+hpp$>$}\newline
-{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Providers/\+T\+I\+R\+F.\+hpp$>$}\newline
-{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Providers/\+T\+O\+D.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Provider/\+C\+I\+R\+F.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Provider/\+G\+C\+R\+F.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Provider/\+I\+T\+R\+F.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Provider/\+J2000.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Provider/\+M\+O\+D.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Provider/\+Static.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Provider/\+T\+E\+M\+E.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Provider/\+T\+I\+R\+F.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Provider/\+T\+O\+D.\+hpp$>$}\newline
 \doxysubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
@@ -20,15 +20,15 @@
 \begin{DoxyCompactList}\small\item\em Apache License 2.\+0. \end{DoxyCompactList}\item 
  \mbox{\hyperlink{namespaceostk_1_1physics}{ostk\+::physics}}
 \item 
- \mbox{\hyperlink{namespaceostk_1_1physics_1_1coord}{ostk\+::physics\+::coord}}
+ \mbox{\hyperlink{namespaceostk_1_1physics_1_1coordinate}{ostk\+::physics\+::coordinate}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-using \mbox{\hyperlink{namespaceostk_1_1physics_1_1coord_ab147ada31124a59de8f25da43781195b}{ostk\+::physics\+::coord\+::\+Frame\+Manager}} = \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1_manager}{ostk\+::physics\+::coord\+::frame\+::\+Manager}}
+using \mbox{\hyperlink{namespaceostk_1_1physics_1_1coordinate_ac6781d09e3e73b10d604af3adf735bb7}{ostk\+::physics\+::coordinate\+::\+Frame\+Manager}} = \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager}{ostk\+::physics\+::coordinate\+::frame\+::\+Manager}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-std\+::ostream \& \mbox{\hyperlink{namespaceostk_1_1physics_1_1coord_aeeb51929f47088ef63f55f68d4aab975}{ostk\+::physics\+::coord\+::operator$<$$<$}} (std\+::ostream \&an\+Output\+Stream, const Frame \&a\+Frame)
+std\+::ostream \& \mbox{\hyperlink{namespaceostk_1_1physics_1_1coordinate_ae98601d62ea8ae83d32d791914e06b3d}{ostk\+::physics\+::coordinate\+::operator$<$$<$}} (std\+::ostream \&an\+Output\+Stream, const Frame \&a\+Frame)
 \end{DoxyCompactItemize}

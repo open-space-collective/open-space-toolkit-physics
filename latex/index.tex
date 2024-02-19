@@ -26,7 +26,7 @@ Once the shell is up and running, playing with it is easy\+:
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{keyword}{from} \mbox{\hyperlink{namespaceostk_1_1physics}{ostk.physics}} \textcolor{keyword}{import} Environment \textcolor{comment}{\# Environment modeling class}}
 \DoxyCodeLine{\textcolor{keyword}{from} \mbox{\hyperlink{namespaceostk_1_1physics_1_1time}{ostk.physics.time}} \textcolor{keyword}{import} Instant \textcolor{comment}{\# Instant class}}
-\DoxyCodeLine{\textcolor{keyword}{from} ostk.physics.coordinate \textcolor{keyword}{import} Frame \textcolor{comment}{\# Reference frame class}}
+\DoxyCodeLine{\textcolor{keyword}{from} \mbox{\hyperlink{namespaceostk_1_1physics_1_1coordinate}{ostk.physics.coordinate}} \textcolor{keyword}{import} Frame \textcolor{comment}{\# Reference frame class}}
 \DoxyCodeLine{}
 \DoxyCodeLine{environment = Environment.default() \textcolor{comment}{\# Bootstrap a default environment}}
 \DoxyCodeLine{}
@@ -90,7 +90,7 @@ The library exhibits the following structure\+:
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{├── Units}
+\DoxyCodeLine{├── Unit}
 \DoxyCodeLine{│   ├── Length}
 \DoxyCodeLine{│   ├── Mass}
 \DoxyCodeLine{│   ├── Time}
@@ -124,10 +124,10 @@ The library exhibits the following structure\+:
 \DoxyCodeLine{│   ├── Coordinate Reference System (CRS)}
 \DoxyCodeLine{│   └── Universal Transverse Mercator (UTM)}
 \DoxyCodeLine{└── Environment}
-\DoxyCodeLine{    ├── Constants}
+\DoxyCodeLine{    ├── Constant}
 \DoxyCodeLine{    ├── Object}
 \DoxyCodeLine{    │   └── Celestial}
-\DoxyCodeLine{    ├── Ephemerides}
+\DoxyCodeLine{    ├── Ephemeris}
 \DoxyCodeLine{    │   ├── Analytical}
 \DoxyCodeLine{    │   ├── Tabulated}
 \DoxyCodeLine{    │   └── SPICE (JPL)}
@@ -151,6 +151,8 @@ The library exhibits the following structure\+:
 
 $<$/details$>$\hypertarget{index_autotoc_md11}{}\doxysection{Data Management}\label{index_autotoc_md11}
 O\+S\+Tk Physics uses input data from various sources to determine the state of the space environment at any given time. The following input data is used\+:
+
+
 \begin{DoxyItemize}
 \item I\+E\+RS Reference Frame Data
 \item C\+S\+SI Solar Flux/\+Space Weather Data
@@ -161,7 +163,9 @@ O\+S\+Tk Physics uses input data from various sources to determine the state of 
 
 None of these files are shipped with the source code of this library. O\+S\+Tk Physics has the capability to fetch the required files at runtime if they are not present or if they are outdated. This is done using file Manager classes (see any file named {\ttfamily Manager.\+hpp}). Data for any use-\/case is queried through the Manager class rather than directly, which allows the Manager to handle file loading and fetching.
 
-The following table shows the availabe data source settings\+: \tabulinesep=1mm
+The following table shows the availabe data source settings\+:
+
+\tabulinesep=1mm
 \begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
 \hline
 \PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Environment Variable }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Default Value  }\\\cline{1-2}
@@ -172,11 +176,11 @@ The following table shows the availabe data source settings\+: \tabulinesep=1mm
 \PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Environment Variable }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Default Value  }\\\cline{1-2}
 \endhead
 {\ttfamily O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+D\+A\+T\+A\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+RY} &{\ttfamily ./.open-\/space-\/toolkit/physics/data} \mbox{[}Bulk setting. Overridden by specific repository settings below.\mbox{]}  \\\cline{1-2}
-{\ttfamily O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+C\+O\+O\+R\+D\+I\+N\+A\+T\+E\+\_\+\+F\+R\+A\+M\+E\+\_\+\+P\+R\+O\+V\+I\+D\+E\+R\+S\+\_\+\+I\+E\+R\+S\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+M\+O\+DE} &{\ttfamily Automatic}  \\\cline{1-2}
-{\ttfamily O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+C\+O\+O\+R\+D\+I\+N\+A\+T\+E\+\_\+\+F\+R\+A\+M\+E\+\_\+\+P\+R\+O\+V\+I\+D\+E\+R\+S\+\_\+\+I\+E\+R\+S\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+RY} &{\ttfamily ./.open-\/space-\/toolkit/physics/data/coordinate/frame/providers/iers}  \\\cline{1-2}
-{\ttfamily O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+C\+O\+O\+R\+D\+I\+N\+A\+T\+E\+\_\+\+F\+R\+A\+M\+E\+\_\+\+P\+R\+O\+V\+I\+D\+E\+R\+S\+\_\+\+I\+E\+R\+S\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+R\+Y\+\_\+\+L\+O\+C\+K\+\_\+\+T\+I\+M\+E\+O\+UT} &{\ttfamily 60}  \\\cline{1-2}
-{\ttfamily O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+E\+P\+H\+E\+M\+E\+R\+I\+D\+E\+S\+\_\+\+S\+P\+I\+C\+E\+\_\+\+E\+N\+G\+I\+N\+E\+\_\+\+M\+O\+DE} &{\ttfamily Automatic}  \\\cline{1-2}
-{\ttfamily O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+E\+P\+H\+E\+M\+E\+R\+I\+D\+E\+S\+\_\+\+S\+P\+I\+C\+E\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+RY} &{\ttfamily ./.open-\/space-\/toolkit/physics/data/environment/ephemerides/spice}  \\\cline{1-2}
+{\ttfamily O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+C\+O\+O\+R\+D\+I\+N\+A\+T\+E\+\_\+\+F\+R\+A\+M\+E\+\_\+\+P\+R\+O\+V\+I\+D\+E\+R\+\_\+\+I\+E\+R\+S\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+M\+O\+DE} &{\ttfamily Automatic}  \\\cline{1-2}
+{\ttfamily O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+C\+O\+O\+R\+D\+I\+N\+A\+T\+E\+\_\+\+F\+R\+A\+M\+E\+\_\+\+P\+R\+O\+V\+I\+D\+E\+R\+\_\+\+I\+E\+R\+S\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+RY} &{\ttfamily ./.open-\/space-\/toolkit/physics/data/coordinate/frame/provider/iers}  \\\cline{1-2}
+{\ttfamily O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+C\+O\+O\+R\+D\+I\+N\+A\+T\+E\+\_\+\+F\+R\+A\+M\+E\+\_\+\+P\+R\+O\+V\+I\+D\+E\+R\+\_\+\+I\+E\+R\+S\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+R\+Y\+\_\+\+L\+O\+C\+K\+\_\+\+T\+I\+M\+E\+O\+UT} &{\ttfamily 60}  \\\cline{1-2}
+{\ttfamily O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+E\+P\+H\+E\+M\+E\+R\+I\+S\+\_\+\+S\+P\+I\+C\+E\+\_\+\+E\+N\+G\+I\+N\+E\+\_\+\+M\+O\+DE} &{\ttfamily Automatic}  \\\cline{1-2}
+{\ttfamily O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+E\+P\+H\+E\+M\+E\+R\+I\+S\+\_\+\+S\+P\+I\+C\+E\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+RY} &{\ttfamily ./.open-\/space-\/toolkit/physics/data/environment/ephemeris/spice}  \\\cline{1-2}
 {\ttfamily O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+G\+R\+A\+V\+I\+T\+A\+T\+I\+O\+N\+A\+L\+\_\+\+E\+A\+R\+T\+H\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+M\+O\+DE} &{\ttfamily Automatic}  \\\cline{1-2}
 {\ttfamily O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+G\+R\+A\+V\+I\+T\+A\+T\+I\+O\+N\+A\+L\+\_\+\+E\+A\+R\+T\+H\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+RY} &{\ttfamily ./.open-\/space-\/toolkit/physics/data/environment/gravitational/earth}  \\\cline{1-2}
 {\ttfamily O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+G\+R\+A\+V\+I\+T\+A\+T\+I\+O\+N\+A\+L\+\_\+\+E\+A\+R\+T\+H\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+R\+Y\+\_\+\+L\+O\+C\+K\+\_\+\+T\+I\+M\+E\+O\+UT} &{\ttfamily 60}  \\\cline{1-2}
@@ -186,7 +190,7 @@ The following table shows the availabe data source settings\+: \tabulinesep=1mm
 {\ttfamily O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+A\+T\+M\+O\+S\+P\+H\+E\+R\+I\+C\+\_\+\+E\+A\+R\+T\+H\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+M\+O\+DE} &{\ttfamily Automatic}  \\\cline{1-2}
 {\ttfamily O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+A\+T\+M\+O\+S\+P\+H\+E\+R\+I\+C\+\_\+\+E\+A\+R\+T\+H\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+RY} &{\ttfamily ./.open-\/space-\/toolkit/physics/data/environment/atmospheric/earth}  \\\cline{1-2}
 {\ttfamily O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+E\+N\+V\+I\+R\+O\+N\+M\+E\+N\+T\+\_\+\+A\+T\+M\+O\+S\+P\+H\+E\+R\+I\+C\+\_\+\+E\+A\+R\+T\+H\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+R\+Y\+\_\+\+L\+O\+C\+K\+\_\+\+T\+I\+M\+E\+O\+UT} &{\ttfamily 60}  \\\cline{1-2}
-{\ttfamily O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+D\+A\+T\+A\+\_\+\+R\+E\+M\+O\+T\+E\+\_\+\+U\+RL} &{\ttfamily \href{https://github.com/open-space-collective/open-space-toolkit-data/raw/main/data/}{\texttt{ https\+://github.\+com/open-\/space-\/collective/open-\/space-\/toolkit-\/data/raw/main/data/}}}  \\\cline{1-2}
+{\ttfamily O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+D\+A\+T\+A\+\_\+\+R\+E\+M\+O\+T\+E\+\_\+\+U\+RL} &{\ttfamily \href{https://github.com/open-space-collective/open-space-toolkit-data/raw/v1/data/}{\texttt{ https\+://github.\+com/open-\/space-\/collective/open-\/space-\/toolkit-\/data/raw/v1/data/}}}  \\\cline{1-2}
 {\ttfamily O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+D\+A\+T\+A\+\_\+\+M\+A\+N\+I\+F\+E\+S\+T\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+RY} &{\ttfamily ./.open-\/space-\/toolkit/physics/data/}  \\\cline{1-2}
 {\ttfamily O\+S\+T\+K\+\_\+\+P\+H\+Y\+S\+I\+C\+S\+\_\+\+D\+A\+T\+A\+\_\+\+M\+A\+N\+I\+F\+E\+S\+T\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+P\+O\+S\+I\+T\+O\+R\+Y\+\_\+\+L\+O\+C\+K\+\_\+\+T\+I\+M\+E\+O\+UT} &{\ttfamily 60}  \\\cline{1-2}
 \end{longtabu}

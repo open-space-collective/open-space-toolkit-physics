@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['type_1673',['Type',['../classostk_1_1physics_1_1time_1_1_interval.html#a23bb31fca5253e280aa2ee1a421c14a4',1,'ostk::physics::time::Interval']]]
+  ['type_1663',['Type',['../classostk_1_1physics_1_1time_1_1_interval.html#aa170710f2be4e2c2af6fdee5b6d8def3',1,'ostk::physics::time::Interval']]]
 ];

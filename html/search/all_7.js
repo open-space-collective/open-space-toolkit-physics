@@ -1,11 +1,11 @@
 var searchData=
 [
-  ['halfpi_421',['HalfPi',['../classostk_1_1physics_1_1units_1_1_angle.html#a6065318d10aee4f99d28af429a64d9bb',1,'ostk::physics::units::Angle']]],
-  ['hasdatafilesfortype_422',['hasDataFilesForType',['../classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager.html#adaee07fd7256d2c28be24403c4287d84',1,'ostk::physics::environment::gravitational::earth::Manager::hasDataFilesForType()'],['../classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager.html#a3bce4a4092f699ea959e672448fb317f',1,'ostk::physics::environment::magnetic::earth::Manager::hasDataFilesForType()']]],
-  ['hasframewithname_423',['hasFrameWithName',['../classostk_1_1physics_1_1coord_1_1frame_1_1_manager.html#ac353df7eaa41ec705c7728afef0aff34',1,'ostk::physics::coord::frame::Manager']]],
-  ['hasobjectwithname_424',['hasObjectWithName',['../classostk_1_1physics_1_1_environment.html#af83819fdcd1586e185ce21e92ce574ed',1,'ostk::physics::Environment']]],
-  ['hasparent_425',['hasParent',['../classostk_1_1physics_1_1coord_1_1_frame.html#aa4c778fa91e6599cdea0a889fd5bf69c',1,'ostk::physics::coord::Frame']]],
-  ['hertz_426',['Hertz',['../classostk_1_1physics_1_1units_1_1_derived_1_1_unit.html#a051fe950e5c97188687c57a1bbcfce32',1,'ostk::physics::units::Derived::Unit']]],
-  ['hour_427',['Hour',['../classostk_1_1physics_1_1units_1_1_time.html#aa961f0dbca7ec297e19e15e0dfa3bb4aab55e509c697e4cca0e1d160a7806698f',1,'ostk::physics::units::Time']]],
-  ['hours_428',['Hours',['../classostk_1_1physics_1_1time_1_1_duration.html#a950723133d46c93a06907543d15e4dc0',1,'ostk::physics::time::Duration']]]
+  ['halfpi_419',['HalfPi',['../classostk_1_1physics_1_1unit_1_1_angle.html#a04a8aa202eaaeba51d5b097ee023100d',1,'ostk::physics::unit::Angle']]],
+  ['hasdatafilesfortype_420',['hasDataFilesForType',['../classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager.html#adaee07fd7256d2c28be24403c4287d84',1,'ostk::physics::environment::gravitational::earth::Manager::hasDataFilesForType()'],['../classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager.html#a3bce4a4092f699ea959e672448fb317f',1,'ostk::physics::environment::magnetic::earth::Manager::hasDataFilesForType()']]],
+  ['hasframewithname_421',['hasFrameWithName',['../classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager.html#a7963c97f063b5cdd276f3ffd375ef8e4',1,'ostk::physics::coordinate::frame::Manager']]],
+  ['hasobjectwithname_422',['hasObjectWithName',['../classostk_1_1physics_1_1_environment.html#af83819fdcd1586e185ce21e92ce574ed',1,'ostk::physics::Environment']]],
+  ['hasparent_423',['hasParent',['../classostk_1_1physics_1_1coordinate_1_1_frame.html#a0a7a8cd8c6d94ba4c84b12d24fb88716',1,'ostk::physics::coordinate::Frame']]],
+  ['hertz_424',['Hertz',['../classostk_1_1physics_1_1unit_1_1_derived_1_1_unit.html#adf6a7372c53ef916704a74e6d7d5788b',1,'ostk::physics::unit::Derived::Unit']]],
+  ['hour_425',['Hour',['../classostk_1_1physics_1_1unit_1_1_time.html#a10b9dab555bd29c1f30a20099cbe779aab55e509c697e4cca0e1d160a7806698f',1,'ostk::physics::unit::Time']]],
+  ['hours_426',['Hours',['../classostk_1_1physics_1_1time_1_1_duration.html#a950723133d46c93a06907543d15e4dc0',1,'ostk::physics::time::Duration']]]
 ];

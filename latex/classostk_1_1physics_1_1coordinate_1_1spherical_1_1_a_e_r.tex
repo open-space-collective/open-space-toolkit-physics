@@ -1,0 +1,163 @@
+\hypertarget{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r}{}\doxysection{ostk\+::physics\+::coordinate\+::spherical\+::A\+ER Class Reference}
+\label{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r}\index{ostk::physics::coordinate::spherical::AER@{ostk::physics::coordinate::spherical::AER}}
+
+
+Azimuth -\/ Elevation -\/ Range (\mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r}{A\+ER}})  
+
+
+
+
+{\ttfamily \#include $<$A\+E\+R.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_a9c6deb11f1bba6bf361df929d1f59c7b}{A\+ER}} (const \mbox{\hyperlink{classostk_1_1physics_1_1unit_1_1_angle}{Angle}} \&an\+Azimuth, const \mbox{\hyperlink{classostk_1_1physics_1_1unit_1_1_angle}{Angle}} \&an\+Elevation, const \mbox{\hyperlink{classostk_1_1physics_1_1unit_1_1_length}{Length}} \&a\+Range)
+\item 
+bool \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_a7ffc6312cb7158e6be1ac8bdefc45fa6}{operator==}} (const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r}{A\+ER}} \&an\+A\+ER) const
+\item 
+bool \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_a8d6fc86720e62a71db3abfe86ec17f94}{operator!=}} (const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r}{A\+ER}} \&an\+A\+ER) const
+\item 
+bool \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_afcd8d114b8bea712b25fbe6cb3ce58d3}{is\+Defined}} () const
+\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1unit_1_1_angle}{Angle}} \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_afaf63c6d3a1b0bef5abf91de0f0046cf}{get\+Azimuth}} () const
+\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1unit_1_1_angle}{Angle}} \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_a5939769972f4002d07b2b72f6ad7856d}{get\+Elevation}} () const
+\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1unit_1_1_length}{Length}} \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_a68dfaa31e3a62d03e3172bfdda443f80}{get\+Range}} () const
+\item 
+Vector3d \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_ad7d43eb2598f2e3a307225399c05df2d}{to\+Vector}} () const
+\item 
+Vector3d \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_adddc1b37451d298015dc69dc345eb462}{to\+Cartesian}} () const
+\item 
+String \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_a78266cc83319d0cb299c656953365134}{to\+String}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r}{A\+ER}} \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_a4e5fb8fb286602b4b812c45f514678c1}{Undefined}} ()
+\item 
+static \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r}{A\+ER}} \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_ad71aa6d8c514cbc637f2ead2321e1add}{Vector}} (const Vector3d \&a\+Vector)
+\item 
+static \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r}{A\+ER}} \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_ab556fc983bba782532c4ac2dbcd03055}{From\+Position\+To\+Position}} (const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_position}{Position}} \&a\+From\+Position, const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_position}{Position}} \&a\+To\+Position, const bool is\+Z\+Negative=\mbox{\hyperlink{_a_e_r_8hpp_ad8664c02b311aafcd585591322188845}{D\+E\+F\+A\+U\+L\+T\+\_\+\+I\+S\+\_\+\+Z\+\_\+\+N\+E\+G\+A\+T\+I\+VE}})
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r}{A\+ER}} from the relative position between two positions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_ac5514fc65bf0bd3f4f5870b246cff3ad}{operator$<$$<$}} (std\+::ostream \&an\+Output\+Stream, const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r}{A\+ER}} \&an\+A\+ER)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Azimuth -\/ Elevation -\/ Range (\mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r}{A\+ER}}) 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_a9c6deb11f1bba6bf361df929d1f59c7b}\label{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_a9c6deb11f1bba6bf361df929d1f59c7b}} 
+\index{ostk::physics::coordinate::spherical::AER@{ostk::physics::coordinate::spherical::AER}!AER@{AER}}
+\index{AER@{AER}!ostk::physics::coordinate::spherical::AER@{ostk::physics::coordinate::spherical::AER}}
+\doxysubsubsection{\texorpdfstring{AER()}{AER()}}
+{\footnotesize\ttfamily ostk\+::physics\+::coordinate\+::spherical\+::\+A\+E\+R\+::\+A\+ER (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1unit_1_1_angle}{Angle}} \&}]{an\+Azimuth,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1unit_1_1_angle}{Angle}} \&}]{an\+Elevation,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1unit_1_1_length}{Length}} \&}]{a\+Range }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_ab556fc983bba782532c4ac2dbcd03055}\label{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_ab556fc983bba782532c4ac2dbcd03055}} 
+\index{ostk::physics::coordinate::spherical::AER@{ostk::physics::coordinate::spherical::AER}!FromPositionToPosition@{FromPositionToPosition}}
+\index{FromPositionToPosition@{FromPositionToPosition}!ostk::physics::coordinate::spherical::AER@{ostk::physics::coordinate::spherical::AER}}
+\doxysubsubsection{\texorpdfstring{FromPositionToPosition()}{FromPositionToPosition()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r}{A\+ER}} ostk\+::physics\+::coordinate\+::spherical\+::\+A\+E\+R\+::\+From\+Position\+To\+Position (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_position}{Position}} \&}]{a\+From\+Position,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_position}{Position}} \&}]{a\+To\+Position,  }\item[{const bool}]{is\+Z\+Negative = {\ttfamily \mbox{\hyperlink{_a_e_r_8hpp_ad8664c02b311aafcd585591322188845}{D\+E\+F\+A\+U\+L\+T\+\_\+\+I\+S\+\_\+\+Z\+\_\+\+N\+E\+G\+A\+T\+I\+VE}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r}{A\+ER}} from the relative position between two positions. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+From\+Position} & A F\+R\+OM position \\
+\hline
+\mbox{\texttt{ in}}  & {\em a\+To\+Position} & A TO position \\
+\hline
+\mbox{\texttt{ in}}  & {\em (optional)} & is\+Z\+Negative If true, elevation is measured positive toward the -\/Z axis \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_afaf63c6d3a1b0bef5abf91de0f0046cf}\label{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_afaf63c6d3a1b0bef5abf91de0f0046cf}} 
+\index{ostk::physics::coordinate::spherical::AER@{ostk::physics::coordinate::spherical::AER}!getAzimuth@{getAzimuth}}
+\index{getAzimuth@{getAzimuth}!ostk::physics::coordinate::spherical::AER@{ostk::physics::coordinate::spherical::AER}}
+\doxysubsubsection{\texorpdfstring{getAzimuth()}{getAzimuth()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1unit_1_1_angle}{Angle}} ostk\+::physics\+::coordinate\+::spherical\+::\+A\+E\+R\+::get\+Azimuth (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_a5939769972f4002d07b2b72f6ad7856d}\label{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_a5939769972f4002d07b2b72f6ad7856d}} 
+\index{ostk::physics::coordinate::spherical::AER@{ostk::physics::coordinate::spherical::AER}!getElevation@{getElevation}}
+\index{getElevation@{getElevation}!ostk::physics::coordinate::spherical::AER@{ostk::physics::coordinate::spherical::AER}}
+\doxysubsubsection{\texorpdfstring{getElevation()}{getElevation()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1unit_1_1_angle}{Angle}} ostk\+::physics\+::coordinate\+::spherical\+::\+A\+E\+R\+::get\+Elevation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_a68dfaa31e3a62d03e3172bfdda443f80}\label{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_a68dfaa31e3a62d03e3172bfdda443f80}} 
+\index{ostk::physics::coordinate::spherical::AER@{ostk::physics::coordinate::spherical::AER}!getRange@{getRange}}
+\index{getRange@{getRange}!ostk::physics::coordinate::spherical::AER@{ostk::physics::coordinate::spherical::AER}}
+\doxysubsubsection{\texorpdfstring{getRange()}{getRange()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1unit_1_1_length}{Length}} ostk\+::physics\+::coordinate\+::spherical\+::\+A\+E\+R\+::get\+Range (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_afcd8d114b8bea712b25fbe6cb3ce58d3}\label{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_afcd8d114b8bea712b25fbe6cb3ce58d3}} 
+\index{ostk::physics::coordinate::spherical::AER@{ostk::physics::coordinate::spherical::AER}!isDefined@{isDefined}}
+\index{isDefined@{isDefined}!ostk::physics::coordinate::spherical::AER@{ostk::physics::coordinate::spherical::AER}}
+\doxysubsubsection{\texorpdfstring{isDefined()}{isDefined()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::coordinate\+::spherical\+::\+A\+E\+R\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_a8d6fc86720e62a71db3abfe86ec17f94}\label{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_a8d6fc86720e62a71db3abfe86ec17f94}} 
+\index{ostk::physics::coordinate::spherical::AER@{ostk::physics::coordinate::spherical::AER}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!ostk::physics::coordinate::spherical::AER@{ostk::physics::coordinate::spherical::AER}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::coordinate\+::spherical\+::\+A\+E\+R\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r}{A\+ER}} \&}]{an\+A\+ER }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_a7ffc6312cb7158e6be1ac8bdefc45fa6}\label{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_a7ffc6312cb7158e6be1ac8bdefc45fa6}} 
+\index{ostk::physics::coordinate::spherical::AER@{ostk::physics::coordinate::spherical::AER}!operator==@{operator==}}
+\index{operator==@{operator==}!ostk::physics::coordinate::spherical::AER@{ostk::physics::coordinate::spherical::AER}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::coordinate\+::spherical\+::\+A\+E\+R\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r}{A\+ER}} \&}]{an\+A\+ER }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_adddc1b37451d298015dc69dc345eb462}\label{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_adddc1b37451d298015dc69dc345eb462}} 
+\index{ostk::physics::coordinate::spherical::AER@{ostk::physics::coordinate::spherical::AER}!toCartesian@{toCartesian}}
+\index{toCartesian@{toCartesian}!ostk::physics::coordinate::spherical::AER@{ostk::physics::coordinate::spherical::AER}}
+\doxysubsubsection{\texorpdfstring{toCartesian()}{toCartesian()}}
+{\footnotesize\ttfamily Vector3d ostk\+::physics\+::coordinate\+::spherical\+::\+A\+E\+R\+::to\+Cartesian (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_a78266cc83319d0cb299c656953365134}\label{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_a78266cc83319d0cb299c656953365134}} 
+\index{ostk::physics::coordinate::spherical::AER@{ostk::physics::coordinate::spherical::AER}!toString@{toString}}
+\index{toString@{toString}!ostk::physics::coordinate::spherical::AER@{ostk::physics::coordinate::spherical::AER}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily String ostk\+::physics\+::coordinate\+::spherical\+::\+A\+E\+R\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_ad7d43eb2598f2e3a307225399c05df2d}\label{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_ad7d43eb2598f2e3a307225399c05df2d}} 
+\index{ostk::physics::coordinate::spherical::AER@{ostk::physics::coordinate::spherical::AER}!toVector@{toVector}}
+\index{toVector@{toVector}!ostk::physics::coordinate::spherical::AER@{ostk::physics::coordinate::spherical::AER}}
+\doxysubsubsection{\texorpdfstring{toVector()}{toVector()}}
+{\footnotesize\ttfamily Vector3d ostk\+::physics\+::coordinate\+::spherical\+::\+A\+E\+R\+::to\+Vector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_a4e5fb8fb286602b4b812c45f514678c1}\label{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_a4e5fb8fb286602b4b812c45f514678c1}} 
+\index{ostk::physics::coordinate::spherical::AER@{ostk::physics::coordinate::spherical::AER}!Undefined@{Undefined}}
+\index{Undefined@{Undefined}!ostk::physics::coordinate::spherical::AER@{ostk::physics::coordinate::spherical::AER}}
+\doxysubsubsection{\texorpdfstring{Undefined()}{Undefined()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r}{A\+ER}} ostk\+::physics\+::coordinate\+::spherical\+::\+A\+E\+R\+::\+Undefined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_ad71aa6d8c514cbc637f2ead2321e1add}\label{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_ad71aa6d8c514cbc637f2ead2321e1add}} 
+\index{ostk::physics::coordinate::spherical::AER@{ostk::physics::coordinate::spherical::AER}!Vector@{Vector}}
+\index{Vector@{Vector}!ostk::physics::coordinate::spherical::AER@{ostk::physics::coordinate::spherical::AER}}
+\doxysubsubsection{\texorpdfstring{Vector()}{Vector()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r}{A\+ER}} ostk\+::physics\+::coordinate\+::spherical\+::\+A\+E\+R\+::\+Vector (\begin{DoxyParamCaption}\item[{const Vector3d \&}]{a\+Vector }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_ac5514fc65bf0bd3f4f5870b246cff3ad}\label{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_ac5514fc65bf0bd3f4f5870b246cff3ad}} 
+\index{ostk::physics::coordinate::spherical::AER@{ostk::physics::coordinate::spherical::AER}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!ostk::physics::coordinate::spherical::AER@{ostk::physics::coordinate::spherical::AER}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{an\+Output\+Stream,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r}{A\+ER}} \&}]{an\+A\+ER }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Spherical/\mbox{\hyperlink{_a_e_r_8hpp}{A\+E\+R.\+hpp}}\item 
+src/\+Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Spherical/\mbox{\hyperlink{_a_e_r_8cpp}{A\+E\+R.\+cpp}}\end{DoxyCompactItemize}

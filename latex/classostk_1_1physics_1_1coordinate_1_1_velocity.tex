@@ -1,0 +1,184 @@
+\hypertarget{classostk_1_1physics_1_1coordinate_1_1_velocity}{}\doxysection{ostk\+::physics\+::coordinate\+::Velocity Class Reference}
+\label{classostk_1_1physics_1_1coordinate_1_1_velocity}\index{ostk::physics::coordinate::Velocity@{ostk::physics::coordinate::Velocity}}
+
+
+\mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity}{Velocity}}.  
+
+
+
+
+{\ttfamily \#include $<$Velocity.\+hpp$>$}
+
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity_af1de817b803b9037f50883cd82ea5be6}{Unit}} \{ \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity_af1de817b803b9037f50883cd82ea5be6aec0fc0100c4fc1ce4eea230c3dc10360}{Unit\+::\+Undefined}}, 
+\mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity_af1de817b803b9037f50883cd82ea5be6a0af408165b5f88fcd7b687312b754ade}{Unit\+::\+Meter\+Per\+Second}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity_a6a26dc0553e726f6d11bfd2154e78698}{Velocity}} (const Vector3d \&a\+Coordinate\+Set, const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity_af1de817b803b9037f50883cd82ea5be6}{Velocity\+::\+Unit}} \&a\+Unit, const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_frame}{Frame}} $>$ \&a\+Frame\+S\+Ptr)
+\item 
+bool \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity_a985cc2deff380771c8b07a79f4bec1da}{operator==}} (const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity}{Velocity}} \&a\+Velocity) const
+\item 
+bool \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity_af43356b678fb27fb9b1e1c74e9c1f2bf}{operator!=}} (const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity}{Velocity}} \&a\+Velocity) const
+\item 
+bool \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity_af02ff027f2a9ce65f5ca406c6e60fe65}{is\+Defined}} () const
+\item 
+const Vector3d \& \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity_a75a95bf7f107c88423668bc3cb34a975}{access\+Coordinates}} () const
+\item 
+Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_frame}{Frame}} $>$ \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity_a4b17ed16bbf477c26d2a3a585295a75e}{access\+Frame}} () const
+\item 
+Vector3d \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity_a0f837073e7496024d0f61322c9aec678}{get\+Coordinates}} () const
+\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity_af1de817b803b9037f50883cd82ea5be6}{Velocity\+::\+Unit}} \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity_a6b3e3347b338ddc3f5ee4569518bcb8f}{get\+Unit}} () const
+\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity}{Velocity}} \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity_ac3dcba2ce6ffdc2f46bb3080f713e842}{in\+Unit}} (const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity_af1de817b803b9037f50883cd82ea5be6}{Velocity\+::\+Unit}} \&a\+Unit) const
+\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity}{Velocity}} \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity_af2e2d35e94d7a80e7e927a18fd0b6743}{in\+Frame}} (const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_position}{Position}} \&a\+Position, const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_frame}{Frame}} $>$ \&a\+Frame\+S\+Ptr, const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const
+\item 
+String \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity_a07e9c679e6f1a4602bc69d296291d2b1}{to\+String}} (const Integer \&a\+Precision=\mbox{\hyperlink{_velocity_8hpp_a6d81881a7883657dbc659ca545d9085d}{D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+R\+E\+C\+I\+S\+I\+ON}}) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity}{Velocity}} \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity_ab86bcae72f867df96e25055471fe3a03}{Undefined}} ()
+\item 
+static \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity}{Velocity}} \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity_a175b53534c1c6038dda85be4ffb5b323}{Meters\+Per\+Second}} (const Vector3d \&a\+Coordinate\+Set, const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_frame}{Frame}} $>$ \&a\+Frame\+S\+Ptr)
+\item 
+static String \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity_ac92dddf5e0fdbc8d8e3fed51b82c138d}{String\+From\+Unit}} (const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity_af1de817b803b9037f50883cd82ea5be6}{Velocity\+::\+Unit}} \&a\+Unit)
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity_ab3987a176df736aa7fa50aa763ed068b}{operator$<$$<$}} (std\+::ostream \&an\+Output\+Stream, const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity}{Velocity}} \&a\+Velocity)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity}{Velocity}}. 
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1_velocity_af1de817b803b9037f50883cd82ea5be6}\label{classostk_1_1physics_1_1coordinate_1_1_velocity_af1de817b803b9037f50883cd82ea5be6}} 
+\index{ostk::physics::coordinate::Velocity@{ostk::physics::coordinate::Velocity}!Unit@{Unit}}
+\index{Unit@{Unit}!ostk::physics::coordinate::Velocity@{ostk::physics::coordinate::Velocity}}
+\doxysubsubsection{\texorpdfstring{Unit}{Unit}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity_af1de817b803b9037f50883cd82ea5be6}{ostk\+::physics\+::coordinate\+::\+Velocity\+::\+Unit}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Undefined@{Undefined}!ostk::physics::coordinate::Velocity@{ostk::physics::coordinate::Velocity}}\index{ostk::physics::coordinate::Velocity@{ostk::physics::coordinate::Velocity}!Undefined@{Undefined}}}\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1_velocity_af1de817b803b9037f50883cd82ea5be6aec0fc0100c4fc1ce4eea230c3dc10360}\label{classostk_1_1physics_1_1coordinate_1_1_velocity_af1de817b803b9037f50883cd82ea5be6aec0fc0100c4fc1ce4eea230c3dc10360}} 
+Undefined&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MeterPerSecond@{MeterPerSecond}!ostk::physics::coordinate::Velocity@{ostk::physics::coordinate::Velocity}}\index{ostk::physics::coordinate::Velocity@{ostk::physics::coordinate::Velocity}!MeterPerSecond@{MeterPerSecond}}}\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1_velocity_af1de817b803b9037f50883cd82ea5be6a0af408165b5f88fcd7b687312b754ade}\label{classostk_1_1physics_1_1coordinate_1_1_velocity_af1de817b803b9037f50883cd82ea5be6a0af408165b5f88fcd7b687312b754ade}} 
+Meter\+Per\+Second&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1_velocity_a6a26dc0553e726f6d11bfd2154e78698}\label{classostk_1_1physics_1_1coordinate_1_1_velocity_a6a26dc0553e726f6d11bfd2154e78698}} 
+\index{ostk::physics::coordinate::Velocity@{ostk::physics::coordinate::Velocity}!Velocity@{Velocity}}
+\index{Velocity@{Velocity}!ostk::physics::coordinate::Velocity@{ostk::physics::coordinate::Velocity}}
+\doxysubsubsection{\texorpdfstring{Velocity()}{Velocity()}}
+{\footnotesize\ttfamily ostk\+::physics\+::coordinate\+::\+Velocity\+::\+Velocity (\begin{DoxyParamCaption}\item[{const Vector3d \&}]{a\+Coordinate\+Set,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity_af1de817b803b9037f50883cd82ea5be6}{Velocity\+::\+Unit}} \&}]{a\+Unit,  }\item[{const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_frame}{Frame}} $>$ \&}]{a\+Frame\+S\+Ptr }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1_velocity_a75a95bf7f107c88423668bc3cb34a975}\label{classostk_1_1physics_1_1coordinate_1_1_velocity_a75a95bf7f107c88423668bc3cb34a975}} 
+\index{ostk::physics::coordinate::Velocity@{ostk::physics::coordinate::Velocity}!accessCoordinates@{accessCoordinates}}
+\index{accessCoordinates@{accessCoordinates}!ostk::physics::coordinate::Velocity@{ostk::physics::coordinate::Velocity}}
+\doxysubsubsection{\texorpdfstring{accessCoordinates()}{accessCoordinates()}}
+{\footnotesize\ttfamily const Vector3d \& ostk\+::physics\+::coordinate\+::\+Velocity\+::access\+Coordinates (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1_velocity_a4b17ed16bbf477c26d2a3a585295a75e}\label{classostk_1_1physics_1_1coordinate_1_1_velocity_a4b17ed16bbf477c26d2a3a585295a75e}} 
+\index{ostk::physics::coordinate::Velocity@{ostk::physics::coordinate::Velocity}!accessFrame@{accessFrame}}
+\index{accessFrame@{accessFrame}!ostk::physics::coordinate::Velocity@{ostk::physics::coordinate::Velocity}}
+\doxysubsubsection{\texorpdfstring{accessFrame()}{accessFrame()}}
+{\footnotesize\ttfamily Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_frame}{Frame}} $>$ ostk\+::physics\+::coordinate\+::\+Velocity\+::access\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1_velocity_a0f837073e7496024d0f61322c9aec678}\label{classostk_1_1physics_1_1coordinate_1_1_velocity_a0f837073e7496024d0f61322c9aec678}} 
+\index{ostk::physics::coordinate::Velocity@{ostk::physics::coordinate::Velocity}!getCoordinates@{getCoordinates}}
+\index{getCoordinates@{getCoordinates}!ostk::physics::coordinate::Velocity@{ostk::physics::coordinate::Velocity}}
+\doxysubsubsection{\texorpdfstring{getCoordinates()}{getCoordinates()}}
+{\footnotesize\ttfamily Vector3d ostk\+::physics\+::coordinate\+::\+Velocity\+::get\+Coordinates (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1_velocity_a6b3e3347b338ddc3f5ee4569518bcb8f}\label{classostk_1_1physics_1_1coordinate_1_1_velocity_a6b3e3347b338ddc3f5ee4569518bcb8f}} 
+\index{ostk::physics::coordinate::Velocity@{ostk::physics::coordinate::Velocity}!getUnit@{getUnit}}
+\index{getUnit@{getUnit}!ostk::physics::coordinate::Velocity@{ostk::physics::coordinate::Velocity}}
+\doxysubsubsection{\texorpdfstring{getUnit()}{getUnit()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity_af1de817b803b9037f50883cd82ea5be6}{Velocity\+::\+Unit}} ostk\+::physics\+::coordinate\+::\+Velocity\+::get\+Unit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1_velocity_af2e2d35e94d7a80e7e927a18fd0b6743}\label{classostk_1_1physics_1_1coordinate_1_1_velocity_af2e2d35e94d7a80e7e927a18fd0b6743}} 
+\index{ostk::physics::coordinate::Velocity@{ostk::physics::coordinate::Velocity}!inFrame@{inFrame}}
+\index{inFrame@{inFrame}!ostk::physics::coordinate::Velocity@{ostk::physics::coordinate::Velocity}}
+\doxysubsubsection{\texorpdfstring{inFrame()}{inFrame()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity}{Velocity}} ostk\+::physics\+::coordinate\+::\+Velocity\+::in\+Frame (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_position}{Position}} \&}]{a\+Position,  }\item[{const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_frame}{Frame}} $>$ \&}]{a\+Frame\+S\+Ptr,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&}]{an\+Instant }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1_velocity_ac3dcba2ce6ffdc2f46bb3080f713e842}\label{classostk_1_1physics_1_1coordinate_1_1_velocity_ac3dcba2ce6ffdc2f46bb3080f713e842}} 
+\index{ostk::physics::coordinate::Velocity@{ostk::physics::coordinate::Velocity}!inUnit@{inUnit}}
+\index{inUnit@{inUnit}!ostk::physics::coordinate::Velocity@{ostk::physics::coordinate::Velocity}}
+\doxysubsubsection{\texorpdfstring{inUnit()}{inUnit()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity}{Velocity}} ostk\+::physics\+::coordinate\+::\+Velocity\+::in\+Unit (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity_af1de817b803b9037f50883cd82ea5be6}{Velocity\+::\+Unit}} \&}]{a\+Unit }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1_velocity_af02ff027f2a9ce65f5ca406c6e60fe65}\label{classostk_1_1physics_1_1coordinate_1_1_velocity_af02ff027f2a9ce65f5ca406c6e60fe65}} 
+\index{ostk::physics::coordinate::Velocity@{ostk::physics::coordinate::Velocity}!isDefined@{isDefined}}
+\index{isDefined@{isDefined}!ostk::physics::coordinate::Velocity@{ostk::physics::coordinate::Velocity}}
+\doxysubsubsection{\texorpdfstring{isDefined()}{isDefined()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::coordinate\+::\+Velocity\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1_velocity_a175b53534c1c6038dda85be4ffb5b323}\label{classostk_1_1physics_1_1coordinate_1_1_velocity_a175b53534c1c6038dda85be4ffb5b323}} 
+\index{ostk::physics::coordinate::Velocity@{ostk::physics::coordinate::Velocity}!MetersPerSecond@{MetersPerSecond}}
+\index{MetersPerSecond@{MetersPerSecond}!ostk::physics::coordinate::Velocity@{ostk::physics::coordinate::Velocity}}
+\doxysubsubsection{\texorpdfstring{MetersPerSecond()}{MetersPerSecond()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity}{Velocity}} ostk\+::physics\+::coordinate\+::\+Velocity\+::\+Meters\+Per\+Second (\begin{DoxyParamCaption}\item[{const Vector3d \&}]{a\+Coordinate\+Set,  }\item[{const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_frame}{Frame}} $>$ \&}]{a\+Frame\+S\+Ptr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1_velocity_af43356b678fb27fb9b1e1c74e9c1f2bf}\label{classostk_1_1physics_1_1coordinate_1_1_velocity_af43356b678fb27fb9b1e1c74e9c1f2bf}} 
+\index{ostk::physics::coordinate::Velocity@{ostk::physics::coordinate::Velocity}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!ostk::physics::coordinate::Velocity@{ostk::physics::coordinate::Velocity}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::coordinate\+::\+Velocity\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity}{Velocity}} \&}]{a\+Velocity }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1_velocity_a985cc2deff380771c8b07a79f4bec1da}\label{classostk_1_1physics_1_1coordinate_1_1_velocity_a985cc2deff380771c8b07a79f4bec1da}} 
+\index{ostk::physics::coordinate::Velocity@{ostk::physics::coordinate::Velocity}!operator==@{operator==}}
+\index{operator==@{operator==}!ostk::physics::coordinate::Velocity@{ostk::physics::coordinate::Velocity}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::coordinate\+::\+Velocity\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity}{Velocity}} \&}]{a\+Velocity }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1_velocity_ac92dddf5e0fdbc8d8e3fed51b82c138d}\label{classostk_1_1physics_1_1coordinate_1_1_velocity_ac92dddf5e0fdbc8d8e3fed51b82c138d}} 
+\index{ostk::physics::coordinate::Velocity@{ostk::physics::coordinate::Velocity}!StringFromUnit@{StringFromUnit}}
+\index{StringFromUnit@{StringFromUnit}!ostk::physics::coordinate::Velocity@{ostk::physics::coordinate::Velocity}}
+\doxysubsubsection{\texorpdfstring{StringFromUnit()}{StringFromUnit()}}
+{\footnotesize\ttfamily String ostk\+::physics\+::coordinate\+::\+Velocity\+::\+String\+From\+Unit (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity_af1de817b803b9037f50883cd82ea5be6}{Velocity\+::\+Unit}} \&}]{a\+Unit }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1_velocity_a07e9c679e6f1a4602bc69d296291d2b1}\label{classostk_1_1physics_1_1coordinate_1_1_velocity_a07e9c679e6f1a4602bc69d296291d2b1}} 
+\index{ostk::physics::coordinate::Velocity@{ostk::physics::coordinate::Velocity}!toString@{toString}}
+\index{toString@{toString}!ostk::physics::coordinate::Velocity@{ostk::physics::coordinate::Velocity}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily String ostk\+::physics\+::coordinate\+::\+Velocity\+::to\+String (\begin{DoxyParamCaption}\item[{const Integer \&}]{a\+Precision = {\ttfamily \mbox{\hyperlink{_velocity_8hpp_a6d81881a7883657dbc659ca545d9085d}{D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+R\+E\+C\+I\+S\+I\+ON}}} }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1_velocity_ab86bcae72f867df96e25055471fe3a03}\label{classostk_1_1physics_1_1coordinate_1_1_velocity_ab86bcae72f867df96e25055471fe3a03}} 
+\index{ostk::physics::coordinate::Velocity@{ostk::physics::coordinate::Velocity}!Undefined@{Undefined}}
+\index{Undefined@{Undefined}!ostk::physics::coordinate::Velocity@{ostk::physics::coordinate::Velocity}}
+\doxysubsubsection{\texorpdfstring{Undefined()}{Undefined()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity}{Velocity}} ostk\+::physics\+::coordinate\+::\+Velocity\+::\+Undefined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1_velocity_ab3987a176df736aa7fa50aa763ed068b}\label{classostk_1_1physics_1_1coordinate_1_1_velocity_ab3987a176df736aa7fa50aa763ed068b}} 
+\index{ostk::physics::coordinate::Velocity@{ostk::physics::coordinate::Velocity}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!ostk::physics::coordinate::Velocity@{ostk::physics::coordinate::Velocity}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{an\+Output\+Stream,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_velocity}{Velocity}} \&}]{a\+Velocity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Open\+Space\+Toolkit/\+Physics/\+Coordinate/\mbox{\hyperlink{_velocity_8hpp}{Velocity.\+hpp}}\item 
+src/\+Open\+Space\+Toolkit/\+Physics/\+Coordinate/\mbox{\hyperlink{_velocity_8cpp}{Velocity.\+cpp}}\end{DoxyCompactItemize}

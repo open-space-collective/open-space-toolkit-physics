@@ -1,0 +1,292 @@
+\hypertarget{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine}{}\doxysection{ostk\+::physics\+::environment\+::ephemeris\+::spice\+::Engine Class Reference}
+\label{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine}\index{ostk::physics::environment::ephemeris::spice::Engine@{ostk::physics::environment::ephemeris::spice::Engine}}
+
+
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e}{S\+P\+I\+CE}} Toolkit engine.  
+
+
+
+
+{\ttfamily \#include $<$Engine.\+hpp$>$}
+
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a44760883ab4fc3b5b8b30e2b2596df1d}{Mode}} \{ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a44760883ab4fc3b5b8b30e2b2596df1dae1ba155a9f2e8c3be94020eef32a0301}{Mode\+::\+Manual}}, 
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a44760883ab4fc3b5b8b30e2b2596df1da086247a9b57fde6eefee2a0c4752242d}{Mode\+::\+Automatic}}
+ \}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine}{Engine}} mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a21f1268c563f1cd63fb5591908a7cb2c}{Engine}} (const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine}{Engine}} \&a\+Spice\+Engine)=delete
+\begin{DoxyCompactList}\small\item\em Copy constructor (deleted) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine}{Engine}} \& \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a1343c62aee413f640c39c90bfbdae469}{operator=}} (const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine}{Engine}} \&a\+Spice\+Engine)=delete
+\begin{DoxyCompactList}\small\item\em Copy assignment operator (deleted) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a8da839b06829715ccb24f4dc2b525cf2}{reset}} ()
+\begin{DoxyCompactList}\small\item\em Reset engine. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a44760883ab4fc3b5b8b30e2b2596df1d}{Engine\+::\+Mode}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a3f22d735c6ca96067f6037eae0562b99}{get\+Mode}} () const
+\begin{DoxyCompactList}\small\item\em Get engine mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a684513297c2ce5b40989b48e6b8a43a9}{set\+Mode}} (const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a44760883ab4fc3b5b8b30e2b2596df1d}{Engine\+::\+Mode}} \&a\+Mode)
+\begin{DoxyCompactList}\small\item\em Set engine mode. \end{DoxyCompactList}\item 
+Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_frame}{Frame}} $>$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_aeaf00a4962b1973f47eda10efd641816}{get\+Frame\+Of}} (const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e_ae7f47ebd6645514917d0bfcfe67702e5}{S\+P\+I\+C\+E\+::\+Object}} \&a\+Spice\+Object) const
+\begin{DoxyCompactList}\small\item\em Get frame of \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e}{S\+P\+I\+CE}} object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a7f7e4b76e935a698e0b7896be9e1b4bf}{is\+Kernel\+Loaded}} (const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel}{Kernel}} \&a\+Kernel) const
+\begin{DoxyCompactList}\small\item\em Returns true if kernel is loaded. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a996ae30fae76f557dd4d43a53d3ec740}{load\+Kernel}} (const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel}{Kernel}} \&a\+Kernel)
+\begin{DoxyCompactList}\small\item\em Load kernel. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_ac7a364b05d98070b12de9f05fac23f51}{unload\+Kernel}} (const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel}{Kernel}} \&a\+Kernel)
+\begin{DoxyCompactList}\small\item\em Unload kernel. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine}{Engine}} \& \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a733d68259c9844891c91b6de29ff099c}{Get}} ()
+\begin{DoxyCompactList}\small\item\em Get engine singleton. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a44760883ab4fc3b5b8b30e2b2596df1d}{Engine\+::\+Mode}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a8a8005027522c15206442a4ce6abce84}{Default\+Mode}} ()
+\begin{DoxyCompactList}\small\item\em Get default engine mode. \end{DoxyCompactList}\item 
+static Array$<$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel}{Kernel}} $>$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_adccf1f71e0fc9def23077306a82ad555}{Default\+Kernels}} ()
+\begin{DoxyCompactList}\small\item\em Get default kernels. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a880dd680a3b5444757480fafd1a52679}{operator$<$$<$}} (std\+::ostream \&an\+Output\+Stream, const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine}{Engine}} \&an\+Engine)
+\begin{DoxyCompactList}\small\item\em Output stream operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e}{S\+P\+I\+CE}} Toolkit engine. 
+
+\begin{DoxyVerb}                        The following environment variables can be defined:
+
+                        - "OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_ENGINE_MODE" will override "DefaultMode" 
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a44760883ab4fc3b5b8b30e2b2596df1d}\label{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a44760883ab4fc3b5b8b30e2b2596df1d}} 
+\index{ostk::physics::environment::ephemeris::spice::Engine@{ostk::physics::environment::ephemeris::spice::Engine}!Mode@{Mode}}
+\index{Mode@{Mode}!ostk::physics::environment::ephemeris::spice::Engine@{ostk::physics::environment::ephemeris::spice::Engine}}
+\doxysubsubsection{\texorpdfstring{Mode}{Mode}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a44760883ab4fc3b5b8b30e2b2596df1d}{ostk\+::physics\+::environment\+::ephemeris\+::spice\+::\+Engine\+::\+Mode}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine}{Engine}} mode. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Manual@{Manual}!ostk::physics::environment::ephemeris::spice::Engine@{ostk::physics::environment::ephemeris::spice::Engine}}\index{ostk::physics::environment::ephemeris::spice::Engine@{ostk::physics::environment::ephemeris::spice::Engine}!Manual@{Manual}}}\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a44760883ab4fc3b5b8b30e2b2596df1dae1ba155a9f2e8c3be94020eef32a0301}\label{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a44760883ab4fc3b5b8b30e2b2596df1dae1ba155a9f2e8c3be94020eef32a0301}} 
+Manual&Manually load and unload kernels. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Automatic@{Automatic}!ostk::physics::environment::ephemeris::spice::Engine@{ostk::physics::environment::ephemeris::spice::Engine}}\index{ostk::physics::environment::ephemeris::spice::Engine@{ostk::physics::environment::ephemeris::spice::Engine}!Automatic@{Automatic}}}\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a44760883ab4fc3b5b8b30e2b2596df1da086247a9b57fde6eefee2a0c4752242d}\label{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a44760883ab4fc3b5b8b30e2b2596df1da086247a9b57fde6eefee2a0c4752242d}} 
+Automatic&Automatically fetch, load and unload kernels (from remote repositories) \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a21f1268c563f1cd63fb5591908a7cb2c}\label{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a21f1268c563f1cd63fb5591908a7cb2c}} 
+\index{ostk::physics::environment::ephemeris::spice::Engine@{ostk::physics::environment::ephemeris::spice::Engine}!Engine@{Engine}}
+\index{Engine@{Engine}!ostk::physics::environment::ephemeris::spice::Engine@{ostk::physics::environment::ephemeris::spice::Engine}}
+\doxysubsubsection{\texorpdfstring{Engine()}{Engine()}}
+{\footnotesize\ttfamily ostk\+::physics\+::environment\+::ephemeris\+::spice\+::\+Engine\+::\+Engine (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine}{Engine}} \&}]{a\+Spice\+Engine }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Copy constructor (deleted) 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_adccf1f71e0fc9def23077306a82ad555}\label{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_adccf1f71e0fc9def23077306a82ad555}} 
+\index{ostk::physics::environment::ephemeris::spice::Engine@{ostk::physics::environment::ephemeris::spice::Engine}!DefaultKernels@{DefaultKernels}}
+\index{DefaultKernels@{DefaultKernels}!ostk::physics::environment::ephemeris::spice::Engine@{ostk::physics::environment::ephemeris::spice::Engine}}
+\doxysubsubsection{\texorpdfstring{DefaultKernels()}{DefaultKernels()}}
+{\footnotesize\ttfamily Array$<$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel}{Kernel}} $>$ ostk\+::physics\+::environment\+::ephemeris\+::spice\+::\+Engine\+::\+Default\+Kernels (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get default kernels. 
+
+\begin{DoxyReturn}{Returns}
+Default kernels 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a8a8005027522c15206442a4ce6abce84}\label{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a8a8005027522c15206442a4ce6abce84}} 
+\index{ostk::physics::environment::ephemeris::spice::Engine@{ostk::physics::environment::ephemeris::spice::Engine}!DefaultMode@{DefaultMode}}
+\index{DefaultMode@{DefaultMode}!ostk::physics::environment::ephemeris::spice::Engine@{ostk::physics::environment::ephemeris::spice::Engine}}
+\doxysubsubsection{\texorpdfstring{DefaultMode()}{DefaultMode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a44760883ab4fc3b5b8b30e2b2596df1d}{Engine\+::\+Mode}} ostk\+::physics\+::environment\+::ephemeris\+::spice\+::\+Engine\+::\+Default\+Mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get default engine mode. 
+
+\begin{DoxyVerb}                Overriden by: OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_ENGINE_MODE
+\end{DoxyVerb}
+
+
+\begin{DoxyReturn}{Returns}
+Default engine mode 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a733d68259c9844891c91b6de29ff099c}\label{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a733d68259c9844891c91b6de29ff099c}} 
+\index{ostk::physics::environment::ephemeris::spice::Engine@{ostk::physics::environment::ephemeris::spice::Engine}!Get@{Get}}
+\index{Get@{Get}!ostk::physics::environment::ephemeris::spice::Engine@{ostk::physics::environment::ephemeris::spice::Engine}}
+\doxysubsubsection{\texorpdfstring{Get()}{Get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine}{Engine}} \& ostk\+::physics\+::environment\+::ephemeris\+::spice\+::\+Engine\+::\+Get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get engine singleton. 
+
+\begin{DoxyReturn}{Returns}
+Reference to engine 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_aeaf00a4962b1973f47eda10efd641816}\label{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_aeaf00a4962b1973f47eda10efd641816}} 
+\index{ostk::physics::environment::ephemeris::spice::Engine@{ostk::physics::environment::ephemeris::spice::Engine}!getFrameOf@{getFrameOf}}
+\index{getFrameOf@{getFrameOf}!ostk::physics::environment::ephemeris::spice::Engine@{ostk::physics::environment::ephemeris::spice::Engine}}
+\doxysubsubsection{\texorpdfstring{getFrameOf()}{getFrameOf()}}
+{\footnotesize\ttfamily Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_frame}{Frame}} $>$ ostk\+::physics\+::environment\+::ephemeris\+::spice\+::\+Engine\+::get\+Frame\+Of (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e_ae7f47ebd6645514917d0bfcfe67702e5}{S\+P\+I\+C\+E\+::\+Object}} \&}]{a\+Spice\+Object }\end{DoxyParamCaption}) const}
+
+
+
+Get frame of \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e}{S\+P\+I\+CE}} object. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em A} & \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e}{S\+P\+I\+CE}} object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Frame of \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e}{S\+P\+I\+CE}} object 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a3f22d735c6ca96067f6037eae0562b99}\label{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a3f22d735c6ca96067f6037eae0562b99}} 
+\index{ostk::physics::environment::ephemeris::spice::Engine@{ostk::physics::environment::ephemeris::spice::Engine}!getMode@{getMode}}
+\index{getMode@{getMode}!ostk::physics::environment::ephemeris::spice::Engine@{ostk::physics::environment::ephemeris::spice::Engine}}
+\doxysubsubsection{\texorpdfstring{getMode()}{getMode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a44760883ab4fc3b5b8b30e2b2596df1d}{Engine\+::\+Mode}} ostk\+::physics\+::environment\+::ephemeris\+::spice\+::\+Engine\+::get\+Mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get engine mode. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine}{Engine}} mode 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a7f7e4b76e935a698e0b7896be9e1b4bf}\label{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a7f7e4b76e935a698e0b7896be9e1b4bf}} 
+\index{ostk::physics::environment::ephemeris::spice::Engine@{ostk::physics::environment::ephemeris::spice::Engine}!isKernelLoaded@{isKernelLoaded}}
+\index{isKernelLoaded@{isKernelLoaded}!ostk::physics::environment::ephemeris::spice::Engine@{ostk::physics::environment::ephemeris::spice::Engine}}
+\doxysubsubsection{\texorpdfstring{isKernelLoaded()}{isKernelLoaded()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::environment\+::ephemeris\+::spice\+::\+Engine\+::is\+Kernel\+Loaded (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel}{Kernel}} \&}]{a\+Kernel }\end{DoxyParamCaption}) const}
+
+
+
+Returns true if kernel is loaded. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+Kernel} & A kernel \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if kernel is loaded 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a996ae30fae76f557dd4d43a53d3ec740}\label{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a996ae30fae76f557dd4d43a53d3ec740}} 
+\index{ostk::physics::environment::ephemeris::spice::Engine@{ostk::physics::environment::ephemeris::spice::Engine}!loadKernel@{loadKernel}}
+\index{loadKernel@{loadKernel}!ostk::physics::environment::ephemeris::spice::Engine@{ostk::physics::environment::ephemeris::spice::Engine}}
+\doxysubsubsection{\texorpdfstring{loadKernel()}{loadKernel()}}
+{\footnotesize\ttfamily void ostk\+::physics\+::environment\+::ephemeris\+::spice\+::\+Engine\+::load\+Kernel (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel}{Kernel}} \&}]{a\+Kernel }\end{DoxyParamCaption})}
+
+
+
+Load kernel. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+Kernel} & A kernel \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a1343c62aee413f640c39c90bfbdae469}\label{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a1343c62aee413f640c39c90bfbdae469}} 
+\index{ostk::physics::environment::ephemeris::spice::Engine@{ostk::physics::environment::ephemeris::spice::Engine}!operator=@{operator=}}
+\index{operator=@{operator=}!ostk::physics::environment::ephemeris::spice::Engine@{ostk::physics::environment::ephemeris::spice::Engine}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine}{Engine}}\& ostk\+::physics\+::environment\+::ephemeris\+::spice\+::\+Engine\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine}{Engine}} \&}]{a\+Spice\+Engine }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Copy assignment operator (deleted) 
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a8da839b06829715ccb24f4dc2b525cf2}\label{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a8da839b06829715ccb24f4dc2b525cf2}} 
+\index{ostk::physics::environment::ephemeris::spice::Engine@{ostk::physics::environment::ephemeris::spice::Engine}!reset@{reset}}
+\index{reset@{reset}!ostk::physics::environment::ephemeris::spice::Engine@{ostk::physics::environment::ephemeris::spice::Engine}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void ostk\+::physics\+::environment\+::ephemeris\+::spice\+::\+Engine\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reset engine. 
+
+\begin{DoxyVerb}                Unload all kernels and clear cache. 
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a684513297c2ce5b40989b48e6b8a43a9}\label{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a684513297c2ce5b40989b48e6b8a43a9}} 
+\index{ostk::physics::environment::ephemeris::spice::Engine@{ostk::physics::environment::ephemeris::spice::Engine}!setMode@{setMode}}
+\index{setMode@{setMode}!ostk::physics::environment::ephemeris::spice::Engine@{ostk::physics::environment::ephemeris::spice::Engine}}
+\doxysubsubsection{\texorpdfstring{setMode()}{setMode()}}
+{\footnotesize\ttfamily void ostk\+::physics\+::environment\+::ephemeris\+::spice\+::\+Engine\+::set\+Mode (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a44760883ab4fc3b5b8b30e2b2596df1d}{Engine\+::\+Mode}} \&}]{a\+Mode }\end{DoxyParamCaption})}
+
+
+
+Set engine mode. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+Mode} & An engine mode \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine}{Engine}} mode 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_ac7a364b05d98070b12de9f05fac23f51}\label{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_ac7a364b05d98070b12de9f05fac23f51}} 
+\index{ostk::physics::environment::ephemeris::spice::Engine@{ostk::physics::environment::ephemeris::spice::Engine}!unloadKernel@{unloadKernel}}
+\index{unloadKernel@{unloadKernel}!ostk::physics::environment::ephemeris::spice::Engine@{ostk::physics::environment::ephemeris::spice::Engine}}
+\doxysubsubsection{\texorpdfstring{unloadKernel()}{unloadKernel()}}
+{\footnotesize\ttfamily void ostk\+::physics\+::environment\+::ephemeris\+::spice\+::\+Engine\+::unload\+Kernel (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel}{Kernel}} \&}]{a\+Kernel }\end{DoxyParamCaption})}
+
+
+
+Unload kernel. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+Kernel} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a880dd680a3b5444757480fafd1a52679}\label{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_a880dd680a3b5444757480fafd1a52679}} 
+\index{ostk::physics::environment::ephemeris::spice::Engine@{ostk::physics::environment::ephemeris::spice::Engine}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!ostk::physics::environment::ephemeris::spice::Engine@{ostk::physics::environment::ephemeris::spice::Engine}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{an\+Output\+Stream,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine}{Engine}} \&}]{an\+Engine }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Output stream operator. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em an\+Output\+Stream} & An output stream \\
+\hline
+\mbox{\texttt{ in}}  & {\em an\+Engine} & A \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e}{S\+P\+I\+CE}} engine \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to output stream 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Open\+Space\+Toolkit/\+Physics/\+Environment/\+Ephemeris/\+S\+P\+I\+C\+E/\mbox{\hyperlink{_engine_8hpp}{Engine.\+hpp}}\item 
+src/\+Open\+Space\+Toolkit/\+Physics/\+Environment/\+Ephemeris/\+S\+P\+I\+C\+E/\mbox{\hyperlink{_engine_8cpp}{Engine.\+cpp}}\end{DoxyCompactItemize}

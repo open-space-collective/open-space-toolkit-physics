@@ -88,14 +88,14 @@ $(document).ready(function(){initNavTree('_instant_8hpp_source.html',''); initRe
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#ifndef __OpenSpaceToolkit_Physics_Time_Instant__</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#define __OpenSpaceToolkit_Physics_Time_Instant__</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;OpenSpaceToolkit/Core/Types/Integer.hpp&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;OpenSpaceToolkit/Core/Types/Real.hpp&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;OpenSpaceToolkit/Core/Types/String.hpp&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;OpenSpaceToolkit/Core/Type/Integer.hpp&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;OpenSpaceToolkit/Core/Type/Real.hpp&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;OpenSpaceToolkit/Core/Type/String.hpp&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_date_time_8hpp.html">OpenSpaceToolkit/Physics/Time/DateTime.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_duration_8hpp.html">OpenSpaceToolkit/Physics/Time/Duration.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_scale_8hpp.html">OpenSpaceToolkit/Physics/Time/Scale.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_units_2_time_8hpp.html">OpenSpaceToolkit/Physics/Units/Time.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_unit_2_time_8hpp.html">OpenSpaceToolkit/Physics/Unit/Time.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceostk.html">ostk</a></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
@@ -104,10 +104,10 @@ $(document).ready(function(){initNavTree('_instant_8hpp_source.html',''); initRe
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">namespace </span>time</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">using</span> ostk::core::types::Int64;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">using</span> ostk::core::types::Uint64;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">using</span> ostk::core::types::Real;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">using</span> ostk::core::types::String;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">using</span> ostk::core::type::Int64;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">using</span> ostk::core::type::Uint64;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">using</span> ostk::core::type::Real;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">using</span> ostk::core::type::String;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">using</span> <a class="code" href="namespaceostk_1_1physics_1_1time.html#adf23d37bd8641fb76a0e98ab46a70df7">ostk::physics::time::Scale</a>;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">using</span> <a class="code" href="classostk_1_1physics_1_1time_1_1_duration.html">ostk::physics::time::Duration</a>;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
@@ -278,9 +278,9 @@ $(document).ready(function(){initNavTree('_instant_8hpp_source.html',''); initRe
 <div class="ttc" id="aclassostk_1_1physics_1_1time_1_1_instant_html_a48ba0a7bd60a02b7c7f989adc9a451cb"><div class="ttname"><a href="classostk_1_1physics_1_1time_1_1_instant.html#a48ba0a7bd60a02b7c7f989adc9a451cb">ostk::physics::time::Instant::operator+=</a></div><div class="ttdeci">Instant &amp; operator+=(const Duration &amp;aDuration)</div><div class="ttdoc">Addition assignement operator.</div><div class="ttdef"><b>Definition:</b> Instant.cpp:141</div></div>
 <div class="ttc" id="aclassostk_1_1physics_1_1time_1_1_instant_html_abac01f937383ef281b4047ad692453ba"><div class="ttname"><a href="classostk_1_1physics_1_1time_1_1_instant.html#abac01f937383ef281b4047ad692453ba">ostk::physics::time::Instant::operator-=</a></div><div class="ttdeci">Instant &amp; operator-=(const Duration &amp;aDuration)</div><div class="ttdoc">Subtraction assignement operator.</div><div class="ttdef"><b>Definition:</b> Instant.cpp:158</div></div>
 <div class="ttc" id="aclassostk_1_1physics_1_1time_1_1_duration_html"><div class="ttname"><a href="classostk_1_1physics_1_1time_1_1_duration.html">ostk::physics::time::Duration</a></div><div class="ttdoc">Amount of time.</div><div class="ttdef"><b>Definition:</b> Duration.hpp:28</div></div>
+<div class="ttc" id="a_unit_2_time_8hpp_html"><div class="ttname"><a href="_unit_2_time_8hpp.html">Time.hpp</a></div></div>
 <div class="ttc" id="aclassostk_1_1physics_1_1time_1_1_instant_html_a6bbb53cd76ec7d4e89ebbb45cf7ae03b"><div class="ttname"><a href="classostk_1_1physics_1_1time_1_1_instant.html#a6bbb53cd76ec7d4e89ebbb45cf7ae03b">ostk::physics::time::Instant::isNear</a></div><div class="ttdeci">bool isNear(const Instant &amp;anInstant, const Duration &amp;aTolerance) const</div><div class="ttdoc">Check if instant is near another instant.</div><div class="ttdef"><b>Definition:</b> Instant.cpp:203</div></div>
 <div class="ttc" id="a_instant_8hpp_html_a29e15915855da5a5ac528ed12373dda4"><div class="ttname"><a href="_instant_8hpp.html#a29e15915855da5a5ac528ed12373dda4">DEFAULT_DATE_TIME_FORMAT</a></div><div class="ttdeci">#define DEFAULT_DATE_TIME_FORMAT</div><div class="ttdef"><b>Definition:</b> Instant.hpp:30</div></div>
-<div class="ttc" id="a_units_2_time_8hpp_html"><div class="ttname"><a href="_units_2_time_8hpp.html">Time.hpp</a></div></div>
 <div class="ttc" id="aclassostk_1_1physics_1_1time_1_1_instant_html"><div class="ttname"><a href="classostk_1_1physics_1_1time_1_1_instant.html">ostk::physics::time::Instant</a></div><div class="ttdoc">Point in time.</div><div class="ttdef"><b>Definition:</b> Instant.hpp:40</div></div>
 <div class="ttc" id="aclassostk_1_1physics_1_1time_1_1_instant_html_a1e73faadcf3c6724a5e67f35db007697"><div class="ttname"><a href="classostk_1_1physics_1_1time_1_1_instant.html#a1e73faadcf3c6724a5e67f35db007697">ostk::physics::time::Instant::operator&gt;</a></div><div class="ttdeci">bool operator&gt;(const Instant &amp;anInstant) const</div><div class="ttdoc">Greater than operator.</div><div class="ttdef"><b>Definition:</b> Instant.cpp:61</div></div>
 <div class="ttc" id="aclassostk_1_1physics_1_1time_1_1_instant_html_aceab87ef79e6f5d1438ac78e11bdcd6f"><div class="ttname"><a href="classostk_1_1physics_1_1time_1_1_instant.html#aceab87ef79e6f5d1438ac78e11bdcd6f">ostk::physics::time::Instant::getLeapSecondCount</a></div><div class="ttdeci">Int64 getLeapSecondCount() const</div><div class="ttdoc">Get Leap Second count.</div><div class="ttdef"><b>Definition:</b> Instant.cpp:332</div></div>

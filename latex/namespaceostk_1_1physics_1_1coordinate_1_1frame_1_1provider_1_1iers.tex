@@ -1,0 +1,95 @@
+\hypertarget{namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers}{}\doxysection{ostk\+::physics\+::coordinate\+::frame\+::provider\+::iers Namespace Reference}
+\label{namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers}\index{ostk::physics::coordinate::frame::provider::iers@{ostk::physics::coordinate::frame::provider::iers}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a}{BulletinA}}
+\begin{DoxyCompactList}\small\item\em I\+E\+RS Bulletin A. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_b}{BulletinB}}
+\begin{DoxyCompactList}\small\item\em I\+E\+RS Bulletin B. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a}{Finals2000A}}
+\begin{DoxyCompactList}\small\item\em Standard Rapid E\+OP \mbox{\hyperlink{structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data}{Data}} since 01. January 1992 (I\+A\+U2000) \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager}{Manager}}
+\begin{DoxyCompactList}\small\item\em I\+E\+RS bulletins manager (thread-\/safe) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_ad71b034b8b325ebe2dd79691086560e6}{Manifest\+Manager}} = \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manager}{ostk\+::physics\+::data\+::\+Manager}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_a1a579fb06ae5e46c494a7a860c7fff31}{operator$<$$<$}} (std\+::ostream \&an\+Output\+Stream, const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a}{BulletinA}} \&a\+BulletinA)
+\item 
+std\+::ostream \& \mbox{\hyperlink{namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_ae80eabaf618cfa1369870bd029d92c41}{operator$<$$<$}} (std\+::ostream \&an\+Output\+Stream, const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a}{Finals2000A}} \&a\+Finals2000A)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const String \mbox{\hyperlink{namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_a7a0096e084064ce182bbe46f271fbf35}{bulletin\+A\+File\+Name}} = \char`\"{}ser7.\+dat\char`\"{}
+\item 
+const String \mbox{\hyperlink{namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_adbc192598c0decae2d11281c35463003}{finals2000\+A\+File\+Name}} = \char`\"{}finals2000\+A.\+data\char`\"{}
+\item 
+const String \mbox{\hyperlink{namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_ab01a683ad8af6da1fd2683b6638c80a6}{bulletin\+A\+Manifest\+Name}} = \char`\"{}bulletin-\/A\char`\"{}
+\item 
+const String \mbox{\hyperlink{namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_abc6f8946a7423570af3f1e496fcc8db9}{finals2000\+A\+Manifest\+Name}} = \char`\"{}finals-\/2000A\char`\"{}
+\item 
+const String \mbox{\hyperlink{namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_afb965e784048da69d0372c40ae9458f3}{temporary\+Directory\+Name}} = \char`\"{}tmp\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_ad71b034b8b325ebe2dd79691086560e6}\label{namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_ad71b034b8b325ebe2dd79691086560e6}} 
+\index{ostk::physics::coordinate::frame::provider::iers@{ostk::physics::coordinate::frame::provider::iers}!ManifestManager@{ManifestManager}}
+\index{ManifestManager@{ManifestManager}!ostk::physics::coordinate::frame::provider::iers@{ostk::physics::coordinate::frame::provider::iers}}
+\doxysubsubsection{\texorpdfstring{ManifestManager}{ManifestManager}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_ad71b034b8b325ebe2dd79691086560e6}{ostk\+::physics\+::coordinate\+::frame\+::provider\+::iers\+::\+Manifest\+Manager}} = typedef \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_manager}{ostk\+::physics\+::data\+::\+Manager}}}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_a1a579fb06ae5e46c494a7a860c7fff31}\label{namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_a1a579fb06ae5e46c494a7a860c7fff31}} 
+\index{ostk::physics::coordinate::frame::provider::iers@{ostk::physics::coordinate::frame::provider::iers}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!ostk::physics::coordinate::frame::provider::iers@{ostk::physics::coordinate::frame::provider::iers}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::ostream\& ostk\+::physics\+::coordinate\+::frame\+::provider\+::iers\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{an\+Output\+Stream,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a}{BulletinA}} \&}]{a\+BulletinA }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_ae80eabaf618cfa1369870bd029d92c41}\label{namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_ae80eabaf618cfa1369870bd029d92c41}} 
+\index{ostk::physics::coordinate::frame::provider::iers@{ostk::physics::coordinate::frame::provider::iers}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!ostk::physics::coordinate::frame::provider::iers@{ostk::physics::coordinate::frame::provider::iers}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::ostream\& ostk\+::physics\+::coordinate\+::frame\+::provider\+::iers\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{an\+Output\+Stream,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a}{Finals2000A}} \&}]{a\+Finals2000A }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_a7a0096e084064ce182bbe46f271fbf35}\label{namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_a7a0096e084064ce182bbe46f271fbf35}} 
+\index{ostk::physics::coordinate::frame::provider::iers@{ostk::physics::coordinate::frame::provider::iers}!bulletinAFileName@{bulletinAFileName}}
+\index{bulletinAFileName@{bulletinAFileName}!ostk::physics::coordinate::frame::provider::iers@{ostk::physics::coordinate::frame::provider::iers}}
+\doxysubsubsection{\texorpdfstring{bulletinAFileName}{bulletinAFileName}}
+{\footnotesize\ttfamily const String ostk\+::physics\+::coordinate\+::frame\+::provider\+::iers\+::bulletin\+A\+File\+Name = \char`\"{}ser7.\+dat\char`\"{}}
+
+\mbox{\Hypertarget{namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_ab01a683ad8af6da1fd2683b6638c80a6}\label{namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_ab01a683ad8af6da1fd2683b6638c80a6}} 
+\index{ostk::physics::coordinate::frame::provider::iers@{ostk::physics::coordinate::frame::provider::iers}!bulletinAManifestName@{bulletinAManifestName}}
+\index{bulletinAManifestName@{bulletinAManifestName}!ostk::physics::coordinate::frame::provider::iers@{ostk::physics::coordinate::frame::provider::iers}}
+\doxysubsubsection{\texorpdfstring{bulletinAManifestName}{bulletinAManifestName}}
+{\footnotesize\ttfamily const String ostk\+::physics\+::coordinate\+::frame\+::provider\+::iers\+::bulletin\+A\+Manifest\+Name = \char`\"{}bulletin-\/A\char`\"{}}
+
+\mbox{\Hypertarget{namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_adbc192598c0decae2d11281c35463003}\label{namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_adbc192598c0decae2d11281c35463003}} 
+\index{ostk::physics::coordinate::frame::provider::iers@{ostk::physics::coordinate::frame::provider::iers}!finals2000AFileName@{finals2000AFileName}}
+\index{finals2000AFileName@{finals2000AFileName}!ostk::physics::coordinate::frame::provider::iers@{ostk::physics::coordinate::frame::provider::iers}}
+\doxysubsubsection{\texorpdfstring{finals2000AFileName}{finals2000AFileName}}
+{\footnotesize\ttfamily const String ostk\+::physics\+::coordinate\+::frame\+::provider\+::iers\+::finals2000\+A\+File\+Name = \char`\"{}finals2000\+A.\+data\char`\"{}}
+
+\mbox{\Hypertarget{namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_abc6f8946a7423570af3f1e496fcc8db9}\label{namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_abc6f8946a7423570af3f1e496fcc8db9}} 
+\index{ostk::physics::coordinate::frame::provider::iers@{ostk::physics::coordinate::frame::provider::iers}!finals2000AManifestName@{finals2000AManifestName}}
+\index{finals2000AManifestName@{finals2000AManifestName}!ostk::physics::coordinate::frame::provider::iers@{ostk::physics::coordinate::frame::provider::iers}}
+\doxysubsubsection{\texorpdfstring{finals2000AManifestName}{finals2000AManifestName}}
+{\footnotesize\ttfamily const String ostk\+::physics\+::coordinate\+::frame\+::provider\+::iers\+::finals2000\+A\+Manifest\+Name = \char`\"{}finals-\/2000A\char`\"{}}
+
+\mbox{\Hypertarget{namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_afb965e784048da69d0372c40ae9458f3}\label{namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_afb965e784048da69d0372c40ae9458f3}} 
+\index{ostk::physics::coordinate::frame::provider::iers@{ostk::physics::coordinate::frame::provider::iers}!temporaryDirectoryName@{temporaryDirectoryName}}
+\index{temporaryDirectoryName@{temporaryDirectoryName}!ostk::physics::coordinate::frame::provider::iers@{ostk::physics::coordinate::frame::provider::iers}}
+\doxysubsubsection{\texorpdfstring{temporaryDirectoryName}{temporaryDirectoryName}}
+{\footnotesize\ttfamily const String ostk\+::physics\+::coordinate\+::frame\+::provider\+::iers\+::temporary\+Directory\+Name = \char`\"{}tmp\char`\"{}}
+

@@ -105,7 +105,7 @@ iPython</h4>
 </div><!-- fragment --><p>Once the shell is up and running, playing with it is easy:</p>
 <div class="fragment"><div class="line">from <a class="code" href="namespaceostk_1_1physics.html">ostk.physics</a> <span class="keyword">import</span> Environment <span class="comment"># Environment modeling class</span></div>
 <div class="line"><span class="keyword">from</span> <a class="code" href="namespaceostk_1_1physics_1_1time.html">ostk.physics.time</a> <span class="keyword">import</span> Instant <span class="comment"># Instant class</span></div>
-<div class="line"><span class="keyword">from</span> ostk.physics.coordinate <span class="keyword">import</span> Frame <span class="comment"># Reference frame class</span></div>
+<div class="line"><span class="keyword">from</span> <a class="code" href="namespaceostk_1_1physics_1_1coordinate.html">ostk.physics.coordinate</a> <span class="keyword">import</span> Frame <span class="comment"># Reference frame class</span></div>
 <div class="line"> </div>
 <div class="line">environment = Environment.default() <span class="comment"># Bootstrap a default environment</span></div>
 <div class="line"> </div>
@@ -150,7 +150,7 @@ Documentation</h1>
 </ul>
 <p>&lt;details&gt;</p>
 <p>The library exhibits the following structure:</p>
-<div class="fragment"><div class="line">├── Units</div>
+<div class="fragment"><div class="line">├── Unit</div>
 <div class="line">│   ├── Length</div>
 <div class="line">│   ├── Mass</div>
 <div class="line">│   ├── Time</div>
@@ -184,10 +184,10 @@ Documentation</h1>
 <div class="line">│   ├── Coordinate Reference System (CRS)</div>
 <div class="line">│   └── Universal Transverse Mercator (UTM)</div>
 <div class="line">└── Environment</div>
-<div class="line">    ├── Constants</div>
+<div class="line">    ├── Constant</div>
 <div class="line">    ├── Object</div>
 <div class="line">    │   └── Celestial</div>
-<div class="line">    ├── Ephemerides</div>
+<div class="line">    ├── Ephemeris</div>
 <div class="line">    │   ├── Analytical</div>
 <div class="line">    │   ├── Tabulated</div>
 <div class="line">    │   └── SPICE (JPL)</div>
@@ -209,7 +209,8 @@ Documentation</h1>
 </div><!-- fragment --><p>&lt;/details&gt;</p>
 <h1><a class="anchor" id="autotoc_md11"></a>
 Data Management</h1>
-<p>OSTk Physics uses input data from various sources to determine the state of the space environment at any given time. The following input data is used:</p><ul>
+<p>OSTk Physics uses input data from various sources to determine the state of the space environment at any given time. The following input data is used:</p>
+<ul>
 <li>IERS Reference Frame Data</li>
 <li>CSSI Solar Flux/Space Weather Data</li>
 <li>Gravitational Survey Data</li>
@@ -217,21 +218,22 @@ Data Management</h1>
 <li>SPICE Kernels</li>
 </ul>
 <p>None of these files are shipped with the source code of this library. OSTk Physics has the capability to fetch the required files at runtime if they are not present or if they are outdated. This is done using file Manager classes (see any file named <code>Manager.hpp</code>). Data for any use-case is queried through the Manager class rather than directly, which allows the Manager to handle file loading and fetching.</p>
-<p>The following table shows the availabe data source settings: </p><table class="markdownTable">
+<p>The following table shows the availabe data source settings:</p>
+<table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Environment Variable </th><th class="markdownTableHeadNone">Default Value  </th></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>OSTK_PHYSICS_DATA_LOCAL_REPOSITORY</code> </td><td class="markdownTableBodyNone"><code>./.open-space-toolkit/physics/data</code> [Bulk setting. Overridden by specific repository settings below.]  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_MODE</code> </td><td class="markdownTableBodyNone"><code>Automatic</code>  </td></tr>
+<td class="markdownTableBodyNone"><code>OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_MODE</code> </td><td class="markdownTableBodyNone"><code>Automatic</code>  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY</code> </td><td class="markdownTableBodyNone"><code>./.open-space-toolkit/physics/data/coordinate/frame/providers/iers</code>  </td></tr>
+<td class="markdownTableBodyNone"><code>OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY</code> </td><td class="markdownTableBodyNone"><code>./.open-space-toolkit/physics/data/coordinate/frame/provider/iers</code>  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT</code> </td><td class="markdownTableBodyNone"><code>60</code>  </td></tr>
+<td class="markdownTableBodyNone"><code>OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT</code> </td><td class="markdownTableBodyNone"><code>60</code>  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_ENGINE_MODE</code> </td><td class="markdownTableBodyNone"><code>Automatic</code>  </td></tr>
+<td class="markdownTableBodyNone"><code>OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_ENGINE_MODE</code> </td><td class="markdownTableBodyNone"><code>Automatic</code>  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY</code> </td><td class="markdownTableBodyNone"><code>./.open-space-toolkit/physics/data/environment/ephemerides/spice</code>  </td></tr>
+<td class="markdownTableBodyNone"><code>OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_MANAGER_LOCAL_REPOSITORY</code> </td><td class="markdownTableBodyNone"><code>./.open-space-toolkit/physics/data/environment/ephemeris/spice</code>  </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_MODE</code> </td><td class="markdownTableBodyNone"><code>Automatic</code>  </td></tr>
 <tr class="markdownTableRowEven">
@@ -251,7 +253,7 @@ Data Management</h1>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT</code> </td><td class="markdownTableBodyNone"><code>60</code>  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>OSTK_PHYSICS_DATA_REMOTE_URL</code> </td><td class="markdownTableBodyNone"><code><a href="https://github.com/open-space-collective/open-space-toolkit-data/raw/main/data/">https://github.com/open-space-collective/open-space-toolkit-data/raw/main/data/</a></code>  </td></tr>
+<td class="markdownTableBodyNone"><code>OSTK_PHYSICS_DATA_REMOTE_URL</code> </td><td class="markdownTableBodyNone"><code><a href="https://github.com/open-space-collective/open-space-toolkit-data/raw/v1/data/">https://github.com/open-space-collective/open-space-toolkit-data/raw/v1/data/</a></code>  </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY</code> </td><td class="markdownTableBodyNone"><code>./.open-space-toolkit/physics/data/</code>  </td></tr>
 <tr class="markdownTableRowEven">
@@ -332,6 +334,7 @@ License</h1>
 </div><!-- doc-content -->
 <div class="ttc" id="anamespaceostk_1_1physics_html"><div class="ttname"><a href="namespaceostk_1_1physics.html">ostk::physics</a></div><div class="ttdef"><b>Definition:</b> Axes.hpp:14</div></div>
 <div class="ttc" id="anamespaceostk_1_1physics_1_1time_html_adf23d37bd8641fb76a0e98ab46a70df7"><div class="ttname"><a href="namespaceostk_1_1physics_1_1time.html#adf23d37bd8641fb76a0e98ab46a70df7">ostk::physics::time::Scale</a></div><div class="ttdeci">Scale</div><div class="ttdoc">Time scale.</div><div class="ttdef"><b>Definition:</b> Scale.hpp:25</div></div>
+<div class="ttc" id="anamespaceostk_1_1physics_1_1coordinate_html"><div class="ttname"><a href="namespaceostk_1_1physics_1_1coordinate.html">ostk::physics::coordinate</a></div><div class="ttdef"><b>Definition:</b> Axes.hpp:16</div></div>
 <div class="ttc" id="anamespaceostk_1_1physics_1_1time_html"><div class="ttname"><a href="namespaceostk_1_1physics_1_1time.html">ostk::physics::time</a></div><div class="ttdef"><b>Definition:</b> Date.hpp:13</div></div>
 <!-- HTML footer for doxygen 1.8.7-->
 <!-- start footer part -->

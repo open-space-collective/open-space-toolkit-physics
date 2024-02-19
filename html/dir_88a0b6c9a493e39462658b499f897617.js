@@ -1,6 +1,6 @@
 var dir_88a0b6c9a493e39462658b499f897617 =
 [
-    [ "Providers", "dir_c49e8a553350eb1163fc6234b1b46ab7.html", "dir_c49e8a553350eb1163fc6234b1b46ab7" ],
+    [ "Provider", "dir_29263f765c8f72574babbb63790be6cc.html", "dir_29263f765c8f72574babbb63790be6cc" ],
     [ "Direction.hpp", "_direction_8hpp.html", [
       [ "Direction", "classostk_1_1physics_1_1data_1_1_direction.html", "classostk_1_1physics_1_1data_1_1_direction" ]
     ] ],
@@ -11,7 +11,7 @@ var dir_88a0b6c9a493e39462658b499f897617 =
     [ "Scalar.hpp", "_scalar_8hpp.html", [
       [ "Scalar", "classostk_1_1physics_1_1data_1_1_scalar.html", "classostk_1_1physics_1_1data_1_1_scalar" ]
     ] ],
-    [ "Utilities.hpp", "_data_2_utilities_8hpp.html", "_data_2_utilities_8hpp" ],
+    [ "Utility.hpp", "_data_2_utility_8hpp.html", "_data_2_utility_8hpp" ],
     [ "Vector.hpp", "_vector_8hpp.html", [
       [ "Vector", "classostk_1_1physics_1_1data_1_1_vector.html", "classostk_1_1physics_1_1data_1_1_vector" ]
     ] ]

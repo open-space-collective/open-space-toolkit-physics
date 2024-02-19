@@ -18,7 +18,7 @@ Inheritance diagram for ostk\+::physics\+::data\+::Vector\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_vector_a513244719d0a6b4a37537ed5c9bb2c27}{Vector}} (const Vector3d \&a\+Value, const \mbox{\hyperlink{classostk_1_1physics_1_1_unit}{Unit}} \&a\+Unit, const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \&a\+Frame\+S\+Ptr)
+\mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_vector_a513244719d0a6b4a37537ed5c9bb2c27}{Vector}} (const Vector3d \&a\+Value, const \mbox{\hyperlink{classostk_1_1physics_1_1_unit}{Unit}} \&a\+Unit, const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_frame}{Frame}} $>$ \&a\+Frame\+S\+Ptr)
 \item 
 bool \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_vector_a4be0fe51a56b19eb4c7252436944b382}{operator==}} (const \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_vector}{Vector}} \&a\+Vector) const
 \item 
@@ -30,11 +30,11 @@ Vector3d \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_vector_a33bd2c79920db
 \item 
 \mbox{\hyperlink{classostk_1_1physics_1_1_unit}{Unit}} \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_vector_a467f0ab9ff5d9e83c6e3ce64ebfb8c95}{get\+Unit}} () const
 \item 
-Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_vector_a39b99207e2617954be6629916d327fb6}{get\+Frame}} () const
+Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_frame}{Frame}} $>$ \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_vector_a39b99207e2617954be6629916d327fb6}{get\+Frame}} () const
 \item 
 \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_vector}{Vector}} \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_vector_a0ea065eeb3ccb829951c81c206eefd76}{in\+Unit}} (const \mbox{\hyperlink{classostk_1_1physics_1_1_unit}{Unit}} \&a\+Unit) const
 \item 
-\mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_vector}{Vector}} \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_vector_af297f2ff4ae6d6e52aba683c6c78ab94}{in\+Frame}} (const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \&a\+Frame\+S\+Ptr, const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const
+\mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_vector}{Vector}} \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_vector_af297f2ff4ae6d6e52aba683c6c78ab94}{in\+Frame}} (const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_frame}{Frame}} $>$ \&a\+Frame\+S\+Ptr, const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const
 \item 
 String \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_vector_aa1350ef1a2124c98a47900a0d81b5506}{to\+String}} (const Integer \&a\+Precision=Integer\+::\+Undefined()) const
 \end{DoxyCompactItemize}
@@ -58,7 +58,7 @@ std\+::ostream \& \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_vector_a2f12
 \index{ostk::physics::data::Vector@{ostk::physics::data::Vector}!Vector@{Vector}}
 \index{Vector@{Vector}!ostk::physics::data::Vector@{ostk::physics::data::Vector}}
 \doxysubsubsection{\texorpdfstring{Vector()}{Vector()}}
-{\footnotesize\ttfamily ostk\+::physics\+::data\+::\+Vector\+::\+Vector (\begin{DoxyParamCaption}\item[{const Vector3d \&}]{a\+Value,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1_unit}{Unit}} \&}]{a\+Unit,  }\item[{const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \&}]{a\+Frame\+S\+Ptr }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily ostk\+::physics\+::data\+::\+Vector\+::\+Vector (\begin{DoxyParamCaption}\item[{const Vector3d \&}]{a\+Value,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1_unit}{Unit}} \&}]{a\+Unit,  }\item[{const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_frame}{Frame}} $>$ \&}]{a\+Frame\+S\+Ptr }\end{DoxyParamCaption})}
 
 
 
@@ -67,7 +67,7 @@ std\+::ostream \& \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_vector_a2f12
 \index{ostk::physics::data::Vector@{ostk::physics::data::Vector}!getFrame@{getFrame}}
 \index{getFrame@{getFrame}!ostk::physics::data::Vector@{ostk::physics::data::Vector}}
 \doxysubsubsection{\texorpdfstring{getFrame()}{getFrame()}}
-{\footnotesize\ttfamily Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ ostk\+::physics\+::data\+::\+Vector\+::get\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_frame}{Frame}} $>$ ostk\+::physics\+::data\+::\+Vector\+::get\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 \mbox{\Hypertarget{classostk_1_1physics_1_1data_1_1_vector_a467f0ab9ff5d9e83c6e3ce64ebfb8c95}\label{classostk_1_1physics_1_1data_1_1_vector_a467f0ab9ff5d9e83c6e3ce64ebfb8c95}} 
 \index{ostk::physics::data::Vector@{ostk::physics::data::Vector}!getUnit@{getUnit}}
@@ -85,7 +85,7 @@ std\+::ostream \& \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_vector_a2f12
 \index{ostk::physics::data::Vector@{ostk::physics::data::Vector}!inFrame@{inFrame}}
 \index{inFrame@{inFrame}!ostk::physics::data::Vector@{ostk::physics::data::Vector}}
 \doxysubsubsection{\texorpdfstring{inFrame()}{inFrame()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_vector}{Vector}} ostk\+::physics\+::data\+::\+Vector\+::in\+Frame (\begin{DoxyParamCaption}\item[{const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1_frame}{Frame}} $>$ \&}]{a\+Frame\+S\+Ptr,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&}]{an\+Instant }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1data_1_1_vector}{Vector}} ostk\+::physics\+::data\+::\+Vector\+::in\+Frame (\begin{DoxyParamCaption}\item[{const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_frame}{Frame}} $>$ \&}]{a\+Frame\+S\+Ptr,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&}]{an\+Instant }\end{DoxyParamCaption}) const}
 
 \mbox{\Hypertarget{classostk_1_1physics_1_1data_1_1_vector_a0ea065eeb3ccb829951c81c206eefd76}\label{classostk_1_1physics_1_1data_1_1_vector_a0ea065eeb3ccb829951c81c206eefd76}} 
 \index{ostk::physics::data::Vector@{ostk::physics::data::Vector}!inUnit@{inUnit}}

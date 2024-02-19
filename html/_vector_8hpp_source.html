@@ -88,9 +88,9 @@ $(document).ready(function(){initNavTree('_vector_8hpp_source.html',''); initRes
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#ifndef __OpenSpaceToolkit_Physics_Data_Vector__</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#define __OpenSpaceToolkit_Physics_Data_Vector__</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;OpenSpaceToolkit/Core/Types/Shared.hpp&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;OpenSpaceToolkit/Core/Type/Shared.hpp&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;OpenSpaceToolkit/Mathematics/Objects/Vector.hpp&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;OpenSpaceToolkit/Mathematics/Object/Vector.hpp&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_frame_8hpp.html">OpenSpaceToolkit/Physics/Coordinate/Frame.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_instant_8hpp.html">OpenSpaceToolkit/Physics/Time/Instant.hpp</a>&gt;</span></div>
@@ -103,15 +103,15 @@ $(document).ready(function(){initNavTree('_vector_8hpp_source.html',''); initRes
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">namespace </span>data</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">using</span> ostk::core::types::Shared;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">using</span> ostk::core::types::Integer;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">using</span> ostk::core::types::String;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">using</span> ostk::core::type::Shared;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">using</span> ostk::core::type::Integer;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">using</span> ostk::core::type::String;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">using</span> ostk::math::object::Vector3d;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">using</span> ostk::mathematics::object::Vector3d;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">using</span> <a class="code" href="classostk_1_1physics_1_1_unit.html">ostk::physics::Unit</a>;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">using</span> <a class="code" href="classostk_1_1physics_1_1time_1_1_instant.html">ostk::physics::time::Instant</a>;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">using</span> <a class="code" href="classostk_1_1physics_1_1coord_1_1_frame.html">ostk::physics::coord::Frame</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">using</span> <a class="code" href="classostk_1_1physics_1_1coordinate_1_1_frame.html">ostk::physics::coordinate::Frame</a>;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
 <div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classostk_1_1physics_1_1data_1_1_vector.html">   33</a></span>&#160;<span class="keyword">class </span><a class="code" href="classostk_1_1physics_1_1data_1_1_vector.html">Vector</a></div>
@@ -160,9 +160,9 @@ $(document).ready(function(){initNavTree('_vector_8hpp_source.html',''); initRes
 <div class="ttc" id="aclassostk_1_1physics_1_1data_1_1_vector_html_a467f0ab9ff5d9e83c6e3ce64ebfb8c95"><div class="ttname"><a href="classostk_1_1physics_1_1data_1_1_vector.html#a467f0ab9ff5d9e83c6e3ce64ebfb8c95">ostk::physics::data::Vector::getUnit</a></div><div class="ttdeci">Unit getUnit() const</div><div class="ttdef"><b>Definition:</b> Vector.cpp:65</div></div>
 <div class="ttc" id="aclassostk_1_1physics_1_1data_1_1_vector_html_a39b99207e2617954be6629916d327fb6"><div class="ttname"><a href="classostk_1_1physics_1_1data_1_1_vector.html#a39b99207e2617954be6629916d327fb6">ostk::physics::data::Vector::getFrame</a></div><div class="ttdeci">Shared&lt; const Frame &gt; getFrame() const</div><div class="ttdef"><b>Definition:</b> Vector.cpp:70</div></div>
 <div class="ttc" id="aclassostk_1_1physics_1_1time_1_1_instant_html"><div class="ttname"><a href="classostk_1_1physics_1_1time_1_1_instant.html">ostk::physics::time::Instant</a></div><div class="ttdoc">Point in time.</div><div class="ttdef"><b>Definition:</b> Instant.hpp:40</div></div>
+<div class="ttc" id="aclassostk_1_1physics_1_1coordinate_1_1_frame_html"><div class="ttname"><a href="classostk_1_1physics_1_1coordinate_1_1_frame.html">ostk::physics::coordinate::Frame</a></div><div class="ttdoc">Reference frame.</div><div class="ttdef"><b>Definition:</b> Frame.hpp:50</div></div>
 <div class="ttc" id="aclassostk_1_1physics_1_1data_1_1_vector_html_aa1350ef1a2124c98a47900a0d81b5506"><div class="ttname"><a href="classostk_1_1physics_1_1data_1_1_vector.html#aa1350ef1a2124c98a47900a0d81b5506">ostk::physics::data::Vector::toString</a></div><div class="ttdeci">String toString(const Integer &amp;aPrecision=Integer::Undefined()) const</div><div class="ttdef"><b>Definition:</b> Vector.cpp:95</div></div>
 <div class="ttc" id="aclassostk_1_1physics_1_1data_1_1_vector_html_af297f2ff4ae6d6e52aba683c6c78ab94"><div class="ttname"><a href="classostk_1_1physics_1_1data_1_1_vector.html#af297f2ff4ae6d6e52aba683c6c78ab94">ostk::physics::data::Vector::inFrame</a></div><div class="ttdeci">Vector inFrame(const Shared&lt; const Frame &gt; &amp;aFrameSPtr, const Instant &amp;anInstant) const</div><div class="ttdef"><b>Definition:</b> Vector.cpp:85</div></div>
-<div class="ttc" id="aclassostk_1_1physics_1_1coord_1_1_frame_html"><div class="ttname"><a href="classostk_1_1physics_1_1coord_1_1_frame.html">ostk::physics::coord::Frame</a></div><div class="ttdoc">Reference frame.</div><div class="ttdef"><b>Definition:</b> Frame.hpp:50</div></div>
 <div class="ttc" id="anamespaceostk_html"><div class="ttname"><a href="namespaceostk.html">ostk</a></div><div class="ttdoc">Apache License 2.0.</div><div class="ttdef"><b>Definition:</b> Axes.hpp:12</div></div>
 <div class="ttc" id="a_frame_8hpp_html"><div class="ttname"><a href="_frame_8hpp.html">Frame.hpp</a></div></div>
 <div class="ttc" id="aclassostk_1_1physics_1_1data_1_1_vector_html_a0ea065eeb3ccb829951c81c206eefd76"><div class="ttname"><a href="classostk_1_1physics_1_1data_1_1_vector.html#a0ea065eeb3ccb829951c81c206eefd76">ostk::physics::data::Vector::inUnit</a></div><div class="ttdeci">Vector inUnit(const Unit &amp;aUnit) const</div><div class="ttdef"><b>Definition:</b> Vector.cpp:75</div></div>

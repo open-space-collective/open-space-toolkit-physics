@@ -1,12 +1,12 @@
-\hypertarget{_i_t_r_f_8cpp}{}\doxysection{src/\+Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Providers/\+I\+T\+RF.cpp File Reference}
-\label{_i_t_r_f_8cpp}\index{src/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/ITRF.cpp@{src/OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/ITRF.cpp}}
+\hypertarget{_i_t_r_f_8cpp}{}\doxysection{src/\+Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Provider/\+I\+T\+RF.cpp File Reference}
+\label{_i_t_r_f_8cpp}\index{src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ITRF.cpp@{src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ITRF.cpp}}
 {\ttfamily \#include $<$Open\+Space\+Toolkit/\+Core/\+Error.\+hpp$>$}\newline
-{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Core/\+Types/\+Real.\+hpp$>$}\newline
-{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Core/\+Utilities.\+hpp$>$}\newline
-{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Mathematics/\+Geometry/3\+D/\+Transformations/\+Rotations/\+Rotation\+Matrix.\+hpp$>$}\newline
-{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Providers/\+I\+E\+R\+S/\+Bulletin\+A.\+hpp$>$}\newline
-{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Providers/\+I\+E\+R\+S/\+Manager.\+hpp$>$}\newline
-{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Providers/\+I\+T\+R\+F.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Core/\+Type/\+Real.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Core/\+Utility.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Mathematics/\+Geometry/3\+D/\+Transformation/\+Rotation/\+Rotation\+Matrix.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Provider/\+I\+E\+R\+S/\+Bulletin\+A.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Provider/\+I\+E\+R\+S/\+Manager.\+hpp$>$}\newline
+{\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Frame/\+Provider/\+I\+T\+R\+F.\+hpp$>$}\newline
 {\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Time/\+Date\+Time.\+hpp$>$}\newline
 {\ttfamily \#include $<$Open\+Space\+Toolkit/\+Physics/\+Time/\+Scale.\+hpp$>$}\newline
 {\ttfamily \#include $<$sofa/sofa.\+h$>$}\newline
@@ -17,11 +17,11 @@
 \begin{DoxyCompactList}\small\item\em Apache License 2.\+0. \end{DoxyCompactList}\item 
  \mbox{\hyperlink{namespaceostk_1_1physics}{ostk\+::physics}}
 \item 
- \mbox{\hyperlink{namespaceostk_1_1physics_1_1coord}{ostk\+::physics\+::coord}}
+ \mbox{\hyperlink{namespaceostk_1_1physics_1_1coordinate}{ostk\+::physics\+::coordinate}}
 \item 
- \mbox{\hyperlink{namespaceostk_1_1physics_1_1coord_1_1frame}{ostk\+::physics\+::coord\+::frame}}
+ \mbox{\hyperlink{namespaceostk_1_1physics_1_1coordinate_1_1frame}{ostk\+::physics\+::coordinate\+::frame}}
 \item 
- \mbox{\hyperlink{namespaceostk_1_1physics_1_1coord_1_1frame_1_1provider}{ostk\+::physics\+::coord\+::frame\+::provider}}
+ \mbox{\hyperlink{namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider}{ostk\+::physics\+::coordinate\+::frame\+::provider}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
@@ -31,7 +31,7 @@
 \doxysubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-using \mbox{\hyperlink{_i_t_r_f_8cpp_af15130fc8f7fe288796d033a30dd8301}{Iers\+Manager}} = \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager}{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}}
+using \mbox{\hyperlink{_i_t_r_f_8cpp_a828181058c98813fc9c265890044153a}{Iers\+Manager}} = \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager}{ostk\+::physics\+::coordinate\+::frame\+::provider\+::iers\+::\+Manager}}
 \end{DoxyCompactItemize}
 
 
@@ -49,9 +49,9 @@ Apache License 2.\+0.
 
 
 \doxysubsection{Typedef Documentation}
-\mbox{\Hypertarget{_i_t_r_f_8cpp_af15130fc8f7fe288796d033a30dd8301}\label{_i_t_r_f_8cpp_af15130fc8f7fe288796d033a30dd8301}} 
+\mbox{\Hypertarget{_i_t_r_f_8cpp_a828181058c98813fc9c265890044153a}\label{_i_t_r_f_8cpp_a828181058c98813fc9c265890044153a}} 
 \index{ITRF.cpp@{ITRF.cpp}!IersManager@{IersManager}}
 \index{IersManager@{IersManager}!ITRF.cpp@{ITRF.cpp}}
 \doxysubsubsection{\texorpdfstring{IersManager}{IersManager}}
-{\footnotesize\ttfamily using \mbox{\hyperlink{_i_t_r_f_8cpp_af15130fc8f7fe288796d033a30dd8301}{Iers\+Manager}} =  \mbox{\hyperlink{classostk_1_1physics_1_1coord_1_1frame_1_1provider_1_1iers_1_1_manager}{ostk\+::physics\+::coord\+::frame\+::provider\+::iers\+::\+Manager}}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{_i_t_r_f_8cpp_a828181058c98813fc9c265890044153a}{Iers\+Manager}} =  \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager}{ostk\+::physics\+::coordinate\+::frame\+::provider\+::iers\+::\+Manager}}}
 

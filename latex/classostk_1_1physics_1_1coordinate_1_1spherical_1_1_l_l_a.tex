@@ -1,0 +1,202 @@
+\hypertarget{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a}{}\doxysection{ostk\+::physics\+::coordinate\+::spherical\+::L\+LA Class Reference}
+\label{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a}\index{ostk::physics::coordinate::spherical::LLA@{ostk::physics::coordinate::spherical::LLA}}
+
+
+Geodetic Latitude -\/ Longitude -\/ Altitude (\mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a}{L\+LA}})  
+
+
+
+
+{\ttfamily \#include $<$L\+L\+A.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_a29cbe2117eeed4357206b9abd04cefa9}{L\+LA}} (const \mbox{\hyperlink{classostk_1_1physics_1_1unit_1_1_angle}{Angle}} \&a\+Latitude, const \mbox{\hyperlink{classostk_1_1physics_1_1unit_1_1_angle}{Angle}} \&a\+Longitude, const \mbox{\hyperlink{classostk_1_1physics_1_1unit_1_1_length}{Length}} \&an\+Altitude)
+\item 
+bool \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_a39564dba884c4acfb8292d41945a45b3}{operator==}} (const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a}{L\+LA}} \&a\+L\+LA) const
+\item 
+bool \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_ae6e65f7922698de2a639af5e9e6c16ad}{operator!=}} (const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a}{L\+LA}} \&a\+L\+LA) const
+\item 
+bool \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_a3b97daf7b2d9f033b9bfd71c34c048fa}{is\+Defined}} () const
+\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1unit_1_1_angle}{Angle}} \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_a207f588e18177a10cc41819ef5f8baf8}{get\+Latitude}} () const
+\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1unit_1_1_angle}{Angle}} \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_a1a7964c3294aa0b1153f23e39e41cdc9}{get\+Longitude}} () const
+\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1unit_1_1_length}{Length}} \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_aa4c8192ed931bf0fca66b40bd4f37df6}{get\+Altitude}} () const
+\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1unit_1_1_length}{Length}} \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_afee067fe35ef4ac8e8cad93a83dbc0e6}{calculate\+Distance\+To}} (const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a}{L\+LA}} \&a\+L\+LA, const \mbox{\hyperlink{classostk_1_1physics_1_1unit_1_1_length}{Length}} \&an\+Ellipsoid\+Equatorial\+Radius, const Real \&an\+Ellipsoid\+Flattening) const
+\begin{DoxyCompactList}\small\item\em Calculate the distance between this \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a}{L\+LA}} coordinate and another \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a}{L\+LA}} coordinate. \end{DoxyCompactList}\item 
+Vector3d \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_a159e5a055130460266b25593a0b451f2}{to\+Vector}} () const
+\item 
+Vector3d \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_afc34ed446bb707f7fd50701008443673}{to\+Cartesian}} (const \mbox{\hyperlink{classostk_1_1physics_1_1unit_1_1_length}{Length}} \&an\+Ellipsoid\+Equatorial\+Radius, const Real \&an\+Ellipsoid\+Flattening) const
+\item 
+String \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_ada54a509f340056ceb39399fe06d6d98}{to\+String}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a}{L\+LA}} \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_adeda2b8529d110d66dfd9e42e80d7a42}{Undefined}} ()
+\item 
+static \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a}{L\+LA}} \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_ab9049663b5a8bb87ed5edd332ea0532f}{Vector}} (const Vector3d \&a\+Vector)
+\item 
+static \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a}{L\+LA}} \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_a3e4efbd3c09ea89f6373db83a9e44ccb}{Cartesian}} (const Vector3d \&a\+Cartesian\+Coordinate\+Set, const \mbox{\hyperlink{classostk_1_1physics_1_1unit_1_1_length}{Length}} \&an\+Ellipsoid\+Equatorial\+Radius, const Real \&an\+Ellipsoid\+Flattening)
+\item 
+static \mbox{\hyperlink{classostk_1_1physics_1_1unit_1_1_length}{Length}} \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_a494ec7ee5336000cb103db5712f153c3}{Distance\+Between}} (const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a}{L\+LA}} \&a\+First\+L\+LA, const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a}{L\+LA}} \&a\+Second\+L\+LA, const \mbox{\hyperlink{classostk_1_1physics_1_1unit_1_1_length}{Length}} \&an\+Ellipsoid\+Equatorial\+Radius, const Real \&an\+Ellipsoid\+Flattening)
+\begin{DoxyCompactList}\small\item\em Calculate the distance between two \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a}{L\+LA}} coordinates. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_a4e052cf41d11b11c943ad32cd4c25ba8}{operator$<$$<$}} (std\+::ostream \&an\+Output\+Stream, const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a}{L\+LA}} \&a\+L\+LA)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Geodetic Latitude -\/ Longitude -\/ Altitude (\mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a}{L\+LA}}) 
+
+\href{https://en.wikipedia.org/wiki/Latitude}{\texttt{ https\+://en.\+wikipedia.\+org/wiki/\+Latitude}} \href{https://en.wikipedia.org/wiki/Longitude}{\texttt{ https\+://en.\+wikipedia.\+org/wiki/\+Longitude}} 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_a29cbe2117eeed4357206b9abd04cefa9}\label{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_a29cbe2117eeed4357206b9abd04cefa9}} 
+\index{ostk::physics::coordinate::spherical::LLA@{ostk::physics::coordinate::spherical::LLA}!LLA@{LLA}}
+\index{LLA@{LLA}!ostk::physics::coordinate::spherical::LLA@{ostk::physics::coordinate::spherical::LLA}}
+\doxysubsubsection{\texorpdfstring{LLA()}{LLA()}}
+{\footnotesize\ttfamily ostk\+::physics\+::coordinate\+::spherical\+::\+L\+L\+A\+::\+L\+LA (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1unit_1_1_angle}{Angle}} \&}]{a\+Latitude,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1unit_1_1_angle}{Angle}} \&}]{a\+Longitude,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1unit_1_1_length}{Length}} \&}]{an\+Altitude }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_afee067fe35ef4ac8e8cad93a83dbc0e6}\label{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_afee067fe35ef4ac8e8cad93a83dbc0e6}} 
+\index{ostk::physics::coordinate::spherical::LLA@{ostk::physics::coordinate::spherical::LLA}!calculateDistanceTo@{calculateDistanceTo}}
+\index{calculateDistanceTo@{calculateDistanceTo}!ostk::physics::coordinate::spherical::LLA@{ostk::physics::coordinate::spherical::LLA}}
+\doxysubsubsection{\texorpdfstring{calculateDistanceTo()}{calculateDistanceTo()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1unit_1_1_length}{Length}} ostk\+::physics\+::coordinate\+::spherical\+::\+L\+L\+A\+::calculate\+Distance\+To (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a}{L\+LA}} \&}]{a\+L\+LA,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1unit_1_1_length}{Length}} \&}]{an\+Ellipsoid\+Equatorial\+Radius,  }\item[{const Real \&}]{an\+Ellipsoid\+Flattening }\end{DoxyParamCaption}) const}
+
+
+
+Calculate the distance between this \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a}{L\+LA}} coordinate and another \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a}{L\+LA}} coordinate. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+L\+LA} & A \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a}{L\+LA}} coordinate \\
+\hline
+\mbox{\texttt{ in}}  & {\em an\+Ellipsoid\+Equatorial\+Radius} & An ellipsoid equatorial radius \\
+\hline
+\mbox{\texttt{ in}}  & {\em an\+Ellipsoid\+Flattening} & An ellipsoid flattening \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Distance between the two \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a}{L\+LA}} coordinates 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_a3e4efbd3c09ea89f6373db83a9e44ccb}\label{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_a3e4efbd3c09ea89f6373db83a9e44ccb}} 
+\index{ostk::physics::coordinate::spherical::LLA@{ostk::physics::coordinate::spherical::LLA}!Cartesian@{Cartesian}}
+\index{Cartesian@{Cartesian}!ostk::physics::coordinate::spherical::LLA@{ostk::physics::coordinate::spherical::LLA}}
+\doxysubsubsection{\texorpdfstring{Cartesian()}{Cartesian()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a}{L\+LA}} ostk\+::physics\+::coordinate\+::spherical\+::\+L\+L\+A\+::\+Cartesian (\begin{DoxyParamCaption}\item[{const Vector3d \&}]{a\+Cartesian\+Coordinate\+Set,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1unit_1_1_length}{Length}} \&}]{an\+Ellipsoid\+Equatorial\+Radius,  }\item[{const Real \&}]{an\+Ellipsoid\+Flattening }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_a494ec7ee5336000cb103db5712f153c3}\label{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_a494ec7ee5336000cb103db5712f153c3}} 
+\index{ostk::physics::coordinate::spherical::LLA@{ostk::physics::coordinate::spherical::LLA}!DistanceBetween@{DistanceBetween}}
+\index{DistanceBetween@{DistanceBetween}!ostk::physics::coordinate::spherical::LLA@{ostk::physics::coordinate::spherical::LLA}}
+\doxysubsubsection{\texorpdfstring{DistanceBetween()}{DistanceBetween()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1unit_1_1_length}{Length}} ostk\+::physics\+::coordinate\+::spherical\+::\+L\+L\+A\+::\+Distance\+Between (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a}{L\+LA}} \&}]{a\+First\+L\+LA,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a}{L\+LA}} \&}]{a\+Second\+L\+LA,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1unit_1_1_length}{Length}} \&}]{an\+Ellipsoid\+Equatorial\+Radius,  }\item[{const Real \&}]{an\+Ellipsoid\+Flattening }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Calculate the distance between two \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a}{L\+LA}} coordinates. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+First\+L\+LA} & A first \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a}{L\+LA}} coordinate \\
+\hline
+\mbox{\texttt{ in}}  & {\em a\+Second\+L\+LA} & A second \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a}{L\+LA}} coordinate \\
+\hline
+\mbox{\texttt{ in}}  & {\em an\+Ellipsoid\+Equatorial\+Radius} & An ellipsoid equatorial radius \\
+\hline
+\mbox{\texttt{ in}}  & {\em an\+Ellipsoid\+Flattening} & An ellipsoid flattening \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Distance between the two \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a}{L\+LA}} coordinates 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_aa4c8192ed931bf0fca66b40bd4f37df6}\label{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_aa4c8192ed931bf0fca66b40bd4f37df6}} 
+\index{ostk::physics::coordinate::spherical::LLA@{ostk::physics::coordinate::spherical::LLA}!getAltitude@{getAltitude}}
+\index{getAltitude@{getAltitude}!ostk::physics::coordinate::spherical::LLA@{ostk::physics::coordinate::spherical::LLA}}
+\doxysubsubsection{\texorpdfstring{getAltitude()}{getAltitude()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1unit_1_1_length}{Length}} ostk\+::physics\+::coordinate\+::spherical\+::\+L\+L\+A\+::get\+Altitude (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_a207f588e18177a10cc41819ef5f8baf8}\label{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_a207f588e18177a10cc41819ef5f8baf8}} 
+\index{ostk::physics::coordinate::spherical::LLA@{ostk::physics::coordinate::spherical::LLA}!getLatitude@{getLatitude}}
+\index{getLatitude@{getLatitude}!ostk::physics::coordinate::spherical::LLA@{ostk::physics::coordinate::spherical::LLA}}
+\doxysubsubsection{\texorpdfstring{getLatitude()}{getLatitude()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1unit_1_1_angle}{Angle}} ostk\+::physics\+::coordinate\+::spherical\+::\+L\+L\+A\+::get\+Latitude (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_a1a7964c3294aa0b1153f23e39e41cdc9}\label{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_a1a7964c3294aa0b1153f23e39e41cdc9}} 
+\index{ostk::physics::coordinate::spherical::LLA@{ostk::physics::coordinate::spherical::LLA}!getLongitude@{getLongitude}}
+\index{getLongitude@{getLongitude}!ostk::physics::coordinate::spherical::LLA@{ostk::physics::coordinate::spherical::LLA}}
+\doxysubsubsection{\texorpdfstring{getLongitude()}{getLongitude()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1unit_1_1_angle}{Angle}} ostk\+::physics\+::coordinate\+::spherical\+::\+L\+L\+A\+::get\+Longitude (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_a3b97daf7b2d9f033b9bfd71c34c048fa}\label{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_a3b97daf7b2d9f033b9bfd71c34c048fa}} 
+\index{ostk::physics::coordinate::spherical::LLA@{ostk::physics::coordinate::spherical::LLA}!isDefined@{isDefined}}
+\index{isDefined@{isDefined}!ostk::physics::coordinate::spherical::LLA@{ostk::physics::coordinate::spherical::LLA}}
+\doxysubsubsection{\texorpdfstring{isDefined()}{isDefined()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::coordinate\+::spherical\+::\+L\+L\+A\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_ae6e65f7922698de2a639af5e9e6c16ad}\label{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_ae6e65f7922698de2a639af5e9e6c16ad}} 
+\index{ostk::physics::coordinate::spherical::LLA@{ostk::physics::coordinate::spherical::LLA}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!ostk::physics::coordinate::spherical::LLA@{ostk::physics::coordinate::spherical::LLA}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::coordinate\+::spherical\+::\+L\+L\+A\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a}{L\+LA}} \&}]{a\+L\+LA }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_a39564dba884c4acfb8292d41945a45b3}\label{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_a39564dba884c4acfb8292d41945a45b3}} 
+\index{ostk::physics::coordinate::spherical::LLA@{ostk::physics::coordinate::spherical::LLA}!operator==@{operator==}}
+\index{operator==@{operator==}!ostk::physics::coordinate::spherical::LLA@{ostk::physics::coordinate::spherical::LLA}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::coordinate\+::spherical\+::\+L\+L\+A\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a}{L\+LA}} \&}]{a\+L\+LA }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_afc34ed446bb707f7fd50701008443673}\label{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_afc34ed446bb707f7fd50701008443673}} 
+\index{ostk::physics::coordinate::spherical::LLA@{ostk::physics::coordinate::spherical::LLA}!toCartesian@{toCartesian}}
+\index{toCartesian@{toCartesian}!ostk::physics::coordinate::spherical::LLA@{ostk::physics::coordinate::spherical::LLA}}
+\doxysubsubsection{\texorpdfstring{toCartesian()}{toCartesian()}}
+{\footnotesize\ttfamily Vector3d ostk\+::physics\+::coordinate\+::spherical\+::\+L\+L\+A\+::to\+Cartesian (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1unit_1_1_length}{Length}} \&}]{an\+Ellipsoid\+Equatorial\+Radius,  }\item[{const Real \&}]{an\+Ellipsoid\+Flattening }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_ada54a509f340056ceb39399fe06d6d98}\label{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_ada54a509f340056ceb39399fe06d6d98}} 
+\index{ostk::physics::coordinate::spherical::LLA@{ostk::physics::coordinate::spherical::LLA}!toString@{toString}}
+\index{toString@{toString}!ostk::physics::coordinate::spherical::LLA@{ostk::physics::coordinate::spherical::LLA}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily String ostk\+::physics\+::coordinate\+::spherical\+::\+L\+L\+A\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_a159e5a055130460266b25593a0b451f2}\label{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_a159e5a055130460266b25593a0b451f2}} 
+\index{ostk::physics::coordinate::spherical::LLA@{ostk::physics::coordinate::spherical::LLA}!toVector@{toVector}}
+\index{toVector@{toVector}!ostk::physics::coordinate::spherical::LLA@{ostk::physics::coordinate::spherical::LLA}}
+\doxysubsubsection{\texorpdfstring{toVector()}{toVector()}}
+{\footnotesize\ttfamily Vector3d ostk\+::physics\+::coordinate\+::spherical\+::\+L\+L\+A\+::to\+Vector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_adeda2b8529d110d66dfd9e42e80d7a42}\label{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_adeda2b8529d110d66dfd9e42e80d7a42}} 
+\index{ostk::physics::coordinate::spherical::LLA@{ostk::physics::coordinate::spherical::LLA}!Undefined@{Undefined}}
+\index{Undefined@{Undefined}!ostk::physics::coordinate::spherical::LLA@{ostk::physics::coordinate::spherical::LLA}}
+\doxysubsubsection{\texorpdfstring{Undefined()}{Undefined()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a}{L\+LA}} ostk\+::physics\+::coordinate\+::spherical\+::\+L\+L\+A\+::\+Undefined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_ab9049663b5a8bb87ed5edd332ea0532f}\label{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_ab9049663b5a8bb87ed5edd332ea0532f}} 
+\index{ostk::physics::coordinate::spherical::LLA@{ostk::physics::coordinate::spherical::LLA}!Vector@{Vector}}
+\index{Vector@{Vector}!ostk::physics::coordinate::spherical::LLA@{ostk::physics::coordinate::spherical::LLA}}
+\doxysubsubsection{\texorpdfstring{Vector()}{Vector()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a}{L\+LA}} ostk\+::physics\+::coordinate\+::spherical\+::\+L\+L\+A\+::\+Vector (\begin{DoxyParamCaption}\item[{const Vector3d \&}]{a\+Vector }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_a4e052cf41d11b11c943ad32cd4c25ba8}\label{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_a4e052cf41d11b11c943ad32cd4c25ba8}} 
+\index{ostk::physics::coordinate::spherical::LLA@{ostk::physics::coordinate::spherical::LLA}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!ostk::physics::coordinate::spherical::LLA@{ostk::physics::coordinate::spherical::LLA}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{an\+Output\+Stream,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a}{L\+LA}} \&}]{a\+L\+LA }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Spherical/\mbox{\hyperlink{_l_l_a_8hpp}{L\+L\+A.\+hpp}}\item 
+src/\+Open\+Space\+Toolkit/\+Physics/\+Coordinate/\+Spherical/\mbox{\hyperlink{_l_l_a_8cpp}{L\+L\+A.\+cpp}}\end{DoxyCompactItemize}

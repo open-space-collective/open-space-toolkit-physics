@@ -1,0 +1,126 @@
+\hypertarget{classostk_1_1physics_1_1coordinate_1_1_axes}{}\doxysection{ostk\+::physics\+::coordinate\+::Axes Class Reference}
+\label{classostk_1_1physics_1_1coordinate_1_1_axes}\index{ostk::physics::coordinate::Axes@{ostk::physics::coordinate::Axes}}
+
+
+\mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_axes}{Axes}}.  
+
+
+
+
+{\ttfamily \#include $<$Axes.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_axes_ae01e6c131657c9b21c1e3fb47b823a03}{Axes}} (const Vector3d \&a\+X\+Axis, const Vector3d \&a\+Y\+Axis, const Vector3d \&a\+Z\+Axis, const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_frame}{Frame}} $>$ \&a\+Frame\+S\+Ptr)
+\item 
+bool \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_axes_adb14e9764a5f835222b6870d06e3da3f}{operator==}} (const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_axes}{Axes}} \&an\+Axes) const
+\item 
+bool \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_axes_a81d4b8ab08576d13e93134e064edb6cc}{operator!=}} (const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_axes}{Axes}} \&an\+Axes) const
+\item 
+bool \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_axes_a8b3615f43a30fd1cbb2afde52b6c2ac6}{is\+Defined}} () const
+\item 
+const Vector3d \& \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_axes_a8ec6cf15dd2a626e29d6efa262718c9b}{x}} () const
+\item 
+const Vector3d \& \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_axes_a46926ef6f081b750050c609efc662c81}{y}} () const
+\item 
+const Vector3d \& \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_axes_a1af0d13a788039739783604fd31bdf45}{z}} () const
+\item 
+Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_frame}{Frame}} $>$ \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_axes_a19aa6b98fd97b839ac7f9f29fa65ee31}{get\+Frame}} () const
+\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_axes}{Axes}} \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_axes_aff12c7433fefac8ac01bd96414e7b053}{in\+Frame}} (const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_frame}{Frame}} $>$ \&a\+Frame\+S\+Ptr, const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_axes}{Axes}} \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_axes_a829228e115cc01a5f21d2e0609194620}{Undefined}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_axes_a0ed7e604ae11f069877a8ee1a2d9b051}{operator$<$$<$}} (std\+::ostream \&an\+Output\+Stream, const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_axes}{Axes}} \&an\+Axes)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_axes}{Axes}}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1_axes_ae01e6c131657c9b21c1e3fb47b823a03}\label{classostk_1_1physics_1_1coordinate_1_1_axes_ae01e6c131657c9b21c1e3fb47b823a03}} 
+\index{ostk::physics::coordinate::Axes@{ostk::physics::coordinate::Axes}!Axes@{Axes}}
+\index{Axes@{Axes}!ostk::physics::coordinate::Axes@{ostk::physics::coordinate::Axes}}
+\doxysubsubsection{\texorpdfstring{Axes()}{Axes()}}
+{\footnotesize\ttfamily ostk\+::physics\+::coordinate\+::\+Axes\+::\+Axes (\begin{DoxyParamCaption}\item[{const Vector3d \&}]{a\+X\+Axis,  }\item[{const Vector3d \&}]{a\+Y\+Axis,  }\item[{const Vector3d \&}]{a\+Z\+Axis,  }\item[{const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_frame}{Frame}} $>$ \&}]{a\+Frame\+S\+Ptr }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1_axes_a19aa6b98fd97b839ac7f9f29fa65ee31}\label{classostk_1_1physics_1_1coordinate_1_1_axes_a19aa6b98fd97b839ac7f9f29fa65ee31}} 
+\index{ostk::physics::coordinate::Axes@{ostk::physics::coordinate::Axes}!getFrame@{getFrame}}
+\index{getFrame@{getFrame}!ostk::physics::coordinate::Axes@{ostk::physics::coordinate::Axes}}
+\doxysubsubsection{\texorpdfstring{getFrame()}{getFrame()}}
+{\footnotesize\ttfamily Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_frame}{Frame}} $>$ ostk\+::physics\+::coordinate\+::\+Axes\+::get\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1_axes_aff12c7433fefac8ac01bd96414e7b053}\label{classostk_1_1physics_1_1coordinate_1_1_axes_aff12c7433fefac8ac01bd96414e7b053}} 
+\index{ostk::physics::coordinate::Axes@{ostk::physics::coordinate::Axes}!inFrame@{inFrame}}
+\index{inFrame@{inFrame}!ostk::physics::coordinate::Axes@{ostk::physics::coordinate::Axes}}
+\doxysubsubsection{\texorpdfstring{inFrame()}{inFrame()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_axes}{Axes}} ostk\+::physics\+::coordinate\+::\+Axes\+::in\+Frame (\begin{DoxyParamCaption}\item[{const Shared$<$ const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_frame}{Frame}} $>$ \&}]{a\+Frame\+S\+Ptr,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&}]{an\+Instant }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1_axes_a8b3615f43a30fd1cbb2afde52b6c2ac6}\label{classostk_1_1physics_1_1coordinate_1_1_axes_a8b3615f43a30fd1cbb2afde52b6c2ac6}} 
+\index{ostk::physics::coordinate::Axes@{ostk::physics::coordinate::Axes}!isDefined@{isDefined}}
+\index{isDefined@{isDefined}!ostk::physics::coordinate::Axes@{ostk::physics::coordinate::Axes}}
+\doxysubsubsection{\texorpdfstring{isDefined()}{isDefined()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::coordinate\+::\+Axes\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1_axes_a81d4b8ab08576d13e93134e064edb6cc}\label{classostk_1_1physics_1_1coordinate_1_1_axes_a81d4b8ab08576d13e93134e064edb6cc}} 
+\index{ostk::physics::coordinate::Axes@{ostk::physics::coordinate::Axes}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!ostk::physics::coordinate::Axes@{ostk::physics::coordinate::Axes}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::coordinate\+::\+Axes\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_axes}{Axes}} \&}]{an\+Axes }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1_axes_adb14e9764a5f835222b6870d06e3da3f}\label{classostk_1_1physics_1_1coordinate_1_1_axes_adb14e9764a5f835222b6870d06e3da3f}} 
+\index{ostk::physics::coordinate::Axes@{ostk::physics::coordinate::Axes}!operator==@{operator==}}
+\index{operator==@{operator==}!ostk::physics::coordinate::Axes@{ostk::physics::coordinate::Axes}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool ostk\+::physics\+::coordinate\+::\+Axes\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_axes}{Axes}} \&}]{an\+Axes }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1_axes_a829228e115cc01a5f21d2e0609194620}\label{classostk_1_1physics_1_1coordinate_1_1_axes_a829228e115cc01a5f21d2e0609194620}} 
+\index{ostk::physics::coordinate::Axes@{ostk::physics::coordinate::Axes}!Undefined@{Undefined}}
+\index{Undefined@{Undefined}!ostk::physics::coordinate::Axes@{ostk::physics::coordinate::Axes}}
+\doxysubsubsection{\texorpdfstring{Undefined()}{Undefined()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_axes}{Axes}} ostk\+::physics\+::coordinate\+::\+Axes\+::\+Undefined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1_axes_a8ec6cf15dd2a626e29d6efa262718c9b}\label{classostk_1_1physics_1_1coordinate_1_1_axes_a8ec6cf15dd2a626e29d6efa262718c9b}} 
+\index{ostk::physics::coordinate::Axes@{ostk::physics::coordinate::Axes}!x@{x}}
+\index{x@{x}!ostk::physics::coordinate::Axes@{ostk::physics::coordinate::Axes}}
+\doxysubsubsection{\texorpdfstring{x()}{x()}}
+{\footnotesize\ttfamily const Vector3d \& ostk\+::physics\+::coordinate\+::\+Axes\+::x (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1_axes_a46926ef6f081b750050c609efc662c81}\label{classostk_1_1physics_1_1coordinate_1_1_axes_a46926ef6f081b750050c609efc662c81}} 
+\index{ostk::physics::coordinate::Axes@{ostk::physics::coordinate::Axes}!y@{y}}
+\index{y@{y}!ostk::physics::coordinate::Axes@{ostk::physics::coordinate::Axes}}
+\doxysubsubsection{\texorpdfstring{y()}{y()}}
+{\footnotesize\ttfamily const Vector3d \& ostk\+::physics\+::coordinate\+::\+Axes\+::y (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1_axes_a1af0d13a788039739783604fd31bdf45}\label{classostk_1_1physics_1_1coordinate_1_1_axes_a1af0d13a788039739783604fd31bdf45}} 
+\index{ostk::physics::coordinate::Axes@{ostk::physics::coordinate::Axes}!z@{z}}
+\index{z@{z}!ostk::physics::coordinate::Axes@{ostk::physics::coordinate::Axes}}
+\doxysubsubsection{\texorpdfstring{z()}{z()}}
+{\footnotesize\ttfamily const Vector3d \& ostk\+::physics\+::coordinate\+::\+Axes\+::z (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classostk_1_1physics_1_1coordinate_1_1_axes_a0ed7e604ae11f069877a8ee1a2d9b051}\label{classostk_1_1physics_1_1coordinate_1_1_axes_a0ed7e604ae11f069877a8ee1a2d9b051}} 
+\index{ostk::physics::coordinate::Axes@{ostk::physics::coordinate::Axes}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!ostk::physics::coordinate::Axes@{ostk::physics::coordinate::Axes}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{an\+Output\+Stream,  }\item[{const \mbox{\hyperlink{classostk_1_1physics_1_1coordinate_1_1_axes}{Axes}} \&}]{an\+Axes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Open\+Space\+Toolkit/\+Physics/\+Coordinate/\mbox{\hyperlink{_axes_8hpp}{Axes.\+hpp}}\item 
+src/\+Open\+Space\+Toolkit/\+Physics/\+Coordinate/\mbox{\hyperlink{_axes_8cpp}{Axes.\+cpp}}\end{DoxyCompactItemize}
