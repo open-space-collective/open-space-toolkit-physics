@@ -10,7 +10,7 @@ from ostk.physics.coordinate import Frame
 
 @pytest.fixture
 def value() -> np.ndarray:
-    return np.array([1.0, 2.0, 3.0])
+    return np.array([1.0, 0.0, 0.0])
 
 
 @pytest.fixture
