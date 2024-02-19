@@ -7,7 +7,8 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Scalar(pybind11::module& aModule)
     using namespace pybind11;
 
     using ostk::core::type::Real;
-    
+    using ostk::core::type::Integer;
+
     using ostk::physics::Unit;
     using ostk::physics::data::Scalar;
 
@@ -25,8 +26,8 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Scalar(pybind11::module& aModule)
         .def("get_value", &Scalar::getValue)
         .def("get_unit", &Scalar::getUnit)
         .def("in_unit", &Scalar::inUnit, arg("unit"))
-        .def("to_string", &Scalar::toString)
-        
+        .def("to_string", &Scalar::toString, arg("precision") = Integer::Undefined())
+
         .def_static("undefined", &Scalar::Undefined)
 
         ;

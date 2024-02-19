@@ -30,8 +30,8 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Vector(pybind11::module& aModule)
         .def("get_frame", &Vector::getFrame)
         .def("in_unit", &Vector::inUnit, arg("unit"))
         .def("in_frame", &Vector::inFrame, arg("frame"), arg("instant"))
-        .def("to_string", &Vector::toString)
-        
+        .def("to_string", &Vector::toString, arg("precision") = 6)
+
         .def_static("undefined", &Vector::Undefined)
 
         ;

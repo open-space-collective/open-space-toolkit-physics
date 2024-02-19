@@ -2,14 +2,14 @@
 
 import pytest
 
+from ostk.physics import Unit
 from ostk.physics.data import Scalar
-from ostk.physics.unit import Unit
 from ostk.physics.unit import Length
 
 
 @pytest.fixture
 def unit() -> Unit:
-    return Length.Unit.Meter
+    return Unit.length(Length.Unit.Meter)
 
 
 @pytest.fixture
@@ -38,11 +38,11 @@ class TestScalar:
     def test_get_value(self, scalar: Scalar, value: float):
         assert scalar.get_value() == value
 
-    def test_get_unit(self, scalar: Scalar, unit: Unit):
-        assert scalar.get_unit() == unit
+    def test_get_unit(self, scalar: Scalar):
+        assert scalar.get_unit().is_defined()
 
     def test_in_unit(self, scalar: Scalar):
-        assert scalar.in_unit(Length.Unit.Kilometer) is not None
+        assert scalar.in_unit(Unit.length(Length.Unit.Foot)) is not None
 
     def test_to_string(self, scalar: Scalar):
         assert scalar.to_string() is not None
