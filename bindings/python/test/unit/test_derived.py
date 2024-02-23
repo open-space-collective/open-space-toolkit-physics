@@ -105,11 +105,12 @@ class TestDerived:
         assert derived_unit == derived_unit
         assert (derived_unit != derived_unit) is False
 
-    def test_unit_derived_unit_is_compatible_with(self):
-        pass
+    # TBI: add these tests
+    # def test_unit_derived_unit_is_compatible_with(self):
+    #     pass
 
-    def test_unit_derived_unit_to_string(self):
-        pass
+    # def test_unit_derived_unit_to_string(self):
+    #     pass
 
-    def test_unit_derived_unit_get_symbol(self):
-        pass
+    # def test_unit_derived_unit_get_symbol(self):
+    #     pass

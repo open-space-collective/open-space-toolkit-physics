@@ -85,7 +85,7 @@ class Derived : public Unit
             const Order& anElectricCurrentOrder,
             const Angle::Unit& anAngleUnit,
             const Order& anAngleOrder
-        );  // [TBI]
+        );
 
         bool operator==(const Unit& aUnit) const;
 
@@ -119,7 +119,7 @@ class Derived : public Unit
 
         String getSymbol() const;
 
-        static Unit Undefined();
+        // Static constructors for specifying actual named S.I. units
 
         static Unit SquareMeter();
 
@@ -135,6 +135,8 @@ class Derived : public Unit
 
         static Unit KilogramPerSecond();
 
+        // Static constructors for specifying derived (non-base) quantities
+
         static Unit Velocity(const Length::Unit& aLengthUnit, const Time::Unit& aTimeUnit);
 
         static Unit Acceleration(const Length::Unit& aLengthUnit, const Time::Unit& aTimeUnit);
@@ -149,7 +151,9 @@ class Derived : public Unit
 
         static Unit MassDensity(const Mass::Unit& aMassUnit, const Length::Unit& aLengthUnit);
 
-        static Unit Parse(const String& aString);
+        static Unit Undefined();
+
+        // static Unit Parse(const String& aString);
 
        private:
         // S.I.

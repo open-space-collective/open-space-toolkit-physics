@@ -100,7 +100,7 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
         .def("to_string", &Derived::Unit::toString)
         .def("get_symbol", &Derived::Unit::getSymbol)
 
-        .def_static("undefined", &Derived::Unit::Undefined)
+        // Static constructors for specifying actual named S.I. units
         .def_static("square_meter", &Derived::Unit::SquareMeter)
         .def_static("cubic_meter", &Derived::Unit::CubicMeter)
         .def_static("hertz", &Derived::Unit::Hertz)
@@ -108,6 +108,8 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
         .def_static("tesla", &Derived::Unit::Tesla)
         .def_static("newton", &Derived::Unit::Newton)
         .def_static("kilogram_per_second", &Derived::Unit::KilogramPerSecond)
+
+        // Static constructors for specifying derived (non-base) quantities
         .def_static("velocity", &Derived::Unit::Velocity, arg("length"), arg("time"))
         .def_static("acceleration", &Derived::Unit::Acceleration, arg("length"), arg("time"))
         .def_static("angular_velocity", &Derived::Unit::AngularVelocity, arg("angle"), arg("time"))
@@ -115,6 +117,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
         .def_static("force", &Derived::Unit::Force, arg("mass"), arg("length"), arg("time"))
         .def_static("mass_flow_rate", &Derived::Unit::MassFlowRate, arg("mass"), arg("time"))
         .def_static("mass_density", &Derived::Unit::MassDensity, arg("mass"), arg("length"))
+
+        .def_static("undefined", &Derived::Unit::Undefined)
+
         // .def_static("parse", &Derived::Unit::Parse)
 
         ;

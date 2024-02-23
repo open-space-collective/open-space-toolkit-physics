@@ -303,22 +303,6 @@ String Derived::Unit::getSymbol() const
     return symbol;
 }
 
-Derived::Unit Derived::Unit::Undefined()
-{
-    return {
-        Length::Unit::Undefined,
-        {0},
-        Mass::Unit::Undefined,
-        {0},
-        Time::Unit::Undefined,
-        {0},
-        ElectricCurrent::Unit::Undefined,
-        {0},
-        Angle::Unit::Undefined,
-        {0}
-    };
-}
-
 Derived::Unit Derived::Unit::SquareMeter()
 {
     return {
@@ -495,7 +479,9 @@ Derived::Unit Derived::Unit::AngularVelocity(const Angle::Unit& anAngleUnit, con
     };
 }
 
-Derived::Unit Derived::Unit::Force(const Mass::Unit& aMassUnit, const Length::Unit& aLengthUnit, const Time::Unit& aTimeUnit)
+Derived::Unit Derived::Unit::Force(
+    const Mass::Unit& aMassUnit, const Length::Unit& aLengthUnit, const Time::Unit& aTimeUnit
+)
 {
     return {
         aLengthUnit,
@@ -534,6 +520,22 @@ Derived::Unit Derived::Unit::MassDensity(const Mass::Unit& aMassUnit, const Leng
         {-3},
         aMassUnit,
         {1},
+        Time::Unit::Undefined,
+        {0},
+        ElectricCurrent::Unit::Undefined,
+        {0},
+        Angle::Unit::Undefined,
+        {0}
+    };
+}
+
+Derived::Unit Derived::Unit::Undefined()
+{
+    return {
+        Length::Unit::Undefined,
+        {0},
+        Mass::Unit::Undefined,
+        {0},
         Time::Unit::Undefined,
         {0},
         ElectricCurrent::Unit::Undefined,
