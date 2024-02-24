@@ -303,22 +303,6 @@ String Derived::Unit::getSymbol() const
     return symbol;
 }
 
-Derived::Unit Derived::Unit::Undefined()
-{
-    return {
-        Length::Unit::Undefined,
-        {0},
-        Mass::Unit::Undefined,
-        {0},
-        Time::Unit::Undefined,
-        {0},
-        ElectricCurrent::Unit::Undefined,
-        {0},
-        Angle::Unit::Undefined,
-        {0}
-    };
-}
-
 Derived::Unit Derived::Unit::SquareMeter()
 {
     return {
@@ -399,6 +383,38 @@ Derived::Unit Derived::Unit::Tesla()
     };
 }
 
+Derived::Unit Derived::Unit::Newton()
+{
+    return {
+        Length::Unit::Meter,
+        {1},
+        Mass::Unit::Kilogram,
+        {1},
+        Time::Unit::Second,
+        {-2},
+        ElectricCurrent::Unit::Undefined,
+        {0},
+        Angle::Unit::Undefined,
+        {0},
+    };
+}
+
+Derived::Unit Derived::Unit::KilogramPerSecond()
+{
+    return {
+        Length::Unit::Undefined,
+        {0},
+        Mass::Unit::Kilogram,
+        {1},
+        Time::Unit::Second,
+        {-1},
+        ElectricCurrent::Unit::Undefined,
+        {0},
+        Angle::Unit::Undefined,
+        {0},
+    };
+}
+
 Derived::Unit Derived::Unit::Velocity(const Length::Unit& aLengthUnit, const Time::Unit& aTimeUnit)
 {
     return {
@@ -463,6 +479,40 @@ Derived::Unit Derived::Unit::AngularVelocity(const Angle::Unit& anAngleUnit, con
     };
 }
 
+Derived::Unit Derived::Unit::Force(
+    const Mass::Unit& aMassUnit, const Length::Unit& aLengthUnit, const Time::Unit& aTimeUnit
+)
+{
+    return {
+        aLengthUnit,
+        {1},
+        aMassUnit,
+        {1},
+        aTimeUnit,
+        {-2},
+        ElectricCurrent::Unit::Undefined,
+        {0},
+        Angle::Unit::Undefined,
+        {0},
+    };
+}
+
+Derived::Unit Derived::Unit::MassFlowRate(const Mass::Unit& aMassUnit, const Time::Unit& aTimeUnit)
+{
+    return {
+        Length::Unit::Undefined,
+        {0},
+        aMassUnit,
+        {1},
+        aTimeUnit,
+        {-1},
+        ElectricCurrent::Unit::Undefined,
+        {0},
+        Angle::Unit::Undefined,
+        {0},
+    };
+}
+
 Derived::Unit Derived::Unit::MassDensity(const Mass::Unit& aMassUnit, const Length::Unit& aLengthUnit)
 {
     return {
@@ -470,6 +520,22 @@ Derived::Unit Derived::Unit::MassDensity(const Mass::Unit& aMassUnit, const Leng
         {-3},
         aMassUnit,
         {1},
+        Time::Unit::Undefined,
+        {0},
+        ElectricCurrent::Unit::Undefined,
+        {0},
+        Angle::Unit::Undefined,
+        {0}
+    };
+}
+
+Derived::Unit Derived::Unit::Undefined()
+{
+    return {
+        Length::Unit::Undefined,
+        {0},
+        Mass::Unit::Undefined,
+        {0},
         Time::Unit::Undefined,
         {0},
         ElectricCurrent::Unit::Undefined,
