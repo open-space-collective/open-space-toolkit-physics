@@ -72,8 +72,8 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Scalar, InUnit)
 {
     {
         EXPECT_TRUE(scalar_.inUnit(Unit::Length(Length::Unit::Foot)).isDefined());
-        
-        EXPECT_DOUBLE_EQ(value_, scalar_.inUnit(Unit::Length(Length::Unit::Meter)));
+
+        EXPECT_DOUBLE_EQ(value_, scalar_.inUnit(Unit::Length(Length::Unit::Meter)).getValue());
     }
 }
 
@@ -90,4 +90,3 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Scalar, Undefined)
         EXPECT_FALSE(Scalar::Undefined().isDefined());
     }
 }
-

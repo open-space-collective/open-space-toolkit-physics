@@ -89,16 +89,16 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Vector, InUnit)
 {
     {
         EXPECT_TRUE(vector_.inUnit(Unit::Length(Length::Unit::Foot)).isDefined());
-        
-        EXPECT_DOUBLE_EQ(value_.norm(), vector_.inUnit(Unit::Length(Length::Unit::Meter)).norm());
+
+        EXPECT_DOUBLE_EQ(value_.norm(), vector_.inUnit(Unit::Length(Length::Unit::Meter)).getValue().norm());
     }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Data_Vector, InFrame)
 {
     {
-        EXPECT_EQ(vector_.inFrame(frameSPtr_, Instant::J2000(), vector_);
-        EXPECT_NE(vector_.inFrame(frameSPtr_, Instant::J2000(), vector_.inFrame(Frame::ITRF(), Instant::J2000()));
+        EXPECT_EQ(vector_.inFrame(frameSPtr_, Instant::J2000()), vector_);
+        EXPECT_NE(vector_.inFrame(frameSPtr_, Instant::J2000()), vector_.inFrame(Frame::ITRF(), Instant::J2000()));
     }
 }
 
@@ -115,4 +115,3 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Vector, Undefined)
         EXPECT_FALSE(Vector::Undefined().isDefined());
     }
 }
-
