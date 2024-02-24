@@ -29,6 +29,12 @@ inline void OpenSpaceToolkitPhysicsPy_Unit(pybind11::module& aModule)
         ;
     
     unit_class
+    
+        .def(self == self)
+        .def(self != self)
+
+        .def("__str__", &(shiftToString<Unit>))
+        .def("__repr__", &(shiftToString<Unit>))
         .def("is_defined", &Unit::isDefined)
         .def("is_none", &Unit::isNone)
         .def("get_type", &Unit::getType)

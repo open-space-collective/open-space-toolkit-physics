@@ -27,6 +27,9 @@ def direction(value: float, frame: Frame) -> Direction:
 
 
 class TestDirection:
+    def test_constructor(self, direction: Direction):
+        assert direction is not None
+
     def test_equals(self, direction: Direction):
         assert direction == direction
 
