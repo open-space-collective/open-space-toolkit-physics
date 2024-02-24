@@ -34,10 +34,6 @@ class Direction : public Vector
    public:
     Direction(const Vector3d& aValue, const Shared<const Frame>& aFrameSPtr);
 
-    bool operator==(const Direction& aDirection) const;
-
-    bool operator!=(const Direction& aDirection) const;
-
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Vector& aVector);
 
     static Direction Undefined();

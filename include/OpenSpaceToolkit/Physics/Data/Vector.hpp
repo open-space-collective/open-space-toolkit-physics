@@ -53,7 +53,7 @@ class Vector
 
     Vector inFrame(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const;
 
-    String toString(const Integer& aPrecision = Integer::Undefined()) const;
+    String toString(const Integer& aPrecision = 6) const;
 
     static Vector Undefined();
 
