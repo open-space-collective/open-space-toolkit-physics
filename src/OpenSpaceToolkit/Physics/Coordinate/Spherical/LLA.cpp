@@ -1,6 +1,7 @@
 /// Apache License 2.0
 
 #include <GeographicLib/Geodesic.hpp>
+#include <GeographicLib/GeodesicLine.hpp>
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
@@ -106,6 +107,40 @@ Length LLA::calculateDistanceTo(
 ) const
 {
     return LLA::DistanceBetween(*this, aLLA, anEllipsoidEquatorialRadius, anEllipsoidFlattening);
+}
+
+Pair<Angle, Angle> LLA::calculateAzimuthTo(
+    const LLA& aLLA, const Length& anEllipsoidEquatorialRadius, const Real& anEllipsoidFlattening
+) const
+{
+    return LLA::AzimuthBetween(*this, aLLA, anEllipsoidEquatorialRadius, anEllipsoidFlattening);
+}
+
+LLA LLA::calculateIntermediateTo(
+    const LLA& aLLA, const Real& aRatio, const Length& anEllipsoidEquatorialRadius, const Real& anEllipsoidFlattening
+) const
+{
+    return LLA::IntermediateBetween(*this, aLLA, aRatio, anEllipsoidEquatorialRadius, anEllipsoidFlattening);
+}
+
+LLA LLA::calculateForward(
+    const Angle& aDirection,
+    const Length& aDistance,
+    const Length& anEllipsoidEquatorialRadius,
+    const Real& anEllipsoidFlattening
+) const
+{
+    return LLA::Forward(*this, aDirection, aDistance, anEllipsoidEquatorialRadius, anEllipsoidFlattening);
+}
+
+Array<LLA> LLA::calculateIntermediateLLAsTo(
+    const LLA& aLLA,
+    const Size& aNumberOfPoints,
+    const Length& anEllipsoidEquatorialRadius,
+    const Real& anEllipsoidFlattening
+) const
+{
+    return LLA::IntermediateLLAs(*this, aLLA, aNumberOfPoints, anEllipsoidEquatorialRadius, anEllipsoidFlattening);
 }
 
 Vector3d LLA::toVector() const
@@ -249,6 +284,117 @@ Length LLA::DistanceBetween(
     );
 
     return Length::Meters(distance_m);
+}
+
+Pair<Angle, Angle> LLA::AzimuthBetween(
+    const LLA& aFirstLLA,
+    const LLA& aSecondLLA,
+    const Length& anEllipsoidEquatorialRadius,
+    const Real& anEllipsoidFlattening
+)
+{
+    const GeographicLib::Geodesic& geodesic =
+        GeographicLib::Geodesic(anEllipsoidEquatorialRadius.inMeters(), anEllipsoidFlattening);
+
+    GeographicLib::Math::real azimuth1_deg;
+    GeographicLib::Math::real azimuth2_deg;
+    geodesic.Inverse(
+        aFirstLLA.getLatitude().inDegrees(),
+        aFirstLLA.getLongitude().inDegrees(),
+        aSecondLLA.getLatitude().inDegrees(),
+        aSecondLLA.getLongitude().inDegrees(),
+        azimuth1_deg,
+        azimuth2_deg
+    );
+
+    return {Angle::Degrees(azimuth1_deg), Angle::Degrees(azimuth2_deg)};
+}
+
+LLA LLA::IntermediateBetween(
+    const LLA& aFirstLLA,
+    const LLA& aSecondLLA,
+    const Real& aRatio,
+    const Length& anEllipsoidEquatorialRadius,
+    const Real& anEllipsoidFlattening
+)
+{
+    const GeographicLib::Geodesic& geodesic =
+        GeographicLib::Geodesic(anEllipsoidEquatorialRadius.inMeters(), anEllipsoidFlattening);
+
+    const GeographicLib::GeodesicLine& geodesicLine = geodesic.InverseLine(
+        aFirstLLA.getLatitude().inDegrees(),
+        aFirstLLA.getLongitude().inDegrees(),
+        aSecondLLA.getLatitude().inDegrees(),
+        aSecondLLA.getLongitude().inDegrees()
+    );
+
+    GeographicLib::Math::real latitude_deg;
+    GeographicLib::Math::real longitude_deg;
+
+    const Length distance = DistanceBetween(aFirstLLA, aSecondLLA, anEllipsoidEquatorialRadius, anEllipsoidFlattening);
+
+    geodesicLine.Position(distance.inMeters() * aRatio, latitude_deg, longitude_deg);
+
+    return {Angle::Degrees(latitude_deg), Angle::Degrees(longitude_deg), Length::Meters(0.0)};
+}
+
+LLA LLA::Forward(
+    const LLA& aLLA,
+    const Angle& aDirection,
+    const Length& aDistance,
+    const Length& anEllipsoidEquatorialRadius,
+    const Real& anEllipsoidFlattening
+)
+{
+    const GeographicLib::Geodesic& geodesic =
+        GeographicLib::Geodesic(anEllipsoidEquatorialRadius.inMeters(), anEllipsoidFlattening);
+
+    GeographicLib::Math::real latitude_deg;
+    GeographicLib::Math::real longitude_deg;
+
+    geodesic.Direct(
+        aLLA.getLatitude().inDegrees(),
+        aLLA.getLongitude().inDegrees(),
+        aDirection.inDegrees(),
+        aDistance.inMeters(),
+        latitude_deg,
+        longitude_deg
+    );
+
+    return {Angle::Degrees(latitude_deg), Angle::Degrees(longitude_deg), Length::Meters(0.0)};
+}
+
+Array<LLA> LLA::IntermediateLLAs(
+    const LLA& aFirstLLA,
+    const LLA& aSecondLLA,
+    const Size& aNumberOfPoints,
+    const Length& anEllipsoidEquatorialRadius,
+    const Real& anEllipsoidFlattening
+)
+{
+    Array<LLA> intermediateLLAs;
+    intermediateLLAs.reserve(aNumberOfPoints);
+
+    const GeographicLib::Geodesic& geodesic =
+        GeographicLib::Geodesic(anEllipsoidEquatorialRadius.inMeters(), anEllipsoidFlattening);
+
+    const GeographicLib::GeodesicLine& geodesicLine = geodesic.InverseLine(
+        aFirstLLA.getLatitude().inDegrees(),
+        aFirstLLA.getLongitude().inDegrees(),
+        aSecondLLA.getLatitude().inDegrees(),
+        aSecondLLA.getLongitude().inDegrees()
+    );
+
+    GeographicLib::Math::real latitude_deg;
+    GeographicLib::Math::real longitude_deg;
+
+    for (Size i = 0; i < aNumberOfPoints; ++i)
+    {
+        geodesicLine.Position((i + 1) * geodesicLine.Distance() / (aNumberOfPoints + 1), latitude_deg, longitude_deg);
+        intermediateLLAs.add(LLA(Angle::Degrees(latitude_deg), Angle::Degrees(longitude_deg), Length::Meters(0.0)));
+    }
+
+    return intermediateLLAs;
 }
 
 }  // namespace spherical

@@ -1,6 +1,7 @@
 /// Apache License 2.0
 
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
+#include <OpenSpaceToolkit/Core/Container/Iterator/Zip.hpp>
 #include <OpenSpaceToolkit/Core/Container/Table.hpp>
 #include <OpenSpaceToolkit/Core/Container/Tuple.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
@@ -18,8 +19,10 @@ using ostk::core::type::Shared;
 using ostk::core::type::Real;
 using ostk::core::type::String;
 using ostk::core::container::Tuple;
+using ostk::core::container::Pair;
 using ostk::core::container::Array;
 using ostk::core::container::Table;
+using ostk::core::container::iterator::Zip;
 using ostk::core::filesystem::Path;
 using ostk::core::filesystem::File;
 
@@ -218,6 +221,186 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, CalculateDistanceTo_Sp
 
         EXPECT_EQ(distanceSemiPolesOneDirection, distanceSemiPolesOtherDirection);
         EXPECT_EQ(distanceSemiPolesOneDirection.inMeters(), pi * sphericalEarthEquatorialRadius.inMeters());
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, calcluateAzimuthTo_WGS84)
+{
+    const Earth WGS84Earth = Earth::WGS84();
+
+    const Length WGS84EarthEquatorialRadius = WGS84Earth.getEquatorialRadius();
+    const Real WGS84EarthFlattening = WGS84Earth.getFlattening();
+
+    // from pole to pole
+    {
+        const LLA llaNorthPole = LLA(Angle::Degrees(90.0), Angle::Degrees(15.0), Length::Meters(1.0));
+        const LLA llaSouthPole = LLA(Angle::Degrees(-90.0), Angle::Degrees(15.0), Length::Meters(1.0));
+
+        const Pair<Angle, Angle> azimuthsSemiPolesOneDirection =
+            llaNorthPole.calculateAzimuthTo(llaSouthPole, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
+        const Pair<Angle, Angle> azimuthsSemiPolesOtherDirection =
+            llaSouthPole.calculateAzimuthTo(llaNorthPole, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
+
+        EXPECT_EQ(azimuthsSemiPolesOneDirection.first, Angle::Degrees(180.0));
+        EXPECT_EQ(azimuthsSemiPolesOneDirection.second, Angle::Degrees(180.0));
+        EXPECT_EQ(azimuthsSemiPolesOtherDirection.first, Angle::Degrees(0.0));
+        EXPECT_EQ(azimuthsSemiPolesOtherDirection.second, Angle::Degrees(0.0));
+    }
+
+    // along equator
+    {
+        const LLA llaEquatorial0 = LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Meters(1.0));
+        const LLA llaEquatorial10 = LLA(Angle::Degrees(0.0), Angle::Degrees(10.0), Length::Meters(1.0));
+
+        const Pair<Angle, Angle> azimuths =
+            llaEquatorial0.calculateAzimuthTo(llaEquatorial10, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
+
+        EXPECT_EQ(azimuths.first, Angle::Degrees(90.0));
+        EXPECT_EQ(azimuths.second, Angle::Degrees(90.0));
+    }
+
+    // arbitrary points
+    {
+        const LLA lla1 = LLA(Angle::Degrees(57.23487), Angle::Degrees(23.5343), Length::Meters(1.0));
+        const LLA lla2 = LLA(Angle::Degrees(-20.573), Angle::Degrees(-58.128), Length::Meters(1.0));
+
+        const Pair<Angle, Angle> azimuths =
+            lla1.calculateAzimuthTo(lla2, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
+
+        EXPECT_NEAR(azimuths.first.inDegrees(), -108.0281189033601, 1e-12);
+        EXPECT_NEAR(azimuths.second.inDegrees(), -146.58082723289277, 1e-12);
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, calculateIntermediateTo_WGS84)
+{
+    const Earth WGS84Earth = Earth::WGS84();
+
+    const Length WGS84EarthEquatorialRadius = WGS84Earth.getEquatorialRadius();
+    const Real WGS84EarthFlattening = WGS84Earth.getFlattening();
+
+    // from pole to pole
+    {
+        const LLA llaNorthPole = LLA(Angle::Degrees(90.0), Angle::Degrees(15.0), Length::Meters(1.0));
+        const LLA llaSouthPole = LLA(Angle::Degrees(-90.0), Angle::Degrees(15.0), Length::Meters(1.0));
+
+        const LLA llaIntermediate =
+            llaNorthPole.calculateIntermediateTo(llaSouthPole, 0.5, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
+
+        EXPECT_EQ(llaIntermediate.getLatitude(), Angle::Degrees(-9.244860342938533e-15));
+        EXPECT_EQ(llaIntermediate.getLongitude(), Angle::Degrees(15.0));
+    }
+
+    // along equator
+    {
+        const LLA llaEquatorial0 = LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Meters(1.0));
+        const LLA llaEquatorial10 = LLA(Angle::Degrees(0.0), Angle::Degrees(10.0), Length::Meters(1.0));
+
+        const LLA llaIntermediate = llaEquatorial0.calculateIntermediateTo(
+            llaEquatorial10, 0.5, WGS84EarthEquatorialRadius, WGS84EarthFlattening
+        );
+
+        EXPECT_EQ(llaIntermediate.getLatitude(), Angle::Degrees(0.0));
+        EXPECT_EQ(llaIntermediate.getLongitude(), Angle::Degrees(5.000000000000001));
+    }
+
+    // arbitrary points
+    {
+        const LLA lla1 = LLA(Angle::Degrees(57.23487), Angle::Degrees(23.5343), Length::Meters(1.0));
+        const LLA lla2 = LLA(Angle::Degrees(-20.573), Angle::Degrees(-58.128), Length::Meters(1.0));
+
+        const LLA llaIntermediate =
+            lla1.calculateIntermediateTo(lla2, 0.5, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
+
+        EXPECT_EQ(llaIntermediate.getLatitude(), Angle::Degrees(23.21714909968633));
+        EXPECT_EQ(llaIntermediate.getLongitude(), Angle::Degrees(-30.281783237740761));
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, calculateForward_WGS84)
+{
+    const Earth WGS84Earth = Earth::WGS84();
+
+    const Length WGS84EarthEquatorialRadius = WGS84Earth.getEquatorialRadius();
+    const Real WGS84EarthFlattening = WGS84Earth.getFlattening();
+
+    // self validated
+    {
+        const LLA lla = LLA(Angle::Degrees(50.0), Angle::Degrees(15.0), Length::Meters(0.0));
+        const LLA llaExpected = LLA(Angle::Degrees(-50.0), Angle::Degrees(15.0), Length::Meters(0.0));
+
+        const Pair<Angle, Angle> azimuths =
+            LLA::AzimuthBetween(lla, llaExpected, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
+        const Length distance =
+            LLA::DistanceBetween(lla, llaExpected, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
+
+        const LLA llaCalculated =
+            lla.calculateForward(azimuths.first, distance, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
+
+        EXPECT_NEAR(llaCalculated.getLatitude().inDegrees(), llaExpected.getLatitude().inDegrees(), 1e-13);
+        EXPECT_NEAR(llaCalculated.getLongitude().inDegrees(), llaExpected.getLongitude().inDegrees(), 1e-13);
+    }
+
+    // along equator
+    {
+        const LLA lla = LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Meters(0.0));
+        const Angle azimuth = Angle::Degrees(90.0);
+        const Length distance = Length::Meters(1113194.9079327357);
+
+        const LLA llaExpected = LLA(Angle::Degrees(0.0), Angle::Degrees(10.0), Length::Meters(0.0));
+
+        const LLA llaCalculated =
+            lla.calculateForward(azimuth, distance, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
+
+        EXPECT_NEAR(llaCalculated.getLatitude().inDegrees(), llaExpected.getLatitude().inDegrees(), 1e-13);
+        EXPECT_NEAR(llaCalculated.getLongitude().inDegrees(), llaExpected.getLongitude().inDegrees(), 1e-13);
+    }
+
+    // arbitrary points
+    {
+        const LLA lla = LLA(Angle::Degrees(57.23487), Angle::Degrees(23.5343), Length::Meters(1.0));
+        const Angle azimuth = Angle::Degrees(-108.0281189033601);
+        const Length distance = Length::Meters(11419275.689591393);
+
+        const LLA llaExpected = LLA(Angle::Degrees(-20.573), Angle::Degrees(-58.128), Length::Meters(1.0));
+
+        const LLA llaCalculated =
+            lla.calculateForward(azimuth, distance, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
+
+        EXPECT_NEAR(llaExpected.getLatitude().inDegrees(), llaCalculated.getLatitude().inDegrees(), 1e-13);
+        EXPECT_NEAR(llaExpected.getLongitude().inDegrees(), llaCalculated.getLongitude().inDegrees(), 1e-13);
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, calculateIntermediateLLAsTo_WGS84)
+{
+    const Earth WGS84Earth = Earth::WGS84();
+
+    const Length WGS84EarthEquatorialRadius = WGS84Earth.getEquatorialRadius();
+    const Real WGS84EarthFlattening = WGS84Earth.getFlattening();
+
+    {
+        const LLA lla1 = LLA(Angle::Degrees(30.0), Angle::Degrees(15.0), Length::Meters(0.0));
+        const LLA lla2 = LLA(Angle::Degrees(40.0), Angle::Degrees(-20.0), Length::Meters(0.0));
+
+        const Array<LLA> llas =
+            lla1.calculateIntermediateLLAsTo(lla2, 4, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
+
+        const Array<LLA> llasExpected = {
+            LLA(Angle::Degrees(32.77300035484225), Angle::Degrees(8.723208061296164), Length::Meters(0.0)),
+            LLA(Angle::Degrees(35.21133849773737), Angle::Degrees(2.0702066434751725), Length::Meters(0.0)),
+            LLA(Angle::Degrees(37.26216299007888), Angle::Degrees(-4.958642779319256), Length::Meters(0.0)),
+            LLA(Angle::Degrees(38.87378674131851), Angle::Degrees(-12.335452344768232), Length::Meters(0.0))
+        };
+
+        EXPECT_EQ(llas.getSize(), 4);
+        for (const auto& element : Zip(llas, llasExpected))
+        {
+            const LLA lla = std::get<0>(element);
+            const LLA llaExpected = std::get<1>(element);
+            EXPECT_NEAR(lla.getLatitude().inDegrees(), llaExpected.getLatitude().inDegrees(), 1e-13);
+            EXPECT_NEAR(lla.getLongitude().inDegrees(), llaExpected.getLongitude().inDegrees(), 1e-13);
+        }
     }
 }
 
@@ -557,5 +740,188 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, DistanceBetween_WGS84)
             LLA::DistanceBetween(llaEquatorial0, llaNorthPole, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
 
         ASSERT_GT(distanceQuarterNorthSpherical, distanceQuarterNorthWGS84);
+    }
+}
+
+// values compared against pyproj
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, AzimuthBetween_WGS84)
+{
+    const Earth WGS84Earth = Earth::WGS84();
+
+    const Length WGS84EarthEquatorialRadius = WGS84Earth.getEquatorialRadius();
+    const Real WGS84EarthFlattening = WGS84Earth.getFlattening();
+
+    // from pole to pole
+    {
+        const LLA llaNorthPole = LLA(Angle::Degrees(90.0), Angle::Degrees(15.0), Length::Meters(1.0));
+        const LLA llaSouthPole = LLA(Angle::Degrees(-90.0), Angle::Degrees(15.0), Length::Meters(1.0));
+
+        const Pair<Angle, Angle> azimuthsSemiPolesOneDirection =
+            LLA::AzimuthBetween(llaNorthPole, llaSouthPole, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
+        const Pair<Angle, Angle> azimuthsSemiPolesOtherDirection =
+            LLA::AzimuthBetween(llaSouthPole, llaNorthPole, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
+
+        EXPECT_EQ(azimuthsSemiPolesOneDirection.first, Angle::Degrees(180.0));
+        EXPECT_EQ(azimuthsSemiPolesOneDirection.second, Angle::Degrees(180.0));
+        EXPECT_EQ(azimuthsSemiPolesOtherDirection.first, Angle::Degrees(0.0));
+        EXPECT_EQ(azimuthsSemiPolesOtherDirection.second, Angle::Degrees(0.0));
+    }
+
+    // along equator
+    {
+        const LLA llaEquatorial0 = LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Meters(1.0));
+        const LLA llaEquatorial10 = LLA(Angle::Degrees(0.0), Angle::Degrees(10.0), Length::Meters(1.0));
+
+        const Pair<Angle, Angle> azimuths =
+            LLA::AzimuthBetween(llaEquatorial0, llaEquatorial10, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
+
+        EXPECT_EQ(azimuths.first, Angle::Degrees(90.0));
+        EXPECT_EQ(azimuths.second, Angle::Degrees(90.0));
+    }
+
+    // arbitrary points
+    {
+        const LLA lla1 = LLA(Angle::Degrees(57.23487), Angle::Degrees(23.5343), Length::Meters(1.0));
+        const LLA lla2 = LLA(Angle::Degrees(-20.573), Angle::Degrees(-58.128), Length::Meters(1.0));
+
+        const Pair<Angle, Angle> azimuths =
+            LLA::AzimuthBetween(lla1, lla2, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
+
+        EXPECT_NEAR(azimuths.first.inDegrees(), -108.0281189033601, 1e-12);
+        EXPECT_NEAR(azimuths.second.inDegrees(), -146.58082723289277, 1e-12);
+    }
+}
+
+// values compared against pyproj
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, IntermediateBetween_WGS84)
+{
+    const Earth WGS84Earth = Earth::WGS84();
+
+    const Length WGS84EarthEquatorialRadius = WGS84Earth.getEquatorialRadius();
+    const Real WGS84EarthFlattening = WGS84Earth.getFlattening();
+
+    // from pole to pole
+    {
+        const LLA llaNorthPole = LLA(Angle::Degrees(90.0), Angle::Degrees(15.0), Length::Meters(1.0));
+        const LLA llaSouthPole = LLA(Angle::Degrees(-90.0), Angle::Degrees(15.0), Length::Meters(1.0));
+
+        const LLA llaIntermediate =
+            LLA::IntermediateBetween(llaNorthPole, llaSouthPole, 0.5, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
+
+        EXPECT_EQ(llaIntermediate.getLatitude(), Angle::Degrees(-9.244860342938533e-15));
+        EXPECT_EQ(llaIntermediate.getLongitude(), Angle::Degrees(15.0));
+    }
+
+    // along equator
+    {
+        const LLA llaEquatorial0 = LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Meters(1.0));
+        const LLA llaEquatorial10 = LLA(Angle::Degrees(0.0), Angle::Degrees(10.0), Length::Meters(1.0));
+
+        const LLA llaIntermediate = LLA::IntermediateBetween(
+            llaEquatorial0, llaEquatorial10, 0.5, WGS84EarthEquatorialRadius, WGS84EarthFlattening
+        );
+
+        EXPECT_EQ(llaIntermediate.getLatitude(), Angle::Degrees(0.0));
+        EXPECT_EQ(llaIntermediate.getLongitude(), Angle::Degrees(5.000000000000001));
+    }
+
+    // arbitrary points
+    {
+        const LLA lla1 = LLA(Angle::Degrees(57.23487), Angle::Degrees(23.5343), Length::Meters(1.0));
+        const LLA lla2 = LLA(Angle::Degrees(-20.573), Angle::Degrees(-58.128), Length::Meters(1.0));
+
+        const LLA llaIntermediate =
+            LLA::IntermediateBetween(lla1, lla2, 0.5, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
+
+        EXPECT_EQ(llaIntermediate.getLatitude(), Angle::Degrees(23.21714909968633));
+        EXPECT_EQ(llaIntermediate.getLongitude(), Angle::Degrees(-30.281783237740761));
+    }
+}
+
+// values compared against pyproj
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Forward_WGS84)
+{
+    const Earth WGS84Earth = Earth::WGS84();
+
+    const Length WGS84EarthEquatorialRadius = WGS84Earth.getEquatorialRadius();
+    const Real WGS84EarthFlattening = WGS84Earth.getFlattening();
+
+    // self validated
+    {
+        const LLA lla = LLA(Angle::Degrees(50.0), Angle::Degrees(15.0), Length::Meters(0.0));
+        const LLA llaExpected = LLA(Angle::Degrees(-50.0), Angle::Degrees(15.0), Length::Meters(0.0));
+
+        const Pair<Angle, Angle> azimuths =
+            LLA::AzimuthBetween(lla, llaExpected, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
+        const Length distance =
+            LLA::DistanceBetween(lla, llaExpected, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
+
+        const LLA llaCalculated =
+            LLA::Forward(lla, azimuths.first, distance, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
+
+        EXPECT_NEAR(llaCalculated.getLatitude().inDegrees(), llaExpected.getLatitude().inDegrees(), 1e-13);
+        EXPECT_NEAR(llaCalculated.getLongitude().inDegrees(), llaExpected.getLongitude().inDegrees(), 1e-13);
+    }
+
+    // along equator
+    {
+        const LLA lla = LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Meters(0.0));
+        const Angle azimuth = Angle::Degrees(90.0);
+        const Length distance = Length::Meters(1113194.9079327357);
+
+        const LLA llaExpected = LLA(Angle::Degrees(0.0), Angle::Degrees(10.0), Length::Meters(0.0));
+
+        const LLA llaCalculated =
+            LLA::Forward(lla, azimuth, distance, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
+
+        EXPECT_NEAR(llaCalculated.getLatitude().inDegrees(), llaExpected.getLatitude().inDegrees(), 1e-13);
+        EXPECT_NEAR(llaCalculated.getLongitude().inDegrees(), llaExpected.getLongitude().inDegrees(), 1e-13);
+    }
+
+    // arbitrary points
+    {
+        const LLA lla = LLA(Angle::Degrees(57.23487), Angle::Degrees(23.5343), Length::Meters(1.0));
+        const Angle azimuth = Angle::Degrees(-108.0281189033601);
+        const Length distance = Length::Meters(11419275.689591393);
+
+        const LLA llaExpected = LLA(Angle::Degrees(-20.573), Angle::Degrees(-58.128), Length::Meters(1.0));
+
+        const LLA llaCalculated =
+            LLA::Forward(lla, azimuth, distance, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
+
+        EXPECT_NEAR(llaExpected.getLatitude().inDegrees(), llaCalculated.getLatitude().inDegrees(), 1e-13);
+        EXPECT_NEAR(llaExpected.getLongitude().inDegrees(), llaCalculated.getLongitude().inDegrees(), 1e-13);
+    }
+}
+
+// values compared against pyproj
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, IntermediateLLAs_WGS84)
+{
+    const Earth WGS84Earth = Earth::WGS84();
+
+    const Length WGS84EarthEquatorialRadius = WGS84Earth.getEquatorialRadius();
+    const Real WGS84EarthFlattening = WGS84Earth.getFlattening();
+
+    {
+        const LLA lla1 = LLA(Angle::Degrees(30.0), Angle::Degrees(15.0), Length::Meters(0.0));
+        const LLA lla2 = LLA(Angle::Degrees(40.0), Angle::Degrees(-20.0), Length::Meters(0.0));
+
+        const Array<LLA> llas = LLA::IntermediateLLAs(lla1, lla2, 4, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
+
+        const Array<LLA> llasExpected = {
+            LLA(Angle::Degrees(32.77300035484225), Angle::Degrees(8.723208061296164), Length::Meters(0.0)),
+            LLA(Angle::Degrees(35.21133849773737), Angle::Degrees(2.0702066434751725), Length::Meters(0.0)),
+            LLA(Angle::Degrees(37.26216299007888), Angle::Degrees(-4.958642779319256), Length::Meters(0.0)),
+            LLA(Angle::Degrees(38.87378674131851), Angle::Degrees(-12.335452344768232), Length::Meters(0.0))
+        };
+
+        EXPECT_EQ(llas.getSize(), 4);
+        for (const auto& element : Zip(llas, llasExpected))
+        {
+            const LLA lla = std::get<0>(element);
+            const LLA llaExpected = std::get<1>(element);
+            EXPECT_NEAR(lla.getLatitude().inDegrees(), llaExpected.getLatitude().inDegrees(), 1e-13);
+            EXPECT_NEAR(lla.getLongitude().inDegrees(), llaExpected.getLongitude().inDegrees(), 1e-13);
+        }
     }
 }
