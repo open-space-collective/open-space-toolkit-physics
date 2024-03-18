@@ -1,5 +1,6 @@
 # Apache License 2.0
 
+from re import S
 import pytest
 import numpy as np
 
@@ -191,6 +192,64 @@ class TestLLA:
             == Spherical.equatorial_radius.in_meters() * np.pi
         )
 
+    def test_calculate_azimuth_to(
+        self,
+        lla_point_equator_1: LLA,
+        lla_point_equator_2: LLA,
+    ):
+        azimuths: Angle = lla_point_equator_1.calculate_azimuth_to(
+            lla_point_equator_2,
+            Spherical.equatorial_radius,
+            Spherical.flattening,
+        )
+        assert azimuths is not None
+        assert isinstance(azimuths, tuple)
+        assert len(azimuths) == 2
+        assert isinstance(azimuths[0], Angle)
+        assert isinstance(azimuths[1], Angle)
+
+    def test_calculate_intermediate_to(
+        self,
+        lla_point_equator_1: LLA,
+        lla_point_equator_2: LLA,
+    ):
+        lla_intermediate: LLA = lla_point_equator_1.calculate_intermediate_to(
+            lla_point_equator_2,
+            0.3,
+            Spherical.equatorial_radius,
+            Spherical.flattening,
+        )
+        assert lla_intermediate is not None
+        assert isinstance(lla_intermediate, LLA)
+
+    def test_calculate_forward(
+        self,
+        lla: LLA,
+    ):
+        lla_forward: LLA = lla.calculate_forward(
+            Angle.degrees(0.0),
+            Length.meters(5000.0),
+            Spherical.equatorial_radius,
+            Spherical.flattening,
+        )
+        assert lla_forward is not None
+        assert isinstance(lla_forward, LLA)
+
+    def test_calculate_linspace_to(
+        self,
+        lla_point_equator_1: LLA,
+        lla_point_equator_2: LLA,
+    ):
+        n_points: int = 10
+        llas: LLA = lla_point_equator_1.calculate_linspace_to(
+            lla_point_equator_2,
+            n_points,
+            Spherical.equatorial_radius,
+            Spherical.flattening,
+        )
+        assert llas is not None
+        assert len(llas) == n_points
+
     def test_conversion_vector(
         self,
         latitude_deg: float,
@@ -294,12 +353,6 @@ class TestLLA:
         )
         assert distance_spherical_poles == distance_spherical_equatorial_1_3
 
-        distance_wgs84_poles: Length = LLA.distance_between(
-            lla_north_pole,
-            lla_south_pole,
-            WGS84_EGM96.equatorial_radius,
-            WGS84_EGM96.flattening,
-        )
         distance_wgs84_equatorial_1_2: Length = LLA.distance_between(
             lla_point_equator_1,
             lla_point_equator_2,
@@ -345,3 +398,65 @@ class TestLLA:
             distance_wgs84_1_north_pole < distance_wgs84_equatorial_1_2
         )  # flattened surface at poles
         assert distance_wgs84_1_north_pole < distance_spherical_equatorial_1_2
+
+    def test_azimuth_between(
+        self,
+        lla_point_equator_1: LLA,
+        lla_point_equator_2: LLA,
+    ):
+        azimuths: Angle = LLA.azimuth_between(
+            lla_point_equator_1,
+            lla_point_equator_2,
+            Spherical.equatorial_radius,
+            Spherical.flattening,
+        )
+        assert azimuths is not None
+        assert isinstance(azimuths, tuple)
+        assert len(azimuths) == 2
+        assert isinstance(azimuths[0], Angle)
+        assert isinstance(azimuths[1], Angle)
+
+    def test_intermediate_between(
+        self,
+        lla_point_equator_1: LLA,
+        lla_point_equator_2: LLA,
+    ):
+        lla_intermediate: LLA = LLA.intermediate_between(
+            lla_point_equator_1,
+            lla_point_equator_2,
+            0.3,
+            Spherical.equatorial_radius,
+            Spherical.flattening,
+        )
+        assert lla_intermediate is not None
+        assert isinstance(lla_intermediate, LLA)
+
+    def test_forward(
+        self,
+        lla: LLA,
+    ):
+        lla_forward: LLA = LLA.forward(
+            lla,
+            Angle.degrees(0.0),
+            Length.meters(5000.0),
+            Spherical.equatorial_radius,
+            Spherical.flattening,
+        )
+        assert lla_forward is not None
+        assert isinstance(lla_forward, LLA)
+
+    def test_linspace(
+        self,
+        lla_point_equator_1: LLA,
+        lla_point_equator_2: LLA,
+    ):
+        n_points: int = 10
+        llas: LLA = LLA.linspace(
+            lla_point_equator_1,
+            lla_point_equator_2,
+            n_points,
+            Spherical.equatorial_radius,
+            Spherical.flattening,
+        )
+        assert llas is not None
+        assert len(llas) == n_points

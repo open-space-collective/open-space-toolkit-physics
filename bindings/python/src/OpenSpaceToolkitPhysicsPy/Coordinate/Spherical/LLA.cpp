@@ -33,6 +33,37 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             arg("ellipsoid_equatorial_radius"),
             arg("ellipsoid_flattening")
         )
+        .def(
+            "calculate_azimuth_to",
+            &LLA::calculateAzimuthTo,
+            arg("lla"),
+            arg("ellipsoid_equatorial_radius"),
+            arg("ellipsoid_flattening")
+        )
+        .def(
+            "calculate_intermediate_to",
+            &LLA::calculateIntermediateTo,
+            arg("lla"),
+            arg("ratio"),
+            arg("ellipsoid_equatorial_radius"),
+            arg("ellipsoid_flattening")
+        )
+        .def(
+            "calculate_forward",
+            &LLA::calculateForward,
+            arg("azimuth"),
+            arg("distance"),
+            arg("ellipsoid_equatorial_radius"),
+            arg("ellipsoid_flattening")
+        )
+        .def(
+            "calculate_linspace_to",
+            &LLA::calculateLinspaceTo,
+            arg("lla"),
+            arg("number_of_points"),
+            arg("ellipsoid_equatorial_radius"),
+            arg("ellipsoid_flattening")
+        )
 
         .def("to_vector", &LLA::toVector)
         .def("to_cartesian", &LLA::toCartesian, arg("ellipsoid_equatorial_radius"), arg("ellipsoid_flattening"))
@@ -52,6 +83,41 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             &LLA::DistanceBetween,
             arg("lla_1"),
             arg("lla_2"),
+            arg("ellipsoid_equatorial_radius"),
+            arg("ellipsoid_flattening")
+        )
+        .def_static(
+            "azimuth_between",
+            &LLA::AzimuthBetween,
+            arg("lla_1"),
+            arg("lla_2"),
+            arg("ellipsoid_equatorial_radius"),
+            arg("ellipsoid_flattening")
+        )
+        .def_static(
+            "intermediate_between",
+            &LLA::IntermediateBetween,
+            arg("lla_1"),
+            arg("lla_2"),
+            arg("ratio"),
+            arg("ellipsoid_equatorial_radius"),
+            arg("ellipsoid_flattening")
+        )
+        .def_static(
+            "forward",
+            &LLA::Forward,
+            arg("lla"),
+            arg("azimuth"),
+            arg("distance"),
+            arg("ellipsoid_equatorial_radius"),
+            arg("ellipsoid_flattening")
+        )
+        .def_static(
+            "linspace",
+            &LLA::Linspace,
+            arg("lla_1"),
+            arg("lla_2"),
+            arg("number_of_points"),
             arg("ellipsoid_equatorial_radius"),
             arg("ellipsoid_flattening")
         )
