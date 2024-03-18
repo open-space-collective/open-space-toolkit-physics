@@ -235,13 +235,13 @@ class TestLLA:
         assert lla_forward is not None
         assert isinstance(lla_forward, LLA)
 
-    def test_calculate_intermediate_llas_to(
+    def test_calculate_linspace_to(
         self,
         lla_point_equator_1: LLA,
         lla_point_equator_2: LLA,
     ):
         n_points: int = 10
-        llas: LLA = lla_point_equator_1.calculate_intermediate_llas_to(
+        llas: LLA = lla_point_equator_1.calculate_linspace_to(
             lla_point_equator_2,
             n_points,
             Spherical.equatorial_radius,
@@ -445,13 +445,13 @@ class TestLLA:
         assert lla_forward is not None
         assert isinstance(lla_forward, LLA)
 
-    def test_intermediate_llas(
+    def test_linspace(
         self,
         lla_point_equator_1: LLA,
         lla_point_equator_2: LLA,
     ):
         n_points: int = 10
-        llas: LLA = LLA.intermediate_llas(
+        llas: LLA = LLA.linspace(
             lla_point_equator_1,
             lla_point_equator_2,
             n_points,

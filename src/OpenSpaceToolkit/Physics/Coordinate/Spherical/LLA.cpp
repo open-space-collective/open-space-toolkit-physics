@@ -133,14 +133,14 @@ LLA LLA::calculateForward(
     return LLA::Forward(*this, aDirection, aDistance, anEllipsoidEquatorialRadius, anEllipsoidFlattening);
 }
 
-Array<LLA> LLA::calculateIntermediateLLAsTo(
+Array<LLA> LLA::calculateLinspaceTo(
     const LLA& aLLA,
     const Size& aNumberOfPoints,
     const Length& anEllipsoidEquatorialRadius,
     const Real& anEllipsoidFlattening
 ) const
 {
-    return LLA::IntermediateLLAs(*this, aLLA, aNumberOfPoints, anEllipsoidEquatorialRadius, anEllipsoidFlattening);
+    return LLA::Linspace(*this, aLLA, aNumberOfPoints, anEllipsoidEquatorialRadius, anEllipsoidFlattening);
 }
 
 Vector3d LLA::toVector() const
@@ -364,7 +364,7 @@ LLA LLA::Forward(
     return {Angle::Degrees(latitude_deg), Angle::Degrees(longitude_deg), Length::Meters(0.0)};
 }
 
-Array<LLA> LLA::IntermediateLLAs(
+Array<LLA> LLA::Linspace(
     const LLA& aFirstLLA,
     const LLA& aSecondLLA,
     const Size& aNumberOfPoints,
@@ -372,7 +372,7 @@ Array<LLA> LLA::IntermediateLLAs(
     const Real& anEllipsoidFlattening
 )
 {
-    Array<LLA> intermediateLLAs;
+    Array<LLA> intermediateLLAs = Array<LLA>::Empty();
     intermediateLLAs.reserve(aNumberOfPoints);
 
     const GeographicLib::Geodesic& geodesic =

@@ -109,14 +109,14 @@ class LLA
         const Real& anEllipsoidFlattening
     ) const;
 
-    /// @brief                  Generate LLA between this LLA coordinate and another LLA coordinate at a given interval
+    /// @brief                  Generate LLAs between this LLA coordinate and another LLA coordinate at a given interval
     ///
     /// @param                  [in] aLLA A LLA coordinate
     /// @param                  [in] aNumberOfPoints A number of points
     /// @param                  [in] anEllipsoidEquatorialRadius An ellipsoid equatorial radius
     /// @param                  [in] anEllipsoidFlattening An ellipsoid flattening
 
-    Array<LLA> calculateIntermediateLLAsTo(
+    Array<LLA> calculateLinspaceTo(
         const LLA& aLLA,
         const Size& aNumberOfPoints,
         const Length& anEllipsoidEquatorialRadius,
@@ -203,7 +203,7 @@ class LLA
         const Real& anEllipsoidFlattening
     );
 
-    /// @brief                  Generate equidistant intermediate LLAs between two LLA coordinates.
+    /// @brief                  Generate equidistant LLAs between two LLA coordinates for the specified number of points
     ///
     /// @param                  [in] aFirstLLA A first LLA coordinate
     /// @param                  [in] aSecondLLA A second LLA coordinate
@@ -212,7 +212,7 @@ class LLA
     /// @param                  [in] anEllipsoidFlattening An ellipsoid flattening
     /// @return                 intermediate equidistant LLAs between the two LLA coordinates
 
-    static Array<LLA> IntermediateLLAs(
+    static Array<LLA> Linspace(
         const LLA& aFirstLLA,
         const LLA& aSecondLLA,
         const Size& aNumberOfPoints,

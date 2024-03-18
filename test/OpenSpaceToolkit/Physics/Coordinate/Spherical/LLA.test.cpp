@@ -372,7 +372,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, calculateForward_WGS84
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, calculateIntermediateLLAsTo_WGS84)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, calculateLinspaceTo_WGS84)
 {
     const Earth WGS84Earth = Earth::WGS84();
 
@@ -383,8 +383,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, calculateIntermediateL
         const LLA lla1 = LLA(Angle::Degrees(30.0), Angle::Degrees(15.0), Length::Meters(0.0));
         const LLA lla2 = LLA(Angle::Degrees(40.0), Angle::Degrees(-20.0), Length::Meters(0.0));
 
-        const Array<LLA> llas =
-            lla1.calculateIntermediateLLAsTo(lla2, 4, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
+        const Array<LLA> llas = lla1.calculateLinspaceTo(lla2, 4, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
 
         const Array<LLA> llasExpected = {
             LLA(Angle::Degrees(32.77300035484225), Angle::Degrees(8.723208061296164), Length::Meters(0.0)),
@@ -895,7 +894,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Forward_WGS84)
 }
 
 // values compared against pyproj
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, IntermediateLLAs_WGS84)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Linspace_WGS84)
 {
     const Earth WGS84Earth = Earth::WGS84();
 
@@ -906,7 +905,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, IntermediateLLAs_WGS84
         const LLA lla1 = LLA(Angle::Degrees(30.0), Angle::Degrees(15.0), Length::Meters(0.0));
         const LLA lla2 = LLA(Angle::Degrees(40.0), Angle::Degrees(-20.0), Length::Meters(0.0));
 
-        const Array<LLA> llas = LLA::IntermediateLLAs(lla1, lla2, 4, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
+        const Array<LLA> llas = LLA::Linspace(lla1, lla2, 4, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
 
         const Array<LLA> llasExpected = {
             LLA(Angle::Degrees(32.77300035484225), Angle::Degrees(8.723208061296164), Length::Meters(0.0)),

@@ -57,8 +57,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             arg("ellipsoid_flattening")
         )
         .def(
-            "calculate_intermediate_llas_to",
-            &LLA::calculateIntermediateLLAsTo,
+            "calculate_linspace_to",
+            &LLA::calculateLinspaceTo,
             arg("lla"),
             arg("number_of_points"),
             arg("ellipsoid_equatorial_radius"),
@@ -113,8 +113,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             arg("ellipsoid_flattening")
         )
         .def_static(
-            "intermediate_llas",
-            &LLA::IntermediateLLAs,
+            "linspace",
+            &LLA::Linspace,
             arg("lla_1"),
             arg("lla_2"),
             arg("number_of_points"),
