@@ -3,7 +3,8 @@
 import pytest
 from datetime import datetime
 
-from ostk.core.filesystem import File, Path
+from ostk.core.filesystem import File
+from ostk.core.filesystem import Path
 
 from ostk.io import URL
 
@@ -24,7 +25,6 @@ class TestManifest:
         assert isinstance(manifest.get_next_update_check_timestamp_for("manifest"), Instant)
 
     def test_get_remote_data_urls_success(self, manifest: Manifest):
-
         test_url: URL = URL.parse("http://test.com")
         assert isinstance(manifest.get_remote_data_urls(test_url, "manifest"), list)
 

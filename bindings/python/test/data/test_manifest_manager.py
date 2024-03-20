@@ -2,12 +2,15 @@
 
 import pytest
 from datetime import datetime
-from ostk.core.filesystem import Directory, File, Path
+from ostk.core.filesystem import Directory
+from ostk.core.filesystem import File
+from ostk.core.filesystem import Path
 
 from ostk.io import URL
 
 from ostk.physics.time import Instant
-from ostk.physics.data import Manager, Manifest
+from ostk.physics.data import Manager
+from ostk.physics.data import Manifest
 
 class TestManager:
     def test_get_last_update_timestamp_for_success(self, manager: Manager):
@@ -38,7 +41,6 @@ class TestManager:
         assert isinstance(manager.find_remote_data_urls(".*"), list)
 
     def test_load_manifest_success(self, manager: Manager, manifest: Manifest):
-
         manager.load_manifest(manifest)
         assert manager.get_manifest().is_defined()
 
@@ -46,7 +48,6 @@ class TestManager:
         assert isinstance(manager.manifest_file_exists(), bool)
 
     def test_reset_success(self, manager: Manager, manifest: Manifest):
-
         manager.load_manifest(manifest)
         assert manager.get_manifest().is_defined()
 

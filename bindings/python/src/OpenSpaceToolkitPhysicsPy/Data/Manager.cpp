@@ -10,7 +10,9 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Manager(pybind11::module& aModule)
 
     class_<Manager> manager(aModule, "Manager");
 
-    manager.def("get_last_update_timestamp_for", &Manager::getLastUpdateTimestampFor, arg("data_name"))
+    manager
+    
+        .def("get_last_update_timestamp_for", &Manager::getLastUpdateTimestampFor, arg("data_name"))
         .def("get_remote_url", &Manager::getRemoteUrl)
         .def("get_manifest_repository", &Manager::getManifestRepository)
         .def("get_remote_data_urls", &Manager::getRemoteDataUrls, arg("data_name"))
