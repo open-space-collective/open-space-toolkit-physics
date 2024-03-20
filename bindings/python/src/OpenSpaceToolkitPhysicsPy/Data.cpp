@@ -1,8 +1,10 @@
 /// Apache License 2.0
 
+#include <OpenSpaceToolkitPhysicsPy/Data/Direction.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Data/Manager.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Data/Manifest.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Data/Scalar.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Data/Vector.cpp>
-#include <OpenSpaceToolkitPhysicsPy/Data/Direction.cpp>
 
 inline void OpenSpaceToolkitPhysicsPy_Data(pybind11::module& aModule)
 {
@@ -15,4 +17,6 @@ inline void OpenSpaceToolkitPhysicsPy_Data(pybind11::module& aModule)
     OpenSpaceToolkitPhysicsPy_Data_Scalar(data);
     OpenSpaceToolkitPhysicsPy_Data_Vector(data);
     OpenSpaceToolkitPhysicsPy_Data_Direction(data);
+    OpenSpaceToolkitPhysicsPy_Data_Manager(data);
+    OpenSpaceToolkitPhysicsPy_Data_Manifest(data);
 }
