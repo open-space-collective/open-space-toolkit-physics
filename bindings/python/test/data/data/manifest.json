@@ -1,0 +1,22 @@
+{
+    "manifest": {
+        "path": "",
+        "filenames": "manifest.json",
+        "file_meta": "This file. Entry tracks the expected manifest update time on the github so that local OSTk can make smarter pulling decisions.",
+        "last_update": "2023-11-01T22:05:43.789048",
+        "next_update_check": "2023-11-02T04:05:43.789093",
+        "check_frequency": "6 hours"
+    },
+    "bulletin-A": {
+        "path": "coordinate/frame/providers/iers/bulletin-A",
+        "filenames": "ser7.dat",
+        "remote_sources": [
+            {
+                "url": "https://maia.usno.navy.mil/ser7/ser7.dat"
+            }
+        ],
+        "last_update": "2023-08-04T12:02:17.028701",
+        "next_update_check": "2023-08-05T12:02:17.029315",
+        "check_frequency": "1 day"
+    }
+}

@@ -109,7 +109,7 @@ class Manager
 
     /// @brief                  Find remote URLs of data matching regular expression string
     ///
-    /// @param                  [in] aKernelNameRegexString A regular expression string
+    /// @param                  [in] aDataNameRegex A regular expression string
     /// @return                 Array of URLs
 
     Array<URL> findRemoteDataUrls(const String& aDataNameRegex) const;
