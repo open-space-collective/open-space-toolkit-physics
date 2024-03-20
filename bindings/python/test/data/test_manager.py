@@ -2,7 +2,7 @@
 
 import pytest
 from datetime import datetime
-from ostk.core.filesystem import Directory
+from ostk.core.filesystem import Directory, File
 from ostk.physics.time import Instant
 from ostk.physics.data import Manager, Manifest
 
