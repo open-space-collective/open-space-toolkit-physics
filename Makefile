@@ -33,6 +33,7 @@ endif
 platform ?= x86_64
 $(info Platform value is $(platform))
 
+
 pull: ## Pull all images
 
 	@ echo "Pulling images..."
