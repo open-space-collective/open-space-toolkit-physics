@@ -2,6 +2,6 @@
 
 numpy>=1.17.4
 
-open-space-toolkit-core~=2.1
-open-space-toolkit-io~=2.0
-open-space-toolkit-mathematics~=2.0
+open-space-toolkit-core~=2.1.0
+open-space-toolkit-io~=2.0.0
+open-space-toolkit-mathematics~=2.0.0
