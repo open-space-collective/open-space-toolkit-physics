@@ -500,7 +500,7 @@ test-unit-cpp-standalone: ## Run C++ unit tests (standalone)
 
 .PHONY: test-unit-cpp-standalone
 
-test-unit-python: build-release-image-python ## Run Python unit tests
+test-unit-python: build-development-image ## Run Python unit tests
 
 	@ $(MAKE) test-unit-python-standalone
 
@@ -519,7 +519,6 @@ test-unit-python-standalone: ## Run Python unit tests (standalone)
 		/bin/bash -c "cmake -DBUILD_PYTHON_BINDINGS=ON -DBUILD_UNIT_TESTS=OFF .. \
 		&& $(MAKE) -j 4 && python3.11 -m pip install --root-user-action=ignore bindings/python/OpenSpaceToolkit*Py-python-package-3.11 \
 		&& python3.11 -m pip install plotly pandas \
-		&& python3.11 -m pip install git+https://github.com/lucas-bremond/cesiumpy.git#egg=cesiumpy \
 		&& cd /usr/local/lib/python3.11/site-packages/ostk/$(project_name)/ \
 		&& python3.11 -m pytest -sv ."
 
