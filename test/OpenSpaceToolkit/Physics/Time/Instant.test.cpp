@@ -1032,6 +1032,7 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, StreamOperator)
 {
     using ostk::physics::time::Scale;
     using ostk::physics::time::Instant;
+    using ostk::physics::time::DateTime;
 
     {
         testing::internal::CaptureStdout();
@@ -1039,6 +1040,12 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, StreamOperator)
         EXPECT_NO_THROW(std::cout << Instant::J2000() << std::endl);
 
         EXPECT_FALSE(testing::internal::GetCapturedStdout().empty());
+    }
+
+    {
+        std::cout << Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0), Scale::UTC) << std::endl;
+
+        std::cout << Instant::Undefined() << std::endl;
     }
 }
 

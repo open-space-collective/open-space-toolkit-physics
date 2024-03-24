@@ -176,9 +176,16 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Instant& anInstant)
 {
     ostk::core::utils::Print::Header(anOutputStream, "Instant");
 
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Date-Time:" << (anInstant.isDefined() ? anInstant.getDateTime(anInstant.scale_).toString() : "Undefined");
-    ostk::core::utils::Print::Line(anOutputStream) << "Scale:" << StringFromScale(anInstant.scale_);
+    if (anInstant.isDefined())
+    {
+        ostk::core::utils::Print::Line(anOutputStream)
+            << "Date-Time:" << anInstant.getDateTime(anInstant.scale_).toString();
+        ostk::core::utils::Print::Line(anOutputStream) << "Scale:" << StringFromScale(anInstant.scale_);
+    }
+    else
+    {
+        ostk::core::utils::Print::Line(anOutputStream) << "Undefined";
+    }
 
     ostk::core::utils::Print::Footer(anOutputStream);
 
