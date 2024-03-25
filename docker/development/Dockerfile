@@ -90,20 +90,23 @@ RUN mkdir -p /tmp/sofa \
 
 ## SPICE Toolkit
 
+ARG TARGETPLATFORM
+
 RUN cd /tmp \
-    && wget --quiet http://naif.jpl.nasa.gov/pub/naif/toolkit/C/PC_Linux_GCC_64bit/packages/cspice.tar.Z \
-    && tar -xf cspice.tar.Z \
-    && cd cspice \
-    && apt-get update \
-    && apt-get install -y csh \
-    && ./makeall.csh > /dev/null \
-    && mkdir -p /usr/local/include/cspice \
-    && cp -r include/* /usr/local/include/cspice/ \
-    && cp -r lib/* /usr/local/lib/ \
-    && ln -s /usr/local/lib/cspice.a /usr/local/lib/libcspice.a \
-    && rm -rf /tmp/cspice \
-    && apt-get remove -y csh \
-    && rm -rf /var/lib/apt/lists/*
+ && export PACKAGE_PLATFORM=$(if [ ${TARGETPLATFORM} = "linux/amd64" ]; then echo "PC_Linux_GCC_64bit"; elif [ ${TARGETPLATFORM} = "linux/arm64" ]; then echo "MacM1_OSX_clang_64bit"; else echo "Unknown platform" && exit 1; fi;) \
+ && wget --quiet http://naif.jpl.nasa.gov/pub/naif/toolkit/C/${PACKAGE_PLATFORM}/packages/cspice.tar.Z \
+ && tar -xf cspice.tar.Z \
+ && cd cspice \
+ && apt-get update \
+ && apt-get install -y csh \
+ && ./makeall.csh > /dev/null \
+ && mkdir -p /usr/local/include/cspice \
+ && cp -r include/* /usr/local/include/cspice/ \
+ && cp -r lib/* /usr/local/lib/ \
+ && ln -s /usr/local/lib/cspice.a /usr/local/lib/libcspice.a \
+ && rm -rf /tmp/cspice \
+ && apt-get remove -y csh \
+ && rm -rf /var/lib/apt/lists/*
 
 # GeographicLib
 
