@@ -1,5 +1,7 @@
 var NAVTREEINDEX4 =
 {
+"classostk_1_1physics_1_1environment_1_1magnetic_1_1_model.html#a50d6421402d4f67aa9c45e9be5f27d30":[4,0,0,0,2,3,3,0],
+"classostk_1_1physics_1_1environment_1_1magnetic_1_1_model.html#a6fe1b73447dc65989d31db636fa73953":[4,0,0,0,2,3,3,1],
 "classostk_1_1physics_1_1environment_1_1magnetic_1_1_model.html#abf0510f9be2c196ea3c0586d02979b0f":[4,0,0,0,2,3,3,3],
 "classostk_1_1physics_1_1environment_1_1magnetic_1_1_model.html#ad272cd7b1f326266c03f996a239a1c6e":[4,0,0,0,2,3,3,4],
 "classostk_1_1physics_1_1environment_1_1magnetic_1_1_model.html#af357908c151a7809bbbc8fc676bd07b6":[4,0,0,0,2,3,3,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX4 =
 "classostk_1_1physics_1_1unit_1_1_angle.html#a6432e97ca00935017e8127a4716b39cc":[4,0,0,0,4,0,5],
 "classostk_1_1physics_1_1unit_1_1_angle.html#a6740a1198d36379ac69c502ac5163ec3":[4,0,0,0,4,0,28],
 "classostk_1_1physics_1_1unit_1_1_angle.html#a699f3d2a1a51bb9c0161e1b21eb3ab71":[4,0,0,0,4,0,14],
-"classostk_1_1physics_1_1unit_1_1_angle.html#a724438b0e5377983a850d6458f8d6d50":[4,0,0,0,4,0,17],
-"classostk_1_1physics_1_1unit_1_1_angle.html#a777db7b25e8ceb066e750688c99b91f3":[4,0,0,0,4,0,7],
-"classostk_1_1physics_1_1unit_1_1_angle.html#a8005f366ede053dff5cbc8631a2bc75b":[4,0,0,0,4,0,4]
+"classostk_1_1physics_1_1unit_1_1_angle.html#a724438b0e5377983a850d6458f8d6d50":[4,0,0,0,4,0,17]
 };

@@ -94,10 +94,10 @@ var NAVTREEINDEX =
 "_a_e_r_8cpp.html",
 "_mass_8cpp.html",
 "classostk_1_1physics_1_1coordinate_1_1_velocity.html#a6b3e3347b338ddc3f5ee4569518bcb8f",
-"classostk_1_1physics_1_1environment_1_1_object.html#aa7e729b9f9530a07e119ec75ab9506e5",
-"classostk_1_1physics_1_1environment_1_1magnetic_1_1_model.html#abf0510f9be2c196ea3c0586d02979b0f",
-"classostk_1_1physics_1_1unit_1_1_angle.html#a9e645ced8c42b89d92fb5753fd9af0b7",
-"functions_i.html"
+"classostk_1_1physics_1_1environment_1_1_object.html#a7b2938a7de7a434a944b66163fc28076",
+"classostk_1_1physics_1_1environment_1_1magnetic_1_1_model.html#a50d6421402d4f67aa9c45e9be5f27d30",
+"classostk_1_1physics_1_1unit_1_1_angle.html#a777db7b25e8ceb066e750688c99b91f3",
+"functions_g.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

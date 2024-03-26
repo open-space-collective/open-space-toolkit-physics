@@ -1,7 +1,11 @@
 var classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a =
 [
     [ "LLA", "classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a.html#a29cbe2117eeed4357206b9abd04cefa9", null ],
+    [ "calculateAzimuthTo", "classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a.html#a44454a090d3fe39956980da6866975a5", null ],
     [ "calculateDistanceTo", "classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a.html#afee067fe35ef4ac8e8cad93a83dbc0e6", null ],
+    [ "calculateForward", "classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a.html#ab9f8c265d11cdd1ead088e3cbbdfcbf8", null ],
+    [ "calculateIntermediateTo", "classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a.html#aa1cab20ca346a5ca0d8122c35f0fe735", null ],
+    [ "calculateLinspaceTo", "classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a.html#aa21b85a92cfd363d5c95292153d45502", null ],
     [ "getAltitude", "classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a.html#aa4c8192ed931bf0fca66b40bd4f37df6", null ],
     [ "getLatitude", "classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a.html#a207f588e18177a10cc41819ef5f8baf8", null ],
     [ "getLongitude", "classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a.html#a1a7964c3294aa0b1153f23e39e41cdc9", null ],

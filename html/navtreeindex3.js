@@ -1,5 +1,7 @@
 var NAVTREEINDEX3 =
 {
+"classostk_1_1physics_1_1environment_1_1_object.html#a7b2938a7de7a434a944b66163fc28076":[4,0,0,0,2,6,13],
+"classostk_1_1physics_1_1environment_1_1_object.html#a7e71cbc82cacb97028dfec30b4d22615":[4,0,0,0,2,6,11],
 "classostk_1_1physics_1_1environment_1_1_object.html#aa7e729b9f9530a07e119ec75ab9506e5":[4,0,0,0,2,6,0],
 "classostk_1_1physics_1_1environment_1_1_object.html#aab522bdca9b06fdd615238bacdaca423":[4,0,0,0,2,6,14],
 "classostk_1_1physics_1_1environment_1_1_object.html#ab306747a9a25bce149ac38e90ccf5996":[4,0,0,0,2,6,6],
@@ -247,7 +249,5 @@ var NAVTREEINDEX3 =
 "classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#ac4b57f94304595595fc3eebb0dd0d050":[4,0,0,0,2,3,2,4],
 "classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#ad7ce781762b59980fb255b3b2a3f6aca":[4,0,0,0,2,3,2,8],
 "classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth.html#ade6f1fc6f3a69543e2bb1921aa8168c5":[4,0,0,0,2,3,2,1],
-"classostk_1_1physics_1_1environment_1_1magnetic_1_1_model.html":[4,0,0,0,2,3,3],
-"classostk_1_1physics_1_1environment_1_1magnetic_1_1_model.html#a50d6421402d4f67aa9c45e9be5f27d30":[4,0,0,0,2,3,3,0],
-"classostk_1_1physics_1_1environment_1_1magnetic_1_1_model.html#a6fe1b73447dc65989d31db636fa73953":[4,0,0,0,2,3,3,1]
+"classostk_1_1physics_1_1environment_1_1magnetic_1_1_model.html":[4,0,0,0,2,3,3]
 };
