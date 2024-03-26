@@ -182,8 +182,16 @@ OSTk Physics uses input data from various sources to determine the state of the 
 
 None of these files are shipped with the source code of this library. OSTk Physics has the capability to fetch the required files at runtime if they are not present or if they are outdated. This is done using file Manager classes (see any file named `Manager.hpp`). Data for any use-case is queried through the Manager class rather than directly, which allows the Manager to handle file loading and fetching.
 
-If you would like to seed the ostk data generation so that you already have an initial copy of all the data files (to avoid re-fetching at runtime), then we recommend adding these lines of code to the dockerfile you use to build your production image where OSTk is installed.
+If you would like to seed the ostk data generation so that you already have an initial copy of all the data files (to avoid re-fetching at runtime), then we recommend running the following commands to set up your environment.
+```
+# Set the environment variable for OSTk Data location
+export OSTK_PHYSICS_DATA_LOCAL_REPOSITORY=/path/to/preferred/data/storage/dir
 
+# Clone OSTk data repo into that dir
+RUN git clone --branch v1 --single-branch --depth=1 https://github.com/open-space-collective/open-space-toolkit-data.git $OSTK_PHYSICS_DATA_LOCAL_REPOSITORY && chmod -R g+w $OSTK_PHYSICS_DATA_LOCAL_REPOSITORY
+```
+
+For users that are installing OSTk into docker images, here is what we recommend you add to your dockerfiles.
 ```
 ARG OSTK_PHYSICS_DATA_LOCAL_REPOSITORY="/var/cache/open-space-toolkit-data"
 ENV OSTK_PHYSICS_DATA_LOCAL_REPOSITORY="${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY}"
@@ -196,9 +204,8 @@ If you have a multi-stage dockerfile, then you can easily just copy the ostk-dat
 ARG OSTK_PHYSICS_DATA_LOCAL_REPOSITORY="/var/cache/open-space-toolkit-data"
 ENV OSTK_PHYSICS_DATA_LOCAL_REPOSITORY="${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY}"
 
-COPY --from=build-env ${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY} ${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY}
-# or if you are creating a non-root image
-COPY --from=build-env --chown=${USER_UID}:${USER_GID} ${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY} ${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY}
+COPY --from=build-env ${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY} ${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY} # If you are copying to an image where the user is currently root
+COPY --from=build-env --chown=${USER_UID}:${USER_GID} ${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY} ${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY} # If you are copying to an image where the user is not currently root
 ```
 
 The following table shows the availabe data source settings with the different environment variables you can set:
