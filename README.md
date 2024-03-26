@@ -182,7 +182,25 @@ OSTk Physics uses input data from various sources to determine the state of the 
 
 None of these files are shipped with the source code of this library. OSTk Physics has the capability to fetch the required files at runtime if they are not present or if they are outdated. This is done using file Manager classes (see any file named `Manager.hpp`). Data for any use-case is queried through the Manager class rather than directly, which allows the Manager to handle file loading and fetching.
 
-The following table shows the availabe data source settings:
+If you would like to seed the ostk data generation so that you already have an initial copy of all the data files (to avoid re-fetching at runtime), then we recommend adding these lines of code to the dockerfile you use to build your production image where OSTk is installed.
+
+```
+ARG OSTK_PHYSICS_DATA_LOCAL_REPOSITORY="/var/cache/open-space-toolkit-data"
+ENV OSTK_PHYSICS_DATA_LOCAL_REPOSITORY="${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY}"
+
+RUN git clone --branch v1 --single-branch --depth=1 https://github.com/open-space-collective/open-space-toolkit-data.git ${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY} \
+ && chmod -R g+w ${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY}
+
+```
+If you have a multi-stage dockerfile, then you can easily just copy the ostk-data repo install from one build stage (in the example below that's `build-env`) to the next, so that you don't have to reinstall it on every build stage.
+```
+ARG OSTK_PHYSICS_DATA_LOCAL_REPOSITORY="/var/cache/open-space-toolkit-data"
+ENV OSTK_PHYSICS_DATA_LOCAL_REPOSITORY="${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY}"
+
+COPY --from=build-env ${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY} ${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY}
+```
+
+The following table shows the availabe data source settings with the different environment variables you can set:
 
 | Environment Variable                                                                   | Default Value                                                                                            |
 | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
