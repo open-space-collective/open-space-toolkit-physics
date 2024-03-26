@@ -190,7 +190,6 @@ ENV OSTK_PHYSICS_DATA_LOCAL_REPOSITORY="${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY}"
 
 RUN git clone --branch v1 --single-branch --depth=1 https://github.com/open-space-collective/open-space-toolkit-data.git ${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY} \
  && chmod -R g+w ${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY}
-
 ```
 If you have a multi-stage dockerfile, then you can easily just copy the ostk-data repo install from one build stage (in the example below that's `build-env`) to the next, so that you don't have to reinstall it on every build stage.
 ```
@@ -198,6 +197,8 @@ ARG OSTK_PHYSICS_DATA_LOCAL_REPOSITORY="/var/cache/open-space-toolkit-data"
 ENV OSTK_PHYSICS_DATA_LOCAL_REPOSITORY="${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY}"
 
 COPY --from=build-env ${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY} ${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY}
+# or if you are creating a non-root image
+COPY --from=build-env --chown=${USER_UID}:${USER_GID} ${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY} ${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY}
 ```
 
 The following table shows the availabe data source settings with the different environment variables you can set:
