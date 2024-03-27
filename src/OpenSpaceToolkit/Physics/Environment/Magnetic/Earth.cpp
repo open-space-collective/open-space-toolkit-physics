@@ -43,9 +43,12 @@ class Earth::Impl
    public:
     Impl(const Earth::Type& aType, const Directory& aDataDirectory);
 
+    Impl(const Impl& anImpl);
+
     ~Impl();
 
     Earth::Type getType() const;
+    Directory getDataDirectory() const;
 
     bool isDefined() const;
 
@@ -53,31 +56,42 @@ class Earth::Impl
 
    private:
     Earth::Type type_;
+    Directory dataDirectory_;
 
-    MagneticModel* magneticModelPtr_;
+    Unique<MagneticModel> magneticModelUPtr_;
 
     static MagneticModel* MagneticModelFromType(const Earth::Type& aType, const Directory& aDataDirectory);
 };
 
 Earth::Impl::Impl(const Earth::Type& aType, const Directory& aDataDirectory)
     : type_(aType),
-      magneticModelPtr_(Earth::Impl::MagneticModelFromType(aType, aDataDirectory))
+      dataDirectory_(aDataDirectory),
+      magneticModelUPtr_(Earth::Impl::MagneticModelFromType(aType, aDataDirectory))
 {
 }
 
-Earth::Impl::~Impl()
+Earth::Impl::Impl(const Earth::Impl& anImpl)
+    : type_(anImpl.getType()),
+      dataDirectory_(anImpl.getDataDirectory()),
+      magneticModelUPtr_(Earth::Impl::MagneticModelFromType(anImpl.getType(), anImpl.getDataDirectory()))
 {
-    delete magneticModelPtr_;
 }
+
+Earth::Impl::~Impl() {}
 
 Earth::Type Earth::Impl::getType() const
 {
     return type_;
 }
 
+Directory Earth::Impl::getDataDirectory() const
+{
+    return dataDirectory_;
+}
+
 bool Earth::Impl::isDefined() const
 {
-    return magneticModelPtr_ != nullptr;
+    return magneticModelUPtr_ != nullptr;
 }
 
 Vector3d Earth::Impl::getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const
@@ -97,11 +111,11 @@ Vector3d Earth::Impl::getFieldValueAt(const Vector3d& aPosition, const Instant& 
 
     const Integer year = anInstant.getDateTime(Scale::UTC).accessDate().getYear();
 
-    if (((year < static_cast<int>(magneticModelPtr_->MinTime())) ||
-         (year > static_cast<int>(magneticModelPtr_->MaxTime()))))
+    if (((year < static_cast<int>(magneticModelUPtr_->MinTime())) ||
+         (year > static_cast<int>(magneticModelUPtr_->MaxTime()))))
     {
         throw ostk::core::error::RuntimeError(
-            "Year [{}] is out of [{}, {}] bounds.", year, magneticModelPtr_->MinTime(), magneticModelPtr_->MaxTime()
+            "Year [{}] is out of [{}, {}] bounds.", year, magneticModelUPtr_->MinTime(), magneticModelUPtr_->MaxTime()
         );
     }
 
@@ -117,7 +131,7 @@ Vector3d Earth::Impl::getFieldValueAt(const Vector3d& aPosition, const Instant& 
     double By_nT;  // [nT] Northerly component of the magnetic field
     double Bz_nT;  // [nT] Vertical component of the magnetic field
 
-    (*magneticModelPtr_)(year, latitude_deg, longitude_deg, altitude_m, Bx_nT, By_nT, Bz_nT);
+    (*magneticModelUPtr_)(year, latitude_deg, longitude_deg, altitude_m, Bx_nT, By_nT, Bz_nT);
 
     const Vector3d magneticField_NED = Vector3d {By_nT, Bx_nT, -Bz_nT} / 1e9;  // [T]
 
@@ -244,7 +258,6 @@ Earth& Earth::operator=(const Earth& anEarthMagneticModel)
 
 Earth::~Earth() {}
 
-// Might want to look into using a Shared Pointer for Earth::Impl
 Earth* Earth::clone() const
 {
     return new Earth(*this);
