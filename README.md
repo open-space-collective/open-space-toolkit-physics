@@ -182,7 +182,7 @@ OSTk Physics uses input data from various sources to determine the state of the 
 
 None of these files are shipped with the source code of this library. OSTk Physics has the capability to fetch the required files at runtime if they are not present or if they are outdated. This is done using file Manager classes (see any file named `Manager.hpp`). Data for any use-case is queried through the Manager class rather than directly, which allows the Manager to handle file loading and fetching.
 
-If you would like to seed the ostk data generation so that you already have an initial copy of all the data files (to avoid re-fetching at runtime), then we recommend running the following commands to set up your environment.
+If you would like to seed the ostk data generation so that you already have an initial copy of all the data files (to avoid a large initial fetch at runtime), then we recommend running the following commands to set up your environment.
 ```
 # Set the environment variable for OSTk Data location
 export OSTK_PHYSICS_DATA_LOCAL_REPOSITORY=/path/to/preferred/data/storage/dir
