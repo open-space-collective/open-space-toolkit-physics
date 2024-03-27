@@ -28,9 +28,9 @@ var hierarchy =
     ] ],
     [ "ostk::physics::environment::ephemeris::spice::Kernel", "classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel.html", null ],
     [ "ostk::physics::coordinate::spherical::LLA", "classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a.html", null ],
+    [ "ostk::physics::environment::magnetic::earth::Manager", "classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager.html", null ],
     [ "ostk::physics::coordinate::frame::provider::iers::Manager", "classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager.html", null ],
     [ "ostk::physics::environment::ephemeris::spice::Manager", "classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager.html", null ],
-    [ "ostk::physics::environment::magnetic::earth::Manager", "classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager.html", null ],
     [ "ostk::physics::coordinate::frame::Manager", "classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager.html", null ],
     [ "ostk::physics::data::Manager", "classostk_1_1physics_1_1data_1_1_manager.html", null ],
     [ "ostk::physics::environment::atmospheric::earth::Manager", "classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager.html", null ],
@@ -89,8 +89,8 @@ var hierarchy =
       [ "ostk::physics::unit::Mass", "classostk_1_1physics_1_1unit_1_1_mass.html", null ],
       [ "ostk::physics::unit::Time", "classostk_1_1physics_1_1unit_1_1_time.html", null ]
     ] ],
-    [ "ostk::physics::unit::Derived::Unit", "classostk_1_1physics_1_1unit_1_1_derived_1_1_unit.html", null ],
     [ "ostk::physics::Unit", "classostk_1_1physics_1_1_unit.html", null ],
+    [ "ostk::physics::unit::Derived::Unit", "classostk_1_1physics_1_1unit_1_1_derived_1_1_unit.html", null ],
     [ "ostk::physics::data::Vector", "classostk_1_1physics_1_1data_1_1_vector.html", [
       [ "ostk::physics::data::Direction", "classostk_1_1physics_1_1data_1_1_direction.html", null ]
     ] ],

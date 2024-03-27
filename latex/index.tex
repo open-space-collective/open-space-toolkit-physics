@@ -163,7 +163,37 @@ O\+S\+Tk Physics uses input data from various sources to determine the state of 
 
 None of these files are shipped with the source code of this library. O\+S\+Tk Physics has the capability to fetch the required files at runtime if they are not present or if they are outdated. This is done using file Manager classes (see any file named {\ttfamily Manager.\+hpp}). Data for any use-\/case is queried through the Manager class rather than directly, which allows the Manager to handle file loading and fetching.
 
-The following table shows the availabe data source settings\+:
+If you would like to seed the ostk data generation so that you already have an initial copy of all the data files (to avoid a large initial fetch at runtime), then we recommend running the following commands to set up your environment. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\# Set the environment variable for OSTk Data location}
+\DoxyCodeLine{export OSTK\_PHYSICS\_DATA\_LOCAL\_REPOSITORY=/path/to/preferred/data/storage/dir}
+\DoxyCodeLine{}
+\DoxyCodeLine{\# Clone OSTk data repo into that dir}
+\DoxyCodeLine{RUN git clone -\/-\/branch v1 -\/-\/single-\/branch -\/-\/depth=1 https://github.com/open-\/space-\/collective/open-\/space-\/toolkit-\/data.git \$OSTK\_PHYSICS\_DATA\_LOCAL\_REPOSITORY \&\& chmod -\/R g+w \$OSTK\_PHYSICS\_DATA\_LOCAL\_REPOSITORY}
+\end{DoxyCode}
+
+
+For users that are installing O\+S\+Tk into docker images, here is what we recommend you add to your dockerfiles. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ARG OSTK\_PHYSICS\_DATA\_LOCAL\_REPOSITORY="/var/cache/open-\/space-\/toolkit-\/data"}
+\DoxyCodeLine{ENV OSTK\_PHYSICS\_DATA\_LOCAL\_REPOSITORY="\$\{OSTK\_PHYSICS\_DATA\_LOCAL\_REPOSITORY\}"}
+\DoxyCodeLine{}
+\DoxyCodeLine{RUN git clone -\/-\/branch v1 -\/-\/single-\/branch -\/-\/depth=1 https://github.com/open-\/space-\/collective/open-\/space-\/toolkit-\/data.git \$\{OSTK\_PHYSICS\_DATA\_LOCAL\_REPOSITORY\} \(\backslash\)}
+\DoxyCodeLine{ \&\& chmod -\/R g+w \$\{OSTK\_PHYSICS\_DATA\_LOCAL\_REPOSITORY\}}
+\end{DoxyCode}
+
+
+If you have a multi-\/stage dockerfile, then you can easily just copy the ostk-\/data repo install from one build stage (in the example below that\textquotesingle{}s {\ttfamily build-\/env}) to the next, so that you don\textquotesingle{}t have to reinstall it on every build stage. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ARG OSTK\_PHYSICS\_DATA\_LOCAL\_REPOSITORY="/var/cache/open-\/space-\/toolkit-\/data"}
+\DoxyCodeLine{ENV OSTK\_PHYSICS\_DATA\_LOCAL\_REPOSITORY="\$\{OSTK\_PHYSICS\_DATA\_LOCAL\_REPOSITORY\}"}
+\DoxyCodeLine{}
+\DoxyCodeLine{COPY -\/-\/from=build-\/env \$\{OSTK\_PHYSICS\_DATA\_LOCAL\_REPOSITORY\} \$\{OSTK\_PHYSICS\_DATA\_LOCAL\_REPOSITORY\} \# If you are copying to an image where the user is currently root}
+\DoxyCodeLine{COPY -\/-\/from=build-\/env -\/-\/chown=\$\{USER\_UID\}:\$\{USER\_GID\} \$\{OSTK\_PHYSICS\_DATA\_LOCAL\_REPOSITORY\} \$\{OSTK\_PHYSICS\_DATA\_LOCAL\_REPOSITORY\} \# If you are copying to an image where the user is not currently root}
+\end{DoxyCode}
+
+
+The following table shows the availabe data source settings with the different environment variables you can set\+:
 
 \tabulinesep=1mm
 \begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
