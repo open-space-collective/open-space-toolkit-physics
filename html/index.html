@@ -219,20 +219,23 @@ Data Management</h1>
 </ul>
 <p>None of these files are shipped with the source code of this library. OSTk Physics has the capability to fetch the required files at runtime if they are not present or if they are outdated. This is done using file Manager classes (see any file named <code>Manager.hpp</code>). Data for any use-case is queried through the Manager class rather than directly, which allows the Manager to handle file loading and fetching.</p>
 <p>If you would like to seed the ostk data generation so that you already have an initial copy of all the data files (to avoid a large initial fetch at runtime), then we recommend running the following commands to set up your environment. </p><div class="fragment"><div class="line"># Set the environment variable for OSTk Data location</div>
-<div class="line">export OSTK_PHYSICS_DATA_LOCAL_REPOSITORY=/path/to/preferred/data/storage/dir</div>
+<div class="line">export OSTK_DATA_LOCAL_CACHE=/path/to/preferred/data/storage/dir</div>
+<div class="line">export OSTK_PHYSICS_DATA_LOCAL_REPOSITORY=$OSTK_DATA_LOCAL_CACHE/data</div>
 <div class="line"> </div>
 <div class="line"># Clone OSTk data repo into that dir</div>
-<div class="line">RUN git clone --branch v1 --single-branch --depth=1 https://github.com/open-space-collective/open-space-toolkit-data.git $OSTK_PHYSICS_DATA_LOCAL_REPOSITORY &amp;&amp; chmod -R g+w $OSTK_PHYSICS_DATA_LOCAL_REPOSITORY</div>
-</div><!-- fragment --><p>For users that are installing OSTk into docker images, here is what we recommend you add to your dockerfiles. </p><div class="fragment"><div class="line">ARG OSTK_PHYSICS_DATA_LOCAL_REPOSITORY=&quot;/var/cache/open-space-toolkit-data&quot;</div>
-<div class="line">ENV OSTK_PHYSICS_DATA_LOCAL_REPOSITORY=&quot;${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY}&quot;</div>
+<div class="line">RUN git clone --branch v1 --single-branch --depth=1 https://github.com/open-space-collective/open-space-toolkit-data.git $OSTK_DATA_LOCAL_CACHE &amp;&amp; chmod -R g+w $OSTK_DATA_LOCAL_CACHE</div>
+</div><!-- fragment --><p>For users that are installing OSTk into docker images, here is what we recommend you add to your dockerfiles. </p><div class="fragment"><div class="line">ARG OSTK_DATA_LOCAL_CACHE=&quot;/var/cache/open-space-toolkit-data&quot;</div>
+<div class="line">ENV OSTK_DATA_LOCAL_CACHE=&quot;${OSTK_DATA_LOCAL_CACHE}&quot;</div>
+<div class="line">ENV OSTK_PHYSICS_DATA_LOCAL_REPOSITORY=&quot;${OSTK_DATA_LOCAL_CACHE}/data&quot;</div>
 <div class="line"> </div>
-<div class="line">RUN git clone --branch v1 --single-branch --depth=1 https://github.com/open-space-collective/open-space-toolkit-data.git ${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY} \</div>
-<div class="line"> &amp;&amp; chmod -R g+w ${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY}</div>
-</div><!-- fragment --><p>If you have a multi-stage dockerfile, then you can easily just copy the ostk-data repo install from one build stage (in the example below that's <code>build-env</code>) to the next, so that you don't have to reinstall it on every build stage. </p><div class="fragment"><div class="line">ARG OSTK_PHYSICS_DATA_LOCAL_REPOSITORY=&quot;/var/cache/open-space-toolkit-data&quot;</div>
-<div class="line">ENV OSTK_PHYSICS_DATA_LOCAL_REPOSITORY=&quot;${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY}&quot;</div>
+<div class="line">RUN git clone --branch v1 --single-branch --depth=1 https://github.com/open-space-collective/open-space-toolkit-data.git ${OSTK_DATA_LOCAL_CACHE} &amp;&amp; chmod -R g+w ${OSTK_DATA_LOCAL_CACHE}</div>
 <div class="line"> </div>
-<div class="line">COPY --from=build-env ${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY} ${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY} # If you are copying to an image where the user is currently root</div>
-<div class="line">COPY --from=build-env --chown=${USER_UID}:${USER_GID} ${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY} ${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY} # If you are copying to an image where the user is not currently root</div>
+<div class="line"># Add the line below if the container&#39;s user will not be root</div>
+<div class="line">RUN chown -R ${USER_UID}:${USER_GID} ${OSTK_DATA_LOCAL_CACHE}</div>
+</div><!-- fragment --><p>If you have a multi-stage dockerfile, then you can easily just copy the ostk-data repo install from one build stage (in the example below that's <code>build-env</code>) to the next, so that you don't have to reinstall it on every build stage. </p><div class="fragment"><div class="line"># If you are copying to an image where the user is currently root</div>
+<div class="line">COPY --from=build-env ${OSTK_DATA_LOCAL_CACHE} ${OSTK_DATA_LOCAL_CACHE}</div>
+<div class="line"># Or if you are copying to an image where the user is not currently root</div>
+<div class="line">COPY --from=build-env --chown=${USER_UID}:${USER_GID} ${OSTK_DATA_LOCAL_CACHE} ${OSTK_DATA_LOCAL_CACHE}</div>
 </div><!-- fragment --><p>The following table shows the availabe data source settings with the different environment variables you can set:</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
