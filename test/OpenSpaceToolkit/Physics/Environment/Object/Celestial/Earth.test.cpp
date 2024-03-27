@@ -39,6 +39,7 @@ using ostk::core::container::Array;
 using ostk::core::container::Table;
 using ostk::core::filesystem::Path;
 using ostk::core::filesystem::File;
+using ostk::core::filesystem::Directory;
 
 using ostk::mathematics::object::Vector3d;
 using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
@@ -309,4 +310,35 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, FromModels)
     EXPECT_TRUE(earth.gravitationalModelIsDefined());
     EXPECT_TRUE(earth.magneticModelIsDefined());
     EXPECT_TRUE(earth.atmosphericModelIsDefined());
+}
+
+
+TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, DoubleFreeError)
+{
+    {
+        // This test checks for double frees in memory
+        // Each Earth model has a complicated chain of ownership that sometimes
+        // relies on objects defined in other places. 
+        // This was a problem with the Earth Gravity Model when defining the following:
+
+
+        // This gets deallocated, which deletes the Geographiclib::GravityModel
+        const EarthGravitationalModel grav = EarthGravitationalModel(
+            EarthGravitationalModel::Type::EGM96,
+            Directory::Undefined(),
+            20,
+            20
+        );
+        const EarthMagneticModel mag = EarthMagneticModel(EarthMagneticModel::Type::Undefined);
+        const EarthAtmosphericModel atm = EarthAtmosphericModel(EarthAtmosphericModel::Type::NRLMSISE00);
+
+        // This gets deallocated, which again tries to delete the model
+        const Earth earth = Earth::FromModels(
+            std::make_shared<EarthGravitationalModel>(grav),
+            std::make_shared<EarthMagneticModel>(mag),
+            std::make_shared<EarthAtmosphericModel>(atm)
+        );
+
+
+    }
 }
