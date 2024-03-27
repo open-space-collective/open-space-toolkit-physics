@@ -60,7 +60,7 @@ class Earth::Impl
 
     Unique<MagneticModel> magneticModelUPtr_;
 
-    static MagneticModel* MagneticModelFromType(const Earth::Type& aType, const Directory& aDataDirectory);
+    static Unique<MagneticModel> MagneticModelFromType(const Earth::Type& aType, const Directory& aDataDirectory);
 };
 
 Earth::Impl::Impl(const Earth::Type& aType, const Directory& aDataDirectory)
@@ -161,7 +161,7 @@ Vector3d Earth::Impl::getFieldValueAt(const Vector3d& aPosition, const Instant& 
     return magneticField;
 }
 
-MagneticModel* Earth::Impl::MagneticModelFromType(const Earth::Type& aType, const Directory& aDataDirectory)
+Unique<MagneticModel> Earth::Impl::MagneticModelFromType(const Earth::Type& aType, const Directory& aDataDirectory)
 {
     using ostk::core::type::String;
 
@@ -200,25 +200,25 @@ MagneticModel* Earth::Impl::MagneticModelFromType(const Earth::Type& aType, cons
     switch (aType)
     {
         case Earth::Type::EMM2010:
-            return new GeographicLib::MagneticModel("emm2010", dataPath);
+            return std::make_unique<GeographicLib::MagneticModel>("emm2010", dataPath);
 
         case Earth::Type::EMM2015:
-            return new GeographicLib::MagneticModel("emm2015", dataPath);
+            return std::make_unique<GeographicLib::MagneticModel>("emm2015", dataPath);
 
         case Earth::Type::EMM2017:
-            return new GeographicLib::MagneticModel("emm2017", dataPath);
+            return std::make_unique<GeographicLib::MagneticModel>("emm2017", dataPath);
 
         case Earth::Type::IGRF11:
-            return new GeographicLib::MagneticModel("igrf11", dataPath);
+            return std::make_unique<GeographicLib::MagneticModel>("igrf11", dataPath);
 
         case Earth::Type::IGRF12:
-            return new GeographicLib::MagneticModel("igrf12", dataPath);
+            return std::make_unique<GeographicLib::MagneticModel>("igrf12", dataPath);
 
         case Earth::Type::WMM2010:
-            return new GeographicLib::MagneticModel("wmm2010", dataPath);
+            return std::make_unique<GeographicLib::MagneticModel>("wmm2010", dataPath);
 
         case Earth::Type::WMM2015:
-            return new GeographicLib::MagneticModel("wmm2015", dataPath);
+            return std::make_unique<GeographicLib::MagneticModel>("wmm2015", dataPath);
 
         default:
             throw ostk::core::error::runtime::Wrong("Type");
