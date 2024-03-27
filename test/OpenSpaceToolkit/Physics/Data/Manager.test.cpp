@@ -163,22 +163,22 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manager, FindRemoteDataUrls)
 TEST_F(OpenSpaceToolkit_Physics_Data_Manager, GetManifestRepository)
 {
     {
-        EXPECT_EQ("data", manager_.getManifestRepository().getName());
+        EXPECT_EQ("open-space-toolkit-data", manager_.getManifestRepository().getName());
     }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Data_Manager, SetManifestRepository)
 {
     {
-        EXPECT_EQ("data", manager_.getManifestRepository().getName());
+        EXPECT_EQ("open-space-toolkit-data", manager_.getManifestRepository().getName());
 
         manager_.setManifestRepository(Directory::Path(Path::Parse("/tmp")));
 
         EXPECT_EQ("tmp", manager_.getManifestRepository().getName());
 
-        manager_.setManifestRepository(Directory::Path(Path::Parse("./.open-space-toolkit/physics/data")));
+        manager_.setManifestRepository(Directory::Path(Path::Parse("./.open-space-toolkit-data")));
 
-        EXPECT_EQ("data", manager_.getManifestRepository().getName());
+        EXPECT_EQ(".open-space-toolkit-data", manager_.getManifestRepository().getName());
 
         EXPECT_ANY_THROW(manager_.setManifestRepository(Directory::Undefined()));
     }
