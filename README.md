@@ -195,7 +195,7 @@ RUN git clone --branch v1 --single-branch --depth=1 https://github.com/open-spac
 For users that are installing OSTk into docker images, here is what we recommend you add to your dockerfiles.
 ```
 ARG OSTK_DATA_LOCAL_CACHE="/var/cache/open-space-toolkit-data"
-EVN OSTK_DATA_LOCAL_CACHE="${OSTK_DATA_LOCAL_CACHE}"
+ENV OSTK_DATA_LOCAL_CACHE="${OSTK_DATA_LOCAL_CACHE}"
 ENV OSTK_PHYSICS_DATA_LOCAL_REPOSITORY="${OSTK_DATA_LOCAL_CACHE}/data"
 
 RUN git clone --branch v1 --single-branch --depth=1 https://github.com/open-space-collective/open-space-toolkit-data.git ${OSTK_DATA_LOCAL_CACHE} && chmod -R g+w ${OSTK_DATA_LOCAL_CACHE}
