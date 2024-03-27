@@ -182,9 +182,7 @@ class Earth::ExternalImpl : public Earth::Impl
         const Integer& aGravityModelOrder
     );
 
-    ExternalImpl(
-        const ExternalImpl& anExternalImpl
-    );
+    ExternalImpl(const ExternalImpl& anExternalImpl);
 
     ~ExternalImpl();
 
@@ -235,13 +233,16 @@ Earth::ExternalImpl::ExternalImpl(const Earth::ExternalImpl& anExternalImpl)
       gravityModelDegree_(anExternalImpl.getDegree()),
       gravityModelOrder_(anExternalImpl.getOrder()),
       dataDirectory_(anExternalImpl.getDataDirectory()),
-      gravityModelUPtr_(
-        Earth::ExternalImpl::GravityModelFromType(anExternalImpl.getType(), anExternalImpl.getDataDirectory(), anExternalImpl.getDegree(), anExternalImpl.getOrder())
-      )
+      gravityModelUPtr_(Earth::ExternalImpl::GravityModelFromType(
+          anExternalImpl.getType(),
+          anExternalImpl.getDataDirectory(),
+          anExternalImpl.getDegree(),
+          anExternalImpl.getOrder()
+      ))
 {
 }
 
-Earth::ExternalImpl::~ExternalImpl(){}
+Earth::ExternalImpl::~ExternalImpl() {}
 
 Earth::ExternalImpl* Earth::ExternalImpl::clone() const
 {
@@ -333,7 +334,9 @@ Unique<GravityModel> Earth::ExternalImpl::GravityModelFromType(
                 throw ostk::core::error::runtime::Wrong("Gravity Model Order", gravityModelOrder);
             }
 
-            return std::make_unique<GeographicLib::GravityModel>("wgs84", dataPath, gravityModelDegree, gravityModelOrder);
+            return std::make_unique<GeographicLib::GravityModel>(
+                "wgs84", dataPath, gravityModelDegree, gravityModelOrder
+            );
         }
 
         case Earth::Type::EGM84:
@@ -348,7 +351,9 @@ Unique<GravityModel> Earth::ExternalImpl::GravityModelFromType(
                 throw ostk::core::error::runtime::Wrong("Gravity Model Order", gravityModelOrder);
             }
 
-            return std::make_unique<GeographicLib::GravityModel>("egm84", dataPath, gravityModelDegree, gravityModelOrder);
+            return std::make_unique<GeographicLib::GravityModel>(
+                "egm84", dataPath, gravityModelDegree, gravityModelOrder
+            );
         }
 
         case Earth::Type::WGS84_EGM96:
@@ -364,7 +369,9 @@ Unique<GravityModel> Earth::ExternalImpl::GravityModelFromType(
                 throw ostk::core::error::runtime::Wrong("Gravity Model Order", gravityModelOrder);
             }
 
-            return std::make_unique<GeographicLib::GravityModel>("egm96", dataPath, gravityModelDegree, gravityModelOrder);
+            return std::make_unique<GeographicLib::GravityModel>(
+                "egm96", dataPath, gravityModelDegree, gravityModelOrder
+            );
         }
 
         case Earth::Type::EGM2008:
@@ -379,7 +386,9 @@ Unique<GravityModel> Earth::ExternalImpl::GravityModelFromType(
                 throw ostk::core::error::runtime::Wrong("Gravity Model Order", gravityModelOrder);
             }
 
-            return std::make_unique<GeographicLib::GravityModel>("egm2008", dataPath, gravityModelDegree, gravityModelOrder);
+            return std::make_unique<GeographicLib::GravityModel>(
+                "egm2008", dataPath, gravityModelDegree, gravityModelOrder
+            );
         }
 
         default:

@@ -312,23 +312,17 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, FromModels)
     EXPECT_TRUE(earth.atmosphericModelIsDefined());
 }
 
-
 TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, DoubleFreeError)
 {
     {
         // This test checks for double frees in memory
         // Each Earth model has a complicated chain of ownership that sometimes
-        // relies on objects defined in other places. 
+        // relies on objects defined in other places.
         // This was a problem with the Earth Gravity Model when defining the following:
 
-
         // This gets deallocated, which deletes the Geographiclib::GravityModel
-        const EarthGravitationalModel grav = EarthGravitationalModel(
-            EarthGravitationalModel::Type::EGM96,
-            Directory::Undefined(),
-            20,
-            20
-        );
+        const EarthGravitationalModel grav =
+            EarthGravitationalModel(EarthGravitationalModel::Type::EGM96, Directory::Undefined(), 20, 20);
         const EarthMagneticModel mag = EarthMagneticModel(EarthMagneticModel::Type::Undefined);
         const EarthAtmosphericModel atm = EarthAtmosphericModel(EarthAtmosphericModel::Type::NRLMSISE00);
 
@@ -338,7 +332,5 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, DoubleFreeErro
             std::make_shared<EarthMagneticModel>(mag),
             std::make_shared<EarthAtmosphericModel>(atm)
         );
-
-
     }
 }

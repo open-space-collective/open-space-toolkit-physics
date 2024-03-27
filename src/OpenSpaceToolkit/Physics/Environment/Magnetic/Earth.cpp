@@ -77,7 +77,7 @@ Earth::Impl::Impl(const Earth::Impl& anImpl)
 {
 }
 
-Earth::Impl::~Impl(){}
+Earth::Impl::~Impl() {}
 
 Earth::Type Earth::Impl::getType() const
 {
