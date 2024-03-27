@@ -34,10 +34,10 @@ ENV LD_LIBRARY_PATH="/usr/local/lib"
 
 # Install OSTk data
 
-ARG OSTK_PHYSICS_DATA_LOCAL_REPOSITORY="/var/cache/open-space-toolkit-data"
-ENV OSTK_PHYSICS_DATA_LOCAL_REPOSITORY="${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY}"
+ARG OSTK_DATA_LOCAL_CACHE="/var/cache/open-space-toolkit-data"
+ENV OSTK_PHYSICS_DATA_LOCAL_REPOSITORY="${OSTK_DATA_LOCAL_CACHE}/data"
 
-RUN git clone --branch v1 --single-branch --depth=1 https://github.com/open-space-collective/open-space-toolkit-data.git ${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY} && chmod -R g+w ${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY}
+RUN git clone --branch v1 --single-branch --depth=1 https://github.com/open-space-collective/open-space-toolkit-data.git ${OSTK_DATA_LOCAL_CACHE} && chmod -R g+w ${OSTK_DATA_LOCAL_CACHE}
 
 COPY --from=cpp-builder /usr/local/include/OpenSpaceToolkit /usr/local/include/OpenSpaceToolkit
 COPY --from=cpp-builder /usr/local/lib/libopen-space-toolkit-physics.* /usr/local/lib/
@@ -64,10 +64,10 @@ RUN pip install ipython numpy
 
 # Install OSTk data
 
-ARG OSTK_PHYSICS_DATA_LOCAL_REPOSITORY="/var/cache/open-space-toolkit-data"
-ENV OSTK_PHYSICS_DATA_LOCAL_REPOSITORY="${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY}"
+ARG OSTK_DATA_LOCAL_CACHE="/var/cache/open-space-toolkit-data"
+ENV OSTK_PHYSICS_DATA_LOCAL_REPOSITORY="${OSTK_DATA_LOCAL_CACHE}/data"
 
-RUN git clone --branch v1 --single-branch --depth=1 https://github.com/open-space-collective/open-space-toolkit-data.git ${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY} && chmod -R g+w ${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY}
+RUN git clone --branch v1 --single-branch --depth=1 https://github.com/open-space-collective/open-space-toolkit-data.git ${OSTK_DATA_LOCAL_CACHE} && chmod -R g+w ${OSTK_DATA_LOCAL_CACHE}
 
 COPY --from=python-builder /usr/local/lib/python${PYTHON_TEST_VERSION}/site-packages/ostk /usr/local/lib/python${PYTHON_TEST_VERSION}/site-packages/ostk
 
