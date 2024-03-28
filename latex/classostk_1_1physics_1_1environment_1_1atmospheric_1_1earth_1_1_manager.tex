@@ -25,8 +25,8 @@ Directory \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_
 \begin{DoxyCompactList}\small\item\em Get local repository. \end{DoxyCompactList}\item 
 Directory \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_a041cc6df9f5bb2dff5a675a4245d295e}{get\+C\+S\+S\+I\+Space\+Weather\+Directory}} () const
 \begin{DoxyCompactList}\small\item\em Get C\+S\+SI Space Weather directory. \end{DoxyCompactList}\item 
-Array$<$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather}{C\+S\+S\+I\+Space\+Weather}} $>$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_af916fed05efa49b8ca1f25b36d1715c7}{get\+C\+S\+S\+I\+Space\+Weather\+Array}} () const
-\begin{DoxyCompactList}\small\item\em Get array of C\+S\+SI Space Weather. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather}{C\+S\+S\+I\+Space\+Weather}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_a628552500a1cff9a13e5a28f13c9d4d7}{get\+Loaded\+C\+S\+S\+I\+Space\+Weather}} () const
+\begin{DoxyCompactList}\small\item\em Get currently loaded C\+S\+SI Space Weather file. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather}{C\+S\+S\+I\+Space\+Weather}} \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_af9322b786b15b85e9b9d31ffbee006a3}{get\+C\+S\+S\+I\+Space\+Weather\+At}} (const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const
 \begin{DoxyCompactList}\small\item\em Get C\+S\+SI Space Weather at instant. \end{DoxyCompactList}\item 
 Array$<$ Integer $>$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_abdc9fe89857a527509bb8ffd735f21fb}{get\+Kp3\+Hour\+Solar\+Indices\+At}} (const \mbox{\hyperlink{classostk_1_1physics_1_1time_1_1_instant}{Instant}} \&an\+Instant) const
@@ -227,19 +227,6 @@ Get daily Ap index for the day containing instant.
 \begin{DoxyReturn}{Returns}
 daily Ap index 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_af916fed05efa49b8ca1f25b36d1715c7}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_af916fed05efa49b8ca1f25b36d1715c7}} 
-\index{ostk::physics::environment::atmospheric::earth::Manager@{ostk::physics::environment::atmospheric::earth::Manager}!getCSSISpaceWeatherArray@{getCSSISpaceWeatherArray}}
-\index{getCSSISpaceWeatherArray@{getCSSISpaceWeatherArray}!ostk::physics::environment::atmospheric::earth::Manager@{ostk::physics::environment::atmospheric::earth::Manager}}
-\doxysubsubsection{\texorpdfstring{getCSSISpaceWeatherArray()}{getCSSISpaceWeatherArray()}}
-{\footnotesize\ttfamily Array$<$ \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather}{C\+S\+S\+I\+Space\+Weather}} $>$ ostk\+::physics\+::environment\+::atmospheric\+::earth\+::\+Manager\+::get\+C\+S\+S\+I\+Space\+Weather\+Array (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-
-
-Get array of C\+S\+SI Space Weather. 
-
-\begin{DoxyReturn}{Returns}
-Array of C\+S\+SI Space Weather 
-\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_af9322b786b15b85e9b9d31ffbee006a3}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_af9322b786b15b85e9b9d31ffbee006a3}} 
 \index{ostk::physics::environment::atmospheric::earth::Manager@{ostk::physics::environment::atmospheric::earth::Manager}!getCSSISpaceWeatherAt@{getCSSISpaceWeatherAt}}
 \index{getCSSISpaceWeatherAt@{getCSSISpaceWeatherAt}!ostk::physics::environment::atmospheric::earth::Manager@{ostk::physics::environment::atmospheric::earth::Manager}}
@@ -324,6 +311,19 @@ Get an Array of 8 3-\/hourly Kp solar indices for the day containing instant.
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Array of 3-\/hourly Kp solar indices 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_a628552500a1cff9a13e5a28f13c9d4d7}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_a628552500a1cff9a13e5a28f13c9d4d7}} 
+\index{ostk::physics::environment::atmospheric::earth::Manager@{ostk::physics::environment::atmospheric::earth::Manager}!getLoadedCSSISpaceWeather@{getLoadedCSSISpaceWeather}}
+\index{getLoadedCSSISpaceWeather@{getLoadedCSSISpaceWeather}!ostk::physics::environment::atmospheric::earth::Manager@{ostk::physics::environment::atmospheric::earth::Manager}}
+\doxysubsubsection{\texorpdfstring{getLoadedCSSISpaceWeather()}{getLoadedCSSISpaceWeather()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather}{C\+S\+S\+I\+Space\+Weather}} ostk\+::physics\+::environment\+::atmospheric\+::earth\+::\+Manager\+::get\+Loaded\+C\+S\+S\+I\+Space\+Weather (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get currently loaded C\+S\+SI Space Weather file. 
+
+\begin{DoxyReturn}{Returns}
+Currently loaded C\+S\+SI Space Weather file 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_ae1c050b423dd38a377a9b9ba443196b2}\label{classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_ae1c050b423dd38a377a9b9ba443196b2}} 
 \index{ostk::physics::environment::atmospheric::earth::Manager@{ostk::physics::environment::atmospheric::earth::Manager}!getLocalRepository@{getLocalRepository}}
