@@ -135,11 +135,11 @@ class TestManager:
     def test_load_cssi_space_weather_success(
         self, manager: Manager, cssi_space_weather: CSSISpaceWeather
     ):
-        assert manager.get_loaded_cssi_space_weather().is_defined()
+        assert not manager.get_loaded_cssi_space_weather().is_defined()
 
         manager.load_cssi_space_weather(cssi_space_weather)
 
-        assert not manager.get_loaded_cssi_space_weather().is_defined()
+        assert manager.get_loaded_cssi_space_weather().is_defined()
 
     def test_fetch_latest_cssi_space_weather_success(self, manager: Manager):
         file: File = manager.fetch_latest_cssi_space_weather()
