@@ -420,8 +420,21 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, Parse)
     // Undefined (automatic format detection)
 
     {
+        // Standard
         EXPECT_EQ(DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789), DateTime::Parse("2018-01-02 12:34:56.123.456.789"));
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789), DateTime::Parse("2018-01-02T12:34:56.123456789+0000")
+        );
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789), DateTime::Parse("2018-01-02 12:34:56.123.456.789+0000")
+        );
+
+        // ISO8601
         EXPECT_EQ(DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789), DateTime::Parse("2018-01-02T12:34:56.123456789"));
+        EXPECT_EQ(DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789), DateTime::Parse("2018-01-02T12:34:56.123456789Z"));
+        EXPECT_EQ(DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789), DateTime::Parse("2018-01-02 12:34:56.123.456.789Z"));
+
+        // STK
         EXPECT_EQ(DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789), DateTime::Parse("2 Jan 2018 12:34:56.123456789"));
     }
 
@@ -465,6 +478,14 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, Parse)
         EXPECT_EQ(
             DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789),
             DateTime::Parse("2018-01-02 12:34:56.123.456.789", DateTime::Format::Standard)
+        );
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789),
+            DateTime::Parse("2018-01-02 12:34:56.123.456.789+0000", DateTime::Format::Standard)
+        );
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789),
+            DateTime::Parse("2018-01-02 12:34:56.123.456.789Z", DateTime::Format::Standard)
         );
 
         EXPECT_EQ(DateTime(1400, 1, 1, 0, 0, 0), DateTime::Parse("1400-01-01 00:00:00", DateTime::Format::Standard));
@@ -536,6 +557,14 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, Parse)
         EXPECT_EQ(
             DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789),
             DateTime::Parse("2018-01-02T12:34:56.123456789", DateTime::Format::ISO8601)
+        );
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789),
+            DateTime::Parse("2018-01-02T12:34:56.123456789+0000", DateTime::Format::ISO8601)
+        );
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789),
+            DateTime::Parse("2018-01-02T12:34:56.123456789Z", DateTime::Format::ISO8601)
         );
 
         EXPECT_EQ(DateTime(1400, 1, 1, 0, 0, 0), DateTime::Parse("1400-01-01T00:00:00", DateTime::Format::ISO8601));
