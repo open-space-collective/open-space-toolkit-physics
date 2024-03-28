@@ -90,11 +90,11 @@ class Manager
 
     Directory getCSSISpaceWeatherDirectory() const;
 
-    /// @brief                  Get array of CSSI Space Weather
+    /// @brief                  Get currently loaded CSSI Space Weather file
     ///
-    /// @return                 Array of CSSI Space Weather
+    /// @return                 Currently loaded CSSI Space Weather file
 
-    Array<CSSISpaceWeather> getCSSISpaceWeatherArray() const;
+    CSSISpaceWeather getLoadedCSSISpaceWeather() const;
 
     /// @brief                  Get CSSI Space Weather at instant
     ///
@@ -212,13 +212,9 @@ class Manager
     Directory localRepository_;
     Duration localRepositoryLockTimeout_;
 
-    Array<CSSISpaceWeather> CSSISpaceWeatherArray_;
+    CSSISpaceWeather CSSISpaceWeather_;
 
     mutable std::mutex mutex_;
-
-    mutable Index CSSISpaceWeatherIndex_;
-
-    mutable Instant CSSISpaceWeatherUpdateTimestamp_;
 
     Manager(const Manager::Mode& aMode = Manager::DefaultMode());
 

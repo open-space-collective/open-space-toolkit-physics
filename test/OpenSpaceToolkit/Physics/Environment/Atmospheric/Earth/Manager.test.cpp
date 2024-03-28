@@ -110,13 +110,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetLocalR
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetCSSISpaceWeatherArray)
-{
-    {
-        EXPECT_NO_THROW(manager_.getCSSISpaceWeatherArray());
-    }
-}
-
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetCSSISpaceWeatherAt)
 {
     {
@@ -484,7 +477,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, Reset)
     {
         manager_.reset();
 
-        EXPECT_TRUE(manager_.getCSSISpaceWeatherArray().isEmpty());
+        EXPECT_FALSE(manager_.getLoadedCSSISpaceWeather().isDefined());
     }
 }
 
