@@ -15,7 +15,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_Manager(pybi
         .def("get_mode", &Manager::getMode)
         .def("get_local_repository", &Manager::getLocalRepository)
         .def("get_cssi_space_weather_directory", &Manager::getCSSISpaceWeatherDirectory)
-        .def("get_cssi_space_weather_array", &Manager::getCSSISpaceWeatherArray)
+        .def("get_loaded_cssi_space_weather", &Manager::getLoadedCSSISpaceWeather)
         .def("get_cssi_space_weather_at", &Manager::getCSSISpaceWeatherAt, arg("instant"))
         .def("get_kp_3_hour_solar_indices_at", &Manager::getKp3HourSolarIndicesAt, arg("instant"))
         .def("get_ap_3_hour_solar_indices_at", &Manager::getAp3HourSolarIndicesAt, arg("instant"))

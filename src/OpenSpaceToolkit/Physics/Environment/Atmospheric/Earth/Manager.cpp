@@ -77,9 +77,11 @@ Directory Manager::getCSSISpaceWeatherDirectory() const
     return Directory::Path(localRepository_.getPath() + Path::Parse("CSSISpaceWeather"));
 }
 
-Array<CSSISpaceWeather> Manager::getCSSISpaceWeatherArray() const
+CSSISpaceWeather Manager::getLoadedCSSISpaceWeather() const
 {
-    return CSSISpaceWeatherArray_;
+    std::lock_guard<std::mutex> lock {mutex_};
+
+    return CSSISpaceWeather_;
 }
 
 CSSISpaceWeather Manager::getCSSISpaceWeatherAt(const Instant& anInstant) const
@@ -312,11 +314,7 @@ void Manager::reset()
 {
     std::lock_guard<std::mutex> lock {mutex_};
 
-    CSSISpaceWeatherIndex_ = 0;
-
-    CSSISpaceWeatherUpdateTimestamp_ = Instant::Undefined();
-
-    CSSISpaceWeatherArray_.clear();
+    CSSISpaceWeather_ = CSSISpaceWeather::Undefined();
 
     localRepository_ = DefaultLocalRepository();
     localRepositoryLockTimeout_ = DefaultLocalRepositoryLockTimeout();
@@ -396,9 +394,7 @@ Manager::Manager(const Manager::Mode& aMode)
     : mode_(aMode),
       localRepository_(Manager::DefaultLocalRepository()),
       localRepositoryLockTimeout_(Manager::DefaultLocalRepositoryLockTimeout()),
-      CSSISpaceWeatherArray_(Array<CSSISpaceWeather>::Empty()),
-      CSSISpaceWeatherIndex_(0),
-      CSSISpaceWeatherUpdateTimestamp_(Instant::Undefined())
+      CSSISpaceWeather_(CSSISpaceWeather::Undefined())
 {
     this->setup();
 }
@@ -415,102 +411,42 @@ const CSSISpaceWeather* Manager::accessCSSISpaceWeatherAt(const Instant& anInsta
         throw ostk::core::error::runtime::Undefined("Instant");
     }
 
-    // Try cache
-    if (!CSSISpaceWeatherArray_.isEmpty())
+    // Try currently loaded
+    if (CSSISpaceWeather_.isDefined())
     {
-        const CSSISpaceWeather& CSSISpaceWeather = CSSISpaceWeatherArray_.at(CSSISpaceWeatherIndex_);
-
-        if (CSSISpaceWeather.accessObservationInterval().contains(anInstant) ||
-            CSSISpaceWeather.accessDailyPredictionInterval().contains(anInstant) ||
-            CSSISpaceWeather.accessMonthlyPredictionInterval().contains(anInstant))
+        if (CSSISpaceWeather_.accessObservationInterval().contains(anInstant) ||
+            CSSISpaceWeather_.accessDailyPredictionInterval().contains(anInstant) ||
+            CSSISpaceWeather_.accessMonthlyPredictionInterval().contains(anInstant))
         {
-            return &CSSISpaceWeather;
+            return &CSSISpaceWeather_;
         }
+
+        throw ostk::core::error::RuntimeError(
+            "Loaded CSSI Space Weather file is not valid for [{}].", anInstant.toString()
+        );
     }
 
-    // Try observation span of loaded space weather files
-
-    {
-        CSSISpaceWeatherIndex_ = 0;
-
-        for (const auto& CSSISpaceWeather : CSSISpaceWeatherArray_)
-        {
-            if (CSSISpaceWeather.accessObservationInterval().contains(anInstant))
-            {
-                return &CSSISpaceWeather;
-            }
-
-            CSSISpaceWeatherIndex_++;
-        }
-    }
-
-    // Try fetching latest Space Weather file
-
+    // Try loading or fetching latest Space Weather file
     if (mode_ == Manager::Mode::Automatic)
     {
-        ManifestManager& manifestManager = ManifestManager::Get();
+        const File latestCSSICSSISpaceWeatherFile = this->getLatestCSSICSSISpaceWeatherFile();
 
-        const Instant CSSIManifestUpdateTimestamp =
-            manifestManager.getLastUpdateTimestampFor(CSSISpaceWeatherManifestName);
-
-        if ((!CSSISpaceWeatherUpdateTimestamp_.isDefined()) ||
-            (CSSISpaceWeatherUpdateTimestamp_ < CSSIManifestUpdateTimestamp))
+        if (latestCSSICSSISpaceWeatherFile.isDefined())
         {
-            const File latestCSSICSSISpaceWeatherFile = this->getLatestCSSICSSISpaceWeatherFile();
+            const CSSISpaceWeather CSSISpaceWeather = CSSISpaceWeather::Load(latestCSSICSSISpaceWeatherFile);
+            const_cast<Manager*>(this)->loadCSSISpaceWeather_(CSSISpaceWeather);
 
-            if (latestCSSICSSISpaceWeatherFile.isDefined())
-            {
-                CSSISpaceWeatherUpdateTimestamp_ = Instant::Now();
-
-                const CSSISpaceWeather CSSISpaceWeather = CSSISpaceWeather::Load(latestCSSICSSISpaceWeatherFile);
-
-                if (CSSISpaceWeather.accessObservationInterval().contains(anInstant))
-                {
-                    const_cast<Manager*>(this)->loadCSSISpaceWeather_(CSSISpaceWeather);
-
-                    CSSISpaceWeatherIndex_ = CSSISpaceWeatherArray_.getSize() - 1;
-
-                    return &CSSISpaceWeatherArray_.accessLast();
-                }
-            }
+            return &CSSISpaceWeather_;
         }
+
+        throw ostk::core::error::RuntimeError(
+            "Failed to load or fetch latest CSSI Space Weather file at {}.",
+            latestCSSICSSISpaceWeatherFile.getPath().toString()
+        );
     }
 
-    // Try daily prediction span of loaded space weather files
-
-    {
-        CSSISpaceWeatherIndex_ = 0;
-
-        for (const auto& CSSISpaceWeather : CSSISpaceWeatherArray_)
-        {
-            if (CSSISpaceWeather.accessDailyPredictionInterval().contains(anInstant))
-            {
-                return &CSSISpaceWeather;
-            }
-
-            CSSISpaceWeatherIndex_++;
-        }
-    }
-
-    // Try monthly prediction span of loaded space weather files
-
-    {
-        CSSISpaceWeatherIndex_ = 0;
-
-        for (const auto& CSSISpaceWeather : CSSISpaceWeatherArray_)
-        {
-            if (CSSISpaceWeather.accessMonthlyPredictionInterval().contains(anInstant))
-            {
-                return &CSSISpaceWeather;
-            }
-
-            CSSISpaceWeatherIndex_++;
-        }
-    }
-
-    // No space weather data found
-    CSSISpaceWeatherIndex_ = 0;
-    throw ostk::core::error::RuntimeError("Cannot obtain CSSI Space Weather at [{}].", anInstant.toString());
+    // No space weather data loaded and auto-loading is turned off
+    throw ostk::core::error::RuntimeError("No CSSI Space Weather data loaded and manager set to Manual mode.");
 }
 
 File Manager::getLocalRepositoryLockFile() const
@@ -547,17 +483,13 @@ void Manager::setup()
 
 void Manager::loadCSSISpaceWeather_(const CSSISpaceWeather& aCSSISpaceWeather)
 {
-    for (const auto& CSSISpaceWeather : CSSISpaceWeatherArray_)
+    if (CSSISpaceWeather_.isDefined() &&
+        (CSSISpaceWeather_.accessLastObservationDate() == aCSSISpaceWeather.accessLastObservationDate()))
     {
-        if (CSSISpaceWeather.accessLastObservationDate() == aCSSISpaceWeather.accessLastObservationDate())
-        {
-            throw ostk::core::error::RuntimeError("CSSI Space Weather already added.");
-        }
+        throw ostk::core::error::RuntimeError("Identical CSSI Space Weather already loaded.");
     }
 
-    CSSISpaceWeatherArray_.add(aCSSISpaceWeather);  // [TBI] Add in ascending time order
-
-    CSSISpaceWeatherIndex_ = 0;
+    CSSISpaceWeather_ = aCSSISpaceWeather;
 }
 
 File Manager::fetchLatestCSSISpaceWeather_()
@@ -620,10 +552,6 @@ File Manager::fetchLatestCSSISpaceWeather_()
                 "Cannot fetch CSSI Space Weather from [{}]: file is empty.", CSSISpaceWeatherUrl.toString()
             );
         }
-
-        // Load CSSI Space Weather from File
-
-        const CSSISpaceWeather latestCSSISpaceWeather = CSSISpaceWeather::Load(latestCSSICSSISpaceWeatherFile);
 
         // Move CSSI Space Weather File into destination Directory,
         // e.g., `.open-space-toolkit/physics/enviroment/atmospheric/earth/cssi-space-weather/`.
