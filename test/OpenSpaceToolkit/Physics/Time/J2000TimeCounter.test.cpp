@@ -35,7 +35,7 @@ std::pair<uint32_t, uint32_t> get_hub_nav_time_at(
 
     // Difference between the Unix epoch and the J2000 epoch
     const std::chrono::duration duration_from_unix_to_j2000_epoch =
-        std::chrono::nanoseconds(946727930815999980);  // 946727957815999980
+        std::chrono::nanoseconds(946727930815999980);
 
     // Obtain the duration_since_j2000_epoch
     const std::chrono::duration duration_since_j2000_epoch =
@@ -141,7 +141,7 @@ TEST(OpenSpaceToolkit_Physics_Time_J2000TimeCounter, Validate)
 
     // Test a bunch of different cases equally spaced once per month until 2030 against ostk
     {
-        for (int year = 2024; year <= 2030; year++)
+        for (int year = 2017; year <= 2030; year++)
         {
             for (int month = 1; month <= 12; month++)
             {
