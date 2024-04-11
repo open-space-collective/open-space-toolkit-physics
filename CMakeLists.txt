@@ -300,9 +300,9 @@ ELSE ()
     MESSAGE (SEND_ERROR "[GeographicLib] not found.")
 ENDIF ()
 
-### Open Space Toolkit ▸ Core [3.0.x]
+### Open Space Toolkit ▸ Core [3.x.y]
 
-FIND_PACKAGE ("OpenSpaceToolkitCore" "3.0" REQUIRED)
+FIND_PACKAGE ("OpenSpaceToolkitCore" "3" REQUIRED)
 
 IF (NOT OpenSpaceToolkitCore_FOUND)
 
@@ -310,9 +310,9 @@ IF (NOT OpenSpaceToolkitCore_FOUND)
 
 ENDIF ()
 
-### Open Space Toolkit ▸ I/O [3.0.x]
+### Open Space Toolkit ▸ I/O [3.x.y]
 
-FIND_PACKAGE ("OpenSpaceToolkitIO" "3.0" REQUIRED)
+FIND_PACKAGE ("OpenSpaceToolkitIO" "3" REQUIRED)
 
 IF (NOT OpenSpaceToolkitIO_FOUND)
 
@@ -320,9 +320,9 @@ IF (NOT OpenSpaceToolkitIO_FOUND)
 
 ENDIF ()
 
-### Open Space Toolkit ▸ Mathematics [3.0.x]
+### Open Space Toolkit ▸ Mathematics [3.x.y]
 
-FIND_PACKAGE ("OpenSpaceToolkitMathematics" "3.0" REQUIRED)
+FIND_PACKAGE ("OpenSpaceToolkitMathematics" "3" REQUIRED)
 
 IF (NOT OpenSpaceToolkitMathematics_FOUND)
 
