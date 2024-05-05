@@ -15,7 +15,12 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_Dynamic(pybind11
     using ostk::physics::coordinate::frame::Provider;
     using ostk::physics::coordinate::frame::provider::Dynamic;
 
-    class_<Dynamic, Shared<Dynamic>, Provider>(aModule, "Dynamic")
+    class_<Dynamic, Shared<Dynamic>, Provider>(aModule, "Dynamic",
+        R"doc(
+            Dynamic provider.
+
+        )doc"
+    )
 
         // Custom Constructor for Dynamic
         .def(
@@ -34,14 +39,21 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_Dynamic(pybind11
                  // formulation
                  new (&aDynamicFrameProvider) Dynamic(generatorProxy);
              }),
-            arg("generator")
+            arg("generator"),
+            R"doc(
+                Construct a dynamic frame provider.
+
+                Parameters:
+                    generator: Generator function.
+
+            )doc"
         )
 
-        .def("is_defined", &Dynamic::isDefined)
+        .def("is_defined", &Dynamic::isDefined,R"doc()doc")
 
-        .def("get_transform_at", &Dynamic::getTransformAt, arg("instant"))
+        .def("get_transform_at", &Dynamic::getTransformAt, arg("instant"),R"doc()doc")
 
-        .def_static("undefined", &Dynamic::Undefined)
+        .def_static("undefined", &Dynamic::Undefined,R"doc()doc")
 
         ;
 }

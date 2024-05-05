@@ -10,58 +10,296 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_BulletinA(p
 
     using ostk::physics::coordinate::frame::provider::iers::BulletinA;
 
-    class_<BulletinA> bulletinA(aModule, "BulletinA");
+    class_<BulletinA> bulletinA(aModule, "BulletinA",
+        R"doc(
+            Contains rapid determinations for Earth orientation parameters:
+            x/y pole, UT1-UTC and their errors at daily intervals and predictions for 1 year into
+            the future.
+
+            The contents of IERS Bulletin A are divided into four sections:
+
+            1. General information including key definitions and the most recently adopted values of
+            DUT1 and TAI-UTC.
+
+            2. Quick-look daily estimates of the EOPs determined by smoothing the observed data.
+            This involves the application of systematic corrections and statistical weighting.
+            The results are published with a delay of about one to three days between the date of
+            publication and the last available date with estimated EOP.
+
+            3. Predictions of x, y, and UT1-UTC, up to 365 days following the last day of data.
+            The predictions use similar algorithms based on seasonal filtering and autoregressive
+            processing for x, y, and UT1.
+
+            4. The combination series for the celestial pole offsets.
+            Bulletin A contains celestial pole offsets with respect to the IAU1980 Nutation theory
+            (dpsi and deps) and the IAU 2000 Resolutions (dX and dY), beginning on 1 January 2003.
+        
+        )doc"
+    );
 
     bulletinA
 
         .def("__str__", &(shiftToString<BulletinA>))
         .def("__repr__", &(shiftToString<BulletinA>))
 
-        .def("is_defined", &BulletinA::isDefined)
+        .def("is_defined", &BulletinA::isDefined,
+            R"doc(
+            Returns true if the bulletin is defined.
 
-        .def("access_release_date", &BulletinA::accessReleaseDate)
-        .def("access_tai_minus_utc", &BulletinA::accessTAIMinusUTC)
-        .def("access_tai_minus_utc_epoch", &BulletinA::accessTAIMinusUTCEpoch)
-        .def("access_observation_interval", &BulletinA::accessObservationInterval)
-        .def("access_prediction_interval", &BulletinA::accessPredictionInterval)
+            Returns:
+                bool: True if the bulletin is defined.
 
-        .def("get_release_date", &BulletinA::getReleaseDate)
-        .def("get_tai_minus_utc", &BulletinA::getTAIMinusUTC)
-        .def("get_tai_minus_utc_epoch", &BulletinA::getTAIMinusUTCEpoch)
-        .def("get_observation_interval", &BulletinA::getObservationInterval)
-        .def("get_observation_at", &BulletinA::getObservationAt, arg("instant"))
-        .def("get_prediction_interval", &BulletinA::getPredictionInterval)
-        .def("get_prediction_at", &BulletinA::getPredictionAt, arg("instant"))
+            )doc"
+        )
+        .def("access_release_date", &BulletinA::accessReleaseDate,
+            R"doc(
+            Access the release date.
 
-        .def_static("undefined", &BulletinA::Undefined)
-        .def_static("load", &BulletinA::Load, arg("file"))
+            Returns:
+                Date: The release date.
+
+            )doc"
+        )
+        .def("access_tai_minus_utc", &BulletinA::accessTAIMinusUTC,
+            R"doc(
+            Access the TAI-UTC.
+
+            Returns:
+                Duration: The TAI-UTC.
+
+            )doc"
+        )
+        .def("access_tai_minus_utc_epoch", &BulletinA::accessTAIMinusUTCEpoch,
+            R"doc(
+            Access the TAI-UTC epoch.
+
+            Returns:
+                Instant: The TAI-UTC epoch.
+
+            )doc"
+        )
+        .def("access_observation_interval", &BulletinA::accessObservationInterval,
+            R"doc(
+            Access the observation interval.
+
+            Returns:
+                Interval: The observation Interval of Instants.
+
+            )doc"
+        )
+        .def("access_prediction_interval", &BulletinA::accessPredictionInterval,
+            R"doc(
+            Access the prediction interval.
+
+            Returns:
+                Interval: The prediction Interval of Instants.
+
+            )doc"
+        )
+
+        .def("get_release_date", &BulletinA::getReleaseDate,
+            R"doc(
+            Get release Date of Bulletin A.
+
+            Returns:
+                Date: Release Date of Bulletin A.
+
+            )doc"
+        )
+        .def("get_tai_minus_utc", &BulletinA::getTAIMinusUTC,
+            R"doc(
+            Get TAI-UTC.
+
+            Returns:
+                Duration: TAI-UTC.
+
+            )doc"
+        )
+        .def("get_tai_minus_utc_epoch", &BulletinA::getTAIMinusUTCEpoch,
+            R"doc(
+            Get TAI-UTC epoch.
+
+            Returns:
+                Instant: TAI-UTC epoch.
+
+            )doc"
+        )
+        .def("get_observation_interval", &BulletinA::getObservationInterval,
+            R"doc(
+            Get observation interval.
+
+            Returns:
+                Interval: Observation Interval of Instants.
+
+            )doc"
+        )
+        .def("get_observation_at", &BulletinA::getObservationAt, arg("instant"),
+            R"doc(
+            Get observation at a given instant.
+
+            Parameters:
+                instant (Instant): The instant.
+
+            Returns:
+                Observation: The observation.
+
+            )doc"
+        )
+        .def("get_prediction_interval", &BulletinA::getPredictionInterval,
+            R"doc(
+            Get prediction interval.
+
+            Returns:
+                Interval: Prediction Interval of Instants.
+
+            )doc"
+        )
+        .def("get_prediction_at", &BulletinA::getPredictionAt, arg("instant"),
+            R"doc(
+            Get prediction at a given instant.
+
+            Parameters:
+                instant (Instant): The instant.
+
+            Returns:
+                Prediction: The prediction.
+
+            )doc"
+        )
+
+        .def_static("undefined", &BulletinA::Undefined,
+            R"doc(
+            Undefined factory function.
+
+            Returns:
+                BulletinA: An undefined Bulletin A object.
+
+            )doc"
+        )
+        .def_static("load", &BulletinA::Load, arg("file"),
+            R"doc(
+            Load Bulletin A from a file.
+
+            Parameters:
+                file (str): The file.
+
+            Returns:
+                BulletinA: The Bulletin A object.
+
+            )doc"
+        )
 
         ;
 
     class_<BulletinA::Observation>(bulletinA, "Observation")
 
-        .def_readonly("year", &BulletinA::Observation::year)
-        .def_readonly("month", &BulletinA::Observation::month)
-        .def_readonly("day", &BulletinA::Observation::day)
-        .def_readonly("mjd", &BulletinA::Observation::mjd)
-        .def_readonly("x", &BulletinA::Observation::x)
-        .def_readonly("x_error", &BulletinA::Observation::xError)
-        .def_readonly("y", &BulletinA::Observation::y)
-        .def_readonly("y_error", &BulletinA::Observation::yError)
-        .def_readonly("ut1_minus_utc", &BulletinA::Observation::ut1MinusUtc)
-        .def_readonly("ut1_minus_utc_error", &BulletinA::Observation::ut1MinusUtcError)
+        .def_readonly("year", &BulletinA::Observation::year,
+            R"doc(
+            Year (to get true calendar year, add 1900 for MJD <= 51543 or add 2000 for MJD >= 51544).
+
+            )doc"
+        )
+        .def_readonly("month", &BulletinA::Observation::month,
+            R"doc(
+            Month number.
+
+            )doc"
+        )
+        .def_readonly("day", &BulletinA::Observation::day,
+            R"doc(
+            Day of month.
+
+            )doc"
+        )
+        .def_readonly("mjd", &BulletinA::Observation::mjd,
+            R"doc(
+            Modified Julian Day.
+
+            )doc"
+        )
+        .def_readonly("x", &BulletinA::Observation::x,
+            R"doc(
+            [asec] PM-x
+
+            )doc"
+        )
+        .def_readonly("x_error", &BulletinA::Observation::xError,
+            R"doc(
+            [asec] PM-x error
+
+            )doc"
+        )
+        .def_readonly("y", &BulletinA::Observation::y,
+            R"doc(
+            [asec] PM-y
+
+            )doc"
+        )
+        .def_readonly("y_error", &BulletinA::Observation::yError,
+            R"doc(
+            [asec] PM-y error
+
+            )doc"
+        )
+        .def_readonly("ut1_minus_utc", &BulletinA::Observation::ut1MinusUtc,
+            R"doc(
+            [s] UT1-UTC
+
+            )doc"
+        )
+        .def_readonly("ut1_minus_utc_error", &BulletinA::Observation::ut1MinusUtcError,
+            R"doc(
+            [s] UT1-UTC error
+
+            )doc"
+        )
 
         ;
 
     class_<BulletinA::Prediction>(bulletinA, "Prediction")
 
-        .def_readonly("year", &BulletinA::Prediction::year)
-        .def_readonly("month", &BulletinA::Prediction::month)
-        .def_readonly("day", &BulletinA::Prediction::day)
-        .def_readonly("mjd", &BulletinA::Prediction::mjd)
-        .def_readonly("x", &BulletinA::Prediction::x)
-        .def_readonly("y", &BulletinA::Prediction::y)
-        .def_readonly("ut1_minus_utc", &BulletinA::Prediction::ut1MinusUtc)
+        .def_readonly("year", &BulletinA::Prediction::year,
+            R"doc(
+            Year (to get true calendar year, add 1900 for MJD <= 51543 or add 2000 for MJD >= 51544).
+
+            )doc"
+        )
+        .def_readonly("month", &BulletinA::Prediction::month,
+            R"doc(
+            Month number.
+
+            )doc"
+        )
+        .def_readonly("day", &BulletinA::Prediction::day,
+            R"doc(
+            Day of month.
+
+            )doc"
+        )
+        .def_readonly("mjd", &BulletinA::Prediction::mjd,
+            R"doc(
+            Modified Julian Day.
+
+            )doc"
+        )
+        .def_readonly("x", &BulletinA::Prediction::x,
+            R"doc(
+            [asec] PM-x
+
+            )doc"
+        )
+        .def_readonly("y", &BulletinA::Prediction::y,
+            R"doc(
+            [asec] PM-y
+
+            )doc"
+        )
+        .def_readonly("ut1_minus_utc", &BulletinA::Prediction::ut1MinusUtc,
+            R"doc(
+            [s] UT1-UTC
+
+            )doc"
+        )
 
         ;
 }
