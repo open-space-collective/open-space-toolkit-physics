@@ -64,22 +64,34 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Earth(pybind1
 
             .def_static("default", &Earth::Default)
             .def_static(
-                "EGM2008", &Earth::EGM2008, arg("degree") = Integer::Undefined(), arg("order") = Integer::Undefined()
+                "EGM2008",
+                &Earth::EGM2008,
+                arg_v("degree", Integer::Undefined(), "Integer.undefined()"),
+                arg_v("order", Integer::Undefined(), "Integer.undefined()")
             )
             .def_static(
                 "WGS84_EGM96",
                 &Earth::WGS84_EGM96,
-                arg("degree") = Integer::Undefined(),
-                arg("order") = Integer::Undefined()
+                arg_v("degree", Integer::Undefined(), "Integer.undefined()"),
+                arg_v("order", Integer::Undefined(), "Integer.undefined()")
             )
             .def_static(
-                "EGM96", &Earth::EGM96, arg("degree") = Integer::Undefined(), arg("order") = Integer::Undefined()
+                "EGM96",
+                &Earth::EGM96,
+                arg_v("degree", Integer::Undefined(), "Integer.undefined()"),
+                arg_v("order", Integer::Undefined(), "Integer.undefined()")
             )
             .def_static(
-                "EGM84", &Earth::EGM84, arg("degree") = Integer::Undefined(), arg("order") = Integer::Undefined()
+                "EGM84",
+                &Earth::EGM84,
+                arg_v("degree", Integer::Undefined(), "Integer.undefined()"),
+                arg_v("order", Integer::Undefined(), "Integer.undefined()")
             )
             .def_static(
-                "WGS84", &Earth::WGS84, arg("degree") = Integer::Undefined(), arg("order") = Integer::Undefined()
+                "WGS84",
+                &Earth::WGS84,
+                arg_v("degree", Integer::Undefined(), "Integer.undefined()"),
+                arg_v("order", Integer::Undefined(), "Integer.undefined()")
             )
             .def_static("spherical", &Earth::Spherical)
 

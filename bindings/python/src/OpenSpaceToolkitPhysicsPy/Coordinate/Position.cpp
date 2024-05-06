@@ -33,7 +33,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Position(pybind11::module& aMod
         .def("in_unit", &Position::inUnit)
         .def("in_meters", &Position::inMeters)
         .def("in_frame", &Position::inFrame, arg("frame"), arg("instant"))
-        .def("to_string", &Position::toString, arg("precision") = DEFAULT_PRECISION)
+        .def("to_string", &Position::toString, arg_v("precision", DEFAULT_PRECISION, "Integer.undefined()"))
 
         .def_static("undefined", &Position::Undefined)
         .def_static("meters", &Position::Meters, arg("coordinates"), arg("frame"))
