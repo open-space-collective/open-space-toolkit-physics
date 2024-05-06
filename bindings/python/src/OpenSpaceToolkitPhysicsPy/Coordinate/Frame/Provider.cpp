@@ -21,7 +21,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider(pybind11::module
         )doc"
     )
 
-        .def("is_defined", &Provider::isDefined,,R"doc()doc")
+        .def("is_defined", &Provider::isDefined,R"doc()doc")
 
         .def("get_transform_at", &Provider::getTransformAt, arg("instant"),R"doc()doc")
 
