@@ -28,19 +28,48 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
     using ostk::physics::coordinate::Frame;
 
     {
-        class_<Earth, Shared<Earth>> earth_class(aModule, "Earth");
+        class_<Earth, Shared<Earth>> earth_class(aModule, "Earth",
+            R"doc(
+                Earth atmospheric model.
+
+            )doc"
+        );
 
         enum_<Earth::Type>(earth_class, "Type")
 
-            .value("Undefined", Earth::Type::Undefined)
-            .value("Exponential", Earth::Type::Exponential)
-            .value("NRLMSISE00", Earth::Type::NRLMSISE00);
+            .value("Undefined", Earth::Type::Undefined,
+                R"doc(
+                    Undefined.
+                )doc"
+            )
+            .value("Exponential", Earth::Type::Exponential,
+                R"doc(
+                    Exponential atmospheric density model, valid up to 1000 km.
+                )doc"
+            )
+            .value("NRLMSISE00", Earth::Type::NRLMSISE00,
+                R"doc(
+                    Navy Research Lab Mass Spectrometer and Incoherent Scatter Radar Exosphere 2000.
+                )doc"
+            );
 
         enum_<Earth::InputDataType>(earth_class, "InputDataType")
 
-            .value("Undefined", Earth::InputDataType::Undefined)
-            .value("ConstantFluxAndGeoMag", Earth::InputDataType::ConstantFluxAndGeoMag)
-            .value("CSSISpaceWeatherFile", Earth::InputDataType::CSSISpaceWeatherFile);
+            .value("Undefined", Earth::InputDataType::Undefined,
+                R"doc(
+                    Undefined.
+                )doc"
+            )
+            .value("ConstantFluxAndGeoMag", Earth::InputDataType::ConstantFluxAndGeoMag,
+                R"doc(
+                    Use constant values for F10.7, F10.7a and Kp NRLMSISE00 input parameters.
+                )doc"
+            )
+            .value("CSSISpaceWeatherFile", Earth::InputDataType::CSSISpaceWeatherFile,
+                R"doc(
+                    Use historical and predicted values for F10.7, F10.7a and Kp NRLMSISE00 input parameters from CSSI.
+                )doc"
+            );
 
         earth_class
 
@@ -63,27 +92,71 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
                 arg("earth_frame") = Frame::ITRF(),
                 arg("earth_radius") = EarthGravityModel::WGS84.equatorialRadius_,
                 arg("earth_flattening") = EarthGravityModel::WGS84.flattening_,
-                arg("sun_celestial") = nullptr
+                arg("sun_celestial") = nullptr,
+                R"doc(
+                    Constructor.
+                )doc"
             )
 
-            .def("get_type", &Earth::getType)
+            .def("get_type", &Earth::getType,
+                R"doc(
+                    Get the Earth atmospheric model type.
 
-            .def("get_input_data_type", &Earth::getInputDataType)
+                    Returns:
+                        Earth atmospheric model type.
+                )doc"
+            )
 
-            .def("is_defined", &Earth::isDefined)
+            .def("get_input_data_type", &Earth::getInputDataType,
+                R"doc(
+                    Get the Earth atmospheric model input data type.
+
+                    Returns:
+                        Earth atmospheric model input data type.
+                )doc"
+            )
+
+            .def("is_defined", &Earth::isDefined,
+                R"doc(
+                    Check if the Earth atmospheric model is defined.
+
+                    Returns:
+                        bool: True if defined.
+                )doc"
+            )
 
             .def(
                 "get_density_at",
                 pybind11::overload_cast<const Position&, const Instant&>(&Earth::getDensityAt, pybind11::const_),
                 arg("position"),
-                arg("instant")
+                arg("instant"),
+                R"doc(
+                    Get the atmospheric density value at a given position and instant.
+
+                    Args:
+                        position (Position): A position.
+                        instant (Instant): An instant.
+
+                    Returns:
+                        Real: Atmospheric density value [kg.m^-3].
+                )doc"
             )
 
             .def(
                 "get_density_at",
                 pybind11::overload_cast<const LLA&, const Instant&>(&Earth::getDensityAt, pybind11::const_),
                 arg("lla"),
-                arg("instant")
+                arg("instant"),
+                R"doc(
+                    Get the atmospheric density value at a given position and instant.
+
+                    Args:
+                        lla (LLA): A position, expressed as latitude, longitude, altitude [deg, deg, m].
+                        instant (Instant): An instant.
+
+                    Returns:
+                        Real: Atmospheric density value [kg.m^-3].
+                )doc"
             )
 
             ;

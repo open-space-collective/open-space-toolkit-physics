@@ -20,14 +20,35 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Sun(pybind11:
             .def(
                 init<const Shared<Ephemeris>&, const Shared<SunGravitationalModel>&>(),
                 arg("ephemeris"),
-                arg("gravitational_model")
+                arg("gravitational_model"),
+                R"doc(
+                    Constructor
+
+                    Args:
+                        ephemeris (Ephemeris): Ephemeris
+                        gravitational_model (SunGravitationalModel): Gravitational model
+                )doc"
             )
 
             .def("__str__", &(shiftToString<Sun>))
             .def("__repr__", &(shiftToString<Sun>))
 
-            .def_static("default", &Sun::Default)
-            .def_static("spherical", &Sun::Spherical)
+            .def_static("default", &Sun::Default,
+                R"doc(
+                    Create a default Sun.
+
+                    Returns:
+                        Sun: Default Sun
+                )doc"
+            )
+            .def_static("spherical", &Sun::Spherical,
+                R"doc(
+                    Spherical model.
+
+                    Returns:
+                        Sun: Sun
+                )doc"
+            )
 
             ;
     }

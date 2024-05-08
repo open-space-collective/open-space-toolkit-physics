@@ -20,14 +20,35 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Moon(pybind11
             .def(
                 init<const Shared<Ephemeris>&, const Shared<MoonGravitationalModel>&>(),
                 arg("ephemeris"),
-                arg("gravitational_model")
+                arg("gravitational_model"),
+                R"doc(
+                    Constructor
+
+                    Args:
+                        ephemeris (Ephemeris): Ephemeris
+                        gravitational_model (MoonGravitationalModel): Gravitational model
+                )doc"
             )
 
             .def("__str__", &(shiftToString<Moon>))
             .def("__repr__", &(shiftToString<Moon>))
 
-            .def_static("default", &Moon::Default)
-            .def_static("spherical", &Moon::Spherical)
+            .def_static("default", &Moon::Default,
+                R"doc(
+                    Create a default Moon.
+
+                    Returns:
+                        Moon: Default Moon
+                )doc"
+            )
+            .def_static("spherical", &Moon::Spherical,
+                R"doc(
+                    Spherical model.
+
+                    Returns:
+                        Moon: Moon
+                )doc"
+            )
 
             ;
     }
