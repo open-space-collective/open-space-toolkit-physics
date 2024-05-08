@@ -13,7 +13,11 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Instant(pybind11::module &aModule)
     using ostk::physics::time::Duration;
     using ostk::physics::time::DateTime;
 
-    class_<Instant>(aModule, "Instant")
+    class_<Instant>(aModule, "Instant",
+        R"doc(
+            Point in time.
+        )doc"
+    )
 
         .def(self == self)
         .def(self != self)
@@ -71,27 +75,137 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Instant(pybind11::module &aModule)
             }
         )
 
-        .def("is_defined", &Instant::isDefined)
-        .def("is_post_epoch", &Instant::isPostEpoch)
-        .def("is_near", &Instant::isNear)
+        .def("is_defined", &Instant::isDefined,
+            R"doc(
+                Check if the instant is defined.
 
-        .def("get_date_time", &Instant::getDateTime)
-        .def("get_julian_date", &Instant::getJulianDate)
-        .def("get_modified_julian_date", &Instant::getModifiedJulianDate)
-        .def("get_leap_second_count", &Instant::getLeapSecondCount)
+                Returns:
+                    bool: True if defined.
+            )doc"
+        )
+        .def("is_post_epoch", &Instant::isPostEpoch,
+            R"doc(
+                Check if the instant is post-epoch (J2000).
+
+                Returns:
+                    bool: True if post-epoch.
+            )doc"
+        )
+        .def("is_near", &Instant::isNear,
+            R"doc(
+                Check if instant is near another instant
+
+                Return:
+                    bool: True if near
+            )doc"
+        )
+
+        .def("get_date_time", &Instant::getDateTime,
+            R"doc(
+                Get date-time.
+
+                Returns:
+                    DateTime: Date-time.
+            )doc"
+        )
+        .def("get_julian_date", &Instant::getJulianDate,
+            R"doc(
+                Get Julian date.
+
+                Returns:
+                    float: Julian date.
+            )doc"
+        )
+        .def("get_modified_julian_date", &Instant::getModifiedJulianDate,
+            R"doc(
+                Get Modified Julian date.
+
+                Returns:
+                    float: Modified Julian date.
+            )doc"
+        )
+        .def("get_leap_second_count", &Instant::getLeapSecondCount,
+            R"doc(
+                Get leap second count.
+
+                Returns:
+                    int: Leap second count.
+            )doc"
+        )
         .def(
             "to_string",
             overload_cast<const Scale &, const DateTime::Format &>(&Instant::toString, const_),
             arg("scale") = DEFAULT_TIME_SCALE,
-            arg("date_time_format") = DEFAULT_DATE_TIME_FORMAT
+            arg("date_time_format") = DEFAULT_DATE_TIME_FORMAT,
+            R"doc(
+                Convert to string.
+
+                Args:
+                    scale (Time.Scale): Time scale.
+                    date_time_format (DateTime.Format): Date-time format.
+
+                Returns:
+                    str: String representation.
+            )doc"
         )
 
-        .def_static("undefined", &Instant::Undefined)
-        .def_static("now", &Instant::Now)
-        .def_static("J2000", &Instant::J2000)
-        .def_static("date_time", &Instant::DateTime)
-        .def_static("julian_date", &Instant::JulianDate)
-        .def_static("modified_julian_date", &Instant::ModifiedJulianDate)
+        .def_static("undefined", &Instant::Undefined,
+            R"doc(
+                Create an undefined instant.
+
+                Returns:
+                    Instant: Undefined instant.
+            )doc"
+        )
+        .def_static("now", &Instant::Now,
+            R"doc(
+                Get current instant.
+
+                Returns:
+                    Instant: Current instant.
+            )doc"
+        )
+        .def_static("J2000", &Instant::J2000,
+            R"doc(
+                Get J2000 instant.
+
+                Returns:
+                    Instant: J2000 instant.
+            )doc"
+        )
+        .def_static("date_time", &Instant::DateTime,
+            R"doc(
+                Create an instant from a date-time.
+
+                Args:
+                    date_time (DateTime): Date-time.
+
+                Returns:
+                    Instant: Instant.
+            )doc"
+        )
+        .def_static("julian_date", &Instant::JulianDate,
+            R"doc(
+                Create an instant from a Julian date.
+
+                Args:
+                    julian_date (float): Julian date.
+
+                Returns:
+                    Instant: Instant.
+            )doc"
+        )
+        .def_static("modified_julian_date", &Instant::ModifiedJulianDate,
+            R"doc(
+                Create an instant from a Modified Julian date.
+
+                Args:
+                    modified_julian_date (float): Modified Julian date.
+
+                Returns:
+                    Instant: Instant.
+            )doc"
+        )
 
         ;
 }
