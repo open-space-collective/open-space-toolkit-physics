@@ -201,7 +201,7 @@ build-documentation-standalone: ## Build documentation (standalone)
 		/bin/bash -c "cmake -DBUILD_UNIT_TESTS=OFF -DBUILD_PYTHON_BINDINGS=ON -DBUILD_SHARED_LIBRARY=ON -DBUILD_DOCUMENTATION=ON .. \
 		&& ostk-build \
 		&& ostk-install-python \
-		&& ostk-build-docs --notebooks Physics
+		&& ostk-build-docs --notebooks Physics"
 
 .PHONY: build-documentation-standalone
 
